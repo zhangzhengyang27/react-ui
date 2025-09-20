@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo '执行：pnpm lint:es && pnpm spellcheck 命令'
-pnpm lint:es && pnpm spellcheck
+echo '执行：pnpm spellcheck && npx lint-staged 命令'
+pnpm spellcheck && npx lint-staged

@@ -7,6 +7,7 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "lint:es": "eslint \"{packages,apps}/**/*.{js,jsx,ts,tsx}\"",
         "lint:style": "stylelint \"{packages,apps}/**/*.{css,ts}\"",
+        "lint": "npm run lint:es && npm run lint:style",
         "spellcheck": "cspell lint --dot --gitignore --color --cache --show-suggestions \"(packages|apps)/**/*.@(html|js|cjs|mjs|ts|tsx|css|scss|md)\"",
         "prepare": "husky",
         "commit": "git-cz"

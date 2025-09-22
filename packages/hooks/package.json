@@ -1,0 +1,22 @@
+{
+    "name": "@react-ui/hooks",
+    "version": "0.0.1",
+    "description": "小叶的 React Hooks 库，用于 主要用于 UI 包使用",
+    "type": "module",
+    "main": "es/index.js",
+    "module": "es/index.js",
+    "files": [
+        "build"
+    ],
+    "scripts": {
+        "dev": "tsup --watch",
+        "build": "tsup"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "tsup": "8.1.0"
+    },
+    "peerDependencies": {
+        "react": "18.2.0"
+    }
+}

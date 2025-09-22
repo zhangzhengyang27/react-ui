@@ -6,3 +6,4 @@ favicons
 gitee
 tseslint
 tsup
+mfsu

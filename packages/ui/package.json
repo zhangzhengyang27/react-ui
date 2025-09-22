@@ -20,7 +20,7 @@
         "tsup": "8.1.0"
     },
     "peerDependencies": {
-        "react": "18.2.0",
+        "react": "19.1.1",
         "styled-components": "6.1.11",
         "@react-ui/hooks": "workspace:*"
     }

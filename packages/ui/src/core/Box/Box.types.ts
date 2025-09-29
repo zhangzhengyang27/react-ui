@@ -1,0 +1,76 @@
+import type { MantineTheme } from '../../core/MantineProvider'
+
+/**
+ * 扩展的 CSS 属性接口
+ *
+ * 继承自 React.CSSProperties，并允许添加任意自定义 CSS 属性。主要用于支持 Mantine 组件中需要扩展 CSS 属性的场景
+ *
+ * @example
+ * const styles: CSSProperties = {
+ *   '--custom-property': 'value',
+ *   color: 'red'
+ * }
+ */
+export interface CSSProperties extends React.CSSProperties {
+    [key: string]: any
+}
+
+/**
+ * Mantine 样式类型
+ *
+ * 可以是：
+ * 1. 静态 CSS 属性对象
+ * 2. 接收主题参数的函数，返回 CSS 属性对象
+ */
+type MantineStyle = CSSProperties | ((theme: MantineTheme) => CSSProperties)
+
+/**
+ * Mantine 样式属性类型
+ *
+ * 支持以下形式：
+ * - 单个 MantineStyle
+ * - MantineStyle 数组
+ * - 嵌套的 MantineStyleProp 数组
+ * - undefined（可选属性）
+ */
+export type MantineStyleProp = MantineStyle | MantineStyle[] | MantineStyleProp[] | undefined
+
+/**
+ * CSS 变量类型
+ *
+ * 表示以 '--' 开头的 CSS 自定义属性
+ * @example
+ * type MyVar = CssVariable // 等同于 `--${string}`
+ */
+export type CssVariable = `--${string}`
+
+/**
+ * CSS 变量集合类型
+ *
+ * 表示一组 CSS 变量的键值对
+ * @template Variable 扩展的变量名类型，默认为 CssVariable
+ */
+export type CssVariables<Variable extends string = CssVariable> = Partial<Record<Variable, string>>
+
+/**
+ * CSS 变量配置类型
+ *
+ * 可以是：
+ * 1. 静态 CSS 变量集合
+ * 2. 接收主题参数的函数，返回 CSS 变量集合
+ * 3. CssVars 数组（用于合并多个配置）
+ * @template Variable 扩展的变量名类型
+ */
+export type CssVars<Variable extends string = CssVariable> =
+    | CssVariables<Variable>
+    | ((theme: MantineTheme) => CssVariables<Variable>)
+    | CssVars<Variable>[]
+
+/**
+ * CSS 变量属性类型
+ *
+ * 用于组件 props 中接收 CSS 变量配置
+ * 可以是单个 CssVars 或 CssVars 数组
+ * @template Variable 扩展的变量名类型
+ */
+export type CssVarsProp<Variable extends string = CssVariable> = CssVars<Variable> | CssVars<Variable>[]

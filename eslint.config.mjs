@@ -7,13 +7,7 @@ export default tseslint.config({
     // 使用配置的文件
     files: ['**/*.{ts,tsx,js}'],
     // 忽略配置的文件
-    ignores: [
-        'apps/**/*/{tmp,.dumi}/**/*',
-        '*.js',
-        '**/*/build/**/*',
-        '**/*/es/**/*',
-        '**/*/dist/**/*'
-    ],
+    ignores: ['apps/**/*/{tmp,.dumi}/**/*', '*.js', '**/*/build/**/*', '**/*/es/**/*', '**/*/dist/**/*'],
     // 语言选项
     languageOptions: {
         // 使用的解析器
@@ -28,6 +22,8 @@ export default tseslint.config({
     },
     rules: {
         semi: 'error',
-        'prefer-const': 'error'
+        'prefer-const': 'error',
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/ban-types': 'off'
     }
 })

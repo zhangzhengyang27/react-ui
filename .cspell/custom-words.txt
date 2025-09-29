@@ -9,6 +9,7 @@ cqmin
 dumi
 favicons
 gitee
+mantine
 Menlo
 mfsu
 OKLCH

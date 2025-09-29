@@ -15,3 +15,5 @@ export {
 } from './Mantine.context'
 
 export { useMantineTheme, useSafeMantineTheme, MantineThemeContext, MantineThemeProvider } from './MantineThemeProvider'
+
+export { useProps } from './use-props/use-props'

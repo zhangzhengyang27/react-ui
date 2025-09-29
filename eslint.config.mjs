@@ -24,6 +24,7 @@ export default tseslint.config({
         semi: 'error',
         'prefer-const': 'error',
         '@typescript-eslint/no-explicit-any': 'off',
-        '@typescript-eslint/ban-types': 'off'
+        '@typescript-eslint/ban-types': 'off',
+        '@typescript-eslint/no-unused-vars':'off'
     }
 })

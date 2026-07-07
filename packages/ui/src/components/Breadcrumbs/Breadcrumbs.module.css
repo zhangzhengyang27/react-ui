@@ -1,0 +1,20 @@
+.root {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.breadcrumb {
+    line-height: 1;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.separator {
+    margin-inline: var(--bc-separator-margin, var(--mantine-spacing-xs));
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--mantine-color-gray-7);
+}

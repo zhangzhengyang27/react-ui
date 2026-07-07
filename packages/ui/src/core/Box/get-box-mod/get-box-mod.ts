@@ -1,10 +1,14 @@
 /**
  * 将键名转换为带有 'data-' 前缀的格式
  * @param {string} key - 需要转换的键名
- * @returns {string} 转换后的键名（确保以 'data-' 开头）
+ * @returns {string} 转换后的键名（确保以 'data-' 开头，camelCase 转为 kebab-case）
  */
 function transformModKey(key: string) {
-    return key.startsWith('data-') ? key : `data-${key}`
+    if (key.startsWith('data-')) {
+        return key
+    }
+    const kebab = key.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`)
+    return `data-${kebab}`
 }
 
 /**

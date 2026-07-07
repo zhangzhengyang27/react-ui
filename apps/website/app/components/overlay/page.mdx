@@ -1,0 +1,35 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Overlay/Basic'
+
+# Overlay
+
+覆盖层组件，用于在内容上方显示半透或模糊遮罩。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="Overlay 基础用法示例"
+    code={`import { Overlay, Paper } from '@react-ui/ui'
+
+export default function OverlayBasicDemo() {
+    return (
+        <div style={{ position: 'relative', height: 160 }}>
+            <Paper style={{ height: '100%', padding: 16 }}>底层内容</Paper>
+            <Overlay center>覆盖层内容</Overlay>
+        </div>
+    )
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Overlay" />
+
+## Styles API
+
+<StylesApiTable component="Overlay" />

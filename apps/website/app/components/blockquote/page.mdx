@@ -1,0 +1,38 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Blockquote/Basic'
+
+# Blockquote
+
+引用块用于展示引用的内容。
+
+## 何时使用
+
+在需要展示来自外部的引用内容、评论或重要提示时使用 Blockquote。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="Blockquote 基础用法"
+    code={`import { Blockquote } from '@react-ui/ui'
+
+export default function BlockquoteBasicDemo() {
+    return (
+        <Blockquote cite="— 鲁迅">
+            其实地上本没有路，走的人多了，也便成了路。
+        </Blockquote>
+    )
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Blockquote" />
+
+## Styles API
+
+<StylesApiTable component="Blockquote" />

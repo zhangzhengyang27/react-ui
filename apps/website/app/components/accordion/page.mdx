@@ -1,0 +1,37 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Accordion/Basic'
+
+# Accordion
+
+手风琴组件，用于在有限空间内展示可展开/折叠的内容列表。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="Accordion 基础用法示例"
+    code={`import { Accordion } from '@react-ui/ui'
+
+export default function AccordionBasicDemo() {
+    return (
+        <Accordion defaultValue="item-1">
+            <Accordion.Item value="item-1">
+                <Accordion.Control>什么是 @react-ui/ui？</Accordion.Control>
+                <Accordion.Panel>一个受 Mantine 启发的 React UI 组件库。</Accordion.Panel>
+            </Accordion.Item>
+        </Accordion>
+    )
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Accordion" />
+
+## Styles API
+
+<StylesApiTable component="Accordion" />

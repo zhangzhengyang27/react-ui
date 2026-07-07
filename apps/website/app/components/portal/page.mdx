@@ -1,0 +1,36 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Portal/Basic'
+
+# Portal
+
+传送门组件，将子节点渲染到 document.body 或指定目标元素。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="Portal 基础用法示例"
+    code={`import { Portal } from '@react-ui/ui'
+
+export default function PortalBasicDemo() {
+    return (
+        <Portal>
+            <div style={{ position: 'fixed', bottom: 16, right: 16, padding: 12, background: '#222', borderRadius: 8 }}>
+                渲染到 document.body
+            </div>
+        </Portal>
+    )
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Portal" />
+
+## Styles API
+
+<StylesApiTable component="Portal" />

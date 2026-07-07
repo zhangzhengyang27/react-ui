@@ -1,0 +1,36 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Stack/Basic'
+
+# Stack
+
+垂直弹性布局容器，用于统一控制子元素垂直间距与对齐。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="Stack 基础用法示例"
+    code={`import { Button, Stack } from '@react-ui/ui'
+
+export default function StackBasicDemo() {
+    return (
+        <Stack>
+            <Button>第一个</Button>
+            <Button>第二个</Button>
+            <Button>第三个</Button>
+        </Stack>
+    )
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Stack" />
+
+## Styles API
+
+<StylesApiTable component="Stack" />

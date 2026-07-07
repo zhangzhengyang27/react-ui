@@ -1,0 +1,40 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Flex/Basic'
+
+# Flex
+
+Flex 是基于 CSS Flexbox 的布局容器。
+
+## 何时使用
+
+当需要沿主轴或交叉轴排列子元素，并控制对齐、间距与换行时使用 Flex。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="Flex 基础用法"
+    code={`import { Flex, Box } from '@react-ui/ui'
+
+export default function FlexBasicDemo() {
+    return (
+        <Flex gap="md" align="center" justify="center">
+            <Box style={{ width: 60, height: 60, background: 'var(--mantine-color-blue-6)' }} />
+            <Box style={{ width: 60, height: 60, background: 'var(--mantine-color-green-6)' }} />
+            <Box style={{ width: 60, height: 60, background: 'var(--mantine-color-red-6)' }} />
+        </Flex>
+    )
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Flex" />
+
+## Styles API
+
+<StylesApiTable component="Flex" />

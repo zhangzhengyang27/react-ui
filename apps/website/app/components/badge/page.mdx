@@ -1,0 +1,56 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Badge/Basic'
+import VariantDemo from '@/demos/Badge/Variant'
+
+# Badge
+
+徽章用于展示状态、文本标签或计数。
+
+## 何时使用
+
+当需要高亮显示状态、分类、标签或短文本提示时使用 Badge 组件。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="Badge 基础用法"
+    code={`import { Badge } from '@react-ui/ui'
+
+export default function BadgeBasicDemo() {
+    return <Badge>新消息</Badge>
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## 变体
+
+<Demo
+    title="变体"
+    description="Badge 支持多种预定义变体"
+    code={`import { Badge, Group } from '@react-ui/ui'
+
+export default function BadgeVariantDemo() {
+    return (
+        <Group>
+            <Badge variant="light">light</Badge>
+            <Badge variant="filled">filled</Badge>
+            <Badge variant="outline">outline</Badge>
+            <Badge variant="dot">dot</Badge>
+        </Group>
+    )
+}`}
+>
+    <VariantDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Badge" />
+
+## Styles API
+
+<StylesApiTable component="Badge" />

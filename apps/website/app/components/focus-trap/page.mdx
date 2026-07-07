@@ -1,0 +1,44 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/FocusTrap/Basic'
+
+# FocusTrap
+
+焦点陷阱组件，用于将键盘焦点限制在指定元素内。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="FocusTrap 基础用法示例"
+    code={`import { useState } from 'react'
+import { Button, FocusTrap } from '@react-ui/ui'
+
+export default function FocusTrapBasicDemo() {
+    const [active, setActive] = useState(true)
+    return (
+        <div>
+            <Button onClick={() => setActive(a => !a)}>
+                {active ? '停用' : '启用'} FocusTrap
+            </Button>
+            <FocusTrap active={active}>
+                <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
+                    <input placeholder="输入框 1" />
+                    <input placeholder="输入框 2" />
+                </div>
+            </FocusTrap>
+        </div>
+    )
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## API
+
+<ApiTable component="FocusTrap" />
+
+## Styles API
+
+<StylesApiTable component="FocusTrap" />

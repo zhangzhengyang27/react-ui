@@ -24,6 +24,14 @@
             "@/*": ["./*"]
         }
     },
-    "include": ["**/*.mdx", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next-env.d.ts", "docs-dist/types/**/*.ts"],
+    "include": [
+        "**/*.mdx",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts",
+        "next-env.d.ts",
+        "docs-dist/types/**/*.ts",
+        ".docgen/**/*.json"
+    ],
     "exclude": ["node_modules"]
 }

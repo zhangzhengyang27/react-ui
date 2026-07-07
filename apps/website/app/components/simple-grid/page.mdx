@@ -1,0 +1,43 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/SimpleGrid/Basic'
+
+# SimpleGrid
+
+SimpleGrid 是一个简化版的网格布局组件。
+
+## 何时使用
+
+当需要以等宽列快速搭建响应式网格布局时使用 SimpleGrid。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="SimpleGrid 基础用法"
+    code={`import { SimpleGrid, Box } from '@react-ui/ui'
+
+export default function SimpleGridBasicDemo() {
+    return (
+        <SimpleGrid cols={3} spacing="md">
+            <Box style={{ height: 80, background: 'var(--mantine-color-blue-6)' }} />
+            <Box style={{ height: 80, background: 'var(--mantine-color-green-6)' }} />
+            <Box style={{ height: 80, background: 'var(--mantine-color-red-6)' }} />
+            <Box style={{ height: 80, background: 'var(--mantine-color-yellow-6)' }} />
+            <Box style={{ height: 80, background: 'var(--mantine-color-purple-6)' }} />
+            <Box style={{ height: 80, background: 'var(--mantine-color-pink-6)' }} />
+        </SimpleGrid>
+    )
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## API
+
+<ApiTable component="SimpleGrid" />
+
+## Styles API
+
+<StylesApiTable component="SimpleGrid" />

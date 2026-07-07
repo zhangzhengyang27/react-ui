@@ -1,0 +1,52 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Text/Basic'
+import VariantDemo from '@/demos/Text/Variant'
+
+# Text
+
+文本组件，控制字体大小、行高、渐变与截断等排版属性。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="Text 基础用法示例"
+    code={`import { Text } from '@react-ui/ui'
+
+export default function TextBasicDemo() {
+    return <Text>默认文本内容</Text>
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## 文本变体
+
+<Demo
+    title="文本变体"
+    description="通过 variant 属性使用普通文本或渐变文本。"
+    code={`import { Stack, Text } from '@react-ui/ui'
+
+export default function TextVariantDemo() {
+    return (
+        <Stack>
+            <Text variant="text">text 变体</Text>
+            <Text variant="gradient" gradient={{ from: 'grape', to: 'blue', deg: 45 }}>
+                gradient 渐变文本
+            </Text>
+        </Stack>
+    )
+}`}
+>
+    <VariantDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Text" />
+
+## Styles API
+
+<StylesApiTable component="Text" />

@@ -4,23 +4,28 @@
     "private": true,
     "type": "module",
     "scripts": {
+        "docs:gen": "tsx scripts/docgen.ts",
+        "predev": "pnpm docs:gen",
+        "prebuild": "pnpm docs:gen",
         "dev": "next dev",
         "build": "next build",
         "start": "next start"
     },
     "dependencies": {
+        "@react-ui/ui": "workspace:*",
+        "lucide-react": "0.396.0",
         "next": "^15.1.0",
         "nextra": "^4.0.0",
         "nextra-theme-docs": "^4.0.0",
         "react": "^19.1.1",
-        "react-dom": "^19.1.1",
-        "@react-ui/ui": "workspace:*",
-        "lucide-react": "0.396.0"
+        "react-dom": "^19.1.1"
     },
     "devDependencies": {
         "@types/node": "20.14.9",
         "@types/react": "^19.1.1",
         "@types/react-dom": "^19.2.3",
+        "ts-morph": "^28.0.0",
+        "tsx": "^4.23.0",
         "typescript": "^5.5.0"
     }
 }

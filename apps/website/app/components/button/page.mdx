@@ -1,9 +1,9 @@
-import { Button } from '@react-ui/ui'
-import { Demo } from '../../../components/Demo'
-import { ApiTable } from '../../../components/ApiTable'
-import BasicDemo from '../../../../demos/Button/Basic'
-import VariantDemo from '../../../../demos/Button/Variant'
-import DisabledDemo from '../../../../demos/Button/Disabled'
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Button/Basic'
+import VariantDemo from '@/demos/Button/Variant'
+import DisabledDemo from '@/demos/Button/Disabled'
 
 # Button
 
@@ -20,11 +20,9 @@ import DisabledDemo from '../../../../demos/Button/Disabled'
     description="按钮组件基础使用示例"
     code={`import { Button } from '@react-ui/ui'
 
-const Basic = () => {
+export default function BasicDemo() {
     return <Button variant="default">请点击</Button>
-}
-
-export default Basic`}
+}`}
 >
     <BasicDemo />
 </Demo>
@@ -33,21 +31,20 @@ export default Basic`}
 
 <Demo
     title="按钮变体"
-    description="通常为了在不同场景下方便使用不同按钮形态，于是我们抽象按钮变体，满足对应需求"
-    code={`import { Button, Provider } from '@react-ui/ui'
+    description="通过 variant 属性切换不同视觉风格，满足多种场景需求。"
+    code={`import { Button, Group } from '@react-ui/ui'
 
-const Variant = () => {
+const VARIANTS = ['default', 'filled', 'gradient', 'light', 'outline', 'subtle', 'transparent', 'white']
+
+export default function ButtonVariantDemo() {
     return (
-        <Provider>
-            <Button variant="default">default</Button>
-            <Button variant="filled">filled</Button>
-            <Button variant="gradient">gradient</Button>
-            <Button variant="light">light</Button>
-            <Button variant="outline">outline</Button>
-            <Button variant="subtle">subtle</Button>
-            <Button variant="transparent">transparent</Button>
-            <Button variant="white">white</Button>
-        </Provider>
+        <Group>
+            {VARIANTS.map(variant => (
+                <Button key={variant} variant={variant}>
+                    {variant}
+                </Button>
+            ))}
+        </Group>
     )
 }`}
 >
@@ -58,10 +55,10 @@ const Variant = () => {
 
 <Demo
     title="禁用"
-    description="按钮禁用后，无法进行交互操作"
+    description="按钮禁用后，无法进行交互操作。"
     code={`import { Button } from '@react-ui/ui'
 
-const Disabled = () => {
+export default function ButtonDisabledDemo() {
     return <Button disabled>cannot click me</Button>
 }`}
 >
@@ -71,3 +68,7 @@ const Disabled = () => {
 ## API
 
 <ApiTable component="Button" />
+
+## Styles API
+
+<StylesApiTable component="Button" />

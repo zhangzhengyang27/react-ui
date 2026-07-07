@@ -1,0 +1,41 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Collapse/Basic'
+
+# Collapse
+
+折叠容器，支持垂直/水平方向的展开与收起动画。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="Collapse 基础用法示例"
+    code={`import { useState } from 'react'
+import { Button, Collapse } from '@react-ui/ui'
+
+export default function CollapseBasicDemo() {
+    const [opened, setOpened] = useState(false)
+    return (
+        <>
+            <Button onClick={() => setOpened(o => !o)}>切换展开</Button>
+            <Collapse expanded={opened} style={{ marginTop: 12 }}>
+                <div style={{ padding: 20, background: '#222', borderRadius: 8 }}>
+                    折叠内容
+                </div>
+            </Collapse>
+        </>
+    )
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Collapse" />
+
+## Styles API
+
+<StylesApiTable component="Collapse" />

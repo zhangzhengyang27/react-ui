@@ -4,17 +4,15 @@ node_modules
 **/dist
 **/es
 
-# dumi
-**/.dumi
 **/tmp
 **/docs-dist
 
 # next.js / nextra
 **/.next
 **/out
+**/.docgen
 
 .cspellcache
-**/.turbo
 **/*.timestamp-*.mjs
 
 pnpm-lock.yaml

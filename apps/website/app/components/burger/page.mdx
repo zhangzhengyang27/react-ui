@@ -1,0 +1,34 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Burger/Basic'
+
+# Burger
+
+汉堡菜单按钮常用于移动端导航开关。
+
+## 何时使用
+
+在窄屏设备或需要收起导航菜单的场景中，使用 Burger 控制菜单的展开与收起。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="Burger 基础用法"
+    code={`import { Burger } from '@react-ui/ui'
+
+export default function BurgerBasicDemo() {
+    return <Burger opened />
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Burger" />
+
+## Styles API
+
+<StylesApiTable component="Burger" />

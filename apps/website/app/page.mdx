@@ -4,32 +4,46 @@ title: 首页
 
 import { Button } from '@react-ui/ui'
 import { Demo } from '../components/Demo'
+import { ComponentOverview } from '../components/ComponentOverview'
 
 # @react-ui/ui
 
-小叶科技官方 React UI 组件库，用于学员参考学习。
+小叶科技官方 React UI 组件库，用于学员参考学习。基于 React 19 + TypeScript，
+借鉴 Mantine 架构，提供主题、Styles API 与丰富的可组合组件。
 
-<div style={{ display: 'flex', gap: 12, marginTop: 24 }}>
+<div style={{ display: 'flex', gap: 12, marginTop: 24, flexWrap: 'wrap' }}>
     <Button component="a" href="/components/button">
         开始浏览组件
+    </Button>
+    <Button component="a" href="/theming" variant="default">
+        主题配置
     </Button>
 </div>
 
 ## 特性
 
-- 🎨 **主题**：提供浅色和深色主题的自定义算法
-- 🏢 **企业级**：符合企业级组件库研发标准，架构借鉴 mantine
+- 🎨 **主题系统**：提供浅色/深色主题、颜色、间距、圆角等设计令牌
+- 🧩 **Styles API**：通过 `classNames`、`styles`、`vars` 精细定制组件样式
+- 🏢 **企业级**：符合企业级组件库研发标准，架构借鉴 Mantine
 - 🚀 **持续更新**：组件库内容逐步更新，可持续跟进
 
 ## 快速开始
 
 <Demo
     title="基础用法"
-    code={`import { Button } from '@react-ui/ui'
+    code={`import { Provider, Button } from '@react-ui/ui'
 
-export default () => (
-    <Button>Hello xiaoye</Button>
-)`}
+export default function App() {
+    return (
+        <Provider>
+            <Button>Hello xiaoye</Button>
+        </Provider>
+    )
+}`}
 >
     <Button>Hello xiaoye</Button>
 </Demo>
+
+## 组件概览
+
+<ComponentOverview />

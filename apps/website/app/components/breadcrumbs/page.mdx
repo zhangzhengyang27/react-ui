@@ -1,0 +1,40 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Breadcrumbs/Basic'
+
+# Breadcrumbs
+
+面包屑用于显示当前页面在层级结构中的位置。
+
+## 何时使用
+
+当页面存在层级导航关系，需要告知用户当前位置并提供快速返回入口时使用 Breadcrumbs。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="Breadcrumbs 基础用法"
+    code={`import { Breadcrumbs, Anchor } from '@react-ui/ui'
+
+export default function BreadcrumbsBasicDemo() {
+    return (
+        <Breadcrumbs>
+            <Anchor href="#">首页</Anchor>
+            <Anchor href="#">分类</Anchor>
+            <Anchor href="#">详情</Anchor>
+        </Breadcrumbs>
+    )
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Breadcrumbs" />
+
+## Styles API
+
+<StylesApiTable component="Breadcrumbs" />

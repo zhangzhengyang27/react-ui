@@ -1,0 +1,39 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Transition/Basic'
+
+# Transition
+
+过渡组件，基于 mounted 状态驱动进入/退出动画。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="Transition 基础用法示例"
+    code={`import { useState } from 'react'
+import { Button, Paper, Transition } from '@react-ui/ui'
+
+export default function TransitionBasicDemo() {
+    const [mounted, setMounted] = useState(false)
+    return (
+        <>
+            <Button onClick={() => setMounted(m => !m)}>切换显隐</Button>
+            <Transition mounted={mounted} transition="fade">
+                {styles => <Paper style={{ ...styles, marginTop: 12, padding: 24 }}>淡入淡出内容</Paper>}
+            </Transition>
+        </>
+    )
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Transition" />
+
+## Styles API
+
+<StylesApiTable component="Transition" />

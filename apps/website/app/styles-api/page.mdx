@@ -1,0 +1,179 @@
+---
+title: Styles API
+---
+
+import { Demo } from '@/components/Demo'
+
+# Styles API
+
+Styles API 是一组用于自定义 `@react-ui/ui` 组件内部元素样式的属性与技术。
+你可以通过组件 `classNames`、`styles`、`vars` 属性，或在 `theme.components` 中统一配置，实现细粒度的样式覆盖。
+
+## Selectors
+
+每个支持 Styles API 的组件都有一组内部元素名称（称为 selectors）。
+你可以在组件文档的 **Styles API** 标签页查看具体 selectors。
+
+以 `Button` 为例，常见的 selectors 包括：
+
+- `root` — 按钮根元素
+- `inner` — 内容容器
+- `label` — 文字标签
+- `section` — 图标/附加区域
+
+## classNames
+
+通过 `classNames` 属性，可以为组件内部元素添加自定义 CSS 类：
+
+<Demo
+    title="classNames 用法"
+    description="为 Button 的不同 selector 添加自定义类名。"
+    code={`import { Button } from '@react-ui/ui'
+
+function Demo() {
+    return (
+        <Button
+            classNames={{
+                root: 'my-root-class',
+                label: 'my-label-class'
+            }}
+        >
+            Styled Button
+        </Button>
+    )
+}`}
+>
+    <div style={{ padding: 24, textAlign: 'center', color: 'var(--nextra-secondary-color, #888)' }}>
+        将上方代码复制到项目中即可预览效果
+    </div>
+</Demo>
+
+```css
+.my-root-class {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+}
+
+.my-label-class {
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+```
+
+## styles
+
+`styles` 属性与 `classNames` 类似，但直接传入内联样式对象。注意内联样式优先级高于普通类名，
+且不支持伪类与媒体查询。
+
+<Demo
+    title="styles 用法"
+    description="直接覆盖 Button 各 selector 的内联样式。"
+    code={`import { Button } from '@react-ui/ui'
+
+function Demo() {
+    return (
+        <Button
+            styles={{
+                root: { backgroundColor: 'red' },
+                label: { color: 'white' }
+            }}
+        >
+            Inline Styles
+        </Button>
+    )
+}`}
+>
+    <div style={{ padding: 24, textAlign: 'center', color: 'var(--nextra-secondary-color, #888)' }}>
+        将上方代码复制到项目中即可预览效果
+    </div>
+</Demo>
+
+## CSS variables
+
+组件通常使用 CSS 变量定义颜色、尺寸、间距等。你可以通过 `vars` 属性或 `theme.components` 中的 `vars` 函数覆盖这些变量。
+
+```tsx
+import { Button } from '@react-ui/ui'
+
+function Demo() {
+    return (
+        <Button
+            vars={{
+                root: {
+                    '--button-bg': '#228be6',
+                    '--button-radius': '12px'
+                }
+            }}
+        >
+            Custom Variables
+        </Button>
+    )
+}
+```
+
+## theme.components 全局配置
+
+通过 `theme.components` 可以为所有同类型组件设置默认样式，无需每次使用组件时重复传入：
+
+```tsx
+import { Provider, Button } from '@react-ui/ui'
+
+const theme = {
+    components: {
+        Button: {
+            defaultProps: {
+                variant: 'outline',
+                radius: 'xl'
+            },
+            classNames: {
+                root: 'my-global-button'
+            },
+            styles: {
+                root: { fontWeight: 600 }
+            }
+        }
+    }
+}
+
+function App() {
+    return (
+        <Provider theme={theme}>
+            <Button>全局样式生效</Button>
+        </Provider>
+    )
+}
+```
+
+## 基于 props 的动态样式
+
+`classNames` 和 `styles` 也支持函数形式，接收 theme 对象和组件 props，返回样式对象：
+
+```tsx
+<Button
+    styles={(theme, props) => ({
+        root: {
+            backgroundColor: props.disabled ? theme.colors.gray[5] : theme.colors.blue[6]
+        }
+    })}
+>
+    Dynamic Styles
+</Button>
+```
+
+## 静态类名
+
+支持 Styles API 的组件会自动生成静态类名，格式为 `mantine-{ComponentName}-{selector}`，
+例如 Button 的 root 元素会带有 `mantine-Button-root` 类。你可以直接通过 CSS 选择器覆盖：
+
+```css
+.mantine-Button-root {
+    text-transform: uppercase;
+}
+```
+
+> 推荐优先使用 `classNames` 而不是全局 CSS 选择器，以避免样式冲突。
+
+## 下一步
+
+- 返回 [主题配置](/theming) 了解 theme 对象
+- 查看具体组件文档中的 Styles API 表格

@@ -1,0 +1,51 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Loader/Basic'
+import VariantDemo from '@/demos/Loader/Variant'
+
+# Loader
+
+加载指示器，支持 oval、bars、dots 等内置类型。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="Loader 基础用法示例"
+    code={`import { Loader } from '@react-ui/ui'
+
+export default function LoaderBasicDemo() {
+    return <Loader />
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## 加载器类型
+
+<Demo
+    title="加载器类型"
+    description="通过 type 属性切换不同的加载动画。"
+    code={`import { Group, Loader } from '@react-ui/ui'
+
+export default function LoaderVariantDemo() {
+    return (
+        <Group>
+            <Loader type="oval" />
+            <Loader type="bars" />
+            <Loader type="dots" />
+        </Group>
+    )
+}`}
+>
+    <VariantDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Loader" />
+
+## Styles API
+
+<StylesApiTable component="Loader" />

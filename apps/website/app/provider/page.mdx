@@ -1,0 +1,138 @@
+---
+title: Provider
+---
+
+import { Demo } from '@/components/Demo'
+
+# Provider
+
+`Provider` 是 `@react-ui/ui` 的根上下文组件，负责：
+
+- 提供主题对象给所有子组件
+- 管理颜色方案上下文
+- 注入 CSS 变量与全局样式
+
+它应当在应用根节点处使用一次。
+
+## 基础用法
+
+```tsx
+import { Provider } from '@react-ui/ui'
+
+function App() {
+    return (
+        <Provider>
+            {/* 你的应用内容 */}
+        </Provider>
+    )
+}
+```
+
+## 配合自定义主题
+
+通过 `theme` 属性传入主题覆盖对象：
+
+<Demo
+    title="Provider + 主题覆盖"
+    description="在 Provider 上统一设置主色与默认圆角。"
+    code={`import { Provider, Button } from '@react-ui/ui'
+
+function App() {
+    return (
+        <Provider theme={{ primaryColor: 'violet', defaultRadius: 'md' }}>
+            <Button>Hello react-ui</Button>
+        </Provider>
+    )
+}`}
+>
+    <div style={{ padding: 24, textAlign: 'center', color: 'var(--nextra-secondary-color, #888)' }}>
+        将上方代码复制到项目中即可预览效果
+    </div>
+</Demo>
+
+## Provider 属性
+
+```tsx
+interface ProviderProps {
+    /** 主题覆盖对象 */
+    theme?: UIThemeOverrides
+
+    /** CSS 类名前缀，默认 'mantine' */
+    classNamesPrefix?: string
+
+    /** 是否生成静态类名，默认 true */
+    withStaticClasses?: boolean
+
+    /** 无头模式，不包含默认样式，默认 false */
+    headless?: boolean
+
+    /** CSS 变量选择器，默认 ':root' */
+    cssVariablesSelector?: string
+
+    /** 运行环境，默认 'default' */
+    env?: 'default' | 'test'
+
+    /** 子节点 */
+    children?: React.ReactNode
+}
+```
+
+### theme
+
+用于覆盖默认主题，会被深度合并。详见 [主题配置](/theming)。
+
+### classNamesPrefix
+
+修改组件静态类名的前缀。例如设置为 `app` 后，Button 的 root 类名将变为 `app-Button-root`。
+
+```tsx
+<Provider classNamesPrefix="app">
+    <Button>Custom Prefix</Button>
+</Provider>
+```
+
+### withStaticClasses
+
+控制是否为组件生成静态类名，默认 `true`。关闭后无法通过 `.mantine-Button-root` 等选择器覆盖样式。
+
+### headless
+
+无头模式，不注入默认样式，适合完全自定义样式的场景。
+
+### cssVariablesSelector
+
+CSS 变量注入的目标选择器，默认 `:root`。你可以改为 `html` 或其他容器：
+
+```tsx
+<Provider cssVariablesSelector="html">
+    <App />
+</Provider>
+```
+
+### env
+
+设置为 `'test'` 时会禁用过渡动画与 Portal，便于测试环境使用。
+
+## 在 Next.js 中使用
+
+在 Next.js App Router 中，建议在根 layout 中包裹 `Provider`：
+
+```tsx
+// app/layout.tsx
+import { Provider } from '@react-ui/ui'
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+    return (
+        <html lang="zh-CN">
+            <body>
+                <Provider>{children}</Provider>
+            </body>
+        </html>
+    )
+}
+```
+
+## 下一步
+
+- 深入了解 [主题配置](/theming)
+- 了解 [Styles API](/styles-api) 自定义组件样式

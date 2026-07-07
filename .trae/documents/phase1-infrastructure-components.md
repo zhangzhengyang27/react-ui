@@ -26,14 +26,19 @@
 
 尚未完成的内容：
 
--   编写 `ScrollArea` 组件测试。
--   创建 `ScrollArea` Demo 并更新 `apps/docs/src/registry.tsx`。
--   创建 `ScrollArea` 站点文档 `apps/website/docs/components/scroll-area.md`。
--   全量 lint + 测试 + 构建验证。
+-   无，第一阶段已全部完成。
+
+## 0.1 最终验证结果
+
+-   `pnpm lint`：通过（修复 eslint 忽略 `.next` 构建产物后）。
+-   `pnpm --filter @react-ui/ui test`：通过，41 个测试用例全部通过。
+-   `pnpm --filter @react-ui/ui exec tsc --noEmit`：通过。
+-   `pnpm spellcheck`：通过。
+-   `pnpm build`：通过，`packages/hooks`、`packages/ui`、apps 均构建成功。
 
 ## 1. Summary
 
-本阶段目标是为 react-ui 补齐 Mantine 中支撑上层组件的底层基建能力。当前仅剩 **ScrollArea 测试**、**Demo 与文档**以及**全量验证**三项工作。
+本阶段目标是为 react-ui 补齐 Mantine 中支撑上层组件的底层基建能力。目前已全部完成，包括 ScrollArea 组件实现、测试、Demo、文档以及全量验证。
 
 所有组件严格遵循 react-ui 现有架构：`polymorphicFactory`/`factory` + `useStyles` + `varsResolver` + CSS Modules，并参考 Mantine 对应源码实现。
 

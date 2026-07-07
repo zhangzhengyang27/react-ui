@@ -1,0 +1,35 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/VisuallyHidden/Basic'
+
+# VisuallyHidden
+
+视觉隐藏组件，保留屏幕阅读器可访问的文本内容。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="VisuallyHidden 基础用法示例"
+    code={`import { VisuallyHidden } from '@react-ui/ui'
+
+export default function VisuallyHiddenBasicDemo() {
+    return (
+        <button style={{ fontSize: 24 }}>
+            <VisuallyHidden>仅屏幕阅读器可读</VisuallyHidden>
+            <span aria-hidden>🚀</span>
+        </button>
+    )
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## API
+
+<ApiTable component="VisuallyHidden" />
+
+## Styles API
+
+<StylesApiTable component="VisuallyHidden" />

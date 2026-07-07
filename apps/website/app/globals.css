@@ -1,0 +1,11 @@
+html,
+body {
+    background: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+    html,
+    body {
+        background: #000;
+    }
+}

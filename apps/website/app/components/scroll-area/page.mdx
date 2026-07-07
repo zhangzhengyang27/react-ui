@@ -1,0 +1,43 @@
+import { ScrollArea } from '@react-ui/ui'
+import { Demo } from '../../../components/Demo'
+import { ApiTable } from '../../../components/ApiTable'
+import ScrollAreaDemo from '../../../../demos/ScrollArea'
+
+# ScrollArea
+
+自定义滚动条容器，用于在固定区域内滚动溢出内容。
+
+## 何时使用
+
+当页面或容器内内容超出可视区域，需要以统一的自定义滚动条替代浏览器原生滚动条时使用。ScrollArea 支持垂直、水平或双向滚动，并提供滚动位置、边界到达等回调。
+
+## 基础使用
+
+ScrollArea 默认同时渲染垂直与水平滚动条。通过 `type`、`scrollbars`、`scrollbarSize` 等属性可控制滚动条的显示行为与尺寸。
+
+<Demo
+    title="基础用法"
+    description="ScrollArea 基础用法"
+    code={`import { ScrollArea } from '@react-ui/ui'
+
+const Demo = () => {
+    return (
+        <ScrollArea style={{ height: 200, width: 400 }}>
+            <div style={{ height: 600, width: 800, background: 'linear-gradient(to bottom right, #888, #333)' }} />
+        </ScrollArea>
+    )
+}`}
+>
+    <ScrollAreaDemo />
+</Demo>
+
+## API
+
+<ApiTable component="ScrollArea" />
+
+## 实现说明
+
+- 当前为基础版实现，仅支持 `type="always"` 与 `type="never"`。
+- `hover`、`scroll`、`auto` 行为以及 `ScrollArea.Autosize` 将在后续增强版中补充。
+- 内部使用 `ResizeObserver` 监听内容与视口尺寸变化，动态计算滑块大小与位置。
+- 滚动条拖拽通过 Pointer Events 实现，支持鼠标与触控设备。

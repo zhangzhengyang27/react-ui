@@ -8,6 +8,7 @@ import {
 } from '../../../core'
 import { useAccordionContext } from '../Accordion.context'
 import { useAccordionItemContext } from '../AccordionItem.context'
+import { Collapse } from '../../Collapse'
 import classes from '../Accordion.module.css'
 
 /**
@@ -43,7 +44,7 @@ export const AccordionPanel = factory<AccordionPanelFactory>((props, ref) => {
             ref={ref}
             {...ctx.getStyles('panel', { className, classNames, style, styles })}
             {...others}
-            in={ctx.isItemActive(value)}
+            expanded={ctx.isItemActive(value)}
             transitionDuration={ctx.transitionDuration ?? 200}
             role="region"
             id={ctx.getRegionId(value)}

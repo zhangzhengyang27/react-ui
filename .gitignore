@@ -9,9 +9,13 @@ node_modules
 **/tmp
 **/docs-dist
 
-.turbo
+# next.js / nextra
+**/.next
+**/out
 
 .cspellcache
+**/.turbo
+**/*.timestamp-*.mjs
 
 pnpm-lock.yaml
 yarn.lock

@@ -18,9 +18,7 @@ export type UnstyledButtonStylesNames = 'root'
  *
  * @property __staticSelector - 可选静态选择器名称，用于自定义样式
  */
-export interface UnstyledButtonProps
-    extends Omit<BoxComponentProps, 'vars' | 'variant'>,
-        StylesApiProps<UnstyledButtonFactory> {
+export interface UnstyledButtonProps extends Omit<BoxComponentProps, 'vars'>, StylesApiProps<UnstyledButtonFactory> {
     __staticSelector?: string
 }
 

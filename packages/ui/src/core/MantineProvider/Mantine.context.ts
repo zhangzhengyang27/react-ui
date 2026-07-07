@@ -21,7 +21,7 @@ export interface MantineStylesTransform {
 /**
  * Mantine 上下文值接口。包含了 MantineProvider 提供的所有配置和方法
  */
-interface MantineContextValue {
+export interface MantineContextValue {
     /** 当前的颜色方案（浅色/深色）*/
     colorScheme: MantineColorScheme
 

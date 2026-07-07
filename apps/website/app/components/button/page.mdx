@@ -1,0 +1,73 @@
+import { Button } from '@react-ui/ui'
+import { Demo } from '../../../components/Demo'
+import { ApiTable } from '../../../components/ApiTable'
+import BasicDemo from '../../../../demos/Button/Basic'
+import VariantDemo from '../../../../demos/Button/Variant'
+import DisabledDemo from '../../../../demos/Button/Disabled'
+
+# Button
+
+按钮用于开始一个即时操作。
+
+## 何时使用
+
+通常在需要用户鼠标交互的场景下，我们会选择使用按钮组件。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="按钮组件基础使用示例"
+    code={`import { Button } from '@react-ui/ui'
+
+const Basic = () => {
+    return <Button variant="default">请点击</Button>
+}
+
+export default Basic`}
+>
+    <BasicDemo />
+</Demo>
+
+## 按钮变体
+
+<Demo
+    title="按钮变体"
+    description="通常为了在不同场景下方便使用不同按钮形态，于是我们抽象按钮变体，满足对应需求"
+    code={`import { Button, Provider } from '@react-ui/ui'
+
+const Variant = () => {
+    return (
+        <Provider>
+            <Button variant="default">default</Button>
+            <Button variant="filled">filled</Button>
+            <Button variant="gradient">gradient</Button>
+            <Button variant="light">light</Button>
+            <Button variant="outline">outline</Button>
+            <Button variant="subtle">subtle</Button>
+            <Button variant="transparent">transparent</Button>
+            <Button variant="white">white</Button>
+        </Provider>
+    )
+}`}
+>
+    <VariantDemo />
+</Demo>
+
+## 禁用状态
+
+<Demo
+    title="禁用"
+    description="按钮禁用后，无法进行交互操作"
+    code={`import { Button } from '@react-ui/ui'
+
+const Disabled = () => {
+    return <Button disabled>cannot click me</Button>
+}`}
+>
+    <DisabledDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Button" />

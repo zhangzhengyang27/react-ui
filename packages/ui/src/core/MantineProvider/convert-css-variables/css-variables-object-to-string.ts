@@ -1,4 +1,4 @@
-import type { CssVariable } from '../../../components/Box'
+import type { CssVariable } from '../../Box'
 
 export type CSSVariables = Record<CssVariable, string>
 

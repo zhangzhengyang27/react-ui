@@ -1,4 +1,4 @@
-import type { CssVariable } from '../../../../components/Box'
+import type { CssVariable } from '../../../Box'
 import type { MantineColorScheme, MantineColorShade, MantineTheme } from '../../theme.types'
 import { getPrimaryShade } from '../get-primary-shade/get-primary-shade'
 import { isLightColor } from '../luminance/luminance'

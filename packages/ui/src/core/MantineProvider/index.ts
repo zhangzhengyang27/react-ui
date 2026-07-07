@@ -1,6 +1,8 @@
 export * from './theme.types'
 export * from './color-functions'
 
+export { MantineProvider, type MantineProviderProps } from './MantineProvider'
+
 export {
     MantineContext,
     useMantineContext,

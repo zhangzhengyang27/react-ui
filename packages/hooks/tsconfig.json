@@ -3,6 +3,6 @@
     "compilerOptions": {
         "declaration": true
     },
-    "include": ["src", "./tsup.config.ts", "../../@types"],
+    "include": ["src", "../../@types"],
     "exclude": ["./es", "**/*.test.ts"]
 }

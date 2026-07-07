@@ -1,0 +1,22 @@
+.root {
+    color: var(--mantine-color-anchor);
+    text-decoration: none;
+
+    &:where([data-underline='always']) {
+        text-decoration: underline;
+    }
+
+    &:where([data-underline='hover']) {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &:where([data-underline='not-hover']) {
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}

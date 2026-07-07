@@ -1,21 +1,26 @@
 {
     "name": "website",
     "version": "1.0.0",
+    "private": true,
+    "type": "module",
     "scripts": {
-        "dev": "dumi dev",
-        "build": "dumi build",
-        "start": "npm run dev"
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start"
     },
     "dependencies": {
-        "react-layout-kit": "1.9.0",
-        "@lobehub/ui": "1.144.5",
-        "@react-ui/ui": "workspace:*"
+        "next": "^15.1.0",
+        "nextra": "^4.0.0",
+        "nextra-theme-docs": "^4.0.0",
+        "react": "^19.1.1",
+        "react-dom": "^19.1.1",
+        "@react-ui/ui": "workspace:*",
+        "lucide-react": "0.396.0"
     },
     "devDependencies": {
-        "@types/react": "18.3.3",
-        "dumi": "2.2.17",
-        "dumi-theme-lobehub": "1.8.0",
-        "antd-style": "3.6.2",
-        "lucide-react": "0.396.0"
+        "@types/node": "20.14.9",
+        "@types/react": "^19.1.1",
+        "@types/react-dom": "^19.2.3",
+        "typescript": "^5.5.0"
     }
 }

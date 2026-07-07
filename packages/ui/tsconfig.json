@@ -3,8 +3,8 @@
     "compilerOptions": {
         "declaration": true,
         "jsx": "react-jsx",
-        "ignoreDeprecations": "6.0"
+        "ignoreDeprecations": "5.0"
     },
-    "include": ["src", "./tsup.config.ts", "../../@types"]
+    "include": ["src", "../../@types"]
     // "exclude": ["./es"]
 }

@@ -2,10 +2,8 @@ import React from 'react'
 
 import '../ThemeProvider/global.css'
 
-import { ThemeProvider } from '../ThemeProvider/ThemeProvider'
 import { UIThemeOverrides } from '../types/theme.types'
-
-import { Context } from './context'
+import { MantineProvider } from '../MantineProvider/MantineProvider'
 
 export interface ProviderProps {
     /**
@@ -19,11 +17,7 @@ export interface ProviderProps {
 }
 
 export const Provider: React.FC<ProviderProps> = ({ theme, children }) => {
-    return (
-        <Context.Provider value={{}}>
-            <ThemeProvider theme={theme}>{children}</ThemeProvider>
-        </Context.Provider>
-    )
+    return <MantineProvider theme={theme}>{children}</MantineProvider>
 }
 
 Provider.displayName = '@react/ui/Provider'

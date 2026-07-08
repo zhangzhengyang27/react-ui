@@ -39,7 +39,7 @@ describe('Flex', () => {
 
         const element = screen.getByTestId('flex')
         expect(element).toHaveStyle({
-            gap: 'var(--mantine-spacing-md)',
+            gap: 'var(--ui-spacing-md)',
             justifyContent: 'center',
             alignItems: 'center',
             flexDirection: 'column'

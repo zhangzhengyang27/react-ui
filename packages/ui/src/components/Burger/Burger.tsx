@@ -66,7 +66,7 @@ const varsResolver = createVarsResolver<BurgerFactory>(
     })
 )
 
-export const Burger = factory<BurgerFactory>(_props => {
+export const Burger = factory<BurgerFactory>((_props, _ref) => {
     const props = useProps('Burger', null, _props)
     const {
         classNames,

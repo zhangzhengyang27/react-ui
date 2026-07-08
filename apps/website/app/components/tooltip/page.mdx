@@ -1,0 +1,37 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Tooltip/Basic'
+import PositionDemo from '@/demos/Tooltip/Position'
+
+# Tooltip
+
+Tooltip 是一种提示组件，在悬停目标元素时显示简短说明。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="悬停按钮查看提示文本。"
+    demoId="tooltip/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## 不同位置
+
+<Demo
+    title="提示位置"
+    description="通过 position 属性控制提示相对于目标的位置。"
+    demoId="tooltip/position"
+>
+    <PositionDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Tooltip" />
+
+## Styles API
+
+<StylesApiTable component="Tooltip" />

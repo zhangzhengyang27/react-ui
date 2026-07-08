@@ -3,11 +3,19 @@
 import { Layout, Navbar, Footer } from 'nextra-theme-docs'
 import { Search } from 'nextra/components'
 import { Box, Zap } from 'lucide-react'
+import { useTheme } from 'next-themes'
 import { Provider } from '@react-ui/ui'
 
 interface NextraClientLayoutProps {
     children: React.ReactNode
     pageMap: any[]
+}
+
+function ThemedProvider({ children }: { children: React.ReactNode }) {
+    const { resolvedTheme } = useTheme()
+    const colorScheme = resolvedTheme === 'dark' ? 'dark' : 'light'
+
+    return <Provider colorScheme={colorScheme}>{children}</Provider>
 }
 
 function Logo() {
@@ -65,21 +73,19 @@ function AppFooter() {
 
 export function NextraClientLayout({ children, pageMap }: NextraClientLayoutProps) {
     return (
-        <Provider>
-            <Layout
-                navbar={<Navbar logo={<Logo />} projectLink="https://github.com/xiaoye-tech/react-ui" />}
-                search={<Search placeholder="搜索文档..." />}
-                pageMap={pageMap}
-                docsRepositoryBase="https://github.com/xiaoye-tech/react-ui"
-                editLink={null}
-                feedback={{ content: null }}
-                footer={<AppFooter />}
-                nextThemes={{
-                    defaultTheme: 'dark'
-                }}
-            >
-                {children}
-            </Layout>
-        </Provider>
+        <Layout
+            navbar={<Navbar logo={<Logo />} projectLink="https://github.com/xiaoye-tech/react-ui" />}
+            search={<Search placeholder="搜索文档..." />}
+            pageMap={pageMap}
+            docsRepositoryBase="https://github.com/xiaoye-tech/react-ui"
+            editLink={null}
+            feedback={{ content: null }}
+            footer={<AppFooter />}
+            nextThemes={{
+                defaultTheme: 'light'
+            }}
+        >
+            <ThemedProvider>{children}</ThemedProvider>
+        </Layout>
     )
 }

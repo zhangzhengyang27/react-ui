@@ -1,0 +1,30 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Slider/Basic'
+
+# Slider
+
+滑块组件，用于在固定范围内选择单个数值。
+
+## 何时使用
+
+适合音量调节、价格筛选、进度控制等需要连续或离散数值选择的场景。
+
+## 基础使用
+
+<Demo
+    title="基础滑块"
+    description="设置 defaultValue 即可在受控模式外使用，label 可格式化显示值。"
+    demoId="slider/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Slider" />
+
+## Styles API
+
+<StylesApiTable component="Slider" />

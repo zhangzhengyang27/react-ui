@@ -3,6 +3,14 @@ export default {
         title: '首页',
         type: 'page'
     },
+    components: {
+        title: '组件',
+        type: 'page'
+    },
+    hooks: {
+        title: 'Hooks',
+        type: 'page'
+    },
     theming: {
         title: '主题',
         type: 'page'
@@ -15,8 +23,12 @@ export default {
         title: 'Provider',
         type: 'page'
     },
-    components: {
-        title: '组件',
+    form: {
+        title: 'Form',
+        type: 'page'
+    },
+    charts: {
+        title: 'Charts',
         type: 'page'
     }
 }

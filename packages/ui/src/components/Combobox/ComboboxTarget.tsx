@@ -1,0 +1,54 @@
+import { cloneElement } from 'react'
+import { useMergedRef } from '@react-ui/hooks'
+import { factory, getSingleElementChild, useProps, type Factory } from '../../core'
+import { useComboboxContext } from './Combobox.context'
+
+export interface ComboboxTargetProps {
+    /** Target element */
+    children: React.ReactNode
+}
+
+export type ComboboxTargetFactory = Factory<{
+    props: ComboboxTargetProps
+    ref: HTMLElement
+    compound: true
+}>
+
+export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
+    const { children } = useProps('ComboboxTarget', null, props)
+    const child = getSingleElementChild(children)
+
+    if (!child) {
+        throw new Error('[@react-ui/ui] Combobox.Target children should be an element or a component that accepts ref')
+    }
+
+    const ctx = useComboboxContext()
+    const targetRef = useMergedRef(ctx.targetRef, ref)
+    const childProps = child.props as any
+
+    const isTextInput = childProps.component === 'input' || child.type === 'input' || child.type === 'textarea'
+    const ignoreClick = isTextInput && childProps.readOnly !== true
+
+    return cloneElement(child, {
+        ref: targetRef,
+        id: ctx.targetId,
+        'aria-haspopup': 'listbox',
+        'aria-expanded': ctx.opened,
+        'aria-controls': ctx.opened ? ctx.dropdownId : undefined,
+        'aria-activedescendant':
+            ctx.opened && ctx.activeIndex >= 0 ? `${ctx.dropdownId}-${ctx.activeIndex}` : undefined,
+        className: [childProps.className].filter(Boolean).join(' '),
+        onClick: (event: React.MouseEvent<HTMLElement>) => {
+            if (!ctx.disabled && !ignoreClick) {
+                ctx.onTargetClick()
+            }
+            childProps.onClick?.(event)
+        },
+        onKeyDown: (event: React.KeyboardEvent<HTMLElement>) => {
+            ctx.onTargetKeyDown(event)
+            childProps.onKeyDown?.(event)
+        }
+    })
+})
+
+ComboboxTarget.displayName = '@mantine/core/ComboboxTarget'

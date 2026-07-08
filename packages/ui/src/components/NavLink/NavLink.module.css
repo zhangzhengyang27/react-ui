@@ -1,0 +1,98 @@
+.root {
+    --navlink-color: var(--ui-primary-color-filled);
+    --navlink-bg: var(--ui-primary-color-light);
+    --navlink-hover: var(--ui-primary-color-light-hover);
+
+    display: block;
+    width: 100%;
+    padding: var(--ui-spacing-sm) var(--ui-spacing-md);
+    border-radius: var(--ui-radius-default);
+    color: var(--ui-color-text);
+    background-color: transparent;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:where([data-active]) {
+        background-color: var(--navlink-bg);
+        color: var(--navlink-color);
+    }
+
+    &:where(:not([data-disabled])):hover {
+        background-color: var(--navlink-hover);
+    }
+
+    &:where([data-disabled]) {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+}
+
+.inner {
+    display: flex;
+    align-items: center;
+    gap: var(--ui-spacing-sm);
+    width: 100%;
+}
+
+.body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.label {
+    display: block;
+    font-size: var(--ui-font-size-sm);
+    line-height: 1.55;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.description {
+    display: block;
+    font-size: var(--ui-font-size-xs);
+    line-height: 1.4;
+    color: var(--ui-color-dimmed);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &:where([data-active]) {
+        color: var(--navlink-color);
+    }
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:where([data-position='left']) {
+        margin-inline-end: var(--ui-spacing-xs);
+    }
+
+    &:where([data-position='right']) {
+        margin-inline-start: var(--ui-spacing-xs);
+    }
+}
+
+.chevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ui-spacing-xs);
+    transition: transform 200ms ease;
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+
+    &:where([data-opened]) {
+        transform: rotate(180deg);
+    }
+}
+
+.children {
+    padding-inline-start: var(--ui-spacing-md);
+}

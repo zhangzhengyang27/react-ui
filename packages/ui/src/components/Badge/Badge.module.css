@@ -22,8 +22,8 @@
     --badge-padding-x: var(--badge-padding-x-md);
     --badge-radius: 1000px;
     --badge-lh: calc(var(--badge-height) - 2px);
-    --badge-color: var(--mantine-color-white);
-    --badge-bg: var(--mantine-primary-color-filled);
+    --badge-color: var(--ui-color-white);
+    --badge-bg: var(--ui-primary-color-filled);
     --badge-border-width: 1px;
     --badge-bd: var(--badge-border-width) solid transparent;
 
@@ -39,7 +39,7 @@
     justify-content: center;
     width: fit-content;
     text-transform: uppercase;
-    font-weight: var(--mantine-font-weight-bold);
+    font-weight: var(--ui-font-weight-bold);
     letter-spacing: 0.25px;
     cursor: default;
     text-overflow: ellipsis;
@@ -75,9 +75,9 @@
 .root:where([data-variant='dot']) {
     --badge-dot-size: calc(var(--badge-height) / 3.4);
 
-    background-color: var(--mantine-color-white);
-    border-color: var(--mantine-color-gray-4);
-    color: var(--mantine-color-black);
+    background-color: var(--ui-color-white);
+    border-color: var(--ui-color-gray-4);
+    color: var(--ui-color-black);
 
     &::before {
         content: '';
@@ -99,7 +99,7 @@
 }
 
 .section {
-    --badge-section-margin: calc(var(--mantine-spacing-xs) / 2);
+    --badge-section-margin: calc(var(--ui-spacing-xs) / 2);
 
     display: inline-flex;
     justify-content: center;

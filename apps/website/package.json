@@ -4,7 +4,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "docs:gen": "tsx scripts/docgen.ts",
+        "docs:gen": "tsx scripts/docgen.ts && tsx scripts/generate-hook-pages.ts && tsx scripts/generate-demo-registry.ts && tsx scripts/generate-theme-tokens.ts",
         "predev": "pnpm docs:gen",
         "prebuild": "pnpm docs:gen",
         "dev": "next dev",
@@ -15,6 +15,7 @@
         "@react-ui/ui": "workspace:*",
         "lucide-react": "0.396.0",
         "next": "^15.1.0",
+        "next-themes": "^0.4.6",
         "nextra": "^4.0.0",
         "nextra-theme-docs": "^4.0.0",
         "react": "^19.1.1",
@@ -24,6 +25,8 @@
         "@types/node": "20.14.9",
         "@types/react": "^19.1.1",
         "@types/react-dom": "^19.2.3",
+        "@types/react-syntax-highlighter": "^15.5.13",
+        "react-syntax-highlighter": "^16.1.1",
         "ts-morph": "^28.0.0",
         "tsx": "^4.23.0",
         "typescript": "^5.5.0"

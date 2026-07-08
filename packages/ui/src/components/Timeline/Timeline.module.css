@@ -1,0 +1,109 @@
+.root {
+    --timeline-line-width: 4px;
+    --timeline-bullet-size: 20px;
+    --timeline-color: var(--ui-primary-color-filled);
+    --timeline-radius: var(--ui-radius-default);
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.item {
+    --timeline-item-color: var(--timeline-color);
+    --timeline-item-radius: var(--timeline-radius);
+    --timeline-item-line-variant: solid;
+
+    position: relative;
+    padding-bottom: var(--ui-spacing-md);
+    min-height: calc(var(--timeline-bullet-size) + var(--ui-spacing-xs));
+}
+
+.itemBullet {
+    position: absolute;
+    top: 0;
+    width: var(--timeline-bullet-size);
+    height: var(--timeline-bullet-size);
+    border-radius: var(--timeline-item-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: calc(var(--timeline-line-width) / 2) solid var(--ui-color-gray-5);
+    background-color: var(--ui-color-white);
+    color: var(--ui-color-text);
+    z-index: 1;
+    transition:
+        border-color 150ms ease,
+        background-color 150ms ease,
+        color 150ms ease;
+}
+
+.root:where([data-align='left']) .itemBullet {
+    left: 0;
+}
+
+.root:where([data-align='right']) .itemBullet {
+    right: 0;
+}
+
+.item:where([data-active]) .itemBullet {
+    border-color: var(--timeline-item-color);
+    background-color: var(--timeline-item-color);
+    color: var(--ui-color-white);
+}
+
+.itemBody {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ui-spacing-xs);
+}
+
+.root:where([data-align='left']) .itemBody {
+    padding-left: calc(var(--timeline-bullet-size) + var(--ui-spacing-md));
+}
+
+.root:where([data-align='right']) .itemBody {
+    padding-right: calc(var(--timeline-bullet-size) + var(--ui-spacing-md));
+    text-align: right;
+}
+
+.itemTitle {
+    font-size: var(--ui-font-size-sm);
+    font-weight: var(--ui-font-weight-bold);
+    color: var(--ui-color-text);
+}
+
+.itemContent {
+    font-size: var(--ui-font-size-sm);
+    color: var(--ui-color-dimmed, var(--ui-color-gray-6));
+}
+
+.itemLine {
+    position: absolute;
+    top: var(--timeline-bullet-size);
+    bottom: 0;
+    width: 0;
+    border-left-style: var(--timeline-item-line-variant);
+    border-left-width: var(--timeline-line-width);
+    border-left-color: var(--ui-color-gray-3);
+    background-color: transparent;
+    transition: border-color 150ms ease;
+}
+
+.root:where([data-align='left']) .itemLine {
+    left: calc((var(--timeline-bullet-size) - var(--timeline-line-width)) / 2);
+}
+
+.root:where([data-align='right']) .itemLine {
+    right: calc((var(--timeline-bullet-size) - var(--timeline-line-width)) / 2);
+}
+
+.item:where([data-active]) .itemLine {
+    border-left-color: var(--timeline-item-color);
+}
+
+.item:where([data-last]) {
+    padding-bottom: 0;
+}

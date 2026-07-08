@@ -23,10 +23,10 @@ export function getSize(size: unknown, prefix: string = 'size', convertToRem: bo
 /**
  * 根据指定大小获取对应的间距值
  * @param {unknown} size - 间距大小参数，可以是数字或字符串等类型
- * @returns {string} 计算后的间距值，基于'mantine-spacing'主题变量
+ * @returns {string} 计算后的间距值，基于'ui-spacing'主题变量
  */
 export function getSpacing(size: unknown) {
-    return getSize(size, 'mantine-spacing')
+    return getSize(size, 'ui-spacing')
 }
 
 /**
@@ -36,19 +36,19 @@ export function getSpacing(size: unknown) {
  */
 export function getRadius(size: unknown) {
     if (size === undefined) {
-        return 'var(--mantine-radius-default)'
+        return 'var(--ui-radius-default)'
     }
 
-    return getSize(size, 'mantine-radius')
+    return getSize(size, 'ui-radius')
 }
 
 /**
  * 根据输入的大小值获取对应的字体大小
  * @param {unknown} size - 字体大小值（可以是数字、字符串或其他类型）
- * @returns {string} 计算后的字体大小值，基于'mantine-font-size'样式系统
+ * @returns {string} 计算后的字体大小值，基于'ui-font-size'样式系统
  */
 export function getFontSize(size: unknown) {
-    return getSize(size, 'mantine-font-size')
+    return getSize(size, 'ui-font-size')
 }
 
 /**
@@ -57,7 +57,7 @@ export function getFontSize(size: unknown) {
  * @returns {unknown} 计算得到的行高值
  */
 export function getLineHeight(size: unknown) {
-    return getSize(size, 'mantine-line-height', false)
+    return getSize(size, 'ui-line-height', false)
 }
 
 /**
@@ -70,5 +70,5 @@ export function getShadow(size: unknown) {
         return undefined
     }
 
-    return getSize(size, 'mantine-shadow', false)
+    return getSize(size, 'ui-shadow', false)
 }

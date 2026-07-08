@@ -1,0 +1,23 @@
+.root {
+    --native-select-chevron-size-xs: 12px;
+    --native-select-chevron-size-sm: 14px;
+    --native-select-chevron-size-md: 16px;
+    --native-select-chevron-size-lg: 18px;
+    --native-select-chevron-size-xl: 20px;
+    --native-select-chevron-size: var(--native-select-chevron-size-sm);
+}
+
+.input {
+    cursor: pointer;
+
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
+.section {
+    width: var(--native-select-chevron-size);
+    height: var(--native-select-chevron-size);
+    color: var(--ui-color-dimmed);
+    pointer-events: none;
+}

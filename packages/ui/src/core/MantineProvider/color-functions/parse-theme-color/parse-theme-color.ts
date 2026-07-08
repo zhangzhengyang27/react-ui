@@ -32,7 +32,7 @@ export function parseThemeColor({ color, theme, colorScheme }: ParseThemeColorOp
             shade: undefined,
             isThemeColor: false,
             isLight: isLightColor(colorScheme === 'dark' ? theme.white : theme.black, theme.luminanceThreshold),
-            variable: '--mantine-color-bright'
+            variable: '--ui-color-bright'
         }
     }
 
@@ -46,7 +46,7 @@ export function parseThemeColor({ color, theme, colorScheme }: ParseThemeColorOp
                 colorScheme === 'dark' ? theme.colors.dark[2] : theme.colors.gray[6],
                 theme.luminanceThreshold
             ),
-            variable: '--mantine-color-dimmed'
+            variable: '--ui-color-dimmed'
         }
     }
 
@@ -57,7 +57,7 @@ export function parseThemeColor({ color, theme, colorScheme }: ParseThemeColorOp
             shade: undefined,
             isThemeColor: false,
             isLight: isLightColor(color === 'white' ? theme.white : theme.black, theme.luminanceThreshold),
-            variable: `--mantine-color-${color}`
+            variable: `--ui-color-${color}`
         }
     }
 
@@ -77,7 +77,7 @@ export function parseThemeColor({ color, theme, colorScheme }: ParseThemeColorOp
             shade: colorShade,
             isThemeColor,
             isLight: isLightColor(colorValue, theme.luminanceThreshold),
-            variable: shade ? `--mantine-color-${_color}-${colorShade}` : `--mantine-color-${_color}-filled`
+            variable: shade ? `--ui-color-${_color}-${colorShade}` : `--ui-color-${_color}-filled`
         }
     }
 

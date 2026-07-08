@@ -1,0 +1,37 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/TagsInput/Basic'
+import WithDataDemo from '@/demos/TagsInput/WithData'
+
+# TagsInput
+
+TagsInput 组件用于输入并管理一组标签，支持回车创建、删除、最大数量限制和数据建议。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="输入文本后按回车创建标签，点击标签上的关闭按钮可删除。"
+    demoId="tagsinput/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## 数据建议
+
+<Demo
+    title="带建议列表"
+    description="通过 data 提供可选标签，支持最大数量限制和一键清除。"
+    demoId="tagsinput/withdata"
+>
+    <WithDataDemo />
+</Demo>
+
+## API
+
+<ApiTable component="TagsInput" />
+
+## Styles API
+
+<StylesApiTable component="TagsInput" />

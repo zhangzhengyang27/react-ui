@@ -1,0 +1,28 @@
+import { HookApiTable } from '@/components/HookApiTable'
+import { Demo } from '@/components/Demo'
+import { HookExample } from '@/components/HookExamples'
+
+# useFocusTrap
+
+useFocusTrap Hook 的使用说明。
+
+## 使用示例
+
+<Demo
+    title="基础用法"
+    description="useFocusTrap 基础使用示例"
+    themeToggle
+    rtl
+    code={`import { useFocusTrap } from '@react-ui/hooks'
+
+export default function Example() {
+    const result = useFocusTrap(true)
+    return <div>{JSON.stringify(result)}</div>
+}`}
+>
+    <HookExample hook="useFocusTrap" />
+</Demo>
+
+## API
+
+<HookApiTable hook="useFocusTrap" />

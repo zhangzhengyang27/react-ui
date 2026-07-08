@@ -18,7 +18,7 @@ export type CenterFactory = PolymorphicFactory<{
     stylesNames: CenterStylesNames
 }>
 
-export const Center = polymorphicFactory<CenterFactory>(_props => {
+export const Center = polymorphicFactory<CenterFactory>((_props, _ref) => {
     const props = useProps('Center', null, _props)
     const { classNames, className, style, styles, unstyled, vars, inline, mod, attributes, ...others } = props
 

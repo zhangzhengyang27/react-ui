@@ -1,0 +1,112 @@
+.root {
+    --checkbox-size-xs: 16px;
+    --checkbox-size-sm: 20px;
+    --checkbox-size-md: 24px;
+    --checkbox-size-lg: 30px;
+    --checkbox-size-xl: 36px;
+
+    --checkbox-size: var(--checkbox-size-sm);
+    --checkbox-radius: var(--ui-radius-sm);
+    --checkbox-color: var(--ui-primary-color-filled);
+    --checkbox-icon-color: var(--ui-color-white);
+
+    display: inline-flex;
+    align-items: flex-start;
+    gap: var(--ui-spacing-sm);
+    cursor: pointer;
+}
+
+.root[data-disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.root[data-error] {
+    --checkbox-color: var(--ui-color-red-6);
+}
+
+.root:hover:not([data-disabled]) .inner:not([data-checked]):not([data-indeterminate]) {
+    border-color: var(--ui-color-gray-5);
+}
+
+.input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.input:focus-visible + .inner {
+    outline: 2px solid var(--ui-primary-color-filled);
+    outline-offset: 2px;
+}
+
+.inner {
+    position: relative;
+    flex-shrink: 0;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
+    border-radius: var(--checkbox-radius);
+    border: 1px solid var(--ui-color-gray-4);
+    background-color: var(--ui-color-white);
+    transition:
+        background-color 100ms ease,
+        border-color 100ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner[data-checked] {
+    background-color: var(--checkbox-color);
+    border-color: var(--checkbox-color);
+    color: var(--checkbox-icon-color);
+}
+
+.inner[data-indeterminate] {
+    background-color: var(--checkbox-color);
+    border-color: var(--checkbox-color);
+    color: var(--checkbox-icon-color);
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--checkbox-size) * 0.6);
+    height: calc(var(--checkbox-size) * 0.6);
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--ui-spacing-xs) / 2);
+}
+
+.label {
+    font-size: var(--ui-font-size-sm);
+    color: var(--ui-color-text);
+    line-height: var(--ui-line-height-sm);
+}
+
+.description {
+    font-size: var(--ui-font-size-xs);
+    color: var(--ui-color-dimmed);
+    line-height: var(--ui-line-height-xs);
+}
+
+.error {
+    font-size: var(--ui-font-size-xs);
+    color: var(--ui-color-red-6);
+    line-height: var(--ui-line-height-xs);
+}
+
+.required {
+    margin-left: calc(var(--ui-spacing-xs) / 2);
+    color: var(--ui-color-red-6);
+}

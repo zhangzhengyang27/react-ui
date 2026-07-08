@@ -12,22 +12,7 @@ import BasicDemo from '@/demos/Collapse/Basic'
 <Demo
     title="基础用法"
     description="Collapse 基础用法示例"
-    code={`import { useState } from 'react'
-import { Button, Collapse } from '@react-ui/ui'
-
-export default function CollapseBasicDemo() {
-    const [opened, setOpened] = useState(false)
-    return (
-        <>
-            <Button onClick={() => setOpened(o => !o)}>切换展开</Button>
-            <Collapse expanded={opened} style={{ marginTop: 12 }}>
-                <div style={{ padding: 20, background: '#222', borderRadius: 8 }}>
-                    折叠内容
-                </div>
-            </Collapse>
-        </>
-    )
-}`}
+    demoId="collapse/basic"
 >
     <BasicDemo />
 </Demo>

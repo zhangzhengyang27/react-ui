@@ -3,6 +3,7 @@ import { ApiTable } from '@/components/ApiTable'
 import { StylesApiTable } from '@/components/StylesApiTable'
 import BasicDemo from '@/demos/Text/Basic'
 import VariantDemo from '@/demos/Text/Variant'
+import TextPlayground from '@/demos/Text/Playground'
 
 # Text
 
@@ -13,11 +14,7 @@ import VariantDemo from '@/demos/Text/Variant'
 <Demo
     title="基础用法"
     description="Text 基础用法示例"
-    code={`import { Text } from '@react-ui/ui'
-
-export default function TextBasicDemo() {
-    return <Text>默认文本内容</Text>
-}`}
+    demoId="text/basic"
 >
     <BasicDemo />
 </Demo>
@@ -27,21 +24,14 @@ export default function TextBasicDemo() {
 <Demo
     title="文本变体"
     description="通过 variant 属性使用普通文本或渐变文本。"
-    code={`import { Stack, Text } from '@react-ui/ui'
-
-export default function TextVariantDemo() {
-    return (
-        <Stack>
-            <Text variant="text">text 变体</Text>
-            <Text variant="gradient" gradient={{ from: 'grape', to: 'blue', deg: 45 }}>
-                gradient 渐变文本
-            </Text>
-        </Stack>
-    )
-}`}
+    demoId="text/variant"
 >
     <VariantDemo />
 </Demo>
+
+## 交互式 Playground
+
+<TextPlayground />
 
 ## API
 

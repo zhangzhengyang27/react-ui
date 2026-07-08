@@ -3,11 +3,11 @@
 
     position: relative;
     margin: 0;
-    text-wrap: var(--bq-text-wrap, var(--mantine-text-wrap));
+    text-wrap: var(--bq-text-wrap, var(--ui-text-wrap));
     border-inline-start: var(--blockquote-border);
     border-start-end-radius: var(--bq-radius);
     border-end-end-radius: var(--bq-radius);
-    padding: var(--mantine-spacing-xl) 2.375rem;
+    padding: var(--ui-spacing-xl) 2.375rem;
     background-color: var(--bq-bg, rgba(0, 0, 0, 0.03));
 }
 
@@ -16,7 +16,7 @@
 
     position: absolute;
     color: var(--bq-bd);
-    background-color: var(--mantine-color-body);
+    background-color: var(--ui-color-body);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,7 +29,7 @@
 
 .cite {
     display: block;
-    margin-top: var(--mantine-spacing-md);
+    margin-top: var(--ui-spacing-md);
     opacity: 0.6;
     font-size: 85%;
 }

@@ -20,7 +20,7 @@ export function spacingResolver(value: unknown, theme: MantineTheme) {
             return rem(value)
         }
 
-        const variable = `--mantine-spacing-${mod}`
+        const variable = `--ui-spacing-${mod}`
         return value.startsWith('-') ? `calc(var(${variable}) * -1)` : `var(${variable})`
     }
 

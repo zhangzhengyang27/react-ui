@@ -1,0 +1,48 @@
+.root {
+    display: grid;
+    grid-template:
+        'header header header' auto
+        'navbar main aside' 1fr
+        'footer footer footer' auto
+        / var(--app-shell-navbar-width, 0px) 1fr var(--app-shell-aside-width, 0px);
+    min-height: 100vh;
+}
+
+.header {
+    grid-area: header;
+    height: var(--app-shell-header-height, auto);
+}
+
+.navbar {
+    grid-area: navbar;
+    width: var(--app-shell-navbar-width, 0px);
+    overflow: hidden;
+    transition: width 0.2s ease;
+
+    &:where([data-collapsed]) {
+        width: 0;
+    }
+}
+
+.aside {
+    grid-area: aside;
+    width: var(--app-shell-aside-width, 0px);
+    overflow: hidden;
+    transition: width 0.2s ease;
+
+    &:where([data-collapsed]) {
+        width: 0;
+    }
+}
+
+.main {
+    grid-area: main;
+    padding: var(--app-shell-padding);
+    min-height: 0;
+    overflow: auto;
+}
+
+.footer {
+    grid-area: footer;
+    height: var(--app-shell-footer-height, auto);
+}

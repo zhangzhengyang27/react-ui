@@ -1,0 +1,35 @@
+import { HookApiTable } from '@/components/HookApiTable'
+import { Demo } from '@/components/Demo'
+import { HookExample } from '@/components/HookExamples'
+
+# useCollapse
+
+垂直折叠动画 hook：通过测量内容高度对 height 做 transition。 对齐 mantine useCollapse。
+
+## 使用示例
+
+<Demo
+    title="基础用法"
+    description="useCollapse 基础使用示例"
+    themeToggle
+    rtl
+    code={`import { useCollapse } from '@react-ui/hooks'
+
+export default function Example() {
+    const result = useCollapse({
+    transitionDuration,
+    transitionTimingFunction = 'ease',
+    onTransitionEnd,
+    onTransitionStart,
+    expanded,
+    keepMounted
+})
+    return <div>{JSON.stringify(result)}</div>
+}`}
+>
+    <HookExample hook="useCollapse" />
+</Demo>
+
+## API
+
+<HookApiTable hook="useCollapse" />

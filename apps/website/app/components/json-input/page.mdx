@@ -1,0 +1,48 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/JsonInput/Basic'
+import FormatDemo from '@/demos/JsonInput/Format'
+
+# JsonInput
+
+JsonInput 是用于输入 JSON 字符串的多行文本框，支持等宽字体和失焦自动格式化。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="受控使用 JsonInput，value 为 JSON 字符串。"
+    code={`import { useState } from 'react'
+import { JsonInput } from '@react-ui/ui'
+
+export default function JsonInputBasicDemo() {
+    const [value, setValue] = useState('{"name":"react-ui","version":"0.0.1"}')
+
+    return <JsonInput label="JSON 输入" value={value} onChange={setValue} rows={6} />
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## 自动格式化
+
+<Demo
+    title="失焦自动格式化"
+    description="开启 formatOnBlur 后，失焦时若内容合法会自动格式化 JSON。"
+    code={`import { JsonInput } from '@react-ui/ui'
+
+export default function JsonInputFormatDemo() {
+    return <JsonInput label="自动格式化" defaultValue='{"a":1,"b":2}' formatOnBlur rows={6} />
+}`}
+>
+    <FormatDemo />
+</Demo>
+
+## API
+
+<ApiTable component="JsonInput" />
+
+## Styles API
+
+<StylesApiTable component="JsonInput" />

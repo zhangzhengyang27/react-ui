@@ -1,0 +1,37 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Autocomplete/Basic'
+import FreeInputDemo from '@/demos/Autocomplete/FreeInput'
+
+# Autocomplete
+
+Autocomplete 组件提供输入联想功能，用户既可以输入任意文本，也可以从下拉建议中选择。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="输入时自动过滤 data 中的选项。"
+    demoId="autocomplete/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## 自由输入与清除
+
+<Demo
+    title="自由输入"
+    description="Autocomplete 允许输入不在选项中的值，开启 clearable 可快速清除。"
+    demoId="autocomplete/freeinput"
+>
+    <FreeInputDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Autocomplete" />
+
+## Styles API
+
+<StylesApiTable component="Autocomplete" />

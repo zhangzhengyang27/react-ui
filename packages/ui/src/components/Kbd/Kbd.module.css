@@ -1,0 +1,28 @@
+.root {
+    --kbd-fz-xs: calc(var(--ui-font-size-xs) * 0.85);
+    --kbd-fz-sm: calc(var(--ui-font-size-sm) * 0.85);
+    --kbd-fz-md: calc(var(--ui-font-size-md) * 0.85);
+    --kbd-fz-lg: calc(var(--ui-font-size-lg) * 0.85);
+    --kbd-fz-xl: calc(var(--ui-font-size-xl) * 0.85);
+
+    --kbd-padding-xs: calc(var(--ui-spacing-xs) / 4) calc(var(--ui-spacing-xs) / 2);
+    --kbd-padding-sm: calc(var(--ui-spacing-sm) / 4) calc(var(--ui-spacing-sm) / 2);
+    --kbd-padding-md: calc(var(--ui-spacing-md) / 4) calc(var(--ui-spacing-md) / 2);
+    --kbd-padding-lg: calc(var(--ui-spacing-lg) / 4) calc(var(--ui-spacing-lg) / 2);
+    --kbd-padding-xl: calc(var(--ui-spacing-xl) / 4) calc(var(--ui-spacing-xl) / 2);
+
+    -webkit-tap-highlight-color: transparent;
+    font-family: var(--ui-font-family-monospace);
+    font-size: var(--kbd-fz);
+    line-height: 1;
+    color: inherit;
+    background-color: var(--ui-color-body);
+    border: 1px solid var(--ui-color-gray-4);
+    border-bottom-width: 3px;
+    border-radius: var(--ui-radius-sm);
+    padding: var(--kbd-padding);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}

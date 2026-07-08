@@ -1,0 +1,77 @@
+.root {
+    --sc-size-xs: 30px;
+    --sc-size-sm: 36px;
+    --sc-size-md: 42px;
+    --sc-size-lg: 50px;
+    --sc-size-xl: 60px;
+
+    --sc-radius: var(--ui-radius-default);
+    --sc-size: var(--sc-size-sm);
+    --sc-color: var(--ui-primary-color-filled);
+
+    display: inline-flex;
+    align-items: center;
+    padding: 4px;
+    gap: 4px;
+    border-radius: var(--sc-radius);
+    background-color: var(--ui-color-default-border);
+}
+
+.root:where([data-full-width]) {
+    display: flex;
+    width: 100%;
+}
+
+.root:where([data-vertical]) {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.control {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--sc-size);
+    min-height: var(--sc-size);
+    padding: 0 var(--ui-spacing-md);
+    border-radius: calc(var(--sc-radius) - 2px);
+    cursor: pointer;
+    flex: 1;
+    font-size: var(--ui-font-size-sm);
+    color: var(--ui-color-text);
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.control:where([data-active]) {
+    background-color: var(--sc-color);
+    color: var(--ui-color-white);
+    box-shadow: var(--ui-shadow-sm);
+}
+
+.control:where([data-disabled]) {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.control:where([data-disabled]) .input {
+    cursor: not-allowed;
+}
+
+.label {
+    position: relative;
+    z-index: 1;
+    white-space: nowrap;
+}

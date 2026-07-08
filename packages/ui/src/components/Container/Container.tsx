@@ -49,7 +49,7 @@ const varsResolver = createVarsResolver<ContainerFactory>((_, { size, fluid }) =
 /**
  * 居中容器，限制内容最大宽度。对齐 mantine Container（factory + useStyles + varsResolver + CSS module）。
  */
-export const Container = factory<ContainerFactory>(_props => {
+export const Container = factory<ContainerFactory>((_props, _ref) => {
     const props = useProps('Container', defaultProps, _props)
     const { classNames, className, style, styles, unstyled, vars, fluid, mod, attributes, strategy, ...others } = props
 

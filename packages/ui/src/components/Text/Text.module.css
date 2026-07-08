@@ -1,10 +1,10 @@
 .root {
     -webkit-tap-highlight-color: transparent;
     text-decoration: none;
-    font-size: var(--text-fz, var(--mantine-font-size-md));
-    line-height: var(--text-lh, var(--mantine-line-height-md));
-    font-weight: var(--mantine-font-weight-regular);
-    text-wrap: var(--text-text-wrap, var(--mantine-text-wrap));
+    font-size: var(--text-fz, var(--ui-font-size-md));
+    line-height: var(--text-lh, var(--ui-line-height-md));
+    font-weight: var(--ui-font-weight-regular);
+    text-wrap: var(--text-text-wrap, var(--ui-text-wrap));
     margin: 0;
     padding: 0;
 

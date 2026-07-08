@@ -1,6 +1,6 @@
 .root {
-    --paper-radius: var(--mantine-radius-default);
-    --paper-border-color: var(--mantine-color-gray-3);
+    --paper-radius: var(--ui-radius-default);
+    --paper-border-color: var(--ui-color-gray-3);
 
     outline: 0;
     -webkit-tap-highlight-color: transparent;
@@ -9,11 +9,11 @@
     text-decoration: none;
     border-radius: var(--paper-radius);
     box-shadow: var(--paper-shadow);
-    background-color: var(--mantine-color-body);
+    background-color: var(--ui-color-body);
 }
 
 .root:where([data-mantine-color-scheme='dark']) {
-    --paper-border-color: var(--mantine-color-dark-4);
+    --paper-border-color: var(--ui-color-dark-4);
 }
 
 .root:where([data-with-border]) {

@@ -1,0 +1,41 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Pagination/Basic'
+import EdgesDemo from '@/demos/Pagination/Edges'
+
+# Pagination
+
+分页组件，用于在长列表或数据表格中切换页面。
+
+## 何时使用
+
+适合数据列表、表格、搜索结果等需要分页浏览的场景。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="通过 total 属性指定总页数。"
+    demoId="pagination/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## 边界控制
+
+<Demo
+    title="首尾页与边界"
+    description="使用 withEdges 显示首尾页按钮，并通过 siblings 和 boundaries 调整显示范围。"
+    demoId="pagination/edges"
+>
+    <EdgesDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Pagination" />
+
+## Styles API
+
+<StylesApiTable component="Pagination" />

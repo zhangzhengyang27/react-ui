@@ -44,21 +44,21 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
     }
 
     if (variant === 'filled') {
-        const textColor = _autoContrast && parsed.isLight ? 'var(--mantine-color-black)' : 'var(--mantine-color-white)'
+        const textColor = _autoContrast && parsed.isLight ? 'var(--ui-color-black)' : 'var(--ui-color-white)'
 
         if (parsed.isThemeColor) {
             if (parsed.shade === undefined) {
                 return {
-                    background: `var(--mantine-color-${color}-filled)`,
-                    hover: `var(--mantine-color-${color}-filled-hover)`,
+                    background: `var(--ui-color-${color}-filled)`,
+                    hover: `var(--ui-color-${color}-filled-hover)`,
                     color: textColor,
                     border: `${rem(1)} solid transparent`
                 }
             }
 
             return {
-                background: `var(--mantine-color-${parsed.color}-${parsed.shade})`,
-                hover: `var(--mantine-color-${parsed.color}-${parsed.shade === 9 ? 8 : parsed.shade + 1})`,
+                background: `var(--ui-color-${parsed.color}-${parsed.shade})`,
+                hover: `var(--ui-color-${parsed.color}-${parsed.shade === 9 ? 8 : parsed.shade + 1})`,
                 color: textColor,
                 border: `${rem(1)} solid transparent`
             }
@@ -76,9 +76,9 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
         if (parsed.isThemeColor) {
             if (parsed.shade === undefined) {
                 return {
-                    background: `var(--mantine-color-${color}-light)`,
-                    hover: `var(--mantine-color-${color}-light-hover)`,
-                    color: `var(--mantine-color-${color}-light-color)`,
+                    background: `var(--ui-color-${color}-light)`,
+                    hover: `var(--ui-color-${color}-light-hover)`,
+                    color: `var(--ui-color-${color}-light-color)`,
                     border: `${rem(1)} solid transparent`
                 }
             }
@@ -88,7 +88,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
             return {
                 background: rgba(parsedColor, 0.1),
                 hover: rgba(parsedColor, 0.12),
-                color: `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
+                color: `var(--ui-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
                 border: `${rem(1)} solid transparent`
             }
         }
@@ -106,17 +106,17 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
             if (parsed.shade === undefined) {
                 return {
                     background: 'transparent',
-                    hover: `var(--mantine-color-${color}-outline-hover)`,
-                    color: `var(--mantine-color-${color}-outline)`,
-                    border: `${rem(1)} solid var(--mantine-color-${color}-outline)`
+                    hover: `var(--ui-color-${color}-outline-hover)`,
+                    color: `var(--ui-color-${color}-outline)`,
+                    border: `${rem(1)} solid var(--ui-color-${color}-outline)`
                 }
             }
 
             return {
                 background: 'transparent',
                 hover: rgba(theme.colors[parsed.color][parsed.shade], 0.05),
-                color: `var(--mantine-color-${parsed.color}-${parsed.shade})`,
-                border: `${rem(1)} solid var(--mantine-color-${parsed.color}-${parsed.shade})`
+                color: `var(--ui-color-${parsed.color}-${parsed.shade})`,
+                border: `${rem(1)} solid var(--ui-color-${parsed.color}-${parsed.shade})`
             }
         }
 
@@ -133,8 +133,8 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
             if (parsed.shade === undefined) {
                 return {
                     background: 'transparent',
-                    hover: `var(--mantine-color-${color}-light-hover)`,
-                    color: `var(--mantine-color-${color}-light-color)`,
+                    hover: `var(--ui-color-${color}-light-hover)`,
+                    color: `var(--ui-color-${color}-light-color)`,
                     border: `${rem(1)} solid transparent`
                 }
             }
@@ -144,7 +144,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
             return {
                 background: 'transparent',
                 hover: rgba(parsedColor, 0.12),
-                color: `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
+                color: `var(--ui-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
                 border: `${rem(1)} solid transparent`
             }
         }
@@ -163,7 +163,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
                 return {
                     background: 'transparent',
                     hover: 'transparent',
-                    color: `var(--mantine-color-${color}-light-color)`,
+                    color: `var(--ui-color-${color}-light-color)`,
                     border: `${rem(1)} solid transparent`
                 }
             }
@@ -171,7 +171,7 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
             return {
                 background: 'transparent',
                 hover: 'transparent',
-                color: `var(--mantine-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
+                color: `var(--ui-color-${parsed.color}-${Math.min(parsed.shade, 6)})`,
                 border: `${rem(1)} solid transparent`
             }
         }
@@ -188,23 +188,23 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
         if (parsed.isThemeColor) {
             if (parsed.shade === undefined) {
                 return {
-                    background: 'var(--mantine-color-white)',
+                    background: 'var(--ui-color-white)',
                     hover: darken(theme.white, 0.01),
-                    color: `var(--mantine-color-${color}-filled)`,
+                    color: `var(--ui-color-${color}-filled)`,
                     border: `${rem(1)} solid transparent`
                 }
             }
 
             return {
-                background: 'var(--mantine-color-white)',
+                background: 'var(--ui-color-white)',
                 hover: darken(theme.white, 0.01),
-                color: `var(--mantine-color-${parsed.color}-${parsed.shade})`,
+                color: `var(--ui-color-${parsed.color}-${parsed.shade})`,
                 border: `${rem(1)} solid transparent`
             }
         }
 
         return {
-            background: 'var(--mantine-color-white)',
+            background: 'var(--ui-color-white)',
             hover: darken(theme.white, 0.01),
             color: color!,
             border: `${rem(1)} solid transparent`
@@ -215,17 +215,17 @@ export const defaultVariantColorsResolver: VariantColorsResolver = ({
         return {
             background: getGradient(gradient, theme),
             hover: getGradient(gradient, theme),
-            color: 'var(--mantine-color-white)',
+            color: 'var(--ui-color-white)',
             border: 'none'
         }
     }
 
     if (variant === 'default') {
         return {
-            background: 'var(--mantine-color-default)',
-            hover: 'var(--mantine-color-default-hover)',
-            color: 'var(--mantine-color-default-color)',
-            border: `${rem(1)} solid var(--mantine-color-default-border)`
+            background: 'var(--ui-color-default)',
+            hover: 'var(--ui-color-default-hover)',
+            color: 'var(--ui-color-default-color)',
+            border: `${rem(1)} solid var(--ui-color-default-border)`
         }
     }
 

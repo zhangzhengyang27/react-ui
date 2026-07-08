@@ -76,7 +76,7 @@ const varsResolver = createVarsResolver<OverlayFactory>(
     })
 )
 
-export const Overlay = polymorphicFactory<OverlayFactory>(_props => {
+export const Overlay = polymorphicFactory<OverlayFactory>((_props, _ref) => {
     const props = useProps('Overlay', defaultProps, _props)
     const {
         classNames,

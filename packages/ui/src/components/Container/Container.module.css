@@ -8,7 +8,7 @@
 
     &:where([data-strategy='block']) {
         max-width: var(--container-size);
-        padding-inline: var(--mantine-spacing-md);
+        padding-inline: var(--ui-spacing-md);
         margin-inline: auto;
 
         &:where([data-fluid]) {

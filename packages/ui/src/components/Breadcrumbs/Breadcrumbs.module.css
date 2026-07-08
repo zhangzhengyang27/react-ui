@@ -11,10 +11,10 @@
 }
 
 .separator {
-    margin-inline: var(--bc-separator-margin, var(--mantine-spacing-xs));
+    margin-inline: var(--bc-separator-margin, var(--ui-spacing-xs));
     line-height: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--mantine-color-gray-7);
+    color: var(--ui-color-gray-7);
 }

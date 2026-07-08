@@ -15,3 +15,4 @@ export { getSize, getSpacing, getShadow, getRadius, getFontSize, getLineHeight }
 export { getDefaultZIndex } from './get-default-z-index/get-default-z-index'
 export { getSafeId } from './get-safe-id/get-safe-id'
 export { Activity } from './Activity/Activity'
+export * from './Floating'

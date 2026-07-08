@@ -2,6 +2,7 @@ import { Demo } from '@/components/Demo'
 import { ApiTable } from '@/components/ApiTable'
 import { StylesApiTable } from '@/components/StylesApiTable'
 import BasicDemo from '@/demos/Stack/Basic'
+import InteractiveDemo from '@/demos/Stack/Interactive'
 
 # Stack
 
@@ -12,20 +13,14 @@ import BasicDemo from '@/demos/Stack/Basic'
 <Demo
     title="基础用法"
     description="Stack 基础用法示例"
-    code={`import { Button, Stack } from '@react-ui/ui'
-
-export default function StackBasicDemo() {
-    return (
-        <Stack>
-            <Button>第一个</Button>
-            <Button>第二个</Button>
-            <Button>第三个</Button>
-        </Stack>
-    )
-}`}
+    demoId="stack/basic"
 >
     <BasicDemo />
 </Demo>
+
+## 交互式示例
+
+<InteractiveDemo />
 
 ## API
 

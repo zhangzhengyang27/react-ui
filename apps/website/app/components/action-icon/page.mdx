@@ -3,6 +3,7 @@ import { ApiTable } from '@/components/ApiTable'
 import { StylesApiTable } from '@/components/StylesApiTable'
 import BasicDemo from '@/demos/ActionIcon/Basic'
 import VariantDemo from '@/demos/ActionIcon/Variant'
+import InteractiveDemo from '@/demos/ActionIcon/Interactive'
 
 # ActionIcon
 
@@ -13,16 +14,7 @@ import VariantDemo from '@/demos/ActionIcon/Variant'
 <Demo
     title="基础用法"
     description="ActionIcon 基础用法示例"
-    code={`import { ActionIcon } from '@react-ui/ui'
-import { Settings } from 'lucide-react'
-
-export default function ActionIconBasicDemo() {
-    return (
-        <ActionIcon variant="filled" color="blue" size="lg">
-            <Settings size={20} />
-        </ActionIcon>
-    )
-}`}
+    demoId="actionicon/basic"
 >
     <BasicDemo />
 </Demo>
@@ -32,25 +24,14 @@ export default function ActionIconBasicDemo() {
 <Demo
     title="图标按钮变体"
     description="通过 variant 属性切换 ActionIcon 的视觉风格。"
-    code={`import { ActionIcon, Group } from '@react-ui/ui'
-import { Settings } from 'lucide-react'
-
-const VARIANTS = ['filled', 'light', 'outline', 'transparent', 'white', 'subtle', 'default', 'gradient']
-
-export default function ActionIconVariantDemo() {
-    return (
-        <Group>
-            {VARIANTS.map(variant => (
-                <ActionIcon key={variant} variant={variant} color="blue">
-                    <Settings size={18} />
-                </ActionIcon>
-            ))}
-        </Group>
-    )
-}`}
+    demoId="actionicon/variant"
 >
     <VariantDemo />
 </Demo>
+
+## 交互式示例
+
+<InteractiveDemo />
 
 ## API
 

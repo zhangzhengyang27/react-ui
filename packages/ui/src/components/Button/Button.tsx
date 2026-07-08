@@ -133,7 +133,7 @@ const varsResolver = createVarsResolver<ButtonFactory>(
  * 支持 variant/color/size/radius/gradient/loading/loaderProps/leftSection/rightSection/fullWidth。
  * 样式引擎：CSS module（与 Loader/ActionIcon 一致，不再使用 styled-components）。
  */
-export const Button = polymorphicFactory<ButtonFactory>(_props => {
+export const Button = polymorphicFactory<ButtonFactory>((_props, _ref) => {
     const props = useProps('Button', null, _props)
     const {
         style,

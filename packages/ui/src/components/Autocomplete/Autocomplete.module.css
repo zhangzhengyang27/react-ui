@@ -1,0 +1,11 @@
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ui-color-dimmed);
+}
+
+.chevron {
+    width: 16px;
+    height: 16px;
+}

@@ -3,7 +3,7 @@ function scaleRem(remValue: string) {
         return '0rem'
     }
 
-    return `calc(${remValue} * var(--mantine-scale))`
+    return `calc(${remValue} * var(--ui-scale))`
 }
 
 function createConverter(units: string, { shouldScale = false } = {}) {

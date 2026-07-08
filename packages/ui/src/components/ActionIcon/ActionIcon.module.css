@@ -12,7 +12,7 @@
     --ai-size-input-xl: 60px;
 
     --ai-size: var(--ai-size-md);
-    --ai-color: var(--mantine-color-white);
+    --ai-color: var(--ui-color-white);
 
     line-height: 1;
     display: inline-flex;
@@ -26,15 +26,15 @@
     height: var(--ai-size);
     min-width: var(--ai-size);
     min-height: var(--ai-size);
-    border-radius: var(--ai-radius, var(--mantine-radius-default));
-    background: var(--ai-bg, var(--mantine-primary-color-filled));
-    color: var(--ai-color, var(--mantine-color-white));
+    border-radius: var(--ai-radius, var(--ui-radius-default));
+    background: var(--ai-bg, var(--ui-primary-color-filled));
+    color: var(--ai-color, var(--ui-color-white));
     border: var(--ai-bd, rem(1px) solid transparent);
     cursor: pointer;
 
     @mixin hover {
         &:where(:not([data-loading], :disabled, [data-disabled])) {
-            background-color: var(--ai-hover, var(--mantine-primary-color-filled-hover));
+            background-color: var(--ai-hover, var(--ui-primary-color-filled-hover));
             color: var(--ai-hover-color, var(--ai-color));
         }
     }
@@ -51,8 +51,8 @@
     &:where(:disabled:not([data-loading]), [data-disabled]:not([data-loading])) {
         cursor: not-allowed;
         border: 1px solid transparent;
-        color: var(--mantine-color-disabled-color);
-        background-color: var(--mantine-color-disabled);
+        color: var(--ui-color-disabled-color);
+        background-color: var(--ui-color-disabled);
 
         &:active {
             transform: none;
@@ -63,7 +63,7 @@
 .loader {
     inset: -1px;
     position: absolute;
-    border-radius: var(--ai-radius, var(--mantine-radius-default));
+    border-radius: var(--ai-radius, var(--ui-radius-default));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -170,15 +170,15 @@
 
     --section-height: var(--section-height-sm);
     --section-padding-x: var(--section-padding-x-sm);
-    --section-color: var(--mantine-color-white);
+    --section-color: var(--ui-color-white);
 
     font-weight: 600;
     width: auto;
-    border-radius: var(--section-radius, var(--mantine-radius-default));
-    font-size: var(--section-fz, var(--mantine-font-size-sm));
-    background: var(--section-bg, var(--mantine-primary-color-filled));
+    border-radius: var(--section-radius, var(--ui-radius-default));
+    font-size: var(--section-fz, var(--ui-font-size-sm));
+    background: var(--section-bg, var(--ui-primary-color-filled));
     border: var(--section-bd, rem(1px) solid transparent);
-    color: var(--section-color, var(--mantine-color-white));
+    color: var(--section-color, var(--ui-color-white));
     height: var(--section-height, var(--section-height-sm));
     padding-inline: var(--section-padding-x, var(--section-padding-x-sm));
     vertical-align: middle;

@@ -1,0 +1,48 @@
+.title {
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    font-weight: var(--ui-font-weight-regular);
+    font-size: var(--ui-font-size-md);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--mb-padding, var(--ui-spacing-md));
+    padding-inline-end: calc(var(--mb-padding, var(--ui-spacing-md)) - 5px);
+    position: sticky;
+    top: 0;
+    background-color: var(--ui-color-body);
+    z-index: 1000;
+    min-height: 60px;
+    transition: padding-inline-end 100ms;
+}
+
+.inner {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    z-index: var(--mb-z-index);
+    pointer-events: none;
+}
+
+.content {
+    pointer-events: all;
+    box-shadow: var(--mb-shadow, var(--ui-shadow-xl));
+}
+
+.close {
+    margin-inline-start: auto;
+}
+
+.body {
+    padding: var(--mb-padding, var(--ui-spacing-md));
+    padding-top: var(--mb-padding, var(--ui-spacing-md));
+
+    &:where(:not(:only-child)) {
+        padding-top: 0;
+    }
+}

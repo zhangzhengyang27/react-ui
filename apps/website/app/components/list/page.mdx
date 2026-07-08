@@ -1,0 +1,52 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/List/Basic'
+import OrderedDemo from '@/demos/List/Ordered'
+import WithIconDemo from '@/demos/List/WithIcon'
+
+# List
+
+List 用于渲染有序或无序列表，支持自定义图标和丰富的样式控制。
+
+## 何时使用
+
+当需要展示一组相关项目、步骤说明或功能列表时使用 List。
+
+## 基础使用
+
+<Demo
+    title="无序列表"
+    description="默认渲染 ul 无序列表。"
+    demoId="list/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## 有序列表
+
+<Demo
+    title="有序列表"
+    description="设置 type='ordered' 渲染 ol 有序列表。"
+    demoId="list/ordered"
+>
+    <OrderedDemo />
+</Demo>
+
+## 自定义图标
+
+<Demo
+    title="带图标的列表"
+    description="通过 icon 属性为所有项目设置统一的自定义图标。"
+    demoId="list/with-icon"
+>
+    <WithIconDemo />
+</Demo>
+
+## API
+
+<ApiTable component="List" />
+
+## Styles API
+
+<StylesApiTable component="List" />

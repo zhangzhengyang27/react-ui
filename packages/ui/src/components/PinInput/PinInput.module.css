@@ -1,0 +1,47 @@
+.root {
+    --pin-input-size-xs: 32px;
+    --pin-input-size-sm: 40px;
+    --pin-input-size-md: 46px;
+    --pin-input-size-lg: 52px;
+    --pin-input-size-xl: 60px;
+    --pin-input-size: var(--pin-input-size-sm);
+    --pin-input-gap: var(--ui-spacing-sm);
+    --pin-input-fz: var(--ui-font-size-sm);
+
+    display: inline-flex;
+    gap: var(--pin-input-gap);
+}
+
+.input {
+    width: var(--pin-input-size);
+    height: var(--pin-input-size);
+    min-height: var(--pin-input-size);
+    text-align: center;
+    padding: 0;
+    font-size: var(--pin-input-fz);
+    border: 1px solid var(--input-bd, var(--ui-color-gray-4));
+    border-radius: var(--input-radius, var(--ui-radius-sm));
+    background-color: var(--input-bg, var(--ui-color-white));
+    color: var(--ui-color-text);
+    outline: none;
+    transition: border-color 100ms ease;
+
+    &::placeholder {
+        color: var(--ui-color-placeholder);
+    }
+
+    &:focus {
+        border-color: var(--ui-primary-color-filled);
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        background-color: var(--ui-color-gray-1);
+    }
+
+    &[data-masked] {
+        -webkit-text-security: disc;
+        text-security: disc;
+    }
+}

@@ -1,0 +1,52 @@
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(var(--ui-spacing-xs) / 2);
+    min-height: var(--input-height);
+    padding: calc(var(--ui-spacing-xs) / 2) var(--ui-spacing-sm);
+    border: 1px solid var(--ui-color-gray-4);
+    border-radius: var(--ui-radius-sm);
+    background-color: var(--ui-color-white);
+    cursor: pointer;
+
+    &:has(.inputWrapper [class*='InputBase-input']:focus) {
+        border-color: var(--ui-primary-color-filled);
+    }
+
+    &[data-disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+        background-color: var(--ui-color-gray-1);
+    }
+}
+
+.inputWrapper {
+    flex: 1;
+    min-width: 60px;
+    border: none !important;
+    background: transparent !important;
+
+    & input {
+        padding: 0;
+        min-height: calc(var(--input-height) - var(--ui-spacing-xs));
+    }
+}
+
+.valuesList {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(var(--ui-spacing-xs) / 2);
+}
+
+.pill {
+    flex-shrink: 0;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ui-color-dimmed);
+}

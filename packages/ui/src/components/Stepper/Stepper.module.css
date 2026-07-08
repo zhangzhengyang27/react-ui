@@ -1,0 +1,146 @@
+.root {
+    --stepper-icon-size-xs: 26px;
+    --stepper-icon-size-sm: 30px;
+    --stepper-icon-size-md: 34px;
+    --stepper-icon-size-lg: 38px;
+    --stepper-icon-size-xl: 44px;
+
+    --stepper-color: var(--ui-primary-color-filled);
+    --stepper-radius: var(--ui-radius-default);
+    --stepper-icon-size: var(--stepper-icon-size-md);
+    --stepper-separator-color: var(--ui-color-gray-3);
+    --stepper-step-color: var(--stepper-color);
+    --stepper-step-radius: var(--stepper-radius);
+
+    display: flex;
+}
+
+.root:where([data-orientation='horizontal']) {
+    flex-direction: row;
+}
+
+.root:where([data-orientation='vertical']) {
+    flex-direction: column;
+}
+
+.step {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    color: var(--ui-color-text);
+    cursor: default;
+}
+
+.step:where([data-selectable]) {
+    cursor: pointer;
+}
+
+.step:where([data-orientation='horizontal']) {
+    flex-direction: row;
+}
+
+.step:where([data-orientation='vertical']) {
+    flex-direction: column;
+}
+
+.stepBody {
+    display: flex;
+    align-items: center;
+    gap: var(--ui-spacing-sm);
+    flex: 0 0 auto;
+}
+
+.step:where([data-orientation='horizontal']) .stepBody {
+    flex-direction: column;
+    text-align: center;
+}
+
+.step:where([data-orientation='vertical']) .stepBody {
+    flex-direction: row;
+    text-align: left;
+}
+
+.stepIcon {
+    width: var(--stepper-icon-size);
+    height: var(--stepper-icon-size);
+    min-width: var(--stepper-icon-size);
+    min-height: var(--stepper-icon-size);
+    border-radius: var(--stepper-step-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--ui-color-gray-4);
+    background-color: var(--ui-color-white);
+    color: var(--ui-color-text);
+    font-size: calc(var(--stepper-icon-size) / 2.2);
+    font-weight: var(--ui-font-weight-bold);
+    transition:
+        border-color 150ms ease,
+        background-color 150ms ease,
+        color 150ms ease;
+}
+
+.step:where([data-active]) .stepIcon,
+.step:where([data-completed]) .stepIcon {
+    border-color: var(--stepper-step-color);
+    background-color: var(--stepper-step-color);
+    color: var(--ui-color-white);
+}
+
+.stepText {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ui-spacing-xs);
+}
+
+.step:where([data-orientation='horizontal']) .stepText {
+    align-items: center;
+}
+
+.step:where([data-orientation='vertical']) .stepText {
+    align-items: flex-start;
+}
+
+.stepLabel {
+    font-size: var(--ui-font-size-sm);
+    font-weight: var(--ui-font-weight-medium);
+    color: var(--ui-color-text);
+}
+
+.stepDescription {
+    font-size: var(--ui-font-size-xs);
+    color: var(--ui-color-dimmed, var(--ui-color-gray-6));
+}
+
+.stepSeparator {
+    background-color: var(--stepper-separator-color);
+    transition: background-color 150ms ease;
+}
+
+.step:where([data-completed]) .stepSeparator {
+    background-color: var(--stepper-step-color);
+}
+
+.step:where([data-orientation='horizontal']) .stepSeparator {
+    flex: 1;
+    height: 2px;
+    margin-top: calc(var(--stepper-icon-size) / 2 - 1px);
+    margin-inline: var(--ui-spacing-sm);
+}
+
+.step:where([data-orientation='vertical']) .stepSeparator {
+    width: 2px;
+    margin-inline-start: calc(var(--stepper-icon-size) / 2 - 1px);
+    margin-block: var(--ui-spacing-sm);
+    min-height: var(--ui-spacing-xl);
+    flex: 1;
+}
+
+.step:where([data-last]) .stepSeparator {
+    display: none;
+}

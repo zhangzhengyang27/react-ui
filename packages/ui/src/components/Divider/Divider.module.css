@@ -6,7 +6,7 @@
     --divider-size-xl: 5px;
     --divider-size: var(--divider-size-xs);
 
-    --divider-color: var(--mantine-color-gray-3);
+    --divider-color: var(--ui-color-gray-3);
 
     &:where([data-orientation='horizontal']) {
         border-top: var(--divider-size) var(--divider-border-style, solid) var(--divider-color);
@@ -26,8 +26,8 @@
 .label {
     display: flex;
     align-items: center;
-    font-size: var(--mantine-font-size-xs);
-    color: var(--mantine-color-dimmed);
+    font-size: var(--ui-font-size-xs);
+    color: var(--ui-color-dimmed);
     white-space: nowrap;
 
     &:where([data-position='left'])::before {
@@ -43,7 +43,7 @@
         flex: 1;
         height: 1px;
         border-top: var(--divider-size) var(--divider-border-style, solid) var(--divider-color);
-        margin-inline-end: var(--mantine-spacing-xs);
+        margin-inline-end: var(--ui-spacing-xs);
     }
 
     &::after {
@@ -51,6 +51,6 @@
         flex: 1;
         height: 1px;
         border-top: var(--divider-size) var(--divider-border-style, solid) var(--divider-color);
-        margin-inline-start: var(--mantine-spacing-xs);
+        margin-inline-start: var(--ui-spacing-xs);
     }
 }

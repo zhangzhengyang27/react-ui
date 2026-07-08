@@ -1,0 +1,169 @@
+import {
+    Box,
+    BoxProps,
+    createVarsResolver,
+    factory,
+    Factory,
+    getRadius,
+    getSize,
+    getThemeColor,
+    MantineColor,
+    MantineRadius,
+    MantineSize,
+    StylesApiProps,
+    useMantineTheme,
+    useProps,
+    useStyles
+} from '../../core'
+import classes from './Progress.module.css'
+
+export type ProgressStylesNames = 'root' | 'section' | 'label'
+
+export type ProgressCssVariables = {
+    root: '--progress-radius' | '--progress-height'
+}
+
+export interface ProgressSection {
+    value: number
+    color?: MantineColor
+    label?: React.ReactNode
+    tooltip?: React.ReactNode
+}
+
+export interface ProgressProps extends BoxProps, StylesApiProps<ProgressFactory> {
+    /** Current progress value, 0-100 */
+    value?: number
+
+    /** Progress color, key of theme.colors or any valid CSS color */
+    color?: MantineColor
+
+    /** Key of theme.radius or any valid CSS value @default theme.defaultRadius */
+    radius?: MantineRadius
+
+    /** Controls progress height */
+    size?: MantineSize
+
+    /** If true, the progress bar will have striped background @default false */
+    striped?: boolean
+
+    /** If true, the stripes will be animated @default false */
+    animated?: boolean
+
+    /** If true, the progress bar will be transitions-enabled @default true */
+    transitionDuration?: number
+
+    /** Replaces value/color with multiple sections */
+    sections?: ProgressSection[]
+
+    /** Label displayed inside the progress bar */
+    label?: React.ReactNode
+}
+
+export type ProgressFactory = Factory<{
+    props: ProgressProps
+    ref: HTMLDivElement
+    stylesNames: ProgressStylesNames
+    vars: ProgressCssVariables
+}>
+
+const defaultProps = {
+    transitionDuration: 100
+} satisfies Partial<ProgressProps>
+
+const varsResolver = createVarsResolver<ProgressFactory>((_, { radius, size }) => ({
+    root: {
+        '--progress-radius': radius === undefined ? undefined : getRadius(radius),
+        '--progress-height': getSize(size, 'progress-height')
+    }
+}))
+
+function clamp(value: number) {
+    return Math.min(Math.max(value, 0), 100)
+}
+
+export const Progress = factory<ProgressFactory>((_props, ref) => {
+    const props = useProps('Progress', defaultProps, _props)
+    const {
+        classNames,
+        className,
+        style,
+        styles,
+        unstyled,
+        vars,
+        value,
+        color,
+        radius,
+        size,
+        striped,
+        animated,
+        transitionDuration,
+        sections,
+        label,
+        mod,
+        ...others
+    } = props
+
+    const theme = useMantineTheme()
+    const getStyles = useStyles<ProgressFactory>({
+        name: 'Progress',
+        props,
+        classes,
+        className,
+        style,
+        classNames,
+        styles,
+        unstyled,
+        vars,
+        varsResolver
+    })
+
+    const normalizedSections: ProgressSection[] = sections?.length
+        ? sections.map(section => ({ ...section, value: clamp(section.value) }))
+        : [{ value: clamp(value || 0), color, label }]
+
+    return (
+        <Box
+            ref={ref}
+            {...getStyles('root')}
+            mod={[{ striped, animated }, mod]}
+            role="progressbar"
+            aria-valuenow={value}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            {...others}
+        >
+            {normalizedSections.map((section, index) => {
+                const sectionColor = section.color || color || theme.primaryColor
+                const bg = sectionColor ? getThemeColor(sectionColor, theme) : undefined
+
+                return (
+                    <Box
+                        key={index}
+                        {...getStyles('section')}
+                        mod={[{ striped, animated }, mod]}
+                        style={{
+                            width: `${section.value}%`,
+                            backgroundColor: bg,
+                            transition: `width ${transitionDuration}ms linear`
+                        }}
+                    >
+                        {(section.label || (normalizedSections.length === 1 && label)) && (
+                            <span {...getStyles('label')}>{section.label || label}</span>
+                        )}
+                    </Box>
+                )
+            })}
+        </Box>
+    )
+})
+
+Progress.classes = classes
+;(Progress as any).varsResolver = varsResolver
+Progress.displayName = '@react-ui/ui/Progress'
+
+export namespace Progress {
+    export type Props = ProgressProps
+    export type Factory = ProgressFactory
+    export type StylesNames = ProgressStylesNames
+    export type CssVariables = ProgressCssVariables
+}

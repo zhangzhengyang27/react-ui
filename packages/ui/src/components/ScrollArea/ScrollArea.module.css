@@ -48,7 +48,7 @@
     flex-direction: row;
 
     &:hover {
-        background-color: var(--mantine-color-gray-0, #f5f5f5);
+        background-color: var(--ui-color-gray-0, #f5f5f5);
 
         & > .thumb {
             background-color: rgba(0, 0, 0, 0.5);
@@ -104,7 +104,7 @@
     display: block;
     inset-inline-end: 0;
     bottom: 0;
-    background-color: var(--mantine-color-gray-0, #f5f5f5);
+    background-color: var(--ui-color-gray-0, #f5f5f5);
 
     &:where([data-hovered]) {
         opacity: 1;

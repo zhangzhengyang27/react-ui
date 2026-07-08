@@ -1,0 +1,75 @@
+.root {
+    --chip-size-xs: 22px;
+    --chip-size-sm: 26px;
+    --chip-size-md: 32px;
+    --chip-size-lg: 38px;
+    --chip-size-xl: 44px;
+
+    --chip-size: var(--chip-size-md);
+    --chip-radius: 9999px;
+    --chip-color: var(--ui-primary-color-filled);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: var(--chip-size);
+    padding: 0 calc(var(--chip-size) / 1.8);
+    border-radius: var(--chip-radius);
+    border: 1px solid transparent;
+    background-color: var(--ui-color-default-bg);
+    color: var(--ui-color-text);
+    font-size: var(--ui-font-size-sm);
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+    user-select: none;
+}
+
+.root:where([data-checked]) {
+    background-color: var(--chip-color);
+    color: var(--ui-color-white);
+}
+
+.root:where([data-variant='light']):where([data-checked]) {
+    background-color: color-mix(in srgb, var(--chip-color) 15%, transparent);
+    color: var(--chip-color);
+}
+
+.root:where([data-variant='outline']):where([data-checked]) {
+    background-color: transparent;
+    border-color: var(--chip-color);
+    color: var(--chip-color);
+}
+
+.root:where([data-variant='outline']):not(:where([data-checked])) {
+    background-color: transparent;
+    border-color: var(--ui-color-default-border);
+}
+
+.root:where([disabled]) {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.checkIcon {
+    display: inline-flex;
+    width: calc(var(--chip-size) * 0.45);
+    height: calc(var(--chip-size) * 0.45);
+    opacity: 0;
+    transform: scale(0.5);
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.root:where([data-checked]) .checkIcon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.label {
+    line-height: 1;
+}

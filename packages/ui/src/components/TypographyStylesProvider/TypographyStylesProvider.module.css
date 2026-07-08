@@ -1,0 +1,116 @@
+.root {
+    color: var(--ui-color-text);
+
+    & :where(h1, h2, h3, h4, h5, h6) {
+        margin-bottom: var(--ui-spacing-xs);
+        margin-top: var(--ui-spacing-md);
+    }
+
+    & :where(h1) {
+        font-size: var(--ui-h1-font-size);
+        line-height: var(--ui-h1-line-height);
+        font-weight: var(--ui-h1-font-weight);
+    }
+
+    & :where(h2) {
+        font-size: var(--ui-h2-font-size);
+        line-height: var(--ui-h2-line-height);
+        font-weight: var(--ui-h2-font-weight);
+    }
+
+    & :where(h3) {
+        font-size: var(--ui-h3-font-size);
+        line-height: var(--ui-h3-line-height);
+        font-weight: var(--ui-h3-font-weight);
+    }
+
+    & :where(h4) {
+        font-size: var(--ui-h4-font-size);
+        line-height: var(--ui-h4-line-height);
+        font-weight: var(--ui-h4-font-weight);
+    }
+
+    & :where(h5) {
+        font-size: var(--ui-h5-font-size);
+        line-height: var(--ui-h5-line-height);
+        font-weight: var(--ui-h5-font-weight);
+    }
+
+    & :where(h6) {
+        font-size: var(--ui-h6-font-size);
+        line-height: var(--ui-h6-line-height);
+        font-weight: var(--ui-h6-font-weight);
+    }
+
+    & :where(p) {
+        margin-bottom: var(--ui-spacing-md);
+        margin-top: 0;
+    }
+
+    & :where(a) {
+        color: var(--ui-color-anchor);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    & :where(hr) {
+        border: 0;
+        border-top: 1px solid var(--ui-color-default-border);
+        margin: var(--ui-spacing-md) 0;
+    }
+
+    & :where(pre) {
+        padding: var(--ui-spacing-xs);
+        border-radius: var(--ui-radius-sm);
+        background: var(--ui-color-default-hover);
+        overflow-x: auto;
+    }
+
+    & :where(code) {
+        font-family: var(--ui-font-family-monospace);
+        line-height: var(--ui-line-height);
+        background: var(--ui-color-default-hover);
+        padding: 2px 5px;
+        border-radius: var(--ui-radius-sm);
+    }
+
+    & :where(pre code) {
+        background: transparent;
+        padding: 0;
+    }
+
+    & :where(ul, ol) {
+        margin-bottom: var(--ui-spacing-md);
+        padding-left: var(--ui-spacing-lg);
+    }
+
+    & :where(li) {
+        margin-bottom: var(--ui-spacing-xs);
+    }
+
+    & :where(img) {
+        max-width: 100%;
+        height: auto;
+    }
+
+    & :where(table) {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: var(--ui-spacing-md);
+    }
+
+    & :where(th, td) {
+        border: 1px solid var(--ui-color-default-border);
+        padding: var(--ui-spacing-xs);
+    }
+
+    & :where(blockquote) {
+        margin: 0;
+        padding: var(--ui-spacing-xs) var(--ui-spacing-sm);
+        border-left: 4px solid var(--ui-color-default-border);
+        color: var(--ui-color-dimmed);
+    }
+}

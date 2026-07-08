@@ -1,0 +1,50 @@
+.root {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: list-item;
+    font-size: var(--list-fz);
+    line-height: var(--list-lh);
+
+    &:where([data-with-padding]) {
+        padding-left: var(--list-fz);
+    }
+}
+
+.item {
+    display: flex;
+    align-items: flex-start;
+
+    &:not(:last-child) {
+        margin-bottom: var(--list-spacing);
+    }
+
+    &:where([data-center]) {
+        align-items: center;
+    }
+}
+
+.itemIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--ui-spacing-xs);
+    line-height: 1;
+
+    &:where([data-center]) {
+        min-height: calc(var(--list-fz) * var(--list-lh));
+    }
+
+    &:where([data-ordered])::before {
+        content: counter(list-item) '.';
+        counter-increment: list-item;
+    }
+}
+
+.itemWrapper {
+    flex: 1;
+}
+
+.itemLabel {
+    display: block;
+}

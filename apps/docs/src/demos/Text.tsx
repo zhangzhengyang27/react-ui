@@ -6,7 +6,7 @@ const TextDemo: React.FC = () => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <Text>默认文本</Text>
             <Text size="xl">超大文本 size=xl</Text>
-            <Text size="sm" style={{ color: 'var(--mantine-color-gray-6)' }}>
+            <Text size="sm" style={{ color: 'var(--ui-color-gray-6)' }}>
                 小号暗色文本
             </Text>
             <Text variant="gradient" gradient={{ from: 'blue', to: 'cyan', deg: 90 }}>

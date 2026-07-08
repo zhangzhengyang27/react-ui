@@ -1,0 +1,41 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/EmptyState/Basic'
+import VariantDemo from '@/demos/EmptyState/Variant'
+
+# EmptyState
+
+EmptyState 用于在页面或区域没有数据时提供友好的占位提示。
+
+## 何时使用
+
+当列表、表格或页面内容为空，需要引导用户执行下一步操作时使用 EmptyState。
+
+## 基础使用
+
+<Demo
+    title="基础空状态"
+    description="使用 icon、title、description 快速构建空状态提示。"
+    demoId="empty-state/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## 变体
+
+<Demo
+    title="filled 与 light 变体"
+    description="设置 variant 和 color 为指示器添加彩色背景。"
+    demoId="empty-state/variant"
+>
+    <VariantDemo />
+</Demo>
+
+## API
+
+<ApiTable component="EmptyState" />
+
+## Styles API
+
+<StylesApiTable component="EmptyState" />

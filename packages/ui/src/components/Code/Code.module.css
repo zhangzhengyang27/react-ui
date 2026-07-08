@@ -1,0 +1,21 @@
+.root {
+    -webkit-tap-highlight-color: transparent;
+    font-family: var(--ui-font-family-monospace);
+    font-size: var(--code-fz, calc(var(--ui-font-size-sm) * 0.85));
+    line-height: var(--ui-line-height);
+    color: var(--code-color);
+    background-color: var(--code-bg);
+    border: var(--code-bd);
+    border-radius: var(--ui-radius-sm);
+    padding: calc(var(--ui-spacing-xs) / 4) calc(var(--ui-spacing-xs) / 2);
+    display: inline;
+    white-space: nowrap;
+    word-break: break-word;
+}
+
+.root:where([data-block]) {
+    display: block;
+    white-space: pre-wrap;
+    padding: var(--ui-spacing-md);
+    margin: 0;
+}

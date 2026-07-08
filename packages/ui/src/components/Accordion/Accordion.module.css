@@ -1,5 +1,5 @@
 .root {
-    --accordion-radius: var(--mantine-radius-default);
+    --accordion-radius: var(--ui-radius-default);
 }
 
 .panel {
@@ -7,8 +7,8 @@
 }
 
 .content {
-    padding: var(--mantine-spacing-md);
-    padding-top: calc(var(--mantine-spacing-xs) / 2);
+    padding: var(--ui-spacing-md);
+    padding-top: calc(var(--ui-spacing-xs) / 2);
 }
 
 .itemTitle {
@@ -21,11 +21,11 @@
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
-    padding-inline: var(--mantine-spacing-md);
+    padding-inline: var(--ui-spacing-md);
     opacity: 1;
     cursor: pointer;
     background-color: transparent;
-    color: var(--mantine-color-bright);
+    color: var(--ui-color-bright);
 
     &:where([data-chevron-position='left']) {
         flex-direction: row;
@@ -43,11 +43,11 @@
     &:where(:not(:disabled, [data-disabled])) {
         @mixin hover {
             @mixin where-light {
-                background-color: var(--mantine-color-gray-0);
+                background-color: var(--ui-color-gray-0);
             }
 
             @mixin where-dark {
-                background-color: var(--mantine-color-dark-6);
+                background-color: var(--ui-color-dark-6);
             }
         }
     }
@@ -59,8 +59,8 @@
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding-top: var(--mantine-spacing-sm);
-    padding-bottom: var(--mantine-spacing-sm);
+    padding-top: var(--ui-spacing-sm);
+    padding-bottom: var(--ui-spacing-sm);
 }
 
 .chevron {
@@ -77,8 +77,8 @@
     }
 
     &:where([data-position='left']) {
-        margin-inline-end: var(--mantine-spacing-md);
-        margin-inline-start: var(--mantine-spacing-md);
+        margin-inline-end: var(--ui-spacing-md);
+        margin-inline-start: var(--ui-spacing-md);
     }
 }
 
@@ -86,23 +86,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-inline-end: var(--mantine-spacing-sm);
+    margin-inline-end: var(--ui-spacing-sm);
 
     &:where([data-chevron-position='left']) {
         margin-inline-end: 0;
-        margin-inline-start: var(--mantine-spacing-lg);
+        margin-inline-start: var(--ui-spacing-lg);
     }
 }
 
 .item {
     @mixin where-light {
-        --item-border-color: var(--mantine-color-gray-3);
-        --item-filled-color: var(--mantine-color-gray-0);
+        --item-border-color: var(--ui-color-gray-3);
+        --item-filled-color: var(--ui-color-gray-0);
     }
 
     @mixin where-dark {
-        --item-border-color: var(--mantine-color-dark-4);
-        --item-filled-color: var(--mantine-color-dark-6);
+        --item-border-color: var(--ui-color-dark-4);
+        --item-filled-color: var(--ui-color-dark-6);
     }
 }
 
@@ -161,15 +161,15 @@
         border-color: var(--item-border-color);
 
         @mixin where-light {
-            background-color: var(--mantine-color-white);
+            background-color: var(--ui-color-white);
         }
 
         @mixin where-dark {
-            background-color: var(--mantine-color-dark-7);
+            background-color: var(--ui-color-dark-7);
         }
     }
 
     & + & {
-        margin-top: var(--mantine-spacing-md);
+        margin-top: var(--ui-spacing-md);
     }
 }

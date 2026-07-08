@@ -76,7 +76,7 @@ const varsResolver = createVarsResolver<LoaderFactory>((theme, { size, color }) 
  * 加载指示器，支持 oval/dots/bars 三种内置类型及自定义。
  * 对齐 mantine Loader。样式采用 CSS module（与 ActionIcon 一致），不依赖 emotion。
  */
-export const Loader = factory<LoaderFactory>(_props => {
+export const Loader = factory<LoaderFactory>((_props, _ref) => {
     const props = useProps('Loader', defaultProps, _props)
     const {
         size,

@@ -17,8 +17,8 @@ describe('Space', () => {
 
         const element = screen.getByTestId('space')
         expect(element).toHaveStyle({
-            width: 'calc(6.25rem * var(--mantine-scale))',
-            height: 'calc(3.125rem * var(--mantine-scale))'
+            width: 'calc(6.25rem * var(--ui-scale))',
+            height: 'calc(3.125rem * var(--ui-scale))'
         })
     })
 
@@ -27,8 +27,8 @@ describe('Space', () => {
 
         const element = screen.getByTestId('space')
         expect(element).toHaveStyle({
-            minWidth: 'calc(6.25rem * var(--mantine-scale))',
-            minHeight: 'calc(3.125rem * var(--mantine-scale))'
+            minWidth: 'calc(6.25rem * var(--ui-scale))',
+            minHeight: 'calc(3.125rem * var(--ui-scale))'
         })
     })
 })

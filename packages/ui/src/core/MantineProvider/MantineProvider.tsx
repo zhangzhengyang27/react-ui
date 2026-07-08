@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { MantineContext, type MantineContextValue } from './Mantine.context'
 import { MantineThemeProvider } from './MantineThemeProvider'
@@ -9,6 +9,8 @@ import type { UIThemeOverrides } from '../types/theme.types'
 export interface MantineProviderProps {
     /** 主题覆盖，与默认主题合并 */
     theme?: UIThemeOverrides
+    /** 受控颜色方案，传入后将覆盖内部默认的 light 状态 */
+    colorScheme?: MantineColorScheme
     /** CSS 类名前缀，默认 'mantine' */
     classNamesPrefix?: string
     /** 是否生成静态类名，默认 true */
@@ -29,6 +31,7 @@ export interface MantineProviderProps {
  */
 export function MantineProvider({
     theme,
+    colorScheme: controlledColorScheme,
     children,
     classNamesPrefix = 'mantine',
     withStaticClasses = true,
@@ -36,12 +39,17 @@ export function MantineProvider({
     cssVariablesSelector = ':root',
     env = 'default'
 }: MantineProviderProps) {
-    const [colorScheme, setColorScheme] = useState<MantineColorScheme>('light')
+    const [internalColorScheme, setInternalColorScheme] = useState<MantineColorScheme>('light')
+    const colorScheme = controlledColorScheme ?? internalColorScheme
+
+    const setColorScheme = controlledColorScheme
+        ? () => {}
+        : (value: MantineColorScheme) => setInternalColorScheme(value)
 
     const value: MantineContextValue = {
         colorScheme,
         setColorScheme,
-        clearColorScheme: () => setColorScheme('light'),
+        clearColorScheme: () => setInternalColorScheme('light'),
         getRootElement: () => (typeof document !== 'undefined' ? document.documentElement : undefined),
         classNamesPrefix,
         getStyleNonce: () => undefined,
@@ -52,6 +60,13 @@ export function MantineProvider({
         stylesTransform: undefined,
         env
     }
+
+    useEffect(() => {
+        if (typeof document === 'undefined') return
+        const root = value.getRootElement()
+        if (!root) return
+        root.setAttribute('data-ui-color-scheme', colorScheme)
+    }, [colorScheme, value])
 
     return (
         <MantineContext.Provider value={value}>

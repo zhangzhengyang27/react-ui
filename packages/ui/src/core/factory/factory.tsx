@@ -74,7 +74,7 @@ export type ExtendComponent<Payload extends FactoryPayload> = Payload['compound'
  *
  * @template Input - 要检查的输入类型
  */
-export type StaticComponents<Input> = Input extends Record<string, any> ? Input : Record<string, never>
+export type StaticComponents<Input> = Input extends Record<string, any> ? Input : Record<string, any>
 
 /**
  * 定义主题扩展接口，允许通过extend方法扩展组件样式

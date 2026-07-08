@@ -1,0 +1,91 @@
+---
+title: 主题对象
+---
+
+import { Demo } from '@/components/Demo'
+
+# 主题对象
+
+`@react-ui/ui` 的主题对象包含应用的颜色、字体、间距、圆角、阴影等设计令牌。
+通过 `Provider` 的 `theme` 属性传入覆盖对象，即可全局自定义组件外观。
+
+## 完整类型
+
+```tsx
+interface MantineTheme {
+    focusRing: 'auto' | 'always' | 'never'
+    scale: number
+    fontSmoothing: boolean
+    white: string
+    black: string
+    colors: MantineThemeColors
+    primaryShade: MantineColorShade | MantinePrimaryShade
+    primaryColor: string
+    variantColorResolver: VariantColorsResolver
+    autoContrast: boolean
+    luminanceThreshold: number
+    fontFamily: string
+    fontFamilyMonospace: string
+    headings: {
+        fontFamily: string
+        fontWeight: string
+        textWrap: 'wrap' | 'nowrap' | 'balance' | 'pretty' | 'stable'
+        sizes: {
+            h1: HeadingStyle
+            h2: HeadingStyle
+            h3: HeadingStyle
+            h4: HeadingStyle
+            h5: HeadingStyle
+            h6: HeadingStyle
+        }
+    }
+    radius: MantineRadiusValues
+    defaultRadius: MantineRadius
+    spacing: MantineSpacingValues
+    fontSizes: MantineFontSizesValues
+    lineHeights: MantineLineHeightValues
+    breakpoints: MantineBreakpointsValues
+    shadows: MantineShadowsValues
+    respectReducedMotion: boolean
+    cursorType: 'default' | 'pointer'
+    defaultGradient: MantineGradient
+    activeClassName: string
+    focusClassName: string
+    components: MantineThemeComponents
+    other: MantineThemeOther
+}
+```
+
+## 基础用法
+
+<Demo
+    title="主题覆盖"
+    description="通过 Provider 传入 theme 对象覆盖默认主题。"
+    code={`import { Provider, Button } from '@react-ui/ui'
+
+function Demo() {
+    return (
+        <Provider theme={{ primaryColor: 'violet', defaultRadius: 'md' }}>
+            <Button>Hello react-ui</Button>
+        </Provider>
+    )
+}`}
+>
+    <div style={{ padding: 24, textAlign: 'center', color: 'var(--nextra-secondary-color, #888)' }}>
+        将上方代码复制到项目中即可预览效果
+    </div>
+</Demo>
+
+## 常用属性
+
+- `primaryColor` — 全局主色
+- `primaryShade` — 主色色阶
+- `defaultRadius` — 默认圆角
+- `spacing` / `radius` / `fontSizes` — 尺寸令牌
+- `components` — 组件级全局样式配置
+
+## 下一步
+
+- 学习 [颜色系统](/theming/colors)
+- 了解 [颜色方案](/theming/color-schemes)
+- 查看 [Styles API](/styles-api) 自定义组件样式

@@ -2,6 +2,7 @@ import { Demo } from '@/components/Demo'
 import { ApiTable } from '@/components/ApiTable'
 import { StylesApiTable } from '@/components/StylesApiTable'
 import BasicDemo from '@/demos/Paper/Basic'
+import InteractiveDemo from '@/demos/Paper/Interactive'
 
 # Paper
 
@@ -12,18 +13,14 @@ import BasicDemo from '@/demos/Paper/Basic'
 <Demo
     title="基础用法"
     description="Paper 基础用法示例"
-    code={`import { Paper } from '@react-ui/ui'
-
-export default function PaperBasicDemo() {
-    return (
-        <Paper shadow="sm" radius="md" withBorder style={{ padding: 24 }}>
-            Paper 内容区域
-        </Paper>
-    )
-}`}
+    demoId="paper/basic"
 >
     <BasicDemo />
 </Demo>
+
+## 交互式示例
+
+<InteractiveDemo />
 
 ## API
 

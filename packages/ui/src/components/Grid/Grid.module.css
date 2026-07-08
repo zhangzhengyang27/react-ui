@@ -1,0 +1,13 @@
+.root {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-cols, 12), minmax(0, 1fr));
+    gap: var(--grid-gutter, 0);
+}
+
+.root[data-grow='true'] > * {
+    flex-grow: 1;
+}
+
+.col {
+    min-width: 0;
+}

@@ -105,12 +105,12 @@ body {
     --ui-color-white: #fff;
     --ui-color-black: #000;
     --ui-line-height: 1.55;
-    --ui-font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial,
-        sans-serif, Apple Color Emoji, Segoe UI Emoji;
-    --ui-font-family-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-        Liberation Mono, Courier New, monospace;
-    --ui-font-family-headings: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial,
-        sans-serif, Apple Color Emoji, Segoe UI Emoji;
+    --ui-font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif,
+        Apple Color Emoji, Segoe UI Emoji;
+    --ui-font-family-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New,
+        monospace;
+    --ui-font-family-headings: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif,
+        Apple Color Emoji, Segoe UI Emoji;
     --ui-heading-font-weight: 700;
     --ui-radius-default: calc(0.25rem * var(--ui-scale));
     --ui-primary-color-0: var(--ui-color-blue-0);
@@ -148,29 +148,24 @@ body {
     --ui-line-height-md: 1.55;
     --ui-line-height-lg: 1.6;
     --ui-line-height-xl: 1.65;
-    --ui-shadow-xs: 0 calc(0.0625rem * var(--ui-scale)) calc(0.1875rem * var(--ui-scale))
-            rgba(0, 0, 0, 0.05),
+    --ui-shadow-xs: 0 calc(0.0625rem * var(--ui-scale)) calc(0.1875rem * var(--ui-scale)) rgba(0, 0, 0, 0.05),
         0 calc(0.0625rem * var(--ui-scale)) calc(0.125rem * var(--ui-scale)) rgba(0, 0, 0, 0.1);
-    --ui-shadow-sm: 0 calc(0.0625rem * var(--ui-scale)) calc(0.1875rem * var(--ui-scale))
-            rgba(0, 0, 0, 0.05),
+    --ui-shadow-sm: 0 calc(0.0625rem * var(--ui-scale)) calc(0.1875rem * var(--ui-scale)) rgba(0, 0, 0, 0.05),
         rgba(0, 0, 0, 0.05) 0 calc(0.625rem * var(--ui-scale)) calc(0.9375rem * var(--ui-scale))
             calc(-0.3125rem * var(--ui-scale)),
         rgba(0, 0, 0, 0.04) 0 calc(0.4375rem * var(--ui-scale)) calc(0.4375rem * var(--ui-scale))
             calc(-0.3125rem * var(--ui-scale));
-    --ui-shadow-md: 0 calc(0.0625rem * var(--ui-scale)) calc(0.1875rem * var(--ui-scale))
-            rgba(0, 0, 0, 0.05),
+    --ui-shadow-md: 0 calc(0.0625rem * var(--ui-scale)) calc(0.1875rem * var(--ui-scale)) rgba(0, 0, 0, 0.05),
         rgba(0, 0, 0, 0.05) 0 calc(1.25rem * var(--ui-scale)) calc(1.5625rem * var(--ui-scale))
             calc(-0.3125rem * var(--ui-scale)),
         rgba(0, 0, 0, 0.04) 0 calc(0.625rem * var(--ui-scale)) calc(0.625rem * var(--ui-scale))
             calc(-0.3125rem * var(--ui-scale));
-    --ui-shadow-lg: 0 calc(0.0625rem * var(--ui-scale)) calc(0.1875rem * var(--ui-scale))
-            rgba(0, 0, 0, 0.05),
+    --ui-shadow-lg: 0 calc(0.0625rem * var(--ui-scale)) calc(0.1875rem * var(--ui-scale)) rgba(0, 0, 0, 0.05),
         rgba(0, 0, 0, 0.05) 0 calc(1.75rem * var(--ui-scale)) calc(1.4375rem * var(--ui-scale))
             calc(-0.4375rem * var(--ui-scale)),
         rgba(0, 0, 0, 0.04) 0 calc(0.75rem * var(--ui-scale)) calc(0.75rem * var(--ui-scale))
             calc(-0.4375rem * var(--ui-scale));
-    --ui-shadow-xl: 0 calc(0.0625rem * var(--ui-scale)) calc(0.1875rem * var(--ui-scale))
-            rgba(0, 0, 0, 0.05),
+    --ui-shadow-xl: 0 calc(0.0625rem * var(--ui-scale)) calc(0.1875rem * var(--ui-scale)) rgba(0, 0, 0, 0.05),
         rgba(0, 0, 0, 0.05) 0 calc(2.25rem * var(--ui-scale)) calc(1.75rem * var(--ui-scale))
             calc(-0.4375rem * var(--ui-scale)),
         rgba(0, 0, 0, 0.04) 0 calc(1.0625rem * var(--ui-scale)) calc(1.0625rem * var(--ui-scale))
@@ -338,6 +333,35 @@ body {
     --ui-h6-font-size: calc(0.875rem * var(--ui-scale));
     --ui-h6-line-height: 1.5;
     --ui-h6-font-weight: 700;
+
+    /* ----- Default light theme variables (fallback before data-ui-color-scheme is set) ----- */
+    --ui-color-bright: var(--ui-color-black);
+    --ui-color-text: var(--ui-color-black);
+    --ui-color-body: var(--ui-color-white);
+    --ui-primary-color-contrast: var(--ui-color-white);
+    --ui-color-error: var(--ui-color-red-6);
+    --ui-color-placeholder: var(--ui-color-gray-5);
+    --ui-color-anchor: var(--ui-primary-color-filled);
+    --ui-color-default: var(--ui-color-white);
+    --ui-color-default-hover: var(--ui-color-gray-0);
+    --ui-color-default-color: var(--ui-color-gray-9);
+    --ui-color-default-border: var(--ui-color-gray-4);
+    --ui-color-dimmed: var(--ui-color-gray-6);
+    --ui-color-disabled: var(--ui-color-gray-2);
+    --ui-color-disabled-color: var(--ui-color-gray-5);
+    --ui-font-weight-regular: 400;
+    --ui-font-weight-medium: 500;
+    --ui-font-weight-bold: 700;
+    --ui-text-wrap: wrap;
+
+    /* Primary filled/light/outline colors */
+    --ui-color-blue-filled: var(--ui-color-blue-6);
+    --ui-color-blue-filled-hover: var(--ui-color-blue-7);
+    --ui-color-blue-light: rgba(34, 139, 230, 0.1);
+    --ui-color-blue-light-hover: rgba(34, 139, 230, 0.12);
+    --ui-color-blue-light-color: var(--ui-color-blue-6);
+    --ui-color-blue-outline: var(--ui-color-blue-6);
+    --ui-color-blue-outline-hover: rgba(34, 139, 230, 0.05);
 }
 
 :root[data-ui-color-scheme='dark'] {

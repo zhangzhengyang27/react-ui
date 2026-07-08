@@ -98,7 +98,7 @@ const varsResolver = createVarsResolver<BadgeFactory>(
     }
 )
 
-export const Badge = polymorphicFactory<BadgeFactory>(_props => {
+export const Badge = polymorphicFactory<BadgeFactory>((_props, _ref) => {
     const props = useProps('Badge', null, _props)
     const {
         classNames,

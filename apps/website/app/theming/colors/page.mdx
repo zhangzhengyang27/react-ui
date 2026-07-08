@@ -1,0 +1,76 @@
+---
+title: 颜色系统
+---
+
+import { Demo } from '@/components/Demo'
+
+# 颜色系统
+
+主题对象中的 `colors` 字段定义了所有可用的颜色令牌。每种颜色包含 10 个色阶（0-9），0 最浅，9 最深。
+
+## 预置颜色
+
+`@react-ui/ui` 默认提供多种颜色：
+
+- `dark`、`gray`
+- `red`、`pink`、`grape`、`violet`、`indigo`、`blue`、`cyan`
+- `teal`、`green`、`lime`、`yellow`、`orange`
+
+## 自定义颜色
+
+通过 `theme.colors` 添加自定义颜色，然后在组件中使用：
+
+<Demo
+    title="自定义颜色"
+    description="添加 brand 颜色并在 Button 中使用。"
+    code={`import { Provider, Button } from '@react-ui/ui'
+
+function Demo() {
+    return (
+        <Provider
+            theme={{
+                primaryColor: 'brand',
+                colors: {
+                    brand: [
+                        '#e0f7fa',
+                        '#b2ebf2',
+                        '#80deea',
+                        '#4dd0e1',
+                        '#26c6da',
+                        '#00bcd4',
+                        '#00acc1',
+                        '#0097a7',
+                        '#00838f',
+                        '#006064'
+                    ]
+                }
+            }}
+        >
+            <Button>Brand Button</Button>
+        </Provider>
+    )
+}`}
+>
+    <div style={{ padding: 24, textAlign: 'center', color: 'var(--nextra-secondary-color, #888)' }}>
+        将上方代码复制到项目中即可预览效果
+    </div>
+</Demo>
+
+## primaryColor
+
+`primaryColor` 设置全局主色，影响 `Button`、`ActionIcon`、`Loader` 等组件的默认颜色。必须是 `theme.colors` 中已定义的颜色键名。
+
+## primaryShade
+
+`primaryShade` 控制使用主色的哪个色阶。可设置为数字 `0-9`，或分别为浅色/深色模式指定：
+
+```tsx
+{
+    primaryShade: { light: 6, dark: 8 }
+}
+```
+
+## 下一步
+
+- 了解 [颜色方案](/theming/color-schemes)
+- 返回 [主题概览](/theming)

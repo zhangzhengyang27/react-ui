@@ -1,9 +1,9 @@
 const values = {
-    text: 'var(--mantine-font-family)',
-    mono: 'var(--mantine-font-family-monospace)',
-    monospace: 'var(--mantine-font-family-monospace)',
-    heading: 'var(--mantine-font-family-headings)',
-    headings: 'var(--mantine-font-family-headings)'
+    text: 'var(--ui-font-family)',
+    mono: 'var(--ui-font-family-monospace)',
+    monospace: 'var(--ui-font-family-monospace)',
+    heading: 'var(--ui-font-family-headings)',
+    headings: 'var(--ui-font-family-headings)'
 }
 
 /**

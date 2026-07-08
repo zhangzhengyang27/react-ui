@@ -7,7 +7,7 @@
 
     --cb-size: var(--cb-size-md);
     --cb-icon-size: 70%;
-    --cb-radius: var(--mantine-radius-default);
+    --cb-radius: var(--ui-radius-default);
 
     line-height: 1;
     display: inline-flex;
@@ -21,11 +21,11 @@
     min-width: var(--cb-size);
     min-height: var(--cb-size);
     border-radius: var(--cb-radius);
-    color: var(--mantine-color-gray-7);
+    color: var(--ui-color-gray-7);
 }
 
 .root:where([data-mantine-color-scheme='dark']) {
-    color: var(--mantine-color-dark-1);
+    color: var(--ui-color-dark-1);
 }
 
 .root:where([data-disabled]),
@@ -35,9 +35,9 @@
 }
 
 .root--subtle:where(:not([data-disabled], :disabled)):hover {
-    background-color: var(--mantine-color-gray-0);
+    background-color: var(--ui-color-gray-0);
 }
 
 .root--subtle:where(:not([data-disabled], :disabled)):where([data-mantine-color-scheme='dark']):hover {
-    background-color: var(--mantine-color-dark-6);
+    background-color: var(--ui-color-dark-6);
 }

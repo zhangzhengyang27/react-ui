@@ -1,0 +1,81 @@
+import {
+    Box,
+    BoxProps,
+    MantineColor,
+    polymorphicFactory,
+    PolymorphicFactory,
+    StylesApiProps,
+    useProps
+} from '../../core'
+import { Mark } from '../Mark'
+import classes from './Highlight.module.css'
+
+export type HighlightStylesNames = 'root' | 'highlight'
+
+export interface HighlightProps extends BoxProps, StylesApiProps<HighlightFactory> {
+    /** String value to highlight in children */
+    highlight: string
+
+    /** Key of `theme.colors` or any valid CSS color @default theme.primaryColor */
+    color?: MantineColor
+
+    /** Highlight content, must be a string */
+    children: string
+}
+
+export type HighlightFactory = PolymorphicFactory<{
+    props: HighlightProps
+    defaultRef: HTMLElement
+    defaultComponent: 'span'
+    stylesNames: HighlightStylesNames
+}>
+
+const defaultProps = {} satisfies Partial<HighlightProps>
+
+function getChunks({ text, highlight }: { text: string; highlight: string }) {
+    if (!highlight) {
+        return [{ chunk: text, highlighted: false }]
+    }
+
+    const regex = new RegExp(`(${highlight.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'g')
+    const parts = text.split(regex)
+
+    return parts.map(part => ({
+        chunk: part,
+        highlighted: part.toLowerCase() === highlight.toLowerCase()
+    }))
+}
+
+/**
+ * 高亮文本中的指定子串组件。对齐 mantine Highlight（polymorphicFactory + CSS module）。
+ * 使用 Mark 组件渲染被高亮子串。
+ */
+export const Highlight = polymorphicFactory<HighlightFactory>((_props, _ref) => {
+    const props = useProps('Highlight', defaultProps, _props)
+    const { classNames, className, style, styles, unstyled, children, highlight, color, attributes, ...others } = props
+
+    const chunks = getChunks({ text: children, highlight })
+
+    return (
+        <Box component="span" className={className} style={style} {...others}>
+            {chunks.map(({ chunk, highlighted }, index) =>
+                highlighted ? (
+                    <Mark color={color} key={index}>
+                        {chunk}
+                    </Mark>
+                ) : (
+                    <span key={index}>{chunk}</span>
+                )
+            )}
+        </Box>
+    )
+})
+
+Highlight.classes = classes
+Highlight.displayName = '@react-ui/ui/Highlight'
+
+export namespace Highlight {
+    export type Props = HighlightProps
+    export type StylesNames = HighlightStylesNames
+    export type Factory = HighlightFactory
+}

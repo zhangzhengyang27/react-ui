@@ -25,6 +25,25 @@ interface ComponentDoc {
     stylesNames: string[]
     cssVariables: Record<string, string[]>
     variants: string[]
+    modifiers: string[]
+}
+
+interface HookParamDoc {
+    name: string
+    type: string
+    required: boolean
+    defaultValue: string | null
+    description: string
+}
+
+interface HookDoc {
+    name: string
+    description: string
+    params: HookParamDoc[]
+    returns: {
+        type: string
+        description: string
+    }
 }
 
 function getLiteralStringValues(type: Type): string[] {
@@ -82,12 +101,47 @@ function extractCssVariables(typeAlias?: TypeAliasDeclaration): Record<string, s
     return Object.keys(result).length > 0 ? result : undefined
 }
 
+/**
+ * 从组件的 CSS Module 中提取 `data-*` 属性选择器（modifiers）。
+ * 这些是影响组件样式的状态/变体标记（如 data-disabled、data-loading）。
+ */
+function extractModifiers(componentName: string): string[] {
+    const cssPath = path.join(COMPONENTS_DIR, componentName, `${componentName}.module.css`)
+    if (!fs.existsSync(cssPath)) return []
+
+    const source = fs.readFileSync(cssPath, 'utf-8')
+    const matches = new Set<string>()
+    // 匹配 [data-xxx] 或 [data-xxx='value'] 形式的属性选择器
+    const re = /\[data-([a-z][a-z0-9-]*)(?:=[^\]]*)?\]/gi
+    let m: RegExpExecArray | null
+    while ((m = re.exec(source)) !== null) {
+        matches.add(`data-${m[1]}`)
+    }
+    return [...matches].sort()
+}
+
 function cleanDescription(text: string): string {
     return text
         .split('\n')
         .map(line => line.replace(/^\s*\*\s?/, '').trim())
         .filter(line => line && !line.startsWith('@'))
         .join(' ')
+        .trim()
+}
+
+/**
+ * 归一化类型字符串，让 API 表更可读：
+ * - 去掉 `(string & {})`（TS 自动补全技巧，文档无需展示）
+ * - 折叠多余空格与空的 union 分支
+ * - 去掉尾随 `| undefined`
+ */
+function normalizeType(type: string): string {
+    return type
+        .replace(/\s*\|\s*\(string & \{\}\)/g, '')
+        .replace(/\s*\|\s*undefined/g, '')
+        .replace(/\s{2,}/g, ' ')
+        .replace(/^\s*\|\s*/, '')
+        .replace(/\s*\|\s*$/, '')
         .trim()
 }
 
@@ -145,6 +199,7 @@ function extractProps(iface: InterfaceDeclaration): PropDoc[] {
             if (!required && type.endsWith(' | undefined')) {
                 type = type.slice(0, -' | undefined'.length).trim()
             }
+            type = normalizeType(type)
 
             let description = ''
             let defaultValue: string | null = null
@@ -190,6 +245,7 @@ function generateComponentDoc(project: Project, componentName: string, mainFileP
     const stylesNames = extractStringUnion(stylesNamesAlias) ?? []
     const cssVariables = extractCssVariables(cssVariablesAlias) ?? {}
     const variants = extractStringUnion(variantAlias) ?? []
+    const modifiers = extractModifiers(componentName)
 
     return {
         displayName: componentName,
@@ -197,7 +253,105 @@ function generateComponentDoc(project: Project, componentName: string, mainFileP
         props,
         stylesNames,
         cssVariables,
-        variants
+        variants,
+        modifiers
+    }
+}
+
+function parseParamTag(
+    text: string
+): { name: string; type: string; defaultValue?: string; description: string } | null {
+    const line = text
+        .replace(/^\s*\*\s?/, '')
+        .replace(/^@param\s*/, '')
+        .trim()
+    const typeMatch = line.match(/^\{([^}]+)\}\s*/)
+    if (!typeMatch) return null
+
+    const rest = line.slice(typeMatch[0].length)
+    const nameMatch = rest.match(/^(\[?)([\w.]+)(?:=([^\]]+))?\]?\s*/)
+    if (!nameMatch) return null
+
+    const name = nameMatch[2]
+    const defaultValue = nameMatch[3]?.trim()
+    const description = rest.slice(nameMatch[0].length).replace(/^-\s*/, '').trim()
+
+    return { name, type: typeMatch[1], defaultValue, description }
+}
+
+function extractHookParams(func: import('ts-morph').FunctionDeclaration): HookParamDoc[] {
+    const jsDoc = func.getJsDocs()[0]
+    const tagMap: Record<string, { type?: string; defaultValue?: string; description: string }> = {}
+
+    if (jsDoc) {
+        for (const tag of jsDoc.getTags()) {
+            if (tag.getTagName() !== 'param') continue
+            const parsed = parseParamTag(tag.getText())
+            if (parsed) {
+                tagMap[parsed.name] = {
+                    type: parsed.type,
+                    defaultValue: parsed.defaultValue,
+                    description: parsed.description
+                }
+            }
+        }
+    }
+
+    return func.getParameters().map(param => {
+        const name = param.getName()
+        const required = !param.isOptional()
+        const initializer = param.getInitializer()?.getText() ?? null
+        const paramType = param.getTypeNode()?.getText() ?? param.getType().getText(func)
+
+        const tag = tagMap[name]
+        const description = tag ? cleanDescription(tag.description) : ''
+        const defaultValue = initializer ?? tag?.defaultValue ?? null
+        const type = normalizeType(tag?.type ?? paramType)
+
+        return {
+            name,
+            type,
+            required,
+            defaultValue,
+            description
+        }
+    })
+}
+
+function generateHookDoc(project: Project, hookFilePath: string): HookDoc | null {
+    let sourceFile = project.getSourceFile(hookFilePath)
+    if (!sourceFile) {
+        sourceFile = project.addSourceFileAtPath(hookFilePath)
+    }
+
+    const func = sourceFile.getFunctions().find(f => f.isExported() && f.getName()?.startsWith('use'))
+    const variable = sourceFile.getVariableDeclarations().find(v => v.isExported() && v.getName().startsWith('use'))
+
+    const declaration = func ?? variable
+    if (!declaration) {
+        console.warn(`[docgen] ${hookFilePath}: no exported useXxx declaration found`)
+        return null
+    }
+
+    const name = declaration.getName()!
+    const jsDoc = Node.isFunctionDeclaration(declaration)
+        ? declaration.getJsDocs()[0]
+        : declaration.getVariableStatement()?.getJsDocs()[0]
+    const description = jsDoc ? cleanDescription(jsDoc.getDescription()) : ''
+
+    const returnsTag = jsDoc?.getTags().find((tag: JSDocTag) => tag.getTagName() === 'returns')
+    const returnsDescription = returnsTag ? cleanDescription(returnsTag.getCommentText() ?? '') : ''
+
+    const returnType = declaration.getType().getText(declaration)
+
+    return {
+        name,
+        description,
+        params: func ? extractHookParams(func) : [],
+        returns: {
+            type: returnType,
+            description: returnsDescription
+        }
     }
 }
 
@@ -206,6 +360,7 @@ function main() {
         tsConfigFilePath: path.join(ROOT_DIR, 'tsconfig.json')
     })
 
+    // Generate component docs
     const entries = fs.readdirSync(COMPONENTS_DIR, { withFileTypes: true })
     const docs: Record<string, ComponentDoc> = {}
 
@@ -227,6 +382,32 @@ function main() {
     fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true })
     fs.writeFileSync(OUTPUT_PATH, JSON.stringify(docs, null, 2), 'utf-8')
     console.log(`[docgen] Generated ${Object.keys(docs).length} component docs -> ${OUTPUT_PATH}`)
+
+    // Generate hook docs
+    const hooksDir = path.join(ROOT_DIR, 'packages/hooks/src')
+    const hookDocs: Record<string, HookDoc> = {}
+
+    const hookEntries = fs.readdirSync(hooksDir, { withFileTypes: true })
+    for (const entry of hookEntries) {
+        if (!entry.isDirectory() || !entry.name.startsWith('use-')) continue
+        const hookFilePath = path.join(hooksDir, entry.name, `${entry.name.replace(/^use-/, 'use-')}.ts`)
+        const mainHookPath = path.join(hooksDir, entry.name, `${entry.name}.ts`)
+        const targetPath = fs.existsSync(mainHookPath) ? mainHookPath : hookFilePath
+
+        if (!fs.existsSync(targetPath)) {
+            console.warn(`[docgen] ${entry.name}: hook file not found, skipping`)
+            continue
+        }
+
+        const doc = generateHookDoc(project, targetPath)
+        if (doc) {
+            hookDocs[doc.name] = doc
+        }
+    }
+
+    const hooksOutputPath = path.join(path.dirname(OUTPUT_PATH), 'hooks.json')
+    fs.writeFileSync(hooksOutputPath, JSON.stringify(hookDocs, null, 2), 'utf-8')
+    console.log(`[docgen] Generated ${Object.keys(hookDocs).length} hook docs -> ${hooksOutputPath}`)
 }
 
 main()

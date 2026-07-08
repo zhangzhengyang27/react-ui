@@ -77,7 +77,7 @@ const varsResolver = createVarsResolver<GroupFactory>(
  * 水平弹性布局容器。对齐 mantine Group（factory + useStyles + varsResolver + CSS module）。
  * 支持 gap/align/justify/wrap/grow/preventGrowOverflow。
  */
-export const Group = factory<GroupFactory>(_props => {
+export const Group = factory<GroupFactory>((_props, _ref) => {
     const props = useProps('Group', defaultProps, _props)
     const {
         classNames,

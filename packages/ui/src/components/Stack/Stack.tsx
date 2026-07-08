@@ -53,7 +53,7 @@ const varsResolver = createVarsResolver<StackFactory>((_, { gap, align, justify 
 /**
  * 垂直弹性布局容器。对齐 mantine Stack（factory + useStyles + varsResolver + CSS module）。
  */
-export const Stack = factory<StackFactory>(_props => {
+export const Stack = factory<StackFactory>((_props, _ref) => {
     const props = useProps('Stack', defaultProps, _props)
     const {
         classNames,

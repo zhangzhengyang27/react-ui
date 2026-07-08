@@ -47,7 +47,7 @@ const defaultProps = {
     spacing: 'md'
 } satisfies Partial<SimpleGridProps>
 
-export const SimpleGrid = factory<SimpleGridFactory>(_props => {
+export const SimpleGrid = factory<SimpleGridFactory>((_props, _ref) => {
     const props = useProps('SimpleGrid', defaultProps, _props)
     const {
         classNames,

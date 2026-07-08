@@ -1,0 +1,30 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/TypographyStylesProvider/Basic'
+
+# TypographyStylesProvider
+
+TypographyStylesProvider 用于为 HTML 富文本内容提供统一的排版样式，常用于渲染 Markdown、编辑器输出等。
+
+## 何时使用
+
+当需要渲染不可控的 HTML 内容，并希望其与组件库主题保持一致时使用。
+
+## 基础使用
+
+<Demo
+    title="富文本排版"
+    description="包裹 HTML 内容即可获得一致的标题、段落、链接、列表等样式。"
+    demoId="typography-styles-provider/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## API
+
+<ApiTable component="TypographyStylesProvider" />
+
+## Styles API
+
+<StylesApiTable component="TypographyStylesProvider" />

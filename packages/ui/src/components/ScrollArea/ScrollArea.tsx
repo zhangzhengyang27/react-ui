@@ -115,7 +115,7 @@ const varsResolver = createVarsResolver<ScrollAreaFactory>((_, { scrollbarSize, 
     }
 })
 
-export const ScrollArea = factory<ScrollAreaFactory>(_props => {
+export const ScrollArea = factory<ScrollAreaFactory>((_props, _ref) => {
     const props = useProps('ScrollArea', defaultProps, _props)
     const {
         classNames,

@@ -1,0 +1,61 @@
+---
+title: CSS 变量
+---
+
+import { Demo } from '@/components/Demo'
+
+# CSS 变量
+
+组件通常使用 CSS 变量定义颜色、尺寸、间距等。你可以通过 `vars` 属性或 `theme.components` 中的 `vars` 函数覆盖这些变量。
+
+## 通过 vars 属性覆盖
+
+<Demo
+    title="覆盖 CSS 变量"
+    description="直接覆盖 Button 的 CSS 变量。"
+    code={`import { Button } from '@react-ui/ui'
+
+function Demo() {
+    return (
+        <Button
+            vars={{
+                root: {
+                    '--button-bg': '#228be6',
+                    '--button-radius': '12px'
+                }
+            }}
+        >
+            Custom Variables
+        </Button>
+    )
+}`}
+>
+    <div style={{ padding: 24, textAlign: 'center', color: 'var(--nextra-secondary-color, #888)' }}>
+        将上方代码复制到项目中即可预览效果
+    </div>
+</Demo>
+
+## 通过 theme.components 全局覆盖
+
+```tsx
+const theme = {
+    components: {
+        Button: {
+            vars: (theme, props) => ({
+                root: {
+                    '--button-radius': props.size === 'lg' ? '16px' : '8px'
+                }
+            })
+        }
+    }
+}
+```
+
+## 查看组件变量
+
+每个组件文档的 **Styles API** 标签页会列出该组件支持的所有 CSS 变量。
+
+## 下一步
+
+- 学习 [CSS Modules](/styles-api/css-modules)
+- 返回 [Styles API 概览](/styles-api)

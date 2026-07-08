@@ -1,0 +1,41 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Notification/Basic'
+import LoadingDemo from '@/demos/Notification/Loading'
+
+# Notification
+
+通知提示卡片，用于向用户反馈操作结果或系统状态。
+
+## 何时使用
+
+适合操作成功、错误提示、警告、加载中等需要立即引起用户注意的场景。
+
+## 基础使用
+
+<Demo
+    title="基础通知"
+    description="设置 title、message 和 icon 展示一条通知。"
+    demoId="notification/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## 加载状态
+
+<Demo
+    title="加载中"
+    description="设置 loading 可将图标替换为加载动画。"
+    demoId="notification/loading"
+>
+    <LoadingDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Notification" />
+
+## Styles API
+
+<StylesApiTable component="Notification" />

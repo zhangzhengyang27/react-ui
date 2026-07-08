@@ -25,8 +25,10 @@ type ComponentProp<C> = {
  */
 type InheritedProps<C extends ElementType, Props = {}> = ExtendedProps<PropsOf<C>, Props>
 
-/** 类型工具 PolymorphicRef<C> ，用于获取 React 组件或 HTML 元素的 ref 属性类型 */
-export type PolymorphicRef<C> = C extends React.ElementType ? React.ComponentPropsWithRef<C>['ref'] : never
+/** 类型工具 PolymorphicRef<C> ，用于获取 React 组件或 HTML 元素的 ref 属性类型（排除已废弃的 string ref） */
+export type PolymorphicRef<C> = C extends React.ElementType
+    ? Exclude<React.ComponentPropsWithRef<C>['ref'], string>
+    : never
 
 /**
  * 用于描述一个多态组件的 Props 类型。多态组件是指可以动态渲染不同组件或 HTML 元素的组件（例如，通过 component 属性指定渲染类型）

@@ -15,21 +15,21 @@ export function getTitleSize(order: TitleOrder, size?: TitleSize): GetTitleSizeR
 
     if (headings.includes(titleSize)) {
         return {
-            fontSize: `var(--mantine-${titleSize}-font-size)`,
-            fontWeight: `var(--mantine-${titleSize}-font-weight)`,
-            lineHeight: `var(--mantine-${titleSize}-line-height)`
+            fontSize: `var(--ui-${titleSize}-font-size)`,
+            fontWeight: `var(--ui-${titleSize}-font-weight)`,
+            lineHeight: `var(--ui-${titleSize}-line-height)`
         }
     } else if (sizes.includes(titleSize)) {
         return {
-            fontSize: `var(--mantine-font-size-${titleSize})`,
-            fontWeight: `var(--mantine-h${order}-font-weight)`,
-            lineHeight: `var(--mantine-h${order}-line-height)`
+            fontSize: `var(--ui-font-size-${titleSize})`,
+            fontWeight: `var(--ui-h${order}-font-weight)`,
+            lineHeight: `var(--ui-h${order}-line-height)`
         }
     }
 
     return {
         fontSize: rem(titleSize),
-        fontWeight: `var(--mantine-h${order}-font-weight)`,
-        lineHeight: `var(--mantine-h${order}-line-height)`
+        fontWeight: `var(--ui-h${order}-font-weight)`,
+        lineHeight: `var(--ui-h${order}-line-height)`
     }
 }

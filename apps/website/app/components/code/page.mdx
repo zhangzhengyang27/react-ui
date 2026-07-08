@@ -1,0 +1,41 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Code/Basic'
+import BlockDemo from '@/demos/Code/Block'
+
+# Code
+
+行内代码组件，用于展示代码片段、命令或变量名。
+
+## 何时使用
+
+在需要展示短代码、命令、变量名或文件路径时，可使用 Code 组件。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="Code 组件基础使用示例"
+    demoId="code/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## 块级代码
+
+<Demo
+    title="块级代码"
+    description="设置 block 属性后，Code 会以块级元素展示较长代码片段。"
+    demoId="code/block"
+>
+    <BlockDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Code" />
+
+## Styles API
+
+<StylesApiTable component="Code" />

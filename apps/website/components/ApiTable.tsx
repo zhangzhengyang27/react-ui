@@ -18,6 +18,7 @@ export interface Docgen {
     stylesNames: string[]
     cssVariables: Record<string, string[]>
     variants: string[]
+    modifiers: string[]
 }
 
 const DATA: Record<string, Docgen> = docgenData as any
@@ -58,7 +59,7 @@ export function ApiTable({ component }: ApiTableProps) {
                         padding: '8px 12px',
                         borderRadius: 8,
                         border: '1px solid var(--nextra-border-color, #333)',
-                        background: 'var(--nextra-bg-color, #111)',
+                        background: 'var(--nextra-bg, #111)',
                         color: 'var(--nextra-color, #fff)',
                         fontSize: 14,
                         outline: 'none'

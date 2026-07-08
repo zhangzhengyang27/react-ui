@@ -1,0 +1,42 @@
+.root {
+    --rating-size-xs: 14px;
+    --rating-size-sm: 18px;
+    --rating-size-md: 24px;
+    --rating-size-lg: 32px;
+    --rating-size-xl: 40px;
+
+    --rating-size: var(--rating-size-md);
+    --rating-color: var(--ui-color-yellow-filled);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.star {
+    position: relative;
+    width: var(--rating-size);
+    height: var(--rating-size);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    line-height: 0;
+}
+
+.root:where([data-readonly]) .star {
+    cursor: default;
+}
+
+.starSymbol {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: var(--ui-color-default-border);
+}
+
+.starFilled {
+    position: absolute;
+    inset: 0;
+    color: var(--rating-color);
+}

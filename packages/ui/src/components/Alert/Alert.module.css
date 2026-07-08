@@ -1,0 +1,75 @@
+.root {
+    --alert-radius: var(--ui-radius-default);
+    --alert-bg: var(--ui-primary-color-light);
+    --alert-bd: 1px solid transparent;
+    --alert-color: var(--ui-primary-color-light-color);
+
+    padding: var(--ui-spacing-md) var(--ui-spacing-md);
+    border-radius: var(--alert-radius);
+    position: relative;
+    overflow: hidden;
+    background-color: var(--alert-bg);
+    border: var(--alert-bd);
+    color: var(--alert-color);
+}
+
+.wrapper {
+    display: flex;
+}
+
+.body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--ui-spacing-xs);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--ui-font-size-sm);
+    font-weight: var(--ui-font-weight-bold);
+
+    &:where([data-with-close-button]) {
+        padding-inline-end: var(--ui-spacing-md);
+    }
+}
+
+.label {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.icon {
+    line-height: 1;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-inline-end: var(--ui-spacing-md);
+    margin-top: 1px;
+}
+
+.message {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: var(--ui-font-size-sm);
+    color: var(--ui-color-text);
+
+    &:where([data-variant='filled']) {
+        color: var(--alert-color);
+    }
+
+    &:where([data-variant='white']) {
+        color: var(--ui-color-black);
+    }
+}
+
+.closeButton {
+    width: 20px;
+    height: 20px;
+    color: var(--alert-color);
+}

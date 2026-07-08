@@ -1,5 +1,5 @@
 .root {
-    color: var(--mantine-color-anchor);
+    color: var(--ui-color-anchor);
     text-decoration: none;
 
     &:where([data-underline='always']) {

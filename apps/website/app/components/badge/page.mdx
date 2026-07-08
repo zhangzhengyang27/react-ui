@@ -3,6 +3,7 @@ import { ApiTable } from '@/components/ApiTable'
 import { StylesApiTable } from '@/components/StylesApiTable'
 import BasicDemo from '@/demos/Badge/Basic'
 import VariantDemo from '@/demos/Badge/Variant'
+import BadgePlayground from '@/demos/Badge/Playground'
 
 # Badge
 
@@ -17,11 +18,7 @@ import VariantDemo from '@/demos/Badge/Variant'
 <Demo
     title="基础用法"
     description="Badge 基础用法"
-    code={`import { Badge } from '@react-ui/ui'
-
-export default function BadgeBasicDemo() {
-    return <Badge>新消息</Badge>
-}`}
+    demoId="badge/basic"
 >
     <BasicDemo />
 </Demo>
@@ -31,21 +28,14 @@ export default function BadgeBasicDemo() {
 <Demo
     title="变体"
     description="Badge 支持多种预定义变体"
-    code={`import { Badge, Group } from '@react-ui/ui'
-
-export default function BadgeVariantDemo() {
-    return (
-        <Group>
-            <Badge variant="light">light</Badge>
-            <Badge variant="filled">filled</Badge>
-            <Badge variant="outline">outline</Badge>
-            <Badge variant="dot">dot</Badge>
-        </Group>
-    )
-}`}
+    demoId="badge/variant"
 >
     <VariantDemo />
 </Demo>
+
+## 交互式 Playground
+
+<BadgePlayground />
 
 ## API
 

@@ -1,0 +1,49 @@
+.root {
+    --image-radius: var(--ui-radius-default);
+
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: var(--image-radius);
+    width: var(--image-width);
+    height: var(--image-height);
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: var(--image-fit, cover);
+    border-radius: var(--image-radius);
+}
+
+.fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--image-radius);
+    background-color: var(--ui-color-gray-1);
+    color: var(--ui-color-gray-6);
+}
+
+.root:where([data-fit='contain']) .image {
+    object-fit: contain;
+}
+
+.root:where([data-fit='cover']) .image {
+    object-fit: cover;
+}
+
+.root:where([data-fit='fill']) .image {
+    object-fit: fill;
+}
+
+.root:where([data-fit='none']) .image {
+    object-fit: none;
+}
+
+.root:where([data-fit='scale-down']) .image {
+    object-fit: scale-down;
+}

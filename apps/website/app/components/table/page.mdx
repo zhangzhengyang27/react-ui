@@ -1,0 +1,41 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Table/Basic'
+import DataDemo from '@/demos/Table/Data'
+
+# Table
+
+用于展示行列数据的表格组件。
+
+## 何时使用
+
+当需要以结构化形式展示多条同类数据，或需要进行数据对比时，可使用表格组件。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="通过组合 Table.Thead、Table.Tbody、Table.Tr、Table.Th 和 Table.Td 手动构建表格。"
+    demoId="table/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## 使用 data 属性自动生成表格
+
+<Demo
+    title="数据驱动"
+    description="传入 data 二维数组即可自动生成表头与表格行，配合 striped 和 highlightOnHover 展示更丰富的视觉样式。"
+    demoId="table/data"
+>
+    <DataDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Table" />
+
+## Styles API
+
+<StylesApiTable component="Table" />

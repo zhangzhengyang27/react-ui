@@ -1,0 +1,43 @@
+.root {
+    --card-padding-xs: calc(0.625rem * var(--ui-scale));
+    --card-padding-sm: calc(0.75rem * var(--ui-scale));
+    --card-padding-md: calc(1rem * var(--ui-scale));
+    --card-padding-lg: calc(1.25rem * var(--ui-scale));
+    --card-padding-xl: calc(2rem * var(--ui-scale));
+
+    --card-padding: var(--card-padding-md);
+    --card-radius: var(--ui-radius-default);
+    --card-bg: var(--ui-color-body);
+    --card-bd: var(--ui-color-gray-3);
+
+    display: block;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--card-bg);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    padding: var(--card-padding);
+}
+
+.root:where([data-mantine-color-scheme='dark']) {
+    --card-bd: var(--ui-color-dark-4);
+}
+
+.root:where([data-with-border]) {
+    border: 1px solid var(--card-bd);
+}
+
+.section {
+    display: block;
+    margin-inline: calc(-1 * var(--card-padding));
+    padding-inline: 0;
+
+    &:where([data-with-border]) {
+        border-top: 1px solid var(--card-bd);
+        border-bottom: 1px solid var(--card-bd);
+    }
+
+    &:where([data-inherit-padding]) {
+        padding-inline: var(--card-padding);
+    }
+}

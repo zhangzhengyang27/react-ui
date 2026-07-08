@@ -1,0 +1,43 @@
+.root {
+    --dialog-size-xs: 320px;
+    --dialog-size-sm: 400px;
+    --dialog-size-md: 520px;
+    --dialog-size-lg: 640px;
+    --dialog-size-xl: 780px;
+    --dialog-size: var(--dialog-size-sm);
+
+    &[data-centered] {
+        .inner {
+            align-items: center;
+        }
+    }
+}
+
+.header {
+    border-start-start-radius: var(--dialog-radius, var(--ui-radius-default));
+    border-start-end-radius: var(--dialog-radius, var(--ui-radius-default));
+}
+
+.content {
+    width: var(--dialog-size);
+    max-width: calc(100% - var(--ui-spacing-xl) * 2);
+    max-height: calc(100dvh - var(--ui-spacing-xl) * 2);
+    overflow-y: auto;
+    border-radius: var(--dialog-radius, var(--ui-radius-default));
+}
+
+.inner {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: var(--ui-spacing-xl);
+}
+
+.close {
+    margin-inline-start: auto;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+}

@@ -1,0 +1,41 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Avatar/Basic'
+import FallbackDemo from '@/demos/Avatar/Fallback'
+
+# Avatar
+
+头像组件用于展示用户或对象的图像，支持图片加载失败或缺省时的 fallback 内容。
+
+## 何时使用
+
+需要展示用户头像、品牌标识或其他小型图像时使用 Avatar 组件。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="Avatar 基础使用示例"
+    demoId="avatar/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## Fallback
+
+<Demo
+    title="Fallback"
+    description="当未提供 src 或图片加载失败时，Avatar 会展示 children 作为 fallback 内容。"
+    demoId="avatar/fallback"
+>
+    <FallbackDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Avatar" />
+
+## Styles API
+
+<StylesApiTable component="Avatar" />

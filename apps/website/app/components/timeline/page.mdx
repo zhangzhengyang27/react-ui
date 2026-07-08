@@ -1,0 +1,41 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Timeline/Basic'
+import ActiveDemo from '@/demos/Timeline/Active'
+
+# Timeline
+
+时间轴用于按时间顺序展示一系列事件或步骤。
+
+## 何时使用
+
+适合展示任务进度、历史记录、版本变更、订单流转等需要体现时间先后顺序的场景。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="通过 Timeline.Item 添加时间轴节点，可设置标题和内容。"
+    demoId="timeline/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## 激活状态
+
+<Demo
+    title="激活状态"
+    description="通过 active 属性设置当前激活的节点索引，并可通过 color 自定义主题色。"
+    demoId="timeline/active"
+>
+    <ActiveDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Timeline" />
+
+## Styles API
+
+<StylesApiTable component="Timeline" />

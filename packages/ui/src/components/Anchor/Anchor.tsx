@@ -28,7 +28,7 @@ const defaultProps = {
 /**
  * 锚点链接组件。对齐 mantine Anchor（基于 Text，polymorphicFactory + CSS module）。
  */
-export const Anchor = polymorphicFactory<AnchorFactory>(props => {
+export const Anchor = polymorphicFactory<AnchorFactory>((props, _ref) => {
     const { underline, className, unstyled, mod, ...others } = useProps('Anchor', defaultProps, props)
 
     return (

@@ -1,0 +1,41 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/AppShell/Basic'
+import CollapsedDemo from '@/demos/AppShell/Collapsed'
+
+# AppShell
+
+AppShell 提供应用级布局框架，包含 Header、Navbar、Aside、Footer、Main 等区域。
+
+## 何时使用
+
+当需要构建后台管理系统、仪表盘或具有固定区域的应用布局时使用 AppShell。
+
+## 基础使用
+
+<Demo
+    title="完整布局"
+    description="通过配置 header、navbar、aside、footer 尺寸，组合出完整应用骨架。"
+    demoId="app-shell/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## 折叠侧边栏
+
+<Demo
+    title="折叠状态"
+    description="设置 navbar.collapsed 或 aside.collapsed 可收起对应区域。"
+    demoId="app-shell/collapsed"
+>
+    <CollapsedDemo />
+</Demo>
+
+## API
+
+<ApiTable component="AppShell" />
+
+## Styles API
+
+<StylesApiTable component="AppShell" />

@@ -1,0 +1,63 @@
+.root {
+    --ni-control-width-xs: 20px;
+    --ni-control-width-sm: 22px;
+    --ni-control-width-md: 24px;
+    --ni-control-width-lg: 28px;
+    --ni-control-width-xl: 32px;
+    --ni-control-width: var(--ni-control-width-sm);
+}
+
+.input {
+    width: 100%;
+}
+
+.section {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    border-inline-start: 1px solid var(--input-bd);
+}
+
+.control {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--ui-color-dimmed);
+    padding: 0;
+    width: 100%;
+    transition:
+        background-color 100ms ease,
+        color 100ms ease;
+}
+
+.control:where([data-direction='up']) {
+    border-bottom: 1px solid var(--input-bd);
+}
+
+.control:where(:disabled, [data-disabled]) {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.control:where(:not(:disabled, [data-disabled]):hover) {
+    background-color: var(--ui-color-gray-0);
+    color: var(--ui-color-text);
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10px;
+    height: 10px;
+}
+
+.icon > svg {
+    width: 100%;
+    height: 100%;
+}

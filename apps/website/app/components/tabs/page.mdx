@@ -1,0 +1,41 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Tabs/Basic'
+import VariantDemo from '@/demos/Tabs/Variant'
+
+# Tabs
+
+标签页组件，用于在同一空间内切换展示不同内容区域。
+
+## 何时使用
+
+适合内容分类展示、表单分步填写、设置面板等需要在多个视图间切换的场景。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="通过 Tabs.List 包裹 Tabs.Tab，配合 Tabs.Panel 展示对应内容。"
+    demoId="tabs/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## 变体样式
+
+<Demo
+    title="Pills 变体"
+    description="使用 variant 属性切换标签页的视觉风格，例如 pills。"
+    demoId="tabs/variant"
+>
+    <VariantDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Tabs" />
+
+## Styles API
+
+<StylesApiTable component="Tabs" />

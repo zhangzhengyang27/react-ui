@@ -1,0 +1,144 @@
+.root {
+    --tabs-radius: var(--ui-radius-default);
+    --tabs-color: var(--ui-primary-color-filled);
+    --tabs-bg: var(--ui-primary-color-light);
+    --tabs-bd: 1px solid var(--ui-primary-color-outline);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.root:where([data-orientation='vertical']) {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    gap: var(--ui-spacing-xs);
+    position: relative;
+}
+
+.root:where([data-orientation='vertical']) .list {
+    flex-direction: column;
+}
+
+.list:where([data-grow]) .tab {
+    flex: 1;
+}
+
+.list:where([data-position='center']) {
+    justify-content: center;
+}
+
+.list:where([data-position='right']) {
+    justify-content: flex-end;
+}
+
+.list:where([data-position='apart']) {
+    justify-content: space-between;
+}
+
+.tab {
+    appearance: none;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--tabs-radius);
+    color: var(--ui-color-dimmed);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ui-spacing-xs);
+    font-size: var(--ui-font-size-sm);
+    font-weight: var(--ui-font-weight-medium);
+    padding: var(--ui-spacing-xs) var(--ui-spacing-md);
+    position: relative;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.tabSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab:where(:disabled, [data-disabled]) {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.tab:where([data-active]) {
+    color: var(--tabs-color);
+}
+
+.root:where([data-variant='default']) .list {
+    border-bottom: 1px solid var(--ui-color-default-border);
+}
+
+.root:where([data-variant='default']) .tab {
+    border-bottom-color: transparent;
+    margin-bottom: -1px;
+    border-radius: var(--tabs-radius) var(--tabs-radius) 0 0;
+}
+
+.root:where([data-variant='default']) .tab:where([data-active]) {
+    border-bottom-color: var(--tabs-color);
+}
+
+.root:where([data-orientation='vertical'][data-variant='default']) .list {
+    border-bottom: none;
+    border-right: 1px solid var(--ui-color-default-border);
+}
+
+.root:where([data-orientation='vertical'][data-variant='default']) .tab {
+    border-bottom-color: transparent;
+    margin-bottom: 0;
+    border-right-color: transparent;
+    margin-right: -1px;
+    border-radius: var(--tabs-radius) 0 0 var(--tabs-radius);
+}
+
+.root:where([data-orientation='vertical'][data-variant='default']) .tab:where([data-active]) {
+    border-right-color: var(--tabs-color);
+}
+
+.root:where([data-variant='outline']) .list {
+    border-bottom: 1px solid var(--ui-color-default-border);
+}
+
+.root:where([data-variant='outline']) .tab:where([data-active]) {
+    background: var(--ui-color-body);
+    border-color: var(--tabs-bd);
+    border-bottom-color: transparent;
+    border-radius: var(--tabs-radius) var(--tabs-radius) 0 0;
+}
+
+.root:where([data-orientation='vertical'][data-variant='outline']) .list {
+    border-bottom: none;
+    border-right: 1px solid var(--ui-color-default-border);
+}
+
+.root:where([data-orientation='vertical'][data-variant='outline']) .tab:where([data-active]) {
+    border-bottom-color: var(--tabs-bd);
+    border-right-color: transparent;
+    border-radius: var(--tabs-radius) 0 0 var(--tabs-radius);
+}
+
+.root:where([data-variant='pills']) .tab:where([data-active]) {
+    background: var(--tabs-bg);
+    color: var(--tabs-color);
+}
+
+.panel {
+    padding-top: var(--ui-spacing-md);
+}
+
+.root:where([data-orientation='vertical']) .panel {
+    padding-top: 0;
+    padding-left: var(--ui-spacing-md);
+    flex: 1;
+}

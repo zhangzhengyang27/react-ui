@@ -50,7 +50,7 @@ export type FlexFactory = PolymorphicFactory<{
     stylesNames: FlexStylesNames
 }>
 
-export const Flex = polymorphicFactory<FlexFactory>(_props => {
+export const Flex = polymorphicFactory<FlexFactory>((_props, _ref) => {
     const props = useProps('Flex', null, _props)
     const {
         classNames,

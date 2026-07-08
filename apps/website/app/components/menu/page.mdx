@@ -1,0 +1,37 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Menu/Basic'
+import HoverDemo from '@/demos/Menu/Hover'
+
+# Menu
+
+Menu 是一种弹出式菜单组件，支持点击或悬停触发。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="点击按钮打开菜单。"
+    demoId="menu/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## 悬停触发
+
+<Demo
+    title="悬停打开"
+    description="通过 trigger 属性设置为 'hover' 实现悬停打开菜单。"
+    demoId="menu/hover"
+>
+    <HoverDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Menu" />
+
+## Styles API
+
+<StylesApiTable component="Menu" />

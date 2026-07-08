@@ -1,0 +1,56 @@
+.root {
+    --pagination-control-size-xs: 22px;
+    --pagination-control-size-sm: 26px;
+    --pagination-control-size-md: 32px;
+    --pagination-control-size-lg: 38px;
+    --pagination-control-size-xl: 44px;
+
+    display: flex;
+    align-items: center;
+    gap: calc(var(--ui-spacing-sm) / 2);
+}
+
+.control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--pagination-control-size, var(--pagination-control-size-sm));
+    height: var(--pagination-control-size, var(--pagination-control-size-sm));
+    border-radius: var(--pagination-control-radius, var(--ui-radius-default));
+    font-size: var(--pagination-control-fz, var(--ui-font-size-sm));
+    line-height: 1;
+    padding: 0 calc(var(--ui-spacing-xs) / 2);
+    background-color: transparent;
+    color: var(--ui-color-text);
+    border: 1px solid transparent;
+    cursor: pointer;
+    user-select: none;
+    transition:
+        background-color 150ms ease,
+        color 150ms ease;
+}
+
+.control:where(:hover:not(:disabled, [data-disabled], [data-active])) {
+    background-color: var(--ui-color-default-hover);
+}
+
+.control:where([data-active]) {
+    background-color: var(--pagination-control-bg, var(--ui-primary-color-filled));
+    color: var(--pagination-control-color, var(--ui-color-white));
+}
+
+.control:where(:disabled, [data-disabled]) {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--pagination-control-size, var(--pagination-control-size-sm));
+    height: var(--pagination-control-size, var(--pagination-control-size-sm));
+    font-size: var(--pagination-control-fz, var(--ui-font-size-sm));
+    color: var(--ui-color-text);
+    user-select: none;
+}

@@ -1,0 +1,7 @@
+.root {
+    -webkit-tap-highlight-color: transparent;
+    background-color: var(--mark-bg);
+    color: var(--mark-color);
+    padding: 0 calc(var(--ui-spacing-xs) / 2);
+    border-radius: var(--ui-radius-sm);
+}

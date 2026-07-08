@@ -1,0 +1,37 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Select/Basic'
+import SearchableDemo from '@/demos/Select/Searchable'
+
+# Select
+
+Select 组件用于从一组选项中选择单个值，支持搜索、清除、分组和禁用项。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="通过 data 传入选项，使用 defaultValue 设置默认值。"
+    demoId="select/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## 可搜索与可清除
+
+<Demo
+    title="搜索与清除"
+    description="开启 searchable 可在输入框中搜索选项，开启 clearable 可快速清除已选项。"
+    demoId="select/searchable"
+>
+    <SearchableDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Select" />
+
+## Styles API
+
+<StylesApiTable component="Select" />

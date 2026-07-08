@@ -62,7 +62,7 @@ const varsResolver = createVarsResolver<TitleFactory>((_, { order, size, lineCla
 /**
  * 标题组件（h1-h6）。对齐 mantine Title（factory + useStyles + varsResolver + CSS module）。
  */
-export const Title = factory<TitleFactory>(_props => {
+export const Title = factory<TitleFactory>((_props, _ref) => {
     const props = useProps('Title', defaultProps, _props)
     const {
         classNames,

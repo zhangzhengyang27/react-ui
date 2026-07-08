@@ -54,7 +54,7 @@ const defaultProps = {
  * 折叠容器：基于 useCollapse 实现高度/宽度过渡动画。
  * 对齐 mantine Collapse。引擎无关（Box + 内联样式 + React 19 Activity）。
  */
-export const Collapse = factory<CollapseFactory>(props => {
+export const Collapse = factory<CollapseFactory>((props, ref) => {
     const {
         children,
         expanded,
@@ -65,7 +65,6 @@ export const Collapse = factory<CollapseFactory>(props => {
         onTransitionStart,
         animateOpacity,
         keepMounted,
-        ref,
         orientation,
         ...others
     } = useProps('Collapse', defaultProps, props)

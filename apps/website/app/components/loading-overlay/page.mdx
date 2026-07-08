@@ -1,0 +1,30 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/LoadingOverlay/Basic'
+
+# LoadingOverlay
+
+加载遮罩组件，用于在目标区域上方显示半透明遮罩和加载指示器。
+
+## 何时使用
+
+适合表格刷新、表单提交、图片上传等需要阻止用户操作并提示加载状态的场景。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="控制 visible 属性切换遮罩显示。"
+    demoId="loadingoverlay/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## API
+
+<ApiTable component="LoadingOverlay" />
+
+## Styles API
+
+<StylesApiTable component="LoadingOverlay" />

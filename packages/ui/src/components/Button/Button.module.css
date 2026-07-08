@@ -25,10 +25,10 @@
 
     --button-height: var(--button-height-sm);
     --button-padding-x: var(--button-padding-x-sm);
-    --button-color: var(--mantine-color-white);
+    --button-color: var(--ui-color-white);
 
     user-select: none;
-    font-weight: var(--mantine-font-weight-medium);
+    font-weight: var(--ui-font-weight-medium);
     position: relative;
     line-height: 1;
     text-align: center;
@@ -37,11 +37,11 @@
     width: auto;
     cursor: pointer;
     display: inline-block;
-    border-radius: var(--button-radius, var(--mantine-radius-default));
-    font-size: var(--button-fz, var(--mantine-font-size-sm));
-    background: var(--button-bg, var(--mantine-primary-color-filled));
+    border-radius: var(--button-radius, var(--ui-radius-default));
+    font-size: var(--button-fz, var(--ui-font-size-sm));
+    background: var(--button-bg, var(--ui-primary-color-filled));
     border: var(--button-bd, 1px solid transparent);
-    color: var(--button-color, var(--mantine-color-white));
+    color: var(--button-color, var(--ui-color-white));
     height: var(--button-height, var(--button-height-sm));
     padding-inline: var(--button-padding-x, var(--button-padding-x-sm));
     vertical-align: middle;
@@ -63,8 +63,8 @@
         cursor: not-allowed;
         border: 1px solid transparent;
         transform: none;
-        color: var(--mantine-color-disabled-color);
-        background: var(--mantine-color-disabled);
+        color: var(--ui-color-disabled-color);
+        background: var(--ui-color-disabled);
     }
 
     &::before {
@@ -72,7 +72,7 @@
         pointer-events: none;
         position: absolute;
         inset: -1px;
-        border-radius: var(--button-radius, var(--mantine-radius-default));
+        border-radius: var(--button-radius, var(--ui-radius-default));
         transform: translateY(-100%);
         opacity: 0;
         filter: blur(12px);
@@ -98,7 +98,7 @@
     }
 
     &:hover:where(:not([data-loading], :disabled, [data-disabled])) {
-        background-color: var(--button-hover, var(--mantine-primary-color-filled-hover));
+        background-color: var(--button-hover, var(--ui-primary-color-filled-hover));
         color: var(--button-hover-color, var(--button-color));
     }
 }
@@ -132,11 +132,11 @@
     align-items: center;
 
     &:where([data-position='left']) {
-        margin-inline-end: var(--mantine-spacing-xs);
+        margin-inline-end: var(--ui-spacing-xs);
     }
 
     &:where([data-position='right']) {
-        margin-inline-start: var(--mantine-spacing-xs);
+        margin-inline-start: var(--ui-spacing-xs);
     }
 }
 

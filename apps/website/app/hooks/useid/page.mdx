@@ -1,0 +1,28 @@
+import { HookApiTable } from '@/components/HookApiTable'
+import { Demo } from '@/components/Demo'
+import { HookExample } from '@/components/HookExamples'
+
+# useId
+
+生成唯一的ID，优先使用静态ID，其次使用React生成的ID，最后使用随机UUID
+
+## 使用示例
+
+<Demo
+    title="基础用法"
+    description="useId 基础使用示例"
+    themeToggle
+    rtl
+    code={`import { useId } from '@react-ui/hooks'
+
+export default function Example() {
+    const result = useId()
+    return <div>{JSON.stringify(result)}</div>
+}`}
+>
+    <HookExample hook="useId" />
+</Demo>
+
+## API
+
+<HookApiTable hook="useId" />

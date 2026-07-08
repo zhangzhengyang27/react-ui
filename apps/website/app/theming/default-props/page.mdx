@@ -1,0 +1,84 @@
+---
+title: 默认属性
+---
+
+import { Demo } from '@/components/Demo'
+import DefaultPropsDemo from '@/demos/theming/DefaultPropsDemo'
+
+# 默认属性
+
+通过 `theme.components` 可以为特定组件设置默认 `classNames`、`styles`、`vars` 和 `defaultProps`，实现全局样式定制。
+
+## 配置示例
+
+```tsx
+import { Provider, Button } from '@react-ui/ui'
+
+const theme = {
+    components: {
+        Button: {
+            defaultProps: {
+                variant: 'outline',
+                radius: 'xl'
+            },
+            classNames: {
+                root: 'my-global-button'
+            },
+            styles: {
+                root: { fontWeight: 600 }
+            }
+        }
+    }
+}
+
+function App() {
+    return (
+        <Provider theme={theme}>
+            <Button>全局样式生效</Button>
+        </Provider>
+    )
+}
+```
+
+## 交互式示例
+
+通过下方的控件实时修改 `theme.components.Button.defaultProps`，观察 Button 外观如何随全局配置变化：
+
+<Demo
+    title="全局默认属性"
+    description="使用 theme.components 统一设置 Button 的默认 variant、size、radius。"
+    demoId="theming/defaultpropsdemo"
+>
+    <DefaultPropsDemo />
+</Demo>
+
+## 优先级说明
+
+`theme.components.<Component>.defaultProps` 的优先级如下：
+
+1. **组件调用时显式传入的 props**（最高优先级）
+2. **`theme.components.<Component>.defaultProps`**（全局覆盖）
+3. **组件内部默认值**（最低优先级）
+
+这意味着如果你在 `theme.components.Button.defaultProps` 中设置了 `variant: 'outline'`，但某个页面里写了 `<Button variant="filled">`，那么该按钮仍会使用 `filled` 变体。
+
+## 动态样式
+
+`classNames` 和 `styles` 也支持函数形式，接收 theme 对象和组件 props：
+
+```tsx
+<Button
+    styles={(theme, props) => ({
+        root: {
+            backgroundColor: props.disabled ? theme.colors.gray[5] : theme.colors.blue[6]
+        }
+    })}
+>
+    Dynamic Styles
+</Button>
+```
+
+## 下一步
+
+- 深入了解 [Styles API](/styles-api)
+- 返回 [主题概览](/theming)

@@ -48,7 +48,7 @@ const varsResolver = createVarsResolver<BreadcrumbsFactory>((_, { separatorMargi
     }
 }))
 
-export const Breadcrumbs = factory<BreadcrumbsFactory>(_props => {
+export const Breadcrumbs = factory<BreadcrumbsFactory>((_props, _ref) => {
     const props = useProps('Breadcrumbs', defaultProps, _props)
     const {
         classNames,

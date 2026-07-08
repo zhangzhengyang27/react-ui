@@ -89,7 +89,7 @@ const varsResolver = createVarsResolver<TextFactory>((theme, { variant, lineClam
  * 文本组件。对齐 mantine Text（polymorphicFactory + useStyles + varsResolver + CSS module）。
  * 支持 size/lineClamp/truncate/inline/inherit/gradient/span/textWrap。
  */
-export const Text = polymorphicFactory<TextFactory>(_props => {
+export const Text = polymorphicFactory<TextFactory>((_props, _ref) => {
     const props = useProps('Text', defaultProps, _props)
     const {
         lineClamp,

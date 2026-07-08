@@ -11,7 +11,7 @@ export default function PortalBasicDemo() {
                     bottom: 16,
                     right: 16,
                     padding: 12,
-                    background: 'var(--nextra-bg-color, #222)',
+                    background: 'var(--nextra-bg, #222)',
                     border: '1px solid var(--nextra-border-color, #333)',
                     borderRadius: 8
                 }}

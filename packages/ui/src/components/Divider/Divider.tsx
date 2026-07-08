@@ -58,7 +58,7 @@ const varsResolver = createVarsResolver<DividerFactory>((theme, { color, variant
     }
 }))
 
-export const Divider = factory<DividerFactory>(_props => {
+export const Divider = factory<DividerFactory>((_props, _ref) => {
     const props = useProps('Divider', defaultProps, _props)
     const {
         classNames,

@@ -1,9 +1,9 @@
 .root {
     margin: 0;
-    font-weight: var(--title-fw, var(--mantine-h1-font-weight));
-    line-height: var(--title-lh, var(--mantine-h1-line-height));
-    font-size: var(--title-fz, var(--mantine-h1-font-size));
-    text-wrap: var(--title-text-wrap, var(--mantine-text-wrap));
+    font-weight: var(--title-fw, var(--ui-h1-font-weight));
+    line-height: var(--title-lh, var(--ui-h1-line-height));
+    font-size: var(--title-fz, var(--ui-h1-font-size));
+    text-wrap: var(--title-text-wrap, var(--ui-text-wrap));
 
     &:where([data-line-clamp]) {
         overflow: hidden;

@@ -1,0 +1,24 @@
+.tooltip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: var(--tooltip-z-index);
+    max-width: calc(100vw - var(--ui-spacing-md) * 2);
+    padding: calc(var(--ui-spacing-xs) / 2) var(--ui-spacing-sm);
+    font-size: var(--ui-font-size-sm);
+    line-height: var(--ui-line-height-sm);
+    color: var(--tooltip-color, var(--ui-color-white));
+    background-color: var(--tooltip-bg, var(--ui-color-gray-9));
+    border-radius: var(--tooltip-radius, var(--ui-radius-default));
+    pointer-events: none;
+    white-space: normal;
+
+    &:where([data-multiline]) {
+        max-width: 200px;
+        white-space: normal;
+    }
+}
+
+.arrow {
+    background-color: var(--tooltip-bg, var(--ui-color-gray-9));
+}

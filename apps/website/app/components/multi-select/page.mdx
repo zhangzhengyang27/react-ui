@@ -1,0 +1,37 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/MultiSelect/Basic'
+import LimitDemo from '@/demos/MultiSelect/Limit'
+
+# MultiSelect
+
+MultiSelect 组件用于从一组选项中选择多个值，支持搜索、清除、最大数量限制和分组。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="通过 data 传入选项，使用 defaultValue 设置默认选中的值。"
+    demoId="multiselect/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## 最大选择数量
+
+<Demo
+    title="限制选择数量"
+    description="通过 maxSelectedValues 限制最多可选的项数，达到上限后未选项将被禁用。"
+    demoId="multiselect/limit"
+>
+    <LimitDemo />
+</Demo>
+
+## API
+
+<ApiTable component="MultiSelect" />
+
+## Styles API
+
+<StylesApiTable component="MultiSelect" />

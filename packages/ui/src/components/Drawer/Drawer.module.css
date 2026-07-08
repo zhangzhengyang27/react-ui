@@ -1,0 +1,34 @@
+.root {
+    --drawer-size-xs: 320px;
+    --drawer-size-sm: 380px;
+    --drawer-size-md: 440px;
+    --drawer-size-lg: 620px;
+    --drawer-size-xl: 780px;
+    --drawer-size: var(--drawer-size-md);
+    --drawer-offset: 0rem;
+}
+
+.header {
+    border-start-start-radius: var(--drawer-radius, var(--ui-radius-default));
+    border-start-end-radius: var(--drawer-radius, var(--ui-radius-default));
+}
+
+.content {
+    flex: var(--drawer-flex, 0 0 var(--drawer-size));
+    height: var(--drawer-height, calc(100% - var(--drawer-offset) * 2));
+    margin: var(--drawer-offset);
+    max-width: calc(100% - var(--drawer-offset) * 2);
+    max-height: calc(100% - var(--drawer-offset) * 2);
+    overflow-y: auto;
+
+    &[data-hidden] {
+        opacity: 0 !important;
+        pointer-events: none;
+    }
+}
+
+.inner {
+    display: flex;
+    justify-content: var(--drawer-justify, flex-start);
+    align-items: var(--drawer-align, flex-start);
+}

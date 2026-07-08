@@ -1,0 +1,96 @@
+.root {
+    --slider-thumb-size-xs: 12px;
+    --slider-thumb-size-sm: 14px;
+    --slider-thumb-size-md: 18px;
+    --slider-thumb-size-lg: 22px;
+    --slider-thumb-size-xl: 28px;
+    --slider-track-height-xs: 2px;
+    --slider-track-height-sm: 4px;
+    --slider-track-height-md: 6px;
+    --slider-track-height-lg: 8px;
+    --slider-track-height-xl: 10px;
+
+    --slider-thumb-size: var(--slider-thumb-size-md);
+    --slider-track-height: var(--slider-track-height-md);
+    --slider-radius: var(--ui-radius-default);
+    --slider-color: var(--ui-primary-color-filled);
+
+    position: relative;
+    height: calc(var(--slider-thumb-size) + 4px);
+    display: flex;
+    align-items: center;
+    padding: 0 calc(var(--slider-thumb-size) / 2);
+}
+
+.track {
+    position: relative;
+    width: 100%;
+    height: var(--slider-track-height);
+    background-color: var(--ui-color-default-border);
+    border-radius: var(--slider-radius);
+}
+
+.bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--slider-color);
+    border-radius: var(--slider-radius);
+}
+
+.thumb {
+    position: absolute;
+    top: 50%;
+    width: var(--slider-thumb-size);
+    height: var(--slider-thumb-size);
+    background-color: var(--ui-color-white);
+    border: 2px solid var(--slider-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.root:where([data-disabled]) .thumb {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.label {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 8px;
+    border-radius: var(--ui-radius-sm);
+    background-color: var(--ui-color-dark-filled);
+    color: var(--ui-color-white);
+    font-size: var(--ui-font-size-xs);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.thumb:where([data-label-visible]) .label,
+.thumb:hover:where([data-label-hover]) .label {
+    opacity: 1;
+}
+
+.input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    margin: 0;
+}
+
+.root:where([data-disabled]) .input {
+    cursor: not-allowed;
+}

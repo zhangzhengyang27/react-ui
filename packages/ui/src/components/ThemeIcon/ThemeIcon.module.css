@@ -1,0 +1,37 @@
+.root {
+    --ti-size-xs: 16px;
+    --ti-size-sm: 20px;
+    --ti-size-md: 26px;
+    --ti-size-lg: 34px;
+    --ti-size-xl: 44px;
+
+    --ti-size: var(--ti-size-md);
+    --ti-radius: var(--ui-radius-default);
+    --ti-bg: var(--ui-primary-color-filled);
+    --ti-color: var(--ui-color-white);
+    --ti-bd: 1px solid transparent;
+
+    box-sizing: border-box;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    user-select: none;
+    overflow: hidden;
+
+    width: var(--ti-size);
+    height: var(--ti-size);
+    min-width: var(--ti-size);
+    min-height: var(--ti-size);
+    border-radius: var(--ti-radius);
+    background: var(--ti-bg);
+    color: var(--ti-color);
+    border: var(--ti-bd);
+}
+
+.root:where([data-variant='default']) {
+    --ti-bg: transparent;
+    --ti-color: var(--ui-color-text);
+    --ti-bd: 1px solid var(--ui-color-gray-4);
+}

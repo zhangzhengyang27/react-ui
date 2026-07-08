@@ -1,0 +1,60 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/FileInput/Basic'
+import MultipleDemo from '@/demos/FileInput/Multiple'
+
+# FileInput
+
+FileInput 用于选择文件，并以输入框形式展示已选文件名，支持单选、多选、清除和受控使用。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="点击输入框触发文件选择，onChange 返回选中的文件对象。"
+    code={`import { useState } from 'react'
+import { FileInput } from '@react-ui/ui'
+
+export default function FileInputBasicDemo() {
+    const [file, setFile] = useState<File | null>(null)
+
+    return <FileInput label="上传文件" placeholder="请选择文件" value={file} onChange={setFile} />
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## 多文件与清除
+
+<Demo
+    title="多文件上传"
+    description="设置 multiple 可多选，开启 clearable 显示清除按钮。"
+    code={`import { useState } from 'react'
+import { FileInput } from '@react-ui/ui'
+
+export default function FileInputMultipleDemo() {
+    const [files, setFiles] = useState<File[]>([])
+
+    return (
+        <FileInput
+            label="多文件上传"
+            placeholder="请选择文件"
+            multiple
+            value={files}
+            onChange={setFiles}
+            clearable
+        />
+    )
+}`}
+>
+    <MultipleDemo />
+</Demo>
+
+## API
+
+<ApiTable component="FileInput" />
+
+## Styles API
+
+<StylesApiTable component="FileInput" />

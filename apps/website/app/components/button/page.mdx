@@ -4,6 +4,7 @@ import { StylesApiTable } from '@/components/StylesApiTable'
 import BasicDemo from '@/demos/Button/Basic'
 import VariantDemo from '@/demos/Button/Variant'
 import DisabledDemo from '@/demos/Button/Disabled'
+import ButtonPlayground from '@/demos/Button/Playground'
 
 # Button
 
@@ -18,11 +19,7 @@ import DisabledDemo from '@/demos/Button/Disabled'
 <Demo
     title="基础用法"
     description="按钮组件基础使用示例"
-    code={`import { Button } from '@react-ui/ui'
-
-export default function BasicDemo() {
-    return <Button variant="default">请点击</Button>
-}`}
+    demoId="button/basic"
 >
     <BasicDemo />
 </Demo>
@@ -32,21 +29,7 @@ export default function BasicDemo() {
 <Demo
     title="按钮变体"
     description="通过 variant 属性切换不同视觉风格，满足多种场景需求。"
-    code={`import { Button, Group } from '@react-ui/ui'
-
-const VARIANTS = ['default', 'filled', 'gradient', 'light', 'outline', 'subtle', 'transparent', 'white']
-
-export default function ButtonVariantDemo() {
-    return (
-        <Group>
-            {VARIANTS.map(variant => (
-                <Button key={variant} variant={variant}>
-                    {variant}
-                </Button>
-            ))}
-        </Group>
-    )
-}`}
+    demoId="button/variant"
 >
     <VariantDemo />
 </Demo>
@@ -56,14 +39,14 @@ export default function ButtonVariantDemo() {
 <Demo
     title="禁用"
     description="按钮禁用后，无法进行交互操作。"
-    code={`import { Button } from '@react-ui/ui'
-
-export default function ButtonDisabledDemo() {
-    return <Button disabled>cannot click me</Button>
-}`}
+    demoId="button/disabled"
 >
     <DisabledDemo />
 </Demo>
+
+## 交互式 Playground
+
+<ButtonPlayground />
 
 ## API
 

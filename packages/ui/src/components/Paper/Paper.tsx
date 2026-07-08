@@ -47,7 +47,7 @@ const varsResolver = createVarsResolver<PaperFactory>((_, { radius, shadow }) =>
     }
 }))
 
-export const Paper = polymorphicFactory<PaperFactory>(_props => {
+export const Paper = polymorphicFactory<PaperFactory>((_props, _ref) => {
     const props = useProps('Paper', null, _props)
     const {
         classNames,

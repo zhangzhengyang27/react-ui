@@ -21,7 +21,9 @@
             }
         ],
         "paths": {
-            "@/*": ["./*"]
+            "@/*": ["./*"],
+            "@react-ui/ui": ["../../packages/ui/src/index.ts"],
+            "@react-ui/hooks": ["../../packages/hooks/src/index.ts"]
         }
     },
     "include": [
@@ -31,7 +33,8 @@
         ".next/types/**/*.ts",
         "next-env.d.ts",
         "docs-dist/types/**/*.ts",
-        ".docgen/**/*.json"
+        ".docgen/**/*.json",
+        ".docgen/**/*.ts"
     ],
     "exclude": ["node_modules"]
 }

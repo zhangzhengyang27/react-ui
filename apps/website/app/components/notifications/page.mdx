@@ -1,0 +1,32 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Notifications/Basic'
+
+# Notifications
+
+Notifications 提供全局通知系统，支持多位置、自动关闭、队列限制和程序化调用。
+
+## 何时使用
+
+当需要在页面任意位置展示操作结果、提示信息或警告通知时使用 Notifications。
+
+## 基础使用
+
+在应用根组件挂载 `<Notifications />`，然后通过 `notifications.show()` 触发通知。
+
+<Demo
+    title="基础用法"
+    description="点击按钮通过 notifications.show 显示一条通知。"
+    demoId="notifications/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Notifications" />
+
+## Styles API
+
+<StylesApiTable component="Notifications" />

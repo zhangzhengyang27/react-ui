@@ -1,0 +1,31 @@
+---
+title: Data 属性
+---
+
+# Data 属性
+
+组件通过 `data-*` 属性标记状态，便于通过 CSS 选择器或 CSS 变量控制状态样式。
+
+## 常用 data 属性
+
+- `data-disabled` — 禁用状态
+- `data-loading` — 加载状态
+- `data-active` — 激活状态
+- `data-ui-color-scheme` — 当前颜色方案
+
+## 示例
+
+```css
+.mantine-Button-root[data-disabled] {
+    opacity: 0.5;
+}
+
+.mantine-Button-root[data-loading] {
+    pointer-events: none;
+}
+```
+
+## 下一步
+
+- 了解 [变体与尺寸](/styles-api/variants-sizes)
+- 返回 [Styles API 概览](/styles-api)

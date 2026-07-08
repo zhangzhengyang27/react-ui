@@ -1,0 +1,51 @@
+.root {
+    --table-horizontal-spacing: var(--ui-spacing-sm);
+    --table-vertical-spacing: var(--ui-spacing-sm);
+    --table-caption-side: top;
+
+    width: 100%;
+    border-collapse: collapse;
+    caption-side: var(--table-caption-side);
+    font-size: var(--ui-font-size-sm);
+    color: var(--ui-color-text);
+}
+
+.root[data-with-table-border] {
+    border: 1px solid var(--ui-color-default-border);
+}
+
+.root[data-with-row-borders] thead tr {
+    border-bottom: 1px solid var(--ui-color-default-border);
+}
+
+.root[data-with-row-borders] tbody tr {
+    border-top: 1px solid var(--ui-color-default-border);
+}
+
+.root[data-with-column-borders] th,
+.root[data-with-column-borders] td {
+    border-right: 1px solid var(--ui-color-default-border);
+}
+
+.root[data-with-column-borders] th:last-child,
+.root[data-with-column-borders] td:last-child {
+    border-right: 0;
+}
+
+.th {
+    font-weight: var(--ui-font-weight-bold);
+    text-align: left;
+    padding: var(--table-vertical-spacing) var(--table-horizontal-spacing);
+}
+
+.td {
+    padding: var(--table-vertical-spacing) var(--table-horizontal-spacing);
+}
+
+.root[data-striped] tbody tr:nth-child(odd) {
+    background-color: var(--ui-color-default-hover);
+}
+
+.root[data-highlight-on-hover] tbody tr:hover {
+    background-color: var(--ui-color-default-hover);
+}

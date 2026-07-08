@@ -1,0 +1,60 @@
+.root {
+    --notification-color: var(--ui-primary-color-filled);
+    --notification-radius: var(--ui-radius-default);
+
+    display: flex;
+    align-items: flex-start;
+    gap: var(--ui-spacing-sm);
+    padding: var(--ui-spacing-sm);
+    border-radius: var(--notification-radius);
+    background-color: var(--ui-color-body);
+    border: 1px solid var(--ui-color-default-border);
+    box-shadow: var(--ui-shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.root::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: var(--notification-color);
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    color: var(--notification-color);
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--ui-spacing-xs);
+    min-width: 0;
+}
+
+.title {
+    font-size: var(--ui-font-size-sm);
+    font-weight: var(--ui-font-weight-bold);
+    color: var(--ui-color-text);
+    line-height: 1.4;
+}
+
+.description {
+    font-size: var(--ui-font-size-sm);
+    color: var(--ui-color-dimmed);
+    line-height: 1.5;
+}
+
+.closeButton {
+    flex-shrink: 0;
+}

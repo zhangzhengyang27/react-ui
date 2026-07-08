@@ -1,0 +1,13 @@
+.root {
+    border: 1px solid var(--ui-color-gray-4);
+    border-radius: var(--ui-radius-sm);
+    padding: var(--ui-spacing-md);
+    margin: 0;
+}
+
+.legend {
+    padding: 0 var(--ui-spacing-xs);
+    font-size: var(--ui-font-size-sm);
+    font-weight: 500;
+    color: var(--ui-color-text);
+}

@@ -1,0 +1,42 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/Checkbox/Basic'
+import IndeterminateDemo from '@/demos/Checkbox/Indeterminate'
+
+# Checkbox
+
+复选框用于在多个选项中进行选择，或用于开启/关闭某个单独选项。
+
+## 何时使用
+
+- 需要从一组选项中选择一个或多个选项时。
+- 需要在表单中表示布尔值开关（例如同意协议、启用通知）时。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="复选框的基础使用示例，支持 label、defaultChecked 等属性。"
+    demoId="checkbox/basic"
+>
+    <BasicDemo />
+</Demo>
+
+## 半选与禁用
+
+<Demo
+    title="半选与禁用状态"
+    description="设置 indeterminate 可展示半选状态；设置 disabled 可禁用交互。也可以结合 checked 与 onChange 实现受控组件。"
+    demoId="checkbox/indeterminate"
+>
+    <IndeterminateDemo />
+</Demo>
+
+## API
+
+<ApiTable component="Checkbox" />
+
+## Styles API
+
+<StylesApiTable component="Checkbox" />

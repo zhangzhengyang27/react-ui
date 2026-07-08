@@ -3,5 +3,5 @@
     flex-direction: column;
     align-items: var(--stack-align, stretch);
     justify-content: var(--stack-justify, flex-start);
-    gap: var(--stack-gap, var(--mantine-spacing-md));
+    gap: var(--stack-gap, var(--ui-spacing-md));
 }

@@ -1,0 +1,64 @@
+.root {
+    --progress-height-xs: 3px;
+    --progress-height-sm: 5px;
+    --progress-height-md: 8px;
+    --progress-height-lg: 12px;
+    --progress-height-xl: 16px;
+
+    --progress-radius: var(--ui-radius-default);
+    --progress-height: var(--progress-height-md);
+
+    display: flex;
+    height: var(--progress-height);
+    border-radius: var(--progress-radius);
+    background-color: var(--ui-color-default-border);
+    overflow: hidden;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: var(--ui-primary-color-filled);
+    border-radius: var(--progress-radius);
+    overflow: hidden;
+}
+
+.root:where([data-striped]) .section,
+.section:where([data-striped]) {
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.25) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0.25) 75%,
+        transparent 75%,
+        transparent
+    );
+    background-size: 1rem 1rem;
+}
+
+.root:where([data-animated]) .section,
+.section:where([data-animated]) {
+    animation: progress-stripes 1s linear infinite;
+}
+
+@keyframes progress-stripes {
+    0% {
+        background-position: 1rem 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.label {
+    font-size: var(--ui-font-size-xs);
+    font-weight: var(--ui-font-weight-bold);
+    color: var(--ui-color-white);
+    padding: 0 var(--ui-spacing-xs);
+    white-space: nowrap;
+}

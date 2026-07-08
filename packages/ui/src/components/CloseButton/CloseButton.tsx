@@ -69,7 +69,7 @@ const varsResolver = createVarsResolver<CloseButtonFactory>((_, { size, radius, 
     }
 }))
 
-export const CloseButton = polymorphicFactory<CloseButtonFactory>(_props => {
+export const CloseButton = polymorphicFactory<CloseButtonFactory>((_props, _ref) => {
     const props = useProps('CloseButton', defaultProps, _props)
     const {
         iconSize,

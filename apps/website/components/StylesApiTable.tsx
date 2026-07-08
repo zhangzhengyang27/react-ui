@@ -10,7 +10,7 @@ export interface StylesApiTableProps {
     component: string
 }
 
-type TabKey = 'selectors' | 'variables' | 'variants'
+type TabKey = 'selectors' | 'variables' | 'variants' | 'modifiers'
 
 export function StylesApiTable({ component }: StylesApiTableProps) {
     const doc = DATA[component]
@@ -22,10 +22,12 @@ export function StylesApiTable({ component }: StylesApiTableProps) {
 
     const hasVariables = Object.keys(doc.cssVariables).length > 0
     const hasVariants = doc.variants.length > 0
+    const hasModifiers = (doc.modifiers?.length ?? 0) > 0
 
     const tabs: { key: TabKey; label: string }[] = [{ key: 'selectors', label: 'Selectors' }]
     if (hasVariables) tabs.push({ key: 'variables', label: 'CSS variables' })
     if (hasVariants) tabs.push({ key: 'variants', label: 'Variants' })
+    if (hasModifiers) tabs.push({ key: 'modifiers', label: 'Modifiers' })
 
     return (
         <div style={{ marginTop: 16 }}>
@@ -121,7 +123,7 @@ export function StylesApiTable({ component }: StylesApiTableProps) {
                             style={{
                                 padding: '6px 12px',
                                 borderRadius: 6,
-                                background: 'var(--nextra-bg-color, #111)',
+                                background: 'var(--nextra-bg, #111)',
                                 border: '1px solid var(--nextra-border-color, #333)',
                                 fontSize: 13
                             }}
@@ -129,6 +131,34 @@ export function StylesApiTable({ component }: StylesApiTableProps) {
                             {variant}
                         </code>
                     ))}
+                </div>
+            )}
+
+            {active === 'modifiers' && hasModifiers && (
+                <div style={{ overflowX: 'auto' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+                        <thead>
+                            <tr style={{ borderBottom: '1px solid var(--nextra-border-color, #333)' }}>
+                                <th style={{ textAlign: 'left', padding: '12px 8px' }}>Attribute</th>
+                                <th style={{ textAlign: 'left', padding: '12px 8px' }}>CSS 选择器示例</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {doc.modifiers.map(modifier => (
+                                <tr
+                                    key={modifier}
+                                    style={{ borderBottom: '1px solid var(--nextra-border-color, #222)' }}
+                                >
+                                    <td style={{ padding: '12px 8px', fontFamily: 'monospace', whiteSpace: 'nowrap' }}>
+                                        {modifier}
+                                    </td>
+                                    <td style={{ padding: '12px 8px', fontFamily: 'monospace', fontSize: 13 }}>
+                                        <code>{`.${component}-root[${modifier}]`}</code>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             )}
         </div>

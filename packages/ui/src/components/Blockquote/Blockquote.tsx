@@ -74,7 +74,7 @@ const varsResolver = createVarsResolver<BlockquoteFactory>((theme, { color, icon
     }
 })
 
-export const Blockquote = factory<BlockquoteFactory>(_props => {
+export const Blockquote = factory<BlockquoteFactory>((_props, _ref) => {
     const props = useProps('Blockquote', defaultProps, _props)
     const {
         classNames,

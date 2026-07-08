@@ -1,0 +1,11 @@
+.dropdown {
+    background-color: var(--ui-color-body);
+    border: 1px solid var(--ui-color-default-border);
+    border-radius: var(--popover-radius, var(--ui-radius-default));
+    box-shadow: var(--popover-shadow, var(--ui-shadow-md));
+    padding: var(--ui-spacing-sm);
+}
+
+.arrow {
+    background-color: var(--ui-color-body);
+}

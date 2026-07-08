@@ -1,97 +1,20 @@
 ---
-title: 主题
+title: 主题概览
 ---
 
 import { Demo } from '@/components/Demo'
 
 # 主题配置
 
-`@react-ui/ui` 的主题是一个对象，包含了应用的颜色、字体、间距、圆角、阴影等设计令牌。
-通过 `Provider` 的 `theme` 属性传入覆盖对象，即可全局自定义组件外观。
+`@react-ui/ui` 的主题系统借鉴 Mantine，通过 `Provider` 的 `theme` 属性统一管理颜色、字体、间距、圆角、阴影等设计令牌。
 
-## 主题对象
+## 核心概念
 
-```tsx
-interface MantineTheme {
-    /** 焦点环样式：auto | always | never，默认 auto */
-    focusRing: 'auto' | 'always' | 'never'
-
-    /** rem 单位缩放比例，默认 1 */
-    scale: number
-
-    /** 是否在 body 上设置 font-smoothing，默认 true */
-    fontSmoothing: boolean
-
-    /** 白色与黑色颜色值 */
-    white: string
-    black: string
-
-    /** 颜色配置，键为颜色名，值为 10 个色阶的数组 */
-    colors: MantineThemeColors
-
-    /** 主色调色阶，默认 { light: 6, dark: 8 } */
-    primaryShade: MantineColorShade | MantinePrimaryShade
-
-    /** 主色名称，默认 blue */
-    primaryColor: string
-
-    /** 颜色解析函数，用于自定义变体颜色 */
-    variantColorResolver: VariantColorsResolver
-
-    /** 是否自动调整文本对比度，默认 false */
-    autoContrast: boolean
-
-    /** 亮度阈值，默认 0.3 */
-    luminanceThreshold: number
-
-    /** 字体与等宽字体 */
-    fontFamily: string
-    fontFamilyMonospace: string
-
-    /** 标题样式 */
-    headings: {
-        fontFamily: string
-        fontWeight: string
-        textWrap: 'wrap' | 'nowrap' | 'balance' | 'pretty' | 'stable'
-        sizes: {
-            h1: HeadingStyle
-            h2: HeadingStyle
-            h3: HeadingStyle
-            h4: HeadingStyle
-            h5: HeadingStyle
-            h6: HeadingStyle
-        }
-    }
-
-    /** 圆角、间距、字体大小、行高、断点、阴影 */
-    radius: MantineRadiusValues
-    defaultRadius: MantineRadius
-    spacing: MantineSpacingValues
-    fontSizes: MantineFontSizesValues
-    lineHeights: MantineLineHeightValues
-    breakpoints: MantineBreakpointsValues
-    shadows: MantineShadowsValues
-
-    /** 是否尊重系统减少动画，默认 false */
-    respectReducedMotion: boolean
-
-    /** 交互元素光标类型，默认 default */
-    cursorType: 'default' | 'pointer'
-
-    /** 默认渐变 */
-    defaultGradient: MantineGradient
-
-    /** 活跃/焦点状态类名 */
-    activeClassName: string
-    focusClassName: string
-
-    /** 组件级样式覆盖 */
-    components: MantineThemeComponents
-
-    /** 任意自定义字段 */
-    other: MantineThemeOther
-}
-```
+-   **主题对象** — 包含所有设计令牌的结构化对象
+-   **颜色系统** — 基于色阶的颜色配置与主色管理
+-   **颜色方案** — light / dark 模式切换
+-   **字体排版** — 字体、标题、行高配置
+-   **默认属性** — 通过 `theme.components` 统一设置组件默认 props
 
 ## 基础用法
 
@@ -99,7 +22,7 @@ interface MantineTheme {
 
 <Demo
     title="自定义主题"
-    description="修改主色与圆角，观察 Button 组件的变化。"
+    description="修改主色与圆角，观察组件外观变化。"
     code={`import { Provider, Button, Group } from '@react-ui/ui'
 
 function Demo() {
@@ -107,26 +30,10 @@ return (
 <Provider
 theme={{
                 primaryColor: 'cyan',
-                defaultRadius: 'xl',
-                colors: {
-                    brand: [
-                        '#e0f7fa',
-                        '#b2ebf2',
-                        '#80deea',
-                        '#4dd0e1',
-                        '#26c6da',
-                        '#00bcd4',
-                        '#00acc1',
-                        '#0097a7',
-                        '#00838f',
-                        '#006064'
-                    ]
-                }
+                defaultRadius: 'xl'
             }} >
 <Group>
-<Button variant="filled" color="brand">
-Brand Button
-</Button>
+<Button variant="filled">Cyan Button</Button>
 <Button variant="outline">Outline</Button>
 </Group>
 </Provider>
@@ -141,42 +48,9 @@ Brand Button
 
 </Demo>
 
-## 常用属性
-
-### primaryColor
-
-设置全局主色，影响 `Button`、`ActionIcon`、`Loader` 等组件的默认颜色。必须是 `theme.colors` 中已定义的颜色键名。
-
-### primaryShade
-
-控制使用主色的哪个色阶。可设置为数字 `0-9`，或分别为浅色/深色模式指定：
-
-```tsx
-{
-    primaryShade: { light: 6, dark: 8 }
-}
-```
-
-### defaultRadius
-
-大多数组件默认使用的圆角，可以是 `xs | sm | md | lg | xl` 或具体的 `rem/px` 值。
-
-### spacing / radius / fontSizes
-
-这些对象定义了组件中可使用的尺寸令牌。组件的 `size` 属性通常映射到这些对象中的键。
-
-```tsx
-{
-    spacing: { xs: '0.625rem', sm: '0.75rem', md: '1rem', lg: '1.25rem', xl: '2rem' },
-    radius: { xs: '0.125rem', sm: '0.25rem', md: '0.5rem', lg: '1rem', xl: '2rem' }
-}
-```
-
-### components
-
-通过 `theme.components` 可以为特定组件设置默认 `classNames`、`styles`、`vars` 和 `defaultProps`，实现全局样式定制。详见 [Styles API](/styles-api)。
-
 ## 下一步
 
--   了解 [Provider](/provider) 的完整用法
--   了解 [Styles API](/styles-api) 如何自定义组件样式
+-   了解 [主题对象](/theming/theme-object) 的完整结构
+-   学习 [颜色系统](/theming/colors) 如何配置自定义颜色
+-   查看 [颜色方案](/theming/color-schemes) 切换 light/dark 模式
+-   阅读 [Styles API](/styles-api) 自定义组件样式

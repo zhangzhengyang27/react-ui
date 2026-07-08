@@ -1,0 +1,71 @@
+import { Demo } from '@/components/Demo'
+import { ApiTable } from '@/components/ApiTable'
+import { StylesApiTable } from '@/components/StylesApiTable'
+import BasicDemo from '@/demos/FileButton/Basic'
+import MultipleDemo from '@/demos/FileButton/Multiple'
+
+# FileButton
+
+FileButton 组件将任意按钮包装成文件选择触发器，底层使用隐藏的原生文件输入。
+
+## 基础使用
+
+<Demo
+    title="基础用法"
+    description="点击按钮触发文件选择，onChange 返回选中的文件对象。"
+    code={`import { useState } from 'react'
+import { Button, FileButton } from '@react-ui/ui'
+
+export default function FileButtonBasicDemo() {
+    const [file, setFile] = useState<File | null>(null)
+
+    return (
+        <>
+            <FileButton onChange={setFile} accept="image/png,image/jpeg">
+                {({ onClick }) => <Button onClick={onClick}>上传图片</Button>}
+            </FileButton>
+            {file && <div style={{ marginTop: 8 }}>已选择: {file.name}</div>}
+        </>
+    )
+}`}
+>
+    <BasicDemo />
+</Demo>
+
+## 多文件选择
+
+<Demo
+    title="多文件"
+    description="设置 multiple 后，onChange 返回文件数组。"
+    code={`import { useState } from 'react'
+import { Button, FileButton } from '@react-ui/ui'
+
+export default function FileButtonMultipleDemo() {
+    const [files, setFiles] = useState<File[]>([])
+
+    return (
+        <>
+            <FileButton onChange={setFiles} multiple accept="image/png,image/jpeg">
+                {({ onClick }) => <Button onClick={onClick}>上传多张图片</Button>}
+            </FileButton>
+            {files.length > 0 && (
+                <ul style={{ marginTop: 8 }}>
+                    {files.map((file, index) => (
+                        <li key={index}>{file.name}</li>
+                    ))}
+                </ul>
+            )}
+        </>
+    )
+}`}
+>
+    <MultipleDemo />
+</Demo>
+
+## API
+
+<ApiTable component="FileButton" />
+
+## Styles API
+
+<StylesApiTable component="FileButton" />

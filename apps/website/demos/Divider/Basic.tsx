@@ -1,7 +1,8 @@
-'use client'
-
+import React from 'react'
 import { Divider } from '@react-ui/ui'
 
-export default function DividerBasicDemo() {
+const Basic: React.FC = () => {
     return <Divider />
 }
+
+export default Basic

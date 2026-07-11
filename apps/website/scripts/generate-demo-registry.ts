@@ -24,6 +24,7 @@ function walk(dir: string): string[] {
     const out: string[] = []
     if (!existsSync(dir)) return out
     for (const name of readdirSync(dir)) {
+        if (name === 'node_modules' || name.startsWith('.')) continue
         const full = join(dir, name)
         const st = statSync(full)
         if (st.isDirectory()) {
@@ -37,7 +38,6 @@ function walk(dir: string): string[] {
 
 function main() {
     const files = walk(DEMOS_DIR).sort()
-    const imports: string[] = []
     const entries: string[] = []
 
     files.forEach(file => {

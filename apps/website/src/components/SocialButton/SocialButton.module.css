@@ -1,0 +1,12 @@
+.socialButton {
+  border: 0;
+  height: 42px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.socialButtonSection {
+  &[data-position='left'] {
+    margin-inline-end: var(--mantine-spacing-md);
+  }
+}

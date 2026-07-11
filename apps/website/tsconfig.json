@@ -21,9 +21,9 @@
             }
         ],
         "paths": {
-            "@/*": ["./*"],
-            "@react-ui/ui": ["../../packages/ui/src/index.ts"],
-            "@react-ui/hooks": ["../../packages/hooks/src/index.ts"]
+            "@/.docgen/*": ["./.docgen/*"],
+            "@/*": ["./src/*"],
+            "@/layout": ["./src/components/MdxLayout"]
         }
     },
     "include": [

@@ -1,8 +1,7 @@
-'use client'
-
+import React from 'react'
 import { Space, Box } from '@react-ui/ui'
 
-export default function SpaceBasicDemo() {
+const Basic: React.FC = () => {
     return (
         <>
             <Box>上方内容</Box>
@@ -11,3 +10,5 @@ export default function SpaceBasicDemo() {
         </>
     )
 }
+
+export default Basic

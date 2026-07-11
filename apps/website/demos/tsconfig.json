@@ -1,0 +1,11 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "module": "ESNext",
+        "target": "ESNext",
+        "baseUrl": "./",
+        "isolatedModules": true,
+        "ignoreDeprecations": "6.0"
+    },
+    "include": [".", "../../@types"]
+}

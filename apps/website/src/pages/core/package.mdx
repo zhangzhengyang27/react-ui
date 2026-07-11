@@ -1,0 +1,25 @@
+import { StepperDemos } from '@react-ui/docs-demos';
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.CorePackage);
+
+# ReactUI Core components
+
+[![npm](https://img.shields.io/npm/dm/@react-ui/ui)](https://www.npmjs.com/package/@react-ui/ui)
+
+[@react-ui/ui](https://www.npmjs.com/package/@react-ui/ui) package
+provides essential components: buttons, inputs, modals, typography, and many others.
+The `@react-ui/ui` package is used internally in most of the other `@mantine/*` packages –
+it is required to be installed in your project to use ReactUI components.
+
+## Installation
+
+<InstallScript packages="@react-ui/hooks @react-ui/ui" />
+
+## Usage
+
+Follow the [getting started guide](/getting-started) to learn how to
+complete the ReactUI setup in your project. Example of using the [Stepper](/core/stepper) component:
+
+<Demo data={StepperDemos.usage} demoProps={{ defaultExpanded: false }} />

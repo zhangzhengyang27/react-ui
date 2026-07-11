@@ -1,28 +1,76 @@
-import nextra from 'nextra'
-import { fileURLToPath } from 'node:url'
-import path from 'node:path'
+import createMdx from '@next/mdx';
 
-const withNextra = nextra({
-    contentDirBasePath: '/',
-})
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const withMDX = createMdx({
+  extension: /\.mdx?$/,
+  options: {
+    providerImportSource: '@mdx-js/react',
+    rehypePlugins: ['rehype-slug'],
+  },
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'export',
-    distDir: 'docs-dist',
-    images: {
-        unoptimized: true,
-    },
-    webpack: (config) => {
-        config.resolve.alias = {
-            ...config.resolve.alias,
-            '@react-ui/ui': path.join(__dirname, '../../packages/ui/src/index.ts'),
-            '@react-ui/hooks': path.join(__dirname, '../../packages/hooks/src/index.ts'),
-        }
-        return config
-    },
-}
+  pageExtensions: ['tsx', 'mdx'],
+  reactStrictMode: true,
+  trailingSlash: true,
+  transpilePackages: [
+    '@react-ui/ui',
+    '@react-ui/hooks',
+    '@react-ui/carousel',
+    '@react-ui/charts',
+    '@react-ui/code-highlight',
+    '@react-ui/colors-generator',
+    '@react-ui/dates',
+    '@react-ui/demo',
+    '@react-ui/dev-icons',
+    '@react-ui/docs-demos',
+    '@react-ui/docs-styles-api',
+    '@react-ui/dropzone',
+    '@react-ui/emotion',
+    '@react-ui/form',
+    '@react-ui/mantine-header',
+    '@react-ui/mantine-logo',
+    '@react-ui/mantine-meta',
+    '@react-ui/modals',
+    '@react-ui/notifications',
+    '@react-ui/nprogress',
+    '@react-ui/schedule',
+    '@react-ui/spotlight',
+    '@react-ui/store',
+    '@react-ui/tiptap',
+  ],
+  // output: 'export',
+  // distDir: 'docs-dist',
+  images: {
+    unoptimized: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  experimental: {
+    optimizePackageImports: [],
+  },
+  onDemandEntries: {
+    maxInactiveAge: 60 * 60 * 1000,
+    pagesBufferLength: 10,
+  },
+  turbopack: {},
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve = {
+        ...config.resolve,
+        fallback: {
+          ...config.resolve.fallback,
+          child_process: false,
+          fs: false,
+          'builtin-modules': false,
+          worker_threads: false,
+        },
+      };
+    }
 
-export default withNextra(nextConfig)
+    return config;
+  },
+};
+
+export default withMDX(nextConfig);

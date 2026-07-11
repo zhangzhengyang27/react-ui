@@ -1,7 +1,8 @@
-'use client'
-
+import React from 'react'
 import { Badge } from '@react-ui/ui'
 
-export default function BadgeBasicDemo() {
+const Basic: React.FC = () => {
     return <Badge>新消息</Badge>
 }
+
+export default Basic

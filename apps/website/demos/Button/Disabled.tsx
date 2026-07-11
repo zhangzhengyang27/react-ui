@@ -1,7 +1,9 @@
-'use client'
+import React from 'react'
 
 import { Button } from '@react-ui/ui'
 
-export default function ButtonDisabledDemo() {
+const Disabled: React.FC = () => {
     return <Button disabled>cannot click me</Button>
 }
+
+export default Disabled

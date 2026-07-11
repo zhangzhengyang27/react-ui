@@ -1,8 +1,7 @@
-'use client'
-
+import React from 'react'
 import { Badge, Group } from '@react-ui/ui'
 
-export default function BadgeVariantDemo() {
+const Variant: React.FC = () => {
     return (
         <Group>
             <Badge variant="light">light</Badge>
@@ -12,3 +11,5 @@ export default function BadgeVariantDemo() {
         </Group>
     )
 }
+
+export default Variant

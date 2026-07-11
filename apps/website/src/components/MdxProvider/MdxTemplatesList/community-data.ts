@@ -1,0 +1,95 @@
+import type { Template } from './data';
+
+export const COMMUNITY_TEMPLATES_DATA: Template[] = [
+  {
+    type: 'next',
+    name: 't3-template',
+    link: 'https://github.com/WillKirkmanM/mantine-t3-template',
+    description: 'Next.js app router T3 stack template',
+  },
+  {
+    type: 'next',
+    name: 'next-tailwind-template',
+    link: 'https://github.com/songkeys/next-app-mantine-tailwind-template',
+    description: 'Next.js app router + ReactUI + Tailwind template',
+  },
+  {
+    type: 'next',
+    name: 'next-bun-template',
+    link: 'https://github.com/KennethAduan/kenstack-bun-nextjs-mantine/',
+    description: 'Next.js app router + ReactUI + Bun template',
+  },
+  {
+    type: 'next',
+    name: 'ship-template',
+    link: 'https://github.com/paralect/ship',
+    description: 'Fullstack boilerplate with Next.js, auth, MongoDB, Turborepo',
+  },
+  {
+    type: 'next',
+    name: 'next-turborepo-template',
+    link: 'https://github.com/ynssenem/next-mantine-turborepo',
+    description: 'App router + ReactUI + Turborepo template',
+  },
+  {
+    type: 'next',
+    name: 'nextra-documentation-template',
+    link: 'https://github.com/gfazioli/next-app-nextra-template',
+    description: 'Nextra + ReactUI template',
+  },
+  {
+    type: 'next',
+    name: 'fumadocs-documentation-template',
+    link: 'https://github.com/gfazioli/next-app-fumadocs-template',
+    description: 'Fumadocs + ReactUI template',
+  },
+  {
+    type: 'next',
+    name: 'next-saas-template',
+    link: 'https://github.com/AshutoshDash1999/nextjs-mantine-boilerplate',
+    description: 'Next.js SaaS boilerplate with ReactUI',
+  },
+  {
+    type: 'vite',
+    name: 'nx-vite-monorepo-template',
+    link: 'https://github.com/dipiash/nx-vite-react-ts-mantine-boilerplate',
+    description:
+      'NX monorepo template with: Vite, GraphQL / Apollo, Typescript, Storybook / CSS Modules',
+  },
+  {
+    type: 'vite',
+    name: 'dashboard-template',
+    link: 'https://github.com/auronvila/mantine-template',
+    description: 'Vite + Redux + i18next + auth + ReactUI dashboard template',
+  },
+  {
+    type: 'vite',
+    name: 'supabase-template',
+    link: 'https://github.com/LanVukusic/mantine-supabase-template',
+    description: 'Vite + Supabase + ReactUI template',
+  },
+  {
+    type: 'vite',
+    name: 'waku-template',
+    link: 'https://github.com/doiska/waku-mantine-starter',
+    description: 'Vite + Waku + ReactUI template',
+  },
+  {
+    type: 'vite',
+    name: 'tanstack-start-cloudflare-template',
+    link: 'https://github.com/tylim88/Tanstack-Start-ReactUI-Tailwind-Template',
+    description: 'Tanstack Start + Cloudflare + ReactUI template',
+  },
+  {
+    type: 'vite',
+    name: 'bun-vite-template',
+    link: 'https://github.com/LewisDamy/bun-vite-template',
+    description: 'Bun + Vite + ReactUI template',
+  },
+  {
+    type: 'react-router',
+    name: 'react-router-template',
+    link: 'https://github.com/samui-build/react-router-mantine',
+    description: 'Basic react-router + ReactUI template',
+  },
+];

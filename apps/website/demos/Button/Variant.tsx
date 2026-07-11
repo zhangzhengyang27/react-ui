@@ -1,26 +1,20 @@
-'use client'
+import React from 'react'
 
-import { Button, Group } from '@react-ui/ui'
+import { Button, Provider } from '@react-ui/ui'
 
-const VARIANTS: Array<'default' | 'filled' | 'gradient' | 'light' | 'outline' | 'subtle' | 'transparent' | 'white'> = [
-    'default',
-    'filled',
-    'gradient',
-    'light',
-    'outline',
-    'subtle',
-    'transparent',
-    'white'
-]
-
-export default function ButtonVariantDemo() {
+const Variant: React.FC = () => {
     return (
-        <Group>
-            {VARIANTS.map(variant => (
-                <Button key={variant} variant={variant}>
-                    {variant}
-                </Button>
-            ))}
-        </Group>
+        <Provider>
+            <Button variant="default">default</Button>
+            <Button variant="filled">filled</Button>
+            <Button variant="gradient">gradient</Button>
+            <Button variant="light">light</Button>
+            <Button variant="outline">outline</Button>
+            <Button variant="subtle">subtle</Button>
+            <Button variant="transparent">transparent</Button>
+            <Button variant="white">white</Button>
+        </Provider>
     )
 }
+
+export default Variant

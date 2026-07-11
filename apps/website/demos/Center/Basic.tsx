@@ -1,8 +1,7 @@
-'use client'
-
+import React from 'react'
 import { Center, Box } from '@react-ui/ui'
 
-export default function CenterBasicDemo() {
+const Basic: React.FC = () => {
     return (
         <Box style={{ height: 120, background: 'var(--ui-color-gray-2)' }}>
             <Center>
@@ -11,3 +10,5 @@ export default function CenterBasicDemo() {
         </Box>
     )
 }
+
+export default Basic

@@ -1,8 +1,7 @@
-'use client'
-
+import React from 'react'
 import { Breadcrumbs, Anchor } from '@react-ui/ui'
 
-export default function BreadcrumbsBasicDemo() {
+const Basic: React.FC = () => {
     return (
         <Breadcrumbs>
             <Anchor href="#">首页</Anchor>
@@ -11,3 +10,5 @@ export default function BreadcrumbsBasicDemo() {
         </Breadcrumbs>
     )
 }
+
+export default Basic

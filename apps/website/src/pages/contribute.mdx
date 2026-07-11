@@ -1,0 +1,54 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.Contribute);
+
+# 贡献指南
+
+感谢你有兴趣为 ReactUI 贡献力量！你的每一份贡献对项目都非常有价值。
+
+## 贡献方式
+
+- **改进文档：** 修复不完整或缺失的文档、措辞、示例或说明。
+- **反馈建议：** 在 [GitHub Discussions](https://github.com/xiaoye/react-ui/discussions) 中分享你的使用经验、需要的功能或改进建议。
+- **分享 ReactUI：** 将文档链接分享给可能感兴趣的人！
+- **贡献代码：** 通过 [GitHub Issues](https://github.com/xiaoye/react-ui/issues/new) 提出新功能建议，或认领你感兴趣的 [现有 issue](https://github.com/xiaoye/react-ui/labels/help%20wanted)。
+- **代码审查：** 帮助发现 [源码](https://github.com/xiaoye/react-ui/tree/main/packages) 中的问题或提升性能。
+
+## 贡献流程
+
+1. 确定你要贡献的内容。
+2. 如果要实现新功能，请先在 [GitHub Discussions](https://github.com/xiaoye/react-ui/discussions) 中与维护者讨论。
+3. 确认方案后开始编码。
+4. 运行测试 `pnpm test`，全部通过后提交 PR。
+5. 接受代码审查并修复审查中发现的问题。
+6. PR 合并，你太棒了 ❤️！
+
+## 本地开发
+
+- 安装 [editorconfig](https://editorconfig.org/) 编辑器扩展。
+- Fork [仓库](https://github.com/xiaoye/react-ui)，然后克隆你的 fork。
+- 安装依赖 —— `pnpm install`
+- 构建所有包 —— `pnpm build:packages`
+- 启动文档 —— 在 `apps/website` 目录运行 `pnpm dev`
+- 重新生成 props 描述 —— `pnpm docs:gen`
+
+## npm scripts
+
+根目录的 `package.json` 提供以下脚本：
+
+- `pnpm dev` — 并行启动所有包和应用的 dev 模式
+- `pnpm dev:packages` — 仅启动包的 dev 模式
+- `pnpm dev:apps` — 仅启动应用的 dev 模式
+- `pnpm build` — 构建所有包和应用
+- `pnpm build:packages` — 仅构建包
+- `pnpm test` — 运行所有测试
+- `pnpm lint` — 运行 eslint 和 stylelint
+
+## 代码规范
+
+- 使用 TypeScript 编写所有代码
+- 使用 CSS Modules 管理样式，CSS 变量使用 `--ui-*` 前缀
+- 组件 props 应继承 `ElementProps` 以支持完整 HTML 属性
+- 使用工厂模式 + CSS 变量构建组件
+- 遵循 [conventional commits](https://www.conventionalcommits.org/) 规范提交

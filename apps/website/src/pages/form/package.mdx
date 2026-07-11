@@ -1,0 +1,33 @@
+import { FormDemos } from '@react-ui/docs-demos';
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.FormPackage);
+
+# ReactUI form
+
+[![npm](https://img.shields.io/npm/dm/@react-ui/ui)](https://www.npmjs.com/package/@react-ui/ui)
+
+[@react-ui/ui](https://www.npmjs.com/package/@react-ui/ui) package
+contains the `useForm` hook that manages form state, validation, and submission.
+The `useForm` hook is designed to be used with other ReactUI libraries (`@react-ui/ui`, `@react-ui/ui`, etc.)
+– all ReactUI inputs are compatible with `useForm` out of the box.
+
+## Installation
+
+<InstallScript packages="@react-ui/ui" />
+
+## Usage
+
+The `@react-ui/ui` package can be used in any web React application.
+Although the package is designed to work with ReactUI components, it can
+be used with native inputs or any other form libraries – it is standalone
+and does not have any dependencies except React.
+
+Example of using the `useForm` hook to create a simple form:
+
+<Demo data={FormDemos.usage} demoProps={{ defaultExpanded: false }} />
+
+## License
+
+MIT

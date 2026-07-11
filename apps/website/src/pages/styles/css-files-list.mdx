@@ -1,0 +1,86 @@
+import { CssFilesList } from '@/components/CssFilesList';
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.CSSFilesList);
+
+# CSS files list
+
+This page contains a list of CSS files that you can import from the `@react-ui/ui` package
+as a replacement for `@react-ui/ui/styles.css`.
+
+## Components dependencies
+
+Some components require additional styles to work properly. For example, the [Button](/core/button/)
+component is based on [UnstyledButton](/core/unstyled-button/). If you want to use [Button](/core/button/),
+you need to import styles for `UnstyledButton` as well.
+
+```tsx
+import '@react-ui/ui/styles/UnstyledButton.css';
+import '@react-ui/ui/styles/Button.css';
+```
+
+Some components like [Select](/core/select/) do not have any styles of their own – they are built
+on top of other components. To find out which components are used in a particular component, check
+the component's source code.
+
+If you are not sure which components are used in a particular component, you can import
+all styles for components that are reused in other components:
+
+```tsx
+import '@react-ui/ui/styles/ScrollArea.css';
+import '@react-ui/ui/styles/UnstyledButton.css';
+import '@react-ui/ui/styles/VisuallyHidden.css';
+import '@react-ui/ui/styles/Paper.css';
+import '@react-ui/ui/styles/Popover.css';
+import '@react-ui/ui/styles/CloseButton.css';
+import '@react-ui/ui/styles/Group.css';
+import '@react-ui/ui/styles/Loader.css';
+import '@react-ui/ui/styles/Overlay.css';
+import '@react-ui/ui/styles/ModalBase.css';
+import '@react-ui/ui/styles/Input.css';
+import '@react-ui/ui/styles/InlineInput.css';
+import '@react-ui/ui/styles/Flex.css';
+import '@react-ui/ui/styles/FloatingIndicator.css';
+import '@react-ui/ui/styles/ActionIcon.css';
+```
+
+## Global styles
+
+All ReactUI components depend on global styles. You need to import them before
+all other styles:
+
+- `baseline.css` – a minimal CSS reset, sets `box-sizing: border-box` and changes font properties
+- `default-css-variables.css` – contains all CSS variables generated from the default theme
+- `global.css` – global classes used in ReactUI components
+
+```tsx
+import '@react-ui/ui/styles/baseline.css';
+import '@react-ui/ui/styles/default-css-variables.css';
+import '@react-ui/ui/styles/global.css';
+```
+
+## Import order
+
+It is important to maintain the correct styles import order. For example, if you want to use
+the [Button](/core/button/) component, you need to import styles for
+[UnstyledButton](/core/unstyled-button/) first and then import styles for [Button](/core/button/).
+
+```tsx
+// ✅ Correct order – Button styles will override UnstyledButton styles
+import '@react-ui/ui/styles/UnstyledButton.css';
+import '@react-ui/ui/styles/Button.css';
+```
+
+```tsx
+// ❌ Incorrect order – UnstyledButton styles will override Button styles
+import '@react-ui/ui/styles/Button.css';
+import '@react-ui/ui/styles/UnstyledButton.css';
+```
+
+## Files list
+
+Note that if you cannot find a particular file in the list below, it means that
+the component does not have any styles of its own or it is built on top of other components.
+
+<CssFilesList />

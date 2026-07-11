@@ -1,7 +1,8 @@
-'use client'
-
+import React from 'react'
 import { Burger } from '@react-ui/ui'
 
-export default function BurgerBasicDemo() {
+const Basic: React.FC = () => {
     return <Burger opened />
 }
+
+export default Basic

@@ -4,5 +4,5 @@
         "declaration": true
     },
     "include": ["src", "../../@types"],
-    "exclude": ["./es", "**/*.test.ts"]
+    "exclude": ["./es", "**/*.test.ts", "**/*.test.tsx"]
 }

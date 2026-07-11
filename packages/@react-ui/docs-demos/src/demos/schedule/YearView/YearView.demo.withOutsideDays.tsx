@@ -1,0 +1,23 @@
+import { YearView } from '@react-ui/schedule';
+import { MantineDemo } from '@react-ui/demo';
+import { regularEvents } from './_data';
+
+const code = `
+import { YearView } from '@react-ui/schedule';
+import { events } from './data';
+
+function Demo() {
+  return <YearView date={new Date()} events={events} withOutsideDays={false} />;
+}
+`;
+
+function Demo() {
+  return <YearView date={new Date()} events={regularEvents} withOutsideDays={false} />;
+}
+
+export const withOutsideDays: MantineDemo = {
+  defaultExpanded: false,
+  type: 'code',
+  component: Demo,
+  code,
+};

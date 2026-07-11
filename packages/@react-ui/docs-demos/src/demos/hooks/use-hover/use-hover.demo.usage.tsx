@@ -1,0 +1,40 @@
+import { Text } from '@react-ui/ui';
+import { useHover } from '@react-ui/hooks';
+import { MantineDemo } from '@react-ui/demo';
+
+const code = `
+import { useHover } from '@react-ui/hooks';
+
+function Demo() {
+  const { hovered, ref } = useHover();
+  return (
+    <div ref={ref}>
+      {hovered ? 'I am hovered' : 'Put mouse over me please'}
+    </div>
+  );
+}
+`;
+
+function Demo() {
+  const { hovered, ref } = useHover();
+  return (
+    <div
+      ref={ref}
+      style={{
+        height: 60,
+        backgroundColor: 'var(--mantine-color-blue-light)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Text>{hovered ? 'I am hovered' : 'Put mouse over me please'}</Text>
+    </div>
+  );
+}
+
+export const usage: MantineDemo = {
+  type: 'code',
+  component: Demo,
+  code,
+};

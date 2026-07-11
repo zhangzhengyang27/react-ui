@@ -1,0 +1,57 @@
+{
+  "name": "@react-ui/code-highlight",
+  "version": "9.4.1",
+  "description": "Code highlight with Mantine theme",
+  "homepage": "https://mantine.dev/x/code-highlight/",
+  "license": "MIT",
+  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
+  "keywords": [
+    "code",
+    "components",
+    "frontend",
+    "highlight",
+    "library",
+    "next",
+    "nextjs",
+    "react",
+    "syntax",
+    "syntax-highlight",
+    "ui",
+    "ui-kit"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    },
+    "./styles.css": "./styles.css",
+    "./styles.layer.css": "./styles.layer.css"
+  },
+  "repository": {
+    "url": "https://github.com/mantinedev/mantine.git",
+    "type": "git",
+    "directory": "packages/@react-ui/code-highlight"
+  },
+  "peerDependencies": {
+    "@react-ui/ui": "workspace:*",
+    "@react-ui/hooks": "workspace:*",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1"
+  },
+  "devDependencies": {
+    "@react-ui/ui": "workspace:*",
+    "@react-ui/hooks": "workspace:*",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  }
+}

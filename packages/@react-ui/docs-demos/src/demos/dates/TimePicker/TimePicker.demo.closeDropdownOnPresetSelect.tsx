@@ -1,0 +1,36 @@
+import { TimePicker } from '@react-ui/dates';
+import { MantineDemo } from '@react-ui/demo';
+
+const code = `
+import { TimePicker } from '@react-ui/dates';
+
+function Demo() {
+  return (
+    <TimePicker
+      label="Enter time"
+      withDropdown
+      closeDropdownOnPresetSelect
+      presets={['12:30', '15:45', '18:00', '20:15', '22:30']}
+    />
+  );
+}
+`;
+
+function Demo() {
+  return (
+    <TimePicker
+      label="Enter time"
+      withDropdown
+      closeDropdownOnPresetSelect
+      presets={['12:30', '15:45', '18:00', '20:15', '22:30']}
+    />
+  );
+}
+
+export const closeDropdownOnPresetSelect: MantineDemo = {
+  type: 'code',
+  component: Demo,
+  code,
+  centered: true,
+  maxWidth: 340,
+};

@@ -1,0 +1,62 @@
+import { Select } from '@react-ui/ui';
+import { MantineDemo } from '@react-ui/demo';
+
+const code = `
+import { Select } from '@react-ui/ui';
+
+function Demo() {
+  return (
+    <>
+      <Select
+        label="Option can NOT be deselected"
+        placeholder="Pick value"
+        data={['React', 'Angular', 'Vue', 'Svelte']}
+        defaultValue="React"
+        allowDeselect={false}
+      />
+
+      <Select
+        label="Option can be deselected"
+        description="This is default behavior, click 'React' in the dropdown"
+        placeholder="Pick value"
+        data={['React', 'Angular', 'Vue', 'Svelte']}
+        defaultValue="React"
+        allowDeselect
+        mt="md"
+      />
+    </>
+  );
+}
+`;
+
+function Demo() {
+  return (
+    <>
+      <Select
+        label="Option can NOT be deselected"
+        placeholder="Pick value"
+        data={['React', 'Angular', 'Vue', 'Svelte']}
+        defaultValue="React"
+        allowDeselect={false}
+      />
+
+      <Select
+        label="Option can be deselected"
+        description="This is default behavior, click 'React' in the dropdown"
+        placeholder="Pick value"
+        data={['React', 'Angular', 'Vue', 'Svelte']}
+        defaultValue="React"
+        allowDeselect
+        mt="md"
+      />
+    </>
+  );
+}
+
+export const allowDeselect: MantineDemo = {
+  type: 'code',
+  component: Demo,
+  code,
+  maxWidth: 340,
+  centered: true,
+};

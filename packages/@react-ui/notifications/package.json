@@ -1,0 +1,57 @@
+{
+  "name": "@react-ui/notifications",
+  "version": "9.4.1",
+  "description": "Mantine notifications system",
+  "homepage": "https://mantine.dev",
+  "license": "MIT",
+  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
+  "keywords": [
+    "components",
+    "frontend",
+    "library",
+    "next",
+    "nextjs",
+    "notification",
+    "notification-manager",
+    "notification-system",
+    "react",
+    "ui",
+    "ui-kit"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    },
+    "./styles.css": "./styles.css",
+    "./styles.layer.css": "./styles.layer.css"
+  },
+  "repository": {
+    "url": "https://github.com/mantinedev/mantine.git",
+    "type": "git",
+    "directory": "packages/@react-ui/notifications"
+  },
+  "peerDependencies": {
+    "@react-ui/ui": "workspace:*",
+    "@react-ui/hooks": "workspace:*",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "dependencies": {
+    "@react-ui/store": "workspace:*",
+    "react-transition-group": "4.4.5"
+  },
+  "devDependencies": {
+    "@react-ui/ui": "workspace:*",
+    "@react-ui/hooks": "workspace:*",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  }
+}

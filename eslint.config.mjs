@@ -12,7 +12,9 @@ export default tseslint.config(
             '**/*/dist/**/*',
             'apps/website/docs-dist/**/*',
             '**/.next/**/*',
-            '**/next-env.d.ts'
+            '**/next-env.d.ts',
+            'packages/ui/src/components/Menubar/**/*',
+            'packages/ui/src/components/Tree/**/*'
         ]
     },
     {

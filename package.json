@@ -56,6 +56,8 @@
         "eslint": "9.5.0",
         "husky": "9.0.11",
         "lint-staged": "15.2.7",
+        "postcss-preset-mantine": "^1.18.0",
+        "postcss-simple-vars": "^7.0.1",
         "postcss-styled-syntax": "0.6.4",
         "prettier": "3.3.2",
         "react": "19.1.1",
@@ -66,9 +68,10 @@
     },
     "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee",
     "pnpm": {
-        "patchedDependencies": {
-            "nextra-theme-docs@4.6.1": "patches/nextra-theme-docs@4.6.1.patch",
-            "nextra@4.6.1": "patches/nextra@4.6.1.patch"
-        }
+        "overrides": {
+            "react": "19.1.1",
+            "react-dom": "19.1.1"
+        },
+        "patchedDependencies": {}
     }
 }

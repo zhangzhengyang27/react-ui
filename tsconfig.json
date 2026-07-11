@@ -3,7 +3,7 @@
         "target": "ES2015",
         "lib": ["DOM", "ESNext"],
         "allowJs": true,
-        "module": "commonjs",
+        "module": "ESNext",
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "declaration": true,
@@ -12,9 +12,10 @@
         "skipLibCheck": true,
         "strict": true,
         "experimentalDecorators": true,
-        "moduleResolution": "node"
+        "moduleResolution": "bundler"
     },
     "$schema": "https://json.schemastore.org/tsconfig",
     "display": "Base",
-    "include": ["packages/**/*"]
+    "include": ["packages/**/*"],
+    "exclude": ["**/*.timestamp-*.mjs", "**/node_modules", "**/es", "**/dist"]
 }

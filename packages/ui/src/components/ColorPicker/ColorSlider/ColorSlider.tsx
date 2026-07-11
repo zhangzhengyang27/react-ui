@@ -1,5 +1,5 @@
 import { useDidUpdate, useMergedRef, useMove, clampUseMovePosition, UseMovePosition } from '@react-ui/hooks'
-import { useRef, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 import {
     Box,
     BoxProps,
@@ -13,7 +13,7 @@ import {
     useProps,
     useStyles
 } from '../../../core'
-import { useColorPickerContext } from '../ColorPicker.context'
+import { ColorPickerContext } from '../ColorPicker.context'
 import { Thumb } from '../Thumb/Thumb'
 import classes from '../ColorPicker.module.css'
 
@@ -98,7 +98,7 @@ export const ColorSlider = factory<ColorSliderFactory>((_props, ref) => {
         rootSelector: 'slider'
     })
 
-    const ctx = useColorPickerContext()
+    const ctx = useContext(ColorPickerContext)
     const getStyles = ctx?.getStyles || _getStyles
 
     const theme = useMantineTheme()

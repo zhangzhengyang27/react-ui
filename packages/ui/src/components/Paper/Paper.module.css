@@ -12,7 +12,7 @@
     background-color: var(--ui-color-body);
 }
 
-.root:where([data-mantine-color-scheme='dark']) {
+.root:where([data-ui-color-scheme='dark']) {
     --paper-border-color: var(--ui-color-dark-4);
 }
 

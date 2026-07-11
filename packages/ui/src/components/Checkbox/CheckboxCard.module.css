@@ -1,0 +1,24 @@
+.card {
+    --card-radius: var(--ui-radius-default);
+
+    display: block;
+    width: 100%;
+    border-radius: var(--card-radius);
+    cursor: pointer;
+}
+
+.card :where(*) {
+    cursor: inherit;
+}
+
+.card:where([data-with-border]) {
+    border: 1px solid transparent;
+}
+
+:where([data-ui-color-scheme='light']) .card:where([data-with-border]) {
+    border-color: var(--ui-color-gray-3);
+}
+
+:where([data-ui-color-scheme='dark']) .card:where([data-with-border]) {
+    border-color: var(--ui-color-dark-4);
+}

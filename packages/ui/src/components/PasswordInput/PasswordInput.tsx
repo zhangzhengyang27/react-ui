@@ -14,7 +14,8 @@ import {
     useStyles
 } from '../../core'
 import { ActionIcon, ActionIconProps } from '../ActionIcon'
-import { InputBase, InputBaseProps, InputBaseStylesNames, InputWrapper } from '../InputBase'
+import { InputBase, InputBaseProps, InputBaseStylesNames } from '../InputBase'
+import { InputWrapper } from '../Input'
 import classes from './PasswordInput.module.css'
 
 export type PasswordInputStylesNames = InputBaseStylesNames | 'visibilityToggle'
@@ -24,7 +25,15 @@ export interface PasswordInputProps
         StylesApiProps<PasswordInputFactory>,
         Omit<
             InputBaseProps,
-            'classNames' | 'styles' | 'vars' | 'unstyled' | 'attributes' | 'rightSection' | 'rightSectionWidth' | 'type'
+            | 'classNames'
+            | 'styles'
+            | 'vars'
+            | 'unstyled'
+            | 'attributes'
+            | 'rightSection'
+            | 'rightSectionWidth'
+            | 'type'
+            | 'wrapperProps'
         > {
     /** Label rendered above the input */
     label?: React.ReactNode

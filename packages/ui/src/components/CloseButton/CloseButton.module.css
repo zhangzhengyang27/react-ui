@@ -24,7 +24,7 @@
     color: var(--ui-color-gray-7);
 }
 
-.root:where([data-mantine-color-scheme='dark']) {
+.root:where([data-ui-color-scheme='dark']) {
     color: var(--ui-color-dark-1);
 }
 
@@ -38,6 +38,6 @@
     background-color: var(--ui-color-gray-0);
 }
 
-.root--subtle:where(:not([data-disabled], :disabled)):where([data-mantine-color-scheme='dark']):hover {
+.root--subtle:where(:not([data-disabled], :disabled)):where([data-ui-color-scheme='dark']):hover {
     background-color: var(--ui-color-dark-6);
 }

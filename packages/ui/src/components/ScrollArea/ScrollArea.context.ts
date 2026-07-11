@@ -3,7 +3,7 @@ import { createSafeContext } from '../../core'
 import type { ScrollAreaFactory } from './ScrollArea'
 
 export interface ScrollAreaContextValue {
-    type: 'always' | 'never'
+    type: 'always' | 'never' | 'scroll'
     scrollArea: HTMLDivElement | null
     viewport: HTMLDivElement | null
     onViewportChange: (viewport: HTMLDivElement | null) => void

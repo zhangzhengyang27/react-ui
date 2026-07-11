@@ -25,7 +25,10 @@ export const DrawerContent = factory<DrawerContentFactory>((_props, ref) => {
     const { children, ...others } = props
     const ctx = useDrawerContext()
 
-    const Scroll: React.FC<any> = ctx.scrollAreaComponent || (({ children: c }) => <div>{c}</div>)
+    const Scroll: React.FC<any> =
+        ctx.scrollAreaComponent === 'div' || !ctx.scrollAreaComponent
+            ? ({ children: c }) => <div>{c}</div>
+            : ctx.scrollAreaComponent
 
     return (
         <ModalBaseContent ref={ref} {...ctx.getStyles('content')} innerProps={ctx.getStyles('inner')} {...others}>

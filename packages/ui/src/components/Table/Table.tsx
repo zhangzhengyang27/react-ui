@@ -13,21 +13,38 @@ import {
 } from '../../core'
 import classes from './Table.module.css'
 import { TableProvider } from './Table.context'
+import { TableScrollContainer, type TableScrollContainerProps, type TableScrollContainerFactory } from './TableScrollContainer'
 import { Tbody } from './Tbody'
 import { Td } from './Td'
+import { Tfoot, type TfootProps, type TfootFactory } from './Tfoot'
+import { Caption, type CaptionProps, type CaptionFactory } from './Caption'
 import { Th } from './Th'
 import { Thead } from './Thead'
 import { Tr } from './Tr'
 
-export type TableStylesNames = 'root' | 'thead' | 'tbody' | 'tr' | 'th' | 'td'
+export type TableStylesNames = 'root' | 'thead' | 'tbody' | 'tfoot' | 'tr' | 'th' | 'td' | 'caption'
 
 export type TableCssVariables = {
     root: '--table-horizontal-spacing' | '--table-vertical-spacing' | '--table-caption-side'
 }
 
+export interface TableData {
+    /** Optional table caption */
+    caption?: React.ReactNode
+
+    /** Header row cells */
+    head?: React.ReactNode[]
+
+    /** Body rows as two-dimensional array */
+    body: React.ReactNode[][]
+
+    /** Footer row cells */
+    foot?: React.ReactNode[]
+}
+
 export interface TableProps extends BoxProps, ElementProps<'table'>, StylesApiProps<TableFactory> {
-    /** Two-dimensional array used to auto-generate thead/tbody; first row is used as header */
-    data?: React.ReactNode[][]
+    /** Two-dimensional array or TableData object used to auto-generate thead/tbody */
+    data?: React.ReactNode[][] | TableData
 
     /** Adds striped styles to tbody rows */
     striped?: boolean
@@ -59,12 +76,15 @@ export type TableFactory = Factory<{
     ref: HTMLTableElement
     stylesNames: TableStylesNames
     vars: TableCssVariables
-    staticComponents: {
+    static_components: {
         Thead: typeof Thead
         Tbody: typeof Tbody
+        Tfoot: typeof Tfoot
         Tr: typeof Tr
         Th: typeof Th
         Td: typeof Td
+        Caption: typeof Caption
+        ScrollContainer: typeof TableScrollContainer
     }
 }>
 
@@ -144,31 +164,43 @@ export const Table = factory<TableFactory>((_props, ref) => {
     )
 })
 
-function buildDataContent(data: React.ReactNode[][]) {
-    if (data.length === 0) {
+function isTableData(data: React.ReactNode[][] | TableData): data is TableData {
+    return !Array.isArray(data)
+}
+
+function buildDataContent(data: React.ReactNode[][] | TableData) {
+    const tableData = isTableData(data) ? data : { body: data }
+    const { caption, head, body } = tableData
+
+    if (!Array.isArray(body) || body.length === 0) {
         return null
     }
 
-    const [header, ...rows] = data
+    const captionElement = caption ? <caption>{caption}</caption> : null
+
+    const headElement = head ? (
+        <Thead>
+            <Tr>
+                {head.map((cell, index) => (
+                    <Th key={index}>{cell}</Th>
+                ))}
+            </Tr>
+        </Thead>
+    ) : null
+
+    const rows = body.map((row, rowIndex) => (
+        <Tr key={rowIndex}>
+            {row.map((cell, cellIndex) => (
+                <Td key={cellIndex}>{cell}</Td>
+            ))}
+        </Tr>
+    ))
 
     return (
         <>
-            <Thead>
-                <Tr>
-                    {header.map((cell, index) => (
-                        <Th key={index}>{cell}</Th>
-                    ))}
-                </Tr>
-            </Thead>
-            <Tbody>
-                {rows.map((row, rowIndex) => (
-                    <Tr key={rowIndex}>
-                        {row.map((cell, cellIndex) => (
-                            <Td key={cellIndex}>{cell}</Td>
-                        ))}
-                    </Tr>
-                ))}
-            </Tbody>
+            {captionElement}
+            {headElement}
+            <Tbody>{rows}</Tbody>
         </>
     )
 }
@@ -178,13 +210,21 @@ Table.classes = classes
 Table.displayName = '@react-ui/ui/Table'
 Table.Thead = Thead
 Table.Tbody = Tbody
+Table.Tfoot = Tfoot
 Table.Tr = Tr
 Table.Th = Th
 Table.Td = Td
+Table.Caption = Caption
+Table.ScrollContainer = TableScrollContainer
 
 export namespace Table {
     export type Props = TableProps
     export type StylesNames = TableStylesNames
     export type CssVariables = TableCssVariables
     export type Factory = TableFactory
+
+    export namespace ScrollContainer {
+        export type Props = TableScrollContainerProps
+        export type Factory = TableScrollContainerFactory
+    }
 }

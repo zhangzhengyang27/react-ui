@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import {
     Box,
     BoxProps,
@@ -14,6 +14,7 @@ import {
     useProps,
     useStyles
 } from '../../core'
+import { AvatarGroup, type AvatarGroupProps, type AvatarGroupFactory, AvatarGroupContext } from './AvatarGroup'
 import classes from './Avatar.module.css'
 
 export type AvatarStylesNames = 'root' | 'image' | 'placeholder'
@@ -52,6 +53,9 @@ export type AvatarFactory = Factory<{
     stylesNames: AvatarStylesNames
     vars: AvatarCssVariables
     variant: AvatarVariant
+    static_components: {
+        Group: typeof AvatarGroup
+    }
 }>
 
 const defaultProps = {
@@ -111,6 +115,7 @@ export const Avatar = factory<AvatarFactory>((_props, ref) => {
 
     const [error, setError] = useState(false)
     const isPlaceholder = error || !src
+    const groupCtx = useContext(AvatarGroupContext)
 
     return (
         <Box
@@ -118,6 +123,7 @@ export const Avatar = factory<AvatarFactory>((_props, ref) => {
             variant={variant}
             mod={{ placeholder: isPlaceholder }}
             title={alt}
+            data-within-group={groupCtx.withinGroup || undefined}
             {...getStyles('root', { variant })}
             {...others}
         >
@@ -132,6 +138,7 @@ export const Avatar = factory<AvatarFactory>((_props, ref) => {
 
 Avatar.classes = classes
 Avatar.displayName = '@react-ui/ui/Avatar'
+Avatar.Group = AvatarGroup
 
 export namespace Avatar {
     export type Props = AvatarProps
@@ -139,4 +146,9 @@ export namespace Avatar {
     export type CssVariables = AvatarCssVariables
     export type Factory = AvatarFactory
     export type Variant = AvatarVariant
+
+    export namespace Group {
+        export type Props = AvatarGroupProps
+        export type Factory = AvatarGroupFactory
+    }
 }

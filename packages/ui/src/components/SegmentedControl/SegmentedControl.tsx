@@ -19,7 +19,7 @@ import classes from './SegmentedControl.module.css'
 export type SegmentedControlStylesNames = 'root' | 'control' | 'controlActive' | 'input' | 'label'
 
 export type SegmentedControlCssVariables = {
-    root: '--sc-radius' | '--sc-size' | '--sc-color'
+    root: '--sc-radius' | '--sc-size' | '--sc-color' | '--sc-transition-duration'
 }
 
 export interface SegmentedControlItem {
@@ -61,6 +61,9 @@ export interface SegmentedControlProps extends BoxProps, StylesApiProps<Segmente
 
     /** If true, the whole component is disabled @default false */
     disabled?: boolean
+
+    /** Controls transition duration in ms @default 200 */
+    transitionDuration?: number
 }
 
 export type SegmentedControlFactory = Factory<{
@@ -77,11 +80,12 @@ const defaultProps = {
     disabled: false
 } satisfies Partial<SegmentedControlProps>
 
-const varsResolver = createVarsResolver<SegmentedControlFactory>((_, { radius, size, color }) => ({
+const varsResolver = createVarsResolver<SegmentedControlFactory>((_, { radius, size, color, transitionDuration }) => ({
     root: {
         '--sc-radius': radius === undefined ? undefined : getRadius(radius),
         '--sc-size': getSize(size, 'sc-size'),
-        '--sc-color': color === undefined ? undefined : `var(--ui-color-${color}-filled)`
+        '--sc-color': color === undefined ? undefined : `var(--ui-color-${color}-filled)`,
+        '--sc-transition-duration': transitionDuration === undefined ? undefined : `${transitionDuration}ms`
     }
 }))
 
@@ -109,6 +113,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>((_props, ref) =
         orientation,
         name,
         disabled,
+        transitionDuration,
         mod,
         ...others
     } = props

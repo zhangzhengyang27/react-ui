@@ -80,6 +80,7 @@ export const Splitter = factory<SplitterFactory>((_props, ref) => {
 })
 
 Splitter.Panel = SplitterPanel
+Splitter.Pane = SplitterPanel
 Splitter.Resizer = SplitterResizer
 Splitter.classes = classes
 Splitter.displayName = '@react-ui/ui/Splitter'

@@ -1,0 +1,55 @@
+.root {
+    --semi-circle-progress-filled-segment-color: var(--ui-primary-color-filled);
+    --semi-circle-progress-transition-duration: 0ms;
+    --semi-circle-progress-thickness: 12px;
+
+    @mixin where-light {
+        --semi-circle-progress-empty-segment-color: var(--ui-color-gray-2);
+    }
+
+    @mixin where-dark {
+        --semi-circle-progress-empty-segment-color: var(--ui-color-dark-4);
+    }
+
+    position: relative;
+    width: fit-content;
+}
+
+.svg {
+    display: block;
+    transform: var(--semi-circle-progress-rotation);
+    overflow: hidden;
+}
+
+.filledSegment {
+    transition:
+        stroke-dashoffset var(--semi-circle-progress-transition-duration) ease,
+        stroke-dasharray var(--semi-circle-progress-transition-duration) ease,
+        stroke-opacity var(--semi-circle-progress-transition-duration) ease,
+        stroke var(--semi-circle-progress-transition-duration);
+}
+
+.label {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    inset-inline: 0;
+    text-align: center;
+    z-index: 1;
+
+    &:where([data-position='bottom']) {
+        bottom: 0;
+        padding-inline: calc(var(--semi-circle-progress-thickness) * 2);
+
+        &:where([data-orientation='down']) {
+            bottom: auto;
+            top: 0;
+        }
+    }
+
+    &:where([data-position='center']) {
+        top: 50%;
+        transform: translateY(-50%);
+        padding-inline: calc(var(--semi-circle-progress-thickness) * 3);
+    }
+}

@@ -41,8 +41,8 @@
     font-size: var(--ui-font-size-sm);
     color: var(--ui-color-text);
     transition:
-        background-color 0.2s ease,
-        color 0.2s ease;
+        background-color var(--sc-transition-duration, 0.2s) ease,
+        color var(--sc-transition-duration, 0.2s) ease;
 }
 
 .control:where([data-active]) {

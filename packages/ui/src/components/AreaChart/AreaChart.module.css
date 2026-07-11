@@ -1,0 +1,6 @@
+.root {
+    --area-chart-height: 300px;
+
+    width: 100%;
+    height: var(--area-chart-height);
+}

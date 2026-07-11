@@ -1,9 +1,11 @@
 import { createSafeContext, type GetStylesApi } from '../../core'
 import type { DrawerFactory } from './Drawer'
 
+export type ScrollAreaComponent = React.FC<any> | 'div' | null
+
 export interface DrawerContextValue {
     getStyles: GetStylesApi<DrawerFactory>
-    scrollAreaComponent?: React.FC<any>
+    scrollAreaComponent?: ScrollAreaComponent
     radius?: any
 }
 

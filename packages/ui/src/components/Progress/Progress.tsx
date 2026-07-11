@@ -15,6 +15,9 @@ import {
     useProps,
     useStyles
 } from '../../core'
+import { ProgressRoot, type ProgressRootProps, type ProgressRootFactory } from './ProgressRoot'
+import { ProgressSection, type ProgressSectionProps, type ProgressSectionFactory } from './ProgressSection'
+import { ProgressLabel, type ProgressLabelProps, type ProgressLabelFactory } from './ProgressLabel'
 import classes from './Progress.module.css'
 
 export type ProgressStylesNames = 'root' | 'section' | 'label'
@@ -64,6 +67,11 @@ export type ProgressFactory = Factory<{
     ref: HTMLDivElement
     stylesNames: ProgressStylesNames
     vars: ProgressCssVariables
+    static_components: {
+        Root: typeof ProgressRoot
+        Section: typeof ProgressSection
+        Label: typeof ProgressLabel
+    }
 }>
 
 const defaultProps = {
@@ -160,10 +168,28 @@ export const Progress = factory<ProgressFactory>((_props, ref) => {
 Progress.classes = classes
 ;(Progress as any).varsResolver = varsResolver
 Progress.displayName = '@react-ui/ui/Progress'
+Progress.Root = ProgressRoot
+Progress.Section = ProgressSection
+Progress.Label = ProgressLabel
 
 export namespace Progress {
     export type Props = ProgressProps
     export type Factory = ProgressFactory
     export type StylesNames = ProgressStylesNames
     export type CssVariables = ProgressCssVariables
+
+    export namespace Root {
+        export type Props = ProgressRootProps
+        export type Factory = ProgressRootFactory
+    }
+
+    export namespace Section {
+        export type Props = ProgressSectionProps
+        export type Factory = ProgressSectionFactory
+    }
+
+    export namespace Label {
+        export type Props = ProgressLabelProps
+        export type Factory = ProgressLabelFactory
+    }
 }

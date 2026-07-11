@@ -48,3 +48,10 @@
     font-weight: 700;
     color: var(--ui-color-dimmed);
 }
+
+.header,
+.footer {
+    padding: 8px 12px;
+    color: var(--ui-color-text);
+    font-size: var(--ui-font-size-sm);
+}

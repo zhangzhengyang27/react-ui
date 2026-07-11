@@ -16,6 +16,7 @@ import {
     type FloatingStrategy
 } from '../../core'
 import { PopoverContextProvider } from './Popover.context'
+import { PopoverContextMenu, type PopoverContextMenuProps } from './PopoverContextMenu'
 import { PopoverDropdown, PopoverDropdownProps } from './PopoverDropdown/PopoverDropdown'
 import { PopoverTarget, PopoverTargetProps } from './PopoverTarget/PopoverTarget'
 import { usePopover } from './use-popover'
@@ -288,6 +289,7 @@ export function Popover(_props: PopoverProps) {
 
 Popover.Target = PopoverTarget
 Popover.Dropdown = PopoverDropdown
+Popover.ContextMenu = PopoverContextMenu
 Popover.displayName = '@mantine/core/Popover'
 
 export namespace Popover {
@@ -295,4 +297,5 @@ export namespace Popover {
     export type Factory = PopoverFactory
     export type TargetProps = PopoverTargetProps
     export type DropdownProps = PopoverDropdownProps
+    export type ContextMenuProps = PopoverContextMenuProps
 }

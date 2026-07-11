@@ -2,7 +2,8 @@ import { useRef } from 'react'
 import { useId, useUncontrolled } from '@react-ui/hooks'
 import { factory, Factory, StylesApiProps, useProps, useStyles } from '../../core'
 import { CloseButton } from '../CloseButton'
-import { InputBase, InputBaseProps, InputWrapper } from '../InputBase'
+import { InputBase, InputBaseProps } from '../InputBase'
+import { InputWrapper } from '../Input'
 import classes from './FileInput.module.css'
 
 export type FileInputStylesNames = 'root'
@@ -19,6 +20,9 @@ export interface FileInputProps
             | 'vars'
             | 'attributes'
             | 'component'
+            | 'labelProps'
+            | 'descriptionProps'
+            | 'errorProps'
         >,
         StylesApiProps<FileInputFactory> {
     /** Controlled value */

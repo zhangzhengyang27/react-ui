@@ -4,7 +4,8 @@ import { BoxProps, factory, Factory, MantineSize, rem, StylesApiProps, useProps,
 import { CloseButton } from '../CloseButton'
 import { Combobox } from '../Combobox'
 import type { ComboboxOptionData } from '../Combobox'
-import { InputBase, InputWrapper } from '../InputBase'
+import { InputBase } from '../InputBase'
+import { InputWrapper } from '../Input'
 import classes from './Autocomplete.module.css'
 
 export type AutocompleteStylesNames = 'root' | 'dropdown' | 'options' | 'option' | 'empty' | 'group' | 'groupLabel'

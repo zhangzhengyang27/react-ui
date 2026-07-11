@@ -1,0 +1,6 @@
+.root {
+    display: flex;
+    flex-wrap: wrap;
+    contain: layout style;
+    gap: var(--overflow-list-gap, var(--ui-spacing-xs));
+}

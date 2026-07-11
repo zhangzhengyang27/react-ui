@@ -98,6 +98,7 @@ body {
     --ui-z-index-max: 9999;
 
     --ui-scale: 1;
+    --mantine-scale: 1;
     --ui-cursor-type: default;
     --ui-webkit-font-smoothing: antialiased;
     --ui-color-scheme: light dark;

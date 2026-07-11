@@ -11,7 +11,8 @@ import {
     useProps,
     useStyles
 } from '../../core'
-import { InputBase, InputWrapper } from '../InputBase'
+import { InputBase } from '../InputBase'
+import { InputWrapper } from '../Input'
 import classes from './NativeSelect.module.css'
 
 export type NativeSelectStylesNames = 'root' | 'input' | 'section'

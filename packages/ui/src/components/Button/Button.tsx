@@ -19,6 +19,8 @@ import {
 import { Loader, LoaderProps } from '../Loader'
 import { MantineTransition, Transition } from '../Transition'
 import { UnstyledButton } from '../UnstyledButton'
+import { ButtonGroup } from './ButtonGroup'
+import { ButtonGroupSection } from './ButtonGroupSection'
 import classes from './Button.module.css'
 
 export type ButtonSize = MantineSize | `compact-${MantineSize}` | (string & {})
@@ -233,6 +235,8 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, _ref) => {
 Button.classes = classes
 ;(Button as any).varsResolver = varsResolver
 Button.displayName = '@react-ui/ui/Button'
+Button.Group = ButtonGroup
+Button.GroupSection = ButtonGroupSection
 
 export namespace Button {
     export type Props = ButtonProps

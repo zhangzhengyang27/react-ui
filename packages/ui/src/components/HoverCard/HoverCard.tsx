@@ -16,6 +16,7 @@ import {
 } from '../../core'
 import { HoverCardContextProvider } from './HoverCard.context'
 import { HoverCardDropdown, HoverCardDropdownProps } from './HoverCardDropdown/HoverCardDropdown'
+import { HoverCardGroup, type HoverCardGroupProps } from './HoverCardGroup'
 import { HoverCardTarget, HoverCardTargetProps } from './HoverCardTarget/HoverCardTarget'
 import { HoverCardMiddlewares, useHoverCard } from './use-hover-card'
 import classes from './HoverCard.module.css'
@@ -228,6 +229,7 @@ export function HoverCard(_props: HoverCardProps) {
 
 HoverCard.Target = HoverCardTarget
 HoverCard.Dropdown = HoverCardDropdown
+HoverCard.Group = HoverCardGroup
 HoverCard.displayName = '@mantine/core/HoverCard'
 
 export namespace HoverCard {
@@ -235,4 +237,5 @@ export namespace HoverCard {
     export type Factory = HoverCardFactory
     export type TargetProps = HoverCardTargetProps
     export type DropdownProps = HoverCardDropdownProps
+    export type GroupProps = HoverCardGroupProps
 }

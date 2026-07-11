@@ -18,7 +18,8 @@ import {
     useStyles
 } from '../../core'
 import { StepperProvider } from './Stepper.context'
-import { StepperStep } from './StepperStep'
+import { StepperCompleted, type StepperCompletedProps } from './StepperCompleted'
+import { StepperStep, type StepperStepProps } from './StepperStep'
 import classes from './Stepper.module.css'
 
 export type StepperStylesNames =
@@ -72,8 +73,9 @@ export type StepperFactory = Factory<{
     ref: HTMLDivElement
     stylesNames: StepperStylesNames
     vars: StepperCssVariables
-    staticComponents: {
+    static_components: {
         Step: typeof StepperStep
+        Completed: typeof StepperCompleted
     }
 }>
 
@@ -131,10 +133,18 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
         varsResolver
     })
 
-    const items = Children.toArray(children)
+    const convertedChildren = Children.toArray(children) as React.ReactElement[]
+    const stepChildren = convertedChildren.filter(
+        (child) => child.type !== StepperCompleted
+    ) as React.ReactElement<StepperStepProps>[]
+    const completedStep = convertedChildren.find(
+        (item) => item.type === StepperCompleted
+    ) as React.ReactElement<StepperCompletedProps> | undefined
+
+    const items = stepChildren
     const totalItems = items.length
 
-    const clonedChildren = Children.map(items, (child, index) => {
+    const clonedChildren = items.map((child, index) => {
         if (!isElement(child)) {
             return child
         }
@@ -145,8 +155,12 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
             totalItems,
             active: index === active,
             completed: index < active!
-        })
+        } as Partial<StepperStepProps> & { key?: React.Key })
     })
+
+    const stepContent = stepChildren[active!]?.props?.children
+    const completedContent = completedStep?.props?.children
+    const content = active! > totalItems - 1 ? completedContent : stepContent
 
     return (
         <StepperProvider
@@ -172,6 +186,7 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
                 aria-orientation={orientation}
             >
                 {clonedChildren}
+                {content && <div {...getStyles('stepBody')}>{content}</div>}
             </Box>
         </StepperProvider>
     )
@@ -181,10 +196,16 @@ Stepper.classes = classes
 ;(Stepper as any).varsResolver = varsResolver
 Stepper.displayName = '@react-ui/ui/Stepper'
 Stepper.Step = StepperStep
+Stepper.Completed = StepperCompleted
 
 export namespace Stepper {
     export type Props = StepperProps
     export type StylesNames = StepperStylesNames
     export type CssVariables = StepperCssVariables
     export type Factory = StepperFactory
+    export type Step = StepperStepProps
+
+    export namespace Completed {
+        export type Props = StepperCompletedProps
+    }
 }

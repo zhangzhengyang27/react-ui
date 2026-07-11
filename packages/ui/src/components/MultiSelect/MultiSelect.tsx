@@ -5,7 +5,8 @@ import { Badge } from '../Badge'
 import { CloseButton } from '../CloseButton'
 import { Combobox } from '../Combobox'
 import type { ComboboxOptionData } from '../Combobox'
-import { InputBase, InputWrapper } from '../InputBase'
+import { InputBase } from '../InputBase'
+import { InputWrapper } from '../Input'
 import classes from './MultiSelect.module.css'
 
 export type MultiSelectStylesNames =
@@ -83,6 +84,12 @@ export interface MultiSelectProps
 
     /** Dropdown position relative to the target element */
     position?: import('../../core').FloatingPosition
+
+    /** Position of the check icon in the dropdown item @default 'left' */
+    checkIconPosition?: 'left' | 'right'
+
+    /** Props passed down to the Combobox component */
+    comboboxProps?: Record<string, any>
 }
 
 export type MultiSelectFactory = Factory<{
@@ -107,6 +114,22 @@ function MultiSelectChevronIcon(props: React.ComponentProps<'svg'>) {
             {...props}
         >
             <polyline points="6 9 12 15 18 9" />
+        </svg>
+    )
+}
+
+function MultiSelectCheckIcon(props: React.ComponentProps<'svg'>) {
+    return (
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            {...props}
+        >
+            <polyline points="20 6 9 17 4 12" />
         </svg>
     )
 }
@@ -160,6 +183,8 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
         nothingFoundMessage,
         maxDropdownHeight,
         position,
+        checkIconPosition,
+        comboboxProps,
         id,
         ...others
     } = props
@@ -289,6 +314,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
             onOptionSubmit={handleOptionSubmit}
             position={position}
             disabled={disabled}
+            {...comboboxProps}
         >
             <Combobox.Target>
                 <MultiSelectTarget
@@ -342,7 +368,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
                     {filteredData.length === 0 && nothingFoundMessage ? (
                         <Combobox.Empty>{nothingFoundMessage}</Combobox.Empty>
                     ) : (
-                        renderOptions(filteredData, selectedValues, isMaxSelected)
+                        renderOptions(filteredData, selectedValues, isMaxSelected, checkIconPosition)
                     )}
                 </Combobox.Options>
             </Combobox.Dropdown>
@@ -369,7 +395,12 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     )
 })
 
-function renderOptions(data: ComboboxOptionData[], selectedValues: string[], isMaxSelected: boolean) {
+function renderOptions(
+    data: ComboboxOptionData[],
+    selectedValues: string[],
+    isMaxSelected: boolean,
+    checkIconPosition?: 'left' | 'right'
+) {
     const result: React.ReactNode[] = []
     let lastGroup: string | undefined
 
@@ -381,10 +412,23 @@ function renderOptions(data: ComboboxOptionData[], selectedValues: string[], isM
 
         const selected = selectedValues.includes(item.value)
         const disabled = item.disabled || (isMaxSelected && !selected)
+        const check = <MultiSelectCheckIcon className={classes.check} />
 
         result.push(
             <Combobox.Option key={item.value} value={item.value} disabled={disabled}>
-                {item.label}
+                <span
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        width: '100%',
+                        justifyContent: checkIconPosition === 'right' ? 'space-between' : undefined
+                    }}
+                >
+                    {checkIconPosition === 'left' && selected && check}
+                    {item.label}
+                    {checkIconPosition === 'right' && selected && check}
+                </span>
             </Combobox.Option>
         )
     })

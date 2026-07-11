@@ -33,7 +33,7 @@ export type HighlightFactory = PolymorphicFactory<{
 const defaultProps = {} satisfies Partial<HighlightProps>
 
 function getChunks({ text, highlight }: { text: string; highlight: string }) {
-    if (!highlight) {
+    if (!highlight || typeof highlight !== 'string') {
         return [{ chunk: text, highlighted: false }]
     }
 
@@ -54,7 +54,8 @@ export const Highlight = polymorphicFactory<HighlightFactory>((_props, _ref) => 
     const props = useProps('Highlight', defaultProps, _props)
     const { classNames, className, style, styles, unstyled, children, highlight, color, attributes, ...others } = props
 
-    const chunks = getChunks({ text: children, highlight })
+    const text = typeof children === 'string' ? children : String(children ?? '')
+    const chunks = getChunks({ text, highlight })
 
     return (
         <Box component="span" className={className} style={style} {...others}>

@@ -18,7 +18,9 @@ export interface ScrollbarPrivateProps {
     onResize: () => void
 }
 
-interface ScrollbarProps extends ScrollbarPrivateProps, Omit<React.ComponentProps<'div'>, 'onResize'> {}
+interface ScrollbarProps extends ScrollbarPrivateProps, Omit<React.ComponentProps<'div'>, 'onResize'> {
+    forceMount?: true
+}
 
 export function Scrollbar(props: ScrollbarProps) {
     const {
@@ -31,6 +33,7 @@ export function Scrollbar(props: ScrollbarProps) {
         onWheelScroll,
         onDragScroll,
         onResize,
+        forceMount,
         ref,
         ...scrollbarProps
     } = props

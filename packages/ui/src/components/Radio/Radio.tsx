@@ -15,7 +15,9 @@ import {
     useStyles
 } from '../../core'
 import { useRadioGroupContext } from './RadioGroup.context'
-import { RadioGroup } from './RadioGroup'
+import { RadioGroup, type RadioGroupProps, type RadioGroupFactory } from './RadioGroup'
+import { RadioIndicator, type RadioIndicatorProps, type RadioIndicatorFactory } from './RadioIndicator'
+import { RadioCard, type RadioCardProps, type RadioCardFactory } from './RadioCard'
 import classes from './Radio.module.css'
 
 export type RadioStylesNames =
@@ -76,6 +78,11 @@ export type RadioFactory = Factory<{
     ref: HTMLInputElement
     stylesNames: RadioStylesNames
     vars: RadioCssVariables
+    static_components: {
+        Group: typeof RadioGroup
+        Indicator: typeof RadioIndicator
+        Card: typeof RadioCard
+    }
 }>
 
 const defaultProps = {
@@ -201,11 +208,28 @@ export const Radio = factory<RadioFactory>((_props, ref) => {
 Radio.classes = classes
 ;(Radio as any).varsResolver = varsResolver
 Radio.displayName = '@react-ui/ui/Radio'
-;(Radio as any).Group = RadioGroup
+Radio.Group = RadioGroup
+Radio.Indicator = RadioIndicator
+Radio.Card = RadioCard
 
 export namespace Radio {
     export type Props = RadioProps
     export type StylesNames = RadioStylesNames
     export type CssVariables = RadioCssVariables
     export type Factory = RadioFactory
+
+    export namespace Group {
+        export type Props = RadioGroupProps
+        export type Factory = RadioGroupFactory
+    }
+
+    export namespace Indicator {
+        export type Props = RadioIndicatorProps
+        export type Factory = RadioIndicatorFactory
+    }
+
+    export namespace Card {
+        export type Props = RadioCardProps
+        export type Factory = RadioCardFactory
+    }
 }

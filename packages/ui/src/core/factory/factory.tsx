@@ -26,6 +26,8 @@ export interface FactoryPayload {
     staticComponents?: Record<string, any>
     // 复合组件不能在 MantineProvider 上设置 classNames、styles 和 vars
     compound?: boolean
+    /** 组件签名类型，由 genericFactory 使用 */
+    signature?: any
 }
 
 /**
@@ -202,7 +204,9 @@ export function getWithProps<T, Props>(Component: T): (props: Partial<Props>) =>
 export function factory<Payload extends FactoryPayload>(
     ui: React.ForwardRefRenderFunction<Payload['ref'], Payload['props']>
 ) {
-    const Component = forwardRef(ui) as any
+    // 包装 render 函数，确保 React 19 forwardRef 始终接收 (props, ref) 双参数，
+    // 避免部分组件只声明 _props 单参数时触发运行时警告/SSR 组件类型错误
+    const Component = forwardRef((props: Payload['props'], ref: React.Ref<Payload['ref']>) => ui(props, ref)) as any
 
     Component.extend = identity as any
     Component.withProps = (fixedProps: any) => {
@@ -213,4 +217,9 @@ export function factory<Payload extends FactoryPayload>(
     }
 
     return Component as MantineComponent<Payload>
+}
+
+export function genericFactory<Payload extends FactoryPayload>(ui: Payload['signature']) {
+    return factory(ui as any) as unknown as Payload['signature'] &
+        MantineComponentStaticProperties<Payload> & { displayName?: string }
 }

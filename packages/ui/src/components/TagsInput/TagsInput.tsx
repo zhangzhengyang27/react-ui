@@ -5,7 +5,8 @@ import { Badge } from '../Badge'
 import { CloseButton } from '../CloseButton'
 import { Combobox } from '../Combobox'
 import type { ComboboxOptionData } from '../Combobox'
-import { InputBase, InputWrapper } from '../InputBase'
+import { InputBase } from '../InputBase'
+import { InputWrapper } from '../Input'
 import classes from './TagsInput.module.css'
 
 export type TagsInputStylesNames =

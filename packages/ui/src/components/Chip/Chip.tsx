@@ -14,6 +14,8 @@ import {
     useProps,
     useStyles
 } from '../../core'
+import { ChipGroup, type ChipGroupProps, type ChipGroupFactory } from './ChipGroup'
+import { ChipGroupContext, useChipGroupContext } from './ChipGroup.context'
 import classes from './Chip.module.css'
 
 export type ChipStylesNames = 'root' | 'checkIcon' | 'label'
@@ -25,6 +27,9 @@ export type ChipCssVariables = {
 export interface ChipProps extends BoxProps, StylesApiProps<ChipFactory> {
     /** Chip label */
     children?: React.ReactNode
+
+    /** Chip value, used when inside Chip.Group */
+    value?: string
 
     /** If true, the chip is checked */
     checked?: boolean
@@ -56,6 +61,9 @@ export type ChipFactory = Factory<{
     ref: HTMLButtonElement
     stylesNames: ChipStylesNames
     vars: ChipCssVariables
+    static_components: {
+        Group: typeof ChipGroup
+    }
 }>
 
 const defaultProps = {
@@ -81,6 +89,7 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
         unstyled,
         vars,
         children,
+        value,
         checked,
         defaultChecked,
         onChange,
@@ -92,6 +101,8 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
         mod,
         ...others
     } = props
+
+    const groupCtx = useChipGroupContext()
 
     const getStyles = useStyles<ChipFactory>({
         name: 'Chip',
@@ -108,7 +119,13 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
 
     const isControlled = checked !== undefined
     const [internalChecked, setInternalChecked] = React.useState(defaultChecked ?? false)
-    const isChecked = isControlled ? checked : internalChecked
+
+    const isInGroup = !!groupCtx && value !== undefined
+    const isChecked = isInGroup
+        ? groupCtx!.isChipSelected(value!)
+        : isControlled
+            ? checked
+            : internalChecked
 
     // 使用 ref 跟踪最新状态，避免在连续快速点击（测试环境）时读到过期闭包值
     const isCheckedRef = React.useRef(isChecked)
@@ -116,6 +133,10 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
 
     const handleClick = () => {
         if (disabled) return
+        if (isInGroup) {
+            groupCtx!.onChange(value!)
+            return
+        }
         const next = !isCheckedRef.current
         if (!isControlled) {
             setInternalChecked(next)
@@ -154,10 +175,16 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
 Chip.classes = classes
 ;(Chip as any).varsResolver = varsResolver
 Chip.displayName = '@react-ui/ui/Chip'
+Chip.Group = ChipGroup
 
 export namespace Chip {
     export type Props = ChipProps
     export type Factory = ChipFactory
     export type StylesNames = ChipStylesNames
     export type CssVariables = ChipCssVariables
+
+    export namespace Group {
+        export type Props = ChipGroupProps
+        export type Factory = ChipGroupFactory
+    }
 }

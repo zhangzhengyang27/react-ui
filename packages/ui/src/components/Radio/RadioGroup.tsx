@@ -1,6 +1,6 @@
 import { useUncontrolled } from '@react-ui/hooks'
 import { BoxProps, ElementProps, factory, Factory, MantineSize, StylesApiProps, useProps, useStyles } from '../../core'
-import { InputWrapper } from '../InputBase'
+import { InputWrapper } from '../Input'
 import { RadioGroupContext } from './RadioGroup.context'
 import classes from './Radio.module.css'
 

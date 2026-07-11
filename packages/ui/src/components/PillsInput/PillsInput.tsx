@@ -1,0 +1,109 @@
+import { useRef } from 'react'
+import {
+    BoxProps,
+    ElementProps,
+    factory,
+    Factory,
+    StylesApiProps,
+    useProps
+} from '../../core'
+import { __BaseInputProps, __InputStylesNames } from '../Input'
+import { InputBase } from '../InputBase'
+import { PillsInputContext, type PillsInputContextValue } from './PillsInput.context'
+import {
+    PillsInputField,
+    type PillsInputFieldProps,
+    type PillsInputFieldFactory,
+    type PillsInputFieldStylesNames
+} from './PillsInputField/PillsInputField'
+
+export interface PillsInputProps
+    extends
+        BoxProps,
+        __BaseInputProps,
+        StylesApiProps<PillsInputFactory>,
+        ElementProps<'div', 'size'> {
+    __stylesApiProps?: Record<string, any>
+    __staticSelector?: string
+}
+
+export type PillsInputFactory = Factory<{
+    props: PillsInputProps
+    ref: HTMLDivElement
+    stylesNames: __InputStylesNames
+    staticComponents: {
+        Field: typeof PillsInputField
+    }
+}>
+
+const defaultProps = {
+    size: 'sm'
+} satisfies Partial<PillsInputProps>
+
+export const PillsInput = factory<PillsInputFactory>((_props, ref) => {
+    const props = useProps('PillsInput', defaultProps, _props)
+    const {
+        children,
+        onMouseDown,
+        onClick,
+        size,
+        disabled,
+        __staticSelector,
+        error,
+        variant,
+        ...others
+    } = props
+
+    const fieldRef = useRef<HTMLInputElement>(null)
+
+    return (
+        <PillsInputContext.Provider
+            value={{ fieldRef, size, disabled, hasError: !!error, variant }}
+        >
+            <InputBase
+                size={size}
+                error={error}
+                variant={variant}
+                component="div"
+                data-no-overflow
+                ref={ref}
+                onMouseDown={(event) => {
+                    event.preventDefault()
+                    onMouseDown?.(event)
+                    fieldRef.current?.focus()
+                }}
+                onClick={(event) => {
+                    event.preventDefault()
+                    const fieldset = event.currentTarget.closest('fieldset')
+                    if (!fieldset?.disabled) {
+                        fieldRef.current?.focus()
+                        onClick?.(event)
+                    }
+                }}
+                {...others}
+                multiline
+                disabled={disabled}
+                __staticSelector={__staticSelector || 'PillsInput'}
+                withAria={false}
+            >
+                {children}
+            </InputBase>
+        </PillsInputContext.Provider>
+    )
+})
+
+PillsInput.displayName = '@react-ui/ui/PillsInput'
+PillsInput.classes = InputBase.classes
+PillsInput.Field = PillsInputField
+
+export namespace PillsInput {
+    export type Props = PillsInputProps
+    export type Factory = PillsInputFactory
+    export type ContextValue = PillsInputContextValue
+
+    export namespace Field {
+        export type Props = PillsInputFieldProps
+        export type Factory = PillsInputFieldFactory
+        export type StylesNames = PillsInputFieldStylesNames
+    }
+}

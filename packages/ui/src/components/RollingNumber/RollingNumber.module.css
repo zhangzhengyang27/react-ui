@@ -1,0 +1,60 @@
+.root {
+    display: inline-flex;
+    align-items: baseline;
+    overflow: hidden;
+
+    &[data-tabular-numbers] {
+        font-variant-numeric: tabular-nums;
+    }
+}
+
+.digit {
+    display: inline-block;
+    width: 1ch;
+    height: 1em;
+    overflow: hidden;
+    line-height: 1;
+    transition:
+        width var(--rolling-number-duration) var(--rolling-number-timing-function),
+        opacity var(--rolling-number-duration) var(--rolling-number-timing-function);
+
+    &[data-empty] {
+        width: 0;
+        opacity: 0;
+    }
+}
+
+.digitColumn {
+    display: flex;
+    flex-direction: column;
+    animation: ui-rolling-number-roll var(--rolling-number-duration) var(--rolling-number-timing-function);
+
+    & > span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 1em;
+    }
+}
+
+.char {
+    display: inline-block;
+    overflow: hidden;
+    white-space: pre;
+    transition: opacity var(--rolling-number-duration) var(--rolling-number-timing-function);
+
+    &[data-empty] {
+        width: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes ui-rolling-number-roll {
+    from {
+        transform: var(--rolling-number-roll-from);
+    }
+
+    to {
+        transform: var(--rolling-number-roll-to);
+    }
+}

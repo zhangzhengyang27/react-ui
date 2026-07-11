@@ -60,7 +60,10 @@ export function polymorphicFactory<Payload extends PolymorphicFactoryPayload>(
         PolymorphicComponentWithProps<Payload> &
         StaticComponents<Payload['staticComponents']>
 
-    const Component = forwardRef(ui) as unknown as PolymorphicComponent
+    // 包装 render 函数，确保 React 19 forwardRef 始终接收 (props, ref) 双参数
+    const Component = forwardRef((props: Payload['props'], ref: React.Ref<Payload['defaultRef']>) =>
+        ui(props, ref)
+    ) as unknown as PolymorphicComponent
 
     /**
      * 创建一个高阶组件，将固定的props注入到原始组件中

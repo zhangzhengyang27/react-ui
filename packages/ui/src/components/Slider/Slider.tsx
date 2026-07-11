@@ -70,6 +70,9 @@ export interface SliderProps extends BoxProps, StylesApiProps<SliderFactory> {
 
     /** Accessible name for the slider */
     name?: string
+
+    /** Accessible label for the slider thumb */
+    thumbLabel?: string
 }
 
 export type SliderFactory = Factory<{
@@ -127,6 +130,7 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
         showLabelOnHover,
         label,
         name,
+        thumbLabel,
         mod,
         ...others
     } = props
@@ -183,6 +187,7 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
                 value={normalizedValue}
                 disabled={disabled}
                 name={name}
+                aria-label={thumbLabel}
                 onChange={handleChange}
                 onMouseUp={handleChangeEnd}
                 onTouchEnd={handleChangeEnd}

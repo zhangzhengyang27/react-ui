@@ -7,3 +7,5 @@ export type {
     ButtonStylesNames,
     ButtonCssVariables
 } from './Button'
+export type { ButtonGroupProps, ButtonGroupFactory } from './ButtonGroup'
+export type { ButtonGroupSectionProps, ButtonGroupSectionFactory } from './ButtonGroupSection'

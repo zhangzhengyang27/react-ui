@@ -25,7 +25,10 @@ export const ModalContent = factory<ModalContentFactory>((_props, ref) => {
     const { children, ...others } = props
     const ctx = useModalContext()
 
-    const Scroll: React.FC<any> = ctx.scrollAreaComponent || (({ children: c }) => <div>{c}</div>)
+    const Scroll: React.FC<any> =
+        ctx.scrollAreaComponent === 'div' || !ctx.scrollAreaComponent
+            ? ({ children: c }) => <div>{c}</div>
+            : ctx.scrollAreaComponent
 
     return (
         <ModalBaseContent
@@ -48,4 +51,4 @@ export const ModalContent = factory<ModalContentFactory>((_props, ref) => {
 })
 
 ModalContent.classes = classes
-ModalContent.displayName = '@mantine/core/ModalContent'
+ModalContent.displayName = '@react-ui/ui/ModalContent'

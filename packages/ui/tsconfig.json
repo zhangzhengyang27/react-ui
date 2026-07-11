@@ -5,6 +5,6 @@
         "jsx": "react-jsx",
         "ignoreDeprecations": "5.0"
     },
-    "include": ["src", "../../@types"]
-    // "exclude": ["./es"]
+    "include": ["src", "../../@types"],
+    "exclude": ["./es", "**/*.test.ts", "**/*.test.tsx"]
 }

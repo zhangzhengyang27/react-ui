@@ -1,0 +1,6 @@
+.root {
+    --donut-chart-height: 300px;
+
+    width: 100%;
+    height: var(--donut-chart-height);
+}

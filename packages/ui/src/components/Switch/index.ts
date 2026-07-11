@@ -1,2 +1,6 @@
 export { Switch } from './Switch'
 export type { SwitchProps, SwitchFactory, SwitchStylesNames, SwitchCssVariables } from './Switch'
+export { SwitchGroup } from './SwitchGroup'
+export type { SwitchGroupProps, SwitchGroupFactory, SwitchGroupStylesNames, SwitchGroupValue } from './SwitchGroup'
+export { SwitchGroupContext, useSwitchGroupContext } from './SwitchGroup.context'
+export type { SwitchGroupContextValue } from './SwitchGroup.context'

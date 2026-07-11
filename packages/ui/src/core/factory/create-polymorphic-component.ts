@@ -57,3 +57,5 @@ export function createPolymorphicComponent<ComponentDefaultType, Props, StaticCo
 
     return component as PolymorphicComponent
 }
+
+export const polymorphic = createPolymorphicComponent

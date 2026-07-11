@@ -4,7 +4,15 @@ import dts from 'vite-plugin-dts'
 import { fileURLToPath } from 'node:url'
 
 export default defineConfig({
-    plugins: [react(), dts({ outDir: 'es', include: ['src'], rollupTypes: false })],
+    plugins: [
+        react(),
+        dts({
+            outDir: 'es',
+            include: ['src/**/*.ts', 'src/**/*.tsx', '../../@types/**/*.d.ts'],
+            exclude: ['src/**/*.test.ts', 'src/**/*.test.tsx', 'src/test-setup.ts'],
+            rollupTypes: false
+        })
+    ],
     build: {
         lib: {
             entry: fileURLToPath(new URL('src/index.ts', import.meta.url)),
@@ -14,7 +22,15 @@ export default defineConfig({
         outDir: 'es',
         minify: true,
         rollupOptions: {
-            external: ['react', 'react-dom', 'react/jsx-runtime', 'styled-components', '@react-ui/hooks']
+            external: [
+                'react',
+                'react-dom',
+                'react/jsx-runtime',
+                'styled-components',
+                '@react-ui/hooks',
+                'embla-carousel-react',
+                'recharts'
+            ]
         }
     }
 })

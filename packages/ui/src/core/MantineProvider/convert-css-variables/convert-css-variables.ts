@@ -26,14 +26,14 @@ export function convertCssVariables(input: ConvertCSSVariablesInput, selector: s
 
     const darkForced = dark
         ? selector === ':host'
-            ? wrapWithSelector(`${selector}([data-mantine-color-scheme="dark"])`, dark)
-            : wrapWithSelector(`${selector}[data-mantine-color-scheme="dark"]`, dark)
+            ? wrapWithSelector(`${selector}([data-ui-color-scheme="dark"])`, dark)
+            : wrapWithSelector(`${selector}[data-ui-color-scheme="dark"]`, dark)
         : ''
 
     const lightForced = light
         ? selector === ':host'
-            ? wrapWithSelector(`${selector}([data-mantine-color-scheme="light"])`, light)
-            : wrapWithSelector(`${selector}[data-mantine-color-scheme="light"]`, light)
+            ? wrapWithSelector(`${selector}([data-ui-color-scheme="light"])`, light)
+            : wrapWithSelector(`${selector}[data-ui-color-scheme="light"]`, light)
         : ''
 
     return `${shared}\n\n${darkForced}\n\n${lightForced}`

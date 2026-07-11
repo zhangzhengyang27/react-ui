@@ -1,0 +1,6 @@
+.root {
+    --radar-chart-height: 300px;
+
+    width: 100%;
+    height: var(--radar-chart-height);
+}

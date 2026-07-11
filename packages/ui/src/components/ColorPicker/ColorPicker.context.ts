@@ -1,4 +1,4 @@
-import { createSafeContext } from '../../core'
+import { createContext, useContext } from 'react'
 import type { ColorPickerFactory } from './ColorPicker'
 import type { GetStylesApi } from '../../core/styles-api'
 
@@ -7,6 +7,20 @@ interface ColorPickerContextValue {
     unstyled: boolean | undefined
 }
 
-export const [ColorPickerContextProvider, useColorPickerContext] = createSafeContext<ColorPickerContextValue>(
-    'ColorPicker component was not found in the tree'
-)
+const ColorPickerContext = createContext<ColorPickerContextValue | null>(null)
+
+export const ColorPickerContextProvider = ColorPickerContext.Provider
+
+export function useColorPickerContext() {
+    const ctx = useContext(ColorPickerContext)
+    if (ctx === null) {
+        throw new Error('ColorPicker component was not found in the tree')
+    }
+    return ctx
+}
+
+export function useColorPickerContextOptional() {
+    return useContext(ColorPickerContext)
+}
+
+export { ColorPickerContext }

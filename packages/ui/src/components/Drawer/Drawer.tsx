@@ -20,6 +20,8 @@ import { DrawerContent, type DrawerContentProps } from './DrawerContent'
 import { DrawerHeader, type DrawerHeaderProps } from './DrawerHeader'
 import { DrawerOverlay, type DrawerOverlayProps } from './DrawerOverlay'
 import { DrawerProvider } from './Drawer.context'
+import { DrawerRoot, type DrawerRootProps, type DrawerRootFactory } from './DrawerRoot'
+import { DrawerStack, type DrawerStackProps } from './DrawerStack'
 import { DrawerTitle, type DrawerTitleProps } from './DrawerTitle'
 import classes from './Drawer.module.css'
 
@@ -80,13 +82,15 @@ export type DrawerFactory = Factory<{
     ref: HTMLDivElement
     stylesNames: DrawerStylesNames
     vars: DrawerCssVariables
-    staticComponents: {
+    static_components: {
         Body: typeof DrawerBody
         CloseButton: typeof DrawerCloseButton
         Content: typeof DrawerContent
         Header: typeof DrawerHeader
         Overlay: typeof DrawerOverlay
         Title: typeof DrawerTitle
+        Root: typeof DrawerRoot
+        Stack: typeof DrawerStack
     }
 }>
 
@@ -218,6 +222,8 @@ Drawer.Content = DrawerContent
 Drawer.Header = DrawerHeader
 Drawer.Overlay = DrawerOverlay
 Drawer.Title = DrawerTitle
+Drawer.Root = DrawerRoot
+Drawer.Stack = DrawerStack
 
 export namespace Drawer {
     export type Props = DrawerProps
@@ -230,4 +236,11 @@ export namespace Drawer {
     export type HeaderProps = DrawerHeaderProps
     export type OverlayProps = DrawerOverlayProps
     export type TitleProps = DrawerTitleProps
+    export type RootProps = DrawerRootProps
+    export type StackProps = DrawerStackProps
+
+    export namespace Root {
+        export type Props = DrawerRootProps
+        export type Factory = DrawerRootFactory
+    }
 }

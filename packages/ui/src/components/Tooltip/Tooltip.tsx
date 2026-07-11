@@ -1,4 +1,4 @@
-import { cloneElement, useRef } from 'react'
+import { cloneElement, useEffect, useRef } from 'react'
 import {
     Box,
     createVarsResolver,
@@ -22,6 +22,9 @@ import {
 import { Portal } from '../Portal'
 import { Transition } from '../Transition'
 import { useTooltip, type TooltipMiddlewares } from './use-tooltip'
+import { useTooltipGroupContext } from './Tooltip.context'
+import { TooltipFloating, type TooltipFloatingProps, type TooltipFloatingFactory } from './TooltipFloating'
+import { TooltipGroup, type TooltipGroupProps } from './TooltipGroup'
 import classes from './Tooltip.module.css'
 
 export type TooltipStylesNames = 'tooltip' | 'arrow'
@@ -96,6 +99,9 @@ export interface TooltipProps extends BoxProps, StylesApiProps<TooltipFactory>, 
 
     /** Called when tooltip position changes */
     onPositionChange?: (position: FloatingPosition) => void
+
+    /** Target element, can be a ref, HTMLElement or CSS selector string. If set, children are not required. */
+    target?: React.RefObject<HTMLElement | null> | HTMLElement | null | string
 }
 
 export type TooltipFactory = Factory<{
@@ -103,6 +109,10 @@ export type TooltipFactory = Factory<{
     ref: HTMLDivElement
     stylesNames: TooltipStylesNames
     vars: TooltipCssVariables
+    static_components: {
+        Group: typeof TooltipGroup
+        Floating: typeof TooltipFloating
+    }
 }>
 
 const defaultProps = {
@@ -134,6 +144,7 @@ const varsResolver = createVarsResolver<TooltipFactory>((theme, { radius, color,
 })
 
 export const Tooltip = factory<TooltipFactory>((_props, ref) => {
+    const groupCtx = useTooltipGroupContext()
     const props = useProps('Tooltip', defaultProps, _props)
     const {
         children,
@@ -166,15 +177,19 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
         mod,
         floatingStrategy,
         middlewares,
+        target,
         ...others
     } = props
+
+    const resolvedOpenDelay = openDelay ?? groupCtx.openDelay
+    const resolvedCloseDelay = closeDelay ?? groupCtx.closeDelay
 
     const arrowRef = useRef<HTMLDivElement>(null)
 
     const tooltip = useTooltip({
         position: getFloatingPosition('ltr', position!),
-        closeDelay,
-        openDelay,
+        closeDelay: resolvedCloseDelay,
+        openDelay: resolvedOpenDelay,
         onPositionChange,
         opened,
         defaultOpened,
@@ -185,6 +200,19 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
         strategy: floatingStrategy,
         middlewares
     })
+
+    useEffect(() => {
+        const targetNode: HTMLElement | null =
+            target instanceof HTMLElement
+                ? target
+                : typeof target === 'string'
+                    ? (document.querySelector(target) as HTMLElement | null)
+                    : target?.current || null
+
+        if (targetNode) {
+            tooltip.reference(targetNode)
+        }
+    }, [target, tooltip])
 
     const getStyles = useStyles<TooltipFactory>({
         name: 'Tooltip',
@@ -201,13 +229,54 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
     })
 
     const child = getSingleElementChild(children)
-    if (!child) {
+    if (!target && !child) {
         throw new Error(
-            '[@react-ui/ui] Tooltip component children should be an element or a component that accepts ref'
+            '[@react-ui/ui] Tooltip component children should be an element or a component that accepts ref. Use target prop to specify target element without children.'
         )
     }
 
     const tooltipStyles = getStyles('tooltip')
+
+    if (target) {
+        return (
+            <Portal>
+                <Transition mounted={!disabled && !!tooltip.opened} transition="fade" duration={100}>
+                    {transitionStyles => (
+                        <Box
+                            {...others}
+                            variant={variant}
+                            mod={[{ multiline }, mod]}
+                            {...tooltip.getFloatingProps({
+                                ref: tooltip.floating,
+                                className: tooltipStyles.className,
+                                style: {
+                                    ...tooltipStyles.style,
+                                    ...transitionStyles,
+                                    zIndex: zIndex as React.CSSProperties['zIndex'],
+                                    top: tooltip.y ?? 0,
+                                    left: tooltip.x ?? 0
+                                }
+                            })}
+                        >
+                            {label}
+                            <FloatingArrow
+                                ref={arrowRef}
+                                arrowX={tooltip.arrowX}
+                                arrowY={tooltip.arrowY}
+                                visible={withArrow}
+                                position={tooltip.placement}
+                                arrowSize={arrowSize!}
+                                arrowOffset={arrowOffset!}
+                                arrowRadius={arrowRadius!}
+                                arrowPosition={arrowPosition!}
+                                {...getStyles('arrow')}
+                            />
+                        </Box>
+                    )}
+                </Transition>
+            </Portal>
+        )
+    }
 
     return (
         <>
@@ -249,11 +318,11 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
             </Portal>
 
             {cloneElement(
-                child,
+                child!,
                 tooltip.getReferenceProps({
                     ref,
-                    ...child.props,
-                    className: [className, child.props.className].filter(Boolean).join(' ')
+                    ...child!.props,
+                    className: [className, child!.props.className].filter(Boolean).join(' ')
                 })
             )}
         </>
@@ -262,3 +331,5 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
 
 Tooltip.classes = classes
 Tooltip.displayName = '@mantine/core/Tooltip'
+Tooltip.Group = TooltipGroup
+Tooltip.Floating = TooltipFloating

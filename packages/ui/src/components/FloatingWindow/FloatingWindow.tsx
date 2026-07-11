@@ -1,0 +1,126 @@
+import { useImperativeHandle } from 'react'
+import {
+    SetFloatingWindowPosition,
+    useFloatingWindow,
+    UseFloatingWindowOptions,
+    useMergedRef,
+} from '@react-ui/hooks'
+import {
+    BoxProps,
+    ElementProps,
+    factory,
+    Factory,
+    getDefaultZIndex,
+    StylesApiProps,
+    useProps,
+    useStyles,
+} from '../../core'
+import { Paper, PaperBaseProps } from '../Paper'
+import { OptionalPortal, PortalProps } from '../Portal'
+import classes from './FloatingWindow.module.css'
+
+export type FloatingWindowStylesNames = 'root'
+
+export interface FloatingWindowProps
+    extends
+        UseFloatingWindowOptions,
+        PaperBaseProps,
+        BoxProps,
+        StylesApiProps<FloatingWindowFactory>,
+        ElementProps<'div', keyof UseFloatingWindowOptions> {
+    setPositionRef?: React.RefObject<SetFloatingWindowPosition | null>
+    withinPortal?: boolean
+    portalProps?: Omit<PortalProps, 'children'>
+    zIndex?: React.CSSProperties['zIndex']
+}
+
+export type FloatingWindowFactory = Factory<{
+    props: FloatingWindowProps
+    ref: HTMLDivElement
+    stylesNames: FloatingWindowStylesNames
+}>
+
+const defaultProps = {
+    constrainToViewport: true,
+    zIndex: getDefaultZIndex('overlay'),
+} satisfies Partial<FloatingWindowProps>
+
+export const FloatingWindow = factory<FloatingWindowFactory>((_props, ref) => {
+    const props = useProps('FloatingWindow', defaultProps, _props)
+    const {
+        classNames,
+        className,
+        style,
+        styles,
+        unstyled,
+        vars,
+        mod,
+        enabled,
+        constrainToViewport,
+        constrainOffset,
+        dragHandleSelector,
+        excludeDragHandleSelector,
+        axis,
+        initialPosition,
+        onPositionChange,
+        onDragStart,
+        onDragEnd,
+        setPositionRef,
+        withinPortal,
+        portalProps,
+        zIndex,
+        ...others
+    } = props
+
+    const getStyles = useStyles<FloatingWindowFactory>({
+        name: 'FloatingWindow',
+        classes,
+        props,
+        className,
+        style,
+        classNames,
+        styles,
+        unstyled,
+        vars,
+    })
+
+    const floatingWindow = useFloatingWindow({
+        enabled,
+        constrainToViewport,
+        constrainOffset,
+        dragHandleSelector,
+        excludeDragHandleSelector,
+        axis,
+        initialPosition,
+        onPositionChange,
+        onDragStart,
+        onDragEnd,
+    })
+
+    useImperativeHandle(setPositionRef, () => floatingWindow.setPosition, [
+        floatingWindow.setPosition,
+    ])
+
+    const mergedRef = useMergedRef(ref, floatingWindow.ref)
+
+    return (
+        <OptionalPortal withinPortal={withinPortal} {...portalProps}>
+            <Paper
+                ref={mergedRef}
+                mod={[{ dragging: floatingWindow.isDragging }, mod]}
+                {...getStyles('root')}
+                {...others}
+                __vars={{ '--floating-window-z-index': zIndex!.toString() }}
+            />
+        </OptionalPortal>
+    )
+})
+
+FloatingWindow.displayName = '@react-ui/ui/FloatingWindow'
+FloatingWindow.classes = classes
+
+export namespace FloatingWindow {
+    export type Props = FloatingWindowProps
+    export type StylesNames = FloatingWindowStylesNames
+    export type Factory = FloatingWindowFactory
+}

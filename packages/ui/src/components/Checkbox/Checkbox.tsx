@@ -18,6 +18,8 @@ import {
 } from '../../core'
 import { useCheckboxGroupContext } from './CheckboxGroup.context'
 import { CheckboxGroup } from './CheckboxGroup'
+import { CheckboxCard, type CheckboxCardProps, type CheckboxCardFactory, CheckboxCardContext } from './CheckboxCard'
+import { CheckboxIndicator, type CheckboxIndicatorProps, type CheckboxIndicatorFactory } from './CheckboxIndicator'
 import classes from './Checkbox.module.css'
 
 export type CheckboxStylesNames =
@@ -87,6 +89,11 @@ export type CheckboxFactory = Factory<{
     ref: HTMLInputElement
     stylesNames: CheckboxStylesNames
     vars: CheckboxCssVariables
+    static_components: {
+        Group: typeof CheckboxGroup
+        Indicator: typeof CheckboxIndicator
+        Card: typeof CheckboxCard
+    }
 }>
 
 const defaultProps = {
@@ -266,10 +273,22 @@ Checkbox.classes = classes
 ;(Checkbox as any).varsResolver = varsResolver
 Checkbox.displayName = '@react-ui/ui/Checkbox'
 ;(Checkbox as any).Group = CheckboxGroup
+Checkbox.Indicator = CheckboxIndicator
+Checkbox.Card = CheckboxCard
 
 export namespace Checkbox {
     export type Props = CheckboxProps
     export type StylesNames = CheckboxStylesNames
     export type CssVariables = CheckboxCssVariables
     export type Factory = CheckboxFactory
+
+    export namespace Indicator {
+        export type Props = CheckboxIndicatorProps
+        export type Factory = CheckboxIndicatorFactory
+    }
+
+    export namespace Card {
+        export type Props = CheckboxCardProps
+        export type Factory = CheckboxCardFactory
+    }
 }

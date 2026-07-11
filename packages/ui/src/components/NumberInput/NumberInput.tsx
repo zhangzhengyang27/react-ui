@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { clamp, useId } from '@react-ui/hooks'
 import {
     BoxProps,
@@ -12,7 +12,8 @@ import {
     useProps,
     useStyles
 } from '../../core'
-import { InputBase, InputWrapper } from '../InputBase'
+import { InputBase } from '../InputBase'
+import { InputWrapper } from '../Input'
 import classes from './NumberInput.module.css'
 
 export type NumberInputStylesNames = 'root' | 'input' | 'section' | 'control' | 'icon'
@@ -69,6 +70,15 @@ export interface NumberInputProps
 
     /** If set, stepper controls will be hidden @default false */
     hideControls?: boolean
+
+    /** Value prefix, for example $ */
+    prefix?: string
+
+    /** Value suffix, for example USD */
+    suffix?: string
+
+    /** Thousands separator */
+    thousandSeparator?: string | boolean
 }
 
 export type NumberInputFactory = Factory<{
@@ -90,19 +100,36 @@ const varsResolver = createVarsResolver<NumberInputFactory>((_, { size }) => ({
     }
 }))
 
-function formatValue(value: number | string | undefined): string {
+function parseRawValue(value: number | string | undefined): string {
     if (value === undefined || value === '') {
         return ''
     }
-    return String(value)
+    return String(value).replace(/[^\d.-]/g, '')
 }
 
 function parseValue(value: string): number | undefined {
-    if (value === '') {
+    if (value === '' || value === '-') {
         return undefined
     }
     const parsed = Number(value)
     return Number.isNaN(parsed) ? undefined : parsed
+}
+
+function formatDisplayValue(
+    value: string,
+    prefix?: string,
+    suffix?: string,
+    thousandSeparator?: string | boolean
+): string {
+    if (value === '' || value === '-') {
+        return value
+    }
+
+    const [intPart, decPart] = value.split('.')
+    const separator = typeof thousandSeparator === 'string' ? thousandSeparator : thousandSeparator ? ',' : ''
+    const formattedInt = separator ? intPart.replace(/\B(?=(\d{3})+(?!\d))/g, separator) : intPart
+    const formatted = decPart !== undefined ? `${formattedInt}.${decPart}` : formattedInt
+    return `${prefix || ''}${formatted}${suffix || ''}`
 }
 
 function NumberInputChevronUpIcon() {
@@ -161,8 +188,13 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
         value: valueProp,
         onChange,
         hideControls,
+        prefix,
+        suffix,
+        thousandSeparator,
         id,
         onKeyDown,
+        onFocus,
+        onBlur,
         ...others
     } = props
 
@@ -182,16 +214,25 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
 
     const inputId = useId(id)
     const isControlled = valueProp !== undefined
-    const [uncontrolledValue, setUncontrolledValue] = useState(() => formatValue(defaultValue))
-    const inputValue = isControlled ? formatValue(valueProp) : uncontrolledValue
+    const [focused, setFocused] = useState(false)
+    const [uncontrolledValue, setUncontrolledValue] = useState(() => parseRawValue(defaultValue ?? valueProp))
 
-    const currentNumber = parseValue(inputValue)
+    useEffect(() => {
+        if (isControlled) {
+            setUncontrolledValue(parseRawValue(valueProp))
+        }
+    }, [isControlled, valueProp])
+
+    const rawValue = isControlled ? parseRawValue(valueProp) : uncontrolledValue
+    const inputValue = focused ? rawValue : formatDisplayValue(rawValue, prefix, suffix, thousandSeparator)
+
+    const currentNumber = parseValue(rawValue)
 
     const updateValue = (nextValue: number) => {
         const clamped = clamp(nextValue, min, max)
         onChange?.(clamped)
         if (!isControlled) {
-            setUncontrolledValue(String(clamped))
+            setUncontrolledValue(parseRawValue(clamped))
         }
     }
 
@@ -217,14 +258,43 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     }
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const nextValue = event.currentTarget.value
+        const nextValue = event.currentTarget.value.replace(/[^\d.-]/g, '')
+        const parts = nextValue.split('.')
+        const normalized = parts.length > 2 ? `${parts[0]}.${parts.slice(1).join('')}` : nextValue
+        const hasLeadingMinus = normalized.startsWith('-')
+        const withoutMinus = normalized.replace(/-/g, '')
+        const sanitized = hasLeadingMinus ? `-${withoutMinus}` : withoutMinus
+
         if (!isControlled) {
-            setUncontrolledValue(nextValue)
+            setUncontrolledValue(sanitized)
         }
-        const parsed = parseValue(nextValue)
+
+        const parsed = parseValue(sanitized)
         if (parsed !== undefined) {
             onChange?.(clamp(parsed, min, max))
         }
+    }
+
+    const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+        setFocused(true)
+        onFocus?.(event)
+    }
+
+    const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+        setFocused(false)
+        const parsed = parseValue(rawValue)
+        if (parsed !== undefined) {
+            const clamped = clamp(parsed, min, max)
+            if (!isControlled) {
+                setUncontrolledValue(parseRawValue(clamped))
+            }
+            if (clamped !== parsed) {
+                onChange?.(clamped)
+            }
+        } else if (!isControlled) {
+            setUncontrolledValue('')
+        }
+        onBlur?.(event)
     }
 
     const controls = hideControls ? null : (
@@ -263,7 +333,8 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
                 component="input"
                 ref={ref}
                 id={inputId}
-                type="number"
+                type="text"
+                inputMode="decimal"
                 disabled={disabled}
                 invalid={invalid}
                 size={size}
@@ -272,9 +343,8 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
                 value={inputValue}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
-                min={min}
-                max={max}
-                step={step}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
                 rightSection={controls}
                 rightSectionWidth={hideControls ? undefined : 'var(--ni-control-width)'}
                 {...others}

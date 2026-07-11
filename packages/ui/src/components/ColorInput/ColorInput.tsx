@@ -23,7 +23,8 @@ import {
     parseColor
 } from '../ColorPicker'
 import { ColorSwatch } from '../ColorSwatch'
-import { InputBase, InputWrapper } from '../InputBase'
+import { InputBase } from '../InputBase'
+import { InputWrapper } from '../Input'
 import { Popover, PopoverProps } from '../Popover'
 import { EyeDropperIcon } from './EyeDropperIcon'
 import classes from './ColorInput.module.css'

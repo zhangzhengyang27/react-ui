@@ -1,0 +1,27 @@
+.root {
+    display: flex;
+    align-items: center;
+}
+
+.target {
+    font-size: var(--ui-font-size-sm);
+    line-height: 1;
+    padding: calc(var(--ui-spacing-xs) / 1.5) var(--ui-spacing-sm);
+    border-radius: var(--ui-radius-default);
+    color: var(--ui-color-text);
+    background-color: transparent;
+    user-select: none;
+    cursor: pointer;
+
+    &:where([data-disabled], :disabled) {
+        color: var(--ui-color-disabled-color);
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    &:where(:hover, :focus-visible, [data-expanded]) {
+        &:where(:not(:disabled, [data-disabled])) {
+            background-color: light-dark(var(--ui-color-gray-1), var(--ui-color-dark-5));
+        }
+    }
+}

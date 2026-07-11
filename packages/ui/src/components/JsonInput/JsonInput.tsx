@@ -1,7 +1,8 @@
 import { useRef } from 'react'
 import { useId, useUncontrolled } from '@react-ui/hooks'
 import { factory, Factory, StylesApiProps, useProps, useStyles } from '../../core'
-import { InputBase, InputBaseProps, InputWrapper } from '../InputBase'
+import { InputBase, InputBaseProps } from '../InputBase'
+import { InputWrapper } from '../Input'
 import classes from './JsonInput.module.css'
 
 export type JsonInputStylesNames = 'root'
@@ -18,6 +19,9 @@ export interface JsonInputProps
             | 'value'
             | 'defaultValue'
             | 'onChange'
+            | 'labelProps'
+            | 'descriptionProps'
+            | 'errorProps'
         >,
         StylesApiProps<JsonInputFactory> {
     /** Controlled value */

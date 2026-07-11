@@ -1,0 +1,243 @@
+.root {
+    & :first-child {
+        margin-top: 0;
+    }
+
+    & :last-child {
+        margin-bottom: 0;
+    }
+
+    & :where(h1, h2, h3, h4, h5, h6) {
+        margin-bottom: var(--ui-spacing-xs);
+        text-wrap: var(--ui-heading-text-wrap, balance);
+        font-family: var(--ui-font-family-headings);
+    }
+
+    & :where(h1) {
+        margin-top: calc(1.5 * var(--ui-spacing-xl));
+        font-size: var(--ui-h1-font-size);
+        line-height: var(--ui-h1-line-height);
+        font-weight: var(--ui-h1-font-weight);
+    }
+
+    & :where(h2) {
+        margin-top: var(--ui-spacing-xl);
+        font-size: var(--ui-h2-font-size);
+        line-height: var(--ui-h2-line-height);
+        font-weight: var(--ui-h2-font-weight);
+    }
+
+    & :where(h3) {
+        margin-top: calc(0.8 * var(--ui-spacing-xl));
+        font-size: var(--ui-h3-font-size);
+        line-height: var(--ui-h3-line-height);
+        font-weight: var(--ui-h3-font-weight);
+    }
+
+    & :where(h4) {
+        margin-top: calc(0.8 * var(--ui-spacing-xl));
+        font-size: var(--ui-h4-font-size);
+        line-height: var(--ui-h4-line-height);
+        font-weight: var(--ui-h4-font-weight);
+    }
+
+    & :where(h5) {
+        margin-top: calc(0.5 * var(--ui-spacing-xl));
+        font-size: var(--ui-h5-font-size);
+        line-height: var(--ui-h5-line-height);
+        font-weight: var(--ui-h5-font-weight);
+    }
+
+    & :where(h6) {
+        margin-top: calc(0.5 * var(--ui-spacing-xl));
+        font-size: var(--ui-h6-font-size);
+        line-height: var(--ui-h6-line-height);
+        font-weight: var(--ui-h6-font-weight);
+    }
+
+    & :where(img) {
+        max-width: 100%;
+        margin-bottom: var(--ui-spacing-xs);
+    }
+
+    & :where(p) {
+        margin-top: 0;
+        margin-bottom: var(--ui-spacing-lg);
+    }
+
+    & :where(mark) {
+        @mixin where-light {
+            background-color: var(--ui-color-yellow-2);
+            color: inherit;
+        }
+
+        @mixin where-dark {
+            background-color: var(--ui-color-yellow-5);
+            color: var(--ui-color-black);
+        }
+    }
+
+    & :where(a) {
+        color: var(--ui-color-anchor);
+        text-decoration: none;
+
+        @mixin hover {
+            text-decoration: underline;
+        }
+    }
+
+    & :where(hr) {
+        margin-top: var(--ui-spacing-md);
+        margin-bottom: var(--ui-spacing-md);
+        border: 0;
+        border-top: 1px solid;
+
+        @mixin where-light {
+            border-color: var(--ui-color-gray-3);
+        }
+
+        @mixin where-dark {
+            border-color: var(--ui-color-dark-3);
+        }
+    }
+
+    & :where(pre) {
+        padding: var(--ui-spacing-xs);
+        line-height: var(--ui-line-height);
+        margin: 0;
+        margin-top: var(--ui-spacing-md);
+        margin-bottom: var(--ui-spacing-md);
+        overflow-x: auto;
+        font-family: var(--ui-font-family-monospace);
+        font-size: var(--ui-font-size-xs);
+        border-radius: var(--ui-radius-sm);
+
+        @mixin where-light {
+            background-color: var(--ui-color-gray-0);
+        }
+
+        @mixin where-dark {
+            background-color: var(--ui-color-dark-8);
+        }
+
+        & :where(code) {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            color: inherit;
+            border: 0;
+        }
+    }
+
+    & :where(kbd) {
+        font-family: var(--ui-font-family-monospace);
+        line-height: var(--ui-line-height);
+        font-weight: var(--ui-font-weight-bold);
+        padding: 3px 5px;
+        font-size: 12px;
+        border-radius: var(--ui-radius-sm);
+        border: 1px solid;
+        border-bottom-width: 3px;
+
+        @mixin where-light {
+            border-color: var(--ui-color-gray-3);
+            color: var(--ui-color-gray-7);
+            background-color: var(--ui-color-gray-0);
+        }
+
+        @mixin where-dark {
+            border-color: var(--ui-color-dark-3);
+            color: var(--ui-color-dark-0);
+            background-color: var(--ui-color-dark-5);
+        }
+    }
+
+    & :where(code) {
+        line-height: var(--ui-line-height);
+        padding: 1px 5px;
+        border-radius: var(--ui-radius-sm);
+        font-family: var(--ui-font-family-monospace);
+        font-size: var(--ui-font-size-xs);
+
+        @mixin where-light {
+            background-color: var(--ui-color-gray-0);
+            color: var(--ui-color-black);
+        }
+
+        @mixin where-dark {
+            background-color: var(--ui-color-dark-5);
+            color: var(--ui-color-white);
+        }
+    }
+
+    & :where(ul, ol):not([data-type='taskList']) {
+        margin-bottom: var(--ui-spacing-md);
+        padding-inline-start: var(--ui-spacing-xl);
+        list-style-position: outside;
+    }
+
+    & :where(table) {
+        width: 100%;
+        border-collapse: collapse;
+        caption-side: bottom;
+        margin-bottom: var(--ui-spacing-md);
+
+        @mixin where-light {
+            --table-border-color: var(--ui-color-gray-3);
+        }
+
+        @mixin where-dark {
+            --table-border-color: var(--ui-color-dark-4);
+        }
+
+        & :where(caption) {
+            margin-top: var(--ui-spacing-xs);
+            font-size: var(--ui-font-size-sm);
+            color: var(--ui-color-dimmed);
+        }
+
+        & :where(th) {
+            text-align: start;
+            font-weight: bold;
+            font-size: var(--ui-font-size-sm);
+            padding: var(--ui-spacing-xs) var(--ui-spacing-sm);
+        }
+
+        & :where(thead th) {
+            border-bottom: 1px solid;
+            border-color: var(--table-border-color);
+        }
+
+        & :where(tfoot th) {
+            border-top: 1px solid;
+            border-color: var(--table-border-color);
+        }
+
+        & :where(td) {
+            padding: var(--ui-spacing-xs) var(--ui-spacing-sm);
+            border-bottom: 1px solid;
+            border-color: var(--table-border-color);
+            font-size: var(--ui-font-size-sm);
+        }
+
+        & :where(tr:last-of-type td) {
+            border-bottom: 0;
+        }
+    }
+
+    & :where(blockquote) {
+        font-size: var(--ui-font-size-lg);
+        line-height: var(--ui-line-height);
+        margin: var(--ui-spacing-md) 0;
+        border-radius: var(--ui-radius-sm);
+        padding: var(--ui-spacing-md) var(--ui-spacing-lg);
+
+        @mixin where-light {
+            background-color: var(--ui-color-gray-0);
+        }
+
+        @mixin where-dark {
+            background-color: var(--ui-color-dark-8);
+        }
+    }
+}

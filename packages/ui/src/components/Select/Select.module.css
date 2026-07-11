@@ -12,3 +12,9 @@
     height: 16px;
     transition: transform 200ms ease;
 }
+
+.check {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}

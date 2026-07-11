@@ -1,1 +1,5 @@
 export * from './Table'
+export * from './TableScrollContainer'
+export * from './Tfoot'
+export * from './Caption'
+export type { TableData } from './Table'

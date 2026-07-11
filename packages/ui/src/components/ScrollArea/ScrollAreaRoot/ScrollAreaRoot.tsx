@@ -12,7 +12,7 @@ export type ScrollAreaRootCssVariables = {
 
 export interface ScrollAreaRootProps extends BoxProps, ElementProps<'div'> {
     getStyles: GetStylesApi<ScrollAreaFactory>
-    type?: 'always' | 'never'
+    type?: 'always' | 'never' | 'scroll'
     scrollbars?: 'x' | 'y' | 'xy' | false
     ref?: React.Ref<HTMLDivElement>
 }

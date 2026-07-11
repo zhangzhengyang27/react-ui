@@ -1,0 +1,92 @@
+:where(.optionsWrapper) {
+    --ts-level-offset: 20px;
+    --ts-line-width: 1px;
+    --ts-line-color: var(--ui-color-default-border);
+    --ts-option-padding-y: 4px;
+    --ts-option-padding-x: 8px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+    padding: var(--ts-option-padding-y) var(--ts-option-padding-x);
+    padding-inline-start: var(--ts-option-padding-x);
+}
+
+.expandIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    --_ts-expand-icon-size: calc(1.45 * var(--ui-font-size-sm));
+    width: var(--_ts-expand-icon-size);
+    min-width: var(--_ts-expand-icon-size);
+    height: var(--_ts-expand-icon-size);
+    border-radius: var(--ui-radius-sm);
+    cursor: pointer;
+    color: var(--ui-color-dimmed);
+    transform: rotate(-90deg);
+}
+
+.option[data-combobox-selected='true'] .expandIcon {
+    color: var(--ui-color-white);
+}
+
+.expandIcon:where([data-expanded]) {
+    transform: rotate(0deg);
+}
+
+.expandIcon:hover {
+    background-color: var(--ui-color-default-hover);
+}
+
+.checkIcon {
+    opacity: 0.4;
+    width: 0.8em;
+    min-width: 0.8em;
+    height: 0.8em;
+    margin-inline-start: auto;
+}
+
+.option[data-combobox-selected='true'] .checkIcon {
+    opacity: 1;
+}
+
+.label {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.guideLine {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-inline-start: var(--ts-line-width) solid var(--ts-line-color);
+    pointer-events: none;
+}
+
+.branchVertical {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-inline-start: var(--ts-line-width) solid var(--ts-line-color);
+    pointer-events: none;
+}
+
+.branchVertical:where([data-last]) {
+    bottom: auto;
+    height: 50%;
+}
+
+.branchHorizontal {
+    position: absolute;
+    top: 50%;
+    height: 0;
+    border-top: var(--ts-line-width) solid var(--ts-line-color);
+    pointer-events: none;
+}

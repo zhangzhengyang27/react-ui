@@ -54,3 +54,18 @@
     color: var(--ui-color-text);
     user-select: none;
 }
+
+.items {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--ui-spacing-sm) / 2);
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--pagination-control-fz, var(--ui-font-size-sm));
+    color: var(--ui-color-text);
+    white-space: nowrap;
+}

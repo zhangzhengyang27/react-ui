@@ -1,10 +1,11 @@
-import { createSafeContext, type GetStylesApi } from '../../core'
-import type { ModalFactory } from './Modal'
+import { createSafeContext } from '../../core'
+
+export type ScrollAreaComponent = React.FC<any> | 'div'
 
 export interface ModalContextValue {
-    getStyles: GetStylesApi<ModalFactory>
+    getStyles: (...args: any[]) => any
     yOffset: React.CSSProperties['marginTop']
-    scrollAreaComponent?: React.FC<any>
+    scrollAreaComponent?: ScrollAreaComponent
     fullScreen: boolean | undefined
 }
 

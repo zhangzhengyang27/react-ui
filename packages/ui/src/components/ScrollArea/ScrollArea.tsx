@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useIsomorphicEffect, useMergedRef } from '@react-ui/hooks'
 import {
     Box,
@@ -35,7 +35,7 @@ export interface ScrollAreaProps extends BoxProps, StylesApiProps<ScrollAreaFact
      * - `'never'` – scrollbars always hidden
      * @default 'always'
      * */
-    type?: 'always' | 'never'
+    type?: 'always' | 'never' | 'scroll'
 
     /**
      * Axis at which scrollbars must be rendered
@@ -84,8 +84,23 @@ export interface ScrollAreaProps extends BoxProps, StylesApiProps<ScrollAreaFact
     startScrollPosition?: { x?: number; y?: number }
 }
 
+export interface ScrollAreaAutosizeProps extends ScrollAreaProps {
+    /** Called when content overflows due to max-height, making the container scrollable */
+    onOverflowChange?: (overflowing: boolean) => void
+}
+
 export type ScrollAreaFactory = Factory<{
     props: ScrollAreaProps
+    ref: HTMLDivElement
+    stylesNames: ScrollAreaStylesNames
+    vars: ScrollAreaCssVariables
+    staticComponents: {
+        Autosize: typeof ScrollAreaAutosize
+    }
+}>
+
+export type ScrollAreaAutosizeFactory = Factory<{
+    props: ScrollAreaAutosizeProps
     ref: HTMLDivElement
     stylesNames: ScrollAreaStylesNames
     vars: ScrollAreaCssVariables
@@ -250,9 +265,132 @@ ScrollArea.classes = classes
 ;(ScrollArea as any).varsResolver = varsResolver
 ScrollArea.displayName = '@react-ui/ui/ScrollArea'
 
+export const ScrollAreaAutosize = factory<ScrollAreaAutosizeFactory>((_props) => {
+    const props = useProps('ScrollAreaAutosize', defaultProps, _props as ScrollAreaAutosizeProps)
+    const {
+        children,
+        classNames,
+        styles,
+        scrollbarSize,
+        type,
+        offsetScrollbars,
+        overscrollBehavior,
+        viewportRef,
+        onScrollPositionChange,
+        unstyled,
+        viewportProps,
+        scrollbars,
+        style,
+        vars,
+        onBottomReached,
+        onTopReached,
+        startScrollPosition,
+        onOverflowChange,
+        ...others
+    } = props
+
+    const viewportObserverRef = useRef<HTMLDivElement>(null)
+    const [viewportObserverElement, setViewportObserverElement] = useState<HTMLDivElement | null>(null)
+    const viewportObserverCallbackRef = useCallback((node: HTMLDivElement | null) => {
+        setViewportObserverElement(current => (current === node ? current : node))
+    }, [])
+    const combinedViewportRef = useMergedRef(viewportRef, viewportObserverRef, viewportObserverCallbackRef)
+
+    const overflowingRef = useRef(false)
+    const didMountRef = useRef(false)
+
+    const handleOverflowCheck = useCallback(() => {
+        const el = viewportObserverRef.current
+        if (!el || !onOverflowChange) {
+            return
+        }
+
+        const isOverflowing = el.scrollHeight > el.clientHeight
+
+        if (isOverflowing !== overflowingRef.current) {
+            if (didMountRef.current) {
+                onOverflowChange(isOverflowing)
+            } else {
+                didMountRef.current = true
+                if (isOverflowing) {
+                    onOverflowChange(true)
+                }
+            }
+
+            overflowingRef.current = isOverflowing
+        }
+    }, [onOverflowChange])
+
+    useEffect(() => {
+        if (!viewportObserverElement || !onOverflowChange) {
+            return undefined
+        }
+
+        let rAF = 0
+        const resizeObserver = new ResizeObserver(() => {
+            cancelAnimationFrame(rAF)
+            rAF = window.requestAnimationFrame(handleOverflowCheck)
+        })
+
+        resizeObserver.observe(viewportObserverElement)
+
+        return () => {
+            window.cancelAnimationFrame(rAF)
+            resizeObserver.unobserve(viewportObserverElement)
+        }
+    }, [viewportObserverElement, onOverflowChange, handleOverflowCheck])
+
+    return (
+        <Box {...others} style={[{ display: 'flex', overflow: 'hidden' }, style]}>
+            <Box
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flex: 1,
+                    overflow: 'hidden',
+                    ...(scrollbars === 'y' && { minWidth: 0 }),
+                    ...(scrollbars === 'x' && { minHeight: 0 }),
+                    ...(scrollbars === 'xy' && { minWidth: 0, minHeight: 0 }),
+                    ...(scrollbars === false && { minWidth: 0, minHeight: 0 })
+                }}
+            >
+                <ScrollArea
+                    classNames={classNames}
+                    styles={styles}
+                    scrollbarSize={scrollbarSize}
+                    type={type}
+                    offsetScrollbars={offsetScrollbars}
+                    overscrollBehavior={overscrollBehavior}
+                    viewportRef={combinedViewportRef}
+                    onScrollPositionChange={onScrollPositionChange}
+                    unstyled={unstyled}
+                    viewportProps={viewportProps}
+                    vars={vars}
+                    scrollbars={scrollbars}
+                    onBottomReached={onBottomReached}
+                    onTopReached={onTopReached}
+                    startScrollPosition={startScrollPosition}
+                    data-autosize="true"
+                >
+                    {children}
+                </ScrollArea>
+            </Box>
+        </Box>
+    )
+})
+
+ScrollAreaAutosize.displayName = '@react-ui/ui/ScrollAreaAutosize'
+ScrollAreaAutosize.classes = classes
+ScrollArea.Autosize = ScrollAreaAutosize
+
 export namespace ScrollArea {
     export type Props = ScrollAreaProps
+    export type AutosizeProps = ScrollAreaAutosizeProps
     export type StylesNames = ScrollAreaStylesNames
     export type CssVariables = ScrollAreaCssVariables
     export type Factory = ScrollAreaFactory
+
+    export namespace Autosize {
+        export type Props = ScrollAreaAutosizeProps
+    }
 }

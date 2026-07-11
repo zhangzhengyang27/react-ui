@@ -1,2 +1,6 @@
 export { Chip } from './Chip'
 export type { ChipProps, ChipFactory, ChipStylesNames, ChipCssVariables } from './Chip'
+export { ChipGroup } from './ChipGroup'
+export type { ChipGroupProps, ChipGroupFactory, ChipGroupStylesNames, ChipGroupValue } from './ChipGroup'
+export { ChipGroupContext, useChipGroupContext } from './ChipGroup.context'
+export type { ChipGroupContextValue } from './ChipGroup.context'

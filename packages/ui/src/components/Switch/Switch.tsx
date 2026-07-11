@@ -1,4 +1,5 @@
 import { useId, useUncontrolled } from '@react-ui/hooks'
+import { useContext } from 'react'
 import {
     Box,
     BoxProps,
@@ -15,6 +16,8 @@ import {
     useProps,
     useStyles
 } from '../../core'
+import { SwitchGroup, type SwitchGroupProps, type SwitchGroupFactory } from './SwitchGroup'
+import { SwitchGroupContext } from './SwitchGroup.context'
 import classes from './Switch.module.css'
 
 export type SwitchStylesNames = 'root' | 'input' | 'track' | 'thumb' | 'label' | 'onLabel' | 'offLabel'
@@ -32,6 +35,9 @@ export type SwitchCssVariables = {
 }
 
 export interface SwitchProps extends BoxProps, ElementProps<'input', 'size'>, StylesApiProps<SwitchFactory> {
+    /** Switch value, used when inside Switch.Group */
+    value?: string
+
     /** Controls switch size @default 'sm' */
     size?: MantineSize
 
@@ -65,6 +71,9 @@ export type SwitchFactory = Factory<{
     ref: HTMLInputElement
     stylesNames: SwitchStylesNames
     vars: SwitchCssVariables
+    static_components: {
+        Group: typeof SwitchGroup
+    }
 }>
 
 const defaultProps = {
@@ -94,6 +103,7 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
         unstyled,
         vars,
         attributes,
+        value,
         size,
         color,
         checked,
@@ -108,17 +118,30 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
         ...others
     } = props
 
+    const groupCtx = useContext(SwitchGroupContext)
+
     const [checkedState, setCheckedState] = useUncontrolled<boolean>({
         value: checked,
         defaultValue: defaultChecked,
         finalValue: false
     })
 
-    const resolvedChecked = checkedState
+    const isInGroup = !!groupCtx && value !== undefined
+    const resolvedChecked = isInGroup
+        ? groupCtx!.value.includes(value!)
+        : checkedState
     const resolvedId = useId(id)
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (disabled) {
+            return
+        }
+
+        if (isInGroup) {
+            const nextValue = event.currentTarget.checked
+                ? [...groupCtx!.value, value!]
+                : groupCtx!.value.filter((v) => v !== value!)
+            groupCtx!.onChange(nextValue)
             return
         }
 
@@ -179,10 +202,16 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
 Switch.classes = classes
 ;(Switch as any).varsResolver = varsResolver
 Switch.displayName = '@react-ui/ui/Switch'
+Switch.Group = SwitchGroup
 
 export namespace Switch {
     export type Props = SwitchProps
     export type StylesNames = SwitchStylesNames
     export type CssVariables = SwitchCssVariables
     export type Factory = SwitchFactory
+
+    export namespace Group {
+        export type Props = SwitchGroupProps
+        export type Factory = SwitchGroupFactory
+    }
 }

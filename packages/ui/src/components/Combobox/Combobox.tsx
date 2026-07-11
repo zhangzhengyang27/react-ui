@@ -16,14 +16,29 @@ import {
 import { FloatingPosition, FloatingStrategy } from '../../core'
 import { ComboboxContextProvider, ComboboxOptionData } from './Combobox.context'
 import { ComboboxDropdown } from './ComboboxDropdown'
+import { ComboboxDropdownTarget } from './ComboboxDropdownTarget'
 import { ComboboxEmpty } from './ComboboxEmpty'
+import { ComboboxEventsTarget } from './ComboboxEventsTarget'
+import { ComboboxFooter } from './ComboboxFooter'
 import { ComboboxGroup } from './ComboboxGroup'
+import { ComboboxHeader } from './ComboboxHeader'
 import { ComboboxOption } from './ComboboxOption'
 import { ComboboxOptions } from './ComboboxOptions'
+import { ComboboxSearch } from './ComboboxSearch'
 import { ComboboxTarget } from './ComboboxTarget'
+import { ComboboxChevron } from './ComboboxChevron'
 import classes from './Combobox.module.css'
 
-export type ComboboxStylesNames = 'dropdown' | 'options' | 'option' | 'optionLabel' | 'empty' | 'group' | 'groupLabel'
+export type ComboboxStylesNames =
+    | 'dropdown'
+    | 'options'
+    | 'option'
+    | 'optionLabel'
+    | 'empty'
+    | 'group'
+    | 'groupLabel'
+    | 'header'
+    | 'footer'
 
 export type ComboboxCssVariables = {
     dropdown: '--combobox-radius' | '--combobox-shadow'
@@ -65,6 +80,9 @@ export interface ComboboxProps extends StylesApiProps<ComboboxFactory> {
 
     /** Dropdown z-index */
     zIndex?: string | number
+
+    /** Determines whether dropdown should be rendered within portal, defaults to true */
+    withinPortal?: boolean
 
     /** Floating ui position strategy */
     floatingStrategy?: FloatingStrategy
@@ -121,6 +139,7 @@ export function Combobox(_props: ComboboxProps) {
         radius,
         shadow,
         zIndex,
+        withinPortal,
         floatingStrategy,
         disabled,
         onOptionSubmit,
@@ -330,6 +349,12 @@ Combobox.Options = ComboboxOptions
 Combobox.Option = ComboboxOption
 Combobox.Group = ComboboxGroup
 Combobox.Empty = ComboboxEmpty
+Combobox.Header = ComboboxHeader
+Combobox.Footer = ComboboxFooter
+Combobox.EventsTarget = ComboboxEventsTarget
+Combobox.DropdownTarget = ComboboxDropdownTarget
+Combobox.Search = ComboboxSearch
+Combobox.Chevron = ComboboxChevron
 Combobox.displayName = '@mantine/core/Combobox'
 
 export namespace Combobox {

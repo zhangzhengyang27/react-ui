@@ -12,6 +12,9 @@ export interface ComboboxOptionProps extends BoxProps, ElementProps<'div'> {
 
     /** Determines whether option is disabled */
     disabled?: boolean
+
+    /** Determines whether option is active */
+    active?: boolean
 }
 
 export type ComboboxOptionFactory = Factory<{
@@ -22,7 +25,7 @@ export type ComboboxOptionFactory = Factory<{
 
 export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
     const props = useProps('ComboboxOption', null, _props)
-    const { value, children, disabled, className, ...others } = props
+    const { value, children, disabled, active: activeProp, className, ...others } = props
     const ctx = useComboboxContext()
     const index = ctx.options.findIndex(item => item.value === value)
     const active = index === ctx.activeIndex
@@ -42,7 +45,7 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
             id={`${ctx.dropdownId}-${index}`}
             aria-selected={selected}
             aria-disabled={disabled}
-            data-combobox-active={active || undefined}
+            data-combobox-active={activeProp || active || undefined}
             data-combobox-selected={selected || undefined}
             data-combobox-disabled={disabled || undefined}
             className={[classes.option, className].filter(Boolean).join(' ')}

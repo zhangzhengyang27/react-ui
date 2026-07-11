@@ -1,9 +1,30 @@
-import { useId, useUncontrolled } from '@react-ui/hooks'
-import { factory, Factory, StylesApiProps, useProps, useStyles } from '../../core'
-import { InputBase, InputBaseProps, InputWrapper } from '../InputBase'
+import { useCallback, useEffect, useRef } from 'react'
+import { assignRef, useId, useMergedRef, useUncontrolled } from '@react-ui/hooks'
+import {
+    factory,
+    useProps,
+    useStyles,
+    type Factory,
+    type StylesApiProps
+} from '../../core'
+import { InputBase, type InputBaseProps } from '../InputBase'
+import { InputWrapper } from '../Input'
 import classes from './MaskInput.module.css'
 
 export type MaskInputStylesNames = 'root'
+
+/** A single mask slot — either a RegExp pattern (token) or a string literal */
+type MaskSlot = { type: 'token'; pattern: RegExp } | { type: 'literal'; char: string }
+
+const DEFAULT_TOKENS: Record<string, RegExp> = {
+    '0': /[0-9]/,
+    '9': /[0-9]/,
+    a: /[a-z]/,
+    A: /[A-Z]/,
+    L: /[A-Za-z]/,
+    '*': /[a-zA-Z0-9]/,
+    '#': /[a-zA-Z0-9]/
+}
 
 export interface MaskInputProps
     extends Omit<
@@ -17,13 +38,48 @@ export interface MaskInputProps
             | 'vars'
             | 'attributes'
             | 'component'
+            | 'labelProps'
+            | 'descriptionProps'
+            | 'errorProps'
         >,
         StylesApiProps<MaskInputFactory> {
-    /** Mask pattern, use `#` for any character */
-    mask: string
+    /** Mask pattern string or array of string literals and RegExp objects */
+    mask: string | Array<string | RegExp>
 
-    /** Character used to fill empty mask positions @default '_' */
-    placeholderChar?: string
+    /** Override or extend the default token map */
+    tokens?: Record<string, RegExp>
+
+    /** Called before masking on each keystroke, can return overrides for mask options */
+    modify?: (
+        value: string
+    ) => Partial<Pick<MaskInputProps, 'mask' | 'tokens' | 'slotChar' | 'separate'>> | undefined
+
+    /** When true, raw and display values are decoupled */
+    separate?: boolean
+
+    /** Character displayed in unfilled slots, `"_"` by default */
+    slotChar?: string | null
+
+    /** Show mask pattern even when field is empty and unfocused */
+    alwaysShowMask?: boolean
+
+    /** Show mask placeholder on focus, `true` by default */
+    showMaskOnFocus?: boolean
+
+    /** Transform each character before validation and insertion */
+    transform?: (char: string) => string
+
+    /** Clear value on blur when mask is incomplete, `false` by default */
+    autoClear?: boolean
+
+    /** Called on every change with raw and masked values */
+    onChangeRaw?: (rawValue: string, maskedValue: string) => void
+
+    /** Called when all required mask slots are filled */
+    onComplete?: (maskedValue: string, rawValue: string) => void
+
+    /** Assigns a function that clears the input value to the given ref */
+    resetRef?: React.RefObject<(() => void) | null>
 
     /** Controlled value */
     value?: string
@@ -42,6 +98,9 @@ export interface MaskInputProps
 
     /** Error rendered below the input */
     error?: React.ReactNode
+
+    /** Success message rendered below the input */
+    success?: React.ReactNode
 
     /** If set, required asterisk is added to the label */
     required?: boolean
@@ -63,36 +122,78 @@ export type MaskInputFactory = Factory<{
 }>
 
 const defaultProps = {
-    placeholderChar: '_'
+    slotChar: '_',
+    showMaskOnFocus: true,
+    separate: false,
+    alwaysShowMask: false,
+    autoClear: false
 } satisfies Partial<MaskInputProps>
 
-function stripMask(value: string, mask: string): string {
-    const maskChars = new Set(mask.split('').filter(char => char !== '#'))
-    return value
-        .split('')
-        .filter(char => !maskChars.has(char))
-        .join('')
-}
+/** Parse mask into slots */
+function parseMask(
+    mask: string | Array<string | RegExp>,
+    tokens: Record<string, RegExp>
+): MaskSlot[] {
+    const slots: MaskSlot[] = []
 
-function applyMask(value: string, mask: string, placeholderChar: string): string {
-    const raw = stripMask(value, mask)
-    let result = ''
-    let rawIndex = 0
-
-    for (let i = 0; i < mask.length; i++) {
-        const maskChar = mask[i]
-
-        if (maskChar === '#') {
-            if (rawIndex < raw.length) {
-                result += raw[rawIndex]
-                rawIndex += 1
+    if (Array.isArray(mask)) {
+        for (const item of mask) {
+            if (item instanceof RegExp) {
+                slots.push({ type: 'token', pattern: item })
             } else {
-                result += placeholderChar
+                for (const char of item) {
+                    slots.push({ type: 'literal', char })
+                }
             }
-        } else {
-            result += maskChar
-            if (rawIndex < raw.length && raw[rawIndex] === maskChar) {
-                rawIndex += 1
+        }
+    } else {
+        for (let i = 0; i < mask.length; i++) {
+            const char = mask[i]
+
+            if (char === '\\' && i + 1 < mask.length) {
+                i++
+                slots.push({ type: 'literal', char: mask[i] })
+                continue
+            }
+
+            if (tokens[char]) {
+                slots.push({ type: 'token', pattern: tokens[char] })
+            } else {
+                slots.push({ type: 'literal', char })
+            }
+        }
+    }
+
+    return slots
+}
+
+/** Apply mask to raw input value, returns masked value (without placeholder fill) */
+function applyMaskToValue(
+    input: string,
+    slots: MaskSlot[],
+    transform?: (char: string) => string
+): string {
+    let result = ''
+    let inputIndex = 0
+
+    for (const slot of slots) {
+        if (inputIndex >= input.length) break
+
+        if (slot.type === 'literal') {
+            result += slot.char
+            if (inputIndex < input.length && input[inputIndex] === slot.char) {
+                inputIndex++
+            }
+            continue
+        }
+
+        while (inputIndex < input.length) {
+            const ch = input[inputIndex]
+            inputIndex++
+            const transformed = transform ? transform(ch) : ch
+            if (slot.pattern.test(transformed)) {
+                result += transformed
+                break
             }
         }
     }
@@ -100,29 +201,47 @@ function applyMask(value: string, mask: string, placeholderChar: string): string
     return result
 }
 
-function getRawValue(masked: string, mask: string, placeholderChar: string): string {
-    let result = ''
-    let valueIndex = 0
+/** Build display value with placeholder fill */
+function buildDisplayValue(masked: string, slots: MaskSlot[], slotChar: string): string {
+    let display = masked
 
-    for (let i = 0; i < mask.length; i++) {
-        if (valueIndex >= masked.length) {
-            break
-        }
-
-        const maskChar = mask[i]
-
-        if (maskChar === '#') {
-            const char = masked[valueIndex]
-            if (char !== placeholderChar) {
-                result += char
-            }
-            valueIndex += 1
-        } else if (masked[valueIndex] === maskChar) {
-            valueIndex += 1
+    for (let i = masked.length; i < slots.length; i++) {
+        const slot = slots[i]
+        if (slot.type === 'literal') {
+            display += slot.char
+        } else {
+            display += slotChar
         }
     }
 
-    return result
+    return display
+}
+
+/** Extract raw value from masked value */
+function extractRaw(masked: string, slots: MaskSlot[]): string {
+    let raw = ''
+    for (let i = 0; i < masked.length && i < slots.length; i++) {
+        const slot = slots[i]
+        if (slot.type === 'token') {
+            if (slot.pattern.test(masked[i])) {
+                raw += masked[i]
+            }
+        }
+    }
+    return raw
+}
+
+/** Check if all token slots are filled */
+function isMaskComplete(masked: string, slots: MaskSlot[]): boolean {
+    for (let i = 0; i < slots.length; i++) {
+        const slot = slots[i]
+        if (slot.type === 'token') {
+            if (i >= masked.length || !slot.pattern.test(masked[i])) {
+                return false
+            }
+        }
+    }
+    return true
 }
 
 export const MaskInput = factory<MaskInputFactory>((_props, ref) => {
@@ -135,13 +254,24 @@ export const MaskInput = factory<MaskInputFactory>((_props, ref) => {
         unstyled,
         vars,
         mask,
-        placeholderChar,
+        tokens,
+        modify,
+        separate,
+        slotChar,
+        alwaysShowMask,
+        showMaskOnFocus,
+        transform,
+        autoClear,
+        onChangeRaw,
+        onComplete,
+        resetRef,
         value: valueProp,
         defaultValue,
         onChange,
         label,
         description,
         error,
+        success,
         required,
         labelProps,
         descriptionProps,
@@ -172,21 +302,93 @@ export const MaskInput = factory<MaskInputFactory>((_props, ref) => {
     })
 
     const inputId = useId(id)
-    const hasWrapper = label || description || error
-    const maskedValue = applyMask(value, mask, placeholderChar!)
+    const hasWrapper = label || description || error || success
+    const inputRef = useRef<HTMLInputElement | null>(null)
+    const mergedRef = useMergedRef(ref, inputRef)
+
+    // Resolve current mask options (with modify support)
+    const resolveOptions = useCallback(
+        (currentValue: string) => {
+            const modified = modify?.(currentValue) || {}
+            const effectiveMask = modified.mask ?? mask
+            const effectiveTokens = { ...DEFAULT_TOKENS, ...(modified.tokens ?? tokens) }
+            const effectiveSlotChar = modified.slotChar ?? slotChar ?? '_'
+            const effectiveSeparate = modified.separate ?? separate ?? false
+            return {
+                mask: effectiveMask,
+                tokens: effectiveTokens,
+                slotChar: effectiveSlotChar,
+                separate: effectiveSeparate
+            }
+        },
+        [mask, tokens, slotChar, separate, modify]
+    )
+
+    // Compute masked and display values
+    const options = resolveOptions(value)
+    const slots = parseMask(options.mask, options.tokens)
+    const maskedValue = applyMaskToValue(value, slots, transform)
+    const displayValue = options.separate
+        ? value
+        : buildDisplayValue(maskedValue, slots, options.slotChar)
+
+    // Assign reset function to resetRef
+    useEffect(() => {
+        if (resetRef) {
+            assignRef(resetRef, () => {
+                setValue('')
+                if (inputRef.current) {
+                    inputRef.current.value = ''
+                }
+            })
+        }
+        return () => {
+            if (resetRef) {
+                assignRef(resetRef, null)
+            }
+        }
+    }, [resetRef, setValue])
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const raw = getRawValue(event.currentTarget.value, mask, placeholderChar!)
-        setValue(raw)
+        const inputValue = event.currentTarget.value
+        const currentOptions = resolveOptions(value)
+        const currentSlots = parseMask(currentOptions.mask, currentOptions.tokens)
+        const newMasked = applyMaskToValue(inputValue, currentSlots, transform)
+        const newDisplay = currentOptions.separate
+            ? inputValue
+            : buildDisplayValue(newMasked, currentSlots, currentOptions.slotChar)
+        const newRaw = extractRaw(newMasked, currentSlots)
+
+        // Update the input element's displayed value
+        if (inputRef.current) {
+            inputRef.current.value = newDisplay
+        }
+
+        setValue(currentOptions.separate ? inputValue : newRaw)
+        onChangeRaw?.(newRaw, newDisplay)
+
+        if (isMaskComplete(newMasked, currentSlots)) {
+            onComplete?.(newDisplay, newRaw)
+        }
+    }
+
+    const handleBlur = () => {
+        if (autoClear && !isMaskComplete(maskedValue, slots)) {
+            setValue('')
+            if (inputRef.current) {
+                inputRef.current.value = ''
+            }
+        }
     }
 
     const input = (
         <InputBase
             {...others}
             id={inputId}
-            ref={ref}
-            value={maskedValue}
+            ref={mergedRef}
+            value={displayValue}
             onChange={handleChange}
+            onBlur={handleBlur}
             wrapperProps={hasWrapper ? wrapperProps : { ...getStyles('root'), ...wrapperProps }}
         />
     )
@@ -201,6 +403,7 @@ export const MaskInput = factory<MaskInputFactory>((_props, ref) => {
             label={label}
             description={description}
             error={error}
+            success={success}
             required={required}
             inputId={inputId}
             labelProps={labelProps}

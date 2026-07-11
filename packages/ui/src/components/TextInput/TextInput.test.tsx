@@ -54,7 +54,7 @@ describe('TextInput', () => {
     it('applies invalid state to the wrapper', () => {
         renderWithProvider(<TextInput invalid />)
 
-        expect(screen.getByRole('textbox').closest('[data-invalid]')).toBeInTheDocument()
+        expect(screen.getByRole('textbox').closest('[data-error]')).toBeInTheDocument()
     })
 
     it('calls onChange when value changes', () => {

@@ -4,7 +4,8 @@ import { BoxProps, factory, Factory, MantineSize, rem, StylesApiProps, useProps,
 import { CloseButton } from '../CloseButton'
 import { Combobox } from '../Combobox'
 import type { ComboboxOptionData } from '../Combobox'
-import { InputBase, InputWrapper } from '../InputBase'
+import { InputBase } from '../InputBase'
+import { InputWrapper } from '../Input'
 import classes from './Select.module.css'
 
 export type SelectStylesNames = 'root' | 'dropdown' | 'options' | 'option' | 'empty' | 'group' | 'groupLabel'
@@ -69,6 +70,9 @@ export interface SelectProps
 
     /** Dropdown position relative to the target element */
     position?: import('../../core').FloatingPosition
+
+    /** Position of the check icon in the dropdown item @default 'left' */
+    checkIconPosition?: 'left' | 'right'
 }
 
 export type SelectFactory = Factory<{
@@ -93,6 +97,22 @@ function SelectChevronIcon(props: React.ComponentProps<'svg'>) {
             {...props}
         >
             <polyline points="6 9 12 15 18 9" />
+        </svg>
+    )
+}
+
+function SelectCheckIcon(props: React.ComponentProps<'svg'>) {
+    return (
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            {...props}
+        >
+            <polyline points="20 6 9 17 4 12" />
         </svg>
     )
 }
@@ -132,6 +152,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
         nothingFoundMessage,
         maxDropdownHeight,
         position,
+        checkIconPosition,
         id,
         ...others
     } = props
@@ -245,7 +266,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
                     {filteredData.length === 0 && nothingFoundMessage ? (
                         <Combobox.Empty>{nothingFoundMessage}</Combobox.Empty>
                     ) : (
-                        renderOptions(filteredData)
+                        renderOptions(filteredData, selectedValue, checkIconPosition)
                     )}
                 </Combobox.Options>
             </Combobox.Dropdown>
@@ -272,7 +293,11 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     )
 })
 
-function renderOptions(data: ComboboxOptionData[]) {
+function renderOptions(
+    data: ComboboxOptionData[],
+    selectedValue: string,
+    checkIconPosition?: 'left' | 'right'
+) {
     const result: React.ReactNode[] = []
     let lastGroup: string | undefined
 
@@ -281,9 +306,25 @@ function renderOptions(data: ComboboxOptionData[]) {
             result.push(<Combobox.Group key={`group-${item.group}`} label={item.group} />)
             lastGroup = item.group
         }
+
+        const selected = selectedValue === item.value
+        const check = <SelectCheckIcon className={classes.check} />
+
         result.push(
             <Combobox.Option key={item.value} value={item.value} disabled={item.disabled}>
-                {item.label}
+                <span
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        width: '100%',
+                        justifyContent: checkIconPosition === 'right' ? 'space-between' : undefined
+                    }}
+                >
+                    {checkIconPosition === 'left' && selected && check}
+                    {item.label}
+                    {checkIconPosition === 'right' && selected && check}
+                </span>
             </Combobox.Option>
         )
     })

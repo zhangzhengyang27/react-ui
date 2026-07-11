@@ -1,6 +1,6 @@
 import { useUncontrolled } from '@react-ui/hooks'
 import { BoxProps, ElementProps, factory, Factory, MantineSize, StylesApiProps, useProps, useStyles } from '../../core'
-import { InputWrapper } from '../InputBase'
+import { InputWrapper } from '../Input'
 import { CheckboxGroupContext } from './CheckboxGroup.context'
 import classes from './Checkbox.module.css'
 

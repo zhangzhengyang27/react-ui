@@ -1,73 +1,75 @@
-import { useUncontrolled } from '@react-ui/hooks'
 import {
     Box,
-    createVarsResolver,
     factory,
-    getFontSize,
-    getRadius,
-    getSize,
     useProps,
-    useStyles,
-    type BoxProps,
-    type ElementProps,
     type Factory,
-    type MantineColor,
-    type MantineRadius,
-    type MantineSize,
-    type StylesApiProps
+    type MantineSpacing
 } from '../../core'
-import { UnstyledButton } from '../UnstyledButton'
+import { Group } from '../Group/Group'
+import { usePaginationContext } from './Pagination.context'
+import {
+    PaginationFirst,
+    PaginationLast,
+    PaginationNext,
+    PaginationPrevious,
+    type PaginationEdgeProps
+} from './PaginationEdges'
+import { type PaginationIcon } from './Pagination.icons'
+import { PaginationItems, type PaginationItemsProps } from './PaginationItems'
+import {
+    PaginationLabel,
+    type PaginationFormatLabel,
+    type PaginationLabelProps
+} from './PaginationLabel'
+import {
+    PaginationRoot,
+    type PaginationRootCssVariables,
+    type PaginationRootProps,
+    type PaginationRootStylesNames
+} from './PaginationRoot'
+import { PaginationControl, type PaginationControlProps } from './PaginationControl'
+import { PaginationDots, type PaginationDotsProps } from './PaginationDots'
 import classes from './Pagination.module.css'
 
-export type PaginationItemType = 'page' | 'dots' | 'next' | 'previous' | 'first' | 'last'
+export type PaginationStylesNames = PaginationRootStylesNames
+export type PaginationCssVariables = PaginationRootCssVariables
 
-export type PaginationStylesNames = 'root' | 'control' | 'dots'
-
-export type PaginationCssVariables = {
-    root:
-        | '--pagination-control-size'
-        | '--pagination-control-fz'
-        | '--pagination-control-radius'
-        | '--pagination-control-bg'
-        | '--pagination-control-color'
-}
-
-export interface PaginationProps
-    extends BoxProps,
-        Omit<ElementProps<'div'>, 'onChange'>,
-        StylesApiProps<PaginationFactory> {
-    /** Total number of pages */
-    total: number
-
-    /** Controlled current page */
-    value?: number
-
-    /** Uncontrolled initial page */
-    defaultValue?: number
-
-    /** Called when page changes */
-    onChange?: (value: number) => void
-
-    /** Key of theme.colors or any valid CSS color */
-    color?: MantineColor
-
-    /** Key of theme.radius or any valid CSS value */
-    radius?: MantineRadius
-
-    /** Controls size of pagination buttons */
-    size?: MantineSize
-
-    /** Determines whether first and last page controls should be rendered */
+export interface PaginationProps extends PaginationRootProps {
+    /** If set, first/last controls are displayed @default false */
     withEdges?: boolean
 
-    /** Determines whether previous and next page controls should be rendered */
+    /** If set, next/previous controls are displayed @default true */
     withControls?: boolean
 
-    /** Number of siblings displayed on each side of current page */
-    siblings?: number
+    /** Props passed down to next/previous/first/last controls */
+    getControlProps?: (control: 'first' | 'previous' | 'last' | 'next') => Record<string, any>
 
-    /** Number of items displayed at the start and end of pagination */
-    boundaries?: number
+    /** Next control icon component */
+    nextIcon?: PaginationIcon
+
+    /** Previous control icon component */
+    previousIcon?: PaginationIcon
+
+    /** Last control icon component */
+    lastIcon?: PaginationIcon
+
+    /** First control icon component */
+    firstIcon?: PaginationIcon
+
+    /** Dots icon component */
+    dotsIcon?: PaginationIcon
+
+    /** Key of `theme.spacing`, gap between controls @default 8 */
+    gap?: MantineSpacing
+
+    /** If set, the pagination is hidden when only one page is available (`total={1}`) @default false */
+    hideWithOnePage?: boolean
+
+    /** If set to `false`, page number buttons are hidden, only next/previous controls remain @default `true` */
+    withPages?: boolean
+
+    /** Function to format the label text displayed in responsive mode */
+    formatLabel?: PaginationFormatLabel
 }
 
 export type PaginationFactory = Factory<{
@@ -75,34 +77,134 @@ export type PaginationFactory = Factory<{
     ref: HTMLDivElement
     stylesNames: PaginationStylesNames
     vars: PaginationCssVariables
+    static_components: {
+        Root: typeof PaginationRoot
+        Control: typeof PaginationControl
+        Dots: typeof PaginationDots
+        First: typeof PaginationFirst
+        Last: typeof PaginationLast
+        Next: typeof PaginationNext
+        Previous: typeof PaginationPrevious
+        Items: typeof PaginationItems
+        Label: typeof PaginationLabel
+    }
 }>
 
 const defaultProps = {
-    size: 'sm',
+    withControls: true,
+    withPages: true,
     siblings: 1,
     boundaries: 1,
-    withControls: true,
-    withEdges: false
+    gap: 8
 } satisfies Partial<PaginationProps>
 
-const varsResolver = createVarsResolver<PaginationFactory>((theme, { size, radius, color }) => {
-    const colors = theme.variantColorResolver({
-        color: color || theme.primaryColor,
-        theme,
-        variant: 'filled'
-    })
+interface PaginationItemsGroupProps {
+    children: React.ReactNode
+}
 
-    return {
-        root: {
-            '--pagination-control-size': getSize(size, 'pagination-control-size'),
-            '--pagination-control-fz': getFontSize(size),
-            '--pagination-control-radius': radius === undefined ? undefined : getRadius(radius),
-            '--pagination-control-bg': colors.background,
-            '--pagination-control-color': colors.color
-        }
+function PaginationItemsGroup({ children }: PaginationItemsGroupProps) {
+    const ctx = usePaginationContext()
+    return <Box {...ctx.getStyles('items')}>{children}</Box>
+}
+
+export const Pagination = factory<PaginationFactory>((_props, ref) => {
+    const props = useProps('Pagination', defaultProps, _props)
+    const {
+        withEdges,
+        withControls,
+        getControlProps,
+        nextIcon,
+        previousIcon,
+        lastIcon,
+        firstIcon,
+        dotsIcon,
+        total,
+        gap,
+        hideWithOnePage,
+        withPages,
+        layout,
+        formatLabel,
+        ...others
+    } = props
+
+    if (total <= 0 || (hideWithOnePage && total === 1)) {
+        return null
     }
+
+    const isResponsive = layout === 'responsive'
+
+    const pagesContent = withPages ? (
+        isResponsive ? (
+            <>
+                <PaginationItemsGroup>
+                    <PaginationItems dotsIcon={dotsIcon} />
+                </PaginationItemsGroup>
+                <PaginationLabel formatLabel={formatLabel} />
+            </>
+        ) : (
+            <PaginationItems dotsIcon={dotsIcon} />
+        )
+    ) : null
+
+    return (
+        <PaginationRoot ref={ref} total={total} layout={layout} {...others}>
+            <Group gap={gap}>
+                {withEdges && <PaginationFirst icon={firstIcon} {...getControlProps?.('first')} />}
+                {withControls && (
+                    <PaginationPrevious icon={previousIcon} {...getControlProps?.('previous')} />
+                )}
+                {pagesContent}
+                {withControls && <PaginationNext icon={nextIcon} {...getControlProps?.('next')} />}
+                {withEdges && <PaginationLast icon={lastIcon} {...getControlProps?.('last')} />}
+            </Group>
+        </PaginationRoot>
+    )
 })
 
+Pagination.classes = classes
+Pagination.displayName = '@react-ui/ui/Pagination'
+Pagination.Root = PaginationRoot
+Pagination.Control = PaginationControl
+Pagination.Dots = PaginationDots
+Pagination.First = PaginationFirst
+Pagination.Last = PaginationLast
+Pagination.Next = PaginationNext
+Pagination.Previous = PaginationPrevious
+Pagination.Items = PaginationItems
+Pagination.Label = PaginationLabel
+
+export namespace Pagination {
+    export type Props = PaginationProps
+    export type StylesNames = PaginationStylesNames
+    export type CssVariables = PaginationCssVariables
+    export type Factory = PaginationFactory
+
+    export namespace Root {
+        export type Props = PaginationRootProps
+    }
+
+    export namespace Control {
+        export type Props = PaginationControlProps
+    }
+
+    export namespace Dots {
+        export type Props = PaginationDotsProps
+    }
+
+    export namespace Edge {
+        export type Props = PaginationEdgeProps
+    }
+
+    export namespace Items {
+        export type Props = PaginationItemsProps
+    }
+
+    export namespace Label {
+        export type Props = PaginationLabelProps
+    }
+}
+
+// Backward-compatible utility function
 function range(start: number, end: number) {
     const length = end - start + 1
     return Array.from({ length }, (_, index) => start + index)
@@ -145,162 +247,4 @@ export function getPaginationItems(
         'dots',
         ...range(total - boundaries + 1, total)
     ]
-}
-
-function getControlLabel(type: PaginationItemType) {
-    switch (type) {
-        case 'first':
-            return '<<'
-        case 'previous':
-            return '<'
-        case 'next':
-            return '>'
-        case 'last':
-            return '>>'
-        default:
-            return ''
-    }
-}
-
-export const Pagination = factory<PaginationFactory>((_props, ref) => {
-    const props = useProps('Pagination', defaultProps, _props)
-    const {
-        classNames,
-        className,
-        style,
-        styles,
-        unstyled,
-        vars,
-        total,
-        value,
-        defaultValue,
-        onChange,
-        color,
-        radius,
-        size,
-        withEdges,
-        withControls,
-        siblings,
-        boundaries,
-        mod,
-        ...others
-    } = props
-
-    const [activePage, setActivePage] = useUncontrolled<number>({
-        value,
-        defaultValue,
-        finalValue: 1,
-        onChange
-    })
-
-    const getStyles = useStyles<PaginationFactory>({
-        name: 'Pagination',
-        classes,
-        props,
-        className,
-        style,
-        classNames,
-        styles,
-        unstyled,
-        vars,
-        varsResolver
-    })
-
-    const normalizedTotal = Math.max(0, Math.floor(total))
-    const currentPage = Math.min(Math.max(1, activePage), normalizedTotal || 1)
-
-    const handleChange = (page: number) => {
-        if (page >= 1 && page <= normalizedTotal && page !== currentPage) {
-            setActivePage(page)
-        }
-    }
-
-    const items = normalizedTotal > 0 ? getPaginationItems(normalizedTotal, currentPage, siblings!, boundaries!) : []
-
-    const controls: { type: PaginationItemType; value: number; disabled: boolean; label: string }[] = []
-
-    if (withEdges) {
-        controls.push({ type: 'first', value: 1, disabled: currentPage === 1, label: 'First page' })
-    }
-
-    if (withControls) {
-        controls.push({
-            type: 'previous',
-            value: currentPage - 1,
-            disabled: currentPage === 1,
-            label: 'Previous page'
-        })
-    }
-
-    items.forEach(item => {
-        if (typeof item === 'number') {
-            controls.push({
-                type: 'page',
-                value: item,
-                disabled: false,
-                label: `Page ${item}`
-            })
-        } else {
-            controls.push({ type: 'dots', value: -1, disabled: true, label: 'Dots' })
-        }
-    })
-
-    if (withControls) {
-        controls.push({
-            type: 'next',
-            value: currentPage + 1,
-            disabled: currentPage === normalizedTotal,
-            label: 'Next page'
-        })
-    }
-
-    if (withEdges) {
-        controls.push({
-            type: 'last',
-            value: normalizedTotal,
-            disabled: currentPage === normalizedTotal,
-            label: 'Last page'
-        })
-    }
-
-    return (
-        <Box ref={ref} {...getStyles('root')} mod={mod} {...others} role="navigation" aria-label="Pagination">
-            {controls.map((control, index) => {
-                if (control.type === 'dots') {
-                    return (
-                        <span key={`dots-${index}`} {...getStyles('dots')} aria-hidden>
-                            ...
-                        </span>
-                    )
-                }
-
-                const isActive = control.type === 'page' && control.value === currentPage
-
-                return (
-                    <UnstyledButton
-                        key={`${control.type}-${control.value}`}
-                        {...getStyles('control', { active: isActive })}
-                        type="button"
-                        disabled={control.disabled}
-                        aria-label={control.label}
-                        aria-current={isActive ? 'page' : undefined}
-                        onClick={() => handleChange(control.value)}
-                    >
-                        {control.type === 'page' ? control.value : getControlLabel(control.type)}
-                    </UnstyledButton>
-                )
-            })}
-        </Box>
-    )
-})
-
-Pagination.classes = classes
-;(Pagination as any).varsResolver = varsResolver
-Pagination.displayName = '@react-ui/ui/Pagination'
-
-export namespace Pagination {
-    export type Props = PaginationProps
-    export type StylesNames = PaginationStylesNames
-    export type CssVariables = PaginationCssVariables
-    export type Factory = PaginationFactory
 }

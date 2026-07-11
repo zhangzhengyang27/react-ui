@@ -85,6 +85,9 @@ export interface ModalBaseProps extends BoxProps, ElementProps<'div', 'title'> {
 
     /** Props passed down to react-remove-scroll */
     removeScrollProps?: RemoveScrollProps
+
+    /** Internal static selector used by styles api */
+    __staticSelector?: string
 }
 
 export function ModalBase({
@@ -108,6 +111,7 @@ export function ModalBase({
     padding,
     unstyled,
     removeScrollProps,
+    __staticSelector,
     ...others
 }: ModalBaseProps) {
     const { _id, titleMounted, bodyMounted, setTitleMounted, setBodyMounted } = useModal({

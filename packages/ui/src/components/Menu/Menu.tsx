@@ -8,19 +8,33 @@ import { MenuDropdown, type MenuDropdownProps } from './MenuDropdown'
 import { MenuItem, type MenuItemProps } from './MenuItem'
 import { MenuLabel, type MenuLabelProps } from './MenuLabel'
 import { MenuTarget, type MenuTargetProps } from './MenuTarget'
+import { MenuSub, type MenuSubProps } from './MenuSub'
+import { MenuCheckboxGroup, type MenuCheckboxGroupProps } from './MenuCheckboxGroup'
+import { MenuCheckboxItem, type MenuCheckboxItemProps } from './MenuCheckboxItem'
+import { MenuRadioGroup, type MenuRadioGroupProps } from './MenuRadioGroup'
+import { MenuRadioItem, type MenuRadioItemProps } from './MenuRadioItem'
+import { MenuSearch, type MenuSearchProps } from './MenuSearch'
+import { MenuContextMenu, type MenuContextMenuProps } from './MenuContextMenu'
 import classes from './Menu.module.css'
 
-export type MenuStylesNames = 'item' | 'itemLabel' | 'itemSection' | 'label' | 'divider' | PopoverStylesNames
+export type MenuStylesNames = 'item' | 'itemLabel' | 'itemSection' | 'label' | 'divider' | 'search' | PopoverStylesNames
 
 export type MenuFactory = Factory<{
     props: MenuProps
     stylesNames: MenuStylesNames
-    staticComponents: {
+    static_components: {
         Item: typeof MenuItem
         Label: typeof MenuLabel
         Dropdown: typeof MenuDropdown
         Target: typeof MenuTarget
         Divider: typeof MenuDivider
+        Sub: typeof MenuSub
+        CheckboxGroup: typeof MenuCheckboxGroup
+        CheckboxItem: typeof MenuCheckboxItem
+        RadioGroup: typeof MenuRadioGroup
+        RadioItem: typeof MenuRadioItem
+        Search: typeof MenuSearch
+        ContextMenu: typeof MenuContextMenu
     }
 }>
 
@@ -288,6 +302,13 @@ Menu.Label = MenuLabel
 Menu.Dropdown = MenuDropdown
 Menu.Target = MenuTarget
 Menu.Divider = MenuDivider
+Menu.Sub = MenuSub
+Menu.CheckboxGroup = MenuCheckboxGroup
+Menu.CheckboxItem = MenuCheckboxItem
+Menu.RadioGroup = MenuRadioGroup
+Menu.RadioItem = MenuRadioItem
+Menu.Search = MenuSearch
+Menu.ContextMenu = MenuContextMenu
 
 export namespace Menu {
     export type Props = MenuProps
@@ -313,5 +334,33 @@ export namespace Menu {
 
     export namespace Target {
         export type Props = MenuTargetProps
+    }
+
+    export namespace Sub {
+        export type Props = MenuSubProps
+    }
+
+    export namespace CheckboxGroup {
+        export type Props = MenuCheckboxGroupProps
+    }
+
+    export namespace CheckboxItem {
+        export type Props = MenuCheckboxItemProps
+    }
+
+    export namespace RadioGroup {
+        export type Props = MenuRadioGroupProps
+    }
+
+    export namespace RadioItem {
+        export type Props = MenuRadioItemProps
+    }
+
+    export namespace Search {
+        export type Props = MenuSearchProps
+    }
+
+    export namespace ContextMenu {
+        export type Props = MenuContextMenuProps
     }
 }

@@ -1,12 +1,16 @@
 import { useId } from '@react-ui/hooks'
 import { factory, Factory, StylesApiProps, useProps, useStyles } from '../../core'
-import { InputBase, InputBaseProps, InputWrapper } from '../InputBase'
+import { InputBase, InputBaseProps } from '../InputBase'
+import { InputWrapper } from '../Input'
 import classes from './TextInput.module.css'
 
 export type TextInputStylesNames = 'root'
 
 export interface TextInputProps
-    extends Omit<InputBaseProps, 'classNames' | 'styles' | 'unstyled' | 'vars' | 'attributes'>,
+    extends Omit<
+            InputBaseProps,
+            'classNames' | 'styles' | 'unstyled' | 'vars' | 'attributes' | 'labelProps' | 'descriptionProps' | 'errorProps'
+        >,
         StylesApiProps<TextInputFactory> {
     /** Label rendered above the input */
     label?: React.ReactNode

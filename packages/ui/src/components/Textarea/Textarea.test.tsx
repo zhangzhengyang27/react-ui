@@ -53,7 +53,7 @@ describe('Textarea', () => {
     it('applies invalid state to the wrapper', () => {
         renderWithProvider(<Textarea invalid />)
 
-        expect(screen.getByRole('textbox').closest('[data-invalid]')).toBeInTheDocument()
+        expect(screen.getByRole('textbox').closest('[data-error]')).toBeInTheDocument()
     })
 
     it('calls onChange when value changes', () => {

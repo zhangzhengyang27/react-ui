@@ -1,3 +1,11 @@
+.group {
+    --ag-spacing: var(--ui-spacing-sm);
+    --ag-offset: calc(var(--ag-spacing) * -1);
+
+    display: flex;
+    padding-inline-start: var(--ag-spacing);
+}
+
 .root {
     --avatar-size-xs: 16px;
     --avatar-size-sm: 26px;
@@ -24,6 +32,12 @@
     color: var(--avatar-color);
     border: var(--avatar-bd);
     line-height: 1;
+}
+
+.root:where([data-within-group]) {
+    margin-inline-start: var(--ag-offset);
+    border: 2px solid var(--ui-color-body);
+    background: var(--ui-color-body);
 }
 
 .image {

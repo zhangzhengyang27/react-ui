@@ -19,7 +19,7 @@
     padding: var(--card-padding);
 }
 
-.root:where([data-mantine-color-scheme='dark']) {
+.root:where([data-ui-color-scheme='dark']) {
     --card-bd: var(--ui-color-dark-4);
 }
 

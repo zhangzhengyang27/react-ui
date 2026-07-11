@@ -4,44 +4,38 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.SankeyChart);
 
-## Usage
+## 用法
 
-`SankeyChart` is based on the [Sankey recharts component](https://recharts.org/en-US/api/Sankey).
-It visualizes flow between nodes where the width of each link is proportional to the flow value:
+`SankeyChart` 基于 [Sankey recharts 组件](https://recharts.org/en-US/api/Sankey)。它用于可视化节点之间的流量，每条连线的宽度与流量值成正比：
 
 <Demo data={SankeyChartDemos.usage} />
 
-## Node color
+## 节点颜色
 
-You can set `color` on each node in the data to control individual node colors.
-Colors can reference [theme](/theming/theme-object) values like `blue`, `red.5`, `orange.7`, etc.
-Any valid CSS color value is also accepted.
+你可以在数据的每个节点上设置 `color` 来控制单个节点颜色。颜色可以引用 [主题](/theming/theme-object) 值，例如 `blue`、`red.5`、`orange.7` 等。任何有效的 CSS 颜色值也同样受支持。
 
 <Demo data={SankeyChartDemos.color} />
 
-## Custom colors
+## 自定义颜色
 
-Use `colors` prop to provide an array of colors that are used for nodes when no
-`color` is set on individual nodes. Colors can reference [theme](/theming/theme-object) values.
-The colors cycle when there are more nodes than colors:
+使用 `colors` 属性提供一组颜色，当单个节点未设置 `color` 时用于节点。颜色可以引用 [主题](/theming/theme-object) 值。当节点数量多于颜色数量时，颜色会循环使用：
 
 <Demo data={SankeyChartDemos.colors} />
 
-## Node width and padding
+## 节点宽度和间距
 
-Use `nodeWidth` to control the width of each node and `nodePadding` to control
-the spacing between nodes:
+使用 `nodeWidth` 控制每个节点的宽度，使用 `nodePadding` 控制节点之间的间距：
 
 <Demo data={SankeyChartDemos.nodeWidth} />
 
-## Link opacity
+## 连线透明度
 
-Use `linkOpacity` prop to control the opacity of links between nodes:
+使用 `linkOpacity` 属性控制节点之间连线的透明度：
 
 <Demo data={SankeyChartDemos.linkOpacity} />
 
-## Disable tooltip
+## 禁用提示框
 
-To disable the tooltip, set `withTooltip={false}`:
+要禁用提示框，设置 `withTooltip={false}`：
 
 <Demo data={SankeyChartDemos.noTooltip} />

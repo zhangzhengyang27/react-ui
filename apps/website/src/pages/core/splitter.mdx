@@ -4,87 +4,82 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Splitter);
 
-## Usage
+## 用法
 
-`Splitter` component provides resizable split pane layout. It is built on top of the
-[use-splitter](/hooks/use-splitter/) hook and provides a declarative API with
-Styles API integration.
+`Splitter` 组件提供可调整大小的分屏布局。它基于
+[use-splitter](/hooks/use-splitter/) Hook 构建，并提供声明式 API 与
+Styles API 集成。
 
 <Demo data={SplitterDemos.usage} />
 
-## CSS units
+## CSS 单位
 
-`Splitter.Pane` `defaultSize`, `min` and `max` props accept CSS units in addition to plain numbers:
+`Splitter.Pane` 的 `defaultSize`、`min` 和 `max` 属性除了普通数字外，还接受 CSS 单位：
 
-- A plain `number` or a `%` string (`'30%'`) is a **flexible** size – the pane shares the leftover
-  space with other flexible panes.
-- A `px` or `rem` string (`'240px'`, `'15rem'`) is a **fixed** size – the pane keeps its pixel size
-  when the container is resized and only changes when its own handle is dragged.
+- 普通 `number` 或 `%` 字符串（`'30%'`）是**弹性**尺寸——面板与其他弹性面板共享剩余空间。
+- `px` 或 `rem` 字符串（`'240px'`、`'15rem'`）是**固定**尺寸——当容器大小改变时，面板保持其像素尺寸，仅在其自身拖动条被拖动时才会改变。
 
-This makes it possible to mix a fixed-width sidebar with a fluid content pane that absorbs the
-remaining space:
+这使得可以将固定宽度的侧边栏与吸收剩余空间的流体内容面板混合使用：
 
 <Demo data={SplitterDemos.cssUnits} />
 
-Sizes are reported back in the unit they were declared in: a `'240px'` pane stays `'240px'` in
-`sizes` / `onSizeChange`, while a flexible pane reports its resolved percentage. When the container
-becomes smaller than the sum of the fixed panes, fixed panes shrink proportionally.
+尺寸会以声明时的单位回传：`'240px'` 面板在 `sizes` / `onSizeChange` 中保持为 `'240px'`，
+而弹性面板会报告其解析后的百分比。当容器小于固定面板之和时，固定面板会按比例缩小。
 
-## Vertical orientation
+## 垂直方向
 
-Set `orientation="vertical"` to split panes vertically:
+设置 `orientation="vertical"` 以垂直分割面板：
 
 <Demo data={SplitterDemos.vertical} />
 
-## Collapsible panes
+## 可折叠面板
 
-Set `collapsible` prop on `Splitter.Pane` to allow the pane to be collapsed
-by dragging past its minimum size. Use `splitterRef` to access imperative API
-for programmatic collapse/expand:
+在 `Splitter.Pane` 上设置 `collapsible` 属性，允许通过拖动超过最小尺寸来折叠面板。
+使用 `splitterRef` 访问命令式 API 以编程方式折叠/展开：
 
 <Demo data={SplitterDemos.collapsible} />
 
-## Controlled
+## 受控模式
 
-To control panel sizes, use `sizes` and `onSizeChange` props:
+要控制面板尺寸，请使用 `sizes` 和 `onSizeChange` 属性：
 
 <Demo data={SplitterDemos.controlled} />
 
-## Multiple panes
+## 多个面板
 
-`Splitter` supports any number of panes. Handles are automatically rendered between panes:
+`Splitter` 支持任意数量的面板。拖动条会自动渲染在面板之间：
 
 <Demo data={SplitterDemos.multiple} />
 
-## Nested splitters
+## 嵌套 splitter
 
-You can nest `Splitter` components to create complex layouts:
+你可以嵌套 `Splitter` 组件以创建复杂布局：
 
 <Demo data={SplitterDemos.nested} />
 
-## Redistribute
+## 重新分配
 
-When using multiple panes, set `redistribute` prop to control how space is borrowed from
-non-adjacent panels when the immediate neighbor is at its min/max:
+使用多个面板时，设置 `redistribute` 属性以控制当直接相邻面板达到其最小/最大值时，
+如何从非相邻面板借用空间：
 
 <Demo data={SplitterDemos.redistribute} />
 
-## Line size
+## 线条尺寸
 
-Use `lineSize` prop to control the thickness of the separator line between panes:
+使用 `lineSize` 属性控制面板之间分隔线的粗细：
 
 <Demo data={SplitterDemos.lineSize} />
 
-## Without handle
+## 无拖动柄
 
-Set `withHandle={false}` to hide the thumb with grip icon. The separator line
-between panes is still visible and draggable:
+设置 `withHandle={false}` 以隐藏带 grip 图标的拖动柄。面板之间的分隔线
+仍然可见且可拖动：
 
 <Demo data={SplitterDemos.withHandle} />
 
-## Imperative API
+## 命令式 API
 
-Use `splitterRef` prop to access imperative splitter API:
+使用 `splitterRef` 属性访问 splitter 的命令式 API：
 
 ```tsx
 import { useRef } from 'react';
@@ -112,15 +107,15 @@ function Demo() {
 }
 ```
 
-## Wrap Splitter.Pane
+## 包裹 Splitter.Pane
 
-`Splitter` component relies on `Splitter.Pane` order. Wrapping `Splitter.Pane` is not supported,
-`Splitter.Pane` must be a direct child of `Splitter`.
+`Splitter` 组件依赖 `Splitter.Pane` 的顺序。不支持包裹 `Splitter.Pane`，
+`Splitter.Pane` 必须是 `Splitter` 的直接子元素。
 
 ```tsx
 import { Splitter } from '@react-ui/ui';
 
-// This will not work – wrapped pane will not be recognized
+// 这样不会生效——被包裹的面板不会被识别
 function WillNotWork() {
   return (
     <Splitter.Pane defaultSize={50} min={20}>
@@ -129,7 +124,7 @@ function WillNotWork() {
   );
 }
 
-// Create a separate component for pane content instead
+// 改为为面板内容创建单独的组件
 function PaneContent() {
   return <div>This will work as expected!</div>;
 }
@@ -140,7 +135,7 @@ function Demo() {
       <Splitter.Pane defaultSize={50} min={20}>
         First pane
       </Splitter.Pane>
-      {/* Do not wrap Splitter.Pane in another component */}
+      {/* 不要将 Splitter.Pane 包裹在另一个组件中 */}
       {/* <WillNotWork /> */}
       <Splitter.Pane defaultSize={50} min={20}>
         <PaneContent />
@@ -150,7 +145,7 @@ function Demo() {
 }
 ```
 
-## use-splitter hook
+## use-splitter Hook
 
-`Splitter` component is built on top of the [use-splitter](/hooks/use-splitter/) hook.
-If you need more control over the layout and styling, you can use the hook directly.
+`Splitter` 组件基于 [use-splitter](/hooks/use-splitter/) Hook 构建。
+如果你需要对布局和样式有更多控制，可以直接使用该 Hook。

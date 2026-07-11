@@ -4,16 +4,16 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Tooltip);
 
-## Usage
+## 用法
 
 <Demo data={TooltipDemos.usage} />
 
-## Tooltip children
+## Tooltip 子元素
 
-Tooltip requires an element or a component as a single child –
-strings, fragments, numbers and multiple elements/components are not supported and **will throw an error**.
-Custom components must provide a prop to get the root element ref;
-all ReactUI components support ref out of the box.
+Tooltip 要求单个元素或组件作为子元素——
+字符串、片段、数字和多个元素/组件不受支持，**会抛出错误**。
+自定义组件必须提供获取根元素 ref 的属性；
+所有 ReactUI 组件都默认支持 ref。
 
 ```tsx
 import { Badge, Tooltip } from '@react-ui/ui';
@@ -49,29 +49,29 @@ function Demo() {
 }
 ```
 
-## Tooltip target
+## Tooltip 目标
 
-The `target` prop is an alternative to `children`. It accepts a string (selector),
-an HTML element or a ref object with an HTML element. Use the `target` prop when you do
-not render the tooltip target as a JSX element.
+`target` 属性是 `children` 的替代方案。它接受字符串（选择器）、
+HTML 元素或包含 HTML 元素的 ref 对象。当你不将 tooltip 目标渲染为 JSX 元素时，
+请使用 `target` 属性。
 
-Example of using the `target` prop with a string selector:
+使用字符串选择器的 `target` 属性示例：
 
 <Demo data={TooltipDemos.target} />
 
-## Required ref prop
+## 必需的 ref 属性
 
-Custom components that are rendered inside `Tooltip` are required to support `ref` prop:
+渲染在 `Tooltip` 内的自定义组件必须支持 `ref` 属性：
 
 ```tsx
-// Example of code that WILL NOT WORK
+// 不会生效的代码示例
 import { Tooltip } from '@react-ui/ui';
 
 function MyComponent() {
   return <div>My component</div>;
 }
 
-// This will not work – MyComponent does not support ref
+// 这不会生效——MyComponent 不支持 ref
 function Demo() {
   return (
     <Tooltip label="Does not work">
@@ -81,10 +81,10 @@ function Demo() {
 }
 ```
 
-The component must support `ref` prop:
+组件必须支持 `ref` 属性：
 
 ```tsx
-// Example of code that will work
+// 会生效的代码示例
 import { Tooltip } from '@react-ui/ui';
 
 const MyComponent = ({ ref, ...props }) => (
@@ -93,7 +93,7 @@ const MyComponent = ({ ref, ...props }) => (
   </div>
 );
 
-// Works correctly – ref is forwarded
+// 正确工作——ref 被转发
 function Demo() {
   return (
     <Tooltip label="Works fine">
@@ -103,51 +103,51 @@ function Demo() {
 }
 ```
 
-## Color
+## 颜色
 
 <Demo data={TooltipDemos.configurator} />
 
-## Offset
+## 偏移
 
-Set the `offset` prop to a number to change the tooltip position relative to the target element.
-This way you can control the tooltip offset on the main axis only.
+将 `offset` 属性设置为数字以更改 tooltip 相对于目标元素的位置。
+这样你可以仅在主轴上控制 tooltip 偏移。
 
 <Demo data={TooltipDemos.offset} />
 
-To control the offset on both axes, pass an object with `mainAxis` and `crossAxis` properties:
+要在两个轴上控制偏移，请传入包含 `mainAxis` 和 `crossAxis` 属性的对象：
 
 <Demo data={TooltipDemos.offsetAxis} />
 
-## Arrow
+## 箭头
 
-Set the `withArrow` prop to add an arrow to the tooltip. The arrow is a `div` element rotated with `transform: rotate(45deg)`.
+设置 `withArrow` 属性为 tooltip 添加箭头。箭头是一个使用 `transform: rotate(45deg)` 旋转的 `div` 元素。
 
-The `arrowPosition` prop determines how the arrow is positioned relative to the target element when `position` is set to `*-start` and `*-end` values on the `Popover` component.
-By default, the value is `center` – the arrow is positioned in the center of the target element if it is possible.
+当 `Popover` 组件的 `position` 设置为 `*-start` 和 `*-end` 值时，`arrowPosition` 属性决定箭头相对于目标元素的定位方式。
+默认值为 `center`——如果可能，箭头会位于目标元素的中心。
 
-If you change `arrowPosition` to `side`, then the arrow will be positioned on the side of the target element,
-and you will be able to control the arrow offset with the `arrowOffset` prop. Note that when `arrowPosition` is set to `center`,
-the `arrowOffset` prop is ignored.
+如果将 `arrowPosition` 更改为 `side`，则箭头会位于目标元素的一侧，
+并且你可以使用 `arrowOffset` 属性控制箭头偏移。注意，当 `arrowPosition` 设置为 `center` 时，
+`arrowOffset` 属性会被忽略。
 
-If you set `arrowPosition` to `merge`, the arrow will form a right triangle merged with the corresponding
-corner of the tooltip, and the border radius of that corner will be removed. This mode only works
-with `*-start` and `*-end` positions. Note that `arrowOffset` and `arrowRadius` props are ignored
-when `arrowPosition` is set to `merge`.
+如果将 `arrowPosition` 设置为 `merge`，箭头会形成一个与 tooltip 相应角合并的直角三角形，
+并且该角的 border radius 会被移除。此模式仅适用于
+`*-start` 和 `*-end` 位置。注意，当 `arrowPosition` 设置为 `merge` 时，
+`arrowOffset` 和 `arrowRadius` 属性会被忽略。
 
 <Demo data={TooltipDemos.arrow} />
 
-## Controlled
+## 受控模式
 
 <Demo data={TooltipDemos.controlled} />
 
-## Change events
+## 更改触发事件
 
-Events that trigger the tooltip can be changed with the `events` prop; it accepts an object
-with the following properties that determine which events will trigger the tooltip:
+触发 tooltip 的事件可以使用 `events` 属性更改；它接受一个对象，
+其中的以下属性决定哪些事件会触发 tooltip：
 
-- `hover` – mouse hover event, `true` by default
-- `focus` – focus/blur events excluding clicks on the target element, `false` by default
-- `touch` – events for touchscreen devices, `false` by default
+- `hover` – 鼠标悬停事件，默认为 `true`
+- `focus` – 聚焦/失焦事件，不包括点击目标元素，默认为 `false`
+- `touch` – 触摸屏设备事件，默认为 `false`
 
 ```tsx
 import { Tooltip } from '@react-ui/ui';
@@ -164,21 +164,21 @@ function Demo() {
 }
 ```
 
-## Multiline
+## 多行
 
-To enable multiline mode, set the `multiline` prop to enable line breaks and the `w` [style prop](/styles/style-props) to set the tooltip width:
+要启用多行模式，请设置 `multiline` 属性以启用换行，并使用 `w` [样式属性](/styles/style-props) 设置 tooltip 宽度：
 
 <Demo data={TooltipDemos.multiline} />
 
-## Inline
+## 行内
 
-Set the `inline` prop to use `Tooltip` with inline elements:
+设置 `inline` 属性以将 `Tooltip` 用于行内元素：
 
 <Demo data={TooltipDemos.inline} />
 
-## Change transition
+## 更改过渡
 
-Tooltip is built with the [Transition](/core/transition/) component; it supports `transitionProps` props:
+Tooltip 基于 [Transition](/core/transition/) 组件构建；它支持 `transitionProps` 属性：
 
 ```tsx
 import { Button, Tooltip } from '@react-ui/ui';
@@ -195,44 +195,44 @@ function Demo() {
 }
 ```
 
-All available premade transitions:
+所有可用的预置过渡：
 
 <Demo data={TooltipDemos.transitions} />
 
-## Close and open delay
+## 关闭和打开延迟
 
-You can delay tooltip open/close events by setting the `openDelay` and `closeDelay` props in ms:
+你可以通过设置 `openDelay` 和 `closeDelay` 属性（单位为毫秒）来延迟 tooltip 的打开/关闭事件：
 
 <Demo data={TooltipDemos.delay} />
 
-## Tooltip delay group
+## Tooltip 延迟组
 
-The `Tooltip.Group` component can be used to sync open and close delays for multiple tooltips:
+`Tooltip.Group` 组件可用于同步多个 tooltip 的打开和关闭延迟：
 
 <Demo data={TooltipDemos.group} />
 
-## Floating tooltip
+## 浮动 tooltip
 
-`Tooltip.Floating` component has the same API as the Tooltip component but the tooltip will follow the mouse:
+`Tooltip.Floating` 组件与 Tooltip 组件具有相同的 API，但 tooltip 会跟随鼠标：
 
 <Demo data={TooltipDemos.floating} />
 
-## Accessibility
+## 可访问性
 
-Tooltip follows [WAI-ARIA recommendations](https://www.w3.org/TR/wai-aria-practices/#tooltip):
+Tooltip 遵循 [WAI-ARIA 建议](https://www.w3.org/TR/wai-aria-practices/#tooltip)：
 
-- The tooltip body has `role="tooltip"` attribute
-- The target element has `aria-describedby` attribute
-- `Tooltip.Floating` is ignored by screen readers
+- tooltip 主体具有 `role="tooltip"` 属性
+- 目标元素具有 `aria-describedby` 属性
+- `Tooltip.Floating` 会被屏幕阅读器忽略
 
-By default, Tooltip is not triggered by focus events and thus users who use a screen reader
-or navigate with the keyboard will not be able to get tooltip content. Set the `events` prop to enable
-focus/blur tooltip events:
+默认情况下，Tooltip 不会由聚焦事件触发，因此使用屏幕阅读器
+或键盘导航的用户将无法获取 tooltip 内容。设置 `events` 属性以启用
+聚焦/失焦 tooltip 事件：
 
 ```tsx
 import { Button, Tooltip } from '@react-ui/ui';
 
-// Tooltip will be visible for screen readers
+// Tooltip 将对屏幕阅读器可见
 function Demo() {
   return (
     <Tooltip

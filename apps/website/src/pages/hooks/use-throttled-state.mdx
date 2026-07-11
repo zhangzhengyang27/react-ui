@@ -4,14 +4,14 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useThrottledState);
 
-## Usage
+## 用法
 
-The `useThrottledState` hook works similarly to `useState` but throttles state updates.
-The `setThrottledState` handler in the example below will be called at most once every 1000ms.
+`useThrottledState` Hook 的工作方式与 `useState` 类似，但会对状态更新进行节流。
+下面示例中的 `setThrottledState` 处理函数最多每 1000 毫秒调用一次。
 
 <Demo data={UseThrottledStateDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 function useThrottledState<T = any>(

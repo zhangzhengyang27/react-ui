@@ -4,23 +4,23 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Rem);
 
-# rem, em and px units
+# rem、em 和 px 单位
 
-## rem units
+## rem 单位
 
-All ReactUI components use `rem` units to apply size styles (`margin`, `padding`, `width`, etc.).
-By default, `1rem` is considered to be `16px`, as it is the default setting in most browsers.
-All components scale based on the user's browser font-size settings or font-size of the `html`/`:root`.
+所有 ReactUI 组件都使用 `rem` 单位来设置尺寸样式（如 `margin`、`padding`、`width` 等）。
+默认情况下，`1rem` 被视为 `16px`，这也是大多数浏览器的默认设置。
+所有组件都会根据用户的浏览器字体大小设置或 `html`/`:root` 元素的字体大小进行缩放。
 
 <Demo data={StylesDemos.remSlider} />
 
-## rem units scaling
+## rem 单位缩放
 
-If you want to change the font-size of the `:root`/`html` element and preserve ReactUI component sizes,
-set `scale` on the [theme](/theming/theme-object) to the value of `1 / htmlFontSize`.
+如果你想修改 `:root`/`html` 元素的字体大小，同时保持 ReactUI 组件的尺寸不变，
+可以在 [theme](/theming/theme-object) 上设置 `scale` 为 `1 / htmlFontSize`。
 
-For example, if you set the `html` font-size to `10px` and want to scale ReactUI components accordingly, you need
-to set `scale` to `1 / (10 / 16)` (16 – default font-size) = `1 / 0.625` = `1.6`:
+例如，如果你将 `html` 的字体大小设为 `10px`，并希望 ReactUI 组件按此缩放，
+需要将 `scale` 设为 `1 / (10 / 16)`（16 为默认字体大小）= `1 / 0.625` = `1.6`：
 
 ```css
 :root {
@@ -44,14 +44,14 @@ function Demo() {
 }
 ```
 
-## em units
+## em 单位
 
-`em` units are used in media queries the same way as `rem` units, but they are not affected by the font-size specified on the `html`/`:root` element.
-`1em` is considered to be `16px`.
+`em` 单位在媒体查询中的使用方式与 `rem` 相同，但不受 `html`/`:root` 元素上字体大小的影响。
+`1em` 被视为 `16px`。
 
-## px conversions
+## px 转换
 
-You can use numbers in some ReactUI components props. Numbers are treated as `px` and converted to `rem`, for example:
+你可以在部分 ReactUI 组件 props 中使用数字。数字会被视为 `px` 并自动转换为 `rem`，例如：
 
 ```tsx
 import { ColorSwatch } from '@react-ui/ui';
@@ -68,7 +68,7 @@ function DemoRem() {
 }
 ```
 
-The same conversion happens in [style props](/styles/style-props/):
+同样的转换也发生在 [style props](/styles/style-props/) 中：
 
 ```tsx
 import { Box } from '@react-ui/ui';
@@ -80,9 +80,9 @@ function Demo() {
 }
 ```
 
-## rem and em function
+## rem 和 em 函数
 
-`@react-ui/ui` package exports `rem` and `em` function that can be used to convert `px` into `rem`/`em`:
+`@react-ui/ui` 包导出了 `rem` 和 `em` 函数，可用于将 `px` 转换为 `rem`/`em`：
 
 ```tsx
 import { em, rem } from '@react-ui/ui';
@@ -106,9 +106,9 @@ em('5vh'); // -> 5vh
 rem('16px 2rem'); // -> calc(1rem * var(--mantine-scale)) 2rem
 ```
 
-## Convert rem to px
+## 将 rem 转换为 px
 
-To convert `rem`/`em` to `px` use `px` function exported from `@react-ui/ui`:
+要将 `rem`/`em` 转换为 `px`，可以使用 `@react-ui/ui` 导出的 `px` 函数：
 
 ```tsx
 import { px } from '@react-ui/ui';
@@ -117,10 +117,9 @@ px('2rem'); // -> 32
 px('10rem'); // -> 160
 ```
 
-## rem/em functions in css files
+## 在 css 文件中使用 rem/em 函数
 
-You can use `rem` and `em` function in [css files](/styles/css-modules) if
-[postcss-preset-mantine](/styles/postcss-preset) is installed:
+如果已安装 [postcss-preset-mantine](/styles/postcss-preset)，你可以在 [css 文件](/styles/css-modules)中使用 `rem` 和 `em` 函数：
 
 ```css
 .demo {
@@ -132,10 +131,10 @@ You can use `rem` and `em` function in [css files](/styles/css-modules) if
 }
 ```
 
-## Convert px to rem automatically in css files
+## 在 css 文件中自动将 px 转换为 rem
 
-To convert `px` to `rem` automatically in css files, enable `autoRem` option in
-[postcss-preset-mantine](/styles/postcss-preset) configuration:
+要在 css 文件中自动将 `px` 转换为 `rem`，请在
+[postcss-preset-mantine](/styles/postcss-preset) 配置中启用 `autoRem` 选项：
 
 ```js
 module.exports = {

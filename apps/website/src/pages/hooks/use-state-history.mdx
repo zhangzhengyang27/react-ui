@@ -4,17 +4,16 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useStateHistory);
 
-## Usage
+## 用法
 
-The `useStateHistory` hook creates a state with history. It returns the current value, handlers to
-go back/forward, and a history object with all previous values and the current index.
+`useStateHistory` Hook 创建一个带历史记录的状态。它返回当前值、后退/前进处理函数，
+以及一个包含所有先前值和当前索引的历史对象。
 
 <Demo data={UseStateHistoryDemos.usage} />
 
-## Definition
+## 类型定义
 
-The `UseStateHistoryHandlers` and `UseStateHistoryValue` interfaces are exported from the `@react-ui/hooks`
-package.
+`UseStateHistoryHandlers` 和 `UseStateHistoryValue` 接口从 `@react-ui/hooks` 包导出。
 
 ```tsx
 interface UseStateHistoryHandlers<T> {
@@ -38,9 +37,9 @@ type UseStateHistoryReturnValue<T> = [
 function useStateHistory<T>(initialValue: T): UseStateHistoryReturnValue<T>;
 ```
 
-## Exported types
+## 导出类型
 
-The `UseStateHistoryHandlers`, `UseStateHistoryReturnValue`, and `UseStateHistoryValue` types are exported from `@react-ui/hooks`;
+`UseStateHistoryHandlers`、`UseStateHistoryReturnValue` 和 `UseStateHistoryValue` 类型从 `@react-ui/hooks` 包导出：
 
 ```tsx
 import type { UseStateHistoryHandlers, UseStateHistoryReturnValue, UseStateHistoryValue } from '@react-ui/hooks';

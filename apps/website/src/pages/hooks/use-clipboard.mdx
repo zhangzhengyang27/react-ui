@@ -4,20 +4,19 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useClipboard);
 
-## Usage
+## 用法
 
-The `use-clipboard` hook provides a simple way to copy text to the clipboard,
-track the copied state, handle errors, and reset the state after a given timeout.
-It uses the [navigator.clipboard.writeText](https://caniuse.com/mdn-api_clipboard_writetext) API under the hood.
+`use-clipboard` Hook 提供了一种简单的方式将文本复制到剪贴板、跟踪复制状态、处理错误，
+并在给定超时后重置状态。它底层使用 [navigator.clipboard.writeText](https://caniuse.com/mdn-api_clipboard_writetext) API。
 
 <Demo data={UseClipboardDemos.usage} />
 
-## Limitations
+## 限制
 
-Due to security reasons, the `use-clipboard` hook will not work in iframes and may not work with local files opened with the `file://` protocol
-(the hook will work fine with local websites that are using the `http://` protocol). You can learn more about `navigator.clipboard` [here](https://web.dev/async-clipboard/).
+由于安全原因，`use-clipboard` Hook 在 iframe 中无法工作，也可能无法与使用 `file://` 协议打开的本地文件一起工作
+（该 Hook 可以正常使用 `http://` 协议的本地网站）。你可以在[这里](https://web.dev/async-clipboard/)了解更多关于 `navigator.clipboard` 的信息。
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseClipboardOptions {
@@ -42,10 +41,10 @@ interface UseClipboardReturnValue {
 function useClipboard(options?: UseClipboardOptions): UseClipboardReturnValue
 ```
 
-## Exported types
+## 导出类型
 
-The `UseClipboardOptions` and `UseClipboardReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseClipboardOptions` 和 `UseClipboardReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseClipboardOptions, UseClipboardReturnValue } from '@react-ui/hooks';

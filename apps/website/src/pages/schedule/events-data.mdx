@@ -3,20 +3,19 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.ScheduleEventsData);
 
-## Overview
+## 概述
 
-All `@react-ui/schedule` components accept events through the `events` prop. Each event
-is typed as `ScheduleEventData` and can be one of three shapes:
+所有 `@react-ui/schedule` 组件都通过 `events` prop 接收事件。每个事件的类型为 `ScheduleEventData`，可以是以下三种形态之一：
 
-- **One-off event** – a regular event without recurrence
-- **Recurring series event** – a source event that expands into multiple occurrences
-- **Recurring override event** – an event that replaces a single occurrence of a series
+- **One-off event** – 没有重复的常规事件
+- **Recurring series event** – 一个源事件，会展开为多次出现
+- **Recurring override event** – 替换系列中某次生成出现的事件
 
-All three variants share a common set of base fields described in `ScheduleEventBase`.
+所有三种变体共享 `ScheduleEventBase` 中描述的一组基础字段。
 
 ## ScheduleEventBase
 
-`ScheduleEventBase` defines the fields that every event has, regardless of its shape.
+`ScheduleEventBase` 定义了每个事件都拥有的字段，无论其形态如何。
 
 ```tsx
 import type { DateTimeStringValue, EventPayload } from '@react-ui/schedule';
@@ -50,12 +49,11 @@ interface ScheduleEventBase<Payload extends EventPayload = EventPayload> {
 }
 ```
 
-`start` and `end` accept either a `Date` instance or a string in `YYYY-MM-DD HH:mm:ss`
-format (the `DateTimeStringValue` type used by all ReactUI date components).
+`start` 和 `end` 接受 `Date` 实例或 `YYYY-MM-DD HH:mm:ss` 格式的字符串（即所有 ReactUI 日期组件使用的 `DateTimeStringValue` 类型）。
 
 ## ScheduleSingleEventData
 
-A one-off event without recurrence. This is the most common shape:
+没有重复规则的一次性事件。这是最常见的形态：
 
 ```tsx
 import type { ScheduleSingleEventData } from '@react-ui/schedule';
@@ -71,8 +69,7 @@ const event: ScheduleSingleEventData = {
 
 ## ScheduleRecurringSeriesEventData
 
-A source event for a recurring series. Adds a `recurrence` field with an [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545)
-recurrence rule:
+重复系列的源事件。添加了一个包含 [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545) 重复规则的 `recurrence` 字段：
 
 ```tsx
 import type { ScheduleRecurringSeriesEventData } from '@react-ui/schedule';
@@ -91,7 +88,7 @@ const series: ScheduleRecurringSeriesEventData = {
 };
 ```
 
-The `recurrence` object has the following shape:
+`recurrence` 对象具有以下形态：
 
 ```tsx
 interface ScheduleRecurrenceData {
@@ -106,12 +103,11 @@ interface ScheduleRecurrenceData {
 }
 ```
 
-See the [Recurring events guide](/schedule/recurring-events) for more details on
-recurrence rules and series expansion.
+有关重复规则和系列展开的更多详情，请参阅 [重复事件指南](/schedule/recurring-events)。
 
 ## ScheduleRecurringOverrideEventData
 
-An override event replaces a single generated occurrence from a series:
+Override event 替换系列中的某个生成出现：
 
 ```tsx
 import type { ScheduleRecurringOverrideEventData } from '@react-ui/schedule';
@@ -127,15 +123,12 @@ const override: ScheduleRecurringOverrideEventData = {
 };
 ```
 
-- `recurringEventId` – id of the parent series event
-- `recurrenceId` – original occurrence datetime in `YYYY-MM-DD HH:mm:ss` format
+- `recurringEventId` – 父系列事件的 id
+- `recurrenceId` – 原始出现日期时间，格式为 `YYYY-MM-DD HH:mm:ss`
 
 ## EventPayload
 
-Use the `payload` field to attach arbitrary data to events. The payload is not used
-internally by the library – it is meant for application-specific data that you can
-access in callbacks (`onEventClick`, `onEventDrop`, etc.) and in custom event renderers
-(`renderEventBody`):
+使用 `payload` 字段为事件附加任意数据。payload 不被库内部使用——它用于你可以在回调（`onEventClick`、`onEventDrop` 等）和自定义事件渲染器（`renderEventBody`）中访问的应用特定数据：
 
 ```tsx
 import type { ScheduleEventData } from '@react-ui/schedule';
@@ -160,15 +153,11 @@ const event: ScheduleEventData<MyEventPayload> = {
 };
 ```
 
-`EventPayload` itself is just `Record<PropertyKey, any>` – you typically pass your own
-payload type as a generic argument to `ScheduleEventData<MyPayload>`.
+`EventPayload` 本身只是 `Record<PropertyKey, any>`——通常你会将自己的 payload 类型作为泛型参数传递给 `ScheduleEventData<MyPayload>`。
 
-## Recurring instance metadata
+## 重复实例元数据
 
-When a recurring series is expanded for the visible date range, each generated event
-includes a `recurringInstance` metadata object. This object is added by the library –
-you do not set it yourself, but you can read it in callbacks and custom renderers to
-distinguish generated occurrences from regular events:
+当重复系列为可见日期范围展开时，每个生成的事件都包含一个 `recurringInstance` 元数据对象。该对象由库添加——你自己不需要设置它，但可以在回调和自定义渲染器中读取它，以区分生成出现与常规事件：
 
 ```tsx
 interface RecurringInstanceMeta {
@@ -187,7 +176,7 @@ interface RecurringInstanceMeta {
 }
 ```
 
-Example of reading the metadata in `onEventClick`:
+在 `onEventClick` 中读取元数据的示例：
 
 ```tsx
 <Schedule
@@ -202,14 +191,13 @@ Example of reading the metadata in `onEventClick`:
 />
 ```
 
-## Callback payloads
+## 回调 payload
 
-All event callbacks accept structured data describing what the user interacted with.
-The following sections document the exact payload received by each callback.
+所有事件回调都接受描述用户与之交互内容的结构化数据。以下部分记录每个回调接收的确切 payload。
 
 ### onEventClick
 
-Called when an event is clicked in any view:
+在任何视图中点击事件时调用：
 
 ```tsx
 onEventClick?: (
@@ -218,13 +206,12 @@ onEventClick?: (
 ) => void;
 ```
 
-- `event` – the clicked event, including `recurringInstance` metadata if it is a
-  generated occurrence.
-- `e` – the native React mouse event.
+- `event` – 被点击的事件，如果是生成出现，则包含 `recurringInstance` 元数据。
+- `e` – 原生 React 鼠标事件。
 
 ### onEventDrop
 
-Called when an event is dropped after a drag (requires `withEventsDragAndDrop`):
+在拖拽后放下事件时调用（需要 `withEventsDragAndDrop`）：
 
 ```tsx
 onEventDrop?: (data: {
@@ -235,17 +222,13 @@ onEventDrop?: (data: {
 }) => void;
 ```
 
-- `eventId` – id of the dropped event (same as `event.id`). For generated recurring
-  instances this is the synthesized occurrence id (`"<seriesId>::<recurrenceId>"`),
-  not the series id. Use `event.recurringInstance?.recurringEventId` to get the parent
-  series id when handling occurrences.
-- `newStart` / `newEnd` – new datetime values in `YYYY-MM-DD HH:mm:ss` format.
-- `event` – full event data, including `recurringInstance` metadata if applicable.
+- `eventId` – 被放下事件的 id（与 `event.id` 相同）。对于生成的重复实例，这是合成的出现 id（`"<seriesId>::<recurrenceId>"`），而不是系列 id。处理出现时请使用 `event.recurringInstance?.recurringEventId` 获取父系列 id。
+- `newStart` / `newEnd` – `YYYY-MM-DD HH:mm:ss` 格式的新日期时间值。
+- `event` – 完整事件数据，如果适用则包含 `recurringInstance` 元数据。
 
 ### onEventResize
 
-Called when an event is resized by dragging its top or bottom edge
-(requires `withEventResize`):
+通过拖动事件顶部或底部边缘调整事件大小时调用（需要 `withEventResize`）：
 
 ```tsx
 onEventResize?: (data: {
@@ -256,24 +239,22 @@ onEventResize?: (data: {
 }) => void;
 ```
 
-The payload has the same shape as `onEventDrop`, including the caveat about `eventId`
-for generated recurring instances.
+payload 与 `onEventDrop` 具有相同的形态，包括关于生成重复实例的 `eventId` 注意事项。
 
 ### onEventDragStart / onEventDragEnd
 
-Called when an event drag starts or ends:
+事件拖拽开始或结束时调用：
 
 ```tsx
 onEventDragStart?: (event: ScheduleEventData) => void;
 onEventDragEnd?: () => void;
 ```
 
-`onEventDragEnd` is called both for successful drops and for cancelled drags – use
-`onEventDrop` if you need the new position.
+`onEventDragEnd` 在成功放下和取消的拖拽时都会被调用——如果你需要新位置，请使用 `onEventDrop`。
 
 ### onTimeSlotClick
 
-Called when a time slot is clicked in `DayView` or `WeekView`:
+在 `DayView` 或 `WeekView` 中点击时间槽时调用：
 
 ```tsx
 onTimeSlotClick?: (data: {
@@ -283,12 +264,11 @@ onTimeSlotClick?: (data: {
 }) => void;
 ```
 
-- `slotStart` / `slotEnd` – the slot range in `YYYY-MM-DD HH:mm:ss` format. Slot length
-  is controlled by the view's `intervalMinutes` prop.
+- `slotStart` / `slotEnd` – `YYYY-MM-DD HH:mm:ss` 格式的槽范围。槽长度由视图的 `intervalMinutes` prop 控制。
 
 ### onAllDaySlotClick
 
-Called when the all-day slot is clicked in `DayView` or `WeekView`:
+在 `DayView` 或 `WeekView` 中点击全天槽时调用：
 
 ```tsx
 onAllDaySlotClick?: (
@@ -297,11 +277,11 @@ onAllDaySlotClick?: (
 ) => void;
 ```
 
-- `date` – the clicked date in `YYYY-MM-DD` format.
+- `date` – `YYYY-MM-DD` 格式的点击日期。
 
 ### onDayClick
 
-Called when a day is clicked in `MonthView` or `YearView`:
+在 `MonthView` 或 `YearView` 中点击日期时调用：
 
 ```tsx
 onDayClick?: (
@@ -310,12 +290,11 @@ onDayClick?: (
 ) => void;
 ```
 
-- `date` – the clicked date in `YYYY-MM-DD` format.
+- `date` – `YYYY-MM-DD` 格式的点击日期。
 
 ### onSlotDragEnd
 
-Called when a slot range is selected by dragging across time slots or day cells
-(requires `withDragSlotSelect`):
+通过跨时间槽或日期单元格拖动选择槽范围时调用（需要 `withDragSlotSelect`）：
 
 ```tsx
 onSlotDragEnd?: (
@@ -324,11 +303,11 @@ onSlotDragEnd?: (
 ) => void;
 ```
 
-- `rangeStart` / `rangeEnd` – the selected range in `YYYY-MM-DD HH:mm:ss` format.
+- `rangeStart` / `rangeEnd` – `YYYY-MM-DD HH:mm:ss` 格式的选择范围。
 
 ### onExternalEventDrop
 
-Called when an item is dragged from outside the schedule and dropped onto a slot:
+当从调度组件外部拖动的项目被放到槽上时调用：
 
 ```tsx
 onExternalEventDrop?: (
@@ -337,25 +316,23 @@ onExternalEventDrop?: (
 ) => void;
 ```
 
-- `dataTransfer` – the native `DataTransfer` object set by the external item during its
-  `onDragStart` handler. Read your custom data with `dataTransfer.getData(type)`.
-- `dropDateTime` – the drop target datetime in `YYYY-MM-DD HH:mm:ss` format.
+- `dataTransfer` – 外部项目在其 `onDragStart` 处理程序中设置的原生 `DataTransfer` 对象。使用 `dataTransfer.getData(type)` 读取你的自定义数据。
+- `dropDateTime` – `YYYY-MM-DD HH:mm:ss` 格式的放下目标日期时间。
 
 ### canDragEvent / canResizeEvent
 
-Permission callbacks – return `false` to prevent dragging or resizing for a specific event:
+权限回调——返回 `false` 以阻止特定事件的拖拽或调整大小：
 
 ```tsx
 canDragEvent?: (event: ScheduleEventData) => boolean;
 canResizeEvent?: (event: ScheduleEventData) => boolean;
 ```
 
-## Date and time value formats
+## 日期和时间值格式
 
-Event data and callback payloads use the following string formats consistently:
+事件数据和回调 payload 一致使用以下字符串格式：
 
-- `DateStringValue` – `YYYY-MM-DD` (e.g. `2024-01-15`)
-- `DateTimeStringValue` – `YYYY-MM-DD HH:mm:ss` (e.g. `2024-01-15 10:00:00`)
+- `DateStringValue` – `YYYY-MM-DD`（例如 `2024-01-15`）
+- `DateTimeStringValue` – `YYYY-MM-DD HH:mm:ss`（例如 `2024-01-15 10:00:00`）
 
-These types are shared across `@react-ui/ui` and `@react-ui/schedule` and are exported
-from both packages.
+这些类型在 `@react-ui/ui` 和 `@react-ui/schedule` 之间共享，并从两个包中导出。

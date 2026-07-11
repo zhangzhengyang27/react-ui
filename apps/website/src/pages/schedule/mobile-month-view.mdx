@@ -4,107 +4,106 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.MobileMonthView);
 
-## Usage
+## 用法
 
-MobileMonthView is a mobile-optimized calendar view that displays a month grid at the top with event indicators, and a list of events for the selected day at the bottom. This component is designed to work similarly to how calendar applications work on iOS.
+MobileMonthView 是一个移动设备优化的日历视图，顶部显示带有事件指示器的月份网格，底部显示所选日期的事件列表。该组件设计为与 iOS 上的日历应用工作方式类似。
 
-The component does not include drag-and-drop functionality and is optimized for touch interactions on mobile devices.
+该组件不包含拖拽功能，并针对移动设备上的触摸交互进行了优化。
 
 <Demo data={MobileMonthViewDemos.usage} />
 
-## With week numbers
+## 周数
 
-Set `withWeekNumbers` to display week numbers in the first column.
+设置 `withWeekNumbers` 以在第一列显示周数。
 
 <Demo data={MobileMonthViewDemos.withWeekNumbers} />
 
-## With outside days
+## 显示外部日期
 
-By default, days from the previous and next months are hidden. Set `withOutsideDays` to display them.
+默认情况下，上个月和下个月的日期是隐藏的。设置 `withOutsideDays` 以显示它们。
 
 <Demo data={MobileMonthViewDemos.withOutsideDays} />
 
-## Highlight today
+## 高亮今天
 
-Set `highlightToday={false}` to disable highlighting the current day.
+设置 `highlightToday={false}` 以禁用当前日期的高亮。
 
 <Demo data={MobileMonthViewDemos.highlightToday} />
 
-## First day of week
+## 每周第一天
 
-Set `firstDayOfWeek` to control which day starts the week. 0 is Sunday, 1 is Monday (default), etc.
+设置 `firstDayOfWeek` 以控制每周从哪一天开始。0 是星期日，1 是星期一（默认），依此类推。
 
 <Demo data={MobileMonthViewDemos.firstDayOfWeek} />
 
-## Custom header
+## 自定义标题
 
-Use `renderHeader` to customize the header. The callback receives the default header element,
-the current mode, and the current date, allowing you to wrap or replace the default header.
+使用 `renderHeader` 自定义标题。回调接收默认标题元素、当前模式和当前日期，允许你包装或替换默认标题。
 
 <Demo data={MobileMonthViewDemos.renderHeader} />
 
-## Consistent weeks
+## 固定周数
 
-Set `consistentWeeks={false}` to only show weeks that have days in the current month.
+设置 `consistentWeeks={false}` 以仅显示包含当前月份日期的周。
 
 <Demo data={MobileMonthViewDemos.consistentWeeks} />
 
-## Weekday format
+## 工作日格式
 
-Use `weekdayFormat` prop to customize the weekday names display. It accepts dayjs format strings.
+使用 `weekdayFormat` prop 自定义工作日名称显示。它接受 dayjs 格式字符串。
 
 <Demo data={MobileMonthViewDemos.weekdayFormat} />
 
-## Without week days
+## 隐藏工作日
 
-Set `withWeekDays={false}` to hide the weekday names row.
+设置 `withWeekDays={false}` 以隐藏工作日名称行。
 
 <Demo data={MobileMonthViewDemos.withoutWeekDays} />
 
-## Static mode
+## 静态模式
 
-Set `mode="static"` to disable all interactions. In this mode, days are not clickable and no selection changes occur.
+设置 `mode="static"` 以禁用所有交互。在此模式下，日期不可点击，不会发生选择变化。
 
 <Demo data={MobileMonthViewDemos.staticMode} />
 
-## Localization
+## 本地化
 
-Use `locale` prop to set the dayjs locale for date formatting.
-Combine it with `labels` prop to translate all UI text.
+使用 `locale` prop 设置日期格式化的 dayjs locale。
+结合 `labels` prop 以翻译所有 UI 文本。
 
 <Demo data={MobileMonthViewDemos.localization} />
 
-## Accessibility
+## 无障碍
 
-MobileMonthView follows the same keyboard navigation patterns as [MonthView](./month-view.mdx#accessibility).
+MobileMonthView 遵循与 [MonthView](./month-view.mdx#accessibility) 相同的键盘导航模式。
 
-### Focus management
+### 焦点管理
 
-The first day of the month is included in the tab order (`tabIndex={0}`), while all other days have `tabIndex={-1}`. When a day receives focus via arrow key navigation, the component updates `tabIndex` values so that the newly focused day becomes the tab stop.
+月份的第一天包含在 tab 顺序中（`tabIndex={0}`），而所有其他日期的 `tabIndex={-1}`。当某天通过方向键导航获得焦点时，组件会更新 `tabIndex` 值，使新获得焦点的日期成为 tab 停靠点。
 
-### Keyboard interactions
+### 键盘交互
 
 <KeyboardEventsTable
   data={[
     {
       key: 'ArrowRight',
-      description: 'Focuses next non-disabled day',
+      description: '聚焦下一个非禁用日期',
     },
     {
       key: 'ArrowLeft',
-      description: 'Focuses previous non-disabled day',
+      description: '聚焦上一个非禁用日期',
     },
     {
       key: 'ArrowDown',
-      description: 'Focuses same day in the next week',
+      description: '聚焦下周的同一天',
     },
     {
       key: 'ArrowUp',
-      description: 'Focuses same day in the previous week',
+      description: '聚焦上周的同一天',
     },
   ]}
 />
 
-### Day labels
+### 日期标签
 
-Each day button has an `aria-label` attribute with the full date in the format "Month Day, Year" (e.g., "November 15, 2025"). This provides screen reader users with complete date information.
+每个日期按钮都有一个 `aria-label` 属性，格式为 "Month Day, Year"（例如 "November 15, 2025"）。这为屏幕阅读器用户提供了完整的日期信息。

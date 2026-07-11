@@ -4,59 +4,58 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.DateInput);
 
-## DatePicker props
+## DatePicker 属性
 
-`DateInput` supports most of the [DatePicker](/dates/date-picker/) props.
-Read through the [DatePicker](/dates/date-picker/) documentation to learn about all component features that are not listed on this page.
+`DateInput` 支持大多数 [DatePicker](/dates/date-picker/) props。
+阅读 [DatePicker](/dates/date-picker/) 文档以了解本页未列出的所有组件功能。
 
-## Usage
+## 用法
 
 <Demo data={DateInputDemos.usage} />
 
-## Presets
+## 预设
 
-Use the `presets` prop to add custom date presets. Presets are displayed next to the calendar:
+使用 `presets` prop 添加自定义日期预设。预设显示在日历旁边：
 
 <Demo data={DateInputDemos.presets} />
 
-## Value format
+## 值格式
 
-Use the `valueFormat` prop to change the [dayjs format](https://day.js.org/docs/en/display/format) of the value label.
-To use some custom formats, you need to enable the [custom parse format](https://day.js.org/docs/en/plugin/custom-parse-format) plugin:
+使用 `valueFormat` prop 更改值标签的 [dayjs 格式](https://day.js.org/docs/en/display/format)。
+要使用某些自定义格式，你需要启用 [custom parse format](https://day.js.org/docs/en/plugin/custom-parse-format) 插件：
 
 ```tsx
-// Do this once in your application root file
+// 在应用根文件中执行一次
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 dayjs.extend(customParseFormat);
 ```
 
-Example of using DateInput with a custom format:
+使用 DateInput 和自定义格式的示例：
 
 <Demo data={DateInputDemos.format} />
 
 
-## With time
+## 带时间
 
-If your `valueFormat` includes time (for example, `YYYY-MM-DD HH:mm`), set the `withTime` prop
-to preserve the time part of the value. Without `withTime`, the time portion is discarded and
-always defaults to `00:00`. When using `withTime`, you will also need to provide a custom `dateParser`
-that returns a date-time string:
+如果你的 `valueFormat` 包含时间（例如 `YYYY-MM-DD HH:mm`），请设置 `withTime` prop
+以保留值的时间部分。没有 `withTime` 时，时间部分将被丢弃，并
+始终默认为 `00:00`。使用 `withTime` 时，你还需要提供自定义的 `dateParser`，
+返回日期时间字符串：
 
 <Demo data={DateInputDemos.time} />
 
-## Date parser
+## 日期解析器
 
-Use the `dateParser` prop to replace the default date parser. The parser function accepts user input (string)
-and must return a `Date` object:
+使用 `dateParser` prop 替换默认的日期解析器。解析器函数接收用户输入（字符串）
+并必须返回一个 `Date` 对象：
 
 <Demo data={DateInputDemos.parser} />
 
-## Allow clear
+## 允许清除
 
-Set the `clearable` prop to allow removing the value from the input. The input will be cleared if the
-user selects the same date in the dropdown or clears the input value:
+设置 `clearable` prop 以允许从输入框中移除值。如果用户在下拉菜单中选择相同日期或清除输入值，输入框将被清除：
 
 <Demo data={DateInputDemos.clearable} />
 
@@ -64,19 +63,19 @@ user selects the same date in the dropdown or clears the input value:
 
 <Demo data={DateInputDemos.clearSectionMode} />
 
-## Min and max date
+## 最小和最大日期
 
-Set the `minDate` and `maxDate` props to define minimum and maximum dates. If a date that is after `maxDate`
-or before `minDate` is entered, it will be considered invalid and the input value will be reverted
-to the last known valid date value.
+设置 `minDate` 和 `maxDate` props 以定义最小和最大日期。如果输入的日期晚于 `maxDate`
+或早于 `minDate`，它将被视为无效，输入值将恢复为
+最后已知的有效日期值。
 
 <Demo data={DateInputDemos.minMax} />
 
-## Disabled state
+## 禁用状态
 
 <Demo data={DateInputDemos.disabled} />
 
-## Input props
+## Input 属性
 
 <InputFeatures component="DateInput" element="input" />
 

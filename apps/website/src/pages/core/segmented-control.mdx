@@ -4,11 +4,11 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.SegmentedControl);
 
-## Usage
+## 用法
 
 <Demo data={SegmentedControlDemos.usage} />
 
-## Controlled
+## 受控模式
 
 ```tsx
 import { useState } from 'react';
@@ -32,13 +32,11 @@ function Demo() {
 }
 ```
 
-## Uncontrolled
+## 非受控模式
 
-`SegmentedControl` can be used with uncontrolled forms the same way as a native input element.
-Set the `name` attribute to include segmented control value in `FormData` object on form submission.
-To control the initial value in uncontrolled forms, use the `defaultValue` prop.
+`SegmentedControl` 可以像原生 input 元素一样用于非受控表单。设置 `name` 属性以在表单提交时将分段控制值包含在 `FormData` 对象中。要在非受控表单中控制初始值，请使用 `defaultValue` 属性。
 
-Example usage of uncontrolled `SegmentedControl` with `FormData`:
+非受控 `SegmentedControl` 与 `FormData` 的示例用法：
 
 ```tsx
 import { SegmentedControl } from '@react-ui/ui';
@@ -68,12 +66,12 @@ function Demo() {
 }
 ```
 
-## Data prop
+## Data 属性
 
-`SegmentedControl` supports two different data formats:
+`SegmentedControl` 支持两种不同的数据格式：
 
-1. An array of primitive values – used when `value` and `label` are the same
-2. An array of objects – used when `value` and `label` are different
+1. 基本值数组 – 当 `value` 和 `label` 相同时使用
+2. 对象数组 – 当 `value` 和 `label` 不同时使用
 
 ```tsx
 import { SegmentedControl } from '@react-ui/ui';
@@ -92,20 +90,19 @@ function ArrayOfObjects() {
         { value: 'Angular', label: 'Angular' },
         { value: 'Svelte', label: 'Svelte' },
         { value: 'Vue', label: 'Vue' },
-      ]}
+      }}
     />
   );
 }
 ```
 
-## Generic value type
+## 泛型值类型
 
-`SegmentedControl` supports generic value type. You can pass primitive values (numbers, strings, boolean, null)
-as the type argument. The generic type is used for `value`, `defaultValue`, `onChange` and `data` props.
+`SegmentedControl` 支持泛型值类型。你可以传入基本值（数字、字符串、布尔值、null）作为类型参数。泛型类型用于 `value`、`defaultValue`、`onChange` 和 `data` 属性。
 
 <Demo data={SegmentedControlDemos.generic} />
 
-Example with strings union:
+字符串联合的示例：
 
 ```tsx
 import { SegmentedControl } from '@react-ui/ui';
@@ -123,45 +120,42 @@ function Demo() {
 }
 ```
 
-## Disabled
+## 禁用
 
-To disable a `SegmentedControl` item, use the array of objects `data` format and set `disabled: true`
-on the item that you want to disable. To disable the entire component, use the `disabled` prop.
+要禁用 `SegmentedControl` 中的某一项，请使用对象数组的 `data` 格式，并在要禁用的项上设置 `disabled: true`。要禁用整个组件，请使用 `disabled` 属性。
 
 <Demo data={SegmentedControlDemos.disabled} />
 
-## React node as label
+## React node 作为标签
 
-You can use any React node as a label:
+你可以使用任意 React node 作为标签：
 
 <Demo data={SegmentedControlDemos.labels} />
 
-## Color
+## 颜色
 
-By default, `SegmentedControl` uses `theme.white` with shadow in the light color scheme and `var(--mantine-color-dark-6)` background color for the indicator.
-Set the `color` prop to change the indicator `background-color`:
+默认情况下，`SegmentedControl` 在浅色主题中使用 `theme.white` 带阴影，指示器的背景色为 `var(--mantine-color-dark-6)`。设置 `color` 属性以更改指示器的 `background-color`：
 
 <Demo data={SegmentedControlDemos.configurator} />
 
-## Auto contrast
+## 自动对比度
 
-`SegmentedControl` supports `autoContrast` prop. If set to `true`, the label text color will automatically adjust
-to ensure optimal contrast against the indicator background color:
+`SegmentedControl` 支持 `autoContrast` 属性。如果设置为 `true`，标签文本颜色会自动调整以确保与指示器背景色具有最佳对比度：
 
 <Demo data={SegmentedControlDemos.autoContrast} />
 
-## Transitions
+## 过渡动画
 
-Change transition properties with:
+使用以下属性更改过渡效果：
 
-- `transitionDuration` – all transitions duration in ms, `200` by default
-- `transitionTimingFunction` – all transitions timing function, `ease` by default
+- `transitionDuration` – 所有过渡持续时间（毫秒），默认 `200`
+- `transitionTimingFunction` – 所有过渡计时函数，默认 `ease`
 
 <Demo data={SegmentedControlDemos.transitions} />
 
-## readOnly
+## 只读
 
-Set the `readOnly` prop to prevent the value from being changed:
+设置 `readOnly` 属性以防止值被更改：
 
 <Demo data={SegmentedControlDemos.readOnly} />
 
@@ -169,12 +163,10 @@ Set the `readOnly` prop to prevent the value from being changed:
 
 <Demo data={SegmentedControlDemos.stylesApi} />
 
-## Accessibility and usability
+## 可访问性与可用性
 
-`SegmentedControl` uses radio inputs under the hood, so it is accessible by default with no extra steps required if you have text in labels.
-The component supports the same keyboard events as a regular radio group.
+`SegmentedControl` 底层使用单选输入框，因此如果标签中有文本，默认就具备可访问性。该组件支持与普通单选按钮组相同的键盘事件。
 
-If you do not have text in labels (for example, when you want to use `SegmentedControl` with icons only),
-use [VisuallyHidden](/core/visually-hidden) to make the component accessible:
+如果你的标签中没有文本（例如，只想将 `SegmentedControl` 与图标一起使用），请使用 [VisuallyHidden](/core/visually-hidden) 使组件可访问：
 
 <Demo data={SegmentedControlDemos.iconsOnly} />

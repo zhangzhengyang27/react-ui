@@ -6,14 +6,11 @@ export default Layout(MDX_DATA.CSSModules);
 
 # CSS modules
 
-All ReactUI components use CSS modules for styling.
-It is recommended to use CSS modules in your project as well, but it is not required –
-ReactUI components are fully compatible with any third-party styling solution and native CSS.
+所有 ReactUI 组件都使用 CSS modules 进行样式设置。建议你在项目中也使用 CSS modules，但这不是必需的——ReactUI 组件与任何第三方样式解决方案和原生 CSS 完全兼容。
 
-## Usage
+## 用法
 
-CSS modules are supported out of the box by all major frameworks and build tools. Usually, all you need
-to do is create a `*.module.css` file:
+所有主流框架和构建工具都原生支持 CSS modules。通常，你只需要创建一个 `*.module.css` 文件：
 
 ```css
 /* Button.module.css */
@@ -22,7 +19,7 @@ to do is create a `*.module.css` file:
 }
 ```
 
-And then import it in your component:
+然后在你的组件中导入它：
 
 ```tsx
 import classes from './Button.module.css';
@@ -36,10 +33,9 @@ function Demo() {
 }
 ```
 
-## How CSS modules work
+## CSS modules 的工作原理
 
-When you create a `*.module.css` file, your build tool will generate a unique class name for each class in your file.
-For example, when you import the following file in your `.js`/`.ts` file:
+当你创建一个 `*.module.css` 文件时，你的构建工具会为文件中的每个 class 生成一个唯一的 class 名称。例如，当你在 `.js`/`.ts` 文件中导入以下文件时：
 
 ```css
 /* Button.module.css */
@@ -52,22 +48,22 @@ For example, when you import the following file in your `.js`/`.ts` file:
 }
 ```
 
-You will get an object with unique class names:
+你会得到一个包含唯一 class 名称的对象：
 
 ```tsx
 import classes from './Button.module.css';
 
 console.log(classes);
-// -> Object of scoped class names: key is the class name, value is the generated unique class name
+// -> 作用域 class 名称的对象：key 是 class 名称，value 是生成的唯一 class 名称
 // { button: 'button-Xh3s7ER', text: 'text-js65s3Se' }
-// Note that the generated class names may vary depending on your build tool
+// 注意，生成的 class 名称可能因构建工具而异
 ```
 
-With CSS modules, you do not need to worry about class name collisions. You can use any class name you want.
+使用 CSS modules，你无需担心 class 名称冲突。你可以使用任何你想要的 class 名称。
 
-## Referencing global class names
+## 引用全局 class 名称
 
-To reference global class names in CSS Modules, you can use the `:global` selector:
+要在 CSS Modules 中引用全局 class 名称，你可以使用 `:global` 选择器：
 
 ```scss
 .test {
@@ -77,7 +73,7 @@ To reference global class names in CSS Modules, you can use the `:global` select
 }
 ```
 
-The code above will compile to the following CSS:
+上面的代码将编译为以下 CSS：
 
 ```css
 .m-dj3w33 .global-class-name {
@@ -85,28 +81,24 @@ The code above will compile to the following CSS:
 }
 ```
 
-## Adding styles to ReactUI components
+## 为 ReactUI 组件添加样式
 
-You can add styles to most ReactUI components using the `className` prop
-– the same way as you would with a regular HTML element.
-To set properties to your [theme](/theming/theme-object) values, you can use [ReactUI CSS variables](/styles/css-variables):
+你可以使用 `className` prop 为大多数 ReactUI 组件添加样式——这与使用常规 HTML 元素的方式相同。要将属性设置为你的[主题](/theming/theme-object)值，你可以使用 [ReactUI CSS 变量](/styles/css-variables)：
 
 <Demo data={StylesDemos.className} />
 
-To apply styles to inner elements of ReactUI components with CSS modules, you can use the `classNames` prop
-(see [Styles API](/styles/styles-api) for more information):
+要使用 CSS modules 将样式应用到 ReactUI 组件的内部元素，你可以使用 `classNames` prop（更多信息请参见 [Styles API](/styles/styles-api)）：
 
 <Demo data={StylesDemos.classNames} />
 
-## Styling ReactUI components without CSS modules
+## 不使用 CSS modules 样式化 ReactUI 组件
 
-All ReactUI components are fully compatible with any third-party styling solution and native CSS.
-There are two main strategies to apply styles with a third-party library:
+所有 ReactUI 组件与任何第三方样式解决方案和原生 CSS 完全兼容。使用第三方库应用样式有两种主要策略：
 
-- `className`, `classNames`, `style` and `styles` props
-- with static selectors, for example `.mantine-Text-root`
+- `className`、`classNames`、`style` 和 `styles` props
+- 使用静态选择器，例如 `.mantine-Text-root`
 
-Example of applying styles with a utility CSS library:
+使用实用工具 CSS 库应用样式的示例：
 
 ```tsx
 import { TextInput } from '@react-ui/ui';
@@ -123,13 +115,13 @@ function Demo() {
 }
 ```
 
-Example of applying styles with global CSS:
+使用全局 CSS 应用样式的示例：
 
 ```css
 /* styles.css */
 
-/* Note that these styles are not scoped and
-   will be applied to all TextInput components */
+/* 注意，这些样式没有作用域，
+   会应用到所有 TextInput 组件 */
 .mantine-TextInput-root {
   margin-top: 0.8rem;
 }
@@ -140,9 +132,7 @@ Example of applying styles with global CSS:
 }
 ```
 
-You can combine both approaches to achieve the desired results. For example,
-the `@emotion/styled` and `styled-components` packages will pass the `className` prop to
-a given component, and you can use static selectors to style inner elements:
+你可以组合这两种方法以获得所需的结果。例如，`@emotion/styled` 和 `styled-components` 包会将 `className` prop 传递给给定组件，你可以使用静态选择器来样式化内部元素：
 
 ```tsx
 import styled from '@emotion/styled';
@@ -166,11 +156,10 @@ function Demo() {
 }
 ```
 
-> **Consider using CSS modules first**
+> **优先考虑使用 CSS modules**
 >
-> CSS modules are the recommended way of styling ReactUI components.
-> Before choosing another styling solution, make sure that CSS modules do not fit your needs.
-> Other solutions have limitations, for example:
+> CSS modules 是样式化 ReactUI 组件的推荐方式。在选择其他样式解决方案之前，请确保 CSS modules 不满足你的需求。
+> 其他解决方案存在限制，例如：
 >
-> - It is hard to customize styles based on [data-\* attributes](/styles/data-attributes) when using utility-based CSS libraries
-> - It is impossible to style inner elements of ReactUI components with static selectors when using styled-components and other similar libraries if the component uses [Portal](/core/portal) because some elements will be rendered outside of the component root and inner elements are not part of the component tree
+> - 使用基于实用工具的 CSS 库时，很难基于 [data-* 属性](/styles/data-attributes) 自定义样式
+> - 如果组件使用 [Portal](/core/portal)，则使用 styled-components 和其他类似库无法通过静态选择器样式化 ReactUI 组件的内部元素，因为某些元素会渲染在组件根节点之外，内部元素不属于组件树的一部分

@@ -4,7 +4,7 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Text);
 
-## Usage
+## 用法
 
 <Demo data={TextDemos.usage} />
 
@@ -12,35 +12,35 @@ export default Layout(MDX_DATA.Text);
 
 <Demo data={TextDemos.gradient} />
 
-## Truncate
+## 截断
 
-Set the `truncate` prop to add `text-overflow: ellipsis` styles:
+设置 `truncate` 属性以添加 `text-overflow: ellipsis` 样式：
 
 <Demo data={TextDemos.truncate} />
 
-## Line clamp
+## 行数限制
 
-Specify the maximum number of lines with the `lineClamp` prop. This option uses [-webkit-line-clamp](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp)
-CSS property ([caniuse](https://caniuse.com/css-line-clamp)). Note that `padding-bottom` cannot be set on the text element:
+使用 `lineClamp` 属性指定最大行数。此选项使用 [-webkit-line-clamp](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp)
+CSS 属性（[caniuse](https://caniuse.com/css-line-clamp)）。注意，不能在文本元素上设置 `padding-bottom`：
 
 <Demo data={TextDemos.linesConfigurator} />
 
-Line clamp can also be used with any children (not only strings), for example with [Typography](/core/typography/):
+行数限制也可以与任何子元素一起使用（不仅是字符串），例如与 [Typography](/core/typography/) 一起：
 
 <Demo data={TextDemos.lineClamp} />
 
-## Inherit styles
+## 继承样式
 
-Text always applies font-size, font-family and line-height styles,
-but in some cases this is not the desired behavior. To force Text to inherit parent
-styles, set the `inherit` prop. For example, highlight part of [Title](/core/title/):
+Text 始终应用 font-size、font-family 和 line-height 样式，
+但在某些情况下这不是期望的行为。要强制 Text 继承父元素
+样式，请设置 `inherit` 属性。例如，高亮 [Title](/core/title/) 的一部分：
 
 <Demo data={TextDemos.inherit} />
 
-## Text wrap
+## 文本换行
 
-Use the `textWrap` prop to control the `text-wrap` CSS property. For example, `balance` evens out
-line lengths and `pretty` prevents orphaned words on the last line:
+使用 `textWrap` 属性控制 `text-wrap` CSS 属性。例如，`balance` 可使
+行长度均匀，`pretty` 可防止最后一行出现孤字：
 
 <Demo data={TextDemos.textWrap} />
 
@@ -50,9 +50,9 @@ line lengths and `pretty` prevents orphaned words on the last line:
   component="Text"
 />
 
-## span prop
+## span 属性
 
-Use the `span` prop as a shorthand for `component="span"`:
+使用 `span` 属性作为 `component="span"` 的简写：
 
 ```tsx
 import { Text } from '@react-ui/ui';

@@ -4,13 +4,13 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useForceUpdate);
 
-## Usage
+## 用法
 
-The `use-force-update` hook returns a function that, when called, rerenders the component:
+`use-force-update` Hook 返回一个函数，调用它会重新渲染组件：
 
 <Demo data={UseForceUpdateDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 function useForceUpdate(): () => void;

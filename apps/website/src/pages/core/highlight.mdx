@@ -4,66 +4,66 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Highlight);
 
-## Usage
+## 用法
 
-Use the Highlight component to highlight substrings within text using the HTML `<mark>` element.
+使用 Highlight 组件通过 HTML `<mark>` 元素高亮文本中的子字符串。
 
-Pass the text as children and specify which substring(s) to highlight with the `highlight` prop.
-Matching is **case-insensitive** and **accent-insensitive** by default, and highlights all occurrences
-of the matched substring. Use the `caseInsensitive` and `accentInsensitive` props to opt out.
+将文本作为 children 传递，并使用 `highlight` 属性指定要高亮的子字符串。
+默认情况下匹配是**不区分大小写**和**不区分重音符号**的，并且会高亮
+匹配子字符串的所有出现位置。使用 `caseInsensitive` 和 `accentInsensitive` 属性选择退出。
 
 <Demo data={HighlightDemos.usage} />
 
-## Matching behavior
+## 匹配行为
 
-- **Case-insensitive**: 'hello' matches 'Hello', 'HELLO', 'hElLo', etc. (controlled by `caseInsensitive`, defaults to `true`)
-- **Accent-insensitive**: 'cafe' matches 'café', 'cafè', 'CAFÉ', etc. (controlled by `accentInsensitive`, defaults to `true`)
-- **All occurrences**: Every instance of the matched substring is highlighted
-- **Special characters**: Regex special characters like `[`, `]`, `(`, `)` are automatically escaped and treated as literal text
-- **Whitespace**: Leading and trailing whitespace in highlight strings is trimmed and ignored
-- **Empty strings**: Empty or whitespace-only highlight strings are ignored
+- **不区分大小写**：'hello' 匹配 'Hello'、'HELLO'、'hElLo' 等（由 `caseInsensitive` 控制，默认为 `true`）
+- **不区分重音符号**：'cafe' 匹配 'café'、'cafè'、'CAFÉ' 等（由 `accentInsensitive` 控制，默认为 `true`）
+- **所有出现位置**：匹配子字符串的每个实例都会被高亮
+- **特殊字符**：`[`、`]`、`(`、`)` 等正则特殊字符会自动转义并按字面文本处理
+- **空白字符**：高亮字符串中的前导和尾随空白会被修剪并忽略
+- **空字符串**：空字符串或仅包含空白的高亮字符串会被忽略
 
-## Case-sensitive matching
+## 区分大小写匹配
 
-Set `caseInsensitive={false}` to only match substrings with the same casing as the highlight term:
+设置 `caseInsensitive={false}` 以仅匹配与高亮术语大小写相同的子字符串：
 
 <Demo data={HighlightDemos.caseInsensitive} />
 
-## Accent-sensitive matching
+## 区分重音符号匹配
 
-Set `accentInsensitive={false}` to require accented characters in the text to match the highlight term exactly:
+设置 `accentInsensitive={false}` 以要求文本中的重音字符与高亮术语完全匹配：
 
 <Demo data={HighlightDemos.accentInsensitive} />
 
-## Highlight multiple substrings
+## 高亮多个子字符串
 
-To highlight multiple substrings, provide an array of values.
-When multiple substrings are provided, longer matches take precedence to avoid partial overlaps.
+要高亮多个子字符串，请提供一个值数组。
+当提供多个子字符串时，较长的匹配优先以避免部分重叠。
 
 <Demo data={HighlightDemos.multiple} />
 
-## Custom colors per term
+## 每个术语自定义颜色
 
-You can assign different colors to different highlighted terms by providing an array of objects with `text` and `color` properties:
+你可以通过提供包含 `text` 和 `color` 属性的对象数组，为不同的高亮术语分配不同颜色：
 
 <Demo data={HighlightDemos.colors} />
 
-## Whole word matching
+## 整词匹配
 
-Use the `wholeWord` prop to match only complete words. When enabled, 'the' will not match 'there' or 'theme':
+使用 `wholeWord` 属性仅匹配完整单词。启用后，'the' 不会匹配 'there' 或 'theme'：
 
 <Demo data={HighlightDemos.wholeword} />
 
-## Change highlight styles
+## 更改高亮样式
 
-Default [Mark](/core/mark/) styles can be overwritten with the `highlightStyles` prop,
-which accepts either an object with styles or a function that receives the theme as a parameter and returns styles:
+可以使用 `highlightStyles` 属性覆盖默认 [Mark](/core/mark/) 样式，
+它接受样式对象或接收主题作为参数并返回样式的函数：
 
 <Demo data={HighlightDemos.styles} />
 
-## Text props
+## Text 属性
 
-Highlight is based on the [Text](/core/text/) component - all Text props except `color` are available.
-Use the `color` prop to change the highlight background color, not the text color.
+Highlight 基于 [Text](/core/text/) 组件——除 `color` 外所有 Text 属性都可用。
+使用 `color` 属性更改高亮背景颜色，而不是文本颜色。
 
 <Demo data={HighlightDemos.props} />

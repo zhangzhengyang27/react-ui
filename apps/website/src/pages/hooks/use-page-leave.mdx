@@ -4,13 +4,13 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.usePageLeave);
 
-## Usage
+## 用法
 
-The `use-page-leave` hook calls the given function when the mouse leaves the page:
+`use-page-leave` Hook 在鼠标离开页面时调用给定函数：
 
 <Demo data={UsePageLeaveDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 function usePageLeave(onPageLeave: () => void): void;

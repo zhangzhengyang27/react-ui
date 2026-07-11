@@ -4,25 +4,25 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.LoadingOverlay);
 
-## Usage
+## 用法
 
-`LoadingOverlay` renders an overlay with a loader over the parent element with relative position.
-It is usually used to indicate the loading state of forms.
-Note that elements under the overlay are still focusable with the keyboard, so remember to add additional logic to handle this case.
+`LoadingOverlay` 会在具有相对定位的父元素上渲染一个带加载器的遮罩层。
+它通常用于指示表单的加载状态。
+注意，遮罩层下方的元素仍可通过键盘聚焦，因此请记住添加额外逻辑来处理这种情况。
 
-The `LoadingOverlay` rendering is controlled by the `visible` prop:
+`LoadingOverlay` 的渲染由 `visible` 属性控制：
 
 <Demo data={LoadingOverlayDemos.usage} />
 
-## Loader props
+## Loader 属性
 
-You can pass props down to the [Loader](/core/loader) component with `loaderProps`:
+你可以使用 `loaderProps` 将属性传递给 [Loader](/core/loader) 组件：
 
 <Demo data={LoadingOverlayDemos.loaderProps} />
 
-## Custom inline loaders
+## 自定义行内加载器
 
-To replace the default loader with any custom content, set `loaderProps={{ children: <div>Your content</div> }}`.
-You can put any React node inside `loaderProps.children`:
+要将默认加载器替换为任何自定义内容，请设置 `loaderProps={{ children: <div>Your content</div> }}`。
+你可以在 `loaderProps.children` 中放置任何 React 节点：
 
 <Demo data={LoadingOverlayDemos.customLoader} />

@@ -3,42 +3,41 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.formSchemaValidation);
 
-## Schema-based validation
+## 基于模式的验证
 
-`@react-ui/ui` has built-in support for [Standard Schema](https://standardschema.dev/) –
-a community specification implemented by many popular schema validation libraries including
-[zod](https://www.npmjs.com/package/zod), [valibot](https://www.npmjs.com/package/valibot),
-and [arktype](https://www.npmjs.com/package/arktype). Use `schemaResolver` to validate
-forms with any Standard Schema-compliant library without extra resolver packages.
+`@react-ui/ui` 内置支持 [Standard Schema](https://standardschema.dev/)——
+一个由许多流行的模式验证库实现的社区规范，包括
+[zod](https://www.npmjs.com/package/zod)、[valibot](https://www.npmjs.com/package/valibot)
+和 [arktype](https://www.npmjs.com/package/arktype)。使用 `schemaResolver` 来验证
+表单，无需额外的 resolver 包。
 
-[Full list of supported libraries](https://standardschema.dev/schema#what-schema-libraries-implement-the-spec)
+[支持的库完整列表](https://standardschema.dev/schema#what-schema-libraries-implement-the-spec)
 
-If you do not know which schema validation library to choose, use [zod](https://www.npmjs.com/package/zod) –
-it is the most modern and developer-friendly library.
+如果你不知道该选择哪个模式验证库，请使用 [zod](https://www.npmjs.com/package/zod)——
+它是最现代、最开发者友好的库。
 
-## Sync and async schemas
+## 同步和异步模式
 
-By default, `schemaResolver` returns a function that may return a `Promise`, since the
-Standard Schema specification allows async validation. Pass `{ sync: true }` when you know
-your schema is synchronous (e.g., Zod, Valibot) to get synchronous return types for
-`form.validate()`, `form.validateField()`, and `form.isValid()`.
+默认情况下，`schemaResolver` 返回一个可能返回 `Promise` 的函数，因为
+Standard Schema 规范允许异步验证。当你知道模式是同步的（例如 Zod、Valibot）时，
+传递 `{ sync: true }` 以获取 `form.validate()`、`form.validateField()` 和 `form.isValid()` 的同步返回类型。
 
 ## zod
 
-Installation:
+安装：
 
 <InstallScript packages="zod" />
 
-Basic field validation:
+基础字段验证：
 
 ```tsx
 import { z } from 'zod/v4';
 import { useForm, schemaResolver } from '@react-ui/ui';
 
 const schema = z.object({
-  name: z.string().min(2, { error: 'Name should have at least 2 letters' }),
-  email: z.email({ error: 'Invalid email' }),
-  age: z.number().min(18, { error: 'You must be at least 18 to create an account' }),
+  name: z.string().min(2, { error: '名字应至少有 2 个字母' }),
+  email: z.email({ error: '邮箱无效' }),
+  age: z.number().min(18, { error: '你必须年满 18 岁才能创建账户' }),
 });
 
 const form = useForm({
@@ -54,13 +53,13 @@ const form = useForm({
 form.validate();
 form.errors;
 // -> {
-//  name: 'Name should have at least 2 letters',
-//  email: 'Invalid email',
-//  age: 'You must be at least 18 to create an account'
+//  name: '名字应至少有 2 个字母',
+//  email: '邮箱无效',
+//  age: '你必须年满 18 岁才能创建账户'
 // }
 ```
 
-Nested field validation:
+嵌套字段验证：
 
 ```tsx
 import { z } from 'zod/v4';
@@ -68,7 +67,7 @@ import { useForm, schemaResolver } from '@react-ui/ui';
 
 const nestedSchema = z.object({
   nested: z.object({
-    field: z.string().min(2, { error: 'Field should have at least 2 letters' }),
+    field: z.string().min(2, { error: '字段应至少有 2 个字母' }),
   }),
 });
 
@@ -85,11 +84,11 @@ const form = useForm({
 form.validate();
 form.errors;
 // -> {
-//  'nested.field': 'Field should have at least 2 letters',
+//  'nested.field': '字段应至少有 2 个字母',
 // }
 ```
 
-List field validation:
+列表字段验证：
 
 ```tsx
 import { z } from 'zod/v4';
@@ -98,7 +97,7 @@ import { useForm, schemaResolver } from '@react-ui/ui';
 const listSchema = z.object({
   list: z.array(
     z.object({
-      name: z.string().min(2, { error: 'Name should have at least 2 letters' }),
+      name: z.string().min(2, { error: '名字应至少有 2 个字母' }),
     })
   ),
 });
@@ -114,13 +113,13 @@ const form = useForm({
 form.validate();
 form.errors;
 // -> {
-//  'list.0.name': 'Name should have at least 2 letters',
+//  'list.0.name': '名字应至少有 2 个字母',
 // }
 ```
 
-Async validation – use `schemaResolver` without `{ sync: true }` when your schema
-includes async checks (e.g., checking if an email is already taken via an API call).
-In this case, `form.validate()`, `form.validateField()`, and `form.isValid()` return promises:
+异步验证——当模式中包含异步检查（例如通过 API 调用检查邮箱是否已被占用）时，
+请使用不带 `{ sync: true }` 的 `schemaResolver`。
+在这种情况下，`form.validate()`、`form.validateField()` 和 `form.isValid()` 返回 Promise：
 
 ```tsx
 import { z } from 'zod/v4';
@@ -128,14 +127,14 @@ import { useForm, schemaResolver } from '@react-ui/ui';
 
 const schema = z
   .object({
-    email: z.email({ error: 'Invalid email' }),
+    email: z.email({ error: '邮箱无效' }),
   })
   .refine(
     async (data) => {
       const isTaken = await checkEmailExists(data.email);
       return !isTaken;
     },
-    { error: 'Email is already taken', path: ['email'] }
+    { error: '邮箱已被占用', path: ['email'] }
   );
 
 const form = useForm({
@@ -144,6 +143,6 @@ const form = useForm({
   validate: schemaResolver(schema),
 });
 
-// form.validate() returns a Promise
+// form.validate() 返回一个 Promise
 await form.validate();
 ```

@@ -3,13 +3,13 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.formActions);
 
-## Usage
+## 用法
 
-Form actions allow you to change the form state from anywhere in your application.
-The form actions mechanism is similar to the [notifications system](/x/notifications/),
-[modals manager](/x/modals/) and other similar packages.
+表单操作允许你从应用中的任何位置更改表单状态。
+表单操作机制类似于 [通知系统](/x/notifications/)、
+[模态框管理器](/x/modals/) 和其他类似的包。
 
-To use form actions, set the `name` property in [use-form](/form/use-form/) settings:
+要使用表单操作，请在 [use-form](/form/use-form/) 设置中设置 `name` 属性：
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -31,10 +31,10 @@ function Demo() {
 }
 ```
 
-Then call the `createFormActions` function with the same form name as specified in `useForm` settings:
+然后调用 `createFormActions` 函数，传入与 `useForm` 设置中相同的表单名称：
 
 ```tsx
-// Import type of form values from the file where you defined useForm
+// 从定义 useForm 的文件中导入表单值类型
 import { createFormActions } from '@react-ui/ui';
 import type { DemoFormValues } from './DemoForm';
 
@@ -42,9 +42,8 @@ export const demoFormActions =
   createFormActions<DemoFormValues>('demo-form');
 ```
 
-After that, you can use `demoFormActions` to change form state from anywhere in your application.
-For example, after a fetch request or after a user interaction with a component that does not have access
-to the form state:
+之后，你就可以使用 `demoFormActions` 从应用中的任何位置更改表单状态。
+例如，在发起请求后，或在与表单状态没有访问权限的组件发生用户交互后：
 
 ```tsx
 import { useEffect } from 'react';
@@ -65,38 +64,37 @@ function ExternalComponent() {
 
   return (
     <Button onClick={() => demoFormActions.reset()}>
-      Reset demo form
+      重置演示表单
     </Button>
   );
 }
 ```
 
-## Form name
+## 表单名称
 
-Form names must be strings that contain only letters, numbers and dashes:
+表单名称必须是仅包含字母、数字和短横线的字符串：
 
 ```tsx
 import { useForm } from '@react-ui/ui';
 
-// ✅ Valid form name
+// ✅ 有效的表单名称
 const valid = useForm({
   name: 'valid-FORM-name-10',
   mode: 'uncontrolled',
 });
 
-// ❌ Invalid form name: must not contain spaces and special characters
+// ❌ 无效的表单名称：不能包含空格和特殊字符
 const invalid = useForm({
   name: 'invalid_form name',
   mode: 'uncontrolled',
 });
 ```
 
-Note that form names must be unique. If you have multiple forms with the same name, form actions will
-update the state of all forms with that name.
+注意，表单名称必须是唯一的。如果你有多个相同名称的表单，表单操作将更新所有该名称的表单状态。
 
-## Form actions
+## 表单操作
 
-The `createFormActions` function returns an object with the following methods:
+`createFormActions` 函数返回一个具有以下方法的对象：
 
 - `setFieldValue`
 - `setValues`
@@ -116,5 +114,5 @@ The `createFormActions` function returns an object with the following methods:
 - `resetDirty`
 - `resetTouched`
 
-All methods work similarly to [use-form](/form/use-form/) hook methods –
-the functions accept the same arguments but do not return anything.
+所有方法的工作方式都与 [use-form](/form/use-form/) Hook 方法类似——
+它们接受相同的参数，但不返回任何内容。

@@ -4,19 +4,17 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Heatmap);
 
-## Usage
+## 用法
 
-`Heatmap` is used to display data in a table where each column represents a week.
-The only required prop is `data` – an object where keys are dates in `YYYY-MM-DD` format and values are numbers.
+`Heatmap` 用于以表格形式展示数据，其中每一列代表一周。唯一必需的属性是 `data`——一个键为 `YYYY-MM-DD` 格式日期、值为数字的对象。
 
-The `startDate` and `endDate` props are optional; they are used to define the heatmap range.
-If not set, the heatmap will display data for the last year.
+`startDate` 和 `endDate` 属性为可选，用于定义热图范围。如果未设置，热图会显示最近一年的数据。
 
 <Demo data={HeatmapDemos.usage} />
 
-## Data format
+## 数据格式
 
-`Heatmap` expects data in the following format:
+`Heatmap` 期望的数据格式如下：
 
 ```tsx
 export const data = {
@@ -32,31 +30,25 @@ export const data = {
 };
 ```
 
-## With tooltip
+## 带提示框
 
-Set the `withTooltip` and `getTooltipLabel` props to display a tooltip when
-`Heatmap` cells are hovered. `getTooltipLabel` is called with date and value
-and must return a string to display in the tooltip.
+设置 `withTooltip` 和 `getTooltipLabel` 属性，以在悬停 `Heatmap` 单元格时显示提示框。`getTooltipLabel` 会接收日期和值，并返回要在提示框中显示的字符串。
 
 <Demo data={HeatmapDemos.tooltip} />
 
-## Change colors
+## 更改颜色
 
-`Heatmap` colors can be changed with the `colors` prop. It should be an array of any
-valid CSS color values (hex, rgba, CSS variables, etc.). By default, `Heatmap`
-uses 4 colors to indicate heat level, but you can pass any number of colors.
+可以使用 `colors` 属性更改 `Heatmap` 的颜色。它应为任意有效 CSS 颜色值（hex、rgba、CSS 变量等）的数组。默认情况下，`Heatmap` 使用 4 种颜色表示热度级别，但你可以传入任意数量的颜色。
 
 <Demo data={HeatmapDemos.colors} />
 
-## Colors depending on color scheme
+## 根据颜色方案改变颜色
 
-If you want to change colors depending on the color scheme,
-you should define those colors in `.css` file:
+如果你想根据颜色方案改变颜色，应在 `.css` 文件中定义这些颜色：
 
 <Demo data={HeatmapDemos.cssColors} />
 
-Note that in this case, you can only use 4 colors without passing the `colors` prop.
-If you need more colors, you should pass them manually to the component:
+注意，在这种情况下，如果不传递 `colors` 属性，只能使用 4 种颜色。如果需要更多颜色，应手动传递给组件：
 
 ```tsx
 import { Heatmap } from '@react-ui/ui';
@@ -83,10 +75,9 @@ function Demo() {
 }
 ```
 
-## Values domain
+## 数值范围
 
-By default, `Heatmap` calculates domain based on data values, for example, for
-the following data, the domain will be `[1, 4]`:
+默认情况下，`Heatmap` 会根据数据值计算范围，例如对于以下数据，范围将是 `[1, 4]`：
 
 ```tsx
 const data = {
@@ -97,11 +88,7 @@ const data = {
 };
 ```
 
-Based on the domain, `Heatmap` calculates colors for each rect: 1 – min heat level,
-4 – max heat level. To specify the domain manually, use the `domain` prop. It is useful
-when your data does not cover the whole range of possible values. For example,
-the subset of data passed to the heatmap has values from 1 to 4, but the actual
-range is from 1 to 10. In this case, you can pass `[1, 10]` to the `domain` prop:
+基于该范围，`Heatmap` 为每个矩形计算颜色：1 为最低热度级别，4 为最高热度级别。要手动指定范围，请使用 `domain` 属性。当数据未覆盖可能的完整取值范围时，这非常有用。例如，传递给热图的数据子集取值范围为 1 到 4，但实际范围为 1 到 10。此时，你可以将 `[1, 10]` 传给 `domain` 属性：
 
 ```tsx
 import { Heatmap } from '@react-ui/ui';
@@ -118,50 +105,46 @@ function Demo() {
 }
 ```
 
-## Weekdays and months labels
+## 星期和月份标签
 
-Set the `withMonthLabels` and `withWeekdayLabels` props to display chart labels:
+设置 `withMonthLabels` 和 `withWeekdayLabels` 属性以显示图表标签：
 
 <Demo data={HeatmapDemos.labels} />
 
-## Change labels text
+## 更改标签文本
 
-To change labels, use the `weekdayLabels` and `monthLabels` props.
-The `weekdayLabels` prop must be an array of 7 strings with weekday names starting from Sunday.
-The `monthLabels` prop must be an array of 12 strings with month names starting from January.
+要更改标签，使用 `weekdayLabels` 和 `monthLabels` 属性。`weekdayLabels` 必须是一个包含 7 个字符串的数组，从周日开始依次排列星期名称。`monthLabels` 必须是一个包含 12 个字符串的数组，从一月开始依次排列月份名称。
 
 <Demo data={HeatmapDemos.labelsText} />
 
-## Rect size, gap and radius
+## 矩形大小、间距和圆角
 
 <Demo data={HeatmapDemos.rectSize} />
 
-## Pass props to rect
+## 向矩形传递属性
 
-Use `getRectProps` to pass props to each rect. For example,
-it can be used to add an onClick handler to each rect:
+使用 `getRectProps` 为每个矩形传递属性。例如，可用于为每个矩形添加 onClick 事件处理函数：
 
 <Demo data={HeatmapDemos.getRectProps} />
 
-## Hide outside dates
+## 隐藏外部日期
 
 <Demo data={HeatmapDemos.withOutsideDates} />
 
-## First day of week
+## 每周第一天
 
-The default first day of the week is Monday; you can change it with the `firstDayOfWeek` prop:
+默认每周第一天为周一；你可以使用 `firstDayOfWeek` 属性更改：
 
 <Demo data={HeatmapDemos.firstDayOfWeek} />
 
-## Legend
+## 图例
 
-Set `withLegend` to display a color legend below the heatmap. Use `legendLabels`
-prop to customize the labels (default: `['Less', 'More']`):
+设置 `withLegend` 以在热图下方显示颜色图例。使用 `legendLabels` 属性自定义标签（默认：`['Less', 'More']`）：
 
 <Demo data={HeatmapDemos.legend} />
 
-## Split months
+## 按月份拆分
 
-Use `splitMonths` to separate months visually with a spacer column and show only days that belong to the current month in each column. Month labels will be shifted by one column when `splitMonths` is enabled and months with fewer than 2 weeks are not labeled.
+使用 `splitMonths` 可通过间隔列视觉上分隔月份，并在每列中仅显示属于当前月份的天数。启用 `splitMonths` 后，月份标签会向右偏移一列，且少于两周的月份不会显示标签。
 
 <Demo data={HeatmapDemos.splitMonths} />

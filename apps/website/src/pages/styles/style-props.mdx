@@ -7,9 +7,9 @@ export default Layout(MDX_DATA.StyleProps);
 
 # Style props
 
-With style props, you can add inline styles to any ReactUI component.
-Style props add styles to the **root** element. If you need to style nested elements,
-use [Styles API](/styles/styles-api/) instead.
+通过 style props，你可以为任何 ReactUI 组件添加内联样式。
+Style props 会作用于组件的**根**元素。如果你需要为嵌套元素设置样式，
+请改用 [Styles API](/styles/styles-api/)。
 
 ```tsx
 import { Box } from '@react-ui/ui';
@@ -23,16 +23,15 @@ function Demo() {
 }
 ```
 
-## Supported props
+## 支持的属性
 
-All ReactUI components that have a root element support the following style props:
+所有具有根元素的 ReactUI 组件都支持以下 style props：
 
 <StylePropsTable />
 
-## Theme values
+## 主题值
 
-Some style props can reference values from the theme. For example, `mt` will use the `theme.spacing` value
-if you set `xs`, `sm`, `md`, `lg`, `xl`:
+某些 style props 可以引用主题中的值。例如，当你设置 `xs`、`sm`、`md`、`lg`、`xl` 时，`mt` 会使用 `theme.spacing` 的值：
 
 ```tsx
 import { Box } from '@react-ui/ui';
@@ -59,7 +58,7 @@ function Demo() {
 }
 ```
 
-In the `c`, `bd` and `bg` props you can reference colors from `theme.colors`:
+在 `c`、`bd` 和 `bg` 属性中，你可以引用 `theme.colors` 中的颜色：
 
 ```tsx
 import { Box } from '@react-ui/ui';
@@ -76,12 +75,12 @@ function Demo() {
       {/* border: 1px solid theme.colors.red[6] */}
       <Box bd="1px solid red.6" />
 
-      {/* color: if colorScheme is dark `var(--mantine-color-dark-2)`,
-      if color scheme is light `var(--mantine-color-gray-6)` */}
+      {/* color: 如果 colorScheme 为 dark，则使用 `var(--mantine-color-dark-2)`，
+      如果 color scheme 为 light，则使用 `var(--mantine-color-gray-6)` */}
       <Box c="dimmed" />
 
-      {/* color: if colorScheme is dark `var(--mantine-color-white)`,
-      if color scheme is light `var(--mantine-color-black)` */}
+      {/* color: 如果 colorScheme 为 dark，则使用 `var(--mantine-color-white)`，
+      如果 color scheme 为 light，则使用 `var(--mantine-color-black)` */}
       <Box c="bright" />
 
       {/* background: #EDFEFF */}
@@ -94,18 +93,18 @@ function Demo() {
 }
 ```
 
-## Responsive styles
+## 响应式样式
 
-You can use object syntax to add responsive styles with style props.
-Note that responsive style props are [less performant](/styles/styles-performance) than regular style props.
-It is not recommended to use them in large lists of elements.
+你可以使用对象语法为 style props 添加响应式样式。
+注意，响应式 style props 的性能低于普通 style props（参见 [样式性能](/styles/styles-performance)）。
+不建议在大量元素列表中使用它们。
 
 <Demo data={StylesDemos.responsiveStyleProps} />
 
-Responsive values are calculated the following way:
+响应式值的计算规则如下：
 
-- `base` value is used when none of breakpoint values are applied
-- `xs`, `sm`, `md`, `lg`, `xl` values are used when the viewport width is larger than the value of the corresponding breakpoint specified in [theme.breakpoints](/styles/responsive/)
+- 当没有任何断点值匹配时，使用 `base` 值
+- 当视口宽度大于 [theme.breakpoints](/styles/responsive/) 中对应断点的值时，使用 `xs`、`sm`、`md`、`lg`、`xl` 值
 
 ```tsx
 import { Box } from '@react-ui/ui';
@@ -115,22 +114,22 @@ function Demo() {
 }
 ```
 
-In this case the element will have the following styles:
+此时元素将拥有以下样式：
 
 ```css
-/* Base styles added to the element and then get overwritten with responsive values */
+/* 基础样式会添加到元素上，然后被响应式值覆盖 */
 .element {
   width: 20rem;
 }
 
-/* 48em is theme.breakpoints.sm by default */
+/* 48em 是默认的 theme.breakpoints.sm */
 @media (min-width: 48em) {
   .element {
     width: 30rem;
   }
 }
 
-/* 75em is theme.breakpoints.lg by default */
+/* 75em 是默认的 theme.breakpoints.lg */
 @media (min-width: 75em) {
   .element {
     width: 40rem;

@@ -4,16 +4,16 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.formStatus);
 
-## Touched and dirty state
+## 触碰（touched）和脏（dirty）状态
 
-`form.isTouched` and `form.isDirty` fields provide information about the current field status:
+`form.isTouched` 和 `form.isDirty` 字段提供了当前字段状态的信息：
 
-- A field is considered to be `touched` when the user focused it or its value was changed programmatically with the `form.setFieldValue` handler
-- A field is considered to be `dirty` when its value was changed and the new value is different from the field value specified in `initialValues` (compared with [fast-deep-equal](https://www.npmjs.com/package/fast-deep-equal))
+- 当用户聚焦过某个字段，或通过 `form.setFieldValue` 以编程方式更改其值时，该字段被视为 `touched`（已触碰）
+- 当字段值发生变化且新值与 `initialValues` 中指定的字段值不同（使用 [fast-deep-equal](https://www.npmjs.com/package/fast-deep-equal) 比较）时，该字段被视为 `dirty`（已脏）
 
 <Demo data={FormDemos.status} />
 
-## isTouched and isDirty functions
+## isTouched 和 isDirty 函数
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -23,26 +23,26 @@ const form = useForm({
   initialValues: { a: 1, nested: { field: '' } },
 });
 
-// Provide path as the first argument to get the state of a single field
-form.isTouched('a'); // -> was field 'a' focused or changed?
-form.isDirty('a'); // -> was field 'a' modified?
-form.isDirty('nested.field'); // -> nested fields are also supported
+// 将路径作为第一个参数传入，以获取单个字段的状态
+form.isTouched('a'); // -> 字段 'a' 是否被聚焦或更改？
+form.isDirty('a'); // -> 字段 'a' 是否被修改？
+form.isDirty('nested.field'); // -> 也支持嵌套字段
 
-// If the field path is not provided,
-// then the functions will return the form state instead
-form.isTouched(); // -> was any field in the form focused or changed?
-form.isDirty(); // -> was any field in the form modified?
+// 如果未提供字段路径，
+// 则函数将返回整个表单的状态
+form.isTouched(); // -> 表单中是否有任何字段被聚焦或更改？
+form.isDirty(); // -> 表单中是否有任何字段被修改？
 ```
 
-## touchTrigger option
+## touchTrigger 选项
 
-The `touchTrigger` option allows customizing events that change the touched state.
-It accepts two options:
+`touchTrigger` 选项允许自定义更改触碰状态的事件。
+它接受两个选项：
 
-- `change` (default) – the field will be considered touched when its value changes or it has been focused
-- `focus` – the field will be considered touched only when it has been focused
+- `change`（默认）– 当字段值变化或已被聚焦时，该字段将被视为已触碰
+- `focus` – 仅当字段被聚焦时，该字段才会被视为已触碰
 
-Example of using `focus` trigger:
+使用 `focus` 触发器的示例：
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -57,15 +57,15 @@ form.isTouched('a'); // -> false
 form.setFieldValue('a', 2);
 form.isTouched('a'); // -> false
 
-// onFocus is called automatically when the user focuses the field
+// 当用户聚焦字段时，onFocus 会自动被调用
 form.getInputProps('a').onFocus();
 form.isTouched('a'); // -> true
 ```
 
-## Initial values
+## 初始值
 
-You can provide initial touched and dirty values with the `initialTouched` and `initialDirty` properties.
-Both properties support [the same field path format as errors](/form/errors/):
+你可以通过 `initialTouched` 和 `initialDirty` 属性提供初始的触碰和脏值。
+这两个属性都支持与 [errors 相同的字段路径格式](/form/errors/)：
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -78,10 +78,10 @@ const form = useForm({
 });
 ```
 
-## resetTouched and resetDirty
+## resetTouched 和 resetDirty
 
-The `form.resetTouched` and `form.resetDirty` functions will make all fields clean and untouched.
-Note that `form.reset` will also reset the `touched` and `dirty` state:
+`form.resetTouched` 和 `form.resetDirty` 函数将使所有字段变为干净且未触碰状态。
+注意，`form.reset` 也会重置 `touched` 和 `dirty` 状态：
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -103,7 +103,7 @@ form.resetDirty();
 form.isDirty('a'); // -> false
 ```
 
-To reset the values that are used for the dirty check, call `form.resetDirty` with new values:
+要重置用于脏检查的值，请使用新值调用 `form.resetDirty`：
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -123,15 +123,14 @@ form.setValues({ a: 3 });
 form.isDirty(); // -> true
 ```
 
-## Submitting state
+## 提交状态
 
-The `form.submitting` field will be set to `true` if the function passed to
-`form.onSubmit` returns a promise. After the promise is resolved or rejected,
-`form.submitting` will be set to `false`:
+如果传递给 `form.onSubmit` 的函数返回一个 Promise，`form.submitting` 字段将被设置为 `true`。
+Promise 解决或拒绝后，`form.submitting` 将被设置为 `false`：
 
 <Demo data={FormDemos.submitting} />
 
-You can also manually set `form.submitting` to `true` or `false`:
+你也可以手动将 `form.submitting` 设置为 `true` 或 `false`：
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -146,16 +145,14 @@ form.setSubmitting(false);
 form.submitting; // -> false
 ```
 
-## Validating state
+## 验证状态
 
-The `form.validating` property is `true` while any async validation is in
-progress. This applies to `form.validate()`, `form.validateField()`,
-`form.isValid()`, and the validation triggered by `form.onSubmit`.
+当任何异步验证正在进行时，`form.validating` 属性为 `true`。
+这适用于 `form.validate()`、`form.validateField()`、`form.isValid()` 以及由 `form.onSubmit` 触发的验证。
 
-`form.isValidating(path)` returns `true` if a specific field is currently being
-validated. When `form.validate()` or `form.onSubmit` runs all rules, every field
-with a rule is considered validating. When `form.validateField(path)` is called,
-only the targeted field is considered validating.
+`form.isValidating(path)` 如果特定字段当前正在被验证，则返回 `true`。
+当 `form.validate()` 或 `form.onSubmit` 运行所有规则时，每个带有规则的字段都被视为正在验证。
+当调用 `form.validateField(path)` 时，只有目标字段被视为正在验证。
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -165,13 +162,13 @@ const form = useForm({
   initialValues: { username: '' },
   validate: {
     username: async (value) => {
-      // simulate an API call
+      // 模拟 API 调用
       await new Promise((resolve) => setTimeout(resolve, 500));
-      return value === 'admin' ? 'Username is taken' : null;
+      return value === 'admin' ? '用户名已被占用' : null;
     },
   },
 });
 
-form.validating; // -> false while idle, true during validation
-form.isValidating('username'); // -> true while `username` rule is running
+form.validating; // -> 空闲时为 false，验证期间为 true
+form.isValidating('username'); // -> 当 `username` 规则正在运行时为 true
 ```

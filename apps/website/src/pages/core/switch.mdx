@@ -4,11 +4,11 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Switch);
 
-## Usage
+## 用法
 
 <Demo data={SwitchDemos.configurator} />
 
-## Controlled
+## 受控
 
 ```tsx
 import { useState } from 'react';
@@ -25,13 +25,13 @@ function Demo() {
 }
 ```
 
-## Uncontrolled
+## 非受控
 
-`Switch` can be used with uncontrolled forms the same way as a native `input[type="checkbox"]`.
-Set the `name` attribute to include switch value in `FormData` object on form submission.
-To control the initial checked state in uncontrolled forms, use `defaultChecked` prop.
+`Switch` 可以像原生 `input[type="checkbox"]` 一样用于非受控表单。
+设置 `name` 属性以在表单提交时将开关值包含在 `FormData` 对象中。
+要控制非受控表单中的初始选中状态，请使用 `defaultChecked` 属性。
 
-Example usage of uncontrolled `Switch` with `FormData`:
+非受控 `Switch` 与 `FormData` 的用法示例：
 
 ```tsx
 import { Switch } from '@react-ui/ui';
@@ -52,33 +52,33 @@ function Demo() {
 }
 ```
 
-## States
+## 状态
 
 <Demo data={SwitchDemos.states} />
 
-## Inner Labels
+## 内部标签
 
 <Demo data={SwitchDemos.labels} />
 
-## Icon labels
+## 图标标签
 
 <Demo data={SwitchDemos.iconLabels} />
 
-## Thumb icon
+## Thumb 图标
 
 <Demo data={SwitchDemos.thumbIcon} />
 
 
-## With tooltip
+## 带 Tooltip
 
-Set `refProp="rootRef"` on [Tooltip](/core/tooltip/) and other similar components to make them work with `Switch`:
+在 [Tooltip](/core/tooltip/) 和其他类似组件上设置 `refProp="rootRef"` 以使其与 `Switch` 一起工作：
 
 <Demo data={SwitchDemos.tooltip} />
 
-## Pointer cursor
+## 指针光标
 
-By default, the switch input and label have `cursor: default` (same as native `input[type="checkbox"]`).
-To change the cursor to pointer, set `cursorType` on the [theme](/theming/theme-object/):
+默认情况下，开关输入和标签具有 `cursor: default`（与原生 `input[type="checkbox"]` 相同）。
+要将光标更改为 pointer，请在 [theme](/theming/theme-object/) 上设置 `cursorType`：
 
 ```tsx
 import { createTheme, MantineProvider, Switch } from '@react-ui/ui';
@@ -102,15 +102,15 @@ function Demo() {
 
 <Demo data={SwitchDemos.groupConfigurator} />
 
-## Switch.Group with uncontrolled forms
+## 与非受控表单一起使用的 Switch.Group
 
-`Switch.Group` can be used with uncontrolled forms, it renders a hidden input
-which joins all checked values into a single string using `hiddenInputValuesSeparator` prop.
+`Switch.Group` 可以用于非受控表单，它渲染一个隐藏输入，
+使用 `hiddenInputValuesSeparator` 属性将所有选中值连接成单个字符串。
 
-Props for usage with uncontrolled forms:
-- `name` – name attribute passed to the hidden input
-- `hiddenInputValuesSeparator` – string used to join checked values into a single string, `','` by default
-- `hiddenInputProps` – additional props passed to the hidden input
+用于非受控表单的属性：
+- `name` – 传递给隐藏输入的 name 属性
+- `hiddenInputValuesSeparator` – 用于将选中值连接成单个字符串的字符串，默认为 `','`
+- `hiddenInputProps` – 传递给隐藏输入的附加属性
 
 ```tsx
 export function UncontrolledForm() {
@@ -134,16 +134,16 @@ export function UncontrolledForm() {
 
 ## maxSelectedValues
 
-Use `maxSelectedValues` prop to limit the number of selected values in `Switch.Group`.
-When the limit is reached, the remaining switches are disabled and cannot be selected.
+使用 `maxSelectedValues` 属性限制 `Switch.Group` 中可选值的数量。
+达到限制时，剩余的开关将被禁用且无法选择。
 
 <Demo data={SwitchDemos.maxSelectedValues} />
 
-## Switch.Group disabled
+## Switch.Group 禁用
 
 <Demo data={SwitchDemos.groupDisabled} />
 
-## Controlled Switch.Group
+## 受控 Switch.Group
 
 ```tsx
 import { useState } from 'react';
@@ -161,7 +161,7 @@ function Demo() {
 }
 ```
 
-## Change styles based on checked state
+## 根据选中状态更改样式
 
 <Demo data={SwitchDemos.styles} />
 
@@ -169,7 +169,7 @@ function Demo() {
 
 <Demo data={SwitchDemos.stylesApi} />
 
-## Get input ref
+## 获取输入 ref
 
 ```tsx
 import { useRef } from 'react';
@@ -181,24 +181,24 @@ function Demo() {
 }
 ```
 
-## Accessibility
+## 可访问性
 
-`Switch` is a regular `input[type="checkbox"]`. Set `aria-label` if the `Switch` is used without the `label` prop:
+`Switch` 是一个普通的 `input[type="checkbox"]`。如果在没有 `label` 属性的情况下使用 `Switch`，请设置 `aria-label`：
 
 ```tsx
 import { Switch } from '@react-ui/ui';
 
-// -> not ok, input is not labeled
+// -> 不好，输入框没有标签
 function Bad() {
   return <Switch />;
 }
 
-// -> ok, input has aria-label
+// -> 好，输入框有 aria-label
 function Good() {
   return <Switch aria-label="I agree to everything" />;
 }
 
-// -> ok, input has associated label
+// -> 好，输入框有关联标签
 function AlsoGood() {
   return <Switch label="I agree to everything" />;
 }

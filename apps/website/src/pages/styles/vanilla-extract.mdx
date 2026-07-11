@@ -3,43 +3,43 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.VanillaExtract);
 
-# Vanilla extract integration
+# Vanilla extract 集成
 
-[Vanilla extract](https://vanilla-extract.style/) is a TypeScript CSS preprocessor that generates static CSS files at build time.
-It is a great alternative to [CSS Modules](/styles/css-modules) if you prefer to write your styles in TypeScript.
+[Vanilla extract](https://vanilla-extract.style/) 是一个 TypeScript CSS 预处理器，可在构建时生成静态 CSS 文件。
+如果你喜欢用 TypeScript 编写样式，它是 [CSS Modules](/styles/css-modules) 的优秀替代品。
 
-## Vanilla extract vs CSS Modules
+## Vanilla extract 与 CSS Modules 对比
 
-[Vanilla extract](https://vanilla-extract.style/) and [CSS Modules](/styles/css-modules) do the same thing,
-but with different syntax. Common features of [Vanilla extract](https://vanilla-extract.style/) and [CSS Modules](/styles/css-modules):
+[Vanilla extract](https://vanilla-extract.style/) 和 [CSS Modules](/styles/css-modules) 做的事情相同，只是语法不同。
+[Vanilla extract](https://vanilla-extract.style/) 和 [CSS Modules](/styles/css-modules) 的共同点：
 
-- Styles are generated at build time – no runtime and performance overhead
-- Class names are scoped to the styles file
+- 样式在构建时生成——没有运行时开销和性能损耗
+- class 名称作用于样式文件
 
-Differences between [Vanilla extract](https://vanilla-extract.style/) and [CSS Modules](/styles/css-modules):
+[Vanilla extract](https://vanilla-extract.style/) 和 [CSS Modules](/styles/css-modules) 的区别：
 
-- Vanilla extract styles are type-safe
-- You can use any JavaScript/TypeScript code in Vanilla extract styles, including [color functions](/styles/color-functions)
-- With Vanilla extract you do not have access to [postcss-preset-mantine](/styles/postcss-preset) features like the `light-dark` function and `hover` mixin.
-  Because of this, you will not be able to copy-paste all demos from the ReactUI documentation and use them with Vanilla extract.
-- Vanilla extract requires additional configuration and setup that may not be available for your build tool/framework.
-  Most popular tools like [Next.js](https://nextjs.org/) and [Vite](https://vitejs.dev/) have plugins for Vanilla extract,
-  but if you are using something more niche, you might need to configure it yourself.
+- Vanilla extract 的样式是类型安全的
+- 你可以在 Vanilla extract 样式中使用任意 JavaScript/TypeScript 代码，包括 [颜色函数](/styles/color-functions)
+- 使用 Vanilla extract 时无法使用 [postcss-preset-mantine](/styles/postcss-preset) 的某些功能，例如 `light-dark` 函数和 `hover` mixin。
+  因此，你不能直接复制粘贴 ReactUI 文档中的所有 demo 并在 Vanilla extract 中使用。
+- Vanilla extract 需要额外的配置和设置，可能不适用于你的构建工具/框架。
+  大多数流行工具（如 [Next.js](https://nextjs.org/) 和 [Vite](https://vitejs.dev/)）都有 Vanilla extract 插件，
+  但如果你使用更小众的工具，可能需要自行配置。
 
-Note that you can use both [Vanilla extract](https://vanilla-extract.style/) and [CSS Modules](/styles/css-modules) in the same project;
-it will not cause any issues: performance will be the same and the bundle size will not be impacted.
+注意，你可以在同一项目中同时使用 [Vanilla extract](https://vanilla-extract.style/) 和 [CSS Modules](/styles/css-modules)；
+这不会产生任何问题：性能相同，打包体积也不会受影响。
 
-## Installation
+## 安装
 
-Follow the [installation instructions](https://vanilla-extract.style/documentation/getting-started) to install Vanilla extract.
-Then install the `@mantine/vanilla-extract` package; it exports the `themeToVars` function to convert the ReactUI theme to CSS variables:
+按照 [Vanilla extract 安装说明](https://vanilla-extract.style/documentation/getting-started) 安装 Vanilla extract。
+然后安装 `@mantine/vanilla-extract` 包；它导出了 `themeToVars` 函数，用于将 ReactUI 主题转换为 CSS 变量：
 
 <InstallScript packages="@mantine/vanilla-extract" />
 
-## Templates
+## 模板
 
-You can use one of the following templates to get started or as a reference for your own setup.
-Note that all templates include only minimal setup.
+你可以使用以下模板快速开始，或作为自己配置的参考。
+注意，所有模板都只包含最基础的配置。
 
 <TemplatesList
   name={[
@@ -48,13 +48,13 @@ Note that all templates include only minimal setup.
   ]}
 />
 
-## Theming
+## 主题
 
-Vanilla extract provides [createTheme](https://vanilla-extract.style/documentation/theming/)
-function which converts given theme object into CSS variables and assigns them to `:root` or other selector.
-You should not use Vanilla extract `createTheme` to generate ReactUI theme tokens – all ReactUI [theme](/theming/theme-object)
-properties are already exposed as CSS variables. Instead, use `themeToVars` function from `@mantine/vanilla-extract` package
-to create an object with CSS variables from ReactUI theme:
+Vanilla extract 提供了 [createTheme](https://vanilla-extract.style/documentation/theming/)
+函数，可将给定的主题对象转换为 CSS 变量并赋值给 `:root` 或其他选择器。
+你不应使用 Vanilla extract 的 `createTheme` 来生成 ReactUI 主题 token——所有 ReactUI [theme](/theming/theme-object)
+属性都已经作为 CSS 变量暴露出来了。相反，应使用 `@mantine/vanilla-extract` 包中的 `themeToVars` 函数，
+从 ReactUI 主题创建包含 CSS 变量的对象：
 
 ```tsx
 // theme.ts
@@ -76,9 +76,9 @@ import { themeToVars } from '@mantine/vanilla-extract';
 export const vars = themeToVars(theme);
 ```
 
-## Styling
+## 样式
 
-Import `vars` object in `*.css.ts` files to access ReactUI [CSS variables](/styles/css-variables):
+在 `*.css.ts` 文件中导入 `vars` 对象，即可访问 ReactUI [CSS 变量](/styles/css-variables)：
 
 ```tsx
 // Demo.css.ts
@@ -92,9 +92,9 @@ export const demo = style({
 });
 ```
 
-## rem and em
+## rem 和 em
 
-To convert px to [rem or em](/styles/rem) use `rem` and `em` functions from `@react-ui/ui` package:
+要将 px 转换为 [rem 或 em](/styles/rem)，可以使用 `@react-ui/ui` 包中的 `rem` 和 `em` 函数：
 
 ```tsx
 // Demo.css.ts
@@ -112,10 +112,9 @@ export const demo = style({
 });
 ```
 
-## light and dark selectors
+## light 和 dark 选择器
 
-`vars` object contains `lightSelector` and `darkSelector` properties which can be used to
-apply styles only in light or dark color scheme:
+`vars` 对象包含 `lightSelector` 和 `darkSelector` 属性，可用于仅在亮色或暗色配色方案下应用样式：
 
 ```tsx
 // Demo.css.ts
@@ -139,9 +138,8 @@ export const demo = style({
 });
 ```
 
-Note that usually it is more convenient to use only one of them:
-apply styles for light color scheme and then override them for dark color scheme
-with `vars.darkSelector` (or vice versa):
+注意，通常只使用其中一个会更方便：
+为亮色配色方案定义样式，然后用 `vars.darkSelector` 覆盖暗色配色方案下的样式（或相反）：
 
 ```tsx
 // Demo.css.ts
@@ -162,10 +160,9 @@ export const demo = style({
 });
 ```
 
-## largerThan and smallerThan
+## largerThan 和 smallerThan
 
-`vars` object contains `largerThan` and `smallerThan` properties which can be used in
-`@media` as a shorthand for `min-width` and `max-width`:
+`vars` 对象包含 `largerThan` 和 `smallerThan` 属性，可在 `@media` 中作为 `min-width` 和 `max-width` 的简写：
 
 ```tsx
 // Demo.css.ts
@@ -196,9 +193,9 @@ export const demo = style({
 });
 ```
 
-## rtl selector
+## rtl 选择器
 
-Use `vars.rtlSelector` to apply styles only in rtl direction:
+使用 `vars.rtlSelector` 仅在 rtl 方向下应用样式：
 
 ```tsx
 // Demo.css.ts

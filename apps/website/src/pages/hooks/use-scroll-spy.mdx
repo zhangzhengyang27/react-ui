@@ -4,34 +4,31 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useScrollSpy);
 
-## Usage
+## 用法
 
-The `use-scroll-spy` hook tracks the scroll position and returns the index of the
-element that is currently in the viewport. It is useful for creating
-table of contents components (like in the react-ui.dev sidebar on the right side)
-and similar features.
+`use-scroll-spy` Hook 跟踪滚动位置并返回当前位于视口中的元素索引。
+它适用于创建目录组件（如 react-ui.dev 右侧边栏所示）及类似功能。
 
 <Demo data={UseScrollSpyDemos.usage} />
 
-## Hook options
+## Hook 选项
 
-The `use-scroll-spy` hook accepts an object with options:
+`use-scroll-spy` Hook 接受一个包含选项的对象：
 
-- `selector` - selector to get headings; by default it is `'h1, h2, h3, h4, h5, h6'`
-- `getDepth` - a function to retrieve the depth of a heading; by default depth is calculated based on the tag name
-- `getValue` - a function to retrieve the heading value; by default `element.textContent` is used
-- `scrollHost` - host element to attach scroll event listener, if not provided, `window` is used
-- `offset` - offset from the top of the viewport to use when determining the active heading, by default `0` is used
+- `selector` - 获取标题的选择器；默认为 `'h1, h2, h3, h4, h5, h6'`
+- `getDepth` - 获取标题深度的函数；默认根据标签名计算深度
+- `getValue` - 获取标题值的函数；默认使用 `element.textContent`
+- `scrollHost` - 附加滚动事件监听器的宿主元素，如果未提供，则使用 `window`
+- `offset` - 确定活动标题时使用的视口顶部偏移量，默认为 `0`
 
-Example of using custom options to get headings with the `data-heading` attribute:
+使用自定义选项获取带有 `data-heading` 属性的标题的示例：
 
 <Demo data={UseScrollSpyDemos.selector} />
 
-## Reinitializing hook data
+## 重新初始化 Hook 数据
 
-By default, `use-scroll-spy` does not track changes in the DOM. If you want
-to update the headings data after the parent component has mounted, you can use
-the `reinitialize` function:
+默认情况下，`use-scroll-spy` 不会跟踪 DOM 的变化。如果你想在父组件挂载后
+更新标题数据，可以使用 `reinitialize` 函数：
 
 ```tsx
 import { useEffect } from 'react';
@@ -48,63 +45,63 @@ function Demo({ dependency }) {
 }
 ```
 
-## Definition
+## 类型定义
 
-All types used in the definition are exported from `@react-ui/hooks` package.
+定义中使用的所有类型都从 `@react-ui/hooks` 包导出。
 
 ```tsx
 interface UseScrollSpyHeadingData {
-  /** Heading depth, 1-6 */
+  /** 标题深度，1-6 */
   depth: number;
 
-  /** Heading text content value */
+  /** 标题文本内容值 */
   value: string;
 
-  /** Heading id */
+  /** 标题 id */
   id: string;
 
-  /** Function to get heading node */
+  /** 获取标题节点的函数 */
   getNode: () => HTMLElement;
 }
 
 interface UseScrollSpyOptions {
-  /** Selector to get headings, `'h1, h2, h3, h4, h5, h6'` by default */
+  /** 获取标题的选择器，默认 `'h1, h2, h3, h4, h5, h6'` */
   selector?: string;
 
-  /** A function to retrieve depth of heading, by default depth is calculated based on tag name */
+  /** 获取标题深度的函数，默认根据标签名计算深度 */
   getDepth?: (element: HTMLElement) => number;
 
-  /** A function to retrieve heading value, by default `element.textContent` is used */
+  /** 获取标题值的函数，默认使用 `element.textContent` */
   getValue?: (element: HTMLElement) => string;
 
-  /** Host element to attach scroll event listener, if not provided, `window` is used */
+  /** 附加滚动事件监听器的宿主元素，如果未提供，则使用 `window` */
   scrollHost?: HTMLElement;
 
-  /** Offset from the top of the viewport to use when determining the active heading, `0` by default */
+  /** 确定活动标题时使用的视口顶部偏移量，默认 `0` */
   offset?: number;
 }
 
 interface UseScrollSpyReturnValue {
-  /** Index of the active heading in the `data` array */
+  /** `data` 数组中活动标题的索引 */
   active: number;
 
-  /** Headings data. If not initialize, data is represented by an empty array. */
+  /** 标题数据。如果未初始化，数据表示为空数组。 */
   data: UseScrollSpyHeadingData[];
 
-  /** True if headings value have been retrieved from the DOM. */
+  /** 如果已从 DOM 获取标题值，则为 true。 */
   initialized: boolean;
 
-  /** Function to update headings values after the parent component has mounted. */
+  /** 在父组件挂载后更新标题值的函数。 */
   reinitialize: () => void;
 }
 
 function useScrollSpy(options?: UseScrollSpyOptions): UseScrollSpyReturnValue
 ```
 
-## Exported types
+## 导出类型
 
-`UseScrollSpyOptions` and `UseScrollSpyReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseScrollSpyOptions` 和 `UseScrollSpyReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseScrollSpyOptions, UseScrollSpyReturnValue } from '@react-ui/hooks';

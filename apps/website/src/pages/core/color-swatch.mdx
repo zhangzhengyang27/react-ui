@@ -4,14 +4,14 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.ColorSwatch);
 
-## Usage
+## 用法
 
 <Demo data={ColorSwatchDemos.usage} />
 
 ## withShadow
 
-By default, `ColorSwatch` has an inner box-shadow to make it more visible on light backgrounds.
-You can disable it by setting the `withShadow={false}` prop:
+默认情况下，`ColorSwatch` 具有内部 box-shadow，以使其在浅色背景上更加醒目。
+你可以通过设置 `withShadow={false}` 属性来禁用它：
 
 <Demo data={ColorSwatchDemos.shadow} />
 
@@ -21,6 +21,6 @@ You can disable it by setting the `withShadow={false}` prop:
   component="ColorSwatch"
 />
 
-Example of using `ColorSwatch` as a button:
+`ColorSwatch` 作为按钮的示例：
 
 <Demo data={ColorSwatchDemos.component} />

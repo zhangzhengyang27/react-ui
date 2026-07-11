@@ -4,14 +4,14 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useFocusWithin);
 
-## Usage
+## 用法
 
-The `use-focus-within` hook detects if any element within another element has focus.
-It works the same way as the `:focus-within` CSS selector:
+`use-focus-within` Hook 检测某个元素内部的任何元素是否获得了焦点。
+它的工作方式与 `:focus-within` CSS 选择器相同：
 
 <Demo data={UseFocusWithinDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseFocusWithinOptions {
@@ -29,10 +29,10 @@ function useFocusWithin<T extends HTMLElement = any>(
 ): UseFocusWithinReturnValue<T>
 ```
 
-## Exported types
+## 导出类型
 
-`UseFocusWithinOptions` and `UseFocusWithinReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseFocusWithinOptions` 和 `UseFocusWithinReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseFocusWithinOptions, UseFocusWithinReturnValue } from '@react-ui/hooks';

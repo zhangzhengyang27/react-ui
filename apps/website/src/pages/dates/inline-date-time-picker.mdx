@@ -4,38 +4,37 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.InlineDateTimePicker);
 
-## DatePicker props
+## DatePicker 属性
 
-`InlineDateTimePicker` supports most of the [DatePicker](/dates/date-picker/) props.
-Read through the [DatePicker](/dates/date-picker/) documentation to learn about all component features that are not listed on this page.
+`InlineDateTimePicker` 支持大部分 [DatePicker](/dates/date-picker/) 的 props。
+请阅读 [DatePicker](/dates/date-picker/) 文档以了解本页未列出的所有组件功能。
 
-## Usage
+## 用法
 
-`InlineDateTimePicker` renders a calendar with a time picker inline, without a dropdown.
-It combines [DatePicker](/dates/date-picker/) and [TimePicker](/dates/time-picker/) components:
+`InlineDateTimePicker` 以内联方式渲染日历和时间选择器，不带下拉框。
+它结合了 [DatePicker](/dates/date-picker/) 和 [TimePicker](/dates/time-picker/) 组件：
 
 <Demo data={InlineDateTimePickerDemos.usage} />
 
-## With seconds
+## 带秒
 
-Set `withSeconds` prop to display seconds input in the time picker:
+设置 `withSeconds` prop，在时间选择器中显示秒输入：
 
 <Demo data={InlineDateTimePickerDemos.withSeconds} />
 
-## Range
+## 范围
 
-Set `type="range"` to allow selecting a date and time range. In range mode,
-two time inputs are rendered side by side, and a range summary is displayed
-below the time inputs:
+设置 `type="range"` 以选择日期和时间范围。在范围模式下，
+两个时间输入并排显示，时间输入下方显示范围摘要：
 
 <Demo data={InlineDateTimePickerDemos.range} />
 
-## Controlled range
+## 受控范围
 
 <Demo data={InlineDateTimePickerDemos.rangeControlled} />
 
-## Value format
+## 值格式
 
-Use `valueFormat` prop to change the [dayjs format](https://day.js.org/docs/en/display/format) of the range preview:
+使用 `valueFormat` prop 更改范围预览的 [dayjs 格式](https://day.js.org/docs/en/display/format)：
 
 <Demo data={InlineDateTimePickerDemos.format} />

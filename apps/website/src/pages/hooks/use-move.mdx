@@ -4,58 +4,58 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useMove);
 
-## Usage
+## 用法
 
-The `use-move` hook handles move behavior over any element:
+`use-move` Hook 处理任何元素上的移动行为：
 
 <Demo data={UseMoveDemos.usage} />
 
-## API
+## API 参考
 
-The hook accepts a callback that is called when the user moves the pressed mouse over the given element
-and returns an object with `ref` and active state:
+该 Hook 接受一个回调函数，当用户在给定元素上按下鼠标移动时调用，
+并返回一个包含 `ref` 和 active 状态的对象：
 
 ```tsx
 import { useMove } from '@react-ui/hooks';
 
 const {
-  ref, // -> pass ref to target element
-  active, // -> is the user changing something right now?
+  ref, // -> 传递给目标元素
+  active, // -> 用户是否正在更改值？
 } = useMove(({ x, y }) => console.log({ x, y }));
 ```
 
-The `x` and `y` values are always between `0` and `1`; you can use them to calculate the value in your boundaries.
+`x` 和 `y` 值始终在 `0` 到 `1` 之间；你可以用它们来计算你边界内的值。
 
-## Horizontal slider
+## 水平滑块
 
-You can ignore changes for one of the axis:
+你可以忽略其中一个轴的变化：
 
 <Demo
   data={UseMoveDemos.horizontal}
   demoProps={{ toggle: true }}
 />
 
-## Horizontal slider with styles
+## 带样式的水平滑块
 
 <Demo data={SliderDemos.customSlider} />
 
-## Vertical slider
+## 垂直滑块
 
-Moving the slider down increases the value, to reverse that set value to `1 - y` in your `setValue` function:
+向下滑动滑块会增加值，要反转这一点，请在 `setValue` 函数中将值设为 `1 - y`：
 
 <Demo
   data={UseMoveDemos.vertical}
   demoProps={{ toggle: true }}
 />
 
-## Color picker
+## 颜色选择器
 
 <Demo data={UseMoveDemos.color} demoProps={{ toggle: true }} />
 
 ## clampUseMovePosition
 
-`clampUseMovePosition` function can be used to clamp `x` and `y` values to `0-1` range.
-It is useful when you want to use external events to change the value, for example changing value with keyboard arrows:
+`clampUseMovePosition` 函数可用于将 `x` 和 `y` 值限制在 `0-1` 范围内。
+当你想使用外部事件来更改值时，这很有用，例如使用键盘方向键更改值：
 
 ```tsx
 import { clampUseMovePosition } from '@react-ui/hooks';
@@ -67,7 +67,7 @@ clampUseMovePosition({ x: -0.5, y: 0.5 }); // -> { x: 0, y: 0.5 }
 
 ## UseMovePosition
 
-`@react-ui/hooks` exports `UseMovePosition` type, it can be used as a type parameter for `useState`:
+`@react-ui/hooks` 导出 `UseMovePosition` 类型，它可用作 `useState` 的类型参数：
 
 ```tsx
 import { useState } from 'react';
@@ -79,7 +79,7 @@ const [value, setValue] = useState<UseMovePosition>({
 });
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseMovePosition {
@@ -104,10 +104,10 @@ function useMove<T extends HTMLElement = any>(
 ): UseMoveReturnValue<T>
 ```
 
-## Exported types
+## 导出类型
 
-`UseMovePosition`, `UseMoveReturnValue` and `UseMoveHandlers` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseMovePosition`、`UseMoveReturnValue` 和 `UseMoveHandlers` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseMovePosition, UseMoveHandlers, UseMoveReturnValue } from '@react-ui/hooks';

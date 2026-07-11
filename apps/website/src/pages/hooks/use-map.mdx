@@ -4,14 +4,14 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useMap);
 
-## Usage
+## 用法
 
-The `useMap` hook returns a [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
-object that can be used as React state – the `set`, `clear`, and `delete` methods update state and trigger rerender.
+`useMap` Hook 返回一个 [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) 对象，
+可用作 React 状态——`set`、`clear` 和 `delete` 方法会更新状态并触发重新渲染。
 
 <Demo data={UseMapDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 function useMap<T, V>(initialState?: [T, V][]): Map<T, V>;

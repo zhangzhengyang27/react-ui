@@ -4,66 +4,63 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.RingProgress);
 
-## Usage
+## 用法
 
-The `sections` prop accepts an array of objects with the following properties:
+`sections` 属性接受一个对象数组，每个对象具有以下属性：
 
-- `value` – number between 0 and 100 representing the percentage of the ring to fill
-- `color` – segment color from theme.colors or any CSS color value
-- `tooltip` (optional) – React node to display when hovering over the section
-- Any valid SVG `<circle>` element props (onClick, onMouseEnter, style, etc.)
+- `value` – 0 到 100 之间的数字，表示环形填充的百分比
+- `color` – 来自 theme.colors 的分段颜色或任意 CSS 颜色值
+- `tooltip`（可选）– 悬停在该分段上时显示的 React 节点
+- 任何有效的 SVG `<circle>` 元素属性（onClick、onMouseEnter、style 等）
 
-**Note:** Section values should sum to 100% or less for expected behavior. Values exceeding 100% total will cause sections to overlap.
+**注意：** 各分段值的总和应为 100% 或更少，以获得预期行为。总值超过 100% 会导致分段重叠。
 
 <Demo data={RingProgressDemos.usage} />
 
-## Size, thickness & rounded caps
+## 尺寸、粗细与圆角端点
 
-Use the `size`, `thickness` & `roundCaps` props to configure the RingProgress size and thickness values:
+使用 `size`、`thickness` 和 `roundCaps` 属性配置 RingProgress 的尺寸和粗细值：
 
 <Demo data={RingProgressDemos.configurator} />
 
-## Sections tooltips
+## 分段提示
 
-Add a `tooltip` property to a section to display a floating [Tooltip](/core/tooltip/) when the user hovers over it:
+在分段上添加 `tooltip` 属性，当用户悬停在该分段上时显示浮动 [Tooltip](/core/tooltip/)：
 
 <Demo data={RingProgressDemos.tooltip} />
 
-## Section gaps
+## 分段间隙
 
-Use the `sectionGap` prop to add visual separation between sections. The gap is specified in degrees:
+使用 `sectionGap` 属性在分段之间添加视觉分隔。间隙以角度为单位：
 
 <Demo data={RingProgressDemos.sectionGap} />
 
-## Start angle
+## 起始角度
 
-Use the `startAngle` prop to control where the progress starts. The angle is specified in degrees,
-where `0` = right, `90` = bottom, `180` = left, and `270` = top (default):
+使用 `startAngle` 属性控制进度开始的位置。角度以度为单位，其中 `0` = 右侧，`90` = 底部，`180` = 左侧，`270` = 顶部（默认）：
 
 <Demo data={RingProgressDemos.startAngle} />
 
-## Background color
+## 背景颜色
 
-Use the `rootColor` prop to customize the color of the unfilled portion of the ring (the background):
+使用 `rootColor` 属性自定义环形未填充部分（背景）的颜色：
 
 <Demo data={RingProgressDemos.rootColor} />
 
-## Section events
+## 分段事件
 
-Each section can receive any valid SVG `<circle>` element props, including event handlers like `onClick`, `onMouseEnter`, and `onMouseLeave`:
+每个分段都可以接收任何有效的 SVG `<circle>` 元素属性，包括事件处理函数如 `onClick`、`onMouseEnter` 和 `onMouseLeave`：
 
 <Demo data={RingProgressDemos.sectionsProps} />
 
-## Customize label
+## 自定义标签
 
-You can add any React node as a label, for example a [Text](/core/text/) component with custom styling
-or an [ActionIcon](/core/action-icon/):
+你可以将任意 React 节点作为标签，例如带有自定义样式的 [Text](/core/text/) 组件或 [ActionIcon](/core/action-icon/)：
 
 <Demo data={RingProgressDemos.label} />
 
-## Filled segment transition
+## 填充分段过渡
 
-By default, transitions are disabled. To enable them, set the `transitionDuration` prop
-to a number of milliseconds:
+默认情况下，过渡被禁用。要启用它们，请将 `transitionDuration` 属性设置为毫秒数：
 
 <Demo data={RingProgressDemos.transitions} />

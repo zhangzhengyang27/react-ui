@@ -4,26 +4,24 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Notification);
 
-## Usage
+## 用法
 
-Notification is a base component for the notification system.
-Build your own or use the [@react-ui/ui](/x/notifications/) package.
+Notification 是通知系统的基础组件。你可以基于它构建自己的通知系统，或使用 [@react-ui/ui](/x/notifications/) 包。
 
 <Demo data={NotificationDemos.configurator} />
 
-## Notifications system features
+## 通知系统功能
 
-When you use [@react-ui/ui](/x/notifications/), notifications can be dismissed by:
+当你使用 [@react-ui/ui](/x/notifications/) 时，通知可以通过以下方式关闭：
 
-- dragging them left or right
-- horizontal scroll swipe while hovered
+- 向左或向右拖动
+- 悬停时水平滚动滑动手势
 
-You can disable these interactions on the `Notifications` component with
-`allowDragDismiss={false}` and `allowScrollDismiss={false}`.
+你可以在 `Notifications` 组件上使用 `allowDragDismiss={false}` 和 `allowScrollDismiss={false}` 禁用这些交互。
 
-See the [notifications package documentation](/x/notifications/) for configuration details.
+有关配置详情，请参阅 [notifications 包文档](/x/notifications/)。
 
-## With icon
+## 带图标
 
 <Demo data={NotificationDemos.icon} />
 
@@ -31,9 +29,9 @@ See the [notifications package documentation](/x/notifications/) for configurati
 
 <Demo data={NotificationDemos.stylesApi} />
 
-## Accessibility
+## 可访问性
 
-To support screen readers, set the close button's aria-label or title with `closeButtonProps`:
+为了支持屏幕阅读器，请使用 `closeButtonProps` 设置关闭按钮的 aria-label 或 title：
 
 ```tsx
 import { Notification } from '@react-ui/ui';

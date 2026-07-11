@@ -4,22 +4,22 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Anchor);
 
-## Usage
+## 用法
 
 <Demo data={AnchorDemos.usage} />
 
-## Underline
+## 下划线
 
-Use the `underline` prop to configure the `text-decoration` property. It accepts the following values:
+使用 `underline` 属性配置 `text-decoration`。它接受以下值：
 
-- `always` - link is always underlined
-- `hover` - link is underlined on hover
-- `never` - link is never underlined
-- `not-hover` - link is underlined when not hovered
+- `always` - 链接始终有下划线
+- `hover` - 悬停时链接有下划线
+- `never` - 链接永远没有下划线
+- `not-hover` - 未悬停时链接有下划线
 
 <Demo data={AnchorDemos.decoration} />
 
-You can also configure the `underline` prop for all `Anchor` components with [default props](/theming/default-props):
+你还可以使用 [default props](/theming/default-props) 为所有 `Anchor` 组件配置 `underline` 属性：
 
 ```tsx
 import { Anchor, createTheme, MantineProvider } from '@react-ui/ui';
@@ -37,16 +37,16 @@ const theme = createTheme({
 function Demo() {
   return (
     <MantineProvider theme={theme}>
-      {/* Your app here */}
+      {/* 你的应用内容 */}
     </MantineProvider>
   );
 }
 ```
 
-## Text props
+## Text 属性
 
-The `Anchor` component supports all [Text](/core/text) component props.
-For example, you can use the gradient variant:
+`Anchor` 组件支持所有 [Text](/core/text) 组件属性。
+例如，你可以使用渐变变体：
 
 <Demo data={AnchorDemos.textProps} />
 

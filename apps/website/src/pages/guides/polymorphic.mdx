@@ -4,25 +4,24 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Polymorphic);
 
-# Polymorphic components
+# 多态组件
 
-## What is a polymorphic component
+## 什么是多态组件
 
-A polymorphic component is a component whose root element can be changed with the `component` prop.
-All polymorphic components have a default element that's used when the `component` prop is not provided.
-For example, the [Button](/core/button) component's default element is `button` and
-it can be changed to `a` or any other element or component:
+多态组件是指可以通过 `component` 属性更改其根元素的组件。
+所有多态组件都有一个默认元素，在未提供 `component` 属性时使用。
+例如，[Button](/core/button) 组件的默认元素是 `button`，
+可以将其更改为 `a` 或任何其他元素或组件：
 
 <Demo data={GuidesDemos.polymorphic} />
 
-## renderRoot prop
+## renderRoot 属性
 
-`renderRoot` is an alternative to the `component` prop, which accepts a function that should return
-a React element. It is useful in cases when `component` prop cannot be used, for example,
-when the component that you want to pass to the `component` is generic
-(accepts type or infers it from props, for example `<Link<'/'> />`).
+`renderRoot` 是 `component` 属性的替代方案，它接收一个应返回 React 元素的函数。
+当无法使用 `component` 属性时（例如，你想传递给 `component` 的组件是泛型组件，
+需要接受类型或从 props 推断类型，如 `<Link<'/'> />`），`renderRoot` 非常有用。
 
-Example of using `renderRoot` prop, the result is the same as in the previous demo:
+使用 `renderRoot` 属性的示例，效果与上一个示例相同：
 
 ```tsx
 import { Button } from '@react-ui/ui';
@@ -40,13 +39,12 @@ function Demo() {
 }
 ```
 
-**!important** It's required to spread the `props` argument into the root element. Otherwise,
-there will be no styles and the component might not be accessible.
+**!important** 必须将 `props` 参数展开到根元素中。否则将没有样式，组件也可能无法访问。
 
-## Polymorphic components as other React components
+## 将多态组件作为其他 React 组件使用
 
-You can pass any other React component to the `component` prop.
-For example, you can pass the `Link` component from `react-router-dom`:
+你可以将任何其他 React 组件传递给 `component` 属性。
+例如，可以传递 `react-router-dom` 的 `Link` 组件：
 
 ```tsx
 import { Link } from 'react-router-dom';
@@ -61,11 +59,11 @@ function Demo() {
 }
 ```
 
-## Polymorphic components as Next.js Link
+## 将多态组件作为 Next.js Link 使用
 
-The Next.js link doesn't work in the same way as other similar components in all Next.js versions.
+Next.js 的 Link 在不同 Next.js 版本中的工作方式与其他类似组件不同。
 
-With Next.js 12 and below:
+在 Next.js 12 及以下版本中：
 
 ```tsx
 import Link from 'next/link';
@@ -80,7 +78,7 @@ function Demo() {
 }
 ```
 
-With Next.js 13 and above:
+在 Next.js 13 及以上版本中：
 
 ```tsx
 import Link from 'next/link';
@@ -95,14 +93,13 @@ function Demo() {
 }
 ```
 
-## Polymorphic components with generic components
+## 多态组件与泛型组件
 
-You cannot pass generic components to the `component` prop because it's not possible to infer generic types
-from the component prop. For example, you cannot pass [typed Next.js Link](https://nextjs.org/docs/app/building-your-application/configuring/typescript#statically-typed-links)
-to the `component` prop because it's not possible to infer the `href` type from the component prop. The component itself
-will work correctly, but you'll have a TypeScript error.
+不能将泛型组件传递给 `component` 属性，因为无法从组件属性推断泛型类型。
+例如，不能将 [类型化 Next.js Link](https://nextjs.org/docs/app/building-your-application/configuring/typescript#statically-typed-links)
+传递给 `component` 属性，因为无法从中推断 `href` 的类型。组件本身可以正常工作，但你会遇到 TypeScript 错误。
 
-To make generic components work with polymorphic components, use the `renderRoot` prop instead of `component`:
+要让泛型组件与多态组件一起工作，请使用 `renderRoot` 属性替代 `component`：
 
 ```tsx
 import Link from 'next/link';
@@ -117,11 +114,11 @@ function Demo() {
 }
 ```
 
-## Polymorphic components with react-router NavLink
+## 多态组件与 react-router NavLink
 
-The [react-router-dom](https://reactrouter.com/en/main) [NavLink](https://reactrouter.com/en/main/components/nav-link) component's
-`className` prop accepts a function based on which you can add an active class to the link. This feature is
-incompatible with ReactUI's `component` prop, but you can use the `renderRoot` prop instead:
+[react-router-dom](https://reactrouter.com/en/main) 的 [NavLink](https://reactrouter.com/en/main/components/nav-link) 组件的
+`className` 属性接受一个函数，你可以根据它为链接添加 active 类。这一特性与 ReactUI 的 `component` 属性不兼容，
+但你可以改用 `renderRoot` 属性：
 
 ```tsx
 import cx from 'clsx';
@@ -146,27 +143,27 @@ function Demo() {
 }
 ```
 
-## Wrapping polymorphic components
+## 包装多态组件
 
-Non-polymorphic components include `React.ComponentProps<'x'>` as part of their props type,
-where `x` is the root element of the component. For example, the [Container](/core/container) component
-is not polymorphic – its root element is always `div`, so its props type includes `React.ComponentProps<'div'>`.
+非多态组件的 props 类型中包含 `React.ComponentProps<'x'>`，其中 `x` 是组件的根元素。
+例如，[Container](/core/container) 组件不是多态的——它的根元素始终是 `div`，
+因此其 props 类型包含 `React.ComponentProps<'div'>`。
 
-Polymorphic components don't include `React.ComponentProps<'x'>` as part of their props type
-because their root element can be changed, and thus the props type can be inferred only after the component was rendered.
+多态组件的 props 类型中不包含 `React.ComponentProps<'x'>`，因为它们的根元素可以被更改，
+因此 props 类型只能在组件渲染后才能推断。
 
-Example of creating a non-polymorphic wrapper component for ReactUI polymorphic component:
+为 ReactUI 多态组件创建非多态包装组件的示例：
 
 <Demo data={GuidesDemos.staticPolymorphic} />
 
-Example of creating a polymorphic wrapper component for ReactUI polymorphic component:
+为 ReactUI 多态组件创建多态包装组件的示例：
 
 <Demo data={GuidesDemos.createPolymorphic} />
 
-## Dynamic component prop
+## 动态 component 属性
 
-You can use a dynamic value in the `component` prop, but in this case, you need to either provide types manually
-or disable type checking by passing `any` as a type argument to the polymorphic component:
+你可以在 `component` 属性中使用动态值，但此时你需要手动提供类型，
+或者通过向多态组件传递 `any` 类型参数来禁用类型检查：
 
 ```tsx
 import { Box } from '@react-ui/ui';
@@ -186,20 +183,18 @@ function NukeTypes() {
 }
 ```
 
-## Create your own polymorphic components
+## 创建自定义多态组件
 
-Use the `polymorphic` function and [Box](/core/box) component to create new polymorphic components:
+使用 `polymorphic` 函数和 [Box](/core/box) 组件创建新的多态组件：
 
 <Demo data={GuidesDemos.newPolymorphic} />
 
-## Make ReactUI component polymorphic
+## 使 ReactUI 组件变为多态
 
-Polymorphic components have a performance overhead for tsserver (no impact on runtime performance),
-because of that, not all ReactUI components have polymorphic types, but all components still
-accept the `component` prop – the root element can be changed.
+多态组件会给 tsserver 带来性能开销（不会影响运行时性能），
+因此并非所有 ReactUI 组件都具有多态类型，但所有组件仍然接受 `component` 属性——根元素可以被更改。
 
-To make a ReactUI component polymorphic, use the `polymorphic` function the same way
-as in the previous example:
+要使 ReactUI 组件变为多态，请按照上一个示例的方式使用 `polymorphic` 函数：
 
 ```tsx
 import { polymorphic, Group, GroupProps } from '@react-ui/ui';

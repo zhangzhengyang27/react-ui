@@ -6,32 +6,32 @@ export default Layout(MDX_DATA.Autocomplete);
 
 <ComboboxDisclaimer component="Autocomplete" />
 
-## Not a searchable select
+## 不是可搜索的 Select
 
-`Autocomplete` is not a searchable select, it is a text input with suggestions.
-Values are not enforced to be one of the suggestions – users can type anything.
-If you need a searchable select, use the [Select](/core/select) component instead.
-To learn more about the differences between `Autocomplete` and `Select`, check the
+`Autocomplete` 不是可搜索的 Select，它是一个带建议的文本输入框。
+值不会被强制为建议之一——用户可以输入任何内容。
+如果你需要可搜索的 Select，请改用 [Select](/core/select) 组件。
+要了解 `Autocomplete` 和 `Select` 之间的更多区别，请查看
 [GitHub 讨论](https://github.com/xiaoye/react-ui/discussions)。
 
-## Usage
+## 用法
 
-`Autocomplete` provides users with a list of suggestions based on the input,
-however users are not limited to suggestions and can type anything.
+`Autocomplete` 根据输入为用户提供建议列表，
+但用户不受建议限制，可以输入任何内容。
 
 <Demo data={AutocompleteDemos.usage} />
 
-## Loading state
+## 加载状态
 
-Set `loading` prop to display a loading indicator. By default, the loader is displayed on the right side of the input.
-You can change the position with the `loadingPosition` prop to `'left'` or `'right'`. This is useful for async operations like API calls, searches, or validations:
+设置 `loading` 属性以显示加载指示器。默认情况下，加载器显示在输入框的右侧。
+你可以使用 `loadingPosition` 属性将位置更改为 `'left'` 或 `'right'`。这对于 API 调用、搜索或验证等异步操作非常有用：
 
 <Demo data={AutocompleteDemos.loading} />
 
-## Controlled
+## 受控模式
 
-The `Autocomplete` value must be a string; other types are not supported.
-The `onChange` function is called with a string value as a single argument.
+`Autocomplete` 的值必须是字符串；不支持其他类型。
+`onChange` 函数以字符串值作为唯一参数调用。
 
 ```tsx
 import { useState } from 'react';
@@ -43,13 +43,13 @@ function Demo() {
 }
 ```
 
-## Uncontrolled
+## 非受控模式
 
-`Autocomplete` can be used with uncontrolled forms the same way as a native `input` element.
-Set the `name` attribute to include autocomplete value in `FormData` object on form submission.
-To control the initial value in uncontrolled forms, use the `defaultValue` prop.
+`Autocomplete` 可以像原生 `input` 元素一样用于非受控表单。
+设置 `name` 属性以在表单提交时将 autocomplete 值包含在 `FormData` 对象中。
+要在非受控表单中控制初始值，请使用 `defaultValue` 属性。
 
-Example usage of uncontrolled `Autocomplete` with `FormData`:
+非受控 `Autocomplete` 与 `FormData` 的示例用法：
 
 ```tsx
 import { Autocomplete } from '@react-ui/ui';
@@ -76,18 +76,18 @@ function Demo() {
 }
 ```
 
-## Select first option on change
+## 更改时选择首个选项
 
-Set the `selectFirstOptionOnChange` prop to automatically select the first option in the dropdown when the input value changes.
-This feature allows users to type a value and immediately press `Enter` to select the first matching option,
-without needing to press the arrow down key first.
+设置 `selectFirstOptionOnChange` 属性，当输入值更改时自动选择下拉列表中的第一个选项。
+此功能允许用户输入一个值并立即按 `Enter` 选择第一个匹配的选项，
+无需先按向下箭头键。
 
 <Demo data={AutocompleteDemos.selectFirstOptionOnChange} />
 
 ## autoSelectOnBlur
 
-Set the `autoSelectOnBlur` prop to automatically select the highlighted option when the input loses focus.
-To see this feature in action: select an option with the up/down arrows, then click outside the input:
+设置 `autoSelectOnBlur` 属性，当输入框失去焦点时自动选择高亮的选项。
+要查看此功能的实际效果：使用上下箭头选择一个选项，然后点击输入框外部：
 
 <Demo data={AutocompleteDemos.autoSelectOnBlur} />
 
@@ -97,17 +97,15 @@ To see this feature in action: select an option with the up/down arrows, then cl
 
 <Demo data={AutocompleteDemos.search} />
 
-## Sort options
+## 排序选项
 
-By default, options are sorted by their position in the data array. You can change this behavior
-with the `filter` function:
+默认情况下，选项按其所在数据数组的位置排序。你可以使用 `filter` 函数更改此行为：
 
 <Demo data={AutocompleteDemos.sort} />
 
-## Fuzzy search with fuse.js
+## 使用 fuse.js 进行模糊搜索
 
-You can implement fuzzy search using the [fuse.js](https://fusejs.io/) library to match options
-even with typos or partial matches:
+你可以使用 [fuse.js](https://fusejs.io/) 库实现模糊搜索，即使存在拼写错误或部分匹配也能匹配选项：
 
 <Demo data={AutocompleteDemos.fuzzySearch} />
 
@@ -119,64 +117,62 @@ even with typos or partial matches:
 
 ## renderOption
 
-The `renderOption` callback allows you to customize option rendering. It is called with an option object.
-The function must return a React node.
+`renderOption` 回调允许你自定义选项渲染。它接收一个选项对象作为参数。
+该函数必须返回一个 React 节点。
 
 <Demo data={AutocompleteDemos.renderOption} />
 
-## Nothing found message
+## 无结果消息
 
-The `Autocomplete` component does not support a nothing found message. It is designed to
-accept any string as a value, so it does not make sense to show a nothing found message.
-If you want to limit user input to suggestions, you can use a searchable [Select](/core/select)
-component instead. To learn more about the differences between `Autocomplete` and `Select`, check the
+`Autocomplete` 组件不支持无结果消息。它的设计是
+接受任何字符串作为值，因此显示无结果消息没有意义。
+如果你想将用户输入限制为建议值，可以使用可搜索的 [Select](/core/select)
+组件代替。要了解 `Autocomplete` 和 `Select` 之间的更多区别，请查看
 [GitHub 讨论](https://github.com/xiaoye/react-ui/discussions)。
 
-## Scrollable dropdown
+## 可滚动下拉
 
-By default, the options list is wrapped with [ScrollArea.Autosize](/core/scroll-area).
-You can control the dropdown max-height with the `maxDropdownHeight` prop if you do not change the default settings.
+默认情况下，选项列表使用 [ScrollArea.Autosize](/core/scroll-area) 包裹。
+如果你不更改默认设置，可以使用 `maxDropdownHeight` 属性控制下拉列表的最大高度。
 
-If you want to use native scrollbars, set `withScrollArea={false}`. Note that in this case,
-you will need to change the dropdown styles with [Styles API](/styles/styles-api).
+如果你想使用原生滚动条，请设置 `withScrollArea={false}`。请注意，在这种情况下，
+你需要使用 [Styles API](/styles/styles-api) 更改下拉列表样式。
 
 <Demo data={AutocompleteDemos.scrollArea} />
 
-## Fit dropdown to viewport height
+## 下拉框适应视口高度
 
-Set `floatingHeight="viewport"` to make the dropdown grow to fill the available vertical
-space in the viewport. The `flip` middleware is disabled in this mode – the dropdown
-always opens in the configured direction and is constrained to the viewport edges instead
-of flipping to the other side. Useful when working with large option lists:
+设置 `floatingHeight="viewport"` 使下拉框增长以填充视口中的可用垂直空间。
+在此模式下，`flip` 中间件被禁用——下拉框始终在配置的方向打开，
+并被约束到视口边缘，而不是翻转到另一侧。在处理大型选项列表时非常有用：
 
 <Demo data={AutocompleteDemos.floatingHeight} />
 
-## Group options
+## 分组选项
 
 <Demo data={AutocompleteDemos.groups} />
 
-## Disabled options
+## 禁用选项
 
-When an option is disabled, it cannot be selected and is ignored in keyboard navigation.
+当选项被禁用时，它无法被选择，并且在键盘导航中会被忽略。
 
 <Demo data={AutocompleteDemos.disabledOptions} />
 
 <ComboboxProps component="Autocomplete" />
 
-## Inside Popover
+## 在 Popover 内使用
 
-To use `Autocomplete` inside popover, you need to set `withinPortal: false`:
+要在 popover 内使用 `Autocomplete`，你需要设置 `withinPortal: false`：
 
 <Demo data={AutocompleteDemos.withinPopover} />
 
-## Clearable
+## 可清除
 
-Set the `clearable` prop to display the clear button in the right section. The button is not displayed
-when:
+设置 `clearable` 属性以在右侧区域显示清除按钮。按钮在以下情况下不显示：
 
-- The component does not have a value
-- The component is disabled
-- The component is read only
+- 组件没有值
+- 组件被禁用
+- 组件为只读
 
 <Demo data={AutocompleteDemos.clearable} />
 
@@ -184,35 +180,35 @@ when:
 
 <Demo data={AutocompleteDemos.clearSectionMode} />
 
-## Control dropdown opened state
+## 控制下拉框打开状态
 
-You can control the dropdown opened state with the `dropdownOpened` prop. Additionally,
-you can use `onDropdownClose` and `onDropdownOpen` to listen to dropdown opened state changes.
+你可以使用 `dropdownOpened` 属性控制下拉框的打开状态。此外，
+还可以使用 `onDropdownClose` 和 `onDropdownOpen` 监听下拉框打开状态的变化。
 
 <Demo data={AutocompleteDemos.dropdownOpened} />
 
-## Dropdown position
+## 下拉框位置
 
-By default, the dropdown is displayed below the input if there is enough space; otherwise it is displayed above the input.
-You can change this behavior by setting the `position` and `middlewares` props, which are passed down to the
-underlying [Popover](/core/popover) component.
+默认情况下，如果有足够空间，下拉框显示在输入框下方；否则显示在输入框上方。
+你可以通过设置 `position` 和 `middlewares` 属性来更改此行为，这些属性会传递给
+底层的 [Popover](/core/popover) 组件。
 
-Example of dropdown that is always displayed above the input:
+下拉框始终显示在输入框上方的示例：
 
 <Demo data={AutocompleteDemos.dropdownPosition} />
 
-## Dropdown animation
+## 下拉框动画
 
-By default, dropdown animations are disabled. To enable them, you can set `transitionProps`,
-which will be passed down to the underlying [Transition](/core/transition) component.
+默认情况下，下拉框动画被禁用。要启用它们，可以设置 `transitionProps`，
+它会传递给底层的 [Transition](/core/transition) 组件。
 
 <Demo data={AutocompleteDemos.dropdownAnimation} />
 
-## Dropdown padding
+## 下拉框内边距
 
 <Demo data={AutocompleteDemos.dropdownPadding} />
 
-## Dropdown shadow
+## 下拉框阴影
 
 <Demo data={AutocompleteDemos.dropdownShadow} />
 
@@ -220,31 +216,31 @@ which will be passed down to the underlying [Transition](/core/transition) compo
 
 <Demo data={AutocompleteDemos.sections} />
 
-## Input props
+## Input 属性
 
 <InputFeatures component="Autocomplete" element="input" />
 
 <Demo data={AutocompleteDemos.configurator} />
 
-## Read only
+## 只读
 
-Set `readOnly` to make the input read only. When `readOnly` is set,
-`Autocomplete` will not show suggestions and will not call the `onChange` function.
+设置 `readOnly` 使输入框只读。设置 `readOnly` 后，
+`Autocomplete` 不会显示建议，也不会调用 `onChange` 函数。
 
 <Demo data={AutocompleteDemos.readOnly} />
 
-## Disabled
+## 禁用
 
-Set `disabled` to disable the input. When `disabled` is set,
-users cannot interact with the input and `Autocomplete` will not show suggestions.
+设置 `disabled` 以禁用输入框。设置 `disabled` 后，
+用户无法与输入框交互，`Autocomplete` 也不会显示建议。
 
 <Demo data={AutocompleteDemos.disabled} />
 
-## Error state
+## 错误状态
 
 <Demo data={AutocompleteDemos.error} />
 
-## Success state
+## 成功状态
 
 <Demo data={AutocompleteDemos.success} />
 

@@ -4,19 +4,19 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useForm);
 
-## Installation
+## 安装
 
-The `@react-ui/ui` package does not depend on any other libraries. You can use it with or without `@react-ui/ui` inputs:
+`@react-ui/ui` 包不依赖任何其他库。你可以将其与 `@react-ui/ui` 输入框一起使用，也可以单独使用：
 
 <InstallScript packages="@react-ui/ui" />
 
-## Usage
+## 用法
 
 <Demo data={FormDemos.usage} />
 
-## API overview
+## API 概览
 
-All examples below use the following example use-form hook.
+下面的所有示例都使用以下示例 use-form Hook。
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -39,65 +39,65 @@ const form = useForm({
 });
 ```
 
-### Values
+### 值
 
-[Form values guide](/form/values/)
+[表单值指南](/form/values/)
 
 ```tsx
-// get the current form values
+// 获取当前表单值
 form.getValues();
 
-// Set all form values
+// 设置所有表单值
 form.setValues(values);
 
-// Set all form values using the previous state
+// 使用上一个状态设置所有表单值
 form.setValues((prev) => ({ ...prev, ...values }));
 
-// Set the value of a single field
+// 设置单个字段的值
 form.setFieldValue('path', value);
 
-// Set the value of a nested field
+// 设置嵌套字段的值
 form.setFieldValue('user.firstName', 'Jane');
 
-// Resets form values to `initialValues`,
-// clears all validation errors,
-// resets touched and dirty state
+// 将表单值重置为 `initialValues`，
+// 清除所有验证错误，
+// 重置触碰和脏状态
 form.reset();
 
-// Reset the field at `path` to its initial value
+// 将 `path` 处的字段重置为其初始值
 form.resetField('path');
 
-// Sets initial values, used when the form is reset
+// 设置初始值，用于表单重置时
 form.setInitialValues({ values: 'object' });
 ```
 
-### List items
+### 列表项
 
-[Nested fields guide](/form/nested/)
+[嵌套字段指南](/form/nested/)
 
 ```tsx
-// Inserts the given list item at the specified path
+// 在指定路径插入给定的列表项
 form.insertListItem('fruits', { name: 'Apple', available: true });
 
-// An optional index may be provided to specify the position in a nested field.
-// If the index is provided, the item will be inserted at the given position.
-// If the index is larger than the current list, the element is inserted at the last position.
+// 可以提供可选索引来指定嵌套字段中的位置。
+// 如果提供了索引，项目将插入到给定位置。
+// 如果索引大于当前列表长度，元素将插入到最后。
 form.insertListItem('fruits', { name: 'Orange', available: true }, 1);
 
-// Removes the list item at the specified path and index.
+// 删除指定路径和索引处的列表项。
 form.removeListItem('fruits', 1);
 
-// Replaces the list item at the specified path and index with the given item.
+// 用新值替换指定路径和索引处的列表项。
 form.replaceListItem('fruits', 1, { name: 'Apple', available: true });
 
-// Swaps two items of the list at the specified path.
-// You should make sure that there are elements at the `from` and `to` index.
+// 交换指定路径处列表中的两个项目。
+// 你应确保 `from` 和 `to` 索引处都有元素。
 form.reorderListItem('fruits', { from: 1, to: 0 });
 ```
 
-### Validation
+### 验证
 
-[Form validation guide](/form/validation/)
+[表单验证指南](/form/validation/)
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -122,51 +122,51 @@ const form = useForm({
   },
 });
 
-// Validates all fields with the specified `validate` function or schema, sets form.errors
+// 使用指定的 `validate` 函数或模式验证所有字段，设置 form.errors
 await form.validate();
 
-// Validates a single field at the specified path, sets form.errors
+// 验证指定路径处的单个字段，设置 form.errors
 await form.validateField('user.firstName');
 
-// Works the same way as form.validate but does not set form.errors, returns Promise<boolean>
+// 与 form.validate 工作方式相同，但不设置 form.errors，返回 Promise<boolean>
 await form.isValid();
 await form.isValid('user.firstName');
 
-// true while any async validation is running
+// 当任何异步验证正在运行时，值为 true
 form.validating;
 
-// true while async validation is running for a specific field
+// 当指定字段的异步验证正在运行时，值为 true
 form.isValidating('email');
 ```
 
-### Errors
+### 错误
 
-[Form errors guide](/form/errors/)
+[表单错误指南](/form/errors/)
 
-Validation errors occur when defined validation rules were violated, `initialErrors` were specified in useForm properties,
-or validation errors were set manually.
+当定义的验证规则被违反、在 useForm 属性中指定了 `initialErrors`，
+或手动设置了验证错误时，就会发生验证错误。
 
 ```tsx
-// get the current errors state
+// 获取当前错误状态
 form.errors;
 
-// Set all errors
+// 设置所有错误
 form.setErrors({ path: 'Error message', path2: 'Another error' });
 
-// Set an error message at the specified path
+// 在指定路径设置错误信息
 form.setFieldError('user.lastName', 'No special characters allowed');
 
-// Clears all errors
+// 清除所有错误
 form.clearErrors();
 
-// Clears the error of the field at the specified path
+// 清除指定路径处字段的错误
 form.clearFieldError('path');
 ```
 
-### onReset and onSubmit
+### onReset 和 onSubmit
 
-Wrapper function for the form `onSubmit` and `onReset` event handler. The `onSubmit` handler accepts as a second argument a function
-that will be called with the errors object when validation fails.
+表单 `onSubmit` 和 `onReset` 事件处理程序的包装函数。`onSubmit` 处理程序接受第二个参数，
+当验证失败时，将使用错误对象调用该参数。
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -180,44 +180,44 @@ function Demo() {
 
   return (
     <>
-      {/* Supply handle submit as a single argument to receive validated values */}
+      {/* 将 handleSubmit 作为单个参数传入，以接收验证后的值 */}
       <form onSubmit={form.onSubmit(handleSubmit)} />
 
-      {/* Supply a second argument to handle errors */}
+      {/* 传入第二个参数来处理错误 */}
       <form
         onSubmit={form.onSubmit(
           (values, event) => {
             console.log(
-              values, // <- form.getValues() at the moment of submit
-              event // <- form element submit event
+              values, // <- 提交时刻的 form.getValues()
+              event // <- 表单元素提交事件
             );
           },
           (validationErrors, values, event) => {
             console.log(
-              validationErrors, // <- form.errors at the moment of submit
-              values, // <- form.getValues() at the moment of submit
-              event // <- form element submit event
+              validationErrors, // <- 提交时刻的 form.errors
+              values, // <- 提交时刻的 form.getValues()
+              event // <- 表单元素提交事件
             );
           }
         )}
       />
 
-      {/* form.onReset calls form.reset */}
+      {/* form.onReset 调用 form.reset */}
       <form onReset={form.onReset}></form>
     </>
   );
 }
 ```
 
-### onSubmitPreventDefault option
+### onSubmitPreventDefault 选项
 
-By default, `event.preventDefault()` is called on the form `onSubmit` handler.
-If you want to change this behavior, you can pass the `onSubmitPreventDefault` option
-to the `useForm` hook. It can have the following values:
+默认情况下，会在表单 `onSubmit` 处理程序上调用 `event.preventDefault()`。
+如果你想更改此行为，可以将 `onSubmitPreventDefault` 选项
+传给 `useForm` Hook。它可以具有以下值：
 
-- `always` (default) - always call `event.preventDefault()`
-- `never` - never call `event.preventDefault()`
-- `validation-failed` - call `event.preventDefault()` only if validation failed
+- `always`（默认）- 始终调用 `event.preventDefault()`
+- `never` - 从不调用 `event.preventDefault()`
+- `validation-failed` - 仅在验证失败时调用 `event.preventDefault()`
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -228,41 +228,41 @@ const form = useForm({
 });
 ```
 
-### Touched and dirty
+### 触碰和脏状态
 
-[Touched & dirty guide](/form/status/)
+[触碰与脏状态指南](/form/status/)
 
 ```tsx
-// Returns true if the user interacted with any field inside the form in any way
+// 如果用户以任何方式与表单中的任何字段交互过，则返回 true
 form.isTouched();
 
-// Returns true if the user interacted with the field at the specified path
+// 如果用户与指定路径处的字段交互过，则返回 true
 form.isTouched('path');
 
-// Set all touched values
+// 设置所有触碰值
 form.setTouched({ 'user.firstName': true, 'user.lastName': false });
 
-// Clears the touched status of all fields
+// 清除所有字段的触碰状态
 form.resetTouched();
 
-// Returns true if form values are not deep equal to initialValues
+// 如果表单值与 initialValues 不相等，则返回 true
 form.isDirty();
 
-// Returns true if the field value is not deep equal to initialValues
+// 如果字段值与 initialValues 不相等，则返回 true
 form.isDirty('path');
 
-// Sets the dirty status of all fields
+// 设置所有字段的脏状态
 form.setDirty({ 'user.firstName': true, 'user.lastName': false });
 
-// Clears the dirty status of all fields, saves form.values snapshot
-// After form.resetDirty is called, form.isDirty will compare
-// form.getValues() to the snapshot instead of initialValues
+// 清除所有字段的脏状态，保存 form.values 快照
+// 调用 form.resetDirty 后，form.isDirty 将比较
+// form.getValues() 与快照，而不是 initialValues
 form.resetDirty();
 ```
 
 ## UseFormReturnType
 
-`UseFormReturnType` can be used when you want to pass the `form` as a prop to another component:
+当你想将 `form` 作为 prop 传递给另一个组件时，可以使用 `UseFormReturnType`：
 
 ```tsx
 import { TextInput } from '@react-ui/ui';

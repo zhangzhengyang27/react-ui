@@ -4,28 +4,26 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.NumberFormatter);
 
-## Usage
+## 用法
 
-Use `NumberFormatter` to format numbers. It supports the same formatting-related props
-as the [NumberInput](/core/number-input/) component.
+使用 `NumberFormatter` 格式化数字。它支持与 [NumberInput](/core/number-input/) 组件相同的格式化相关属性。
 
 <Demo data={NumberFormatterDemos.usage} />
 
-## Prefix and suffix
+## 前缀与后缀
 
-Set the `prefix` and `suffix` props to add a given string to the start or end of the value:
+设置 `prefix` 和 `suffix` 属性以在值的开头和结尾添加指定字符串：
 
 <Demo data={NumberFormatterDemos.prefixSuffix} />
 
-## Thousands separator
+## 千分位分隔符
 
-Set the `thousandSeparator` prop to separate thousands with a character. You can control
-the grouping logic with `thousandsGroupStyle`, which accepts: `thousand`, `lakh`, `wan`, `none` values.
+设置 `thousandSeparator` 属性以使用字符分隔千位。你可以使用 `thousandsGroupStyle` 控制分组逻辑，它接受：`thousand`、`lakh`、`wan`、`none` 值。
 
 <Demo data={NumberFormatterDemos.thousandsSeparator} />
 
-## Decimal scale
+## 小数位数
 
-The `decimalScale` prop controls the number of allowed decimal places:
+`decimalScale` 属性控制允许的小数位数：
 
 <Demo data={NumberFormatterDemos.decimalScale} />

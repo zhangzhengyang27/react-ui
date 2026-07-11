@@ -3,26 +3,26 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.UsageWithSass);
 
-# Usage with Sass
+# 配合 Sass 使用
 
-This guide will explain how to use [Sass](https://sass-lang.com/) in combination with
-[postcss-preset-mantine](/styles/postcss-preset). Note that the examples on the react-ui.dev website
-use only `postcss-preset-mantine` – you will need to modify them to use with Sass.
+本指南将介绍如何结合 [Sass](https://sass-lang.com/) 和
+[postcss-preset-mantine](/styles/postcss-preset) 使用。注意 react-ui.dev 网站上的示例
+只使用了 `postcss-preset-mantine`——你需要根据需要修改它们以配合 Sass 使用。
 
-## Sass modules
+## Sass 模块
 
-You can use Sass modules the same way as [CSS modules](/styles/css-modules):
+你可以像使用 [CSS modules](/styles/css-modules) 一样使用 Sass modules：
 
-- Use `*.module.scss`/`*.module.sass` extension for your files to enable modules
-- Use `*.scss`/`*.sass` extension for global styles
+- 使用 `*.module.scss`/`*.module.sass` 扩展名启用 modules
+- 使用 `*.scss`/`*.sass` 扩展名编写全局样式
 
-## Usage with Vite
+## 配合 Vite 使用
 
-Install `sass`:
+安装 `sass`：
 
 <InstallScript packages="sass-embedded" dev />
 
-Add ReactUI resources in your `vite.config.js` file:
+在你的 `vite.config.js` 文件中添加 ReactUI 资源：
 
 ```tsx
 import path from 'node:path';
@@ -42,7 +42,7 @@ export default defineConfig({
 });
 ```
 
-Create the `src/_mantine.scss` file:
+创建 `src/_mantine.scss` 文件：
 
 ```scss
 @use 'sass:math';
@@ -111,7 +111,7 @@ $mantine-breakpoint-xl: '88em';
 }
 ```
 
-All done! you can now use breakpoint variables, `rem` function, `hover`, `light`/`dark` mixins:
+全部完成！现在你可以使用断点变量、`rem` 函数、`hover`、`light`/`dark` mixins：
 
 ```scss
 // example.module.scss
@@ -139,13 +139,13 @@ All done! you can now use breakpoint variables, `rem` function, `hover`, `light`
 }
 ```
 
-## Usage with Next.js
+## 配合 Next.js 使用
 
-Install `sass`:
+安装 `sass`：
 
 <InstallScript packages="sass-embedded" dev />
 
-Add mantine resources in your `next.config.mjs` file:
+在你的 `next.config.mjs` 文件中添加 mantine 资源：
 
 ```tsx
 import path from 'node:path';
@@ -159,7 +159,7 @@ export default {
 };
 ```
 
-Create `_mantine.scss` file in the root folder of your project:
+在项目根目录创建 `_mantine.scss` 文件：
 
 ```scss
 @use 'sass:math';
@@ -228,7 +228,7 @@ $mantine-breakpoint-xl: '88em';
 }
 ```
 
-All done! you can now use breakpoint variables, `rem` function, `hover`, `light`/`dark` mixins:
+全部完成！现在你可以使用断点变量、`rem` 函数、`hover`、`light`/`dark` mixins：
 
 ```scss
 // example.module.scss

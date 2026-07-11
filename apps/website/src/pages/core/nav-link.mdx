@@ -4,19 +4,19 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.NavLink);
 
-## Usage
+## 用法
 
 <Demo data={NavLinkDemos.usage} />
 
-## Active
+## 激活状态
 
-Set the `active` prop to add active styles to `NavLink`.
+设置 `active` 属性为 `NavLink` 添加激活样式。
 
-Note that if you're using a React Router `NavLink` inside `renderRoot`, the active styles will be based on the
-[`aria-current` attribute that's set by React Router](https://reactrouter.com/en/main/components/nav-link#aria-current),
-so you won't need to explicitly set the `active` prop.
+注意，如果你在 `renderRoot` 中使用 React Router 的 `NavLink`，激活样式将基于
+[React Router 设置的 `aria-current` 属性](https://reactrouter.com/en/main/components/nav-link#aria-current)，
+因此你不需要显式设置 `active` 属性。
 
-You can customize active styles with the `color` and `variant` props:
+你可以使用 `color` 和 `variant` 属性自定义激活样式：
 
 <Demo data={NavLinkDemos.active} />
 
@@ -24,9 +24,9 @@ You can customize active styles with the `color` and `variant` props:
 
 <Demo data={NavLinkDemos.autoContrast} />
 
-## Nested NavLinks
+## 嵌套 NavLinks
 
-To create nested links, put `NavLink` as children of another `NavLink`:
+要创建嵌套链接，请将 `NavLink` 作为另一个 `NavLink` 的子元素：
 
 <Demo data={NavLinkDemos.nested} />
 

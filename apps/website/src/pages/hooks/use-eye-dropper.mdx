@@ -4,14 +4,14 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useEyeDropper);
 
-## Usage
+## 用法
 
-The `use-eye-dropper` hook provides an interface to work with [EyeDropper API](https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper_API).
-Check [browser support](https://caniuse.com/mdn-api_eyedropper) to learn which browsers support the API.
+`use-eye-dropper` Hook 提供了与 [EyeDropper API](https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper_API) 交互的接口。
+请查看[浏览器支持](https://caniuse.com/mdn-api_eyedropper)了解哪些浏览器支持该 API。
 
 <Demo data={UseEyeDropperDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 interface EyeDropperOpenOptions {
@@ -30,10 +30,10 @@ interface UseEyeDropperReturnValue {
 function useEyeDropper(): UseEyeDropperReturnValue;
 ```
 
-## Exported types
+## 导出类型
 
-`EyeDropperOpenOptions`, `EyeDropperOpenReturnType` and `UseEyeDropperReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`EyeDropperOpenOptions`、`EyeDropperOpenReturnType` 和 `UseEyeDropperReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type {

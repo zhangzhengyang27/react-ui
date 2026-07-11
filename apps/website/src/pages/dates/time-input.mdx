@@ -4,27 +4,25 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.TimeInput);
 
-## Usage
+## 用法
 
 <InputFeatures component="TimeInput" element="input" />
 
 <Demo data={TimeInputDemos.configurator} />
 
-## TimePicker component
+## TimePicker 组件
 
-The `TimeInput` component is based on the native `input[type="time"]` element and does not support
-most advanced features like choosing time format or custom dropdown with time select. If you need
-more features, use the [TimePicker](/dates/time-picker) component instead.
+`TimeInput` 组件基于原生 `input[type="time"]` 元素，不支持选择时间格式或自定义时间下拉框等高级功能。如果需要更多功能，请改用 [TimePicker](/dates/time-picker) 组件。
 
-`TimeInput` features/limitations:
+`TimeInput` 特性/限制：
 
-- Native `input[type="time"]` element
-- Native browser controls for time selection on mobile devices
-- Time format depends on the user's locale
-- Only native dropdown with hours/minutes/seconds, does not work in Firefox
-- Mobile Safari does not provide an option to select seconds
+- 原生 `input[type="time"]` 元素
+- 在移动设备上使用原生浏览器时间选择控件
+- 时间格式取决于用户 locale
+- 仅支持原生的小时/分钟/秒下拉框，在 Firefox 中不可用
+- 移动端 Safari 不支持选择秒
 
-## Controlled
+## 受控
 
 ```tsx
 import { useState } from 'react';
@@ -41,23 +39,22 @@ function Demo() {
 }
 ```
 
-## Show browser picker
+## 显示浏览器选择器
 
-You can show the browser picker by calling the `showPicker` method of the input element.
-Note that some browsers (desktop Safari) do not support this feature and the
-method will do nothing.
+你可以通过调用 input 元素的 `showPicker` 方法来显示浏览器选择器。
+注意某些浏览器（桌面 Safari）不支持此功能，调用后不会有任何效果。
 
 <Demo data={TimeInputDemos.picker} />
 
-## With seconds
+## 带秒
 
 <Demo data={TimeInputDemos.withSeconds} />
 
-## With icon
+## 带图标
 
 <Demo data={TimeInputDemos.icon} />
 
-## Disabled state
+## 禁用状态
 
 <Demo data={TimeInputDemos.disabled} />
 

@@ -4,27 +4,27 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.SemiCircleProgress);
 
-## Usage
+## 用法
 
 <Demo data={SemiCircleProgressDemos.usage} />
 
-## Change empty segment color
+## 更改空段颜色
 
-Use `emptySegmentColor` prop to change color of empty segment,
-it accepts key of `theme.colors` or any valid CSS color value:
+使用 `emptySegmentColor` 属性更改空段颜色，
+它接受 `theme.colors` 的键或任何有效的 CSS 颜色值：
 
 <Demo data={SemiCircleProgressDemos.emptySegmentColor} />
 
-## Change label position
+## 更改标签位置
 
-By default, the label is displayed at the bottom of the component,
-you can change its position to `center` by using `labelPosition` prop:
+默认情况下，标签显示在组件底部，
+你可以使用 `labelPosition` 属性将其位置更改为 `center`：
 
 <Demo data={SemiCircleProgressDemos.labelPosition} />
 
-## Filled segment transition
+## 填充段过渡
 
-By default, transitions are disabled, to enable them, set `transitionDuration` prop
-to a number of milliseconds:
+默认情况下过渡被禁用，要启用过渡，请将 `transitionDuration` 属性
+设置为毫秒数：
 
 <Demo data={SemiCircleProgressDemos.transitions} />

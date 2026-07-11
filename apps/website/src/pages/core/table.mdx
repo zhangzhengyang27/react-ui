@@ -4,9 +4,9 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Table);
 
-## Usage
+## 用法
 
-Table data for all examples:
+所有示例的表格数据：
 
 ```tsx
 const elements = [
@@ -20,72 +20,65 @@ const elements = [
 
 <Demo data={TableDemos.usage} />
 
-## data prop
+## data 属性
 
-You can use the `data` prop to automatically generate table rows from an array of React nodes.
-The `data` prop accepts an object with the following properties:
+你可以使用 `data` 属性从 React node 数组自动生成表格行。`data` 属性接受一个具有以下属性的对象：
 
-- `head` – an array of React nodes (`React.ReactNode[]`) to render `Table.Th` in `Table.Thead`
-- `foot` – an array of React nodes (`React.ReactNode[]`) to render `Table.Th` in `Table.Tfoot`
-- `body` - an array of arrays of React nodes (`React.ReactNode[][]`) to render `Table.Td` in `Table.Tbody`
-- `caption` – a React node to render `Table.Caption`
+- `head` – 一个 React node 数组（`React.ReactNode[]`），用于在 `Table.Thead` 中渲染 `Table.Th`
+- `foot` – 一个 React node 数组（`React.ReactNode[]`），用于在 `Table.Tfoot` 中渲染 `Table.Th`
+- `body` - 一个 React node 二维数组（`React.ReactNode[][]`），用于在 `Table.Tbody` 中渲染 `Table.Td`
+- `caption` – 一个 React node，用于渲染 `Table.Caption`
 
 <Demo data={TableDemos.data} />
 
-## Sticky header
+## 粘性表头
 
-Set `stickyHeader` to make the table header sticky. To customize the top position of the header, use the `stickyHeaderOffset` prop:
-it is useful when you have a fixed header in your application. For example, the ReactUI documentation website has a fixed
-header with 60px height:
+设置 `stickyHeader` 使表格表头粘性定位。使用 `stickyHeaderOffset` 属性自定义表头顶部位置：当你的应用中有固定表头时这很有用。例如，ReactUI 文档网站有一个高度为 60px 的固定表头：
 
 <Demo data={TableDemos.stickyHeader} />
 
-## Spacing
+## 间距
 
-To control spacing, use the `horizontalSpacing` and `verticalSpacing` props. Both props support spacing from `theme.spacing` and any valid CSS value to set cell padding:
+使用 `horizontalSpacing` 和 `verticalSpacing` 属性控制间距。两个属性都支持 `theme.spacing` 中的间距值和任何有效的 CSS 值来设置单元格内边距：
 
 <Demo data={TableDemos.spacingConfigurator} />
 
-## Caption and tfoot
+## Caption 和 tfoot
 
-Table supports tfoot and caption elements. Set the `captionSide` prop (top or bottom) to change the caption position.
+Table 支持 tfoot 和 caption 元素。设置 `captionSide` 属性（top 或 bottom）以更改 caption 位置。
 
 <Demo data={TableDemos.captions} />
 
-## Striped and rows hover
+## 斑马纹与行悬停
 
 <Demo data={TableDemos.configurator} />
 
-## Scroll container
+## 滚动容器
 
-To prevent viewport overflow, wrap `Table` with `Table.ScrollContainer`.
-The component accepts a `minWidth` prop which sets the minimum width below which the table will be scrollable.
+为了防止视口溢出，请将 `Table` 包裹在 `Table.ScrollContainer` 中。该组件接受一个 `minWidth` 属性，用于设置表格可滚动的最小宽度阈值。
 
 <Demo data={TableDemos.scrollContainer} />
 
-By default, `Table.ScrollContainer` uses [ScrollArea](/core/scroll-area), you can change it
-to native scrollbars by setting `type="native"`:
+默认情况下，`Table.ScrollContainer` 使用 [ScrollArea](/core/scroll-area)，你可以通过设置 `type="native"` 将其更改为原生滚动条：
 
 <Demo data={TableDemos.scrollContainerNative} />
 
-You can also set the `maxHeight` prop on `Table.ScrollContainer` to limit the table height:
+你还可以在 `Table.ScrollContainer` 上设置 `maxHeight` 属性以限制表格高度：
 
 <Demo data={TableDemos.scrollContainerMaxHeight} />
 
-## Vertical variant
+## 垂直变体
 
-Set `variant="vertical"` to render the table with a vertical layout:
+设置 `variant="vertical"` 以垂直布局渲染表格：
 
 <Demo data={TableDemos.vertical} />
 
-## Tabular numbers
+## 等宽数字
 
-Set the `tabularNums` prop to render numbers in tabular style. It sets
-`font-variant-numeric: tabular-nums` which makes numbers have equal width.
-This is useful when you have columns with numbers and you want them to be aligned:
+设置 `tabularNums` 属性以等宽样式渲染数字。它会设置 `font-variant-numeric: tabular-nums`，使数字具有相同宽度。当你有数字列并希望它们对齐时，这很有用：
 
 <Demo data={TableDemos.tabularNums} />
 
-## Example: Table with row selection
+## 示例：带行选择的表格
 
 <Demo data={TableDemos.rowSelection} />

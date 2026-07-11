@@ -4,13 +4,13 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useFileDialog);
 
-## Usage
+## 用法
 
-The `use-file-dialog` hook allows you to capture one or more files from the user without a file input element:
+`use-file-dialog` Hook 允许你在没有文件输入元素的情况下从用户那里获取一个或多个文件：
 
 <Demo data={UseFileDialogDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseFileDialogOptions {
@@ -48,10 +48,10 @@ interface UseFileDialogReturnValue {
 function useFileDialog(input?: UseFileDialogOptions): UseFileDialogReturnValue;
 ```
 
-## Exported types
+## 导出类型
 
-`UseFileDialogOptions` and `UseFileDialogReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseFileDialogOptions` 和 `UseFileDialogReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseFileDialogOptions, UseFileDialogReturnValue } from '@react-ui/hooks';

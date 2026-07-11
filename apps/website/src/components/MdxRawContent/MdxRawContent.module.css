@@ -45,4 +45,8 @@
 
 .tableOfContents {
   flex: 0 0 var(--docs-table-of-contents-width);
+  position: sticky;
+  top: var(--docs-header-height);
+  align-self: flex-start;
+  height: calc(100vh - var(--docs-header-height));
 }

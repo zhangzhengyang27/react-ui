@@ -4,10 +4,10 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.usePagination);
 
-## Usage
+## 用法
 
-The `use-pagination` hook is a state management hook for the [Pagination](/core/pagination/) component;
-it manages pagination with controlled and uncontrolled state:
+`use-pagination` Hook 是 [Pagination](/core/pagination/) 组件的状态管理 Hook；
+它以受控和非受控状态管理分页：
 
 <Demo data={PaginationDemos.usage} />
 
@@ -34,9 +34,9 @@ pagination.first();
 pagination.range; // -> [1, 2, 3, 4, 5, 'dots', 10];
 ```
 
-## Controlled
+## 受控模式
 
-The hook supports controlled mode; provide `page` and `onChange` props to manage state from outside:
+该 Hook 支持受控模式；提供 `page` 和 `onChange` 属性以从外部管理状态：
 
 ```tsx
 import { useState } from 'react';
@@ -45,16 +45,16 @@ import { usePagination } from '@react-ui/hooks';
 const [page, onChange] = useState(1);
 const pagination = usePagination({ total: 10, page, onChange });
 
-// Will call onChange with 5
+// 将调用 onChange 并传入 5
 pagination.setPage(5);
 pagination.range; // -> [1, 'dots', 4, 5, 6, 'dots', 10];
 
-// ... All other examples work the same
+// ... 其他所有示例的工作方式相同
 ```
 
-## Siblings
+## 相邻项
 
-Control number of active item siblings with `siblings`:
+使用 `siblings` 控制活动项两侧的相邻项数量：
 
 ```tsx
 import { usePagination } from '@react-ui/hooks';
@@ -64,9 +64,9 @@ const pagination = usePagination({ total: 20, siblings: 3 });
 
 <Demo data={PaginationDemos.siblings} demoProps={{ toggle: true }} />
 
-## Boundaries
+## 边界
 
-Control number of items on each boundary with `boundaries`:
+使用 `boundaries` 控制每侧边界上显示的元素数量：
 
 ```tsx
 import { usePagination } from '@react-ui/hooks';
@@ -79,69 +79,69 @@ const pagination = usePagination({ total: 20, boundaries: 3 });
   demoProps={{ toggle: true }}
 />
 
-## Start value
+## 起始值
 
-Set `startValue` to define the starting page number. For example, with `startValue={5}` and `total={15}`,
-the pagination range will be from 5 to 15:
+设置 `startValue` 以定义起始页码。例如，当 `startValue={5}` 且 `total={15}` 时，
+分页范围将从 5 到 15：
 
 <Demo data={UsePaginationDemos.startValue} />
 
-## Definition
+## 类型定义
 
 ```tsx
 export interface UsePaginationOptions {
-  /** Page selected on initial render, defaults to 1 or startValue if provided */
+  /** 初始渲染时选中的页面，默认为 1，如果提供了 startValue 则使用 startValue */
   initialPage?: number;
 
-  /** Controlled active page number */
+  /** 受控活动页码 */
   page?: number;
 
-  /** Total amount of pages */
+  /** 总页数 */
   total: number;
 
-  /** Siblings amount on left/right side of selected page, defaults to 1 */
+  /** 选中页面左右两侧的相邻项数量，默认 1 */
   siblings?: number;
 
-  /** Amount of elements visible on left/right edges, defaults to 1  */
+  /** 左右边缘可见的元素数量，默认 1  */
   boundaries?: number;
 
-  /** Callback fired after change of each page */
+  /** 每次页面变化后触发的回调 */
   onChange?: (page: number) => void;
 
-  /** Starting page number, defaults to 1 */
+  /** 起始页码，默认 1 */
   startValue?: number;
 }
 
 export interface UsePaginationReturnValue {
-  /** Array of page numbers and dots */
+  /** 页码和省略号的数组 */
   range: (number | 'dots')[];
 
-  /** Active page number */
+  /** 活动页码 */
   active: number;
 
-  /** Function to set active page */
+  /** 设置活动页码的函数 */
   setPage: (page: number) => void;
 
-  /** Function to go to next page */
+  /** 前往下一页的函数 */
   next: () => void;
 
-  /** Function to go to previous page */
+  /** 前往上一页的函数 */
   previous: () => void;
 
-  /** Function to go to first page */
+  /** 前往第一页的函数 */
   first: () => void;
 
-  /** Function to go to last page */
+  /** 前往最后一页的函数 */
   last: () => void;
 }
 
 function usePagination(settings: UsePaginationOptions): UsePaginationReturnValue;
 ```
 
-## Exported types
+## 导出类型
 
-`UsePaginationOptions` and `UsePaginationReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UsePaginationOptions` 和 `UsePaginationReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UsePaginationOptions, UsePaginationReturnValue } from '@react-ui/hooks';

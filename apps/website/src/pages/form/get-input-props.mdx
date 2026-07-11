@@ -4,20 +4,18 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.formGetInputProps);
 
-## getInputProps handler
+## getInputProps 处理程序
 
-`form.getInputProps` returns an object with `value` (`defaultValue` for "uncontrolled" mode), `onChange`, `onFocus`, `onBlur`, `error`
-and all props specified in the `enhanceGetInputProps` function. The return value should be spread to the input component.
+`form.getInputProps` 返回一个对象，其中包含 `value`（非受控模式下为 `defaultValue`）、`onChange`、`onFocus`、`onBlur`、`error`
+以及在 `enhanceGetInputProps` 函数中指定的所有 props。返回值应展开到输入组件上。
 
-You can pass the following options to `form.getInputProps` as the second argument:
+你可以将以下选项作为第二个参数传递给 `form.getInputProps`：
 
-- `type`: default `input`. Must be set to `checkbox` if the input requires `checked` prop instead of `value`. Set to `radio` for radio inputs – requires `value` option.
-- `value`: required when `type` is `radio`. Specifies the value of the individual radio option.
-- `withError`: default `type === 'input'`. Determines whether the returned object should contain an `error` property with
-  `form.errors[path]` value.
-- `withFocus`: default `true` (`false` for `type: 'radio'`). Determines whether the returned object should contain an `onFocus` handler. If disabled, the touched
-  state will only change if the value of the field has been changed.
-- Any additional props that can be accessed with the `enhanceGetInputProps` function. These props are not passed to the input.
+- `type`：默认 `input`。如果输入需要 `checked` prop 而不是 `value` prop，则必须设置为 `checkbox`。对于单选输入，设置为 `radio`——需要 `value` 选项。
+- `value`：当 `type` 为 `radio` 时必填。指定单个单选选项的值。
+- `withError`：默认 `type === 'input'`。确定返回的对象是否应包含 `error` 属性，其值为 `form.errors[path]`。
+- `withFocus`：默认 `true`（`type: 'radio'` 时为 `false`）。确定返回的对象是否应包含 `onFocus` 处理程序。如果禁用，则触碰状态只会在字段值发生变化时改变。
+- 任何可以通过 `enhanceGetInputProps` 函数访问的附加 props。这些 props 不会传递给输入框。
 
 ```tsx
 import { Checkbox, TextInput } from '@react-ui/ui';
@@ -47,49 +45,46 @@ function Demo() {
 }
 ```
 
-## Radio inputs
+## 单选输入
 
-Use `type: 'radio'` with `value` option to use `getInputProps` with individual radio inputs.
-When `type` is `radio`, `getInputProps` returns `checked` (or `defaultChecked` in uncontrolled mode)
-comparing the form value against the provided option `value`, and passes `value` through to the input.
+将 `type: 'radio'` 与 `value` 选项一起使用，以将 `getInputProps` 用于单个单选输入。
+当 `type` 为 `radio` 时，`getInputProps` 会将表单值与提供的选项 `value` 进行比较，返回 `checked`（非受控模式下为 `defaultChecked`），
+并将 `value` 透传给输入框。
 
 <Demo data={FormDemos.radioGetInputProps} />
 
 ## enhanceGetInputProps
 
-`enhanceGetInputProps` is a function that can be used to add additional props to the object returned by `form.getInputProps`.
-You can define it in the `useForm` hook options. Its argument is an object with the following properties:
+`enhanceGetInputProps` 是一个函数，可用于向 `form.getInputProps` 返回的对象添加额外的 props。
+你可以在 `useForm` Hook 选项中定义它。它的参数是一个具有以下属性的对象：
 
-- `inputProps` – object returned by `form.getInputProps` by default
-- `field` – field path, first argument of `form.getInputProps`, for example `name`, `user.email`, `users.0.name`
-- `options` – second argument of `form.getInputProps`, for example `{ type: 'checkbox' }`, can be used to pass additional
-  options to the `enhanceGetInputProps` function
-- `form` – form instance
+- `inputProps` – `form.getInputProps` 默认返回的对象
+- `field` – 字段路径，`form.getInputProps` 的第一个参数，例如 `name`、`user.email`、`users.0.name`
+- `options` – `form.getInputProps` 的第二个参数，例如 `{ type: 'checkbox' }`，可用于向 `enhanceGetInputProps` 函数传递额外的选项
+- `form` – 表单实例
 
-Example of using `enhanceGetInputProps` to disable an input based on field path:
+使用 `enhanceGetInputProps` 根据字段路径禁用输入的示例：
 
 <Demo data={FormDemos.enhanceGetInputProps} />
 
-Example of using `enhanceGetInputProps` to add additional props to the input based on an option passed to `form.getInputProps`:
+使用 `enhanceGetInputProps` 根据传给 `form.getInputProps` 的选项向输入添加额外 props 的示例：
 
 <Demo data={FormDemos.enhanceGetInputPropsOptions} />
 
-Example of using `enhanceGetInputProps` to add `disabled` prop to all inputs if the form
-has not been initialized yet:
+使用 `enhanceGetInputProps` 在表单尚未初始化时向所有输入添加 `disabled` prop 的示例：
 
 <Demo data={FormDemos.enhanceGetInputPropsForm} />
 
-## Initialize form
+## 初始化表单
 
-When called, the `form.initialize` handler sets `initialValues` and `values` to the same value
-and marks the form as initialized. It can be used only once. Subsequent `form.initialize` calls
-are ignored.
+调用时，`form.initialize` 处理程序将 `initialValues` 和 `values` 设置为相同的值，
+并将表单标记为已初始化。它只能使用一次。后续的 `form.initialize` 调用将被忽略。
 
-`form.initialize` is useful when you want to sync form values with backend API response:
+`form.initialize` 在你希望将表单值与后端 API 响应同步时非常有用：
 
 <Demo data={FormDemos.initialize} />
 
-Example with [TanStack Query](https://tanstack.com/query/latest) (react-query):
+与 [TanStack Query](https://tanstack.com/query/latest)（react-query）一起使用的示例：
 
 ```tsx
 import { useEffect } from 'react';
@@ -112,16 +107,16 @@ function Demo() {
 
   useEffect(() => {
     if (query.data) {
-      // Even if query.data changes, the form will be initialized only once
+      // 即使 query.data 变化，表单也只会初始化一次
       form.initialize(query.data);
     }
   }, [query.data]);
 }
 ```
 
-## Integrate getInputProps with custom inputs
+## 将 getInputProps 与自定义输入集成
 
-`form.getInputProps` returns an object with the following properties:
+`form.getInputProps` 返回一个具有以下属性的对象：
 
 - `value`
 - `defaultValue`
@@ -130,10 +125,10 @@ function Demo() {
 - `onBlur`
 - `error`
 
-To create a custom input that works with `form.getInputProps`, make sure that your component
-accepts these props and passes them to the input component or uses them in some other way.
+要创建与 `form.getInputProps` 配合使用的自定义输入，请确保你的组件
+接受这些 props，并将它们传递给输入组件或以其他方式使用它们。
 
-Example of creating a custom input component:
+创建自定义输入组件的示例：
 
 ```tsx
 interface CustomInputProps {
@@ -168,7 +163,7 @@ export function CustomInput({
 }
 ```
 
-Then use it with `form.getInputProps`:
+然后与 `form.getInputProps` 一起使用：
 
 ```tsx
 import { useForm } from '@react-ui/ui';

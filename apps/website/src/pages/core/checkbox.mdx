@@ -4,13 +4,13 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Checkbox);
 
-## Usage
+## 用法
 
 <Demo data={CheckboxDemos.configurator} />
 
-## Controlled state
+## 受控状态
 
-Use `checked` and `onChange` props to control `Checkbox` state:
+使用 `checked` 和 `onChange` 属性控制 `Checkbox` 状态：
 
 ```tsx
 import { useState } from 'react';
@@ -27,12 +27,11 @@ function Demo() {
 }
 ```
 
-## Read only
+## 只读
 
-Set the `readOnly` prop to prevent the checkbox value from being changed by user
-interaction. The checkbox still displays its current value and reflects programmatic
-updates to the `checked` prop, but clicking it (or pressing <kbd>Space</kbd>) does not
-toggle its state and does not call the `onChange` handler:
+设置 `readOnly` 属性以防止用户交互更改复选框值。
+复选框仍会显示其当前值并反映对 `checked` 属性的程序化更新，但点击它（或按 <kbd>Space</kbd>）不会
+切换其状态，也不会调用 `onChange` 处理程序：
 
 ```tsx
 import { useState } from 'react';
@@ -51,19 +50,19 @@ function Demo() {
 }
 ```
 
-## Checkbox with @react-ui/ui
+## 与 @react-ui/ui 一起使用的 Checkbox
 
-Example of using `Checkbox` with [@react-ui/ui](/form/use-form):
+将 `Checkbox` 与 [@react-ui/ui](/form/use-form) 一起使用的示例：
 
 <Demo data={CheckboxDemos.withUseForm} />
 
-## Checkbox with uncontrolled forms
+## 与非受控表单一起使用的 Checkbox
 
-`Checkbox` can be used with uncontrolled forms the same way as native `input[type="checkbox"]`.
-Set the `name` attribute to include checkbox value in `FormData` object on form submission.
-To control initial checked state in uncontrolled forms, use `defaultChecked` prop.
+`Checkbox` 可以像原生 `input[type="checkbox"]` 一样用于非受控表单。
+设置 `name` 属性以在表单提交时将复选框值包含在 `FormData` 对象中。
+要控制非受控表单中的初始选中状态，请使用 `defaultChecked` 属性。
 
-Example usage of uncontrolled `Checkbox` with `FormData`:
+非受控 `Checkbox` 与 `FormData` 的用法示例：
 
 ```tsx
 import { Checkbox } from '@react-ui/ui';
@@ -84,55 +83,55 @@ function Demo() {
 }
 ```
 
-## States
+## 状态
 
 <Demo data={CheckboxDemos.states} />
 
-## Error state
+## 错误状态
 
-Use the `error` prop to display error message below the checkbox label.
-If you want to apply error styles to checkbox without error message, user boolean `error` prop.
-If you want to display error message without applying error styles, set `withErrorStyles={false}`.
+使用 `error` 属性在复选框标签下方显示错误信息。
+如果你想对复选框应用错误样式但不显示错误信息，请使用布尔值 `error` 属性。
+如果你想显示错误信息但不应用错误样式，请设置 `withErrorStyles={false}`。
 
 <Demo data={CheckboxDemos.error} />
 
-## Change icons
+## 更改图标
 
 <Demo data={CheckboxDemos.icon} />
 
-## Change icon color
+## 更改图标颜色
 
-Use the `iconColor` prop to change the icon color. You can reference colors from `theme.colors` or use any valid CSS color:
+使用 `iconColor` 属性更改图标颜色。你可以引用 `theme.colors` 中的颜色或使用任何有效的 CSS 颜色：
 
 <Demo data={CheckboxDemos.iconColor} />
 
-## Indeterminate state
+## 不确定状态
 
-`Checkbox` supports indeterminate state. When the `indeterminate` prop is set,
-the `checked` prop is ignored (checkbox always has checked styles):
+`Checkbox` 支持不确定状态。当设置 `indeterminate` 属性时，
+`checked` 属性被忽略（复选框始终具有选中样式）：
 
 <Demo
   data={CheckboxDemos.indeterminate}
   demoProps={{ toggle: true }}
 />
 
-## Label with link
+## 带链接的标签
 
 <Demo data={CheckboxDemos.anchor} />
 
-## Checkbox with tooltip
+## 带 Tooltip 的 Checkbox
 
-You can change the target element to which the tooltip is attached with `refProp`:
+你可以使用 `refProp` 更改 tooltip 附加到的目标元素：
 
-- If `refProp` is not set, the tooltip is attached to the checkbox input
-- If `refProp="rootRef"` is set, the tooltip is attached to the root element (contains label, input and other elements)
+- 如果未设置 `refProp`，tooltip 附加到复选框输入
+- 如果设置 `refProp="rootRef"`，tooltip 附加到根元素（包含标签、输入和其他元素）
 
 <Demo data={CheckboxDemos.tooltip} />
 
-## Pointer cursor
+## 指针光标
 
-By default, checkbox input and label have `cursor: default` (same as native `input[type="checkbox"]`).
-To change the cursor to pointer, set `cursorType` on [theme](/theming/theme-object/):
+默认情况下，复选框输入和标签具有 `cursor: default`（与原生 `input[type="checkbox"]` 相同）。
+要将光标更改为 pointer，请在 [theme](/theming/theme-object/) 上设置 `cursorType`：
 
 <Demo data={ThemingDemos.cursorType} />
 
@@ -140,9 +139,9 @@ To change the cursor to pointer, set `cursorType` on [theme](/theming/theme-obje
 
 <Demo data={CheckboxDemos.autoContrast} />
 
-## Add custom sizes
+## 添加自定义尺寸
 
-You can add any number of custom sizes with [data-size](/styles/data-attributes/) attribute:
+你可以使用 [data-size](/styles/data-attributes/) 属性添加任意数量的自定义尺寸：
 
 <Demo data={CheckboxDemos.customSize} />
 
@@ -150,9 +149,9 @@ You can add any number of custom sizes with [data-size](/styles/data-attributes/
 
 ## Checkbox.Group
 
-`Checkbox.Group` manages the state of multiple checkboxes, it accepts `value` and `onChange`
-props, which are used to control the state of checkboxes inside the group. The `value` prop should be an array of strings, where each string is the value of a checkbox.
-The `onChange` prop should be a function that receives the new value as an array of strings.
+`Checkbox.Group` 管理多个复选框的状态，它接受 `value` 和 `onChange`
+属性，用于控制组内复选框的状态。`value` 属性应为字符串数组，其中每个字符串是一个复选框的值。
+`onChange` 属性应为接收新值作为字符串数组的函数。
 
 ```tsx
 import { useState } from 'react';
@@ -170,37 +169,37 @@ function Demo() {
 }
 ```
 
-`Checkbox.Group` component supports all [Input.Wrapper](/core/input/#inputwrapper-component)
-props.
+`Checkbox.Group` 组件支持所有 [Input.Wrapper](/core/input/#inputwrapper-component)
+属性。
 
 <Demo data={CheckboxDemos.groupConfigurator} />
 
-## Checkbox.Group disabled
+## Checkbox.Group 禁用
 
 <Demo data={CheckboxDemos.groupDisabled} />
 
 ## maxSelectedValues
 
-Use `maxSelectedValues` prop to limit the number of selected values in `Checkbox.Group`.
-When the limit is reached, the remaining checkboxes are disabled and cannot be selected.
+使用 `maxSelectedValues` 属性限制 `Checkbox.Group` 中可选值的数量。
+达到限制时，剩余的复选框将被禁用且无法选择。
 
 <Demo data={CheckboxDemos.maxSelectedValues} />
 
-## Checkbox.Group with @react-ui/ui
+## 与 @react-ui/ui 一起使用的 Checkbox.Group
 
-Example of using `Checkbox.Group` with [@react-ui/ui](/form/use-form):
+将 `Checkbox.Group` 与 [@react-ui/ui](/form/use-form) 一起使用的示例：
 
 <Demo data={CheckboxDemos.groupWithUseForm} />
 
-## Checkbox.Group with uncontrolled forms
+## 与非受控表单一起使用的 Checkbox.Group
 
-`Checkbox.Group` can be used with uncontrolled forms, it renders a hidden input
-which joins all checked values into a single string using `hiddenInputValuesSeparator` prop.
+`Checkbox.Group` 可以用于非受控表单，它渲染一个隐藏输入，
+使用 `hiddenInputValuesSeparator` 属性将所有选中值连接成单个字符串。
 
-Props for usage with uncontrolled forms:
-- `name` – name attribute passed to the hidden input
-- `hiddenInputValuesSeparator` – string used to join checked values into a single string, `','` by default
-- `hiddenInputProps` – additional props passed to the hidden input
+用于非受控表单的属性：
+- `name` – 传递给隐藏输入的 name 属性
+- `hiddenInputValuesSeparator` – 用于将选中值连接成单个字符串的字符串，默认为 `','`
+- `hiddenInputProps` – 传递给隐藏输入的附加属性
 
 ```tsx
 export function UncontrolledForm() {
@@ -224,33 +223,30 @@ export function UncontrolledForm() {
 
 ## Checkbox.Indicator
 
-`Checkbox.Indicator` looks exactly the same as the `Checkbox` component, but it does not
-have any semantic meaning, it's just a visual representation of checkbox state. You
-can use it in any place where you need to display checkbox state without any interaction
-related to the indicator. For example, it is useful in cards based on buttons, trees, etc.
+`Checkbox.Indicator` 外观与 `Checkbox` 组件完全相同，但它没有
+任何语义含义，只是复选框状态的视觉表示。你可以在需要显示复选框状态但不需要任何与指示器交互的地方使用它。
+例如，它适用于基于按钮的卡片、树等。
 
-Note that `Checkbox.Indicator` cannot be focused or selected with keyboard. It is not
-accessible and should not be used as a replacement for the `Checkbox` component.
+注意，`Checkbox.Indicator` 无法获得焦点或使用键盘选择。它不具备
+可访问性，不应作为 `Checkbox` 组件的替代品。
 
 <Demo data={CheckboxDemos.indicator} />
 
-## Checkbox.Card component
+## Checkbox.Card 组件
 
-`Checkbox.Card` component can be used as a replacement for `Checkbox` to build custom
-cards/buttons/other things that work as checkboxes. The root element of the component
-has `role="checkbox"` attribute, it is accessible by default and supports the same
-keyboard interactions as `input[type="checkbox"]`.
+`Checkbox.Card` 组件可用作 `Checkbox` 的替代品，用于构建自定义
+卡片/按钮/其他作为复选框工作的元素。组件的根元素具有 `role="checkbox"` 属性，默认具备可访问性并支持与 `input[type="checkbox"]` 相同的键盘交互。
 
 <Demo data={CheckboxDemos.card} />
 
-You can use `Checkbox.Card` with `Checkbox.Group` the same way as the `Checkbox` component:
+你可以像使用 `Checkbox` 组件一样将 `Checkbox.Card` 与 `Checkbox.Group` 一起使用：
 
 <Demo data={CheckboxDemos.cardGroup} />
 
 <GetElementRef component="Checkbox" refType="input" />
 
-The example above shows how to get ref of the checkbox input element.
-To get ref of the root element, use `rootRef` prop:
+上面的示例展示了如何获取复选框输入元素的 ref。
+要获取根元素的 ref，请使用 `rootRef` 属性：
 
 ```tsx
 import { useRef } from 'react';
@@ -266,18 +262,18 @@ function Demo() {
 
 <Demo data={CheckboxDemos.stylesApi} />
 
-## Example: Table with row selection
+## 示例：带行选择的表格
 
 <Demo data={TableDemos.rowSelection} />
 
-## Example: Customize with Styles API
+## 示例：使用 Styles API 自定义
 
 <Demo data={CheckboxDemos.customize} />
 
 ## wrapperProps
 
-Most of the `Checkbox` props are passed down to the `input` element.
-If you want to pass props to the root element instead, use `wrapperProps` prop.
+大多数 `Checkbox` 属性都会传递给 `input` 元素。
+如果你想将属性传递给根元素，请使用 `wrapperProps` 属性。
 
 ```tsx
 import { Checkbox } from '@react-ui/ui';
@@ -292,11 +288,11 @@ function Demo() {
 }
 ```
 
-## id attribute
+## id 属性
 
-By default, `Checkbox` generates a random `id` attribute for the input element
-to associate it with the label. You can supply your own `id` attribute with `id` prop.
-It will be used in `id` attribute of the input element and `htmlFor` attribute of the label element.
+默认情况下，`Checkbox` 为输入元素生成随机 `id` 属性
+以将其与标签关联。你可以使用 `id` 属性提供自己的 `id` 属性。
+它将用于输入元素的 `id` 属性和标签元素的 `htmlFor` 属性。
 
 ```tsx
 import { Checkbox } from '@react-ui/ui';
@@ -306,26 +302,26 @@ function Demo() {
 }
 ```
 
-## Accessibility
+## 可访问性
 
-Checkbox component is based on the native `input[type="checkbox"]` element, so it is accessible by default.
+Checkbox 组件基于原生 `input[type="checkbox"]` 元素，因此默认具备可访问性。
 
-Set `aria-label` or `label` prop to make the checkbox accessible for screen readers:
+设置 `aria-label` 或 `label` 属性以使复选框对屏幕阅读器可访问：
 
 ```tsx
 import { Checkbox } from '@react-ui/ui';
 
-// Not ok, input is not labeled
+// 不好，输入框没有标签
 function Bad() {
   return <Checkbox />;
 }
 
-// Ok, input is labelled by aria-label
+// 好，输入框由 aria-label 标记
 function GoodAriaLabel() {
   return <Checkbox aria-label="My checkbox" />;
 }
 
-// Ok, input is labelled by label element
+// 好，输入框由 label 元素标记
 function GoodLabel() {
   return <Checkbox label="My checkbox" />;
 }

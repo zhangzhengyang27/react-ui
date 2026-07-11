@@ -4,11 +4,11 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Chip);
 
-## Usage
+## 用法
 
 <Demo data={ChipDemos.configurator} />
 
-## Controlled
+## 受控模式
 
 ```tsx
 import { useState } from 'react';
@@ -25,18 +25,17 @@ function Demo() {
 }
 ```
 
-## Change checked icon
+## 修改选中图标
 
 <Demo data={ChipDemos.icon} />
 
-## States
+## 状态
 
 <Demo data={ChipDemos.states} />
 
-## Chip with tooltip
+## 带 Tooltip 的 Chip
 
-To use `Chip` with [Tooltip](/core/tooltip/) and other similar components, set `refProp="rootRef"`
-on the [Tooltip](/core/tooltip/) component:
+要将 `Chip` 与 [Tooltip](/core/tooltip/) 及其他类似组件一起使用，请在 [Tooltip](/core/tooltip/) 组件上设置 `refProp="rootRef"`：
 
 <Demo data={ChipDemos.tooltip} />
 
@@ -44,19 +43,19 @@ on the [Tooltip](/core/tooltip/) component:
 
 ## Chip.Group
 
-The `Chip.Group` component manages the state of child Chip components.
-Set the `multiple` prop to allow multiple chips to be selected at a time:
+`Chip.Group` 组件管理子 Chip 组件的状态。
+设置 `multiple` 属性以允许同时选择多个 chip：
 
 <Demo data={ChipDemos.group} />
 
-## Controlled Chip.Group
+## 受控 Chip.Group
 
 ```tsx
 import { useState } from 'react';
 import { Chip } from '@react-ui/ui';
 
 function Single() {
-  // string value when multiple is false (default)
+  // multiple 为 false（默认）时值为字符串
   const [value, setValue] = useState('react');
 
   return (
@@ -70,7 +69,7 @@ function Single() {
 }
 
 function Multiple() {
-  // array of strings value when multiple is true
+  // multiple 为 true 时值为字符串数组
   const [value, setValue] = useState(['react']);
 
   return (
@@ -84,11 +83,11 @@ function Multiple() {
 }
 ```
 
-## Deselect radio chip
+## 取消选择 radio chip
 
 <Demo data={ChipDemos.deselect} />
 
-## Accessibility
+## 可访问性
 
-`Chip` and `Chip.Group` components are accessible by default – they are built with native radio/checkbox inputs,
-all keyboard events work the same as with native controls.
+`Chip` 和 `Chip.Group` 组件默认具备可访问性——它们基于原生 radio/checkbox 输入构建，
+所有键盘事件与原生控件的工作方式相同。

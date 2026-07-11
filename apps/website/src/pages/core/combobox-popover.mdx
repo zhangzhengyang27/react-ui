@@ -4,123 +4,123 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.ComboboxPopover);
 
-## Usage
+## 用法
 
-`ComboboxPopover` allows adding a combobox dropdown with selectable options to any button element.
-Unlike `Select` and `MultiSelect`, it does not render an input – instead, you provide your own
-target element (typically a `Button`) via `ComboboxPopover.Target`.
+`ComboboxPopover` 允许为任何按钮元素添加带有可选选项的 combobox 下拉框。
+与 `Select` 和 `MultiSelect` 不同，它不会渲染输入框——而是通过 `ComboboxPopover.Target`
+提供你自己的目标元素（通常是 `Button`）。
 
-`ComboboxPopover.Target` child must be a single element or component that accepts a `ref`.
-Fragments, strings, and other primitive values are not supported.
+`ComboboxPopover.Target` 的子元素必须是单个元素或接受 `ref` 的组件。
+不支持片段、字符串和其他原始值。
 
 <Demo data={ComboboxPopoverDemos.usage} />
 
-## Data format
+## 数据格式
 
-`ComboboxPopover` supports the same `data` format as [Select](/core/select) component:
-an array of strings, objects with `value` and `label`, or grouped items.
+`ComboboxPopover` 支持与 [Select](/core/select) 组件相同的 `data` 格式：
+字符串数组、带有 `value` 和 `label` 的对象，或分组项。
 
 <ComboboxData component="ComboboxPopover" />
 
-## Searchable
+## 可搜索
 
-Set `searchable` prop to enable a search input inside the dropdown that filters options as you type.
-Use `nothingFoundMessage` to display a message when no options match the search query.
+设置 `searchable` 属性以启用下拉框内的搜索输入，在你输入时过滤选项。
+使用 `nothingFoundMessage` 在没有选项匹配搜索查询时显示消息。
 
 <Demo data={ComboboxPopoverDemos.searchable} />
 
-## Controlled search value
+## 受控搜索值
 
-Use `searchValue` and `onSearchChange` props to control the search input value:
+使用 `searchValue` 和 `onSearchChange` 属性控制搜索输入值：
 
 <Demo data={ComboboxPopoverDemos.controlledSearch} />
 
-## Sort options
+## 排序选项
 
-Use `filter` prop with `searchable` to provide a custom filtering and sorting function:
+将 `filter` 属性与 `searchable` 一起使用以提供自定义过滤和排序函数：
 
 <Demo data={ComboboxPopoverDemos.sort} />
 
-## Limit options
+## 限制选项
 
-Use `limit` prop with `searchable` to limit the number of options displayed at a time.
-This is useful for large data sets to improve performance:
+将 `limit` 属性与 `searchable` 一起使用以限制一次显示的选项数量。
+这对于提高大型数据集的性能非常有用：
 
 <Demo data={ComboboxPopoverDemos.limit} />
 
-## Multiple selection
+## 多选
 
-Set `multiple` prop to allow selecting multiple values. When `multiple` is set,
-`value` type changes from `string | null` to `string[]`, and `onChange` callback
-receives an array of selected values.
+设置 `multiple` 属性以允许选择多个值。设置 `multiple` 后，
+`value` 类型从 `string | null` 变为 `string[]`，`onChange` 回调
+接收一个选中值数组。
 
 <Demo data={ComboboxPopoverDemos.multiple} />
 
-## Check icon
+## 勾选图标
 
 <Demo data={ComboboxPopoverDemos.checkIcon} />
 
-## Allow deselect
+## 允许取消选择
 
-By default, the selected option can be deselected by clicking it again.
-Set `allowDeselect={false}` to prevent this behavior.
+默认情况下，可以通过再次点击已选选项来取消选择。
+设置 `allowDeselect={false}` 以阻止此行为。
 
 <Demo data={ComboboxPopoverDemos.allowDeselect} />
 
-## Nothing found message
+## 无结果消息
 
-Set `nothingFoundMessage` prop to display a message when no options are available:
+设置 `nothingFoundMessage` 属性以在没有可用选项时显示消息：
 
 <Demo data={ComboboxPopoverDemos.nothingFound} />
 
-## Disabled options
+## 禁用选项
 
 <Demo data={ComboboxPopoverDemos.disabledOptions} />
 
-## Groups
+## 分组
 
 <Demo data={ComboboxPopoverDemos.groups} />
 
-## Render option
+## 渲染选项
 
-Use `renderOption` prop to customize option rendering:
+使用 `renderOption` 属性自定义选项渲染：
 
 <Demo data={ComboboxPopoverDemos.renderOption} />
 
-## Large data sets
+## 大型数据集
 
-By default, the dropdown is wrapped with `ScrollArea.Autosize`.
-Use `maxDropdownHeight` to control the maximum height:
+默认情况下，下拉框使用 `ScrollArea.Autosize` 包裹。
+使用 `maxDropdownHeight` 控制最大高度：
 
 <Demo data={ComboboxPopoverDemos.scrollArea} />
 
-## Control dropdown opened state
+## 控制下拉框打开状态
 
-Use `dropdownOpened` prop to control the dropdown state.
-Additionally, you can use `onDropdownOpen` and `onDropdownClose` callbacks
-to react to dropdown state changes.
+使用 `dropdownOpened` 属性控制下拉框状态。
+此外，你可以使用 `onDropdownOpen` 和 `onDropdownClose` 回调
+来响应下拉框状态变化。
 
 <Demo data={ComboboxPopoverDemos.dropdownOpened} />
 
-## Dropdown position
+## 下拉框位置
 
 <Demo data={ComboboxPopoverDemos.dropdownPosition} />
 
-## Dropdown width
+## 下拉框宽度
 
-By default, the dropdown width matches the target element. Use `comboboxProps`
-to set a custom width:
+默认情况下，下拉框宽度与目标元素匹配。使用 `comboboxProps`
+设置自定义宽度：
 
 <Demo data={ComboboxPopoverDemos.dropdownWidth} />
 
-## Dropdown animation
+## 下拉框动画
 
 <Demo data={ComboboxPopoverDemos.dropdownAnimation} />
 
-## Form submission
+## 表单提交
 
-`ComboboxPopover` renders a hidden input with the selected value for native form submission.
-Use `name` prop to set the input name. For multiple selection, values are joined with a comma
-by default – use `hiddenInputValuesDivider` to change the separator.
+`ComboboxPopover` 渲染一个隐藏 input，其中包含选中的值以进行原生表单提交。
+使用 `name` 属性设置 input 名称。对于多选，默认情况下值以逗号连接——
+使用 `hiddenInputValuesDivider` 更改分隔符。
 
 <Demo data={ComboboxPopoverDemos.formSubmission} />

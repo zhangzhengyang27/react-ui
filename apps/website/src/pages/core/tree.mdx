@@ -4,25 +4,24 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Tree);
 
-## Usage
+## 用法
 
-The `Tree` component is used to display hierarchical data. The `Tree` component
-has minimal styling by default; you can customize styles with [Styles API](/styles/styles-api).
+`Tree` 组件用于显示层级数据。`Tree` 组件默认具有最少的样式；你可以使用 [Styles API](/styles/styles-api) 自定义样式。
 
 <Demo data={TreeDemos.usage} />
 
-## Data prop
+## Data 属性
 
-Data passed to the `data` prop should follow these rules:
+传给 `data` 属性的数据应遵循以下规则：
 
-- Data must be a stable reference (memoized)
-- Data must be an array
-- Each item in the array represents a node in the tree
-- Each node must be an object with `value` and `label` keys
-- Each node can have a `children` key with an array of child nodes
-- The `value` of each node must be unique
+- 数据必须是稳定的引用（memoized）
+- 数据必须是数组
+- 数组中的每一项代表树中的一个节点
+- 每个节点必须是具有 `value` 和 `label` 键的对象
+- 每个节点可以有一个 `children` 键，值为子节点数组
+- 每个节点的 `value` 必须唯一
 
-Valid data example:
+有效数据示例：
 
 ```tsx
 // ✅ Valid data, all values are unique
@@ -39,7 +38,7 @@ const data = [
 ];
 ```
 
-Invalid data example:
+无效数据示例：
 
 ```tsx
 // ❌ Invalid data, values are not unique (components is used twice)
@@ -53,9 +52,9 @@ const data = [
 ];
 ```
 
-## Data type
+## 数据类型
 
-You can import the `TreeNodeData` type to define the data type for your tree:
+你可以导入 `TreeNodeData` 类型来定义树的数据类型：
 
 ```tsx
 import { TreeNodeData } from '@react-ui/ui';
@@ -75,36 +74,35 @@ const data: TreeNodeData[] = [
 
 ## renderNode
 
-Use the `renderNode` prop to customize node rendering.
-The `renderNode` function receives an object with the following properties as a single argument:
+使用 `renderNode` 属性自定义节点渲染。`renderNode` 函数接收一个对象作为单一参数，该对象具有以下属性：
 
 ```tsx
 export interface RenderTreeNodePayload {
-  /** Node level in the tree */
+  /** 节点在树中的层级 */
   level: number;
 
-  /** `true` if the node is expanded, applicable only for nodes with `children` */
+  /** 节点是否展开，仅适用于有 `children` 的节点 */
   expanded: boolean;
 
-  /** `true` if the node has non-empty `children` array or `hasChildren` is set to `true` */
+  /** 节点是否有非空的 `children` 数组或 `hasChildren` 设置为 `true` */
   hasChildren: boolean;
 
-  /** `true` if the node is selected */
+  /** 节点是否被选中 */
   selected: boolean;
 
-  /** `true` if the node's children are currently being loaded */
+  /** 节点的子节点是否正在加载 */
   isLoading: boolean;
 
-  /** Error from the last failed load attempt, or `null` */
+  /** 上次加载失败的错误，或 `null` */
   loadError: Error | null;
 
-  /** Node data from the `data` prop of `Tree` */
+  /** 来自 `Tree` 的 `data` 属性的节点数据 */
   node: TreeNodeData;
 
-  /** Tree controller instance, return value of `useTree` hook */
+  /** 树控制器实例，`useTree` Hook 的返回值 */
   tree: TreeController;
 
-  /** Props to spread into the root node element */
+  /** 要展开到根节点元素的属性 */
   elementProps: {
     className: string;
     style: React.CSSProperties;
@@ -113,8 +111,8 @@ export interface RenderTreeNodePayload {
     'data-value': string;
   };
 
-  /** Props to spread into the drag handle element when `withDragHandle` is set on `Tree`,
-   * `undefined` otherwise */
+  /** 当 `Tree` 上设置了 `withDragHandle` 时，要展开到拖动把手元素的属性，
+   * 否则为 `undefined` */
   dragHandleProps: { onMouseDown: (event: React.MouseEvent) => void } | undefined;
 }
 ```
@@ -123,209 +121,199 @@ export interface RenderTreeNodePayload {
 
 ## useTree hook
 
-`useTree` hook can be used to control selected and expanded state of the tree.
+`useTree` Hook 可用于控制树的选中和展开状态。
 
-The hook accepts an object with the following properties:
+该 Hook 接受一个具有以下属性的对象：
 
 ```tsx
 export interface UseTreeInput {
-  /** Initial expanded state of all nodes, uncontrolled state */
+  /** 所有节点的初始展开状态，非受控状态 */
   initialExpandedState?: TreeExpandedState;
 
-  /** Expanded state of all nodes, controlled state */
+  /** 所有节点的展开状态，受控状态 */
   expandedState?: TreeExpandedState;
 
-  /** Called when the tree expanded state changes */
+  /** 树展开状态变化时调用 */
   onExpandedStateChange?: (expandedState: TreeExpandedState) => void;
 
-  /** Initial selected state of nodes */
+  /** 节点的初始选中状态 */
   initialSelectedState?: string[];
 
-  /** Selected state of all nodes, controlled state */
+  /** 所有节点的选中状态，受控状态 */
   selectedState?: string[];
 
-  /** Called when the tree selected state changes */
+  /** 树选中状态变化时调用 */
   onSelectedStateChange?: (selectedState: string[]) => void;
 
-  /** Initial checked state of nodes */
+  /** 节点的初始勾选状态 */
   initialCheckedState?: string[];
 
-  /** Checked state of all nodes, controlled state */
+  /** 所有节点的勾选状态，受控状态 */
   checkedState?: string[];
 
-  /** Called when the tree checked state changes */
+  /** 树勾选状态变化时调用 */
   onCheckedStateChange?: (checkedState: string[]) => void;
 
-  /** Determines whether multiple node can be selected at a time */
+  /** 是否可同时选中多个节点 */
   multiple?: boolean;
 
-  /** Called with the node value when it is expanded */
+  /** 节点展开时以其 value 调用 */
   onNodeExpand?: (value: string) => void;
 
-  /** Called with the node value when it is collapsed */
+  /** 节点收起时以其 value 调用 */
   onNodeCollapse?: (value: string) => void;
 
-  /** Called when a node with `hasChildren: true` is expanded for the first time */
+  /** 当 `hasChildren: true` 的节点首次展开时调用 */
   onLoadChildren?: (nodeValue: string) => Promise<void>;
 
-  /** When `true`, checking a parent does not affect children and vice versa.
-   * Each node's checked state is fully independent. @default false
+  /** 当 `true` 时，勾选父节点不会影响子节点，反之亦然。
+   * 每个节点的勾选状态完全独立。 @default false
    */
   checkStrictly?: boolean;
 }
 ```
 
-And returns an object with the following properties:
+并返回一个具有以下属性的对象：
 
 ```tsx
 export interface UseTreeReturnType {
-  /** When `true`, each node's checked state is independent (no parent-child cascading) */
+  /** 当 `true` 时，每个节点的勾选状态独立（无父子级联） */
   checkStrictly: boolean;
 
-  /** Determines whether multiple node can be selected at a time */
+  /** 是否可同时选中多个节点 */
   multiple: boolean;
 
-  /** A record of `node.value` and boolean values that represent nodes expanded state */
+  /** 以 `node.value` 和布尔值表示节点展开状态的对象 */
   expandedState: TreeExpandedState;
 
-  /** An array of selected nodes values */
+  /** 选中节点 value 的数组 */
   selectedState: string[];
 
-  /** An array of checked nodes values */
+  /** 勾选节点 value 的数组 */
   checkedState: string[];
 
-  /** A value of the node that was last clicked
-   * Anchor node is used to determine range of selected nodes for multiple selection
+  /** 最后点击的节点 value
+   * 锚点节点用于多选时确定选中的范围
    */
   anchorNode: string | null;
 
-  /** Initializes tree state based on provided data, called automatically by the Tree component */
+  /** 根据提供的数据初始化树状态，由 Tree 组件自动调用 */
   initialize: (data: TreeNodeData[]) => void;
 
-  /** Toggles expanded state of the node with provided value */
+  /** 切换指定 value 节点的展开状态 */
   toggleExpanded: (value: string) => void;
 
-  /** Collapses node with provided value */
+  /** 收起指定 value 的节点 */
   collapse: (value: string) => void;
 
-  /** Expands node with provided value */
+  /** 展开指定 value 的节点 */
   expand: (value: string) => void;
 
-  /** Expands all nodes */
+  /** 展开所有节点 */
   expandAllNodes: () => void;
 
-  /** Collapses all nodes */
+  /** 收起所有节点 */
   collapseAllNodes: () => void;
 
-  /** Sets expanded state */
+  /** 设置展开状态 */
   setExpandedState: React.Dispatch<
     React.SetStateAction<TreeExpandedState>
   >;
 
-  /** Toggles selected state of the node with provided value */
+  /** 切换指定 value 节点的选中状态 */
   toggleSelected: (value: string) => void;
 
-  /** Selects node with provided value */
+  /** 选中指定 value 的节点 */
   select: (value: string) => void;
 
-  /** Deselects node with provided value */
+  /** 取消选中指定 value 的节点 */
   deselect: (value: string) => void;
 
-  /** Clears selected state */
+  /** 清空选中状态 */
   clearSelected: () => void;
 
-  /** Sets selected state */
+  /** 设置选中状态 */
   setSelectedState: React.Dispatch<React.SetStateAction<string[]>>;
 
-  /** Checks node with provided value */
+  /** 勾选指定 value 的节点 */
   checkNode: (value: string) => void;
 
-  /** Unchecks node with provided value */
+  /** 取消勾选指定 value 的节点 */
   uncheckNode: (value: string) => void;
 
-  /** Checks all nodes */
+  /** 勾选所有节点 */
   checkAllNodes: () => void;
 
-  /** Unchecks all nodes */
+  /** 取消勾选所有节点 */
   uncheckAllNodes: () => void;
 
-  /** Sets checked state */
+  /** 设置勾选状态 */
   setCheckedState: React.Dispatch<React.SetStateAction<string[]>>;
 
-  /** Returns all checked nodes with status */
+  /** 返回所有带状态的勾选节点 */
   getCheckedNodes: () => CheckedNodeStatus[];
 
-  /** Returns `true` if node with provided value is checked */
+  /** 如果指定 value 的节点已勾选，返回 `true` */
   isNodeChecked: (value: string) => boolean;
 
-  /** Returns `true` if node with provided value is indeterminate */
+  /** 如果指定 value 的节点处于不确定状态，返回 `true` */
   isNodeIndeterminate: (value: string) => boolean;
 
-  /** Returns `true` if the node's children are currently being loaded */
+  /** 如果节点的子节点正在加载，返回 `true` */
   isNodeLoading: (value: string) => boolean;
 
-  /** Returns the error from the last failed load attempt, or `null` */
+  /** 返回上次加载失败的错误，或 `null` */
   getNodeLoadError: (value: string) => Error | null;
 
-  /** Programmatically triggers loading of a node's children */
+  /** 以编程方式触发节点子节点的加载 */
   loadNode: (value: string) => Promise<void>;
 
-  /** Clears the loaded cache for a node, causing it to re-fetch on next expand */
+  /** 清除节点的已加载缓存，使其在下次展开时重新获取 */
   invalidateNode: (value: string) => void;
 }
 ```
 
-You can pass the value returned by the `useTree` hook to the `tree` prop of the `Tree` component
-to control tree state:
+你可以将 `useTree` Hook 返回的值传给 `Tree` 组件的 `tree` 属性以控制树状态：
 
 <Demo data={TreeDemos.controller} />
 
-## Checked state
+## 勾选状态
 
-`Tree` can be used to display checked state with checkboxes.
-To implement checked state, you need to render `Checkbox.Indicator` in the `renderNode` function:
+`Tree` 可用于显示带复选框的勾选状态。要实现勾选状态，你需要在 `renderNode` 函数中渲染 `Checkbox.Indicator`：
 
 <Demo data={TreeDemos.checked} />
 
-To check/uncheck nodes, use `checkAllNodes` and `uncheckAllNodes` functions:
+要勾选/取消勾选节点，请使用 `checkAllNodes` 和 `uncheckAllNodes` 函数：
 
 <Demo data={TreeDemos.checkAllNodes} />
 
-## Check strictly
+## 严格勾选
 
-By default, checking a parent node also checks all of its children (and unchecking works
-the same way). Set `checkStrictly: true` on `useTree` to make each node's checked state
-fully independent – checking a parent does not affect children and vice versa.
-In this mode, `isNodeIndeterminate` always returns `false`.
+默认情况下，勾选父节点也会勾选其所有子节点（取消勾选同理）。在 `useTree` 上设置 `checkStrictly: true` 可使每个节点的勾选状态完全独立——勾选父节点不会影响子节点，反之亦然。在此模式下，`isNodeIndeterminate` 始终返回 `false`。
 
 <Demo data={TreeDemos.checkStrictly} />
 
-## Initial expanded state
+## 初始展开状态
 
-Expanded state is an object of `node.value` and boolean values that represent nodes expanded state.
-To change initial expanded state, pass `initialExpandedState` to the `useTree` hook.
-To generate expanded state from data with expanded nodes, you can use `getTreeExpandedState` function:
-it accepts data and an array of expanded nodes values and returns expanded state object.
+展开状态是一个以 `node.value` 为键、布尔值表示节点展开状态的对象。要更改初始展开状态，请向 `useTree` Hook 传入 `initialExpandedState`。要根据数据生成展开状态，你可以使用 `getTreeExpandedState` 函数：它接受数据和一个展开的节点 value 数组，并返回展开状态对象。
 
-If `'*'` is passed as the second argument to `getTreeExpandedState`, all nodes will be expanded:
+如果 `'*'` 作为第二个参数传给 `getTreeExpandedState`，所有节点都会展开：
 
 ```tsx
 import { getTreeExpandedState } from '@react-ui/ui';
 
-// Expand two given nodes
+// 展开两个给定节点
 getTreeExpandedState(data, ['src', 'src/components']);
 
-// Expand all nodes
+// 展开所有节点
 getTreeExpandedState(data, '*');
 ```
 
 <Demo data={TreeDemos.expandedState} />
 
-## Async loading
+## 异步加载
 
-`Tree` supports lazy loading of children. Set `hasChildren: true` on a node without providing `children` –
-when the node is expanded for the first time, `onLoadChildren` callback passed to `useTree` is called.
-Use the `mergeAsyncChildren` utility to splice loaded children into your data:
+`Tree` 支持子节点的懒加载。在节点上设置 `hasChildren: true` 而不提供 `children`——当节点首次展开时，会调用传给 `useTree` 的 `onLoadChildren` 回调。使用 `mergeAsyncChildren` 工具将加载的子节点拼接进你的数据：
 
 ```tsx
 import { mergeAsyncChildren, Tree, TreeNodeData, useTree } from '@react-ui/ui';
@@ -346,62 +334,51 @@ function Demo() {
 }
 ```
 
-The `renderNode` payload includes `isLoading` and `loadError` fields that you can use
-to display a loading indicator or an error message. Use `tree.invalidateNode(value)` to clear
-the cache for a node and allow re-fetching on next expand.
+`renderNode` 负载包含 `isLoading` 和 `loadError` 字段，你可以用它们显示加载指示器或错误消息。使用 `tree.invalidateNode(value)` 清除节点的缓存，并允许在下次展开时重新获取。
 
 <Demo data={TreeDemos.asyncLoading} />
 
-## Search and filter
+## 搜索与过滤
 
-`Tree` does not include built-in search controls – search input and filtering logic are always external.
-Use the `filterTreeData` utility to filter tree data based on a search query. The function
-accepts tree data, a query string, and an optional custom filter function:
+`Tree` 不包含内置搜索控件——搜索输入和过滤逻辑始终由外部提供。使用 `filterTreeData` 工具根据搜索查询过滤树数据。该函数接受树数据、查询字符串和可选的自定义过滤函数：
 
 ```tsx
 import { filterTreeData } from '@react-ui/ui';
 
-// Filter with default case-insensitive label matching
+// 使用默认的不区分大小写 label 匹配进行过滤
 const filtered = filterTreeData(data, 'button');
 
-// Filter with a custom function
+// 使用自定义函数过滤
 const filtered = filterTreeData(data, 'btn', (query, node) =>
   node.value.includes(query)
 );
 ```
 
-The default filter compares the query against `node.label` (when it is a string) or `node.value` as a fallback.
-Matching nodes and their ancestors are preserved in the result. You can provide a custom `TreeNodeFilter`
-function for more advanced matching (for example, fuzzy search with fuse.js).
+默认过滤器将查询与 `node.label`（为字符串时）比较，否则回退到 `node.value`。匹配节点及其祖先会保留在结果中。你可以提供自定义的 `TreeNodeFilter` 函数以实现更高级的匹配（例如使用 fuse.js 进行模糊搜索）。
 
-### Highlight matching nodes
+### 高亮匹配节点
 
-In this example, all nodes remain visible and matching text is highlighted using the `Highlight` component
-inside `renderNode`. Ancestor nodes of matching nodes are auto-expanded.
+在此示例中，所有节点保持可见，匹配文本在 `renderNode` 内使用 `Highlight` 组件高亮显示。匹配节点的祖先节点会自动展开。
 
 <Demo data={TreeDemos.searchHighlight} />
 
-### Filter non-matching nodes
+### 过滤非匹配节点
 
-In this example, non-matching branches are removed from the tree using `filterTreeData`.
-The filtered tree is auto-expanded with `getTreeExpandedState(filteredData, '*')`.
+在此示例中，使用 `filterTreeData` 移除非匹配分支。使用 `getTreeExpandedState(filteredData, '*')` 自动展开过滤后的树。
 
 <Demo data={TreeDemos.searchFilter} />
 
-### Fuzzy search with fuse.js
+### 使用 fuse.js 进行模糊搜索
 
-You can pass a custom filter function to `filterTreeData` for fuzzy matching. This example
-uses [fuse.js](https://www.fusejs.io/):
+你可以向 `filterTreeData` 传入自定义过滤函数以实现模糊匹配。此示例使用 [fuse.js](https://www.fusejs.io/)：
 
 <Demo data={TreeDemos.searchFuzzy} />
 
-## Drag and drop
+## 拖放
 
-`Tree` component supports drag-and-drop reordering of nodes. To enable it, provide `onDragDrop` callback.
-The callback receives an object with `draggedNode` (value of the dragged node), `targetNode` (value of the node it was dropped on),
-and `position` (`'before'`, `'after'`, or `'inside'`).
+`Tree` 组件支持节点的拖放重新排序。要启用它，请提供 `onDragDrop` 回调。该回调接收一个对象，包含 `draggedNode`（被拖动节点的 value）、`targetNode`（被放置到的节点的 value）和 `position`（`'before'`、`'after'` 或 `'inside'`）。
 
-Use `moveTreeNode` utility function to update the data based on the drag-and-drop result:
+使用 `moveTreeNode` 工具函数根据拖放结果更新数据：
 
 ```tsx
 import { moveTreeNode, Tree, TreeNodeData } from '@react-ui/ui';
@@ -420,72 +397,55 @@ function Demo() {
 }
 ```
 
-When dragging over a node, the drop position is determined by cursor position:
-- **Top zone** – drop before the target node (shown as a line above)
-- **Middle zone** – drop inside the target node as a child (shown as a background highlight, only for nodes with children)
-- **Bottom zone** – drop after the target node (shown as a line below)
+拖动到某个节点上时，放置位置由光标位置决定：
+- **顶部区域** – 放置到目标节点之前（显示为上方线条）
+- **中部区域** – 放置到目标节点内部作为子节点（显示为背景高亮，仅适用于有子节点的节点）
+- **底部区域** – 放置到目标节点之后（显示为下方线条）
 
-Nodes cannot be dropped onto their own descendants.
+节点不能放置到它们自己的后代上。
 
 <Demo data={TreeDemos.dragDrop} />
 
-### Restricting drop targets
+### 限制放置目标
 
-Use the `allowDrop` prop to forbid certain drops. The callback receives the same payload as
-`onDragDrop` (`draggedNode`, `targetNode`, `position`) and should return `false` to reject the drop.
-When it returns `false`, the drop indicator is hidden and the browser displays the
-"not-allowed" cursor, so the user gets visual feedback before releasing the mouse.
+使用 `allowDrop` 属性禁止某些放置。该回调接收与 `onDragDrop` 相同的负载（`draggedNode`、`targetNode`、`position`），并应返回 `false` 以拒绝放置。返回 `false` 时，放置指示器会隐藏，浏览器会显示 "not-allowed" 光标，因此用户在释放鼠标前就能获得视觉反馈。
 
 <Demo data={TreeDemos.dragDropAllow} />
 
-### Drag handle
+### 拖动把手
 
-By default, drag can be initiated from anywhere on a node. Set `withDragHandle` on `Tree` to
-restrict drag initiation to an element that spreads `dragHandleProps` from the `renderNode`
-payload. This is useful when a node contains interactive controls (inputs, buttons) that
-would otherwise interfere with dragging.
+默认情况下，可以从节点的任意位置开始拖动。在 `Tree` 上设置 `withDragHandle`，将拖动开始限制在展开 `renderNode` 负载中的 `dragHandleProps` 的元素上。当节点包含会干扰拖动的交互控件（输入框、按钮）时，这非常有用。
 
 <Demo data={TreeDemos.dragDropHandle} />
 
-## Connecting lines
+## 连接线
 
-Set `withLines` prop to display connecting lines showing parent-child relationships.
-Lines adapt to `levelOffset` spacing automatically.
+设置 `withLines` 属性以显示展示父子关系的连接线。连接线会自动适应 `levelOffset` 间距。
 
 <Demo data={TreeDemos.lines} />
 
-## Virtualization
+## 虚拟化
 
-`Tree` does not depend on any virtualization library – you supply one yourself.
-Use the `flattenTreeData` utility to convert hierarchical data into a flat list of
-visible nodes based on the current expanded state, then render each node with
-`FlatTreeNode` which provides Tree's styles, aria attributes, click/keyboard
-handlers, and `renderNode` support.
+`Tree` 不依赖任何虚拟化库——由你自己提供。使用 `flattenTreeData` 工具根据当前展开状态将层级数据转换为可见节点的扁平列表，然后使用 `FlatTreeNode` 渲染每个节点，它提供 Tree 的样式、aria 属性、点击/键盘处理器和 `renderNode` 支持。
 
 ```tsx
 import { FlatTreeNode, flattenTreeData, useTree } from '@react-ui/ui';
 
 const tree = useTree();
 const flatList = flattenTreeData(data, tree.expandedState);
-// flatList is FlattenedTreeNodeData[] – spread each entry into FlatTreeNode
+// flatList 是 FlattenedTreeNodeData[] – 将每个条目展开到 FlatTreeNode
 ```
 
-`FlatTreeNode` accepts the same behavioral props as `Tree` (`expandOnClick`,
-`selectOnClick`, `expandOnSpace`, `checkOnSpace`, `renderNode`) and a `style` prop
-for virtualizer positioning. The container element must have `data-tree-root`
-and `role="tree"` attributes for keyboard navigation to work.
+`FlatTreeNode` 接受与 `Tree` 相同的行为属性（`expandOnClick`、`selectOnClick`、`expandOnSpace`、`checkOnSpace`、`renderNode`）和一个用于虚拟定位器的 `style` 属性。容器元素必须具有 `data-tree-root` 和 `role="tree"` 属性，键盘导航才能正常工作。
 
 <Demo data={TreeDemos.virtualized} />
 
-## Example: files tree
+## 示例：文件树
 
 <Demo data={TreeDemos.files} />
 
-## Example: docs navigation editor
+## 示例：文档导航编辑器
 
-The example below combines drag-and-drop, search with `Highlight`, single-selection,
-hover-revealed actions menu, a folder page count badge and `withLines` into a single
-documentation-navigation editor. The `renderNode` callback receives every payload field
-the component exposes, so most application-level UX can be assembled from these primitives.
+下面的示例将拖放、使用 `Highlight` 的搜索、单选、悬停显示的操作菜单、文件夹页面数量徽章和 `withLines` 组合到一个文档导航编辑器中。`renderNode` 回调会接收组件暴露的每个负载字段，因此大多数应用级 UX 都可以通过这些基础单元组装而成。
 
 <Demo data={TreeDemos.docsEditor} />

@@ -4,58 +4,58 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.FloatingWindow);
 
-## Usage
+## 用法
 
-`FloatingWindow` creates a draggable element with a fixed position:
+`FloatingWindow` 创建一个可拖动的固定定位元素：
 
 <Demo data={FloatingWindowDemos.usage} />
 
-## Constrain to viewport
+## 限制在视口内
 
-Use the `constrainToViewport` prop to restrict element movement to the viewport boundaries.
-If you do not set the `constrainToViewport` prop, the element can be dragged outside the viewport:
+使用 `constrainToViewport` 属性将元素移动限制在视口边界内。
+如果你不设置 `constrainToViewport` 属性，元素可以被拖出视口：
 
 <Demo data={FloatingWindowDemos.constrainToViewport} />
 
-## Constrain offset
+## 限制偏移
 
-Use the `constrainOffset` prop to set the offset from the viewport edges when constraining the element:
+使用 `constrainOffset` 属性设置限制元素时与视口边缘的偏移：
 
 <Demo data={FloatingWindowDemos.constrainOffset} />
 
-## Drag handle selector
+## 拖动把手选择器
 
-The `dragHandleSelector` prop allows specifying a selector of an element (or a group of elements) that should be used to drag the floating window.
-If not specified, the entire root element is used as a drag target.
+`dragHandleSelector` 属性允许指定一个元素（或一组元素）的选择器，该元素应用于拖动浮动窗口。
+如果未指定，则整个根元素用作拖动目标。
 
-The `excludeDragHandleSelector` prop excludes elements within `dragHandleSelector` from the drag event.
-In the following example, the close button is excluded from the drag event:
+`excludeDragHandleSelector` 属性从拖动事件中排除 `dragHandleSelector` 内的元素。
+在以下示例中，关闭按钮被排除在拖动事件之外：
 
 <Demo data={FloatingWindowDemos.dragHandleSelector} />
 
-## Enabled prop
+## enabled 属性
 
-Use the `enabled` option to enable or disable dragging:
+使用 `enabled` 选项启用或禁用拖动：
 
 <Demo data={FloatingWindowDemos.enabled} />
 
-## Set position
+## 设置位置
 
-Call the `setPosition` function to set the position of the element programmatically.
-This function accepts an object with `top`, `left`, `right` and `bottom` properties,
-from which you should only specify two (for example, `top` and `left`, `bottom` and `right`).
+调用 `setPosition` 函数以编程方式设置元素位置。
+此函数接受一个具有 `top`、`left`、`right` 和 `bottom` 属性的对象，
+你应只指定其中两个（例如，`top` 和 `left`、`bottom` 和 `right`）。
 
 <Demo data={FloatingWindowDemos.setPosition} />
 
-## Lock axis
+## 锁定轴
 
-Use the `axis` option to restrict movement to the specified axis:
+使用 `axis` 选项将移动限制到指定轴：
 
 <Demo data={FloatingWindowDemos.axis} />
 
 ## use-floating-window hook
 
-If you prefer the hook API, you can use the [useFloatingWindow](/hooks/use-floating-window) hook.
-It supports most of the `FloatingWindow` features:
+如果你更喜欢 Hook API，可以使用 [useFloatingWindow](/hooks/use-floating-window) Hook。
+它支持大多数 `FloatingWindow` 功能：
 
 <Demo data={UseFloatingWindowDemos.usage} />

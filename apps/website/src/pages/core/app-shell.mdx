@@ -4,24 +4,22 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.AppShell);
 
-## Examples
+## 示例
 
-This page contains documentation only. All `AppShell` components have a fixed
-position; examples are included in a separate documentation section.
+本页面仅包含文档。所有 `AppShell` 组件都具有固定位置；示例包含在单独的文档部分中。
 
 <ExamplesButton
   link="/app-shell?e=BasicAppShell"
-  label="Open AppShell examples page"
+  label="打开 AppShell 示例页面"
 />
 
-## Usage
+## 用法
 
-`AppShell` is a layout component that can be used to create a common Header / Navbar / Footer / Aside
-layout pattern. All `AppShell` components have `position: fixed` styling, so they do not scroll with
-the page.
+`AppShell` 是一个布局组件，可用于创建常见的 Header / Navbar / Footer / Aside
+布局模式。所有 `AppShell` 组件都具有 `position: fixed` 样式，因此它们不会随页面滚动。
 
-[Basic AppShell example](/app-shell?e=BasicAppShell) with header and navbar.
-The navbar is hidden on mobile by default and can be toggled with the burger button.
+[基本 AppShell 示例](/app-shell?e=BasicAppShell)，包含 header 和 navbar。
+Navbar 在移动端默认隐藏，可以通过汉堡按钮切换。
 
 ```tsx
 import { AppShell, Burger } from '@react-ui/ui';
@@ -59,78 +57,76 @@ function Demo() {
 }
 ```
 
-## AppShell components
+## AppShell 组件
 
-- `AppShell` – root component that wraps all other sections and configures the overall layout.
-- `AppShell.Header` – fixed header at the top, controlled by the `header` prop.
-- `AppShell.Navbar` – fixed navbar on the left, controlled by the `navbar` prop.
-- `AppShell.Aside` – fixed aside on the right, controlled by the `aside` prop.
-- `AppShell.Footer` – fixed footer at the bottom, controlled by the `footer` prop.
-- `AppShell.Main` – main content area, statically positioned and offset by the other sections.
-- `AppShell.Section` – utility for grouping content inside `AppShell.Navbar` or `AppShell.Aside`, useful for scrollable areas.
+- `AppShell` – 根组件，包裹所有其他部分并配置整体布局。
+- `AppShell.Header` – 顶部固定 header，由 `header` 属性控制。
+- `AppShell.Navbar` – 左侧固定 navbar，由 `navbar` 属性控制。
+- `AppShell.Aside` – 右侧固定 aside，由 `aside` 属性控制。
+- `AppShell.Footer` – 底部固定 footer，由 `footer` 属性控制。
+- `AppShell.Main` – 主内容区域，静态定位，并由其他部分偏移。
+- `AppShell.Section` – 用于在 `AppShell.Navbar` 或 `AppShell.Aside` 内对内容进行分组的工具，适用于可滚动区域。
 
-## Configuration
+## 配置
 
-The `AppShell` component accepts `header`, `footer`, `navbar`, and `aside` props to configure the corresponding sections.
-You must set these props if you want to use the corresponding components.
-For example, to use the `AppShell.Header` component, you need to set the `header` prop on the `AppShell` component.
+`AppShell` 组件接受 `header`、`footer`、`navbar` 和 `aside` 属性来配置相应的部分。
+如果你想使用相应的组件，则必须设置这些属性。
+例如，要使用 `AppShell.Header` 组件，你需要在 `AppShell` 组件上设置 `header` 属性。
 
-`header` and `footer` configuration objects share the same type:
+`header` 和 `footer` 配置对象共享相同的类型：
 
 ```tsx
 interface Configuration {
-  /** Height of the section: number, string or
-   ** object with breakpoints as keys and height as values */
+  /** 部分的高度：数字、字符串或
+   ** 以断点为键、高度为值的对象 */
   height: AppShellSize | AppShellResponsiveSize;
 
-  /** When collapsed is true, the section is hidden
-   ** from the viewport and doesn't affect the AppShell.Main offset */
+  /** 当 collapsed 为 true 时，该部分从视口中隐藏
+   ** 且不会影响 AppShell.Main 的偏移 */
   collapsed?: boolean;
 
-  /** Controls whether AppShell.Main should be offset by this section.
-   ** Useful for scenarios like hiding a header based on scroll position. */
+  /** 控制 AppShell.Main 是否应由该部分进行偏移。
+   ** 适用于基于滚动位置隐藏 header 等场景。 */
   offset?: boolean;
 }
 ```
 
-`navbar` and `aside` configuration objects type:
+`navbar` 和 `aside` 配置对象类型：
 
 ```tsx
 interface Configuration {
-  /** Width of the section: number, string, or
-   ** object with breakpoints as keys and widths as values */
+  /** 部分的宽度：数字、字符串或
+   ** 以断点为键、宽度为值的对象 */
   width: AppShellSize | AppShellResponsiveSize;
 
-  /** Breakpoint at which the section switches to mobile mode.
-   ** In mobile mode, the section always has 100% width and its
-   ** collapsed state is controlled by `collapsed.mobile`
-   ** instead of `collapsed.desktop` */
+  /** 部分切换到移动模式的断点。
+   ** 在移动模式下，该部分始终具有 100% 宽度，
+   ** 其折叠状态由 `collapsed.mobile` 控制
+   ** 而非 `collapsed.desktop` */
   breakpoint: MantineBreakpoint | (string & {}) | number;
 
-  /** Determines whether the section should be collapsed */
+  /** 确定该部分是否应折叠 */
   collapsed?: { desktop?: boolean; mobile?: boolean };
 }
 ```
 
-## layout prop
+## layout 属性
 
-`layout` prop controls how `AppShell.Header`/`AppShell.Footer` and `AppShell.Navbar`/`AppShell.Aside`
-are positioned relative to each other. It accepts `alt` and `default` values:
+`layout` 属性控制 `AppShell.Header`/`AppShell.Footer` 与 `AppShell.Navbar`/`AppShell.Aside`
+之间的相对位置。它接受 `alt` 和 `default` 值：
 
-- `alt` – `AppShell.Navbar`/`AppShell.Aside` extends the full viewport height, while `AppShell.Header`/`AppShell.Footer` width equals the viewport width minus the width of `AppShell.Navbar` and `AppShell.Aside` ([example](/app-shell?e=AltLayout))
-- `default` – `AppShell.Navbar`/`AppShell.Aside` height equals the viewport height minus `AppShell.Header`/`AppShell.Footer` height, and `AppShell.Header`/`AppShell.Footer` spans the full viewport width ([example](/app-shell?e=FullLayout))
+- `alt` – `AppShell.Navbar`/`AppShell.Aside` 延伸至完整视口高度，而 `AppShell.Header`/`AppShell.Footer` 的宽度等于视口宽度减去 `AppShell.Navbar` 和 `AppShell.Aside` 的宽度（[示例](/app-shell?e=AltLayout)）
+- `default` – `AppShell.Navbar`/`AppShell.Aside` 的高度等于视口高度减去 `AppShell.Header`/`AppShell.Footer` 的高度，而 `AppShell.Header`/`AppShell.Footer` 横跨完整视口宽度（[示例](/app-shell?e=FullLayout)）
 
-## Height configuration
+## 高度配置
 
-The `height` property in `header` and `footer` configuration objects works as follows:
+`header` 和 `footer` 配置对象中的 `height` 属性的工作方式如下：
 
-- If you pass a number, the value will be converted to [rem](/styles/rem) and used as the
-  height at all viewport sizes.
-- To change height based on viewport width, use an object with breakpoints as keys and height as
-  values. This works the same way as [style props](/styles/style-props#responsive-styles).
+- 如果传入数字，该值将转换为 [rem](/styles/rem)，并在所有视口大小下用作高度。
+- 要根据视口宽度更改高度，请使用以断点为键、高度为值的对象。其工作方式与 [style props](/styles/style-props#responsive-styles) 相同。
 
-Example with height as a number: `height` is converted to [rem](/styles/rem),
-and `height` remains the same at all viewport sizes:
+数字高度示例：`height` 转换为 [rem](/styles/rem)，
+并在所有视口大小下保持不变：
 
 ```tsx
 import { AppShell } from '@react-ui/ui';
@@ -144,10 +140,10 @@ function Demo() {
 }
 ```
 
-Example with height as an object with breakpoints:
-- `height` is 48 when viewport width is < `theme.breakpoints.sm`
-- `height` is 60 when viewport width is >= `theme.breakpoints.sm` and < `theme.breakpoints.lg`
-- `height` is 76 when viewport width is >= `theme.breakpoints.lg`
+带断点的对象高度示例：
+- 当视口宽度 < `theme.breakpoints.sm` 时，`height` 为 48
+- 当视口宽度 >= `theme.breakpoints.sm` 且 < `theme.breakpoints.lg` 时，`height` 为 60
+- 当视口宽度 >= `theme.breakpoints.lg` 时，`height` 为 76
 
 ```tsx
 import { AppShell } from '@react-ui/ui';
@@ -161,19 +157,17 @@ function Demo() {
 }
 ```
 
-## Width configuration
+## 宽度配置
 
-The `width` property in `navbar` and `aside` configuration objects works as follows:
+`navbar` 和 `aside` 配置对象中的 `width` 属性的工作方式如下：
 
-- If you pass a number, the value will be converted to [rem](/styles/rem) and used as the
-  width when the viewport is larger than `breakpoint`.
-- To change width based on viewport width, use an object with breakpoints as keys and width as
-  values. This works the same way as [style props](/styles/style-props#responsive-styles).
-  Note that width is always 100% when the viewport is smaller than `breakpoint`.
+- 如果传入数字，该值将转换为 [rem](/styles/rem)，并在视口大于 `breakpoint` 时用作宽度。
+- 要根据视口宽度更改宽度，请使用以断点为键、宽度为值的对象。其工作方式与 [style props](/styles/style-props#responsive-styles) 相同。
+  请注意，当视口小于 `breakpoint` 时，宽度始终为 100%。
 
-Example with width as a number: `width` is converted to [rem](/styles/rem),
-and `width` remains the same at viewport sizes larger than `breakpoint`.
-The `width` is 100% when viewport width is less than `breakpoint`:
+数字宽度示例：`width` 转换为 [rem](/styles/rem)，
+并在视口大小大于 `breakpoint` 时保持不变。
+当视口宽度小于 `breakpoint` 时，`width` 为 100%：
 
 ```tsx
 import { AppShell } from '@react-ui/ui';
@@ -187,10 +181,10 @@ function Demo() {
 }
 ```
 
-Example with width as an object with breakpoints:
-- `width` is 100% when viewport width is < `theme.breakpoints.sm`
-- `width` is 200 when viewport width is >= `theme.breakpoints.sm` and < `theme.breakpoints.lg`
-- `width` is 300 when viewport width is >= `theme.breakpoints.lg`
+带断点的对象宽度示例：
+- 当视口宽度 < `theme.breakpoints.sm` 时，`width` 为 100%
+- 当视口宽度 >= `theme.breakpoints.sm` 且 < `theme.breakpoints.lg` 时，`width` 为 200
+- 当视口宽度 >= `theme.breakpoints.lg` 时，`width` 为 300
 
 ```tsx
 import { AppShell } from '@react-ui/ui';
@@ -206,30 +200,30 @@ function Demo() {
 }
 ```
 
-## padding prop
+## padding 属性
 
-The `padding` prop controls the padding of the `AppShell.Main` component. It's important to use this prop
-instead of setting padding directly on `AppShell.Main` because this padding is also used to calculate offsets for
-the `AppShell.Header`, `AppShell.Navbar`, `AppShell.Aside`, and `AppShell.Footer` components.
+`padding` 属性控制 `AppShell.Main` 组件的内边距。使用此属性很重要，
+不要直接在 `AppShell.Main` 上设置内边距，因为该内边距还用于计算
+`AppShell.Header`、`AppShell.Navbar`、`AppShell.Aside` 和 `AppShell.Footer` 组件的偏移。
 
-The `padding` prop works the same way as [style props](/styles/style-props#responsive-styles) and
-accepts numbers, strings, and objects with breakpoints as keys and padding values. You can
-reference `theme.spacing` values or use any valid CSS value.
+`padding` 属性的工作方式与 [style props](/styles/style-props#responsive-styles) 相同，
+接受数字、字符串以及以断点为键、内边距值为值的对象。你可以
+引用 `theme.spacing` 值或使用任何有效的 CSS 值。
 
-Example with static `padding` prop:
+静态 `padding` 属性示例：
 
 ```tsx
 import { AppShell } from '@react-ui/ui';
 
 function Demo() {
-  return <AppShell padding="md">{/* AppShell content */}</AppShell>;
+  return <AppShell padding="md">{/* AppShell 内容 */}</AppShell>;
 }
 ```
 
-Example with responsive `padding` prop:
-- `padding` is 10 when viewport width is < `theme.breakpoints.sm`
-- `padding` is 15 when viewport width is >= `theme.breakpoints.sm` and < `theme.breakpoints.lg`
-- `padding` is `theme.spacing.xl` when viewport width is >= `theme.breakpoints.lg`
+响应式 `padding` 属性示例：
+- 当视口宽度 < `theme.breakpoints.sm` 时，`padding` 为 10
+- 当视口宽度 >= `theme.breakpoints.sm` 且 < `theme.breakpoints.lg` 时，`padding` 为 15
+- 当视口宽度 >= `theme.breakpoints.lg` 时，`padding` 为 `theme.spacing.xl`
 
 ```tsx
 import { AppShell } from '@react-ui/ui';
@@ -237,20 +231,19 @@ import { AppShell } from '@react-ui/ui';
 function Demo() {
   return (
     <AppShell padding={{ base: 10, sm: 15, lg: 'xl' }}>
-      {/* AppShell content */}
+      {/* AppShell 内容 */}
     </AppShell>
   );
 }
 ```
 
-## Header offset configuration
+## Header 偏移配置
 
-The `header` prop includes an `offset` property that allows you to control
-whether the `AppShell.Main` component is offset by the header's height.
-This is particularly useful when you want to collapse the `AppShell.Header`
-based on scroll position. For example, you can use the [use-headroom](/hooks/use-headroom)
-hook to hide the header when the user scrolls down and show it when they
-scroll up ([example](/app-shell?e=Headroom)).
+`header` 属性包含一个 `offset` 属性，允许你控制
+`AppShell.Main` 组件是否由 header 的高度进行偏移。
+当你想基于滚动位置折叠 `AppShell.Header` 时，这特别有用。
+例如，你可以使用 [use-headroom](/hooks/use-headroom) Hook
+在用户向下滚动时隐藏 header，向上滚动时显示 header（[示例](/app-shell?e=Headroom)）。
 
 ```tsx
 import { AppShell, rem } from '@react-ui/ui';
@@ -269,19 +262,19 @@ function Demo() {
       <AppShell.Main
         pt={`calc(${rem(60)} + var(--mantine-spacing-md))`}
       >
-        {/* Content */}
+        {/* 内容 */}
       </AppShell.Main>
     </AppShell>
   );
 }
 ```
 
-## Collapsed navbar/aside configuration
+## 折叠 navbar/aside 配置
 
-The `navbar` and `aside` props include a `collapsed` property that accepts an object with the format `{ mobile: boolean; desktop: boolean }`.
-This allows you to configure the collapsed state differently based on viewport width.
+`navbar` 和 `aside` 属性包含一个 `collapsed` 属性，接受格式为 `{ mobile: boolean; desktop: boolean }` 的对象。
+这允许你根据视口宽度以不同方式配置折叠状态。
 
-[Example](/app-shell?e=CollapseDesktop) with separate collapsed states for mobile and desktop:
+针对移动端和桌面端分别设置折叠状态的[示例](/app-shell?e=CollapseDesktop)：
 
 ```tsx
 import { AppShell, Button } from '@react-ui/ui';
@@ -306,10 +299,10 @@ export function CollapseDesktop() {
       <AppShell.Navbar>Navbar</AppShell.Navbar>
       <AppShell.Main>
         <Button onClick={toggleDesktop} visibleFrom="sm">
-          Toggle navbar
+          切换 navbar
         </Button>
         <Button onClick={toggleMobile} hiddenFrom="sm">
-          Toggle navbar
+          切换 navbar
         </Button>
       </AppShell.Main>
     </AppShell>
@@ -317,27 +310,27 @@ export function CollapseDesktop() {
 }
 ```
 
-## withBorder prop
+## withBorder 属性
 
-The `withBorder` prop is available on `AppShell` and associated sections: `AppShell.Header`, `AppShell.Navbar`, `AppShell.Aside` and `AppShell.Footer`.
-By default, `withBorder` prop is `true` – all components have a border on the side that is adjacent to the `AppShell.Main` component.
-For example, `AppShell.Header` is located at the top of the page – it has a border on the bottom side,
-`AppShell.Navbar` is located on the left side of the page – it has a border on the right side.
+`withBorder` 属性在 `AppShell` 及其关联部分上可用：`AppShell.Header`、`AppShell.Navbar`、`AppShell.Aside` 和 `AppShell.Footer`。
+默认情况下，`withBorder` 属性为 `true` – 所有组件在与 `AppShell.Main` 组件相邻的一侧都有边框。
+例如，`AppShell.Header` 位于页面顶部——它在底部有边框，
+`AppShell.Navbar` 位于页面左侧——它在右侧有边框。
 
-To remove the border from all components, set `withBorder={false}` on the `AppShell`:
+要移除所有组件的边框，请在 `AppShell` 上设置 `withBorder={false}`：
 
 ```tsx
 import { AppShell } from '@react-ui/ui';
 
-// None of the components will have a border
+// 所有组件都不会有边框
 function Demo() {
   return (
-    <AppShell withBorder={false}>{/* AppShell content */}</AppShell>
+    <AppShell withBorder={false}>{/* AppShell 内容 */}</AppShell>
   );
 }
 ```
 
-To remove the border from a specific component, set `withBorder={false}` on that component:
+要移除特定组件的边框，请在该组件上设置 `withBorder={false}`：
 
 ```tsx
 import { AppShell } from '@react-ui/ui';
@@ -351,29 +344,29 @@ function Demo() {
 }
 ```
 
-## zIndex prop
+## zIndex 属性
 
-The `zIndex` prop is available on `AppShell` and its associated sections: `AppShell.Header`, `AppShell.Navbar`, `AppShell.Aside`, and `AppShell.Footer`.
-By default, all sections have a `z-index` of `100`.
+`zIndex` 属性在 `AppShell` 及其关联部分上可用：`AppShell.Header`、`AppShell.Navbar`、`AppShell.Aside` 和 `AppShell.Footer`。
+默认情况下，所有部分的 `z-index` 为 `100`。
 
-To change the `z-index` of all sections, set the `zIndex` prop on the `AppShell` component:
+要更改所有部分的 `z-index`，请在 `AppShell` 组件上设置 `zIndex` 属性：
 
 ```tsx
 import { AppShell } from '@react-ui/ui';
 
-// All sections will have z-index of 200
+// 所有部分的 z-index 为 200
 function Demo() {
-  return <AppShell zIndex={200}>{/* AppShell content */}</AppShell>;
+  return <AppShell zIndex={200}>{/* AppShell 内容 */}</AppShell>;
 }
 ```
 
-To change `z-index` of a specific section, set `zIndex` prop on that section:
+要更改特定部分的 `z-index`，请在该部分上设置 `zIndex` 属性：
 
 ```tsx
 import { AppShell } from '@react-ui/ui';
 
-// AppShell.Header has z-index of 100
-// AppShell.Navbar and AppShell.Aside have z-index of 300
+// AppShell.Header 的 z-index 为 100
+// AppShell.Navbar 和 AppShell.Aside 的 z-index 为 300
 function Demo() {
   return (
     <AppShell>
@@ -385,9 +378,9 @@ function Demo() {
 }
 ```
 
-## Control transitions
+## 控制过渡
 
-Use the `transitionDuration` and `transitionTimingFunction` props on the `AppShell` component to control section animations:
+在 `AppShell` 组件上使用 `transitionDuration` 和 `transitionTimingFunction` 属性来控制部分动画：
 
 ```tsx
 import { AppShell } from '@react-ui/ui';
@@ -398,36 +391,36 @@ function Demo() {
       transitionDuration={500}
       transitionTimingFunction="ease"
     >
-      {/* AppShell content */}
+      {/* AppShell 内容 */}
     </AppShell>
   );
 }
 ```
 
-## disabled prop
+## disabled 属性
 
-Set the `disabled` prop on the `AppShell` component to prevent all sections except `AppShell.Main` from rendering.
-This is useful when you want to hide the shell on certain pages of your application.
+在 `AppShell` 组件上设置 `disabled` 属性，以防止除 `AppShell.Main` 之外的所有部分渲染。
+当你想在应用的某些页面上隐藏 shell 时，这很有用。
 
 ```tsx
 import { AppShell } from '@react-ui/ui';
 
 function Demo() {
-  return <AppShell disabled>{/* AppShell content */}</AppShell>;
+  return <AppShell disabled>{/* AppShell 内容 */}</AppShell>;
 }
 ```
 
-## AppShell.Section component
+## AppShell.Section 组件
 
-`AppShell.Section` is used to create organized areas within `AppShell.Navbar` and `AppShell.Aside`.
-Since these components are flexbox containers with `flex-direction: column`, the `AppShell.Section`
-component with the `grow` prop will expand to fill the available space and can be made scrollable by setting
-`component={ScrollArea}`.
+`AppShell.Section` 用于在 `AppShell.Navbar` 和 `AppShell.Aside` 内创建有组织的区域。
+由于这些组件是具有 `flex-direction: column` 的 flexbox 容器，因此带有 `grow` 属性的 `AppShell.Section`
+组件将扩展以填充可用空间，并且可以通过设置
+`component={ScrollArea}` 使其可滚动。
 
-In the following example:
+在以下示例中：
 
-- The first and last sections (header and footer) take only the space needed for their content
-- The middle section with `grow` takes all the remaining space and becomes scrollable when content exceeds the available height
+- 第一个和最后一个部分（header 和 footer）只占用其内容所需的空间
+- 带有 `grow` 的中间部分占用所有剩余空间，并在内容超过可用高度时可滚动
 
 ```tsx
 import { AppShell, ScrollArea } from '@react-ui/ui';
@@ -438,10 +431,10 @@ function Demo() {
       <AppShell.Navbar>
         <AppShell.Section>Navbar header</AppShell.Section>
         <AppShell.Section grow component={ScrollArea}>
-          Navbar main section that will expand to fill available space
+          将扩展以填充可用空间的 Navbar 主体部分
         </AppShell.Section>
         <AppShell.Section>
-          Navbar footer – always at the bottom
+          始终在底部的 Navbar footer
         </AppShell.Section>
       </AppShell.Navbar>
       <AppShell.Main>Main</AppShell.Main>
@@ -450,12 +443,12 @@ function Demo() {
 }
 ```
 
-## Semantic elements
+## 语义元素
 
-Important: do not use a `<main>` element inside `AppShell.Main`, as only one `<main>` element is allowed per page.
+重要提示：不要在 `AppShell.Main` 内使用 `<main>` 元素，因为每个页面只允许一个 `<main>` 元素。
 
 <DataTable
-  head={['Component', 'Root HTML element']}
+  head={['组件', '根 HTML 元素']}
   data={[
     [<Code>AppShell.Header</Code>, <Code>header</Code>],
     [<Code>AppShell.Footer</Code>, <Code>footer</Code>],
@@ -466,23 +459,23 @@ Important: do not use a `<main>` element inside `AppShell.Main`, as only one `<m
   ]}
 />
 
-## CSS variables
+## CSS 变量
 
 <DataTable
-  head={['Variable', 'Description']}
+  head={['变量', '描述']}
   data={[
-    [<Code>--app-shell-navbar-width</Code>, 'Navbar width'],
-    [<Code>--app-shell-navbar-offset</Code>, 'Navbar offset'],
-    [<Code>--app-shell-aside-width</Code>, 'Aside width'],
-    [<Code>--app-shell-aside-offset</Code>, 'Aside offset'],
-    [<Code>--app-shell-header-height</Code>, 'Header height'],
-    [<Code>--app-shell-header-offset</Code>, 'Header offset'],
-    [<Code>--app-shell-footer-height</Code>, 'Footer height'],
-    [<Code>--app-shell-footer-offset</Code>, 'Footer offset'],
+    [<Code>--app-shell-navbar-width</Code>, 'Navbar 宽度'],
+    [<Code>--app-shell-navbar-offset</Code>, 'Navbar 偏移'],
+    [<Code>--app-shell-aside-width</Code>, 'Aside 宽度'],
+    [<Code>--app-shell-aside-offset</Code>, 'Aside 偏移'],
+    [<Code>--app-shell-header-height</Code>, 'Header 高度'],
+    [<Code>--app-shell-header-offset</Code>, 'Header 偏移'],
+    [<Code>--app-shell-footer-height</Code>, 'Footer 高度'],
+    [<Code>--app-shell-footer-offset</Code>, 'Footer 偏移'],
   ]}
 />
 
-Example of using CSS variables in styles:
+在样式中使用 CSS 变量的示例：
 
 ```scss
 .main {

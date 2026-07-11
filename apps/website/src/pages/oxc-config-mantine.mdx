@@ -3,25 +3,23 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.OxcConfig);
 
-# ReactUI oxc config
+# ReactUI oxc 配置
 
 [oxc-config-mantine](https://github.com/react-ui-org/oxc-config-mantine)
-is a set of [oxc](https://oxc.rs) configurations for
-[oxlint](https://www.npmjs.com/package/oxlint) (linter) and
-[oxfmt](https://www.npmjs.com/package/oxfmt) (formatter) used in ReactUI projects.
-You can use it in your project to ensure that your code follows the same
-style and conventions as ReactUI.
+是一组用于 ReactUI 项目的 [oxc](https://oxc.rs) 配置，包含
+[oxlint](https://www.npmjs.com/package/oxlint)（代码检查器）和
+[oxfmt](https://www.npmjs.com/package/oxfmt)（代码格式化工具）。
+你可以在自己的项目中使用它，以确保代码遵循与 ReactUI 相同的风格和约定。
 
-## Installation
+## 安装
 
-Install `oxc-config-mantine` together with `oxlint` and `oxfmt`:
+一起安装 `oxc-config-mantine`、`oxlint` 和 `oxfmt`：
 
 <InstallScript dev packages="oxlint oxfmt oxc-config-mantine" />
 
-## oxlint configuration
+## oxlint 配置
 
-Create an `oxlint.config.ts` file in the root of your project and extend
-the shared configuration:
+在项目根目录创建一个 `oxlint.config.ts` 文件，并继承共享配置：
 
 ```tsx
 import { defineConfig } from 'oxlint';
@@ -33,9 +31,9 @@ export default defineConfig({
 });
 ```
 
-## oxfmt configuration
+## oxfmt 配置
 
-Create an `oxfmt.config.ts` file in the root of your project:
+在项目根目录创建一个 `oxfmt.config.ts` 文件：
 
 ```tsx
 import { defineConfig } from 'oxfmt';
@@ -44,8 +42,7 @@ import { oxfmt } from 'oxc-config-mantine';
 export default defineConfig(oxfmt);
 ```
 
-You can customize the formatter by spreading the base configuration and adding
-project-specific settings, for example, to add extra ignore patterns:
+你可以通过展开基础配置并添加项目专属设置来自定义格式化工具，例如添加额外的忽略模式：
 
 ```tsx
 import { defineConfig } from 'oxfmt';
@@ -57,9 +54,9 @@ export default defineConfig({
 });
 ```
 
-## Running oxlint and oxfmt
+## 运行 oxlint 和 oxfmt
 
-Add scripts to your `package.json` to lint and format the code:
+在 `package.json` 中添加脚本以检查并格式化代码：
 
 ```json
 {
@@ -70,16 +67,15 @@ Add scripts to your `package.json` to lint and format the code:
 }
 ```
 
-Then run them with your package manager:
+然后使用你的包管理器运行：
 
 ```bash
 npm run lint
 npm run format
 ```
 
-## Rules and source code
+## 规则与源代码
 
-ReactUI oxlint config extends recommended [oxlint](https://oxc.rs/docs/guide/usage/linter)
-rules and adds custom rules and configurations for the `react`, `typescript`,
-`jsx-a11y` and `jest` plugins. You can find the full list of rules and source code
-in the [oxc-config-mantine repository](https://github.com/react-ui-org/oxc-config-mantine).
+ReactUI 的 oxlint 配置继承了推荐的 [oxlint](https://oxc.rs/docs/guide/usage/linter)
+规则，并为 `react`、`typescript`、`jsx-a11y` 和 `jest` 插件添加了自定义规则。
+你可以在 [oxc-config-mantine 仓库](https://github.com/react-ui-org/oxc-config-mantine) 中找到完整的规则列表和源代码。

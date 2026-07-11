@@ -4,17 +4,17 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useMouse);
 
-## Usage
+## 用法
 
 <Demo data={UseMouseDemos.ref} />
 
-If you do not provide a `ref`, the mouse position is tracked relative to the document element:
+如果你不提供 `ref`，鼠标位置将相对于文档元素进行跟踪：
 
 <Demo data={UseMouseDemos.usage} />
 
-## API
+## API 参考
 
-Set the `resetOnExit` option to reset the mouse position to `0, 0` when the mouse leaves the element:
+设置 `resetOnExit` 选项，以在鼠标离开元素时将鼠标位置重置为 `0, 0`：
 
 ```tsx
 import { useMouse } from '@react-ui/hooks';
@@ -22,21 +22,21 @@ import { useMouse } from '@react-ui/hooks';
 const { ref, x, y } = useMouse({ resetOnExit: true });
 ```
 
-The hook returns an object with `ref` and `x`, `y` mouse coordinates:
+该 Hook 返回一个包含 `ref` 和 `x`、`y` 鼠标坐标的对象：
 
 ```tsx
 import { useMouse } from '@react-ui/hooks';
 
 const {
-  ref, // -> pass ref to target element; if not used, document element will be used as target element
-  x, // -> mouse x position
-  y, // -> mouse y position
+  ref, // -> 传递给目标元素；如果未使用，则文档元素将作为目标元素
+  x, // -> 鼠标 x 坐标
+  y, // -> 鼠标 y 坐标
 } = useMouse();
 ```
 
-On the first render (as well as during SSR), both `x` and `y` values are equal to `0`.
+在第一次渲染（以及 SSR 期间），`x` 和 `y` 值都等于 `0`。
 
-## Definition
+## 类型定义
 
 ```tsx
 function useMouse<T extends HTMLElement = any>(options?: {

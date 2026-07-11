@@ -4,62 +4,57 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.ResourcesSchedule);
 
-## Usage
+## 用法
 
-`ResourcesSchedule` is a wrapper component that combines `ResourcesDayView`, `ResourcesWeekView`, and `ResourcesMonthView`
-into a single component with view switching. It manages the current view and date state, passing
-common props to all three views automatically.
+`ResourcesSchedule` 是一个包装组件，它将 `ResourcesDayView`、`ResourcesWeekView` 和 `ResourcesMonthView`
+组合成一个支持视图切换的单一组件。它管理当前视图和日期状态，并自动将通用 props 传递给三个视图。
 
 <Demo data={ResourcesScheduleDemos.usage} />
 
-## Controlled state
+## 受控状态
 
-You can control the current date and view level with `date`/`onDateChange` and `view`/`onViewChange` props.
+你可以使用 `date`/`onDateChange` 和 `view`/`onViewChange` prop 控制当前日期和视图层级。
 
 <Demo data={ResourcesScheduleDemos.controlled} />
 
-## Drag and drop
+## 拖拽
 
-Enable drag and drop across all views with `withEventsDragAndDrop` prop.
+使用 `withEventsDragAndDrop` prop 在所有视图中启用拖拽。
 
 <Demo data={ResourcesScheduleDemos.dragDrop} />
 
-## Week view
+## 周视图
 
-Set `defaultView="week"` to open the schedule in week view by default.
+设置 `defaultView="week"` 以默认在周视图中打开调度组件。
 
 <Demo data={ResourcesScheduleDemos.weekView} />
 
-## View-specific props
+## 视图特定 props
 
-Use `dayViewProps`, `weekViewProps`, and `monthViewProps` to pass props specific to each view.
+使用 `dayViewProps`、`weekViewProps` 和 `monthViewProps` 向每个视图传递特定 props。
 
 <Demo data={ResourcesScheduleDemos.viewProps} />
 
-## Event form
+## 事件表单
 
-Click time slots, day cells, or existing events to open an event form. The form works across
-day, week, and month views with automatic view switching.
+点击时间槽、日期单元格或现有事件以打开事件表单。该表单在日、周、月视图中均可使用，并支持自动视图切换。
 
 <Demo data={ResourcesScheduleDemos.eventForm} />
 
-## External drag and drop
+## 外部拖拽
 
-You can drag external items onto the schedule using `onExternalEventDrop` prop. The callback
-receives the `resourceId` of the target resource.
+你可以使用 `onExternalEventDrop` prop 将外部项目拖放到调度组件上。回调接收目标资源的 `resourceId`。
 
 <Demo data={ResourcesScheduleDemos.externalDragDrop} />
 
-## Event resize
+## 事件调整大小
 
-Enable event resizing with `withEventResize` prop. Event resize is available in day and week views
-where events can be resized by dragging their left or right edges. In week view, resizing is
-constrained to the event's own day.
+使用 `withEventResize` prop 启用事件调整大小。事件调整大小在日视图和周视图中可用，可以通过拖动事件的左边缘或右边缘来调整大小。在周视图中，调整大小被限制在事件所在的那一天。
 
 <Demo data={ResourcesScheduleDemos.eventResize} />
 
-## Static mode
+## 静态模式
 
-Set `mode="static"` to disable all interactions across all three views.
+设置 `mode="static"` 以禁用所有三个视图中的所有交互。
 
 <Demo data={ResourcesScheduleDemos.staticMode} />

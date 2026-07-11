@@ -4,123 +4,114 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.ResourcesMonthView);
 
-## Usage
+## 用法
 
-ResourcesMonthView displays a month grid where each day cell contains resource lanes.
-Events are shown within their resource's lane, making it easy to see resource utilization
-across the month.
+ResourcesMonthView 显示一个月网格，每个日期单元格包含资源通道。
+事件显示在其资源的通道内，便于查看整个月的资源利用情况。
 
 <Demo data={ResourcesMonthViewDemos.usage} />
 
-## Static mode
+## 静态模式
 
-Set `mode="static"` to disable all interactions.
+设置 `mode="static"` 以禁用所有交互。
 
 <Demo data={ResourcesMonthViewDemos.staticMode} />
 
-## Drag and drop
+## 拖拽
 
-Enable drag and drop with `withEventsDragAndDrop` prop. The `onEventDrop` callback receives
-the `resourceId` of the target resource, allowing you to update the event's resource assignment.
+使用 `withEventsDragAndDrop` prop 启用拖拽。`onEventDrop` 回调接收目标资源的 `resourceId`，允许你更新事件的资源分配。
 
 <Demo data={ResourcesMonthViewDemos.dragDrop} />
 
-## Event form
+## 事件表单
 
-Click a day cell to create a new event, or click an existing event to edit it. Use `withDragSlotSelect`
-and `onSlotDragEnd` to allow drag-to-create across day cells. The `onSlotDragEnd` callback includes
-the `resourceId` of the resource where the drag started.
+点击日期单元格创建新事件，或点击现有事件编辑它。使用 `withDragSlotSelect`
+和 `onSlotDragEnd` 允许通过跨日期单元格拖动来创建。`onSlotDragEnd` 回调包含拖动开始所在资源的 `resourceId`。
 
 <Demo data={ResourcesMonthViewDemos.eventForm} />
 
-## Custom event rendering
+## 自定义事件渲染
 
-Use `renderEvent` prop to customize how events are rendered. The example below uses `HoverCard`
-to display event details on hover.
+使用 `renderEvent` prop 自定义事件渲染方式。以下示例使用 `HoverCard` 在悬停时显示事件详情。
 
 <Demo data={ResourcesMonthViewDemos.renderEvent} />
 
-## Custom resource label
+## 自定义资源标签
 
-Use `renderResourceLabel` prop to customize how resource labels are rendered in the row headers.
+使用 `renderResourceLabel` prop 自定义行标题中资源标签的渲染方式。
 
 <Demo data={ResourcesMonthViewDemos.renderResourceLabel} />
 
-## Resource groups
+## 资源分组
 
-Use `groups` prop to group resources under labeled headers. The group labels are displayed
-as a column to the left of resource labels, spanning vertically across their resources.
-Use `renderGroupLabel` to customize group label rendering and `groupLabelWidth` to control
-the group column width.
+使用 `groups` prop 将资源分组到带标签的标题下。分组标签显示在资源标签左侧的列中，跨其资源垂直延伸。
+使用 `renderGroupLabel` 自定义分组标签渲染，使用 `groupLabelWidth` 控制分组列宽度。
 
 <Demo data={ResourcesMonthViewDemos.resourceGroups} />
 
-## Localization
+## 本地化
 
-Set `locale` prop to change the language. Use `labels` prop to override built-in labels.
+设置 `locale` prop 以更改语言。使用 `labels` prop 覆盖内置标签。
 
 <Demo data={ResourcesMonthViewDemos.localization} />
 
-## Recurring events
+## 重复事件
 
-ResourcesMonthView automatically expands recurring events for the visible month.
-See [Recurring events guide](/schedule/recurring-events) for full documentation.
+ResourcesMonthView 会自动为可见月份展开重复事件。
+详情请参见 [重复事件指南](/schedule/recurring-events)。
 
 <Demo data={ResourcesMonthViewDemos.recurringEvents} />
 
-## Max events per cell
+## 每个单元格最大事件数
 
-Use `maxEventsPerTimeSlot` prop to limit the number of events visible in each cell.
-When there are more events than the limit, a "+more" indicator is shown.
+使用 `maxEventsPerTimeSlot` prop 限制每个单元格中可见的事件数量。
+当事件超过限制时，会显示 "+more" 指示器。
 
 <Demo data={ResourcesMonthViewDemos.maxEventsPerTimeSlot} />
 
-## Day width and row height
+## 日期宽度和行高
 
-Use `dayWidth` and `rowHeight` props to customize the dimensions of day columns and resource rows.
+使用 `dayWidth` 和 `rowHeight` prop 自定义日期列和资源行的尺寸。
 
 <Demo data={ResourcesMonthViewDemos.dayWidth} />
 
-## Start scroll date
+## 初始滚动日期
 
-Use `startScrollDate` prop to scroll to a specific date on initial render. This is useful
-when the month has many days and you want the view to start at a specific date, for example today.
+使用 `startScrollDate` prop 在初始渲染时滚动到特定日期。当月份包含很多天时，这很有用，例如让视图从今天开始显示。
 
 <Demo data={ResourcesMonthViewDemos.startScrollDate} />
 
-## Without weekend days
+## 隐藏周末
 
-Set `withWeekendDays={false}` to hide weekend day columns from the month grid.
+设置 `withWeekendDays={false}` 以从月网格中隐藏周末日期列。
 
 <Demo data={ResourcesMonthViewDemos.withoutWeekendDays} />
 
-## More events indicator
+## 更多事件指示器
 
-When a day cell has more events than `maxEventsPerTimeSlot`, a "+X more" indicator is shown.
-Click the indicator to see all events for that day.
+当日期单元格中的事件数量超过 `maxEventsPerTimeSlot` 时，会显示 "+X more" 指示器。
+点击指示器可查看该天的所有事件。
 
 <Demo data={ResourcesMonthViewDemos.moreEvents} />
 
-## More events props
+## 更多事件 props
 
-Use `moreEventsProps` to customize the more events dropdown, for example to use a modal
-instead of a popover.
+使用 `moreEventsProps` 自定义更多事件下拉框，例如使用模态框代替 popover。
 
 <Demo data={ResourcesMonthViewDemos.moreEventsProps} />
 
-## Custom header
+## 自定义标题
 
-Set `withHeader={false}` to hide the default header and use `ScheduleHeader` to build
-a custom header with navigation controls.
+设置 `withHeader={false}` 以隐藏默认标题，并使用 `ScheduleHeader` 构建带有导航控件的自定义标题。
 
 <Demo data={ResourcesMonthViewDemos.customHeader} />
 
-## Radius
+## 圆角
 
 <Demo data={ResourcesMonthViewDemos.radius} />
 
-## Scroll area props
+## 滚动区域 props
 
-Use `scrollAreaProps` to customize the scroll area behavior.
+使用 `scrollAreaProps` 自定义滚动区域行为。
 
 <Demo data={ResourcesMonthViewDemos.scrollAreaProps} />

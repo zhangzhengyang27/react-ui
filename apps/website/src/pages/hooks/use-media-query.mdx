@@ -4,34 +4,34 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useMediaQuery);
 
-## Usage
+## 用法
 
-The `use-media-query` hook subscribes to media queries.
-It receives a media query as an argument and returns `true` if the given media query matches the current state.
-The hook relies on the `window.matchMedia()` [API](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)
-and will return `false` if the API is not available, unless an initial value is provided in the second argument.
+`use-media-query` Hook 订阅媒体查询。
+它接收一个媒体查询作为参数，当该媒体查询匹配当前状态时返回 `true`。
+该 Hook 依赖 `window.matchMedia()` [API](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)
+，如果 API 不可用则返回 `false`，除非在第二个参数中提供了初始值。
 
-Resize the browser window to trigger the `window.matchMedia` event:
+调整浏览器窗口大小以触发 `window.matchMedia` 事件：
 
 <Demo data={UseMediaQueryDemos.usage} />
 
-## Server-Side Rendering
+## 服务端渲染
 
-During server-side rendering, the hook will always return `false` as the `window.matchMedia` API is not available.
-If that is not the desired behavior, you can override the initial value:
+在服务端渲染期间，由于 `window.matchMedia` API 不可用，该 Hook 始终返回 `false`。
+如果你希望改变这一行为，可以覆盖初始值：
 
 ```tsx
 import { useMediaQuery } from '@react-ui/hooks';
 
 function Demo() {
-  // Set the initial value in the second argument and getInitialValueInEffect option to false
+  // 在第二个参数中设置初始值，并将 getInitialValueInEffect 选项设为 false
   const matches = useMediaQuery('(max-width: 40em)', true, {
     getInitialValueInEffect: false,
   });
 }
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseMediaQueryOptions {
@@ -45,10 +45,10 @@ function useMediaQuery(
 ): boolean;
 ```
 
-## Exported types
+## 导出类型
 
-`UseMediaQueryOptions` type is exported from `@react-ui/hooks` package,
-you can import it in your application:
+`UseMediaQueryOptions` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseMediaQueryOptions } from '@react-ui/hooks';

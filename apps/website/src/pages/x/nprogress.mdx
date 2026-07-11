@@ -4,21 +4,21 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Nprogress);
 
-## Installation
+## 安装
 
 <InstallScript packages="@react-ui/ui" />
 
-After installation import package styles at the root of your application:
+安装完成后，在应用根目录导入包样式：
 
 ```tsx
 import '@react-ui/ui/styles.css';
-// ‼️ import nprogress styles after core package styles
+// ‼️ nprogress 样式必须在核心包样式之后导入
 import '@react-ui/ui/styles.css';
 ```
 
-## Setup NavigationProgress
+## 设置 NavigationProgress
 
-Render the `NavigationProgress` component anywhere in your app within [MantineProvider](/theming/mantine-provider/):
+在 [MantineProvider](/theming/mantine-provider/) 内的任意位置渲染 `NavigationProgress` 组件：
 
 ```tsx
 import { MantineProvider } from '@react-ui/ui';
@@ -28,12 +28,12 @@ function Demo() {
   return (
     <MantineProvider>
       <NavigationProgress />
-      {/* Your app here */}
+      {/* 你的应用内容 */}
     </MantineProvider>
   );
 }
 ```
 
-## Usage
+## 用法
 
 <Demo data={NprogressDemos.usage} />

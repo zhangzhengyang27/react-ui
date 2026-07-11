@@ -4,31 +4,27 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Sparkline);
 
-## Usage
+## 用法
 
-`Sparkline` is a simplified version of [AreaChart](/charts/area-chart). It can be used
-to display a single series of data in a small space.
+`Sparkline` 是 [AreaChart](/charts/area-chart) 的简化版本，可用于在较小空间内展示单组数据。
 
 <Demo data={SparklineDemos.usage} />
 
-## Change area color depending on color scheme
+## 根据颜色方案改变区域颜色
 
-You can use CSS variables in the `color` property. To define a CSS variable that
-changes depending on the color scheme, use [light/dark mixins](/styles/postcss-preset/#dark-and-light-mixins)
-or the [light-dark function](/styles/postcss-preset/#light-dark-function). Example
-of an area that is dark orange in light mode and lime in dark mode:
+你可以在 `color` 属性中使用 CSS 变量。要定义随颜色方案变化的 CSS 变量，可使用 [light/dark mixins](/styles/postcss-preset/#dark-and-light-mixins)
+或 [light-dark 函数](/styles/postcss-preset/#light-dark-function)。例如，一个区域在浅色模式下为深橙色，在深色模式下为柠檬色：
 
 <Demo data={SparklineDemos.colorSchemeColor} />
 
-## Trend colors
+## 趋势颜色
 
-Use the `trendColors` prop instead of `color` to change the chart color depending on the trend.
-The prop accepts an object with `positive`, `negative`, and `neutral` properties:
+使用 `trendColors` 属性替代 `color`，根据趋势改变图表颜色。该属性接受一个包含 `positive`、`negative` 和 `neutral` 的对象：
 
-- `positive` - color for positive trend (first value is less than the last value in the `data` array)
-- `negative` - color for negative trend (first value is greater than the last value in the `data` array)
-- `neutral` - color for neutral trend (first and last values are equal)
+- `positive` - 正值趋势颜色（`data` 数组中首个值小于最后一个值）
+- `negative` - 负值趋势颜色（`data` 数组中首个值大于最后一个值）
+- `neutral` - 中性趋势颜色（首尾两个值相等）
 
-`neutral` is optional; if not provided, the color will be the same as `positive`.
+`neutral` 为可选；若未提供，颜色将与 `positive` 相同。
 
 <Demo data={SparklineDemos.trendColors} />

@@ -4,32 +4,32 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useFocusReturn);
 
-## Usage
+## 用法
 
-The `use-focus-return` hook automatically returns focus to the last focused element when a given condition is met.
-For example, it is used in the [Modal](/core/modal/) component to restore focus after the modal was closed.
+`use-focus-return` Hook 在给定条件满足时自动将焦点返回到上一个聚焦的元素。
+例如，它在 [Modal](/core/modal/) 组件中用于在弹窗关闭后恢复焦点。
 
-Close the modal with the `Escape` key and see how focus returns to the button after the modal closes:
+使用 `Escape` 键关闭弹窗，观察焦点如何在弹窗关闭后返回到按钮：
 
 <Demo data={ModalDemos.usage} demoProps={{ toggle: true }} />
 
-In most cases, you should use this hook with [use-focus-trap](/hooks/use-focus-trap/).
+在大多数情况下，你应将此 Hook 与 [use-focus-trap](/hooks/use-focus-trap/) 一起使用。
 
 ```tsx
 import { useFocusReturn } from '@react-ui/hooks';
 
 useFocusReturn({
-  // Is region with focus trap active?
-  // When it activates hook saves document.activeElement to the internal state
-  // and focuses this element once focus trap is deactivated
+  // 焦点陷阱区域是否处于活动状态？
+  // 当激活时，Hook 会将 document.activeElement 保存到内部状态
+  // 并在焦点陷阱停用时聚焦该元素
   opened: false,
 
-  // Determines whether focus should be returned automatically, true by default
+  // 决定是否应自动返回焦点，默认为 true
   shouldReturnFocus: true,
 });
 ```
 
-If the `shouldReturnFocus` option is set to `false`, you can call the returned function to focus the last active element:
+如果 `shouldReturnFocus` 选项设置为 `false`，你可以调用返回的函数来聚焦最后一个活动元素：
 
 ```tsx
 import { useFocusReturn } from '@react-ui/hooks';
@@ -39,11 +39,11 @@ const returnFocus = useFocusReturn({
   shouldReturnFocus: false,
 });
 
-// ... later
+// ... 稍后
 returnFocus();
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseFocusReturnOptions {
@@ -56,10 +56,10 @@ type UseFocusReturnReturnValue = () => void;
 function useFocusReturn(options: UseFocusReturnOptions): UseFocusReturnReturnValue
 ```
 
-## Exported types
+## 导出类型
 
-`UseFocusReturnOptions` and `UseFocusReturnReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseFocusReturnOptions` 和 `UseFocusReturnReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseFocusReturnOptions, UseFocusReturnReturnValue } from '@react-ui/hooks';

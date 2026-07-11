@@ -3,10 +3,10 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useFocusTrap);
 
-## Usage
+## 用法
 
-The `use-focus-trap` hook traps focus at the given node, for example in a modal, drawer, or menu.
-The node must include at least one focusable element. When the node unmounts, the focus trap is automatically released.
+`use-focus-trap` Hook 将焦点限制在给定节点内，例如在弹窗、抽屉或菜单中。
+该节点必须至少包含一个可聚焦元素。当节点卸载时，焦点陷阱会自动释放。
 
 ```tsx
 import { useFocusTrap } from '@react-ui/hooks';
@@ -22,20 +22,20 @@ function Demo() {
 }
 ```
 
-## API
+## API 参考
 
-The hook accepts focus trap active state as a single argument:
+该 Hook 接受焦点陷阱的激活状态作为唯一参数：
 
 ```tsx
 import { useFocusTrap } from '@react-ui/hooks';
 
-useFocusTrap(); // -> focus trap inactive
-useFocusTrap(true); // -> focus trap active
+useFocusTrap(); // -> 焦点陷阱未激活
+useFocusTrap(true); // -> 焦点陷阱激活
 
-useFocusTrap(false); // -> focus trap disabled
+useFocusTrap(false); // -> 焦点陷阱禁用
 ```
 
-The hook returns `ref` that should be passed to the element:
+该 Hook 返回应传递给元素的 `ref`：
 
 ```tsx
 import { Paper } from '@react-ui/ui';
@@ -46,19 +46,19 @@ function Demo() {
 
   return (
     <>
-      {/* With regular element: */}
+      {/* 普通元素： */}
       <div ref={focusTrapRef} />
 
-      {/* With ReactUI component: */}
+      {/* ReactUI 组件： */}
       <Paper ref={focusTrapRef} />
     </>
   );
 }
 ```
 
-## Combine with other ref based hooks
+## 与其他基于 ref 的 Hook 结合使用
 
-To combine `use-focus-trap` with other ref-based hooks, use the [use-merged-ref](/hooks/use-merged-ref/) hook:
+要将 `use-focus-trap` 与其他基于 ref 的 Hook 结合使用，请使用 [use-merged-ref](/hooks/use-merged-ref/) Hook：
 
 ```tsx
 import { useRef } from 'react';
@@ -82,10 +82,10 @@ function Demo() {
 }
 ```
 
-## Initial focus
+## 初始焦点
 
-By default, the focus trap will move focus to the first interactive element.
-To specify the element that should receive initial focus, add the `data-autofocus` attribute:
+默认情况下，焦点陷阱会将焦点移动到第一个可交互元素。
+要指定应接收初始焦点的元素，请添加 `data-autofocus` 属性：
 
 ```tsx
 import { useFocusTrap } from '@react-ui/hooks';
@@ -96,7 +96,7 @@ function Demo() {
   return (
     <div ref={focusTrapRef}>
       <input />
-      {/* The second input in the modal will have initial focus */}
+      {/* 弹窗中的第二个输入框将获得初始焦点 */}
       <input data-autofocus />
       <input />
     </div>
@@ -104,7 +104,7 @@ function Demo() {
 }
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 function useFocusTrap(active?: boolean): React.RefCallback<HTMLElement | null>

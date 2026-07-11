@@ -6,24 +6,21 @@ export default Layout(MDX_DATA.MultiSelect);
 
 <ComboboxDisclaimer component="MultiSelect" />
 
-## Usage
+## 用法
 
-`MultiSelect` provides a way to enter multiple values.
-`MultiSelect` is similar to [TagsInput](/core/tags-input), but it does not allow entering custom values.
+`MultiSelect` 提供了一种输入多个值的方式。`MultiSelect` 与 [TagsInput](/core/tags-input) 类似，但不允许输入自定义值。
 
 <Demo data={MultiSelectDemos.usage} />
 
-## Loading state
+## 加载状态
 
-Set `loading` prop to display a loading indicator. By default, the loader is displayed on the right side of the input.
-You can change the position with the `loadingPosition` prop to `'left'` or `'right'`. This is useful for async operations like API calls, searches, or validations:
+设置 `loading` 属性以显示加载指示器。默认情况下，加载器显示在输入框的右侧。你可以使用 `loadingPosition` 属性将位置更改为 `'left'` 或 `'right'`。这对于 API 调用、搜索或验证等异步操作非常有用：
 
 <Demo data={MultiSelectDemos.loading} />
 
-## Controlled
+## 受控模式
 
-The `MultiSelect` value must be an array of strings; other types are not supported.
-The `onChange` function is called with an array of strings as a single argument.
+`MultiSelect` 的值必须是字符串数组，不支持其他类型。`onChange` 函数以字符串数组作为唯一参数被调用。
 
 ```tsx
 import { useState } from 'react';
@@ -35,14 +32,13 @@ function Demo() {
 }
 ```
 
-## Clearable
+## 可清除
 
-Set the `clearable` prop to display the clear button in the right section. The button is not displayed
-when:
+设置 `clearable` 属性可在右侧区域显示清除按钮。以下情况不显示按钮：
 
-- The component does not have a value
-- The component is disabled
-- The component is read only
+- 组件没有值
+- 组件被禁用
+- 组件为只读
 
 <Demo data={MultiSelectDemos.clearable} />
 
@@ -50,15 +46,15 @@ when:
 
 <Demo data={MultiSelectDemos.clearSectionMode} />
 
-## Searchable
+## 可搜索
 
-Set the `searchable` prop to allow filtering options by user input:
+设置 `searchable` 属性以允许用户输入过滤选项：
 
 <Demo data={MultiSelectDemos.searchable} />
 
-## Controlled search value
+## 受控搜索值
 
-You can control the search value with the `searchValue` and `onSearchChange` props:
+你可以使用 `searchValue` 和 `onSearchChange` 属性控制搜索值：
 
 ```tsx
 import { useState } from 'react';
@@ -77,39 +73,35 @@ function Demo() {
 }
 ```
 
-## Nothing found
+## 无匹配结果
 
-Set the `nothingFoundMessage` prop to display a given message when no options match the search query
-or there is no data available. If the `nothingFoundMessage` prop is not set, the `MultiSelect` dropdown will be hidden.
+设置 `nothingFoundMessage` 属性，以在搜索查询没有匹配选项或没有可用数据时显示指定消息。如果未设置 `nothingFoundMessage`，`MultiSelect` 下拉菜单将隐藏。
 
 <Demo data={MultiSelectDemos.nothingFound} />
 
-## Checked option icon
+## 选中选项图标
 
-Set `checkIconPosition` prop to `left` or `right` to control position of check icon in active option.
-To remove the check icon, set `withCheckIcon={false}`. To align unchecked labels with checked ones, set `withAlignedLabels` prop.
+设置 `checkIconPosition` 属性为 `left` 或 `right`，以控制活动选项中勾选图标的位置。要移除勾选图标，请设置 `withCheckIcon={false}`。要对齐未选中标签与已选中标签，请设置 `withAlignedLabels` 属性。
 
 <Demo data={MultiSelectDemos.checkIcon} />
 
-## Max selected values
+## 最大选中数量
 
-You can limit the number of selected values with the `maxValues` prop. This will not allow adding more values
-once the limit is reached.
+你可以使用 `maxValues` 属性限制可选值的数量。达到限制后将无法再添加更多值。
 
 <Demo data={MultiSelectDemos.maxValues} />
 
-## Hide selected options
+## 隐藏已选选项
 
-To remove selected options from the list of available options, set the `hidePickedOptions` prop:
+要从可用选项列表中移除已选选项，请设置 `hidePickedOptions` 属性：
 
 <Demo data={MultiSelectDemos.hidePickedOptions} />
 
 <ComboboxData component="MultiSelect" />
 
-## Value type
+## 值类型
 
-`MultiSelect` supports primitive values (strings, numbers, booleans) as value type. `MultiSelect` automatically
-infers the value type. If you want to set the value type explicitly, pass type argument:
+`MultiSelect` 支持基本值类型（字符串、数字、布尔值）作为值类型。`MultiSelect` 会自动推断值类型。如果你想显式设置值类型，请传入类型参数：
 
 ```tsx
 import { MultiSelect } from '@react-ui/ui';
@@ -125,21 +117,17 @@ function Demo() {
 
 <Demo data={MultiSelectDemos.search} />
 
-## Sort options
+## 排序选项
 
-By default, options are sorted by their position in the data array. You can change this behavior
-with the `filter` function:
+默认情况下，选项按其所在 `data` 数组的位置排序。你可以使用 `filter` 函数更改此行为：
 
 <Demo data={MultiSelectDemos.sort} />
 
-## Fuzzy search with fuse.js
+## 使用 fuse.js 进行模糊搜索
 
-You can implement fuzzy search using the [fuse.js](https://fusejs.io/) library to match options
-even with typos or partial matches:
+你可以使用 [fuse.js](https://fusejs.io/) 库实现模糊搜索，即使在输入有错字或部分匹配时也能匹配选项：
 
 <Demo data={MultiSelectDemos.fuzzySearch} />
-
-
 
 <ComboboxLargeData component="MultiSelect" />
 
@@ -147,39 +135,31 @@ even with typos or partial matches:
 
 ## renderOption
 
-The `renderOption` callback allows you to customize option rendering. It is called with the option object and
-checked state. The function must return a React node.
+`renderOption` 回调允许你自定义选项渲染。它接收选项对象和选中状态，必须返回一个 React 节点。
 
 <Demo data={MultiSelectDemos.renderOption} />
 
 ## renderPill
 
-The `renderPill` callback allows you to customize pill rendering. The function receives the option (that was passed to data), value, onRemove and disabled props. It must return a React node.
+`renderPill` 回调允许你自定义 pill 渲染。该函数接收传入 `data` 的选项、value、onRemove 和 disabled 属性，必须返回一个 React 节点。
 
 <Demo data={MultiSelectDemos.renderPill} />
 
-## Reorder pills
+## 重新排序 pills
 
-Set the `withPillsReorder` prop to allow reordering pills. Dropping a pill before or after
-another pill updates the component value accordingly. Reordering is automatically disabled
-when `disabled` or `readOnly` is set.
+设置 `withPillsReorder` 属性以允许重新排序 pills。将 pill 拖到另一个 pill 前后会相应更新组件值。设置 `disabled` 或 `readOnly` 时会自动禁用重新排序。
 
-You can reorder pills with a mouse (drag-and-drop) or keyboard:
+你可以使用鼠标（拖放）或键盘重新排序 pills：
 
-- Pills are not part of the `Tab` order. With focus on the input, press `ArrowLeft` (when the
-  caret is at the start of the input) to move focus to the last pill.
-- `ArrowLeft` and `ArrowRight` move focus between pills (RTL-aware). Pressing `ArrowRight` on
-  the last pill returns focus to the input.
-- `Alt + ArrowLeft` and `Alt + ArrowRight` reorder the focused pill (RTL-aware).
+- Pills 不在 `Tab` 顺序中。当焦点在输入框时，按 `ArrowLeft`（当光标在输入框开头时）可将焦点移到最后一个 pill。
+- `ArrowLeft` 和 `ArrowRight` 在 pills 之间移动焦点（支持 RTL）。在最后一个 pill 上按 `ArrowRight` 可将焦点返回到输入框。
+- `Alt + ArrowLeft` 和 `Alt + ArrowRight` 重新排序当前聚焦的 pill（支持 RTL）。
 
-Focus follows the moved pill so multiple moves can be chained without re-focusing.
+焦点会跟随移动的 pill，因此可以连续进行多次移动而无需重新聚焦。
 
 <Demo data={MultiSelectDemos.dragReorder} />
 
-If you use a custom pill renderer with the `renderPill` prop, spread the `reorderProps` from
-the render callback payload onto the focusable pill root element to keep reordering working.
-`reorderProps` carries the `tabIndex`, `data-mantine-pill-index` attribute and the keyboard
-handler that drive keyboard reorder, so it must land on the element the user can focus:
+如果你使用 `renderPill` 属性自定义 pill 渲染，请将渲染回调负载中的 `reorderProps` 展开到可聚焦的 pill 根元素上，以保持重新排序功能正常。`reorderProps` 包含 `tabIndex`、`data-mantine-pill-index` 属性和驱动键盘重新排序的键盘处理器，因此它必须落在用户可聚焦的元素上：
 
 ```tsx
 import { MultiSelect } from '@react-ui/ui';
@@ -199,87 +179,75 @@ function Demo() {
 }
 ```
 
-## Scrollable dropdown
+## 可滚动下拉菜单
 
-By default, the options list is wrapped with [ScrollArea.Autosize](/core/scroll-area).
-You can control the dropdown max-height with the `maxDropdownHeight` prop if you do not change the default settings.
+默认情况下，选项列表使用 [ScrollArea.Autosize](/core/scroll-area) 包裹。如果你不更改默认设置，可以使用 `maxDropdownHeight` 属性控制下拉菜单的最大高度。
 
-If you want to use native scrollbars, set `withScrollArea={false}`. Note that in this case,
-you will need to change the dropdown styles with [Styles API](/styles/styles-api).
+如果你想使用原生滚动条，请设置 `withScrollArea={false}`。注意，在这种情况下，你需要使用 [Styles API](/styles/styles-api) 更改下拉菜单样式。
 
 <Demo data={MultiSelectDemos.scrollArea} />
 
-## Fit dropdown to viewport height
+## 下拉菜单适配视口高度
 
-Set `floatingHeight="viewport"` to make the dropdown grow to fill the available vertical
-space in the viewport. The `flip` middleware is disabled in this mode – the dropdown
-always opens in the configured direction and is constrained to the viewport edges instead
-of flipping to the other side. Useful when working with large option lists:
+设置 `floatingHeight="viewport"` 可使下拉菜单扩展到视口中可用的垂直空间。此模式下 `flip` 中间件被禁用——下拉菜单始终按配置方向打开，并被限制在视口边缘而不是翻转到另一侧。适用于大量选项列表：
 
 <Demo data={MultiSelectDemos.floatingHeight} />
 
-## Group options
+## 分组选项
 
 <Demo data={MultiSelectDemos.groups} />
 
-## Disabled options
+## 禁用选项
 
-When an option is disabled, it cannot be selected and is ignored in keyboard navigation.
-Note that the user can still enter a disabled option as a value. If you want to prohibit certain values,
-use a controlled component and filter them out in the `onChange` function.
+当某个选项被禁用时，它无法被选中，并在键盘导航中被忽略。注意用户仍然可以将禁用选项作为值输入。如果你想禁止某些值，请使用受控组件并在 `onChange` 函数中过滤掉它们。
 
 <Demo data={MultiSelectDemos.disabledOptions} />
 
 <ComboboxProps component="MultiSelect" />
 
-## Inside Popover
+## 在 Popover 内使用
 
-To use `MultiSelect` inside popover, you need to set `withinPortal: false`:
+要在 popover 内使用 `MultiSelect`，你需要设置 `withinPortal: false`：
 
 <Demo data={MultiSelectDemos.withinPopover} />
 
-## Control dropdown opened state
+## 控制下拉菜单打开状态
 
-You can control the dropdown opened state with the `dropdownOpened` prop. Additionally,
-you can use `onDropdownClose` and `onDropdownOpen` to listen to dropdown opened state changes.
+你可以使用 `dropdownOpened` 属性控制下拉菜单的打开状态。此外，还可以使用 `onDropdownClose` 和 `onDropdownOpen` 监听下拉菜单打开状态的变化。
 
 <Demo data={MultiSelectDemos.dropdownOpened} />
 
-## Dropdown position
+## 下拉菜单位置
 
-By default, the dropdown is displayed below the input if there is enough space; otherwise it is displayed above the input.
-You can change this behavior by setting the `position` and `middlewares` props, which are passed down to the
-underlying [Popover](/core/popover) component.
+默认情况下，如果空间足够，下拉菜单显示在输入框下方；否则显示在输入框上方。你可以通过设置 `position` 和 `middlewares` 属性来更改此行为，这些属性会传递给底层的 [Popover](/core/popover) 组件。
 
-Example of a dropdown that is always displayed above the input:
+下拉菜单始终显示在输入框上方的示例：
 
 <Demo data={MultiSelectDemos.dropdownPosition} />
 
-## Dropdown width
+## 下拉菜单宽度
 
-To change the dropdown width, set the `width` prop in `comboboxProps`. By default,
-the dropdown width is equal to the input width.
+要更改下拉菜单宽度，请在 `comboboxProps` 中设置 `width` 属性。默认情况下，下拉菜单宽度等于输入框宽度。
 
 <Demo data={MultiSelectDemos.dropdownWidth} />
 
-## Dropdown offset
+## 下拉菜单偏移
 
-To change the dropdown offset, set the `offset` prop in `comboboxProps`:
+要更改下拉菜单偏移，请在 `comboboxProps` 中设置 `offset` 属性：
 
 <Demo data={MultiSelectDemos.dropdownOffset} />
 
-## Dropdown animation
+## 下拉菜单动画
 
-By default, dropdown animations are disabled. To enable them, you can set `transitionProps`,
-which will be passed down to the underlying [Transition](/core/transition) component.
+默认情况下，下拉菜单动画被禁用。要启用动画，你可以设置 `transitionProps`，它会传递给底层的 [Transition](/core/transition) 组件。
 
 <Demo data={MultiSelectDemos.dropdownAnimation} />
 
-## Dropdown padding
+## 下拉菜单内边距
 
 <Demo data={MultiSelectDemos.dropdownPadding} />
 
-## Dropdown shadow
+## 下拉菜单阴影
 
 <Demo data={MultiSelectDemos.dropdownShadow} />
 
@@ -287,31 +255,29 @@ which will be passed down to the underlying [Transition](/core/transition) compo
 
 <Demo data={MultiSelectDemos.sections} />
 
-## Input props
+## 输入属性
 
 <InputFeatures component="MultiSelect" element="input" />
 
 <Demo data={MultiSelectDemos.configurator} />
 
-## Read only
+## 只读
 
-Set `readOnly` to make the input read-only. When `readOnly` is set,
-`MultiSelect` will not show suggestions and will not call the `onChange` function.
+设置 `readOnly` 使输入框只读。设置 `readOnly` 后，`MultiSelect` 不会显示建议，也不会调用 `onChange` 函数。
 
 <Demo data={MultiSelectDemos.readOnly} />
 
-## Disabled
+## 禁用
 
-Set `disabled` to disable the input. When `disabled` is set,
-the user cannot interact with the input and `MultiSelect` will not show suggestions.
+设置 `disabled` 禁用输入框。设置 `disabled` 后，用户无法与输入框交互，`MultiSelect` 也不会显示建议。
 
 <Demo data={MultiSelectDemos.disabled} />
 
-## Error state
+## 错误状态
 
 <Demo data={MultiSelectDemos.error} />
 
-## Success state
+## 成功状态
 
 <Demo data={MultiSelectDemos.success} />
 
@@ -323,8 +289,7 @@ the user cannot interact with the input and `MultiSelect` will not show suggesti
 
 <InputAccessibility component="MultiSelect" />
 
-To set `aria-label` on the clear button, use `clearButtonProps`. Note that it is required
-only when `clearable` is set.
+要为清除按钮设置 `aria-label`，请使用 `clearButtonProps`。注意仅在设置 `clearable` 时才需要。
 
 ```tsx
 import { MultiSelect } from '@react-ui/ui';
@@ -342,6 +307,6 @@ function Demo() {
 }
 ```
 
-## Backspace key
+## Backspace 键
 
-When the search input is empty and the user presses the `Backspace` key, the last selected item is removed. This behavior is built-in and cannot be disabled.
+当搜索输入框为空且用户按下 `Backspace` 键时，会移除最后一个选中的项目。此行为是内置的，无法禁用。

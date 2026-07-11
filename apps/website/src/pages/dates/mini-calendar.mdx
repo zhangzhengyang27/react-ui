@@ -4,39 +4,37 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.MiniCalendar);
 
-## Usage
+## 用法
 
 <Demo data={MiniCalendarDemos.usage} />
 
-## Number of days
+## 天数
 
-Use `numberOfDays` prop to control how many days are displayed at once.
-The default value is `7`.
+使用 `numberOfDays` prop 控制同时显示多少天。默认值为 `7`。
 
 <Demo data={MiniCalendarDemos.numberOfDays} />
 
 ## getDayProps
 
-Use `getDayProps` to add custom props to days, for example, assign styles to weekends:
+使用 `getDayProps` 为日期添加自定义 props，例如为周末设置样式：
 
 <Demo data={MiniCalendarDemos.getDayProps} />
 
-## Min and max dates
+## 最小和最大日期
 
-Use `minDate` and `maxDate` props to limit date selection:
+使用 `minDate` 和 `maxDate` prop 限制日期选择范围：
 
 <Demo data={MiniCalendarDemos.minMax} />
 
-## Localization
+## 本地化
 
-You can change localization both on component level with `locale` prop and
-globally with [DatesProvider](/dates/getting-started).
+你可以在组件级别通过 `locale` prop 更改本地化设置，也可以在全局通过 [DatesProvider](/dates/getting-started) 进行设置。
 
 <Demo data={MiniCalendarDemos.locale} />
 
-## Accessibility
+## 无障碍
 
-Use `nextControlProps` and `previousControlProps` to add `aria-label` and other props to navigation buttons:
+使用 `nextControlProps` 和 `previousControlProps` 为导航按钮添加 `aria-label` 和其他 props：
 
 ```tsx
 import { MiniCalendar } from '@react-ui/ui';

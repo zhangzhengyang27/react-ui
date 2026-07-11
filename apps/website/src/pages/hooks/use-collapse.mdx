@@ -4,25 +4,24 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useCollapse);
 
-## Usage
+## 用法
 
-`use-collapse` is the hook version of [Collapse](/core/collapse) component.
-It allows animation of height from `0` to `auto` and vice versa.
+`use-collapse` 是 [Collapse](/core/collapse) 组件的 Hook 版本。
+它允许高度从 `0` 到 `auto` 以及反向的动画。
 
 <Demo data={UseCollapseDemos.usage} />
 
-## Horizontal collapse
+## 水平折叠
 
-`use-horizontal-collapse` works the same way as `use-collapse` but animates width instead of height:
+`use-horizontal-collapse` 与 `use-collapse` 工作方式相同，但动画的是宽度而非高度：
 
 <Demo data={UseHorizontalCollapseDemos.usage} />
 
-## ref prop
+## ref 属性
 
-`getCollapseProps` return value now includes `ref` prop. It must be passed to the collapsible element
-to make the hook work correctly.
+`getCollapseProps` 的返回值现在包含 `ref` 属性。必须将其传递给可折叠元素，以使 Hook 正常工作。
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseCollapseInput {
@@ -68,10 +67,10 @@ interface UseCollapseReturnValue {
 function useCollapse(input: UseCollapseInput): UseCollapseReturnValue;
 ```
 
-## Exported types
+## 导出类型
 
-The `UseCollapseInput`, `UseCollapseState`, and `UseCollapseReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseCollapseInput`、`UseCollapseState` 和 `UseCollapseReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseCollapseInput, UseCollapseState, UseCollapseReturnValue } from '@react-ui/hooks';

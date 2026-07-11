@@ -4,20 +4,20 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Textarea);
 
-## Usage
+## 用法
 
 <InputFeatures component="Textarea" element="textarea" />
 
 <Demo data={TextareaDemos.configurator} />
 
-## Loading state
+## 加载状态
 
-Set `loading` prop to display a loading indicator. By default, the loader is displayed on the right side of the input.
-You can change the position with the `loadingPosition` prop to `'left'` or `'right'`. This is useful for async operations like API calls, searches, or validations:
+设置 `loading` 属性以显示加载指示器。默认情况下，加载器显示在输入框右侧。
+你可以使用 `loadingPosition` 属性将其位置更改为 `'left'` 或 `'right'`。这对于 API 调用、搜索或验证等异步操作非常有用：
 
 <Demo data={TextareaDemos.loading} />
 
-## Controlled
+## 受控
 
 ```tsx
 import { useState } from 'react';
@@ -34,13 +34,13 @@ function Demo() {
 }
 ```
 
-## Uncontrolled
+## 非受控
 
-`Textarea` can be used with uncontrolled forms the same way as a native `textarea` element.
-Set the `name` attribute to include textarea value in `FormData` object on form submission.
-To control the initial value in uncontrolled forms, use the `defaultValue` prop.
+`Textarea` 可以像原生 `textarea` 元素一样用于非受控表单。
+设置 `name` 属性以在表单提交时将 textarea 值包含在 `FormData` 对象中。
+要控制非受控表单中的初始值，请使用 `defaultValue` 属性。
 
-Example usage of uncontrolled `Textarea` with `FormData`:
+非受控 `Textarea` 与 `FormData` 的用法示例：
 
 ```tsx
 import { Textarea } from '@react-ui/ui';
@@ -61,35 +61,35 @@ function Demo() {
 }
 ```
 
-## Bottom section
+## 底部区域
 
-Use `bottomSection` prop to render content inside the input border at the bottom.
-This is useful for displaying character counters, hints, or other supplementary information:
+使用 `bottomSection` 属性在输入框底部边框内渲染内容。
+这适用于显示字符计数器、提示或其他补充信息：
 
 <Demo data={TextareaDemos.bottomSection} />
 
-## Autosize
+## 自动调整大小
 
-The autosize textarea height grows until maxRows are reached or indefinitely if maxRows is not set:
+自动调整大小的 textarea 高度会增长，直到达到 maxRows，如果未设置 maxRows 则会无限增长：
 
 <Demo data={TextareaDemos.autosize} />
 
-## Enable resize
+## 启用调整大小
 
-By default, [resize](https://developer.mozilla.org/en-US/docs/Web/CSS/resize) is `none`;
-to enable it, set the `resize` prop to `vertical` or `both`:
+默认情况下，[resize](https://developer.mozilla.org/en-US/docs/Web/CSS/resize) 为 `none`；
+要启用它，请将 `resize` 属性设置为 `vertical` 或 `both`：
 
 <Demo data={TextareaDemos.resize} />
 
-## Error state
+## 错误状态
 
 <Demo data={TextareaDemos.error} />
 
-## Success state
+## 成功状态
 
 <Demo data={TextareaDemos.success} />
 
-## Disabled state
+## 禁用状态
 
 <Demo data={TextareaDemos.disabled} />
 

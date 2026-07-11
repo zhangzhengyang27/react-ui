@@ -3,61 +3,60 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.FunctionsReference);
 
-# Functions reference
+# 函数参考
 
-This guide contains a list of functions exported from ReactUI packages that
-are not documented elsewhere.
+本指南列出了从 ReactUI 包导出但其他文档中未涵盖的函数。
 
 ## clamp
 
-The `clamp` function is exported from `@react-ui/hooks`.
-It clamps a number within the inclusive lower and upper bounds.
+`clamp` 函数从 `@react-ui/hooks` 导出。
+它将一个数字限制在包含的下界和上界之间。
 
 ```tsx
 import { clamp } from '@react-ui/hooks';
 
-// With both min and max boundaries
+// 同时有 min 和 max 边界
 clamp(10, 0, 5); // 5
 clamp(100, 0, 5); // 5
 clamp(-100, 0, 5); // 0
 
-// With only min boundary
+// 只有 min 边界
 clamp(10, 0, undefined); // 10
 clamp(-100, 0, undefined); // 0
 
-// With only max boundary
+// 只有 max 边界
 clamp(0, undefined, 5); // 0
 clamp(10, undefined, 5); // 5
 ```
 
 ## lowerFirst
 
-The `lowerFirst` function is exported from `@react-ui/hooks`.
-It converts the first character of a string to lowercase.
+`lowerFirst` 函数从 `@react-ui/hooks` 导出。
+它将字符串的第一个字符转换为小写。
 
 ```tsx
 import { lowerFirst } from '@react-ui/hooks';
 
-lowerFirst('ReactUI'); // mantine
+lowerFirst('ReactUI'); // reactui
 lowerFirst('mantine'); // mantine
 ```
 
 ## upperFirst
 
-The `upperFirst` function is exported from `@react-ui/hooks`.
-It converts the first character of a string to uppercase.
+`upperFirst` 函数从 `@react-ui/hooks` 导出。
+它将字符串的第一个字符转换为大写。
 
 ```tsx
 import { upperFirst } from '@react-ui/hooks';
 
 upperFirst('ReactUI'); // ReactUI
-upperFirst('mantine'); // ReactUI
+upperFirst('mantine'); // Mantine
 ```
 
 ## randomId
 
-The `randomId` function is exported from `@react-ui/hooks`.
-It generates a random id with the `mantine-` prefix.
+`randomId` 函数从 `@react-ui/hooks` 导出。
+它生成一个带 `mantine-` 前缀的随机 id。
 
 ```tsx
 import { randomId } from '@react-ui/hooks';
@@ -68,8 +67,8 @@ randomId(); // mantine-1q2j3j4j5
 
 ## range
 
-The `range` function is exported from `@react-ui/hooks`.
-It generates an array of numbers from `start` to `end` (inclusive).
+`range` 函数从 `@react-ui/hooks` 导出。
+它生成一个从 `start` 到 `end`（含）的数字数组。
 
 ```tsx
 import { range } from '@react-ui/hooks';
@@ -80,8 +79,8 @@ range(5, 0); // [5, 4, 3, 2, 1, 0]
 
 ## shallowEqual
 
-The `shallowEqual` function is exported from `@react-ui/hooks`.
-It performs a shallow equality check of two objects.
+`shallowEqual` 函数从 `@react-ui/hooks` 导出。
+它对两个对象执行浅层相等检查。
 
 ```tsx
 import { shallowEqual } from '@react-ui/hooks';
@@ -92,9 +91,8 @@ shallowEqual({ a: 1 }, { a: 2 }); // false
 
 ## keys
 
-The `keys` function is exported from `@react-ui/ui`.
-It is a type-safe wrapper around `Object.keys` – it returns
-an array of keys typed as `(keyof T)[]` instead of `string[]`.
+`keys` 函数从 `@react-ui/ui` 导出。
+它是 `Object.keys` 的类型安全包装——返回类型为 `(keyof T)[]` 的键数组，而不是 `string[]`。
 
 ```tsx
 import { keys } from '@react-ui/ui';
@@ -105,9 +103,8 @@ const result = keys(data); // ('name' | 'age')[]
 
 ## deepMerge
 
-The `deepMerge` function is exported from `@react-ui/ui`.
-It recursively merges properties of the source object into the target object.
-Arrays are not merged – they are replaced entirely by the source value.
+`deepMerge` 函数从 `@react-ui/ui` 导出。
+它递归地将源对象的属性合并到目标对象中。数组不会被合并——会被源值完全替换。
 
 ```tsx
 import { deepMerge } from '@react-ui/ui';
@@ -121,8 +118,8 @@ deepMerge({ a: 1 }, { a: 2, b: 3 });
 
 ## filterProps
 
-The `filterProps` function is exported from `@react-ui/ui`.
-It removes all `undefined` properties from the given object.
+`filterProps` 函数从 `@react-ui/ui` 导出。
+它从给定对象中移除所有 `undefined` 属性。
 
 ```tsx
 import { filterProps } from '@react-ui/ui';
@@ -133,9 +130,8 @@ filterProps({ a: 1, b: undefined, c: 'hello' });
 
 ## isElement
 
-The `isElement` function is exported from `@react-ui/ui`.
-It is a type guard that checks whether a value is a React element.
-Returns `false` for arrays, `null`, and React Fragments.
+`isElement` 函数从 `@react-ui/ui` 导出。
+它是一个类型守卫，检查一个值是否为 React 元素。对于数组、`null` 和 React Fragment 返回 `false`。
 
 ```tsx
 import { isElement } from '@react-ui/ui';
@@ -148,9 +144,8 @@ isElement(<></>); // false
 
 ## isNumberLike
 
-The `isNumberLike` function is exported from `@react-ui/ui`.
-It checks whether a value is a number or a string that represents
-a CSS numeric value (including `calc()`, `var()`, and CSS units).
+`isNumberLike` 函数从 `@react-ui/ui` 导出。
+它检查一个值是否为数字，或表示 CSS 数值的字符串（包括 `calc()`、`var()` 和 CSS 单位）。
 
 ```tsx
 import { isNumberLike } from '@react-ui/ui';
@@ -165,8 +160,8 @@ isNumberLike('hello'); // false
 
 ## camelToKebabCase
 
-The `camelToKebabCase` function is exported from `@react-ui/ui`.
-It converts a camelCase string to kebab-case.
+`camelToKebabCase` 函数从 `@react-ui/ui` 导出。
+它将 camelCase 字符串转换为 kebab-case。
 
 ```tsx
 import { camelToKebabCase } from '@react-ui/ui';
@@ -178,8 +173,8 @@ camelToKebabCase('color'); // 'color'
 
 ## getDefaultZIndex
 
-The `getDefaultZIndex` function is exported from `@react-ui/ui`.
-It returns the default z-index value for a given elevation level.
+`getDefaultZIndex` 函数从 `@react-ui/ui` 导出。
+它返回给定层级（elevation level）的默认 z-index 值。
 
 ```tsx
 import { getDefaultZIndex } from '@react-ui/ui';
@@ -193,17 +188,16 @@ getDefaultZIndex('max'); // 9999
 
 ## closeOnEscape
 
-The `closeOnEscape` function is exported from `@react-ui/ui`.
-It creates a keyboard event handler that calls the given callback
-when the Escape key is pressed.
+`closeOnEscape` 函数从 `@react-ui/ui` 导出。
+它创建一个键盘事件处理程序，当按下 Escape 键时调用给定回调。
 
 ```tsx
 import { closeOnEscape } from '@react-ui/ui';
 
-// Basic usage
+// 基本用法
 <div onKeyDown={closeOnEscape(() => setOpened(false))} />;
 
-// With options
+// 带选项
 <div
   onKeyDown={closeOnEscape(() => setOpened(false), {
     active: isOpened,
@@ -214,9 +208,8 @@ import { closeOnEscape } from '@react-ui/ui';
 
 ## noop
 
-The `noop` function is exported from `@react-ui/ui`.
-It is a no-operation function that does nothing. Useful as a
-default callback.
+`noop` 函数从 `@react-ui/ui` 导出。
+它是一个无操作函数，什么都不做。可用作默认回调。
 
 ```tsx
 import { noop } from '@react-ui/ui';
@@ -226,9 +219,8 @@ const onClick = handler || noop;
 
 ## findClosestNumber
 
-The `findClosestNumber` function is exported from `@react-ui/ui`.
-It finds the number in the given array that is closest to the
-provided value. Returns the value itself if the array is empty.
+`findClosestNumber` 函数从 `@react-ui/ui` 导出。
+它找到给定数组中最接近所提供值的数字。如果数组为空，则返回该值本身。
 
 ```tsx
 import { findClosestNumber } from '@react-ui/ui';
@@ -241,10 +233,9 @@ findClosestNumber(5, []); // 5
 
 ## toDateString
 
-The `toDateString` function is exported from `@react-ui/ui`.
-It converts a date value to a `YYYY-MM-DD` string.
-Accepts `Date`, `string`, `number`, and dayjs objects.
-Returns `null` or `undefined` if the input is `null` or `undefined`.
+`toDateString` 函数从 `@react-ui/ui` 导出。
+它将日期值转换为 `YYYY-MM-DD` 字符串。接受 `Date`、`string`、`number` 和 dayjs 对象。
+如果输入为 `null` 或 `undefined`，则返回 `null` 或 `undefined`。
 
 ```tsx
 import { toDateString } from '@react-ui/ui';
@@ -257,10 +248,9 @@ toDateString(undefined); // undefined
 
 ## toDateTimeString
 
-The `toDateTimeString` function is exported from `@react-ui/ui`.
-It converts a date value to a `YYYY-MM-DD HH:mm:ss` string.
-Accepts `Date`, `string`, `number`, and dayjs objects.
-Returns `null` or `undefined` if the input is `null` or `undefined`.
+`toDateTimeString` 函数从 `@react-ui/ui` 导出。
+它将日期值转换为 `YYYY-MM-DD HH:mm:ss` 字符串。接受 `Date`、`string`、`number` 和 dayjs 对象。
+如果输入为 `null` 或 `undefined`，则返回 `null` 或 `undefined`。
 
 ```tsx
 import { toDateTimeString } from '@react-ui/ui';
@@ -272,10 +262,9 @@ toDateTimeString(null); // null
 
 ## assignTime
 
-The `assignTime` function is exported from `@react-ui/ui`.
-It assigns a time string in `HH:mm:ss` format to a date value,
-returning a `YYYY-MM-DD HH:mm:ss` string. If the date value is `null`,
-the current date is used.
+`assignTime` 函数从 `@react-ui/ui` 导出。
+它将 `HH:mm:ss` 格式的时间字符串分配给日期值，返回 `YYYY-MM-DD HH:mm:ss` 字符串。
+如果日期值为 `null`，则使用当前日期。
 
 ```tsx
 import { assignTime } from '@react-ui/ui';
@@ -287,22 +276,21 @@ assignTime(null, '10:00:00'); // '[current date] 10:00:00'
 
 ## clampDate
 
-The `clampDate` function is exported from `@react-ui/ui`.
-It clamps a date between optional min and max boundaries, returning
-a `YYYY-MM-DD HH:mm:ss` string.
+`clampDate` 函数从 `@react-ui/ui` 导出。
+它将日期限制在可选的 min 和 max 边界之间，返回 `YYYY-MM-DD HH:mm:ss` 字符串。
 
 ```tsx
 import { clampDate } from '@react-ui/ui';
 
 clampDate('2025-01-01', '2025-12-31', '2025-06-15');
-// '2025-06-15 00:00:00' – within range
+// '2025-06-15 00:00:00' – 在范围内
 
 clampDate('2025-01-01', '2025-12-31', '2024-06-15');
-// '2025-01-01 00:00:00' – clamped to min
+// '2025-01-01 00:00:00' – 限制到 min
 
 clampDate('2025-01-01', '2025-12-31', '2026-06-15');
-// '2025-12-31 00:00:00' – clamped to max
+// '2025-12-31 00:00:00' – 限制到 max
 
 clampDate(undefined, undefined, '2025-06-15');
-// '2025-06-15 00:00:00' – no boundaries
+// '2025-06-15 00:00:00' – 无边界
 ```

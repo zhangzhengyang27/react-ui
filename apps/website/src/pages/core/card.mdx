@@ -4,31 +4,31 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Card);
 
-## Usage
+## 用法
 
-`Card` is a wrapper around the [Paper](/core/paper/) component with some additional styles and a `Card.Section`
-component that allows you to split the card into sections. If you do not need sections, you can use the [Paper](/core/paper/) component instead.
+`Card` 是 [Paper](/core/paper/) 组件的包装器，带有一些额外的样式和 `Card.Section`
+组件，可让你将卡片分成多个区域。如果你不需要区域，可以直接使用 [Paper](/core/paper/) 组件。
 
 <Demo data={CardDemos.usage} />
 
-## Horizontal orientation
+## 水平方向
 
 <Demo data={CardDemos.horizontal} demoProps={{ defaultExpanded: false }} />
 
-## Polymorphic component
+## 多态组件
 
-Card is a [polymorphic component](/guides/polymorphic/), you can change its root element:
+Card 是一个[多态组件](/guides/polymorphic/)，你可以更改其根元素：
 
 <Demo data={CardDemos.link} />
 
 ## Card.Section
 
-`Card.Section` is a special component that is used to remove Card padding from its children while other elements still have horizontal spacing.
-`Card.Section` works in the following way:
+`Card.Section` 是一个特殊组件，用于移除 Card 对其子元素的内边距，而其他元素仍保留水平间距。
+`Card.Section` 的工作方式如下：
 
-- If the component is the first child in Card, then it has negative top, left and right margins
-- If it is the last child in Card, then it has negative bottom, left and right margins
-- If it is in the middle, then only the left and right margins will be negative
+- 如果该组件是 Card 的第一个子元素，则它具有负的上、左、右外边距
+- 如果它是 Card 的最后一个子元素，则它具有负的下、左、右外边距
+- 如果它在中间，则只有左、右外边距为负
 
 ```tsx
 import { Card, Text } from '@react-ui/ui';
@@ -36,23 +36,23 @@ import { Card, Text } from '@react-ui/ui';
 function Demo() {
   return (
     <Card padding="xl">
-      {/* top, right, left margins are negative – -1 * theme.spacing.xl */}
+      {/* 上、右、左外边距为负 – -1 * theme.spacing.xl */}
       <Card.Section>First section</Card.Section>
 
-      {/* Content that is not inside Card.Section will have theme.spacing.xl spacing on all sides relative to Card */}
+      {/* 不在 Card.Section 内的内容相对于 Card 具有 theme.spacing.xl 的四面间距 */}
       <Text>Some other content</Text>
 
-      {/* right, left margins are negative – -1 * theme.spacing.xl */}
+      {/* 右、左外边距为负 – -1 * theme.spacing.xl */}
       <Card.Section>Middle section</Card.Section>
 
-      {/* bottom, right, left margins are negative – -1 * theme.spacing.xl */}
+      {/* 下、右、左外边距为负 – -1 * theme.spacing.xl */}
       <Card.Section>Last section</Card.Section>
     </Card>
   );
 }
 ```
 
-Note that `Card` relies on mapping direct children and you cannot use fragments or other wrappers for `Card.Section`:
+注意，`Card` 依赖直接子元素的映射，你不能为 `Card.Section` 使用片段或其他包装器：
 
 ```tsx
 import { Card } from '@react-ui/ui';
@@ -74,15 +74,15 @@ function Demo() {
 }
 ```
 
-## Polymorphic Card.Section
+## 多态 Card.Section
 
-`Card.Section` is a [polymorphic component](/guides/polymorphic/), you can change its root element:
+`Card.Section` 是一个[多态组件](/guides/polymorphic/)，你可以更改其根元素：
 
 <Demo data={CardDemos.linkSection} />
 
-## withBorder and inheritPadding props
+## withBorder 和 inheritPadding 属性
 
-- `withBorder` prop adds top and bottom borders to `Card.Section` depending on its position relative to other content and sections
-- `inheritPadding` prop adds the same left and right padding to `Card.Section` as set in the `Card` component
+- `withBorder` 属性根据 `Card.Section` 相对于其他内容和区域的位置为其添加顶部和底部边框
+- `inheritPadding` 属性为 `Card.Section` 添加与 `Card` 组件相同的左右内边距
 
 <Demo data={CardDemos.section} />

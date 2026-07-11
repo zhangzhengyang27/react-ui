@@ -4,21 +4,20 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useClickOutside);
 
-## Usage
+## 用法
 
 <Demo data={UseClickOutsideDemos.usage} />
 
-## API
+## API 参考
 
-The `use-click-outside` hook accepts 3 arguments:
+`use-click-outside` Hook 接受 4 个参数：
 
-- `handler` – function that is called when clicking outside
-- `events` – optional list of events that trigger outside click, `['mousedown', 'touchstart']` by default
-- `nodes` - optional list of nodes that should not trigger outside click event
-- `enabled` - optional boolean to dynamically enable/disable the listener, `true` by default
+- `handler` – 点击外部时调用的函数
+- `events` – 触发外部点击的可选事件列表，默认为 `['mousedown', 'touchstart']`
+- `nodes` – 不应触发外部点击事件的可选节点列表
+- `enabled` – 用于动态启用/禁用监听器的可选布尔值，默认为 `true`
 
-The hook returns a `ref` object that must be passed to the element
-based on which outside clicks should be captured.
+该 Hook 返回一个 `ref` 对象，必须将其传递给要捕获外部点击的元素。
 
 ```tsx
 import { useClickOutside } from '@react-ui/hooks';
@@ -31,17 +30,17 @@ function Example() {
 }
 ```
 
-## Change events
+## 更改事件
 
-By default, `use-click-outside` listens to `mousedown` and `touchstart` events,
-you can change these events by passing an array of events as second argument:
+默认情况下，`use-click-outside` 监听 `mousedown` 和 `touchstart` 事件，
+你可以通过将事件数组作为第二个参数传递来更改这些事件：
 
 <Demo data={UseClickOutsideDemos.events} />
 
-## Multiple nodes
+## 多个节点
 
 ```tsx
-// Will work only with useState, not useRef
+// 仅适用于 useState，不适用于 useRef
 import { useState } from 'react';
 import { Portal } from '@react-ui/ui';
 import { useClickOutside } from '@react-ui/hooks';
@@ -58,7 +57,7 @@ function Demo() {
   ]);
 
   return (
-    // We cannot use root element ref as it does not contain dropdown
+    // 我们不能使用根元素 ref，因为它不包含下拉菜单
     <div>
       <div ref={setControl}>Control</div>
       <Portal>
@@ -69,7 +68,7 @@ function Demo() {
 }
 ```
 
-## Set ref type
+## 设置 ref 类型
 
 ```tsx
 import { useClickOutside } from '@react-ui/hooks';
@@ -79,7 +78,7 @@ const ref = useClickOutside<HTMLDivElement>(() =>
 );
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 function useClickOutside<T extends HTMLElement = any>(

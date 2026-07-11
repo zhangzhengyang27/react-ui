@@ -4,48 +4,45 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useDrag);
 
-## Usage
+## 用法
 
-`use-drag` hook handles pointer drag gestures over an element. It tracks movement,
-velocity, direction and supports axis constraints, threshold activation and tap detection.
-The hook uses the Pointer Events API and works with both mouse and touch input.
+`use-drag` Hook 处理元素上的指针拖动手势。它跟踪移动、速度、方向，
+并支持轴约束、阈值激活和点击检测。该 Hook 使用 Pointer Events API，
+可同时兼容鼠标和触摸输入。
 
 <Demo data={UseDragDemos.usage} />
 
-## Axis constraint
+## 轴约束
 
-Use the `axis` option to constrain movement to a single axis.
-Set `axis` to `'x'` or `'y'` for a fixed constraint, or `'lock'` to
-lock to whichever axis has more movement after `axisThreshold` is exceeded:
+使用 `axis` 选项将移动约束到单个轴。
+将 `axis` 设置为 `'x'` 或 `'y'` 以固定约束，或设置为 `'lock'` 以在超过 `axisThreshold` 后锁定到移动更多的轴：
 
 <Demo data={UseDragDemos.axis} />
 
-## Distinguishing taps from drags
+## 区分点击与拖动
 
-When `filterTaps` is enabled, the last state includes a `tap` property that is `true`
-when the total distance is below `tapThreshold` (default `3px`). Combined with `threshold`,
-this lets you distinguish clicks from drags on the same element:
+启用 `filterTaps` 后，最后一次状态会包含一个 `tap` 属性，当总距离低于 `tapThreshold`（默认 `3px`）时为 `true`。
+结合 `threshold` 使用，可以在同一元素上区分点击和拖动：
 
 <Demo data={UseDragDemos.filterTaps} />
 
-## Swipe to dismiss
+## 滑动关闭
 
-Use `movement` and `velocity` on the last event to decide whether to dismiss an item.
-This pattern works well for notifications:
+在最后一次事件上使用 `movement` 和 `velocity` 来决定是否关闭项目。
+这种模式非常适合通知：
 
 <Demo data={UseDragDemos.swipe} />
 
-## Drag to scroll
+## 拖动滚动
 
-Apply `delta` to a container's `scrollLeft` to create a drag-to-scroll interaction:
+将 `delta` 应用于容器的 `scrollLeft` 以创建拖动滚动交互：
 
 <Demo data={UseDragDemos.scroll} />
 
-## Touch support
+## 触摸支持
 
-The hook uses the Pointer Events API which handles both mouse and touch automatically.
-For touch devices, set `touch-action: none` on the draggable element to prevent
-the browser from interpreting touch drag as scroll:
+该 Hook 使用 Pointer Events API，可自动处理鼠标和触摸。
+对于触摸设备，请在可拖动元素上设置 `touch-action: none`，以防止浏览器将触摸拖动解释为滚动：
 
 ```css
 .draggable {
@@ -53,11 +50,11 @@ the browser from interpreting touch drag as scroll:
 }
 ```
 
-If you want to allow scrolling on one axis while dragging on the other (e.g. horizontal
-drag with vertical scroll), use `touch-action: pan-y` or `touch-action: pan-x`.
+如果你想允许在一个轴上滚动，同时在另一个轴上拖动（例如，水平拖动配合垂直滚动），
+请使用 `touch-action: pan-y` 或 `touch-action: pan-x`。
 
 
-## Definition
+## 类型定义
 
 ```tsx
 type Vector2 = [number, number];
@@ -145,10 +142,10 @@ function useDrag<T extends HTMLElement = any>(
 ): UseDragReturnValue<T>
 ```
 
-## Exported types
+## 导出类型
 
-`UseDragState`, `UseDragOptions` and `UseDragReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseDragState`、`UseDragOptions` 和 `UseDragReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseDragState, UseDragOptions, UseDragReturnValue } from '@react-ui/hooks';

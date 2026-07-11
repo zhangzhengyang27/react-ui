@@ -4,52 +4,51 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Avatar);
 
-## Usage
+## 用法
 
 <Demo data={AvatarDemos.usage} />
 
-## Initials
+## 首字母
 
-To display initials instead of the default placeholder, set the `name` prop
-to the name of the person, for example, `name="John Doe"`. If the name
-is set, you can use `color="initials"` to generate a color based on the name:
+要显示首字母而不是默认占位符，请将 `name` 属性
+设置为人员姓名，例如 `name="John Doe"`。如果设置了姓名，
+可以使用 `color="initials"` 根据姓名生成颜色：
 
 <Demo data={AvatarDemos.initials} />
 
-## Allowed initials colors
+## 允许的首字母颜色
 
-By default, all colors from the default theme are allowed for initials. You can restrict them
-by providing the `allowedInitialsColors` prop with an array of colors. Note that the default colors
-array does not include custom colors defined in the theme – you need to provide them manually
-if needed.
+默认情况下，默认主题中的所有颜色都允许用于首字母。你可以通过提供
+`allowedInitialsColors` 属性并传入颜色数组来限制它们。请注意，默认颜色
+数组不包含主题中定义的自定义颜色——如果需要，你需要手动提供它们。
 
 <Demo data={AvatarDemos.allowedColors} />
 
-## Placeholder
+## 占位符
 
-If the image cannot be loaded or is not provided, `Avatar` will display a placeholder instead. By default,
-the placeholder is an icon, but it can be changed to any React node:
+如果图片无法加载或未提供，`Avatar` 将显示占位符。默认情况下，
+占位符是一个图标，但可以更改为任何 React 节点：
 
 <Demo data={AvatarDemos.placeholders} />
 
-## Variants
+## 变体
 
 <Demo data={AvatarDemos.configurator} />
 
 ## Avatar.Group
 
-The `Avatar.Group` component combines multiple avatars into a stack:
+`Avatar.Group` 组件将多个头像组合成一个堆叠：
 
 <Demo data={AvatarDemos.group} />
 
-Note that you must not wrap child `Avatar` components with any additional elements,
-but you can wrap `Avatar` with components that do not render any HTML elements
-in the current tree, for example [Tooltip](/core/tooltip).
+请注意，你不能用任何额外的元素包裹子 `Avatar` 组件，
+但可以用不在当前树中渲染任何 HTML 元素的组件包裹 `Avatar`，
+例如 [Tooltip](/core/tooltip)。
 
 ```tsx
 import { Avatar } from '@react-ui/ui';
 
-// Will not work correctly
+// 将无法正常工作
 function Demo() {
   return (
     <Avatar.Group spacing="sm">
@@ -64,7 +63,7 @@ function Demo() {
 }
 ```
 
-Example of usage with [Tooltip](/core/tooltip/):
+与 [Tooltip](/core/tooltip/) 一起使用的示例：
 
 <Demo data={AvatarDemos.groupTooltip} />
 
@@ -75,29 +74,29 @@ Example of usage with [Tooltip](/core/tooltip/):
   withNext
 />
 
-Example of using `Avatar` as a link:
+`Avatar` 作为链接的示例：
 
 <Demo data={AvatarDemos.link} />
 
-## Accessibility
+## 可访问性
 
-Avatar renders an `<img />` HTML element. Set the `alt` prop to describe the image –
-it is also used as the `title` attribute for the avatar placeholder when the image cannot be loaded.
+Avatar 渲染一个 `<img />` HTML 元素。设置 `alt` 属性以描述图片——
+当图片无法加载时，它也用作头像占位符的 `title` 属性。
 
 ```tsx
 import { Avatar } from '@react-ui/ui';
 
 function Demo() {
-  // ❌ No alt for image
+  // ❌ 图片没有 alt
   return <Avatar src="./image.png" />;
 
-  // ✅ alt is set
+  // ✅ alt 已设置
   return <Avatar src="./image.png" alt="Rob Johnson" />;
 
-  // ✅ title is not required, but still recommended
+  // ✅ title 不是必需的，但仍建议设置
   return <Avatar>RJ</Avatar>;
 
-  // ✅ title is set on placeholder
+  // ✅ title 在占位符上设置
   return <Avatar alt="Rob Johnson">RJ</Avatar>;
 }
 ```

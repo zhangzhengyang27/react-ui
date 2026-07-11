@@ -4,20 +4,17 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.TableOfContents);
 
-## Usage
+## 用法
 
-Use the `TableOfContents` component to display a table of contents like
-in the sidebar of react-ui.dev documentation. The component tracks
-the scroll position and highlights the current heading in the list.
+使用 `TableOfContents` 组件显示目录，类似于 react-ui.dev 文档侧边栏中的目录。该组件会跟踪滚动位置并高亮列表中的当前标题。
 
 <Demo data={TableOfContentsDemos.usage} />
 
-## use-scroll-spy options
+## use-scroll-spy 选项
 
-`TableOfContents` is based on the [use-scroll-spy](/hooks/use-scroll-spy) hook.
-You can pass options down to the `use-scroll-spy` hook using the `scrollSpyOptions` prop.
+`TableOfContents` 基于 [use-scroll-spy](/hooks/use-scroll-spy) Hook。你可以使用 `scrollSpyOptions` 属性将选项传递给 `use-scroll-spy` Hook。
 
-Example of customizing selector, depth and value retrieval:
+自定义选择器、深度和值获取的示例：
 
 ```tsx
 import { TableOfContents } from '@react-ui/ui';
@@ -35,13 +32,11 @@ function Demo() {
 }
 ```
 
-## Pass props to controls
+## 向控件传递属性
 
-You can pass props down to controls rendered by the `TableOfContents` component
-with the `getControlProps` function. It accepts an object with `active` and `data`
-properties and should return a props object.
+你可以使用 `getControlProps` 函数向 `TableOfContents` 组件渲染的控件传递属性。它接受一个包含 `active` 和 `data` 属性的对象，并应返回一个 props 对象。
 
-Example of changing controls to links:
+将控件更改为链接的示例：
 
 ```tsx
 import { TableOfContents } from '@react-ui/ui';
@@ -60,12 +55,9 @@ function Demo() {
 }
 ```
 
-## Initial data
+## 初始数据
 
-`TableOfContents` retrieves data on mount. If you want to render headings
-before the `TableOfContents` component is mounted (for example during server-side rendering),
-you can pass the `initialData` prop with an array of headings data. `initialData` is replaced
-with actual data on mount.
+`TableOfContents` 在挂载时获取数据。如果你想在 `TableOfContents` 组件挂载之前渲染标题（例如在服务端渲染期间），可以传入 `initialData` 属性，值为标题数据数组。`initialData` 会在挂载时被实际数据替换。
 
 ```tsx
 import { TableOfContents } from '@react-ui/ui';
@@ -83,13 +75,11 @@ function Demo() {
 }
 ```
 
-## Depth offset
+## 深度偏移
 
-Use the `minDepthToOffset` prop to set the minimum depth at which offset should be applied.
-By default, `minDepthToOffset` is `1`, which means that first and second level headings
-will not be offset. Set it to `0` to apply offset to all headings.
+使用 `minDepthToOffset` 属性设置应应用偏移的最小深度。默认情况下，`minDepthToOffset` 为 `1`，意味着一级和二级标题不会偏移。设置为 `0` 可对所有标题应用偏移。
 
-To control the offset value in px, set the `depthOffset` prop:
+要控制偏移值（以 px 为单位），请设置 `depthOffset` 属性：
 
 <Demo data={TableOfContentsDemos.depthOffset} />
 
@@ -97,17 +87,15 @@ To control the offset value in px, set the `depthOffset` prop:
 
 <Demo data={TableOfContentsDemos.autoContrast} />
 
-## Styles API
+## 样式 API
 
-Example of customizing `TableOfContents` with [Styles API](/styles/styles-api) and [data-\* attributes](/styles/data-attributes):
+使用 [Styles API](/styles/styles-api) 和 [data-* 属性](/styles/data-attributes) 自定义 `TableOfContents` 的示例：
 
 <Demo data={TableOfContentsDemos.styles} />
 
-## Reinitialize
+## 重新初始化
 
-By default, `TableOfContents` does not track changes in the DOM. If you want
-to update headings data after the parent component has mounted, you can use
-`reinitializeRef` to get the reinitialize function from the [use-scroll-spy](/hooks/use-scroll-spy) hook:
+默认情况下，`TableOfContents` 不会跟踪 DOM 的变化。如果你想在父组件挂载后更新标题数据，可以使用 `reinitializeRef` 从 [use-scroll-spy](/hooks/use-scroll-spy) Hook 获取重新初始化函数：
 
 ```tsx
 import { useRef, useLayoutEffect } from 'react';

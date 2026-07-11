@@ -3,9 +3,9 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useWindowEvent);
 
-## Usage
+## 用法
 
-The `use-window-event` hook adds an event listener to the `window` object on component mount and removes it on unmount:
+`use-window-event` Hook 在组件挂载时向 `window` 对象添加事件监听器，并在卸载时移除它：
 
 ```tsx
 import { useEffect } from 'react';
@@ -13,19 +13,19 @@ import { useWindowEvent } from '@react-ui/hooks';
 
 const handler = (event: KeyboardEvent) => console.log(event);
 
-// regular way
+// 常规方式
 useEffect(() => {
   window.addEventListener('keydown', handler);
   return () => window.removeEventListener('keydown', handler);
 }, []);
 
-// with use-window-event hook
+// 使用 use-window-event Hook
 useWindowEvent('keydown', handler);
 ```
 
-## Example
+## 示例
 
-Search focus with `⌘ + K` on macOS or `Ctrl + K` on Windows and Linux on the ReactUI docs website:
+在 ReactUI 文档网站上，使用 `⌘ + K`（macOS）或 `Ctrl + K`（Windows/Linux）聚焦搜索框：
 
 ```tsx
 import { useRef } from 'react';
@@ -45,9 +45,9 @@ function Demo() {
 }
 ```
 
-## Definition
+## 类型定义
 
-The hook has the same definition as `window.addEventListener` function:
+该 Hook 的定义与 `window.addEventListener` 函数相同：
 
 ```tsx
 function useWindowEvent<K extends string>(

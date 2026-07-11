@@ -3,18 +3,16 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.ControlledVsUncontrolled);
 
-# Controlled vs Uncontrolled
+# 受控与非受控
 
-All ReactUI inputs support both controlled and uncontrolled modes. This guide will
-help you understand the difference between these two modes and when to use each of them.
+所有 ReactUI 输入组件都支持受控和非受控模式。本指南将帮助你理解这两种模式之间的区别，以及何时使用它们。
 
-## Controlled components
+## 受控组件
 
-A controlled component is a form element whose value is controlled by React state.
-The component's value is set by state, and changes are handled through event handlers that update that state.
-React becomes the single source of truth for the form data.
+受控组件是指其值由 React 状态控制的表单元素。组件的值由状态设置，变更通过更新该状态的事件处理函数处理。
+React 成为表单数据的唯一真实来源。
 
-Example of a controlled `TextInput` component:
+受控 `TextInput` 组件示例：
 
 ```tsx
 import { useState } from 'react';
@@ -33,16 +31,14 @@ function Demo() {
 }
 ```
 
-In this example, the input's value is always synchronized with the component's state.
-Every keystroke triggers a state update,which causes a re-render with the new value.
+在此示例中，输入框的值始终与组件状态同步。每次按键都会触发状态更新，从而使用新值重新渲染。
 
-## Uncontrolled components
+## 非受控组件
 
-An uncontrolled component manages its own state internally through the DOM (or internal state),
-similar to traditional HTML form elements. React doesn't control the value directly.
-Instead, you use refs or DOM methods to access the current value when needed, typically on form submission.
+非受控组件通过 DOM（或内部状态）自行管理状态，类似于传统 HTML 表单元素。React 不直接控制值，
+而是在需要时使用 ref 或 DOM 方法访问当前值，通常在表单提交时。
 
-Example of an uncontrolled `TextInput` component:
+非受控 `TextInput` 组件示例：
 
 ```tsx
 import { useRef } from 'react';
@@ -68,38 +64,36 @@ function Demo() {
 }
 ```
 
-Here, the input maintains its own state. React only reads the value when explicitly requested through the ref.
+这里，输入框保持自己的状态。React 仅在通过 ref 显式请求时才读取值。
 
-## Key differences
+## 主要区别
 
-The primary difference lies in where the state lives. Controlled components store state in React,
-while uncontrolled components store it in the DOM. This fundamental distinction affects how you interact with the component throughout its lifecycle.
+主要区别在于状态存储的位置。受控组件将状态存储在 React 中，而非受控组件将状态存储在 DOM 中。
+这一根本区别会影响你在组件生命周期中与组件交互的方式。
 
-With controlled components, you explicitly define the value prop and handle every change.
-With uncontrolled components, you set a defaultValue and let the DOM handle updates, only accessing the value when needed.
+对于受控组件，你需要显式定义 value prop 并处理每次变更。
+对于非受控组件，你设置 defaultValue 并让 DOM 处理更新，仅在需要时访问值。
 
-Controlled components require an onChange handler to remain interactive, whereas uncontrolled components work
-without any change handlers, just like standard HTML inputs.
+受控组件需要 onChange 处理程序才能保持交互，而非受控组件无需任何变更处理程序即可工作，就像标准 HTML 输入一样。
 
-## When to use which
+## 何时使用哪种模式
 
-Use controlled components when:
-- You need to validate or manipulate input values in real-time.
-- You want to enforce specific formats or constraints on user input.
-- You require immediate feedback or dynamic UI updates based on input changes.
+在以下情况使用受控组件：
+- 你需要实时验证或操作输入值。
+- 你想对用户输入强制执行特定格式或约束。
+- 你需要根据输入变化提供即时反馈或动态更新 UI。
 
-Use uncontrolled components when:
-- You want to simplify your code and reduce boilerplate for simple forms.
-- You don't need to validate or manipulate input values until form submission.
-- You are working with large forms where performance is a concern, and you want to minimize re-renders.
+在以下情况使用非受控组件：
+- 你想简化代码并减少简单表单样板。
+- 你不需要在表单提交前验证或操作输入值。
+- 你正在处理大型表单且关注性能，希望最小化重新渲染。
 
-## FormData and uncontrolled components
+## FormData 与非受控组件
 
-Uncontrolled forms are often used with the [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) API,
-which allows you to easily collect form values without managing state for each input. All ReactUI components
-support uncontrolled usage with `FormData`.
+非受控表单通常与 [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) API 一起使用，
+它可以让你轻松收集表单值，而无需为每个输入管理状态。所有 ReactUI 组件都支持使用 `FormData` 的非受控用法。
 
-Example of using uncontrolled `Checkbox` with `FormData`:
+使用非受控 `Checkbox` 与 `FormData` 的示例：
 
 ```tsx
 import { Checkbox } from '@react-ui/ui';
@@ -120,13 +114,12 @@ function Demo() {
 }
 ```
 
-## Uncontrolled use-form
+## 非受控 use-form
 
-[@react-ui/ui](/form/use-form) supports uncontrolled mode which allows building large
-forms with good performance. If you are working on complex forms with many fields, `useForm`
-hook in uncontrolled mode is a great choice.
+[@react-ui/ui](/form/use-form) 支持非受控模式，可用于构建高性能的大型表单。如果你正在处理包含大量字段的复杂表单，
+非受控模式下的 `useForm` hook 是一个很好的选择。
 
-Example of uncontrolled mode with `useForm`:
+使用 `useForm` 的非受控模式示例：
 
 ```tsx
 import { useState } from 'react';

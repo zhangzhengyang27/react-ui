@@ -88,6 +88,10 @@
 .tableOfContents {
   flex: 0 0 var(--docs-table-of-contents-width);
   margin-top: var(--mantine-spacing-xl);
+  position: sticky;
+  top: var(--docs-header-height);
+  align-self: flex-start;
+  height: calc(100vh - var(--docs-header-height));
 }
 
 .tabContent {

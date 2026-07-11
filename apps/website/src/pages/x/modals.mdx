@@ -4,13 +4,13 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Modals);
 
-## Installation
+## 安装
 
 <InstallScript packages="@react-ui/ui" />
 
-## Setup ModalsProvider
+## 设置 ModalsProvider
 
-Wrap your app with `ModalsProvider` component:
+使用 `ModalsProvider` 组件包裹你的应用：
 
 ```tsx
 import { MantineProvider } from '@react-ui/ui';
@@ -19,54 +19,52 @@ import { ModalsProvider } from '@react-ui/ui';
 function Demo() {
   return (
     <MantineProvider>
-      <ModalsProvider>{/* Your app here */}</ModalsProvider>
+      <ModalsProvider>{/* 你的应用内容 */}</ModalsProvider>
     </MantineProvider>
   );
 }
 ```
 
-## Confirm modal
+## 确认弹窗
 
-The @react-ui/ui package includes a special modal that can be used for confirmations.
-The component includes confirm and cancel buttons and supports children to display additional
-information about the action. Use the `openConfirmModal` function to open a confirm modal:
+`@react-ui/ui` 包包含一个专门用于确认的弹窗。该组件带有确认和取消按钮，并支持通过子元素展示有关操作的额外信息。使用 `openConfirmModal` 函数打开确认弹窗：
 
 <Demo data={ModalsDemos.confirm} />
 
-`openConfirmModal` function accepts one argument with the following properties:
+`openConfirmModal` 函数接受一个参数，包含以下属性：
 
-- `modalId` – modal id, defaults to a random id, can be used to close the modal programmatically
-- `children` – additional modal content displayed before actions
-- `onCancel` – called when the cancel button is clicked
-- `onConfirm` – called when the confirm button is clicked
-- `closeOnConfirm` – should the modal be closed when the confirm button is clicked, defaults to `true`
-- `closeOnCancel` – should the modal be closed when the cancel button is clicked, defaults to `true`
-- `cancelProps` – cancel button props
-- `confirmProps` – confirm button props
-- `groupProps` – buttons [Group](/core/group/) props
-- `labels` – cancel and confirm button labels, can be defined on ModalsProvider
+- `modalId` – 弹窗 id，默认为随机 id，可用于编程方式关闭弹窗
+- `children` – 显示在操作按钮之前的额外弹窗内容
+- `onCancel` – 点击取消按钮时调用
+- `onConfirm` – 点击确认按钮时调用
+- `closeOnConfirm` – 点击确认按钮时是否关闭弹窗，默认为 `true`
+- `closeOnCancel` – 点击取消按钮时是否关闭弹窗，默认为 `true`
+- `cancelProps` – 取消按钮属性
+- `confirmProps` – 确认按钮属性
+- `groupProps` – 按钮 [Group](/core/group/) 属性
+- `labels` – 取消和确认按钮标签，可在 ModalsProvider 上定义
 
-Using these properties, you can customize the confirm modal to match current context requirements:
+利用这些属性，你可以根据当前上下文自定义确认弹窗：
 
 <Demo data={ModalsDemos.confirmCustomize} />
 
-To set up shared labels for confirm modals, set `labels` on `ModalsProvider`:
+要为确认弹窗设置共享标签，请在 `ModalsProvider` 上设置 `labels`：
 
 ```tsx
 import { ModalsProvider } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <ModalsProvider labels={{ confirm: 'Submit', cancel: 'Cancel' }}>
-      {/* Your app here */}
+    <ModalsProvider labels={{ confirm: '提交', cancel: '取消' }}>
+      {/* 你的应用内容 */}
     </ModalsProvider>
   );
 }
 ```
 
-## Context modals
+## 上下文弹窗
 
-You can define any number of modals in the ModalsProvider context:
+你可以在 ModalsProvider 上下文中定义任意数量的弹窗：
 
 ```tsx
 import { Button, Text } from '@react-ui/ui';
@@ -80,7 +78,7 @@ const TestModal = ({
   <>
     <Text size="sm">{innerProps.modalBody}</Text>
     <Button fullWidth mt="md" onClick={() => context.closeModal(id)}>
-      Close modal
+      关闭弹窗
     </Button>
   </>
 );
@@ -88,22 +86,21 @@ const TestModal = ({
 function Demo() {
   return (
     <ModalsProvider
-      modals={{ demonstration: TestModal /* ...other modals */ }}
+      modals={{ demonstration: TestModal /* ...其他弹窗 */ }}
     >
-      {/* Your app here */}
+      {/* 你的应用内容 */}
     </ModalsProvider>
   );
 }
 ```
 
-And then open one of these modals with the `modals.openContextModal` function.
-The `modals.openContextModal` function accepts 2 arguments: modal key (should match one defined on ModalsProvider) and modal props:
+然后使用 `modals.openContextModal` 函数打开其中一个弹窗。`modals.openContextModal` 函数接受两个参数：弹窗键（应与 ModalsProvider 中定义的键一致）和弹窗属性：
 
 <Demo data={ModalsDemos.context} />
 
-## Typesafe context modals
+## 类型安全的上下文弹窗
 
-By default, `innerProps` and `modal` are not typesafe. You can add type safety with a TypeScript module declaration.
+默认情况下，`innerProps` 和 `modal` 不是类型安全的。你可以通过 TypeScript 模块声明添加类型安全。
 
 ```tsx
 const TestModal = ({
@@ -114,13 +111,13 @@ const TestModal = ({
   <>
     <Text size="sm">{innerProps.modalBody}</Text>
     <Button fullWidth mt="md" onClick={() => context.closeModal(id)}>
-      Close modal
+      关闭弹窗
     </Button>
   </>
 );
 const modals = {
   demonstration: TestModal,
-  /* ...other modals */
+  /* ...其他弹窗 */
 };
 declare module '@react-ui/ui' {
   export interface MantineModalsOverride {
@@ -130,57 +127,54 @@ declare module '@react-ui/ui' {
 function Demo() {
   return (
     <ModalsProvider modals={modals}>
-      {/* Your app here */}
+      {/* 你的应用内容 */}
     </ModalsProvider>
   );
 }
 ```
 
-Type-safe context modals will force you to use the correct types for `openContextModal`:
+类型安全的上下文弹窗会强制你为 `openContextModal` 使用正确的类型：
 
 ```tsx
 import { closeModal, openContextModal } from '@react-ui/ui';
 
 openContextModal({
   modal: 'demonstration',
-  title: 'Test modal from context',
+  title: '来自上下文的测试弹窗',
   innerProps: {
     modalBody:
-      'This modal was defined in ModalsProvider, you can open it anywhere in your app with useModals hook',
+      '此弹窗在 ModalsProvider 中定义，你可以在应用中的任何地方通过 useModals hook 打开它',
   },
 });
 closeModal('demonstration');
 ```
 
-## Content modals
+## 内容弹窗
 
-With the `modals.open` function, you can open a modal with any content:
+使用 `modals.open` 函数，你可以打开包含任意内容的弹窗：
 
 <Demo data={ModalsDemos.content} />
 
-## Multiple opened modals
+## 多个打开的弹窗
 
-You can open multiple layers of modals. Every opened modal is added as the first element in the modals queue.
-To close all opened modals, call the `modals.closeAll()` function:
+你可以打开多层弹窗。每个打开的弹窗都会作为弹窗队列中的第一个元素添加。要关闭所有打开的弹窗，请调用 `modals.closeAll()` 函数：
 
 <Demo data={ModalsDemos.multipleSteps} />
 
-## Modal props
+## 弹窗属性
 
-You can pass props down to the [Modal](/core/modal) component by adding them to the
-argument of every `modals.x` function. Example of setting the `radius`, `size`, and `withCloseButton`
-props:
+你可以通过将属性添加到每个 `modals.x` 函数的参数中，向下传递属性给 [Modal](/core/modal) 组件。以下示例设置 `radius`、`size` 和 `withCloseButton` 属性：
 
 <Demo data={ModalsDemos.modalProps} />
 
-## Dynamic content and the modals manager
+## 动态内容与弹窗管理器
 
-The modals manager allows you to dynamically update the content and properties of both standard and context modals after they are opened.
+弹窗管理器允许你在打开标准弹窗和上下文弹窗后，动态更新其内容和属性。
 
-To update regular modals, use the `modals.updateModal` function:
+要更新普通弹窗，请使用 `modals.updateModal` 函数：
 
 <Demo data={ModalsDemos.updateModal} />
 
-Context modals can also be updated dynamically using `modals.updateContextModal`:
+上下文弹窗也可以使用 `modals.updateContextModal` 动态更新：
 
 <Demo data={ModalsDemos.updateContextModal} />

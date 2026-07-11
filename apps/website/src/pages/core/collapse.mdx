@@ -4,31 +4,31 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Collapse);
 
-## Usage
+## 用法
 
 <Demo data={CollapseDemos.usage} />
 
-## Horizontal orientation
+## 水平方向
 
 <Demo data={CollapseDemos.horizontal} />
 
-## Change transition
+## 修改过渡
 
-Set the following props to control the transition:
+设置以下属性以控制过渡：
 
-- `transitionDuration` – duration in ms
-- `transitionTimingFunction` – timing function (ease, linear, etc.), defaults to `ease`
-- `onTransitionEnd` – called when transition ends (both open and close)
+- `transitionDuration` – 持续时间，单位为毫秒
+- `transitionTimingFunction` – 计时函数（ease、linear 等），默认为 `ease`
+- `onTransitionEnd` – 过渡结束时调用（打开和关闭都会触发）
 
 <Demo data={CollapseDemos.transition} />
 
-## Example: nested Collapse components
+## 示例：嵌套 Collapse 组件
 
 <Demo data={CollapseDemos.nested} />
 
 ## use-collapse hook
 
-[use-collapse](/hooks/use-collapse) is the hook version of the `Collapse` component.
-It allows more flexible usage and control over the collapse behavior.
+[use-collapse](/hooks/use-collapse) 是 `Collapse` 组件的 Hook 版本。
+它允许更灵活地使用和折叠行为控制。
 
 <Demo data={UseCollapseDemos.usage} />

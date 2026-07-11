@@ -3,12 +3,11 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useQueue);
 
-## Usage
+## 用法
 
-The `use-queue` hook limits the number of data items in the current state and places the rest of them in a queue.
-For example, in the [@react-ui/ui](/x/notifications/) package, the number of
-notifications that is currently displayed is limited, and other new notifications are added to the queue and displayed once
-available space appears.
+`use-queue` Hook 限制当前状态中的数据项数量，并将其余项放入队列。
+例如，在 [@react-ui/ui](/x/notifications/) 包中，当前显示的通知数量是有限的，
+其他新通知会被添加到队列中，一旦有可用空间就会显示。
 
 ```tsx
 import { useQueue } from '@react-ui/hooks';
@@ -20,51 +19,51 @@ const { state, queue, add, update, cleanQueue } = useQueue({
 
 // state -> [1], queue -> []
 
-// When state.length is less than limit, new items are added to state
+// 当 state.length 小于 limit 时，新项被添加到 state
 add(2);
 // state -> [1,2], queue -> []
 
-// When state.length is equal to the limit, new items are added to the queue
+// 当 state.length 等于 limit 时，新项被添加到 queue
 add(3, 4, 5, 6);
 // state -> [1,2], queue -> [3,4,5,6]
 
-// Use the update function to modify items
+// 使用 update 函数修改项目
 update((values) => values.map((item) => item * 3));
 // state -> [3,6], queue -> [9,12,15,18]
 
-// If you add or remove items in the update function,
-// they will be divided between queue and state according to the limit;
-// order is always preserved
+// 如果你在 update 函数中添加或删除项目，
+// 它们将根据 limit 在 queue 和 state 之间分配；
+// 顺序始终保留
 update((values) => values.filter((item) => item % 2));
 // state -> [3,9], queue -> [15]
 
-// Remove all items from queue
+// 从 queue 中移除所有项目
 cleanQueue();
 // state -> [3,9], queue -> []
 
-// Remove all items from queue and state
+// 从 queue 和 state 中移除所有项目
 update(() => []);
 // state -> [], queue -> []
 ```
 
-## API
+## API 参考
 
-The hook accepts one argument – a configuration object with keys:
+该 Hook 接受一个参数——一个包含以下键的配置对象：
 
-- `initialValues` – optional initial values (divided between state and queue according to limit), defaults to empty array
-- `limit` – maximum number of items that state can include, every next item after the limit is exceeded is put in queue
+- `initialValues` – 可选的初始值（根据 limit 在 state 和 queue 之间分配），默认为空数组
+- `limit` – state 可包含的最大项目数，超过 limit 后的每个后续项目都会放入 queue
 
-Return value:
+返回值：
 
-- `state` – current state
-- `queue` – current queue
-- `add` – add any number of items to state or queue
-- `update` – apply given function to all items in state and queue, use it to filter, modify or add items
-- `cleanQueue` – remove all items from the queue
+- `state` – 当前状态
+- `queue` – 当前队列
+- `add` – 向 state 或 queue 添加任意数量的项目
+- `update` – 将给定函数应用于 state 和 queue 中的所有项目，用于过滤、修改或添加项目
+- `cleanQueue` – 从 queue 中移除所有项目
 
-## Set item type
+## 设置项类型
 
-By default, the hook will get types information from `initialValues` automatically:
+默认情况下，Hook 会自动从 `initialValues` 获取类型信息：
 
 ```tsx
 import { useQueue } from '@react-ui/hooks';
@@ -80,7 +79,7 @@ const q = useQueue({
 typeof q.state[number]; // -> { name: string; id: number; }
 ```
 
-If you do not provide `initialValues`, pass in type for state item:
+如果你未提供 `initialValues`，请为 state 项传入类型：
 
 ```tsx
 import { useQueue } from '@react-ui/hooks';
@@ -93,41 +92,41 @@ const q = useQueue<{ name: string; id: number }>({
 q.add({ name: 'Bob', id: 1 });
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 export interface UseQueueOptions<T> {
-  /** Initial values to be added to the queue */
+  /** 要添加到队列的初始值 */
   initialValues?: T[];
 
-  /** Maximum number of items in the state */
+  /** state 中的最大项目数 */
   limit: number;
 }
 
 export interface UseQueueReturnValue<T> {
-  /** Array of items in the queue */
+  /** 队列中的项目数组 */
   queue: T[];
 
-  /** Array of items in the state */
+  /** 状态中的项目数组 */
   state: T[];
 
-  /** Function to add items to state or queue */
+  /** 向 state 或 queue 添加项目的函数 */
   add: (...items: T[]) => void;
 
-  /** Function to apply updates to current items */
+  /** 将更新应用于当前项目的函数 */
   update: (fn: (state: T[]) => T[]) => void;
 
-  /** Function to clear the queue */
+  /** 清空队列的函数 */
   cleanQueue: () => void;
 }
 
 function useQueue<T>(options: UseQueueOptions<T>): UseQueueReturnValue<T>
 ```
 
-## Exported types
+## 导出类型
 
-`UseQueueOptions` and `UseQueueReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseQueueOptions` 和 `UseQueueReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseQueueOptions, UseQueueReturnValue } from '@react-ui/hooks';

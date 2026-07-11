@@ -4,40 +4,39 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Timeline);
 
-## Usage
+## 用法
 
 <Demo data={TimelineDemos.usage} />
 
-## Line and bullet props
+## 线条与圆点属性
 
-Control the timeline appearance with the following props:
+使用以下属性控制时间轴外观：
 
-- `active` – index of the current active element; all elements before this index will be highlighted with `color`
-- `color` – color from theme that should be used to highlight active items, defaults to `theme.primaryColor`
-- `lineWidth` – controls line width and bullet border
-- `bulletSize` – bullet width, height and border-radius
-- `align` – defines the line and bullets position relative to content, also sets text-align
+- `active` – 当前活动元素的索引；此索引之前的所有元素将使用 `color` 高亮显示
+- `color` – 用于高亮活动项的主题颜色，默认为 `theme.primaryColor`
+- `lineWidth` – 控制线条宽度和圆点边框
+- `bulletSize` – 圆点的宽度、高度和边框半径
+- `align` – 定义线条和圆点相对于内容的位置，同时设置文本对齐方式
 
 <Demo data={TimelineDemos.configurator} />
 
-## Bullet as React node
+## 圆点作为 React node
 
 <Demo data={TimelineDemos.bullet} />
 
-## Wrap Timeline.Item
+## 包裹 Timeline.Item
 
-`Timeline` component relies on `Timeline.Item` order. Wrapping `Timeline.Item` is not supported.
-Instead, you will need to use different approaches:
+`Timeline` 组件依赖 `Timeline.Item` 的顺序。不支持包裹 `Timeline.Item`。相反，你需要使用不同的方法：
 
 ```tsx
 import { Timeline } from '@react-ui/ui';
 
-// This will not work, step children will not render
+// 这不会生效，step 子项不会渲染
 function WillNotWork() {
   return <Timeline.Item title="Nope">It will not work</Timeline.Item>;
 }
 
-// Create a separate component for children
+// 为子项创建一个单独的组件
 function WillWork() {
   return <div>This will work as expected!</div>;
 }

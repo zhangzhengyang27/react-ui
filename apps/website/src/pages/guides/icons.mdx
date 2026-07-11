@@ -4,9 +4,9 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Icons);
 
-# Icon libraries with ReactUI
+# 在 ReactUI 中使用图标库
 
-You can use any icon library with ReactUI components. The most popular options are:
+你可以在 ReactUI 组件中使用任意图标库。最受欢迎的选项包括：
 
 - [Phosphor icons](https://phosphoricons.com/)
 - [Tabler icons](https://tabler-icons.io/)
@@ -15,32 +15,27 @@ You can use any icon library with ReactUI components. The most popular options a
 - [react-icons](https://react-icons.github.io/react-icons/)
 - [Font Awesome](https://fontawesome.com/v5/docs/web/use-with/react)
 
-## Phosphor icons
+## Phosphor 图标
 
-[Phosphor icons](https://phosphoricons.com/) are used in ReactUI demos, documentation,
-and some `@mantine/` packages depend on them. If you don't know which icon library
-to use, we recommend [Phosphor icons](https://phosphoricons.com/).
+ReactUI 的示例和文档使用 [Phosphor icons](https://phosphoricons.com/)，部分 `@mantine/` 包也依赖它们。如果你不知道该用哪个图标库，我们推荐 [Phosphor icons](https://phosphoricons.com/)。
 
-## Icon size
+## 图标尺寸
 
-Most icon libraries support a `size` prop (or similar `width` and `height` props) that allows you to change the
-icon width and height. Usually, it's a number in pixels.
+大多数图标库支持 `size` 属性（或类似的 `width` 和 `height` 属性），用于修改图标的宽度和高度。通常以像素为单位的数字。
 
 {/* <Demo data={GuidesDemos.icon} /> */}
 
-> **rem units in size prop**
+> **size 属性中的 rem 单位**
 >
-> The icon `size` prop is usually converted to `width` and `height` props under the hood.
-> If you set `size={16}` it will be converted to `width="16"` and `height="16"` attributes
-> on the svg element.
+> 图标的 `size` 属性通常会在底层转换为 `width` 和 `height` 属性。
+> 例如 `size={16}` 会转换为 svg 元素上的 `width="16"` 和 `height="16"` 属性。
 >
-> You can use rem units in the `size` prop: `size="1rem"` will be converted to `width="1rem"` and `height="1rem"`,
-> but it's not recommended as it's prohibited by the SVG standard – some browsers (Firefox) will show a warning in the console.
+> 你也可以在 `size` 属性中使用 rem 单位：`size="1rem"` 会转换为 `width="1rem"` 和 `height="1rem"`，
+> 但不推荐这样做，因为这违反 SVG 标准——某些浏览器（如 Firefox）会在控制台显示警告。
 
-## Custom icons
+## 自定义图标
 
-We recommend using icons as React components. In this case, you'll be able to use
-`currentColor` in the `fill` and `stroke` props. This will change the icon color based on the context
-it's used in.
+我们建议将图标作为 React 组件使用。这样你就可以在 `fill` 和 `stroke` 属性中使用 `currentColor`，
+让图标根据上下文自动改变颜色。
 
 <Demo data={GuidesDemos.customIcon} />

@@ -4,21 +4,21 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Code);
 
-## Usage
+## 用法
 
-By default, the Code component renders an inline `code` html element:
+默认情况下，Code 组件渲染一个行内 `code` HTML 元素：
 
 <Demo data={CodeDemos.usage} />
 
-## Block code
+## 块级代码
 
-To render code in a `pre` element, pass the `block` prop to the Code component:
+要在 `pre` 元素中渲染代码，请将 `block` 属性传递给 Code 组件：
 
 <Demo data={CodeDemos.block} />
 
-## Custom color
+## 自定义颜色
 
-By default, the code color is gray. You can change it to any valid CSS color or to one
-of the [theme.colors](/theming/colors):
+默认情况下，代码颜色为灰色。你可以将其更改为任何有效的 CSS 颜色或
+[theme.colors](/theming/colors) 中的一种：
 
 <Demo data={CodeDemos.colors} />

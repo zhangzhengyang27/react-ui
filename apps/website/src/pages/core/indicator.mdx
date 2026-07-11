@@ -4,53 +4,48 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Indicator);
 
-## Usage
+## 用法
 
 <Demo data={IndicatorDemos.configurator} />
 
-## Inline
+## 行内模式
 
-When the target element has a fixed width, set the `inline` prop to add `display: inline-block;` styles to
-the Indicator container. Alternatively, you can set width and height with the `style` prop if you still want the root
-element to keep `display: block`.
+当目标元素具有固定宽度时，设置 `inline` 属性为 Indicator 容器添加 `display: inline-block;` 样式。
+或者，如果你仍希望根元素保持 `display: block`，可以使用 `style` 属性设置宽度和高度。
 
 <Demo data={IndicatorDemos.inline} />
 
-## Offset
+## 偏移
 
-Set `offset` to change the indicator position. It is useful when the Indicator component is
-used with children that have border-radius. You can provide a number for uniform offset or an
-object with `x` and `y` properties for separate horizontal and vertical offsets:
+设置 `offset` 以更改指示器位置。当 Indicator 组件与具有 border-radius 的子元素一起使用时，这很有用。
+你可以传入一个数字实现统一偏移，或传入包含 `x` 和 `y` 属性的对象分别设置水平和垂直偏移：
 
 <Demo data={IndicatorDemos.offset} />
 
-## Processing animation
+## 处理中动画
 
 <Demo data={IndicatorDemos.processing} />
 
-## Disabled
+## 禁用
 
-Set `disabled` to hide the indicator:
+设置 `disabled` 以隐藏指示器：
 
 <Demo data={IndicatorDemos.disabled} />
 
-## Max value
+## 最大值
 
-Set `maxValue` prop to display `{maxValue}+` when the label exceeds the maximum value. This is useful for
-notification counters that should not show exact large numbers:
+设置 `maxValue` 属性，当标签超过最大值时显示 `{maxValue}+`。这对于不应显示精确大数字的通知计数器很有用：
 
 <Demo data={IndicatorDemos.maxValue} />
 
-## Show zero
+## 显示零
 
-By default, the indicator is displayed when the label is `0`. Set `showZero={false}` to hide the indicator
-when the label is `0`:
+默认情况下，当标签为 `0` 时指示器会显示。设置 `showZero={false}` 以在标签为 `0` 时隐藏指示器：
 
 <Demo data={IndicatorDemos.showZero} />
 
-## Auto contrast
+## 自动对比度
 
-Set `autoContrast` prop to automatically adjust text color based on the background color to ensure
-readable contrast:
+设置 `autoContrast` 属性以根据背景色自动调整文本颜色，确保可读对比度：
 
 <Demo data={IndicatorDemos.autoContrast} />

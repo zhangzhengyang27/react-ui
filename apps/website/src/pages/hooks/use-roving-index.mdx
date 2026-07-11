@@ -4,50 +4,49 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useRovingIndex);
 
-## Usage
+## 用法
 
-`use-roving-index` implements the [roving tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex) keyboard navigation pattern.
-In a group of focusable elements, only one element has `tabIndex={0}` (can be reached with Tab key),
-while all others have `tabIndex={-1}`. Arrow keys move focus between items in the group.
+`use-roving-index` 实现了 [roving tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex) 键盘导航模式。
+在一组可聚焦元素中，只有一个元素具有 `tabIndex={0}`（可通过 Tab 键到达），
+其余元素均为 `tabIndex={-1}`。方向键可在组内项目之间移动焦点。
 
 <Demo data={UseRovingIndexDemos.usage} />
 
-## Orientation
+## 方向
 
-Set `orientation` to control which arrow keys are used for navigation:
-- `'horizontal'` (default) – ArrowLeft/ArrowRight
+设置 `orientation` 以控制使用哪些方向键进行导航：
+- `'horizontal'`（默认）– ArrowLeft/ArrowRight
 - `'vertical'` – ArrowUp/ArrowDown
-- `'both'` – all four arrow keys
+- `'both'` – 四个方向键均可
 
 <Demo data={UseRovingIndexDemos.vertical} />
 
-## Grid navigation
+## 网格导航
 
-Set `columns` to enable 2D grid navigation. ArrowLeft/ArrowRight navigate within a row,
-ArrowUp/ArrowDown navigate across rows preserving the column position.
-Navigation stops at grid boundaries. Use Ctrl+Home/Ctrl+End to jump to the first/last item in the grid,
-and Home/End to jump to the first/last item in the current row.
+设置 `columns` 以启用二维网格导航。ArrowLeft/ArrowRight 在同一行内导航，
+ArrowUp/ArrowDown 跨行导航并保持列位置不变。
+导航在网格边界处停止。使用 Ctrl+Home/Ctrl+End 跳转到网格的第一个/最后一个项目，
+使用 Home/End 跳转到当前行的第一个/最后一个项目。
 
 <Demo data={UseRovingIndexDemos.grid} />
 
-## Disabled items
+## 禁用项
 
-Use `isItemDisabled` callback to mark items as disabled. Disabled items are skipped during
-keyboard navigation. If the initially focused item is disabled, the first non-disabled item
-receives focus instead.
+使用 `isItemDisabled` 回调函数将项目标记为禁用。禁用的项目会在键盘导航中被跳过。
+如果初始聚焦项被禁用，则第一个非禁用项目会获得焦点。
 
 <Demo data={UseRovingIndexDemos.disabled} />
 
-## Loop
+## 循环
 
-By default, navigation wraps around at boundaries (`loop` is `true`).
-Set `loop={false}` to stop at the first and last items.
+默认情况下，导航在边界处循环（`loop` 为 `true`）。
+设置 `loop={false}` 可在第一个和最后一个项目处停止。
 
 <Demo data={UseRovingIndexDemos.loop} />
 
-## Controlled mode
+## 受控模式
 
-Use `focusedIndex` and `onFocusChange` to control the focused index externally:
+使用 `focusedIndex` 和 `onFocusChange` 在外部控制聚焦索引：
 
 ```tsx
 import { useState } from 'react';
@@ -67,9 +66,8 @@ function Demo() {
 
 ## activateOnFocus
 
-Set `activateOnFocus` to `true` to automatically click items when they receive focus
-via keyboard navigation. This is useful for tab-like interfaces where focus and selection
-should be synchronized:
+设置 `activateOnFocus` 为 `true`，可在项目通过键盘导航获得焦点时自动点击它们。
+这对于标签页式界面很有用，因为焦点和选择需要保持同步：
 
 ```tsx
 import { useRovingIndex } from '@react-ui/hooks';
@@ -84,9 +82,9 @@ function Demo() {
 }
 ```
 
-## RTL support
+## RTL 支持
 
-Set `dir="rtl"` to swap ArrowLeft/ArrowRight behavior for right-to-left layouts:
+设置 `dir="rtl"` 以交换 ArrowLeft/ArrowRight 在从右到左布局中的行为：
 
 ```tsx
 import { useRovingIndex } from '@react-ui/hooks';
@@ -101,54 +99,54 @@ function Demo() {
 }
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 export interface UseRovingIndexInput {
-  /** Total number of items in the group */
+  /** 组中项目的总数 */
   total: number;
 
-  /** Which arrow keys navigate, `'horizontal'` by default */
+  /** 哪些方向键用于导航，默认 `'horizontal'` */
   orientation?: 'horizontal' | 'vertical' | 'both';
 
-  /** Whether navigation wraps at boundaries, `true` by default */
+  /** 导航是否在边界处循环，默认 `true` */
   loop?: boolean;
 
-  /** Text direction, `'ltr'` by default */
+  /** 文本方向，默认 `'ltr'` */
   dir?: 'rtl' | 'ltr';
 
-  /** Whether to click element when it receives focus via keyboard, `false` by default */
+  /** 是否在该元素通过键盘获得焦点时点击它，默认 `false` */
   activateOnFocus?: boolean;
 
-  /** Number of columns for grid (2D) navigation. When set, enables grid mode */
+  /** 网格（二维）导航的列数。设置后启用网格模式 */
   columns?: number;
 
-  /** Controlled focused index */
+  /** 受控聚焦索引 */
   focusedIndex?: number;
 
-  /** Initial focused index for uncontrolled mode, first non-disabled item by default */
+  /** 非受控模式下的初始聚焦索引，默认第一个非禁用项目 */
   initialIndex?: number;
 
-  /** Called when focused index changes */
+  /** 聚焦索引变化时调用 */
   onFocusChange?: (index: number) => void;
 
-  /** Function to check if item at given index is disabled, `() => false` by default */
+  /** 检查给定索引的项目是否禁用的函数，默认 `() => false` */
   isItemDisabled?: (index: number) => boolean;
 }
 
 export interface UseRovingIndexGetItemPropsInput {
-  /** Index of the item in the group */
+  /** 项目在组中的索引 */
   index: number;
 
-  /** Called when item is clicked */
+  /** 点击项目时调用 */
   onClick?: React.MouseEventHandler;
 
-  /** Called when keydown event fires on item */
+  /** 项目上触发 keydown 事件时调用 */
   onKeyDown?: React.KeyboardEventHandler;
 }
 
 export interface UseRovingIndexReturnValue {
-  /** Get props to spread on each navigable item */
+  /** 获取要展开到每个可导航项目上的 props */
   getItemProps: (options: UseRovingIndexGetItemPropsInput) => {
     tabIndex: 0 | -1;
     onKeyDown: React.KeyboardEventHandler;
@@ -156,20 +154,20 @@ export interface UseRovingIndexReturnValue {
     ref: React.RefCallback<HTMLElement>;
   };
 
-  /** Currently focused index */
+  /** 当前聚焦索引 */
   focusedIndex: number;
 
-  /** Programmatically set focused index */
+  /** 以编程方式设置聚焦索引 */
   setFocusedIndex: (index: number) => void;
 }
 
 function useRovingIndex(input: UseRovingIndexInput): UseRovingIndexReturnValue;
 ```
 
-## Exported types
+## 导出类型
 
-`UseRovingIndexInput`, `UseRovingIndexGetItemPropsInput` and `UseRovingIndexReturnValue` types are exported
-from the `@react-ui/hooks` package; you can import them in your application:
+`UseRovingIndexInput`、`UseRovingIndexGetItemPropsInput` 和 `UseRovingIndexReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type {

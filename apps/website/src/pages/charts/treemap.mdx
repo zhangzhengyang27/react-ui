@@ -4,44 +4,38 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Treemap);
 
-## Usage
+## 用法
 
-`Treemap` is based on the [Treemap recharts component](https://recharts.org/en-US/api/Treemap).
-It displays hierarchical data as a set of nested rectangles:
+`Treemap` 基于 [Treemap recharts 组件](https://recharts.org/en-US/api/Treemap)。它以一组嵌套矩形展示层级数据：
 
 <Demo data={TreemapDemos.usage} />
 
-## Nested data
+## 嵌套数据
 
-`Treemap` supports nested data – each data item can have a `children` array.
-The `color` property on a parent node is used for all its children:
+`Treemap` 支持嵌套数据——每个数据项可以包含 `children` 数组。父节点的 `color` 属性会应用于其所有子节点：
 
 <Demo data={TreemapDemos.nestedDataDemo} />
 
-## Node color
+## 节点颜色
 
-You can reference colors from [theme](/theming/theme-object) the same way as in
-other components, for example, `blue`, `red.5`, `orange.7`, etc. Any valid CSS
-color value is also accepted.
+你可以像其他组件一样从 [主题](/theming/theme-object) 中引用颜色，例如 `blue`、`red.5`、`orange.7` 等。任何有效的 CSS 颜色值也同样受支持。
 
 <Demo data={TreemapDemos.color} />
 
-## autoContrast
+## 自动对比度
 
-`Treemap` supports `autoContrast` prop that automatically adjusts text color
-based on the background color of each node to ensure readable labels:
+`Treemap` 支持 `autoContrast` 属性，可根据每个节点的背景色自动调整文本颜色，以确保标签清晰可读：
 
 <Demo data={TreemapDemos.autoContrast} />
 
-## Node stroke
+## 节点描边
 
-Use the `strokeWidth` prop to control the width of the stroke around each node.
-To change the color of the stroke, use the `strokeColor` prop:
+使用 `strokeWidth` 属性控制每个节点周围描边的宽度。要更改描边颜色，使用 `strokeColor` 属性：
 
 <Demo data={TreemapDemos.strokeColor} />
 
-## Disable tooltip
+## 禁用提示框
 
-To disable the tooltip, set `withTooltip={false}`:
+要禁用提示框，设置 `withTooltip={false}`：
 
 <Demo data={TreemapDemos.noTooltip} />

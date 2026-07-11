@@ -4,24 +4,20 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.RollingNumber);
 
-## Usage
+## 用法
 
-`RollingNumber` animates value changes with rolling digit transitions. Each digit
-independently rolls to its new position when the value changes.
+`RollingNumber` 通过数字滚动过渡来动画化值变化。当值变化时，每个数字独立滚动到新位置。
 
 <Demo data={RollingNumberDemos.usage} />
 
-## Prefix and suffix
+## 前缀与后缀
 
-Set `prefix` and `suffix` props to add static text before or after the animated number.
-Use `thousandSeparator` to separate thousands and `decimalScale` with `fixedDecimalScale`
-to control decimal formatting:
+设置 `prefix` 和 `suffix` 属性以在动画数字前后添加静态文本。使用 `thousandSeparator` 分隔千位，使用 `decimalScale` 配合 `fixedDecimalScale` 控制小数格式：
 
 <Demo data={RollingNumberDemos.prefix} />
 
-## Animation duration
+## 动画持续时间
 
-Control animation speed with `animationDuration` prop (in milliseconds, default is `600`).
-Use `timingFunction` prop to change the CSS timing function (default is `ease`):
+使用 `animationDuration` 属性控制动画速度（以毫秒为单位，默认 `600`）。使用 `timingFunction` 属性更改 CSS 计时函数（默认 `ease`）：
 
 <Demo data={RollingNumberDemos.duration} />

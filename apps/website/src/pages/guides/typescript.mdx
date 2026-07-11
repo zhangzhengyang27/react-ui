@@ -3,34 +3,33 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.TypeScript);
 
-# Usage with TypeScript
+# 在 TypeScript 中使用
 
-All `@mantine/*` packages are fully compatible with TypeScript. All examples in the documentation
-are written in TypeScript – you can copy and paste them to your project without any changes.
+所有 `@mantine/*` 包都完全兼容 TypeScript。文档中的所有示例均使用 TypeScript 编写——
+你可以直接复制粘贴到项目中，无需任何修改。
 
-This guide will help you get familiar with the types that the `@react-ui/ui` package exports.
+本指南将帮助你熟悉 `@react-ui/ui` 包导出的类型。
 
-## Components props types
+## 组件 props 类型
 
-Each `@mantine/` package that exports components also exports props types for these components.
-You can import component props types by adding `Props` to the component name.
-For example, you can import Button and DatePicker component props like this:
+每个导出组件的 `@mantine/` 包也会导出这些组件的 props 类型。
+你可以在组件名后添加 `Props` 来导入组件的 props 类型。
+例如，可以像这样导入 Button 和 DatePicker 的组件 props：
 
 ```tsx
 import type { ButtonProps } from '@react-ui/ui';
 import type { DatePickerProps } from '@react-ui/ui';
 ```
 
-Note that there are two variations of props types: for polymorphic components and for regular components.
-Regular component props types include `React.ComponentProps<'X'>`, where `X` is the root element
-type, for example `'div'`.
+注意，props 类型有两种变体：多态组件和普通组件。
+普通组件的 props 类型包含 `React.ComponentProps<'X'>`，其中 `X` 是根元素类型，例如 `'div'`。
 
-Example of extending regular component props:
+扩展普通组件 props 的示例：
 
 ```tsx
 import { Group, GroupProps } from '@react-ui/ui';
 
-// Interface includes `React.ComponentProps<'div'>`
+// 接口包含 `React.ComponentProps<'div'>`
 interface MyGroupProps extends GroupProps {
   spacing: number;
 }
@@ -40,12 +39,12 @@ function MyGroup({ spacing, ...others }: MyGroupProps) {
 }
 ```
 
-## Polymorphic components props types
+## 多态组件 props 类型
 
-[Polymorphic component](/guides/polymorphic) props types don't include `React.ComponentProps<'X'>`
-because their root element depends on the `component` prop value.
+[多态组件](/guides/polymorphic)的 props 类型不包含 `React.ComponentProps<'X'>`，
+因为它们的根元素取决于 `component` 属性的值。
 
-Example of extending [polymorphic component](/guides/polymorphic) props:
+扩展多态组件 props 的示例：
 
 ```tsx
 import { Button, ButtonProps, ElementProps } from '@react-ui/ui';
@@ -61,43 +60,40 @@ function MyButton({ height, ...others }: MyButtonProps) {
 }
 ```
 
-## Namespace types
+## 命名空间类型
 
-All ReactUI components export namespaces with related types. For example, [Button](/core/button)
-component props can be accessed as `Button.Props`:
+所有 ReactUI 组件都会导出包含相关类型的命名空间。例如，可以通过 `Button.Props` 访问 [Button](/core/button) 组件的 props：
 
 ```tsx
 import {  Button } from '@react-ui/ui';
 
-// Same as `import type { ButtonProps } from '@react-ui/ui';`
+// 与 `import type { ButtonProps } from '@react-ui/ui';` 相同
 type MyButtonProps = Button.Props;
 ```
 
-## ElementProps type
+## ElementProps 类型
 
-`ElementProps` is a utility type similar to `React.ComponentProps`, but with additional
-features. It replaces the native element's `style` prop with ReactUI's [style prop](/styles/style) and
-allows omitting properties that are passed as a second type.
+`ElementProps` 是一个与 `React.ComponentProps` 类似的工具类型，但具有额外的功能。
+它会将原生元素的 `style` 属性替换为 ReactUI 的 [style prop](/styles/style)，
+并允许通过第二个类型参数省略某些属性。
 
 ```tsx
 import { ButtonProps, ElementProps } from '@react-ui/ui';
 
-// Equivalent of `React.ComponentProps<'button'>`
+// 等价于 `React.ComponentProps<'button'>`
 type ButtonElementProps = ElementProps<'button'>;
 
-// Equivalent of `Omit<React.ComponentProps<'button'>, 'color' | 'onClick'>`
+// 等价于 `Omit<React.ComponentProps<'button'>, 'color' | 'onClick'>`
 type OmitColor = ElementProps<'button', 'color' | 'onClick'>;
 
-// Removes all ReactUI component props from React component props
-// to avoid props types conflicts
-// Equivalent of `Omit<React.ComponentProps<'button'>, keyof ButtonProps>`
+// 从 React 组件 props 中移除所有 ReactUI 组件 props，以避免 props 类型冲突
+// 等价于 `Omit<React.ComponentProps<'button'>, keyof ButtonProps>`
 type OmitButtonProps = ElementProps<'button', keyof ButtonProps>;
 ```
 
-## MantineTheme type
+## MantineTheme 类型
 
-`MantineTheme` is a type of the [theme object](/theming/theme-object). You can use it to add types
-to functions that accept a theme object as an argument:
+`MantineTheme` 是 [theme object](/theming/theme-object) 的类型。你可以用它来为接受 theme 对象作为参数的函数添加类型：
 
 ```tsx
 import { MantineTheme, useMantineTheme } from '@react-ui/ui';
@@ -112,10 +108,9 @@ function Demo() {
 }
 ```
 
-## MantineThemeOverride type
+## MantineThemeOverride 类型
 
-`MantineThemeOverride` type is a deep partial of `MantineTheme`. It can be used in functions
-that accept a theme override as an argument:
+`MantineThemeOverride` 类型是 `MantineTheme` 的深层 Partial。它可以用于接受 theme override 作为参数的函数：
 
 ```tsx
 import {
@@ -143,10 +138,9 @@ const overrideTheme2 = createTheme({
 const mergedTheme = mergeThemes([overrideTheme, overrideTheme2]);
 ```
 
-## MantineColorScheme type
+## MantineColorScheme 类型
 
-`MantineColorScheme` is a union of `'light' | 'dark' | 'auto'` values. You can use it to add types
-to functions that accept color scheme as an argument:
+`MantineColorScheme` 是 `'light' | 'dark' | 'auto'` 的联合类型。你可以用它来为接受 color scheme 作为参数的函数添加类型：
 
 ```tsx
 import {
@@ -164,10 +158,9 @@ function Demo() {
 }
 ```
 
-## MantineSize type
+## MantineSize 类型
 
-`MantineSize` type is a union of `'xs' | 'sm' | 'md' | 'lg' | 'xl'` values. You can use it to add types
-to various props that accept size as an argument, for example, `radius`, `shadow`, `p`.
+`MantineSize` 类型是 `'xs' | 'sm' | 'md' | 'lg' | 'xl'` 的联合类型。你可以用它来为各种接受 size 参数的 props 添加类型，例如 `radius`、`shadow`、`p`。
 
 ```tsx
 import { MantineSize, Paper } from '@react-ui/ui';
@@ -183,13 +176,12 @@ function Demo({ size, radius, shadow }: DemoProps) {
 }
 ```
 
-## Theme object declarations
+## 主题对象声明
 
-You can change `theme.other` and `theme.colors` types by extending the `MantineTheme` interface
-in a `.d.ts` file. Create `mantine.d.ts` anywhere in your project (must be included in `tsconfig.json`)
-to extend theme object types.
+你可以通过在 `.d.ts` 文件中扩展 `MantineTheme` 接口来更改 `theme.other` 和 `theme.colors` 的类型。
+在项目的任意位置创建 `mantine.d.ts`（必须包含在 `tsconfig.json` 中）以扩展主题对象类型。
 
-To override `theme.other`:
+覆盖 `theme.other`：
 
 ```tsx
 // mantine.d.ts
@@ -201,7 +193,7 @@ declare module '@react-ui/ui' {
 }
 ```
 
-To override `theme.colors`:
+覆盖 `theme.colors`：
 
 ```tsx
 import {
@@ -221,10 +213,10 @@ declare module '@react-ui/ui' {
 }
 ```
 
-You can also customize size-related types for `theme.spacing`, `theme.radius`,
-`theme.breakpoints`, `theme.fontSizes`, `theme.lineHeights`, and `theme.shadows` similarly.
+你还可以以类似方式自定义与 size 相关的类型，包括 `theme.spacing`、`theme.radius`、
+`theme.breakpoints`、`theme.fontSizes`、`theme.lineHeights` 和 `theme.shadows`。
 
-To override `theme.spacing` and `theme.radius`
+覆盖 `theme.spacing` 和 `theme.radius`
 
 ```tsx
 import {
@@ -249,15 +241,14 @@ declare module '@react-ui/ui' {
 }
 ```
 
-Note that extending the theme type isn't required; it's only needed if you want to
-make your theme object types more strict and add autocomplete in your editor.
+注意，扩展主题类型并非必需；只有当你希望让主题对象类型更严格，并在编辑器中获得自动补全时，才需要这样做。
 
-## Custom variants types
+## 自定义变体类型
 
-You can define types for custom [variants](/styles/variants-sizes) by
-extending the `{x}Props` interface with the new variant type in your `mantine.d.ts` file.
+你可以通过在 `mantine.d.ts` 文件中使用新的 variant 类型扩展 `{x}Props` 接口，
+来为自定义 [variants](/styles/variants-sizes) 定义类型。
 
-Example of adding a custom variant type to the [Button](/core/button) component:
+为 [Button](/core/button) 组件添加自定义 variant 类型的示例：
 
 ```tsx
 import { ButtonVariant, MantineSize } from '@react-ui/ui';

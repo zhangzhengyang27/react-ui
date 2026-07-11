@@ -6,24 +6,21 @@ export default Layout(MDX_DATA.TagsInput);
 
 <ComboboxDisclaimer component="TagsInput" />
 
-## Usage
+## 用法
 
-`TagsInput` provides a way to enter multiple values. It can be used with suggestions or without them.
-`TagsInput` is similar to [MultiSelect](/core/multi-select), but it allows entering custom values.
+`TagsInput` 提供了一种输入多个值的方式。它可以与建议一起使用，也可以不使用。`TagsInput` 与 [MultiSelect](/core/multi-select) 类似，但允许输入自定义值。
 
 <Demo data={TagsInputDemos.usage} />
 
-## Loading state
+## 加载状态
 
-Set `loading` prop to display a loading indicator. By default, the loader is displayed on the right side of the input.
-You can change the position with the `loadingPosition` prop to `'left'` or `'right'`. This is useful for async operations like API calls, searches, or validations:
+设置 `loading` 属性以显示加载指示器。默认情况下，加载器显示在输入框的右侧。你可以使用 `loadingPosition` 属性将位置更改为 `'left'` 或 `'right'`。这对于 API 调用、搜索或验证等异步操作非常有用：
 
 <Demo data={TagsInputDemos.loading} />
 
-## Controlled
+## 受控模式
 
-The `TagsInput` value must be an array of strings; other types are not supported.
-The `onChange` function is called with an array of strings as a single argument.
+`TagsInput` 的值必须是字符串数组，不支持其他类型。`onChange` 函数以字符串数组作为唯一参数被调用。
 
 ```tsx
 import { useState } from 'react';
@@ -35,9 +32,9 @@ function Demo() {
 }
 ```
 
-## Controlled search value
+## 受控搜索值
 
-You can control the search value with `searchValue` and `onSearchChange` props:
+你可以使用 `searchValue` 和 `onSearchChange` 属性控制搜索值：
 
 ```tsx
 import { useState } from 'react';
@@ -55,14 +52,13 @@ function Demo() {
 }
 ```
 
-## Clearable
+## 可清除
 
-Set the `clearable` prop to display the clear button in the right section. The button is not displayed
-when:
+设置 `clearable` 属性可在右侧区域显示清除按钮。以下情况不显示按钮：
 
-- The component does not have a value
-- The component is disabled
-- The component is read only
+- 组件没有值
+- 组件被禁用
+- 组件为只读
 
 <Demo data={TagsInputDemos.clearable} />
 
@@ -70,53 +66,43 @@ when:
 
 <Demo data={TagsInputDemos.clearSectionMode} />
 
-## Max selected values
+## 最大选中数量
 
-You can limit the number of selected values with the `maxTags` prop. This will not allow adding more values
-once the limit is reached.
+你可以使用 `maxTags` 属性限制可选值的数量。达到限制后将无法再添加更多值。
 
 <Demo data={TagsInputDemos.maxTags} />
 
-## Accept value on blur
+## 失焦时接受值
 
-By default, if the user types a value and blurs the input, the value is added to the list.
-You can change this behavior by setting `acceptValueOnBlur` to `false`. In this case, the value is added
-only when the user presses `Enter` or clicks on a suggestion.
+默认情况下，如果用户输入一个值然后使输入框失焦，该值会被添加到列表中。你可以通过设置 `acceptValueOnBlur` 为 `false` 来更改此行为。在这种情况下，只有在用户按 `Enter` 或点击建议时才会添加值。
 
 <Demo data={TagsInputDemos.acceptValueOnBlur} />
 
-## Allow duplicates
+## 允许重复
 
-By default, `TagsInput` does not allow adding duplicate values, but you can change this behavior by
-setting the `allowDuplicates` prop. A value is considered duplicate if it is already present in the `value` array,
-regardless of the case and trailing whitespace.
+默认情况下，`TagsInput` 不允许添加重复值，但你可以通过设置 `allowDuplicates` 属性来更改此行为。如果值已经存在于 `value` 数组中，则无论大小写和尾部空格如何，都被视为重复。
 
 <Demo data={TagsInputDemos.allowDuplicates} />
 
 ## isDuplicate
 
-You can use the `isDuplicate` prop to control how duplicates are detected. It is a function that
-receives two arguments: tag value and current tags. The function must return `true` if the value is a duplicate.
+你可以使用 `isDuplicate` 属性控制如何检测重复。它是一个函数，接收两个参数：tag 值和当前 tags。如果该值是重复项，函数必须返回 `true`。
 
-Example of using `isDuplicate` to allow using the same value with different casing:
+使用 `isDuplicate` 允许相同值使用不同大小写的示例：
 
 <Demo data={TagsInputDemos.isDuplicate} />
 
-## Split chars
+## 分隔字符
 
-By default, `TagsInput` splits values by comma (`,`), you can change this behavior by setting
-`splitChars` prop to an array of strings. All values from `splitChars` cannot be included in the final value.
-Values are also split on paste.
+默认情况下，`TagsInput` 按逗号（`,`）分隔值，你可以通过将 `splitChars` 属性设置为字符串数组来更改此行为。`splitChars` 中的所有值都不会包含在最终值中。粘贴时也会按分隔符拆分。
 
-Example of splitting by `,`, `|` and space:
+按 `,`、`|` 和空格分隔的示例：
 
 <Demo data={TagsInputDemos.splitChars} />
 
-## With suggestions
+## 带建议
 
-`TagsInput` can be used with suggestions, it will render suggestions list under input and allow to select
-suggestions with keyboard or mouse. Note that user is not limited to suggestions, it is still possible to
-enter custom values. If you want to allow values only from suggestions, use [MultiSelect](/core/multi-select) component instead.
+`TagsInput` 可以与建议一起使用，它会在输入框下方渲染建议列表，并允许使用键盘或鼠标选择建议。注意用户不限于建议，仍然可以输入自定义值。如果你希望只允许建议中的值，请改用 [MultiSelect](/core/multi-select) 组件。
 
 <Demo data={TagsInputDemos.data} />
 
@@ -126,21 +112,17 @@ enter custom values. If you want to allow values only from suggestions, use [Mul
 
 <Demo data={TagsInputDemos.search} />
 
-## Sort options
+## 排序选项
 
-By default, options are sorted by their position in the data array. You can change this behavior
-with `filter` function:
+默认情况下，选项按其所在 `data` 数组的位置排序。你可以使用 `filter` 函数更改此行为：
 
 <Demo data={TagsInputDemos.sort} />
 
-## Fuzzy search with fuse.js
+## 使用 fuse.js 进行模糊搜索
 
-You can implement fuzzy search using the [fuse.js](https://fusejs.io/) library to match options
-even with typos or partial matches:
+你可以使用 [fuse.js](https://fusejs.io/) 库实现模糊搜索，即使在输入有错字或部分匹配时也能匹配选项：
 
 <Demo data={TagsInputDemos.fuzzySearch} />
-
-
 
 <ComboboxLargeData component="TagsInput" />
 
@@ -148,41 +130,31 @@ even with typos or partial matches:
 
 ## renderOption
 
-`renderOption` callback allows you to customize option rendering. It is called with option object.
-The function must return a React node.
+`renderOption` 回调允许你自定义选项渲染。它接收选项对象，必须返回一个 React 节点。
 
 <Demo data={TagsInputDemos.renderOption} />
 
-## Pill customization
+## Pill 自定义
 
-`renderPill` callback allows customizing how pills are rendered. It is called with an object containing
-`option` (combobox item), `value` (string), `onRemove` (function) and `disabled`.
-Note that since `TagsInput` allows adding custom values, `option` property might be generated on the fly.
+`renderPill` 回调允许你自定义 pills 的渲染方式。它接收一个包含 `option`（combobox 项）、`value`（字符串）、`onRemove`（函数）和 `disabled` 的对象。注意，由于 `TagsInput` 允许添加自定义值，`option` 属性可能是即时生成的。
 
 <Demo data={TagsInputDemos.renderPill} />
 
-## Reorder pills
+## 重新排序 pills
 
-Set the `withPillsReorder` prop to allow reordering pills. Dropping a pill before or after
-another pill updates the component value accordingly. Reordering is automatically disabled
-when `disabled` or `readOnly` is set.
+设置 `withPillsReorder` 属性以允许重新排序 pills。将 pill 拖到另一个 pill 前后会相应更新组件值。设置 `disabled` 或 `readOnly` 时会自动禁用重新排序。
 
-You can reorder pills with a mouse (drag-and-drop) or keyboard:
+你可以使用鼠标（拖放）或键盘重新排序 pills：
 
-- Pills are not part of the `Tab` order. With focus on the input, press `ArrowLeft` (when the
-  caret is at the start of the input) to move focus to the last pill.
-- `ArrowLeft` and `ArrowRight` move focus between pills (RTL-aware). Pressing `ArrowRight` on
-  the last pill returns focus to the input.
-- `Alt + ArrowLeft` and `Alt + ArrowRight` reorder the focused pill (RTL-aware).
+- Pills 不在 `Tab` 顺序中。当焦点在输入框时，按 `ArrowLeft`（当光标在输入框开头时）可将焦点移到最后一个 pill。
+- `ArrowLeft` 和 `ArrowRight` 在 pills 之间移动焦点（支持 RTL）。在最后一个 pill 上按 `ArrowRight` 可将焦点返回到输入框。
+- `Alt + ArrowLeft` 和 `Alt + ArrowRight` 重新排序当前聚焦的 pill（支持 RTL）。
 
-Focus follows the moved pill so multiple moves can be chained without re-focusing.
+焦点会跟随移动的 pill，因此可以连续进行多次移动而无需重新聚焦。
 
 <Demo data={TagsInputDemos.dragReorder} />
 
-If you use a custom pill renderer with the `renderPill` prop, spread the `reorderProps` from
-the render callback payload onto the focusable pill root element to keep reordering working.
-`reorderProps` carries the `tabIndex`, `data-mantine-pill-index` attribute and the keyboard
-handler that drive keyboard reorder, so it must land on the element the user can focus:
+如果你使用 `renderPill` 属性自定义 pill 渲染，请将渲染回调负载中的 `reorderProps` 展开到可聚焦的 pill 根元素上，以保持重新排序功能正常。`reorderProps` 包含 `tabIndex`、`data-mantine-pill-index` 属性和驱动键盘重新排序的键盘处理器，因此它必须落在用户可聚焦的元素上：
 
 ```tsx
 import { TagsInput } from '@react-ui/ui';
@@ -201,81 +173,69 @@ function Demo() {
 }
 ```
 
-## Scrollable dropdown
+## 可滚动下拉菜单
 
-By default, the options list is wrapped with [ScrollArea.Autosize](/core/scroll-area).
-You can control dropdown max-height with `maxDropdownHeight` prop if you do not change the default settings.
+默认情况下，选项列表使用 [ScrollArea.Autosize](/core/scroll-area) 包裹。如果你不更改默认设置，可以使用 `maxDropdownHeight` 属性控制下拉菜单的最大高度。
 
-If you want to use native scrollbars, set `withScrollArea={false}`. Note that in this case,
-you will need to change dropdown styles with [Styles API](/styles/styles-api).
+如果你想使用原生滚动条，请设置 `withScrollArea={false}`。注意，在这种情况下，你需要使用 [Styles API](/styles/styles-api) 更改下拉菜单样式。
 
 <Demo data={TagsInputDemos.scrollArea} />
 
-## Fit dropdown to viewport height
+## 下拉菜单适配视口高度
 
-Set `floatingHeight="viewport"` to make the dropdown grow to fill the available vertical
-space in the viewport. The `flip` middleware is disabled in this mode – the dropdown
-always opens in the configured direction and is constrained to the viewport edges instead
-of flipping to the other side. Useful when working with large option lists:
+设置 `floatingHeight="viewport"` 可使下拉菜单扩展到视口中可用的垂直空间。此模式下 `flip` 中间件被禁用——下拉菜单始终按配置方向打开，并被限制在视口边缘而不是翻转到另一侧。适用于大量选项列表：
 
 <Demo data={TagsInputDemos.floatingHeight} />
 
-## Group options
+## 分组选项
 
 <Demo data={TagsInputDemos.groups} />
 
-## Disabled options
+## 禁用选项
 
-When option is disabled, it cannot be selected and is ignored in keyboard navigation.
-Note that user can still enter disabled option as a value. If you want to prohibit certain values,
-use controlled component and filter them out in `onChange` function.
+当某个选项被禁用时，它无法被选中，并在键盘导航中被忽略。注意用户仍然可以将禁用选项作为值输入。如果你想禁止某些值，请使用受控组件并在 `onChange` 函数中过滤掉它们。
 
 <Demo data={TagsInputDemos.disabledOptions} />
 
 <ComboboxProps component="TagsInput" />
 
-## Inside Popover
+## 在 Popover 内使用
 
-To use `TagsInput` inside popover, you need to set `withinPortal: false`:
+要在 popover 内使用 `TagsInput`，你需要设置 `withinPortal: false`：
 
 <Demo data={TagsInputDemos.withinPopover} />
 
-## Control dropdown opened state
+## 控制下拉菜单打开状态
 
-You can control dropdown opened state with `dropdownOpened` prop. Additionally,
-you can use `onDropdownClose` and `onDropdownOpen` to listen to dropdown opened state changes.
+你可以使用 `dropdownOpened` 属性控制下拉菜单的打开状态。此外，还可以使用 `onDropdownClose` 和 `onDropdownOpen` 监听下拉菜单打开状态的变化。
 
 <Demo data={TagsInputDemos.dropdownOpened} />
 
-## Dropdown position
+## 下拉菜单位置
 
-By default, the dropdown is displayed below the input if there is enough space; otherwise it is displayed above the input.
-You can change this behavior by setting `position` and `middlewares` props, which are passed down to the
-underlying [Popover](/core/popover) component.
+默认情况下，如果空间足够，下拉菜单显示在输入框下方；否则显示在输入框上方。你可以通过设置 `position` 和 `middlewares` 属性来更改此行为，这些属性会传递给底层的 [Popover](/core/popover) 组件。
 
-Example of dropdown that is always displayed above the input:
+下拉菜单始终显示在输入框上方的示例：
 
 <Demo data={TagsInputDemos.dropdownPosition} />
 
-## Dropdown animation
+## 下拉菜单动画
 
-By default, dropdown animations are disabled. To enable them, you can set `transitionProps`,
-which will be passed down to the underlying [Transition](/core/transition) component.
+默认情况下，下拉菜单动画被禁用。要启用动画，你可以设置 `transitionProps`，它会传递给底层的 [Transition](/core/transition) 组件。
 
 <Demo data={TagsInputDemos.dropdownAnimation} />
 
-## Dropdown width
+## 下拉菜单宽度
 
-To change dropdown width, set `width` prop in `comboboxProps`. By default,
-dropdown width is equal to the input width.
+要更改下拉菜单宽度，请在 `comboboxProps` 中设置 `width` 属性。默认情况下，下拉菜单宽度等于输入框宽度。
 
 <Demo data={TagsInputDemos.dropdownWidth} />
 
-## Dropdown padding
+## 下拉菜单内边距
 
 <Demo data={TagsInputDemos.dropdownPadding} />
 
-## Dropdown shadow
+## 下拉菜单阴影
 
 <Demo data={TagsInputDemos.dropdownShadow} />
 
@@ -283,31 +243,29 @@ dropdown width is equal to the input width.
 
 <Demo data={TagsInputDemos.sections} />
 
-## Input props
+## 输入属性
 
 <InputFeatures component="TagsInput" element="input" />
 
 <Demo data={TagsInputDemos.configurator} />
 
-## Read only
+## 只读
 
-Set `readOnly` to make the input read only. When `readOnly` is set,
-`TagsInput` will not show suggestions and will not call `onChange` function.
+设置 `readOnly` 使输入框只读。设置 `readOnly` 后，`TagsInput` 不会显示建议，也不会调用 `onChange` 函数。
 
 <Demo data={TagsInputDemos.readOnly} />
 
-## Disabled
+## 禁用
 
-Set `disabled` to disable the input. When `disabled` is set,
-user cannot interact with the input and `TagsInput` will not show suggestions.
+设置 `disabled` 禁用输入框。设置 `disabled` 后，用户无法与输入框交互，`TagsInput` 也不会显示建议。
 
 <Demo data={TagsInputDemos.disabled} />
 
-## Error state
+## 错误状态
 
 <Demo data={TagsInputDemos.error} />
 
-## Success state
+## 成功状态
 
 <Demo data={TagsInputDemos.success} />
 
@@ -319,8 +277,7 @@ user cannot interact with the input and `TagsInput` will not show suggestions.
 
 <InputAccessibility component="TagsInput" />
 
-To set `aria-label` on the clear button, use `clearButtonProps`. Note that it is required
-only when `clearable` is set.
+要为清除按钮设置 `aria-label`，请使用 `clearButtonProps`。注意仅在设置 `clearable` 时才需要。
 
 ```tsx
 import { TagsInput } from '@react-ui/ui';

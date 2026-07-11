@@ -6,34 +6,34 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Flex);
 
-## Usage
+## 用法
 
 <Demo data={FlexDemos.configurator} />
 
-## Supported props
+## 支持的属性
 
 <StylePropsTable source={FLEX_STYLE_PROPS_DATA} />
 
-## Responsive props
+## 响应式属性
 
-`Flex` component props can have responsive values the same way as other [style props](/styles/style-props/):
+`Flex` 组件的属性可以像其他 [style props](/styles/style-props/) 一样具有响应式值：
 
 <Demo data={FlexDemos.responsive} />
 
-## Difference from Group and Stack
+## 与 Group 和 Stack 的区别
 
-The `Flex` component is an alternative to [Group](/core/group/) and [Stack](/core/stack/).
-`Flex` is more flexible – it allows creating both horizontal and vertical flexbox layouts, but requires more configuration.
-Unlike [Group](/core/group/) and [Stack](/core/stack/), `Flex` is [polymorphic](/guides/polymorphic/) and supports responsive props.
+`Flex` 组件是 [Group](/core/group/) 和 [Stack](/core/stack/) 的替代方案。
+`Flex` 更灵活——它允许创建水平和垂直 flexbox 布局，但需要更多配置。
+与 [Group](/core/group/) 和 [Stack](/core/stack/) 不同，`Flex` 是[多态组件](/guides/polymorphic/)并支持响应式属性。
 
 <DataTable
   head={['', 'Group', 'Stack', 'Flex']}
   data={[
-    ['Direction', 'horizontal', 'vertical', 'both'],
-    ['Equal width children', '✅', '❌', '❌'],
-    ['flex-wrap support', '✅', '❌', '✅'],
-    ['Responsive flexbox props', '❌', '❌', '✅'],
-    ['Polymorphic component', '❌', '❌', '✅'],
+    ['方向', '水平', '垂直', '两者皆可'],
+    ['等宽子元素', '✅', '❌', '❌'],
+    ['flex-wrap 支持', '✅', '❌', '✅'],
+    ['响应式 flexbox 属性', '❌', '❌', '✅'],
+    ['多态组件', '❌', '❌', '✅'],
   ]}
 />
 

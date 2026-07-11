@@ -4,17 +4,17 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useNetwork);
 
-## Usage
+## 用法
 
-The `use-network` hook returns an object with the current connection status:
+`use-network` Hook 返回一个包含当前连接状态的对象：
 
 <Demo data={UseNetworkDemos.usage} />
 
-## Browser support
+## 浏览器支持
 
-`use-network` uses the experimental `navigator.connection` API. See the [browser compatibility table](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/connection#browser_compatibility).
+`use-network` 使用实验性的 `navigator.connection` API。请查看[浏览器兼容性表](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/connection#browser_compatibility)。
 
-## Definition
+## 类型定义
 
 ```tsx
 
@@ -31,10 +31,10 @@ interface UserNetworkReturnValue {
 function useNetwork(): UserNetworkReturnValue;
 ```
 
-## Exported types
+## 导出类型
 
-The `UserNetworkReturnValue` type is exported from the `@react-ui/hooks` package;
-you can import it in your application:
+`UserNetworkReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UserNetworkReturnValue } from '@react-ui/hooks';

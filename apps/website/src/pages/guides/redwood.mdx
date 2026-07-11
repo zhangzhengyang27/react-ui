@@ -3,24 +3,23 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Redwood);
 
-# Usage with RedwoodJS
+# 在 RedwoodJS 中使用
 
 <GetTemplates type="redwood" />
 
-## Generate new application
+## 创建新应用
 
-Follow the [Redwood getting started guide](https://redwoodjs.com/docs/quick-start) to
-create a new Redwood application:
+按照 [Redwood 入门指南](https://redwoodjs.com/docs/quick-start) 创建新的 Redwood 应用：
 
 ```bash
 yarn create redwood-app my-redwood-project --typescript
 ```
 
-## Installation
+## 安装
 
-**Note that it's recommended to use `yarn` instead of `npm` to install dependencies.**
+**注意，建议使用 `yarn` 而不是 `npm` 安装依赖。**
 
-Open the `web` directory before installing dependencies:
+安装依赖前，先进入 `web` 目录：
 
 ```bash
 cd web
@@ -28,16 +27,16 @@ cd web
 
 <PackagesInstallation />
 
-## PostCSS setup
+## PostCSS 配置
 
-Install PostCSS plugins and [postcss-preset-mantine](/styles/postcss-preset):
+安装 PostCSS 插件和 [postcss-preset-mantine](/styles/postcss-preset)：
 
 <InstallScript
   packages="postcss postcss-preset-mantine postcss-simple-vars"
   dev
 />
 
-Create a `postcss.config.js` file in the `web` directory with the following content:
+在 `web` 目录中创建 `postcss.config.js` 文件，内容如下：
 
 ```js
 module.exports = {
@@ -56,14 +55,13 @@ module.exports = {
 };
 ```
 
-## Setup
+## 配置
 
-Add styles imports, [MantineProvider](/theming/mantine-provider) and [ColorSchemeScript](/theming/color-schemes)
-to the `web/src/App.tsx` file:
+在 `web/src/App.tsx` 文件中添加样式导入、[MantineProvider](/theming/mantine-provider) 和 [ColorSchemeScript](/theming/color-schemes)：
 
 ```tsx
-// Import styles of packages that you've installed.
-// All packages except `@react-ui/hooks` require styles imports
+// 导入你已安装包的样式。
+// 除 `@react-ui/hooks` 外，所有包都需要导入样式
 import '@react-ui/ui/styles.css';
 
 import { FatalErrorBoundary, RedwoodProvider } from '@redwoodjs/web';
@@ -88,7 +86,7 @@ const App = () => (
 export default App;
 ```
 
-All set! Start the development server:
+配置完成！启动开发服务器：
 
 ```bash
 yarn rw dev

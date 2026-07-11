@@ -4,10 +4,10 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.formNested);
 
-## Property paths
+## 属性路径
 
-Most `form` handlers accept a property path as the first argument.
-Property path includes keys/indices of objects/arrays in which the target property is contained:
+大多数 `form` 处理程序接受一个属性路径作为第一个参数。
+属性路径包含目标属性所在的对象/数组的键/索引：
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -33,21 +33,21 @@ const form = useForm({
   },
 });
 
-// Props for input that is controlled by the user object's firstName field
+// 由 user 对象的 firstName 字段控制的输入框的 props
 form.getInputProps('user.firstName');
 
-// Set value of `name` field that is contained in the object at the second position of fruits array:
+// 设置 fruits 数组第二个位置处对象中 `name` 字段的值：
 form.setFieldValue('fruits.1.name', 'Carrot');
 
-// Validate deeply nested field
+// 验证深层嵌套字段
 await form.validateField('deeply.nested.object.0.item');
 ```
 
-## Nested objects
+## 嵌套对象
 
 <Demo data={FormDemos.nested} />
 
-## Set nested object value
+## 设置嵌套对象值
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -62,15 +62,15 @@ const form = useForm({
   },
 });
 
-// You can set values for each field individually
+// 你可以单独设置每个字段的值
 form.setFieldValue('user.name', 'John');
 form.setFieldValue('user.occupation', 'Engineer');
 
-// Or set the entire object
+// 或者设置整个对象
 form.setFieldValue('user', { name: 'Jane', occupation: 'Architect' });
 ```
 
-## Nested object value validation
+## 嵌套对象值验证
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -87,31 +87,31 @@ const form = useForm({
   validate: {
     user: {
       name: (value) =>
-        value.length < 2 ? 'Name is too short' : null,
+        value.length < 2 ? '名字太短' : null,
       occupation: (value) =>
-        value.length < 2 ? 'Occupation is too short' : null,
+        value.length < 2 ? '职业太短' : null,
     },
   },
 });
 
 await form.validate();
-form.errors; // -> { 'user.name': 'Name is too short', 'user.occupation': 'Occupation is too short' }
+form.errors; // -> { 'user.name': '名字太短', 'user.occupation': '职业太短' }
 ```
 
-## Nested arrays
+## 嵌套数组
 
 <Demo data={FormDemos.lists} />
 
-## List handlers
+## 列表处理程序
 
-The `useForm` hook provides the following handlers to manage list state:
+`useForm` Hook 提供以下处理程序来管理列表状态：
 
-- `removeListItem` – removes a list item at the given index
-- `insertListItem` – inserts a list item at the given index (appends item to the end of the list if index is not specified)
-- `reorderListItem` – reorders a list item with the given position at the specified field
-- `replaceListItem` – replaces a list item at the given index with a new value
+- `removeListItem` – 删除给定索引处的列表项
+- `insertListItem` – 在给定索引处插入列表项（如果未指定索引，则追加到列表末尾）
+- `reorderListItem` – 在指定字段处重新排序给定位置的列表项
+- `replaceListItem` – 用新值替换给定索引处的列表项
 
-## List value validation
+## 列表值验证
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -129,22 +129,22 @@ const form = useForm({
     users: {
       name: (value) =>
         value.length < 2
-          ? 'Name should have at least 2 letters'
+          ? '名字应至少有 2 个字母'
           : null,
       age: (value) =>
-        value < 18 ? 'User must be 18 or older' : null,
+        value < 18 ? '用户必须年满 18 岁' : null,
     },
   },
 });
 
-// Validate a list item field
+// 验证列表项字段
 await form.validateField('users.1.name');
 
-// Or validate with all other fields
+// 或与其他字段一起验证
 await form.validate();
 console.log(form.errors);
 // {
-//  'users.0.age': 'User must be 18 or older',
-//  'users.1.name': 'Name should have at least 2 letters'
+//  'users.0.age': '用户必须年满 18 岁',
+//  'users.1.name': '名字应至少有 2 个字母'
 // }
 ```

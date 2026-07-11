@@ -4,21 +4,17 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Spoiler);
 
-## Usage
+## 用法
 
-Use `Spoiler` to hide a long section of content.
-Set the `maxHeight` prop to control the point at which content will be hidden under the spoiler and the show/hide control appears.
-If the content height is less than `maxHeight`, the spoiler will just render children.
+使用 `Spoiler` 隐藏长内容区域。设置 `maxHeight` 属性以控制内容在何处被隐藏在 spoiler 下，并显示显示/隐藏控件。如果内容高度小于 `maxHeight`，spoiler 将只渲染子元素。
 
-`hideLabel` and `showLabel` props are required – they are used as the spoiler toggle button label in the corresponding state.
+`hideLabel` 和 `showLabel` 属性是必需的——它们分别用作 spoiler 切换按钮在隐藏和显示状态下的标签。
 
 <Demo data={SpoilerDemos.usage} />
 
-## Control expanded state
+## 控制展开状态
 
-To control the expanded state, use `expanded` and `onExpandedChange` props. Note that the
-`expanded` prop does not have any effect on spoiler visuals if the content height
-is less than the given `maxHeight`.
+要控制展开状态，请使用 `expanded` 和 `onExpandedChange` 属性。注意，如果内容高度小于给定的 `maxHeight`，`expanded` 属性不会影响 spoiler 的视觉效果。
 
 ```tsx
 import { useState } from 'react';
@@ -40,9 +36,9 @@ function Demo() {
 }
 ```
 
-## Subscribe to expanded state changes
+## 订阅展开状态变化
 
-Use `onExpandedChange` to subscribe to expanded state changes:
+使用 `onExpandedChange` 订阅展开状态变化：
 
 ```tsx
 import { Spoiler } from '@react-ui/ui';
@@ -60,14 +56,13 @@ function Demo() {
 }
 ```
 
-## Transition duration
+## 过渡持续时间
 
-Control the transition duration by setting the `transitionDuration` prop (transition-duration CSS property in ms).
-To disable animations, set `transitionDuration={0}`:
+通过设置 `transitionDuration` 属性（CSS transition-duration，单位为 ms）控制过渡持续时间。要禁用动画，请设置 `transitionDuration={0}`：
 
 <Demo data={SpoilerDemos.transitions} />
 
-## Get control ref
+## 获取控件 ref
 
 ```tsx
 import { useRef } from 'react';
@@ -85,31 +80,31 @@ function Demo() {
 }
 ```
 
-## Accessibility
+## 可访问性
 
-The Spoiler component implements proper ARIA attributes for screen reader support:
+Spoiler 组件实现了适当的 ARIA 属性以支持屏幕阅读器：
 
-- Toggle button has `aria-expanded` indicating the expanded/collapsed state
-- Content region has `role="region"` and is associated with the button via `aria-controls`
-- Keyboard support: Space or Enter key toggles the spoiler when the button is focused
+- 切换按钮具有 `aria-expanded`，指示展开/收起状态
+- 内容区域具有 `role="region"`，并通过 `aria-controls` 与按钮关联
+- 键盘支持：当按钮聚焦时，按 Space 或 Enter 键可切换 spoiler
 
-### Best practices for label text
+### 标签文本最佳实践
 
-Provide descriptive labels for `showLabel` and `hideLabel` props that clearly indicate the action:
+为 `showLabel` 和 `hideLabel` 属性提供能清楚说明操作的描述性标签：
 
 ```tsx
-// Good - clear, descriptive labels
+// 良好 - 清晰、描述性的标签
 <Spoiler showLabel="Show full article" hideLabel="Hide article" />
 <Spoiler showLabel="Expand details" hideLabel="Collapse details" />
 
-// Avoid vague labels
+// 避免模糊的标签
 <Spoiler showLabel="More" hideLabel="Less" />
 <Spoiler showLabel="..." hideLabel="..." />
 ```
 
-### Custom accessibility labels
+### 自定义可访问性标签
 
-If your button labels don't clearly describe the action for screen reader users, use the `showAriaLabel` and `hideAriaLabel` props to provide custom ARIA labels:
+如果你的按钮标签不能清楚地向屏幕阅读器用户描述操作，请使用 `showAriaLabel` 和 `hideAriaLabel` 属性提供自定义 ARIA 标签：
 
 ```tsx
 import { Spoiler } from '@react-ui/ui';

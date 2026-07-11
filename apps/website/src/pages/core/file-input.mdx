@@ -4,22 +4,22 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.FileInput);
 
-## Usage
+## 用法
 
 <InputFeatures component="FileInput" element="input" />
 
 <Demo data={FileInputDemos.usage} />
 
-## Loading state
+## 加载状态
 
-Set `loading` prop to display a loading indicator. By default, the loader is displayed on the right side of the input.
-You can change the position with the `loadingPosition` prop to `'left'` or `'right'`. This is useful for async operations like API calls, searches, or validations:
+设置 `loading` 属性以显示加载指示器。默认情况下，加载器显示在输入框的右侧。
+你可以使用 `loadingPosition` 属性将位置更改为 `'left'` 或 `'right'`。这对于 API 调用、搜索或验证等异步操作非常有用：
 
 <Demo data={FileInputDemos.loading} />
 
-## Controlled
+## 受控模式
 
-When `multiple` is `false`:
+当 `multiple` 为 `false` 时：
 
 ```tsx
 import { useState } from 'react';
@@ -31,7 +31,7 @@ function Demo() {
 }
 ```
 
-When `multiple` is `true`:
+当 `multiple` 为 `true` 时：
 
 ```tsx
 import { useState } from 'react';
@@ -43,13 +43,13 @@ function Demo() {
 }
 ```
 
-## Uncontrolled
+## 非受控模式
 
-`FileInput` can be used with uncontrolled forms the same way as a native `input[type="file"]`.
-Set the `name` attribute to include file input value in `FormData` object on form submission.
-To control the initial value in uncontrolled forms, use the `defaultValue` prop.
+`FileInput` 可以像原生 `input[type="file"]` 一样用于非受控表单。
+设置 `name` 属性以在表单提交时将文件输入值包含在 `FormData` 对象中。
+要在非受控表单中控制初始值，请使用 `defaultValue` 属性。
 
-Example usage of uncontrolled `FileInput` with `FormData`:
+非受控 `FileInput` 与 `FormData` 的示例用法：
 
 ```tsx
 import { FileInput } from '@react-ui/ui';
@@ -71,23 +71,22 @@ function Demo() {
 }
 ```
 
-## Multiple
+## 多选
 
-Set `multiple` to allow the user to pick more than one file:
+设置 `multiple` 以允许用户选择多个文件：
 
 <Demo data={FileInputDemos.multiple} />
 
-## Accept
+## 接受文件类型
 
-Set the `accept` prop to restrict file selection to specific mime types:
+设置 `accept` 属性以将文件选择限制为特定的 mime 类型：
 
 <Demo data={FileInputDemos.accept} />
 
-## Clearable
+## 可清除
 
-Set the `clearable` prop to display a clear button in the right section of the input
-when a file is selected. Note that if you define a custom right section, the clear button
-will not be rendered.
+设置 `clearable` 属性以在选择文件时在输入框的右侧区域显示清除按钮。
+请注意，如果你定义了自定义右侧区域，则不会渲染清除按钮。
 
 <Demo data={FileInputDemos.clearable} />
 
@@ -95,19 +94,19 @@ will not be rendered.
 
 <Demo data={FileInputDemos.clearSectionMode} />
 
-## Custom value component
+## 自定义值组件
 
 <Demo data={FileInputDemos.valueComponent} />
 
-## Error state
+## 错误状态
 
 <Demo data={FileInputDemos.error} />
 
-## Success state
+## 成功状态
 
 <Demo data={FileInputDemos.success} />
 
-## Disabled state
+## 禁用状态
 
 <Demo data={FileInputDemos.disabled} />
 
@@ -123,10 +122,10 @@ will not be rendered.
 
 <InputAccessibility component="FileInput" />
 
-## FileInputProps type
+## FileInputProps 类型
 
-`FileInputProps` type is a generic interface which accepts a single type argument:
-the `multiple` value.
+`FileInputProps` 类型是一个泛型接口，接受单个类型参数：
+`multiple` 值。
 
 ```tsx
 import type { FileInputProps } from '@react-ui/ui';

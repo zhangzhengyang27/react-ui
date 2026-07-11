@@ -4,14 +4,14 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.usePrevious);
 
-## Usage
+## 用法
 
-The `use-previous` hook stores the previous value of a state in a ref.
-It returns `undefined` on the initial render and the previous value of a state after rerender:
+`use-previous` Hook 将状态的先前值存储在 ref 中。
+它在初始渲染时返回 `undefined`，在重新渲染后返回状态的先前值：
 
 <Demo data={UsePreviousDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 function usePrevious<T>(value: T): T | undefined;

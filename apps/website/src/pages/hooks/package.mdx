@@ -8,27 +8,26 @@ export default Layout(MDX_DATA.HooksPackage);
 
 [![npm](https://img.shields.io/npm/dm/@react-ui/hooks)](https://www.npmjs.com/package/@react-ui/hooks)
 
-The [@react-ui/hooks](https://www.npmjs.com/package/@react-ui/hooks) package
-provides more than 70 hooks to build custom components. The `@react-ui/hooks`
-package is used internally in most other `@mantine/*` packages –
-it is required to be installed in your project to use ReactUI components.
+[@react-ui/hooks](https://www.npmjs.com/package/@react-ui/hooks) 包
+提供了 70 多个用于构建自定义组件的 Hook。`@react-ui/hooks`
+包在大多数其他 `@mantine/*` 包内部被使用——
+要使用 ReactUI 组件，你的项目中必须安装它。
 
-## Installation
+## 安装
 
 <InstallScript packages="@react-ui/hooks" />
 
-## Usage
+## 用法
 
-The `@react-ui/hooks` package can be used in any web React application, and state
-management hooks (like [use-pagination](/hooks/use-pagination) or [use-queue](/hooks/use-queue))
-are also compatible with React Native. The package can be used even if you
-do not use ReactUI components or other ReactUI libraries – it is standalone
-and has no dependencies except React.
+`@react-ui/hooks` 包可以在任何 Web React 应用中使用，其中状态管理 Hook
+（如 [use-pagination](/hooks/use-pagination) 或 [use-queue](/hooks/use-queue)）
+也兼容 React Native。即使你不使用 ReactUI 组件或其他 ReactUI 库，
+也可以单独使用该包——它是独立的，除了 React 之外没有其他依赖。
 
-Example of using [use-move](/hooks/use-move) hook to create a custom slider:
+使用 [use-move](/hooks/use-move) Hook 创建自定义滑块的示例：
 
 <Demo data={SliderDemos.customSlider} demoProps={{ defaultExpanded: false }} />
 
-## License
+## 许可证
 
 MIT

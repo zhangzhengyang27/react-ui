@@ -4,32 +4,32 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.RadialBarChart);
 
-## Usage
+## 用法
 
-`RadialBarChart` is based on the [RadialBarChart recharts component](https://recharts.org/en-US/api/RadialBarChart):
+`RadialBarChart` 基于 [RadialBarChart recharts 组件](https://recharts.org/en-US/api/RadialBarChart)：
 
 <Demo data={RadialBarChartDemos.usage} />
 
-## Change color
+## 更改颜色
 
-You can reference theme colors or use any valid CSS color in the `color` property of `data`:
+你可以在 `data` 的 `color` 属性中引用主题颜色或使用任意有效的 CSS 颜色：
 
 <Demo data={RadialBarChartDemos.color} />
 
-## Legend
+## 图例
 
-To show the legend, set the `withLegend` prop:
+要显示图例，设置 `withLegend` 属性：
 
 <Demo data={RadialBarChartDemos.legend} />
 
-## Labels
+## 标签
 
-To show labels, set the `withLabels` prop:
+要显示标签，设置 `withLabels` 属性：
 
 <Demo data={RadialBarChartDemos.labels} />
 
-## Hide tooltip
+## 隐藏提示框
 
-To hide the tooltip, set the `withTooltip={false}` prop:
+要隐藏提示框，设置 `withTooltip={false}` 属性：
 
 <Demo data={RadialBarChartDemos.noTooltip} />

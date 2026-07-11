@@ -4,57 +4,54 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Emotion);
 
-# Usage with Emotion
+# 配合 Emotion 使用
 
-Prior to version 7.0, ReactUI used [Emotion](https://emotion.sh/) as a styling solution.
-It was replaced with [CSS modules](/styles/css-modules/) in version 7.0, but you can still
-use Emotion with ReactUI if you prefer it over CSS modules.
+在 7.0 版本之前，ReactUI 使用 [Emotion](https://emotion.sh/) 作为样式解决方案。
+它在 7.0 版本中被 [CSS modules](/styles/css-modules/) 取代，但如果你更喜欢 Emotion，
+仍然可以将其与 ReactUI 一起使用。
 
-Note that the `createStyles` function, `sx` and `styles` props work differently from the same
-features in previous versions. If you are planning to upgrade from an older version, refer to
-the [GitHub releases](https://github.com/react-ui-org/react-ui/releases) for migration information.
+注意，`createStyles` 函数、`sx` 和 `styles` props 的工作方式与旧版本中的同名功能不同。
+如果你计划从旧版本升级，请参考 [GitHub releases](https://github.com/react-ui-org/react-ui/releases) 中的迁移信息。
 
-The `@react-ui/emotion` package is compatible with `@react-ui/ui` 7.9.0 and higher. Before
-installing, make sure that you are using the latest version of all `@react-ui/*` packages.
+`@react-ui/emotion` 包兼容 `@react-ui/ui` 7.9.0 及更高版本。在安装之前，
+请确保你使用的所有 `@react-ui/*` 包都是最新版本。
 
-## Caveats and support
+## 注意事项与支持
 
-[Emotion](https://emotion.sh/) is a runtime CSS-in-JS library – styles are generated
-and injected into the DOM at runtime. This approach has some limitations:
+[Emotion](https://emotion.sh/) 是一个运行时 CSS-in-JS 库——样式在运行时生成并注入到 DOM 中。
+这种方式有一些限制：
 
-- **Limited server-side rendering support** – modern frameworks like Next.js with app router
-  do not fully support Emotion or require additional configuration.
-- **Runtime overhead** – styles are generated and injected at runtime, which can lead to
-  performance issues on pages with many components.
-- **Additional bundle size** – your bundle will include `@emotion/react` (21.2kB minified),
-  `@react-ui/emotion` (~2kb minified) and all styles that you use in your components.
+- **服务端渲染支持有限** – 现代框架（如使用 app router 的 Next.js）不完全支持 Emotion，或需要额外配置。
+- **运行时开销** – 样式在运行时生成和注入，在包含大量组件的页面上可能导致性能问题。
+- **额外的打包体积** – 你的打包文件将包含 `@emotion/react`（21.2kB minified）、
+  `@react-ui/emotion`（~2kb minified）以及你在组件中使用的所有样式。
 
-The `@react-ui/emotion` package can be used with the following frameworks:
+`@react-ui/emotion` 包可用于以下框架：
 
-- **Vite** and **CRA** with basic setup
-- **Next.js with pages router** with additional setup for server-side rendering provided by the package
-- **Next.js with app router** with additional setup for server-side rendering provided by Emotion
-- Any other framework that does not require server-side rendering with basic setup
+- **Vite** 和 **CRA**，基础配置即可
+- **Next.js pages router**，包提供了额外的服务端渲染配置
+- **Next.js app router**，Emotion 提供了额外的服务端渲染配置
+- 任何其他不需要服务端渲染的框架，基础配置即可
 
-There is no official support (the package can probably be used but it's not tested and documentation is not provided) for:
+以下框架没有官方支持（该包可能可以使用，但未经测试且不提供文档）：
 
 - **React Router**
 - **Gatsby**
 - **Redwood**
-- Any other framework that has server-side rendering
+- 任何其他具有服务端渲染的框架
 
-Note that Emotion is not recommended for new projects. If you are starting a new project with ReactUI,
-consider using [CSS modules](/styles/css-modules/) instead.
+注意，Emotion 不推荐用于新项目。如果你要用 ReactUI 开始一个新项目，
+建议改用 [CSS modules](/styles/css-modules/)。
 
-## Usage with Vite
+## 配合 Vite 使用
 
-[View example repository with full setup](https://github.com/react-ui-org/vite-min-template/tree/emotion)
+[查看完整配置的示例仓库](https://github.com/react-ui-org/vite-min-template/tree/emotion)
 
-Install dependencies:
+安装依赖：
 
 <InstallScript packages="@react-ui/emotion @emotion/react @emotion/cache @emotion/serialize @emotion/utils" />
 
-Create `emotion.d.ts` file in `src` directory to add types support for `sx` and `styles` props:
+在 `src` 目录下创建 `emotion.d.ts` 文件，为 `sx` 和 `styles` props 添加类型支持：
 
 ```tsx
 import '@react-ui/ui';
@@ -69,7 +66,7 @@ declare module '@react-ui/ui' {
 }
 ```
 
-Wrap your application with `MantineEmotionProvider` and add `emotionTransform` to `MantineProvider`:
+用 `MantineEmotionProvider` 包裹你的应用，并将 `emotionTransform` 添加到 `MantineProvider`：
 
 ```tsx
 import '@react-ui/ui/styles.css';
@@ -89,7 +86,7 @@ export default function App() {
 }
 ```
 
-Done! You can now use `sx`, `styles` props and `createStyles` in your application:
+完成！现在你可以在你的应用中使用 `sx`、`styles` props 和 `createStyles`：
 
 ```tsx
 import { Box } from '@react-ui/ui';
@@ -116,17 +113,17 @@ function Demo() {
 }
 ```
 
-## Usage with Next.js pages router
+## 配合 Next.js pages router 使用
 
-[View example repository with full setup](https://github.com/react-ui-org/next-pages-min-template/tree/emotion)
+[查看完整配置的示例仓库](https://github.com/react-ui-org/next-pages-min-template/tree/emotion)
 
-Install dependencies:
+安装依赖：
 
 <InstallScript packages="@react-ui/emotion @emotion/react @emotion/cache @emotion/serialize @emotion/utils @emotion/server" />
 
-Create `emotion` folder with `cache.ts` and `emotion.d.ts` files.
+创建 `emotion` 文件夹，并添加 `cache.ts` 和 `emotion.d.ts` 文件。
 
-`cache.ts` file:
+`cache.ts` 文件：
 
 ```tsx
 import createCache from '@emotion/cache';
@@ -134,7 +131,7 @@ import createCache from '@emotion/cache';
 export const emotionCache = createCache({ key: 'css' });
 ```
 
-`emotion.d.ts` file:
+`emotion.d.ts` 文件：
 
 ```tsx
 import '@react-ui/ui';
@@ -149,7 +146,7 @@ declare module '@react-ui/ui' {
 }
 ```
 
-Add the following content to `pages/_document.tsx` file:
+将以下内容添加到你的 `pages/_document.tsx` 文件中：
 
 ```tsx
 import NextDocument, {
@@ -186,7 +183,7 @@ Document.getInitialProps = createGetInitialProps(
 );
 ```
 
-Add `MantineEmotionProvider` and `emotionTransform` to `pages/_app.tsx` file:
+将 `MantineEmotionProvider` 和 `emotionTransform` 添加到你的 `pages/_app.tsx` 文件中：
 
 ```tsx
 import '@react-ui/ui/styles.css';
@@ -218,7 +215,7 @@ export default function App({ Component, pageProps }: any) {
 }
 ```
 
-Done! You can now use `sx`, `styles` props and `createStyles` in your application:
+完成！现在你可以在你的应用中使用 `sx`、`styles` props 和 `createStyles`：
 
 ```tsx
 import { Box } from '@react-ui/ui';
@@ -245,15 +242,15 @@ function Demo() {
 }
 ```
 
-## Usage with Next.js app router
+## 配合 Next.js app router 使用
 
-[View example repository with full setup](https://github.com/react-ui-org/next-app-min-template/tree/emotion)
+[查看完整配置的示例仓库](https://github.com/react-ui-org/next-app-min-template/tree/emotion)
 
-Install dependencies:
+安装依赖：
 
 <InstallScript packages="@react-ui/emotion @emotion/react @emotion/cache @emotion/serialize @emotion/utils @emotion/server" />
 
-Create `app/emotion.d.ts` file with the following content:
+创建 `app/emotion.d.ts` 文件，内容如下：
 
 ```tsx
 import '@react-ui/ui';
@@ -268,7 +265,7 @@ declare module '@react-ui/ui' {
 }
 ```
 
-Create `app/EmotionRootStyleRegistry.tsx` file with the following content:
+创建 `app/EmotionRootStyleRegistry.tsx` 文件，内容如下：
 
 ```tsx
 'use client';
@@ -324,8 +321,8 @@ export function RootStyleRegistry({
 }
 ```
 
-Add `RootStyleRegistry`, `MantineEmotionProvider` and `emotionTransform` to `app/layout.tsx`.
-It should look something like this:
+将 `RootStyleRegistry`、`MantineEmotionProvider` 和 `emotionTransform` 添加到你的 `app/layout.tsx` 中。
+它看起来应该像这样：
 
 ```tsx
 import '@react-ui/ui/styles.css';
@@ -367,8 +364,8 @@ export default function RootLayout({ children }: { children: any }) {
 }
 ```
 
-Done! You can now use `sx`, `styles` props and `createStyles` in your application.
-Note that `'use client'` is required in most components that use `sx`, `styles` or `createStyles`:
+完成！现在你可以在你的应用中使用 `sx`、`styles` props 和 `createStyles`。
+注意，大多数使用 `sx`、`styles` 或 `createStyles` 的组件都需要 `'use client'`：
 
 ```tsx
 'use client';
@@ -399,9 +396,9 @@ export default function HomePage() {
 
 ## sx prop
 
-With the setup above you can use `sx` prop in all ReactUI components.
-`sx` prop allows adding styles to the root element of the component.
-It accepts either a styles object or a function that receives theme, utilities and returns styles object:
+完成上述配置后，你可以在所有 ReactUI 组件中使用 `sx` prop。
+`sx` prop 允许为组件的根元素添加样式。
+它接受一个样式对象，或一个接收 theme 和 utilities 并返回样式对象的函数：
 
 ```tsx
 import { Box, Button } from '@react-ui/ui';
@@ -446,11 +443,10 @@ function Demo() {
 }
 ```
 
-### mergeSx function
+### mergeSx 函数
 
-You can use the `mergeSx` function to merge multiple `sx` props into one. This
-can be useful for merging `sx` prop provided to a custom component with its
-own `sx`, like so:
+你可以使用 `mergeSx` 函数将多个 `sx` props 合并为一个。这在将传递给自定义组件的 `sx` prop
+与其自身的 `sx` 合并时非常有用，例如：
 
 ```tsx
 import { Box } from '@react-ui/ui'
@@ -476,10 +472,8 @@ function App() {
 
 ## styles prop
 
-`styles` prop works similar to `sx` prop, but it allows adding styles to all
-nested elements of the components that are specified in the Styles API table.
-`styles` prop accepts either an object of styles objects or a function that
-receives theme, component props, utilities and returns styles object:
+`styles` prop 的工作方式与 `sx` prop 类似，但它允许为 Styles API 表格中指定的组件所有嵌套元素添加样式。
+`styles` prop 接受一个样式对象的对象，或一个接收 theme、组件 props 和 utilities 并返回样式对象的函数：
 
 ```tsx
 import { Button } from '@react-ui/ui';
@@ -498,7 +492,6 @@ function Demo() {
             backgroundColor: theme.colors[color || 'blue'][8],
           },
         },
-
         label: {
           [u.light]: {
             border: `1px solid ${theme.black}`,
@@ -515,11 +508,10 @@ function Demo() {
 }
 ```
 
-## styles in theme
+## theme 中的 styles
 
-You can add styles to ReactUI components with [Styles API](/styles/styles-api/) using
-Emotion with `styles` prop. Note that to avoid types collisions, you should not use
-`Component.extend` method and just pass component configuration object directly.
+你可以使用 [Styles API](/styles/styles-api/) 和 `styles` prop 配合 Emotion 为 ReactUI 组件添加样式。
+注意，为了避免类型冲突，你不应使用 `Component.extend` 方法，而是直接传递组件配置对象。
 
 ```tsx
 import { createTheme, MantineTheme, TextProps } from '@react-ui/ui';
@@ -546,63 +538,61 @@ export const theme = createTheme({
 
 ## createStyles
 
-`createStyles` function accepts a function to generate styles with [Emotion](https://emotion.sh/).
-The function receives 3 arguments that will be described more detailed in the following demos:
+`createStyles` 函数接受一个使用 [Emotion](https://emotion.sh/) 生成样式的函数。
+该函数接收 3 个参数，将在下面的 demo 中详细介绍：
 
-- `theme` – [ReactUI theme object](/theming/theme-object)
-- `params` – object with additional parameters that can be passed to the function in `useStyles` hook
-- `u` - object with utilities to generate selectors
+- `theme` – [ReactUI theme 对象](/theming/theme-object)
+- `params` – 包含额外参数的对象，可以通过 `useStyles` hook 传递给函数
+- `u` - 用于生成选择器的 utilities 对象
 
-`createStyles` function returns `useStyles` hook that should be called in the component
-that uses given styles:
+`createStyles` 函数返回 `useStyles` hook，应在使用该样式的组件中调用：
 
 <Demo data={EmotionDemos.usage} />
 
-### Pseudo-classes
+### 伪类
 
-You can add pseudo-classes the same way as in any css-preprocessor like Sass:
+你可以像使用 Sass 等 css 预处理器一样添加伪类：
 
 <Demo data={EmotionDemos.pseudo} />
 
-### Styles parameters
+### 样式参数
 
-You can receive any amount of parameters as second argument of `createStyles` function,
-latter you will need to pass those parameters as argument to `useStyles` hook:
+你可以接收任意数量的参数作为 `createStyles` 函数的第二个参数，
+之后你需要将这些参数作为 `useStyles` hook 的参数传入：
 
 <Demo data={EmotionDemos.parameters} />
 
-### Composition and nested selectors
+### 组合与嵌套选择器
 
-Since `createStyles` produces scoped class names you will need to create a reference to selector
-in order to get static selector. Use `u.ref` function to assign static selectors:
+由于 `createStyles` 生成的是作用域 class 名称，你需要创建选择器引用才能获得静态选择器。
+使用 `u.ref` 函数来分配静态选择器：
 
 <Demo data={EmotionDemos.composition} />
 
-### Classes merging (cx function)
+### class 合并（cx 函数）
 
-To merge class names use `cx` function, it has the same api as [clsx](https://www.npmjs.com/package/clsx) package.
+要合并 class 名称，请使用 `cx` 函数，它的 API 与 [clsx](https://www.npmjs.com/package/clsx) 包相同。
 
-**!important:** Do not use external libraries like [classnames](https://www.npmjs.com/package/classnames)
-or [clsx](https://www.npmjs.com/package/clsx) with class names created with `createStyles` function
-as it will produce styles collisions.
+**!important:** 不要将 [classnames](https://www.npmjs.com/package/classnames)
+或 [clsx](https://www.npmjs.com/package/clsx) 等外部库与 `createStyles` 函数创建的 class 名称一起使用，
+否则会导致样式冲突。
 
 <Demo data={EmotionDemos.cx} />
 
-### Media queries
+### 媒体查询
 
-You can use nested media queries like in Sass. Within query body you can use `theme.breakpoints`
-defined with [MantineProvider](/theming/mantine-provider) or just static values:
+你可以像使用 Sass 一样使用嵌套媒体查询。在查询体内，你可以使用在 [MantineProvider](/theming/mantine-provider) 中定义的 `theme.breakpoints`，或仅使用静态值：
 
 <Demo data={EmotionDemos.media} />
 
-### Keyframes
+### 关键帧
 
 <Demo data={EmotionDemos.keyframes} />
 
-## Utilities
+## 工具函数
 
-`sx`, `styles` and `createStyles` callback functions receive `u` object with utilities
-to generate selectors. `u` object contains the following properties:
+`sx`、`styles` 和 `createStyles` 的回调函数会接收一个 `u` 对象，其中包含用于生成选择器的 utilities。
+`u` 对象包含以下属性：
 
 ```tsx
 const u = {
@@ -620,7 +610,7 @@ const u = {
 };
 ```
 
-All utilities except `ref` can be used as selectors in styles object:
+除 `ref` 外，所有 utilities 都可以在样式对象中作为选择器使用：
 
 ```tsx
 const styles = {

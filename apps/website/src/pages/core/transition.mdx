@@ -4,20 +4,13 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Transition);
 
-## Usage
+## 用法
 
-The Transition component is designed to animate the presence of elements with
-fixed or absolute positioning, such as dropdowns, modals, or tooltips. Other ReactUI
-components (like [Modal](/core/modal) and [Tooltip](/core/tooltip)) use Transition internally
-for their animations.
+Transition 组件用于为固定或绝对定位的元素添加出现/消失动画，例如下拉菜单、模态框或工具提示。其他 ReactUI 组件（如 [Modal](/core/modal) 和 [Tooltip](/core/tooltip)）内部使用 Transition 来实现动画。
 
-Note that the Transition component is not intended to be a comprehensive solution for all
-animations. It is a simple utility for animating the presence of elements
-with fixed or absolute positioning. If you need to implement more complex animations,
-consider using [Motion](https://motion.dev/), [React Spring](https://www.react-spring.dev/),
-or other dedicated animation libraries.
+注意，Transition 组件并不打算作为所有动画的全面解决方案。它是一个简单的工具，用于为固定或绝对定位的元素添加出现/消失动画。如果你需要实现更复杂的动画，请考虑使用 [Motion](https://motion.dev/)、[React Spring](https://www.react-spring.dev/) 或其他专用动画库。
 
-Example usage of the Transition component:
+Transition 组件的示例用法：
 
 ```tsx
 import { Transition } from '@react-ui/ui';
@@ -31,13 +24,13 @@ function Demo({ opened }: { opened: boolean }) {
 }
 ```
 
-## Premade transitions
+## 预设过渡
 
-ReactUI includes several premade transitions:
+ReactUI 包含几个预设过渡：
 
 <Demo data={TooltipDemos.transitions} />
 
-To use one of them, set the `transition` property to one of these values:
+要使用其中一个，请将 `transition` 属性设置为以下值之一：
 
 ```tsx
 import { Transition } from '@react-ui/ui';
@@ -56,28 +49,26 @@ function Demo({ opened }: { opened: boolean }) {
 }
 ```
 
-## Custom transitions
+## 自定义过渡
 
-You can create your own transition. `transition` is an object with 4 properties:
+你可以创建自己的过渡。`transition` 是一个包含 4 个属性的对象：
 
-- `in` – styles for mounted state
-- `out` – styles for unmounted state
-- `common` (optional) – styles for both mounted and unmounted states
-- `transitionProperty` – properties which participate in the transition
+- `in` – 挂载状态的样式
+- `out` – 卸载状态的样式
+- `common`（可选）– 挂载和卸载状态的共同样式
+- `transitionProperty` – 参与过渡的属性
 
 <Demo data={TransitionDemos.custom} />
 
-## Enter and exit delay
+## 进入和退出延迟
 
-Use the `enterDelay` and `exitDelay` props to delay the transition start. Values are in milliseconds:
+使用 `enterDelay` 和 `exitDelay` 属性延迟过渡开始。值为毫秒：
 
 <Demo data={TransitionDemos.delay} />
 
-## Reduced motion
+## 减少动画
 
-Transition respects the `prefers-reduced-motion` media query and your theme's
-`respectReducedMotion` setting. When reduced motion is preferred, all
-transitions complete instantly:
+Transition 尊重 `prefers-reduced-motion` 媒体查询和你主题中的 `respectReducedMotion` 设置。当偏好减少动画时，所有过渡会立即完成：
 
 ```tsx
 import { createTheme, MantineProvider, Transition } from '@react-ui/ui';
@@ -97,17 +88,16 @@ function Demo() {
 }
 ```
 
-This improves accessibility for users with vestibular disorders who may
-experience motion sickness from animations.
+这提高了对前庭障碍用户的可访问性，他们可能会因动画而感到晕动症。
 
-## Lifecycle callbacks
+## 生命周期回调
 
-Use lifecycle callbacks to perform actions at different stages of the transition:
+使用生命周期回调在过渡的不同阶段执行操作：
 
-- `onEnter` - Called when enter transition starts
-- `onEntered` - Called when enter transition completes
-- `onExit` - Called when exit transition starts
-- `onExited` - Called when exit transition completes
+- `onEnter` - 进入过渡开始时调用
+- `onEntered` - 进入过渡完成时调用
+- `onExit` - 退出过渡开始时调用
+- `onExited` - 退出过渡完成时调用
 
 ```tsx
 import { Transition } from '@react-ui/ui';
@@ -129,10 +119,9 @@ function Demo() {
 }
 ```
 
-## Keep mounted
+## 保持挂载
 
-By default, the element is unmounted from the DOM when the transition is
-complete. Use `keepMounted` to keep the element mounted with `display: none`:
+默认情况下，过渡完成后元素会从 DOM 中卸载。使用 `keepMounted` 可使元素保持挂载状态并带有 `display: none`：
 
 ```tsx
 import { Transition } from '@react-ui/ui';
@@ -146,7 +135,7 @@ function Demo() {
 }
 ```
 
-This is useful when you want to:
-- Preserve element state during hide/show
-- Avoid remounting overhead
-- Maintain focus/scroll position
+这在以下情况下很有用：
+- 在隐藏/显示期间保留元素状态
+- 避免重新挂载开销
+- 保持焦点/滚动位置

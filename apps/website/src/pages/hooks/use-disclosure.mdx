@@ -3,11 +3,10 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useDisclosure);
 
-## Usage
+## 用法
 
-The `use-disclosure` hook manages boolean state. It provides `open`, `close`, and `toggle` handlers
-and accepts optional `onOpen` and `onClose` callbacks. You can use it to manage controlled modals,
-popovers, and other similar components:
+`use-disclosure` Hook 用于管理布尔状态。它提供 `open`、`close` 和 `toggle` 处理函数，
+并支持可选的 `onOpen` 和 `onClose` 回调。你可以用它来控制 Modal、Popover 等类似组件：
 
 ```tsx
 import { useDisclosure } from '@react-ui/hooks';
@@ -15,20 +14,20 @@ import { useDisclosure } from '@react-ui/hooks';
 function Demo() {
   const [opened, handlers] = useDisclosure(false);
 
-  // Sets opened to true
+  // 将 opened 设为 true
   handlers.open();
 
-  // Sets opened to false
+  // 将 opened 设为 false
   handlers.close();
 
-  // Sets opened to true if it was false and vice versa
+  // 如果 opened 为 false 则设为 true，反之亦然
   handlers.toggle();
 }
 ```
 
-## Callbacks
+## 回调函数
 
-The `onOpen` and `onClose` callbacks execute when the opened state changes:
+`onOpen` 和 `onClose` 回调在 `opened` 状态变化时执行：
 
 ```tsx
 import { useDisclosure } from '@react-ui/hooks';
@@ -39,24 +38,24 @@ function Demo() {
     onClose: () => console.log('Closed'),
   });
 
-  // Calls `onOpen` callback and sets opened to true
+  // 调用 `onOpen` 回调并将 opened 设为 true
   handlers.open();
 
-  // Does nothing, opened is already true
+  // 不执行任何操作，opened 已经是 true
   handlers.open();
 
-  // Calls `onClose` callback and sets opened to false
+  // 调用 `onClose` 回调并将 opened 设为 false
   handlers.close();
 
-  // Does nothing, opened is already false
+  // 不执行任何操作，opened 已经是 false
   handlers.close();
 
-  // Calls `onOpen` or `onClose` depending on the current state
+  // 根据当前状态调用 `onOpen` 或 `onClose`
   handlers.toggle();
 }
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseDisclosureOptions {
@@ -79,10 +78,10 @@ function useDisclosure(
 ): UseDisclosureReturnValue
 ```
 
-## Exported types
+## 导出类型
 
-`UseDisclosureOptions`, `UseDisclosureHandlers` and `UseDisclosureReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseDisclosureOptions`、`UseDisclosureHandlers` 和 `UseDisclosureReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseDisclosureOptions, UseDisclosureHandlers, UseDisclosureReturnValue } from '@react-ui/hooks';

@@ -4,41 +4,32 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Menubar);
 
-## Usage
+## 用法
 
-`Menubar` is a desktop-application style menu bar: a horizontal row of top-level menu triggers
-(File, Edit, View, …) where each trigger opens a dropdown. Arrow keys move between the top-level
-menus, and once one menu is opened, moving to a sibling opens it immediately. `Menubar` follows the
-[WAI-ARIA menubar pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/).
+`Menubar` 是桌面应用风格的菜单栏：一排顶级菜单触发器（File、Edit、View…），每个触发器都会打开一个下拉菜单。方向键可以在顶级菜单之间移动，一旦某个菜单打开，移动到同级菜单会立即打开它。`Menubar` 遵循 [WAI-ARIA menubar 模式](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/)。
 
-`Menubar` is built on top of [Menu](/core/menu) – each `Menubar.Menu` is a separate `Menu`
-instance, and the dropdown content is composed from the usual `Menu.Item`, `Menu.Divider`,
-`Menu.Label`, `Menu.Sub`, `Menu.CheckboxItem` and `Menu.RadioItem` components.
+`Menubar` 基于 [Menu](/core/menu) 构建——每个 `Menubar.Menu` 都是一个独立的 `Menu` 实例，下拉内容由常用的 `Menu.Item`、`Menu.Divider`、`Menu.Label`、`Menu.Sub`、`Menu.CheckboxItem` 和 `Menu.RadioItem` 组件组合而成。
 
 <Demo data={MenubarDemos.usage} />
 
-## How it differs from Menu
+## 与 Menu 的区别
 
-[Menu](/core/menu) is a single disclosure widget – one target that toggles one dropdown.
-`Menubar` coordinates multiple menus:
+[Menu](/core/menu) 是一个单独的披露控件——一个目标元素切换一个下拉菜单。`Menubar` 则协调多个菜单：
 
-- The root renders `role="menubar"` and `Menubar.Target` renders `role="menuitem"` triggers with
-  `aria-haspopup="menu"`.
-- Only one menu in the bar is open at a time. Moving to a sibling while a menu is open switches
-  which menu is open.
-- The whole bar is a single tab stop (roving `tabindex`) – `Tab` moves focus into and out of the
-  menu bar as a single unit, arrow keys move between triggers.
+- 根元素渲染 `role="menubar"`，`Menubar.Target` 渲染 `role="menuitem"` 触发器，并带有 `aria-haspopup="menu"`。
+- 菜单栏中同一时间只有一个菜单处于打开状态。当某个菜单打开时，悬停到同级目标会切换到对应的菜单。
+- 整个菜单栏是一个 tab 停靠点（roving `tabindex`）——按 `Tab` 键将焦点作为一个整体移入或移出菜单栏，方向键在触发器之间移动焦点。
 
-If you need a single dropdown attached to one button, use [Menu](/core/menu) instead.
+如果你只需要一个按钮附加单个下拉菜单，请改用 [Menu](/core/menu)。
 
-## Composition
+## 组合
 
-`Menubar` consists of the following components:
+`Menubar` 由以下组件组成：
 
-- `Menubar` – root element, owns the open/active state of all menus
-- `Menubar.Menu` – wraps a single menu, renders a `Menu` instance under the hood
-- `Menubar.Target` – top-level trigger button (`role="menuitem"`)
-- `Menubar.Dropdown` – dropdown container, accepts the same children as `Menu.Dropdown`
+- `Menubar` – 根元素，管理所有菜单的打开/活动状态
+- `Menubar.Menu` – 包裹单个菜单，内部渲染一个 `Menu` 实例
+- `Menubar.Target` – 顶级触发按钮（`role="menuitem"`）
+- `Menubar.Dropdown` – 下拉容器，接受的子元素与 `Menu.Dropdown` 相同
 
 ```tsx
 import { Menu, Menubar } from '@react-ui/ui';
@@ -66,53 +57,42 @@ function Demo() {
 }
 ```
 
-## Trigger and loop
+## 触发与循环
 
-`trigger` controls how a menu is opened when none of the menus is currently open:
+`trigger` 控制当前没有任何菜单打开时如何打开菜单：
 
-- `click` (default) – a menu opens when its target is clicked. Once any menu is open, hovering a
-  sibling target switches to it immediately. This matches the behavior of native desktop
-  application menu bars.
-- `hover` – a menu opens as soon as its target is hovered, even when all menus are closed.
+- `click`（默认）—— 点击目标时打开菜单。一旦任意菜单打开，悬停到同级目标会立即切换。这与原生桌面应用菜单栏行为一致。
+- `hover` – 只要悬停到目标就会打开菜单，即使所有菜单都关闭。
 
-With `trigger="hover"`, a menu opens as soon as its target is hovered and closes when the pointer
-leaves the bar:
+使用 `trigger="hover"` 时，悬停目标会立即打开菜单，指针离开菜单栏时关闭：
 
 <Demo data={MenubarDemos.hover} />
 
-`loop` (default `true`) controls whether arrow key navigation wraps around from the last menu to
-the first and vice versa.
+`loop`（默认 `true`）控制使用方向键导航时，是否从最后一个菜单绕回到第一个菜单，反之亦然。
 
-## Submenus
+## 子菜单
 
-Use `Menu.Sub` inside `Menubar.Dropdown` to create nested submenus. `ArrowRight` opens a submenu
-and moves focus to its first item, `ArrowLeft` closes it and returns focus to the parent item.
-See the [Menu submenus documentation](/core/menu/#submenus) for more information.
+在 `Menubar.Dropdown` 内使用 `Menu.Sub` 创建嵌套子菜单。`ArrowRight` 打开子菜单并将焦点移到第一项，`ArrowLeft` 关闭子菜单并将焦点返回父项。更多信息请参阅 [Menu 子菜单文档](/core/menu/#submenus)。
 
-The [usage demo](#usage) above includes a submenu in the File menu.
+上方的[用法示例](#用法)在 File 菜单中包含了子菜单。
 
-## Checkbox and radio items
+## 复选框与单选项
 
-`Menubar.Dropdown` supports the same selectable items as `Menu`: `Menu.CheckboxItem` for toggles
-and `Menu.RadioGroup` with `Menu.RadioItem` for single-choice options. By default, clicking a
-checkbox or radio item does not close the menu.
+`Menubar.Dropdown` 支持与 `Menu` 相同的选择项：`Menu.CheckboxItem` 用于切换选项，`Menu.RadioGroup` 配合 `Menu.RadioItem` 用于单选。默认情况下，点击复选框或单选项不会关闭菜单。
 
 <Demo data={MenubarDemos.selectable} />
 
-## Controlled
+## 受控模式
 
-Set `openIndex` and `onOpenChange` to control which menu is open. `openIndex` is the zero-based
-index of the opened `Menubar.Menu` (in DOM order) or `null` when all menus are closed:
+设置 `openIndex` 和 `onOpenChange` 来控制哪个菜单处于打开状态。`openIndex` 是打开的 `Menubar.Menu` 的零基索引（按 DOM 顺序），当所有菜单都关闭时为 `null`：
 
 <Demo data={MenubarDemos.controlled} />
 
-For uncontrolled usage with an initially open menu, use the `defaultOpenIndex` prop instead.
+对于非受控用法并希望初始有一个菜单打开，请改用 `defaultOpenIndex` 属性。
 
-## Position
+## 位置
 
-By default, dropdowns are positioned at `bottom-start` relative to their target. Change the
-`position` prop to use a different [Floating UI position](/core/popover/#position-and-placement)
-for all menus in the bar:
+默认情况下，下拉菜单相对于目标定位在 `bottom-start`。更改 `position` 属性可为菜单栏中的所有菜单使用不同的 [Floating UI 位置](/core/popover/#position-and-placement)：
 
 ```tsx
 import { Menubar } from '@react-ui/ui';
@@ -126,25 +106,22 @@ function Demo() {
 }
 ```
 
-Individual menus accept the same props as [Menu](/core/menu) – pass them to `Menubar.Menu` to
-override settings for a single menu, for example `position`, `withinPortal`, `closeOnItemClick`,
-`shadow`, `width` or `transitionProps`.
+单个菜单接受与 [Menu](/core/menu) 相同的属性——将它们传给 `Menubar.Menu` 以覆盖单个菜单的设置，例如 `position`、`withinPortal`、`closeOnItemClick`、`shadow`、`width` 或 `transitionProps`。
 
-## Keyboard interactions
+## 键盘交互
 
-`Menubar` implements the keyboard interactions defined by the WAI-ARIA menubar pattern. When RTL
-direction is set, `ArrowLeft` and `ArrowRight` are swapped.
+`Menubar` 实现了 WAI-ARIA menubar 模式定义的键盘交互。设置 RTL 方向时，`ArrowLeft` 和 `ArrowRight` 会互换。
 
 <KeyboardEventsTable
   data={[
-    { key: 'ArrowRight', description: 'Move to the next top-level menu, switch the open menu if one is open' },
-    { key: 'ArrowLeft', description: 'Move to the previous top-level menu, switch the open menu if one is open' },
-    { key: 'ArrowDown / Enter / Space', description: 'Open the focused menu and move focus to its first item' },
-    { key: 'ArrowUp', description: 'Open the focused menu and move focus to its last item' },
-    { key: 'Escape', description: 'Close the open menu and return focus to its target' },
-    { key: 'Home / End', description: 'Move to the first / last top-level menu' },
-    { key: 'Character keys', description: 'Move focus to the next top-level menu that starts with the typed character' },
-    { key: 'Tab', description: 'Move focus into or out of the menu bar (single tab stop)' },
+    { key: 'ArrowRight', description: '移到下一个顶级菜单，若有菜单打开则切换打开的菜单' },
+    { key: 'ArrowLeft', description: '移到上一个顶级菜单，若有菜单打开则切换打开的菜单' },
+    { key: 'ArrowDown / Enter / Space', description: '打开获得焦点的菜单并将焦点移到第一项' },
+    { key: 'ArrowUp', description: '打开获得焦点的菜单并将焦点移到最后一项' },
+    { key: 'Escape', description: '关闭打开的菜单并将焦点返回到其目标' },
+    { key: 'Home / End', description: '移到第一个/最后一个顶级菜单' },
+    { key: 'Character keys', description: '将焦点移到下一个以输入字符开头的顶级菜单' },
+    { key: 'Tab', description: '将焦点移入或移出菜单栏（单个 tab 停靠点）' },
   ]}
 />
 
@@ -152,14 +129,12 @@ direction is set, `ArrowLeft` and `ArrowRight` are swapped.
 
 <Demo data={MenubarDemos.stylesApi} />
 
-## Accessibility
+## 可访问性
 
-`Menubar` follows the [WAI-ARIA menubar pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/):
+`Menubar` 遵循 [WAI-ARIA menubar 模式](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/)：
 
-- The root element has `role="menubar"` and `aria-orientation="horizontal"`.
-- Each `Menubar.Target` has `role="menuitem"`, `aria-haspopup="menu"` and `aria-expanded`.
-- The menu bar is a single tab stop – only the active trigger is included in the tab sequence,
-  arrow keys move focus between the triggers.
+- 根元素具有 `role="menubar"` 和 `aria-orientation="horizontal"`。
+- 每个 `Menubar.Target` 具有 `role="menuitem"`、`aria-haspopup="menu"` 和 `aria-expanded`。
+- 菜单栏是单个 tab 停靠点——只有活动触发器包含在 tab 顺序中，方向键在触发器之间移动焦点。
 
-The labels you pass to `Menubar.Target` are used as accessible names for the triggers, so make
-sure they describe the menu content.
+传给 `Menubar.Target` 的文本将作为触发器的可访问名称，因此请确保它们能描述菜单内容。

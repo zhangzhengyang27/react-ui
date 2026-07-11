@@ -4,14 +4,13 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.TimeGrid);
 
-## Usage
+## 用法
 
-Use the `TimeGrid` component to capture a time value from the user with a
-predefined set of time slots:
+使用 `TimeGrid` 组件，通过预定义的时间槽让用户选择时间：
 
 <Demo data={TimeGridDemos.usage} />
 
-## Controlled
+## 受控
 
 ```tsx
 import { useState } from 'react';
@@ -25,9 +24,8 @@ function Demo() {
 
 ## data prop
 
-The `data` prop accepts an array of time values in 24-hour format. Values
-must be unique. To generate a time range, use the `getTimeRange` function
-exported from the `@react-ui/ui` package:
+`data` prop 接受 24 小时制的时间值数组。值必须唯一。
+要生成时间范围，请使用从 `@react-ui/ui` 包导出的 `getTimeRange` 函数：
 
 ```tsx
 import { TimeGrid, getTimeRange } from '@react-ui/ui';
@@ -37,39 +35,37 @@ function WithArray() {
 }
 
 function WithRange() {
-  // In this example we generate time range from 10:00 to 14:00 with 1 hour step:
+  // 本示例生成从 10:00 到 14:00、步长为 1 小时的时间范围：
   // ['10:00', '11:00', '12:00', '13:00', '14:00']
   return <TimeGrid data={getTimeRange({ from: '10:00', to: '14:00', step: '01:00' })} />
 }
 ```
 
-## Min and max time
+## 最小和最大时间
 
-Set the `minTime` and `maxTime` props to limit the available time range.
-Both props accept time values in 24-hour format:
+设置 `minTime` 和 `maxTime` prop 来限制可选时间范围。
+两个 prop 都接受 24 小时制时间值：
 
 <Demo data={TimeGridDemos.minMax} />
 
-## Disable specific controls
+## 禁用特定控件
 
-You can disable specific time values by providing an array of disabled
-values to the `disableTime` prop:
+你可以通过向 `disableTime` prop 提供一组禁用值来禁用特定时间：
 
 <Demo data={TimeGridDemos.disableTime} />
 
-## Allow deselect
+## 允许取消选择
 
-Set the `allowDeselect` prop to allow deselecting the time value by clicking on
-the control with the selected value:
+设置 `allowDeselect` prop，允许用户点击已选中控件来取消选择时间：
 
 <Demo data={TimeGridDemos.allowDeselect} />
 
-## Change AM/PM labels
+## 更改 AM/PM 标签
 
 <Demo data={TimeGridDemos.amPmLabels} />
 
-## Disabled
+## 禁用状态
 
-Set the `disabled` prop to disable all controls:
+设置 `disabled` prop 以禁用所有控件：
 
 <Demo data={TimeGridDemos.disabled} />

@@ -3,11 +3,12 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useMergedRef);
 
-## Usage
+## 用法
 
-The `use-merged-ref` hook accepts any number of refs and returns a function that should be passed to the `ref` prop.
-Use this hook when you need to use more than one ref on a single DOM node, for example,
-when you want to use [use-click-outside](/hooks/use-click-outside/) and [use-focus-trap](/hooks/use-focus-trap/) hooks and also get a ref for yourself:
+`use-merged-ref` Hook 接受任意数量的 ref，并返回一个应传递给 `ref` 属性的函数。
+当你需要在单个 DOM 节点上使用多个 ref 时，请使用此 Hook，例如，
+当你想同时使用 [use-click-outside](/hooks/use-click-outside/) 和 [use-focus-trap](/hooks/use-focus-trap/) Hook，
+并且自己也想获取一个 ref 时：
 
 ```tsx
 import { useRef } from 'react';
@@ -31,12 +32,11 @@ function Demo() {
 }
 ```
 
-## mergeRefs function
+## mergeRefs 函数
 
-The `use-merged-ref` hook memoizes refs with the `useCallback` hook, but in some cases
-memoizing is not a valid strategy, for example, when you are working with a list
-of dynamic components React will complain that a different number of hooks was called
-across two renders. To fix that issue, use the `mergeRefs` function instead:
+`use-merged-ref` Hook 使用 `useCallback` 对 ref 进行记忆化，但在某些情况下记忆化不是有效策略，
+例如，当你处理动态组件列表时，React 会抱怨两次渲染之间调用的 Hook 数量不同。
+要解决这个问题，请改用 `mergeRefs` 函数：
 
 ```tsx
 import { useRef } from 'react';
@@ -50,15 +50,14 @@ function Demo() {
 }
 ```
 
-`mergeRefs` works the same way as `use-merged-ref`, but does not use hooks internally.
-Use it only when you cannot use `use-merged-ref`. Note that `mergeRefs` will not work
-correctly with [use-focus-trap](/hooks/use-focus-trap/) hook, you are required to
-use `use-merged-ref` with it.
+`mergeRefs` 的工作方式与 `use-merged-ref` 相同，但内部不使用 Hook。
+只有在你无法使用 `use-merged-ref` 时才使用它。注意，`mergeRefs` 无法与 [use-focus-trap](/hooks/use-focus-trap/) Hook 正确配合，
+你必须使用 `use-merged-ref`。
 
-## assignRef function
+## assignRef 函数
 
-`assignRef` function can be used to assign refs that are not memoized with `useCallback`.
-It is usually used to assign refs that do not reference elements:
+`assignRef` 函数可用于分配未使用 `useCallback` 记忆化的 ref。
+它通常用于分配不引用元素的 ref：
 
 ```tsx
 import { useState } from 'react';
@@ -90,7 +89,7 @@ function Demo({ handlersRef }: DemoProps) {
 }
 ```
 
-## Set node type
+## 设置节点类型
 
 ```tsx
 import { useMergedRef } from '@react-ui/hooks';
@@ -98,7 +97,7 @@ import { useMergedRef } from '@react-ui/hooks';
 const ref = useMergedRef<HTMLDivElement>();
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 function useMergedRef<T = any>(

@@ -4,21 +4,21 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.DataList);
 
-## Usage
+## 用法
 
-`DataList` component renders a description list (`dl`) element with label-value pairs.
-It uses semantic `dt` and `dd` HTML elements.
+`DataList` 组件渲染一个描述列表（`dl`）元素，包含标签-值对。
+它使用语义化的 `dt` 和 `dd` HTML 元素。
 
 <Demo data={DataListDemos.usage} />
 
-## With divider
+## 使用分隔线
 
-Set `withDivider` prop to add a border between items:
+设置 `withDivider` 属性以在项之间添加边框：
 
 <Demo data={DataListDemos.divider} />
 
-## Vertical orientation
+## 垂直方向
 
-Set `orientation="vertical"` to stack label on top of value within each item:
+设置 `orientation="vertical"` 以在每个项内将标签堆叠在值上方：
 
 <Demo data={DataListDemos.vertical} />

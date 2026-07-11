@@ -3,77 +3,74 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.ExtensionsPackage);
 
-# ReactUI extensions
+# ReactUI 扩展
 
-Extensions are packages that provide additional functionality like
-new components, hooks, or other features. They are built on top of
-`@react-ui/hooks` and `@react-ui/ui` packages.
+扩展是提供额外功能（如新组件、Hook 或其他特性）的包。
+它们构建在 `@react-ui/hooks` 和 `@react-ui/ui` 包之上。
 
-## Official extensions
+## 官方扩展
 
-Official extensions are built by the maintainers of ReactUI. These extensions have the `@mantine/` scope
-in their package names, for example `@react-ui/ui` or `@react-ui/ui`.
+官方扩展由 ReactUI 维护者构建。这些扩展的包名具有 `@mantine/` 作用域，
+例如 `@react-ui/ui` 或 `@react-ui/ui`。
 
-Official extensions list:
+官方扩展列表：
 
-- [@react-ui/ui](/dates/getting-started) – date and time pickers, calendars, other date-related components
-- [@react-ui/ui](/charts/getting-started) – charts and data visualization components based on recharts
-- [@react-ui/ui](/x/notifications) – notifications system
-- [@react-ui/ui](/x/code-highlight) – code highlighting component used on ReactUI websites
-- [@react-ui/ui](/x/spotlight) – control center (`Ctrl + K` search bar), can be used for search
-- [@react-ui/ui](/x/carousel) – carousel component based on embla-carousel
-- [@react-ui/ui](/x/dropzone) – captures files with drag and drop, based on react-dropzone
-- [@react-ui/ui](/x/modals) – modals manager
-- [@react-ui/ui](/x/tiptap) – rich text editor based on tiptap
-- [@react-ui/ui](/x/nprogress) – navigation progress component
+- [@react-ui/ui](/dates/getting-started) – 日期和时间选择器、日历以及其他日期相关组件
+- [@react-ui/ui](/charts/getting-started) – 基于 recharts 的图表和数据可视化组件
+- [@react-ui/ui](/x/notifications) – 通知系统
+- [@react-ui/ui](/x/code-highlight) – ReactUI 网站上使用的代码高亮组件
+- [@react-ui/ui](/x/spotlight) – 控制中心（`Ctrl + K` 搜索栏），可用于搜索
+- [@react-ui/ui](/x/carousel) – 基于 embla-carousel 的轮播组件
+- [@react-ui/ui](/x/dropzone) – 基于 react-dropzone 的拖拽文件上传组件
+- [@react-ui/ui](/x/modals) – 弹窗管理器
+- [@react-ui/ui](/x/tiptap) – 基于 tiptap 的富文本编辑器
+- [@react-ui/ui](/x/nprogress) – 导航进度组件
 
-## Community extensions
+## 社区扩展
 
-Community extensions are built by the community. They are maintained
-by community members and are updated independently from the core
-ReactUI packages and extensions.
+社区扩展由社区成员构建和维护。它们独立于核心 ReactUI 包和扩展进行更新。
 
-Community extensions list:
+社区扩展列表：
 
-- [BlockNote](https://www.blocknotejs.org/) – block-based rich text editor
-- [ContextMenu](https://icflorescu.github.io/mantine-contextmenu/) – context menu component
-- [DataTable](https://icflorescu.github.io/mantine-datatable/) – data table component without dependencies
-- [MantineReactTable](https://v2.mantine-react-table.com/) – data table component based on TanStack table package
-- [Audio](https://gfazioli.github.io/mantine-audio/) – audio player with waveform visualization and live spectrum analyzer, built on Web Audio API
-- [BorderAnimate](https://gfazioli.github.io/mantine-border-animate/) – border animation styles (beam, glow, more...)
-- [Book](https://gfazioli.github.io/mantine-book/) – realistic iBooks-style book with draggable page curl – grab any point of the edge to turn pages, flat DOM fold or true 3D WebGL curl
-- [Clock](https://gfazioli.github.io/mantine-clock/) – analog clock component
-- [Compare](https://gfazioli.github.io/mantine-compare/) – image comparison slider component
-- [DepthSelect](https://gfazioli.github.io/mantine-depth-select/) – 3D stack select component inspired by macOS Time Machine
-- [Flip](https://gfazioli.github.io/mantine-flip/) – flip animation component
-- [JsonTree](https://gfazioli.github.io/mantine-json-tree/) – interactive JSON tree viewer with syntax highlighting
-- [Led](https://gfazioli.github.io/mantine-led/) – LED indicator component for status feedback
-- [LensSelect](https://gfazioli.github.io/mantine-lens-select/) – fisheye/lens magnification select with count mode and macOS Dock effect
-- [ListViewTable](https://gfazioli.github.io/mantine-list-view-table/) – Finder-style list view table with column reordering and resizing
-- [Marquee](https://gfazioli.github.io/mantine-marquee/) – marquee component
-- [Mask](https://gfazioli.github.io/mantine-mask/) – cursor-follow spotlight mask component
-- [Onboarding](https://gfazioli.github.io/mantine-onboarding-tour/) – onboarding / tour component
-- [Parallax](https://gfazioli.github.io/mantine-parallax/) – parallax component
-- [Picker](https://gfazioli.github.io/mantine-picker/) – animated picker for color, date, emoji, and other pickers
-- [QrCode](https://gfazioli.github.io/mantine-qr-code/) – customizable QR code component
-- [Reflection](https://gfazioli.github.io/mantine-reflection/) – reflection effect component
-- [RingsProgress](https://gfazioli.github.io/mantine-rings-progress/) – rings progress indicator component
-- [Scene](https://gfazioli.github.io/mantine-scene/) – decorative background component with gradients, dots, glow, and noise
-- [SelectStepper](https://gfazioli.github.io/mantine-select-stepper/) – option cycling stepper component
-- [Spinner](https://gfazioli.github.io/mantine-spinner/) – SVG-based loading spinner with multiple animation variants
-- [SplitPane](https://gfazioli.github.io/mantine-split-pane/) – resizable split pane component
-- [TextAnimate](https://gfazioli.github.io/mantine-text-animate/) – text animation component
-- [Video](https://gfazioli.github.io/mantine-video/) – ReactUI-native video player with compound API, headless useVideo hook, Picture-in-Picture, live timeline scrubbing, and an asBackground mode for hero sections
-- [Window](https://gfazioli.github.io/mantine-window/) – window component with drag and resize functionalities
-- [ReactUI Form Builder](https://pradip-v2.github.io/mantine-form-builder/) – form builder and viewer components
-- [ReactUI Choropleth Map](https://maetes.github.io/mantine-choropleth/) - Choropleth Map component for GeoJson
-- [Lightbox](https://rilrom.github.io/mantine-bites/lightbox/) - Full-screen image lightbox built on top of @react-ui/ui
+- [BlockNote](https://www.blocknotejs.org/) – 块级富文本编辑器
+- [ContextMenu](https://icflorescu.github.io/mantine-contextmenu/) – 右键菜单组件
+- [DataTable](https://icflorescu.github.io/mantine-datatable/) – 无依赖的数据表格组件
+- [MantineReactTable](https://v2.mantine-react-table.com/) – 基于 TanStack table 的数据表格组件
+- [Audio](https://gfazioli.github.io/mantine-audio/) – 音频播放器，支持波形可视化和实时频谱分析，基于 Web Audio API
+- [BorderAnimate](https://gfazioli.github.io/mantine-border-animate/) – 边框动画样式（光束、发光等）
+- [Book](https://gfazioli.github.io/mantine-book/) – 逼真的 iBooks 风格书籍，支持可拖拽翻页——可从边缘任意位置抓取翻页，支持平面 DOM 折叠或真实 3D WebGL 卷曲效果
+- [Clock](https://gfazioli.github.io/mantine-clock/) – 模拟时钟组件
+- [Compare](https://gfazioli.github.io/mantine-compare/) – 图片对比滑块组件
+- [DepthSelect](https://gfazioli.github.io/mantine-depth-select/) – 受 macOS Time Machine 启发的 3D 堆叠选择组件
+- [Flip](https://gfazioli.github.io/mantine-flip/) – 翻转动画组件
+- [JsonTree](https://gfazioli.github.io/mantine-json-tree/) – 支持语法高亮的交互式 JSON 树查看器
+- [Led](https://gfazioli.github.io/mantine-led/) – 用于状态反馈的 LED 指示器组件
+- [LensSelect](https://gfazioli.github.io/mantine-lens-select/) – 鱼眼/放大镜选择组件，支持计数模式和 macOS Dock 效果
+- [ListViewTable](https://gfazioli.github.io/mantine-list-view-table/) – Finder 风格的列表视图表格，支持列拖拽和重设大小
+- [Marquee](https://gfazioli.github.io/mantine-marquee/) – 跑马灯组件
+- [Mask](https://gfazioli.github.io/mantine-mask/) – 光标跟随的聚光灯遮罩组件
+- [Onboarding](https://gfazioli.github.io/mantine-onboarding-tour/) – 引导/教程组件
+- [Parallax](https://gfazioli.github.io/mantine-parallax/) – 视差组件
+- [Picker](https://gfazioli.github.io/mantine-picker/) – 用于颜色、日期、表情等的动画选择器
+- [QrCode](https://gfazioli.github.io/mantine-qr-code/) – 可自定义的二维码组件
+- [Reflection](https://gfazioli.github.io/mantine-reflection/) – 反射效果组件
+- [RingsProgress](https://gfazioli.github.io/mantine-rings-progress/) – 环形进度指示器组件
+- [Scene](https://gfazioli.github.io/mantine-scene/) – 装饰性背景组件，支持渐变、圆点、发光和噪点
+- [SelectStepper](https://gfazioli.github.io/mantine-select-stepper/) – 选项循环步进器组件
+- [Spinner](https://gfazioli.github.io/mantine-spinner/) – 基于 SVG 的加载动画组件，支持多种动画变体
+- [SplitPane](https://gfazioli.github.io/mantine-split-pane/) – 可调整大小的分割面板组件
+- [TextAnimate](https://gfazioli.github.io/mantine-text-animate/) – 文本动画组件
+- [Video](https://gfazioli.github.io/mantine-video/) – 原生 ReactUI 视频播放器，支持复合 API、headless useVideo hook、画中画、实时时间线拖动以及用于 hero 区域的 asBackground 模式
+- [Window](https://gfazioli.github.io/mantine-window/) – 支持拖拽和调整大小的窗口组件
+- [ReactUI Form Builder](https://pradip-v2.github.io/mantine-form-builder/) – 表单构建器和查看器组件
+- [ReactUI Choropleth Map](https://maetes.github.io/mantine-choropleth/) – 用于 GeoJson 的等值区域地图组件
+- [Lightbox](https://rilrom.github.io/mantine-bites/lightbox/) – 基于 @react-ui/ui 的全屏图片灯箱
 
-## Create your own extension
+## 创建你自己的扩展
 
-You are welcome to create your own extension and share it with the community
-in the list above. To submit a new extension to be featured on this page:
+欢迎创建你自己的扩展并与社区分享，以上列表中展示。
+要提交新的扩展以在此页面展示：
 
-- Create and publish an extension on npm. You can choose any name for your package, for example `reactui-oklch-color-picker` or `@xiaoye/reactui-emoji-picker`.
-- If you are not sure how to get started with extension development, use the [extension template](https://github.com/xiaoye/react-ui-extension-template). It provides a full development environment with tests, documentation, and examples.
-- Submit a pull request to the [ReactUI repository](https://github.com/xiaoye/react-ui) with a link to your extension and a short description to be featured on this page.
+- 在 npm 上创建并发布扩展。你可以为包选择任意名称，例如 `reactui-oklch-color-picker` 或 `@xiaoye/reactui-emoji-picker`。
+- 如果你不确定如何开始开发扩展，可以使用[扩展模板](https://github.com/xiaoye/react-ui-extension-template)。它提供了完整的开发环境，包括测试、文档和示例。
+- 向 [ReactUI 仓库](https://github.com/xiaoye/react-ui) 提交一个 pull request，附上扩展链接和简短描述，以便在此页面展示。

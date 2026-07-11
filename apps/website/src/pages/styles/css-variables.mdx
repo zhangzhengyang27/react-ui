@@ -5,65 +5,62 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.CssVariables);
 
-# ReactUI CSS variables
+# ReactUI CSS 变量
 
-[MantineProvider](/theming/mantine-provider) exposes all ReactUI CSS variables based on the given [theme](/theming/theme-object).
-You can use these variables in [CSS](/styles/css-modules) files, [style prop](/styles/style) or any other styles.
-Note that not all values are documented on this page, you can find full list of variables on [this page](/styles/css-variables-list).
+[MantineProvider](/theming/mantine-provider) 会根据给定的 [theme](/theming/theme-object) 暴露所有 ReactUI CSS 变量。
+你可以在 [CSS](/styles/css-modules) 文件、[style prop](/styles/style) 或任何其他样式中使用这些变量。
+注意，本页并未记录所有值，完整变量列表请参见 [本页](/styles/css-variables-list)。
 
-## Typography variables
+## 字体排版变量
 
-Typography variables control the font family, font size, line height, font weight, and other text-related properties
-of all ReactUI components.
+字体排版变量控制所有 ReactUI 组件的 font-family、font-size、line-height、font-weight 和其他文本相关属性。
 
-### Font family
+### 字体
 
-The following CSS variables are used to assign font families to all ReactUI components:
+以下 CSS 变量用于为所有 ReactUI 组件设置字体：
 
 <CssVariablesGroup
   data={[
     {
       variable: '--mantine-font-family',
       description:
-        'Controls the font-family property of most ReactUI components',
-      defaultValue: 'system sans-serif fonts',
+        '控制大多数 ReactUI 组件的 font-family 属性',
+      defaultValue: '系统无衬线字体',
     },
     {
       variable: '--mantine-font-family-monospace',
-      description: 'Controls the font-family property of code blocks',
-      defaultValue: 'system monospace fonts',
+      description: '控制代码块的 font-family 属性',
+      defaultValue: '系统等宽字体',
     },
     {
       variable: '--mantine-font-family-headings',
-      description: 'Controls the font-family property of headings',
-      defaultValue: 'system sans-serif fonts',
+      description: '控制标题的 font-family 属性',
+      defaultValue: '系统无衬线字体',
     },
   ]}
 />
 
-You can control these variables in the [theme](/theming/theme-object). Note that if
-`theme.headings.fontFamily` is not set, the `--mantine-font-family-headings` value
-will be the same as `--mantine-font-family`.
+你可以在 [theme](/theming/theme-object) 中控制这些变量。注意，如果
+`theme.headings.fontFamily` 未设置，`--mantine-font-family-headings` 的值将与 `--mantine-font-family` 相同。
 
 ```tsx
 import { createTheme } from '@react-ui/ui';
 
 const theme = createTheme({
-  // Controls --mantine-font-family
+  // 控制 --mantine-font-family
   fontFamily: 'Arial, sans-serif',
 
-  // Controls --mantine-font-family-monospace
+  // 控制 --mantine-font-family-monospace
   fontFamilyMonospace: 'Courier New, monospace',
 
   headings: {
-    // Controls --mantine-font-family-headings
+    // 控制 --mantine-font-family-headings
     fontFamily: 'Georgia, serif',
   },
 });
 ```
 
-If you want to use system fonts as a fallback for custom fonts, you can reference `DEFAULT_THEME`
-value instead of defining it manually:
+如果你想将系统字体作为自定义字体的 fallback，可以引用 `DEFAULT_THEME` 的值，而无需手动定义：
 
 ```tsx
 import { createTheme, DEFAULT_THEME } from '@react-ui/ui';
@@ -73,7 +70,7 @@ const theme = createTheme({
 });
 ```
 
-You can reference font family variables in your CSS:
+你可以在 CSS 中引用字体变量：
 
 ```scss
 .text {
@@ -89,11 +86,11 @@ You can reference font family variables in your CSS:
 }
 ```
 
-And in the [ff style prop](/styles/style-props):
+也可以在 [ff style prop](/styles/style-props) 中使用：
 
-- `ff="text"` will use `--mantine-font-family` variable
-- `ff="monospace"` will use `--mantine-font-family-monospace` variable
-- `ff="heading"` will use `--mantine-font-family-headings` variable
+- `ff="text"` 将使用 `--mantine-font-family` 变量
+- `ff="monospace"` 将使用 `--mantine-font-family-monospace` 变量
+- `ff="heading"` 将使用 `--mantine-font-family-headings` 变量
 
 ```tsx
 import { Text } from '@react-ui/ui';
@@ -101,16 +98,15 @@ import { Text } from '@react-ui/ui';
 function Demo() {
   return (
     <Text ff="monospace">
-      This text uses the --mantine-font-family-monospace variable
+      这段文字使用了 --mantine-font-family-monospace 变量
     </Text>
   );
 }
 ```
 
-### Font size
+### 字体大小
 
-Font size variables are used in most ReactUI components to control text size. The
-variable that is chosen depends on the component and its `size` prop.
+字体大小变量用于大多数 ReactUI 组件来控制文本大小。具体使用哪个变量取决于组件及其 `size` prop。
 
 <CssVariablesGroup
   data={[
@@ -137,7 +133,7 @@ variable that is chosen depends on the component and its `size` prop.
   ]}
 />
 
-You can reference font size variables in CSS:
+你可以在 CSS 中引用字体大小变量：
 
 ```scss
 .demo {
@@ -145,7 +141,7 @@ You can reference font size variables in CSS:
 }
 ```
 
-And in the [fz style prop](/styles/style-props):
+也可以在 [fz style prop](/styles/style-props) 中使用：
 
 ```tsx
 import { Text } from '@react-ui/ui';
@@ -153,13 +149,13 @@ import { Text } from '@react-ui/ui';
 function Demo() {
   return (
     <Text fz="xl">
-      This text uses --mantine-font-size-xl variable
+      这段文字使用了 --mantine-font-size-xl 变量
     </Text>
   );
 }
 ```
 
-To define custom font sizes, can use `theme.fontSizes` property:
+要定义自定义字体大小，可以使用 `theme.fontSizes` 属性：
 
 ```tsx
 import { createTheme } from '@react-ui/ui';
@@ -175,14 +171,13 @@ const theme = createTheme({
 });
 ```
 
-Note that `theme.fontSizes` object is merged with the `DEFAULT_THEME.fontSizes` –
-it is not required to define all values, only those that you want to change.
+注意，`theme.fontSizes` 对象会与 `DEFAULT_THEME.fontSizes` 合并——
+你不需要定义所有值，只需要定义你想修改的值。
 
 ```tsx
 import { createTheme } from '@react-ui/ui';
 
-// Changes only xs font size,
-// other values will be taken from the DEFAULT_THEME
+// 只修改 xs 字体大小，其他值将从 DEFAULT_THEME 获取
 const theme = createTheme({
   fontSizes: {
     xs: '0.5rem',
@@ -190,8 +185,8 @@ const theme = createTheme({
 });
 ```
 
-You can add any number of additional font sizes to the `theme.fontSizes` object.
-These values will be defined as CSS variables in `--mantine-font-size-{size}` format:
+你可以向 `theme.fontSizes` 对象添加任意数量的额外字体大小。
+这些值将以 `--mantine-font-size-{size}` 格式定义为 CSS 变量：
 
 ```tsx
 import { createTheme } from '@react-ui/ui';
@@ -204,7 +199,7 @@ const theme = createTheme({
 });
 ```
 
-After defining `theme.fontSizes`, you can reference these variables in your CSS:
+定义 `theme.fontSizes` 后，你可以在 CSS 中引用这些变量：
 
 ```scss
 .demo {
@@ -212,17 +207,17 @@ After defining `theme.fontSizes`, you can reference these variables in your CSS:
 }
 ```
 
-> **Case conversion**
+> **大小写转换**
 >
-> Case conversion (camelCase to kebab-case) is not automatically applied to custom font sizes.
-> If you define `theme.fontSizes` with camelCase keys, you need to reference them in camelCase format.
-> For example, if you define `{ customSize: '1rem' }`, you need to reference it as `--mantine-font-size-customSize`.
+> 自定义字体大小不会自动应用 camelCase 到 kebab-case 的转换。
+> 如果你使用 camelCase 键定义 `theme.fontSizes`，你需要以 camelCase 格式引用它们。
+> 例如，如果你定义了 `{ customSize: '1rem' }`，需要以 `--mantine-font-size-customSize` 引用。
 
-### Line height
+### 行高
 
-Line height variables are used in [Text](/core/text) component. In other components,
-line-height is either calculated based on font size or set to `--mantine-line-height`,
-which is an alias for `--mantine-line-height-md`.
+行高变量用于 [Text](/core/text) 组件。在其他组件中，
+行高要么根据字体大小计算，要么设置为 `--mantine-line-height`，
+它是 `--mantine-line-height-md` 的别名。
 
 <CssVariablesGroup
   data={[
@@ -253,7 +248,7 @@ which is an alias for `--mantine-line-height-md`.
   ]}
 />
 
-You can reference line height variables in your CSS:
+你可以在 CSS 中引用行高变量：
 
 ```scss
 .demo {
@@ -261,7 +256,7 @@ You can reference line height variables in your CSS:
 }
 ```
 
-And in [lh style prop](/styles/style-props):
+也可以在 [lh style prop](/styles/style-props) 中使用：
 
 ```tsx
 import { Text } from '@react-ui/ui';
@@ -269,13 +264,13 @@ import { Text } from '@react-ui/ui';
 function Demo() {
   return (
     <Text lh="xl">
-      This text uses --mantine-line-height-xl variable
+      这段文字使用了 --mantine-line-height-xl 变量
     </Text>
   );
 }
 ```
 
-To define custom line heights, you can use `theme.lineHeights` property:
+要定义自定义行高，可以使用 `theme.lineHeights` 属性：
 
 ```tsx
 import { createTheme } from '@react-ui/ui';
@@ -291,26 +286,25 @@ const theme = createTheme({
 });
 ```
 
-### Headings
+### 标题
 
-`theme.headings` controls font-size, line-height, font-weight and text-wrap CSS properties
-of headings in [Title](/core/title) and [Typography](/core/typography) components.
+`theme.headings` 控制 [Title](/core/title) 和 [Typography](/core/typography) 组件中标题的 font-size、line-height、font-weight 和 text-wrap CSS 属性。
 
 <CssVariablesGroup
   data={[
-    { group: 'General variables' },
+    { group: '通用变量' },
     {
       variable: '--mantine-heading-font-weight',
       description:
-        'Controls font-weight property of all headings if not overridden',
+        '控制所有标题的 font-weight 属性，除非被覆盖',
       defaultValue: '700',
     },
     {
       variable: '--mantine-heading-text-wrap',
-      description: 'Controls text-wrap property of all headings',
+      description: '控制所有标题的 text-wrap 属性',
       defaultValue: 'wrap',
     },
-    { group: 'h1 heading' },
+    { group: 'h1 标题' },
     {
       variable: '--mantine-h1-font-size',
       defaultValue: '2.125rem (34px)',
@@ -323,7 +317,7 @@ of headings in [Title](/core/title) and [Typography](/core/typography) component
       variable: '--mantine-h1-font-weight',
       defaultValue: '700',
     },
-    { group: 'h2 heading' },
+    { group: 'h2 标题' },
     {
       variable: '--mantine-h2-font-size',
       defaultValue: '1.625rem (26px)',
@@ -336,7 +330,7 @@ of headings in [Title](/core/title) and [Typography](/core/typography) component
       variable: '--mantine-h2-font-weight',
       defaultValue: '700',
     },
-    { group: 'h3 heading' },
+    { group: 'h3 标题' },
     {
       variable: '--mantine-h3-font-size',
       defaultValue: '1.375rem (22px)',
@@ -349,7 +343,7 @@ of headings in [Title](/core/title) and [Typography](/core/typography) component
       variable: '--mantine-h3-font-weight',
       defaultValue: '700',
     },
-    { group: 'h4 heading' },
+    { group: 'h4 标题' },
     {
       variable: '--mantine-h4-font-size',
       defaultValue: '1.125rem (18px)',
@@ -362,7 +356,7 @@ of headings in [Title](/core/title) and [Typography](/core/typography) component
       variable: '--mantine-h4-font-weight',
       defaultValue: '700',
     },
-    { group: 'h5 heading' },
+    { group: 'h5 标题' },
     {
       variable: '--mantine-h5-font-size',
       defaultValue: '1rem (16px)',
@@ -375,7 +369,7 @@ of headings in [Title](/core/title) and [Typography](/core/typography) component
       variable: '--mantine-h5-font-weight',
       defaultValue: '700',
     },
-    { group: 'h6 heading' },
+    { group: 'h6 标题' },
     {
       variable: '--mantine-h6-font-size',
       defaultValue: '0.875rem (14px)',
@@ -391,8 +385,7 @@ of headings in [Title](/core/title) and [Typography](/core/typography) component
   ]}
 />
 
-These variables are used in [Title](/core/title) component, `order` prop
-controls which heading level to use. For example, `order={3}` Title will use:
+这些变量用于 [Title](/core/title) 组件，`order` prop 控制使用哪个标题级别。例如，`order={3}` 的 Title 将使用：
 
 - `--mantine-h3-font-size`
 - `--mantine-h3-line-height`
@@ -400,7 +393,7 @@ controls which heading level to use. For example, `order={3}` Title will use:
 
 <Demo data={TitleDemos.usage} />
 
-You can reference heading variables in your CSS:
+你可以在 CSS 中引用标题变量：
 
 ```scss
 .h1 {
@@ -410,7 +403,7 @@ You can reference heading variables in your CSS:
 }
 ```
 
-And in [fz and lh style props](/styles/style-props):
+也可以在 [fz 和 lh style props](/styles/style-props) 中使用：
 
 ```tsx
 import { Box } from '@react-ui/ui';
@@ -418,13 +411,13 @@ import { Box } from '@react-ui/ui';
 function Demo() {
   return (
     <Box fz="h1" lh="h1">
-      This text uses --mantine-h1-* variables
+      这段文字使用了 --mantine-h1-* 变量
     </Box>
   );
 }
 ```
 
-To change heading styles, can use `theme.headings` property:
+要修改标题样式，可以使用 `theme.headings` 属性：
 
 ```tsx
 import { createTheme } from '@react-ui/ui';
@@ -448,14 +441,13 @@ const theme = createTheme({
 });
 ```
 
-`theme.headings` object is deeply merged with the `DEFAULT_THEME.headings` object –
-it is not required to define all values, only those that you want to change.
+`theme.headings` 对象会与 `DEFAULT_THEME.headings` 对象深度合并——
+你不需要定义所有值，只需要定义你想修改的值。
 
 ```tsx
 import { createTheme } from '@react-ui/ui';
 
-// Changes only font-size of h1,
-// other values will be taken from the DEFAULT_THEME
+// 只修改 h1 的字体大小，其他值将从 DEFAULT_THEME 获取
 const theme = createTheme({
   headings: {
     sizes: {
@@ -467,55 +459,52 @@ const theme = createTheme({
 });
 ```
 
-### Font smoothing
+### 字体平滑
 
-Font smoothing variables control [-webkit-font-smoothing and moz-osx-font-smoothing](https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth)
-CSS properties. These variables are used to make text look better on screens with high pixel density.
+字体平滑变量控制 [-webkit-font-smoothing 和 moz-osx-font-smoothing](https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth)
+CSS 属性。这些变量用于让文本在高像素密度屏幕上显示得更好。
 
-Font smoothing variables are controlled by `theme.fontSmoothing` [theme](/theming/theme-object) property, it is `true` by default. If `theme.fontSmoothing` is `false`, both variables will be set to `unset`.
+字体平滑变量由 `theme.fontSmoothing` [theme](/theming/theme-object) 属性控制，默认为 `true`。如果 `theme.fontSmoothing` 为 `false`，两个变量都将设置为 `unset`。
 
 <CssVariablesGroup
   data={[
     {
       variable: '--mantine-webkit-font-smoothing',
-      description: 'Controls -webkit-font-smoothing CSS property',
+      description: '控制 -webkit-font-smoothing CSS 属性',
       defaultValue: 'antialiased',
     },
     {
       variable: '--mantine-moz-font-smoothing',
-      description: 'Controls -moz-osx-font-smoothing CSS property',
+      description: '控制 -moz-osx-font-smoothing CSS 属性',
       defaultValue: 'grayscale',
     },
   ]}
 />
 
-If you need to override font smoothing values, the best way is to disable `theme.fontSmoothing` and set [global styles](/styles/global-styles/#add-global-styles-in-your-application)
-on the body element:
+如果你需要覆盖字体平滑值，最好的方式是禁用 `theme.fontSmoothing`，然后在 body 元素上设置[全局样式](/styles/global-styles/#add-global-styles-in-your-application)：
 
 ```tsx
 import { createTheme } from '@react-ui/ui';
 
-// Disable font smoothing in your theme
+// 在你的主题中禁用字体平滑
 const theme = createTheme({
   fontSmoothing: false,
 });
 ```
 
 ```scss
-// Add global styles to your project with desired font smoothing values
+// 在项目中添加全局样式，使用你想要的字体平滑值
 body {
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
 }
 ```
 
-## Colors variables
+## 颜色变量
 
-Colors variables are controlled by `theme.colors` and `theme.primaryColor`. Each color
-defined in `theme.colors` object is required to have 10 shades. Theme color can be
-referenced by its name and shade index, for example, `--mantine-color-red-6`.
+颜色变量由 `theme.colors` 和 `theme.primaryColor` 控制。`theme.colors` 对象中定义的每种颜色都需要有 10 个色阶。主题颜色可以通过名称和色阶索引引用，例如 `--mantine-color-red-6`。
 
-You can define new colors on the theme object or override existing colors:
+你可以在主题对象上定义新颜色或覆盖已有颜色：
 
 ```tsx
 import { createTheme } from '@react-ui/ui';
@@ -538,7 +527,7 @@ const theme = createTheme({
 });
 ```
 
-The code above will define the following CSS variables:
+上面的代码将定义以下 CSS 变量：
 
 <CssVariablesGroup
   data={[
@@ -585,57 +574,57 @@ The code above will define the following CSS variables:
   ]}
 />
 
-### Variant colors
+### 变体颜色
 
-Some ReactUI components like [Button](/core/button) or [Badge](/core/badge) have `variant` prop
-that in combination with `color` prop controls the component text, background and border colors.
-For each variant and color, ReactUI defines a set of CSS variables that control these colors.
-For example, for the default `blue` color the following CSS variables are defined:
+一些 ReactUI 组件（如 [Button](/core/button) 或 [Badge](/core/badge)）具有 `variant` prop，
+它与 `color` prop 一起控制组件的文本、背景和边框颜色。
+对于每种变体和颜色，ReactUI 都定义了一组 CSS 变量来控制这些颜色。
+例如，对于默认的 `blue` 颜色，定义了以下 CSS 变量：
 
 <CssVariablesGroup
   data={[
-    { group: 'Filled variant' },
+    { group: 'Filled 变体' },
     {
       variable: '--mantine-color-blue-filled',
-      description: 'Background color of filled variant',
+      description: 'filled 变体的背景色',
       defaultValue: 'var(--mantine-color-blue-6)',
     },
     {
       variable: '--mantine-color-blue-filled-hover',
-      description: 'Background color of filled variant on hover',
+      description: 'filled 变体 hover 时的背景色',
       defaultValue: 'var(--mantine-color-blue-7)',
     },
-    { group: 'Light variant' },
+    { group: 'Light 变体' },
     {
       variable: '--mantine-color-blue-light',
-      description: 'Background color of light variant',
+      description: 'light 变体的背景色',
       defaultValue: 'rgba(34, 139, 230, 0.1)',
     },
     {
       variable: '--mantine-color-blue-light-hover',
-      description: 'Background color of light variant on hover',
+      description: 'light 变体 hover 时的背景色',
       defaultValue: 'rgba(34, 139, 230, 0.12)',
     },
     {
       variable: '--mantine-color-blue-light-color',
-      description: 'Text color of light variant',
+      description: 'light 变体的文本颜色',
       defaultValue: 'var(--mantine-color-blue-6)',
     },
-    { group: 'Outline variant' },
+    { group: 'Outline 变体' },
     {
       variable: '--mantine-color-blue-outline',
-      description: 'Border color of outline variant',
+      description: 'outline 变体的边框颜色',
       defaultValue: 'var(--mantine-color-blue-6)',
     },
     {
       variable: '--mantine-color-blue-outline-hover',
-      description: 'Border color of outline variant',
+      description: 'outline 变体的边框颜色',
       defaultValue: 'rgba(34, 139, 230, 0.05)',
     },
   ]}
 />
 
-For example, if you use [Button](/core/button) component the following way:
+例如，如果你这样使用 [Button](/core/button) 组件：
 
 ```tsx
 import { Button } from '@react-ui/ui';
@@ -649,65 +638,64 @@ function Demo() {
 }
 ```
 
-The component will have the following styles:
+该组件将具有以下样式：
 
-- Background color will be `var(--mantine-color-pink-filled)`
-- Background color on hover will be `var(--mantine-color-pink-filled-hover)`
-- Text color will be `var(--mantine-color-white)`
-- Border color will be `transparent`
+- 背景色为 `var(--mantine-color-pink-filled)`
+- hover 时背景色为 `var(--mantine-color-pink-filled-hover)`
+- 文本颜色为 `var(--mantine-color-white)`
+- 边框颜色为 `transparent`
 
-Note that the variables above are not static, they are generated based on the values of
-`theme.colors` and `theme.primaryShade`. Additionally, their values are different for
-dark and light color schemes.
+注意，上述变量不是静态的，它们根据 `theme.colors` 和 `theme.primaryShade` 的值生成。
+此外，它们在亮色和暗色配色方案下的值也不同。
 
-Variant colors variables are used in all components that support `color` prop, for example,
-[Button](/core/button), [Badge](/core/badge), [Avatar](/core/avatar) and [Pagination](/core/pagination).
-Colors values that are used by these components are determined by `cssVariablesResolver` described below
-and [variantColorResolver](/styles/variants-sizes/#variantcolorresolver).
+变体颜色变量用于所有支持 `color` prop 的组件，例如
+[Button](/core/button)、[Badge](/core/badge)、[Avatar](/core/avatar) 和 [Pagination](/core/pagination)。
+这些组件使用的颜色值由下面介绍的 `cssVariablesResolver` 和
+[variantColorResolver](/styles/variants-sizes/#variantcolorresolver) 决定。
 
-### Primary color variables
+### 主色变量
 
-Primary color variables are defined by `theme.primaryColor` (which must be a key of `theme.colors`).
-The following CSS variables are defined for the primary color:
+主色变量由 `theme.primaryColor` 定义（它必须是 `theme.colors` 的键）。
+主色定义了以下 CSS 变量：
 
 <CssVariablesGroup
   data={[
     {
       variable: '--mantine-primary-color-{shade}',
       description:
-        'Shade is 0-9 to reference specific primary color shade',
+        'shade 为 0-9，用于引用特定主色色阶',
       defaultValue: 'var(--mantine-color-{primaryColor}-{shade})',
     },
     {
       variable: '--mantine-primary-color-filled',
-      description: 'Background color of filled variant',
+      description: 'filled 变体的背景色',
       defaultValue: 'var(--mantine-color-{primaryColor}-filled)',
     },
     {
       variable: '--mantine-primary-color-filled-hover',
-      description: 'Background color of filled variant on hover',
+      description: 'filled 变体 hover 时的背景色',
       defaultValue:
         'var(--mantine-color-{primaryColor}-filled-hover)',
     },
     {
       variable: '--mantine-primary-color-light',
-      description: 'Background color of light variant',
+      description: 'light 变体的背景色',
       defaultValue: 'var(--mantine-color-{primaryColor}-light)',
     },
     {
       variable: '--mantine-primary-color-light-hover',
-      description: 'Background color of light variant on hover',
+      description: 'light 变体 hover 时的背景色',
       defaultValue: 'var(--mantine-color-{primaryColor}-light-hover)',
     },
     {
       variable: '--mantine-primary-color-light-color',
-      description: 'Text color of light variant',
+      description: 'light 变体的文本颜色',
       defaultValue: 'var(--mantine-color-{primaryColor}-light-color)',
     },
   ]}
 />
 
-You can reference primary color variables in CSS:
+你可以在 CSS 中引用主色变量：
 
 ```scss
 .demo {
@@ -716,105 +704,104 @@ You can reference primary color variables in CSS:
 }
 ```
 
-### Other color variables
+### 其他颜色变量
 
-The following colors are used in various ReactUI components. Note that default values
-are provided for the light color scheme, dark color scheme values are different.
+以下颜色用于各种 ReactUI 组件。注意，默认值针对亮色配色方案提供，暗色配色方案下的值不同。
 
 <CssVariablesGroup
   data={[
     {
       variable: '--mantine-color-white',
-      description: 'Value of theme.white',
+      description: 'theme.white 的值',
       defaultValue: '#fff',
     },
     {
       variable: '--mantine-color-black',
-      description: 'Value of theme.black',
+      description: 'theme.black 的值',
       defaultValue: '#000',
     },
     {
       variable: '--mantine-color-text',
-      description: 'Color used for text in the body element',
+      description: 'body 元素中使用的文本颜色',
       defaultValue: 'var(--mantine-color-black)',
     },
     {
       variable: '--mantine-color-body',
-      description: 'Body background color',
+      description: 'body 背景色',
       defaultValue: 'var(--mantine-color-white)',
     },
     {
       variable: '--mantine-color-error',
-      description: 'Color used for error messages and states',
+      description: '用于错误消息和状态的颜色',
       defaultValue: 'var(--mantine-color-red-6)',
     },
     {
       variable: '--mantine-color-success',
-      description: 'Color used for success messages and states',
+      description: '用于成功消息和状态的颜色',
       defaultValue: 'var(--mantine-color-teal-8)',
     },
     {
       variable: '--mantine-color-placeholder',
-      description: 'Color used for input placeholders',
+      description: '用于输入框 placeholder 的颜色',
       defaultValue: 'var(--mantine-color-gray-5)',
     },
     {
       variable: '--mantine-color-dimmed',
-      description: 'Color used for dimmed text',
+      description: '用于暗淡文本的颜色',
       defaultValue: 'var(--mantine-color-gray-6)',
     },
     {
       variable: '--mantine-color-bright',
-      description: 'Color used for bright text',
+      description: '用于明亮文本的颜色',
       defaultValue: 'var(--mantine-color-black)',
     },
     {
       variable: '--mantine-color-anchor',
-      description: 'Color used for links',
+      description: '用于链接的颜色',
       defaultValue: 'var(--mantine-primary-color-6)',
     },
     {
       variable: '--mantine-color-default',
-      description: 'Background color of default variant',
+      description: 'default 变体的背景色',
       defaultValue: 'var(--mantine-color-white)',
     },
     {
       variable: '--mantine-color-default-hover',
-      description: 'Background color of default variant on hover',
+      description: 'default 变体 hover 时的背景色',
       defaultValue: 'var(--mantine-color-gray-0)',
     },
     {
       variable: '--mantine-color-default-color',
-      description: 'Text color of default variant',
+      description: 'default 变体的文本颜色',
       defaultValue: 'var(--mantine-color-black)',
     },
     {
       variable: '--mantine-color-default-border',
-      description: 'Border color of default variant',
+      description: 'default 变体的边框颜色',
       defaultValue: 'var(--mantine-color-gray-4)',
     },
     {
       variable: '--mantine-color-disabled',
-      description: 'Background color of disabled elements',
+      description: '禁用元素的背景色',
       defaultValue: 'var(--mantine-color-gray-2)',
     },
     {
       variable: '--mantine-color-disabled-color',
-      description: 'Text color of disabled elements',
+      description: '禁用元素的文本颜色',
       defaultValue: 'var(--mantine-color-gray-5)',
     },
     {
       variable: '--mantine-color-disabled-border',
-      description: 'Border color of disabled elements',
+      description: '禁用元素的边框颜色',
       defaultValue: 'var(--mantine-color-gray-3)',
     },
   ]}
 />
 
-## Spacing variables
+## 间距变量
 
-`theme.spacing` values are used in most ReactUI components to control paddings, margins, and other
-spacing-related properties. The following CSS variables are defined based on `theme.spacing`:
+`theme.spacing` 值用于大多数 ReactUI 组件来控制 padding、margin 和其他间距相关属性。
+以下 CSS 变量基于 `theme.spacing` 定义：
 
 <CssVariablesGroup
   data={[
@@ -841,7 +828,7 @@ spacing-related properties. The following CSS variables are defined based on `th
   ]}
 />
 
-To define custom spacing values, use `theme.spacing` property:
+要定义自定义间距值，请使用 `theme.spacing` 属性：
 
 ```tsx
 import { createTheme } from '@react-ui/ui';
@@ -857,10 +844,10 @@ const theme = createTheme({
 });
 ```
 
-## Border radius variables
+## 圆角变量
 
-ReactUI components that support `radius` prop use border radius variables to control border radius.
-The following CSS variables are defined based on `theme.radius`:
+支持 `radius` prop 的 ReactUI 组件使用圆角变量来控制 border radius。
+以下 CSS 变量基于 `theme.radius` 定义：
 
 <CssVariablesGroup
   data={[
@@ -887,10 +874,10 @@ The following CSS variables are defined based on `theme.radius`:
   ]}
 />
 
-Additionally, `--mantine-radius-default` variable is defined based on `theme.defaultRadius`
-value. If `radius` prop on components is not set explicitly, `--mantine-radius-default` is used instead.
+此外，`--mantine-radius-default` 变量基于 `theme.defaultRadius` 值定义。
+如果组件上的 `radius` prop 未显式设置，则使用 `--mantine-radius-default`。
 
-To define custom border radius values, use `theme.radius` and `theme.defaultRadius` properties:
+要定义自定义圆角值，请使用 `theme.radius` 和 `theme.defaultRadius` 属性：
 
 ```tsx
 import { createTheme } from '@react-ui/ui';
@@ -907,10 +894,9 @@ const theme = createTheme({
 });
 ```
 
-## Shadow variables
+## 阴影变量
 
-Shadow variables are used in all ReactUI components that support `shadow` prop. The following CSS
-variables are defined based on `theme.shadows`:
+阴影变量用于所有支持 `shadow` prop 的 ReactUI 组件。以下 CSS 变量基于 `theme.shadows` 定义：
 
 <CssVariablesGroup
   data={[
@@ -942,7 +928,7 @@ variables are defined based on `theme.shadows`:
   ]}
 />
 
-To define custom shadow values, use `theme.shadows` property:
+要定义自定义阴影值，请使用 `theme.shadows` 属性：
 
 ```tsx
 import { createTheme } from '@react-ui/ui';
@@ -958,10 +944,10 @@ const theme = createTheme({
 });
 ```
 
-## z-index variables
+## z-index 变量
 
-z-index variables are defined in `@react-ui/ui/styles.css`. Unlike other variables,
-z-index variables are not controlled by the theme and are not exposed in the theme object.
+z-index 变量在 `@react-ui/ui/styles.css` 中定义。与其他变量不同，
+z-index 变量不受 theme 控制，也不会暴露在 theme 对象中。
 
 <CssVariablesGroup
   data={[
@@ -988,16 +974,16 @@ z-index variables are not controlled by the theme and are not exposed in the the
   ]}
 />
 
-You can reference z-index variables in CSS:
+你可以在 CSS 中引用 z-index 变量：
 
 ```css
-/* Display content above the modal */
+/* 将内容显示在 modal 之上 */
 .my-content {
   z-index: calc(var(--mantine-z-index-modal) + 1);
 }
 ```
 
-And in components by referencing CSS variable:
+也可以在组件中通过引用 CSS 变量来使用：
 
 ```tsx
 import { Modal } from '@react-ui/ui';
@@ -1015,18 +1001,17 @@ function Demo() {
 }
 ```
 
-## CSS variables resolver
+## CSS 变量解析器
 
-`cssVariablesResolver` prop on [MantineProvider](/theming/mantine-provider) allows you to
-modify values of ReactUI CSS variables or even add your own variables.
-`cssVariablesResolver` is a function that accepts [theme](/theming/theme-object) as a single
-argument and returns an object with CSS variables divided into three groups:
+[MantineProvider](/theming/mantine-provider) 上的 `cssVariablesResolver` prop 允许你修改 ReactUI CSS 变量的值，甚至添加你自己的变量。
+`cssVariablesResolver` 是一个接受 [theme](/theming/theme-object) 作为唯一参数的函数，
+返回一个将 CSS 变量分为三组的的对象：
 
-- `variables` – variables that do not depend on color scheme
-- `light` – variables for light color scheme only
-- `dark` – variables for dark color scheme only
+- `variables` – 不依赖配色方案的变量
+- `light` – 仅用于亮色配色方案的变量
+- `dark` – 仅用于暗色配色方案的变量
 
-Example of adding new CSS variables based on `theme.other`:
+添加基于 `theme.other` 的新 CSS 变量的示例：
 
 ```tsx
 import {
@@ -1067,14 +1052,13 @@ function Demo() {
 }
 ```
 
-Then you will be able to use `--mantine-hero-height` and `--mantine-color-deep-orange` variables
-in any part of your application:
+然后你就可以在应用的任何部分使用 `--mantine-hero-height` 和 `--mantine-color-deep-orange` 变量：
 
 ```css
 .hero {
   height: var(--mantine-hero-height);
 
-  /* background color will automatically change based on color scheme */
+  /* 背景色会根据配色方案自动变化 */
   background-color: var(--mantine-color-deep-orange);
 }
 ```

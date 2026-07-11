@@ -5,27 +5,26 @@ export default Layout(MDX_DATA.PostCSSPreset);
 
 # ReactUI PostCSS preset
 
-`postcss-preset-mantine` provides several CSS functions and mixins to help you write styles.
-It is not required to use it, but is highly recommended. All demos that feature styles
-assume that you have this preset installed.
+`postcss-preset-mantine` 提供了多个 CSS 函数和 mixin，帮助你编写样式。
+它不是必须使用的，但强烈推荐。所有涉及样式的 demo 都假设你已经安装了这个 preset。
 
-`postcss-preset-mantine` includes the following PostCSS plugins:
+`postcss-preset-mantine` 包含以下 PostCSS 插件：
 
 - [postcss-nested](https://www.npmjs.com/package/postcss-nested)
-- [postcss-mixins](https://www.npmjs.com/package/postcss-mixins) with ReactUI specific mixins
-- Custom plugin with `em`/`rem` functions
+- [postcss-mixins](https://www.npmjs.com/package/postcss-mixins) 及 ReactUI 专用 mixins
+- 自定义的 `em`/`rem` 函数插件
 
-## Installation
+## 安装
 
-Install `postcss-preset-mantine` as a dev dependency:
+将 `postcss-preset-mantine` 作为开发依赖安装：
 
 <InstallScript dev packages="postcss-preset-mantine" />
 
-## Usage
+## 用法
 
-Note that setting up PostCSS may be different depending on your build tool/framework. Check
-a [dedicated framework guide](/getting-started) to learn more.
-Add `postcss-preset-mantine` to your `postcss.config.cjs` file (usually it is located in the root of your project):
+注意，PostCSS 的配置方式可能因构建工具/框架而异。请参考
+[框架专用指南](/getting-started) 了解更多。
+将 `postcss-preset-mantine` 添加到你的 `postcss.config.cjs` 文件中（通常位于项目根目录）：
 
 ```js
 module.exports = {
@@ -35,13 +34,13 @@ module.exports = {
 };
 ```
 
-All done! You can now use all the features of the preset.
+全部完成！现在你可以使用 preset 的所有功能。
 
-## rem/em functions
+## rem/em 函数
 
-`rem` and `em` functions can be used to convert pixels to rem/em units.
-`16px = 1rem` and `16px = 1em`. `em` values are supposed to be used in media queries,
-`rem` everywhere else. You can learn more about unit conversions in [this guide](/styles/rem).
+`rem` 和 `em` 函数可用于将像素转换为 rem/em 单位。
+`16px = 1rem`，`16px = 1em`。`em` 值应用于媒体查询，
+`rem` 用于其他所有场景。你可以在 [本指南](/styles/rem) 中了解更多单位转换相关内容。
 
 ```scss
 .demo {
@@ -53,7 +52,7 @@ All done! You can now use all the features of the preset.
 }
 ```
 
-Will be transformed to:
+将被转换为：
 
 ```scss
 .demo {
@@ -65,10 +64,9 @@ Will be transformed to:
 }
 ```
 
-## Auto convert px to rem
+## 自动将 px 转换为 rem
 
-`autoRem` option can be used to automatically convert all pixel values to rem units
-in `.css` files:
+可以使用 `autoRem` 选项自动将 `.css` 文件中的所有像素值转换为 rem 单位：
 
 ```js
 module.exports = {
@@ -80,7 +78,7 @@ module.exports = {
 };
 ```
 
-This option works similar to `rem` function. The following code:
+该选项的工作方式与 `rem` 函数类似。以下代码：
 
 ```scss
 .demo {
@@ -92,7 +90,7 @@ This option works similar to `rem` function. The following code:
 }
 ```
 
-Will be transformed to:
+将被转换为：
 
 ```scss
 .demo {
@@ -104,20 +102,20 @@ Will be transformed to:
 }
 ```
 
-Note that `autoRem` converts only CSS properties, values in `@media` queries are
-not converted automatically – you still need to use `em` function to convert them.
+注意，`autoRem` 只转换 CSS 属性值，`@media` 查询中的值不会自动转换——
+你仍然需要使用 `em` 函数来转换它们。
 
-`autoRem` option does not convert values in the following cases:
+`autoRem` 选项不会转换以下情况的值：
 
-- Values in `calc()`, `var()`, `clamp()` and `url()` functions
-- Values in `content` property
-- Values that contain `rgb()`, `rgba()`, `hsl()`, `hsla()` colors
+- `calc()`、`var()`、`clamp()` 和 `url()` 函数中的值
+- `content` 属性中的值
+- 包含 `rgb()`、`rgba()`、`hsl()`、`hsla()` 颜色的值
 
-If you want to convert above values to rem units, use `rem` function manually.
+如果你想将上述值转换为 rem 单位，请手动使用 `rem` 函数。
 
-## dark and light mixins
+## dark 和 light mixins
 
-`dark` and `light` mixins can be used to create styles that will be applied only in dark or light color scheme.
+`dark` 和 `light` mixins 可用于创建仅在暗色或亮色配色方案下应用的样式。
 
 ```scss
 .demo {
@@ -131,7 +129,7 @@ If you want to convert above values to rem units, use `rem` function manually.
 }
 ```
 
-Will be transformed to:
+将被转换为：
 
 ```scss
 [data-ui-color-scheme='light'] .demo {
@@ -143,8 +141,8 @@ Will be transformed to:
 }
 ```
 
-Note that usually you do not need to use both `light` and `dark` mixins at the same time.
-It is easier to define styles for light color scheme and then use `dark` mixin to override them in dark color scheme.
+注意，通常你不需要同时使用 `light` 和 `dark` mixin。
+更简单的方式是为亮色配色方案定义样式，然后使用 `dark` mixin 在暗色配色方案下覆盖它们。
 
 ```scss
 .demo {
@@ -158,7 +156,7 @@ It is easier to define styles for light color scheme and then use `dark` mixin t
 }
 ```
 
-To define values for light/dark color scheme on the `:root`/`html` element, use `light-root` and `dark-root` mixins instead:
+要在 `:root`/`html` 元素上定义亮色/暗色配色方案的值，请改用 `light-root` 和 `dark-root` mixins：
 
 ```scss
 :root {
@@ -172,9 +170,9 @@ To define values for light/dark color scheme on the `:root`/`html` element, use 
 }
 ```
 
-## smaller-than and larger-than mixins
+## smaller-than 和 larger-than mixins
 
-`smaller-than` and `larger-than` mixins can be used to create styles that will be applied only when the screen is smaller or larger than specified breakpoint.
+`smaller-than` 和 `larger-than` mixins 可用于创建仅在屏幕小于或大于指定断点时应用的样式。
 
 ```scss
 .demo {
@@ -188,7 +186,7 @@ To define values for light/dark color scheme on the `:root`/`html` element, use 
 }
 ```
 
-Will be transformed to:
+将被转换为：
 
 ```scss
 // Breakpoint values are converted to em units
@@ -207,7 +205,7 @@ Will be transformed to:
 }
 ```
 
-You can also use `smaller-than` and `larger-than` mixins with [mantine breakpoints](/styles/responsive/#breakpoints-variables-in-css-modules):
+你也可以将 `smaller-than` 和 `larger-than` mixins 与 [mantine 断点](/styles/responsive/#breakpoints-variables-in-css-modules) 一起使用：
 
 ```scss
 .demo {
@@ -221,10 +219,10 @@ You can also use `smaller-than` and `larger-than` mixins with [mantine breakpoin
 }
 ```
 
-## light-dark function
+## light-dark 函数
 
-`light-dark` function is an alternative to `light` and `dark` mixins. It accepts two arguments:
-first argument is rule that will be applied in light color scheme, second argument is rule that will be applied in dark color scheme.
+`light-dark` 函数是 `light` 和 `dark` mixins 的替代方案。它接受两个参数：
+第一个参数是在亮色配色方案下应用的规则，第二个参数是在暗色配色方案下应用的规则。
 
 ```css
 .demo {
@@ -232,7 +230,7 @@ first argument is rule that will be applied in light color scheme, second argume
 }
 ```
 
-Will be transformed to:
+将被转换为：
 
 ```css
 .demo {
@@ -244,15 +242,15 @@ Will be transformed to:
 }
 ```
 
-Note that `light-dark` function does not work on `:root`/`html` element. Use `light-root` and `dark-root` mixins instead:
+注意，`light-dark` 函数不能在 `:root`/`html` 元素上使用。请改用 `light-root` 和 `dark-root` mixins：
 
 ```scss
-// ❌ Does not work
+// ❌ 无效
 :root {
   --color: light-dark(red, blue);
 }
 
-// ✅ Works
+// ✅ 有效
 :root {
   @mixin light-root {
     --color: red;
@@ -264,9 +262,9 @@ Note that `light-dark` function does not work on `:root`/`html` element. Use `li
 }
 ```
 
-## alpha function
+## alpha 函数
 
-`alpha` function can be used to add alpha channel to color. Note that it uses [color-mix](https://caniuse.com/mdn-css_types_color_color-mix) which is not supported in some older browsers.
+`alpha` 函数可用于为颜色添加 alpha 通道。注意它使用了 [color-mix](https://caniuse.com/mdn-css_types_color_color-mix)，在某些旧版浏览器中不受支持。
 
 ```scss
 .demo {
@@ -275,7 +273,7 @@ Note that `light-dark` function does not work on `:root`/`html` element. Use `li
 }
 ```
 
-Will be transformed to:
+将被转换为：
 
 ```scss
 .demo {
@@ -288,9 +286,10 @@ Will be transformed to:
 }
 ```
 
-## lighten and darken functions
+## lighten 和 darken 函数
 
-`lighten` and `darken` functions work similar to `alpha` function, but instead of adding alpha channel they add white or black color to the color with [color-mix](https://caniuse.com/mdn-css_types_color_color-mix).
+`lighten` 和 `darken` 函数的工作方式与 `alpha` 函数类似，但它们不是添加 alpha 通道，
+而是通过 [color-mix](https://caniuse.com/mdn-css_types_color_color-mix) 向颜色中添加白色或黑色。
 
 ```scss
 .demo {
@@ -299,7 +298,7 @@ Will be transformed to:
 }
 ```
 
-Will be transformed to:
+将被转换为：
 
 ```scss
 .demo {
@@ -310,7 +309,7 @@ Will be transformed to:
 
 ## hover mixin
 
-`hover` mixin can be used to create styles that will be applied on hover.
+`hover` mixin 可用于创建在 hover 时应用的样式。
 
 ```css
 .demo {
@@ -320,7 +319,7 @@ Will be transformed to:
 }
 ```
 
-Will be transformed to:
+将被转换为：
 
 ```css
 @media (hover: hover) {
@@ -338,7 +337,7 @@ Will be transformed to:
 
 ## rtl/ltr mixins
 
-`rtl` mixin can be used to create styles that will be applied when `dir="rtl"` is set on parent element (usually `<html />`).
+`rtl` mixin 可用于在父元素设置 `dir="rtl"` 时（通常是 `<html />`）应用样式。
 
 ```scss
 .demo {
@@ -351,7 +350,7 @@ Will be transformed to:
 }
 ```
 
-Will be transformed to:
+将被转换为：
 
 ```css
 .demo {
@@ -364,7 +363,7 @@ Will be transformed to:
 }
 ```
 
-`ltr` mixin works the same way, but for `dir="ltr"`:
+`ltr` mixin 的工作方式相同，但用于 `dir="ltr"`：
 
 ```scss
 .demo {
@@ -377,7 +376,7 @@ Will be transformed to:
 }
 ```
 
-Will be transformed to:
+将被转换为：
 
 ```css
 .demo {
@@ -392,8 +391,8 @@ Will be transformed to:
 
 ## not-rtl/not-ltr mixins
 
-`not-rtl`/`not-ltr` mixins can be used to create styles that will be applied when the direction is set to the opposite value or not set at all.
-For example, `not-rtl` styles will be applied when `dir="ltr"` or when `dir` is not set at all.
+`not-rtl`/`not-ltr` mixins 可用于在方向设置为相反值或完全未设置时应用样式。
+例如，`not-rtl` 样式会在 `dir="ltr"` 或 `dir` 完全未设置时应用。
 
 ```scss
 .demo {
@@ -403,7 +402,7 @@ For example, `not-rtl` styles will be applied when `dir="ltr"` or when `dir` is 
 }
 ```
 
-Will be transformed to:
+将被转换为：
 
 ```css
 :root:not([dir='rtl']) .demo {
@@ -413,12 +412,11 @@ Will be transformed to:
 
 ## where-\* mixins
 
-`where-*` mixins are alternative to `light`, `dark`, `rlt` and `hover` mixins.
-They work exactly the same, but produced CSS is less specific. These mixins are
-useful when you want to easily override styles, for example, when you are building
-a library or extension.
+`where-*` mixins 是 `light`、`dark`、`rlt` 和 `hover` mixins 的替代方案。
+它们的工作方式完全相同，但生成的 CSS 优先级更低。这些 mixin 在你想轻松覆盖样式时非常有用，
+例如当你正在构建一个库或扩展时。
 
-Example of using `where-light` mixin:
+使用 `where-light` mixin 的示例：
 
 ```scss
 .demo {
@@ -428,7 +426,7 @@ Example of using `where-light` mixin:
 }
 ```
 
-Will be transformed to:
+将被转换为：
 
 ```scss
 :where([data-ui-color-scheme='light']) .demo {
@@ -436,12 +434,11 @@ Will be transformed to:
 }
 ```
 
-## Custom mixins
+## 自定义 mixins
 
-You can define custom mixins that are not included in the preset by specifying them
-in the `mixins` option. To learn about mixins syntax, follow [postcss-mixins documentation](https://github.com/postcss/postcss-mixins#readme).
+你可以通过 `mixins` 选项定义 preset 未包含的自定义 mixins。要了解 mixins 语法，请参考 [postcss-mixins 文档](https://github.com/postcss/postcss-mixins#readme)。
 
-Example of adding `clearfix` and `circle` mixins:
+添加 `clearfix` 和 `circle` mixins 的示例：
 
 ```tsx
 module.exports = {
@@ -468,7 +465,7 @@ module.exports = {
 };
 ```
 
-Then you can use these mixins in your styles:
+然后你就可以在样式中使用这些 mixins：
 
 ```scss
 .demo {
@@ -477,9 +474,9 @@ Then you can use these mixins in your styles:
 }
 ```
 
-## Disable specific features
+## 禁用特定功能
 
-You can disable specific features of the preset by setting them to `false`:
+你可以通过将特定功能设置为 `false` 来禁用 preset 的部分功能：
 
 ```tsx
 module.exports = {

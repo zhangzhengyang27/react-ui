@@ -4,19 +4,17 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Rtl);
 
-# Right-to-left direction
+# 从右到左（RTL）方向
 
-All ReactUI components support right-to-left direction out of the box.
-You can preview how components work with RTL direction by clicking the direction control
-in the top right corner or pressing `Ctrl + Shift + L`.
+所有 ReactUI 组件都开箱支持从右到左（RTL）方向。
+你可以点击右上角的方向控制按钮，或按下 `Ctrl + Shift + L`，预览组件在 RTL 方向下的效果。
 
 ## DirectionProvider
 
-The `DirectionProvider` component is used to set direction for all components inside it.
-It is required to wrap your application with `DirectionProvider` if you are planning to
-either use RTL direction or change direction dynamically.
+`DirectionProvider` 组件用于为内部所有组件设置方向。
+如果你计划使用 RTL 方向或需要动态切换方向，必须用 `DirectionProvider` 包裹你的应用。
 
-`DirectionProvider` supports the following props:
+`DirectionProvider` 支持以下 props：
 
 ```tsx
 export interface DirectionProviderProps {
@@ -31,7 +29,7 @@ export interface DirectionProviderProps {
 }
 ```
 
-Setup `DirectionProvider` in your application:
+在应用中配置 `DirectionProvider`：
 
 ```tsx
 import { DirectionProvider, MantineProvider } from '@react-ui/ui';
@@ -45,12 +43,11 @@ function Demo() {
 }
 ```
 
-## dir attribute
+## dir 属性
 
-It is required to set the `dir` attribute on the root element of your application, usually the `html` element.
-The `DirectionProvider` will use its value to set direction on mount if the `detectDirection` prop is set to `true`.
-Note that this guide does not cover setting the `dir` attribute for different frameworks – follow your framework's
-documentation to learn how to do it.
+你需要在应用的根元素（通常是 `html` 元素）上设置 `dir` 属性。
+如果 `detectDirection` prop 设置为 `true`，`DirectionProvider` 会在挂载时读取该属性来设置方向。
+注意，本指南不介绍如何在不同框架中设置 `dir` 属性——请参考所使用框架的官方文档。
 
 ```html
 <!doctype html>
@@ -63,18 +60,18 @@ documentation to learn how to do it.
 
 ## useDirection hook
 
-`useDirection` returns an object with the following properties:
+`useDirection` 返回一个包含以下属性的对象：
 
-- `dir` – current direction
-- `setDirection` – function to set direction
-- `toggleDirection` – function to change direction to the opposite value
+- `dir` – 当前方向
+- `setDirection` – 设置方向的函数
+- `toggleDirection` – 切换到相反方向的函数
 
-You can use it to create direction control in your application:
+你可以用它来实现应用中的方向切换控件：
 
 <Demo data={StylesDemos.directionControl} />
 
 ## rtl mixin
 
-If you have [postcss-preset-mantine](/styles/postcss-preset) installed, then you can use the `rtl` mixin in `.css` files:
+如果你已安装 [postcss-preset-mantine](/styles/postcss-preset)，可以在 `.css` 文件中使用 `rtl` mixin：
 
 <Demo data={StylesDemos.rtlMixin} />

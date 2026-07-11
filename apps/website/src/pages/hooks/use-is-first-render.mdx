@@ -4,14 +4,13 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useIsFirstRender);
 
-## Usage
+## 用法
 
-The `useIsFirstRender` hook returns `true` if the component is being rendered for the first time;
-otherwise, it returns `false`.
+`useIsFirstRender` Hook 在组件首次渲染时返回 `true`；否则返回 `false`。
 
 <Demo data={UseIsFirstRenderDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 function useIsFirstRender(): boolean;

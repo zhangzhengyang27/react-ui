@@ -5,144 +5,124 @@ export default Layout(MDX_DATA.MantineStyles);
 
 # ReactUI styles
 
-This guide explains how to import styles of `@mantine/*` packages in your application
-and how to override them with [CSS layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer)
-in case you do not have a way to control the order of stylesheets in your application.
+本指南解释如何在应用中导入 `@mantine/*` 包的样式，以及如果你无法控制应用中样式表的顺序，如何使用 [CSS layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) 覆盖它们。
 
-## ReactUI components styles
+## ReactUI 组件样式
 
-All ReactUI components are built with CSS modules, but all styles are bundled before publishing to npm.
-To include these styles, you need to import the `@mantine/{package}/styles.css` file in your application.
-Example with the `@react-ui/ui` package:
+所有 ReactUI 组件都是使用 CSS modules 构建的，但所有样式在发布到 npm 之前都已打包。要包含这些样式，你需要在应用中导入 `@mantine/{package}/styles.css` 文件。以 `@react-ui/ui` 包为例：
 
 ```tsx
 import '@react-ui/ui/styles.css';
 ```
 
-By adding this import, you will have all styles of the `@react-ui/ui` components in your application.
+通过添加此导入，你的应用中将包含所有 `@react-ui/ui` 组件的样式。
 
-## Import styles per component
+## 按组件导入样式
 
-If you want to reduce CSS bundle size, you can import styles per component. Note that some components
-have dependencies. For example, the [Button](/core/button) component uses the [UnstyledButton](/core/unstyled-button)
-component internally, so you need to import styles for both components. You can find a full list of
-exported styles from the `@react-ui/ui` package and additional instructions on [this page](/styles/css-files-list).
+如果你想减小 CSS 包大小，可以按组件导入样式。注意，某些组件有依赖项。例如，[Button](/core/button) 组件内部使用 [UnstyledButton](/core/unstyled-button) 组件，因此你需要同时导入这两个组件的样式。你可以在[此页面](/styles/css-files-list)找到 `@react-ui/ui` 包导出的所有样式列表和附加说明。
 
 ```tsx
 import '@react-ui/ui/styles/UnstyledButton.css';
 import '@react-ui/ui/styles/Button.css';
 ```
 
-Note that individual component styles are available only for the `@react-ui/ui` package.
-Other packages have minimal styles that can be imported with the `@mantine/{package}/styles.css` import.
+注意，单个组件样式仅适用于 `@react-ui/ui` 包。其他包具有最小样式，可以使用 `@mantine/{package}/styles.css` 导入。
 
-## Styles import order
+## 样式导入顺序
 
-It is important to maintain the correct styles import order. The `@react-ui/ui` package
-styles must always be imported before any other ReactUI package styles:
+保持正确的样式导入顺序很重要。`@react-ui/ui` 包的样式必须始终在其他 ReactUI 包样式之前导入：
 
 ```tsx
-// ✅ Correct order
+// ✅ 正确顺序
 import '@react-ui/ui/styles.css';
 import '@react-ui/ui/styles.css';
-// ❌ Incorrect order
+// ❌ 错误顺序
 import '@react-ui/ui/styles.css';
 import '@react-ui/ui/styles.css';
 ```
 
-Your application styles must always be imported after all `@mantine/*` packages styles:
+你的应用样式必须始终在所有 `@mantine/*` 包样式之后导入：
 
 ```tsx
-// ✅ Correct order - your styles will override ReactUI styles
+// ✅ 正确顺序 - 你的样式将覆盖 ReactUI 样式
 import '@react-ui/ui/styles.css';
 import '@react-ui/ui/styles.css';
 import classes from './Demo.module.css';
 
-// ❌ Incorrect order – ReactUI styles will override your styles
+// ❌ 错误顺序 – ReactUI 样式将覆盖你的样式
 import classes from './Demo.module.css';
 import '@react-ui/ui/styles.css';
 import '@react-ui/ui/styles.css';
 ```
 
-## CSS layers
+## CSS 层
 
-Some bundlers and frameworks do not allow you to control the order of stylesheets in your application.
-For example, Next.js does not guarantee [styles import order](https://github.com/vercel/next.js/issues/16630).
-In this case, you can use [CSS layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) to ensure
-that your styles will always override ReactUI styles.
+某些打包工具和框架不允许你控制应用中样式表的顺序。例如，Next.js 不保证[样式导入顺序](https://github.com/vercel/next.js/issues/16630)。在这种情况下，你可以使用 [CSS layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) 来确保你的样式始终覆盖 ReactUI 样式。
 
-All `@mantine/*` packages that export styles have an additional file in which all styles are wrapped in the
-`@layer mantine` directive.
+所有导出样式的 `@mantine/*` 包都有一个额外的文件，其中所有样式都包裹在 `@layer mantine` 指令中。
 
 ```tsx
 import '@react-ui/ui/styles.layer.css';
 import '@react-ui/ui/styles.layer.css';
 
-// ... other styles
+// ... 其他样式
 ```
 
-These files contain the same styles as the `styles.css` files, but wrapped in the `@layer mantine` directive.
-Make sure that you do not import both `styles.css` and `styles.layer.css` files in your application.
+这些文件包含与 `styles.css` 文件相同的样式，但包裹在 `@layer mantine` 指令中。请确保不要在应用中同时导入 `styles.css` 和 `styles.layer.css` 文件。
 
 ```tsx
-// ❌ Do not import both styles.css and styles.layer.css
+// ❌ 不要同时导入 styles.css 和 styles.layer.css
 import '@react-ui/ui/styles.css';
 import '@react-ui/ui/styles.layer.css';
 ```
 
-Similar to package styles, you can import individual component styles with the `@layer mantine` directive:
+与包样式类似，你可以导入带有 `@layer mantine` 指令的单个组件样式：
 
 ```tsx
 import '@react-ui/ui/styles/UnstyledButton.layer.css';
 import '@react-ui/ui/styles/Button.layer.css';
 
-// ... other styles
+// ... 其他样式
 ```
 
-## How CSS layers work
+## CSS layers 的工作原理
 
-CSS rules within a layer are grouped together and applied before rules without a layer. This means that
-even if you do not have control over the styles import order, you can still override ReactUI styles with
-regular styles.
+层内的 CSS 规则会被组合在一起，并在没有层的规则之前应用。这意味着即使你无法控制样式导入顺序，仍然可以使用常规样式覆盖 ReactUI 样式。
 
 ```tsx
-// ✅ If your styles are not wrapped in the @layer directive,
-// they will be applied after ReactUI styles
+// ✅ 如果你的样式没有包裹在 @layer 指令中，
+// 它们将在 ReactUI 样式之后应用
 import classes from './Demo.module.css';
 
 import '@react-ui/ui/styles.layer.css';
 ```
 
-CSS layers are also useful if you want to combine ReactUI components with other libraries that also
-provide styles. You can use the `@layer` directive to control the order of styles:
+如果你想将 ReactUI 组件与其他也提供样式的库结合使用，CSS layers 也很有用。你可以使用 `@layer` 指令来控制样式顺序：
 
 ```scss
 @layer base, mantine, components;
 ```
 
-In this example, ReactUI styles will take precedence over other library `base` styles, but other library
-`components` styles will take precedence over ReactUI component styles.
+在此示例中，ReactUI 样式将优先于其他库的 `base` 样式，但其他库的 `components` 样式将优先于 ReactUI 组件样式。
 
-As of January 2026, CSS layers are supported in all modern browsers and have [95% browser support](https://caniuse.com/css-cascade-layers).
+截至 2026 年 1 月，CSS layers 已在所有现代浏览器中得到支持，并拥有 [95% 的浏览器支持率](https://caniuse.com/css-cascade-layers)。
 
-## Loading styles from CDN
+## 从 CDN 加载样式
 
-You can also load ReactUI styles from the unpkg CDN. Note that in this case it is
-recommended to specify the exact version of `@mantine/*` packages both in your
-`package.json` and in CDN links.
+你也可以从 unpkg CDN 加载 ReactUI 样式。注意，在这种情况下，建议在你的 `package.json` 和 CDN 链接中都指定 `@mantine/*` 包的确切版本。
 
 ```html
-<!-- Regular styles -->
+<!-- 常规样式 -->
 <link
   rel="stylesheet"
   href="https://unpkg.com/@react-ui/ui@7.4.2/styles.css"
 />
 
-<!-- Styles with @layer directive -->
+<!-- 带 @layer 指令的样式 -->
 <link
   rel="stylesheet"
   href="https://unpkg.com/@react-ui/ui@7.4.2/styles.layer.css"
 />
 ```
 
-Styles on the unpkg CDN are available for all ReactUI packages that export styles.
+unpkg CDN 上的样式适用于所有导出样式的 ReactUI 包。

@@ -4,115 +4,111 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.YearPicker);
 
-## Usage
+## 用法
 
 <Demo data={YearPickerDemos.usage} />
 
-## Allow deselect
+## 允许取消选择
 
-Set `allowDeselect` to allow users to deselect the currently selected date by clicking on it.
-`allowDeselect` is disregarded when the `type` prop is `range` or `multiple`. When a date is
-deselected, `onChange` is called with `null`.
+设置 `allowDeselect` 以允许用户通过点击当前选中的日期来取消选择。
+当 `type` prop 为 `range` 或 `multiple` 时，`allowDeselect` 被忽略。取消选择日期时，`onChange` 会被调用并传入 `null`。
 
 <Demo data={YearPickerDemos.deselect} />
 
-## Multiple dates
+## 多个日期
 
-Set `type="multiple"` to allow users to pick multiple dates:
+设置 `type="multiple"` 以允许用户选择多个日期：
 
 <Demo data={YearPickerDemos.multiple} />
 
-## Dates range
+## 日期范围
 
-Set `type="range"` to allow users to pick a date range:
+设置 `type="range"` 以允许用户选择日期范围：
 
 <Demo data={YearPickerDemos.range} />
 
-## Single date in range
+## 范围内的单个日期
 
-By default, it is not allowed to select a single date as a range – when the user clicks the same date a second time, it is deselected.
-To change this behavior, set the `allowSingleDateInRange` prop. `allowSingleDateInRange` is ignored when the
-`type` prop is not `range`.
+默认情况下，不允许将单个日期选为范围——当用户第二次点击同一日期时，它会被取消选择。
+要更改此行为，请设置 `allowSingleDateInRange` prop。当 `type` prop 不是 `range` 时，`allowSingleDateInRange` 被忽略。
 
 <Demo data={YearPickerDemos.singleRange} />
 
-## Presets
+## 预设
 
-Use the `presets` prop to add custom year presets. Presets are displayed next to the calendar:
+使用 `presets` prop 添加自定义年份预设。预设显示在日历旁边：
 
 <Demo data={YearPickerDemos.presets} />
 
-To use `presets` with `type="range"`, define the value as a tuple of two dates:
+要在 `type="range"` 时使用 `presets`，请将值定义为两个日期的元组：
 
 <Demo data={YearPickerDemos.presetsRange} />
 
-## Default date
+## 默认日期
 
-Use the `defaultDate` prop to set the date value that will be used to determine which decade should be displayed initially.
-For example, to display the `2040 – 2049` decade, set `defaultDate={new Date(2040, 1)}`. If the value is not specified,
-then `defaultDate` will use `new Date()`. Month, day, minutes and seconds are ignored in the provided date object, only the year is used –
-you can specify any date value.
+使用 `defaultDate` prop 设置用于确定最初显示哪个十年的日期值。
+例如，要显示 `2040 – 2049` 十年，请设置 `defaultDate={new Date(2040, 1)}`。如果未指定值，
+则 `defaultDate` 将使用 `new Date()`。提供的日期对象中的月、日、分和秒会被忽略，仅使用年份——你可以指定任意日期值。
 
-Note that if you set the `date` prop, then the `defaultDate` value will be ignored.
+注意，如果设置了 `date` prop，则 `defaultDate` 值将被忽略。
 
 <Demo data={YearPickerDemos.defaultDate} />
 
-## Controlled date
+## 受控日期
 
-Set the `date` and `onDateChange` props to make the currently displayed decade controlled.
-By doing so, you can customize the date picking experience. For example, when the user selects the first date in a range,
-you can add 20 years to the current date value:
+设置 `date` 和 `onDateChange` prop 以使当前显示的十年受控。
+通过这种方式，你可以自定义日期选择体验。例如，当用户选择范围中的第一个日期时，
+你可以将当前日期值增加 20 年：
 
 <Demo data={YearPickerDemos.controlledDate} />
 
-## Min and max date
+## 最小和最大日期
 
-Set the `minDate` and `maxDate` props to define minimum and maximum dates. If the previous/next page is not available,
-then the corresponding control will be disabled.
+设置 `minDate` 和 `maxDate` prop 以定义最小和最大日期。如果上一页/下一页不可用，
+则相应的控件将被禁用。
 
 <Demo data={YearPickerDemos.minMax} />
 
-## Add props to year control
+## 为年份控制添加 props
 
-You can add props to year controls with the `getYearControlProps` function. It accepts a year date as a single argument,
-and props returned from the function will be added to the year control. For example, it can be used to disable a specific
-control or add styles:
+你可以使用 `getYearControlProps` 函数为年份控件添加 props。它接受一个年份日期作为唯一参数，
+函数返回的 props 将被添加到年份控件。例如，可用于禁用特定控件或添加样式：
 
 <Demo data={YearPickerDemos.controlProps} />
 
-## Number of columns
+## 列数
 
-Set the `numberOfColumns` prop to define the number of pickers that will be rendered side by side:
+设置 `numberOfColumns` prop 以定义并排渲染的选择器数量：
 
 <Demo data={YearPickerDemos.numberOfColumns} />
 
-## Full width
+## 全宽
 
-Set the `fullWidth` prop to make the year picker stretch to fill 100% of its parent container width:
+设置 `fullWidth` prop 使年份选择器拉伸以填充其父容器 100% 的宽度：
 
 <Demo data={YearPickerDemos.fullWidth} />
 
-## Size
+## 尺寸
 
 <Demo data={YearPickerDemos.sizeConfigurator} />
 
-## Change year controls format
+## 更改年份控件格式
 
-Use `yearsListFormat` to change the [dayjs format](https://day.js.org/docs/en/display/format) of the year control:
+使用 `yearsListFormat` 更改年份控件的 [dayjs 格式](https://day.js.org/docs/en/display/format)：
 
 <Demo data={YearPickerDemos.yearsListFormat} />
 
-## Change decade label format
+## 更改十年标签格式
 
-Use `decadeLabelFormat` to change the [dayjs format](https://day.js.org/docs/en/display/format) of the decade label:
+使用 `decadeLabelFormat` 更改十年标签的 [dayjs 格式](https://day.js.org/docs/en/display/format)：
 
 <Demo data={YearPickerDemos.decadeLabelFormat} />
 
-## Accessibility
+## 无障碍
 
-### Aria labels
+### Aria 标签
 
-Set the `ariaLabels` prop to specify `aria-label` attributes for next/previous controls:
+设置 `ariaLabels` prop 以为上一页/下一页控件指定 `aria-label` 属性：
 
 ```tsx
 import { YearPicker } from '@react-ui/ui';
@@ -129,9 +125,9 @@ function Demo() {
 }
 ```
 
-### Year control aria-label
+### 年份控件 aria-label
 
-Use `getYearControlProps` to customize the `aria-label` attribute:
+使用 `getYearControlProps` 自定义 `aria-label` 属性：
 
 ```tsx
 import { YearPicker } from '@react-ui/ui';
@@ -147,29 +143,29 @@ function Demo() {
 }
 ```
 
-### Keyboard interactions
+### 键盘交互
 
-Note that the following events will only trigger if focus is on a year control.
+注意，以下事件仅在焦点位于年份控件上时触发。
 
 <KeyboardEventsTable
   data={[
     {
       key: 'ArrowRight',
-      description: 'Focuses next non-disabled year',
+      description: '聚焦下一个非禁用年份',
     },
     {
       key: 'ArrowLeft',
-      description: 'Focuses previous non-disabled year',
+      description: '聚焦上一个非禁用年份',
     },
     {
       key: 'ArrowDown',
       description:
-        'Focuses next non-disabled year in the same column',
+        '聚焦同一列中的下一个非禁用年份',
     },
     {
       key: 'ArrowUp',
       description:
-        'Focuses previous non-disabled year in the same column',
+        '聚焦同一列中的上一个非禁用年份',
     },
   ]}
 />

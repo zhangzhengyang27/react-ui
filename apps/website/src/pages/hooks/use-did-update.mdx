@@ -3,22 +3,22 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useDidUpdate);
 
-## Usage
+## 用法
 
-The `use-did-update` hook works the same way as `useEffect` but it is not called when the component is mounted:
+`use-did-update` Hook 的工作方式与 `useEffect` 相同，但组件挂载时不会被调用：
 
 ```tsx
 import { useDidUpdate } from '@react-ui/hooks';
 
 function Demo() {
   useDidUpdate(
-    () => console.log("Will not be called when mounted"),
+    () => console.log("挂载时不会被调用"),
     [dependency1, dependency2]
   );
 }
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 function useDidUpdate(fn: React.EffectCallback, dependencies?: any[]): void;

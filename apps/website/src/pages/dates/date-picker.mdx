@@ -4,188 +4,184 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.DatePicker);
 
-## Usage
+## 用法
 
 <Demo data={DatePickerDemos.usage} />
 
-## Allow deselect
+## 允许取消选择
 
-Set `allowDeselect` to allow users to deselect the currently selected date by clicking on it.
-`allowDeselect` is disregarded when the `type` prop is `range` or `multiple`. When a date is
-deselected, `onChange` is called with `null`.
+设置 `allowDeselect` 以允许用户通过点击当前选中的日期来取消选择它。
+当 `type` prop 为 `range` 或 `multiple` 时，`allowDeselect` 被忽略。当日期被取消选择时，`onChange` 会传入 `null`。
 
 <Demo data={DatePickerDemos.deselect} />
 
-## Multiple dates
+## 多个日期
 
-Set `type="multiple"` to allow users to pick multiple dates:
+设置 `type="multiple"` 以允许用户选择多个日期：
 
 <Demo data={DatePickerDemos.multiple} />
 
-## Dates range
+## 日期范围
 
-Set `type="range"` to allow users to pick a date range:
+设置 `type="range"` 以允许用户选择日期范围：
 
 <Demo data={DatePickerDemos.range} />
 
-## Single date in range
+## 范围内的单个日期
 
-By default, it is not allowed to select a single date as a range – when the user clicks the same date a second time, it is deselected.
-To change this behavior, set the `allowSingleDateInRange` prop. `allowSingleDateInRange` is ignored when the
-`type` prop is not `range`.
+默认情况下，不允许将单个日期选择为范围——当用户第二次点击同一日期时，它会被取消选择。
+要更改此行为，请设置 `allowSingleDateInRange` prop。当 `type` prop 不是 `range` 时，`allowSingleDateInRange` 会被忽略。
 
 <Demo data={DatePickerDemos.singleRange} />
 
-## Presets
+## 预设
 
-Use the `presets` prop to add custom date presets. Presets are displayed next to the calendar:
+使用 `presets` prop 添加自定义日期预设。预设显示在日历旁边：
 
 <Demo data={DatePickerDemos.presets} />
 
-To use `presets` with `type="range"`, define the value as a tuple of two dates:
+要在 `type="range"` 时使用 `presets`，请将值定义为两个日期的元组：
 
 <Demo data={DatePickerDemos.presetsRange} />
 
-## Default date
+## 默认日期
 
-Use the `defaultDate` prop to set the date value that will be used to determine which year should be displayed initially.
-For example, to display the `2015 February` month, set `defaultDate={new Date(2015, 1)}`. If the value is not specified,
-then `defaultDate` will use `new Date()`. Day, minutes and seconds are ignored in the provided date object, only year and month data is used –
-you can specify any date value.
+使用 `defaultDate` prop 设置用于确定最初应显示哪一年的日期值。
+例如，要显示 `2015 年 2 月`，请设置 `defaultDate={new Date(2015, 1)}`。如果未指定值，
+则 `defaultDate` 将使用 `new Date()`。提供的日期对象中的日、分和秒被忽略，仅使用年和月数据——
+你可以指定任何日期值。
 
-Note that if you set the `date` prop, then the `defaultDate` value will be ignored.
+注意，如果你设置了 `date` prop，则 `defaultDate` 值将被忽略。
 
 <Demo data={DatePickerDemos.defaultDate} />
 
-## Controlled date
+## 受控日期
 
-Set the `date` and `onDateChange` props to make the currently displayed month, year and decade controlled.
-By doing so, you can customize the date picking experience. For example, when the user selects the first date in a range,
-you can add one month to the current date value:
+设置 `date` 和 `onDateChange` props 以使当前显示的月、年和十年受控。
+通过这样做，你可以自定义日期选择体验。例如，当用户选择范围中的第一个日期时，
+你可以给当前日期值加一个月：
 
 <Demo data={DatePickerDemos.controlledDate} />
 
-## Default level
+## 默认级别
 
-Set the `defaultLevel` prop to configure the initial level that will be displayed:
+设置 `defaultLevel` prop 以配置最初显示的级别：
 
 <Demo data={DatePickerDemos.defaultLevel} />
 
-## Hide outside dates
+## 隐藏外部日期
 
-Set the `hideOutsideDates` prop to remove all dates that do not belong to the current month:
+设置 `hideOutsideDates` prop 以移除所有不属于当前月的日期：
 
 <Demo data={DatePickerDemos.hideOutsideDates} />
 
-## Display week numbers
+## 显示周数
 
-Set the `withWeekNumbers` prop to display week numbers:
+设置 `withWeekNumbers` prop 以显示周数：
 
 <Demo data={DatePickerDemos.withWeekNumbers} />
 
-## First day of week
+## 每周第一天
 
-Set the `firstDayOfWeek` prop to configure the first day of the week. The prop accepts a number from 0 to 6,
-where 0 is Sunday and 6 is Saturday. The default value is 1 – Monday. You can also configure this option
-for all components with [DatesProvider](/dates/getting-started/).
+设置 `firstDayOfWeek` prop 以配置每周第一天。该 prop 接受 0 到 6 之间的数字，
+其中 0 是星期日，6 是星期六。默认值为 1 – 星期一。你也可以使用 [DatesProvider](/dates/getting-started/) 为所有组件配置此选项。
 
 <Demo data={DatePickerDemos.firstDayOfWeek} />
 
-## Hide weekdays
+## 隐藏工作日
 
-Set the `hideWeekdays` prop to hide weekday names:
+设置 `hideWeekdays` prop 以隐藏工作日名称：
 
 <Demo data={DatePickerDemos.hideWeekdays} />
 
-## Weekend days
+## 周末日期
 
-Use the `weekendDays` prop to configure weekend days. The prop accepts an array of numbers from 0 to 6,
-where 0 is Sunday and 6 is Saturday. The default value is `[0, 6]` – Saturday and Sunday. You can also configure this option
-for all components with [DatesProvider](/dates/getting-started/).
+使用 `weekendDays` prop 配置周末日期。该 prop 接受 0 到 6 之间的数字数组，
+其中 0 是星期日，6 是星期六。默认值为 `[0, 6]` – 星期六和星期日。你也可以使用 [DatesProvider](/dates/getting-started/) 为所有组件配置此选项。
 
 <Demo data={DatePickerDemos.weekendDays} />
 
-## Render day function
+## 自定义日期渲染函数
 
-You can customize day rendering with the `renderDay` prop. For example, it can be used to add
-[Indicator](/core/indicator/) to certain days.
+你可以使用 `renderDay` prop 自定义日期渲染。例如，它可以用于为
+某些日期添加 [Indicator](/core/indicator/)。
 
 <Demo data={DatePickerDemos.renderDay} />
 
-## Min and max date
+## 最小和最大日期
 
-Set the `minDate` and `maxDate` props to define minimum and maximum dates. If the previous/next page is not available,
-then the corresponding control will be disabled.
+设置 `minDate` 和 `maxDate` props 以定义最小和最大日期。如果上一页/下一页不可用，
+则相应的控件将被禁用。
 
 <Demo data={DatePickerDemos.minMax} />
 
-## Change header controls order
+## 更改标题控件顺序
 
-Use the `headerControlsOrder` prop to change the order of header controls. The prop accepts an array of
-`'next' | 'previous' | 'level'`. Note that each control can be used only once in the array.
+使用 `headerControlsOrder` prop 更改标题控件的顺序。该 prop 接受一个
+`'next' | 'previous' | 'level'` 数组。注意，每个控件在数组中只能使用一次。
 
 <Demo data={DatePickerDemos.headerControlsOrder} />
 
-## Add props to day, year and month control
+## 向日、年和月控件添加 props
 
-You can add props to year, month and day controls with the `getYearControlProps`, `getMonthControlProps` and `getDayProps` functions. All functions accept a date as a single argument,
-and props returned from the function will be added to the year/month/day control. For example, it can be used to disable a specific
-control or add styles:
+你可以使用 `getYearControlProps`、`getMonthControlProps` 和 `getDayProps` 函数向日、月和日控件添加 props。所有函数都接受一个日期作为单个参数，
+从函数返回的 props 将被添加到年/月/日控件上。例如，它可以用于禁用特定
+控件或添加样式：
 
 <Demo data={DatePickerDemos.controlProps} />
 
-## Exclude dates
+## 排除日期
 
-To disable specific dates, use the `excludeDate` prop.
-It accepts a function that takes a date as an argument and returns a boolean value – if `true` is returned, the date will be disabled.
-Example of disabling all dates that are not Fridays:
+要禁用特定日期，请使用 `excludeDate` prop。
+它接受一个以日期为参数并返回布尔值的函数——如果返回 `true`，该日期将被禁用。
+禁用所有非星期五日期的示例：
 
 <Demo data={DatePickerDemos.excludeDate} />
 
-## Number of columns
+## 列数
 
-Set the `numberOfColumns` prop to define the number of pickers that will be rendered side by side:
+设置 `numberOfColumns` prop 以定义并排渲染的选择器数量：
 
 <Demo data={DatePickerDemos.numberOfColumns} />
 
-## Max level
+## 最大级别
 
 <Demo data={DatePickerDemos.maxLevel} />
 
-## Full width
+## 全宽
 
-Set the `fullWidth` prop to make the date picker stretch to fill 100% of its parent container width:
+设置 `fullWidth` prop 使日期选择器拉伸以填充其父容器宽度的 100%：
 
 <Demo data={DatePickerDemos.fullWidth} />
 
-## Size
+## 尺寸
 
 <Demo data={DatePickerDemos.sizeConfigurator} />
 
-## Change year and months controls format
+## 更改年和月控件格式
 
-Use the `yearsListFormat` and `monthsListFormat` props to change the [dayjs format](https://day.js.org/docs/en/display/format) of year/month controls:
+使用 `yearsListFormat` 和 `monthsListFormat` props 更改年/月控件的 [dayjs 格式](https://day.js.org/docs/en/display/format)：
 
 <Demo data={DatePickerDemos.listFormat} />
 
-## Change label format
+## 更改标签格式
 
-Use the `decadeLabelFormat`, `yearLabelFormat` and `monthLabelFormat` props to change the [dayjs format](https://day.js.org/docs/en/display/format) of the decade/year label:
+使用 `decadeLabelFormat`、`yearLabelFormat` 和 `monthLabelFormat` props 更改十年/年标签的 [dayjs 格式](https://day.js.org/docs/en/display/format)：
 
 <Demo data={DatePickerDemos.labelFormat} />
 
-## Localization
+## 本地化
 
-Usually it is better to specify the `@react-ui/ui` package locale in [DatesProvider](/dates/getting-started/),
-but you can also override the locale per component:
+通常最好在 [DatesProvider](/dates/getting-started/) 中指定 `@react-ui/ui` 包的 locale，
+但你也可以按组件覆盖 locale：
 
 <Demo data={DatePickerDemos.locale} />
 
-## Accessibility
+## 无障碍
 
-### Aria labels
+### Aria 标签
 
-Set the `ariaLabels` prop to specify `aria-label` attributes for next/previous controls:
+设置 `ariaLabels` prop 以为下一页/上一页控件指定 `aria-label` 属性：
 
 ```tsx
 import { DatePicker } from '@react-ui/ui';
@@ -194,23 +190,23 @@ function Demo() {
   return (
     <DatePicker
       ariaLabels={{
-        nextDecade: 'Next decade',
-        previousDecade: 'Previous decade',
-        nextYear: 'Next year',
-        previousYear: 'Previous year',
-        nextMonth: 'Next month',
-        previousMonth: 'Previous month',
-        yearLevelControl: 'Change to decade view',
-        monthLevelControl: 'Change to year view',
+        nextDecade: '下一个十年',
+        previousDecade: '上一个十年',
+        nextYear: '下一年',
+        previousYear: '上一年',
+        nextMonth: '下一个月',
+        previousMonth: '上一个月',
+        yearLevelControl: '切换到十年视图',
+        monthLevelControl: '切换到年视图',
       }}
     />
   );
 }
 ```
 
-### Year/month control aria-label
+### 年/月控件 aria-label
 
-Use `getYearControlProps`/`getMonthControlProps`/`getDayProps` to customize the `aria-label` attribute:
+使用 `getYearControlProps`/`getMonthControlProps`/`getDayProps` 自定义 `aria-label` 属性：
 
 ```tsx
 import { DatePicker } from '@react-ui/ui';
@@ -219,44 +215,44 @@ function Demo() {
   return (
     <DatePicker
       getDayProps={(date) => ({
-        'aria-label': `Select date ${
+        'aria-label': `选择日期 ${
           date.getMonth() + 1
         }/${date.getDate()}/${date.getFullYear()}`,
       })}
       getYearControlProps={(date) => ({
-        'aria-label': `Select year ${date.getFullYear()}`,
+        'aria-label': `选择年份 ${date.getFullYear()}`,
       })}
       getMonthControlProps={(date) => ({
-        'aria-label': `Select month ${date.getFullYear()}/${date.getMonth()}`,
+        'aria-label': `选择月份 ${date.getFullYear()}/${date.getMonth()}`,
       })}
     />
   );
 }
 ```
 
-### Keyboard interactions
+### 键盘交互
 
-Note that the following events will only trigger if focus is on a date control.
+注意，以下事件仅在焦点位于日期控件上时触发。
 
 <KeyboardEventsTable
   data={[
     {
       key: 'ArrowRight',
-      description: 'Focuses next non-disabled date',
+      description: '聚焦下一个非禁用日期',
     },
     {
       key: 'ArrowLeft',
-      description: 'Focuses previous non-disabled date',
+      description: '聚焦上一个非禁用日期',
     },
     {
       key: 'ArrowDown',
       description:
-        'Focuses next non-disabled date in the same column',
+        '聚焦同一列中的下一个非禁用日期',
     },
     {
       key: 'ArrowUp',
       description:
-        'Focuses previous non-disabled date in the same column',
+        '聚焦同一列中的上一个非禁用日期',
     },
   ]}
 />

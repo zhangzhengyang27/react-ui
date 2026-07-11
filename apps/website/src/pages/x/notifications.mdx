@@ -4,23 +4,23 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Notifications);
 
-## Installation
+## 安装
 
 <InstallScript packages="@react-ui/ui" />
 
-After installation import package styles at the root of your application:
+安装完成后，在应用根目录导入包样式：
 
 ```tsx
 import '@react-ui/ui/styles.css';
-// ‼️ import notifications styles after core package styles
+// ‼️ notifications 样式必须在核心包样式之后导入
 import '@react-ui/ui/styles.css';
 ```
 
-Add the `Notifications` component anywhere in your application. Note that:
+在应用中的任意位置添加 `Notifications` 组件。注意：
 
-- It is required to render the `Notifications` component inside [MantineProvider](/theming/mantine-provider/)
-- You do not need to wrap your application with the `Notifications` component – it is not a provider, it is a regular component
-- You should not render multiple `Notifications` components – if you do that, your notifications will be duplicated
+- 必须在 [MantineProvider](/theming/mantine-provider/) 内部渲染 `Notifications` 组件
+- 你不需要用 `Notifications` 组件包裹整个应用——它不是 provider，而是一个普通组件
+- 你不应该渲染多个 `Notifications` 组件——如果这样做，你的通知会被重复显示
 
 ```tsx
 import { MantineProvider } from '@react-ui/ui';
@@ -30,48 +30,45 @@ function Demo() {
   return (
     <MantineProvider>
       <Notifications />
-      {/* Your app here */}
+      {/* 你的应用内容 */}
     </MantineProvider>
   );
 }
 ```
 
-All set! You can now use all notification system features.
+全部完成！你现在可以使用通知系统的所有功能。
 
 <Demo data={NotificationsDemos.base} />
 
-## Do not forget to import styles
+## 不要忘记导入样式
 
-Have you followed the installation instructions above but something is not working
-(`position` prop not working, notifications are stuck at the bottom)?
-You've fallen into the trap of not importing notification styles!
-To fix the issue, import notification styles at the root of your application:
+你已经按照上面的安装说明操作，但某些功能仍然无法正常工作（`position` 属性不生效、通知卡住在底部）？你掉入了未导入通知样式的陷阱！要解决这个问题，请在应用根目录导入通知样式：
 
 ```tsx
 import '@react-ui/ui/styles.css';
 ```
 
-## Functions
+## 函数
 
-The `@react-ui/ui` package exports a `notifications` object with the following functions:
+`@react-ui/ui` 包导出一个 `notifications` 对象，包含以下函数：
 
-- `notifications.show` – adds a given notification to the notifications list or queue, depending on the current state and `limit`
-- `notifications.hide` – removes a notification with the given `id` from the notifications state and queue
-- `notifications.update` – updates a notification that was previously added to the state or queue
-- `notifications.updateState` – executes a given callback with current notifications state and queue as an argument and updates state with the returned value
-- `notifications.clean` – removes all notifications from the notifications state and queue
-- `notifications.cleanQueue` – removes all notifications from the queue
+- `notifications.show` – 将给定的通知添加到通知列表或队列中，具体取决于当前状态和 `limit`
+- `notifications.hide` – 从通知状态和队列中移除具有给定 `id` 的通知
+- `notifications.update` – 更新之前已添加到状态或队列中的通知
+- `notifications.updateState` – 执行一个回调，该回调接收当前通知状态和队列作为参数，并用返回值更新状态
+- `notifications.clean` – 从通知状态和队列中移除所有通知
+- `notifications.cleanQueue` – 从队列中移除所有通知
 
-All functions can be imported from the `@react-ui/ui` package and can be used in any part of your application:
+所有函数都可以从 `@react-ui/ui` 包导入，并可在应用的任何部分使用：
 
 ```tsx
 import { notifications } from '@react-ui/ui';
 ```
 
-You can also import these functions separately:
+你也可以单独导入这些函数：
 
 ```tsx
-// alias functions
+// 别名函数
 import {
   cleanNotifications, // notifications.clean
   cleanNotificationsQueue, // notifications.cleanQueue
@@ -82,32 +79,32 @@ import {
 } from '@react-ui/ui';
 ```
 
-## Notification props
+## 通知属性
 
-`notifications.show` and `notifications.update` functions can be called with an object that has the following properties:
+`notifications.show` 和 `notifications.update` 函数可以用一个具有以下属性的对象调用：
 
-- `id` – notification id, it is used to update and remove notifications; by default, `id` is randomly generated
-- `position` – notification position; by default, the value from the `position` prop of the `Notifications` component is used
-- `withBorder` – determines whether the notification should have a border
-- `withCloseButton` – determines whether the close button should be visible
-- `allowClose` – determines whether notification can be closed with close button, drag or horizontal scroll swipe, `true` by default
-- `onClose` – called when the notification is unmounted
-- `onOpen` – called when the notification is mounted
-- `autoClose` – defines timeout in ms after which the notification will be automatically closed; use `false` to disable auto close
-- `priority` – display priority used when the number of active notifications exceeds `limit`; higher numbers are shown first, defaults to `0`
-- `message` – required notification body
-- `color, icon, title, radius, className, style, loading` – props passed down to the [Notification](/core/notification/) component
+- `id` – 通知 id，用于更新和移除通知；默认情况下，`id` 随机生成
+- `position` – 通知位置；默认情况下，使用 `Notifications` 组件的 `position` 属性值
+- `withBorder` – 决定通知是否显示边框
+- `withCloseButton` – 决定关闭按钮是否可见
+- `allowClose` – 决定通知是否可以通过关闭按钮、拖动或水平滑动手势关闭，默认为 `true`
+- `onClose` – 通知卸载时调用
+- `onOpen` – 通知挂载时调用
+- `autoClose` – 定义通知自动关闭前的超时时间（毫秒）；使用 `false` 禁用自动关闭
+- `priority` – 当活动通知数量超过 `limit` 时使用的显示优先级；数字越大越优先显示，默认为 `0`
+- `message` – 必需的通知正文
+- `color, icon, title, radius, className, style, loading` – 传递给 [Notification](/core/notification/) 组件的属性
 
-All properties except `message` are optional.
+除 `message` 外，所有属性都是可选的。
 
 ```tsx
 import { XIcon } from '@phosphor-icons/react';
 import { notifications } from '@react-ui/ui';
 
-// Bare minimum – message is required for all notifications
+// 最低要求 – message 对所有通知都是必需的
 notifications.show({ message: 'Hello' });
 
-// Most used notification props
+// 最常用的通知属性
 notifications.show({
   id: 'hello-there',
   position: 'bottom-center',
@@ -126,19 +123,18 @@ notifications.show({
 });
 ```
 
-Notifications preview (`message` prop used as `children`):
+通知预览（`message` 属性用作 `children`）：
 
 <Demo
   data={NotificationDemos.configurator}
   configuratorProps={{ includeCode: false }}
 />
 
-## Dismiss interactions
+## 关闭交互
 
-Notifications can be dismissed by dragging them left or right, or with a horizontal scroll swipe
-while hovered.
+可以通过左右拖动通知，或在悬停时水平滚动滑动手势来关闭通知。
 
-Use `allowDragDismiss` and `allowScrollDismiss` on `Notifications` to disable either interaction:
+在 `Notifications` 上使用 `allowDragDismiss` 和 `allowScrollDismiss` 来禁用任一交互：
 
 ```tsx
 import { Notifications } from '@react-ui/ui';
@@ -148,20 +144,17 @@ function Demo() {
 }
 ```
 
-To make a specific notification non-dismissible, set `allowClose: false` in
-`notifications.show` or `notifications.update`. This hides the close button and disables
-drag/scroll dismissal for that notification.
+要使特定通知不可关闭，请在 `notifications.show` 或 `notifications.update` 中设置 `allowClose: false`。这会隐藏关闭按钮，并禁用该通知的拖动/滚动关闭。
 
-## Customize notification styles
+## 自定义通知样式
 
-You can use `style`, `className` or [Styles API](/styles/styles-api/) `classNames`, `styles` props to customize notification styles.
-Usually, it is better to override [Notification](/core/notification) styles with `classNames` prop in the [theme object](/theming/theme-object/).
+你可以使用 `style`、`className` 或 [Styles API](/styles/styles-api/) 的 `classNames`、`styles` 属性来自定义通知样式。通常，更好的方式是在 [theme 对象](/theming/theme-object/) 中使用 `classNames` 属性覆盖 [Notification](/core/notification) 的样式。
 
 <Demo data={NotificationsDemos.customize} />
 
-## Notifications container position
+## 通知容器位置
 
-You can define the notification position in the `notifications.show` function. Possible `position` values:
+你可以在 `notifications.show` 函数中定义通知位置。可能的 `position` 值：
 
 - `top-left`
 - `top-right`
@@ -172,9 +165,7 @@ You can define the notification position in the `notifications.show` function. P
 
 <Demo data={NotificationsDemos.position} />
 
-The `position` can be defined on the `Notifications` component.
-In the following example, notifications will be displayed in the top right corner of the screen
-if `position` is not defined in the `notifications.show` function:
+`position` 也可以在 `Notifications` 组件上定义。在以下示例中，如果 `notifications.show` 函数中未定义 `position`，通知将显示在屏幕右上角：
 
 ```tsx
 import { Notifications } from '@react-ui/ui';
@@ -184,10 +175,9 @@ function Demo() {
 }
 ```
 
-## Limit and queue
+## 限制与队列
 
-You can limit the maximum number of notifications that are displayed at a time by setting
-the `limit` prop on `Notifications`:
+你可以通过在 `Notifications` 上设置 `limit` 属性来限制同时显示的最大通知数量：
 
 ```tsx
 import { Notifications } from '@react-ui/ui';
@@ -197,42 +187,30 @@ function Demo() {
 }
 ```
 
-All notifications added after the `limit` was reached are added to the queue
-and displayed when a notification from the current state is hidden.
+达到 `limit` 后添加的所有通知都会进入队列，并在当前状态中的通知隐藏时显示。
 
 <Demo data={NotificationsDemos.limit} />
 
-## Priority
+## 优先级
 
-By default, notifications are distributed between the visible state and the queue in
-insertion order (FIFO): the first `limit` notifications are visible and the rest wait
-in the queue. Set the `priority` property in `notifications.show` or `notifications.update`
-to control which notifications take the visible slots when there are more active
-notifications than the `limit` allows.
+默认情况下，通知按照插入顺序（FIFO）分配到可见状态和队列：前 `limit` 个通知可见，其余在队列中等待。在 `notifications.show` 或 `notifications.update` 中设置 `priority` 属性，以控制当活动通知数量超过 `limit` 时，哪些通知占据可见位置。
 
-- Notifications with a higher `priority` are shown before notifications with a lower one.
-- Notifications with equal `priority` keep insertion order (FIFO).
-- `priority` defaults to `0`, so notifications without it behave exactly as before.
-- Within the visible set, higher priority notifications are rendered first.
+- `priority` 较高的通知会在 `priority` 较低的通知之前显示。
+- `priority` 相等的通知保持插入顺序（FIFO）。
+- `priority` 默认为 `0`，因此未设置优先级的通知行为与之前完全相同。
+- 在可见集合中，优先级较高的通知会先渲染。
 
-When a high priority notification is added while the visible state is already at `limit`,
-it takes a visible slot and the lowest priority visible notification is moved into the queue –
-even if it was already displayed. Priority is applied independently for each position.
+当可见状态已达到 `limit` 时添加高优先级通知，它会占据一个可见位置，而优先级最低的可见通知会被移入队列——即使它已经在显示中。优先级对每个位置独立应用。
 
-Note that a notification that is moved from the visible state back into the queue is unmounted
-and mounted again when it returns to a visible slot, so its `onOpen` callback runs each time it
-becomes visible.
+注意，从可见状态移回队列的通知会被卸载，并在重新返回可见位置时再次挂载，因此它的 `onOpen` 回调每次变为可见时都会运行。
 
-In the following example the `Notifications` component uses `limit={1}`. Show a low priority
-notification first, then a high priority one: the high priority notification replaces the
-low priority one, which is moved to the queue and shown again once the high priority
-notification is closed.
+在以下示例中，`Notifications` 组件使用 `limit={1}`。先显示一个低优先级通知，然后显示一个高优先级通知：高优先级通知会替换低优先级通知，低优先级通知被移入队列，并在高优先级通知关闭后再次显示。
 
 <Demo data={NotificationsDemos.priority} />
 
-## Remove notifications from state and queue
+## 从状态和队列中移除通知
 
-To remove a specific notification from state or queue, use the `notifications.hide` function:
+要从状态或队列中移除特定通知，请使用 `notifications.hide` 函数：
 
 ```tsx
 import { notifications } from '@react-ui/ui';
@@ -241,29 +219,28 @@ const id = notifications.show({ message: 'Hello!' });
 notifications.hide(id);
 ```
 
-Use the `notifications.cleanQueue` function to remove all notifications from the queue and
-`notifications.clean` to remove all notifications both from the state and queue:
+使用 `notifications.cleanQueue` 函数移除队列中的所有通知，使用 `notifications.clean` 移除状态和队列中的所有通知：
 
 <Demo data={NotificationsDemos.clean} />
 
-## Update notification
+## 更新通知
 
 <Demo data={NotificationsDemos.update} />
 
-## Auto close
+## 自动关闭
 
-You can configure the auto close timeout with `Notifications`:
+你可以通过 `Notifications` 配置自动关闭超时时间：
 
 ```tsx
 import { Notifications } from '@react-ui/ui';
 
-// All notifications will be closed automatically in 4000ms
+// 所有通知将在 4000ms 后自动关闭
 function Demo() {
   return <Notifications autoClose={4000} />;
 }
 ```
 
-Or per notification in the `notifications.show`/`notifications.update` functions:
+或在 `notifications.show`/`notifications.update` 函数中针对每个通知进行配置：
 
 ```tsx
 import { notifications } from '@react-ui/ui';
@@ -280,17 +257,16 @@ notifications.update({
 });
 ```
 
-`notifications.show` and `notifications.update` functions' `autoClose` prop has higher priority.
+`notifications.show` 和 `notifications.update` 函数的 `autoClose` 属性优先级更高。
 
 <Demo data={NotificationsDemos.autoclose} />
 
-## Pause auto close on hover
+## 悬停时暂停自动关闭
 
-By default, hovering over any notification pauses the auto close timer of all
-visible notifications. You can change this behavior with the `pauseResetOnHover` prop:
+默认情况下，悬停在任意通知上会暂停所有可见通知的自动关闭计时器。你可以通过 `pauseResetOnHover` 属性更改此行为：
 
-- `pauseResetOnHover="all"` (default) – pauses auto close for all notifications when any notification is hovered
-- `pauseResetOnHover="notification"` – pauses auto close only for the hovered notification
+- `pauseResetOnHover="all"`（默认）– 悬停任意通知时暂停所有通知的自动关闭
+- `pauseResetOnHover="notification"` – 仅暂停被悬停通知的自动关闭
 
 ```tsx
 import { Notifications } from '@react-ui/ui';
@@ -300,11 +276,8 @@ function Demo() {
 }
 ```
 
-## Subscribe to notifications state
+## 订阅通知状态
 
-You can subscribe to notification state changes with the `useNotifications` hook.
-The hook returns an object with `notifications` and `queue` arrays. The `notifications`
-array contains all notifications that are currently displayed; `queue` contains
-notifications that are waiting to be displayed.
+你可以使用 `useNotifications` hook 订阅通知状态变化。该 hook 返回一个包含 `notifications` 和 `queue` 数组的对象。`notifications` 数组包含当前显示的所有通知；`queue` 数组包含等待显示的通知。
 
 <Demo data={NotificationsDemos.store} />

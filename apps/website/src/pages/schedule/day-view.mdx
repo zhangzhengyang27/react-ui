@@ -4,310 +4,264 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.DayView);
 
-## Usage
+## 用法
 
-DayView displays events for a single day with time slots. It supports all-day events, overlapping events,
-drag and drop, custom time ranges, and more.
+DayView 显示单日的事件，按时间槽排列。它支持全天事件、重叠事件、拖拽、自定义时间范围等。
 
 <Demo data={DayViewDemos.usage} />
 
-## Time range
+## 时间范围
 
-Use `startTime` and `endTime` props to set the visible time range. Times should be in `HH:mm:ss` format.
-This is useful for focusing on specific hours like business hours.
+使用 `startTime` 和 `endTime` prop 设置可见时间范围。时间应为 `HH:mm:ss` 格式。
+这对于关注特定时段（如工作时间）很有用。
 
 <Demo data={DayViewDemos.timeRange} />
 
-## Start scroll time
+## 初始滚动时间
 
-Use `startScrollTime` prop to set the initial scroll position to a specific time.
-The value should be in `HH:mm:ss` format. This is useful when you want the view to
-open at a specific time (e.g., business hours start) instead of midnight.
+使用 `startScrollTime` prop 将初始滚动位置设置到特定时间。
+值应为 `HH:mm:ss` 格式。当你希望视图打开时显示特定时间（例如工作时间开始）而不是午夜时，这很有用。
 
 <Demo data={DayViewDemos.startScrollTime} />
 
-## Interval minutes
+## 间隔分钟数
 
-`intervalMinutes` prop controls the granularity of time slots. Default is `15` minutes.
-Common values are 15, 30, or 60 minutes.
+`intervalMinutes` prop 控制时间槽的粒度。默认值为 `15` 分钟。
+常见值为 15、30 或 60 分钟。
 
 <Demo data={DayViewDemos.intervalMinutes} />
 
-## Sub-hour grid lines
+## 亚小时网格线
 
-When `intervalMinutes` is smaller than `60`, set `withSubHourGridLines={false}` to display only one
-grid line per hour while keeping the smaller interval for creating and resizing events. This is useful
-to achieve a Google Calendar like layout: events snap to 15 or 30 minutes increments, but the grid
-stays clean with hourly lines.
+当 `intervalMinutes` 小于 `60` 时，设置 `withSubHourGridLines={false}` 以每小时只显示一条网格线，同时保留较小间隔用于创建和调整事件。这有助于实现类似 Google Calendar 的布局：事件吸附到 15 或 30 分钟增量，但网格保持每小时的简洁线条。
 
 <Demo data={DayViewDemos.subHourGridLines} />
 
-## All-day events
+## 全天事件
 
-Events that span the entire day are displayed in a dedicated all-day section at the top.
-When there are more than 2 all-day events, the component shows a "More events" indicator.
+跨越全天的事件显示在顶部专门的全天区域。当全天事件超过 2 个时，组件会显示 "More events" 指示器。
 
 <Demo data={DayViewDemos.allDayEvents} />
 
-## Overlapping events
+## 重叠事件
 
-When multiple events overlap in time, they are automatically positioned side by side
-with appropriate widths and offsets.
+当多个事件在时间上重叠时，它们会自动并排定位，具有适当的宽度和偏移。
 
 <Demo data={DayViewDemos.overlappingEvents} />
 
-## Current time indicator
+## 当前时间指示器
 
-Set `withCurrentTimeIndicator` to display a line showing the current time.
-By default, it's only shown for the current day. Set `withCurrentTimeBubble={false}`
-to hide the time bubble.
+设置 `withCurrentTimeIndicator` 以显示一条指示当前时间的线。
+默认情况下，它仅对当前日期显示。设置 `withCurrentTimeBubble={false}` 以隐藏时间气泡。
 
 <Demo data={DayViewDemos.currentTimeIndicator} />
 
-## Current time indicator in a different timezone
+## 不同时区的当前时间指示器
 
-`@react-ui/schedule` works with timezone-agnostic `YYYY-MM-DD HH:mm:ss` strings and does not
-perform any timezone conversions on its own. By default, the current time indicator is positioned
-based on the user's local time.
+`@react-ui/schedule` 使用时区无关的 `YYYY-MM-DD HH:mm:ss` 字符串，并且不执行任何时区转换。默认情况下，当前时间指示器根据用户本地时间定位。
 
-To display the indicator in a different timezone, use the `getCurrentTime` prop. It is a function
-that returns the current time and is called on every tick, so the indicator keeps updating
-automatically. In the example below, the current time is converted to the selected timezone with
-the [dayjs timezone plugin](https://day.js.org/docs/en/plugin/timezone) – switch the timezone to
-see the indicator and the time bubble move accordingly:
+要在不同时区显示指示器，请使用 `getCurrentTime` prop。它是一个返回当前时间的函数，并在每次 tick 时被调用，因此指示器会自动持续更新。在以下示例中，当前时间使用 [dayjs timezone 插件](https://day.js.org/docs/en/plugin/timezone) 转换为所选时区——切换时区以查看指示器和时间气泡相应移动：
 
 <Demo data={DayViewDemos.timezone} />
 
-## Business hours
+## 工作时间
 
-Use `highlightBusinessHours` and `businessHours` props to visually distinguish business hours
-from non-business hours. The `businessHours` prop accepts a tuple with start and end times
-in `HH:mm:ss` format.
+使用 `highlightBusinessHours` 和 `businessHours` prop 在视觉上区分工作时间和非工作时间。`businessHours` prop 接受一个包含开始和结束时间的元组，格式为 `HH:mm:ss`。
 
 <Demo data={DayViewDemos.businessHours} />
 
-## Custom time slot props
+## 自定义时间槽 props
 
-Use `getTimeSlotProps` to add custom props to individual time slots based on their time range.
-The function receives `{ start, end }` datetime strings in `YYYY-MM-DD HH:mm:ss` format
-and should return an object of props to spread onto the slot element, or `undefined`.
+使用 `getTimeSlotProps` 根据时间范围向单个时间槽添加自定义 props。
+该函数接收 `{ start, end }` 日期时间字符串，格式为 `YYYY-MM-DD HH:mm:ss`，
+并应返回一个要展开到槽元素上的 props 对象，或 `undefined`。
 
-This is useful for setting `data-business-hours` on a custom range that differs from the
-default 9:00–17:00, or for attaching custom event handlers to specific slots.
-Event handlers like `onClick` returned by `getTimeSlotProps` are composed with internal handlers
-(`onTimeSlotClick`) – both will fire without overriding each other.
+这对于在不同于默认 9:00–17:00 的自定义范围上设置 `data-business-hours`，或向特定槽附加自定义事件处理程序很有用。
+`getTimeSlotProps` 返回的事件处理程序（如 `onClick`）与内部处理程序（`onTimeSlotClick`）组合——两者都会触发，不会互相覆盖。
 
 <Demo data={DayViewDemos.getTimeSlotProps} />
 
-## Slot height
+## 槽高度
 
-Customize the height of time slots and the all-day section using `slotHeight` and
-`allDaySlotHeight` props. The `slotHeight` represents the height of a 1-hour slot.
+使用 `slotHeight` 和 `allDaySlotHeight` prop 自定义时间槽和全天区域的高度。`slotHeight` 表示 1 小时槽的高度。
 
 <Demo data={DayViewDemos.slotHeight} />
 
-## Without header
+## 无标题
 
-Set `withHeader={false}` to hide the header controls. This is useful when you want to
-build a custom header or embed the view in a larger component.
+设置 `withHeader={false}` 以隐藏标题控件。当你想构建自定义标题或将视图嵌入到更大组件中时，这很有用。
 
 <Demo data={DayViewDemos.withoutHeader} />
 
-## Custom header
+## 自定义标题
 
-You can build a custom header using `ScheduleHeader` compound components combined with your own controls.
-Set `withHeader={false}` on the view and compose the header externally.
+你可以使用 `ScheduleHeader` 复合组件结合你自己的控件构建自定义标题。
+在视图上设置 `withHeader={false}` 并在外部组合标题。
 
 <Demo data={DayViewDemos.customHeader} />
 
-## Header format
+## 标题格式
 
-Use `headerFormat` prop to customize the date format in the header. The format uses
-dayjs format syntax or can be a function that returns a formatted string.
+使用 `headerFormat` prop 自定义标题中的日期格式。格式使用 dayjs 格式语法，或可以是返回格式化字符串的函数。
 
 <Demo data={DayViewDemos.headerFormat} />
 
-## Slot label format
+## 槽标签格式
 
-`slotLabelFormat` prop controls the format of time labels. It accepts a dayjs format string
-or a function that returns a formatted string.
+`slotLabelFormat` prop 控制时间标签的格式。它接受 dayjs 格式字符串或返回格式化字符串的函数。
 
 <Demo data={DayViewDemos.slotLabelFormat} />
 
-## Radius
+## 圆角
 
-Use `radius` prop to control the border radius of the day view container.
+使用 `radius` prop 控制日视图容器的边框半径。
 
 <Demo data={DayViewDemos.radius} />
 
-## Drag and drop
+## 拖拽
 
-Enable drag and drop by setting `withDragDrop` prop. Use `onEventDrop` callback to handle
-event drops. All-day events cannot be dragged.
+通过设置 `withDragDrop` prop 启用拖拽。使用 `onEventDrop` 回调处理事件放下。全天事件不能被拖动。
 
 <Demo data={DayViewDemos.dragDrop} />
 
-## External drag and drop
+## 外部拖拽
 
-Use `onExternalEventDrop` to allow dragging items from outside the component into
-the schedule. External items must set data in `dataTransfer` during their `onDragStart`.
-The callback receives the `DataTransfer` object and the drop target datetime.
+使用 `onExternalEventDrop` 允许从组件外部拖动项目到调度组件中。外部项目必须在其 `onDragStart` 期间在 `dataTransfer` 中设置数据。
+回调接收 `DataTransfer` 对象和放下目标日期时间。
 
 <Demo data={DayViewDemos.externalDragDrop} />
 
-## Bidirectional drag and drop
+## 双向拖拽
 
-Combine `onExternalEventDrop` with `withEventsDragAndDrop` to enable bidirectional
-drag and drop. Items dragged from the sidebar are removed from the list and added
-to the schedule. Events dragged from the schedule back to the sidebar are removed
-from the schedule. The schedule sets `application/json` with `{ eventId }` in
-`dataTransfer` when an event is dragged, which the sidebar drop zone reads to
-identify the event.
+将 `onExternalEventDrop` 与 `withEventsDragAndDrop` 结合使用以启用双向拖拽。从侧边栏拖动的项目会从列表中移除并添加到调度组件中。从调度组件拖回侧边栏的事件会从调度组件中移除。事件被拖动时，调度组件会在 `dataTransfer` 中设置 `application/json` 和 `{ eventId }`，侧边栏放置区读取该数据以识别事件。
 
 <Demo data={DayViewDemos.bidirectionalDragDrop} />
 
-## Selective drag permissions
+## 选择性拖拽权限
 
-Use `canDragEvent` callback to control which events can be dragged. This is useful for
-implementing locked or read-only events.
+使用 `canDragEvent` 回调控制哪些事件可以被拖动。这对于实现锁定或只读事件很有用。
 
 <Demo data={DayViewDemos.canDragEvent} />
 
-## Event resize
+## 事件调整大小
 
-Enable event resizing by setting `withEventResize` prop. Users can drag the top or bottom
-edge of an event to adjust its start or end time. Use `onEventResize` callback to handle
-the resize.
+通过设置 `withEventResize` prop 启用事件调整大小。用户可以拖动事件的顶部或底部边缘来调整开始或结束时间。使用 `onEventResize` 回调处理调整大小。
 
 <Demo data={DayViewDemos.eventResize} />
 
-## Selective resize permissions
+## 选择性调整大小权限
 
-Use `canResizeEvent` callback to control which events can be resized. This is useful for
-implementing locked or read-only events that should not be resizable.
+使用 `canResizeEvent` 回调控制哪些事件可以被调整大小。这对于实现不应可调整大小的锁定或只读事件很有用。
 
 <Demo data={DayViewDemos.canResizeEvent} />
 
-## Custom event rendering
+## 自定义事件渲染
 
-Use `renderEventBody` prop to customize how events are displayed. This allows you to
-add custom icons, badges, or any other content to events.
+使用 `renderEventBody` prop 自定义事件的显示方式。这允许你向事件添加自定义图标、徽章或任何其他内容。
 
 <Demo data={DayViewDemos.renderEventBody} />
 
-## Full event customization
+## 完全自定义事件
 
-Use `renderEvent` prop to fully customize event rendering. This function receives the event
-data as the first argument and all props that would be passed to the event root element
-(including children) as the second argument, allowing you to wrap events in custom components
-like HoverCard, Tooltip, or custom wrappers.
+使用 `renderEvent` prop 完全自定义事件渲染。该函数接收事件数据作为第一个参数，以及所有将传递给事件根元素的 props（包括 children）作为第二个参数，允许你将事件包装在自定义组件中，如 HoverCard、Tooltip 或自定义包装器。
 
 <Demo data={DayViewDemos.renderEvent} />
 
-## Recurring events
+## 重复事件
 
-DayView automatically expands recurring events for the visible day.
-See [Recurring events guide](/schedule/recurring-events) for full documentation.
+DayView 会自动为可见日期展开重复事件。
+完整文档请参阅 [重复事件指南](/schedule/recurring-events)。
 
 <Demo data={DayViewDemos.recurringEvents} />
 
-## Background events
+## 背景事件
 
-Set `display="background"` on an event to render it as a full-width, semi-transparent,
-non-interactive block behind regular events. Background events are useful for marking
-unavailability, lunch breaks, focus time, or other blocked periods. They cannot be
-clicked, dragged, or resized.
+将事件的 `display` 设置为 `"background"` 可将其渲染为全宽、半透明、非交互的块，位于常规事件后方。背景事件适用于标记不可用时间、午餐休息、专注时间或其他被阻止的时段。它们不能被点击、拖动或调整大小。
 
 <Demo data={DayViewDemos.backgroundEvents} />
 
-## Custom background event styles with drag and drop blocking
+## 自定义背景事件样式并阻止拖拽
 
-Use Styles API to customize background event appearance and prevent dropping
-regular events into blocked time ranges. This example uses diagonal red lines
-to indicate blocked time and rejects drops that overlap with background events.
+使用 Styles API 自定义背景事件外观，并防止将常规事件拖放到被阻止的时间范围内。此示例使用对角红线表示被阻止的时间，并拒绝与背景事件重叠的拖放。
 
 <Demo data={DayViewDemos.backgroundEventsCustomStyle} />
 
-## Agenda view
+## 议程视图
 
-Set `withAgenda` prop to display an "Agenda" button in the header. When clicked, it opens
-an `AgendaView` showing events for the current day as a list.
+设置 `withAgenda` prop 以在标题中显示 "Agenda" 按钮。点击后，会打开一个 `AgendaView`，以列表形式显示当前日期的事件。
 
 <Demo data={DayViewDemos.withAgenda} />
 
-## Static mode
+## 静态模式
 
-Set `mode="static"` to disable all interactions. In static mode, events and time slots
-are not clickable, draggable, or hoverable. This is useful for read-only displays or reports.
+设置 `mode="static"` 以禁用所有交互。在静态模式下，事件和时间槽不可点击、拖动或悬停。这适用于只读显示或报告。
 
 <Demo data={DayViewDemos.staticMode} />
 
-## Custom labels
+## 自定义标签
 
-Use `labels` prop to override default labels for internationalization or custom text.
+使用 `labels` prop 覆盖默认标签以进行国际化或自定义文本。
 
 <Demo data={DayViewDemos.labels} />
 
-## Localization
+## 本地化
 
-Use `locale` prop to set the dayjs locale for date formatting.
-Combine it with `labels` prop to translate all UI text.
+使用 `locale` prop 设置日期格式化的 dayjs locale。
+结合 `labels` prop 以翻译所有 UI 文本。
 
 <Demo data={DayViewDemos.localization} />
 
-## Controlled date
+## 受控日期
 
-Control the date externally using the `date` prop and `onDateChange` callback.
-This allows you to build custom navigation or integrate with other components.
+使用 `date` prop 和 `onDateChange` 回调从外部控制日期。
+这允许你构建自定义导航或与其他组件集成。
 
 <Demo data={DayViewDemos.controlledDate} />
 
-## View change
+## 视图变化
 
-Use `onViewChange` prop to handle view level changes when the user clicks on view selector buttons.
+使用 `onViewChange` prop 处理用户点击视图选择器按钮时的视图级别变化。
 
 <Demo data={DayViewDemos.viewChange} />
 
-## Create and update events
+## 创建和更新事件
 
-Set `withDragSlotSelect` prop to allow users to drag across time slots to select a time range.
-When the drag ends, the `onSlotDragEnd` callback is called with the range start and end dates.
-Combined with `onTimeSlotClick`, `onAllDaySlotClick`, and `onEventClick` callbacks, this enables
-a complete event creation and editing experience.
+设置 `withDragSlotSelect` prop 以允许用户跨时间槽拖动选择时间范围。
+拖动结束时，`onSlotDragEnd` 回调会被调用并传入范围的开始和结束日期。
+结合 `onTimeSlotClick`、`onAllDaySlotClick` 和 `onEventClick` 回调，这可以实现完整的事件创建和编辑体验。
 
 <Demo data={DayViewDemos.eventForm} />
 
-## Responsive styles
+## 响应式样式
 
-DayView uses [@container queries](https://caniuse.com/css-container-queries) for responsive styles.
-The component automatically adjusts its layout based on the container width, hiding labels
-and reducing padding on smaller screens. Container queries are supported in all modern browsers.
+DayView 使用 [@container queries](https://caniuse.com/css-container-queries) 实现响应式样式。
+组件会根据容器宽度自动调整布局，在小屏幕上隐藏标签并减少内边距。所有现代浏览器都支持容器查询。
 
-## Accessibility
+## 无障碍
 
-### Focus management
+### 焦点管理
 
-In the DayView component, focus is managed to provide an efficient keyboard navigation experience:
+在 DayView 组件中，焦点管理旨在提供高效的键盘导航体验：
 
-- Only the first time slot is included in the tab order (`tabIndex={0}`)
-- All other time slots have `tabIndex={-1}` and can only be reached via arrow key navigation
-- This approach reduces the number of tab stops when navigating through the schedule
+- 只有第一个时间槽包含在 tab 顺序中（`tabIndex={0}`）
+- 所有其他时间槽的 `tabIndex={-1}`，只能通过方向键导航到达
+- 这种方法减少了在调度组件中导航时的 tab 停靠点数量
 
-### Keyboard interactions
+### 键盘交互
 
 <KeyboardEventsTable
   data={[
     {
       key: 'ArrowDown',
-      description: 'Focuses next time slot',
+      description: '聚焦下一个时间槽',
     },
     {
       key: 'ArrowUp',
-      description: 'Focuses previous time slot',
+      description: '聚焦上一个时间槽',
     },
   ]}
 />
 
-### Slot labels
+### 槽标签
 
-Each time slot button has an `aria-label` attribute with the complete slot information including the time range (e.g., "Time slot 08:00:00 - 09:00:00"). This provides screen reader users with complete context about each slot.
+每个时间槽按钮都有一个 `aria-label` 属性，包含完整的槽信息，包括时间范围（例如 "Time slot 08:00:00 - 09:00:00"）。这为屏幕阅读器用户提供了每个槽的完整上下文。

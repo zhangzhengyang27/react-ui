@@ -3,10 +3,10 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useInputState);
 
-## Usage
+## 用法
 
-The `use-input-state` hook handles the state of native inputs (with event in `onChange` handler) and custom inputs (with value in `onChange` handler).
-The hook works with all ReactUI and native inputs:
+`use-input-state` Hook 处理原生输入（事件在 `onChange` 处理函数中）和自定义输入（值在 `onChange` 处理函数中）的状态。
+该 Hook 适用于所有 ReactUI 和原生输入：
 
 ```tsx
 import { useState } from 'react';
@@ -57,7 +57,7 @@ function WithUseState() {
 }
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 type UseInputStateReturnValue<T> = [
@@ -68,10 +68,10 @@ type UseInputStateReturnValue<T> = [
 function useInputState<T>(initialState: T): UseInputStateReturnValue<T>
 ```
 
-## Exported types
+## 导出类型
 
-`UseInputStateReturnValue` type is exported from `@react-ui/hooks` package,
-you can import it in your application:
+`UseInputStateReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseInputStateReturnValue } from '@react-ui/hooks';

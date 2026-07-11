@@ -4,38 +4,33 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Calendar);
 
-## Usage
+## 用法
 
-Use the `Calendar` component to create custom date pickers if the [DatePicker](/dates/date-picker/)
-component does not meet your requirements. `Calendar` supports all [DatePicker](/dates/date-picker/)
-props and some additional props that are listed in the props table – check it out to learn about all component features.
+如果 [DatePicker](/dates/date-picker/) 组件不能满足你的需求，请使用 `Calendar` 组件创建自定义日期选择器。`Calendar` 支持所有 [DatePicker](/dates/date-picker/) 的 props 以及一些额外的 props，这些 props 列在 props 表中——查看它以了解所有组件功能。
 
-By default, `Calendar` works the same way as the [DatePicker](/dates/date-picker/) component but does not
-include any logic for date selection:
+默认情况下，`Calendar` 的工作方式与 [DatePicker](/dates/date-picker/) 组件相同，但不包含任何日期选择逻辑：
 
 <Demo data={CalendarDemos.usage} />
 
-## Custom date pickers
+## 自定义日期选择器
 
-Use `Calendar` as a base for custom date pickers. For example, you can create a date picker
-that allows users to pick three or fewer dates:
+使用 `Calendar` 作为自定义日期选择器的基础。例如，你可以创建一个允许用户选择三个或更少日期的日期选择器：
 
 <Demo data={CalendarDemos.picker} />
 
-Another custom date picker example – week picker:
+另一个自定义日期选择器示例——周选择器：
 
 <Demo data={CalendarDemos.weekPicker} />
 
-## Full width
+## 全宽
 
-Set the `fullWidth` prop to make the calendar stretch to fill 100% of its parent container width:
+设置 `fullWidth` prop 使日历拉伸以填充其父容器宽度的 100%：
 
 <Demo data={CalendarDemos.fullWidth} />
 
-## Static prop
+## Static 属性
 
-Set the `static` prop to display a calendar that users cannot interact with.
-This is useful when you want to display data in a calendar view but do
-not want it to be interactive.
+设置 `static` prop 以显示用户无法与之交互的日历。
+当你想以日历视图显示数据但不想让它可交互时，这会很有用。
 
 <Demo data={CalendarDemos.isStatic} />

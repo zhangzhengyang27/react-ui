@@ -4,51 +4,41 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.BubbleChart);
 
-## Usage
+## 用法
 
 <Demo data={BubbleChartDemos.usage} />
 
-## Change color
+## 更改颜色
 
-You can reference colors from [theme](/theming/theme-object) the same way as in
-other components, for example, `blue`, `red.5`, `orange.7`, etc. Any valid CSS
-color value is also accepted.
+你可以像其他组件一样从 [主题](/theming/theme-object) 中引用颜色，例如 `blue`、`red.5`、`orange.7` 等。任何有效的 CSS 颜色值也同样受支持。
 
 <Demo data={BubbleChartDemos.color} />
 
-## Change area color depending on color scheme
+## 根据颜色方案改变区域颜色
 
-You can use CSS variables in the `color` property. To define a CSS variable that
-changes depending on the color scheme, use [light/dark mixins](/styles/postcss-preset/#dark-and-light-mixins)
-or the [light-dark function](/styles/postcss-preset/#light-dark-function). Example
-of an area that is dark orange in light mode and lime in dark mode:
+你可以在 `color` 属性中使用 CSS 变量。要定义随颜色方案变化的 CSS 变量，可使用 [light/dark mixins](/styles/postcss-preset/#dark-and-light-mixins) 或 [light-dark 函数](/styles/postcss-preset/#light-dark-function)。例如，一个区域在浅色模式下为深橙色，在深色模式下为柠檬色：
 
 <Demo data={BubbleChartDemos.colorSchemeColor} />
 
-## Remove tooltip
+## 移除提示框
 
-To remove the tooltip, set `withTooltip={false}`. This also removes the cursor line
-and disables interactions with the chart.
+要移除提示框，设置 `withTooltip={false}`。这同时也会移除光标线，并禁用图表的交互。
 
 <Demo data={BubbleChartDemos.noTooltip} />
 
-## Value formatter
+## 数值格式化
 
-To format values in the tooltip, use the `valueFormat` prop. It accepts
-a function that takes a number value as an argument and returns a formatted value:
+要格式化提示框中的数值，使用 `valueFormat` 属性。它接受一个函数，该函数接收数值参数并返回格式化后的值：
 
 <Demo data={BubbleChartDemos.valueFormatter} />
 
-## Grid and text colors
+## 网格和文本颜色
 
-Use `--chart-grid-color` and `--chart-text-color` to change colors of
-grid lines and text within the chart. With [CSS modules](/styles/css-modules/), you can change colors
-depending on color scheme:
+使用 `--chart-grid-color` 和 `--chart-text-color` 来更改网格线和图表内文本的颜色。配合 [CSS 模块](/styles/css-modules/)，你可以根据颜色方案改变颜色：
 
 <Demo data={BubbleChartDemos.gridColor} />
 
-If your application has only one color scheme, you can use the `gridColor` and `textColor`
-props instead of CSS variables:
+如果你的应用只使用一种颜色方案，可以直接使用 `gridColor` 和 `textColor` 属性，而不必使用 CSS 变量：
 
 ```tsx
 import { BubbleChart } from '@react-ui/ui';

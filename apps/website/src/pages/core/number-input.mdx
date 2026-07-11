@@ -4,23 +4,23 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.NumberInput);
 
-## Usage
+## 用法
 
-`NumberInput` is based on [react-number-format](https://www.npmjs.com/package/react-number-format).
-It supports most of the props from the `NumericFormat` component in the original package.
+`NumberInput` 基于 [react-number-format](https://www.npmjs.com/package/react-number-format)。
+它支持原始包中 `NumericFormat` 组件的大部分属性。
 
 <InputFeatures component="NumberInput" element="input" />
 
 <Demo data={NumberInputDemos.usage} />
 
-## Loading state
+## 加载状态
 
-Set `loading` prop to display a loading indicator. By default, the loader is displayed on the right side of the input.
-You can change the position with the `loadingPosition` prop to `'left'` or `'right'`. This is useful for async operations like API calls, searches, or validations:
+设置 `loading` 属性以显示加载指示器。默认情况下，加载器显示在输入框右侧。
+你可以使用 `loadingPosition` 属性将其位置更改为 `'left'` 或 `'right'`。这对于 API 调用、搜索或验证等异步操作非常有用：
 
 <Demo data={NumberInputDemos.loading} />
 
-## Controlled
+## 受控
 
 ```tsx
 import { useState } from 'react';
@@ -32,13 +32,13 @@ function Demo() {
 }
 ```
 
-## Uncontrolled
+## 非受控
 
-`NumberInput` can be used with uncontrolled forms the same way as a native `input[type="number"]`.
-Set the `name` attribute to include number input value in `FormData` object on form submission.
-To control the initial value in uncontrolled forms, use the `defaultValue` prop.
+`NumberInput` 可以像原生 `input[type="number"]` 一样用于非受控表单。
+设置 `name` 属性以在表单提交时将数字输入值包含在 `FormData` 对象中。
+要控制非受控表单中的初始值，请使用 `defaultValue` 属性。
 
-Example usage of uncontrolled `NumberInput` with `FormData`:
+非受控 `NumberInput` 与 `FormData` 的用法示例：
 
 ```tsx
 import { NumberInput } from '@react-ui/ui';
@@ -65,44 +65,43 @@ function Demo() {
 }
 ```
 
-## Value type
+## 值类型
 
-The `value`, `defaultValue`, and `onChange` props can be either string or number. In all cases
-when the `NumberInput` value can be represented as a number, the `onChange` function is called
-with a number (for example `55`, `1.28`, `-100`, etc.). But there are several cases when
-it is not possible to represent the value as a number:
+`value`、`defaultValue` 和 `onChange` 属性可以是字符串或数字。在所有情况下，
+当 `NumberInput` 值可以表示为数字时，`onChange` 函数会以数字被调用
+（例如 `55`、`1.28`、`-100` 等）。但也有几种情况无法将值表示为数字：
 
-- Empty state is represented as an empty string – `''`
-- A standalone minus sign is represented as a string – `'-'`
-- Numbers that are larger than `Number.MAX_SAFE_INTEGER - 1` or smaller than `Number.MIN_SAFE_INTEGER + 1` are represented as strings – `'90071992547409910'`
-- Numbers with trailing decimal separators or trailing decimal zeros are represented as strings – `'0.'`, `'0.0'`, `'-0.00'`, etc.
+- 空状态表示为空字符串 – `''`
+- 单独的减号表示为字符串 – `'-'`
+- 大于 `Number.MAX_SAFE_INTEGER - 1` 或小于 `Number.MIN_SAFE_INTEGER + 1` 的数字表示为字符串 – `'90071992547409910'`
+- 带有末尾小数分隔符或末尾小数的数字表示为字符串 – `'0.'`、`'0.0'`、`'-0.00'` 等
 
-## BigInt values
+## BigInt 值
 
-`NumberInput` also supports `bigint` values. BigInt mode is inferred from `value` or `defaultValue`:
+`NumberInput` 也支持 `bigint` 值。BigInt 模式从 `value` 或 `defaultValue` 推断：
 
-- `value`/`defaultValue` can be `bigint | string`
-- `onChange` receives `bigint | string`
-- `min`, `max`, `step`, and `startValue` support `bigint`
-- BigInt mode is integer-only (`allowDecimal`/decimal formatting props do not enable decimal parsing)
+- `value`/`defaultValue` 可以是 `bigint | string`
+- `onChange` 接收 `bigint | string`
+- `min`、`max`、`step` 和 `startValue` 支持 `bigint`
+- BigInt 模式仅支持整数（`allowDecimal`/小数格式化属性不会启用小数解析）
 
-`string` is still used as a fallback for intermediate states (for example `''` or `'-'`).
+`string` 仍用作中间状态的回退（例如 `''` 或 `'-'`）。
 
 <Demo data={NumberInputDemos.bigInt} />
 
-## onChange vs onValueChange
+## onChange 与 onValueChange
 
-`NumberInput` provides two callback props for handling value changes:
+`NumberInput` 提供两个回调属性来处理值变化：
 
-- **`onChange`**: Receives a simplified value (`number | string` in default mode, `bigint | string` in BigInt mode). This is the recommended callback for most use cases. The value is a number/bigint when possible, and a string in edge cases (empty input, very large numbers, trailing decimals, intermediate BigInt input states).
+- **`onChange`**: 接收简化值（默认模式下为 `number | string`，BigInt 模式下为 `bigint | string`）。这是大多数用例推荐的回调。当可能时值为数字/bigint，在边缘情况下为字符串（空输入、极大数字、末尾小数、中间 BigInt 输入状态）。
 
-- **`onValueChange`**: Receives the full payload from `react-number-format`, which includes:
-  - `floatValue`: The numeric value (or `undefined`)
-  - `formattedValue`: The formatted string value (with prefix/suffix/separators)
-  - `value`: The raw unformatted string value
-  - Additional metadata about the change source
+- **`onValueChange`**: 接收来自 `react-number-format` 的完整负载，包括：
+  - `floatValue`: 数值（或 `undefined`）
+  - `formattedValue`: 格式化字符串值（带前缀/后缀/分隔符）
+  - `value`: 原始未格式化字符串值
+  - 有关变化来源的附加元数据
 
-Use `onValueChange` when you need access to the formatted value or metadata about the change (e.g., whether it came from user typing, increment/decrement buttons, or programmatic changes). For simple form handling, `onChange` is sufficient.
+当你需要访问格式化值或有关变化的元数据时（例如，它来自用户输入、增减按钮还是程序化更改），请使用 `onValueChange`。对于简单的表单处理，`onChange` 已足够。
 
 ```tsx
 import { NumberInput } from '@react-ui/ui';
@@ -112,35 +111,33 @@ function Demo() {
     <NumberInput
       prefix="$"
       thousandSeparator=","
-      // onChange receives: 1234
+      // onChange 接收：1234
       onChange={(value) => console.log('Simple value:', value)}
-      // onValueChange receives: { floatValue: 1234, formattedValue: '$1,234', value: '1234' }
+      // onValueChange 接收：{ floatValue: 1234, formattedValue: '$1,234', value: '1234' }
       onValueChange={(payload) => console.log('Full payload:', payload)}
     />
   );
 }
 ```
 
-## min and max
+## min 和 max
 
-Set the `min` and `max` props to limit the input value:
+设置 `min` 和 `max` 属性以限制输入值：
 
 <Demo data={NumberInputDemos.minMax} />
 
-## Clamp behavior
+## 限制行为
 
-By default, the value is clamped when the input is blurred. If you set `clampBehavior="strict"`,
-it will not be possible to enter a value outside of the min/max range. Note that this option
-may cause issues if you have tight `min` and `max`, for example `min={10}` and `max={20}`.
-If you need to disable value clamping entirely, set `clampBehavior="none"`.
+默认情况下，值在输入框失焦时被限制。如果设置 `clampBehavior="strict"`，
+则将无法输入超出 min/max 范围的值。注意，如果 min/max 范围很紧，例如 `min={10}` 和 `max={20}`，此选项可能会导致问题。
+如果你需要完全禁用值限制，请设置 `clampBehavior="none"`。
 
 <Demo data={NumberInputDemos.strictClamp} />
 
-## Boundary callbacks
+## 边界回调
 
-Use `onMinReached` and `onMaxReached` to call a function when the value hits the `min` or `max` boundary.
-These callbacks are triggered when the user attempts to increment beyond `max` or decrement below `min`
-using the controls or keyboard arrows.
+使用 `onMinReached` 和 `onMaxReached` 在值达到 `min` 或 `max` 边界时调用函数。
+当用户尝试使用控件或键盘箭头递增超过 `max` 或递减低于 `min` 时，会触发这些回调。
 
 ```tsx
 import { NumberInput } from '@react-ui/ui';
@@ -157,10 +154,10 @@ function Demo() {
 }
 ```
 
-## Select all on focus
+## 聚焦时全选
 
-Set `selectAllOnFocus` to automatically select the entire input value when the field receives focus.
-This is useful when you expect users to replace the value rather than edit it:
+设置 `selectAllOnFocus` 以在字段获得焦点时自动选择整个输入值。
+这在你希望用户替换值而不是编辑它时非常有用：
 
 ```tsx
 import { NumberInput } from '@react-ui/ui';
@@ -170,53 +167,52 @@ function Demo() {
 }
 ```
 
-## Prefix and suffix
+## 前缀和后缀
 
-Set the `prefix` and `suffix` props to add a given string to the start or end of the input value:
+设置 `prefix` 和 `suffix` 属性以在给定字符串添加到输入值的开始或结尾：
 
 <Demo data={NumberInputDemos.prefixSuffix} />
 
-## Negative numbers
+## 负数
 
-By default, negative numbers are allowed. Set `allowNegative={false}` to allow only positive numbers.
+默认情况下允许负数。设置 `allowNegative={false}` 以仅允许正数。
 
 <Demo data={NumberInputDemos.allowNegative} />
 
-## Decimal numbers
+## 小数
 
-By default, decimal numbers are allowed. Set `allowDecimal={false}` to allow only integers.
+默认情况下允许小数。设置 `allowDecimal={false}` 以仅允许整数。
 
 <Demo data={NumberInputDemos.allowDecimal} />
 
-## Decimal scale
+## 小数位数
 
-The `decimalScale` controls how many decimal places are allowed:
+`decimalScale` 控制允许的小数位数：
 
 <Demo data={NumberInputDemos.decimalScale} />
 
-## Fixed decimal scale
+## 固定小数位数
 
-Set `fixedDecimalScale` to always display a fixed number of decimal places:
+设置 `fixedDecimalScale` 以始终显示固定的小数位数：
 
 <Demo data={NumberInputDemos.fixedDecimalScale} />
 
-## Decimal separator
+## 小数分隔符
 
-Set `decimalSeparator` to change the decimal separator character:
+设置 `decimalSeparator` 以更改小数分隔符字符：
 
 <Demo data={NumberInputDemos.decimalSeparator} />
 
-## Thousand separator
+## 千位分隔符
 
-Set the `thousandSeparator` prop to separate thousands with a character. You can control
-the grouping logic with `thousandsGroupStyle`, which accepts: `thousand`, `lakh`, `wan`, `none` values.
+设置 `thousandSeparator` 属性以使用字符分隔千位。你可以使用 `thousandsGroupStyle` 控制分组逻辑，它接受：`thousand`、`lakh`、`wan`、`none` 值。
 
 <Demo data={NumberInputDemos.thousandsSeparator} />
 
-## Trim leading zeros on blur
+## 失焦时去除前导零
 
-By default, leading zeros are removed when the input loses focus (e.g., `00100` becomes `100`).
-You can disable this behavior by setting `trimLeadingZeroesOnBlur={false}`:
+默认情况下，输入框失去焦点时会去除前导零（例如，`00100` 变为 `100`）。
+你可以通过设置 `trimLeadingZeroesOnBlur={false}` 禁用此行为：
 
 <Demo data={NumberInputDemos.trimLeadingZeroes} />
 
@@ -224,35 +220,35 @@ You can disable this behavior by setting `trimLeadingZeroesOnBlur={false}`:
 
 <Demo data={NumberInputDemos.sections} />
 
-## Increment/decrement controls
+## 增减控件
 
-By default, the right section is occupied by increment and decrement buttons.
-To hide them, set the `hideControls` prop. You can also use the `rightSection` prop to render anything
-in the right section to replace the default controls.
+默认情况下，右侧区域被递增和递减按钮占据。
+要隐藏它们，请设置 `hideControls` 属性。你也可以使用 `rightSection` 属性在右侧区域渲染任何内容
+以替换默认控件。
 
 <Demo data={NumberInputDemos.rightSection} />
 
-## Increment/decrement on hold
+## 按住时增减
 
-Set the `stepHoldDelay` and `stepHoldInterval` props to define behavior when increment/decrement controls are clicked and held:
+设置 `stepHoldDelay` 和 `stepHoldInterval` 属性以定义点击并按住递增/递减控件时的行为：
 
 <Demo data={NumberInputDemos.hold} />
 
-## Custom increment and decrement controls
+## 自定义增减控件
 
-You can get a ref with `increment` and `decrement` functions to create custom controls:
+你可以使用带有 `increment` 和 `decrement` 函数的 ref 来创建自定义控件：
 
 <Demo data={NumberInputDemos.handlers} />
 
-## Error state
+## 错误状态
 
 <Demo data={NumberInputDemos.error} />
 
-## Success state
+## 成功状态
 
 <Demo data={NumberInputDemos.success} />
 
-## Disabled state
+## 禁用状态
 
 <Demo data={NumberInputDemos.disabled} />
 

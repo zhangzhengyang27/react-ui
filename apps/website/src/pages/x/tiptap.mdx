@@ -4,47 +4,39 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.TipTap);
 
-## Installation
+## 安装
 
-Install with yarn:
+使用 yarn 安装：
 
 <InstallScript packages="@react-ui/ui @react-ui/ui @react-ui/hooks @tiptap/react @tiptap/pm @tiptap/extension-link @tiptap/starter-kit" />
 
-After installation import package styles at the root of your application:
+安装完成后，在应用根目录导入包样式：
 
 ```tsx
 import '@react-ui/ui/styles.css';
-// ‼️ import tiptap styles after core package styles
+// ‼️ tiptap 样式必须在核心包样式之后导入
 import '@react-ui/ui/styles.css';
 ```
 
-## TipTap editor
+## TipTap 编辑器
 
-The `@react-ui/ui` package provides a UI for [Tiptap](https://tiptap.dev/). The `RichTextEditor` component
-works with the [Editor](https://tiptap.dev/api/editor) instance of tiptap.
-This means that you have full control over the editor [state and configuration](https://tiptap.dev/guide/configuration)
-with the [useEditor hook](https://tiptap.dev/installation/react).
+`@react-ui/ui` 包为 [Tiptap](https://tiptap.dev/) 提供了 UI。`RichTextEditor` 组件与 tiptap 的 [Editor](https://tiptap.dev/api/editor) 实例一起工作。这意味着你可以通过 [useEditor hook](https://tiptap.dev/installation/react) 完全控制编辑器的[状态和配置](https://tiptap.dev/guide/configuration)。
 
-In other words, the `RichTextEditor` component does not manage state for you;
-controls just execute operations on the `Editor` instance. If you want to
-implement something that is related to state or component value (for example, controlled mode, value transforms to HTML/Markdown),
-you should look for documentation on the [tiptap.dev](https://tiptap.dev/) website.
+换句话说，`RichTextEditor` 组件不会替你管理状态；控件只是在 `Editor` 实例上执行操作。如果你想实现与状态或组件值相关的功能（例如受控模式、将值转换为 HTML/Markdown），你应该查阅 [tiptap.dev](https://tiptap.dev/) 网站上的文档。
 
-## Usage
+## 用法
 
 <Demo data={TipTapDemos.usage} />
 
-## Subtle variant
+## 柔和变体
 
-`variant="subtle"` removes borders from the control groups, makes controls
-larger, and reduces spacing of the toolbar:
+`variant="subtle"` 会移除控件组的边框，使控件更大，并减少工具栏的间距：
 
 <Demo data={TipTapDemos.subtleVariant} />
 
-## Controlled
+## 受控模式
 
-To control the editor state, create a wrapper component and pass the `onChange` handler
-to the `useEditor` hook:
+要控制编辑器状态，请创建一个包装组件，并将 `onChange` 处理函数传递给 `useEditor` hook：
 
 ```tsx
 import { useEditor } from '@tiptap/react';
@@ -83,14 +75,13 @@ export function RichTextEditor({
 }
 ```
 
-## Controls and extensions
+## 控件与扩展
 
-Some controls require installation of additional [Tiptap extensions](https://tiptap.dev/extensions).
-For example, if you want to use `RichTextEditor.Superscript` control, you will need to install `@tiptap/extension-superscript` package:
+某些控件需要安装额外的 [Tiptap 扩展](https://tiptap.dev/extensions)。例如，如果你想使用 `RichTextEditor.Superscript` 控件，需要安装 `@tiptap/extension-superscript` 包：
 
 <InstallScript packages="@tiptap/extension-superscript" />
 
-Included with `@tiptap/starter-kit` (should be installed by default):
+`@tiptap/starter-kit` 默认包含以下控件（应默认安装）：
 
 - `RichTextEditor.H1`
 - `RichTextEditor.H2`
@@ -113,40 +104,39 @@ Included with `@tiptap/starter-kit` (should be installed by default):
 - `RichTextEditor.Underline`
 - `RichTextEditor.Unlink`
 
-Controls that require [@tiptap/extension-text-align](https://www.npmjs.com/package/@tiptap/extension-text-align) extension:
+需要 [@tiptap/extension-text-align](https://www.npmjs.com/package/@tiptap/extension-text-align) 扩展的控件：
 
 - `RichTextEditor.AlignLeft`
 - `RichTextEditor.AlignRight`
 - `RichTextEditor.AlignCenter`
 - `RichTextEditor.AlignJustify`
 
-Controls that require [@tiptap/extension-color](https://www.npmjs.com/package/@tiptap/extension-color) and [@tiptap/extension-text-style](https://www.npmjs.com/package/@tiptap/extension-text-style) extensions:
+需要 [@tiptap/extension-color](https://www.npmjs.com/package/@tiptap/extension-color) 和 [@tiptap/extension-text-style](https://www.npmjs.com/package/@tiptap/extension-text-style) 扩展的控件：
 
 - `RichTextEditor.ColorPicker`
 - `RichTextEditor.Color`
 - `RichTextEditor.UnsetColor`
 
-Other controls with required extensions:
+其他需要扩展的控件：
 
-- `RichTextEditor.Superscript` requires [@tiptap/extension-superscript](https://www.npmjs.com/package/@tiptap/extension-superscript)
-- `RichTextEditor.Subscript` requires [@tiptap/extension-subscript](https://www.npmjs.com/package/@tiptap/extension-subscript)
-- `RichTextEditor.Highlight` requires [@tiptap/extension-highlight](https://www.npmjs.com/package/@tiptap/extension-highlight)
+- `RichTextEditor.Superscript` 需要 [@tiptap/extension-superscript](https://www.npmjs.com/package/@tiptap/extension-superscript)
+- `RichTextEditor.Subscript` 需要 [@tiptap/extension-subscript](https://www.npmjs.com/package/@tiptap/extension-subscript)
+- `RichTextEditor.Highlight` 需要 [@tiptap/extension-highlight](https://www.npmjs.com/package/@tiptap/extension-highlight)
 
-## Placeholder
+## 占位符
 
-To use a placeholder, you will need to install the [@tiptap/extension-placeholder](https://www.npmjs.com/package/@tiptap/extension-placeholder) package:
+要使用占位符，需要安装 [@tiptap/extension-placeholder](https://www.npmjs.com/package/@tiptap/extension-placeholder) 包：
 
 <InstallScript packages="@tiptap/extension-placeholder" />
 
 <Demo data={TipTapDemos.placeholder} />
 
-## Link extension
+## 链接扩展
 
-The `@react-ui/ui` package provides a custom `Link` extension that is required to be used instead of
-`@tiptap/extension-link` in order for the `Ctrl + K` keyboard shortcut to work:
+`@react-ui/ui` 包提供了一个自定义的 `Link` 扩展，必须用它替代 `@tiptap/extension-link`，才能使 `Ctrl + K` 键盘快捷键正常工作：
 
 ```tsx
-// Use Link extension exported from the @react-ui/ui package
+// 使用 @react-ui/ui 包导出的 Link 扩展
 import { useEditor } from '@tiptap/react';
 import { Link, RichTextEditor } from '@react-ui/ui';
 
@@ -154,7 +144,7 @@ function Demo() {
   const editor = useEditor({
     extensions: [
       Link,
-      // ... other extensions
+      // ... 其他扩展
     ],
   });
 
@@ -166,47 +156,46 @@ function Demo() {
 }
 ```
 
-## Text color
+## 文本颜色
 
-To use text color, you will need to install additional packages:
+要使用文本颜色，需要安装额外的包：
 
 <InstallScript packages="@tiptap/extension-color @tiptap/extension-text-style" />
 
-You can use the following controls to change text color:
+你可以使用以下控件更改文本颜色：
 
-- `RichTextEditor.ColorPicker` – allows you to pick colors from given predefined color swatches and with the [ColorPicker](/core/color-picker/) component
-- `RichTextEditor.Color` – allows you to apply a given color with one click
-- `RichTextEditor.UnsetColor` – clears color styles
+- `RichTextEditor.ColorPicker` – 允许从给定的预定义色板中拾取颜色，或使用 [ColorPicker](/core/color-picker/) 组件
+- `RichTextEditor.Color` – 允许一键应用给定颜色
+- `RichTextEditor.UnsetColor` – 清除颜色样式
 
 <Demo data={TipTapDemos.colors} />
 
-## Code highlight
+## 代码高亮
 
-To use code highlighting, you will need to install additional packages:
+要使用代码高亮，需要安装额外的包：
 
 <InstallScript packages="lowlight @tiptap/extension-code-block-lowlight" />
 
 <Demo data={TipTapDemos.codeHighlight} />
 
-## Source code mode
+## 源代码模式
 
-You can use the following control to see and edit the source code of editor content:
-- `RichTextEditor.SourceCode` – allows switching on/off source code mode
+你可以使用以下控件查看和编辑编辑器内容的源代码：
+- `RichTextEditor.SourceCode` – 允许切换源代码模式
 
 <Demo data={TipTapDemos.sourceCodeSwitcher} />
 
-## Tasks
+## 任务列表
 
-To use tasks, you will need to install additional packages:
+要使用任务列表，需要安装额外的包：
 
 <InstallScript packages="@tiptap/extension-task-item @tiptap/extension-task-list" />
 
 <Demo data={TipTapDemos.tasks} />
 
-## Typography styles
+## 排版样式
 
-By default, `RichTextEditor` renders content with [Typography](/core/typography/) and some additional styles.
-You can disable these styles by setting `withTypographyStyles={false}`:
+默认情况下，`RichTextEditor` 使用 [Typography](/core/typography/) 和一些额外样式渲染内容。你可以通过设置 `withTypographyStyles={false}` 禁用这些样式：
 
 ```tsx
 import { useEditor } from '@tiptap/react';
@@ -215,7 +204,7 @@ import { RichTextEditor } from '@react-ui/ui';
 function Demo() {
   const editor = useEditor({
     extensions: [
-      // ... your extensions
+      // ... 你的扩展
     ],
   });
 
@@ -227,39 +216,31 @@ function Demo() {
 }
 ```
 
-Then you will be able to add your own styles either with [global styles](/styles/global-styles/)
-or with [Styles API](/styles/styles-api/):
+然后你可以通过 [全局样式](/styles/global-styles/) 或 [Styles API](/styles/styles-api/) 添加自己的样式：
 
 <Demo data={TipTapDemos.typographyStyles} />
 
-## Bubble menu
+## 气泡菜单
 
-You can use the [BubbleMenu](https://tiptap.dev/api/extensions/bubble-menu) component
-with any `RichTextEditor` controls. The bubble menu will appear near a selection of text:
+你可以在任何 `RichTextEditor` 控件中使用 [BubbleMenu](https://tiptap.dev/api/extensions/bubble-menu) 组件。气泡菜单会出现在选中的文本附近：
 
 <Demo data={TipTapDemos.bubbleMenu} />
 
-## Floating menu
+## 浮动菜单
 
-You can use the [FloatingMenu](https://tiptap.dev/api/extensions/floating-menu) component
-with any `RichTextEditor` controls. The floating menu will appear in an empty line:
+你可以在任何 `RichTextEditor` 控件中使用 [FloatingMenu](https://tiptap.dev/api/extensions/floating-menu) 组件。浮动菜单会出现在空行中：
 
 <Demo data={TipTapDemos.floatingMenu} />
 
-## Sticky toolbar
+## 粘性工具栏
 
-Set the `sticky` prop on the `RichTextEditor.Toolbar` component to make the toolbar sticky;
-control the `top` property with `stickyOffset`. For example, on the react-ui.dev documentation
-website there is a header with `var(--docs-header-height)` height. In this case, we will need to
-set `stickyOffset="var(--docs-header-height)"` to make the sticky position work correctly with the fixed positioned element.
+在 `RichTextEditor.Toolbar` 组件上设置 `sticky` 属性可使工具栏粘性定位；使用 `stickyOffset` 控制 `top` 属性。例如，在 react-ui.dev 文档网站上有一个高度为 `var(--docs-header-height)` 的页眉。此时，我们需要设置 `stickyOffset="var(--docs-header-height)"`，以使粘性定位与固定定位的元素正确配合。
 
 <Demo data={TipTapDemos.usage} demoProps={{ toggle: true }} />
 
-## Editor context
+## 编辑器上下文
 
-Use the `useRichTextEditorContext` hook to get the [Editor](https://tiptap.dev/api/editor) from
-the context. This hook can be used to create a custom control or run any operations supported
-by the Tiptap [editor API](https://tiptap.dev/api/editor).
+使用 `useRichTextEditorContext` hook 从上下文中获取 [Editor](https://tiptap.dev/api/editor)。该 hook 可用于创建自定义控件或运行 Tiptap [编辑器 API](https://tiptap.dev/api/editor) 支持的任何操作。
 
 ```tsx
 import { Button } from '@react-ui/ui';
@@ -271,30 +252,27 @@ function Demo() {
     <Button
       onClick={() => editor?.chain().focus().toggleBold().run()}
     >
-      Make bold
+      加粗
     </Button>
   );
 }
 ```
 
-## Custom controls
+## 自定义控件
 
-Use the `RichTextEditor.Control` component to create custom controls. It supports all
-props supported by the `button` element and has an `active` prop to indicate active state.
-Note that you will need to set the `aria-label` attribute to make the control visible for screen readers.
+使用 `RichTextEditor.Control` 组件创建自定义控件。它支持 `button` 元素支持的所有属性，并具有 `active` 属性来指示激活状态。注意，你需要设置 `aria-label` 属性，以便屏幕阅读器能够识别该控件。
 
 <Demo data={TipTapDemos.customControl} />
 
-## Change icons
+## 更改图标
 
-You can change the icon of a control by setting the `icon` prop. It accepts a component
-that must handle the `size` prop:
+你可以通过设置 `icon` 属性来更改控件的图标。它接受一个必须处理 `size` 属性的组件：
 
 <Demo data={TipTapDemos.icons} />
 
-## Labels and localization
+## 标签与本地化
 
-`RichTextEditor` supports changing labels for all controls with the `labels` prop:
+`RichTextEditor` 支持通过 `labels` 属性更改所有控件的标签：
 
 ```tsx
 import { useEditor } from '@tiptap/react';
@@ -303,7 +281,7 @@ import { RichTextEditor } from '@react-ui/ui';
 function Demo() {
   const editor = useEditor({
     extensions: [
-      // ... your extensions
+      // ... 你的扩展
     ],
   });
 
@@ -311,9 +289,9 @@ function Demo() {
     <RichTextEditor
       editor={editor}
       labels={{
-        boldControlLabel: 'Make text bold',
-        italicControlLabel: 'Make text bold',
-        // ...other labels
+        boldControlLabel: '加粗文本',
+        italicControlLabel: '斜体文本',
+        // ...其他标签
       }}
     >
       <RichTextEditor.Content />
@@ -322,14 +300,12 @@ function Demo() {
 }
 ```
 
-Most labels are used to add `aria-label` and `title` attributes to controls; some of the labels
-can be a function that returns a string. If you do not provide all labels, they will be merged with
-the default labels.
+大多数标签用于为控件添加 `aria-label` 和 `title` 属性；部分标签可以是返回字符串的函数。如果你未提供所有标签，它们会与默认标签合并。
 
-All available labels:
+所有可用标签：
 
 ```tsx
-// RichTextEditorLabels type can be imported from @react-ui/ui package
+// RichTextEditorLabels 类型可从 @react-ui/ui 包导入
 export interface RichTextEditorLabels {
   /** RichTextEditor.Bold control aria-label */
   boldControlLabel: string;
@@ -459,7 +435,7 @@ export interface RichTextEditorLabels {
 }
 ```
 
-Default labels (can be imported from `@react-ui/ui` package):
+默认标签（可从 `@react-ui/ui` 包导入）：
 
 ```tsx
 import { RichTextEditorLabels } from '@react-ui/ui';

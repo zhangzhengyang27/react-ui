@@ -4,44 +4,44 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useSelection);
 
-## Usage
+## 用法
 
 <Demo data={UseSelectionDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 export interface UseSelectionInput<T> {
-  /** The array of items to select from */
+  /** 用于选择的项目数组 */
   data: T[];
 
-  /** The initial selection, empty array by default */
+  /** 初始选择，默认为空数组 */
   defaultSelection?: T[];
 
-  /** If true, selection is reset when data changes */
+  /** 如果为 true，数据变化时选择会重置 */
   resetSelectionOnDataChange?: boolean;
 }
 
 export interface UseSelectionHandlers<T> {
-  /** Add an item to the selection */
+  /** 将项目添加到选择中 */
   select: (selected: T) => void;
 
-  /** Remove an item from the selection */
+  /** 从选择中移除项目 */
   deselect: (deselected: T) => void;
 
-  /** Toggle an item's selection state */
+  /** 切换项目的选择状态 */
   toggle: (toggled: T) => void;
 
-  /** Returns true if all items from the `data` are selected */
+  /** 如果 `data` 中所有项目都被选中则返回 true */
   isAllSelected: () => boolean;
 
-  /** Returns true if at least one item from the `data` is selected */
+  /** 如果 `data` 中至少有一个项目被选中则返回 true */
   isSomeSelected: () => boolean;
 
-  /** Set the selection to a specific array of items */
+  /** 将选择设置为特定的项目数组 */
   setSelection: (selection: T[]) => void;
 
-  /** Clear all selections */
+  /** 清除所有选择 */
   resetSelection: () => void;
 }
 
@@ -50,10 +50,10 @@ export type UseSelectionReturnValue<T> = readonly [T[], UseSelectionHandlers<T>]
 function useSelection<T>(input: UseSelectionInput<T>): UseSelectionReturnValue<T>
 ```
 
-## Exported types
+## 导出类型
 
-`UseSelectionInput`, `UseSelectionReturnValue` and `UseSelectionHandlers` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseSelectionInput`、`UseSelectionReturnValue` 和 `UseSelectionHandlers` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseSelectionInput, UseSelectionReturnValue, UseSelectionHandlers } from '@react-ui/hooks';

@@ -4,40 +4,40 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Button);
 
-## Usage
+## 用法
 
 <Demo data={ButtonDemos.configurator} />
 
-## Full width
+## 全宽
 
-If the `fullWidth` prop is set, the `Button` will take 100% of the parent width:
+如果设置了 `fullWidth` 属性，`Button` 将占据父元素 100% 的宽度：
 
 <Demo data={ButtonDemos.fullWidth} />
 
-## Left and right sections
+## 左右区域
 
-`leftSection` and `rightSection` allow adding icons or any other element to the left and right sides of the button.
-When a section is added, padding on the corresponding side is reduced.
+`leftSection` 和 `rightSection` 允许在按钮的左侧和右侧添加图标或其他元素。
+添加区域后，相应侧的内边距会减小。
 
-Note that `leftSection` and `rightSection` are flipped in [RTL](/styles/rtl) mode
-(`leftSection` is displayed on the right and `rightSection` is displayed on the left).
+注意，在 [RTL](/styles/rtl) 模式下 `leftSection` 和 `rightSection` 会互换
+（`leftSection` 显示在右侧，`rightSection` 显示在左侧）。
 
 <Demo data={ButtonDemos.sections} />
 
-## Sections position
+## 区域位置
 
-The `justify` prop sets the `justify-content` of the `inner` element. You can use it to change the alignment of
-left and right sections. For example, to spread them across the button, set `justify="space-between"`.
+`justify` 属性设置 `inner` 元素的 `justify-content`。你可以用它来更改
+左右区域的对齐方式。例如，要将它们分散到按钮两端，可设置 `justify="space-between"`。
 
-If you need to align just one section to the side of the button, set `justify` to `space-between`
-and add an empty `<span />` to the opposite section.
+如果只需将单个区域对齐到按钮一侧，可将 `justify` 设置为 `space-between`，
+并在对侧区域添加一个空的 `<span />`。
 
 <Demo data={ButtonDemos.sectionsJustify} />
 
-## Compact size
+## 紧凑尺寸
 
-`Button` supports `xs` – `xl` and `compact-xs` – `compact-xl` sizes. `compact` sizes have
-the same font size as `xs` – `xl` but with reduced padding and height.
+`Button` 支持 `xs` – `xl` 以及 `compact-xs` – `compact-xl` 尺寸。`compact` 尺寸
+与 `xs` – `xl` 的字号相同，但内边距和高度更小。
 
 <Demo data={ButtonDemos.compact} />
 
@@ -45,57 +45,54 @@ the same font size as `xs` – `xl` but with reduced padding and height.
 
 <Demo data={ButtonDemos.gradient} />
 
-## Disabled state
+## 禁用状态
 
-To make a `Button` disabled, set the `disabled` prop. This will prevent any interactions with the button
-and add disabled styles. If you want the button to just look disabled but still be interactive,
-set the `data-disabled` prop instead. Note that disabled styles are the same for all variants.
+要使 `Button` 禁用，请设置 `disabled` 属性。这将阻止与按钮的任何交互，
+并添加禁用样式。如果你希望按钮看起来被禁用但仍可交互，
+请改用 `data-disabled` 属性。注意，禁用样式对所有变体都相同。
 
 <Demo data={ButtonDemos.disabled} />
 
-## Disabled state when Button is link
+## 链接按钮的禁用状态
 
-The `<a />` element does not support the `disabled` attribute. To make a `Button` disabled when it is
-rendered as a link, set the `data-disabled` attribute instead and prevent default behavior in the
-`onClick` event handler.
+`<a />` 元素不支持 `disabled` 属性。要在 `Button` 渲染为链接时使其禁用，
+请改用 `data-disabled` 属性，并在 `onClick` 事件处理程序中阻止默认行为。
 
 <Demo data={ButtonDemos.disabledLink} />
 
-## Customize disabled styles
+## 自定义禁用样式
 
-To customize disabled styles, it is recommended to use both `&:disabled` and `&[data-disabled]`
-selectors:
+要自定义禁用样式，建议同时使用 `&:disabled` 和 `&[data-disabled]`
+选择器：
 
-- `&:disabled` is used to style the button when the `disabled` prop is set and
-  also when the button is disabled by the parent component (for example, when the `disabled` prop is set on a
-  `<fieldset />` element which contains the `Button`).
-- `&[data-disabled]` is used to style the button when it is not actually disabled but should look like
-  it is (for example, `data-disabled` should be used if you need to use [Tooltip](/core/tooltip) with a disabled `Button`
-  or when the `Button` is used as a link)
+- `&:disabled` 用于设置 `disabled` 属性时的按钮样式，
+  以及父组件禁用按钮时的样式（例如，在包含 `Button` 的 `<fieldset />` 元素上设置 `disabled` 属性）。
+- `&[data-disabled]` 用于按钮实际未被禁用但应看起来被禁用的样式
+  （例如，需要在使用 [Tooltip](/core/tooltip) 时使用禁用的 `Button`，
+  或当 `Button` 用作链接时）
 
 <Demo data={ButtonDemos.disabledStyles} />
 
-## Disabled button with Tooltip
+## 带 Tooltip 的禁用按钮
 
-The `onMouseLeave` event [is not triggered](https://github.com/facebook/react/issues/18753) when a `Button` is disabled, so if you need to use a
-[Tooltip](/core/tooltip) with a disabled `Button`, you need to set the `data-disabled` prop on the `Button`
-instead of `disabled`. Note that it is also required to change the `onClick` event handler to
-`(event) => event.preventDefault()` as the `Button` is not actually disabled and will still trigger the
-`onClick` event.
+`Button` 禁用时不会触发 `onMouseLeave` 事件（[详见](https://github.com/facebook/react/issues/18753)），因此如果你需要将
+[Tooltip](/core/tooltip) 与禁用的 `Button` 一起使用，需要在 `Button` 上设置 `data-disabled` 属性，
+而不是 `disabled`。注意，还需要将 `onClick` 事件处理程序更改为
+`(event) => event.preventDefault()`，因为 `Button` 实际上并未禁用，仍会触发
+`onClick` 事件。
 
 <Demo data={ButtonDemos.disabledTooltip} />
 
-## Loading state
+## 加载状态
 
-When the `loading` prop is set, the `Button` will be disabled and a [Loader](/core/loader) with overlay will be rendered
-in the center of the button. [Loader](/core/loader) color depends on the `Button` variant.
+当设置 `loading` 属性时，`Button` 将被禁用，并在按钮中央渲染一个带遮罩的 [Loader](/core/loader)。
+[Loader](/core/loader) 的颜色取决于 `Button` 的变体。
 
 <Demo data={ButtonDemos.loading} />
 
-## Loader props
+## Loader 属性
 
-You can customize the [Loader](/core/loader) with the `loaderProps` prop, which accepts all props that the
-[Loader](/core/loader) component has:
+你可以使用 `loaderProps` 属性自定义 [Loader](/core/loader)，它接受 [Loader](/core/loader) 组件的所有属性：
 
 <Demo data={ButtonDemos.loaderProps} />
 
@@ -103,22 +100,22 @@ You can customize the [Loader](/core/loader) with the `loaderProps` prop, which 
 
 <Demo data={ButtonDemos.stylesApi} />
 
-Example of customizing `Button` with [Styles API](/styles/styles-api) and [data-\* attributes](/styles/data-attributes):
+使用 [Styles API](/styles/styles-api) 和 [data-\* 属性](/styles/data-attributes) 自定义 `Button` 的示例：
 
 <Demo data={StylesDemos.dataAttributes} />
 
-## Custom variants
+## 自定义变体
 
-To add new `Button` variants, use the [data-variant](/styles/variants-sizes) attribute.
-Usually new variants are added to the [theme](/theming/theme-object), this way they are
-available in all `Button` components in your application.
+要添加新的 `Button` 变体，请使用 [data-variant](/styles/variants-sizes) 属性。
+通常新的变体会添加到 [theme](/theming/theme-object) 中，这样它们就可以在应用中的
+所有 `Button` 组件中使用。
 
 <Demo data={ButtonDemos.customVariant} />
 
-## Customize variant colors
+## 自定义变体颜色
 
-You can customize colors for `Button` and other component variants by adding
-[variantColorResolver](/theming/colors#colors-variant-resolver) to your theme.
+你可以通过向主题添加 [variantColorResolver](/theming/colors#colors-variant-resolver) 来自定义 `Button`
+及其他组件变体的颜色。
 
 <Demo data={ThemingDemos.variantColorsResolver} />
 
@@ -130,7 +127,7 @@ You can customize colors for `Button` and other component variants by adding
 
 <Demo data={ButtonDemos.group} />
 
-Note that you must not wrap child `Button` components with any additional elements:
+注意，你不能用任何额外元素包裹子 `Button` 组件：
 
 ```tsx
 import { Button } from '@react-ui/ui';
@@ -149,7 +146,7 @@ function Demo() {
 
 ## Button.GroupSection
 
-Use `Button.GroupSection` component to render sections that are not buttons inside `Button.Group`:
+使用 `Button.GroupSection` 组件在 `Button.Group` 中渲染非按钮区域：
 
 <Demo data={ButtonDemos.groupSection} />
 

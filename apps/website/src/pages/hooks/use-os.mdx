@@ -4,14 +4,14 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useOs);
 
-## Usage
+## 用法
 
-The `use-os` hook returns the user's operating system. Possible values are: `undetermined`, `macos`, `ios`, `windows`, `android`, `linux`, `chromeos`.
-If the OS cannot be identified, for example, during server-side rendering, `undetermined` will be returned.
+`use-os` Hook 返回用户的操作系统。可能的值有：`undetermined`、`macos`、`ios`、`windows`、`android`、`linux`、`chromeos`。
+如果无法识别操作系统，例如，在服务端渲染期间，将返回 `undetermined`。
 
 <Demo data={UseOsDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 type UseOSReturnValue =
@@ -30,10 +30,10 @@ interface UseOsOptions {
 function getOS(options?: UseOsOptions): UseOSReturnValue;
 ```
 
-## Exported types
+## 导出类型
 
-`UseOsOptions` and `UseOSReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseOsOptions` 和 `UseOSReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseOsOptions, UseOSReturnValue } from '@react-ui/hooks';

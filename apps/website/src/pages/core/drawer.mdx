@@ -4,34 +4,33 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Drawer);
 
-## Usage
+## 用法
 
 <Demo data={DrawerDemos.usage} />
 
-## Position
+## 位置
 
-Drawer can be placed on `left` (default), `top`, `right` and `bottom`. Control the drawer position with the `position` prop,
-for example `<Drawer position="top" />`.
+Drawer 可以放置在 `left`（默认）、`top`、`right` 和 `bottom`。使用 `position` 属性控制 drawer 位置，
+例如 `<Drawer position="top" />`。
 
 <Demo data={DrawerDemos.positions} />
 
-## Offset
+## 偏移
 
-Set the `offset` prop to change the drawer offset from the edge of the viewport:
+设置 `offset` 属性以更改 drawer 与视口边缘的偏移：
 
 <Demo data={DrawerDemos.offset} />
 
-## Customize overlay
+## 自定义遮罩层
 
-`Drawer` uses the [Overlay](/core/overlay/) component. You can set any props that [Overlay](/core/overlay/)
-supports with `overlayProps`:
+`Drawer` 使用 [Overlay](/core/overlay/) 组件。你可以使用 `overlayProps` 设置 [Overlay](/core/overlay/) 支持的任何属性：
 
 <Demo data={DrawerDemos.overlay} />
 
-## Sizes
+## 尺寸
 
-You can change the drawer width/height (depends on `position`) by setting the `size` prop to a predefined size or any valid width,
-for example, `size="55%"` or `size={200}`:
+你可以通过将 `size` 属性设置为预定义尺寸或任何有效宽度来更改 drawer 的宽度/高度（取决于 `position`），
+例如 `size="55%"` 或 `size={200}`：
 
 ```tsx
 import { Drawer } from '@react-ui/ui';
@@ -47,66 +46,64 @@ function Demo() {
 
 <Demo data={DrawerDemos.sizes} />
 
-## Remove header
+## 移除 header
 
-To remove the header, set `withCloseButton={false}`
+要移除 header，请设置 `withCloseButton={false}`
 
 <Demo data={DrawerDemos.header} />
 
-## Drawer with scroll
+## 带滚动的 Drawer
 
 <Demo data={DrawerDemos.overflow} />
 
-## Usage with ScrollArea
+## 与 ScrollArea 一起使用
 
 <Demo data={DrawerDemos.scrollarea} />
 
-## Change transition
+## 修改过渡
 
-`Drawer` is built with the [Transition](/core/transition/) component. Use the `transitionProps`
-prop to customize any [Transition](/core/transition/) properties:
+`Drawer` 基于 [Transition](/core/transition/) 组件构建。使用 `transitionProps`
+属性自定义任何 [Transition](/core/transition/) 属性：
 
 <Demo data={DrawerDemos.transitions} />
 
-## onExitTransitionEnd and onEnterTransitionEnd
+## onExitTransitionEnd 和 onEnterTransitionEnd
 
-The `onExitTransitionEnd` and `onEnterTransitionEnd` props can be used to run code after
-the exit/enter transition is finished. For example, this is useful when you want to clear
-data after the drawer is closed:
+`onExitTransitionEnd` 和 `onEnterTransitionEnd` 属性可用于在
+退出/进入过渡完成后运行代码。例如，当你想在 drawer 关闭后清除数据时非常有用：
 
 <Demo data={DrawerDemos.transitionEnd} />
 
-## Initial focus
+## 初始焦点
 
-`Drawer` uses [FocusTrap](/core/focus-trap/) to trap focus. Add the `data-autofocus`
-attribute to the element that should receive initial focus.
+`Drawer` 使用 [FocusTrap](/core/focus-trap/) 来捕获焦点。将 `data-autofocus`
+属性添加到应接收初始焦点的元素。
 
 <Demo data={DrawerDemos.initialFocus} />
 
-If you do not want to focus any elements when the drawer is opened, use the `FocusTrap.InitialFocus`
-component to create a visually hidden element that will receive initial focus:
+如果你不想在 drawer 打开时聚焦任何元素，请使用 `FocusTrap.InitialFocus`
+组件创建一个视觉上隐藏的元素来接收初始焦点：
 
 <Demo data={DrawerDemos.initialFocusTrap} />
 
-If you do not add the `data-autofocus` attribute and do not use `FocusTrap.InitialFocus`,
-the drawer will focus the first focusable element inside it which is usually the close button.
+如果你没有添加 `data-autofocus` 属性且没有使用 `FocusTrap.InitialFocus`，
+drawer 将聚焦其内部的第一个可聚焦元素，通常是关闭按钮。
 
-## Control behavior
+## 控制行为
 
-The following props can be used to control `Drawer` behavior.
-In most cases it is not recommended to turn these features off –
-it will make the component less accessible.
+以下属性可用于控制 `Drawer` 行为。
+在大多数情况下，不建议关闭这些功能——
+这会使组件的可访问性降低。
 
-- `trapFocus` – determines whether focus should be trapped inside drawer
-- `closeOnEscape` – determines whether the drawer should be closed when `Escape` key is pressed
-- `closeOnClickOutside` – determines whether the drawer should be closed when user clicks on the overlay
-- `returnFocus` – determines whether focus should be returned to the element that was focused before the drawer was opened
+- `trapFocus` – 确定焦点是否应被捕获在 drawer 内部
+- `closeOnEscape` – 确定按下 `Escape` 键时是否应关闭 drawer
+- `closeOnClickOutside` – 确定用户点击遮罩层时是否应关闭 drawer
+- `returnFocus` – 确定是否应将焦点返回到打开 drawer 之前聚焦的元素
 
-## react-remove-scroll settings
+## react-remove-scroll 设置
 
-`Drawer` uses [react-remove-scroll](https://github.com/theKashey/react-remove-scroll)
-package to lock scroll. You can pass props down to the `RemoveScroll` component
-with `removeScrollProps`:
+`Drawer` 使用 [react-remove-scroll](https://github.com/theKashey/react-remove-scroll)
+包来锁定滚动。你可以通过 `removeScrollProps` 将属性传递给 `RemoveScroll` 组件：
 
 ```tsx
 import { Drawer } from '@react-ui/ui';
@@ -124,67 +121,67 @@ function Demo() {
 }
 ```
 
-## Change close icon
+## 修改关闭图标
 
-Use `closeButtonProps` to customize close button:
+使用 `closeButtonProps` 自定义关闭按钮：
 
 <Demo data={DrawerDemos.closeIcon} />
 
-## Compound components
+## 复合组件
 
-You can use the following compound components to have full control over the `Drawer` rendering:
+你可以使用以下复合组件来完全控制 `Drawer` 的渲染：
 
-- `Drawer.Root` – context provider
-- `Drawer.Overlay` – render [Overlay](/core/overlay/)
-- `Drawer.Content` – main drawer element, should include all drawer content
-- `Drawer.Header` – sticky header, usually contains `Drawer.Title` and `Drawer.CloseButton`
-- `Drawer.Title` – `h2` element, `aria-labelledby` of `Drawer.Content` is pointing to this element, usually is rendered inside `Drawer.Header`
-- `Drawer.CloseButton` – close button, usually rendered inside `Drawer.Header`
-- `Drawer.Body` – a place for main content, `aria-describedby` of `Drawer.Content` is pointing to this element
+- `Drawer.Root` – 上下文提供者
+- `Drawer.Overlay` – 渲染 [Overlay](/core/overlay/)
+- `Drawer.Content` – 主要 drawer 元素，应包含所有 drawer 内容
+- `Drawer.Header` – 粘性 header，通常包含 `Drawer.Title` 和 `Drawer.CloseButton`
+- `Drawer.Title` – `h2` 元素，`Drawer.Content` 的 `aria-labelledby` 指向此元素，通常渲染在 `Drawer.Header` 内
+- `Drawer.CloseButton` – 关闭按钮，通常渲染在 `Drawer.Header` 内
+- `Drawer.Body` – 主要内容区域，`Drawer.Content` 的 `aria-describedby` 指向此元素
 
 <Demo data={DrawerDemos.composition} />
 
 ## Drawer.Stack
 
-Use `Drawer.Stack` component to render multiple drawers at the same time.
-`Drawer.Stack` keeps track of opened drawers, manages z-index values, focus trapping
-and `closeOnEscape` behavior. `Drawer.Stack` is designed to be used with `useDrawersStack` hook.
+使用 `Drawer.Stack` 组件同时渲染多个 drawer。
+`Drawer.Stack` 跟踪打开的 drawer，管理 z-index 值、焦点捕获
+和 `closeOnEscape` 行为。`Drawer.Stack` 设计为与 `useDrawersStack` Hook 一起使用。
 
-Differences from using multiple `Drawer` components:
+与使用多个 `Drawer` 组件的区别：
 
-- `Drawer.Stack` manages z-index values – drawers that are opened later will always have higher z-index value disregarding their order in the DOM
-- `Drawer.Stack` disables focus trap and `Escape` key handling for all drawers except the one that is currently opened
-- Drawers that are not currently opened are present in the DOM but are hidden with `opacity: 0` and `pointer-events: none`
-- Only one overlay is rendered at a time
+- `Drawer.Stack` 管理 z-index 值——后打开的 drawer 始终具有更高的 z-index 值，无论它们在 DOM 中的顺序如何
+- `Drawer.Stack` 禁用焦点捕获和除当前打开的 drawer 之外所有 drawer 的 `Escape` 键处理
+- 当前未打开的 drawer 存在于 DOM 中，但使用 `opacity: 0` 和 `pointer-events: none` 隐藏
+- 一次只渲染一个遮罩层
 
 <Demo data={DrawerDemos.stack} />
 
-Note that `Drawer.Stack` can only be used with `Drawer` component. Components built with `Drawer.Root`
-and other compound components are not compatible with `Drawer.Stack`.
+请注意，`Drawer.Stack` 只能与 `Drawer` 组件一起使用。使用 `Drawer.Root`
+和其他复合组件构建的组件与 `Drawer.Stack` 不兼容。
 
 ## useDrawersStack hook
 
-`useDrawersStack` hook provides an easy way to control multiple drawers at the same time.
-It accepts an array of unique drawers ids and returns an object with the following properties:
+`useDrawersStack` Hook 提供了一种同时控制多个 drawer 的简便方法。
+它接受一个唯一的 drawer id 数组，并返回一个具有以下属性的对象：
 
 ```tsx
 interface UseDrawersStackReturnType<T extends string> {
-  // Current opened state of each drawer
+  // 每个 drawer 的当前打开状态
   state: Record<T, boolean>;
 
-  // Opens drawer with the given id
+  // 打开给定 id 的 drawer
   open: (id: T) => void;
 
-  // Closes drawer with the given id
+  // 关闭给定 id 的 drawer
   close: (id: T) => void;
 
-  // Toggles drawer with the given id
+  // 切换给定 id 的 drawer
   toggle: (id: T) => void;
 
-  // Closes all drawers within the stack
+  // 关闭堆栈中的所有 drawer
   closeAll: () => void;
 
-  // Returns props for drawer with the given id
+  // 返回给定 id drawer 的属性
   register: (id: T) => {
     opened: boolean;
     onClose: () => void;
@@ -193,7 +190,7 @@ interface UseDrawersStackReturnType<T extends string> {
 }
 ```
 
-Example of using `useDrawersStack` with `Drawer` component:
+将 `useDrawersStack` 与 `Drawer` 组件一起使用的示例：
 
 ```tsx
 import { Drawer, useDrawersStack } from '@react-ui/ui';
@@ -211,10 +208,10 @@ function Demo() {
 }
 ```
 
-## Fixed elements offset
+## 固定元素偏移
 
-`Drawer` component uses [react-remove-scroll](https://github.com/theKashey/react-remove-scroll)
-package to lock scroll. To properly size these `elements` add a `className` to them ([documentation](https://github.com/theKashey/react-remove-scroll#positionfixed-elements)):
+`Drawer` 组件使用 [react-remove-scroll](https://github.com/theKashey/react-remove-scroll)
+包来锁定滚动。要正确调整这些 `elements` 的大小，请向它们添加 `className`（[文档](https://github.com/theKashey/react-remove-scroll#positionfixed-elements)）：
 
 ```tsx
 import { RemoveScroll } from '@react-ui/ui';
@@ -233,11 +230,11 @@ function Demo() {
 }
 ```
 
-## Accessibility
+## 可访问性
 
-`Drawer` component follows [WAI-ARIA recommendations](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog) on accessibility.
+`Drawer` 组件遵循 [WAI-ARIA 建议](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog) 实现可访问性。
 
-Set `title` props to make component accessible, will add `aria-labelledby` to the content element:
+设置 `title` 属性以使组件可访问，它将为内容元素添加 `aria-labelledby`：
 
 ```tsx
 import { Drawer } from '@react-ui/ui';
@@ -247,7 +244,7 @@ function Demo() {
 }
 ```
 
-To set close button `aria-label` use `closeButtonProps`:
+要使用关闭按钮 `aria-label`，请使用 `closeButtonProps`：
 
 ```tsx
 import { Drawer } from '@react-ui/ui';

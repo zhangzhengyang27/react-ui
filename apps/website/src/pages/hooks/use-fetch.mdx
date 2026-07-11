@@ -4,14 +4,14 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useFetch);
 
-## Usage
+## 用法
 
-The `useFetch` hook sends a GET request to the specified URL and returns the response data, loading state, error,
-`refetch` and `abort` functions.
+`useFetch` Hook 向指定 URL 发送 GET 请求，并返回响应数据、加载状态、错误、
+`refetch` 和 `abort` 函数。
 
 <Demo data={UseFetchDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseFetchOptions extends RequestInit {
@@ -32,10 +32,10 @@ function useFetch<T>(
 ): UseFetchReturnValue<T>
 ```
 
-## Exported types
+## 导出类型
 
-`UseFetchOptions` and `UseFetchReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseFetchOptions` 和 `UseFetchReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseFetchOptions, UseFetchReturnValue } from '@react-ui/hooks';

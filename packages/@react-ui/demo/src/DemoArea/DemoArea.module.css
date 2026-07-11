@@ -2,15 +2,15 @@
   flex: 1;
   position: relative;
   z-index: 3;
-  border-top-left-radius: calc(var(--mantine-radius-md) - 1px);
-  border-top-right-radius: calc(var(--mantine-radius-md) - 1px);
+  border-top-left-radius: calc(var(--ui-radius-md) - 1px);
+  border-top-right-radius: calc(var(--ui-radius-md) - 1px);
 
   &:where([data-with-padding]) {
-    padding: var(--mantine-spacing-md);
+    padding: var(--ui-spacing-md);
   }
 
   &[data-dimmed] {
-    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
+    background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-8));
   }
 
   &[data-centered] {
@@ -20,7 +20,7 @@
   }
 
   &[data-striped] {
-    border-top-left-radius: calc(var(--mantine-radius-md) - 1px);
+    border-top-left-radius: calc(var(--ui-radius-md) - 1px);
     background:
       repeating-linear-gradient(
         45deg,
@@ -38,7 +38,7 @@
       );
 
     @mixin rtl {
-      border-top-right-radius: calc(var(--mantine-radius-md) - 1px);
+      border-top-right-radius: calc(var(--ui-radius-md) - 1px);
       border-top-left-radius: 0;
     }
 

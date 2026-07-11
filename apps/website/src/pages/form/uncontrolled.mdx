@@ -4,39 +4,39 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.formUncontrolled);
 
-## Controlled mode
+## 受控模式
 
-Controlled mode is the default mode of the form. In this mode, the form data is
-stored in React state and all components are rerendered when the form data changes.
-Controlled mode is not recommended for large forms.
+受控模式是表单的默认模式。在此模式下，表单数据
+存储在 React state 中，当表单数据变化时所有组件都会重新渲染。
+受控模式不推荐用于大型表单。
 
-Example of a form with controlled mode:
+受控模式表单的示例：
 
 <Demo data={FormDemos.controlled} />
 
-As you can see in the example above, `form.values` update on every change. This
-means that every component that uses `form.values` will rerender on every change.
+如上面的示例所示，`form.values` 在每次变化时都会更新。这
+意味着每个使用 `form.values` 的组件都会在每次变化时重新渲染。
 
-## Uncontrolled mode
+## 非受控模式
 
-Uncontrolled mode is an alternative form mode introduced in the 7.8.0 release.
-It is now the recommended mode for all forms.
-Uncontrolled mode provides significant performance improvements for large forms.
+非受控模式是在 7.8.0 版本中引入的替代表单模式。
+它现在是所有表单推荐使用的模式。
+非受控模式为大型表单提供了显著的性能提升。
 
-With uncontrolled mode, the form data is stored in a ref instead of React state
-and `form.values` are not updated on every change.
+在非受控模式下，表单数据存储在 ref 中而不是 React state 中，
+`form.values` 不会在每次变化时更新。
 
-Example of a form with uncontrolled mode:
+非受控模式表单的示例：
 
 <Demo data={FormDemos.uncontrolled} />
 
-As you can see in the example above, `form.values` do not update at all.
+如上面的示例所示，`form.values` 根本不会更新。
 
 ## form.getValues
 
-The `form.getValues` function returns the current form values. It can be
-used anywhere in the component to get the current form values. It can
-be used in both controlled and uncontrolled modes.
+`form.getValues` 函数返回当前表单值。它可以
+在组件中的任何地方使用以获取当前表单值。它可以在
+受控和非受控模式下使用。
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -52,10 +52,9 @@ form.setValues({ name: 'John Smith' });
 form.getValues(); // { name: 'John Smith' }
 ```
 
-Although `form.values` can be used to get the current form values in controlled mode, it is
-recommended to use `form.getValues` instead as it always returns the latest
-values while `form.values` is outdated in uncontrolled mode and before the state
-update in controlled mode.
+虽然 `form.values` 可用于在受控模式下获取当前表单值，但
+建议使用 `form.getValues`，因为它始终返回最新的
+值，而 `form.values` 在非受控模式下是过时的，在受控模式下状态更新之前也是过时的。
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -68,20 +67,20 @@ const form = useForm({
 const handleNameChange = () => {
   form.setFieldValue('name', 'Test Name');
 
-  // ❌ Do not use form.values to get the current form values
-  // form.values has a stale name value until the next rerender in controlled mode
-  // and is always outdated in uncontrolled mode
+  // ❌ 不要使用 form.values 获取当前表单值
+  // 在受控模式下，form.values 在下次重新渲染前具有陈旧的 name 值
+  // 在非受控模式下始终过时
   console.log(form.values); // { name: 'John Doe' }
 
-  // ✅ Use form.getValues to get the current form values
-  // form.getValues always returns the latest form values
+  // ✅ 使用 form.getValues 获取当前表单值
+  // form.getValues 始终返回最新的表单值
   console.log(form.getValues()); // { name: 'Test Name' }
 };
 ```
 
-`form.getValues()` returns a ref value of the current form values. This means that
-you cannot pass it to the `useEffect` dependencies array as it will always be the same
-reference.
+`form.getValues()` 返回当前表单值的 ref 值。这意味着
+你不能将它传递给 `useEffect` 依赖数组，因为它始终是相同的
+引用。
 
 ```tsx
 import { useEffect } from 'react';
@@ -90,13 +89,13 @@ import { useForm } from '@react-ui/ui';
 const form = useForm({ mode: 'uncontrolled' });
 
 useEffect(() => {
-  // ❌ This will not work as form.getValues() is a ref value
-  // and will always be the same reference
+  // ❌ 这样不会生效，因为 form.getValues() 是 ref 值
+  // 并且始终是相同的引用
 }, [form.getValues()]);
 ```
 
-Instead of observing form values with `useEffect`, use the `onValuesChange` callback
-to listen to form value changes:
+不要使用 `useEffect` 观察表单值，而应使用 `onValuesChange` 回调
+来监听表单值变化：
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -105,7 +104,7 @@ const form = useForm({
   mode: 'uncontrolled',
   initialValues: { name: 'John Doe' },
   onValuesChange: (values) => {
-    // ✅ This will be called on every form value change
+    // ✅ 这将在每次表单值变化时调用
     console.log(values);
   },
 });
@@ -113,14 +112,13 @@ const form = useForm({
 
 ## form.getInputProps
 
-[form.getInputProps](/form/get-input-props/) returns different props for controlled
-and uncontrolled modes. In controlled mode, the returned object has `value` prop,
-while in uncontrolled mode it has `defaultValue` prop.
+[form.getInputProps](/form/get-input-props/) 为受控和
+非受控模式返回不同的 props。在受控模式下，返回的对象具有 `value` prop，
+而在非受控模式下，它具有 `defaultValue` prop。
 
-Uncontrolled mode relies on the `key` returned from `form.key()` to update
-components when `form.setFieldValue` or `form.setValues` are called. You should
-set the `key` supplied by `form.key()` to the input component to ensure that it has
-the updated value:
+非受控模式依赖 `form.key()` 返回的 `key` 来在调用 `form.setFieldValue` 或 `form.setValues` 时更新
+组件。你应将 `form.key()` 提供的 `key` 设置到输入组件上，以确保它具有
+更新的值：
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -137,15 +135,15 @@ function Demo() {
 }
 ```
 
-In case you need to have a [list of fields](/form/nested/#nested-arrays),
-do not pass the `key` to the input component directly. Instead, add a wrapper
-element and pass the `key` to it:
+如果你需要创建 [字段列表](/form/nested/#nested-arrays)，
+不要直接将 `key` 传递给输入组件。相反，添加一个包装
+元素并将 `key` 传递给它：
 
 ```tsx
 import { useForm } from '@react-ui/ui';
 import { randomId } from '@react-ui/hooks';
 
-// ❌ Incorrect: Do not override key prop, even in lists
+// ❌ 错误：即使在列表中也不要覆盖 key prop
 function Demo() {
   const form = useForm({
     mode: 'uncontrolled',
@@ -164,7 +162,7 @@ function Demo() {
   return <form>{fields}</form>;
 }
 
-// ✅ Correct: Add a wrapper element and pass key to it
+// ✅ 正确：添加一个包装元素并将 key 传递给它
 function Demo() {
   const form = useForm({
     mode: 'uncontrolled',
@@ -189,11 +187,10 @@ function Demo() {
 }
 ```
 
-## Uncontrolled mode in custom components
+## 自定义组件中的非受控模式
 
-If you want to build a custom component that supports uncontrolled form mode,
-you must add support for the `defaultValue` prop. The best way to add support for
-`defaultValue` is to use the [use-uncontrolled](/hooks/use-uncontrolled/) hook:
+如果你想构建一个支持非受控表单模式的自定义组件，
+你必须添加对 `defaultValue` prop 的支持。添加 `defaultValue` 支持的最佳方式是使用 [use-uncontrolled](/hooks/use-uncontrolled/) Hook：
 
 ```tsx
 import { useUncontrolled } from '@react-ui/hooks';
@@ -204,7 +201,7 @@ interface CustomInputProps {
   onChange?: (value: string) => void;
 }
 
-// ✅ CustomInput supports both controlled and uncontrolled modes
+// ✅ CustomInput 同时支持受控和非受控模式
 function CustomInput({
   value,
   defaultValue,
@@ -232,8 +229,8 @@ function Demo() {
     initialValues: { text: 'Initial' },
   });
 
-  // ✅ CustomInput supports `defaultValue` prop,
-  // it can be used in uncontrolled mode
+  // ✅ CustomInput 支持 `defaultValue` prop，
+  // 因此可以在非受控模式下使用
   return (
     <CustomInput
       {...form.getInputProps('text')}

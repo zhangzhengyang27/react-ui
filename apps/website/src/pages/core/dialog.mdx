@@ -4,23 +4,23 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Dialog);
 
-## Usage
+## 用法
 
-`Dialog` is a simplified version of the [Modal](/core/modal/) component.
-It does not include most of the accessibility and usability [Modal](/core/modal/) features:
+`Dialog` 是 [Modal](/core/modal/) 组件的简化版本。
+它不包含 [Modal](/core/modal/) 的大多数可访问性和可用性功能：
 
-- Focus trap is not available
-- Does not close on click outside
-- Does not have an overlay
+- 焦点陷阱不可用
+- 点击外部不会关闭
+- 没有遮罩层
 
-Use `Dialog` to attract attention with non-important information or actions.
-For example, you can create an email subscription form:
+使用 `Dialog` 来吸引用户对不重要信息或操作的注意。
+例如，你可以创建一个邮件订阅表单：
 
 <Demo data={DialogDemos.usage} />
 
-## Change position
+## 修改位置
 
-`Dialog` is rendered in [Portal](/core/portal/) and has a fixed position. Set the `position` prop to control the dialog's position:
+`Dialog` 在 [Portal](/core/portal/) 中渲染，并具有固定定位。设置 `position` 属性以控制 dialog 的位置：
 
 ```tsx
 import { Dialog } from '@react-ui/ui';
@@ -39,8 +39,8 @@ function Demo() {
 }
 ```
 
-## Accessibility
+## 可访问性
 
-`Dialog` is not accessible and most likely will not be announced by screen readers.
-Make sure you do not put any important information in it. In most cases it would be better
-to select [Modal](/core/modal/), [Drawer](/core/drawer/) or [Notifications](/x/notifications/).
+`Dialog` 不具备可访问性，屏幕阅读器很可能不会播报它。
+请确保不要在其中放置任何重要信息。在大多数情况下，
+选择 [Modal](/core/modal/)、[Drawer](/core/drawer/) 或 [Notifications](/x/notifications/) 会更好。

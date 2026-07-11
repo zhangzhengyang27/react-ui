@@ -3,10 +3,9 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useSetState);
 
-## Usage
+## 用法
 
-The `use-set-state` hook works similarly to how `this.setState` works in class components – it shallow merges the state partial
-into the current state.
+`use-set-state` Hook 的工作方式类似于类组件中的 `this.setState`——它会将状态的部分内容浅合并到当前状态中。
 
 ```tsx
 import { useSetState } from '@react-ui/hooks';
@@ -24,17 +23,17 @@ setState({ age: 25, job: 'Manager' }); // -> { name: 'Jane', age: 25, job: 'Mana
 setState((current) => ({ age: current.age + 7 })); // -> { name: 'Jane', age: 32, job: 'Manager' }
 ```
 
-Note that it can work only with objects; primitive values and arrays are not supported:
+注意，它只能与对象一起使用；不支持原始值和数组：
 
 ```tsx
 import { useSetState } from '@react-ui/hooks';
 
-useSetState([1, 2, 3]); // -> will not work
-useSetState(1); // -> will not work
-useSetState({ skills: ['JavaScript', 'TypeScript'] }); // -> works fine
+useSetState([1, 2, 3]); // -> 无效
+useSetState(1); // -> 无效
+useSetState({ skills: ['JavaScript', 'TypeScript'] }); // -> 正常工作
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 type UseSetStateCallback<T> = (
@@ -46,10 +45,10 @@ type UseSetStateReturnValue<T> = [T, UseSetStateCallback<T>];
 function useSetState<T extends Record<string, any>>(initialState: T): UseSetStateReturnValue<T>
 ```
 
-## Exported types
+## 导出类型
 
-`UseSetStateCallback` and `UseSetStateReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseSetStateCallback` 和 `UseSetStateReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseSetStateCallback, UseSetStateReturnValue } from '@react-ui/hooks';

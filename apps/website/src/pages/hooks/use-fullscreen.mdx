@@ -4,29 +4,30 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useFullscreen);
 
-## Usage
+## 用法
 
-The `use-fullscreen` hook allows you to enter/exit fullscreen for a given element using the [Fullscreen API](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API).
-By default, if you don't provide a `ref`, the hook will target `document.documentElement`:
+`use-fullscreen` Hook 允许你使用 [Fullscreen API](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API) 为给定元素进入/退出全屏。
+默认情况下，如果你未提供 `ref`，Hook 将目标设为 `document.documentElement`：
 
 <Demo data={UseFullscreenDemos.usage} />
 
-## Custom target element
+## 自定义目标元素
 
-The hook returns an optional `ref` function that can be passed to an element to act as root.
-Be sure to follow best practices to not [confuse or trap the end user](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API/Guide#things_your_users_want_to_know):
+该 Hook 返回一个可选的 `ref` 函数，可将其传递给元素作为根。
+请务必遵循最佳实践，避免[迷惑或困住最终用户](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API/Guide#things_your_users_want_to_know)：
 
 <Demo data={UseFullscreenDemos.ref} />
 
-## Mobile Safari limitations
+## 移动 Safari 限制
 
-Mobile Safari (especially on iPhone) has limited Fullscreen API support. In many cases, fullscreen is only supported for `<video>` elements and may not work for arbitrary elements (including `document.documentElement`).
+移动 Safari（尤其是 iPhone）对 Fullscreen API 的支持有限。在很多情况下，全屏仅支持 `<video>` 元素，
+可能无法用于任意元素（包括 `document.documentElement`）。
 
-`use-fullscreen` includes Safari-specific fallbacks where possible, but it cannot bypass browser/platform restrictions.
+`use-fullscreen` 在可能的情况下包含 Safari 特定的降级方案，但它无法绕过浏览器/平台限制。
 
-Also note that entering fullscreen usually requires a direct user interaction (for example, a button click).
+另请注意，进入全屏通常需要直接的用户交互（例如，按钮点击）。
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseFullscreenElementReturnValue<T extends HTMLElement = any> {
@@ -44,10 +45,10 @@ function useFullscreenElement<T extends HTMLElement = any>(): UseFullscreenEleme
 function useFullscreenDocument(): UseFullscreenDocumentReturnValue
 ```
 
-## Exported types
+## 导出类型
 
-The `UseFullscreenElementReturnValue` and `UseFullscreenDocumentReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseFullscreenElementReturnValue` 和 `UseFullscreenDocumentReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseFullscreenElementReturnValue, UseFullscreenDocumentReturnValue } from '@react-ui/hooks';

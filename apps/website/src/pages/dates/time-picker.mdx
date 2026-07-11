@@ -4,22 +4,21 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.TimePicker);
 
-## Usage
+## 用法
 
-The `TimePicker` component is an alternative to [TimeInput](/dates/time-input) that offers more
-features. It supports 24-hour and 12-hour formats, a dropdown with hours, minutes and seconds, and
-more.
+`TimePicker` 组件是 [TimeInput](/dates/time-input) 的替代方案，提供更多功能。
+它支持 24 小时和 12 小时格式、带小时/分钟/秒的下拉框等。
 
 <Demo data={TimePickerDemos.usage} />
 
-## Controlled
+## 受控
 
-The `TimePicker` component value is a string in `hh:mm:ss` or `hh:mm` 24-hour format (for example `18:34:55`).
-An empty string is used to represent no value. The `onChange` function is called only when the entered value is valid.
-The input value is considered valid in the following cases:
+`TimePicker` 组件的值是 `hh:mm:ss` 或 `hh:mm` 24 小时制字符串（例如 `18:34:55`）。
+空字符串表示无值。`onChange` 仅在输入值有效时调用。
+输入值在以下情况被视为有效：
 
-- All inputs are empty. In this case, `onChange` is called with an empty string.
-- All inputs are filled. For example, if the `withSeconds` prop is set and the user entered `12:34:56`, `onChange` will be called with `12:34:56`. But if the user entered `12:34`, `onChange` will not be called because the seconds value is missing.
+- 所有输入为空。此时 `onChange` 被调用并传入空字符串。
+- 所有输入已填写。例如，如果设置了 `withSeconds` prop，用户输入 `12:34:56`，`onChange` 将返回 `12:34:56`；但如果用户输入 `12:34`，则不会调用 `onChange`，因为秒值缺失。
 
 ```tsx
 import { useState } from 'react';
@@ -31,126 +30,119 @@ function Demo() {
 }
 ```
 
-## With seconds
+## 带秒
 
-Set the `withSeconds` prop to enable seconds input. Note that if this prop is used,
-`onChange` is not called until all inputs are filled – it is not possible
-to enter only hours and minutes.
+设置 `withSeconds` prop 以启用秒输入。注意使用此 prop 时，
+必须填满所有输入才会调用 `onChange`——无法只输入小时和分钟。
 
 <Demo data={TimePickerDemos.withSeconds} />
 
-## Duration type
+## Duration 类型
 
-Set `type="duration"` to allow entering durations that exceed 24 hours.
-In this mode, the hours field has no upper limit and the input width adjusts
-dynamically based on the entered value. The `format` prop is ignored (always 24h)
-and the dropdown is disabled.
+设置 `type="duration"` 以允许输入超过 24 小时的时长。
+此模式下，小时字段没有上限，输入宽度会根据输入值动态调整。
+`format` prop 被忽略（始终为 24 小时制），下拉框被禁用。
 
 <Demo data={TimePickerDemos.duration} />
 
-## Min hours digits
+## 最小小时位数
 
-Use the `minHoursDigits` prop to set the minimum number of digits displayed in the hours input.
-This prop is only applicable when `type="duration"` is set. By default, the minimum is `2`.
+使用 `minHoursDigits` prop 设置小时输入显示的最少位数。
+此 prop 仅在设置 `type="duration"` 时生效。默认最小值为 `2`。
 
 <Demo data={TimePickerDemos.minHoursDigits} />
 
-## 12-hour format
+## 12 小时制
 
-Set `format="12h"` to use 12-hour format. Note that `onChange` is called only when all inputs are filled,
-including the am/pm input.
+设置 `format="12h"` 以使用 12 小时制。注意只有在所有输入（包括 am/pm）都填满时才会调用 `onChange`。
 
 <Demo data={TimePickerDemos.format12h} />
 
-## Change am/pm labels
+## 更改 am/pm 标签
 
-To change am/pm labels, use the `amPmLabels` prop. Example of changing labels to Hindi:
+要更改 am/pm 标签，请使用 `amPmLabels` prop。以下示例将标签更改为印地语：
 
 <Demo data={TimePickerDemos.amPmLabels} />
 
-## Min and max values
+## 最小和最大值
 
-Set the `min` and `max` props to limit the available time range:
+设置 `min` 和 `max` prop 以限制可选时间范围：
 
 <Demo data={TimePickerDemos.minMax} />
 
-## With dropdown
+## 带下拉框
 
-Set the `withDropdown` prop to display a dropdown with hours, minutes, seconds and am/pm selects.
-By default, the dropdown is visible when one of the inputs is focused.
+设置 `withDropdown` prop 以显示包含小时、分钟、秒和 am/pm 选择的下拉框。
+默认情况下，当任意输入获得焦点时显示下拉框。
 
 <Demo data={TimePickerDemos.withDropdown} />
 
-## Hours/minutes/seconds step
+## 小时/分钟/秒步长
 
-Use `hoursStep`, `minutesStep` and `secondsStep` props to control step for each input.
-These props are used to control value by which the input is incremented or decremented when
-up/down arrow keys are pressed and to generate corresponding values range in the dropdown.
+使用 `hoursStep`、`minutesStep` 和 `secondsStep` prop 控制每个输入的步长。
+这些 prop 用于控制按上下方向键时输入增减的数值，并在下拉框中生成相应的值范围。
 
 <Demo data={TimePickerDemos.steps} />
 
-## Control dropdown opened state
+## 控制下拉框打开状态
 
-Use `popoverProps` to pass props down to the underlying [Popover](/core/popover) component:
+使用 `popoverProps` 将 props 传递给底层的 [Popover](/core/popover) 组件：
 
 <Demo data={TimePickerDemos.controlledDropdown} />
 
-## Time presets
+## 时间预设
 
-You can define time presets with `presets` prop. Presets are displayed in the dropdown and can be selected by clicking on them.
-Time values for presets should be in `hh:mm:ss` or `hh:mm` 24-hour time format. Presets
-display value is generated based on `format`, `amPmLabels` and `withSeconds` props.
+你可以使用 `presets` prop 定义时间预设。预设显示在下拉框中，点击即可选择。
+预设的时间值应为 `hh:mm:ss` 或 `hh:mm` 24 小时制格式。预设的显示值基于 `format`、`amPmLabels` 和 `withSeconds` prop 生成。
 
 <Demo data={TimePickerDemos.presets} />
 
-## Time presets groups
+## 时间预设分组
 
-To group presets use an array of objects with `label` and `values` keys:
+要对预设进行分组，请使用包含 `label` 和 `values` 键的对象数组：
 
 <Demo data={TimePickerDemos.presetsGroups} />
 
-## Time presets range
+## 时间预设范围
 
-If you need to generate a range of time values, use `getTimeRange` function exported from
-`@react-ui/ui` package. The function accepts start, end time and interval in `hh:mm:ss` format.
+如果你需要生成一段时间值，请使用从 `@react-ui/ui` 包导出的 `getTimeRange` 函数。
+该函数接受开始时间、结束时间和 `hh:mm:ss` 格式的间隔。
 
 <Demo data={TimePickerDemos.presetsRange} />
 
-## Close dropdown on preset select
+## 选择预设后关闭下拉框
 
-Set `closeDropdownOnPresetSelect` prop to close the dropdown once a value is selected from the presets list:
+设置 `closeDropdownOnPresetSelect` prop，从预设列表中选择值后关闭下拉框：
 
 <Demo data={TimePickerDemos.closeDropdownOnPresetSelect} />
 
-## Dropdown position
+## 下拉框位置
 
-By default, the dropdown is displayed below the input if there is enough space; otherwise it is displayed above the input.
-You can change this behavior by setting `position` and `middlewares` props, which are passed down to the
-underlying [Popover](/core/popover) component.
+默认情况下，如果输入下方有足够空间，下拉框显示在输入下方；否则显示在上方。
+你可以通过设置 `position` 和 `middlewares` prop 来更改此行为，这些 prop 会传递给底层的 [Popover](/core/popover) 组件。
 
-Example of dropdown that is always displayed above the input:
+下拉框始终显示在输入上方的示例：
 
 <Demo data={TimePickerDemos.dropdownPosition} />
 
-## Dropdown width
+## 下拉框宽度
 
-To change dropdown width, set `width` prop in `comboboxProps`. By default,
-dropdown width is adjusted to fit all content. Example of dropdown width set
-to the input width:
+要更改下拉框宽度，请在 `comboboxProps` 中设置 `width` prop。默认情况下，
+下拉框宽度会根据内容自动调整。以下示例将下拉框宽度设置为与输入等宽：
 
 <Demo data={TimePickerDemos.dropdownWidth} />
 
-## Paste events
+## 粘贴事件
 
-By default, `TimePicker` handles only time in 24-hour format (for example `17:33:43` or `19:22`) for paste events.
-With `pasteSplit` prop you can create a custom paste time parser:
+默认情况下，`TimePicker` 仅处理 24 小时制时间（例如 `17:33:43` 或 `19:22`）的粘贴事件。
+使用 `pasteSplit` prop 可以创建自定义粘贴时间解析器：
 
 <Demo data={TimePickerDemos.pasteSplit} />
 
-## Clearable
+## 可清除
 
-Set `clearable` prop to display a clear button in the right section of the input.
-The clear button is visible when at least one of the fields has value.
+设置 `clearable` prop 在输入右侧区域显示清除按钮。
+只要任意字段有值，清除按钮就会显示。
 
 <Demo data={TimePickerDemos.clearable} />
 
@@ -158,23 +150,23 @@ The clear button is visible when at least one of the fields has value.
 
 <Demo data={TimePickerDemos.clearSectionMode} />
 
-## Disabled
+## 禁用状态
 
 <Demo data={TimePickerDemos.disabled} />
 
-## Read only
+## 只读
 
 <Demo data={TimePickerDemos.readOnly} />
 
-## Input props
+## Input 属性
 
 <InputFeatures component="TimePicker" element="div" />
 
 <Demo data={TimePickerDemos.configurator} />
 
-## Get refs of inner inputs
+## 获取内部输入的 ref
 
-Use `hoursRef`, `minutesRef`, `secondsRef` and `amPmRef` props to get refs of inner inputs:
+使用 `hoursRef`、`minutesRef`、`secondsRef` 和 `amPmRef` prop 获取内部输入的 ref：
 
 ```tsx
 import { useRef } from 'react';
@@ -197,9 +189,9 @@ function Demo() {
 }
 ```
 
-## onFocus and onBlur events
+## onFocus 和 onBlur 事件
 
-`onFocus` and `onBlur` events are called when the first input is focused and the last input is blurred:
+`onFocus` 和 `onBlur` 事件分别会在第一个输入获得焦点和最后一个输入失去焦点时调用：
 
 ```tsx
 import { TimePicker } from '@react-ui/ui';
@@ -214,9 +206,9 @@ function Demo() {
 }
 ```
 
-## Accessibility
+## 无障碍
 
-Set aria labels for hours, minutes, seconds and am/pm inputs and clear button with corresponding props:
+使用相应的 prop 为小时、分钟、秒和 am/pm 输入以及清除按钮设置 aria 标签：
 
 ```tsx
 import { TimePicker } from '@react-ui/ui';
@@ -234,34 +226,34 @@ function Demo() {
 }
 ```
 
-Keyboard interactions:
+键盘交互：
 
 <KeyboardEventsTable
   data={[
     {
       key: 'ArrowDown',
-      description: 'Decrements current value by step',
+      description: '按步长减小当前值',
     },
     {
       key: 'ArrowUp',
-      description: 'Increments current value by step',
+      description: '按步长增大当前值',
     },
     {
       key: 'Home',
-      description: 'Sets current value to min possible value',
+      description: '将当前值设为最小可能值',
     },
     {
       key: 'End',
-      description: 'Sets current value to max possible value',
+      description: '将当前值设为最大可能值',
     },
-    { key: 'Backspace', description: 'Clears current value' },
+    { key: 'Backspace', description: '清除当前值' },
     {
       key: 'ArrowRight',
-      description: 'Moves focus to the next input',
+      description: '将焦点移动到下一个输入',
     },
     {
       key: 'ArrowLeft',
-      description: 'Moves focus to the previous input',
+      description: '将焦点移动到上一个输入',
     },
   ]}
 />

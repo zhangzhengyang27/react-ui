@@ -4,26 +4,26 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.CloseButton);
 
-## Usage
+## 用法
 
-`CloseButton` renders a button with an `X` icon inside. It is used in other ReactUI components like [Drawer](/core/drawer) or [Modal](/core/modal).
+`CloseButton` 渲染一个内部带有 `X` 图标的按钮。它用于其他 ReactUI 组件，如 [Drawer](/core/drawer) 或 [Modal](/core/modal)。
 
 <Demo data={CloseButtonDemos.usage} />
 
-## Change icon
+## 修改图标
 
-You can change the icon by passing any react node to the `icon` prop.
-It is useful when `CloseButton` is used as a part of other components,
-for example, in [Drawer](/core/drawer) or [Modal](/core/modal).
-Note that if you use the `icon` prop, the `iconSize` prop is ignored –
-you will have to set the icon size manually.
+你可以通过向 `icon` 属性传递任何 React 节点来更改图标。
+当 `CloseButton` 用作其他组件的一部分时很有用，
+例如在 [Drawer](/core/drawer) 或 [Modal](/core/modal) 中。
+请注意，如果你使用 `icon` 属性，`iconSize` 属性将被忽略——
+你需要手动设置图标大小。
 
 <Demo data={CloseButtonDemos.icon} />
 
-## Accessibility
+## 可访问性
 
-To make the `CloseButton` accessible for screen readers, you need to either set `aria-label` or
-use the [VisuallyHidden](/core/visually-hidden) component:
+要使 `CloseButton` 对屏幕阅读器可访问，你需要设置 `aria-label` 或
+使用 [VisuallyHidden](/core/visually-hidden) 组件：
 
 ```tsx
 import { CloseButton, VisuallyHidden } from '@react-ui/ui';

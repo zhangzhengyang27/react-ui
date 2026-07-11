@@ -3,15 +3,14 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.ColorFunctions);
 
-# Color functions
+# 颜色函数
 
-The `@react-ui/ui` package exports several functions that can be used to manipulate colors
-or extract information before using them as CSS values.
+`@react-ui/ui` 包导出了多个函数，可用于在处理颜色、将其作为 CSS 值使用之前进行操作或提取信息。
 
-## darken and lighten
+## darken 和 lighten
 
-The `darken` and `lighten` functions can be used to manipulate color brightness.
-They accept a color in any format as the first argument and the amount of lightness to add/remove as the second argument.
+`darken` 和 `lighten` 函数可用于调整颜色的亮度。
+第一个参数接受任意格式的颜色，第二个参数为要增加/减少的亮度值。
 
 ```tsx
 import { darken, lighten } from '@react-ui/ui';
@@ -31,11 +30,11 @@ lighten('var(--mantine-color-gray-4)', 0.74);
 
 ## alpha
 
-The `alpha` function converts a color to rgba format with a given alpha channel.
-It is usually used to make colors more transparent. If it is not possible to convert the color to rgba
-format (for example, if the color is a CSS variable), the function will use [color-mix](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix).
-Note that `color-mix` is not supported in some older browsers. You can check [caniuse](https://caniuse.com/mdn-css_types_color_color-mix)
-for more information.
+`alpha` 函数将颜色转换为带有指定 alpha 通道的 rgba 格式。
+它通常用于让颜色更透明。如果无法将颜色转换为 rgba 格式
+（例如颜色是 CSS 变量），该函数会使用 [color-mix](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix)。
+注意 `color-mix` 在某些旧版浏览器中不受支持。你可以在 [caniuse](https://caniuse.com/mdn-css_types_color_color-mix)
+上查看更多信息。
 
 ```tsx
 import { alpha } from '@react-ui/ui';
@@ -47,7 +46,7 @@ alpha('var(--mantine-color-gray-4)', 0.74);
 
 ## parseThemeColor
 
-The `parseThemeColor` function returns information about a given color in the following format:
+`parseThemeColor` 函数返回给定颜色的相关信息，格式如下：
 
 ```tsx
 interface ParseThemeColorResult {
@@ -90,9 +89,9 @@ interface ParseThemeColorResult {
 }
 ```
 
-The `parseThemeColor` function can be used anywhere the `theme` object is available,
-for example in [CSS variables resolver](/styles/css-variables), [variant color resolver](/theming/colors#colors-variant-resolver),
-or component body:
+`parseThemeColor` 函数可以在任何可访问 `theme` 对象的地方使用，
+例如 [CSS 变量解析器](/styles/css-variables)、[颜色变体解析器](/theming/colors#colors-variant-resolver)
+或组件主体中：
 
 ```tsx
 import {
@@ -123,8 +122,8 @@ function Demo({ color }: DemoProps) {
 
 ## getThemeColor
 
-`getThemeColor` is a simpler version of the `parseThemeColor` function. It accepts a color string
-as the first argument and a theme object as the second argument. It returns the parsed color value or CSS variable:
+`getThemeColor` 是 `parseThemeColor` 函数的简化版本。它接受颜色字符串作为第一个参数，
+theme 对象作为第二个参数，返回解析后的颜色值或 CSS 变量：
 
 ```tsx
 import { getThemeColor, useMantineTheme } from '@react-ui/ui';
@@ -141,7 +140,7 @@ function Demo() {
 
 ## getGradient
 
-The `getGradient` function transforms a given `MantineGradient` object to a CSS gradient string:
+`getGradient` 函数将给定的 `MantineGradient` 对象转换为 CSS 渐变字符串：
 
 ```tsx
 import { getGradient, useMantineTheme } from '@react-ui/ui';
@@ -156,7 +155,7 @@ function Demo() {
 
 ## isLightColor
 
-The `isLightColor` function can be used to achieve better contrast between text and background:
+`isLightColor` 函数可用于提升文本与背景之间的对比度：
 
 ```tsx
 import { Box, isLightColor } from '@react-ui/ui';
@@ -176,7 +175,7 @@ export function Demo({ color }: DemoProps) {
 
 ## luminance
 
-The `luminance` function returns the color luminance. It can be used to check color contrast:
+`luminance` 函数返回颜色的亮度值。它可用于检查颜色对比度：
 
 ```tsx
 import { luminance } from '@react-ui/ui';

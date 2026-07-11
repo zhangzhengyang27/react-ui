@@ -4,64 +4,64 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useFloatingWindow);
 
-## Usage
+## 用法
 
-The `use-floating-window` hook makes a given element draggable:
+`use-floating-window` Hook 使给定元素可拖动：
 
 <Demo data={UseFloatingWindowDemos.usage} />
 
-## Constrain to viewport
+## 限制在视口内
 
-Use `constrainToViewport` option to restrict element movement to the viewport boundaries.
-If you do not set `constrainToViewport` option, the element can be dragged outside the viewport:
+使用 `constrainToViewport` 选项将元素移动限制在视口边界内。
+如果未设置 `constrainToViewport` 选项，元素可以被拖出视口：
 
 <Demo data={UseFloatingWindowDemos.constrainToViewport} />
 
-## Constrain offset
+## 约束偏移
 
-Use `constrainOffset` option to set the offset from the viewport edges when constraining the element.
-This option requires `constrainToViewport: true`:
+使用 `constrainOffset` 选项设置元素约束时与视口边缘的偏移。
+此选项需要 `constrainToViewport: true`：
 
 <Demo data={UseFloatingWindowDemos.constrainOffset} />
 
-## Drag handle selector
+## 拖动手柄选择器
 
-`dragHandleSelector` option allows specifying a selector of an element (or a group of elements) that should be used to drag floating window.
-If not specified, the entire root element is used as a drag target.
+`dragHandleSelector` 选项允许指定一个元素（或一组元素）的选择器，用于拖动悬浮窗口。
+如果未指定，则整个根元素都用作拖动目标。
 
-`excludeDragHandleSelector` option excludes elements within `dragHandleSelector` from the drag event.
-In the following example, the close button is excluded from the drag event:
+`excludeDragHandleSelector` 选项会从拖动事件中排除 `dragHandleSelector` 内的元素。
+在以下示例中，关闭按钮被排除在拖动事件之外：
 
 <Demo data={UseFloatingWindowDemos.dragHandleSelector} />
 
-## Enabled option
+## Enabled 选项
 
-Use `enabled` option to enable or disable dragging:
+使用 `enabled` 选项启用或禁用拖动：
 
 <Demo data={UseFloatingWindowDemos.enabled} />
 
-## Set position
+## 设置位置
 
-Call `setPosition` function to set the position of the element programmatically.
-This function accepts an object with `top`, `left`, `right` and `bottom` properties,
-from which you should only specify two (for example, `top` and `left`, `bottom` and `right`).
+调用 `setPosition` 函数以编程方式设置元素位置。
+该函数接受一个包含 `top`、`left`、`right` 和 `bottom` 属性的对象，
+你只需指定其中两个（例如，`top` 和 `left`，或 `bottom` 和 `right`）。
 
 <Demo data={UseFloatingWindowDemos.setPosition} />
 
-## Lock axis
+## 锁定轴
 
-Use `axis` option to restrict movement to the specified axis:
+使用 `axis` 选项将移动限制到指定轴：
 
 <Demo data={UseFloatingWindowDemos.axis} />
 
-## FloatingWindow component
+## FloatingWindow 组件
 
-If you prefer component API, you can use [FloatingWindow](/core/floating-window) component.
-It supports the same options as the hook and provides extra features like portal rendering, basic styles and more.
+如果你更喜欢组件 API，可以使用 [FloatingWindow](/core/floating-window) 组件。
+它支持与 Hook 相同的选项，并提供额外功能，如 portal 渲染、基础样式等。
 
 <Demo data={FloatingWindowDemos.usage} />
 
-## Definition
+## 类型定义
 
 
 ```tsx
@@ -134,10 +134,10 @@ interface UseFloatingWindowReturnValue<T extends HTMLElement> {
 }
 ```
 
-## Exported types
+## 导出类型
 
-`UseFloatingWindowOptions` and `UseFloatingWindowReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseFloatingWindowOptions` 和 `UseFloatingWindowReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseFloatingWindowOptions, UseFloatingWindowReturnValue } from '@react-ui/hooks';

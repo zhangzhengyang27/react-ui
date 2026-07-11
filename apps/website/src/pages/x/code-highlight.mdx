@@ -4,62 +4,56 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.CodeHighlight);
 
-## Installation
+## 安装
 
 <InstallScript packages="@react-ui/ui" />
 
-After installation import package styles at the root of your application:
+安装完成后，在应用根目录导入包样式：
 
 ```tsx
 import '@react-ui/ui/styles.css';
-// ‼️ import code-highlight styles after core package styles
+// ‼️ code-highlight 样式必须在核心包样式之后导入
 import '@react-ui/ui/styles.css';
 ```
 
-## Example
+## 示例
 
-`CodeHighlight` component is used to display code snippets with syntax highlighting.
-It provides a flexible adapter system that allows you to use any code highlighting library
-of your choice.
+`CodeHighlight` 组件用于显示带语法高亮的代码片段。它提供灵活的适配器系统，允许你使用任意代码高亮库。
 
-Example of code highlighting with [shiki](https://shiki.matsu.io/):
+使用 [shiki](https://shiki.matsu.io/) 进行代码高亮的示例：
 
 <Demo data={CodeHighlightDemos.usage} />
 
-## Adapters
+## 适配器
 
-`@react-ui/ui` package does not depend on any specific code highlighting library.
-You can choose one of the default adapters provided by the package or create your own.
+`@react-ui/ui` 包不依赖任何特定的代码高亮库。你可以选择包提供的默认适配器之一，或创建自己的适配器。
 
-Default adapters:
+默认适配器：
 
-- `createShikiAdapter` – creates [shiki](https://shiki.matsu.io/) adapter
-- `createHighlightJsAdapter` – creates [highlight.js](https://highlightjs.org/) adapter
-- `plainTextAdapter` – does not highlight code, just displays it as plain text (used by default if no adapter is provided)
+- `createShikiAdapter` – 创建 [shiki](https://shiki.matsu.io/) 适配器
+- `createHighlightJsAdapter` – 创建 [highlight.js](https://highlightjs.org/) 适配器
+- `plainTextAdapter` – 不高亮代码，仅按纯文本显示（未提供适配器时默认使用）
 
-## Usage with shiki
+## 使用 shiki
 
-[Shiki](https://shiki.matsu.io/) library provides the most advanced syntax highlighting
-for TypeScript and CSS/Sass code. It uses textmate grammars to highlight code (same as in VSCode).
-The Shiki adapter is recommended if you need to highlight advanced TypeScript (generics, jsx nested in props) or CSS code (custom syntaxes, newest features).
-The Shiki adapter is used for all code highlighting in ReactUI documentation.
+[Shiki](https://shiki.matsu.io/) 库为 TypeScript 和 CSS/Sass 代码提供最先进的语法高亮。它使用 textmate 语法进行高亮（与 VSCode 相同）。如果你需要高亮高级 TypeScript（泛型、嵌套在 props 中的 jsx）或 CSS 代码（自定义语法、最新特性），推荐使用 Shiki 适配器。ReactUI 文档中的所有代码高亮都使用 Shiki 适配器。
 
-To use the shiki adapter, you need to install the `shiki` package:
+要使用 shiki 适配器，你需要安装 `shiki` 包：
 
 <InstallScript packages="shiki" />
 
-Then wrap your app with `CodeHighlightAdapterProvider` and provide `createShikiAdapter` as the `adapter` prop:
+然后用 `CodeHighlightAdapterProvider` 包裹你的应用，并将 `createShikiAdapter` 作为 `adapter` 属性传入：
 
 ```tsx
 import { MantineProvider } from '@react-ui/ui';
 import { CodeHighlightAdapterProvider, createShikiAdapter } from '@react-ui/code-highlight';
 
-// Shiki requires async code to load the highlighter
+// Shiki 需要异步代码来加载高亮器
 async function loadShiki() {
   const { createHighlighter } = await import('shiki');
   const shiki = await createHighlighter({
     langs: ['tsx', 'scss', 'html', 'bash', 'json'],
-    // You can load supported themes here
+    // 你可以在这里加载支持的主题
     themes: [],
   });
 
@@ -72,30 +66,28 @@ function App() {
   return (
     <MantineProvider>
       <CodeHighlightAdapterProvider adapter={shikiAdapter}>
-        {/* Your app here */}
+        {/* 你的应用内容 */}
       </CodeHighlightAdapterProvider>
     </MantineProvider>
   );
 }
 ```
 
-After that, you can use the `CodeHighlight` component in your application:
+之后，你就可以在应用中使用 `CodeHighlight` 组件：
 
 <Demo data={CodeHighlightDemos.usage} />
 
-All further code highlighting examples on this page use the shiki adapter.
+本页后续所有代码高亮示例均使用 shiki 适配器。
 
-## Usage with highlight.js
+## 使用 highlight.js
 
-[Highlight.js](https://highlightjs.org/) provides less accurate highlighting compared to shiki,
-but it has a smaller bundle size and better performance. Choose the highlight.js adapter if you need
-to highlight basic JavaScript, HTML, and CSS code.
+与 shiki 相比，[Highlight.js](https://highlightjs.org/) 提供的高亮精度较低，但包体积更小、性能更好。如果你需要高亮基础 JavaScript、HTML 和 CSS 代码，请选择 highlight.js 适配器。
 
-To use the highlight.js adapter, you need to install the `highlight.js` package:
+要使用 highlight.js 适配器，你需要安装 `highlight.js` 包：
 
 <InstallScript packages="highlight.js" />
 
-Then wrap your app with `CodeHighlightAdapterProvider` and provide `createHighlightJsAdapter` as the `adapter` prop:
+然后用 `CodeHighlightAdapterProvider` 包裹你的应用，并将 `createHighlightJsAdapter` 作为 `adapter` 属性传入：
 
 ```tsx
 import { MantineProvider } from '@react-ui/ui';
@@ -111,16 +103,14 @@ function App() {
   return (
     <MantineProvider>
       <CodeHighlightAdapterProvider adapter={highlightJsAdapter}>
-        {/* Your app here */}
+        {/* 你的应用内容 */}
       </CodeHighlightAdapterProvider>
     </MantineProvider>
   );
 }
 ```
 
-Then you need to add styles from one of the highlight.js themes to your application.
-You can do that by importing a css file from the `highlight.js` package or adding it via
-a CDN link to the head of your application:
+然后你需要在应用中添加一个 highlight.js 主题的样式。可以通过从 `highlight.js` 包导入 css 文件，或在应用 head 中添加 CDN 链接来实现：
 
 ```html
 <link
@@ -129,23 +119,22 @@ a CDN link to the head of your application:
 />
 ```
 
-After that, you can use the `CodeHighlight` component in your application.
+之后，你就可以在应用中使用 `CodeHighlight` 组件。
 
-## Create custom adapter
+## 创建自定义适配器
 
-You can create a custom adapter if you want to enhance the default behavior of code highlighting
-or use a different library.
+如果你想增强默认的代码高亮行为，或使用其他库，可以创建自定义适配器。
 
-Example of creating a custom shiki adapter with custom themes and logic:
+创建带有自定义主题和逻辑的自定义 shiki 适配器示例：
 
 ```tsx
 import { type CodeHighlightAdapter, stripShikiCodeBlocks } from '@react-ui/code-highlight';
 
-// Shiki transformers can be used to highlight diffs and other notations
+// Shiki transformers 可用于高亮 diff 和其他标记
 // https://shiki.style/packages/transformers
 import { transformerNotationDiff, transformerNotationHighlight } from '@shikijs/transformers'
 
-// Shiki themes as objects, you can use any VSCode themes
+// Shiki 主题作为对象，你可以使用任何 VSCode 主题
 import { darkTheme, lightTheme } from './shiki-themes';
 
 async function loadShiki() {
@@ -158,15 +147,15 @@ async function loadShiki() {
   return shiki;
 }
 
-// Pass this adapter to CodeHighlightAdapterProvider component
+// 将此适配器传递给 CodeHighlightAdapterProvider 组件
 export const customShikiAdapter: CodeHighlightAdapter = {
-  // loadContext is called on the client side to load the shiki highlighter
-  // It is required to be used if your library requires async initialization
-  // The value returned from loadContext is passed to getHighlighter as ctx argument
+  // loadContext 在客户端调用以加载 shiki 高亮器
+  // 如果你的库需要异步初始化，则必须使用它
+  // loadContext 返回的值会作为 ctx 参数传递给 getHighlighter
   loadContext: loadShiki,
 
-  // ctx is the value returned from loadContext
-  // or null if loadContext is not used or has not resolved yet
+  // ctx 是 loadContext 返回的值
+  // 如果未使用 loadContext 或尚未解析，则为 null
   getHighlighter: (ctx) => {
     if (!ctx) {
       return ({ code }) => ({ highlightedCode: code, isHighlighted: false });
@@ -174,7 +163,7 @@ export const customShikiAdapter: CodeHighlightAdapter = {
 
     return ({ code, language, colorScheme }) => ({
       isHighlighted: true,
-      // stripShikiCodeBlocks removes <pre> and <code> tags from highlighted code
+      // stripShikiCodeBlocks 从高亮代码中移除 <pre> 和 <code> 标签
       highlightedCode: stripShikiCodeBlocks(
         ctx.codeToHtml(code, {
           lang: language,
@@ -187,58 +176,50 @@ export const customShikiAdapter: CodeHighlightAdapter = {
 };
 ```
 
-## Copy button
+## 复制按钮
 
-You can customize copy button labels with `copyLabel` and `copiedLabel` props.
-In case you need to remove the copy button, set `withCopyButton={false}`.
+你可以使用 `copyLabel` 和 `copiedLabel` 属性自定义复制按钮标签。如果需要移除复制按钮，请设置 `withCopyButton={false}`。
 
 <Demo data={CodeHighlightDemos.copy} />
 
-## With tabs
+## 带标签页
 
-`CodeHighlightTabs` component allows you to organize multiple code blocks into tabs:
+`CodeHighlightTabs` 组件允许你将多个代码块组织成标签页：
 
 <Demo data={CodeHighlightDemos.tabs} />
 
-## Tabs with icons
+## 带图标的标签页
 
-You can use any React node as tab icon. The example below uses TypeScript and CSS
-icons from the `@react-ui/dev-icons` package, but you can use any other icons library or custom
-icons:
+你可以使用任意 React 节点作为标签页图标。下面的示例使用了 `@react-ui/dev-icons` 包中的 TypeScript 和 CSS 图标，但你也可以使用其他图标库或自定义图标：
 
 <Demo data={CodeHighlightDemos.tabsIcons} />
 
-## Tabs icons based on file name
+## 根据文件名显示标签页图标
 
-As an alternative to providing icons manually for each tab, you can use the `getFileIcon` prop
-to assign icons based on file name. `getFileIcon` accepts a file name and must return a React node
-or `null`.
+作为为每个标签页手动提供图标的替代方案，你可以使用 `getFileIcon` 属性根据文件名分配图标。`getFileIcon` 接受文件名，必须返回 React 节点或 `null`。
 
 <Demo data={CodeHighlightDemos.tabsGetIcons} />
 
-## Line numbers
+## 行号
 
-Set `withLineNumbers` prop to display line numbers alongside the code:
+设置 `withLineNumbers` 属性以在代码旁显示行号：
 
 <Demo data={CodeHighlightDemos.lineNumbers} />
 
-## Expandable code
+## 可展开代码
 
-If the code snippet is too long, you can make it expandable with `withExpandButton`
-and `defaultExpanded={false}` props. To change the label of the expand/collapse control
-tooltip, use `expandCodeLabel` and `collapseCodeLabel`.
+如果代码片段太长，你可以使用 `withExpandButton` 和 `defaultExpanded={false}` 属性使其可展开。要更改展开/折叠控件提示的标签，请使用 `expandCodeLabel` 和 `collapseCodeLabel`。
 
 <Demo data={CodeHighlightDemos.expand} />
 
-## Custom controls
+## 自定义控件
 
-Use the `controls` prop with the `CodeHighlightControl` component to add custom controls
-to the code block:
+将 `controls` 属性与 `CodeHighlightControl` 组件一起使用，为代码块添加自定义控件：
 
 <Demo data={CodeHighlightDemos.customControl} />
 
-## Inline code
+## 行内代码
 
-`InlineCodeHighlight` component allows you to highlight inline code snippets:
+`InlineCodeHighlight` 组件允许你高亮行内代码片段：
 
 <Demo data={CodeHighlightDemos.inline} />

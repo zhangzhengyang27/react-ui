@@ -4,65 +4,57 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Stepper);
 
-## Usage
+## 用法
 
 <Demo data={StepperDemos.usage} />
 
-## Allow step select
+## 允许选择步骤
 
-To disable step selection, set the `allowStepSelect` prop on the `Stepper.Step` component.
-It can be used to prevent the user from reaching the next steps while letting them go back and forth between steps they've already reached before:
+要禁用步骤选择，请在 `Stepper.Step` 组件上设置 `allowStepSelect` 属性。它可以用来防止用户进入后续步骤，同时允许他们在已经到达过的步骤之间来回切换：
 
 <Demo data={StepperDemos.allowStepSelect} />
 
-## Disable next steps selection
+## 禁用下一步选择
 
-Another way to disable the selection of upcoming steps is to use the `allowNextStepsSelect` directly on the `Stepper` component.
-This is useful when you don't need to control the behavior specifically for each step.
+另一种禁用后续步骤选择的方式是直接在 `Stepper` 组件上使用 `allowNextStepsSelect` 属性。当你不需要为每个步骤单独控制行为时，这很有用。
 
 <Demo data={StepperDemos.allowNextStepsSelect} />
 
-## Color, radius and size
+## 颜色、圆角和尺寸
 
 <Demo data={StepperDemos.configurator} />
 
-Component size is controlled by two props: `size` and `iconSize`.
-The `size` prop controls icon size, label and description font size.
-`iconSize` allows you to overwrite the icon size separately from other size values:
+组件尺寸由两个属性控制：`size` 和 `iconSize`。`size` 属性控制图标尺寸、标签和描述字体大小。`iconSize` 允许你单独覆盖图标尺寸，而不影响其他尺寸值：
 
 <Demo data={StepperDemos.iconSizeConfigurator} />
 
-## With custom icons
+## 自定义图标
 
-You can replace the step icon by setting the `icon` prop on the `Stepper.Step` component.
-To change the completed check icon, set `completedIcon` on the `Stepper` component.
-You can use any React node as an icon: component, string, number:
+你可以通过在 `Stepper.Step` 组件上设置 `icon` 属性来替换步骤图标。要更改已完成的勾选图标，请在 `Stepper` 组件上设置 `completedIcon`。你可以使用任意 React node 作为图标：组件、字符串、数字：
 
 <Demo data={StepperDemos.icons} />
 
-You can use `Stepper` with icons only. Note that in this case, you will have to
-set `aria-label` or `title` on the `Stepper.Step` component to make it accessible:
+你可以仅使用图标与 `Stepper`。注意，在这种情况下，你需要在 `Stepper.Step` 组件上设置 `aria-label` 或 `title` 以使其可访问：
 
 <Demo data={StepperDemos.iconsOnly} />
 
-You can also change the completed icon for each step, for example, to indicate an error state:
+你还可以为每个步骤更改已完成图标，例如指示错误状态：
 
 <Demo data={StepperDemos.stepColor} />
 
-## Vertical orientation
+## 垂直方向
 
 <Demo data={StepperDemos.orientation} />
 
-## Icon position
+## 图标位置
 
-To change the step icon and body arrangement, set `iconPosition="right"`:
+要更改步骤图标和主体排列方式，请设置 `iconPosition="right"`：
 
 <Demo data={StepperDemos.iconPosition} />
 
-## Loading state
+## 加载状态
 
-To indicate the loading state, set the `loading` prop on the Step component; the `Loader` will replace the step icon.
-You can configure the default loader in the [theme](/theming/theme-object/).
+要指示加载状态，请在 Step 组件上设置 `loading` 属性；`Loader` 将替换步骤图标。你可以在 [theme](/theming/theme-object/) 中配置默认加载器。
 
 <Demo data={StepperDemos.loading} />
 
@@ -70,7 +62,7 @@ You can configure the default loader in the [theme](/theming/theme-object/).
 
 <Demo data={StepperDemos.stylesApi} />
 
-Examples of styles customization with Styles API:
+Styles API 自定义样式示例：
 
 <Demo data={StepperDemos.stylesApi2} />
 
@@ -78,9 +70,9 @@ Examples of styles customization with Styles API:
 
 <Demo data={StepperDemos.stylesApi3} />
 
-## Get step ref
+## 获取步骤 ref
 
-You can get refs of the step button and stepper root element (div):
+你可以获取步骤按钮和 stepper 根元素（div）的 ref：
 
 ```tsx
 import { useRef } from 'react';
@@ -99,15 +91,14 @@ function MyStepper() {
 }
 ```
 
-## Wrap Stepper.Step
+## 包裹 Stepper.Step
 
-`Stepper` component relies on `Stepper.Step` order. Wrapping `Stepper.Step` is not supported.
-Instead, you will need to use different approaches:
+`Stepper` 组件依赖 `Stepper.Step` 的顺序。不支持包裹 `Stepper.Step`。相反，你需要使用不同的方法：
 
 ```tsx
 import { Stepper } from '@react-ui/ui';
 
-// This will not work, step children will not render
+// 这不会生效，step 子项不会渲染
 function WillNotWork() {
   return (
     <Stepper.Step label="Nope" description="It will not work">
@@ -116,7 +107,7 @@ function WillNotWork() {
   );
 }
 
-// Create a separate component for children
+// 为子项创建一个单独的组件
 function WillWork() {
   return <div>This will work as expected!</div>;
 }
@@ -125,7 +116,7 @@ function Demo() {
   return (
     <Stepper active={1}>
       <Stepper.Step label="Regular step">First step</Stepper.Step>
-      {/* Wrapped Stepper.Step will not render children, do not do that */}
+      {/* 包裹的 Stepper.Step 不会渲染子项，不要这样做 */}
       <WillNotWork />
       <Stepper.Step label="Step with custom content">
         <WillWork />
@@ -136,10 +127,9 @@ function Demo() {
 }
 ```
 
-## Accessibility
+## 可访问性
 
-`<Stepper.Step />` components render a button element; set `aria-label` or `title` props
-to make the component visible for screen readers in case you do not specify `label` or `description`:
+`<Stepper.Step />` 组件渲染一个 button 元素；如果你没有指定 `label` 或 `description`，请设置 `aria-label` 或 `title` 属性以使屏幕阅读器可以识别该组件：
 
 ```tsx
 import { Stepper } from '@react-ui/ui';
@@ -147,25 +137,25 @@ import { Stepper } from '@react-ui/ui';
 function Demo() {
   return (
     <Stepper active={0}>
-      {/* Not ok, no label for screen reader */}
+      {/* 不好，屏幕阅读器没有标签 */}
       <Stepper.Step />
 
-      {/* Ok, label and description */}
+      {/* 好，有 label 和 description */}
       <Stepper.Step label="Step 1" description="Create an account" />
 
-      {/* Ok, aria-label */}
+      {/* 好，有 aria-label */}
       <Stepper.Step aria-label="Create an account" />
     </Stepper>
   );
 }
 ```
 
-## Keyboard Navigation
+## 键盘导航
 
-Stepper supports full keyboard navigation:
+Stepper 支持完整的键盘导航：
 
-- **Tab / Shift+Tab** - Move focus between clickable steps
-- **Space / Enter** - Activate the focused step
-- Each step is a button element with proper ARIA attributes
+- **Tab / Shift+Tab** - 在可点击步骤之间移动焦点
+- **Space / Enter** - 激活获得焦点的步骤
+- 每个步骤都是带有适当 ARIA 属性的 button 元素
 
-Inactive steps that are not clickable are skipped during Tab navigation. The tabIndex is automatically managed based on whether a step is clickable or not.
+不可点击的非活动步骤在 Tab 导航中会被跳过。tabIndex 会根据步骤是否可点击自动管理。

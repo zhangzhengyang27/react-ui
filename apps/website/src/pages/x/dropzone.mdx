@@ -12,71 +12,64 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Dropzone);
 
-## Installation
+## 安装
 
 <InstallScript packages="@react-ui/ui" />
 
-After installation import package styles at the root of your application:
+安装完成后，在应用根目录导入包样式：
 
 ```tsx
 import '@react-ui/ui/styles.css';
-// ‼️ import dropzone styles after core package styles
+// ‼️ dropzone 样式必须在核心包样式之后导入
 import '@react-ui/dropzone/styles.css';
 ```
 
-## Usage
+## 用法
 
-`Dropzone` lets you capture one or more files from the user.
-The component is based on [react-dropzone](https://react-dropzone.js.org/) and supports all of its core features:
+`Dropzone` 允许你从用户处捕获一个或多个文件。该组件基于 [react-dropzone](https://react-dropzone.js.org/)，并支持其核心功能：
 
-- Accepts/rejects files based on provided mime types
-- Limits individual file size
-- Renders given children and provides context-based components to display elements based on current status
+- 根据提供的 mime 类型接受/拒绝文件
+- 限制单个文件大小
+- 渲染给定的子元素，并提供基于上下文的组件，根据当前状态显示元素
 
 <Demo data={DropzoneDemos.usage} />
 
-## Dropzone.Accept, Dropzone.Reject and Dropzone.Idle
+## Dropzone.Accept、Dropzone.Reject 和 Dropzone.Idle
 
-`Dropzone.Accept`, `Dropzone.Reject` and `Dropzone.Idle` components are visible only when the user performs a certain action:
+`Dropzone.Accept`、`Dropzone.Reject` 和 `Dropzone.Idle` 组件仅在用户执行特定操作时可见：
 
-- `Dropzone.Accept` is visible only when the user drags a file that can be accepted over the dropzone
-- `Dropzone.Reject` is visible only when the user drags a file that cannot be accepted over the dropzone
-- `Dropzone.Idle` is visible when the user does not drag anything over the dropzone
+- `Dropzone.Accept` 仅在用户拖拽可被接受的文件到 dropzone 上时可见
+- `Dropzone.Reject` 仅在用户拖拽无法被接受的文件到 dropzone 上时可见
+- `Dropzone.Idle` 在用户没有拖拽任何文件到 dropzone 上时可见
 
-## Loading state
+## 加载状态
 
-Set the `loading` prop to indicate a loading state with the [LoadingOverlay](/core/loading-overlay/) component.
-When the `loading` prop is true, users cannot drop or select new files (`Dropzone` becomes disabled):
+设置 `loading` 属性以使用 [LoadingOverlay](/core/loading-overlay/) 组件指示加载状态。当 `loading` 属性为 true 时，用户无法拖放或选择新文件（`Dropzone` 变为禁用状态）：
 
 <Demo data={DropzoneDemos.loading} />
 
-## Disabled state
+## 禁用状态
 
-If you want to implement your own loading state, you can disable `Dropzone` without `LoadingOverlay`.
-Same as with `loading`, when `Dropzone` is disabled, users cannot drop or select new files:
+如果你想实现自己的加载状态，可以在不使用 `LoadingOverlay` 的情况下禁用 `Dropzone`。与 `loading` 相同，当 `Dropzone` 被禁用时，用户无法拖放或选择新文件：
 
 <Demo data={DropzoneDemos.disabled} />
 
-## Open file browser manually
+## 手动打开文件浏览器
 
-To open the file browser from outside of the component, use the `openRef` prop to get a function that will trigger the file browser:
+要从组件外部打开文件浏览器，请使用 `openRef` 属性获取一个会触发文件浏览器的函数：
 
 <Demo data={DropzoneDemos.manual} />
 
-## Enable child pointer events
+## 启用子元素指针事件
 
-By default, Dropzone disables pointer events on its children for dragging events to work. When `activateOnClick={false}`,
-clicking on any children inside Dropzone will not do anything.
-However, you can set the style `pointerEvents: 'all'` to make children clickable.
-Note that you need to set these styles only on interactive elements, such as buttons or links.
+默认情况下，Dropzone 会禁用其子元素的指针事件，以便拖拽事件正常工作。当 `activateOnClick={false}` 时，点击 Dropzone 内的任何子元素都不会有任何反应。
+不过，你可以设置样式 `pointerEvents: 'all'` 使子元素可点击。注意，你只需要在交互元素（如按钮或链接）上设置这些样式。
 
 <Demo data={DropzoneDemos.enableChildPointerEvent} />
 
-## Mime types
+## MIME 类型
 
-To specify file types provide an object with the keys set to the [mime type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)
-and the values as an array of file extensions. Find more examples of accepting specific file types
-in the [react-dropzone documentation](https://react-dropzone.js.org/#section-accepting-specific-file-types).
+要指定文件类型，请提供一个对象，键设置为 [mime 类型](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)，值为文件扩展名数组。更多接受特定文件类型的示例可以在 [react-dropzone 文档](https://react-dropzone.js.org/#section-accepting-specific-file-types) 中找到。
 
 ```tsx
 import { Dropzone } from '@react-ui/dropzone';
@@ -85,18 +78,18 @@ function Demo() {
   return (
     <Dropzone
       accept={{
-        'image/*': [], // All images
+        'image/*': [], // 所有图片
         'text/html': ['.html', '.htm'],
       }}
       onDrop={() => {}}
     >
-      {/* children */}
+      {/* 子元素 */}
     </Dropzone>
   );
 }
 ```
 
-You can also specify file types by providing an array of mime types to the `accept` prop:
+你也可以通过向 `accept` 属性提供 mime 类型数组来指定文件类型：
 
 ```tsx
 import { Dropzone } from '@react-ui/dropzone';
@@ -112,13 +105,13 @@ function Demo() {
       ]}
       onDrop={() => {}}
     >
-      {/* children */}
+      {/* 子元素 */}
     </Dropzone>
   );
 }
 ```
 
-To save some research time, you can use the `MIME_TYPES` variable exported from `@react-ui/dropzone`:
+为了节省研究时间，你可以使用 `@react-ui/dropzone` 导出的 `MIME_TYPES` 变量：
 
 ```tsx
 import { Dropzone, MIME_TYPES } from '@react-ui/dropzone';
@@ -134,23 +127,23 @@ function Demo() {
       ]}
       onDrop={() => {}}
     >
-      {/* children */}
+      {/* 子元素 */}
     </Dropzone>
   );
 }
 ```
 
-`MIME_TYPES` includes the following data:
+`MIME_TYPES` 包含以下数据：
 
 <DataTable
-  head={['Key', 'Mime type']}
+  head={['键', 'Mime 类型']}
   data={Object.keys(MIME_TYPES).map((key) => [key, MIME_TYPES[key]])}
 />
 
-Additionally, you can use grouped mime types:
+此外，你还可以使用分组的 mime 类型：
 
 <DataTable
-  head={['Variable', 'Mime types']}
+  head={['变量', 'Mime 类型']}
   data={[
     ['IMAGE_MIME_TYPE', IMAGE_MIME_TYPE.join(', ')],
     ['PDF_MIME_TYPE', PDF_MIME_TYPE.join(', ')],
@@ -166,28 +159,28 @@ import { Dropzone, IMAGE_MIME_TYPE } from '@react-ui/dropzone';
 function Demo() {
   return (
     <Dropzone accept={IMAGE_MIME_TYPE} onDrop={() => {}}>
-      {/* children */}
+      {/* 子元素 */}
     </Dropzone>
   );
 }
 ```
 
-## Styles API
+## 样式 API
 
-`Dropzone` root element has the following data attributes to change styles based on current status:
+`Dropzone` 根元素具有以下 data 属性，用于根据当前状态改变样式：
 
-- `data-loading` – when `loading` prop is `true`
-- `data-accept` – when user drags files that can be accepted over the dropzone
-- `data-reject` – when user drags files that cannot be accepted over the dropzone
-- `data-idle` – default state – the user does not drag any files over the dropzone
+- `data-loading` – 当 `loading` 属性为 `true` 时
+- `data-accept` – 当用户拖拽可被接受的文件到 dropzone 上时
+- `data-reject` – 当用户拖拽无法被接受的文件到 dropzone 上时
+- `data-idle` – 默认状态——用户没有拖拽任何文件到 dropzone 上
 
 <Demo data={DropzoneDemos.stylesApi} />
 
-## Images previews
+## 图片预览
 
 <Demo data={DropzoneDemos.preview} />
 
-## Get ref
+## 获取 ref
 
 ```tsx
 import { useEffect, useRef } from 'react';
@@ -202,17 +195,16 @@ function Demo() {
 
   return (
     <Dropzone ref={dropzoneRef} onDrop={() => {}}>
-      {/* children */}
+      {/* 子元素 */}
     </Dropzone>
   );
 }
 ```
 
-## Dropzone.FullScreen component
+## Dropzone.FullScreen 组件
 
-`Dropzone.FullScreen` lets you capture files dropped to the browser window instead of a specific area.
-It supports the same props as the `Dropzone` component.
+`Dropzone.FullScreen` 允许你捕获拖放到浏览器窗口而非特定区域的文件。它支持与 `Dropzone` 组件相同的属性。
 
-To preview the component, click the button and drop images to the browser window:
+要预览该组件，请点击按钮并将图片拖放到浏览器窗口：
 
 <Demo data={DropzoneDemos.fullScreen} />

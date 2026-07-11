@@ -4,20 +4,20 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.FileButton);
 
-## Usage
+## 用法
 
 <Demo data={FileButtonDemos.usage} />
 
-## Multiple files
+## 多文件
 
-Set the `multiple` prop to allow picking multiple files:
+设置 `multiple` 属性以允许选择多个文件：
 
 <Demo data={FileButtonDemos.multiple} />
 
-## Reset file
+## 重置文件
 
-`resetRef` should be used to fix the issue with stale value on the hidden input element as input type file cannot be controlled.
-Call `resetRef` when the user selection is cleared:
+`resetRef` 应用于修复隐藏 input 元素上陈旧值的问题，因为文件类型 input 无法受控。
+当用户选择被清除时调用 `resetRef`：
 
 <Demo data={FileButtonDemos.reset} />
 

@@ -3,33 +3,33 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Vite);
 
-# Usage with Vite
+# 在 Vite 中使用
 
 <GetTemplates type="vite" />
 
-## Generate new application
+## 创建新应用
 
-Follow the [Vite getting started](https://vitejs.dev/guide/) guide to create a new Vite application:
+按照 [Vite 入门指南](https://vitejs.dev/guide/) 创建新的 Vite 应用：
 
 <NpmScript
   yarnScript="yarn create vite"
   npmScript="npm create vite@latest"
 />
 
-## Installation
+## 安装
 
 <PackagesInstallation />
 
-## PostCSS setup
+## PostCSS 配置
 
-Install PostCSS plugins and [postcss-preset-mantine](/styles/postcss-preset):
+安装 PostCSS 插件和 [postcss-preset-mantine](/styles/postcss-preset)：
 
 <InstallScript
   packages="postcss postcss-preset-mantine postcss-simple-vars"
   dev
 />
 
-Create a `postcss.config.cjs` file at the root of your application with the following content:
+在应用根目录创建 `postcss.config.cjs` 文件，内容如下：
 
 ```js
 module.exports = {
@@ -48,23 +48,23 @@ module.exports = {
 };
 ```
 
-## Setup
+## 配置
 
-Add styles imports and [MantineProvider](/theming/mantine-provider/) to your application root component (usually `App.tsx`):
+在应用根组件（通常是 `App.tsx`）中添加样式导入和 [MantineProvider](/theming/mantine-provider)：
 
 ```tsx
-// Import styles of packages that you've installed.
-// All packages except `@react-ui/hooks` require styles imports
+// 导入你已安装包的样式。
+// 除 `@react-ui/hooks` 外，所有包都需要导入样式
 import '@react-ui/ui/styles.css';
 
 import { MantineProvider } from '@react-ui/ui';
 
 export default function App() {
-  return <MantineProvider>{/* Your app here */}</MantineProvider>;
+  return <MantineProvider>{/* 你的应用内容 */}</MantineProvider>;
 }
 ```
 
-All set! Start the development server:
+配置完成！启动开发服务器：
 
 ```bash
 npm run dev

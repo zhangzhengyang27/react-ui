@@ -7,69 +7,68 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.GettingStartedDates);
 
-## Installation
+## 安装
 
 <InstallScript packages="@react-ui/ui dayjs" />
 
-After installation import package styles at the root of your application:
+安装完成后，在应用根目录导入包样式：
 
 ```tsx
 import '@react-ui/ui/styles.css';
-// ‼️ import dates styles after core package styles
+// ‼️ 在核心包样式之后导入 dates 样式
 import '@react-ui/ui/styles.css';
 ```
 
-## Do not forget to import styles
+## 不要忘记导入样式
 
-Followed the installation instructions above but something is not working
-(calendars and date pickers have no styles and look broken)?
-You've fallen into the trap of not importing dates styles!
-To fix this issue, import dates styles at the root of your application:
+按照上面的安装说明操作后，某些功能仍然无法正常工作
+（日历和日期选择器没有样式，看起来是坏的）？
+你掉进了未导入 dates 样式的陷阱！
+要解决这个问题，请在应用根目录导入 dates 样式：
 
 ```tsx
 import '@react-ui/ui/styles.css';
 ```
 
-## Usage
+## 用法
 
-After installing the `@react-ui/ui` package and importing styles, you can use all components from it:
+安装 `@react-ui/ui` 包并导入样式后，你就可以使用其中的所有组件：
 
 <Demo data={DatePickerInputDemos.usage} />
 
-## Date values as strings
+## 字符串形式的日期值
 
-`@react-ui/ui` components work with date strings: `YYYY-MM-DD` or `YYYY-MM-DD HH:mm:ss` depending on the component. Those strings do not include any timezone-specific information.
+`@react-ui/ui` 组件使用日期字符串：`YYYY-MM-DD` 或 `YYYY-MM-DD HH:mm:ss`，具体取决于组件。这些字符串不包含任何时区相关信息。
 
 ## dayjs
 
-`@react-ui/ui` components use [dayjs](https://day.js.org/) under the hood for date manipulations and formatting.
-dayjs is a required dependency – you cannot change it to another date library. If you want to use a different
-date library in your application, you will need to install it separately.
+`@react-ui/ui` 组件底层使用 [dayjs](https://day.js.org/) 进行日期操作和格式化。
+dayjs 是必需的依赖项——你不能将其更改为其他日期库。如果你想在应用中
+使用不同的日期库，需要单独安装它。
 
 ## DatesProvider
 
-The `DatesProvider` component lets you set various settings that are shared across all
-components exported from the `@react-ui/ui` package. `DatesProvider` supports the following settings:
+`DatesProvider` 组件允许你设置各种在所有从 `@react-ui/ui` 包导出的组件之间共享的设置。`DatesProvider` 支持以下设置：
 
-- `locale` – dayjs locale. Note that you also need to import the corresponding locale module from dayjs. The default value is `en`.
-- `firstDayOfWeek` – a number from 0 to 6, where 0 is Sunday and 6 is Saturday. The default value is 1 – Monday.
-- `weekendDays` – an array of numbers from 0 to 6, where 0 is Sunday and 6 is Saturday. The default value is `[0, 6]` – Saturday and Sunday.
-- `consistentWeeks` – boolean. If `true`, every month will have 6 weeks. The default value is `false`.
+- `locale` – dayjs 语言环境。注意，你还需要从 dayjs 导入相应的 locale 模块。默认值为 `en`。
+- `firstDayOfWeek` – 0 到 6 之间的数字，其中 0 是星期日，6 是星期六。默认值为 1 – 星期一。
+- `weekendDays` – 0 到 6 之间的数字数组，其中 0 是星期日，6 是星期六。默认值为 `[0, 6]` – 星期六和星期日。
+- `consistentWeeks` – 布尔值。如果为 `true`，每个月都会有 6 周。默认值为 `false`。
 
 <Demo data={DatesProviderDemos.usage} />
 
-## Consistent weeks
+## 固定周数
 
-If you want to avoid layout shifts, set `consistentWeeks: true` in the `DatesProvider` settings.
-This will ensure that every month has 6 weeks, even if outside days are not in the same month.
+如果你想避免布局抖动，请在 `DatesProvider` 设置中设置 `consistentWeeks: true`。
+这将确保每个月都有 6 周，即使外部日期不在同一个月内。
 
 <Demo data={DatesProviderDemos.consistentWeeks} />
 
-## Custom parse format
+## 自定义解析格式
 
-Some components like [DateInput](/dates/date-input) require the [custom parse format](https://day.js.org/docs/en/plugin/custom-parse-format)
-dayjs plugin. You need to extend dayjs with this plugin before using components that require it. Note that
-this is usually done once in your application root file, so you don't need to do it every time you use the component.
+某些组件（如 [DateInput](/dates/date-input)）需要 [custom parse format](https://day.js.org/docs/en/plugin/custom-parse-format)
+dayjs 插件。在使用需要它的组件之前，你需要用此插件扩展 dayjs。注意，
+这通常在你的应用根文件中完成一次，因此你不需要每次使用组件时都这样做。
 
 ```tsx
 import dayjs from 'dayjs';
@@ -78,12 +77,12 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 dayjs.extend(customParseFormat);
 ```
 
-## Localization and server components
+## 本地化和服务端组件
 
-To add localization, you must import `import 'dayjs/locale/x';` in your application (`x` is the locale name)
-and set `locale` either on `DatesProvider` or on each component individually.
+要添加本地化，你必须在应用中导入 `import 'dayjs/locale/x';`（`x` 是 locale 名称），
+并在 `DatesProvider` 或每个组件上单独设置 `locale`。
 
-Example of setting the locale on DatesProvider:
+在 DatesProvider 上设置 locale 的示例：
 
 ```tsx
 import 'dayjs/locale/ru';
@@ -93,16 +92,15 @@ import { DatesProvider } from '@react-ui/ui';
 function Demo() {
   return (
     <DatesProvider settings={{ locale: 'ru' }}>
-      {/* Your app  */}
+      {/* 你的应用  */}
     </DatesProvider>
   );
 }
 ```
 
-The code above works in all environments, except Next.js app router.
-If you are using Next.js app router, you must add `'use client';` to the
-top of the file where you are importing `dayjs/locale/x` – locale data
-is required both on client and server.
+上面的代码在所有环境中都有效，除了 Next.js app router。
+如果你使用 Next.js app router，你必须在导入 `dayjs/locale/x` 的文件顶部
+添加 `'use client';`——locale 数据在客户端和服务端都是必需的。
 
 ```tsx
 'use client';
@@ -114,7 +112,7 @@ import { DatesProvider } from '@react-ui/ui';
 function Demo() {
   return (
     <DatesProvider settings={{ locale: 'ru' }}>
-      {/* Your app  */}
+      {/* 你的应用  */}
     </DatesProvider>
   );
 }

@@ -4,9 +4,9 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.ThemeObject);
 
-# Theme object
+# 主题对象
 
-ReactUI theme is an object where your application's colors, fonts, spacing, border-radius, and other design tokens are stored.
+ReactUI 主题是一个对象，用于存储应用的颜色、字体、间距、圆角和其他设计 token。
 
 ```tsx
 interface MantineTheme {
@@ -144,17 +144,16 @@ interface MantineTheme {
 }
 ```
 
-## Usage
+## 用法
 
-To customize the theme, pass a theme override object to [MantineProvider](/theming/mantine-provider/) `theme` prop.
-The theme override will be deeply merged with the default theme.
+要自定义主题，请将主题覆盖对象传递给 [MantineProvider](/theming/mantine-provider/) 的 `theme` 属性。主题覆盖对象会与默认主题进行深度合并。
 
 ```tsx
 import { createTheme, MantineProvider } from '@react-ui/ui';
 
 const theme = createTheme({
   colors: {
-    // Add your color
+    // 添加你的颜色
     deepBlue: [
       '#eef3ff',
       '#dce4f5',
@@ -167,7 +166,7 @@ const theme = createTheme({
       '#39588f',
       '#2d4b81',
     ],
-    // or replace default theme color
+    // 或者替换默认主题颜色
     blue: [
       '#eef3ff',
       '#dee2f2',
@@ -198,30 +197,29 @@ const theme = createTheme({
 function Demo() {
   return (
     <MantineProvider theme={theme}>
-      {/* Your app here */}
+      {/* 你的应用 */}
     </MantineProvider>
   );
 }
 ```
 
-## Theme properties
+## 主题属性
 
 ### autoContrast
 
-`autoContrast` controls whether text color should be changed based on the given `color` prop
-in the following components:
+`autoContrast` 控制是否应根据传入的 `color` 属性更改文本颜色，适用于以下组件：
 
-- [ActionIcon](/core/action-icon) with `variant="filled"` only
-- [Alert](/core/alert) with `variant="filled"` only
-- [Avatar](/core/avatar) with `variant="filled"` only
-- [Badge](/core/badge) with `variant="filled"` only
-- [Button](/core/button) with `variant="filled"` only
-- [Chip](/core/chip) with `variant="filled"` only
-- [NavLink](/core/nav-link) with `variant="filled"` only
-- [ThemeIcon](/core/theme-icon) with `variant="filled"` only
-- [Checkbox](/core/checkbox) with `variant="filled"` only
-- [Radio](/core/radio) with `variant="filled"` only
-- [Tabs](/core/tabs) with `variant="pills"` only
+- [ActionIcon](/core/action-icon)，仅 `variant="filled"`
+- [Alert](/core/alert)，仅 `variant="filled"`
+- [Avatar](/core/avatar)，仅 `variant="filled"`
+- [Badge](/core/badge)，仅 `variant="filled"`
+- [Button](/core/button)，仅 `variant="filled"`
+- [Chip](/core/chip)，仅 `variant="filled"`
+- [NavLink](/core/nav-link)，仅 `variant="filled"`
+- [ThemeIcon](/core/theme-icon)，仅 `variant="filled"`
+- [Checkbox](/core/checkbox)，仅 `variant="filled"`
+- [Radio](/core/radio)，仅 `variant="filled"`
+- [Tabs](/core/tabs)，仅 `variant="pills"`
 - [SegmentedControl](/core/segmented-control)
 - [Stepper](/core/stepper)
 - [Pagination](/core/pagination)
@@ -229,87 +227,75 @@ in the following components:
 - [Indicator](/core/indicator)
 - [Timeline](/core/timeline)
 - [Spotlight](/x/spotlight)
-- All [@react-ui/ui](/dates/getting-started) components that are based on [Calendar](/dates/calendar) component
+- 所有基于 [Calendar](/dates/calendar) 组件的 [@react-ui/ui](/dates/getting-started) 组件
 
-`autoContrast` checks whether the given color luminosity is above or below the `luminanceThreshold` value
-and changes text color to either `theme.white` or `theme.black` accordingly.
+`autoContrast` 会检查给定颜色的亮度是否高于或低于 `luminanceThreshold` 值，并相应地将文本颜色更改为 `theme.white` 或 `theme.black`。
 
-`autoContrast` can be set globally on the theme level or individually for each component via the `autoContrast` prop,
-except for [Spotlight](/x/spotlight) and [@react-ui/ui](/dates/getting-started) components which only support the global theme setting.
+`autoContrast` 可以在主题级别全局设置，也可以通过 `autoContrast` 属性为每个组件单独设置，但 [Spotlight](/x/spotlight) 和 [@react-ui/ui](/dates/getting-started) 组件仅支持全局主题设置。
 
 <Demo data={ThemingDemos.autoContrast} />
 
 ### luminanceThreshold
 
-`luminanceThreshold` controls which luminance value is used to determine if text color should be light or dark.
-It is used only if `theme.autoContrast` is set to `true`. The default value is `0.3`.
+`luminanceThreshold` 控制用于判断文本颜色应为浅色还是深色的亮度值。仅在 `theme.autoContrast` 设置为 `true` 时使用。默认值为 `0.3`。
 
 <Demo data={ThemingDemos.luminanceThreshold} />
 
 ### focusRing
 
-`theme.focusRing` controls focus ring styles, it supports the following values:
+`theme.focusRing` 控制 focus ring 样式，支持以下值：
 
-- `auto` (default and recommended) – focus ring is visible only when the user navigates with a keyboard, this is the default browser behavior for native interactive elements
-- `always` – focus ring is visible when the user navigates with a keyboard and mouse, for example, the focus ring will be visible when the user clicks on a button
-- `never` – focus ring is always hidden; it is not recommended – users who navigate with a keyboard will not have visual indication of the current focused element
+- `auto`（默认且推荐）– 仅当用户使用键盘导航时显示 focus ring，这是原生交互元素的默认浏览器行为
+- `always` – 无论用户使用键盘还是鼠标导航都显示 focus ring，例如，用户点击按钮时也会显示 focus ring
+- `never` – 始终隐藏 focus ring；不推荐——使用键盘导航的用户将无法看到当前聚焦元素
 
 <Demo data={ThemingDemos.focusRing} />
 
 ### focusClassName
 
-`theme.focusClassName` is a CSS class that is added to elements that have focus styles, for example, [Button](/core/button) or [ActionIcon](/core/action-icon).
-It can be used to customize focus ring styles of all interactive components except inputs. Note that when `theme.focusClassName` is set, `theme.focusRing` is ignored.
+`theme.focusClassName` 是一个 CSS 类，会添加到具有 focus 样式的元素上，例如 [Button](/core/button) 或 [ActionIcon](/core/action-icon)。它可用于自定义所有交互组件的 focus ring 样式（输入框除外）。注意，当设置了 `theme.focusClassName` 时，`theme.focusRing` 会被忽略。
 
 <Demo data={ThemingDemos.focusClassName} />
 
-> **:focus-visible selector**
+> **:focus-visible 选择器**
 >
-> `:focus-visible` selector is supported by more than [91% of browsers](https://caniuse.com/css-focus-visible) (data from April 2023).
-> Safari browsers added support for it in version 15.4 (released in March 2022). If you need to support Safari 15.3 and older, you can use [focus-visible polyfill](https://github.com/WICG/focus-visible)
-> or provide a [fallback](https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible#providing_a_focus_fallback) with `:focus` pseudo-class.
+> `:focus-visible` 选择器已被超过 [91% 的浏览器](https://caniuse.com/css-focus-visible) 支持（数据来自 2023 年 4 月）。
+> Safari 浏览器在 15.4 版本（2022 年 3 月发布）中增加了对它的支持。如果你需要支持 Safari 15.3 及更早版本，可以使用 [focus-visible polyfill](https://github.com/WICG/focus-visible)
+> 或使用 `:focus` 伪类提供[降级方案](https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible#providing_a_focus_fallback)。
 
 ### activeClassName
 
-`theme.activeClassName` is a CSS class that is added to elements that have active styles, for example, [Button](/core/button) or [ActionIcon](/core/action-icon).
-It can be used to customize active styles of all interactive components.
+`theme.activeClassName` 是一个 CSS 类，会添加到具有 active 样式的元素上，例如 [Button](/core/button) 或 [ActionIcon](/core/action-icon)。它可用于自定义所有交互组件的 active 样式。
 
 <Demo data={ThemingDemos.activeClassName} />
 
-To disable active styles for all components, set `theme.activeClassName` to an empty string:
+要禁用所有组件的 active 样式，将 `theme.activeClassName` 设置为空字符串：
 
 <Demo data={ThemingDemos.activeClassNameEmpty} />
 
 ### defaultRadius
 
-`theme.defaultRadius` controls the default `border-radius` property in most components, for example, [Button](/core/button) or [TextInput](/core/text-input).
-You can set it to either one of the values from `theme.radius` or a number/string to use an exact value. Note that numbers are treated as pixels, but
-converted to rem. For example, `theme.defaultRadius: 4` will be converted to `0.25rem`.
-You can learn more about rem conversion in the [rem units guide](/styles/rem).
+`theme.defaultRadius` 控制大多数组件的默认 `border-radius` 属性，例如 [Button](/core/button) 或 [TextInput](/core/text-input)。你可以将其设置为 `theme.radius` 中的一个值，或者设置为一个数字/字符串以使用精确值。注意，数字会被视为像素值，但会转换为 rem。例如，`theme.defaultRadius: 4` 会转换为 `0.25rem`。你可以在 [rem 单位指南](/styles/rem) 中了解更多关于 rem 转换的内容。
 
 <Demo data={ThemingDemos.defaultRadiusConfigurator} />
 
 ### cursorType
 
-`theme.cursorType` controls the default cursor type for interactive elements
-that do not have `cursor: pointer` styles by default. For example, [Checkbox](/core/checkbox) and [NativeSelect](/core/native-select).
+`theme.cursorType` 控制默认的鼠标指针类型，适用于那些默认没有 `cursor: pointer` 样式的交互元素。例如 [Checkbox](/core/checkbox) 和 [NativeSelect](/core/native-select)。
 
 <Demo data={ThemingDemos.cursorType} />
 
 ### defaultGradient
 
-`theme.defaultGradient` controls the default gradient configuration for components that support `variant="gradient"`
-([Button](/core/button), [ActionIcon](/core/action-icon), [Badge](/core/badge), etc.).
+`theme.defaultGradient` 控制支持 `variant="gradient"` 的组件的默认渐变配置（如 [Button](/core/button)、[ActionIcon](/core/action-icon)、[Badge](/core/badge) 等）。
 
 <Demo data={ThemingDemos.defaultGradient} />
 
 ### fontWeights
 
-`theme.fontWeights` controls `font-weight` values used in all components.
-The default values are `regular: 400`, `medium: 600`, `bold: 700`.
-Each value is mapped to a CSS variable: `--mantine-font-weight-regular`, `--mantine-font-weight-medium`, `--mantine-font-weight-bold`.
+`theme.fontWeights` 控制所有组件中使用的 `font-weight` 值。默认值为 `regular: 400`、`medium: 600`、`bold: 700`。每个值都会映射到一个 CSS 变量：`--mantine-font-weight-regular`、`--mantine-font-weight-medium`、`--mantine-font-weight-bold`。
 
-For example, to revert the medium font weight from `600` back to `500` (the default in ReactUI 8):
+例如，要将 medium 字重从 `600` 改回 ReactUI 8 中的默认值 `500`：
 
 ```tsx
 import { createTheme, MantineProvider } from '@react-ui/ui';
@@ -323,7 +309,7 @@ const theme = createTheme({
 function Demo() {
   return (
     <MantineProvider theme={theme}>
-      {/* Your app here */}
+      {/* 你的应用 */}
     </MantineProvider>
   );
 }
@@ -331,12 +317,11 @@ function Demo() {
 
 ### components
 
-`theme.components` allows overriding of components' [default props](/theming/default-props) and styles with `classNames` and `styles` properties.
-You can learn more about these features in the [default props](/theming/default-props) and [Styles API](/styles/styles-api) guides.
+`theme.components` 允许使用 `classNames` 和 `styles` 属性覆盖组件的[默认 props](/theming/default-props)和样式。你可以在 [default props](/theming/default-props) 和 [Styles API](/styles/styles-api) 指南中了解更多。
 
 ### other
 
-`theme.other` is an object that can be used to store any other properties that you want to access with the theme object.
+`theme.other` 是一个对象，可用于存储任何你想通过 theme 对象访问的其他属性。
 
 ```tsx
 import { createTheme, MantineProvider } from '@react-ui/ui';
@@ -355,15 +340,15 @@ const theme = createTheme({
 function Demo() {
   return (
     <MantineProvider theme={theme}>
-      {/* Your app here */}
+      {/* 你的应用 */}
     </MantineProvider>
   );
 }
 ```
 
-## Store theme override object in a variable
+## 将主题覆盖对象存储在变量中
 
-To store a theme override object in a variable, use the `createTheme` function:
+要将主题覆盖对象存储在变量中，请使用 `createTheme` 函数：
 
 ```tsx
 import { createTheme, MantineProvider } from '@react-ui/ui';
@@ -376,15 +361,15 @@ const myTheme = createTheme({
 function Demo() {
   return (
     <MantineProvider theme={myTheme}>
-      {/* Your app here */}
+      {/* 你的应用 */}
     </MantineProvider>
   );
 }
 ```
 
-## Merge multiple theme overrides
+## 合并多个主题覆盖
 
-Use the `mergeThemeOverrides` function to merge multiple themes into one theme override object:
+使用 `mergeThemeOverrides` 函数将多个主题合并为一个主题覆盖对象：
 
 ```tsx
 import {
@@ -402,14 +387,13 @@ const theme2 = createTheme({
   cursorType: 'pointer',
 });
 
-// Note: It is better to store the theme override outside of the component body
-// to prevent unnecessary re-renders
+// 注意：最好将主题覆盖对象存储在组件体外部，以避免不必要的重新渲染
 const myTheme = mergeThemeOverrides(theme1, theme2);
 
 function Demo() {
   return (
     <MantineProvider theme={myTheme}>
-      {/* Your app here */}
+      {/* 你的应用 */}
     </MantineProvider>
   );
 }
@@ -417,7 +401,7 @@ function Demo() {
 
 ## use-mantine-theme hook
 
-The `useMantineTheme` hook returns the theme object from [MantineProvider](/theming/mantine-provider) context:
+`useMantineTheme` Hook 从 [MantineProvider](/theming/mantine-provider) 上下文中返回主题对象：
 
 ```tsx
 import { useMantineTheme } from '@react-ui/ui';
@@ -428,21 +412,17 @@ function Demo() {
 }
 ```
 
-## Default theme
+## 默认主题
 
-You can import the default theme object from the `@react-ui/ui` package. It includes
-all theme properties with default values. When you pass a theme override to
-[MantineProvider](/theming/mantine-provider), it will be deeply merged with
-the default theme.
+你可以从 `@react-ui/ui` 包中导入默认主题对象。它包含所有具有默认值的主题属性。当你将主题覆盖传递给 [MantineProvider](/theming/mantine-provider) 时，它会与默认主题进行深度合并。
 
 ```tsx
 import { DEFAULT_THEME } from '@react-ui/ui';
 ```
 
-## Access theme outside of components
+## 在组件外部访问主题
 
-To access theme outside of components, you need to create a full theme object
-(your theme override merged with the default theme).
+要在组件外部访问主题，你需要创建一个完整的主题对象（你的主题覆盖与默认主题合并后的结果）。
 
 ```tsx
 // theme.ts
@@ -460,7 +440,7 @@ const themeOverride = createTheme({
 export const theme = mergeMantineTheme(DEFAULT_THEME, themeOverride);
 ```
 
-Then you will be able to import it anywhere in your application:
+然后你可以在应用的任何地方导入它：
 
 ```tsx
 import { theme } from './theme';

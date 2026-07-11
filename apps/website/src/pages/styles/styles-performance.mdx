@@ -4,63 +4,61 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.StylesPerformance);
 
-# Styles performance
+# 样式性能
 
-## CSS modules
+## CSS 模块
 
-[CSS modules](/styles/css-modules) is the most performant way to apply styles –
-this approach generates static CSS that is never re-evaluated. 99% of ReactUI component
-styles are generated with CSS modules – components are optimized out of the box.
+[CSS modules](/styles/css-modules) 是应用样式的最高性能方式——
+它会生成静态 CSS，且不会被重复计算。99% 的 ReactUI 组件样式都通过 CSS modules 生成，
+组件已经开箱即用进行了优化。
 
-In most cases, it is recommended to use [CSS modules](/styles/css-modules) to style your components as well.
-You can apply styles to HTML elements with the `className` prop and to ReactUI components with the `className`
-and `classNames` props.
+在大多数情况下，建议你也使用 [CSS modules](/styles/css-modules) 为组件设置样式。
+你可以通过 `className` prop 为 HTML 元素应用样式，并通过 `className` 和 `classNames` props
+为 ReactUI 组件应用样式。
 
-Applying styles with the `className`:
+使用 `className` 应用样式：
 
 <Demo data={StylesDemos.className} />
 
-Applying styles with `classNames` (see the [Styles API guide](/styles/styles-api) to learn more):
+使用 `classNames` 应用样式（更多信息请参考 [Styles API 指南](/styles/styles-api)）：
 
 <Demo data={StylesDemos.classNames} />
 
-## Inline styles
+## 内联样式
 
-Inline styles (`style` and `styles` props) are less performant than CSS modules, but still
-performant enough to be used in most cases if they are your preferred way of styling in your project.
+内联样式（`style` 和 `styles` props）的性能低于 CSS modules，
+但如果它是你项目中首选的样式方案，大多数情况下仍然足够高效。
 
-Inline styles caveats:
+内联样式的注意事项：
 
-- Styles are not reused between components; each component will generate its own styles. For example,
-  if you have 100 buttons with the same styles, CSS modules will generate 1 class for all of them,
-  while inline styles will generate 100 `style` attributes
-- If inline styles are overused, they can increase bundle size and output HTML size
-- _Not performance related_: inline styles have higher specificity than CSS modules, so if you want
-  to override inline styles you will have to use `!important` or use other inline styles
+- 样式不会在组件之间复用；每个组件都会生成自己的样式。例如，
+  如果你有 100 个相同样式的按钮，CSS modules 会为它们生成 1 个 class，
+  而内联样式会生成 100 个 `style` 属性
+- 如果过度使用内联样式，会增加打包体积和输出的 HTML 体积
+- _与性能无关_：内联样式的优先级高于 CSS modules，因此如果你想覆盖内联样式，
+  必须使用 `!important` 或其他内联样式
 
-Example of inline styles:
+内联样式示例：
 
 <Demo data={StylesDemos.styles} />
 
-## Style props
+## 样式属性
 
-[Style props](/styles/style-props) transform component props into inline styles. Style props have
-the same caveats as inline styles. It is not recommended to use them as the primary means of styling
-your components. Usually, style props are used to apply 1–3 styles to a component – using them
-this way does not impact performance.
+[Style props](/styles/style-props) 会将组件 props 转换为内联样式。Style props 与内联样式有相同的注意事项。
+不建议将它们作为组件样式的主要手段。通常，style props 适合为组件应用 1–3 个样式——
+这样使用不会影响性能。
 
-## Responsive style props
+## 响应式 style props
 
-Responsive [style props](/styles/style-props) have worse performance than regular style props
-because they require injecting a `<style />` tag next to the component. It is fine to use responsive
-style props to apply styles to several components, but it is not recommended to use
-them in large lists of components. For example, if you have 1000 inputs with responsive margins,
-it is better to refactor to use the `classNames` prop:
+响应式 [style props](/styles/style-props) 的性能比普通 style props 更差，
+因为它们需要在组件旁边注入 `<style />` 标签。为少量组件使用响应式 style props 没有问题，
+但不建议在大型组件列表中使用。例如，如果你有 1000 个带响应式边距的输入框，
+最好重构为使用 `classNames` prop：
 
 ```tsx
 import { TextInput } from '@react-ui/ui';
 
-// Ok, style props are used to apply margin-top property to several components
+// 推荐，style props 用于为少量组件应用 margin-top
 function StyleProps() {
   return (
     <>
@@ -71,8 +69,8 @@ function StyleProps() {
   );
 }
 
-// Worse, 1000 separate `<style />` tags will be generated
-// Better to refactor to use the className prop
+// 较差，会生成 1000 个独立的 <style /> 标签
+// 最好重构为使用 className prop
 function StylePropsArray() {
   const inputs = Array(1000)
     .fill(0)
@@ -88,12 +86,11 @@ function StylePropsArray() {
 }
 ```
 
-### Deduplicating responsive style props
+### 去重响应式 style props
 
-If you have many components with the same responsive style props, you can enable
-`deduplicateInlineStyles` on [MantineProvider](/theming/mantine-provider) to
-automatically share `<style />` tags between components with identical responsive styles.
-This uses React 19 style hoisting to deduplicate and hoist styles to `<head />`:
+如果你有许多组件使用相同的响应式 style props，可以在 [MantineProvider](/theming/mantine-provider) 上启用
+`deduplicateInlineStyles`，让具有相同响应式样式的组件自动共享同一个 `<style />` 标签。
+它利用 React 19 的样式提升（style hoisting）机制，对样式进行去重并提升到 `<head />`：
 
 ```tsx
 import { MantineProvider } from '@react-ui/ui';
@@ -108,17 +105,15 @@ function Demo() {
 }
 ```
 
-Note that deduplication only helps when multiple components share the **same** responsive
-style prop values. If every component has unique responsive values, each still requires
-its own `<style />` tag.
+注意，去重只有在多个组件共享**完全相同**的响应式 style prop 值时才有帮助。
+如果每个组件的响应式值都不同，仍然需要各自独立的 `<style />` 标签。
 
-Currently, deduplication applies to [style props](/styles/style-props) on all components
-and to responsive props on the [Flex](/core/flex) component. Components like
-[Grid](/core/grid) and [SimpleGrid](/core/simple-grid) are not yet covered.
+目前，去重适用于所有组件上的 [style props](/styles/style-props) 以及
+[Flex](/core/flex) 组件上的响应式 props。[Grid](/core/grid) 和
+[SimpleGrid](/core/simple-grid) 等组件暂不支持。
 
-## Components responsive props
+## 组件响应式 props
 
-Some components, like [SimpleGrid](/core/simple-grid) and [Grid](/core/grid),
-rely on the same mechanism as responsive style props to apply styles. The limitations are the same
-– it is fine to use several of these components on a page, but it is not recommended to use
-them in large lists of components.
+部分组件（如 [SimpleGrid](/core/simple-grid) 和 [Grid](/core/grid)）
+依赖与响应式 style props 相同的机制来应用样式。它们的限制也相同——
+在页面中使用少量此类组件没有问题，但不建议在大型列表中使用。

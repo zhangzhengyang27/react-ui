@@ -4,142 +4,113 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.LineChart);
 
-## Usage
+## 用法
 
 <Demo data={LineChartDemos.usage} />
 
-## Gradient type
+## 渐变类型
 
-Set `type="gradient"` to render a line chart with gradient fill. To customize
-gradient colors, use the `gradientStops` prop. It accepts an array of objects with
-`offset` and `color` properties. `offset` is a number between 0 and 100 that
-defines the position of the color in the gradient; `color` is a reference to `theme.colors`
-or any valid CSS color.
+设置 `type="gradient"` 以渲染带渐变填充的折线图。要自定义渐变颜色，使用 `gradientStops` 属性。它接受一个对象数组，每个对象包含 `offset` 和 `color` 属性。`offset` 是 0 到 100 之间的数字，用于定义颜色在渐变中的位置；`color` 是对 `theme.colors` 的引用或任意有效的 CSS 颜色。
 
 <Demo data={LineChartDemos.gradient} />
 
-## Legend
+## 图例
 
-To display the chart legend, set the `withLegend` prop. When one of the items in the legend
-is hovered, the corresponding data series is highlighted in the chart.
+要显示图表图例，设置 `withLegend` 属性。当悬停在图例中的某一项时，图表中对应的数据系列会高亮显示。
 
 <Demo data={LineChartDemos.legend} />
 
-## Legend position
+## 图例位置
 
-You can pass props down to the recharts [Legend](https://recharts.org/en-US/api/Legend)
-component with the `legendProps` prop. For example, setting `legendProps={{ verticalAlign: 'bottom', height: 50 }}`
-will render the legend at the bottom of the chart and set its height to 50px.
+你可以通过 `legendProps` 属性向 recharts 的 [Legend](https://recharts.org/en-US/api/Legend) 组件传递属性。例如，设置 `legendProps={{ verticalAlign: 'bottom', height: 50 }}` 会将图例渲染在图表底部，并设置其高度为 50px。
 
 <Demo data={LineChartDemos.legendPosition} />
 
-## Series labels
+## 系列标签
 
-By default, the series `name` is used as a label. To change it, set the `label`
-property in the `series` object:
+默认情况下，使用系列对象的 `name` 作为标签。要更改标签，请在 `series` 对象中设置 `label` 属性：
 
 <Demo data={LineChartDemos.seriesLabels} />
 
-## Connect nulls
+## 连接空值
 
-Use the `connectNulls` prop to specify whether to connect a data point across null
-points. By default, `connectNulls` is `true`.
+使用 `connectNulls` 属性指定是否跨空值连接数据点。默认情况下，`connectNulls` 为 `true`。
 
 <Demo data={LineChartDemos.connectNulls} />
 
-## Points labels
+## 数据点标签
 
-To display labels on data points, set `withPointLabels`:
+要在数据点上显示标签，设置 `withPointLabels`：
 
 <Demo data={LineChartDemos.pointLabels} />
 
-## X and Y axis props
+## X 轴和 Y 轴属性
 
-Use `xAxisProps` and `yAxisProps` to pass props down to the recharts [XAxis](https://recharts.org/en-US/api/XAxis)
-and [YAxis](https://recharts.org/en-US/api/YAxis) components. For example, these props
-can be used to change the orientation of the axis:
+使用 `xAxisProps` 和 `yAxisProps` 向 recharts 的 [XAxis](https://recharts.org/en-US/api/XAxis) 和 [YAxis](https://recharts.org/en-US/api/YAxis) 组件传递属性。例如，可以使用这些属性来更改坐标轴方向：
 
 <Demo data={LineChartDemos.axisProps} />
 
-## Axis labels
+## 坐标轴标签
 
-Use `xAxisLabel` and `yAxisLabel` props to display axis labels:
+使用 `xAxisLabel` 和 `yAxisLabel` 属性显示坐标轴标签：
 
 <Demo data={LineChartDemos.axisLabels} />
 
-## X axis offset
+## X 轴偏移
 
-Use `xAxisProps` to set padding between the chart ends and the x-axis:
+使用 `xAxisProps` 设置图表两端与 X 轴之间的间距：
 
 <Demo data={LineChartDemos.xAxisOffset} />
 
-## Y axis scale
+## Y 轴刻度
 
-Use `yAxisProps` to change the domain of the Y axis. For example, if you know that
-your data will always be in the range of 0 to 100, you can set the domain to `[0, 100]`:
+使用 `yAxisProps` 更改 Y 轴的取值范围。例如，如果你知道数据始终在 0 到 100 之间，可以将 domain 设置为 `[0, 100]`：
 
 <Demo data={LineChartDemos.yScale} />
 
-## Right Y axis
+## 右侧 Y 轴
 
-To display an additional Y axis on the right side of the chart, set the `withRightYAxis` prop.
-You can pass props down to the recharts [YAxis](https://recharts.org/en-US/api/YAxis)
-component with the `rightYAxisProps` prop and assign a label to the right Y axis with
-the `rightYAxisLabel` prop. Note that you need to bind data series to the right Y axis
-by setting `yAxisId` in the `series` object.
+要在图表右侧显示额外的 Y 轴，设置 `withRightYAxis` 属性。你可以通过 `rightYAxisProps` 属性向 recharts 的 [YAxis](https://recharts.org/en-US/api/YAxis) 组件传递属性，并通过 `rightYAxisLabel` 属性为右侧 Y 轴设置标签。注意，你需要在 `series` 对象中设置 `yAxisId`，将数据系列绑定到右侧 Y 轴。
 
 <Demo data={LineChartDemos.rightYAxis} />
 
-## Value formatter
+## 数值格式化
 
-To format values in the tooltip and axis ticks, use the `valueFormat` prop. It accepts
-a function that takes a number value as an argument and returns a formatted value:
+要格式化提示框和坐标轴刻度中的数值，使用 `valueFormat` 属性。它接受一个函数，该函数接收数值参数并返回格式化后的值：
 
 <Demo data={LineChartDemos.valueFormatter} />
 
-## Set curve type per line
+## 为每条线设置曲线类型
 
-You can set individual curve types for each line in the `series` array. If you
-do not set a curve type for a line, the series will fall back to `curveType` prop, or
-`monotone` if `curveType` is not set.
+你可以在 `series` 数组中为每条线设置独立的曲线类型。如果没有为某条线设置曲线类型，该系列将回退到 `curveType` 属性，若未设置 `curveType`，则默认为 `monotone`。
 
 <Demo data={LineChartDemos.curveType} />
 
-## Line color
+## 线条颜色
 
-You can reference colors from [theme](/theming/theme-object) the same way as in
-other components, for example, `blue`, `red.5`, `orange.7`, etc. Any valid CSS
-color value is also accepted.
+你可以像其他组件一样从 [主题](/theming/theme-object) 中引用颜色，例如 `blue`、`red.5`、`orange.7` 等。任何有效的 CSS 颜色值也同样受支持。
 
 <Demo data={LineChartDemos.color} />
 
-## Change line color depending on color scheme
+## 根据颜色方案改变线条颜色
 
-You can use CSS variables in the `color` property. To define a CSS variable that
-changes depending on the color scheme, use [light/dark mixins](/styles/postcss-preset/#dark-and-light-mixins)
-or the [light-dark function](/styles/postcss-preset/#light-dark-function). Example
-of a line that is dark orange in light mode and lime in dark mode:
+你可以在 `color` 属性中使用 CSS 变量。要定义随颜色方案变化的 CSS 变量，可使用 [light/dark mixins](/styles/postcss-preset/#dark-and-light-mixins) 或 [light-dark 函数](/styles/postcss-preset/#light-dark-function)。例如，一条线在浅色模式下为深橙色，在深色模式下为柠檬色：
 
 <Demo data={LineChartDemos.colorSchemeColor} />
 
-## Stroke dash array
+## 虚线数组
 
-Set the `strokeDasharray` prop to control the stroke dash array of the grid and cursor
-lines. The value represents the lengths of alternating dashes and gaps. For example,
-`strokeDasharray="10 5"` will render a dashed line with 10px dashes and 5px gaps.
+设置 `strokeDasharray` 属性以控制网格线和光标线的虚线样式。该值表示交替的虚线和间隙长度。例如，`strokeDasharray="10 5"` 会渲染出 10px 虚线和 5px 间隙的虚线。
 
 <Demo data={LineChartDemos.strokeDasharray} />
 
-## Grid and text colors
+## 网格和文本颜色
 
-Use `--chart-grid-color` and `--chart-text-color` to change colors of
-grid lines and text within the chart. With [CSS modules](/styles/css-modules/), you can change colors
-depending on color scheme:
+使用 `--chart-grid-color` 和 `--chart-text-color` 来更改网格线和图表内文本的颜色。配合 [CSS 模块](/styles/css-modules/)，你可以根据颜色方案改变颜色：
 
 <Demo data={LineChartDemos.gridColor} />
 
-If your application has only one color scheme, you can use the `gridColor` and `textColor`
-props instead of CSS variables:
+如果你的应用只使用一种颜色方案，可以直接使用 `gridColor` 和 `textColor` 属性，而不必使用 CSS 变量：
 
 ```tsx
 import { LineChart } from '@react-ui/ui';
@@ -163,76 +134,68 @@ function Demo() {
 }
 ```
 
-## Tooltip animation
+## 提示框动画
 
-By default, tooltip animation is disabled. To enable it, set the `tooltipAnimationDuration`
-prop to a number of milliseconds to animate the tooltip position change.
+默认情况下，提示框动画处于禁用状态。要启用，请将 `tooltipAnimationDuration` 属性设置为动画持续毫秒数，以动画方式改变提示框位置。
 
 <Demo data={LineChartDemos.tooltipAnimation} />
 
-## Units
+## 单位
 
-Set the `unit` prop to render a unit label next to the y-axis ticks and tooltip values:
+设置 `unit` 属性，在 Y 轴刻度和提示框数值旁渲染单位标签：
 
 <Demo data={LineChartDemos.unit} />
 
-## Custom tooltip
+## 自定义提示框
 
-Use `tooltipProps.content` to pass a custom tooltip renderer to the recharts [Tooltip](https://recharts.org/en-US/api/Tooltip)
-component. Note that it is required to filter the recharts payload with the `getFilteredChartTooltipPayload`
-function to remove empty values that are used for styling purposes only.
+使用 `tooltipProps.content` 向 recharts 的 [Tooltip](https://recharts.org/en-US/api/Tooltip) 组件传入自定义提示框渲染器。注意，必须使用 `getFilteredChartTooltipPayload` 函数过滤 recharts 的 payload，以移除仅用于样式的空值。
 
 <Demo data={LineChartDemos.customTooltip} />
 
-## Remove tooltip
+## 移除提示框
 
-To remove the tooltip, set `withTooltip={false}`. This also removes the cursor line
-and disables interactions with the chart.
+要移除提示框，设置 `withTooltip={false}`。这同时也会移除光标线，并禁用图表的交互。
 
 <Demo data={LineChartDemos.noTooltip} />
 
-## Customize dots
+## 自定义圆点
 
-Use `dotProps` to pass props down to the recharts dot in regular state and `activeDotProps`
-to pass props down to the recharts dot in active state (when the cursor is over the current series).
+使用 `dotProps` 向 recharts 的普通状态圆点传递属性，使用 `activeDotProps` 向激活状态（光标位于当前系列上时）的圆点传递属性。
 
 <Demo data={LineChartDemos.dotProps} />
 
-## Stroke width
+## 描边宽度
 
-Use the `strokeWidth` prop to control the stroke width of all lines:
+使用 `strokeWidth` 属性控制所有线条的描边宽度：
 
 <Demo data={LineChartDemos.strokeWidth} />
 
-## Sync multiple LineCharts
+## 同步多个 LineChart
 
-You can pass props down to the recharts [LineChart](https://recharts.org/en-US/api/LineChart)
-component with the `lineChartProps` prop. For example, setting `lineChartProps={{ syncId: 'any-id' }}`
-will sync the tooltip of multiple `LineChart` components with the same `syncId` prop.
+你可以通过 `lineChartProps` 属性向 recharts 的 [LineChart](https://recharts.org/en-US/api/LineChart) 组件传递属性。例如，设置 `lineChartProps={{ syncId: 'any-id' }}` 会同步多个具有相同 `syncId` 属性的 `LineChart` 组件的提示框。
 
 <Demo data={LineChartDemos.sync} />
 
-## Vertical orientation
+## 垂直方向
 
-Set `orientation="vertical"` to render a vertical line chart:
+设置 `orientation="vertical"` 以渲染垂直折线图：
 
 <Demo data={LineChartDemos.vertical} />
 
-## Dashed line
+## 虚线
 
-Set the `strokeDasharray` property in `series` to change the line style to dashed:
+在 `series` 中设置 `strokeDasharray` 属性，可将线条样式改为虚线：
 
 <Demo data={LineChartDemos.lineDasharray} />
 
-## Reference lines
+## 参考线
 
-Use the `referenceLines` prop to render reference lines. Reference lines are always
-rendered behind the chart.
+使用 `referenceLines` 属性渲染参考线。参考线始终渲染在图表后方。
 
 <Demo data={LineChartDemos.referenceLines} />
 
-## Reference area
+## 参考区域
 
-Use the `ReferenceArea` component from recharts to display a reference area:
+使用 recharts 的 `ReferenceArea` 组件显示参考区域：
 
 <Demo data={LineChartDemos.referenceArea} />

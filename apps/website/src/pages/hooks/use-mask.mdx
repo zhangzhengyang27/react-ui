@@ -4,89 +4,85 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useMask);
 
-## Usage
+## 用法
 
-`useMask` attaches real-time input masking to any `<input>` element via a ref callback.
-It formats user input against a defined pattern and exposes both the masked display value
-and the raw unmasked value. If you need a ready-made input component, use [MaskInput](/core/mask-input)
-which wraps this hook with all standard input props.
+`useMask` 通过 ref 回调为任何 `<input>` 元素附加实时输入掩码。
+它会根据定义的模式格式化用户输入，并同时暴露掩码显示值和原始未掩码值。
+如果你需要一个现成的输入组件，请使用 [MaskInput](/core/mask-input)，
+它用这个 Hook 包装了所有标准输入属性。
 
 <Demo data={UseMaskDemos.usage} />
 
-## isComplete, slotChar, and transform
+## isComplete、slotChar 和 transform
 
-Use `isComplete` to check whether all required mask slots are filled — for example, to control
-a submit button. The `slotChar` option accepts a multi-character string to show positional
-hints for each slot. The `transform` option converts each character before validation —
-this example uses it to auto-uppercase input so the `A` token (`[A-Z]`) accepts lowercase letters:
+使用 `isComplete` 检查是否所有必需的掩码槽位都已填充——例如，用于控制提交按钮。
+`slotChar` 选项接受多字符字符串，为每个槽位显示位置提示。
+`transform` 选项在验证前转换每个字符——本示例使用它将输入自动转为大写，
+这样 `A` 标记（`[A-Z]`）就能接受小写字母：
 
 <Demo data={UseMaskDemos.complete} />
 
-## Dynamic mask
+## 动态掩码
 
-Use the `modify` option to change the mask based on the current input value.
-This example switches between standard and American Express credit card formats:
+使用 `modify` 选项根据当前输入值更改掩码。
+本示例在标准信用卡格式和美国运通格式之间切换：
 
 <Demo data={UseMaskDemos.dynamic} />
 
-## Custom tokens
+## 自定义标记
 
-Override or extend the built-in token map with the `tokens` option:
+使用 `tokens` 选项覆盖或扩展内置的标记映射：
 
 <Demo data={UseMaskDemos.customTokens} />
 
-## Escaping
+## 转义
 
-Prefix a token character with `\` to treat it as a literal.
-In this example, `A` would normally be an uppercase letter token,
-but `\A` makes it a literal character:
+在标记字符前加 `\` 可将其视为字面量。
+在本示例中，`A` 通常是大写字母标记，但 `\A` 使其成为字面量字符：
 
 <Demo data={UseMaskDemos.escape} />
 
-## Regex array format
+## 正则数组格式
 
-For complex masks where built-in tokens are not enough, pass an array of
-string literals and `RegExp` objects. This example creates a time input where
-the first digit is restricted to `0-2` and the minute tens digit to `0-5`:
+对于内置标记不够的复杂掩码，可以传递一个由字符串字面量和 `RegExp` 对象组成的数组。
+本示例创建一个时间输入，其中第一位数字限制为 `0-2`，分钟的十位数字限制为 `0-5`：
 
 <Demo data={UseMaskDemos.regex} />
 
-## Reset
+## 重置
 
-Use the `reset` function returned by the hook to programmatically clear
-the input value:
+使用 Hook 返回的 `reset` 函数以编程方式清除输入值：
 
 <Demo data={UseMaskDemos.reset} />
 
-## Mask pattern syntax
+## 掩码模式语法
 
-The mask string defines the expected format. Each character is either a **token** (editable slot)
-or a **literal** (fixed character inserted automatically).
+掩码字符串定义了预期格式。每个字符要么是**标记**（可编辑槽位），要么是**字面量**（自动插入的固定字符）。
 
-### Built-in tokens
+### 内置标记
 
-- `9` – any single digit (`[0-9]`)
-- `a` – any single letter (`[A-Za-z]`)
-- `A` – any uppercase letter (`[A-Z]`)
-- `*` – any alphanumeric character (`[A-Za-z0-9]`)
-- `#` – digit or sign (`[-+0-9]`)
+- `9` – 任意单个数字（`[0-9]`）
+- `a` – 任意单个字母（`[A-Za-z]`）
+- `A` – 任意大写字母（`[A-Z]`）
+- `*` – 任意字母数字字符（`[A-Za-z0-9]`）
+- `#` – 数字或符号（`[-+0-9]`）
 
-### Optional segments
+### 可选段
 
-Append `?` after the last required character to mark remaining slots as optional:
+在最后一个必需字符后附加 `?`，将剩余槽位标记为可选：
 
 ```tsx
-useMask({ mask: '(999) 999-9999? x9999' }) // Extension is optional
+useMask({ mask: '(999) 999-9999? x9999' }) // 分机号是可选的
 ```
 
-## Utility functions
+## 工具函数
 
-The following pure functions are exported alongside the hook:
+以下纯函数与 Hook 一起导出：
 
-- `formatMask(raw, options)` – apply a mask to a raw value string
-- `unformatMask(masked, options)` – strip all mask literals from a masked value
-- `isMaskComplete(masked, options)` – check if all required slots are filled
-- `generatePattern(mode, options)` – generate a regex string for HTML `pattern` attribute
+- `formatMask(raw, options)` – 将掩码应用于原始值字符串
+- `unformatMask(masked, options)` – 从掩码值中剥离所有掩码字面量
+- `isMaskComplete(masked, options)` – 检查是否所有必需槽位都已填充
+- `generatePattern(mode, options)` – 为 HTML `pattern` 属性生成正则字符串
 
 ```tsx
 import { formatMask, unformatMask, isMaskComplete } from '@react-ui/hooks';
@@ -98,7 +94,7 @@ unformatMask('(123) 456-7890', options); // "1234567890"
 isMaskComplete('(123) 456-7890', options); // true
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseMaskOptions {
@@ -157,10 +153,10 @@ interface UseMaskReturnValue {
 function useMask(options: UseMaskOptions): UseMaskReturnValue;
 ```
 
-## Exported types
+## 导出类型
 
-The `UseMaskOptions` and `UseMaskReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseMaskOptions` 和 `UseMaskReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseMaskOptions, UseMaskReturnValue } from '@react-ui/hooks';

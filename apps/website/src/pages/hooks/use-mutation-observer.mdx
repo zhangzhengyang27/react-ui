@@ -4,21 +4,20 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useMutationObserver);
 
-## Usage
+## 用法
 
-The `use-mutation-observer` hook is a wrapper for the [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
-It allows you to subscribe to changes being made to the DOM tree.
+`use-mutation-observer` Hook 是 [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) 的包装器。
+它允许你订阅 DOM 树的变化。
 
 <Demo data={UseMutationObserverDemos.usage} />
 
-## Target element
+## 目标元素
 
-If you cannot pass a `ref` to the target element, you can pass a function to resolve
-the target element as the third argument.
+如果你无法将 `ref` 传递给目标元素，可以将一个解析目标元素的函数作为第三个参数传递。
 
 <Demo data={UseMutationObserverDemos.target} />
 
-## Definition
+## 类型定义
 
 ```tsx
 function useMutationObserver<T extends HTMLElement>(

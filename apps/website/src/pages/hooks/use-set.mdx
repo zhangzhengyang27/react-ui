@@ -4,14 +4,14 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useSet);
 
-## Usage
+## 用法
 
-The `useSet` hook returns a [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
-object that can be used as React state: the `add`, `clear`, and `delete` methods trigger state updates.
+`useSet` Hook 返回一个 [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
+对象，可用作 React 状态：`add`、`clear` 和 `delete` 方法会触发状态更新。
 
 <Demo data={UseSetDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 function useSet<T>(values?: T[]): Set<T>;

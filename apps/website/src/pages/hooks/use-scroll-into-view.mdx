@@ -4,35 +4,35 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useScrollIntoView);
 
-## Usage
+## 用法
 
-The `use-scroll-into-view` hook handles scroll behavior for any scrollable element. Basic usage works the same way as `element.scrollIntoView()`.
-The hook adjusts the scrolling animation with respect to the `reduced-motion` user preference.
+`use-scroll-into-view` Hook 处理任何可滚动元素的滚动行为。基本用法与 `element.scrollIntoView()` 相同。
+该 Hook 会根据用户的 `reduced-motion` 偏好调整滚动动画。
 
 <Demo data={UseScrollIntoViewDemos.usage} />
 
-## API
+## API 参考
 
-The hook is configured with a settings object:
+该 Hook 使用一个设置对象进行配置：
 
-- `onScrollFinish` – function that will be called after the scroll animation
-- `onScrollCancel` – function that will be called when the scroll animation is canceled by user interaction
-- `easing` – custom math easing function
-- `duration` - duration of the scroll animation in milliseconds
-- `axis` - axis of the scroll
-- `cancelable` - indicator if the animation may be interrupted by user scrolling
-- `offset` - additional distance between the nearest edge and the element
-- `isList` - indicator that prevents content jumping in scrolling lists with multiple targets, for example Select, Carousel
+- `onScrollFinish` – 滚动动画完成后调用的函数
+- `onScrollCancel` – 滚动动画被用户交互取消时调用的函数
+- `easing` – 自定义数学缓动函数
+- `duration` - 滚动动画的持续时间（毫秒）
+- `axis` - 滚动的轴
+- `cancelable` - 指示动画是否可以被用户滚动中断
+- `offset` - 最近边缘与元素之间的额外距离
+- `isList` - 指示器，可防止具有多个目标的滚动列表中的内容跳动，例如 Select、Carousel
 
-The hook returns an object with:
+该 Hook 返回一个包含以下内容的物体：
 
-- `scrollIntoView` – function that starts the scroll animation
-- `cancel` – function that stops the scroll animation
-- `scrolling` – boolean indicating whether a scroll animation is in progress
-- `targetRef` - ref of the target HTML node
-- `scrollableRef` - ref of the scrollable parent HTML element; if not used, the document element will be used
+- `scrollIntoView` – 开始滚动动画的函数
+- `cancel` – 停止滚动动画的函数
+- `scrolling` – 指示滚动动画是否正在进行的布尔值
+- `targetRef` - 目标 HTML 节点的 ref
+- `scrollableRef` - 可滚动父 HTML 元素的 ref；如果未使用，将使用 document 元素
 
-The returned `scrollIntoView` function accepts a single optional argument `alignment` - optional target element alignment relative to the parent based on the current axis.
+返回的 `scrollIntoView` 函数接受一个可选参数 `alignment` - 基于当前轴相对于父元素的目标元素对齐方式。
 
 ```tsx
 import { useScrollIntoView } from '@react-ui/hooks';
@@ -42,13 +42,13 @@ const { scrollIntoView } = useScrollIntoView();
 scrollIntoView({ alignment: 'center' });
 ```
 
-## Easing
+## 缓动
 
-The hook accept custom `easing` math function to control the flow of animation.
-It takes `t` argument, which is a number between `0` and `1`.
+该 Hook 接受自定义 `easing` 数学函数来控制动画流程。
+它接受 `t` 参数，这是一个介于 `0` 和 `1` 之间的数字。
 
-Default easing is `easeInOutQuad` - more info [here](https://easings.net/#easeInOutQuad).
-You can find other popular examples on [easings.net](https://easings.net/)
+默认缓动为 `easeInOutQuad` - 更多信息请参阅[此处](https://easings.net/#easeInOutQuad)。
+你可以在 [easings.net](https://easings.net/) 找到其他流行示例。
 
 ```tsx
 import { useScrollIntoView } from '@react-ui/hooks';
@@ -58,45 +58,45 @@ useScrollIntoView({
 });
 ```
 
-## Parent node
+## 父节点
 
 <Demo data={UseScrollIntoViewDemos.parent} />
 
-## Scroll X axis
+## 滚动 X 轴
 
 <Demo data={UseScrollIntoViewDemos.axis} />
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseScrollIntoViewAnimation {
-  /** Target element alignment relatively to parent based on current axis */
+  /** 基于当前轴相对于父元素的目标元素对齐方式 */
   alignment?: 'start' | 'end' | 'center';
 }
 
 interface UseScrollIntoViewOptions {
-  /** Callback fired after scroll */
+  /** 滚动后触发的回调 */
   onScrollFinish?: () => void;
 
-  /** Callback fired when scroll animation is canceled by user interaction */
+  /** 滚动动画被用户交互取消时触发的回调 */
   onScrollCancel?: () => void;
 
-  /** Duration of scroll in milliseconds */
+  /** 滚动持续时间（毫秒） */
   duration?: number;
 
-  /** Axis of scroll */
+  /** 滚动轴 */
   axis?: 'x' | 'y';
 
-  /** Custom mathematical easing function */
+  /** 自定义数学缓动函数 */
   easing?: (t: number) => number;
 
-  /** Additional distance between nearest edge and element */
+  /** 最近边缘与元素之间的额外距离 */
   offset?: number;
 
-  /** Indicator if animation may be interrupted by user scrolling */
+  /** 指示动画是否可以被用户滚动中断 */
   cancelable?: boolean;
 
-  /** Prevents content jumping in scrolling lists with multiple targets */
+  /** 防止具有多个目标的滚动列表中的内容跳动 */
   isList?: boolean;
 }
 
@@ -119,10 +119,10 @@ function useScrollIntoView<
 ): UseScrollIntoViewReturnValue<Target, Parent>
 ```
 
-## Exported types
+## 导出类型
 
-`UseScrollIntoViewOptions` and `UseScrollIntoViewReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseScrollIntoViewOptions` 和 `UseScrollIntoViewReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseScrollIntoViewOptions, UseScrollIntoViewReturnValue } from '@react-ui/hooks';

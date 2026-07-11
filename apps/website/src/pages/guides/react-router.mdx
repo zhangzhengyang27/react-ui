@@ -3,30 +3,30 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.ReactRouter);
 
-# Usage with React Router
+# 在 React Router 中使用
 
-## Generate new application
+## 创建新应用
 
-Follow the [React Router getting started guide](https://reactrouter.com/start/framework/installation) to create a new React Router application:
+按照 [React Router 入门指南](https://reactrouter.com/start/framework/installation) 创建新的 React Router 应用：
 
 ```bash
 npx create-react-router@latest my-react-router-app
 ```
 
-## Installation
+## 安装
 
 <PackagesInstallation />
 
-## PostCSS setup
+## PostCSS 配置
 
-Install PostCSS plugins and [postcss-preset-mantine](/styles/postcss-preset):
+安装 PostCSS 插件和 [postcss-preset-mantine](/styles/postcss-preset)：
 
 <InstallScript
   packages="postcss postcss-preset-mantine postcss-simple-vars"
   dev
 />
 
-Create a `postcss.config.cjs` file at the root of your application with the following content:
+在应用根目录创建 `postcss.config.cjs` 文件，内容如下：
 
 ```js
 module.exports = {
@@ -45,13 +45,13 @@ module.exports = {
 };
 ```
 
-## Setup
+## 配置
 
-Add styles imports, [MantineProvider](/theming/mantine-provider/) and [ColorSchemeScript](/theming/color-schemes) to `app/root.tsx`:
+在 `app/root.tsx` 中添加样式导入、[MantineProvider](/theming/mantine-provider/) 和 [ColorSchemeScript](/theming/color-schemes)：
 
 ```tsx
-// Import styles of packages that you've installed.
-// All packages except `@react-ui/hooks` require styles imports
+// 导入你已安装包的样式。
+// 除 `@react-ui/hooks` 外，所有包都需要导入样式
 import '@react-ui/ui/styles.css';
 
 import {
@@ -82,10 +82,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-// ... other app/root.tsx content
+// ... 其他 app/root.tsx 内容
 ```
 
-All set! Start the development server:
+配置完成！启动开发服务器：
 
 ```bash
 npm run dev

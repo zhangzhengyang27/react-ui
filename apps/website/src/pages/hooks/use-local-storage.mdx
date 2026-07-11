@@ -3,33 +3,32 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useLocalStorage);
 
-## Usage
+## 用法
 
-The `use-local-storage` hook allows you to use a value from `localStorage` as React state.
-The hook works the same way as `useState`, but also writes the value to `localStorage`:
+`use-local-storage` Hook 允许你将 `localStorage` 中的值作为 React 状态使用。
+该 Hook 的工作方式与 `useState` 相同，但还会将值写入 `localStorage`：
 
 ```tsx
 import { useLocalStorage } from '@react-ui/hooks';
 
-// The hook will read the value from localStorage.getItem('color-scheme')
-// If localStorage is not available or the value at a given key does not exist,
-// 'dark' will be assigned to the value variable
+// 该 Hook 会从 localStorage.getItem('color-scheme') 读取值
+// 如果 localStorage 不可用或给定键的值不存在，
+// 'dark' 将被赋给 value 变量
 const [value, setValue] = useLocalStorage({
   key: 'color-scheme',
   defaultValue: 'dark',
 });
 
-// The value is set both to state and localStorage at 'color-scheme'
+// 值会同时被设置到 state 和 localStorage 的 'color-scheme' 中
 setValue('light');
 
-// You can also use a callback like in the useState hook to set the value
+// 你也可以像 useState Hook 一样使用回调来设置值
 setValue((current) => (current === 'dark' ? 'light' : 'dark'));
 ```
 
-## Example
+## 示例
 
-Example of a color scheme toggle button that uses `use-local-storage` hook
-to store current color scheme in the `localStorage`:
+一个使用 `use-local-storage` Hook 将当前颜色方案存储在 `localStorage` 中的切换按钮示例：
 
 ```tsx
 import { MoonStarsIcon, SunIcon } from '@phosphor-icons/react';
@@ -57,10 +56,10 @@ function ColorSchemeToggle() {
 }
 ```
 
-## Remove value
+## 移除值
 
-Use `removeValue` callback to clean `localStorage`/`sessionStorage`.
-When value is removed it is reset to `defaultValue`:
+使用 `removeValue` 回调来清理 `localStorage`/`sessionStorage`。
+当值被移除时，它会重置为 `defaultValue`：
 
 ```tsx
 import { useLocalStorage } from '@react-ui/hooks';
@@ -71,18 +70,17 @@ const [value, setValue, removeValue] = useLocalStorage({
 });
 ```
 
-## Browser tabs synchronization
+## 浏览器标签页同步
 
-`use-local-storage` subscribes to [storage event](https://developer.mozilla.org/en-US/docs/Web/API/Window/storage_event).
-When state changes in one tab, it automatically updates the value in all other opened browser tabs.
-You can test this feature by opening 2 tabs with ReactUI docs side by side and changing the color scheme
-(button on the top right or `⌘ + J` on MacOS and `Ctrl + J` on Windows and Linux).
+`use-local-storage` 订阅 [storage 事件](https://developer.mozilla.org/en-US/docs/Web/API/Window/storage_event)。
+当一个标签页中的状态发生变化时，它会自动更新所有其他打开的浏览器标签页中的值。
+你可以通过并排打开两个 ReactUI 文档标签页并更改颜色方案来测试此功能
+（右上角按钮或 MacOS 上按 `⌘ + J`，Windows 和 Linux 上按 `Ctrl + J`）。
 
-## Serialize/deserialize JSON
+## 序列化/反序列化 JSON
 
-By default, the hook will serialize/deserialize data with `JSON.stringify`/`JSON.parse`.
-If you need to store data in local storage that cannot be serialized with `JSON.stringify`
-– provide your own serialization handlers:
+默认情况下，该 Hook 使用 `JSON.stringify`/`JSON.parse` 序列化/反序列化数据。
+如果你需要存储无法通过 `JSON.stringify` 序列化的数据——请提供你自己的序列化处理函数：
 
 ```tsx
 import { useLocalStorage } from '@react-ui/hooks';
@@ -90,17 +88,17 @@ import { useLocalStorage } from '@react-ui/hooks';
 const [value, setValue] = useLocalStorage({
   key: 'color-scheme',
   serialize: (value) => {
-    /* return value serialized to string */
+    /* 返回值序列化为字符串 */
   },
   deserialize: (localStorageValue) => {
-    /* parse localStorage string value and return value */
+    /* 解析 localStorage 字符串值并返回值 */
   },
 });
 ```
 
-## Usage with superjson
+## 与 superjson 一起使用
 
-[superjson](https://github.com/blitz-js/superjson) is compatible with `JSON.stringify`/`JSON.parse` but works for `Date`, `Map`, `Set` and `BigInt`:
+[superjson](https://github.com/blitz-js/superjson) 与 `JSON.stringify`/`JSON.parse` 兼容，但支持 `Date`、`Map`、`Set` 和 `BigInt`：
 
 ```tsx
 import superjson from 'superjson';
@@ -119,7 +117,7 @@ const [value, setValue] = useLocalStorage({
 
 ## use-session-storage
 
-The `use-session-storage` hook works the same way as `use-local-storage` hook but uses `sessionStorage` instead of `window.localStorage`:
+`use-session-storage` Hook 的工作方式与 `use-local-storage` Hook 相同，但使用 `sessionStorage` 而不是 `window.localStorage`：
 
 ```tsx
 import { useSessionStorage } from '@react-ui/hooks';
@@ -130,9 +128,9 @@ const [value, setValue] = useSessionStorage({
 });
 ```
 
-## Set value type
+## 设置值类型
 
-You can specify value type same as in `useState` hook:
+你可以像 `useState` Hook 一样指定值类型：
 
 ```tsx
 import { useLocalStorage } from '@react-ui/hooks';
@@ -143,10 +141,10 @@ const [value, setValue] = useLocalStorage<'dark' | 'light'>({
 });
 ```
 
-## Read storage value
+## 读取存储值
 
-To read value from storage without using hook, use `readLocalStorageValue`/`readSessionStorageValue` functions.
-Functions accept the same arguments as `use-local-storage`/`use-session-storage` hooks:
+要在不使用 Hook 的情况下从存储中读取值，请使用 `readLocalStorageValue`/`readSessionStorageValue` 函数。
+这些函数接受与 `use-local-storage`/`use-session-storage` Hook 相同的参数：
 
 ```tsx
 import { readLocalStorageValue } from '@react-ui/hooks';
@@ -154,7 +152,7 @@ import { readLocalStorageValue } from '@react-ui/hooks';
 const value = readLocalStorageValue({ key: 'color-scheme' });
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseStorageOptions<T> {
@@ -178,9 +176,9 @@ interface UseStorageOptions<T> {
 }
 
 type UseStorageReturnValue<T> = [
-  T, // current value
-  (val: T | ((prevState: T) => T)) => void, // callback to set value in storage
-  () => void, // callback to remove value from storage
+  T, // 当前值
+  (val: T | ((prevState: T) => T)) => void, // 在存储中设置值的回调
+  () => void, // 从存储中移除值的回调
 ];
 
 function useLocalStorage<T = string>(
@@ -188,10 +186,10 @@ function useLocalStorage<T = string>(
 ): UseStorageReturnValue<T>;
 ```
 
-## Exported types
+## 导出类型
 
-`UseStorageOptions` and `UseStorageReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseStorageOptions` 和 `UseStorageReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseStorageOptions, UseStorageReturnValue } from '@react-ui/hooks';

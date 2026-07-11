@@ -4,30 +4,29 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Group);
 
-## Usage
+## 用法
 
-`Group` is a horizontal flex container. If you need a vertical flex container, use the [Stack](/core/stack)
-component instead. If you need to have full control over flex container properties, use the [Flex](/core/flex) component.
+`Group` 是一个水平 flex 容器。如果你需要垂直 flex 容器，请改用 [Stack](/core/stack)
+组件。如果你需要完全控制 flex 容器属性，请使用 [Flex](/core/flex) 组件。
 
 <Demo data={GroupDemos.usage} />
 
 ## preventGrowOverflow
 
-The `preventGrowOverflow` prop allows you to control how `Group` children should behave when there is not enough
-space to fit them all on one line. By default, children are not allowed to take more space than
-`(1 / children.length) * 100%` of parent width (`preventGrowOverflow` is set to `true`). To change
-this behavior, set `preventGrowOverflow` to `false` and children will be allowed to grow and take
-as much space as they need.
+`preventGrowOverflow` 属性允许你控制当空间不足以在一行内容纳所有子元素时，`Group` 子元素的行为。默认情况下，子元素不允许占据超过
+`(1 / 子元素数量) * 100%` 的父元素宽度（`preventGrowOverflow` 设置为 `true`）。要更改
+此行为，请将 `preventGrowOverflow` 设置为 `false`，子元素将被允许增长并占据
+所需的空间。
 
 <Demo data={GroupDemos.preventGrowOverflow} />
 
-## Group children
+## Group 子元素
 
-**!important** `Group` works correctly only with React elements.
-Strings, numbers, fragments may have incorrect styles if the `grow` prop is set:
+**!重要提示** `Group` 仅对 React 元素正常工作。
+字符串、数字、片段在设置 `grow` 属性时可能具有不正确的样式：
 
 ```tsx
-// Invalid Group usage, do not do this
+// 无效的 Group 用法，不要这样做
 import { Group } from '@react-ui/ui';
 
 function InvalidDemo() {

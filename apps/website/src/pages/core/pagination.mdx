@@ -4,17 +4,17 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Pagination);
 
-## Usage
+## 用法
 
 <Demo data={PaginationDemos.configurator} />
 
-## Example with chunked content
+## 带分页内容的示例
 
 <Demo data={PaginationDemos.withContent} />
 
-## Controlled
+## 受控模式
 
-To control the component state, provide `value` and `onChange` props:
+要控制组件状态，请提供 `value` 和 `onChange` 属性：
 
 ```tsx
 import { useState } from 'react';
@@ -28,28 +28,28 @@ function Demo() {
 }
 ```
 
-## Siblings
+## 相邻项数
 
-Control the number of active item siblings with the `siblings` prop:
+使用 `siblings` 属性控制活动项两侧的兄弟项数量：
 
 <Demo data={PaginationDemos.siblings} />
 
-## Boundaries
+## 边界项数
 
-Control the number of items displayed after previous and before next buttons with the `boundaries` prop:
+使用 `boundaries` 属性控制上一页按钮之后和下一页按钮之前显示的项数：
 
 <Demo data={PaginationDemos.boundaries} />
 
-## Responsive layout
+## 响应式布局
 
-Set `layout="responsive"` to use CSS container queries to show a compact "Page X of Y" label
-when the container is narrow. Use `formatLabel` prop to customize the label text.
+设置 `layout="responsive"` 以使用 CSS 容器查询，在容器较窄时显示紧凑的“第 X 页，共 Y 页”标签。
+使用 `formatLabel` 属性自定义标签文本。
 
 <Demo data={PaginationDemos.responsive} />
 
-## Hide pages controls
+## 隐藏页面控件
 
-Set `withPages={false}` to hide the pages controls:
+设置 `withPages={false}` 以隐藏页面控件：
 
 <Demo data={PaginationDemos.withPages} />
 
@@ -57,25 +57,25 @@ Set `withPages={false}` to hide the pages controls:
 
 <Demo data={PaginationDemos.stylesApi} />
 
-## Compound components
+## 复合组件
 
-You can use the following compound components to have full control over the `Pagination` rendering:
+你可以使用以下复合组件来完全控制 `Pagination` 的渲染：
 
-- `Pagination.Root` – context provider
-- `Pagination.Items` – items list
-- `Pagination.Next` – next control
-- `Pagination.Previous` – previous control
-- `Pagination.First` – first control
-- `Pagination.Last` – last control
-- `Pagination.Label` – compact label for responsive layout
+- `Pagination.Root`——上下文提供者
+- `Pagination.Items`——项目列表
+- `Pagination.Next`——下一页控件
+- `Pagination.Previous`——上一页控件
+- `Pagination.First`——首页控件
+- `Pagination.Last`——末页控件
+- `Pagination.Label`——响应式布局的紧凑标签
 
 <Demo data={PaginationDemos.composition} />
 
-## Controls as links
+## 控件作为链接
 
 <Demo data={PaginationDemos.links} />
 
-## Change icons
+## 更改图标
 
 <Demo data={PaginationDemos.icons} />
 
@@ -83,23 +83,23 @@ You can use the following compound components to have full control over the `Pag
 
 <Demo data={PaginationDemos.autoContrast} />
 
-## Controls size
+## 控件尺寸
 
-By default, pagination controls have reduced size compared to inputs and buttons.
-If you want controls to have the same size as inputs and buttons, you can use `input-` prefix for the `size` prop:
+默认情况下，分页控件比输入框和按钮尺寸更小。
+如果你希望控件与输入框和按钮尺寸相同，可以为 `size` 属性使用 `input-` 前缀：
 
 <Demo data={PaginationDemos.size} />
 
-## Start value
+## 起始值
 
-Set `startValue` to define the starting page number. For example, with `startValue={5}` and `total={15}`,
-the pagination range will be from 5 to 15:
+设置 `startValue` 以定义起始页码。例如，`startValue={5}` 且 `total={15}` 时，
+分页范围将从 5 到 15：
 
 <Demo data={PaginationDemos.startValue} />
 
-## URL synchronization
+## URL 同步
 
-You can synchronize pagination state with URL query parameters. This pattern is commonly used for list views where you want to share the URL with a specific page selected.
+你可以将分页状态与 URL 查询参数同步。这种模式常用于列表视图，当你希望分享带有特定页面选中的 URL 时。
 
 ### Next.js
 
@@ -143,7 +143,7 @@ function Demo() {
 
 ### nuqs
 
-Example using [nuqs](https://nuqs.dev/):
+使用 [nuqs](https://nuqs.dev/) 的示例：
 
 ```tsx
 import { useQueryState, parseAsInteger } from 'nuqs';
@@ -155,7 +155,7 @@ function Demo() {
 }
 ```
 
-## use-pagination hook
+## use-pagination Hook
 
-If you need more flexibility, the `@react-ui/hooks` package exports the [use-pagination](/hooks/use-pagination/) hook.
-You can use it to create custom pagination components.
+如果你需要更大的灵活性，`@react-ui/hooks` 包导出了 [use-pagination](/hooks/use-pagination/) Hook。
+你可以使用它来创建自定义分页组件。

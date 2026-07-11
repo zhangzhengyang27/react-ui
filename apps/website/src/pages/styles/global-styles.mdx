@@ -4,19 +4,17 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.GlobalStyles);
 
-# Global styles
+# 全局样式
 
-The `@react-ui/ui` package includes some global styles that are required for components to work correctly.
-If you override these styles, some components might not work as expected.
+`@react-ui/ui` 包包含一些组件正确工作所需的全局样式。如果你覆盖这些样式，某些组件可能无法按预期工作。
 
-Global styles are automatically imported with:
+全局样式会通过以下方式自动导入：
 
 ```tsx
 import '@react-ui/ui/styles.css';
 ```
 
-If you want to import styles [per component](/styles/css-files-list), you need to import all global
-styles manually:
+如果你想[按组件](/styles/css-files-list)导入样式，则需要手动导入所有全局样式：
 
 ```tsx
 import '@react-ui/ui/styles/baseline.css';
@@ -24,11 +22,9 @@ import '@react-ui/ui/styles/default-css-variables.css';
 import '@react-ui/ui/styles/global.css';
 ```
 
-## CSS reset
+## CSS 重置
 
-The `@react-ui/ui` package includes minimal CSS reset – it includes only basic styles required for components to work
-in modern browsers. If you need to support older browsers, you can additionally include [normalize.css](https://necolas.github.io/normalize.css/)
-or any other CSS reset of your choice.
+`@react-ui/ui` 包包含最小的 CSS reset——它仅包含组件在现代浏览器中工作所需的基本样式。如果你需要支持旧浏览器，可以额外包含 [normalize.css](https://necolas.github.io/normalize.css/) 或任何你喜欢的其他 CSS reset。
 
 ```css
 body {
@@ -54,9 +50,9 @@ select {
 }
 ```
 
-## Body and :root elements styles
+## Body 和 :root 元素样式
 
-The `@react-ui/ui` package includes the following `body` and `:root` element styles:
+`@react-ui/ui` 包包含以下 `body` 和 `:root` 元素样式：
 
 ```css
 :root {
@@ -75,30 +71,26 @@ body {
 }
 ```
 
-## Static classes
+## 静态 classes
 
-The `@react-ui/ui` package includes the following static classes:
+`@react-ui/ui` 包包含以下静态 class：
 
-- `mantine-active` – contains `:active` styles
-- `mantine-focus-auto` – contains `:focus-visible` styles
-- `mantine-focus-always` – contains `:focus` styles
-- `mantine-focus-never` – removes default browser focus ring
-- `mantine-visible-from-{breakpoint}` – shows element when screen width is greater than the breakpoint, for example `mantine-visible-from-sm`
-- `mantine-hidden-from-{breakpoint}` – hides element when screen width is greater than the breakpoint, for example `mantine-hidden-from-sm`
+- `mantine-active` – 包含 `:active` 样式
+- `mantine-focus-auto` – 包含 `:focus-visible` 样式
+- `mantine-focus-always` – 包含 `:focus` 样式
+- `mantine-focus-never` – 移除默认浏览器 focus ring
+- `mantine-visible-from-{breakpoint}` – 当屏幕宽度大于断点时显示元素，例如 `mantine-visible-from-sm`
+- `mantine-hidden-from-{breakpoint}` – 当屏幕宽度大于断点时隐藏元素，例如 `mantine-hidden-from-sm`
 
-You can use these classes with any components or elements:
+你可以将这些 class 与任何组件或元素一起使用：
 
 <Demo data={StylesDemos.globalClasses} />
 
-## Add global styles in your application
+## 在应用中添加全局样式
 
-It is recommended to use [CSS modules](/styles/css-modules) to apply styles to ReactUI components
-with the `className` prop or with [Styles API](/styles/styles-api). CSS modules file names usually
-end with `.module.css`. If you want to add global styles to your application, create a file with
-a `.css` extension but without the `.module` part, for example `global.css`.
+建议使用 [CSS modules](/styles/css-modules) 配合 `className` prop 或 [Styles API](/styles/styles-api) 为 ReactUI 组件应用样式。CSS modules 文件名通常以 `.module.css` 结尾。如果你想为应用添加全局样式，请创建一个带有 `.css` 扩展名但没有 `.module` 部分的文件，例如 `global.css`。
 
-In global `.css` files you can reference all ReactUI [CSS variables](/styles/css-variables) and
-change styles of `<body />`, `:root`, and other elements. For example, to change the body background-color:
+在全局 `.css` 文件中，你可以引用所有 ReactUI [CSS 变量](/styles/css-variables) 并更改 `<body />`、`:root` 和其他元素的样式。例如，要更改 body 的 background-color：
 
 ```css
 body {

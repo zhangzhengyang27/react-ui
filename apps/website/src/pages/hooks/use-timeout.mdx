@@ -4,11 +4,11 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useTimeout);
 
-## Usage
+## 用法
 
 <Demo data={UseTimeoutDemos.usage} />
 
-## API
+## API 参考
 
 ```tsx
 import { useTimeout } from '@react-ui/hooks';
@@ -18,18 +18,18 @@ const { start, clear } = useTimeout(callback, delay, {
 });
 ```
 
-Arguments:
+参数：
 
-- `callback` – function that will be called after the timer elapses
-- `delay` – number of milliseconds the timer should wait before the specified function is executed
-- `options: { autoInvoke }` – determines whether the timer should be started on mount; defaults to false
+- `callback` – 计时器到期后调用的函数
+- `delay` – 计时器在执行指定函数前应等待的毫秒数
+- `options: { autoInvoke }` – 决定计时器是否应在挂载时启动；默认 false
 
-Return object:
+返回对象：
 
-- `start` – starts the timer
-- `clear` – cancels the timer
+- `start` – 启动计时器
+- `clear` – 取消计时器
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseTimeoutOptions {
@@ -48,9 +48,9 @@ function useTimeout(
 ): UseTimeoutReturnValue
 ```
 
-## Exported types
+## 导出类型
 
-The `UseTimeoutOptions` and `UseTimeoutReturnValue` types are exported from `@react-ui/hooks`;
+`UseTimeoutOptions` 和 `UseTimeoutReturnValue` 类型从 `@react-ui/hooks` 包导出：
 
 ```tsx
 import type { UseTimeoutOptions, UseTimeoutReturnValue } from '@react-ui/hooks';

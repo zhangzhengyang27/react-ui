@@ -3,9 +3,9 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useMounted);
 
-## Usage
+## 用法
 
-The `useMounted` hook returns `true` if the component is mounted and `false` if it's not.
+`useMounted` Hook 在组件已挂载时返回 `true`，未挂载时返回 `false`。
 
 ```tsx
 import { useMounted } from '@react-ui/hooks';
@@ -14,13 +14,13 @@ function Demo() {
   const mounted = useMounted();
   return (
     <div>
-      {mounted ? 'Component is mounted' : 'Component is not mounted'}
+      {mounted ? '组件已挂载' : '组件未挂载'}
     </div>
   );
 }
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 function useMounted(): boolean;

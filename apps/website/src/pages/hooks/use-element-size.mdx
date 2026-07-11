@@ -4,15 +4,15 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useElementSize);
 
-## Usage
+## 用法
 
 <Demo data={UseElementSizeDemos.usage} />
 
-## API
+## API 参考
 
-`use-element-size` is a simpler version of the [use-resize-observer](/hooks/use-resize-observer/) hook.
-The hook returns a `ref` object that should be passed to the observed element, and the element's `height` and `width`.
-On the first render (as well as during SSR), or when no element is being observed, the `width` and `height` properties are equal to `0`.
+`use-element-size` 是 [use-resize-observer](/hooks/use-resize-observer/) Hook 的简化版本。
+该 Hook 返回一个 `ref` 对象，应将其传递给被观察的元素，以及该元素的 `height` 和 `width`。
+在第一次渲染（以及 SSR 期间）或未观察任何元素时，`width` 和 `height` 属性等于 `0`。
 
 ```tsx
 import { useElementSize } from '@react-ui/hooks';
@@ -20,7 +20,7 @@ import { useElementSize } from '@react-ui/hooks';
 const { ref, width, height } = useElementSize();
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseElementSizeReturnValue {

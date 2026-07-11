@@ -4,11 +4,11 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Radio);
 
-## Usage
+## 用法
 
 <Demo data={RadioDemos.configurator} />
 
-## Controlled
+## 受控
 
 ```tsx
 import { useState } from 'react';
@@ -25,13 +25,13 @@ function Demo() {
 }
 ```
 
-## Uncontrolled
+## 非受控
 
-`Radio` can be used with uncontrolled forms the same way as a native `input[type="radio"]`.
-Set the `name` and `value` attributes to include radio value in `FormData` object on form submission.
-To control the initial checked state in uncontrolled forms, use `defaultChecked` prop.
+`Radio` 可以像原生 `input[type="radio"]` 一样用于非受控表单。
+设置 `name` 和 `value` 属性以在表单提交时将单选按钮值包含在 `FormData` 对象中。
+要控制非受控表单中的初始选中状态，请使用 `defaultChecked` 属性。
 
-Example usage of uncontrolled `Radio` with `FormData`:
+非受控 `Radio` 与 `FormData` 的用法示例：
 
 ```tsx
 import { Radio } from '@react-ui/ui';
@@ -53,26 +53,26 @@ function Demo() {
 }
 ```
 
-## States
+## 状态
 
 <Demo data={RadioDemos.states} />
 
-## Change icon
+## 更改图标
 
 <Demo data={RadioDemos.icon} />
 
-## Change icon color
+## 更改图标颜色
 
 <Demo data={RadioDemos.iconColor} />
 
-## Disabled state
+## 禁用状态
 
 <Demo data={RadioDemos.disabled} />
 
-## Pointer cursor
+## 指针光标
 
-By default, the radio input and label have `cursor: default` (same as native `input[type="radio"]`).
-To change the cursor to pointer, set `cursorType` on the [theme](/theming/theme-object/):
+默认情况下，单选按钮输入和标签具有 `cursor: default`（与原生 `input[type="radio"]` 相同）。
+要将光标更改为 pointer，请在 [theme](/theming/theme-object/) 上设置 `cursorType`：
 
 ```tsx
 import { createTheme, MantineProvider, Radio } from '@react-ui/ui';
@@ -90,26 +90,26 @@ function Demo() {
 }
 ```
 
-## Radio with tooltip
+## 带 Tooltip 的 Radio
 
-You can change the target element to which the tooltip is attached with `refProp`:
+你可以使用 `refProp` 更改 tooltip 附加到的目标元素：
 
-- If `refProp` is not set, the tooltip is attached to the radio input
-- If `refProp="rootRef"` is set, the tooltip is attached to the root element (contains label, input, and other elements)
+- 如果未设置 `refProp`，tooltip 附加到单选按钮输入
+- 如果设置 `refProp="rootRef"`，tooltip 附加到根元素（包含标签、输入和其他元素）
 
 <Demo data={RadioDemos.tooltip} />
 
 <WrapperProps component="Radio" />
 
-## Radio.Group component
+## Radio.Group 组件
 
 <Demo data={RadioDemos.groupConfigurator} />
 
-## Radio.Group disabled state
+## Radio.Group 禁用状态
 
 <Demo data={RadioDemos.groupDisabled} />
 
-## Controlled Radio.Group
+## 受控 Radio.Group
 
 ```tsx
 import { useState } from 'react';
@@ -138,26 +138,23 @@ function Demo() {
 
 ## Radio.Indicator
 
-`Radio.Indicator` looks exactly the same as the `Radio` component, but it does not
-have any semantic meaning; it's just a visual representation of the radio state. You
-can use it in any place where you need to display the radio state without any interaction
-related to the indicator. For example, it is useful in cards based on buttons, trees, etc.
+`Radio.Indicator` 外观与 `Radio` 组件完全相同，但它没有
+任何语义含义；它只是单选按钮状态的视觉表示。你可以在需要显示单选按钮状态但不需要任何与指示器交互的地方使用它。
+例如，它适用于基于按钮的卡片、树等。
 
-Note that `Radio.Indicator` cannot be focused or selected with the keyboard. It is not
-accessible and should not be used as a replacement for the `Radio` component.
+注意，`Radio.Indicator` 无法获得焦点或使用键盘选择。它不具备
+可访问性，不应作为 `Radio` 组件的替代品。
 
 <Demo data={RadioDemos.indicator} />
 
-## Radio.Card component
+## Radio.Card 组件
 
-`Radio.Card` component can be used as a replacement for `Radio` to build custom
-cards/buttons/other things that work as radios. The root element of the component
-has the `role="radio"` attribute; it is accessible by default and supports the same
-keyboard interactions as `input[type="radio"]`.
+`Radio.Card` 组件可用作 `Radio` 的替代品，用于构建自定义
+卡片/按钮/其他作为单选按钮工作的元素。组件的根元素具有 `role="radio"` 属性，默认具备可访问性并支持与 `input[type="radio"]` 相同的键盘交互。
 
 <Demo data={RadioDemos.card} />
 
-You can use `Radio.Card` with `Radio.Group` the same way as the `Radio` component:
+你可以像使用 `Radio` 组件一样将 `Radio.Card` 与 `Radio.Group` 一起使用：
 
 <Demo data={RadioDemos.cardGroup} />
 
@@ -167,24 +164,24 @@ You can use `Radio.Card` with `Radio.Group` the same way as the `Radio` componen
 
 <Demo data={RadioDemos.stylesApi} />
 
-## Accessibility
+## 可访问性
 
-Set the `aria-label` or `label` prop to make the radio accessible:
+设置 `aria-label` 或 `label` 属性以使单选按钮可访问：
 
 ```tsx
 import { Radio } from '@react-ui/ui';
 
-// Not ok, input is not labeled
+// 不好，输入框没有标签
 function Bad() {
   return <Radio />;
 }
 
-// Ok, input is labeled by aria-label
+// 好，输入框由 aria-label 标记
 function GoodAriaLabel() {
   return <Radio aria-label="My radio" />;
 }
 
-// Ok, input is labeled by label element
+// 好，输入框由 label 元素标记
 function GoodLabel() {
   return <Radio label="My radio" />;
 }

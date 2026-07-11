@@ -4,33 +4,33 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.FocusTrap);
 
-## Usage
+## 用法
 
-FocusTrap is a component implementation of the [use-focus-trap](/hooks/use-focus-trap/) hook.
-It is used in all ReactUI components that require focus trap ([Modal](/core/modal/), [DatePicker](/dates/date-picker/), [Popover](/core/popover/), etc.).
+FocusTrap 是 [use-focus-trap](/hooks/use-focus-trap/) Hook 的组件实现。
+它用于所有需要焦点捕获的 ReactUI 组件（[Modal](/core/modal/)、[DatePicker](/dates/date-picker/)、[Popover](/core/popover/) 等）。
 
 <Demo data={FocusTrapDemos.usage} />
 
-## Initial focus
+## 初始焦点
 
-To define the element that will receive initial focus, set the `data-autofocus` attribute:
+要定义将接收初始焦点的元素，请设置 `data-autofocus` 属性：
 
 <Demo data={FocusTrapDemos.initial} />
 
 ## FocusTrap.InitialFocus
 
-`FocusTrap.InitialFocus` is a special component that adds a visually hidden
-element which will receive the focus when the focus trap is activated.
-Once `FocusTrap.InitialFocus` loses focus, it is removed from the tab order.
+`FocusTrap.InitialFocus` 是一个特殊组件，它添加一个视觉上隐藏的元素，
+该元素将在焦点捕获激活时接收焦点。
+一旦 `FocusTrap.InitialFocus` 失去焦点，它将从 tab 顺序中移除。
 
-For example, it is useful if you do not want to focus any elements inside the [Modal](/core/modal/) when it is opened:
+例如，如果你不想在 [Modal](/core/modal/) 打开时聚焦其中的任何元素，这很有用：
 
 <Demo data={ModalDemos.initialFocusTrap} />
 
-## Focus trapping logic
+## 焦点捕获逻辑
 
-- Focus is trapped within the child node if the `active` prop is `true`
-- When the FocusTrap component is mounted or when the `active` prop changes from `false` to `true`, the first element with the `data-autofocus` attribute is focused
-- If there are no elements with the `data-autofocus` attribute, then the first element that supports keyboard interaction is focused
-- If the target element does not have focusable elements or does not support `ref`, then the focus trap will not work
-- Trap stops working when an element outside of the `FocusTrap` child is focused
+- 如果 `active` 属性为 `true`，焦点将捕获在子节点内
+- 当 FocusTrap 组件挂载或 `active` 属性从 `false` 变为 `true` 时，第一个具有 `data-autofocus` 属性的元素将获得焦点
+- 如果没有具有 `data-autofocus` 属性的元素，则第一个支持键盘交互的元素将获得焦点
+- 如果目标元素没有可聚焦元素或不支持 `ref`，则焦点捕获将不起作用
+- 当 `FocusTrap` 子元素外部的元素获得焦点时，捕获停止工作

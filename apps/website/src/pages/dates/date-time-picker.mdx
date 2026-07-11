@@ -4,66 +4,63 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.DateTimePicker);
 
-## DatePicker props
+## DatePicker 属性
 
-`DateTimePicker` supports most of the [DatePicker](/dates/date-picker/) props.
-Read through the [DatePicker](/dates/date-picker/) documentation to learn about all component features that are not listed on this page.
+`DateTimePicker` 支持大部分 [DatePicker](/dates/date-picker/) 的 props。
+请阅读 [DatePicker](/dates/date-picker/) 文档以了解本页未列出的所有组件功能。
 
-## Usage
+## 用法
 
 <Demo data={DateTimePickerDemos.usage} />
 
-## Range
+## 范围
 
-Set `type="range"` to allow selecting a date and time range. In range mode,
-two time inputs are rendered for start and end times, and a range summary is displayed below:
+设置 `type="range"` 以选择日期和时间范围。在范围模式下，
+会渲染开始时间和结束时间两个输入，下方显示范围摘要：
 
 <Demo data={DateTimePickerDemos.range} />
 
-## With seconds
+## 带秒
 
 <Demo data={DateTimePickerDemos.withSeconds} />
 
-## Presets
+## 预设
 
-Use the `presets` prop to add custom date presets. Presets are displayed next to the calendar:
+使用 `presets` prop 添加自定义日期预设。预设显示在日历旁边：
 
 <Demo data={DateTimePickerDemos.presets} />
 
-## TimePicker props
+## TimePicker 属性
 
-You can pass props down to the underlying [TimePicker](/dates/time-picker/) component
-with the `timePickerProps` prop. Example of enabling dropdown and setting `12h` format
-for the time picker:
+你可以通过 `timePickerProps` prop 将 props 传递给底层的 [TimePicker](/dates/time-picker/) 组件。
+示例：启用下拉框并设置时间选择器为 `12h` 格式：
 
 <Demo data={DateTimePickerDemos.timePickerProps} />
 
-## Value format
+## 值格式
 
-Use the `valueFormat` prop to change the [dayjs format](https://day.js.org/docs/en/display/format) of the value label:
+使用 `valueFormat` prop 更改值标签的 [dayjs 格式](https://day.js.org/docs/en/display/format)：
 
 <Demo data={DateTimePickerDemos.format} />
 
-`valueFormat` also accepts a function that receives the value as a `YYYY-MM-DD HH:mm:ss` string
-and returns a custom formatted value. Use it when the formatting logic cannot be expressed with a
-dayjs format string:
+`valueFormat` 也可以接受一个函数，该函数接收 `YYYY-MM-DD HH:mm:ss` 格式的值字符串，
+并返回自定义格式化后的值。当日志格式逻辑无法用 dayjs 格式字符串表达时使用：
 
 <Demo data={DateTimePickerDemos.formatFunction} />
 
-## Disabled state
+## 禁用状态
 
 <Demo data={DateTimePickerDemos.disabled} />
 
-## Input props
+## Input 属性
 
 <InputFeatures component="DateTimePicker" element="button" />
 
 <Demo data={DateTimePickerDemos.configurator} />
 
-## Clearable
+## 可清除
 
-Set the `clearable` prop to display a clear button in the right section. Note that if you set the `rightSection`
-prop, the clear button will not be displayed.
+设置 `clearable` prop 在右侧区域显示清除按钮。注意如果设置了 `rightSection` prop，清除按钮将不会显示。
 
 <Demo data={DateTimePickerDemos.clearable} />
 
@@ -71,10 +68,10 @@ prop, the clear button will not be displayed.
 
 <Demo data={DateTimePickerDemos.clearSectionMode} />
 
-## Open picker in modal
+## 在模态框中打开选择器
 
-By default, the picker is rendered inside [Popover](/core/popover/).
-You can change that to [Modal](/core/modal/) by setting `dropdownType="modal"`:
+默认情况下，选择器在 [Popover](/core/popover/) 中渲染。
+你可以通过设置 `dropdownType="modal"` 将其更改为 [Modal](/core/modal/)：
 
 <Demo data={DateTimePickerDemos.modal} />
 

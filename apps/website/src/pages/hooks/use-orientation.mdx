@@ -4,31 +4,29 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useOrientation);
 
-## Usage
+## 用法
 
-The `useOrientation` hook returns an object with the current orientation of the device:
+`useOrientation` Hook 返回一个包含设备当前方向的对象：
 
 <Demo data={UseOrientationDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseOrientationOptions {
-  /** Default angle value, used until the real value can be retrieved
-   * (during server-side rendering and before JS executes on the page).
-   * If not provided, the default value is `0`.
+  /** 默认角度值，在获取到真实值之前使用（在服务端渲染期间和页面 JS 执行之前）。
+   * 如果未提供，默认值为 `0`。
    * */
   defaultAngle?: number;
 
-  /** Default type value, used until the real value can be retrieved
-   * (during server-side rendering and before JS executes on the page).
-   * If not provided, the default value is `'landscape-primary'`.
+  /** 默认类型值，在获取到真实值之前使用（在服务端渲染期间和页面 JS 执行之前）。
+   * 如果未提供，默认值为 `'landscape-primary'`。
    * */
   defaultType?: OrientationType;
 
-  /** If true, the initial value will be resolved in useEffect (SSR safe).
-   *  If false, the initial value will be resolved in useLayoutEffect (SSR unsafe).
-   *  True by default.
+  /** 如果为 true，初始值将在 useEffect 中解析（SSR 安全）。
+   *  如果为 false，初始值将在 useLayoutEffect 中解析（SSR 不安全）。
+   *  默认为 true。
    */
   getInitialValueInEffect?: boolean;
 }
@@ -41,10 +39,10 @@ interface UseOrientationReturnType {
 function useOrientation(options?: UseOrientationOptions): UseOrientationReturnType;
 ```
 
-## Exported types
+## 导出类型
 
-`UseOrientationOptions` and `UseOrientationReturnType` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseOrientationOptions` 和 `UseOrientationReturnType` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseOrientationOptions, UseOrientationReturnType } from '@react-ui/hooks';

@@ -7,29 +7,27 @@ export default Layout(MDX_DATA.GettingStartedSchedule);
 
 [![npm](https://img.shields.io/npm/dm/@react-ui/schedule)](https://www.npmjs.com/package/@react-ui/schedule)
 
-`@react-ui/schedule` package provides a set of components for building
-calendar scheduling interfaces – day, week, month, and year views
-with event display, drag-and-drop, and time slot interactions.
+`@react-ui/schedule` 包提供了一组用于构建日历调度界面的组件，包括日、周、月和年视图，
+支持事件展示、拖拽和时间槽交互。
 
-## Installation
+## 安装
 
 <InstallScript packages="@react-ui/schedule @react-ui/ui dayjs" />
 
-After installation, import package styles at the root of your application:
+安装完成后，在应用根目录导入包样式：
 
 ```tsx
 import '@react-ui/ui/styles.css';
 import '@react-ui/ui/styles.css';
-// ‼️ import schedule styles after core and dates package styles
+// ‼️ 在核心包和 dates 包样式之后导入 schedule 样式
 import '@react-ui/schedule/styles.css';
 ```
 
-## Do not forget to import styles
+## 不要忘记导入样式
 
-Followed the installation instructions above but something is not working
-(schedule components have no styles and look broken)?
-You've fallen into the trap of not importing schedule styles!
-To fix the issue, import schedule styles at the root of your application:
+按照上述说明安装后，某些功能仍然无法正常工作（schedule 组件没有样式且显示损坏）？
+你掉入了未导入 schedule 样式的陷阱！
+要修复此问题，请在应用根目录导入 schedule 样式：
 
 ```tsx
 import '@react-ui/schedule/styles.css';
@@ -37,6 +35,5 @@ import '@react-ui/schedule/styles.css';
 
 ## dayjs
 
-`@react-ui/schedule` components use [dayjs](https://day.js.org/) under the hood for date manipulations and formatting.
-dayjs is a required dependency – you cannot change it to another date library. If you want to use a different
-date library in your application, you will need to install it separately.
+`@react-ui/schedule` 组件在底层使用 [dayjs](https://day.js.org/) 进行日期操作和格式化。
+dayjs 是必需的依赖——你无法将其更改为其他日期库。如果你想在应用中使用不同的日期库，需要单独安装。

@@ -4,21 +4,20 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Skeleton);
 
-## Usage
+## 用法
 
-Use `Skeleton` to create a placeholder for loading content. `Skeleton` supports the following props:
+使用 `Skeleton` 为加载中的内容创建占位符。`Skeleton` 支持以下属性：
 
-- `height` – height – any valid CSS value
-- `width` – width - any valid CSS value
-- `radius` – key of `theme.radius` or any valid CSS value to set border-radius
-- `circle` – if true, width, height and border-radius will equal the value specified in the `height` prop
-- `animate` – true by default, controls animation
+- `height` – 高度，任何有效的 CSS 值
+- `width` – 宽度，任何有效的 CSS 值
+- `radius` – `theme.radius` 的键或任何有效的 CSS 值来设置 border-radius
+- `circle` – 如果为 true，width、height 和 border-radius 将等于 `height` 属性中指定的值
+- `animate` – 默认为 true，控制动画
 
 <Demo data={SkeletonDemos.configurator} />
 
-## With content
+## 带内容
 
-If you want to indicate the loading state of content that is already on the page, wrap it with Skeleton
-and control the loading overlay visibility with the `visible` prop:
+如果你想指示页面上已有内容的加载状态，请用 Skeleton 包裹它，并使用 `visible` 属性控制加载遮罩的可见性：
 
 <Demo data={SkeletonDemos.content} />

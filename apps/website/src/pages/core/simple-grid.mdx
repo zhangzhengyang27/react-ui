@@ -4,93 +4,91 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.SimpleGrid);
 
-## Usage
+## 用法
 
-`SimpleGrid` is a responsive grid system with equal-width columns.
-It uses CSS grid layout. If you need to set different widths for columns, use
-[Grid](/core/grid) component instead.
+`SimpleGrid` 是一个响应式网格系统，具有等宽列。
+它使用 CSS grid 布局。如果你需要为列设置不同的宽度，请改用
+[Grid](/core/grid) 组件。
 
 <Demo data={SimpleGridDemos.usage} />
 
-## spacing and verticalSpacing props
+## spacing 和 verticalSpacing 属性
 
-The `spacing` prop controls horizontal spacing between columns. By default, it is also used
-for vertical spacing between rows. If you want different vertical spacing, set the
-`verticalSpacing` prop explicitly:
+`spacing` 属性控制列之间的水平间距。默认情况下，它也用于
+行之间的垂直间距。如果你需要不同的垂直间距，请显式设置
+`verticalSpacing` 属性：
 
 ```tsx
 import { SimpleGrid } from '@react-ui/ui';
 
-// `spacing` is used for both horizontal and vertical spacing
+// `spacing` 同时用于水平和垂直间距
 const Spacing = () => <SimpleGrid spacing="xl" />;
 
-// `spacing` is used for horizontal spacing, `verticalSpacing` for vertical
+// `spacing` 用于水平间距，`verticalSpacing` 用于垂直间距
 const VerticalSpacing = () => (
   <SimpleGrid spacing="xl" verticalSpacing="lg" />
 );
 ```
 
-## Responsive props
+## 响应式属性
 
-`cols`, `spacing` and `verticalSpacing` props support object notation for responsive values,
-it works the same way as [style props](/styles/style-props): the object may have `base`, `xs`,
-`sm`, `md`, `lg` and `xl` key, and values from those keys will be applied according to current
-viewport width.
+`cols`、`spacing` 和 `verticalSpacing` 属性支持对象表示法来设置响应式值，
+其工作方式与 [样式属性](/styles/style-props) 相同：对象可以具有 `base`、`xs`、
+`sm`、`md`、`lg` 和 `xl` 键，这些键的值将根据当前视口宽度应用。
 
-In the following example, `cols={{ base: 1, sm: 2, lg: 5 }}` means:
+在以下示例中，`cols={{ base: 1, sm: 2, lg: 5 }}` 表示：
 
-- 1 column if viewport width is less than `sm` breakpoint
-- 2 columns if viewport width is between `sm` and `lg` breakpoints
-- 5 columns if viewport width is greater than `lg` breakpoint
+- 视口宽度小于 `sm` 断点时显示 1 列
+- 视口宽度在 `sm` 和 `lg` 断点之间时显示 2 列
+- 视口宽度大于 `lg` 断点时显示 5 列
 
-Same logic applies to `spacing` and `verticalSpacing` props.
+`spacing` 和 `verticalSpacing` 属性适用相同的逻辑。
 
 <Demo data={SimpleGridDemos.responsive} />
 
-## Container queries
+## 容器查询
 
-To use [container queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries)
-instead of media queries, set `type="container"`. With container queries, grid columns and spacing
-will be adjusted based on the container width, not the viewport width.
+要使用[容器查询](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries)
+替代媒体查询，请设置 `type="container"`。使用容器查询时，网格列和间距
+将根据容器宽度而不是视口宽度进行调整。
 
-Note that, when using container queries, `cols`, `spacing` and `verticalSpacing` props cannot
-reference `theme.breakpoints` values in keys. It is required to use exact px or em values.
+注意，使用容器查询时，`cols`、`spacing` 和 `verticalSpacing` 属性不能在键中引用
+`theme.breakpoints` 值。必须使用精确的 px 或 em 值。
 
-To see how the grid changes, resize the root element of the demo
-with the resize handle located at the bottom right corner of the demo:
+要查看网格如何变化，请调整示例根元素的大小，
+调整手柄位于示例右下角：
 
 <Demo data={SimpleGridDemos.container} />
 
-## Auto-fill columns
+## 自动填充列
 
-Set the `minColWidth` prop to use CSS Grid `auto-fill` to automatically adjust the number
-of columns based on available space and minimum column width. When `minColWidth` is set,
-the `cols` prop is ignored.
+设置 `minColWidth` 属性以使用 CSS Grid 的 `auto-fill` 根据可用空间和最小列宽自动调整列数。
+设置 `minColWidth` 后，`cols` 属性会被忽略。
 
 <Demo data={SimpleGridDemos.minColWidth} />
 
-## auto-fill vs auto-fit
+## auto-fill 与 auto-fit
 
-By default, `minColWidth` uses `auto-fill` behavior. You can change it to `auto-fit` with the
-`autoFlow` prop. The difference between the two:
+默认情况下，`minColWidth` 使用 `auto-fill` 行为。你可以使用 `autoFlow` 属性将其更改为 `auto-fit`。
+两者的区别：
 
-- `auto-fill` creates as many tracks as possible without overflowing the container, leaving empty tracks if items don't fill the row
-- `auto-fit` works the same way but collapses empty tracks, allowing items to stretch and fill the remaining space
+- `auto-fill` 创建尽可能多的轨道而不溢出容器，如果项目未填满行则留下空轨道
+- `auto-fit` 工作方式相同，但会折叠空轨道，允许项目拉伸并填充剩余空间
 
 <Demo data={SimpleGridDemos.autoFlow} />
 
-## Auto rows
+## 自动行高
 
-Set the `autoRows` prop to control the size of implicitly created grid rows.
-This is useful when you need all rows to have equal height or a minimum height.
+设置 `autoRows` 属性以控制隐式创建的网格行的大小。
+当你需要所有行具有相等高度或最小高度时，这很有用。
 
 <Demo data={SimpleGridDemos.autoRows} />
 
-## Browser support
+## 浏览器支持
 
-`SimpleGrid` uses [CSS Grid Layout](https://caniuse.com/css-grid), it is supported in all modern browsers.
-If you need to support older browsers, use [Grid](/core/grid) (flexbox based) component instead.
+`SimpleGrid` 使用 [CSS Grid Layout](https://caniuse.com/css-grid)，所有现代浏览器均支持。
+如果你需要支持旧版浏览器，请改用基于 flexbox 的 [Grid](/core/grid) 组件。
 
-When `type="container"` is set, `SimpleGrid` uses [container queries](https://caniuse.com/css-container-queries).
-Since February 2023, container queries are supported in all modern browsers. If you need to support older browsers,
-do not use container queries option.
+设置 `type="container"` 时，`SimpleGrid` 使用[容器查询](https://caniuse.com/css-container-queries)。
+自 2023 年 2 月起，容器查询已在所有现代浏览器中得到支持。如果你需要支持旧版浏览器，
+请不要使用容器查询选项。

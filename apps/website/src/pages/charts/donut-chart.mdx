@@ -4,89 +4,77 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.DonutChart);
 
-## Usage
+## 用法
 
-`DonutChart` is based on the [PieChart recharts component](https://recharts.org/en-US/api/PieChart):
+`DonutChart` 基于 [PieChart recharts 组件](https://recharts.org/en-US/api/PieChart)：
 
 <Demo data={DonutChartDemos.usage} />
 
-## Legend
+## 图例
 
-To display the legend, set the `withLegend` prop. The legend displays the name and color
-of each segment. Hover over a legend item to highlight the corresponding segment:
+要显示图例，设置 `withLegend` 属性。图例会展示每个分段的名称和颜色。悬停在图例项上可高亮对应分段：
 
 <Demo data={DonutChartDemos.legend} />
 
-You can pass props down to the recharts `Legend` component with the `legendProps` prop.
-For example, set `legendProps={{ verticalAlign: 'top' }}` to display the legend above the chart.
+你可以通过 `legendProps` 属性向 recharts 的 `Legend` 组件传递属性。例如，设置 `legendProps={{ verticalAlign: 'top' }}` 可将图例显示在图表上方。
 
-## Segments labels
+## 分段标签
 
-Set the `withLabels` prop to display labels next to each segment:
+设置 `withLabels` 属性以在每个分段旁显示标签：
 
 <Demo data={DonutChartDemos.withLabels} />
 
-## Size and thickness
+## 尺寸和粗细
 
-Set the `size` prop to control the width and height of the chart. Note that if the `withLabels` prop is set,
-the chart height is automatically increased by 80px to make room for labels. You can override
-this behavior by setting the `h` [style prop](/styles/style-props).
+设置 `size` 属性以控制图表的宽度和高度。注意，如果设置了 `withLabels` 属性，图表高度会自动增加 80px 以为标签留出空间。你可以通过 `h` [样式属性](/styles/style-props) 覆盖此行为。
 
 <Demo data={DonutChartDemos.size} />
 
-## Padding angle
+## 分段间隙
 
-Use the `paddingAngle` prop to control the space between segments:
+使用 `paddingAngle` 属性控制分段之间的间隙：
 
 <Demo data={DonutChartDemos.paddingAngle} />
 
-## Segment color
+## 分段颜色
 
-You can reference colors from [theme](/theming/theme-object) the same way as in
-other components, for example, `blue`, `red.5`, `orange.7`, etc. Any valid CSS
-color value is also accepted.
+你可以像其他组件一样从 [主题](/theming/theme-object) 中引用颜色，例如 `blue`、`red.5`、`orange.7` 等。任何有效的 CSS 颜色值也同样受支持。
 
 <Demo data={DonutChartDemos.color} />
 
-## Tooltip data source
+## 提示框数据源
 
-By default, the tooltip displays data for all segments when hovered over any segment.
-To display data only for the hovered segment, set `tooltipDataSource="segment"`:
+默认情况下，悬停在任意分段上时，提示框会显示所有分段的数据。要仅显示悬停分段的数据，设置 `tooltipDataSource="segment"`：
 
 <Demo data={DonutChartDemos.tooltipDataSource} />
 
-## Without tooltip
+## 无提示框
 
-To remove the tooltip, set `withTooltip={false}`:
+要移除提示框，设置 `withTooltip={false}`：
 
 <Demo data={DonutChartDemos.noTooltip} />
 
-## Chart label
+## 图表标签
 
-To display a label in the center of the chart, use the `chartLabel` prop.
-It accepts a string or a number:
+要在图表中心显示标签，使用 `chartLabel` 属性。它接受字符串或数字：
 
 <Demo data={DonutChartDemos.chartLabel} />
 
-## Start and end angle
+## 起始和结束角度
 
-Use the `startAngle` and `endAngle` props to control the start and end angle of the chart.
-For example, to display a half-circle chart, set `startAngle={180}` and `endAngle={0}`:
+使用 `startAngle` 和 `endAngle` 属性控制图表的起始和结束角度。例如，要展示半圆图表，设置 `startAngle={180}` 和 `endAngle={0}`：
 
 <Demo data={DonutChartDemos.angle} />
 
-Note that even when the `startAngle` and `endAngle` props are set, the chart still takes
-the same amount of space as if it were a full circle.
+请注意，即使设置了 `startAngle` 和 `endAngle` 属性，图表所占用的空间仍与完整圆形相同。
 
-## Segments stroke
+## 分段描边
 
-Use the `strokeWidth` prop to control the width of the stroke around each segment:
+使用 `strokeWidth` 属性控制每个分段周围描边的宽度：
 
 <Demo data={DonutChartDemos.strokeWidth} />
 
-To change the color of the stroke, use the `strokeColor` prop. You can reference colors from the [theme](/theming/theme-object) the same way as in
-other components, for example, `blue`, `red.5`, `orange.7`, etc. Any valid CSS
-color value is also accepted.
+要更改描边颜色，使用 `strokeColor` 属性。你可以像其他组件一样从 [主题](/theming/theme-object) 中引用颜色，例如 `blue`、`red.5`、`orange.7` 等。任何有效的 CSS 颜色值也同样受支持。
 
 ```tsx
 import { DonutChart } from '@react-ui/ui';
@@ -96,8 +84,6 @@ function Demo() {
 }
 ```
 
-By default, the segments stroke color is the same as the background color of the body element
-(`--mantine-color-body` CSS variable). If you want to change it depending on the color scheme,
-define a CSS variable and pass it to the `strokeColor` prop:
+默认情况下，分段描边颜色与 body 元素的背景色相同（`--mantine-color-body` CSS 变量）。如果你想根据颜色方案改变描边颜色，可以定义一个 CSS 变量并传递给 `strokeColor` 属性：
 
 <Demo data={DonutChartDemos.strokeColor} />

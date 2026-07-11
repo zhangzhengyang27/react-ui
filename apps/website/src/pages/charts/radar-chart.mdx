@@ -4,49 +4,47 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.RadarChart);
 
-## Usage
+## 用法
 
-`RadarChart` is based on the recharts [RadarChart](https://recharts.org/en-US/api/RadarChart) component:
+`RadarChart` 基于 recharts 的 [RadarChart](https://recharts.org/en-US/api/RadarChart) 组件：
 
 <Demo data={RadarChartDemos.usage} />
 
-## Multiple series
+## 多系列
 
-You can display multiple series on the same radar chart:
+你可以在同一个雷达图上显示多个系列：
 
 <Demo data={RadarChartDemos.multiple} />
 
-## Change color
+## 更改颜色
 
-You can reference colors from [theme](/theming/theme-object) the same way as in
-other components, for example, `blue`, `red.5`, `orange.7`, etc. Any valid CSS
-color value is also accepted.
+你可以像其他组件一样从 [主题](/theming/theme-object) 中引用颜色，例如 `blue`、`red.5`、`orange.7` 等。任何有效的 CSS 颜色值也同样受支持。
 
 <Demo data={RadarChartDemos.color} />
 
-## Hide/show chart parts
+## 隐藏/显示图表部分
 
 <Demo data={RadarChartDemos.parts} />
 
-## With tooltip and dots
+## 带提示框和圆点
 
 <Demo data={RadarChartDemos.tooltip} />
 
-## Recharts props
+## Recharts 属性
 
-To pass props down to the underlying recharts components, use the following props:
+要向底层 recharts 组件传递属性，请使用以下属性：
 
-- `radarChartProps` passes props to the [RadarChart](https://recharts.org/en-US/api/RadarChart) component
-- `polarGridProps` passes props to the [PolarGrid](https://recharts.org/en-US/api/PolarGrid) component
-- `polarAngleAxisProps` passes props to the [PolarAngleAxis](https://recharts.org/en-US/api/PolarAngleAxis) component
-- `polarRadiusAxisProps` passes props to the [PolarRadiusAxis](https://recharts.org/en-US/api/PolarRadiusAxis) component
+- `radarChartProps` 向 [RadarChart](https://recharts.org/en-US/api/RadarChart) 组件传递属性
+- `polarGridProps` 向 [PolarGrid](https://recharts.org/en-US/api/PolarGrid) 组件传递属性
+- `polarAngleAxisProps` 向 [PolarAngleAxis](https://recharts.org/en-US/api/PolarAngleAxis) 组件传递属性
+- `polarRadiusAxisProps` 向 [PolarRadiusAxis](https://recharts.org/en-US/api/PolarRadiusAxis) 组件传递属性
 
-Example of passing props down to the [PolarRadiusAxis](https://recharts.org/en-US/api/PolarRadiusAxis) component:
+向 [PolarRadiusAxis](https://recharts.org/en-US/api/PolarRadiusAxis) 组件传递属性的示例：
 
 <Demo data={RadarChartDemos.rechartsProps} />
 
-## Legend
+## 图例
 
-Set the `withLegend` prop to display the legend:
+设置 `withLegend` 属性以显示图例：
 
 <Demo data={RadarChartDemos.legend} />

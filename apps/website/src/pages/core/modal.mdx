@@ -4,112 +4,109 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Modal);
 
-## Usage
+## 用法
 
 <Demo data={ModalDemos.usage} />
 
-## Center modal vertically
+## 垂直居中
 
 <Demo data={ModalDemos.centered} />
 
-## Remove header
+## 移除头部
 
-To remove the header, set `withCloseButton={false}`:
+要移除头部，请设置 `withCloseButton={false}`：
 
 <Demo data={ModalDemos.header} />
 
-## Change size
+## 更改尺寸
 
-You can change the modal width by setting the `size` prop to a predefined size or any valid width, for example, `55%` or `50rem`.
-The `Modal` width cannot exceed `100vw`.
+你可以通过将 `size` 属性设置为预定义尺寸或任何有效宽度来更改模态框宽度，例如 `55%` 或 `50rem`。
+`Modal` 的宽度不能超过 `100vw`。
 
 <Demo data={ModalDemos.sizes} />
 
-## Size auto
+## 自动尺寸
 
-`Modal` with `size="auto"` will have width that fits its content:
+`size="auto"` 的 `Modal` 将根据其内容自适应宽度：
 
 <Demo data={ModalDemos.sizeAuto} />
 
-## Fullscreen
+## 全屏
 
-A fullscreen modal will take the entire screen. It is usually better to change the transition to `fade`
-when the `fullScreen` prop is set:
+全屏模态框将占据整个屏幕。设置 `fullScreen` 属性时，通常最好将过渡效果更改为 `fade`：
 
 <Demo data={ModalDemos.fullScreen} />
 
-To switch Modal to fullscreen on devices with small screens only, use the [use-media-query](/hooks/use-media-query/) hook.
-The `size` prop is ignored if the `fullScreen` prop is set:
+要仅在屏幕较小的设备上将 Modal 切换为全屏，请使用 [use-media-query](/hooks/use-media-query/) hook。
+如果设置了 `fullScreen` 属性，`size` 属性将被忽略：
 
 <Demo data={ModalDemos.fullScreenMobile} />
 
-## Customize overlay
+## 自定义遮罩
 
-`Modal` uses the [Overlay](/core/overlay/) component. You can set any props that [Overlay](/core/overlay/)
-supports with `overlayProps`:
+`Modal` 使用 [Overlay](/core/overlay/) 组件。你可以通过 `overlayProps` 设置 [Overlay](/core/overlay/)
+支持的任何属性：
 
 <Demo data={ModalDemos.overlay} />
 
-## Modal with scroll
+## 带滚动的模态框
 
 <Demo data={ModalDemos.overflow} />
 
-## Usage with ScrollArea
+## 与 ScrollArea 一起使用
 
 <Demo data={ModalDemos.scrollarea} />
 
-## Change offsets
+## 更改偏移
 
-Use `xOffset`/`yOffset` to configure the horizontal/vertical content offsets:
+使用 `xOffset`/`yOffset` 来配置水平/垂直内容偏移：
 
 <Demo data={ModalDemos.offset} />
 
-## Change transitions
+## 更改过渡
 
-`Modal` is built with the [Transition](/core/transition/) component. Use the `transitionProps`
-prop to customize any [Transition](/core/transition/) properties:
+`Modal` 使用 [Transition](/core/transition/) 组件构建。使用 `transitionProps`
+属性来自定义任何 [Transition](/core/transition/) 属性：
 
 <Demo data={ModalDemos.transitions} />
 
-## onExitTransitionEnd and onEnterTransitionEnd
+## onExitTransitionEnd 和 onEnterTransitionEnd
 
-The `onExitTransitionEnd` and `onEnterTransitionEnd` props can be used to run code after
-the exit/enter transition is finished. For example, this is useful when you want to clear
-data after the modal is closed:
+`onExitTransitionEnd` 和 `onEnterTransitionEnd` 属性可用于在退出/进入过渡完成后执行代码。
+例如，这在你想在模态框关闭后清除数据时非常有用：
 
 <Demo data={ModalDemos.transitionEnd} />
 
-## Initial focus
+## 初始焦点
 
-Modal uses [FocusTrap](/core/focus-trap/) to trap focus. Add the `data-autofocus`
-attribute to the element that should receive initial focus.
+Modal 使用 [FocusTrap](/core/focus-trap/) 来捕获焦点。将 `data-autofocus`
+属性添加到应接收初始焦点的元素上。
 
 <Demo data={ModalDemos.initialFocus} />
 
-If you do not want to focus any elements when the modal is opened, use the `FocusTrap.InitialFocus`
-component to create a visually hidden element that will receive initial focus:
+如果你不想在模态框打开时聚焦任何元素，请使用 `FocusTrap.InitialFocus`
+组件创建一个视觉上隐藏的元素来接收初始焦点：
 
 <Demo data={ModalDemos.initialFocusTrap} />
 
-If you do not add the `data-autofocus` attribute and do not use `FocusTrap.InitialFocus`,
-the modal will focus the first focusable element inside it, which is usually the close button.
+如果你既没有添加 `data-autofocus` 属性，也没有使用 `FocusTrap.InitialFocus`，
+模态框将聚焦其内部第一个可聚焦元素，通常是关闭按钮。
 
-## Control behavior
+## 控制行为
 
-The following props can be used to control `Modal` behavior.
-In most cases, it is not recommended to turn these features off –
-it will make the component less accessible.
+以下属性可用于控制 `Modal` 的行为。
+在大多数情况下，不建议关闭这些功能——
+这会使组件的可访问性降低。
 
-- `trapFocus` – determines whether focus should be trapped inside the modal
-- `closeOnEscape` – determines whether the modal should be closed when the `Escape` key is pressed
-- `closeOnClickOutside` – determines whether the modal should be closed when the user clicks on the overlay
-- `returnFocus` – determines whether focus should be returned to the element that was focused before the modal was opened
+- `trapFocus` – 决定是否应将焦点限制在模态框内部
+- `closeOnEscape` – 决定是否应在按下 `Escape` 键时关闭模态框
+- `closeOnClickOutside` – 决定是否应在用户点击遮罩时关闭模态框
+- `returnFocus` – 决定是否应在模态框打开前将焦点返回到之前聚焦的元素
 
-## react-remove-scroll settings
+## react-remove-scroll 设置
 
-`Modal` uses the [react-remove-scroll](https://github.com/theKashey/react-remove-scroll)
-package to lock scroll. You can pass props down to the `RemoveScroll` component
-with `removeScrollProps`:
+`Modal` 使用 [react-remove-scroll](https://github.com/theKashey/react-remove-scroll)
+包来锁定滚动。你可以通过 `removeScrollProps` 将属性传递给 `RemoveScroll` 组件：
 
 ```tsx
 import { Modal } from '@react-ui/ui';
@@ -125,67 +122,67 @@ function Demo() {
 }
 ```
 
-## Change close icon
+## 更改关闭图标
 
-Use `closeButtonProps` to customize the close button:
+使用 `closeButtonProps` 自定义关闭按钮：
 
 <Demo data={ModalDemos.closeIcon} />
 
-## Compound components
+## 复合组件
 
-You can use the following compound components to have full control over the `Modal` rendering:
+你可以使用以下复合组件来完全控制 `Modal` 的渲染：
 
-- `Modal.Root` – context provider
-- `Modal.Overlay` – render [Overlay](/core/overlay/)
-- `Modal.Content` – main modal element, should include all modal content
-- `Modal.Header` – sticky header, usually contains `Modal.Title` and `Modal.CloseButton`
-- `Modal.Title` – `h2` element, the `aria-labelledby` of `Modal.Content` is pointing to this element, usually rendered inside `Modal.Header`
-- `Modal.CloseButton` – close button, usually rendered inside `Modal.Header`
-- `Modal.Body` – a place for main content, the `aria-describedby` of `Modal.Content` is pointing to this element
+- `Modal.Root` – 上下文提供者
+- `Modal.Overlay` – 渲染 [Overlay](/core/overlay/)
+- `Modal.Content` – 模态框主元素，应包含所有模态框内容
+- `Modal.Header` – 粘性头部，通常包含 `Modal.Title` 和 `Modal.CloseButton`
+- `Modal.Title` – `h2` 元素，`Modal.Content` 的 `aria-labelledby` 指向此元素，通常渲染在 `Modal.Header` 内部
+- `Modal.CloseButton` – 关闭按钮，通常渲染在 `Modal.Header` 内部
+- `Modal.Body` – 主内容区域，`Modal.Content` 的 `aria-describedby` 指向此元素
 
 <Demo data={ModalDemos.composition} />
 
 ## Modal.Stack
 
-Use the `Modal.Stack` component to render multiple modals at the same time.
-`Modal.Stack` keeps track of opened modals, manages z-index values, focus trapping,
-and `closeOnEscape` behavior. `Modal.Stack` is designed to be used with the `useModalsStack` hook.
+使用 `Modal.Stack` 组件可同时渲染多个模态框。
+`Modal.Stack` 会跟踪打开的模态框，管理 z-index 值、焦点捕获
+以及 `closeOnEscape` 行为。`Modal.Stack` 设计为与 `useModalsStack` hook 一起使用。
 
-Differences from using multiple `Modal` components:
+与使用多个 `Modal` 组件的区别：
 
-- `Modal.Stack` manages z-index values – modals that are opened later will always have a higher z-index value regardless of their order in the DOM
-- `Modal.Stack` disables focus trap and `Escape` key handling for all modals except the one that is currently opened
-- Modals that are not currently opened are present in the DOM but are hidden with `opacity: 0` and `pointer-events: none`
-- Only one overlay is rendered at a time
+- `Modal.Stack` 管理 z-index 值 – 后打开的模态框始终具有较高的 z-index 值，无论其在 DOM 中的顺序如何
+- `Modal.Stack` 会禁用当前未打开模态框的焦点捕获和 `Escape` 键处理
+- 未打开的模态框仍存在于 DOM 中，但使用 `opacity: 0` 和 `pointer-events: none` 隐藏
+- 一次只渲染一个遮罩
 
 <Demo data={ModalDemos.stack} />
 
-Note that `Modal.Stack` can only be used with the `Modal` component. Components built with `Modal.Root`
-and other compound components are not compatible with `Modal.Stack`.
+注意，`Modal.Stack` 只能与 `Modal` 组件一起使用。使用 `Modal.Root`
+和其他复合组件构建的组件与 `Modal.Stack` 不兼容。
 
 ## useModalsStack hook
 
-The `useModalsStack` hook provides an easy way to control multiple modals at the same time.
-It accepts an array of unique modal IDs and returns an object with the following properties:
+`useModalsStack` hook 提供了一种同时控制多个模态框的简单方法。
+它接受一个唯一的模态框 ID 数组，并返回一个包含以下属性的对象：
 
 ```tsx
 interface UseModalsStackReturnType<T extends string> {
-  // Current opened state of each modal
+  // 每个模态框的当前打开状态
   state: Record<T, boolean>;
 
-  // Opens modal with the given id
+  // 打开指定 id 的模态框
   open: (id: T) => void;
 
-  // Closes modal with the given id
+  // 关闭指定 id 的模态框
   close: (id: T) => void;
 
-  // Toggles modal with the given id
+  // 切换指定 id 的模态框
   toggle: (id: T) => void;
 
-  // Closes all modals within the stack
+  // 关闭堆栈中的所有模态框
   closeAll: () => void;
 
-  // Returns props for modal with the given id
+  // 返回指定 id 模态框的属性
   register: (id: T) => {
     opened: boolean;
     onClose: () => void;
@@ -194,7 +191,7 @@ interface UseModalsStackReturnType<T extends string> {
 }
 ```
 
-Example of using `useModalsStack` with the `Modal` component:
+使用 `useModalsStack` 与 `Modal` 组件的示例：
 
 ```tsx
 import { Modal, useModalsStack } from '@react-ui/ui';
@@ -212,10 +209,10 @@ function Demo() {
 }
 ```
 
-## Fixed elements offset
+## 固定元素偏移
 
-The `Modal` component uses the [react-remove-scroll](https://github.com/theKashey/react-remove-scroll)
-package to lock scroll. To properly size these elements, add a `className` to them ([documentation](https://github.com/theKashey/react-remove-scroll#positionfixed-elements)):
+`Modal` 组件使用 [react-remove-scroll](https://github.com/theKashey/react-remove-scroll)
+包来锁定滚动。要正确调整这些元素的大小，请为它们添加 `className`（[文档](https://github.com/theKashey/react-remove-scroll#positionfixed-elements)）：
 
 ```tsx
 import { RemoveScroll } from '@react-ui/ui';
@@ -234,11 +231,11 @@ function Demo() {
 }
 ```
 
-## Accessibility
+## 可访问性
 
-The `Modal` component follows [WAI-ARIA recommendations](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog) on accessibility.
+`Modal` 组件遵循 [WAI-ARIA 建议](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog) 实现可访问性。
 
-Set the `title` prop to make the component accessible, which will add `aria-labelledby` to the content element:
+设置 `title` 属性以使组件可访问，这将为内容元素添加 `aria-labelledby`：
 
 ```tsx
 import { Modal } from '@react-ui/ui';
@@ -248,7 +245,7 @@ function Demo() {
 }
 ```
 
-To set the close button's `aria-label`, use `closeButtonProps`:
+要设置关闭按钮的 `aria-label`，请使用 `closeButtonProps`：
 
 ```tsx
 import { Modal } from '@react-ui/ui';

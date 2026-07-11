@@ -4,45 +4,45 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useListState);
 
-## Usage
+## 用法
 
-The `use-list-state` hook provides an API to work with list state:
+`use-list-state` Hook 提供了一组用于操作列表状态的 API：
 
 ```tsx
 import { useListState } from '@react-ui/hooks';
 
 const [values, handlers] = useListState([{ a: 1 }]);
 
-// add one or more items to the end of the list
+// 在列表末尾添加一个或多个项目
 const append = () => handlers.append({ a: 2 });
 // values -> [{ a: 1 }, { a: 2 }]
 
-// add one or more items to the start of the list
+// 在列表开头添加一个或多个项目
 const prepend = () => handlers.prepend({ a: 3 }, { a: 4 });
 // values -> [{ a: 3 }, { a: 4 }, { a: 1 }, { a: 2 }]
 
-// remove items at given positions
+// 移除指定位置的项目
 const remove = () => handlers.remove(0, 2);
 // values -> [{ a: 4 }, { a: 2 }]
 
-// insert one or more items at given position
+// 在指定位置插入一个或多个项目
 const insert = () => handlers.insert(1, { a: 5 });
 // values -> [{ a: 4 }, { a: 5 }, { a: 2 }]
 
-// apply function to each element of the list
+// 对列表中的每个元素应用函数
 const apply = () =>
   handlers.apply((item, index) => ({ a: item.a * index }));
 // values -> [{ a: 0 }, { a: 5 }, { a: 4 }]
 
-// move item from one position to another
+// 将项目从一个位置移动到另一个位置
 const reorder = () => handlers.reorder({ from: 2, to: 0 });
 // values -> [{ a: 4 }, { a: 0 }, { a: 5 }]
 
-// swap items positions
+// 交换项目位置
 const swap = () => handlers.swap({ from: 0, to: 2 });
 // values -> [{ a: 5 }, { a: 0 }, { a: 4 }]
 
-// apply function to each element that matches condition
+// 对符合条件的每个元素应用函数
 const applyWhere = () =>
   handlers.applyWhere(
     (item) => item.a > 0,
@@ -50,59 +50,57 @@ const applyWhere = () =>
   );
 // values -> [{ a: 7 }, { a: 0 }, { a: 6 }]
 
-// set entirely new state
+// 设置全新的状态
 const setState = () => handlers.setState([{ a: 6 }, { a: 7 }]);
 // values -> [{ a: 6 }, { a: 7 }]
 
-// set individual item at given position
+// 设置指定位置的单个项目
 const setItem = () => handlers.setItem(0, { a: 8 });
 // values -> [{ a: 8 }, { a: 7 }]
 
-// set item property at given position
+// 设置指定位置的项目属性
 const setItemProp = () => handlers.setItemProp(1, 'a', 'new-prop');
 // values -> [{ a: 8 }, { a: 'new-prop' }]
 
-// filter objects that have a = 'new-prop'
+// 过滤出 a = 'new-prop' 的对象
 const filter = () => handlers.filter((item) => item.a === 'new-prop');
 // values -> [{ a: 'new-prop' }]
 ```
 
-## API
+## API 参考
 
-`use-list-state` takes an array as a single argument and
-returns a list of values and handlers to change them in a tuple, similar to `useState` hook.
+`use-list-state` 接受一个数组作为唯一参数，并返回一个包含值列表和更改它们的处理函数的元组，类似于 `useState` Hook。
 
-The hook provides handlers to work with array data:
+该 Hook 提供了以下用于操作数组数据的处理函数：
 
-- `append` – add items to the end of the list
-- `prepend` – add items to the start of the list
-- `pop` – remove last item
-- `shift` – remove first item
-- `insert` – insert items at given index
-- `remove` – remove items at given indices
-- `reorder` – move item from one position to another
-- `swap` – swap items positions
-- `apply` – apply given function to all items in the list
-- `applyWhere` - apply given function to selective items using condition
-- `setItem` – replace item at given index
-- `setItemProp` – set item property at given index
-- `setState` – set list state with react action
-- `filter` - filter values with callback function
+- `append` – 在列表末尾添加项目
+- `prepend` – 在列表开头添加项目
+- `pop` – 移除最后一个项目
+- `shift` – 移除第一个项目
+- `insert` – 在给定索引处插入项目
+- `remove` – 移除给定索引处的项目
+- `reorder` – 将项目从一个位置移动到另一个位置
+- `swap` – 交换项目位置
+- `apply` – 对列表中的所有项目应用给定函数
+- `applyWhere` – 根据条件对选定项目应用给定函数
+- `setItem` – 替换给定索引处的项目
+- `setItemProp` – 设置给定索引处的项目属性
+- `setState` – 使用 React action 设置列表状态
+- `filter` – 使用回调函数过滤值
 
-## Indeterminate state checkbox example
+## 不确定状态复选框示例
 
 <Demo
   data={CheckboxDemos.indeterminate}
   demoProps={{ toggle: true }}
 />
 
-## UseListStateHandlers type
+## UseListStateHandlers 类型
 
-`@react-ui/hooks` package exports `UseListStateHandlers`. It is a generic type
-that contains all handlers from `useListState` hook. It can be used to type
-handlers in your components.
+`@react-ui/hooks` 包导出 `UseListStateHandlers`。它是一个泛型类型，
+包含 `useListState` Hook 中的所有处理函数。可用于为组件中的处理函数添加类型。
 
-`UseListStateHandlers` type:
+`UseListStateHandlers` 类型：
 
 ```tsx
 export interface UseListStateHandlers<T> {
@@ -130,8 +128,7 @@ export interface UseListStateHandlers<T> {
 }
 ```
 
-The type is useful when you want to pass `use-list-state` handlers to child components
-as a prop:
+当你想将 `use-list-state` 处理函数作为 prop 传递给子组件时，该类型非常有用：
 
 ```tsx
 import { UseListStateHandlers } from '@react-ui/hooks';
@@ -149,20 +146,20 @@ function Demo({ handlers }: Props) {
 }
 ```
 
-## Set item type
+## 设置项目类型
 
-By default, `use-list-state` will use type from `initialValues`.
-If you call the hook with an empty array, you must specify item type:
+默认情况下，`use-list-state` 会使用 `initialValues` 的类型。
+如果你用空数组调用该 Hook，则必须指定项目类型：
 
 ```tsx
 import { useListState } from '@react-ui/hooks';
 
-useListState(['hello']); // ok, item type is string
-useListState([]); // not ok, item type is any
-useListState<string>([]); // ok, item type is string
+useListState(['hello']); // ok，项目类型为 string
+useListState([]); // 不行，项目类型为 any
+useListState<string>([]); // ok，项目类型为 string
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 function useListState<T>(
@@ -170,10 +167,10 @@ function useListState<T>(
 ): [T[], UseListStateHandlers<T>];
 ```
 
-## Exported types
+## 导出类型
 
-`UseListStateHandlers` type is exported from `@react-ui/hooks` package,
-you can import it in your application:
+`UseListStateHandlers` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseListStateHandlers } from '@react-ui/hooks';

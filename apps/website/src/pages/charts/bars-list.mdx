@@ -4,16 +4,15 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.BarsList);
 
-## Usage
+## 用法
 
-`BarsList` component displays a list of bars with names and values.
-The only required prop is `data` – an array of objects with `name` and `value` properties.
+`BarsList` 组件展示一组带名称和数值的条形。唯一必需的属性是 `data`——一个包含 `name` 和 `value` 属性的对象数组。
 
 <Demo data={BarsListDemos.usage} />
 
-## Data format
+## 数据格式
 
-`BarsList` expects data in the following format:
+`BarsList` 期望的数据格式如下：
 
 ```tsx
 export const data = [
@@ -24,64 +23,62 @@ export const data = [
 ];
 ```
 
-## Value formatter
+## 数值格式化
 
-Use `valueFormatter` prop to format the value displayed next to the bar.
-The function receives the numeric value and must return a string.
+使用 `valueFormatter` 属性格式化条形旁显示的数值。该函数接收数值并返回字符串。
 
 <Demo data={BarsListDemos.valueFormatter} />
 
-## Labels
+## 标签
 
-Use `barsLabel` and `valueLabel` props to display column headers above the bars and values:
+使用 `barsLabel` 和 `valueLabel` 属性在条形和数值上方显示列标题：
 
 <Demo data={BarsListDemos.labels} />
 
-## Bar gap
+## 条形间距
 
-Control the spacing between bars with the `barGap` prop:
+使用 `barGap` 属性控制条形之间的间距：
 
 <Demo data={BarsListDemos.barGap} />
 
-## Minimum bar size
+## 最小条形尺寸
 
-Set the minimum bar width with the `minBarSize` prop:
+使用 `minBarSize` 属性设置条形的最小宽度：
 
 <Demo data={BarsListDemos.minBarSize} />
 
-## Bar height
+## 条形高度
 
-Control the height of bars with the `barHeight` prop:
+使用 `barHeight` 属性控制条形的高度：
 
 <Demo data={BarsListDemos.barHeight} />
 
-## Bar color
+## 条形颜色
 
-Use `barColor` and `barTextColor` props to set the default background and text colors for all bars:
+使用 `barColor` 和 `barTextColor` 属性为所有条形设置默认背景和文本颜色：
 
 <Demo data={BarsListDemos.barColor} />
 
-## Auto contrast
+## 自动对比度
 
-Set `autoContrast` prop to automatically adjust text color based on background color:
+设置 `autoContrast` 属性以根据背景色自动调整文本颜色：
 
 <Demo data={BarsListDemos.autoContrast} />
 
-## Custom colors
+## 自定义颜色
 
-Each bar can have its own color by setting the `color` property in the data:
+每个条形都可以通过数据中的 `color` 属性设置自己的颜色：
 
 <Demo data={BarsListDemos.customColors} />
 
-## Get bar props
+## 获取条形属性
 
-Use `getBarProps` to pass additional props to each bar element.
-For example, it can be used to add custom styling or event handlers:
+使用 `getBarProps` 为每个条形元素传递额外属性。例如，可用于添加自定义样式或事件处理函数：
 
 <Demo data={BarsListDemos.getBarProps} />
 
-## Custom bar rendering
+## 自定义条形渲染
 
-Use `renderBar` to completely customize how each bar is rendered:
+使用 `renderBar` 完全自定义每个条形的渲染方式：
 
 <Demo data={BarsListDemos.renderBar} />

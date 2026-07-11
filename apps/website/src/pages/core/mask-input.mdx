@@ -4,94 +4,83 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.MaskInput);
 
-## Usage
+## 用法
 
-`MaskInput` is a wrapper around [useMask](/hooks/use-mask) hook that provides all standard input
-props (label, description, error, etc.) and supports all mask options. The mask string defines
-the expected format using token characters (`9` for digits, `a` for letters, etc.).
+`MaskInput` 是 [useMask](/hooks/use-mask) Hook 的包装组件，提供所有标准输入属性（label、description、error 等）并支持所有 mask 选项。mask 字符串使用标记字符定义预期格式（`9` 表示数字，`a` 表示字母等）。
 
 <Demo data={MaskInputDemos.usage} />
 
-## Dynamic mask
+## 动态 mask
 
-Use the `modify` option to change the mask based on the current input value.
-This example switches between standard and American Express credit card formats:
+使用 `modify` 选项根据当前输入值更改 mask。此示例在标准信用卡格式和美国运通格式之间切换：
 
 <Demo data={MaskInputDemos.dynamic} />
 
-## Custom tokens
+## 自定义标记
 
-Override or extend the built-in token map with the `tokens` option:
+使用 `tokens` 选项覆盖或扩展内置标记映射：
 
 <Demo data={MaskInputDemos.customTokens} />
 
-## Regex array format
+## 正则数组格式
 
-For complex masks where built-in tokens are not enough, pass an array of
-string literals and `RegExp` objects:
+对于内置标记不够用的复杂 mask，请传入字符串字面量和 `RegExp` 对象数组：
 
 <Demo data={MaskInputDemos.regex} />
 
-## Transform
+## 转换
 
-Use the `transform` option to convert each character before validation.
-This example auto-uppercases input so the `A` token accepts lowercase letters:
+使用 `transform` 选项在验证前转换每个字符。此示例自动将输入转为大写，使 `A` 标记接受小写字母：
 
 <Demo data={MaskInputDemos.transform} />
 
-## Disabled state
+## 禁用状态
 
 <Demo data={MaskInputDemos.disabled} />
 
-## Error state
+## 错误状态
 
 <Demo data={MaskInputDemos.error} />
 
-## Success state
+## 成功状态
 
 <Demo data={MaskInputDemos.success} />
 
-## Reset value
+## 重置值
 
-`MaskInput` is uncontrolled internally – setting `value` from a parent will not clear it.
-Use the `resetRef` prop to get a function that clears the input value imperatively:
+`MaskInput` 内部是非受控的——从父级设置 `value` 不会清空它。使用 `resetRef` 属性获取一个函数，以命令式方式清空输入值：
 
 <Demo data={MaskInputDemos.resetRef} />
 
-## With use-form
+## 与 use-form 一起使用
 
-`MaskInput` is uncontrolled by design – it manages its own DOM value internally.
-To integrate with [use-form](/form/use-form), pass the initial value via `defaultValue`
-and use the `onChangeRaw` callback to write the raw (unmasked) value to form state.
-In uncontrolled form mode, pass `{ forceUpdate: false }` to `form.setFieldValue` so the
-input is not remounted on every keystroke:
+`MaskInput` 按设计是非受控的——它在内部管理自己的 DOM 值。要与 [use-form](/form/use-form) 集成，请通过 `defaultValue` 传入初始值，并使用 `onChangeRaw` 回调将原始（未 mask）值写入表单状态。在非受控表单模式下，向 `form.setFieldValue` 传入 `{ forceUpdate: false }`，以避免每次按键都重新挂载输入框：
 
 <Demo data={MaskInputDemos.withUseForm} />
 
-## Mask pattern syntax
+## Mask 模式语法
 
-The mask string defines the expected format. Each character is either a **token** (editable slot)
-or a **literal** (fixed character inserted automatically).
+mask 字符串定义预期格式。每个字符要么是**标记**（可编辑槽位），要么是**字面量**（自动插入的固定字符）。
 
-### Built-in tokens
+### 内置标记
 
-- `9` – any single digit (`[0-9]`)
-- `a` – any single letter (`[A-Za-z]`)
-- `A` – any uppercase letter (`[A-Z]`)
-- `*` – any alphanumeric character (`[A-Za-z0-9]`)
-- `#` – digit or sign (`[-+0-9]`)
+- `9` – 任意单个数字（`[0-9]`）
+- `a` – 任意单个字母（`[A-Za-z]`）
+- `A` – 任意大写字母（`[A-Z]`）
+- `*` – 任意字母数字字符（`[A-Za-z0-9]`）
+- `#` – 数字或符号（`[-+0-9]`）
 
-### Optional segments
+### 可选段
 
-Append `?` after the last required character to mark remaining slots as optional:
+在最后一个必需字符后附加 `?`，以将剩余槽位标记为可选：
 
 ```tsx
 <MaskInput mask="(999) 999-9999? x9999" /> // Extension is optional
 ```
 
-### Escaping
+### 转义
 
-Prefix a token character with `\` to treat it as a literal:
+在标记字符前加 `\` 将其视为字面量：
 
 ```tsx
 <MaskInput mask="\A999" /> // "A" is literal, not a token

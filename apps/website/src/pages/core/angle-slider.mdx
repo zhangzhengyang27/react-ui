@@ -4,15 +4,15 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.AngleSlider);
 
-## Usage
+## 用法
 
-Use the `AngleSlider` component to pick an angle value between 0 and 360:
+使用 `AngleSlider` 组件选择 0 到 360 之间的角度值：
 
 <Demo data={AngleSliderDemos.usage} />
 
-## Controlled
+## 受控模式
 
-The `AngleSlider` value is a number between 0 and 360.
+`AngleSlider` 的值是 0 到 360 之间的数字。
 
 ```tsx
 import { useState } from 'react';
@@ -24,17 +24,17 @@ function Demo() {
 }
 ```
 
-## AngleSlider with uncontrolled forms
+## AngleSlider 与非受控表单
 
-`AngleSlider` can be used with uncontrolled forms.
-Set the `name` attribute to include slider value in `FormData` object on form submission.
-To control initial value in uncontrolled forms, use `defaultValue` prop.
+`AngleSlider` 可用于非受控表单。
+设置 `name` 属性以在表单提交时将滑块值包含在 `FormData` 对象中。
+要在非受控表单中控制初始值，请使用 `defaultValue` 属性。
 
-Props for usage with uncontrolled forms:
-- `name` – name attribute passed to the hidden input
-- `hiddenInputProps` – additional props passed to the hidden input
+用于非受控表单的属性：
+- `name` – 传递给隐藏 input 的 name 属性
+- `hiddenInputProps` – 传递给隐藏 input 的附加属性
 
-Example of uncontrolled `AngleSlider` with `FormData`:
+非受控 `AngleSlider` 与 `FormData` 的示例：
 
 ```tsx
 import { AngleSlider } from '@react-ui/ui';
@@ -57,35 +57,35 @@ export function WithFormData() {
 
 ## formatLabel
 
-Use the `formatLabel` prop to change the angle label format.
-It accepts a function that takes the angle value and returns a React node:
+使用 `formatLabel` 属性更改角度标签格式。
+它接受一个函数，该函数接收角度值并返回一个 React 节点：
 
 <Demo data={AngleSliderDemos.formatLabel} />
 
-## Marks
+## 刻度
 
-Set the `marks` prop to display marks on the slider.
-A mark is an object with a value (required, number between 0 and 360) and label (optional, React node).
-To restrict selection to marks only, set the `restrictToMarks` prop:
+设置 `marks` 属性以在滑块上显示刻度。
+刻度是一个对象，包含值（必需，0 到 360 之间的数字）和标签（可选，React 节点）。
+要限制仅选择刻度值，请设置 `restrictToMarks` 属性：
 
 <Demo data={AngleSliderDemos.marks} />
 
 ## onChangeEnd
 
-The `onChangeEnd` callback fires when the user stops dragging the slider or changes its value with the keyboard.
-Use it as a debounced callback to prevent frequent updates.
+`onChangeEnd` 回调在用户停止拖动滑块或使用键盘更改其值时触发。
+可将其用作防抖回调以防止频繁更新。
 
 <Demo data={AngleSliderDemos.onChangeEnd} />
 
-## disabled
+## 禁用
 
-The `disabled` prop disables the component and prevents user interaction:
+`disabled` 属性禁用组件并阻止用户交互：
 
 <Demo data={AngleSliderDemos.disabled} />
 
-## Accessibility
+## 可访问性
 
-To make the component accessible for screen readers, set the `aria-label` prop:
+要使组件对屏幕阅读器可访问，请设置 `aria-label` 属性：
 
 ```tsx
 import { AngleSlider } from '@react-ui/ui';
@@ -95,22 +95,22 @@ function Demo() {
 }
 ```
 
-Keyboard interactions when the component is focused:
+组件聚焦时的键盘交互：
 
 <KeyboardEventsTable
   data={[
-    { key: 'ArrowDown', description: 'Decreases value by step' },
-    { key: 'ArrowLeft', description: 'Decreases value by step' },
-    { key: 'ArrowUp', description: 'Increases value by step' },
-    { key: 'ArrowRight', description: 'Increases value by step' },
-    { key: 'Home', description: 'Sets value to 0' },
-    { key: 'End', description: 'Sets value to 359' },
+    { key: 'ArrowDown', description: '按步长减小值' },
+    { key: 'ArrowLeft', description: '按步长减小值' },
+    { key: 'ArrowUp', description: '按步长增加值' },
+    { key: 'ArrowRight', description: '按步长增加值' },
+    { key: 'Home', description: '将值设置为 0' },
+    { key: 'End', description: '将值设置为 359' },
   ]}
 />
 
-## Based on use-radial-move
+## 基于 use-radial-move
 
-`AngleSlider` is based on the [use-radial-move](/hooks/use-radial-move) hook.
-You can build a custom radial slider using this hook if you need more control over the component's behavior.
+`AngleSlider` 基于 [use-radial-move](/hooks/use-radial-move) Hook。
+如果你需要对组件行为进行更多控制，可以使用此 Hook 构建自定义径向滑块。
 
 <Demo data={UseRadialMoveDemos.usage} />

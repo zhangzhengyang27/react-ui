@@ -4,43 +4,42 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useHotkeys);
 
-## Usage
+## 用法
 
-The `use-hotkeys` hook accepts an array of hotkeys and handler tuples as its first argument:
+`use-hotkeys` Hook 接受一个热键和处理函数元组数组作为其第一个参数：
 
-- `hotkey` - hotkey string, for example `ctrl+E`, `shift+alt+L`, `mod+S`
-- `handler` - event handler called when the given combination is pressed
-- `options` - object with extra options for the hotkey handler
+- `hotkey` - 热键字符串，例如 `ctrl+E`、`shift+alt+L`、`mod+S`
+- `handler` - 按下给定组合键时调用的事件处理函数
+- `options` - 热键处理函数的额外选项对象
 
 <Demo data={UseHotkeysDemos.index} />
 
-The second argument is a list of HTML tags on which hotkeys should be ignored.
-By default, hotkey events are ignored if the focus is in `input`, `textarea`, and `select` elements.
+第二个参数是应该忽略热键的 HTML 标签列表。
+默认情况下，如果焦点在 `input`、`textarea` 和 `select` 元素中，热键事件将被忽略。
 
 ```tsx
 import { useHotkeys } from '@react-ui/hooks';
 
 function Demo() {
-  // Ignore hotkey events only when focus is in input and textarea elements
+  // 仅在焦点位于 input 和 textarea 元素中时忽略热键事件
   useHotkeys(
     [['ctrl+K', () => console.log('Trigger search')]],
     ['INPUT', 'TEXTAREA']
   );
 
-  // Empty array – do not ignore hotkey events on any element
+  // 空数组 – 不忽略任何元素上的热键事件
   useHotkeys([['ctrl+K', () => console.log('Trigger search')]], []);
 }
 ```
 
-## Targeting elements
+## 目标元素
 
-The `use-hotkeys` hook can only work with the document element; you will need to create your own event listener
-if you need to support other elements. For this purpose, the `@react-ui/hooks` package exports a `getHotkeyHandler` function
-that should be used with `onKeyDown`:
+`use-hotkeys` Hook 只能与 document 元素一起工作；如果你需要支持其他元素，则需要创建自己的事件监听器。
+为此，`@react-ui/hooks` 包导出了一个 `getHotkeyHandler` 函数，应与 `onKeyDown` 一起使用：
 
 <Demo data={UseHotkeysDemos.usage} />
 
-With `getHotkeyHandler` you can also add events to any DOM node using `.addEventListener`:
+使用 `getHotkeyHandler`，你还可以使用 `.addEventListener` 将事件添加到任何 DOM 节点：
 
 ```tsx
 import { getHotkeyHandler } from '@react-ui/hooks';
@@ -54,18 +53,18 @@ document.body.addEventListener(
 );
 ```
 
-## Supported formats
+## 支持的格式
 
-- `mod+S` – detects `⌘+S` on macOS and `Ctrl+S` on Windows
-- `ctrl+shift+X` – handles multiple modifiers
-- `alt + shift + L` – you can use whitespace inside hotkey
-- `ArrowLeft` – you can use special keys using [this format](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values)
-- `shift + [plus]` – you can use `[plus]` to detect `+` key
-- `Digit1` and `Hotkey1` - you can use physical key assignments [defined on MDN](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_code_values).
+- `mod+S` – 在 macOS 上检测 `⌘+S`，在 Windows 上检测 `Ctrl+S`
+- `ctrl+shift+X` – 处理多个修饰键
+- `alt + shift + L` – 可以在热键中使用空白字符
+- `ArrowLeft` – 可以使用[此格式](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values)的特殊键
+- `shift + [plus]` – 可以使用 `[plus]` 检测 `+` 键
+- `Digit1` 和 `Hotkey1` – 可以使用 MDN 上[定义的物理键分配](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_code_values)。
 
-## Types
+## 类型
 
-The `@react-ui/hooks` package exports `HotkeyItemOptions` and `HotkeyItem` types:
+`@react-ui/hooks` 包导出 `HotkeyItemOptions` 和 `HotkeyItem` 类型：
 
 ```tsx
 interface HotkeyItemOptions {
@@ -80,9 +79,9 @@ type HotkeyItem = [
 ];
 ```
 
-`HotkeyItemOptions` provides the `usePhysicalKeys` option to force physical key assignment. This is useful for non-QWERTY keyboard layouts.
+`HotkeyItemOptions` 提供 `usePhysicalKeys` 选项以强制使用物理键分配。这对于非 QWERTY 键盘布局很有用。
 
-The `HotkeyItem` type can be used to create hotkey items outside of the `use-hotkeys` hook:
+`HotkeyItem` 类型可用于在 `use-hotkeys` Hook 之外创建热键项：
 
 ```tsx
 import { HotkeyItem, useHotkeys } from '@react-ui/hooks';
@@ -105,7 +104,7 @@ const hotkeys: HotkeyItem[] = [
 useHotkeys(hotkeys);
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 interface HotkeyItemOptions {
@@ -122,9 +121,9 @@ function useHotkeys(
 ): void;
 ```
 
-## Exported types
+## 导出类型
 
-The `HotkeyItemOptions` and `HotkeyItem` types are exported from `@react-ui/hooks`;
+`HotkeyItemOptions` 和 `HotkeyItem` 类型从 `@react-ui/hooks` 包导出：
 
 ```tsx
 import type { HotkeyItemOptions, HotkeyItem } from '@react-ui/hooks';

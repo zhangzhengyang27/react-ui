@@ -4,32 +4,32 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.HoverCard);
 
-## Usage
+## 用法
 
 <Demo data={HoverCardDemos.usage} />
 
-## Delays
+## 延迟
 
-Set open and close delays in ms with the `openDelay` and `closeDelay` props:
+使用 `openDelay` 和 `closeDelay` 属性设置打开和关闭延迟（毫秒）：
 
 <Demo data={HoverCardDemos.delay} />
 
-## HoverCard delay group
+## HoverCard 延迟组
 
-Use the `HoverCard.Group` component to sync open and close delays of multiple `HoverCard` components:
+使用 `HoverCard.Group` 组件同步多个 `HoverCard` 组件的打开和关闭延迟：
 
 <Demo data={HoverCardDemos.group} />
 
-## With interactive elements
+## 与交互元素一起使用
 
-`HoverCard` is displayed only when the mouse is over the target element or dropdown.
-You can use anchors and buttons within dropdowns, using inputs is not recommended:
+`HoverCard` 仅在鼠标位于目标元素或下拉菜单上时显示。
+你可以在下拉菜单中使用锚点和按钮，不建议使用输入框：
 
 <Demo data={HoverCardDemos.profile} />
 
 <TargetComponent component="HoverCard" />
 
-## Accessibility
+## 可访问性
 
-`HoverCard` is ignored by screen readers and cannot be activated with the keyboard. Use it to display only additional information
-that is not required to understand the context.
+`HoverCard` 会被屏幕阅读器忽略，且无法通过键盘激活。请仅用它显示
+理解上下文所不需要的附加信息。

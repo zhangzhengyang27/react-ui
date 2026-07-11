@@ -4,16 +4,16 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useDocumentVisibility);
 
-## Usage
+## 用法
 
-The `use-document-visibility` hook returns the current [document.visibilityState](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState)
-– it allows you to detect if the current tab is active:
+`use-document-visibility` Hook 返回当前的 [document.visibilityState](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState)
+——它允许你检测当前标签页是否处于活动状态：
 
 <Demo data={UseDocumentVisibilityDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
-// DocumentVisibilityState is 'visible' | 'hidden'
+// DocumentVisibilityState 是 'visible' | 'hidden'
 function useDocumentVisibility(): DocumentVisibilityState;
 ```

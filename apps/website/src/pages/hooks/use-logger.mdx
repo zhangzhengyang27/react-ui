@@ -4,14 +4,14 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useLogger);
 
-## Usage
+## 用法
 
-The `use-logger` hook logs given values to the console each time the component renders.
-Open DevTools to see state changes in the console:
+`use-logger` Hook 在组件每次渲染时将给定值记录到控制台。
+打开 DevTools 以在控制台中查看状态变化：
 
 <Demo data={UseLoggerDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 function useLogger(componentName: string, props: any[]): any;

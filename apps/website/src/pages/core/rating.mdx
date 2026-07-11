@@ -4,11 +4,11 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Rating);
 
-## Usage
+## 用法
 
 <Demo data={RatingDemos.configurator} />
 
-## Controlled
+## 受控模式
 
 ```tsx
 import { useState } from 'react';
@@ -20,13 +20,11 @@ function Demo() {
 }
 ```
 
-## Uncontrolled
+## 非受控模式
 
-`Rating` can be used with uncontrolled forms the same way as a native input element.
-Set the `name` attribute to include rating value in `FormData` object on form submission.
-To control the initial value in uncontrolled forms, use the `defaultValue` prop.
+`Rating` 可以像原生 input 元素一样用于非受控表单。设置 `name` 属性以在表单提交时将评分值包含在 `FormData` 对象中。要在非受控表单中控制初始值，请使用 `defaultValue` 属性。
 
-Example usage of uncontrolled `Rating` with `FormData`:
+非受控 `Rating` 与 `FormData` 的示例用法：
 
 ```tsx
 import { Rating } from '@react-ui/ui';
@@ -47,25 +45,24 @@ function Demo() {
 }
 ```
 
-## Read only
+## 只读
 
 <Demo data={RatingDemos.readOnly} />
 
-## Allow clear
+## 允许清除
 
-Set `allowClear` prop to allow users to reset the rating to 0 by clicking the same rating value again.
-This is useful when you want to give users the ability to undo their rating selection:
+设置 `allowClear` 属性允许用户通过再次点击相同的评分值将评分重置为 0。当你希望让用户能够撤销评分选择时，这很有用：
 
 <Demo data={RatingDemos.allowClear} />
 
-## Fractions
+## 分数
 
 <Demo data={RatingDemos.fractions} />
 
-## Custom symbol
+## 自定义符号
 
 <Demo data={RatingDemos.symbol} />
 
-## Symbols for each item
+## 每个项的符号
 
 <Demo data={RatingDemos.customSymbol} />

@@ -4,14 +4,14 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useThrottledCallback);
 
-## Usage
+## 用法
 
-The `useThrottledCallback` hook accepts a function and a wait time in milliseconds.
-It returns a throttled version of the function that will only be called at most once every `wait` milliseconds.
+`useThrottledCallback` Hook 接受一个函数和以毫秒为单位的等待时间。
+它返回该函数的节流版本，最多每 `wait` 毫秒调用一次。
 
 <Demo data={UseThrottledCallbackDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 function useThrottledCallback<T extends (...args: any[]) => any>(

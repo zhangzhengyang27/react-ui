@@ -4,125 +4,124 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.YearView);
 
-## Usage
+## 用法
 
-YearView displays all 12 months of a year in a grid layout. Event indicators are shown as colored dots in day cells.
+YearView 以网格布局显示一年的所有 12 个月。事件指示器显示为日期单元格中的彩色圆点。
 
 <Demo data={YearViewDemos.usage} />
 
-## With week numbers
+## 周数
 
-Set `withWeekNumbers` to display week numbers in the first column of each month.
+设置 `withWeekNumbers` 以在每个月的第一列显示周数。
 
 <Demo data={YearViewDemos.withWeekNumbers} />
 
-## Without week days
+## 隐藏工作日
 
-Set `withWeekDays={false}` to hide the weekday names row in each month.
+设置 `withWeekDays={false}` 以隐藏每个月的工作日名称行。
 
 <Demo data={YearViewDemos.withoutWeekDays} />
 
-## Hide outside days
+## 显示外部日期
 
-Set `withOutsideDays={false}` to hide days from adjacent months.
+设置 `withOutsideDays` 以显示相邻月份的日期。
 
 <Demo data={YearViewDemos.withOutsideDays} />
 
-## First day of week
+## 每周第一天
 
-Set `firstDayOfWeek` to control which day starts the week.
+设置 `firstDayOfWeek` 以控制每周从哪一天开始。
 
 <Demo data={YearViewDemos.firstDayOfWeek} />
 
-## Weekday format
+## 工作日格式
 
-Use `weekdayFormat` prop to customize weekday names.
+使用 `weekdayFormat` prop 自定义工作日名称。
 
 <Demo data={YearViewDemos.weekdayFormat} />
 
-## Highlight today
+## 高亮今天
 
-Set `highlightToday={false}` to disable highlighting the current day.
+设置 `highlightToday={false}` 以禁用当前日期的高亮。
 
 <Demo data={YearViewDemos.highlightToday} />
 
-## Without header
+## 无标题
 
-Set `withHeader={false}` to hide the header controls.
+设置 `withHeader={false}` 以隐藏标题控件。
 
 <Demo data={YearViewDemos.withoutHeader} />
 
-## Custom header
+## 自定义标题
 
-You can build a custom header using `ScheduleHeader` compound components combined with your own controls.
-Set `withHeader={false}` on the view and compose the header externally.
+你可以使用 `ScheduleHeader` 复合组件结合你自己的控件构建自定义标题。
+在视图上设置 `withHeader={false}` 并在外部组合标题。
 
 <Demo data={YearViewDemos.customHeader} />
 
-## Recurring events
+## 重复事件
 
-YearView automatically expands recurring events for the visible year.
-See [Recurring events guide](/schedule/recurring-events) for full documentation.
+YearView 会自动为可见年份展开重复事件。
+完整文档请参阅 [重复事件指南](/schedule/recurring-events)。
 
 <Demo data={YearViewDemos.recurringEvents} />
 
-## Static mode
+## 静态模式
 
-Set `mode="static"` to disable all interactions.
+设置 `mode="static"` 以禁用所有交互。
 
 <Demo data={YearViewDemos.staticMode} />
 
-## Localization
+## 本地化
 
-Use `locale` prop to set the dayjs locale for date formatting.
-Combine it with `labels` prop to translate all UI text.
+使用 `locale` prop 设置日期格式化的 dayjs locale。
+结合 `labels` prop 以翻译所有 UI 文本。
 
 <Demo data={YearViewDemos.localization} />
 
-## Responsive styles
+## 响应式样式
 
-YearView uses [@container queries](https://caniuse.com/css-container-queries) for responsive styles.
-The component automatically adjusts its layout based on the container width, hiding labels
-and reducing padding on smaller screens. Container queries are supported in all modern browsers.
+YearView 使用 [@container queries](https://caniuse.com/css-container-queries) 实现响应式样式。
+组件会根据容器宽度自动调整布局，在小屏幕上隐藏标签并减少内边距。所有现代浏览器都支持容器查询。
 
-## Accessibility
+## 无障碍
 
-### Focus management
+### 焦点管理
 
-In the YearView component, focus is managed to provide an efficient keyboard navigation experience:
+在 YearView 组件中，焦点管理旨在提供高效的键盘导航体验：
 
-- Only the first day of each month is included in the tab order (has `tabIndex={0}`)
-- All other days within a month have `tabIndex={-1}` and can only be reached via arrow key navigation
-- Outside days (days from adjacent months displayed in the current month view) are not focusable
-- Disabled days are skipped during keyboard navigation
+- 每个月只有第一天包含在 tab 顺序中（`tabIndex={0}`）
+- 每个月内的所有其他日期的 `tabIndex={-1}`，只能通过方向键导航到达
+- 当前月份视图中显示的相邻月份日期不可聚焦
+- 禁用日期在键盘导航中会被跳过
 
-This approach reduces the number of tab stops when navigating through the calendar, making it faster for keyboard users to move between months while still allowing full access to all days via arrow keys.
+这种方法减少了在日历中导航时的 tab 停靠点数量，使键盘用户能够更快地在月份之间移动，同时仍然允许通过方向键完整访问所有日期。
 
-### Keyboard interactions
+### 键盘交互
 
-Note that the following events will only trigger if focus is on a day control.
+请注意，以下事件仅在焦点位于日期控件上时触发。
 
 <KeyboardEventsTable
   data={[
     {
       key: 'ArrowRight',
-      description: 'Focuses next non-disabled day',
+      description: '聚焦下一个非禁用日期',
     },
     {
       key: 'ArrowLeft',
-      description: 'Focuses previous non-disabled day',
+      description: '聚焦上一个非禁用日期',
     },
     {
       key: 'ArrowDown',
-      description: 'Focuses same day in the next week (moves to next month if at end of month)',
+      description: '聚焦下周的同一天（如果在月末则移动到下个月）',
     },
     {
       key: 'ArrowUp',
-      description: 'Focuses same day in the previous week (moves to previous month if at start)',
+      description: '聚焦上周的同一天（如果在月初则移动到上个月）',
     },
   ]}
 />
 
-### Day labels
+### 日期标签
 
-Each day button has an `aria-label` attribute with the full date in the format "Month Day, Year" (e.g., "November 15, 2025"). This provides screen reader users with complete date information.
+每个日期按钮都有一个 `aria-label` 属性，格式为 "Month Day, Year"（例如 "November 15, 2025"）。这为屏幕阅读器用户提供了完整的日期信息。

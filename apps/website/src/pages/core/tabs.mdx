@@ -4,13 +4,13 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Tabs);
 
-## Usage
+## 用法
 
 <Demo data={TabsDemos.usage} />
 
-## Controlled Tabs
+## 受控 Tabs
 
-To control the Tabs state, use `value` and `onChange` props:
+要控制 Tabs 的状态，请使用 `value` 和 `onChange` 属性：
 
 ```tsx
 import { useState } from 'react';
@@ -33,9 +33,9 @@ function Demo() {
 }
 ```
 
-## Uncontrolled Tabs
+## 非受控 Tabs
 
-If you do not need to subscribe to Tabs state changes, use `defaultValue`:
+如果你不需要订阅 Tabs 的状态变化，请使用 `defaultValue`：
 
 ```tsx
 import { Tabs } from '@react-ui/ui';
@@ -55,69 +55,69 @@ function Demo() {
 }
 ```
 
-## Change colors
+## 更改颜色
 
-To change the colors of all tabs, set `color` on the `Tabs` component; to change the color of an individual tab,
-set `color` on `Tabs.Tab`.
+要更改所有标签页的颜色，请在 `Tabs` 组件上设置 `color`；要更改单个标签页的颜色，
+请在 `Tabs.Tab` 上设置 `color`。
 
 <Demo data={TabsDemos.colors} />
 
-## Tabs position
+## 标签页位置
 
 <Demo data={TabsDemos.position} />
 
-To display a tab on the opposite side, set `margin-left: auto` with the `ml="auto"` prop or with `className`:
+要在相对侧显示标签页，请使用 `ml="auto"` 属性或 `className` 设置 `margin-left: auto`：
 
 <Demo data={TabsDemos.pull} />
 
-## Inverted tabs
+## 反转标签页
 
-To make tabs inverted, place `Tabs.Panel` components before `Tabs.List` and add the `inverted` prop to the `Tabs` component:
+要将标签页反转，请将 `Tabs.Panel` 组件放在 `Tabs.List` 之前，并向 `Tabs` 组件添加 `inverted` 属性：
 
 <Demo data={TabsDemos.inverted} />
 
-## Vertical tabs placement
+## 垂直方向标签页位置
 
-To change the placement of `Tabs.List` in vertical orientation, set the `placement` prop:
+要更改垂直方向下 `Tabs.List` 的位置，请设置 `placement` 属性：
 
 <Demo data={TabsDemos.placement} />
 
-## Custom variants
+## 自定义变体
 
-Example of custom variant with [FloatingIndicator](/core/floating-indicator):
+使用 [FloatingIndicator](/core/floating-indicator) 的自定义变体示例：
 
 <Demo data={FloatingIndicatorDemos.tabs} />
 
-## Disabled tabs
+## 禁用标签页
 
-Set the `disabled` prop on the `Tabs.Tab` component to disable a tab.
-Disabled tabs cannot be activated with the mouse or keyboard, and they will be skipped when the user navigates with arrow keys:
+在 `Tabs.Tab` 组件上设置 `disabled` 属性以禁用某个标签页。
+禁用的标签页无法通过鼠标或键盘激活，并且在使用方向键导航时会被跳过：
 
 <Demo data={TabsDemos.disabled} />
 
-## Activation mode
+## 激活模式
 
-By default, tabs are activated when the user presses arrow keys or Home/End keys.
-To disable that, set `activateTabWithKeyboard={false}` on the `Tabs` component:
+默认情况下，用户按方向键或 Home/End 键时会激活标签页。
+要禁用此行为，请在 `Tabs` 组件上设置 `activateTabWithKeyboard={false}`：
 
 <Demo data={TabsDemos.keyboardActivation} />
 
-## Tab deactivation
+## 标签页取消激活
 
-By default, the active tab cannot be deactivated. To allow that, set `allowTabDeactivation` on the `Tabs` component:
+默认情况下，当前激活的标签页无法取消激活。要允许取消激活，请在 `Tabs` 组件上设置 `allowTabDeactivation`：
 
 <Demo data={TabsDemos.deactivate} />
 
-## Unmount inactive tabs
+## 卸载非活动标签页
 
-By default, inactive `Tabs.Panel` will stay mounted; to unmount inactive tabs, set `keepMounted={false}` on Tabs.
-This is useful when you want to render components that impact performance inside `Tabs.Panel`. Note that
-components that are rendered inside `Tabs.Panel` will reset their state on each mount (tab change).
+默认情况下，非活动的 `Tabs.Panel` 会保持挂载；要卸载非活动标签页，请在 Tabs 上设置 `keepMounted={false}`。
+当你希望在 `Tabs.Panel` 内部渲染影响性能的组件时，这很有用。注意，
+渲染在 `Tabs.Panel` 内部的组件会在每次挂载（标签页切换）时重置其状态。
 
 ```tsx
 import { Tabs } from '@react-ui/ui';
 
-// Second tab panel will be mounted only when the user activates the second tab
+// 第二个标签页面板仅在用户激活第二个标签页时才会挂载
 function Demo() {
   return (
     <Tabs keepMounted={false} defaultValue="first">
@@ -133,7 +133,7 @@ function Demo() {
 }
 ```
 
-## Get tab control ref
+## 获取标签页控件 ref
 
 ```tsx
 import { useRef } from 'react';
@@ -156,11 +156,10 @@ function Demo() {
 }
 ```
 
-## Tab as a link
+## 作为链接的标签页
 
-You can render `Tabs.Tab` as an `a` element by using the `renderRoot` prop. This gives you
-native link behavior: right-click to open in a new tab, middle-click, and `href` for
-crawlers and accessibility.
+你可以使用 `renderRoot` 属性将 `Tabs.Tab` 渲染为 `a` 元素。这为你提供
+原生链接行为：右键在新标签页中打开、中键点击，以及为爬虫和可访问性提供 `href`。
 
 ```tsx
 import { Tabs } from '@react-ui/ui';
@@ -193,7 +192,7 @@ function Demo() {
 }
 ```
 
-You can also use the `component` prop to render tabs as links:
+你也可以使用 `component` 属性将标签页渲染为链接：
 
 ```tsx
 import { Tabs } from '@react-ui/ui';
@@ -214,10 +213,10 @@ function Demo() {
 }
 ```
 
-## Tab as a link with Next.js
+## 与 Next.js 一起作为链接使用
 
-Use the `renderRoot` prop to render `Tabs.Tab` as a Next.js `Link` component. The `renderRoot` prop
-is required instead of `component` because Next.js `Link` is a generic component:
+使用 `renderRoot` 属性将 `Tabs.Tab` 渲染为 Next.js 的 `Link` 组件。需要使用 `renderRoot` 属性
+而不是 `component`，因为 Next.js 的 `Link` 是泛型组件：
 
 ```tsx
 import Link from 'next/link';
@@ -248,9 +247,9 @@ function Demo() {
 }
 ```
 
-## Tab as a link with React Router
+## 与 React Router 一起作为链接使用
 
-Use the `renderRoot` prop to render `Tabs.Tab` as a React Router `NavLink` or `Link` component:
+使用 `renderRoot` 属性将 `Tabs.Tab` 渲染为 React Router 的 `NavLink` 或 `Link` 组件：
 
 ```tsx
 import {
@@ -260,7 +259,7 @@ import {
 } from 'react-router-dom';
 import { Tabs } from '@react-ui/ui';
 
-// Route: <Route path="/tabs/:tabValue" element={<Demo />} />
+// 路由：<Route path="/tabs/:tabValue" element={<Demo />} />
 
 function Demo() {
   const location = useLocation();
@@ -290,7 +289,7 @@ function Demo() {
 }
 ```
 
-## Usage with react-router
+## 与 react-router 一起使用
 
 ```tsx
 <Route path="/tabs/:tabValue" element={<Demo />} />
@@ -318,10 +317,10 @@ function Demo() {
 }
 ```
 
-## Usage with Next.js Pages Router
+## 与 Next.js Pages Router 一起使用
 
 ```tsx
-// For file /tabs/[activeTab].tsx
+// 对应文件 /tabs/[activeTab].tsx
 import { useRouter } from 'next/router';
 import { Tabs } from '@react-ui/ui';
 
@@ -342,16 +341,16 @@ function Demo() {
 }
 ```
 
-## Usage with Next.js App Router
+## 与 Next.js App Router 一起使用
 
-In the App Router, get the current tab value from the pathname with the `usePathname`
-hook and change tabs with the router returned by `useRouter`. Both hooks are imported
-from `next/navigation`. Note that components that use these hooks must be
-[Client Components](https://nextjs.org/docs/app/building-your-application/rendering/client-components)
-(add the `'use client'` directive at the top of the file).
+在 App Router 中，使用 `usePathname` Hook 从路径名获取当前标签页值，
+并使用 `useRouter` 返回的路由器切换标签页。两个 Hook 都从 `next/navigation` 导入。
+注意，使用这些 Hook 的组件必须是
+[客户端组件](https://nextjs.org/docs/app/building-your-application/rendering/client-components)
+（在文件顶部添加 `'use client'` 指令）。
 
 ```tsx
-// For file /tabs/[activeTab]/page.tsx
+// 对应文件 /tabs/[activeTab]/page.tsx
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
@@ -380,32 +379,32 @@ function Demo() {
 
 <Demo data={TabsDemos.stylesApi} />
 
-Example of Styles API usage to customize tab styles:
+使用 Styles API 自定义标签页样式的示例：
 
 <Demo data={TabsDemos.customize} />
 
-## Example with Scroller component
+## 与 Scroller 组件搭配使用
 
-Use [Scroller](/core/scroller) component to make the tabs list scrollable when there are too many tabs to fit in the available space:
+当标签页过多无法容纳在可用空间中时，使用 [Scroller](/core/scroller) 组件使标签页列表可滚动：
 
 <Demo data={TabsDemos.scroller} />
 
-## Accessibility
+## 可访问性
 
-The Tabs component follows [WAI-ARIA recommendations](https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html) on accessibility.
+Tabs 组件遵循关于可访问性的 [WAI-ARIA 建议](https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html)。
 
-### Tabs as links
+### 作为链接的标签页
 
-When `Tabs.Tab` is rendered as a link (`<a>` tag), the `role="tab"` attribute overrides
-the implicit link role. Screen readers will announce the element as a "tab", not a "link".
-This is the expected behavior per the WAI-ARIA specification.
+当 `Tabs.Tab` 渲染为链接（`<a>` 标签）时，`role="tab"` 属性会覆盖
+隐式链接角色。屏幕阅读器会将该元素宣布为“标签页”而非“链接”。
+这是 WAI-ARIA 规范所期望的行为。
 
-When using tabs as navigation links without `Tabs.Panel` components, the `aria-controls` attribute
-on each tab references a panel element that does not exist in the DOM. This is a minor
-accessibility consideration – most screen readers handle this gracefully.
+当将标签页用作导航链接而不使用 `Tabs.Panel` 组件时，每个标签页上的 `aria-controls` 属性
+会引用一个不存在于 DOM 中的面板元素。这是一个较小的
+可访问性考虑因素——大多数屏幕阅读器都能优雅地处理这种情况。
 
-If you use `Tabs.Tab` without text content, for example, only with an icon, then set `aria-label`
-or use the [VisuallyHidden](/core/visually-hidden) component:
+如果你使用的 `Tabs.Tab` 没有文本内容，例如只有图标，请设置 `aria-label`
+或使用 [VisuallyHidden](/core/visually-hidden) 组件：
 
 ```tsx
 import { CoinIcon } from '@phosphor-icons/react';
@@ -415,17 +414,17 @@ function Demo() {
   return (
     <Tabs defaultValue="chat">
       <Tabs.List>
-        {/* aria-label is not required, tab is labelled by children */}
+        {/* 不需要 aria-label，标签页由子元素标记 */}
         <Tabs.Tab value="chat">Chat</Tabs.Tab>
 
-        {/* aria-label is required, tab is not labelled by children */}
+        {/* 需要 aria-label，标签页没有子元素标记 */}
         <Tabs.Tab
           value="money"
           aria-label="Get money"
           leftSection={<CoinIcon size={14} />}
         />
 
-        {/* You can use VisuallyHidden instead of aria-label */}
+        {/* 你可以使用 VisuallyHidden 替代 aria-label */}
         <Tabs.Tab value="money" leftSection={<CoinIcon size={14} />}>
           <VisuallyHidden>Get money</VisuallyHidden>
         </Tabs.Tab>
@@ -435,7 +434,7 @@ function Demo() {
 }
 ```
 
-To set the tabs list label, set `aria-label` on the `Tabs.List` component; it will be announced by screen reader:
+要设置标签页列表的标签，请在 `Tabs.List` 组件上设置 `aria-label`；它会被屏幕阅读器朗读：
 
 ```tsx
 import { Tabs } from '@react-ui/ui';
@@ -443,7 +442,7 @@ import { Tabs } from '@react-ui/ui';
 function Demo() {
   return (
     <Tabs defaultValue="recent">
-      {/* Tabs.List aria-label will be announced when tab is focused for the first time */}
+      {/* Tabs.List 的 aria-label 会在标签页首次获得焦点时朗读 */}
       <Tabs.List aria-label="Chats">
         <Tabs.Tab value="recent">Most recent</Tabs.Tab>
         <Tabs.Tab value="recent">Unanswered</Tabs.Tab>
@@ -454,35 +453,35 @@ function Demo() {
 }
 ```
 
-## Keyboard interactions
+## 键盘交互
 
 <KeyboardEventsTable
   data={[
     {
       key: 'ArrowRight',
       description:
-        'Focuses and activates next tab that is not disabled',
+        '聚焦并激活下一个未禁用的标签页',
       condition: 'orientation="horizontal"',
     },
     {
       key: 'ArrowLeft',
       description:
-        'Focuses and activates previous tab that is not disabled',
+        '聚焦并激活上一个未禁用的标签页',
       condition: 'orientation="horizontal"',
     },
     {
       key: 'ArrowDown',
       description:
-        'Focuses and activates next tab that is not disabled',
+        '聚焦并激活下一个未禁用的标签页',
       condition: 'orientation="vertical"',
     },
     {
       key: 'ArrowUp',
       description:
-        'Focuses and activates previous tab that is not disabled',
+        '聚焦并激活上一个未禁用的标签页',
       condition: 'orientation="vertical"',
     },
-    { key: 'Home', description: 'Focuses and activates first tab' },
-    { key: 'End', description: 'Focuses and activates last tab' },
+    { key: 'Home', description: '聚焦并激活第一个标签页' },
+    { key: 'End', description: '聚焦并激活最后一个标签页' },
   ]}
 />

@@ -4,11 +4,9 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.ColorSchemes);
 
-# Color schemes
+# 配色方案
 
-[MantineProvider](/theming/mantine-provider/) manages the color scheme context in your application.
-You can configure the default color scheme value with the `defaultColorScheme` prop; possible values are `light`,
-`dark`, and `auto` (system color scheme is used). The default value is `light`.
+[MantineProvider](/theming/mantine-provider/) 管理应用中的配色方案上下文。你可以使用 `defaultColorScheme` 属性配置默认配色方案值；可选值为 `light`、`dark` 和 `auto`（使用系统配色方案）。默认值为 `light`。
 
 ```tsx
 import { MantineProvider } from '@react-ui/ui';
@@ -22,15 +20,13 @@ function Demo() {
 }
 ```
 
-## data-ui-color-scheme attribute
+## data-ui-color-scheme 属性
 
-When [MantineProvider](/theming/mantine-provider/) is mounted, it sets a `data-ui-color-scheme`
-attribute on the `<html />` element to the value that the user has previously selected or to the value of the `defaultColorScheme` prop.
-The `data-ui-color-scheme` attribute is used in all component styles to determine which colors each component should use.
+当 [MantineProvider](/theming/mantine-provider/) 挂载时，它会在 `<html />` 元素上设置一个 `data-ui-color-scheme` 属性，值为用户之前选择的值或 `defaultColorScheme` 属性的值。`data-ui-color-scheme` 属性用于所有组件样式中，以确定每个组件应使用哪些颜色。
 
 ## use-mantine-color-scheme hook
 
-The `useMantineColorScheme` hook can be used to get and set the current color scheme value:
+`useMantineColorScheme` hook 可用于获取和设置当前配色方案值：
 
 ```tsx
 function useMantineColorScheme(): {
@@ -52,8 +48,7 @@ function useMantineColorScheme(): {
 
 ## use-computed-color-scheme hook
 
-`useComputedColorScheme` returns a computed color scheme value—it returns either `light` or `dark`.
-It can be used to implement color scheme toggle logic:
+`useComputedColorScheme` 返回计算后的配色方案值——它返回 `light` 或 `dark`。它可用于实现配色方案切换逻辑：
 
 ```tsx
 import {
@@ -62,33 +57,30 @@ import {
 } from '@react-ui/ui';
 
 function Demo() {
-  // -> colorScheme is 'auto' | 'light' | 'dark'
+  // -> colorScheme 是 'auto' | 'light' | 'dark'
   const { colorScheme, setColorScheme } = useMantineColorScheme();
 
-  // -> computedColorScheme is 'light' | 'dark', argument is the default value
+  // -> computedColorScheme 是 'light' | 'dark'，参数是默认值
   const computedColorScheme = useComputedColorScheme('light');
 
-  // Incorrect color scheme toggle implementation
-  // If colorScheme is 'auto', then it is not possible to
-  // change color scheme correctly in all cases:
-  // 'auto' can mean both light and dark
+  // 错误的配色方案切换实现
+  // 如果 colorScheme 是 'auto'，则无法在所有情况下正确更改配色方案：
+  // 'auto' 可能表示 light 也可能表示 dark
   const toggleColorScheme = () => {
     setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
   };
 
-  // Correct color scheme toggle implementation
-  // computedColorScheme is always either 'light' or 'dark'
+  // 正确的配色方案切换实现
+  // computedColorScheme 始终为 'light' 或 'dark'
   const toggleColorScheme = () => {
     setColorScheme(computedColorScheme === 'dark' ? 'light' : 'dark');
   };
 }
 ```
 
-## Transitions during color scheme change
+## 配色方案切换时的过渡动画
 
-By default, transitions on all elements are disabled when the color scheme changes to avoid
-inconsistent animations. To enable transitions during color scheme changes, set the `keepTransitions: true`
-option on the `useMantineColorScheme` hook:
+默认情况下，在配色方案更改时会禁用所有元素上的过渡动画，以避免不一致的动画效果。要在配色方案更改期间启用过渡动画，请在 `useMantineColorScheme` hook 上设置 `keepTransitions: true` 选项：
 
 ```tsx
 import { useMantineColorScheme } from '@react-ui/ui';
@@ -100,35 +92,23 @@ function Demo() {
 }
 ```
 
-## Color scheme value caveats
+## 配色方案值的注意事项
 
-By default, the color scheme value is stored in local storage, and its value is saved in state
-before the component is mounted to avoid a flash of inaccurate color scheme. This means that the
-color scheme value can be different on the client and server, as the server does not have access
-to local storage and always uses the default value.
+默认情况下，配色方案值存储在 local storage 中，其值会在组件挂载之前保存到 state 中，以避免出现不准确的配色方案闪烁。这意味着配色方案值在客户端和服务器上可能不同，因为服务器无法访问 local storage，并且始终使用默认值。
 
-If you have server-side rendering in your application (for example, if you use [Next.js](/guides/next) or [React Router](/guides/react-router)), then you cannot use the `colorScheme`
-value in your application to avoid hydration issues. Instead, you can use the `dark` and `light`
-mixins from [postcss-preset-mantine](/styles/postcss-preset) to generate styles that will
-hide elements based on the color scheme value:
+如果你的应用中有服务端渲染（例如，如果你使用 [Next.js](/guides/next) 或 [React Router](/guides/react-router)），那么你不能在应用中使用 `colorScheme` 值以避免 hydration 问题。相反，你可以使用 [postcss-preset-mantine](/styles/postcss-preset) 中的 `dark` 和 `light` mixins 来生成根据配色方案值隐藏元素的样式：
 
 <Demo data={ThemingDemos.colorSchemeControl} />
 
-> **colorScheme for client-only applications**
+> **纯客户端应用的 colorScheme**
 >
-> You can safely use the `colorScheme` value in client-only applications (for example, Vite or create-react-app applications).
-> In this case, there is no hydration, and thus no hydration error can occur.
+> 你可以在纯客户端应用中安全地使用 `colorScheme` 值（例如 Vite 或 create-react-app 应用）。在这种情况下，没有 hydration，因此不会发生 hydration 错误。
 
 ## ColorSchemeScript
 
-The `ColorSchemeScript` component renders a script tag that sets the `data-ui-color-scheme` attribute
-on the `<html />` element to the user's selected value or to the `defaultColorScheme` prop value before
-hydration. It is used to avoid a flash of inaccurate color scheme in server-side rendered applications,
-for example [Next.js](/guides/next) or [React Router](/guides/react-router). Follow the framework-specific guides
-to learn where to render the `ColorSchemeScript` component.
+`ColorSchemeScript` 组件会渲染一个 script 标签，在 hydration 之前将 `<html />` 元素上的 `data-ui-color-scheme` 属性设置为用户选择的值或 `defaultColorScheme` 属性的值。它用于避免服务端渲染应用中出现不准确的配色方案闪烁，例如 [Next.js](/guides/next) 或 [React Router](/guides/react-router)。请遵循特定框架的指南以了解在哪里渲染 `ColorSchemeScript` 组件。
 
-You can add any additional props to the `<script />` tag generated by the `ColorSchemeScript` component,
-for example, you can add a [nonce](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) attribute:
+你可以向 `ColorSchemeScript` 组件生成的 `<script />` 标签添加任何额外的属性，例如，你可以添加一个 [nonce](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) 属性：
 
 ```tsx
 import { ColorSchemeScript } from '@react-ui/ui';
@@ -143,10 +123,9 @@ function Demo() {
 }
 ```
 
-## Auto color scheme
+## 自动配色方案
 
-Set `defaultColorScheme="auto"` on `MantineProvider` and `ColorSchemeScript` to use the system color scheme.
-In this case, the color scheme value will be controlled by the user's OS:
+在 `MantineProvider` 和 `ColorSchemeScript` 上设置 `defaultColorScheme="auto"` 以使用系统配色方案。在这种情况下，配色方案值将由用户的操作系统控制：
 
 ```tsx
 import { ColorSchemeScript, MantineProvider } from '@react-ui/ui';
@@ -163,12 +142,11 @@ function Demo() {
 }
 ```
 
-## Color scheme manager
+## 配色方案管理器
 
-By default, the color scheme value is stored in local storage, but you can implement your own
-color scheme manager to store the value in any other external storage.
+默认情况下，配色方案值存储在 local storage 中，但你可以实现自己的配色方案管理器，将值存储在任何其他外部存储中。
 
-A color scheme manager must have the following methods:
+配色方案管理器必须具有以下方法：
 
 ```tsx
 interface MantineColorSchemeManager {
@@ -191,8 +169,7 @@ interface MantineColorSchemeManager {
 }
 ```
 
-Usually, it's better to wrap the color scheme manager in a creator function to provide a way to
-configure it. Default local storage-based color scheme manager example:
+通常，最好将配色方案管理器包装在一个创建函数中，以提供配置方式。默认的基于 local storage 的配色方案管理器示例：
 
 ```tsx
 import {
@@ -264,7 +241,7 @@ export function localStorageColorSchemeManager({
 }
 ```
 
-Then the custom color scheme manager can be passed to [MantineProvider](/theming/mantine-provider):
+然后可以将自定义配色方案管理器传递给 [MantineProvider](/theming/mantine-provider)：
 
 ```tsx
 import { MantineProvider } from '@react-ui/ui';
@@ -283,11 +260,9 @@ function Demo() {
 }
 ```
 
-## Default color scheme
+## 默认配色方案
 
-The default color scheme value is used when the user has not selected any color scheme yet.
-It is required to be set both on [MantineProvider](/theming/mantine-provider/) and
-`ColorSchemeScript`. If `defaultColorScheme` is not set, then `light` is used.
+当用户尚未选择任何配色方案时，将使用默认配色方案值。它必须同时设置在 [MantineProvider](/theming/mantine-provider/) 和 `ColorSchemeScript` 上。如果未设置 `defaultColorScheme`，则使用 `light`。
 
 ```tsx
 import { ColorSchemeScript, MantineProvider } from '@react-ui/ui';
@@ -304,12 +279,9 @@ function Demo() {
 }
 ```
 
-## Force color scheme
+## 强制配色方案
 
-You can force the color scheme value to be either `light` or `dark` with `forceColorScheme` prop.
-It is required to be set both on [MantineProvider](/theming/mantine-provider/) and
-`ColorSchemeScript`. If `forceColorScheme` is set, then `defaultColorScheme` and `colorSchemeManager` are ignored.
-When `forceColorScheme` is set, it's not possible to change the color scheme value with the `setColorScheme` function.
+你可以使用 `forceColorScheme` 属性将配色方案值强制为 `light` 或 `dark`。它必须同时设置在 [MantineProvider](/theming/mantine-provider/) 和 `ColorSchemeScript` 上。如果设置了 `forceColorScheme`，则 `defaultColorScheme` 和 `colorSchemeManager` 将被忽略。当设置了 `forceColorScheme` 时，无法使用 `setColorScheme` 函数更改配色方案值。
 
 ```tsx
 import { ColorSchemeScript, MantineProvider } from '@react-ui/ui';
@@ -326,19 +298,17 @@ function Demo() {
 }
 ```
 
-## lightHidden and darkHidden props
+## lightHidden 和 darkHidden 属性
 
-All ReactUI components support `lightHidden` and `darkHidden` props that can be used to hide
-a component in a specific color scheme:
+所有 ReactUI 组件都支持 `lightHidden` 和 `darkHidden` 属性，可用于在特定配色方案下隐藏组件：
 
 <Demo data={StylesDemos.lightDarkHidden} />
 
-## With disabled JavaScript
+## 禁用 JavaScript 的情况
 
-If you need to support users with disabled JavaScript, you need to set the `data-ui-color-scheme`
-attribute on the `<html />` element manually.
+如果你需要支持禁用 JavaScript 的用户，你需要手动在 `<html />` 元素上设置 `data-ui-color-scheme` 属性。
 
-Example with Next.js app router that supports disabled JavaScript:
+支持禁用 JavaScript 的 Next.js app router 示例：
 
 ```tsx
 import '@react-ui/ui/styles.css';

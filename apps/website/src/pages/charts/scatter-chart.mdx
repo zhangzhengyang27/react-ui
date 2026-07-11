@@ -4,62 +4,51 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.ScatterChart);
 
-## Usage
+## 用法
 
 <Demo data={ScatterChartDemos.usage} />
 
-## Multiple series
+## 多系列
 
 <Demo data={ScatterChartDemos.multipleSeries} />
 
-## Legend
+## 图例
 
-To display the chart legend, set the `withLegend` prop. When one of the items in the legend
-is hovered, the corresponding data series is highlighted in the chart.
+要显示图表图例，设置 `withLegend` 属性。当悬停在图例中的某一项时，图表中对应的数据系列会高亮显示。
 
 <Demo data={ScatterChartDemos.legend} />
 
-## Legend position
+## 图例位置
 
-You can pass props down to the recharts [Legend](https://recharts.org/en-US/api/Legend)
-component with the `legendProps` prop. For example, setting `legendProps={{ verticalAlign: 'bottom', height: 50 }}`
-will render the legend at the bottom of the chart and set its height to 50px.
+你可以通过 `legendProps` 属性向 recharts 的 [Legend](https://recharts.org/en-US/api/Legend) 组件传递属性。例如，设置 `legendProps={{ verticalAlign: 'bottom', height: 50 }}` 会将图例渲染在图表底部，并设置其高度为 50px。
 
 <Demo data={ScatterChartDemos.legendPosition} />
 
-## X and Y axis props
+## X 轴和 Y 轴属性
 
-Use `xAxisProps` and `yAxisProps` to pass props down to the recharts [XAxis](https://recharts.org/en-US/api/XAxis)
-and [YAxis](https://recharts.org/en-US/api/YAxis) components. For example, these props
-can be used to change the orientation of the axis:
+使用 `xAxisProps` 和 `yAxisProps` 向 recharts 的 [XAxis](https://recharts.org/en-US/api/XAxis) 和 [YAxis](https://recharts.org/en-US/api/YAxis) 组件传递属性。例如，可以使用这些属性来更改坐标轴方向：
 
 <Demo data={ScatterChartDemos.axisProps} />
 
-## Value formatter
+## 数值格式化
 
-To format values in the tooltip and axis ticks, use the `valueFormat` prop. It accepts
-a function that takes a number value as an argument and returns a formatted value or an
-object with `x` and `y` keys to format x and y values separately:
+要格式化提示框和坐标轴刻度中的数值，使用 `valueFormat` 属性。它接受一个函数，该函数接收数值参数并返回格式化后的值，或返回一个包含 `x` 和 `y` 键的对象以分别格式化 x 和 y 值：
 
 <Demo data={ScatterChartDemos.valueFormatter} />
 
-## Point labels
+## 数据点标签
 
-Set the `pointLabels` prop to `x` or `y` to display labels on data points for the
-corresponding axis:
+将 `pointLabels` 属性设置为 `x` 或 `y`，以在对应坐标轴的数据点上显示标签：
 
 <Demo data={ScatterChartDemos.pointLabels} />
 
-## Grid and text colors
+## 网格和文本颜色
 
-Use `--chart-grid-color` and `--chart-text-color` to change colors of
-grid lines and text within the chart. With [CSS modules](/styles/css-modules/), you can change colors
-depending on color scheme:
+使用 `--chart-grid-color` 和 `--chart-text-color` 来更改网格线和图表内文本的颜色。配合 [CSS 模块](/styles/css-modules/)，你可以根据颜色方案改变颜色：
 
 <Demo data={ScatterChartDemos.gridColor} />
 
-If your application has only one color scheme, you can use the `gridColor` and `textColor`
-props instead of CSS variables:
+如果你的应用只使用一种颜色方案，可以直接使用 `gridColor` 和 `textColor` 属性，而不必使用 CSS 变量：
 
 ```tsx
 import { ScatterChart } from '@react-ui/ui';
@@ -78,57 +67,50 @@ function Demo() {
 }
 ```
 
-## Stroke dash array
+## 虚线数组
 
-Set the `strokeDasharray` prop to control the stroke dash array of the grid and cursor
-lines. The value represents the lengths of alternating dashes and gaps. For example,
-`strokeDasharray="10 5"` will render a dashed line with 10px dashes and 5px gaps.
+设置 `strokeDasharray` 属性以控制网格线和光标线的虚线样式。该值表示交替的虚线和间隙长度。例如，`strokeDasharray="10 5"` 会渲染出 10px 虚线和 5px 间隙的虚线。
 
 <Demo data={ScatterChartDemos.strokeDasharray} />
 
-## Units
+## 单位
 
-Set the `unit` prop to render a unit label next to the axis ticks and tooltip values:
+设置 `unit` 属性，在坐标轴刻度和提示框数值旁渲染单位标签：
 
 <Demo data={ScatterChartDemos.units} />
 
-## Tooltip labels
+## 提示框标签
 
-To customize labels displayed in the tooltip, use the `labels` prop:
+要自定义提示框中显示的标签，使用 `labels` 属性：
 
 <Demo data={ScatterChartDemos.labels} />
 
-## Custom tooltip
+## 自定义提示框
 
-Use `tooltipProps.content` to pass a custom tooltip renderer to the recharts [Tooltip](https://recharts.org/en-US/api/Tooltip)
-component:
+使用 `tooltipProps.content` 向 recharts 的 [Tooltip](https://recharts.org/en-US/api/Tooltip) 组件传入自定义提示框渲染器：
 
 <Demo data={ScatterChartDemos.customTooltip} />
 
-## Remove tooltip
+## 移除提示框
 
-To remove the tooltip, set `withTooltip={false}`. This also removes the cursor line
-and disables interactions with the chart.
+要移除提示框，设置 `withTooltip={false}`。这同时也会移除光标线，并禁用图表的交互。
 
 <Demo data={ScatterChartDemos.noTooltip} />
 
-## Tooltip animation
+## 提示框动画
 
-By default, tooltip animation is disabled. To enable it, set the `tooltipAnimationDuration`
-prop to a number of milliseconds to animate the tooltip position change.
+默认情况下，提示框动画处于禁用状态。要启用，请将 `tooltipAnimationDuration` 属性设置为动画持续毫秒数，以动画方式改变提示框位置。
 
 <Demo data={ScatterChartDemos.tooltipAnimation} />
 
-## Customize dots
+## 自定义圆点
 
-You can use any shape as a dot by passing props to the recharts [Scatter](https://recharts.org/en-US/api/Scatter)
-component:
+你可以通过向 recharts 的 [Scatter](https://recharts.org/en-US/api/Scatter) 组件传递属性，使用任意形状作为圆点：
 
 <Demo data={ScatterChartDemos.dotSize} />
 
-## Reference lines
+## 参考线
 
-Use the `referenceLines` prop to render reference lines. Reference lines are always
-rendered behind the chart.
+使用 `referenceLines` 属性渲染参考线。参考线始终渲染在图表后方。
 
 <Demo data={ScatterChartDemos.referenceLines} />

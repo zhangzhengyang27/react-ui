@@ -3,45 +3,42 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Storybook);
 
-# Setup ReactUI in Storybook
+# 在 Storybook 中配置 ReactUI
 
-Note that this guide covers only Storybook 10+ integration. If you're using an older version of Storybook,
-it won't work for you.
+注意，本指南仅涵盖 Storybook 10+ 的集成。如果你使用的是旧版本 Storybook，则不适用。
 
-## Add Storybook to your application
+## 将 Storybook 添加到你的应用
 
-If you already have Storybook in your application, you can skip this step.
+如果你的应用中已经有 Storybook，可以跳过这一步。
 
-Follow the [Storybook getting started](https://storybook.js.org/docs/react/get-started/install/) guide
-to add Storybook to your application:
+按照 [Storybook 入门](https://storybook.js.org/docs/react/get-started/install/) 指南将 Storybook 添加到你的应用中：
 
 ```bash
 npx storybook@latest init
 ```
 
-## Configure addons
+## 配置插件
 
-Install `@storybook/addon-themes` Storybook addon:
+安装 `@storybook/addon-themes` 插件：
 
 <InstallScript packages="@storybook/addon-themes" dev />
 
-Add addons to `.storybook/main.ts`:
+在 `.storybook/main.ts` 中添加插件：
 
 ```tsx
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  // ... other config properties
+  // ... 其他配置项
   addons: ['@storybook/addon-themes'],
 };
 
 export default config;
 ```
 
-## Theme object
+## 主题对象
 
-To share the [theme object](/theming/theme-object) between your application and Storybook, create a
-`src/theme.ts` (or any other path in your application) file with your theme override:
+要在应用和 Storybook 之间共享 [theme 对象](/theming/theme-object)，请创建一个 `src/theme.ts`（或应用中的其他路径）文件来覆盖主题：
 
 ```tsx
 // src/theme.ts
@@ -49,14 +46,14 @@ import { createTheme } from '@react-ui/ui';
 
 export const theme = createTheme({
   fontFamily: 'serif',
-  // ... other theme override properties
+  // ... 其他主题覆盖属性
 });
 ```
 
-Then you'll be able to use the same theme both in your application and Storybook:
+然后你可以在应用和 Storybook 中使用相同的主题：
 
 ```tsx
-// In your application
+// 在你的应用中
 
 import { MantineProvider } from '@react-ui/ui';
 import { theme } from './theme';
@@ -66,14 +63,13 @@ function App() {
 }
 ```
 
-## Storybook preview
+## Storybook 预览
 
-If the `.storybook/preview.tsx` file doesn't exist, create it and add
-the following content:
+如果 `.storybook/preview.tsx` 文件不存在，请创建它并添加以下内容：
 
 ```tsx
-// Import styles of packages that you've installed.
-// All packages except `@react-ui/hooks` require styles imports
+// 导入你已安装的包样式
+// 除 @react-ui/hooks 外，所有包都需要导入样式
 import '@react-ui/ui/styles.css';
 
 import { ColorSchemeScript, MantineProvider } from '@react-ui/ui';
@@ -116,7 +112,7 @@ export const decorators = [
 ];
 ```
 
-All set! Start Storybook:
+全部完成！启动 Storybook：
 
 ```bash
 npm run storybook

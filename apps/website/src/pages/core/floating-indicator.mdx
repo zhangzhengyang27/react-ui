@@ -4,29 +4,28 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.FloatingIndicator);
 
-## Usage
+## 用法
 
-`FloatingIndicator` is designed to highlight the active element in a group.
-It can be used to create custom segmented controls, tabs and other similar components.
+`FloatingIndicator` 用于高亮显示一组元素中的活动元素。
+它可用于创建自定义分段控件、选项卡和其他类似组件。
 
-`FloatingIndicator` renders an element over the `target` element. To calculate the position, it is
-required to pass a `parent` element. **The parent element must have `position: relative` CSS property** –
-this is essential for correct positioning. The component returns `null` and renders nothing if either
-`target` or `parent` is not provided.
+`FloatingIndicator` 在 `target` 元素上方渲染一个元素。为了计算位置，需要
+传递一个 `parent` 元素。**父元素必须具有 `position: relative` CSS 属性**——
+这对正确定位至关重要。如果未提供 `target` 或 `parent`，组件将返回 `null` 且不渲染任何内容。
 
-By default, `FloatingIndicator` does not have any visible styles. You can use the `className` prop
-or [Styles API](/styles/styles-api) to apply styles. Note that the indicator's `transform`, `width`,
-and `height` styles are set directly via JavaScript to enable smooth position transitions – these
-cannot be overridden via the Styles API.
+默认情况下，`FloatingIndicator` 没有任何可见样式。你可以使用 `className` 属性
+或 [Styles API](/styles/styles-api) 来应用样式。请注意，indicator 的 `transform`、`width`
+和 `height` 样式直接通过 JavaScript 设置以实现平滑的位置过渡——这些
+无法通过 Styles API 覆盖。
 
 <Demo data={FloatingIndicatorDemos.segmented} />
 
-## Multiple rows
+## 多行
 
-`FloatingIndicator` can be used to highlight the active element in a group with multiple rows:
+`FloatingIndicator` 可用于高亮显示多行组中的活动元素：
 
 <Demo data={FloatingIndicatorDemos.direction} />
 
-## Example: Tabs
+## 示例：Tabs
 
 <Demo data={FloatingIndicatorDemos.tabs} />

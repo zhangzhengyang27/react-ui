@@ -4,16 +4,16 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useIntersection);
 
-## Usage
+## 用法
 
-The `use-intersection` hook returns information about the intersection
-of a given element with its scroll container or body element using the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API):
+`use-intersection` Hook 使用 [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+返回给定元素与其滚动容器或 body 元素的交叉信息：
 
 <Demo data={UseIntersectionDemos.usage} />
 
-## API
+## API 参考
 
-The hook accepts `IntersectionObserver`'s options as its only optional argument:
+该 Hook 接受 `IntersectionObserver` 的选项作为其唯一的可选参数：
 
 ```tsx
 import { useIntersection } from '@react-ui/hooks';
@@ -25,10 +25,10 @@ useIntersection({
 });
 ```
 
-The hook returns a `ref` function that should be passed to the observed element, and the latest entry, as returned by the `IntersectionObserver`'s callback.
-See the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) documentation to learn everything about the options.
+该 Hook 返回一个应传递给被观察元素的 `ref` 函数，以及由 `IntersectionObserver` 回调返回的最新 entry。
+请参阅 [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) 文档以了解所有选项。
 
-On the first render (as well as during SSR), or when no element is being observed, the entry is `null`.
+在第一次渲染（以及 SSR 期间）或未观察任何元素时，entry 为 `null`。
 
 ```tsx
 import { Paper } from '@react-ui/ui';
@@ -39,17 +39,17 @@ function Demo() {
 
   return (
     <>
-      {/* With regular element: */}
+      {/* 普通元素： */}
       <div ref={ref} />
 
-      {/* With ReactUI component: */}
+      {/* ReactUI 组件： */}
       <Paper ref={ref} />
     </>
   );
 }
 ```
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseIntersectionReturnValue<T> {
@@ -62,10 +62,10 @@ function useIntersection<T extends HTMLElement = any>(
 ): UseIntersectionReturnValue<T>
 ```
 
-## Exported types
+## 导出类型
 
-`UseIntersectionReturnValue` type is exported from `@react-ui/hooks` package,
-you can import it in your application:
+`UseIntersectionReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseIntersectionReturnValue } from '@react-ui/hooks';

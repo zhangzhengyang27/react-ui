@@ -4,53 +4,53 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Marquee);
 
-## Usage
+## 用法
 
-`Marquee` component creates a continuous scrolling animation for its children.
-It is commonly used for displaying logos, testimonials, or any repeating content.
+`Marquee` 组件为其子元素创建连续滚动动画。
+它常用于展示 logo、用户评价或任何重复内容。
 
 <Demo data={MarqueeDemos.usage} />
 
-## Pause on hover
+## 悬停暂停
 
-Set `pauseOnHover` prop to pause the animation when the user hovers over the component:
+设置 `pauseOnHover` 属性，当用户悬停在组件上时暂停动画：
 
 <Demo data={MarqueeDemos.pauseOnHover} />
 
-## Vertical orientation
+## 垂直方向
 
-Set `orientation="vertical"` to scroll content vertically. Note that you need to set
-a fixed height on the container for vertical scrolling:
+设置 `orientation="vertical"` 以垂直滚动内容。注意，你需要为容器设置
+固定高度才能垂直滚动：
 
 <Demo data={MarqueeDemos.vertical} />
 
-## Multiple rows
+## 多行
 
-You can combine multiple `Marquee` components with different directions to create
-more complex layouts:
+你可以组合多个不同方向的 `Marquee` 组件来创建
+更复杂的布局：
 
 <Demo data={MarqueeDemos.multipleRows} />
 
-## Fade edges
+## 边缘淡出
 
-By default, `Marquee` displays gradient fade on edges to create a smooth transition effect.
-You can customize the fade using the following props:
+默认情况下，`Marquee` 在边缘显示渐变淡出以创建平滑过渡效果。
+你可以使用以下属性自定义淡出效果：
 
-- `fadeEdges` – enables/disables fade gradient (default: `true`)
-- `fadeEdgeColor` – color of the fade gradient (default: `var(--mantine-color-body)`)
-- `fadeEdgeSize` – size of the fade area (default: `5%`)
+- `fadeEdges`——启用/禁用淡出渐变（默认：`true`）
+- `fadeEdgeColor`——淡出渐变的颜色（默认：`var(--mantine-color-body)`）
+- `fadeEdgeSize`——淡出区域的大小（默认：`5%`）
 
 <Demo data={MarqueeDemos.fadeEdges} />
 
-## Customization
+## 自定义
 
-Use the following props to customize the marquee behavior:
+使用以下属性自定义 marquee 行为：
 
-- `reverse` – reverses animation direction
-- `pauseOnHover` – pauses animation on hover
-- `orientation` – `horizontal` (default) or `vertical` scroll direction
-- `repeat` – number of times children are repeated for seamless scrolling (default: 4)
-- `duration` – animation duration in ms (default: 40000)
-- `gap` – gap between repeated children, key of `theme.spacing` or any valid CSS value
+- `reverse`——反转动画方向
+- `pauseOnHover`——悬停时暂停动画
+- `orientation`——滚动方向，`horizontal`（默认）或 `vertical`
+- `repeat`——为实现无缝滚动而重复子元素的次数（默认：4）
+- `duration`——动画持续时间，单位为 ms（默认：40000）
+- `gap`——重复子元素之间的间距，`theme.spacing` 的键或任何有效的 CSS 值
 
 <Demo data={MarqueeDemos.configurator} />

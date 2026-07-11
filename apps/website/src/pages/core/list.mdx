@@ -4,44 +4,44 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.List);
 
-## Usage
+## 用法
 
 <Demo data={ListDemos.configurator} />
 
-## With icons
+## 带图标
 
-You can replace list bullets with an icon. To do so, provide the following props:
+你可以用图标替换列表项目符号。为此，请提供以下属性：
 
-- `icon` on the List component will be used as the default icon for all list elements
-- `icon` on the List.Item component will override the context icon from List
-- `spacing` – spacing between list items from the theme or any valid CSS value to set spacing, defaults to `0`
-- `center` – center item content with the icon
-- `size` – set font size from the theme
+- List 组件上的 `icon` 将用作所有列表元素的默认图标
+- List.Item 组件上的 `icon` 将覆盖来自 List 的上下文图标
+- `spacing` – 列表项之间的间距，使用主题中的间距或任何有效的 CSS 值，默认为 `0`
+- `center` – 将项目内容与图标居中对齐
+- `size` – 设置主题中的字体大小
 
 <Demo data={ListDemos.icon} />
 
-## Nested lists
+## 嵌套列表
 
-Set the `withPadding` prop to offset nested lists and `listStyleType` to control the bullet type:
+设置 `withPadding` 属性以偏移嵌套列表，并使用 `listStyleType` 控制项目符号类型：
 
 <Demo data={ListDemos.nested} />
 
-## Ordered list numbering
+## 有序列表编号
 
-### Start from specific number
+### 从指定数字开始
 
-Use the `start` prop to begin numbering from a specific value:
+使用 `start` 属性从特定值开始编号：
 
 <Demo data={ListDemos.start} />
 
-### Reversed numbering
+### 反向编号
 
-Use the `reversed` prop to create countdown lists:
+使用 `reversed` 属性创建倒计时列表：
 
 <Demo data={ListDemos.reversed} />
 
-### Custom item values
+### 自定义项目值
 
-Use the `value` prop on individual `List.Item` components to set specific numbers:
+在单个 `List.Item` 组件上使用 `value` 属性设置特定数字：
 
 <Demo data={ListDemos.value} />

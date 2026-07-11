@@ -4,28 +4,26 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.EmptyState);
 
-## Usage
+## 用法
 
-`EmptyState` displays a placeholder for "no data" situations: empty search results, empty
-tables and lists, first-run states or error illustrations with an optional call to action.
-The simplest way to use it is with `icon`, `title` and `description` props:
+`EmptyState` 显示用于“无数据”情况的占位符：空搜索结果、空表格和列表、首次运行状态或带有可选操作调用的错误插图。
+最简单的使用方式是使用 `icon`、`title` 和 `description` 属性：
 
 <Demo data={EmptyStateDemos.usage} />
 
-## Compound components
+## 复合组件
 
-For full control over the content, use compound components instead of (or together with)
-the shorthand props. Available components:
+要完全控制内容，请使用复合组件代替（或与）简写属性。
+可用组件：
 
-- `EmptyState.Indicator` – icon or illustration
-- `EmptyState.Title` – title text
-- `EmptyState.Description` – description text
-- `EmptyState.Actions` – wrapper for action buttons
+- `EmptyState.Indicator` – 图标或插图
+- `EmptyState.Title` – 标题文本
+- `EmptyState.Description` – 描述文本
+- `EmptyState.Actions` – 操作按钮的包装器
 
 <Demo data={EmptyStateDemos.compound} />
 
-Shorthand props and compound components can be mixed. When both are provided, the content
-from `icon`, `title` and `description` props is rendered first, followed by `children`:
+简写属性和复合组件可以混合使用。当同时提供时，`icon`、`title` 和 `description` 属性的内容先渲染，然后是 `children`：
 
 ```tsx
 import { Button, EmptyState } from '@react-ui/ui';
@@ -33,7 +31,7 @@ import { Button, EmptyState } from '@react-ui/ui';
 function Demo() {
   return (
     <EmptyState icon={<Icon />} title="No results found">
-      {/* Rendered after the title */}
+      {/* 在标题之后渲染 */}
       <EmptyState.Actions>
         <Button variant="default">Reset filters</Button>
       </EmptyState.Actions>
@@ -42,43 +40,41 @@ function Demo() {
 }
 ```
 
-## Alignment
+## 对齐
 
-Set the `align` prop to control how the content is arranged:
+设置 `align` 属性以控制内容的排列方式：
 
-- `center` (default) – indicator, title, description and actions are stacked in a centered column
-- `left` – indicator is placed on the left, the content is aligned next to it on the right
-- `right` – indicator is placed on the right, the content is aligned next to it on the left
+- `center`（默认）– indicator、title、description 和 actions 以居中的列堆叠
+- `left` – indicator 放置在左侧，内容在其右侧对齐
+- `right` – indicator 放置在右侧，内容在其左侧对齐
 
-Change the `align` prop in the configurator above to see how it works. With `left` and `right`
-alignment the indicator is aligned to the top of the content.
+在上面的配置器中更改 `align` 属性以查看其效果。使用 `left` 和 `right`
+对齐时，indicator 与内容顶部对齐。
 
-## Variant
+## 变体
 
-Set the `variant` prop to `filled` or `light` to display the icon inside a colored circular
-indicator. Use the `color` prop to change the indicator color. If `variant` is not set, the icon
-is displayed with a dimmed color:
+将 `variant` 属性设置为 `filled` 或 `light`，以将图标显示在彩色圆形 indicator 内。
+使用 `color` 属性更改 indicator 颜色。如果未设置 `variant`，图标将以暗淡的颜色显示：
 
 <Demo data={EmptyStateDemos.variant} />
 
-## Indicator background
+## Indicator 背景
 
-Set `withIndicatorBackground` prop to display a neutral circular background behind the indicator
-without setting a `variant`:
+设置 `withIndicatorBackground` 属性以在不设置 `variant` 的情况下，在 indicator 后面显示中性圆形背景：
 
 <Demo data={EmptyStateDemos.indicatorBackground} />
 
-## Size
+## 尺寸
 
-`EmptyState` supports `xs`, `sm`, `md`, `lg` and `xl` sizes. The `size` prop controls the
-indicator size, gap between elements and font sizes of the title and description. Change the
-`size` prop in the configurator above to see how it scales.
+`EmptyState` 支持 `xs`、`sm`、`md`、`lg` 和 `xl` 尺寸。`size` 属性控制
+indicator 尺寸、元素之间的间距以及 title 和 description 的字号。在上面的配置器中更改
+`size` 属性以查看其缩放效果。
 
-## Title heading level
+## Title 标题级别
 
-By default, `EmptyState.Title` renders a `div` element without a semantic heading level. If
-the empty state title should be a heading, set the `order` prop to render it as an `h1`–`h6`
-element:
+默认情况下，`EmptyState.Title` 渲染一个没有语义标题级别的 `div` 元素。如果
+空状态标题应该是标题，请设置 `order` 属性以将其渲染为 `h1`–`h6`
+元素：
 
 ```tsx
 import { EmptyState } from '@react-ui/ui';
@@ -96,9 +92,9 @@ function Demo() {
 
 <Demo data={EmptyStateDemos.stylesApi} />
 
-## Accessibility
+## 可访问性
 
-- The root element is a plain `div`, it is not assigned a landmark role.
-- `EmptyState.Title` renders a non-heading `div` by default. Set the `order` prop if the title
-  should be exposed as a heading to assistive technologies.
-- Action buttons are rendered as provided – make sure they have accessible labels.
+- 根元素是一个普通的 `div`，没有被分配地标角色。
+- `EmptyState.Title` 默认渲染非标题 `div`。如果标题
+  应该作为标题暴露给辅助技术，请设置 `order` 属性。
+- 操作按钮按提供的方式渲染——确保它们具有可访问标签。

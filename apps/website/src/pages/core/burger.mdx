@@ -4,24 +4,24 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Burger);
 
-## Usage
+## 用法
 
-The `Burger` component renders an open/close menu button.
-Set the `opened` and `onClick` props to control the component state.
-If the `opened` prop is set, a cross will be rendered, otherwise a burger icon.
+`Burger` 组件渲染一个打开/关闭菜单按钮。
+设置 `opened` 和 `onClick` 属性以控制组件状态。
+如果设置了 `opened` 属性，将渲染一个叉号图标，否则渲染汉堡图标。
 
 <Demo data={BurgerDemos.usage} />
 
-## Change line size
+## 修改线条尺寸
 
 <Demo data={BurgerDemos.lineWidth} />
 
 <GetElementRef component="Burger" refType="button" />
 
-## Accessibility
+## 可访问性
 
-To make the `Burger` accessible for screen readers, you need to either set `aria-label` or
-use the [VisuallyHidden](/core/visually-hidden) component:
+要使 `Burger` 对屏幕阅读器可访问，你需要设置 `aria-label` 或
+使用 [VisuallyHidden](/core/visually-hidden) 组件：
 
 ```tsx
 import { Burger, VisuallyHidden } from '@react-ui/ui';

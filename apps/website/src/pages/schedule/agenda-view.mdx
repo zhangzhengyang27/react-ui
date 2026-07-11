@@ -4,51 +4,45 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.AgendaView);
 
-## Usage
+## 用法
 
-`AgendaView` renders a vertical list of events for a specified time period. Events are grouped by
-date in chronological order with date headers for each group.
+`AgendaView` 渲染指定时间段内的事件垂直列表。事件按日期分组，按时间顺序排列，并为每组显示日期标题。
 
 <Demo data={AgendaViewDemos.usage} />
 
-## All-day and multi-day events
+## 全天和多天事件
 
-Timed events show their time range, all-day events display an "All day" label, and multi-day
-events appear on each date they span.
+定时事件显示其时间范围，全天事件显示 "All day" 标签，多天事件会出现在它们跨越的每个日期上。
 
 <Demo data={AgendaViewDemos.allDayAndMultiday} />
 
-## Date formats
+## 日期格式
 
-Use `headerFormat` to control the range label in the header and `dateHeaderFormat` to control
-individual date group headers. Both accept a [dayjs format string](https://day.js.org/docs/en/display/format)
-or a callback function.
+使用 `headerFormat` 控制标题中的范围标签，使用 `dateHeaderFormat` 控制每个日期组的标题。
+两者都接受 [dayjs 格式字符串](https://day.js.org/docs/en/display/format) 或回调函数。
 
 <Demo data={AgendaViewDemos.dateFormats} />
 
-## Custom event rendering
+## 自定义事件渲染
 
-Use `renderEvent` to fully customize how each event row is rendered. The callback receives the
-event data and default root props that you should spread onto your wrapper element.
+使用 `renderEvent` 完全自定义每行事件的渲染方式。回调接收事件数据和你应该展开到包装元素上的默认根 props。
 
 <Demo data={AgendaViewDemos.renderEvent} />
 
-## Event click
+## 事件点击
 
-Use `onEventClick` to handle event interactions. The example below opens a modal with event
-details when an event is clicked.
+使用 `onEventClick` 处理事件交互。以下示例在点击事件时打开一个显示事件详情的模态框。
 
 <Demo data={AgendaViewDemos.eventClick} />
 
-## Localization
+## 本地化
 
-Set `locale` to translate date headers and pass `labels` to override built-in strings like
-"All day" and "No events".
+设置 `locale` 以翻译日期标题，并传递 `labels` 以覆盖 "All day" 和 "No events" 等内置字符串。
 
 <Demo data={AgendaViewDemos.localization} />
 
-## Static mode
+## 静态模式
 
-Set `mode="static"` to disable all event interactions. In static mode, events are not clickable.
+设置 `mode="static"` 以禁用所有事件交互。在静态模式下，事件不可点击。
 
 <Demo data={AgendaViewDemos.staticMode} />

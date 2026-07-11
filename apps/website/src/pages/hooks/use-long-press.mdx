@@ -4,11 +4,11 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useLongPress);
 
-## Usage
+## 用法
 
 <Demo data={UseLongPressDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 type UseLongPressEvent = 'mouse' | 'touch';
@@ -50,11 +50,10 @@ function useLongPress(
 ): UseLongPressReturnValue
 ```
 
-## Restrict to specific input types
+## 限制为特定输入类型
 
-By default the long press is triggered by both mouse and touch input. Use the `events`
-option to restrict it to a subset – for example, `['touch']` returns only touch handlers,
-leaving mouse input to your own handlers:
+默认情况下，长按可由鼠标和触摸输入触发。使用 `events` 选项将其限制为子集——
+例如，`['touch']` 仅返回触摸处理函数，将鼠标输入留给你的自定义处理函数：
 
 ```tsx
 import { useLongPress } from '@react-ui/hooks';
@@ -68,12 +67,11 @@ function Demo() {
 }
 ```
 
-## Cancel on movement
+## 移动时取消
 
-Set `cancelOnMove` to cancel a pending long press when the pointer moves further than the
-given distance from the start position. This is useful on touch devices so that a scroll
-gesture does not trigger the long press. Pass `true` to use the default 10px threshold or a
-number to set a custom one:
+设置 `cancelOnMove` 以在指针移动距离超过给定距离时取消待处理的长按。
+这在触摸设备上很有用，这样滚动手势不会触发长按。传递 `true` 以使用默认的 10px 阈值，
+或传递数字以设置自定义阈值：
 
 ```tsx
 import { useLongPress } from '@react-ui/hooks';
@@ -87,10 +85,10 @@ function Demo() {
 }
 ```
 
-## Exported types
+## 导出类型
 
-`UseLongPressEvent`, `UseLongPressOptions` and `UseLongPressReturnValue` types are exported
-from the `@react-ui/hooks` package; you can import them in your application:
+`UseLongPressEvent`、`UseLongPressOptions` 和 `UseLongPressReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type {

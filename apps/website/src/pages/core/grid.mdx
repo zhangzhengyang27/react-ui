@@ -4,144 +4,142 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Grid);
 
-## Usage
+## 用法
 
 <Demo data={GridDemos.usage} />
 
-## Columns span
+## 列跨度
 
-The `Grid.Col` `span` prop controls the ratio of column width to the total width of the row.
-By default, grid uses a 12 columns layout, so the `span` prop can be any number from 1 to 12.
+`Grid.Col` 的 `span` 属性控制列宽与行总宽的比例。
+默认情况下，网格使用 12 列布局，因此 `span` 属性可以是 1 到 12 之间的任意数字。
 
-Examples:
+示例：
 
-- `<Grid.Col span={3} />` – 3 / 12 = 25% of row width
-- `<Grid.Col span={4} />` – 4 / 12 = 33% of row width
-- `<Grid.Col span={6} />` – 6 / 12 = 50% of row width
-- `<Grid.Col span={12} />` – 12 / 12 = 100% of row width
+- `<Grid.Col span={3} />` – 3 / 12 = 行宽的 25%
+- `<Grid.Col span={4} />` – 4 / 12 = 行宽的 33%
+- `<Grid.Col span={6} />` – 6 / 12 = 行宽的 50%
+- `<Grid.Col span={12} />` – 12 / 12 = 行宽的 100%
 
-The `span` prop also supports object syntax to change column width based on viewport width.
-It accepts `xs`, `sm`, `md`, `lg` and `xl` keys and values from 1 to 12. The syntax
-is the same as in [style props](/styles/style-props).
+`span` 属性还支持对象语法，根据视口宽度更改列宽。
+它接受 `xs`、`sm`、`md`、`lg` 和 `xl` 键，值为 1 到 12。语法
+与 [style props](/styles/style-props) 相同。
 
-In the following example `span={{ base: 12, md: 6, lg: 3 }}`:
+在以下示例 `span={{ base: 12, md: 6, lg: 3 }}` 中：
 
-- `base` – 12 / 12 = 100% of row width when viewport width is less than `md` breakpoint
-- `md` – 6 / 12 = 50% of row width when viewport width is between `md` and `lg` breakpoints
-- `lg` – 3 / 12 = 25% of row width when viewport width is greater than `lg` breakpoint
+- `base` – 当视口宽度小于 `md` 断点时，12 / 12 = 行宽的 100%
+- `md` – 当视口宽度在 `md` 和 `lg` 断点之间时，6 / 12 = 行宽的 50%
+- `lg` – 当视口宽度大于 `lg` 断点时，3 / 12 = 行宽的 25%
 
 <Demo data={GridDemos.responsive} />
 
-## Gap
+## 间距
 
-Set the `gap` prop to control spacing between columns and rows. The prop works the same
-way as [style props](/styles/style-props) – you can reference `theme.spacing` values
-with `xs`, `sm`, `md`, `lg` and `xl` strings and use object syntax to change gap
-based on viewport width:
+设置 `gap` 属性以控制列与行之间的间距。该属性的工作方式
+与 [style props](/styles/style-props) 相同——你可以使用 `xs`、`sm`、`md`、`lg` 和 `xl` 字符串引用 `theme.spacing` 值，
+并使用对象语法根据视口宽度更改间距：
 
 <Demo data={GridDemos.gap} />
 
-## Row and column gap
+## 行间距和列间距
 
-Use `rowGap` and `columnGap` props to set different spacing for rows and columns.
-`rowGap` and `columnGap` override `gap` prop if both are set:
+使用 `rowGap` 和 `columnGap` 属性为行和列设置不同的间距。
+如果同时设置，`rowGap` 和 `columnGap` 会覆盖 `gap` 属性：
 
 <Demo data={GridDemos.rowColumnGap} />
 
-## Grow
+## 增长
 
-If the `grow` prop is set, the column will grow to fill the remaining space in the row:
+如果设置了 `grow` 属性，列将增长以填充行中的剩余空间：
 
 <Demo data={GridDemos.growConfigurator} />
 
-## Column offset
+## 列偏移
 
-Set the `offset` prop on the `Grid.Col` component to add gaps to the grid. The `offset` prop
-supports the same syntax as the `span` prop: a number from 1 to 12 or an object with `xs`, `sm`, `md`, `lg` and `xl` keys and values from 1 to 12.
+在 `Grid.Col` 组件上设置 `offset` 属性以向网格添加间隙。`offset` 属性
+支持与 `span` 属性相同的语法：1 到 12 之间的数字，或带有 `xs`、`sm`、`md`、`lg` 和 `xl` 键且值为 1 到 12 的对象。
 
 <Demo data={GridDemos.offset} />
 
-## Order
+## 排序
 
-Set the `order` prop on the `Grid.Col` component to change the order of columns. The `order` prop
-supports the same syntax as the `span` prop: a number from 1 to 12 or an object with `xs`, `sm`, `md`, `lg` and `xl` keys and values from 1 to 12.
+在 `Grid.Col` 组件上设置 `order` 属性以更改列的顺序。`order` 属性
+支持与 `span` 属性相同的语法：1 到 12 之间的数字，或带有 `xs`、`sm`、`md`、`lg` 和 `xl` 键且值为 1 到 12 的对象。
 
 <Demo data={GridDemos.order} />
 
-## Multiple rows
+## 多行
 
-Once the columns' `span` and `offset` sum exceeds the `columns` prop (12 by default),
-columns are moved to the next row:
+一旦列的 `span` 和 `offset` 之和超过 `columns` 属性（默认为 12），
+列就会移动到下一行：
 
 <Demo data={GridDemos.rows} />
 
-## Justify and align
+## 对齐方式
 
-You can control the `justify-content` and `align-items` CSS properties with the `justify` and `align` props on the `Grid` component:
+你可以使用 `Grid` 组件上的 `justify` 和 `align` 属性控制 `justify-content` 和 `align-items` CSS 属性：
 
 <Demo data={GridDemos.flexConfigurator} />
 
-## Column alignment
+## 列对齐
 
-Use the `align` prop on individual `Grid.Col` components to control the `align-self` CSS property
-for each column. This allows you to override the grid's `align` prop for specific columns:
+在单个 `Grid.Col` 组件上使用 `align` 属性来控制每列的 `align-self` CSS 属性。
+这允许你为特定列覆盖网格的 `align` 属性：
 
 <Demo data={GridDemos.columnAlign} />
 
-## Auto sized columns
+## 自动尺寸列
 
-All columns in a row with `span="auto"` grow as much as they can to fill the row.
-In the following example, the second column takes up 50% of the row while the other two columns automatically resize to fill the remaining space:
+一行中所有 `span="auto"` 的列会尽可能增长以填充该行。
+在以下示例中，第二列占据行的 50%，而另外两列自动调整大小以填充剩余空间：
 
 <Demo data={GridDemos.auto} />
 
-## Fit column content
+## 适配列内容
 
-If you set `span="content"`, the column's size will automatically adjust to match the width of its content:
+如果设置 `span="content"`，列的大小将自动调整以匹配其内容的宽度：
 
 <Demo data={GridDemos.content} />
 
-## Change columns count
+## 更改列数
 
-By default, grid uses a 12 columns layout. You can change it by setting the `columns` prop on the `Grid` component.
-Note that in this case, columns span and offset will be calculated relative to this value.
+默认情况下，网格使用 12 列布局。你可以通过在 `Grid` 组件上设置 `columns` 属性来更改它。
+注意，在这种情况下，列跨度和偏移将相对于此值计算。
 
-In the following example, the first column takes 50% with 12 span (12/24), second and third take 25% (6/24):
+在以下示例中，第一列使用 12 跨度占据 50%（12/24），第二列和第三列各占据 25%（6/24）：
 
 <Demo data={GridDemos.columns} />
 
-## Container queries
+## 容器查询
 
-To use [container queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries)
-instead of media queries, set `type="container"`. With container queries, all responsive values
-are adjusted based on the container width, not the viewport width.
+要使用[容器查询](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries)
+替代媒体查询，请设置 `type="container"`。使用容器查询时，所有响应式值
+都基于容器宽度而不是视口宽度进行调整。
 
-Note that, when using container queries, it is also required to set `breakpoints` prop
-to the exact container width values.
+注意，使用容器查询时，还需要将 `breakpoints` 属性
+设置为精确的容器宽度值。
 
-To see how the grid changes, resize the root element of the demo
-with the resize handle located at the bottom right corner of the demo:
+要查看网格的变化，请使用演示右下角的大小调整手柄调整演示根元素的大小：
 
 <Demo data={GridDemos.container} />
 
-## Browser support
+## 浏览器支持
 
-Grid component uses flexbox with native `gap` for layout, which is supported in all modern browsers.
+Grid 组件使用 flexbox 配合原生 `gap` 进行布局，所有现代浏览器都支持。
 
-### Container queries
+### 容器查询
 
-When using `type="container"`, the Grid component uses [CSS container queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries).
-Container queries are supported in the following browsers:
+使用 `type="container"` 时，Grid 组件使用 [CSS 容器查询](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries)。
+以下浏览器支持容器查询：
 
 - Chrome 105+
 - Safari 16+
 - Firefox 110+
 - Edge 105+
 
-If you need to support older browsers, use the default `type="media"` which uses standard media queries
-instead of container queries.
+如果你需要支持旧版浏览器，请使用默认的 `type="media"`，它使用标准媒体查询
+而不是容器查询。
 
-Example with media queries (default):
+媒体查询示例（默认）：
 
 ```tsx
 import { Grid } from '@react-ui/ui';
@@ -156,7 +154,7 @@ function Demo() {
 }
 ```
 
-Example with container queries:
+容器查询示例：
 
 ```tsx
 import { Grid } from '@react-ui/ui';

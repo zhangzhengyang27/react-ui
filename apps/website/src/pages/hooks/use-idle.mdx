@@ -4,27 +4,27 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useIdle);
 
-## Usage
+## 用法
 
-The `use-idle` hook detects if the user does nothing for a given time in milliseconds:
+`use-idle` Hook 检测用户在给定的毫秒时间内是否没有任何操作：
 
 <Demo data={UseIdleDemos.usage} />
 
-## Custom events
+## 自定义事件
 
-By default, the hook will listen to `keydown`, `mousemove`, `touchmove`, `click`, `scroll`, and `wheel` events to set the idle status.
-To change that, provide a list of events in the `options` argument:
+默认情况下，该 Hook 会监听 `keydown`、`mousemove`、`touchmove`、`click`、`scroll` 和 `wheel` 事件来设置空闲状态。
+要更改这些事件，请在 `options` 参数中提供事件列表：
 
 <Demo data={UseIdleDemos.events} />
 
-## Initial state
+## 初始状态
 
-By default, the hook will return an idle state.
-To change this, provide an initial state value in the `options` argument:
+默认情况下，该 Hook 返回空闲状态。
+要更改此行为，请在 `options` 参数中提供初始状态值：
 
 <Demo data={UseIdleDemos.state} />
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseIdleOptions {
@@ -35,9 +35,9 @@ interface UseIdleOptions {
 function useIdle(timeout: number, options?: UseIdleOptions): boolean;
 ```
 
-## Exported types
+## 导出类型
 
-The `UseIdleOptions` type is exported from `@react-ui/hooks`;
+`UseIdleOptions` 类型从 `@react-ui/hooks` 包导出：
 
 ```tsx
 import type { UseIdleOptions } from '@react-ui/hooks';

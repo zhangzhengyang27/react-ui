@@ -4,17 +4,17 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Input);
 
-## Disclaimer
+## 免责声明
 
-**!important:** In most cases, you should not use `Input` in your application.
-`Input` is a base for other inputs and was not designed to be used directly.
-Use `Input` to create custom inputs. For other cases, prefer [TextInput](/core/text-input/)
-or another component.
+**!重要提示：** 在大多数情况下，你不应在应用中直接使用 `Input`。
+`Input` 是其他输入框的基础，并非为直接使用而设计。
+请使用 `Input` 来创建自定义输入框。其他情况下，建议使用 [TextInput](/core/text-input/)
+或其他组件。
 
 ```tsx
 import { Input, TextInput } from '@react-ui/ui';
 
-// Incorrect usage, input is not accessible
+// 错误用法，input 不具备可访问性
 function Incorrect() {
   return (
     <Input.Wrapper label="Input label">
@@ -23,8 +23,8 @@ function Incorrect() {
   );
 }
 
-// Use TextInput instead of Input everywhere you want to use Input,
-// it is accessible by default and includes Input.Wrapper
+// 任何想使用 Input 的地方都应改用 TextInput，
+// 它默认具备可访问性，并包含 Input.Wrapper
 function Correct() {
   return (
     <TextInput label="Input label" description="Input description" />
@@ -32,17 +32,17 @@ function Correct() {
 }
 ```
 
-## Usage
+## 用法
 
-The `Input` component is used as a base for some other inputs ([NativeSelect](/core/native-select/), [TextInput](/core/text-input/), [Textarea](/core/textarea/), etc.).
-The purpose of the `Input` is to provide shared styles and features to other inputs.
+`Input` 组件用作某些其他输入框的基础（如 [NativeSelect](/core/native-select/)、[TextInput](/core/text-input/)、[Textarea](/core/textarea/) 等）。
+`Input` 的目的是为其他输入框提供共享的样式和功能。
 
 <Demo data={InputDemos.usage} />
 
-## Loading state
+## 加载状态
 
-Set `loading` prop to display a loading indicator. By default, the loader is displayed on the right side of the input.
-You can change the position with the `loadingPosition` prop to `'left'` or `'right'`. This is useful for async operations like API calls, searches, or validations:
+设置 `loading` 属性以显示加载指示器。默认情况下，加载器显示在输入框右侧。
+你可以使用 `loadingPosition` 属性将其位置更改为 `'left'` 或 `'right'`。这对于 API 调用、搜索或验证等异步操作非常有用：
 
 <Demo data={InputDemos.loading} />
 
@@ -50,169 +50,160 @@ You can change the position with the `loadingPosition` prop to `'left'` or `'rig
 
 <Demo data={InputDemos.sections} />
 
-## Change input element
+## 更改输入元素
 
-Input is a [polymorphic component](/guides/polymorphic), the default root element is `input`,
-but it can be changed to any other element or component.
+Input 是一个[多态组件](/guides/polymorphic)，默认根元素是 `input`，
+但可以更改为任何其他元素或组件。
 
-Example of using `Input` as `button` and `select`:
+使用 `Input` 作为 `button` 和 `select` 的示例：
 
 <Demo data={InputDemos.component} />
 
-## Input.Wrapper component
+## Input.Wrapper 组件
 
-The `Input.Wrapper` component is used in all other inputs
-([TextInput](/core/text-input/), [NativeSelect](/core/native-select/), [Textarea](/core/textarea/), etc.)
-under the hood. You _do not need to wrap your inputs with it, as it is already included in all of them_.
-Use `Input.Wrapper` only when you want to create custom inputs.
+`Input.Wrapper` 组件在所有其他输入框（[TextInput](/core/text-input/)、[NativeSelect](/core/native-select/)、[Textarea](/core/textarea/) 等）
+内部使用。你*不需要*用它包裹输入框，因为它已经包含在所有输入框中*。
+仅在创建自定义输入框时使用 `Input.Wrapper`。
 
 <Demo data={InputDemos.wrapper} />
 
 ## inputWrapperOrder
 
-`inputWrapperOrder` allows configuring the order of `Input.Wrapper` parts.
-It accepts an array of four elements: `label`, `input`, `error` and `description`.
-Note that it is not required to include all of them – you can use only those that you need.
-Parts that are not included will not be rendered.
+`inputWrapperOrder` 允许配置 `Input.Wrapper` 各部分的顺序。
+它接受一个包含四个元素的数组：`label`、`input`、`error` 和 `description`。
+注意，不需要包含所有元素——你可以只使用需要的部分。
+未包含的部分不会被渲染。
 
 <Demo data={InputDemos.inputWrapperOrder} />
 
 ## inputContainer
 
-With the `inputContainer` prop, you can enhance inputs that use `Input.Wrapper` under the hood.
-For example, you can add a [Tooltip](/core/tooltip/) to the [TextInput](/core/text-input/) when
-the input is focused:
+使用 `inputContainer` 属性，你可以增强底层使用 `Input.Wrapper` 的输入框。
+例如，当输入框获得焦点时，可以为 [TextInput](/core/text-input/) 添加 [Tooltip](/core/tooltip/)：
 
 <Demo data={InputDemos.inputContainer} />
 
-## required and withAsterisk props
+## required 和 withAsterisk 属性
 
-All components that are based on `Input.Wrapper` support `required` and `withAsterisk` props.
-When set to true, both of these props will add a red asterisk to the end of the label.
-The only difference is whether the input element will have the `required` attribute. Example with
-the [TextInput](/core/text-input/) component:
+所有基于 `Input.Wrapper` 的组件都支持 `required` 和 `withAsterisk` 属性。
+当设置为 true 时，这两个属性都会在标签末尾添加红色星号。
+唯一的区别是输入元素是否会带有 `required` 属性。以 [TextInput](/core/text-input/) 组件为例：
 
 ```tsx
 import { TextInput } from '@react-ui/ui';
 
-// Will display required asterisk and add `required` attribute to the input element
+// 会显示必填星号，并向输入元素添加 `required` 属性
 function RequiredDemo() {
   return <TextInput label="test-label" required />;
 }
 
-// Will only display the asterisk, `required` attribute is not added to the input element
+// 只显示星号，不会向输入元素添加 `required` 属性
 function AsteriskDemo() {
   return <TextInput label="test-label" withAsterisk />;
 }
 ```
 
-## error prop
+## error 属性
 
-All inputs that use `Input.Wrapper` under the hood support the `error` prop.
-When set to `true`, it will add a red border to the input. You can also pass a React node to display
-an error message below the input. To only display an error message without a red border, set the `error` prop
-to a React node and `withErrorStyles={false}`:
+所有底层使用 `Input.Wrapper` 的输入框都支持 `error` 属性。
+当设置为 `true` 时，会为输入框添加红色边框。你也可以传入 React 节点以在输入框下方显示错误信息。若只想显示错误信息而不显示红色边框，请将 `error` 属性
+设置为 React 节点并设置 `withErrorStyles={false}`：
 
 <Demo data={InputDemos.error} />
 
-## success prop
+## success 属性
 
-All inputs that use `Input.Wrapper` under the hood support the `success` prop.
-When set to `true`, it will add a green border to the input. You can also pass a React node to display
-a success message below the input. If both `error` and `success` props are set, `error` takes precedence:
+所有底层使用 `Input.Wrapper` 的输入框都支持 `success` 属性。
+当设置为 `true` 时，会为输入框添加绿色边框。你也可以传入 React 节点以在输入框下方显示成功信息。如果同时设置了 `error` 和 `success` 属性，`error` 优先：
 
 <Demo data={InputDemos.success} />
 
-## Input.Label, Input.Description and Input.Error components
+## Input.Label、Input.Description 和 Input.Error 组件
 
-`Input.Label`, `Input.Error` and `Input.Description` components can be used to create custom
-form layouts if the default `Input.Wrapper` layout does not meet your requirements.
+`Input.Label`、`Input.Error` 和 `Input.Description` 组件可用于创建自定义
+表单布局，当默认的 `Input.Wrapper` 布局无法满足需求时使用。
 
 <Demo data={InputDemos.compound} />
 
-## Input.Placeholder component
+## Input.Placeholder 组件
 
-`Input.Placeholder` component can be used to add a placeholder to `Input` and `InputBase` components that are based on the `button` element
-or do not support the placeholder property natively:
+`Input.Placeholder` 组件可用于为基于 `button` 元素的 `Input` 和 `InputBase` 组件
+添加占位符，或用于原生不支持 placeholder 属性的组件：
 
 <Demo data={InputDemos.placeholder} />
 
-## Input.ClearButton component
+## Input.ClearButton 组件
 
-Use the `Input.ClearButton` component to add a clear button to custom inputs
-based on the `Input` component. The `size` of the clear button is automatically
-inherited from the input:
+使用 `Input.ClearButton` 组件为基于 `Input` 组件的自定义输入框
+添加清除按钮。清除按钮的 `size` 会自动
+继承自输入框：
 
 <Demo data={InputDemos.clearButton} />
 
-## Default props on theme
+## 主题上的默认属性
 
-You can add [default props](/theming/default-props/) on the [theme](/theming/theme-object/)
-to `Input` and `Input.Wrapper` components. These default props will be inherited by all inputs
-that use `Input` and `Input.Wrapper` under the hood ([TextInput](/core/text-input/), [NativeSelect](/core/native-select/), [Textarea](/core/textarea/), etc.):
+你可以在 [theme](/theming/theme-object/) 上为 `Input` 和 `Input.Wrapper` 组件添加[默认属性](/theming/default-props/)。
+这些默认属性会被所有底层使用 `Input` 和 `Input.Wrapper` 的输入框继承（[TextInput](/core/text-input/)、[NativeSelect](/core/native-select/)、[Textarea](/core/textarea/) 等）：
 
 <Demo data={InputDemos.defaultProps} />
 
-## Shared default props for all inputs
+## 所有输入框共享默认属性
 
-Default props on `Input` and `Input.Wrapper` cascade to every component that is built on top of
-them ([TextInput](/core/text-input/), [Textarea](/core/textarea/), [NumberInput](/core/number-input/),
-[Select](/core/select/), [DateInput](/dates/date-input/), and others). This is the easiest way to apply
-the same `size`, `radius`, `variant`, `withAsterisk` or any other shared prop to all inputs at once.
-Per-component default props always win over the shared ones, so you can still override individual
-components when needed:
+`Input` 和 `Input.Wrapper` 上的默认属性会级联到每个基于它们构建的组件
+（[TextInput](/core/text-input/)、[Textarea](/core/textarea/)、[NumberInput](/core/number-input/)、
+[Select](/core/select/)、[DateInput](/dates/date-input/) 等）。这是同时将所有输入框的 `size`、`radius`、`variant`、`withAsterisk` 或其他共享属性设置为相同值的最简单方式。
+每个组件的默认属性始终优先于共享的默认属性，因此你仍然可以在需要时覆盖单个组件：
 
 <Demo data={InputDemos.sharedDefaultProps} />
 
-## Styles on theme
+## 主题上的样式
 
-Same as with default props, you can use `Input` and `Input.Wrapper` [Styles API](/styles/styles-api/)
-on the [theme](/theming/theme-object/) to add styles to all inputs:
+与默认属性一样，你可以在 [theme](/theming/theme-object/) 上使用 `Input` 和 `Input.Wrapper` 的 [Styles API](/styles/styles-api/)
+为所有输入框添加样式：
 
 <Demo data={InputDemos.sharedStyles} />
 
-## Change focus styles
+## 更改焦点样式
 
-Use `&:focus-within` selector to change inputs focus styles. You can apply these styles to
-one component with `classNames` prop or to all inputs with [Styles API](/styles/styles-api/)
-on [theme](/theming/theme-object/).
+使用 `&:focus-within` 选择器来更改输入框的焦点样式。你可以通过 `classNames` 属性将其应用于单个组件，或通过 [Styles API](/styles/styles-api/)
+应用于 [theme](/theming/theme-object/) 上的所有输入框。
 
 <Demo data={InputDemos.focusStyles} />
 
-## InputBase component
+## InputBase 组件
 
-`InputBase` component combines `Input` and `Input.Wrapper` components and supports `component` prop:
+`InputBase` 组件组合了 `Input` 和 `Input.Wrapper` 组件，并支持 `component` 属性：
 
 <Demo data={InputDemos.inputBase} />
 
-## Styles API
+## 样式 API
 
-`Input` and `Input.Wrapper` components support [Styles API](/styles/styles-api) –
-you can customize styles of any inner element with `classNames` and `styles` props.
+`Input` 和 `Input.Wrapper` 组件支持 [Styles API](/styles/styles-api) ——
+你可以使用 `classNames` 和 `styles` 属性自定义任何内部元素的样式。
 
-`Input` Styles API selectors:
+`Input` 的 Styles API 选择器：
 
 <Demo data={InputDemos.stylesApi} />
 
-`Input.Wrapper` Styles API selectors:
+`Input.Wrapper` 的 Styles API 选择器：
 
 <Demo data={InputDemos.wrapperStylesApi} />
 
 <GetElementRef component="Input" refType="input" />
 
-## Accessibility
+## 可访问性
 
-If you use `Input` component without associated label element, set `aria-label`:
+如果你在没有关联 label 元素的情况下使用 `Input` 组件，请设置 `aria-label`：
 
 ```tsx
 import { Input } from '@react-ui/ui';
 
-// ok – the input is labelled by the aria-label
+// ok – 输入框由 aria-label 标记
 function WithAriaLabel() {
   return <Input aria-label="Your email" />;
 }
 
-// ok – the input is labelled by the label element
+// ok – 输入框由 label 元素标记
 function WithLabel() {
   return (
     <>
@@ -223,8 +214,8 @@ function WithLabel() {
 }
 ```
 
-When you use `Input` with `Input.Wrapper` it is required to set `id` on both components
-to connect label and other elements with the input:
+当你将 `Input` 与 `Input.Wrapper` 一起使用时，需要在两个组件上都设置 `id`
+以将标签和其他元素与输入框关联：
 
 ```tsx
 import { Input } from '@react-ui/ui';
@@ -238,7 +229,7 @@ function Demo() {
 }
 ```
 
-You can use [use-id](/hooks/use-id) to generate unique ids:
+你可以使用 [use-id](/hooks/use-id) 生成唯一 id：
 
 ```tsx
 import { Input } from '@react-ui/ui';

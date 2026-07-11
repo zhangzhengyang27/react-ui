@@ -8,19 +8,15 @@ export default Layout(MDX_DATA.DataAttributes);
 
 # data attributes
 
-ReactUI components use `data-*` attributes to apply styles. These attributes are used as
-modifiers to apply styles based on component state. The general rule of ReactUI component
-styles: one class with shared styles and any number of `data-*` attributes as modifiers.
+ReactUI 组件使用 `data-*` 属性来应用样式。这些属性用作修饰符，根据组件状态应用样式。ReactUI 组件样式的一般规则是：一个包含共享样式的 class 和任意数量的 `data-*` 属性作为修饰符。
 
-Example of applying styles with `data-*` attributes:
+使用 `data-*` 属性应用样式的示例：
 
 <Demo data={StylesDemos.dataAttributes} />
 
-## data attributes values
+## data attributes 值
 
-Most of the `data-*` attributes do not have associated values. They represent boolean
-state or a feature. For example, when the `disabled` prop on [Button](/core/button) is set,
-the `data-disabled` attribute is added to the `<button />` element:
+大多数 `data-*` 属性没有相关联的值。它们表示布尔状态或特性。例如，当 [Button](/core/button) 上的 `disabled` prop 被设置时，`data-disabled` 属性会被添加到 `<button />` 元素：
 
 ```tsx
 import { Button } from '@react-ui/ui';
@@ -34,13 +30,13 @@ function Demo() {
 }
 ```
 
-Will output the following HTML:
+将输出以下 HTML：
 
 ```html
 <button class="my-button" data-disabled>Disabled button</button>
 ```
 
-You can then use this attribute to apply styles to the disabled button:
+然后你可以使用此属性为禁用按钮应用样式：
 
 ```css
 .my-button {
@@ -52,17 +48,13 @@ You can then use this attribute to apply styles to the disabled button:
 }
 ```
 
-When the `disabled` prop is not set, the `data-disabled` attribute is not added to the
-button:
+当未设置 `disabled` prop 时，`data-disabled` 属性不会被添加到按钮：
 
 ```html
 <button class="my-button">Not disabled button</button>
 ```
 
-In some cases, `data-*` attributes have associated values. For example, a [Button](/core/button)
-component's `section` element has an associated `data-position` attribute which can be
-`left` or `right`. The following example will render two `section` elements, one with
-`data-position="left"` and another with `data-position="right"`:
+在某些情况下，`data-*` 属性具有相关联的值。例如，[Button](/core/button) 组件的 `section` 元素具有相关联的 `data-position` 属性，其值可以是 `left` 或 `right`。以下示例将渲染两个 `section` 元素，一个带有 `data-position="left"`，另一个带有 `data-position="right"`：
 
 ```tsx
 import { Button } from '@react-ui/ui';
@@ -76,7 +68,7 @@ function Demo() {
 }
 ```
 
-Will output the following HTML:
+将输出以下 HTML：
 
 ```html
 <button>
@@ -86,30 +78,30 @@ Will output the following HTML:
 </button>
 ```
 
-You can then use this attribute to apply styles to the left and right sections:
+然后你可以使用此属性为左侧和右侧 section 应用样式：
 
 ```css
 .section {
-  /* Styles applied to both sections */
+  /* 应用于两个 section 的样式 */
   width: 2rem;
 
-  /* Styles applied only to left section */
+  /* 仅应用于左侧 section 的样式 */
   &[data-position='left'] {
     background-color: red;
   }
 
-  /* Styles applied only to right section */
+  /* 仅应用于右侧 section 的样式 */
   &[data-position='right'] {
     background-color: blue;
   }
 }
 ```
 
-## Components data attributes documentation
+## 组件 data attributes 文档
 
-Every component that uses `data-*` attributes has a dedicated section under the `Styles API` tab.
+每个使用 `data-*` 属性的组件都在 `Styles API` 标签下有一个专门的章节。
 
-The [Button](/core/button) component `data-*` attributes table:
+[Button](/core/button) 组件的 `data-*` 属性表：
 
 <ModifiersTable
   data={ButtonStylesApi}
@@ -118,20 +110,18 @@ The [Button](/core/button) component `data-*` attributes table:
   fixedLayout={false}
 />
 
-How to read the table:
+如何阅读表格：
 
-- `selector` column – [Styles API](/styles/styles-api) selector (or multiple selectors) to which data attribute is added
-- `attribute` column – data attribute name
-- `condition` column – condition based on which the data attribute is added to the element
-- `value` column – value of the data attribute
+- `selector` 列 – 添加 data attribute 的 [Styles API](/styles/styles-api) 选择器（或多个选择器）
+- `attribute` 列 – data attribute 名称
+- `condition` 列 – 将 data attribute 添加到元素的条件
+- `value` 列 – data attribute 的值
 
 ## mod prop
 
-All components support the `mod` prop, which allows adding data attributes to
-the root element. CamelCase keys are converted to kebab-case. If a key starts with `data-`,
-the prefix is not duplicated.
+所有组件都支持 `mod` prop，它允许向根元素添加 data attributes。CamelCase 键会转换为 kebab-case。如果键以 `data-` 开头，则不会重复添加前缀。
 
-Examples of using `mod` prop:
+使用 `mod` prop 的示例：
 
 ```tsx
 import { Box } from '@react-ui/ui';

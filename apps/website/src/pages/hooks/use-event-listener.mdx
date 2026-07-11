@@ -4,15 +4,15 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useEventListener);
 
-## Usage
+## 用法
 
-The `use-event-listener` hook adds a given event listener to an element to which `ref` is assigned.
-The hook supports the same options as the `addEventListener` method.
-After the component is unmounted, the listener is automatically removed.
+`use-event-listener` Hook 为分配了 `ref` 的元素添加给定的事件监听器。
+该 Hook 支持与 `addEventListener` 方法相同的选项。
+组件卸载后，监听器会自动移除。
 
 <Demo data={UseEventListenerDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 function useEventListener<K extends keyof HTMLElementEventMap, T extends HTMLElement = any>(

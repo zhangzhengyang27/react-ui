@@ -4,11 +4,11 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useCounter);
 
-## Usage
+## 用法
 
 <Demo data={UseCounterDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseCounterOptions {
@@ -32,10 +32,10 @@ function useCounter(
 ): UseCounterReturnValue
 ```
 
-## Exported types
+## 导出类型
 
-The `UseCounterOptions`, `UseCounterHandlers`, and `UseCounterReturnValue` types are exported from the `@react-ui/hooks` package;
-you can import them in your application:
+`UseCounterOptions`、`UseCounterHandlers` 和 `UseCounterReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
 
 ```tsx
 import type { UseCounterOptions, UseCounterHandlers, UseCounterReturnValue } from '@react-ui/hooks';

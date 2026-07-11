@@ -4,18 +4,18 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useReducedMotion);
 
-## Usage
+## 用法
 
-The `use-reduced-motion` hook detects if the user [prefers to reduce motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion).
-It uses the [use-media-query](/hooks/use-media-query/) hook under the hood.
-The hook relies on the `window.matchMedia()` [API](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)
-and will always return `false` if the API is not available (for example, during server-side rendering), unless the initial value is provided in the first argument.
+`use-reduced-motion` Hook 检测用户是否[偏好减少动画](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)。
+它在内部使用 [use-media-query](/hooks/use-media-query/) Hook。
+该 Hook 依赖 `window.matchMedia()` [API](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)，
+如果 API 不可用（例如在服务端渲染期间），除非在第一个参数中提供了初始值，否则始终返回 `false`。
 
-Use the hook to detect if the user prefers to reduce motion (`(prefers-reduced-motion: reduce)` media query) and set animation duration based on this value.
+使用此 Hook 检测用户是否偏好减少动画（`(prefers-reduced-motion: reduce)` 媒体查询），并基于此值设置动画时长。
 
 <Demo data={UseReducedMotionDemos.usage} />
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseMediaQueryOptions {

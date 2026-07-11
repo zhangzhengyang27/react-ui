@@ -4,24 +4,24 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.formValidation);
 
-## Validation with rules object
+## 使用规则对象进行验证
 
-To validate a form with a rules object, provide an object of functions which take the field value as an argument
-and return an error message (any React node) or null if the field is valid:
+要使用规则对象验证表单，请提供一个函数对象，这些函数接收字段值作为参数，
+并返回错误信息（任意 React 节点）或 null（如果字段有效）：
 
 <Demo data={FormDemos.rulesValidation} />
 
-## Rule function arguments
+## 规则函数参数
 
-Each form rule receives the following arguments:
+每个表单规则接收以下参数：
 
-- `value` – value of the field
-- `values` – all form values
-- `path` – field path, for example `user.email` or `cart.0.price`
-- `signal` – an `AbortSignal` that is aborted when a newer validation supersedes the current one (useful for cancelling in-flight async requests)
+- `value` – 字段的值
+- `values` – 所有表单值
+- `path` – 字段路径，例如 `user.email` 或 `cart.0.price`
+- `signal` – 一个 `AbortSignal`，当更新的验证取代当前验证时会被中止（可用于取消进行中的异步请求）
 
-The `path` argument can be used to get information about the field location relative to other fields.
-For example, you can get the index of an array element:
+`path` 参数可用于获取字段相对于其他字段的位置信息。
+例如，你可以获取数组元素的索引：
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -39,36 +39,33 @@ const form = useForm({
 
 ## formRootRule
 
-`formRootRule` is a special rule path that can be used to validate objects and arrays
-alongside their nested fields. For example, it is useful when you want to capture
-a list of values, validate each value individually, and then validate the list itself
-to not be empty:
+`formRootRule` 是一个特殊的路径规则，可用于同时验证对象和数组以及它们的嵌套字段。
+例如，当你想收集一组值、单独验证每个值，然后再验证整个列表不为空时，它会很有用：
 
 <Demo data={FormDemos.rootRuleArray} />
 
-Another example is to validate an object's field combination:
+另一个示例是验证对象的字段组合：
 
 <Demo data={FormDemos.rootRuleObject} />
 
-## Validation based on other form values
+## 基于其他表单值的验证
 
-You can get all form values as the second rule function argument to perform field validation based on other
-form values. For example, you can validate that the password confirmation is the same as the password:
+你可以将表单的所有值作为规则函数的第二个参数，以基于其他表单值执行字段验证。
+例如，你可以验证密码确认是否与密码相同：
 
 <Demo data={FormDemos.password} />
 
-## Function-based validation
+## 基于函数的验证
 
-Another approach to handle validation is to provide a function to `validate`.
-The function takes form values as a single argument and should return an object that contains
-errors of corresponding fields. If a field is valid or field validation is not required, you can either return null or simply omit it
-from the validation results.
+另一种处理验证的方法是将一个函数传给 `validate`。
+该函数接收表单值作为单个参数，并应返回一个包含相应字段错误的对象。
+如果字段有效或不需要字段验证，你可以返回 null，或直接从验证结果中省略它。
 
 <Demo data={FormDemos.validateFunction} />
 
-## Validate fields on change
+## 变化时验证字段
 
-To validate all fields on change, set the `validateInputOnChange` option to `true`:
+要在所有字段值变化时进行验证，请将 `validateInputOnChange` 选项设置为 `true`：
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -81,7 +78,7 @@ const form = useForm({
 
 <Demo data={FormDemos.liveValidation} demoProps={{ toggle: true }} />
 
-You can also provide an array of field paths to validate only those values:
+你也可以提供一个字段路径数组，仅验证这些值：
 
 ```tsx
 import { FORM_INDEX, useForm } from '@react-ui/ui';
@@ -101,9 +98,9 @@ const form = useForm({
   demoProps={{ toggle: true }}
 />
 
-## Validate fields on blur
+## 失焦时验证字段
 
-To validate all fields on blur, set the `validateInputOnBlur` option to `true`:
+要在所有字段失去焦点时进行验证，请将 `validateInputOnBlur` 选项设置为 `true`：
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -116,7 +113,7 @@ const form = useForm({
 
 <Demo data={FormDemos.blurValidation} demoProps={{ toggle: true }} />
 
-You can also provide an array of field paths to validate only those values:
+你也可以提供一个字段路径数组，仅验证这些值：
 
 ```tsx
 import { FORM_INDEX, useForm } from '@react-ui/ui';
@@ -132,9 +129,9 @@ const form = useForm({
   demoProps={{ toggle: true }}
 />
 
-## Clear field error on change
+## 变化时清除字段错误
 
-By default, the field error is cleared when the value changes. To change this, set `clearInputErrorOnChange` to `false`:
+默认情况下，当值变化时字段错误会被清除。要更改此行为，请将 `clearInputErrorOnChange` 设置为 `false`：
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -150,21 +147,22 @@ const form = useForm({
   demoProps={{ toggle: true }}
 />
 
-## Validation in onSubmit handler
+## 在 onSubmit 处理程序中进行验证
 
-`form.onSubmit` accepts two arguments: the first argument is the `handleSubmit` function that will be called with form values when validation
-was completed without errors. The second argument is the `handleErrors` function, which is called with the errors object when validation was completed with errors.
+`form.onSubmit` 接受两个参数：第一个参数是 `handleSubmit` 函数，当验证无错误完成时，
+将使用表单值调用它。第二个参数是 `handleErrors` 函数，当验证完成并带有错误时，
+将使用错误对象调用它。
 
-You can use the `handleErrors` function to perform certain actions when the user tries to submit the form without values.
-For example, you can show a notification:
+你可以使用 `handleErrors` 函数在用户尝试提交没有值的表单时执行某些操作。
+例如，你可以显示通知：
 
 <Demo data={FormDemos.onSubmitErrors} />
 
-## isValid handler
+## isValid 处理程序
 
-`form.isValid` performs form validation with the given validation functions, rules object, or schema, but unlike
-`form.validate`, it does not set `form.errors` and just returns a boolean value indicating whether the form is valid.
-If any of the validation rules are async, `form.isValid` returns a `Promise<boolean>` instead.
+`form.isValid` 使用给定的验证函数、规则对象或模式执行表单验证，但与
+`form.validate` 不同，它不会设置 `form.errors`，而只是返回一个布尔值，指示表单是否有效。
+如果任何验证规则是异步的，`form.isValid` 将返回一个 `Promise<boolean>`。
 
 ```tsx
 import { useForm } from '@react-ui/ui';
@@ -178,43 +176,41 @@ const form = useForm({
   },
 });
 
-// With sync rules, returns boolean directly
+// 使用同步规则时，直接返回布尔值
 form.isValid(); // -> false
 form.isValid('name'); // -> false
 ```
 
-## Async validation
+## 异步验证
 
-Validation rules can be async – return a `Promise` that resolves to an error message or `null`.
-When all rules are synchronous, `form.validate()`, `form.validateField()` and `form.isValid()` return
-their results directly (not wrapped in a `Promise`). When any rule is async, these methods return promises instead.
-TypeScript infers the correct return type based on your validation rules, so you get precise types without manual annotations.
+验证规则可以是异步的——返回一个解析为错误信息或 `null` 的 `Promise`。
+当所有规则都是同步的时，`form.validate()`、`form.validateField()` 和 `form.isValid()` 直接返回结果（不包装在 `Promise` 中）。
+当任何规则是异步的时，这些方法将返回 Promise。
+TypeScript 会根据你的验证规则推断正确的返回类型，因此你可以获得精确的类型，而无需手动注解。
 
-The `form.validating` property is `true` while any async validation is in progress, and `form.isValidating(path)` can be used to check individual fields.
-The `validating` state is never set for forms with only synchronous rules.
+当任何异步验证正在进行时，`form.validating` 属性为 `true`，`form.isValidating(path)` 可用于检查单个字段。
+`validating` 状态不会为仅包含同步规则的表单设置。
 
-Each rule receives an `AbortSignal` as the fourth argument. The signal is aborted when a newer validation
-supersedes the current one, which you can use to cancel in-flight HTTP requests and avoid race conditions.
+每个规则接收一个 `AbortSignal` 作为第四个参数。当更新的验证取代当前验证时，该信号会被中止，
+你可以用它取消进行中的 HTTP 请求并避免竞态条件。
 
 <Demo data={FormDemos.asyncValidation} />
 
-## Async validation with debounce
+## 带防抖的异步验证
 
-When using async validation with `validateInputOnChange`, you can set `validateDebounce` to avoid
-firing an API call on every keystroke. The debounce applies only to field-level validation triggered
-by `validateInputOnChange` and `validateInputOnBlur` – it does not affect explicit `form.validate()` calls
-or `form.onSubmit()`.
+当将异步验证与 `validateInputOnChange` 一起使用时，你可以设置 `validateDebounce`，
+以避免在每次按键时都触发 API 调用。防抖仅适用于由 `validateInputOnChange` 和 `validateInputOnBlur` 触发的字段级验证——
+它不会影响显式的 `form.validate()` 调用或 `form.onSubmit()`。
 
 <Demo data={FormDemos.asyncValidationDebounce} />
 
-## Focus the first invalid field
+## 聚焦第一个无效字段
 
-The second argument of the `form.onSubmit` function is a callback function that is called
-with the [errors object](/form/errors) when form validation fails.
-You can use this callback to focus the first invalid field or perform any other action.
+`form.onSubmit` 函数的第二个参数是一个回调函数，当表单验证失败时，
+会使用 [errors 对象](/form/errors) 调用它。
+你可以使用此回调来聚焦第一个无效字段或执行任何其他操作。
 
-To get the DOM node of any input, use `form.getInputNode('path-to-field')`. Note that
-in order for this feature to work, you need to spread `form.getInputProps('path-to-field')` to
-the input element.
+要获取任何输入框的 DOM 节点，请使用 `form.getInputNode('path-to-field')`。注意，
+为了让此功能正常工作，你需要将 `form.getInputProps('path-to-field')` 展开到输入元素上。
 
 <Demo data={FormDemos.focusError} />

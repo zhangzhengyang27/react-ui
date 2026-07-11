@@ -4,29 +4,29 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Progress);
 
-## Usage
+## 用法
 
 <Demo data={ProgressDemos.usage} />
 
-## Compound components
+## 复合组件
 
 <Demo data={ProgressDemos.compound} />
 
-## Vertical orientation
+## 垂直方向
 
 <Demo data={ProgressDemos.vertical} />
 
-## With tooltips
+## 带工具提示
 
 <Demo data={ProgressDemos.tooltips} />
 
-## Section width transition
+## 段落宽度过渡
 
-Set `transitionDuration` to a number of milliseconds to enable width transition:
+将 `transitionDuration` 设置为毫秒数以启用宽度过渡：
 
 <Demo data={ProgressDemos.transition} />
 
-## Example: progress with segments
+## 示例：分段进度条
 
 <Demo data={ProgressDemos.segments} />
 
@@ -34,13 +34,13 @@ Set `transitionDuration` to a number of milliseconds to enable width transition:
 
 <Demo data={ProgressDemos.stylesApi} />
 
-## Accessibility
+## 可访问性
 
-- Progress section has the `role="progressbar"` attribute
-- Progress section has the `aria-valuenow` attribute with the current value
-- `aria-valuemin` and `aria-valuemax` attributes are always set to `0` and `100` as the component does not support other values
+- 进度段落具有 `role="progressbar"` 属性
+- 进度段落具有 `aria-valuenow` 属性，表示当前值
+- `aria-valuemin` 和 `aria-valuemax` 属性始终设置为 `0` 和 `100`，因为该组件不支持其他值
 
-Set the `aria-label` attribute to label the progress:
+设置 `aria-label` 属性以标记进度条：
 
 ```tsx
 import { Progress } from '@react-ui/ui';

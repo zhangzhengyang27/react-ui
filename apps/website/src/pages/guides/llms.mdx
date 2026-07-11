@@ -3,72 +3,71 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.LLMDocumentation);
 
-# ReactUI with LLMs
+# ReactUI 与 LLM
 
-ReactUI provides LLM-friendly documentation to help AI tools like **Cursor**, **Windsurf**, **GitHub Copilot**, **ChatGPT**, and **Claude** understand and work with the ReactUI component library.
+ReactUI 提供适合 LLM 的文档，帮助 **Cursor**、**Windsurf**、**GitHub Copilot**、**ChatGPT** 和 **Claude** 等 AI 工具理解和使用 ReactUI 组件库。
 
-`llms.txt` documentation is updated with every ReactUI release.
+`llms.txt` 文档会随每个 ReactUI 版本更新。
 
-## Documentation
+## 文档
 
-Links:
+链接：
 
-- [llms.txt](/llms.txt) – compact
-- [Download](/llms-full.txt) full documentation in single document (~1.8MB)
+- [llms.txt](/llms.txt) – 精简版
+- [下载](/llms-full.txt) 完整文档（约 1.8MB）
 
-The LLM documentation includes:
+LLM 文档包含：
 
-- **Getting Started** - Installation and setup guides
-- **Components** - All ReactUI components with props, examples, and usage
-- **Hooks** - Complete hooks documentation with examples
-- **Theming** - Theme customization and MantineProvider setup
-- **Styles** - CSS modules, CSS variables, and styling approaches
-- **Frequently Asked Questions** - Common questions and solutions
+- **入门指南** - 安装和设置说明
+- **组件** - 所有 ReactUI 组件及其 props、示例和用法
+- **Hooks** - 完整的 hooks 文档及示例
+- **主题** - 主题定制和 MantineProvider 设置
+- **样式** - CSS modules、CSS 变量和样式方案
+- **常见问题** - 常见问题及解决方案
 
 ## Cursor
 
-In Cursor, you can reference the documentation using the `@Docs` feature:
+在 Cursor 中，你可以使用 `@Docs` 功能引用文档：
 
-1. Type `@Docs` in your prompt
-2. Reference the ReactUI documentation URL: `https://react-ui.dev/llms.txt`
-3. Ask questions about ReactUI components, styling, or implementation
+1. 在提示词中输入 `@Docs`
+2. 引用 ReactUI 文档地址：`https://react-ui.dev/llms.txt`
+3. 询问关于 ReactUI 组件、样式或实现的问题
 
 ## Windsurf
 
-For Windsurf users:
+对于 Windsurf 用户：
 
-1. Reference the documentation using `@https://react-ui.dev/llms.txt`
-2. Or add it to your `.windsurfrules` file for persistent access
+1. 使用 `@https://react-ui.dev/llms.txt` 引用文档
+2. 或将其添加到你的 `.windsurfrules` 文件中以持久化访问
 
-## ChatGPT and Claude
+## ChatGPT 和 Claude
 
-When using ChatGPT or Claude:
+使用 ChatGPT 或 Claude 时：
 
-1. Mention that you're using ReactUI
-2. Reference the documentation URL: `https://react-ui.dev/llms.txt`
-3. The AI will fetch and use the documentation to provide accurate answers
+1. 说明你在使用 ReactUI
+2. 引用文档地址：`https://react-ui.dev/llms.txt`
+3. AI 会获取并使用文档来提供准确答案
 
 ### GitHub Copilot
 
-While Copilot doesn't directly support external documentation, you can:
+虽然 Copilot 不直接支持外部文档，但你可以：
 
-1. Include relevant documentation snippets in your comments
-2. Reference component names and props accurately for better suggestions
+1. 在注释中包含相关文档片段
+2. 准确引用组件名称和 props 以获得更好的建议
 
-## Skills
+## 技能
 
-ReactUI also provides skills for AI coding agents in the
-[`xiaoye/react-ui-skills`](https://github.com/xiaoye/react-ui-skills) repository.
+ReactUI 还在 [`xiaoye/react-ui-skills`](https://github.com/xiaoye/react-ui-skills) 仓库中为 AI 编码代理提供 skills。
 
-Currently available skills:
+当前可用的 skills：
 
-- `reactui-combobox` – Build custom select/autocomplete/multiselect components with `Combobox`
-- `reactui-form` – Build forms with `@react-ui/ui`, validation, nested fields, and form context
-- `reactui-custom-components` – Create custom components with ReactUI factory APIs and Styles API
+- `reactui-combobox` – 使用 `Combobox` 构建自定义 select/autocomplete/multiselect 组件
+- `reactui-form` – 使用 `@react-ui/ui` 构建表单、验证、嵌套字段和表单上下文
+- `reactui-custom-components` – 使用 ReactUI factory API 和 Styles API 创建自定义组件
 
-### Install skills
+### 安装 skills
 
-Install each skill from the repository:
+从仓库安装每个 skill：
 
 ```bash
 npx skills add https://github.com/xiaoye/react-ui-skills --skill reactui-combobox
@@ -76,34 +75,34 @@ npx skills add https://github.com/xiaoye/react-ui-skills --skill reactui-form
 npx skills add https://github.com/xiaoye/react-ui-skills --skill reactui-custom-components
 ```
 
-### Use skills
+### 使用 skills
 
-In your AI prompt, explicitly tell the agent to use one of the installed skills.
+在你的 AI 提示词中，明确告诉代理使用某个已安装的 skill。
 
-Examples:
+示例：
 
 - "Use `$reactui-form` and build a profile form with validation and nested fields"
 - "Use `$reactui-combobox` and create a searchable multi-select with custom option rendering"
 - "Use `$reactui-custom-components` and scaffold a polymorphic component with Styles API support"
 
-If your agent does not support `$skill-name` mentions, reference the skill name in plain text and ask the agent to follow it.
+如果你的代理不支持 `$skill-name` 提及，可以用纯文本引用 skill 名称并要求代理遵循。
 
-## MCP server (experimental)
+## MCP server（实验性）
 
-ReactUI also provides an MCP server package:
+ReactUI 还提供了一个 MCP server 包：
 
 - `@react-ui/mcp-server`
 
-The server reads ReactUI static MCP data published on `react-ui.dev` and exposes tools that AI agents can call directly:
+该服务器读取发布在 `react-ui.dev` 上的 ReactUI 静态 MCP 数据，并暴露 AI 代理可直接调用的工具：
 
 - `list_items`
 - `get_item_doc`
 - `get_item_props`
 - `search_docs`
 
-### MCP server configuration
+### MCP server 配置
 
-Most MCP-compatible tools support adding servers with a JSON configuration. Use this server definition:
+大多数兼容 MCP 的工具都支持通过 JSON 配置添加服务器。使用以下服务器定义：
 
 ```json
 {
@@ -116,7 +115,7 @@ Most MCP-compatible tools support adding servers with a JSON configuration. Use 
 }
 ```
 
-To use a different data source (for example, alpha docs or local static files), add env variables:
+要使用不同的数据源（例如 alpha 文档或本地静态文件），请添加环境变量：
 
 ```json
 {
@@ -132,42 +131,42 @@ To use a different data source (for example, alpha docs or local static files), 
 }
 ```
 
-### Using MCP server with different tools
+### 在不同工具中使用 MCP server
 
 #### Claude Desktop
 
-1. Open MCP settings in Claude Desktop
-2. Add the `reactui` server configuration above
-3. Start a new chat and ask for ReactUI guidance, for example: "Find Button props and give me a usage example"
+1. 在 Claude Desktop 中打开 MCP 设置
+2. 添加上面的 `reactui` 服务器配置
+3. 开始新对话并请求 ReactUI 指导，例如："Find Button props and give me a usage example"
 
 #### Cursor
 
-1. Open Cursor MCP/server settings
-2. Add the same `reactui` server config
-3. Use agent mode and ask ReactUI-specific questions – Cursor will call MCP tools automatically
+1. 打开 Cursor MCP/server 设置
+2. 添加相同的 `reactui` 服务器配置
+3. 使用 agent 模式并询问 ReactUI 相关问题 – Cursor 会自动调用 MCP 工具
 
 #### Windsurf
 
-1. Open Windsurf MCP/server settings
-2. Register `@react-ui/mcp-server` with the same config
-3. Ask for component docs, props, and examples directly in chat
+1. 打开 Windsurf MCP/server 设置
+2. 使用相同配置注册 `@react-ui/mcp-server`
+3. 直接在聊天中请求组件文档、props 和示例
 
-#### Other MCP clients (VS Code/Cline and others)
+#### 其他 MCP 客户端（VS Code/Cline 等）
 
-If the client supports custom MCP servers, add the same command and args:
+如果客户端支持自定义 MCP 服务器，请添加相同的 command 和 args：
 
 - command: `npx`
 - args: `["-y", "@react-ui/mcp-server"]`
 
-Then use prompts like:
+然后使用如下提示词：
 
 - "List ReactUI items related to input fields"
 - "Get full docs for Button"
 - "Search ReactUI docs for color scheme and dark mode"
 
-## Example prompts
+## 示例提示词
 
-Here are some example prompts you can use with AI tools:
+以下是一些可与 AI 工具配合使用的示例提示词：
 
 - "Using ReactUI, how do I create a dark mode toggle?"
 - "Show me how to use the AppShell component with a collapsible navbar"
@@ -175,23 +174,23 @@ Here are some example prompts you can use with AI tools:
 - "Create a form with validation using ReactUI's form hooks"
 - "How to align input with a button in a flex container?"
 
-## Documentation Generation
+## 文档生成
 
-The LLM documentation is automatically generated from our source files using a compilation script. It includes:
+LLM 文档通过编译脚本自动从我们的源文件生成。它包含：
 
-- Component documentation from MDX files
-- Props tables and types
-- Code examples and demos
-- Styles API documentation
-- FAQ content from GitHub Discussions
+- 来自 MDX 文件的组件文档
+- Props 表格和类型
+- 代码示例和 demos
+- Styles API 文档
+- 来自 GitHub Discussions 的 FAQ 内容
 
-There are two generated formats:
+有两种生成格式：
 
-- `llms.txt` – the default compact index that links to per-page `.md` files under the `/llms` path
-- `llms-full.txt` – a single large file with all documentation content
+- `llms.txt` – 默认的精简索引，链接到 `/llms` 路径下的每页 `.md` 文件
+- `llms-full.txt` – 包含所有文档内容的单个大文件
 
-To ensure you have the latest documentation, we regenerate these files with each release. The files follow the [LLMs.txt](https://llmstxt.org/) standard for better compatibility with AI tools.
+为了确保你拥有最新文档，我们会在每个版本中重新生成这些文件。这些文件遵循 [LLMs.txt](https://llmstxt.org/) 标准，以更好地兼容 AI 工具。
 
-## Contributing
+## 贡献
 
-If you find any issues with the LLM documentation or have suggestions for improvement, please [open an issue](https://github.com/xiaoye/react-ui/issues) on our GitHub repository.
+如果你发现 LLM 文档有任何问题或有改进建议，请在我们的 GitHub 仓库[提交 issue](https://github.com/xiaoye/react-ui/issues)。

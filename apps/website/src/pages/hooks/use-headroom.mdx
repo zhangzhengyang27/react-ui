@@ -4,36 +4,34 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.useHeadroom);
 
-## Usage
+## 用法
 
-The `use-headroom` hook creates headers that are hidden after the user scrolls past a given distance in pixels.
-It returns `{ pinned, scrollProgress }` where `pinned` is `true` when the element is at least partially
-visible and `scrollProgress` is a number between `0` (fully hidden) and `1` (fully visible).
+`use-headroom` Hook 创建在用户滚动超过给定像素距离后隐藏的页头。
+它返回 `{ pinned, scrollProgress }`，其中 `pinned` 在元素至少部分可见时为 `true`，
+`scrollProgress` 是介于 `0`（完全隐藏）和 `1`（完全可见）之间的数字。
 
 <Demo data={UseHeadroomDemos.usage} />
 
 ## scrollProgress
 
-Use `scrollProgress` to create a scroll-linked reveal animation instead of an instant
-show/hide toggle. The value transitions from `1` (fully visible) to `0` (fully hidden)
-as the user scrolls down past `fixedAt`, and back to `1` as the user scrolls up.
-Direction changes mid-scroll are handled correctly — the progress continues from
-wherever it was when the direction changed. Set `scrollDistance` to control how many
-pixels of scrolling are needed to fully reveal or hide the element.
+使用 `scrollProgress` 创建滚动关联的显示动画，而不是瞬间显示/隐藏切换。
+当用户向下滚动超过 `fixedAt` 时，该值从 `1`（完全可见）过渡到 `0`（完全隐藏），
+并在用户向上滚动时回到 `1`。滚动中途改变方向也能正确处理——进度会从方向改变时的位置继续。
+设置 `scrollDistance` 以控制完全显示或隐藏元素所需的滚动像素数。
 
 <Demo data={UseHeadroomDemos.scrollProgress} />
 
-## Callbacks
+## 回调函数
 
-The hook supports `onPin`, `onRelease`, and `onFix` callbacks:
+该 Hook 支持 `onPin`、`onRelease` 和 `onFix` 回调：
 
-- `onPin` is called when the header becomes visible (user scrolls up)
-- `onRelease` is called when the header is hidden (user scrolls down)
-- `onFix` is called when the scroll position enters the fixed zone (scroll position &le; `fixedAt`)
+- `onPin` 在页头变为可见时调用（用户向上滚动）
+- `onRelease` 在页头隐藏时调用（用户向下滚动）
+- `onFix` 在滚动位置进入固定区域时调用（滚动位置 &le; `fixedAt`）
 
 <Demo data={UseHeadroomDemos.callbacks} />
 
-## Definition
+## 类型定义
 
 ```tsx
 interface UseHeadroomOptions {
@@ -64,9 +62,9 @@ interface UseHeadroomReturnValue {
 function useHeadroom(input?: UseHeadroomOptions): UseHeadroomReturnValue;
 ```
 
-## Exported types
+## 导出类型
 
-The `UseHeadroomOptions` type is exported from `@react-ui/hooks`;
+`UseHeadroomOptions` 类型从 `@react-ui/hooks` 包导出：
 
 ```tsx
 import { UseHeadroomOptions } from '@react-ui/hooks';

@@ -4,43 +4,38 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Scroller);
 
-## Usage
+## 用法
 
-`Scroller` is a horizontal scroll container that displays navigation controls (chevron buttons)
-when content overflows its container. It supports native scrolling via trackpad, shift + mouse wheel,
-or touch gestures.
+`Scroller` 是一个水平滚动容器，当内容溢出容器时会显示导航控件（chevron 按钮）。它支持通过触控板、Shift + 鼠标滚轮或触摸手势进行原生滚动。
 
 <Demo data={ScrollerDemos.usage} />
 
-## Mouse drag scrolling
+## 鼠标拖动滚动
 
-Set `draggable` prop to enable scrolling by clicking and dragging with the mouse:
+设置 `draggable` 属性以启用通过鼠标点击拖动进行滚动：
 
 <Demo data={ScrollerDemos.draggable} />
 
-## Scroll amount
+## 滚动量
 
-Use the `scrollAmount` prop to control how many pixels the container scrolls when clicking
-the navigation buttons. The default value is `200`.
+使用 `scrollAmount` 属性控制点击导航按钮时容器滚动的像素数。默认值为 `200`。
 
 <Demo data={ScrollerDemos.scrollAmount} />
 
-## Control size
+## 控件尺寸
 
-Use the `controlSize` prop to change the size of the navigation buttons. It accepts any valid
-ReactUI size value (`xs`, `sm`, `md`, `lg`, `xl`) or a number (converted to pixels).
+使用 `controlSize` 属性更改导航按钮的尺寸。它接受任何有效的 ReactUI 尺寸值（`xs`、`sm`、`md`、`lg`、`xl`）或数字（转换为像素）。
 
 <Demo data={ScrollerDemos.controlSize} />
 
-## Custom icons
+## 自定义图标
 
-Use `startControlIcon` and `endControlIcon` props to replace default chevron icons
-with custom icons:
+使用 `startControlIcon` 和 `endControlIcon` 属性用自定义图标替换默认的 chevron 图标：
 
 <Demo data={ScrollerDemos.customIcons} />
 
-## Usage with Tabs
+## 与 Tabs 一起使用
 
-Use `Scroller` inside [Tabs.List](/core/tabs) to make the tabs list scrollable when there are too many tabs to fit in the available space:
+在 [Tabs.List](/core/tabs) 内部使用 `Scroller`，使标签列表在可用空间不足时可滚动：
 
 <Demo data={TabsDemos.scroller} />

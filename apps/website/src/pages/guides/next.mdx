@@ -3,34 +3,34 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.NextJs);
 
-# Usage with Next.js
+# 在 Next.js 中使用
 
 <GetTemplates type="next" />
 
-## Generate new application
+## 创建新应用
 
-Follow the [create-next-app](https://nextjs.org/docs/pages/api-reference/create-next-app) guide to
-create a new Next.js application:
+按照 [create-next-app](https://nextjs.org/docs/pages/api-reference/create-next-app) 指南
+创建新的 Next.js 应用：
 
 <NpmScript
   yarnScript="yarn create next-app --typescript"
   npmScript="npx create-next-app@latest --typescript"
 />
 
-## Installation
+## 安装
 
 <PackagesInstallation />
 
-## PostCSS setup
+## PostCSS 配置
 
-Install PostCSS plugins and [postcss-preset-mantine](/styles/postcss-preset):
+安装 PostCSS 插件和 [postcss-preset-mantine](/styles/postcss-preset)：
 
 <InstallScript
   packages="postcss postcss-preset-mantine postcss-simple-vars"
   dev
 />
 
-Create a `postcss.config.cjs` file at the root of your application with the following content:
+在应用根目录创建 `postcss.config.cjs` 文件，内容如下：
 
 ```js
 module.exports = {
@@ -49,20 +49,20 @@ module.exports = {
 };
 ```
 
-## Setup with pages router
+## 使用 Pages Router 配置
 
-Add styles imports and [MantineProvider](/theming/mantine-provider) to the `pages/_app.tsx` file:
+在 `pages/_app.tsx` 文件中添加样式导入和 [MantineProvider](/theming/mantine-provider)：
 
 ```tsx
-// Import styles of packages that you've installed.
-// All packages except `@react-ui/hooks` require styles imports
+// 导入你已安装包的样式。
+// 除 `@react-ui/hooks` 外，所有包都需要导入样式
 import '@react-ui/ui/styles.css';
 
 import type { AppProps } from 'next/app';
 import { createTheme, MantineProvider } from '@react-ui/ui';
 
 const theme = createTheme({
-  /** Put your mantine theme override here */
+  /** 在此放置你的 mantine 主题覆盖 */
 });
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -74,8 +74,8 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-Create a `pages/_document.tsx` file with the [ColorSchemeScript](/theming/color-schemes) component.
-Note that it's required even if you use only one color scheme in your application.
+创建包含 [ColorSchemeScript](/theming/color-schemes) 组件的 `pages/_document.tsx` 文件。
+注意，即使你的应用只使用一种颜色方案，也需要此文件。
 
 ```tsx
 import { Head, Html, Main, NextScript } from 'next/document';
@@ -96,20 +96,20 @@ export default function Document() {
 }
 ```
 
-All set! Start the development server:
+配置完成！启动开发服务器：
 
 ```bash
 npm run dev
 ```
 
-## Setup with app router
+## 使用 App Router 配置
 
-Add [MantineProvider](/theming/mantine-provider), [ColorSchemeScript](/theming/color-schemes)
-and styles imports to the `app/layout.tsx` file:
+在 `app/layout.tsx` 文件中添加 [MantineProvider](/theming/mantine-provider)、[ColorSchemeScript](/theming/color-schemes)
+和样式导入：
 
 ```tsx
-// Import styles of packages that you've installed.
-// All packages except `@react-ui/hooks` require styles imports
+// 导入你已安装包的样式。
+// 除 `@react-ui/hooks` 外，所有包都需要导入样式
 import '@react-ui/ui/styles.css';
 
 import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@react-ui/ui';
@@ -137,18 +137,18 @@ export default function RootLayout({
 }
 ```
 
-All set! Start the development server:
+配置完成！启动开发服务器：
 
 ```bash
 npm run dev
 ```
 
-## app + pages router together
+## 同时使用 app 和 pages router
 
-If you use both app and pages router in one application, you need to setup both `pages/_app.tsx`
-and `app/layout.tsx` files as described above.
+如果在一个应用中同时使用 app 和 pages router，你需要按照上面的说明同时配置 `pages/_app.tsx`
+和 `app/layout.tsx` 文件。
 
-## Next.js Link with polymorphic components
+## 在多态组件中使用 Next.js Link
 
 ```tsx
 import Link from 'next/link';
@@ -163,27 +163,27 @@ function Demo() {
 }
 ```
 
-## Server components
+## 服务端组件
 
-All ReactUI components require context to support [default props](/theming/default-props)
-and [Styles API](/styles/styles-api). ReactUI components cannot be used as server components.
-This means that components will render both on the server and client.
+所有 ReactUI 组件都需要上下文以支持[默认属性](/theming/default-props)
+和 [Styles API](/styles/styles-api)。ReactUI 组件不能用作服务端组件。
+这意味着组件会在服务端和客户端同时渲染。
 
-Entry points of all `@mantine/*` packages (`index.js` files) have the `'use client';` directive at the
-top of the file – you don't need to add `'use client';` to your pages/layouts/components.
+所有 `@mantine/*` 包的入口文件（`index.js`）顶部都有 `'use client';` 指令——
+你不需要在页面/布局/组件中额外添加 `'use client';`。
 
-## Compound components in server components
+## 在服务端组件中使用复合组件
 
-Some components like [Popover](/core/popover) have associated compound components (`Component.XXX`),
-where `XXX` is a compound component name. Compound components cannot be used in server components.
-Instead, use the `ComponentXXX` syntax or add the `'use client';` directive to the top of the file.
+某些组件（如 [Popover](/core/popover)）有关联的复合组件（`Component.XXX`），
+其中 `XXX` 是复合组件名称。复合组件不能在服务端组件中使用。
+相反，请使用 `ComponentXXX` 语法，或在文件顶部添加 `'use client';` 指令。
 
-Example that won't work in server components:
+在服务端组件中无法工作的示例：
 
 ```tsx
 import { Popover } from '@react-ui/ui';
 
-// This will throw an error
+// 这会抛出错误
 export default function Page() {
   return (
     <Popover>
@@ -194,14 +194,14 @@ export default function Page() {
 }
 ```
 
-Example with `'use client';` directive:
+使用 `'use client';` 指令的示例：
 
 ```tsx
 'use client';
 
 import { Popover } from '@react-ui/ui';
 
-// No error
+// 不会报错
 export default function Page() {
   return (
     <Popover>
@@ -212,7 +212,7 @@ export default function Page() {
 }
 ```
 
-Example with `ComponentXXX` syntax:
+使用 `ComponentXXX` 语法的示例：
 
 ```tsx
 import {
@@ -221,7 +221,7 @@ import {
   PopoverTarget,
 } from '@react-ui/ui';
 
-// No error
+// 不会报错
 export default function Page() {
   return (
     <Popover>
@@ -232,22 +232,21 @@ export default function Page() {
 }
 ```
 
-## app router tree shaking
+## App Router 摇树优化
 
-To enable tree shaking with app router, enable the experimental `optimizePackageImports` feature in
-your `next.config.mjs`:
+要在 App Router 中启用摇树优化，请在 `next.config.mjs` 中开启实验性的 `optimizePackageImports` 功能：
 
 ```tsx
 export default {
-  // ...other configuration
+  // ...其他配置
   experimental: {
     optimizePackageImports: ['@react-ui/ui', '@react-ui/hooks'],
   },
 };
 ```
 
-## Troubleshooting
+## 故障排除
 
-If you have any issues with ReactUI in your Next.js application, please check the
-[GitHub Discussions](https://github.com/xiaoye/react-ui/discussions) that covers
-the most common issues with app router and server components.
+如果你在 Next.js 应用中使用 ReactUI 时遇到任何问题，请查看
+[GitHub Discussions](https://github.com/xiaoye/react-ui/discussions)，其中涵盖了
+与 App Router 和服务端组件相关的最常见问题。

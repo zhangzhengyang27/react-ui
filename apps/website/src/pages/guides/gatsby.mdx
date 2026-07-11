@@ -3,36 +3,36 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.Gatsby);
 
-# Usage with Gatsby
+# 在 Gatsby 中使用
 
 <GetTemplates type="gatsby" />
 
-## Generate new application
+## 创建新应用
 
-Follow the [Gatsby quick start](https://www.gatsbyjs.com/docs/quick-start/) guide to
-create a new Gatsby application:
+按照 [Gatsby 快速入门](https://www.gatsbyjs.com/docs/quick-start/) 指南
+创建新的 Gatsby 应用：
 
 <NpmScript
   yarnScript="yarn create gatsby"
   npmScript="npm init gatsby"
 />
 
-When asked "Would you like to install a styling system?", select `PostCSS`.
+当询问“Would you like to install a styling system?”时，选择 `PostCSS`。
 
-## Installation
+## 安装
 
 <PackagesInstallation />
 
-## PostCSS setup
+## PostCSS 配置
 
-Install PostCSS plugins and [postcss-preset-mantine](/styles/postcss-preset):
+安装 PostCSS 插件和 [postcss-preset-mantine](/styles/postcss-preset)：
 
 <InstallScript
   packages="postcss postcss-preset-mantine postcss-simple-vars"
   dev
 />
 
-Create a `postcss.config.cjs` file at the root of your application with the following content:
+在应用根目录创建 `postcss.config.cjs` 文件，内容如下：
 
 ```js
 module.exports = {
@@ -51,9 +51,9 @@ module.exports = {
 };
 ```
 
-## Setup
+## 配置
 
-Create a `src/theme.ts` file with your theme override:
+创建 `src/theme.ts` 文件，包含你的主题覆盖：
 
 ```tsx
 // src/theme.ts
@@ -61,11 +61,11 @@ import { createTheme } from '@react-ui/ui';
 
 export const theme = createTheme({
   fontFamily: 'serif',
-  // ... other theme override properties
+  // ... 其他主题覆盖属性
 });
 ```
 
-Create a `gatsby-ssr.tsx` file with the following content:
+创建 `gatsby-ssr.tsx` 文件，内容如下：
 
 ```tsx
 import { ColorSchemeScript, MantineProvider } from '@react-ui/ui';
@@ -87,11 +87,11 @@ export const wrapPageElement = ({ element }) => {
 };
 ```
 
-Create a `gatsby-browser.tsx` file with the following content:
+创建 `gatsby-browser.tsx` 文件，内容如下：
 
 ```tsx
-// Import styles of packages that you've installed.
-// All packages except `@react-ui/hooks` require styles imports
+// 导入你已安装包的样式。
+// 除 `@react-ui/hooks` 外，所有包都需要导入样式
 import '@react-ui/ui/styles.css';
 
 import { MantineProvider } from '@react-ui/ui';
@@ -102,20 +102,20 @@ export const wrapPageElement = ({ element }) => {
 };
 ```
 
-All set! Start the development server:
+配置完成！启动开发服务器：
 
 ```bash
 npm run develop
 ```
 
-## CSS modules
+## CSS 模块
 
-By default, Gatsby has different syntax for importing CSS modules:
+默认情况下，Gatsby 使用不同的 CSS 模块导入语法：
 
 ```tsx
-// Default syntax – will not work in Gatsby
+// 默认语法——在 Gatsby 中无法使用
 import classes from './Demo.module.css';
 
-// Gatsby syntax
+// Gatsby 语法
 import * as classes from './Demo.module.css';
 ```

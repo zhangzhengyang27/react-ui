@@ -244,13 +244,13 @@ export const ScrollArea = factory<ScrollAreaFactory>((_props, _ref) => {
                 {children}
             </ScrollAreaViewport>
 
-            {type !== 'never' && (scrollbars === 'xy' || scrollbars === 'x') && (
+            {(scrollbars === 'xy' || scrollbars === 'x') && (
                 <ScrollAreaScrollbar {...getStyles('scrollbar')} orientation="horizontal" forceMount>
                     <ScrollAreaThumb {...getStyles('thumb')} />
                 </ScrollAreaScrollbar>
             )}
 
-            {type !== 'never' && (scrollbars === 'xy' || scrollbars === 'y') && (
+            {(scrollbars === 'xy' || scrollbars === 'y') && (
                 <ScrollAreaScrollbar {...getStyles('scrollbar')} orientation="vertical" forceMount>
                     <ScrollAreaThumb {...getStyles('thumb')} />
                 </ScrollAreaScrollbar>

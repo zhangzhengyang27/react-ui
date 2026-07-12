@@ -2,17 +2,17 @@
   display: flex;
   align-items: center;
   cursor: default;
-  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
-  border: 1px solid light-dark(var(--mantine-color-gray-4), var(--mantine-color-dark-7));
-  padding-left: var(--mantine-spacing-xs);
-  border-radius: var(--mantine-radius-xl);
+  background-color: light-dark(var(--ui-color-white), var(--ui-color-dark-7));
+  border: 1px solid light-dark(var(--ui-color-gray-4), var(--ui-color-dark-7));
+  padding-left: var(--ui-spacing-xs);
+  border-radius: var(--ui-radius-xl);
 }
 
 .label {
   line-height: 1;
-  font-size: var(--mantine-font-size-xs);
+  font-size: var(--ui-font-size-xs);
 }
 
 .flag {
-  margin-right: var(--mantine-spacing-xs);
+  margin-right: var(--ui-spacing-xs);
 }

@@ -16,7 +16,7 @@
   margin-bottom: 20px;
   margin-top: 10px;
   font-size: var(--docs-font-size);
-  padding-left: var(--mantine-spacing-xl);
+  padding-left: var(--ui-spacing-xl);
 }
 
 .li {

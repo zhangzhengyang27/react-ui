@@ -11,8 +11,8 @@ function Demo() {
     <Switch
       size="md"
       color="dark.4"
-      onLabel={<SunIcon size={16} color="var(--mantine-color-yellow-4)" />}
-      offLabel={<MoonStarsIcon size={16} color="var(--mantine-color-blue-6)" />}
+      onLabel={<SunIcon size={16} color="var(--ui-color-yellow-4)" />}
+      offLabel={<MoonStarsIcon size={16} color="var(--ui-color-blue-6)" />}
     />
   );
 }
@@ -23,8 +23,8 @@ function Demo() {
     <Switch
       size="md"
       color="dark.4"
-      onLabel={<SunIcon size={16} color="var(--mantine-color-yellow-4)" />}
-      offLabel={<MoonStarsIcon size={16} color="var(--mantine-color-blue-6)" />}
+      onLabel={<SunIcon size={16} color="var(--ui-color-yellow-4)" />}
+      offLabel={<MoonStarsIcon size={16} color="var(--ui-color-blue-6)" />}
     />
   );
 }

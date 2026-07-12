@@ -215,9 +215,9 @@ export function TreeSelectVirtualized() {
                           width: 20,
                           minWidth: 20,
                           height: 20,
-                          borderRadius: 'var(--mantine-radius-sm)',
+                          borderRadius: 'var(--ui-radius-sm)',
                           cursor: 'pointer',
-                          color: 'var(--mantine-color-dimmed)',
+                          color: 'var(--ui-color-dimmed)',
                           transform: isExpanded ? 'rotate(0deg)' : 'rotate(-90deg)',
                           transition: 'transform 150ms ease',
                         }}

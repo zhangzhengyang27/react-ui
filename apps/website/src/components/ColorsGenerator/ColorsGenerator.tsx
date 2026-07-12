@@ -25,7 +25,7 @@ export function ColorsGenerator() {
   }, [router.query.color]);
 
   return (
-    <div style={{ maxWidth: 'calc(100vw - var(--mantine-spacing-lg) * 2)' }}>
+    <div style={{ maxWidth: 'calc(100vw - var(--ui-spacing-lg) * 2)' }}>
       <Title fw={500} mb="md" pt="lg" c="bright">
         ReactUI colors generator
       </Title>

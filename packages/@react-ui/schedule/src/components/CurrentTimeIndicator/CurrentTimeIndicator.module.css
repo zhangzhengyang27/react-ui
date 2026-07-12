@@ -1,7 +1,7 @@
 .currentTimeIndicator {
   --time-bubble-height: 18px;
   --thumb-size: 12px;
-  --_indicator-color: var(--indicator-color, var(--mantine-color-red-7));
+  --_indicator-color: var(--indicator-color, var(--ui-color-red-7));
 
   position: absolute;
   pointer-events: none;
@@ -35,7 +35,7 @@
   width: var(--thumb-size);
   height: var(--thumb-size);
   border-radius: 50%;
-  border: 1px solid var(--mantine-color-body);
+  border: 1px solid var(--ui-color-body);
   background-color: var(--_indicator-color);
   inset-inline-start: calc(var(--start-offset) - (var(--thumb-size) / 2 - 1px));
 }
@@ -49,10 +49,10 @@
   justify-content: center;
   border-radius: 1000px;
   background-color: var(--_indicator-color);
-  color: var(--mantine-color-white);
-  font-size: var(--mantine-font-size-xs);
-  font-weight: var(--mantine-font-weight-bold);
-  box-shadow: var(--mantine-shadow-sm);
+  color: var(--ui-color-white);
+  font-size: var(--ui-font-size-xs);
+  font-weight: var(--ui-font-weight-bold);
+  box-shadow: var(--ui-shadow-sm);
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
   inset-inline-start: var(--time-bubble-start-offset);

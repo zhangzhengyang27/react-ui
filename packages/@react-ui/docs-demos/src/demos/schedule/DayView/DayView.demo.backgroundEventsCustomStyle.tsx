@@ -35,10 +35,10 @@ const cssCode = `.backgroundEvent {
     -45deg,
     transparent,
     transparent 10px,
-    var(--mantine-color-red-light) 10px,
-    var(--mantine-color-red-light) 12px
+    var(--ui-color-red-light) 10px,
+    var(--ui-color-red-light) 12px
   );
-  color: var(--mantine-color-red-light-color);
+  color: var(--ui-color-red-light-color);
 }
 `;
 
@@ -168,10 +168,10 @@ function Demo() {
             -45deg,
             transparent,
             transparent 10px,
-            var(--mantine-color-red-light) 10px,
-            var(--mantine-color-red-light) 12px
+            var(--ui-color-red-light) 10px,
+            var(--ui-color-red-light) 12px
           )`,
-          color: 'var(--mantine-color-red-light-color)',
+          color: 'var(--ui-color-red-light-color)',
         },
       }}
     />

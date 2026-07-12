@@ -45,8 +45,8 @@ function Demo() {
               style={{
                 minWidth: 100,
                 height: 80,
-                backgroundColor: 'var(--mantine-color-blue-filled)',
-                borderRadius: 'var(--mantine-radius-md)',
+                backgroundColor: 'var(--ui-color-blue-filled)',
+                borderRadius: 'var(--ui-radius-md)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -103,8 +103,8 @@ function Demo() {
               style={{
                 minWidth: 100,
                 height: 80,
-                backgroundColor: 'var(--mantine-color-blue-filled)',
-                borderRadius: 'var(--mantine-radius-md)',
+                backgroundColor: 'var(--ui-color-blue-filled)',
+                borderRadius: 'var(--ui-radius-md)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',

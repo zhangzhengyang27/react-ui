@@ -590,8 +590,8 @@ export function Styling() {
         }}
         styles={{
           root: {
-            border: '2px solid var(--mantine-color-blue-6)',
-            borderRadius: 'var(--mantine-radius-lg)',
+            border: '2px solid var(--ui-color-blue-6)',
+            borderRadius: 'var(--ui-radius-lg)',
           },
         }}
       />

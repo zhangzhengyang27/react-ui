@@ -8,14 +8,14 @@ function Demo() {
   return (
     <AtomIcon
       size={80}
-      color="var(--mantine-color-blue-filled)"
+      color="var(--ui-color-blue-filled)"
     />
   );
 }
 `;
 
 function Demo() {
-  return <AtomIcon size={80} color="var(--mantine-color-blue-filled)" />;
+  return <AtomIcon size={80} color="var(--ui-color-blue-filled)" />;
 }
 
 export const icon: MantineDemo = {

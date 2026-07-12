@@ -1,20 +1,20 @@
 .floating {
-  background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+  background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-6));
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--mantine-radius-md);
+  border-radius: var(--ui-radius-md);
   height: 200px;
   margin-top: 5px;
-  padding: var(--mantine-spacing-lg);
-  font-size: var(--mantine-font-size-lg);
+  padding: var(--ui-spacing-lg);
+  font-size: var(--ui-font-size-lg);
   cursor: default;
 }
 
 .popoverDropdown {
-  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
+  background-color: light-dark(var(--ui-color-white), var(--ui-color-dark-7));
 }
 
 .label {
-  color: var(--mantine-color-bright);
+  color: var(--ui-color-bright);
 }

@@ -31,7 +31,7 @@ function Demo() {
 
       <div>
         <Text size="sm" mb="xs">Custom fade color</Text>
-        <Marquee fadeEdgeColor="var(--mantine-color-blue-light)">
+        <Marquee fadeEdgeColor="var(--ui-color-blue-light)">
           <MantineLogo width={80} type="full" color="violet" />
           <MantineLogo width={80} type="full" color="grape" />
           <MantineLogo width={80} type="full" color="pink" />
@@ -84,7 +84,7 @@ function Demo() {
         <Text size="sm" mb="xs">
           Custom fade color
         </Text>
-        <Marquee fadeEdgeColor="var(--mantine-color-blue-light)">
+        <Marquee fadeEdgeColor="var(--ui-color-blue-light)">
           <MantineLogo width={80} type="full" color="violet" />
           <MantineLogo width={80} type="full" color="grape" />
           <MantineLogo width={80} type="full" color="pink" />

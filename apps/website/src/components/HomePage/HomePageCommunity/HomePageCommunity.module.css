@@ -1,5 +1,5 @@
 .root {
-  background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
+  background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-8));
   padding-block: var(--hp-block-spacing);
 }
 
@@ -25,33 +25,33 @@
 }
 
 .review {
-  background-color: var(--mantine-color-body);
-  padding: var(--mantine-spacing-lg);
-  border-radius: var(--mantine-radius-lg);
-  border: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-4));
+  background-color: var(--ui-color-body);
+  padding: var(--ui-spacing-lg);
+  border-radius: var(--ui-radius-lg);
+  border: 1px solid light-dark(var(--ui-color-gray-2), var(--ui-color-dark-4));
 
   & + & {
-    margin-top: var(--mantine-spacing-xl);
+    margin-top: var(--ui-spacing-xl);
   }
 }
 
 .reviewTitle {
   display: block;
-  font-size: var(--mantine-font-size-lg);
+  font-size: var(--ui-font-size-lg);
   font-weight: 600;
-  margin-bottom: var(--mantine-spacing-sm);
-  color: var(--mantine-color-bright);
+  margin-bottom: var(--ui-spacing-sm);
+  color: var(--ui-color-bright);
 }
 
 .reviewHeader {
   display: flex;
   justify-content: space-between;
-  margin-bottom: var(--mantine-spacing-md);
-  color: var(--mantine-color-bright);
+  margin-bottom: var(--ui-spacing-md);
+  color: var(--ui-color-bright);
 }
 
 .reviewBody {
-  font-size: var(--mantine-font-size-md);
+  font-size: var(--ui-font-size-md);
   line-height: 1.55;
 
   & *:last-child {
@@ -60,11 +60,11 @@
 
   & p {
     margin-top: 0;
-    margin-bottom: var(--mantine-spacing-md);
+    margin-bottom: var(--ui-spacing-md);
   }
 
   & a {
-    color: var(--mantine-color-anchor);
+    color: var(--ui-color-anchor);
     text-decoration: none;
 
     @mixin hover {
@@ -74,16 +74,16 @@
 }
 
 .reviewExternalLink {
-  font-size: var(--mantine-font-size-sm);
-  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-2));
+  font-size: var(--ui-font-size-sm);
+  color: light-dark(var(--ui-color-gray-7), var(--ui-color-dark-2));
   display: flex;
   align-items: center;
-  gap: var(--mantine-spacing-xs);
+  gap: var(--ui-spacing-xs);
 }
 
 .reviewAuthor {
   font-weight: 600;
-  color: var(--mantine-color-bright);
+  color: var(--ui-color-bright);
 
   @mixin hover {
     text-decoration: underline;
@@ -92,8 +92,8 @@
 
 .stats {
   display: flex;
-  gap: var(--mantine-spacing-xl);
-  margin-top: var(--mantine-spacing-xl);
+  gap: var(--ui-spacing-xl);
+  margin-top: var(--ui-spacing-xl);
 
   @mixin smaller-than $mantine-breakpoint-md {
     flex-direction: column;
@@ -105,15 +105,15 @@
   text-decoration: none;
 
   & + & {
-    padding-inline-start: var(--mantine-spacing-lg);
+    padding-inline-start: var(--ui-spacing-lg);
     border-inline-start: 1px solid
-      light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+      light-dark(var(--ui-color-gray-3), var(--ui-color-dark-4));
 
     @mixin smaller-than $mantine-breakpoint-md {
       padding-inline-start: 0;
       border-inline-start: none !important;
-      padding-top: var(--mantine-spacing-lg);
-      border-top: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+      padding-top: var(--ui-spacing-lg);
+      border-top: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-4));
     }
   }
 }
@@ -121,7 +121,7 @@
 .statValue {
   font-weight: 600;
   font-size: 28px;
-  color: var(--mantine-color-bright);
+  color: var(--ui-color-bright);
 
   @mixin smaller-than $mantine-breakpoint-md {
     font-size: 20px;
@@ -129,6 +129,6 @@
 }
 
 .statLabel {
-  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-2));
-  font-size: var(--mantine-font-size-sm);
+  color: light-dark(var(--ui-color-gray-7), var(--ui-color-dark-2));
+  font-size: var(--ui-font-size-sm);
 }

@@ -103,8 +103,8 @@ function Demo() {
               marginBottom: 8,
               borderRadius: 4,
               cursor: 'grab',
-              backgroundColor: \`var(--mantine-color-\${item.color}-light)\`,
-              color: \`var(--mantine-color-\${item.color}-light-color)\`,
+              backgroundColor: \`var(--ui-color-\${item.color}-light)\`,
+              color: \`var(--ui-color-\${item.color}-light-color)\`,
             }}
           >
             <Text size="sm" fw={500}>{item.title}</Text>
@@ -206,8 +206,8 @@ function Demo() {
               marginBottom: 8,
               borderRadius: 4,
               cursor: 'grab',
-              backgroundColor: `var(--mantine-color-${item.color}-light)`,
-              color: `var(--mantine-color-${item.color}-light-color)`,
+              backgroundColor: `var(--ui-color-${item.color}-light)`,
+              color: `var(--ui-color-${item.color}-light-color)`,
             }}
           >
             <Text size="sm" fw={500}>

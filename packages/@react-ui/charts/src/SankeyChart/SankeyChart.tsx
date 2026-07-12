@@ -144,18 +144,18 @@ interface SankeyNodeContentProps {
 }
 
 const DEFAULT_COLORS = [
-  'var(--mantine-color-blue-filled)',
-  'var(--mantine-color-cyan-filled)',
-  'var(--mantine-color-teal-filled)',
-  'var(--mantine-color-green-filled)',
-  'var(--mantine-color-lime-filled)',
-  'var(--mantine-color-yellow-filled)',
-  'var(--mantine-color-orange-filled)',
-  'var(--mantine-color-red-filled)',
-  'var(--mantine-color-pink-filled)',
-  'var(--mantine-color-grape-filled)',
-  'var(--mantine-color-violet-filled)',
-  'var(--mantine-color-indigo-filled)',
+  'var(--ui-color-blue-filled)',
+  'var(--ui-color-cyan-filled)',
+  'var(--ui-color-teal-filled)',
+  'var(--ui-color-green-filled)',
+  'var(--ui-color-lime-filled)',
+  'var(--ui-color-yellow-filled)',
+  'var(--ui-color-orange-filled)',
+  'var(--ui-color-red-filled)',
+  'var(--ui-color-pink-filled)',
+  'var(--ui-color-grape-filled)',
+  'var(--ui-color-violet-filled)',
+  'var(--ui-color-indigo-filled)',
 ];
 
 function SankeyNodeContent({
@@ -189,9 +189,9 @@ function SankeyNodeContent({
             y={y + height / 2 - 7}
             textAnchor={textAnchor}
             dominantBaseline="central"
-            fill="var(--chart-text-color, var(--mantine-color-text))"
+            fill="var(--chart-text-color, var(--ui-color-text))"
             fontSize={12}
-            fontFamily="var(--mantine-font-family)"
+            fontFamily="var(--ui-font-family)"
           >
             {payload.name}
           </text>
@@ -200,9 +200,9 @@ function SankeyNodeContent({
             y={y + height / 2 + 7}
             textAnchor={textAnchor}
             dominantBaseline="central"
-            fill="var(--chart-text-color, var(--mantine-color-text))"
+            fill="var(--chart-text-color, var(--ui-color-text))"
             fontSize={12}
-            fontFamily="var(--mantine-font-family)"
+            fontFamily="var(--ui-font-family)"
             opacity={0.8}
           >
             {formattedValue}
@@ -214,9 +214,9 @@ function SankeyNodeContent({
           y={y + height / 2}
           textAnchor={textAnchor}
           dominantBaseline="central"
-          fill="var(--chart-text-color, var(--mantine-color-text))"
+          fill="var(--chart-text-color, var(--ui-color-text))"
           fontSize={12}
-          fontFamily="var(--mantine-font-family)"
+          fontFamily="var(--ui-font-family)"
         >
           {payload.name} <tspan opacity={0.8}>{formattedValue}</tspan>
         </text>
@@ -253,7 +253,7 @@ function SankeyLinkContent({
   sourceResolvedColor,
   linkOpacity,
 }: SankeyLinkContentProps) {
-  const fill = sourceResolvedColor || 'var(--chart-link-color, var(--mantine-color-gray-4))';
+  const fill = sourceResolvedColor || 'var(--chart-link-color, var(--ui-color-gray-4))';
 
   return (
     <path
@@ -395,7 +395,7 @@ export const SankeyChart = factory<SankeyChartFactory>((_props) => {
                     }
                   }
 
-                  return 'var(--mantine-color-blue-6)';
+                  return 'var(--ui-color-blue-6)';
                 };
 
                 return (

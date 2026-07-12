@@ -1,14 +1,14 @@
 .yearView {
-  --year-view-radius: var(--schedule-radius, var(--mantine-radius-default));
-  --year-view-font-size: var(--mantine-font-size-sm);
+  --year-view-radius: var(--schedule-radius, var(--ui-radius-default));
+  --year-view-font-size: var(--ui-font-size-sm);
   container-type: inline-size;
 
   @mixin where-light {
-    --year-view-border-color: var(--mantine-color-gray-3);
+    --year-view-border-color: var(--ui-color-gray-3);
   }
 
   @mixin where-dark {
-    --year-view-border-color: var(--mantine-color-dark-4);
+    --year-view-border-color: var(--ui-color-dark-4);
   }
 }
 
@@ -17,27 +17,27 @@
   grid-template-columns: repeat(3, 1fr);
 
   @container (width <= 850px) {
-    --year-view-font-size: calc(var(--mantine-font-size-sm) - 2px);
+    --year-view-font-size: calc(var(--ui-font-size-sm) - 2px);
   }
 
   @container (width <= 750px) {
     grid-template-columns: repeat(2, 1fr);
-    --year-view-font-size: var(--mantine-font-size-xs);
+    --year-view-font-size: var(--ui-font-size-xs);
   }
 
   @container (width <= 520px) {
-    --year-view-font-size: calc(var(--mantine-font-size-xs) - 2px);
+    --year-view-font-size: calc(var(--ui-font-size-xs) - 2px);
   }
 
   @container (width <= 420px) {
     grid-template-columns: 1fr;
-    --year-view-font-size: var(--mantine-font-size-xs);
+    --year-view-font-size: var(--ui-font-size-xs);
   }
 }
 
 .yearViewMonth {
   --week-numbers-offset: 0rem;
-  --day-base-color: var(--mantine-color-text);
+  --day-base-color: var(--ui-color-text);
   --day-dimmed-color: alpha(var(--day-base-color), 0.35);
 
   &:where([data-with-week-numbers]) {
@@ -46,7 +46,7 @@
 
   min-width: 0;
   border: 1px solid var(--year-view-border-color);
-  padding: var(--mantine-spacing-md);
+  padding: var(--ui-spacing-md);
   margin-top: -1px;
   margin-inline-start: -1px;
 
@@ -106,7 +106,7 @@
   font-size: var(--year-view-font-size);
   border-radius: var(--year-view-radius);
   padding: 4px;
-  font-weight: var(--mantine-font-weight-medium);
+  font-weight: var(--ui-font-weight-medium);
   cursor: pointer;
   user-select: none;
   color: var(--day-dimmed-color);
@@ -117,11 +117,11 @@
 
   @mixin hover {
     @mixin where-light {
-      background-color: var(--mantine-color-gray-0);
+      background-color: var(--ui-color-gray-0);
     }
 
     @mixin where-dark {
-      background-color: var(--mantine-color-dark-6);
+      background-color: var(--ui-color-dark-6);
     }
   }
 
@@ -135,7 +135,7 @@
   flex: 0 0 calc(100% / 7 - var(--week-numbers-offset) / 7);
   height: 36px;
   font-size: var(--year-view-font-size);
-  font-weight: var(--mantine-font-weight-medium);
+  font-weight: var(--ui-font-weight-medium);
   text-align: center;
   text-transform: capitalize;
   display: flex;
@@ -180,7 +180,7 @@
   }
 
   &:where([data-weekend]) {
-    color: var(--mantine-color-red-6);
+    color: var(--ui-color-red-6);
   }
 
   &:where([data-outside]) {
@@ -190,21 +190,21 @@
   @mixin hover {
     &:where(:not([data-today], [data-day-placeholder])) {
       @mixin where-light {
-        background-color: var(--mantine-color-gray-0);
+        background-color: var(--ui-color-gray-0);
       }
 
       @mixin where-dark {
-        background-color: var(--mantine-color-dark-6);
+        background-color: var(--ui-color-dark-6);
       }
     }
   }
 
   &:where([data-today]:not([data-outside])) {
-    background-color: var(--mantine-primary-color-filled);
-    color: var(--mantine-primary-color-contrast);
+    background-color: var(--ui-primary-color-filled);
+    color: var(--ui-primary-color-contrast);
 
     @mixin hover {
-      background-color: var(--mantine-primary-color-filled-hover);
+      background-color: var(--ui-primary-color-filled-hover);
     }
   }
 
@@ -215,22 +215,22 @@
 }
 
 .yearViewMonthCaption {
-  padding-inline: var(--mantine-spacing-sm);
+  padding-inline: var(--ui-spacing-sm);
   width: 100%;
   padding-block: 4px;
   margin-bottom: 4px;
   font-size: var(--year-view-font-size);
-  font-weight: var(--mantine-font-weight-medium);
+  font-weight: var(--ui-font-weight-medium);
   text-transform: capitalize;
   border-radius: var(--year-view-radius);
 
   @mixin hover {
     @mixin where-light {
-      background-color: var(--mantine-color-gray-0);
+      background-color: var(--ui-color-gray-0);
     }
 
     @mixin where-dark {
-      background-color: var(--mantine-color-dark-6);
+      background-color: var(--ui-color-dark-6);
     }
   }
 
@@ -254,5 +254,5 @@
   height: 8px;
   border-radius: 100%;
   margin-inline-start: -2px;
-  border: 1px solid var(--mantine-color-body);
+  border: 1px solid var(--ui-color-body);
 }

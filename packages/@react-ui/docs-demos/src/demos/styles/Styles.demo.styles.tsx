@@ -6,7 +6,7 @@ import { Button } from '@react-ui/ui';
 
 function Demo() {
   const gradient =
-    'linear-gradient(45deg, var(--mantine-color-pink-filled) 0%, var(--mantine-color-orange-filled) 50%, var(--mantine-color-yellow-filled) 100%)';
+    'linear-gradient(45deg, var(--ui-color-pink-filled) 0%, var(--ui-color-orange-filled) 50%, var(--ui-color-yellow-filled) 100%)';
 
   return (
     <Button
@@ -18,11 +18,11 @@ function Demo() {
         },
 
         inner: {
-          background: 'var(--mantine-color-body)',
-          color: 'var(--mantine-color-text)',
+          background: 'var(--ui-color-body)',
+          color: 'var(--ui-color-text)',
           borderRadius: 'calc(var(--button-radius) - 2px)',
-          paddingLeft: 'var(--mantine-spacing-md)',
-          paddingRight: 'var(--mantine-spacing-md)',
+          paddingLeft: 'var(--ui-spacing-md)',
+          paddingRight: 'var(--ui-spacing-md)',
         },
 
         label: {
@@ -40,7 +40,7 @@ function Demo() {
 
 function Demo() {
   const gradient =
-    'linear-gradient(45deg, var(--mantine-color-pink-filled) 0%, var(--mantine-color-orange-filled) 50%, var(--mantine-color-yellow-filled) 100%)';
+    'linear-gradient(45deg, var(--ui-color-pink-filled) 0%, var(--ui-color-orange-filled) 50%, var(--ui-color-yellow-filled) 100%)';
 
   return (
     <Button
@@ -52,11 +52,11 @@ function Demo() {
         },
 
         inner: {
-          background: 'var(--mantine-color-body)',
-          color: 'var(--mantine-color-text)',
+          background: 'var(--ui-color-body)',
+          color: 'var(--ui-color-text)',
           borderRadius: 'calc(var(--button-radius) - 2px)',
-          paddingLeft: 'var(--mantine-spacing-md)',
-          paddingRight: 'var(--mantine-spacing-md)',
+          paddingLeft: 'var(--ui-spacing-md)',
+          paddingRight: 'var(--ui-spacing-md)',
         },
 
         label: {

@@ -5,11 +5,11 @@ import classes from './BarChart.demo.colorSchemeColor.module.css';
 
 const cssCode = `.root {
   @mixin light {
-    --bar-color: var(--mantine-color-orange-8);
+    --bar-color: var(--ui-color-orange-8);
   }
 
   @mixin dark {
-    --bar-color: var(--mantine-color-lime-4);
+    --bar-color: var(--ui-color-lime-4);
   }
 }
 `;

@@ -2,16 +2,16 @@
   position: relative;
   z-index: 4;
   padding-inline: var(--docs-inline-spacing);
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
 
   &:not([data-with-tabs]) {
-    border-bottom: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+    border-bottom: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-4));
   }
 }
 
 .header {
-  padding-top: var(--mantine-spacing-xl);
-  padding-bottom: var(--mantine-spacing-xl);
+  padding-top: var(--ui-spacing-xl);
+  padding-bottom: var(--ui-spacing-xl);
 
   @mixin smaller-than $docs-mdx-breakpoint {
     max-width: 100%;
@@ -23,7 +23,7 @@
   margin-bottom: 5px;
   font-weight: 600;
   font-family: var(--docs-font-primary);
-  color: var(--mantine-color-bright);
+  color: var(--ui-color-bright);
 
   @mixin smaller-than $docs-mdx-breakpoint {
     font-size: 32px;

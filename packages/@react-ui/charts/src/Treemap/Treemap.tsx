@@ -135,8 +135,8 @@ function TreemapContent({
   index,
   strokeWidth,
 }: TreemapContentProps) {
-  const fill = resolvedColors[name] || `var(--mantine-color-blue-${(index % 9) + 1})`;
-  const labelColor = resolvedLabelColors[name] || 'var(--mantine-color-white)';
+  const fill = resolvedColors[name] || `var(--ui-color-blue-${(index % 9) + 1})`;
+  const labelColor = resolvedLabelColors[name] || 'var(--ui-color-white)';
   const showLabel = width > 30 && height > 20;
 
   return (
@@ -147,7 +147,7 @@ function TreemapContent({
         width={width}
         height={height}
         fill={depth >= 1 ? fill : 'transparent'}
-        stroke="var(--chart-stroke-color, var(--mantine-color-body))"
+        stroke="var(--chart-stroke-color, var(--ui-color-body))"
         strokeWidth={depth >= 1 ? strokeWidth : 0}
       />
       {depth >= 1 && showLabel && (
@@ -158,7 +158,7 @@ function TreemapContent({
           dominantBaseline="central"
           fill={labelColor}
           fontSize={12}
-          fontFamily="var(--mantine-font-family)"
+          fontFamily="var(--ui-font-family)"
         >
           {name}
         </text>
@@ -197,8 +197,8 @@ function resolveLabelColors(
       result[name] = textColor;
     } else if (autoContrast) {
       result[name] = isLightColor(color, luminanceThreshold)
-        ? 'var(--mantine-color-black)'
-        : 'var(--mantine-color-white)';
+        ? 'var(--ui-color-black)'
+        : 'var(--ui-color-white)';
     }
   }
   return result;
@@ -290,7 +290,7 @@ export const Treemap = factory<TreemapFactory>((_props) => {
                     payload?.map((item) => ({
                       name: item.name as string,
                       value: item.value as number,
-                      color: resolvedColors[item.name as string] || 'var(--mantine-color-blue-6)',
+                      color: resolvedColors[item.name as string] || 'var(--ui-color-blue-6)',
                     })) || []
                   }
                   classNames={resolvedClassNames}

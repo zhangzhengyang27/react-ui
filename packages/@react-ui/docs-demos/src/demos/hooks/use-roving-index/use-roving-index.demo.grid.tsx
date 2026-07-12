@@ -24,11 +24,11 @@ function Demo() {
           p="md"
           ta="center"
           style={{
-            borderRadius: 'var(--mantine-radius-sm)',
-            border: '1px solid var(--mantine-color-default-border)',
+            borderRadius: 'var(--ui-radius-sm)',
+            border: '1px solid var(--ui-color-default-border)',
             backgroundColor:
               focusedIndex === index
-                ? 'var(--mantine-color-blue-light)'
+                ? 'var(--ui-color-blue-light)'
                 : undefined,
           }}
         >
@@ -58,9 +58,9 @@ function Demo() {
           p="md"
           ta="center"
           style={{
-            borderRadius: 'var(--mantine-radius-sm)',
-            border: '1px solid var(--mantine-color-default-border)',
-            backgroundColor: focusedIndex === index ? 'var(--mantine-color-blue-light)' : undefined,
+            borderRadius: 'var(--ui-radius-sm)',
+            border: '1px solid var(--ui-color-default-border)',
+            backgroundColor: focusedIndex === index ? 'var(--ui-color-blue-light)' : undefined,
           }}
         >
           Cell {index + 1}

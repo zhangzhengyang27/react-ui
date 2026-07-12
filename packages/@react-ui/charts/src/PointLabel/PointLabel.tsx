@@ -14,7 +14,7 @@ export function PointLabel({ x, y, value, valueFormatter }: PointLabelProps) {
         dy={-8}
         dx={-10}
         textAnchor="start"
-        fill="var(--chart-text-color, var(--mantine-color-dimmed))"
+        fill="var(--chart-text-color, var(--ui-color-dimmed))"
         fontSize={8}
       >
         {valueFormatter ? valueFormatter(value!) : value}

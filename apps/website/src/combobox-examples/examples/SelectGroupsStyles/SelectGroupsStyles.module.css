@@ -1,11 +1,11 @@
 .group {
-  background-color: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-5));
-  border-radius: var(--mantine-radius-sm);
-  margin-bottom: var(--mantine-spacing-xs);
+  background-color: light-dark(var(--ui-color-gray-1), var(--ui-color-dark-5));
+  border-radius: var(--ui-radius-sm);
+  margin-bottom: var(--ui-spacing-xs);
 }
 
 .groupLabel {
-  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  color: light-dark(var(--ui-color-black), var(--ui-color-white));
 
   &::after {
     display: none;

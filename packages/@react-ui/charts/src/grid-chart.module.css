@@ -2,7 +2,7 @@
   display: block;
   width: 100%;
 
-  --chart-bar-label-color: var(--mantine-color-dimmed);
+  --chart-bar-label-color: var(--ui-color-dimmed);
 
   svg {
     overflow: visible;
@@ -20,8 +20,8 @@
   }
 
   & :where(text) {
-    font-family: var(--mantine-font-family);
-    color: var(--chart-text-color, var(--mantine-color-dimmed));
+    font-family: var(--ui-font-family);
+    color: var(--chart-text-color, var(--ui-color-dimmed));
   }
 }
 
@@ -39,21 +39,21 @@
 }
 
 .axisLabel {
-  color: var(--chart-text-color, var(--mantine-color-dimmed));
+  color: var(--chart-text-color, var(--ui-color-dimmed));
 }
 
 .tooltip {
   min-width: 200px;
-  background-color: var(--mantine-color-body);
-  box-shadow: var(--mantine-shadow-md);
-  border-radius: var(--mantine-radius-default);
-  padding: var(--mantine-spacing-sm);
+  background-color: var(--ui-color-body);
+  box-shadow: var(--ui-shadow-md);
+  border-radius: var(--ui-radius-default);
+  padding: var(--ui-spacing-sm);
 
   @mixin where-light {
-    border: 1px solid var(--mantine-color-gray-3);
+    border: 1px solid var(--ui-color-gray-3);
   }
 
   @mixin where-dark {
-    border: 1px solid var(--mantine-color-dark-4);
+    border: 1px solid var(--ui-color-dark-4);
   }
 }

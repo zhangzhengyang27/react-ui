@@ -1,4 +1,4 @@
 .root {
-  margin-top: var(--mantine-spacing-xl);
-  margin-bottom: var(--mantine-spacing-xl);
+  margin-top: var(--ui-spacing-xl);
+  margin-bottom: var(--ui-spacing-xl);
 }

@@ -2,13 +2,13 @@
   position: relative;
   overflow: hidden;
   min-height: 580px;
-  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
-  border-top: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-7));
-  border-bottom: 1px solid light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-5));
+  background-color: light-dark(var(--ui-color-white), var(--ui-color-dark-8));
+  border-top: 1px solid light-dark(var(--ui-color-gray-2), var(--ui-color-dark-7));
+  border-bottom: 1px solid light-dark(var(--ui-color-gray-0), var(--ui-color-dark-5));
 
   @mixin smaller-than $mantine-breakpoint-sm {
     min-height: auto;
-    padding-bottom: var(--mantine-spacing-xl);
+    padding-bottom: var(--ui-spacing-xl);
   }
 }
 
@@ -16,26 +16,26 @@
   background-color: transparent;
   background-image: linear-gradient(
     45deg,
-    light-dark(var(--mantine-color-white), var(--mantine-color-dark-8)) 25%,
+    light-dark(var(--ui-color-white), var(--ui-color-dark-8)) 25%,
     rgba(0, 0, 0, 0) 95%
   );
 }
 
 .supTitle {
-  font-size: var(--mantine-font-size-sm);
+  font-size: var(--ui-font-size-sm);
   text-transform: uppercase;
   font-weight: bold;
-  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  color: light-dark(var(--ui-color-black), var(--ui-color-white));
   opacity: 0.8;
-  margin-bottom: var(--mantine-spacing-sm);
+  margin-bottom: var(--ui-spacing-sm);
 
   @mixin smaller-than $mantine-breakpoint-sm {
-    font-size: var(--mantine-font-size-xs);
+    font-size: var(--ui-font-size-xs);
   }
 }
 
 .title {
-  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  color: light-dark(var(--ui-color-black), var(--ui-color-white));
   font-family: var(--docs-font-primary);
   font-size: 44px;
   line-height: 1.2;
@@ -47,14 +47,14 @@
 }
 
 .highlight {
-  color: light-dark(var(--mantine-color-blue-7), var(--mantine-color-blue-5));
+  color: light-dark(var(--ui-color-blue-7), var(--ui-color-blue-5));
 }
 
 .description {
-  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-1));
+  color: light-dark(var(--ui-color-gray-7), var(--ui-color-dark-1));
   line-height: 1.5;
   max-width: 580px;
-  margin-top: var(--mantine-spacing-lg);
+  margin-top: var(--ui-spacing-lg);
 }
 
 .body {
@@ -64,7 +64,7 @@
   z-index: 1;
 
   @mixin smaller-than $mantine-breakpoint-sm {
-    padding-top: calc(var(--mantine-spacing-xl) * 2);
+    padding-top: calc(var(--ui-spacing-xl) * 2);
   }
 }
 
@@ -95,7 +95,7 @@
 }
 
 .controls {
-  margin-top: var(--mantine-spacing-xl);
+  margin-top: var(--ui-spacing-xl);
 }
 
 .control {

@@ -39,11 +39,11 @@ function Demo() {
 
 const cssCode = `
 .label {
-  background-color: var(--mantine-color-blue-light);
+  background-color: var(--ui-color-blue-light);
 }
 
 .input {
-  border: 1px solid var(--mantine-color-violet-filled);
+  border: 1px solid var(--ui-color-violet-filled);
 }
 `;
 

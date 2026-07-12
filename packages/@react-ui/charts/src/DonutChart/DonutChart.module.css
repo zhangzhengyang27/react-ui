@@ -14,6 +14,6 @@
 }
 
 .label {
-  fill: var(--mantine-color-text);
-  font-size: var(--mantine-font-size-sm);
+  fill: var(--ui-color-text);
+  font-size: var(--ui-font-size-sm);
 }

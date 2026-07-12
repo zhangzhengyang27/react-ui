@@ -40,7 +40,7 @@ export function RichTextEditorColorPickerControl(props: RichTextEditorColorPicke
   const { editor, labels, getStyles, variant } = useRichTextEditorContext();
   const [opened, { toggle, close }] = useDisclosure(false);
   const [state, setState] = useState<'palette' | 'colorPicker'>('palette');
-  const currentColor = editor?.getAttributes('textStyle').color || 'var(--mantine-color-text)';
+  const currentColor = editor?.getAttributes('textStyle').color || 'var(--ui-color-text)';
 
   const handleChange = (value: string, shouldClose = true) => {
     (editor?.chain() as any)?.focus().setColor(value).run();

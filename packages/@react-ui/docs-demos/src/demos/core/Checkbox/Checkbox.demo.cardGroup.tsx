@@ -5,35 +5,35 @@ import classes from './Checkbox.demo.card.module.css';
 
 const cssCode = `.root {
   position: relative;
-  padding: var(--mantine-spacing-md);
+  padding: var(--ui-spacing-md);
   transition: border-color 150ms ease;
 
   &[data-checked] {
-    border-color: var(--mantine-primary-color-filled);
+    border-color: var(--ui-primary-color-filled);
   }
 
   @mixin hover {
     @mixin light {
-      background-color: var(--mantine-color-gray-0);
+      background-color: var(--ui-color-gray-0);
     }
 
     @mixin dark {
-      background-color: var(--mantine-color-dark-6);
+      background-color: var(--ui-color-dark-6);
     }
   }
 }
 
 .label {
   font-weight: 600;
-  font-size: var(--mantine-font-size-sm);
+  font-size: var(--ui-font-size-sm);
   line-height: 1.3;
-  color: var(--mantine-color-bright);
+  color: var(--ui-color-bright);
 }
 
 .description {
   margin-top: 4px;
-  color: var(--mantine-color-dimmed);
-  font-size: var(--mantine-font-size-xs);
+  color: var(--ui-color-dimmed);
+  font-size: var(--ui-font-size-xs);
 }
 `;
 

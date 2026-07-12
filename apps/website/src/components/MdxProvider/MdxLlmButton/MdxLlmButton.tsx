@@ -4,7 +4,7 @@ import { Button } from '@react-ui/ui';
 export function MdxLlmButton({ href }: { href: string }) {
   return (
     <Button
-      rightSection={<RobotIcon color="var(--mantine-color-red-8)" size={22} />}
+      rightSection={<RobotIcon color="var(--ui-color-red-8)" size={22} />}
       size="lg"
       miw={300}
       justify="space-between"

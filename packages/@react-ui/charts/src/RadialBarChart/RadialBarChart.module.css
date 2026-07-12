@@ -1,12 +1,12 @@
 .root {
   @mixin where-light {
-    --chart-empty-background: var(--mantine-color-gray-1);
-    --chart-cursor-color: var(--mantine-color-gray-4);
+    --chart-empty-background: var(--ui-color-gray-1);
+    --chart-cursor-color: var(--ui-color-gray-4);
   }
 
   @mixin where-dark {
-    --chart-empty-background: var(--mantine-color-dark-6);
-    --chart-cursor-color: var(--mantine-color-dark-4);
+    --chart-empty-background: var(--ui-color-dark-6);
+    --chart-cursor-color: var(--ui-color-dark-4);
   }
 
   :where(svg) {
@@ -15,19 +15,19 @@
 }
 
 .tooltip {
-  padding: var(--mantine-spacing-md);
-  box-shadow: var(--mantine-shadow-md);
+  padding: var(--ui-spacing-md);
+  box-shadow: var(--ui-shadow-md);
   min-width: 200px;
-  font-size: var(--mantine-font-size-sm);
+  font-size: var(--ui-font-size-sm);
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   @mixin where-light {
-    border: 1px solid var(--mantine-color-gray-2);
+    border: 1px solid var(--ui-color-gray-2);
   }
 
   @mixin where-dark {
-    border: 1px solid var(--mantine-color-dark-4);
+    border: 1px solid var(--ui-color-dark-4);
   }
 }

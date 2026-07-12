@@ -10,17 +10,17 @@ import {
 const payload = [
   {
     dataKey: 'Apples',
-    color: 'var(--mantine-color-indigo-6)',
+    color: 'var(--ui-color-indigo-6)',
     payload: { name: 'Apples', dataKey: 'Apples' },
   },
   {
     dataKey: 'Oranges',
-    color: 'var(--mantine-color-blue-6)',
+    color: 'var(--ui-color-blue-6)',
     payload: { name: 'Oranges', dataKey: 'Oranges' },
   },
   {
     dataKey: 'Tomatoes',
-    color: 'var(--mantine-color-teal-6)',
+    color: 'var(--ui-color-teal-6)',
     payload: { name: 'Tomatoes', dataKey: 'Tomatoes' },
   },
 ];
@@ -235,7 +235,7 @@ describe('@react-ui/charts/ChartLegend', () => {
     const nestedPayload = [
       {
         dataKey: 'salad.ApplesProp',
-        color: 'var(--mantine-color-indigo-6)',
+        color: 'var(--ui-color-indigo-6)',
         payload: { name: 'salad.ApplesProp', dataKey: 'salad.ApplesProp' },
       },
     ];
@@ -252,7 +252,7 @@ describe('@react-ui/charts/ChartLegend', () => {
     const nestedPayload = [
       {
         dataKey: 'salad.ApplesProp',
-        color: 'var(--mantine-color-indigo-6)',
+        color: 'var(--ui-color-indigo-6)',
         payload: { name: 'salad.ApplesProp', dataKey: 'salad.ApplesProp' },
       },
     ];

@@ -11,16 +11,16 @@ const cssCode = `.root {
 }
 
 .child {
-  background-color: var(--mantine-color-dimmed);
-  color: var(--mantine-color-white);
-  padding: var(--mantine-spacing-md);
+  background-color: var(--ui-color-dimmed);
+  color: var(--ui-color-white);
+  padding: var(--ui-spacing-md);
 
   @container (max-width: 500px) {
-    background-color: var(--mantine-color-blue-filled);
+    background-color: var(--ui-color-blue-filled);
   }
 
   @container (max-width: 300px) {
-    background-color: var(--mantine-color-red-filled);
+    background-color: var(--ui-color-red-filled);
   }
 }`;
 

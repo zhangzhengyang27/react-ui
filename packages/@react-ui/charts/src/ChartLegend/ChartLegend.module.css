@@ -10,11 +10,11 @@
   }
 
   &:where([data-position='top']) {
-    padding-bottom: var(--mantine-spacing-md);
+    padding-bottom: var(--ui-spacing-md);
   }
 
   &:where([data-position='bottom']) {
-    padding-top: var(--mantine-spacing-md);
+    padding-top: var(--ui-spacing-md);
   }
 }
 
@@ -22,17 +22,17 @@
   display: flex;
   align-items: center;
   gap: 7px;
-  padding: 7px var(--mantine-spacing-xs);
-  border-radius: var(--mantine-radius-default);
+  padding: 7px var(--ui-spacing-xs);
+  border-radius: var(--ui-radius-default);
   line-height: 1;
 
   @mixin where-hover {
     @mixin where-light {
-      background-color: var(--mantine-color-gray-0);
+      background-color: var(--ui-color-gray-0);
     }
 
     @mixin where-dark {
-      background-color: var(--mantine-color-dark-5);
+      background-color: var(--ui-color-dark-5);
     }
   }
 
@@ -42,7 +42,7 @@
 }
 
 .legendItemName {
-  font-size: var(--mantine-font-size-sm);
+  font-size: var(--ui-font-size-sm);
   margin: 0;
   padding: 0;
 }

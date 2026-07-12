@@ -20,7 +20,7 @@ function Demo() {
   const rows = elements.map((element) => (
     <Table.Tr
       key={element.name}
-      bg={selectedRows.includes(element.position) ? 'var(--mantine-color-blue-light)' : undefined}
+      bg={selectedRows.includes(element.position) ? 'var(--ui-color-blue-light)' : undefined}
     >
       <Table.Td>
         <Checkbox
@@ -73,7 +73,7 @@ function Demo() {
   const rows = elements.map((element) => (
     <Table.Tr
       key={element.name}
-      bg={selectedRows.includes(element.position) ? 'var(--mantine-color-blue-light)' : undefined}
+      bg={selectedRows.includes(element.position) ? 'var(--ui-color-blue-light)' : undefined}
     >
       <Table.Td>
         <Checkbox

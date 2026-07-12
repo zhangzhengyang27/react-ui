@@ -65,10 +65,10 @@
   min-height: var(--carousel-control-size);
   border-radius: var(--carousel-control-size);
   pointer-events: all;
-  background-color: var(--mantine-color-white);
-  color: var(--mantine-color-black);
-  box-shadow: var(--mantine-shadow-md);
-  border: 1px solid var(--mantine-color-gray-3);
+  background-color: var(--ui-color-white);
+  color: var(--ui-color-black);
+  box-shadow: var(--ui-shadow-md);
+  border: 1px solid var(--ui-color-gray-3);
   transition: opacity 100ms ease;
 
   @mixin where-light {
@@ -94,12 +94,12 @@
   &:where([data-orientation='vertical']) {
     bottom: 0;
     top: 0;
-    inset-inline-end: var(--mantine-spacing-md);
+    inset-inline-end: var(--ui-spacing-md);
     flex-direction: column;
   }
 
   &:where([data-orientation='horizontal']) {
-    bottom: var(--mantine-spacing-md);
+    bottom: var(--ui-spacing-md);
     inset-inline-start: 0;
     inset-inline-end: 0;
     flex-direction: row;
@@ -108,10 +108,10 @@
 
 .indicator {
   pointer-events: all;
-  border-radius: var(--mantine-radius-xl);
-  box-shadow: var(--mantine-shadow-sm);
+  border-radius: var(--ui-radius-xl);
+  box-shadow: var(--ui-shadow-sm);
   opacity: 0.6;
-  background-color: var(--mantine-color-white);
+  background-color: var(--ui-color-white);
 
   @mixin hover {
     opacity: 1;

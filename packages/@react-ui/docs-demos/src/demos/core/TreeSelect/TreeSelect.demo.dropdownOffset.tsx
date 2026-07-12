@@ -6,7 +6,7 @@ import classes from './TreeSelect.demo.dropdownOffset.module.css';
 const cssCode = `.dropdown {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
-  border-color: light-dark(var(--mantine-color-gray-4), var(--mantine-color-dark-4));
+  border-color: light-dark(var(--ui-color-gray-4), var(--ui-color-dark-4));
   border-top: 0;
 }
 
@@ -14,7 +14,7 @@ const cssCode = `.dropdown {
   transition: none;
 
   &[data-expanded] {
-    border-color: light-dark(var(--mantine-color-gray-4), var(--mantine-color-dark-4));
+    border-color: light-dark(var(--ui-color-gray-4), var(--ui-color-dark-4));
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }

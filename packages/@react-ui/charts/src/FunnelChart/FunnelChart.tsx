@@ -188,7 +188,7 @@ export const FunnelChart = factory<FunnelChartFactory>((_props) => {
             }))}
             dataKey="value"
             isAnimationActive={false}
-            stroke="var(--chart-stroke-color, var(--mantine-color-body))"
+            stroke="var(--chart-stroke-color, var(--ui-color-body))"
             strokeWidth={strokeWidth}
             {...funnelProps}
           >
@@ -197,11 +197,11 @@ export const FunnelChart = factory<FunnelChartFactory>((_props) => {
                 position={labelsPosition}
                 fill={
                   labelsPosition === 'inside'
-                    ? 'var(--chart-labels-color, var(--mantine-color-white))'
-                    : 'var(--chart-labels-color, var(--mantine-color-dimmed))'
+                    ? 'var(--chart-labels-color, var(--ui-color-white))'
+                    : 'var(--chart-labels-color, var(--ui-color-dimmed))'
                 }
                 stroke="none"
-                fontFamily="var(--mantine-font-family)"
+                fontFamily="var(--ui-font-family)"
                 fontSize={12}
                 dataKey={(entry) => {
                   return typeof valueFormatter === 'function'

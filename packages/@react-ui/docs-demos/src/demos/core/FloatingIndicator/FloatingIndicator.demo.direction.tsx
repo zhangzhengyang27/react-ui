@@ -123,17 +123,17 @@ function Demo() {
 
 const cssCode = `.root {
   position: relative;
-  background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
+  background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-8));
   width: fit-content;
-  padding: var(--mantine-spacing-sm);
-  border-radius: var(--mantine-radius-md);
+  padding: var(--ui-spacing-sm);
+  border-radius: var(--ui-radius-md);
 }
 
 .indicator {
-  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-6));
-  border-radius: var(--mantine-radius-md);
-  box-shadow: var(--mantine-shadow-md);
-  border: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-4));
+  background-color: light-dark(var(--ui-color-white), var(--ui-color-dark-6));
+  border-radius: var(--ui-radius-md);
+  box-shadow: var(--ui-shadow-md);
+  border: 1px solid light-dark(var(--ui-color-gray-2), var(--ui-color-dark-4));
 }
 
 .controlsGroup {
@@ -146,16 +146,16 @@ const cssCode = `.root {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-2));
-  border-radius: var(--mantine-radius-md);
+  color: light-dark(var(--ui-color-gray-6), var(--ui-color-dark-2));
+  border-radius: var(--ui-radius-md);
 
   &[data-active] {
-    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+    color: light-dark(var(--ui-color-black), var(--ui-color-white));
   }
 
   @mixin hover {
-    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
-    background-color: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-7));
+    color: light-dark(var(--ui-color-black), var(--ui-color-white));
+    background-color: light-dark(var(--ui-color-gray-1), var(--ui-color-dark-7));
   }
 
   & svg {

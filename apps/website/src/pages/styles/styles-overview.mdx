@@ -125,20 +125,20 @@ function Demo({ color }: { color: string }) {
 }
 
 .control {
-  background-color: var(--mantine-color-blue-1);
-  color: var(--mantine-color-blue-filled);
-  padding: var(--mantine-spacing-xl);
+  background-color: var(--ui-color-blue-1);
+  color: var(--ui-color-blue-filled);
+  padding: var(--ui-spacing-xl);
   margin-left: 40px;
 
   @media (max-width: $mantine-breakpoint-sm) {
     margin-left: 0;
-    margin-top: var(--mantine-spacing-md);
+    margin-top: var(--ui-spacing-md);
   }
 
   @mixin hover {
     background-color: light-dark(
-      var(--mantine-color-blue-1),
-      var(--mantine-color-blue-9)
+      var(--ui-color-blue-1),
+      var(--ui-color-blue-9)
     );
   }
 }
@@ -171,13 +171,13 @@ function Demo({ collapsed }: { collapsed: boolean }) {
 ```scss
 .root {
   // 引用 theme.colors.red[5]
-  background: var(--mantine-color-red-5);
+  background: var(--ui-color-red-5);
 
   // 引用 theme.spacing.md
-  margin-top: var(--mantine-spacing-md);
+  margin-top: var(--ui-spacing-md);
 
   // 引用 theme.headings.fontFamily
-  font-family: var(--mantine-font-family-headings);
+  font-family: var(--ui-font-family-headings);
 }
 ```
 
@@ -188,10 +188,10 @@ import { Box } from '@react-ui/ui';
 
 function Demo() {
   // bg="red.5" 引用 theme.colors.red[5]
-  // "red.5" 是 var(--mantine-color-red-5) 的简写
+  // "red.5" 是 var(--ui-color-red-5) 的简写
 
   // mt="xl" 引用 theme.spacing.xl
-  // "xl" 是 var(--mantine-spacing-xl) 的简写
+  // "xl" 是 var(--ui-spacing-xl) 的简写
   return (
     <Box bg="red.5" mt="xl">
       My box
@@ -210,8 +210,8 @@ function Demo() {
     <>
       <Box
         style={{
-          margin: 'var(--mantine-spacing-xl)',
-          color: 'var(--mantine-color-orange-5)',
+          margin: 'var(--ui-spacing-xl)',
+          color: 'var(--ui-color-orange-5)',
         }}
       >
         With CSS variables

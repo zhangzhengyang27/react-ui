@@ -1,3 +1,3 @@
 .groupCell {
-  background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+  background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-6));
 }

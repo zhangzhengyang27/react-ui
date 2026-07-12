@@ -20,19 +20,19 @@
 }
 
 .titleLink {
-  color: var(--mantine-color-bright);
+  color: var(--ui-color-bright);
   text-decoration: none;
   font-family: var(--docs-font-primary);
   font-size: 28px;
 }
 
 .description {
-  color: var(--mantine-color-dimmed);
-  font-size: var(--mantine-font-size-lg);
+  color: var(--ui-color-dimmed);
+  font-size: var(--ui-font-size-lg);
   max-width: 500px;
 
   @mixin smaller-than $mantine-breakpoint-md {
-    font-size: var(--mantine-font-size-sm);
+    font-size: var(--ui-font-size-sm);
   }
 }
 
@@ -41,6 +41,6 @@
 
   @mixin smaller-than $mantine-breakpoint-md {
     height: auto;
-    margin-bottom: var(--mantine-spacing-sm);
+    margin-bottom: var(--ui-spacing-sm);
   }
 }

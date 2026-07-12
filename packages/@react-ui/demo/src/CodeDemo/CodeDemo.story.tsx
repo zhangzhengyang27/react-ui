@@ -25,14 +25,14 @@ const cssCode = `.code {
   display: inline-block;
   padding: rem(2px) rem(4px);
   font-size: rem(13px);
-  border-radius: var(--mantine-radius-xs);
-  line-height: var(--mantine-line-height);
-  font-family: var(--mantine-font-family-monospace);
+  border-radius: var(--ui-radius-xs);
+  line-height: var(--ui-line-height);
+  font-family: var(--ui-font-family-monospace);
 }
 
 .pre {
   display: block;
-  padding: var(--mantine-spacing-md);
+  padding: var(--ui-spacing-md);
   line-height: 1.7;
   margin: 0;
 }

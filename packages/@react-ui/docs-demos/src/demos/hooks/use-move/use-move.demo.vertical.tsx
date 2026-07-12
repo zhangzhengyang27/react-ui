@@ -20,7 +20,7 @@ function Demo() {
           style={{
             width: 16,
             height: 120,
-            backgroundColor: 'var(--mantine-color-blue-light)',
+            backgroundColor: 'var(--ui-color-blue-light)',
             position: 'relative',
           }}
         >
@@ -31,7 +31,7 @@ function Demo() {
               bottom: 0,
               height: \`\${value * 100}%\`,
               width: 16,
-              backgroundColor: 'var(--mantine-color-blue-filled)',
+              backgroundColor: 'var(--ui-color-blue-filled)',
               opacity: 0.7,
             }}
           />
@@ -44,7 +44,7 @@ function Demo() {
               left: 0,
               width: 16,
               height: 16,
-              backgroundColor: 'var(--mantine-color-blue-7)',
+              backgroundColor: 'var(--ui-color-blue-7)',
             }}
           />
         </div>
@@ -69,7 +69,7 @@ function Demo() {
           style={{
             width: 16,
             height: 120,
-            backgroundColor: 'var(--mantine-color-blue-light)',
+            backgroundColor: 'var(--ui-color-blue-light)',
             position: 'relative',
           }}
         >
@@ -80,7 +80,7 @@ function Demo() {
               bottom: 0,
               height: `${value * 100}%`,
               width: 16,
-              backgroundColor: 'var(--mantine-color-blue-filled)',
+              backgroundColor: 'var(--ui-color-blue-filled)',
               opacity: 0.7,
             }}
           />
@@ -93,7 +93,7 @@ function Demo() {
               left: 0,
               width: 16,
               height: 16,
-              backgroundColor: 'var(--mantine-color-blue-7)',
+              backgroundColor: 'var(--ui-color-blue-7)',
             }}
           />
         </div>

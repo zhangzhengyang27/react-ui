@@ -6,6 +6,6 @@
   &[data-combobox-selected] {
     font-weight: 600;
     transform: scale(1.1);
-    box-shadow: var(--mantine-shadow-lg);
+    box-shadow: var(--ui-shadow-lg);
   }
 }

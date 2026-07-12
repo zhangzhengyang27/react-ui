@@ -20,12 +20,12 @@ function Demo() {
               top: 0,
               left: 0,
               right: 0,
-              padding: 'var(--mantine-spacing-xs)',
+              padding: 'var(--ui-spacing-xs)',
               height: 60,
               zIndex: 1000000,
               transform: \`translate3d(0, \${pinned ? 0 : '-110px'}, 0)\`,
               transition: 'transform 400ms ease',
-              backgroundColor: 'var(--mantine-color-body)',
+              backgroundColor: 'var(--ui-color-body)',
             }}
           >
             <Group justify="center" h="100%">
@@ -57,12 +57,12 @@ function Demo() {
               top: 0,
               left: 0,
               right: 0,
-              padding: 'var(--mantine-spacing-xs)',
+              padding: 'var(--ui-spacing-xs)',
               height: 60,
               zIndex: 1000000,
               transform: `translate3d(0, ${pinned ? 0 : '-110px'}, 0)`,
               transition: 'transform 400ms ease',
-              backgroundColor: 'var(--mantine-color-body)',
+              backgroundColor: 'var(--ui-color-body)',
             }}
           >
             <Group justify="center" h="100%">

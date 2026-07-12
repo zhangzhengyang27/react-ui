@@ -27,7 +27,7 @@ export function getPieChartData<T extends PieChartDataItem>({
     ...item,
     __segmentIndex: index,
     fill: getThemeColor(item.color, theme),
-    stroke: 'var(--chart-stroke-color, var(--mantine-color-body))',
+    stroke: 'var(--chart-stroke-color, var(--ui-color-body))',
     strokeWidth,
     ...(typeof cellProps === 'function' ? cellProps(item) : cellProps),
     ...(highlightedIndex !== null ? { fillOpacity: highlightedIndex === index ? 1 : 0.2 } : null),

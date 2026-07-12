@@ -17,7 +17,7 @@ function Demo() {
       </Button>
 
       <div {...getCollapseProps()}>
-        <Typography bg="var(--mantine-color-blue-light)" p="xs" bdrs="md">
+        <Typography bg="var(--ui-color-blue-light)" p="xs" bdrs="md">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
           ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -39,7 +39,7 @@ function Demo() {
       </Button>
 
       <div {...getCollapseProps()}>
-        <Typography bg="var(--mantine-color-blue-light)" p="xs" bdrs="md">
+        <Typography bg="var(--ui-color-blue-light)" p="xs" bdrs="md">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
           ullamco laboris nisi ut aliquip ex ea commodo consequat.

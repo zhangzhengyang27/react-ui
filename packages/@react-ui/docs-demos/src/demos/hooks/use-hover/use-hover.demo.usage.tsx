@@ -22,7 +22,7 @@ function Demo() {
       ref={ref}
       style={{
         height: 60,
-        backgroundColor: 'var(--mantine-color-blue-light)',
+        backgroundColor: 'var(--ui-color-blue-light)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

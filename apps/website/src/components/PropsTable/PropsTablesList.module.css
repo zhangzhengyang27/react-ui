@@ -9,30 +9,30 @@
 .searchIcon {
   width: 22px;
   height: 22px;
-  color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-3));
+  color: light-dark(var(--ui-color-gray-6), var(--ui-color-dark-3));
 }
 
 .title {
   font-family: var(--docs-font-primary);
   font-weight: 600;
-  margin-bottom: var(--mantine-spacing-sm);
-  color: var(--mantine-color-bright);
-  padding-inline-start: var(--mantine-spacing-xs);
+  margin-bottom: var(--ui-spacing-sm);
+  color: var(--ui-color-bright);
+  padding-inline-start: var(--ui-spacing-xs);
 
   @mixin smaller-than $docs-mdx-breakpoint {
-    font-size: var(--mantine-font-size-xl);
+    font-size: var(--ui-font-size-xl);
   }
 }
 
 .section {
-  border: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
-  border-radius: var(--mantine-radius-md);
-  padding: var(--mantine-spacing-sm);
+  border: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-4));
+  border-radius: var(--ui-radius-md);
+  padding: var(--ui-spacing-sm);
   padding-bottom: 0;
-  padding-top: var(--mantine-spacing-md);
+  padding-top: var(--ui-spacing-md);
 
   & + & {
-    margin-top: var(--mantine-spacing-xl);
+    margin-top: var(--ui-spacing-xl);
   }
 
   &:not(:has([data-props-table-row])) {
@@ -41,11 +41,11 @@
 }
 
 .search {
-  margin-bottom: var(--mantine-spacing-xl);
+  margin-bottom: var(--ui-spacing-xl);
 }
 
 .nothingFound {
   display: none;
-  font-size: var(--mantine-font-size-lg);
-  color: var(--mantine-color-dimmed);
+  font-size: var(--ui-font-size-lg);
+  color: var(--ui-color-dimmed);
 }

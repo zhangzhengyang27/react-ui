@@ -34,16 +34,16 @@ function Demo() {
             width: 200,
             height: 120,
             backgroundColor: active
-              ? 'var(--mantine-color-teal-filled)'
-              : 'var(--mantine-color-blue-filled)',
-            borderRadius: 'var(--mantine-radius-md)',
+              ? 'var(--ui-color-teal-filled)'
+              : 'var(--ui-color-blue-filled)',
+            borderRadius: 'var(--ui-radius-md)',
             transform: \`translate(\${pos.x}px, \${pos.y}px)\`,
             cursor: active ? 'grabbing' : 'grab',
             touchAction: 'none',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: 'var(--mantine-color-white)',
+            color: 'var(--ui-color-white)',
             fontWeight: 600,
             userSelect: 'none',
           }}
@@ -85,16 +85,16 @@ function Demo() {
             width: 200,
             height: 120,
             backgroundColor: active
-              ? 'var(--mantine-color-teal-filled)'
-              : 'var(--mantine-color-blue-filled)',
-            borderRadius: 'var(--mantine-radius-md)',
+              ? 'var(--ui-color-teal-filled)'
+              : 'var(--ui-color-blue-filled)',
+            borderRadius: 'var(--ui-radius-md)',
             transform: `translate(${pos.x}px, ${pos.y}px)`,
             cursor: active ? 'grabbing' : 'grab',
             touchAction: 'none',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: 'var(--mantine-color-white)',
+            color: 'var(--ui-color-white)',
             fontWeight: 600,
             userSelect: 'none',
           }}

@@ -27,14 +27,14 @@ function Demo() {
         y2={3200}
         fillOpacity={0.3}
         strokeOpacity={0.9}
-        fill="var(--mantine-color-gray-4)"
-        stroke="var(--mantine-color-gray-6)"
+        fill="var(--ui-color-gray-4)"
+        stroke="var(--ui-color-gray-6)"
         strokeWidth={1}
         label={{
           value: 'Weekend sales target',
           position: 'insideTopRight',
           fontSize: 12,
-          fill: 'var(--mantine-color-bright)',
+          fill: 'var(--ui-color-bright)',
         }}
       />
     </LineChart>
@@ -61,14 +61,14 @@ function Demo() {
         y2={3200}
         fillOpacity={0.3}
         strokeOpacity={0.9}
-        fill="var(--mantine-color-gray-4)"
-        stroke="var(--mantine-color-gray-6)"
+        fill="var(--ui-color-gray-4)"
+        stroke="var(--ui-color-gray-6)"
         strokeWidth={1}
         label={{
           value: 'Weekend sales target',
           position: 'insideTopRight',
           fontSize: 12,
-          fill: 'var(--mantine-color-bright)',
+          fill: 'var(--ui-color-bright)',
         }}
       />
     </LineChart>

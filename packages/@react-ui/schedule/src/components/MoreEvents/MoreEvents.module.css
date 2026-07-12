@@ -1,11 +1,11 @@
 .moreEventsButton {
-  color: var(--mantine-color-dimmed);
+  color: var(--ui-color-dimmed);
   font-size: 13px;
   pointer-events: all;
   flex: 1;
 
   @mixin hover {
-    color: var(--mantine-color-bright);
+    color: var(--ui-color-bright);
     text-decoration: underline;
   }
 
@@ -13,7 +13,7 @@
     cursor: default;
 
     @mixin hover {
-      color: var(--mantine-color-dimmed);
+      color: var(--ui-color-dimmed);
       text-decoration: none;
     }
   }

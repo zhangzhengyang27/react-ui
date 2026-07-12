@@ -18,9 +18,9 @@ function UserButton({ image, name, email, icon, ...others }: UserButtonProps) {
   return (
     <UnstyledButton
       style={{
-        padding: 'var(--mantine-spacing-md)',
-        color: 'var(--mantine-color-text)',
-        borderRadius: 'var(--mantine-radius-sm)',
+        padding: 'var(--ui-spacing-md)',
+        color: 'var(--ui-color-text)',
+        borderRadius: 'var(--ui-radius-sm)',
       }}
       {...others}
     >
@@ -70,9 +70,9 @@ function UserButton({ image, name, email, icon, ...others }: UserButtonProps) {
   return (
     <UnstyledButton
       style={{
-        padding: 'var(--mantine-spacing-md)',
-        color: 'var(--mantine-color-text)',
-        borderRadius: 'var(--mantine-radius-sm)',
+        padding: 'var(--ui-spacing-md)',
+        color: 'var(--ui-color-text)',
+        borderRadius: 'var(--ui-radius-sm)',
       }}
       {...others}
     >

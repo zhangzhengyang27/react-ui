@@ -1,14 +1,14 @@
 .root {
   h2 {
-    color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-2));
-    font-size: var(--mantine-font-size-xl);
+    color: light-dark(var(--ui-color-gray-6), var(--ui-color-dark-2));
+    font-size: var(--ui-font-size-xl);
   }
 
   p {
-    font-size: var(--mantine-font-size-lg);
+    font-size: var(--ui-font-size-lg);
   }
 
   a {
-    color: var(--mantine-color-red-6);
+    color: var(--ui-color-red-6);
   }
 }

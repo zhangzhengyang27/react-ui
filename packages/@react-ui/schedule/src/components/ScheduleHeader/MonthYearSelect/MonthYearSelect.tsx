@@ -229,7 +229,7 @@ export const MonthYearSelect = factory<MonthYearSelectFactory>((_props) => {
       __staticSelector={__staticSelector}
       trapFocus
       transitionProps={{ transition: 'pop', duration: 120 }}
-      radius={radius || 'var(--schedule-radius, var(--mantine-radius-default))'}
+      radius={radius || 'var(--schedule-radius, var(--ui-radius-default))'}
       shadow="md"
       offset={3}
       width={withMonths ? undefined : 'target'}

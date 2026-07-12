@@ -2,26 +2,26 @@
   text-align: center;
   padding-inline: 1em;
   padding-block: 0.25em;
-  border: 1px solid var(--mantine-color-default-border);
-  background-color: var(--mantine-color-default);
-  color: var(--mantine-color-default-color);
-  border-radius: var(--time-grid-radius, var(--mantine-radius-default));
-  font-size: var(--time-grid-fz, var(--mantine-font-size-sm));
+  border: 1px solid var(--ui-color-default-border);
+  background-color: var(--ui-color-default);
+  color: var(--ui-color-default-color);
+  border-radius: var(--time-grid-radius, var(--ui-radius-default));
+  font-size: var(--time-grid-fz, var(--ui-font-size-sm));
 
   @mixin hover {
     &:where(:not([data-disabled])) {
-      background-color: var(--mantine-color-default-hover);
+      background-color: var(--ui-color-default-hover);
     }
   }
 
   &:where([data-active]) {
-    background-color: var(--mantine-primary-color-filled);
-    color: var(--mantine-color-white);
+    background-color: var(--ui-primary-color-filled);
+    color: var(--ui-color-white);
     border-color: transparent;
 
     @mixin hover {
       &:where(:not([data-disabled])) {
-        background-color: var(--mantine-primary-color-filled-hover);
+        background-color: var(--ui-primary-color-filled-hover);
       }
     }
   }

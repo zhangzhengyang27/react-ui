@@ -4,7 +4,7 @@
   & + & {
     margin-top: var(--group-spacing);
     padding-top: var(--group-spacing);
-    border-top: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-3));
+    border-top: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-3));
   }
 }
 
@@ -12,23 +12,23 @@
 .title {
   font-family: var(--docs-font-primary);
   font-weight: 600;
-  margin-bottom: var(--mantine-spacing-sm);
-  color: var(--mantine-color-bright);
+  margin-bottom: var(--ui-spacing-sm);
+  color: var(--ui-color-bright);
 }
 
 .title {
-  margin-top: var(--mantine-spacing-md);
+  margin-top: var(--ui-spacing-md);
 }
 
 .panel {
-  padding-top: var(--mantine-spacing-md);
+  padding-top: var(--ui-spacing-md);
 }
 
 .tab {
   font-weight: 600;
 
   &[data-active] {
-    background-color: light-dark(var(--mantine-color-black), var(--mantine-color-gray-1));
-    color: light-dark(var(--mantine-color-white), var(--mantine-color-gray-9));
+    background-color: light-dark(var(--ui-color-black), var(--ui-color-gray-1));
+    color: light-dark(var(--ui-color-white), var(--ui-color-gray-9));
   }
 }

@@ -262,7 +262,7 @@ export const LineChart = factory<LineChartFactory>((_props) => {
                 fillOpacity: dimmed ? 0 : 1,
                 strokeOpacity: dimmed ? 0 : 1,
                 strokeWidth: 1,
-                fill: type === 'gradient' ? 'var(--mantine-color-gray-7)' : color,
+                fill: type === 'gradient' ? 'var(--ui-color-gray-7)' : color,
                 stroke: type === 'gradient' ? 'white' : color,
                 ...dotProps,
               }
@@ -271,7 +271,7 @@ export const LineChart = factory<LineChartFactory>((_props) => {
         activeDot={
           withDots
             ? {
-                fill: type === 'gradient' ? 'var(--mantine-color-gray-7)' : color,
+                fill: type === 'gradient' ? 'var(--ui-color-gray-7)' : color,
                 stroke: type === 'gradient' ? 'white' : color,
                 ...activeDotProps,
               }

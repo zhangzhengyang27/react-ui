@@ -58,7 +58,7 @@ const handleH: React.CSSProperties = {
   flexShrink: 0,
   cursor: 'col-resize',
   touchAction: 'none',
-  backgroundColor: 'var(--mantine-color-default-border)',
+  backgroundColor: 'var(--ui-color-default-border)',
   position: 'relative',
 };
 
@@ -67,7 +67,7 @@ const handleV: React.CSSProperties = {
   flexShrink: 0,
   cursor: 'row-resize',
   touchAction: 'none',
-  backgroundColor: 'var(--mantine-color-default-border)',
+  backgroundColor: 'var(--ui-color-default-border)',
   position: 'relative',
 };
 
@@ -81,10 +81,10 @@ const gripH: React.CSSProperties = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  borderRadius: 'var(--mantine-radius-xs)',
-  backgroundColor: 'var(--mantine-color-default)',
-  border: '1px solid var(--mantine-color-default-border)',
-  color: 'var(--mantine-color-dimmed)',
+  borderRadius: 'var(--ui-radius-xs)',
+  backgroundColor: 'var(--ui-color-default)',
+  border: '1px solid var(--ui-color-default-border)',
+  color: 'var(--ui-color-dimmed)',
 };
 
 const gripV: React.CSSProperties = {
@@ -97,10 +97,10 @@ const gripV: React.CSSProperties = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  borderRadius: 'var(--mantine-radius-xs)',
-  backgroundColor: 'var(--mantine-color-default)',
-  border: '1px solid var(--mantine-color-default-border)',
-  color: 'var(--mantine-color-dimmed)',
+  borderRadius: 'var(--ui-radius-xs)',
+  backgroundColor: 'var(--ui-color-default)',
+  border: '1px solid var(--ui-color-default-border)',
+  color: 'var(--ui-color-dimmed)',
 };
 
 function Demo() {
@@ -125,10 +125,10 @@ function Demo() {
       style={{
         display: 'flex',
         height: 400,
-        border: '1px solid var(--mantine-color-default-border)',
-        borderRadius: 'var(--mantine-radius-md)',
+        border: '1px solid var(--ui-color-default-border)',
+        borderRadius: 'var(--ui-radius-md)',
         overflow: 'hidden',
-        fontSize: 'var(--mantine-font-size-sm)',
+        fontSize: 'var(--ui-font-size-sm)',
       }}
     >
       <div style={{ width: \\\`\\\${horizontal.sizes[0]}%\\\`, overflow: 'hidden' }}>
@@ -136,7 +136,7 @@ function Demo() {
           style={{
             padding: '8px 12px',
             fontWeight: 600,
-            borderBottom: '1px solid var(--mantine-color-default-border)',
+            borderBottom: '1px solid var(--ui-color-default-border)',
             whiteSpace: 'nowrap',
           }}
         >
@@ -179,7 +179,7 @@ function Demo() {
             style={{
               padding: '8px 12px',
               fontWeight: 600,
-              borderBottom: '1px solid var(--mantine-color-default-border)',
+              borderBottom: '1px solid var(--ui-color-default-border)',
               whiteSpace: 'nowrap',
             }}
           >
@@ -203,7 +203,7 @@ function Demo() {
             style={{
               padding: '8px 12px',
               fontWeight: 600,
-              borderBottom: '1px solid var(--mantine-color-default-border)',
+              borderBottom: '1px solid var(--ui-color-default-border)',
               whiteSpace: 'nowrap',
             }}
           >
@@ -275,7 +275,7 @@ const handleH: React.CSSProperties = {
   flexShrink: 0,
   cursor: 'col-resize',
   touchAction: 'none',
-  backgroundColor: 'var(--mantine-color-default-border)',
+  backgroundColor: 'var(--ui-color-default-border)',
   position: 'relative',
 };
 
@@ -284,7 +284,7 @@ const handleV: React.CSSProperties = {
   flexShrink: 0,
   cursor: 'row-resize',
   touchAction: 'none',
-  backgroundColor: 'var(--mantine-color-default-border)',
+  backgroundColor: 'var(--ui-color-default-border)',
   position: 'relative',
 };
 
@@ -298,10 +298,10 @@ const gripH: React.CSSProperties = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  borderRadius: 'var(--mantine-radius-xs)',
-  backgroundColor: 'var(--mantine-color-default)',
-  border: '1px solid var(--mantine-color-default-border)',
-  color: 'var(--mantine-color-dimmed)',
+  borderRadius: 'var(--ui-radius-xs)',
+  backgroundColor: 'var(--ui-color-default)',
+  border: '1px solid var(--ui-color-default-border)',
+  color: 'var(--ui-color-dimmed)',
 };
 
 const gripV: React.CSSProperties = {
@@ -314,10 +314,10 @@ const gripV: React.CSSProperties = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  borderRadius: 'var(--mantine-radius-xs)',
-  backgroundColor: 'var(--mantine-color-default)',
-  border: '1px solid var(--mantine-color-default-border)',
-  color: 'var(--mantine-color-dimmed)',
+  borderRadius: 'var(--ui-radius-xs)',
+  backgroundColor: 'var(--ui-color-default)',
+  border: '1px solid var(--ui-color-default-border)',
+  color: 'var(--ui-color-dimmed)',
 };
 
 function Demo() {
@@ -342,10 +342,10 @@ function Demo() {
       style={{
         display: 'flex',
         height: 400,
-        border: '1px solid var(--mantine-color-default-border)',
-        borderRadius: 'var(--mantine-radius-md)',
+        border: '1px solid var(--ui-color-default-border)',
+        borderRadius: 'var(--ui-radius-md)',
         overflow: 'hidden',
-        fontSize: 'var(--mantine-font-size-sm)',
+        fontSize: 'var(--ui-font-size-sm)',
       }}
     >
       <div style={{ width: `${horizontal.sizes[0]}%`, overflow: 'hidden' }}>
@@ -353,7 +353,7 @@ function Demo() {
           style={{
             padding: '8px 12px',
             fontWeight: 600,
-            borderBottom: '1px solid var(--mantine-color-default-border)',
+            borderBottom: '1px solid var(--ui-color-default-border)',
             whiteSpace: 'nowrap',
           }}
         >
@@ -396,7 +396,7 @@ function Demo() {
             style={{
               padding: '8px 12px',
               fontWeight: 600,
-              borderBottom: '1px solid var(--mantine-color-default-border)',
+              borderBottom: '1px solid var(--ui-color-default-border)',
               whiteSpace: 'nowrap',
             }}
           >
@@ -420,7 +420,7 @@ function Demo() {
             style={{
               padding: '8px 12px',
               fontWeight: 600,
-              borderBottom: '1px solid var(--mantine-color-default-border)',
+              borderBottom: '1px solid var(--ui-color-default-border)',
               whiteSpace: 'nowrap',
             }}
           >

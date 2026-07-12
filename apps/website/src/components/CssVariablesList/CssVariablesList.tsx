@@ -2,7 +2,7 @@ import { Code, ColorSwatch, DEFAULT_THEME, defaultCssVariablesResolver, keys } f
 import { MdxDataTable, MdxTitle } from '../MdxProvider';
 
 export function ColorPreview({ value }: { value: string }) {
-  if (!value || !value.match(/^(var\(--mantine-color[\w-]+\)|#\w+|rgba?\([\w,. ]+\))$/gm)) {
+  if (!value || !value.match(/^(var\(--ui-color[\w-]+\)|#\w+|rgba?\([\w,. ]+\))$/gm)) {
     return null;
   }
 

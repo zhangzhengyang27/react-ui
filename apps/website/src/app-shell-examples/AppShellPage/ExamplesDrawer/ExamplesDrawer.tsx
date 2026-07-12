@@ -51,7 +51,7 @@ export function ExamplesDrawer() {
             variant="default"
             size="md"
             leftSection={<ArrowLeftIcon className="mantine-rotate-rtl" size={20} />}
-            style={{ boxShadow: 'var(--mantine-shadow-sm)' }}
+            style={{ boxShadow: 'var(--ui-shadow-sm)' }}
             radius="xl"
           >
             Back to documentation
@@ -64,7 +64,7 @@ export function ExamplesDrawer() {
             size="md"
             w={160}
             leftSection={<StateIcon size={20} />}
-            style={{ boxShadow: 'var(--mantine-shadow-sm)' }}
+            style={{ boxShadow: 'var(--ui-shadow-sm)' }}
             radius="xl"
           >
             View {currentState === 'code' ? 'demo' : 'code'}
@@ -76,7 +76,7 @@ export function ExamplesDrawer() {
             radius="xl"
             leftSection={<ListIcon size={20} />}
             w="var(--button-height)"
-            style={{ boxShadow: 'var(--mantine-shadow-sm)' }}
+            style={{ boxShadow: 'var(--ui-shadow-sm)' }}
             aria-label="Other examples"
             className={classes.menuButton}
           />

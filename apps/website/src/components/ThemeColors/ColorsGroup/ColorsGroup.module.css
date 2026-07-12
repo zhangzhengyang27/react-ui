@@ -11,7 +11,7 @@
 .primarySwatch {
   width: 100%;
   height: calc(var(--primary-swatch-size) / 1.5);
-  border-radius: var(--mantine-radius-md);
+  border-radius: var(--ui-radius-md);
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   position: relative;
@@ -29,8 +29,8 @@
 .secondarySwatch {
   width: 10%;
   height: calc(var(--primary-swatch-size) / 10);
-  font-size: var(--mantine-font-size-xs);
-  font-family: var(--mantine-font-family-monospace);
+  font-size: var(--ui-font-size-xs);
+  font-family: var(--ui-font-family-monospace);
   text-transform: uppercase;
 }
 
@@ -56,6 +56,6 @@
   bottom: 12px;
   inset-inline-end: 12px;
   text-transform: uppercase;
-  font-family: var(--mantine-font-family-monospace);
-  font-size: var(--mantine-font-size-sm);
+  font-family: var(--ui-font-family-monospace);
+  font-size: var(--ui-font-size-sm);
 }

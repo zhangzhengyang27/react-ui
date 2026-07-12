@@ -3,9 +3,9 @@
 }
 
 .imageWrapper {
-  padding: var(--mantine-spacing-xl);
-  border-radius: var(--mantine-radius-md);
+  padding: var(--ui-spacing-xl);
+  border-radius: var(--ui-radius-md);
   display: flex;
   justify-content: center;
-  border: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-7));
+  border: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-7));
 }

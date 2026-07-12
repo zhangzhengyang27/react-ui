@@ -1,7 +1,7 @@
 .wrapper {
   position: sticky;
   top: var(--docs-header-height);
-  padding-top: var(--mantine-spacing-xl);
+  padding-top: var(--ui-spacing-xl);
   flex: 0 0 var(--docs-table-of-contents-width);
 
   @mixin smaller-than $docs-toc-breakpoint {
@@ -10,12 +10,12 @@
 
   &[data-with-tabs] {
     padding-top: 0;
-    top: calc(var(--docs-header-height) + var(--mantine-spacing-md));
+    top: calc(var(--docs-header-height) + var(--ui-spacing-md));
   }
 }
 
 .inner {
-  padding-bottom: var(--mantine-spacing-xl);
+  padding-bottom: var(--ui-spacing-xl);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -24,21 +24,21 @@
 .link {
   display: block;
   border-left: 1px solid transparent;
-  padding: 6px var(--mantine-spacing-md);
+  padding: 6px var(--ui-spacing-md);
   margin-left: -1px;
-  padding-left: calc(var(--toc-link-offset) * var(--mantine-spacing-lg));
+  padding-left: calc(var(--toc-link-offset) * var(--ui-spacing-lg));
   font-size: 13px;
   font-weight: 600;
-  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-1));
-  border-top-right-radius: var(--mantine-radius-sm);
-  border-bottom-right-radius: var(--mantine-radius-sm);
+  color: light-dark(var(--ui-color-gray-7), var(--ui-color-dark-1));
+  border-top-right-radius: var(--ui-radius-sm);
+  border-bottom-right-radius: var(--ui-radius-sm);
 
   &[data-active] {
-    border-color: var(--mantine-color-blue-5);
-    color: light-dark(var(--mantine-color-blue-8), var(--mantine-color-blue-2));
+    border-color: var(--ui-color-blue-5);
+    color: light-dark(var(--ui-color-blue-8), var(--ui-color-blue-2));
     background-color: light-dark(
-      var(--mantine-color-blue-0),
-      alpha(var(--mantine-color-blue-6), 0.17)
+      var(--ui-color-blue-0),
+      alpha(var(--ui-color-blue-6), 0.17)
     );
   }
 }
@@ -46,24 +46,24 @@
 .title {
   font-size: 15px;
   font-weight: 600;
-  margin-bottom: var(--mantine-spacing-md);
-  color: var(--mantine-color-bright);
+  margin-bottom: var(--ui-spacing-md);
+  color: var(--ui-color-bright);
 }
 
 .items {
   border-inline-start: 1px solid
-    light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-5));
+    light-dark(var(--ui-color-gray-3), var(--ui-color-dark-5));
 }
 
 .editPage {
-  color: var(--mantine-color-bright);
+  color: var(--ui-color-bright);
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: var(--mantine-font-size-sm);
-  margin-top: var(--mantine-spacing-md);
-  padding-top: var(--mantine-spacing-md);
-  border-top: 1px solid light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-6));
+  font-size: var(--ui-font-size-sm);
+  margin-top: var(--ui-spacing-md);
+  padding-top: var(--ui-spacing-md);
+  border-top: 1px solid light-dark(var(--ui-color-gray-1), var(--ui-color-dark-6));
 
   @mixin hover {
     text-decoration: underline;
@@ -71,5 +71,5 @@
 }
 
 .editPageIcon {
-  color: var(--mantine-color-dimmed);
+  color: var(--ui-color-dimmed);
 }

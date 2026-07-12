@@ -6,11 +6,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(45deg, var(--mantine-color-blue-6), var(--mantine-color-cyan-5));
-  color: var(--mantine-color-white);
+  background: linear-gradient(45deg, var(--ui-color-blue-6), var(--ui-color-cyan-5));
+  color: var(--ui-color-white);
   z-index: 200;
-  padding-inline: var(--mantine-spacing-md);
-  gap: var(--mantine-spacing-md);
+  padding-inline: var(--ui-spacing-md);
+  gap: var(--ui-spacing-md);
 }
 
 .content {
@@ -19,8 +19,8 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: var(--mantine-spacing-xs);
-  font-size: var(--mantine-font-size-sm);
+  gap: var(--ui-spacing-xs);
+  font-size: var(--ui-font-size-sm);
   font-weight: 500;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .link {
-  color: var(--mantine-color-white);
+  color: var(--ui-color-white);
   text-decoration: underline;
 }
 
@@ -54,9 +54,9 @@
   height: 20px;
   min-width: 20px;
   min-height: 20px;
-  border-radius: var(--mantine-radius-sm);
+  border-radius: var(--ui-radius-sm);
   background: rgba(255, 255, 255, 0.2);
-  color: var(--mantine-color-white);
+  color: var(--ui-color-white);
   border: none;
   cursor: pointer;
   display: flex;

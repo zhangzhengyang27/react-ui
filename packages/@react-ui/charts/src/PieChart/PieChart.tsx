@@ -207,8 +207,8 @@ const getOutsideLabel =
       cx={cx}
       cy={cy}
       textAnchor={x > Number(cx) ? 'start' : 'end'}
-      fill="var(--chart-labels-color, var(--mantine-color-dimmed))"
-      fontFamily="var(--mantine-font-family)"
+      fill="var(--chart-labels-color, var(--ui-color-dimmed))"
+      fontFamily="var(--ui-font-family)"
       fontSize={12}
     >
       <tspan x={x}>
@@ -300,7 +300,7 @@ export const PieChart = factory<PieChartFactory>((_props) => {
             labelLine={
               withLabelsLine && labelsPosition === 'outside'
                 ? {
-                    stroke: 'var(--chart-label-color, var(--mantine-color-dimmed))',
+                    stroke: 'var(--chart-label-color, var(--ui-color-dimmed))',
                     strokeWidth: 1,
                   }
                 : false

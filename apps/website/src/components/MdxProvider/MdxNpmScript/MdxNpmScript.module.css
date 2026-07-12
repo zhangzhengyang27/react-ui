@@ -5,10 +5,10 @@
 .tab {
   display: flex;
   align-items: center;
-  font-family: var(--mantine-font-family-monospace);
+  font-family: var(--ui-font-family-monospace);
   font-weight: 700;
   font-size: 12px;
-  border-radius: var(--mantine-radius-md);
+  border-radius: var(--ui-radius-md);
   border-end-end-radius: 0;
   border-end-start-radius: 0;
 
@@ -17,8 +17,8 @@
   }
 
   &[data-active] {
-    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
-    color: var(--mantine-color-bright);
+    background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-8));
+    color: var(--ui-color-bright);
   }
 }
 
@@ -27,7 +27,7 @@
   overflow: visible;
 
   & code {
-    border-radius: var(--mantine-radius-md);
+    border-radius: var(--ui-radius-md);
     border-start-start-radius: 0;
   }
 }

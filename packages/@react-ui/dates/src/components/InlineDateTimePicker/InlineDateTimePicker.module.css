@@ -1,20 +1,20 @@
 .timeWrapper {
   display: flex;
   align-items: stretch;
-  margin-top: var(--mantine-spacing-md);
+  margin-top: var(--ui-spacing-md);
 }
 
 .timeInput {
   flex: 1;
-  margin-inline-end: var(--mantine-spacing-md);
+  margin-inline-end: var(--ui-spacing-md);
 }
 
 .rangeInfo {
-  margin-top: var(--mantine-spacing-md);
-  font-size: calc(var(--mantine-font-size-sm) - rem(2px));
-  color: var(--mantine-color-text);
+  margin-top: var(--ui-spacing-md);
+  font-size: calc(var(--ui-font-size-sm) - rem(2px));
+  color: var(--ui-color-text);
   line-height: 1.4;
-  height: calc((var(--mantine-font-size-sm) - rem(2px)) * 1.4);
+  height: calc((var(--ui-font-size-sm) - rem(2px)) * 1.4);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -23,8 +23,8 @@
 .rangeTimeWrapper {
   display: flex;
   align-items: stretch;
-  gap: var(--mantine-spacing-md);
-  margin-top: var(--mantine-spacing-md);
+  gap: var(--ui-spacing-md);
+  margin-top: var(--ui-spacing-md);
 }
 
 .rangeTimeInput {

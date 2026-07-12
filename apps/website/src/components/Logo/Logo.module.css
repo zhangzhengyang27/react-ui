@@ -3,5 +3,5 @@
   user-select: none;
   display: flex;
   align-items: center;
-  color: var(--mantine-color-bright);
+  color: var(--ui-color-bright);
 }

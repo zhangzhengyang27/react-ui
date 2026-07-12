@@ -53,6 +53,6 @@
 }
 
 .compactViewSelect {
-  font-weight: var(--mantine-font-weight-medium);
+  font-weight: var(--ui-font-weight-medium);
   flex: 1;
 }

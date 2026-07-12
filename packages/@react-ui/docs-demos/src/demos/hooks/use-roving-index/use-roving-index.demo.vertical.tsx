@@ -23,10 +23,10 @@ function Demo() {
           {...getItemProps({ index })}
           p="xs"
           style={{
-            borderRadius: 'var(--mantine-radius-sm)',
+            borderRadius: 'var(--ui-radius-sm)',
             backgroundColor:
               focusedIndex === index
-                ? 'var(--mantine-color-blue-light)'
+                ? 'var(--ui-color-blue-light)'
                 : undefined,
           }}
         >
@@ -55,8 +55,8 @@ function Demo() {
           {...getItemProps({ index })}
           p="xs"
           style={{
-            borderRadius: 'var(--mantine-radius-sm)',
-            backgroundColor: focusedIndex === index ? 'var(--mantine-color-blue-light)' : undefined,
+            borderRadius: 'var(--ui-radius-sm)',
+            backgroundColor: focusedIndex === index ? 'var(--ui-color-blue-light)' : undefined,
           }}
         >
           {item}

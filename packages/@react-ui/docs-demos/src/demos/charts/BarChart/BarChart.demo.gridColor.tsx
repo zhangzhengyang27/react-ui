@@ -6,13 +6,13 @@ import classes from './BarChart.demo.gridColor.module.css';
 const cssCode = `
 .root {
   @mixin light {
-    --chart-grid-color: alpha(var(--mantine-color-black), 0.15);
-    --chart-text-color: var(--mantine-color-gray-7);
+    --chart-grid-color: alpha(var(--ui-color-black), 0.15);
+    --chart-text-color: var(--ui-color-gray-7);
   }
 
   @mixin dark {
-    --chart-grid-color: alpha(var(--mantine-color-white), 0.15);
-    --chart-text-color: var(--mantine-color-dark-0);
+    --chart-grid-color: alpha(var(--ui-color-white), 0.15);
+    --chart-text-color: var(--ui-color-dark-0);
   }
 }
 `;

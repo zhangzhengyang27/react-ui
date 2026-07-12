@@ -17,7 +17,7 @@ function Demo() {
       style={{
         listStylePosition: 'inside',
         paddingInlineStart: heading.depth * 20,
-        background: index === spy.active ? 'var(--mantine-color-blue-light)' : undefined,
+        background: index === spy.active ? 'var(--ui-color-blue-light)' : undefined,
       }}
     >
       <UnstyledButton onClick={() => heading.getNode().scrollIntoView()}>
@@ -46,7 +46,7 @@ function Demo() {
       style={{
         listStylePosition: 'inside',
         paddingInlineStart: heading.depth * 20,
-        background: index === spy.active ? 'var(--mantine-color-blue-light)' : undefined,
+        background: index === spy.active ? 'var(--ui-color-blue-light)' : undefined,
       }}
     >
       <UnstyledButton onClick={() => heading.getNode().scrollIntoView()}>

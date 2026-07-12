@@ -4,5 +4,5 @@
 
 .description {
   max-width: 1000px;
-  margin-bottom: var(--mantine-spacing-xl);
+  margin-bottom: var(--ui-spacing-xl);
 }

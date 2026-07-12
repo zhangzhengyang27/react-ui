@@ -18,8 +18,8 @@ const cssCode = `.handle {
   padding: 0;
   border: 0;
   background: transparent;
-  border-radius: var(--mantine-radius-sm);
-  color: light-dark(var(--mantine-color-gray-5), var(--mantine-color-dark-3));
+  border-radius: var(--ui-radius-sm);
+  color: light-dark(var(--ui-color-gray-5), var(--ui-color-dark-3));
   cursor: grab;
   transition:
     background-color 100ms ease,
@@ -27,13 +27,13 @@ const cssCode = `.handle {
 }
 
 .handle:hover {
-  background-color: light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
-  color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-dark-0));
+  background-color: light-dark(var(--ui-color-gray-2), var(--ui-color-dark-5));
+  color: light-dark(var(--ui-color-gray-9), var(--ui-color-dark-0));
 }
 
 .handle:active {
   cursor: grabbing;
-  background-color: light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  background-color: light-dark(var(--ui-color-gray-3), var(--ui-color-dark-4));
 }`;
 
 const code = `

@@ -275,7 +275,7 @@ export function DarkColorSchemeDemo() {
         label="Multiselect"
         placeholder="Search items"
         size="lg"
-        styles={{ pill: { background: 'var(--mantine-color-dark-5)' } }}
+        styles={{ pill: { background: 'var(--ui-color-dark-5)' } }}
       />
 
       <NumberInput

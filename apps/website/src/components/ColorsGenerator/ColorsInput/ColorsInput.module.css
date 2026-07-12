@@ -15,13 +15,13 @@
 
 .saturation {
   & :global(.mantine-ColorPicker-saturationOverlay) {
-    border-radius: var(--mantine-radius-md);
+    border-radius: var(--ui-radius-md);
   }
 }
 
 .input {
   max-width: 280px;
-  margin-bottom: var(--mantine-spacing-sm);
+  margin-bottom: var(--ui-spacing-sm);
 
   @media (max-width: em(950px)) {
     width: 100%;

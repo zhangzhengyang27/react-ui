@@ -5,9 +5,9 @@ import classes from './Checkbox.demo.customize.module.css';
 
 const cssCode = `
 .root {
-  border: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
-  padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
-  border-radius: var(--mantine-radius-md);
+  border: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-4));
+  padding: var(--ui-spacing-xs) var(--ui-spacing-sm);
+  border-radius: var(--ui-radius-md);
   font-weight: 600;
   transition:
     color 100ms ease,
@@ -16,9 +16,9 @@ const cssCode = `
   cursor: pointer;
 
   &[data-checked] {
-    background-color: var(--mantine-color-blue-filled);
-    border-color: var(--mantine-color-blue-filled);
-    color: var(--mantine-color-white);
+    background-color: var(--ui-color-blue-filled);
+    border-color: var(--ui-color-blue-filled);
+    color: var(--ui-color-white);
   }
 
   & * {

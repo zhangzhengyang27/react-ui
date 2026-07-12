@@ -46,7 +46,7 @@ export function ConfiguratorColorControl({
     .filter((color) => color !== 'dark')
     .map((color) => (
       <ColorSwatch
-        color={`var(--mantine-color-${color}-filled)`}
+        color={`var(--ui-color-${color}-filled)`}
         component="button"
         key={color}
         onClick={() => onChange(color)}

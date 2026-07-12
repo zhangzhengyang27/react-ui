@@ -9,10 +9,10 @@ import { DotsSixVerticalIcon } from '@phosphor-icons/react';
 import { useSplitter } from '@react-ui/hooks';
 
 const colors = [
-  'var(--mantine-color-blue-filled)',
-  'var(--mantine-color-teal-filled)',
-  'var(--mantine-color-grape-filled)',
-  'var(--mantine-color-orange-filled)',
+  'var(--ui-color-blue-filled)',
+  'var(--ui-color-teal-filled)',
+  'var(--ui-color-grape-filled)',
+  'var(--ui-color-orange-filled)',
 ];
 const labels = ['Panel A', 'Panel B', 'Panel C', 'Panel D'];
 
@@ -33,7 +33,7 @@ function Demo() {
       style={{
         display: 'flex',
         height: 200,
-        borderRadius: 'var(--mantine-radius-md)',
+        borderRadius: 'var(--ui-radius-md)',
         overflow: 'hidden',
       }}
     >
@@ -47,7 +47,7 @@ function Demo() {
                 flexShrink: 0,
                 cursor: 'col-resize',
                 touchAction: 'none',
-                backgroundColor: 'var(--mantine-color-default-border)',
+                backgroundColor: 'var(--ui-color-default-border)',
                 position: 'relative',
               }}
             >
@@ -62,10 +62,10 @@ function Demo() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  borderRadius: 'var(--mantine-radius-xs)',
-                  backgroundColor: 'var(--mantine-color-default)',
-                  border: '1px solid var(--mantine-color-default-border)',
-                  color: 'var(--mantine-color-dimmed)',
+                  borderRadius: 'var(--ui-radius-xs)',
+                  backgroundColor: 'var(--ui-color-default)',
+                  border: '1px solid var(--ui-color-default-border)',
+                  color: 'var(--ui-color-dimmed)',
                 }}
               >
                 <DotsSixVerticalIcon />
@@ -80,7 +80,7 @@ function Demo() {
               alignItems: 'center',
               justifyContent: 'center',
               backgroundColor: colors[i],
-              color: 'var(--mantine-color-white)',
+              color: 'var(--ui-color-white)',
               fontWeight: 500,
               whiteSpace: 'nowrap',
               gap: 2,
@@ -96,10 +96,10 @@ function Demo() {
 `;
 
 const colors = [
-  'var(--mantine-color-blue-filled)',
-  'var(--mantine-color-teal-filled)',
-  'var(--mantine-color-grape-filled)',
-  'var(--mantine-color-orange-filled)',
+  'var(--ui-color-blue-filled)',
+  'var(--ui-color-teal-filled)',
+  'var(--ui-color-grape-filled)',
+  'var(--ui-color-orange-filled)',
 ];
 const labels = ['Panel A', 'Panel B', 'Panel C', 'Panel D'];
 
@@ -120,7 +120,7 @@ function Demo() {
       style={{
         display: 'flex',
         height: 200,
-        borderRadius: 'var(--mantine-radius-md)',
+        borderRadius: 'var(--ui-radius-md)',
         overflow: 'hidden',
       }}
     >
@@ -134,7 +134,7 @@ function Demo() {
                 flexShrink: 0,
                 cursor: 'col-resize',
                 touchAction: 'none',
-                backgroundColor: 'var(--mantine-color-default-border)',
+                backgroundColor: 'var(--ui-color-default-border)',
                 position: 'relative',
               }}
             >
@@ -149,10 +149,10 @@ function Demo() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  borderRadius: 'var(--mantine-radius-xs)',
-                  backgroundColor: 'var(--mantine-color-default)',
-                  border: '1px solid var(--mantine-color-default-border)',
-                  color: 'var(--mantine-color-dimmed)',
+                  borderRadius: 'var(--ui-radius-xs)',
+                  backgroundColor: 'var(--ui-color-default)',
+                  border: '1px solid var(--ui-color-default-border)',
+                  color: 'var(--ui-color-dimmed)',
                 }}
               >
                 <DotsSixVerticalIcon />
@@ -167,7 +167,7 @@ function Demo() {
               alignItems: 'center',
               justifyContent: 'center',
               backgroundColor: colors[i],
-              color: 'var(--mantine-color-white)',
+              color: 'var(--ui-color-white)',
               fontWeight: 500,
               whiteSpace: 'nowrap',
               gap: 2,

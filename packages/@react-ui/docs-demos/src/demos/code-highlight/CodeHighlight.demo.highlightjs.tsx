@@ -37,7 +37,7 @@ function Demo() {
       code={exampleCode}
       language="tsx"
       radius="md"
-      background="var(--mantine-color-dark-8)"
+      background="var(--ui-color-dark-8)"
       codeColorScheme="dark"
     />
   );
@@ -53,7 +53,7 @@ function Demo() {
         code={exampleCode}
         language="tsx"
         radius="md"
-        background="var(--mantine-color-dark-8)"
+        background="var(--ui-color-dark-8)"
         codeColorScheme="dark"
       />
     </CodeHighlightAdapterProvider>

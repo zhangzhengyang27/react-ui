@@ -126,7 +126,7 @@ export function HomePageExtensions() {
                     variant="default"
                     onClick={searchHandlers.open}
                     rightSection={
-                      <MagnifyingGlassIcon size={20} color="var(--mantine-color-dimmed)" />
+                      <MagnifyingGlassIcon size={20} color="var(--ui-color-dimmed)" />
                     }
                     miw={300}
                     justify="space-between"

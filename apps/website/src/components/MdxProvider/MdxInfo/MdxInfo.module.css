@@ -1,6 +1,6 @@
 .root {
-  margin-top: calc(var(--mantine-spacing-xl) * 1.5);
-  margin-bottom: var(--mantine-spacing-lg);
+  margin-top: calc(var(--ui-spacing-xl) * 1.5);
+  margin-bottom: var(--ui-spacing-lg);
 
   & > p {
     line-height: 1.65;
@@ -10,8 +10,8 @@
   /* Considered to be a heading of the info */
   & > p > strong:only-child {
     font-family: var(--docs-font-primary);
-    font-size: var(--mantine-font-size-lg);
-    color: var(--mantine-color-bright);
+    font-size: var(--ui-font-size-lg);
+    color: var(--ui-color-bright);
 
     & > code {
       font-size: 80%;
@@ -31,8 +31,8 @@
   }
 
   & :global(.mantine-CodeHighlight-root) {
-    margin-top: var(--mantine-spacing-md);
-    background-color: var(--mantine-color-body);
+    margin-top: var(--ui-spacing-md);
+    background-color: var(--ui-color-body);
   }
 }
 

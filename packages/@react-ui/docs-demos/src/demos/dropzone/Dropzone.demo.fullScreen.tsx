@@ -32,13 +32,13 @@ function Demo() {
       >
         <Group justify="center" gap="xl" mih={220} style={{ pointerEvents: 'none' }}>
           <Dropzone.Accept>
-            <UploadSimpleIcon size={52} color="var(--mantine-color-blue-6)" />
+            <UploadSimpleIcon size={52} color="var(--ui-color-blue-6)" />
           </Dropzone.Accept>
           <Dropzone.Reject>
-            <XIcon size={52} color="var(--mantine-color-red-6)" />
+            <XIcon size={52} color="var(--ui-color-red-6)" />
           </Dropzone.Reject>
           <Dropzone.Idle>
-            <ImageIcon size={52} color="var(--mantine-color-dimmed)" />
+            <ImageIcon size={52} color="var(--ui-color-dimmed)" />
           </Dropzone.Idle>
 
           <div>

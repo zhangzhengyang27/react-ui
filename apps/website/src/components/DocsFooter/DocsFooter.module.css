@@ -23,13 +23,13 @@ $footer-breakpoint-mobile: 40em;
   left: 0;
   right: 0;
   height: var(--docs-footer-height);
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
 
   &[data-with-navbar] {
     padding-inline-start: calc(
-      var(--docs-navbar-width) + var(--mantine-spacing-md) * 2 + var(--docs-inline-spacing)
+      var(--docs-navbar-width) + var(--ui-spacing-md) * 2 + var(--docs-inline-spacing)
     );
-    padding-inline-end: calc(var(--mantine-spacing-md) * 2);
+    padding-inline-end: calc(var(--ui-spacing-md) * 2);
 
     @mixin smaller-than 1520px {
       padding-inline-start: calc(var(--docs-navbar-width) + var(--docs-inline-spacing));
@@ -43,8 +43,8 @@ $footer-breakpoint-mobile: 40em;
 }
 
 .inner {
-  padding-top: calc(var(--mantine-spacing-xl) * 2);
-  padding-bottom: calc(var(--mantine-spacing-xl) * 2);
+  padding-top: calc(var(--ui-spacing-xl) * 2);
+  padding-bottom: calc(var(--ui-spacing-xl) * 2);
   display: flex;
   justify-content: space-between;
 
@@ -53,7 +53,7 @@ $footer-breakpoint-mobile: 40em;
   }
 
   @mixin smaller-than $footer-breakpoint-mobile {
-    padding-bottom: var(--mantine-spacing-md);
+    padding-bottom: var(--ui-spacing-md);
   }
 }
 
@@ -61,7 +61,7 @@ $footer-breakpoint-mobile: 40em;
   max-width: 300px;
 
   @mixin smaller-than $footer-breakpoint-tablet {
-    margin-bottom: var(--mantine-spacing-xl);
+    margin-bottom: var(--ui-spacing-xl);
   }
 
   @mixin smaller-than $footer-breakpoint-mobile {
@@ -70,19 +70,19 @@ $footer-breakpoint-mobile: 40em;
 }
 
 .description {
-  margin-top: var(--mantine-spacing-xs);
-  color: var(--mantine-color-dimmed);
+  margin-top: var(--ui-spacing-xs);
+  color: var(--ui-color-dimmed);
 }
 
 .afterFooter {
-  border-top: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-4));
-  padding-top: var(--mantine-spacing-md);
+  border-top: 1px solid light-dark(var(--ui-color-gray-2), var(--ui-color-dark-4));
+  padding-top: var(--ui-spacing-md);
 }
 
 .afterFooterNote {
   &,
   & a {
-    color: var(--mantine-color-bright);
+    color: var(--ui-color-bright);
   }
 }
 
@@ -104,13 +104,13 @@ $footer-breakpoint-mobile: 40em;
 
 .socialButton {
   &:last-of-type {
-    margin-inline-start: var(--mantine-spacing-md);
+    margin-inline-start: var(--ui-spacing-md);
   }
 
   @mixin smaller-than $footer-breakpoint-mobile {
     width: 100%;
     margin-left: 0 !important;
     margin-right: 0 !important;
-    margin-top: var(--mantine-spacing-sm);
+    margin-top: var(--ui-spacing-sm);
   }
 }

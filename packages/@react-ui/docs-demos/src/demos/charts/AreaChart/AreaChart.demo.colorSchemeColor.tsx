@@ -5,11 +5,11 @@ import classes from './AreaChart.demo.colorSchemeColor.module.css';
 
 const cssCode = `.root {
   @mixin light {
-    --area-color: var(--mantine-color-orange-8);
+    --area-color: var(--ui-color-orange-8);
   }
 
   @mixin dark {
-    --area-color: var(--mantine-color-lime-4);
+    --area-color: var(--ui-color-lime-4);
   }
 }
 `;

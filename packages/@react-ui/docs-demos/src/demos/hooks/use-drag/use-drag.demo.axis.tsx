@@ -51,16 +51,16 @@ function Demo() {
               width: 80,
               height: 80,
               backgroundColor: xActive
-                ? 'var(--mantine-color-teal-filled)'
-                : 'var(--mantine-color-blue-filled)',
-              borderRadius: 'var(--mantine-radius-md)',
+                ? 'var(--ui-color-teal-filled)'
+                : 'var(--ui-color-blue-filled)',
+              borderRadius: 'var(--ui-radius-md)',
               transform: \`translateX(\${xPos}px)\`,
               cursor: xActive ? 'grabbing' : 'grab',
               touchAction: 'none',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'var(--mantine-color-white)',
+              color: 'var(--ui-color-white)',
               fontWeight: 600,
               userSelect: 'none',
             }}
@@ -76,16 +76,16 @@ function Demo() {
               width: 80,
               height: 80,
               backgroundColor: yActive
-                ? 'var(--mantine-color-teal-filled)'
-                : 'var(--mantine-color-blue-filled)',
-              borderRadius: 'var(--mantine-radius-md)',
+                ? 'var(--ui-color-teal-filled)'
+                : 'var(--ui-color-blue-filled)',
+              borderRadius: 'var(--ui-radius-md)',
               transform: \`translateY(\${yPos}px)\`,
               cursor: yActive ? 'grabbing' : 'grab',
               touchAction: 'none',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'var(--mantine-color-white)',
+              color: 'var(--ui-color-white)',
               fontWeight: 600,
               userSelect: 'none',
             }}
@@ -143,16 +143,16 @@ function Demo() {
               width: 80,
               height: 80,
               backgroundColor: xActive
-                ? 'var(--mantine-color-teal-filled)'
-                : 'var(--mantine-color-blue-filled)',
-              borderRadius: 'var(--mantine-radius-md)',
+                ? 'var(--ui-color-teal-filled)'
+                : 'var(--ui-color-blue-filled)',
+              borderRadius: 'var(--ui-radius-md)',
               transform: `translateX(${xPos}px)`,
               cursor: xActive ? 'grabbing' : 'grab',
               touchAction: 'none',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'var(--mantine-color-white)',
+              color: 'var(--ui-color-white)',
               fontWeight: 600,
               userSelect: 'none',
             }}
@@ -170,16 +170,16 @@ function Demo() {
               width: 80,
               height: 80,
               backgroundColor: yActive
-                ? 'var(--mantine-color-teal-filled)'
-                : 'var(--mantine-color-blue-filled)',
-              borderRadius: 'var(--mantine-radius-md)',
+                ? 'var(--ui-color-teal-filled)'
+                : 'var(--ui-color-blue-filled)',
+              borderRadius: 'var(--ui-radius-md)',
               transform: `translateY(${yPos}px)`,
               cursor: yActive ? 'grabbing' : 'grab',
               touchAction: 'none',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'var(--mantine-color-white)',
+              color: 'var(--ui-color-white)',
               fontWeight: 600,
               userSelect: 'none',
             }}

@@ -188,7 +188,7 @@ export const RadialBarChart = factory<RadialBarChartFactory>((_props) => {
               withLabels
                 ? {
                     position: 'insideStart',
-                    fill: 'var(--mantine-color-white)',
+                    fill: 'var(--ui-color-white)',
                     fontSize: 12,
                   }
                 : undefined

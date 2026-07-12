@@ -6,11 +6,11 @@ import classes from './BubbleChart.demo.colorSchemeColor.module.css';
 const cssCode = `
 .root {
   @mixin light {
-    --scatter-color: var(--mantine-color-orange-8);
+    --scatter-color: var(--ui-color-orange-8);
   }
 
   @mixin dark {
-    --scatter-color: var(--mantine-color-lime-4);
+    --scatter-color: var(--ui-color-lime-4);
   }
 }`;
 

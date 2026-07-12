@@ -34,7 +34,7 @@ function Demo() {
             width: 400,
             height: 120,
             border: 'none',
-            backgroundColor: 'var(--mantine-color-body)',
+            backgroundColor: 'var(--ui-color-body)',
             position: 'relative',
           }}
         />

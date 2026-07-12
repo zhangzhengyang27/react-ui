@@ -7,11 +7,11 @@ import { Box, Container } from '@react-ui/ui';
 function Demo() {
   return (
     <Container strategy="grid" size={500}>
-      <Box bg="var(--mantine-color-indigo-light)" h={50}>
+      <Box bg="var(--ui-color-indigo-light)" h={50}>
         Main content
       </Box>
 
-      <Box data-breakout bg="var(--mantine-color-indigo-light)" mt="xs">
+      <Box data-breakout bg="var(--ui-color-indigo-light)" mt="xs">
         <div>Breakout</div>
 
         <Box data-container bg="indigo" c="white" h={50}>
@@ -26,11 +26,11 @@ function Demo() {
 function Demo() {
   return (
     <Container strategy="grid" size={500}>
-      <Box bg="var(--mantine-color-indigo-light)" h={50}>
+      <Box bg="var(--ui-color-indigo-light)" h={50}>
         Main content
       </Box>
 
-      <Box data-breakout bg="var(--mantine-color-indigo-light)" mt="xs">
+      <Box data-breakout bg="var(--ui-color-indigo-light)" mt="xs">
         <div>Breakout</div>
 
         <Box data-container bg="indigo" c="white" h={50}>

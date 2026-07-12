@@ -1,5 +1,5 @@
 .resourcesDayView {
-  --resources-day-view-radius: var(--schedule-radius, var(--mantine-radius-default));
+  --resources-day-view-radius: var(--schedule-radius, var(--ui-radius-default));
   --resources-day-view-resource-label-width: 120px;
   --resources-day-view-slot-width: 80px;
   --resources-day-view-row-height: 64px;
@@ -7,15 +7,15 @@
   --resources-day-view-all-day-height: 20px;
 
   @mixin where-light {
-    --resources-day-view-border-color: var(--mantine-color-gray-3);
-    --resources-day-view-business-hours-bg: var(--mantine-color-white);
-    --resources-day-view-non-business-hours-bg: var(--mantine-color-gray-0);
+    --resources-day-view-border-color: var(--ui-color-gray-3);
+    --resources-day-view-business-hours-bg: var(--ui-color-white);
+    --resources-day-view-non-business-hours-bg: var(--ui-color-gray-0);
   }
 
   @mixin where-dark {
-    --resources-day-view-border-color: var(--mantine-color-dark-4);
-    --resources-day-view-business-hours-bg: var(--mantine-color-dark-7);
-    --resources-day-view-non-business-hours-bg: var(--mantine-color-dark-6);
+    --resources-day-view-border-color: var(--ui-color-dark-4);
+    --resources-day-view-business-hours-bg: var(--ui-color-dark-7);
+    --resources-day-view-non-business-hours-bg: var(--ui-color-dark-6);
   }
 }
 
@@ -48,13 +48,13 @@
   position: sticky;
   top: 0;
   z-index: 5;
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
   border-bottom: 1px solid var(--resources-day-view-border-color);
   margin-bottom: -1px;
   transition: box-shadow 100ms ease;
 
   &:where([data-scrolled]) {
-    box-shadow: var(--mantine-shadow-sm);
+    box-shadow: var(--ui-shadow-sm);
   }
 }
 
@@ -65,12 +65,12 @@
   position: sticky;
   left: 0;
   z-index: 11;
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--mantine-font-size-sm);
-  font-weight: var(--mantine-font-weight-medium);
+  font-size: var(--ui-font-size-sm);
+  font-weight: var(--ui-font-weight-medium);
   user-select: none;
 }
 
@@ -82,7 +82,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--mantine-font-size-sm);
+  font-size: var(--ui-font-size-sm);
   user-select: none;
   cursor: default;
   font-variant-numeric: tabular-nums;
@@ -114,19 +114,19 @@
   align-items: center;
   justify-content: center;
   padding: 4px 8px;
-  font-size: var(--mantine-font-size-sm);
-  font-weight: var(--mantine-font-weight-medium);
+  font-size: var(--ui-font-size-sm);
+  font-weight: var(--ui-font-weight-medium);
   user-select: none;
   border-inline-end: 1px solid var(--resources-day-view-border-color);
   min-height: var(--resources-day-view-row-height);
   position: sticky;
   left: 0;
   z-index: 11;
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
   transition: box-shadow 100ms ease;
 
   &:where([data-scrolled-x]) {
-    box-shadow: var(--mantine-shadow-sm);
+    box-shadow: var(--ui-shadow-sm);
   }
 
   &:where([data-has-groups]) {
@@ -141,14 +141,14 @@
   position: sticky;
   left: 0;
   z-index: 12;
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   overflow-wrap: break-word;
-  font-size: var(--mantine-font-size-sm);
-  font-weight: var(--mantine-font-weight-medium);
+  font-size: var(--ui-font-size-sm);
+  font-weight: var(--ui-font-weight-medium);
   user-select: none;
   border-inline-end: 1px solid var(--resources-day-view-border-color);
   overflow: visible;
@@ -172,7 +172,7 @@
   position: sticky;
   left: 0;
   z-index: 12;
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
   border-inline-end: 1px solid var(--resources-day-view-border-color);
 }
 
@@ -193,11 +193,11 @@
 
   @mixin hover {
     @mixin where-light {
-      background-color: var(--mantine-color-gray-1);
+      background-color: var(--ui-color-gray-1);
     }
 
     @mixin where-dark {
-      background-color: var(--mantine-color-dark-5);
+      background-color: var(--ui-color-dark-5);
     }
   }
 
@@ -219,11 +219,11 @@
 
   &:where([data-drop-target]) {
     @mixin where-light {
-      background-color: var(--mantine-color-blue-1);
+      background-color: var(--ui-color-blue-1);
     }
 
     @mixin where-dark {
-      background-color: var(--mantine-color-dark-5);
+      background-color: var(--ui-color-dark-5);
     }
 
     &::before {
@@ -236,11 +236,11 @@
       border-radius: 2px;
 
       @mixin where-light {
-        border-color: var(--mantine-color-blue-4);
+        border-color: var(--ui-color-blue-4);
       }
 
       @mixin where-dark {
-        border-color: var(--mantine-color-blue-6);
+        border-color: var(--ui-color-blue-6);
       }
     }
   }
@@ -248,7 +248,7 @@
   &:where([data-drag-selected]) {
     &,
     &:hover {
-      background-color: var(--mantine-primary-color-light);
+      background-color: var(--ui-primary-color-light);
     }
 
     &::before {
@@ -260,11 +260,11 @@
       border: 1px solid;
 
       @mixin where-light {
-        border-color: var(--mantine-primary-color-2);
+        border-color: var(--ui-primary-color-2);
       }
 
       @mixin where-dark {
-        border-color: var(--mantine-primary-color-9);
+        border-color: var(--ui-primary-color-9);
       }
     }
   }
@@ -280,7 +280,7 @@
 }
 
 .resourcesDayViewCurrentTimeIndicator {
-  --_indicator-color: var(--resources-day-view-indicator-color, var(--mantine-color-red-7));
+  --_indicator-color: var(--resources-day-view-indicator-color, var(--ui-color-red-7));
   --_time-bubble-height: 18px;
   --_thumb-size: 12px;
 
@@ -315,7 +315,7 @@
   width: var(--_thumb-size);
   height: var(--_thumb-size);
   border-radius: 50%;
-  border: 1px solid var(--mantine-color-body);
+  border: 1px solid var(--ui-color-body);
   background-color: var(--_indicator-color);
   left: calc(-1 * (var(--_thumb-size) / 2 - 1px));
 }
@@ -329,10 +329,10 @@
   justify-content: center;
   border-radius: 1000px;
   background-color: var(--_indicator-color);
-  color: var(--mantine-color-white);
-  font-size: var(--mantine-font-size-xs);
-  font-weight: var(--mantine-font-weight-bold);
-  box-shadow: var(--mantine-shadow-sm);
+  color: var(--ui-color-white);
+  font-size: var(--ui-font-size-xs);
+  font-weight: var(--ui-font-weight-bold);
+  box-shadow: var(--ui-shadow-sm);
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
   text-transform: uppercase;
@@ -349,7 +349,7 @@
   background-color: var(--bg-event-bg);
   overflow: hidden;
   font-size: 12px;
-  font-weight: var(--mantine-font-weight-medium);
+  font-weight: var(--ui-font-weight-medium);
   padding: 3px 4px;
   color: var(--bg-event-color);
 }

@@ -34,24 +34,24 @@
   min-width: 2.5em;
   width: max-content;
   height: 2em;
-  border-radius: var(--mantine-radius-default);
-  font-size: var(--control-font-size, var(--mantine-font-size-sm));
+  border-radius: var(--ui-radius-default);
+  font-size: var(--control-font-size, var(--ui-font-size-sm));
 
   &:where([data-active]) {
-    background-color: var(--mantine-primary-color-filled);
-    color: var(--mantine-color-white);
+    background-color: var(--ui-primary-color-filled);
+    color: var(--ui-color-white);
   }
 
   @mixin hover {
     &:where(:not([data-active])) {
-      color: var(--mantine-color-bright);
+      color: var(--ui-color-bright);
 
       @mixin where-dark {
-        background-color: var(--mantine-color-dark-5);
+        background-color: var(--ui-color-dark-5);
       }
 
       @mixin where-light {
-        background-color: var(--mantine-color-gray-1);
+        background-color: var(--ui-color-gray-1);
       }
     }
   }
@@ -61,24 +61,24 @@
   text-align: center;
   height: 2em;
   padding-inline: 0.5em;
-  border-radius: var(--mantine-radius-default);
-  font-size: var(--control-font-size, var(--mantine-font-size-sm));
+  border-radius: var(--ui-radius-default);
+  font-size: var(--control-font-size, var(--ui-font-size-sm));
 
   &:where([data-active]) {
-    background-color: var(--mantine-primary-color-filled);
-    color: var(--mantine-color-white);
+    background-color: var(--ui-primary-color-filled);
+    color: var(--ui-color-white);
   }
 
   @mixin hover {
     &:where(:not([data-active])) {
-      color: var(--mantine-color-bright);
+      color: var(--ui-color-bright);
 
       @mixin where-dark {
-        background-color: var(--mantine-color-dark-5);
+        background-color: var(--ui-color-dark-5);
       }
 
       @mixin where-light {
-        background-color: var(--mantine-color-gray-1);
+        background-color: var(--ui-color-gray-1);
       }
     }
   }
@@ -86,15 +86,15 @@
 
 .presetsGroup {
   & + & {
-    margin-top: var(--mantine-spacing-sm);
+    margin-top: var(--ui-spacing-sm);
   }
 }
 
 .presetsGroupLabel {
   margin-bottom: 4px;
-  color: var(--mantine-color-dimmed);
-  font-size: calc(var(--control-font-size, var(--mantine-font-size-sm)) - 2px);
-  font-weight: var(--mantine-font-weight-medium);
+  color: var(--ui-color-dimmed);
+  font-size: calc(var(--control-font-size, var(--ui-font-size-sm)) - 2px);
+  font-weight: var(--ui-font-weight-medium);
   display: flex;
   align-items: center;
   padding-inline-start: 7px;
@@ -104,14 +104,14 @@
     width: 100%;
     height: 1px;
     flex: 1;
-    margin-inline-start: var(--mantine-spacing-xs);
+    margin-inline-start: var(--ui-spacing-xs);
 
     @mixin where-light {
-      background-color: var(--mantine-color-gray-2);
+      background-color: var(--ui-color-gray-2);
     }
 
     @mixin where-dark {
-      background-color: var(--mantine-color-dark-4);
+      background-color: var(--ui-color-dark-4);
     }
   }
 }
@@ -150,12 +150,12 @@
   }
 
   &:focus {
-    background-color: var(--mantine-primary-color-filled);
-    color: var(--mantine-color-white);
+    background-color: var(--ui-primary-color-filled);
+    color: var(--ui-color-white);
     outline: 0;
 
     &::placeholder {
-      color: var(--mantine-color-white);
+      color: var(--ui-color-white);
     }
   }
 }

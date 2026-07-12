@@ -27,7 +27,7 @@ function Demo() {
         rightSection={
           <WarningCircleIcon
             size={20}
-            color="var(--mantine-color-error)"
+            color="var(--ui-color-error)"
           />
         }
       />
@@ -54,7 +54,7 @@ function Demo() {
         error="Something went wrong"
         withErrorStyles={false}
         rightSectionPointerEvents="none"
-        rightSection={<WarningCircleIcon size={20} color="var(--mantine-color-error)" />}
+        rightSection={<WarningCircleIcon size={20} color="var(--ui-color-error)" />}
       />
     </>
   );

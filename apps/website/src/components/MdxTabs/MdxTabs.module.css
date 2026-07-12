@@ -1,34 +1,34 @@
 .tabsWrapper {
   padding-inline: var(--docs-inline-spacing);
-  border-bottom: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
-  padding-bottom: var(--mantine-spacing-md);
+  border-bottom: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-4));
+  padding-bottom: var(--ui-spacing-md);
 }
 
 .tab {
-  font-size: var(--mantine-font-size-md);
+  font-size: var(--ui-font-size-md);
   font-weight: 600;
   height: 42px;
-  padding-inline-start: var(--mantine-spacing-sm);
-  padding-inline-end: var(--mantine-spacing-lg);
-  border: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
-  color: var(--mantine-color-bright);
-  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-6));
+  padding-inline-start: var(--ui-spacing-sm);
+  padding-inline-end: var(--ui-spacing-lg);
+  border: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-4));
+  color: var(--ui-color-bright);
+  background-color: light-dark(var(--ui-color-white), var(--ui-color-dark-6));
 
   @mixin hover {
-    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-5));
+    background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-5));
   }
 
   @mixin smaller-than $mantine-breakpoint-xs {
-    font-size: var(--mantine-font-size-sm);
-    padding-left: var(--mantine-spacing-md);
-    padding-right: var(--mantine-spacing-md);
+    font-size: var(--ui-font-size-sm);
+    padding-left: var(--ui-spacing-md);
+    padding-right: var(--ui-spacing-md);
     flex: 1;
   }
 
   &[data-active] {
     border-color: transparent;
-    color: light-dark(var(--mantine-color-white), var(--mantine-color-black));
-    background-color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-1));
+    color: light-dark(var(--ui-color-white), var(--ui-color-black));
+    background-color: light-dark(var(--ui-color-gray-9), var(--ui-color-gray-1));
 
     .tabIcon {
       color: inherit;
@@ -41,11 +41,11 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  gap: var(--mantine-spacing-xs);
+  gap: var(--ui-spacing-xs);
 }
 
 .tabIcon {
-  color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-1));
+  color: light-dark(var(--ui-color-gray-6), var(--ui-color-dark-1));
 
   @mixin smaller-than $mantine-breakpoint-xs {
     display: none;
@@ -87,7 +87,7 @@
 
 .tableOfContents {
   flex: 0 0 var(--docs-table-of-contents-width);
-  margin-top: var(--mantine-spacing-xl);
+  margin-top: var(--ui-spacing-xl);
   position: sticky;
   top: var(--docs-header-height);
   align-self: flex-start;

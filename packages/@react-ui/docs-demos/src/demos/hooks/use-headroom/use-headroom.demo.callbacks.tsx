@@ -37,8 +37,8 @@ function Demo() {
               transform: \`translate3d(0, \${pinned ? 0 : '-110px'}, 0)\`,
               transition: 'transform 400ms ease',
               backgroundColor: pinned
-                ? 'var(--mantine-color-teal-6)'
-                : 'var(--mantine-color-red-6)',
+                ? 'var(--ui-color-teal-6)'
+                : 'var(--ui-color-red-6)',
             }}
           >
             <Group justify="center" h="100%">
@@ -92,8 +92,8 @@ function Demo() {
               transform: `translate3d(0, ${pinned ? 0 : '-110px'}, 0)`,
               transition: 'transform 400ms ease',
               backgroundColor: pinned
-                ? 'var(--mantine-color-teal-6)'
-                : 'var(--mantine-color-red-6)',
+                ? 'var(--ui-color-teal-6)'
+                : 'var(--ui-color-red-6)',
             }}
           >
             <Group justify="center" h="100%">

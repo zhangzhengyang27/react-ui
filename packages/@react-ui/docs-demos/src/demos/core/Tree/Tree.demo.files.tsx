@@ -7,7 +7,7 @@ import { data, dataCode } from './data';
 import classes from './Tree.demo.files.module.css';
 
 const cssCode = `.root {
-  font-family: var(--mantine-font-family-monospace);
+  font-family: var(--ui-font-family-monospace);
   font-size: 13px;
 }
 
@@ -18,13 +18,13 @@ const cssCode = `.root {
 
   &[data-selected] {
     font-weight: 700;
-    background-color: var(--mantine-color-blue-light) !important;
-    color: var(--mantine-color-bright);
+    background-color: var(--ui-color-blue-light) !important;
+    color: var(--ui-color-bright);
   }
 
   &:hover {
-    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
-    color: var(--mantine-color-bright);
+    background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-6));
+    color: var(--ui-color-bright);
   }
 }`;
 
@@ -57,9 +57,9 @@ function FileIcon({ name, isFolder, expanded }: FileIconProps) {
 
   if (isFolder) {
     return expanded ? (
-      <FolderOpenIcon color="var(--mantine-color-yellow-9)" size={14} />
+      <FolderOpenIcon color="var(--ui-color-yellow-9)" size={14} />
     ) : (
-      <FolderSimpleIcon color="var(--mantine-color-yellow-9)" size={14} />
+      <FolderSimpleIcon color="var(--ui-color-yellow-9)" size={14} />
     );
   }
 
@@ -110,9 +110,9 @@ function FileIcon({ name, isFolder, expanded }: FileIconProps) {
 
   if (isFolder) {
     return expanded ? (
-      <FolderOpenIcon color="var(--mantine-color-yellow-9)" size={14} />
+      <FolderOpenIcon color="var(--ui-color-yellow-9)" size={14} />
     ) : (
-      <FolderSimpleIcon color="var(--mantine-color-yellow-9)" size={14} />
+      <FolderSimpleIcon color="var(--ui-color-yellow-9)" size={14} />
     );
   }
 

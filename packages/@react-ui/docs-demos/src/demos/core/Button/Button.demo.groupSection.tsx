@@ -14,13 +14,13 @@ function Demo() {
   return (
     <Button.Group>
       <Button variant="default" onClick={decrement}>
-        <CaretDownIcon color="var(--mantine-color-red-text)" />
+        <CaretDownIcon color="var(--ui-color-red-text)" />
       </Button>
-      <Button.GroupSection variant="default" bg="var(--mantine-color-body)" miw={80}>
+      <Button.GroupSection variant="default" bg="var(--ui-color-body)" miw={80}>
         {value}
       </Button.GroupSection>
       <Button variant="default" onClick={increment}>
-        <CaretUpIcon color="var(--mantine-color-teal-text)" />
+        <CaretUpIcon color="var(--ui-color-teal-text)" />
       </Button>
     </Button.Group>
   );
@@ -33,13 +33,13 @@ function Demo() {
   return (
     <Button.Group>
       <Button variant="default" onClick={decrement}>
-        <CaretDownIcon color="var(--mantine-color-red-text)" />
+        <CaretDownIcon color="var(--ui-color-red-text)" />
       </Button>
-      <Button.GroupSection variant="default" bg="var(--mantine-color-body)" miw={80}>
+      <Button.GroupSection variant="default" bg="var(--ui-color-body)" miw={80}>
         {value}
       </Button.GroupSection>
       <Button variant="default" onClick={increment}>
-        <CaretUpIcon color="var(--mantine-color-teal-text)" />
+        <CaretUpIcon color="var(--ui-color-teal-text)" />
       </Button>
     </Button.Group>
   );

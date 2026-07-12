@@ -2,20 +2,20 @@
   --slot-height: var(--day-view-slot-height, 64px); /* total height of 1 hour slot */
   --all-day-slot-height: var(--day-view-all-day-slot-height, 44px); /* height of all day slot */
   --day-view-slot-labels-width: 80px;
-  --day-view-radius: var(--schedule-radius, var(--mantine-radius-default));
+  --day-view-radius: var(--schedule-radius, var(--ui-radius-default));
   border-radius: var(--day-view-radius);
   overflow: hidden;
 
   @mixin where-light {
-    --day-view-border-color: var(--mantine-color-gray-3);
-    --day-view-business-hours-bg: var(--mantine-color-white);
-    --day-view-non-business-hours-bg: var(--mantine-color-gray-0);
+    --day-view-border-color: var(--ui-color-gray-3);
+    --day-view-business-hours-bg: var(--ui-color-white);
+    --day-view-non-business-hours-bg: var(--ui-color-gray-0);
   }
 
   @mixin where-dark {
-    --day-view-border-color: var(--mantine-color-dark-4);
-    --day-view-business-hours-bg: var(--mantine-color-dark-7);
-    --day-view-non-business-hours-bg: var(--mantine-color-dark-6);
+    --day-view-border-color: var(--ui-color-dark-4);
+    --day-view-business-hours-bg: var(--ui-color-dark-7);
+    --day-view-non-business-hours-bg: var(--ui-color-dark-6);
   }
 }
 
@@ -25,8 +25,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--mantine-font-size-sm);
-  font-weight: var(--mantine-font-weight-medium);
+  font-size: var(--ui-font-size-sm);
+  font-weight: var(--ui-font-weight-medium);
 }
 
 .dayViewScrollArea {
@@ -58,7 +58,7 @@
 .dayViewSlotLabel {
   height: var(--slot-height);
   border-top: 1px solid var(--day-view-border-color);
-  font-size: var(--mantine-font-size-sm);
+  font-size: var(--ui-font-size-sm);
   text-align: right;
   padding: 4px 8px;
   font-variant-numeric: tabular-nums;
@@ -102,11 +102,11 @@
 
   @mixin hover {
     @mixin where-light {
-      background-color: var(--mantine-color-gray-1);
+      background-color: var(--ui-color-gray-1);
     }
 
     @mixin where-dark {
-      background-color: var(--mantine-color-dark-5);
+      background-color: var(--ui-color-dark-5);
     }
   }
 
@@ -125,11 +125,11 @@
 
   &:where([data-drop-target]) {
     @mixin where-light {
-      background-color: var(--mantine-color-blue-1);
+      background-color: var(--ui-color-blue-1);
     }
 
     @mixin where-dark {
-      background-color: var(--mantine-color-dark-5);
+      background-color: var(--ui-color-dark-5);
     }
 
     &::before {
@@ -142,11 +142,11 @@
       border-radius: 2px;
 
       @mixin where-light {
-        border-color: var(--mantine-color-blue-4);
+        border-color: var(--ui-color-blue-4);
       }
 
       @mixin where-dark {
-        border-color: var(--mantine-color-blue-6);
+        border-color: var(--ui-color-blue-6);
       }
     }
   }
@@ -154,7 +154,7 @@
   &:where([data-drag-selected]) {
     &,
     &:hover {
-      background-color: var(--mantine-primary-color-light);
+      background-color: var(--ui-primary-color-light);
     }
 
     &::before {
@@ -166,11 +166,11 @@
       border: 1px solid;
 
       @mixin where-light {
-        border-color: var(--mantine-primary-color-2);
+        border-color: var(--ui-primary-color-2);
       }
 
       @mixin where-dark {
-        border-color: var(--mantine-primary-color-9);
+        border-color: var(--ui-primary-color-9);
       }
     }
   }
@@ -201,7 +201,7 @@
   background-color: var(--bg-event-bg);
   overflow: hidden;
   font-size: 12px;
-  font-weight: var(--mantine-font-weight-medium);
+  font-weight: var(--ui-font-weight-medium);
   padding: 3px 4px;
   color: var(--bg-event-color);
 }

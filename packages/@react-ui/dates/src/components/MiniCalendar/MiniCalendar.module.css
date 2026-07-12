@@ -19,15 +19,15 @@
   align-items: center;
   line-height: 1;
   padding: 0.75em;
-  border-radius: var(--mantine-radius-default);
+  border-radius: var(--ui-radius-default);
 
   &:where([data-selected]) {
-    color: var(--mantine-primary-color-contrast);
-    background-color: var(--mantine-primary-color-filled);
+    color: var(--ui-primary-color-contrast);
+    background-color: var(--ui-primary-color-filled);
 
     @mixin hover {
       &:where(:not([data-disabled], [data-static])) {
-        background-color: var(--mantine-primary-color-filled-hover);
+        background-color: var(--ui-primary-color-filled-hover);
       }
     }
   }
@@ -40,7 +40,7 @@
   @mixin where-light {
     @mixin hover {
       &:where(:not([data-disabled], [data-selected])) {
-        background-color: var(--mantine-color-gray-1);
+        background-color: var(--ui-color-gray-1);
       }
     }
   }
@@ -48,7 +48,7 @@
   @mixin where-dark {
     @mixin hover {
       &:where(:not([data-disabled], [data-selected])) {
-        background-color: var(--mantine-color-dark-5);
+        background-color: var(--ui-color-dark-5);
       }
     }
   }
@@ -56,24 +56,24 @@
 
 .dayMonth {
   font-size: 0.75em;
-  font-weight: var(--mantine-font-weight-medium);
+  font-weight: var(--ui-font-weight-medium);
   opacity: 0.65;
 }
 
 .dayNumber {
   font-size: 0.9em;
-  font-weight: var(--mantine-font-weight-medium);
+  font-weight: var(--ui-font-weight-medium);
 }
 
 .control {
   align-self: stretch;
   font-size: inherit;
   width: 2em;
-  border-radius: var(--mantine-radius-default);
+  border-radius: var(--ui-radius-default);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--mantine-color-bright);
+  color: var(--ui-color-bright);
 
   &:where([data-disabled]) {
     opacity: 0.3;
@@ -104,7 +104,7 @@
   @mixin where-light {
     @mixin hover {
       &:where(:not([data-disabled])) {
-        background-color: var(--mantine-color-gray-1);
+        background-color: var(--ui-color-gray-1);
       }
     }
   }
@@ -112,7 +112,7 @@
   @mixin where-dark {
     @mixin hover {
       &:where(:not([data-disabled])) {
-        background-color: var(--mantine-color-dark-5);
+        background-color: var(--ui-color-dark-5);
       }
     }
   }

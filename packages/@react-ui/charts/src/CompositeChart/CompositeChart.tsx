@@ -270,7 +270,7 @@ export const CompositeChart = factory<CompositeChartFactory>((_props) => {
           }
           activeDot={
             withDots
-              ? { fill: 'var(--mantine-color-white)', stroke: color, ...activeDotProps }
+              ? { fill: 'var(--ui-color-white)', stroke: color, ...activeDotProps }
               : false
           }
           fill={color}
@@ -355,7 +355,7 @@ export const CompositeChart = factory<CompositeChartFactory>((_props) => {
             <LabelList
               position="top"
               fontSize={12}
-              fill="var(--chart-bar-label-color, var(--mantine-color-dimmed))"
+              fill="var(--chart-bar-label-color, var(--ui-color-dimmed))"
               formatter={(val: any) => valueFormatter?.(val as any)}
             />
           )}

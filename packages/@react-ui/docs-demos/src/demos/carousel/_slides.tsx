@@ -5,8 +5,8 @@ function Slide({ children }: { children: React.ReactNode }) {
   return (
     <Box
       style={{
-        backgroundColor: 'var(--mantine-color-blue-filled)',
-        color: 'var(--mantine-color-white)',
+        backgroundColor: 'var(--ui-color-blue-filled)',
+        color: 'var(--ui-color-white)',
         height: '100%',
         width: '100%',
         display: 'flex',

@@ -56,10 +56,10 @@ module.exports = {
 
 ```scss
 .demo {
-  font-size: calc(1rem * var(--mantine-scale));
+  font-size: calc(1rem * var(--ui-scale));
 
   @media (min-width: 20em) {
-    font-size: calc(2rem * var(--mantine-scale));
+    font-size: calc(2rem * var(--ui-scale));
   }
 }
 ```
@@ -94,10 +94,10 @@ module.exports = {
 
 ```scss
 .demo {
-  font-size: calc(1rem * var(--mantine-scale));
+  font-size: calc(1rem * var(--ui-scale));
 
   @media (min-width: 320px) {
-    font-size: calc(2rem * var(--mantine-scale));
+    font-size: calc(2rem * var(--ui-scale));
   }
 }
 ```
@@ -268,7 +268,7 @@ module.exports = {
 
 ```scss
 .demo {
-  color: alpha(var(--mantine-color-red-4), 0.5);
+  color: alpha(var(--ui-color-red-4), 0.5);
   border: 1px solid alpha(#ffc, 0.2);
 }
 ```
@@ -279,7 +279,7 @@ module.exports = {
 .demo {
   color: color-mix(
     in srgb,
-    var(--mantine-color-red-4),
+    var(--ui-color-red-4),
     transparent 50%
   );
   border: 1px solid color-mix(in srgb, #ffc, transparent 80%);
@@ -293,7 +293,7 @@ module.exports = {
 
 ```scss
 .demo {
-  color: lighten(var(--mantine-color-red-4), 0.5);
+  color: lighten(var(--ui-color-red-4), 0.5);
   border: 1px solid darken(#ffc, 0.2);
 }
 ```
@@ -302,7 +302,7 @@ module.exports = {
 
 ```scss
 .demo {
-  color: color-mix(in srgb, var(--mantine-color-red-4), white 50%);
+  color: color-mix(in srgb, var(--ui-color-red-4), white 50%);
   border: 1px solid color-mix(in srgb, #ffc, black 20%);
 }
 ```

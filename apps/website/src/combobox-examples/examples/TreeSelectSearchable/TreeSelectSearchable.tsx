@@ -211,7 +211,7 @@ export function TreeSelectSearchable() {
                               top: 0,
                               bottom: 0,
                               width: 0,
-                              borderInlineStart: '1px solid var(--mantine-color-default-border)',
+                              borderInlineStart: '1px solid var(--ui-color-default-border)',
                               pointerEvents: 'none',
                               insetInlineStart:
                                 BASE_PADDING + (g + 1) * LEVEL_OFFSET - LEVEL_OFFSET / 2,
@@ -226,7 +226,7 @@ export function TreeSelectSearchable() {
                           bottom: isLastChild ? 'auto' : 0,
                           height: isLastChild ? '50%' : undefined,
                           width: 0,
-                          borderInlineStart: '1px solid var(--mantine-color-default-border)',
+                          borderInlineStart: '1px solid var(--ui-color-default-border)',
                           pointerEvents: 'none',
                           insetInlineStart:
                             BASE_PADDING + (level - 1) * LEVEL_OFFSET - LEVEL_OFFSET / 2,
@@ -237,7 +237,7 @@ export function TreeSelectSearchable() {
                           position: 'absolute',
                           top: '50%',
                           height: 0,
-                          borderTop: '1px solid var(--mantine-color-default-border)',
+                          borderTop: '1px solid var(--ui-color-default-border)',
                           pointerEvents: 'none',
                           insetInlineStart:
                             BASE_PADDING + (level - 1) * LEVEL_OFFSET - LEVEL_OFFSET / 2,
@@ -290,9 +290,9 @@ export function TreeSelectSearchable() {
                           width: 20,
                           minWidth: 20,
                           height: 20,
-                          borderRadius: 'var(--mantine-radius-sm)',
+                          borderRadius: 'var(--ui-radius-sm)',
                           cursor: 'pointer',
-                          color: 'var(--mantine-color-dimmed)',
+                          color: 'var(--ui-color-dimmed)',
                           transform: isExpanded ? 'rotate(0deg)' : 'rotate(-90deg)',
                           transition: 'transform 150ms ease',
                         }}

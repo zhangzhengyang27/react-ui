@@ -3,9 +3,9 @@
 }
 
 .image {
-  box-shadow: var(--mantine-shadow-md);
-  border-radius: var(--mantine-radius-md);
-  border: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-5));
+  box-shadow: var(--ui-shadow-md);
+  border-radius: var(--ui-radius-md);
+  border: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-5));
 }
 
 .darkIcon,
@@ -15,7 +15,7 @@
 }
 
 .darkIcon {
-  color: var(--mantine-color-yellow-4);
+  color: var(--ui-color-yellow-4);
 
   @mixin light {
     display: none;
@@ -23,7 +23,7 @@
 }
 
 .lightIcon {
-  color: var(--mantine-color-blue-7);
+  color: var(--ui-color-blue-7);
 
   @mixin dark {
     display: none;
@@ -35,7 +35,7 @@
 }
 
 .demo {
-  margin-top: var(--mantine-spacing-xl);
+  margin-top: var(--ui-spacing-xl);
 }
 
 .code {

@@ -28,14 +28,14 @@ export function MantineLogoText({
     >
       <g fill="none" fillRule="evenodd">
         <path
-          style={{ fill: variant === 'ui.mantine.dev' ? 'var(--mantine-logo-fill)' : undefined }}
+          style={{ fill: variant === 'ui.mantine.dev' ? 'var(--ui-logo-fill)' : undefined }}
           fill={colors.background}
           fillRule="nonzero"
           d="M162.162 81.5c0-45.011-36.301-81.5-81.08-81.5C36.301 0 0 36.489 0 81.5 0 126.51 36.301 163 81.081 163s81.081-36.49 81.081-81.5z"
         />
         <g
           fill={colors.color}
-          style={{ fill: variant === 'ui.mantine.dev' ? 'var(--mantine-logo-color)' : undefined }}
+          style={{ fill: variant === 'ui.mantine.dev' ? 'var(--ui-logo-color)' : undefined }}
         >
           <path
             fillRule="nonzero"

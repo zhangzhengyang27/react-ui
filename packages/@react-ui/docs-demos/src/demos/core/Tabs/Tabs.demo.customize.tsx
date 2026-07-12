@@ -38,8 +38,8 @@ function Demo() {
 const cssCode = `
 .tab {
   position: relative;
-  border: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-4));
-  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-6));
+  border: 1px solid light-dark(var(--ui-color-gray-2), var(--ui-color-dark-4));
+  background-color: light-dark(var(--ui-color-white), var(--ui-color-dark-6));
 
   &:first-of-type {
     border-radius: 4px 0 0 4px;
@@ -67,17 +67,17 @@ const cssCode = `
   }
 
   @mixin hover {
-    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-5));
+    background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-5));
   }
 
   &[data-active] {
     z-index: 1;
-    background-color: var(--mantine-color-blue-filled);
-    border-color: var(--mantine-color-blue-filled);
-    color: var(--mantine-color-white);
+    background-color: var(--ui-color-blue-filled);
+    border-color: var(--ui-color-blue-filled);
+    color: var(--ui-color-white);
 
     @mixin hover {
-      background-color: var(--mantine-color-blue-filled-hover);
+      background-color: var(--ui-color-blue-filled-hover);
     }
   }
 }

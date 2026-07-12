@@ -35,19 +35,19 @@ function Demo() {
 
 const cssCode = `
 .root {
-  border-top-left-radius: var(--mantine-radius-xl);
-  border-bottom-left-radius: var(--mantine-radius-xl);
+  border-top-left-radius: var(--ui-radius-xl);
+  border-bottom-left-radius: var(--ui-radius-xl);
   padding-left: 4px;
 
   /* The following styles will be applied only when button is disabled */
   &[data-disabled] {
     /* You can use ReactUI PostCSS mixins inside data attributes */
     @mixin light {
-      border: 1px solid var(--mantine-color-gray-2);
+      border: 1px solid var(--ui-color-gray-2);
     }
 
     @mixin dark {
-      border: 1px solid var(--mantine-color-dark-4);
+      border: 1px solid var(--ui-color-dark-4);
     }
 
     /* You can target child elements that are inside .root[data-disabled] */
@@ -62,14 +62,14 @@ const cssCode = `
   &[data-position='left'] {
     --section-size: calc(var(--button-height) - 8px);
 
-    background-color: var(--mantine-color-body);
-    color: var(--mantine-color-text);
+    background-color: var(--ui-color-body);
+    color: var(--ui-color-text);
     height: var(--section-size);
     width: var(--section-size);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: var(--mantine-radius-xl);
+    border-radius: var(--ui-radius-xl);
   }
 
   &[data-position='right'] {

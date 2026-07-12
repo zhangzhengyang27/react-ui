@@ -6,18 +6,18 @@ import classes from './FloatingIndicator.demo.tabs.module.css';
 const cssCode = `
 .list {
   position: relative;
-  margin-bottom: var(--mantine-spacing-md);
+  margin-bottom: var(--ui-spacing-md);
 }
 
 .indicator {
-  background-color: var(--mantine-color-white);
-  border-radius: var(--mantine-radius-md);
-  border: 1px solid var(--mantine-color-gray-2);
-  box-shadow: var(--mantine-shadow-sm);
+  background-color: var(--ui-color-white);
+  border-radius: var(--ui-radius-md);
+  border: 1px solid var(--ui-color-gray-2);
+  box-shadow: var(--ui-shadow-sm);
 
   @mixin dark {
-    background-color: var(--mantine-color-dark-6);
-    border-color: var(--mantine-color-dark-4);
+    background-color: var(--ui-color-dark-6);
+    border-color: var(--ui-color-dark-4);
   }
 }
 
@@ -25,17 +25,17 @@ const cssCode = `
   z-index: 1;
   font-weight: 600;
   transition: color 100ms ease;
-  color: var(--mantine-color-gray-7);
+  color: var(--ui-color-gray-7);
 
   &[data-active] {
-    color: var(--mantine-color-black);
+    color: var(--ui-color-black);
   }
 
   @mixin dark {
-    color: var(--mantine-color-dark-1);
+    color: var(--ui-color-dark-1);
 
     &[data-active] {
-      color: var(--mantine-color-white);
+      color: var(--ui-color-white);
     }
   }
 }

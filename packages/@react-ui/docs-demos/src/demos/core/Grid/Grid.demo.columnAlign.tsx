@@ -9,17 +9,17 @@ function Demo() {
   return (
     <Grid align="stretch">
       <Grid.Col span={4} align="flex-start">
-        <div style={{ height: '100px', background: 'var(--mantine-color-blue-light)' }}>
+        <div style={{ height: '100px', background: 'var(--ui-color-blue-light)' }}>
           flex-start
         </div>
       </Grid.Col>
       <Grid.Col span={4} align="center">
-        <div style={{ height: '100px', background: 'var(--mantine-color-blue-light)' }}>
+        <div style={{ height: '100px', background: 'var(--ui-color-blue-light)' }}>
           center
         </div>
       </Grid.Col>
       <Grid.Col span={4} align="flex-end">
-        <div style={{ height: '100px', background: 'var(--mantine-color-blue-light)' }}>
+        <div style={{ height: '100px', background: 'var(--ui-color-blue-light)' }}>
           flex-end
         </div>
       </Grid.Col>

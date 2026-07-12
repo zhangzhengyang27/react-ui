@@ -34,9 +34,9 @@ function Demo() {
 
 ```scss
 .demo {
-  color: var(--mantine-color-red-5);
-  background: var(--mantine-color-grape-9);
-  border: 1px solid var(--mantine-color-blue-1);
+  color: var(--ui-color-red-5);
+  background: var(--ui-color-grape-9);
+  border: 1px solid var(--ui-color-blue-1);
 }
 ```
 
@@ -173,13 +173,13 @@ function Demo() {
 
 - `background-color` 为 `#C3FF36`
 - 按钮悬停时的 `background-color` 为 `#B0E631`（`#C3FF36` 加深 10%）
-- `color` 为 `var(--mantine-color-white)`
+- `color` 为 `var(--ui-color-white)`
 - `border-color` 为 `transparent`
 
 `c` 是一个 [style prop](/styles/style-props) – 它负责设置单个 CSS 属性 `color`（文本颜色）。你可以组合使用这两个属性以获得更好的文本与背景对比度。在以下示例中：
 
-- `color` 属性设置 `background: #C3FF36` 和 `color: var(--mantine-color-white)`
-- `c` 属性将颜色样式覆盖为 `color: var(--mantine-color-black)`
+- `color` 属性设置 `background: #C3FF36` 和 `color: var(--ui-color-white)`
+- `c` 属性将颜色样式覆盖为 `color: var(--ui-color-black)`
 
 <Demo data={ThemingDemos.colorAndCProps} />
 

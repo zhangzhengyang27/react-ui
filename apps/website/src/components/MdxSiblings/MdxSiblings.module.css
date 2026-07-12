@@ -3,13 +3,13 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 50px;
-  border-top: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
-  padding-top: var(--mantine-spacing-lg);
+  border-top: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-4));
+  padding-top: var(--ui-spacing-lg);
 
   @mixin smaller-than em(700px) {
     flex-direction: column;
     align-items: stretch;
-    gap: var(--mantine-spacing-md);
+    gap: var(--ui-spacing-md);
   }
 }
 
@@ -20,17 +20,17 @@
   justify-content: space-between;
   text-decoration: none;
   padding: 7px 12px;
-  border-radius: var(--mantine-radius-md);
-  color: var(--mantine-color-bright);
-  gap: var(--mantine-spacing-xs);
+  border-radius: var(--ui-radius-md);
+  color: var(--ui-color-bright);
+  gap: var(--ui-spacing-xs);
 
   @mixin hover {
-    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-5));
+    background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-5));
   }
 }
 
 .title {
-  font-size: var(--mantine-font-size-sm);
+  font-size: var(--ui-font-size-sm);
   font-weight: 600;
 }
 

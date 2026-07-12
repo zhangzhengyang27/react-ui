@@ -5,11 +5,11 @@ import classes from './PieChart.demo.strokeColor.module.css';
 
 const cssCode = `
 .root {
-  --card-bg: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-5));
+  --card-bg: light-dark(var(--ui-color-gray-1), var(--ui-color-dark-5));
 
   background-color: var(--card-bg);
-  padding: var(--mantine-spacing-md);
-  border-radius: var(--mantine-radius-md);
+  padding: var(--ui-spacing-md);
+  border-radius: var(--ui-radius-md);
 }
 `;
 

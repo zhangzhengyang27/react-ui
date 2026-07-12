@@ -3,7 +3,7 @@ import { MantineDemo } from '@react-ui/demo';
 
 function Wrapper(props: StackProps) {
   return (
-    <Stack h={300} bg="var(--mantine-color-body)" {...props}>
+    <Stack h={300} bg="var(--ui-color-body)" {...props}>
       <Button variant="default">1</Button>
       <Button variant="default">2</Button>
       <Button variant="default">3</Button>
@@ -18,7 +18,7 @@ function Demo() {
   return (
     <Stack
       h={300}
-      bg="var(--mantine-color-body)"
+      bg="var(--ui-color-body)"
       {{props}}
     >
       <Button variant="default">1</Button>

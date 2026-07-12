@@ -124,25 +124,25 @@ function TabsDemo() {
   return (
     <Tabs
       defaultValue="gallery"
-      styles={{ tab: { fontSize: 'var(--mantine-font-size-md)', gap: 3, paddingInlineStart: 10 } }}
+      styles={{ tab: { fontSize: 'var(--ui-font-size-md)', gap: 3, paddingInlineStart: 10 } }}
       radius="md"
     >
       <Tabs.List>
         <Tabs.Tab
           value="gallery"
-          leftSection={<ImageIcon size={18} color="var(--mantine-color-dimmed)" />}
+          leftSection={<ImageIcon size={18} color="var(--ui-color-dimmed)" />}
         >
           Gallery
         </Tabs.Tab>
         <Tabs.Tab
           value="messages"
-          leftSection={<ChatCircleIcon size={18} color="var(--mantine-color-dimmed)" />}
+          leftSection={<ChatCircleIcon size={18} color="var(--ui-color-dimmed)" />}
         >
           Messages
         </Tabs.Tab>
         <Tabs.Tab
           value="settings"
-          leftSection={<GearSixIcon size={18} color="var(--mantine-color-dimmed)" />}
+          leftSection={<GearSixIcon size={18} color="var(--ui-color-dimmed)" />}
         >
           Settings
         </Tabs.Tab>

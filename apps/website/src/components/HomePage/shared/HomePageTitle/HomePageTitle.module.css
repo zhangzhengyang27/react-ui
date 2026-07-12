@@ -5,7 +5,7 @@
   margin: 0;
   padding: 0;
   user-select: none;
-  color: var(--mantine-color-bright);
+  color: var(--ui-color-bright);
   text-wrap: balance;
 
   &[data-order='1'] {

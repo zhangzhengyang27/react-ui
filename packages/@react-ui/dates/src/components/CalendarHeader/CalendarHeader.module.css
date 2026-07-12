@@ -8,7 +8,7 @@
 
   display: flex;
   max-width: calc(var(--dch-control-size) * 8 + rem(7px));
-  margin-bottom: var(--mantine-spacing-xs);
+  margin-bottom: var(--ui-spacing-xs);
 
   &[data-full-width] {
     max-width: none;
@@ -19,7 +19,7 @@
 .calendarHeaderLevel,
 .calendarHeaderControl {
   height: var(--dch-control-size);
-  border-radius: var(--mantine-radius-default);
+  border-radius: var(--ui-radius-default);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,11 +34,11 @@
   @mixin hover {
     &:where(:not([data-disabled], [data-static], :disabled)) {
       @mixin light {
-        background-color: var(--mantine-color-gray-0);
+        background-color: var(--ui-color-gray-0);
       }
 
       @mixin dark {
-        background-color: var(--mantine-color-dark-5);
+        background-color: var(--ui-color-dark-5);
       }
     }
   }
@@ -55,8 +55,8 @@
 
 .calendarHeaderLevel {
   flex: 1;
-  font-size: var(--dch-fz, var(--mantine-font-size-sm));
-  font-weight: var(--mantine-font-weight-medium);
+  font-size: var(--dch-fz, var(--ui-font-size-sm));
+  font-weight: var(--ui-font-weight-medium);
   text-transform: capitalize;
 }
 

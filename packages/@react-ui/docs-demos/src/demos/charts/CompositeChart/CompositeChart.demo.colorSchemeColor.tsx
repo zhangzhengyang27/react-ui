@@ -5,11 +5,11 @@ import classes from './CompositeChart.demo.colorSchemeColor.module.css';
 
 const cssCode = `.root {
   @mixin light {
-    --chart-color: var(--mantine-color-orange-8);
+    --chart-color: var(--ui-color-orange-8);
   }
 
   @mixin dark {
-    --chart-color: var(--mantine-color-lime-4);
+    --chart-color: var(--ui-color-lime-4);
   }
 }
 `;

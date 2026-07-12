@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   line-height: 1;
-  color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-dark-0));
+  color: light-dark(var(--ui-color-gray-9), var(--ui-color-dark-0));
 }
 
 .icon {

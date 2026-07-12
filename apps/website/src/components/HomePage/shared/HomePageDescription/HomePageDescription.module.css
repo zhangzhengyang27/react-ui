@@ -1,15 +1,15 @@
 .root {
   max-width: 670px;
-  font-size: var(--mantine-font-size-xl);
-  color: var(--mantine-color-gray-7);
-  margin-top: var(--mantine-spacing-lg);
+  font-size: var(--ui-font-size-xl);
+  color: var(--ui-color-gray-7);
+  margin-top: var(--ui-spacing-lg);
   text-wrap: balance;
 
   @mixin dark {
-    color: var(--mantine-color-dark-1);
+    color: var(--ui-color-dark-1);
   }
 
   @mixin smaller-than $mantine-breakpoint-md {
-    font-size: var(--mantine-font-size-md);
+    font-size: var(--ui-font-size-md);
   }
 }

@@ -93,8 +93,8 @@ function Demo() {
           <Box
             style={{
               display: 'flex',
-              gap: 'var(--mantine-spacing-sm)',
-              padding: 'var(--mantine-spacing-xs) var(--mantine-spacing-sm)',
+              gap: 'var(--ui-spacing-sm)',
+              padding: 'var(--ui-spacing-xs) var(--ui-spacing-sm)',
             }}
           >
             <Box
@@ -102,7 +102,7 @@ function Demo() {
                 width: 4,
                 borderRadius: 2,
                 flexShrink: 0,
-                backgroundColor: \`var(--mantine-color-\${event.color}-filled)\`,
+                backgroundColor: \`var(--ui-color-\${event.color}-filled)\`,
               }}
             />
             <div style={{ flex: 1 }}>
@@ -142,8 +142,8 @@ function Demo() {
           <Box
             style={{
               display: 'flex',
-              gap: 'var(--mantine-spacing-sm)',
-              padding: 'var(--mantine-spacing-xs) var(--mantine-spacing-sm)',
+              gap: 'var(--ui-spacing-sm)',
+              padding: 'var(--ui-spacing-xs) var(--ui-spacing-sm)',
             }}
           >
             <Box
@@ -151,7 +151,7 @@ function Demo() {
                 width: 4,
                 borderRadius: 2,
                 flexShrink: 0,
-                backgroundColor: `var(--mantine-color-${event.color}-filled)`,
+                backgroundColor: `var(--ui-color-${event.color}-filled)`,
               }}
             />
             <div style={{ flex: 1 }}>

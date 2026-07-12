@@ -5,9 +5,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: var(--mantine-color-white);
-  border-radius: var(--mantine-radius-lg);
-  padding: var(--mantine-spacing-xl);
+  color: var(--ui-color-white);
+  border-radius: var(--ui-radius-lg);
+  padding: var(--ui-spacing-xl);
   padding-inline-end: 80px;
   text-decoration: none;
   transition: transform 200ms ease;
@@ -34,39 +34,39 @@
 .hc {
   background-image: linear-gradient(
     180deg,
-    var(--mantine-color-blue-6),
-    var(--mantine-color-blue-7)
+    var(--ui-color-blue-6),
+    var(--ui-color-blue-7)
   );
 
   & .icon {
     padding: 0;
-    background-color: var(--mantine-color-blue-8);
+    background-color: var(--ui-color-blue-8);
 
     svg > path:first-child {
-      fill: var(--mantine-color-blue-8);
+      fill: var(--ui-color-blue-8);
     }
   }
 }
 
 .github,
 .twitter {
-  background-color: var(--mantine-color-gray-0);
-  color: var(--mantine-color-black);
+  background-color: var(--ui-color-gray-0);
+  color: var(--ui-color-black);
 
   & .icon {
-    background-color: var(--mantine-color-dark-7);
-    color: var(--mantine-color-white);
+    background-color: var(--ui-color-dark-7);
+    color: var(--ui-color-white);
   }
 }
 
 .icon {
-  margin-right: var(--mantine-spacing-lg);
+  margin-right: var(--ui-spacing-lg);
   height: 60px;
   width: 60px;
   min-width: 60px;
   min-height: 60px;
   padding: 15px;
-  border-radius: var(--mantine-radius-lg);
+  border-radius: var(--ui-radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,7 +80,7 @@
 
 .description {
   margin-top: 10px;
-  font-size: var(--mantine-font-size-sm);
+  font-size: var(--ui-font-size-sm);
   text-wrap: balance;
   opacity: 0.8;
 }
@@ -91,6 +91,6 @@
   width: var(--icon-size);
   height: var(--icon-size);
   position: absolute;
-  bottom: var(--mantine-spacing-xl);
-  right: var(--mantine-spacing-xl);
+  bottom: var(--ui-spacing-xl);
+  right: var(--ui-spacing-xl);
 }

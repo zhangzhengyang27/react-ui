@@ -22,18 +22,18 @@ export default Layout(MDX_DATA.CssVariables);
 <CssVariablesGroup
   data={[
     {
-      variable: '--mantine-font-family',
+      variable: '--ui-font-family',
       description:
         '控制大多数 ReactUI 组件的 font-family 属性',
       defaultValue: '系统无衬线字体',
     },
     {
-      variable: '--mantine-font-family-monospace',
+      variable: '--ui-font-family-monospace',
       description: '控制代码块的 font-family 属性',
       defaultValue: '系统等宽字体',
     },
     {
-      variable: '--mantine-font-family-headings',
+      variable: '--ui-font-family-headings',
       description: '控制标题的 font-family 属性',
       defaultValue: '系统无衬线字体',
     },
@@ -41,20 +41,20 @@ export default Layout(MDX_DATA.CssVariables);
 />
 
 你可以在 [theme](/theming/theme-object) 中控制这些变量。注意，如果
-`theme.headings.fontFamily` 未设置，`--mantine-font-family-headings` 的值将与 `--mantine-font-family` 相同。
+`theme.headings.fontFamily` 未设置，`--ui-font-family-headings` 的值将与 `--ui-font-family` 相同。
 
 ```tsx
 import { createTheme } from '@react-ui/ui';
 
 const theme = createTheme({
-  // 控制 --mantine-font-family
+  // 控制 --ui-font-family
   fontFamily: 'Arial, sans-serif',
 
-  // 控制 --mantine-font-family-monospace
+  // 控制 --ui-font-family-monospace
   fontFamilyMonospace: 'Courier New, monospace',
 
   headings: {
-    // 控制 --mantine-font-family-headings
+    // 控制 --ui-font-family-headings
     fontFamily: 'Georgia, serif',
   },
 });
@@ -74,23 +74,23 @@ const theme = createTheme({
 
 ```scss
 .text {
-  font-family: var(--mantine-font-family);
+  font-family: var(--ui-font-family);
 }
 
 .code {
-  font-family: var(--mantine-font-family-monospace);
+  font-family: var(--ui-font-family-monospace);
 }
 
 .heading {
-  font-family: var(--mantine-font-family-headings);
+  font-family: var(--ui-font-family-headings);
 }
 ```
 
 也可以在 [ff style prop](/styles/style-props) 中使用：
 
-- `ff="text"` 将使用 `--mantine-font-family` 变量
-- `ff="monospace"` 将使用 `--mantine-font-family-monospace` 变量
-- `ff="heading"` 将使用 `--mantine-font-family-headings` 变量
+- `ff="text"` 将使用 `--ui-font-family` 变量
+- `ff="monospace"` 将使用 `--ui-font-family-monospace` 变量
+- `ff="heading"` 将使用 `--ui-font-family-headings` 变量
 
 ```tsx
 import { Text } from '@react-ui/ui';
@@ -98,7 +98,7 @@ import { Text } from '@react-ui/ui';
 function Demo() {
   return (
     <Text ff="monospace">
-      这段文字使用了 --mantine-font-family-monospace 变量
+      这段文字使用了 --ui-font-family-monospace 变量
     </Text>
   );
 }
@@ -111,23 +111,23 @@ function Demo() {
 <CssVariablesGroup
   data={[
     {
-      variable: '--mantine-font-size-xs',
+      variable: '--ui-font-size-xs',
       defaultValue: '0.75rem (12px)',
     },
     {
-      variable: '--mantine-font-size-sm',
+      variable: '--ui-font-size-sm',
       defaultValue: '0.875rem (14px)',
     },
     {
-      variable: '--mantine-font-size-md',
+      variable: '--ui-font-size-md',
       defaultValue: '1rem (16px)',
     },
     {
-      variable: '--mantine-font-size-lg',
+      variable: '--ui-font-size-lg',
       defaultValue: '1.125rem (18px)',
     },
     {
-      variable: '--mantine-font-size-xl',
+      variable: '--ui-font-size-xl',
       defaultValue: '1.25rem (20px)',
     },
   ]}
@@ -137,7 +137,7 @@ function Demo() {
 
 ```scss
 .demo {
-  font-size: var(--mantine-font-size-md);
+  font-size: var(--ui-font-size-md);
 }
 ```
 
@@ -149,7 +149,7 @@ import { Text } from '@react-ui/ui';
 function Demo() {
   return (
     <Text fz="xl">
-      这段文字使用了 --mantine-font-size-xl 变量
+      这段文字使用了 --ui-font-size-xl 变量
     </Text>
   );
 }
@@ -186,7 +186,7 @@ const theme = createTheme({
 ```
 
 你可以向 `theme.fontSizes` 对象添加任意数量的额外字体大小。
-这些值将以 `--mantine-font-size-{size}` 格式定义为 CSS 变量：
+这些值将以 `--ui-font-size-{size}` 格式定义为 CSS 变量：
 
 ```tsx
 import { createTheme } from '@react-ui/ui';
@@ -203,7 +203,7 @@ const theme = createTheme({
 
 ```scss
 .demo {
-  font-size: var(--mantine-font-size-xxs);
+  font-size: var(--ui-font-size-xxs);
 }
 ```
 
@@ -211,38 +211,38 @@ const theme = createTheme({
 >
 > 自定义字体大小不会自动应用 camelCase 到 kebab-case 的转换。
 > 如果你使用 camelCase 键定义 `theme.fontSizes`，你需要以 camelCase 格式引用它们。
-> 例如，如果你定义了 `{ customSize: '1rem' }`，需要以 `--mantine-font-size-customSize` 引用。
+> 例如，如果你定义了 `{ customSize: '1rem' }`，需要以 `--ui-font-size-customSize` 引用。
 
 ### 行高
 
 行高变量用于 [Text](/core/text) 组件。在其他组件中，
-行高要么根据字体大小计算，要么设置为 `--mantine-line-height`，
-它是 `--mantine-line-height-md` 的别名。
+行高要么根据字体大小计算，要么设置为 `--ui-line-height`，
+它是 `--ui-line-height-md` 的别名。
 
 <CssVariablesGroup
   data={[
     {
-      variable: '--mantine-line-height',
+      variable: '--ui-line-height',
       defaultValue: '1.55',
     },
     {
-      variable: '--mantine-line-height-xs',
+      variable: '--ui-line-height-xs',
       defaultValue: '1.4',
     },
     {
-      variable: '--mantine-line-height-sm',
+      variable: '--ui-line-height-sm',
       defaultValue: '1.45',
     },
     {
-      variable: '--mantine-line-height-md',
+      variable: '--ui-line-height-md',
       defaultValue: '1.55',
     },
     {
-      variable: '--mantine-line-height-lg',
+      variable: '--ui-line-height-lg',
       defaultValue: '1.6',
     },
     {
-      variable: '--mantine-line-height-xl',
+      variable: '--ui-line-height-xl',
       defaultValue: '1.65',
     },
   ]}
@@ -252,7 +252,7 @@ const theme = createTheme({
 
 ```scss
 .demo {
-  line-height: var(--mantine-line-height-md);
+  line-height: var(--ui-line-height-md);
 }
 ```
 
@@ -264,7 +264,7 @@ import { Text } from '@react-ui/ui';
 function Demo() {
   return (
     <Text lh="xl">
-      这段文字使用了 --mantine-line-height-xl 变量
+      这段文字使用了 --ui-line-height-xl 变量
     </Text>
   );
 }
@@ -294,92 +294,92 @@ const theme = createTheme({
   data={[
     { group: '通用变量' },
     {
-      variable: '--mantine-heading-font-weight',
+      variable: '--ui-heading-font-weight',
       description:
         '控制所有标题的 font-weight 属性，除非被覆盖',
       defaultValue: '700',
     },
     {
-      variable: '--mantine-heading-text-wrap',
+      variable: '--ui-heading-text-wrap',
       description: '控制所有标题的 text-wrap 属性',
       defaultValue: 'wrap',
     },
     { group: 'h1 标题' },
     {
-      variable: '--mantine-h1-font-size',
+      variable: '--ui-h1-font-size',
       defaultValue: '2.125rem (34px)',
     },
     {
-      variable: '--mantine-h1-line-height',
+      variable: '--ui-h1-line-height',
       defaultValue: '1.3',
     },
     {
-      variable: '--mantine-h1-font-weight',
+      variable: '--ui-h1-font-weight',
       defaultValue: '700',
     },
     { group: 'h2 标题' },
     {
-      variable: '--mantine-h2-font-size',
+      variable: '--ui-h2-font-size',
       defaultValue: '1.625rem (26px)',
     },
     {
-      variable: '--mantine-h2-line-height',
+      variable: '--ui-h2-line-height',
       defaultValue: '1.35',
     },
     {
-      variable: '--mantine-h2-font-weight',
+      variable: '--ui-h2-font-weight',
       defaultValue: '700',
     },
     { group: 'h3 标题' },
     {
-      variable: '--mantine-h3-font-size',
+      variable: '--ui-h3-font-size',
       defaultValue: '1.375rem (22px)',
     },
     {
-      variable: '--mantine-h3-line-height',
+      variable: '--ui-h3-line-height',
       defaultValue: '1.4',
     },
     {
-      variable: '--mantine-h3-font-weight',
+      variable: '--ui-h3-font-weight',
       defaultValue: '700',
     },
     { group: 'h4 标题' },
     {
-      variable: '--mantine-h4-font-size',
+      variable: '--ui-h4-font-size',
       defaultValue: '1.125rem (18px)',
     },
     {
-      variable: '--mantine-h4-line-height',
+      variable: '--ui-h4-line-height',
       defaultValue: '1.45',
     },
     {
-      variable: '--mantine-h4-font-weight',
+      variable: '--ui-h4-font-weight',
       defaultValue: '700',
     },
     { group: 'h5 标题' },
     {
-      variable: '--mantine-h5-font-size',
+      variable: '--ui-h5-font-size',
       defaultValue: '1rem (16px)',
     },
     {
-      variable: '--mantine-h5-line-height',
+      variable: '--ui-h5-line-height',
       defaultValue: '1.5',
     },
     {
-      variable: '--mantine-h5-font-weight',
+      variable: '--ui-h5-font-weight',
       defaultValue: '700',
     },
     { group: 'h6 标题' },
     {
-      variable: '--mantine-h6-font-size',
+      variable: '--ui-h6-font-size',
       defaultValue: '0.875rem (14px)',
     },
     {
-      variable: '--mantine-h6-line-height',
+      variable: '--ui-h6-line-height',
       defaultValue: '1.5',
     },
     {
-      variable: '--mantine-h6-font-weight',
+      variable: '--ui-h6-font-weight',
       defaultValue: '700',
     },
   ]}
@@ -387,9 +387,9 @@ const theme = createTheme({
 
 这些变量用于 [Title](/core/title) 组件，`order` prop 控制使用哪个标题级别。例如，`order={3}` 的 Title 将使用：
 
-- `--mantine-h3-font-size`
-- `--mantine-h3-line-height`
-- `--mantine-h3-font-weight`
+- `--ui-h3-font-size`
+- `--ui-h3-line-height`
+- `--ui-h3-font-weight`
 
 <Demo data={TitleDemos.usage} />
 
@@ -397,9 +397,9 @@ const theme = createTheme({
 
 ```scss
 .h1 {
-  font-size: var(--mantine-h1-font-size);
-  line-height: var(--mantine-h1-line-height);
-  font-weight: var(--mantine-h1-font-weight);
+  font-size: var(--ui-h1-font-size);
+  line-height: var(--ui-h1-line-height);
+  font-weight: var(--ui-h1-font-weight);
 }
 ```
 
@@ -411,7 +411,7 @@ import { Box } from '@react-ui/ui';
 function Demo() {
   return (
     <Box fz="h1" lh="h1">
-      这段文字使用了 --mantine-h1-* 变量
+      这段文字使用了 --ui-h1-* 变量
     </Box>
   );
 }
@@ -469,12 +469,12 @@ CSS 属性。这些变量用于让文本在高像素密度屏幕上显示得更�
 <CssVariablesGroup
   data={[
     {
-      variable: '--mantine-webkit-font-smoothing',
+      variable: '--ui-webkit-font-smoothing',
       description: '控制 -webkit-font-smoothing CSS 属性',
       defaultValue: 'antialiased',
     },
     {
-      variable: '--mantine-moz-font-smoothing',
+      variable: '--ui-moz-font-smoothing',
       description: '控制 -moz-osx-font-smoothing CSS 属性',
       defaultValue: 'grayscale',
     },
@@ -502,7 +502,7 @@ body {
 
 ## 颜色变量
 
-颜色变量由 `theme.colors` 和 `theme.primaryColor` 控制。`theme.colors` 对象中定义的每种颜色都需要有 10 个色阶。主题颜色可以通过名称和色阶索引引用，例如 `--mantine-color-red-6`。
+颜色变量由 `theme.colors` 和 `theme.primaryColor` 控制。`theme.colors` 对象中定义的每种颜色都需要有 10 个色阶。主题颜色可以通过名称和色阶索引引用，例如 `--ui-color-red-6`。
 
 你可以在主题对象上定义新颜色或覆盖已有颜色：
 
@@ -532,43 +532,43 @@ const theme = createTheme({
 <CssVariablesGroup
   data={[
     {
-      variable: '--mantine-color-demo-0',
+      variable: '--ui-color-demo-0',
       defaultValue: '#FF0000',
     },
     {
-      variable: '--mantine-color-demo-1',
+      variable: '--ui-color-demo-1',
       defaultValue: '#FF3333',
     },
     {
-      variable: '--mantine-color-demo-2',
+      variable: '--ui-color-demo-2',
       defaultValue: '#FF6666',
     },
     {
-      variable: '--mantine-color-demo-3',
+      variable: '--ui-color-demo-3',
       defaultValue: '#FF9999',
     },
     {
-      variable: '--mantine-color-demo-4',
+      variable: '--ui-color-demo-4',
       defaultValue: '#FFCCCC',
     },
     {
-      variable: '--mantine-color-demo-5',
+      variable: '--ui-color-demo-5',
       defaultValue: '#FFEEEE',
     },
     {
-      variable: '--mantine-color-demo-6',
+      variable: '--ui-color-demo-6',
       defaultValue: '#FFFAFA',
     },
     {
-      variable: '--mantine-color-demo-7',
+      variable: '--ui-color-demo-7',
       defaultValue: '#FFF5F5',
     },
     {
-      variable: '--mantine-color-demo-8',
+      variable: '--ui-color-demo-8',
       defaultValue: '#FFF0F0',
     },
     {
-      variable: '--mantine-color-demo-9',
+      variable: '--ui-color-demo-9',
       defaultValue: '#FFEBEB',
     },
   ]}
@@ -585,39 +585,39 @@ const theme = createTheme({
   data={[
     { group: 'Filled 变体' },
     {
-      variable: '--mantine-color-blue-filled',
+      variable: '--ui-color-blue-filled',
       description: 'filled 变体的背景色',
-      defaultValue: 'var(--mantine-color-blue-6)',
+      defaultValue: 'var(--ui-color-blue-6)',
     },
     {
-      variable: '--mantine-color-blue-filled-hover',
+      variable: '--ui-color-blue-filled-hover',
       description: 'filled 变体 hover 时的背景色',
-      defaultValue: 'var(--mantine-color-blue-7)',
+      defaultValue: 'var(--ui-color-blue-7)',
     },
     { group: 'Light 变体' },
     {
-      variable: '--mantine-color-blue-light',
+      variable: '--ui-color-blue-light',
       description: 'light 变体的背景色',
       defaultValue: 'rgba(34, 139, 230, 0.1)',
     },
     {
-      variable: '--mantine-color-blue-light-hover',
+      variable: '--ui-color-blue-light-hover',
       description: 'light 变体 hover 时的背景色',
       defaultValue: 'rgba(34, 139, 230, 0.12)',
     },
     {
-      variable: '--mantine-color-blue-light-color',
+      variable: '--ui-color-blue-light-color',
       description: 'light 变体的文本颜色',
-      defaultValue: 'var(--mantine-color-blue-6)',
+      defaultValue: 'var(--ui-color-blue-6)',
     },
     { group: 'Outline 变体' },
     {
-      variable: '--mantine-color-blue-outline',
+      variable: '--ui-color-blue-outline',
       description: 'outline 变体的边框颜色',
-      defaultValue: 'var(--mantine-color-blue-6)',
+      defaultValue: 'var(--ui-color-blue-6)',
     },
     {
-      variable: '--mantine-color-blue-outline-hover',
+      variable: '--ui-color-blue-outline-hover',
       description: 'outline 变体的边框颜色',
       defaultValue: 'rgba(34, 139, 230, 0.05)',
     },
@@ -640,9 +640,9 @@ function Demo() {
 
 该组件将具有以下样式：
 
-- 背景色为 `var(--mantine-color-pink-filled)`
-- hover 时背景色为 `var(--mantine-color-pink-filled-hover)`
-- 文本颜色为 `var(--mantine-color-white)`
+- 背景色为 `var(--ui-color-pink-filled)`
+- hover 时背景色为 `var(--ui-color-pink-filled-hover)`
+- 文本颜色为 `var(--ui-color-white)`
 - 边框颜色为 `transparent`
 
 注意，上述变量不是静态的，它们根据 `theme.colors` 和 `theme.primaryShade` 的值生成。
@@ -661,36 +661,36 @@ function Demo() {
 <CssVariablesGroup
   data={[
     {
-      variable: '--mantine-primary-color-{shade}',
+      variable: '--ui-primary-color-{shade}',
       description:
         'shade 为 0-9，用于引用特定主色色阶',
-      defaultValue: 'var(--mantine-color-{primaryColor}-{shade})',
+      defaultValue: 'var(--ui-color-{primaryColor}-{shade})',
     },
     {
-      variable: '--mantine-primary-color-filled',
+      variable: '--ui-primary-color-filled',
       description: 'filled 变体的背景色',
-      defaultValue: 'var(--mantine-color-{primaryColor}-filled)',
+      defaultValue: 'var(--ui-color-{primaryColor}-filled)',
     },
     {
-      variable: '--mantine-primary-color-filled-hover',
+      variable: '--ui-primary-color-filled-hover',
       description: 'filled 变体 hover 时的背景色',
       defaultValue:
-        'var(--mantine-color-{primaryColor}-filled-hover)',
+        'var(--ui-color-{primaryColor}-filled-hover)',
     },
     {
-      variable: '--mantine-primary-color-light',
+      variable: '--ui-primary-color-light',
       description: 'light 变体的背景色',
-      defaultValue: 'var(--mantine-color-{primaryColor}-light)',
+      defaultValue: 'var(--ui-color-{primaryColor}-light)',
     },
     {
-      variable: '--mantine-primary-color-light-hover',
+      variable: '--ui-primary-color-light-hover',
       description: 'light 变体 hover 时的背景色',
-      defaultValue: 'var(--mantine-color-{primaryColor}-light-hover)',
+      defaultValue: 'var(--ui-color-{primaryColor}-light-hover)',
     },
     {
-      variable: '--mantine-primary-color-light-color',
+      variable: '--ui-primary-color-light-color',
       description: 'light 变体的文本颜色',
-      defaultValue: 'var(--mantine-color-{primaryColor}-light-color)',
+      defaultValue: 'var(--ui-color-{primaryColor}-light-color)',
     },
   ]}
 />
@@ -699,8 +699,8 @@ function Demo() {
 
 ```scss
 .demo {
-  color: var(--mantine-primary-color-0);
-  background-color: var(--mantine-primary-color-filled);
+  color: var(--ui-primary-color-0);
+  background-color: var(--ui-primary-color-filled);
 }
 ```
 
@@ -711,89 +711,89 @@ function Demo() {
 <CssVariablesGroup
   data={[
     {
-      variable: '--mantine-color-white',
+      variable: '--ui-color-white',
       description: 'theme.white 的值',
       defaultValue: '#fff',
     },
     {
-      variable: '--mantine-color-black',
+      variable: '--ui-color-black',
       description: 'theme.black 的值',
       defaultValue: '#000',
     },
     {
-      variable: '--mantine-color-text',
+      variable: '--ui-color-text',
       description: 'body 元素中使用的文本颜色',
-      defaultValue: 'var(--mantine-color-black)',
+      defaultValue: 'var(--ui-color-black)',
     },
     {
-      variable: '--mantine-color-body',
+      variable: '--ui-color-body',
       description: 'body 背景色',
-      defaultValue: 'var(--mantine-color-white)',
+      defaultValue: 'var(--ui-color-white)',
     },
     {
-      variable: '--mantine-color-error',
+      variable: '--ui-color-error',
       description: '用于错误消息和状态的颜色',
-      defaultValue: 'var(--mantine-color-red-6)',
+      defaultValue: 'var(--ui-color-red-6)',
     },
     {
-      variable: '--mantine-color-success',
+      variable: '--ui-color-success',
       description: '用于成功消息和状态的颜色',
-      defaultValue: 'var(--mantine-color-teal-8)',
+      defaultValue: 'var(--ui-color-teal-8)',
     },
     {
-      variable: '--mantine-color-placeholder',
+      variable: '--ui-color-placeholder',
       description: '用于输入框 placeholder 的颜色',
-      defaultValue: 'var(--mantine-color-gray-5)',
+      defaultValue: 'var(--ui-color-gray-5)',
     },
     {
-      variable: '--mantine-color-dimmed',
+      variable: '--ui-color-dimmed',
       description: '用于暗淡文本的颜色',
-      defaultValue: 'var(--mantine-color-gray-6)',
+      defaultValue: 'var(--ui-color-gray-6)',
     },
     {
-      variable: '--mantine-color-bright',
+      variable: '--ui-color-bright',
       description: '用于明亮文本的颜色',
-      defaultValue: 'var(--mantine-color-black)',
+      defaultValue: 'var(--ui-color-black)',
     },
     {
-      variable: '--mantine-color-anchor',
+      variable: '--ui-color-anchor',
       description: '用于链接的颜色',
-      defaultValue: 'var(--mantine-primary-color-6)',
+      defaultValue: 'var(--ui-primary-color-6)',
     },
     {
-      variable: '--mantine-color-default',
+      variable: '--ui-color-default',
       description: 'default 变体的背景色',
-      defaultValue: 'var(--mantine-color-white)',
+      defaultValue: 'var(--ui-color-white)',
     },
     {
-      variable: '--mantine-color-default-hover',
+      variable: '--ui-color-default-hover',
       description: 'default 变体 hover 时的背景色',
-      defaultValue: 'var(--mantine-color-gray-0)',
+      defaultValue: 'var(--ui-color-gray-0)',
     },
     {
-      variable: '--mantine-color-default-color',
+      variable: '--ui-color-default-color',
       description: 'default 变体的文本颜色',
-      defaultValue: 'var(--mantine-color-black)',
+      defaultValue: 'var(--ui-color-black)',
     },
     {
-      variable: '--mantine-color-default-border',
+      variable: '--ui-color-default-border',
       description: 'default 变体的边框颜色',
-      defaultValue: 'var(--mantine-color-gray-4)',
+      defaultValue: 'var(--ui-color-gray-4)',
     },
     {
-      variable: '--mantine-color-disabled',
+      variable: '--ui-color-disabled',
       description: '禁用元素的背景色',
-      defaultValue: 'var(--mantine-color-gray-2)',
+      defaultValue: 'var(--ui-color-gray-2)',
     },
     {
-      variable: '--mantine-color-disabled-color',
+      variable: '--ui-color-disabled-color',
       description: '禁用元素的文本颜色',
-      defaultValue: 'var(--mantine-color-gray-5)',
+      defaultValue: 'var(--ui-color-gray-5)',
     },
     {
-      variable: '--mantine-color-disabled-border',
+      variable: '--ui-color-disabled-border',
       description: '禁用元素的边框颜色',
-      defaultValue: 'var(--mantine-color-gray-3)',
+      defaultValue: 'var(--ui-color-gray-3)',
     },
   ]}
 />
@@ -806,23 +806,23 @@ function Demo() {
 <CssVariablesGroup
   data={[
     {
-      variable: '--mantine-spacing-xs',
+      variable: '--ui-spacing-xs',
       defaultValue: '0.625rem (10px)',
     },
     {
-      variable: '--mantine-spacing-sm',
+      variable: '--ui-spacing-sm',
       defaultValue: '0.75rem (12px)',
     },
     {
-      variable: '--mantine-spacing-md',
+      variable: '--ui-spacing-md',
       defaultValue: '1rem (16px)',
     },
     {
-      variable: '--mantine-spacing-lg',
+      variable: '--ui-spacing-lg',
       defaultValue: '1.25rem (20px)',
     },
     {
-      variable: '--mantine-spacing-xl',
+      variable: '--ui-spacing-xl',
       defaultValue: '2rem (32px)',
     },
   ]}
@@ -852,30 +852,30 @@ const theme = createTheme({
 <CssVariablesGroup
   data={[
     {
-      variable: '--mantine-radius-xs',
+      variable: '--ui-radius-xs',
       defaultValue: '0.125rem (2px)',
     },
     {
-      variable: '--mantine-radius-sm',
+      variable: '--ui-radius-sm',
       defaultValue: '0.25rem (4px)',
     },
     {
-      variable: '--mantine-radius-md',
+      variable: '--ui-radius-md',
       defaultValue: '0.5rem (8px)',
     },
     {
-      variable: '--mantine-radius-lg',
+      variable: '--ui-radius-lg',
       defaultValue: '1rem (16px)',
     },
     {
-      variable: '--mantine-radius-xl',
+      variable: '--ui-radius-xl',
       defaultValue: '2rem (32px)',
     },
   ]}
 />
 
-此外，`--mantine-radius-default` 变量基于 `theme.defaultRadius` 值定义。
-如果组件上的 `radius` prop 未显式设置，则使用 `--mantine-radius-default`。
+此外，`--ui-radius-default` 变量基于 `theme.defaultRadius` 值定义。
+如果组件上的 `radius` prop 未显式设置，则使用 `--ui-radius-default`。
 
 要定义自定义圆角值，请使用 `theme.radius` 和 `theme.defaultRadius` 属性：
 
@@ -901,27 +901,27 @@ const theme = createTheme({
 <CssVariablesGroup
   data={[
     {
-      variable: '--mantine-shadow-xs',
+      variable: '--ui-shadow-xs',
       defaultValue:
         '0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1)',
     },
     {
-      variable: '--mantine-shadow-sm',
+      variable: '--ui-shadow-sm',
       defaultValue:
         '0 1px 3px rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 0 10px 15px -5px, rgba(0, 0, 0, 0.04) 0 7px 7px -5px',
     },
     {
-      variable: '--mantine-shadow-md',
+      variable: '--ui-shadow-md',
       defaultValue:
         '0 1px 3px rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 0 20px 25px -5px, rgba(0, 0, 0, 0.04) 0 10px 10px -5px',
     },
     {
-      variable: '--mantine-shadow-lg',
+      variable: '--ui-shadow-lg',
       defaultValue:
         '0 1px 3px rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 0 28px 23px -7px, rgba(0, 0, 0, 0.04) 0 12px 12px -7px',
     },
     {
-      variable: '--mantine-shadow-xl',
+      variable: '--ui-shadow-xl',
       defaultValue:
         '0 1px 3px rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 0 36px 28px -7px, rgba(0, 0, 0, 0.04) 0 17px 17px -7px',
     },
@@ -952,23 +952,23 @@ z-index 变量不受 theme 控制，也不会暴露在 theme 对象中。
 <CssVariablesGroup
   data={[
     {
-      variable: '--mantine-z-index-app',
+      variable: '--ui-z-index-app',
       defaultValue: '100',
     },
     {
-      variable: '--mantine-z-index-modal',
+      variable: '--ui-z-index-modal',
       defaultValue: '200',
     },
     {
-      variable: '--mantine-z-index-popover',
+      variable: '--ui-z-index-popover',
       defaultValue: '300',
     },
     {
-      variable: '--mantine-z-index-overlay',
+      variable: '--ui-z-index-overlay',
       defaultValue: '400',
     },
     {
-      variable: '--mantine-z-index-max',
+      variable: '--ui-z-index-max',
       defaultValue: '9999',
     },
   ]}
@@ -979,7 +979,7 @@ z-index 变量不受 theme 控制，也不会暴露在 theme 对象中。
 ```css
 /* 将内容显示在 modal 之上 */
 .my-content {
-  z-index: calc(var(--mantine-z-index-modal) + 1);
+  z-index: calc(var(--ui-z-index-modal) + 1);
 }
 ```
 
@@ -991,7 +991,7 @@ import { Modal } from '@react-ui/ui';
 function Demo() {
   return (
     <Modal
-      zIndex="var(--mantine-z-index-max)"
+      zIndex="var(--ui-z-index-max)"
       opened
       onClose={() => {}}
     >
@@ -1030,13 +1030,13 @@ const themeOverride = createTheme({
 
 const resolver: CSSVariablesResolver = (theme) => ({
   variables: {
-    '--mantine-hero-height': theme.other.heroHeight,
+    '--ui-hero-height': theme.other.heroHeight,
   },
   light: {
-    '--mantine-color-deep-orange': theme.other.deepOrangeLight,
+    '--ui-color-deep-orange': theme.other.deepOrangeLight,
   },
   dark: {
-    '--mantine-color-deep-orange': theme.other.deepOrangeDark,
+    '--ui-color-deep-orange': theme.other.deepOrangeDark,
   },
 });
 
@@ -1052,13 +1052,13 @@ function Demo() {
 }
 ```
 
-然后你就可以在应用的任何部分使用 `--mantine-hero-height` 和 `--mantine-color-deep-orange` 变量：
+然后你就可以在应用的任何部分使用 `--ui-hero-height` 和 `--ui-color-deep-orange` 变量：
 
 ```css
 .hero {
-  height: var(--mantine-hero-height);
+  height: var(--ui-hero-height);
 
   /* 背景色会根据配色方案自动变化 */
-  background-color: var(--mantine-color-deep-orange);
+  background-color: var(--ui-color-deep-orange);
 }
 ```

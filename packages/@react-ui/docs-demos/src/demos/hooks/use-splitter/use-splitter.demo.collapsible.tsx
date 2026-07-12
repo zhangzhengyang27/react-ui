@@ -23,7 +23,7 @@ function Demo() {
         style={{
           display: 'flex',
           height: 200,
-          borderRadius: 'var(--mantine-radius-md)',
+          borderRadius: 'var(--ui-radius-md)',
           overflow: 'hidden',
         }}
       >
@@ -34,8 +34,8 @@ function Demo() {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: 'var(--mantine-color-blue-filled)',
-            color: 'var(--mantine-color-white)',
+            backgroundColor: 'var(--ui-color-blue-filled)',
+            color: 'var(--ui-color-white)',
             fontWeight: 500,
             whiteSpace: 'nowrap',
             overflow: 'hidden',
@@ -51,7 +51,7 @@ function Demo() {
             flexShrink: 0,
             cursor: 'col-resize',
             touchAction: 'none',
-            backgroundColor: 'var(--mantine-color-default-border)',
+            backgroundColor: 'var(--ui-color-default-border)',
             position: 'relative',
           }}
         >
@@ -66,10 +66,10 @@ function Demo() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              borderRadius: 'var(--mantine-radius-xs)',
-              backgroundColor: 'var(--mantine-color-default)',
-              border: '1px solid var(--mantine-color-default-border)',
-              color: 'var(--mantine-color-dimmed)',
+              borderRadius: 'var(--ui-radius-xs)',
+              backgroundColor: 'var(--ui-color-default)',
+              border: '1px solid var(--ui-color-default-border)',
+              color: 'var(--ui-color-dimmed)',
             }}
           >
             <DotsSixVerticalIcon />
@@ -82,8 +82,8 @@ function Demo() {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: 'var(--mantine-color-teal-filled)',
-            color: 'var(--mantine-color-white)',
+            backgroundColor: 'var(--ui-color-teal-filled)',
+            color: 'var(--ui-color-white)',
             fontWeight: 500,
             whiteSpace: 'nowrap',
             gap: 2,
@@ -117,7 +117,7 @@ function Demo() {
         style={{
           display: 'flex',
           height: 200,
-          borderRadius: 'var(--mantine-radius-md)',
+          borderRadius: 'var(--ui-radius-md)',
           overflow: 'hidden',
         }}
       >
@@ -128,8 +128,8 @@ function Demo() {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: 'var(--mantine-color-blue-filled)',
-            color: 'var(--mantine-color-white)',
+            backgroundColor: 'var(--ui-color-blue-filled)',
+            color: 'var(--ui-color-white)',
             fontWeight: 500,
             whiteSpace: 'nowrap',
             overflow: 'hidden',
@@ -145,7 +145,7 @@ function Demo() {
             flexShrink: 0,
             cursor: 'col-resize',
             touchAction: 'none',
-            backgroundColor: 'var(--mantine-color-default-border)',
+            backgroundColor: 'var(--ui-color-default-border)',
             position: 'relative',
           }}
         >
@@ -160,10 +160,10 @@ function Demo() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              borderRadius: 'var(--mantine-radius-xs)',
-              backgroundColor: 'var(--mantine-color-default)',
-              border: '1px solid var(--mantine-color-default-border)',
-              color: 'var(--mantine-color-dimmed)',
+              borderRadius: 'var(--ui-radius-xs)',
+              backgroundColor: 'var(--ui-color-default)',
+              border: '1px solid var(--ui-color-default-border)',
+              color: 'var(--ui-color-dimmed)',
             }}
           >
             <DotsSixVerticalIcon />
@@ -176,8 +176,8 @@ function Demo() {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: 'var(--mantine-color-teal-filled)',
-            color: 'var(--mantine-color-white)',
+            backgroundColor: 'var(--ui-color-teal-filled)',
+            color: 'var(--ui-color-white)',
             fontWeight: 500,
             whiteSpace: 'nowrap',
             gap: 2,

@@ -1,14 +1,14 @@
 .root {
   position: relative;
   border: 1px solid;
-  border-radius: var(--mantine-radius-default);
+  border-radius: var(--ui-radius-default);
 
   @mixin where-light {
-    border-color: var(--mantine-color-gray-4);
+    border-color: var(--ui-color-gray-4);
   }
 
   @mixin where-dark {
-    border-color: var(--mantine-color-dark-4);
+    border-color: var(--ui-color-dark-4);
   }
 }
 
@@ -41,12 +41,12 @@
 }
 
 .content {
-  background-color: var(--mantine-color-body);
-  border-radius: var(--mantine-radius-default);
+  background-color: var(--ui-color-body);
+  border-radius: var(--ui-radius-default);
 
   & :global(.ProseMirror) {
     outline: 0;
-    padding: var(--mantine-spacing-md);
+    padding: var(--ui-spacing-md);
   }
 
   & :global(.ProseMirror > *:last-child) {
@@ -59,7 +59,7 @@
     user-select: none;
     float: left;
     height: 0;
-    color: var(--mantine-color-placeholder);
+    color: var(--ui-color-placeholder);
   }
 
   & :global(div:not(.ProseMirror)) {
@@ -69,34 +69,34 @@
   }
 
   & :global(pre) {
-    font-family: var(--mantine-font-family-monospace);
-    border-radius: var(--mantine-radius-default);
-    padding: var(--mantine-spacing-sm) var(--mantine-spacing-md);
+    font-family: var(--ui-font-family-monospace);
+    border-radius: var(--ui-radius-default);
+    padding: var(--ui-spacing-sm) var(--ui-spacing-md);
 
     @mixin where-light {
-      background-color: var(--mantine-color-gray-0);
-      color: var(--mantine-color-gray-9);
-      --code-color-comment: var(--mantine-color-gray-5);
-      --code-color-var: var(--mantine-color-red-7);
-      --code-color-number: var(--mantine-color-blue-7);
-      --code-color-title: var(--mantine-color-pink-7);
-      --code-color-keyword: var(--mantine-color-violet-7);
+      background-color: var(--ui-color-gray-0);
+      color: var(--ui-color-gray-9);
+      --code-color-comment: var(--ui-color-gray-5);
+      --code-color-var: var(--ui-color-red-7);
+      --code-color-number: var(--ui-color-blue-7);
+      --code-color-title: var(--ui-color-pink-7);
+      --code-color-keyword: var(--ui-color-violet-7);
     }
 
     @mixin where-dark {
-      background-color: var(--mantine-color-dark-8);
-      color: var(--mantine-color-dark-1);
-      --code-color-comment: var(--mantine-color-dark-2);
-      --code-color-var: var(--mantine-color-red-5);
-      --code-color-number: var(--mantine-color-cyan-5);
-      --code-color-title: var(--mantine-color-yellow-5);
-      --code-color-keyword: var(--mantine-color-violet-3);
+      background-color: var(--ui-color-dark-8);
+      color: var(--ui-color-dark-1);
+      --code-color-comment: var(--ui-color-dark-2);
+      --code-color-var: var(--ui-color-red-5);
+      --code-color-number: var(--ui-color-cyan-5);
+      --code-color-title: var(--ui-color-yellow-5);
+      --code-color-keyword: var(--ui-color-violet-3);
     }
 
     & code {
       background: none !important;
       color: inherit;
-      font-size: var(--mantine-font-size-sm);
+      font-size: var(--ui-font-size-sm);
       padding: 0;
     }
 
@@ -154,14 +154,14 @@
 }
 
 .linkEditorDropdown {
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
 }
 
 .control {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: var(--mantine-radius-default);
+  border-radius: var(--ui-radius-default);
   cursor: default;
 
   &:where([data-variant='default']) {
@@ -177,58 +177,58 @@
   }
 
   @mixin where-light {
-    background-color: var(--mantine-color-white);
-    border-color: var(--mantine-color-gray-4);
-    color: var(--mantine-color-gray-7);
+    background-color: var(--ui-color-white);
+    border-color: var(--ui-color-gray-4);
+    color: var(--ui-color-gray-7);
   }
 
   @mixin where-dark {
-    border-color: var(--mantine-color-dark-4);
-    color: var(--mantine-color-dark-1);
+    border-color: var(--ui-color-dark-4);
+    color: var(--ui-color-dark-1);
 
     &:where([data-variant='default']) {
-      background-color: var(--mantine-color-dark-6);
+      background-color: var(--ui-color-dark-6);
     }
 
     &:where([data-variant='subtle']) {
-      background-color: var(--mantine-color-dark-7);
+      background-color: var(--ui-color-dark-7);
     }
   }
 
   &:where([data-disabled]) {
     cursor: not-allowed;
-    color: var(--mantine-color-disabled-color);
-    background-color: var(--mantine-color-disabled);
+    color: var(--ui-color-disabled-color);
+    background-color: var(--ui-color-disabled);
   }
 
   &:where([data-interactive]:not([data-disabled])) {
     cursor: pointer;
 
     @mixin hover {
-      color: var(--mantine-color-bright);
+      color: var(--ui-color-bright);
 
       @mixin where-light {
         &:where([data-variant='default']) {
-          background-color: var(--mantine-color-gray-0);
+          background-color: var(--ui-color-gray-0);
         }
 
         &:where([data-variant='subtle']) {
-          background-color: var(--mantine-color-gray-1);
+          background-color: var(--ui-color-gray-1);
         }
       }
 
       @mixin where-dark {
-        background-color: var(--mantine-color-dark-5);
+        background-color: var(--ui-color-dark-5);
       }
     }
   }
 
   &:where([data-active]) {
-    background-color: var(--mantine-primary-color-light);
-    color: var(--mantine-primary-color-light-color);
+    background-color: var(--ui-primary-color-light);
+    color: var(--ui-primary-color-light-color);
 
     @mixin hover {
-      background-color: var(--mantine-primary-color-light-hover);
+      background-color: var(--ui-primary-color-light-hover);
     }
   }
 }
@@ -240,7 +240,7 @@
 
 .controlsGroup {
   display: flex;
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
 
   &:where([data-variant='default']) {
     & :where([data-rich-text-editor-control]) {
@@ -251,13 +251,13 @@
       }
 
       &:where(:last-of-type) {
-        border-start-end-radius: var(--mantine-radius-default);
-        border-end-end-radius: var(--mantine-radius-default);
+        border-start-end-radius: var(--ui-radius-default);
+        border-end-end-radius: var(--ui-radius-default);
       }
 
       &:where(:first-of-type) {
-        border-start-start-radius: var(--mantine-radius-default);
-        border-end-start-radius: var(--mantine-radius-default);
+        border-start-start-radius: var(--ui-radius-default);
+        border-end-start-radius: var(--ui-radius-default);
       }
     }
   }
@@ -275,30 +275,30 @@
 
 .linkEditorExternalControl {
   border: 1px solid;
-  color: var(--mantine-color-text);
+  color: var(--ui-color-text);
   height: 24px;
   width: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: var(--mantine-radius-default);
+  border-radius: var(--ui-radius-default);
 
   @mixin where-light {
-    background-color: var(--mantine-color-white);
-    border-color: var(--mantine-color-gray-4);
+    background-color: var(--ui-color-white);
+    border-color: var(--ui-color-gray-4);
   }
 
   @mixin where-dark {
-    background-color: var(--mantine-color-dark-7);
-    border-color: var(--mantine-color-dark-4);
+    background-color: var(--ui-color-dark-7);
+    border-color: var(--ui-color-dark-4);
   }
 
   &:where([data-active]) {
-    background-color: var(--mantine-primary-color-light);
-    color: var(--mantine-primary-color-filled);
+    background-color: var(--ui-primary-color-light);
+    color: var(--ui-primary-color-filled);
 
     @mixin hover {
-      background-color: var(--mantine-primary-color-light-hover);
+      background-color: var(--ui-primary-color-light-hover);
     }
   }
 }
@@ -312,16 +312,16 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--mantine-spacing-sm);
+  gap: var(--ui-spacing-sm);
   top: var(--rte-sticky-offset, 0px);
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
   z-index: 1;
-  border-start-end-radius: var(--mantine-radius-default);
-  border-start-start-radius: var(--mantine-radius-default);
+  border-start-end-radius: var(--ui-radius-default);
+  border-start-start-radius: var(--ui-radius-default);
   border-bottom: 1px solid;
 
   &:where([data-variant='default']) {
-    padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+    padding: var(--ui-spacing-xs) var(--ui-spacing-md);
   }
 
   &:where([data-variant='subtle']) {
@@ -330,11 +330,11 @@
   }
 
   @mixin where-light {
-    border-color: var(--mantine-color-gray-4);
+    border-color: var(--ui-color-gray-4);
   }
 
   @mixin where-dark {
-    border-color: var(--mantine-color-dark-4);
+    border-color: var(--ui-color-dark-4);
   }
 
   &:where([data-sticky]) {
@@ -377,23 +377,23 @@
     width: 18px;
     height: 18px;
     border: 1px solid;
-    border-radius: var(--mantine-radius-default);
+    border-radius: var(--ui-radius-default);
     vertical-align: middle;
     position: relative;
 
     @mixin where-light {
-      background-color: var(--mantine-color-white);
-      border-color: var(--mantine-color-gray-4);
+      background-color: var(--ui-color-white);
+      border-color: var(--ui-color-gray-4);
     }
 
     @mixin where-dark {
-      background-color: var(--mantine-color-dark-6);
-      border-color: var(--mantine-color-dark-4);
+      background-color: var(--ui-color-dark-6);
+      border-color: var(--ui-color-dark-4);
     }
 
     &:checked {
-      background-color: var(--mantine-primary-color-filled);
-      border-color: var(--mantine-primary-color-filled);
+      background-color: var(--ui-primary-color-filled);
+      border-color: var(--ui-primary-color-filled);
 
       &::before {
         position: absolute;
@@ -408,6 +408,6 @@
   }
 
   & :where(li > label) {
-    margin-inline-end: var(--mantine-spacing-sm);
+    margin-inline-end: var(--ui-spacing-sm);
   }
 }

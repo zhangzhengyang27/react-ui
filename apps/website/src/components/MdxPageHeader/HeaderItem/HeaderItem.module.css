@@ -5,7 +5,7 @@
   overflow-x: hidden;
 
   & + & {
-    margin-top: var(--mantine-spacing-xs);
+    margin-top: var(--ui-spacing-xs);
   }
 }
 
@@ -14,7 +14,7 @@
   min-width: 100px;
   height: 20px;
   line-height: 20px;
-  color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-2));
+  color: light-dark(var(--ui-color-gray-6), var(--ui-color-dark-2));
 
   @mixin smaller-than 31em {
     display: none;

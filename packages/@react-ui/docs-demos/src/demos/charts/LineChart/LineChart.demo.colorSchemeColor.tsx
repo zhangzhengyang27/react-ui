@@ -5,11 +5,11 @@ import classes from './LineChart.demo.colorSchemeColor.module.css';
 
 const cssCode = `.root {
   @mixin light {
-    --line-color: var(--mantine-color-orange-8);
+    --line-color: var(--ui-color-orange-8);
   }
 
   @mixin dark {
-    --line-color: var(--mantine-color-lime-4);
+    --line-color: var(--ui-color-lime-4);
   }
 }
 `;

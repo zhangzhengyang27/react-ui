@@ -118,4 +118,11 @@ export const MDX_OTHERS_DATA: Record<string, Frontmatter> = {
     searchTags:
       'wysiwyg, rich text, tiptap, prosemirror, html editor, markdown editor, text editor',
   },
+
+  OxcConfig: {
+    title: 'ReactUI oxc 配置',
+    slug: '/oxc-config-mantine',
+    hideInSearch: true,
+    hideHeader: true,
+  },
 };

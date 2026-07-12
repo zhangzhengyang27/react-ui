@@ -1,5 +1,5 @@
 .root {
-  font-family: var(--mantine-font-family-monospace);
+  font-family: var(--ui-font-family-monospace);
   font-size: 13px;
 }
 
@@ -10,12 +10,12 @@
 
   &[data-selected] {
     font-weight: 700;
-    background-color: var(--mantine-color-blue-light) !important;
-    color: var(--mantine-color-bright);
+    background-color: var(--ui-color-blue-light) !important;
+    color: var(--ui-color-bright);
   }
 
   &:hover {
-    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
-    color: var(--mantine-color-bright);
+    background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-6));
+    color: var(--ui-color-bright);
   }
 }

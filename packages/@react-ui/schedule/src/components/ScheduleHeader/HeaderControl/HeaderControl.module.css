@@ -8,12 +8,12 @@
   user-select: none;
   min-width: var(--control-size);
   height: var(--control-size);
-  border-radius: var(--schedule-radius, var(--control-radius, var(--mantine-radius-default)));
-  border: 1px solid var(--mantine-color-default-border);
-  color: var(--mantine-color-default-color);
-  background: var(--mantine-color-default);
-  font-size: var(--mantine-font-size-sm);
-  font-weight: var(--mantine-font-weight-medium);
+  border-radius: var(--schedule-radius, var(--control-radius, var(--ui-radius-default)));
+  border: 1px solid var(--ui-color-default-border);
+  color: var(--ui-color-default-color);
+  background: var(--ui-color-default);
+  font-size: var(--ui-font-size-sm);
+  font-weight: var(--ui-font-weight-medium);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -23,7 +23,7 @@
     cursor: pointer;
 
     @mixin hover {
-      background-color: var(--mantine-color-default-hover);
+      background-color: var(--ui-color-default-hover);
     }
   }
 
@@ -32,13 +32,13 @@
   }
 
   &:where([data-active]) {
-    background-color: var(--mantine-primary-color-filled);
-    border-color: var(--mantine-primary-color-filled);
-    color: var(--mantine-primary-color-contrast);
+    background-color: var(--ui-primary-color-filled);
+    border-color: var(--ui-primary-color-filled);
+    color: var(--ui-primary-color-contrast);
 
     @mixin hover {
-      background-color: var(--mantine-primary-color-filled-hover);
-      border-color: var(--mantine-primary-color-filled-hover);
+      background-color: var(--ui-primary-color-filled-hover);
+      border-color: var(--ui-primary-color-filled-hover);
     }
   }
 }

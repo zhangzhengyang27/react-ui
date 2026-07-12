@@ -58,7 +58,7 @@ interface MantineTheme {
   variantColorResolver: VariantColorsResolver;
 
   /** Determines whether text color must be changed based on the given `color` prop in filled variant
-   *  For example, if you pass `color="blue.1"` to the Button component, text color will be changed to `var(--mantine-color-black)`
+   *  For example, if you pass `color="blue.1"` to the Button component, text color will be changed to `var(--ui-color-black)`
    *  Default value – `false`
    * */
   autoContrast: boolean;
@@ -293,7 +293,7 @@ function Demo() {
 
 ### fontWeights
 
-`theme.fontWeights` 控制所有组件中使用的 `font-weight` 值。默认值为 `regular: 400`、`medium: 600`、`bold: 700`。每个值都会映射到一个 CSS 变量：`--mantine-font-weight-regular`、`--mantine-font-weight-medium`、`--mantine-font-weight-bold`。
+`theme.fontWeights` 控制所有组件中使用的 `font-weight` 值。默认值为 `regular: 400`、`medium: 600`、`bold: 700`。每个值都会映射到一个 CSS 变量：`--ui-font-weight-regular`、`--ui-font-weight-medium`、`--ui-font-weight-bold`。
 
 例如，要将 medium 字重从 `600` 改回 ReactUI 8 中的默认值 `500`：
 

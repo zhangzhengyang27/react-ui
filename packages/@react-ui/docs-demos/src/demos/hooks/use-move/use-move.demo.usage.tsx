@@ -20,7 +20,7 @@ function Demo() {
           style={{
             width: 400,
             height: 120,
-            backgroundColor: 'var(--mantine-color-blue-light)',
+            backgroundColor: 'var(--ui-color-blue-light)',
             position: 'relative',
           }}
         >
@@ -31,7 +31,7 @@ function Demo() {
               top: \`calc(\${value.y * 100}% - 8px)\`,
               width: 16,
               height: 16,
-              backgroundColor: active ? 'var(--mantine-color-teal-7)' : 'var(--mantine-color-blue-7)',
+              backgroundColor: active ? 'var(--ui-color-teal-7)' : 'var(--ui-color-blue-7)',
             }}
           />
         </div>
@@ -55,7 +55,7 @@ function Demo() {
           style={{
             width: 400,
             height: 120,
-            backgroundColor: 'var(--mantine-color-blue-light)',
+            backgroundColor: 'var(--ui-color-blue-light)',
             position: 'relative',
           }}
         >
@@ -67,8 +67,8 @@ function Demo() {
               width: 16,
               height: 16,
               backgroundColor: active
-                ? 'var(--mantine-color-teal-7)'
-                : 'var(--mantine-color-blue-7)',
+                ? 'var(--ui-color-teal-7)'
+                : 'var(--ui-color-blue-7)',
             }}
           />
         </div>

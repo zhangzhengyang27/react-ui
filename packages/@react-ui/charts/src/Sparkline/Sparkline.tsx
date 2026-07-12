@@ -149,7 +149,7 @@ export const Sparkline = factory<SparklineFactory>((_props) => {
             dataKey="value"
             type={curveType}
             fill={`url(#${id})`}
-            stroke="var(--chart-color, var(--mantine-color-blue-filled))"
+            stroke="var(--chart-color, var(--ui-color-blue-filled))"
             isAnimationActive={false}
             connectNulls={connectNulls}
             strokeWidth={strokeWidth}
@@ -161,7 +161,7 @@ export const Sparkline = factory<SparklineFactory>((_props) => {
           <defs>
             <AreaGradient
               id={id}
-              color="var(--chart-color, var(--mantine-color-blue-filled))"
+              color="var(--chart-color, var(--ui-color-blue-filled))"
               fillOpacity={fillOpacity}
               withGradient={withGradient}
             />

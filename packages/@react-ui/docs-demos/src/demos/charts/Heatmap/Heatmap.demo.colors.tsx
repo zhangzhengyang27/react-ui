@@ -13,10 +13,10 @@ function Demo() {
       startDate="2024-02-16"
       endDate="2025-02-16"
       colors={[
-        'var(--mantine-color-orange-4)',
-        'var(--mantine-color-orange-6)',
-        'var(--mantine-color-orange-7)',
-        'var(--mantine-color-orange-9)',
+        'var(--ui-color-orange-4)',
+        'var(--ui-color-orange-6)',
+        'var(--ui-color-orange-7)',
+        'var(--ui-color-orange-9)',
       ]}
     />
   );
@@ -30,10 +30,10 @@ function Demo() {
       startDate="2024-02-16"
       endDate="2025-02-16"
       colors={[
-        'var(--mantine-color-orange-4)',
-        'var(--mantine-color-orange-6)',
-        'var(--mantine-color-orange-7)',
-        'var(--mantine-color-orange-9)',
+        'var(--ui-color-orange-4)',
+        'var(--ui-color-orange-6)',
+        'var(--ui-color-orange-7)',
+        'var(--ui-color-orange-9)',
       ]}
     />
   );

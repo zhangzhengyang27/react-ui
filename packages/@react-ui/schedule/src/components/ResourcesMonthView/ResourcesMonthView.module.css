@@ -1,16 +1,16 @@
 .resourcesMonthView {
-  --resources-month-view-radius: var(--schedule-radius, var(--mantine-radius-default));
+  --resources-month-view-radius: var(--schedule-radius, var(--ui-radius-default));
   --resources-month-view-resource-label-width: 120px;
   --resources-month-view-day-width: 80px;
   --resources-month-view-row-height: 64px;
   --resources-month-view-group-label-width: 80px;
 
   @mixin where-light {
-    --resources-month-view-border-color: var(--mantine-color-gray-3);
+    --resources-month-view-border-color: var(--ui-color-gray-3);
   }
 
   @mixin where-dark {
-    --resources-month-view-border-color: var(--mantine-color-dark-4);
+    --resources-month-view-border-color: var(--ui-color-dark-4);
   }
 }
 
@@ -41,7 +41,7 @@
   position: sticky;
   top: 0;
   z-index: 5;
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
   border-bottom: 1px solid var(--resources-month-view-border-color);
   margin-bottom: -1px;
 }
@@ -56,10 +56,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--mantine-font-size-sm);
-  font-weight: var(--mantine-font-weight-medium);
+  font-size: var(--ui-font-size-sm);
+  font-weight: var(--ui-font-weight-medium);
   user-select: none;
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
 }
 
 .resourcesMonthViewDayLabel {
@@ -71,7 +71,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: var(--mantine-font-size-xs);
+  font-size: var(--ui-font-size-xs);
   user-select: none;
   cursor: default;
   border-inline-end: 1px solid var(--resources-month-view-border-color);
@@ -81,25 +81,25 @@
   }
 
   &:where([data-weekend]) {
-    color: var(--mantine-color-red-6);
+    color: var(--ui-color-red-6);
   }
 
   &:where([data-today]) {
-    background-color: var(--mantine-primary-color-filled);
-    color: var(--mantine-primary-color-contrast);
+    background-color: var(--ui-primary-color-filled);
+    color: var(--ui-primary-color-contrast);
   }
 }
 
 .resourcesMonthViewDayLabelWeekday {
   font-size: 12px;
-  font-weight: var(--mantine-font-weight-medium);
+  font-weight: var(--ui-font-weight-medium);
   text-transform: capitalize;
   line-height: 1;
   margin-bottom: 3px;
 }
 
 .resourcesMonthViewDayLabelNumber {
-  font-weight: var(--mantine-font-weight-medium);
+  font-weight: var(--ui-font-weight-medium);
   font-size: 12px;
   line-height: 1;
 }
@@ -115,15 +115,15 @@
   display: flex;
   align-items: center;
   padding: 4px 8px;
-  font-size: var(--mantine-font-size-sm);
-  font-weight: var(--mantine-font-weight-medium);
+  font-size: var(--ui-font-size-sm);
+  font-weight: var(--ui-font-weight-medium);
   user-select: none;
   border-inline-end: 1px solid var(--resources-month-view-border-color);
   min-height: var(--resources-month-view-row-height);
   position: sticky;
   left: 0;
   z-index: 4;
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
 
   &:where([data-has-groups]) {
     left: var(--resources-month-view-group-label-width);
@@ -137,14 +137,14 @@
   position: sticky;
   left: 0;
   z-index: 5;
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   overflow-wrap: break-word;
-  font-size: var(--mantine-font-size-sm);
-  font-weight: var(--mantine-font-weight-medium);
+  font-size: var(--ui-font-size-sm);
+  font-weight: var(--ui-font-weight-medium);
   user-select: none;
   border-inline-end: 1px solid var(--resources-month-view-border-color);
   overflow: visible;
@@ -168,7 +168,7 @@
   position: sticky;
   left: 0;
   z-index: 5;
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
   border-inline-end: 1px solid var(--resources-month-view-border-color);
 }
 
@@ -199,32 +199,32 @@
   @mixin hover {
     &:where(:not([data-static])) {
       @mixin where-light {
-        background-color: var(--mantine-color-gray-0);
+        background-color: var(--ui-color-gray-0);
       }
 
       @mixin where-dark {
-        background-color: var(--mantine-color-dark-6);
+        background-color: var(--ui-color-dark-6);
       }
     }
   }
 
   &:where([data-weekend]) {
     @mixin where-light {
-      background-color: var(--mantine-color-gray-0);
+      background-color: var(--ui-color-gray-0);
     }
 
     @mixin where-dark {
-      background-color: var(--mantine-color-dark-8);
+      background-color: var(--ui-color-dark-8);
     }
   }
 
   &:where([data-drop-target]) {
     @mixin where-light {
-      background-color: var(--mantine-color-blue-1);
+      background-color: var(--ui-color-blue-1);
     }
 
     @mixin where-dark {
-      background-color: var(--mantine-color-dark-5);
+      background-color: var(--ui-color-dark-5);
     }
 
     &::before {
@@ -237,11 +237,11 @@
       border-radius: 2px;
 
       @mixin where-light {
-        border-color: var(--mantine-color-blue-4);
+        border-color: var(--ui-color-blue-4);
       }
 
       @mixin where-dark {
-        border-color: var(--mantine-color-blue-6);
+        border-color: var(--ui-color-blue-6);
       }
     }
   }
@@ -249,7 +249,7 @@
   &:where([data-drag-selected]) {
     &,
     &:hover {
-      background-color: var(--mantine-primary-color-light);
+      background-color: var(--ui-primary-color-light);
     }
 
     &::before {
@@ -261,11 +261,11 @@
       border: 1px solid;
 
       @mixin where-light {
-        border-color: var(--mantine-primary-color-2);
+        border-color: var(--ui-primary-color-2);
       }
 
       @mixin where-dark {
-        border-color: var(--mantine-primary-color-9);
+        border-color: var(--ui-primary-color-9);
       }
     }
   }

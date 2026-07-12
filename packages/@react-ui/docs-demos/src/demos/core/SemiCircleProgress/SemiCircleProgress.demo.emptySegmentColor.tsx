@@ -5,12 +5,12 @@ const code = `
 import { SemiCircleProgress } from '@react-ui/ui';
 
 function Demo() {
-  return <SemiCircleProgress value={30} emptySegmentColor="var(--mantine-color-dimmed)" />;
+  return <SemiCircleProgress value={30} emptySegmentColor="var(--ui-color-dimmed)" />;
 }
 `;
 
 function Demo() {
-  return <SemiCircleProgress value={30} emptySegmentColor="var(--mantine-color-dimmed)" />;
+  return <SemiCircleProgress value={30} emptySegmentColor="var(--ui-color-dimmed)" />;
 }
 
 export const emptySegmentColor: MantineDemo = {

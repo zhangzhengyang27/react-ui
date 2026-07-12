@@ -35,9 +35,9 @@ function Demo() {
           cursor: active ? 'grabbing' : 'grab',
           touchAction: 'pan-y',
           userSelect: 'none',
-          borderRadius: 'var(--mantine-radius-md)',
-          border: '1px solid var(--mantine-color-default-border)',
-          padding: 'var(--mantine-spacing-md)',
+          borderRadius: 'var(--ui-radius-md)',
+          border: '1px solid var(--ui-color-default-border)',
+          padding: 'var(--ui-spacing-md)',
         }}
       >
         {Array.from({ length: 20 }, (_, i) => (
@@ -51,7 +51,7 @@ function Demo() {
               height: 80,
               marginRight: 12,
               backgroundColor: \`hsl(\${i * 18}, 60%, 70%)\`,
-              borderRadius: 'var(--mantine-radius-sm)',
+              borderRadius: 'var(--ui-radius-sm)',
               fontWeight: 600,
               verticalAlign: 'top',
             }}
@@ -95,9 +95,9 @@ function Demo() {
           cursor: active ? 'grabbing' : 'grab',
           touchAction: 'pan-y',
           userSelect: 'none',
-          borderRadius: 'var(--mantine-radius-md)',
-          border: '1px solid var(--mantine-color-default-border)',
-          padding: 'var(--mantine-spacing-md)',
+          borderRadius: 'var(--ui-radius-md)',
+          border: '1px solid var(--ui-color-default-border)',
+          padding: 'var(--ui-spacing-md)',
         }}
       >
         {Array.from({ length: 20 }, (_, i) => (
@@ -111,10 +111,10 @@ function Demo() {
               height: 80,
               marginRight: 12,
               backgroundColor: `hsl(${i * 18}, 60%, 70%)`,
-              borderRadius: 'var(--mantine-radius-sm)',
+              borderRadius: 'var(--ui-radius-sm)',
               fontWeight: 600,
               verticalAlign: 'top',
-              color: 'var(--mantine-color-black)',
+              color: 'var(--ui-color-black)',
             }}
           >
             Card {i + 1}

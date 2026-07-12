@@ -3,7 +3,7 @@
   display: flex;
   position: relative;
   justify-content: space-between;
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
   width: 100%;
   flex: 1;
 
@@ -19,7 +19,7 @@
 
 .container {
   padding-inline: var(--docs-inline-spacing);
-  padding-block: var(--mantine-spacing-xl);
+  padding-block: var(--ui-spacing-xl);
   max-width: 994px;
 
   @mixin smaller-than 1750px {
@@ -39,7 +39,7 @@
   }
 
   @mixin smaller-than $docs-mdx-breakpoint {
-    padding-block: var(--mantine-spacing-md);
+    padding-block: var(--ui-spacing-md);
   }
 }
 

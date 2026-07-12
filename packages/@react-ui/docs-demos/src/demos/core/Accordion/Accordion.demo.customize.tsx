@@ -25,12 +25,12 @@ function Demo() {
 `;
 
 const cssCode = `.root {
-  border-radius: var(--mantine-radius-sm);
-  background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+  border-radius: var(--ui-radius-sm);
+  background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-6));
 }
 
 .item {
-  background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+  background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-6));
   border: 1px solid transparent;
   position: relative;
   z-index: 0;
@@ -39,10 +39,10 @@ const cssCode = `.root {
   &[data-active] {
     transform: scale(1.03);
     z-index: 1;
-    background-color: var(--mantine-color-body);
-    border-color: light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-4));
-    box-shadow: var(--mantine-shadow-md);
-    border-radius: var(--mantine-radius-md);
+    background-color: var(--ui-color-body);
+    border-color: light-dark(var(--ui-color-gray-2), var(--ui-color-dark-4));
+    box-shadow: var(--ui-shadow-md);
+    border-radius: var(--ui-radius-md);
   }
 }
 

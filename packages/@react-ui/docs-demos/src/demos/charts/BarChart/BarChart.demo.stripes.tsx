@@ -30,7 +30,7 @@ function Demo() {
             width="2"
             height="8"
             transform="translate(0,0)"
-            fill="color-mix(in lch, var(--mantine-color-teal-6) 70%, rgba(0,0,0,0))"
+            fill="color-mix(in lch, var(--ui-color-teal-6) 70%, rgba(0,0,0,0))"
           />
         </pattern>
 
@@ -38,17 +38,17 @@ function Demo() {
           <path
             d="M 0 0 L 8 0 L 8 8 L 0 8 Z"
             fill="none"
-            stroke="color-mix(in lch, var(--mantine-color-indigo-6) 70%, rgba(0,0,0,0))"
+            stroke="color-mix(in lch, var(--ui-color-indigo-6) 70%, rgba(0,0,0,0))"
             strokeWidth="1"
           />
           <path
             d="M 0 0 L 8 8"
-            stroke="color-mix(in lch, var(--mantine-color-indigo-6) 70%, rgba(0,0,0,0))"
+            stroke="color-mix(in lch, var(--ui-color-indigo-6) 70%, rgba(0,0,0,0))"
             strokeWidth="1"
           />
           <path
             d="M 8 0 L 0 8"
-            stroke="color-mix(in lch, var(--mantine-color-indigo-6) 70%, rgba(0,0,0,0))"
+            stroke="color-mix(in lch, var(--ui-color-indigo-6) 70%, rgba(0,0,0,0))"
             strokeWidth="1"
           />
         </pattern>
@@ -82,7 +82,7 @@ function Demo() {
             width="2"
             height="8"
             transform="translate(0,0)"
-            fill="color-mix(in lch, var(--mantine-color-teal-6) 70%, rgba(0,0,0,0))"
+            fill="color-mix(in lch, var(--ui-color-teal-6) 70%, rgba(0,0,0,0))"
           />
         </pattern>
 
@@ -90,17 +90,17 @@ function Demo() {
           <path
             d="M 0 0 L 8 0 L 8 8 L 0 8 Z"
             fill="none"
-            stroke="color-mix(in lch, var(--mantine-color-indigo-6) 70%, rgba(0,0,0,0))"
+            stroke="color-mix(in lch, var(--ui-color-indigo-6) 70%, rgba(0,0,0,0))"
             strokeWidth="1"
           />
           <path
             d="M 0 0 L 8 8"
-            stroke="color-mix(in lch, var(--mantine-color-indigo-6) 70%, rgba(0,0,0,0))"
+            stroke="color-mix(in lch, var(--ui-color-indigo-6) 70%, rgba(0,0,0,0))"
             strokeWidth="1"
           />
           <path
             d="M 8 0 L 0 8"
-            stroke="color-mix(in lch, var(--mantine-color-indigo-6) 70%, rgba(0,0,0,0))"
+            stroke="color-mix(in lch, var(--ui-color-indigo-6) 70%, rgba(0,0,0,0))"
             strokeWidth="1"
           />
         </pattern>

@@ -34,13 +34,13 @@ function Demo() {
 
 const cssCode = `.root {
   @mixin light {
-    --average-bar-color: var(--mantine-color-dark-8);
-    --you-bar-color: var(--mantine-color-blue-3);
+    --average-bar-color: var(--ui-color-dark-8);
+    --you-bar-color: var(--ui-color-blue-3);
   }
 
   @mixin dark {
-    --you-bar-color: var(--mantine-color-blue-8);
-    --average-bar-color: var(--mantine-color-gray-4);
+    --you-bar-color: var(--ui-color-blue-8);
+    --average-bar-color: var(--ui-color-gray-4);
   }
 }
 

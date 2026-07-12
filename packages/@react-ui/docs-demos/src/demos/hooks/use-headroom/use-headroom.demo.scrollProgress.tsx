@@ -23,7 +23,7 @@ function Demo() {
               height: 60,
               zIndex: 1000000,
               transform: \`translateY(\${(scrollProgress - 1) * 100}%)\`,
-              backgroundColor: 'var(--mantine-color-violet-6)',
+              backgroundColor: 'var(--ui-color-violet-6)',
             }}
           >
             <Group justify="center" h="100%">
@@ -60,7 +60,7 @@ function Demo() {
               height: 60,
               zIndex: 1000000,
               transform: `translateY(${(scrollProgress - 1) * 100}%)`,
-              backgroundColor: 'var(--mantine-color-violet-6)',
+              backgroundColor: 'var(--ui-color-violet-6)',
             }}
           >
             <Group justify="center" h="100%">

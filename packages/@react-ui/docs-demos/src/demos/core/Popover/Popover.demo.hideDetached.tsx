@@ -7,7 +7,7 @@ import { Box, Button, Group, Popover } from '@react-ui/ui';
 function Demo() {
   return (
     <Box
-      bd="1px solid var(--mantine-color-dimmed)"
+      bd="1px solid var(--ui-color-dimmed)"
       p="xl"
       w={{ base: 340, sm: 400 }}
       h={200}
@@ -40,7 +40,7 @@ function Demo() {
 
   return (
     <Box
-      bd="1px solid var(--mantine-color-dimmed)"
+      bd="1px solid var(--ui-color-dimmed)"
       p="xl"
       w={{ base: 340, sm: 400 }}
       h={200}

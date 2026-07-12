@@ -1,11 +1,11 @@
 .navbar {
-  --border-color: light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-5));
+  --border-color: light-dark(var(--ui-color-gray-3), var(--ui-color-dark-5));
 
   position: fixed;
   top: var(--docs-main-header-section-height);
   bottom: 0;
   width: var(--combobox-shell-navbar-width);
-  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
+  background-color: light-dark(var(--ui-color-white), var(--ui-color-dark-7));
   border-inline-end: 1px solid var(--border-color);
 
   @mixin smaller-than $docs-mdx-breakpoint {
@@ -27,15 +27,15 @@
 }
 
 .search {
-  margin-left: var(--mantine-spacing-xs);
-  margin-right: var(--mantine-spacing-xs);
+  margin-left: var(--ui-spacing-xs);
+  margin-right: var(--ui-spacing-xs);
   width: auto;
-  margin-bottom: var(--mantine-spacing-md);
-  margin-top: var(--mantine-spacing-md);
+  margin-bottom: var(--ui-spacing-md);
+  margin-top: var(--ui-spacing-md);
 }
 
 .searchInput {
-  font-size: var(--mantine-font-size-sm);
+  font-size: var(--ui-font-size-sm);
 }
 
 .searchIcon {
@@ -44,47 +44,47 @@
 }
 
 .item {
-  padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+  padding: var(--ui-spacing-xs) var(--ui-spacing-md);
 
   & + & {
-    border-top: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-8));
+    border-top: 1px solid light-dark(var(--ui-color-gray-2), var(--ui-color-dark-8));
   }
 
   &[data-active] {
     &,
     &:hover {
-      background-color: var(--mantine-color-blue-light);
+      background-color: var(--ui-color-blue-light);
       border-top-color: transparent !important;
     }
 
     & .itemName {
-      color: light-dark(var(--mantine-color-blue-7), var(--mantine-color-blue-2));
+      color: light-dark(var(--ui-color-blue-7), var(--ui-color-blue-2));
     }
 
     & .itemDescription {
-      color: light-dark(var(--mantine-color-blue-7), var(--mantine-color-blue-4));
+      color: light-dark(var(--ui-color-blue-7), var(--ui-color-blue-4));
       opacity: 0.7;
     }
   }
 }
 
 .itemName {
-  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  color: light-dark(var(--ui-color-black), var(--ui-color-white));
   font-weight: 600;
-  font-size: var(--mantine-font-size-sm);
+  font-size: var(--ui-font-size-sm);
 }
 
 .itemDescription {
-  color: var(--mantine-color-dimmed);
-  font-size: var(--mantine-font-size-xs);
+  color: var(--ui-color-dimmed);
+  font-size: var(--ui-font-size-xs);
   margin-top: 2px;
 }
 
 .empty {
-  padding: var(--mantine-spacing-md);
+  padding: var(--ui-spacing-md);
   text-align: center;
-  color: var(--mantine-color-dimmed);
-  font-size: var(--mantine-font-size-sm);
+  color: var(--ui-color-dimmed);
+  font-size: var(--ui-font-size-sm);
 
   &:not(:only-child) {
     display: none;

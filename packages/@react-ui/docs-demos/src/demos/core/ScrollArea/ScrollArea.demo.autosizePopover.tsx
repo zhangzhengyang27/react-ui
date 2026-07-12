@@ -50,7 +50,7 @@ function Demo() {
       data-list-item
       key={item}
       display="block"
-      bg={index === hovered ? 'var(--mantine-color-blue-light)' : undefined}
+      bg={index === hovered ? 'var(--ui-color-blue-light)' : undefined}
       w="100%"
       p={5}
     >
@@ -151,7 +151,7 @@ function Demo() {
       data-list-item
       key={item}
       display="block"
-      bg={index === hovered ? 'var(--mantine-color-blue-light)' : undefined}
+      bg={index === hovered ? 'var(--ui-color-blue-light)' : undefined}
       w="100%"
       p={5}
     >

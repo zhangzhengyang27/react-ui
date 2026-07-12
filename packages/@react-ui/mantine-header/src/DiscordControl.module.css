@@ -5,7 +5,7 @@
   [data-mantine-color-scheme] & {
     background-color: var(--discord-color);
     border-color: var(--discord-color);
-    color: var(--mantine-color-white);
+    color: var(--ui-color-white);
 
     @mixin hover {
       background-color: var(--discord-color-hover);

@@ -1,8 +1,8 @@
 .root {
   position: relative;
   border: 1px dashed;
-  color: var(--mantine-color-text);
-  padding: var(--mantine-spacing-md);
+  color: var(--ui-color-text);
+  padding: var(--ui-spacing-md);
   border-radius: var(--dropzone-radius);
   cursor: pointer;
   user-select: none;
@@ -16,23 +16,23 @@
   }
 
   @mixin where-light {
-    background-color: var(--mantine-color-white);
-    border-color: var(--mantine-color-gray-4);
+    background-color: var(--ui-color-white);
+    border-color: var(--ui-color-gray-4);
   }
 
   @mixin where-dark {
-    background-color: var(--mantine-color-dark-6);
-    border-color: var(--mantine-color-dark-4);
+    background-color: var(--ui-color-dark-6);
+    border-color: var(--ui-color-dark-4);
   }
 
   @mixin hover {
     &:where([data-activate-on-click]:not([data-loading])) {
       @mixin where-light {
-        background-color: var(--mantine-color-gray-0);
+        background-color: var(--ui-color-gray-0);
       }
 
       @mixin where-dark {
-        background-color: var(--mantine-color-dark-5);
+        background-color: var(--ui-color-dark-5);
       }
     }
   }
@@ -62,10 +62,10 @@
 .fullScreen {
   position: fixed;
   inset: 0;
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
   display: flex;
   flex-direction: column;
-  padding: var(--mantine-spacing-xs);
+  padding: var(--ui-spacing-xs);
   transition: opacity 100ms ease;
 
   & .dropzone {

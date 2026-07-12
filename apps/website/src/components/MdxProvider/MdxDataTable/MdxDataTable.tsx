@@ -21,7 +21,7 @@ function removeScale(input: string): string {
 }
 
 function getTransformedScaledValue(value: unknown) {
-  if (typeof value !== 'string' || !value.includes('var(--mantine-scale)')) {
+  if (typeof value !== 'string' || !value.includes('var(--ui-scale)')) {
     return value as string;
   }
 

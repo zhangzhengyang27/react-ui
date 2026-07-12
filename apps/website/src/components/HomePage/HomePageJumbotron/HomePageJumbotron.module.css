@@ -10,12 +10,12 @@
 
 .root {
   height: 692px;
-  background-color: var(--mantine-color-body);
+  background-color: var(--ui-color-body);
   position: relative;
   overflow: hidden;
 
   @mixin dark {
-    background-color: var(--mantine-color-dark-7);
+    background-color: var(--ui-color-dark-7);
   }
 
   @mixin smaller-than $mantine-breakpoint-md {
@@ -63,8 +63,8 @@
   @mixin dark {
     background: linear-gradient(
       -95deg,
-      alpha(var(--mantine-color-dark-7), 0.5) 0%,
-      var(--mantine-color-dark-7) 60%
+      alpha(var(--ui-color-dark-7), 0.5) 0%,
+      var(--ui-color-dark-7) 60%
     );
   }
 }
@@ -72,9 +72,9 @@
 .action {
   height: 60px;
   width: 220px;
-  border-radius: var(--mantine-radius-md);
-  font-size: var(--mantine-font-size-lg);
-  padding-inline: var(--mantine-spacing-lg);
+  border-radius: var(--ui-radius-md);
+  font-size: var(--ui-font-size-lg);
+  padding-inline: var(--ui-spacing-lg);
   font-weight: 600;
   padding-top: 3px;
   border: 0;
@@ -85,7 +85,7 @@
     transform 100ms ease;
 
   @mixin hover {
-    box-shadow: var(--mantine-shadow-md);
+    box-shadow: var(--ui-shadow-md);
     transform: translateY(-1px) scale(1.01);
   }
 
@@ -96,18 +96,18 @@
   }
 
   &[data-github] {
-    background-color: var(--mantine-color-dark-7);
-    color: var(--mantine-color-white);
+    background-color: var(--ui-color-dark-7);
+    color: var(--ui-color-white);
     font-weight: 600;
 
     @mixin hover {
-      background-color: var(--mantine-color-black);
+      background-color: var(--ui-color-black);
     }
 
     @mixin dark {
-      border-color: var(--mantine-color-dark-5);
-      background-color: var(--mantine-color-gray-1);
-      color: var(--mantine-color-black);
+      border-color: var(--ui-color-dark-5);
+      background-color: var(--ui-color-gray-1);
+      color: var(--ui-color-black);
     }
   }
 
@@ -118,7 +118,7 @@
 
 .actions {
   display: flex;
-  gap: var(--mantine-spacing-lg);
+  gap: var(--ui-spacing-lg);
   margin-top: 40px;
 
   @mixin smaller-than $mantine-breakpoint-xs {

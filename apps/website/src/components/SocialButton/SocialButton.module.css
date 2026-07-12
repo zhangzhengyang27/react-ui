@@ -7,6 +7,6 @@
 
 .socialButtonSection {
   &[data-position='left'] {
-    margin-inline-end: var(--mantine-spacing-md);
+    margin-inline-end: var(--ui-spacing-md);
   }
 }

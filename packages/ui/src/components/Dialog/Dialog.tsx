@@ -121,6 +121,7 @@ export const Dialog = factory<DialogFactory>((_props, _ref) => {
 
     return (
         <ModalBase
+            ref={_ref}
             radius={radius}
             opened={opened}
             zIndex={zIndex}

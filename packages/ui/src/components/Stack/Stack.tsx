@@ -84,7 +84,7 @@ export const Stack = factory<StackFactory>((_props, _ref) => {
         varsResolver
     })
 
-    return <Box {...getStyles('root')} variant={variant} {...others} />
+    return <Box ref={_ref} {...getStyles('root')} variant={variant} {...others} />
 })
 
 Stack.classes = classes

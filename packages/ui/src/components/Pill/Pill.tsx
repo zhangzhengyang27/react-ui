@@ -120,6 +120,7 @@ export const Pill = factory<PillFactory>((_props, _ref) => {
 
     return (
         <Box
+            ref={_ref}
             component="span"
             variant={_variant}
             size={_size}

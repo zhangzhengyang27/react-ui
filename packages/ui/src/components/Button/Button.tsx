@@ -185,6 +185,7 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, _ref) => {
             unstyled={unstyled}
             variant={variant}
             disabled={disabled || loading}
+            ref={_ref}
             mod={[
                 {
                     disabled: disabled || dataDisabled,

@@ -1,6 +1,6 @@
 .root:where([data-tree-root]) {
     --level-offset: var(--ui-spacing-lg);
-    --tree-line-width: rem(1px);
+    --tree-line-width: calc(0.0625rem * var(--ui-scale));
     --tree-line-color: var(--ui-color-default-border);
 }
 
@@ -35,11 +35,11 @@
     padding-inline-start: var(--label-offset);
 
     &:where([data-selected]) {
-        @mixin where-light {
+        :where([data-ui-color-scheme='light']) & {
             background-color: var(--ui-color-gray-1);
         }
 
-        @mixin where-dark {
+        :where([data-ui-color-scheme='dark']) & {
             background-color: var(--ui-color-dark-5);
         }
     }
@@ -85,7 +85,7 @@
     .node:not([data-level='1'])::before {
         content: '';
         position: absolute;
-        top: rem(12px);
+        top: calc(0.75rem * var(--ui-scale));
         inset-inline-start: calc(var(--label-offset) - var(--level-offset) / 2);
         width: calc(var(--level-offset) / 2);
         height: 0;
@@ -109,7 +109,7 @@
 
         &:last-child::after {
             bottom: auto;
-            height: rem(12px);
+            height: calc(0.75rem * var(--ui-scale));
         }
     }
 
@@ -143,5 +143,5 @@
 
 .flatLineClosing {
     bottom: auto;
-    height: rem(12px);
+    height: calc(0.75rem * var(--ui-scale));
 }

@@ -91,7 +91,7 @@ export const Divider = factory<DividerFactory>((_props, _ref) => {
     })
 
     return (
-        <Box mod={[{ orientation, withLabel: !!label }, mod]} role="separator" {...getStyles('root')} {...others}>
+        <Box ref={_ref} mod={[{ orientation, withLabel: !!label }, mod]} role="separator" {...getStyles('root')} {...others}>
             {label && (
                 <Box component="span" mod={{ position: labelPosition }} {...getStyles('label')}>
                     {label}

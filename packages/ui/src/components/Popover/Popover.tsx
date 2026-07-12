@@ -234,9 +234,7 @@ export function Popover(_props: PopoverProps) {
     const reference = useCallback(
         (node: HTMLElement | null) => {
             setTargetNode(node)
-            if (node) {
-                popover.floating.refs.setReference(node)
-            }
+            popover.floating.refs.setReference(node)
         },
         [popover.floating.refs.setReference]
     )
@@ -244,9 +242,7 @@ export function Popover(_props: PopoverProps) {
     const floating = useCallback(
         (node: HTMLElement | null) => {
             setDropdownNode(node)
-            if (node) {
-                popover.floating.refs.setFloating(node)
-            }
+            popover.floating.refs.setFloating(node)
         },
         [popover.floating.refs.setFloating]
     )

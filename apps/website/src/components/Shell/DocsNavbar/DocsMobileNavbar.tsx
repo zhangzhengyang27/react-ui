@@ -1,4 +1,4 @@
-import ReactRemoveScroll from 'react-remove-scroll/dist/es5/Combination';
+import { RemoveScroll as ReactRemoveScroll } from 'react-remove-scroll';
 import { keys, ScrollArea } from '@react-ui/ui';
 import { useMediaQuery } from '@react-ui/hooks';
 import { MDX_NAV_DATA } from '@/mdx';

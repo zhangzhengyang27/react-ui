@@ -9,7 +9,7 @@ export type SpaceFactory = Factory<{
 
 export const Space = factory<SpaceFactory>((props, _ref) => {
     const { w, h, miw, mih, ...others } = useProps('Space', null, props)
-    return <Box {...others} w={w} miw={miw ?? w} h={h} mih={mih ?? h} />
+    return <Box ref={_ref} {...others} w={w} miw={miw ?? w} h={h} mih={mih ?? h} />
 })
 
 Space.displayName = '@react-ui/ui/Space'

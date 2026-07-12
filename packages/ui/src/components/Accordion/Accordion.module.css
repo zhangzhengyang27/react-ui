@@ -41,13 +41,27 @@
 .control--default,
 .control--contained {
     &:where(:not(:disabled, [data-disabled])) {
-        @mixin hover {
-            @mixin where-light {
-                background-color: var(--ui-color-gray-0);
-            }
+        @media (hover: hover) {
+            &:hover {
+                :where([data-ui-color-scheme='light']) & {
+                    background-color: var(--ui-color-gray-0);
+                }
 
-            @mixin where-dark {
-                background-color: var(--ui-color-dark-6);
+                :where([data-ui-color-scheme='dark']) & {
+                    background-color: var(--ui-color-dark-6);
+                }
+            }
+        }
+
+        @media (hover: none) {
+            &:active {
+                :where([data-ui-color-scheme='light']) & {
+                    background-color: var(--ui-color-gray-0);
+                }
+
+                :where([data-ui-color-scheme='dark']) & {
+                    background-color: var(--ui-color-dark-6);
+                }
             }
         }
     }
@@ -68,8 +82,8 @@
     align-items: center;
     justify-content: flex-start;
     transition: transform var(--accordion-transition-duration, 200ms) ease;
-    width: var(--accordion-chevron-size, rem(15px));
-    min-width: var(--accordion-chevron-size, rem(15px));
+    width: var(--accordion-chevron-size, calc(0.9375rem * var(--ui-scale)));
+    min-width: var(--accordion-chevron-size, calc(0.9375rem * var(--ui-scale)));
     transform: rotate(0deg);
 
     &:where([data-rotate]) {
@@ -95,12 +109,12 @@
 }
 
 .item {
-    @mixin where-light {
+    :where([data-ui-color-scheme='light']) & {
         --item-border-color: var(--ui-color-gray-3);
         --item-filled-color: var(--ui-color-gray-0);
     }
 
-    @mixin where-dark {
+    :where([data-ui-color-scheme='dark']) & {
         --item-border-color: var(--ui-color-dark-4);
         --item-filled-color: var(--ui-color-dark-6);
     }
@@ -160,11 +174,11 @@
     &[data-active] {
         border-color: var(--item-border-color);
 
-        @mixin where-light {
+        :where([data-ui-color-scheme='light']) & {
             background-color: var(--ui-color-white);
         }
 
-        @mixin where-dark {
+        :where([data-ui-color-scheme='dark']) & {
             background-color: var(--ui-color-dark-7);
         }
     }

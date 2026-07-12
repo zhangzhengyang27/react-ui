@@ -58,7 +58,7 @@ export const Highlight = polymorphicFactory<HighlightFactory>((_props, _ref) => 
     const chunks = getChunks({ text, highlight })
 
     return (
-        <Box component="span" className={className} style={style} {...others}>
+        <Box ref={_ref} component="span" className={className} style={style} {...others}>
             {chunks.map(({ chunk, highlighted }, index) =>
                 highlighted ? (
                     <Mark color={color} key={index}>

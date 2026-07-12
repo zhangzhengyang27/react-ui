@@ -108,6 +108,7 @@ export const CloseButton = polymorphicFactory<CloseButtonFactory>((_props, _ref)
     return (
         <UnstyledButton
             {...others}
+            ref={_ref}
             unstyled={unstyled}
             variant={variant}
             disabled={disabled}

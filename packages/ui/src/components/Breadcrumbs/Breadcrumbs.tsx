@@ -104,7 +104,7 @@ export const Breadcrumbs = factory<BreadcrumbsFactory>((_props, _ref) => {
     }, [])
 
     return (
-        <Box {...getStyles('root')} {...others}>
+        <Box ref={_ref} {...getStyles('root')} {...others}>
             {items}
         </Box>
     )

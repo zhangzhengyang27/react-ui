@@ -79,7 +79,7 @@ export const Affix = factory<AffixFactory>((_props, _ref) => {
         varsResolver
     })
 
-    const content = <Box {...getStyles('root')} {...others} />
+    const content = <Box ref={_ref} {...getStyles('root')} {...others} />
 
     if (withinPortal) {
         return <Portal>{content}</Portal>

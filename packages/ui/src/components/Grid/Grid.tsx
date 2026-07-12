@@ -68,6 +68,7 @@ export const Grid = factory<GridFactory>((_props, _ref) => {
             <GridVariables {...props} selector={`.${responsiveClassName}`} />
             <GridContextProvider value={{ columns }}>
                 <Box
+                    ref={_ref}
                     {...getStyles('root', { className: responsiveClassName })}
                     {...others}
                     data-grow={grow || undefined}

@@ -58,16 +58,24 @@
     transition: opacity 100ms ease;
     cursor: pointer;
 
-    @mixin where-light {
+    :where([data-ui-color-scheme='light']) & {
         opacity: 0.85;
     }
 
-    @mixin where-dark {
+    :where([data-ui-color-scheme='dark']) & {
         opacity: 0.65;
     }
 
-    @mixin hover {
-        opacity: 1;
+    @media (hover: hover) {
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    @media (hover: none) {
+        &:active {
+            opacity: 1;
+        }
     }
 }
 
@@ -102,8 +110,16 @@
     border: none;
     cursor: pointer;
 
-    @mixin hover {
-        opacity: 1;
+    @media (hover: hover) {
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    @media (hover: none) {
+        &:active {
+            opacity: 1;
+        }
     }
 
     &:where([data-active]) {

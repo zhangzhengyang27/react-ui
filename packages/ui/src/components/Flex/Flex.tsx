@@ -101,6 +101,7 @@ export const Flex = polymorphicFactory<FlexFactory>((_props, _ref) => {
                 />
             )}
             <Box
+                ref={_ref}
                 {...getStyles('root', {
                     className: randomClassName,
                     style: filterProps(parsedStyleProps.inlineStyles)

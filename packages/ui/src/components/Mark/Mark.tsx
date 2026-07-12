@@ -74,7 +74,7 @@ export const Mark = polymorphicFactory<MarkFactory>((_props, _ref) => {
     })
 
     return (
-        <Box component="mark" {...getStyles('root')} {...others}>
+        <Box ref={_ref as any} component="mark" {...getStyles('root')} {...others}>
             {children}
         </Box>
     )

@@ -1,4 +1,5 @@
 import { Box, factory, rem, useProps, type BoxProps, type Factory } from '../../../core'
+import { useMergedRef } from '@react-ui/hooks'
 import { FloatingArrow } from '../../../core/utils/Floating'
 import { Portal } from '../../Portal'
 import { Transition } from '../../Transition'
@@ -20,6 +21,7 @@ export const HoverCardDropdown = factory<HoverCardDropdownFactory>((_props, ref)
     const { children, className, style, ...others } = props
 
     const ctx = useHoverCardContext()
+    const mergedRef = useMergedRef(ctx.floating, ref)
 
     if (ctx.disabled) {
         return null
@@ -30,7 +32,7 @@ export const HoverCardDropdown = factory<HoverCardDropdownFactory>((_props, ref)
             <Transition mounted={ctx.opened || false} transition="fade" duration={150}>
                 {transitionStyles => (
                     <Box
-                        ref={ctx.floating}
+                        ref={mergedRef}
                         role="dialog"
                         tabIndex={-1}
                         id={ctx.getDropdownId()}

@@ -111,13 +111,13 @@ export const Loader = factory<LoaderFactory>((_props, _ref) => {
 
     if (children) {
         return (
-            <Box {...getStyles('root')} {...(others as any)}>
+            <Box ref={_ref} {...getStyles('root')} {...(others as any)}>
                 {children}
             </Box>
         )
     }
 
-    return <Box {...getStyles('root')} component={loaders[type]} variant={variant} size={size} {...others} />
+    return <Box ref={_ref} {...getStyles('root')} component={loaders[type]} variant={variant} size={size} {...others} />
 })
 
 Loader.defaultLoaders = defaultLoaders

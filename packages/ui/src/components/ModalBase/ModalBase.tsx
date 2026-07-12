@@ -88,6 +88,9 @@ export interface ModalBaseProps extends BoxProps, ElementProps<'div', 'title'> {
 
     /** Internal static selector used by styles api */
     __staticSelector?: string
+
+    /** Ref to the root element */
+    ref?: React.Ref<HTMLDivElement>
 }
 
 export function ModalBase({
@@ -112,6 +115,7 @@ export function ModalBase({
     unstyled,
     removeScrollProps,
     __staticSelector,
+    ref,
     ...others
 }: ModalBaseProps) {
     const { _id, titleMounted, bodyMounted, setTitleMounted, setBodyMounted } = useModal({
@@ -150,6 +154,7 @@ export function ModalBase({
             >
                 <RemoveScroll enabled={opened && lockScroll} key={removeScrollKey} {...otherRemoveScrollProps}>
                     <Box
+                        ref={ref}
                         {...others}
                         id={_id}
                         __vars={{

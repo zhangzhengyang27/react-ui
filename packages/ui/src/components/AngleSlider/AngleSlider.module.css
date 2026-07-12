@@ -16,11 +16,11 @@
     --angle-slider-size: 60px;
     --angle-slider-thumb-size: calc(var(--angle-slider-size) / 5);
 
-    @mixin where-light {
+    :where([data-ui-color-scheme='light']) & {
         background-color: var(--ui-color-gray-1);
     }
 
-    @mixin where-dark {
+    :where([data-ui-color-scheme='dark']) & {
         background-color: var(--ui-color-dark-5);
     }
 }
@@ -49,11 +49,11 @@
         height: calc(var(--angle-slider-thumb-size) / 1.5);
         transform: translate(-50%, -50%);
 
-        @mixin where-light {
+        :where([data-ui-color-scheme='light']) & {
             background-color: var(--ui-color-gray-4);
         }
 
-        @mixin where-dark {
+        :where([data-ui-color-scheme='dark']) & {
             background-color: var(--ui-color-dark-3);
         }
     }
@@ -88,11 +88,11 @@
         height: min(var(--angle-slider-thumb-size), calc(var(--angle-slider-size) / 2));
         width: 3px;
 
-        @mixin where-light {
+        :where([data-ui-color-scheme='light']) & {
             background-color: var(--ui-color-gray-7);
         }
 
-        @mixin where-dark {
+        :where([data-ui-color-scheme='dark']) & {
             background-color: var(--ui-color-dark-1);
         }
     }

@@ -32,12 +32,14 @@
   "peerDependencies": {
     "@react-ui/ui": "workspace:*",
     "@react-ui/hooks": "workspace:*",
+    "clsx": "^2.1.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
   "devDependencies": {
     "@react-ui/ui": "workspace:*",
     "@react-ui/hooks": "workspace:*",
+    "clsx": "^2.1.1",
     "react": "19.1.1",
     "react-dom": "19.1.1"
   }

@@ -3,11 +3,11 @@
     --semi-circle-progress-transition-duration: 0ms;
     --semi-circle-progress-thickness: 12px;
 
-    @mixin where-light {
+    :where([data-ui-color-scheme='light']) & {
         --semi-circle-progress-empty-segment-color: var(--ui-color-gray-2);
     }
 
-    @mixin where-dark {
+    :where([data-ui-color-scheme='dark']) & {
         --semi-circle-progress-empty-segment-color: var(--ui-color-dark-4);
     }
 

@@ -1,4 +1,5 @@
 import { Box, ElementProps, factory, useProps, type BoxProps, type Factory } from '../../core'
+import { useMergedRef } from '@react-ui/hooks'
 import { Portal } from '../Portal'
 import { Transition } from '../Transition'
 import { useComboboxContext } from './Combobox.context'
@@ -19,13 +20,14 @@ export const ComboboxDropdown = factory<ComboboxDropdownFactory>((_props, ref) =
     const props = useProps('ComboboxDropdown', null, _props)
     const { children, className, style, ...others } = props
     const ctx = useComboboxContext()
+    const mergedRef = useMergedRef(ctx.dropdownRef, ref)
 
     return (
         <Portal>
             <Transition mounted={ctx.opened} transition="fade" duration={150}>
                 {transitionStyles => (
                     <Box
-                        ref={ctx.dropdownRef}
+                        ref={mergedRef}
                         id={ctx.dropdownId}
                         role="listbox"
                         aria-orientation="vertical"

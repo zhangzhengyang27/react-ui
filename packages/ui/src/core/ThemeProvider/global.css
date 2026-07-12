@@ -28,7 +28,7 @@ body {
     -webkit-font-smoothing: var(--ui-webkit-font-smoothing);
     -moz-osx-font-smoothing: var(--ui-moz-font-smoothing);
 
-    @media screen and (max-device-width: em(500px)) {
+    @media screen and (max-device-width: 31.25em) {
         -webkit-text-size-adjust: 100%;
     }
 }
@@ -43,13 +43,13 @@ body {
 }
 
 .ui-light-hidden {
-    @mixin light {
+    [data-ui-color-scheme='light'] & {
         display: none;
     }
 }
 
 .ui-dark-hidden {
-    @mixin dark {
+    [data-ui-color-scheme='dark'] & {
         display: none;
     }
 }
@@ -76,12 +76,12 @@ body {
 
 .ui-active {
     &:active {
-        transform: translateY(rem(1px));
+        transform: translateY(calc(0.0625rem * var(--ui-scale)));
     }
 }
 
 .ui-rotate-rtl {
-    @mixin where-rtl {
+    :where([dir='rtl']) & {
         transform: rotate(180deg);
     }
 }

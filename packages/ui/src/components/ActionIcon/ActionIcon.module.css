@@ -29,11 +29,18 @@
     border-radius: var(--ai-radius, var(--ui-radius-default));
     background: var(--ai-bg, var(--ui-primary-color-filled));
     color: var(--ai-color, var(--ui-color-white));
-    border: var(--ai-bd, rem(1px) solid transparent);
+    border: var(--ai-bd, calc(0.0625rem * var(--ui-scale)) solid transparent);
     cursor: pointer;
 
-    @mixin hover {
-        &:where(:not([data-loading], :disabled, [data-disabled])) {
+    @media (hover: hover) {
+        &:where(:not([data-loading], :disabled, [data-disabled])):hover {
+            background-color: var(--ai-hover, var(--ui-primary-color-filled-hover));
+            color: var(--ai-hover-color, var(--ai-color));
+        }
+    }
+
+    @media (hover: none) {
+        &:where(:not([data-loading], :disabled, [data-disabled])):active {
             background-color: var(--ai-hover, var(--ui-primary-color-filled-hover));
             color: var(--ai-hover-color, var(--ai-color));
         }
@@ -68,11 +75,11 @@
     align-items: center;
     justify-content: center;
 
-    @mixin where-light {
+    :where([data-ui-color-scheme='light']) & {
         background-color: rgba(255, 255, 255, 0.15);
     }
 
-    @mixin where-dark {
+    :where([data-ui-color-scheme='dark']) & {
         background-color: rgba(0, 0, 0, 0.15);
     }
 }
@@ -177,7 +184,7 @@
     border-radius: var(--section-radius, var(--ui-radius-default));
     font-size: var(--section-fz, var(--ui-font-size-sm));
     background: var(--section-bg, var(--ui-primary-color-filled));
-    border: var(--section-bd, rem(1px) solid transparent);
+    border: var(--section-bd, calc(0.0625rem * var(--ui-scale)) solid transparent);
     color: var(--section-color, var(--ui-color-white));
     height: var(--section-height, var(--section-height-sm));
     padding-inline: var(--section-padding-x, var(--section-padding-x-sm));

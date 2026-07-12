@@ -11,7 +11,7 @@
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
 
-    @mixin where-rtl {
+    :where([dir='rtl']) & {
         text-align: right;
     }
 }

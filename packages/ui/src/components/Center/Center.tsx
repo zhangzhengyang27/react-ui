@@ -35,7 +35,7 @@ export const Center = polymorphicFactory<CenterFactory>((_props, _ref) => {
         vars
     })
 
-    return <Box mod={[{ inline }, mod]} {...getStyles('root')} {...others} />
+    return <Box ref={_ref} mod={[{ inline }, mod]} {...getStyles('root')} {...others} />
 })
 
 Center.classes = classes

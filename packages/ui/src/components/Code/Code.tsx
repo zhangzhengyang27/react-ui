@@ -85,6 +85,7 @@ export const Code = polymorphicFactory<CodeFactory>((_props, _ref) => {
 
     return (
         <Box
+            ref={_ref as any}
             component={block ? 'pre' : 'code'}
             mod={[
                 {

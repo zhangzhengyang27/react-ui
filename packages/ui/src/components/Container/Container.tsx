@@ -67,7 +67,7 @@ export const Container = factory<ContainerFactory>((_props, _ref) => {
         varsResolver
     })
 
-    return <Box mod={[{ fluid, strategy }, mod]} {...getStyles('root')} {...others} />
+    return <Box ref={_ref} mod={[{ fluid, strategy }, mod]} {...getStyles('root')} {...others} />
 })
 
 Container.classes = classes

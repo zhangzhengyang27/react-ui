@@ -134,6 +134,7 @@ export const Badge = polymorphicFactory<BadgeFactory>((_props, _ref) => {
 
     return (
         <Box
+            ref={_ref}
             variant={variant}
             mod={[
                 {

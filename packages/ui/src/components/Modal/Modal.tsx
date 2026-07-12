@@ -155,6 +155,7 @@ export const Modal = factory<ModalFactory>((_props, _ref) => {
     return (
         <ModalProvider value={{ yOffset, scrollAreaComponent, getStyles, fullScreen }}>
             <ModalBase
+                ref={_ref}
                 radius={radius}
                 opened={opened}
                 zIndex={zIndex}

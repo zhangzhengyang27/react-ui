@@ -111,6 +111,7 @@ export const ModalRoot = factory<ModalRootFactory>((_props, _ref) => {
     return (
         <ModalProvider value={{ yOffset, scrollAreaComponent, getStyles, fullScreen }}>
             <ModalBase
+                ref={_ref}
                 {...getStyles('root')}
                 data-full-screen={fullScreen || undefined}
                 data-centered={centered || undefined}

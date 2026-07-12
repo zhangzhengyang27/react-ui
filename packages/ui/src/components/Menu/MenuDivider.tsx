@@ -17,7 +17,7 @@ export const MenuDivider = factory<MenuDividerFactory>((props, _ref) => {
     const { classNames, className, style, styles, vars, ...others } = useProps('MenuDivider', null, props)
     const ctx = useMenuContext()
 
-    return <Box {...ctx.getStyles('divider', { className, style, styles, classNames })} {...others} />
+    return <Box ref={_ref} {...ctx.getStyles('divider', { className, style, styles, classNames })} {...others} />
 })
 
 MenuDivider.classes = classes

@@ -132,6 +132,7 @@ export const DrawerRoot = factory<DrawerRootFactory>((_props, ref) => {
     return (
         <DrawerProvider value={{ scrollAreaComponent, getStyles: getStyles as any, radius }}>
             <ModalBase
+                ref={ref}
                 {...getStyles('root')}
                 transitionProps={{ transition: transitions[position!], ...transitionProps }}
                 data-offset-scrollbars={scrollAreaComponent === ScrollArea.Autosize || undefined}

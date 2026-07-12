@@ -14,7 +14,11 @@
     margin-top: 4px;
     margin-bottom: 4px;
     border-top: 1px solid;
-    border-color: light-dark(var(--ui-color-gray-2), var(--ui-color-dark-4));
+    border-color: var(--ui-color-gray-2);
+
+    :where([data-ui-color-scheme='dark']) & {
+        border-color: var(--ui-color-dark-4);
+    }
 }
 
 .item {
@@ -35,10 +39,11 @@
 
     &:where(:hover, :focus, [data-menu-active]) {
         &:where(:not(:disabled, [data-disabled])) {
-            background-color: light-dark(
-                var(--menu-item-hover, var(--ui-color-gray-1)),
-                var(--menu-item-hover, var(--ui-color-dark-4))
-            );
+            background-color: var(--menu-item-hover, var(--ui-color-gray-1));
+
+            :where([data-ui-color-scheme='dark']) & {
+                background-color: var(--menu-item-hover, var(--ui-color-dark-4));
+            }
         }
     }
 }

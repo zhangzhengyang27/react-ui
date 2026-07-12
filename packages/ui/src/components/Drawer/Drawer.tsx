@@ -190,6 +190,7 @@ export const Drawer = factory<DrawerFactory>((_props, _ref) => {
     return (
         <DrawerProvider value={{ scrollAreaComponent, getStyles, radius }}>
             <ModalBase
+                ref={_ref}
                 radius={radius}
                 opened={opened}
                 zIndex={zIndex}

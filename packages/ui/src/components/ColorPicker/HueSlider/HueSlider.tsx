@@ -18,6 +18,7 @@ export const HueSlider = factory<HueSliderFactory>((props: HueSliderProps, _ref)
 
     return (
         <ColorSlider
+            ref={_ref}
             {...others}
             value={value}
             onChange={onChange}

@@ -16,12 +16,12 @@
     color: inherit;
     text-decoration: none;
 
-    @mixin where-light {
+    :where([data-ui-color-scheme='light']) & {
         --alpha-overlay-color: var(--ui-color-gray-3);
         --alpha-overlay-bg: var(--ui-color-white);
     }
 
-    @mixin where-dark {
+    :where([data-ui-color-scheme='dark']) & {
         --alpha-overlay-color: var(--ui-color-dark-4);
         --alpha-overlay-bg: var(--ui-color-dark-7);
     }

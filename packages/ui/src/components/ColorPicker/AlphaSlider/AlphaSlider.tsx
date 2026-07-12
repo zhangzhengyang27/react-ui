@@ -21,6 +21,7 @@ export const AlphaSlider = factory<AlphaSliderFactory>((props: AlphaSliderProps,
 
     return (
         <ColorSlider
+            ref={_ref}
             {...others}
             value={value}
             onChange={val => onChange?.(round(val, 2))}

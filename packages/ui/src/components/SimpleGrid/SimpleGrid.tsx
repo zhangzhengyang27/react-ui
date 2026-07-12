@@ -85,7 +85,7 @@ export const SimpleGrid = factory<SimpleGridFactory>((_props, _ref) => {
     return (
         <>
             <SimpleGridVariables {...props} selector={`.${responsiveClassName}`} />
-            <Box {...getStyles('root', { className: responsiveClassName })} {...others} data-auto-cols={autoColsAttr} />
+            <Box ref={_ref} {...getStyles('root', { className: responsiveClassName })} {...others} data-auto-cols={autoColsAttr} />
         </>
     )
 })

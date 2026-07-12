@@ -99,7 +99,7 @@ export const Burger = factory<BurgerFactory>((_props, _ref) => {
     })
 
     return (
-        <UnstyledButton {...getStyles('root')} {...others}>
+        <UnstyledButton ref={_ref} {...getStyles('root')} {...others}>
             <Box mod={[{ opened }]} {...getStyles('burger')} />
             {children}
         </UnstyledButton>

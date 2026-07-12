@@ -33,13 +33,17 @@
     "@react-ui/ui": "workspace:*",
     "@react-ui/hooks": "workspace:*",
     "@react-ui/dev-icons": "workspace:*",
+    "@react-ui/mantine-meta": "workspace:*",
     "@phosphor-icons/react": ">=2.0.0",
+    "clsx": "^2.1.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
   "devDependencies": {
     "@react-ui/ui": "workspace:*",
     "@react-ui/hooks": "workspace:*",
+    "@react-ui/mantine-meta": "workspace:*",
+    "clsx": "^2.1.1",
     "react": "19.1.1",
     "react-dom": "19.1.1"
   }

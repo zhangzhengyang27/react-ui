@@ -25,7 +25,7 @@ export const OptionalPortal = factory<OptionalPortalFactory>(({ withinPortal = t
         return <>{children}</>
     }
 
-    return <Portal {...others}>{children}</Portal>
+    return <Portal ref={_ref} {...others}>{children}</Portal>
 })
 
 OptionalPortal.displayName = '@react-ui/ui/OptionalPortal'

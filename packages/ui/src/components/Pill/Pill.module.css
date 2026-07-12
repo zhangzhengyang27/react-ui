@@ -28,12 +28,12 @@
     max-width: 100%;
     position: relative;
 
-    @mixin where-dark {
+    :where([data-ui-color-scheme='dark']) & {
         background-color: var(--ui-color-dark-7);
         color: var(--ui-color-dark-0);
     }
 
-    @mixin where-light {
+    :where([data-ui-color-scheme='light']) & {
         color: var(--ui-color-black);
     }
 
@@ -65,23 +65,23 @@
         position: absolute;
         top: 0;
         bottom: 0;
-        width: rem(2px);
+        width: calc(0.125rem * var(--ui-scale));
         background-color: var(--ui-primary-color-filled);
         pointer-events: none;
         z-index: 1;
     }
 
     &:where([data-drag-over='before'])::before {
-        inset-inline-start: rem(-4px);
+        inset-inline-start: calc(-0.25rem * var(--ui-scale));
     }
 
     &:where([data-drag-over='after'])::after {
-        inset-inline-end: rem(-4px);
+        inset-inline-end: calc(-0.25rem * var(--ui-scale));
     }
 }
 
 .root--default {
-    @mixin where-light {
+    :where([data-ui-color-scheme='light']) & {
         background-color: var(--ui-color-gray-1);
 
         &:where([data-disabled], :has(button:disabled)) {
@@ -91,7 +91,7 @@
 }
 
 .root--contrast {
-    @mixin where-light {
+    :where([data-ui-color-scheme='light']) & {
         background-color: var(--ui-color-white);
 
         &:where([data-disabled], :has(button:disabled)) {

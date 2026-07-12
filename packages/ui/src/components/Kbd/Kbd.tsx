@@ -68,7 +68,7 @@ export const Kbd = polymorphicFactory<KbdFactory>((_props, _ref) => {
     })
 
     return (
-        <Box component="kbd" {...getStyles('root')} size={size} {...others}>
+        <Box ref={_ref as any} component="kbd" {...getStyles('root')} size={size} {...others}>
             {children}
         </Box>
     )

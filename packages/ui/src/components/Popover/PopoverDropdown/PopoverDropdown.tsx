@@ -1,3 +1,4 @@
+import { useMergedRef } from '@react-ui/hooks'
 import { Box, ElementProps, factory, rem, useProps, type BoxProps, type Factory } from '../../../core'
 import { FloatingArrow } from '../../../core/utils/Floating'
 import { FocusTrap } from '../../FocusTrap'
@@ -21,6 +22,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
     const { children, className, style, ...others } = props
 
     const ctx = usePopoverContext()
+    const mergedRef = useMergedRef(ref, ctx.floating)
 
     if (ctx.disabled) {
         return null
@@ -30,9 +32,8 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
         <Portal>
             <Transition mounted={ctx.opened} transition="fade" duration={150}>
                 {transitionStyles => (
-                    <FocusTrap active={ctx.trapFocus && ctx.opened} innerRef={ref}>
+                    <FocusTrap active={ctx.trapFocus && ctx.opened} innerRef={mergedRef}>
                         <Box
-                            ref={ctx.floating}
                             role="dialog"
                             tabIndex={-1}
                             id={ctx.getDropdownId()}

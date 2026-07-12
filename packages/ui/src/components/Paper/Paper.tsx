@@ -79,7 +79,7 @@ export const Paper = polymorphicFactory<PaperFactory>((_props, _ref) => {
         varsResolver
     })
 
-    return <Box mod={[{ 'data-with-border': withBorder }, mod]} {...getStyles('root')} variant={variant} {...others} />
+    return <Box ref={_ref} mod={[{ 'data-with-border': withBorder }, mod]} {...getStyles('root')} variant={variant} {...others} />
 })
 
 Paper.classes = classes

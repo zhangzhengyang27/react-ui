@@ -101,6 +101,7 @@ export const Title = factory<TitleFactory>((_props, _ref) => {
 
     return (
         <Box
+            ref={_ref}
             {...getStyles('root')}
             component={`h${order}`}
             variant={variant}

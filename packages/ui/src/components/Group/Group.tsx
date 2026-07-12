@@ -126,7 +126,7 @@ export const Group = factory<GroupFactory>((_props, _ref) => {
     })
 
     return (
-        <Box {...getStyles('root')} variant={variant} mod={[{ grow }, mod]} size={__size} {...others}>
+        <Box ref={_ref} {...getStyles('root')} variant={variant} mod={[{ grow }, mod]} size={__size} {...others}>
             {filteredChildren}
         </Box>
     )

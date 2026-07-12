@@ -13,8 +13,18 @@ const nextConfig = {
   pageExtensions: ['tsx', 'mdx'],
   reactStrictMode: true,
   trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  experimental: {
+    optimizePackageImports: [
+      '@react-ui/ui',
+    ],
+  },
   transpilePackages: [
-    '@react-ui/ui',
     '@react-ui/hooks',
     '@react-ui/carousel',
     '@react-ui/charts',
@@ -39,17 +49,6 @@ const nextConfig = {
     '@react-ui/store',
     '@react-ui/tiptap',
   ],
-  // output: 'export',
-  // distDir: 'docs-dist',
-  images: {
-    unoptimized: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  experimental: {
-    optimizePackageImports: [],
-  },
   onDemandEntries: {
     maxInactiveAge: 60 * 60 * 1000,
     pagesBufferLength: 10,

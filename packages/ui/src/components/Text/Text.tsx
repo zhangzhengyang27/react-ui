@@ -130,6 +130,7 @@ export const Text = polymorphicFactory<TextFactory>((_props, _ref) => {
     return (
         <Box
             {...getStyles('root', { focusable: true })}
+            ref={_ref}
             component={span ? 'span' : 'p'}
             variant={variant}
             mod={[

@@ -156,7 +156,7 @@ function getAncestorsToNode(value: string, nodes: TreeNodeData[]): string[] | nu
     return null
 }
 
-export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProps) => {
+export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProps, _ref) => {
     const props = useProps('TreeSelect', defaultProps, _props)
     const {
         classNames,
@@ -780,6 +780,7 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
                             >
                                 {pills}
                                 <PillsInput.Field
+                                    ref={_ref}
                                     {...rest}
                                     id={_id}
                                     placeholder={placeholder}
@@ -840,6 +841,7 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
             >
                 <Combobox.Target>
                     <InputBase
+                        ref={_ref}
                         id={_id}
                         __defaultRightSection={chevron}
                         __clearSection={clearButton}

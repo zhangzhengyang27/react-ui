@@ -29,7 +29,11 @@ export default defineConfig({
                 'styled-components',
                 '@react-ui/hooks',
                 'embla-carousel-react',
-                'recharts'
+                'recharts',
+                'react-number-format',
+                'react-remove-scroll',
+                'clsx',
+                'type-fest'
             ]
         }
     }

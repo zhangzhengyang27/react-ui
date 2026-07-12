@@ -196,7 +196,7 @@ export const ScrollArea = factory<ScrollAreaFactory>((_props, _ref) => {
     const rootProps = getStyles('root')
 
     return (
-        <ScrollAreaRoot getStyles={getStyles} type={type} scrollbars={scrollbars} {...rootProps} {...others}>
+        <ScrollAreaRoot getStyles={getStyles} type={type} scrollbars={scrollbars} ref={_ref} {...rootProps} {...others}>
             <ScrollAreaViewport
                 {...viewportProps}
                 {...getStyles('viewport', { style: viewportProps?.style })}
@@ -265,7 +265,7 @@ ScrollArea.classes = classes
 ;(ScrollArea as any).varsResolver = varsResolver
 ScrollArea.displayName = '@react-ui/ui/ScrollArea'
 
-export const ScrollAreaAutosize = factory<ScrollAreaAutosizeFactory>((_props) => {
+export const ScrollAreaAutosize = factory<ScrollAreaAutosizeFactory>((_props, _ref) => {
     const props = useProps('ScrollAreaAutosize', defaultProps, _props as ScrollAreaAutosizeProps)
     const {
         children,
@@ -341,7 +341,7 @@ export const ScrollAreaAutosize = factory<ScrollAreaAutosizeFactory>((_props) =>
     }, [viewportObserverElement, onOverflowChange, handleOverflowCheck])
 
     return (
-        <Box {...others} style={[{ display: 'flex', overflow: 'hidden' }, style]}>
+        <Box ref={_ref} {...others} style={[{ display: 'flex', overflow: 'hidden' }, style]}>
             <Box
                 style={{
                     display: 'flex',

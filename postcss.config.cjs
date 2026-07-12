@@ -28,9 +28,26 @@ function rootColorSchemeMixin(colorScheme, type = 'default') {
   };
 }
 
+/**
+ * 后处理插件：将 postcss-preset-mantine autoRem 生成的 var(--mantine-scale)
+ * 替换为 var(--ui-scale)，确保缩放变量引用正确。
+ * 必须在 postcss-preset-mantine 之后运行。
+ */
+function replaceMantineScale() {
+  return {
+    postcssPlugin: 'postcss-replace-mantine-scale',
+    Declaration(decl) {
+      if (decl.value.includes('--mantine-scale')) {
+        decl.value = decl.value.replace(/--mantine-scale/g, '--ui-scale');
+      }
+    },
+  };
+}
+replaceMantineScale.postcss = true;
+
 module.exports = {
-  plugins: {
-    'postcss-preset-mantine': {
+  plugins: [
+    require('postcss-preset-mantine')({
       autoRem: true,
       mixins: {
         light: colorSchemeMixin('light'),
@@ -42,8 +59,8 @@ module.exports = {
         'where-light-root': rootColorSchemeMixin('light', 'where'),
         'where-dark-root': rootColorSchemeMixin('dark', 'where'),
       },
-    },
-    'postcss-simple-vars': {
+    }),
+    require('postcss-simple-vars')({
       variables: {
         'mantine-breakpoint-xs': '36em',
         'mantine-breakpoint-sm': '48em',
@@ -54,6 +71,7 @@ module.exports = {
         'docs-toc-breakpoint': '78em',
         'docs-mdx-breakpoint': '67.5em',
       },
-    },
-  },
+    }),
+    replaceMantineScale(),
+  ],
 };

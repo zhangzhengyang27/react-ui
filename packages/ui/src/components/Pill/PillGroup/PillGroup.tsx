@@ -89,7 +89,7 @@ export const PillGroup = factory<PillGroupFactory>((_props, _ref) => {
 
     return (
         <PillGroupContext.Provider value={{ size: _size, disabled }}>
-            <Box size={_size} {...getStyles('group')} {...others} />
+            <Box ref={_ref} size={_size} {...getStyles('group')} {...others} />
         </PillGroupContext.Provider>
     )
 })

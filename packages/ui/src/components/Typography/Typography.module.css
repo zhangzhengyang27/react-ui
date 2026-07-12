@@ -66,12 +66,12 @@
     }
 
     & :where(mark) {
-        @mixin where-light {
+        :where([data-ui-color-scheme='light']) & {
             background-color: var(--ui-color-yellow-2);
             color: inherit;
         }
 
-        @mixin where-dark {
+        :where([data-ui-color-scheme='dark']) & {
             background-color: var(--ui-color-yellow-5);
             color: var(--ui-color-black);
         }
@@ -81,8 +81,16 @@
         color: var(--ui-color-anchor);
         text-decoration: none;
 
-        @mixin hover {
-            text-decoration: underline;
+        @media (hover: hover) {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        @media (hover: none) {
+            &:active {
+                text-decoration: underline;
+            }
         }
     }
 
@@ -92,11 +100,11 @@
         border: 0;
         border-top: 1px solid;
 
-        @mixin where-light {
+        :where([data-ui-color-scheme='light']) & {
             border-color: var(--ui-color-gray-3);
         }
 
-        @mixin where-dark {
+        :where([data-ui-color-scheme='dark']) & {
             border-color: var(--ui-color-dark-3);
         }
     }
@@ -112,11 +120,11 @@
         font-size: var(--ui-font-size-xs);
         border-radius: var(--ui-radius-sm);
 
-        @mixin where-light {
+        :where([data-ui-color-scheme='light']) & {
             background-color: var(--ui-color-gray-0);
         }
 
-        @mixin where-dark {
+        :where([data-ui-color-scheme='dark']) & {
             background-color: var(--ui-color-dark-8);
         }
 
@@ -139,13 +147,13 @@
         border: 1px solid;
         border-bottom-width: 3px;
 
-        @mixin where-light {
+        :where([data-ui-color-scheme='light']) & {
             border-color: var(--ui-color-gray-3);
             color: var(--ui-color-gray-7);
             background-color: var(--ui-color-gray-0);
         }
 
-        @mixin where-dark {
+        :where([data-ui-color-scheme='dark']) & {
             border-color: var(--ui-color-dark-3);
             color: var(--ui-color-dark-0);
             background-color: var(--ui-color-dark-5);
@@ -159,12 +167,12 @@
         font-family: var(--ui-font-family-monospace);
         font-size: var(--ui-font-size-xs);
 
-        @mixin where-light {
+        :where([data-ui-color-scheme='light']) & {
             background-color: var(--ui-color-gray-0);
             color: var(--ui-color-black);
         }
 
-        @mixin where-dark {
+        :where([data-ui-color-scheme='dark']) & {
             background-color: var(--ui-color-dark-5);
             color: var(--ui-color-white);
         }
@@ -182,11 +190,11 @@
         caption-side: bottom;
         margin-bottom: var(--ui-spacing-md);
 
-        @mixin where-light {
+        :where([data-ui-color-scheme='light']) & {
             --table-border-color: var(--ui-color-gray-3);
         }
 
-        @mixin where-dark {
+        :where([data-ui-color-scheme='dark']) & {
             --table-border-color: var(--ui-color-dark-4);
         }
 
@@ -232,11 +240,11 @@
         border-radius: var(--ui-radius-sm);
         padding: var(--ui-spacing-md) var(--ui-spacing-lg);
 
-        @mixin where-light {
+        :where([data-ui-color-scheme='light']) & {
             background-color: var(--ui-color-gray-0);
         }
 
-        @mixin where-dark {
+        :where([data-ui-color-scheme='dark']) & {
             background-color: var(--ui-color-dark-8);
         }
     }

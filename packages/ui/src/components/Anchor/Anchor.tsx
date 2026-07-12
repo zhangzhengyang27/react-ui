@@ -34,6 +34,7 @@ export const Anchor = polymorphicFactory<AnchorFactory>((props, _ref) => {
     return (
         <Text
             component="a"
+            ref={_ref}
             className={cx({ [classes.root]: !unstyled }, className)}
             {...others}
             mod={[{ underline }, mod]}

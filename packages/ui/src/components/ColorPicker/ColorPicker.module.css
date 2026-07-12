@@ -158,11 +158,11 @@
         }
     }
 
-    @mixin where-light {
+    :where([data-ui-color-scheme='light']) & {
         --slider-checkers: var(--ui-color-gray-3);
     }
 
-    @mixin where-dark {
+    :where([data-ui-color-scheme='dark']) & {
         --slider-checkers: var(--ui-color-dark-4);
     }
 }

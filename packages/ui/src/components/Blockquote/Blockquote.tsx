@@ -107,7 +107,7 @@ export const Blockquote = factory<BlockquoteFactory>((_props, _ref) => {
     })
 
     return (
-        <Box component="blockquote" {...getStyles('root')} {...others}>
+        <Box ref={_ref} component="blockquote" {...getStyles('root')} {...others}>
             {icon && <span {...getStyles('icon')}>{icon}</span>}
             {children}
             {cite && <cite {...getStyles('cite')}>{cite}</cite>}

@@ -19,7 +19,7 @@
     --input-radius: var(--ui-radius-default);
 
     --input-cursor: text;
-    --input-line-height: calc(var(--input-height) - rem(2px));
+    --input-line-height: calc(var(--input-height) - calc(0.125rem * var(--ui-scale)));
     --input-padding: calc(var(--input-height) / 3);
     --input-padding-inline-start: var(--input-padding);
     --input-padding-inline-end: var(--input-padding);
@@ -28,8 +28,8 @@
     --input-disabled-bg: var(--ui-color-disabled);
     --input-disabled-color: var(--ui-color-disabled-color);
 
-    --input-left-section-size: var(--input-left-section-width, calc(var(--input-height) - rem(2px)));
-    --input-right-section-size: var(--input-right-section-width, calc(var(--input-height) - rem(2px)));
+    --input-left-section-size: var(--input-left-section-width, calc(var(--input-height) - calc(0.125rem * var(--ui-scale))));
+    --input-right-section-size: var(--input-right-section-width, calc(var(--input-height) - calc(0.125rem * var(--ui-scale))));
 
     --input-size: var(--input-height);
 
@@ -96,7 +96,7 @@
         }
     }
 
-    @mixin light {
+    [data-ui-color-scheme='light'] & {
         &[data-variant='default'] {
             --input-bd: var(--ui-color-default-border);
             --input-bg: var(--ui-color-default);
@@ -116,7 +116,7 @@
         }
     }
 
-    @mixin dark {
+    [data-ui-color-scheme='dark'] & {
         &[data-variant='default'] {
             --input-bd: var(--ui-color-dark-4);
             --input-bg: var(--ui-color-dark-6);
@@ -154,7 +154,7 @@
         --input-section-color: var(--ui-color-green-6);
     }
 
-    @mixin where-rtl {
+    :where([dir='rtl']) & {
         --left-section-border-radius: 0 var(--input-radius) var(--input-radius) 0;
         --right-section-border-radius: var(--input-radius) 0 0 var(--input-radius);
     }
@@ -175,7 +175,7 @@
 
     text-align: var(--input-text-align, start);
     color: var(--input-color);
-    border: rem(1px) solid var(--input-bd);
+    border: calc(0.0625rem * var(--ui-scale)) solid var(--input-bd);
     background-color: var(--input-bg);
     font-family: var(--input-font-family, var(--ui-font-family));
     height: var(--input-size);
@@ -196,7 +196,7 @@
 
     &[data-monospace] {
         --input-font-family: var(--ui-font-family-monospace);
-        --_input-fz: calc(var(--input-fz) - rem(2px));
+        --_input-fz: calc(var(--input-fz) - calc(0.125rem * var(--ui-scale)));
     }
 
     &:focus,
@@ -360,15 +360,15 @@
 
 .error {
     color: var(--ui-color-error);
-    font-size: var(--input-error-size, calc(var(--ui-font-size-sm) - rem(2px)));
+    font-size: var(--input-error-size, calc(var(--ui-font-size-sm) - calc(0.125rem * var(--ui-scale))));
 }
 
 .success {
     color: var(--ui-color-green-6);
-    font-size: var(--input-success-size, calc(var(--ui-font-size-sm) - rem(2px)));
+    font-size: var(--input-success-size, calc(var(--ui-font-size-sm) - calc(0.125rem * var(--ui-scale))));
 }
 
 .description {
     color: var(--ui-color-dimmed);
-    font-size: var(--input-description-size, calc(var(--ui-font-size-sm) - rem(2px)));
+    font-size: var(--input-description-size, calc(var(--ui-font-size-sm) - calc(0.125rem * var(--ui-scale))));
 }

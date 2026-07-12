@@ -27,7 +27,7 @@ export const VisuallyHidden = factory<VisuallyHiddenFactory>((_props, _ref) => {
         attributes
     })
 
-    return <Box component="span" {...getStyles('root')} {...others} />
+    return <Box ref={_ref} component="span" {...getStyles('root')} {...others} />
 })
 
 VisuallyHidden.classes = classes

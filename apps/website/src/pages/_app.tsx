@@ -3,7 +3,6 @@ import Head from 'next/head'
 import { CodeHighlightAdapterProvider, createShikiAdapter } from '@react-ui/code-highlight'
 import { DirectionProvider, MantineProvider, Notifications } from '@react-ui/ui'
 import { MantineEmotionProvider } from '@react-ui/emotion'
-import { useHotkeys, useLocalStorage } from '@react-ui/hooks'
 import { GaScript } from '@/components/GaScript'
 import { HotKeysHandler } from '@/components/HotKeysHandler'
 import { MdxProvider } from '@/components/MdxProvider'
@@ -29,12 +28,6 @@ const shikiAdapter = createShikiAdapter(loadShiki)
 
 export default function App({ Component, pageProps, router }: AppProps) {
     const shouldRenderShell = !excludeShell.includes(router.pathname)
-    const [navbarOpened, setNavbarOpened] = useLocalStorage({
-        key: 'mantine-navbar-opened',
-        defaultValue: true
-    })
-
-    useHotkeys([['mod + alt + N', () => setNavbarOpened(!navbarOpened)]])
 
     return (
         <>
@@ -42,7 +35,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
                 <title>ReactUI</title>
                 <meta
                     name="description"
-                    content="A fully featured React components library with 120+ customizable components, hooks, and utilities. Build accessible web applications faster."
+                    content="一个功能完整的 React 组件库，包含 120+ 可定制组件、Hooks 与工具，助你更快构建无障碍 Web 应用。"
                 />
                 <link rel="shortcut icon" href="/favicon.svg" />
                 <meta

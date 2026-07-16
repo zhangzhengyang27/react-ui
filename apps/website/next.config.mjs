@@ -22,6 +22,10 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: [
       '@react-ui/ui',
+      '@react-ui/docs-demos',
+      '@phosphor-icons/react',
+      'lucide-react',
+      'recharts',
     ],
   },
   transpilePackages: [
@@ -53,7 +57,6 @@ const nextConfig = {
     maxInactiveAge: 60 * 60 * 1000,
     pagesBufferLength: 10,
   },
-  turbopack: {},
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve = {

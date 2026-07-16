@@ -46,7 +46,9 @@ function main() {
         const id = importPath.toLowerCase()
         const source = readFileSync(file, 'utf-8')
         // 动态 import —— webpack 自动分割为独立 chunk，运行时按需加载
-        entries.push(`  '${id}': { load: () => import('@/demos/${importPath}'), code: ${JSON.stringify(source)} },`)
+        // 注意：demos/ 位于 apps/website 根目录（与 src/ 平级），而 tsconfig 的 @/* 映射到 ./src/*，
+        // 因此这里使用相对路径 ../demos/ 以同时兼容 tsc 与 webpack/turbopack 解析。
+        entries.push(`  '${id}': { load: () => import('../demos/${importPath}'), code: ${JSON.stringify(source)} },`)
     })
 
     if (!existsSync(OUT_DIR)) mkdirSync(OUT_DIR, { recursive: true })

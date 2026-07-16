@@ -9,7 +9,7 @@ interface MyDocumentProps extends DocumentInitialProps {
 
 export default function Document({ css }: MyDocumentProps) {
     return (
-        <Html lang="en" data-ui-color-scheme="light">
+        <Html lang="zh-CN" data-ui-color-scheme="light">
             <Head>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />

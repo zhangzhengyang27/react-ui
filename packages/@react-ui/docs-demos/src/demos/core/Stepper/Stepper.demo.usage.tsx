@@ -15,23 +15,25 @@ function Demo() {
   return (
     <>
       <Stepper active={active} onStepClick={setActive}>
-        <Stepper.Step label="First step" description="Create an account">
-          Step 1 content: Create an account
+        <Stepper.Step label="第一步" description="创建账户">
+          步骤 1 内容：创建账户
         </Stepper.Step>
-        <Stepper.Step label="Second step" description="Verify email">
-          Step 2 content: Verify email
+        <Stepper.Step label="第二步" description="验证邮箱">
+          步骤 2 内容：验证邮箱
         </Stepper.Step>
-        <Stepper.Step label="Final step" description="Get full access">
-          Step 3 content: Get full access
+        <Stepper.Step label="最后一步" description="获取完整访问权限">
+          步骤 3 内容：获取完整访问权限
         </Stepper.Step>
         <Stepper.Completed>
-          Completed, click back button to get to previous step
+          已完成，点击返回按钮回到上一步
         </Stepper.Completed>
       </Stepper>
 
       <Group justify="center" mt="xl">
-        <Button variant="default" onClick={prevStep}>Back</Button>
-        <Button onClick={nextStep}>Next step</Button>
+        <Button variant="default" onClick={prevStep}>
+          返回
+        </Button>
+        <Button onClick={nextStep}>下一步</Button>
       </Group>
     </>
   );
@@ -46,26 +48,26 @@ function Demo() {
   return (
     <>
       <Stepper active={active} onStepClick={setActive}>
-        <Stepper.Step label="First step" description="Create an account">
-          <Content>Step 1 content: Create an account</Content>
+        <Stepper.Step label="第一步" description="创建账户">
+          <Content>步骤 1 内容：创建账户</Content>
         </Stepper.Step>
-        <Stepper.Step label="Second step" description="Verify email">
-          <Content>Step 2 content: Verify email</Content>
+        <Stepper.Step label="第二步" description="验证邮箱">
+          <Content>步骤 2 内容：验证邮箱</Content>
         </Stepper.Step>
-        <Stepper.Step label="Final step" description="Get full access">
-          <Content>Step 3 content: Get full access</Content>
+        <Stepper.Step label="最后一步" description="获取完整访问权限">
+          <Content>步骤 3 内容：获取完整访问权限</Content>
         </Stepper.Step>
 
         <Stepper.Completed>
-          <Content>Completed, click back button to get to previous step</Content>
+          <Content>已完成，点击返回按钮回到上一步</Content>
         </Stepper.Completed>
       </Stepper>
 
       <Group justify="center" mt="xl">
         <Button variant="default" onClick={prevStep}>
-          Back
+          返回
         </Button>
-        <Button onClick={nextStep}>Next step</Button>
+        <Button onClick={nextStep}>下一步</Button>
       </Group>
     </>
   );

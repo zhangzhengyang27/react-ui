@@ -37,9 +37,9 @@ function Demo() {
   const [active, setActive] = useState(1);
   return (
     <StyledStepper active={active} onStepClick={setActive}>
-      <Stepper.Step label="Step 1" description="Create an account" />
-      <Stepper.Step label="Step 2" description="Verify email" />
-      <Stepper.Step label="Step 3" description="Get full access" />
+      <Stepper.Step label="步骤 1" description="创建账户" />
+      <Stepper.Step label="步骤 2" description="验证邮箱" />
+      <Stepper.Step label="步骤 3" description="获取完整访问权限" />
     </StyledStepper>
   );
 }
@@ -76,9 +76,9 @@ function Demo() {
   const [active, setActive] = useState(1);
   return (
     <StyledStepper active={active} onStepClick={setActive}>
-      <Stepper.Step label="Step 1" description="Create an account" />
-      <Stepper.Step label="Step 2" description="Verify email" />
-      <Stepper.Step label="Step 3" description="Get full access" />
+      <Stepper.Step label="步骤 1" description="创建账户" />
+      <Stepper.Step label="步骤 2" description="验证邮箱" />
+      <Stepper.Step label="步骤 3" description="获取完整访问权限" />
     </StyledStepper>
   );
 }

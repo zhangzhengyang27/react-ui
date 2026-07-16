@@ -4,8 +4,8 @@ import { MantineDemo } from '@react-ui/demo';
 function Wrapper(props: Partial<StepperProps>) {
   return (
     <Stepper {...props} active={1}>
-      <Stepper.Step label="Step 1" description="Create an account" />
-      <Stepper.Step label="Step 2" description="Verify email" />
+      <Stepper.Step label="步骤 1" description="创建账户" />
+      <Stepper.Step label="步骤 2" description="验证邮箱" />
     </Stepper>
   );
 }
@@ -16,8 +16,8 @@ import { Stepper } from '@react-ui/ui';
 function Demo() {
   return (
     <Stepper{{props}} active={1}>
-      <Stepper.Step label="Step 1" description="Create an account" />
-      <Stepper.Step label="Step 2" description="Verify email" />
+      <Stepper.Step label="步骤 1" description="创建账户" />
+      <Stepper.Step label="步骤 2" description="验证邮箱" />
     </Stepper>
   );
 }

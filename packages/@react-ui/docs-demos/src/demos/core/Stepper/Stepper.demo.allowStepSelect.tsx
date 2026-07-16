@@ -29,37 +29,37 @@ function Demo() {
     <>
       <Stepper active={active} onStepClick={setActive}>
         <Stepper.Step
-          label="First step"
-          description="Create an account"
+          label="第一步"
+          description="创建账户"
           allowStepSelect={shouldAllowSelectStep(0)}
         >
-          Step 1 content: Create an account
+          步骤 1 内容：创建账户
         </Stepper.Step>
         <Stepper.Step
-          label="Second step"
-          description="Verify email"
+          label="第二步"
+          description="验证邮箱"
           allowStepSelect={shouldAllowSelectStep(1)}
         >
-          Step 2 content: Verify email
+          步骤 2 内容：验证邮箱
         </Stepper.Step>
         <Stepper.Step
-          label="Final step"
-          description="Get full access"
+          label="最后一步"
+          description="获取完整访问权限"
           allowStepSelect={shouldAllowSelectStep(2)}
         >
-          Step 3 content: Get full access
+          步骤 3 内容：获取完整访问权限
         </Stepper.Step>
 
         <Stepper.Completed>
-          Completed, click back button to get to previous step
+          已完成，点击返回按钮回到上一步
         </Stepper.Completed>
       </Stepper>
 
       <Group justify="center" mt="xl">
         <Button variant="default" onClick={() => handleStepChange(active - 1)}>
-          Back
+          返回
         </Button>
-        <Button onClick={() => handleStepChange(active + 1)}>Next step</Button>
+        <Button onClick={() => handleStepChange(active + 1)}>下一步</Button>
       </Group>
     </>
   );
@@ -88,37 +88,37 @@ function Demo() {
     <>
       <Stepper active={active} onStepClick={setActive}>
         <Stepper.Step
-          label="First step"
-          description="Create an account"
+          label="第一步"
+          description="创建账户"
           allowStepSelect={shouldAllowSelectStep(0)}
         >
-          <Content>Step 1 content: Create an account</Content>
+          <Content>步骤 1 内容：创建账户</Content>
         </Stepper.Step>
         <Stepper.Step
-          label="Second step"
-          description="Verify email"
+          label="第二步"
+          description="验证邮箱"
           allowStepSelect={shouldAllowSelectStep(1)}
         >
-          <Content>Step 2 content: Verify email</Content>
+          <Content>步骤 2 内容：验证邮箱</Content>
         </Stepper.Step>
         <Stepper.Step
-          label="Final step"
-          description="Get full access"
+          label="最后一步"
+          description="获取完整访问权限"
           allowStepSelect={shouldAllowSelectStep(2)}
         >
-          <Content>Step 3 content: Get full access</Content>
+          <Content>步骤 3 内容：获取完整访问权限</Content>
         </Stepper.Step>
 
         <Stepper.Completed>
-          <Content>Completed, click back button to get to previous step</Content>
+          <Content>已完成，点击返回按钮回到上一步</Content>
         </Stepper.Completed>
       </Stepper>
 
       <Group justify="center" mt="xl">
         <Button variant="default" onClick={() => handleStepChange(active - 1)}>
-          Back
+          返回
         </Button>
-        <Button onClick={() => handleStepChange(active + 1)}>Next step</Button>
+        <Button onClick={() => handleStepChange(active + 1)}>下一步</Button>
       </Group>
     </>
   );

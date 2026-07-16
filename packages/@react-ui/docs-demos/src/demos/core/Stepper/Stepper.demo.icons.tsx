@@ -24,18 +24,18 @@ function Demo() {
     >
       <Stepper.Step
         icon={<UserCheckIcon size={18} />}
-        label="Step 1"
-        description="Create an account"
+        label="步骤 1"
+        description="创建账户"
       />
       <Stepper.Step
         icon={<EnvelopeOpenIcon size={18} />}
-        label="Step 2"
-        description="Verify email"
+        label="步骤 2"
+        description="验证邮箱"
       />
       <Stepper.Step
         icon={<ShieldCheckIcon size={18} />}
-        label="Step 3"
-        description="Get full access"
+        label="步骤 3"
+        description="获取完整访问权限"
       />
     </Stepper>
   );
@@ -49,18 +49,18 @@ function Demo() {
     <Stepper active={active} onStepClick={setActive} completedIcon={<CheckCircleIcon size={18} />}>
       <Stepper.Step
         icon={<UserCheckIcon size={18} />}
-        label="Step 1"
-        description="Create an account"
+        label="步骤 1"
+        description="创建账户"
       />
       <Stepper.Step
         icon={<EnvelopeOpenIcon size={18} />}
-        label="Step 2"
-        description="Verify email"
+        label="步骤 2"
+        description="验证邮箱"
       />
       <Stepper.Step
         icon={<ShieldCheckIcon size={18} />}
-        label="Step 3"
-        description="Get full access"
+        label="步骤 3"
+        description="获取完整访问权限"
       />
     </Stepper>
   );

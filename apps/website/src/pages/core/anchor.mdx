@@ -22,7 +22,7 @@ export default Layout(MDX_DATA.Anchor);
 你还可以使用 [default props](/theming/default-props) 为所有 `Anchor` 组件配置 `underline` 属性：
 
 ```tsx
-import { Anchor, createTheme, MantineProvider } from '@react-ui/ui';
+import { Anchor, createTheme, UIProvider } from '@react-ui/ui';
 
 const theme = createTheme({
   components: {
@@ -36,9 +36,9 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       {/* 你的应用内容 */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```

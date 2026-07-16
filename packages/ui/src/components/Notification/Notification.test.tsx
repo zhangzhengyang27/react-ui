@@ -1,14 +1,14 @@
 import { describe, expect, it, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Notification } from './Notification'
 
 describe('Notification', () => {
     it('renders title and message', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Notification title="成功" message="操作已完成" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('成功')).toBeInTheDocument()
@@ -17,9 +17,9 @@ describe('Notification', () => {
 
     it('renders icon', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Notification icon={<span data-testid="icon">!</span>} message="提示" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByTestId('icon')).toBeInTheDocument()
@@ -27,9 +27,9 @@ describe('Notification', () => {
 
     it('renders loading state', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Notification loading message="加载中" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('加载中')).toBeInTheDocument()
@@ -38,9 +38,9 @@ describe('Notification', () => {
     it('calls onClose when close button is clicked', () => {
         const onClose = vi.fn()
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Notification message="可关闭" onClose={onClose} />
-            </MantineProvider>
+            </UIProvider>
         )
 
         screen.getByRole('button').click()
@@ -49,9 +49,9 @@ describe('Notification', () => {
 
     it('does not render close button when withCloseButton is false', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Notification message="不可关闭" withCloseButton={false} />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.queryByRole('button')).not.toBeInTheDocument()

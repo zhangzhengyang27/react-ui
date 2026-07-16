@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, ComboboxItem, ComboboxPopover, OptionsFilter } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -25,10 +25,10 @@ function Demo() {
       onChange={setValue}
       searchable
       filter={optionsFilter}
-      nothingFoundMessage="Nothing found..."
+      nothingFoundMessage="未找到..."
     >
       <ComboboxPopover.Target>
-        <Button variant="default" miw={200}>{value || 'Select framework'}</Button>
+        <Button variant="default" miw={200}>{value || '选择框架'}</Button>
       </ComboboxPopover.Target>
     </ComboboxPopover>
   );
@@ -54,18 +54,18 @@ function Demo() {
       onChange={setValue}
       searchable
       filter={optionsFilter}
-      nothingFoundMessage="Nothing found..."
+      nothingFoundMessage="未找到..."
     >
       <ComboboxPopover.Target>
         <Button variant="default" miw={200}>
-          {value || 'Select framework'}
+          {value || '选择框架'}
         </Button>
       </ComboboxPopover.Target>
     </ComboboxPopover>
   );
 }
 
-export const sort: MantineDemo = {
+export const sort: UIDemo = {
   type: 'code',
   component: Demo,
   code,

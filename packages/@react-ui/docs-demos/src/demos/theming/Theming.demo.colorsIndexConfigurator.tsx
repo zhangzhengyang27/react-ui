@@ -1,5 +1,5 @@
 import { Button, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = (props: any) => `
 import { Button, Text } from '@react-ui/ui';
@@ -8,7 +8,7 @@ function Demo() {
   return (
     <>
       <Text c="blue.${props.index}">Text with blue.${props.index} color</Text>
-      <Button color="cyan.${props.index}">Button</Button>
+      <Button color="cyan.${props.index}">按钮</Button>
     </>
   );
 }
@@ -25,7 +25,7 @@ function Wrapper(props: any) {
   );
 }
 
-export const colorsIndexConfigurator: MantineDemo = {
+export const colorsIndexConfigurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

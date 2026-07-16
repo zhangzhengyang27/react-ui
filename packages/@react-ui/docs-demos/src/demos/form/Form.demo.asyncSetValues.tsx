@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { Checkbox, TextInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useEffect } from 'react';
@@ -36,14 +36,14 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit(console.log)}>
       <TextInput
-        label="Email"
-        placeholder="Email"
+        label="邮箱"
+        placeholder="邮箱"
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
       <Checkbox
         mt="sm"
-        label="I accept terms and conditions"
+        label="我接受条款和条件"
         key={form.key('terms')}
         {...form.getInputProps('terms', { type: 'checkbox' })}
       />
@@ -79,14 +79,14 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit(console.log)}>
       <TextInput
-        label="Email"
-        placeholder="Email"
+        label="邮箱"
+        placeholder="邮箱"
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
       <Checkbox
         mt="sm"
-        label="I accept terms and conditions"
+        label="我接受条款和条件"
         key={form.key('terms')}
         {...form.getInputProps('terms', { type: 'checkbox' })}
       />
@@ -94,7 +94,7 @@ function Demo() {
   );
 }
 
-export const asyncSetValues: MantineDemo = {
+export const asyncSetValues: UIDemo = {
   type: 'code',
   component: Demo,
   code,

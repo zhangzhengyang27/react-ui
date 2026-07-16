@@ -7,7 +7,7 @@ import {
   factory,
   Factory,
   getFontSize,
-  MantineComponentStaticProperties,
+  UIComponentStaticProperties,
   StylesApiProps,
   UnstyledButton,
   useProps,
@@ -94,7 +94,7 @@ type YearPickerComponent = (<Type extends DatePickerType = 'default'>(
   props: YearPickerProps<Type> & { ref?: React.Ref<HTMLDivElement> }
 ) => React.JSX.Element) & {
   displayName?: string;
-} & MantineComponentStaticProperties<YearPickerFactory>;
+} & UIComponentStaticProperties<YearPickerFactory>;
 
 export const YearPicker: YearPickerComponent = factory<YearPickerFactory>((_props) => {
   const props = useProps('YearPicker', defaultProps, _props);
@@ -210,7 +210,7 @@ export const YearPicker: YearPickerComponent = factory<YearPickerFactory>((_prop
       {...getStyles('presetButton')}
       onClick={() => handlePresetSelect(preset.value)}
       onMouseDown={(event) => event.preventDefault()}
-      data-mantine-stop-propagation={__stopPropagation || undefined}
+      data-ui-stop-propagation={__stopPropagation || undefined}
     >
       {preset.label}
     </UnstyledButton>

@@ -1,6 +1,6 @@
 import { Button, Group } from '@react-ui/ui';
 import { notifications } from '@react-ui/notifications';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Notifications.demo.customize.module.css';
 
 const code = `
@@ -14,8 +14,8 @@ function Demo() {
       <Button
         onClick={() =>
           notifications.show({
-            title: 'Notification with custom styles',
-            message: 'It is default blue',
+            title: '自定义样式通知',
+            message: '默认蓝色',
             classNames: classes,
           })
         }
@@ -28,8 +28,8 @@ function Demo() {
         onClick={() =>
           notifications.show({
             color: 'red',
-            title: 'Notification with custom styles',
-            message: 'It is red',
+            title: '自定义样式通知',
+            message: '红色',
             classNames: classes,
           })
         }
@@ -57,7 +57,7 @@ const cssCode = `
 .closeButton {
   color: var(--ui-color-white);
 
-  @mixin hover {
+  &:hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
 }
@@ -69,8 +69,8 @@ function Demo() {
       <Button
         onClick={() =>
           notifications.show({
-            title: 'Notification with custom styles',
-            message: 'It is default blue',
+            title: '自定义样式通知',
+            message: '默认蓝色',
             classNames: classes,
           })
         }
@@ -83,8 +83,8 @@ function Demo() {
         onClick={() =>
           notifications.show({
             color: 'red',
-            title: 'Notification with custom styles',
-            message: 'It is red',
+            title: '自定义样式通知',
+            message: '红色',
             classNames: classes,
           })
         }
@@ -95,12 +95,12 @@ function Demo() {
   );
 }
 
-export const customize: MantineDemo = {
+export const customize: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
   ],
 };

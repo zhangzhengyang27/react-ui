@@ -1,6 +1,6 @@
 import { CssVariable } from '../../Box'
 import { FactoryPayload } from '../../factory'
-import { MantineTheme } from '../../MantineProvider'
+import { UITheme } from '../../UIProvider'
 
 /**
  * 将 CSS 变量类型转换为对应的 Record 类型
@@ -25,13 +25,13 @@ export type PartialTransformVars<V> = {
 
 /**
  * 解析主题变量，根据主题、属性和上下文生成转换后的变量
- * @param {MantineTheme} theme - Mantine主题对象
+ * @param {UITheme} theme - UI主题对象
  * @param {Payload['props']} props - 组件属性
  * @param {Payload['ctx']} ctx - 上下文对象
  * @returns {TransformVars<Payload['vars']>} 转换后的主题变量
  */
 export type VarsResolver<Payload extends FactoryPayload> = (
-    theme: MantineTheme,
+    theme: UITheme,
     props: Payload['props'],
     ctx: Payload['ctx']
 ) => TransformVars<Payload['vars']>
@@ -39,13 +39,13 @@ export type VarsResolver<Payload extends FactoryPayload> = (
 /**
  * 定义部分变量解析器类型，用于根据主题和属性计算部分变量值
  * @template Payload 工厂负载类型，包含 props、ctx 和 vars 属性
- * @param {MantineTheme} theme - Mantine 主题对象
+ * @param {UITheme} theme - UI 主题对象
  * @param {Payload['props']} props - 组件属性
  * @param {Payload['ctx']} ctx - 上下文对象
  * @returns {PartialTransformVars<Payload['vars']>} 转换后的部分变量对象
  */
 export type PartialVarsResolver<Payload extends FactoryPayload> = (
-    theme: MantineTheme,
+    theme: UITheme,
     props: Payload['props'],
     ctx: Payload['ctx']
 ) => PartialTransformVars<Payload['vars']>

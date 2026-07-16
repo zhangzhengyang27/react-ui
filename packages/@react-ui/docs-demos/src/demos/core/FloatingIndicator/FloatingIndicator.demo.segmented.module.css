@@ -16,7 +16,7 @@
   transition: color 100ms ease;
   font-weight: 600;
 
-  @mixin hover {
+  &:hover {
     color: light-dark(var(--ui-color-black), var(--ui-color-white));
     background-color: light-dark(var(--ui-color-gray-1), var(--ui-color-dark-7));
   }

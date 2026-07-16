@@ -17,18 +17,18 @@ interface MdxWrapperPropsProps {
 export function MdxWrapperProps({ component }: MdxWrapperPropsProps) {
   return (
     <>
-      <MdxTitle id="browser-support">Add props to the root element</MdxTitle>
+      <MdxTitle id="browser-support">向根元素添加属性</MdxTitle>
       <MdxParagraph>
-        All props passed to the component are forwarded to the input element. If you need to add
-        props to the root element, use <MdxCode>wrapperProps</MdxCode>. In the following example:
+        传递给组件的所有属性都会转发到输入元素。如果需要向根元素添加属性，请使用{' '}
+        <MdxCode>wrapperProps</MdxCode>。在以下示例中：
       </MdxParagraph>
 
       <MdxUl>
         <MdxLi>
-          <MdxCode>data-testid=&quot;wrapper&quot;</MdxCode> is added to the root element
+          <MdxCode>data-testid=&quot;wrapper&quot;</MdxCode> 被添加到根元素
         </MdxLi>
         <MdxLi>
-          <MdxCode>data-testid=&quot;input&quot;</MdxCode> is added to the input element
+          <MdxCode>data-testid=&quot;input&quot;</MdxCode> 被添加到输入元素
         </MdxLi>
       </MdxUl>
 

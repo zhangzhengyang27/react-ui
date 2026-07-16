@@ -3,7 +3,7 @@ import type { StylesApiData } from '../types';
 
 export const TooltipStylesApi: StylesApiData<TooltipFactory> = {
   selectors: {
-    tooltip: 'Root element',
+    tooltip: '根元素',
     arrow: 'Tooltip arrow, rendered inside tooltip',
   },
 
@@ -16,6 +16,6 @@ export const TooltipStylesApi: StylesApiData<TooltipFactory> = {
   },
 
   modifiers: [
-    { modifier: 'data-multiline', selector: 'tooltip', condition: '`multiline` prop is set' },
+    { modifier: 'data-multiline', selector: 'tooltip', condition: '设置了 `multiline` 属性' },
   ],
 };

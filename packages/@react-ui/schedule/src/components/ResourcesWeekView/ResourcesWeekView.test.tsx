@@ -3,7 +3,7 @@ import 'dayjs/locale/ru';
 import dayjs from 'dayjs';
 import { fireEvent } from '@testing-library/react';
 import { DatesProvider } from '@react-ui/dates';
-import { render, screen, userEvent } from '@mantine-tests/core';
+import { render, screen, userEvent } from '@react-ui/tests';
 import { toDateString } from '../../utils';
 import { ResourcesWeekView, ResourcesWeekViewProps } from './ResourcesWeekView';
 
@@ -43,7 +43,7 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
 
   it('renders with mode="static"', () => {
     const { container } = render(<ResourcesWeekView {...defaultProps} mode="static" />);
-    const slots = container.querySelectorAll('.mantine-ResourcesWeekView-resourcesWeekViewRowSlot');
+    const slots = container.querySelectorAll('.ui-ResourcesWeekView-resourcesWeekViewRowSlot');
     slots.forEach((slot) => {
       expect(slot).toHaveAttribute('tabIndex', '-1');
     });
@@ -99,7 +99,7 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
     const { container } = render(<ResourcesWeekView {...defaultProps} events={events} />);
     expect(screen.getByText('All Day in Room A')).toBeInTheDocument();
     expect(
-      container.querySelector('.mantine-ResourcesWeekView-resourcesWeekViewAllDayEvent')
+      container.querySelector('.ui-ResourcesWeekView-resourcesWeekViewAllDayEvent')
     ).not.toBe(null);
   });
 
@@ -178,7 +178,7 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
 
   it('does not render header when withHeader={false}', () => {
     const { container } = render(<ResourcesWeekView {...defaultProps} withHeader={false} />);
-    expect(container.querySelector('.mantine-ResourcesWeekView-header')).not.toBeInTheDocument();
+    expect(container.querySelector('.ui-ResourcesWeekView-header')).not.toBeInTheDocument();
   });
 
   it('changes slot count based on startTime, endTime, and intervalMinutes', () => {
@@ -191,14 +191,14 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
       />
     );
 
-    const slots = container.querySelectorAll('.mantine-ResourcesWeekView-resourcesWeekViewRowSlot');
+    const slots = container.querySelectorAll('.ui-ResourcesWeekView-resourcesWeekViewRowSlot');
     expect(slots).toHaveLength(2 * 4 * 7);
   });
 
   it('supports locale prop for day labels', () => {
     const { container } = render(<ResourcesWeekView {...defaultProps} locale="ru" />);
     const dayLabels = container.querySelectorAll(
-      '.mantine-ResourcesWeekView-resourcesWeekViewDayLabel'
+      '.ui-ResourcesWeekView-resourcesWeekViewDayLabel'
     );
     const texts = Array.from(dayLabels).map((el) => el.textContent);
     expect(texts.some((t) => /пн/i.test(t!))).toBe(true);
@@ -211,7 +211,7 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
       </DatesProvider>
     );
     const dayLabels = container.querySelectorAll(
-      '.mantine-ResourcesWeekView-resourcesWeekViewDayLabel'
+      '.ui-ResourcesWeekView-resourcesWeekViewDayLabel'
     );
     const texts = Array.from(dayLabels).map((el) => el.textContent);
     expect(texts.some((t) => /пн/i.test(t!))).toBe(true);
@@ -222,7 +222,7 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
       <ResourcesWeekView {...defaultProps} firstDayOfWeek={0} weekdayFormat="ddd D" />
     );
     const dayLabels = container.querySelectorAll(
-      '.mantine-ResourcesWeekView-resourcesWeekViewDayLabel'
+      '.ui-ResourcesWeekView-resourcesWeekViewDayLabel'
     );
     expect(dayLabels[0]).toHaveTextContent('Sun 12');
   });
@@ -230,7 +230,7 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
   it('marks weekend days with data-weekend attribute', () => {
     const { container } = render(<ResourcesWeekView {...defaultProps} />);
     const weekendDays = container.querySelectorAll(
-      '.mantine-ResourcesWeekView-resourcesWeekViewDayLabel[data-weekend]'
+      '.ui-ResourcesWeekView-resourcesWeekViewDayLabel[data-weekend]'
     );
     expect(weekendDays).toHaveLength(2);
   });
@@ -238,13 +238,13 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
   it('hides weekend columns when withWeekendDays={false}', () => {
     const { container, rerender } = render(<ResourcesWeekView {...defaultProps} />);
     const allDays = container.querySelectorAll(
-      '.mantine-ResourcesWeekView-resourcesWeekViewDayLabel'
+      '.ui-ResourcesWeekView-resourcesWeekViewDayLabel'
     );
     expect(allDays).toHaveLength(7);
 
     rerender(<ResourcesWeekView {...defaultProps} withWeekendDays={false} />);
     const weekdaysOnly = container.querySelectorAll(
-      '.mantine-ResourcesWeekView-resourcesWeekViewDayLabel'
+      '.ui-ResourcesWeekView-resourcesWeekViewDayLabel'
     );
     expect(weekdaysOnly).toHaveLength(5);
   });
@@ -254,7 +254,7 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
       <ResourcesWeekView {...defaultProps} weekdayFormat={(date) => dayjs(date).format('dd')} />
     );
     const dayLabels = container.querySelectorAll(
-      '.mantine-ResourcesWeekView-resourcesWeekViewDayLabel'
+      '.ui-ResourcesWeekView-resourcesWeekViewDayLabel'
     );
     expect(dayLabels[0]).toHaveTextContent('Mo');
   });
@@ -285,13 +285,13 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
     jest.useFakeTimers().setSystemTime(new Date('2025-01-15 12:00:00'));
     const { container, rerender } = render(<ResourcesWeekView {...defaultProps} highlightToday />);
     const todayLabels = container.querySelectorAll(
-      '.mantine-ResourcesWeekView-resourcesWeekViewDayLabel[data-today]'
+      '.ui-ResourcesWeekView-resourcesWeekViewDayLabel[data-today]'
     );
     expect(todayLabels).toHaveLength(1);
 
     rerender(<ResourcesWeekView {...defaultProps} highlightToday={false} />);
     const noTodayLabels = container.querySelectorAll(
-      '.mantine-ResourcesWeekView-resourcesWeekViewDayLabel[data-today]'
+      '.ui-ResourcesWeekView-resourcesWeekViewDayLabel[data-today]'
     );
     expect(noTodayLabels).toHaveLength(0);
     jest.useRealTimers();
@@ -304,12 +304,12 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
     );
 
     expect(
-      container.querySelector('.mantine-ResourcesWeekView-resourcesWeekViewCurrentTimeIndicator')
+      container.querySelector('.ui-ResourcesWeekView-resourcesWeekViewCurrentTimeIndicator')
     ).toBeInTheDocument();
 
     rerender(<ResourcesWeekView {...defaultProps} withCurrentTimeIndicator={false} />);
     expect(
-      container.querySelector('.mantine-ResourcesWeekView-resourcesWeekViewCurrentTimeIndicator')
+      container.querySelector('.ui-ResourcesWeekView-resourcesWeekViewCurrentTimeIndicator')
     ).not.toBeInTheDocument();
     jest.useRealTimers();
   });
@@ -322,12 +322,12 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
 
     expect(
       container.querySelector(
-        '.mantine-ResourcesWeekView-resourcesWeekViewCurrentTimeIndicatorTimeBubble'
+        '.ui-ResourcesWeekView-resourcesWeekViewCurrentTimeIndicatorTimeBubble'
       )
     ).not.toBeInTheDocument();
     expect(
       container.querySelector(
-        '.mantine-ResourcesWeekView-resourcesWeekViewCurrentTimeIndicatorThumb'
+        '.ui-ResourcesWeekView-resourcesWeekViewCurrentTimeIndicatorThumb'
       )
     ).toBeInTheDocument();
 
@@ -336,7 +336,7 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
     );
     expect(
       container.querySelector(
-        '.mantine-ResourcesWeekView-resourcesWeekViewCurrentTimeIndicatorTimeBubble'
+        '.ui-ResourcesWeekView-resourcesWeekViewCurrentTimeIndicatorTimeBubble'
       )
     ).toBeInTheDocument();
     jest.useRealTimers();
@@ -352,10 +352,10 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
     );
 
     const businessSlots = container.querySelectorAll(
-      '.mantine-ResourcesWeekView-resourcesWeekViewRowSlot[data-business-hours]'
+      '.ui-ResourcesWeekView-resourcesWeekViewRowSlot[data-business-hours]'
     );
     const nonBusinessSlots = container.querySelectorAll(
-      '.mantine-ResourcesWeekView-resourcesWeekViewRowSlot[data-non-business-hours]'
+      '.ui-ResourcesWeekView-resourcesWeekViewRowSlot[data-non-business-hours]'
     );
     expect(businessSlots.length).toBeGreaterThan(0);
     expect(nonBusinessSlots.length).toBeGreaterThan(0);
@@ -487,13 +487,13 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
     );
 
     expect(
-      container.querySelector('button.mantine-ResourcesWeekView-headerControl[data-previous-prop]')
+      container.querySelector('button.ui-ResourcesWeekView-headerControl[data-previous-prop]')
     ).toBeInTheDocument();
     expect(
-      container.querySelector('button.mantine-ResourcesWeekView-headerControl[data-next-prop]')
+      container.querySelector('button.ui-ResourcesWeekView-headerControl[data-next-prop]')
     ).toBeInTheDocument();
     expect(
-      container.querySelector('button.mantine-ResourcesWeekView-headerControl[data-today-prop]')
+      container.querySelector('button.ui-ResourcesWeekView-headerControl[data-today-prop]')
     ).toBeInTheDocument();
   });
 
@@ -502,7 +502,7 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
       <ResourcesWeekView {...defaultProps} viewSelectProps={{ 'data-view-select': 'test' }} />
     );
     expect(
-      container.querySelector('.mantine-ResourcesWeekView-viewSelect[data-view-select]')
+      container.querySelector('.ui-ResourcesWeekView-viewSelect[data-view-select]')
     ).toBeInTheDocument();
   });
 
@@ -581,7 +581,7 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
       );
 
       expect(
-        container.querySelectorAll('.mantine-ResourcesWeekView-resourcesWeekViewResizeHandle')
+        container.querySelectorAll('.ui-ResourcesWeekView-resourcesWeekViewResizeHandle')
           .length
       ).toBeGreaterThan(0);
     });
@@ -590,7 +590,7 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
       const { container } = render(<ResourcesWeekView {...defaultProps} events={resizeEvents} />);
 
       expect(
-        container.querySelectorAll('.mantine-ResourcesWeekView-resourcesWeekViewResizeHandle')
+        container.querySelectorAll('.ui-ResourcesWeekView-resourcesWeekViewResizeHandle')
       ).toHaveLength(0);
     });
 
@@ -627,7 +627,7 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
 
       // Only the "Can Resize" event renders its two (start/end) handles
       expect(
-        container.querySelectorAll('.mantine-ResourcesWeekView-resourcesWeekViewResizeHandle')
+        container.querySelectorAll('.ui-ResourcesWeekView-resourcesWeekViewResizeHandle')
       ).toHaveLength(2);
     });
 
@@ -644,7 +644,7 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
       );
 
       const handle = container.querySelector<HTMLElement>(
-        '.mantine-ResourcesWeekView-resourcesWeekViewResizeHandle[data-edge="end"]'
+        '.ui-ResourcesWeekView-resourcesWeekViewResizeHandle[data-edge="end"]'
       )!;
 
       fireEvent.pointerDown(handle);
@@ -660,7 +660,7 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
       );
 
       expect(
-        container.querySelectorAll('.mantine-ResourcesWeekView-resourcesWeekViewResizeHandle')
+        container.querySelectorAll('.ui-ResourcesWeekView-resourcesWeekViewResizeHandle')
       ).toHaveLength(0);
     });
   });
@@ -673,7 +673,7 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
       const slot = screen
         .getAllByRole('button')
         .find((btn) =>
-          btn.classList.contains('mantine-ResourcesWeekView-resourcesWeekViewRowSlot')
+          btn.classList.contains('ui-ResourcesWeekView-resourcesWeekViewRowSlot')
         )!;
       await userEvent.click(slot);
       expect(spy).not.toHaveBeenCalled();
@@ -706,7 +706,7 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
     it('sets all slots to tabIndex=-1 for keyboard nav suppression', () => {
       const { container } = render(<ResourcesWeekView {...defaultProps} mode="static" />);
       const slots = container.querySelectorAll(
-        '.mantine-ResourcesWeekView-resourcesWeekViewRowSlot'
+        '.ui-ResourcesWeekView-resourcesWeekViewRowSlot'
       );
       slots.forEach((slot) => {
         expect(slot).toHaveAttribute('tabIndex', '-1');
@@ -746,14 +746,14 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
     expect(screen.getByText('Floor 1')).toBeInTheDocument();
     expect(screen.getByText('Floor 2')).toBeInTheDocument();
     expect(
-      container.querySelector('.mantine-ResourcesWeekView-resourcesWeekViewGroupColumn')
+      container.querySelector('.ui-ResourcesWeekView-resourcesWeekViewGroupColumn')
     ).toBeInTheDocument();
   });
 
   it('does not render group column when groups prop is not provided', () => {
     const { container } = render(<ResourcesWeekView {...defaultProps} />);
     expect(
-      container.querySelector('.mantine-ResourcesWeekView-resourcesWeekViewGroupColumn')
+      container.querySelector('.ui-ResourcesWeekView-resourcesWeekViewGroupColumn')
     ).not.toBeInTheDocument();
   });
 
@@ -786,7 +786,7 @@ describe('@react-ui/schedule/ResourcesWeekView', () => {
     expect(screen.getByText('Floor 1')).toBeInTheDocument();
     expect(screen.getByText('Room C')).toBeInTheDocument();
     const emptyGroupCells = container.querySelectorAll(
-      '.mantine-ResourcesWeekView-resourcesWeekViewGroupColumnEmpty'
+      '.ui-ResourcesWeekView-resourcesWeekViewGroupColumnEmpty'
     );
     expect(emptyGroupCells.length).toBe(1);
   });

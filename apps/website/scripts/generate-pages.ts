@@ -113,7 +113,7 @@ export default function AccordionBasicDemo() {
         <Accordion defaultValue="item-1">
             <Accordion.Item value="item-1">
                 <Accordion.Control>什么是 @react-ui/ui？</Accordion.Control>
-                <Accordion.Panel>一个受 Mantine 启发的 React UI 组件库。</Accordion.Panel>
+                <Accordion.Panel>一个受 UI 启发的 React UI 组件库。</Accordion.Panel>
             </Accordion.Item>
         </Accordion>
     )

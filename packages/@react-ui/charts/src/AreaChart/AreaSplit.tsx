@@ -1,14 +1,14 @@
-import { getThemeColor, MantineColor, useMantineTheme } from '@react-ui/ui';
+import { getThemeColor, UIColor, useUITheme } from '@react-ui/ui';
 
 interface AreaSplitProps {
   offset: number;
-  colors: [MantineColor, MantineColor];
+  colors: [UIColor, UIColor];
   id?: string;
   fillOpacity: number | undefined;
 }
 
 export function AreaSplit({ offset, id, colors, fillOpacity }: AreaSplitProps) {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
 
   return (
     <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">

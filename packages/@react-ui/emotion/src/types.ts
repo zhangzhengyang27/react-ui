@@ -1,12 +1,12 @@
 import * as CSSType from 'csstype';
-import type { MantineTheme } from '@react-ui/ui';
+import type { UITheme } from '@react-ui/ui';
 import type { EmotionHelpers } from './create-styles';
 
-export type EmotionSx = CSSObject | ((theme: MantineTheme, u: EmotionHelpers) => CSSObject);
+export type EmotionSx = CSSObject | ((theme: UITheme, u: EmotionHelpers) => CSSObject);
 export type EmotionStyles =
   | Record<string, CSSObject>
   | ((
-      theme: MantineTheme,
+      theme: UITheme,
       props: Record<string, any>,
       u: EmotionHelpers
     ) => Record<string, CSSObject>);

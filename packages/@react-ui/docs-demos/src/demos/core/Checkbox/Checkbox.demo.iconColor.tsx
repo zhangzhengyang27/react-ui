@@ -1,5 +1,5 @@
 import { Checkbox } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Checkbox } from '@react-ui/ui';
@@ -11,7 +11,7 @@ function Demo() {
       color="lime.4"
       iconColor="dark.8"
       size="md"
-      label="Bright lime checkbox"
+      label="亮绿色复选框"
     />
   );
 }
@@ -24,12 +24,12 @@ function Demo() {
       color="lime.4"
       iconColor="dark.8"
       size="md"
-      label="Bright lime checkbox"
+      label="亮绿色复选框"
     />
   );
 }
 
-export const iconColor: MantineDemo = {
+export const iconColor: UIDemo = {
   type: 'code',
   component: Demo,
   code,

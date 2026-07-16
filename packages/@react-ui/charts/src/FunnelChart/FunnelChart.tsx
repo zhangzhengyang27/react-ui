@@ -18,10 +18,10 @@ import {
   factory,
   Factory,
   getThemeColor,
-  MantineColor,
+  UIColor,
   rem,
   StylesApiProps,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useResolvedStylesApi,
   useStyles,
@@ -34,7 +34,7 @@ export interface FunnelChartCell {
   key?: string | number;
   name: string;
   value: number;
-  color: MantineColor;
+  color: UIColor;
 }
 
 export type FunnelChartStylesNames = 'root' | ChartTooltipStylesNames | ChartLegendStylesNames;
@@ -66,10 +66,10 @@ export interface FunnelChartProps
   funnelProps?: Partial<Omit<FunnelProps, 'ref'>>;
 
   /** Controls color of the segments stroke, by default depends on color scheme */
-  strokeColor?: MantineColor;
+  strokeColor?: UIColor;
 
   /** Controls text color of all labels @default 'white' */
-  labelColor?: MantineColor;
+  labelColor?: UIColor;
 
   /** Controls chart width and height @default 300 */
   size?: number;
@@ -152,7 +152,7 @@ export const FunnelChart = factory<FunnelChartFactory>((_props) => {
     ...others
   } = props;
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
 
   const getStyles = useStyles<FunnelChartFactory>({

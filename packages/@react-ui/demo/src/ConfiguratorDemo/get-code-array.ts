@@ -31,7 +31,7 @@ export function getCodeArray({ code, controls, state }: GetCodeArrayInput) {
   if (typeof code === 'string' || typeof code === 'function') {
     return [
       {
-        fileName: 'Demo.tsx',
+        fileName: '示例.tsx',
         language: 'tsx' as const,
         code: transformCodePayload({ code, controls, state }),
       },
@@ -40,7 +40,7 @@ export function getCodeArray({ code, controls, state }: GetCodeArrayInput) {
 
   if (Array.isArray(code)) {
     return code.map((item) => ({
-      fileName: item.fileName || 'Demo.tsx',
+      fileName: item.fileName || '示例.tsx',
       language: item.language || 'tsx',
       code: transformCodePayload({ code: item.code, controls, state }),
     }));

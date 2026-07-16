@@ -6,9 +6,9 @@ import {
     Factory,
     getRadius,
     getSize,
-    MantineColor,
-    MantineRadius,
-    MantineSize,
+    UIColor,
+    UIRadius,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -27,13 +27,13 @@ export interface ThemeIconProps extends BoxProps, StylesApiProps<ThemeIconFactor
     children?: React.ReactNode
 
     /** Controls width and height of the icon container @default 'md' */
-    size?: MantineSize | (string & {}) | number
+    size?: UISize | (string & {}) | number
 
-    /** Key of theme.radius or any valid CSS value @default theme.defaultRadius */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 @default theme.defaultRadius */
+    radius?: UIRadius
 
-    /** Key of theme.colors or any valid CSS color @default theme.primaryColor */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 @default theme.primaryColor */
+    color?: UIColor
 
     /** ThemeIcon variant @default 'filled' */
     variant?: ThemeIconVariant

@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Button, Group, Splitter } from '@react-ui/ui';
 import { UseSplitterReturnValue } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Demo() {
   const splitterRef = useRef<UseSplitterReturnValue>(null);
@@ -67,7 +67,7 @@ function Demo() {
   );
 }`;
 
-export const collapsible: MantineDemo = {
+export const collapsible: UIDemo = {
   type: 'code',
   component: Demo,
   code,

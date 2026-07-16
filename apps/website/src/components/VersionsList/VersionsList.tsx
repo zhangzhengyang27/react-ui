@@ -1,7 +1,7 @@
 import { FileTextIcon } from '@phosphor-icons/react';
 import { ActionIcon, Code, Group, Text } from '@react-ui/ui';
 import { GithubIcon } from '@react-ui/dev-icons';
-import { allVersions } from '@react-ui/mantine-meta';
+import { allVersions } from '@react-ui/meta';
 import classes from './VersionsList.module.css';
 
 function getMinorXVersion(version: string) {
@@ -47,8 +47,8 @@ export function VersionsList() {
                 radius="md"
                 size={30}
                 target="_blank"
-                title="Changelog"
-                aria-label="Changelog"
+                title="更新日志"
+                aria-label="更新日志"
               >
                 <FileTextIcon size={14} />
               </ActionIcon>
@@ -61,8 +61,8 @@ export function VersionsList() {
               radius="md"
               size={30}
               className={classes.githubControl}
-              title="View on GitHub"
-              aria-label="View on GitHub"
+              title="在 GitHub 上查看"
+              aria-label="在 GitHub 上查看"
             >
               <GithubIcon size={12} />
             </ActionIcon>
@@ -73,13 +73,13 @@ export function VersionsList() {
         {patches.length > 0 ? (
           <>
             <Text mt="1.5rem" fz={15}>
-              <b>{getMinorXVersion(minorVersion.version)}</b> patches:
+              <b>{getMinorXVersion(minorVersion.version)}</b> 补丁：
             </Text>
             <ul>{patches}</ul>
           </>
         ) : (
           <Text mt="1rem" fz={15}>
-            Version {minorVersion.version} does not have associated patch releases yet.
+            版本 {minorVersion.version} 暂无相关补丁发布。
           </Text>
         )}
       </div>

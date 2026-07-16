@@ -1,6 +1,6 @@
 import { PropsWithChildren, useEffect } from 'react';
 import { render, renderHook, screen } from '@testing-library/react';
-import { MantineProvider } from '@react-ui/ui';
+import { UIProvider } from '@react-ui/ui';
 import { ContextModalProps } from '../context';
 import { ModalsProvider } from '../ModalsProvider';
 import { useModals } from './use-modals';
@@ -8,9 +8,9 @@ import { useModals } from './use-modals';
 describe('@react-ui/modals/use-modals', () => {
   it('returns context value of ModalsProvider', () => {
     const wrapper = ({ children }: PropsWithChildren<unknown>) => (
-      <MantineProvider>
+      <UIProvider>
         <ModalsProvider>{children}</ModalsProvider>
-      </MantineProvider>
+      </UIProvider>
     );
 
     const hook = renderHook(() => useModals(), { wrapper });
@@ -31,9 +31,9 @@ describe('@react-ui/modals/use-modals', () => {
     );
 
     const wrapper = ({ children }: any) => (
-      <MantineProvider>
+      <UIProvider>
         <ModalsProvider modals={{ contextTest: ContextModal }}>{children}</ModalsProvider>
-      </MantineProvider>
+      </UIProvider>
     );
 
     const testContent = 'context-modal-test-content';
@@ -56,11 +56,11 @@ describe('@react-ui/modals/use-modals', () => {
 
   it('correctly renders a confirm modal with labels from the provider', () => {
     const wrapper = ({ children }: any) => (
-      <MantineProvider>
+      <UIProvider>
         <ModalsProvider labels={{ cancel: 'ProviderCancel', confirm: 'ProviderConfirm' }}>
           {children}
         </ModalsProvider>
-      </MantineProvider>
+      </UIProvider>
     );
 
     const Component = () => {
@@ -80,11 +80,11 @@ describe('@react-ui/modals/use-modals', () => {
 
   it('correctly renders a confirm modal with overwritten provider labels', () => {
     const wrapper = ({ children }: any) => (
-      <MantineProvider>
+      <UIProvider>
         <ModalsProvider labels={{ cancel: 'ProviderCancel', confirm: 'ProviderConfirm' }}>
           {children}
         </ModalsProvider>
-      </MantineProvider>
+      </UIProvider>
     );
 
     const Component = () => {
@@ -107,9 +107,9 @@ describe('@react-ui/modals/use-modals', () => {
 
   it('correctly renders a confirm modal with labels as HTMLElement', () => {
     const wrapper = ({ children }: any) => (
-      <MantineProvider>
+      <UIProvider>
         <ModalsProvider>{children}</ModalsProvider>
-      </MantineProvider>
+      </UIProvider>
     );
 
     const Component = () => {
@@ -136,9 +136,9 @@ describe('@react-ui/modals/use-modals', () => {
 
   it('does not open a duplicate modal when the same modalId is used twice', () => {
     const wrapper = ({ children }: any) => (
-      <MantineProvider>
+      <UIProvider>
         <ModalsProvider>{children}</ModalsProvider>
-      </MantineProvider>
+      </UIProvider>
     );
 
     const Component = () => {
@@ -171,9 +171,9 @@ describe('@react-ui/modals/use-modals', () => {
 
   it('correctly renders a regular modal with children and a title', () => {
     const wrapper = ({ children }: any) => (
-      <MantineProvider>
+      <UIProvider>
         <ModalsProvider>{children}</ModalsProvider>
-      </MantineProvider>
+      </UIProvider>
     );
 
     const Component = () => {

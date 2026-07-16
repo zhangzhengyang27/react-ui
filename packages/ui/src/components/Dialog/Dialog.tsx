@@ -5,8 +5,8 @@ import {
     getDefaultZIndex,
     getRadius,
     getSize,
-    MantineRadius,
-    MantineSize,
+    UIRadius,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -44,11 +44,11 @@ export interface DialogProps
     /** If set, the close button is rendered @default true */
     withCloseButton?: boolean
 
-    /** Key of theme.radius or any valid CSS value to set border-radius @default 'md' */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 to set border-radius @default 'md' */
+    radius?: UIRadius
 
     /** Controls width of the dialog @default 'sm' */
-    size?: MantineSize | (string & {}) | number
+    size?: UISize | (string & {}) | number
 
     /** If set, the dialog is centered vertically @default true */
     centered?: boolean

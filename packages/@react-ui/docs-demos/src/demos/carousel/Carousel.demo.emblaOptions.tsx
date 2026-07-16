@@ -1,5 +1,5 @@
 import { Carousel } from '@react-ui/carousel';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { Slides } from './_slides';
 
 function Wrapper(props: any) {
@@ -30,7 +30,7 @@ function Demo() {
 }
 `;
 
-export const emblaOptions: MantineDemo = {
+export const emblaOptions: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
@@ -43,9 +43,9 @@ export const emblaOptions: MantineDemo = {
       initialValue: 'center',
       libraryValue: '__',
       data: [
-        { label: 'Start', value: 'start' },
-        { label: 'Center', value: 'center' },
-        { label: 'End', value: 'end' },
+        { label: '起点', value: 'start' },
+        { label: '居中', value: 'center' },
+        { label: '终点', value: 'end' },
       ],
     },
     { prop: 'loop', type: 'boolean', initialValue: true, libraryValue: '__' },

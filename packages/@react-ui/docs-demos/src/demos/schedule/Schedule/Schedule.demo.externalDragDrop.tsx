@@ -2,12 +2,12 @@ import dayjs from 'dayjs';
 import { useRef, useState } from 'react';
 import { Box, Grid, Text } from '@react-ui/ui';
 import { Schedule, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const sidebarItems = [
-  { title: 'Quick Sync', duration: 30, color: 'teal' },
-  { title: 'Workshop', duration: 120, color: 'orange' },
-  { title: 'One-on-One', duration: 60, color: 'violet' },
+  { title: '快速同步', duration: 30, color: 'teal' },
+  { title: '研讨会', duration: 120, color: 'orange' },
+  { title: '一对一', duration: 60, color: 'violet' },
 ];
 
 const code = `
@@ -17,9 +17,9 @@ import { Box, Grid, Text } from '@react-ui/ui';
 import { Schedule, ScheduleEventData } from '@react-ui/schedule';
 
 const sidebarItems = [
-  { title: 'Quick Sync', duration: 30, color: 'teal' },
-  { title: 'Workshop', duration: 120, color: 'orange' },
-  { title: 'One-on-One', duration: 60, color: 'violet' },
+  { title: '快速同步', duration: 30, color: 'teal' },
+  { title: '研讨会', duration: 120, color: 'orange' },
+  { title: '一对一', duration: 60, color: 'violet' },
 ];
 
 function Demo() {
@@ -59,7 +59,7 @@ function Demo() {
   return (
     <Grid>
       <Grid.Col span={{ base: 12, sm: 3 }}>
-        <Text fw={500} mb="xs">Drag to schedule</Text>
+        <Text fw={500} mb="xs">拖到日程</Text>
         {sidebarItems.map((item) => (
           <Box
             key={item.title}
@@ -179,7 +179,7 @@ function Demo() {
   );
 }
 
-export const externalDragDrop: MantineDemo = {
+export const externalDragDrop: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

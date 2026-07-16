@@ -1,21 +1,21 @@
 import { TimePicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TimePicker } from '@react-ui/dates';
 
 function Demo() {
   return (
-    <TimePicker label="Enter time" format="12h" amPmLabels={{ am: 'पूर्वाह्न', pm: 'अपराह्न' }} />
+    <TimePicker label="输入时间" format="12h" amPmLabels={{ am: 'पूर्वाह्न', pm: 'अपराह्न' }} />
   );
 }
 `;
 
 function Demo() {
-  return <TimePicker label="Enter time" format="12h" amPmLabels={{ am: 'पूर्वाह्न', pm: 'अपराह्न' }} />;
+  return <TimePicker label="输入时间" format="12h" amPmLabels={{ am: 'पूर्वाह्न', pm: 'अपराह्न' }} />;
 }
 
-export const amPmLabels: MantineDemo = {
+export const amPmLabels: UIDemo = {
   type: 'code',
   component: Demo,
   code,

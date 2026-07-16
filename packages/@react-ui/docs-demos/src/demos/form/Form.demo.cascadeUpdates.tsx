@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Code, Stack, TextInput } from '@react-ui/ui';
 import { createFormContext } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Code, Stack, TextInput } from '@react-ui/ui';
@@ -23,8 +23,8 @@ function Demo() {
     <Provider form={form}>
       <Stack>
         <TextInput
-          label="Name"
-          placeholder="Name"
+          label="姓名"
+          placeholder="姓名"
           key={form.key('person.name')}
           {...form.getInputProps('person.name')}
         />
@@ -65,8 +65,8 @@ function Demo() {
     <Provider form={form}>
       <Stack>
         <TextInput
-          label="Name"
-          placeholder="Name"
+          label="姓名"
+          placeholder="姓名"
           key={form.key('person.name')}
           {...form.getInputProps('person.name')}
         />
@@ -91,7 +91,7 @@ function Watcher() {
   return <Code block>{JSON.stringify({ person, name }, null, 2)}</Code>;
 }
 
-export const cascadeUpdates: MantineDemo = {
+export const cascadeUpdates: UIDemo = {
   type: 'code',
   component: Demo,
   code,

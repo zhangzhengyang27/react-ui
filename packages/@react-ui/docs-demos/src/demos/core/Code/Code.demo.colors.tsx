@@ -1,5 +1,5 @@
 import { Code, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Code, Group } from '@react-ui/ui';
@@ -27,7 +27,7 @@ function Demo() {
   );
 }
 
-export const colors: MantineDemo = {
+export const colors: UIDemo = {
   type: 'code',
   code,
   component: Demo,

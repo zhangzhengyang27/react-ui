@@ -1,7 +1,7 @@
 import { DotsSixIcon, DotsSixVerticalIcon } from '@phosphor-icons/react';
 import { Code, ScrollArea, Text } from '@react-ui/ui';
 import { useSplitter } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { DotsSixVerticalIcon, DotsSixIcon } from '@phosphor-icons/react';
@@ -28,11 +28,11 @@ export function App() {
 
   return (
     <div className="app">
-      <Header title="My App" />
+      <Header title="我的应用" />
       <div className="content">
         <Sidebar />
         <main>
-          <h1>Welcome</h1>
+          <h1>欢迎</h1>
           <p>Count: {count}</p>
           <button onClick={() => setCount(c => c + 1)}>
             Increment
@@ -245,11 +245,11 @@ export function App() {
 
   return (
     <div className="app">
-      <Header title="My App" />
+      <Header title="我的应用" />
       <div className="content">
         <Sidebar />
         <main>
-          <h1>Welcome</h1>
+          <h1>欢迎</h1>
           <p>Count: {count}</p>
           <button onClick={() => setCount(c => c + 1)}>
             Increment
@@ -441,7 +441,7 @@ function Demo() {
   );
 }
 
-export const codeEditor: MantineDemo = {
+export const codeEditor: UIDemo = {
   type: 'code',
   code,
   component: Demo,

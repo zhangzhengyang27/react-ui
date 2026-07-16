@@ -1,41 +1,41 @@
 import dayjs from 'dayjs';
 import { MonthView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const demoEvents: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Team Meeting',
+    title: '团队会议',
     start: `${today} 09:00:00`,
     end: `${today} 10:00:00`,
     color: 'blue',
   },
   {
     id: 2,
-    title: 'Code Review',
+    title: '代码审查',
     start: `${today} 11:00:00`,
     end: `${today} 12:00:00`,
     color: 'green',
   },
   {
     id: 3,
-    title: 'Design Review',
+    title: '设计评审',
     start: `${today} 13:00:00`,
     end: `${today} 14:00:00`,
     color: 'violet',
   },
   {
     id: 4,
-    title: 'Sprint Planning',
+    title: '迭代计划',
     start: `${today} 15:00:00`,
     end: `${today} 16:00:00`,
     color: 'orange',
   },
   {
     id: 5,
-    title: 'Retrospective',
+    title: '回顾会议',
     start: `${today} 16:30:00`,
     end: `${today} 17:30:00`,
     color: 'cyan',
@@ -52,7 +52,7 @@ const events: ScheduleEventData[] = [
 function Demo() {
   return (
     <MonthView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       maxEventsPerDay={4}
     />
@@ -61,10 +61,10 @@ function Demo() {
 `;
 
 function Demo() {
-  return <MonthView date={new Date()} events={demoEvents} maxEventsPerDay={4} />;
+  return <MonthView date={new Date('2024-01-15')} events={demoEvents} maxEventsPerDay={4} />;
 }
 
-export const maxEventsPerDay: MantineDemo = {
+export const maxEventsPerDay: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

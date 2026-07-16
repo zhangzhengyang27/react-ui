@@ -1,7 +1,7 @@
 import { Carousel, CarouselProps } from '@react-ui/carousel';
-import { Button, Paper, Text, Title, useMantineTheme } from '@react-ui/ui';
+import { Button, Paper, Text, Title, useUITheme } from '@react-ui/ui';
 import { useMediaQuery } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Carousel.demo.cards.module.css';
 
 const cssCode = `.card {
@@ -35,44 +35,44 @@ const cssCode = `.card {
 const code = `
 import { Carousel } from '@react-ui/carousel';
 import { useMediaQuery } from '@react-ui/hooks';
-import { Button, Paper, Title, useMantineTheme, Text } from '@react-ui/ui';
+import { Button, Paper, Title, useUITheme, Text } from '@react-ui/ui';
 import classes from './Demo.module.css';
 
 const data = [
   {
     image:
       'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Best forests to visit in North America',
+    title: '北美最佳森林游览地',
     category: 'nature',
   },
   {
     image:
       'https://images.unsplash.com/photo-1559494007-9f5847c49d94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Hawaii beaches review: better than you think',
+    title: '夏威夷海滩评测：比你想象的更好',
     category: 'beach',
   },
   {
     image:
       'https://images.unsplash.com/photo-1608481337062-4093bf3ed404?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Mountains at night: 12 best locations to enjoy the view',
+    title: '夜间山脉：12 个最佳观景点',
     category: 'nature',
   },
   {
     image:
       'https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Aurora in Norway: when to visit for best experience',
+    title: '挪威极光：最佳观赏时间',
     category: 'nature',
   },
   {
     image:
       'https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Best places to visit this winter',
+    title: '今年冬天最佳旅游目的地',
     category: 'tourism',
   },
   {
     image:
       'https://images.unsplash.com/photo-1582721478779-0ae163c05a60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Active volcanos reviews: travel at your own risk',
+    title: '活火山评测：旅行风险自负',
     category: 'nature',
   },
 ];
@@ -107,7 +107,7 @@ function Card({ image, title, category }: CardProps) {
 }
 
 function Demo() {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const mobile = useMediaQuery(\`(max-width: \${theme.breakpoints.sm})\`);
   const slides = data.map((item) => (
     <Carousel.Slide key={item.title}>
@@ -131,37 +131,37 @@ const data = [
   {
     image:
       'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Best forests to visit in North America',
+    title: '北美最佳森林游览地',
     category: 'nature',
   },
   {
     image:
       'https://images.unsplash.com/photo-1559494007-9f5847c49d94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Hawaii beaches review: better than you think',
+    title: '夏威夷海滩评测：比你想象的更好',
     category: 'beach',
   },
   {
     image:
       'https://images.unsplash.com/photo-1608481337062-4093bf3ed404?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Mountains at night: 12 best locations to enjoy the view',
+    title: '夜间山脉：12 个最佳观景点',
     category: 'nature',
   },
   {
     image:
       'https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Aurora in Norway: when to visit for best experience',
+    title: '挪威极光：最佳观赏时间',
     category: 'nature',
   },
   {
     image:
       'https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Best places to visit this winter',
+    title: '今年冬天最佳旅游目的地',
     category: 'tourism',
   },
   {
     image:
       'https://images.unsplash.com/photo-1582721478779-0ae163c05a60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Active volcanos reviews: travel at your own risk',
+    title: '活火山评测：旅行风险自负',
     category: 'nature',
   },
 ];
@@ -191,7 +191,7 @@ export function Card({ image, title, category }: CardProps) {
 }
 
 export function CarouselCardsDemos(props: CarouselProps) {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   const slides = data.map((item) => (
     <Carousel.Slide key={item.title}>
@@ -211,11 +211,11 @@ export function CarouselCardsDemos(props: CarouselProps) {
   );
 }
 
-export const cards: MantineDemo = {
+export const cards: UIDemo = {
   type: 'code',
   component: CarouselCardsDemos,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
   ],
 };

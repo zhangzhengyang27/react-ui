@@ -1,5 +1,5 @@
 import { BarsList } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const data = [
   { name: 'Yellow', value: 1200000, color: 'yellow.4' },
@@ -38,11 +38,11 @@ function Demo() {
   );
 }
 
-export const autoContrast: MantineDemo = {
+export const autoContrast: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
     { fileName: 'data.ts', code: dataCode, language: 'tsx' },
   ],
 };

@@ -1,7 +1,7 @@
 import 'dayjs/locale/ru';
 
 import { MonthPicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import 'dayjs/locale/ru';
@@ -16,7 +16,7 @@ function Demo() {
   return <MonthPicker locale="ru" />;
 }
 
-export const locale: MantineDemo = {
+export const locale: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

@@ -6,7 +6,7 @@ import {
     factory,
     Factory,
     getSpacing,
-    MantineSpacing,
+    UISpacing,
     StylesApiProps,
     useProps,
     useStyles
@@ -25,7 +25,7 @@ export interface MarqueeProps extends BoxProps, StylesApiProps<MarqueeFactory>, 
     orientation?: 'horizontal' | 'vertical'
     repeat?: number
     duration?: number
-    gap?: MantineSpacing
+    gap?: UISpacing
     fadeEdges?: boolean
     fadeEdgeColor?: string
     fadeEdgeSize?: string

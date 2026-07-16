@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Combobox, Input, InputBase, ScrollArea, useCombobox } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -52,7 +52,7 @@ function Demo() {
           rightSectionPointerEvents="none"
           onClick={() => combobox.toggleDropdown()}
         >
-          {value || <Input.Placeholder>Pick a country</Input.Placeholder>}
+          {value || <Input.Placeholder>选择国家</Input.Placeholder>}
         </InputBase>
       </Combobox.Target>
 
@@ -204,7 +204,7 @@ function Demo() {
           rightSectionPointerEvents="none"
           onClick={() => combobox.toggleDropdown()}
         >
-          {value || <Input.Placeholder>Pick a country</Input.Placeholder>}
+          {value || <Input.Placeholder>选择国家</Input.Placeholder>}
         </InputBase>
       </Combobox.Target>
 
@@ -219,7 +219,7 @@ function Demo() {
   );
 }
 
-export const floatingHeight: MantineDemo = {
+export const floatingHeight: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

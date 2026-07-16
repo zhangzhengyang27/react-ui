@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { AtIcon } from '@phosphor-icons/react';
 import { Input } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -12,9 +12,9 @@ function Demo() {
   const [value, setValue] = useState('Clear me');
   return (
     <>
-      <Input placeholder="Your email" leftSection={<AtIcon size={16} />} />
+      <Input placeholder="你的邮箱" leftSection={<AtIcon size={16} />} />
       <Input
-        placeholder="Clearable input"
+        placeholder="可清除输入"
         value={value}
         onChange={(event) => setValue(event.currentTarget.value)}
         rightSectionPointerEvents="all"
@@ -22,7 +22,7 @@ function Demo() {
         rightSection={
           value ? (
             <Input.ClearButton
-              aria-label="Clear input"
+              aria-label="清除输入"
               onClick={() => setValue('')}
             />
           ) : null
@@ -37,22 +37,22 @@ function Demo() {
   const [value, setValue] = useState('Clear me');
   return (
     <>
-      <Input placeholder="Your email" leftSection={<AtIcon size={16} />} />
+      <Input placeholder="你的邮箱" leftSection={<AtIcon size={16} />} />
       <Input
-        placeholder="Clearable input"
+        placeholder="可清除输入"
         value={value}
         onChange={(event) => setValue(event.currentTarget.value)}
         rightSectionPointerEvents="all"
         mt="md"
         rightSection={
-          value ? <Input.ClearButton aria-label="Clear input" onClick={() => setValue('')} /> : null
+          value ? <Input.ClearButton aria-label="清除输入" onClick={() => setValue('')} /> : null
         }
       />
     </>
   );
 }
 
-export const sections: MantineDemo = {
+export const sections: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

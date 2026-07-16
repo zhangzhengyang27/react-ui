@@ -1,5 +1,5 @@
 import { Button, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Group } from '@react-ui/ui';
@@ -7,9 +7,9 @@ import { Button, Group } from '@react-ui/ui';
 function Demo() {
   return (
     <Group>
-      <Button color="lime.4">Default</Button>
+      <Button color="lime.4">默认</Button>
       <Button color="lime.4" autoContrast>
-        Auto contrast
+        自动对比度
       </Button>
     </Group>
   );
@@ -19,15 +19,15 @@ function Demo() {
 function Demo() {
   return (
     <Group>
-      <Button color="lime.4">Default</Button>
+      <Button color="lime.4">默认</Button>
       <Button color="lime.4" autoContrast>
-        Auto contrast
+        自动对比度
       </Button>
     </Group>
   );
 }
 
-export const autoContrast: MantineDemo = {
+export const autoContrast: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -3,8 +3,8 @@ import React from 'react'
 import '../ThemeProvider/global.css'
 
 import { UIThemeOverrides } from '../types/theme.types'
-import { MantineProvider } from '../MantineProvider/MantineProvider'
-import type { MantineColorScheme } from '../MantineProvider/theme.types'
+import { UIProvider } from '../UIProvider/UIProvider'
+import type { UIColorScheme } from '../UIProvider/theme.types'
 
 export interface ProviderProps {
     /**
@@ -14,7 +14,7 @@ export interface ProviderProps {
     /**
      * The color scheme to enforce in this Provider scope.
      */
-    colorScheme?: MantineColorScheme
+    colorScheme?: UIColorScheme
     /**
      * The children to render.
      */
@@ -23,9 +23,9 @@ export interface ProviderProps {
 
 export const Provider: React.FC<ProviderProps> = ({ theme, colorScheme, children }) => {
     return (
-        <MantineProvider theme={theme} colorScheme={colorScheme}>
+        <UIProvider theme={theme} colorScheme={colorScheme}>
             {children}
-        </MantineProvider>
+        </UIProvider>
     )
 }
 

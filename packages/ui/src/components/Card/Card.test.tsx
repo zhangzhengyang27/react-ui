@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Card } from './Card'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Card', () => {
     it('renders with children', () => {
@@ -21,7 +21,7 @@ describe('Card', () => {
     it('applies static classes', () => {
         renderWithProvider(<Card data-testid="card">Card content</Card>)
 
-        expect(screen.getByTestId('card')).toHaveClass('mantine-Card-root')
+        expect(screen.getByTestId('card')).toHaveClass('ui-Card-root')
     })
 
     it('adds data-with-border when withBorder is true', () => {
@@ -41,7 +41,7 @@ describe('Card', () => {
             </Card>
         )
 
-        expect(screen.getByTestId('section')).toHaveClass('mantine-Card-section')
+        expect(screen.getByTestId('section')).toHaveClass('ui-Card-section')
     })
 
     it('adds data-inherit-padding to Card.Section', () => {

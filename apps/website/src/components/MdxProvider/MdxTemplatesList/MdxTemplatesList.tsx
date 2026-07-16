@@ -44,7 +44,7 @@ export function MdxTemplatesList({ type, name, community = false }: MdxTemplates
             variant="default"
             rightSection={<ArrowSquareOutIcon className={classes.externalLinkIcon} />}
           >
-            Use template
+            使用模板
           </Button>
         </Table.Td>
       </Table.Tr>
@@ -63,13 +63,13 @@ export function MdxTemplatesList({ type, name, community = false }: MdxTemplates
             </Table.Td>
             <Table.Td>
               <Text fz="sm" fw={500}>
-                Your template here
+                你的模板
               </Text>
-              <Text fz="xs">Create a template with your stack and share it with the community</Text>
+              <Text fz="xs">使用你的技术栈创建模板并分享给社区</Text>
             </Table.Td>
             <Table.Td w={146}>
               <Button component="a" href="https://github.com/xiaoye/react-ui/discussions" size="xs">
-                Submit template
+                提交模板
               </Button>
             </Table.Td>
           </Table.Tr>

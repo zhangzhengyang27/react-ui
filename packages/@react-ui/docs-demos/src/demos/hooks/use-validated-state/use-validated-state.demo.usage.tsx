@@ -1,6 +1,6 @@
 import { Box, Text, TextInput } from '@react-ui/ui';
 import { useValidatedState } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TextInput, Text, Box } from '@react-ui/ui';
@@ -20,8 +20,8 @@ function Demo() {
         onChange={(event) => setEmail(event.currentTarget.value)}
         withAsterisk
         error={!valid}
-        placeholder="email@example.com"
-        label="Your email"
+        placeholder="yourname@example.com"
+        label="你的邮箱"
       />
 
       <Text size="sm" mt="md">
@@ -56,8 +56,8 @@ function Demo() {
         onChange={(event) => setEmail(event.currentTarget.value)}
         withAsterisk
         error={!valid}
-        placeholder="email@example.com"
-        label="Your email"
+        placeholder="yourname@example.com"
+        label="你的邮箱"
       />
 
       <Text size="sm" mt="md">
@@ -77,7 +77,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

@@ -1,7 +1,7 @@
 import 'dayjs/locale/ru';
 
 import { DatePickerInput, DatesProvider, MonthPickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import 'dayjs/locale/ru';
@@ -10,8 +10,8 @@ import { DatesProvider, MonthPickerInput, DatePickerInput } from '@react-ui/date
 function Demo() {
   return (
     <DatesProvider settings={{ locale: 'ru', firstDayOfWeek: 0, weekendDays: [0] }}>
-      <MonthPickerInput label="Pick month" placeholder="Pick month" />
-      <DatePickerInput mt="md" label="Pick date" placeholder="Pick date" />
+      <MonthPickerInput label="选择月份" placeholder="选择月份" />
+      <DatePickerInput mt="md" label="选择日期" placeholder="选择日期" />
     </DatesProvider>
   );
 }
@@ -20,13 +20,13 @@ function Demo() {
 function Demo() {
   return (
     <DatesProvider settings={{ locale: 'ru', firstDayOfWeek: 0, weekendDays: [0] }}>
-      <MonthPickerInput label="Pick month" placeholder="Pick month" />
-      <DatePickerInput mt="md" label="Pick date" placeholder="Pick date" />
+      <MonthPickerInput label="选择月份" placeholder="选择月份" />
+      <DatePickerInput mt="md" label="选择日期" placeholder="选择日期" />
     </DatesProvider>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

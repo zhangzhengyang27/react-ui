@@ -1,15 +1,15 @@
 import {
   Button,
   DEFAULT_THEME,
-  MantineThemeProvider,
+  UIThemeProvider,
   parseThemeColor,
   Stack,
-  useMantineTheme,
+  useUITheme,
 } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = (props: Record<string, any>) => `
-import { Button, createTheme, MantineProvider, Stack } from '@react-ui/ui';
+import { Button, createTheme, UIProvider, Stack } from '@react-ui/ui';
 
 const theme = createTheme({
   autoContrast: true,
@@ -33,15 +33,15 @@ function Wrapper(props: any) {
     ));
 
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       <Stack>{buttons}</Stack>
-    </MantineProvider>
+    </UIProvider>
   );
 }
 `;
 
 function Wrapper(props: any) {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
 
   const buttons = Array(10)
     .fill(0)
@@ -59,7 +59,7 @@ function Wrapper(props: any) {
     ));
 
   return (
-    <MantineThemeProvider
+    <UIThemeProvider
       inherit
       theme={{
         autoContrast: true,
@@ -67,11 +67,11 @@ function Wrapper(props: any) {
       }}
     >
       <Stack>{buttons}</Stack>
-    </MantineThemeProvider>
+    </UIThemeProvider>
   );
 }
 
-export const luminanceThreshold: MantineDemo = {
+export const luminanceThreshold: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

@@ -8,11 +8,11 @@
   flex-direction: column;
   height: 100%;
 
-  @mixin where-light {
+  [data-ui-color-scheme='light'] & {
     --mobile-month-view-border-color: var(--ui-color-gray-3);
   }
 
-  @mixin where-dark {
+  [data-ui-color-scheme='dark'] & {
     --mobile-month-view-border-color: var(--ui-color-dark-4);
   }
 
@@ -100,12 +100,12 @@
   user-select: none;
   color: var(--day-dimmed-color);
 
-  @mixin hover {
-    @mixin where-light {
+  &:hover {
+    [data-ui-color-scheme='light'] & {
       background-color: var(--ui-color-gray-0);
     }
 
-    @mixin where-dark {
+    [data-ui-color-scheme='dark'] & {
       background-color: var(--ui-color-dark-6);
     }
   }
@@ -161,24 +161,24 @@
     color: var(--day-dimmed-color);
   }
 
-  @mixin hover {
-    @mixin where-light {
+  &:hover {
+    [data-ui-color-scheme='light'] & {
       background-color: var(--ui-color-gray-0);
     }
 
-    @mixin where-dark {
+    [data-ui-color-scheme='dark'] & {
       background-color: var(--ui-color-dark-6);
     }
   }
 
   &:where([data-today]:not([data-selected])) {
-    @mixin where-light {
+    [data-ui-color-scheme='light'] & {
       &::before {
         background-color: var(--ui-color-gray-2);
       }
     }
 
-    @mixin where-dark {
+    [data-ui-color-scheme='dark'] & {
       &::before {
         background-color: var(--ui-color-dark-5);
       }
@@ -192,7 +192,7 @@
       background-color: var(--ui-primary-color-filled);
     }
 
-    @mixin hover {
+    &:hover {
       &::before {
         background-color: var(--ui-primary-color-filled-hover);
       }
@@ -245,12 +245,12 @@
     border-bottom: 1px solid var(--mobile-month-view-border-color);
   }
 
-  @mixin hover {
-    @mixin where-light {
+  &:hover {
+    [data-ui-color-scheme='light'] & {
       background-color: var(--ui-color-gray-0);
     }
 
-    @mixin where-dark {
+    [data-ui-color-scheme='dark'] & {
       background-color: var(--ui-color-dark-6);
     }
   }

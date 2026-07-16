@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Stepper, StepperProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -83,7 +83,7 @@ function Demo() {
   );
 }
 
-export const stylesApi2: MantineDemo = {
+export const stylesApi2: UIDemo = {
   type: 'code',
   component: Demo,
   code,

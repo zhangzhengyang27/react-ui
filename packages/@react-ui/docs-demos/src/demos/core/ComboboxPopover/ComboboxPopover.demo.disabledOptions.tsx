@@ -1,5 +1,5 @@
 import { Button, ComboboxPopover } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, ComboboxPopover } from '@react-ui/ui';
@@ -15,7 +15,7 @@ function Demo() {
       ]}
     >
       <ComboboxPopover.Target>
-        <Button variant="default" miw={200}>Select framework</Button>
+        <Button variant="default" miw={200}>选择框架</Button>
       </ComboboxPopover.Target>
     </ComboboxPopover>
   );
@@ -41,7 +41,7 @@ function Demo() {
   );
 }
 
-export const disabledOptions: MantineDemo = {
+export const disabledOptions: UIDemo = {
   type: 'code',
   component: Demo,
   code,

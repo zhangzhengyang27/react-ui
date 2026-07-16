@@ -2,7 +2,7 @@ import 'dayjs/locale/ru';
 
 import dayjs from 'dayjs';
 import { DatesProvider } from '@react-ui/dates';
-import { render, screen, userEvent } from '@mantine-tests/core';
+import { render, screen, userEvent } from '@react-ui/tests';
 import { ResourcesMonthView, ResourcesMonthViewProps } from './ResourcesMonthView';
 
 const resources = [
@@ -16,7 +16,7 @@ const defaultProps: ResourcesMonthViewProps = {
 };
 
 function eventRoot(node: HTMLElement): HTMLElement {
-  return node.closest('.mantine-ScheduleEvent-event') as HTMLElement;
+  return node.closest('.ui-ScheduleEvent-event') as HTMLElement;
 }
 
 function spanWidthPercent(node: HTMLElement): number {
@@ -61,7 +61,7 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
 
   it('renders with mode="static"', () => {
     const { container } = render(<ResourcesMonthView {...defaultProps} mode="static" />);
-    const cells = container.querySelectorAll('.mantine-ResourcesMonthView-resourcesMonthViewCell');
+    const cells = container.querySelectorAll('.ui-ResourcesMonthView-resourcesMonthViewCell');
     cells.forEach((cell) => {
       expect(cell).toHaveAttribute('tabIndex', '-1');
     });
@@ -77,7 +77,7 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
   it('keyboard navigation between cells (arrow keys)', async () => {
     const { container } = render(<ResourcesMonthView {...defaultProps} />);
     const cells = container.querySelectorAll(
-      '.mantine-ResourcesMonthView-resourcesMonthViewCell'
+      '.ui-ResourcesMonthView-resourcesMonthViewCell'
     ) as NodeListOf<HTMLButtonElement>;
 
     cells[0].focus();
@@ -93,7 +93,7 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
   it('first cell has tabIndex 0', () => {
     const { container } = render(<ResourcesMonthView {...defaultProps} />);
     const cells = container.querySelectorAll(
-      '.mantine-ResourcesMonthView-resourcesMonthViewCell'
+      '.ui-ResourcesMonthView-resourcesMonthViewCell'
     ) as NodeListOf<HTMLButtonElement>;
     expect(cells[0]).toHaveAttribute('tabIndex', '0');
     expect(cells[1]).toHaveAttribute('tabIndex', '-1');
@@ -163,7 +163,7 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
 
   it('withHeader={false} removes header', () => {
     const { container } = render(<ResourcesMonthView {...defaultProps} withHeader={false} />);
-    expect(container.querySelector('.mantine-ResourcesMonthView-header')).not.toBeInTheDocument();
+    expect(container.querySelector('.ui-ResourcesMonthView-header')).not.toBeInTheDocument();
   });
 
   it('monthYearSelectProps forwarded', () => {
@@ -179,7 +179,7 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
   it('locale prop affects weekday labels and header', () => {
     const { container } = render(<ResourcesMonthView {...defaultProps} locale="ru" />);
     const dayLabels = container.querySelectorAll(
-      '.mantine-ResourcesMonthView-resourcesMonthViewDayLabelWeekday'
+      '.ui-ResourcesMonthView-resourcesMonthViewDayLabelWeekday'
     );
     const texts = Array.from(dayLabels).map((el) => el.textContent);
     expect(texts.some((t) => /[а-яА-Я]/.test(t!))).toBe(true);
@@ -192,7 +192,7 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
       </DatesProvider>
     );
     const dayLabels = container.querySelectorAll(
-      '.mantine-ResourcesMonthView-resourcesMonthViewDayLabelWeekday'
+      '.ui-ResourcesMonthView-resourcesMonthViewDayLabelWeekday'
     );
     const texts = Array.from(dayLabels).map((el) => el.textContent);
     expect(texts.some((t) => /[а-яА-Я]/.test(t!))).toBe(true);
@@ -201,7 +201,7 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
   it('weekdayFormat with format string', () => {
     const { container } = render(<ResourcesMonthView {...defaultProps} weekdayFormat="dddd" />);
     const dayLabels = container.querySelectorAll(
-      '.mantine-ResourcesMonthView-resourcesMonthViewDayLabelWeekday'
+      '.ui-ResourcesMonthView-resourcesMonthViewDayLabelWeekday'
     );
     const texts = Array.from(dayLabels).map((el) => el.textContent);
     expect(texts).toContain('Wednesday');
@@ -216,7 +216,7 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
       />
     );
     const dayLabels = container.querySelectorAll(
-      '.mantine-ResourcesMonthView-resourcesMonthViewDayLabelWeekday'
+      '.ui-ResourcesMonthView-resourcesMonthViewDayLabelWeekday'
     );
     const texts = Array.from(dayLabels).map((el) => el.textContent);
     expect(texts[0]).toBe(dayjs('2025-01-01').format('dd').toUpperCase());
@@ -225,18 +225,18 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
   it('weekendDays marks configured days', () => {
     const { container } = render(<ResourcesMonthView {...defaultProps} weekendDays={[5, 6]} />);
     const dayLabels = container.querySelectorAll(
-      '.mantine-ResourcesMonthView-resourcesMonthViewDayLabel'
+      '.ui-ResourcesMonthView-resourcesMonthViewDayLabel'
     );
     const jan3 = Array.from(dayLabels).find((el) => {
-      const num = el.querySelector('.mantine-ResourcesMonthView-resourcesMonthViewDayLabelNumber');
+      const num = el.querySelector('.ui-ResourcesMonthView-resourcesMonthViewDayLabelNumber');
       return num?.textContent === '3';
     });
     const jan4 = Array.from(dayLabels).find((el) => {
-      const num = el.querySelector('.mantine-ResourcesMonthView-resourcesMonthViewDayLabelNumber');
+      const num = el.querySelector('.ui-ResourcesMonthView-resourcesMonthViewDayLabelNumber');
       return num?.textContent === '4';
     });
     const jan6 = Array.from(dayLabels).find((el) => {
-      const num = el.querySelector('.mantine-ResourcesMonthView-resourcesMonthViewDayLabelNumber');
+      const num = el.querySelector('.ui-ResourcesMonthView-resourcesMonthViewDayLabelNumber');
       return num?.textContent === '6';
     });
     expect(jan3).toHaveAttribute('data-weekend');
@@ -247,12 +247,12 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
   it('withWeekendDays={false} hides weekend columns', () => {
     const { container } = render(<ResourcesMonthView {...defaultProps} withWeekendDays={false} />);
     const dayLabels = container.querySelectorAll(
-      '.mantine-ResourcesMonthView-resourcesMonthViewDayLabel'
+      '.ui-ResourcesMonthView-resourcesMonthViewDayLabel'
     );
     expect(dayLabels.length).toBe(23);
 
     const dayNumbers = Array.from(dayLabels).map((el) => {
-      const num = el.querySelector('.mantine-ResourcesMonthView-resourcesMonthViewDayLabelNumber');
+      const num = el.querySelector('.ui-ResourcesMonthView-resourcesMonthViewDayLabelNumber');
       return num?.textContent;
     });
     expect(dayNumbers).not.toContain('4');
@@ -265,11 +265,11 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
     jest.useFakeTimers().setSystemTime(new Date('2025-01-15'));
     const { container } = render(<ResourcesMonthView {...defaultProps} highlightToday />);
     const todayLabel = container.querySelector(
-      '.mantine-ResourcesMonthView-resourcesMonthViewDayLabel[data-today]'
+      '.ui-ResourcesMonthView-resourcesMonthViewDayLabel[data-today]'
     );
     expect(todayLabel).toBeInTheDocument();
     const num = todayLabel!.querySelector(
-      '.mantine-ResourcesMonthView-resourcesMonthViewDayLabelNumber'
+      '.ui-ResourcesMonthView-resourcesMonthViewDayLabelNumber'
     );
     expect(num!.textContent).toBe('15');
     jest.useRealTimers();
@@ -364,7 +364,7 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
   it('ArrowDown moves to next resource row', async () => {
     const { container } = render(<ResourcesMonthView {...defaultProps} />);
     const cells = container.querySelectorAll(
-      '.mantine-ResourcesMonthView-resourcesMonthViewCell'
+      '.ui-ResourcesMonthView-resourcesMonthViewCell'
     ) as NodeListOf<HTMLButtonElement>;
 
     cells[0].focus();
@@ -377,7 +377,7 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
   it('ArrowUp moves to previous resource row', async () => {
     const { container } = render(<ResourcesMonthView {...defaultProps} />);
     const cells = container.querySelectorAll(
-      '.mantine-ResourcesMonthView-resourcesMonthViewCell'
+      '.ui-ResourcesMonthView-resourcesMonthViewCell'
     ) as NodeListOf<HTMLButtonElement>;
 
     cells[31].focus();
@@ -390,7 +390,7 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
   it('keyboard nav stays on edge at boundaries', async () => {
     const { container } = render(<ResourcesMonthView {...defaultProps} />);
     const cells = container.querySelectorAll(
-      '.mantine-ResourcesMonthView-resourcesMonthViewCell'
+      '.ui-ResourcesMonthView-resourcesMonthViewCell'
     ) as NodeListOf<HTMLButtonElement>;
 
     cells[0].focus();
@@ -436,7 +436,7 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
     expect(eventSpy).not.toHaveBeenCalled();
 
     const cells = container.querySelectorAll(
-      '.mantine-ResourcesMonthView-resourcesMonthViewCell'
+      '.ui-ResourcesMonthView-resourcesMonthViewCell'
     ) as NodeListOf<HTMLButtonElement>;
     cells.forEach((cell) => {
       expect(cell).toHaveAttribute('tabIndex', '-1');
@@ -934,7 +934,7 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
     const { container } = render(
       <ResourcesMonthView {...defaultProps} events={events} withEventsDragAndDrop />
     );
-    const eventButton = container.querySelector('.mantine-ScheduleEvent-event[draggable="true"]');
+    const eventButton = container.querySelector('.ui-ScheduleEvent-event[draggable="true"]');
     expect(eventButton).toBeInTheDocument();
   });
 
@@ -949,14 +949,14 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
     expect(screen.getByText('Floor 1')).toBeInTheDocument();
     expect(screen.getByText('Floor 2')).toBeInTheDocument();
     expect(
-      container.querySelector('.mantine-ResourcesMonthView-resourcesMonthViewGroupColumn')
+      container.querySelector('.ui-ResourcesMonthView-resourcesMonthViewGroupColumn')
     ).toBeInTheDocument();
   });
 
   it('does not render group column when groups prop is not provided', () => {
     const { container } = render(<ResourcesMonthView {...defaultProps} />);
     expect(
-      container.querySelector('.mantine-ResourcesMonthView-resourcesMonthViewGroupColumn')
+      container.querySelector('.ui-ResourcesMonthView-resourcesMonthViewGroupColumn')
     ).not.toBeInTheDocument();
   });
 
@@ -989,7 +989,7 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
     expect(screen.getByText('Floor 1')).toBeInTheDocument();
     expect(screen.getByText('Room C')).toBeInTheDocument();
     const emptyGroupCells = container.querySelectorAll(
-      '.mantine-ResourcesMonthView-resourcesMonthViewGroupColumnEmpty'
+      '.ui-ResourcesMonthView-resourcesMonthViewGroupColumnEmpty'
     );
     expect(emptyGroupCells.length).toBe(1);
   });
@@ -1024,7 +1024,7 @@ describe('@react-ui/schedule/ResourcesMonthView', () => {
         canDragEvent={(event) => event.id === 'ok'}
       />
     );
-    const allEvents = container.querySelectorAll('.mantine-ScheduleEvent-event');
+    const allEvents = container.querySelectorAll('.ui-ScheduleEvent-event');
     const draggable = Array.from(allEvents).filter((el) => el.getAttribute('draggable') === 'true');
     const notDraggable = Array.from(allEvents).filter(
       (el) => el.getAttribute('draggable') !== 'true'

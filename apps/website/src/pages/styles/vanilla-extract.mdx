@@ -20,7 +20,7 @@ export default Layout(MDX_DATA.VanillaExtract);
 
 - Vanilla extract 的样式是类型安全的
 - 你可以在 Vanilla extract 样式中使用任意 JavaScript/TypeScript 代码，包括 [颜色函数](/styles/color-functions)
-- 使用 Vanilla extract 时无法使用 [postcss-preset-mantine](/styles/postcss-preset) 的某些功能，例如 `light-dark` 函数和 `hover` mixin。
+- 使用 Vanilla extract 时无法使用 [postcss-preset-ui](/styles/postcss-preset) 的某些功能，例如 `light-dark` 函数和 `hover` mixin。
   因此，你不能直接复制粘贴 ReactUI 文档中的所有 demo 并在 Vanilla extract 中使用。
 - Vanilla extract 需要额外的配置和设置，可能不适用于你的构建工具/框架。
   大多数流行工具（如 [Next.js](https://nextjs.org/) 和 [Vite](https://vitejs.dev/)）都有 Vanilla extract 插件，
@@ -32,9 +32,9 @@ export default Layout(MDX_DATA.VanillaExtract);
 ## 安装
 
 按照 [Vanilla extract 安装说明](https://vanilla-extract.style/documentation/getting-started) 安装 Vanilla extract。
-然后安装 `@mantine/vanilla-extract` 包；它导出了 `themeToVars` 函数，用于将 ReactUI 主题转换为 CSS 变量：
+然后安装 `@ui/vanilla-extract` 包；它导出了 `themeToVars` 函数，用于将 ReactUI 主题转换为 CSS 变量：
 
-<InstallScript packages="@mantine/vanilla-extract" />
+<InstallScript packages="@ui/vanilla-extract" />
 
 ## 模板
 
@@ -53,14 +53,14 @@ export default Layout(MDX_DATA.VanillaExtract);
 Vanilla extract 提供了 [createTheme](https://vanilla-extract.style/documentation/theming/)
 函数，可将给定的主题对象转换为 CSS 变量并赋值给 `:root` 或其他选择器。
 你不应使用 Vanilla extract 的 `createTheme` 来生成 ReactUI 主题 token——所有 ReactUI [theme](/theming/theme-object)
-属性都已经作为 CSS 变量暴露出来了。相反，应使用 `@mantine/vanilla-extract` 包中的 `themeToVars` 函数，
+属性都已经作为 CSS 变量暴露出来了。相反，应使用 `@ui/vanilla-extract` 包中的 `themeToVars` 函数，
 从 ReactUI 主题创建包含 CSS 变量的对象：
 
 ```tsx
 // theme.ts
 import { createTheme } from '@react-ui/ui';
 
-// Do not forget to pass theme to MantineProvider
+// Do not forget to pass theme to UIProvider
 export const theme = createTheme({
   fontFamily: 'serif',
   primaryColor: 'cyan',
@@ -70,7 +70,7 @@ export const theme = createTheme({
 ```tsx
 // theme.css.ts
 import { theme } from './theme';
-import { themeToVars } from '@mantine/vanilla-extract';
+import { themeToVars } from '@ui/vanilla-extract';
 
 // CSS variables object, can be access in *.css.ts files
 export const vars = themeToVars(theme);

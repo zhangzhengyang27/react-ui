@@ -6,7 +6,7 @@ import {
     extractStyleProps,
     Factory,
     factory,
-    MantineColor,
+    UIColor,
     StylesApiProps,
     useProps,
     useResolvedStylesApi,
@@ -100,7 +100,7 @@ export interface TreeSelectProps<Mode extends TreeSelectMode = 'single'>
     hiddenInputProps?: Omit<React.ComponentProps<'input'>, 'value'>
     hiddenInputValuesDivider?: string
     scrollAreaProps?: ScrollAreaProps
-    chevronColor?: MantineColor
+    chevronColor?: UIColor
     maxDropdownHeight?: number | string
     dropdownOpened?: boolean
     defaultDropdownOpened?: boolean
@@ -273,7 +273,7 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
             return getTreeExpandedState(data, defaultExpandedValues)
         }
         return getTreeExpandedState(data, [])
-    }, [])
+    }, [data, defaultExpandAll, defaultExpandedValues])
 
     const expandedToRecord = useCallback(
         (values: string[] | undefined): TreeExpandedState | undefined => {
@@ -313,7 +313,7 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
         }
         const node = findTreeNode(defaultValue as string, data)
         return node ? (typeof node.label === 'string' ? node.label : '') : ''
-    }, [])
+    }, [mode, defaultValue, data])
 
     const [_searchValue, setSearchValue] = useUncontrolled({
         value: searchValue,
@@ -515,7 +515,7 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
             setSearchValue(restoreSearchRef.current)
             restoreSearchRef.current = null
         }
-    })
+    }, [_opened, _searchValue])
 
     const selectedValues = useMemo(() => {
         if (isMulti) {
@@ -575,7 +575,7 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
             }
         }
         prevDropdownOpenedRef.current = _opened
-    })
+    }, [_opened])
 
     const clearButton = (
         <InputClearButton

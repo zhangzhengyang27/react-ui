@@ -15,10 +15,10 @@ export const inputOnlyControls: ConfiguratorControlOptions[] = [
 ];
 
 export const inputWrapperOnlyControls: ConfiguratorControlOptions[] = [
-  { type: 'string', prop: 'label', initialValue: 'Input label', libraryValue: null },
+  { type: 'string', prop: 'label', initialValue: '输入标签', libraryValue: null },
   { type: 'boolean', prop: 'withAsterisk', initialValue: false, libraryValue: false },
-  { type: 'string', prop: 'description', initialValue: 'Input description', libraryValue: null },
-  { type: 'string', prop: 'error', initialValue: 'Input error', libraryValue: null },
+  { type: 'string', prop: 'description', initialValue: '输入描述', libraryValue: null },
+  { type: 'string', prop: 'error', initialValue: '输入错误', libraryValue: null },
   { type: 'size', prop: 'size', initialValue: 'sm', libraryValue: 'sm' },
 ];
 
@@ -32,8 +32,8 @@ export const inputControls: ConfiguratorControlOptions[] = [
   },
   { type: 'size', prop: 'size', initialValue: 'sm', libraryValue: 'sm' },
   { type: 'size', prop: 'radius', initialValue: 'md', libraryValue: 'md' },
-  { type: 'string', prop: 'label', initialValue: 'Input label', libraryValue: '' },
+  { type: 'string', prop: 'label', initialValue: '输入标签', libraryValue: '' },
   { type: 'boolean', prop: 'withAsterisk', initialValue: false, libraryValue: false },
-  { type: 'string', prop: 'description', initialValue: 'Input description', libraryValue: '' },
+  { type: 'string', prop: 'description', initialValue: '输入描述', libraryValue: '' },
   { type: 'string', prop: 'error', initialValue: '', libraryValue: '' },
 ];

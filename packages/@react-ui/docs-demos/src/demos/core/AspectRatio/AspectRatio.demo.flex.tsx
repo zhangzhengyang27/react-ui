@@ -1,5 +1,5 @@
 import { AspectRatio, Image } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { AspectRatio, Image } from '@react-ui/ui';
@@ -9,7 +9,7 @@ function Demo() {
     <div style={{ display: 'flex' }}>
       <AspectRatio ratio={1} flex="0 0 100px">
         <Image
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-6.png"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-6.png"
           alt="Avatar"
         />
       </AspectRatio>
@@ -23,7 +23,7 @@ function Demo() {
     <div style={{ display: 'flex' }}>
       <AspectRatio ratio={1} flex="0 0 100px">
         <Image
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-6.png"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-6.png"
           alt="Avatar"
         />
       </AspectRatio>
@@ -31,7 +31,7 @@ function Demo() {
   );
 }
 
-export const flex: MantineDemo = {
+export const flex: UIDemo = {
   type: 'code',
   component: Demo,
   code,

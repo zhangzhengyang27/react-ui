@@ -9,7 +9,7 @@ import {
   factory,
   Factory,
   getRadius,
-  MantineRadius,
+  UIRadius,
   StylesApiProps,
   useProps,
   useResolvedStylesApi,
@@ -66,7 +66,7 @@ export interface YearViewProps
   events?: ScheduleEventData[];
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius` @default theme.defaultRadius */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 
   /** If set, highlights the current day @default true */
   highlightToday?: boolean;

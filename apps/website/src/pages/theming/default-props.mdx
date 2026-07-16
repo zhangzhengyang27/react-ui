@@ -10,15 +10,15 @@ export default Layout(MDX_DATA.DefaultProps);
 
 <Demo data={ThemingDemos.defaultProps} />
 
-## 使用 MantineThemeProvider 设置默认 props
+## 使用 UIThemeProvider 设置默认 props
 
-你还可以使用 `MantineThemeProvider` 为应用的某个部分定义默认 props：
+你还可以使用 `UIThemeProvider` 为应用的某个部分定义默认 props：
 
 ```tsx
 import {
   Button,
   createTheme,
-  MantineThemeProvider,
+  UIThemeProvider,
 } from '@react-ui/ui';
 
 const theme = createTheme({
@@ -35,9 +35,9 @@ const theme = createTheme({
 function Demo() {
   return (
     <>
-      <MantineThemeProvider theme={theme}>
+      <UIThemeProvider theme={theme}>
         {/* 应用中使用该主题的部分 */}
-      </MantineThemeProvider>
+      </UIThemeProvider>
 
       {/* 不使用该主题的其他部分 */}
     </>
@@ -52,7 +52,7 @@ function Demo() {
 ```tsx
 import {
   createTheme,
-  MantineProvider,
+  UIProvider,
   Menu,
   Tabs,
 } from '@react-ui/ui';
@@ -73,9 +73,9 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       {/* Your app here */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```
@@ -118,7 +118,7 @@ function Demo() {
       </LinkButton>
 
       {/* 组件 props 会覆盖 `withProps` 中定义的默认 props */}
-      <PhoneInput placeholder="Personal phone" />
+      <PhoneInput placeholder="个人电话" />
     </>
   );
 }

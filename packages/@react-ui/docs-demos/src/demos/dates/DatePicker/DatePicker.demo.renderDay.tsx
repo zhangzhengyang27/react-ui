@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { Indicator } from '@react-ui/ui';
 import { DatePicker, DatePickerProps } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import dayjs from 'dayjs';
@@ -35,7 +35,7 @@ function Demo() {
   return <DatePicker renderDay={dayRenderer} />;
 }
 
-export const renderDay: MantineDemo = {
+export const renderDay: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

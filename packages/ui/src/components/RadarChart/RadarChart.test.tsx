@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { RadarChart } from './RadarChart'
 
 const DATA = [
@@ -12,9 +12,9 @@ const DATA = [
 describe('RadarChart', () => {
     it('renders chart root', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <RadarChart data={DATA} dataKey="subject" series={[{ name: 'x' }, { name: 'y' }]} data-testid="chart" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByTestId('chart')).toBeInTheDocument()
@@ -22,9 +22,9 @@ describe('RadarChart', () => {
 
     it('applies custom height', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <RadarChart data={DATA} dataKey="subject" series={[{ name: 'x' }]} height={400} data-testid="chart" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByTestId('chart').getAttribute('style')).toContain('--radar-chart-height')

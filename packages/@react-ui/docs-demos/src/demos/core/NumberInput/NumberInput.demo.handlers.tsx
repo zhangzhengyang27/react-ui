@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Button, Group, NumberInput, NumberInputHandlers } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useRef } from 'react';
@@ -11,8 +11,8 @@ function Demo() {
   return (
     <>
       <NumberInput
-        label="Click buttons to change value"
-        placeholder="Click the buttons"
+        label="点击按钮修改值"
+        placeholder="点击按钮"
         handlersRef={handlersRef}
         step={2}
         min={10}
@@ -39,8 +39,8 @@ function Demo() {
   return (
     <>
       <NumberInput
-        label="Click buttons to change value"
-        placeholder="Click the buttons"
+        label="点击按钮修改值"
+        placeholder="点击按钮"
         handlersRef={handlersRef}
         step={2}
         min={10}
@@ -61,7 +61,7 @@ function Demo() {
   );
 }
 
-export const handlers: MantineDemo = {
+export const handlers: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -4,19 +4,19 @@ import {
   darken,
   defaultVariantColorsResolver,
   Group,
-  MantineThemeProvider,
+  UIThemeProvider,
   parseThemeColor,
   rgba,
   VariantColorsResolver,
 } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ImageIcon, FingerprintIcon, WarningIcon } from '@phosphor-icons/react';
 import {
   ActionIcon,
   Group,
-  MantineProvider,
+  UIProvider,
   defaultVariantColorsResolver,
   VariantColorsResolver,
   parseThemeColor,
@@ -65,21 +65,21 @@ const variantColorResolver: VariantColorsResolver = (input) => {
 
 function Demo() {
   return (
-    <MantineProvider theme={{ variantColorResolver }}>
+    <UIProvider theme={{ variantColorResolver }}>
       <Group>
-        <ActionIcon color="lime.4" variant="filled" size="lg" aria-label="Photo">
+        <ActionIcon color="lime.4" variant="filled" size="lg" aria-label="照片">
           <ImageIcon size={20} />
         </ActionIcon>
 
-        <ActionIcon color="orange" variant="light" size="lg" aria-label="FingerprintIcon">
+        <ActionIcon color="orange" variant="light" size="lg" aria-label="指纹图标">
           <FingerprintIcon size={20} />
         </ActionIcon>
 
-        <ActionIcon variant="danger" size="lg" aria-label="Error 404">
+        <ActionIcon variant="danger" size="lg" aria-label="错误 404">
           <WarningIcon size={20} />
         </ActionIcon>
       </Group>
-    </MantineProvider>
+    </UIProvider>
   );
 }
 `;
@@ -125,25 +125,25 @@ const variantColorResolver: VariantColorsResolver = (input) => {
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={{ variantColorResolver }}>
+    <UIThemeProvider theme={{ variantColorResolver }}>
       <Group>
-        <ActionIcon color="lime.4" variant="filled" size="lg" aria-label="Photo">
+        <ActionIcon color="lime.4" variant="filled" size="lg" aria-label="照片">
           <ImageIcon size={20} />
         </ActionIcon>
 
-        <ActionIcon color="orange" variant="light" size="lg" aria-label="FingerprintIcon">
+        <ActionIcon color="orange" variant="light" size="lg" aria-label="指纹图标">
           <FingerprintIcon size={20} />
         </ActionIcon>
 
-        <ActionIcon variant="danger" size="lg" aria-label="Error 404">
+        <ActionIcon variant="danger" size="lg" aria-label="错误 404">
           <WarningIcon size={20} />
         </ActionIcon>
       </Group>
-    </MantineThemeProvider>
+    </UIThemeProvider>
   );
 }
 
-export const variantColorsResolver: MantineDemo = {
+export const variantColorsResolver: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

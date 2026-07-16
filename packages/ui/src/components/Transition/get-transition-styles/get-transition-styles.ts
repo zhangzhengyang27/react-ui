@@ -1,4 +1,4 @@
-import { MantineTransition, transitions } from '../transitions'
+import { UITransition, transitions } from '../transitions'
 
 const transitionStatuses = {
     entering: 'in',
@@ -10,7 +10,7 @@ const transitionStatuses = {
 } as const
 
 /**
- * 根据过渡状态计算内联样式。对齐 mantine getTransitionStyles。
+ * 根据过渡状态计算内联样式。对齐 ui getTransitionStyles。
  * 引擎无关（纯内联样式，不依赖 emotion/styled-components）。
  */
 export function getTransitionStyles({
@@ -19,7 +19,7 @@ export function getTransitionStyles({
     duration,
     timingFunction
 }: {
-    transition: MantineTransition
+    transition: UITransition
     state: keyof typeof transitionStatuses
     duration: number
     timingFunction: React.CSSProperties['transitionTimingFunction']

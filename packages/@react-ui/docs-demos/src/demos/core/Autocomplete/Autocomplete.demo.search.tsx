@@ -1,5 +1,5 @@
 import { Autocomplete, ComboboxItem, OptionsFilter } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Autocomplete, ComboboxItem, OptionsFilter } from '@react-ui/ui';
@@ -15,8 +15,8 @@ const optionsFilter: OptionsFilter = ({ options, search }) => {
 function Demo() {
   return (
     <Autocomplete
-      label="Your country"
-      placeholder="Pick value or enter anything"
+      label="你的国家"
+      placeholder="选择值或输入任意内容"
       data={['Great Britain', 'Russian Federation', 'United States']}
       filter={optionsFilter}
     />
@@ -35,15 +35,15 @@ const optionsFilter: OptionsFilter = ({ options, search }) => {
 function Demo() {
   return (
     <Autocomplete
-      label="Your country"
-      placeholder="Pick value or enter anything"
+      label="你的国家"
+      placeholder="选择值或输入任意内容"
       data={['Great Britain', 'Russian Federation', 'United States']}
       filter={optionsFilter}
     />
   );
 }
 
-export const search: MantineDemo = {
+export const search: UIDemo = {
   type: 'code',
   component: Demo,
   code,

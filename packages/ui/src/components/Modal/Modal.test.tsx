@@ -1,16 +1,16 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Modal } from './Modal'
 
 describe('Modal', () => {
     it('renders when opened is true', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Modal opened onClose={vi.fn()} title="Modal title">
                     Modal content
                 </Modal>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('Modal title')).toBeInTheDocument()
@@ -19,11 +19,11 @@ describe('Modal', () => {
 
     it('does not render content when opened is false', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Modal opened={false} onClose={vi.fn()} title="Modal title">
                     Modal content
                 </Modal>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.queryByText('Modal title')).not.toBeInTheDocument()
@@ -33,11 +33,11 @@ describe('Modal', () => {
     it('calls onClose when close button is clicked', () => {
         const onClose = vi.fn()
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Modal opened onClose={onClose} title="Modal title">
                     Modal content
                 </Modal>
-            </MantineProvider>
+            </UIProvider>
         )
 
         screen.getAllByRole('button')[0].click()

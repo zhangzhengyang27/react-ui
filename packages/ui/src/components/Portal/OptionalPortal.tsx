@@ -1,4 +1,4 @@
-import { factory, Factory, useMantineEnv } from '../../core'
+import { factory, Factory, useUIEnv } from '../../core'
 import { Portal, PortalProps } from './Portal'
 
 export interface OptionalPortalProps extends PortalProps {
@@ -19,7 +19,7 @@ export type OptionalPortalFactory = Factory<{
 }>
 
 export const OptionalPortal = factory<OptionalPortalFactory>(({ withinPortal = true, children, ...others }, _ref) => {
-    const env = useMantineEnv()
+    const env = useUIEnv()
 
     if (env === 'test' || !withinPortal) {
         return <>{children}</>

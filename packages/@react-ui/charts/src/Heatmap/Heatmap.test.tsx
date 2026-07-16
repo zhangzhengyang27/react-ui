@@ -1,4 +1,4 @@
-import { render, tests } from '@mantine-tests/core';
+import { render, tests } from '@react-ui/tests';
 import { Heatmap, HeatmapProps, HeatmapStylesNames } from './Heatmap';
 
 const defaultProps: HeatmapProps = {

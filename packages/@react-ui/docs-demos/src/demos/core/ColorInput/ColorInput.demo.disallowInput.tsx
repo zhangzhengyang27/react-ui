@@ -1,5 +1,5 @@
 import { ColorInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ColorInput } from '@react-ui/ui';
@@ -15,13 +15,13 @@ function Demo() {
       maw={320}
       mx="auto"
       disallowInput
-      placeholder="Pick color"
-      label="Your favorite color"
+      placeholder="选择颜色"
+      label="你最喜欢的颜色"
     />
   );
 }
 
-export const disallowInput: MantineDemo = {
+export const disallowInput: UIDemo = {
   type: 'code',
   component: Demo,
   code,

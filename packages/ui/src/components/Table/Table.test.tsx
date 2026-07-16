@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Table } from './Table'
 
-const wrapper = ({ children }: { children: React.ReactNode }) => <MantineProvider>{children}</MantineProvider>
+const wrapper = ({ children }: { children: React.ReactNode }) => <UIProvider>{children}</UIProvider>
 
 describe('Table', () => {
     it('renders children as a compound component', () => {

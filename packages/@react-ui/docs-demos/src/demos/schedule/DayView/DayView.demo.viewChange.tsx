@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Text } from '@react-ui/ui';
 import { DayView, ScheduleViewLevel } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { dataCode, regularEvents } from './_data';
 
 const code = `
@@ -18,7 +18,7 @@ function Demo() {
       <Text mb="md">Selected view: {view}</Text>
 
       <DayView
-        date={new Date()}
+        date={new Date('2024-01-15')}
         events={events}
         startTime="08:00:00"
         endTime="18:00:00"
@@ -37,7 +37,7 @@ function Demo() {
       <Text mb="md">Selected view: {view}</Text>
 
       <DayView
-        date={new Date()}
+        date={new Date('2024-01-15')}
         events={regularEvents}
         startTime="08:00:00"
         endTime="18:00:00"
@@ -47,12 +47,12 @@ function Demo() {
   );
 }
 
-export const viewChange: MantineDemo = {
+export const viewChange: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

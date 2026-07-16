@@ -1,7 +1,7 @@
 import { FolderOpenIcon, FolderSimpleIcon } from '@phosphor-icons/react';
 import cx from 'clsx';
 import { Group, RenderTreeNodePayload, Tree } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { CssIcon, NpmIcon, TypeScriptCircleIcon } from '@react-ui/dev-icons';
 import { data, dataCode } from './data';
 import classes from './Tree.demo.files.module.css';
@@ -141,14 +141,14 @@ function Demo() {
   );
 }
 
-export const files: MantineDemo = {
+export const files: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   maxWidth: 340,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
-    { fileName: 'Demo.module.css', language: 'scss', code: cssCode },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
+    { fileName: '演示样式.module.css', language: 'scss', code: cssCode },
     { fileName: 'data.ts', language: 'tsx', code: dataCode },
   ],
 };

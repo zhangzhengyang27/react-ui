@@ -2,7 +2,7 @@
 
 import { Box, Button, Group, PasswordInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useForm } from '@react-ui/form';
@@ -26,22 +26,22 @@ function Demo() {
     <Box maw={340} mx="auto">
       <form onSubmit={form.onSubmit((values) => console.log(values))}>
         <PasswordInput
-          label="Password"
-          placeholder="Password"
+          label="密码"
+          placeholder="密码"
           key={form.key('password')}
           {...form.getInputProps('password')}
         />
 
         <PasswordInput
           mt="sm"
-          label="Confirm password"
-          placeholder="Confirm password"
+          label="确认密码"
+          placeholder="确认密码"
           key={form.key('confirmPassword')}
           {...form.getInputProps('confirmPassword')}
         />
 
         <Group justify="flex-end" mt="md">
-          <Button type="submit">Submit</Button>
+          <Button type="submit">提交</Button>
         </Group>
       </form>
     </Box>
@@ -67,29 +67,29 @@ function Demo() {
     <Box maw={340} mx="auto">
       <form onSubmit={form.onSubmit((values) => console.log(values))}>
         <PasswordInput
-          label="Password"
-          placeholder="Password"
+          label="密码"
+          placeholder="密码"
           key={form.key('password')}
           {...form.getInputProps('password')}
         />
 
         <PasswordInput
           mt="sm"
-          label="Confirm password"
-          placeholder="Confirm password"
+          label="确认密码"
+          placeholder="确认密码"
           key={form.key('confirmPassword')}
           {...form.getInputProps('confirmPassword')}
         />
 
         <Group justify="flex-end" mt="md">
-          <Button type="submit">Submit</Button>
+          <Button type="submit">提交</Button>
         </Group>
       </form>
     </Box>
   );
 }
 
-export const password: MantineDemo = {
+export const password: UIDemo = {
   type: 'code',
   component: Demo,
   code,

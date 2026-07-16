@@ -4,7 +4,7 @@ import { TextStyle } from '@tiptap/extension-text-style';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { RichTextEditor } from '@react-ui/tiptap';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useEditor } from '@tiptap/react';
@@ -17,7 +17,7 @@ import { RichTextEditor } from '@react-ui/tiptap';
 function Demo() {
   const editor = useEditor({
     extensions: [StarterKit, TextStyle, Color],
-    content: '<p>Apply some colors to this text</p>',
+    content: '<p>给这段文本应用一些颜色</p>',
   });
 
   return (
@@ -67,7 +67,7 @@ function Demo() {
     immediatelyRender: false,
     shouldRerenderOnTransaction: true,
     extensions: [StarterKit, TextStyle, Color],
-    content: '<p>Apply some colors to this text</p>',
+    content: '<p>给这段文本应用一些颜色</p>',
   });
 
   return (
@@ -111,7 +111,7 @@ function Demo() {
   );
 }
 
-export const colors: MantineDemo = {
+export const colors: UIDemo = {
   type: 'code',
   component: Demo,
   code,

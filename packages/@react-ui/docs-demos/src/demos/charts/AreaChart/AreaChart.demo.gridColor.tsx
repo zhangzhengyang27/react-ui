@@ -1,16 +1,16 @@
 import { AreaChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './_data';
 import classes from './AreaChart.demo.gridColor.module.css';
 
 const cssCode = `
 .root {
-  @mixin light {
+  [data-ui-color-scheme='light'] & {
     --chart-grid-color: alpha(var(--ui-color-black), 0.15);
     --chart-text-color: var(--ui-color-gray-7);
   }
 
-  @mixin dark {
+  [data-ui-color-scheme='dark'] & {
     --chart-grid-color: alpha(var(--ui-color-white), 0.15);
     --chart-text-color: var(--ui-color-dark-0);
   }
@@ -31,9 +31,9 @@ function Demo() {
       type="stacked"
       className={classes.root}
       series={[
-        { name: 'Apples', color: 'indigo.6' },
-        { name: 'Oranges', color: 'blue.6' },
-        { name: 'Tomatoes', color: 'teal.6' },
+        { name: '苹果', color: 'indigo.6' },
+        { name: '橙子', color: 'blue.6' },
+        { name: '西红柿', color: 'teal.6' },
       ]}
     />
   );
@@ -49,20 +49,20 @@ function Demo() {
       type="stacked"
       className={classes.root}
       series={[
-        { name: 'Apples', color: 'indigo.6' },
-        { name: 'Oranges', color: 'blue.6' },
-        { name: 'Tomatoes', color: 'teal.6' },
+        { name: '苹果', color: 'indigo.6' },
+        { name: '橙子', color: 'blue.6' },
+        { name: '西红柿', color: 'teal.6' },
       ]}
     />
   );
 }
 
-export const gridColor: MantineDemo = {
+export const gridColor: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code: cssCode, language: 'scss', fileName: 'Demo.module.css' },
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code: cssCode, language: 'scss', fileName: '演示样式.module.css' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

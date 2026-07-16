@@ -3,24 +3,24 @@ import type { StylesApiData } from '../types';
 
 export const DrawerStylesApi: StylesApiData<DrawerFactory> = {
   selectors: {
-    root: 'Root element',
-    inner: 'Element used to center modal, has fixed position, takes entire screen',
-    content: '`Drawer.Content` root element',
-    header: 'Contains title and close button',
-    overlay: 'Overlay displayed under the `Drawer.Content`',
-    title: 'Drawer title (h2 tag), displayed in the header',
-    body: 'Drawer body, displayed after header',
-    close: 'Close button',
+    root: '根元素',
+    inner: '用于居中模态框的元素，固定定位，占据整个屏幕',
+    content: '`Drawer.Content` 根元素',
+    header: '包含标题和关闭按钮',
+    overlay: '显示在 `Drawer.Content` 下方的遮罩层',
+    title: 'Drawer 标题（h2 标签），显示在 header 中',
+    body: 'Drawer 主体，显示在 header 之后',
+    close: '关闭按钮',
   },
 
   vars: {
     root: {
-      '--drawer-offset': 'Controls `margin` of `Drawer.Content`',
-      '--drawer-size': 'Controls `width` of `Drawer.Content`',
-      '--drawer-flex': 'Controls `flex` property of `Drawer.Content`',
-      '--drawer-align': 'Controls `align-items` property of `Drawer.Content`',
-      '--drawer-justify': 'Controls `justify-content` property of `Drawer.Content`',
-      '--drawer-height': 'Controls `height` property of `Drawer.Content`',
+      '--drawer-offset': '控制 `Drawer.Content` 的 `margin`',
+      '--drawer-size': '控制 `Drawer.Content` 的 `width`',
+      '--drawer-flex': '控制 `Drawer.Content` 的 `flex` 属性',
+      '--drawer-align': '控制 `Drawer.Content` 的 `align-items` 属性',
+      '--drawer-justify': '控制 `Drawer.Content` 的 `justify-content` 属性',
+      '--drawer-height': '控制 `Drawer.Content` 的 `height` 属性',
     },
   },
 };

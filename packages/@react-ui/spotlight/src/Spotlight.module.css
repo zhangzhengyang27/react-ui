@@ -32,11 +32,11 @@
   margin-inline-end: calc(var(--spotlight-actions-list-padding) * -1);
   width: 100%;
 
-  @mixin where-light {
+  [data-ui-color-scheme='light'] & {
     border-color: var(--ui-color-gray-2);
   }
 
-  @mixin where-dark {
+  [data-ui-color-scheme='dark'] & {
     border-color: var(--ui-color-dark-4);
   }
 }
@@ -52,12 +52,12 @@
   text-align: start;
 
   &:where(:not([data-selected])) {
-    @mixin hover {
-      @mixin where-light {
+    &:hover {
+      [data-ui-color-scheme='light'] & {
         background-color: var(--ui-color-gray-0);
       }
 
-      @mixin where-dark {
+      [data-ui-color-scheme='dark'] & {
         background-color: var(--ui-color-dark-6);
       }
     }
@@ -118,11 +118,11 @@
   padding: var(--ui-spacing-xs) calc(var(--ui-spacing-md) + rem(4px));
   border-top: 1px solid;
 
-  @mixin where-light {
+  [data-ui-color-scheme='light'] & {
     border-color: var(--ui-color-gray-2);
   }
 
-  @mixin where-dark {
+  [data-ui-color-scheme='dark'] & {
     border-color: var(--ui-color-dark-4);
   }
 }

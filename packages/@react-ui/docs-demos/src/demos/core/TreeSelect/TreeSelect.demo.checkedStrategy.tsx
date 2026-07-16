@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Stack, TreeSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './data';
 
 const code = `
@@ -16,8 +16,8 @@ function Demo() {
   return (
     <Stack>
       <TreeSelect
-        label="checkedStrategy: child (default)"
-        placeholder="Pick values"
+        label="checkedStrategy：child（默认）"
+        placeholder="选择值"
         data={data}
         mode="checkbox"
         checkedStrategy="child"
@@ -26,8 +26,8 @@ function Demo() {
         onChange={setChildValue}
       />
       <TreeSelect
-        label="checkedStrategy: all"
-        placeholder="Pick values"
+        label="checkedStrategy：all"
+        placeholder="选择值"
         data={data}
         mode="checkbox"
         checkedStrategy="all"
@@ -36,8 +36,8 @@ function Demo() {
         onChange={setAllValue}
       />
       <TreeSelect
-        label="checkedStrategy: parent"
-        placeholder="Pick values"
+        label="checkedStrategy：parent"
+        placeholder="选择值"
         data={data}
         mode="checkbox"
         checkedStrategy="parent"
@@ -58,8 +58,8 @@ function Demo() {
   return (
     <Stack>
       <TreeSelect
-        label="checkedStrategy: child (default)"
-        placeholder="Pick values"
+        label="checkedStrategy：child（默认）"
+        placeholder="选择值"
         data={data}
         mode="checkbox"
         checkedStrategy="child"
@@ -68,8 +68,8 @@ function Demo() {
         onChange={setChildValue}
       />
       <TreeSelect
-        label="checkedStrategy: all"
-        placeholder="Pick values"
+        label="checkedStrategy：all"
+        placeholder="选择值"
         data={data}
         mode="checkbox"
         checkedStrategy="all"
@@ -78,8 +78,8 @@ function Demo() {
         onChange={setAllValue}
       />
       <TreeSelect
-        label="checkedStrategy: parent"
-        placeholder="Pick values"
+        label="checkedStrategy：parent"
+        placeholder="选择值"
         data={data}
         mode="checkbox"
         checkedStrategy="parent"
@@ -91,11 +91,11 @@ function Demo() {
   );
 }
 
-export const checkedStrategy: MantineDemo = {
+export const checkedStrategy: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
     { fileName: 'data.ts', language: 'tsx', code: dataCode },
   ],
   maxWidth: 340,

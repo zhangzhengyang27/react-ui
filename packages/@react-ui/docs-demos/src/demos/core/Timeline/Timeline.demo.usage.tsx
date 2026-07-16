@@ -1,5 +1,5 @@
 import { Box } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { TimelineBase } from './_base';
 
 const code = `
@@ -9,24 +9,24 @@ import { GitBranchIcon, GitPullRequestIcon, GitCommitIcon, ChatCircleDotsIcon } 
 function Demo() {
   return (
     <Timeline active={1} bulletSize={24} lineWidth={2}>
-      <Timeline.Item bullet={<GitBranchIcon size={12} />} title="New branch">
-        <Text c="dimmed" size="sm">You&apos;ve created new branch <Text variant="link" component="span" inherit>fix-notifications</Text> from master</Text>
-        <Text size="xs" mt={4}>2 hours ago</Text>
+      <Timeline.Item bullet={<GitBranchIcon size={12} />} title="新分支">
+        <Text c="dimmed" size="sm">你创建了新的分支 <Text variant="link" component="span" inherit>修复通知</Text> 从 master 分支</Text>
+        <Text size="xs" mt={4}>2 小时前</Text>
       </Timeline.Item>
 
-      <Timeline.Item bullet={<GitCommitIcon size={12} />} title="Commits">
-        <Text c="dimmed" size="sm">You&apos;ve pushed 23 commits to<Text variant="link" component="span" inherit>fix-notifications branch</Text></Text>
-        <Text size="xs" mt={4}>52 minutes ago</Text>
+      <Timeline.Item bullet={<GitCommitIcon size={12} />} title="提交">
+        <Text c="dimmed" size="sm">你推送了 23 个提交到<Text variant="link" component="span" inherit>fix-notifications 分支</Text></Text>
+        <Text size="xs" mt={4}>52 分钟前</Text>
       </Timeline.Item>
 
-      <Timeline.Item title="Pull request" bullet={<GitPullRequestIcon size={12} />} lineVariant="dashed">
-        <Text c="dimmed" size="sm">You&apos;ve submitted a pull request<Text variant="link" component="span" inherit>Fix incorrect notification message (#187)</Text></Text>
-        <Text size="xs" mt={4}>34 minutes ago</Text>
+      <Timeline.Item title="拉取请求" bullet={<GitPullRequestIcon size={12} />} lineVariant="dashed">
+        <Text c="dimmed" size="sm">你提交了拉取请求<Text variant="link" component="span" inherit>修复不正确的通知消息 (#187)</Text></Text>
+        <Text size="xs" mt={4}>34 分钟前</Text>
       </Timeline.Item>
 
-      <Timeline.Item title="Code review" bullet={<ChatCircleDotsIcon size={12} />}>
-        <Text c="dimmed" size="sm"><Text variant="link" component="span" inherit>Robert Gluesticker</Text> left a code review on your pull request</Text>
-        <Text size="xs" mt={4}>12 minutes ago</Text>
+      <Timeline.Item title="代码审查" bullet={<ChatCircleDotsIcon size={12} />}>
+        <Text c="dimmed" size="sm"><Text variant="link" component="span" inherit>罗伯特</Text> 在你的拉取请求上留下了代码审查</Text>
+        <Text size="xs" mt={4}>12 分钟前</Text>
       </Timeline.Item>
     </Timeline>
   );
@@ -41,7 +41,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

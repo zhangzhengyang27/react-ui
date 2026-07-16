@@ -26,4 +26,4 @@ export const DrawerBody = factory<DrawerBodyFactory>((_props, ref) => {
 })
 
 DrawerBody.classes = classes
-DrawerBody.displayName = '@mantine/core/DrawerBody'
+DrawerBody.displayName = '@react-ui/ui/DrawerBody'

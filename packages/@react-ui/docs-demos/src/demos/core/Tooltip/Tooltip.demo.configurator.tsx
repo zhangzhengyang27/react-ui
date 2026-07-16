@@ -1,10 +1,10 @@
 import { Button, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: any) {
   return (
-    <Tooltip label="Tooltip" {...props}>
-      <Button>With tooltip</Button>
+    <Tooltip label="提示" {...props}>
+      <Button>带提示</Button>
     </Tooltip>
   );
 }
@@ -14,14 +14,14 @@ import { Tooltip, Button } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <Tooltip label="Tooltip"{{props}}>
-      <Button>With tooltip</Button>
+    <Tooltip label="提示"{{props}}>
+      <Button>带提示</Button>
     </Tooltip>
   );
 }
 `;
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

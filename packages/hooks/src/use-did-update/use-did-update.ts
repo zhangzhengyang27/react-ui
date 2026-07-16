@@ -2,7 +2,7 @@ import { DependencyList, EffectCallback, useEffect, useRef } from 'react'
 
 /**
  * 在依赖变化时执行副作用，跳过首次渲染（与 componentDidUpdate 语义一致）。
- * 对齐 mantine useDidUpdate。
+ * 对齐 ui useDidUpdate。
  *
  * @param fn - 副作用函数，可返回清理函数
  * @param dependencies - 依赖列表

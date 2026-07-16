@@ -1,5 +1,5 @@
 import { MaskInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { MaskInput } from '@react-ui/ui';
@@ -7,10 +7,10 @@ import { MaskInput } from '@react-ui/ui';
 function Demo() {
   return (
     <MaskInput
-      label="Phone number"
+      label="电话号码"
       placeholder="(___) ___-____"
       mask="(999) 999-9999"
-      error="Invalid phone number"
+      error="无效的电话号码"
     />
   );
 }
@@ -19,15 +19,15 @@ function Demo() {
 function Demo() {
   return (
     <MaskInput
-      label="Phone number"
+      label="电话号码"
       placeholder="(___) ___-____"
       mask="(999) 999-9999"
-      error="Invalid phone number"
+      error="无效的电话号码"
     />
   );
 }
 
-export const error: MantineDemo = {
+export const error: UIDemo = {
   type: 'code',
   code,
   component: Demo,

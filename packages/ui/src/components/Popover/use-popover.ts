@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useId, useUncontrolled } from '@react-ui/hooks'
-import type { FloatingAxesOffsets, FloatingPosition, FloatingStrategy } from '../../core'
-import type { PopoverMiddlewares, PopoverWidth } from './Popover.types'
+import type { FloatingAxesOffsets, FloatingPosition } from '../../core'
+import type { PopoverMiddlewares } from './Popover.types'
 
 interface UsePopoverFloating {
     x: number | undefined
@@ -33,11 +33,9 @@ interface UsePopoverOptions {
     onChange?: (opened: boolean) => void
     onClose?: () => void
     onOpen?: () => void
-    width: PopoverWidth
     middlewares: PopoverMiddlewares | undefined
     arrowRef: React.RefObject<HTMLDivElement | null>
     arrowOffset: number
-    strategy?: FloatingStrategy
     disabled: boolean | undefined
 }
 
@@ -49,32 +47,51 @@ function computePosition(
     reference: HTMLElement,
     floating: HTMLElement,
     position: FloatingPosition,
-    offset: number
+    offset: number,
+    middlewares?: PopoverMiddlewares
 ): { x: number; y: number; placement: FloatingPosition } {
     const refRect = reference.getBoundingClientRect()
     const floatRect = floating.getBoundingClientRect()
     const scrollX = window.scrollX
     const scrollY = window.scrollY
+    const viewportWidth = window.innerWidth
+    const viewportHeight = window.innerHeight
+
+    const [initialSide, align] = position.split('-') as [string, string | undefined]
+    let side = initialSide
+
+    // flip：检查当前方向是否超出视口，超出则尝试反方向
+    if (middlewares?.flip) {
+        if (side === 'bottom' && refRect.bottom + floatRect.height + offset > viewportHeight) {
+            side = 'top'
+        } else if (side === 'top' && refRect.top - floatRect.height - offset < 0) {
+            side = 'bottom'
+        } else if (side === 'right' && refRect.right + floatRect.width + offset > viewportWidth) {
+            side = 'left'
+        } else if (side === 'left' && refRect.left - floatRect.width - offset < 0) {
+            side = 'right'
+        }
+    }
+
+    const placement = (align ? `${side}-${align}` : side) as FloatingPosition
 
     let x = 0
     let y = 0
-    let placement = position
-
-    const [side, align] = position.split('-') as [string, string | undefined]
 
     if (side === 'top' || side === 'bottom') {
         x = refRect.left + scrollX
         if (side === 'bottom') {
             y = refRect.bottom + scrollY + offset
         } else {
-            y = refRect.top - scrollY - floatRect.height - offset
+            // getBoundingClientRect 返回视口坐标，需 + scrollY 转文档绝对坐标
+            y = refRect.top + scrollY - floatRect.height - offset
         }
     } else {
         y = refRect.top + scrollY
         if (side === 'right') {
             x = refRect.right + scrollX + offset
         } else {
-            x = refRect.left - scrollX - floatRect.width - offset
+            x = refRect.left + scrollX - floatRect.width - offset
         }
     }
 
@@ -95,6 +112,21 @@ function computePosition(
             x = refRect.left + scrollX + (refRect.width - floatRect.width) / 2
         } else {
             y = refRect.top + scrollY + (refRect.height - floatRect.height) / 2
+        }
+    }
+
+    // shift：交叉轴方向 clamp 到视口内
+    if (middlewares?.shift) {
+        if (side === 'top' || side === 'bottom') {
+            const viewLeft = scrollX
+            const viewRight = scrollX + viewportWidth
+            if (x < viewLeft) x = viewLeft
+            if (x + floatRect.width > viewRight) x = viewRight - floatRect.width
+        } else {
+            const viewTop = scrollY
+            const viewBottom = scrollY + viewportHeight
+            if (y < viewTop) y = viewTop
+            if (y + floatRect.height > viewBottom) y = viewBottom - floatRect.height
         }
     }
 
@@ -145,30 +177,36 @@ export function usePopover(options: UsePopoverOptions): UsePopoverReturn {
         const floating = floatingRef.current
         if (!reference || !floating) return
 
-        const computed = computePosition(reference, floating, options.position, resolveOffset(options.offset))
+        const computed = computePosition(
+            reference,
+            floating,
+            options.position,
+            resolveOffset(options.offset),
+            options.middlewares
+        )
         setPosition(computed)
 
         setArrowData(
             computeArrow(reference, floating, computed.placement, options.arrowRef.current, options.arrowOffset)
         )
-    }, [options.position, options.offset, options.arrowRef, options.arrowOffset])
+    }, [options.position, options.offset, options.middlewares, options.arrowRef, options.arrowOffset])
 
     const onClose = useCallback(() => {
-        if (_opened && !options.disabled) {
+        if (_opened) {
             setOpened(false)
             options.onClose?.()
         }
-    }, [_opened, options.disabled, options.onClose, setOpened])
+    }, [_opened, options.onClose, setOpened])
 
     const onToggle = useCallback(() => {
-        if (!options.disabled) {
-            const next = !_opened
-            setOpened(next)
-            if (next) {
-                options.onOpen?.()
-            } else {
-                options.onClose?.()
-            }
+        // disabled 仅阻止打开，已打开状态下允许关闭，避免 Popover 卡死
+        if (options.disabled && !_opened) return
+        const next = !_opened
+        setOpened(next)
+        if (next) {
+            options.onOpen?.()
+        } else {
+            options.onClose?.()
         }
     }, [_opened, options.disabled, options.onOpen, options.onClose, setOpened])
 

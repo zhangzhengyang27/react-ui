@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { Calendar } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import dayjs from 'dayjs';
@@ -51,7 +51,7 @@ function Demo() {
   );
 }
 
-export const picker: MantineDemo = {
+export const picker: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

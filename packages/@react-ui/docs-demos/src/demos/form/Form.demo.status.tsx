@@ -2,7 +2,7 @@
 
 import { Button, TextInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useForm } from '@react-ui/form';
@@ -11,7 +11,7 @@ import { TextInput, Button } from '@react-ui/ui';
 function Demo() {
   const form = useForm({
     mode: 'uncontrolled',
-    initialValues: { text: 'initial value' },
+    initialValues: { text: '初始值' },
   });
 
   return (
@@ -19,8 +19,8 @@ function Demo() {
       <TextInput
         {...form.getInputProps('text')}
         key={form.key('text')}
-        label="Touched/dirty demo"
-        placeholder="Touched/dirty demo"
+        label="已触碰/已修改演示"
+        placeholder="已触碰/已修改演示"
       />
 
       <Button
@@ -38,7 +38,7 @@ function Demo() {
 function Demo() {
   const form = useForm({
     mode: 'uncontrolled',
-    initialValues: { text: 'initial value' },
+    initialValues: { text: '初始值' },
   });
 
   return (
@@ -46,8 +46,8 @@ function Demo() {
       <TextInput
         {...form.getInputProps('text')}
         key={form.key('text')}
-        label="Touched/dirty demo"
-        placeholder="Touched/dirty demo"
+        label="已触碰/已修改演示"
+        placeholder="已触碰/已修改演示"
       />
 
       <Button
@@ -62,7 +62,7 @@ function Demo() {
   );
 }
 
-export const status: MantineDemo = {
+export const status: UIDemo = {
   type: 'code',
   component: Demo,
   code,

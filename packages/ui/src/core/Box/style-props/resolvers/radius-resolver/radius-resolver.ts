@@ -1,7 +1,7 @@
-import type { MantineTheme } from '../../../../../core/MantineProvider'
+import type { UITheme } from '../../../../../core/UIProvider'
 import { rem } from '../../../../../core/utils'
 
-export function radiusResolver(value: unknown, theme: MantineTheme) {
+export function radiusResolver(value: unknown, theme: UITheme) {
     if (typeof value === 'string' && value in theme.radius) {
         return `var(--ui-radius-${value})`
     }

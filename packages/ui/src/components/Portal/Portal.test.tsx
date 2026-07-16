@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Portal } from './Portal'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Portal', () => {
     it('renders children into a shared portal node in document.body by default', async () => {

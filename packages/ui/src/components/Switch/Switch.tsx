@@ -10,8 +10,8 @@ import {
     getFontSize,
     getSize,
     getThemeColor,
-    MantineColor,
-    MantineSize,
+    UIColor,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -35,34 +35,34 @@ export type SwitchCssVariables = {
 }
 
 export interface SwitchProps extends BoxProps, ElementProps<'input', 'size'>, StylesApiProps<SwitchFactory> {
-    /** Switch value, used when inside Switch.Group */
+    /** Switch 的值，在 Switch.Group 内部时使用 */
     value?: string
 
-    /** Controls switch size @default 'sm' */
-    size?: MantineSize
+    /** 控制 Switch 的大小 @default 'sm' */
+    size?: UISize
 
-    /** Key of theme.colors or any valid CSS color @default theme.primaryColor */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 @default theme.primaryColor */
+    color?: UIColor
 
-    /** Controlled checked state */
+    /** 受控的选中状态 */
     checked?: boolean
 
-    /** Initial checked state for uncontrolled component */
+    /** 非受控组件的初始选中状态 */
     defaultChecked?: boolean
 
-    /** Called when checked state changes */
+    /** 选中状态变化时调用 */
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 
-    /** Label rendered next to the switch */
+    /** Switch 旁边渲染的标签 */
     label?: React.ReactNode
 
-    /** If set, disabled styles and behavior are applied */
+    /** 如果设置，则应用禁用样式和行为 */
     disabled?: boolean
 
-    /** Label rendered inside the track when checked */
+    /** 选中时在轨道内渲染的标签 */
     onLabel?: React.ReactNode
 
-    /** Label rendered inside the track when unchecked */
+    /** 未选中时在轨道内渲染的标签 */
     offLabel?: React.ReactNode
 }
 

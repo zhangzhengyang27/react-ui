@@ -1,6 +1,6 @@
 import { Box, Button, Group, Text } from '@react-ui/ui';
 import { useScrollIntoView } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useScrollIntoView } from '@react-ui/hooks';
@@ -29,7 +29,7 @@ function Demo() {
           backgroundColor: 'var(--ui-color-blue-light)',
         }}
       />
-      <Text ref={targetRef}>Hello there</Text>
+      <Text ref={targetRef}>你好</Text>
     </Group>
   );
 }
@@ -58,12 +58,12 @@ function Demo() {
           backgroundColor: 'var(--ui-color-blue-light)',
         }}
       />
-      <Text ref={targetRef}>Hello there</Text>
+      <Text ref={targetRef}>你好</Text>
     </Group>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Group, Paper } from '@react-ui/ui';
 import { useClickOutside } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -14,11 +14,11 @@ function Demo() {
 
   return (
     <>
-      <Button onClick={() => setOpened(true)}>Open dropdown</Button>
+      <Button onClick={() => setOpened(true)}>打开下拉</Button>
 
       {opened && (
         <Paper ref={ref} shadow="sm">
-          <span>Click outside to close</span>
+          <span>点击外部关闭</span>
         </Paper>
       )}
     </>
@@ -33,7 +33,7 @@ function Demo() {
   return (
     <div style={{ position: 'relative' }}>
       <Group justify="center">
-        <Button onClick={() => setOpened(true)}>Open dropdown</Button>
+        <Button onClick={() => setOpened(true)}>打开下拉</Button>
       </Group>
 
       {opened && (
@@ -52,14 +52,14 @@ function Demo() {
             zIndex: 1,
           }}
         >
-          <span>Click outside to close</span>
+          <span>点击外部关闭</span>
         </Paper>
       )}
     </div>
   );
 }
 
-export const events: MantineDemo = {
+export const events: UIDemo = {
   type: 'code',
   component: Demo,
   code,

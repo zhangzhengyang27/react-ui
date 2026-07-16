@@ -1,5 +1,5 @@
 import { DatePickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { DatePickerInput } from '@react-ui/dates';
@@ -8,8 +8,8 @@ function Demo() {
   return (
     <DatePickerInput
       weekendDays={[1, 2]}
-      label="Weekend days are Monday and Tuesday"
-      placeholder="Pick date"
+      label="周末是周一和周二"
+      placeholder="选择日期"
     />
   );
 }
@@ -19,13 +19,13 @@ function Demo() {
   return (
     <DatePickerInput
       weekendDays={[1, 2]}
-      label="Weekend days are Monday and Tuesday"
-      placeholder="Pick date"
+      label="周末是周一和周二"
+      placeholder="选择日期"
     />
   );
 }
 
-export const weekendDays: MantineDemo = {
+export const weekendDays: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

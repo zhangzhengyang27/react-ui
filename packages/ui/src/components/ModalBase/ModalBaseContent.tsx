@@ -5,7 +5,7 @@ import { useModalBaseContext } from './ModalBase.context'
 import classes from './ModalBase.module.css'
 
 export interface ModalBaseContentProps {
-    /** Props passed down to the Transition component */
+    /** 传递给 Transition 组件的属性 */
     transitionProps?: import('../Transition').TransitionOverride
 
     /** Content */
@@ -65,4 +65,4 @@ export function ModalBaseContent({
     )
 }
 
-ModalBaseContent.displayName = '@mantine/core/ModalBaseContent'
+ModalBaseContent.displayName = '@react-ui/ui/ModalBaseContent'

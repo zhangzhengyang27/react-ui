@@ -1,5 +1,5 @@
 import { Avatar, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { names, namesCode } from './_mockdata';
 
 const code = `
@@ -22,7 +22,7 @@ function Demo() {
   return <Group>{avatars}</Group>;
 }
 
-export const allowedColors: MantineDemo = {
+export const allowedColors: UIDemo = {
   type: 'code',
   component: Demo,
   code,

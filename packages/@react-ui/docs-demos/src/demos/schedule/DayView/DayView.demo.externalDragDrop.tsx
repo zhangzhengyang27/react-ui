@@ -2,14 +2,14 @@ import dayjs from 'dayjs';
 import { useRef, useState } from 'react';
 import { Box, Grid, Text } from '@react-ui/ui';
 import { DayView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const sidebarItems = [
-  { title: 'Quick Sync', duration: 30, color: 'teal' },
-  { title: 'Workshop', duration: 120, color: 'orange' },
-  { title: 'One-on-One', duration: 60, color: 'violet' },
+  { title: '快速同步', duration: 30, color: 'teal' },
+  { title: '研讨会', duration: 120, color: 'orange' },
+  { title: '一对一', duration: 60, color: 'violet' },
 ];
 
 const code = `
@@ -18,12 +18,12 @@ import dayjs from 'dayjs';
 import { Box, Grid, Text } from '@react-ui/ui';
 import { DayView, ScheduleEventData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const sidebarItems = [
-  { title: 'Quick Sync', duration: 30, color: 'teal' },
-  { title: 'Workshop', duration: 120, color: 'orange' },
-  { title: 'One-on-One', duration: 60, color: 'violet' },
+  { title: '快速同步', duration: 30, color: 'teal' },
+  { title: '研讨会', duration: 120, color: 'orange' },
+  { title: '一对一', duration: 60, color: 'violet' },
 ];
 
 function Demo() {
@@ -63,7 +63,7 @@ function Demo() {
   return (
     <Grid>
       <Grid.Col span={{ base: 12, sm: 3 }}>
-        <Text fw={500} mb="xs">Drag to schedule</Text>
+        <Text fw={500} mb="xs">拖到日程</Text>
         {sidebarItems.map((item) => (
           <Box
             key={item.title}
@@ -88,7 +88,7 @@ function Demo() {
       </Grid.Col>
       <Grid.Col span={{ base: 12, sm: 9 }}>
         <DayView
-          date={new Date()}
+          date={new Date('2024-01-15')}
           events={events}
           startTime="08:00:00"
           endTime="18:00:00"
@@ -189,7 +189,7 @@ function Demo() {
   );
 }
 
-export const externalDragDrop: MantineDemo = {
+export const externalDragDrop: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

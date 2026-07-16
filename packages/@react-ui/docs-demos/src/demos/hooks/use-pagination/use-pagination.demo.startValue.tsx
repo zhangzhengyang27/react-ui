@@ -1,6 +1,6 @@
 import { Button, Group, Text } from '@react-ui/ui';
 import { usePagination } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Group, Text } from '@react-ui/ui';
@@ -87,7 +87,7 @@ function Demo() {
   );
 }
 
-export const startValue: MantineDemo = {
+export const startValue: UIDemo = {
   type: 'code',
   code,
   component: Demo,

@@ -1,5 +1,5 @@
 import { fireEvent } from '@testing-library/react';
-import { render, tests, userEvent } from '@mantine-tests/core';
+import { render, tests, userEvent } from '@react-ui/tests';
 import {
   ChartLegend,
   ChartLegendProps,
@@ -41,7 +41,7 @@ describe('@react-ui/charts/ChartLegend', () => {
   tests.itSupportsSystemProps<ChartLegendProps, ChartLegendStylesNames>({
     component: ChartLegend,
     props: defaultProps,
-    selector: '.mantine-ChartLegend-legend',
+    selector: '.ui-ChartLegend-legend',
     refType: HTMLDivElement,
     displayName: '@react-ui/charts/ChartLegend',
     stylesApiSelectors: ['legend', 'legendItem', 'legendItemColor', 'legendItemName'],
@@ -51,17 +51,17 @@ describe('@react-ui/charts/ChartLegend', () => {
     const { container } = render(
       <ChartLegend payload={undefined} onHighlight={() => {}} legendPosition="bottom" />
     );
-    expect(container.querySelector('.mantine-ChartLegend-legend')).not.toBeInTheDocument();
+    expect(container.querySelector('.ui-ChartLegend-legend')).not.toBeInTheDocument();
   });
 
   it('renders correct number of legend items', () => {
     const { container } = render(<ChartLegend {...defaultProps} />);
-    expect(container.querySelectorAll('.mantine-ChartLegend-legendItem')).toHaveLength(3);
+    expect(container.querySelectorAll('.ui-ChartLegend-legendItem')).toHaveLength(3);
   });
 
   it('displays dataKey as label when no series are provided', () => {
     const { container } = render(<ChartLegend {...defaultProps} />);
-    const names = container.querySelectorAll('.mantine-ChartLegend-legendItemName');
+    const names = container.querySelectorAll('.ui-ChartLegend-legendItemName');
     expect(names[0]).toHaveTextContent('Apples');
     expect(names[1]).toHaveTextContent('Oranges');
     expect(names[2]).toHaveTextContent('Tomatoes');
@@ -69,7 +69,7 @@ describe('@react-ui/charts/ChartLegend', () => {
 
   it('displays series labels when series are provided', () => {
     const { container } = render(<ChartLegend {...defaultProps} series={series} />);
-    const names = container.querySelectorAll('.mantine-ChartLegend-legendItemName');
+    const names = container.querySelectorAll('.ui-ChartLegend-legendItemName');
     expect(names[0]).toHaveTextContent('Apples sales');
     expect(names[1]).toHaveTextContent('Oranges sales');
     expect(names[2]).toHaveTextContent('Tomatoes sales');
@@ -85,13 +85,13 @@ describe('@react-ui/charts/ChartLegend', () => {
       },
     ];
     const { container } = render(<ChartLegend {...defaultProps} payload={payloadWithNone} />);
-    expect(container.querySelectorAll('.mantine-ChartLegend-legendItem')).toHaveLength(3);
+    expect(container.querySelectorAll('.ui-ChartLegend-legendItem')).toHaveLength(3);
   });
 
   it('calls onHighlight with dataKey on mouse enter and null on mouse leave', async () => {
     const onHighlight = jest.fn();
     const { container } = render(<ChartLegend {...defaultProps} onHighlight={onHighlight} />);
-    const items = container.querySelectorAll('.mantine-ChartLegend-legendItem');
+    const items = container.querySelectorAll('.ui-ChartLegend-legendItem');
 
     await userEvent.hover(items[0]);
     expect(onHighlight).toHaveBeenCalledWith('Apples');
@@ -109,7 +109,7 @@ describe('@react-ui/charts/ChartLegend', () => {
     const { container } = render(
       <ChartLegend payload={indexedPayload} onHighlight={onHighlight} legendPosition="bottom" />
     );
-    const items = container.querySelectorAll('.mantine-ChartLegend-legendItem');
+    const items = container.querySelectorAll('.ui-ChartLegend-legendItem');
 
     await userEvent.hover(items[1]);
     expect(onHighlight).toHaveBeenCalledWith(1);
@@ -123,7 +123,7 @@ describe('@react-ui/charts/ChartLegend', () => {
     const { container } = render(
       <ChartLegend payload={indexedPayload} onHighlight={onHighlight} legendPosition="bottom" />
     );
-    const items = container.querySelectorAll('.mantine-ChartLegend-legendItem');
+    const items = container.querySelectorAll('.ui-ChartLegend-legendItem');
 
     await userEvent.hover(items[0]);
     expect(onHighlight).toHaveBeenCalledWith(0);
@@ -137,7 +137,7 @@ describe('@react-ui/charts/ChartLegend', () => {
     const { container } = render(
       <ChartLegend payload={indexedPayload} onHighlight={() => {}} legendPosition="bottom" />
     );
-    const names = container.querySelectorAll('.mantine-ChartLegend-legendItemName');
+    const names = container.querySelectorAll('.ui-ChartLegend-legendItemName');
     expect(names[0]).toHaveTextContent('Other');
     expect(names[1]).toHaveTextContent('Other');
   });
@@ -145,7 +145,7 @@ describe('@react-ui/charts/ChartLegend', () => {
   it('does not call onHighlight(null) when moving between legend items', () => {
     const onHighlight = jest.fn();
     const { container } = render(<ChartLegend {...defaultProps} onHighlight={onHighlight} />);
-    const items = container.querySelectorAll('.mantine-ChartLegend-legendItem');
+    const items = container.querySelectorAll('.ui-ChartLegend-legendItem');
 
     fireEvent.mouseOver(items[0]);
     fireEvent.mouseOut(items[0], { relatedTarget: items[1] });
@@ -163,7 +163,7 @@ describe('@react-ui/charts/ChartLegend', () => {
         <ChartLegend {...defaultProps} onHighlight={onHighlight} />
       </div>
     );
-    const items = container.querySelectorAll('.mantine-ChartLegend-legendItem');
+    const items = container.querySelectorAll('.ui-ChartLegend-legendItem');
     const outside = container.querySelector('[data-testid="outside"]')!;
 
     fireEvent.mouseOver(items[0]);
@@ -175,7 +175,7 @@ describe('@react-ui/charts/ChartLegend', () => {
   it('produces no intermediate null when hovering sequentially through all items', () => {
     const onHighlight = jest.fn();
     const { container } = render(<ChartLegend {...defaultProps} onHighlight={onHighlight} />);
-    const items = container.querySelectorAll('.mantine-ChartLegend-legendItem');
+    const items = container.querySelectorAll('.ui-ChartLegend-legendItem');
 
     fireEvent.mouseOver(items[0]);
     fireEvent.mouseOut(items[0], { relatedTarget: items[1] });
@@ -193,7 +193,7 @@ describe('@react-ui/charts/ChartLegend', () => {
     const { container } = render(
       <ChartLegend {...defaultProps} onHighlight={onHighlight} onMouseLeave={onMouseLeave} />
     );
-    const legend = container.querySelector('.mantine-ChartLegend-legend')!;
+    const legend = container.querySelector('.ui-ChartLegend-legend')!;
 
     fireEvent.mouseLeave(legend);
     expect(onMouseLeave).toHaveBeenCalledTimes(1);
@@ -202,30 +202,30 @@ describe('@react-ui/charts/ChartLegend', () => {
 
   it('sets data-without-color attribute when showColor is false', () => {
     const { container } = render(<ChartLegend {...defaultProps} showColor={false} />);
-    const items = container.querySelectorAll('.mantine-ChartLegend-legendItem');
+    const items = container.querySelectorAll('.ui-ChartLegend-legendItem');
     expect(items[0]).toHaveAttribute('data-without-color');
   });
 
   it('does not set data-without-color attribute when showColor is true', () => {
     const { container } = render(<ChartLegend {...defaultProps} showColor />);
-    const items = container.querySelectorAll('.mantine-ChartLegend-legendItem');
+    const items = container.querySelectorAll('.ui-ChartLegend-legendItem');
     expect(items[0]).not.toHaveAttribute('data-without-color');
   });
 
   it('sets data-centered modifier when centered is true', () => {
     const { container } = render(<ChartLegend {...defaultProps} centered />);
-    expect(container.querySelector('.mantine-ChartLegend-legend')).toHaveAttribute('data-centered');
+    expect(container.querySelector('.ui-ChartLegend-legend')).toHaveAttribute('data-centered');
   });
 
   it('sets data-position modifier based on legendPosition', () => {
     const { container, rerender } = render(<ChartLegend {...defaultProps} legendPosition="top" />);
-    expect(container.querySelector('.mantine-ChartLegend-legend')).toHaveAttribute(
+    expect(container.querySelector('.ui-ChartLegend-legend')).toHaveAttribute(
       'data-position',
       'top'
     );
 
     rerender(<ChartLegend {...defaultProps} legendPosition="bottom" />);
-    expect(container.querySelector('.mantine-ChartLegend-legend')).toHaveAttribute(
+    expect(container.querySelector('.ui-ChartLegend-legend')).toHaveAttribute(
       'data-position',
       'bottom'
     );
@@ -244,7 +244,7 @@ describe('@react-ui/charts/ChartLegend', () => {
     const { container } = render(
       <ChartLegend {...defaultProps} payload={nestedPayload} series={nestedSeries} />
     );
-    const names = container.querySelectorAll('.mantine-ChartLegend-legendItemName');
+    const names = container.querySelectorAll('.ui-ChartLegend-legendItemName');
     expect(names[0]).toHaveTextContent('Apple Label');
   });
 
@@ -258,7 +258,7 @@ describe('@react-ui/charts/ChartLegend', () => {
     ];
 
     const { container } = render(<ChartLegend {...defaultProps} payload={nestedPayload} />);
-    const names = container.querySelectorAll('.mantine-ChartLegend-legendItemName');
+    const names = container.querySelectorAll('.ui-ChartLegend-legendItemName');
     expect(names[0]).toHaveTextContent('ApplesProp');
   });
 });

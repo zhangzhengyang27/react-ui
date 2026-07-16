@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import type { MantineThemeComponent } from '../MantineProvider'
+import type { UIThemeComponent } from '../UIProvider'
 import type { ClassNames, PartialVarsResolver, Styles } from '../styles-api'
 
 export type DataAttributes = Record<`data-${string}`, any>
@@ -14,7 +14,7 @@ export type DataAttributes = Record<`data-${string}`, any>
  * @property vars - 可选，CSS变量
  * @property variant - 可选，组件变体名称
  * @property staticComponents - 可选，静态组件集合
- * @property compound - 可选，标记是否为复合组件（复合组件不能在MantineProvider上设置classNames、styles和vars）
+ * @property compound - 可选，标记是否为复合组件（复合组件不能在UIProvider上设置classNames、styles和vars）
  */
 export interface FactoryPayload {
     props: Record<string, any>
@@ -24,7 +24,7 @@ export interface FactoryPayload {
     vars?: any
     variant?: string
     staticComponents?: Record<string, any>
-    // 复合组件不能在 MantineProvider 上设置 classNames、styles 和 vars
+    // 复合组件不能在 UIProvider 上设置 classNames、styles 和 vars
     compound?: boolean
     /** 组件签名类型，由 genericFactory 使用 */
     signature?: any
@@ -82,10 +82,10 @@ export type StaticComponents<Input> = Input extends Record<string, any> ? Input 
  * 定义主题扩展接口，允许通过extend方法扩展组件样式
  *
  * @template Payload 扩展组件时使用的载荷类型，必须继承自FactoryPayload
- * @property extend 方法，接收一个扩展组件输入，返回一个Mantine主题组件
+ * @property extend 方法，接收一个扩展组件输入，返回一个UI主题组件
  */
 export interface ThemeExtend<Payload extends FactoryPayload> {
-    extend: (input: ExtendComponent<Payload>) => MantineThemeComponent
+    extend: (input: ExtendComponent<Payload>) => UIThemeComponent
 }
 
 /**
@@ -99,7 +99,7 @@ export type ComponentClasses<Payload extends FactoryPayload> = {
 }
 
 /**
- * 定义 Mantine 组件的静态属性类型
+ * 定义 UI 组件的静态属性类型
  *
  * 该类型组合了多个功能特性：
  * - 主题扩展能力 (ThemeExtend)
@@ -109,7 +109,7 @@ export type ComponentClasses<Payload extends FactoryPayload> = {
  *
  * @template Payload 扩展自 FactoryPayload 的泛型参数，用于定义组件的基础能力集
  */
-export type MantineComponentStaticProperties<Payload extends FactoryPayload> = ThemeExtend<Payload> &
+export type UIComponentStaticProperties<Payload extends FactoryPayload> = ThemeExtend<Payload> &
     ComponentClasses<Payload> &
     StaticComponents<Payload['staticComponents']> &
     FactoryComponentWithProps<Payload>
@@ -135,7 +135,7 @@ export type FactoryComponentWithProps<Payload extends FactoryPayload> = {
 }
 
 /**
- * 定义 Mantine 组件的基础类型
+ * 定义 UI 组件的基础类型
  *
  * @template Payload 扩展自 FactoryPayload 的类型参数，包含组件的 props 和 ref 类型定义
  *
@@ -144,18 +144,18 @@ export type FactoryComponentWithProps<Payload extends FactoryPayload> = {
  * - 合并 Payload 中定义的 props 类型
  * - 支持通过 component 属性自定义根组件
  * - 支持通过 renderRoot 函数自定义渲染逻辑
- * - 附加 Mantine 组件的静态属性
+ * - 附加 UI 组件的静态属性
  *
- * 用于为 Mantine UI 库中的组件提供统一的类型定义基础
+ * 用于为 UI UI 库中的组件提供统一的类型定义基础
  */
-export type MantineComponent<Payload extends FactoryPayload> = React.ForwardRefExoticComponent<
+export type UIComponent<Payload extends FactoryPayload> = React.ForwardRefExoticComponent<
     Payload['props'] &
         React.RefAttributes<Payload['ref']> & {
             component?: any
             renderRoot?: (props: Record<string, any>) => React.ReactNode
         }
 > &
-    MantineComponentStaticProperties<Payload>
+    UIComponentStaticProperties<Payload>
 
 /**
  * 返回传入的相同值（恒等函数）
@@ -195,7 +195,7 @@ export function getWithProps<T, Props>(Component: T): (props: Partial<Props>) =>
  *
  * @template Payload 组件工厂的载荷类型，必须包含ref和props属性
  * @param ui 组件的渲染函数，使用React.forwardRef包装
- * @returns 返回一个可扩展的Mantine组件，包含extend和withProps扩展方法
+ * @returns 返回一个可扩展的UI组件，包含extend和withProps扩展方法
  *
  * @remarks
  * - extend方法用于扩展组件功能
@@ -216,10 +216,10 @@ export function factory<Payload extends FactoryPayload>(
         return Extended
     }
 
-    return Component as MantineComponent<Payload>
+    return Component as UIComponent<Payload>
 }
 
 export function genericFactory<Payload extends FactoryPayload>(ui: Payload['signature']) {
     return factory(ui as any) as unknown as Payload['signature'] &
-        MantineComponentStaticProperties<Payload> & { displayName?: string }
+        UIComponentStaticProperties<Payload> & { displayName?: string }
 }

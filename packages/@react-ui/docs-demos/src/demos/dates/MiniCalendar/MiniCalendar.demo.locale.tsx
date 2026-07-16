@@ -1,7 +1,7 @@
 import 'dayjs/locale/ru';
 
 import { MiniCalendar } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import 'dayjs/locale/ru';
@@ -16,7 +16,7 @@ function Demo() {
   return <MiniCalendar numberOfDays={6} defaultDate="2025-04-15" locale="ru" />;
 }
 
-export const locale: MantineDemo = {
+export const locale: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -17,7 +17,7 @@ import { DotsSixVerticalIcon } from '@phosphor-icons/react';
 import { Button, Center, Group, TextInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
 import { randomId } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Group, TextInput, Button, Center } from '@react-ui/ui';
@@ -41,12 +41,12 @@ function SortableItem({ id, index, form }) {
         <DotsSixVerticalIcon size={18} />
       </Center>
       <TextInput
-        placeholder="John Doe"
+        placeholder="张三"
         key={form.key(\`employees.\${index}.name\`)}
         {...form.getInputProps(\`employees.\${index}.name\`)}
       />
       <TextInput
-        placeholder="example@mail.com"
+        placeholder="yourname@example.com"
         key={form.key(\`employees.\${index}.email\`)}
         {...form.getInputProps(\`employees.\${index}.email\`)}
       />
@@ -59,11 +59,11 @@ function Demo() {
     mode: 'uncontrolled',
     initialValues: {
       employees: [
-        { name: 'John Doe', email: 'john@mantine.dev', key: randomId() },
-        { name: 'Bill Love', email: 'bill@mantine.dev', key: randomId() },
-        { name: 'Nancy Eagle', email: 'nanacy@mantine.dev', key: randomId() },
-        { name: 'Lim Notch', email: 'lim@mantine.dev', key: randomId() },
-        { name: 'Susan Seven', email: 'susan@mantine.dev', key: randomId() },
+        { name: 'John Doe', email: 'john@ui.dev', key: 'employee-1' },
+        { name: 'Bill Love', email: 'bill@ui.dev', key: 'employee-2' },
+        { name: 'Nancy Eagle', email: 'nanacy@ui.dev', key: 'employee-3' },
+        { name: 'Lim Notch', email: 'lim@ui.dev', key: 'employee-4' },
+        { name: 'Susan Seven', email: 'susan@ui.dev', key: 'employee-5' },
       ],
     },
   });
@@ -117,12 +117,12 @@ function SortableItem({ id, index, form }: any) {
         <DotsSixVerticalIcon size={18} />
       </Center>
       <TextInput
-        placeholder="John Doe"
+        placeholder="张三"
         key={form.key(`employees.${index}.name`)}
         {...form.getInputProps(`employees.${index}.name`)}
       />
       <TextInput
-        placeholder="example@mail.com"
+        placeholder="yourname@example.com"
         key={form.key(`employees.${index}.email`)}
         {...form.getInputProps(`employees.${index}.email`)}
       />
@@ -135,11 +135,11 @@ function Demo() {
     mode: 'uncontrolled',
     initialValues: {
       employees: [
-        { name: 'John Doe', email: 'john@mantine.dev', key: randomId() },
-        { name: 'Bill Love', email: 'bill@mantine.dev', key: randomId() },
-        { name: 'Nancy Eagle', email: 'nanacy@mantine.dev', key: randomId() },
-        { name: 'Lim Notch', email: 'lim@mantine.dev', key: randomId() },
-        { name: 'Susan Seven', email: 'susan@mantine.dev', key: randomId() },
+        { name: 'John Doe', email: 'john@ui.dev', key: 'employee-1' },
+        { name: 'Bill Love', email: 'bill@ui.dev', key: 'employee-2' },
+        { name: 'Nancy Eagle', email: 'nanacy@ui.dev', key: 'employee-3' },
+        { name: 'Lim Notch', email: 'lim@ui.dev', key: 'employee-4' },
+        { name: 'Susan Seven', email: 'susan@ui.dev', key: 'employee-5' },
       ],
     },
   });
@@ -177,7 +177,7 @@ function Demo() {
   );
 }
 
-export const dnd: MantineDemo = {
+export const dnd: UIDemo = {
   type: 'code',
   component: Demo,
   code,

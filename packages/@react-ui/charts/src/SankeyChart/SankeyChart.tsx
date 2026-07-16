@@ -14,10 +14,10 @@ import {
   factory,
   Factory,
   getThemeColor,
-  MantineColor,
+  UIColor,
   rem,
   StylesApiProps,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useResolvedStylesApi,
   useStyles,
@@ -27,7 +27,7 @@ import classes from './SankeyChart.module.css';
 
 export interface SankeyChartNode {
   name: string;
-  color?: MantineColor;
+  color?: UIColor;
   [key: string]: unknown;
 }
 
@@ -69,13 +69,13 @@ export interface SankeyChartProps
   iterations?: number;
 
   /** Default color for nodes, by default depends on color scheme */
-  nodeColor?: MantineColor;
+  nodeColor?: UIColor;
 
   /** An array of colors used for nodes when no `color` is set on individual nodes */
-  colors?: MantineColor[];
+  colors?: UIColor[];
 
   /** Default color for links, by default depends on color scheme */
-  linkColor?: MantineColor;
+  linkColor?: UIColor;
 
   /** Opacity of the link fill @default 0.4 */
   linkOpacity?: number;
@@ -93,7 +93,7 @@ export interface SankeyChartProps
   sankeyProps?: Partial<Omit<RechartsSankeyProps, 'ref' | 'data'>>;
 
   /** Controls text color of labels @default dimmed */
-  textColor?: MantineColor;
+  textColor?: UIColor;
 
   /** A function to format values inside the tooltip and node labels */
   valueFormatter?: (value: number) => string;
@@ -305,7 +305,7 @@ export const SankeyChart = factory<SankeyChartFactory>((_props) => {
     ...others
   } = props;
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
 
   const resolvedNodeColors: Record<number, string> = {};
   data.nodes.forEach((node, index) => {

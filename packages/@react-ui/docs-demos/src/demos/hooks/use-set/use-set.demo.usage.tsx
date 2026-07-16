@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Code, Stack, TextInput } from '@react-ui/ui';
 import { useSet } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -10,7 +10,7 @@ import { useSet } from '@react-ui/hooks';
 
 function Demo() {
   const [input, setInput] = useState('');
-  const scopes = useSet<string>(['@mantine', '@mantine-tests', '@mantinex']);
+  const scopes = useSet<string>(['@ui', '@ui-tests', '@uix']);
 
   const isDuplicate = scopes.has(input.trim().toLowerCase());
 
@@ -19,9 +19,9 @@ function Demo() {
   return (
     <>
       <TextInput
-        label="Add new scope"
-        placeholder="Enter scope"
-        description="Duplicate scopes are not allowed"
+        label="添加新作用域"
+        placeholder="输入作用域"
+        description="不允许重复的作用域"
         value={input}
         onChange={(event) => setInput(event.currentTarget.value)}
         error={isDuplicate && 'Scope already exists'}
@@ -43,7 +43,7 @@ function Demo() {
 
 function Demo() {
   const [input, setInput] = useState('');
-  const scopes = useSet<string>(['@mantine', '@mantine-tests', '@mantinex']);
+  const scopes = useSet<string>(['@ui', '@ui-tests', '@uix']);
 
   const isDuplicate = scopes.has(input.trim().toLowerCase());
 
@@ -52,9 +52,9 @@ function Demo() {
   return (
     <>
       <TextInput
-        label="Add new scope"
-        placeholder="Enter scope"
-        description="Duplicate scopes are not allowed"
+        label="添加新作用域"
+        placeholder="输入作用域"
+        description="不允许重复的作用域"
         value={input}
         onChange={(event) => setInput(event.currentTarget.value)}
         error={isDuplicate && 'Scope already exists'}
@@ -73,7 +73,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

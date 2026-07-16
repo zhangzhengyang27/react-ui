@@ -1,5 +1,5 @@
 import { RadarChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { multiData, multiDataCode } from './_data';
 
 const code = `
@@ -42,11 +42,11 @@ function Demo(props: any) {
   );
 }
 
-export const tooltip: MantineDemo = {
+export const tooltip: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: multiDataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

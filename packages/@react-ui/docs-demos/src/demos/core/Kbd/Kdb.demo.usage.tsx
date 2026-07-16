@@ -1,5 +1,5 @@
 import { Kbd } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Kbd } from '@react-ui/ui';
@@ -21,7 +21,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

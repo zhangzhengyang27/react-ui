@@ -1,28 +1,28 @@
 import { Avatar, Group, MultiSelect, MultiSelectProps, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { MultiSelect, MultiSelectProps, Avatar, Group, Text } from '@react-ui/ui';
 
 const usersData: Record<string, { image: string; email: string }> = {
   'Emily Johnson': {
-    image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-7.png',
+    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-7.png',
     email: 'emily92@gmail.com',
   },
   'Ava Rodriguez': {
-    image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png',
+    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-8.png',
     email: 'ava_rose@gmail.com',
   },
   'Olivia Chen': {
-    image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-4.png',
+    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-4.png',
     email: 'livvy_globe@gmail.com',
   },
   'Ethan Barnes': {
-    image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png',
+    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-1.png',
     email: 'ethan_explorer@gmail.com',
   },
   'Mason Taylor': {
-    image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-2.png',
+    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-2.png',
     email: 'mason_musician@gmail.com',
   },
 };
@@ -45,8 +45,8 @@ function Demo() {
       data={['Emily Johnson', 'Ava Rodriguez', 'Olivia Chen', 'Ethan Barnes', 'Mason Taylor']}
       renderOption={renderMultiSelectOption}
       maxDropdownHeight={300}
-      label="Employees of the month"
-      placeholder="Search for employee"
+      label="月度员工们"
+      placeholder="搜索员工"
       hidePickedOptions
       searchable
     />
@@ -56,23 +56,23 @@ function Demo() {
 
 const usersData: Record<string, { image: string; email: string }> = {
   'Emily Johnson': {
-    image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-7.png',
+    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-7.png',
     email: 'emily92@gmail.com',
   },
   'Ava Rodriguez': {
-    image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png',
+    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-8.png',
     email: 'ava_rose@gmail.com',
   },
   'Olivia Chen': {
-    image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-4.png',
+    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-4.png',
     email: 'livvy_globe@gmail.com',
   },
   'Ethan Barnes': {
-    image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png',
+    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-1.png',
     email: 'ethan_explorer@gmail.com',
   },
   'Mason Taylor': {
-    image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-2.png',
+    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-2.png',
     email: 'mason_musician@gmail.com',
   },
 };
@@ -95,15 +95,15 @@ function Demo() {
       data={['Emily Johnson', 'Ava Rodriguez', 'Olivia Chen', 'Ethan Barnes', 'Mason Taylor']}
       renderOption={renderMultiSelectOption}
       maxDropdownHeight={300}
-      label="Employees of the month"
-      placeholder="Search for employee"
+      label="月度员工们"
+      placeholder="搜索员工"
       hidePickedOptions
       searchable
     />
   );
 }
 
-export const renderOption: MantineDemo = {
+export const renderOption: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,5 +1,5 @@
 import { Checkbox, CheckboxProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Checkbox } from '@react-ui/ui';
@@ -15,7 +15,7 @@ function Demo() {
 }
 `;
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: (props: CheckboxProps) => <Checkbox {...props} defaultChecked />,
   code,
@@ -25,13 +25,13 @@ export const configurator: MantineDemo = {
       prop: 'labelPosition',
       type: 'segmented',
       data: [
-        { value: 'right', label: 'Right' },
-        { value: 'left', label: 'Left' },
+        { value: 'right', label: '右' },
+        { value: 'left', label: '左' },
       ],
       initialValue: 'right',
       libraryValue: 'right',
     },
-    { prop: 'label', type: 'string', initialValue: 'I agree to sell my privacy', libraryValue: '' },
+    { prop: 'label', type: 'string', initialValue: '我同意出售我的隐私', libraryValue: '' },
     { prop: 'description', type: 'string', initialValue: '', libraryValue: '' },
     { prop: 'error', type: 'string', initialValue: '', libraryValue: '' },
     { prop: 'color', type: 'color', initialValue: 'blue', libraryValue: 'blue' },
@@ -39,8 +39,8 @@ export const configurator: MantineDemo = {
       prop: 'variant',
       type: 'segmented',
       data: [
-        { value: 'filled', label: 'Filled' },
-        { value: 'outline', label: 'Outline' },
+        { value: 'filled', label: '填充' },
+        { value: 'outline', label: '轮廓' },
       ],
       initialValue: 'filled',
       libraryValue: 'filled',

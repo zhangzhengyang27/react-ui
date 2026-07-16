@@ -6,10 +6,10 @@ import {
     ElementProps,
     factory,
     Factory,
-    MantineSize,
+    UISize,
     rem,
     StylesApiProps,
-    useMantineTheme,
+    useUITheme,
     useProps,
     useStyles
 } from '../../../core'
@@ -36,7 +36,7 @@ export interface __ColorSliderProps extends ElementProps<'div', 'onChange'> {
     onScrubEnd?: () => void
 
     /** Slider size @default 'md' */
-    size?: MantineSize | (string & {})
+    size?: UISize | (string & {})
 
     /** If set, slider thumb can be focused @default true */
     focusable?: boolean
@@ -101,8 +101,8 @@ export const ColorSlider = factory<ColorSliderFactory>((_props, ref) => {
     const ctx = useContext(ColorPickerContext)
     const getStyles = ctx?.getStyles || _getStyles
 
-    const theme = useMantineTheme()
-    const [position, setPosition] = useState({ y: 0, x: value / maxValue })
+    const theme = useUITheme()
+    const [position, setPosition] = useState(() => ({ y: 0, x: value / maxValue }))
     const positionRef = useRef(position)
     const getChangeValue = (val: number) => (round ? Math.round(val * maxValue) : val * maxValue)
     const { ref: sliderRef } = useMove(

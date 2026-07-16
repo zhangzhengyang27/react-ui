@@ -1,6 +1,6 @@
 import { HeartIcon } from '@phosphor-icons/react';
 import { Alert } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { AlertStylesApi } from '@react-ui/docs-styles-api';
 
 const code = `
@@ -12,7 +12,7 @@ function Demo() {
   const icon = <HeartIcon />;
 
   return (
-    <Alert title="Alert title" icon={icon} withCloseButton{{props}}>
+    <Alert title="提示标题" icon={icon} withCloseButton{{props}}>
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt corporis natus veniam quis
       cupiditate enim architecto mollitia numquam temporibus, consectetur nam laboriosam voluptates
       nemo facilis? Exercitationem aut praesentium quibusdam reiciendis.
@@ -23,7 +23,7 @@ function Demo() {
 
 function Demo(props: any) {
   return (
-    <Alert title="Alert title" icon={<HeartIcon />} withCloseButton {...props}>
+    <Alert title="提示标题" icon={<HeartIcon />} withCloseButton {...props}>
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt corporis natus veniam quis
       cupiditate enim architecto mollitia numquam temporibus, consectetur nam laboriosam voluptates
       nemo facilis? Exercitationem aut praesentium quibusdam reiciendis.
@@ -31,7 +31,7 @@ function Demo(props: any) {
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: AlertStylesApi,
   component: Demo,

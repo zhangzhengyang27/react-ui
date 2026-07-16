@@ -1,5 +1,5 @@
 import { useTextSelection } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useTextSelection } from '@react-ui/hooks';
@@ -8,7 +8,7 @@ function Demo() {
   const selection = useTextSelection();
   return (
     <>
-      <div>Select some text here or anywhere on the page and it will be displayed below</div>
+      <div>在此页面任意位置选择一些文本，它将显示在下方</div>
       <div>Selected text: {selection?.toString()}</div>
     </>
   );
@@ -19,7 +19,7 @@ function Demo() {
   const selection = useTextSelection();
   return (
     <>
-      <div>Select some text here or anywhere on the page and it will be displayed below</div>
+      <div>在此页面任意位置选择一些文本，它将显示在下方</div>
       <div>
         Selected text: <b>{selection?.toString()}</b>
       </div>
@@ -27,7 +27,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

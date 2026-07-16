@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 import { Combobox, Input, InputBase, ScrollArea, useVirtualizedCombobox } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useRef, useState } from 'react';
@@ -62,7 +62,7 @@ function Demo() {
     <Combobox store={combobox} resetSelectionOnOptionHover={false} keepMounted>
       <Combobox.Target>
         <InputBase component="button" onClick={() => combobox.toggleDropdown()} pointer>
-          {value || <Input.Placeholder>Pick a value</Input.Placeholder>}
+          {value || <Input.Placeholder>选择一个值</Input.Placeholder>}
         </InputBase>
       </Combobox.Target>
       <Combobox.Dropdown>
@@ -153,7 +153,7 @@ function Demo() {
     <Combobox store={combobox} resetSelectionOnOptionHover={false} keepMounted>
       <Combobox.Target>
         <InputBase component="button" onClick={() => combobox.toggleDropdown()} pointer>
-          {value || <Input.Placeholder>Pick a value</Input.Placeholder>}
+          {value || <Input.Placeholder>选择一个值</Input.Placeholder>}
         </InputBase>
       </Combobox.Target>
       <Combobox.Dropdown>
@@ -189,7 +189,7 @@ function Demo() {
   );
 }
 
-export const virtualized: MantineDemo = {
+export const virtualized: UIDemo = {
   type: 'code',
   component: Demo,
   code,

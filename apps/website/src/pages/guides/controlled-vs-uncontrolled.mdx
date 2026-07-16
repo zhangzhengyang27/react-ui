@@ -23,7 +23,7 @@ function Demo() {
 
   return (
     <TextInput
-      label="Controlled TextInput"
+      label="受控文本输入"
       value={value}
       onChange={(event) => setValue(event.currentTarget.value)}
     />
@@ -57,8 +57,8 @@ function Demo() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <TextInput label="Uncontrolled TextInput" ref={inputRef} />
-      <Button type="submit">Submit</Button>
+      <TextInput label="非受控文本输入" ref={inputRef} />
+      <Button type="submit">提交</Button>
     </form>
   );
 }
@@ -107,8 +107,8 @@ function Demo() {
         console.log('Checkbox value:', !!formData.get('terms'));
       }}
     >
-      <Checkbox label="Accept terms and conditions" name="terms" defaultChecked />
-      <button type="submit">Submit</button>
+      <Checkbox label="接受条款和条件" name="terms" defaultChecked />
+      <button type="submit">提交</button>
     </form>
   );
 }
@@ -132,7 +132,7 @@ function Demo() {
     initialValues: { name: '', email: '' },
     validate: {
       name: hasLength({ min: 3 }, 'Must be at least 3 characters'),
-      email: isEmail('Invalid email'),
+      email: isEmail('无效的邮箱'),
     },
   });
 
@@ -143,18 +143,18 @@ function Demo() {
       <TextInput
         {...form.getInputProps('name')}
         key={form.key('name')}
-        label="Name"
-        placeholder="Name"
+        label="姓名"
+        placeholder="姓名"
       />
       <TextInput
         {...form.getInputProps('email')}
         key={form.key('email')}
         mt="md"
-        label="Email"
-        placeholder="Email"
+        label="邮箱"
+        placeholder="邮箱"
       />
       <Button type="submit" mt="md">
-        Submit
+        提交
       </Button>
 
       <Text mt="md">Form values:</Text>

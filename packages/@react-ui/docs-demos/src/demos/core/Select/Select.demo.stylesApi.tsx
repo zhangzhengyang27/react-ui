@@ -1,6 +1,6 @@
 import { AtIcon } from '@phosphor-icons/react';
 import { Select } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { SelectStylesApi } from '@react-ui/docs-styles-api';
 
 const code = `
@@ -12,10 +12,10 @@ function Demo() {
     <Select
      {{props}}
       leftSection={<AtIcon size={18} />}
-      label="Select"
-      description="Description"
-      error="Error"
-      placeholder="Select"
+      label="选择"
+      description="描述"
+      error="错误"
+      placeholder="选择"
       data={['React', 'Angular']}
     />
   );
@@ -29,9 +29,9 @@ function Demo(props: any) {
       dropdownOpened
       leftSection={<AtIcon size={18} />}
       withAsterisk
-      label="Select"
-      description="Description"
-      placeholder="Select"
+      label="选择"
+      description="描述"
+      placeholder="选择"
       comboboxProps={{ hideDetached: false }}
       data={[
         { group: 'Frontend', items: ['React', 'Angular'] },
@@ -41,7 +41,7 @@ function Demo(props: any) {
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: SelectStylesApi,
   component: Demo,

@@ -1,5 +1,5 @@
 import { Menu, MenuProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { FLOATING_ARROW_POSITION_DATA } from '../../../shared/floating-position-data';
 import { DemoMenuItems } from './_menu-items';
 
@@ -23,7 +23,7 @@ function Demo() {
 }
 `;
 
-export const positionConfigurator: MantineDemo = {
+export const positionConfigurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

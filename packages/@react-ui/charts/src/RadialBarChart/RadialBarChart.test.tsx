@@ -1,4 +1,4 @@
-import { autoPatchWarn, tests } from '@mantine-tests/core';
+import { autoPatchWarn, tests } from '@react-ui/tests';
 import { RadialBarChart, RadialBarChartProps, RadialBarChartStylesNames } from './RadialBarChart';
 
 const defaultProps: RadialBarChartProps = {

@@ -5,8 +5,8 @@ import {
     type BoxProps,
     type ElementProps,
     type Factory,
-    type MantineColor,
-    type MantineSize,
+    type UIColor,
+    type UISize,
     type StylesApiProps
 } from '../../core'
 import classes from './Radio.module.css'
@@ -23,11 +23,11 @@ export interface RadioIndicatorProps
     /** If set, indicator is disabled */
     disabled?: boolean
 
-    /** Key of theme.colors or any valid CSS color */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 */
+    color?: UIColor
 
     /** Controls indicator size */
-    size?: MantineSize | (string & {})
+    size?: UISize | (string & {})
 }
 
 export type RadioIndicatorFactory = Factory<{

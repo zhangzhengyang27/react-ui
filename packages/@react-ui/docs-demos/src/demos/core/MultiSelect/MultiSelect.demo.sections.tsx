@@ -1,6 +1,6 @@
 import { SquaresFourIcon } from '@phosphor-icons/react';
 import { MultiSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { MultiSelect } from '@react-ui/ui';
@@ -14,16 +14,16 @@ function Demo() {
         data={['React', 'Angular', 'Vue']}
         leftSectionPointerEvents="none"
         leftSection={icon}
-        label="Your favorite libraries"
-        placeholder="Your favorite libraries"
+        label="你最喜欢的库"
+        placeholder="你最喜欢的库"
       />
       <MultiSelect
         mt="md"
         data={['React', 'Angular', 'Vue']}
         rightSectionPointerEvents="none"
         rightSection={icon}
-        label="Your favorite libraries"
-        placeholder="Your favorite libraries"
+        label="你最喜欢的库"
+        placeholder="你最喜欢的库"
       />
     </>
   );
@@ -38,22 +38,22 @@ function Demo() {
         data={['React', 'Angular', 'Vue']}
         leftSectionPointerEvents="none"
         leftSection={icon}
-        label="Your favorite libraries"
-        placeholder="Your favorite libraries"
+        label="你最喜欢的库"
+        placeholder="你最喜欢的库"
       />
       <MultiSelect
         mt="md"
         data={['React', 'Angular', 'Vue']}
         rightSectionPointerEvents="none"
         rightSection={icon}
-        label="Your favorite libraries"
-        placeholder="Your favorite libraries"
+        label="你最喜欢的库"
+        placeholder="你最喜欢的库"
       />
     </>
   );
 }
 
-export const sections: MantineDemo = {
+export const sections: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

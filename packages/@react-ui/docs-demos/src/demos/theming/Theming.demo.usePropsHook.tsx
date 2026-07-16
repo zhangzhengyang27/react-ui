@@ -1,8 +1,8 @@
-import { createTheme, MantineThemeProvider, useProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { createTheme, UIThemeProvider, useProps } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
-import { useProps, MantineThemeProvider, createTheme } from '@react-ui/ui';
+import { useProps, UIThemeProvider, createTheme } from '@react-ui/ui';
 
 interface CustomComponentProps {
   color?: string;
@@ -31,12 +31,12 @@ const theme = createTheme({
 function Demo() {
   return (
     <div>
-      <CustomComponent>Default color</CustomComponent>
+      <CustomComponent>默认颜色</CustomComponent>
 
-      <MantineThemeProvider theme={theme}>
-        <CustomComponent>Provider color</CustomComponent>
-        <CustomComponent color="blue">Prop color</CustomComponent>
-      </MantineThemeProvider>
+      <UIThemeProvider theme={theme}>
+        <CustomComponent>提供器颜色</CustomComponent>
+        <CustomComponent color="blue">属性颜色</CustomComponent>
+      </UIThemeProvider>
     </div>
   );
 }
@@ -69,17 +69,17 @@ const theme = createTheme({
 function Demo() {
   return (
     <div>
-      <CustomComponent>Default color</CustomComponent>
+      <CustomComponent>默认颜色</CustomComponent>
 
-      <MantineThemeProvider theme={theme}>
-        <CustomComponent>Provider color</CustomComponent>
-        <CustomComponent color="blue">Prop color</CustomComponent>
-      </MantineThemeProvider>
+      <UIThemeProvider theme={theme}>
+        <CustomComponent>提供器颜色</CustomComponent>
+        <CustomComponent color="blue">属性颜色</CustomComponent>
+      </UIThemeProvider>
     </div>
   );
 }
 
-export const usePropsHook: MantineDemo = {
+export const usePropsHook: UIDemo = {
   type: 'code',
   component: Demo,
   code,

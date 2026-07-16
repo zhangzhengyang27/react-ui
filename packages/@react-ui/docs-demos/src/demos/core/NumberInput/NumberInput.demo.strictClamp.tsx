@@ -1,5 +1,5 @@
 import { NumberInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NumberInput } from '@react-ui/ui';
@@ -7,8 +7,8 @@ import { NumberInput } from '@react-ui/ui';
 function Demo() {
   return (
     <NumberInput
-      label="Strict clamping between 0 and 100"
-      placeholder="Enter a number"
+      label="严格限制在 0 到 100 之间"
+      placeholder="输入一个数字"
       clampBehavior="strict"
       min={0}
       max={100}
@@ -20,8 +20,8 @@ function Demo() {
 function Demo() {
   return (
     <NumberInput
-      label="Strict clamping between 0 and 100"
-      placeholder="Enter a number"
+      label="严格限制在 0 到 100 之间"
+      placeholder="输入一个数字"
       clampBehavior="strict"
       min={0}
       max={100}
@@ -29,7 +29,7 @@ function Demo() {
   );
 }
 
-export const strictClamp: MantineDemo = {
+export const strictClamp: UIDemo = {
   type: 'code',
   component: Demo,
   code,

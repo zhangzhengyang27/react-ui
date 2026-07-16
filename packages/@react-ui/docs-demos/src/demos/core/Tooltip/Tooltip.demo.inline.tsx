@@ -1,5 +1,5 @@
 import { Mark, Text, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Tooltip, Mark, Text } from '@react-ui/ui';
@@ -9,8 +9,8 @@ function Demo() {
     <Text>
       Stantler’s magnificent antlers were traded at high prices as works of art. As a result, this
       Pokémon was hunted close to extinction by those who were after the priceless antlers.{' '}
-      <Tooltip inline label="Inline tooltip">
-        <Mark>When visiting a junkyard</Mark>
+      <Tooltip inline label="内联提示">
+        <Mark>当访问废品场时</Mark>
       </Tooltip>
       , you may catch sight of it having an intense fight with Murkrow over shiny objects.Ho-Oh’s
       feathers glow in seven colors depending on the angle at which they are struck by light. These
@@ -26,8 +26,8 @@ function Demo() {
     <Text>
       Stantler’s magnificent antlers were traded at high prices as works of art. As a result, this
       Pokémon was hunted close to extinction by those who were after the priceless antlers.{' '}
-      <Tooltip inline label="Inline tooltip">
-        <Mark>When visiting a junkyard</Mark>
+      <Tooltip inline label="内联提示">
+        <Mark>当访问废品场时</Mark>
       </Tooltip>
       , you may catch sight of it having an intense fight with Murkrow over shiny objects.Ho-Oh’s
       feathers glow in seven colors depending on the angle at which they are struck by light. These
@@ -37,7 +37,7 @@ function Demo() {
   );
 }
 
-export const inline: MantineDemo = {
+export const inline: UIDemo = {
   type: 'code',
   component: Demo,
   code,

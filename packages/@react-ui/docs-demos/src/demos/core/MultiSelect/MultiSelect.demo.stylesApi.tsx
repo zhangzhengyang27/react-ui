@@ -1,6 +1,6 @@
 import { AtIcon } from '@phosphor-icons/react';
 import { MultiSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { MultiSelectStylesApi } from '@react-ui/docs-styles-api';
 
 const code = `
@@ -12,10 +12,10 @@ function Demo() {
     <MultiSelect
      {{props}}
       leftSection={<AtIcon size={18} />}
-      label="MultiSelect"
-      description="Description"
-      error="Error"
-      placeholder="MultiSelect"
+      label="多选"
+      description="描述"
+      error="错误"
+      placeholder="多选"
       defaultValue={['React', 'Angular']}
       data={[
         { group: 'Frontend', items: ['React', 'Angular'] },
@@ -33,9 +33,9 @@ function Demo(props: any) {
       dropdownOpened
       leftSection={<AtIcon size={18} />}
       withAsterisk
-      label="MultiSelect"
-      description="Description"
-      placeholder="MultiSelect"
+      label="多选"
+      description="描述"
+      placeholder="多选"
       defaultValue={['React', 'Angular']}
       comboboxProps={{ hideDetached: false }}
       data={[
@@ -46,7 +46,7 @@ function Demo(props: any) {
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: MultiSelectStylesApi,
   component: Demo,

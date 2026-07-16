@@ -7,7 +7,7 @@ import {
   factory,
   Factory,
   getFontSize,
-  MantineComponentStaticProperties,
+  UIComponentStaticProperties,
   StylesApiProps,
   UnstyledButton,
   useProps,
@@ -109,7 +109,7 @@ type MonthPickerComponent = (<Type extends DatePickerType = 'default'>(
   props: MonthPickerProps<Type> & { ref?: React.Ref<HTMLDivElement> }
 ) => React.JSX.Element) & {
   displayName?: string;
-} & MantineComponentStaticProperties<MonthPickerFactory>;
+} & UIComponentStaticProperties<MonthPickerFactory>;
 
 export const MonthPicker: MonthPickerComponent = factory<MonthPickerFactory>((_props) => {
   const props = useProps('MonthPicker', defaultProps, _props);
@@ -227,7 +227,7 @@ export const MonthPicker: MonthPickerComponent = factory<MonthPickerFactory>((_p
       {...getStyles('presetButton')}
       onClick={() => handlePresetSelect(preset.value)}
       onMouseDown={(event) => event.preventDefault()}
-      data-mantine-stop-propagation={__stopPropagation || undefined}
+      data-ui-stop-propagation={__stopPropagation || undefined}
     >
       {preset.label}
     </UnstyledButton>

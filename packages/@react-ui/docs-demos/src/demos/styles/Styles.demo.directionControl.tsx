@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { TextAlignLeftIcon, TextAlignRightIcon } from '@phosphor-icons/react';
 import { ActionIcon, useDirection } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ActionIcon, useDirection } from '@react-ui/ui';
@@ -32,7 +32,7 @@ function Demo() {
   );
 }
 
-export const directionControl: MantineDemo = {
+export const directionControl: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

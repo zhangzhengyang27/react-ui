@@ -1,6 +1,6 @@
 import { Carousel } from '@react-ui/carousel';
 import { Image } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { images as _images } from './_images';
 
 const code = `
@@ -8,11 +8,11 @@ import { Carousel } from '@react-ui/carousel';
 import { Image } from '@react-ui/ui';
 
 const images = [
-  'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-1.png',
-  'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-2.png',
-  'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-3.png',
-  'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-4.png',
-  'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-5.png',
+  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-1.png',
+  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-2.png',
+  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-3.png',
+  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-4.png',
+  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-5.png',
 ];
 
 function Demo() {
@@ -44,7 +44,7 @@ function Demo() {
   );
 }
 
-export const images: MantineDemo = {
+export const images: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,10 +1,10 @@
-# Mantine Spotlight
+# UI Spotlight
 
 [![npm](https://img.shields.io/npm/dm/@react-ui/spotlight)](https://www.npmjs.com/package/@react-ui/spotlight)
 
 Overlay command center for your application
 
-[Documentation](https://mantine.dev/)
+[Documentation](#)
 
 ## Installation
 

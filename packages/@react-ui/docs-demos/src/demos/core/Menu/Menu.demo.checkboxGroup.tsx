@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Menu } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -12,16 +12,16 @@ function Demo() {
   return (
     <Menu shadow="md" width={220} closeOnItemClick={false}>
       <Menu.Target>
-        <Button>Columns</Button>
+        <Button>列</Button>
       </Menu.Target>
 
       <Menu.Dropdown>
-        <Menu.Label>Visible columns</Menu.Label>
+        <Menu.Label>可见列</Menu.Label>
         <Menu.CheckboxGroup value={columns} onChange={setColumns}>
-          <Menu.CheckboxItem value="name">Name</Menu.CheckboxItem>
-          <Menu.CheckboxItem value="email">Email</Menu.CheckboxItem>
-          <Menu.CheckboxItem value="role">Role</Menu.CheckboxItem>
-          <Menu.CheckboxItem value="lastSeen">Last seen</Menu.CheckboxItem>
+          <Menu.CheckboxItem value="name">姓名</Menu.CheckboxItem>
+          <Menu.CheckboxItem value="email">邮箱</Menu.CheckboxItem>
+          <Menu.CheckboxItem value="role">角色</Menu.CheckboxItem>
+          <Menu.CheckboxItem value="lastSeen">最后查看</Menu.CheckboxItem>
         </Menu.CheckboxGroup>
       </Menu.Dropdown>
     </Menu>
@@ -35,23 +35,23 @@ function Demo() {
   return (
     <Menu shadow="md" width={220} closeOnItemClick={false}>
       <Menu.Target>
-        <Button>Columns</Button>
+        <Button>列</Button>
       </Menu.Target>
 
       <Menu.Dropdown>
-        <Menu.Label>Visible columns</Menu.Label>
+        <Menu.Label>可见列</Menu.Label>
         <Menu.CheckboxGroup value={columns} onChange={setColumns}>
-          <Menu.CheckboxItem value="name">Name</Menu.CheckboxItem>
-          <Menu.CheckboxItem value="email">Email</Menu.CheckboxItem>
-          <Menu.CheckboxItem value="role">Role</Menu.CheckboxItem>
-          <Menu.CheckboxItem value="lastSeen">Last seen</Menu.CheckboxItem>
+          <Menu.CheckboxItem value="name">姓名</Menu.CheckboxItem>
+          <Menu.CheckboxItem value="email">邮箱</Menu.CheckboxItem>
+          <Menu.CheckboxItem value="role">角色</Menu.CheckboxItem>
+          <Menu.CheckboxItem value="lastSeen">最后查看</Menu.CheckboxItem>
         </Menu.CheckboxGroup>
       </Menu.Dropdown>
     </Menu>
   );
 }
 
-export const checkboxGroup: MantineDemo = {
+export const checkboxGroup: UIDemo = {
   type: 'code',
   component: Demo,
   code,

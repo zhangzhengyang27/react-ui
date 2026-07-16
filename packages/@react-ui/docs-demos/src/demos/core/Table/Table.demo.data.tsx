@@ -1,5 +1,5 @@
 import { Table, TableData } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Table, TableData } from '@react-ui/ui';
@@ -37,7 +37,7 @@ function Demo() {
   return <Table data={tableData} />;
 }
 
-export const data: MantineDemo = {
+export const data: UIDemo = {
   type: 'code',
   component: Demo,
   code,

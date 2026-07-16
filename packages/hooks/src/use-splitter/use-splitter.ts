@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-deprecated */
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useUncontrolled } from '../use-uncontrolled/use-uncontrolled'
 

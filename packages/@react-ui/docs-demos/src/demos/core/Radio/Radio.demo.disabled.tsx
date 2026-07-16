@@ -1,5 +1,5 @@
 import { Group, Radio } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Radio, Group } from '@react-ui/ui';
@@ -25,7 +25,7 @@ function Demo() {
   );
 }
 
-export const disabled: MantineDemo = {
+export const disabled: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

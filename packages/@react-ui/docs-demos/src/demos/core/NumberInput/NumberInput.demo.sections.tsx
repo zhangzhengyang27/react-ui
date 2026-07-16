@@ -1,6 +1,6 @@
 import { CurrencyEthIcon } from '@phosphor-icons/react';
 import { NumberInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NumberInput } from '@react-ui/ui';
@@ -10,11 +10,11 @@ function Demo() {
   const icon = <CurrencyEthIcon size={20} />;
   return (
     <>
-      <NumberInput leftSection={icon} label="With left section" placeholder="With left section" />
+      <NumberInput leftSection={icon} label="带左侧区域" placeholder="带左侧区域" />
       <NumberInput
         rightSection={icon}
-        label="With right section"
-        placeholder="With right section"
+        label="带右侧区域"
+        placeholder="带右侧区域"
         mt="md"
       />
     </>
@@ -26,18 +26,18 @@ function Demo() {
   const icon = <CurrencyEthIcon size={20} />;
   return (
     <>
-      <NumberInput leftSection={icon} label="With left section" placeholder="With left section" />
+      <NumberInput leftSection={icon} label="带左侧区域" placeholder="带左侧区域" />
       <NumberInput
         rightSection={icon}
-        label="With right section"
-        placeholder="With right section"
+        label="带右侧区域"
+        placeholder="带右侧区域"
         mt="md"
       />
     </>
   );
 }
 
-export const sections: MantineDemo = {
+export const sections: UIDemo = {
   type: 'code',
   component: Demo,
   code,

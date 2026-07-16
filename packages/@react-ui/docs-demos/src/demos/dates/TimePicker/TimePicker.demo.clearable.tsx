@@ -1,19 +1,19 @@
 import { TimePicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TimePicker } from '@react-ui/dates';
 
 function Demo() {
-  return <TimePicker label="Enter time" clearable defaultValue="12:34:44" />;
+  return <TimePicker label="输入时间" clearable defaultValue="12:34:44" />;
 }
 `;
 
 function Demo() {
-  return <TimePicker label="Enter time" clearable defaultValue="12:34:44" />;
+  return <TimePicker label="输入时间" clearable defaultValue="12:34:44" />;
 }
 
-export const clearable: MantineDemo = {
+export const clearable: UIDemo = {
   type: 'code',
   component: Demo,
   code,

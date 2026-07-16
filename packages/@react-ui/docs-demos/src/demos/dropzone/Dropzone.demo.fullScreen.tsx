@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Button, Group } from '@react-ui/ui';
 import { Dropzone, IMAGE_MIME_TYPE } from '@react-ui/dropzone';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { DropzoneDemoChildren } from './_base';
 
 const code = `
@@ -18,7 +18,7 @@ function Demo() {
     <>
       <Group justify="center">
         <Button color={active ? 'red' : 'blue'} onClick={() => setActive((d) => !d)}>
-          {active ? 'Deactivate' : 'Activate'} full screen dropzone
+          {active ? '退出' : '激活'}全屏拖放区
         </Button>
       </Group>
 
@@ -63,7 +63,7 @@ function Demo() {
     <>
       <Group justify="center">
         <Button color={active ? 'red' : 'blue'} onClick={() => setActive((d) => !d)}>
-          {active ? 'Deactivate' : 'Activate'} full screen dropzone
+          {active ? '退出' : '激活'}全屏拖放区
         </Button>
       </Group>
 
@@ -81,7 +81,7 @@ function Demo() {
   );
 }
 
-export const fullScreen: MantineDemo = {
+export const fullScreen: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,7 +1,7 @@
 .root {
   --combobox-shell-navbar-width: 300px;
 
-  @mixin smaller-than $docs-mdx-breakpoint {
+  @media (max-width: 67.5em) {
     --combobox-shell-navbar-width: 0;
   }
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Group, Pagination, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -39,7 +39,7 @@ function Demo() {
   );
 }
 
-export const withPages: MantineDemo = {
+export const withPages: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -2,9 +2,9 @@
 
 [![npm](https://img.shields.io/npm/dm/@react-ui/demo)](https://www.npmjs.com/package/@react-ui/demo)
 
-Demo base components used on *.mantine.dev websites
+Demo base components used on react-ui.dev websites
 
-[View documentation](https://mantine.dev/)
+[View documentation](#)
 
 ## Installation
 

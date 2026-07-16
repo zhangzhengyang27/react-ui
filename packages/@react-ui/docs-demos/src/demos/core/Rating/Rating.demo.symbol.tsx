@@ -1,6 +1,6 @@
 import { MoonIcon, SunIcon } from '@phosphor-icons/react';
 import { Rating } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Rating } from '@react-ui/ui';
@@ -15,7 +15,7 @@ function Demo() {
   return <Rating emptySymbol={<SunIcon size={16} />} fullSymbol={<MoonIcon size={16} />} />;
 }
 
-export const symbol: MantineDemo = {
+export const symbol: UIDemo = {
   type: 'code',
   component: Demo,
   code,

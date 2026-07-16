@@ -1,7 +1,7 @@
 import { CaretDownIcon } from '@phosphor-icons/react';
 import { Stack } from '@react-ui/ui';
 import { TimePicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { CaretDownIcon } from '@phosphor-icons/react';
@@ -12,7 +12,7 @@ function Demo() {
   return (
     <Stack>
       <TimePicker
-        label="clearSectionMode='both' (default)"
+        label="clearSectionMode='both'（默认）"
         defaultValue="12:30"
         clearable
         rightSection={<CaretDownIcon size={16} />}
@@ -43,7 +43,7 @@ function Demo() {
   return (
     <Stack>
       <TimePicker
-        label="clearSectionMode='both' (default)"
+        label="clearSectionMode='both'（默认）"
         defaultValue="12:30"
         clearable
         rightSection={<CaretDownIcon size={16} />}
@@ -69,7 +69,7 @@ function Demo() {
   );
 }
 
-export const clearSectionMode: MantineDemo = {
+export const clearSectionMode: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { clampUseMovePosition, useMove, UseMovePosition } from '@react-ui/hooks'
-import { Box, ElementProps, MantineSize } from '../../../core'
+import { Box, ElementProps, UISize } from '../../../core'
 import { useColorPickerContext } from '../ColorPicker.context'
 import { HsvaColor } from '../ColorPicker.types'
 import { convertHsvaTo } from '../converters'
@@ -13,7 +13,7 @@ export interface SaturationProps extends ElementProps<'div', 'onChange'> {
     onScrubStart?: () => void
     onScrubEnd?: () => void
     saturationLabel?: string
-    size: MantineSize | (string & {})
+    size: UISize | (string & {})
     color: string
     focusable?: boolean
 }
@@ -33,7 +33,7 @@ export function Saturation({
 }: SaturationProps) {
     const { getStyles } = useColorPickerContext()
 
-    const [position, setPosition] = useState({ x: value.s / 100, y: 1 - value.v / 100 })
+    const [position, setPosition] = useState(() => ({ x: value.s / 100, y: 1 - value.v / 100 }))
     const positionRef = useRef(position)
 
     const { ref } = useMove(

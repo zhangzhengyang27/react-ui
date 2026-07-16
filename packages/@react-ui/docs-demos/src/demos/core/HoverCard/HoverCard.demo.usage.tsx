@@ -1,5 +1,5 @@
 import { Button, Group, HoverCard, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { HoverCard, Button, Text, Group } from '@react-ui/ui';
@@ -9,7 +9,7 @@ function Demo() {
     <Group justify="center">
       <HoverCard width={280} shadow="md">
         <HoverCard.Target>
-          <Button>Hover to reveal the card</Button>
+          <Button>悬停显示卡片</Button>
         </HoverCard.Target>
         <HoverCard.Dropdown>
           <Text size="sm">
@@ -29,7 +29,7 @@ function Demo() {
     <Group justify="center">
       <HoverCard width={280} shadow="md">
         <HoverCard.Target>
-          <Button>Hover to reveal the card</Button>
+          <Button>悬停显示卡片</Button>
         </HoverCard.Target>
         <HoverCard.Dropdown>
           <Text size="sm">
@@ -42,7 +42,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -8,7 +8,7 @@ import {
   TreeNodeData,
   useTree,
 } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -133,7 +133,7 @@ function Demo() {
   return <Tree data={data} tree={tree} withLines renderNode={(payload) => <Leaf {...payload} />} />;
 }
 
-export const asyncLoading: MantineDemo = {
+export const asyncLoading: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

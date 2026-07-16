@@ -3,22 +3,22 @@ import type { StylesApiData } from '../types';
 
 export const AlertStylesApi: StylesApiData<AlertFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
     wrapper: 'Wrapper around `body` and `icon`',
     body: 'Body element, contains `title` and `message`',
     title: 'Title element, contains `label` and `icon`',
     label: 'Title label',
     message: 'Alert message',
-    icon: 'Icon element',
-    closeButton: 'Close button',
+    icon: '图标元素',
+    closeButton: '关闭按钮',
   },
 
   vars: {
     root: {
-      '--alert-bd': 'Controls `border`',
-      '--alert-bg': 'Controls `background`',
-      '--alert-color': 'Controls `color`',
-      '--alert-radius': 'Controls `border-radius`',
+      '--alert-bd': '控制 `border`',
+      '--alert-bg': '控制 `background`',
+      '--alert-color': '控制 `color`',
+      '--alert-radius': '控制 `border-radius`',
     },
   },
 
@@ -26,7 +26,7 @@ export const AlertStylesApi: StylesApiData<AlertFactory> = {
     {
       modifier: 'data-with-close-button',
       selector: 'title',
-      condition: '`withCloseButton` prop is set',
+      condition: '设置了 `withCloseButton` 属性',
     },
   ],
 };

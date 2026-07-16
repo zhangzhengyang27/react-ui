@@ -1,19 +1,19 @@
 import { Badge } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Badge } from '@react-ui/ui';
 
 function Demo() {
-  return <Badge fullWidth>Full width badge</Badge>;
+  return <Badge fullWidth>全宽徽章</Badge>;
 }
 `;
 
 function Demo() {
-  return <Badge fullWidth>Full width badge</Badge>;
+  return <Badge fullWidth>全宽徽章</Badge>;
 }
 
-export const fullWidth: MantineDemo = {
+export const fullWidth: UIDemo = {
   type: 'code',
   component: Demo,
   code,

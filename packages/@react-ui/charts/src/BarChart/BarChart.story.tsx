@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react';
 import { ReferenceArea } from 'recharts';
-import { getThemeColor, MantineProvider, useMantineTheme } from '@react-ui/ui';
+import { getThemeColor, UIProvider, useUITheme } from '@react-ui/ui';
 import { BarChart } from './BarChart';
 
 const meta = {
@@ -8,9 +8,9 @@ const meta = {
   component: BarChart,
   decorators: [
     (Story) => (
-      <MantineProvider>
+      <UIProvider>
         <Story />
-      </MantineProvider>
+      </UIProvider>
     ),
   ],
 } satisfies Meta<typeof BarChart>;
@@ -253,7 +253,7 @@ export function SimpleReferenceArea() {
 }
 
 export function ReferenceAreaVertical() {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   return (
     <div style={{ padding: 40 }}>
       <BarChart

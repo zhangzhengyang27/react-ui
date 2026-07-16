@@ -1,5 +1,5 @@
 import { YearPickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { YearPickerInput } from '@react-ui/dates';
@@ -9,8 +9,8 @@ function Demo() {
     <YearPickerInput
       valueFormat="YY"
       type="multiple"
-      label="Disabled"
-      placeholder="Pick year"
+      label="已禁用"
+      placeholder="选择年份"
       disabled
     />
   );
@@ -22,14 +22,14 @@ function Demo() {
     <YearPickerInput
       valueFormat="YY"
       type="multiple"
-      label="Disabled"
-      placeholder="Pick year"
+      label="已禁用"
+      placeholder="选择年份"
       disabled
     />
   );
 }
 
-export const disabled: MantineDemo = {
+export const disabled: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

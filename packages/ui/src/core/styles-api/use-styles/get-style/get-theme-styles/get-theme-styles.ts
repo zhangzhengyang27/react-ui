@@ -1,8 +1,8 @@
-import { MantineTheme } from '../../../../MantineProvider'
+import { UITheme } from '../../../../UIProvider'
 import { resolveStyles } from '../resolve-styles/resolve-styles'
 
 interface GetThemeStylesOptions {
-    theme: MantineTheme
+    theme: UITheme
     themeName: string[]
     props: Record<string, any>
     stylesCtx: Record<string, any> | undefined

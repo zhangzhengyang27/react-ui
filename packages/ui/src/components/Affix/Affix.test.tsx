@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Affix } from './Affix'
 
 describe('Affix', () => {
     it('renders children', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Affix>fixed content</Affix>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('fixed content')).toBeInTheDocument()
@@ -16,12 +16,12 @@ describe('Affix', () => {
 
     it('supports custom position', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Affix position={{ top: 20, left: 30 }}>fixed content</Affix>
-            </MantineProvider>
+            </UIProvider>
         )
 
         const element = screen.getByText('fixed content')
-        expect(element).toHaveClass('mantine-Affix-root')
+        expect(element).toHaveClass('ui-Affix-root')
     })
 })

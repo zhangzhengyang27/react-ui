@@ -4,7 +4,7 @@ import {
     createVarsResolver,
     getDefaultZIndex,
     getRadius,
-    MantineRadius,
+    UIRadius,
     polymorphicFactory,
     PolymorphicFactory,
     rem,
@@ -37,7 +37,7 @@ export interface OverlayProps extends BoxProps, StylesApiProps<OverlayFactory> {
     zIndex?: string | number
 
     /** Key of `theme.radius` or any valid CSS value to set border-radius @default 0 */
-    radius?: MantineRadius
+    radius?: UIRadius
 
     /** Content inside overlay */
     children?: React.ReactNode

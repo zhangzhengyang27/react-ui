@@ -22,10 +22,10 @@ export default Layout(MDX_DATA.Vite);
 
 ## PostCSS 配置
 
-安装 PostCSS 插件和 [postcss-preset-mantine](/styles/postcss-preset)：
+安装 PostCSS 插件和 [postcss-preset-ui](/styles/postcss-preset)：
 
 <InstallScript
-  packages="postcss postcss-preset-mantine postcss-simple-vars"
+  packages="postcss postcss-preset-ui postcss-simple-vars"
   dev
 />
 
@@ -34,14 +34,14 @@ export default Layout(MDX_DATA.Vite);
 ```js
 module.exports = {
   plugins: {
-    'postcss-preset-mantine': {},
+    'postcss-preset-ui': {},
     'postcss-simple-vars': {
       variables: {
-        'mantine-breakpoint-xs': '36em',
-        'mantine-breakpoint-sm': '48em',
-        'mantine-breakpoint-md': '62em',
-        'mantine-breakpoint-lg': '75em',
-        'mantine-breakpoint-xl': '88em',
+        'ui-breakpoint-xs': '36em',
+        'ui-breakpoint-sm': '48em',
+        'ui-breakpoint-md': '62em',
+        'ui-breakpoint-lg': '75em',
+        'ui-breakpoint-xl': '88em',
       },
     },
   },
@@ -50,17 +50,17 @@ module.exports = {
 
 ## 配置
 
-在应用根组件（通常是 `App.tsx`）中添加样式导入和 [MantineProvider](/theming/mantine-provider)：
+在应用根组件（通常是 `App.tsx`）中添加样式导入和 [UIProvider](/theming/ui-provider)：
 
 ```tsx
 // 导入你已安装包的样式。
 // 除 `@react-ui/hooks` 外，所有包都需要导入样式
 import '@react-ui/ui/styles.css';
 
-import { MantineProvider } from '@react-ui/ui';
+import { UIProvider } from '@react-ui/ui';
 
 export default function App() {
-  return <MantineProvider>{/* 你的应用内容 */}</MantineProvider>;
+  return <UIProvider>{/* 你的应用内容 */}</UIProvider>;
 }
 ```
 

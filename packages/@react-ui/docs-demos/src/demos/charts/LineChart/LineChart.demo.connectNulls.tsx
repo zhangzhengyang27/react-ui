@@ -1,5 +1,5 @@
 import { LineChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { connectNullsData, connectNullsDataCode } from './_data';
 
 const code = `
@@ -13,7 +13,7 @@ function Demo() {
       h={300}
       data={data}
       dataKey="date"
-      series={[{ name: 'Apples', color: 'indigo.6' }]}
+      series={[{ name: '苹果', color: 'indigo.6' }]}
       {{props}}
     />
   );
@@ -26,17 +26,17 @@ function Wrapper(props: any) {
       h={300}
       data={connectNullsData}
       dataKey="date"
-      series={[{ name: 'Apples', color: 'indigo.6' }]}
+      series={[{ name: '苹果', color: 'indigo.6' }]}
       {...props}
     />
   );
 }
 
-export const connectNulls: MantineDemo = {
+export const connectNulls: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: connectNullsDataCode, language: 'tsx', fileName: 'data.ts' },
   ],
   controls: [

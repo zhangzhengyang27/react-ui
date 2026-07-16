@@ -1,5 +1,5 @@
 import { Textarea } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Textarea } from '@react-ui/ui';
@@ -8,15 +8,15 @@ function Demo() {
   return (
     <>
       <Textarea
-        placeholder="Autosize with no rows limit"
-        label="Autosize with no rows limit"
+        placeholder="自动高度，无行数限制"
+        label="自动高度，无行数限制"
         autosize
         minRows={4}
       />
 
       <Textarea
-        label="Autosize with 4 rows max"
-        placeholder="Autosize with 4 rows max"
+        label="自动高度，最多 4 行"
+        placeholder="自动高度，最多 4 行"
         autosize
         minRows={2}
         maxRows={4}
@@ -31,15 +31,15 @@ function Demo() {
   return (
     <>
       <Textarea
-        placeholder="Autosize with no rows limit"
-        label="Autosize with no rows limit"
+        placeholder="自动高度，无行数限制"
+        label="自动高度，无行数限制"
         autosize
         minRows={4}
       />
 
       <Textarea
-        label="Autosize with 4 rows max"
-        placeholder="Autosize with 4 rows max"
+        label="自动高度，最多 4 行"
+        placeholder="自动高度，最多 4 行"
         autosize
         minRows={2}
         maxRows={4}
@@ -49,7 +49,7 @@ function Demo() {
   );
 }
 
-export const autosize: MantineDemo = {
+export const autosize: UIDemo = {
   type: 'code',
   code,
   component: Demo,

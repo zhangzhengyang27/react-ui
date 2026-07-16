@@ -38,6 +38,7 @@ export const PaginationDots = factory<PaginationDotsFactory>((_props, ref) => {
     return (
         <Box
             ref={ref}
+            aria-label="..."
             {...ctx.getStyles('dots', { className, style, styles, classNames })}
             {...others}
         >

@@ -1,6 +1,6 @@
 import { Button, Modal, Text } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { AuthenticationForm } from '../../../shared/AuthenticationForm/AuthenticationForm';
 
 const code = `
@@ -15,7 +15,7 @@ function Demo() {
       <Modal
         opened={opened}
         onClose={close}
-        title="This is a fullscreen modal"
+        title="这是全屏模态框"
         fullScreen
         radius={0}
         transitionProps={{ transition: 'fade', duration: 200 }}
@@ -24,7 +24,7 @@ function Demo() {
       </Modal>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
@@ -39,7 +39,7 @@ function Demo() {
       <Modal
         opened={opened}
         onClose={close}
-        title="This is a fullscreen modal"
+        title="这是全屏模态框"
         fullScreen
         radius={0}
         transitionProps={{ transition: 'fade', duration: 200 }}
@@ -54,13 +54,13 @@ function Demo() {
       </Modal>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
 }
 
-export const fullScreen: MantineDemo = {
+export const fullScreen: UIDemo = {
   type: 'code',
   code,
   centered: true,

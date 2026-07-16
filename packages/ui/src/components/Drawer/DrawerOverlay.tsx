@@ -26,4 +26,4 @@ export const DrawerOverlay = factory<DrawerOverlayFactory>((_props, ref) => {
 })
 
 DrawerOverlay.classes = classes
-DrawerOverlay.displayName = '@mantine/core/DrawerOverlay'
+DrawerOverlay.displayName = '@react-ui/ui/DrawerOverlay'

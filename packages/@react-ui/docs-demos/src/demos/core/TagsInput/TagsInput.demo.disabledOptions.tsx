@@ -1,5 +1,5 @@
 import { TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TagsInput } from '@react-ui/ui';
@@ -7,8 +7,8 @@ import { TagsInput } from '@react-ui/ui';
 function Demo() {
   return (
     <TagsInput
-      label="Enter tags"
-      placeholder="Some tags are disabled"
+      label="输入标签"
+      placeholder="部分标签已禁用"
       data={[
         { value: 'React' },
         { value: 'Angular' },
@@ -23,8 +23,8 @@ function Demo() {
 function Demo() {
   return (
     <TagsInput
-      label="Enter tags"
-      placeholder="Some tags are disabled"
+      label="输入标签"
+      placeholder="部分标签已禁用"
       data={[
         { value: 'React' },
         { value: 'Angular' },
@@ -35,7 +35,7 @@ function Demo() {
   );
 }
 
-export const disabledOptions: MantineDemo = {
+export const disabledOptions: UIDemo = {
   type: 'code',
   component: Demo,
   code,

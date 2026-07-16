@@ -21,4 +21,4 @@ export const ModalBaseTitle = forwardRef<HTMLHeadingElement, ModalBaseTitleProps
     }
 )
 
-ModalBaseTitle.displayName = '@mantine/core/ModalBaseTitle'
+ModalBaseTitle.displayName = '@react-ui/ui/ModalBaseTitle'

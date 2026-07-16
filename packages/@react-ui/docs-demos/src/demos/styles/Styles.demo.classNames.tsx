@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TextInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Styles.demo.classNames.module.css';
 
 const code = `
@@ -15,7 +15,7 @@ function Demo() {
 
   return (
     <TextInput
-      label="Floating label input"
+      label="浮动标签输入"
       labelProps={{ 'data-floating': floating }}
       classNames={{
         root: classes.root,
@@ -72,7 +72,7 @@ function Demo() {
 
   return (
     <TextInput
-      label="Floating label input"
+      label="浮动标签输入"
       labelProps={{ 'data-floating': floating }}
       classNames={{
         root: classes.root,
@@ -87,13 +87,13 @@ function Demo() {
   );
 }
 
-export const classNames: MantineDemo = {
+export const classNames: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 360,
   centered: true,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
-    { fileName: 'Demo.module.css', language: 'scss', code: cssCode },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
+    { fileName: '演示样式.module.css', language: 'scss', code: cssCode },
   ],
 };

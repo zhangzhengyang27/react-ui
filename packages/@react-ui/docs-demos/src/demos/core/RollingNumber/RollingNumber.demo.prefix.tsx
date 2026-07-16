@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Group, RollingNumber } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -23,7 +23,7 @@ function Demo() {
       <Group mt="md">
         <Button onClick={() => setValue((v) => +(v + 10.5).toFixed(2))}>+10.50</Button>
         <Button onClick={() => setValue((v) => +(v - 10.5).toFixed(2))}>-10.50</Button>
-        <Button onClick={() => setValue(+(Math.random() * 10000).toFixed(2))}>Random</Button>
+        <Button onClick={() => setValue(+(Math.random() * 10000).toFixed(2))}>随机</Button>
       </Group>
     </>
   );
@@ -47,13 +47,13 @@ function Demo() {
       <Group mt="md">
         <Button onClick={() => setValue((v) => +(v + 10.5).toFixed(2))}>+10.50</Button>
         <Button onClick={() => setValue((v) => +(v - 10.5).toFixed(2))}>-10.50</Button>
-        <Button onClick={() => setValue(+(Math.random() * 10000).toFixed(2))}>Random</Button>
+        <Button onClick={() => setValue(+(Math.random() * 10000).toFixed(2))}>随机</Button>
       </Group>
     </>
   );
 }
 
-export const prefix: MantineDemo = {
+export const prefix: UIDemo = {
   type: 'code',
   component: Demo,
   code,

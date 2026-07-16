@@ -1,5 +1,5 @@
 import { TimePicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { inputControls } from '../../../shared';
 
 const code = `
@@ -20,7 +20,7 @@ function Wrapper(props: any) {
   return <TimePicker withDropdown {...props} />;
 }
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

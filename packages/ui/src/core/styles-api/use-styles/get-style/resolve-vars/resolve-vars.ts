@@ -1,12 +1,12 @@
 import { CSSProperties } from 'react'
 import { CssVariable } from '../../../../Box'
-import { MantineTheme } from '../../../../MantineProvider'
+import { UITheme } from '../../../../UIProvider'
 import { mergeVars } from './merge-vars'
 
 type ResolvedVars = Partial<Record<string, Record<CssVariable, string>>>
 
 export type VarsResolver = (
-    theme: MantineTheme,
+    theme: UITheme,
     props: Record<string, any>,
     stylesCtx: Record<string, any> | undefined
 ) => ResolvedVars
@@ -14,7 +14,7 @@ export type VarsResolver = (
 interface ResolveVarsInput {
     vars: VarsResolver | undefined
     varsResolver: VarsResolver | undefined
-    theme: MantineTheme
+    theme: UITheme
     props: Record<string, any>
     stylesCtx: Record<string, any> | undefined
     selector: string

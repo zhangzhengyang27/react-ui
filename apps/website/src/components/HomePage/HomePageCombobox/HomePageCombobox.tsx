@@ -1,12 +1,14 @@
 import Link from 'next/link'
 import { ArrowUpRightIcon } from '@phosphor-icons/react'
 import { Anchor, Box, SimpleGrid, Title } from '@react-ui/ui'
-import { AutocompleteHighlight } from '../../../combobox-examples/examples/AutocompleteHighlight/AutocompleteHighlight'
-import { MaxSelectedItems } from '../../../combobox-examples/examples/MaxSelectedItems/MaxSelectedItems'
-import { MultiSelectCreatable } from '../../../combobox-examples/examples/MultiSelectCreatable/MultiSelectCreatable'
-import { SelectDropdownSearch } from '../../../combobox-examples/examples/SelectDropdownSearch/SelectDropdownSearch'
-import { SelectOptionComponent } from '../../../combobox-examples/examples/SelectOptionComponent/SelectOptionComponent'
-import { TransferList } from '../../../combobox-examples/examples/TransferList/TransferList'
+import {
+  AutocompleteHighlight,
+  MaxSelectedItems,
+  MultiSelectCreatable,
+  SelectDropdownSearch,
+  SelectOptionComponent,
+  TransferList,
+} from '@react-ui/docs-demos';
 import { HomePageContainer } from '../shared/HomePageContainer/HomePageContainer'
 import { HomePageDescription } from '../shared/HomePageDescription/HomePageDescription'
 import { HomePageLearnMore } from '../shared/HomePageLearnMore/HomePageLearnMore'
@@ -15,28 +17,28 @@ import classes from './HomePageCombobox.module.css'
 
 const comboboxExamples: ComboboxDemoProps[] = [
     {
-        title: 'Autocomplete with search highlight',
+        title: '带搜索高亮的自动完成',
         name: 'AutocompleteHighlight',
         component: AutocompleteHighlight
     },
     {
-        title: 'Multiselect with selected items limit',
+        title: '限制选中项数量的多选',
         name: 'MaxSelectedItems',
         component: MaxSelectedItems
     },
-    { title: 'Creatable Multiselect', name: 'MultiSelectCreatable', component: MultiSelectCreatable },
+    { title: '可创建选项的多选', name: 'MultiSelectCreatable', component: MultiSelectCreatable },
     {
-        title: 'Select with search in dropdown',
+        title: '下拉框内搜索的选择器',
         name: 'SelectDropdownSearch',
         component: SelectDropdownSearch
     },
     {
-        title: 'Select with custom option component',
+        title: '自定义选项组件的选择器',
         name: 'SelectOptionComponent',
         component: SelectOptionComponent
     },
     {
-        title: 'Transfer list',
+        title: '穿梭框',
         name: 'TransferList',
         component: TransferList
     }
@@ -58,7 +60,7 @@ function ComboboxDemo({ title, name, hiddenOnMobile, component: Component }: Com
                 </Title>
 
                 <Anchor component={Link} href={`/combobox/?e=${name}`} className={classes.demoLink}>
-                    <span>View example code</span>
+                    <span>查看示例代码</span>
                     <ArrowUpRightIcon size={16} />
                 </Anchor>
             </header>
@@ -76,15 +78,14 @@ export function HomePageCombobox() {
     return (
         <section className={classes.root}>
             <HomePageContainer>
-                <HomePageTitle order={2}>Combobox component</HomePageTitle>
+                <HomePageTitle order={2}>Combobox 组件</HomePageTitle>
 
                 <HomePageDescription className={classes.description}>
-                    Combobox is a composable component which can be used to create custom select, multiselect,
-                    autocomplete, tags input and other similar components. It provides a lot of flexibility and gives
-                    you full control over the UI and behavior while keeping your codebase clean and simple.
+                    Combobox 是一个可组合组件，可用于创建自定义选择器、多选、自动完成、标签输入等类似组件。
+                    它提供了极大的灵活性，让你完全控制 UI 和行为，同时保持代码库简洁清晰。
                 </HomePageDescription>
 
-                <HomePageLearnMore href="/combobox/?e=BasicSelect">Explore all 50+ Combobox examples</HomePageLearnMore>
+                <HomePageLearnMore href="/combobox/?e=BasicSelect">探索 50+ Combobox 示例</HomePageLearnMore>
 
                 <SimpleGrid cols={{ lg: 3, sm: 2 }} className={classes.grid}>
                     {demos}

@@ -11,7 +11,7 @@
   position: sticky;
   top: 120px;
 
-  @mixin smaller-than $mantine-breakpoint-md {
+  @media (max-width: 62em) {
     position: static;
   }
 }
@@ -19,7 +19,7 @@
 .secondaryColumn {
   padding-top: 84px;
 
-  @mixin smaller-than $mantine-breakpoint-md {
+  @media (max-width: 62em) {
     padding-top: 30px;
   }
 }
@@ -67,7 +67,7 @@
     color: var(--ui-color-anchor);
     text-decoration: none;
 
-    @mixin hover {
+    &:hover {
       text-decoration: underline;
     }
   }
@@ -85,7 +85,7 @@
   font-weight: 600;
   color: var(--ui-color-bright);
 
-  @mixin hover {
+  &:hover {
     text-decoration: underline;
   }
 }
@@ -95,7 +95,7 @@
   gap: var(--ui-spacing-xl);
   margin-top: var(--ui-spacing-xl);
 
-  @mixin smaller-than $mantine-breakpoint-md {
+  @media (max-width: 62em) {
     flex-direction: column;
   }
 }
@@ -109,7 +109,7 @@
     border-inline-start: 1px solid
       light-dark(var(--ui-color-gray-3), var(--ui-color-dark-4));
 
-    @mixin smaller-than $mantine-breakpoint-md {
+    @media (max-width: 62em) {
       padding-inline-start: 0;
       border-inline-start: none !important;
       padding-top: var(--ui-spacing-lg);
@@ -123,7 +123,7 @@
   font-size: 28px;
   color: var(--ui-color-bright);
 
-  @mixin smaller-than $mantine-breakpoint-md {
+  @media (max-width: 62em) {
     font-size: 20px;
   }
 }

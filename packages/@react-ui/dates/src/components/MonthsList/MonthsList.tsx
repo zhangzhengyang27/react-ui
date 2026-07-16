@@ -6,7 +6,7 @@ import {
   ElementProps,
   factory,
   Factory,
-  MantineSize,
+  UISize,
   StylesApiProps,
   useProps,
   useStyles,
@@ -54,7 +54,7 @@ export interface MonthsListProps
   year: DateStringValue;
 
   /** Component size */
-  size?: MantineSize;
+  size?: UISize;
 }
 
 export type MonthsListFactory = Factory<{
@@ -139,7 +139,7 @@ export const MonthsList = factory<MonthsListFactory>((_props) => {
             unstyled={unstyled}
             fullWidth={fullWidth}
             __staticSelector={__staticSelector || 'MonthsList'}
-            data-mantine-stop-propagation={__stopPropagation || undefined}
+            data-ui-stop-propagation={__stopPropagation || undefined}
             disabled={isMonthDisabled({
               month,
               minDate: toDateString(minDate)!,

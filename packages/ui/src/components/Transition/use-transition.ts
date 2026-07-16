@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import ReactDOM from 'react-dom'
 import { useDidUpdate, useReducedMotion } from '@react-ui/hooks'
-import { useMantineTheme } from '../../core'
+import { useUITheme } from '../../core'
 
 export type TransitionStatus = 'entered' | 'exited' | 'entering' | 'exiting' | 'pre-exiting' | 'pre-entering'
 
@@ -19,7 +19,7 @@ interface UseTransition {
 }
 
 /**
- * 管理 enter/exit 过渡状态机。对齐 mantine useTransition。
+ * 管理 enter/exit 过渡状态机。对齐 ui useTransition。
  * 引擎无关（纯状态 + 定时器）。
  */
 export function useTransition({
@@ -34,7 +34,7 @@ export function useTransition({
     enterDelay,
     exitDelay
 }: UseTransition) {
-    const theme = useMantineTheme()
+    const theme = useUITheme()
     const shouldReduceMotion = useReducedMotion()
     const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false
     const [transitionDuration, setTransitionDuration] = useState(reduceMotion ? 0 : duration)

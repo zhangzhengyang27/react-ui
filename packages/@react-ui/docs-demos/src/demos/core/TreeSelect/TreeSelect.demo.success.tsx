@@ -1,5 +1,5 @@
 import { TreeSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './data';
 
 const code = `
@@ -7,21 +7,21 @@ import { TreeSelect } from '@react-ui/ui';
 import { data } from './data';
 
 function Demo() {
-  return <TreeSelect label="Tree Select" placeholder="Tree Select" data={data} success="Looks good!" />;
+  return <TreeSelect label="树形选择" placeholder="树形选择" data={data} success="看起来不错！" />;
 }
 `;
 
 function Demo() {
   return (
-    <TreeSelect label="Tree Select" placeholder="Tree Select" data={data} success="Looks good!" />
+    <TreeSelect label="树形选择" placeholder="树形选择" data={data} success="看起来不错！" />
   );
 }
 
-export const success: MantineDemo = {
+export const success: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
     { fileName: 'data.ts', language: 'tsx', code: dataCode },
   ],
   maxWidth: 340,

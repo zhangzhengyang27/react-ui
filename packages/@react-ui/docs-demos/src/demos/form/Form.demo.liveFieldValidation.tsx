@@ -2,7 +2,7 @@
 
 import { Button, NumberInput, TextInput } from '@react-ui/ui';
 import { FORM_INDEX, useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useForm, FORM_INDEX } from '@react-ui/form';
@@ -21,9 +21,9 @@ function Demo() {
 
     // functions will be used to validate values at corresponding key
     validate: {
-      name: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
-      email: (value) => (/^\\S+@\\S+$/.test(value) ? null : 'Invalid email'),
-      age: (value) => (value < 18 ? 'You must be at least 18 to register' : null),
+      name: (value) => (value.length < 2 ? '姓名至少包含 2 个字母' : null),
+      email: (value) => (/^\\S+@\\S+$/.test(value) ? null : '无效的邮箱'),
+      age: (value) => (value < 18 ? '注册年龄必须至少 18 岁' : null),
       jobs: {
         title: (value) => (value.length < 2 ? 'Job must have at least 2 letters' : null),
       },
@@ -33,22 +33,22 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit(console.log)}>
       <TextInput
-        label="Name"
-        placeholder="Name"
+        label="姓名"
+        placeholder="姓名"
         key={form.key('name')}
         {...form.getInputProps('name')}
       />
       <TextInput
         mt="sm"
-        label="Email"
-        placeholder="Email"
+        label="邮箱"
+        placeholder="邮箱"
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
       <NumberInput
         mt="sm"
-        label="Age"
-        placeholder="Age"
+        label="年龄"
+        placeholder="年龄"
         min={0}
         max={99}
         key={form.key('age')}
@@ -56,20 +56,20 @@ function Demo() {
       />
       <TextInput
         mt="sm"
-        label="Job 1"
-        placeholder="Job 1"
+        label="工作 1"
+        placeholder="工作 1"
         key={form.key('jobs.0.title')}
         {...form.getInputProps('jobs.0.title')}
       />
       <TextInput
         mt="sm"
-        label="Job 2"
-        placeholder="Job 2"
+        label="工作 2"
+        placeholder="工作 2"
         key={form.key('jobs.1.title')}
         {...form.getInputProps('jobs.1.title')}
       />
       <Button type="submit" mt="sm">
-        Submit
+        提交
       </Button>
     </form>
   );
@@ -89,9 +89,9 @@ function Demo() {
 
     // Functions will be used to validate values at corresponding key
     validate: {
-      name: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
-      age: (value) => (value < 18 ? 'You must be at least 18 to register' : null),
+      name: (value) => (value.length < 2 ? '姓名至少包含 2 个字母' : null),
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : '无效的邮箱'),
+      age: (value) => (value < 18 ? '注册年龄必须至少 18 岁' : null),
       jobs: {
         title: (value) => (value.length < 2 ? 'Job must have at least 2 letters' : null),
       },
@@ -101,22 +101,22 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit(console.log)}>
       <TextInput
-        label="Name"
-        placeholder="Name"
+        label="姓名"
+        placeholder="姓名"
         key={form.key('name')}
         {...form.getInputProps('name')}
       />
       <TextInput
         mt="sm"
-        label="Email"
-        placeholder="Email"
+        label="邮箱"
+        placeholder="邮箱"
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
       <NumberInput
         mt="sm"
-        label="Age"
-        placeholder="Age"
+        label="年龄"
+        placeholder="年龄"
         min={0}
         max={99}
         key={form.key('age')}
@@ -124,26 +124,26 @@ function Demo() {
       />
       <TextInput
         mt="sm"
-        label="Job 1"
-        placeholder="Job 1"
+        label="工作 1"
+        placeholder="工作 1"
         key={form.key('jobs.0.title')}
         {...form.getInputProps('jobs.0.title')}
       />
       <TextInput
         mt="sm"
-        label="Job 2"
-        placeholder="Job 2"
+        label="工作 2"
+        placeholder="工作 2"
         key={form.key('jobs.1.title')}
         {...form.getInputProps('jobs.1.title')}
       />
       <Button type="submit" mt="sm">
-        Submit
+        提交
       </Button>
     </form>
   );
 }
 
-export const liveFieldValidation: MantineDemo = {
+export const liveFieldValidation: UIDemo = {
   type: 'code',
   component: Demo,
   code,

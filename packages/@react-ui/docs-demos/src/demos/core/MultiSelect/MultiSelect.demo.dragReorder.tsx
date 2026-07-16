@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MultiSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -11,9 +11,9 @@ function Demo() {
 
   return (
     <MultiSelect
-      label="Drag pills to reorder"
-      description="Selected values can be reordered by dragging pills"
-      placeholder="Pick value"
+      label="拖动胶囊重新排序"
+      description="可以通过拖动胶囊重新排序已选值"
+      placeholder="选择值"
       data={['React', 'Angular', 'Vue', 'Svelte', 'Solid', 'Ember']}
       value={value}
       onChange={setValue}
@@ -28,9 +28,9 @@ function Demo() {
 
   return (
     <MultiSelect
-      label="Drag pills to reorder"
-      description="Selected values can be reordered by dragging pills"
-      placeholder="Pick value"
+      label="拖动胶囊重新排序"
+      description="可以通过拖动胶囊重新排序已选值"
+      placeholder="选择值"
       data={['React', 'Angular', 'Vue', 'Svelte', 'Solid', 'Ember']}
       value={value}
       onChange={setValue}
@@ -39,7 +39,7 @@ function Demo() {
   );
 }
 
-export const dragReorder: MantineDemo = {
+export const dragReorder: UIDemo = {
   type: 'code',
   component: Demo,
   code,

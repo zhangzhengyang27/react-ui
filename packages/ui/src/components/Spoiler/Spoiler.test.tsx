@@ -1,6 +1,6 @@
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Spoiler } from './Spoiler'
 
 vi.mock('@react-ui/hooks', async () => {
@@ -12,7 +12,7 @@ vi.mock('@react-ui/hooks', async () => {
 })
 
 function Wrapper({ children }: { children: React.ReactNode }) {
-    return <MantineProvider>{children}</MantineProvider>
+    return <UIProvider>{children}</UIProvider>
 }
 
 const defaultProps = {

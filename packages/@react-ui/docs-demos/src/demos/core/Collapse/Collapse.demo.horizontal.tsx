@@ -1,6 +1,6 @@
 import { Button, Collapse, Stack, Typography } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Collapse, Stack, Typography } from '@react-ui/ui';
@@ -12,7 +12,7 @@ function Demo() {
   return (
     <Stack h={240} align="flex-start">
       <Button onClick={handlers.toggle} w="fit-content">
-        {expanded ? 'Collapse' : 'Expand'}
+        {expanded ? '收起' : '展开'}
       </Button>
 
       <Collapse expanded={expanded} orientation="horizontal">
@@ -32,7 +32,7 @@ function Demo() {
   return (
     <Stack h={240} align="flex-start">
       <Button onClick={handlers.toggle} w="fit-content">
-        {expanded ? 'Collapse' : 'Expand'}
+        {expanded ? '收起' : '展开'}
       </Button>
 
       <Collapse expanded={expanded} orientation="horizontal">
@@ -45,7 +45,7 @@ function Demo() {
   );
 }
 
-export const horizontal: MantineDemo = {
+export const horizontal: UIDemo = {
   type: 'code',
   component: Demo,
   code,

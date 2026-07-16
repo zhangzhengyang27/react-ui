@@ -1,5 +1,5 @@
 import { Button, ComboboxPopover } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, ComboboxPopover } from '@react-ui/ui';
@@ -12,7 +12,7 @@ function Demo() {
   return (
     <ComboboxPopover data={data} maxDropdownHeight={200}>
       <ComboboxPopover.Target>
-        <Button variant="default" miw={200}>Select option</Button>
+        <Button variant="default" miw={200}>选择选项</Button>
       </ComboboxPopover.Target>
     </ComboboxPopover>
   );
@@ -35,7 +35,7 @@ function Demo() {
   );
 }
 
-export const scrollArea: MantineDemo = {
+export const scrollArea: UIDemo = {
   type: 'code',
   component: Demo,
   code,

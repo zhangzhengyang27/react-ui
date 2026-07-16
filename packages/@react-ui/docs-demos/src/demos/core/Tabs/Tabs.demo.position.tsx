@@ -1,13 +1,13 @@
 import { Tabs, TabsListProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: TabsListProps) {
   return (
     <Tabs defaultValue="first">
       <Tabs.List {...props}>
-        <Tabs.Tab value="first">First tab</Tabs.Tab>
-        <Tabs.Tab value="second">Second tab</Tabs.Tab>
-        <Tabs.Tab value="third">Third tab</Tabs.Tab>
+        <Tabs.Tab value="first">第一个标签</Tabs.Tab>
+        <Tabs.Tab value="second">第二个标签</Tabs.Tab>
+        <Tabs.Tab value="third">第三个标签</Tabs.Tab>
       </Tabs.List>
     </Tabs>
   );
@@ -20,16 +20,16 @@ function Demo() {
   return (
     <Tabs defaultValue="first">
       <Tabs.List{{props}}>
-        <Tabs.Tab value="first">First tab</Tabs.Tab>
-        <Tabs.Tab value="second">Second tab</Tabs.Tab>
-        <Tabs.Tab value="third">Third tab</Tabs.Tab>
+        <Tabs.Tab value="first">第一个标签</Tabs.Tab>
+        <Tabs.Tab value="second">第二个标签</Tabs.Tab>
+        <Tabs.Tab value="third">第三个标签</Tabs.Tab>
       </Tabs.List>
     </Tabs>
   );
 }
 `;
 
-export const position: MantineDemo = {
+export const position: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

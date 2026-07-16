@@ -1,6 +1,6 @@
 import { Badge, Text } from '@react-ui/ui';
 import { useScrollDirection } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Badge, Text } from '@react-ui/ui';
@@ -16,7 +16,7 @@ function Demo() {
         {direction === 'down' && '↓ Scrolling DOWN'}
         {direction === 'unknown' && 'Scroll to detect direction'}
       </Badge>
-      <Text mt="xs">Scroll the page to see the scroll direction</Text>
+      <Text mt="xs">滚动页面查看滚动方向</Text>
     </>
   );
 }
@@ -32,12 +32,12 @@ function Demo() {
         {direction === 'down' && '↓ Scrolling DOWN'}
         {direction === 'unknown' && 'Scroll to detect direction'}
       </Badge>
-      <Text mt="xs">Scroll the page to see the scroll direction</Text>
+      <Text mt="xs">滚动页面查看滚动方向</Text>
     </>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

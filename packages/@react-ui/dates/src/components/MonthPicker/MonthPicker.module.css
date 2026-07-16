@@ -10,11 +10,11 @@
   padding-inline-end: 0.5em;
   margin-inline-end: 0.5em;
 
-  @mixin where-light {
+  [data-ui-color-scheme='light'] & {
     border-color: var(--ui-color-gray-2);
   }
 
-  @mixin where-dark {
+  [data-ui-color-scheme='dark'] & {
     border-color: var(--ui-color-dark-5);
   }
 }
@@ -25,12 +25,12 @@
   font-size: var(--preset-font-size);
   white-space: nowrap;
 
-  @mixin hover {
-    @mixin where-light {
+  &:hover {
+    [data-ui-color-scheme='light'] & {
       background-color: var(--ui-color-gray-0);
     }
 
-    @mixin where-dark {
+    [data-ui-color-scheme='dark'] & {
       background-color: var(--ui-color-dark-5);
     }
   }

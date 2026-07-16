@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Group, Rating, Stack, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -11,7 +11,7 @@ function Demo() {
 
   return (
     <Stack gap="md" align="center">
-      <Text size="sm">Click the same star to clear the rating</Text>
+      <Text size="sm">点击同一颗星清除评分</Text>
       <Rating value={value} onChange={setValue} allowClear />
       <Group gap="xs">
         <Text size="sm" c="dimmed">
@@ -31,7 +31,7 @@ function Demo() {
 
   return (
     <Stack gap="md" align="center">
-      <Text size="sm">Click the same star to clear the rating</Text>
+      <Text size="sm">点击同一颗星清除评分</Text>
       <Rating value={value} onChange={setValue} allowClear />
       <Group gap="xs">
         <Text size="sm" c="dimmed">
@@ -45,7 +45,7 @@ function Demo() {
   );
 }
 
-export const allowClear: MantineDemo = {
+export const allowClear: UIDemo = {
   type: 'code',
   component: Demo,
   code,

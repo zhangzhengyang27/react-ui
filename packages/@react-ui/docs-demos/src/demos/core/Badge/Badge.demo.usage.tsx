@@ -1,19 +1,19 @@
 import { Badge } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Badge } from '@react-ui/ui';
 
 function Demo() {
-  return <Badge{{props}}>Badge</Badge>;
+  return <Badge{{props}}>徽章</Badge>;
 }
 `;
 
 function Wrapper(props: any) {
-  return <Badge {...props}>Badge</Badge>;
+  return <Badge {...props}>徽章</Badge>;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

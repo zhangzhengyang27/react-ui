@@ -1,5 +1,5 @@
 import { WeekView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { regularEvents } from './_data';
 
 const code = `
@@ -29,7 +29,7 @@ function Demo() {
   );
 }
 
-export const forceCurrentTimeIndicator: MantineDemo = {
+export const forceCurrentTimeIndicator: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

@@ -27,7 +27,7 @@ const defaultProps = {
 
 export const ComboboxEventsTarget = factory<ComboboxEventsTargetFactory>((props, ref) => {
     const { children, refProp, autoComplete, ...others } = useProps('ComboboxEventsTarget', defaultProps, props)
-    const child = getSingleElementChild(children)
+    const child = getSingleElementChild(children) as React.ReactElement<any>
 
     if (!child) {
         throw new Error(
@@ -58,4 +58,4 @@ export const ComboboxEventsTarget = factory<ComboboxEventsTargetFactory>((props,
     })
 })
 
-ComboboxEventsTarget.displayName = '@mantine/core/ComboboxEventsTarget'
+ComboboxEventsTarget.displayName = '@react-ui/ui/ComboboxEventsTarget'

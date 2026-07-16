@@ -1,14 +1,14 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { Schedule, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const backgroundEventsData: ScheduleEventData[] = [
   {
     id: 'lunch-block',
-    title: 'Lunch break',
+    title: '午餐休息',
     start: `${today} 12:00:00`,
     end: `${today} 13:00:00`,
     color: 'gray',
@@ -16,7 +16,7 @@ const backgroundEventsData: ScheduleEventData[] = [
   },
   {
     id: 'focus-time',
-    title: 'Focus time',
+    title: '专注时间',
     start: `${today} 14:00:00`,
     end: `${today} 16:00:00`,
     color: 'blue',
@@ -24,14 +24,14 @@ const backgroundEventsData: ScheduleEventData[] = [
   },
   {
     id: 'team-meeting',
-    title: 'Team meeting',
+    title: '团队会议',
     start: `${today} 10:00:00`,
     end: `${today} 11:00:00`,
     color: 'violet',
   },
   {
     id: 'code-review',
-    title: 'Code review',
+    title: '代码审查',
     start: `${today} 14:30:00`,
     end: `${today} 15:30:00`,
     color: 'green',
@@ -43,12 +43,12 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import { Schedule, ScheduleEventData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const events: ScheduleEventData[] = [
   {
     id: 'lunch-block',
-    title: 'Lunch break',
+    title: '午餐休息',
     start: \`\${today} 12:00:00\`,
     end: \`\${today} 13:00:00\`,
     color: 'gray',
@@ -56,7 +56,7 @@ const events: ScheduleEventData[] = [
   },
   {
     id: 'focus-time',
-    title: 'Focus time',
+    title: '专注时间',
     start: \`\${today} 14:00:00\`,
     end: \`\${today} 16:00:00\`,
     color: 'blue',
@@ -64,14 +64,14 @@ const events: ScheduleEventData[] = [
   },
   {
     id: 'team-meeting',
-    title: 'Team meeting',
+    title: '团队会议',
     start: \`\${today} 10:00:00\`,
     end: \`\${today} 11:00:00\`,
     color: 'violet',
   },
   {
     id: 'code-review',
-    title: 'Code review',
+    title: '代码审查',
     start: \`\${today} 14:30:00\`,
     end: \`\${today} 15:30:00\`,
     color: 'green',
@@ -97,7 +97,7 @@ function Demo() {
   return <Schedule date={date} onDateChange={setDate} events={backgroundEventsData} />;
 }
 
-export const backgroundEvents: MantineDemo = {
+export const backgroundEvents: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

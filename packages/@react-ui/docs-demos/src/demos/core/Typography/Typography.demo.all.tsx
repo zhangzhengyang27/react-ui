@@ -1,36 +1,36 @@
 import { Typography } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const html = `<h1>Heading 1</h1>
-<h2>Heading 2</h2>
-<h3>Heading 3</h3>
-<h4>Heading 4</h4>
-<h5>Heading 5</h5>
-<h6>Heading 6</h6>
+const html = `<h1>标题 1</h1>
+<h2>标题 2</h2>
+<h3>标题 3</h3>
+<h4>标题 4</h4>
+<h5>标题 5</h5>
+<h6>标题 6</h6>
 <hr />
-<p><a href="https://mantine.dev">ReactUI link</a></p>
-<p>Lorem ipsum, dolor sitamet consectetur adipisicing elit. Provident omnis laudantium itaque quisquam est, magnam harum, cum molestias necessitatibus obcaecati quod esse debitis velit nemo dolores deserunt. Quia, iure doloremque.</p>
-<img src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-10.png" alt="Unsplash image" />
+<p><a href="#">ReactUI 链接</a></p>
+<p>这是一段用于展示排版样式的示例文本。良好的排版能够提升可读性，让用户更轻松地获取信息。段落之间的间距、行高以及字重共同决定了整体的阅读体验。</p>
+<img src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-10.png" alt="Unsplash 图片" />
 <ul>
-  <li>list item - 1</li>
-  <li>list item - 2</li>
-  <li>list item - 3</li>
-  <li>list item - 4</li>
+  <li>列表项 - 1</li>
+  <li>列表项 - 2</li>
+  <li>列表项 - 3</li>
+  <li>列表项 - 4</li>
 </ul>
 
 <ol>
-  <li>list item - 1</li>
-  <li>list item - 2</li>
-  <li>list item - 3</li>
-  <li>list item - 4</li>
+  <li>列表项 - 1</li>
+  <li>列表项 - 2</li>
+  <li>列表项 - 3</li>
+  <li>列表项 - 4</li>
 </ol>
 
 <blockquote>
-  Life is like an npm install – you never know what you are going to get.
-  <cite>– Forrest Gump</cite>
+  生活就像 npm install——你永远不知道会得到什么。
+  <cite>—— 阿甘</cite>
 </blockquote>
 
-<p>This is <code>code</code>, <kbd>kbd</kbd> and <mark>mark</mark> inside paragraph</p>
+<p>这是段落内的 <code>code</code>、<kbd>kbd</kbd> 和 <mark>mark</mark></p>
 
 <pre>
 import { Avatar } from '@react-ui/ui';
@@ -40,7 +40,7 @@ export function AvatarDemo() {
   return &lt;Avatar src={image} alt="it's me" /&gt;;
 }</pre>
 
-<table><thead><tr><th>Element position</th><th>Element name</th><th>Symbol</th><th>Atomic mass</th></tr></thead><tbody><tr><td>6</td><td>Carbon</td><td>C</td><td>12.011</td></tr><tr><td>7</td><td>Nitrogen</td><td>N</td><td>14.007</td></tr><tr><td>39</td><td>Yttrium</td><td>Y</td><td>88.906</td></tr><tr><td>56</td><td>Barium</td><td>Ba</td><td>137.33</td></tr><tr><td>58</td><td>Cerium</td><td>Ce</td><td>140.12</td></tr></tbody></table>`;
+<table><thead><tr><th>元素位置</th><th>元素名称</th><th>符号</th><th>原子质量</th></tr></thead><tbody><tr><td>6</td><td>碳</td><td>C</td><td>12.011</td></tr><tr><td>7</td><td>氮</td><td>N</td><td>14.007</td></tr><tr><td>39</td><td>钇</td><td>Y</td><td>88.906</td></tr><tr><td>56</td><td>钡</td><td>Ba</td><td>137.33</td></tr><tr><td>58</td><td>铈</td><td>Ce</td><td>140.12</td></tr></tbody></table>`;
 
 function Demo() {
   return (
@@ -50,7 +50,7 @@ function Demo() {
   );
 }
 
-export const all: MantineDemo = {
+export const all: UIDemo = {
   type: 'code',
   component: Demo,
 };

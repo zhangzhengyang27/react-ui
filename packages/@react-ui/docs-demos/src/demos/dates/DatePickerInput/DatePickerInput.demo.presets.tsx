@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { DatePickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import dayjs from 'dayjs';
@@ -9,16 +9,16 @@ import { DatePickerInput } from '@react-ui/dates';
 function Demo() {
   return (
     <DatePickerInput
-      label="With presets"
-      placeholder="Select date"
+      label="带预设"
+      placeholder="选择日期"
       presets={[
-        { value: dayjs().subtract(1, 'day').format('YYYY-MM-DD'), label: 'Yesterday' },
-        { value: dayjs().format('YYYY-MM-DD'), label: 'Today' },
-        { value: dayjs().add(1, 'day').format('YYYY-MM-DD'), label: 'Tomorrow' },
-        { value: dayjs().add(1, 'month').format('YYYY-MM-DD'), label: 'Next month' },
-        { value: dayjs().add(1, 'year').format('YYYY-MM-DD'), label: 'Next year' },
-        { value: dayjs().subtract(1, 'month').format('YYYY-MM-DD'), label: 'Last month' },
-        { value: dayjs().subtract(1, 'year').format('YYYY-MM-DD'), label: 'Last year' },
+        { value: dayjs('2024-01-15').subtract(1, 'day').format('YYYY-MM-DD'), label: '昨天' },
+        { value: dayjs('2024-01-15').format('YYYY-MM-DD'), label: '今天' },
+        { value: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD'), label: '明天' },
+        { value: dayjs('2024-01-15').add(1, 'month').format('YYYY-MM-DD'), label: '下月' },
+        { value: dayjs('2024-01-15').add(1, 'year').format('YYYY-MM-DD'), label: '明年' },
+        { value: dayjs('2024-01-15').subtract(1, 'month').format('YYYY-MM-DD'), label: '上月' },
+        { value: dayjs('2024-01-15').subtract(1, 'year').format('YYYY-MM-DD'), label: '去年' },
       ]}
     />
   );
@@ -28,22 +28,22 @@ function Demo() {
 function Demo() {
   return (
     <DatePickerInput
-      label="With presets"
-      placeholder="Select date"
+      label="带预设"
+      placeholder="选择日期"
       presets={[
-        { value: dayjs().subtract(1, 'day').format('YYYY-MM-DD'), label: 'Yesterday' },
-        { value: dayjs().format('YYYY-MM-DD'), label: 'Today' },
-        { value: dayjs().add(1, 'day').format('YYYY-MM-DD'), label: 'Tomorrow' },
-        { value: dayjs().add(1, 'month').format('YYYY-MM-DD'), label: 'Next month' },
-        { value: dayjs().add(1, 'year').format('YYYY-MM-DD'), label: 'Next year' },
-        { value: dayjs().subtract(1, 'month').format('YYYY-MM-DD'), label: 'Last month' },
-        { value: dayjs().subtract(1, 'year').format('YYYY-MM-DD'), label: 'Last year' },
+        { value: dayjs('2024-01-15').subtract(1, 'day').format('YYYY-MM-DD'), label: '昨天' },
+        { value: dayjs('2024-01-15').format('YYYY-MM-DD'), label: '今天' },
+        { value: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD'), label: '明天' },
+        { value: dayjs('2024-01-15').add(1, 'month').format('YYYY-MM-DD'), label: '下月' },
+        { value: dayjs('2024-01-15').add(1, 'year').format('YYYY-MM-DD'), label: '明年' },
+        { value: dayjs('2024-01-15').subtract(1, 'month').format('YYYY-MM-DD'), label: '上月' },
+        { value: dayjs('2024-01-15').subtract(1, 'year').format('YYYY-MM-DD'), label: '去年' },
       ]}
     />
   );
 }
 
-export const presets: MantineDemo = {
+export const presets: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Text } from '@react-ui/ui';
 import { useIsFirstRender } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -16,7 +16,7 @@ function Demo() {
       <Text>
         Is first render:{' '}
         <Text span c={firstRender ? 'teal' : 'red'}>
-          {firstRender ? 'Yes' : 'No!'}
+          {firstRender ? '是' : '否！'}
         </Text>
       </Text>
       <Button onClick={() => setCounter((c) => c + 1)} mt="sm">
@@ -35,7 +35,7 @@ function Demo() {
       <Text>
         Is first render:{' '}
         <Text span c={firstRender ? 'teal' : 'red'}>
-          {firstRender ? 'Yes' : 'No!'}
+          {firstRender ? '是' : '否！'}
         </Text>
       </Text>
       <Button onClick={() => setCounter((c) => c + 1)} mt="sm">
@@ -45,7 +45,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

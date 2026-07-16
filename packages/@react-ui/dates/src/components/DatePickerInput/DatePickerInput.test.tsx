@@ -1,6 +1,6 @@
 import { __InputStylesNames } from '@react-ui/ui';
-import { inputDefaultProps, inputStylesApiSelectors, render, tests } from '@mantine-tests/core';
-import { clickControl, clickInput, datesTests, expectValue } from '@mantine-tests/dates';
+import { inputDefaultProps, inputStylesApiSelectors, render, tests } from '@react-ui/tests';
+import { clickControl, clickInput, datesTests, expectValue } from '@react-ui/tests/dates';
 import { DatePickerInput, DatePickerInputProps } from './DatePickerInput';
 
 const defaultProps = {
@@ -100,10 +100,10 @@ describe('@react-ui/dates/DatePickerInput', () => {
       />
     );
     expect(container.querySelector('[data-dates-input]')).toHaveClass(
-      'mantine-DatePickerInput-input'
+      'ui-DatePickerInput-input'
     );
 
-    expect(container.querySelector('table button')).toHaveClass('mantine-DatePickerInput-day');
+    expect(container.querySelector('table button')).toHaveClass('ui-DatePickerInput-day');
   });
 
   it('supports controlled state (dropdown click)', async () => {

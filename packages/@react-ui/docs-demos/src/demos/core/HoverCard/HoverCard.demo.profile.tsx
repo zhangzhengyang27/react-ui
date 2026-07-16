@@ -1,5 +1,5 @@
 import { Anchor, Avatar, Group, HoverCard, Stack, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { HoverCard, Avatar, Text, Group, Anchor, Stack } from '@react-ui/ui';
@@ -19,12 +19,12 @@ function Demo() {
                 ReactUI
               </Text>
               <Anchor
-                href="https://x.com/mantinedev"
+                href="https://x.com/uidev"
                 c="dimmed"
                 size="xs"
                 style={{ lineHeight: 1 }}
               >
-                @mantinedev
+                @uidev
               </Anchor>
             </Stack>
           </Group>
@@ -60,8 +60,8 @@ export function HoverCardHomePageDemo({ children }: { children: React.ReactNode 
             <Text size="sm" fw={700} style={{ lineHeight: 1 }}>
               ReactUI
             </Text>
-            <Anchor href="https://x.com/mantinedev" c="dimmed" size="xs" style={{ lineHeight: 1 }}>
-              @mantinedev
+            <Anchor href="https://x.com/uidev" c="dimmed" size="xs" style={{ lineHeight: 1 }}>
+              @uidev
             </Anchor>
           </Stack>
         </Group>
@@ -94,7 +94,7 @@ function Demo() {
   );
 }
 
-export const profile: MantineDemo = {
+export const profile: UIDemo = {
   type: 'code',
   component: Demo,
   code,

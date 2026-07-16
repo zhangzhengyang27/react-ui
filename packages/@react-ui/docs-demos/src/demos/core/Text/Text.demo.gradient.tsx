@@ -1,5 +1,5 @@
 import { Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { gradientControls } from '../../../shared';
 
 const code = (props: any) => `
@@ -32,7 +32,7 @@ function Wrapper(props: any) {
   );
 }
 
-export const gradient: MantineDemo = {
+export const gradient: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

@@ -26,4 +26,4 @@ export const DrawerTitle = factory<DrawerTitleFactory>((_props, ref) => {
 })
 
 DrawerTitle.classes = classes
-DrawerTitle.displayName = '@mantine/core/DrawerTitle'
+DrawerTitle.displayName = '@react-ui/ui/DrawerTitle'

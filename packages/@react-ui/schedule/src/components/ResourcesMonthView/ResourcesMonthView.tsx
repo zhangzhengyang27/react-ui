@@ -9,7 +9,7 @@ import {
   factory,
   Factory,
   getRadius,
-  MantineRadius,
+  UIRadius,
   rem,
   ScrollArea,
   ScrollAreaProps,
@@ -119,7 +119,7 @@ export interface ResourcesMonthViewProps
   highlightToday?: boolean;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius` @default theme.defaultRadius */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 
   /** If set, the header is displayed @default true */
   withHeader?: boolean;

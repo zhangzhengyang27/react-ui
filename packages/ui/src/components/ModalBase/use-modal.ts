@@ -23,7 +23,7 @@ export function useModal({ id, transitionProps, opened, closeOnEscape, onClose }
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === 'Escape' && closeOnEscape && !event.isComposing && opened) {
                 const shouldTrigger =
-                    (event.target as HTMLElement)?.getAttribute('data-mantine-stop-propagation') !== 'true'
+                    (event.target as HTMLElement)?.getAttribute('data-ui-stop-propagation') !== 'true'
                 if (shouldTrigger) {
                     onClose()
                 }

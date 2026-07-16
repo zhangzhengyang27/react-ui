@@ -1,9 +1,9 @@
-import { createTheme, Loader, MantineThemeProvider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { createTheme, Loader, UIThemeProvider } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 import { RingLoader, ringLoaderCode } from './_RingLoader';
 
 const code = `
-import { MantineProvider, Loader } from '@react-ui/ui';
+import { UIProvider, Loader } from '@react-ui/ui';
 import { RingLoader } from './RingLoader';
 
 const theme = createTheme({
@@ -19,9 +19,9 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
+    <UIThemeProvider theme={theme}>
       <Loader />
-    </MantineThemeProvider>
+    </UIThemeProvider>
   );
 }
 `;
@@ -39,18 +39,18 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
+    <UIThemeProvider theme={theme}>
       <Loader />
-    </MantineThemeProvider>
+    </UIThemeProvider>
   );
 }
 
-export const customType: MantineDemo = {
+export const customType: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
-    { fileName: 'RingLoader.tsx', language: 'tsx', code: ringLoaderCode },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
+    { fileName: '环形加载器.tsx', language: 'tsx', code: ringLoaderCode },
   ],
 };

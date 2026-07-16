@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { TableOfContents } from './TableOfContents'
 
 function Wrapper({ children }: { children: React.ReactNode }) {
-    return <MantineProvider>{children}</MantineProvider>
+    return <UIProvider>{children}</UIProvider>
 }
 
 vi.mock('@react-ui/hooks', async () => {

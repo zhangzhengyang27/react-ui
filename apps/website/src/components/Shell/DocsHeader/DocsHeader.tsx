@@ -2,9 +2,9 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { CaretDownIcon } from '@phosphor-icons/react'
 import { Burger, Container, Menu, UnstyledButton } from '@react-ui/ui'
-import { HeaderControls } from '@react-ui/mantine-header'
-import { ReactUILogo } from '@react-ui/mantine-logo'
-import { meta } from '@react-ui/mantine-meta'
+import { HeaderControls } from '@react-ui/header'
+import { ReactUILogo } from '@react-ui/logo'
+import { meta } from '@react-ui/meta'
 import { searchHandlers } from '@/components/Search'
 import { MDX_DATA, MdxNavCategory } from '@/mdx'
 import packageJson from '../../../../../../package.json'
@@ -24,8 +24,8 @@ interface NavigationLinkData {
 
 const navigationLinksData: NavigationLinkData[] = [
     { link: MDX_DATA.GettingStarted.slug, label: '快速开始', category: 'gettingStarted' },
-    { link: MDX_DATA.MantineProvider.slug, label: '主题与样式', category: 'theming' },
-    { link: MDX_DATA.HooksPackage.slug, label: 'Hooks', category: 'hooks' },
+    { link: MDX_DATA.UIProvider.slug, label: '主题与样式', category: 'theming' },
+    { link: MDX_DATA.HooksPackage.slug, label: '钩子', category: 'hooks' },
     { link: MDX_DATA.FormPackage.slug, label: '表单', category: 'form' },
     { link: MDX_DATA.CorePackage.slug, label: '组件', category: 'components' },
     { link: MDX_DATA.ExtensionsPackage.slug, label: '扩展', category: 'extensions' }
@@ -51,7 +51,7 @@ export function DocsHeader({ headerControlsProps, withNav }: DocsHeaderProps) {
         <Link
             key={link.label}
             href={link.link}
-            className={classes.navigationLink}
+            className={classes.mainLink}
             data-active={activeCategory === link.category || undefined}
         >
             {link.label}
@@ -75,7 +75,10 @@ export function DocsHeader({ headerControlsProps, withNav }: DocsHeaderProps) {
                             <Link href="/" className={classes.logoLink} aria-label="ReactUI 首页">
                                 <ReactUILogo size={32} />
                             </Link>
-                            <div className={classes.mainLinks}>{mainLinks}</div>
+                            <div className={classes.mainLinks}>
+                            {mainLinks}
+                            {withNav && navigationLinks}
+                        </div>
                         </div>
                     </div>
 
@@ -102,7 +105,7 @@ export function DocsHeader({ headerControlsProps, withNav }: DocsHeaderProps) {
                                     target="_blank"
                                 >
                                     <b>v{packageJson.version}</b>{' '}
-                                    GitHub Releases
+                                    GitHub 发布页
                                 </Menu.Item>
                             </Menu.Dropdown>
                         </Menu>
@@ -117,9 +120,6 @@ export function DocsHeader({ headerControlsProps, withNav }: DocsHeaderProps) {
                     </div>
                 </div>
 
-                {withNav && (
-                    <nav className={classes.headerNavigation}>{navigationLinks}</nav>
-                )}
             </Container>
         </header>
     )

@@ -1,5 +1,5 @@
 import { Checkbox, Stack } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Checkbox, Stack } from '@react-ui/ui';
@@ -7,9 +7,9 @@ import { Checkbox, Stack } from '@react-ui/ui';
 function Demo() {
   return (
     <Stack>
-      <Checkbox label="With boolean error" error />
-      <Checkbox label="With error message" error="Must be checked" />
-      <Checkbox label="With error message" error="No error styles" withErrorStyles={false} />
+      <Checkbox label="带布尔错误" error />
+      <Checkbox label="带错误信息" error="必须勾选" />
+      <Checkbox label="带错误信息" error="无错误样式" withErrorStyles={false} />
     </Stack>
   );
 }
@@ -18,14 +18,14 @@ function Demo() {
 function Demo() {
   return (
     <Stack>
-      <Checkbox label="With boolean error" error />
-      <Checkbox label="With error message" error="Must be checked" />
-      <Checkbox label="With error message" error="No error styles" withErrorStyles={false} />
+      <Checkbox label="带布尔错误" error />
+      <Checkbox label="带错误信息" error="必须勾选" />
+      <Checkbox label="带错误信息" error="无错误样式" withErrorStyles={false} />
     </Stack>
   );
 }
 
-export const error: MantineDemo = {
+export const error: UIDemo = {
   type: 'code',
   component: Demo,
   code,

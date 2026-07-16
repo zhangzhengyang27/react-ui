@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { DotsSixVerticalIcon } from '@phosphor-icons/react';
 import { clamp, useMove } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Slider.demo.customSlider.module.css';
 
 const cssCode = `
@@ -38,7 +38,7 @@ const cssCode = `
   padding-inline: 10px;
   justify-content: flex-end;
 
-  @mixin dark {
+  [data-ui-color-scheme='dark'] & {
     background-color: var(--ui-color-dark-6);
   }
 }
@@ -56,7 +56,7 @@ const cssCode = `
   justify-content: center;
   color: var(--ui-color-gray-5);
 
-  @mixin dark {
+  [data-ui-color-scheme='dark'] & {
     background-color: var(--ui-color-dark-6);
     border-color: var(--ui-color-dark-4);
     color: var(--ui-color-dark-0);
@@ -82,7 +82,7 @@ const cssCode = `
       transform: translateY(-44px) translateX(10px);
     }
 
-    @mixin dark {
+    [data-ui-color-scheme='dark'] & {
       color: var(--ui-color-white);
     }
   }
@@ -178,12 +178,12 @@ function Demo() {
   );
 }
 
-export const customSlider: MantineDemo = {
+export const customSlider: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
   ],
   maxWidth: 500,
   centered: true,

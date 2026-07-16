@@ -16,12 +16,12 @@ import {
   getAutoContrastValue,
   getThemeColor,
   isLightColor,
-  MantineColor,
-  MantineTheme,
+  UIColor,
+  UITheme,
   parseThemeColor,
   rem,
   StylesApiProps,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useResolvedStylesApi,
   useStyles,
@@ -32,7 +32,7 @@ import classes from './Treemap.module.css';
 export interface TreemapData {
   name: string;
   value?: number;
-  color?: MantineColor;
+  color?: UIColor;
   children?: TreemapData[];
   [key: string]: unknown;
 }
@@ -66,10 +66,10 @@ export interface TreemapProps
   treemapProps?: Partial<Omit<RechartsTreemapProps, 'ref' | 'data' | 'dataKey'>>;
 
   /** Controls color of the node stroke, by default depends on color scheme */
-  strokeColor?: MantineColor;
+  strokeColor?: UIColor;
 
   /** Controls text color of labels @default dimmed */
-  textColor?: MantineColor;
+  textColor?: UIColor;
 
   /** Controls chart height @default 300 */
   height?: number;
@@ -169,7 +169,7 @@ function TreemapContent({
 
 function resolveColors(
   data: TreemapData[],
-  theme: MantineTheme,
+  theme: UITheme,
   parentColor?: string
 ): Record<string, string> {
   const result: Record<string, string> = {};
@@ -231,7 +231,7 @@ export const Treemap = factory<TreemapFactory>((_props) => {
     ...others
   } = props;
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const resolvedColors = resolveColors(data, theme);
   const _autoContrast = getAutoContrastValue(autoContrast, theme);
   const _textColor = textColor ? getThemeColor(textColor, theme) : undefined;

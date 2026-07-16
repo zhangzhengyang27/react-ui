@@ -31,13 +31,13 @@
     cursor: default;
   }
 
-  @mixin hover {
+  &:hover {
     &:where(:not([data-disabled], [data-static], :disabled)) {
-      @mixin light {
+      [data-ui-color-scheme='light'] & {
         background-color: var(--ui-color-gray-0);
       }
 
-      @mixin dark {
+      [data-ui-color-scheme='dark'] & {
         background-color: var(--ui-color-dark-5);
       }
     }

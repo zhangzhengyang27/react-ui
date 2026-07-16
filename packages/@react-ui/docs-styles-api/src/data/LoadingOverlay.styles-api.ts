@@ -3,9 +3,9 @@ import type { StylesApiData } from '../types';
 
 export const LoadingOverlayStylesApi: StylesApiData<LoadingOverlayFactory> = {
   selectors: {
-    root: 'Root element',
-    overlay: '`Overlay` component',
-    loader: '`Loader` component',
+    root: '根元素',
+    overlay: '`Overlay` 组件',
+    loader: '`Loader` 组件',
   },
 
   vars: {

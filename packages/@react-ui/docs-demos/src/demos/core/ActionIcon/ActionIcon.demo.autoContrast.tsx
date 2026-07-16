@@ -1,6 +1,6 @@
 import { FingerprintIcon } from '@phosphor-icons/react';
 import { ActionIcon, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { FingerprintIcon } from '@phosphor-icons/react';
@@ -9,10 +9,10 @@ import { ActionIcon, Group } from '@react-ui/ui';
 function Demo() {
   return (
     <Group>
-      <ActionIcon aria-label="default action icon" size="lg" color="lime.4">
+      <ActionIcon aria-label="默认操作图标" size="lg" color="lime.4">
         <FingerprintIcon size={20} />
       </ActionIcon>
-      <ActionIcon autoContrast aria-label="autoContrast action icon" size="lg" color="lime.4">
+      <ActionIcon autoContrast aria-label="自动对比操作图标" size="lg" color="lime.4">
         <FingerprintIcon size={20} />
       </ActionIcon>
     </Group>
@@ -23,17 +23,17 @@ function Demo() {
 function Demo() {
   return (
     <Group>
-      <ActionIcon aria-label="default action icon" size="lg" color="lime.4">
+      <ActionIcon aria-label="默认操作图标" size="lg" color="lime.4">
         <FingerprintIcon size={20} />
       </ActionIcon>
-      <ActionIcon autoContrast aria-label="autoContrast action icon" size="lg" color="lime.4">
+      <ActionIcon autoContrast aria-label="自动对比操作图标" size="lg" color="lime.4">
         <FingerprintIcon size={20} />
       </ActionIcon>
     </Group>
   );
 }
 
-export const autoContrast: MantineDemo = {
+export const autoContrast: UIDemo = {
   type: 'code',
   component: Demo,
   code,

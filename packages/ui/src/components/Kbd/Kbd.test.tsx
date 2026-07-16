@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Kbd } from './Kbd'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Kbd', () => {
     it('renders a kbd element by default', () => {
@@ -17,7 +17,7 @@ describe('Kbd', () => {
     it('applies static classes', () => {
         renderWithProvider(<Kbd data-testid="kbd">Ctrl</Kbd>)
 
-        expect(screen.getByTestId('kbd')).toHaveClass('mantine-Kbd-root')
+        expect(screen.getByTestId('kbd')).toHaveClass('ui-Kbd-root')
     })
 
     it('sets data-size attribute', () => {

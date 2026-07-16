@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import {
     Box,
     BoxProps,
@@ -7,9 +7,9 @@ import {
     Factory,
     getRadius,
     getSize,
-    MantineColor,
-    MantineRadius,
-    MantineSize,
+    UIColor,
+    UIRadius,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -32,13 +32,13 @@ export interface AvatarProps extends BoxProps, StylesApiProps<AvatarFactory> {
     alt?: string
 
     /** Controls width and height of the avatar @default 'md' */
-    size?: MantineSize | (string & {}) | number
+    size?: UISize | (string & {}) | number
 
-    /** Key of theme.radius or any valid CSS value @default theme.defaultRadius */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 @default theme.defaultRadius */
+    radius?: UIRadius
 
-    /** Key of theme.colors or any valid CSS color @default theme.primaryColor */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 @default theme.primaryColor */
+    color?: UIColor
 
     /** Avatar variant @default 'filled' */
     variant?: AvatarVariant
@@ -114,6 +114,10 @@ export const Avatar = factory<AvatarFactory>((_props, ref) => {
     })
 
     const [error, setError] = useState(false)
+    // src 变化时重置 error,避免上一张加载失败后新 src 仍显示 placeholder
+    useEffect(() => {
+        setError(false)
+    }, [src])
     const isPlaceholder = error || !src
     const groupCtx = useContext(AvatarGroupContext)
 

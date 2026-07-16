@@ -1,15 +1,15 @@
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Notifications } from './Notifications'
 import { notifications } from './notifications.store'
 
 function Wrapper({ children }: { children: React.ReactNode }) {
     return (
-        <MantineProvider>
+        <UIProvider>
             <Notifications />
             {children}
-        </MantineProvider>
+        </UIProvider>
     )
 }
 

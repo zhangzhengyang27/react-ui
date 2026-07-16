@@ -6,6 +6,7 @@ import { MDX_NAV_DATA } from '@/mdx';
 import { MdxPagesCategory } from '@/types';
 import { getActiveCategory } from '../get-active-category';
 import { useShellContext } from '../Shell.context';
+import { getComponentChineseName } from './component-name-translations';
 import classes from './DocsNavbar.module.css';
 
 interface CategoriesListProps {
@@ -22,17 +23,21 @@ export function CategoriesList({ categories, hideEmptyCategories }: CategoriesLi
       return null;
     }
 
-    const links = category.pages.map((page) => (
-      <Link
-        key={page.slug}
-        href={page.slug}
-        data-active={page.slug === router.pathname || undefined}
-        className={classes.link}
-        onClick={ctx.closeNavbar}
-      >
-        {page.title}
-      </Link>
-    ));
+    const links = category.pages.map((page) => {
+      const chineseName = getComponentChineseName(page.title);
+      const label = chineseName ? `${page.title} ${chineseName}` : page.title;
+      return (
+        <Link
+          key={page.slug}
+          href={page.slug}
+          data-active={page.slug === router.pathname || undefined}
+          className={classes.link}
+          onClick={ctx.closeNavbar}
+        >
+          {label}
+        </Link>
+      );
+    });
 
     return (
       <div key={category.category} className={classes.category}>

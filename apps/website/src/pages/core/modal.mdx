@@ -201,9 +201,9 @@ function Demo() {
 
   return (
     <>
-      <Modal {...stack.register('first')}>First</Modal>
-      <Modal {...stack.register('second')}>Second</Modal>
-      <Button onClick={() => stack.open('first')}>Open first</Button>
+      <Modal {...stack.register('first')}>第一</Modal>
+      <Modal {...stack.register('second')}>第二</Modal>
+      <Button onClick={() => stack.open('first')}>打开第一个</Button>
     </>
   );
 }
@@ -241,7 +241,7 @@ function Demo() {
 import { Modal } from '@react-ui/ui';
 
 function Demo() {
-  return <Modal title="Modal label" opened onClose={() => {}} />;
+  return <Modal title="模态框标签" opened onClose={() => {}} />;
 }
 ```
 
@@ -253,7 +253,7 @@ import { Modal } from '@react-ui/ui';
 function Demo() {
   return (
     <Modal
-      closeButtonProps={{ 'aria-label': 'Close modal' }}
+      closeButtonProps={{ 'aria-label': '关闭模态框' }}
       opened
       onClose={() => {}}
     />

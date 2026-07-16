@@ -1,5 +1,5 @@
 import { TimePicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TimePicker } from '@react-ui/dates';
@@ -7,7 +7,7 @@ import { TimePicker } from '@react-ui/dates';
 function Demo() {
   return (
     <TimePicker
-      label="Enter time"
+      label="输入时间"
       withDropdown
       presets={['12:30', '15:45', '18:00', '20:15', '22:30']}
     />
@@ -18,14 +18,14 @@ function Demo() {
 function Demo() {
   return (
     <TimePicker
-      label="Enter time"
+      label="输入时间"
       withDropdown
       presets={['12:30', '15:45', '18:00', '20:15', '22:30']}
     />
   );
 }
 
-export const presets: MantineDemo = {
+export const presets: UIDemo = {
   type: 'code',
   component: Demo,
   code,

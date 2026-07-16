@@ -10,9 +10,9 @@ import {
     getSize,
     getThemeColor,
     isElement,
-    MantineColor,
-    MantineRadius,
-    MantineSize,
+    UIColor,
+    UIRadius,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -37,31 +37,31 @@ export type StepperCssVariables = {
 }
 
 export interface StepperProps extends BoxProps, StylesApiProps<StepperFactory>, ElementProps<'div'> {
-    /** Index of the current active step @default 0 */
+    /** 当前活动步骤的索引 @default 0 */
     active?: number
 
-    /** Orientation of the stepper @default 'horizontal' */
+    /** 步骤条的方向 @default 'horizontal' */
     orientation?: 'horizontal' | 'vertical'
 
-    /** Key of theme.colors or any valid CSS color @default theme.primaryColor */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 @default theme.primaryColor */
+    color?: UIColor
 
-    /** Key of theme.radius or any valid CSS value @default theme.defaultRadius */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 @default theme.defaultRadius */
+    radius?: UIRadius
 
-    /** Controls icon size and font-size @default 'md' */
-    size?: MantineSize
+    /** 控制图标大小和字号 @default 'md' */
+    size?: UISize
 
-    /** Default icon displayed inside the step icon */
+    /** 步骤图标内显示的默认图标 */
     icon?: React.ReactNode
 
     /** Icon displayed inside completed steps, overrides icon */
     completedIcon?: React.ReactNode
 
-    /** Determines whether steps can be selected by click @default false */
+    /** 决定步骤是否可以通过点击选择 @default false */
     allowSelectStep?: boolean
 
-    /** Called when a step is clicked */
+    /** 点击步骤时调用 */
     onStepClick?: (index: number) => void
 
     /** Stepper steps */

@@ -1,7 +1,7 @@
 import { CheckIcon } from '@phosphor-icons/react';
 import { Button } from '@react-ui/ui';
 import { notifications } from '@react-ui/notifications';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button } from '@react-ui/ui';
@@ -14,8 +14,8 @@ function Demo() {
       onClick={() => {
         const id = notifications.show({
           loading: true,
-          title: 'Loading your data',
-          message: 'Data will be loaded in 3 seconds, you cannot close this yet',
+          title: '正在加载你的数据',
+          message: '数据将在 3 秒后加载完成，暂时无法关闭',
           autoClose: false,
           allowClose: false,
         });
@@ -24,8 +24,8 @@ function Demo() {
           notifications.update({
             id,
             color: 'teal',
-            title: 'Data was loaded',
-            message: 'Notification will close in 2 seconds, you can close this notification now',
+            title: '数据已加载',
+            message: '通知将在 2 秒后关闭，你现在可以手动关闭此通知',
             icon: <CheckIcon size={18} />,
             loading: false,
             autoClose: 2000,
@@ -46,8 +46,8 @@ function Demo() {
       onClick={() => {
         const id = notifications.show({
           loading: true,
-          title: 'Loading your data',
-          message: 'Data will be loaded in 3 seconds, you cannot close this yet',
+          title: '正在加载你的数据',
+          message: '数据将在 3 秒后加载完成，暂时无法关闭',
           autoClose: false,
           allowClose: false,
         });
@@ -56,8 +56,8 @@ function Demo() {
           notifications.update({
             id,
             color: 'teal',
-            title: 'Data was loaded',
-            message: 'Notification will close in 2 seconds, you can close this notification now',
+            title: '数据已加载',
+            message: '通知将在 2 秒后关闭，你现在可以手动关闭此通知',
             icon: <CheckIcon size={18} />,
             loading: false,
             autoClose: 2000,
@@ -71,7 +71,7 @@ function Demo() {
   );
 }
 
-export const update: MantineDemo = {
+export const update: UIDemo = {
   type: 'code',
   code,
   centered: true,

@@ -3,8 +3,8 @@ import type { StylesApiData } from '../types';
 
 export const DialogStylesApi: StylesApiData<DialogFactory> = {
   selectors: {
-    root: 'Root element',
-    closeButton: 'Close button',
+    root: '根元素',
+    closeButton: '关闭按钮',
   },
 
   vars: {

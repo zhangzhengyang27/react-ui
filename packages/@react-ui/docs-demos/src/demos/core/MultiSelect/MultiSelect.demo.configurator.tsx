@@ -1,5 +1,5 @@
 import { MultiSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { inputControls } from '../../../shared';
 
 const code = `
@@ -10,7 +10,7 @@ function Demo() {
   return (
     <MultiSelect
       {{props}}
-      placeholder="MultiSelect placeholder"
+      placeholder="多选占位符"
       data={['React', 'Angular', 'Vue', 'Svelte']}
     />
   );
@@ -21,13 +21,13 @@ function Wrapper(props: any) {
   return (
     <MultiSelect
       {...props}
-      placeholder="MultiSelect placeholder"
+      placeholder="多选占位符"
       data={['React', 'Angular', 'Vue', 'Svelte']}
     />
   );
 }
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

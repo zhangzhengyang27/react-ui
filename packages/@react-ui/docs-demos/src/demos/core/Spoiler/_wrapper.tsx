@@ -10,8 +10,8 @@ const content = (
       mt={5}
       maw="100%"
       style={{ float: 'right' }}
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Rock_in_caputh-WBTBWB-47.jpg/600px-Rock_in_caputh-WBTBWB-47.jpg"
-      alt="We Butter the Bread with Butter"
+      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iI2UzZTNmNSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzY2NzM4NSI+UGxhY2Vob2xkZXIgaW1hZ2U8L3RleHQ+PC9zdmc+"
+      alt="Placeholder"
     />
     <Text>
       We Butter the Bread with Butter was founded in 2007 by Marcel Neumann, who was originally
@@ -28,7 +28,7 @@ const content = (
 export function Wrapper(props: Partial<SpoilerProps>) {
   return (
     <Box maw={520} mx="auto">
-      <Spoiler maxHeight={120} showLabel="Show more" hideLabel="Hide" {...props}>
+      <Spoiler maxHeight={120} showLabel="显示更多" hideLabel="隐藏" {...props}>
         {content}
       </Spoiler>
     </Box>

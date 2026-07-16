@@ -91,12 +91,12 @@ console.log(classes);
 
 <Demo data={StylesDemos.classNames} />
 
-## 不使用 CSS modules 样式化 ReactUI 组件
+## 不使用 CSS modules 样式化 ReactUI 组件 {#styling-without-css-modules}
 
 所有 ReactUI 组件与任何第三方样式解决方案和原生 CSS 完全兼容。使用第三方库应用样式有两种主要策略：
 
 - `className`、`classNames`、`style` 和 `styles` props
-- 使用静态选择器，例如 `.mantine-Text-root`
+- 使用静态选择器，例如 `.ui-Text-root`
 
 使用实用工具 CSS 库应用样式的示例：
 
@@ -122,11 +122,11 @@ function Demo() {
 
 /* 注意，这些样式没有作用域，
    会应用到所有 TextInput 组件 */
-.mantine-TextInput-root {
+.ui-TextInput-root {
   margin-top: 0.8rem;
 }
 
-.mantine-TextInput-input {
+.ui-TextInput-input {
   background-color: var(--ui-color-red-filled);
   color: var(--ui-color-white);
 }
@@ -139,11 +139,11 @@ import styled from '@emotion/styled';
 import { Slider } from '@react-ui/ui';
 
 const StyledSlider = styled(Slider)`
-  & .mantine-Slider-bar {
+  & .ui-Slider-bar {
     background-color: var(--ui-color-pink-5);
   }
 
-  & .mantine-Slider-thumb {
+  & .ui-Slider-thumb {
     border-color: var(--ui-color-pink-5);
     background-color: white;
     width: 1.5rem;

@@ -1,6 +1,6 @@
 import { Button, TextInput } from '@react-ui/ui';
 import { useField } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, TextInput } from '@react-ui/ui';
@@ -10,13 +10,13 @@ function Demo() {
   const field = useField({
     initialValue: '',
     clearErrorOnChange: false,
-    validate: (value) => (value.trim().length < 2 ? 'Value is too short' : null),
+    validate: (value) => (value.trim().length < 2 ? '值太短' : null),
   });
 
   return (
     <>
-      <TextInput {...field.getInputProps()} label="Name" placeholder="Enter your name" mb="md" />
-      <Button onClick={field.validate}>Validate</Button>
+      <TextInput {...field.getInputProps()} label="姓名" placeholder="输入你的姓名" mb="md" />
+      <Button onClick={field.validate}>验证</Button>
     </>
   );
 }
@@ -26,18 +26,18 @@ function Demo() {
   const field = useField({
     initialValue: '',
     clearErrorOnChange: false,
-    validate: (value) => (value.trim().length < 2 ? 'Value is too short' : null),
+    validate: (value) => (value.trim().length < 2 ? '值太短' : null),
   });
 
   return (
     <>
-      <TextInput {...field.getInputProps()} label="Name" placeholder="Enter your name" mb="md" />
-      <Button onClick={field.validate}>Validate</Button>
+      <TextInput {...field.getInputProps()} label="姓名" placeholder="输入你的姓名" mb="md" />
+      <Button onClick={field.validate}>验证</Button>
     </>
   );
 }
 
-export const clearErrorOnChange: MantineDemo = {
+export const clearErrorOnChange: UIDemo = {
   type: 'code',
   component: Demo,
   code,

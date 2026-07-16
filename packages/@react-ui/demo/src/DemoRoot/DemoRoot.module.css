@@ -2,11 +2,11 @@
   border: 1px solid var(--demo-border);
   border-radius: var(--ui-radius-md);
 
-  @mixin light {
+  [data-ui-color-scheme='light'] & {
     --demo-border: var(--ui-color-gray-3);
   }
 
-  @mixin dark {
+  [data-ui-color-scheme='dark'] & {
     --demo-border: var(--ui-color-dark-4);
   }
 }

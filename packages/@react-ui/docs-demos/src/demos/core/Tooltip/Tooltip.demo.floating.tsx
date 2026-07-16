@@ -1,12 +1,12 @@
 import { Box, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Box, Tooltip } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <Tooltip.Floating label="Floating tooltip">
+    <Tooltip.Floating label="浮动提示">
       <Box p="xl" bg="var(--ui-color-blue-light)" style={{ cursor: 'default' }}>
         Hover over the box to see tooltip
       </Box>
@@ -17,7 +17,7 @@ function Demo() {
 
 function Demo() {
   return (
-    <Tooltip.Floating label="Floating tooltip">
+    <Tooltip.Floating label="浮动提示">
       <Box p="xl" bg="var(--ui-color-blue-light)" style={{ cursor: 'default' }}>
         Hover over the box to see tooltip
       </Box>
@@ -25,7 +25,7 @@ function Demo() {
   );
 }
 
-export const floating: MantineDemo = {
+export const floating: UIDemo = {
   type: 'code',
   component: Demo,
   code,

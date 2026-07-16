@@ -4,7 +4,7 @@
 
 Emotion bindings for @react-ui/ui
 
-[View documentation](https://mantine.dev/)
+[View documentation](#)
 
 ## Installation
 

@@ -1,6 +1,6 @@
 import { InlineCodeHighlight } from '@react-ui/code-highlight';
 import { Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Text } from '@react-ui/ui';
@@ -35,7 +35,7 @@ function Demo() {
   );
 }
 
-export const inline: MantineDemo = {
+export const inline: UIDemo = {
   type: 'code',
   component: Demo,
   code,

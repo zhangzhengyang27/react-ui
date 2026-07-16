@@ -33,4 +33,4 @@ export const ComboboxChevron = factory<ComboboxChevronFactory>((_props, ref) => 
     )
 })
 
-ComboboxChevron.displayName = '@mantine/core/ComboboxChevron'
+ComboboxChevron.displayName = '@react-ui/ui/ComboboxChevron'

@@ -18,6 +18,7 @@ export function ConfiguratorBooleanControl({
   value,
   onChange,
   prop,
+  type: _type,
   ...others
 }: ConfiguratorBooleanControlProps) {
   return (

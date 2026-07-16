@@ -15,8 +15,8 @@ import {
     type Factory,
     type FloatingPosition,
     type FloatingStrategy,
-    type MantineColor,
-    type MantineRadius,
+    type UIColor,
+    type UIRadius,
     type StylesApiProps
 } from '../../core'
 import { Portal } from '../Portal'
@@ -73,11 +73,11 @@ export interface TooltipProps extends BoxProps, StylesApiProps<TooltipFactory>, 
     /** Arrow position relative to the tooltip */
     arrowPosition?: 'center' | 'side'
 
-    /** Key of theme.colors or any valid CSS color */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 */
+    color?: UIColor
 
-    /** Key of theme.radius or any valid CSS value */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 */
+    radius?: UIRadius
 
     /** Determines whether content should be wrapped */
     multiline?: boolean
@@ -201,6 +201,9 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
         middlewares
     })
 
+    // reference 来自 floating-ui 的 refs.setReference,引用稳定;
+    // 依赖数组只保留 target,避免 tooltip 对象每渲染变化导致 effect 重复执行
+    const setReference = tooltip.reference
     useEffect(() => {
         const targetNode: HTMLElement | null =
             target instanceof HTMLElement
@@ -210,9 +213,9 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
                     : target?.current || null
 
         if (targetNode) {
-            tooltip.reference(targetNode)
+            setReference(targetNode)
         }
-    }, [target, tooltip])
+    }, [target, setReference])
 
     const getStyles = useStyles<TooltipFactory>({
         name: 'Tooltip',
@@ -228,7 +231,7 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
         varsResolver
     })
 
-    const child = getSingleElementChild(children)
+    const child = getSingleElementChild(children) as React.ReactElement<any>
     if (!target && !child) {
         throw new Error(
             '[@react-ui/ui] Tooltip component children should be an element or a component that accepts ref. Use target prop to specify target element without children.'
@@ -330,6 +333,6 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
 })
 
 Tooltip.classes = classes
-Tooltip.displayName = '@mantine/core/Tooltip'
+Tooltip.displayName = '@react-ui/ui/Tooltip'
 Tooltip.Group = TooltipGroup
 Tooltip.Floating = TooltipFloating

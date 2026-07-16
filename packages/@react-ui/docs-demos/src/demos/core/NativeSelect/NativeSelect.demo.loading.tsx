@@ -1,5 +1,5 @@
 import { NativeSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NativeSelect } from '@react-ui/ui';
@@ -7,7 +7,7 @@ import { NativeSelect } from '@react-ui/ui';
 function Demo() {
   return (
     <NativeSelect
-      label="Your favorite framework"
+      label="你喜爱的框架"
       data={['React', 'Angular', 'Vue', 'Svelte']}
       loading
     />
@@ -18,14 +18,14 @@ function Demo() {
 function Demo() {
   return (
     <NativeSelect
-      label="Your favorite framework"
+      label="你喜爱的框架"
       data={['React', 'Angular', 'Vue', 'Svelte']}
       loading
     />
   );
 }
 
-export const loading: MantineDemo = {
+export const loading: UIDemo = {
   type: 'code',
   component: Demo,
   code,

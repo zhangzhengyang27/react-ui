@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Overlay } from './Overlay'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Overlay', () => {
     it('renders a div by default', () => {
@@ -26,7 +26,7 @@ describe('Overlay', () => {
     it('applies static classes', () => {
         renderWithProvider(<Overlay data-testid="overlay" />)
 
-        expect(screen.getByTestId('overlay')).toHaveClass('mantine-Overlay-root')
+        expect(screen.getByTestId('overlay')).toHaveClass('ui-Overlay-root')
     })
 
     it('sets data-center when center is true', () => {

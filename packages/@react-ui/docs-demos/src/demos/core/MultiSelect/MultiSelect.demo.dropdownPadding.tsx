@@ -1,5 +1,5 @@
 import { MultiSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { MultiSelect } from '@react-ui/ui';
@@ -8,15 +8,15 @@ function Demo() {
   return (
     <>
       <MultiSelect
-        label="Zero padding"
-        placeholder="Pick value or enter anything"
+        label="零内边距"
+        placeholder="选择值或输入任意内容"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         comboboxProps={{ dropdownPadding: 0 }}
       />
       <MultiSelect
         mt="md"
         label="10px padding"
-        placeholder="Pick value or enter anything"
+        placeholder="选择值或输入任意内容"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         comboboxProps={{ dropdownPadding: 10 }}
       />
@@ -29,15 +29,15 @@ function Demo() {
   return (
     <>
       <MultiSelect
-        label="Zero padding"
-        placeholder="Pick value or enter anything"
+        label="零内边距"
+        placeholder="选择值或输入任意内容"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         comboboxProps={{ dropdownPadding: 0 }}
       />
       <MultiSelect
         mt="md"
         label="10px padding"
-        placeholder="Pick value or enter anything"
+        placeholder="选择值或输入任意内容"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         comboboxProps={{ dropdownPadding: 10 }}
       />
@@ -45,7 +45,7 @@ function Demo() {
   );
 }
 
-export const dropdownPadding: MantineDemo = {
+export const dropdownPadding: UIDemo = {
   type: 'code',
   component: Demo,
   code,

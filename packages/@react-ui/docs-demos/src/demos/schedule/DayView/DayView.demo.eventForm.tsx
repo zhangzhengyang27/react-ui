@@ -1,12 +1,12 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { DayView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { _eventFormCode, EventData, EventForm } from '../_EventForm';
 import { dataCode, regularEvents } from './_data';
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
   const [events, setEvents] = useState<ScheduleEventData[]>(regularEvents);
   const [formOpened, setFormOpened] = useState(false);
   const [selectedEventData, setSelectedEventData] = useState<EventData | null>(null);
@@ -121,7 +121,7 @@ import { EventData, EventForm } from './EventForm';
 import { events } from './events';
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
   const [events, setEvents] = useState<ScheduleEventData[]>(events);
   const [formOpened, setFormOpened] = useState(false);
   const [selectedEventData, setSelectedEventData] = useState<EventData | null>(null);
@@ -229,13 +229,13 @@ function Demo() {
   );
 }`;
 
-export const eventForm: MantineDemo = {
+export const eventForm: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
-    { code: _eventFormCode, language: 'tsx', fileName: 'EventForm.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
+    { code: _eventFormCode, language: 'tsx', fileName: '事件表单.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'events.ts' },
   ],
 };

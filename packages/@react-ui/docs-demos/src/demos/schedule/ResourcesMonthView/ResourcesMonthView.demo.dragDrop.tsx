@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { ResourcesMonthView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { dataCode, resourceEvents, resources } from './_data';
 
 const code = `
@@ -11,7 +11,7 @@ import { ResourcesMonthView, ScheduleEventData } from '@react-ui/schedule';
 import { events as initialEvents, resources } from './data';
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
   const [events, setEvents] = useState<ScheduleEventData[]>(initialEvents);
 
   return (
@@ -30,14 +30,14 @@ function Demo() {
           )
         );
       }}
-      startScrollDate={dayjs().format('YYYY-MM-DD')}
+      startScrollDate={dayjs('2024-01-15').format('YYYY-MM-DD')}
     />
   );
 }
 `;
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
   const [events, setEvents] = useState<ScheduleEventData[]>(resourceEvents);
 
   return (
@@ -54,17 +54,17 @@ function Demo() {
           )
         );
       }}
-      startScrollDate={dayjs().format('YYYY-MM-DD')}
+      startScrollDate={dayjs('2024-01-15').format('YYYY-MM-DD')}
     />
   );
 }
 
-export const dragDrop: MantineDemo = {
+export const dragDrop: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

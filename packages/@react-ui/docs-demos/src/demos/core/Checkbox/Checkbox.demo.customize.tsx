@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Checkbox } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Checkbox.demo.customize.module.css';
 
 const cssCode = `
@@ -39,7 +39,7 @@ function Demo() {
   return (
     <Checkbox
       classNames={classes}
-      label="Checkbox button"
+      label="复选框按钮"
       checked={checked}
       onChange={(event) => setChecked(event.currentTarget.checked)}
       wrapperProps={{
@@ -56,7 +56,7 @@ function Demo() {
   return (
     <Checkbox
       classNames={classes}
-      label="Checkbox button"
+      label="复选框按钮"
       checked={checked}
       onChange={(event) => setChecked(event.currentTarget.checked)}
       wrapperProps={{
@@ -66,13 +66,13 @@ function Demo() {
   );
 }
 
-export const customize: MantineDemo = {
+export const customize: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   defaultExpanded: false,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
   ],
 };

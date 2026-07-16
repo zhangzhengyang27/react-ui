@@ -1,8 +1,8 @@
-import type { MantineTheme } from '../../../../MantineProvider'
+import type { UITheme } from '../../../../UIProvider'
 import type { _Styles } from '../get-style'
 
 export interface ResolveStylesInput {
-    theme: MantineTheme
+    theme: UITheme
     styles: _Styles | _Styles[]
     props: Record<string, any>
     stylesCtx: Record<string, any> | undefined

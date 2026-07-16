@@ -1,4 +1,4 @@
-import { render, screen, tests } from '@mantine-tests/core';
+import { render, screen, tests } from '@react-ui/tests';
 import { ScheduleHeader, ScheduleHeaderProps, ScheduleHeaderStylesNames } from './ScheduleHeader';
 
 const defaultProps: ScheduleHeaderProps = {};
@@ -15,7 +15,7 @@ describe('@react-ui/schedule/ScheduleHeader', () => {
 
   it('supports __staticSelector prop', () => {
     const { container } = render(<ScheduleHeader {...defaultProps} __staticSelector="Test" />);
-    expect(container.querySelector('.mantine-Test-header')).toBeInTheDocument();
+    expect(container.querySelector('.ui-Test-header')).toBeInTheDocument();
   });
 
   it('exposes static components', () => {

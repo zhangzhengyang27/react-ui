@@ -1,5 +1,5 @@
 import { TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TagsInput } from '@react-ui/ui';
@@ -7,8 +7,8 @@ import { TagsInput } from '@react-ui/ui';
 function Demo() {
   return (
     <TagsInput
-      label="Your favorite library"
-      placeholder="Pick value or enter anything"
+      label="你最喜欢的库"
+      placeholder="选择值或输入任意内容"
       data={['React', 'Angular', 'Vue', 'Svelte']}
       comboboxProps={{ position: 'top', middlewares: { flip: false, shift: false } }}
     />
@@ -19,15 +19,15 @@ function Demo() {
 function Demo() {
   return (
     <TagsInput
-      label="Your favorite library"
-      placeholder="Pick value or enter anything"
+      label="你最喜欢的库"
+      placeholder="选择值或输入任意内容"
       data={['React', 'Angular', 'Vue', 'Svelte']}
       comboboxProps={{ position: 'top', middlewares: { flip: false, shift: false } }}
     />
   );
 }
 
-export const dropdownPosition: MantineDemo = {
+export const dropdownPosition: UIDemo = {
   type: 'code',
   component: Demo,
   code,

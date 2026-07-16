@@ -1,12 +1,12 @@
-import type { CSSProperties, MantineStyleProp } from '../Box'
+import type { CSSProperties, UIStyleProp } from '../Box'
 import type { FactoryPayload } from '../factory'
-import type { MantineTheme } from '../MantineProvider'
+import type { UITheme } from '../UIProvider'
 import { PartialVarsResolver } from './create-vars-resolver/create-vars-resolver'
 
 /**
  * 定义获取样式API的配置选项接口
  * @property {string} [className] - 自定义类名
- * @property {MantineStyleProp} [style] - 内联样式对象
+ * @property {UIStyleProp} [style] - 内联样式对象
  * @property {boolean} [focusable] - 是否可获取焦点
  * @property {boolean} [active] - 是否为激活状态
  * @property {ClassNames<{ props: any; stylesNames: string }>} [classNames] - 样式类名对象
@@ -17,7 +17,7 @@ import { PartialVarsResolver } from './create-vars-resolver/create-vars-resolver
  */
 export interface GetStylesApiOptions {
     className?: string
-    style?: MantineStyleProp
+    style?: UIStyleProp
     focusable?: boolean
     active?: boolean
     classNames?: ClassNames<{ props: any; stylesNames: string }>
@@ -36,7 +36,7 @@ export interface GetStylesApiOptions {
  *     ? StylesRecord<Payload['stylesNames'], DataType>
  *     : never
  *   : Payload['stylesNames'] extends string
- *     ? StylesRecord<Payload['stylesNames'], DataType> | ((theme: MantineTheme, props: Payload['props'], ctx: Payload['ctx']) => StylesRecord<Payload['stylesNames'], DataType>)
+ *     ? StylesRecord<Payload['stylesNames'], DataType> | ((theme: UITheme, props: Payload['props'], ctx: Payload['ctx']) => StylesRecord<Payload['stylesNames'], DataType>)
  *     : never} StylesApiRecord
  */
 export type StylesApiRecord<Payload extends FactoryPayload, DataType> = Payload['compound'] extends true
@@ -47,7 +47,7 @@ export type StylesApiRecord<Payload extends FactoryPayload, DataType> = Payload[
       ?
             | StylesRecord<Payload['stylesNames'], DataType>
             | ((
-                  theme: MantineTheme,
+                  theme: UITheme,
                   props: Payload['props'],
                   ctx: Payload['ctx']
               ) => StylesRecord<Payload['stylesNames'], DataType>)

@@ -2,7 +2,7 @@
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 
-  @mixin hover {
+  &:hover {
     background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-6));
   }
 }
@@ -13,7 +13,7 @@
 }
 
 .hiddenMobile {
-  @mixin smaller-than em(750px) {
+  @media (max-width: 46.875em) {
     display: none;
   }
 }

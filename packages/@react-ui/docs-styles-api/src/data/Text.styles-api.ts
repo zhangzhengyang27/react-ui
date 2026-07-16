@@ -3,16 +3,16 @@ import type { StylesApiData } from '../types';
 
 export const TextStylesApi: StylesApiData<TextFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
   },
 
   vars: {
     root: {
       '--text-fz': 'Controls `font-size` property',
       '--text-lh': 'Controls `line-height` property',
-      '--text-gradient': 'Text fill gradient',
-      '--text-line-clamp': 'Number of lines that should be visible',
-      '--text-text-wrap': 'Controls `text-wrap` property',
+      '--text-gradient': '文本填充渐变',
+      '--text-line-clamp': '应可见的行数',
+      '--text-text-wrap': '控制 `text-wrap` 属性',
     },
   },
 
@@ -21,10 +21,10 @@ export const TextStylesApi: StylesApiData<TextFactory> = {
       modifier: 'data-truncate',
       selector: 'root',
       value: 'Value of `truncate` prop',
-      condition: '`truncate` prop is set',
+      condition: '设置了 `truncate` 属性',
     },
     { modifier: 'data-line-clamp', selector: 'root', condition: '`lineClamp` prop is a number' },
-    { modifier: 'data-inline', selector: 'root', condition: '`inline` prop is set' },
-    { modifier: 'data-inherit', selector: 'root', condition: '`inherit` prop is set' },
+    { modifier: 'data-inline', selector: 'root', condition: '设置了 `inline` 属性' },
+    { modifier: 'data-inherit', selector: 'root', condition: '设置了 `inherit` 属性' },
   ],
 };

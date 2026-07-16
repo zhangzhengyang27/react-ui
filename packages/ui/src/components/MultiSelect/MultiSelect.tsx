@@ -1,6 +1,6 @@
 import { forwardRef, useMemo, useRef, useState } from 'react'
 import { useId, useMergedRef, useUncontrolled } from '@react-ui/hooks'
-import { BoxProps, factory, Factory, MantineSize, rem, StylesApiProps, useProps, useStyles } from '../../core'
+import { BoxProps, factory, Factory, UISize, rem, StylesApiProps, useProps, useStyles } from '../../core'
 import { Badge } from '../Badge'
 import { CloseButton } from '../CloseButton'
 import { Combobox } from '../Combobox'
@@ -37,34 +37,34 @@ export interface MultiSelectProps
     /** Select options data */
     data?: MultiSelectData
 
-    /** Controlled value */
+    //** 受控值 */
     value?: string[]
 
-    /** Initial value for uncontrolled component */
+    //** 非受控组件的初始值 */
     defaultValue?: string[]
 
     /** Called when selected values change */
     onChange?: (value: string[]) => void
 
-    /** Placeholder displayed when no value is selected */
+    //** 未选择值时显示的占位符 */
     placeholder?: string
 
-    /** Label rendered above the input */
+    //** 渲染在输入框上方的标签 */
     label?: React.ReactNode
 
-    /** Description rendered below the label */
+    //** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
-    /** Error rendered below the input */
+    //** 渲染在输入框下方的错误 */
     error?: React.ReactNode
 
-    /** If set, required asterisk is added to the label */
+    //** 如果设置，则会在标签上添加必填星号 */
     required?: boolean
 
-    /** Controls input size @default 'sm' */
-    size?: MantineSize
+    //** 控制输入框大小 @default 'sm' */
+    size?: UISize
 
-    /** Determines whether select can be searched */
+    /** 决定 Select 是否可以搜索 */
     searchable?: boolean
 
     /** Determines whether selected values can be cleared */
@@ -76,16 +76,16 @@ export interface MultiSelectProps
     /** Maximum number of selected values */
     maxSelectedValues?: number
 
-    /** Message displayed when no options match search value */
+    //** 没有选项匹配搜索值时显示的消息 */
     nothingFoundMessage?: React.ReactNode
 
-    /** Maximum height of the dropdown */
+    //** 下拉框的最大高度 */
     maxDropdownHeight?: React.CSSProperties['maxHeight']
 
-    /** Dropdown position relative to the target element */
+    //** 下拉框相对于目标元素的位置 */
     position?: import('../../core').FloatingPosition
 
-    /** Position of the check icon in the dropdown item @default 'left' */
+    /** 下拉项中对勾图标的位置 @default 'left' */
     checkIconPosition?: 'left' | 'right'
 
     /** Props passed down to the Combobox component */

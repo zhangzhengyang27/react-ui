@@ -9,7 +9,7 @@ export default Layout(MDX_DATA.ThemeObject);
 ReactUI 主题是一个对象，用于存储应用的颜色、字体、间距、圆角和其他设计 token。
 
 ```tsx
-interface MantineTheme {
+interface UITheme {
   /** Controls focus ring styles. Supports the following options:
    *  - `auto` – focus ring is displayed only when the user navigates with keyboard (default value)
    *  - `always` – focus ring is displayed when the user navigates with keyboard and mouse
@@ -32,7 +32,7 @@ interface MantineTheme {
   black: string;
 
   /** Object of colors; key is color name, value is an array of at least 10 strings (colors) */
-  colors: MantineThemeColors;
+  colors: UIThemeColors;
 
   /** Index of theme.colors[color].
    *  Primary shade is used in all components to determine which color from theme.colors[color] should be used.
@@ -43,7 +43,7 @@ interface MantineTheme {
    *  { primaryShade: 6 } // shade 6 is used both for dark and light color schemes
    *  { primaryShade: { light: 6, dark: 7 } } // different shades for dark and light color schemes
    * */
-  primaryShade: MantineColorShade | MantinePrimaryShade;
+  primaryShade: UIColorShade | UIPrimaryShade;
 
   /** Key of `theme.colors`; hex/rgb/hsl values are not supported.
    *  Determines which color will be used in all components by default.
@@ -91,30 +91,30 @@ interface MantineTheme {
   };
 
   /** Object of values that are used to set `border-radius` in all components that support it */
-  radius: MantineRadiusValues;
+  radius: UIRadiusValues;
 
   /** Key of `theme.radius` or any valid CSS value. Default `border-radius` used by most components */
-  defaultRadius: MantineRadius;
+  defaultRadius: UIRadius;
 
   /** Object of values that are used to set various CSS properties that control spacing between elements */
-  spacing: MantineSpacingValues;
+  spacing: UISpacingValues;
 
   /** Object of values that are used to control `font-size` property in all components */
-  fontSizes: MantineFontSizesValues;
+  fontSizes: UIFontSizesValues;
 
   /** Object of values that are used to control `line-height` property in `Text` component */
-  lineHeights: MantineLineHeightValues;
+  lineHeights: UILineHeightValues;
 
   /** Object of values that are used to control `font-weight` property in components */
-  fontWeights: MantineFontWeightsValues;
+  fontWeights: UIFontWeightsValues;
 
   /** Object of values that are used to control breakpoints in all components;
    *  values are expected to be defined in em
    * */
-  breakpoints: MantineBreakpointsValues;
+  breakpoints: UIBreakpointsValues;
 
   /** Object of values that are used to add `box-shadow` styles to components that support `shadow` prop */
-  shadows: MantineShadowsValues;
+  shadows: UIShadowsValues;
 
   /** Determines whether user OS settings to reduce motion should be respected; `false` by default */
   respectReducedMotion: boolean;
@@ -126,7 +126,7 @@ interface MantineTheme {
   cursorType: 'default' | 'pointer';
 
   /** Default gradient configuration for components that support `variant="gradient"` */
-  defaultGradient: MantineGradient;
+  defaultGradient: UIGradient;
 
   /** Class added to the elements that have active styles, for example, `Button` and `ActionIcon` */
   activeClassName: string;
@@ -137,19 +137,19 @@ interface MantineTheme {
   focusClassName: string;
 
   /** Allows adding `classNames`, `styles` and `defaultProps` to any component */
-  components: MantineThemeComponents;
+  components: UIThemeComponents;
 
   /** Any other properties that you want to access with the theme objects */
-  other: MantineThemeOther;
+  other: UIThemeOther;
 }
 ```
 
 ## 用法
 
-要自定义主题，请将主题覆盖对象传递给 [MantineProvider](/theming/mantine-provider/) 的 `theme` 属性。主题覆盖对象会与默认主题进行深度合并。
+要自定义主题，请将主题覆盖对象传递给 [UIProvider](/theming/ui-provider/) 的 `theme` 属性。主题覆盖对象会与默认主题进行深度合并。
 
 ```tsx
-import { createTheme, MantineProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@react-ui/ui';
 
 const theme = createTheme({
   colors: {
@@ -196,9 +196,9 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       {/* 你的应用 */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```
@@ -298,7 +298,7 @@ function Demo() {
 例如，要将 medium 字重从 `600` 改回 ReactUI 8 中的默认值 `500`：
 
 ```tsx
-import { createTheme, MantineProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@react-ui/ui';
 
 const theme = createTheme({
   fontWeights: {
@@ -308,9 +308,9 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       {/* 你的应用 */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```
@@ -324,7 +324,7 @@ function Demo() {
 `theme.other` 是一个对象，可用于存储任何你想通过 theme 对象访问的其他属性。
 
 ```tsx
-import { createTheme, MantineProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@react-ui/ui';
 
 const theme = createTheme({
   other: {
@@ -339,9 +339,9 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       {/* 你的应用 */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```
@@ -351,7 +351,7 @@ function Demo() {
 要将主题覆盖对象存储在变量中，请使用 `createTheme` 函数：
 
 ```tsx
-import { createTheme, MantineProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@react-ui/ui';
 
 const myTheme = createTheme({
   primaryColor: 'orange',
@@ -360,9 +360,9 @@ const myTheme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={myTheme}>
+    <UIProvider theme={myTheme}>
       {/* 你的应用 */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```
@@ -374,7 +374,7 @@ function Demo() {
 ```tsx
 import {
   createTheme,
-  MantineProvider,
+  UIProvider,
   mergeThemeOverrides,
 } from '@react-ui/ui';
 
@@ -392,29 +392,29 @@ const myTheme = mergeThemeOverrides(theme1, theme2);
 
 function Demo() {
   return (
-    <MantineProvider theme={myTheme}>
+    <UIProvider theme={myTheme}>
       {/* 你的应用 */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```
 
-## use-mantine-theme hook
+## use-ui-theme hook
 
-`useMantineTheme` Hook 从 [MantineProvider](/theming/mantine-provider) 上下文中返回主题对象：
+`useUITheme` Hook 从 [UIProvider](/theming/ui-provider) 上下文中返回主题对象：
 
 ```tsx
-import { useMantineTheme } from '@react-ui/ui';
+import { useUITheme } from '@react-ui/ui';
 
 function Demo() {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   return <div style={{ background: theme.colors.blue[5] }} />;
 }
 ```
 
 ## 默认主题
 
-你可以从 `@react-ui/ui` 包中导入默认主题对象。它包含所有具有默认值的主题属性。当你将主题覆盖传递给 [MantineProvider](/theming/mantine-provider) 时，它会与默认主题进行深度合并。
+你可以从 `@react-ui/ui` 包中导入默认主题对象。它包含所有具有默认值的主题属性。当你将主题覆盖传递给 [UIProvider](/theming/ui-provider) 时，它会与默认主题进行深度合并。
 
 ```tsx
 import { DEFAULT_THEME } from '@react-ui/ui';
@@ -429,7 +429,7 @@ import { DEFAULT_THEME } from '@react-ui/ui';
 import {
   createTheme,
   DEFAULT_THEME,
-  mergeMantineTheme,
+  mergeUITheme,
 } from '@react-ui/ui';
 
 const themeOverride = createTheme({
@@ -437,7 +437,7 @@ const themeOverride = createTheme({
   defaultRadius: 0,
 });
 
-export const theme = mergeMantineTheme(DEFAULT_THEME, themeOverride);
+export const theme = mergeUITheme(DEFAULT_THEME, themeOverride);
 ```
 
 然后你可以在应用的任何地方导入它：

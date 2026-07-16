@@ -9,31 +9,31 @@ import { InputWrapperStylesApi } from './Input.styles-api';
 
 export const CheckboxStylesApi: StylesApiData<CheckboxFactory> = {
   selectors: {
-    root: 'Root element',
-    input: 'Input element (`input[type="checkbox"]`)',
-    icon: 'Checkbox icon, used to display checkmark and indeterminate state icon',
-    inner: 'Wrapper for `icon` and `input`',
-    body: 'Input body, contains all other elements',
-    labelWrapper: 'Contains `label`, `description` and `error`',
-    label: 'Label element',
-    description: 'Description displayed below the label',
-    error: 'Error message displayed below the label',
+    root: '根元素',
+    input: '输入元素（`input[type="checkbox"]`）',
+    icon: '复选框图标，用于显示对勾和不确定状态图标',
+    inner: '`icon` 和 `input` 的包装器',
+    body: '输入主体，包含所有其他元素',
+    labelWrapper: '包含 `label`、`description` 和 `error`',
+    label: '标签元素',
+    description: '显示在标签下方的描述',
+    error: '显示在标签下方的错误消息',
   },
 
   vars: {
     root: {
-      '--checkbox-color': 'Controls checked checkbox `background-color`',
-      '--checkbox-radius': 'Controls checkbox `border-radius`',
-      '--checkbox-size': 'Controls checkbox `width` and `height`',
-      '--checkbox-icon-color': 'Controls checkbox icon `color`',
+      '--checkbox-color': '控制选中复选框的 `background-color`',
+      '--checkbox-radius': '控制复选框的 `border-radius`',
+      '--checkbox-size': '控制复选框的 `width` 和 `height`',
+      '--checkbox-icon-color': '控制复选框图标的 `color`',
     },
   },
 
   modifiers: [
-    { modifier: 'data-checked', selector: 'root', condition: '`checked` prop is set' },
-    { modifier: 'data-error', selector: 'input', condition: '`error` prop is set' },
-    { modifier: 'data-indeterminate', selector: 'input', condition: '`indeterminate` prop is set' },
-    { modifier: 'data-label-position', selector: 'inner', value: 'Value of `labelPosition` prop' },
+    { modifier: 'data-checked', selector: 'root', condition: '设置了 `checked` 属性' },
+    { modifier: 'data-error', selector: 'input', condition: '设置了 `error` 属性' },
+    { modifier: 'data-indeterminate', selector: 'input', condition: '设置了 `indeterminate` 属性' },
+    { modifier: 'data-label-position', selector: 'inner', value: '`labelPosition` 属性的值' },
   ],
 };
 
@@ -47,8 +47,8 @@ export const CheckboxGroupStylesApi: StylesApiData<CheckboxGroupFactory> = {
 
 export const CheckboxIndicatorStylesApi: StylesApiData<CheckboxIndicatorFactory> = {
   selectors: {
-    indicator: 'Root element',
-    icon: 'Checkbox icon',
+    indicator: '根元素',
+    icon: '复选框图标',
   },
 
   vars: {
@@ -56,24 +56,24 @@ export const CheckboxIndicatorStylesApi: StylesApiData<CheckboxIndicatorFactory>
   },
 
   modifiers: [
-    { modifier: 'data-checked', selector: 'indicator', condition: '`checked` prop is set' },
-    { modifier: 'data-disabled', selector: 'indicator', condition: '`disabled` prop is set' },
+    { modifier: 'data-checked', selector: 'indicator', condition: '设置了 `checked` 属性' },
+    { modifier: 'data-disabled', selector: 'indicator', condition: '设置了 `disabled` 属性' },
   ],
 };
 
 export const CheckboxCardStylesApi: StylesApiData<CheckboxCardFactory> = {
   selectors: {
-    card: 'Root element',
+    card: '根元素',
   },
 
   vars: {
     card: {
-      '--card-radius': 'Controls card `border-radius`',
+      '--card-radius': '控制卡片的 `border-radius`',
     },
   },
 
   modifiers: [
-    { modifier: 'data-checked', selector: 'card', condition: '`checked` prop is set' },
-    { modifier: 'data-with-border', selector: 'card', condition: '`withBorder` prop is set' },
+    { modifier: 'data-checked', selector: 'card', condition: '设置了 `checked` 属性' },
+    { modifier: 'data-with-border', selector: 'card', condition: '设置了 `withBorder` 属性' },
   ],
 };

@@ -7,9 +7,9 @@ import {
     Factory,
     getRadius,
     getSize,
-    MantineColor,
-    MantineRadius,
-    MantineSize,
+    UIColor,
+    UIRadius,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -34,20 +34,20 @@ export interface ChipProps extends BoxProps, StylesApiProps<ChipFactory> {
     /** If true, the chip is checked */
     checked?: boolean
 
-    /** Default checked state for uncontrolled chip */
+    /** 非受控 Chip 的默认选中状态 */
     defaultChecked?: boolean
 
-    /** Called when checked state changes */
+    /** 选中状态变化时调用 */
     onChange?: (checked: boolean) => void
 
-    /** Key of theme.colors or any valid CSS color */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 */
+    color?: UIColor
 
-    /** Controls chip size */
-    size?: MantineSize
+    /** 控制 Chip 的大小 */
+    size?: UISize
 
-    /** Controls chip border-radius */
-    radius?: MantineRadius
+    /** 控制 Chip 的圆角 */
+    radius?: UIRadius
 
     /** Chip variant @default filled */
     variant?: 'filled' | 'light' | 'outline'

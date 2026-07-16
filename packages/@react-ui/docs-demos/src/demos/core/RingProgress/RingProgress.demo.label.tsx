@@ -1,6 +1,6 @@
 import { CheckIcon } from '@phosphor-icons/react';
 import { ActionIcon, Center, Group, RingProgress, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ActionIcon, RingProgress, Text, Center } from '@react-ui/ui';
@@ -59,7 +59,7 @@ function Demo() {
   );
 }
 
-export const label: MantineDemo = {
+export const label: UIDemo = {
   type: 'code',
   code,
   component: Demo,

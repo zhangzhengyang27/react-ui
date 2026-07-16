@@ -1,5 +1,5 @@
 import { Select } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Select } from '@react-ui/ui';
@@ -7,8 +7,8 @@ import { Select } from '@react-ui/ui';
 function Demo() {
   return (
     <Select
-      label="Your favorite library"
-      placeholder="Pick value"
+      label="你最喜欢的库"
+      placeholder="选择值"
       autoSelectOnBlur
       searchable
       data={['React', 'Angular', 'Vue', 'Svelte']}
@@ -20,8 +20,8 @@ function Demo() {
 function Demo() {
   return (
     <Select
-      label="Your favorite library"
-      placeholder="Pick value"
+      label="你最喜欢的库"
+      placeholder="选择值"
       autoSelectOnBlur
       searchable
       data={['React', 'Angular', 'Vue', 'Svelte']}
@@ -29,7 +29,7 @@ function Demo() {
   );
 }
 
-export const autoSelectOnBlur: MantineDemo = {
+export const autoSelectOnBlur: UIDemo = {
   type: 'code',
   component: Demo,
   code,

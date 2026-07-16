@@ -60,7 +60,7 @@ export interface UseHorizontalCollapseReturnValue {
 
 /**
  * 水平折叠动画 hook：通过测量内容宽度对 width 做 transition。
- * 对齐 mantine useHorizontalCollapse。
+ * 对齐 ui useHorizontalCollapse。
  */
 export function useHorizontalCollapse({
     transitionDuration,

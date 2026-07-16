@@ -1,5 +1,5 @@
 import { Button } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Button.demo.disabledStyles.module.css';
 
 const code = `
@@ -9,7 +9,7 @@ import classes from './Demo.module.css';
 function Demo() {
   return (
     <Button className={classes.button} disabled>
-      Disabled with styles
+      带样式的禁用
     </Button>
   );
 }
@@ -28,17 +28,17 @@ const cssCode = `
 function Demo() {
   return (
     <Button className={classes.button} disabled>
-      Disabled with styles
+      带样式的禁用
     </Button>
   );
 }
 
-export const disabledStyles: MantineDemo = {
+export const disabledStyles: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   code: [
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
   ],
 };

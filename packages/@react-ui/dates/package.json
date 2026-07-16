@@ -1,8 +1,8 @@
 {
   "name": "@react-ui/dates",
   "version": "9.4.1",
-  "description": "Calendars, date and time pickers based on Mantine components",
-  "homepage": "https://mantine.dev/dates/getting-started/",
+  "description": "Calendars, date and time pickers based on React UI components",
+  "homepage": "https://react-ui.dev/dates/getting-started/",
   "license": "MIT",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "keywords": [
@@ -35,7 +35,7 @@
     "./styles.layer.css": "./styles.layer.css"
   },
   "repository": {
-    "url": "https://github.com/mantinedev/mantine.git",
+    "url": "https://github.com/react-ui/react-ui.git",
     "type": "git",
     "directory": "packages/@react-ui/dates"
   },

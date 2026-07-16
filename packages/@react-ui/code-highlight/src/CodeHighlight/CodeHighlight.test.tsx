@@ -1,4 +1,4 @@
-import { tests } from '@mantine-tests/core';
+import { tests } from '@react-ui/tests';
 import { CodeHighlight, CodeHighlightProps, CodeHighlightStylesNames } from './CodeHighlight';
 
 const defaultProps: CodeHighlightProps = {
@@ -14,7 +14,7 @@ describe('@react-ui/code-highlight/CodeHighlight', () => {
     props: defaultProps,
     varsResolver: true,
     polymorphic: true,
-    selector: '.mantine-CodeHighlight-codeHighlight',
+    selector: '.ui-CodeHighlight-codeHighlight',
     displayName: '@react-ui/code-highlight/CodeHighlight',
     stylesApiSelectors: [
       'codeHighlight',

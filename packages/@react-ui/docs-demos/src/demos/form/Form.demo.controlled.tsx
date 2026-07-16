@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Code, Text, TextInput } from '@react-ui/ui';
 import { hasLength, isEmail, useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -14,7 +14,7 @@ function Demo() {
     initialValues: { name: '', email: '' },
     validate: {
       name: hasLength({ min: 3 }, 'Must be at least 3 characters'),
-      email: isEmail('Invalid email'),
+      email: isEmail('无效的邮箱'),
     },
   });
 
@@ -22,10 +22,10 @@ function Demo() {
 
   return (
     <form onSubmit={form.onSubmit(setSubmittedValues)}>
-      <TextInput {...form.getInputProps('name')} label="Name" placeholder="Name" />
-      <TextInput {...form.getInputProps('email')} mt="md" label="Email" placeholder="Email" />
+      <TextInput {...form.getInputProps('name')} label="姓名" placeholder="姓名" />
+      <TextInput {...form.getInputProps('email')} mt="md" label="邮箱" placeholder="邮箱" />
       <Button type="submit" mt="md">
-        Submit
+        提交
       </Button>
 
       <Text mt="md">Form values:</Text>
@@ -44,7 +44,7 @@ function Demo() {
     initialValues: { name: '', email: '' },
     validate: {
       name: hasLength({ min: 3 }, 'Must be at least 3 characters'),
-      email: isEmail('Invalid email'),
+      email: isEmail('无效的邮箱'),
     },
   });
 
@@ -52,10 +52,10 @@ function Demo() {
 
   return (
     <form onSubmit={form.onSubmit(setSubmittedValues)}>
-      <TextInput {...form.getInputProps('name')} label="Name" placeholder="Name" />
-      <TextInput {...form.getInputProps('email')} mt="md" label="Email" placeholder="Email" />
+      <TextInput {...form.getInputProps('name')} label="姓名" placeholder="姓名" />
+      <TextInput {...form.getInputProps('email')} mt="md" label="邮箱" placeholder="邮箱" />
       <Button type="submit" mt="md">
-        Submit
+        提交
       </Button>
 
       <Text mt="md">Form values:</Text>
@@ -67,7 +67,7 @@ function Demo() {
   );
 }
 
-export const controlled: MantineDemo = {
+export const controlled: UIDemo = {
   type: 'code',
   component: Demo,
   code,

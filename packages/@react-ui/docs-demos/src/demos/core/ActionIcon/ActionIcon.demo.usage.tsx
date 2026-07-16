@@ -1,6 +1,6 @@
 import { SlidersHorizontalIcon } from '@phosphor-icons/react';
 import { ActionIcon } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { interactiveVariantsControl } from '../../../shared';
 
 const code = `
@@ -9,7 +9,7 @@ import { SlidersHorizontalIcon } from '@phosphor-icons/react';
 
 function Demo() {
   return (
-    <ActionIcon{{props}} aria-label="Settings">
+    <ActionIcon{{props}} aria-label="设置">
       <SlidersHorizontalIcon style={{ width: '70%', height: '70%' }} />
     </ActionIcon>
   );
@@ -18,13 +18,13 @@ function Demo() {
 
 function Wrapper(props: any) {
   return (
-    <ActionIcon {...props} aria-label="Settings">
+    <ActionIcon {...props} aria-label="设置">
       <SlidersHorizontalIcon style={{ width: '70%', height: '70%' }} />
     </ActionIcon>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

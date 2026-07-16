@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { DotsSixVerticalIcon } from '@phosphor-icons/react';
 import { Button, Group, Text } from '@react-ui/ui';
 import { useSplitter } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -215,7 +215,7 @@ function Demo() {
   );
 }
 
-export const controlled: MantineDemo = {
+export const controlled: UIDemo = {
   type: 'code',
   code,
   component: Demo,

@@ -1,6 +1,6 @@
 import { PasswordInput, Stack } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useDisclosure } from '@react-ui/hooks';
@@ -11,13 +11,13 @@ function Demo() {
   return (
     <Stack>
       <PasswordInput
-        label="Password"
+        label="密码"
         defaultValue="secret"
         visible={visible}
         onVisibilityChange={toggle}
       />
       <PasswordInput
-        label="Confirm password"
+        label="确认密码"
         defaultValue="secret"
         visible={visible}
         onVisibilityChange={toggle}
@@ -32,13 +32,13 @@ function Demo() {
   return (
     <Stack>
       <PasswordInput
-        label="Password"
+        label="密码"
         defaultValue="secret"
         visible={visible}
         onVisibilityChange={toggle}
       />
       <PasswordInput
-        label="Confirm password"
+        label="确认密码"
         defaultValue="secret"
         visible={visible}
         onVisibilityChange={toggle}
@@ -47,7 +47,7 @@ function Demo() {
   );
 }
 
-export const controlledVisibility: MantineDemo = {
+export const controlledVisibility: UIDemo = {
   type: 'code',
   component: Demo,
   code,

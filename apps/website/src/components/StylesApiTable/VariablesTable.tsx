@@ -34,9 +34,9 @@ export function VariablesTable({ data, fixedLayout = true, ...others }: Variable
       <Table layout={fixedLayout ? 'fixed' : undefined} {...others}>
         <Table.Thead>
           <Table.Tr>
-            <Table.Th w={fixedLayout ? 210 : undefined}>Selector</Table.Th>
-            <Table.Th w={fixedLayout ? 310 : undefined}>Variable</Table.Th>
-            <Table.Th>Description</Table.Th>
+            <Table.Th w={fixedLayout ? 210 : undefined}>选择器</Table.Th>
+            <Table.Th w={fixedLayout ? 310 : undefined}>变量</Table.Th>
+            <Table.Th>说明</Table.Th>
           </Table.Tr>
         </Table.Thead>
         <Table.Tbody>{rows}</Table.Tbody>

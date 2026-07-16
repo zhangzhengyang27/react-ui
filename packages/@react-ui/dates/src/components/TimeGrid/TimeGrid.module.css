@@ -8,7 +8,7 @@
   border-radius: var(--time-grid-radius, var(--ui-radius-default));
   font-size: var(--time-grid-fz, var(--ui-font-size-sm));
 
-  @mixin hover {
+  &:hover {
     &:where(:not([data-disabled])) {
       background-color: var(--ui-color-default-hover);
     }
@@ -19,7 +19,7 @@
     color: var(--ui-color-white);
     border-color: transparent;
 
-    @mixin hover {
+    &:hover {
       &:where(:not([data-disabled])) {
         background-color: var(--ui-primary-color-filled-hover);
       }

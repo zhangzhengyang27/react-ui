@@ -1,6 +1,6 @@
 import { LockIcon } from '@phosphor-icons/react';
 import { PasswordInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { PasswordInput } from '@react-ui/ui';
@@ -14,13 +14,13 @@ function Demo() {
       <PasswordInput
         leftSection={icon}
         leftSectionPointerEvents="none"
-        label="With left section"
-        placeholder="With left section"
+        label="带左侧区域"
+        placeholder="带左侧区域"
       />
       <PasswordInput
         rightSection={icon}
-        label="With right section"
-        placeholder="With right section"
+        label="带右侧区域"
+        placeholder="带右侧区域"
         rightSectionPointerEvents="none"
         mt="md"
       />
@@ -37,13 +37,13 @@ function Demo() {
       <PasswordInput
         leftSection={icon}
         leftSectionPointerEvents="none"
-        label="With left section"
-        placeholder="With left section"
+        label="带左侧区域"
+        placeholder="带左侧区域"
       />
       <PasswordInput
         rightSection={icon}
-        label="With right section"
-        placeholder="With right section"
+        label="带右侧区域"
+        placeholder="带右侧区域"
         rightSectionPointerEvents="none"
         mt="md"
       />
@@ -51,7 +51,7 @@ function Demo() {
   );
 }
 
-export const sections: MantineDemo = {
+export const sections: UIDemo = {
   type: 'code',
   component: Demo,
   code,

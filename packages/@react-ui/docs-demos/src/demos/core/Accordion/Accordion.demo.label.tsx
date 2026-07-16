@@ -1,12 +1,12 @@
 import { Accordion, AccordionProps, Avatar, Flex, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const charactersList = [
   {
     id: 'bender',
     image: 'https://img.icons8.com/clouds/256/000000/futurama-bender.png',
     label: 'Bender Bending Rodríguez',
-    description: 'Fascinated with cooking, though has no sense of taste',
+    description: '对烹饪很着迷，但没有味觉',
     content:
       "Bender Bending Rodríguez, (born September 4, 2996), designated Bending Unit 22, and commonly known as Bender, is a bending unit created by a division of MomCorp in Tijuana, Mexico, and his serial number is 2716057. His mugshot id number is 01473. He is Fry's best friend.",
   },
@@ -15,7 +15,7 @@ const charactersList = [
     id: 'carol',
     image: 'https://img.icons8.com/clouds/256/000000/futurama-mom.png',
     label: 'Carol Miller',
-    description: 'One of the richest people on Earth',
+    description: '地球上最富有的人之一',
     content:
       "Carol Miller (born January 30, 2880), better known as Mom, is the evil chief executive officer and shareholder of 99.7% of Momcorp, one of the largest industrial conglomerates in the universe and the source of most of Earth's robots. She is also one of the main antagonists of the Futurama series.",
   },
@@ -24,7 +24,7 @@ const charactersList = [
     id: 'homer',
     image: 'https://img.icons8.com/clouds/256/000000/homer-simpson.png',
     label: 'Homer Simpson',
-    description: 'Overweight, lazy, and often ignorant',
+    description: '超重、懒惰且常常无知',
     content:
       'Homer Jay Simpson (born May 12) is the main protagonist and one of the five main characters of The Simpsons series(or show). He is the spouse of Marge Simpson and father of Bart, Lisa and Maggie Simpson.',
   },
@@ -38,7 +38,7 @@ const charactersList = [
     id: 'bender',
     image: 'https://img.icons8.com/clouds/256/000000/futurama-bender.png',
     label: 'Bender Bending Rodríguez',
-    description: 'Fascinated with cooking, though has no sense of taste',
+    description: '对烹饪很着迷，但没有味觉',
     content: "Bender Bending Rodríguez, (born September 4, 2996), designated Bending Unit 22, and commonly known as Bender, is a bending unit created by a division of MomCorp in Tijuana, Mexico, and his serial number is 2716057. His mugshot id number is 01473. He is Fry's best friend.",
   },
 
@@ -46,7 +46,7 @@ const charactersList = [
     id: 'carol',
     image: 'https://img.icons8.com/clouds/256/000000/futurama-mom.png',
     label: 'Carol Miller',
-    description: 'One of the richest people on Earth',
+    description: '地球上最富有的人之一',
     content: "Carol Miller (born January 30, 2880), better known as Mom, is the evil chief executive officer and shareholder of 99.7% of Momcorp, one of the largest industrial conglomerates in the universe and the source of most of Earth's robots. She is also one of the main antagonists of the Futurama series.",
   },
 
@@ -54,7 +54,7 @@ const charactersList = [
     id: 'homer',
     image: 'https://img.icons8.com/clouds/256/000000/homer-simpson.png',
     label: 'Homer Simpson',
-    description: 'Overweight, lazy, and often ignorant',
+    description: '超重、懒惰且常常无知',
     content: 'Homer Jay Simpson (born May 12) is the main protagonist and one of the five main characters of The Simpsons series(or show). He is the spouse of Marge Simpson and father of Bart, Lisa and Maggie Simpson.',
   },
 ];
@@ -142,7 +142,7 @@ function Demo() {
   return <AccordionDemo />;
 }
 
-export const label: MantineDemo = {
+export const label: UIDemo = {
   type: 'code',
   code,
   component: Demo,

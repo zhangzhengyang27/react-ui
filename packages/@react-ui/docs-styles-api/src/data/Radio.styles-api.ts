@@ -9,30 +9,30 @@ import { InputWrapperStylesApi } from './Input.styles-api';
 
 export const RadioStylesApi: StylesApiData<RadioFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
     radio: 'Input element (`input[type="radio"]`)',
     icon: 'Radio icon, used to display checked icon',
     inner: 'Wrapper for `icon` and `input`',
-    body: 'Input body, contains all other elements',
+    body: 'Input body，包含所有其他元素',
     labelWrapper: 'Contains `label`, `description` and `error`',
-    label: 'Label element',
-    description: 'Description displayed below the label',
-    error: 'Error message displayed below the label',
+    label: '标签元素',
+    description: '标签下方显示的描述',
+    error: '标签下方显示的错误信息',
   },
 
   vars: {
     root: {
-      '--radio-color': 'Controls checked radio `background-color`',
-      '--radio-radius': 'Controls radio `border-radius`',
-      '--radio-size': 'Controls radio `width` and `height`',
-      '--radio-icon-color': 'Controls radio icon `color`',
-      '--radio-icon-size': 'Controls radio icon `width` and `height`',
+      '--radio-color': '控制 checked radio `background-color`',
+      '--radio-radius': '控制 radio `border-radius`',
+      '--radio-size': '控制 radio `width` and `height`',
+      '--radio-icon-color': '控制 radio icon `color`',
+      '--radio-icon-size': '控制 radio icon `width` and `height`',
     },
   },
 
   modifiers: [
-    { modifier: 'data-error', selector: 'radio', condition: '`error` prop is set' },
-    { modifier: 'data-label-position', selector: 'inner', value: 'Value of `labelPosition` prop' },
+    { modifier: 'data-error', selector: 'radio', condition: '设置了 `error` 属性' },
+    { modifier: 'data-label-position', selector: 'inner', value: '`labelPosition` 属性的值' },
   ],
 };
 
@@ -46,7 +46,7 @@ export const RadioGroupStylesApi: StylesApiData<RadioGroupFactory> = {
 
 export const RadioIndicatorStylesApi: StylesApiData<RadioIndicatorFactory> = {
   selectors: {
-    indicator: 'Root element',
+    indicator: '根元素',
     icon: 'Radio icon',
   },
 
@@ -55,24 +55,24 @@ export const RadioIndicatorStylesApi: StylesApiData<RadioIndicatorFactory> = {
   },
 
   modifiers: [
-    { modifier: 'data-checked', selector: 'indicator', condition: '`checked` prop is set' },
-    { modifier: 'data-disabled', selector: 'indicator', condition: '`disabled` prop is set' },
+    { modifier: 'data-checked', selector: 'indicator', condition: '设置了 `checked` 属性' },
+    { modifier: 'data-disabled', selector: 'indicator', condition: '设置了 `disabled` 属性' },
   ],
 };
 
 export const RadioCardStylesApi: StylesApiData<RadioCardFactory> = {
   selectors: {
-    card: 'Root element',
+    card: '根元素',
   },
 
   vars: {
     card: {
-      '--card-radius': 'Controls card `border-radius`',
+      '--card-radius': '控制 card `border-radius`',
     },
   },
 
   modifiers: [
-    { modifier: 'data-checked', selector: 'card', condition: '`checked` prop is set' },
-    { modifier: 'data-with-border', selector: 'card', condition: '`withBorder` prop is set' },
+    { modifier: 'data-checked', selector: 'card', condition: '设置了 `checked` 属性' },
+    { modifier: 'data-with-border', selector: 'card', condition: '设置了 `withBorder` 属性' },
   ],
 };

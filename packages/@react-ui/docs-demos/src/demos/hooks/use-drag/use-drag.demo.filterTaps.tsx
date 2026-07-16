@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Badge, Group, Text, UnstyledButton } from '@react-ui/ui';
 import { useDrag } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -52,10 +52,10 @@ function Demo() {
       </Group>
 
       <Group justify="center" mt="md" gap="lg">
-        <Text size="sm">
+        <Text size="sm" component="span">
           Taps: <Badge>{taps}</Badge>
         </Text>
-        <Text size="sm">
+        <Text size="sm" component="span">
           Drags: <Badge color="teal">{drags}</Badge>
         </Text>
       </Group>
@@ -108,10 +108,10 @@ function Demo() {
       </Group>
 
       <Group justify="center" mt="md" gap="lg">
-        <Text size="sm">
+        <Text size="sm" component="span">
           Taps: <Badge>{taps}</Badge>
         </Text>
-        <Text size="sm">
+        <Text size="sm" component="span">
           Drags: <Badge color="teal">{drags}</Badge>
         </Text>
       </Group>
@@ -119,7 +119,7 @@ function Demo() {
   );
 }
 
-export const filterTaps: MantineDemo = {
+export const filterTaps: UIDemo = {
   type: 'code',
   code,
   component: Demo,

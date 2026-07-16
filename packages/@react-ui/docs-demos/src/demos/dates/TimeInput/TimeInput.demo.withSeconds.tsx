@@ -1,5 +1,5 @@
 import { TimeInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TimeInput } from '@react-ui/dates';
@@ -13,7 +13,7 @@ function Demo() {
   return <TimeInput withSeconds />;
 }
 
-export const withSeconds: MantineDemo = {
+export const withSeconds: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 340,

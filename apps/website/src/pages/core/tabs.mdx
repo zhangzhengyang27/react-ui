@@ -22,12 +22,12 @@ function Demo() {
   return (
     <Tabs value={activeTab} onChange={setActiveTab}>
       <Tabs.List>
-        <Tabs.Tab value="first">First tab</Tabs.Tab>
-        <Tabs.Tab value="second">Second tab</Tabs.Tab>
+        <Tabs.Tab value="first">第一个标签</Tabs.Tab>
+        <Tabs.Tab value="second">第二个标签</Tabs.Tab>
       </Tabs.List>
 
-      <Tabs.Panel value="first">First panel</Tabs.Panel>
-      <Tabs.Panel value="second">Second panel</Tabs.Panel>
+      <Tabs.Panel value="first">第一面板</Tabs.Panel>
+      <Tabs.Panel value="second">第二面板</Tabs.Panel>
     </Tabs>
   );
 }
@@ -44,12 +44,12 @@ function Demo() {
   return (
     <Tabs defaultValue="first">
       <Tabs.List>
-        <Tabs.Tab value="first">First tab</Tabs.Tab>
-        <Tabs.Tab value="second">Second tab</Tabs.Tab>
+        <Tabs.Tab value="first">第一个标签</Tabs.Tab>
+        <Tabs.Tab value="second">第二个标签</Tabs.Tab>
       </Tabs.List>
 
-      <Tabs.Panel value="first">First panel</Tabs.Panel>
-      <Tabs.Panel value="second">Second panel</Tabs.Panel>
+      <Tabs.Panel value="first">第一面板</Tabs.Panel>
+      <Tabs.Panel value="second">第二面板</Tabs.Panel>
     </Tabs>
   );
 }
@@ -122,12 +122,12 @@ function Demo() {
   return (
     <Tabs keepMounted={false} defaultValue="first">
       <Tabs.List>
-        <Tabs.Tab value="first">First tab</Tabs.Tab>
-        <Tabs.Tab value="second">Second tab</Tabs.Tab>
+        <Tabs.Tab value="first">第一个标签</Tabs.Tab>
+        <Tabs.Tab value="second">第二个标签</Tabs.Tab>
       </Tabs.List>
 
-      <Tabs.Panel value="first">First panel</Tabs.Panel>
-      <Tabs.Panel value="second">Second panel</Tabs.Panel>
+      <Tabs.Panel value="first">第一面板</Tabs.Panel>
+      <Tabs.Panel value="second">第二面板</Tabs.Panel>
     </Tabs>
   );
 }
@@ -145,11 +145,11 @@ function Demo() {
   return (
     <Tabs defaultValue="first">
       <Tabs.List>
-        <Tabs.Tab value="first">First tab</Tabs.Tab>
+        <Tabs.Tab value="first">第一个标签</Tabs.Tab>
         <Tabs.Tab value="Second" ref={secondTabRef}>
-          Second tab
+          第二个标签
         </Tabs.Tab>
-        <Tabs.Tab value="third">Third tab</Tabs.Tab>
+        <Tabs.Tab value="third">第三个标签</Tabs.Tab>
       </Tabs.List>
     </Tabs>
   );
@@ -172,19 +172,19 @@ function Demo() {
           value="home"
           renderRoot={(props) => <a href="/home" {...props} />}
         >
-          Home
+          首页
         </Tabs.Tab>
         <Tabs.Tab
           value="about"
           renderRoot={(props) => <a href="/about" {...props} />}
         >
-          About
+          关于
         </Tabs.Tab>
         <Tabs.Tab
           value="contacts"
           renderRoot={(props) => <a href="/contacts" {...props} />}
         >
-          Contacts
+          联系我们
         </Tabs.Tab>
       </Tabs.List>
     </Tabs>
@@ -202,10 +202,10 @@ function Demo() {
     <Tabs defaultValue="home">
       <Tabs.List>
         <Tabs.Tab value="home" component="a" href="/home">
-          Home
+          首页
         </Tabs.Tab>
         <Tabs.Tab value="about" component="a" href="/about">
-          About
+          关于
         </Tabs.Tab>
       </Tabs.List>
     </Tabs>
@@ -233,13 +233,13 @@ function Demo() {
           value="/home"
           renderRoot={(props) => <Link href="/home" {...props} />}
         >
-          Home
+          首页
         </Tabs.Tab>
         <Tabs.Tab
           value="/about"
           renderRoot={(props) => <Link href="/about" {...props} />}
         >
-          About
+          关于
         </Tabs.Tab>
       </Tabs.List>
     </Tabs>
@@ -273,7 +273,7 @@ function Demo() {
             <Link to="/tabs/first" {...props} />
           )}
         >
-          First tab
+          第一个标签
         </Tabs.Tab>
         <Tabs.Tab
           value="/tabs/second"
@@ -281,7 +281,7 @@ function Demo() {
             <Link to="/tabs/second" {...props} />
           )}
         >
-          Second tab
+          第二个标签
         </Tabs.Tab>
       </Tabs.List>
     </Tabs>
@@ -309,8 +309,8 @@ function Demo() {
       onChange={(value) => navigate(`/tabs/${value}`)}
     >
       <Tabs.List>
-        <Tabs.Tab value="first">First tab</Tabs.Tab>
-        <Tabs.Tab value="second">Second tab</Tabs.Tab>
+        <Tabs.Tab value="first">第一个标签</Tabs.Tab>
+        <Tabs.Tab value="second">第二个标签</Tabs.Tab>
       </Tabs.List>
     </Tabs>
   );
@@ -333,8 +333,8 @@ function Demo() {
       onChange={(value) => router.push(`/tabs/${value}`)}
     >
       <Tabs.List>
-        <Tabs.Tab value="first">First tab</Tabs.Tab>
-        <Tabs.Tab value="second">Second tab</Tabs.Tab>
+        <Tabs.Tab value="first">第一个标签</Tabs.Tab>
+        <Tabs.Tab value="second">第二个标签</Tabs.Tab>
       </Tabs.List>
     </Tabs>
   );
@@ -367,8 +367,8 @@ function Demo() {
       onChange={(value) => router.push(`/tabs/${value}`)}
     >
       <Tabs.List>
-        <Tabs.Tab value="first">First tab</Tabs.Tab>
-        <Tabs.Tab value="second">Second tab</Tabs.Tab>
+        <Tabs.Tab value="first">第一个标签</Tabs.Tab>
+        <Tabs.Tab value="second">第二个标签</Tabs.Tab>
       </Tabs.List>
     </Tabs>
   );
@@ -415,18 +415,18 @@ function Demo() {
     <Tabs defaultValue="chat">
       <Tabs.List>
         {/* 不需要 aria-label，标签页由子元素标记 */}
-        <Tabs.Tab value="chat">Chat</Tabs.Tab>
+        <Tabs.Tab value="chat">聊天</Tabs.Tab>
 
         {/* 需要 aria-label，标签页没有子元素标记 */}
         <Tabs.Tab
           value="money"
-          aria-label="Get money"
+          aria-label="获取资金"
           leftSection={<CoinIcon size={14} />}
         />
 
         {/* 你可以使用 VisuallyHidden 替代 aria-label */}
         <Tabs.Tab value="money" leftSection={<CoinIcon size={14} />}>
-          <VisuallyHidden>Get money</VisuallyHidden>
+          <VisuallyHidden>获取资金</VisuallyHidden>
         </Tabs.Tab>
       </Tabs.List>
     </Tabs>
@@ -443,10 +443,10 @@ function Demo() {
   return (
     <Tabs defaultValue="recent">
       {/* Tabs.List 的 aria-label 会在标签页首次获得焦点时朗读 */}
-      <Tabs.List aria-label="Chats">
-        <Tabs.Tab value="recent">Most recent</Tabs.Tab>
-        <Tabs.Tab value="recent">Unanswered</Tabs.Tab>
-        <Tabs.Tab value="archived">Archived</Tabs.Tab>
+      <Tabs.List aria-label="聊天">
+        <Tabs.Tab value="recent">最近</Tabs.Tab>
+        <Tabs.Tab value="recent">未回复</Tabs.Tab>
+        <Tabs.Tab value="archived">已归档</Tabs.Tab>
       </Tabs.List>
     </Tabs>
   );

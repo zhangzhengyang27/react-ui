@@ -8,8 +8,8 @@ import {
     getFontSize,
     getRadius,
     getSize,
-    MantineRadius,
-    MantineSize,
+    UIRadius,
+    UISize,
     polymorphicFactory,
     PolymorphicFactory,
     rem,
@@ -112,9 +112,9 @@ export interface __InputProps {
     rightSectionProps?: React.ComponentProps<'div'>
     rightSectionPointerEvents?: React.CSSProperties['pointerEvents']
     required?: boolean
-    radius?: MantineRadius
+    radius?: UIRadius
     disabled?: boolean
-    size?: MantineSize | (string & {})
+    size?: UISize | (string & {})
     pointer?: boolean
     withErrorStyles?: boolean
     withSuccessStyles?: boolean

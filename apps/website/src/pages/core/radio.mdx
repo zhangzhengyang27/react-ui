@@ -45,9 +45,9 @@ function Demo() {
         console.log('Radio value:', formData.get('option'));
       }}
     >
-      <Radio name="option" value="option1" label="Option 1" />
-      <Radio name="option" value="option2" label="Option 2" defaultChecked />
-      <button type="submit">Submit</button>
+      <Radio name="option" value="option1" label="选项 1" />
+      <Radio name="option" value="option2" label="选项 2" defaultChecked />
+      <button type="submit">提交</button>
     </form>
   );
 }
@@ -75,7 +75,7 @@ function Demo() {
 要将光标更改为 pointer，请在 [theme](/theming/theme-object/) 上设置 `cursorType`：
 
 ```tsx
-import { createTheme, MantineProvider, Radio } from '@react-ui/ui';
+import { createTheme, UIProvider, Radio } from '@react-ui/ui';
 
 const theme = createTheme({
   cursorType: 'pointer',
@@ -83,9 +83,9 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
-      <Radio label="Pointer cursor" />
-    </MantineProvider>
+    <UIProvider theme={theme}>
+      <Radio label="指针光标" />
+    </UIProvider>
   );
 }
 ```
@@ -123,8 +123,8 @@ function Demo() {
       value={value}
       onChange={setValue}
       name="favoriteFramework"
-      label="Select your favorite framework/library"
-      description="This is anonymous"
+      label="选择你最喜欢的框架/库"
+      description="这是匿名的"
       withAsterisk
     >
       <Radio value="react" label="React" />
@@ -178,11 +178,11 @@ function Bad() {
 
 // 好，输入框由 aria-label 标记
 function GoodAriaLabel() {
-  return <Radio aria-label="My radio" />;
+  return <Radio aria-label="我的单选框" />;
 }
 
 // 好，输入框由 label 元素标记
 function GoodLabel() {
-  return <Radio label="My radio" />;
+  return <Radio label="我的单选框" />;
 }
 ```

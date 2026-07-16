@@ -6,8 +6,8 @@ import { Project, Node, SyntaxKind } from 'ts-morph'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const ROOT_DIR = path.resolve(__dirname, '../../..')
-const THEME_FILE = path.join(ROOT_DIR, 'packages/ui/src/core/MantineProvider/default-theme.ts')
-const COLORS_FILE = path.join(ROOT_DIR, 'packages/ui/src/core/MantineProvider/default-colors.ts')
+const THEME_FILE = path.join(ROOT_DIR, 'packages/ui/src/core/UIProvider/default-theme.ts')
+const COLORS_FILE = path.join(ROOT_DIR, 'packages/ui/src/core/UIProvider/default-colors.ts')
 const OUTPUT_PATH = path.join(__dirname, '../.docgen/theme-tokens.json')
 
 /** rem(n) -> `${n/16}rem`（默认 16px 基准） */

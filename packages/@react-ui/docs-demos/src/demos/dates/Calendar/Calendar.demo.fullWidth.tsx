@@ -1,5 +1,5 @@
 import { Calendar } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Calendar } from '@react-ui/dates';
@@ -13,7 +13,7 @@ function Demo() {
   return <Calendar fullWidth />;
 }
 
-export const fullWidth: MantineDemo = {
+export const fullWidth: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 600,

@@ -1,7 +1,7 @@
 import { renderDemo } from '../../../render-demo';
 import * as demos from './index';
 
-export default { title: 'TimeInput' };
+export default { title: '时间输入' };
 
 export const Demo_configurator = {
   name: '⭐ Demo: configurator',

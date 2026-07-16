@@ -1,5 +1,5 @@
 import { Avatar, Indicator, IndicatorProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Demo(props: IndicatorProps) {
   return (
@@ -7,7 +7,7 @@ function Demo(props: IndicatorProps) {
       <Avatar
         size="lg"
         radius="sm"
-        src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
+        src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-1.png"
       />
     </Indicator>
   );
@@ -22,14 +22,14 @@ function Demo() {
       <Avatar
         size="lg"
         radius="sm"
-        src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
+        src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-1.png"
       />
     </Indicator>
   );
 }
 `;
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Demo,
   code,

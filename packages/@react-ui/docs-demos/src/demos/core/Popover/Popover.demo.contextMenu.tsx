@@ -1,5 +1,5 @@
 import { Avatar, Button, Group, Paper, Popover, Stack, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Avatar, Button, Group, Paper, Popover, Stack, Text } from '@react-ui/ui';
@@ -9,7 +9,7 @@ function Demo() {
     <Popover width={260} shadow="md" position="bottom-start" offset={0}>
       <Popover.ContextMenu>
         <Paper withBorder p="xl" radius="md" style={{ userSelect: 'none', textAlign: 'center' }}>
-          <Text fw={500}>Right-click anywhere inside this area</Text>
+          <Text fw={500}>在此区域内任意位置右键点击</Text>
           <Text c="dimmed" size="sm" mt={4}>
             A popover will open at the cursor position
           </Text>
@@ -26,8 +26,8 @@ function Demo() {
             </div>
           </Group>
           <Group grow gap="xs">
-            <Button size="xs" variant="default">Message</Button>
-            <Button size="xs">Follow</Button>
+            <Button size="xs" variant="default">消息</Button>
+            <Button size="xs">关注</Button>
           </Group>
         </Stack>
       </Popover.Dropdown>
@@ -41,7 +41,7 @@ function Demo() {
     <Popover width={260} shadow="md" position="bottom-start" offset={0}>
       <Popover.ContextMenu>
         <Paper withBorder p="xl" radius="md" style={{ userSelect: 'none', textAlign: 'center' }}>
-          <Text fw={500}>Right-click anywhere inside this area</Text>
+          <Text fw={500}>在此区域内任意位置右键点击</Text>
           <Text c="dimmed" size="sm" mt={4}>
             A popover will open at the cursor position
           </Text>
@@ -67,7 +67,7 @@ function Demo() {
             <Button size="xs" variant="default">
               Message
             </Button>
-            <Button size="xs">Follow</Button>
+            <Button size="xs">关注</Button>
           </Group>
         </Stack>
       </Popover.Dropdown>
@@ -75,7 +75,7 @@ function Demo() {
   );
 }
 
-export const contextMenu: MantineDemo = {
+export const contextMenu: UIDemo = {
   type: 'code',
   code,
   centered: true,

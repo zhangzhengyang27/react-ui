@@ -4,7 +4,7 @@ import {
     Box,
     BoxProps,
     createVarsResolver,
-    MantineColor,
+    UIColor,
     polymorphicFactory,
     PolymorphicFactory,
     StylesApiProps,
@@ -60,8 +60,8 @@ export interface NavLinkProps extends BoxProps, StylesApiProps<NavLinkFactory> {
     /** Determines whether the link is disabled */
     disabled?: boolean
 
-    /** Key of theme.colors or any valid CSS color */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 */
+    color?: UIColor
 
     /** Click event handler */
     onClick?: React.MouseEventHandler<HTMLButtonElement>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ColorPicker, ColorPickerProps, Stack, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: ColorPickerProps) {
   const [value, onChange] = useState('#C5D899');
@@ -21,7 +21,7 @@ function Demo() {
 }
 `;
 
-export const formatsConfigurator: MantineDemo = {
+export const formatsConfigurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

@@ -16,6 +16,6 @@ export const getTaskListExtension = <T>(TipTapTaskList: T): T =>
     })
     .configure({
       HTMLAttributes: {
-        class: `${classes.taskList} mantine-RichTextEditor-taskList`,
+        class: `${classes.taskList} ui-RichTextEditor-taskList`,
       },
     });

@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Button, Group, MaskInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useRef } from 'react';
@@ -12,14 +12,14 @@ function Demo() {
   return (
     <>
       <MaskInput
-        label="Phone number"
+        label="电话号码"
         placeholder="(___) ___-____"
         mask="(999) 999-9999"
         resetRef={resetRef}
       />
 
       <Group mt="md">
-        <Button onClick={() => resetRef.current?.()}>Reset</Button>
+        <Button onClick={() => resetRef.current?.()}>重置</Button>
       </Group>
     </>
   );
@@ -32,20 +32,20 @@ function Demo() {
   return (
     <>
       <MaskInput
-        label="Phone number"
+        label="电话号码"
         placeholder="(___) ___-____"
         mask="(999) 999-9999"
         resetRef={resetRef}
       />
 
       <Group mt="md">
-        <Button onClick={() => resetRef.current?.()}>Reset</Button>
+        <Button onClick={() => resetRef.current?.()}>重置</Button>
       </Group>
     </>
   );
 }
 
-export const resetRef: MantineDemo = {
+export const resetRef: UIDemo = {
   type: 'code',
   component: Demo,
   code,

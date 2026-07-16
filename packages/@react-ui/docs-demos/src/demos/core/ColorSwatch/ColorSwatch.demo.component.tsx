@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { CheckIcon, ColorSwatch } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -38,7 +38,7 @@ function Demo() {
   );
 }
 
-export const component: MantineDemo = {
+export const component: UIDemo = {
   type: 'code',
   code,
   centered: true,

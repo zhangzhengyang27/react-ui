@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { DateTimePicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import dayjs from 'dayjs';
@@ -11,8 +11,8 @@ function Demo() {
     <DateTimePicker
       valueFormat={(date) => dayjs(date).format('dddd, MMMM D [at] h:mm A')}
       defaultValue="2024-04-11 14:45:00"
-      label="Pick date and time"
-      placeholder="Pick date and time"
+      label="选择日期和时间"
+      placeholder="选择日期和时间"
     />
   );
 }
@@ -23,13 +23,13 @@ function Demo() {
     <DateTimePicker
       valueFormat={(date) => dayjs(date).format('dddd, MMMM D [at] h:mm A')}
       defaultValue="2024-04-11 14:45:00"
-      label="Pick date and time"
-      placeholder="Pick date and time"
+      label="选择日期和时间"
+      placeholder="选择日期和时间"
     />
   );
 }
 
-export const formatFunction: MantineDemo = {
+export const formatFunction: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

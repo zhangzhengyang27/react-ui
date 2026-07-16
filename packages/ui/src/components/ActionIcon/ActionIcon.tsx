@@ -4,10 +4,10 @@ import {
     createVarsResolver,
     getRadius,
     getSize,
-    MantineColor,
-    MantineGradient,
-    MantineRadius,
-    MantineSize,
+    UIColor,
+    UIGradient,
+    UIRadius,
+    UISize,
     polymorphicFactory,
     PolymorphicFactory,
     StylesApiProps,
@@ -53,10 +53,10 @@ export type ActionIconCssVariables = {
  * @property {string} __staticSelector - 静态选择器
  * @property {boolean} loading - 如果设置为true，将显示加载器而不是子元素
  * @property {LoaderProps} loaderProps - 传递给加载器组件的属性，仅在loading为true时生效
- * @property {MantineSize|`input-${MantineSize}`|string|number} size - 控制按钮的宽度和高度，数字会被转换为rem单位，默认为'md'
- * @property {MantineColor} color - 主题颜色键或有效的CSS颜色，默认为theme.primaryColor
- * @property {MantineRadius} radius - 主题圆角键或有效的CSS圆角值，数字会被转换为rem，默认为theme.defaultRadius
- * @property {MantineGradient} gradient - 渐变值，与variant="gradient"一起使用，默认为theme.defaultGradient
+ * @property {UISize|`input-${UISize}`|string|number} size - 控制按钮的宽度和高度，数字会被转换为rem单位，默认为'md'
+ * @property {UIColor} color - 主题颜色键或有效的CSS颜色，默认为theme.primaryColor
+ * @property {UIRadius} radius - 主题圆角键或有效的CSS圆角值，数字会被转换为rem，默认为theme.defaultRadius
+ * @property {UIGradient} gradient - 渐变值，与variant="gradient"一起使用，默认为theme.defaultGradient
  * @property {boolean} disabled - 设置disabled属性，阻止交互
  * @property {React.ReactNode} children - 图标元素
  * @property {boolean} autoContrast - 如果设置为true，会根据背景色调整filled变体的文本颜色
@@ -67,10 +67,10 @@ export interface ActionIconProps extends BoxProps, StylesApiProps<ActionIconFact
 
     loading?: boolean
     loaderProps?: LoaderProps
-    size?: MantineSize | `input-${MantineSize}` | (string & {}) | number
-    color?: MantineColor
-    radius?: MantineRadius
-    gradient?: MantineGradient
+    size?: UISize | `input-${UISize}` | (string & {}) | number
+    color?: UIColor
+    radius?: UIRadius
+    gradient?: UIGradient
     disabled?: boolean
     children?: React.ReactNode
     autoContrast?: boolean
@@ -195,6 +195,6 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((_props, ref) =>
 })
 
 ActionIcon.classes = classes
-ActionIcon.displayName = '@mantine/core/ActionIcon'
+ActionIcon.displayName = '@react-ui/ui/ActionIcon'
 ActionIcon.Group = ActionIconGroup
 ActionIcon.GroupSection = ActionIconGroupSection

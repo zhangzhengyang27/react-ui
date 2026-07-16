@@ -8,7 +8,7 @@ import {
   Factory,
   getFontSize,
   getSize,
-  MantineSize,
+  UISize,
   StylesApiProps,
   UnstyledButton,
   useProps,
@@ -68,7 +68,7 @@ export interface CalendarHeaderSettings {
   withPrevious?: boolean;
 
   /** Component size */
-  size?: MantineSize;
+  size?: UISize;
 
   /** Controls order @default ['previous', 'level', 'next'] */
   headerControlsOrder?: ('previous' | 'next' | 'level')[];
@@ -176,7 +176,7 @@ export const CalendarHeader = factory<CalendarHeaderFactory>((_props) => {
       disabled={previousDisabled}
       data-disabled={previousDisabled || undefined}
       tabIndex={__preventFocus || previousDisabled ? -1 : 0}
-      data-mantine-stop-propagation={__stopPropagation || undefined}
+      data-ui-stop-propagation={__stopPropagation || undefined}
     >
       {previousIcon || (
         <AccordionChevron
@@ -200,7 +200,7 @@ export const CalendarHeader = factory<CalendarHeaderFactory>((_props) => {
       data-static={!hasNextLevel || undefined}
       aria-label={levelControlAriaLabel}
       tabIndex={__preventFocus || !hasNextLevel ? -1 : 0}
-      data-mantine-stop-propagation={__stopPropagation || undefined}
+      data-ui-stop-propagation={__stopPropagation || undefined}
     >
       {label}
     </UnstyledButton>
@@ -218,7 +218,7 @@ export const CalendarHeader = factory<CalendarHeaderFactory>((_props) => {
       disabled={nextDisabled}
       data-disabled={nextDisabled || undefined}
       tabIndex={__preventFocus || nextDisabled ? -1 : 0}
-      data-mantine-stop-propagation={__stopPropagation || undefined}
+      data-ui-stop-propagation={__stopPropagation || undefined}
     >
       {nextIcon || (
         <AccordionChevron

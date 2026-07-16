@@ -1,9 +1,9 @@
-import type { MantineTheme } from '../../../../../core/MantineProvider'
+import type { UITheme } from '../../../../../core/UIProvider'
 import { rem } from '../../../../../core/utils'
 
 const headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
 
-export function fontSizeResolver(value: unknown, theme: MantineTheme) {
+export function fontSizeResolver(value: unknown, theme: UITheme) {
     if (typeof value === 'string') {
         if (value in theme.fontSizes) {
             return `var(--ui-font-size-${value})`

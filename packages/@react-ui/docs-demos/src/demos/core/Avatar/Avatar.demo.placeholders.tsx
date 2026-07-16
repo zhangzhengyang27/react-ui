@@ -1,6 +1,6 @@
 import { StarIcon } from '@phosphor-icons/react';
 import { Avatar, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Avatar } from '@react-ui/ui';
@@ -10,13 +10,13 @@ function Demo() {
   return (
     <>
       {/* Default placeholder */}
-      <Avatar src={null} alt="no image here" />
+      <Avatar src={null} alt="无图片" />
 
       {/* Default placeholder with custom color */}
-      <Avatar src={null} alt="no image here" color="indigo" />
+      <Avatar src={null} alt="无图片" color="indigo" />
 
       {/* Placeholder with initials */}
-      <Avatar src={null} alt="Vitaly Rtishchev" color="red">VR</Avatar>
+      <Avatar src={null} alt="周八" color="red">VR</Avatar>
 
       {/* Placeholder with custom icon */}
       <Avatar color="blue" radius="xl">
@@ -31,9 +31,9 @@ function Demo() {
 function Demo() {
   return (
     <Group justify="center">
-      <Avatar src={null} alt="no image here" />
-      <Avatar src={null} alt="no image here" color="indigo" />
-      <Avatar src={null} alt="no image here" color="red">
+      <Avatar src={null} alt="无图片" />
+      <Avatar src={null} alt="无图片" color="indigo" />
+      <Avatar src={null} alt="无图片" color="red">
         VR
       </Avatar>
       <Avatar color="blue" radius="xl">
@@ -43,7 +43,7 @@ function Demo() {
   );
 }
 
-export const placeholders: MantineDemo = {
+export const placeholders: UIDemo = {
   type: 'code',
   code,
   component: Demo,

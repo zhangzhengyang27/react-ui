@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Drawer, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Demo() {
   const [opened, setOpened] = useState(false);
@@ -33,7 +33,7 @@ function Demo() {
   );
 }
 
-export const sizes: MantineDemo = {
+export const sizes: UIDemo = {
   type: 'code',
   component: Demo,
 };

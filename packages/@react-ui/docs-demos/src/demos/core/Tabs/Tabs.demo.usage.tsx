@@ -1,6 +1,6 @@
 import { ChatCircleIcon, GearSixIcon, ImageIcon } from '@phosphor-icons/react';
 import { Tabs, TabsProps, useDirection } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: TabsProps) {
   const { dir } = useDirection();
@@ -11,26 +11,26 @@ function Wrapper(props: TabsProps) {
     <Tabs defaultValue="gallery" {...props}>
       <Tabs.List>
         <Tabs.Tab value="gallery" leftSection={<ImageIcon size={12} />}>
-          Gallery
+          相册
         </Tabs.Tab>
         <Tabs.Tab value="messages" leftSection={<ChatCircleIcon size={12} />}>
-          Messages
+          消息
         </Tabs.Tab>
         <Tabs.Tab value="settings" leftSection={<GearSixIcon size={12} />}>
-          Settings
+          设置
         </Tabs.Tab>
       </Tabs.List>
 
       <Tabs.Panel value="gallery" {...panelProps}>
-        Gallery tab content
+        相册标签内容
       </Tabs.Panel>
 
       <Tabs.Panel value="messages" {...panelProps}>
-        Messages tab content
+        消息标签内容
       </Tabs.Panel>
 
       <Tabs.Panel value="settings" {...panelProps}>
-        Settings tab content
+        设置标签内容
       </Tabs.Panel>
     </Tabs>
   );
@@ -45,32 +45,32 @@ function Demo() {
     <Tabs{{props}} defaultValue="gallery">
       <Tabs.List>
         <Tabs.Tab value="gallery" leftSection={<ImageIcon size={12} />}>
-          Gallery
+          相册
         </Tabs.Tab>
         <Tabs.Tab value="messages" leftSection={<ChatCircleIcon size={12} />}>
-          Messages
+          消息
         </Tabs.Tab>
         <Tabs.Tab value="settings" leftSection={<GearSixIcon size={12} />}>
-          Settings
+          设置
         </Tabs.Tab>
       </Tabs.List>
 
       <Tabs.Panel value="gallery">
-        Gallery tab content
+        相册标签内容
       </Tabs.Panel>
 
       <Tabs.Panel value="messages">
-        Messages tab content
+        消息标签内容
       </Tabs.Panel>
 
       <Tabs.Panel value="settings">
-        Settings tab content
+        设置标签内容
       </Tabs.Panel>
     </Tabs>
   );
 }`;
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
@@ -84,9 +84,9 @@ export const usage: MantineDemo = {
       initialValue: 'default',
       libraryValue: 'default',
       data: [
-        { value: 'default', label: 'Default' },
-        { value: 'outline', label: 'Outline' },
-        { value: 'pills', label: 'Pills' },
+        { value: 'default', label: '默认' },
+        { value: 'outline', label: '轮廓' },
+        { value: 'pills', label: '胶囊' },
       ],
     },
     { prop: 'radius', type: 'size', initialValue: 'md', libraryValue: 'md' },
@@ -96,8 +96,8 @@ export const usage: MantineDemo = {
       initialValue: 'horizontal',
       libraryValue: 'horizontal',
       data: [
-        { value: 'horizontal', label: 'Horizontal' },
-        { value: 'vertical', label: 'Vertical' },
+        { value: 'horizontal', label: '水平' },
+        { value: 'vertical', label: '垂直' },
       ],
     },
   ],

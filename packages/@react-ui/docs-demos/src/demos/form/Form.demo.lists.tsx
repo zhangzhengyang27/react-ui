@@ -2,7 +2,7 @@ import { TrashIcon } from '@phosphor-icons/react';
 import { ActionIcon, Box, Button, Group, Switch, Text, TextInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
 import { randomId } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useForm } from '@react-ui/form';
@@ -14,21 +14,21 @@ function Demo() {
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: {
-      employees: [{ name: '', active: false, key: randomId() }],
+      employees: [{ name: '', active: false, key: 'employee-1' }],
     },
   });
 
   const fields = form.getValues().employees.map((item, index) => (
     <Group key={item.key} mt="xs">
       <TextInput
-        placeholder="John Doe"
+        placeholder="张三"
         withAsterisk
         style={{ flex: 1 }}
         key={form.key(\`employees.\${index}.name\`)}
         {...form.getInputProps(\`employees.\${index}.name\`)}
       />
       <Switch
-        label="Active"
+        label="激活"
         key={form.key(\`employees.\${index}.active\`)}
         {...form.getInputProps(\`employees.\${index}.active\`, { type: 'checkbox' })}
       />
@@ -43,15 +43,15 @@ function Demo() {
       {fields.length > 0 ? (
         <Group mb="xs">
           <Text fw={500} size="sm" style={{ flex: 1 }}>
-            Name
+            姓名
           </Text>
           <Text fw={500} size="sm" pr={90}>
-            Status
+            状态
           </Text>
         </Group>
       ) : (
         <Text c="dimmed" ta="center">
-          No one here...
+          这里没人...
         </Text>
       )}
 
@@ -63,7 +63,7 @@ function Demo() {
             form.insertListItem('employees', { name: '', active: false, key: randomId() })
           }
         >
-          Add employee
+          添加员工
         </Button>
       </Group>
     </Box>
@@ -75,21 +75,21 @@ function Demo() {
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: {
-      employees: [{ name: '', active: false, key: randomId() }],
+      employees: [{ name: '', active: false, key: 'employee-1' }],
     },
   });
 
   const fields = form.getValues().employees.map((item, index) => (
     <Group key={item.key} mt="xs">
       <TextInput
-        placeholder="John Doe"
+        placeholder="张三"
         withAsterisk
         style={{ flex: 1 }}
         key={form.key(`employees.${index}.name`)}
         {...form.getInputProps(`employees.${index}.name`)}
       />
       <Switch
-        label="Active"
+        label="激活"
         key={form.key(`employees.${index}.active`)}
         {...form.getInputProps(`employees.${index}.active`, { type: 'checkbox' })}
       />
@@ -104,15 +104,15 @@ function Demo() {
       {fields.length > 0 ? (
         <Group mb="xs">
           <Text fw={500} size="sm" style={{ flex: 1 }}>
-            Name
+            姓名
           </Text>
           <Text fw={500} size="sm" pr={90}>
-            Status
+            状态
           </Text>
         </Group>
       ) : (
         <Text c="dimmed" ta="center">
-          No one here...
+          这里没人...
         </Text>
       )}
 
@@ -124,14 +124,14 @@ function Demo() {
             form.insertListItem('employees', { name: '', active: false, key: randomId() })
           }
         >
-          Add employee
+          添加员工
         </Button>
       </Group>
     </Box>
   );
 }
 
-export const lists: MantineDemo = {
+export const lists: UIDemo = {
   type: 'code',
   component: Demo,
   code,

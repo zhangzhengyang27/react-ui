@@ -1,7 +1,7 @@
 /* oxlint-disable no-console */
 import { Button, Checkbox } from '@react-ui/ui';
 import { isNotEmpty, useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Checkbox } from '@react-ui/ui';
@@ -19,13 +19,13 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Checkbox
-        label="I accept the terms and conditions"
+        label="我接受条款和条件"
         key={form.key('terms')}
         {...form.getInputProps('terms', { type: 'checkbox' })}
       />
 
       <Button type="submit" mt="md">
-        Submit
+        提交
       </Button>
     </form>
   );
@@ -44,19 +44,19 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Checkbox
-        label="I accept the terms and conditions"
+        label="我接受条款和条件"
         key={form.key('terms')}
         {...form.getInputProps('terms', { type: 'checkbox' })}
       />
 
       <Button type="submit" mt="md">
-        Submit
+        提交
       </Button>
     </form>
   );
 }
 
-export const withUseForm: MantineDemo = {
+export const withUseForm: UIDemo = {
   type: 'code',
   component: Demo,
   code,

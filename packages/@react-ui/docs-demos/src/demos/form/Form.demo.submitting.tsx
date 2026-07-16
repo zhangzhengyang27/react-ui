@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Group, Stack, Text, TextInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -14,7 +14,7 @@ const asyncSubmit = (values: any) =>
 function Demo() {
   const form = useForm({
     mode: 'uncontrolled',
-    initialValues: { name: 'John' },
+    initialValues: { name: '张三' },
   });
 
   const [completed, setCompleted] = useState(false);
@@ -27,8 +27,8 @@ function Demo() {
   if (completed) {
     return (
       <Stack>
-        <Text>Form submitted!</Text>
-        <Button onClick={() => setCompleted(false)}>Reset to initial state</Button>
+        <Text>表单已提交！</Text>
+        <Button onClick={() => setCompleted(false)}>重置为初始状态</Button>
       </Stack>
     );
   }
@@ -37,8 +37,8 @@ function Demo() {
     <form onSubmit={form.onSubmit(handleSubmit)}>
       <TextInput
         withAsterisk
-        label="Name"
-        placeholder="Your name"
+        label="姓名"
+        placeholder="你的姓名"
         key={form.key('name')}
         disabled={form.submitting}
         {...form.getInputProps('name')}
@@ -46,7 +46,7 @@ function Demo() {
 
       <Group justify="flex-end" mt="md">
         <Button type="submit" loading={form.submitting}>
-          Submit
+          提交
         </Button>
       </Group>
     </form>
@@ -60,7 +60,7 @@ const asyncSubmit = (values: any) =>
 function Demo() {
   const form = useForm({
     mode: 'uncontrolled',
-    initialValues: { name: 'John' },
+    initialValues: { name: '张三' },
   });
 
   const [completed, setCompleted] = useState(false);
@@ -73,8 +73,8 @@ function Demo() {
   if (completed) {
     return (
       <Stack>
-        <Text>Form submitted!</Text>
-        <Button onClick={() => setCompleted(false)}>Reset to initial state</Button>
+        <Text>表单已提交！</Text>
+        <Button onClick={() => setCompleted(false)}>重置为初始状态</Button>
       </Stack>
     );
   }
@@ -83,8 +83,8 @@ function Demo() {
     <form onSubmit={form.onSubmit(handleSubmit)}>
       <TextInput
         withAsterisk
-        label="Name"
-        placeholder="Your name"
+        label="姓名"
+        placeholder="你的姓名"
         key={form.key('name')}
         disabled={form.submitting}
         {...form.getInputProps('name')}
@@ -92,14 +92,14 @@ function Demo() {
 
       <Group justify="flex-end" mt="md">
         <Button type="submit" loading={form.submitting}>
-          Submit
+          提交
         </Button>
       </Group>
     </form>
   );
 }
 
-export const submitting: MantineDemo = {
+export const submitting: UIDemo = {
   type: 'code',
   component: Demo,
   code,

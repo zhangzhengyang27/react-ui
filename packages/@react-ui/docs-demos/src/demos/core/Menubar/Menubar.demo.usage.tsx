@@ -1,5 +1,5 @@
 import { Menu, Menubar, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Menu, Menubar, Text } from '@react-ui/ui';
@@ -8,13 +8,13 @@ function Demo() {
   return (
     <Menubar>
       <Menubar.Menu width={220}>
-        <Menubar.Target>File</Menubar.Target>
+        <Menubar.Target>文件</Menubar.Target>
         <Menubar.Dropdown>
-          <Menu.Item rightSection={<Text size="xs" c="dimmed">⌘N</Text>}>New file</Menu.Item>
-          <Menu.Item rightSection={<Text size="xs" c="dimmed">⌘⇧N</Text>}>New window</Menu.Item>
+          <Menu.Item rightSection={<Text size="xs" c="dimmed">⌘N</Text>}>新建文件</Menu.Item>
+          <Menu.Item rightSection={<Text size="xs" c="dimmed">⌘⇧N</Text>}>新建窗口</Menu.Item>
           <Menu.Sub>
             <Menu.Sub.Target>
-              <Menu.Sub.Item>Open recent</Menu.Sub.Item>
+              <Menu.Sub.Item>打开最近</Menu.Sub.Item>
             </Menu.Sub.Target>
             <Menu.Sub.Dropdown>
               <Menu.Item>project-alpha</Menu.Item>
@@ -23,29 +23,29 @@ function Demo() {
             </Menu.Sub.Dropdown>
           </Menu.Sub>
           <Menu.Divider />
-          <Menu.Item rightSection={<Text size="xs" c="dimmed">⌘S</Text>}>Save</Menu.Item>
+          <Menu.Item rightSection={<Text size="xs" c="dimmed">⌘S</Text>}>保存</Menu.Item>
           <Menu.Item>Save as…</Menu.Item>
         </Menubar.Dropdown>
       </Menubar.Menu>
 
       <Menubar.Menu width={220}>
-        <Menubar.Target>Edit</Menubar.Target>
+        <Menubar.Target>编辑</Menubar.Target>
         <Menubar.Dropdown>
-          <Menu.Item rightSection={<Text size="xs" c="dimmed">⌘Z</Text>}>Undo</Menu.Item>
-          <Menu.Item rightSection={<Text size="xs" c="dimmed">⌘⇧Z</Text>}>Redo</Menu.Item>
+          <Menu.Item rightSection={<Text size="xs" c="dimmed">⌘Z</Text>}>撤销</Menu.Item>
+          <Menu.Item rightSection={<Text size="xs" c="dimmed">⌘⇧Z</Text>}>重做</Menu.Item>
           <Menu.Divider />
-          <Menu.Item>Cut</Menu.Item>
-          <Menu.Item>Copy</Menu.Item>
-          <Menu.Item>Paste</Menu.Item>
+          <Menu.Item>剪切</Menu.Item>
+          <Menu.Item>复制</Menu.Item>
+          <Menu.Item>粘贴</Menu.Item>
         </Menubar.Dropdown>
       </Menubar.Menu>
 
       <Menubar.Menu width={220}>
-        <Menubar.Target>Help</Menubar.Target>
+        <Menubar.Target>帮助</Menubar.Target>
         <Menubar.Dropdown>
-          <Menu.Item>Documentation</Menu.Item>
-          <Menu.Item>Keyboard shortcuts</Menu.Item>
-          <Menu.Item>About</Menu.Item>
+          <Menu.Item>文档</Menu.Item>
+          <Menu.Item>键盘快捷键</Menu.Item>
+          <Menu.Item>关于</Menu.Item>
         </Menubar.Dropdown>
       </Menubar.Menu>
     </Menubar>
@@ -57,7 +57,7 @@ function Demo() {
   return (
     <Menubar>
       <Menubar.Menu width={220}>
-        <Menubar.Target>File</Menubar.Target>
+        <Menubar.Target>文件</Menubar.Target>
         <Menubar.Dropdown>
           <Menu.Item
             rightSection={
@@ -79,7 +79,7 @@ function Demo() {
           </Menu.Item>
           <Menu.Sub>
             <Menu.Sub.Target>
-              <Menu.Sub.Item>Open recent</Menu.Sub.Item>
+              <Menu.Sub.Item>打开最近</Menu.Sub.Item>
             </Menu.Sub.Target>
             <Menu.Sub.Dropdown>
               <Menu.Item>project-alpha</Menu.Item>
@@ -102,7 +102,7 @@ function Demo() {
       </Menubar.Menu>
 
       <Menubar.Menu width={220}>
-        <Menubar.Target>Edit</Menubar.Target>
+        <Menubar.Target>编辑</Menubar.Target>
         <Menubar.Dropdown>
           <Menu.Item
             rightSection={
@@ -123,25 +123,25 @@ function Demo() {
             Redo
           </Menu.Item>
           <Menu.Divider />
-          <Menu.Item>Cut</Menu.Item>
-          <Menu.Item>Copy</Menu.Item>
-          <Menu.Item>Paste</Menu.Item>
+          <Menu.Item>剪切</Menu.Item>
+          <Menu.Item>复制</Menu.Item>
+          <Menu.Item>粘贴</Menu.Item>
         </Menubar.Dropdown>
       </Menubar.Menu>
 
       <Menubar.Menu width={220}>
-        <Menubar.Target>Help</Menubar.Target>
+        <Menubar.Target>帮助</Menubar.Target>
         <Menubar.Dropdown>
-          <Menu.Item>Documentation</Menu.Item>
-          <Menu.Item>Keyboard shortcuts</Menu.Item>
-          <Menu.Item>About</Menu.Item>
+          <Menu.Item>文档</Menu.Item>
+          <Menu.Item>键盘快捷键</Menu.Item>
+          <Menu.Item>关于</Menu.Item>
         </Menubar.Dropdown>
       </Menubar.Menu>
     </Menubar>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

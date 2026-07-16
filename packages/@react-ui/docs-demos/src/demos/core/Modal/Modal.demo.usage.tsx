@@ -1,6 +1,6 @@
 import { Button, Modal } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { AuthenticationForm } from '../../../shared/AuthenticationForm/AuthenticationForm';
 
 const code = `
@@ -12,12 +12,12 @@ function Demo() {
 
   return (
     <>
-      <Modal opened={opened} onClose={close} title="Authentication">
+      <Modal opened={opened} onClose={close} title="认证">
         {/* Modal content */}
       </Modal>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
@@ -29,18 +29,18 @@ function Demo() {
 
   return (
     <>
-      <Modal opened={opened} onClose={close} title="Authentication">
+      <Modal opened={opened} onClose={close} title="认证">
         <AuthenticationForm noShadow noPadding />
       </Modal>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   centered: true,

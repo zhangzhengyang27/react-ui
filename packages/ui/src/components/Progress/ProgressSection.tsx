@@ -2,12 +2,12 @@ import {
     Box,
     factory,
     useProps,
-    useMantineTheme,
+    useUITheme,
     getThemeColor,
     type BoxProps,
     type ElementProps,
     type Factory,
-    type MantineColor,
+    type UIColor,
     type StylesApiProps
 } from '../../core'
 import { useProgressContext } from './Progress.context'
@@ -23,7 +23,7 @@ export interface ProgressSectionProps
     value: number
 
     /** Section color */
-    color?: MantineColor
+    color?: UIColor
 
     /** If set, section has striped background */
     striped?: boolean
@@ -63,7 +63,7 @@ export const ProgressSection = factory<ProgressSectionFactory>((_props, ref) => 
     } = props
 
     const ctx = useProgressContext()
-    const theme = useMantineTheme()
+    const theme = useUITheme()
     const getStyles = ctx?.getStyles
 
     const sectionColor = color || theme.primaryColor

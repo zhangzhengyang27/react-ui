@@ -1,5 +1,5 @@
 import { Button, ComboboxPopover } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, ComboboxPopover } from '@react-ui/ui';
@@ -8,10 +8,10 @@ function Demo() {
   return (
     <ComboboxPopover
       data={[]}
-      nothingFoundMessage="No options available"
+      nothingFoundMessage="没有可用选项"
     >
       <ComboboxPopover.Target>
-        <Button variant="default" miw={200}>Open dropdown</Button>
+        <Button variant="default" miw={200}>打开下拉</Button>
       </ComboboxPopover.Target>
     </ComboboxPopover>
   );
@@ -20,7 +20,7 @@ function Demo() {
 
 function Demo() {
   return (
-    <ComboboxPopover data={[]} nothingFoundMessage="No options available">
+    <ComboboxPopover data={[]} nothingFoundMessage="没有可用选项">
       <ComboboxPopover.Target>
         <Button variant="default" miw={200}>
           Open dropdown
@@ -30,7 +30,7 @@ function Demo() {
   );
 }
 
-export const nothingFound: MantineDemo = {
+export const nothingFound: UIDemo = {
   type: 'code',
   component: Demo,
   code,

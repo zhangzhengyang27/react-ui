@@ -7,8 +7,8 @@ import {
     type ElementProps,
     factory,
     type Factory,
-    type MantineColor,
-    useMantineTheme,
+    type UIColor,
+    useUITheme,
     useProps
 } from '../../core'
 import { UnstyledButton } from '../UnstyledButton'
@@ -24,8 +24,8 @@ export interface MenuSubItemProps
     /** Item label */
     children?: React.ReactNode
 
-    /** Key of theme.colors or any valid CSS color */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 */
+    color?: UIColor
 
     /** Controls whether the menu closes when this item is clicked */
     closeMenuOnClick?: boolean
@@ -69,7 +69,7 @@ export const MenuSubItem = factory<MenuSubItemFactory>((props, ref) => {
     } = useProps('MenuSubItem', null, props)
 
     const ctx = useMenuContext()
-    const theme = useMantineTheme()
+    const theme = useUITheme()
     const itemRef = useRef<HTMLButtonElement>(null)
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -99,7 +99,7 @@ export const MenuSubItem = factory<MenuSubItemFactory>((props, ref) => {
             data-menu-item
             data-sub-menu-item
             data-disabled={disabled || dataDisabled || undefined}
-            data-mantine-stop-propagation
+            data-ui-stop-propagation
             onClick={handleClick}
             onKeyDown={createScopedKeydownHandler({
                 siblingSelector: '[data-menu-item]:not([data-disabled])',

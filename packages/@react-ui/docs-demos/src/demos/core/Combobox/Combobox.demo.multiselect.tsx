@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { CheckIcon, Combobox, Group, Input, Pill, PillsInput, useCombobox } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
 import { PillsInput, Pill, Input, Combobox, CheckIcon, Group, useCombobox } from '@react-ui/ui';
 
-const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
+const groceries = ['🍎 苹果', '🍌 香蕉', '🥦 西兰花', '🥕 胡萝卜', '🍫 巧克力'];
 
 function Demo() {
   const combobox = useCombobox({
@@ -47,7 +47,7 @@ function Demo() {
             {values.length > 0 ? (
               values
             ) : (
-              <Input.Placeholder>Pick one or more values</Input.Placeholder>
+              <Input.Placeholder>选择一个或多个值</Input.Placeholder>
             )}
 
             <Combobox.EventsTarget>
@@ -74,7 +74,7 @@ function Demo() {
 }
 `;
 
-const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
+const groceries = ['🍎 苹果', '🍌 香蕉', '🥦 西兰花', '🥕 胡萝卜', '🍫 巧克力'];
 
 function Demo() {
   const combobox = useCombobox({
@@ -115,7 +115,7 @@ function Demo() {
             {values.length > 0 ? (
               values
             ) : (
-              <Input.Placeholder>Pick one or more values</Input.Placeholder>
+              <Input.Placeholder>选择一个或多个值</Input.Placeholder>
             )}
 
             <Combobox.EventsTarget>
@@ -141,7 +141,7 @@ function Demo() {
   );
 }
 
-export const multiselect: MantineDemo = {
+export const multiselect: UIDemo = {
   type: 'code',
   component: Demo,
   code,

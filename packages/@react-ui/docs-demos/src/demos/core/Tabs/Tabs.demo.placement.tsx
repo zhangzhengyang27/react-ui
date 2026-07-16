@@ -1,24 +1,24 @@
 import { Tabs, TabsProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: TabsProps) {
   const panelProps = props.placement === 'left' ? { pl: 'xs' } : { pr: 'xs' };
   return (
     <Tabs defaultValue="gallery" orientation="vertical" {...props}>
       <Tabs.List>
-        <Tabs.Tab value="gallery">Gallery</Tabs.Tab>
-        <Tabs.Tab value="messages">Messages</Tabs.Tab>
-        <Tabs.Tab value="settings">Settings</Tabs.Tab>
+        <Tabs.Tab value="gallery">相册</Tabs.Tab>
+        <Tabs.Tab value="messages">消息</Tabs.Tab>
+        <Tabs.Tab value="settings">设置</Tabs.Tab>
       </Tabs.List>
 
       <Tabs.Panel value="gallery" {...panelProps}>
-        Gallery tab content
+        相册标签内容
       </Tabs.Panel>
       <Tabs.Panel value="messages" {...panelProps}>
-        Messages tab content
+        消息标签内容
       </Tabs.Panel>
       <Tabs.Panel value="settings" {...panelProps}>
-        Settings tab content
+        设置标签内容
       </Tabs.Panel>
     </Tabs>
   );
@@ -31,20 +31,20 @@ function Demo() {
   return (
     <Tabs defaultValue="gallery" orientation="vertical"{{props}}>
       <Tabs.List>
-        <Tabs.Tab value="gallery">Gallery</Tabs.Tab>
-        <Tabs.Tab value="messages">Messages</Tabs.Tab>
-        <Tabs.Tab value="settings">Settings</Tabs.Tab>
+        <Tabs.Tab value="gallery">相册</Tabs.Tab>
+        <Tabs.Tab value="messages">消息</Tabs.Tab>
+        <Tabs.Tab value="settings">设置</Tabs.Tab>
       </Tabs.List>
 
-      <Tabs.Panel value="gallery">Gallery tab content</Tabs.Panel>
-      <Tabs.Panel value="messages">Messages tab content</Tabs.Panel>
-      <Tabs.Panel value="settings">Settings tab content</Tabs.Panel>
+      <Tabs.Panel value="gallery">相册标签内容</Tabs.Panel>
+      <Tabs.Panel value="messages">消息标签内容</Tabs.Panel>
+      <Tabs.Panel value="settings">设置标签内容</Tabs.Panel>
     </Tabs>
   );
 }
 `;
 
-export const placement: MantineDemo = {
+export const placement: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

@@ -1,6 +1,6 @@
 import { ArrowSquareOutIcon } from '@phosphor-icons/react';
 import { Anchor, Avatar, Group, SimpleGrid, Text } from '@react-ui/ui';
-import { meta } from '@react-ui/mantine-meta';
+import { meta } from '@react-ui/meta';
 import { HomePageContainer } from '../shared/HomePageContainer/HomePageContainer';
 import { HomePageDescription } from '../shared/HomePageDescription/HomePageDescription';
 import { HomePageLearnMore } from '../shared/HomePageLearnMore/HomePageLearnMore';
@@ -28,7 +28,7 @@ function Review({ data }: ReviewProps) {
         </Group>
 
         <Anchor className={classes.reviewExternalLink} href={data.link} target="_blank">
-          <span>Open on GitHub</span>
+          <span>在 GitHub 上打开</span>
           <ArrowSquareOutIcon size={16} />
         </Anchor>
       </div>

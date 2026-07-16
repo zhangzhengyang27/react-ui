@@ -7,8 +7,8 @@ import {
     getFloatingPosition,
     getRadius,
     getShadow,
-    MantineRadius,
-    MantineShadow,
+    UIRadius,
+    UIShadow,
     StylesApiProps,
     useProps,
     useStyles,
@@ -33,10 +33,10 @@ export interface PopoverProps extends StylesApiProps<PopoverFactory> {
     /** Popover.Target and Popover.Dropdown components */
     children: React.ReactNode
 
-    /** Dropdown position relative to the target element */
+    //** 下拉框相对于目标元素的位置 */
     position?: FloatingPosition
 
-    /** Offset of the dropdown element */
+    /** 下拉元素的偏移量 */
     offset?: number
 
     /** Called when dropdown position changes */
@@ -63,7 +63,7 @@ export interface PopoverProps extends StylesApiProps<PopoverFactory> {
     /** Floating ui middlewares */
     middlewares?: PopoverMiddlewares
 
-    /** Determines whether component should have an arrow */
+    /** 决定组件是否显示箭头 */
     withArrow?: boolean
 
     /** Arrow size in px */
@@ -78,17 +78,17 @@ export interface PopoverProps extends StylesApiProps<PopoverFactory> {
     /** Arrow position */
     arrowPosition?: 'center' | 'side'
 
-    /** Determines whether dropdown should be rendered within the Portal */
+    /** 决定下拉框是否在 Portal 中渲染 */
     withinPortal?: boolean
 
-    /** Dropdown z-index */
+    /** 下拉层 z-index */
     zIndex?: string | number
 
-    /** Key of theme.radius or any valid CSS value */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 */
+    radius?: UIRadius
 
     /** Key of theme.shadows or any other valid CSS box-shadow value */
-    shadow?: MantineShadow
+    shadow?: UIShadow
 
     /** If set, popover dropdown will not be rendered */
     disabled?: boolean
@@ -108,10 +108,10 @@ export interface PopoverProps extends StylesApiProps<PopoverFactory> {
     /** Determines whether dropdown should be closed when Escape key is pressed */
     closeOnEscape?: boolean
 
-    /** Id base to create accessibility connections */
+    /** 创建可访问性连接的 ID 基础 */
     id?: string
 
-    /** Props passed down to the Transition component */
+    /** 传递给 Transition 组件的属性 */
     transitionProps?: import('../Transition').TransitionOverride
 
     /** Determines whether focus should be returned to the target element when dropdown closes */
@@ -127,7 +127,7 @@ export type PopoverFactory = Factory<{
 const defaultProps = {
     position: 'bottom',
     offset: 8,
-    middlewares: { flip: true, shift: true, inline: false },
+    middlewares: { flip: true, shift: true },
     arrowSize: 7,
     arrowOffset: 5,
     arrowRadius: 0,
@@ -199,14 +199,13 @@ export function Popover(_props: PopoverProps) {
         varsResolver
     })
 
-    const arrowRef = useRef<HTMLDivElement>(null)
+    const arrowRef = useRef<HTMLDivElement | null>(null)
     const [targetNode, setTargetNode] = useState<HTMLElement | null>(null)
     const [dropdownNode, setDropdownNode] = useState<HTMLElement | null>(null)
     const uid = useId(id)
 
     const popover = usePopover({
         middlewares,
-        width,
         position: getFloatingPosition('ltr', position!),
         offset: offset! + (withArrow ? arrowSize! / 2 : 0),
         arrowRef,
@@ -217,7 +216,6 @@ export function Popover(_props: PopoverProps) {
         onChange,
         onOpen,
         onClose,
-        strategy: floatingStrategy,
         disabled
     })
 
@@ -286,7 +284,7 @@ export function Popover(_props: PopoverProps) {
 Popover.Target = PopoverTarget
 Popover.Dropdown = PopoverDropdown
 Popover.ContextMenu = PopoverContextMenu
-Popover.displayName = '@mantine/core/Popover'
+Popover.displayName = '@react-ui/ui/Popover'
 
 export namespace Popover {
     export type Props = PopoverProps

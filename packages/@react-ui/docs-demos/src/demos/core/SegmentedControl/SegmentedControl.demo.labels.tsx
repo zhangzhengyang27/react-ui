@@ -1,6 +1,6 @@
 import { ArrowSquareOutIcon, CodeIcon, EyeIcon } from '@phosphor-icons/react';
 import { Center, SegmentedControl } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Center, SegmentedControl } from '@react-ui/ui';
@@ -15,7 +15,7 @@ function Demo() {
           label: (
             <Center style={{ gap: 10 }}>
               <EyeIcon size={16} />
-              <span>Preview</span>
+              <span>预览</span>
             </Center>
           ),
         },
@@ -24,7 +24,7 @@ function Demo() {
           label: (
             <Center style={{ gap: 10 }}>
               <CodeIcon size={16} />
-              <span>Code</span>
+              <span>代码</span>
             </Center>
           ),
         },
@@ -33,7 +33,7 @@ function Demo() {
           label: (
             <Center style={{ gap: 10 }}>
               <ArrowSquareOutIcon size={16} />
-              <span>Export</span>
+              <span>导出</span>
             </Center>
           ),
         },
@@ -52,7 +52,7 @@ function Demo() {
           label: (
             <Center style={{ gap: 10 }}>
               <EyeIcon size={16} />
-              <span>Preview</span>
+              <span>预览</span>
             </Center>
           ),
         },
@@ -61,7 +61,7 @@ function Demo() {
           label: (
             <Center style={{ gap: 10 }}>
               <CodeIcon size={16} />
-              <span>Code</span>
+              <span>代码</span>
             </Center>
           ),
         },
@@ -70,7 +70,7 @@ function Demo() {
           label: (
             <Center style={{ gap: 10 }}>
               <ArrowSquareOutIcon size={16} />
-              <span>Export</span>
+              <span>导出</span>
             </Center>
           ),
         },
@@ -79,7 +79,7 @@ function Demo() {
   );
 }
 
-export const labels: MantineDemo = {
+export const labels: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

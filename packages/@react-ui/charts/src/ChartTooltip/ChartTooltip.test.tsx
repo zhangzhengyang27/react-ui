@@ -1,9 +1,9 @@
-import { patchConsoleWarn, render } from '@mantine-tests/core';
+import { patchConsoleWarn, render } from '@react-ui/tests';
 import { ChartTooltip } from './ChartTooltip';
 
 const payload = [
   {
-    className: 'mantine-LineChart-line',
+    className: 'ui-LineChart-line',
     style: {},
     name: 'Apples',
     fill: 'var(--ui-color-indigo-6)',
@@ -22,7 +22,7 @@ const payload = [
     },
   },
   {
-    className: 'mantine-LineChart-line',
+    className: 'ui-LineChart-line',
     style: {},
     name: 'Oranges',
     fill: 'var(--ui-color-blue-6)',
@@ -41,7 +41,7 @@ const payload = [
     },
   },
   {
-    className: 'mantine-LineChart-line',
+    className: 'ui-LineChart-line',
     style: {},
     name: 'Tomatoes',
     fill: 'var(--ui-color-teal-6)',
@@ -81,7 +81,7 @@ const series = [
 
 const nestedPayload = [
   {
-    className: 'mantine-LineChart-line',
+    className: 'ui-LineChart-line',
     style: {},
     name: 'salad.ApplesProp',
     fill: 'var(--ui-color-indigo-6)',
@@ -102,7 +102,7 @@ const nestedPayload = [
     },
   },
   {
-    className: 'mantine-LineChart-line',
+    className: 'ui-LineChart-line',
     style: {},
     name: 'salad.OrangesProp',
     fill: 'var(--ui-color-blue-6)',
@@ -123,7 +123,7 @@ const nestedPayload = [
     },
   },
   {
-    className: 'mantine-LineChart-line',
+    className: 'ui-LineChart-line',
     style: {},
     name: 'TomatoesProp',
     fill: 'var(--ui-color-teal-6)',
@@ -174,10 +174,10 @@ describe('@react-ui/charts/ChartToolTip', () => {
 
   it('accurately renders Tooltip label and data with default shallow names', async () => {
     const { container } = render(<ChartTooltip label="Mar 26" payload={payload} series={series} />);
-    expect(container.querySelectorAll('.mantine-ChartTooltip-tooltipItem')).toHaveLength(3);
+    expect(container.querySelectorAll('.ui-ChartTooltip-tooltipItem')).toHaveLength(3);
 
-    const tooltipLabelList = container.querySelectorAll('.mantine-ChartTooltip-tooltipItemBody');
-    const tooltipDataList = container.querySelectorAll('.mantine-ChartTooltip-tooltipItemData');
+    const tooltipLabelList = container.querySelectorAll('.ui-ChartTooltip-tooltipItemBody');
+    const tooltipDataList = container.querySelectorAll('.ui-ChartTooltip-tooltipItemData');
 
     expect(tooltipLabelList[0].textContent).toBe('Apples sales');
     expect(tooltipDataList[0].textContent).toBe('3129');
@@ -193,10 +193,10 @@ describe('@react-ui/charts/ChartToolTip', () => {
     const { container } = render(
       <ChartTooltip label="Mar 26" payload={nestedPayload} series={nestedSeries} />
     );
-    expect(container.querySelectorAll('.mantine-ChartTooltip-tooltipItem')).toHaveLength(3);
+    expect(container.querySelectorAll('.ui-ChartTooltip-tooltipItem')).toHaveLength(3);
 
-    const tooltipLabelList = container.querySelectorAll('.mantine-ChartTooltip-tooltipItemBody');
-    const tooltipDataList = container.querySelectorAll('.mantine-ChartTooltip-tooltipItemData');
+    const tooltipLabelList = container.querySelectorAll('.ui-ChartTooltip-tooltipItemBody');
+    const tooltipDataList = container.querySelectorAll('.ui-ChartTooltip-tooltipItemData');
 
     expect(tooltipLabelList[0].textContent).toBe('AppleLabel');
     expect(tooltipDataList[0].textContent).toBe('3129');
@@ -219,8 +219,8 @@ describe('@react-ui/charts/ChartToolTip', () => {
       const { container } = render(
         <ChartTooltip type="radial" payload={radialPayload} segmentId={1} />
       );
-      expect(container.querySelectorAll('.mantine-ChartTooltip-tooltipItem')).toHaveLength(1);
-      expect(container.querySelector('.mantine-ChartTooltip-tooltipItemData')!.textContent).toBe(
+      expect(container.querySelectorAll('.ui-ChartTooltip-tooltipItem')).toHaveLength(1);
+      expect(container.querySelector('.ui-ChartTooltip-tooltipItemData')!.textContent).toBe(
         '20'
       );
     });
@@ -229,15 +229,15 @@ describe('@react-ui/charts/ChartToolTip', () => {
       const { container } = render(
         <ChartTooltip type="radial" payload={radialPayload} segmentId={0} />
       );
-      expect(container.querySelectorAll('.mantine-ChartTooltip-tooltipItem')).toHaveLength(1);
-      expect(container.querySelector('.mantine-ChartTooltip-tooltipItemData')!.textContent).toBe(
+      expect(container.querySelectorAll('.ui-ChartTooltip-tooltipItem')).toHaveLength(1);
+      expect(container.querySelector('.ui-ChartTooltip-tooltipItemData')!.textContent).toBe(
         '10'
       );
     });
 
     it('renders all segments when no segmentId is provided', () => {
       const { container } = render(<ChartTooltip type="radial" payload={radialPayload} />);
-      expect(container.querySelectorAll('.mantine-ChartTooltip-tooltipItem')).toHaveLength(3);
+      expect(container.querySelectorAll('.ui-ChartTooltip-tooltipItem')).toHaveLength(3);
     });
   });
 });

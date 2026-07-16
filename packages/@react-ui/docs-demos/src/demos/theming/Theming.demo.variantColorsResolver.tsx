@@ -3,18 +3,18 @@ import {
   darken,
   defaultVariantColorsResolver,
   Group,
-  MantineThemeProvider,
+  UIThemeProvider,
   parseThemeColor,
   rgba,
   VariantColorsResolver,
 } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import {
   Button,
   Group,
-  MantineProvider,
+  UIProvider,
   defaultVariantColorsResolver,
   VariantColorsResolver,
   parseThemeColor,
@@ -63,19 +63,19 @@ const variantColorResolver: VariantColorsResolver = (input) => {
 
 function Demo() {
   return (
-    <MantineProvider theme={{ variantColorResolver }}>
+    <UIProvider theme={{ variantColorResolver }}>
       <Group>
         <Button color="lime.4" variant="filled">
-          Lime filled button
+          青柠填充按钮
         </Button>
 
         <Button color="orange" variant="light">
-          Orange light button
+          橙色浅色按钮
         </Button>
 
-        <Button variant="danger">Danger button</Button>
+        <Button variant="danger">危险按钮</Button>
       </Group>
-    </MantineProvider>
+    </UIProvider>
   );
 }
 `;
@@ -121,23 +121,23 @@ const variantColorResolver: VariantColorsResolver = (input) => {
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={{ variantColorResolver }}>
+    <UIThemeProvider theme={{ variantColorResolver }}>
       <Group>
         <Button color="lime.4" variant="filled">
-          Lime filled button
+          青柠填充按钮
         </Button>
 
         <Button color="orange" variant="light">
-          Orange light button
+          橙色浅色按钮
         </Button>
 
-        <Button variant="danger">Danger button</Button>
+        <Button variant="danger">危险按钮</Button>
       </Group>
-    </MantineThemeProvider>
+    </UIThemeProvider>
   );
 }
 
-export const variantColorsResolver: MantineDemo = {
+export const variantColorsResolver: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

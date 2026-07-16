@@ -1,20 +1,20 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Button } from '../Button'
 import { Popover } from './Popover'
 
 describe('Popover', () => {
     it('renders target element', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Popover>
                     <Popover.Target>
                         <Button>target</Button>
                     </Popover.Target>
                     <Popover.Dropdown>dropdown content</Popover.Dropdown>
                 </Popover>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('target')).toBeInTheDocument()
@@ -22,14 +22,14 @@ describe('Popover', () => {
 
     it('renders dropdown content when opened is true', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Popover opened>
                     <Popover.Target>
                         <Button>target</Button>
                     </Popover.Target>
                     <Popover.Dropdown>dropdown content</Popover.Dropdown>
                 </Popover>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('dropdown content')).toBeInTheDocument()
@@ -37,14 +37,14 @@ describe('Popover', () => {
 
     it('does not render dropdown content when disabled', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Popover opened disabled>
                     <Popover.Target>
                         <Button>target</Button>
                     </Popover.Target>
                     <Popover.Dropdown>dropdown content</Popover.Dropdown>
                 </Popover>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.queryByText('dropdown content')).not.toBeInTheDocument()

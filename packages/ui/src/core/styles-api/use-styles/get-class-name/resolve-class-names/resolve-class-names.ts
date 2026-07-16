@@ -1,9 +1,9 @@
 import cx from 'clsx'
-import { MantineTheme } from '../../../../MantineProvider'
+import { UITheme } from '../../../../UIProvider'
 import type { _ClassNames } from '../get-class-name'
 
 export interface ResolveClassNamesInput {
-    theme: MantineTheme
+    theme: UITheme
     classNames: _ClassNames
     props: Record<string, any>
     stylesCtx: Record<string, any> | undefined

@@ -1,13 +1,13 @@
 import { render } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { DataList } from './DataList'
 import { DataListItem } from './DataListItem/DataListItem'
 import { DataListItemLabel } from './DataListItemLabel/DataListItemLabel'
 import { DataListItemValue } from './DataListItemValue/DataListItemValue'
 
 function Wrapper({ children }: { children: React.ReactNode }) {
-    return <MantineProvider>{children}</MantineProvider>
+    return <UIProvider>{children}</UIProvider>
 }
 
 const defaultProps = {

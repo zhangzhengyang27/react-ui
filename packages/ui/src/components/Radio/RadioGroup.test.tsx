@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Radio } from './Radio'
 import { RadioGroup } from './RadioGroup'
 
-const renderGroup = (ui: React.ReactElement) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderGroup = (ui: React.ReactElement) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('RadioGroup', () => {
     it('selects value when radio is clicked', () => {

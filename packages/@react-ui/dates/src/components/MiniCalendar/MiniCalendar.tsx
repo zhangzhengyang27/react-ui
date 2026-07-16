@@ -9,7 +9,7 @@ import {
   factory,
   Factory,
   getSize,
-  MantineSize,
+  UISize,
   StylesApiProps,
   UnstyledButton,
   useProps,
@@ -71,7 +71,7 @@ export interface MiniCalendarProps
   getDayProps?: (date: string) => Record<string, any>;
 
   /** Component size @default 'sm' */
-  size?: MantineSize;
+  size?: UISize;
 
   /** Props passed to previous control button */
   previousControlProps?: React.ComponentProps<'button'> & DataAttributes;
@@ -98,7 +98,7 @@ const defaultProps = {
 
 const varsResolver = createVarsResolver<MiniCalendarFactory>((_theme, { size }) => ({
   root: {
-    '--mini-calendar-font-size': getSize(size, 'mantine-font-size'),
+    '--mini-calendar-font-size': getSize(size, 'ui-font-size'),
   },
 }));
 

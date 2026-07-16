@@ -1,5 +1,5 @@
 import { Splitter, SplitterProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: SplitterProps) {
   return (
@@ -44,7 +44,7 @@ function Demo() {
   );
 }`;
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
@@ -57,8 +57,8 @@ export const usage: MantineDemo = {
       initialValue: 'horizontal',
       libraryValue: 'horizontal',
       data: [
-        { value: 'horizontal', label: 'Horizontal' },
-        { value: 'vertical', label: 'Vertical' },
+        { value: 'horizontal', label: '水平' },
+        { value: 'vertical', label: '垂直' },
       ],
     },
   ],

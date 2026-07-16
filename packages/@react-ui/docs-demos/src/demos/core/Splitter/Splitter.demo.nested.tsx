@@ -1,5 +1,5 @@
 import { Splitter } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Demo() {
   return (
@@ -65,7 +65,7 @@ function Demo() {
   );
 }`;
 
-export const nested: MantineDemo = {
+export const nested: UIDemo = {
   type: 'code',
   component: Demo,
   code,

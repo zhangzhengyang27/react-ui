@@ -4,7 +4,7 @@ import {
   ElementProps,
   factory,
   Factory,
-  MantineRadius,
+  UIRadius,
   StylesApiProps,
   useProps,
   useStyles,
@@ -108,7 +108,7 @@ export interface ResourcesScheduleProps
   locale?: string;
 
   /** Key of theme.radius or any valid CSS value to set border-radius */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 
   /** Labels override for i18n */
   labels?: ScheduleLabelsOverride;

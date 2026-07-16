@@ -1,5 +1,5 @@
 import { WeekView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { businessEvents } from './_data';
 
 const code = `
@@ -9,7 +9,7 @@ import { events } from './data';
 function Demo() {
   return (
     <WeekView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       highlightBusinessHours
       businessHours={{
@@ -29,7 +29,7 @@ function Demo() {
 function Demo() {
   return (
     <WeekView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={businessEvents}
       highlightBusinessHours
       businessHours={{
@@ -45,7 +45,7 @@ function Demo() {
   );
 }
 
-export const businessHoursPerDay: MantineDemo = {
+export const businessHoursPerDay: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, ComboboxPopover } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -20,10 +20,10 @@ function Demo() {
       onChange={setValue}
       searchable
       limit={5}
-      nothingFoundMessage="Nothing found..."
+      nothingFoundMessage="未找到..."
     >
       <ComboboxPopover.Target>
-        <Button variant="default" miw={200}>{value || 'Select option'}</Button>
+        <Button variant="default" miw={200}>{value || '选择选项'}</Button>
       </ComboboxPopover.Target>
     </ComboboxPopover>
   );
@@ -44,18 +44,18 @@ function Demo() {
       onChange={setValue}
       searchable
       limit={5}
-      nothingFoundMessage="Nothing found..."
+      nothingFoundMessage="未找到..."
     >
       <ComboboxPopover.Target>
         <Button variant="default" miw={200}>
-          {value || 'Select option'}
+          {value || '选择选项'}
         </Button>
       </ComboboxPopover.Target>
     </ComboboxPopover>
   );
 }
 
-export const limit: MantineDemo = {
+export const limit: UIDemo = {
   type: 'code',
   component: Demo,
   code,

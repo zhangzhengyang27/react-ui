@@ -1,9 +1,9 @@
-import { createTheme, Input, MantineThemeProvider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { createTheme, Input, UIThemeProvider } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Styles.demo.dataSize.module.css';
 
 const code = `
-import { Input, createTheme, MantineProvider } from '@react-ui/ui';
+import { Input, createTheme, UIProvider } from '@react-ui/ui';
 import classes from './Demo.module.css';
 
 const theme = createTheme({
@@ -14,10 +14,10 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
-      <Input placeholder="Size XXL" size="xxl" />
-      <Input placeholder="Size XXS" size="xxs" mt="md" />
-    </MantineProvider>
+    <UIProvider theme={theme}>
+      <Input placeholder="XXL 尺寸" size="xxl" />
+      <Input placeholder="XXS 尺寸" size="xxs" mt="md" />
+    </UIProvider>
   );
 }
 `;
@@ -52,20 +52,20 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
-      <Input placeholder="Size XXL" size="xxl" />
-      <Input placeholder="Size XXS" size="xxs" mt="md" />
-    </MantineThemeProvider>
+    <UIThemeProvider theme={theme}>
+      <Input placeholder="XXL 尺寸" size="xxl" />
+      <Input placeholder="XXS 尺寸" size="xxs" mt="md" />
+    </UIThemeProvider>
   );
 }
 
-export const dataSize: MantineDemo = {
+export const dataSize: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 360,
   centered: true,
   code: [
-    { language: 'tsx', code, fileName: 'Demo.tsx' },
-    { language: 'scss', code: cssCode, fileName: 'Demo.module.css' },
+    { language: 'tsx', code, fileName: '演示代码.tsx' },
+    { language: 'scss', code: cssCode, fileName: '演示样式.module.css' },
   ],
 };

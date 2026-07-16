@@ -1,5 +1,5 @@
 import { Image } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Image } from '@react-ui/ui';
@@ -11,7 +11,7 @@ function Demo() {
       h={200}
       w="auto"
       fit="contain"
-      src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-9.png"
+      src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-9.png"
     />
   );
 }
@@ -24,12 +24,12 @@ function Demo() {
       h={200}
       w="auto"
       fit="contain"
-      src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-9.png"
+      src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-9.png"
     />
   );
 }
 
-export const contain: MantineDemo = {
+export const contain: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -21,7 +21,7 @@ import {
   Group,
   Paper,
   StylesApiProps,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useResolvedStylesApi,
   useStyles,
@@ -145,7 +145,7 @@ export const RadialBarChart = factory<RadialBarChartFactory>((_props) => {
     varsResolver,
   });
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const dataWithResolvedColor = data.map(({ color, ...item }, index) => {
     const resolvedColor = getThemeColor(color, theme);
 

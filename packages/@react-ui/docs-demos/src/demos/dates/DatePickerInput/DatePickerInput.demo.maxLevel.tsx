@@ -1,5 +1,5 @@
 import { DatePickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { DatePickerInput } from '@react-ui/dates';
@@ -9,14 +9,14 @@ function Demo() {
     <>
       <DatePickerInput
         maxLevel="year"
-        label="Year max level"
-        placeholder="Year max level"
+        label="年份最大层级"
+        placeholder="年份最大层级"
         mb="md"
       />
       <DatePickerInput
         maxLevel="month"
-        label="Month max level"
-        placeholder="Month max level"
+        label="月份最大层级"
+        placeholder="月份最大层级"
       />
     </>
   );
@@ -28,16 +28,16 @@ function Demo() {
     <>
       <DatePickerInput
         maxLevel="year"
-        label="Year max level"
-        placeholder="Year max level"
+        label="年份最大层级"
+        placeholder="年份最大层级"
         mb="md"
       />
-      <DatePickerInput maxLevel="month" label="Month max level" placeholder="Month max level" />
+      <DatePickerInput maxLevel="month" label="月份最大层级" placeholder="月份最大层级" />
     </>
   );
 }
 
-export const maxLevel: MantineDemo = {
+export const maxLevel: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

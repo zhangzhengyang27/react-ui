@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FloatingIndicator, Tabs } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './FloatingIndicator.demo.tabs.module.css';
 
 const cssCode = `
@@ -15,7 +15,7 @@ const cssCode = `
   border: 1px solid var(--ui-color-gray-2);
   box-shadow: var(--ui-shadow-sm);
 
-  @mixin dark {
+  [data-ui-color-scheme='dark'] & {
     background-color: var(--ui-color-dark-6);
     border-color: var(--ui-color-dark-4);
   }
@@ -31,7 +31,7 @@ const cssCode = `
     color: var(--ui-color-black);
   }
 
-  @mixin dark {
+  [data-ui-color-scheme='dark'] & {
     color: var(--ui-color-dark-1);
 
     &[data-active] {
@@ -59,13 +59,13 @@ function Demo() {
     <Tabs variant="none" value={value} onChange={setValue}>
       <Tabs.List ref={setRootRef} className={classes.list}>
         <Tabs.Tab value="1" ref={setControlRef('1')} className={classes.tab}>
-          First tab
+          第一个标签
         </Tabs.Tab>
         <Tabs.Tab value="2" ref={setControlRef('2')} className={classes.tab}>
-          Second tab
+          第二个标签
         </Tabs.Tab>
         <Tabs.Tab value="3" ref={setControlRef('3')} className={classes.tab}>
-          Third tab
+          第三个标签
         </Tabs.Tab>
 
         <FloatingIndicator
@@ -75,9 +75,9 @@ function Demo() {
         />
       </Tabs.List>
 
-      <Tabs.Panel value="1">First tab content</Tabs.Panel>
-      <Tabs.Panel value="2">Second tab content</Tabs.Panel>
-      <Tabs.Panel value="3">Third tab content</Tabs.Panel>
+      <Tabs.Panel value="1">第一个标签内容</Tabs.Panel>
+      <Tabs.Panel value="2">第二个标签内容</Tabs.Panel>
+      <Tabs.Panel value="3">第三个标签内容</Tabs.Panel>
     </Tabs>
   );
 }
@@ -96,13 +96,13 @@ function Demo() {
     <Tabs variant="none" value={value} onChange={setValue}>
       <Tabs.List ref={setRootRef} className={classes.list}>
         <Tabs.Tab value="1" ref={setControlRef('1')} className={classes.tab}>
-          First tab
+          第一个标签
         </Tabs.Tab>
         <Tabs.Tab value="2" ref={setControlRef('2')} className={classes.tab}>
-          Second tab
+          第二个标签
         </Tabs.Tab>
         <Tabs.Tab value="3" ref={setControlRef('3')} className={classes.tab}>
-          Third tab
+          第三个标签
         </Tabs.Tab>
 
         <FloatingIndicator
@@ -112,18 +112,18 @@ function Demo() {
         />
       </Tabs.List>
 
-      <Tabs.Panel value="1">First tab content</Tabs.Panel>
-      <Tabs.Panel value="2">Second tab content</Tabs.Panel>
-      <Tabs.Panel value="3">Third tab content</Tabs.Panel>
+      <Tabs.Panel value="1">第一个标签内容</Tabs.Panel>
+      <Tabs.Panel value="2">第二个标签内容</Tabs.Panel>
+      <Tabs.Panel value="3">第三个标签内容</Tabs.Panel>
     </Tabs>
   );
 }
 
-export const tabs: MantineDemo = {
+export const tabs: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
   ],
 };

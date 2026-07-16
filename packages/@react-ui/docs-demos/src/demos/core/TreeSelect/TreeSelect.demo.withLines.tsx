@@ -1,5 +1,5 @@
 import { TreeSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './data';
 
 const code = `
@@ -9,8 +9,8 @@ import { data } from './data';
 function Demo() {
   return (
     <TreeSelect
-      label="Without connecting lines"
-      placeholder="Pick value"
+      label="无连接线"
+      placeholder="选择值"
       data={data}
       defaultExpandAll
       withLines={false}
@@ -22,8 +22,8 @@ function Demo() {
 function Demo() {
   return (
     <TreeSelect
-      label="Without connecting lines"
-      placeholder="Pick value"
+      label="无连接线"
+      placeholder="选择值"
       data={data}
       defaultExpandAll
       withLines={false}
@@ -31,11 +31,11 @@ function Demo() {
   );
 }
 
-export const withLines: MantineDemo = {
+export const withLines: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
     { fileName: 'data.ts', language: 'tsx', code: dataCode },
   ],
   maxWidth: 340,

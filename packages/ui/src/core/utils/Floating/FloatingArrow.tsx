@@ -104,4 +104,4 @@ export function FloatingArrow({
     )
 }
 
-FloatingArrow.displayName = '@mantine/core/FloatingArrow'
+FloatingArrow.displayName = '@react-ui/ui/FloatingArrow'

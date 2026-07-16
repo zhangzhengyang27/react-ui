@@ -1,5 +1,5 @@
 import { Group, Progress } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Progress } from '@react-ui/ui';
@@ -12,13 +12,13 @@ function Demo() {
 
       <Progress.Root size="xl" autoContrast orientation="vertical" h={200}>
         <Progress.Section value={40} color="lime.4">
-          <Progress.Label>Documents</Progress.Label>
+          <Progress.Label>文档</Progress.Label>
         </Progress.Section>
         <Progress.Section value={20} color="yellow.4">
-          <Progress.Label>Apps</Progress.Label>
+          <Progress.Label>应用</Progress.Label>
         </Progress.Section>
         <Progress.Section value={20} color="cyan.7">
-          <Progress.Label>Other</Progress.Label>
+          <Progress.Label>其他</Progress.Label>
         </Progress.Section>
       </Progress.Root>
     </Group>
@@ -34,20 +34,20 @@ function Demo() {
 
       <Progress.Root size="xl" autoContrast orientation="vertical" h={200}>
         <Progress.Section value={40} color="lime.4">
-          <Progress.Label>Documents</Progress.Label>
+          <Progress.Label>文档</Progress.Label>
         </Progress.Section>
         <Progress.Section value={20} color="yellow.4">
-          <Progress.Label>Apps</Progress.Label>
+          <Progress.Label>应用</Progress.Label>
         </Progress.Section>
         <Progress.Section value={20} color="cyan.7">
-          <Progress.Label>Other</Progress.Label>
+          <Progress.Label>其他</Progress.Label>
         </Progress.Section>
       </Progress.Root>
     </Group>
   );
 }
 
-export const vertical: MantineDemo = {
+export const vertical: UIDemo = {
   type: 'code',
   component: Demo,
   code,

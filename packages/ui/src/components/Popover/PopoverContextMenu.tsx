@@ -13,7 +13,7 @@ export interface PopoverContextMenuProps {
 export function PopoverContextMenu(props: PopoverContextMenuProps) {
     const { children, disabled } = useProps('PopoverContextMenu', null, props)
 
-    const child = getSingleElementChild(children)
+    const child = getSingleElementChild(children) as React.ReactElement<any>
     if (!child) {
         throw new Error(
             'Popover.ContextMenu component children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported'

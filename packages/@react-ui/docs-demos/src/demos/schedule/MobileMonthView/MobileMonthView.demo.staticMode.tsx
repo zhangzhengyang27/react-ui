@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { MobileMonthView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { regularEvents } from './_data';
 
 const code = `
@@ -11,8 +11,8 @@ import { events } from './data';
 function Demo() {
   return (
     <MobileMonthView
-      date={dayjs().format('YYYY-MM-DD')}
-      selectedDate={dayjs().format('YYYY-MM-DD')}
+      date={dayjs('2024-01-15').format('YYYY-MM-DD')}
+      selectedDate={dayjs('2024-01-15').format('YYYY-MM-DD')}
       events={regularEvents}
       mode="static"
     />
@@ -23,15 +23,15 @@ function Demo() {
 function Demo() {
   return (
     <MobileMonthView
-      date={dayjs().format('YYYY-MM-DD')}
-      selectedDate={dayjs().format('YYYY-MM-DD')}
+      date={dayjs('2024-01-15').format('YYYY-MM-DD')}
+      selectedDate={dayjs('2024-01-15').format('YYYY-MM-DD')}
       events={regularEvents}
       mode="static"
     />
   );
 }
 
-export const staticMode: MantineDemo = {
+export const staticMode: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

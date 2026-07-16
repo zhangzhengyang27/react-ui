@@ -5,10 +5,10 @@ import {
     getFontSize,
     getRadius,
     getSize,
-    MantineColor,
-    MantineGradient,
-    MantineRadius,
-    MantineSize,
+    UIColor,
+    UIGradient,
+    UIRadius,
+    UISize,
     polymorphicFactory,
     PolymorphicFactory,
     rem,
@@ -17,13 +17,13 @@ import {
     useStyles
 } from '../../core'
 import { Loader, LoaderProps } from '../Loader'
-import { MantineTransition, Transition } from '../Transition'
+import { UITransition, Transition } from '../Transition'
 import { UnstyledButton } from '../UnstyledButton'
 import { ButtonGroup } from './ButtonGroup'
 import { ButtonGroupSection } from './ButtonGroupSection'
 import classes from './Button.module.css'
 
-export type ButtonSize = MantineSize | `compact-${MantineSize}` | (string & {})
+export type ButtonSize = UISize | `compact-${UISize}` | (string & {})
 
 export type ButtonStylesNames = 'root' | 'inner' | 'loader' | 'section' | 'label'
 export type ButtonVariant = 'filled' | 'light' | 'outline' | 'transparent' | 'white' | 'subtle' | 'default' | 'gradient'
@@ -45,43 +45,43 @@ export type ButtonCssVariables = {
 export interface ButtonProps extends BoxProps, StylesApiProps<ButtonFactory> {
     'data-disabled'?: boolean
 
-    /** Controls button height, font-size and horizontal padding @default 'sm' */
+    /** 控制按钮高度、字体大小和水平内边距 @default 'sm' */
     size?: ButtonSize
 
-    /** Key of theme.colors or any valid CSS color @default theme.primaryColor */
-    color?: MantineColor
+    /** 主题色键或任意有效 CSS 颜色 @default theme.primaryColor */
+    color?: UIColor
 
-    /** Sets justify-content of inner element @default 'center' */
+    /** 设置内部元素的 justify-content @default 'center' */
     justify?: React.CSSProperties['justifyContent']
 
-    /** Content on the left side of the button label */
+    /** 按钮标签左侧的内容 */
     leftSection?: React.ReactNode
 
-    /** Content on the right side of the button label */
+    /** 按钮标签右侧的内容 */
     rightSection?: React.ReactNode
 
-    /** Sets width: 100% @default false */
+    /** 设置宽度为 100% @default false */
     fullWidth?: boolean
 
-    /** Key of theme.radius or any valid CSS value @default theme.defaultRadius */
-    radius?: MantineRadius
+    /** 主题圆角键或任意有效 CSS 值 @default theme.defaultRadius */
+    radius?: UIRadius
 
-    /** Gradient configuration for variant="gradient" @default theme.defaultGradient */
-    gradient?: MantineGradient
+    /** variant="gradient" 时的渐变配置 @default theme.defaultGradient */
+    gradient?: UIGradient
 
-    /** Sets disabled attribute, applies disabled styles */
+    /** 设置 disabled 属性并应用禁用样式 */
     disabled?: boolean
 
-    /** Button content */
+    /** 按钮内容 */
     children?: React.ReactNode
 
-    /** If set, the Loader component is displayed over the button */
+    /** 如果设置，将在按钮上方显示 Loader 组件 */
     loading?: boolean
 
-    /** Props added to the Loader component (only visible when loading is set) */
+    /** 传递给 Loader 组件的属性（仅在 loading 设置时可见） */
     loaderProps?: LoaderProps
 
-    /** If set, adjusts text color based on background color for filled variant */
+    /** 如果设置，将根据背景色调整 filled 变体的文本颜色 */
     autoContrast?: boolean
 }
 
@@ -94,7 +94,7 @@ export type ButtonFactory = PolymorphicFactory<{
     variant: ButtonVariant
 }>
 
-const loaderTransition: MantineTransition = {
+const loaderTransition: UITransition = {
     in: { opacity: 1, transform: `translate(-50%, calc(-50% + ${rem(1)}))` },
     out: { opacity: 0, transform: 'translate(-50%, -200%)' },
     common: { transformOrigin: 'center' },
@@ -131,7 +131,7 @@ const varsResolver = createVarsResolver<ButtonFactory>(
 )
 
 /**
- * 按钮组件。对齐 mantine Button（polymorphicFactory + useStyles + varsResolver + CSS module）。
+ * 按钮组件。对齐 ui Button（polymorphicFactory + useStyles + varsResolver + CSS module）。
  * 支持 variant/color/size/radius/gradient/loading/loaderProps/leftSection/rightSection/fullWidth。
  * 样式引擎：CSS module（与 Loader/ActionIcon 一致，不再使用 styled-components）。
  */

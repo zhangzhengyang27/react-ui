@@ -26,4 +26,4 @@ export const ModalBaseCloseButton = forwardRef<HTMLButtonElement, ModalBaseClose
     }
 )
 
-ModalBaseCloseButton.displayName = '@mantine/core/ModalBaseCloseButton'
+ModalBaseCloseButton.displayName = '@react-ui/ui/ModalBaseCloseButton'

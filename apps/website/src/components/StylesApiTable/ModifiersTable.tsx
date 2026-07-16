@@ -39,10 +39,10 @@ export function ModifiersTable({ data, fixedLayout = true, ...others }: Modifier
       <Table layout={fixedLayout ? 'fixed' : undefined} {...others}>
         <Table.Thead>
           <Table.Tr>
-            <Table.Th w={fixedLayout ? 210 : undefined}>Selector</Table.Th>
-            <Table.Th w={fixedLayout ? 310 : undefined}>Attribute</Table.Th>
-            {hasConditions && <Table.Th>Condition</Table.Th>}
-            {hasValues && <Table.Th>Value</Table.Th>}
+            <Table.Th w={fixedLayout ? 210 : undefined}>选择器</Table.Th>
+            <Table.Th w={fixedLayout ? 310 : undefined}>属性</Table.Th>
+            {hasConditions && <Table.Th>条件</Table.Th>}
+            {hasValues && <Table.Th>值</Table.Th>}
           </Table.Tr>
         </Table.Thead>
         <Table.Tbody>{rows}</Table.Tbody>

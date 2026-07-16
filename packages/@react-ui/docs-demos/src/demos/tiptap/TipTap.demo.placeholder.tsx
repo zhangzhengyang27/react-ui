@@ -2,7 +2,7 @@ import Placeholder from '@tiptap/extension-placeholder';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { RichTextEditor } from '@react-ui/tiptap';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { RichTextEditor } from '@react-ui/tiptap';
@@ -13,7 +13,7 @@ import Placeholder from '@tiptap/extension-placeholder';
 function Demo() {
   const editor = useEditor({
     shouldRerenderOnTransaction: true,
-    extensions: [StarterKit, Placeholder.configure({ placeholder: 'This is placeholder' })],
+    extensions: [StarterKit, Placeholder.configure({ placeholder: '这是占位符' })],
     content: '',
   });
 
@@ -29,7 +29,7 @@ function Demo() {
   const editor = useEditor({
     shouldRerenderOnTransaction: true,
     immediatelyRender: false,
-    extensions: [StarterKit, Placeholder.configure({ placeholder: 'This is placeholder' })],
+    extensions: [StarterKit, Placeholder.configure({ placeholder: '这是占位符' })],
     content: '',
   });
 
@@ -40,7 +40,7 @@ function Demo() {
   );
 }
 
-export const placeholder: MantineDemo = {
+export const placeholder: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -4,7 +4,7 @@ import {
   factory,
   Factory,
   InputVariant,
-  MantineComponentStaticProperties,
+  UIComponentStaticProperties,
   StylesApiProps,
   useProps,
   useResolvedStylesApi,
@@ -48,7 +48,7 @@ type YearPickerInputComponent = (<Type extends DatePickerType = 'default'>(
   props: YearPickerInputProps<Type> & { ref?: React.Ref<HTMLButtonElement> }
 ) => React.JSX.Element) & {
   displayName?: string;
-} & MantineComponentStaticProperties<YearPickerInputFactory>;
+} & UIComponentStaticProperties<YearPickerInputFactory>;
 
 export const YearPickerInput: YearPickerInputComponent = factory<YearPickerInputFactory>(
   (_props) => {

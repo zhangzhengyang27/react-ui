@@ -3,7 +3,7 @@ import {
     BoxProps,
     createVarsResolver,
     getThemeColor,
-    MantineColor,
+    UIColor,
     parseThemeColor,
     polymorphicFactory,
     PolymorphicFactory,
@@ -22,7 +22,7 @@ export type MarkCssVariables = {
 
 export interface MarkProps extends BoxProps, StylesApiProps<MarkFactory> {
     /** Key of `theme.colors` or any valid CSS color @default theme.primaryColor */
-    color?: MantineColor
+    color?: UIColor
 
     /** Mark content */
     children?: React.ReactNode
@@ -53,7 +53,7 @@ const varsResolver = createVarsResolver<MarkFactory>((theme, { color }) => {
 })
 
 /**
- * 高亮文本背景组件。对齐 mantine Mark（polymorphicFactory + useStyles + varsResolver + CSS module）。
+ * 高亮文本背景组件。对齐 ui Mark（polymorphicFactory + useStyles + varsResolver + CSS module）。
  */
 export const Mark = polymorphicFactory<MarkFactory>((_props, _ref) => {
     const props = useProps('Mark', defaultProps, _props)

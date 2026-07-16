@@ -1,5 +1,5 @@
 import { Autocomplete } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Autocomplete } from '@react-ui/ui';
@@ -8,16 +8,16 @@ function Demo() {
   return (
     <>
       <Autocomplete
-        label="Boolean error"
-        placeholder="Boolean error"
+        label="布尔错误"
+        placeholder="布尔错误"
         error
         data={['React', 'Angular', 'Vue', 'Svelte']}
       />
       <Autocomplete
         mt="md"
-        label="With error message"
-        placeholder="With error message"
-        error="Invalid name"
+        label="带错误信息"
+        placeholder="带错误信息"
+        error="无效的名称"
         data={['React', 'Angular', 'Vue', 'Svelte']}
       />
     </>
@@ -29,23 +29,23 @@ function Demo() {
   return (
     <>
       <Autocomplete
-        label="Boolean error"
-        placeholder="Boolean error"
+        label="布尔错误"
+        placeholder="布尔错误"
         error
         data={['React', 'Angular', 'Vue', 'Svelte']}
       />
       <Autocomplete
         mt="md"
-        label="With error message"
-        placeholder="With error message"
-        error="Invalid name"
+        label="带错误信息"
+        placeholder="带错误信息"
+        error="无效的名称"
         data={['React', 'Angular', 'Vue', 'Svelte']}
       />
     </>
   );
 }
 
-export const error: MantineDemo = {
+export const error: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Menu, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -12,7 +12,7 @@ interface MenuNode {
 }
 
 const data: MenuNode[] = [
-  { label: 'Dashboard' },
+  { label: '仪表盘' },
   { label: 'Customers' },
   {
     label: 'Products',
@@ -25,13 +25,13 @@ const data: MenuNode[] = [
   },
   { label: 'Orders' },
   {
-    label: 'Settings',
+    label: '设置',
     children: [
       {
         label: 'Account',
         children: [
           { label: 'Profile' },
-          { label: 'Security' },
+          { label: '安全' },
           { label: 'Two-factor authentication' },
         ],
       },
@@ -77,14 +77,14 @@ function Demo() {
   return (
     <Menu shadow="md" width={240}>
       <Menu.Target>
-        <Button>Toggle menu</Button>
+        <Button>切换菜单</Button>
       </Menu.Target>
 
       <Menu.Dropdown>
         <Menu.Search
           value={query}
           onChange={(event) => setQuery(event.currentTarget.value)}
-          placeholder="Search items"
+          placeholder="搜索项目"
         />
 
         {items.length > 0 ? (
@@ -106,7 +106,7 @@ interface MenuNode {
 }
 
 const data: MenuNode[] = [
-  { label: 'Dashboard' },
+  { label: '仪表盘' },
   { label: 'Customers' },
   {
     label: 'Products',
@@ -119,13 +119,13 @@ const data: MenuNode[] = [
   },
   { label: 'Orders' },
   {
-    label: 'Settings',
+    label: '设置',
     children: [
       {
         label: 'Account',
         children: [
           { label: 'Profile' },
-          { label: 'Security' },
+          { label: '安全' },
           { label: 'Two-factor authentication' },
         ],
       },
@@ -171,14 +171,14 @@ function Demo() {
   return (
     <Menu shadow="md" width={240}>
       <Menu.Target>
-        <Button>Toggle menu</Button>
+        <Button>切换菜单</Button>
       </Menu.Target>
 
       <Menu.Dropdown>
         <Menu.Search
           value={query}
           onChange={(event) => setQuery(event.currentTarget.value)}
-          placeholder="Search items"
+          placeholder="搜索项目"
         />
 
         {items.length > 0 ? (
@@ -193,7 +193,7 @@ function Demo() {
   );
 }
 
-export const searchNested: MantineDemo = {
+export const searchNested: UIDemo = {
   type: 'code',
   component: Demo,
   code,

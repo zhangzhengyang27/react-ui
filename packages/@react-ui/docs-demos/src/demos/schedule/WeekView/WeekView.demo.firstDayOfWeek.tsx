@@ -1,29 +1,29 @@
 import dayjs from 'dayjs';
 import { ScheduleEventData, WeekView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const startOfWeek = dayjs().subtract(dayjs().day(), 'day').format('YYYY-MM-DD');
+const startOfWeek = dayjs('2024-01-15').subtract(dayjs('2024-01-15').day(), 'day').format('YYYY-MM-DD');
 const dayAfterStartOfWeek = dayjs(startOfWeek).add(1, 'day').format('YYYY-MM-DD');
 const twoDaysAfterStartOfWeek = dayjs(startOfWeek).add(2, 'day').format('YYYY-MM-DD');
 
 const events: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Morning Standup',
+    title: '早间站会',
     start: `${startOfWeek} 09:00:00`,
     end: `${startOfWeek} 09:30:00`,
     color: 'blue',
   },
   {
     id: 2,
-    title: 'Team Meeting',
+    title: '团队会议',
     start: `${dayAfterStartOfWeek} 10:00:00`,
     end: `${dayAfterStartOfWeek} 11:30:00`,
     color: 'green',
   },
   {
     id: 3,
-    title: 'Code Review',
+    title: '代码审查',
     start: `${twoDaysAfterStartOfWeek} 14:00:00`,
     end: `${twoDaysAfterStartOfWeek} 15:00:00`,
     color: 'violet',
@@ -33,28 +33,28 @@ const events: ScheduleEventData[] = [
 const dataCode = `
 import dayjs from 'dayjs';
 
-const startOfWeek = dayjs().subtract(dayjs().day(), 'day').format('YYYY-MM-DD');
+const startOfWeek = dayjs('2024-01-15').subtract(dayjs('2024-01-15').day(), 'day').format('YYYY-MM-DD');
 const dayAfterStartOfWeek = dayjs(startOfWeek).add(1, 'day').format('YYYY-MM-DD');
 const twoDaysAfterStartOfWeek = dayjs(startOfWeek).add(2, 'day').format('YYYY-MM-DD');
 
 const events = [
   {
     id: 1,
-    title: 'Morning Standup',
+    title: '早间站会',
     start: \`\${startOfWeek} 09:00:00\`,
     end: \`\${startOfWeek} 09:30:00\`,
     color: 'blue',
   },
   {
     id: 2,
-    title: 'Team Meeting',
+    title: '团队会议',
     start: \`\${dayAfterStartOfWeek} 10:00:00\`,
     end: \`\${dayAfterStartOfWeek} 11:30:00\`,
     color: 'green',
   },
   {
     id: 3,
-    title: 'Code Review',
+    title: '代码审查',
     start: \`\${twoDaysAfterStartOfWeek} 14:00:00\`,
     end: \`\${twoDaysAfterStartOfWeek} 15:00:00\`,
     color: 'violet',
@@ -69,7 +69,7 @@ import { events } from './data';
 function Demo() {
   return (
     <WeekView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       startTime="08:00:00"
       endTime="18:00:00"
@@ -82,7 +82,7 @@ function Demo() {
 function Demo() {
   return (
     <WeekView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       startTime="08:00:00"
       endTime="18:00:00"
@@ -91,12 +91,12 @@ function Demo() {
   );
 }
 
-export const firstDayOfWeek: MantineDemo = {
+export const firstDayOfWeek: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

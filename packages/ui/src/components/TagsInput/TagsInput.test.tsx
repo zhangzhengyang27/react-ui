@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { TagsInput } from './TagsInput'
 
-const renderTagsInput = (ui: React.ReactElement) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderTagsInput = (ui: React.ReactElement) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('TagsInput', () => {
     it('renders with placeholder', () => {

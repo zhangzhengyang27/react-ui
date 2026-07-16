@@ -1,5 +1,5 @@
 import { YearView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { regularEvents } from './_data';
 
 const code = `
@@ -7,15 +7,15 @@ import { YearView } from '@react-ui/schedule';
 import { events } from './data';
 
 function Demo() {
-  return <YearView date={new Date()} events={events} withHeader={false} />;
+  return <YearView date={new Date('2024-01-15')} events={events} withHeader={false} />;
 }
 `;
 
 function Demo() {
-  return <YearView date={new Date()} events={regularEvents} withHeader={false} />;
+  return <YearView date={new Date('2024-01-15')} events={regularEvents} withHeader={false} />;
 }
 
-export const withoutHeader: MantineDemo = {
+export const withoutHeader: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

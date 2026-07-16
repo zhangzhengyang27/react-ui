@@ -1,5 +1,5 @@
 import { FunnelChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './_data';
 import classes from './FunnelChart.demo.strokeColor.module.css';
 
@@ -36,12 +36,12 @@ function Demo() {
   );
 }
 
-export const strokeColor: MantineDemo = {
+export const strokeColor: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
-    { code: cssCode, language: 'scss', fileName: 'Demo.module.css' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
+    { code: cssCode, language: 'scss', fileName: '演示样式.module.css' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
   centered: true,

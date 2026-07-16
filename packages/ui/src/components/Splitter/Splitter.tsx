@@ -70,7 +70,7 @@ export const Splitter = factory<SplitterFactory>((_props, ref) => {
             >
                 {panels.map((panel, index) => (
                     <div key={index} style={{ display: 'contents' }}>
-                        {cloneElement(panel, { index })}
+                        {cloneElement(panel as React.ReactElement<any>, { index })}
                         {index < panels.length - 1 && <SplitterResizer index={index} />}
                     </div>
                 ))}

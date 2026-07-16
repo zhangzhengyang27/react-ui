@@ -1,5 +1,5 @@
 import { Box, ScrollArea } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { Content } from './_content';
 
 const code = `
@@ -26,7 +26,7 @@ function Demo() {
   );
 }
 
-export const horizontal: MantineDemo = {
+export const horizontal: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

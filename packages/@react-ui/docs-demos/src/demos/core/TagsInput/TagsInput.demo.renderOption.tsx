@@ -1,5 +1,5 @@
 import { Group, TagsInput, TagsInputProps, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Group, TagsInput, TagsInputProps, Text } from '@react-ui/ui';
@@ -7,23 +7,23 @@ import { Group, TagsInput, TagsInputProps, Text } from '@react-ui/ui';
 const data: Record<string, { emoji: string; description: string }> = {
   Apples: {
     emoji: '🍎',
-    description: 'Crisp and juicy snacking delight',
+    description: '脆爽多汁的美味零食',
   },
   Bread: {
     emoji: '🍞',
-    description: 'Freshly baked daily essential',
+    description: '每日新鲜烘焙的必需品',
   },
   Bananas: {
     emoji: '🍌',
-    description: 'Perfect for a healthy breakfast',
+    description: '健康早餐的完美选择',
   },
   Eggs: {
     emoji: '🥚',
-    description: 'Versatile protein source for cooking',
+    description: '烹饪用的多功能蛋白质来源',
   },
   Broccoli: {
     emoji: '🥦',
-    description: 'Nutrient-rich green vegetable',
+    description: '营养丰富的绿色蔬菜',
   },
 };
 
@@ -46,8 +46,8 @@ function Demo() {
     <TagsInput
       data={['Apples', 'Bread', 'Bananas', 'Eggs', 'Broccoli']}
       renderOption={renderTagsInputOption}
-      label="Groceries"
-      placeholder="Pick tag from list or type to add new"
+      label="杂货"
+      placeholder="从列表选择标签或输入添加"
       maxDropdownHeight={300}
     />
   );
@@ -57,23 +57,23 @@ function Demo() {
 const data: Record<string, { emoji: string; description: string }> = {
   Apples: {
     emoji: '🍎',
-    description: 'Crisp and juicy snacking delight',
+    description: '脆爽多汁的美味零食',
   },
   Bread: {
     emoji: '🍞',
-    description: 'Freshly baked daily essential',
+    description: '每日新鲜烘焙的必需品',
   },
   Bananas: {
     emoji: '🍌',
-    description: 'Perfect for a healthy breakfast',
+    description: '健康早餐的完美选择',
   },
   Eggs: {
     emoji: '🥚',
-    description: 'Versatile protein source for cooking',
+    description: '烹饪用的多功能蛋白质来源',
   },
   Broccoli: {
     emoji: '🥦',
-    description: 'Nutrient-rich green vegetable',
+    description: '营养丰富的绿色蔬菜',
   },
 };
 
@@ -96,14 +96,14 @@ function Demo() {
     <TagsInput
       data={['Apples', 'Bread', 'Bananas', 'Eggs', 'Broccoli']}
       renderOption={renderTagsInputOption}
-      label="Groceries"
-      placeholder="Pick tag from list or type to add new"
+      label="杂货"
+      placeholder="从列表选择标签或输入添加"
       maxDropdownHeight={300}
     />
   );
 }
 
-export const renderOption: MantineDemo = {
+export const renderOption: UIDemo = {
   type: 'code',
   component: Demo,
   code,

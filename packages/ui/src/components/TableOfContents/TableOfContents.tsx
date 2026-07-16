@@ -8,9 +8,9 @@ import {
     Factory,
     getFontSize,
     getRadius,
-    MantineColor,
-    MantineRadius,
-    MantineSize,
+    UIColor,
+    UIRadius,
+    UISize,
     rem,
     StylesApiProps,
     useProps,
@@ -48,10 +48,10 @@ export interface TableOfContentsGetControlPropsPayload {
 
 export interface TableOfContentsProps extends BoxProps, StylesApiProps<TableOfContentsFactory>, ElementProps<'div'> {
     /** Key of `theme.colors` or any valid CSS color value @default theme.primaryColor */
-    color?: MantineColor
+    color?: UIColor
 
     /** Controls font-size and padding of all elements @default 'md' */
-    size?: MantineSize | (string & {}) | number
+    size?: UISize | (string & {}) | number
 
     /** If set, adjusts text color based on background color for `filled` variant */
     autoContrast?: boolean
@@ -74,7 +74,7 @@ export interface TableOfContentsProps extends BoxProps, StylesApiProps<TableOfCo
     depthOffset?: number | string
 
     /** Key of `theme.radius` or any valid CSS value to set `border-radius` @default theme.defaultRadius */
-    radius?: MantineRadius
+    radius?: UIRadius
 
     /** A function to reinitialize headings from `use-scroll-spy` hook */
     reinitializeRef?: React.RefObject<() => void>

@@ -1,6 +1,6 @@
 import { Box, Button, Text, TextInput } from '@react-ui/ui';
 import { useFocusWithin } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useFocusWithin } from '@react-ui/hooks';
@@ -18,8 +18,8 @@ function Demo() {
         }}
       >
         <Text size="sm">One of elements has focus: {focused.toString()}</Text>
-        <TextInput label="Focus this input" placeholder="Styles will be added to parent" />
-        <Button mt="md">Button</Button>
+        <TextInput label="聚焦此输入" placeholder="样式将添加到父元素" />
+        <Button mt="md">按钮</Button>
       </Box>
     </div>
   );
@@ -38,14 +38,14 @@ function Demo() {
         }}
       >
         <Text size="sm">One of elements has focus: {focused.toString()}</Text>
-        <TextInput label="Focus this input" placeholder="Styles will be added to parent" />
-        <Button mt="md">Button</Button>
+        <TextInput label="聚焦此输入" placeholder="样式将添加到父元素" />
+        <Button mt="md">按钮</Button>
       </Box>
     </div>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

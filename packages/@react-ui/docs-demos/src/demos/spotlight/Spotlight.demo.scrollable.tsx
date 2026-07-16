@@ -1,6 +1,6 @@
 import { MagnifyingGlassIcon } from '@phosphor-icons/react';
 import { SpotlightActionData } from '@react-ui/spotlight';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { SpotlightDemoBase } from './_demo-base';
 
 const code = `
@@ -19,16 +19,16 @@ const actions: SpotlightActionData[] = Array(100)
 function Demo() {
   return (
     <>
-      <Button onClick={spotlight.open}>Open spotlight</Button>
+      <Button onClick={spotlight.open}>打开聚光灯</Button>
       <Spotlight
         actions={actions}
-        nothingFound="Nothing found..."
+        nothingFound="未找到..."
         highlightQuery
         scrollable
         maxHeight={350}
         searchProps={{
           leftSection: <MagnifyingGlassIcon size={20} />,
-          placeholder: 'Search...',
+          placeholder: '搜索...',
         }}
       />
     </>
@@ -48,20 +48,20 @@ function Demo() {
   return (
     <SpotlightDemoBase
       actions={actions}
-      nothingFound="Nothing found..."
+      nothingFound="未找到..."
       highlightQuery
       scrollable
       maxHeight={350}
       shortcut={null}
       searchProps={{
         leftSection: <MagnifyingGlassIcon size={20} />,
-        placeholder: 'Search...',
+        placeholder: '搜索...',
       }}
     />
   );
 }
 
-export const scrollable: MantineDemo = {
+export const scrollable: UIDemo = {
   type: 'code',
   component: Demo,
   code,

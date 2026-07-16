@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { ResourcesDayView, ScheduleResourceGroup } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { resourceEvents } from './_data';
 
 const resources = [
@@ -9,7 +9,7 @@ const resources = [
   { id: 'paris', label: 'Meeting room: Paris' },
   { id: 'new-york', label: 'Meeting room: New York' },
   { id: 'london', label: 'Meeting room: London' },
-  { id: 'overflow', label: 'Overflow room' },
+  { id: 'overflow', label: '溢出会议室' },
 ];
 
 const groups: ScheduleResourceGroup[] = [
@@ -28,7 +28,7 @@ const resources = [
   { id: 'paris', label: 'Meeting room: Paris' },
   { id: 'new-york', label: 'Meeting room: New York' },
   { id: 'london', label: 'Meeting room: London' },
-  { id: 'overflow', label: 'Overflow room' },
+  { id: 'overflow', label: '溢出会议室' },
 ];
 
 const groups: ScheduleResourceGroup[] = [
@@ -37,7 +37,7 @@ const groups: ScheduleResourceGroup[] = [
 ];
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
 
   return (
     <ResourcesDayView
@@ -54,7 +54,7 @@ function Demo() {
 `;
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
 
   return (
     <ResourcesDayView
@@ -69,9 +69,9 @@ function Demo() {
   );
 }
 
-export const resourceGroups: MantineDemo = {
+export const resourceGroups: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
-  code: [{ code, language: 'tsx', fileName: 'Demo.tsx' }],
+  code: [{ code, language: 'tsx', fileName: '演示代码.tsx' }],
 };

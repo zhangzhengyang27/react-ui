@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Group, Stepper } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { Content } from './_content';
 
 const code = `
@@ -124,7 +124,7 @@ function Demo() {
   );
 }
 
-export const allowStepSelect: MantineDemo = {
+export const allowStepSelect: UIDemo = {
   type: 'code',
   component: Demo,
   code,

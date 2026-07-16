@@ -1,10 +1,10 @@
 import { InfoIcon } from '@phosphor-icons/react';
 import cx from 'clsx';
-import { Blockquote, BlockquoteProps, rgba, useMantineTheme } from '@react-ui/ui';
+import { Blockquote, BlockquoteProps, rgba, useUITheme } from '@react-ui/ui';
 import classes from './MdxInfo.module.css';
 
 export function MdxInfo({ className, ...others }: BlockquoteProps) {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   return (
     <Blockquote
       className={cx(classes.root, className)}

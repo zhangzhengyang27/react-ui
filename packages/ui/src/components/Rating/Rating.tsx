@@ -6,8 +6,8 @@ import {
     factory,
     Factory,
     getSize,
-    MantineColor,
-    MantineSize,
+    UIColor,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -27,7 +27,7 @@ export interface RatingProps extends BoxProps, StylesApiProps<RatingFactory> {
     /** Default value for uncontrolled rating */
     defaultValue?: number
 
-    /** Called when value changes */
+    //** 值变化时调用 */
     onChange?: (value: number) => void
 
     /** Called when hover value changes */
@@ -37,10 +37,10 @@ export interface RatingProps extends BoxProps, StylesApiProps<RatingFactory> {
     count?: number
 
     /** Controls star size */
-    size?: MantineSize | number | string
+    size?: UISize | number | string
 
     /** Star color, key of theme.colors or any valid CSS color @default yellow */
-    color?: MantineColor
+    color?: UIColor
 
     /** If true, the rating is read-only @default false */
     readOnly?: boolean
@@ -154,12 +154,52 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
         onHover?.(0)
     }
 
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+        if (readOnly) return
+
+        let nextValue = roundedValue
+
+        switch (event.key) {
+            case 'ArrowRight':
+            case 'ArrowUp':
+                nextValue = clamp(roundedValue + 1, 0, count!)
+                break
+            case 'ArrowLeft':
+            case 'ArrowDown':
+                nextValue = clamp(roundedValue - 1, 0, count!)
+                break
+            case 'Home':
+                nextValue = 0
+                break
+            case 'End':
+                nextValue = count!
+                break
+            default:
+                return
+        }
+
+        event.preventDefault()
+        nextValue = roundToFraction(nextValue, fractions!)
+
+        if (!isControlled) {
+            setInternalValue(nextValue)
+        }
+        onChange?.(nextValue)
+    }
+
     return (
         <Box
             ref={ref}
             {...getStyles('root')}
             mod={[{ readonly: readOnly }, mod]}
             onMouseLeave={handleMouseLeave}
+            onKeyDown={handleKeyDown}
+            role={readOnly ? undefined : 'slider'}
+            tabIndex={readOnly ? undefined : 0}
+            aria-valuenow={readOnly ? undefined : roundedValue}
+            aria-valuemin={readOnly ? undefined : 0}
+            aria-valuemax={readOnly ? undefined : count}
+            aria-label={readOnly ? undefined : '评分'}
             {...others}
         >
             {Array.from({ length: count }).map((_, index) => {

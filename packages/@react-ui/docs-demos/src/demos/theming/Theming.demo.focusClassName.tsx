@@ -1,16 +1,16 @@
-import { Button, MantineThemeProvider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { Button, UIThemeProvider } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Theming.demo.focusClassName.module.css';
 
 const tsxCode = `
-import { MantineProvider, Button } from '@react-ui/ui';
+import { UIProvider, Button } from '@react-ui/ui';
 import classes from './focus.module.css';
 
 function Demo() {
   return (
-    <MantineProvider theme={{ focusClassName: classes.focus }}>
-      <Button>Click button to see custom focus ring</Button>
-    </MantineProvider>
+    <UIProvider theme={{ focusClassName: classes.focus }}>
+      <Button>点击按钮查看自定义聚焦环</Button>
+    </UIProvider>
   );
 }
 `;
@@ -36,18 +36,18 @@ const cssCode = `
 
 function Demo() {
   return (
-    <MantineThemeProvider inherit theme={{ focusClassName: classes.focus }}>
-      <Button>Click button to see custom focus ring</Button>
-    </MantineThemeProvider>
+    <UIThemeProvider inherit theme={{ focusClassName: classes.focus }}>
+      <Button>点击按钮查看自定义聚焦环</Button>
+    </UIThemeProvider>
   );
 }
 
-export const focusClassName: MantineDemo = {
+export const focusClassName: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code: tsxCode },
-    { fileName: 'focus.module.css', language: 'scss', code: cssCode },
+    { fileName: '演示代码.tsx', language: 'tsx', code: tsxCode },
+    { fileName: '焦点样式.module.css', language: 'scss', code: cssCode },
   ],
 };

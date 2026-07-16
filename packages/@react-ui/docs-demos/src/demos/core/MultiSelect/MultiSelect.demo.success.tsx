@@ -1,26 +1,26 @@
 import { MultiSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { MultiSelect } from '@react-ui/ui';
 
 function Demo() {
-  return <MultiSelect label="Multi Select" placeholder="Multi Select" data={['React', 'Angular', 'Vue', 'Svelte']} success="Looks good!" />;
+  return <MultiSelect label="多选" placeholder="多选" data={['React', 'Angular', 'Vue', 'Svelte']} success="看起来不错！" />;
 }
 `;
 
 function Demo() {
   return (
     <MultiSelect
-      label="Multi Select"
-      placeholder="Multi Select"
+      label="多选"
+      placeholder="多选"
       data={['React', 'Angular', 'Vue', 'Svelte']}
-      success="Looks good!"
+      success="看起来不错！"
     />
   );
 }
 
-export const success: MantineDemo = {
+export const success: UIDemo = {
   type: 'code',
   component: Demo,
   code,

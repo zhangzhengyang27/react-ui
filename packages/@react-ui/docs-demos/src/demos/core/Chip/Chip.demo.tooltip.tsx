@@ -1,13 +1,13 @@
 import { Chip, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Tooltip, Chip } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <Tooltip label="Chip tooltip" refProp="rootRef">
-      <Chip defaultChecked>Chip with tooltip</Chip>
+    <Tooltip label="芯片提示" refProp="rootRef">
+      <Chip defaultChecked>带提示的芯片</Chip>
     </Tooltip>
   );
 }
@@ -15,13 +15,13 @@ function Demo() {
 
 function Demo() {
   return (
-    <Tooltip label="Chip tooltip" refProp="rootRef">
-      <Chip defaultChecked>Chip with tooltip</Chip>
+    <Tooltip label="芯片提示" refProp="rootRef">
+      <Chip defaultChecked>带提示的芯片</Chip>
     </Tooltip>
   );
 }
 
-export const tooltip: MantineDemo = {
+export const tooltip: UIDemo = {
   type: 'code',
   component: Demo,
   code,

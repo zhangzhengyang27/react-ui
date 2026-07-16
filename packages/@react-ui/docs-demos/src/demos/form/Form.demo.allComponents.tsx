@@ -31,7 +31,7 @@ import {
   TextInput,
 } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const codeTextInput = `
 import { TextInput, Button, Group } from '@react-ui/ui';
@@ -45,7 +45,7 @@ function Demo() {
     },
 
     validate: {
-      email: (value) => (/^\\S+@\\S+$/.test(value) ? null : 'Invalid email'),
+      email: (value) => (/^\\S+@\\S+$/.test(value) ? null : '无效的邮箱'),
     },
   });
 
@@ -53,14 +53,14 @@ function Demo() {
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <TextInput
         withAsterisk
-        label="Email"
-        placeholder="your@email.com"
+        label="邮箱"
+        placeholder="yourname@example.com"
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -75,7 +75,7 @@ function DemoTextInput() {
     },
 
     validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : '无效的邮箱'),
     },
   });
 
@@ -83,20 +83,20 @@ function DemoTextInput() {
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <TextInput
         withAsterisk
-        label="Email"
-        placeholder="your@email.com"
+        label="邮箱"
+        placeholder="yourname@example.com"
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const textInput: MantineDemo = {
+export const textInput: UIDemo = {
   type: 'code',
   component: DemoTextInput,
   code: codeTextInput,
@@ -117,13 +117,13 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <AngleSlider
-        aria-label="Angle"
+        aria-label="角度"
         key={form.key('angle')}
         {...form.getInputProps('angle')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -140,16 +140,16 @@ function DemoAngleSlider() {
 
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
-      <AngleSlider aria-label="Angle" key={form.key('angle')} {...form.getInputProps('angle')} />
+      <AngleSlider aria-label="角度" key={form.key('angle')} {...form.getInputProps('angle')} />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const angleSlider: MantineDemo = {
+export const angleSlider: UIDemo = {
   type: 'code',
   component: DemoAngleSlider,
   code: codeAngleSlider,
@@ -174,13 +174,13 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Checkbox
-        label="I agree to sell my privacy"
+        label="我同意出售我的隐私"
         key={form.key('termsParams')}
         {...form.getInputProps('termsParams', { type: 'checkbox' })}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -202,19 +202,19 @@ function DemoCheckbox() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Checkbox
-        label="I agree to sell my privacy"
+        label="我同意出售我的隐私"
         key={form.key('termsParams')}
         {...form.getInputProps('termsParams', { type: 'checkbox' })}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const checkbox: MantineDemo = {
+export const checkbox: UIDemo = {
   type: 'code',
   component: DemoCheckbox,
   code: codeCheckbox,
@@ -235,21 +235,21 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Checkbox.Group
-        label="Select your favorite frameworks/libraries"
+        label="选择你最喜欢的框架/库"
         withAsterisk
         key={form.key('favFrameworks')}
         {...form.getInputProps('favFrameworks')}
       >
         <Group mt="xs">
           <Checkbox value="react" label="React" />
-          <Checkbox value="mantine" label="ReactUI" />
+          <Checkbox value="ui" label="ReactUI" />
           <Checkbox value="ng" label="Angular" />
           <Checkbox value="svelte" label="Svelte" />
         </Group>
       </Checkbox.Group>
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -267,27 +267,27 @@ function DemoCheckboxGroup() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Checkbox.Group
-        label="Select your favorite frameworks/libraries"
+        label="选择你最喜欢的框架/库"
         withAsterisk
         key={form.key('favFrameworks')}
         {...form.getInputProps('favFrameworks')}
       >
         <Group mt="xs">
           <Checkbox value="react" label="React" />
-          <Checkbox value="mantine" label="ReactUI" />
+          <Checkbox value="ui" label="ReactUI" />
           <Checkbox value="ng" label="Angular" />
           <Checkbox value="svelte" label="Svelte" />
         </Group>
       </Checkbox.Group>
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const checkboxGroup: MantineDemo = {
+export const checkboxGroup: UIDemo = {
   type: 'code',
   component: DemoCheckboxGroup,
   code: codeCheckboxGroup,
@@ -315,7 +315,7 @@ function Demo() {
       </Chip>
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -337,13 +337,13 @@ function DemoChip() {
       </Chip>
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const chip: MantineDemo = {
+export const chip: UIDemo = {
   type: 'code',
   component: DemoChip,
   code: codeChip,
@@ -364,14 +364,14 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <ColorInput
-        label="Your favorite color"
-        placeholder="Pick color"
+        label="你最喜欢的颜色"
+        placeholder="选择颜色"
         key={form.key('color')}
         {...form.getInputProps('color')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -389,20 +389,20 @@ function DemoColorInput() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <ColorInput
-        label="Your favorite color"
-        placeholder="Pick color"
+        label="你最喜欢的颜色"
+        placeholder="选择颜色"
         key={form.key('color')}
         {...form.getInputProps('color')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const colorInput: MantineDemo = {
+export const colorInput: UIDemo = {
   type: 'code',
   component: DemoColorInput,
   code: codeColorInput,
@@ -422,7 +422,7 @@ function Demo() {
 
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
-      <Text size="sm" fw={500} mb={3}>Pick color</Text>
+      <Text size="sm" fw={500} mb={3}>选择颜色</Text>
       <ColorPicker
         format="hex"
         key={form.key('color')}
@@ -430,7 +430,7 @@ function Demo() {
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -453,13 +453,13 @@ function DemoColorPicker() {
       <ColorPicker format="hex" key={form.key('color')} {...form.getInputProps('color')} />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const colorPicker: MantineDemo = {
+export const colorPicker: UIDemo = {
   type: 'code',
   component: DemoColorPicker,
   code: codeColorPicker,
@@ -482,14 +482,14 @@ function Demo() {
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Fieldset legend="Personal information">
         <TextInput
-          label="Name"
-          placeholder="Your name"
+          label="姓名"
+          placeholder="你的姓名"
           key={form.key('name')}
           {...form.getInputProps('name')}
         />
         <TextInput
-          label="Email"
-          placeholder="Your email"
+          label="邮箱"
+          placeholder="你的邮箱"
           mt="md"
           key={form.key('email')}
           {...form.getInputProps('email')}
@@ -497,7 +497,7 @@ function Demo() {
       </Fieldset>
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -517,14 +517,14 @@ function DemoFieldset() {
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Fieldset legend="Personal information">
         <TextInput
-          label="Name"
-          placeholder="Your name"
+          label="姓名"
+          placeholder="你的姓名"
           key={form.key('name')}
           {...form.getInputProps('name')}
         />
         <TextInput
-          label="Email"
-          placeholder="Your email"
+          label="邮箱"
+          placeholder="你的邮箱"
           mt="md"
           key={form.key('email')}
           {...form.getInputProps('email')}
@@ -532,13 +532,13 @@ function DemoFieldset() {
       </Fieldset>
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const fieldset: MantineDemo = {
+export const fieldset: UIDemo = {
   type: 'code',
   component: DemoFieldset,
   code: codeFieldset,
@@ -559,14 +559,14 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <FileInput
-        label="Avatar"
-        placeholder="Upload avatar"
+        label="头像"
+        placeholder="上传头像"
         key={form.key('avatar')}
         {...form.getInputProps('avatar')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -584,20 +584,20 @@ function DemoFileInput() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <FileInput
-        label="Avatar"
-        placeholder="Upload avatar"
+        label="头像"
+        placeholder="上传头像"
         key={form.key('avatar')}
         {...form.getInputProps('avatar')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const fileInput: MantineDemo = {
+export const fileInput: UIDemo = {
   type: 'code',
   component: DemoFileInput,
   code: codeFileInput,
@@ -617,17 +617,17 @@ function Demo() {
 
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
-      <Input.Wrapper label="Phone" withAsterisk>
+      <Input.Wrapper label="电话" withAsterisk>
         <Input
           component="input"
-          placeholder="Your phone"
+          placeholder="你的电话"
           key={form.key('phone')}
           {...form.getInputProps('phone')}
         />
       </Input.Wrapper>
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -644,23 +644,23 @@ function DemoInput() {
 
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
-      <Input.Wrapper label="Phone" withAsterisk>
+      <Input.Wrapper label="电话" withAsterisk>
         <Input
           component="input"
-          placeholder="Your phone"
+          placeholder="你的电话"
           key={form.key('phone')}
           {...form.getInputProps('phone')}
         />
       </Input.Wrapper>
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const input: MantineDemo = {
+export const input: UIDemo = {
   type: 'code',
   component: DemoInput,
   code: codeInput,
@@ -674,7 +674,7 @@ function Demo() {
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: {
-      packageJson: '{"name": "mantine"}',
+      packageJson: '{"name": "react-ui"}',
     },
   });
 
@@ -691,7 +691,7 @@ function Demo() {
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -702,7 +702,7 @@ function DemoJsonInput() {
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: {
-      packageJson: '{"name": "mantine"}',
+      packageJson: '{"name": "react-ui"}',
     },
   });
 
@@ -719,13 +719,13 @@ function DemoJsonInput() {
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const jsonInput: MantineDemo = {
+export const jsonInput: UIDemo = {
   type: 'code',
   component: DemoJsonInput,
   code: codeJsonInput,
@@ -746,14 +746,14 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <NativeSelect
-        label="Select framework"
+        label="选择框架"
         data={['React', 'Angular', 'Svelte', 'Vue']}
         key={form.key('framewrok')}
         {...form.getInputProps('framewrok')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -771,20 +771,20 @@ function DemoNativeSelect() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <NativeSelect
-        label="Select framework"
+        label="选择框架"
         data={['React', 'Angular', 'Svelte', 'Vue']}
         key={form.key('framewrok')}
         {...form.getInputProps('framewrok')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const nativeSelect: MantineDemo = {
+export const nativeSelect: UIDemo = {
   type: 'code',
   component: DemoNativeSelect,
   code: codeNativeSelect,
@@ -805,8 +805,8 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <NumberInput
-        label="Your age"
-        placeholder="Your age"
+        label="你的年龄"
+        placeholder="你的年龄"
         min={0}
         max={120}
         key={form.key('age')}
@@ -814,7 +814,7 @@ function Demo() {
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -832,8 +832,8 @@ function DemoNumberInput() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <NumberInput
-        label="Your age"
-        placeholder="Your age"
+        label="你的年龄"
+        placeholder="你的年龄"
         min={0}
         max={120}
         key={form.key('age')}
@@ -841,13 +841,13 @@ function DemoNumberInput() {
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const numberInput: MantineDemo = {
+export const numberInput: UIDemo = {
   type: 'code',
   component: DemoNumberInput,
   code: codeNumberInput,
@@ -868,14 +868,14 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <PasswordInput
-        label="Password"
-        placeholder="Your password"
+        label="密码"
+        placeholder="你的密码"
         key={form.key('password')}
         {...form.getInputProps('password')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -893,20 +893,20 @@ function DemoPasswordInput() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <PasswordInput
-        label="Password"
-        placeholder="Your password"
+        label="密码"
+        placeholder="你的密码"
         key={form.key('password')}
         {...form.getInputProps('password')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const passwordInput: MantineDemo = {
+export const passwordInput: UIDemo = {
   type: 'code',
   component: DemoPasswordInput,
   code: codePasswordInput,
@@ -926,14 +926,14 @@ function Demo() {
 
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
-      <Text size="sm" fw={500} mb={3}>Enter PIN</Text>
+      <Text size="sm" fw={500} mb={3}>输入 PIN</Text>
       <PinInput
         key={form.key('pin')}
         {...form.getInputProps('pin')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -956,13 +956,13 @@ function DemoPinInput() {
       <PinInput key={form.key('pin')} {...form.getInputProps('pin')} />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const pinInput: MantineDemo = {
+export const pinInput: UIDemo = {
   type: 'code',
   component: DemoPinInput,
   code: codePinInput,
@@ -983,20 +983,20 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Radio.Group
-        label="Select your favorite framework/library"
+        label="选择你最喜欢的框架/库"
         key={form.key('framework')}
         {...form.getInputProps('framework')}
       >
         <Group mt="xs">
           <Radio value="react" label="React" />
-          <Radio value="mantine" label="ReactUI" />
+          <Radio value="ui" label="ReactUI" />
           <Radio value="ng" label="Angular" />
           <Radio value="svelte" label="Svelte" />
         </Group>
       </Radio.Group>
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -1014,26 +1014,26 @@ function DemoRadioGroup() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Radio.Group
-        label="Select your favorite framework/library"
+        label="选择你最喜欢的框架/库"
         key={form.key('framework')}
         {...form.getInputProps('framework')}
       >
         <Group mt="xs">
           <Radio value="react" label="React" />
-          <Radio value="mantine" label="ReactUI" />
+          <Radio value="ui" label="ReactUI" />
           <Radio value="ng" label="Angular" />
           <Radio value="svelte" label="Svelte" />
         </Group>
       </Radio.Group>
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const radioGroup: MantineDemo = {
+export const radioGroup: UIDemo = {
   type: 'code',
   component: DemoRadioGroup,
   code: codeRadioGroup,
@@ -1053,14 +1053,14 @@ function Demo() {
 
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
-      <Text size="sm" fw={500} mb={3}>Price range</Text>
+      <Text size="sm" fw={500} mb={3}>价格范围</Text>
       <RangeSlider
         key={form.key('range')}
         {...form.getInputProps('range')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -1083,13 +1083,13 @@ function DemoRangeSlider() {
       <RangeSlider key={form.key('range')} {...form.getInputProps('range')} />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const rangeSlider: MantineDemo = {
+export const rangeSlider: UIDemo = {
   type: 'code',
   component: DemoRangeSlider,
   code: codeRangeSlider,
@@ -1109,14 +1109,14 @@ function Demo() {
 
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
-      <Text size="sm" fw={500} mb={3}>Rating</Text>
+      <Text size="sm" fw={500} mb={3}>评分</Text>
       <Rating
         key={form.key('rating')}
         {...form.getInputProps('rating')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -1139,13 +1139,13 @@ function DemoRating() {
       <Rating key={form.key('rating')} {...form.getInputProps('rating')} />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const rating: MantineDemo = {
+export const rating: UIDemo = {
   type: 'code',
   component: DemoRating,
   code: codeRating,
@@ -1165,7 +1165,7 @@ function Demo() {
 
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
-      <Text size="sm" fw={500} mb={3}>Select framework</Text>
+      <Text size="sm" fw={500} mb={3}>选择框架</Text>
       <SegmentedControl
         data={['React', 'Angular', 'Svelte', 'Vue']}
         key={form.key('framewrok')}
@@ -1173,7 +1173,7 @@ function Demo() {
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -1200,13 +1200,13 @@ function DemoSegmentedControl() {
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const segmentedControl: MantineDemo = {
+export const segmentedControl: UIDemo = {
   type: 'code',
   component: DemoSegmentedControl,
   code: codeSegmentedControl,
@@ -1226,14 +1226,14 @@ function Demo() {
 
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
-      <Text size="sm" fw={500} mb={3}>Volume</Text>
+      <Text size="sm" fw={500} mb={3}>音量</Text>
       <Slider
         key={form.key('value')}
         {...form.getInputProps('value')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -1256,13 +1256,13 @@ function DemoSlider() {
       <Slider key={form.key('value')} {...form.getInputProps('value')} />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const slider: MantineDemo = {
+export const slider: UIDemo = {
   type: 'code',
   component: DemoSlider,
   code: codeSlider,
@@ -1283,13 +1283,13 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Switch
-        label="Enable notifications"
+        label="启用通知"
         key={form.key('notifications')}
         {...form.getInputProps('notifications', { type: 'checkbox' })}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -1307,19 +1307,19 @@ function DemoSwitch() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Switch
-        label="Enable notifications"
+        label="启用通知"
         key={form.key('notifications')}
         {...form.getInputProps('notifications', { type: 'checkbox' })}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const switchDemo: MantineDemo = {
+export const switchDemo: UIDemo = {
   type: 'code',
   component: DemoSwitch,
   code: codeSwitch,
@@ -1340,20 +1340,20 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Switch.Group
-        label="Select your favorite frameworks/libraries"
+        label="选择你最喜欢的框架/库"
         key={form.key('favFrameworks')}
         {...form.getInputProps('favFrameworks')}
       >
         <Group mt="xs">
           <Switch value="react" label="React" />
-          <Switch value="mantine" label="ReactUI" />
+          <Switch value="ui" label="ReactUI" />
           <Switch value="ng" label="Angular" />
           <Switch value="svelte" label="Svelte" />
         </Group>
       </Switch.Group>
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -1371,26 +1371,26 @@ function DemoSwitchGroup() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Switch.Group
-        label="Select your favorite frameworks/libraries"
+        label="选择你最喜欢的框架/库"
         key={form.key('favFrameworks')}
         {...form.getInputProps('favFrameworks')}
       >
         <Group mt="xs">
           <Switch value="react" label="React" />
-          <Switch value="mantine" label="ReactUI" />
+          <Switch value="ui" label="ReactUI" />
           <Switch value="ng" label="Angular" />
           <Switch value="svelte" label="Svelte" />
         </Group>
       </Switch.Group>
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const switchGroup: MantineDemo = {
+export const switchGroup: UIDemo = {
   type: 'code',
   component: DemoSwitchGroup,
   code: codeSwitchGroup,
@@ -1411,14 +1411,14 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Textarea
-        label="Your message"
-        placeholder="Your message"
+        label="你的消息"
+        placeholder="你的消息"
         key={form.key('message')}
         {...form.getInputProps('message')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -1436,20 +1436,20 @@ function DemoTextarea() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Textarea
-        label="Your message"
-        placeholder="Your message"
+        label="你的消息"
+        placeholder="你的消息"
         key={form.key('message')}
         {...form.getInputProps('message')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const textarea: MantineDemo = {
+export const textarea: UIDemo = {
   type: 'code',
   component: DemoTextarea,
   code: codeTextarea,
@@ -1470,15 +1470,15 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Autocomplete
-        label="Pick framework"
-        placeholder="Pick framework"
+        label="选择框架"
+        placeholder="选择框架"
         data={['React', 'Angular', 'Svelte', 'Vue']}
         key={form.key('framework')}
         {...form.getInputProps('framework')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -1496,21 +1496,21 @@ function DemoAutocomplete() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Autocomplete
-        label="Pick framework"
-        placeholder="Pick framework"
+        label="选择框架"
+        placeholder="选择框架"
         data={['React', 'Angular', 'Svelte', 'Vue']}
         key={form.key('framework')}
         {...form.getInputProps('framework')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const autocomplete: MantineDemo = {
+export const autocomplete: UIDemo = {
   type: 'code',
   component: DemoAutocomplete,
   code: codeAutocomplete,
@@ -1531,15 +1531,15 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <MultiSelect
-        label="Pick frameworks"
-        placeholder="Pick frameworks"
+        label="选择框架"
+        placeholder="选择框架"
         data={['React', 'Angular', 'Svelte', 'Vue']}
         key={form.key('frameworks')}
         {...form.getInputProps('frameworks')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -1557,21 +1557,21 @@ function DemoMultiSelect() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <MultiSelect
-        label="Pick frameworks"
-        placeholder="Pick frameworks"
+        label="选择框架"
+        placeholder="选择框架"
         data={['React', 'Angular', 'Svelte', 'Vue']}
         key={form.key('frameworks')}
         {...form.getInputProps('frameworks')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const multiSelect: MantineDemo = {
+export const multiSelect: UIDemo = {
   type: 'code',
   component: DemoMultiSelect,
   code: codeMultiSelect,
@@ -1592,15 +1592,15 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Select
-        label="Pick framework"
-        placeholder="Pick framework"
+        label="选择框架"
+        placeholder="选择框架"
         data={['React', 'Angular', 'Svelte', 'Vue']}
         key={form.key('framework')}
         {...form.getInputProps('framework')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -1618,21 +1618,21 @@ function DemoSelect() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Select
-        label="Pick framework"
-        placeholder="Pick framework"
+        label="选择框架"
+        placeholder="选择框架"
         data={['React', 'Angular', 'Svelte', 'Vue']}
         key={form.key('framework')}
         {...form.getInputProps('framework')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const select: MantineDemo = {
+export const select: UIDemo = {
   type: 'code',
   component: DemoSelect,
   code: codeSelect,
@@ -1653,14 +1653,14 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <TagsInput
-        label="Press Enter to submit a tag"
-        placeholder="Enter tag"
+        label="按 Enter 提交标签"
+        placeholder="输入标签"
         key={form.key('frameworks')}
         {...form.getInputProps('frameworks')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -1678,20 +1678,20 @@ function DemoTagsInput() {
   return (
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <TagsInput
-        label="Press Enter to submit a tag"
-        placeholder="Enter tag"
+        label="按 Enter 提交标签"
+        placeholder="输入标签"
         key={form.key('frameworks')}
         {...form.getInputProps('frameworks')}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const tagsInput: MantineDemo = {
+export const tagsInput: UIDemo = {
   type: 'code',
   component: DemoTagsInput,
   code: codeTagsInput,
@@ -1714,14 +1714,14 @@ function Demo() {
       <MaskInput
         mask="(999) 999-9999"
         placeholder="(___) ___-____"
-        label="Phone"
+        label="电话"
         key={form.key('phone')}
         defaultValue={form.getValues().phone}
         onChangeRaw={(raw) => form.setFieldValue('phone', raw, { forceUpdate: false })}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -1741,20 +1741,20 @@ function DemoMaskInput() {
       <MaskInput
         mask="(999) 999-9999"
         placeholder="(___) ___-____"
-        label="Phone"
+        label="电话"
         key={form.key('phone')}
         defaultValue={form.getValues().phone}
         onChangeRaw={(raw) => form.setFieldValue('phone', raw, { forceUpdate: false })}
       />
 
       <Group mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const maskInput: MantineDemo = {
+export const maskInput: UIDemo = {
   type: 'code',
   component: DemoMaskInput,
   code: codeMaskInput,

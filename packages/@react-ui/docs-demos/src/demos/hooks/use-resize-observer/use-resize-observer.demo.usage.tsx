@@ -1,6 +1,6 @@
 import { Group, Table } from '@react-ui/ui';
 import { useResizeObserver } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './use-resize-observer.demo.usage.module.css';
 
 const code = `
@@ -84,11 +84,11 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
-    { code: cssCode, language: 'scss', fileName: 'Demo.module.css' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
+    { code: cssCode, language: 'scss', fileName: '演示样式.module.css' },
   ],
   component: Demo,
 };

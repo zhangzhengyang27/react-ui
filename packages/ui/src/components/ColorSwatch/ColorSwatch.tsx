@@ -3,7 +3,7 @@ import {
     BoxProps,
     createVarsResolver,
     getRadius,
-    MantineRadius,
+    UIRadius,
     polymorphicFactory,
     PolymorphicFactory,
     rem,
@@ -27,7 +27,7 @@ export interface ColorSwatchProps extends BoxProps, StylesApiProps<ColorSwatchFa
     size?: React.CSSProperties['width']
 
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem. @default 1000 */
-    radius?: MantineRadius
+    radius?: UIRadius
 
     /** If set, the swatch has inner `box-shadow` @default true */
     withShadow?: boolean

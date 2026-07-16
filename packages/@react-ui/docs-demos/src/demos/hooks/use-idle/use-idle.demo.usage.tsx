@@ -1,6 +1,6 @@
 import { Badge } from '@react-ui/ui';
 import { useIdle } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Badge } from '@react-ui/ui';
@@ -17,7 +17,7 @@ function Demo() {
   return <Badge color={idle ? 'blue' : 'teal'}>Current state: {idle ? 'idle' : 'not idle'}</Badge>;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

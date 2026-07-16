@@ -1,6 +1,6 @@
 import { Button, Group } from '@react-ui/ui';
 import { createNotificationsStore, notifications, Notifications } from '@react-ui/notifications';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Group } from '@react-ui/ui';
@@ -20,8 +20,8 @@ function Demo() {
           onClick={() =>
             notifications.show(
               {
-                title: 'Low priority',
-                message: 'I am pushed to the queue when an urgent notification arrives',
+                title: '低优先级',
+                message: '当紧急通知到达时，我会被推到队列中',
                 autoClose: false,
                 priority: 0,
               },
@@ -37,8 +37,8 @@ function Demo() {
           onClick={() =>
             notifications.show(
               {
-                title: 'High priority',
-                message: 'I take the visible slot even when the limit is reached',
+                title: '高优先级',
+                message: '即使达到限制，我也会占据可见位置',
                 color: 'red',
                 autoClose: false,
                 priority: 10,
@@ -67,8 +67,8 @@ function Demo() {
           onClick={() =>
             notifications.show(
               {
-                title: 'Low priority',
-                message: 'I am pushed to the queue when an urgent notification arrives',
+                title: '低优先级',
+                message: '当紧急通知到达时，我会被推到队列中',
                 autoClose: false,
                 priority: 0,
               },
@@ -84,8 +84,8 @@ function Demo() {
           onClick={() =>
             notifications.show(
               {
-                title: 'High priority',
-                message: 'I take the visible slot even when the limit is reached',
+                title: '高优先级',
+                message: '即使达到限制，我也会占据可见位置',
                 color: 'red',
                 autoClose: false,
                 priority: 10,
@@ -101,7 +101,7 @@ function Demo() {
   );
 }
 
-export const priority: MantineDemo = {
+export const priority: UIDemo = {
   type: 'code',
   code,
   centered: true,

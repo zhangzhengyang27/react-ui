@@ -8,10 +8,10 @@ export interface Frontmatter {
   /** Page description */
   description?: string;
 
-  /** Component/hook group, for example `mantine-core` or `others` */
+  /** Component/hook group, for example `ui-core` or `others` */
   group?: string;
 
-  /** Component/hook category, used to divide components within groups, for example, `feedback` in `mantine-core` group */
+  /** Component/hook category, used to divide components within groups, for example, `feedback` in `ui-core` group */
   category?: string;
 
   /** Order of page in navbar */

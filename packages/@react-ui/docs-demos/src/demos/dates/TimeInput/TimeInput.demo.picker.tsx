@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { ClockIcon } from '@phosphor-icons/react';
 import { ActionIcon } from '@react-ui/ui';
 import { TimeInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useRef } from 'react';
@@ -20,7 +20,7 @@ function Demo() {
   );
 
   return (
-    <TimeInput label="Click icon to show browser picker" ref={ref} rightSection={pickerControl} />
+    <TimeInput label="点击图标显示浏览器选择器" ref={ref} rightSection={pickerControl} />
   );
 }
 `;
@@ -35,11 +35,11 @@ function Demo() {
   );
 
   return (
-    <TimeInput label="Click icon to show browser picker" ref={ref} rightSection={pickerControl} />
+    <TimeInput label="点击图标显示浏览器选择器" ref={ref} rightSection={pickerControl} />
   );
 }
 
-export const picker: MantineDemo = {
+export const picker: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 340,

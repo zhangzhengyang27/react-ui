@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { YearPicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -24,7 +24,7 @@ function Demo() {
   return <YearPicker value={value} onChange={setValue} minDate="2021-02-01" maxDate="2028-02-01" />;
 }
 
-export const minMax: MantineDemo = {
+export const minMax: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

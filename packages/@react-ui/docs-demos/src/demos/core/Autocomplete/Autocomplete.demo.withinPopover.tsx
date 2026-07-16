@@ -1,5 +1,5 @@
 import { Autocomplete, Button, Popover } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Popover, Button, Autocomplete } from '@react-ui/ui';
@@ -8,12 +8,12 @@ function Demo() {
   return (
     <Popover width={300} position="bottom" withArrow shadow="md">
       <Popover.Target>
-        <Button>Toggle popover</Button>
+        <Button>切换气泡卡片</Button>
       </Popover.Target>
       <Popover.Dropdown>
         <Autocomplete
-          label="Your favorite library"
-          placeholder="Pick value or enter anything"
+          label="你最喜欢的库"
+          placeholder="选择值或输入任意内容"
           data={['React', 'Angular', 'Vue', 'Svelte']}
           comboboxProps={{ withinPortal: false }}
         />
@@ -27,12 +27,12 @@ function Demo() {
   return (
     <Popover width={300} position="bottom" withArrow shadow="md">
       <Popover.Target>
-        <Button>Toggle popover</Button>
+        <Button>切换气泡卡片</Button>
       </Popover.Target>
       <Popover.Dropdown>
         <Autocomplete
-          label="Your favorite library"
-          placeholder="Pick value or enter anything"
+          label="你最喜欢的库"
+          placeholder="选择值或输入任意内容"
           data={['React', 'Angular', 'Vue', 'Svelte']}
           comboboxProps={{ withinPortal: false }}
         />
@@ -41,7 +41,7 @@ function Demo() {
   );
 }
 
-export const withinPopover: MantineDemo = {
+export const withinPopover: UIDemo = {
   type: 'code',
   code,
   centered: true,

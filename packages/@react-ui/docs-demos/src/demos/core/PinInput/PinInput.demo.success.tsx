@@ -1,5 +1,5 @@
 import { PinInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { PinInput } from '@react-ui/ui';
@@ -13,7 +13,7 @@ function Demo() {
   return <PinInput success />;
 }
 
-export const success: MantineDemo = {
+export const success: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,5 +1,5 @@
 import { createStyles } from '@react-ui/emotion';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { createStyles } from '@react-ui/emotion';
@@ -97,7 +97,7 @@ function Demo() {
   );
 }
 
-export const composition: MantineDemo = {
+export const composition: UIDemo = {
   type: 'code',
   component: Demo,
   code,

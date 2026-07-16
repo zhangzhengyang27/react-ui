@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { RingProgress, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -45,7 +45,7 @@ function Demo() {
   );
 }
 
-export const sectionsProps: MantineDemo = {
+export const sectionsProps: UIDemo = {
   type: 'code',
   component: Demo,
   code,

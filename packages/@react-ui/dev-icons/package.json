@@ -1,8 +1,8 @@
 {
   "name": "@react-ui/dev-icons",
   "version": "2.0.0",
-  "description": "Dev icons used on *.mantine.dev websites",
-  "homepage": "https://mantine.dev/",
+  "description": "Dev icons used on *.react-ui.dev websites",
+  "homepage": "https://react-ui.dev/",
   "license": "MIT",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "keywords": [
@@ -23,7 +23,7 @@
     }
   },
   "repository": {
-    "url": "https://github.com/mantinedev/mantine.git",
+    "url": "https://github.com/react-ui/react-ui.git",
     "type": "git",
     "directory": "packages/@react-ui/dev-icons"
   },

@@ -4,14 +4,14 @@ import {
   Box,
   Button,
   ButtonProps,
-  MantineProvider,
-  MantineTheme,
+  UIProvider,
+  UITheme,
   SegmentedControl,
 } from '@react-ui/ui';
 import { createStyles, EmotionHelpers } from './create-styles';
 import { emotionTransform } from './emotion-transform';
 import { Global } from './Global';
-import { MantineEmotionProvider, useEmotionCache } from './MantineEmotionProvider';
+import { UIEmotionProvider, useEmotionCache } from './UIEmotionProvider';
 
 export default { title: 'Emotion' };
 
@@ -26,9 +26,9 @@ function CacheConsumer() {
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>
-      <MantineEmotionProvider>
+      <UIEmotionProvider>
         <CacheConsumer />
-      </MantineEmotionProvider>
+      </UIEmotionProvider>
     </div>
   );
 }
@@ -36,7 +36,7 @@ export function Usage() {
 export function GlobalStyles() {
   return (
     <CacheProvider value={testCache}>
-      <MantineEmotionProvider>
+      <UIEmotionProvider>
         <Global styles={{ body: { background: 'silver' } }} />
         <Global
           styles={(theme) => ({
@@ -44,7 +44,7 @@ export function GlobalStyles() {
           })}
         />
         <p>GlobalStyles</p>
-      </MantineEmotionProvider>
+      </UIEmotionProvider>
     </CacheProvider>
   );
 }
@@ -85,9 +85,9 @@ function CreateStylesConsumer() {
 export function CreateStyles() {
   return (
     <CacheProvider value={testCache}>
-      <MantineEmotionProvider>
+      <UIEmotionProvider>
         <CreateStylesConsumer />
-      </MantineEmotionProvider>
+      </UIEmotionProvider>
     </CacheProvider>
   );
 }
@@ -95,8 +95,8 @@ export function CreateStyles() {
 export function EmotionSxTransform() {
   return (
     <CacheProvider value={testCache}>
-      <MantineProvider stylesTransform={emotionTransform}>
-        <MantineEmotionProvider>
+      <UIProvider stylesTransform={emotionTransform}>
+        <UIEmotionProvider>
           <Box<any>
             sx={(theme: any) => ({
               color: theme.colors.blue[7],
@@ -107,8 +107,8 @@ export function EmotionSxTransform() {
           </Box>
 
           <SegmentedControl data={['React', 'Angular', 'Vue']} />
-        </MantineEmotionProvider>
-      </MantineProvider>
+        </UIEmotionProvider>
+      </UIProvider>
     </CacheProvider>
   );
 }
@@ -116,12 +116,12 @@ export function EmotionSxTransform() {
 export function EmotionStylesTransform() {
   return (
     <CacheProvider value={testCache}>
-      <MantineProvider
+      <UIProvider
         stylesTransform={emotionTransform}
         theme={{
           components: {
             Button: {
-              styles: (theme: MantineTheme, props: ButtonProps, u: EmotionHelpers) => ({
+              styles: (theme: UITheme, props: ButtonProps, u: EmotionHelpers) => ({
                 label: {
                   backgroundColor: theme.colors[props.color || 'cyan'][5],
 
@@ -139,7 +139,7 @@ export function EmotionStylesTransform() {
           },
         }}
       >
-        <MantineEmotionProvider>
+        <UIEmotionProvider>
           <Button
             color="orange"
             styles={(theme) => ({
@@ -153,8 +153,8 @@ export function EmotionStylesTransform() {
           >
             Button
           </Button>
-        </MantineEmotionProvider>
-      </MantineProvider>
+        </UIEmotionProvider>
+      </UIProvider>
     </CacheProvider>
   );
 }

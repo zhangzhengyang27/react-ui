@@ -1,12 +1,12 @@
 import { describe, expect, it, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Menu } from './Menu'
 
 describe('Menu', () => {
     it('renders target and dropdown when opened', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Menu opened onChange={vi.fn()}>
                     <Menu.Target>
                         <button type="button">Toggle menu</button>
@@ -18,7 +18,7 @@ describe('Menu', () => {
                         <Menu.Item color="red">Delete</Menu.Item>
                     </Menu.Dropdown>
                 </Menu>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('Toggle menu')).toBeInTheDocument()
@@ -29,7 +29,7 @@ describe('Menu', () => {
 
     it('does not render dropdown when closed', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Menu opened={false} onChange={vi.fn()}>
                     <Menu.Target>
                         <button type="button">Toggle menu</button>
@@ -38,7 +38,7 @@ describe('Menu', () => {
                         <Menu.Item>Settings</Menu.Item>
                     </Menu.Dropdown>
                 </Menu>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('Toggle menu')).toBeInTheDocument()
@@ -48,7 +48,7 @@ describe('Menu', () => {
     it('calls onChange when target is clicked in uncontrolled mode', () => {
         const onChange = vi.fn()
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Menu onChange={onChange}>
                     <Menu.Target>
                         <button type="button">Toggle menu</button>
@@ -57,7 +57,7 @@ describe('Menu', () => {
                         <Menu.Item>Settings</Menu.Item>
                     </Menu.Dropdown>
                 </Menu>
-            </MantineProvider>
+            </UIProvider>
         )
 
         screen.getByText('Toggle menu').click()
@@ -66,7 +66,7 @@ describe('Menu', () => {
 
     it('renders disabled item', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Menu opened onChange={vi.fn()}>
                     <Menu.Target>
                         <button type="button">Toggle menu</button>
@@ -75,7 +75,7 @@ describe('Menu', () => {
                         <Menu.Item disabled>Disabled item</Menu.Item>
                     </Menu.Dropdown>
                 </Menu>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByRole('menuitem')).toBeDisabled()

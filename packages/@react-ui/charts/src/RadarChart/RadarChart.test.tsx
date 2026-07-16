@@ -1,4 +1,4 @@
-import { autoPatchWarn, tests } from '@mantine-tests/core';
+import { autoPatchWarn, tests } from '@react-ui/tests';
 import { RadarChart, RadarChartProps, RadarChartStylesNames } from './RadarChart';
 
 const defaultProps: RadarChartProps = {

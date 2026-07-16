@@ -3,13 +3,13 @@ import type { StylesApiData } from '../types';
 
 export const HeatmapStylesApi: StylesApiData<HeatmapFactory> = {
   selectors: {
-    root: 'Root element',
-    weekdayLabel: 'Weekday text element',
-    monthLabel: 'Month text element',
-    rect: 'Rect that represents date',
-    legend: 'Legend group element',
+    root: '根元素',
+    weekdayLabel: 'Weekday text 元素',
+    monthLabel: 'Month text 元素',
+    rect: '表示日期的矩形',
+    legend: 'Legend group 元素',
     legendLabel: 'Legend text label (Less/More)',
-    legendRect: 'Legend color rect',
+    legendRect: '图例颜色矩形',
   },
 
   vars: {},

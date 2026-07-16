@@ -3,7 +3,7 @@ import type { StylesApiData } from '../types';
 
 export const SpoilerStylesApi: StylesApiData<SpoilerFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
     content: 'Wraps content to set max-height and transition',
     control: 'Show/hide content control',
   },

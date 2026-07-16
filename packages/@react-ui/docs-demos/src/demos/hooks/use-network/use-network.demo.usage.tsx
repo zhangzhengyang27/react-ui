@@ -1,6 +1,6 @@
 import { Table, Text } from '@react-ui/ui';
 import { useNetwork } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Text, Table } from '@react-ui/ui';
@@ -13,14 +13,14 @@ function Demo() {
     <Table maw={300} layout="fixed" mx="auto">
       <Table.Thead>
         <Table.Tr>
-          <Table.Th>Property</Table.Th>
-          <Table.Th>Value</Table.Th>
+          <Table.Th>属性</Table.Th>
+          <Table.Th>值</Table.Th>
         </Table.Tr>
       </Table.Thead>
 
       <Table.Tbody>
         <Table.Tr>
-          <Table.Td>Online</Table.Td>
+          <Table.Td>在线</Table.Td>
           <Table.Td>
             <Text size="sm" c={networkStatus.online ? 'teal.6' : 'red.6'}>
               {networkStatus.online ? 'Online' : 'Offline'}
@@ -34,17 +34,17 @@ function Demo() {
         </Table.Tr>
 
         <Table.Tr>
-          <Table.Td>downlink</Table.Td>
+          <Table.Td>下行链路</Table.Td>
           <Table.Td>{networkStatus.downlink}</Table.Td>
         </Table.Tr>
 
         <Table.Tr>
-          <Table.Td>effectiveType</Table.Td>
+          <Table.Td>有效类型</Table.Td>
           <Table.Td>{networkStatus.effectiveType}</Table.Td>
         </Table.Tr>
 
         <Table.Tr>
-          <Table.Td>saveData</Table.Td>
+          <Table.Td>节省数据</Table.Td>
           <Table.Td>
             <Text size="sm" c={networkStatus.saveData ? 'teal.6' : 'red.6'}>
               {networkStatus.saveData ? 'true' : 'false'}
@@ -64,14 +64,14 @@ function Demo() {
     <Table maw={300} layout="fixed" mx="auto">
       <Table.Thead>
         <Table.Tr>
-          <Table.Th>Property</Table.Th>
-          <Table.Th>Value</Table.Th>
+          <Table.Th>属性</Table.Th>
+          <Table.Th>值</Table.Th>
         </Table.Tr>
       </Table.Thead>
 
       <Table.Tbody>
         <Table.Tr>
-          <Table.Td>Online</Table.Td>
+          <Table.Td>在线</Table.Td>
           <Table.Td>
             <Text size="sm" c={networkStatus.online ? 'teal.6' : 'red.6'}>
               {networkStatus.online ? 'Online' : 'Offline'}
@@ -85,17 +85,17 @@ function Demo() {
         </Table.Tr>
 
         <Table.Tr>
-          <Table.Td>downlink</Table.Td>
+          <Table.Td>下行链路</Table.Td>
           <Table.Td>{networkStatus.downlink}</Table.Td>
         </Table.Tr>
 
         <Table.Tr>
-          <Table.Td>effectiveType</Table.Td>
+          <Table.Td>有效类型</Table.Td>
           <Table.Td>{networkStatus.effectiveType}</Table.Td>
         </Table.Tr>
 
         <Table.Tr>
-          <Table.Td>saveData</Table.Td>
+          <Table.Td>节省数据</Table.Td>
           <Table.Td>
             <Text size="sm" c={networkStatus.saveData ? 'teal.6' : 'red.6'}>
               {networkStatus.saveData ? 'true' : 'false'}
@@ -107,7 +107,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

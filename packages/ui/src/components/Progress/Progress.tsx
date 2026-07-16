@@ -7,11 +7,11 @@ import {
     getRadius,
     getSize,
     getThemeColor,
-    MantineColor,
-    MantineRadius,
-    MantineSize,
+    UIColor,
+    UIRadius,
+    UISize,
     StylesApiProps,
-    useMantineTheme,
+    useUITheme,
     useProps,
     useStyles
 } from '../../core'
@@ -28,7 +28,7 @@ export type ProgressCssVariables = {
 
 export interface ProgressSection {
     value: number
-    color?: MantineColor
+    color?: UIColor
     label?: React.ReactNode
     tooltip?: React.ReactNode
 }
@@ -38,13 +38,13 @@ export interface ProgressProps extends BoxProps, StylesApiProps<ProgressFactory>
     value?: number
 
     /** Progress color, key of theme.colors or any valid CSS color */
-    color?: MantineColor
+    color?: UIColor
 
-    /** Key of theme.radius or any valid CSS value @default theme.defaultRadius */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 @default theme.defaultRadius */
+    radius?: UIRadius
 
     /** Controls progress height */
-    size?: MantineSize
+    size?: UISize
 
     /** If true, the progress bar will have striped background @default false */
     striped?: boolean
@@ -58,7 +58,7 @@ export interface ProgressProps extends BoxProps, StylesApiProps<ProgressFactory>
     /** Replaces value/color with multiple sections */
     sections?: ProgressSection[]
 
-    /** Label displayed inside the progress bar */
+    /** 内部显示的标签 the progress bar */
     label?: React.ReactNode
 }
 
@@ -111,7 +111,7 @@ export const Progress = factory<ProgressFactory>((_props, ref) => {
         ...others
     } = props
 
-    const theme = useMantineTheme()
+    const theme = useUITheme()
     const getStyles = useStyles<ProgressFactory>({
         name: 'Progress',
         props,

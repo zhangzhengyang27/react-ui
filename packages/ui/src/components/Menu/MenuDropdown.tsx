@@ -71,4 +71,4 @@ export const MenuDropdown = factory<MenuDropdownFactory>((props, ref) => {
 })
 
 MenuDropdown.classes = classes
-MenuDropdown.displayName = '@mantine/core/MenuDropdown'
+MenuDropdown.displayName = '@react-ui/ui/MenuDropdown'

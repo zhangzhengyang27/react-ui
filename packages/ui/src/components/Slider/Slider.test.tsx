@@ -1,14 +1,14 @@
 import { describe, expect, it, vi } from 'vitest'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Slider } from './Slider'
 
 describe('Slider', () => {
     it('renders slider with default value', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Slider defaultValue={40} data-testid="slider" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         const input = screen.getByTestId('slider').querySelector('input') as HTMLInputElement
@@ -18,9 +18,9 @@ describe('Slider', () => {
     it('calls onChange when value changes', () => {
         const onChange = vi.fn()
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Slider defaultValue={0} onChange={onChange} data-testid="slider" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         const input = screen.getByTestId('slider').querySelector('input') as HTMLInputElement
@@ -30,9 +30,9 @@ describe('Slider', () => {
 
     it('renders disabled slider', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Slider disabled data-testid="slider" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByTestId('slider')).toHaveAttribute('data-disabled')
@@ -40,9 +40,9 @@ describe('Slider', () => {
 
     it('formats label value', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Slider value={50} label={v => `${v}%`} labelAlwaysOn data-testid="slider" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('50%')).toBeInTheDocument()

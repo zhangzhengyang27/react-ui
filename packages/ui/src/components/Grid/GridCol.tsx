@@ -55,4 +55,4 @@ export const GridCol = factory<GridColFactory>((_props, ref) => {
     )
 })
 
-GridCol.displayName = '@mantine/core/GridCol'
+GridCol.displayName = '@react-ui/ui/GridCol'

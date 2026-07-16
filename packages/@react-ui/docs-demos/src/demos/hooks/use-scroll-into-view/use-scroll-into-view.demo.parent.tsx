@@ -1,6 +1,6 @@
 import { Box, Button, Group, Paper, Text } from '@react-ui/ui';
 import { useScrollIntoView } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useScrollIntoView } from '@react-ui/hooks';
@@ -24,11 +24,11 @@ function Demo() {
               width: '100%',
             }}
           >
-            <Text>Scroll me into view</Text>
+            <Text>把我滚动到视图</Text>
           </Paper>
         </Box>
       </Paper>
-      <Button onClick={() => scrollIntoView()}>Scroll to target</Button>
+      <Button onClick={() => scrollIntoView()}>滚动到目标</Button>
     </Group>
   );
 }
@@ -52,16 +52,16 @@ function Demo() {
               width: '100%',
             }}
           >
-            <Text>Scroll me into view</Text>
+            <Text>把我滚动到视图</Text>
           </Paper>
         </Box>
       </Paper>
-      <Button onClick={() => scrollIntoView()}>Scroll to target</Button>
+      <Button onClick={() => scrollIntoView()}>滚动到目标</Button>
     </Group>
   );
 }
 
-export const parent: MantineDemo = {
+export const parent: UIDemo = {
   type: 'code',
   code,
   component: Demo,

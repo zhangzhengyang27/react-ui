@@ -1,5 +1,5 @@
 import { createStyles } from '@react-ui/emotion';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { createStyles } from '@react-ui/emotion';
@@ -58,7 +58,7 @@ function Demo() {
 
   return (
     <div className={classes.wrapper}>
-      <div className={classes.child}>createStyles demo</div>
+      <div className={classes.child}>createStyles 演示</div>
     </div>
   );
 }
@@ -118,12 +118,12 @@ function Demo() {
 
   return (
     <div className={classes.wrapper}>
-      <div className={classes.child}>createStyles demo</div>
+      <div className={classes.child}>createStyles 演示</div>
     </div>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

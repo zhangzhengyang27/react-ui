@@ -1,7 +1,7 @@
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { Link, RichTextEditor } from '@react-ui/tiptap';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './TipTap.demo.typographyStyles.module.css';
 
 const cssCode = `.root {
@@ -30,8 +30,8 @@ function Demo() {
     shouldRerenderOnTransaction: true,
     extensions: [StarterKit.configure({ link: false }), Link],
     content: \`
-    <h2>Heading 2</h2>
-    <p>Paragraph with <a href="https://mantine.dev">link</a></p>
+    <h2>标题 2</h2>
+    <p>带 <a href="#">链接</a> 的段落</p>
     \`,
   });
 
@@ -42,7 +42,7 @@ function Demo() {
   );
 }
 
-export const typographyStyles: MantineDemo = {
+export const typographyStyles: UIDemo = {
   type: 'code',
   component: Demo,
   code,
@@ -55,8 +55,8 @@ function Demo() {
     shouldRerenderOnTransaction: true,
     extensions: [StarterKit.configure({ link: false }), Link],
     content: `
-    <h2>Heading 2</h2>
-    <p>Paragraph with <a href="https://mantine.dev">link</a></p>
+    <h2>标题 2</h2>
+    <p>带 <a href="#">链接</a> 的段落</p>
     `,
   });
 
@@ -67,11 +67,11 @@ function Demo() {
   );
 }
 
-export const typographyStyles: MantineDemo = {
+export const typographyStyles: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
   ],
 };

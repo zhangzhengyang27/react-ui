@@ -1,6 +1,6 @@
 import { Text } from '@react-ui/ui';
 import { Dropzone, IMAGE_MIME_TYPE } from '@react-ui/dropzone';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Dropzone.demo.stylesApi.module.css';
 
 const cssCode = `
@@ -33,7 +33,7 @@ import classes from './Demo.module.css';
 function Demo() {
   return (
     <Dropzone onDrop={() => {}} accept={IMAGE_MIME_TYPE} className={classes.root}>
-      <Text ta="center">Drop images here</Text>
+      <Text ta="center">将图片拖到这里</Text>
     </Dropzone>
   );
 }
@@ -42,16 +42,16 @@ function Demo() {
 function Demo() {
   return (
     <Dropzone onDrop={() => {}} accept={IMAGE_MIME_TYPE} className={classes.root}>
-      <Text ta="center">Drop images here</Text>
+      <Text ta="center">将图片拖到这里</Text>
     </Dropzone>
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
   ],
 };

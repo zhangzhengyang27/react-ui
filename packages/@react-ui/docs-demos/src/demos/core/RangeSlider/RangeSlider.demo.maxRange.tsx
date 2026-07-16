@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { RangeSlider, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { RangeSlider, Text } from '@react-ui/ui';
@@ -12,7 +12,7 @@ function Demo() {
   return (
     <>
       <Text size="sm" mb="xs">
-        Maximum range: 50 (selection cannot be wider than 50 units)
+        最大范围：50（选择范围不能超过 50 个单位）
       </Text>
       <RangeSlider
         value={value}
@@ -20,7 +20,7 @@ function Demo() {
         maxRange={50}
       />
       <Text size="sm" mt="xs">
-        Value: [{value[0]}, {value[1]}] - Range: {value[1] - value[0]}
+        值：[{value[0]}, {value[1]}] - 范围：{value[1] - value[0]}
       </Text>
     </>
   );
@@ -33,17 +33,17 @@ function Demo() {
   return (
     <>
       <Text size="sm" mb="xs">
-        Maximum range: 50 (selection cannot be wider than 50 units)
+        最大范围：50（选择范围不能超过 50 个单位）
       </Text>
       <RangeSlider value={value} onChange={setValue} maxRange={50} />
       <Text size="sm" mt="xs">
-        Value: [{value[0]}, {value[1]}] - Range: {value[1] - value[0]}
+        值：[{value[0]}, {value[1]}] - 范围：{value[1] - value[0]}
       </Text>
     </>
   );
 }
 
-export const maxRange: MantineDemo = {
+export const maxRange: UIDemo = {
   type: 'code',
   component: Demo,
   code,

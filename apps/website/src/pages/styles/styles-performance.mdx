@@ -62,9 +62,9 @@ import { TextInput } from '@react-ui/ui';
 function StyleProps() {
   return (
     <>
-      <TextInput label="Input 1" />
-      <TextInput label="Input 2" mt={{ base: 10, md: 20 }} />
-      <TextInput label="Input 3" mt={{ base: 10, md: 20 }} />
+      <TextInput label="输入 1" />
+      <TextInput label="输入 2" mt={{ base: 10, md: 20 }} />
+      <TextInput label="输入 3" mt={{ base: 10, md: 20 }} />
     </>
   );
 }
@@ -88,19 +88,19 @@ function StylePropsArray() {
 
 ### 去重响应式 style props
 
-如果你有许多组件使用相同的响应式 style props，可以在 [MantineProvider](/theming/mantine-provider) 上启用
+如果你有许多组件使用相同的响应式 style props，可以在 [UIProvider](/theming/ui-provider) 上启用
 `deduplicateInlineStyles`，让具有相同响应式样式的组件自动共享同一个 `<style />` 标签。
 它利用 React 19 的样式提升（style hoisting）机制，对样式进行去重并提升到 `<head />`：
 
 ```tsx
-import { MantineProvider } from '@react-ui/ui';
+import { UIProvider } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <MantineProvider deduplicateInlineStyles>
+    <UIProvider deduplicateInlineStyles>
       {/* Components with the same responsive style props
           will now share a single <style /> tag */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```

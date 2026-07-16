@@ -1,19 +1,19 @@
 import { NumberInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NumberInput } from '@react-ui/ui';
 
 function Demo() {
-  return <NumberInput placeholder="Age" loading />;
+  return <NumberInput placeholder="年龄" loading />;
 }
 `;
 
 function Demo() {
-  return <NumberInput placeholder="Age" loading />;
+  return <NumberInput placeholder="年龄" loading />;
 }
 
-export const loading: MantineDemo = {
+export const loading: UIDemo = {
   type: 'code',
   component: Demo,
   code,

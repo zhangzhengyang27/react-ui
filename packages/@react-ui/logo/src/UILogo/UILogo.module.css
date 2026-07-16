@@ -1,0 +1,3 @@
+.logo {
+  color: light-dark(var(--ui-color-black), var(--ui-color-white));
+}

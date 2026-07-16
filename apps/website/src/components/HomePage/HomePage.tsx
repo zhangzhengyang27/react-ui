@@ -2,10 +2,12 @@ import { Shell } from '../Shell'
 import { HomePageCombobox } from './HomePageCombobox/HomePageCombobox'
 import { HomePageComponents } from './HomePageComponents/HomePageComponents'
 import { HomePageDarkColorScheme } from './HomePageDarkColorScheme/HomePageDarkColorScheme'
+import { HomePageGetStarted } from './HomePageGetStarted/HomePageGetStarted'
 import { HomePageHooks } from './HomePageHooks/HomePageHooks'
 import { HomePageJumbotron } from './HomePageJumbotron/HomePageJumbotron'
 import { HomePageLLM } from './HomePageLLM/HomePageLLM'
 import { HomePageSponsors } from './HomePageSponsors/HomePageSponsors'
+import { HomePageStats } from './HomePageStats/HomePageStats'
 import { HomePageStyles } from './HomePageStyles/HomePageStyles'
 import classes from './HomePage.module.css'
 
@@ -14,13 +16,17 @@ export function HomePage() {
         <Shell withNavbar={false} fluid withNav={false}>
             <div className={classes.root}>
                 <HomePageJumbotron />
-                <HomePageSponsors />
-                <HomePageLLM />
+                <HomePageStats />
                 <HomePageComponents />
                 <HomePageHooks />
+                <HomePageCombobox />
                 <HomePageStyles />
                 <HomePageDarkColorScheme />
-                <HomePageCombobox />
+                <HomePageLLM />
+                <HomePageGetStarted />
+                <footer>
+                    <HomePageSponsors />
+                </footer>
             </div>
         </Shell>
     )

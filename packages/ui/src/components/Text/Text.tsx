@@ -5,9 +5,9 @@ import {
     getFontSize,
     getGradient,
     getLineHeight,
-    MantineFontSize,
-    MantineGradient,
-    MantineLineHeight,
+    UIFontSize,
+    UIGradient,
+    UILineHeight,
     polymorphicFactory,
     PolymorphicFactory,
     StylesApiProps,
@@ -38,7 +38,7 @@ export interface TextProps extends BoxProps, StylesApiProps<TextFactory> {
     __staticSelector?: string
 
     /** Controls font-size and line-height @default 'md' */
-    size?: MantineFontSize | MantineLineHeight
+    size?: UIFontSize | UILineHeight
 
     /** Number of lines after which Text will be truncated */
     lineClamp?: number
@@ -53,7 +53,7 @@ export interface TextProps extends BoxProps, StylesApiProps<TextFactory> {
     inherit?: boolean
 
     /** Gradient configuration, ignored when variant is not gradient @default theme.defaultGradient */
-    gradient?: MantineGradient
+    gradient?: UIGradient
 
     /** Shorthand for component="span" */
     span?: boolean
@@ -86,7 +86,7 @@ const varsResolver = createVarsResolver<TextFactory>((theme, { variant, lineClam
 }))
 
 /**
- * 文本组件。对齐 mantine Text（polymorphicFactory + useStyles + varsResolver + CSS module）。
+ * 文本组件。对齐 ui Text（polymorphicFactory + useStyles + varsResolver + CSS module）。
  * 支持 size/lineClamp/truncate/inline/inherit/gradient/span/textWrap。
  */
 export const Text = polymorphicFactory<TextFactory>((_props, _ref) => {

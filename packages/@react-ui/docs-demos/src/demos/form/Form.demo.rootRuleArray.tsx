@@ -2,7 +2,7 @@ import { TrashIcon } from '@phosphor-icons/react';
 import { ActionIcon, Button, Group, Switch, Text, TextInput } from '@react-ui/ui';
 import { formRootRule, isNotEmpty, useForm } from '@react-ui/form';
 import { randomId } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TrashIcon } from '@phosphor-icons/react';
@@ -14,12 +14,12 @@ function Demo() {
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: {
-      employees: [{ name: '', active: false, key: randomId() }],
+      employees: [{ name: '', active: false, key: 'employee-1' }],
     },
     validate: {
       employees: {
-        [formRootRule]: isNotEmpty('AtIcon least one employee is required'),
-        name: isNotEmpty('Name is required'),
+        [formRootRule]: isNotEmpty('至少需要一名员工'),
+        name: isNotEmpty('姓名必填'),
       },
     },
   });
@@ -27,14 +27,14 @@ function Demo() {
   const fields = form.getValues().employees.map((item, index) => (
     <Group key={item.key} mt="xs">
       <TextInput
-        placeholder="John Doe"
+        placeholder="张三"
         withAsterisk
         style={{ flex: 1 }}
         key={form.key(\`employees.\${index}.name\`)}
         {...form.getInputProps(\`employees.\${index}.name\`)}
       />
       <Switch
-        label="Active"
+        label="激活"
         key={form.key(\`employees.\${index}.active\`)}
         {...form.getInputProps(\`employees.\${index}.active\`, { type: 'checkbox' })}
       />
@@ -49,10 +49,10 @@ function Demo() {
       {fields.length > 0 ? (
         <Group mb="xs">
           <Text fw={500} size="sm" style={{ flex: 1 }}>
-            Name
+            姓名
           </Text>
           <Text fw={500} size="sm" pr={90}>
-            Status
+            状态
           </Text>
         </Group>
       ) : (
@@ -79,7 +79,7 @@ function Demo() {
         >
           Add employee
         </Button>
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -90,12 +90,12 @@ function Demo() {
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: {
-      employees: [{ name: '', active: false, key: randomId() }],
+      employees: [{ name: '', active: false, key: 'employee-1' }],
     },
     validate: {
       employees: {
-        [formRootRule]: isNotEmpty('AtIcon least one employee is required'),
-        name: isNotEmpty('Name is required'),
+        [formRootRule]: isNotEmpty('至少需要一名员工'),
+        name: isNotEmpty('姓名必填'),
       },
     },
   });
@@ -103,14 +103,14 @@ function Demo() {
   const fields = form.getValues().employees.map((item, index) => (
     <Group key={item.key} mt="xs">
       <TextInput
-        placeholder="John Doe"
+        placeholder="张三"
         withAsterisk
         style={{ flex: 1 }}
         key={form.key(`employees.${index}.name`)}
         {...form.getInputProps(`employees.${index}.name`)}
       />
       <Switch
-        label="Active"
+        label="激活"
         key={form.key(`employees.${index}.active`)}
         {...form.getInputProps(`employees.${index}.active`, { type: 'checkbox' })}
       />
@@ -125,10 +125,10 @@ function Demo() {
       {fields.length > 0 ? (
         <Group mb="xs">
           <Text fw={500} size="sm" style={{ flex: 1 }}>
-            Name
+            姓名
           </Text>
           <Text fw={500} size="sm" pr={90}>
-            Status
+            状态
           </Text>
         </Group>
       ) : (
@@ -155,13 +155,13 @@ function Demo() {
         >
           Add employee
         </Button>
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const rootRuleArray: MantineDemo = {
+export const rootRuleArray: UIDemo = {
   type: 'code',
   component: Demo,
   code,

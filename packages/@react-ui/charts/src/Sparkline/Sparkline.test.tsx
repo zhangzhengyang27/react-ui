@@ -1,4 +1,4 @@
-import { autoPatchWarn, tests } from '@mantine-tests/core';
+import { autoPatchWarn, tests } from '@react-ui/tests';
 import { Sparkline, SparklineProps, SparklineStylesNames } from './Sparkline';
 
 const defaultProps: SparklineProps = {

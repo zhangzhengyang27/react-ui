@@ -5,7 +5,7 @@ import { MDX_DATA } from './mdx-data';
 function sortCategoriesPages(categories: MdxPagesCategory[]) {
   return categories.map((category) => ({
     ...category,
-    pages: category.pages.sort((a, b) => a.title.localeCompare(b.title)),
+    pages: category.pages.sort((a, b) => a.title.localeCompare(b.title, 'en')),
   }));
 }
 
@@ -50,7 +50,7 @@ const THEMING_PAGES_GROUP: MdxPagesCategory[] = [
   {
     category: 'Theming',
     pages: [
-      MDX_DATA.MantineProvider,
+      MDX_DATA.UIProvider,
       MDX_DATA.ThemeObject,
       MDX_DATA.Colors,
       MDX_DATA.ColorSchemes,
@@ -62,7 +62,7 @@ const THEMING_PAGES_GROUP: MdxPagesCategory[] = [
     category: 'Styling',
     pages: [
       MDX_DATA.StylesOverview,
-      MDX_DATA.MantineStyles,
+      MDX_DATA.UIStyles,
       MDX_DATA.CSSFilesList,
       MDX_DATA.CSSModules,
       MDX_DATA.PostCSSPreset,

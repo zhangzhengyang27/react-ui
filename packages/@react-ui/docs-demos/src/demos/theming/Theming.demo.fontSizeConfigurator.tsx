@@ -1,5 +1,5 @@
 import { Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = (props: any) => `
 import { Text } from '@react-ui/ui';
@@ -27,7 +27,7 @@ function Wrapper(props: any) {
   );
 }
 
-export const fontSizeConfigurator: MantineDemo = {
+export const fontSizeConfigurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

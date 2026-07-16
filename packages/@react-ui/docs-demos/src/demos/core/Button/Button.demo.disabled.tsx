@@ -1,19 +1,19 @@
 import { Button } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button } from '@react-ui/ui';
 
 function Demo() {
-  return <Button disabled>Disabled button</Button>;
+  return <Button disabled>禁用按钮</Button>;
 }
 `;
 
 function Demo() {
-  return <Button disabled>Disabled button</Button>;
+  return <Button disabled>禁用按钮</Button>;
 }
 
-export const disabled: MantineDemo = {
+export const disabled: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

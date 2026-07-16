@@ -1,6 +1,6 @@
 import { Box, Button, Group, Portal, Text } from '@react-ui/ui';
 import { useDisclosure, useHeadroom } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Box, Button, Group, Portal, Text } from '@react-ui/ui';
@@ -36,7 +36,7 @@ function Demo() {
       )}
 
       <Button onClick={handlers.toggle} variant="default">
-        {showHeader ? 'Hide' : 'Show'} header
+        {showHeader ? '隐藏' : '显示'} 头部
       </Button>
     </>
   );
@@ -73,13 +73,13 @@ function Demo() {
       )}
 
       <Button onClick={handlers.toggle} variant="default">
-        {showHeader ? 'Hide' : 'Show'} header
+        {showHeader ? '隐藏' : '显示'} 头部
       </Button>
     </>
   );
 }
 
-export const scrollProgress: MantineDemo = {
+export const scrollProgress: UIDemo = {
   type: 'code',
   code,
   component: Demo,

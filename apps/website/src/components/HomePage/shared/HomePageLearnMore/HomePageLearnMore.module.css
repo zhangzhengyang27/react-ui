@@ -1,13 +1,27 @@
 .root {
   width: fit-content;
-  display: block;
-  color: light-dark(var(--ui-color-blue-7), var(--ui-color-blue-5));
-  font-size: var(--ui-font-size-lg);
-  margin-top: var(--ui-spacing-lg);
+  display: inline-flex;
+  align-items: center;
+  color: var(--hp-accent, light-dark(var(--ui-color-blue-7), var(--ui-color-blue-5)));
+  font-size: var(--ui-font-size-md);
+  font-weight: 500;
+  margin-top: var(--ui-spacing-xl);
+  text-decoration: none;
+  position: relative;
 }
 
 .inner {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: var(--ui-spacing-xs);
+  padding-bottom: 2px;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 200ms ease;
+}
+
+.root:hover .inner {
+  background-size: 100% 1px;
 }

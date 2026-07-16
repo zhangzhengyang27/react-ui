@@ -6,7 +6,7 @@
   border-top: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-4));
   padding-top: var(--ui-spacing-lg);
 
-  @mixin smaller-than em(700px) {
+  @media (max-width: 43.75em) {
     flex-direction: column;
     align-items: stretch;
     gap: var(--ui-spacing-md);
@@ -24,7 +24,7 @@
   color: var(--ui-color-bright);
   gap: var(--ui-spacing-xs);
 
-  @mixin hover {
+  &:hover {
     background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-5));
   }
 }
@@ -38,7 +38,7 @@
   width: 18px;
   height: 18px;
 
-  @mixin rtl {
+  [dir='rtl'] & {
     transform: rotate(180deg);
   }
 }

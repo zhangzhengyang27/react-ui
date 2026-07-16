@@ -1,9 +1,9 @@
-import { createTheme, Input, MantineThemeProvider, NativeSelect, TextInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { createTheme, Input, UIThemeProvider, NativeSelect, TextInput } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Input.demo.sharedStyles.module.css';
 
 const code = `
-import { TextInput, NativeSelect, MantineProvider, createTheme, Input } from '@react-ui/ui';
+import { TextInput, NativeSelect, UIProvider, createTheme, Input } from '@react-ui/ui';
 import classes from './Demo.module.css';
 
 const theme = createTheme({
@@ -24,15 +24,15 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
-      <TextInput label="Text input" placeholder="Text input" />
+    <UIProvider theme={theme}>
+      <TextInput label="文本输入" placeholder="文本输入" />
 
       <NativeSelect
         mt="md"
-        label="Native select"
+        label="原生选择"
         data={['React', 'Angular', 'Vue', 'Svelte']}
       />
-    </MantineProvider>
+    </UIProvider>
   );
 }
 `;
@@ -65,20 +65,20 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
-      <TextInput label="Text input" placeholder="Text input" />
-      <NativeSelect mt="md" label="Native select" data={['React', 'Angular', 'Vue', 'Svelte']} />
-    </MantineThemeProvider>
+    <UIThemeProvider theme={theme}>
+      <TextInput label="文本输入" placeholder="文本输入" />
+      <NativeSelect mt="md" label="原生选择" data={['React', 'Angular', 'Vue', 'Svelte']} />
+    </UIThemeProvider>
   );
 }
 
-export const sharedStyles: MantineDemo = {
+export const sharedStyles: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   maxWidth: 340,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
   ],
 };

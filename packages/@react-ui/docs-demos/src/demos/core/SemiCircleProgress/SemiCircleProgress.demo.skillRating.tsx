@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Group, SemiCircleProgress, Stack, Text, UnstyledButton } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { SemiCircleProgress, Stack, Text } from '@react-ui/ui';
@@ -92,7 +92,7 @@ function Demo() {
   );
 }
 
-export const skillRating: MantineDemo = {
+export const skillRating: UIDemo = {
   type: 'code',
   component: Demo,
   code,

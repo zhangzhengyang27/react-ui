@@ -1,5 +1,5 @@
 import { Carousel } from '@react-ui/carousel';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { Slides } from './_slides';
 import classes from './Carousel.demo.indicatorStyles.module.css';
 
@@ -38,12 +38,12 @@ function Demo() {
   );
 }
 
-export const indicatorStyles: MantineDemo = {
+export const indicatorStyles: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
   ],
   centered: true,
   maxWidth: 320,

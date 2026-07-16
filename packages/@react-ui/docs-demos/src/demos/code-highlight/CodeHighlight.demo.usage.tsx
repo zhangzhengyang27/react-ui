@@ -1,5 +1,5 @@
 import { CodeHighlight } from '@react-ui/code-highlight';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const exampleCode = `
 type FilterPropsRes<T extends Record<string, any>> = {
@@ -30,7 +30,7 @@ function Demo() {
   return <CodeHighlight code={exampleCode} language="tsx" radius="md" />;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

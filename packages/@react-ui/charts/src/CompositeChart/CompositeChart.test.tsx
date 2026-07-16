@@ -1,4 +1,4 @@
-import { autoPatchWarn, tests } from '@mantine-tests/core';
+import { autoPatchWarn, tests } from '@react-ui/tests';
 import { CompositeChart, CompositeChartProps, CompositeChartStylesNames } from './CompositeChart';
 
 const defaultProps: CompositeChartProps = {

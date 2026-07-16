@@ -1,5 +1,5 @@
 import { DatePickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { DatePickerInput } from '@react-ui/dates';
@@ -15,8 +15,8 @@ function Demo() {
           paddingInlineStart: 8,
         },
       }}
-      label="Header controls order"
-      placeholder="Header controls order"
+      label="头部控件顺序"
+      placeholder="头部控件顺序"
     />
   );
 }
@@ -33,13 +33,13 @@ function Demo() {
           paddingInlineStart: 8,
         },
       }}
-      label="Header controls order"
-      placeholder="Header controls order"
+      label="头部控件顺序"
+      placeholder="头部控件顺序"
     />
   );
 }
 
-export const headerControlsOrder: MantineDemo = {
+export const headerControlsOrder: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

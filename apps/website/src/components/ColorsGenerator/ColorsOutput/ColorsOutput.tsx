@@ -6,9 +6,9 @@ interface ColorsOutputProps {
 }
 
 function getProviderCode(colors: string[]) {
-  return `import { MantineProvider, createTheme, MantineColorsTuple } from '@react-ui/ui';
+  return `import { UIProvider, createTheme, UIColorsTuple } from '@react-ui/ui';
 
-const myColor: MantineColorsTuple = ${JSON.stringify(colors, null, 2).replace(/"/g, "'")};
+const myColor: UIColorsTuple = ${JSON.stringify(colors, null, 2).replace(/"/g, "'")};
 
 const theme = createTheme({
   colors: {
@@ -19,9 +19,9 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       {/* Your app here */}
-    </MantineProvider>
+    </UIProvider>
   );
 }`;
 }
@@ -42,7 +42,7 @@ export function ColorsOutput({ colors }: ColorsOutputProps) {
       />
 
       <Input.Label size="md" labelElement="div" mt="xl">
-        Usage with MantineProvider
+        Usage with UIProvider
       </Input.Label>
 
       <MdxCodeHighlight language="tsx" code={getProviderCode(colors)} key={keyBase} />

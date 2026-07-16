@@ -1,6 +1,6 @@
 import { Button, Drawer } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { AuthenticationForm } from '../../../shared/AuthenticationForm/AuthenticationForm';
 
 const code = `
@@ -12,12 +12,12 @@ function Demo() {
 
   return (
     <>
-      <Drawer offset={8} radius="md" opened={opened} onClose={close} title="Authentication">
+      <Drawer offset={8} radius="md" opened={opened} onClose={close} title="认证">
         {/* Drawer content */}
       </Drawer>
 
       <Button variant="default" onClick={open}>
-        Open Drawer
+        打开抽屉
       </Button>
     </>
   );
@@ -29,18 +29,18 @@ function Demo() {
 
   return (
     <>
-      <Drawer offset={8} radius="md" opened={opened} onClose={close} title="Authentication">
+      <Drawer offset={8} radius="md" opened={opened} onClose={close} title="认证">
         <AuthenticationForm noShadow noPadding />
       </Drawer>
 
       <Button variant="default" onClick={open}>
-        Open Drawer
+        打开抽屉
       </Button>
     </>
   );
 }
 
-export const offset: MantineDemo = {
+export const offset: UIDemo = {
   type: 'code',
   code,
   centered: true,

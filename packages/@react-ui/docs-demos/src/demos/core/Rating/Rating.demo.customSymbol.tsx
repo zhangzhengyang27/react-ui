@@ -6,7 +6,7 @@ import {
   SmileyWinkIcon,
 } from '@phosphor-icons/react';
 import { Rating } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Rating } from '@react-ui/ui';
@@ -105,7 +105,7 @@ function Demo() {
   return <Rating emptySymbol={getEmptyIcon} fullSymbol={getFullIcon} highlightSelectedOnly />;
 }
 
-export const customSymbol: MantineDemo = {
+export const customSymbol: UIDemo = {
   type: 'code',
   code,
   component: Demo,

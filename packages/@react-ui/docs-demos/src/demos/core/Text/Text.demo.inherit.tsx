@@ -1,11 +1,11 @@
 import { Text, Title } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Text, Title } from '@react-ui/ui';
 
 function Demo() {
-  return <Title order={3}>Title in which you want to <Text span c="blue" inherit>highlight</Text> something</Title>;
+  return <Title order={3}>你想在其中 <Text span c="blue" inherit>高亮</Text> 某些内容的标题</Title>;
 }
 `;
 
@@ -21,7 +21,7 @@ function Demo() {
   );
 }
 
-export const inherit: MantineDemo = {
+export const inherit: UIDemo = {
   type: 'code',
   component: Demo,
   code,

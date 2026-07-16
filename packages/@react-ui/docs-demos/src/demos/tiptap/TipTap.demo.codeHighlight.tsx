@@ -4,7 +4,7 @@ import StarterKit from '@tiptap/starter-kit';
 import tsLanguageSyntax from 'highlight.js/lib/languages/typescript';
 import { createLowlight } from 'lowlight';
 import { RichTextEditor } from '@react-ui/tiptap';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const lowlight = createLowlight();
 
@@ -69,7 +69,7 @@ function Demo() {
       StarterKit.configure({ codeBlock: false }),
       CodeBlockLowlight.configure({ lowlight }),
     ],
-    content: \`<p>Regular paragraph</p><pre><code>\${codeExample}</code></pre>\`,
+    content: \`<p>常规段落</p><pre><code>\${codeExample}</code></pre>\`,
   });
 
   return (
@@ -138,7 +138,7 @@ function Demo() {
       StarterKit.configure({ codeBlock: false }),
       CodeBlockLowlight.configure({ lowlight }),
     ],
-    content: `<p>Regular paragraph</p><pre><code>${codeExample}</code></pre>`,
+    content: `<p>常规段落</p><pre><code>${codeExample}</code></pre>`,
   });
 
   return (
@@ -154,7 +154,7 @@ function Demo() {
   );
 }
 
-export const codeHighlight: MantineDemo = {
+export const codeHighlight: UIDemo = {
   type: 'code',
   component: Demo,
   code,

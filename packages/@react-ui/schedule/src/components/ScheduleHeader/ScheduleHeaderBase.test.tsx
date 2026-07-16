@@ -1,4 +1,4 @@
-import { render, screen, userEvent } from '@mantine-tests/core';
+import { render, screen, userEvent } from '@react-ui/tests';
 import { ScheduleHeaderBase, ScheduleHeaderBaseProps } from './ScheduleHeaderBase';
 
 const defaultNavigationHandlers = {
@@ -38,7 +38,7 @@ describe('@react-ui/schedule/ScheduleHeaderBase', () => {
     );
 
     expect(
-      container.querySelector('.mantine-MonthYearSelect-monthYearSelectTarget')
+      container.querySelector('.ui-MonthYearSelect-monthYearSelectTarget')
     ).toBeInTheDocument();
   });
 
@@ -130,10 +130,10 @@ describe('@react-ui/schedule/ScheduleHeaderBase', () => {
     );
 
     expect(
-      container.querySelector('.mantine-MonthYearSelect-monthYearSelectTarget')
+      container.querySelector('.ui-MonthYearSelect-monthYearSelectTarget')
     ).toBeInTheDocument();
     expect(
-      container.querySelector('.mantine-MonthYearSelect-monthYearSelectControl[data-type="month"]')
+      container.querySelector('.ui-MonthYearSelect-monthYearSelectControl[data-type="month"]')
     ).not.toBeInTheDocument();
   });
 });

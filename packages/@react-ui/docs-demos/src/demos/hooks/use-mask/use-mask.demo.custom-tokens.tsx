@@ -1,6 +1,6 @@
 import { Text, TextInput } from '@react-ui/ui';
 import { useMask } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TextInput, Text } from '@react-ui/ui';
@@ -14,7 +14,7 @@ function Demo() {
 
   return (
     <>
-      <TextInput ref={ref} label="Hex color" placeholder="#______" />
+      <TextInput ref={ref} label="十六进制颜色" placeholder="#______" />
       <Text size="sm" mt="sm">Raw value: {rawValue}</Text>
     </>
   );
@@ -29,7 +29,7 @@ function Demo() {
 
   return (
     <>
-      <TextInput ref={ref} label="Hex color" placeholder="#______" />
+      <TextInput ref={ref} label="十六进制颜色" placeholder="#______" />
       <Text size="sm" mt="sm">
         Raw value: {rawValue}
       </Text>
@@ -37,7 +37,7 @@ function Demo() {
   );
 }
 
-export const customTokens: MantineDemo = {
+export const customTokens: UIDemo = {
   type: 'code',
   code,
   component: Demo,

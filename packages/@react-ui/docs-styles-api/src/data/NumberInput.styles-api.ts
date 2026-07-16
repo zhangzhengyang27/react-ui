@@ -6,7 +6,7 @@ export const NumberInputStylesApi: StylesApiData<NumberInputFactory> = {
   selectors: {
     ...InputStylesApi.selectors,
     ...InputWrapperStylesApi.selectors,
-    controls: 'Increment and decrement buttons wrapper',
+    controls: 'Increment and decrement buttons 包装器',
     control: 'Increment and decrement buttons',
   },
 

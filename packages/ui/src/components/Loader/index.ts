@@ -1,5 +1,5 @@
 import type { LoaderCssVariables, LoaderFactory, LoaderProps, LoaderStylesNames } from './Loader'
-import type { MantineLoader, MantineLoaderComponent, MantineLoadersRecord, SvgLoaderProps } from './Loader.types'
+import type { UILoader, UILoaderComponent, UILoadersRecord, SvgLoaderProps } from './Loader.types'
 
 export { Loader, defaultLoaders } from './Loader'
 
@@ -8,8 +8,8 @@ export type {
     LoaderStylesNames,
     LoaderCssVariables,
     LoaderFactory,
-    MantineLoader,
+    UILoader,
     SvgLoaderProps,
-    MantineLoadersRecord,
-    MantineLoaderComponent
+    UILoadersRecord,
+    UILoaderComponent
 }

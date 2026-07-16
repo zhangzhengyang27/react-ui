@@ -1,5 +1,5 @@
 import { Highlight } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Highlight } from '@react-ui/ui';
@@ -13,7 +13,7 @@ function Demo() {
         { text: 'success', color: 'green' },
       ]}
     >
-      Error: Invalid input. Warning: Check this field. Success: All tests passed.
+      错误：输入无效。警告：请检查此字段。成功：所有测试通过。
     </Highlight>
   );
 }
@@ -28,12 +28,12 @@ function Demo() {
         { text: 'success', color: 'green' },
       ]}
     >
-      Error: Invalid input. Warning: Check this field. Success: All tests passed.
+      错误：输入无效。警告：请检查此字段。成功：所有测试通过。
     </Highlight>
   );
 }
 
-export const colors: MantineDemo = {
+export const colors: UIDemo = {
   type: 'code',
   code,
   component: Demo,

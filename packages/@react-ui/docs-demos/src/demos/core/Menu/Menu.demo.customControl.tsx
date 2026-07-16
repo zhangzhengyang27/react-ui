@@ -1,6 +1,6 @@
 import { CaretRightIcon } from '@phosphor-icons/react';
 import { Avatar, Group, Menu, Text, UnstyledButton } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { DemoMenuItems } from './_menu-items';
 
 const code = `
@@ -48,7 +48,7 @@ function Demo() {
     <Menu withArrow>
       <Menu.Target>
         <UserButton
-          image="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png"
+          image="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-8.png"
           name="Harriette Spoonlicker"
           email="hspoonlicker@outlook.com"
         />
@@ -100,7 +100,7 @@ function Demo() {
     <Menu withArrow>
       <Menu.Target>
         <UserButton
-          image="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png"
+          image="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-8.png"
           name="Harriette Spoonlicker"
           email="hspoonlicker@outlook.com"
         />
@@ -110,7 +110,7 @@ function Demo() {
   );
 }
 
-export const customControl: MantineDemo = {
+export const customControl: UIDemo = {
   type: 'code',
   component: Demo,
   code,

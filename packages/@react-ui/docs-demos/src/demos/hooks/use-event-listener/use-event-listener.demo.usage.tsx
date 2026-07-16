@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { Button } from '@react-ui/ui';
 import { useEventListener } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState, useCallback } from 'react';
@@ -23,7 +23,7 @@ function Demo() {
   return <Button ref={ref}>Button clicks: {count}</Button>;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

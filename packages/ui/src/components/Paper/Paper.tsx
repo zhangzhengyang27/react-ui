@@ -4,8 +4,8 @@ import {
     createVarsResolver,
     getRadius,
     getShadow,
-    MantineRadius,
-    MantineShadow,
+    UIRadius,
+    UIShadow,
     polymorphicFactory,
     PolymorphicFactory,
     StylesApiProps,
@@ -21,10 +21,10 @@ export type PaperCssVariables = {
 
 export interface PaperBaseProps {
     /** Key of `theme.shadows` or any valid CSS value to set `box-shadow` */
-    shadow?: MantineShadow
+    shadow?: UIShadow
 
     /** Key of `theme.radius` or any valid CSS value to set border-radius, numbers are converted to rem @default theme.defaultRadius */
-    radius?: MantineRadius
+    radius?: UIRadius
 
     /** Adds border to the root element */
     withBorder?: boolean

@@ -1,5 +1,5 @@
 import { createRef } from 'react';
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
 import { TimePicker, TimePickerProps, TimePickerStylesNames } from './TimePicker';
 
 const defaultProps: TimePickerProps = {
@@ -50,7 +50,7 @@ describe('@react-ui/dates/TimePicker', () => {
     expect(screen.getByLabelText('test-am-pm')).toHaveFocus();
   });
 
-  // https://github.com/mantinedev/mantine/issues/8967
+  // https://github.com/uidev/ui/issues/8967
   it('allows entering 01-09 hours over a selected 00 value', async () => {
     render(<TimePicker {...defaultProps} format="24h" defaultValue="00:00" />);
 

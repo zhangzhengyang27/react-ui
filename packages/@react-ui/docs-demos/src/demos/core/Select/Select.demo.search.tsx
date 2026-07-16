@@ -1,5 +1,5 @@
 import { ComboboxItem, OptionsFilter, Select } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Select, ComboboxItem, OptionsFilter } from '@react-ui/ui';
@@ -15,8 +15,8 @@ const optionsFilter: OptionsFilter = ({ options, search }) => {
 function Demo() {
   return (
     <Select
-      label="Your country"
-      placeholder="Pick value"
+      label="你的国家"
+      placeholder="选择值"
       data={['Great Britain', 'Russian Federation', 'United States']}
       filter={optionsFilter}
       searchable
@@ -36,8 +36,8 @@ const optionsFilter: OptionsFilter = ({ options, search }) => {
 function Demo() {
   return (
     <Select
-      label="Your country"
-      placeholder="Pick value"
+      label="你的国家"
+      placeholder="选择值"
       data={['Great Britain', 'Russian Federation', 'United States']}
       filter={optionsFilter}
       searchable
@@ -45,7 +45,7 @@ function Demo() {
   );
 }
 
-export const search: MantineDemo = {
+export const search: UIDemo = {
   type: 'code',
   component: Demo,
   code,

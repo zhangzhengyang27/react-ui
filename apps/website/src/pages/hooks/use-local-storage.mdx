@@ -104,7 +104,7 @@ const [value, setValue] = useLocalStorage({
 import superjson from 'superjson';
 import { useLocalStorage } from '@react-ui/hooks';
 
-const defaultValue = { name: 'John', age: 25 };
+const defaultValue = { name: '张三', age: 25 };
 
 const [value, setValue] = useLocalStorage({
   key: 'data',
@@ -124,7 +124,7 @@ import { useSessionStorage } from '@react-ui/hooks';
 
 const [value, setValue] = useSessionStorage({
   key: 'session-key',
-  defaultValue: 'mantine',
+  defaultValue: 'ui',
 });
 ```
 

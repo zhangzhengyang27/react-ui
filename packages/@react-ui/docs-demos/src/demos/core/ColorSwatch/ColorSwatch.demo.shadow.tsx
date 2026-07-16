@@ -1,5 +1,5 @@
 import { ColorSwatch } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ColorSwatch } from '@react-ui/ui';
@@ -13,7 +13,7 @@ function Wrapper(props: any) {
   return <ColorSwatch color="rgba(255, 255, 255, 0.7)" {...props} />;
 }
 
-export const shadow: MantineDemo = {
+export const shadow: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

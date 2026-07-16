@@ -1,6 +1,6 @@
 import { ChartScatterIcon } from '@phosphor-icons/react';
 import { NumberInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NumberInput } from '@react-ui/ui';
@@ -9,10 +9,10 @@ import { ChartScatterIcon } from '@phosphor-icons/react';
 function Demo() {
   return (
     <>
-      <NumberInput label="Hide controls" placeholder="Hide controls" hideControls />
+      <NumberInput label="隐藏控制器" placeholder="隐藏控制器" hideControls />
       <NumberInput
-        label="Custom right section"
-        placeholder="Custom right section"
+        label="自定义右侧区域"
+        placeholder="自定义右侧区域"
         mt="md"
         rightSection={<ChartScatterIcon />}
         rightSectionPointerEvents="none"
@@ -25,10 +25,10 @@ function Demo() {
 function Demo() {
   return (
     <>
-      <NumberInput label="Hide controls" placeholder="Hide controls" hideControls />
+      <NumberInput label="隐藏控制器" placeholder="隐藏控制器" hideControls />
       <NumberInput
-        label="Custom right section"
-        placeholder="Custom right section"
+        label="自定义右侧区域"
+        placeholder="自定义右侧区域"
         mt="md"
         rightSection={<ChartScatterIcon />}
         rightSectionPointerEvents="none"
@@ -37,7 +37,7 @@ function Demo() {
   );
 }
 
-export const rightSection: MantineDemo = {
+export const rightSection: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Button, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { BaseDemo } from './_base';
 
 const code = `
@@ -18,7 +18,7 @@ function Demo() {
       </Dropzone>
 
       <Group justify="center" mt="md">
-        <Button onClick={() => openRef.current?.()}>Select files</Button>
+        <Button onClick={() => openRef.current?.()}>选择文件</Button>
       </Group>
     </>
   );
@@ -32,13 +32,13 @@ function Demo() {
     <>
       <BaseDemo openRef={openRef} />
       <Group justify="center" mt="md">
-        <Button onClick={() => openRef.current?.()}>Select files</Button>
+        <Button onClick={() => openRef.current?.()}>选择文件</Button>
       </Group>
     </>
   );
 }
 
-export const manual: MantineDemo = {
+export const manual: UIDemo = {
   type: 'code',
   component: Demo,
   code,

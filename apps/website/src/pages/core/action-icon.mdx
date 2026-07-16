@@ -115,7 +115,7 @@ import { ActionIcon } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <ActionIcon.Group aria-label="Text formatting">
+    <ActionIcon.Group aria-label="文本格式">
       {/* ...ActionIcon components */}
     </ActionIcon.Group>
   );
@@ -132,9 +132,9 @@ function Demo() {
   return (
     <ActionIcon.Group>
       <div>
-        <ActionIcon>This will not work</ActionIcon>
+        <ActionIcon>这将不会生效</ActionIcon>
       </div>
-      <ActionIcon>ActionIcons will have incorrect borders</ActionIcon>
+      <ActionIcon>ActionIcon 会有不正确的边框</ActionIcon>
     </ActionIcon.Group>
   );
 }
@@ -167,12 +167,12 @@ import { ActionIcon, VisuallyHidden } from '@react-ui/ui';
 function Demo() {
   return (
     <>
-      <ActionIcon aria-label="Like post">
+      <ActionIcon aria-label="点赞帖子">
         <HeartIcon />
       </ActionIcon>
 
       <ActionIcon>
-        <VisuallyHidden>Like post</VisuallyHidden>
+        <VisuallyHidden>点赞帖子</VisuallyHidden>
         <HeartIcon />
       </ActionIcon>
     </>

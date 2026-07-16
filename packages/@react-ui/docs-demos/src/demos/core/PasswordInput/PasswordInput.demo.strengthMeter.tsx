@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { CheckIcon, XIcon } from '@phosphor-icons/react';
 import { Box, PasswordInput, Popover, Progress, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -23,10 +23,10 @@ function PasswordRequirement({ meets, label }: { meets: boolean; label: string }
 }
 
 const requirements = [
-  { re: /[0-9]/, label: 'Includes number' },
-  { re: /[a-z]/, label: 'Includes lowercase letter' },
-  { re: /[A-Z]/, label: 'Includes uppercase letter' },
-  { re: /[$&+,:;=?@#|'<>.^*()%!-]/, label: 'Includes special symbol' },
+  { re: /[0-9]/, label: '包含数字' },
+  { re: /[a-z]/, label: '包含小写字母' },
+  { re: /[A-Z]/, label: '包含大写字母' },
+  { re: /[$&+,:;=?@#|'<>.^*()%!-]/, label: '包含特殊符号' },
 ];
 
 function getStrength(password: string) {
@@ -60,8 +60,8 @@ function Demo() {
         >
           <PasswordInput
             withAsterisk
-            label="Your password"
-            placeholder="Your password"
+            label="你的密码"
+            placeholder="你的密码"
             value={value}
             onChange={(event) => setValue(event.currentTarget.value)}
           />
@@ -69,7 +69,7 @@ function Demo() {
       </Popover.Target>
       <Popover.Dropdown>
         <Progress color={color} value={strength} size={5} mb="xs" />
-        <PasswordRequirement label="Includes at least 6 characters" meets={value.length > 5} />
+        <PasswordRequirement label="至少包含 6 个字符" meets={value.length > 5} />
         {checks}
       </Popover.Dropdown>
     </Popover>
@@ -92,10 +92,10 @@ function PasswordRequirement({ meets, label }: { meets: boolean; label: string }
 }
 
 const requirements = [
-  { re: /[0-9]/, label: 'Includes number' },
-  { re: /[a-z]/, label: 'Includes lowercase letter' },
-  { re: /[A-Z]/, label: 'Includes uppercase letter' },
-  { re: /[$&+,:;=?@#|'<>.^*()%!-]/, label: 'Includes special symbol' },
+  { re: /[0-9]/, label: '包含数字' },
+  { re: /[a-z]/, label: '包含小写字母' },
+  { re: /[A-Z]/, label: '包含大写字母' },
+  { re: /[$&+,:;=?@#|'<>.^*()%!-]/, label: '包含特殊符号' },
 ];
 
 function getStrength(password: string) {
@@ -134,8 +134,8 @@ function Demo() {
         >
           <PasswordInput
             withAsterisk
-            label="Your password"
-            placeholder="Your password"
+            label="你的密码"
+            placeholder="你的密码"
             value={value}
             onChange={(event) => setValue(event.currentTarget.value)}
           />
@@ -143,14 +143,14 @@ function Demo() {
       </Popover.Target>
       <Popover.Dropdown>
         <Progress color={color} value={strength} size={5} mb="xs" />
-        <PasswordRequirement label="Includes at least 6 characters" meets={value.length > 5} />
+        <PasswordRequirement label="至少包含 6 个字符" meets={value.length > 5} />
         {checks}
       </Popover.Dropdown>
     </Popover>
   );
 }
 
-export const strengthMeter: MantineDemo = {
+export const strengthMeter: UIDemo = {
   type: 'code',
   code,
   component: Demo,

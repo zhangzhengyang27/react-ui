@@ -1,5 +1,5 @@
 import { TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TagsInput } from '@react-ui/ui';
@@ -12,7 +12,7 @@ function Demo() {
   return (
     <TagsInput
       label="100 000 options tags input"
-      placeholder="Use limit to optimize performance"
+      placeholder="使用 limit 优化性能"
       limit={5}
       data={largeData}
     />
@@ -28,14 +28,14 @@ function Demo() {
   return (
     <TagsInput
       label="100 000 options tags input"
-      placeholder="Use limit to optimize performance"
+      placeholder="使用 limit 优化性能"
       limit={5}
       data={largeData}
     />
   );
 }
 
-export const limit: MantineDemo = {
+export const limit: UIDemo = {
   type: 'code',
   component: Demo,
   code,

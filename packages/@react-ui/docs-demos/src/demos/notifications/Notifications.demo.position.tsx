@@ -1,6 +1,6 @@
 import { Button, Group } from '@react-ui/ui';
 import { notifications } from '@react-ui/notifications';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button } from '@react-ui/ui';
@@ -62,7 +62,7 @@ function Demo() {
   return <Group>{buttons}</Group>;
 }
 
-export const position: MantineDemo = {
+export const position: UIDemo = {
   type: 'code',
   code,
   centered: true,

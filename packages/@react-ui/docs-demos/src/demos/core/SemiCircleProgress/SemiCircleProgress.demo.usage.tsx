@@ -1,5 +1,5 @@
 import { SemiCircleProgress } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { SemiCircleProgress } from '@react-ui/ui';
@@ -9,17 +9,17 @@ function Demo() {
   return (
     <SemiCircleProgress
       {{props}}
-      label="Label"
+      label="标签"
     />
   );
 }
 `;
 
 function Wrapper(props: any) {
-  return <SemiCircleProgress label="Label" {...props} />;
+  return <SemiCircleProgress label="标签" {...props} />;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

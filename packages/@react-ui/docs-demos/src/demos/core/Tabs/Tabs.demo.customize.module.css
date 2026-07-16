@@ -6,7 +6,7 @@
   &:first-of-type {
     border-radius: 4px 0 0 4px;
 
-    @mixin rtl {
+    [dir='rtl'] & {
       border-radius: 0 4px 4px 0;
     }
   }
@@ -14,7 +14,7 @@
   &:last-of-type {
     border-radius: 0 4px 4px 0;
 
-    @mixin rtl {
+    [dir='rtl'] & {
       border-radius: 4px 0 0 4px;
     }
   }
@@ -22,13 +22,13 @@
   & + & {
     border-left-width: 0;
 
-    @mixin rtl {
+    [dir='rtl'] & {
       border-right-width: 0;
       border-left-width: 1px;
     }
   }
 
-  @mixin hover {
+  &:hover {
     background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-5));
   }
 
@@ -38,7 +38,7 @@
     border-color: var(--ui-color-blue-filled);
     color: var(--ui-color-white);
 
-    @mixin hover {
+    &:hover {
       background-color: var(--ui-color-blue-filled-hover);
     }
   }

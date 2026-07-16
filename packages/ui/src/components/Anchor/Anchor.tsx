@@ -26,7 +26,7 @@ const defaultProps = {
 } satisfies Partial<AnchorProps>
 
 /**
- * 锚点链接组件。对齐 mantine Anchor（基于 Text，polymorphicFactory + CSS module）。
+ * 锚点链接组件。对齐 ui Anchor（基于 Text，polymorphicFactory + CSS module）。
  */
 export const Anchor = polymorphicFactory<AnchorFactory>((props, _ref) => {
     const { underline, className, unstyled, mod, ...others } = useProps('Anchor', defaultProps, props)

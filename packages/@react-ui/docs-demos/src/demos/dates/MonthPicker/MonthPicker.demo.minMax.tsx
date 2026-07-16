@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MonthPicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -33,7 +33,7 @@ function Demo() {
   );
 }
 
-export const minMax: MantineDemo = {
+export const minMax: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

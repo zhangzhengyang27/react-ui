@@ -18,18 +18,18 @@ import '@react-ui/ui/styles.css';
 
 ## 设置 NavigationProgress
 
-在 [MantineProvider](/theming/mantine-provider/) 内的任意位置渲染 `NavigationProgress` 组件：
+在 [UIProvider](/theming/ui-provider/) 内的任意位置渲染 `NavigationProgress` 组件：
 
 ```tsx
-import { MantineProvider } from '@react-ui/ui';
+import { UIProvider } from '@react-ui/ui';
 import { NavigationProgress } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <MantineProvider>
+    <UIProvider>
       <NavigationProgress />
       {/* 你的应用内容 */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```

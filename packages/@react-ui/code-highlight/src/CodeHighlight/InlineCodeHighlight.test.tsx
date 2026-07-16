@@ -1,4 +1,4 @@
-import { tests } from '@mantine-tests/core';
+import { tests } from '@react-ui/tests';
 import {
   InlineCodeHighlight,
   InlineCodeHighlightProps,
@@ -16,7 +16,7 @@ describe('@react-ui/code-highlight/InlineCodeHighlight', () => {
     props: defaultProps,
     varsResolver: true,
     polymorphic: true,
-    selector: '.mantine-InlineCodeHighlight-inlineCodeHighlight',
+    selector: '.ui-InlineCodeHighlight-inlineCodeHighlight',
     displayName: '@react-ui/code-highlight/InlineCodeHighlight',
     stylesApiSelectors: ['inlineCodeHighlight'],
   });

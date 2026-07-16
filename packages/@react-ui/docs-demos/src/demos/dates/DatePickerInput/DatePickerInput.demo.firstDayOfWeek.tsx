@@ -1,5 +1,5 @@
 import { DatePickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { DatePickerInput } from '@react-ui/dates';
@@ -9,14 +9,14 @@ function Demo() {
     <>
       <DatePickerInput
         firstDayOfWeek={0}
-        label="Sunday as first day of week"
-        placeholder="Sunday as first day of week"
+        label="周日作为一周第一天"
+        placeholder="周日作为一周第一天"
         mb="md"
       />
       <DatePickerInput
         firstDayOfWeek={6}
-        label="Saturday as first day of week"
-        placeholder="Saturday as first day of week"
+        label="周六作为一周第一天"
+        placeholder="周六作为一周第一天"
       />
     </>
   );
@@ -28,20 +28,20 @@ function Demo() {
     <>
       <DatePickerInput
         firstDayOfWeek={0}
-        label="Sunday as first day of week"
-        placeholder="Sunday as first day of week"
+        label="周日作为一周第一天"
+        placeholder="周日作为一周第一天"
         mb="md"
       />
       <DatePickerInput
         firstDayOfWeek={6}
-        label="Saturday as first day of week"
-        placeholder="Saturday as first day of week"
+        label="周六作为一周第一天"
+        placeholder="周六作为一周第一天"
       />
     </>
   );
 }
 
-export const firstDayOfWeek: MantineDemo = {
+export const firstDayOfWeek: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

@@ -1,4 +1,4 @@
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const getCodeTemplate = (component: string) =>
   `import { ${component} } from '@react-ui/dates';
@@ -13,7 +13,7 @@ function Demo() {
 }
 `;
 
-export function getPickerInputConfiguratorDemo(Component: React.FC<any>): MantineDemo {
+export function getPickerInputConfiguratorDemo(Component: React.FC<any>): UIDemo {
   return {
     type: 'configurator',
     component: Component,

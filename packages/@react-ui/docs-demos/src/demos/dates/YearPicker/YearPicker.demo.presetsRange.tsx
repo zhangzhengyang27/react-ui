@@ -1,13 +1,13 @@
 import dayjs from 'dayjs';
 import { YearPicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import dayjs from 'dayjs';
 import { YearPicker } from '@react-ui/dates';
 
 function Demo() {
-  const today = dayjs();
+  const today = dayjs('2024-01-15');
 
   return (
     <YearPicker
@@ -30,7 +30,7 @@ function Demo() {
             today.subtract(10, 'year').startOf('year').format('YYYY-MM-DD'),
             today.startOf('year').format('YYYY-MM-DD'),
           ],
-          label: 'Last decade',
+          label: '过去十年',
         },
       ]}
     />
@@ -39,7 +39,7 @@ function Demo() {
 `;
 
 function Demo() {
-  const today = dayjs();
+  const today = dayjs('2024-01-15');
 
   return (
     <YearPicker
@@ -71,14 +71,14 @@ function Demo() {
             today.subtract(10, 'year').startOf('year').format('YYYY-MM-DD'),
             today.startOf('year').format('YYYY-MM-DD'),
           ],
-          label: 'Last decade',
+          label: '过去十年',
         },
       ]}
     />
   );
 }
 
-export const presetsRange: MantineDemo = {
+export const presetsRange: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

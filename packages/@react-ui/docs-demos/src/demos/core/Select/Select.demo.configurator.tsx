@@ -1,5 +1,5 @@
 import { Select } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { inputControls } from '../../../shared';
 
 const code = `
@@ -10,7 +10,7 @@ function Demo() {
   return (
     <Select
       {{props}}
-      placeholder="Select placeholder"
+      placeholder="选择占位符"
       data={['React', 'Angular', 'Vue', 'Svelte']}
     />
   );
@@ -21,13 +21,13 @@ function Wrapper(props: any) {
   return (
     <Select
       {...props}
-      placeholder="Select placeholder"
+      placeholder="选择占位符"
       data={['React', 'Angular', 'Vue', 'Svelte']}
     />
   );
 }
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

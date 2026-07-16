@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Indicator } from './Indicator'
 
 const defaultProps = {}
 
 function Wrapper({ children }: { children: React.ReactNode }) {
-    return <MantineProvider>{children}</MantineProvider>
+    return <UIProvider>{children}</UIProvider>
 }
 
 describe('@react-ui/ui/Indicator', () => {
@@ -24,21 +24,21 @@ describe('@react-ui/ui/Indicator', () => {
         const { container } = render(<Indicator {...defaultProps} label="test" processing />, {
             wrapper: Wrapper
         })
-        expect(container.querySelector('.mantine-Indicator-indicator')).toHaveAttribute('data-processing')
+        expect(container.querySelector('.ui-Indicator-indicator')).toHaveAttribute('data-processing')
     })
 
     it('applies with-border data attribute', () => {
         const { container } = render(<Indicator {...defaultProps} label="test" withBorder />, {
             wrapper: Wrapper
         })
-        expect(container.querySelector('.mantine-Indicator-indicator')).toHaveAttribute('data-with-border')
+        expect(container.querySelector('.ui-Indicator-indicator')).toHaveAttribute('data-with-border')
     })
 
     it('applies inline data attribute', () => {
         const { container } = render(<Indicator {...defaultProps} label="test" inline />, {
             wrapper: Wrapper
         })
-        expect(container.querySelector('.mantine-Indicator-root')).toHaveAttribute('data-inline')
+        expect(container.querySelector('.ui-Indicator-root')).toHaveAttribute('data-inline')
     })
 
     it('formats label with maxValue prop', () => {

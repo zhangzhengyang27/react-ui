@@ -5,7 +5,7 @@ interface GetStaticClassNamesInput {
     withStaticClass?: boolean
 }
 
-/** Returns static component classes, for example, `.mantine-Input-wrapper` */
+/** Returns static component classes, for example, `.ui-Input-wrapper` */
 /**
  * 根据输入参数生成静态类名数组
  * @param {Object} params - 输入参数对象

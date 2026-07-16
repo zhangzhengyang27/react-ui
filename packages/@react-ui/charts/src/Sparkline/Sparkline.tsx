@@ -8,7 +8,7 @@ import {
   factory,
   Factory,
   getThemeColor,
-  MantineColor,
+  UIColor,
   StylesApiProps,
   useProps,
   useStyles,
@@ -17,9 +17,9 @@ import { AreaChartCurveType, AreaGradient } from '../AreaChart';
 import classes from './Sparkline.module.css';
 
 export interface SparklineTrendColors {
-  positive: MantineColor;
-  negative: MantineColor;
-  neutral?: MantineColor;
+  positive: UIColor;
+  negative: UIColor;
+  neutral?: UIColor;
 }
 
 export type SparklineStylesNames = 'root';
@@ -33,7 +33,7 @@ export interface SparklineProps
   data: (number | null)[];
 
   /** Key of `theme.colors` or any valid CSS color @default theme.primaryColor */
-  color?: MantineColor;
+  color?: UIColor;
 
   /** Determines whether the chart fill should be a gradient @default true */
   withGradient?: boolean;

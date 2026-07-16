@@ -1,19 +1,19 @@
 import { ColorInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ColorInput } from '@react-ui/ui';
 
 function Demo() {
-  return <ColorInput disabled label="Disabled input" placeholder="Disabled input" />;
+  return <ColorInput disabled label="已禁用输入" placeholder="已禁用输入" />;
 }
 `;
 
 function Demo() {
-  return <ColorInput disabled label="Disabled input" placeholder="Disabled input" />;
+  return <ColorInput disabled label="已禁用输入" placeholder="已禁用输入" />;
 }
 
-export const disabled: MantineDemo = {
+export const disabled: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

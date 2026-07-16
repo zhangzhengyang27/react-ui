@@ -8,8 +8,8 @@ import {
     getFontSize,
     getLineHeight,
     getSpacing,
-    MantineSize,
-    MantineSpacing,
+    UISize,
+    UISpacing,
     StylesApiProps,
     useProps,
     useStyles
@@ -35,10 +35,10 @@ export interface DataListProps extends BoxProps, StylesApiProps<DataListFactory>
     children?: React.ReactNode
 
     /** Controls `font-size` and `line-height` @default 'sm' */
-    size?: MantineSize
+    size?: UISize
 
     /** Key of `theme.spacing` or any valid CSS value to set gap between items @default 'sm' */
-    gap?: MantineSpacing
+    gap?: UISpacing
 
     /** Controls arrangement of label and value within each item. `horizontal` renders label and value side by side, `vertical` stacks label on top of value @default 'horizontal' */
     orientation?: 'horizontal' | 'vertical'

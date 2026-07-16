@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, ComboboxPopover, Stack, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -27,12 +27,12 @@ function Demo() {
         >
           <ComboboxPopover.Target>
             <Button variant="default" miw={200} type="button">
-              {value || 'Select framework'}
+              {value || '选择框架'}
             </Button>
           </ComboboxPopover.Target>
         </ComboboxPopover>
 
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
         {submitted && <Text size="sm">Submitted value: <b>{submitted}</b></Text>}
       </Stack>
     </form>
@@ -61,12 +61,12 @@ function Demo() {
         >
           <ComboboxPopover.Target>
             <Button variant="default" miw={200} type="button">
-              {value || 'Select framework'}
+              {value || '选择框架'}
             </Button>
           </ComboboxPopover.Target>
         </ComboboxPopover>
 
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
         {submitted && (
           <Text size="sm">
             Submitted value: <b>{submitted}</b>
@@ -77,7 +77,7 @@ function Demo() {
   );
 }
 
-export const formSubmission: MantineDemo = {
+export const formSubmission: UIDemo = {
   type: 'code',
   component: Demo,
   code,

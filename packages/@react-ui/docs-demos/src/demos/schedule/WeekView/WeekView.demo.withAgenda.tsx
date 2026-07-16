@@ -1,29 +1,29 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { WeekView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
-const startOfWeek = dayjs().startOf('week').add(1, 'day').format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
+const startOfWeek = dayjs('2024-01-15').startOf('week').add(1, 'day').format('YYYY-MM-DD');
 
 const eventsData = [
   {
     id: 'standup',
-    title: 'Morning Standup',
+    title: '早间站会',
     start: `${today} 09:00:00`,
     end: `${today} 09:30:00`,
     color: 'blue',
   },
   {
     id: 'team-meeting',
-    title: 'Team Meeting',
+    title: '团队会议',
     start: `${today} 10:00:00`,
     end: `${today} 11:30:00`,
     color: 'green',
   },
   {
     id: 'weekly-review-series',
-    title: 'Weekly review',
+    title: '每周回顾',
     start: `${startOfWeek} 16:00:00`,
     end: `${startOfWeek} 17:00:00`,
     color: 'orange',
@@ -38,27 +38,27 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import { WeekView } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
-const startOfWeek = dayjs().startOf('week').add(1, 'day').format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
+const startOfWeek = dayjs('2024-01-15').startOf('week').add(1, 'day').format('YYYY-MM-DD');
 
 const events = [
   {
     id: 'standup',
-    title: 'Morning Standup',
+    title: '早间站会',
     start: \`\${today} 09:00:00\`,
     end: \`\${today} 09:30:00\`,
     color: 'blue',
   },
   {
     id: 'team-meeting',
-    title: 'Team Meeting',
+    title: '团队会议',
     start: \`\${today} 10:00:00\`,
     end: \`\${today} 11:30:00\`,
     color: 'green',
   },
   {
     id: 'weekly-review-series',
-    title: 'Weekly review',
+    title: '每周回顾',
     start: \`\${startOfWeek} 16:00:00\`,
     end: \`\${startOfWeek} 17:00:00\`,
     color: 'orange',
@@ -88,7 +88,7 @@ function Demo() {
   return <WeekView date={date} onDateChange={setDate} events={eventsData} withAgenda />;
 }
 
-export const withAgenda: MantineDemo = {
+export const withAgenda: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

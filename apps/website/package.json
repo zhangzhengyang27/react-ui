@@ -35,9 +35,9 @@
         "@react-ui/emotion": "workspace:*",
         "@react-ui/form": "workspace:*",
         "@react-ui/hooks": "workspace:*",
-        "@react-ui/mantine-header": "workspace:*",
-        "@react-ui/mantine-logo": "workspace:*",
-        "@react-ui/mantine-meta": "workspace:*",
+        "@react-ui/header": "workspace:*",
+        "@react-ui/logo": "workspace:*",
+        "@react-ui/meta": "workspace:*",
         "@react-ui/modals": "workspace:*",
         "@react-ui/notifications": "workspace:*",
         "@react-ui/nprogress": "workspace:*",
@@ -97,8 +97,6 @@
         "@types/react": "^19.1.1",
         "@types/react-dom": "^19.2.3",
         "postcss-loader": "^8.2.1",
-        "postcss-preset-mantine": "^1.18.0",
-        "postcss-simple-vars": "^7.0.1",
         "ts-morph": "^28.0.0",
         "tsx": "^4.23.0"
     }

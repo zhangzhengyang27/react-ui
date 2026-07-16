@@ -1,5 +1,5 @@
 import { Avatar, Group, Indicator } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Avatar, Group, Indicator } from '@react-ui/ui';
@@ -11,7 +11,7 @@ function Demo() {
         <Avatar
           size="lg"
           radius="xl"
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-1.png"
         />
       </Indicator>
 
@@ -19,7 +19,7 @@ function Demo() {
         <Avatar
           size="lg"
           radius="xl"
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-2.png"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-2.png"
         />
       </Indicator>
     </Group>
@@ -34,7 +34,7 @@ function Demo() {
         <Avatar
           size="lg"
           radius="xl"
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-1.png"
         />
       </Indicator>
 
@@ -42,14 +42,14 @@ function Demo() {
         <Avatar
           size="lg"
           radius="xl"
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-2.png"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-2.png"
         />
       </Indicator>
     </Group>
   );
 }
 
-export const showZero: MantineDemo = {
+export const showZero: UIDemo = {
   type: 'code',
   component: Demo,
   code,

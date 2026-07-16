@@ -8,9 +8,9 @@ import {
     Factory,
     getRadius,
     getThemeColor,
-    MantineColor,
-    MantineRadius,
-    useMantineTheme,
+    UIColor,
+    UIRadius,
+    useUITheme,
     useProps
 } from '../../core'
 import { useStepperContext } from './Stepper.context'
@@ -41,11 +41,11 @@ export interface StepperStepProps extends BoxProps, CompoundStylesApiProps<Stepp
     /** Determines whether this step can be selected by click, overrides allowSelectStep */
     allowStepSelect?: boolean
 
-    /** Key of theme.colors or any valid CSS color, overrides Stepper color */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色, overrides Stepper color */
+    color?: UIColor
 
-    /** Key of theme.radius or any valid CSS value, overrides Stepper radius */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值, overrides Stepper radius */
+    radius?: UIRadius
 
     /** Step content */
     children?: React.ReactNode
@@ -88,7 +88,7 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
     } = useProps('StepperStep', null, props as StepperStepInternalProps)
 
     const ctx = useStepperContext()
-    const theme = useMantineTheme()
+    const theme = useUITheme()
     const getStyles = ctx.getStyles
 
     const isActive = !!active
@@ -161,8 +161,6 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
             </div>
 
             {!isLast && <div {...getStyles('stepSeparator', { classNames, styles })} aria-hidden />}
-
-            {children}
         </Box>
     )
 })

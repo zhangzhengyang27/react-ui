@@ -3,17 +3,17 @@ import type { StylesApiData } from '../types';
 
 export const DataListStylesApi: StylesApiData<DataListFactory> = {
   selectors: {
-    root: 'Root `dl` element',
-    item: 'DataList.Item root element',
-    itemLabel: 'DataList.ItemLabel `dt` element',
-    itemValue: 'DataList.ItemValue `dd` element',
+    root: '根 `dl` 元素',
+    item: 'DataList.Item root 元素',
+    itemLabel: 'DataList.ItemLabel `dt` 元素',
+    itemValue: 'DataList.ItemValue `dd` 元素',
   },
 
   vars: {
     root: {
-      '--data-list-fz': 'Controls `font-size`',
-      '--data-list-lh': 'Controls `line-height`',
-      '--data-list-gap': 'Controls gap between items',
+      '--data-list-fz': '控制 `font-size`',
+      '--data-list-lh': '控制 `line-height`',
+      '--data-list-gap': '控制项之间的间距',
       '--data-list-label-width': 'Controls `min-width` of `DataList.ItemLabel`',
     },
   },
@@ -22,12 +22,12 @@ export const DataListStylesApi: StylesApiData<DataListFactory> = {
     {
       modifier: 'data-orientation',
       selector: 'root',
-      value: 'Value of `orientation` prop',
+      value: '`orientation` 属性的值',
     },
     {
       modifier: 'data-with-divider',
       selector: 'root',
-      condition: '`withDivider` prop is set',
+      condition: '设置了 `withDivider` 属性',
     },
   ],
 };

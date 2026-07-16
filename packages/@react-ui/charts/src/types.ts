@@ -8,17 +8,17 @@ import type {
   XAxisProps,
   YAxisProps,
 } from 'recharts';
-import type { MantineColor } from '@react-ui/ui';
+import type { UIColor } from '@react-ui/ui';
 
 export interface ChartReferenceLineProps extends Omit<ReferenceLineProps, 'ref' | 'label'> {
-  color?: MantineColor;
+  color?: UIColor;
   label?: string | Omit<LabelProps, 'ref'>;
   labelPosition?: LabelProps['position'];
 }
 
 export interface ChartSeries {
   name: string;
-  color?: MantineColor;
+  color?: UIColor;
   label?: string;
   yAxisId?: string;
 }
@@ -89,10 +89,10 @@ export interface GridChartBaseProps {
   withTooltip?: boolean;
 
   /** Color of the text displayed inside the chart, `'dimmed'` by default */
-  textColor?: MantineColor;
+  textColor?: UIColor;
 
   /** Color of the grid and cursor lines, by default depends on color scheme */
-  gridColor?: MantineColor;
+  gridColor?: UIColor;
 
   /** Chart orientation, `'horizontal'` by default */
   orientation?: 'horizontal' | 'vertical';
@@ -113,4 +113,4 @@ export interface GridChartBaseProps {
   withRightYAxis?: boolean;
 }
 
-export type MantineChartDotProps = Omit<DotProps, 'ref'> & { strokeWidth?: number };
+export type UIChartDotProps = Omit<DotProps, 'ref'> & { strokeWidth?: number };

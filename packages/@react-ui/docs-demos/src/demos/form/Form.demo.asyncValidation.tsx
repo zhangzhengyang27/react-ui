@@ -2,7 +2,7 @@
 
 import { Button, Group, Loader, TextInput } from '@react-ui/ui';
 import { isEmail, useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Group, Loader, TextInput } from '@react-ui/ui';
@@ -12,8 +12,8 @@ import { isEmail, useForm } from '@react-ui/form';
 function checkUsernameAvailability(username: string, signal?: AbortSignal): Promise<string | null> {
   return new Promise((resolve, reject) => {
     const timer = setTimeout(() => {
-      const taken = ['admin', 'user', 'test', 'mantine'];
-      resolve(taken.includes(username.toLowerCase()) ? 'Username is already taken' : null);
+      const taken = ['admin', 'user', 'test', 'ui'];
+      resolve(taken.includes(username.toLowerCase()) ? '用户名已被占用' : null);
     }, 800);
 
     signal?.addEventListener('abort', () => {
@@ -30,11 +30,11 @@ function Demo() {
     validate: {
       username: async (value, _values, _path, signal) => {
         if (value.trim().length < 3) {
-          return 'Username must be at least 3 characters';
+          return '用户名至少包含 3 个字符';
         }
         return checkUsernameAvailability(value, signal);
       },
-      email: isEmail('Invalid email'),
+      email: isEmail('无效的邮箱'),
     },
   });
 
@@ -42,8 +42,8 @@ function Demo() {
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <TextInput
         withAsterisk
-        label="Username"
-        placeholder="Pick a username"
+        label="用户名"
+        placeholder="请输入用户名"
         key={form.key('username')}
         disabled={form.submitting}
         rightSection={form.validating ? <Loader size={16} /> : null}
@@ -53,8 +53,8 @@ function Demo() {
       <TextInput
         withAsterisk
         mt="md"
-        label="Email"
-        placeholder="your@email.com"
+        label="邮箱"
+        placeholder="yourname@example.com"
         key={form.key('email')}
         disabled={form.submitting}
         {...form.getInputProps('email')}
@@ -62,7 +62,7 @@ function Demo() {
 
       <Group justify="flex-end" mt="md">
         <Button type="submit" loading={form.submitting}>
-          Submit
+          提交
         </Button>
       </Group>
     </form>
@@ -73,8 +73,8 @@ function Demo() {
 function checkUsernameAvailability(username: string, signal?: AbortSignal): Promise<string | null> {
   return new Promise((resolve, reject) => {
     const timer = setTimeout(() => {
-      const taken = ['admin', 'user', 'test', 'mantine'];
-      resolve(taken.includes(username.toLowerCase()) ? 'Username is already taken' : null);
+      const taken = ['admin', 'user', 'test', 'ui'];
+      resolve(taken.includes(username.toLowerCase()) ? '用户名已被占用' : null);
     }, 800);
 
     signal?.addEventListener('abort', () => {
@@ -91,11 +91,11 @@ function Demo() {
     validate: {
       username: async (value, _values, _path, signal) => {
         if (value.trim().length < 3) {
-          return 'Username must be at least 3 characters';
+          return '用户名至少包含 3 个字符';
         }
         return checkUsernameAvailability(value, signal);
       },
-      email: isEmail('Invalid email'),
+      email: isEmail('无效的邮箱'),
     },
   });
 
@@ -103,8 +103,8 @@ function Demo() {
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <TextInput
         withAsterisk
-        label="Username"
-        placeholder="Pick a username"
+        label="用户名"
+        placeholder="请输入用户名"
         key={form.key('username')}
         disabled={form.submitting}
         rightSection={form.validating ? <Loader size={16} /> : null}
@@ -114,8 +114,8 @@ function Demo() {
       <TextInput
         withAsterisk
         mt="md"
-        label="Email"
-        placeholder="your@email.com"
+        label="邮箱"
+        placeholder="yourname@example.com"
         key={form.key('email')}
         disabled={form.submitting}
         {...form.getInputProps('email')}
@@ -123,14 +123,14 @@ function Demo() {
 
       <Group justify="flex-end" mt="md">
         <Button type="submit" loading={form.submitting}>
-          Submit
+          提交
         </Button>
       </Group>
     </form>
   );
 }
 
-export const asyncValidation: MantineDemo = {
+export const asyncValidation: UIDemo = {
   type: 'code',
   component: Demo,
   code,

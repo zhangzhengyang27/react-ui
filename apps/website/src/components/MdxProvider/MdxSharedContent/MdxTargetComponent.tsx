@@ -8,44 +8,44 @@ function Demo() {
   return (
     <>
       <${component}.Target>
-        <button>Native button – ok</button>
+        <button>原生按钮 – 正常</button>
       </${component}.Target>
 
-      {/* OK */}
+      {/* 正常 */}
       <${component}.Target>
-        <Button>ReactUI component – ok</Button>
+        <Button>ReactUI 组件 – 正常</Button>
       </${component}.Target>
 
-      {/* String, NOT OK – will throw error */}
-      <${component}.Target>Raw string</${component}.Target>
+      {/* 字符串，不正常 – 会抛出错误 */}
+      <${component}.Target>原始字符串</${component}.Target>
 
-      {/* Number, NOT OK – will throw error */}
+      {/* 数字，不正常 – 会抛出错误 */}
       <${component}.Target>{2}</${component}.Target>
 
-      {/* Fragment, NOT OK – will throw error */}
+      {/* 片段，不正常 – 会抛出错误 */}
       <${component}.Target>
-        <>Fragment, NOT OK, will throw error</>
+        <>片段，不正常，会抛出错误</>
       </${component}.Target>
 
-      {/* Multiple nodes, NOT OK – will throw error */}
+      {/* 多个节点，不正常 – 会抛出错误 */}
       <${component}.Target>
-        <div>More that one node</div>
-        <div>NOT OK, will throw error</div>
+        <div>多于一个节点</div>
+        <div>不正常，会抛出错误</div>
       </${component}.Target>
     </>
   );
 }`;
 
 const getNoRefCode = (component: string) => `
-// Example of code that WILL NOT WORK
+// 以下代码无法正常工作
 import { ${component} } from '@react-ui/ui';
 
-// ❌ ref is not forwarded to the root element
+// ❌ ref 未转发到根元素
 function MyComponent() {
-  return <div>My component</div>;
+  return <div>我的组件</div>;
 }
 
-// This will not work – MyComponent does not support ref
+// 这段代码无法正常工作 – MyComponent 不支持 ref
 function Demo() {
   return (
     <${component}>
@@ -57,15 +57,15 @@ function Demo() {
 }`;
 
 const getWithRefCode = (component: string) => `
-// Example of code that will work
+// 以下代码可以正常工作
 import { ${component} } from '@react-ui/ui';
 
-// ✅ ref is forwarded to the root element
+// ✅ ref 已转发到根元素
 function MyComponent({ ref, ...others }: React.ComponentProps<'div'>) {
-  return <div ref={ref} {...others}>My component</div>;
+  return <div ref={ref} {...others}>我的组件</div>;
 }
 
-// Works correctly – ref is forwarded
+// 正常工作 – ref 已转发
 function Demo() {
   return (
     <${component}>
@@ -84,26 +84,25 @@ interface MdxTargetComponentProps {
 export function MdxTargetComponent({ component }: MdxTargetComponentProps) {
   return (
     <>
-      <MdxTitle id="target-children">{`${component}.Target children`}</MdxTitle>
+      <MdxTitle id="target-children">{`${component}.Target 子元素`}</MdxTitle>
       <MdxParagraph>
-        <MdxCode>{component}.Target</MdxCode> requires an element or a component as a single child –
-        strings, fragments, numbers, and multiple elements/components are not supported and{' '}
-        <b>will throw an error</b>. Custom components must provide a prop to get the root element
-        ref; all ReactUI components support ref out of the box.
+        <MdxCode>{component}.Target</MdxCode> 要求只有一个元素或组件作为子元素 —
+        字符串、片段、数字以及多个元素/组件均不受支持，<b>会抛出错误</b>。
+        自定义组件必须提供获取根元素引用的属性；所有 ReactUI 组件均默认支持 ref。
       </MdxParagraph>
 
       <MdxCodeHighlight code={getTargetCode(component)} language="tsx" />
 
-      <MdxTitle id="required-ref-prop">Required ref prop</MdxTitle>
+      <MdxTitle id="required-ref-prop">必需的 ref 属性</MdxTitle>
       <MdxParagraph>
-        Custom components that are rendered inside {component}.Target are required to support the{' '}
-        <MdxCode>ref</MdxCode> prop:
+        渲染在 {component}.Target 内的自定义组件必须支持{' '}
+        <MdxCode>ref</MdxCode> 属性：
       </MdxParagraph>
 
       <MdxCodeHighlight code={getNoRefCode(component)} language="tsx" />
 
       <MdxParagraph>
-        Pass <MdxCode>ref</MdxCode> to the root element:
+        将 <MdxCode>ref</MdxCode> 传递给根元素：
       </MdxParagraph>
 
       <MdxCodeHighlight code={getWithRefCode(component)} language="tsx" />

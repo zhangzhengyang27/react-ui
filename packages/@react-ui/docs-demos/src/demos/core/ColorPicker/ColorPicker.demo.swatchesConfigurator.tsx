@@ -1,5 +1,5 @@
 import { ColorPicker, ColorPickerProps, DEFAULT_THEME } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: ColorPickerProps) {
   return (
@@ -25,7 +25,7 @@ function Demo() {
 }
 `;
 
-export const swatchesConfigurator: MantineDemo = {
+export const swatchesConfigurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

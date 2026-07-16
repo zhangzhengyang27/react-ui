@@ -12,18 +12,36 @@ export interface DocgenProp {
   description: string;
   name: string;
   required: boolean;
-  type: {
-    name: string;
-  };
+  type: string | { name: string };
 }
 
 export interface Docgen {
   description: string;
   displayName: string;
-  props: Record<string, DocgenProp>;
+  props: DocgenProp[] | Record<string, DocgenProp>;
 }
 
 const PROPS_DATA: Record<string, Docgen> = docgenData as any;
+
+function getPropType(type: DocgenProp['type']): string {
+  if (typeof type === 'string') {
+    return type;
+  }
+  if (type && typeof type === 'object') {
+    return type.name ?? '';
+  }
+  return '';
+}
+
+function getPropsRecord(props: Docgen['props']): Record<string, DocgenProp> {
+  if (!Array.isArray(props)) {
+    return props;
+  }
+  return props.reduce<Record<string, DocgenProp>>((acc, prop) => {
+    acc[prop.name] = prop;
+    return acc;
+  }, {});
+}
 
 interface PropsTableProps {
   component: string;
@@ -35,17 +53,18 @@ export function PropsTable({ component, query }: PropsTableProps) {
     return <TableError errorOf="props" />;
   }
 
-  const props = PROPS_DATA[component].props;
+  const props = getPropsRecord(PROPS_DATA[component].props);
   const propsArray = Object.keys(props).map((propKey) => ({
     key: propKey,
     ...props[propKey],
+    typeName: getPropType(props[propKey].type),
   }));
 
   let filteredPropKeys = Object.keys(props);
 
   if (query.trim()) {
     const fuse = new Fuse(propsArray, {
-      keys: ['name', 'description', 'type.name'],
+      keys: ['name', 'description', 'typeName'],
       threshold: 0.3,
       minMatchCharLength: 1,
     });
@@ -55,7 +74,7 @@ export function PropsTable({ component, query }: PropsTableProps) {
   }
 
   const rows = filteredPropKeys.map((propKey) => {
-    const prop = PROPS_DATA[component].props[propKey];
+    const prop = props[propKey];
 
     return (
       <Table.Tr key={propKey} data-props-table-row>
@@ -78,7 +97,7 @@ export function PropsTable({ component, query }: PropsTableProps) {
         </Table.Td>
 
         <Table.Td>
-          <TableInlineCode>{prepareType(prop.type.name)}</TableInlineCode>
+          <TableInlineCode>{prepareType(getPropType(prop.type))}</TableInlineCode>
         </Table.Td>
         <Table.Td>
           <HtmlText fz="sm">{prop.description}</HtmlText>
@@ -86,7 +105,7 @@ export function PropsTable({ component, query }: PropsTableProps) {
             <HtmlText
               fz="sm"
               display="block"
-            >{`Default value: <code>${prop.defaultValue}</code>`}</HtmlText>
+            >{`默认值：<code>${prop.defaultValue}</code>`}</HtmlText>
           )}
         </Table.Td>
       </Table.Tr>
@@ -98,9 +117,9 @@ export function PropsTable({ component, query }: PropsTableProps) {
       <Table layout="fixed">
         <Table.Thead>
           <Table.Tr>
-            <Table.Th w={210}>Name</Table.Th>
-            <Table.Th w={310}>Type</Table.Th>
-            <Table.Th>Description</Table.Th>
+            <Table.Th w={210}>名称</Table.Th>
+            <Table.Th w={310}>类型</Table.Th>
+            <Table.Th>说明</Table.Th>
           </Table.Tr>
         </Table.Thead>
         <Table.Tbody>{rows}</Table.Tbody>

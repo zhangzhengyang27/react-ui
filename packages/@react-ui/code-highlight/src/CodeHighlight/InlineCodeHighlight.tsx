@@ -6,8 +6,8 @@ import {
   Factory,
   getRadius,
   getThemeColor,
-  MantineColor,
-  MantineRadius,
+  UIColor,
+  UIRadius,
   StylesApiProps,
   useProps,
   useStyles,
@@ -29,10 +29,10 @@ export interface InlineCodeHighlightProps
   language?: string;
 
   /** Controls background color of the code. By default, the value depends on color scheme. */
-  background?: MantineColor;
+  background?: UIColor;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius @default 'sm' */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 
   /** Adds border to the root element @default false */
   withBorder?: boolean;

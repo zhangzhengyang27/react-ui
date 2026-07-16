@@ -1,4 +1,4 @@
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
 import { MiniCalendar, MiniCalendarProps, MiniCalendarStylesNames } from './MiniCalendar';
 
 const defaultProps: MiniCalendarProps = {
@@ -21,7 +21,7 @@ describe('@react-ui/dates/MiniCalendar', () => {
     const { container } = render(
       <MiniCalendar {...defaultProps} date="2025-01-01" numberOfDays={3} />
     );
-    expect(container.querySelectorAll('.mantine-MiniCalendar-day')).toHaveLength(3);
+    expect(container.querySelectorAll('.ui-MiniCalendar-day')).toHaveLength(3);
     expect(screen.getByLabelText('2025-01-01')).toBeInTheDocument();
     expect(screen.getByLabelText('2025-01-02')).toBeInTheDocument();
     expect(screen.getByLabelText('2025-01-03')).toBeInTheDocument();
@@ -95,10 +95,10 @@ describe('@react-ui/dates/MiniCalendar', () => {
     const { container, rerender } = render(
       <MiniCalendar {...defaultProps} date="2025-01-01" numberOfDays={7} />
     );
-    expect(container.querySelectorAll('.mantine-MiniCalendar-day')).toHaveLength(7);
+    expect(container.querySelectorAll('.ui-MiniCalendar-day')).toHaveLength(7);
 
     rerender(<MiniCalendar {...defaultProps} date="2025-01-01" numberOfDays={3} />);
-    expect(container.querySelectorAll('.mantine-MiniCalendar-day')).toHaveLength(3);
+    expect(container.querySelectorAll('.ui-MiniCalendar-day')).toHaveLength(3);
   });
 
   it('supports monthLabelFormat', () => {

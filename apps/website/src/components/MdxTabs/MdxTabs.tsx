@@ -1,8 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { CodeIcon, FileTextIcon, SlidersHorizontalIcon } from '@phosphor-icons/react';
-import { Tabs } from '@react-ui/ui';
 import { MdxSiblings } from '@/components/MdxSiblings';
+import { MdxTitle } from '@/components/MdxProvider';
 import { PageBase } from '@/components/PageBase';
 import { PropsTablesList } from '@/components/PropsTable';
 import { StylesApiTablesList } from '@/components/StylesApiTable';
@@ -16,14 +13,8 @@ interface MdxTabsProps {
 }
 
 export function MdxTabs({ children, meta }: MdxTabsProps) {
-  const router = useRouter();
-  const [activeTab, setActiveTab] = useState('docs');
   const hasProps = Array.isArray(meta.props);
   const hasStyles = Array.isArray(meta.styles);
-
-  useEffect(() => {
-    setActiveTab(window.location.search.replace('?t=', '') || 'docs');
-  }, []);
 
   if (!hasProps && !hasStyles) {
     return null;
@@ -31,79 +22,36 @@ export function MdxTabs({ children, meta }: MdxTabsProps) {
 
   return (
     <PageBase>
-      <Tabs
-        variant="pills"
-        value={activeTab}
-        classNames={{ list: classes.tabsList, tab: classes.tab, tabSection: classes.tabSection }}
-        keepMounted={false}
-        radius="md"
-        onChange={(value) => {
-          router.replace(
-            value === 'docs' ? router.pathname : `${router.pathname}?t=${value}`,
-            undefined,
-            { scroll: false }
-          );
-          setActiveTab(value!);
-        }}
-      >
-        <div className={classes.tabsWrapper}>
-          <Tabs.List>
-            <Tabs.Tab value="docs">
-              <div className={classes.tabInner}>
-                <FileTextIcon size={20} className={classes.tabIcon} />
-                Documentation
-              </div>
-            </Tabs.Tab>
-            {hasProps && (
-              <Tabs.Tab value="props">
-                <div className={classes.tabInner}>
-                  <CodeIcon size={20} className={classes.tabIcon} />
-                  Props
-                </div>
-              </Tabs.Tab>
-            )}
-            {hasStyles && (
-              <Tabs.Tab value="styles-api">
-                <div className={classes.tabInner}>
-                  <SlidersHorizontalIcon size={20} className={classes.tabIcon} />
-                  Styles API
-                </div>
-              </Tabs.Tab>
-            )}
-          </Tabs.List>
+      <div className={classes.wrapper}>
+        <div className={classes.container} id="mdx">
+          {children}
+
+          {hasProps && (
+            <>
+              <MdxTitle order={2} id="props">
+                属性
+              </MdxTitle>
+              <PropsTablesList
+                components={meta.props!}
+                componentPrefix={meta.componentPrefix}
+              />
+            </>
+          )}
+
+          {hasStyles && (
+            <StylesApiTablesList
+              components={meta.styles!}
+              componentPrefix={meta.componentPrefix}
+            />
+          )}
+
+          <MdxSiblings meta={meta} />
         </div>
 
-        <Tabs.Panel value="docs">
-          <div className={classes.contentWrapper}>
-            <div
-              className={classes.main}
-              id="mdx"
-              data-with-toc={!meta.hideTableOfContents || undefined}
-            >
-              {children}
-              <MdxSiblings meta={meta} />
-            </div>
-
-            {!meta.hideTableOfContents && (
-              <div className={classes.tableOfContents}>
-                <TableOfContents withTabs />
-              </div>
-            )}
-          </div>
-        </Tabs.Panel>
-
-        <Tabs.Panel value="props">
-          <div className={classes.tabContent}>
-            <PropsTablesList components={meta.props!} componentPrefix={meta.componentPrefix} />
-          </div>
-        </Tabs.Panel>
-
-        <Tabs.Panel value="styles-api">
-          <div className={classes.tabContent}>
-            <StylesApiTablesList components={meta.styles!} componentPrefix={meta.componentPrefix} />
-          </div>
-        </Tabs.Panel>
-      </Tabs>
+        <div className={classes.tableOfContents}>
+          <TableOfContents withTabs={false} />
+        </div>
+      </div>
     </PageBase>
   );
 }

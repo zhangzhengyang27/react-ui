@@ -1,4 +1,4 @@
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Styles.demo.containers.module.css';
 
 const cssCode = `.root {
@@ -30,7 +30,7 @@ import classes from './Demo.module.css';
 function Demo() {
   return (
     <div className={classes.root}>
-      <div className={classes.child}>Resize parent element to see container query in action</div>
+      <div className={classes.child}>调整父元素大小查看容器查询效果</div>
     </div>
   );
 }
@@ -39,16 +39,16 @@ function Demo() {
 function Demo() {
   return (
     <div className={classes.root}>
-      <div className={classes.child}>Resize parent element to see container query in action</div>
+      <div className={classes.child}>调整父元素大小查看容器查询效果</div>
     </div>
   );
 }
 
-export const containers: MantineDemo = {
+export const containers: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code: cssCode, language: 'scss', fileName: 'Demo.module.css' },
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code: cssCode, language: 'scss', fileName: '演示样式.module.css' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
   ],
 };

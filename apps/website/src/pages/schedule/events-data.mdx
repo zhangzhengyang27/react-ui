@@ -19,7 +19,7 @@ export default Layout(MDX_DATA.ScheduleEventsData);
 
 ```tsx
 import type { DateTimeStringValue, EventPayload } from '@react-ui/schedule';
-import type { MantineColor } from '@react-ui/ui';
+import type { UIColor } from '@react-ui/ui';
 
 interface ScheduleEventBase<Payload extends EventPayload = EventPayload> {
   /** Unique event id, used for key and identification */
@@ -35,7 +35,7 @@ interface ScheduleEventBase<Payload extends EventPayload = EventPayload> {
   end: Date | DateTimeStringValue;
 
   /** Event background color. Key of `theme.colors` or any valid CSS color. */
-  color: MantineColor;
+  color: UIColor;
 
   /** Event variant, default is `'light'` */
   variant?: 'filled' | 'light';

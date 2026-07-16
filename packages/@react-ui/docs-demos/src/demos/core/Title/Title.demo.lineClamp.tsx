@@ -1,5 +1,5 @@
 import { Box, Title } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Title, Box } from '@react-ui/ui';
@@ -29,7 +29,7 @@ function Wrapper(props: any) {
   );
 }
 
-export const lineClamp: MantineDemo = {
+export const lineClamp: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

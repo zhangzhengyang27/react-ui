@@ -1,5 +1,5 @@
 import { Autocomplete } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { inputControls } from '../../../shared';
 
 const code = `
@@ -10,7 +10,7 @@ function Demo() {
   return (
     <Autocomplete
       {{props}}
-      placeholder="Autocomplete placeholder"
+      placeholder="自动完成占位符"
       data={['React', 'Angular', 'Vue', 'Svelte']}
     />
   );
@@ -21,13 +21,13 @@ function Wrapper(props: any) {
   return (
     <Autocomplete
       {...props}
-      placeholder="Autocomplete placeholder"
+      placeholder="自动完成占位符"
       data={['React', 'Angular', 'Vue', 'Svelte']}
     />
   );
 }
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

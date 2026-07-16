@@ -1,5 +1,5 @@
 import { TreeSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './data';
 
 const code = `
@@ -9,8 +9,8 @@ import { data } from './data';
 function Demo() {
   return (
     <TreeSelect
-      label="Pick up to 3 items"
-      placeholder="Pick values"
+      label="最多选择 3 项"
+      placeholder="选择值"
       data={data}
       mode="multiple"
       maxValues={3}
@@ -23,8 +23,8 @@ function Demo() {
 function Demo() {
   return (
     <TreeSelect
-      label="Pick up to 3 items"
-      placeholder="Pick values"
+      label="最多选择 3 项"
+      placeholder="选择值"
       data={data}
       mode="multiple"
       maxValues={3}
@@ -33,11 +33,11 @@ function Demo() {
   );
 }
 
-export const maxValues: MantineDemo = {
+export const maxValues: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
     { fileName: 'data.ts', language: 'tsx', code: dataCode },
   ],
   maxWidth: 340,

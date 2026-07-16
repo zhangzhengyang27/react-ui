@@ -6,7 +6,7 @@ import {
     factory,
     Factory,
     getSize,
-    MantineSize,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -20,7 +20,7 @@ export type ContainerCssVariables = {
 
 export interface ContainerProps extends BoxProps, StylesApiProps<ContainerFactory>, ElementProps<'div'> {
     /** max-width of the container, value is not responsive. Numbers are converted to rem. Ignored when fluid prop is set. @default 'md' */
-    size?: MantineSize | (string & {}) | number
+    size?: UISize | (string & {}) | number
 
     /** If set, the container takes 100% width of its parent and size prop is ignored @default false */
     fluid?: boolean
@@ -47,7 +47,7 @@ const varsResolver = createVarsResolver<ContainerFactory>((_, { size, fluid }) =
 }))
 
 /**
- * 居中容器，限制内容最大宽度。对齐 mantine Container（factory + useStyles + varsResolver + CSS module）。
+ * 居中容器，限制内容最大宽度。对齐 ui Container（factory + useStyles + varsResolver + CSS module）。
  */
 export const Container = factory<ContainerFactory>((_props, _ref) => {
     const props = useProps('Container', defaultProps, _props)

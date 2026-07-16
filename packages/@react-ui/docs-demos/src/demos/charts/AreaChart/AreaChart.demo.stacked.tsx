@@ -1,5 +1,5 @@
 import { AreaChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './_data';
 
 const code = `
@@ -14,9 +14,9 @@ function Demo() {
       dataKey="date"
       type="stacked"
       series={[
-        { name: 'Apples', color: 'indigo.6' },
-        { name: 'Oranges', color: 'blue.6' },
-        { name: 'Tomatoes', color: 'teal.6' },
+        { name: '苹果', color: 'indigo.6' },
+        { name: '橙子', color: 'blue.6' },
+        { name: '西红柿', color: 'teal.6' },
       ]}
     />
   );
@@ -31,19 +31,19 @@ function Demo() {
       dataKey="date"
       type="stacked"
       series={[
-        { name: 'Apples', color: 'indigo.6' },
-        { name: 'Oranges', color: 'blue.6' },
-        { name: 'Tomatoes', color: 'teal.6' },
+        { name: '苹果', color: 'indigo.6' },
+        { name: '橙子', color: 'blue.6' },
+        { name: '西红柿', color: 'teal.6' },
       ]}
     />
   );
 }
 
-export const stacked: MantineDemo = {
+export const stacked: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

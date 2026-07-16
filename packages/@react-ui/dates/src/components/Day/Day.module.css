@@ -19,13 +19,13 @@
   color: var(--ui-color-text);
   opacity: 1;
 
-  @mixin hover {
+  &:hover {
     &:where(:not([data-static], [data-disabled], [data-selected], [data-in-range])) {
-      @mixin light {
+      [data-ui-color-scheme='light'] & {
         background-color: var(--ui-color-gray-0);
       }
 
-      @mixin dark {
+      [data-ui-color-scheme='dark'] & {
         background-color: var(--ui-color-dark-5);
       }
     }
@@ -56,11 +56,11 @@
   }
 
   &:where([data-today][data-highlight-today]:not([data-selected], [data-in-range])) {
-    @mixin where-light {
+    [data-ui-color-scheme='light'] & {
       border: 1px solid var(--ui-color-gray-4);
     }
 
-    @mixin where-dark {
+    [data-ui-color-scheme='dark'] & {
       border: 1px solid var(--ui-color-dark-4);
     }
   }
@@ -69,7 +69,7 @@
     background-color: var(--ui-primary-color-light);
     border-radius: 0;
 
-    @mixin hover {
+    &:hover {
       &:where(:not([data-disabled], [data-static])) {
         background-color: var(--ui-primary-color-light);
       }
@@ -103,7 +103,7 @@
     background-color: var(--ui-primary-color-filled);
     color: var(--ui-primary-color-contrast);
 
-    @mixin hover {
+    &:hover {
       &:where(:not([data-disabled], [data-static])) {
         background-color: var(--ui-primary-color-filled-hover);
       }

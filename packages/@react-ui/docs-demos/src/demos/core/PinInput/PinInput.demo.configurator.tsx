@@ -1,5 +1,5 @@
 import { PinInput, PinInputProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { PinInput } from '@react-ui/ui';
@@ -13,7 +13,7 @@ function Wrapper(props: PinInputProps) {
   return <PinInput {...props} />;
 }
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

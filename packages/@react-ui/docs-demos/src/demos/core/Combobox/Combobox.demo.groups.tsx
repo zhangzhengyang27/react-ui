@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Combobox, Input, InputBase, useCombobox } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -30,22 +30,22 @@ function Demo() {
           rightSectionPointerEvents="none"
           onClick={() => combobox.toggleDropdown()}
         >
-          {value || <Input.Placeholder>Pick value</Input.Placeholder>}
+          {value || <Input.Placeholder>选择值</Input.Placeholder>}
         </InputBase>
       </Combobox.Target>
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          <Combobox.Group label="Fruits">
-            <Combobox.Option value="🍎 Apples">🍎 Apples</Combobox.Option>
-            <Combobox.Option value="🍌 Bananas">🍌 Bananas</Combobox.Option>
+          <Combobox.Group label="水果">
+            <Combobox.Option value="🍎 Apples">🍎 苹果</Combobox.Option>
+            <Combobox.Option value="🍌 Bananas">🍌 香蕉</Combobox.Option>
             <Combobox.Option value="🍇 Grape">🍇 Grape</Combobox.Option>
           </Combobox.Group>
 
-          <Combobox.Group label="Vegetables">
-            <Combobox.Option value="🥦 Broccoli">🥦 Broccoli</Combobox.Option>
-            <Combobox.Option value="🥕 Carrots">🥕 Carrots</Combobox.Option>
-            <Combobox.Option value="🥬 Lettuce">🥬 Lettuce</Combobox.Option>
+          <Combobox.Group label="蔬菜">
+            <Combobox.Option value="🥦 Broccoli">🥦 西兰花</Combobox.Option>
+            <Combobox.Option value="🥕 Carrots">🥕 胡萝卜</Combobox.Option>
+            <Combobox.Option value="🥬 Lettuce">🥬 生菜</Combobox.Option>
           </Combobox.Group>
         </Combobox.Options>
       </Combobox.Dropdown>
@@ -78,22 +78,22 @@ function Demo() {
           rightSectionPointerEvents="none"
           onClick={() => combobox.toggleDropdown()}
         >
-          {value || <Input.Placeholder>Pick value</Input.Placeholder>}
+          {value || <Input.Placeholder>选择值</Input.Placeholder>}
         </InputBase>
       </Combobox.Target>
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          <Combobox.Group label="Fruits">
-            <Combobox.Option value="🍎 Apples">🍎 Apples</Combobox.Option>
-            <Combobox.Option value="🍌 Bananas">🍌 Bananas</Combobox.Option>
+          <Combobox.Group label="水果">
+            <Combobox.Option value="🍎 Apples">🍎 苹果</Combobox.Option>
+            <Combobox.Option value="🍌 Bananas">🍌 香蕉</Combobox.Option>
             <Combobox.Option value="🍇 Grape">🍇 Grape</Combobox.Option>
           </Combobox.Group>
 
-          <Combobox.Group label="Vegetables">
-            <Combobox.Option value="🥦 Broccoli">🥦 Broccoli</Combobox.Option>
-            <Combobox.Option value="🥕 Carrots">🥕 Carrots</Combobox.Option>
-            <Combobox.Option value="🥬 Lettuce">🥬 Lettuce</Combobox.Option>
+          <Combobox.Group label="蔬菜">
+            <Combobox.Option value="🥦 Broccoli">🥦 西兰花</Combobox.Option>
+            <Combobox.Option value="🥕 Carrots">🥕 胡萝卜</Combobox.Option>
+            <Combobox.Option value="🥬 Lettuce">🥬 生菜</Combobox.Option>
           </Combobox.Group>
         </Combobox.Options>
       </Combobox.Dropdown>
@@ -101,7 +101,7 @@ function Demo() {
   );
 }
 
-export const groups: MantineDemo = {
+export const groups: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

@@ -1,8 +1,8 @@
 {
   "name": "@react-ui/charts",
   "version": "9.4.1",
-  "description": "Charts components built with recharts and Mantine",
-  "homepage": "https://mantine.dev/",
+  "description": "Charts components built with recharts and React UI",
+  "homepage": "https://react-ui.dev/",
   "license": "MIT",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "keywords": [
@@ -25,7 +25,7 @@
     "./styles.layer.css": "./styles.layer.css"
   },
   "repository": {
-    "url": "https://github.com/mantinedev/mantine.git",
+    "url": "https://github.com/react-ui/react-ui.git",
     "type": "git",
     "directory": "packages/@react-ui/charts"
   },

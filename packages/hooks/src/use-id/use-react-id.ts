@@ -7,10 +7,10 @@ import React from 'react'
 const __useId: () => string | undefined = (React as any)['useId'.toString()] || (() => undefined)
 
 /**
- * 生成一个带有 'mantine-' 前缀的 React ID
- * @returns {string} 格式化后的 ID 字符串，格式为 'mantine-{id}'，如果原始 ID 不存在则返回空字符串
+ * 生成一个带有 'ui-' 前缀的 React ID
+ * @returns {string} 格式化后的 ID 字符串，格式为 'ui-{id}'，如果原始 ID 不存在则返回空字符串
  */
 export function useReactId() {
     const id = __useId()
-    return id ? `mantine-${id.replace(/:/g, '')}` : ''
+    return id ? `ui-${id.replace(/:/g, '')}` : ''
 }

@@ -1,6 +1,6 @@
 import { Box, Button, Group, LoadingOverlay } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { AuthenticationForm } from '../../../shared/AuthenticationForm/AuthenticationForm';
 
 const code = `
@@ -13,12 +13,12 @@ function Demo() {
   return (
     <>
       <Box pos="relative">
-        <LoadingOverlay visible={visible} loaderProps={{ children: 'Loading...' }} />
+        <LoadingOverlay visible={visible} loaderProps={{ children: '加载中...' }} />
         {/* ...other content */}
       </Box>
 
       <Group justify="center">
-        <Button onClick={toggle}>Toggle overlay</Button>
+        <Button onClick={toggle}>切换遮罩层</Button>
       </Group>
     </>
   );
@@ -29,18 +29,18 @@ export function Demo() {
   return (
     <>
       <Box pos="relative">
-        <LoadingOverlay visible={visible} loaderProps={{ children: 'Loading...' }} />
+        <LoadingOverlay visible={visible} loaderProps={{ children: '加载中...' }} />
         <AuthenticationForm noSubmit />
       </Box>
 
       <Group justify="center" mt="xl">
-        <Button onClick={toggle}>Toggle overlay</Button>
+        <Button onClick={toggle}>切换遮罩层</Button>
       </Group>
     </>
   );
 }
 
-export const customLoader: MantineDemo = {
+export const customLoader: UIDemo = {
   centered: true,
   maxWidth: 400,
   dimmed: true,

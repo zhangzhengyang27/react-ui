@@ -1,5 +1,5 @@
 import { Carousel } from '@react-ui/carousel';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { Slides } from './_slides';
 
 const code = `
@@ -25,7 +25,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

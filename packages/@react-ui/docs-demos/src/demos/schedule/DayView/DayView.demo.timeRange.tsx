@@ -1,5 +1,5 @@
 import { DayView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { dataCode, regularEvents } from './_data';
 
 const code = `
@@ -9,7 +9,7 @@ import { events } from './data';
 function Demo() {
   return (
     <DayView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       startTime="09:00:00"
       endTime="17:00:00"
@@ -20,16 +20,16 @@ function Demo() {
 
 function Demo() {
   return (
-    <DayView date={new Date()} events={regularEvents} startTime="09:00:00" endTime="17:00:00" />
+    <DayView date={new Date('2024-01-15')} events={regularEvents} startTime="09:00:00" endTime="17:00:00" />
   );
 }
 
-export const timeRange: MantineDemo = {
+export const timeRange: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

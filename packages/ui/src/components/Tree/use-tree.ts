@@ -287,16 +287,20 @@ export function useTree({
             if (!multiple) {
                 if (_selectedState.includes(value)) {
                     setAnchorNode(null)
+                    setSelectedState([])
                     return []
                 }
 
                 setAnchorNode(value)
+                setSelectedState([value])
                 return [value]
             }
 
             if (_selectedState.includes(value)) {
                 setAnchorNode(null)
-                return _selectedState.filter((item) => item !== value)
+                const next = _selectedState.filter((item) => item !== value)
+                setSelectedState(next)
+                return next
             }
 
             setAnchorNode(value)

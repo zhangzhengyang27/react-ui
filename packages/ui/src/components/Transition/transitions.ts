@@ -1,11 +1,11 @@
-export interface MantineTransitionStyles {
+export interface UITransitionStyles {
     common?: React.CSSProperties
     in: React.CSSProperties
     out: React.CSSProperties
     transitionProperty: React.CSSProperties['transitionProperty']
 }
 
-export type MantineTransitionName =
+export type UITransitionName =
     | 'fade'
     | 'fade-down'
     | 'fade-up'
@@ -28,7 +28,7 @@ export type MantineTransitionName =
     | 'pop-bottom-left'
     | 'pop-bottom-right'
 
-export type MantineTransition = MantineTransitionName | MantineTransitionStyles
+export type UITransition = UITransitionName | UITransitionStyles
 
 const popIn = (from: 'top' | 'bottom') => ({
     in: { opacity: 1, transform: 'scale(1)' },
@@ -37,9 +37,9 @@ const popIn = (from: 'top' | 'bottom') => ({
 })
 
 /**
- * 全量过渡预设。对齐 mantine transitions（MANTINE_TRANSITIONS）。
+ * 全量过渡预设。对齐 ui transitions（UI_TRANSITIONS）。
  */
-export const transitions: Record<MantineTransitionName, MantineTransitionStyles> = {
+export const transitions: Record<UITransitionName, UITransitionStyles> = {
     fade: {
         in: { opacity: 1 },
         out: { opacity: 0 },

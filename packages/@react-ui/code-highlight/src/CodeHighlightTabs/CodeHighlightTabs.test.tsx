@@ -1,4 +1,4 @@
-import { tests } from '@mantine-tests/core';
+import { tests } from '@react-ui/tests';
 import {
   CodeHighlightTabs,
   CodeHighlightTabsProps,

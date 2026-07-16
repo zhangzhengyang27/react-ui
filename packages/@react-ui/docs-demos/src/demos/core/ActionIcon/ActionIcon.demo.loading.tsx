@@ -1,7 +1,7 @@
 import { HeartIcon } from '@phosphor-icons/react';
 import { ActionIcon, Group, Switch } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ActionIcon, Group, Switch } from '@react-ui/ui';
@@ -13,18 +13,18 @@ function Demo() {
   return (
     <>
       <Group>
-        <ActionIcon loading={loading} aria-label="Like">
+        <ActionIcon loading={loading} aria-label="点赞">
           <HeartIcon size={18} />
         </ActionIcon>
-        <ActionIcon variant="light" loading={loading} aria-label="Like">
+        <ActionIcon variant="light" loading={loading} aria-label="点赞">
           <HeartIcon size={18} />
         </ActionIcon>
-        <ActionIcon variant="outline" loading={loading} aria-label="Like">
+        <ActionIcon variant="outline" loading={loading} aria-label="点赞">
           <HeartIcon size={18} />
         </ActionIcon>
       </Group>
 
-      <Switch checked={loading} onChange={toggle} label="Loading state" mt="md" />
+      <Switch checked={loading} onChange={toggle} label="加载状态" mt="md" />
     </>
   );
 }
@@ -35,23 +35,23 @@ function Demo() {
   return (
     <>
       <Group>
-        <ActionIcon loading={loading} aria-label="Like">
+        <ActionIcon loading={loading} aria-label="点赞">
           <HeartIcon size={18} />
         </ActionIcon>
-        <ActionIcon variant="light" loading={loading} aria-label="Like">
+        <ActionIcon variant="light" loading={loading} aria-label="点赞">
           <HeartIcon size={18} />
         </ActionIcon>
-        <ActionIcon variant="outline" loading={loading} aria-label="Like">
+        <ActionIcon variant="outline" loading={loading} aria-label="点赞">
           <HeartIcon size={18} />
         </ActionIcon>
       </Group>
 
-      <Switch checked={loading} onChange={toggle} label="Loading state" mt="md" />
+      <Switch checked={loading} onChange={toggle} label="加载状态" mt="md" />
     </>
   );
 }
 
-export const loading: MantineDemo = {
+export const loading: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

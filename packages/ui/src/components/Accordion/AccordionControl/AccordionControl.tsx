@@ -126,5 +126,5 @@ export const AccordionControl = factory<AccordionControlFactory>((props, ref) =>
     )
 })
 
-AccordionControl.displayName = '@mantine/core/AccordionControl'
+AccordionControl.displayName = '@react-ui/ui/AccordionControl'
 AccordionControl.classes = classes

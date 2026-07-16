@@ -1,21 +1,21 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { DayView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const initialEvents: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Draggable Event',
+    title: '可拖动事件',
     start: `${today} 09:00:00`,
     end: `${today} 10:00:00`,
     color: 'blue',
   },
   {
     id: 2,
-    title: 'Locked Event',
+    title: '锁定事件',
     start: `${today} 11:00:00`,
     end: `${today} 12:00:00`,
     color: 'gray',
@@ -23,7 +23,7 @@ const initialEvents: ScheduleEventData[] = [
   },
   {
     id: 3,
-    title: 'Another Draggable',
+    title: '另一个可拖动事件',
     start: `${today} 14:00:00`,
     end: `${today} 15:00:00`,
     color: 'green',
@@ -35,19 +35,19 @@ import { useState } from 'react';
 import dayjs from 'dayjs';
 import { DayView, ScheduleEventData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const initialEvents: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Draggable Event',
+    title: '可拖动事件',
     start: \`\${today} 09:00:00\`,
     end: \`\${today} 10:00:00\`,
     color: 'blue',
   },
   {
     id: 2,
-    title: 'Locked Event',
+    title: '锁定事件',
     start: \`\${today} 11:00:00\`,
     end: \`\${today} 12:00:00\`,
     color: 'gray',
@@ -55,7 +55,7 @@ const initialEvents: ScheduleEventData[] = [
   },
   {
     id: 3,
-    title: 'Another Draggable',
+    title: '另一个可拖动事件',
     start: \`\${today} 14:00:00\`,
     end: \`\${today} 15:00:00\`,
     color: 'green',
@@ -75,7 +75,7 @@ function Demo() {
 
   return (
     <DayView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       startTime="08:00:00"
       endTime="18:00:00"
@@ -108,7 +108,7 @@ function Demo() {
 
   return (
     <DayView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       startTime="08:00:00"
       endTime="18:00:00"
@@ -119,7 +119,7 @@ function Demo() {
   );
 }
 
-export const canDragEvent: MantineDemo = {
+export const canDragEvent: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

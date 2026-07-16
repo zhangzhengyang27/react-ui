@@ -1,36 +1,36 @@
-import { Button, Group, useMantineColorScheme } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { Button, Group, useUIColorScheme } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
-import { useMantineColorScheme, Button, Group } from '@react-ui/ui';
+import { useUIColorScheme, Button, Group } from '@react-ui/ui';
 
 function Demo() {
-  const { setColorScheme, clearColorScheme } = useMantineColorScheme();
+  const { setColorScheme, clearColorScheme } = useUIColorScheme();
 
   return (
     <Group>
-      <Button onClick={() => setColorScheme('light')}>Light</Button>
-      <Button onClick={() => setColorScheme('dark')}>Dark</Button>
-      <Button onClick={() => setColorScheme('auto')}>Auto</Button>
-      <Button onClick={clearColorScheme}>Clear</Button>
+      <Button onClick={() => setColorScheme('light')}>浅色</Button>
+      <Button onClick={() => setColorScheme('dark')}>深色</Button>
+      <Button onClick={() => setColorScheme('auto')}>自动</Button>
+      <Button onClick={clearColorScheme}>清除</Button>
     </Group>
   );
 }
 `;
 
 function Demo() {
-  const { setColorScheme, clearColorScheme } = useMantineColorScheme();
+  const { setColorScheme, clearColorScheme } = useUIColorScheme();
   return (
     <Group>
-      <Button onClick={() => setColorScheme('light')}>Light</Button>
-      <Button onClick={() => setColorScheme('dark')}>Dark</Button>
-      <Button onClick={() => setColorScheme('auto')}>Auto</Button>
-      <Button onClick={clearColorScheme}>Clear</Button>
+      <Button onClick={() => setColorScheme('light')}>浅色</Button>
+      <Button onClick={() => setColorScheme('dark')}>深色</Button>
+      <Button onClick={() => setColorScheme('auto')}>自动</Button>
+      <Button onClick={clearColorScheme}>清除</Button>
     </Group>
   );
 }
 
-export const colorScheme: MantineDemo = {
+export const colorScheme: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

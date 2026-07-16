@@ -1,5 +1,5 @@
 import { DonutChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = (props: any) => `
 import { DonutChart } from '@react-ui/charts';
@@ -8,8 +8,8 @@ function Demo() {
   return (
     <DonutChart
       data={[
-        { name: 'USA', value: 400, color: '${props.color}' },
-        { name: 'Other', value: 200, color: 'gray.6' },
+        { name: '美国', value: 400, color: '${props.color}' },
+        { name: '其他', value: 200, color: 'gray.6' },
       ]}
     />
   );
@@ -21,14 +21,14 @@ function Wrapper(props: any) {
     <DonutChart
       {...props}
       data={[
-        { name: 'USA', value: 400, color: props.color },
-        { name: 'Other', value: 200, color: 'gray.6' },
+        { name: '美国', value: 400, color: props.color },
+        { name: '其他', value: 200, color: 'gray.6' },
       ]}
     />
   );
 }
 
-export const color: MantineDemo = {
+export const color: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

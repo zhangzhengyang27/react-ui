@@ -1,42 +1,42 @@
 export const PACKAGES_DATA = [
   {
     package: '@react-ui/hooks',
-    description: 'Hooks for state and UI management',
+    description: '状态与 UI 管理 Hooks',
     dependencies: ['@react-ui/hooks'],
   },
   {
     package: '@react-ui/ui',
-    description: 'Core components library: inputs, buttons, overlays, etc.',
+    description: '核心组件库：输入框、按钮、浮层等',
     dependencies: ['@react-ui/hooks', '@react-ui/ui'],
   },
   {
     package: '@react-ui/ui',
-    description: 'Form management library',
+    description: '表单管理库',
     dependencies: ['@react-ui/ui'],
   },
   {
     package: '@react-ui/ui',
-    description: 'Date inputs, calendars',
+    description: '日期输入框与日历',
     dependencies: ['@react-ui/hooks', '@react-ui/ui', '@react-ui/ui', 'dayjs'],
   },
   {
     package: '@react-ui/ui',
-    description: 'Recharts based charts library',
+    description: '基于 Recharts 的图表库',
     dependencies: ['@react-ui/hooks', '@react-ui/ui', '@react-ui/ui', 'recharts'],
   },
   {
     package: '@react-ui/ui',
-    description: 'Notifications system',
+    description: '通知系统',
     dependencies: ['@react-ui/hooks', '@react-ui/ui', '@react-ui/ui'],
   },
   {
     package: '@react-ui/ui',
-    description: 'Code highlight with your theme colors and styles',
+    description: '使用主题颜色与样式的代码高亮',
     dependencies: ['@react-ui/hooks', '@react-ui/ui', '@react-ui/ui'],
   },
   {
     package: '@react-ui/ui',
-    description: 'Rich text editor based on Tiptap',
+    description: '基于 Tiptap 的富文本编辑器',
     dependencies: [
       '@react-ui/hooks',
       '@react-ui/ui',
@@ -49,12 +49,12 @@ export const PACKAGES_DATA = [
   },
   {
     package: '@react-ui/ui',
-    description: 'Capture files with drag and drop',
+    description: '支持拖拽上传的文件捕获',
     dependencies: ['@react-ui/hooks', '@react-ui/ui', '@react-ui/ui'],
   },
   {
     package: '@react-ui/ui',
-    description: 'Embla based carousel component',
+    description: '基于 Embla 的轮播组件',
     dependencies: [
       '@react-ui/hooks',
       '@react-ui/ui',
@@ -65,17 +65,17 @@ export const PACKAGES_DATA = [
   },
   {
     package: '@react-ui/ui',
-    description: 'Overlay command center',
+    description: '覆盖式命令中心',
     dependencies: ['@react-ui/hooks', '@react-ui/ui', '@react-ui/ui'],
   },
   {
     package: '@react-ui/ui',
-    description: 'Centralized modals manager',
+    description: '集中式模态框管理器',
     dependencies: ['@react-ui/hooks', '@react-ui/ui', '@react-ui/ui'],
   },
   {
     package: '@react-ui/ui',
-    description: 'Navigation progress',
+    description: '导航进度条',
     dependencies: ['@react-ui/hooks', '@react-ui/ui', '@react-ui/ui'],
   },
 ];

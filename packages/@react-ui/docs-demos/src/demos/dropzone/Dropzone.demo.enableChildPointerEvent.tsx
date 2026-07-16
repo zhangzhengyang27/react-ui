@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Button, Group } from '@react-ui/ui';
 import { Dropzone } from '@react-ui/dropzone';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useRef } from 'react';
@@ -37,7 +37,7 @@ function Demo() {
   );
 }
 
-export const enableChildPointerEvent: MantineDemo = {
+export const enableChildPointerEvent: UIDemo = {
   type: 'code',
   component: Demo,
   code,

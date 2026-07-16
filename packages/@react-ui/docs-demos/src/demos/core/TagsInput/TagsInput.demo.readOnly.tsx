@@ -1,5 +1,5 @@
 import { TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TagsInput } from '@react-ui/ui';
@@ -7,8 +7,8 @@ import { TagsInput } from '@react-ui/ui';
 function Demo() {
   return (
     <TagsInput
-      label="Read only"
-      placeholder="Enter tag"
+      label="只读"
+      placeholder="输入标签"
       readOnly
       defaultValue={['First', 'Second']}
     />
@@ -19,15 +19,15 @@ function Demo() {
 function Demo() {
   return (
     <TagsInput
-      label="Read only"
-      placeholder="Enter tag"
+      label="只读"
+      placeholder="输入标签"
       readOnly
       defaultValue={['First', 'Second']}
     />
   );
 }
 
-export const readOnly: MantineDemo = {
+export const readOnly: UIDemo = {
   type: 'code',
   component: Demo,
   code,

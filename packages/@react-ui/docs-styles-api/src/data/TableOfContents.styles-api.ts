@@ -3,8 +3,8 @@ import type { StylesApiData } from '../types';
 
 export const TableOfContentsStylesApi: StylesApiData<TableOfContentsFactory> = {
   selectors: {
-    root: 'Root element',
-    control: 'Control element',
+    root: '根元素',
+    control: 'Control 元素',
   },
 
   vars: {
@@ -13,7 +13,7 @@ export const TableOfContentsStylesApi: StylesApiData<TableOfContentsFactory> = {
       '--toc-color': 'Text color of active control',
       '--toc-depth-offset': 'Offset between of control depending on depth',
       '--toc-radius': 'Border-radius of control',
-      '--toc-size': 'Controls font-size and padding of all elements',
+      '--toc-size': '控制 all elements 的 font-size and padding',
     },
   },
 

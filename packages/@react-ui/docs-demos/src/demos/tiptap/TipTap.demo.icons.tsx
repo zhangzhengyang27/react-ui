@@ -2,7 +2,7 @@ import { TextBIcon, TextItalicIcon } from '@phosphor-icons/react';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { RichTextEditor } from '@react-ui/tiptap';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useEditor } from '@tiptap/react';
@@ -17,7 +17,7 @@ function Demo() {
   const editor = useEditor({
     shouldRerenderOnTransaction: true,
     extensions: [StarterKit],
-    content: '<p>Customize icons with icon prop</p>',
+    content: '<p>使用 icon 属性自定义图标</p>',
   });
 
   return (
@@ -43,7 +43,7 @@ function Demo() {
     shouldRerenderOnTransaction: true,
     immediatelyRender: false,
     extensions: [StarterKit],
-    content: '<p>Customize icons with icon prop</p>',
+    content: '<p>使用 icon 属性自定义图标</p>',
   });
 
   return (
@@ -60,7 +60,7 @@ function Demo() {
   );
 }
 
-export const icons: MantineDemo = {
+export const icons: UIDemo = {
   type: 'code',
   component: Demo,
   code,

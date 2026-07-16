@@ -1,4 +1,4 @@
-import { render, screen } from '@mantine-tests/core';
+import { render, screen } from '@react-ui/tests';
 import { TimeValue } from './TimeValue';
 
 describe('@react-ui/dates/TimeValue', () => {

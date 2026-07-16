@@ -3,9 +3,9 @@ import type { StylesApiData } from '../types';
 
 export const PopoverStylesApi: StylesApiData<PopoverFactory> = {
   selectors: {
-    dropdown: 'Dropdown element',
-    arrow: 'Dropdown arrow',
-    overlay: 'Overlay element',
+    dropdown: '下拉元素',
+    arrow: '下拉箭头',
+    overlay: '遮罩层元素',
   },
 
   vars: {
@@ -19,7 +19,7 @@ export const PopoverStylesApi: StylesApiData<PopoverFactory> = {
     {
       modifier: 'data-position',
       selector: 'dropdown',
-      value: 'Value of floating ui dropdown position',
+      value: 'floating ui 下拉框位置的值',
     },
   ],
 };

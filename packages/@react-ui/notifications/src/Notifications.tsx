@@ -17,7 +17,7 @@ import {
   rem,
   RemoveScroll,
   StylesApiProps,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useStyles,
 } from '@react-ui/ui';
@@ -150,7 +150,7 @@ export const Notifications = factory<NotificationsFactory>((_props) => {
     ...others
   } = props;
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const data = useNotifications(store);
   const forceUpdate = useForceUpdate();
   const shouldReduceMotion = useReducedMotion();

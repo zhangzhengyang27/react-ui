@@ -1,4 +1,4 @@
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
 import { Carousel, CarouselProps, CarouselStylesNames } from './Carousel';
 
 const defaultProps: CarouselProps = {
@@ -56,22 +56,22 @@ describe('@react-ui/carousel/Carousel', () => {
 
   it('renders controls if withControls is true', () => {
     const { container } = render(<Carousel withControls />);
-    expect(container.querySelector('.mantine-Carousel-controls')).toBeInTheDocument();
+    expect(container.querySelector('.ui-Carousel-controls')).toBeInTheDocument();
   });
 
   it('does not render controls if withControls is false', () => {
     const { container } = render(<Carousel withControls={false} />);
-    expect(container.querySelector('.mantine-Carousel-controls')).not.toBeInTheDocument();
+    expect(container.querySelector('.ui-Carousel-controls')).not.toBeInTheDocument();
   });
 
   it('renders indicators if withIndicators is true', () => {
     const { container } = render(<Carousel withIndicators />);
-    expect(container.querySelector('.mantine-Carousel-indicators')).toBeInTheDocument();
+    expect(container.querySelector('.ui-Carousel-indicators')).toBeInTheDocument();
   });
 
   it('does not render indicators if withIndicators is false', () => {
     const { container } = render(<Carousel withIndicators={false} />);
-    expect(container.querySelector('.mantine-Carousel-indicators')).not.toBeInTheDocument();
+    expect(container.querySelector('.ui-Carousel-indicators')).not.toBeInTheDocument();
   });
 
   it('supports custom next/previous controls icons', () => {

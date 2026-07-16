@@ -1,5 +1,5 @@
 import { CompositeChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './_data';
 
 const code = (props: Record<string, any>) => `
@@ -12,7 +12,7 @@ function Demo() {
       h={300}
       data={data}
       dataKey="date"
-      series={[{ name: 'Apples', type: 'line', color: '${props.color}' }]}
+      series={[{ name: '苹果', type: 'line', color: '${props.color}' }]}
     />
   );
 }
@@ -24,17 +24,17 @@ function Wrapper(props: any) {
       h={300}
       data={data}
       dataKey="date"
-      series={[{ name: 'Apples', type: 'line', color: props.color }]}
+      series={[{ name: '苹果', type: 'line', color: props.color }]}
       {...props}
     />
   );
 }
 
-export const color: MantineDemo = {
+export const color: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
   controls: [

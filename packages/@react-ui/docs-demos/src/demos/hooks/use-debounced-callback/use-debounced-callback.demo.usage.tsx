@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Loader, Text, TextInput } from '@react-ui/ui';
 import { useDebouncedCallback } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -43,7 +43,7 @@ function Demo() {
       <TextInput
         value={search}
         onChange={handleChange}
-        placeholder="Search..."
+        placeholder="搜索..."
         rightSection={loading && <Loader size={20} />}
       />
       {searchResults.map((result) => (
@@ -91,7 +91,7 @@ function Demo() {
       <TextInput
         value={search}
         onChange={handleChange}
-        placeholder="Search..."
+        placeholder="搜索..."
         rightSection={loading && <Loader size={20} />}
       />
       {searchResults.map((result) => (
@@ -103,7 +103,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

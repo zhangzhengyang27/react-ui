@@ -3,7 +3,7 @@ import {
     factory,
     useProps,
     type Factory,
-    type MantineSpacing
+    type UISpacing
 } from '../../core'
 import { Group } from '../Group/Group'
 import { usePaginationContext } from './Pagination.context'
@@ -41,26 +41,26 @@ export interface PaginationProps extends PaginationRootProps {
     /** If set, next/previous controls are displayed @default true */
     withControls?: boolean
 
-    /** Props passed down to next/previous/first/last controls */
+    /** 传递给下一页/上一页/首页/末页控件的属性 */
     getControlProps?: (control: 'first' | 'previous' | 'last' | 'next') => Record<string, any>
 
-    /** Next control icon component */
+    /** 下一页控件图标组件 */
     nextIcon?: PaginationIcon
 
-    /** Previous control icon component */
+    /** 上一页控件图标组件 */
     previousIcon?: PaginationIcon
 
-    /** Last control icon component */
+    /** 末页控件图标组件 */
     lastIcon?: PaginationIcon
 
-    /** First control icon component */
+    /** 首页控件图标组件 */
     firstIcon?: PaginationIcon
 
-    /** Dots icon component */
+    /** 省略号图标组件 */
     dotsIcon?: PaginationIcon
 
     /** Key of `theme.spacing`, gap between controls @default 8 */
-    gap?: MantineSpacing
+    gap?: UISpacing
 
     /** If set, the pagination is hidden when only one page is available (`total={1}`) @default false */
     hideWithOnePage?: boolean
@@ -68,7 +68,7 @@ export interface PaginationProps extends PaginationRootProps {
     /** If set to `false`, page number buttons are hidden, only next/previous controls remain @default `true` */
     withPages?: boolean
 
-    /** Function to format the label text displayed in responsive mode */
+    /** 格式化响应模式下显示的标签文本的函数 */
     formatLabel?: PaginationFormatLabel
 }
 

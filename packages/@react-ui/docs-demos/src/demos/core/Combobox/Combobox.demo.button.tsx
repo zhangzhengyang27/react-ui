@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Box, Button, Combobox, Text, useCombobox } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
 import { Button, Combobox, useCombobox, Text, Box } from '@react-ui/ui';
 
-const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
+const groceries = ['🍎 苹果', '🍌 香蕉', '🥦 西兰花', '🥕 胡萝卜', '🍫 巧克力'];
 
 function Demo() {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
@@ -28,7 +28,7 @@ function Demo() {
         </Text>
 
         <Text span size="sm">
-          {selectedItem || 'Nothing selected'}
+          {selectedItem || '未选择任何项'}
         </Text>
       </Box>
 
@@ -43,7 +43,7 @@ function Demo() {
         }}
       >
         <Combobox.Target>
-          <Button onClick={() => combobox.toggleDropdown()}>Pick item</Button>
+          <Button onClick={() => combobox.toggleDropdown()}>选择项目</Button>
         </Combobox.Target>
 
         <Combobox.Dropdown>
@@ -55,7 +55,7 @@ function Demo() {
 }
 `;
 
-const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
+const groceries = ['🍎 苹果', '🍌 香蕉', '🥦 西兰花', '🥕 胡萝卜', '🍫 巧克力'];
 
 function Demo() {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
@@ -77,7 +77,7 @@ function Demo() {
         </Text>
 
         <Text span size="sm">
-          {selectedItem || 'Nothing selected'}
+          {selectedItem || '未选择任何项'}
         </Text>
       </Box>
 
@@ -92,7 +92,7 @@ function Demo() {
         }}
       >
         <Combobox.Target>
-          <Button onClick={() => combobox.toggleDropdown()}>Pick item</Button>
+          <Button onClick={() => combobox.toggleDropdown()}>选择项目</Button>
         </Combobox.Target>
 
         <Combobox.Dropdown>
@@ -103,7 +103,7 @@ function Demo() {
   );
 }
 
-export const button: MantineDemo = {
+export const button: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

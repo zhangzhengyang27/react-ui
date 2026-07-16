@@ -6,7 +6,7 @@ import {
   factory,
   Factory,
   getRadius,
-  MantineRadius,
+  UIRadius,
   StylesApiProps,
   UnstyledButton,
   useDirection,
@@ -33,7 +33,7 @@ export interface HeaderControlProps
   square?: boolean;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius` @default theme.defaultRadius */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 
   /** If set to `false`, the control will not be clickable  */
   interactive?: boolean;

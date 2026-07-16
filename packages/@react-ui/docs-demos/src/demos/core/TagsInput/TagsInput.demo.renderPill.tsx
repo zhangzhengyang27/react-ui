@@ -1,5 +1,5 @@
 import { Pill, TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TagsInput, Pill } from '@react-ui/ui';
@@ -7,9 +7,9 @@ import { TagsInput, Pill } from '@react-ui/ui';
 function Demo() {
   return (
     <TagsInput
-      label="Custom pills"
-      description="Tags are rendered with a star prefix"
-      placeholder="Enter tag"
+      label="自定义标签丸"
+      description="标签以星号前缀渲染"
+      placeholder="输入标签"
       defaultValue={['React', 'Angular']}
       renderPill={({ value, onRemove }) => (
         <Pill withRemoveButton onRemove={onRemove}>
@@ -24,9 +24,9 @@ function Demo() {
 function Demo() {
   return (
     <TagsInput
-      label="Custom pills"
-      description="Tags are rendered with a star prefix"
-      placeholder="Enter tag"
+      label="自定义标签丸"
+      description="标签以星号前缀渲染"
+      placeholder="输入标签"
       defaultValue={['React', 'Angular']}
       renderPill={({ value, onRemove }) => (
         <Pill withRemoveButton onRemove={onRemove}>
@@ -37,7 +37,7 @@ function Demo() {
   );
 }
 
-export const renderPill: MantineDemo = {
+export const renderPill: UIDemo = {
   type: 'code',
   component: Demo,
   code,

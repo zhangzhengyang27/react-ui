@@ -49,11 +49,11 @@ export function Scrollbar(props: ScrollbarProps) {
     const handleWheelScrollRef = useRef(onWheelScroll)
     const handleResizeRef = useRef(onResize)
 
-    useEffect(() => {
-        handleThumbPositionChangeRef.current = onThumbPositionChange
-        handleWheelScrollRef.current = onWheelScroll
-        handleResizeRef.current = onResize
-    })
+    // 在 render 阶段同步最新回调到 ref,供异步事件回调(wheel/resize)引用
+    // 避免无依赖 useEffect 每帧执行带来的性能损耗
+    handleThumbPositionChangeRef.current = onThumbPositionChange
+    handleWheelScrollRef.current = onWheelScroll
+    handleResizeRef.current = onResize
 
     const handleDragScroll = (event: React.PointerEvent<HTMLElement>) => {
         if (rectRef.current) {

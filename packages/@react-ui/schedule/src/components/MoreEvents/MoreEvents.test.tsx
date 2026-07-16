@@ -1,4 +1,4 @@
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
 import { ScheduleEventData } from '../../types';
 import { MoreEvents, MoreEventsProps, MoreEventsStylesNames } from './MoreEvents';
 
@@ -87,7 +87,7 @@ describe('@react-ui/schedule/MoreEvents', () => {
     const spy = jest.fn();
     render(<MoreEvents {...defaultProps} dropdownType="modal" onDropdownClose={spy} />);
     await userEvent.click(screen.getByRole('button', { name: '+2 more' }));
-    await userEvent.click(document.querySelector('.mantine-CloseButton-root')!);
+    await userEvent.click(document.querySelector('.ui-CloseButton-root')!);
     expect(spy).toHaveBeenCalledTimes(1);
   });
 

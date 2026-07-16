@@ -1,5 +1,5 @@
 import { Mark, Popover, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Popover, Mark, Text } from '@react-ui/ui';
@@ -11,9 +11,9 @@ function Demo() {
       Pokémon was hunted close to extinction by those who were after the priceless antlers.{' '}
       <Popover middlewares={{ flip: true, shift: true, inline: true }} position="top">
         <Popover.Target>
-          <Mark>When visiting a junkyard</Mark>
+          <Mark>当访问废品场时</Mark>
         </Popover.Target>
-        <Popover.Dropdown>Inline dropdown</Popover.Dropdown>
+        <Popover.Dropdown>内联下拉</Popover.Dropdown>
       </Popover>
       , you may catch sight of it having an intense fight with Murkrow over shiny objects.Ho-Oh’s
       feathers glow in seven colors depending on the angle at which they are struck by light. These
@@ -31,9 +31,9 @@ function Demo() {
       Pokémon was hunted close to extinction by those who were after the priceless antlers.{' '}
       <Popover middlewares={{ flip: true, shift: true, inline: true }} position="top">
         <Popover.Target>
-          <Mark>When visiting a junkyard</Mark>
+          <Mark>当访问废品场时</Mark>
         </Popover.Target>
-        <Popover.Dropdown>Inline dropdown</Popover.Dropdown>
+        <Popover.Dropdown>内联下拉</Popover.Dropdown>
       </Popover>
       , you may catch sight of it having an intense fight with Murkrow over shiny objects.Ho-Oh's
       feathers glow in seven colors depending on the angle at which they are struck by light. These
@@ -43,7 +43,7 @@ function Demo() {
   );
 }
 
-export const inline: MantineDemo = {
+export const inline: UIDemo = {
   type: 'code',
   component: Demo,
   code,

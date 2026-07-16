@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Text, TextInput, Title } from '@react-ui/ui';
-import { useMediaQuery } from '@react-ui/hooks';
 import { PhosphorIcons } from '../icons';
 import { getComponentName } from './getComponentName';
 import { PropsTable } from './PropsTable';
@@ -13,14 +12,11 @@ export interface PropsTablesListProps {
 
 export function PropsTablesList({ components, componentPrefix }: PropsTablesListProps) {
   const [query, setQuery] = useState('');
-  const isNonTouchDevice = useMediaQuery('(hover: hover) and (pointer: fine)', false, {
-    getInitialValueInEffect: false,
-  });
 
   const tables = components.map((component) => (
     <div key={component} className={classes.section} data-props-table-section>
       <Title order={2} className={classes.title}>
-        {getComponentName({ component, componentPrefix })} props
+        {getComponentName({ component, componentPrefix })} 属性
       </Title>
       <PropsTable component={component} query={query} />
     </div>
@@ -33,14 +29,13 @@ export function PropsTablesList({ components, componentPrefix }: PropsTablesList
         value={query}
         onChange={(event) => setQuery(event.currentTarget.value)}
         leftSection={<PhosphorIcons.MagnifyingGlassIcon className={classes.searchIcon} />}
-        placeholder="Search props"
+        placeholder="搜索属性"
         radius="md"
         size="lg"
-        autoFocus={isNonTouchDevice}
         pt={7}
       />
       {tables}
-      <Text className={classes.nothingFound}>Nothing found...</Text>
+      <Text className={classes.nothingFound}>未找到...</Text>
     </div>
   );
 }

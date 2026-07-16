@@ -6,10 +6,10 @@ import {
     getSpacing,
     type BoxProps,
     type ElementProps,
-    type MantineShadow,
-    type MantineSize,
-    type MantineSpacing,
-    type MantineRadius
+    type UIShadow,
+    type UISize,
+    type UISpacing,
+    type UIRadius
 } from '../../core'
 import { OptionalPortal, type BasePortalProps } from '../Portal'
 import type { TransitionOverride } from '../Transition'
@@ -72,16 +72,16 @@ export interface ModalBaseProps extends BoxProps, ElementProps<'div', 'title'> {
     zIndex?: string | number
 
     /** Key of theme.shadows or any valid CSS box-shadow value */
-    shadow?: MantineShadow
+    shadow?: UIShadow
 
-    /** Key of theme.radius or any valid CSS value to set border-radius */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 to set border-radius */
+    radius?: UIRadius
 
     /** Key of theme.spacing or any valid CSS value to set content, header and footer padding */
-    padding?: MantineSpacing
+    padding?: UISpacing
 
     /** Controls width of the content area */
-    size?: MantineSize | (string & {}) | number
+    size?: UISize | (string & {}) | number
 
     /** Props passed down to react-remove-scroll */
     removeScrollProps?: RemoveScrollProps
@@ -171,4 +171,4 @@ export function ModalBase({
     )
 }
 
-ModalBase.displayName = '@mantine/core/ModalBase'
+ModalBase.displayName = '@react-ui/ui/ModalBase'

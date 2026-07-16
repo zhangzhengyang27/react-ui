@@ -1,10 +1,10 @@
-# Mantine Dropzone
+# UI Dropzone
 
 [![npm](https://img.shields.io/npm/dm/@react-ui/dropzone)](https://www.npmjs.com/package/@react-ui/dropzone)
 
 Capture files from user
 
-[View documentation](https://mantine.dev/)
+[View documentation](#)
 
 ## Installation
 

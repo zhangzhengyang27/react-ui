@@ -6,9 +6,9 @@ import {
     Factory,
     getSize,
     getThemeColor,
-    MantineColor,
+    UIColor,
     StylesApiProps,
-    useMantineTheme,
+    useUITheme,
     useProps,
     useStyles
 } from '../../core'
@@ -22,7 +22,7 @@ export type RingProgressCssVariables = {
 
 export interface RingProgressSection {
     value: number
-    color?: MantineColor
+    color?: UIColor
 }
 
 export interface RingProgressProps extends BoxProps, StylesApiProps<RingProgressFactory> {
@@ -42,7 +42,7 @@ export interface RingProgressProps extends BoxProps, StylesApiProps<RingProgress
     label?: React.ReactNode
 
     /** Default color for sections without color */
-    color?: MantineColor
+    color?: UIColor
 }
 
 export type RingProgressFactory = Factory<{
@@ -94,7 +94,7 @@ export const RingProgress = factory<RingProgressFactory>((_props, ref) => {
         ...others
     } = props
 
-    const theme = useMantineTheme()
+    const theme = useUITheme()
     const getStyles = useStyles<RingProgressFactory>({
         name: 'RingProgress',
         props,

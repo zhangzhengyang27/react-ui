@@ -1,4 +1,4 @@
-import { tests } from '@mantine-tests/core';
+import { tests } from '@react-ui/tests';
 import {
   DropzoneFullScreen,
   DropzoneFullScreenProps,
@@ -21,6 +21,6 @@ describe('@react-ui/dropzone/DropzoneFullScreen', () => {
     mod: false,
     displayName: '@react-ui/dropzone/DropzoneFullScreen',
     stylesApiSelectors: ['fullScreen'],
-    selector: '.mantine-DropzoneFullScreen-fullScreen',
+    selector: '.ui-DropzoneFullScreen-fullScreen',
   });
 });

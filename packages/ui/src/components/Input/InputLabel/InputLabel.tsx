@@ -7,7 +7,7 @@ import {
     factory,
     Factory,
     getFontSize,
-    MantineFontSize,
+    UIFontSize,
     StylesApiProps,
     useProps,
     useStyles
@@ -24,7 +24,7 @@ export interface InputLabelProps
     extends BoxProps, StylesApiProps<InputLabelFactory>, ElementProps<'label'> {
     __staticSelector?: string
     required?: boolean
-    size?: MantineFontSize
+    size?: UIFontSize
     labelElement?: 'label' | 'div'
 }
 

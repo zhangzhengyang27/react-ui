@@ -6,7 +6,7 @@ import {
     factory,
     Factory,
     getThemeColor,
-    MantineColor,
+    UIColor,
     rem,
     StylesApiProps,
     useProps,
@@ -37,8 +37,8 @@ export interface SemiCircleProgressProps
     thickness?: number
     orientation?: 'up' | 'down'
     fillDirection?: 'right-to-left' | 'left-to-right'
-    filledSegmentColor?: MantineColor
-    emptySegmentColor?: MantineColor
+    filledSegmentColor?: UIColor
+    emptySegmentColor?: UIColor
     transitionDuration?: number
     label?: React.ReactNode
     labelPosition?: 'center' | 'bottom'

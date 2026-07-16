@@ -3,8 +3,8 @@ import type { StylesApiData } from '../types';
 
 export const TimelineStylesApi: StylesApiData<TimelineFactory> = {
   selectors: {
-    root: 'Root element',
-    item: 'Item root element',
+    root: '根元素',
+    item: 'Item root 元素',
     itemBody: 'Item body, wraps title and content',
     itemTitle: 'Item title, controlled by title prop',
     itemContent: 'Item content, controlled by children prop',
@@ -13,11 +13,11 @@ export const TimelineStylesApi: StylesApiData<TimelineFactory> = {
 
   vars: {
     root: {
-      '--tl-bullet-size': 'Controls bullet `width` and `height`',
+      '--tl-bullet-size': '控制 bullet `width` and `height`',
       '--tl-color': 'Controls active bullet and line colors',
       '--tl-icon-color': 'Controls icon color',
-      '--tl-line-width': 'Controls width of the line between bullets',
-      '--tl-radius': 'Controls bullet `border-radius`',
+      '--tl-line-width': '控制 the line between bullets 的 width',
+      '--tl-radius': '控制 bullet `border-radius`',
     },
   },
 

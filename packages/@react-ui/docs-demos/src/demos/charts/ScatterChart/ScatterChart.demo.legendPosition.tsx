@@ -1,5 +1,5 @@
 import { ScatterChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { doubleData, doubleDataCode } from './_data';
 
 const code = `
@@ -35,11 +35,11 @@ function Demo() {
   );
 }
 
-export const legendPosition: MantineDemo = {
+export const legendPosition: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: doubleDataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

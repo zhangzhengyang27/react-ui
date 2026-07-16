@@ -7,7 +7,7 @@ import {
   TextAlignRightIcon,
 } from '@phosphor-icons/react';
 import { Button, ComboboxPopover, ComboboxPopoverProps, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -47,9 +47,9 @@ function Demo() {
   return (
     <ComboboxPopover
       data={[
-        { value: 'left', label: 'Left' },
-        { value: 'center', label: 'Center' },
-        { value: 'right', label: 'Right' },
+        { value: 'left', label: '左' },
+        { value: 'center', label: '居中' },
+        { value: 'right', label: '右' },
         { value: 'justify', label: 'Justify' },
       ]}
       value={value}
@@ -57,7 +57,7 @@ function Demo() {
       renderOption={renderSelectOption}
     >
       <ComboboxPopover.Target>
-        <Button variant="default" miw={200}>{value || 'Select alignment'}</Button>
+        <Button variant="default" miw={200}>{value || '选择对齐方式'}</Button>
       </ComboboxPopover.Target>
     </ComboboxPopover>
   );
@@ -91,9 +91,9 @@ function Demo() {
   return (
     <ComboboxPopover
       data={[
-        { value: 'left', label: 'Left' },
-        { value: 'center', label: 'Center' },
-        { value: 'right', label: 'Right' },
+        { value: 'left', label: '左' },
+        { value: 'center', label: '居中' },
+        { value: 'right', label: '右' },
         { value: 'justify', label: 'Justify' },
       ]}
       value={value}
@@ -102,14 +102,14 @@ function Demo() {
     >
       <ComboboxPopover.Target>
         <Button variant="default" miw={200}>
-          {value || 'Select alignment'}
+          {value || '选择对齐方式'}
         </Button>
       </ComboboxPopover.Target>
     </ComboboxPopover>
   );
 }
 
-export const renderOption: MantineDemo = {
+export const renderOption: UIDemo = {
   type: 'code',
   component: Demo,
   code,

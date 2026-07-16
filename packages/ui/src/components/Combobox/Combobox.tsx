@@ -7,8 +7,8 @@ import {
     Factory,
     getRadius,
     getShadow,
-    MantineRadius,
-    MantineShadow,
+    UIRadius,
+    UIShadow,
     StylesApiProps,
     useProps,
     useStyles
@@ -66,19 +66,19 @@ export interface ComboboxProps extends StylesApiProps<ComboboxFactory> {
     /** Called when search value changes */
     onSearchChange?: (value: string) => void
 
-    /** Dropdown position relative to the target element */
+    //** 下拉框相对于目标元素的位置 */
     position?: FloatingPosition
 
-    /** Offset of the dropdown element */
+    /** 下拉元素的偏移量 */
     offset?: number
 
     /** Dropdown radius */
-    radius?: MantineRadius
+    radius?: UIRadius
 
     /** Dropdown shadow */
-    shadow?: MantineShadow
+    shadow?: UIShadow
 
-    /** Dropdown z-index */
+    /** 下拉层 z-index */
     zIndex?: string | number
 
     /** Determines whether dropdown should be rendered within portal, defaults to true */
@@ -355,7 +355,7 @@ Combobox.EventsTarget = ComboboxEventsTarget
 Combobox.DropdownTarget = ComboboxDropdownTarget
 Combobox.Search = ComboboxSearch
 Combobox.Chevron = ComboboxChevron
-Combobox.displayName = '@mantine/core/Combobox'
+Combobox.displayName = '@react-ui/ui/Combobox'
 
 export namespace Combobox {
     export type Props = ComboboxProps

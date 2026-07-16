@@ -64,7 +64,7 @@ export function ConfiguratorColorControl({
         {colors}
         <Popover radius="md" position="bottom-end" shadow="md">
           <Popover.Target>
-            <UnstyledButton className={classes.colorControl} aria-label="Pick color">
+            <UnstyledButton className={classes.colorControl} aria-label="选择颜色">
               <ColorWheelIcon />
             </UnstyledButton>
           </Popover.Target>
@@ -78,7 +78,7 @@ export function ConfiguratorColorControl({
             <TextInput
               value={colorPickerColor}
               onChange={(event) => handleColorPickerChange(event.currentTarget.value)}
-              placeholder="Enter color"
+              placeholder="输入颜色"
               radius="md"
               size="xs"
               mt="xs"

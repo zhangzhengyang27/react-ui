@@ -1,5 +1,5 @@
 import { TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { inputControls } from '../../../shared';
 
 const code = `
@@ -10,7 +10,7 @@ function Demo() {
   return (
     <TagsInput
       {{props}}
-      placeholder="TagsInput placeholder"
+      placeholder="标签输入占位符"
       value={['First', 'Second']}
       data={['React', 'Angular', 'Vue', 'Svelte']}
     />
@@ -22,14 +22,14 @@ function Wrapper(props: any) {
   return (
     <TagsInput
       {...props}
-      placeholder="TagsInput placeholder"
+      placeholder="标签输入占位符"
       value={['First', 'Second']}
       data={['React', 'Angular', 'Vue', 'Svelte']}
     />
   );
 }
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

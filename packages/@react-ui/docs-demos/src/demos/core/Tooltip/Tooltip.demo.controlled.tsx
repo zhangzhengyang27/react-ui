@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -23,12 +23,12 @@ export function Demo() {
 
   return (
     <Tooltip label="Ctrl + J" opened={opened}>
-      <Button onClick={() => setOpened((o) => !o)}>Toggle color scheme</Button>
+      <Button onClick={() => setOpened((o) => !o)}>切换颜色方案</Button>
     </Tooltip>
   );
 }
 
-export const controlled: MantineDemo = {
+export const controlled: UIDemo = {
   type: 'code',
   centered: true,
   code,

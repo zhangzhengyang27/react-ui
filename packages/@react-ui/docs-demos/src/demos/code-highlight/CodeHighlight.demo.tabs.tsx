@@ -1,8 +1,8 @@
 import { CodeHighlightTabs } from '@react-ui/code-highlight';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const tsxCode = `
-import { Group, Button, MantineProvider, createTheme } from '@react-ui/ui';
+import { Group, Button, UIProvider, createTheme } from '@react-ui/ui';
 import classes from './Demo.module.css';
 
 const theme = createTheme({
@@ -15,12 +15,12 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       <Group>
-        <Button variant="danger">Danger variant</Button>
-        <Button variant="primary">Primary variant</Button>
+        <Button variant="danger">危险变体</Button>
+        <Button variant="primary">主要变体</Button>
       </Group>
-    </MantineProvider>
+    </UIProvider>
   );
 }
 `;
@@ -54,8 +54,8 @@ function Demo() {
     <CodeHighlightTabs
       radius="md"
       code={[
-        { fileName: 'Demo.tsx', code: tsxCode, language: 'tsx' },
-        { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+        { fileName: '演示代码.tsx', code: tsxCode, language: 'tsx' },
+        { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
       ]}
     />
   );
@@ -67,18 +67,18 @@ function Demo() {
     <CodeHighlightTabs
       radius="md"
       code={[
-        { fileName: 'Demo.tsx', code: tsxCode, language: 'tsx' },
-        { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+        { fileName: '演示代码.tsx', code: tsxCode, language: 'tsx' },
+        { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
       ]}
     />
   );
 }
 
-export const tabs: MantineDemo = {
+export const tabs: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
     { fileName: 'code.ts', code: codeFile, language: 'tsx' },
   ],
 };

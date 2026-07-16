@@ -1,10 +1,10 @@
 import { CodeHighlightTabs } from '@react-ui/code-highlight';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { CssIcon, TypeScriptIcon } from '@react-ui/dev-icons';
 
 const tsxCode = `
 function Button() {
-  return <button>Click me</button>;
+  return <button>点击我</button>;
 }
 `;
 
@@ -42,12 +42,12 @@ function Demo() {
       radius="md"
       code={[
         {
-          fileName: 'Button.tsx',
+          fileName: '按钮.tsx',
           code: tsxCode,
           language: 'tsx',
         },
         {
-          fileName: 'Button.module.css',
+          fileName: '按钮样式.module.css',
           code: cssCode,
           language: 'scss',
         },
@@ -76,12 +76,12 @@ function Demo() {
       radius="md"
       code={[
         {
-          fileName: 'Button.tsx',
+          fileName: '按钮.tsx',
           code: tsxCode,
           language: 'tsx',
         },
         {
-          fileName: 'Button.module.css',
+          fileName: '按钮样式.module.css',
           code: cssCode,
           language: 'scss',
         },
@@ -90,7 +90,7 @@ function Demo() {
   );
 }
 
-export const tabsGetIcons: MantineDemo = {
+export const tabsGetIcons: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,7 +1,8 @@
 .root {
     display: grid;
     grid-template-columns: repeat(var(--grid-cols, 12), minmax(0, 1fr));
-    gap: var(--grid-gutter, 0);
+    row-gap: var(--grid-row-gap, var(--grid-gutter, 0));
+    column-gap: var(--grid-column-gap, var(--grid-gutter, 0));
 }
 
 .root[data-grow='true'] > * {

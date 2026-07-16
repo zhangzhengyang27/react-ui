@@ -40,7 +40,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
                             aria-labelledby={ctx.getTargetId()}
                             data-position={ctx.placement}
                             {...others}
-                            className={['mantine-Popover-dropdown', className].filter(Boolean).join(' ')}
+                            className={['ui-Popover-dropdown', className].filter(Boolean).join(' ')}
                             style={{
                                 ...transitionStyles,
                                 position: 'absolute',
@@ -62,8 +62,8 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
                                 arrowRadius={ctx.arrowRadius}
                                 arrowOffset={ctx.arrowOffset}
                                 arrowPosition={ctx.arrowPosition}
-                                className="mantine-Popover-arrow"
-                                style={{ backgroundColor: 'var(--popover-bg, white)' }}
+                                className="ui-Popover-arrow"
+                                style={{ backgroundColor: 'var(--ui-color-body)' }}
                             />
                         </Box>
                     </FocusTrap>
@@ -73,4 +73,4 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
     )
 })
 
-PopoverDropdown.displayName = '@mantine/core/PopoverDropdown'
+PopoverDropdown.displayName = '@react-ui/ui/PopoverDropdown'

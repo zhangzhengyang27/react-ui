@@ -7,7 +7,7 @@ export function SpotlightDemoBase(props: Partial<SpotlightProps>) {
   return (
     <>
       <Group justify="center">
-        <Button onClick={actions.open}>Open spotlight</Button>
+        <Button onClick={actions.open}>打开聚光灯</Button>
       </Group>
       <Spotlight actions={[]} store={store} {...props} />
     </>

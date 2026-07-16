@@ -1,5 +1,5 @@
 import { ColorInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ColorInput } from '@react-ui/ui';
@@ -19,8 +19,8 @@ function Demo() {
     <ColorInput
       maw={320}
       mx="auto"
-      placeholder="Pick color"
-      label="Your favorite color"
+      placeholder="选择颜色"
+      label="你最喜欢的颜色"
       swatches={[
         '#2e2e2e',
         '#868e96',
@@ -41,7 +41,7 @@ function Demo() {
   );
 }
 
-export const swatches: MantineDemo = {
+export const swatches: UIDemo = {
   type: 'code',
   component: Demo,
   code,

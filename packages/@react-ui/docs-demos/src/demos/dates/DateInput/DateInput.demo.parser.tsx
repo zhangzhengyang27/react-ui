@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { DateInput, DateInputProps } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import dayjs from 'dayjs';
@@ -19,8 +19,8 @@ function Demo() {
     <DateInput
       dateParser={dateParser}
       valueFormat="DD/MM/YYYY"
-      label="Type WW2"
-      placeholder="Type WW2"
+      label="输入 WW2"
+      placeholder="输入 WW2"
     />
   );
 }
@@ -39,13 +39,13 @@ function Demo() {
     <DateInput
       dateParser={dateParser}
       valueFormat="DD/MM/YYYY"
-      label="Type WW2"
-      placeholder="Type WW2"
+      label="输入 WW2"
+      placeholder="输入 WW2"
     />
   );
 }
 
-export const parser: MantineDemo = {
+export const parser: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { NativeSelect } from './NativeSelect'
 
-const renderSelect = (ui: React.ReactElement) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderSelect = (ui: React.ReactElement) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('NativeSelect', () => {
     it('renders with string data and label', () => {
@@ -53,9 +53,9 @@ describe('NativeSelect', () => {
         expect(screen.getByRole('combobox')).toHaveValue('a')
 
         rerender(
-            <MantineProvider>
+            <UIProvider>
                 <NativeSelect data={['a', 'b', 'c']} value="c" />
-            </MantineProvider>
+            </UIProvider>
         )
         expect(screen.getByRole('combobox')).toHaveValue('c')
     })

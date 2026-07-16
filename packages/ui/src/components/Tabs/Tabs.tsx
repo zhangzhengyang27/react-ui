@@ -9,8 +9,8 @@ import {
     type BoxProps,
     type ElementProps,
     type Factory,
-    type MantineColor,
-    type MantineRadius,
+    type UIColor,
+    type UIRadius,
     type StylesApiProps
 } from '../../core'
 import classes from './Tabs.module.css'
@@ -30,31 +30,31 @@ export interface TabsProps
     extends BoxProps,
         StylesApiProps<TabsFactory>,
         ElementProps<'div', 'value' | 'defaultValue' | 'onChange'> {
-    /** Controlled active tab value */
+    /** 受控的活动标签页值 */
     value?: string
 
-    /** Default active tab value for uncontrolled component */
+    /** 非受控组件的默认活动标签页值 */
     defaultValue?: string
 
-    /** Called when active tab changes */
+    /** 活动标签页变化时调用 */
     onChange?: (value: string) => void
 
-    /** Tabs orientation @default 'horizontal' */
+    /** Tabs 方向 @default 'horizontal' */
     orientation?: 'horizontal' | 'vertical'
 
-    /** Key of theme.colors or any valid CSS color @default theme.primaryColor */
-    color?: MantineColor
+    /** 主题色键或任意有效 CSS 颜色 @default theme.primaryColor */
+    color?: UIColor
 
-    /** Tabs variant @default 'default' */
+    /** Tabs 变体 @default 'default' */
     variant?: TabsVariant
 
-    /** Key of theme.radius or any valid CSS value @default theme.defaultRadius */
-    radius?: MantineRadius
+    /** 主题圆角键或任意有效 CSS 值 @default theme.defaultRadius */
+    radius?: UIRadius
 
-    /** If true, inactive panels stay mounted in the DOM @default false */
+    /** 如果为 true，非活动面板会保留在 DOM 中 @default false */
     keepMounted?: boolean
 
-    /** Tabs content */
+    /** Tabs 内容 */
     children?: React.ReactNode
 }
 

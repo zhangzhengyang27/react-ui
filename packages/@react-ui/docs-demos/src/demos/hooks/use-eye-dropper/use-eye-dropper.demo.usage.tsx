@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { CrosshairIcon } from '@phosphor-icons/react';
 import { ActionIcon, ColorSwatch, Group, Text } from '@react-ui/ui';
 import { useEyeDropper } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -25,7 +25,7 @@ function Demo() {
   };
 
   if (!supported) {
-    return <Text ta="center">EyeDropper API is not supported in your browser</Text>;
+    return <Text ta="center">你的浏览器不支持 EyeDropper API</Text>;
   }
 
   return (
@@ -39,9 +39,9 @@ function Demo() {
           <Text>Picked color: {color}</Text>
         </Group>
       ) : (
-        <Text>Click the button to pick color</Text>
+        <Text>点击按钮选择颜色</Text>
       )}
-      {error && <Text c="red">Error: {error?.message}</Text>}
+      {error && <Text c="red">错误：{error?.message}</Text>}
     </Group>
   );
 }
@@ -62,7 +62,7 @@ function Demo() {
   };
 
   if (!supported) {
-    return <Text ta="center">EyeDropper API is not supported in your browser</Text>;
+    return <Text ta="center">你的浏览器不支持 EyeDropper API</Text>;
   }
 
   return (
@@ -76,14 +76,14 @@ function Demo() {
           <Text>Picked color: {color}</Text>
         </Group>
       ) : (
-        <Text>Click the button to pick color</Text>
+        <Text>点击按钮选择颜色</Text>
       )}
-      {error && <Text c="red">Error: {error?.message}</Text>}
+      {error && <Text c="red">错误：{error?.message}</Text>}
     </Group>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

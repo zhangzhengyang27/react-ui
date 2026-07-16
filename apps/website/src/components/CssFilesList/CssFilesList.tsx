@@ -37,5 +37,5 @@ export function CssFilesList() {
     <CssFilePath key={filePath} filePath={filePath} />,
   ]);
 
-  return <MdxDataTable data={files} head={['Component', 'Import']} />;
+  return <MdxDataTable data={files} head={['组件', '引入方式']} />;
 }

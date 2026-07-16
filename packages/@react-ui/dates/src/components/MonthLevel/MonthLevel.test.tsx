@@ -1,5 +1,5 @@
-import { render, screen, tests } from '@mantine-tests/core';
-import { datesTests } from '@mantine-tests/dates';
+import { render, screen, tests } from '@react-ui/tests';
+import { datesTests } from '@react-ui/tests/dates';
 import { MonthLevel, MonthLevelProps, MonthLevelStylesNames } from './MonthLevel';
 
 const defaultProps: MonthLevelProps = {
@@ -67,17 +67,17 @@ describe('@react-ui/dates/MonthLevel', () => {
 
   it('has correct default __staticSelector', () => {
     const { container } = render(<MonthLevel {...defaultProps} />);
-    expect(container.querySelector('table td button')).toHaveClass('mantine-MonthLevel-day');
+    expect(container.querySelector('table td button')).toHaveClass('ui-MonthLevel-day');
     expect(screen.getByLabelText('level-control')).toHaveClass(
-      'mantine-MonthLevel-calendarHeaderLevel'
+      'ui-MonthLevel-calendarHeaderLevel'
     );
   });
 
   it('supports custom __staticSelector', () => {
     const { container } = render(<MonthLevel {...defaultProps} __staticSelector="Calendar" />);
-    expect(container.querySelector('table td button')).toHaveClass('mantine-Calendar-day');
+    expect(container.querySelector('table td button')).toHaveClass('ui-Calendar-day');
     expect(screen.getByLabelText('level-control')).toHaveClass(
-      'mantine-Calendar-calendarHeaderLevel'
+      'ui-Calendar-calendarHeaderLevel'
     );
   });
 

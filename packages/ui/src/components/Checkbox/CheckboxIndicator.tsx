@@ -8,9 +8,9 @@ import {
     getRadius,
     getSize,
     getThemeColor,
-    MantineColor,
-    MantineRadius,
-    MantineSize,
+    UIColor,
+    UIRadius,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -25,17 +25,17 @@ export type CheckboxIndicatorCssVariables = {
 
 export interface CheckboxIndicatorProps
     extends BoxProps, StylesApiProps<CheckboxIndicatorFactory>, ElementProps<'div'> {
-    /** Key of theme.colors or any valid CSS color to set input background color in checked state @default theme.primaryColor */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 to set input background color in checked state @default theme.primaryColor */
+    color?: UIColor
 
     /** Controls size of the component @default 'sm' */
-    size?: MantineSize | (string & {}) | number
+    size?: UISize | (string & {}) | number
 
-    /** Key of theme.radius or any valid CSS value to set border-radius @default theme.defaultRadius */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 to set border-radius @default theme.defaultRadius */
+    radius?: UIRadius
 
     /** Color of the check icon */
-    iconColor?: MantineColor
+    iconColor?: UIColor
 
     /** Indeterminate state of the checkbox. If set, `checked` prop is ignored. */
     indeterminate?: boolean

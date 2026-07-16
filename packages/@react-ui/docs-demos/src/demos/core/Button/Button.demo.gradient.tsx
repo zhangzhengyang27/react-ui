@@ -1,5 +1,5 @@
 import { Button } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { gradientControls } from '../../../shared';
 
 const code = (props: any) => `
@@ -11,7 +11,7 @@ function Demo() {
       variant="gradient"
       gradient={{ from: '${props.gradientFrom}', to: '${props.gradientTo}', deg: ${props.gradientDegree} }}
     >
-      Gradient button
+      渐变按钮
     </Button>
   );
 }
@@ -23,12 +23,12 @@ function Wrapper(props: any) {
       variant="gradient"
       gradient={{ from: props.gradientFrom, to: props.gradientTo, deg: props.gradientDegree }}
     >
-      Gradient button
+      渐变按钮
     </Button>
   );
 }
 
-export const gradient: MantineDemo = {
+export const gradient: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

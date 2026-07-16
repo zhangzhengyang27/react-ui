@@ -9,13 +9,13 @@ import {
   factory,
   Factory,
   getRadius,
-  MantineRadius,
+  UIRadius,
   rem,
   ScrollArea,
   ScrollAreaAutosizeProps,
   StylesApiProps,
   UnstyledButton,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useResolvedStylesApi,
   useStyles,
@@ -122,7 +122,7 @@ export interface DayViewProps
   locale?: string;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius` @default theme.defaultRadius */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 
   /** Dayjs format for slot labels or a callback function that returns formatted value @default HH:mm  */
   slotLabelFormat?: DateLabelFormat;
@@ -389,7 +389,7 @@ export const DayView = factory<DayViewFactory>((_props) => {
     radius,
   };
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const ctx = useDatesContext();
   const resolveNow = () => (getCurrentTime ? dayjs(getCurrentTime()) : dayjs());
   const showCurrentTimeIndicator =

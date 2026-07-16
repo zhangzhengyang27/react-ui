@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
-import { render, screen, tests } from '@mantine-tests/core';
-import { datesTests } from '@mantine-tests/dates';
+import { render, screen, tests } from '@react-ui/tests';
+import { datesTests } from '@react-ui/tests/dates';
 import { DecadeLevel, DecadeLevelProps, DecadeLevelStylesNames } from './DecadeLevel';
 
 const defaultProps: DecadeLevelProps = {
@@ -70,20 +70,20 @@ describe('@react-ui/dates/DecadeLevel', () => {
   it('has correct default __staticSelector', () => {
     const { container } = render(<DecadeLevel {...defaultProps} />);
     expect(container.querySelector('table td button')).toHaveClass(
-      'mantine-DecadeLevel-yearsListControl'
+      'ui-DecadeLevel-yearsListControl'
     );
     expect(screen.getByLabelText('level-control')).toHaveClass(
-      'mantine-DecadeLevel-calendarHeaderLevel'
+      'ui-DecadeLevel-calendarHeaderLevel'
     );
   });
 
   it('supports custom __staticSelector', () => {
     const { container } = render(<DecadeLevel {...defaultProps} __staticSelector="Calendar" />);
     expect(container.querySelector('table td button')).toHaveClass(
-      'mantine-Calendar-yearsListControl'
+      'ui-Calendar-yearsListControl'
     );
     expect(screen.getByLabelText('level-control')).toHaveClass(
-      'mantine-Calendar-calendarHeaderLevel'
+      'ui-Calendar-calendarHeaderLevel'
     );
   });
 

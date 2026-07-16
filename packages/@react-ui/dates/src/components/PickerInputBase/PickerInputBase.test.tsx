@@ -1,5 +1,5 @@
-import { render, screen, userEvent } from '@mantine-tests/core';
-import { datesTests } from '@mantine-tests/dates';
+import { render, screen, userEvent } from '@react-ui/tests';
+import { datesTests } from '@react-ui/tests/dates';
 import { PickerInputBase, PickerInputBaseProps } from './PickerInputBase';
 
 const noop = () => {};
@@ -25,8 +25,8 @@ describe('@react-ui/dates/PickerInputBase', () => {
     const { container } = render(
       <PickerInputBase {...defaultProps} __staticSelector="TestStaticSelector" />
     );
-    expect(container.querySelector('*:not(style)')).toHaveClass('mantine-TestStaticSelector-root');
-    expect(screen.getByText('test-value')).toHaveClass('mantine-TestStaticSelector-input');
+    expect(container.querySelector('*:not(style)')).toHaveClass('ui-TestStaticSelector-root');
+    expect(screen.getByText('test-value')).toHaveClass('ui-TestStaticSelector-input');
   });
 
   it('changes between Popover and Modal based on dropdownType prop', () => {
@@ -34,13 +34,13 @@ describe('@react-ui/dates/PickerInputBase', () => {
       <PickerInputBase {...defaultProps} dropdownOpened dropdownType="popover" />
     );
 
-    expect(container.querySelector('.mantine-Popover-dropdown')).toBeInTheDocument();
-    expect(container.querySelector('.mantine-Modal-content')).not.toBeInTheDocument();
+    expect(container.querySelector('.ui-Popover-dropdown')).toBeInTheDocument();
+    expect(container.querySelector('.ui-Modal-content')).not.toBeInTheDocument();
     expect(screen.getByText('test-children')).toBeInTheDocument();
 
     rerender(<PickerInputBase {...defaultProps} dropdownOpened dropdownType="modal" />);
-    expect(container.querySelector('.mantine-Popover-dropdown')).not.toBeInTheDocument();
-    expect(container.querySelector('.mantine-Modal-content')).toBeInTheDocument();
+    expect(container.querySelector('.ui-Popover-dropdown')).not.toBeInTheDocument();
+    expect(container.querySelector('.ui-Modal-content')).toBeInTheDocument();
     expect(screen.getByText('test-children')).toBeInTheDocument();
   });
 

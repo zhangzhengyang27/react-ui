@@ -4,7 +4,7 @@ import {
   ElementProps,
   factory,
   Factory,
-  MantineSize,
+  UISize,
   StylesApiProps,
   useProps,
   useStyles,
@@ -16,7 +16,7 @@ export type LevelsGroupStylesNames = 'levelsGroup';
 export interface LevelsGroupProps
   extends BoxProps, StylesApiProps<LevelsGroupFactory>, ElementProps<'div'> {
   __staticSelector?: string;
-  size?: MantineSize;
+  size?: UISize;
 
   /** Determines whether the group should take the full width of its container @default false */
   fullWidth?: boolean;

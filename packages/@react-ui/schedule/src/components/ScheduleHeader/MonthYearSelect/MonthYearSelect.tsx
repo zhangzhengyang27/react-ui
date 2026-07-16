@@ -7,7 +7,7 @@ import {
   factory,
   Factory,
   getRadius,
-  MantineRadius,
+  UIRadius,
   Popover,
   PopoverProps,
   StylesApiProps,
@@ -70,7 +70,7 @@ export interface MonthYearSelectProps
   labelFormat?: DateLabelFormat;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius` @default theme.defaultRadius */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 
   /** Props passed down to year controls */
   getYearControlProps?: (year: number) => React.ComponentProps<'button'> & DataAttributes;

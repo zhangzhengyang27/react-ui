@@ -1,5 +1,5 @@
 import { Button, ButtonProps, Group, polymorphic } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { polymorphic, Button, ButtonProps, Group } from '@react-ui/ui';
@@ -25,8 +25,8 @@ const CustomButtonAnchor = polymorphic<'a', CustomButtonProps>(
 function Demo() {
   return (
     <Group>
-      <CustomButton label="Button by default" color="cyan" />
-      <CustomButtonAnchor label="Anchor by default" href="https://mantine.dev" target="_blank" />
+      <CustomButton label="默认按钮" color="cyan" />
+      <CustomButtonAnchor label="默认锚点" href="#" target="_blank" />
     </Group>
   );
 }
@@ -51,13 +51,13 @@ const CustomButtonAnchor = polymorphic<'a', CustomButtonProps>(
 function Demo() {
   return (
     <Group>
-      <CustomButton label="Button by default" color="cyan" />
-      <CustomButtonAnchor label="Anchor by default" href="https://mantine.dev" target="_blank" />
+      <CustomButton label="默认按钮" color="cyan" />
+      <CustomButtonAnchor label="默认锚点" href="#" target="_blank" />
     </Group>
   );
 }
 
-export const createPolymorphic: MantineDemo = {
+export const createPolymorphic: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

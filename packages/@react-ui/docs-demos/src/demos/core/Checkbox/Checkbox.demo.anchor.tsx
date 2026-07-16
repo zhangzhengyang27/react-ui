@@ -1,5 +1,5 @@
 import { Anchor, Checkbox } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Checkbox, Anchor } from '@react-ui/ui';
@@ -9,9 +9,9 @@ function Demo() {
     <Checkbox
       label={
         <>
-          I accept{' '}
-          <Anchor href="https://mantine.dev" target="_blank" inherit>
-            terms and conditions
+          我接受{' '}
+          <Anchor href="#" target="_blank" inherit>
+            条款和条件
           </Anchor>
         </>
       }
@@ -25,9 +25,9 @@ function Demo() {
     <Checkbox
       label={
         <>
-          I accept{' '}
-          <Anchor href="https://mantine.dev" target="_blank" inherit>
-            terms and conditions
+          我接受{' '}
+          <Anchor href="#" target="_blank" inherit>
+            条款和条件
           </Anchor>
         </>
       }
@@ -35,7 +35,7 @@ function Demo() {
   );
 }
 
-export const anchor: MantineDemo = {
+export const anchor: UIDemo = {
   type: 'code',
   component: Demo,
   code,

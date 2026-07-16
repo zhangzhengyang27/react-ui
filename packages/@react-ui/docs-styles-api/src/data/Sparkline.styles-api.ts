@@ -3,12 +3,12 @@ import type { StylesApiData } from '../types';
 
 export const SparklineStylesApi: StylesApiData<SparklineFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
   },
 
   vars: {
     root: {
-      '--chart-color': 'Controls stroke and fill color',
+      '--chart-color': '控制描边和填充颜色',
     },
   },
 

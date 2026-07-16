@@ -1,5 +1,5 @@
 import { TreeSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './data';
 
 const code = `
@@ -10,16 +10,16 @@ function Demo() {
   return (
     <>
       <TreeSelect
-        label="Boolean error"
-        placeholder="Boolean error"
+        label="布尔错误"
+        placeholder="布尔错误"
         error
         data={data}
       />
       <TreeSelect
         mt="md"
-        label="With error message"
-        placeholder="With error message"
-        error="Invalid value"
+        label="带错误信息"
+        placeholder="带错误信息"
+        error="无效值"
         data={data}
       />
     </>
@@ -30,23 +30,23 @@ function Demo() {
 function Demo() {
   return (
     <>
-      <TreeSelect label="Boolean error" placeholder="Boolean error" error data={data} />
+      <TreeSelect label="布尔错误" placeholder="布尔错误" error data={data} />
       <TreeSelect
         mt="md"
-        label="With error message"
-        placeholder="With error message"
-        error="Invalid value"
+        label="带错误信息"
+        placeholder="带错误信息"
+        error="无效值"
         data={data}
       />
     </>
   );
 }
 
-export const error: MantineDemo = {
+export const error: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
     { fileName: 'data.ts', language: 'tsx', code: dataCode },
   ],
   maxWidth: 340,

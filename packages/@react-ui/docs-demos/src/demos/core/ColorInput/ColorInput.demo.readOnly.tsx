@@ -1,19 +1,19 @@
 import { ColorInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ColorInput } from '@react-ui/ui';
 
 function Demo() {
-  return <ColorInput readOnly label="Cannot modify value" defaultValue="#F0FCFE" />;
+  return <ColorInput readOnly label="无法修改值" defaultValue="#F0FCFE" />;
 }
 `;
 
 function Demo() {
-  return <ColorInput readOnly label="Cannot modify value" defaultValue="#F0FCFE" />;
+  return <ColorInput readOnly label="无法修改值" defaultValue="#F0FCFE" />;
 }
 
-export const readOnly: MantineDemo = {
+export const readOnly: UIDemo = {
   type: 'code',
   component: Demo,
   code,

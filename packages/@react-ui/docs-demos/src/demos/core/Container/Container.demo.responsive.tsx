@@ -1,11 +1,11 @@
 import cx from 'clsx';
-import { Container, createTheme, MantineThemeProvider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { Container, createTheme, UIThemeProvider } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Container.demo.responsive.module.css';
 
 const code = `
 import cx from 'clsx';
-import { MantineProvider, Container, createTheme } from '@react-ui/ui';
+import { UIProvider, Container, createTheme } from '@react-ui/ui';
 import classes from './Demo.module.css';
 
 const theme = createTheme({
@@ -20,11 +20,11 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       <Container size="responsive" bg="var(--ui-color-blue-light)">
         Container with responsive size
       </Container>
-    </MantineProvider>
+    </UIProvider>
   );
 }
 `;
@@ -55,19 +55,19 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
+    <UIThemeProvider theme={theme}>
       <Container size="responsive" bg="var(--ui-color-blue-light)">
         Container with responsive size
       </Container>
-    </MantineThemeProvider>
+    </UIThemeProvider>
   );
 }
 
-export const responsive: MantineDemo = {
+export const responsive: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
   ],
 };

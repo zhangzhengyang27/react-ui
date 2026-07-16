@@ -7,8 +7,8 @@ import {
     type ElementProps,
     factory,
     type Factory,
-    type MantineColor,
-    useMantineTheme,
+    type UIColor,
+    useUITheme,
     useProps
 } from '../../core'
 import { UnstyledButton } from '../UnstyledButton'
@@ -25,8 +25,8 @@ export interface MenuCheckboxItemProps
     /** Item label */
     children?: React.ReactNode
 
-    /** Key of theme.colors or any valid CSS color */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 */
+    color?: UIColor
 
     /** If set, closes the menu when this item is clicked */
     closeMenuOnClick?: boolean
@@ -40,13 +40,13 @@ export interface MenuCheckboxItemProps
     /** Value used when inside Menu.CheckboxGroup */
     value?: string
 
-    /** Controlled checked state */
+    /** 受控的选中状态 */
     checked?: boolean
 
     /** Uncontrolled default checked state */
     defaultChecked?: boolean
 
-    /** Called when checked state changes */
+    /** 选中状态变化时调用 */
     onChange?: (checked: boolean) => void
 }
 
@@ -79,7 +79,7 @@ export const MenuCheckboxItem = factory<MenuCheckboxItemFactory>((props, ref) =>
 
     const ctx = useMenuContext()
     const groupCtx = useMenuCheckboxGroupContext()
-    const theme = useMantineTheme()
+    const theme = useUITheme()
     const itemRef = useRef<HTMLButtonElement>(null)
 
     const groupChecked = groupCtx && value !== undefined ? groupCtx.values.includes(value) : undefined
@@ -121,7 +121,7 @@ export const MenuCheckboxItem = factory<MenuCheckboxItemFactory>((props, ref) =>
             disabled={disabled}
             data-menu-item
             data-disabled={disabled || dataDisabled || undefined}
-            data-mantine-stop-propagation
+            data-ui-stop-propagation
             onClick={handleClick}
             onKeyDown={createScopedKeydownHandler({
                 siblingSelector: '[data-menu-item]:not([data-disabled])',

@@ -1,4 +1,4 @@
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
 import { ScheduleEvent, ScheduleEventProps, ScheduleEventStylesNames } from './ScheduleEvent';
 
 const defaultProps: ScheduleEventProps = {
@@ -45,24 +45,24 @@ describe('@react-ui/schedule/ScheduleEvent', () => {
 
   it('sets data-nowrap attribute when nowrap prop is true', () => {
     const { rerender, container } = render(<ScheduleEvent {...defaultProps} nowrap />);
-    expect(container.querySelector('.mantine-ScheduleEvent-eventInner')).toHaveAttribute(
+    expect(container.querySelector('.ui-ScheduleEvent-eventInner')).toHaveAttribute(
       'data-nowrap'
     );
 
     rerender(<ScheduleEvent {...defaultProps} />);
-    expect(container.querySelector('.mantine-ScheduleEvent-eventInner')).not.toHaveAttribute(
+    expect(container.querySelector('.ui-ScheduleEvent-eventInner')).not.toHaveAttribute(
       'data-nowrap'
     );
   });
 
   it('sets data-auto-size attribute when autoSize prop is true', () => {
     const { rerender, container } = render(<ScheduleEvent {...defaultProps} autoSize />);
-    expect(container.querySelector('.mantine-ScheduleEvent-event')).toHaveAttribute(
+    expect(container.querySelector('.ui-ScheduleEvent-event')).toHaveAttribute(
       'data-auto-size'
     );
 
     rerender(<ScheduleEvent {...defaultProps} />);
-    expect(container.querySelector('.mantine-ScheduleEvent-event')).not.toHaveAttribute(
+    expect(container.querySelector('.ui-ScheduleEvent-event')).not.toHaveAttribute(
       'data-auto-size'
     );
   });
@@ -79,7 +79,7 @@ describe('@react-ui/schedule/ScheduleEvent', () => {
 
   it('sets data-hanging attribute to hanging prop value', () => {
     const { container } = render(<ScheduleEvent {...defaultProps} hanging="start" />);
-    expect(container.querySelector('.mantine-ScheduleEvent-event')).toHaveAttribute(
+    expect(container.querySelector('.ui-ScheduleEvent-event')).toHaveAttribute(
       'data-hanging',
       'start'
     );

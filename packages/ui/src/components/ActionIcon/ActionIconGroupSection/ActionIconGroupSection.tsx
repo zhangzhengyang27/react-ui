@@ -8,9 +8,9 @@ import {
     getFontSize,
     getRadius,
     getSize,
-    MantineGradient,
-    MantineRadius,
-    MantineSize,
+    UIGradient,
+    UIRadius,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -46,19 +46,19 @@ export type ActionIconGroupSectionCssVariables = {
 /**
  * ActionIconGroupSection 组件的属性接口
  *
- * @property {MantineRadius} [radius] - 设置边框圆角，可以是 `theme.radius` 的键或有效的 CSS 值，默认使用 `theme.defaultRadius`
- * @property {MantineGradient} [gradient] - 当 `variant="gradient"` 时使用的渐变值，默认使用 `theme.defaultGradient`
+ * @property {UIRadius} [radius] - 设置边框圆角，可以是 `theme.radius` 的键或有效的 CSS 值，默认使用 `theme.defaultRadius`
+ * @property {UIGradient} [gradient] - 当 `variant="gradient"` 时使用的渐变值，默认使用 `theme.defaultGradient`
  * @property {boolean} [autoContrast] - 如果设置为 true，在 `filled` 变体下会根据背景色自动调整文本颜色
- * @property {MantineSize|string|number} [size] - 控制组件的 `height`、`font-size` 和水平 `padding`，默认为 `'sm'`
+ * @property {UISize|string|number} [size] - 控制组件的 `height`、`font-size` 和水平 `padding`，默认为 `'sm'`
  */
 export interface ActionIconGroupSectionProps
     extends BoxProps,
         StylesApiProps<ActionIconGroupSectionFactory>,
         ElementProps<'div'> {
-    radius?: MantineRadius
-    gradient?: MantineGradient
+    radius?: UIRadius
+    gradient?: UIGradient
     autoContrast?: boolean
-    size?: MantineSize | (string & {}) | number
+    size?: UISize | (string & {}) | number
 }
 
 export type ActionIconGroupSectionFactory = Factory<{
@@ -141,4 +141,4 @@ export const ActionIconGroupSection = factory<ActionIconGroupSectionFactory>((_p
 })
 
 ActionIconGroupSection.classes = classes
-ActionIconGroupSection.displayName = '@mantine/core/ActionIconGroupSection'
+ActionIconGroupSection.displayName = '@react-ui/ui/ActionIconGroupSection'

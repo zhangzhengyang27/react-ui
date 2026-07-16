@@ -1,8 +1,8 @@
 {
   "name": "@react-ui/code-highlight",
   "version": "9.4.1",
-  "description": "Code highlight with Mantine theme",
-  "homepage": "https://mantine.dev/x/code-highlight/",
+  "description": "Code highlight with React UI theme",
+  "homepage": "https://react-ui.dev/x/code-highlight/",
   "license": "MIT",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "keywords": [
@@ -35,7 +35,7 @@
     "./styles.layer.css": "./styles.layer.css"
   },
   "repository": {
-    "url": "https://github.com/mantinedev/mantine.git",
+    "url": "https://github.com/react-ui/react-ui.git",
     "type": "git",
     "directory": "packages/@react-ui/code-highlight"
   },

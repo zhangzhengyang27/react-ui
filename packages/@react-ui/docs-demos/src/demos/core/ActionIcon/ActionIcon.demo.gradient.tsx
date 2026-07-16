@@ -1,6 +1,6 @@
 import { HeartIcon } from '@phosphor-icons/react';
 import { ActionIcon } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { gradientControls } from '../../../shared';
 
 const code = (props: any) => `
@@ -12,7 +12,7 @@ function Demo() {
     <ActionIcon
       variant="gradient"
       size="xl"
-      aria-label="Gradient action icon"
+      aria-label="渐变操作图标"
       gradient={{ from: '${props.gradientFrom}', to: '${props.gradientTo}', deg: ${props.gradientDegree} }}
     >
       <HeartIcon />
@@ -26,7 +26,7 @@ function Wrapper(props: any) {
     <ActionIcon
       variant="gradient"
       size="xl"
-      aria-label="Gradient action icon"
+      aria-label="渐变操作图标"
       gradient={{ from: props.gradientFrom, to: props.gradientTo, deg: props.gradientDegree }}
     >
       <HeartIcon />
@@ -34,7 +34,7 @@ function Wrapper(props: any) {
   );
 }
 
-export const gradient: MantineDemo = {
+export const gradient: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

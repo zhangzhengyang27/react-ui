@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { ScatterChart } from './ScatterChart'
 
 const DATA = [
@@ -12,9 +12,9 @@ const DATA = [
 describe('ScatterChart', () => {
     it('renders chart root', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <ScatterChart data={DATA} xAxisKey="x" yAxisKey="y" data-testid="chart" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByTestId('chart')).toBeInTheDocument()
@@ -22,9 +22,9 @@ describe('ScatterChart', () => {
 
     it('applies custom height', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <ScatterChart data={DATA} xAxisKey="x" yAxisKey="y" height={400} data-testid="chart" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByTestId('chart').getAttribute('style')).toContain('--scatter-chart-height')

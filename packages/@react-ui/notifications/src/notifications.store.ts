@@ -1,6 +1,6 @@
 import { NotificationProps } from '@react-ui/ui';
 import { randomId } from '@react-ui/hooks';
-import { createStore, MantineStore, useStore } from '@react-ui/store';
+import { createStore, UIStore, useStore } from '@react-ui/store';
 
 export type NotificationPosition =
   | 'top-left'
@@ -48,7 +48,7 @@ export interface NotificationsState {
   limit: number;
 }
 
-export type NotificationsStore = MantineStore<NotificationsState>;
+export type NotificationsStore = UIStore<NotificationsState>;
 
 interface SequencedNotificationData extends NotificationData {
   __sequence?: number;
@@ -109,14 +109,13 @@ export function updateNotificationsState(
   const state = store.getState();
   const notifications = update([...state.notifications, ...state.queue]);
 
-  for (const item of notifications as SequencedNotificationData[]) {
-    if (item.__sequence === undefined) {
-      item.__sequence = notificationSequence;
-      notificationSequence += 1;
-    }
-  }
+  const sequenced = notifications.map((item) =>
+    (item as SequencedNotificationData).__sequence === undefined
+      ? { ...item, __sequence: notificationSequence++ } as SequencedNotificationData
+      : item
+  );
 
-  const updated = getDistributedNotifications(notifications, state.defaultPosition, state.limit);
+  const updated = getDistributedNotifications(sequenced, state.defaultPosition, state.limit);
 
   store.setState({
     notifications: updated.notifications,

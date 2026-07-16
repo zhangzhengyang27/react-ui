@@ -1,14 +1,14 @@
 import { describe, expect, it, vi } from 'vitest'
 import { act, render, screen } from '@testing-library/react'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Chip } from './Chip'
 
 describe('Chip', () => {
     it('renders chip label', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Chip>React</Chip>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('React')).toBeInTheDocument()
@@ -17,9 +17,9 @@ describe('Chip', () => {
     it('calls onChange with true when unchecked chip is clicked', async () => {
         const onChange = vi.fn()
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Chip onChange={onChange}>Vue</Chip>
-            </MantineProvider>
+            </UIProvider>
         )
 
         act(() => {
@@ -31,11 +31,11 @@ describe('Chip', () => {
     it('calls onChange with false when checked chip is clicked', () => {
         const onChange = vi.fn()
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Chip checked onChange={onChange}>
                     Vue
                 </Chip>
-            </MantineProvider>
+            </UIProvider>
         )
 
         act(() => {
@@ -46,9 +46,9 @@ describe('Chip', () => {
 
     it('respects controlled checked prop', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Chip checked>Checked</Chip>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByRole('button')).toHaveAttribute('aria-pressed', 'true')
@@ -56,9 +56,9 @@ describe('Chip', () => {
 
     it('renders disabled chip', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Chip disabled>Disabled</Chip>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByRole('button')).toBeDisabled()

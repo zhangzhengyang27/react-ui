@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { CheckIcon, XIcon } from '@phosphor-icons/react';
 import { Switch } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -17,7 +17,7 @@ function Demo() {
       onChange={(event) => setChecked(event.currentTarget.checked)}
       color="teal"
       size="md"
-      label="Switch with thumb icon"
+      label="带滑块图标的开关"
       thumbIcon={
         checked ? (
           <CheckIcon size={12} color="var(--ui-color-teal-6)" />
@@ -39,7 +39,7 @@ function Demo() {
       onChange={(event) => setChecked(event.currentTarget.checked)}
       color="teal"
       size="md"
-      label="Switch with thumb icon"
+      label="带滑块图标的开关"
       thumbIcon={
         checked ? (
           <CheckIcon size={12} color="var(--ui-color-teal-6)" />
@@ -51,7 +51,7 @@ function Demo() {
   );
 }
 
-export const thumbIcon: MantineDemo = {
+export const thumbIcon: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

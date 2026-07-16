@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MonthView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const month = '2025-11-01';
 
@@ -78,7 +78,7 @@ function Demo() {
   );
 }
 
-export const recurringEvents: MantineDemo = {
+export const recurringEvents: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

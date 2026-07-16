@@ -14,7 +14,7 @@ export function MdxLlmButton({ href }: { href: string }) {
       href={href}
       target="_blank"
     >
-      Migrate with LLM
+      使用大语言模型迁移
     </Button>
   );
 }

@@ -1,5 +1,5 @@
 import { Box, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Text, Box } from '@react-ui/ui';
@@ -29,7 +29,7 @@ function Wrapper(props: any) {
   );
 }
 
-export const truncate: MantineDemo = {
+export const truncate: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

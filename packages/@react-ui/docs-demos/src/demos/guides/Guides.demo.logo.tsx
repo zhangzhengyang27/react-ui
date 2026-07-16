@@ -1,17 +1,17 @@
-import { MantineDemo } from '@react-ui/demo';
-import { MantineLogo } from '@react-ui/mantine-logo';
+import { UIDemo } from '@react-ui/demo';
+import { UILogo } from '@react-ui/logo';
 
 const code = `
-import { MantineLogo } from '@react-ui/mantine-logo';
+import { UILogo } from '@react-ui/logo';
 
 function Demo() {
-  return <MantineLogo{{props}} />;
+  return <UILogo{{props}} />;
 }
 `;
 
-export const logo: MantineDemo = {
+export const logo: UIDemo = {
   type: 'configurator',
-  component: MantineLogo,
+  component: UILogo,
   code,
   centered: true,
   controls: [

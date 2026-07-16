@@ -1,5 +1,5 @@
 import { Checkbox } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { CheckboxStylesApi } from '@react-ui/docs-styles-api';
 
 const code = `
@@ -8,9 +8,9 @@ import { Checkbox } from '@react-ui/ui';
 function Demo() {
   return (
     <Checkbox
-      label="Checkbox"
-      description="Checkbox description"
-      error="Checkbox error"
+      label="复选框"
+      description="复选框描述"
+      error="复选框错误"
       defaultChecked
      {{props}}
     />
@@ -21,16 +21,16 @@ function Demo() {
 function Demo(props: any) {
   return (
     <Checkbox
-      label="Checkbox"
-      description="Checkbox description"
-      error="Checkbox error"
+      label="复选框"
+      description="复选框描述"
+      error="复选框错误"
       defaultChecked
       {...props}
     />
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: CheckboxStylesApi,
   component: Demo,

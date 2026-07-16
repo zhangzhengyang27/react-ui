@@ -30,7 +30,7 @@ function Demo() {
 ## 只读
 
 设置 `readOnly` 属性以防止用户交互更改复选框值。
-复选框仍会显示其当前值并反映对 `checked` 属性的程序化更新，但点击它（或按 <kbd>Space</kbd>）不会
+复选框仍会显示其当前值并反映对 `checked` 属性的程序化更新，但点击它（或按 <kbd>间距</kbd>）不会
 切换其状态，也不会调用 `onChange` 处理程序：
 
 ```tsx
@@ -41,9 +41,9 @@ function Demo() {
   const [checked, setChecked] = useState(true);
   return (
     <>
-      <Checkbox checked={checked} readOnly label="Read only checkbox" />
+      <Checkbox checked={checked} readOnly label="只读复选框" />
       <button type="button" onClick={() => setChecked((c) => !c)}>
-        Toggle from outside
+        从外部切换
       </button>
     </>
   );
@@ -76,8 +76,8 @@ function Demo() {
         console.log('Checkbox value:', !!formData.get('terms'));
       }}
     >
-      <Checkbox label="Accept terms and conditions" name="terms" defaultChecked />
-      <button type="submit">Submit</button>
+      <Checkbox label="接受条款和条件" name="terms" defaultChecked />
+      <button type="submit">提交</button>
     </form>
   );
 }
@@ -211,11 +211,11 @@ export function UncontrolledForm() {
         console.log('Checkbox group value:', formData.get('frameworks'));
       }}
     >
-      <Checkbox.Group label="Frameworks" name="frameworks" hiddenInputValuesSeparator="|">
+      <Checkbox.Group label="框架" name="frameworks" hiddenInputValuesSeparator="|">
         <Checkbox label="React" value="react" />
         <Checkbox label="Angular" value="ng" />
       </Checkbox.Group>
-      <button type="submit">Submit</button>
+      <button type="submit">提交</button>
     </form>
   );
 }
@@ -281,7 +281,7 @@ import { Checkbox } from '@react-ui/ui';
 function Demo() {
   return (
     <Checkbox
-      label="My checkbox"
+      label="我的复选框"
       wrapperProps={{ 'data-root-element': true }}
     />
   );
@@ -298,7 +298,7 @@ function Demo() {
 import { Checkbox } from '@react-ui/ui';
 
 function Demo() {
-  return <Checkbox id="my-checkbox" label="My checkbox" />;
+  return <Checkbox id="my-checkbox" label="我的复选框" />;
 }
 ```
 
@@ -318,11 +318,11 @@ function Bad() {
 
 // 好，输入框由 aria-label 标记
 function GoodAriaLabel() {
-  return <Checkbox aria-label="My checkbox" />;
+  return <Checkbox aria-label="我的复选框" />;
 }
 
 // 好，输入框由 label 元素标记
 function GoodLabel() {
-  return <Checkbox label="My checkbox" />;
+  return <Checkbox label="我的复选框" />;
 }
 ```

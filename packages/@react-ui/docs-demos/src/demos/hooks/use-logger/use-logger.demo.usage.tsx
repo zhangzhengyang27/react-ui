@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@react-ui/ui';
 import { useLogger } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -21,7 +21,7 @@ function Demo() {
   return <Button onClick={() => setCount((c) => c + 1)}>Update state ({count})</Button>;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

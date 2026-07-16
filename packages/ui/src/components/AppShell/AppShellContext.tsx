@@ -1,8 +1,8 @@
 import { createContext, useContext } from 'react'
-import { MantineSpacing } from '../../core'
+import { UISpacing } from '../../core'
 
 export interface AppShellContextValue {
-    padding?: MantineSpacing
+    padding?: UISpacing
     headerHeight?: React.CSSProperties['height']
     footerHeight?: React.CSSProperties['height']
     navbarWidth?: React.CSSProperties['width']

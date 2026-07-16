@@ -1,5 +1,5 @@
 import { Code } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Code } from '@react-ui/ui';
@@ -25,7 +25,7 @@ function Demo() {
   return <Code block>{codeForPreviousDemo}</Code>;
 }
 
-export const block: MantineDemo = {
+export const block: UIDemo = {
   type: 'code',
   code,
   component: Demo,

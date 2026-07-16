@@ -21,8 +21,8 @@ import {
 import { FileIcon } from './FileIcon';
 import classes from '../CodeHighlight.module.css';
 
-/** Available shiki languages for default Mantine shiki instance.
- *  Should be used only with *.mantine.dev projects */
+/** Available shiki languages for default UI shiki instance.
+ *  Should be used only with *.ui.dev projects */
 export type CodeHighlightDefaultLanguage = 'tsx' | 'scss' | 'html' | 'bash' | 'json';
 
 export interface CodeHighlightTabsCode {

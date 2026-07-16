@@ -172,6 +172,10 @@ export * as ResourcesScheduleDemos from './demos/schedule/ResourcesSchedule';
 export * as ResourcesWeekViewDemos from './demos/schedule/ResourcesWeekView';
 export * as AgendaViewDemos from './demos/schedule/AgendaView';
 
+// Special examples pages
+export * from './demos/combobox';
+export * from './demos/app-shell';
+
 // Extensions demos
 export * as NotificationsDemos from './demos/notifications';
 export * as CarouselDemos from './demos/carousel';

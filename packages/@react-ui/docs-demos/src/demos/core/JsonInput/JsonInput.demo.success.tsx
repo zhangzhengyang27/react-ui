@@ -1,19 +1,19 @@
 import { JsonInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { JsonInput } from '@react-ui/ui';
 
 function Demo() {
-  return <JsonInput label="JSON config" placeholder="JSON config" success="Valid JSON" />;
+  return <JsonInput label="JSON 配置" placeholder="JSON 配置" success="有效的 JSON" />;
 }
 `;
 
 function Demo() {
-  return <JsonInput label="JSON config" placeholder="JSON config" success="Valid JSON" />;
+  return <JsonInput label="JSON 配置" placeholder="JSON 配置" success="有效的 JSON" />;
 }
 
-export const success: MantineDemo = {
+export const success: UIDemo = {
   type: 'code',
   component: Demo,
   code,

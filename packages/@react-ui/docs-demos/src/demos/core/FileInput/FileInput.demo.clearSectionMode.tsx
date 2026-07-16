@@ -1,6 +1,6 @@
 import { CaretDownIcon } from '@phosphor-icons/react';
 import { FileInput, Stack } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { CaretDownIcon } from '@phosphor-icons/react';
@@ -10,8 +10,8 @@ function Demo() {
   return (
     <Stack>
       <FileInput
-        label="clearSectionMode='both' (default)"
-        placeholder="Pick file"
+        label="clearSectionMode='both'（默认）"
+        placeholder="选择文件"
         clearable
         rightSection={<CaretDownIcon size={16} />}
         clearSectionMode="both"
@@ -19,7 +19,7 @@ function Demo() {
 
       <FileInput
         label="clearSectionMode='rightSection'"
-        placeholder="Pick file"
+        placeholder="选择文件"
         clearable
         rightSection={<CaretDownIcon size={16} />}
         clearSectionMode="rightSection"
@@ -27,7 +27,7 @@ function Demo() {
 
       <FileInput
         label="clearSectionMode='clear'"
-        placeholder="Pick file"
+        placeholder="选择文件"
         clearable
         rightSection={<CaretDownIcon size={16} />}
         clearSectionMode="clear"
@@ -41,8 +41,8 @@ function Demo() {
   return (
     <Stack>
       <FileInput
-        label="clearSectionMode='both' (default)"
-        placeholder="Pick file"
+        label="clearSectionMode='both'（默认）"
+        placeholder="选择文件"
         clearable
         rightSection={<CaretDownIcon size={16} />}
         clearSectionMode="both"
@@ -50,7 +50,7 @@ function Demo() {
 
       <FileInput
         label="clearSectionMode='rightSection'"
-        placeholder="Pick file"
+        placeholder="选择文件"
         clearable
         rightSection={<CaretDownIcon size={16} />}
         clearSectionMode="rightSection"
@@ -58,7 +58,7 @@ function Demo() {
 
       <FileInput
         label="clearSectionMode='clear'"
-        placeholder="Pick file"
+        placeholder="选择文件"
         clearable
         rightSection={<CaretDownIcon size={16} />}
         clearSectionMode="clear"
@@ -67,7 +67,7 @@ function Demo() {
   );
 }
 
-export const clearSectionMode: MantineDemo = {
+export const clearSectionMode: UIDemo = {
   type: 'code',
   component: Demo,
   code,

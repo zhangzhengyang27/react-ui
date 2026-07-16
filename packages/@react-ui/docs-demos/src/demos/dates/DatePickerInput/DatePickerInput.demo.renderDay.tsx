@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { Indicator } from '@react-ui/ui';
 import { DatePickerInput, DatePickerInputProps } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import dayjs from 'dayjs';
@@ -20,8 +20,8 @@ const dayRenderer: DatePickerInputProps['renderDay'] = (date) => {
 function Demo() {
   return (
     <DatePickerInput
-      label="Pick date"
-      placeholder="Pick date"
+      label="选择日期"
+      placeholder="选择日期"
       renderDay={dayRenderer}
     />
   );
@@ -38,10 +38,10 @@ const dayRenderer: DatePickerInputProps['renderDay'] = (date) => {
 };
 
 function Demo() {
-  return <DatePickerInput label="Pick date" placeholder="Pick date" renderDay={dayRenderer} />;
+  return <DatePickerInput label="选择日期" placeholder="选择日期" renderDay={dayRenderer} />;
 }
 
-export const renderDay: MantineDemo = {
+export const renderDay: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

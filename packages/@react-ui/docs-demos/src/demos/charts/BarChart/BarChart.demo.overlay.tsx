@@ -1,6 +1,6 @@
 import { BarChart } from '@react-ui/charts';
 import { useMediaQuery } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { overlayData, overlayDataCode } from './_data';
 import classes from './BarChart.demo.overlay.module.css';
 
@@ -33,12 +33,12 @@ function Demo() {
 `;
 
 const cssCode = `.root {
-  @mixin light {
+  [data-ui-color-scheme='light'] & {
     --average-bar-color: var(--ui-color-dark-8);
     --you-bar-color: var(--ui-color-blue-3);
   }
 
-  @mixin dark {
+  [data-ui-color-scheme='dark'] & {
     --you-bar-color: var(--ui-color-blue-8);
     --average-bar-color: var(--ui-color-gray-4);
   }
@@ -71,12 +71,12 @@ function Demo() {
   );
 }
 
-export const overlay: MantineDemo = {
+export const overlay: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
-    { code: cssCode, language: 'scss', fileName: 'Demo.module.css' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
+    { code: cssCode, language: 'scss', fileName: '演示样式.module.css' },
     { code: overlayDataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

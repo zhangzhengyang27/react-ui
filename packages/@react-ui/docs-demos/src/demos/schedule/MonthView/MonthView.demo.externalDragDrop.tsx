@@ -2,11 +2,11 @@ import dayjs from 'dayjs';
 import { useRef, useState } from 'react';
 import { Box, Grid, Text } from '@react-ui/ui';
 import { MonthView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const sidebarItems = [
   { title: 'Team Offsite', color: 'teal' },
-  { title: 'Release Day', color: 'orange' },
+  { title: '发布日', color: 'orange' },
   { title: 'All Hands', color: 'violet' },
 ];
 
@@ -18,7 +18,7 @@ import { MonthView, ScheduleEventData } from '@react-ui/schedule';
 
 const sidebarItems = [
   { title: 'Team Offsite', color: 'teal' },
-  { title: 'Release Day', color: 'orange' },
+  { title: '发布日', color: 'orange' },
   { title: 'All Hands', color: 'violet' },
 ];
 
@@ -59,7 +59,7 @@ function Demo() {
   return (
     <Grid>
       <Grid.Col span={{ base: 12, sm: 3 }}>
-        <Text fw={500} mb="xs">Drag to schedule</Text>
+        <Text fw={500} mb="xs">拖到日程</Text>
         {sidebarItems.map((item) => (
           <Box
             key={item.title}
@@ -83,7 +83,7 @@ function Demo() {
       </Grid.Col>
       <Grid.Col span={{ base: 12, sm: 9 }}>
         <MonthView
-          date={new Date()}
+          date={new Date('2024-01-15')}
           events={events}
           withEventsDragAndDrop
           onEventDrop={handleEventDrop}
@@ -168,7 +168,7 @@ function Demo() {
       </Grid.Col>
       <Grid.Col span={{ base: 12, sm: 9 }}>
         <MonthView
-          date={new Date()}
+          date={new Date('2024-01-15')}
           events={events}
           withEventsDragAndDrop
           onEventDrop={handleEventDrop}
@@ -179,7 +179,7 @@ function Demo() {
   );
 }
 
-export const externalDragDrop: MantineDemo = {
+export const externalDragDrop: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

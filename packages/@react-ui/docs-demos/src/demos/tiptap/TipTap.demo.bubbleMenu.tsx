@@ -2,7 +2,7 @@ import { useEditor } from '@tiptap/react';
 import { BubbleMenu } from '@tiptap/react/menus';
 import StarterKit from '@tiptap/starter-kit';
 import { Link, RichTextEditor } from '@react-ui/tiptap';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useEditor } from '@tiptap/react';
@@ -14,7 +14,7 @@ function Demo() {
   const editor = useEditor({
     shouldRerenderOnTransaction: true,
     extensions: [StarterKit.configure({ link: false }), Link],
-    content: '<p>Select some text to see bubble menu</p>',
+    content: '<p>选择一些文本查看气泡菜单</p>',
   });
 
   return (
@@ -39,7 +39,7 @@ function Demo() {
     immediatelyRender: false,
     shouldRerenderOnTransaction: true,
     extensions: [StarterKit.configure({ link: false }), Link],
-    content: '<p>Select some text to see bubble menu</p>',
+    content: '<p>选择一些文本查看气泡菜单</p>',
   });
 
   return (
@@ -58,7 +58,7 @@ function Demo() {
   );
 }
 
-export const bubbleMenu: MantineDemo = {
+export const bubbleMenu: UIDemo = {
   type: 'code',
   component: Demo,
   code,

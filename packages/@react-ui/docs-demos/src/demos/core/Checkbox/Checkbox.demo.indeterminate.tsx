@@ -1,15 +1,15 @@
 import { Box, Checkbox } from '@react-ui/ui';
 import { randomId, useListState } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useListState, randomId } from '@react-ui/hooks';
 import { Checkbox } from '@react-ui/ui';
 
 const initialValues = [
-  { label: 'Receive email notifications', checked: false, key: randomId() },
-  { label: 'Receive sms notifications', checked: false, key: randomId() },
-  { label: 'Receive push notifications', checked: false, key: randomId() },
+  { label: '接收邮件通知', checked: false, key: 'notification-1' },
+  { label: '接收短信通知', checked: false, key: 'notification-2' },
+  { label: '接收推送通知', checked: false, key: 'notification-3' },
 ];
 
 export function IndeterminateCheckbox() {
@@ -34,7 +34,7 @@ export function IndeterminateCheckbox() {
       <Checkbox
         checked={allChecked}
         indeterminate={indeterminate}
-        label="Receive all notifications"
+        label="接收所有通知"
         onChange={() =>
           handlers.setState((current) =>
             current.map((value) => ({ ...value, checked: !allChecked }))
@@ -48,9 +48,9 @@ export function IndeterminateCheckbox() {
 `;
 
 const initialValues = [
-  { label: 'Receive email notifications', checked: false, key: randomId() },
-  { label: 'Receive sms notifications', checked: false, key: randomId() },
-  { label: 'Receive push notifications', checked: false, key: randomId() },
+  { label: '接收邮件通知', checked: false, key: 'notification-1' },
+  { label: '接收短信通知', checked: false, key: 'notification-2' },
+  { label: '接收推送通知', checked: false, key: 'notification-3' },
 ];
 
 export function Demo() {
@@ -74,7 +74,7 @@ export function Demo() {
       <Checkbox
         checked={allChecked}
         indeterminate={indeterminate}
-        label="Receive all notifications"
+        label="接收所有通知"
         onChange={() =>
           handlers.setState((current) =>
             current.map((value) => ({ ...value, checked: !allChecked }))
@@ -86,7 +86,7 @@ export function Demo() {
   );
 }
 
-export const indeterminate: MantineDemo = {
+export const indeterminate: UIDemo = {
   type: 'code',
   code,
   component: Demo,

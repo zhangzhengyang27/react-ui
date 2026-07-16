@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ArrowClockwiseIcon } from '@phosphor-icons/react';
 import { ActionIcon, ColorInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -14,8 +14,8 @@ function Demo() {
   const [value, onChange] = useState(randomColor());
   return (
     <ColorInput
-      placeholder="Pick color"
-      label="Your favorite color"
+      placeholder="选择颜色"
+      label="你最喜欢的颜色"
       value={value}
       onChange={onChange}
       rightSection={
@@ -36,8 +36,8 @@ function Demo() {
     <ColorInput
       maw={320}
       mx="auto"
-      placeholder="Pick color"
-      label="Your favorite color"
+      placeholder="选择颜色"
+      label="你最喜欢的颜色"
       value={value}
       onChange={onChange}
       rightSection={
@@ -49,7 +49,7 @@ function Demo() {
   );
 }
 
-export const rightSection: MantineDemo = {
+export const rightSection: UIDemo = {
   type: 'code',
   component: Demo,
   code,

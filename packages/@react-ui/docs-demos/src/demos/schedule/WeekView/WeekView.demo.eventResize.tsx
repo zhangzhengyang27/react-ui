@@ -1,29 +1,29 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { ScheduleEventData, WeekView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
-const tomorrow = dayjs().add(1, 'day').format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
+const tomorrow = dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD');
 
 const initialEvents: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Morning Standup',
+    title: '早间站会',
     start: `${today} 09:00:00`,
     end: `${today} 09:30:00`,
     color: 'blue',
   },
   {
     id: 2,
-    title: 'Team Meeting',
+    title: '团队会议',
     start: `${tomorrow} 11:00:00`,
     end: `${tomorrow} 12:00:00`,
     color: 'green',
   },
   {
     id: 3,
-    title: 'Code Review',
+    title: '代码审查',
     start: `${today} 14:00:00`,
     end: `${today} 15:00:00`,
     color: 'violet',
@@ -35,27 +35,27 @@ import { useState } from 'react';
 import dayjs from 'dayjs';
 import { WeekView, ScheduleEventData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
-const tomorrow = dayjs().add(1, 'day').format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
+const tomorrow = dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD');
 
 const initialEvents: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Morning Standup',
+    title: '早间站会',
     start: \`\${today} 09:00:00\`,
     end: \`\${today} 09:30:00\`,
     color: 'blue',
   },
   {
     id: 2,
-    title: 'Team Meeting',
+    title: '团队会议',
     start: \`\${tomorrow} 11:00:00\`,
     end: \`\${tomorrow} 12:00:00\`,
     color: 'green',
   },
   {
     id: 3,
-    title: 'Code Review',
+    title: '代码审查',
     start: \`\${today} 14:00:00\`,
     end: \`\${today} 15:00:00\`,
     color: 'violet',
@@ -75,7 +75,7 @@ function Demo() {
 
   return (
     <WeekView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       startTime="08:00:00"
       endTime="18:00:00"
@@ -107,7 +107,7 @@ function Demo() {
 
   return (
     <WeekView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       startTime="08:00:00"
       endTime="18:00:00"
@@ -117,7 +117,7 @@ function Demo() {
   );
 }
 
-export const eventResize: MantineDemo = {
+export const eventResize: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

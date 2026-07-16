@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Box, Button, Paper, Transition } from '@react-ui/ui';
 import { useClickOutside } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -25,7 +25,7 @@ function Demo() {
       pos="relative"
       style={{ display: 'flex', justifyContent: 'center', margin: 'auto' }}
     >
-      <Button onClick={() => setOpened(true)}>Open dropdown</Button>
+      <Button onClick={() => setOpened(true)}>打开下拉</Button>
       <Transition
         mounted={opened}
         transition={scaleY}
@@ -70,7 +70,7 @@ export function Demo() {
       pos="relative"
       style={{ display: 'flex', justifyContent: 'center', margin: 'auto' }}
     >
-      <Button onClick={() => setOpened(true)}>Open dropdown</Button>
+      <Button onClick={() => setOpened(true)}>打开下拉</Button>
       <Transition
         mounted={opened}
         transition={scaleY}
@@ -98,7 +98,7 @@ export function Demo() {
   );
 }
 
-export const custom: MantineDemo = {
+export const custom: UIDemo = {
   type: 'code',
   code,
   component: Demo,

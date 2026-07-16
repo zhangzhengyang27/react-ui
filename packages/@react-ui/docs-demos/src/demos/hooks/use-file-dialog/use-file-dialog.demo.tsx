@@ -1,6 +1,6 @@
 import { Button, Group, List } from '@react-ui/ui';
 import { useFileDialog } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Group, List } from '@react-ui/ui';
@@ -16,7 +16,7 @@ function Demo() {
   return (
     <div>
       <Group>
-        <Button onClick={fileDialog.open}>Pick files</Button>
+        <Button onClick={fileDialog.open}>选择文件</Button>
         {pickedFiles.length > 0 && (
           <Button variant="default" onClick={fileDialog.reset}>
             Reset
@@ -39,7 +39,7 @@ function Demo() {
   return (
     <div>
       <Group>
-        <Button onClick={fileDialog.open}>Pick files</Button>
+        <Button onClick={fileDialog.open}>选择文件</Button>
         {pickedFiles.length > 0 && (
           <Button variant="default" onClick={fileDialog.reset}>
             Reset
@@ -51,7 +51,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

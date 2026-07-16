@@ -45,17 +45,17 @@ export function HomePageHooks() {
   return (
     <section className={classes.root}>
       <HomePageContainer>
-        <HomePageTitle order={2}>Hooks library</HomePageTitle>
+        <HomePageTitle order={2}>Hooks 库</HomePageTitle>
         <HomePageDescription>
-          70+ hooks for handling tricky and common parts of your application
+          70+ 个 Hooks，用于处理应用中复杂和常见的场景
         </HomePageDescription>
 
-        <HomePageLearnMore href="/hooks/package">Browse all hooks</HomePageLearnMore>
+        <HomePageLearnMore href="/hooks/package">浏览全部 Hooks</HomePageLearnMore>
 
         <SimpleGrid cols={{ md: 2 }} className={classes.demos} spacing="xl">
           <DemoColumn
             title="use-move"
-            description="use-move hook handles move behavior over given element, can be used to build custom sliders"
+            description="use-move Hook 处理给定元素上的移动行为，可用于构建自定义滑块"
             link="/hooks/use-move"
           >
             <Demo
@@ -66,7 +66,7 @@ export function HomePageHooks() {
 
           <DemoColumn
             title="use-resize-observer"
-            description="use-resize-observer hook tracks element size and position changes"
+            description="use-resize-observer Hook 监听元素的尺寸和位置变化"
             link="/hooks/use-resize-observer"
           >
             <Demo data={UseResizeObserverDemos.usage} demoProps={{ defaultExpanded: false }} />
@@ -74,7 +74,7 @@ export function HomePageHooks() {
 
           <DemoColumn
             title="use-hotkeys"
-            description="use-hotkeys hook allows binding keyboard shortcuts to actions"
+            description="use-hotkeys Hook 支持将键盘快捷键绑定到操作"
             link="/hooks/use-hotkeys"
           >
             <Demo data={UseHotkeysDemos.index} demoProps={{ defaultExpanded: false }} />
@@ -82,7 +82,7 @@ export function HomePageHooks() {
 
           <DemoColumn
             title="use-eye-dropper"
-            description="use-eye-dropper hook allows picking colors from anywhere on the screen"
+            description="use-eye-dropper Hook 支持从屏幕任意位置吸取颜色"
             link="/hooks/use-eye-dropper"
           >
             <Demo

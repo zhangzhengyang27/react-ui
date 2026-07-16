@@ -22,7 +22,7 @@
   &:where([data-interactive]) {
     cursor: pointer;
 
-    @mixin hover {
+    &:hover {
       background-color: var(--ui-color-default-hover);
     }
   }
@@ -36,7 +36,7 @@
     border-color: var(--ui-primary-color-filled);
     color: var(--ui-primary-color-contrast);
 
-    @mixin hover {
+    &:hover {
       background-color: var(--ui-primary-color-filled-hover);
       border-color: var(--ui-primary-color-filled-hover);
     }

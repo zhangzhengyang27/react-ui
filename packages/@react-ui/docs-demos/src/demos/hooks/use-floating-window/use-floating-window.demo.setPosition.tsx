@@ -1,6 +1,6 @@
 import { Button, CloseButton, Group, Paper, Portal, Text } from '@react-ui/ui';
 import { useDisclosure, useFloatingWindow } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, CloseButton, Group, Paper, Portal, Text } from '@react-ui/ui';
@@ -19,7 +19,7 @@ function Demo() {
     <>
       <Group>
         <Button onClick={handlers.toggle} variant="default">
-          {visible ? 'Hide' : 'Show'} floating window
+          {visible ? '隐藏' : '显示'} 浮动窗口
         </Button>
         <Button
           onClick={() => floatingWindow.setPosition({ bottom: 40, right: 40 })}
@@ -41,10 +41,10 @@ function Demo() {
             ref={floatingWindow.ref}
           >
             <Group justify="space-between" mb="md">
-              <Text>Set position demo</Text>
+              <Text>设置位置演示</Text>
               <CloseButton onClick={handlers.close} />
             </Group>
-            <Text fz="sm">This is a floating window. You can drag it around.</Text>
+            <Text fz="sm">这是一个浮动窗口。你可以拖动它。</Text>
           </Paper>
         </Portal>
       )}
@@ -66,7 +66,7 @@ function Demo() {
     <>
       <Group>
         <Button onClick={handlers.toggle} variant="default">
-          {visible ? 'Hide' : 'Show'} floating window
+          {visible ? '隐藏' : '显示'} 浮动窗口
         </Button>
         <Button
           onClick={() => floatingWindow.setPosition({ bottom: 40, right: 40 })}
@@ -88,10 +88,10 @@ function Demo() {
             ref={floatingWindow.ref}
           >
             <Group justify="space-between" mb="md">
-              <Text>Set position demo</Text>
+              <Text>设置位置演示</Text>
               <CloseButton onClick={handlers.close} />
             </Group>
-            <Text fz="sm">This is a floating window. You can drag it around.</Text>
+            <Text fz="sm">这是一个浮动窗口。你可以拖动它。</Text>
           </Paper>
         </Portal>
       )}
@@ -99,7 +99,7 @@ function Demo() {
   );
 }
 
-export const setPosition: MantineDemo = {
+export const setPosition: UIDemo = {
   type: 'code',
   component: Demo,
   code,

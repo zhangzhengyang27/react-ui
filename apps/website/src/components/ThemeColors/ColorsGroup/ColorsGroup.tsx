@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getContrastColor, Text, Tooltip, UnstyledButton, useMantineTheme } from '@react-ui/ui';
+import { getContrastColor, Text, Tooltip, UnstyledButton, useUITheme } from '@react-ui/ui';
 import { useClipboard } from '@react-ui/hooks';
 import classes from './ColorsGroup.module.css';
 
@@ -8,14 +8,14 @@ interface ColorsGroupProps {
 }
 
 export function ColorsGroup({ group }: ColorsGroupProps) {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const colors = theme.colors[group];
   const [active, setActive] = useState({ color: colors[6], index: 6 });
   const clipboard = useClipboard({ timeout: 500 });
 
   const swatches = colors.map((color, index) => (
     <UnstyledButton
-      aria-label="Copy color value"
+      aria-label="复制颜色值"
       className={classes.secondarySwatch}
       key={color}
       onMouseEnter={() => setActive({ color, index })}
@@ -34,7 +34,7 @@ export function ColorsGroup({ group }: ColorsGroupProps) {
   return (
     <Tooltip
       color={clipboard.copied ? 'teal.8' : undefined}
-      label={clipboard.copied ? 'Copied!' : 'Hover colors for preview, click to copy HEX value'}
+      label={clipboard.copied ? '已复制！' : '悬停预览颜色，点击复制 HEX 值'}
       multiline
       maw={190}
       position="top-start"

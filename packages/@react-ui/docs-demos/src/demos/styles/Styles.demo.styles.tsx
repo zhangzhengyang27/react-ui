@@ -1,5 +1,5 @@
 import { Button } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button } from '@react-ui/ui';
@@ -32,7 +32,7 @@ function Demo() {
         },
       }}
     >
-      Gradient button
+      渐变按钮
     </Button>
   );
 }
@@ -66,12 +66,12 @@ function Demo() {
         },
       }}
     >
-      Gradient button
+      渐变按钮
     </Button>
   );
 }
 
-export const styles: MantineDemo = {
+export const styles: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

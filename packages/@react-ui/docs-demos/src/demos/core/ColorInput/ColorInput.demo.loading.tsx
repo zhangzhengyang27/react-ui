@@ -1,19 +1,19 @@
 import { ColorInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ColorInput } from '@react-ui/ui';
 
 function Demo() {
-  return <ColorInput placeholder="Pick color" loading />;
+  return <ColorInput placeholder="选择颜色" loading />;
 }
 `;
 
 function Demo() {
-  return <ColorInput placeholder="Pick color" loading />;
+  return <ColorInput placeholder="选择颜色" loading />;
 }
 
-export const loading: MantineDemo = {
+export const loading: UIDemo = {
   type: 'code',
   component: Demo,
   code,

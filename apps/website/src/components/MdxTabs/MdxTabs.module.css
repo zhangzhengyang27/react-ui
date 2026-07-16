@@ -1,120 +1,53 @@
-.tabsWrapper {
-  padding-inline: var(--docs-inline-spacing);
-  border-bottom: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-4));
-  padding-bottom: var(--ui-spacing-md);
-}
-
-.tab {
-  font-size: var(--ui-font-size-md);
-  font-weight: 600;
-  height: 42px;
-  padding-inline-start: var(--ui-spacing-sm);
-  padding-inline-end: var(--ui-spacing-lg);
-  border: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-4));
-  color: var(--ui-color-bright);
-  background-color: light-dark(var(--ui-color-white), var(--ui-color-dark-6));
-
-  @mixin hover {
-    background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-5));
-  }
-
-  @mixin smaller-than $mantine-breakpoint-xs {
-    font-size: var(--ui-font-size-sm);
-    padding-left: var(--ui-spacing-md);
-    padding-right: var(--ui-spacing-md);
-    flex: 1;
-  }
-
-  &[data-active] {
-    border-color: transparent;
-    color: light-dark(var(--ui-color-white), var(--ui-color-black));
-    background-color: light-dark(var(--ui-color-gray-9), var(--ui-color-gray-1));
-
-    .tabIcon {
-      color: inherit;
-    }
-  }
-}
-
-.tabInner {
+.wrapper {
+  z-index: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  gap: var(--ui-spacing-xs);
-}
+  position: relative;
+  justify-content: space-between;
+  background-color: var(--ui-color-body);
+  width: 100%;
+  flex: 1;
 
-.tabIcon {
-  color: light-dark(var(--ui-color-gray-6), var(--ui-color-dark-1));
+  @media (max-width: 1450px) {
+    width: 100%;
+    flex: 0 0 calc(100% - var(--docs-table-of-contents-width) - var(--docs-navbar-width));
+  }
 
-  @mixin smaller-than $mantine-breakpoint-xs {
-    display: none;
+  @media (max-width: 550px) {
+    max-width: 100%;
   }
 }
 
-.main {
+.container {
   padding-inline: var(--docs-inline-spacing);
-  width: 100%;
-  padding-inline-end: 0;
+  padding-top: 0;
+  padding-bottom: var(--ui-spacing-xl);
   max-width: 994px;
 
-  @mixin smaller-than 1750px {
+  @media (max-width: 1750px) {
     max-width: 914px;
   }
 
-  @mixin smaller-than 1450px {
-    max-width: calc(100vw - var(--docs-navbar-width) - 48px);
+  @media (max-width: 1450px) {
+    max-width: calc(100vw - var(--docs-table-of-contents-width) - var(--docs-navbar-width) - 48px);
   }
 
   @media (hover: none) and (max-width: 750px) {
-    max-width: calc(100vw - var(--docs-navbar-width) - 28px);
+    max-width: calc(100vw - var(--docs-table-of-contents-width) - var(--docs-navbar-width) - 28px);
   }
 
-  &[data-with-toc] {
-    padding-inline-end: var(--docs-inline-spacing);
+  @media (max-width: 78em) {
+    padding-inline-end: 0;
+  }
 
-    @mixin smaller-than 1450px {
-      max-width: calc(
-        100vw - var(--docs-table-of-contents-width) - var(--docs-navbar-width) - 48px
-      );
-    }
-
-    @mixin smaller-than $docs-toc-breakpoint {
-      padding-inline-end: 0;
-    }
+  @media (max-width: 67.5em) {
+    padding-block: var(--ui-spacing-md);
   }
 }
 
 .tableOfContents {
   flex: 0 0 var(--docs-table-of-contents-width);
-  margin-top: var(--ui-spacing-xl);
   position: sticky;
   top: var(--docs-header-height);
   align-self: flex-start;
   height: calc(100vh - var(--docs-header-height));
-}
-
-.tabContent {
-  margin-top: 39px;
-  width: 100%;
-  padding-inline-start: var(--docs-inline-spacing);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  max-width: 100%;
-
-  @mixin smaller-than 1450px {
-    max-width: calc(100vw - var(--docs-navbar-width) - 48px);
-  }
-
-  @media (hover: none) and (max-width: 750px) {
-    max-width: calc(100vw - var(--docs-navbar-width) - 33px);
-  }
-}
-
-.contentWrapper {
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  max-width: 100%;
 }

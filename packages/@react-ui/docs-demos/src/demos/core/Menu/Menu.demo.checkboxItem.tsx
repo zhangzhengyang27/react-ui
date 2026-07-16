@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Menu } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -20,11 +20,11 @@ function Demo() {
   return (
     <Menu shadow="md" width={220} closeOnItemClick={false}>
       <Menu.Target>
-        <Button>Columns</Button>
+        <Button>列</Button>
       </Menu.Target>
 
       <Menu.Dropdown>
-        <Menu.Label>Visible columns</Menu.Label>
+        <Menu.Label>可见列</Menu.Label>
         <Menu.CheckboxItem checked={columns.name} onChange={setColumn('name')}>
           Name
         </Menu.CheckboxItem>
@@ -57,11 +57,11 @@ function Demo() {
   return (
     <Menu shadow="md" width={220} closeOnItemClick={false}>
       <Menu.Target>
-        <Button>Columns</Button>
+        <Button>列</Button>
       </Menu.Target>
 
       <Menu.Dropdown>
-        <Menu.Label>Visible columns</Menu.Label>
+        <Menu.Label>可见列</Menu.Label>
         <Menu.CheckboxItem checked={columns.name} onChange={setColumn('name')}>
           Name
         </Menu.CheckboxItem>
@@ -79,7 +79,7 @@ function Demo() {
   );
 }
 
-export const checkboxItem: MantineDemo = {
+export const checkboxItem: UIDemo = {
   type: 'code',
   component: Demo,
   code,

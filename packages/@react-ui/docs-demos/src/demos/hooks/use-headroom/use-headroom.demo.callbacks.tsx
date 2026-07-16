@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Box, Button, Code, Group, Portal, Stack, Text } from '@react-ui/ui';
 import { useDisclosure, useHeadroom } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -43,7 +43,7 @@ function Demo() {
           >
             <Group justify="center" h="100%">
               <Text c="white" fw={500}>
-                {pinned ? 'Pinned' : 'Released'}
+                {pinned ? '已固定' : '已释放'}
               </Text>
             </Group>
           </Box>
@@ -52,10 +52,10 @@ function Demo() {
 
       <Stack>
         <Button onClick={handlers.toggle} variant="default">
-          {showHeader ? 'Hide' : 'Show'} header
+          {showHeader ? '隐藏' : '显示'} 头部
         </Button>
         <Code block>
-          {log.length === 0 ? 'Scroll to see callback events' : log.join('\\n')}
+          {log.length === 0 ? '滚动查看回调事件' : log.join('\\n')}
         </Code>
       </Stack>
     </>
@@ -98,7 +98,7 @@ function Demo() {
           >
             <Group justify="center" h="100%">
               <Text c="white" fw={500}>
-                {pinned ? 'Pinned' : 'Released'}
+                {pinned ? '已固定' : '已释放'}
               </Text>
             </Group>
           </Box>
@@ -107,15 +107,15 @@ function Demo() {
 
       <Stack>
         <Button onClick={handlers.toggle} variant="default">
-          {showHeader ? 'Hide' : 'Show'} header
+          {showHeader ? '隐藏' : '显示'} 头部
         </Button>
-        <Code block>{log.length === 0 ? 'Scroll to see callback events' : log.join('\n')}</Code>
+        <Code block>{log.length === 0 ? '滚动查看回调事件' : log.join('\n')}</Code>
       </Stack>
     </>
   );
 }
 
-export const callbacks: MantineDemo = {
+export const callbacks: UIDemo = {
   type: 'code',
   code,
   component: Demo,

@@ -9,12 +9,12 @@ import {
   factory,
   Factory,
   getRadius,
-  MantineRadius,
+  UIRadius,
   rem,
   ScrollArea,
   ScrollAreaProps,
   StylesApiProps,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useResolvedStylesApi,
   useStyles,
@@ -115,7 +115,7 @@ export interface ResourcesWeekViewProps
   /** Number of minutes for each interval in the week view. Must divide evenly into an hour (e.g. `15`, `30`) or be a whole number of hours (e.g. `120`, `240`) @default 60 */
   intervalMinutes?: number;
   slotLabelFormat?: DateLabelFormat;
-  radius?: MantineRadius;
+  radius?: UIRadius;
   /** Date and time to scroll to on initial render, in `YYYY-MM-DD HH:mm:ss` format */
   startScrollDateTime?: string;
   scrollAreaProps?: Partial<ScrollAreaProps> & DataAttributes;
@@ -352,7 +352,7 @@ export const ResourcesWeekView = factory<ResourcesWeekViewFactory>((_props) => {
     radius,
   };
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const [scrolled, setScrolled] = useState(false);
   const [scrolledX, setScrolledX] = useState(false);
   const ctx = useDatesContext();

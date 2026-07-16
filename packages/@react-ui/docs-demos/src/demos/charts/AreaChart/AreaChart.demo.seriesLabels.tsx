@@ -1,5 +1,5 @@
 import { AreaChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './_data';
 
 const code = `
@@ -16,9 +16,9 @@ function Demo() {
       withLegend
       legendProps={{ verticalAlign: 'bottom' }}
       series={[
-        { name: 'Apples', label: 'Apples sales', color: 'indigo.6' },
-        { name: 'Oranges', label: 'Oranges sales', color: 'blue.6' },
-        { name: 'Tomatoes', label: 'Tomatoes sales', color: 'teal.6' },
+        { name: '苹果', label: '苹果销售额', color: 'indigo.6' },
+        { name: '橙子', label: '橙子销售额', color: 'blue.6' },
+        { name: '西红柿', label: '番茄销售额', color: 'teal.6' },
       ]}
     />
   );
@@ -35,19 +35,19 @@ function Demo() {
       withLegend
       legendProps={{ verticalAlign: 'bottom' }}
       series={[
-        { name: 'Apples', label: 'Apples sales', color: 'indigo.6' },
-        { name: 'Oranges', label: 'Oranges sales', color: 'blue.6' },
-        { name: 'Tomatoes', label: 'Tomatoes sales', color: 'teal.6' },
+        { name: '苹果', label: '苹果销售额', color: 'indigo.6' },
+        { name: '橙子', label: '橙子销售额', color: 'blue.6' },
+        { name: '西红柿', label: '番茄销售额', color: 'teal.6' },
       ]}
     />
   );
 }
 
-export const seriesLabels: MantineDemo = {
+export const seriesLabels: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

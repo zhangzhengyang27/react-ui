@@ -1,5 +1,5 @@
-import { Checkbox, createTheme, MantineThemeProvider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { Checkbox, createTheme, UIThemeProvider } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Checkbox.demo.customSize.module.css';
 
 const cssCode = `.root {
@@ -23,7 +23,7 @@ const cssCode = `.root {
 `;
 
 const code = `
-import { MantineProvider, Checkbox, createTheme } from '@react-ui/ui';
+import { UIProvider, Checkbox, createTheme } from '@react-ui/ui';
 import classes from './Demo.module.css';
 
 const theme = createTheme({
@@ -34,10 +34,10 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
-      <Checkbox size="xxs" label="Extra small checkbox" />
-      <Checkbox size="xxl" label="Extra large checkbox" mt="md" />
-    </MantineProvider>
+    <UIProvider theme={theme}>
+      <Checkbox size="xxs" label="超小复选框" />
+      <Checkbox size="xxl" label="超大复选框" mt="md" />
+    </UIProvider>
   );
 }
 `;
@@ -50,19 +50,19 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
-      <Checkbox size="xxs" label="Extra small checkbox" />
-      <Checkbox size="xxl" label="Extra large checkbox" mt="md" />
-    </MantineThemeProvider>
+    <UIThemeProvider theme={theme}>
+      <Checkbox size="xxs" label="超小复选框" />
+      <Checkbox size="xxl" label="超大复选框" mt="md" />
+    </UIThemeProvider>
   );
 }
 
-export const customSize: MantineDemo = {
+export const customSize: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
   ],
 };

@@ -1,5 +1,5 @@
 import { DataList } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const data = [
   { label: 'Name', value: 'John Doe' },
@@ -45,7 +45,7 @@ function Demo() {
 }
 `;
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
@@ -55,8 +55,8 @@ export const usage: MantineDemo = {
       prop: 'orientation',
       type: 'segmented',
       data: [
-        { value: 'vertical', label: 'Vertical' },
-        { value: 'horizontal', label: 'Horizontal' },
+        { value: 'vertical', label: '垂直' },
+        { value: 'horizontal', label: '水平' },
       ],
       initialValue: 'vertical',
       libraryValue: 'vertical',

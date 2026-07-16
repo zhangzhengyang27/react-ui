@@ -1,5 +1,5 @@
 import { Table } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { elements } from './_data';
 
 const code = `
@@ -27,14 +27,14 @@ function Demo() {
     <Table stickyHeader stickyHeaderOffset={60}>
       <Table.Thead>
         <Table.Tr>
-          <Table.Th>Element position</Table.Th>
-          <Table.Th>Element name</Table.Th>
-          <Table.Th>Symbol</Table.Th>
-          <Table.Th>Atomic mass</Table.Th>
+          <Table.Th>元素位置</Table.Th>
+          <Table.Th>元素名称</Table.Th>
+          <Table.Th>符号</Table.Th>
+          <Table.Th>原子质量</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>
-      <Table.Caption>Scroll page to see sticky thead</Table.Caption>
+      <Table.Caption>滚动页面查看粘性表头</Table.Caption>
     </Table>
   );
 }
@@ -54,19 +54,19 @@ export function Demo() {
     <Table stickyHeader stickyHeaderOffset="var(--docs-header-height)">
       <Table.Thead>
         <Table.Tr>
-          <Table.Th>Element position</Table.Th>
-          <Table.Th>Element name</Table.Th>
-          <Table.Th>Symbol</Table.Th>
-          <Table.Th>Atomic mass</Table.Th>
+          <Table.Th>元素位置</Table.Th>
+          <Table.Th>元素名称</Table.Th>
+          <Table.Th>符号</Table.Th>
+          <Table.Th>原子质量</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>
-      <Table.Caption>Scroll page to see sticky thead</Table.Caption>
+      <Table.Caption>滚动页面查看粘性表头</Table.Caption>
     </Table>
   );
 }
 
-export const stickyHeader: MantineDemo = {
+export const stickyHeader: UIDemo = {
   type: 'code',
   code,
   component: Demo,

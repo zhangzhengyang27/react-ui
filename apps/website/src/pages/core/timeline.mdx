@@ -33,7 +33,7 @@ import { Timeline } from '@react-ui/ui';
 
 // 这不会生效，step 子项不会渲染
 function WillNotWork() {
-  return <Timeline.Item title="Nope">It will not work</Timeline.Item>;
+  return <Timeline.Item title="否">它不会生效</Timeline.Item>;
 }
 
 // 为子项创建一个单独的组件
@@ -44,12 +44,12 @@ function WillWork() {
 function Demo() {
   return (
     <Timeline active={1}>
-      <Timeline.Item title="Regular item">First item</Timeline.Item>
+      <Timeline.Item title="常规项目">第一个项目</Timeline.Item>
       <WillNotWork />
-      <Timeline.Item title="Works as expected">
+      <Timeline.Item title="按预期工作">
         <WillWork />
       </Timeline.Item>
-      <Timeline.Item title="Regular item">Third item</Timeline.Item>
+      <Timeline.Item title="常规项目">第三个项目</Timeline.Item>
     </Timeline>
   );
 }

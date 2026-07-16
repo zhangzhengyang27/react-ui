@@ -23,22 +23,22 @@ import {
   factory,
   Factory,
   getThemeColor,
-  MantineColor,
+  UIColor,
   StylesApiProps,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useResolvedStylesApi,
   useStyles,
 } from '@react-ui/ui';
 import { ChartLegend, ChartLegendStylesNames } from '../ChartLegend';
 import { ChartTooltip, ChartTooltipStylesNames } from '../ChartTooltip';
-import { MantineChartDotProps } from '../types';
+import { UIChartDotProps } from '../types';
 import classes from './RadarChart.module.css';
 
 export interface RadarChartSeries {
   name: string;
-  color: MantineColor;
-  strokeColor?: MantineColor;
+  color: UIColor;
+  strokeColor?: UIColor;
   opacity?: number;
   label?: string;
 }
@@ -64,10 +64,10 @@ export interface RadarChartProps
   dataKey: string;
 
   /** Controls color of the grid lines. By default, color depends on the color scheme. */
-  gridColor?: MantineColor;
+  gridColor?: UIColor;
 
   /** Controls color of all text elements. By default, color depends on the color scheme. */
-  textColor?: MantineColor;
+  textColor?: UIColor;
 
   /** Determines whether PolarGrid component should be displayed @default true. */
   withPolarGrid?: boolean;
@@ -114,10 +114,10 @@ export interface RadarChartProps
   withDots?: boolean;
 
   /** Props passed down to all dots. Ignored if `withDots={false}` is set. */
-  dotProps?: MantineChartDotProps;
+  dotProps?: UIChartDotProps;
 
   /** Props passed down to all active dots. Ignored if `withDots={false}` is set. */
-  activeDotProps?: MantineChartDotProps;
+  activeDotProps?: UIChartDotProps;
 
   /** Additional components that are rendered inside recharts `RadarChart` component */
   children?: React.ReactNode;
@@ -181,7 +181,7 @@ export const RadarChart = factory<RadarChartFactory>((_props) => {
     ...others
   } = props;
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
 
   const getStyles = useStyles<RadarChartFactory>({
     name: 'RadarChart',

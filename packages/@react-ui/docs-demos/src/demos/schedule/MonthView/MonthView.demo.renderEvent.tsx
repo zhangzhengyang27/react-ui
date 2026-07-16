@@ -2,81 +2,81 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import { HoverCard, UnstyledButton } from '@react-ui/ui';
 import { MonthView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { _eventDetailsCode, EventDetails } from '../_EventDetails';
 
-const today = dayjs();
+const today = dayjs('2024-01-15');
 const startOfMonth = today.startOf('month');
 
 const eventData: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Team Standup',
+    title: '团队站会',
     start: startOfMonth.add(2, 'day').hour(9).minute(0).format('YYYY-MM-DD HH:mm:ss'),
     end: startOfMonth.add(2, 'day').hour(9).minute(30).format('YYYY-MM-DD HH:mm:ss'),
     color: 'blue',
     payload: {
-      description: 'Daily team sync meeting',
+      description: '每日团队同步会议',
       attendees: ['Alice', 'Bob', 'Charlie'],
       location: 'Conference Room A',
     },
   },
   {
     id: 2,
-    title: 'Design Workshop',
+    title: '设计工作坊',
     start: startOfMonth.add(5, 'day').hour(10).minute(0).format('YYYY-MM-DD HH:mm:ss'),
     end: startOfMonth.add(5, 'day').hour(12).minute(0).format('YYYY-MM-DD HH:mm:ss'),
     color: 'grape',
     payload: {
-      description: 'Collaborative design thinking session',
+      description: '协作设计思维会议',
       attendees: ['Diana', 'Eve', 'Frank'],
-      location: 'Creative Space',
+      location: '创意空间',
     },
   },
   {
     id: 3,
-    title: 'Client Presentation',
+    title: '客户演示',
     start: startOfMonth.add(10, 'day').hour(14).minute(0).format('YYYY-MM-DD HH:mm:ss'),
     end: startOfMonth.add(10, 'day').hour(15).minute(30).format('YYYY-MM-DD HH:mm:ss'),
     color: 'green',
     payload: {
-      description: 'Q4 progress presentation to client',
+      description: 'Q4 进展客户演示',
       attendees: ['Grace', 'Henry'],
       location: 'Zoom',
     },
   },
   {
     id: 4,
-    title: 'Sprint Planning',
+    title: '迭代计划',
     start: startOfMonth.add(15, 'day').hour(10).minute(0).format('YYYY-MM-DD HH:mm:ss'),
     end: startOfMonth.add(15, 'day').hour(12).minute(0).format('YYYY-MM-DD HH:mm:ss'),
     color: 'orange',
     payload: {
-      description: 'Plan next sprint tasks and priorities',
+      description: '规划下一个冲刺任务和优先级',
       attendees: ['Alice', 'Charlie', 'Bob'],
       location: 'Dev Lab',
     },
   },
   {
     id: 5,
-    title: 'Code Review',
+    title: '代码审查',
     start: startOfMonth.add(18, 'day').hour(16).minute(0).format('YYYY-MM-DD HH:mm:ss'),
     end: startOfMonth.add(18, 'day').hour(17).minute(0).format('YYYY-MM-DD HH:mm:ss'),
     color: 'cyan',
     payload: {
-      description: 'Review pull requests from this week',
+      description: '评审本周的拉取请求',
       attendees: ['Alice', 'Charlie'],
       location: 'Dev Lab',
     },
   },
   {
     id: 6,
-    title: 'Tech Conference',
+    title: '技术大会',
     start: startOfMonth.add(22, 'day').format('YYYY-MM-DD 00:00:00'),
     end: startOfMonth.add(22, 'day').format('YYYY-MM-DD 23:59:59'),
     color: 'pink',
     payload: {
-      description: 'Annual tech conference',
+      description: '年度技术大会',
       attendees: ['All Team'],
       location: 'Convention Center',
     },
@@ -96,7 +96,7 @@ function Demo() {
 
   return (
     <MonthView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={selectedEvents}
       withEventsDragAndDrop
       onEventDrop={({ eventId, newStart, newEnd }) => {
@@ -132,7 +132,7 @@ function Demo() {
 
   return (
     <MonthView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       withEventsDragAndDrop
       onEventDrop={({ eventId, newStart, newEnd }) => {
@@ -162,13 +162,13 @@ function Demo() {
   );
 }
 
-export const renderEvent: MantineDemo = {
+export const renderEvent: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
-    { fileName: 'EventDetails.tsx', code: _eventDetailsCode, language: 'tsx' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
+    { fileName: '事件详情.tsx', code: _eventDetailsCode, language: 'tsx' },
     {
       fileName: 'events.ts',
       code: `import { ScheduleEventData } from '@react-ui/schedule';\n\nexport const eventsData: ScheduleEventData[] = ${JSON.stringify(eventData, null, 2)};`,

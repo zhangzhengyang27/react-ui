@@ -21,4 +21,4 @@ export const MenuLabel = factory<MenuLabelFactory>((props, ref) => {
 })
 
 MenuLabel.classes = classes
-MenuLabel.displayName = '@mantine/core/MenuLabel'
+MenuLabel.displayName = '@react-ui/ui/MenuLabel'

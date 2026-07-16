@@ -20,9 +20,9 @@ import {
   factory,
   Factory,
   getThemeColor,
-  MantineColor,
+  UIColor,
   StylesApiProps,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useResolvedStylesApi,
   useStyles,
@@ -35,7 +35,7 @@ import type {
   BaseChartStylesNames,
   ChartSeries,
   GridChartBaseProps,
-  MantineChartDotProps,
+  UIChartDotProps,
 } from '../types';
 import classes from '../grid-chart.module.css';
 
@@ -43,7 +43,7 @@ export type LineChartType = 'default' | 'gradient';
 
 export interface LineChartGradientStop {
   offset: number;
-  color: MantineColor;
+  color: UIColor;
 }
 
 export type LineChartCurveType =
@@ -94,10 +94,10 @@ export interface LineChartProps
   withDots?: boolean;
 
   /** Props passed down to all dots. Ignored if `withDots={false}` is set. */
-  dotProps?: MantineChartDotProps;
+  dotProps?: UIChartDotProps;
 
   /** Props passed down to all active dots. Ignored if `withDots={false}` is set. */
-  activeDotProps?: MantineChartDotProps;
+  activeDotProps?: UIChartDotProps;
 
   /** Stroke width for the chart lines @default 2 */
   strokeWidth?: number;
@@ -207,7 +207,7 @@ export const LineChart = factory<LineChartFactory>((_props) => {
     ...others
   } = props;
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const withXTickLine = gridAxis !== 'none' && (tickLine === 'x' || tickLine === 'xy');
   const withYTickLine = gridAxis !== 'none' && (tickLine === 'y' || tickLine === 'xy');
   const [highlightedArea, setHighlightedArea] = useState<string | number | null>(null);

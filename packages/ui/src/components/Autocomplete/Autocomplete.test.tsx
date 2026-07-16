@@ -1,9 +1,9 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Autocomplete } from './Autocomplete'
 
-const renderAutocomplete = (ui: React.ReactElement) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderAutocomplete = (ui: React.ReactElement) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Autocomplete', () => {
     it('renders with placeholder', () => {

@@ -1,5 +1,5 @@
 import { Checkbox, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Tooltip, Checkbox } from '@react-ui/ui';
@@ -7,12 +7,12 @@ import { Tooltip, Checkbox } from '@react-ui/ui';
 function Demo() {
   return (
     <>
-      <Tooltip label="Checkbox with tooltip">
-        <Checkbox label="Tooltip on checkbox only" />
+      <Tooltip label="带提示的复选框">
+        <Checkbox label="只在复选框上显示提示" />
       </Tooltip>
 
-      <Tooltip label="Checkbox with tooltip" refProp="rootRef">
-        <Checkbox label="Tooltip the entire element" mt="md" />
+      <Tooltip label="带提示的复选框" refProp="rootRef">
+        <Checkbox label="提示整个元素" mt="md" />
       </Tooltip>
     </>
   );
@@ -22,18 +22,18 @@ function Demo() {
 function Demo() {
   return (
     <>
-      <Tooltip label="Checkbox with tooltip">
-        <Checkbox label="Tooltip on checkbox only" />
+      <Tooltip label="带提示的复选框">
+        <Checkbox label="只在复选框上显示提示" />
       </Tooltip>
 
-      <Tooltip label="Checkbox with tooltip" refProp="rootRef">
-        <Checkbox label="Tooltip the entire element" mt="md" />
+      <Tooltip label="带提示的复选框" refProp="rootRef">
+        <Checkbox label="提示整个元素" mt="md" />
       </Tooltip>
     </>
   );
 }
 
-export const tooltip: MantineDemo = {
+export const tooltip: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,6 +1,6 @@
 import { BiohazardIcon, RadioactiveIcon } from '@phosphor-icons/react';
 import { Checkbox, CheckboxIconComponent } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Checkbox, CheckboxIconComponent } from '@react-ui/ui';
@@ -12,8 +12,8 @@ const CheckboxIcon: CheckboxIconComponent = ({ indeterminate, ...others }) =>
 function Demo() {
   return (
     <>
-      <Checkbox icon={CheckboxIcon} label="Custom icon" defaultChecked />
-      <Checkbox icon={CheckboxIcon} label="Custom icon: indeterminate" indeterminate mt="sm" />
+      <Checkbox icon={CheckboxIcon} label="自定义图标" defaultChecked />
+      <Checkbox icon={CheckboxIcon} label="自定义图标：不确定" indeterminate mt="sm" />
     </>
   );
 }
@@ -25,13 +25,13 @@ const CheckboxIcon: CheckboxIconComponent = ({ indeterminate, ...others }) =>
 function Demo() {
   return (
     <>
-      <Checkbox icon={CheckboxIcon} label="Custom icon" defaultChecked />
-      <Checkbox icon={CheckboxIcon} label="Custom icon: indeterminate" indeterminate mt="sm" />
+      <Checkbox icon={CheckboxIcon} label="自定义图标" defaultChecked />
+      <Checkbox icon={CheckboxIcon} label="自定义图标：不确定" indeterminate mt="sm" />
     </>
   );
 }
 
-export const icon: MantineDemo = {
+export const icon: UIDemo = {
   type: 'code',
   component: Demo,
   code,

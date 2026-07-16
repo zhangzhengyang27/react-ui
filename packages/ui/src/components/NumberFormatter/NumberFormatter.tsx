@@ -1,5 +1,5 @@
 import { NumericFormat } from 'react-number-format';
-import { ExtendComponent, Factory, MantineThemeComponent, useProps } from '../../core';
+import { ExtendComponent, Factory, UIThemeComponent, useProps } from '../../core';
 
 export interface NumberFormatterProps extends React.ComponentProps<'span'> {
   value?: number | string;
@@ -30,7 +30,7 @@ export const NumberFormatter = (
   return <NumericFormat displayType="text" value={value} {...others} getInputRef={ref as any} />;
 };
 
-const extendNumberFormatter = (c: ExtendComponent<NumberFormatterFactory>): MantineThemeComponent =>
+const extendNumberFormatter = (c: ExtendComponent<NumberFormatterFactory>): UIThemeComponent =>
   c;
 
 NumberFormatter.extend = extendNumberFormatter;

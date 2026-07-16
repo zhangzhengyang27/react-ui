@@ -1,5 +1,5 @@
 import { TreeSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './data';
 import classes from './TreeSelect.demo.dropdownOffset.module.css';
 
@@ -29,8 +29,8 @@ import classes from './Demo.module.css';
 function Demo() {
   return (
     <TreeSelect
-      label="Your favorite item"
-      placeholder="Pick value"
+      label="你最喜欢的项目"
+      placeholder="选择值"
       data={data}
       classNames={classes}
       comboboxProps={{ position: 'bottom', middlewares: { flip: false, shift: false }, offset: 0 }}
@@ -42,8 +42,8 @@ function Demo() {
 function Demo() {
   return (
     <TreeSelect
-      label="Your favorite item"
-      placeholder="Pick value"
+      label="你最喜欢的项目"
+      placeholder="选择值"
       data={data}
       classNames={classes}
       comboboxProps={{ position: 'bottom', middlewares: { flip: false, shift: false }, offset: 0 }}
@@ -51,12 +51,12 @@ function Demo() {
   );
 }
 
-export const dropdownOffset: MantineDemo = {
+export const dropdownOffset: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
     { fileName: 'data.ts', language: 'tsx', code: dataCode },
   ],
   maxWidth: 340,

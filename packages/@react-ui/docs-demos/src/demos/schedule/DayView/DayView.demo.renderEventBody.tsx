@@ -2,22 +2,22 @@ import dayjs from 'dayjs';
 import { ClockIcon, MapPinIcon } from '@phosphor-icons/react';
 import { Group, Text } from '@react-ui/ui';
 import { DayView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const events: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Morning Standup',
+    title: '早间站会',
     start: `${today} 09:00:00`,
     end: `${today} 09:30:00`,
     color: 'blue',
-    payload: { location: 'Room A' },
+    payload: { location: 'A 会议室' },
   },
   {
     id: 2,
-    title: 'Client Meeting',
+    title: '客户会议',
     start: `${today} 11:00:00`,
     end: `${today} 12:00:00`,
     color: 'green',
@@ -25,7 +25,7 @@ const events: ScheduleEventData[] = [
   },
   {
     id: 3,
-    title: 'Lunch Break',
+    title: '午餐休息',
     start: `${today} 12:30:00`,
     end: `${today} 13:30:00`,
     color: 'orange',
@@ -42,11 +42,11 @@ import { DayView, ScheduleEventData } from '@react-ui/schedule';
 const events: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Morning Standup',
+    title: '早间站会',
     start: \`\${today} 09:00:00\`,
     end: \`\${today} 09:30:00\`,
     color: 'blue',
-    payload: { location: 'Room A' },
+    payload: { location: 'A 会议室' },
   },
   // ... more events
 ];
@@ -54,7 +54,7 @@ const events: ScheduleEventData[] = [
 function Demo() {
   return (
     <DayView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       startTime="08:00:00"
       endTime="18:00:00"
@@ -86,7 +86,7 @@ function Demo() {
 function Demo() {
   return (
     <DayView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       startTime="08:00:00"
       endTime="18:00:00"
@@ -114,7 +114,7 @@ function Demo() {
   );
 }
 
-export const renderEventBody: MantineDemo = {
+export const renderEventBody: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

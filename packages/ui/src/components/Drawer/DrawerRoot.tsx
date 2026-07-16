@@ -4,7 +4,7 @@ import {
     Factory,
     getDefaultZIndex,
     getSize,
-    MantineRadius,
+    UIRadius,
     rem,
     StylesApiProps,
     useProps,
@@ -34,7 +34,7 @@ function getDrawerAlign(position: DrawerPosition | undefined) {
     }
 }
 
-const transitions: Record<DrawerPosition, import('../Transition').MantineTransitionName> = {
+const transitions: Record<DrawerPosition, import('../Transition').UITransitionName> = {
     top: 'slide-down',
     bottom: 'slide-up',
     left: 'slide-right',
@@ -58,14 +58,14 @@ export interface DrawerRootProps extends StylesApiProps<DrawerRootFactory>, Moda
     /** Side of the screen on which drawer will be opened @default 'left' */
     position?: DrawerPosition
 
-    /** Key of theme.radius or any valid CSS value to set border-radius @default 0 */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 to set border-radius @default 0 */
+    radius?: UIRadius
 
     /** Drawer container offset from the viewport end @default 0 */
     offset?: number | string
 
     /** Controls width of the drawer */
-    size?: MantineRadius | (string & {}) | number
+    size?: UIRadius | (string & {}) | number
 }
 
 export type DrawerRootStylesNames = 'root'

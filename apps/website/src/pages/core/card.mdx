@@ -37,16 +37,16 @@ function Demo() {
   return (
     <Card padding="xl">
       {/* 上、右、左外边距为负 – -1 * theme.spacing.xl */}
-      <Card.Section>First section</Card.Section>
+      <Card.Section>第一部分</Card.Section>
 
       {/* 不在 Card.Section 内的内容相对于 Card 具有 theme.spacing.xl 的四面间距 */}
-      <Text>Some other content</Text>
+      <Text>一些其他内容</Text>
 
       {/* 右、左外边距为负 – -1 * theme.spacing.xl */}
-      <Card.Section>Middle section</Card.Section>
+      <Card.Section>中间部分</Card.Section>
 
       {/* 下、右、左外边距为负 – -1 * theme.spacing.xl */}
-      <Card.Section>Last section</Card.Section>
+      <Card.Section>最后部分</Card.Section>
     </Card>
   );
 }
@@ -68,7 +68,7 @@ function Demo() {
         <Card.Section>Won't work either</Card.Section>
       </>
 
-      <Card.Section>Works fine</Card.Section>
+      <Card.Section>正常运行</Card.Section>
     </Card>
   );
 }

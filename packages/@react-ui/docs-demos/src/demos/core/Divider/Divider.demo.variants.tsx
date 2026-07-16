@@ -1,5 +1,5 @@
 import { Divider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Divider } from '@react-ui/ui';
@@ -25,7 +25,7 @@ function Demo() {
   );
 }
 
-export const variants: MantineDemo = {
+export const variants: UIDemo = {
   type: 'code',
   code,
   component: Demo,

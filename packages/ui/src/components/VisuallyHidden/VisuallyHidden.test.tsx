@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { VisuallyHidden } from './VisuallyHidden'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('VisuallyHidden', () => {
     it('renders children inside a span', () => {
@@ -18,7 +18,7 @@ describe('VisuallyHidden', () => {
         renderWithProvider(<VisuallyHidden data-testid="visually-hidden">hidden</VisuallyHidden>)
 
         const element = screen.getByTestId('visually-hidden')
-        expect(element).toHaveClass('mantine-VisuallyHidden-root')
+        expect(element).toHaveClass('ui-VisuallyHidden-root')
     })
 
     it('forwards additional props to the span', () => {

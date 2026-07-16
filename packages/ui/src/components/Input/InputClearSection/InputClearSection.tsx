@@ -1,4 +1,4 @@
-import { MantineSize } from '../../../core'
+import { UISize } from '../../../core'
 
 export type ClearSectionMode =
     | 'both'
@@ -10,7 +10,7 @@ export interface InputClearSectionProps {
     __clearSection: React.ReactNode
     rightSection: React.ReactNode
     __defaultRightSection: React.ReactNode
-    size: MantineSize | string | undefined
+    size: UISize | string | undefined
     __clearSectionMode: ClearSectionMode | undefined
 }
 

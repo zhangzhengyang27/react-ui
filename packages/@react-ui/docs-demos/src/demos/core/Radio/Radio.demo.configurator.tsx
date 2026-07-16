@@ -1,5 +1,5 @@
 import { Radio, RadioProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Radio } from '@react-ui/ui';
@@ -22,7 +22,7 @@ function Wrapper(props: RadioProps) {
   );
 }
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
@@ -32,8 +32,8 @@ export const configurator: MantineDemo = {
       prop: 'labelPosition',
       type: 'segmented',
       data: [
-        { value: 'right', label: 'Right' },
-        { value: 'left', label: 'Left' },
+        { value: 'right', label: '右' },
+        { value: 'left', label: '左' },
       ],
       initialValue: 'right',
       libraryValue: 'right',
@@ -47,8 +47,8 @@ export const configurator: MantineDemo = {
       prop: 'variant',
       type: 'segmented',
       data: [
-        { value: 'filled', label: 'Filled' },
-        { value: 'outline', label: 'Outline' },
+        { value: 'filled', label: '填充' },
+        { value: 'outline', label: '轮廓' },
       ],
       initialValue: 'filled',
       libraryValue: 'filled',

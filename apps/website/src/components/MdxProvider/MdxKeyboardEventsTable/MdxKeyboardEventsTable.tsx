@@ -21,9 +21,9 @@ export function MdxKeyboardEventsTable({ data }: KeyboardEventsTableProps) {
       <Table verticalSpacing="xs">
         <Table.Thead>
           <Table.Tr>
-            <Table.Th>Key</Table.Th>
-            <Table.Th>Description</Table.Th>
-            {hasCondition && <Table.Th>Condition</Table.Th>}
+            <Table.Th>按键</Table.Th>
+            <Table.Th>说明</Table.Th>
+            {hasCondition && <Table.Th>条件</Table.Th>}
           </Table.Tr>
         </Table.Thead>
         <tbody>{rows}</tbody>

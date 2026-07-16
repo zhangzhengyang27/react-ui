@@ -4,7 +4,7 @@ import {
     ElementProps,
     factory,
     Factory,
-    MantineSize,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -21,29 +21,29 @@ export interface SwitchGroupProps
     extends BoxProps,
         StylesApiProps<SwitchGroupFactory>,
         ElementProps<'div', 'value' | 'defaultValue' | 'onChange'> {
-    /** Controlled value */
+    //** 受控值 */
     value?: SwitchGroupValue
 
-    /** Initial value for uncontrolled component */
+    //** 非受控组件的初始值 */
     defaultValue?: SwitchGroupValue
 
-    /** Called when value changes */
+    //** 值变化时调用 */
     onChange?: (value: SwitchGroupValue) => void
 
     /** Label rendered above the switches */
     label?: React.ReactNode
 
-    /** Description rendered below the label */
+    //** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
     /** Error rendered below the switches */
     error?: React.ReactNode
 
-    /** If set, required asterisk is added to the label */
+    //** 如果设置，则会在标签上添加必填星号 */
     required?: boolean
 
     /** Controls size of all switches in the group @default 'sm' */
-    size?: MantineSize
+    size?: UISize
 
     /** Name attribute passed to all switches */
     name?: string

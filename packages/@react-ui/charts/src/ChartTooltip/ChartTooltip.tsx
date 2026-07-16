@@ -6,7 +6,7 @@ import {
   Factory,
   getThemeColor,
   StylesApiProps,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useStyles,
 } from '@react-ui/ui';
@@ -145,7 +145,7 @@ export const ChartTooltip = factory<ChartTooltipFactory>((_props) => {
     ...others
   } = props;
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
 
   const getStyles = useStyles<ChartTooltipFactory>({
     name: 'ChartTooltip',

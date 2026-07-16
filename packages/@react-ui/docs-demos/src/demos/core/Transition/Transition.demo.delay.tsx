@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Flex, Paper, Transition } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -11,7 +11,7 @@ export function Demo() {
 
   return (
     <Flex maw={200} pos="relative" justify="center" m="auto">
-      <Button onClick={() => setOpened(true)}>Open dropdown</Button>
+      <Button onClick={() => setOpened(true)}>打开下拉</Button>
 
       <Transition mounted={opened} transition="pop" enterDelay={500} exitDelay={300}>
         {(transitionStyle) => (
@@ -38,7 +38,7 @@ export function Demo() {
 
   return (
     <Flex maw={200} pos="relative" justify="center" m="auto">
-      <Button onClick={() => setOpened(true)}>Open dropdown</Button>
+      <Button onClick={() => setOpened(true)}>打开下拉</Button>
 
       <Transition mounted={opened} transition="pop" enterDelay={500} exitDelay={300}>
         {(transitionStyle) => (
@@ -60,7 +60,7 @@ export function Demo() {
   );
 }
 
-export const delay: MantineDemo = {
+export const delay: UIDemo = {
   type: 'code',
   code,
   component: Demo,

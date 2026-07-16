@@ -1,5 +1,5 @@
-import { render, screen, tests } from '@mantine-tests/core';
-import { datesTests } from '@mantine-tests/dates';
+import { render, screen, tests } from '@react-ui/tests';
+import { datesTests } from '@react-ui/tests/dates';
 import { YearLevelGroup, YearLevelGroupProps, YearLevelGroupStylesNames } from './YearLevelGroup';
 
 const defaultProps: YearLevelGroupProps = {
@@ -36,7 +36,7 @@ describe('@react-ui/dates/YearLevelGroup', () => {
   datesTests.itHandlesControlsKeyboardEvents({
     component: YearLevelGroup,
     props: defaultProps,
-    listSelector: '.mantine-YearLevelGroup-monthsList',
+    listSelector: '.ui-YearLevelGroup-monthsList',
   });
 
   it('renders correct number of columns based on numberOfColumns prop', () => {
@@ -77,14 +77,14 @@ describe('@react-ui/dates/YearLevelGroup', () => {
   it('has correct default __staticSelector', () => {
     const { container } = render(<YearLevelGroup {...defaultProps} />);
     expect(container.querySelector('table button')).toHaveClass(
-      'mantine-YearLevelGroup-monthsListControl'
+      'ui-YearLevelGroup-monthsListControl'
     );
   });
 
   it('supports custom __staticSelector', () => {
     const { container } = render(<YearLevelGroup {...defaultProps} __staticSelector="Calendar" />);
     expect(container.querySelector('table button')).toHaveClass(
-      'mantine-Calendar-monthsListControl'
+      'ui-Calendar-monthsListControl'
     );
   });
 });

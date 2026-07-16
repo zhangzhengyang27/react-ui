@@ -1,12 +1,12 @@
 import { Button, Flex, FlexProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: FlexProps) {
   return (
     <Flex mih={50} bg="rgba(0, 0, 0, .3)" {...props}>
-      <Button>Button 1</Button>
-      <Button>Button 2</Button>
-      <Button>Button 3</Button>
+      <Button>按钮 1</Button>
+      <Button>按钮 2</Button>
+      <Button>按钮 3</Button>
     </Flex>
   );
 }
@@ -22,15 +22,15 @@ function Demo() {
       bg="rgba(0, 0, 0, .3)"
       {{props}}
     >
-      <Button>Button 1</Button>
-      <Button>Button 2</Button>
-      <Button>Button 3</Button>
+      <Button>按钮 1</Button>
+      <Button>按钮 2</Button>
+      <Button>按钮 3</Button>
     </Flex>
   );
 }
 `;
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

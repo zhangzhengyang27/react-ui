@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Flex } from './Flex'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Flex', () => {
     it('renders a div by default', () => {
@@ -17,7 +17,7 @@ describe('Flex', () => {
     it('applies static classes', () => {
         renderWithProvider(<Flex data-testid="flex">content</Flex>)
 
-        expect(screen.getByTestId('flex')).toHaveClass('mantine-Flex-root')
+        expect(screen.getByTestId('flex')).toHaveClass('ui-Flex-root')
     })
 
     it('supports polymorphic rendering', () => {

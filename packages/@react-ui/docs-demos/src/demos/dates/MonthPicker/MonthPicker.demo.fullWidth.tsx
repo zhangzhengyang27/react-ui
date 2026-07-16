@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MonthPicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -17,7 +17,7 @@ function Demo() {
   return <MonthPicker fullWidth value={value} onChange={setValue} />;
 }
 
-export const fullWidth: MantineDemo = {
+export const fullWidth: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 600,

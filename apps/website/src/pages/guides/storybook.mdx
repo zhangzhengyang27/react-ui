@@ -55,11 +55,11 @@ export const theme = createTheme({
 ```tsx
 // 在你的应用中
 
-import { MantineProvider } from '@react-ui/ui';
+import { UIProvider } from '@react-ui/ui';
 import { theme } from './theme';
 
 function App() {
-  return <MantineProvider theme={theme}>{/* ... */}</MantineProvider>;
+  return <UIProvider theme={theme}>{/* ... */}</UIProvider>;
 }
 ```
 
@@ -72,7 +72,7 @@ function App() {
 // 除 @react-ui/hooks 外，所有包都需要导入样式
 import '@react-ui/ui/styles.css';
 
-import { ColorSchemeScript, MantineProvider } from '@react-ui/ui';
+import { ColorSchemeScript, UIProvider } from '@react-ui/ui';
 import { theme } from '../theme';
 
 export const parameters = {
@@ -103,10 +103,10 @@ export const decorators = [
   (renderStory: any, context: any) => {
     const scheme = (context.globals.theme || 'light') as 'light' | 'dark';
     return (
-      <MantineProvider theme={theme} forceColorScheme={scheme}>
+      <UIProvider theme={theme} forceColorScheme={scheme}>
         <ColorSchemeScript />
         {renderStory()}
-      </MantineProvider>
+      </UIProvider>
     );
   },
 ];

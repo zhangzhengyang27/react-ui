@@ -1,5 +1,5 @@
 import { Rating, RatingProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Rating } from '@react-ui/ui';
@@ -13,7 +13,7 @@ function Wrapper(props: RatingProps) {
   return <Rating defaultValue={2} {...props} />;
 }
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

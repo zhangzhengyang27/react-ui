@@ -1,5 +1,5 @@
 import { BubbleChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './_data';
 
 const code = `
@@ -12,7 +12,7 @@ function Demo() {
       h={60}
       data={data}
       range={[16, 225]}
-      label="Sales/hour"
+      label="销售额/小时"
       color="lime.6"
       dataKey={{ x: 'hour', y: 'index', z: 'value' }}
       valueFormatter={(value) => \`\${value.toFixed(2)} USD\`}
@@ -27,7 +27,7 @@ function Demo() {
       h={60}
       data={data}
       range={[16, 225]}
-      label="Sales/hour"
+      label="销售额/小时"
       color="lime.6"
       dataKey={{ x: 'hour', y: 'index', z: 'value' }}
       valueFormatter={(value) => `${value.toFixed(2)} USD`}
@@ -35,11 +35,11 @@ function Demo() {
   );
 }
 
-export const valueFormatter: MantineDemo = {
+export const valueFormatter: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Switch } from './Switch'
 
-const renderSwitch = (ui: React.ReactElement) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderSwitch = (ui: React.ReactElement) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Switch', () => {
     it('renders with label', () => {
@@ -38,9 +38,9 @@ describe('Switch', () => {
         expect(screen.getByRole('checkbox')).toBeChecked()
 
         rerender(
-            <MantineProvider>
+            <UIProvider>
                 <Switch checked={false} />
-            </MantineProvider>
+            </UIProvider>
         )
         expect(screen.getByRole('checkbox')).not.toBeChecked()
     })

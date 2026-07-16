@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { TypographyStylesProvider } from './TypographyStylesProvider'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('TypographyStylesProvider', () => {
     it('renders children inside a div', () => {
@@ -23,7 +23,7 @@ describe('TypographyStylesProvider', () => {
     it('applies static classes', () => {
         renderWithProvider(<TypographyStylesProvider data-testid="tsp">content</TypographyStylesProvider>)
 
-        expect(screen.getByTestId('tsp')).toHaveClass('mantine-TypographyStylesProvider-root')
+        expect(screen.getByTestId('tsp')).toHaveClass('ui-TypographyStylesProvider-root')
     })
 
     it('supports polymorphic rendering', () => {

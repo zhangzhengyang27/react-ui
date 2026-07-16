@@ -1,6 +1,6 @@
 import { Button, Text } from '@react-ui/ui';
 import { modals } from '@react-ui/modals';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Text } from '@react-ui/ui';
@@ -11,9 +11,9 @@ function Demo() {
     <Button
       onClick={() =>
         modals.openConfirmModal({
-          title: 'Please confirm your action',
+          title: '请确认你的操作',
           closeOnConfirm: false,
-          labels: { confirm: 'Next modal', cancel: 'Close modal' },
+          labels: { confirm: '下一个模态框', cancel: '关闭模态框' },
           children: (
             <Text size="sm">
               This action is so important that you are required to confirm it with a modal. Please
@@ -22,8 +22,8 @@ function Demo() {
           ),
           onConfirm: () =>
             modals.openConfirmModal({
-              title: 'This is modal at second layer',
-              labels: { confirm: 'Close modal', cancel: 'Back' },
+              title: '这是第二层模态框',
+              labels: { confirm: '关闭模态框', cancel: '返回' },
               closeOnConfirm: false,
               children: (
                 <Text size="sm">
@@ -46,9 +46,9 @@ function Demo() {
     <Button
       onClick={() =>
         modals.openConfirmModal({
-          title: 'Please confirm your action',
+          title: '请确认你的操作',
           closeOnConfirm: false,
-          labels: { confirm: 'Next modal', cancel: 'Close modal' },
+          labels: { confirm: '下一个模态框', cancel: '关闭模态框' },
           children: (
             <Text size="sm">
               This action is so important that you are required to confirm it with a modal. Please
@@ -57,8 +57,8 @@ function Demo() {
           ),
           onConfirm: () =>
             modals.openConfirmModal({
-              title: 'This is modal at second layer',
-              labels: { confirm: 'Close modal', cancel: 'Back' },
+              title: '这是第二层模态框',
+              labels: { confirm: '关闭模态框', cancel: '返回' },
               closeOnConfirm: false,
               children: (
                 <Text size="sm">
@@ -75,7 +75,7 @@ function Demo() {
   );
 }
 
-export const multipleSteps: MantineDemo = {
+export const multipleSteps: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

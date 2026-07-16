@@ -3,13 +3,13 @@ import type { StylesApiData } from '../types';
 
 export const FieldsetStylesApi: StylesApiData<FieldsetFactory> = {
   selectors: {
-    root: 'Root element',
-    legend: 'Legend element',
+    root: '根元素',
+    legend: 'Legend 元素',
   },
 
   vars: {
     root: {
-      '--fieldset-radius': 'Controls `border-radius`',
+      '--fieldset-radius': '控制 `border-radius`',
     },
   },
 };

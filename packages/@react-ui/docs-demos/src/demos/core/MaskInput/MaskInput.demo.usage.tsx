@@ -1,5 +1,5 @@
 import { MaskInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { inputControls } from '../../../shared';
 
 const code = `
@@ -21,7 +21,7 @@ function Wrapper(props: any) {
   return <MaskInput {...props} mask="(999) 999-9999" placeholder="(___) ___-____" />;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

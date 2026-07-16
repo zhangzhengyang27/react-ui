@@ -8,7 +8,7 @@ import {
     Factory,
     getSize,
     getSpacing,
-    MantineSize,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -17,7 +17,7 @@ import { PillsInputContext } from '../../PillsInput/PillsInput.context'
 import classes from '../Pill.module.css'
 
 export interface PillGroupContextValue {
-    size: MantineSize | (string & {}) | undefined
+    size: UISize | (string & {}) | undefined
     disabled: boolean | undefined
 }
 
@@ -31,10 +31,10 @@ export type PillGroupCssVariables = {
 export interface PillGroupProps
     extends BoxProps, StylesApiProps<PillGroupFactory>, ElementProps<'div'> {
     /** Controls spacing between pills, by default controlled by `size` */
-    gap?: MantineSize | (string & {}) | number
+    gap?: UISize | (string & {}) | number
 
     /** Controls size of the child `Pill` components and gap between them @default 'sm' */
-    size?: MantineSize | (string & {})
+    size?: UISize | (string & {})
 
     /** If set, adds disabled to all child `Pill` components */
     disabled?: boolean
@@ -45,7 +45,7 @@ export type PillGroupFactory = Factory<{
     ref: HTMLDivElement
     stylesNames: PillGroupStylesNames
     vars: PillGroupCssVariables
-    ctx: { size: MantineSize | (string & {}) | undefined }
+    ctx: { size: UISize | (string & {}) | undefined }
 }>
 
 const varsResolver = createVarsResolver<PillGroupFactory>((_, { gap }, { size }) => ({

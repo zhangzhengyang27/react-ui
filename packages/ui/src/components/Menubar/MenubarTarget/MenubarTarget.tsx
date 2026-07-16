@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useRef } from 'react'
 import { useMergedRef } from '@react-ui/hooks'
-import { ElementProps, MantineStyleProp } from '../../../core'
+import { ElementProps, UIStyleProp } from '../../../core'
 import { Popover } from '../../Popover'
 import { UnstyledButton } from '../../UnstyledButton'
 import { useMenubarContext, useMenubarMenuContext } from '../Menubar.context'
@@ -8,7 +8,7 @@ import { useMenubarContext, useMenubarMenuContext } from '../Menubar.context'
 export interface MenubarTargetProps extends ElementProps<'button'> {
     'data-disabled'?: boolean
     children: React.ReactNode
-    style?: MantineStyleProp
+    style?: UIStyleProp
 }
 
 function isPrintableKey(event: React.KeyboardEvent) {
@@ -194,7 +194,7 @@ export const MenubarTarget = React.forwardRef<HTMLButtonElement, MenubarTargetPr
                 data-menubar-id={menuCtx.id}
                 data-disabled={dataDisabled || undefined}
                 data-expanded={menuCtx.opened || undefined}
-                data-mantine-stop-propagation={menuCtx.opened || undefined}
+                data-ui-stop-propagation={menuCtx.opened || undefined}
                 {...ctx.getStyles('target', { className, style })}
                 onClick={handleClick}
                 onMouseEnter={handleMouseEnter}

@@ -1,10 +1,10 @@
 import { CSSProperties } from 'react'
-import { MantineStyleProp } from '../../../../Box'
-import { MantineTheme } from '../../../../MantineProvider'
+import { UIStyleProp } from '../../../../Box'
+import { UITheme } from '../../../../UIProvider'
 
 interface ResolveStyleInput {
-    style: MantineStyleProp | undefined
-    theme: MantineTheme
+    style: UIStyleProp | undefined
+    theme: UITheme
 }
 
 /**

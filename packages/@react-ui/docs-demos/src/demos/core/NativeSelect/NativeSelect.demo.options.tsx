@@ -1,13 +1,13 @@
 import { NativeSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NativeSelect } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <NativeSelect label="With children options">
-      <optgroup label="Frontend libraries">
+    <NativeSelect label="带子选项">
+      <optgroup label="前端库">
         <option value="react">React</option>
         <option value="angular">Angular</option>
         <option value="vue" disabled>
@@ -15,7 +15,7 @@ function Demo() {
         </option>
       </optgroup>
 
-      <optgroup label="Backend libraries">
+      <optgroup label="后端库">
         <option value="express">Express</option>
         <option value="koa">Koa</option>
         <option value="django">Django</option>
@@ -27,8 +27,8 @@ function Demo() {
 
 function Demo() {
   return (
-    <NativeSelect label="With children options">
-      <optgroup label="Frontend libraries">
+    <NativeSelect label="带子选项">
+      <optgroup label="前端库">
         <option value="react">React</option>
         <option value="angular">Angular</option>
         <option value="vue" disabled>
@@ -36,7 +36,7 @@ function Demo() {
         </option>
       </optgroup>
 
-      <optgroup label="Backend libraries">
+      <optgroup label="后端库">
         <option value="express">Express</option>
         <option value="koa">Koa</option>
         <option value="django">Django</option>
@@ -45,7 +45,7 @@ function Demo() {
   );
 }
 
-export const options: MantineDemo = {
+export const options: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

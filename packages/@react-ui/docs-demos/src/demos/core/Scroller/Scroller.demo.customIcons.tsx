@@ -1,6 +1,6 @@
 import { ArrowLeftIcon, ArrowRightIcon } from '@phosphor-icons/react';
 import { Badge, Group, Scroller } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ArrowLeftIcon, ArrowRightIcon } from '@phosphor-icons/react';
@@ -41,7 +41,7 @@ function Demo() {
   );
 }
 
-export const customIcons: MantineDemo = {
+export const customIcons: UIDemo = {
   type: 'code',
   component: Demo,
   code,

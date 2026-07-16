@@ -1,5 +1,5 @@
 import { Pill, PillsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { inputControls } from '../../../shared';
 
 const code = `
@@ -15,7 +15,7 @@ function Demo() {
         <Pill>React</Pill>
         <Pill>Vue</Pill>
         <Pill>Svelte</Pill>
-        <PillsInput.Field placeholder="Enter tags" />
+        <PillsInput.Field placeholder="输入标签" />
       </Pill.Group>
     </PillsInput>
   );
@@ -29,13 +29,13 @@ function Wrapper(props: any) {
         <Pill>React</Pill>
         <Pill>Vue</Pill>
         <Pill>Svelte</Pill>
-        <PillsInput.Field placeholder="Enter tags" />
+        <PillsInput.Field placeholder="输入标签" />
       </Pill.Group>
     </PillsInput>
   );
 }
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

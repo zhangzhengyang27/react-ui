@@ -1,5 +1,5 @@
 import { NumberInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NumberInput } from '@react-ui/ui';
@@ -7,8 +7,8 @@ import { NumberInput } from '@react-ui/ui';
 function Demo() {
   return (
     <NumberInput
-      label="Negative number are not allowed"
-      placeholder="Do not enter negative numbers"
+      label="不允许负数"
+      placeholder="请勿输入负数"
       allowNegative={false}
     />
   );
@@ -18,14 +18,14 @@ function Demo() {
 function Demo() {
   return (
     <NumberInput
-      label="Negative number are not allowed"
-      placeholder="Do not enter negative numbers"
+      label="不允许负数"
+      placeholder="请勿输入负数"
       allowNegative={false}
     />
   );
 }
 
-export const allowNegative: MantineDemo = {
+export const allowNegative: UIDemo = {
   type: 'code',
   component: Demo,
   code,

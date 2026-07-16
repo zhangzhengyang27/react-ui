@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 import { Box, UnstyledButton } from '@react-ui/ui';
 import { MonthView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const startOfMonth = dayjs().startOf('month');
+const startOfMonth = dayjs('2024-01-15').startOf('month');
 
 const eventData: ScheduleEventData[] = [
   {
@@ -15,49 +15,49 @@ const eventData: ScheduleEventData[] = [
   },
   {
     id: 2,
-    title: 'Team Meeting',
+    title: '团队会议',
     start: startOfMonth.add(2, 'day').format('YYYY-MM-DD 09:00:00'),
     end: startOfMonth.add(2, 'day').format('YYYY-MM-DD 10:00:00'),
     color: 'green',
   },
   {
     id: 3,
-    title: 'Project Deadline',
+    title: '项目截止日期',
     start: startOfMonth.add(8, 'day').format('YYYY-MM-DD 00:00:00'),
     end: startOfMonth.add(9, 'day').format('YYYY-MM-DD 00:00:00'),
     color: 'red',
   },
   {
     id: 4,
-    title: 'Lunch with Client',
+    title: '与客户共进午餐',
     start: startOfMonth.add(8, 'day').format('YYYY-MM-DD 12:00:00'),
     end: startOfMonth.add(8, 'day').format('YYYY-MM-DD 13:30:00'),
     color: 'orange',
   },
   {
     id: 5,
-    title: 'Code Review',
+    title: '代码审查',
     start: startOfMonth.add(8, 'day').format('YYYY-MM-DD 15:00:00'),
     end: startOfMonth.add(8, 'day').format('YYYY-MM-DD 16:00:00'),
     color: 'violet',
   },
   {
     id: 6,
-    title: 'Sprint Planning',
+    title: '迭代计划',
     start: startOfMonth.add(15, 'day').format('YYYY-MM-DD 10:00:00'),
     end: startOfMonth.add(15, 'day').format('YYYY-MM-DD 11:30:00'),
     color: 'cyan',
   },
   {
     id: 7,
-    title: 'Design Workshop',
+    title: '设计工作坊',
     start: startOfMonth.add(15, 'day').format('YYYY-MM-DD 14:00:00'),
     end: startOfMonth.add(15, 'day').format('YYYY-MM-DD 16:00:00'),
     color: 'grape',
   },
   {
     id: 8,
-    title: 'Conference',
+    title: '会议',
     start: startOfMonth.add(20, 'day').format('YYYY-MM-DD 00:00:00'),
     end: startOfMonth.add(22, 'day').format('YYYY-MM-DD 00:00:00'),
     color: 'pink',
@@ -86,7 +86,7 @@ const events: ScheduleEventData[] = [/* ...events */];
 function Demo() {
   return (
     <MonthView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       renderEvent={(event, props) => {
         if (isAllDayEvent(event)) {
@@ -135,7 +135,7 @@ function Demo() {
 function Demo() {
   return (
     <MonthView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={eventData}
       renderEvent={(event, props) => {
         if (isAllDayEvent(event)) {
@@ -178,15 +178,15 @@ function Demo() {
   );
 }
 
-export const timedEvents: MantineDemo = {
+export const timedEvents: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
     {
       fileName: 'events.ts',
-      code: `import dayjs from 'dayjs';\nimport { ScheduleEventData } from '@react-ui/schedule';\n\nconst startOfMonth = dayjs().startOf('month');\n\nexport const events: ScheduleEventData[] = ${JSON.stringify(eventData, null, 2)};`,
+      code: `import dayjs from 'dayjs';\nimport { ScheduleEventData } from '@react-ui/schedule';\n\nconst startOfMonth = dayjs('2024-01-15').startOf('month');\n\nexport const events: ScheduleEventData[] = ${JSON.stringify(eventData, null, 2)};`,
       language: 'tsx',
     },
   ],

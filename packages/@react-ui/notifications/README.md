@@ -1,10 +1,10 @@
-# Mantine notifications system
+# UI notifications system
 
 [![npm](https://img.shields.io/npm/dm/@react-ui/notifications)](https://www.npmjs.com/package/@react-ui/notifications)
 
 Notifications system
 
-[View documentation](https://mantine.dev/)
+[View documentation](#)
 
 ## Installation
 

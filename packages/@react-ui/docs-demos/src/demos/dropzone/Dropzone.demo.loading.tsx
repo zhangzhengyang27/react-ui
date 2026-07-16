@@ -1,4 +1,4 @@
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { BaseDemo } from './_base';
 
 const code = `
@@ -17,7 +17,7 @@ function Demo() {
   return <BaseDemo loading />;
 }
 
-export const loading: MantineDemo = {
+export const loading: UIDemo = {
   type: 'code',
   component: Demo,
   code,

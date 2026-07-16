@@ -3,13 +3,13 @@ import type { StylesApiData } from '../types';
 
 export const GroupStylesApi: StylesApiData<GroupFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
   },
 
   vars: {
     root: {
-      '--group-align': 'Controls `align-items` property',
-      '--group-justify': 'Controls `justify-content` property',
+      '--group-align': '控制 `align-items` 属性',
+      '--group-justify': '控制 `justify-content` 属性',
       '--group-gap': 'Controls `gap` property',
       '--group-wrap': 'Controls `flex-wrap` property',
       '--group-child-width':
@@ -17,5 +17,5 @@ export const GroupStylesApi: StylesApiData<GroupFactory> = {
     },
   },
 
-  modifiers: [{ modifier: 'data-grow', selector: 'root', condition: '`grow` prop is set' }],
+  modifiers: [{ modifier: 'data-grow', selector: 'root', condition: '设置了 `grow` 属性' }],
 };

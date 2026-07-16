@@ -3,7 +3,7 @@ import {
     BoxProps,
     createVarsResolver,
     getSize,
-    MantineSize,
+    UISize,
     polymorphicFactory,
     PolymorphicFactory,
     StylesApiProps,
@@ -20,7 +20,7 @@ export type KbdCssVariables = {
 
 export interface KbdProps extends BoxProps, StylesApiProps<KbdFactory> {
     /** Controls font-size and padding @default 'sm' */
-    size?: MantineSize | (string & {})
+    size?: UISize | (string & {})
 
     /** Kbd content */
     children?: React.ReactNode
@@ -46,7 +46,7 @@ const varsResolver = createVarsResolver<KbdFactory>((_, { size }) => ({
 }))
 
 /**
- * 键盘按键样式组件。对齐 mantine Kbd（polymorphicFactory + useStyles + varsResolver + CSS module）。
+ * 键盘按键样式组件。对齐 ui Kbd（polymorphicFactory + useStyles + varsResolver + CSS module）。
  * 支持 size。
  */
 export const Kbd = polymorphicFactory<KbdFactory>((_props, _ref) => {

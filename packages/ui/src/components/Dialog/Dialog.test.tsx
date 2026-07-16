@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Dialog } from './Dialog'
 
 function Wrapper({ children }: { children: React.ReactNode }) {
-    return <MantineProvider>{children}</MantineProvider>
+    return <UIProvider>{children}</UIProvider>
 }
 
 describe('@react-ui/ui/Dialog', () => {
@@ -48,6 +48,6 @@ describe('@react-ui/ui/Dialog', () => {
             </Dialog>,
             { wrapper: Wrapper }
         )
-        expect(document.querySelector('.mantine-Dialog-overlay')).not.toBeInTheDocument()
+        expect(document.querySelector('.ui-Dialog-overlay')).not.toBeInTheDocument()
     })
 })

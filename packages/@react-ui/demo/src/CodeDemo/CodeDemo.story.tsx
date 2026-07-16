@@ -4,20 +4,20 @@ import { CodeDemo } from './CodeDemo';
 export default { title: 'DS/CodeDemo' };
 
 const reactCode = `
-import { MantineLogoRounded } from './MantineLogoRounded';
-import { MantineLogoText } from './MantineLogoText';
-import { LogoProps } from './use-mantine-logo-colors';
+import { UILogoRounded } from './UILogoRounded';
+import { UILogoText } from './UILogoText';
+import { LogoProps } from './use-react-ui-logo-colors';
 
-export interface MantineLogoProps extends LogoProps {
+export interface UILogoProps extends LogoProps {
   type?: 'mark' | 'full';
 }
 
-export function MantineLogo({ type, ...others }: MantineLogoProps) {
+export function UILogo({ type, ...others }: UILogoProps) {
   if (type === 'mark') {
-    return <MantineLogoRounded {...others} />;
+    return <UILogoRounded {...others} />;
   }
 
-  return <MantineLogoText {...others} />;
+  return <UILogoText {...others} />;
 }
 `;
 
@@ -50,7 +50,7 @@ const cssCode = `.code {
   margin-top: rem(7px);
   margin-right: rem(7px);
 
-  @mixin hover {
+  &:hover {
     opacity: 1;
   }
 
@@ -60,8 +60,8 @@ const cssCode = `.code {
 }`;
 
 const code: CodeHighlightTabsCode[] = [
-  { language: 'tsx', code: reactCode, fileName: 'Demo.tsx' },
-  { language: 'scss', code: cssCode, fileName: 'Demo.module.css' },
+  { language: 'tsx', code: reactCode, fileName: '演示代码.tsx' },
+  { language: 'scss', code: cssCode, fileName: '演示样式.module.css' },
 ];
 
 function DemoComponent() {

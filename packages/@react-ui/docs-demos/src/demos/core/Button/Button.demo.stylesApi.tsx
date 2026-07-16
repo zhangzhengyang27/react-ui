@@ -1,6 +1,6 @@
 import { AtIcon } from '@phosphor-icons/react';
 import { Button } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { ButtonStylesApi } from '@react-ui/docs-styles-api';
 
 const code = `
@@ -8,19 +8,19 @@ import { Button } from '@react-ui/ui';
 import { AtIcon } from '@phosphor-icons/react';
 
 function Demo() {
-  return <Button{{props}} leftSection={<AtIcon size={16} />}>Your email</Button>;
+  return <Button{{props}} leftSection={<AtIcon size={16} />}>你的邮箱</Button>;
 }
 `;
 
 function Demo(props: any) {
   return (
     <Button leftSection={<AtIcon size={16} />} {...props}>
-      Your email
+      你的邮箱
     </Button>
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: ButtonStylesApi,
   component: Demo,

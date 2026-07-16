@@ -1,6 +1,6 @@
 import { Autocomplete, Button } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Autocomplete, Button } from '@react-ui/ui';
@@ -11,12 +11,12 @@ function Demo() {
   return (
     <>
       <Button onClick={toggle} mb="md">
-        Toggle dropdown
+        切换下拉框
       </Button>
 
       <Autocomplete
-        label="Your favorite library"
-        placeholder="Pick value or enter anything"
+        label="你最喜欢的库"
+        placeholder="选择值或输入任意内容"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         dropdownOpened={dropdownOpened}
       />
@@ -30,12 +30,12 @@ function Demo() {
   return (
     <>
       <Button onClick={toggle} mb="md">
-        Toggle dropdown
+        切换下拉框
       </Button>
 
       <Autocomplete
-        label="Your favorite library"
-        placeholder="Pick value or enter anything"
+        label="你最喜欢的库"
+        placeholder="选择值或输入任意内容"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         dropdownOpened={dropdownOpened}
       />
@@ -43,7 +43,7 @@ function Demo() {
   );
 }
 
-export const dropdownOpened: MantineDemo = {
+export const dropdownOpened: UIDemo = {
   type: 'code',
   component: Demo,
   code,

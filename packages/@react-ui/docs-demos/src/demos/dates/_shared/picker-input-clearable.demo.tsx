@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const getCode = (name: string) => `
 import dayjs from 'dayjs';
@@ -9,9 +9,9 @@ function Demo() {
   return (
     <${name}
       clearable
-      defaultValue={dayjs().format('YYYY-MM-DD')}
-      label="Pick date"
-      placeholder="Pick date"
+      defaultValue={dayjs('2024-01-15').format('YYYY-MM-DD')}
+      label="选择日期"
+      placeholder="选择日期"
     />
   );
 }
@@ -21,14 +21,14 @@ function getDemo(Component: React.FC<any>) {
   return () => (
     <Component
       clearable
-      defaultValue={dayjs().format('YYYY-MM-DD')}
-      label="Pick date"
-      placeholder="Pick date"
+      defaultValue={dayjs('2024-01-15').format('YYYY-MM-DD')}
+      label="选择日期"
+      placeholder="选择日期"
     />
   );
 }
 
-export function getPickerInputClearableDemo(Component: React.FC<any>): MantineDemo {
+export function getPickerInputClearableDemo(Component: React.FC<any>): UIDemo {
   return {
     type: 'code',
     centered: true,

@@ -6,7 +6,7 @@ import {
   factory,
   Factory,
   Highlight,
-  MantineColor,
+  UIColor,
   UnstyledButton,
   useProps,
 } from '@react-ui/ui';
@@ -45,7 +45,7 @@ export interface SpotlightActionProps
   highlightQuery?: boolean;
 
   /** Key of `theme.colors` of any valid CSS color that will be used to highlight search query @default 'yellow' */
-  highlightColor?: MantineColor;
+  highlightColor?: UIColor;
 
   /** Determines whether the spotlight should be closed when action is triggered, overrides `closeOnActionTrigger` prop set on `Spotlight` */
   closeSpotlightOnTrigger?: boolean;

@@ -1,6 +1,6 @@
 import { CheckIcon, XIcon } from '@phosphor-icons/react';
 import { Notification } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { XIcon, CheckIcon } from '@phosphor-icons/react';
@@ -12,10 +12,10 @@ function Demo() {
 
   return (
     <>
-      <Notification icon={xIcon} color="red" title="Bummer!">
+      <Notification icon={xIcon} color="red" title="糟糕！">
         Something went wrong
       </Notification>
-      <Notification icon={checkIcon} color="teal" title="All good!" mt="md">
+      <Notification icon={checkIcon} color="teal" title="一切正常！" mt="md">
         Everything is fine
       </Notification>
     </>
@@ -29,17 +29,17 @@ function Demo() {
 
   return (
     <>
-      <Notification icon={xIcon} color="red" title="Bummer!">
+      <Notification icon={xIcon} color="red" title="糟糕！">
         Something went wrong
       </Notification>
-      <Notification icon={checkIcon} color="teal" title="All good!" mt="md">
+      <Notification icon={checkIcon} color="teal" title="一切正常！" mt="md">
         Everything is fine
       </Notification>
     </>
   );
 }
 
-export const icon: MantineDemo = {
+export const icon: UIDemo = {
   type: 'code',
   component: Demo,
   dimmed: true,

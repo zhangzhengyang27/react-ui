@@ -2,19 +2,19 @@
   display: flex;
   gap: 50px;
 
-  @media (max-width: em(950px)) {
+  @media (max-width: 59.375em) {
     flex-direction: column;
   }
 }
 
 .colorPicker {
-  @media (max-width: em(950px)) {
+  @media (max-width: 59.375em) {
     width: 100%;
   }
 }
 
 .saturation {
-  & :global(.mantine-ColorPicker-saturationOverlay) {
+  & :global(.ui-ColorPicker-saturationOverlay) {
     border-radius: var(--ui-radius-md);
   }
 }
@@ -23,14 +23,14 @@
   max-width: 280px;
   margin-bottom: var(--ui-spacing-sm);
 
-  @media (max-width: em(950px)) {
+  @media (max-width: 59.375em) {
     width: 100%;
     max-width: 100%;
   }
 }
 
 .switch {
-  @media (max-width: em(600px)) {
+  @media (max-width: 37.5em) {
     display: none;
   }
 }

@@ -6,7 +6,7 @@ import {
   factory,
   Factory,
   getSize,
-  MantineSize,
+  UISize,
   StylesApiProps,
   UnstyledButton,
   useProps,
@@ -32,7 +32,7 @@ export interface DayProps extends BoxProps, StylesApiProps<DayFactory>, ElementP
   date: DateStringValue;
 
   /** Control width and height of the day @default 'sm' */
-  size?: MantineSize;
+  size?: UISize;
 
   /** Determines whether the day is considered to be a weekend @default false */
   weekend?: boolean;

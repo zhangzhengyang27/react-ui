@@ -2,7 +2,7 @@
   "name": "@react-ui/store",
   "version": "9.4.1",
   "description": "A library to sync external React state updates",
-  "homepage": "https://mantine.dev",
+  "homepage": "https://react-ui.dev",
   "license": "MIT",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "keywords": [
@@ -27,7 +27,7 @@
     }
   },
   "repository": {
-    "url": "https://github.com/mantinedev/mantine.git",
+    "url": "https://github.com/react-ui/react-ui.git",
     "type": "git",
     "directory": "packages/@react-ui/store"
   },

@@ -1,5 +1,5 @@
 import { TreeSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './data';
 
 const code = `
@@ -9,8 +9,8 @@ import { data } from './data';
 function Demo() {
   return (
     <TreeSelect
-      label="Your favorite items"
-      placeholder="Pick values"
+      label="你最喜欢的项目"
+      placeholder="选择值"
       data={data}
       mode="multiple"
       defaultExpandAll
@@ -22,8 +22,8 @@ function Demo() {
 function Demo() {
   return (
     <TreeSelect
-      label="Your favorite items"
-      placeholder="Pick values"
+      label="你最喜欢的项目"
+      placeholder="选择值"
       data={data}
       mode="multiple"
       defaultExpandAll
@@ -31,11 +31,11 @@ function Demo() {
   );
 }
 
-export const multiple: MantineDemo = {
+export const multiple: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
     { fileName: 'data.ts', language: 'tsx', code: dataCode },
   ],
   maxWidth: 340,

@@ -2,14 +2,14 @@ import { Frontmatter } from '@/types';
 
 export const MDX_OTHERS_DATA: Record<string, Frontmatter> = {
   ExtensionsPackage: {
-    title: 'ReactUI extensions',
+    title: 'ReactUI 扩展',
     slug: '/x/extensions',
     hideInSearch: true,
     hideHeader: true,
   },
 
   Notifications: {
-    title: 'Notifications system',
+    title: '通知系统',
     package: '@react-ui/ui',
     slug: '/x/notifications',
     props: ['Notifications'],
@@ -121,7 +121,7 @@ export const MDX_OTHERS_DATA: Record<string, Frontmatter> = {
 
   OxcConfig: {
     title: 'ReactUI oxc 配置',
-    slug: '/oxc-config-mantine',
+    slug: '/oxc-config-ui',
     hideInSearch: true,
     hideHeader: true,
   },

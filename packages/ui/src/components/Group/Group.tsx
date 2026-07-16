@@ -6,7 +6,7 @@ import {
     factory,
     Factory,
     getSpacing,
-    MantineSpacing,
+    UISpacing,
     StylesApiProps,
     useProps,
     useStyles
@@ -36,7 +36,7 @@ export interface GroupProps extends BoxProps, StylesApiProps<GroupFactory>, Elem
     wrap?: React.CSSProperties['flexWrap']
 
     /** Key of theme.spacing or any valid CSS value for gap, numbers are converted to rem @default 'md' */
-    gap?: MantineSpacing
+    gap?: UISpacing
 
     /** Determines whether each child element should have flex-grow: 1 style @default false */
     grow?: boolean
@@ -74,7 +74,7 @@ const varsResolver = createVarsResolver<GroupFactory>(
 )
 
 /**
- * 水平弹性布局容器。对齐 mantine Group（factory + useStyles + varsResolver + CSS module）。
+ * 水平弹性布局容器。对齐 ui Group（factory + useStyles + varsResolver + CSS module）。
  * 支持 gap/align/justify/wrap/grow/preventGrowOverflow。
  */
 export const Group = factory<GroupFactory>((_props, _ref) => {

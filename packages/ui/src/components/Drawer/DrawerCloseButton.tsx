@@ -26,4 +26,4 @@ export const DrawerCloseButton = factory<DrawerCloseButtonFactory>((_props, ref)
 })
 
 DrawerCloseButton.classes = classes
-DrawerCloseButton.displayName = '@mantine/core/DrawerCloseButton'
+DrawerCloseButton.displayName = '@react-ui/ui/DrawerCloseButton'

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Group, Text } from '@react-ui/ui';
 import { useMove } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -51,7 +51,7 @@ function Demo() {
       </Group>
 
       <Text ta="center" mt="sm">
-        Value: {Math.round(value * 100)}
+        值：{Math.round(value * 100)}
       </Text>
     </>
   );
@@ -100,13 +100,13 @@ function Demo() {
       </Group>
 
       <Text ta="center" mt="sm">
-        Value: {Math.round(value * 100)}
+        值：{Math.round(value * 100)}
       </Text>
     </>
   );
 }
 
-export const vertical: MantineDemo = {
+export const vertical: UIDemo = {
   type: 'code',
   code,
   component: Demo,

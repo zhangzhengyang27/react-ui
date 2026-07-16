@@ -1,6 +1,6 @@
 import { ChatCircleIcon, GearSixIcon, ImageIcon } from '@phosphor-icons/react';
 import { Tabs, TabsProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { TabsStylesApi } from '@react-ui/docs-styles-api';
 
 const code = `
@@ -11,26 +11,26 @@ function Demo() {
     <Tabs defaultValue="gallery"{{props}}>
       <Tabs.List>
         <Tabs.Tab value="gallery" leftSection={<ImageIcon size={12} />}>
-          Gallery
+          相册
         </Tabs.Tab>
         <Tabs.Tab value="messages" leftSection={<ChatCircleIcon size={12} />}>
-          Messages
+          消息
         </Tabs.Tab>
         <Tabs.Tab value="settings" rightSection={<GearSixIcon size={12} />}>
-          Settings
+          设置
         </Tabs.Tab>
       </Tabs.List>
 
       <Tabs.Panel value="gallery" pt="xs">
-        Gallery tab content
+        相册标签内容
       </Tabs.Panel>
 
       <Tabs.Panel value="messages" pt="xs">
-        Messages tab content
+        消息标签内容
       </Tabs.Panel>
 
       <Tabs.Panel value="settings" pt="xs">
-        Settings tab content
+        设置标签内容
       </Tabs.Panel>
     </Tabs>
   );
@@ -42,32 +42,32 @@ function Demo(props: TabsProps) {
     <Tabs defaultValue="gallery" {...props}>
       <Tabs.List>
         <Tabs.Tab value="gallery" leftSection={<ImageIcon size={12} />}>
-          Gallery
+          相册
         </Tabs.Tab>
         <Tabs.Tab value="messages" leftSection={<ChatCircleIcon size={12} />}>
-          Messages
+          消息
         </Tabs.Tab>
         <Tabs.Tab value="settings" rightSection={<GearSixIcon size={12} />}>
-          Settings
+          设置
         </Tabs.Tab>
       </Tabs.List>
 
       <Tabs.Panel value="gallery" pt="xs">
-        Gallery tab content
+        相册标签内容
       </Tabs.Panel>
 
       <Tabs.Panel value="messages" pt="xs">
-        Messages tab content
+        消息标签内容
       </Tabs.Panel>
 
       <Tabs.Panel value="settings" pt="xs">
-        Settings tab content
+        设置标签内容
       </Tabs.Panel>
     </Tabs>
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: TabsStylesApi,
   component: Demo,

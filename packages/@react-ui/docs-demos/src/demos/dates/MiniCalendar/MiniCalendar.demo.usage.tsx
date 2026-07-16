@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MiniCalendar } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -17,7 +17,7 @@ function Demo() {
   return <MiniCalendar value={value} onChange={onChange} numberOfDays={6} />;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

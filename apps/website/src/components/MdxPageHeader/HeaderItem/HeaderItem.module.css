@@ -16,7 +16,7 @@
   line-height: 20px;
   color: light-dark(var(--ui-color-gray-6), var(--ui-color-dark-2));
 
-  @mixin smaller-than 31em {
+  @media (max-width: 31em) {
     display: none;
   }
 }

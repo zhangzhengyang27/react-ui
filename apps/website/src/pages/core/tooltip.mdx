@@ -21,27 +21,27 @@ import { Badge, Tooltip } from '@react-ui/ui';
 function Demo() {
   return (
     <>
-      <Tooltip label="OK">
+      <Tooltip label="确定">
         <button>Native button – ok</button>
       </Tooltip>
 
-      <Tooltip label="OK">
+      <Tooltip label="确定">
         <Badge>ReactUI component – ok</Badge>
       </Tooltip>
 
-      <Tooltip label="Throws">
+      <Tooltip label="抛出">
         Raw string, NOT OK – will throw an error
       </Tooltip>
 
       {/* Number, NOT OK – will throw an error */}
-      <Tooltip label="Throws">{2}</Tooltip>
+      <Tooltip label="抛出">{2}</Tooltip>
 
-      <Tooltip label="Throws">
+      <Tooltip label="抛出">
         <>Fragment, NOT OK, will throw an error</>
       </Tooltip>
 
-      <Tooltip label="Throws">
-        <div>More than one node</div>
+      <Tooltip label="抛出">
+        <div>多个节点</div>
         <div>NOT OK, will throw an error</div>
       </Tooltip>
     </>
@@ -68,13 +68,13 @@ HTML 元素或包含 HTML 元素的 ref 对象。当你不将 tooltip 目标渲�
 import { Tooltip } from '@react-ui/ui';
 
 function MyComponent() {
-  return <div>My component</div>;
+  return <div>我的组件</div>;
 }
 
 // 这不会生效——MyComponent 不支持 ref
 function Demo() {
   return (
-    <Tooltip label="Does not work">
+    <Tooltip label="无效">
       <MyComponent />
     </Tooltip>
   );
@@ -96,7 +96,7 @@ const MyComponent = ({ ref, ...props }) => (
 // 正确工作——ref 被转发
 function Demo() {
   return (
-    <Tooltip label="Works fine">
+    <Tooltip label="有效">
       <MyComponent />
     </Tooltip>
   );
@@ -155,10 +155,10 @@ import { Tooltip } from '@react-ui/ui';
 function Demo() {
   return (
     <Tooltip
-      label="Tooltip"
+      label="提示"
       events={{ hover: true, focus: true, touch: false }}
     >
-      <button>target</button>
+      <button>目标</button>
     </Tooltip>
   );
 }
@@ -186,10 +186,10 @@ import { Button, Tooltip } from '@react-ui/ui';
 function Demo() {
   return (
     <Tooltip
-      label="Tooltip with custom transition"
+      label="带自定义过渡的提示"
       transitionProps={{ transition: 'skew-up', duration: 300 }}
     >
-      <Button>Button with tooltip</Button>
+      <Button>带提示的按钮</Button>
     </Tooltip>
   );
 }
@@ -236,10 +236,10 @@ import { Button, Tooltip } from '@react-ui/ui';
 function Demo() {
   return (
     <Tooltip
-      label="Tooltip"
+      label="提示"
       events={{ hover: true, focus: true, touch: false }}
     >
-      <Button>Button with tooltip</Button>
+      <Button>带提示的按钮</Button>
     </Tooltip>
   );
 }

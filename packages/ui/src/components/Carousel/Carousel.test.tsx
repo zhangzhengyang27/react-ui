@@ -1,10 +1,10 @@
 import { createRef } from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Carousel } from './Carousel'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 beforeAll(() => {
     Object.defineProperty(window, 'matchMedia', {
@@ -42,7 +42,7 @@ describe('Carousel', () => {
         )
 
         const root = screen.getByTestId('carousel')
-        expect(root).toHaveClass('mantine-Carousel-root')
+        expect(root).toHaveClass('ui-Carousel-root')
         expect(screen.getByText('1')).toBeInTheDocument()
         expect(screen.getByText('2')).toBeInTheDocument()
     })
@@ -153,7 +153,7 @@ describe('Carousel', () => {
             </Carousel>
         )
 
-        expect(ref.current).toHaveClass('mantine-Carousel-root')
+        expect(ref.current).toHaveClass('ui-Carousel-root')
     })
 
     it('forwards id to the root element', () => {
@@ -163,6 +163,6 @@ describe('Carousel', () => {
             </Carousel>
         )
 
-        expect(document.getElementById('my-carousel')).toHaveClass('mantine-Carousel-root')
+        expect(document.getElementById('my-carousel')).toHaveClass('ui-Carousel-root')
     })
 })

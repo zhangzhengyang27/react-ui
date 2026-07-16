@@ -1,5 +1,5 @@
-import { Box, Button, Group, Popover, useComputedColorScheme } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { Box, Button, Group, Popover, useComputedUIColorScheme } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Box, Button, Group, Popover } from '@react-ui/ui';
@@ -17,16 +17,16 @@ function Demo() {
         <Group>
           <Popover width="target" position="bottom" opened>
             <Popover.Target>
-              <Button>Toggle popover</Button>
+              <Button>切换气泡卡片</Button>
             </Popover.Target>
-            <Popover.Dropdown>This popover dropdown is hidden when detached</Popover.Dropdown>
+            <Popover.Dropdown>此气泡卡片下拉在分离时隐藏</Popover.Dropdown>
           </Popover>
 
           <Popover width="target" position="bottom" opened hideDetached={false}>
             <Popover.Target>
-              <Button>Toggle popover</Button>
+              <Button>切换气泡卡片</Button>
             </Popover.Target>
-            <Popover.Dropdown>This popover dropdown is visible when detached</Popover.Dropdown>
+            <Popover.Dropdown>此气泡卡片下拉在分离时可见</Popover.Dropdown>
           </Popover>
         </Group>
       </Box>
@@ -36,7 +36,7 @@ function Demo() {
 `;
 
 function Demo() {
-  const colorScheme = useComputedColorScheme();
+  const colorScheme = useComputedUIColorScheme();
 
   return (
     <Box
@@ -50,16 +50,16 @@ function Demo() {
         <Group>
           <Popover width="target" position="bottom" opened>
             <Popover.Target>
-              <Button>Toggle popover</Button>
+              <Button>切换气泡卡片</Button>
             </Popover.Target>
-            <Popover.Dropdown>This popover dropdown is hidden when detached</Popover.Dropdown>
+            <Popover.Dropdown>此气泡卡片下拉在分离时隐藏</Popover.Dropdown>
           </Popover>
 
           <Popover width="target" position="bottom" opened hideDetached={false}>
             <Popover.Target>
-              <Button>Toggle popover</Button>
+              <Button>切换气泡卡片</Button>
             </Popover.Target>
-            <Popover.Dropdown>This popover dropdown is visible when detached</Popover.Dropdown>
+            <Popover.Dropdown>此气泡卡片下拉在分离时可见</Popover.Dropdown>
           </Popover>
         </Group>
       </Box>
@@ -67,7 +67,7 @@ function Demo() {
   );
 }
 
-export const hideDetached: MantineDemo = {
+export const hideDetached: UIDemo = {
   type: 'code',
   code,
   centered: true,

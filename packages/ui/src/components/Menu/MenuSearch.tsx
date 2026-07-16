@@ -14,7 +14,7 @@ export function MenuSearch(props: MenuSearchProps) {
     return (
         <Input
             data-autofocus
-            data-mantine-stop-propagation
+            data-ui-stop-propagation
             type="search"
             {...others}
             __staticSelector="Menu"

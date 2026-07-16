@@ -1,4 +1,4 @@
-import { autoPatchWarn, tests } from '@mantine-tests/core';
+import { autoPatchWarn, tests } from '@react-ui/tests';
 import { LineChart, LineChartProps, LineChartStylesNames } from './LineChart';
 
 const defaultProps: LineChartProps = {

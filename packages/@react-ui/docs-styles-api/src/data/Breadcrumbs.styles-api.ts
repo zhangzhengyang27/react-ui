@@ -3,9 +3,9 @@ import type { StylesApiData } from '../types';
 
 export const BreadcrumbsStylesApi: StylesApiData<BreadcrumbsFactory> = {
   selectors: {
-    root: 'Root element',
-    separator: 'Separator between children',
-    breadcrumb: 'Breadcrumb item',
+    root: '根元素',
+    separator: '子元素之间的分隔符',
+    breadcrumb: '面包屑项',
   },
 
   vars: {

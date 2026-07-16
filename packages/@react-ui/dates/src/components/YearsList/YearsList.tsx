@@ -6,7 +6,7 @@ import {
   ElementProps,
   factory,
   Factory,
-  MantineSize,
+  UISize,
   StylesApiProps,
   useProps,
   useStyles,
@@ -39,7 +39,7 @@ export interface YearsListSettings extends ControlsGroupSettings {
   getYearControlProps?: (date: DateStringValue) => Partial<PickerControlProps> & DataAttributes;
 
   /** Component size */
-  size?: MantineSize;
+  size?: UISize;
 
   /** Determines whether controls should be separated @default true */
   withCellSpacing?: boolean;
@@ -136,7 +136,7 @@ export const YearsList = factory<YearsListFactory>((_props) => {
             size={size}
             unstyled={unstyled}
             fullWidth={fullWidth}
-            data-mantine-stop-propagation={__stopPropagation || undefined}
+            data-ui-stop-propagation={__stopPropagation || undefined}
             disabled={isYearDisabled({ year, minDate, maxDate })}
             ref={(node) => {
               if (node) {

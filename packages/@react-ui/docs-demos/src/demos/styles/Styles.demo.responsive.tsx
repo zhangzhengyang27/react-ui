@@ -1,11 +1,11 @@
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Styles.demo.responsive.module.css';
 
 const code = `
 import classes from './Demo.module.css';
 
 function Demo() {
-  return <div className={classes.demo}>Demo</div>;
+  return <div className={classes.demo}>演示</div>;
 }
 `;
 
@@ -23,14 +23,14 @@ const cssCode = `
 `;
 
 function Demo() {
-  return <div className={classes.demo}>Demo</div>;
+  return <div className={classes.demo}>演示</div>;
 }
 
-export const responsive: MantineDemo = {
+export const responsive: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
   ],
 };

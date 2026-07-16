@@ -1,4 +1,4 @@
-import { autoPatchWarn, tests } from '@mantine-tests/core';
+import { autoPatchWarn, tests } from '@react-ui/tests';
 import { ScatterChart, ScatterChartProps, ScatterChartStylesNames } from './ScatterChart';
 
 const defaultProps: ScatterChartProps = {

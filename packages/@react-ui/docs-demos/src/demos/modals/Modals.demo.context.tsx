@@ -1,6 +1,6 @@
 import { Button } from '@react-ui/ui';
 import { modals } from '@react-ui/modals';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button } from '@react-ui/ui';
@@ -12,7 +12,7 @@ function Demo() {
       onClick={() =>
         modals.openContextModal({
           modal: 'demonstration',
-          title: 'Test modal from context',
+          title: '从上下文测试模态框',
           innerProps: {
             modalBody:
               'This modal was defined in ModalsProvider, you can open it anywhere in you app with useModals hook',
@@ -32,7 +32,7 @@ function Demo() {
       onClick={() =>
         modals.openContextModal({
           modal: 'demonstration',
-          title: 'Test modal from context',
+          title: '从上下文测试模态框',
           innerProps: {
             modalBody:
               'This modal was defined in ModalsProvider, you can open it anywhere in you app with useModals hook',
@@ -45,7 +45,7 @@ function Demo() {
   );
 }
 
-export const context: MantineDemo = {
+export const context: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

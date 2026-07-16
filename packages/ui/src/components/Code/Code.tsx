@@ -4,7 +4,7 @@ import {
     createVarsResolver,
     getFontSize,
     getThemeColor,
-    MantineColor,
+    UIColor,
     parseThemeColor,
     polymorphicFactory,
     PolymorphicFactory,
@@ -23,7 +23,7 @@ export type CodeCssVariables = {
 
 export interface CodeProps extends BoxProps, StylesApiProps<CodeFactory> {
     /** Key of `theme.colors` or any valid CSS color @default theme.primaryColor */
-    color?: MantineColor
+    color?: UIColor
 
     /** Determines whether Code should be rendered as a block element @default false */
     block?: boolean
@@ -61,7 +61,7 @@ const varsResolver = createVarsResolver<CodeFactory>((theme, { color, block }) =
 })
 
 /**
- * 行内代码组件。对齐 mantine Code（polymorphicFactory + useStyles + varsResolver + CSS module）。
+ * 行内代码组件。对齐 ui Code（polymorphicFactory + useStyles + varsResolver + CSS module）。
  * 支持 color 与 block 模式。
  */
 export const Code = polymorphicFactory<CodeFactory>((_props, _ref) => {

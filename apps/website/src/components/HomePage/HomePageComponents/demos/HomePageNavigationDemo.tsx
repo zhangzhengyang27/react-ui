@@ -23,11 +23,11 @@ import {
   Stepper,
   Tabs,
   Text,
-  useMantineTheme,
+  useUITheme,
 } from '@react-ui/ui';
 
 function MenuDemo() {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   return (
     <Menu
       width={300}
@@ -45,7 +45,7 @@ function MenuDemo() {
           radius="md"
           justify="space-between"
         >
-          User Menu
+          用户菜单
         </Button>
       </Menu.Target>
       <Menu.Dropdown>
@@ -57,9 +57,9 @@ function MenuDemo() {
             />
 
             <div>
-              <Text fw={500}>Nancy Horsekisser</Text>
+              <Text fw={500}>王小美</Text>
               <Text size="xs" c="dimmed">
-                nancy@react-ui.dev
+                xiaomei@react-ui.dev
               </Text>
             </div>
           </Group>
@@ -68,30 +68,30 @@ function MenuDemo() {
         <Menu.Divider />
 
         <Menu.Item leftSection={<HeartIcon weight="fill" size={18} color={theme.colors.red[6]} />}>
-          Liked posts
+          点赞的文章
         </Menu.Item>
         <Menu.Item
           leftSection={<StarIcon weight="fill" size={18} color={theme.colors.yellow[6]} />}
         >
-          Saved posts
+          收藏的文章
         </Menu.Item>
         <Menu.Item
           leftSection={<ChatCircleIcon weight="fill" size={18} color={theme.colors.blue[6]} />}
         >
-          Your comments
+          我的评论
         </Menu.Item>
 
-        <Menu.Label>Settings</Menu.Label>
-        <Menu.Item leftSection={<GearSixIcon size={18} />}>Account settings</Menu.Item>
-        <Menu.Item leftSection={<ArrowsClockwiseIcon size={18} />}>Change account</Menu.Item>
-        <Menu.Item leftSection={<SignOutIcon size={18} />}>Logout</Menu.Item>
+        <Menu.Label>设置</Menu.Label>
+        <Menu.Item leftSection={<GearSixIcon size={18} />}>账户设置</Menu.Item>
+        <Menu.Item leftSection={<ArrowsClockwiseIcon size={18} />}>切换账户</Menu.Item>
+        <Menu.Item leftSection={<SignOutIcon size={18} />}>退出登录</Menu.Item>
 
         <Menu.Divider />
 
-        <Menu.Label>Danger zone</Menu.Label>
-        <Menu.Item leftSection={<PauseIcon size={18} />}>Pause subscription</Menu.Item>
+        <Menu.Label>危险操作</Menu.Label>
+        <Menu.Item leftSection={<PauseIcon size={18} />}>暂停订阅</Menu.Item>
         <Menu.Item color="red" leftSection={<TrashIcon size={18} />}>
-          Delete account
+          删除账户
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>
@@ -104,17 +104,17 @@ function StepperDemo() {
   return (
     <>
       <Stepper active={active} onStepClick={setActive} visibleFrom="sm">
-        <Stepper.Step label="First step" description="Create an account" />
-        <Stepper.Step label="Second step" description="Verify email" />
-        <Stepper.Step label="Final step" description="Get full access" />
-        <Stepper.Completed>Completed, click back button to get to previous step</Stepper.Completed>
+        <Stepper.Step label="第一步" description="创建账户" />
+        <Stepper.Step label="第二步" description="验证邮箱" />
+        <Stepper.Step label="最后一步" description="获取完整权限" />
+        <Stepper.Completed>已完成，点击返回按钮回到上一步</Stepper.Completed>
       </Stepper>
 
       <Stepper active={active} onStepClick={setActive} hiddenFrom="sm" orientation="vertical">
-        <Stepper.Step label="First step" description="Create an account" />
-        <Stepper.Step label="Second step" description="Verify email" />
-        <Stepper.Step label="Final step" description="Get full access" />
-        <Stepper.Completed>Completed, click back button to get to previous step</Stepper.Completed>
+        <Stepper.Step label="第一步" description="创建账户" />
+        <Stepper.Step label="第二步" description="验证邮箱" />
+        <Stepper.Step label="最后一步" description="获取完整权限" />
+        <Stepper.Completed>已完成，点击返回按钮回到上一步</Stepper.Completed>
       </Stepper>
     </>
   );
@@ -132,19 +132,19 @@ function TabsDemo() {
           value="gallery"
           leftSection={<ImageIcon size={18} color="var(--ui-color-dimmed)" />}
         >
-          Gallery
+          相册
         </Tabs.Tab>
         <Tabs.Tab
           value="messages"
           leftSection={<ChatCircleIcon size={18} color="var(--ui-color-dimmed)" />}
         >
-          Messages
+          消息
         </Tabs.Tab>
         <Tabs.Tab
           value="settings"
           leftSection={<GearSixIcon size={18} color="var(--ui-color-dimmed)" />}
         >
-          Settings
+          设置
         </Tabs.Tab>
       </Tabs.List>
     </Tabs>

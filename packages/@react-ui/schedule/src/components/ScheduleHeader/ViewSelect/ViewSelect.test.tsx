@@ -1,4 +1,4 @@
-import { render, screen, tests } from '@mantine-tests/core';
+import { render, screen, tests } from '@react-ui/tests';
 import { ViewSelect, ViewSelectProps, ViewSelectStylesNames } from './ViewSelect';
 
 const defaultProps: ViewSelectProps = {
@@ -18,7 +18,7 @@ describe('@react-ui/schedule/ViewSelect', () => {
 
   it('supports __staticSelector prop', () => {
     const { container } = render(<ViewSelect {...defaultProps} __staticSelector="Test" />);
-    expect(container.querySelector('.mantine-Test-viewSelect')).toBeInTheDocument();
+    expect(container.querySelector('.ui-Test-viewSelect')).toBeInTheDocument();
   });
 
   it('renders given views controls', () => {

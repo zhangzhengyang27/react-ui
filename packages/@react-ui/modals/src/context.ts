@@ -29,30 +29,30 @@ export interface ModalsContextProps {
   modals: ModalState[];
   openModal: (props: ModalSettings) => string;
   openConfirmModal: (props: OpenConfirmModal) => string;
-  openContextModal: <TKey extends MantineModal>(
+  openContextModal: <TKey extends UIModal>(
     modal: TKey,
-    props: OpenContextModal<Parameters<MantineModals[TKey]>[0]['innerProps']>
+    props: OpenContextModal<Parameters<UIModals[TKey]>[0]['innerProps']>
   ) => string;
   closeModal: (id: string, canceled?: boolean) => void;
-  closeContextModal: <TKey extends MantineModal>(id: TKey, canceled?: boolean) => void;
+  closeContextModal: <TKey extends UIModal>(id: TKey, canceled?: boolean) => void;
   closeAll: () => void;
   updateModal: (payload: { modalId: string } & Partial<OpenConfirmModal>) => void;
   updateContextModal: (payload: { modalId: string } & Partial<OpenContextModal<any>>) => void;
 }
 
-export interface MantineModalsOverride {}
+export interface UIModalsOverride {}
 
-export type MantineModalsOverwritten = MantineModalsOverride extends {
+export type UIModalsOverwritten = UIModalsOverride extends {
   modals: Record<string, React.FC<ContextModalProps<any>>>;
 }
-  ? MantineModalsOverride
+  ? UIModalsOverride
   : {
       modals: Record<string, React.FC<ContextModalProps<any>>>;
     };
 
-export type MantineModals = MantineModalsOverwritten['modals'];
+export type UIModals = UIModalsOverwritten['modals'];
 
-export type MantineModal = keyof MantineModals;
+export type UIModal = keyof UIModals;
 
 export const ModalsContext = createContext<ModalsContextProps>(null as any);
 ModalsContext.displayName = '@react-ui/modals/ModalsContext';

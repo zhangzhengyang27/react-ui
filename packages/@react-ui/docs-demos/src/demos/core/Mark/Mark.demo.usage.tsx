@@ -1,10 +1,10 @@
 import { Mark, MarkProps, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: MarkProps) {
   return (
     <Text>
-      Highlight <Mark {...props}>this chunk</Mark> of the text
+      高亮这段文字中的 <Mark {...props}>这一部分</Mark>
     </Text>
   );
 }
@@ -15,13 +15,13 @@ import { Text, Mark } from '@react-ui/ui';
 function Demo() {
   return (
     <Text>
-      Highlight <Mark{{props}}>this chunk</Mark> of the text
+      高亮这段文字中的 <Mark{{props}}>这一部分</Mark>
     </Text>
   );
 }
 `;
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

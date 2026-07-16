@@ -1,5 +1,5 @@
 import { Menu, Menubar } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Menu, Menubar } from '@react-ui/ui';
@@ -8,30 +8,30 @@ function Demo() {
   return (
     <Menubar trigger="hover">
       <Menubar.Menu width={220}>
-        <Menubar.Target>File</Menubar.Target>
+        <Menubar.Target>文件</Menubar.Target>
         <Menubar.Dropdown>
-          <Menu.Item>New file</Menu.Item>
-          <Menu.Item>New window</Menu.Item>
-          <Menu.Item>Save</Menu.Item>
+          <Menu.Item>新建文件</Menu.Item>
+          <Menu.Item>新建窗口</Menu.Item>
+          <Menu.Item>保存</Menu.Item>
         </Menubar.Dropdown>
       </Menubar.Menu>
 
       <Menubar.Menu width={220}>
-        <Menubar.Target>Edit</Menubar.Target>
+        <Menubar.Target>编辑</Menubar.Target>
         <Menubar.Dropdown>
-          <Menu.Item>Undo</Menu.Item>
-          <Menu.Item>Redo</Menu.Item>
-          <Menu.Item>Cut</Menu.Item>
-          <Menu.Item>Copy</Menu.Item>
+          <Menu.Item>撤销</Menu.Item>
+          <Menu.Item>重做</Menu.Item>
+          <Menu.Item>剪切</Menu.Item>
+          <Menu.Item>复制</Menu.Item>
         </Menubar.Dropdown>
       </Menubar.Menu>
 
       <Menubar.Menu width={220}>
-        <Menubar.Target>View</Menubar.Target>
+        <Menubar.Target>视图</Menubar.Target>
         <Menubar.Dropdown>
-          <Menu.Item>Zoom in</Menu.Item>
-          <Menu.Item>Zoom out</Menu.Item>
-          <Menu.Item>Reset zoom</Menu.Item>
+          <Menu.Item>放大</Menu.Item>
+          <Menu.Item>缩小</Menu.Item>
+          <Menu.Item>重置缩放</Menu.Item>
         </Menubar.Dropdown>
       </Menubar.Menu>
     </Menubar>
@@ -43,37 +43,37 @@ function Demo() {
   return (
     <Menubar trigger="hover">
       <Menubar.Menu width={220}>
-        <Menubar.Target>File</Menubar.Target>
+        <Menubar.Target>文件</Menubar.Target>
         <Menubar.Dropdown>
-          <Menu.Item>New file</Menu.Item>
-          <Menu.Item>New window</Menu.Item>
-          <Menu.Item>Save</Menu.Item>
+          <Menu.Item>新建文件</Menu.Item>
+          <Menu.Item>新建窗口</Menu.Item>
+          <Menu.Item>保存</Menu.Item>
         </Menubar.Dropdown>
       </Menubar.Menu>
 
       <Menubar.Menu width={220}>
-        <Menubar.Target>Edit</Menubar.Target>
+        <Menubar.Target>编辑</Menubar.Target>
         <Menubar.Dropdown>
-          <Menu.Item>Undo</Menu.Item>
-          <Menu.Item>Redo</Menu.Item>
-          <Menu.Item>Cut</Menu.Item>
-          <Menu.Item>Copy</Menu.Item>
+          <Menu.Item>撤销</Menu.Item>
+          <Menu.Item>重做</Menu.Item>
+          <Menu.Item>剪切</Menu.Item>
+          <Menu.Item>复制</Menu.Item>
         </Menubar.Dropdown>
       </Menubar.Menu>
 
       <Menubar.Menu width={220}>
-        <Menubar.Target>View</Menubar.Target>
+        <Menubar.Target>视图</Menubar.Target>
         <Menubar.Dropdown>
-          <Menu.Item>Zoom in</Menu.Item>
-          <Menu.Item>Zoom out</Menu.Item>
-          <Menu.Item>Reset zoom</Menu.Item>
+          <Menu.Item>放大</Menu.Item>
+          <Menu.Item>缩小</Menu.Item>
+          <Menu.Item>重置缩放</Menu.Item>
         </Menubar.Dropdown>
       </Menubar.Menu>
     </Menubar>
   );
 }
 
-export const hover: MantineDemo = {
+export const hover: UIDemo = {
   type: 'code',
   component: Demo,
   code,

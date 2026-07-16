@@ -1,5 +1,5 @@
 import { Table } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { elements } from './_data';
 
 const code = `
@@ -17,16 +17,16 @@ function Demo() {
 
   const ths = (
     <Table.Tr>
-      <Table.Th>Element position</Table.Th>
-      <Table.Th>Element name</Table.Th>
-      <Table.Th>Symbol</Table.Th>
-      <Table.Th>Atomic mass</Table.Th>
+      <Table.Th>元素位置</Table.Th>
+      <Table.Th>元素名称</Table.Th>
+      <Table.Th>符号</Table.Th>
+      <Table.Th>原子质量</Table.Th>
     </Table.Tr>
   );
 
   return (
     <Table captionSide="bottom">
-      <Table.Caption>Some elements from periodic table</Table.Caption>
+      <Table.Caption>周期表中的部分元素</Table.Caption>
       <Table.Thead>{ths}</Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>
       <Table.Tfoot>{ths}</Table.Tfoot>
@@ -47,16 +47,16 @@ export function Demo() {
 
   const ths = (
     <Table.Tr>
-      <Table.Th>Element position</Table.Th>
-      <Table.Th>Element name</Table.Th>
-      <Table.Th>Symbol</Table.Th>
-      <Table.Th>Atomic mass</Table.Th>
+      <Table.Th>元素位置</Table.Th>
+      <Table.Th>元素名称</Table.Th>
+      <Table.Th>符号</Table.Th>
+      <Table.Th>原子质量</Table.Th>
     </Table.Tr>
   );
 
   return (
     <Table captionSide="bottom">
-      <Table.Caption>Some elements from the periodic table</Table.Caption>
+      <Table.Caption>周期表中的部分元素</Table.Caption>
       <Table.Thead>{ths}</Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>
       <Table.Tfoot>{ths}</Table.Tfoot>
@@ -64,7 +64,7 @@ export function Demo() {
   );
 }
 
-export const captions: MantineDemo = {
+export const captions: UIDemo = {
   type: 'code',
   code,
   component: Demo,

@@ -4,7 +4,7 @@
   padding-top: var(--ui-spacing-xl);
   flex: 0 0 var(--docs-table-of-contents-width);
 
-  @mixin smaller-than $docs-toc-breakpoint {
+  @media (max-width: 78em) {
     display: none;
   }
 
@@ -38,16 +38,19 @@
     color: light-dark(var(--ui-color-blue-8), var(--ui-color-blue-2));
     background-color: light-dark(
       var(--ui-color-blue-0),
-      alpha(var(--ui-color-blue-6), 0.17)
+      color-mix(in srgb, var(--ui-color-blue-6) 17%, transparent)
     );
   }
 }
 
 .title {
-  font-size: 15px;
+  font-size: 11px;
   font-weight: 600;
   margin-bottom: var(--ui-spacing-md);
-  color: var(--ui-color-bright);
+  color: light-dark(var(--ui-color-gray-6), var(--ui-color-dark-2));
+  font-family: var(--ui-font-family-monospace, 'Menlo, Monaco, monospace');
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .items {
@@ -65,7 +68,7 @@
   padding-top: var(--ui-spacing-md);
   border-top: 1px solid light-dark(var(--ui-color-gray-1), var(--ui-color-dark-6));
 
-  @mixin hover {
+  &:hover {
     text-decoration: underline;
   }
 }

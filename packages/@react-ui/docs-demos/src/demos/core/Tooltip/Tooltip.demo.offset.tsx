@@ -1,5 +1,5 @@
 import { Button, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { FLOATING_POSITION_DATA } from '../../../shared';
 
 const code = `
@@ -7,8 +7,8 @@ import { Tooltip, Button } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <Tooltip label="Tooltip" opened{{props}}>
-      <Button>Button with tooltip</Button>
+    <Tooltip label="提示" opened{{props}}>
+      <Button>带提示的按钮</Button>
     </Tooltip>
   );
 }
@@ -16,13 +16,13 @@ function Demo() {
 
 function Wrapper(props: any) {
   return (
-    <Tooltip label="Tooltip" opened {...props}>
-      <Button>Button with tooltip</Button>
+    <Tooltip label="提示" opened {...props}>
+      <Button>带提示的按钮</Button>
     </Tooltip>
   );
 }
 
-export const offset: MantineDemo = {
+export const offset: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

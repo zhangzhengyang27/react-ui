@@ -1,5 +1,5 @@
 import { Scroller, Tabs } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Scroller, Tabs } from '@react-ui/ui';
@@ -9,16 +9,16 @@ function Demo() {
     <Tabs defaultValue="tab-1">
       <Tabs.List>
         <Scroller>
-          <Tabs.Tab value="tab-1">First tab</Tabs.Tab>
-          <Tabs.Tab value="tab-2">Second tab</Tabs.Tab>
-          <Tabs.Tab value="tab-3">Third tab</Tabs.Tab>
-          <Tabs.Tab value="tab-4">Fourth tab</Tabs.Tab>
-          <Tabs.Tab value="tab-5">Fifth tab</Tabs.Tab>
-          <Tabs.Tab value="tab-6">Sixth tab</Tabs.Tab>
-          <Tabs.Tab value="tab-7">Seventh tab</Tabs.Tab>
-          <Tabs.Tab value="tab-8">Eighth tab</Tabs.Tab>
-          <Tabs.Tab value="tab-9">Ninth tab</Tabs.Tab>
-          <Tabs.Tab value="tab-10">Tenth tab</Tabs.Tab>
+          <Tabs.Tab value="tab-1">第一个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-2">第二个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-3">第三个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-4">第四个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-5">第五个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-6">第六个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-7">第七个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-8">第八个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-9">第九个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-10">第十个标签</Tabs.Tab>
         </Scroller>
       </Tabs.List>
     </Tabs>
@@ -31,23 +31,23 @@ function Demo() {
     <Tabs defaultValue="tab-1">
       <Tabs.List>
         <Scroller>
-          <Tabs.Tab value="tab-1">First tab</Tabs.Tab>
-          <Tabs.Tab value="tab-2">Second tab</Tabs.Tab>
-          <Tabs.Tab value="tab-3">Third tab</Tabs.Tab>
-          <Tabs.Tab value="tab-4">Fourth tab</Tabs.Tab>
-          <Tabs.Tab value="tab-5">Fifth tab</Tabs.Tab>
-          <Tabs.Tab value="tab-6">Sixth tab</Tabs.Tab>
-          <Tabs.Tab value="tab-7">Seventh tab</Tabs.Tab>
-          <Tabs.Tab value="tab-8">Eighth tab</Tabs.Tab>
-          <Tabs.Tab value="tab-9">Ninth tab</Tabs.Tab>
-          <Tabs.Tab value="tab-10">Tenth tab</Tabs.Tab>
+          <Tabs.Tab value="tab-1">第一个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-2">第二个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-3">第三个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-4">第四个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-5">第五个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-6">第六个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-7">第七个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-8">第八个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-9">第九个标签</Tabs.Tab>
+          <Tabs.Tab value="tab-10">第十个标签</Tabs.Tab>
         </Scroller>
       </Tabs.List>
     </Tabs>
   );
 }
 
-export const scroller: MantineDemo = {
+export const scroller: UIDemo = {
   type: 'code',
   component: Demo,
   code,

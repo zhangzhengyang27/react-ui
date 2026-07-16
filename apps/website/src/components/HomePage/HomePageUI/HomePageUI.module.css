@@ -6,7 +6,7 @@
   border-top: 1px solid light-dark(var(--ui-color-gray-2), var(--ui-color-dark-7));
   border-bottom: 1px solid light-dark(var(--ui-color-gray-0), var(--ui-color-dark-5));
 
-  @mixin smaller-than $mantine-breakpoint-sm {
+  @media (max-width: 48em) {
     min-height: auto;
     padding-bottom: var(--ui-spacing-xl);
   }
@@ -29,7 +29,7 @@
   opacity: 0.8;
   margin-bottom: var(--ui-spacing-sm);
 
-  @mixin smaller-than $mantine-breakpoint-sm {
+  @media (max-width: 48em) {
     font-size: var(--ui-font-size-xs);
   }
 }
@@ -41,7 +41,7 @@
   line-height: 1.2;
   font-weight: 600;
 
-  @mixin smaller-than $mantine-breakpoint-sm {
+  @media (max-width: 48em) {
     font-size: 26px;
   }
 }
@@ -63,7 +63,7 @@
   position: relative;
   z-index: 1;
 
-  @mixin smaller-than $mantine-breakpoint-sm {
+  @media (max-width: 48em) {
     padding-top: calc(var(--ui-spacing-xl) * 2);
   }
 }
@@ -81,15 +81,15 @@
   right: 0;
   z-index: 0;
 
-  @mixin rtl {
+  [dir='rtl'] & {
     display: none;
   }
 
-  @mixin smaller-than $mantine-breakpoint-lg {
+  @media (max-width: 75em) {
     min-height: 500px;
   }
 
-  @mixin smaller-than $mantine-breakpoint-md {
+  @media (max-width: 62em) {
     display: none;
   }
 }
@@ -105,7 +105,7 @@
   transition: transform 100ms ease;
   height: 60px;
 
-  @mixin hover {
+  &:hover {
     transform: translateY(-1px) scale(1.01);
   }
 }

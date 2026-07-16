@@ -1,7 +1,7 @@
 import { XCircleIcon } from '@phosphor-icons/react';
 import { Button, Modal } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { AuthenticationForm } from '../../../shared/AuthenticationForm/AuthenticationForm';
 
 const code = `
@@ -17,7 +17,7 @@ function Demo() {
       <Modal
         opened={opened}
         onClose={close}
-        title="Authentication"
+        title="认证"
         closeButtonProps={{
           icon: <XCircleIcon size={20} />,
         }}
@@ -26,7 +26,7 @@ function Demo() {
       </Modal>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
@@ -41,7 +41,7 @@ function Demo() {
       <Modal
         opened={opened}
         onClose={close}
-        title="Authentication"
+        title="认证"
         closeButtonProps={{
           icon: <XCircleIcon size={20} />,
         }}
@@ -50,13 +50,13 @@ function Demo() {
       </Modal>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
 }
 
-export const closeIcon: MantineDemo = {
+export const closeIcon: UIDemo = {
   type: 'code',
   code,
   centered: true,

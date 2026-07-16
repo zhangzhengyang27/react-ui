@@ -21,9 +21,9 @@ import {
   factory,
   Factory,
   getThemeColor,
-  MantineColor,
+  UIColor,
   StylesApiProps,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useResolvedStylesApi,
   useStyles,
@@ -34,7 +34,7 @@ import { BaseChartStylesNames, GridChartBaseProps } from '../types';
 import classes from '../grid-chart.module.css';
 
 export interface ScatterChartSeries {
-  color: MantineColor;
+  color: UIColor;
   name: string;
   data: Record<string, number>[];
 }
@@ -158,7 +158,7 @@ export const ScatterChart = factory<ScatterChartFactory>((_props) => {
   const xFormatter = getFormatter('x');
   const yFormatter = getFormatter('y');
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
 
   const mappedData = data.map((item) => ({
     ...item,

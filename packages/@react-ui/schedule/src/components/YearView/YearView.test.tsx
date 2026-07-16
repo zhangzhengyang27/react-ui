@@ -2,7 +2,7 @@ import 'dayjs/locale/ru';
 
 import dayjs from 'dayjs';
 import { DatesProvider } from '@react-ui/dates';
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
 import { getWeekNumber, toDateString } from '../../utils';
 import { YearView, YearViewProps, YearViewStylesNames } from './YearView';
 
@@ -47,24 +47,24 @@ describe('@react-ui/schedule/YearView', () => {
 
   it('renders months of the given year', () => {
     const { container } = render(<YearView {...defaultProps} />);
-    expect(container.querySelectorAll('.mantine-YearView-yearViewMonth')).toHaveLength(12);
+    expect(container.querySelectorAll('.ui-YearView-yearViewMonth')).toHaveLength(12);
 
-    const days = container.querySelectorAll('.mantine-YearView-yearViewDay');
+    const days = container.querySelectorAll('.ui-YearView-yearViewDay');
     expect(days[0].textContent).toBe('30'); // Dec 30, 2024
     expect(days[days.length - 1].textContent).toBe('11'); // Jan 11, 2026 (extra week for consistentWeeks)
   });
 
   it('supports firstDayOfWeek prop', () => {
     const { container } = render(<YearView {...defaultProps} firstDayOfWeek={0} />);
-    const january = container.querySelector('.mantine-YearView-yearViewMonth')!;
-    const days = january.querySelectorAll('.mantine-YearView-yearViewDay');
+    const january = container.querySelector('.ui-YearView-yearViewMonth')!;
+    const days = january.querySelectorAll('.ui-YearView-yearViewDay');
     expect(days[0].textContent).toBe('29'); // Dec 29, 2024 (Sunday)
     expect(days[days.length - 1].textContent).toBe('8'); // Feb 8, 2025 (Saturday)
   });
 
   it('supports changing weekendDays', () => {
     const { container } = render(<YearView {...defaultProps} weekendDays={[1, 2]} />);
-    const days = container.querySelectorAll('.mantine-YearView-yearViewDay');
+    const days = container.querySelectorAll('.ui-YearView-yearViewDay');
     expect(days[0]).toHaveAttribute('data-weekend'); // Dec 30, 2024 (Monday)
     expect(days[1]).toHaveAttribute('data-weekend'); // Dec 31, 2024 (Tuesday)
     expect(days[2]).not.toHaveAttribute('data-weekend'); // Jan 1, 2025 (Wednesday)
@@ -77,19 +77,19 @@ describe('@react-ui/schedule/YearView', () => {
     // With consistent weeks there are duplicates: the same week can be counted twice.
     // There are ~ 70 weeks with duplicates.
     expect(
-      container.querySelectorAll('.mantine-YearView-yearViewWeekNumber').length
+      container.querySelectorAll('.ui-YearView-yearViewWeekNumber').length
     ).toBeGreaterThan(52);
   });
 
   it('supports monthLabelFormat prop', () => {
     const { container } = render(<YearView {...defaultProps} monthLabelFormat="MMM YYYY" />);
-    const januaryCaption = container.querySelector('.mantine-YearView-yearViewMonthCaption')!;
+    const januaryCaption = container.querySelector('.ui-YearView-yearViewMonthCaption')!;
     expect(januaryCaption.textContent).toBe('Jan 2025');
   });
 
   it('supports changing weekdayFormat with dayjs format string', () => {
     const { container } = render(<YearView {...defaultProps} weekdayFormat="dd" />);
-    const weekdays = container.querySelectorAll('.mantine-YearView-yearViewWeekday');
+    const weekdays = container.querySelectorAll('.ui-YearView-yearViewWeekday');
     expect(weekdays[0].textContent).toBe('Mo');
     expect(weekdays[6].textContent).toBe('Su');
   });
@@ -101,17 +101,17 @@ describe('@react-ui/schedule/YearView', () => {
         weekdayFormat={(date) => dayjs(date).locale('ru').format('dd').slice(0, 1).toUpperCase()}
       />
     );
-    const weekdays = container.querySelectorAll('.mantine-YearView-yearViewWeekday');
+    const weekdays = container.querySelectorAll('.ui-YearView-yearViewWeekday');
     expect(weekdays[0].textContent).toBe('П');
     expect(weekdays[6].textContent).toBe('В');
   });
 
   it('changes locale via prop', () => {
     const { container } = render(<YearView {...defaultProps} locale="ru" />);
-    const januaryCaption = container.querySelector('.mantine-YearView-yearViewMonthCaption')!;
+    const januaryCaption = container.querySelector('.ui-YearView-yearViewMonthCaption')!;
     expect(januaryCaption.textContent).toBe('январь');
 
-    const weekdays = container.querySelectorAll('.mantine-YearView-yearViewWeekday');
+    const weekdays = container.querySelectorAll('.ui-YearView-yearViewWeekday');
     expect(weekdays[0].textContent).toBe('п');
     expect(weekdays[6].textContent).toBe('в');
   });
@@ -123,17 +123,17 @@ describe('@react-ui/schedule/YearView', () => {
       </DatesProvider>
     );
 
-    const januaryCaption = container.querySelector('.mantine-YearView-yearViewMonthCaption')!;
+    const januaryCaption = container.querySelector('.ui-YearView-yearViewMonthCaption')!;
     expect(januaryCaption.textContent).toBe('январь');
 
-    const weekdays = container.querySelectorAll('.mantine-YearView-yearViewWeekday');
+    const weekdays = container.querySelectorAll('.ui-YearView-yearViewWeekday');
     expect(weekdays[0].textContent).toBe('п');
     expect(weekdays[6].textContent).toBe('в');
   });
 
   it('supports hiding weekdays with withWeekDays={false}', () => {
     const { container } = render(<YearView {...defaultProps} withWeekDays={false} />);
-    expect(container.querySelectorAll('.mantine-YearView-yearViewWeekday')).toHaveLength(0);
+    expect(container.querySelectorAll('.ui-YearView-yearViewWeekday')).toHaveLength(0);
   });
 
   it('supports onDayClick prop', async () => {
@@ -255,23 +255,23 @@ describe('@react-ui/schedule/YearView', () => {
   it('sets data-today attribute on today date when highlightToday is true', () => {
     jest.useFakeTimers().setSystemTime(new Date('2025-01-15'));
     const { container, rerender } = render(<YearView {...defaultProps} highlightToday />);
-    const today = container.querySelector('.mantine-YearView-yearViewDay[data-today]')!;
+    const today = container.querySelector('.ui-YearView-yearViewDay[data-today]')!;
     expect(today).toBeInTheDocument();
     expect(today.textContent).toStrictEqual('15');
 
     rerender(<YearView {...defaultProps} highlightToday={false} />);
     expect(
-      container.querySelector('.mantine-YearView-yearViewDay[data-today]')
+      container.querySelector('.ui-YearView-yearViewDay[data-today]')
     ).not.toBeInTheDocument();
     jest.useRealTimers();
   });
 
   it('renders header based on withHeader prop', () => {
     const { container, rerender } = render(<YearView {...defaultProps} withHeader={false} />);
-    expect(container.querySelector('.mantine-YearView-header')).not.toBeInTheDocument();
+    expect(container.querySelector('.ui-YearView-header')).not.toBeInTheDocument();
 
     rerender(<YearView {...defaultProps} withHeader />);
-    expect(container.querySelector('.mantine-YearView-header')).toBeInTheDocument();
+    expect(container.querySelector('.ui-YearView-header')).toBeInTheDocument();
   });
 
   it('supports todayControlProps, nextControlProps, previousControlProps and viewSelectProps props', () => {
@@ -286,16 +286,16 @@ describe('@react-ui/schedule/YearView', () => {
     );
 
     expect(
-      container.querySelector('button.mantine-YearView-headerControl[data-today-prop]')
+      container.querySelector('button.ui-YearView-headerControl[data-today-prop]')
     ).toBeInTheDocument();
     expect(
-      container.querySelector('button.mantine-YearView-headerControl[data-next-prop]')
+      container.querySelector('button.ui-YearView-headerControl[data-next-prop]')
     ).toBeInTheDocument();
     expect(
-      container.querySelector('button.mantine-YearView-headerControl[data-previous-prop]')
+      container.querySelector('button.ui-YearView-headerControl[data-previous-prop]')
     ).toBeInTheDocument();
     expect(
-      container.querySelector('.mantine-YearView-viewSelect[data-view-select-prop]')
+      container.querySelector('.ui-YearView-viewSelect[data-view-select-prop]')
     ).toBeInTheDocument();
   });
 
@@ -354,7 +354,7 @@ describe('@react-ui/schedule/YearView', () => {
       },
     ];
     const { container } = render(<YearView {...defaultProps} events={events} />);
-    const indicators = container.querySelectorAll('.mantine-YearView-yearViewDayIndicator');
+    const indicators = container.querySelectorAll('.ui-YearView-yearViewDayIndicator');
     expect(indicators.length).toBeGreaterThan(0);
   });
 
@@ -373,15 +373,15 @@ describe('@react-ui/schedule/YearView', () => {
     // The event appears on 3 days (Nov 5, 6, 7), with 1 indicator per day in this case
     // But since each day button has its own indicators container, we need to count per day
     const nov5Button = screen.getAllByRole('button', { name: 'November 5, 2025' })[0];
-    const nov5Indicators = nov5Button.querySelectorAll('.mantine-YearView-yearViewDayIndicator');
+    const nov5Indicators = nov5Button.querySelectorAll('.ui-YearView-yearViewDayIndicator');
     expect(nov5Indicators).toHaveLength(1);
 
     const nov6Button = screen.getAllByRole('button', { name: 'November 6, 2025' })[0];
-    const nov6Indicators = nov6Button.querySelectorAll('.mantine-YearView-yearViewDayIndicator');
+    const nov6Indicators = nov6Button.querySelectorAll('.ui-YearView-yearViewDayIndicator');
     expect(nov6Indicators).toHaveLength(1);
 
     const nov7Button = screen.getAllByRole('button', { name: 'November 7, 2025' })[0];
-    const nov7Indicators = nov7Button.querySelectorAll('.mantine-YearView-yearViewDayIndicator');
+    const nov7Indicators = nov7Button.querySelectorAll('.ui-YearView-yearViewDayIndicator');
     expect(nov7Indicators).toHaveLength(1);
   });
 
@@ -430,7 +430,7 @@ describe('@react-ui/schedule/YearView', () => {
     ];
     render(<YearView {...defaultProps} events={events} />);
     const nov5Buttons = screen.getAllByRole('button', { name: 'November 5, 2025' });
-    const indicators = nov5Buttons[0].querySelectorAll('.mantine-YearView-yearViewDayIndicator');
+    const indicators = nov5Buttons[0].querySelectorAll('.ui-YearView-yearViewDayIndicator');
     expect(indicators).toHaveLength(3);
   });
 
@@ -458,9 +458,9 @@ describe('@react-ui/schedule/YearView', () => {
 
   it('hides outside days when withOutsideDays is false', () => {
     const { container } = render(<YearView {...defaultProps} withOutsideDays={false} />);
-    const january = container.querySelector('.mantine-YearView-yearViewMonth')!;
+    const january = container.querySelector('.ui-YearView-yearViewMonth')!;
     const placeholders = january.querySelectorAll(
-      '.mantine-YearView-yearViewDay[data-day-placeholder]'
+      '.ui-YearView-yearViewDay[data-day-placeholder]'
     );
 
     expect(placeholders.length).toBeGreaterThan(0);

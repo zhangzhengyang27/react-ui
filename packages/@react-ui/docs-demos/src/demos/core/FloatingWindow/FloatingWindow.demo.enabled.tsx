@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Chip, CloseButton, FloatingWindow, Group, Text } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Chip, CloseButton, FloatingWindow, Group, Text } from '@react-ui/ui';
@@ -15,7 +15,7 @@ function Demo() {
     <>
       <Group>
         <Button variant="default" onClick={handlers.toggle}>
-          {visible ? 'Hide' : 'Show'} floating window
+          {visible ? '隐藏' : '显示'} 浮动窗口
         </Button>
         <Chip checked={enabled} onChange={() => setEnabled((e) => !e)}>
           Drag {enabled ? 'enabled' : 'disabled'}
@@ -33,10 +33,10 @@ function Demo() {
           enabled={enabled}
         >
           <Group justify="space-between" mb="md">
-            <Text>Enabled demo</Text>
+            <Text>启用演示</Text>
             <CloseButton onClick={handlers.close} />
           </Group>
-          <Text fz="sm">This is a floating window. You can drag it around.</Text>
+          <Text fz="sm">这是一个浮动窗口。你可以拖动它。</Text>
         </FloatingWindow>
       )}
     </>
@@ -52,7 +52,7 @@ function Demo() {
     <>
       <Group>
         <Button variant="default" onClick={handlers.toggle}>
-          {visible ? 'Hide' : 'Show'} floating window
+          {visible ? '隐藏' : '显示'} 浮动窗口
         </Button>
         <Chip checked={enabled} onChange={() => setEnabled((e) => !e)}>
           Drag {enabled ? 'enabled' : 'disabled'}
@@ -70,17 +70,17 @@ function Demo() {
           enabled={enabled}
         >
           <Group justify="space-between" mb="md">
-            <Text>Enabled demo</Text>
+            <Text>启用演示</Text>
             <CloseButton onClick={handlers.close} />
           </Group>
-          <Text fz="sm">This is a floating window. You can drag it around.</Text>
+          <Text fz="sm">这是一个浮动窗口。你可以拖动它。</Text>
         </FloatingWindow>
       )}
     </>
   );
 }
 
-export const enabled: MantineDemo = {
+export const enabled: UIDemo = {
   type: 'code',
   component: Demo,
   code,

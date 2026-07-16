@@ -1,4 +1,4 @@
-import { filterProps, getSpacing, InlineStyles, keys, rem, useMantineTheme } from '../../core'
+import { filterProps, getSpacing, InlineStyles, keys, rem, useUITheme } from '../../core'
 import type { SimpleGridProps } from './SimpleGrid'
 
 interface SimpleGridVariablesProps extends SimpleGridProps {
@@ -33,7 +33,7 @@ export function SimpleGridVariables({
     autoRows,
     selector
 }: SimpleGridVariablesProps) {
-    const theme = useMantineTheme()
+    const theme = useUITheme()
     const _verticalSpacing = verticalSpacing === undefined ? spacing : verticalSpacing
     const useAutoColumns = minColWidth !== undefined
 

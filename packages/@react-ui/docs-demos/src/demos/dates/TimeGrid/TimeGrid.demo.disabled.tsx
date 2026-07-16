@@ -1,5 +1,5 @@
 import { getTimeRange, TimeGrid } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { getTimeRange, TimeGrid } from '@react-ui/dates';
@@ -23,7 +23,7 @@ function Demo() {
   );
 }
 
-export const disabled: MantineDemo = {
+export const disabled: UIDemo = {
   type: 'code',
   component: Demo,
   code,

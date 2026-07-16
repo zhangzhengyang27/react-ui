@@ -1,40 +1,40 @@
 import dayjs from 'dayjs';
 import { Badge, Box, Group, Text, UnstyledButton } from '@react-ui/ui';
 import { AgendaView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const eventsData: ScheduleEventData[] = [
   {
     id: 'standup',
-    title: 'Team Standup',
+    title: '团队站会',
     start: `${today} 09:00:00`,
     end: `${today} 09:30:00`,
     color: 'blue',
-    payload: { location: 'Room A', category: 'meeting' },
+    payload: { location: 'A 会议室', category: 'meeting' },
   },
   {
     id: 'workshop',
-    title: 'Design Workshop',
+    title: '设计工作坊',
     start: `${today} 10:00:00`,
     end: `${today} 12:00:00`,
     color: 'grape',
-    payload: { location: 'Creative Space', category: 'workshop' },
+    payload: { location: '创意空间', category: 'workshop' },
   },
   {
     id: 'review',
-    title: 'Code Review',
-    start: dayjs().add(1, 'day').format('YYYY-MM-DD 14:00:00'),
-    end: dayjs().add(1, 'day').format('YYYY-MM-DD 15:00:00'),
+    title: '代码审查',
+    start: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD 14:00:00'),
+    end: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD 15:00:00'),
     color: 'green',
     payload: { location: 'Zoom', category: 'dev' },
   },
   {
     id: 'conference',
-    title: 'Tech Conference',
-    start: dayjs().add(2, 'day').format('YYYY-MM-DD 00:00:00'),
-    end: dayjs().add(3, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'),
+    title: '技术大会',
+    start: dayjs('2024-01-15').add(2, 'day').format('YYYY-MM-DD 00:00:00'),
+    end: dayjs('2024-01-15').add(3, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'),
     color: 'red',
     payload: { location: 'Convention Center', category: 'event' },
   },
@@ -45,38 +45,38 @@ import dayjs from 'dayjs';
 import { Badge, Box, Group, Text, UnstyledButton } from '@react-ui/ui';
 import { AgendaView, ScheduleEventData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const events: ScheduleEventData[] = [
   {
     id: 'standup',
-    title: 'Team Standup',
+    title: '团队站会',
     start: \`\${today} 09:00:00\`,
     end: \`\${today} 09:30:00\`,
     color: 'blue',
-    payload: { location: 'Room A', category: 'meeting' },
+    payload: { location: 'A 会议室', category: 'meeting' },
   },
   {
     id: 'workshop',
-    title: 'Design Workshop',
+    title: '设计工作坊',
     start: \`\${today} 10:00:00\`,
     end: \`\${today} 12:00:00\`,
     color: 'grape',
-    payload: { location: 'Creative Space', category: 'workshop' },
+    payload: { location: '创意空间', category: 'workshop' },
   },
   {
     id: 'review',
-    title: 'Code Review',
-    start: dayjs().add(1, 'day').format('YYYY-MM-DD 14:00:00'),
-    end: dayjs().add(1, 'day').format('YYYY-MM-DD 15:00:00'),
+    title: '代码审查',
+    start: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD 14:00:00'),
+    end: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD 15:00:00'),
     color: 'green',
     payload: { location: 'Zoom', category: 'dev' },
   },
   {
     id: 'conference',
-    title: 'Tech Conference',
-    start: dayjs().add(2, 'day').format('YYYY-MM-DD 00:00:00'),
-    end: dayjs().add(3, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'),
+    title: '技术大会',
+    start: dayjs('2024-01-15').add(2, 'day').format('YYYY-MM-DD 00:00:00'),
+    end: dayjs('2024-01-15').add(3, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'),
     color: 'red',
     payload: { location: 'Convention Center', category: 'event' },
   },
@@ -85,8 +85,8 @@ const events: ScheduleEventData[] = [
 function Demo() {
   return (
     <AgendaView
-      rangeStart={dayjs().format('YYYY-MM-DD')}
-      rangeEnd={dayjs().add(7, 'day').format('YYYY-MM-DD')}
+      rangeStart={dayjs('2024-01-15').format('YYYY-MM-DD')}
+      rangeEnd={dayjs('2024-01-15').add(7, 'day').format('YYYY-MM-DD')}
       events={events}
       renderEvent={(event, props) => (
         <UnstyledButton {...props}>
@@ -134,8 +134,8 @@ function Demo() {
 function Demo() {
   return (
     <AgendaView
-      rangeStart={dayjs().format('YYYY-MM-DD')}
-      rangeEnd={dayjs().add(7, 'day').format('YYYY-MM-DD')}
+      rangeStart={dayjs('2024-01-15').format('YYYY-MM-DD')}
+      rangeEnd={dayjs('2024-01-15').add(7, 'day').format('YYYY-MM-DD')}
       events={eventsData}
       renderEvent={(event, props) => (
         <UnstyledButton {...props}>
@@ -179,7 +179,7 @@ function Demo() {
   );
 }
 
-export const renderEvent: MantineDemo = {
+export const renderEvent: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

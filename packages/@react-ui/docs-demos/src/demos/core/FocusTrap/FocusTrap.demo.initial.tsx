@@ -1,6 +1,6 @@
 import { Box, Button, FocusTrap, TextInput } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useDisclosure } from '@react-ui/hooks';
@@ -15,9 +15,9 @@ function Demo() {
 
       <FocusTrap active={active}>
         <div>
-          <TextInput mt="sm" label="First input" placeholder="First input" />
-          <TextInput mt="sm" label="Second input" placeholder="Second input" data-autofocus />
-          <TextInput mt="sm" label="Third input" placeholder="Third input" />
+          <TextInput mt="sm" label="第一个输入" placeholder="第一个输入" />
+          <TextInput mt="sm" label="第二个输入" placeholder="第二个输入" data-autofocus />
+          <TextInput mt="sm" label="第三个输入" placeholder="第三个输入" />
         </div>
       </FocusTrap>
     </Box>
@@ -34,16 +34,16 @@ function Demo() {
 
       <FocusTrap active={active}>
         <div>
-          <TextInput mt="sm" label="First input" placeholder="First input" />
-          <TextInput mt="sm" label="Second input" placeholder="Second input" data-autofocus />
-          <TextInput mt="sm" label="Third input" placeholder="Third input" />
+          <TextInput mt="sm" label="第一个输入" placeholder="第一个输入" />
+          <TextInput mt="sm" label="第二个输入" placeholder="第二个输入" data-autofocus />
+          <TextInput mt="sm" label="第三个输入" placeholder="第三个输入" />
         </div>
       </FocusTrap>
     </Box>
   );
 }
 
-export const initial: MantineDemo = {
+export const initial: UIDemo = {
   type: 'code',
   component: Demo,
   code,

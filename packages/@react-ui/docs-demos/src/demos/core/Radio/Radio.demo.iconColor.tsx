@@ -1,5 +1,5 @@
 import { Radio } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Radio } from '@react-ui/ui';
@@ -9,7 +9,7 @@ function Demo() {
     <Radio
       iconColor="dark.8"
       color="lime.4"
-      label="Custom icon color"
+      label="自定义图标颜色"
       name="check"
       value="check"
       defaultChecked
@@ -23,7 +23,7 @@ function Demo() {
     <Radio
       iconColor="dark.8"
       color="lime.4"
-      label="Custom icon color"
+      label="自定义图标颜色"
       name="check"
       value="check"
       defaultChecked
@@ -31,7 +31,7 @@ function Demo() {
   );
 }
 
-export const iconColor: MantineDemo = {
+export const iconColor: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

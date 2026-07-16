@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AspectRatio, Button, Overlay } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -12,7 +12,7 @@ function Demo() {
     <>
       <AspectRatio ratio={16 / 9} maw={400} mx="auto" pos="relative">
         <img
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-1.png"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-1.png"
           alt="Demo"
         />
         {visible && <Overlay color="#000" backgroundOpacity={0.85} />}
@@ -31,7 +31,7 @@ function Demo() {
     <>
       <AspectRatio ratio={16 / 9} maw={400} mx="auto" pos="relative">
         <img
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-1.png"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-1.png"
           alt="Demo"
         />
         {visible && <Overlay color="#000" backgroundOpacity={0.85} />}
@@ -43,7 +43,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

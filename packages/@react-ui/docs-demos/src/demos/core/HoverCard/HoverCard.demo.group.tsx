@@ -1,5 +1,5 @@
 import { Button, Group, HoverCard, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { HoverCard, Button, Text, Group } from '@react-ui/ui';
@@ -10,28 +10,28 @@ function Demo() {
       <Group justify="center">
         <HoverCard shadow="md">
           <HoverCard.Target>
-            <Button>First</Button>
+            <Button>第一</Button>
           </HoverCard.Target>
           <HoverCard.Dropdown>
-            <Text size="sm">First hover card content</Text>
+            <Text size="sm">第一个悬停卡片内容</Text>
           </HoverCard.Dropdown>
         </HoverCard>
 
         <HoverCard shadow="md">
           <HoverCard.Target>
-            <Button>Second</Button>
+            <Button>第二</Button>
           </HoverCard.Target>
           <HoverCard.Dropdown>
-            <Text size="sm">Second hover card content</Text>
+            <Text size="sm">第二个悬停卡片内容</Text>
           </HoverCard.Dropdown>
         </HoverCard>
 
         <HoverCard shadow="md">
           <HoverCard.Target>
-            <Button>Third</Button>
+            <Button>第三</Button>
           </HoverCard.Target>
           <HoverCard.Dropdown>
-            <Text size="sm">Third hover card content</Text>
+            <Text size="sm">第三个悬停卡片内容</Text>
           </HoverCard.Dropdown>
         </HoverCard>
       </Group>
@@ -46,28 +46,28 @@ function Demo() {
       <Group justify="center">
         <HoverCard shadow="md">
           <HoverCard.Target>
-            <Button>First</Button>
+            <Button>第一</Button>
           </HoverCard.Target>
           <HoverCard.Dropdown>
-            <Text size="sm">First hover card content</Text>
+            <Text size="sm">第一个悬停卡片内容</Text>
           </HoverCard.Dropdown>
         </HoverCard>
 
         <HoverCard shadow="md">
           <HoverCard.Target>
-            <Button>Second</Button>
+            <Button>第二</Button>
           </HoverCard.Target>
           <HoverCard.Dropdown>
-            <Text size="sm">Second hover card content</Text>
+            <Text size="sm">第二个悬停卡片内容</Text>
           </HoverCard.Dropdown>
         </HoverCard>
 
         <HoverCard shadow="md">
           <HoverCard.Target>
-            <Button>Third</Button>
+            <Button>第三</Button>
           </HoverCard.Target>
           <HoverCard.Dropdown>
-            <Text size="sm">Third hover card content</Text>
+            <Text size="sm">第三个悬停卡片内容</Text>
           </HoverCard.Dropdown>
         </HoverCard>
       </Group>
@@ -75,7 +75,7 @@ function Demo() {
   );
 }
 
-export const group: MantineDemo = {
+export const group: UIDemo = {
   type: 'code',
   component: Demo,
   code,

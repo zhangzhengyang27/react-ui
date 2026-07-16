@@ -1,6 +1,6 @@
 import { Sparkline } from '@react-ui/charts';
 import { Stack, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const positiveTrend = [10, 20, 40, 20, 40, 10, 50];
 const negativeTrend = [50, 40, 20, 40, 20, 40, 10];
@@ -81,7 +81,7 @@ function Demo() {
   );
 }
 
-export const trendColors: MantineDemo = {
+export const trendColors: UIDemo = {
   type: 'code',
   component: Demo,
   code,

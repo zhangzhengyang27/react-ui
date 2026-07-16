@@ -1,5 +1,5 @@
 import { TimePicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TimePicker } from '@react-ui/dates';
@@ -7,7 +7,7 @@ import { TimePicker } from '@react-ui/dates';
 function Demo() {
   return (
     <TimePicker
-      label="Enter time"
+      label="输入时间"
       withSeconds
       withDropdown
       hoursStep={1}
@@ -21,7 +21,7 @@ function Demo() {
 function Demo() {
   return (
     <TimePicker
-      label="Enter time"
+      label="输入时间"
       withSeconds
       withDropdown
       hoursStep={1}
@@ -31,7 +31,7 @@ function Demo() {
   );
 }
 
-export const steps: MantineDemo = {
+export const steps: UIDemo = {
   type: 'code',
   component: Demo,
   code,

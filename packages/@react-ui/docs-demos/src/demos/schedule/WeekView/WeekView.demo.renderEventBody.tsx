@@ -3,25 +3,25 @@ import { useState } from 'react';
 import { ClockIcon, MapPinIcon } from '@phosphor-icons/react';
 import { Group, Text } from '@react-ui/ui';
 import { ScheduleEventData, WeekView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const startOfWeek = dayjs()
-  .subtract((dayjs().day() + 6) % 7, 'day')
+const startOfWeek = dayjs('2024-01-15')
+  .subtract((dayjs('2024-01-15').day() + 6) % 7, 'day')
   .format('YYYY-MM-DD');
 const dayAfterStartOfWeek = dayjs(startOfWeek).add(1, 'day').format('YYYY-MM-DD');
 
 const events: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Morning Standup',
+    title: '早间站会',
     start: `${startOfWeek} 09:00:00`,
     end: `${startOfWeek} 09:30:00`,
     color: 'blue',
-    payload: { location: 'Room A' },
+    payload: { location: 'A 会议室' },
   },
   {
     id: 2,
-    title: 'Client Meeting',
+    title: '客户会议',
     start: `${startOfWeek} 11:00:00`,
     end: `${startOfWeek} 12:00:00`,
     color: 'green',
@@ -29,7 +29,7 @@ const events: ScheduleEventData[] = [
   },
   {
     id: 3,
-    title: 'Lunch Break',
+    title: '午餐休息',
     start: `${dayAfterStartOfWeek} 12:30:00`,
     end: `${dayAfterStartOfWeek} 13:30:00`,
     color: 'orange',
@@ -44,21 +44,21 @@ import { ClockIcon, MapPinIcon } from '@phosphor-icons/react';
 import { Group, Text } from '@react-ui/ui';
 import { WeekView, ScheduleEventData } from '@react-ui/schedule';
 
-const startOfWeek = dayjs().subtract((dayjs().day() + 6) % 7, 'day').format('YYYY-MM-DD');
+const startOfWeek = dayjs('2024-01-15').subtract((dayjs('2024-01-15').day() + 6) % 7, 'day').format('YYYY-MM-DD');
 const dayAfterStartOfWeek = dayjs(startOfWeek).add(1, 'day').format('YYYY-MM-DD');
 
 const events: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Morning Standup',
+    title: '早间站会',
     start: \`\${startOfWeek} 09:00:00\`,
     end: \`\${startOfWeek} 09:30:00\`,
     color: 'blue',
-    payload: { location: 'Room A' },
+    payload: { location: 'A 会议室' },
   },
   {
     id: 2,
-    title: 'Client Meeting',
+    title: '客户会议',
     start: \`\${startOfWeek} 11:00:00\`,
     end: \`\${startOfWeek} 12:00:00\`,
     color: 'green',
@@ -66,7 +66,7 @@ const events: ScheduleEventData[] = [
   },
   {
     id: 3,
-    title: 'Lunch Break',
+    title: '午餐休息',
     start: \`\${dayAfterStartOfWeek} 12:30:00\`,
     end: \`\${dayAfterStartOfWeek} 13:30:00\`,
     color: 'orange',
@@ -75,7 +75,7 @@ const events: ScheduleEventData[] = [
 ];
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
 
   return (
     <WeekView
@@ -110,7 +110,7 @@ function Demo() {
 `;
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
 
   return (
     <WeekView
@@ -143,7 +143,7 @@ function Demo() {
   );
 }
 
-export const renderEventBody: MantineDemo = {
+export const renderEventBody: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

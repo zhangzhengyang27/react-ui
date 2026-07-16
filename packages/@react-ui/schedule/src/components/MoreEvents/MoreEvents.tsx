@@ -3,7 +3,7 @@ import {
   ElementProps,
   factory,
   Factory,
-  MantineRadius,
+  UIRadius,
   Modal,
   ModalProps,
   Popover,
@@ -32,7 +32,7 @@ export interface MoreEventsProps
   moreEventsCount: number;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius @default theme.defaultRadius */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 
   /** Title for the Modal component, ignored if `dropdownType` is not 'modal' */
   modalTitle?: string;

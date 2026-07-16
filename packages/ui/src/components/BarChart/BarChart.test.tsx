@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { BarChart } from './BarChart'
 
 const DATA = [
@@ -11,9 +11,9 @@ const DATA = [
 describe('BarChart', () => {
     it('renders chart root', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <BarChart data={DATA} dataKey="name" series={[{ name: 'sales' }]} data-testid="chart" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByTestId('chart')).toBeInTheDocument()
@@ -21,9 +21,9 @@ describe('BarChart', () => {
 
     it('renders with custom height', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <BarChart data={DATA} dataKey="name" series={[{ name: 'sales' }]} height={400} data-testid="chart" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByTestId('chart').getAttribute('style')).toContain('--bar-chart-height')

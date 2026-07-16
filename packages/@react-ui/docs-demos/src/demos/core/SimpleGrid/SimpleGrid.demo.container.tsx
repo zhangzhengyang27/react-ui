@@ -1,5 +1,5 @@
 import { SimpleGrid } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { defaultItems } from './_demo-item';
 
 const code = `
@@ -42,7 +42,7 @@ function Demo() {
   );
 }
 
-export const container: MantineDemo = {
+export const container: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -51,13 +51,13 @@ export interface MenuProps extends StylesApiProps<MenuFactory> {
     /** If set, focus is trapped within the menu dropdown when it is opened */
     trapFocus?: boolean
 
-    /** Called when menu opened state changes */
+    /** 菜单打开状态变化时调用 */
     onChange?: (opened: boolean) => void
 
-    /** Called when Menu is opened */
+    /** 菜单打开时调用 */
     onOpen?: () => void
 
-    /** Called when Menu is closed */
+    /** 菜单关闭时调用 */
     onClose?: () => void
 
     /** If set, the Menu is closed when one of the items is clicked */
@@ -69,7 +69,7 @@ export interface MenuProps extends StylesApiProps<MenuFactory> {
     /** If set, the dropdown is closed when the Escape key is pressed */
     closeOnEscape?: boolean
 
-    /** Event trigger to open menu */
+    /** 打开菜单的事件触发器 */
     trigger?: 'click' | 'hover' | 'click-hover'
 
     /** Open delay in ms, applicable only to trigger="hover" variant */
@@ -81,43 +81,43 @@ export interface MenuProps extends StylesApiProps<MenuFactory> {
     /** If set, the dropdown is closed on outside clicks */
     closeOnClickOutside?: boolean
 
-    /** Events that trigger outside click detection */
+    /** 触发外部点击检测的事件 */
     clickOutsideEvents?: string[]
 
-    /** Id base to create accessibility connections */
+    /** 创建可访问性连接的 ID 基础 */
     id?: string
 
-    /** Set the tabindex on all menu items */
+    /** 设置所有菜单项的 tabindex */
     menuItemTabIndex?: -1 | 0
 
-    /** Determines whether focus should be automatically returned to control when dropdown closes */
+    /** 决定下拉框关闭时是否自动将焦点返回到控件 */
     returnFocus?: boolean
 
-    /** Determines whether dropdown should be rendered within the Portal */
+    /** 决定下拉框是否在 Portal 中渲染 */
     withinPortal?: boolean
 
-    /** Dropdown position relative to the target element */
+    //** 下拉框相对于目标元素的位置 */
     position?: import('../../core').FloatingPosition
 
-    /** Offset of the dropdown element */
+    /** 下拉元素的偏移量 */
     offset?: number
 
-    /** Determines whether component should have an arrow */
+    /** 决定组件是否显示箭头 */
     withArrow?: boolean
 
     /** Dropdown width */
     width?: import('../Popover').PopoverWidth
 
-    /** Key of theme.radius or any valid CSS value */
-    radius?: import('../../core').MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 */
+    radius?: import('../../core').UIRadius
 
     /** Key of theme.shadows or any other valid CSS box-shadow value */
-    shadow?: import('../../core').MantineShadow
+    shadow?: import('../../core').UIShadow
 
-    /** Dropdown z-index */
+    /** 下拉层 z-index */
     zIndex?: string | number
 
-    /** Props passed down to the Transition component */
+    /** 传递给 Transition 组件的属性 */
     transitionProps?: import('../Transition').TransitionOverride
 }
 
@@ -295,7 +295,7 @@ export const Menu = factory<MenuFactory>((_props, _ref) => {
     )
 })
 
-Menu.displayName = '@mantine/core/Menu'
+Menu.displayName = '@react-ui/ui/Menu'
 Menu.classes = classes
 Menu.Item = MenuItem
 Menu.Label = MenuLabel

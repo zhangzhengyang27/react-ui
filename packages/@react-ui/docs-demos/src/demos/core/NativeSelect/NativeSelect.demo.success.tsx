@@ -1,25 +1,25 @@
 import { NativeSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NativeSelect } from '@react-ui/ui';
 
 function Demo() {
-  return <NativeSelect label="Native Select" data={['React', 'Angular', 'Vue', 'Svelte']} success="Looks good!" />;
+  return <NativeSelect label="原生选择" data={['React', 'Angular', 'Vue', 'Svelte']} success="看起来不错！" />;
 }
 `;
 
 function Demo() {
   return (
     <NativeSelect
-      label="Native Select"
+      label="原生选择"
       data={['React', 'Angular', 'Vue', 'Svelte']}
-      success="Looks good!"
+      success="看起来不错！"
     />
   );
 }
 
-export const success: MantineDemo = {
+export const success: UIDemo = {
   type: 'code',
   component: Demo,
   code,

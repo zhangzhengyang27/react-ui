@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { useRef, useState } from 'react';
 import { Box, Grid, Text } from '@react-ui/ui';
 import { ResourcesDayView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { resources } from './_data';
 
 interface SidebarItem {
@@ -12,9 +12,9 @@ interface SidebarItem {
 }
 
 const initialSidebarItems: SidebarItem[] = [
-  { title: 'Quick Sync', duration: 30, color: 'teal' },
-  { title: 'Workshop', duration: 120, color: 'orange' },
-  { title: 'One-on-One', duration: 60, color: 'violet' },
+  { title: '快速同步', duration: 30, color: 'teal' },
+  { title: '研讨会', duration: 120, color: 'orange' },
+  { title: '一对一', duration: 60, color: 'violet' },
 ];
 
 const code = `
@@ -23,13 +23,13 @@ import dayjs from 'dayjs';
 import { Box, Grid, Text } from '@react-ui/ui';
 import { ResourcesDayView, ScheduleEventData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const resources = [
-  { id: 'tokyo', label: 'Tokyo' },
-  { id: 'paris', label: 'Paris' },
-  { id: 'new-york', label: 'New York' },
-  { id: 'london', label: 'London' },
+  { id: 'tokyo', label: '东京' },
+  { id: 'paris', label: '巴黎' },
+  { id: 'new-york', label: '纽约' },
+  { id: 'london', label: '伦敦' },
 ];
 
 interface SidebarItem {
@@ -39,13 +39,13 @@ interface SidebarItem {
 }
 
 const initialSidebarItems: SidebarItem[] = [
-  { title: 'Quick Sync', duration: 30, color: 'teal' },
-  { title: 'Workshop', duration: 120, color: 'orange' },
-  { title: 'One-on-One', duration: 60, color: 'violet' },
+  { title: '快速同步', duration: 30, color: 'teal' },
+  { title: '研讨会', duration: 120, color: 'orange' },
+  { title: '一对一', duration: 60, color: 'violet' },
 ];
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
   const [sidebarItems, setSidebarItems] = useState(initialSidebarItems);
   const [events, setEvents] = useState<ScheduleEventData[]>([]);
   const [sidebarHighlight, setSidebarHighlight] = useState(false);
@@ -144,7 +144,7 @@ function Demo() {
             transition: 'border-color 150ms',
           }}
         >
-          <Text fw={500} mb="xs">Unscheduled</Text>
+          <Text fw={500} mb="xs">未安排</Text>
           {sidebarItems.map((item) => (
             <Box
               key={item.title}
@@ -167,7 +167,7 @@ function Demo() {
             </Box>
           ))}
           {sidebarItems.length === 0 && (
-            <Text size="xs" c="dimmed">Drag events here to unschedule</Text>
+            <Text size="xs" c="dimmed">将事件拖到这里取消安排</Text>
           )}
         </Box>
       </Grid.Col>
@@ -190,7 +190,7 @@ function Demo() {
 `;
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
   const [sidebarItems, setSidebarItems] = useState(initialSidebarItems);
   const [events, setEvents] = useState<ScheduleEventData[]>([]);
   const [sidebarHighlight, setSidebarHighlight] = useState(false);
@@ -339,7 +339,7 @@ function Demo() {
   );
 }
 
-export const bidirectionalDragDrop: MantineDemo = {
+export const bidirectionalDragDrop: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

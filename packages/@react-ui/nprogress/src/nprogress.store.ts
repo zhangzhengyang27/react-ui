@@ -1,5 +1,5 @@
 import { clamp } from '@react-ui/hooks';
-import { createStore, MantineStore, useStore } from '@react-ui/store';
+import { createStore, UIStore, useStore } from '@react-ui/store';
 
 function getIntervalProgressValue(currentProgress: number) {
   let next = 0.5;
@@ -28,7 +28,7 @@ export interface NprogressState {
   timeouts: number[];
 }
 
-export type NprogressStore = MantineStore<NprogressState>;
+export type NprogressStore = UIStore<NprogressState>;
 
 export const createNprogressStore = () =>
   createStore<NprogressState>({

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Button, Combobox, TextInput, useCombobox } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
 import { TextInput, Button, Combobox, useCombobox } from '@react-ui/ui';
 
-const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
+const groceries = ['🍎 苹果', '🍌 香蕉', '🥦 西兰花', '🥕 胡萝卜', '🍫 巧克力'];
 
 function Demo() {
   const [opened, setOpened] = useState(false);
@@ -27,9 +27,9 @@ function Demo() {
       <Combobox store={combobox}>
         <Combobox.Target>
           <TextInput
-            label="Autocomplete"
-            description="Dropdown is opened/closed when button is clicked"
-            placeholder="Click button to toggle dropdown"
+            label="自动完成"
+            description="点击按钮时打开/关闭下拉"
+            placeholder="点击按钮切换下拉"
           />
         </Combobox.Target>
 
@@ -42,7 +42,7 @@ function Demo() {
 }
 `;
 
-const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
+const groceries = ['🍎 苹果', '🍌 香蕉', '🥦 西兰花', '🥕 胡萝卜', '🍫 巧克力'];
 
 function Demo() {
   const [opened, setOpened] = useState(false);
@@ -63,9 +63,9 @@ function Demo() {
       <Combobox store={combobox}>
         <Combobox.Target>
           <TextInput
-            label="Autocomplete"
-            description="Dropdown is opened/closed when button is clicked"
-            placeholder="Click button to toggle dropdown"
+            label="自动完成"
+            description="点击按钮时打开/关闭下拉"
+            placeholder="点击按钮切换下拉"
           />
         </Combobox.Target>
 
@@ -77,7 +77,7 @@ function Demo() {
   );
 }
 
-export const controlledDropdown: MantineDemo = {
+export const controlledDropdown: UIDemo = {
   type: 'code',
   component: Demo,
   code,

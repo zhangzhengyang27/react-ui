@@ -1,6 +1,6 @@
 import { Button, Dialog, Group, Text, TextInput } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useDisclosure } from '@react-ui/hooks';
@@ -12,7 +12,7 @@ function Demo() {
   return (
     <>
       <Group justify="center">
-        <Button onClick={toggle}>Toggle dialog</Button>
+        <Button onClick={toggle}>切换对话框</Button>
       </Group>
 
       <Dialog
@@ -27,8 +27,8 @@ function Demo() {
         </Text>
 
         <Group align="flex-end">
-          <TextInput placeholder="hello@gluesticker.com" style={{ flex: 1 }} />
-          <Button onClick={close}>Subscribe</Button>
+          <TextInput placeholder="yourname@example.com" style={{ flex: 1 }} />
+          <Button onClick={close}>订阅</Button>
         </Group>
       </Dialog>
     </>
@@ -42,7 +42,7 @@ function Demo() {
   return (
     <>
       <Group justify="center">
-        <Button onClick={toggle}>Toggle dialog</Button>
+        <Button onClick={toggle}>切换对话框</Button>
       </Group>
 
       <Dialog
@@ -57,15 +57,15 @@ function Demo() {
         </Text>
 
         <Group align="flex-end">
-          <TextInput placeholder="hello@gluesticker.com" style={{ flex: 1 }} />
-          <Button onClick={close}>Subscribe</Button>
+          <TextInput placeholder="yourname@example.com" style={{ flex: 1 }} />
+          <Button onClick={close}>订阅</Button>
         </Group>
       </Dialog>
     </>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

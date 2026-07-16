@@ -1,6 +1,6 @@
 import { Badge, Button, Group, Modal, Text } from '@react-ui/ui';
 import { useCounter, useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useDisclosure, useCounter } from '@react-ui/hooks';
@@ -12,25 +12,25 @@ function Demo() {
 
   const badges = Array(count)
     .fill(0)
-    .map((_, index) => <Badge key={index}>Badge {index}</Badge>);
+    .map((_, index) => <Badge key={index}>徽章 {index}</Badge>);
 
   return (
     <>
-      <Modal opened={opened} onClose={close} size="auto" title="Modal size auto">
-        <Text>Modal with size auto will fits its content</Text>
+      <Modal opened={opened} onClose={close} size="auto" title="size 为 auto 的模态框">
+        <Text>size 为 auto 的模态框将自适应其内容</Text>
 
         <Group wrap="nowrap" mt="md">
           {badges}
         </Group>
 
         <Group mt="xl">
-          <Button onClick={increment}>Add badge</Button>
-          <Button onClick={decrement}>Remove badge</Button>
+          <Button onClick={increment}>添加徽章</Button>
+          <Button onClick={decrement}>移除徽章</Button>
         </Group>
       </Modal>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
@@ -43,31 +43,31 @@ function Demo() {
 
   const badges = Array(count)
     .fill(0)
-    .map((_, index) => <Badge key={index}>Badge {index}</Badge>);
+    .map((_, index) => <Badge key={index}>徽章 {index}</Badge>);
 
   return (
     <>
-      <Modal opened={opened} onClose={close} size="auto" title="Modal size auto">
-        <Text>Modal with size auto will fits its content</Text>
+      <Modal opened={opened} onClose={close} size="auto" title="size 为 auto 的模态框">
+        <Text>size 为 auto 的模态框将自适应其内容</Text>
 
         <Group wrap="nowrap" mt="md">
           {badges}
         </Group>
 
         <Group mt="xl">
-          <Button onClick={increment}>Add badge</Button>
-          <Button onClick={decrement}>Remove badge</Button>
+          <Button onClick={increment}>添加徽章</Button>
+          <Button onClick={decrement}>移除徽章</Button>
         </Group>
       </Modal>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
 }
 
-export const sizeAuto: MantineDemo = {
+export const sizeAuto: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

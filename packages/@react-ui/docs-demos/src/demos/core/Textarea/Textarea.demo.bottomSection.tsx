@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Text, Textarea } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -12,8 +12,8 @@ function Demo() {
 
   return (
     <Textarea
-      label="Your message"
-      placeholder="Type your message..."
+      label="你的消息"
+      placeholder="输入你的消息..."
       autosize
       minRows={4}
       value={value}
@@ -34,8 +34,8 @@ function Demo() {
 
   return (
     <Textarea
-      label="Your message"
-      placeholder="Type your message..."
+      label="你的消息"
+      placeholder="输入你的消息..."
       autosize
       minRows={4}
       value={value}
@@ -49,7 +49,7 @@ function Demo() {
   );
 }
 
-export const bottomSection: MantineDemo = {
+export const bottomSection: UIDemo = {
   type: 'code',
   code,
   component: Demo,

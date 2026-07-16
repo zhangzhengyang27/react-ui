@@ -27,11 +27,11 @@
   line-height: 1;
 
   @mixin where-hover {
-    @mixin where-light {
+    [data-ui-color-scheme='light'] & {
       background-color: var(--ui-color-gray-0);
     }
 
-    @mixin where-dark {
+    [data-ui-color-scheme='dark'] & {
       background-color: var(--ui-color-dark-5);
     }
   }

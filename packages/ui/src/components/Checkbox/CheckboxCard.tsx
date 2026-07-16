@@ -7,7 +7,7 @@ import {
     factory,
     Factory,
     getRadius,
-    MantineRadius,
+    UIRadius,
     StylesApiProps,
     useProps,
     useStyles
@@ -35,14 +35,14 @@ export interface CheckboxCardProps
     /** Uncontrolled component default value */
     defaultChecked?: boolean
 
-    /** Called when value changes */
+    //** 值变化时调用 */
     onChange?: (checked: boolean) => void
 
     /** Adds border to the root element */
     withBorder?: boolean
 
-    /** Key of theme.radius or any valid CSS value to set border-radius @default theme.defaultRadius */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 to set border-radius @default theme.defaultRadius */
+    radius?: UIRadius
 
     /** Value of the checkbox, used with Checkbox.Group */
     value?: string

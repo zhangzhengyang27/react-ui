@@ -1,7 +1,7 @@
 /* oxlint-disable no-console */
 import { Button, MaskInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, MaskInput } from '@react-ui/ui';
@@ -18,12 +18,12 @@ function Demo() {
       <MaskInput
         mask="(999) 999-9999"
         placeholder="(___) ___-____"
-        label="Phone"
+        label="电话"
         onChangeRaw={(raw) => form.setFieldValue('phone', raw, { forceUpdate: false })}
       />
 
       <Button type="submit" mt="md">
-        Submit
+        提交
       </Button>
     </form>
   );
@@ -41,18 +41,18 @@ function Demo() {
       <MaskInput
         mask="(999) 999-9999"
         placeholder="(___) ___-____"
-        label="Phone"
+        label="电话"
         onChangeRaw={(raw) => form.setFieldValue('phone', raw, { forceUpdate: false })}
       />
 
       <Button type="submit" mt="md">
-        Submit
+        提交
       </Button>
     </form>
   );
 }
 
-export const withUseForm: MantineDemo = {
+export const withUseForm: UIDemo = {
   type: 'code',
   component: Demo,
   code,

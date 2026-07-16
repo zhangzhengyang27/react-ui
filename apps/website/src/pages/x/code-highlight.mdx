@@ -45,7 +45,7 @@ import '@react-ui/ui/styles.css';
 然后用 `CodeHighlightAdapterProvider` 包裹你的应用，并将 `createShikiAdapter` 作为 `adapter` 属性传入：
 
 ```tsx
-import { MantineProvider } from '@react-ui/ui';
+import { UIProvider } from '@react-ui/ui';
 import { CodeHighlightAdapterProvider, createShikiAdapter } from '@react-ui/code-highlight';
 
 // Shiki 需要异步代码来加载高亮器
@@ -64,11 +64,11 @@ const shikiAdapter = createShikiAdapter(loadShiki);
 
 function App() {
   return (
-    <MantineProvider>
+    <UIProvider>
       <CodeHighlightAdapterProvider adapter={shikiAdapter}>
         {/* 你的应用内容 */}
       </CodeHighlightAdapterProvider>
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```
@@ -90,7 +90,7 @@ function App() {
 然后用 `CodeHighlightAdapterProvider` 包裹你的应用，并将 `createHighlightJsAdapter` 作为 `adapter` 属性传入：
 
 ```tsx
-import { MantineProvider } from '@react-ui/ui';
+import { UIProvider } from '@react-ui/ui';
 import { CodeHighlightAdapterProvider, createHighlightJsAdapter } from '@react-ui/code-highlight';
 import hljs from 'highlight.js/lib/core';
 import tsLang from 'highlight.js/lib/languages/typescript';
@@ -101,11 +101,11 @@ const highlightJsAdapter = createHighlightJsAdapter(hljs);
 
 function App() {
   return (
-    <MantineProvider>
+    <UIProvider>
       <CodeHighlightAdapterProvider adapter={highlightJsAdapter}>
         {/* 你的应用内容 */}
       </CodeHighlightAdapterProvider>
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```

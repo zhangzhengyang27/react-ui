@@ -18,20 +18,20 @@ import '@react-ui/ui/styles.css';
 
 在应用中的任意位置添加 `Notifications` 组件。注意：
 
-- 必须在 [MantineProvider](/theming/mantine-provider/) 内部渲染 `Notifications` 组件
+- 必须在 [UIProvider](/theming/ui-provider/) 内部渲染 `Notifications` 组件
 - 你不需要用 `Notifications` 组件包裹整个应用——它不是 provider，而是一个普通组件
 - 你不应该渲染多个 `Notifications` 组件——如果这样做，你的通知会被重复显示
 
 ```tsx
-import { MantineProvider } from '@react-ui/ui';
+import { UIProvider } from '@react-ui/ui';
 import { Notifications } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <MantineProvider>
+    <UIProvider>
       <Notifications />
       {/* 你的应用内容 */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```

@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Code } from './Code'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Code', () => {
     it('renders a code element by default', () => {
@@ -17,7 +17,7 @@ describe('Code', () => {
     it('applies static classes', () => {
         renderWithProvider(<Code data-testid="code">npm install</Code>)
 
-        expect(screen.getByTestId('code')).toHaveClass('mantine-Code-root')
+        expect(screen.getByTestId('code')).toHaveClass('ui-Code-root')
     })
 
     it('renders a pre element when block is true', () => {

@@ -1,4 +1,4 @@
-import { meta } from '@react-ui/mantine-meta';
+import { meta } from '@react-ui/meta';
 import { LinksGroupProps } from './LinksGroup/LinksGroup';
 
 export const FOOTER_LINKS_DATA: LinksGroupProps[] = [
@@ -7,14 +7,14 @@ export const FOOTER_LINKS_DATA: LinksGroupProps[] = [
     data: [
       { type: 'next', label: '项目介绍', link: '/about' },
       { type: 'next', label: '参与贡献', link: '/contribute' },
-      { type: 'link', label: 'GitHub Releases', link: meta.gitHubLinks.releases },
+      { type: 'link', label: 'GitHub 发布页', link: meta.gitHubLinks.releases },
     ],
   },
 
   {
     title: '社区',
     data: [
-      { type: 'link', label: 'GitHub Discussions', link: meta.gitHubLinks.discussions },
+      { type: 'link', label: 'GitHub 讨论区', link: meta.gitHubLinks.discussions },
       { type: 'next', label: '支持与反馈', link: '/support' },
       { type: 'next', label: '浏览器支持', link: '/browser-support' },
     ],

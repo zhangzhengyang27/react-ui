@@ -1,5 +1,5 @@
 import { Checkbox, Stack } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Checkbox } from '@react-ui/ui';
@@ -22,8 +22,8 @@ function Demo() {
   return (
     <Checkbox.Group
       disabled
-      label="Select your favorite frameworks/libraries"
-      description="This is anonymous"
+      label="选择你最喜欢的框架/库"
+      description="这是匿名的"
     >
       <Stack mt="xs">
         <Checkbox value="react" label="React" />
@@ -35,7 +35,7 @@ function Demo() {
   );
 }
 
-export const groupDisabled: MantineDemo = {
+export const groupDisabled: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,5 +1,5 @@
 import { SegmentedControl } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { SegmentedControl } from '@react-ui/ui';
@@ -13,7 +13,7 @@ function Wrapper(props: any) {
   return <SegmentedControl data={['React', 'Angular', 'Vue']} {...props} />;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

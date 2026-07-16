@@ -1,8 +1,8 @@
 import { Button, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
-import { Group, Button, MantineProvider, createTheme } from '@react-ui/ui';
+import { Group, Button, UIProvider, createTheme } from '@react-ui/ui';
 
 const theme = createTheme({
   colors: {
@@ -13,14 +13,14 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       <Group>
-        <Button color="ocean-blue">Ocean blue button</Button>
+        <Button color="ocean-blue">海洋蓝按钮</Button>
         <Button color="bright-pink" variant="filled">
           Bright pink button
         </Button>
       </Group>
-    </MantineProvider>
+    </UIProvider>
   );
 }
 `;
@@ -28,7 +28,7 @@ function Demo() {
 function Demo() {
   return (
     <Group>
-      <Button color="ocean-blue">Ocean blue button</Button>
+      <Button color="ocean-blue">海洋蓝按钮</Button>
       <Button color="bright-pink" variant="filled">
         Bright pink button
       </Button>
@@ -36,7 +36,7 @@ function Demo() {
   );
 }
 
-export const colorsOverride: MantineDemo = {
+export const colorsOverride: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

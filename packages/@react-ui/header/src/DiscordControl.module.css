@@ -1,0 +1,15 @@
+.discord {
+  --discord-color: #5865f2;
+  --discord-color-hover: #4f5bd5;
+
+  [data-ui-color-scheme] & {
+    background-color: var(--discord-color);
+    border-color: var(--discord-color);
+    color: var(--ui-color-white);
+
+    &:hover {
+      background-color: var(--discord-color-hover);
+      border-color: var(--discord-color-hover);
+    }
+  }
+}

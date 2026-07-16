@@ -1,6 +1,6 @@
 import { Stack, UnstyledButton } from '@react-ui/ui';
 import { useRovingIndex } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Stack, UnstyledButton } from '@react-ui/ui';
@@ -66,7 +66,7 @@ function Demo() {
   );
 }
 
-export const vertical: MantineDemo = {
+export const vertical: UIDemo = {
   type: 'code',
   component: Demo,
   code,

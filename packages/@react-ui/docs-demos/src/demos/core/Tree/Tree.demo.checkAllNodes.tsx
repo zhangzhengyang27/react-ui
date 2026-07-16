@@ -8,7 +8,7 @@ import {
   Tree,
   useTree,
 } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './data';
 
 const code = `
@@ -74,8 +74,8 @@ function Demo() {
   return (
     <>
       <Group mb="md">
-        <Button onClick={() => tree.checkAllNodes()}>Check all</Button>
-        <Button onClick={() => tree.uncheckAllNodes()}>Uncheck all</Button>
+        <Button onClick={() => tree.checkAllNodes()}>全选</Button>
+        <Button onClick={() => tree.uncheckAllNodes()}>取消全选</Button>
       </Group>
 
       <Tree
@@ -141,8 +141,8 @@ function Demo() {
   return (
     <>
       <Group mb="md">
-        <Button onClick={() => tree.checkAllNodes()}>Check all</Button>
-        <Button onClick={() => tree.uncheckAllNodes()}>Uncheck all</Button>
+        <Button onClick={() => tree.checkAllNodes()}>全选</Button>
+        <Button onClick={() => tree.uncheckAllNodes()}>取消全选</Button>
       </Group>
 
       <Tree
@@ -157,11 +157,11 @@ function Demo() {
   );
 }
 
-export const checkAllNodes: MantineDemo = {
+export const checkAllNodes: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
     { fileName: 'data.ts', language: 'tsx', code: dataCode },
   ],
 };

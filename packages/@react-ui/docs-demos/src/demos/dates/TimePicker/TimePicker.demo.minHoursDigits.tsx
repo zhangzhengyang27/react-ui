@@ -1,5 +1,5 @@
 import { TimePicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TimePicker } from '@react-ui/dates';
@@ -7,7 +7,7 @@ import { TimePicker } from '@react-ui/dates';
 function Demo() {
   return (
     <TimePicker
-      label="Enter duration"
+      label="输入时长"
       type="duration"
       withSeconds
       minHoursDigits={3}
@@ -17,10 +17,10 @@ function Demo() {
 `;
 
 function Demo() {
-  return <TimePicker label="Enter duration" type="duration" withSeconds minHoursDigits={3} />;
+  return <TimePicker label="输入时长" type="duration" withSeconds minHoursDigits={3} />;
 }
 
-export const minHoursDigits: MantineDemo = {
+export const minHoursDigits: UIDemo = {
   type: 'code',
   component: Demo,
   code,

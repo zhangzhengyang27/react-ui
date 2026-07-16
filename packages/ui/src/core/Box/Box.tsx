@@ -3,12 +3,12 @@ import cx from 'clsx'
 import { createPolymorphicComponent } from '../../core/factory/index'
 
 import { InlineStyles } from '../../core/InlineStyles'
-import { MantineBreakpoint, useMantineSxTransform, useMantineTheme } from '../../core/MantineProvider'
+import { UIBreakpoint, useUISxTransform, useUITheme } from '../../core/UIProvider'
 import { isNumberLike } from '../../core/utils'
-import type { CssVarsProp, MantineStyleProp } from './Box.types'
+import type { CssVarsProp, UIStyleProp } from './Box.types'
 import { getBoxMod } from './get-box-mod/get-box-mod'
 import { getBoxStyle } from './get-box-style/get-box-style'
-import { extractStyleProps, MantineStyleProps, parseStyleProps, STYlE_PROPS_DATA } from './style-props'
+import { extractStyleProps, UIStyleProps, parseStyleProps, STYlE_PROPS_DATA } from './style-props'
 import { useRandomClassName } from './use-random-classname/use-random-classname'
 
 // 定义 Mod 类型：可以是键值对对象或字符串
@@ -16,13 +16,13 @@ export type Mod = Record<string, any> | string
 // 定义 BoxMod 类型：可以是 Mod、Mod 数组或 BoxMod 数组
 export type BoxMod = Mod | Mod[] | BoxMod[]
 
-// Box 组件的属性接口，继承自 MantineStyleProps
-export interface BoxProps extends MantineStyleProps {
+// Box 组件的属性接口，继承自 UIStyleProps
+export interface BoxProps extends UIStyleProps {
     /** 添加到根元素的类名（可选） */
     className?: string
 
-    /** 内联样式，可以订阅 MantineProvider 中定义的主题 */
-    style?: MantineStyleProp
+    /** 内联样式，可以订阅 UIProvider 中定义的主题 */
+    style?: UIStyleProp
 
     /** 定义在根元素上的 CSS 变量 */
     __vars?: CssVarsProp
@@ -31,10 +31,10 @@ export interface BoxProps extends MantineStyleProps {
     __size?: string
 
     /** 从指定断点开始隐藏组件（display: none） */
-    hiddenFrom?: MantineBreakpoint
+    hiddenFrom?: UIBreakpoint
 
     /** 在指定断点以下隐藏组件（display: none） */
-    visibleFrom?: MantineBreakpoint
+    visibleFrom?: UIBreakpoint
 
     /** 在浅色主题下隐藏组件（display: none） */
     lightHidden?: boolean
@@ -83,10 +83,10 @@ const _Box = forwardRef<HTMLDivElement, BoxComponentProps & { component: any; cl
         },
         ref
     ) => {
-        const theme = useMantineTheme()
+        const theme = useUITheme()
         const Element = component || 'div'
         const { styleProps, rest } = extractStyleProps(others)
-        const useSxTransform = useMantineSxTransform()
+        const useSxTransform = useUISxTransform()
         const transformedSx = useSxTransform?.()?.(styleProps.sx)
         const responsiveClassName = useRandomClassName()
         const parsedStyleProps = parseStyleProps({
@@ -105,10 +105,10 @@ const _Box = forwardRef<HTMLDivElement, BoxComponentProps & { component: any; cl
             }),
             className: cx(className, transformedSx, {
                 [responsiveClassName]: parsedStyleProps.hasResponsiveStyles,
-                'mantine-light-hidden': lightHidden,
-                'mantine-dark-hidden': darkHidden,
-                [`mantine-hidden-from-${hiddenFrom}`]: hiddenFrom,
-                [`mantine-visible-from-${visibleFrom}`]: visibleFrom
+                'ui-light-hidden': lightHidden,
+                'ui-dark-hidden': darkHidden,
+                [`ui-hidden-from-${hiddenFrom}`]: hiddenFrom,
+                [`ui-visible-from-${visibleFrom}`]: visibleFrom
             }),
             'data-variant': variant,
             'data-size': isNumberLike(size) ? undefined : size || undefined,
@@ -133,7 +133,7 @@ const _Box = forwardRef<HTMLDivElement, BoxComponentProps & { component: any; cl
     }
 )
 
-_Box.displayName = '@mantine/core/Box'
+_Box.displayName = '@react-ui/ui/Box'
 
 // 导出 Box 组件，支持多态组件模式
 export const Box = createPolymorphicComponent<'div', BoxComponentProps>(_Box)

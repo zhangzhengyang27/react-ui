@@ -8,10 +8,10 @@ export const ColorInputStylesApi: StylesApiData<ColorInputFactory> = {
     ...InputStylesApi.selectors,
     ...InputWrapperStylesApi.selectors,
     ...ColorPickerStylesApi.selectors,
-    dropdown: 'Popover dropdown',
-    colorPreview: 'Color swatch preview in input left section',
-    eyeDropperButton: 'Eye dropper button',
-    eyeDropperIcon: 'Default eye dropper icon',
+    dropdown: 'Popover 下拉框',
+    colorPreview: '输入左侧区域的颜色预览',
+    eyeDropperButton: '取色器按钮',
+    eyeDropperIcon: '默认取色器图标',
   },
 
   vars: {
@@ -24,7 +24,7 @@ export const ColorInputStylesApi: StylesApiData<ColorInputFactory> = {
     },
 
     eyeDropperIcon: {
-      '--ci-eye-dropper-icon-size': 'Controls width and height of the eye dropper icon',
+      '--ci-eye-dropper-icon-size': '控制 the eye dropper icon 的 width and height',
     },
   },
 };

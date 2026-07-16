@@ -33,13 +33,13 @@ export default Layout(MDX_DATA.VariantsAndSizes);
 
 ## 自定义变体类型
 
-你可以通过在项目中创建 `mantine.d.ts` 文件，并用新的变体类型扩展 `{x}Props` 接口，
+你可以通过在项目中创建 `ui.d.ts` 文件，并用新的变体类型扩展 `{x}Props` 接口，
 来为自定义变体定义类型。
 
 为 [Button](/core/button) 组件添加自定义变体类型的示例：
 
 ```tsx
-import { ButtonVariant, MantineSize } from '@react-ui/ui';
+import { ButtonVariant, UISize } from '@react-ui/ui';
 
 type ExtendedButtonVariant = ButtonVariant | 'contrast' | 'radial-gradient';
 

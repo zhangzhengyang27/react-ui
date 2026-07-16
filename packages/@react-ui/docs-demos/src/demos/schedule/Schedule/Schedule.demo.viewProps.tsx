@@ -1,5 +1,5 @@
 import { Schedule } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { events } from './_data';
 
 const code = `
@@ -57,7 +57,7 @@ function Demo() {
   );
 }
 
-export const viewProps: MantineDemo = {
+export const viewProps: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

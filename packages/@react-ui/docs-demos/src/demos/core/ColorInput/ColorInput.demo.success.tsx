@@ -1,19 +1,19 @@
 import { ColorInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ColorInput } from '@react-ui/ui';
 
 function Demo() {
-  return <ColorInput label="Color" placeholder="Color" success="Color accepted" />;
+  return <ColorInput label="颜色" placeholder="颜色" success="颜色已接受" />;
 }
 `;
 
 function Demo() {
-  return <ColorInput label="Color" placeholder="Color" success="Color accepted" />;
+  return <ColorInput label="颜色" placeholder="颜色" success="颜色已接受" />;
 }
 
-export const success: MantineDemo = {
+export const success: UIDemo = {
   type: 'code',
   component: Demo,
   code,

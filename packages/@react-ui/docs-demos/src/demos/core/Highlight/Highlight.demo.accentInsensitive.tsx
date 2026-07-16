@@ -1,5 +1,5 @@
 import { Highlight, Stack, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Highlight, Stack, Text } from '@react-ui/ui';
@@ -11,7 +11,7 @@ function Demo() {
         <Text size="sm" fw={500} mb={5}>
           With accent-insensitive matching (default)
         </Text>
-        <Highlight highlight="cafe">We visited café and cafe.</Highlight>
+        <Highlight highlight="cafe">我们访问了 café 和 cafe。</Highlight>
       </div>
 
       <div>
@@ -34,7 +34,7 @@ function Demo() {
         <Text size="sm" fw={500} mb={5}>
           With accent-insensitive matching (default)
         </Text>
-        <Highlight highlight="cafe">We visited café and cafe.</Highlight>
+        <Highlight highlight="cafe">我们访问了 café 和 cafe。</Highlight>
       </div>
 
       <div>
@@ -49,7 +49,7 @@ function Demo() {
   );
 }
 
-export const accentInsensitive: MantineDemo = {
+export const accentInsensitive: UIDemo = {
   type: 'code',
   code,
   component: Demo,

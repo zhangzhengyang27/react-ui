@@ -1,5 +1,5 @@
 import { Button, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Group, Button } from '@react-ui/ui';
@@ -7,9 +7,9 @@ import { Group, Button } from '@react-ui/ui';
 function Demo() {
   return (
     <Group{{props}}>
-      <Button variant="default">First</Button>
-      <Button variant="default">Second</Button>
-      <Button variant="default">Third</Button>
+      <Button variant="default">第一</Button>
+      <Button variant="default">第二</Button>
+      <Button variant="default">第三</Button>
     </Group>
   );
 }
@@ -18,14 +18,14 @@ function Demo() {
 function Wrapper(props: any) {
   return (
     <Group {...props}>
-      <Button variant="default">First</Button>
-      <Button variant="default">Second</Button>
-      <Button variant="default">Third</Button>
+      <Button variant="default">第一</Button>
+      <Button variant="default">第二</Button>
+      <Button variant="default">第三</Button>
     </Group>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

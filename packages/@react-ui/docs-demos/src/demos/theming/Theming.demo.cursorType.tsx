@@ -1,8 +1,8 @@
-import { Checkbox, createTheme, MantineThemeProvider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { Checkbox, createTheme, UIThemeProvider } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
-import { MantineProvider, createTheme, Checkbox } from '@react-ui/ui';
+import { UIProvider, createTheme, Checkbox } from '@react-ui/ui';
 
 const theme = createTheme({
   cursorType: 'pointer',
@@ -11,11 +11,11 @@ const theme = createTheme({
 function Demo() {
   return (
     <>
-      <Checkbox label="Default cursor" />
+      <Checkbox label="默认光标" />
 
-      <MantineProvider theme={theme}>
-        <Checkbox label="Pointer cursor" mt="md" />
-      </MantineProvider>
+      <UIProvider theme={theme}>
+        <Checkbox label="指针光标" mt="md" />
+      </UIProvider>
     </>
   );
 }
@@ -28,20 +28,20 @@ const theme = createTheme({
 function Demo() {
   return (
     <>
-      <Checkbox label="Default cursor" />
+      <Checkbox label="默认光标" />
 
-      <MantineThemeProvider theme={theme}>
+      <UIThemeProvider theme={theme}>
         <Checkbox
-          label="Pointer cursor"
+          label="指针光标"
           mt="md"
           styles={{ input: { cursor: 'pointer' }, label: { cursor: 'pointer' } }}
         />
-      </MantineThemeProvider>
+      </UIThemeProvider>
     </>
   );
 }
 
-export const cursorType: MantineDemo = {
+export const cursorType: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

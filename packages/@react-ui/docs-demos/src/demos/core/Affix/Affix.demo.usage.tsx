@@ -1,7 +1,7 @@
 import { ArrowUpIcon } from '@phosphor-icons/react';
 import { Affix, Button, Text, Transition } from '@react-ui/ui';
 import { useWindowScroll } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ArrowUpIcon } from '@phosphor-icons/react';
@@ -13,7 +13,7 @@ function Demo() {
 
   return (
     <>
-      <Text ta="center">Affix is located at the bottom of the screen, scroll to see it</Text>
+      <Text ta="center">Affix 位于屏幕底部，滚动查看</Text>
       <Affix position={{ bottom: 20, left: 20 }}>
         <Transition transition="slide-up" mounted={scroll.y > 0}>
           {(transitionStyles) => (
@@ -37,7 +37,7 @@ function Demo() {
 
   return (
     <>
-      <Text ta="center">Affix is located at the bottom of the screen, scroll to see it</Text>
+      <Text ta="center">Affix 位于屏幕底部，滚动查看</Text>
       <Affix position={{ bottom: 20, left: 20 }}>
         <Transition transition="slide-up" mounted={scroll.y > 0}>
           {(transitionStyles) => (
@@ -55,7 +55,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

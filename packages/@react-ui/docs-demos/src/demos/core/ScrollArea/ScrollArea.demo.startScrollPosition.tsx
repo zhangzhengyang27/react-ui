@@ -1,5 +1,5 @@
 import { ScrollArea } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { Content } from './_content';
 
 const code = `
@@ -22,7 +22,7 @@ function Demo() {
   );
 }
 
-export const startScrollPosition: MantineDemo = {
+export const startScrollPosition: UIDemo = {
   type: 'code',
   component: Demo,
   code,

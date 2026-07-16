@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Group, Skeleton, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -43,13 +43,13 @@ function Demo() {
       </Skeleton>
 
       <Group justify="center" mt="xs">
-        <Button onClick={() => setLoading((l) => !l)}>Toggle Skeleton</Button>
+        <Button onClick={() => setLoading((l) => !l)}>切换骨架屏</Button>
       </Group>
     </>
   );
 }
 
-export const content: MantineDemo = {
+export const content: UIDemo = {
   type: 'code',
   component: Demo,
   code,

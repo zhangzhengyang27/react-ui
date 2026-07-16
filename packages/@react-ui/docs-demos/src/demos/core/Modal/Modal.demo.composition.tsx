@@ -1,6 +1,6 @@
 import { Button, Modal } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useDisclosure } from '@react-ui/hooks';
@@ -15,15 +15,15 @@ function Demo() {
         <Modal.Overlay />
         <Modal.Content>
           <Modal.Header>
-            <Modal.Title>Modal title</Modal.Title>
+            <Modal.Title>模态框标题</Modal.Title>
             <Modal.CloseButton />
           </Modal.Header>
-          <Modal.Body>Modal content</Modal.Body>
+          <Modal.Body>模态框内容</Modal.Body>
         </Modal.Content>
       </Modal.Root>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
@@ -39,21 +39,21 @@ function Demo() {
         <Modal.Overlay />
         <Modal.Content>
           <Modal.Header>
-            <Modal.Title>Modal title</Modal.Title>
+            <Modal.Title>模态框标题</Modal.Title>
             <Modal.CloseButton />
           </Modal.Header>
-          <Modal.Body>Modal content</Modal.Body>
+          <Modal.Body>模态框内容</Modal.Body>
         </Modal.Content>
       </Modal.Root>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
 }
 
-export const composition: MantineDemo = {
+export const composition: UIDemo = {
   type: 'code',
   code,
   centered: true,

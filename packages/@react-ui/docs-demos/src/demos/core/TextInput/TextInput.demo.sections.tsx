@@ -1,6 +1,6 @@
 import { AtIcon } from '@phosphor-icons/react';
 import { TextInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TextInput } from '@react-ui/ui';
@@ -13,15 +13,15 @@ function Demo() {
       <TextInput
         leftSectionPointerEvents="none"
         leftSection={icon}
-        label="Your email"
-        placeholder="Your email"
+        label="你的邮箱"
+        placeholder="你的邮箱"
       />
       <TextInput
         mt="md"
         rightSectionPointerEvents="none"
         rightSection={icon}
-        label="Your email"
-        placeholder="Your email"
+        label="你的邮箱"
+        placeholder="你的邮箱"
       />
     </>
   );
@@ -35,21 +35,21 @@ function Demo() {
       <TextInput
         leftSectionPointerEvents="none"
         leftSection={icon}
-        label="Your email"
-        placeholder="Your email"
+        label="你的邮箱"
+        placeholder="你的邮箱"
       />
       <TextInput
         mt="md"
         rightSectionPointerEvents="none"
         rightSection={icon}
-        label="Your email"
-        placeholder="Your email"
+        label="你的邮箱"
+        placeholder="你的邮箱"
       />
     </>
   );
 }
 
-export const sections: MantineDemo = {
+export const sections: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

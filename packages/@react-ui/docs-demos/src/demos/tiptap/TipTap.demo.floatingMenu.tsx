@@ -2,7 +2,7 @@ import { useEditor } from '@tiptap/react';
 import { FloatingMenu } from '@tiptap/react/menus';
 import StarterKit from '@tiptap/starter-kit';
 import { Link, RichTextEditor } from '@react-ui/tiptap';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useEditor } from '@tiptap/react';
@@ -14,7 +14,7 @@ function Demo() {
   const editor = useEditor({
     shouldRerenderOnTransaction: true,
     extensions: [StarterKit.configure({ link: false }), Link],
-    content: '<p>Enter a new line to see floating menu</p>',
+    content: '<p>输入新行查看浮动菜单</p>',
   });
 
   return (
@@ -39,7 +39,7 @@ function Demo() {
     shouldRerenderOnTransaction: true,
     immediatelyRender: false,
     extensions: [StarterKit.configure({ link: false }), Link],
-    content: '<p>Enter a new line to see floating menu</p>',
+    content: '<p>输入新行查看浮动菜单</p>',
   });
 
   return (
@@ -58,7 +58,7 @@ function Demo() {
   );
 }
 
-export const floatingMenu: MantineDemo = {
+export const floatingMenu: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -53,14 +53,14 @@ export function TableOfContents({ withTabs, editPageLink }: TableOfContentsProps
     <Box component="nav" mod={{ 'with-tabs': withTabs }} className={classes.wrapper}>
       <div className={classes.inner}>
         <div>
-          <Text className={classes.title}>Table of contents</Text>
+          <Text className={classes.title}>目录</Text>
           <ScrollArea.Autosize mah="calc(100vh - 172px)" type="never">
             <div className={classes.items}>{items}</div>
 
             {editPageLink && (
               <Text component="a" className={classes.editPage} href={editPageLink} target="_blank">
                 <PencilSimpleIcon className={classes.editPageIcon} size={18} />
-                <span>Edit this page</span>
+                <span>编辑本页</span>
               </Text>
             )}
             <Space h="xl" />

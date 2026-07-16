@@ -3,14 +3,14 @@ import type { StylesApiData } from '../types';
 
 export const PinInputStylesApi: StylesApiData<PinInputFactory> = {
   selectors: {
-    root: 'Root element',
-    pinInput: 'Input item wrapper',
-    input: 'Input element',
+    root: '根元素',
+    pinInput: 'Input item 包装器',
+    input: '输入元素',
   },
 
   vars: {
     root: {
-      '--pin-input-size': 'Controls input `width` and `height`',
+      '--pin-input-size': '控制 input `width` and `height`',
     },
   },
 

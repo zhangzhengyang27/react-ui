@@ -9,12 +9,12 @@ import {
   factory,
   Factory,
   getRadius,
-  MantineRadius,
+  UIRadius,
   ScrollArea,
   ScrollAreaProps,
   StylesApiProps,
   UnstyledButton,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useResolvedStylesApi,
   useStyles,
@@ -126,7 +126,7 @@ export interface MonthViewProps
   highlightToday?: boolean;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius` @default theme.defaultRadius */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 
   /** If set, days from the previous and next months are displayed to fill the weeks @default true */
   withOutsideDays?: boolean;
@@ -336,7 +336,7 @@ export const MonthView = factory<MonthViewFactory>((_props) => {
     radius,
   };
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const ctx = useDatesContext();
 
   const resolvedFirstDayOfWeek = ctx.getFirstDayOfWeek(firstDayOfWeek);

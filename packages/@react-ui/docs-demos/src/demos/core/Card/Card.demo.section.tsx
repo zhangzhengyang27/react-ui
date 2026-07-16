@@ -1,15 +1,15 @@
 import { DotsThreeIcon, EyeIcon, FileZipIcon, TrashIcon } from '@phosphor-icons/react';
 import { ActionIcon, Card, Group, Image, Menu, SimpleGrid, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ActionIcon, Card, Group, Image, Menu, SimpleGrid, Text } from '@react-ui/ui';
 import { DotsThreeIcon, EyeIcon, FileZipIcon, TrashIcon } from '@phosphor-icons/react';
 
 const images = [
-  'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-1.png',
-  'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-2.png',
-  'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-3.png',
+  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-1.png',
+  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-2.png',
+  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-3.png',
 ];
 
 function Demo() {
@@ -17,7 +17,7 @@ function Demo() {
     <Card withBorder shadow="sm">
       <Card.Section withBorder inheritPadding py="xs">
         <Group justify="space-between">
-          <Text fw={500}>Review pictures</Text>
+          <Text fw={500}>查看图片</Text>
           <Menu withinPortal position="bottom-end" shadow="sm">
             <Menu.Target>
               <ActionIcon variant="subtle" color="gray">
@@ -51,7 +51,7 @@ function Demo() {
       </Text>
 
       <Card.Section mt="sm">
-        <Image src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-4.png" />
+        <Image src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-4.png" />
       </Card.Section>
 
       <Card.Section inheritPadding mt="sm" pb="md">
@@ -67,9 +67,9 @@ function Demo() {
 `;
 
 const images = [
-  'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-1.png',
-  'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-2.png',
-  'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-3.png',
+  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-1.png',
+  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-2.png',
+  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-3.png',
 ];
 
 function Demo() {
@@ -77,7 +77,7 @@ function Demo() {
     <Card withBorder shadow="sm">
       <Card.Section withBorder inheritPadding py="xs">
         <Group justify="space-between">
-          <Text fw={500}>Review pictures</Text>
+          <Text fw={500}>查看图片</Text>
           <Menu withinPortal position="bottom-end" shadow="sm">
             <Menu.Target>
               <ActionIcon variant="subtle" color="gray">
@@ -86,8 +86,8 @@ function Demo() {
             </Menu.Target>
 
             <Menu.Dropdown>
-              <Menu.Item leftSection={<FileZipIcon size={14} />}>Download zip</Menu.Item>
-              <Menu.Item leftSection={<EyeIcon size={14} />}>Preview all</Menu.Item>
+              <Menu.Item leftSection={<FileZipIcon size={14} />}>下载压缩包</Menu.Item>
+              <Menu.Item leftSection={<EyeIcon size={14} />}>预览全部</Menu.Item>
               <Menu.Item leftSection={<TrashIcon size={14} />} color="red">
                 Delete all
               </Menu.Item>
@@ -104,7 +104,7 @@ function Demo() {
       </Text>
 
       <Card.Section mt="sm">
-        <Image src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-4.png" />
+        <Image src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-4.png" />
       </Card.Section>
 
       <Card.Section inheritPadding mt="sm" pb="md">
@@ -118,7 +118,7 @@ function Demo() {
   );
 }
 
-export const section: MantineDemo = {
+export const section: UIDemo = {
   type: 'code',
   component: Demo,
   code,

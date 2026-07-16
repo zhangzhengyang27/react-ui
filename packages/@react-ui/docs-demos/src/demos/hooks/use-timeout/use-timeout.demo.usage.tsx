@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Group, Text } from '@react-ui/ui';
 import { randomId, useTimeout } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -14,7 +14,7 @@ function Demo() {
 
   return (
     <Group>
-      <Button onClick={start}>Start</Button>
+      <Button onClick={start}>开始</Button>
       <Button onClick={clear} color="red">
         Clear
       </Button>
@@ -30,7 +30,7 @@ function Demo() {
 
   return (
     <Group>
-      <Button onClick={start}>Start</Button>
+      <Button onClick={start}>开始</Button>
       <Button onClick={clear} color="red">
         Clear
       </Button>
@@ -39,7 +39,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

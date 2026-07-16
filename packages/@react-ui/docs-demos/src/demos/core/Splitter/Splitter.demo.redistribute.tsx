@@ -1,5 +1,5 @@
 import { Splitter } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const colors = ['blue', 'teal', 'grape', 'orange'] as const;
 const labels = ['Panel A', 'Panel B', 'Panel C', 'Panel D'];
@@ -46,7 +46,7 @@ function Demo() {
   );
 }`;
 
-export const redistribute: MantineDemo = {
+export const redistribute: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -7,8 +7,8 @@ import {
     factory,
     Factory,
     getSize,
-    MantineColor,
-    MantineSize,
+    UIColor,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -62,7 +62,7 @@ export type EmptyStateCssVariables = {
 
 export interface EmptyStateProps extends BoxProps, StylesApiProps<EmptyStateFactory>, ElementProps<'div', 'title'> {
     /** Controls indicator size, gap between elements and font sizes @default 'md' */
-    size?: MantineSize
+    size?: UISize
 
     /** Content alignment @default 'center' */
     align?: 'left' | 'center' | 'right'
@@ -71,7 +71,7 @@ export interface EmptyStateProps extends BoxProps, StylesApiProps<EmptyStateFact
     variant?: EmptyStateVariant
 
     /** Key of `theme.colors` or any valid CSS color @default theme.primaryColor */
-    color?: MantineColor
+    color?: UIColor
 
     /** Title content, rendered inside `EmptyState.Title` */
     title?: React.ReactNode

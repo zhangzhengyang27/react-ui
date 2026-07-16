@@ -23,7 +23,7 @@ export function LogoAsset({
   return (
     <div {...others}>
       <div className={classes.imageWrapper} style={{ background }}>
-        <img src={image} alt="ReactUI logo" className={classes.image} width={imageWidth} />
+        <img src={image} alt="ReactUI 标志" className={classes.image} width={imageWidth} />
       </div>
 
       <Group wrap="nowrap" grow mt="xs">
@@ -32,14 +32,14 @@ export function LogoAsset({
           download={fileName}
           href={`data:image/svg+xml;charset=utf-8;base64,${btoa(code)}`}
         >
-          Download svg
+          下载 SVG
         </Button>
         <Button
           variant={clipboard.copied ? 'filled' : 'default'}
           color="teal"
           onClick={() => clipboard.copy(code)}
         >
-          {clipboard.copied ? 'Copied' : 'Copy svg code'}
+          {clipboard.copied ? '已复制' : '复制 SVG 代码'}
         </Button>
       </Group>
     </div>

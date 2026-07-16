@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Avatar } from './Avatar'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Avatar', () => {
     it('renders image when src is provided', () => {
@@ -41,6 +41,6 @@ describe('Avatar', () => {
     it('applies static classes', () => {
         renderWithProvider(<Avatar data-testid="avatar">AB</Avatar>)
 
-        expect(screen.getByTestId('avatar')).toHaveClass('mantine-Avatar-root')
+        expect(screen.getByTestId('avatar')).toHaveClass('ui-Avatar-root')
     })
 })

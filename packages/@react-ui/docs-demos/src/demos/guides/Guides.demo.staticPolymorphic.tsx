@@ -1,5 +1,5 @@
 import { Button, ButtonProps, ElementProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, ButtonProps, ElementProps } from '@react-ui/ui';
@@ -10,7 +10,7 @@ const LinkButton = (props: ButtonProps & ElementProps<'a', keyof ButtonProps>) =
 
 function Demo() {
   return (
-    <LinkButton href="https://mantine.dev" target="_blank">
+    <LinkButton href="#" target="_blank">
       ReactUI website
     </LinkButton>
   );
@@ -23,13 +23,13 @@ const LinkButton = (props: ButtonProps & ElementProps<'a', keyof ButtonProps>) =
 
 function Demo() {
   return (
-    <LinkButton href="https://mantine.dev" target="_blank">
+    <LinkButton href="#" target="_blank">
       ReactUI website
     </LinkButton>
   );
 }
 
-export const staticPolymorphic: MantineDemo = {
+export const staticPolymorphic: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

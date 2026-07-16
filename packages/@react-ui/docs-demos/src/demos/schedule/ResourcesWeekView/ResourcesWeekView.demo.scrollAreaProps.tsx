@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { ResourcesWeekView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { dataCode, resourceEvents, resources } from './_data';
 
 const code = `
@@ -11,7 +11,7 @@ import { ResourcesWeekView } from '@react-ui/schedule';
 import { events, resources } from './data';
 
 function Demo() {
-  const today = dayjs().format('YYYY-MM-DD');
+  const today = dayjs('2024-01-15').format('YYYY-MM-DD');
   const [date, setDate] = useState(today);
 
   return (
@@ -33,7 +33,7 @@ function Demo() {
 `;
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
 
   return (
     <ResourcesWeekView
@@ -43,7 +43,7 @@ function Demo() {
       events={resourceEvents}
       startTime="08:00:00"
       endTime="18:00:00"
-      startScrollDateTime={`${dayjs().format('YYYY-MM-DD')} 08:00:00`}
+      startScrollDateTime={`${dayjs('2024-01-15').format('YYYY-MM-DD')} 08:00:00`}
       scrollAreaProps={{
         scrollbarSize: 10,
         offsetScrollbars: true,
@@ -52,12 +52,12 @@ function Demo() {
   );
 }
 
-export const scrollAreaProps: MantineDemo = {
+export const scrollAreaProps: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

@@ -1,5 +1,5 @@
-import { render, screen, tests } from '@mantine-tests/core';
-import { datesTests } from '@mantine-tests/dates';
+import { render, screen, tests } from '@react-ui/tests';
+import { datesTests } from '@react-ui/tests/dates';
 import {
   MonthLevelGroup,
   MonthLevelGroupProps,
@@ -83,11 +83,11 @@ describe('@react-ui/dates/MonthLevelGroup', () => {
 
   it('has correct default __staticSelector', () => {
     const { container } = render(<MonthLevelGroup {...defaultProps} />);
-    expect(container.querySelector('table button')).toHaveClass('mantine-MonthLevelGroup-day');
+    expect(container.querySelector('table button')).toHaveClass('ui-MonthLevelGroup-day');
   });
 
   it('supports custom __staticSelector', () => {
     const { container } = render(<MonthLevelGroup {...defaultProps} __staticSelector="Calendar" />);
-    expect(container.querySelector('table button')).toHaveClass('mantine-Calendar-day');
+    expect(container.querySelector('table button')).toHaveClass('ui-Calendar-day');
   });
 });

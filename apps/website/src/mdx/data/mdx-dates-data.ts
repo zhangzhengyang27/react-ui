@@ -2,8 +2,8 @@ import { Frontmatter } from '@/types';
 
 export const MDX_DATES_DATA: Record<string, Frontmatter> = {
   GettingStartedDates: {
-    title: 'Getting started',
-    description: 'Get started with @react-ui/ui package',
+    title: '开始使用',
+    description: '开始使用 @react-ui/ui 包',
     package: '@react-ui/ui',
     license: 'MIT',
     slug: '/dates/getting-started',
@@ -15,7 +15,7 @@ export const MDX_DATES_DATA: Record<string, Frontmatter> = {
     title: 'Calendar',
     package: '@react-ui/ui',
     slug: '/dates/calendar',
-    description: 'Base component for custom date pickers',
+    description: '自定义日期选择器的基础组件',
     props: ['Calendar'],
     styles: ['Calendar'],
     source: '@react-ui/ui/src/components/Calendar/Calendar.tsx',
@@ -107,11 +107,11 @@ export const MDX_DATES_DATA: Record<string, Frontmatter> = {
   },
 
   TimeInput: {
-    title: 'TimeInput',
+    title: '时间输入',
     package: '@react-ui/ui',
     slug: '/dates/time-input',
-    props: ['TimeInput'],
-    styles: ['TimeInput'],
+    props: ['时间输入'],
+    styles: ['时间输入'],
     description: 'Capture time from the user',
     source: '@react-ui/ui/src/components/TimeInput/TimeInput.tsx',
     docs: 'dates/time-input.mdx',

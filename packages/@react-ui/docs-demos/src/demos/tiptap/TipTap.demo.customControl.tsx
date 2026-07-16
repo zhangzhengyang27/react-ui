@@ -2,7 +2,7 @@ import { StarIcon } from '@phosphor-icons/react';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { RichTextEditor, useRichTextEditorContext } from '@react-ui/tiptap';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useEditor } from '@tiptap/react';
@@ -15,8 +15,8 @@ function InsertStarControl() {
   return (
     <RichTextEditor.Control
       onClick={() => editor?.commands.insertContent('⭐')}
-      aria-label="Insert star emoji"
-      title="Insert star emoji"
+      aria-label="插入星星表情"
+      title="插入星星表情"
     >
       <StarIcon size={16} />
     </RichTextEditor.Control>
@@ -27,7 +27,7 @@ function Demo() {
   const editor = useEditor({
     shouldRerenderOnTransaction: true,
     extensions: [StarterKit],
-    content: '<p>Click control to insert star emoji</p>',
+    content: '<p>点击控件插入星星表情</p>',
   });
 
   return (
@@ -47,8 +47,8 @@ function InsertStarControl() {
   return (
     <RichTextEditor.Control
       onClick={() => editor?.commands.insertContent('⭐')}
-      aria-label="Insert star emoji"
-      title="Insert star emoji"
+      aria-label="插入星星表情"
+      title="插入星星表情"
     >
       <StarIcon size={16} />
     </RichTextEditor.Control>
@@ -60,7 +60,7 @@ function Demo() {
     immediatelyRender: false,
     shouldRerenderOnTransaction: true,
     extensions: [StarterKit],
-    content: '<p>Click control to insert star emoji</p>',
+    content: '<p>点击控件插入星星表情</p>',
   });
 
   return (
@@ -74,7 +74,7 @@ function Demo() {
   );
 }
 
-export const customControl: MantineDemo = {
+export const customControl: UIDemo = {
   type: 'code',
   component: Demo,
   code,

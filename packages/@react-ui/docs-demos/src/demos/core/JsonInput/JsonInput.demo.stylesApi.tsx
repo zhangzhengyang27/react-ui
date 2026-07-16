@@ -1,6 +1,6 @@
 import { AtIcon } from '@phosphor-icons/react';
 import { JsonInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { JsonInputStylesApi } from '@react-ui/docs-styles-api';
 
 const code = `
@@ -10,10 +10,10 @@ import { JsonInput } from '@react-ui/ui';
 function Demo() {
   return (
     <JsonInput
-      label="Label"
-      placeholder="JsonInput"
-      description="Description"
-      error="Error"
+      label="标签"
+      placeholder="JSON 输入"
+      description="描述"
+      error="错误"
       withAsterisk
       leftSection={<AtIcon size={18} />}
       autosize
@@ -26,10 +26,10 @@ function Demo() {
 function Demo(props: any) {
   return (
     <JsonInput
-      label="Label"
-      placeholder="JsonInput"
-      description="Description"
-      error="Error"
+      label="标签"
+      placeholder="JSON 输入"
+      description="描述"
+      error="错误"
       withAsterisk
       leftSection={<AtIcon size={18} />}
       autosize
@@ -38,7 +38,7 @@ function Demo(props: any) {
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: JsonInputStylesApi,
   component: Demo,

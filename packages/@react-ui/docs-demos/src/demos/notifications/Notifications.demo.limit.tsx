@@ -1,6 +1,6 @@
 import { Button } from '@react-ui/ui';
 import { notifications } from '@react-ui/notifications';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button } from '@react-ui/ui';
@@ -14,7 +14,7 @@ function Demo() {
           setTimeout(() => {
             notifications.show({
               title: \`Notification \${index + 1}\`,
-              message: 'Most notifications are added to queue',
+              message: '大多数通知已加入队列',
             });
           }, 200 * index);
         });
@@ -35,7 +35,7 @@ function Demo() {
             setTimeout(() => {
               notifications.show({
                 title: `Notification ${index + 1}`,
-                message: 'Most notifications are added to queue',
+                message: '大多数通知已加入队列',
               });
             }, 200 * index);
           });
@@ -46,7 +46,7 @@ function Demo() {
   );
 }
 
-export const limit: MantineDemo = {
+export const limit: UIDemo = {
   type: 'code',
   code,
   centered: true,

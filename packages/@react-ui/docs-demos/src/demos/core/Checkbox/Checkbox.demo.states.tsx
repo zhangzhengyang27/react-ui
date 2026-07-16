@@ -1,5 +1,5 @@
 import { Checkbox, Stack } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Checkbox, Stack } from '@react-ui/ui';
@@ -7,19 +7,19 @@ import { Checkbox, Stack } from '@react-ui/ui';
 function Demo() {
   return (
     <Stack>
-      <Checkbox checked={false} onChange={() => {}} label="Default checkbox" />
-      <Checkbox checked={false} onChange={() => {}} indeterminate label="Indeterminate checkbox" />
-      <Checkbox checked onChange={() => {}} label="Checked checkbox" />
-      <Checkbox checked variant="outline" onChange={() => {}} label="Outline checked checkbox" />
+      <Checkbox checked={false} onChange={() => {}} label="默认复选框" />
+      <Checkbox checked={false} onChange={() => {}} indeterminate label="不确定复选框" />
+      <Checkbox checked onChange={() => {}} label="已选中复选框" />
+      <Checkbox checked variant="outline" onChange={() => {}} label="轮廓已选中复选框" />
       <Checkbox
         variant="outline"
         onChange={() => {}}
         indeterminate
-        label="Outline indeterminate checkbox"
+        label="轮廓不确定复选框"
       />
-      <Checkbox disabled label="Disabled checkbox" />
-      <Checkbox disabled checked onChange={() => {}} label="Disabled checked checkbox" />
-      <Checkbox disabled indeterminate label="Disabled indeterminate checkbox" />
+      <Checkbox disabled label="已禁用复选框" />
+      <Checkbox disabled checked onChange={() => {}} label="已禁用已选中复选框" />
+      <Checkbox disabled indeterminate label="已禁用不确定复选框" />
     </Stack>
   );
 }
@@ -28,24 +28,24 @@ function Demo() {
 function Demo() {
   return (
     <Stack>
-      <Checkbox checked={false} onChange={() => {}} label="Default checkbox" />
-      <Checkbox checked={false} onChange={() => {}} indeterminate label="Indeterminate checkbox" />
-      <Checkbox checked onChange={() => {}} label="Checked checkbox" />
-      <Checkbox checked variant="outline" onChange={() => {}} label="Outline checked checkbox" />
+      <Checkbox checked={false} onChange={() => {}} label="默认复选框" />
+      <Checkbox checked={false} onChange={() => {}} indeterminate label="不确定复选框" />
+      <Checkbox checked onChange={() => {}} label="已选中复选框" />
+      <Checkbox checked variant="outline" onChange={() => {}} label="轮廓已选中复选框" />
       <Checkbox
         variant="outline"
         onChange={() => {}}
         indeterminate
-        label="Outline indeterminate checkbox"
+        label="轮廓不确定复选框"
       />
-      <Checkbox disabled label="Disabled checkbox" />
-      <Checkbox disabled checked onChange={() => {}} label="Disabled checked checkbox" />
-      <Checkbox disabled indeterminate label="Disabled indeterminate checkbox" />
+      <Checkbox disabled label="已禁用复选框" />
+      <Checkbox disabled checked onChange={() => {}} label="已禁用已选中复选框" />
+      <Checkbox disabled indeterminate label="已禁用不确定复选框" />
     </Stack>
   );
 }
 
-export const states: MantineDemo = {
+export const states: UIDemo = {
   type: 'code',
   component: Demo,
   code,

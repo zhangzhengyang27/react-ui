@@ -1,5 +1,5 @@
 import { Box, BoxProps, Group, polymorphic } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Box, BoxProps, polymorphic, Group } from '@react-ui/ui';
@@ -19,11 +19,11 @@ const MyButton = polymorphic<'button', MyButtonProps>(
 function Demo() {
   return (
     <Group>
-      <MyButton label="Button by default" />
+      <MyButton label="默认按钮" />
       <MyButton
-        label="MyButton as anchor"
+        label="MyButton 作为锚点"
         component="a"
-        href="https://mantine.dev"
+        href="#"
         target="_blank"
       />
     </Group>
@@ -44,18 +44,18 @@ const MyButton = polymorphic<'button', MyButtonProps>(({ label, ...others }: MyB
 function Demo() {
   return (
     <Group>
-      <MyButton label="Button by default" />
+      <MyButton label="默认按钮" />
       <MyButton
-        label="MyButton as anchor"
+        label="MyButton 作为锚点"
         component="a"
-        href="https://mantine.dev"
+        href="#"
         target="_blank"
       />
     </Group>
   );
 }
 
-export const newPolymorphic: MantineDemo = {
+export const newPolymorphic: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

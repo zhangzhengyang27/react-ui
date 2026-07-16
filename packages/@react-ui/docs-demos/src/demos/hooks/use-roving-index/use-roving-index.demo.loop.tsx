@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Checkbox, Group, Stack } from '@react-ui/ui';
 import { useRovingIndex } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -21,7 +21,7 @@ function Demo() {
   return (
     <Stack>
       <Checkbox
-        label="Loop navigation"
+        label="循环导航"
         checked={loop}
         onChange={(event) => setLoop(event.currentTarget.checked)}
       />
@@ -50,7 +50,7 @@ function Demo() {
   return (
     <Stack>
       <Checkbox
-        label="Loop navigation"
+        label="循环导航"
         checked={loop}
         onChange={(event) => setLoop(event.currentTarget.checked)}
       />
@@ -65,7 +65,7 @@ function Demo() {
   );
 }
 
-export const loop: MantineDemo = {
+export const loop: UIDemo = {
   type: 'code',
   component: Demo,
   code,

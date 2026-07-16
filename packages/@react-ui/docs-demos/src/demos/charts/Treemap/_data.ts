@@ -1,16 +1,16 @@
 export const data = [
-  { name: 'USA', value: 400, color: 'indigo.8' },
+  { name: '美国', value: 400, color: 'indigo.8' },
   { name: 'India', value: 300, color: 'red.8' },
   { name: 'Japan', value: 100, color: 'teal.8' },
-  { name: 'Other', value: 200, color: 'gray.8' },
+  { name: '其他', value: 200, color: 'gray.8' },
 ];
 
 export const dataCode = `
 export const data = [
-  { name: 'USA', value: 400, color: 'indigo.8' },
+  { name: '美国', value: 400, color: 'indigo.8' },
   { name: 'India', value: 300, color: 'red.8' },
   { name: 'Japan', value: 100, color: 'teal.8' },
-  { name: 'Other', value: 200, color: 'gray.8' },
+  { name: '其他', value: 200, color: 'gray.8' },
 ];
 `;
 

@@ -3,25 +3,25 @@ import type { StylesApiData } from '../types';
 
 export const StepperStylesApi: StylesApiData<StepperFactory> = {
   selectors: {
-    root: 'Root element',
-    steps: 'Steps controls wrapper',
-    separator: 'Separator line between step controls',
-    verticalSeparator: 'Vertical separator line between step controls',
-    content: 'Current step content wrapper',
-    stepWrapper: 'Wrapper for the step icon and separator',
-    step: 'Step control button',
-    stepIcon: 'Step icon wrapper',
-    stepCompletedIcon: 'Completed step icon, rendered within stepIcon',
-    stepIconContent: 'Step icon content wrapper for non-completed steps, rendered within stepIcon',
-    stepBody: 'Contains stepLabel and stepDescription',
-    stepLabel: 'Step label',
-    stepDescription: 'Step description',
-    stepLoader: 'Step loader',
+    root: '根元素',
+    steps: 'Steps controls 包装器',
+    separator: '步骤控制之间的分隔线',
+    verticalSeparator: '步骤控制之间的垂直分隔线',
+    content: 'Current step content 包装器',
+    stepWrapper: '步骤图标和分隔线的包装器',
+    step: '步骤控制按钮',
+    stepIcon: 'Step icon 包装器',
+    stepCompletedIcon: '已完成步骤图标，渲染在 stepIcon 内',
+    stepIconContent: '未完成步骤的图标内容包装器，渲染在 stepIcon 内',
+    stepBody: '包含 stepLabel 和 stepDescription',
+    stepLabel: '步骤标签',
+    stepDescription: '步骤描述',
+    stepLoader: '步骤加载器',
   },
 
   vars: {
     root: {
-      '--stepper-color': 'Controls color of the active step and separator',
+      '--stepper-color': '控制 the active step and separator 的 color',
       '--stepper-icon-color': 'Controls `color` of the step icon',
       '--stepper-icon-size': 'Controls `width` and `height` of the icons',
       '--stepper-content-padding': 'Controls `padding-top` of the content',
@@ -32,7 +32,7 @@ export const StepperStylesApi: StylesApiData<StepperFactory> = {
   },
 
   modifiers: [
-    { modifier: 'data-progress', selector: 'stepIcon', condition: 'Step is current' },
-    { modifier: 'data-completed', selector: 'stepIcon', condition: 'Step is completed' },
+    { modifier: 'data-progress', selector: 'stepIcon', condition: 'Step 为当前' },
+    { modifier: 'data-completed', selector: 'stepIcon', condition: 'Step 已完成' },
   ],
 };

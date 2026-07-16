@@ -5,7 +5,7 @@ import {
     ElementProps,
     factory,
     Factory,
-    MantineFontSize,
+    UIFontSize,
     StylesApiProps,
     useProps,
     useStyles
@@ -14,7 +14,7 @@ import { getTitleSize } from './get-title-size'
 import classes from './Title.module.css'
 
 export type TitleOrder = 1 | 2 | 3 | 4 | 5 | 6
-export type TitleSize = `h${TitleOrder}` | React.CSSProperties['fontSize'] | MantineFontSize
+export type TitleSize = `h${TitleOrder}` | React.CSSProperties['fontSize'] | UIFontSize
 
 export type TitleStylesNames = 'root'
 export type TitleCssVariables = {
@@ -60,7 +60,7 @@ const varsResolver = createVarsResolver<TitleFactory>((_, { order, size, lineCla
 })
 
 /**
- * 标题组件（h1-h6）。对齐 mantine Title（factory + useStyles + varsResolver + CSS module）。
+ * 标题组件（h1-h6）。对齐 ui Title（factory + useStyles + varsResolver + CSS module）。
  */
 export const Title = factory<TitleFactory>((_props, _ref) => {
     const props = useProps('Title', defaultProps, _props)

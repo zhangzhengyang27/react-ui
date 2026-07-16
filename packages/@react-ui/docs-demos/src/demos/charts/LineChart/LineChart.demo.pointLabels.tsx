@@ -1,5 +1,5 @@
 import { LineChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './_data';
 
 const code = `
@@ -15,8 +15,8 @@ function Demo() {
       withLegend
       withPointLabels
       series={[
-        { name: 'Apples', color: 'indigo.6' },
-        { name: 'Oranges', color: 'blue.6' },
+        { name: '苹果', color: 'indigo.6' },
+        { name: '橙子', color: 'blue.6' },
       ]}
     />
   );
@@ -32,18 +32,18 @@ function Demo() {
       withLegend
       withPointLabels
       series={[
-        { name: 'Apples', color: 'indigo.6' },
-        { name: 'Oranges', color: 'blue.6' },
+        { name: '苹果', color: 'indigo.6' },
+        { name: '橙子', color: 'blue.6' },
       ]}
     />
   );
 }
 
-export const pointLabels: MantineDemo = {
+export const pointLabels: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

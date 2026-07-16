@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FloatingIndicator, UnstyledButton } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './FloatingIndicator.demo.segmented.module.css';
 
 const code = `
@@ -64,7 +64,7 @@ const cssCode = `.root {
   transition: color 100ms ease;
   font-weight: 600;
 
-  @mixin hover {
+  &:hover {
     color: light-dark(var(--ui-color-black), var(--ui-color-white));
     background-color: light-dark(var(--ui-color-gray-1), var(--ui-color-dark-7));
   }
@@ -121,13 +121,13 @@ function Demo() {
   );
 }
 
-export const segmented: MantineDemo = {
+export const segmented: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   defaultExpanded: false,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
-    { fileName: 'Demo.module.css', language: 'scss', code: cssCode },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
+    { fileName: '演示样式.module.css', language: 'scss', code: cssCode },
   ],
 };

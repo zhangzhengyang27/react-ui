@@ -1,5 +1,5 @@
 import { Chip, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Chip, Group } from '@react-ui/ui';
@@ -9,17 +9,17 @@ function Demo() {
     <>
       <Chip.Group>
         <Group justify="center">
-          <Chip value="1">Single chip</Chip>
-          <Chip value="2">Can be selected</Chip>
-          <Chip value="3">At a time</Chip>
+          <Chip value="1">单选芯片</Chip>
+          <Chip value="2">可被选择</Chip>
+          <Chip value="3">一次</Chip>
         </Group>
       </Chip.Group>
 
       <Chip.Group multiple>
         <Group justify="center" mt="md">
-          <Chip value="1">Multiple chips</Chip>
-          <Chip value="2">Can be selected</Chip>
-          <Chip value="3">At a time</Chip>
+          <Chip value="1">多选芯片</Chip>
+          <Chip value="2">可被选择</Chip>
+          <Chip value="3">一次</Chip>
         </Group>
       </Chip.Group>
     </>
@@ -32,24 +32,24 @@ function Demo() {
     <>
       <Chip.Group>
         <Group justify="center">
-          <Chip value="1">Single chip</Chip>
-          <Chip value="2">Can be selected</Chip>
-          <Chip value="3">At a time</Chip>
+          <Chip value="1">单选芯片</Chip>
+          <Chip value="2">可被选择</Chip>
+          <Chip value="3">一次</Chip>
         </Group>
       </Chip.Group>
 
       <Chip.Group multiple>
         <Group justify="center" mt="md">
-          <Chip value="1">Multiple chips</Chip>
-          <Chip value="2">Can be selected</Chip>
-          <Chip value="3">At a time</Chip>
+          <Chip value="1">多选芯片</Chip>
+          <Chip value="2">可被选择</Chip>
+          <Chip value="3">一次</Chip>
         </Group>
       </Chip.Group>
     </>
   );
 }
 
-export const group: MantineDemo = {
+export const group: UIDemo = {
   type: 'code',
   component: Demo,
   code,

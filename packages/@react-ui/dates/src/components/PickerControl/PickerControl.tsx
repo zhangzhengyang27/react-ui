@@ -6,7 +6,7 @@ import {
   Factory,
   getFontSize,
   getSize,
-  MantineSize,
+  UISize,
   StylesApiProps,
   UnstyledButton,
   useProps,
@@ -42,7 +42,7 @@ export interface PickerControlProps
   lastInRange?: boolean;
 
   /** Component size */
-  size?: MantineSize;
+  size?: UISize;
 
   /** Determines whether the control should take the full width of its cell @default false */
   fullWidth?: boolean;

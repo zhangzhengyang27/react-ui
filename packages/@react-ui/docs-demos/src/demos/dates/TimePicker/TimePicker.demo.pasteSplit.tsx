@@ -1,6 +1,6 @@
 import { Code, Text } from '@react-ui/ui';
 import { TimePicker, TimePickerPasteSplit } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Code, Text } from '@react-ui/ui';
@@ -27,7 +27,7 @@ const customPasteSplit: TimePickerPasteSplit = ({ time }) => {
 function Demo() {
   return (
     <div>
-      <TimePicker label="Paste time here" format="12h" withSeconds pasteSplit={customPasteSplit} />
+      <TimePicker label="在此粘贴时间" format="12h" withSeconds pasteSplit={customPasteSplit} />
       <Text mt="md">
         Try pasting time in 12h format in any input. For example, try pasting <Code>12:34 PM</Code>{' '}
         or <Code>8:56:45 AM</Code>
@@ -58,7 +58,7 @@ const customPasteSplit: TimePickerPasteSplit = ({ time }) => {
 function Demo() {
   return (
     <div>
-      <TimePicker label="Paste time here" format="12h" withSeconds pasteSplit={customPasteSplit} />
+      <TimePicker label="在此粘贴时间" format="12h" withSeconds pasteSplit={customPasteSplit} />
       <Text mt="md">
         Try pasting time in 12h format in any input. For example, try pasting <Code>12:34 PM</Code>{' '}
         or <Code>8:56:45 AM</Code>
@@ -67,7 +67,7 @@ function Demo() {
   );
 }
 
-export const pasteSplit: MantineDemo = {
+export const pasteSplit: UIDemo = {
   type: 'code',
   component: Demo,
   code,

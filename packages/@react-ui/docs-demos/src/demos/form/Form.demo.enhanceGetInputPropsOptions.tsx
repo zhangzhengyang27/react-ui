@@ -1,6 +1,6 @@
 import { NumberInput, TextInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NumberInput, TextInput } from '@react-ui/ui';
@@ -18,10 +18,10 @@ function Demo() {
     enhanceGetInputProps: (payload) => {
       if (payload.options.fieldType === 'name') {
         return {
-          label: 'Your name',
-          placeholder: 'Your name',
+          label: '你的姓名',
+          placeholder: '你的姓名',
           withAsterisk: true,
-          description: 'Your personal information is stored securely. (Just kidding!)',
+          description: '你的个人信息已被安全存储。（开玩笑的！）',
         };
       }
 
@@ -35,8 +35,8 @@ function Demo() {
       <NumberInput
         {...form.getInputProps('age')}
         key={form.key('age')}
-        label="Age"
-        placeholder="Age"
+        label="年龄"
+        placeholder="年龄"
         mt="md"
       />
     </>
@@ -56,10 +56,10 @@ function Demo() {
     enhanceGetInputProps: (payload) => {
       if (payload.options.fieldType === 'name') {
         return {
-          label: 'Your name',
-          placeholder: 'Your name',
+          label: '你的姓名',
+          placeholder: '你的姓名',
           withAsterisk: true,
-          description: 'Your personal information is stored securely. (Just kidding!)',
+          description: '你的个人信息已被安全存储。（开玩笑的！）',
         };
       }
 
@@ -73,15 +73,15 @@ function Demo() {
       <NumberInput
         {...form.getInputProps('age')}
         key={form.key('age')}
-        label="Age"
-        placeholder="Age"
+        label="年龄"
+        placeholder="年龄"
         mt="md"
       />
     </>
   );
 }
 
-export const enhanceGetInputPropsOptions: MantineDemo = {
+export const enhanceGetInputPropsOptions: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AspectRatio, Button, Overlay } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -12,7 +12,7 @@ function Demo() {
     <>
       <AspectRatio ratio={16 / 9} maw={400} mx="auto" pos="relative">
         <img
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-7.png"
           alt="Demo"
         />
         {visible && (
@@ -36,7 +36,7 @@ function Demo() {
     <>
       <AspectRatio ratio={16 / 9} maw={400} mx="auto" pos="relative">
         <img
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-7.png"
           alt="Demo"
         />
         {visible && (
@@ -53,7 +53,7 @@ function Demo() {
   );
 }
 
-export const gradient: MantineDemo = {
+export const gradient: UIDemo = {
   type: 'code',
   code,
   component: Demo,

@@ -3,7 +3,7 @@ import type { StylesApiData } from '../types';
 
 export const TreeStylesApi: StylesApiData<TreeFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
     node: 'Node element (li), contains label and subtree elements',
     subtree: 'Subtree element (ul)',
     label: 'Node label',
@@ -11,7 +11,7 @@ export const TreeStylesApi: StylesApiData<TreeFactory> = {
 
   vars: {
     root: {
-      '--level-offset': 'Controls offset of nested tree levels',
+      '--level-offset': '控制 nested tree levels 的 offset',
     },
   },
 

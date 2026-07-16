@@ -1,5 +1,5 @@
 import { ResourcesDayView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { dataCode, resourceEvents, resources } from './_data';
 
 const code = `
@@ -9,7 +9,7 @@ import { events, resources } from './data';
 function Demo() {
   return (
     <ResourcesDayView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       resources={resources}
       events={events}
       withCurrentTimeIndicator
@@ -22,7 +22,7 @@ function Demo() {
 function Demo() {
   return (
     <ResourcesDayView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       resources={resources}
       events={resourceEvents}
       withCurrentTimeIndicator
@@ -31,12 +31,12 @@ function Demo() {
   );
 }
 
-export const currentTimeIndicator: MantineDemo = {
+export const currentTimeIndicator: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

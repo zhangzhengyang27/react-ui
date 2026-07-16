@@ -7,7 +7,7 @@ import {
     Factory,
     getFontSize,
     getSize,
-    MantineSize,
+    UISize,
     rem,
     StylesApiProps,
     useProps,
@@ -35,16 +35,16 @@ export interface PasswordInputProps
             | 'type'
             | 'wrapperProps'
         > {
-    /** Label rendered above the input */
+    //** 渲染在输入框上方的标签 */
     label?: React.ReactNode
 
-    /** Description rendered below the label */
+    //** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
-    /** Error rendered below the input */
+    //** 渲染在输入框下方的错误 */
     error?: React.ReactNode
 
-    /** If set, required asterisk is added to the label */
+    //** 如果设置，则会在标签上添加必填星号 */
     withAsterisk?: boolean
 
     /** Determines whether visibility toggle button should be displayed @default true */
@@ -164,7 +164,7 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
         <ActionIcon
             {...getStyles('visibilityToggle')}
             variant="transparent"
-            size={`input-${size}` as MantineSize | `input-${MantineSize}`}
+            size={`input-${size}` as UISize | `input-${UISize}`}
             disabled={disabled}
             onClick={() => setReveal(r => !r)}
             aria-label={reveal ? 'Hide password' : 'Show password'}

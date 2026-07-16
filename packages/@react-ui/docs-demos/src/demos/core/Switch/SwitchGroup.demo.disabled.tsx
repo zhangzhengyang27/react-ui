@@ -1,5 +1,5 @@
 import { Group, Switch } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Switch, Group } from '@react-ui/ui';
@@ -8,8 +8,8 @@ function Demo() {
   return (
     <Switch.Group
       disabled
-      label="Select your favorite framework/library"
-      description="This is anonymous"
+      label="选择你最喜欢的框架/库"
+      description="这是匿名的"
     >
       <Group mt="xs">
         <Switch value="react" label="React" />
@@ -26,8 +26,8 @@ function Demo() {
   return (
     <Switch.Group
       disabled
-      label="Select your favorite framework/library"
-      description="This is anonymous"
+      label="选择你最喜欢的框架/库"
+      description="这是匿名的"
     >
       <Group mt="xs">
         <Switch value="react" label="React" />
@@ -39,7 +39,7 @@ function Demo() {
   );
 }
 
-export const groupDisabled: MantineDemo = {
+export const groupDisabled: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

@@ -3,17 +3,17 @@ import type { StylesApiData } from '../types';
 
 export const MiniCalendarStylesApi: StylesApiData<MiniCalendarFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
     control: 'Button in the dropdown which is used to select hours/minutes/seconds/am-pm',
-    days: 'Days container',
-    day: 'Single day element',
-    dayMonth: 'Day element in month view',
-    dayNumber: 'Day number element',
+    days: 'Days 容器',
+    day: 'Single day 元素',
+    dayMonth: '月视图中的日期元素',
+    dayNumber: 'Day number 元素',
   },
 
   vars: {
     root: {
-      '--mini-calendar-font-size': 'Controls size of all elements (based on em units)',
+      '--mini-calendar-font-size': '控制 all elements (based on em units) 的 size',
     },
   },
 

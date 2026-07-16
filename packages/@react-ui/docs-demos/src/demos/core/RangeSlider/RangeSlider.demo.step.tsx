@@ -1,5 +1,5 @@
 import { RangeSlider, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { RangeSlider, Text } from '@react-ui/ui';
@@ -9,10 +9,10 @@ const marks = [{ value: 0 }, { value: 25 }, { value: 50 }, { value: 75 }, { valu
 function Demo() {
   return (
     <>
-      <Text>Decimal step</Text>
+      <Text>小数控件</Text>
       <RangeSlider minRange={2} defaultValue={[0, 10]} min={-10} max={10} step={0.1} />
 
-      <Text mt="md">Step matched with marks</Text>
+      <Text mt="md">与标记匹配的步长</Text>
       <RangeSlider defaultValue={[50, 75]} step={25} marks={marks} />
     </>
   );
@@ -24,16 +24,16 @@ const marks = [{ value: 0 }, { value: 25 }, { value: 50 }, { value: 75 }, { valu
 function Demo() {
   return (
     <>
-      <Text>Decimal step</Text>
+      <Text>小数控件</Text>
       <RangeSlider minRange={2} defaultValue={[0, 10]} min={-10} max={10} step={0.1} />
 
-      <Text mt="md">Step matched with marks</Text>
+      <Text mt="md">与标记匹配的步长</Text>
       <RangeSlider defaultValue={[50, 75]} step={25} marks={marks} />
     </>
   );
 }
 
-export const step: MantineDemo = {
+export const step: UIDemo = {
   type: 'code',
   component: Demo,
   code,

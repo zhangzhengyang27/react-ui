@@ -8,8 +8,8 @@ import {
   Factory,
   getFontSize,
   getRadius,
-  MantineRadius,
-  MantineSize,
+  UIRadius,
+  UISize,
   SimpleGrid,
   SimpleGridProps,
   StylesApiProps,
@@ -65,10 +65,10 @@ export interface TimeGridProps
   getControlProps?: (time: string) => React.ComponentProps<'button'> & DataAttributes;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius` @default theme.defaultRadius */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 
   /** Control `font-size` of controls, key of `theme.fontSizes` or any valid CSS value @default 'sm' */
-  size?: MantineSize;
+  size?: UISize;
 
   /** All controls before this time are disabled */
   minTime?: string;

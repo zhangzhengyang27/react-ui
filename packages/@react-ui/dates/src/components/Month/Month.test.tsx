@@ -1,5 +1,5 @@
-import { render, tests } from '@mantine-tests/core';
-import { datesTests } from '@mantine-tests/dates';
+import { render, tests } from '@react-ui/tests';
+import { datesTests } from '@react-ui/tests/dates';
 import { Month, MonthProps, MonthStylesNames } from './Month';
 
 const defaultProps: MonthProps = {
@@ -22,16 +22,16 @@ describe('@react-ui/dates/Month', () => {
 
   it('has correct default __staticSelector', () => {
     const { container } = render(<Month {...defaultProps} />);
-    expect(container.querySelector('table')).toHaveClass('mantine-Month-month');
-    expect(container.querySelector('thead tr')).toHaveClass('mantine-Month-weekdaysRow');
-    expect(container.querySelector('tbody tr td button')).toHaveClass('mantine-Month-day');
+    expect(container.querySelector('table')).toHaveClass('ui-Month-month');
+    expect(container.querySelector('thead tr')).toHaveClass('ui-Month-weekdaysRow');
+    expect(container.querySelector('tbody tr td button')).toHaveClass('ui-Month-day');
   });
 
   it('supports __staticSelector', () => {
     const { container } = render(<Month {...defaultProps} __staticSelector="Calendar" />);
-    expect(container.querySelector('table')).toHaveClass('mantine-Calendar-month');
-    expect(container.querySelector('thead tr')).toHaveClass('mantine-Calendar-weekdaysRow');
-    expect(container.querySelector('tbody tr td button')).toHaveClass('mantine-Calendar-day');
+    expect(container.querySelector('table')).toHaveClass('ui-Calendar-month');
+    expect(container.querySelector('thead tr')).toHaveClass('ui-Calendar-weekdaysRow');
+    expect(container.querySelector('tbody tr td button')).toHaveClass('ui-Calendar-day');
   });
 
   it('supports static prop', () => {

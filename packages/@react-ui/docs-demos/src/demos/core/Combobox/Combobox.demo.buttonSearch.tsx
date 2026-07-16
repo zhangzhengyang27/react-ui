@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Box, Button, Combobox, Text, useCombobox } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
 import { Button, Combobox, useCombobox, Text, Box } from '@react-ui/ui';
 
-const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
+const groceries = ['🍎 苹果', '🍌 香蕉', '🥦 西兰花', '🥕 胡萝卜', '🍫 巧克力'];
 
 function Demo() {
   const [search, setSearch] = useState('');
@@ -39,7 +39,7 @@ function Demo() {
         </Text>
 
         <Text span size="sm">
-          {selectedItem || 'Nothing selected'}
+          {selectedItem || '未选择任何项'}
         </Text>
       </Box>
 
@@ -54,17 +54,17 @@ function Demo() {
         }}
       >
         <Combobox.Target withAriaAttributes={false}>
-          <Button onClick={() => combobox.toggleDropdown()}>Pick item</Button>
+          <Button onClick={() => combobox.toggleDropdown()}>选择项目</Button>
         </Combobox.Target>
 
         <Combobox.Dropdown>
           <Combobox.Search
             value={search}
             onChange={(event) => setSearch(event.currentTarget.value)}
-            placeholder="Search groceries"
+            placeholder="搜索杂货"
           />
           <Combobox.Options>
-            {options.length > 0 ? options : <Combobox.Empty>Nothing found</Combobox.Empty>}
+            {options.length > 0 ? options : <Combobox.Empty>未找到</Combobox.Empty>}
           </Combobox.Options>
         </Combobox.Dropdown>
       </Combobox>
@@ -73,7 +73,7 @@ function Demo() {
 }
 `;
 
-const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
+const groceries = ['🍎 苹果', '🍌 香蕉', '🥦 西兰花', '🥕 胡萝卜', '🍫 巧克力'];
 
 function Demo() {
   const [search, setSearch] = useState('');
@@ -106,7 +106,7 @@ function Demo() {
         </Text>
 
         <Text span size="sm">
-          {selectedItem || 'Nothing selected'}
+          {selectedItem || '未选择任何项'}
         </Text>
       </Box>
 
@@ -121,17 +121,17 @@ function Demo() {
         }}
       >
         <Combobox.Target withAriaAttributes={false}>
-          <Button onClick={() => combobox.toggleDropdown()}>Pick item</Button>
+          <Button onClick={() => combobox.toggleDropdown()}>选择项目</Button>
         </Combobox.Target>
 
         <Combobox.Dropdown>
           <Combobox.Search
             value={search}
             onChange={(event) => setSearch(event.currentTarget.value)}
-            placeholder="Search groceries"
+            placeholder="搜索杂货"
           />
           <Combobox.Options>
-            {options.length > 0 ? options : <Combobox.Empty>Nothing found</Combobox.Empty>}
+            {options.length > 0 ? options : <Combobox.Empty>未找到</Combobox.Empty>}
           </Combobox.Options>
         </Combobox.Dropdown>
       </Combobox>
@@ -139,7 +139,7 @@ function Demo() {
   );
 }
 
-export const buttonSearch: MantineDemo = {
+export const buttonSearch: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

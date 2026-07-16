@@ -1,6 +1,6 @@
 import { Button, em, Modal } from '@react-ui/ui';
 import { useDisclosure, useMediaQuery } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useDisclosure, useMediaQuery } from '@react-ui/hooks';
@@ -15,7 +15,7 @@ function Demo() {
       <Modal
         opened={opened}
         onClose={close}
-        title="This is a fullscreen modal"
+        title="这是全屏模态框"
         fullScreen={isMobile}
         transitionProps={{ transition: 'fade', duration: 200 }}
       >
@@ -23,7 +23,7 @@ function Demo() {
       </Modal>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
@@ -39,7 +39,7 @@ function Demo() {
       <Modal
         opened={opened}
         onClose={close}
-        title="This is a fullscreen modal"
+        title="这是全屏模态框"
         fullScreen={isMobile}
         transitionProps={{ transition: 'fade', duration: 200 }}
       >
@@ -47,13 +47,13 @@ function Demo() {
       </Modal>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
 }
 
-export const fullScreenMobile: MantineDemo = {
+export const fullScreenMobile: UIDemo = {
   type: 'code',
   code,
   centered: true,

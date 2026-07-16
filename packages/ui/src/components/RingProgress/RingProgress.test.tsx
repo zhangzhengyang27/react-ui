@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { RingProgress } from './RingProgress'
 
 describe('RingProgress', () => {
     it('renders ring progress with sections', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <RingProgress sections={[{ value: 60, color: 'blue' }]} data-testid="ring" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByTestId('ring')).toBeInTheDocument()
@@ -17,9 +17,9 @@ describe('RingProgress', () => {
 
     it('renders center label', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <RingProgress sections={[{ value: 50 }]} label="50%" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('50%')).toBeInTheDocument()
@@ -27,14 +27,14 @@ describe('RingProgress', () => {
 
     it('renders multiple sections', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <RingProgress
                     sections={[
                         { value: 30, color: 'blue' },
                         { value: 20, color: 'green' }
                     ]}
                 />
-            </MantineProvider>
+            </UIProvider>
         )
 
         const paths = document.querySelectorAll('path')

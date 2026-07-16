@@ -1,5 +1,5 @@
 import { NumberInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NumberInput } from '@react-ui/ui';
@@ -8,15 +8,15 @@ function Demo() {
   return (
     <>
       <NumberInput
-        label="With prefix"
-        placeholder="Dollars"
+        label="带前缀"
+        placeholder="美元"
         prefix="$"
         defaultValue={100}
         mb="md"
       />
       <NumberInput
-        label="With suffix"
-        placeholder="Percents"
+        label="带后缀"
+        placeholder="百分比"
         suffix="%"
         defaultValue={100}
         mt="md"
@@ -30,15 +30,15 @@ function Demo() {
   return (
     <>
       <NumberInput
-        label="With prefix"
-        placeholder="Dollars"
+        label="带前缀"
+        placeholder="美元"
         prefix="$"
         defaultValue={100}
         mb="md"
       />
       <NumberInput
-        label="With suffix"
-        placeholder="Percents"
+        label="带后缀"
+        placeholder="百分比"
         suffix="%"
         defaultValue={100}
         mt="md"
@@ -47,7 +47,7 @@ function Demo() {
   );
 }
 
-export const prefixSuffix: MantineDemo = {
+export const prefixSuffix: UIDemo = {
   type: 'code',
   component: Demo,
   code,

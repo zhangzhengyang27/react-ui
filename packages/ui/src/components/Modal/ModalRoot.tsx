@@ -5,7 +5,7 @@ import {
     getDefaultZIndex,
     getRadius,
     getSize,
-    MantineRadius,
+    UIRadius,
     rem,
     StylesApiProps,
     useProps,
@@ -34,8 +34,8 @@ export interface ModalRootProps extends StylesApiProps<ModalRootFactory>, ModalB
     /** Scroll area component @default 'div' */
     scrollAreaComponent?: ScrollAreaComponent
 
-    /** Key of theme.radius or any valid CSS value to set border-radius @default theme.defaultRadius */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 to set border-radius @default theme.defaultRadius */
+    radius?: UIRadius
 
     /** If set, the modal is centered vertically @default false */
     centered?: boolean

@@ -1,6 +1,6 @@
 import { Button, Typography } from '@react-ui/ui';
 import { useCollapse, useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Typography } from '@react-ui/ui';
@@ -13,7 +13,7 @@ function Demo() {
   return (
     <>
       <Button onClick={handlers.toggle} mb="md">
-        {expanded ? 'Collapse' : 'Expand'}
+        {expanded ? '收起' : '展开'}
       </Button>
 
       <div {...getCollapseProps()}>
@@ -35,7 +35,7 @@ function Demo() {
   return (
     <>
       <Button onClick={handlers.toggle} mb="md">
-        {expanded ? 'Collapse' : 'Expand'}
+        {expanded ? '收起' : '展开'}
       </Button>
 
       <div {...getCollapseProps()}>
@@ -49,7 +49,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -4,22 +4,22 @@ import { MdxCode, MdxLi, MdxParagraph, MdxUl } from '../MdxTypography/MdxTypogra
 export function MdxClearSectionMode() {
   return (
     <>
-      <MdxTitle id="clear-section-mode">Clear section mode</MdxTitle>
+      <MdxTitle id="clear-section-mode">清除区域模式</MdxTitle>
       <MdxParagraph>
-        The <MdxCode>clearSectionMode</MdxCode> prop determines how the clear button and{' '}
-        <MdxCode>rightSection</MdxCode> are rendered:
+        <MdxCode>clearSectionMode</MdxCode> 属性决定清除按钮和{' '}
+        <MdxCode>rightSection</MdxCode> 的渲染方式：
       </MdxParagraph>
       <MdxUl>
         <MdxLi>
-          <MdxCode>'both'</MdxCode> (default) – render both the clear button and{' '}
+          <MdxCode>'both'</MdxCode>（默认）— 同时渲染清除按钮和{' '}
           <MdxCode>rightSection</MdxCode>
         </MdxLi>
         <MdxLi>
-          <MdxCode>'rightSection'</MdxCode> – render only the user-supplied{' '}
-          <MdxCode>rightSection</MdxCode>, ignore clear button
+          <MdxCode>'rightSection'</MdxCode> — 仅渲染用户提供的{' '}
+          <MdxCode>rightSection</MdxCode>，忽略清除按钮
         </MdxLi>
         <MdxLi>
-          <MdxCode>'clear'</MdxCode> – render only the clear button, ignore{' '}
+          <MdxCode>'clear'</MdxCode> — 仅渲染清除按钮，忽略{' '}
           <MdxCode>rightSection</MdxCode>
         </MdxLi>
       </MdxUl>

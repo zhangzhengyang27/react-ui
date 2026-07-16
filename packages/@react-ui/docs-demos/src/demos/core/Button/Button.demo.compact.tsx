@@ -1,5 +1,5 @@
 import { Button, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = (props: any) => `
 import { Button, Group } from '@react-ui/ui';
@@ -7,8 +7,8 @@ import { Button, Group } from '@react-ui/ui';
 function Demo() {
   return (
     <Group justify="center">
-      <Button size="${props.size}">Regular ${props.size}</Button>
-      <Button size="compact-${props.size}">Compact ${props.size}</Button>
+      <Button size="${props.size}">常规 ${props.size}</Button>
+      <Button size="compact-${props.size}">紧凑 ${props.size}</Button>
     </Group>
   );
 }
@@ -17,13 +17,13 @@ function Demo() {
 function Wrapper(props: any) {
   return (
     <Group justify="center">
-      <Button size={props.size}>Regular {props.size}</Button>
-      <Button size={`compact-${props.size}`}>Compact {props.size}</Button>
+      <Button size={props.size}>常规 {props.size}</Button>
+      <Button size={`compact-${props.size}`}>紧凑 {props.size}</Button>
     </Group>
   );
 }
 
-export const compact: MantineDemo = {
+export const compact: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

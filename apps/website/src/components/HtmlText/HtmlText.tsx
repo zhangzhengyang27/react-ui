@@ -8,8 +8,8 @@ interface HtmlTextProps extends TextProps, ElementProps<'span', 'color'> {
 function replaceMarkdown(str: string): string {
   return str
     .replace(/`([^`]+)`/g, '<code>$1</code>')
-    .replace(/!important!/g, '<b>Important</b>')
-    .replace(/@deprecated/g, '<i>Deprecated:</i>')
+    .replace(/!important!/g, '<b>重要</b>')
+    .replace(/@deprecated/g, '<i>已弃用：</i>')
     .replace(/\[([^\]]+)\]\((.*?)\)/g, '<a href="$2" target="_blank" ref="noreferrer">$1</a>')
     .replace(/(?:^|\n)((?:- .+(?:\n|$))+)/g, (_, list) => {
       const items = list.replace(/(?:^|\n)- (.+)/g, '<li>$1</li>');

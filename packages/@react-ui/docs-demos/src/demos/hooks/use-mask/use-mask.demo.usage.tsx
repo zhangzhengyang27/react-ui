@@ -1,6 +1,6 @@
 import { Text, TextInput } from '@react-ui/ui';
 import { useMask } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TextInput, Text } from '@react-ui/ui';
@@ -11,7 +11,7 @@ function Demo() {
 
   return (
     <>
-      <TextInput ref={ref} label="Phone number" placeholder="(___) ___-____" />
+      <TextInput ref={ref} label="电话号码" placeholder="(___) ___-____" />
       <Text size="sm" mt="sm">Masked value: {value}</Text>
       <Text size="sm">Raw value: {rawValue}</Text>
     </>
@@ -24,7 +24,7 @@ function Demo() {
 
   return (
     <>
-      <TextInput ref={ref} label="Phone number" placeholder="(___) ___-____" />
+      <TextInput ref={ref} label="电话号码" placeholder="(___) ___-____" />
       <Text size="sm" mt="sm">
         Masked value: {value}
       </Text>
@@ -33,7 +33,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

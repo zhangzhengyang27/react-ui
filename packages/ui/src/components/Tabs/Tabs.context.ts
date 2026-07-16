@@ -1,4 +1,4 @@
-import { createSafeContext, GetStylesApi, MantineColor, MantineRadius } from '../../core'
+import { createSafeContext, GetStylesApi, UIColor, UIRadius } from '../../core'
 import type { TabsFactory } from './Tabs'
 
 export interface TabsContext {
@@ -7,8 +7,8 @@ export interface TabsContext {
     getStyles: GetStylesApi<TabsFactory>
     unstyled: boolean | undefined
     variant: string | undefined
-    color: MantineColor | undefined
-    radius: MantineRadius | undefined
+    color: UIColor | undefined
+    radius: UIRadius | undefined
     orientation: 'horizontal' | 'vertical'
     keepMounted: boolean
 }

@@ -26,6 +26,10 @@ export function NotificationContainer({
     const autoCloseDuration = getAutoClose(autoClose, notificationAutoClose)
     const autoCloseTimeout = useRef<number | null>(null)
     const isCloseDisabled = allowClose === false
+    // 用 ref 跟踪最新的 hover 回调,卸载清理时调用最新版本
+    const isHoveredRef = useRef(false)
+    const onHoverEndRef = useRef(onHoverEnd)
+    onHoverEndRef.current = onHoverEnd
 
     const handleHide = () => {
         if (data.id) {
@@ -56,6 +60,15 @@ export function NotificationContainer({
         return cancelAutoClose
     }, [autoCloseDuration, paused])
 
+    // 卸载时若仍处于 hover 状态,补发 onHoverEnd,避免 hoveredCount 泄漏导致 autoClose 永久暂停
+    useEffect(() => {
+        return () => {
+            if (isHoveredRef.current) {
+                onHoverEndRef.current?.()
+            }
+        }
+    }, [])
+
     return (
         <Notification
             {...notificationProps}
@@ -64,10 +77,12 @@ export function NotificationContainer({
             onClose={handleHide}
             onMouseEnter={() => {
                 cancelAutoClose()
+                isHoveredRef.current = true
                 onHoverStart?.()
             }}
             onMouseLeave={() => {
                 handleAutoClose()
+                isHoveredRef.current = false
                 onHoverEnd?.()
             }}
         />

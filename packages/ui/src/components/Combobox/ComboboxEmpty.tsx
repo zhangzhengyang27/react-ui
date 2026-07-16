@@ -23,4 +23,4 @@ export const ComboboxEmpty = factory<ComboboxEmptyFactory>((_props, ref) => {
     )
 })
 
-ComboboxEmpty.displayName = '@mantine/core/ComboboxEmpty'
+ComboboxEmpty.displayName = '@react-ui/ui/ComboboxEmpty'

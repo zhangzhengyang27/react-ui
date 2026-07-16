@@ -1,5 +1,5 @@
 import { ComboboxItem, OptionsFilter, Select } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Select, ComboboxItem, OptionsFilter } from '@react-ui/ui';
@@ -16,11 +16,11 @@ const optionsFilter: OptionsFilter = ({ options, search }) => {
 function Demo() {
   return (
     <Select
-      label="Your favorite library"
-      placeholder="Pick value"
+      label="你最喜欢的库"
+      placeholder="选择值"
       data={['4 – React', '1 – Angular', '3 – Vue', '2 – Svelte']}
       filter={optionsFilter}
-      nothingFoundMessage="Nothing found..."
+      nothingFoundMessage="未找到..."
       searchable
     />
   );
@@ -39,17 +39,17 @@ const optionsFilter: OptionsFilter = ({ options, search }) => {
 function Demo() {
   return (
     <Select
-      label="Your favorite library"
-      placeholder="Pick value"
+      label="你最喜欢的库"
+      placeholder="选择值"
       data={['4 – React', '1 – Angular', '3 – Vue', '2 – Svelte']}
       filter={optionsFilter}
-      nothingFoundMessage="Nothing found..."
+      nothingFoundMessage="未找到..."
       searchable
     />
   );
 }
 
-export const sort: MantineDemo = {
+export const sort: UIDemo = {
   type: 'code',
   component: Demo,
   code,

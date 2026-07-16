@@ -1,23 +1,23 @@
 import { FileInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { FileInput } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <FileInput accept="image/png,image/jpeg" label="Upload files" placeholder="Upload files" />
+    <FileInput accept="image/png,image/jpeg" label="上传文件" placeholder="上传文件" />
   );
 }
 `;
 
 function Demo() {
   return (
-    <FileInput accept="image/png,image/jpeg" label="Upload files" placeholder="Upload files" />
+    <FileInput accept="image/png,image/jpeg" label="上传文件" placeholder="上传文件" />
   );
 }
 
-export const accept: MantineDemo = {
+export const accept: UIDemo = {
   type: 'code',
   code,
   component: Demo,

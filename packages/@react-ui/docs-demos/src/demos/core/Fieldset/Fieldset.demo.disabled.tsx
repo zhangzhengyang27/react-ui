@@ -1,5 +1,5 @@
 import { Button, Fieldset, Group, TextInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Fieldset, TextInput, Button, Group } from '@react-ui/ui';
@@ -7,11 +7,11 @@ import { Fieldset, TextInput, Button, Group } from '@react-ui/ui';
 function Demo() {
   return (
     <Fieldset legend="Personal information" disabled>
-      <TextInput label="Your name" placeholder="Your name" />
-      <TextInput label="Email" placeholder="Email" mt="md" />
+      <TextInput label="你的姓名" placeholder="你的姓名" />
+      <TextInput label="邮箱" placeholder="邮箱" mt="md" />
 
       <Group justify="flex-end" mt="md">
-        <Button>Submit</Button>
+        <Button>提交</Button>
       </Group>
     </Fieldset>
   );
@@ -21,17 +21,17 @@ function Demo() {
 function Demo() {
   return (
     <Fieldset legend="Personal information" disabled>
-      <TextInput label="Your name" placeholder="Your name" />
-      <TextInput label="Email" placeholder="Email" mt="md" />
+      <TextInput label="你的姓名" placeholder="你的姓名" />
+      <TextInput label="邮箱" placeholder="邮箱" mt="md" />
 
       <Group justify="flex-end" mt="md">
-        <Button>Submit</Button>
+        <Button>提交</Button>
       </Group>
     </Fieldset>
   );
 }
 
-export const disabled: MantineDemo = {
+export const disabled: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 500,

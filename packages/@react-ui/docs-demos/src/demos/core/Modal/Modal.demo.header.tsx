@@ -1,6 +1,6 @@
 import { Button, Modal } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useDisclosure } from '@react-ui/hooks';
@@ -12,11 +12,11 @@ function Demo() {
   return (
     <>
       <Modal opened={opened} onClose={close} withCloseButton={false}>
-        Modal without header, press escape or click on overlay to close
+        没有头部的模态框，按 Esc 或点击遮罩层关闭
       </Modal>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
@@ -30,17 +30,17 @@ function Demo() {
   return (
     <>
       <Modal opened={opened} onClose={close} withCloseButton={false}>
-        Modal without header, press escape or click on overlay to close
+        没有头部的模态框，按 Esc 或点击遮罩层关闭
       </Modal>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
 }
 
-export const header: MantineDemo = {
+export const header: UIDemo = {
   type: 'code',
   code,
   centered: true,

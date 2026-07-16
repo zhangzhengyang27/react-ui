@@ -1,6 +1,6 @@
 import Fuse from 'fuse.js';
 import { ComboboxItem, OptionsFilter, TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TagsInput, ComboboxItem, OptionsFilter } from '@react-ui/ui';
@@ -23,8 +23,8 @@ const optionsFilter: OptionsFilter = ({ options, search }) => {
 function Demo() {
   return (
     <TagsInput
-      label="Favorite fruits"
-      placeholder="Pick value or enter anything"
+      label="喜爱的水果"
+      placeholder="选择值或输入任意内容"
       data={['Apple', 'Banana', 'Kiwi', 'Mango', 'Watermelon', 'Raspberry']}
       filter={optionsFilter}
     />
@@ -49,15 +49,15 @@ const optionsFilter: OptionsFilter = ({ options, search }) => {
 function Demo() {
   return (
     <TagsInput
-      label="Favorite fruits"
-      placeholder="Pick value or enter anything"
+      label="喜爱的水果"
+      placeholder="选择值或输入任意内容"
       data={['Apple', 'Banana', 'Kiwi', 'Mango', 'Watermelon', 'Raspberry']}
       filter={optionsFilter}
     />
   );
 }
 
-export const fuzzySearch: MantineDemo = {
+export const fuzzySearch: UIDemo = {
   type: 'code',
   component: Demo,
   code,

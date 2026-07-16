@@ -1,6 +1,6 @@
 import { FileTextIcon, FolderOpenIcon, FolderSimpleIcon } from '@phosphor-icons/react';
 import { Button, Group, RenderTreeNodePayload, Tree, useTree } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './data';
 
 const code = `
@@ -32,8 +32,8 @@ function Demo() {
     <>
       <Tree data={data} tree={tree} withLines renderNode={(payload) => <Leaf {...payload} />} />
       <Group mt="md">
-        <Button onClick={() => tree.expandAllNodes()}>Expand all</Button>
-        <Button onClick={() => tree.collapseAllNodes()}>Collapse all</Button>
+        <Button onClick={() => tree.expandAllNodes()}>全部展开</Button>
+        <Button onClick={() => tree.collapseAllNodes()}>全部折叠</Button>
       </Group>
     </>
   );
@@ -64,18 +64,18 @@ function Demo() {
     <>
       <Tree data={data} tree={tree} withLines renderNode={(payload) => <Leaf {...payload} />} />
       <Group mt="md">
-        <Button onClick={() => tree.expandAllNodes()}>Expand all</Button>
-        <Button onClick={() => tree.collapseAllNodes()}>Collapse all</Button>
+        <Button onClick={() => tree.expandAllNodes()}>全部展开</Button>
+        <Button onClick={() => tree.collapseAllNodes()}>全部折叠</Button>
       </Group>
     </>
   );
 }
 
-export const controller: MantineDemo = {
+export const controller: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
     { fileName: 'data.ts', language: 'tsx', code: dataCode },
   ],
 };

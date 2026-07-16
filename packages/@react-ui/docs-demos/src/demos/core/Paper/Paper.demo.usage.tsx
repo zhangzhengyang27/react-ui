@@ -1,11 +1,11 @@
 import { Box, Paper, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: any) {
   return (
     <Box p="md">
       <Paper maw={400} mx="auto" p="xl" {...props}>
-        <Text>Paper is the most basic ui component</Text>
+        <Text>Paper 是最基础的 UI 组件</Text>
         <Text>
           Use it to create cards, dropdowns, modals and other components that require background
           with shadow
@@ -21,7 +21,7 @@ import { Text, Paper } from '@react-ui/ui';
 function Demo() {
   return (
     <Paper{{props}} p="xl">
-      <Text>Paper is the most basic ui component</Text>
+      <Text>Paper 是最基础的 UI 组件</Text>
       <Text>
         Use it to create cards, dropdowns, modals and other components that require background
         with shadow
@@ -31,7 +31,7 @@ function Demo() {
 }
 `;
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

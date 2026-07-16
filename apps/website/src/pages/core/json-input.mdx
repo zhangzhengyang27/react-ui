@@ -47,12 +47,12 @@ function Demo() {
       }}
     >
       <JsonInput
-        label="Enter JSON"
+        label="输入 JSON"
         name="data"
         defaultValue="{}"
         formatOnBlur
       />
-      <button type="submit">Submit</button>
+      <button type="submit">提交</button>
     </form>
   );
 }
@@ -85,14 +85,14 @@ function Demo() {
 
   return (
     <JsonInput
-      label="Extended JSON with superjson"
-      description="Supports Date, Map, Set, BigInt, RegExp, and more"
-      placeholder="Enter extended JSON"
+      label="使用 superjson 的扩展 JSON"
+      description="支持 Date、Map、Set、BigInt、RegExp 等"
+      placeholder="输入扩展 JSON"
       value={value}
       onChange={setValue}
       serialize={(val) => superjson.stringify(val, null, 2)}
       deserialize={superjson.parse}
-      validationError="Invalid extended JSON format"
+      validationError="扩展 JSON 格式无效"
       formatOnBlur
       autosize
       minRows={6}

@@ -3,14 +3,14 @@ import type { StylesApiData } from '../types';
 
 export const CodeStylesApi: StylesApiData<CodeFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
   },
 
   vars: {
     root: {
-      '--code-bg': 'Controls `background-color`',
+      '--code-bg': '控制 `background-color`',
     },
   },
 
-  modifiers: [{ modifier: 'data-block', selector: 'root', condition: '`block` prop is set' }],
+  modifiers: [{ modifier: 'data-block', selector: 'root', condition: '设置了 `block` 属性' }],
 };

@@ -1,5 +1,5 @@
 import { Box, TimelineProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { TimelineBase } from './_base';
 
 function Wrapper(props: TimelineProps) {
@@ -22,7 +22,7 @@ function Demo() {
 }
 `;
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
@@ -45,8 +45,8 @@ export const configurator: MantineDemo = {
       prop: 'align',
       type: 'segmented',
       data: [
-        { label: 'Left', value: 'left' },
-        { label: 'Right', value: 'right' },
+        { label: '左', value: 'left' },
+        { label: '右', value: 'right' },
       ],
       initialValue: 'left',
       libraryValue: 'left',

@@ -1,12 +1,12 @@
 import { CSSProperties } from 'react'
-import type { MantineStyleProp } from '../../Box'
+import type { UIStyleProp } from '../../Box'
 import { FactoryPayload } from '../../factory'
 import {
-    useMantineClassNamesPrefix,
-    useMantineIsHeadless,
-    useMantineTheme,
-    useMantineWithStaticClasses
-} from '../../MantineProvider'
+    useUIClassNamesPrefix,
+    useUIIsHeadless,
+    useUITheme,
+    useUIWithStaticClasses
+} from '../../UIProvider'
 import { PartialVarsResolver, VarsResolver } from '../create-vars-resolver/create-vars-resolver'
 import { Attributes, ClassNames, ClassNamesArray, GetStylesApiOptions, Styles } from '../styles-api.types'
 import { getClassName } from './get-class-name/get-class-name'
@@ -19,7 +19,7 @@ export interface UseStylesInput<Payload extends FactoryPayload> {
     props: Payload['props']
     stylesCtx?: Payload['ctx']
     className?: string
-    style?: MantineStyleProp
+    style?: UIStyleProp
     rootSelector?: Payload['stylesNames']
     unstyled?: boolean
     classNames?: ClassNames<Payload> | ClassNamesArray<Payload>
@@ -71,10 +71,10 @@ export function useStyles<Payload extends FactoryPayload>({
     varsResolver,
     attributes
 }: UseStylesInput<Payload>): GetStylesApi<Payload> {
-    const theme = useMantineTheme()
-    const classNamesPrefix = useMantineClassNamesPrefix()
-    const withStaticClasses = useMantineWithStaticClasses()
-    const headless = useMantineIsHeadless()
+    const theme = useUITheme()
+    const classNamesPrefix = useUIClassNamesPrefix()
+    const withStaticClasses = useUIWithStaticClasses()
+    const headless = useUIIsHeadless()
     const themeName = (Array.isArray(name) ? name : [name]).filter(n => n) as string[]
     const { withStylesTransform, getTransformedStyles } = useStylesTransform({
         props,

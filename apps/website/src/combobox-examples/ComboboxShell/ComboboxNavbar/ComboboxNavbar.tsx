@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { MagnifyingGlassIcon } from '@phosphor-icons/react';
 import { ScrollArea, Text, TextInput } from '@react-ui/ui';
 import { useHotkeys } from '@react-ui/hooks';
-import { COMBOBOX_EXAMPLES_DATA } from '../../combobox-examples-data';
+import { COMBOBOX_EXAMPLES_DATA } from '@react-ui/docs-demos';
 import { ComboboxLinksGroup } from './ComboboxLinksGroup/ComboboxLinksGroup';
 import { getGroupedData } from './get-grouped-data';
 import classes from './ComboboxNavbar.module.css';
@@ -44,7 +44,7 @@ export function ComboboxNavbar({ opened, onClose }: ComboboxNavbarProps) {
     <ComboboxLinksGroup
       data={item}
       key={item.group}
-      searchQuery={splittedSearch}
+      searchQuery={search}
       onClose={onClose}
     />
   ));
@@ -62,7 +62,7 @@ export function ComboboxNavbar({ opened, onClose }: ComboboxNavbarProps) {
   return (
     <nav className={classes.navbar} data-hidden={!opened || undefined}>
       <TextInput
-        placeholder="Ctrl + Shift + K to search"
+        placeholder="Ctrl + Shift + K 搜索"
         classNames={{ root: classes.search, input: classes.searchInput }}
         leftSection={<MagnifyingGlassIcon className={classes.searchIcon} />}
         radius="md"
@@ -74,7 +74,7 @@ export function ComboboxNavbar({ opened, onClose }: ComboboxNavbarProps) {
 
       <ScrollArea className={classes.scroll} type="scroll" scrollbarSize={6}>
         {groups}
-        <Text className={classes.empty}>Nothing found...</Text>
+        <Text className={classes.empty}>未找到...</Text>
       </ScrollArea>
     </nav>
   );

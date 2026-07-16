@@ -4,7 +4,7 @@
   pointer-events: all;
   flex: 1;
 
-  @mixin hover {
+  &:hover {
     color: var(--ui-color-bright);
     text-decoration: underline;
   }
@@ -12,7 +12,7 @@
   &:where([data-static]) {
     cursor: default;
 
-    @mixin hover {
+    &:hover {
       color: var(--ui-color-dimmed);
       text-decoration: none;
     }

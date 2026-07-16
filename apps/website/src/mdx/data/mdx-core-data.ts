@@ -2,7 +2,7 @@ import { Frontmatter } from '@/types';
 
 export const MDX_CORE_DATA: Record<string, Frontmatter> = {
   CorePackage: {
-    title: 'Get started',
+    title: '开始使用',
     slug: '/core/package',
     hideInSearch: true,
     hideHeader: true,
@@ -531,7 +531,7 @@ export const MDX_CORE_DATA: Record<string, Frontmatter> = {
     searchTags: 'animation, fade, slide, scale, motion, animate',
   },
   Typography: {
-    title: 'Typography',
+    title: '排版',
     package: '@react-ui/ui',
     slug: '/core/typography',
     description: 'Styles provider for html content',

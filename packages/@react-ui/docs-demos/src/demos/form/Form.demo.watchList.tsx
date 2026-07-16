@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button, Code, Group, NumberInput, Stack, Text, TextInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
 import { randomId } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -17,8 +17,8 @@ function Demo() {
     mode: 'uncontrolled',
     initialValues: {
       products: [
-        { name: 'Apple', price: 2, quantity: 3, key: randomId() },
-        { name: 'Orange', price: 1, quantity: 5, key: randomId() },
+        { name: 'Apple', price: 2, quantity: 3, key: 'product-1' },
+        { name: 'Orange', price: 1, quantity: 5, key: 'product-2' },
       ],
     },
   });
@@ -33,19 +33,19 @@ function Demo() {
       {form.getValues().products.map((item, index) => (
         <Group key={item.key} align="flex-end">
           <TextInput
-            label="Name"
+            label="姓名"
             style={{ flex: 1 }}
             key={form.key(\`products.\${index}.name\`)}
             {...form.getInputProps(\`products.\${index}.name\`)}
           />
           <NumberInput
-            label="Price"
+            label="价格"
             style={{ width: 80 }}
             key={form.key(\`products.\${index}.price\`)}
             {...form.getInputProps(\`products.\${index}.price\`)}
           />
           <NumberInput
-            label="Qty"
+            label="数量"
             style={{ width: 80 }}
             key={form.key(\`products.\${index}.quantity\`)}
             {...form.getInputProps(\`products.\${index}.quantity\`)}
@@ -85,8 +85,8 @@ function Demo() {
     mode: 'uncontrolled',
     initialValues: {
       products: [
-        { name: 'Apple', price: 2, quantity: 3, key: randomId() },
-        { name: 'Orange', price: 1, quantity: 5, key: randomId() },
+        { name: 'Apple', price: 2, quantity: 3, key: 'product-1' },
+        { name: 'Orange', price: 1, quantity: 5, key: 'product-2' },
       ],
     },
   });
@@ -107,19 +107,19 @@ function Demo() {
       {form.getValues().products.map((item, index) => (
         <Group key={item.key} align="flex-end">
           <TextInput
-            label="Name"
+            label="姓名"
             style={{ flex: 1 }}
             key={form.key(`products.${index}.name`)}
             {...form.getInputProps(`products.${index}.name`)}
           />
           <NumberInput
-            label="Price"
+            label="价格"
             style={{ width: 80 }}
             key={form.key(`products.${index}.price`)}
             {...form.getInputProps(`products.${index}.price`)}
           />
           <NumberInput
-            label="Qty"
+            label="数量"
             style={{ width: 80 }}
             key={form.key(`products.${index}.quantity`)}
             {...form.getInputProps(`products.${index}.quantity`)}
@@ -148,7 +148,7 @@ function Demo() {
   );
 }
 
-export const watchList: MantineDemo = {
+export const watchList: UIDemo = {
   type: 'code',
   component: Demo,
   code,

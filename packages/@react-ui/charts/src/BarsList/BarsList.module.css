@@ -32,11 +32,11 @@
   border-radius: var(--ui-radius-sm);
   transition: width 300ms ease;
 
-  @mixin where-light {
+  [data-ui-color-scheme='light'] & {
     background-color: var(--ui-primary-color-filled);
   }
 
-  @mixin where-dark {
+  [data-ui-color-scheme='dark'] & {
     background-color: var(--ui-primary-color-filled);
   }
 }

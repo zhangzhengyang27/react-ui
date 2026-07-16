@@ -9,12 +9,12 @@ import {
   factory,
   Factory,
   getRadius,
-  MantineRadius,
+  UIRadius,
   rem,
   ScrollArea,
   ScrollAreaProps,
   StylesApiProps,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useResolvedStylesApi,
   useStyles,
@@ -122,7 +122,7 @@ export interface ResourcesDayViewProps
   slotLabelFormat?: DateLabelFormat;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius` @default theme.defaultRadius */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 
   /** Time to scroll to on initial render, in `HH:mm:ss` format */
   startScrollTime?: string;
@@ -402,7 +402,7 @@ export const ResourcesDayView = factory<ResourcesDayViewFactory>((_props) => {
     radius,
   };
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const [scrolled, setScrolled] = useState(false);
   const [scrolledX, setScrolledX] = useState(false);
   const ctx = useDatesContext();

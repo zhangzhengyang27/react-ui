@@ -200,9 +200,9 @@ function Demo() {
 
   return (
     <>
-      <Drawer {...stack.register('first')}>First</Drawer>
-      <Drawer {...stack.register('second')}>Second</Drawer>
-      <Button onClick={() => stack.open('first')}>Open first</Button>
+      <Drawer {...stack.register('first')}>第一</Drawer>
+      <Drawer {...stack.register('second')}>第二</Drawer>
+      <Button onClick={() => stack.open('first')}>打开第一个</Button>
     </>
   );
 }
@@ -240,7 +240,7 @@ function Demo() {
 import { Drawer } from '@react-ui/ui';
 
 function Demo() {
-  return <Drawer title="Drawer label" opened onClose={() => {}} />;
+  return <Drawer title="抽屉标签" opened onClose={() => {}} />;
 }
 ```
 
@@ -252,7 +252,7 @@ import { Drawer } from '@react-ui/ui';
 function Demo() {
   return (
     <Drawer
-      closeButtonProps={{ 'aria-label': 'Close drawer' }}
+      closeButtonProps={{ 'aria-label': '关闭抽屉' }}
       opened
       onClose={() => {}}
     />

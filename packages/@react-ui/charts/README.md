@@ -2,9 +2,9 @@
 
 [![npm](https://img.shields.io/npm/dm/@react-ui/charts)](https://www.npmjs.com/package/@react-ui/charts)
 
-Charts components built with recharts and Mantine
+Charts components built with recharts and UI
 
-[View documentation](https://mantine.dev/)
+[View documentation](#)
 
 ## Installation
 

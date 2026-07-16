@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Paper } from './Paper'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Paper', () => {
     it('renders a div by default', () => {
@@ -27,7 +27,7 @@ describe('Paper', () => {
     it('applies static classes', () => {
         renderWithProvider(<Paper data-testid="paper">content</Paper>)
 
-        expect(screen.getByTestId('paper')).toHaveClass('mantine-Paper-root')
+        expect(screen.getByTestId('paper')).toHaveClass('ui-Paper-root')
     })
 
     it('adds data-with-border when withBorder is true', () => {

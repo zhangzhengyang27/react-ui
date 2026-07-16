@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { DateFormatter } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const getCode = (name: string) => `
 import dayjs from 'dayjs';
@@ -29,8 +29,8 @@ function Demo() {
 
   return (
     <${name}
-      label="Pick 2 dates or more"
-      placeholder="Pick 2 dates or more"
+      label="选择 2 个或更多日期"
+      placeholder="选择 2 个或更多日期"
       value={value}
       onChange={setValue}
       type="multiple"
@@ -62,8 +62,8 @@ function getDemo(Component: React.FC<any>) {
 
     return (
       <Component
-        label="Pick 2 dates or more"
-        placeholder="Pick 2 dates or more"
+        label="选择 2 个或更多日期"
+        placeholder="选择 2 个或更多日期"
         value={value}
         onChange={setValue}
         type="multiple"
@@ -73,7 +73,7 @@ function getDemo(Component: React.FC<any>) {
   };
 }
 
-export function getPickerInputValueFormatterDemo(Component: React.FC<any>): MantineDemo {
+export function getPickerInputValueFormatterDemo(Component: React.FC<any>): UIDemo {
   return {
     type: 'code',
     centered: true,

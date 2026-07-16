@@ -1,5 +1,5 @@
 import { Button, Code, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Code, Group } from '@react-ui/ui';
@@ -22,9 +22,9 @@ function Demo() {
 
       <Code>autoContrast: false</Code>
       <Group mt="xs">
-        <Button color="lime.4">Lime.4 button</Button>
-        <Button color="blue.2">Blue.2 button</Button>
-        <Button color="orange.3">Orange.3 button</Button>
+        <Button color="lime.4">Lime.4 按钮</Button>
+        <Button color="blue.2">Blue.2 按钮</Button>
+        <Button color="orange.3">Orange.3 按钮</Button>
       </Group>
     </>
   );
@@ -49,15 +49,15 @@ function Demo() {
 
       <Code>autoContrast: false</Code>
       <Group mt="xs">
-        <Button color="lime.4">Lime.4 button</Button>
-        <Button color="blue.2">Blue.2 button</Button>
-        <Button color="orange.3">Orange.3 button</Button>
+        <Button color="lime.4">Lime.4 按钮</Button>
+        <Button color="blue.2">Blue.2 按钮</Button>
+        <Button color="orange.3">Orange.3 按钮</Button>
       </Group>
     </>
   );
 }
 
-export const autoContrast: MantineDemo = {
+export const autoContrast: UIDemo = {
   type: 'code',
   component: Demo,
   code,

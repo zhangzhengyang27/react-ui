@@ -10,27 +10,24 @@ const valueFormat = '{ value: string; label: string; disabled?: boolean }';
 export function MdxComboboxFiltering({ component }: MdxComboboxFilteringProps) {
   return (
     <>
-      <MdxTitle id="options-filtering">Options filtering</MdxTitle>
-      By default, <MdxCode>{component}</MdxCode> filters options by checking if the option label
-      contains the input value. You can change this behavior with the <MdxCode>filter</MdxCode>{' '}
-      prop. The <MdxCode>filter</MdxCode> function receives an object with the following properties
-      as a single argument:
+      <MdxTitle id="options-filtering">选项过滤</MdxTitle>
+      默认情况下，<MdxCode>{component}</MdxCode> 通过检查选项标签是否包含输入值来过滤选项。
+      你可以使用 <MdxCode>filter</MdxCode>{' '}
+      属性更改此行为。<MdxCode>filter</MdxCode> 函数接收一个包含以下属性的对象作为唯一参数：
       <MdxUl>
         <MdxLi>
-          <MdxCode>options</MdxCode> – array of options or options groups, all options are in{' '}
-          <MdxCode>{valueFormat}</MdxCode> format
+          <MdxCode>options</MdxCode> — 选项或选项分组的数组，所有选项均为{' '}
+          <MdxCode>{valueFormat}</MdxCode> 格式
         </MdxLi>
         <MdxLi>
-          <MdxCode>search</MdxCode> – current search query
+          <MdxCode>search</MdxCode> — 当前搜索查询
         </MdxLi>
         <MdxLi>
-          <MdxCode>limit</MdxCode> – value of the <MdxCode>limit</MdxCode> prop passed to{' '}
-          <MdxCode>{component}</MdxCode>
+          <MdxCode>limit</MdxCode> — 传递给 <MdxCode>{component}</MdxCode> 的 <MdxCode>limit</MdxCode> 属性值
         </MdxLi>
       </MdxUl>
       <MdxParagraph>
-        Example of a custom filter function that matches options by words instead of letter
-        sequence:
+        下面是一个自定义过滤函数的示例，它按单词匹配选项而非按字母序列匹配：
       </MdxParagraph>
     </>
   );

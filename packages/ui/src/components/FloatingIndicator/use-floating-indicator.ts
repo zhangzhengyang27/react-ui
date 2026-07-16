@@ -88,6 +88,11 @@ export function useFloatingIndicator({
         }, 30)
     }
 
+    // 跟踪最新的 updatePositionWithoutAnimation,供异步事件回调(MutationObserver/transitionend)
+    // 引用,避免捕获过期闭包导致 target/parent 变化后位置不更新
+    const updatePositionWithoutAnimationRef = useRef(updatePositionWithoutAnimation)
+    updatePositionWithoutAnimationRef.current = updatePositionWithoutAnimation
+
     const targetResizeObserver = useRef<ResizeObserver | null>(null)
     const parentResizeObserver = useRef<ResizeObserver | null>(null)
 
@@ -122,7 +127,7 @@ export function useFloatingIndicator({
         if (parent) {
             const handleTransitionEnd = (event: TransitionEvent) => {
                 if (isParent(event.target, parent)) {
-                    updatePositionWithoutAnimation()
+                    updatePositionWithoutAnimationRef.current()
                     setHidden(false)
                 }
             }
@@ -168,7 +173,7 @@ export function useFloatingIndicator({
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 if (mutation.type === 'attributes' && mutation.attributeName === 'dir') {
-                    updatePositionWithoutAnimation()
+                    updatePositionWithoutAnimationRef.current()
                 }
             })
         })

@@ -1,23 +1,23 @@
 import { ColorInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ColorInput } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <ColorInput withPicker={false} pointer label="Without dropdown" placeholder="Enter value" />
+    <ColorInput withPicker={false} pointer label="不使用下拉框" placeholder="输入值" />
   );
 }
 `;
 
 function Demo() {
   return (
-    <ColorInput withPicker={false} pointer label="Without dropdown" placeholder="Enter value" />
+    <ColorInput withPicker={false} pointer label="不使用下拉框" placeholder="输入值" />
   );
 }
 
-export const withPicker: MantineDemo = {
+export const withPicker: UIDemo = {
   type: 'code',
   component: Demo,
   code,

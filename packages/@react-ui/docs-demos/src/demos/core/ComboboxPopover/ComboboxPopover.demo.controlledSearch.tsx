@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, ComboboxPopover, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -21,12 +21,12 @@ function Demo() {
         onSearchChange={setSearchValue}
       >
         <ComboboxPopover.Target>
-          <Button variant="default" miw={200}>{value || 'Select framework'}</Button>
+          <Button variant="default" miw={200}>{value || '选择框架'}</Button>
         </ComboboxPopover.Target>
       </ComboboxPopover>
 
       <Text mt="md" size="sm">
-        Search value: <b>{searchValue || '(empty)'}</b>
+        搜索值：<b>{searchValue || '（空）'}</b>
       </Text>
       <Text size="sm">
         Selected value: <b>{value || '(none)'}</b>
@@ -52,13 +52,13 @@ function Demo() {
       >
         <ComboboxPopover.Target>
           <Button variant="default" miw={200}>
-            {value || 'Select framework'}
+            {value || '选择框架'}
           </Button>
         </ComboboxPopover.Target>
       </ComboboxPopover>
 
       <Text mt="md" size="sm">
-        Search value: <b>{searchValue || '(empty)'}</b>
+        搜索值：<b>{searchValue || '（空）'}</b>
       </Text>
       <Text size="sm">
         Selected value: <b>{value || '(none)'}</b>
@@ -67,7 +67,7 @@ function Demo() {
   );
 }
 
-export const controlledSearch: MantineDemo = {
+export const controlledSearch: UIDemo = {
   type: 'code',
   component: Demo,
   code,

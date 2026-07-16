@@ -1,5 +1,5 @@
 import { TextInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TextInput } from '@react-ui/ui';
@@ -7,13 +7,13 @@ import { TextInput } from '@react-ui/ui';
 function Demo() {
   return (
     <>
-      <TextInput type="password" label="Password input" placeholder="Password input" />
-      <TextInput mt="md" type="date" label="Date input" placeholder="Date input" />
+      <TextInput type="password" label="密码输入" placeholder="密码输入" />
+      <TextInput mt="md" type="date" label="日期输入" placeholder="日期输入" />
       <TextInput
         mt="md"
         type="datetime-local"
-        label="Date time input"
-        placeholder="Date time input"
+        label="日期时间输入"
+        placeholder="日期时间输入"
       />
     </>
   );
@@ -23,19 +23,19 @@ function Demo() {
 function Demo() {
   return (
     <>
-      <TextInput type="password" label="Password input" placeholder="Password input" />
-      <TextInput mt="md" type="date" label="Date input" placeholder="Date input" />
+      <TextInput type="password" label="密码输入" placeholder="密码输入" />
+      <TextInput mt="md" type="date" label="日期输入" placeholder="日期输入" />
       <TextInput
         mt="md"
         type="datetime-local"
-        label="Date time input"
-        placeholder="Date time input"
+        label="日期时间输入"
+        placeholder="日期时间输入"
       />
     </>
   );
 }
 
-export const type: MantineDemo = {
+export const type: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

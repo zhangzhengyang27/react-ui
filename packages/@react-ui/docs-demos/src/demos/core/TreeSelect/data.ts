@@ -31,7 +31,7 @@ export const data: TreeNodeData[] = [
     children: [
       {
         value: 'fruits',
-        label: 'Fruits',
+        label: '水果',
         children: [
           { value: 'apples', label: 'Apples' },
           { value: 'bananas', label: 'Bananas' },
@@ -39,7 +39,7 @@ export const data: TreeNodeData[] = [
       },
       {
         value: 'vegetables',
-        label: 'Vegetables',
+        label: '蔬菜',
         children: [
           { value: 'carrots', label: 'Carrots' },
           { value: 'broccoli', label: 'Broccoli' },
@@ -84,7 +84,7 @@ export const data: TreeNodeData[] = [
     children: [
       {
         value: 'fruits',
-        label: 'Fruits',
+        label: '水果',
         children: [
           { value: 'apples', label: 'Apples' },
           { value: 'bananas', label: 'Bananas' },
@@ -92,7 +92,7 @@ export const data: TreeNodeData[] = [
       },
       {
         value: 'vegetables',
-        label: 'Vegetables',
+        label: '蔬菜',
         children: [
           { value: 'carrots', label: 'Carrots' },
           { value: 'broccoli', label: 'Broccoli' },

@@ -54,7 +54,7 @@ export function Search() {
     id: page.slug,
     label: page.title,
     description:
-      page.search || page.description || (page.date ? `Released ${page.date}` : undefined),
+      page.search || page.description || (page.date ? `发布于 ${page.date}` : undefined),
     keywords: page.searchTags,
     onClick: () => router.push(page.slug),
   }));
@@ -70,10 +70,10 @@ export function Search() {
       clearQueryOnClose
       radius="md"
       limit={7}
-      nothingFound="Nothing found..."
+      nothingFound="未找到..."
       searchProps={{
         leftSection: <MagnifyingGlassIcon size={20} />,
-        placeholder: 'Search documentation...',
+        placeholder: '搜索文档...',
       }}
     />
   );

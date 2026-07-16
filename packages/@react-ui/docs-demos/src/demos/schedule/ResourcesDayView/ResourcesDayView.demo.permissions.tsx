@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { ResourcesDayView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const resources = [
   { id: 'tokyo', label: 'Meeting room: Tokyo' },
@@ -22,7 +22,7 @@ const initialEvents: ScheduleEventData[] = [
   },
   {
     id: 2,
-    title: 'Locked Event',
+    title: '锁定事件',
     start: `${today} 11:00:00`,
     end: `${today} 12:00:00`,
     color: 'gray',
@@ -44,7 +44,7 @@ import { useState } from 'react';
 import dayjs from 'dayjs';
 import { ResourcesDayView, ScheduleEventData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const resources = [
   { id: 'tokyo', label: 'Meeting room: Tokyo' },
@@ -63,7 +63,7 @@ const initialEvents: ScheduleEventData[] = [
   },
   {
     id: 2,
-    title: 'Locked Event',
+    title: '锁定事件',
     start: \`\${today} 11:00:00\`,
     end: \`\${today} 12:00:00\`,
     color: 'gray',
@@ -112,7 +112,7 @@ function Demo() {
 
   return (
     <ResourcesDayView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       resources={resources}
       events={events}
       startTime="08:00:00"
@@ -169,7 +169,7 @@ function Demo() {
 
   return (
     <ResourcesDayView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       resources={resources}
       events={events}
       startTime="08:00:00"
@@ -184,7 +184,7 @@ function Demo() {
   );
 }
 
-export const permissions: MantineDemo = {
+export const permissions: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

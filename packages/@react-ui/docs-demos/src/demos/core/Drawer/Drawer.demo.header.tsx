@@ -1,6 +1,6 @@
 import { Button, Drawer } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useDisclosure } from '@react-ui/hooks';
@@ -16,7 +16,7 @@ function Demo() {
       </Drawer>
 
       <Button variant="default" onClick={open}>
-        Open Drawer
+        打开抽屉
       </Button>
     </>
   );
@@ -34,13 +34,13 @@ function Demo() {
       </Drawer>
 
       <Button variant="default" onClick={open}>
-        Open Drawer
+        打开抽屉
       </Button>
     </>
   );
 }
 
-export const header: MantineDemo = {
+export const header: UIDemo = {
   type: 'code',
   code,
   centered: true,

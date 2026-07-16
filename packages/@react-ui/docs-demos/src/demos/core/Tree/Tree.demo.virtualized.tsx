@@ -7,7 +7,7 @@ import {
   TreeNodeData,
   useTree,
 } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useMemo, useRef } from 'react';
@@ -197,7 +197,7 @@ function Demo() {
   );
 }
 
-export const virtualized: MantineDemo = {
+export const virtualized: UIDemo = {
   type: 'code',
   component: Demo,
   code,

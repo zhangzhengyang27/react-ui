@@ -44,7 +44,7 @@ const asyncDemonstrationModal = ({
 export function ModalsProviderDemo({ children }: ModalsProviderDemoProps) {
   return (
     <ModalsProvider
-      labels={{ confirm: 'Confirm', cancel: 'Cancel' }}
+      labels={{ confirm: '确认', cancel: '取消' }}
       modals={{ demonstration: demonstrationModal, asyncDemonstration: asyncDemonstrationModal }}
     >
       {children}

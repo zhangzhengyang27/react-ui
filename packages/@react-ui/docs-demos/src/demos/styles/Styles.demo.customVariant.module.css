@@ -5,11 +5,11 @@
     padding-left: 0;
     padding-right: 0;
 
-    @mixin light {
+    [data-ui-color-scheme='light'] & {
       border-color: var(--ui-color-gray-3);
     }
 
-    @mixin dark {
+    [data-ui-color-scheme='dark'] & {
       border-color: var(--ui-color-dark-3);
     }
 

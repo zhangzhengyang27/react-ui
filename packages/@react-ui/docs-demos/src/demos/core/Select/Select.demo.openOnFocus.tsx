@@ -1,5 +1,5 @@
 import { Select } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Select } from '@react-ui/ui';
@@ -8,15 +8,15 @@ function Demo() {
   return (
     <>
       <Select
-        label="Opens on focus"
-        placeholder="Pick value"
+        label="聚焦时打开"
+        placeholder="选择值"
         searchable
         openOnFocus
         data={['React', 'Angular', 'Vue', 'Svelte']}
       />
       <Select
-        label="Does not open on focus"
-        placeholder="Pick value"
+        label="聚焦时不打开"
+        placeholder="选择值"
         searchable
         openOnFocus={false}
         data={['React', 'Angular', 'Vue', 'Svelte']}
@@ -30,15 +30,15 @@ function Demo() {
   return (
     <>
       <Select
-        label="Opens on focus"
-        placeholder="Pick value"
+        label="聚焦时打开"
+        placeholder="选择值"
         searchable
         openOnFocus
         data={['React', 'Angular', 'Vue', 'Svelte']}
       />
       <Select
-        label="Does not open on focus"
-        placeholder="Pick value"
+        label="聚焦时不打开"
+        placeholder="选择值"
         searchable
         openOnFocus={false}
         data={['React', 'Angular', 'Vue', 'Svelte']}
@@ -47,7 +47,7 @@ function Demo() {
   );
 }
 
-export const openOnFocus: MantineDemo = {
+export const openOnFocus: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -7,7 +7,7 @@
   border-inline-end: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-5));
   background-color: var(--ui-color-body);
 
-  @mixin smaller-than $docs-mdx-breakpoint {
+  @media (max-width: 67.5em) {
     display: none;
   }
 }
@@ -36,7 +36,7 @@
   border-radius: var(--ui-radius-md);
   padding: 6px 12px;
 
-  @mixin hover {
+  &:hover {
     background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-6));
     color: var(--ui-color-bright);
   }
@@ -45,11 +45,11 @@
     color: light-dark(var(--ui-color-blue-8), var(--ui-color-blue-2));
     background-color: light-dark(
       var(--ui-color-blue-0),
-      alpha(var(--ui-color-blue-6), 0.17)
+      color-mix(in srgb, var(--ui-color-blue-6) 17%, transparent)
     );
   }
 
-  @mixin smaller-than $docs-mdx-breakpoint {
+  @media (max-width: 67.5em) {
     font-size: var(--ui-font-size-md);
     padding: 8px 15px;
   }
@@ -63,15 +63,17 @@
 
 .categoryTitle {
   padding-inline-start: 12px;
-  font-size: var(--ui-font-size-sm);
-  color: var(--ui-color-bright);
+  font-size: 11px;
+  color: light-dark(var(--ui-color-gray-6), var(--ui-color-dark-2));
   font-weight: 600;
-  margin-bottom: 5px;
-  font-family: var(--docs-font-primary);
+  margin-bottom: 8px;
+  font-family: var(--ui-font-family-monospace, 'Menlo, Monaco, monospace');
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 
-  @mixin smaller-than $docs-mdx-breakpoint {
+  @media (max-width: 67.5em) {
     padding-inline-start: 15px;
-    font-size: var(--ui-font-size-lg);
+    font-size: var(--ui-font-size-md);
   }
 }
 
@@ -82,7 +84,7 @@
   top: var(--docs-header-height);
   background-color: var(--ui-color-body);
 
-  @mixin larger-than $docs-mdx-breakpoint {
+  @media (min-width: 67.5em) {
     display: none;
   }
 }

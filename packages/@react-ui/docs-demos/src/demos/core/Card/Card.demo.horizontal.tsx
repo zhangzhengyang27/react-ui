@@ -1,5 +1,5 @@
 import { Box, Card, Group, RingProgress, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Box, Card, Group, RingProgress, Text } from '@react-ui/ui';
@@ -43,7 +43,7 @@ function Demo() {
       </Card.Section>
 
       <Card.Section inheritPadding px="md">
-        <Text fz="xl">Project tasks</Text>
+        <Text fz="xl">项目任务</Text>
         <Box mt="xs">
           <Text>1887</Text>
           <Text fz="xs" c="dimmed">
@@ -97,7 +97,7 @@ function Demo() {
       </Card.Section>
 
       <Card.Section inheritPadding px="md">
-        <Text fz="xl">Project tasks</Text>
+        <Text fz="xl">项目任务</Text>
         <Box mt="xs">
           <Text>1887</Text>
           <Text fz="xs" c="dimmed">
@@ -111,7 +111,7 @@ function Demo() {
   );
 }
 
-export const horizontal: MantineDemo = {
+export const horizontal: UIDemo = {
   type: 'code',
   code,
   component: Demo,

@@ -1,8 +1,8 @@
 import { Button, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
-import { Group, Button, MantineProvider, createTheme } from '@react-ui/ui';
+import { Group, Button, UIProvider, createTheme } from '@react-ui/ui';
 
 const theme = createTheme({
   primaryColor: 'bright-pink',
@@ -13,12 +13,12 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       <Group>
-        <Button>Primary button</Button>
-        <Button color="blue">Blue button</Button>
+        <Button>主要按钮</Button>
+        <Button color="blue">蓝色按钮</Button>
       </Group>
-    </MantineProvider>
+    </UIProvider>
   );
 }
 
@@ -27,13 +27,13 @@ function Demo() {
 function Demo() {
   return (
     <Group>
-      <Button color="bright-pink">Primary button</Button>
-      <Button color="blue">Blue button</Button>
+      <Button color="bright-pink">主要按钮</Button>
+      <Button color="blue">蓝色按钮</Button>
     </Group>
   );
 }
 
-export const primaryColor: MantineDemo = {
+export const primaryColor: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

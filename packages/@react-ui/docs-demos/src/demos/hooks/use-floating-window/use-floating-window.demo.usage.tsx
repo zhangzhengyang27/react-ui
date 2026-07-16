@@ -1,6 +1,6 @@
 import { Button, CloseButton, Group, Paper, Portal, Text } from '@react-ui/ui';
 import { useDisclosure, useFloatingWindow } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, CloseButton, Group, Paper, Portal, Text } from '@react-ui/ui';
@@ -18,7 +18,7 @@ function Demo() {
   return (
     <>
       <Button onClick={handlers.toggle} variant="default">
-        {visible ? 'Hide' : 'Show'} floating window
+        {visible ? '隐藏' : '显示'} 浮动窗口
       </Button>
 
       {visible && (
@@ -33,10 +33,10 @@ function Demo() {
             ref={floatingWindow.ref}
           >
             <Group justify="space-between" mb="md">
-              <Text>Usage demo</Text>
+              <Text>用法演示</Text>
               <CloseButton onClick={handlers.close} />
             </Group>
-            <Text fz="sm">This is a floating window. You can drag it around.</Text>
+            <Text fz="sm">这是一个浮动窗口。你可以拖动它。</Text>
           </Paper>
         </Portal>
       )}
@@ -57,7 +57,7 @@ function Demo() {
   return (
     <>
       <Button onClick={handlers.toggle} variant="default">
-        {visible ? 'Hide' : 'Show'} floating window
+        {visible ? '隐藏' : '显示'} 浮动窗口
       </Button>
 
       {visible && (
@@ -72,10 +72,10 @@ function Demo() {
             ref={floatingWindow.ref}
           >
             <Group justify="space-between" mb="md">
-              <Text>Usage demo</Text>
+              <Text>用法演示</Text>
               <CloseButton onClick={handlers.close} />
             </Group>
-            <Text fz="sm">This is a floating window. You can drag it around.</Text>
+            <Text fz="sm">这是一个浮动窗口。你可以拖动它。</Text>
           </Paper>
         </Portal>
       )}
@@ -83,7 +83,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

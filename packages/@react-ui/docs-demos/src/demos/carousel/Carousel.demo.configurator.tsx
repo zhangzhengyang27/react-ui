@@ -1,5 +1,5 @@
 import { Carousel, CarouselProps } from '@react-ui/carousel';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { Slides } from './_slides';
 
 function Wrapper(props: CarouselProps) {
@@ -27,7 +27,7 @@ function Demo() {
 }
 `;
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
@@ -40,8 +40,8 @@ export const configurator: MantineDemo = {
       initialValue: 'horizontal',
       libraryValue: 'horizontal',
       data: [
-        { label: 'Horizontal', value: 'horizontal' },
-        { label: 'Vertical', value: 'vertical' },
+        { label: '水平', value: 'horizontal' },
+        { label: '垂直', value: 'vertical' },
       ],
     },
     { prop: 'slideGap', type: 'size', initialValue: 'md', libraryValue: '__' },

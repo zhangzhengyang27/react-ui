@@ -6,7 +6,7 @@ import {
     factory,
     Factory,
     getSize,
-    MantineSize,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -34,30 +34,30 @@ export interface NativeSelectProps
         ElementProps<'select', 'size'>,
         StylesApiProps<NativeSelectFactory> {
     /** Controls input and chevron size @default 'sm' */
-    size?: MantineSize
+    size?: UISize
 
     /** Select options data */
     data?: NativeSelectData
 
-    /** Label rendered above the input */
+    //** 渲染在输入框上方的标签 */
     label?: React.ReactNode
 
-    /** Description rendered below the label */
+    //** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
-    /** Error rendered below the input */
+    //** 渲染在输入框下方的错误 */
     error?: React.ReactNode
 
-    /** If set, disabled styles and behavior are applied */
+    /** 如果设置，则应用禁用样式和行为 */
     disabled?: boolean
 
-    /** Controlled value */
+    //** 受控值 */
     value?: string
 
-    /** Initial value for uncontrolled component */
+    //** 非受控组件的初始值 */
     defaultValue?: string
 
-    /** Called when selected value changes */
+    /** 选中值变化时调用 */
     onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }
 

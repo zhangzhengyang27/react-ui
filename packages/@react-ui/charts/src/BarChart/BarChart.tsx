@@ -24,9 +24,9 @@ import {
   factory,
   Factory,
   getThemeColor,
-  MantineColor,
+  UIColor,
   StylesApiProps,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useResolvedStylesApi,
   useStyles,
@@ -75,7 +75,7 @@ export interface BarChartProps
   fillOpacity?: number;
 
   /** Fill of hovered bar section, by default value is based on color scheme */
-  cursorFill?: MantineColor;
+  cursorFill?: UIColor;
 
   /** Props passed down to recharts `BarChart` component */
   barChartProps?: React.ComponentProps<typeof ReChartsBarChart>;
@@ -103,10 +103,10 @@ export interface BarChartProps
   maxBarWidth?: number;
 
   /** Controls color of the bar label, by default the value is determined by the chart orientation */
-  barLabelColor?: MantineColor;
+  barLabelColor?: UIColor;
 
   /** A function to assign dynamic bar color based on its value */
-  getBarColor?: (value: number, series: BarChartSeries) => MantineColor;
+  getBarColor?: (value: number, series: BarChartSeries) => UIColor;
 }
 
 export type BarChartFactory = Factory<{
@@ -223,7 +223,7 @@ export const BarChart = factory<BarChartFactory>((_props) => {
     ...others
   } = props;
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const withXTickLine = gridAxis !== 'none' && (tickLine === 'x' || tickLine === 'xy');
   const withYTickLine = gridAxis !== 'none' && (tickLine === 'y' || tickLine === 'xy');
   const [highlightedArea, setHighlightedArea] = useState<string | number | null>(null);

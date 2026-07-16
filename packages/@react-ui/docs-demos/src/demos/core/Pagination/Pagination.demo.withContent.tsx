@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { Pagination, Text } from '@react-ui/ui';
-import { randomId } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
-import { randomId } from '@react-ui/hooks';
 import { Pagination, Text } from '@react-ui/ui';
 
 function chunk<T>(array: T[], size: number): T[][] {
@@ -20,7 +18,7 @@ function chunk<T>(array: T[], size: number): T[][] {
 const data = chunk(
   Array(30)
     .fill(0)
-    .map((_, index) => ({ id: index, name: randomId() })),
+    .map((_, index) => ({ id: index, name: \`name-\${index}\` })),
   5
 );
 
@@ -53,7 +51,7 @@ function chunk<T>(array: T[], size: number): T[][] {
 const data = chunk(
   Array(30)
     .fill(0)
-    .map((_, index) => ({ id: index, name: randomId() })),
+    .map((_, index) => ({ id: index, name: `name-${index}` })),
   5
 );
 
@@ -73,7 +71,7 @@ function Demo() {
   );
 }
 
-export const withContent: MantineDemo = {
+export const withContent: UIDemo = {
   type: 'code',
   component: Demo,
   code,

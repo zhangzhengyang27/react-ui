@@ -53,9 +53,9 @@ import { TextInput } from '@react-ui/ui';
 function Demo() {
   return (
     <form>
-      <TextInput label="First name" />
-      <TextInput label="Last name" mt="md" />
-      <TextInput label="Email" mt="md" />
+      <TextInput label="名字" />
+      <TextInput label="姓氏" mt="md" />
+      <TextInput label="邮箱" mt="md" />
     </form>
   );
 }
@@ -67,7 +67,7 @@ function Demo() {
 import { Paper } from '@react-ui/ui';
 
 function Demo() {
-  return <Paper p="xl">My custom card</Paper>;
+  return <Paper p="xl">我的自定义卡片</Paper>;
 }
 ```
 
@@ -85,8 +85,8 @@ import { Button, Flex } from '@react-ui/ui';
 function Demo() {
   return (
     <Flex>
-      <Button style={{ flex: 1 }}>Large button</Button>
-      <Button>Small button</Button>
+      <Button style={{ flex: 1 }}>大按钮</Button>
+      <Button>小按钮</Button>
     </Flex>
   );
 }
@@ -99,7 +99,7 @@ import { Box } from '@react-ui/ui';
 
 function Demo({ color }: { color: string }) {
   // 之后你可以在任何嵌套元素中使用 var(--my-color)
-  return <Box style={{ '--my-color': color }}>My box</Box>;
+  return <Box style={{ '--my-color': color }}>我的 Box</Box>;
 }
 ```
 
@@ -130,7 +130,7 @@ function Demo({ color }: { color: string }) {
   padding: var(--ui-spacing-xl);
   margin-left: 40px;
 
-  @media (max-width: $mantine-breakpoint-sm) {
+  @media (max-width: $ui-breakpoint-sm) {
     margin-left: 0;
     margin-top: var(--ui-spacing-md);
   }

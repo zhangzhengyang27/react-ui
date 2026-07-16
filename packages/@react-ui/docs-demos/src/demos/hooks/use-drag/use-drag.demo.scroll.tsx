@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Text } from '@react-ui/ui';
 import { useDrag } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useRef } from 'react';
@@ -128,7 +128,7 @@ function Demo() {
   );
 }
 
-export const scroll: MantineDemo = {
+export const scroll: UIDemo = {
   type: 'code',
   code,
   component: Demo,

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useMove } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -114,7 +114,7 @@ function Demo() {
   );
 }
 
-export const color: MantineDemo = {
+export const color: UIDemo = {
   type: 'code',
   code,
   component: Demo,

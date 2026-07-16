@@ -3,7 +3,7 @@ import type { StylesApiData } from '../types';
 
 export const FlexStylesApi: StylesApiData<FlexFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
   },
 
   vars: {},

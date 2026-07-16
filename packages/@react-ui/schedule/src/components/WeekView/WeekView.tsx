@@ -9,13 +9,13 @@ import {
   factory,
   Factory,
   getRadius,
-  MantineRadius,
+  UIRadius,
   rem,
   ScrollArea,
   ScrollAreaAutosizeProps,
   StylesApiProps,
   UnstyledButton,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useResolvedStylesApi,
   useStyles,
@@ -140,7 +140,7 @@ export interface WeekViewProps
   highlightToday?: boolean;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius` @default theme.defaultRadius */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 
   /** Props passed down to the `ScrollArea.Autosize` component */
   scrollAreaProps?: ScrollAreaAutosizeProps & DataAttributes;
@@ -433,7 +433,7 @@ export const WeekView = factory<WeekViewFactory>((_props) => {
     radius,
   };
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const [scrolled, setScrolled] = useState(false);
   const ctx = useDatesContext();
   const slots = getDayTimeIntervals({ startTime, endTime, intervalMinutes });

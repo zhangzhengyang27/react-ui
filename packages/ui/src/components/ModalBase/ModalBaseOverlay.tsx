@@ -1,11 +1,11 @@
 import { forwardRef } from 'react'
-import type { MantineStyleProp } from '../../core'
+import type { UIStyleProp } from '../../core'
 import { Overlay, type OverlayProps } from '../Overlay'
 import { Transition } from '../Transition'
 import { useModalBaseContext } from './ModalBase.context'
 
 export interface ModalBaseOverlayProps extends Omit<OverlayProps, 'styles' | 'classNames' | 'variant' | 'vars'> {
-    /** Props passed down to the Transition component */
+    /** 传递给 Transition 组件的属性 */
     transitionProps?: import('../Transition').TransitionOverride
 
     /** Determines whether the overlay should be visible */
@@ -30,7 +30,7 @@ export const ModalBaseOverlay = forwardRef<HTMLDivElement, ModalBaseOverlayProps
                     <Overlay
                         ref={ref}
                         fixed
-                        style={{ ...style, ...transitionStyles } as MantineStyleProp}
+                        style={{ ...style, ...transitionStyles } as UIStyleProp}
                         zIndex={ctx.zIndex}
                         unstyled={ctx.unstyled}
                         onClick={event => {
@@ -45,4 +45,4 @@ export const ModalBaseOverlay = forwardRef<HTMLDivElement, ModalBaseOverlayProps
     }
 )
 
-ModalBaseOverlay.displayName = '@mantine/core/ModalBaseOverlay'
+ModalBaseOverlay.displayName = '@react-ui/ui/ModalBaseOverlay'

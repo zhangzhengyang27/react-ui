@@ -1,6 +1,6 @@
 import { Button, Drawer } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useDisclosure } from '@react-ui/hooks';
@@ -11,16 +11,16 @@ function Demo() {
 
   const content = Array(100)
     .fill(0)
-    .map((_, index) => <p key={index}>Drawer with scroll</p>);
+    .map((_, index) => <p key={index}>带滚动的抽屉</p>);
 
   return (
     <>
-      <Drawer opened={opened} onClose={close} title="Header is sticky">
+      <Drawer opened={opened} onClose={close} title="头部固定">
         {content}
       </Drawer>
 
       <Button variant="default" onClick={open}>
-        Open Drawer
+        打开抽屉
       </Button>
     </>
   );
@@ -32,22 +32,22 @@ function Demo() {
 
   const content = Array(100)
     .fill(0)
-    .map((_, index) => <p key={index}>Drawer with scroll</p>);
+    .map((_, index) => <p key={index}>带滚动的抽屉</p>);
 
   return (
     <>
-      <Drawer opened={opened} onClose={close} title="Header is sticky">
+      <Drawer opened={opened} onClose={close} title="头部固定">
         {content}
       </Drawer>
 
       <Button variant="default" onClick={open}>
-        Open Drawer
+        打开抽屉
       </Button>
     </>
   );
 }
 
-export const overflow: MantineDemo = {
+export const overflow: UIDemo = {
   type: 'code',
   code,
   centered: true,

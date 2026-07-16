@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { getStyleObject, Notification, NotificationProps, useMantineTheme } from '@react-ui/ui';
+import { getStyleObject, Notification, NotificationProps, useUITheme } from '@react-ui/ui';
 import { useDrag, useEffectEvent, useMergedRef } from '@react-ui/hooks';
 import { getAutoClose } from './get-auto-close/get-auto-close';
 import { NotificationData } from './notifications.store';
@@ -37,7 +37,7 @@ export function NotificationContainer({
   const [dismissed, setDismissed] = useState(false);
   const [dismissDirection, setDismissDirection] = useState<-1 | 1>(1);
   const [scrollDismissActive, setScrollDismissActive] = useState(false);
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const {
     autoClose: _autoClose,
     message,

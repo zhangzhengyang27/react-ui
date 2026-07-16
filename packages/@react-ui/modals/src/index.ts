@@ -14,9 +14,9 @@ export {
 export type { ModalsProviderProps } from './ModalsProvider';
 export type {
   ContextModalProps,
-  MantineModalsOverride,
-  MantineModals,
-  MantineModal,
+  UIModalsOverride,
+  UIModals,
+  UIModal,
   ModalSettings,
   OpenConfirmModal,
   OpenContextModal,

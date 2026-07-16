@@ -1,7 +1,7 @@
 import 'dayjs/locale/ru';
 
 import { DatesProvider } from '@react-ui/dates';
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
 import {
   MonthYearSelect,
   MonthYearSelectProps,
@@ -31,8 +31,8 @@ describe('@react-ui/schedule/MonthYearSelect', () => {
 
   it('supports __staticSelector prop', () => {
     const { container } = render(<MonthYearSelect {...defaultProps} __staticSelector="Test" />);
-    expect(container.querySelector('.mantine-Test-monthYearSelectTarget')).toBeInTheDocument();
-    expect(container.querySelector('.mantine-Test-monthYearSelectDropdown')).toBeInTheDocument();
+    expect(container.querySelector('.ui-Test-monthYearSelectTarget')).toBeInTheDocument();
+    expect(container.querySelector('.ui-Test-monthYearSelectDropdown')).toBeInTheDocument();
   });
 
   it('allows selecting month from the list', async () => {
@@ -40,7 +40,7 @@ describe('@react-ui/schedule/MonthYearSelect', () => {
     const { container } = render(<MonthYearSelect {...defaultProps} onMonthChange={spy} />);
     expect(
       container.querySelectorAll(
-        '.mantine-MonthYearSelect-monthYearSelectControl[data-type="month"]'
+        '.ui-MonthYearSelect-monthYearSelectControl[data-type="month"]'
       )
     ).toHaveLength(12);
 
@@ -55,7 +55,7 @@ describe('@react-ui/schedule/MonthYearSelect', () => {
     );
     expect(
       container.querySelectorAll(
-        '.mantine-MonthYearSelect-monthYearSelectControl[data-type="year"]'
+        '.ui-MonthYearSelect-monthYearSelectControl[data-type="year"]'
       )
     ).toHaveLength(7);
 
@@ -98,7 +98,7 @@ describe('@react-ui/schedule/MonthYearSelect', () => {
       <MonthYearSelect {...defaultProps} startYear={2020} endYear={2023} />
     );
     const controls = container.querySelectorAll(
-      '.mantine-MonthYearSelect-monthYearSelectControl[data-type="year"]'
+      '.ui-MonthYearSelect-monthYearSelectControl[data-type="year"]'
     );
     expect(controls).toHaveLength(4);
     expect(controls[0]).toHaveTextContent('2020');
@@ -217,32 +217,32 @@ describe('@react-ui/schedule/MonthYearSelect', () => {
     const { container } = render(<MonthYearSelect {...defaultProps} withMonths={false} />);
     expect(
       container.querySelectorAll(
-        '.mantine-MonthYearSelect-monthYearSelectControl[data-type="month"]'
+        '.ui-MonthYearSelect-monthYearSelectControl[data-type="month"]'
       )
     ).toHaveLength(0);
     expect(
-      container.querySelector('.mantine-MonthYearSelect-monthYearSelectLabel')
+      container.querySelector('.ui-MonthYearSelect-monthYearSelectLabel')
     ).not.toBeInTheDocument();
   });
 
   it('closes/opens the dropdown when target is clicked', async () => {
     const { container } = render(<MonthYearSelect />);
     expect(
-      container.querySelector('.mantine-MonthYearSelect-monthYearSelectDropdown')
+      container.querySelector('.ui-MonthYearSelect-monthYearSelectDropdown')
     ).not.toBeInTheDocument();
 
     await userEvent.click(
-      container.querySelector('.mantine-MonthYearSelect-monthYearSelectTarget')!
+      container.querySelector('.ui-MonthYearSelect-monthYearSelectTarget')!
     );
     expect(
-      container.querySelector('.mantine-MonthYearSelect-monthYearSelectDropdown')
+      container.querySelector('.ui-MonthYearSelect-monthYearSelectDropdown')
     ).toBeInTheDocument();
 
     await userEvent.click(
-      container.querySelector('.mantine-MonthYearSelect-monthYearSelectTarget')!
+      container.querySelector('.ui-MonthYearSelect-monthYearSelectTarget')!
     );
     expect(
-      container.querySelector('.mantine-MonthYearSelect-monthYearSelectDropdown')
+      container.querySelector('.ui-MonthYearSelect-monthYearSelectDropdown')
     ).not.toBeInTheDocument();
   });
 
@@ -250,15 +250,15 @@ describe('@react-ui/schedule/MonthYearSelect', () => {
     const { container } = render(<MonthYearSelect withMonths={false} />);
     await userEvent.click(container.querySelector('button')!);
     expect(
-      container.querySelector('.mantine-MonthYearSelect-monthYearSelectDropdown')
+      container.querySelector('.ui-MonthYearSelect-monthYearSelectDropdown')
     ).toBeInTheDocument();
 
     await userEvent.click(
-      container.querySelector('.mantine-MonthYearSelect-monthYearSelectControl[data-type="year"]')!
+      container.querySelector('.ui-MonthYearSelect-monthYearSelectControl[data-type="year"]')!
     );
 
     expect(
-      container.querySelector('.mantine-MonthYearSelect-monthYearSelectDropdown')
+      container.querySelector('.ui-MonthYearSelect-monthYearSelectDropdown')
     ).not.toBeInTheDocument();
   });
 });

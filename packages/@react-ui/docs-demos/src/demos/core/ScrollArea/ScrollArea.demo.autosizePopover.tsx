@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Box, Popover, ScrollArea, Text, TextInput, UnstyledButton } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState, useRef } from 'react';
@@ -92,13 +92,13 @@ function Demo() {
               });
             }
           }}
-          placeholder="Search groceries"
+          placeholder="搜索杂货"
         />
       </Popover.Target>
       <Popover.Dropdown p={0}>
         <ScrollArea.Autosize viewportRef={viewportRef} mah={200} type="always" scrollbars="y">
           <Box px="xs" py={5}>
-            {items.length > 0 ? items : <Text c="dimmed">Nothing found</Text>}
+            {items.length > 0 ? items : <Text c="dimmed">未找到</Text>}
           </Box>
         </ScrollArea.Autosize>
       </Popover.Dropdown>
@@ -193,13 +193,13 @@ function Demo() {
               });
             }
           }}
-          placeholder="Search groceries"
+          placeholder="搜索杂货"
         />
       </Popover.Target>
       <Popover.Dropdown p={0}>
         <ScrollArea.Autosize viewportRef={viewportRef} mah={200} type="always" scrollbars="y">
           <Box px="xs" py={5}>
-            {items.length > 0 ? items : <Text c="dimmed">Nothing found</Text>}
+            {items.length > 0 ? items : <Text c="dimmed">未找到</Text>}
           </Box>
         </ScrollArea.Autosize>
       </Popover.Dropdown>
@@ -207,7 +207,7 @@ function Demo() {
   );
 }
 
-export const autosizePopover: MantineDemo = {
+export const autosizePopover: UIDemo = {
   type: 'code',
   component: Demo,
   code,

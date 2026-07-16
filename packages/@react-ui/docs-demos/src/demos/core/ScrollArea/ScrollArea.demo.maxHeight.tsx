@@ -1,6 +1,6 @@
 import { Button, Group, ScrollArea } from '@react-ui/ui';
 import { useCounter } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const lorem =
   'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta perspiciatis reiciendis voluptate eaque itaque quos. Natus iure tenetur libero, reprehenderit ad, sequi, in aliquam eos necessitatibus expedita delectus veniam culpa!';
@@ -53,13 +53,13 @@ function Demo() {
         <Button color="red" onClick={handlers.decrement}>
           Remove paragraph
         </Button>
-        <Button onClick={handlers.increment}>Add paragraph</Button>
+        <Button onClick={handlers.increment}>添加段落</Button>
       </Group>
     </>
   );
 }
 
-export const maxHeight: MantineDemo = {
+export const maxHeight: UIDemo = {
   type: 'code',
   component: Demo,
   code,

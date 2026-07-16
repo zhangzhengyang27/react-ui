@@ -1,6 +1,6 @@
 import { CaretDownIcon } from '@phosphor-icons/react';
 import { Stack, TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { CaretDownIcon } from '@phosphor-icons/react';
@@ -10,8 +10,8 @@ function Demo() {
   return (
     <Stack>
       <TagsInput
-        label="clearSectionMode='both' (default)"
-        placeholder="Enter tags"
+        label="clearSectionMode='both'（默认）"
+        placeholder="输入标签"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         defaultValue={['React']}
         clearable
@@ -21,7 +21,7 @@ function Demo() {
 
       <TagsInput
         label="clearSectionMode='rightSection'"
-        placeholder="Enter tags"
+        placeholder="输入标签"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         defaultValue={['React']}
         clearable
@@ -31,7 +31,7 @@ function Demo() {
 
       <TagsInput
         label="clearSectionMode='clear'"
-        placeholder="Enter tags"
+        placeholder="输入标签"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         defaultValue={['React']}
         clearable
@@ -47,8 +47,8 @@ function Demo() {
   return (
     <Stack>
       <TagsInput
-        label="clearSectionMode='both' (default)"
-        placeholder="Enter tags"
+        label="clearSectionMode='both'（默认）"
+        placeholder="输入标签"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         defaultValue={['React']}
         clearable
@@ -58,7 +58,7 @@ function Demo() {
 
       <TagsInput
         label="clearSectionMode='rightSection'"
-        placeholder="Enter tags"
+        placeholder="输入标签"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         defaultValue={['React']}
         clearable
@@ -68,7 +68,7 @@ function Demo() {
 
       <TagsInput
         label="clearSectionMode='clear'"
-        placeholder="Enter tags"
+        placeholder="输入标签"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         defaultValue={['React']}
         clearable
@@ -79,7 +79,7 @@ function Demo() {
   );
 }
 
-export const clearSectionMode: MantineDemo = {
+export const clearSectionMode: UIDemo = {
   type: 'code',
   component: Demo,
   code,

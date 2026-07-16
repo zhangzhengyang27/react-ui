@@ -1,10 +1,10 @@
 .root {
-  @mixin where-light {
+  [data-ui-color-scheme='light'] & {
     --chart-grid-color: rgba(173, 181, 189, 0.6);
     --chart-text-color: var(--ui-color-gray-7);
   }
 
-  @mixin where-dark {
+  [data-ui-color-scheme='dark'] & {
     --chart-grid-color: rgba(105, 105, 105, 0.6);
     --chart-text-color: var(--ui-color-dark-1);
   }

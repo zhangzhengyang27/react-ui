@@ -1,5 +1,5 @@
 import { Autocomplete } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Autocomplete } from '@react-ui/ui';
@@ -10,8 +10,8 @@ function Demo() {
       clearable
       defaultValue="React"
       data={['React', 'Angular']}
-      label="Clearable autocomplete"
-      placeholder="Clearable autocomplete"
+      label="可清除的自动完成"
+      placeholder="可清除的自动完成"
     />
   );
 }
@@ -23,13 +23,13 @@ function Demo() {
       clearable
       defaultValue="React"
       data={['React', 'Angular']}
-      label="Clearable autocomplete"
-      placeholder="Clearable autocomplete"
+      label="可清除的自动完成"
+      placeholder="可清除的自动完成"
     />
   );
 }
 
-export const clearable: MantineDemo = {
+export const clearable: UIDemo = {
   type: 'code',
   component: Demo,
   code,

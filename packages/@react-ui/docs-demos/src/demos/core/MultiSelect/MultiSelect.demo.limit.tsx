@@ -1,5 +1,5 @@
 import { MultiSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { MultiSelect } from '@react-ui/ui';
@@ -11,8 +11,8 @@ const largeData = Array(100_000)
 function Demo() {
   return (
     <MultiSelect
-      label="100 000 options autocomplete"
-      placeholder="Use limit to optimize performance"
+      label="10 万个选项自动完成"
+      placeholder="使用 limit 优化性能"
       limit={5}
       data={largeData}
       searchable
@@ -28,8 +28,8 @@ const largeData = Array(100_000)
 function Demo() {
   return (
     <MultiSelect
-      label="100 000 options autocomplete"
-      placeholder="Use limit to optimize performance"
+      label="10 万个选项自动完成"
+      placeholder="使用 limit 优化性能"
       limit={5}
       data={largeData}
       searchable
@@ -37,7 +37,7 @@ function Demo() {
   );
 }
 
-export const limit: MantineDemo = {
+export const limit: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,5 +1,5 @@
 import { Box, ScrollArea, ScrollAreaProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { Content } from './_content';
 
 function Wrapper(props: ScrollAreaProps) {
@@ -24,7 +24,7 @@ function Demo() {
 }
 `;
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
@@ -33,7 +33,7 @@ export const usage: MantineDemo = {
       prop: 'type',
       type: 'select',
       data: [
-        { value: 'hover', label: 'Hover' },
+        { value: 'hover', label: '悬停' },
         { value: 'auto', label: 'Auto' },
         { value: 'always', label: 'Always' },
         { value: 'scroll', label: 'Scroll' },

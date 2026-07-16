@@ -3,7 +3,7 @@ import type { StylesApiData } from '../types';
 
 export const ColorPickerStylesApi: StylesApiData<ColorPickerFactory> = {
   selectors: {
-    wrapper: 'Root element',
+    wrapper: '根元素',
     preview: 'Color preview, displayed only when `format` supports alpha channel',
     body: 'Contains alpha/hue sliders and color preview',
     slider: 'Alpha and hue sliders root',
@@ -19,10 +19,10 @@ export const ColorPickerStylesApi: StylesApiData<ColorPickerFactory> = {
   vars: {
     wrapper: {
       '--cp-body-spacing': 'Controls spacing between sliders and saturation',
-      '--cp-preview-size': 'Controls size of the preview swatch',
-      '--cp-width': 'Controls `width` of the root element',
-      '--cp-swatch-size': 'Controls swatch `width` and `height`',
-      '--cp-thumb-size': 'Controls thumb `width` and `height` in all sliders and saturation picker',
+      '--cp-preview-size': '控制 the preview swatch 的 size',
+      '--cp-width': 'Controls `width` of the root 元素',
+      '--cp-swatch-size': '控制 swatch `width` and `height`',
+      '--cp-thumb-size': '控制 thumb `width` and `height` in all sliders and saturation picker',
       '--cp-saturation-height': 'Controls `height` of the saturation picker',
     },
   },
@@ -30,7 +30,7 @@ export const ColorPickerStylesApi: StylesApiData<ColorPickerFactory> = {
 
 export const HueSliderStylesApi: StylesApiData<ColorSliderFactory> = {
   selectors: {
-    slider: 'Root element',
+    slider: '根元素',
     sliderOverlay: 'Element used to display various overlays over hue slider',
     thumb: 'Thumb of the hue slider',
   },

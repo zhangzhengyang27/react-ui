@@ -1,12 +1,12 @@
 import { Space, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: any) {
   return (
     <>
-      <Text>First line</Text>
+      <Text>第一行</Text>
       <Space {...props} />
-      <Text>Second line</Text>
+      <Text>第二行</Text>
     </>
   );
 }
@@ -17,15 +17,15 @@ import { Text, Space } from '@react-ui/ui';
 function Demo() {
   return (
     <>
-      <Text>First line</Text>
+      <Text>第一行</Text>
       <Space{{props}} />
-      <Text>Second line</Text>
+      <Text>第二行</Text>
     </>
   );
 }
 `;
 
-export const horizontal: MantineDemo = {
+export const horizontal: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

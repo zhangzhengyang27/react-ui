@@ -1,6 +1,6 @@
 import { Box, Button, Group, Text } from '@react-ui/ui';
 import { useScroller } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Box, Button, Group, Text } from '@react-ui/ui';
@@ -125,7 +125,7 @@ function Demo() {
   );
 }
 
-export const draggable: MantineDemo = {
+export const draggable: UIDemo = {
   type: 'code',
   code,
   component: Demo,

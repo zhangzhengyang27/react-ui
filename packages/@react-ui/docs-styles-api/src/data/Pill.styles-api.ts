@@ -3,7 +3,7 @@ import type { StylesApiData } from '../types';
 
 export const PillStylesApi: StylesApiData<PillFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
     label: 'Pill label (children)',
     remove: 'Remove button',
   },
@@ -11,20 +11,20 @@ export const PillStylesApi: StylesApiData<PillFactory> = {
   vars: {
     root: {
       '--pill-height': 'Controls `height` of the pill',
-      '--pill-fz': 'Controls `font-size`',
-      '--pill-radius': 'Controls `border-radius`',
+      '--pill-fz': '控制 `font-size`',
+      '--pill-radius': '控制 `border-radius`',
     },
   },
 
   modifiers: [
-    { modifier: 'data-with-remove', selector: 'root', condition: '`withRemoveButton` prop is set' },
-    { modifier: 'data-disabled', selector: 'root', condition: '`disabled` prop is set' },
+    { modifier: 'data-with-remove', selector: 'root', condition: '设置了 `withRemoveButton` 属性' },
+    { modifier: 'data-disabled', selector: 'root', condition: '设置了 `disabled` 属性' },
   ],
 };
 
 export const PillGroupStylesApi: StylesApiData<PillGroupFactory> = {
   selectors: {
-    group: 'Root element',
+    group: '根元素',
   },
 
   vars: {

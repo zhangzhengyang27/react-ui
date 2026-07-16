@@ -2,8 +2,8 @@ import { ArrowUpRightIcon } from '@phosphor-icons/react';
 import cx from 'clsx';
 import { Box, SimpleGrid, SimpleGridProps } from '@react-ui/ui';
 import { GithubIcon } from '@react-ui/dev-icons';
-import { ReactUILogo } from '@react-ui/mantine-logo';
-import { meta } from '@react-ui/mantine-meta';
+import { ReactUILogo } from '@react-ui/logo';
+import { meta } from '@react-ui/meta';
 import classes from './SocialCards.module.css';
 
 interface CardBaseProps extends React.ComponentProps<'a'> {
@@ -41,8 +41,8 @@ export function GitHubCard() {
       icon="github"
       className={classes.github}
       href={meta.gitHubLinks.discussions}
-      title="Start a discussion"
-      description="Request new features, ask questions and provide feedback with GitHub discussions"
+      title="发起讨论"
+      description="通过 GitHub Discussions 提出新功能、提问或提供反馈"
     />
   );
 }
@@ -53,8 +53,8 @@ export function DocsCard() {
       icon="reactui"
       className={classes.hc}
       href={meta.gitHubLinks.reactui}
-      title="ReactUI on GitHub"
-      description="Explore the source code, star the project and contribute"
+      title="GitHub 上的 ReactUI"
+      description="浏览源代码、为项目点赞并参与贡献"
     />
   );
 }

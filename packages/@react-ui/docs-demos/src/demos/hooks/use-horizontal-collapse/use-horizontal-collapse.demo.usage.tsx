@@ -1,6 +1,6 @@
 import { Button, Stack, Typography } from '@react-ui/ui';
 import { useDisclosure, useHorizontalCollapse } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Stack, Typography } from '@react-ui/ui';
@@ -13,7 +13,7 @@ function Demo() {
   return (
     <Stack h={240}>
       <Button onClick={handlers.toggle} w="fit-content">
-        {expanded ? 'Collapse' : 'Expand'}
+        {expanded ? '收起' : '展开'}
       </Button>
 
       <div {...getCollapseProps({ style: { width: 200 } })}>
@@ -34,7 +34,7 @@ function Demo() {
   return (
     <Stack h={240}>
       <Button onClick={handlers.toggle} w="fit-content">
-        {expanded ? 'Collapse' : 'Expand'}
+        {expanded ? '收起' : '展开'}
       </Button>
 
       <div {...getCollapseProps({ style: { width: 200 } })}>
@@ -47,7 +47,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

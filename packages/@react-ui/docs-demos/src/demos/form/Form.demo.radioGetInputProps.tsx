@@ -2,7 +2,7 @@
 
 import { Button, Group, Radio, Text } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Group, Radio, Text } from '@react-ui/ui';
@@ -24,23 +24,23 @@ function Demo() {
 
       <Group mt={5}>
         <Radio
-          label="Red"
+          label="红色"
           name="color"
           {...form.getInputProps('color', { type: 'radio', value: 'red' })}
         />
         <Radio
-          label="Blue"
+          label="蓝色"
           name="color"
           {...form.getInputProps('color', { type: 'radio', value: 'blue' })}
         />
         <Radio
-          label="Green"
+          label="绿色"
           name="color"
           {...form.getInputProps('color', { type: 'radio', value: 'green' })}
         />
       </Group>
       <Group justify="flex-end" mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -63,29 +63,29 @@ function Demo() {
 
       <Group mt={5}>
         <Radio
-          label="Red"
+          label="红色"
           name="color"
           {...form.getInputProps('color', { type: 'radio', value: 'red' })}
         />
         <Radio
-          label="Blue"
+          label="蓝色"
           name="color"
           {...form.getInputProps('color', { type: 'radio', value: 'blue' })}
         />
         <Radio
-          label="Green"
+          label="绿色"
           name="color"
           {...form.getInputProps('color', { type: 'radio', value: 'green' })}
         />
       </Group>
       <Group justify="flex-end" mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const radioGetInputProps: MantineDemo = {
+export const radioGetInputProps: UIDemo = {
   type: 'code',
   component: Demo,
   code,

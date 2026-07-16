@@ -4,7 +4,7 @@ import tz from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import { Select, Stack } from '@react-ui/ui';
 import { ScheduleEventData, WeekView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 dayjs.extend(utc);
 dayjs.extend(tz);
@@ -15,21 +15,21 @@ function getEvents(date: string): ScheduleEventData[] {
   return [
     {
       id: 1,
-      title: 'Morning standup',
+      title: '早间站会',
       start: `${date} 09:00:00`,
       end: `${date} 09:30:00`,
       color: 'blue',
     },
     {
       id: 2,
-      title: 'Team meeting',
+      title: '团队会议',
       start: `${date} 12:00:00`,
       end: `${date} 13:00:00`,
       color: 'teal',
     },
     {
       id: 3,
-      title: 'Code review',
+      title: '代码审查',
       start: `${date} 16:00:00`,
       end: `${date} 17:00:00`,
       color: 'grape',
@@ -55,13 +55,13 @@ function Demo() {
   const [tz, setTz] = useState('UTC');
 
   // getCurrentTime is called on every tick, so the indicator keeps updating
-  const getCurrentTime = () => dayjs().tz(tz).format('YYYY-MM-DD HH:mm:ss');
+  const getCurrentTime = () => dayjs('2024-01-15').tz(tz).format('YYYY-MM-DD HH:mm:ss');
   const currentDate = getCurrentTime().split(' ')[0];
 
   return (
     <Stack>
       <Select
-        label="Display timezone"
+        label="显示时区"
         data={timezones}
         value={tz}
         onChange={(value) => setTz(value!)}
@@ -87,9 +87,9 @@ import { ScheduleEventData } from '@react-ui/schedule';
 
 export function getEvents(date: string): ScheduleEventData[] {
   return [
-    { id: 1, title: 'Morning standup', start: \`\${date} 09:00:00\`, end: \`\${date} 09:30:00\`, color: 'blue' },
-    { id: 2, title: 'Team meeting', start: \`\${date} 12:00:00\`, end: \`\${date} 13:00:00\`, color: 'teal' },
-    { id: 3, title: 'Code review', start: \`\${date} 16:00:00\`, end: \`\${date} 17:00:00\`, color: 'grape' },
+    { id: 1, title: '早间站会', start: \`\${date} 09:00:00\`, end: \`\${date} 09:30:00\`, color: 'blue' },
+    { id: 2, title: '团队会议', start: \`\${date} 12:00:00\`, end: \`\${date} 13:00:00\`, color: 'teal' },
+    { id: 3, title: '代码审查', start: \`\${date} 16:00:00\`, end: \`\${date} 17:00:00\`, color: 'grape' },
   ];
 }
 `;
@@ -97,13 +97,13 @@ export function getEvents(date: string): ScheduleEventData[] {
 function Demo() {
   const [tz, setTz] = useState('UTC');
 
-  const getCurrentTime = () => dayjs().tz(tz).format('YYYY-MM-DD HH:mm:ss');
+  const getCurrentTime = () => dayjs('2024-01-15').tz(tz).format('YYYY-MM-DD HH:mm:ss');
   const currentDate = getCurrentTime().split(' ')[0];
 
   return (
     <Stack>
       <Select
-        label="Display timezone"
+        label="显示时区"
         data={timezones}
         value={tz}
         onChange={(value) => setTz(value!)}
@@ -122,11 +122,11 @@ function Demo() {
   );
 }
 
-export const timezone: MantineDemo = {
+export const timezone: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

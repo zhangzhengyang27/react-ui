@@ -1,5 +1,5 @@
 import { Textarea } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { inputControls } from '../../../shared';
 
 const code = `
@@ -10,17 +10,17 @@ function Demo() {
   return (
     <Textarea
       {{props}}
-      placeholder="Input placeholder"
+      placeholder="输入占位符"
     />
   );
 }
 `;
 
 function Wrapper(props: any) {
-  return <Textarea {...props} placeholder="Input placeholder" />;
+  return <Textarea {...props} placeholder="输入占位符" />;
 }
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

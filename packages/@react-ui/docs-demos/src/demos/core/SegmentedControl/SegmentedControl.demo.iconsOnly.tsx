@@ -1,6 +1,6 @@
 import { ArrowSquareOutIcon, CodeIcon, EyeIcon } from '@phosphor-icons/react';
 import { SegmentedControl, VisuallyHidden } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { SegmentedControl, VisuallyHidden } from '@react-ui/ui';
@@ -21,7 +21,7 @@ function Demo() {
           label: (
             <>
               <EyeIcon {...iconProps} />
-              <VisuallyHidden>Preview</VisuallyHidden>
+              <VisuallyHidden>预览</VisuallyHidden>
             </>
           ),
         },
@@ -30,7 +30,7 @@ function Demo() {
           label: (
             <>
               <CodeIcon {...iconProps} />
-              <VisuallyHidden>Code</VisuallyHidden>
+              <VisuallyHidden>代码</VisuallyHidden>
             </>
           ),
         },
@@ -39,7 +39,7 @@ function Demo() {
           label: (
             <>
               <ArrowSquareOutIcon {...iconProps} />
-              <VisuallyHidden>Export</VisuallyHidden>
+              <VisuallyHidden>导出</VisuallyHidden>
             </>
           ),
         },
@@ -63,7 +63,7 @@ function Demo() {
           label: (
             <>
               <EyeIcon {...iconProps} />
-              <VisuallyHidden>Preview</VisuallyHidden>
+              <VisuallyHidden>预览</VisuallyHidden>
             </>
           ),
         },
@@ -72,7 +72,7 @@ function Demo() {
           label: (
             <>
               <CodeIcon {...iconProps} />
-              <VisuallyHidden>Code</VisuallyHidden>
+              <VisuallyHidden>代码</VisuallyHidden>
             </>
           ),
         },
@@ -81,7 +81,7 @@ function Demo() {
           label: (
             <>
               <ArrowSquareOutIcon {...iconProps} />
-              <VisuallyHidden>Export</VisuallyHidden>
+              <VisuallyHidden>导出</VisuallyHidden>
             </>
           ),
         },
@@ -90,7 +90,7 @@ function Demo() {
   );
 }
 
-export const iconsOnly: MantineDemo = {
+export const iconsOnly: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

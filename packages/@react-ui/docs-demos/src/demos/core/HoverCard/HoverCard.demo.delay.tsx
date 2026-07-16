@@ -1,5 +1,5 @@
 import { Button, Group, HoverCard, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { HoverCard, Button, Text, Group } from '@react-ui/ui';
@@ -12,7 +12,7 @@ function Demo() {
           <Button>1000ms open delay</Button>
         </HoverCard.Target>
         <HoverCard.Dropdown>
-          <Text size="sm">Opened with 1000ms delay</Text>
+          <Text size="sm">延迟 1000ms 打开</Text>
         </HoverCard.Dropdown>
       </HoverCard>
 
@@ -21,7 +21,7 @@ function Demo() {
           <Button>1000ms close delay</Button>
         </HoverCard.Target>
         <HoverCard.Dropdown>
-          <Text size="sm">Will close with 1000ms delay</Text>
+          <Text size="sm">延迟 1000ms 关闭</Text>
         </HoverCard.Dropdown>
       </HoverCard>
     </Group>
@@ -37,7 +37,7 @@ function Demo() {
           <Button>1000ms open delay</Button>
         </HoverCard.Target>
         <HoverCard.Dropdown>
-          <Text size="sm">Opened with 1000ms delay</Text>
+          <Text size="sm">延迟 1000ms 打开</Text>
         </HoverCard.Dropdown>
       </HoverCard>
 
@@ -46,14 +46,14 @@ function Demo() {
           <Button>1000ms close delay</Button>
         </HoverCard.Target>
         <HoverCard.Dropdown>
-          <Text size="sm">Will close with 1000ms delay</Text>
+          <Text size="sm">延迟 1000ms 关闭</Text>
         </HoverCard.Dropdown>
       </HoverCard>
     </Group>
   );
 }
 
-export const delay: MantineDemo = {
+export const delay: UIDemo = {
   type: 'code',
   component: Demo,
   code,

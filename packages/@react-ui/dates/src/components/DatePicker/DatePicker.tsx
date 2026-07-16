@@ -8,7 +8,7 @@ import {
   factory,
   Factory,
   getFontSize,
-  MantineComponentStaticProperties,
+  UIComponentStaticProperties,
   StylesApiProps,
   UnstyledButton,
   useProps,
@@ -116,7 +116,7 @@ type DatePickerComponent = (<Type extends DatePickerType = 'default'>(
   props: DatePickerProps<Type> & { ref?: React.Ref<HTMLDivElement> }
 ) => React.JSX.Element) & {
   displayName?: string;
-} & MantineComponentStaticProperties<DatePickerFactory>;
+} & UIComponentStaticProperties<DatePickerFactory>;
 
 export const DatePicker: DatePickerComponent = factory<DatePickerFactory>((_props) => {
   const props = useProps('DatePicker', defaultProps, _props);
@@ -243,7 +243,7 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>((_prop
       {...getStyles('presetButton')}
       onClick={() => handlePresetSelect(preset.value)}
       onMouseDown={(event) => event.preventDefault()}
-      data-mantine-stop-propagation={__stopPropagation || undefined}
+      data-ui-stop-propagation={__stopPropagation || undefined}
     >
       {preset.label}
     </UnstyledButton>

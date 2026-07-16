@@ -3,16 +3,16 @@ import type { StylesApiData } from '../types';
 
 export const ProgressStylesApi: StylesApiData<ProgressFactory> = {
   selectors: {
-    root: 'Root element',
-    section: '`Progress.Section` root element',
-    label: '`Progress.Label` root element',
+    root: '根元素',
+    section: '`Progress.Section` root 元素',
+    label: '`Progress.Label` root 元素',
   },
 
   vars: {
     root: {
       '--progress-radius': 'Controls `border-radius` of track and sections',
-      '--progress-size': 'Controls height of progress bar',
-      '--progress-transition-duration': 'Controls width `transition-duration` of progress bar',
+      '--progress-size': '控制 progress bar 的 height',
+      '--progress-transition-duration': '控制 width `transition-duration` of progress bar',
     },
   },
 
@@ -28,6 +28,6 @@ export const ProgressStylesApi: StylesApiData<ProgressFactory> = {
       selector: 'section',
       condition: '`striped` or `animated` props are set',
     },
-    { modifier: 'data-animated', selector: 'section', condition: '`animated` prop is set' },
+    { modifier: 'data-animated', selector: 'section', condition: '设置了 `animated` 属性' },
   ],
 };

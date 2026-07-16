@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Box, Button, Group, Text, TextInput } from '@react-ui/ui';
 import { useDebouncedValue } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -15,7 +15,7 @@ function Demo() {
   return (
     <>
       <TextInput
-        label="Enter value to see debounce"
+        label="输入值查看防抖"
         value={value}
         onChange={(event) => setValue(event.currentTarget.value)}
       />
@@ -39,13 +39,13 @@ function Demo() {
     <Box maw={400} mx="auto">
       <Group align="flex-end">
         <TextInput
-          label="Enter value to see debounce effect"
-          placeholder="Enter value to see debounce effect"
+          label="输入值查看防抖效果"
+          placeholder="输入值查看防抖效果"
           value={value}
           style={{ flex: 1 }}
           onChange={(event) => setValue(event.currentTarget.value)}
         />
-        <Button onClick={cancel}>Cancel</Button>
+        <Button onClick={cancel}>取消</Button>
       </Group>
 
       <Text mt="sm">
@@ -64,7 +64,7 @@ function Demo() {
   );
 }
 
-export const cancel: MantineDemo = {
+export const cancel: UIDemo = {
   type: 'code',
   component: Demo,
   code,

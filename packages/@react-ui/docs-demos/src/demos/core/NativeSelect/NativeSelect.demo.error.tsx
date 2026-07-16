@@ -1,5 +1,5 @@
 import { NativeSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NativeSelect } from '@react-ui/ui';
@@ -7,10 +7,10 @@ import { NativeSelect } from '@react-ui/ui';
 function Demo() {
   return (
     <>
-      <NativeSelect error label="Boolean error" data={['React', 'Angular']} />
+      <NativeSelect error label="布尔错误" data={['React', 'Angular']} />
       <NativeSelect
-        error="Error message"
-        label="React node error"
+        error="错误信息"
+        label="React 节点错误"
         data={['React', 'Angular']}
         mt="md"
       />
@@ -22,10 +22,10 @@ function Demo() {
 function Demo() {
   return (
     <>
-      <NativeSelect error label="Boolean error" data={['React', 'Angular']} />
+      <NativeSelect error label="布尔错误" data={['React', 'Angular']} />
       <NativeSelect
-        error="Error message"
-        label="React node error"
+        error="错误信息"
+        label="React 节点错误"
         data={['React', 'Angular']}
         mt="md"
       />
@@ -33,7 +33,7 @@ function Demo() {
   );
 }
 
-export const error: MantineDemo = {
+export const error: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

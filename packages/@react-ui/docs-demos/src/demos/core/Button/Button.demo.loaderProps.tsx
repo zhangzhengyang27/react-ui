@@ -1,5 +1,5 @@
 import { Button } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button } from '@react-ui/ui';
@@ -7,7 +7,7 @@ import { Button } from '@react-ui/ui';
 function Demo() {
   return (
     <Button loading loaderProps={{ type: 'dots' }}>
-      Loading button
+      加载按钮
     </Button>
   );
 }
@@ -16,12 +16,12 @@ function Demo() {
 function Demo() {
   return (
     <Button loading loaderProps={{ type: 'dots' }}>
-      Loading button
+      加载按钮
     </Button>
   );
 }
 
-export const loaderProps: MantineDemo = {
+export const loaderProps: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

@@ -1,5 +1,5 @@
 import { TextInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { inputControls } from '../../../shared';
 
 const code = `
@@ -10,17 +10,17 @@ function Demo() {
   return (
     <TextInput
       {{props}}
-      placeholder="Input placeholder"
+      placeholder="输入占位符"
     />
   );
 }
 `;
 
 function Wrapper(props: any) {
-  return <TextInput {...props} placeholder="Input placeholder" />;
+  return <TextInput {...props} placeholder="输入占位符" />;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

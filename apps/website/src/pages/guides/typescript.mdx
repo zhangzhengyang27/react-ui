@@ -5,14 +5,14 @@ export default Layout(MDX_DATA.TypeScript);
 
 # 在 TypeScript 中使用
 
-所有 `@mantine/*` 包都完全兼容 TypeScript。文档中的所有示例均使用 TypeScript 编写——
+所有 `@react-ui/*` 包都完全兼容 TypeScript。文档中的所有示例均使用 TypeScript 编写——
 你可以直接复制粘贴到项目中，无需任何修改。
 
 本指南将帮助你熟悉 `@react-ui/ui` 包导出的类型。
 
 ## 组件 props 类型
 
-每个导出组件的 `@mantine/` 包也会导出这些组件的 props 类型。
+每个导出组件的 `@react-ui/` 包也会导出这些组件的 props 类型。
 你可以在组件名后添加 `Props` 来导入组件的 props 类型。
 例如，可以像这样导入 Button 和 DatePicker 的组件 props：
 
@@ -91,31 +91,31 @@ type OmitColor = ElementProps<'button', 'color' | 'onClick'>;
 type OmitButtonProps = ElementProps<'button', keyof ButtonProps>;
 ```
 
-## MantineTheme 类型
+## UITheme 类型
 
-`MantineTheme` 是 [theme object](/theming/theme-object) 的类型。你可以用它来为接受 theme 对象作为参数的函数添加类型：
+`UITheme` 是 [theme object](/theming/theme-object) 的类型。你可以用它来为接受 theme 对象作为参数的函数添加类型：
 
 ```tsx
-import { MantineTheme, useMantineTheme } from '@react-ui/ui';
+import { UITheme, useUITheme } from '@react-ui/ui';
 
-function getPrimaryColor(theme: MantineTheme) {
+function getPrimaryColor(theme: UITheme) {
   return theme.colors.blue[5];
 }
 
 function Demo() {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   return <div style={{ color: getPrimaryColor(theme) }} />;
 }
 ```
 
-## MantineThemeOverride 类型
+## UIThemeOverride 类型
 
-`MantineThemeOverride` 类型是 `MantineTheme` 的深层 Partial。它可以用于接受 theme override 作为参数的函数：
+`UIThemeOverride` 类型是 `UITheme` 的深层 Partial。它可以用于接受 theme override 作为参数的函数：
 
 ```tsx
 import {
   createTheme,
-  MantineThemeOverride,
+  UIThemeOverride,
   mergeThemeOverrides,
 } from '@react-ui/ui';
 
@@ -123,7 +123,7 @@ const baseTheme = createTheme({
   fontFamily: 'Helvetica, sans-serif',
 });
 
-function mergeThemes(themes: MantineThemeOverride[]) {
+function mergeThemes(themes: UIThemeOverride[]) {
   return mergeThemeOverrides(baseTheme, ...themes);
 }
 
@@ -138,37 +138,37 @@ const overrideTheme2 = createTheme({
 const mergedTheme = mergeThemes([overrideTheme, overrideTheme2]);
 ```
 
-## MantineColorScheme 类型
+## UIColorScheme 类型
 
-`MantineColorScheme` 是 `'light' | 'dark' | 'auto'` 的联合类型。你可以用它来为接受 color scheme 作为参数的函数添加类型：
+`UIColorScheme` 是 `'light' | 'dark' | 'auto'` 的联合类型。你可以用它来为接受 color scheme 作为参数的函数添加类型：
 
 ```tsx
 import {
-  MantineColorScheme,
-  useMantineColorScheme,
+  UIColorScheme,
+  useUIColorScheme,
 } from '@react-ui/ui';
 
-function getComputedColorScheme(colorScheme: MantineColorScheme) {
+function getComputedColorScheme(colorScheme: UIColorScheme) {
   return colorScheme === 'auto' ? 'light' : colorScheme;
 }
 
 function Demo() {
-  const { colorScheme } = useMantineColorScheme();
+  const { colorScheme } = useUIColorScheme();
   const computed = getComputedColorScheme(colorScheme);
 }
 ```
 
-## MantineSize 类型
+## UISize 类型
 
-`MantineSize` 类型是 `'xs' | 'sm' | 'md' | 'lg' | 'xl'` 的联合类型。你可以用它来为各种接受 size 参数的 props 添加类型，例如 `radius`、`shadow`、`p`。
+`UISize` 类型是 `'xs' | 'sm' | 'md' | 'lg' | 'xl'` 的联合类型。你可以用它来为各种接受 size 参数的 props 添加类型，例如 `radius`、`shadow`、`p`。
 
 ```tsx
-import { MantineSize, Paper } from '@react-ui/ui';
+import { UISize, Paper } from '@react-ui/ui';
 
 interface DemoProps {
-  size: MantineSize;
-  radius: MantineSize | (string & {}) | number;
-  shadow: MantineSize | string;
+  size: UISize;
+  radius: UISize | (string & {}) | number;
+  shadow: UISize | string;
 }
 
 function Demo({ size, radius, shadow }: DemoProps) {
@@ -178,15 +178,15 @@ function Demo({ size, radius, shadow }: DemoProps) {
 
 ## 主题对象声明
 
-你可以通过在 `.d.ts` 文件中扩展 `MantineTheme` 接口来更改 `theme.other` 和 `theme.colors` 的类型。
-在项目的任意位置创建 `mantine.d.ts`（必须包含在 `tsconfig.json` 中）以扩展主题对象类型。
+你可以通过在 `.d.ts` 文件中扩展 `UITheme` 接口来更改 `theme.other` 和 `theme.colors` 的类型。
+在项目的任意位置创建 `ui.d.ts`（必须包含在 `tsconfig.json` 中）以扩展主题对象类型。
 
 覆盖 `theme.other`：
 
 ```tsx
-// mantine.d.ts
+// ui.d.ts
 declare module '@react-ui/ui' {
-  export interface MantineThemeOther {
+  export interface UIThemeOther {
     myCustomProperty: string;
     myCustomFunction: () => void;
   }
@@ -197,18 +197,18 @@ declare module '@react-ui/ui' {
 
 ```tsx
 import {
-  DefaultMantineColor,
-  MantineColorsTuple,
+  DefaultUIColor,
+  UIColorsTuple,
 } from '@react-ui/ui';
 
 type ExtendedCustomColors =
   | 'primaryColorName'
   | 'secondaryColorName'
-  | DefaultMantineColor;
+  | DefaultUIColor;
 
 declare module '@react-ui/ui' {
-  export interface MantineThemeColorsOverride {
-    colors: Record<ExtendedCustomColors, MantineColorsTuple>;
+  export interface UIThemeColorsOverride {
+    colors: Record<ExtendedCustomColors, UIColorsTuple>;
   }
 }
 ```
@@ -220,21 +220,21 @@ declare module '@react-ui/ui' {
 
 ```tsx
 import {
-  DefaultMantineSize,
-  MantineThemeSizesOverride,
+  DefaultUISize,
+  UIThemeSizesOverride,
 } from '@react-ui/ui';
 
 type ExtendedCustomSpacing =
   | 'xxl'
   | 'xxxs'
-  | DefaultMantineSize;
+  | DefaultUISize;
 
 type ExtendedCustomRadius =
   | 'xxs'
-  | DefaultMantineSize;
+  | DefaultUISize;
 
 declare module '@react-ui/ui' {
-  export interface MantineThemeSizesOverride {
+  export interface UIThemeSizesOverride {
     spacing: Record<ExtendedCustomSpacing, string>;
     radius: Record<ExtendedCustomRadius, string>;
   }
@@ -245,13 +245,13 @@ declare module '@react-ui/ui' {
 
 ## 自定义变体类型
 
-你可以通过在 `mantine.d.ts` 文件中使用新的 variant 类型扩展 `{x}Props` 接口，
+你可以通过在 `ui.d.ts` 文件中使用新的 variant 类型扩展 `{x}Props` 接口，
 来为自定义 [variants](/styles/variants-sizes) 定义类型。
 
 为 [Button](/core/button) 组件添加自定义 variant 类型的示例：
 
 ```tsx
-import { ButtonVariant, MantineSize } from '@react-ui/ui';
+import { ButtonVariant, UISize } from '@react-ui/ui';
 
 type ExtendedButtonVariant = ButtonVariant | 'contrast' | 'radial-gradient';
 

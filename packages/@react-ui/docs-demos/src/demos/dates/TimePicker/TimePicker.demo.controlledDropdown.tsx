@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ClockIcon } from '@phosphor-icons/react';
 import { ActionIcon } from '@react-ui/ui';
 import { TimePicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -65,7 +65,7 @@ function Demo() {
   );
 }
 
-export const controlledDropdown: MantineDemo = {
+export const controlledDropdown: UIDemo = {
   type: 'code',
   component: Demo,
   code,

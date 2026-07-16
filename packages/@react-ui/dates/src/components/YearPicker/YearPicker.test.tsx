@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
-import { datesTests } from '@mantine-tests/dates';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
+import { datesTests } from '@react-ui/tests/dates';
 import { YearPicker, YearPickerProps, YearPickerStylesNames } from './YearPicker';
 
 describe('@react-ui/dates/YearPicker', () => {
@@ -31,7 +31,7 @@ describe('@react-ui/dates/YearPicker', () => {
   datesTests.itHandlesControlsKeyboardEvents({
     component: YearPicker,
     props: {},
-    listSelector: '.mantine-YearPicker-yearsList',
+    listSelector: '.ui-YearPicker-yearsList',
   });
 
   it('can be uncontrolled (type="default")', async () => {
@@ -128,12 +128,12 @@ describe('@react-ui/dates/YearPicker', () => {
 
   it('has correct default __staticSelector', () => {
     const { container } = render(<YearPicker />);
-    expect(container.querySelector('.mantine-YearPicker-yearsList')).toBeInTheDocument();
+    expect(container.querySelector('.ui-YearPicker-yearsList')).toBeInTheDocument();
   });
 
   it('supports custom __staticSelector', () => {
     const { container } = render(<YearPicker __staticSelector="Calendar" />);
-    expect(container.querySelector('.mantine-Calendar-yearsList')).toBeInTheDocument();
+    expect(container.querySelector('.ui-Calendar-yearsList')).toBeInTheDocument();
   });
 
   const ariaLabels = {

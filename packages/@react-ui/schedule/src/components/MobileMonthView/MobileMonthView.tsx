@@ -10,12 +10,12 @@ import {
   Factory,
   getRadius,
   getThemeColor,
-  MantineRadius,
+  UIRadius,
   StylesApiProps,
   Text,
   UnstyledButton,
   useDirection,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useStyles,
 } from '@react-ui/ui';
@@ -139,7 +139,7 @@ export interface MobileMonthViewProps
   highlightToday?: boolean;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius` @default theme.defaultRadius */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 
   /** If set, days from the previous and next months are displayed to fill the weeks @default false */
   withOutsideDays?: boolean;
@@ -237,7 +237,7 @@ export const MobileMonthView = factory<MobileMonthViewFactory>((_props) => {
   } = props;
 
   const ctx = useDatesContext();
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const today = dayjs();
 
   const [_selectedDate, _setSelectedDate] = useUncontrolled<Date | string | null>({

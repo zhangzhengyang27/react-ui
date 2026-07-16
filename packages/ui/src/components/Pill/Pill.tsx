@@ -8,8 +8,8 @@ import {
     Factory,
     getRadius,
     getSize,
-    MantineRadius,
-    MantineSize,
+    UIRadius,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -34,7 +34,7 @@ export type PillCssVariables = {
 
 export interface PillProps extends BoxProps, StylesApiProps<PillFactory>, ElementProps<'div'> {
     /** Controls pill `font-size` and `padding` @default 'sm' */
-    size?: MantineSize
+    size?: UISize
 
     /** Controls visibility of the remove button @default false */
     withRemoveButton?: boolean
@@ -46,7 +46,7 @@ export interface PillProps extends BoxProps, StylesApiProps<PillFactory>, Elemen
     removeButtonProps?: CloseButtonProps & Pick<React.ComponentPropsWithoutRef<'button'>, 'onMouseDown' | 'onClick'>
 
     /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. @default 'xl' */
-    radius?: MantineRadius
+    radius?: UIRadius
 
     /** Adds disabled attribute, applies disabled styles */
     disabled?: boolean
@@ -58,7 +58,7 @@ export type PillFactory = Factory<{
     stylesNames: PillStylesNames
     vars: PillCssVariables
     variant: PillVariant
-    ctx: { size: MantineSize | (string & {}) | undefined }
+    ctx: { size: UISize | (string & {}) | undefined }
     staticComponents: {
         Group: typeof PillGroup
     }

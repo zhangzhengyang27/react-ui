@@ -111,7 +111,7 @@ export interface ComboboxPopoverProps<
     /** Uncontrolled component default value */
     defaultValue?: ComboboxPopoverValue<Multiple, Value>
 
-    /** Called when value changes */
+    //** 值变化时调用 */
     onChange?: (value: ComboboxPopoverValue<Multiple, Value>) => void
 
     /** Data used to generate options */

@@ -55,6 +55,18 @@ export function useRadialMove<T extends HTMLElement = any>(
   const [active, setActive] = useState(false)
   const cleanupRef = useRef<(() => void) | null>(null)
 
+  // 用 ref 跟踪回调与 options,保持 refCallback 稳定,避免内联回调导致 ref 频繁重绑
+  const onChangeRef = useRef(onChange)
+  onChangeRef.current = onChange
+  const onChangeEndRef = useRef(onChangeEnd)
+  onChangeEndRef.current = onChangeEnd
+  const onScrubStartRef = useRef(onScrubStart)
+  onScrubStartRef.current = onScrubStart
+  const onScrubEndRef = useRef(onScrubEnd)
+  onScrubEndRef.current = onScrubEnd
+  const stepRef = useRef(step)
+  stepRef.current = step
+
   useEffect(() => {
     return () => {
       cleanupRef.current?.()
@@ -66,14 +78,14 @@ export function useRadialMove<T extends HTMLElement = any>(
       const update = (point: { clientX: number; clientY: number }, done = false) => {
         if (node) {
           const deg = getAngle([point.clientX, point.clientY], node)
-          const newValue = normalizeRadialValue(deg, step || 1)
-          onChange(newValue)
-          done && onChangeEnd?.(newValue)
+          const newValue = normalizeRadialValue(deg, stepRef.current || 1)
+          onChangeRef.current(newValue)
+          done && onChangeEndRef.current?.(newValue)
         }
       }
 
       const beginTracking = () => {
-        onScrubStart?.()
+        onScrubStartRef.current?.()
         setActive(true)
         if (node) {
           node.style.userSelect = 'none'
@@ -85,7 +97,7 @@ export function useRadialMove<T extends HTMLElement = any>(
       }
 
       const endTracking = () => {
-        onScrubEnd?.()
+        onScrubEndRef.current?.()
         setActive(false)
         if (node) {
           node.style.userSelect = ''
@@ -143,7 +155,9 @@ export function useRadialMove<T extends HTMLElement = any>(
         }
       }
     },
-    [onChange, step, onChangeEnd, onScrubStart, onScrubEnd]
+    // step 仅影响 normalizeRadialValue 的离散化粒度,已通过 stepRef 跟踪;
+    // 这里保留空依赖以稳定 refCallback,与 use-move 模式一致
+    []
   )
 
   return { ref: refCallback, active }

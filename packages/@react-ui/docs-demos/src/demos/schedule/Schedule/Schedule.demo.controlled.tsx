@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Text } from '@react-ui/ui';
 import { Schedule, ScheduleViewLevel } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { events } from './_data';
 
 const code = `
@@ -12,7 +12,7 @@ import { events } from './data';
 
 function Demo() {
   const [view, setView] = useState<ScheduleViewLevel>('week');
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date('2024-01-15'));
 
   return (
     <div>
@@ -34,7 +34,7 @@ function Demo() {
 
 function Demo() {
   const [view, setView] = useState<ScheduleViewLevel>('week');
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date('2024-01-15'));
 
   return (
     <div>
@@ -53,7 +53,7 @@ function Demo() {
   );
 }
 
-export const controlled: MantineDemo = {
+export const controlled: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

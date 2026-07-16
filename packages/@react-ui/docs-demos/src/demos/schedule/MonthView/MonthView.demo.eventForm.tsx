@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { MonthView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { _eventFormCode, EventData, EventForm } from '../_EventForm';
 import { dataCode, regularEvents } from './_data';
 
@@ -79,7 +79,7 @@ function Demo() {
   return (
     <>
       <MonthView
-        date={new Date()}
+        date={new Date('2024-01-15')}
         events={events}
         withDragSlotSelect
         onDayClick={handleDayClick}
@@ -179,7 +179,7 @@ function Demo() {
   return (
     <>
       <MonthView
-        date={new Date()}
+        date={new Date('2024-01-15')}
         events={events}
         withDragSlotSelect
         onDayClick={handleDayClick}
@@ -199,13 +199,13 @@ function Demo() {
   );
 }`;
 
-export const eventForm: MantineDemo = {
+export const eventForm: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
-    { code: _eventFormCode, language: 'tsx', fileName: 'EventForm.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
+    { code: _eventFormCode, language: 'tsx', fileName: '事件表单.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'events.ts' },
   ],
 };

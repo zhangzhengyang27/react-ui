@@ -16,7 +16,7 @@ export type HoverCardTargetFactory = Factory<{
 
 export const HoverCardTarget = factory<HoverCardTargetFactory>((props, ref) => {
     const { children } = useProps('HoverCardTarget', null, props)
-    const child = getSingleElementChild(children)
+    const child = getSingleElementChild(children) as React.ReactElement<any>
 
     if (!child) {
         throw new Error('[@react-ui/ui] HoverCard.Target children should be an element or a component that accepts ref')
@@ -37,4 +37,4 @@ export const HoverCardTarget = factory<HoverCardTargetFactory>((props, ref) => {
     })
 })
 
-HoverCardTarget.displayName = '@mantine/core/HoverCardTarget'
+HoverCardTarget.displayName = '@react-ui/ui/HoverCardTarget'

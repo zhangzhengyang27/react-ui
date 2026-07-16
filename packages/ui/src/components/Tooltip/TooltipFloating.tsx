@@ -9,13 +9,13 @@ import {
     getRadius,
     getSingleElementChild,
     getThemeColor,
-    useMantineTheme,
+    useUITheme,
     useProps,
     useStyles,
     type BoxProps,
     type ElementProps,
-    type MantineColor,
-    type MantineRadius,
+    type UIColor,
+    type UIRadius,
     type StylesApiProps
 } from '../../core'
 import { OptionalPortal } from '../Portal'
@@ -37,11 +37,11 @@ export interface TooltipFloatingProps extends BoxProps, StylesApiProps<TooltipFl
     /** Uncontrolled tooltip initial opened state */
     defaultOpened?: boolean
 
-    /** Key of theme.colors or any valid CSS color */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 */
+    color?: UIColor
 
-    /** Key of theme.radius or any valid CSS value */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 */
+    radius?: UIRadius
 
     /** If set, content is wrapped */
     multiline?: boolean
@@ -100,7 +100,7 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((_props, ref) => 
         ...others
     } = props
 
-    const theme = useMantineTheme()
+    const theme = useUITheme()
     const getStyles = useStyles<TooltipFloatingFactory>({
         name: 'TooltipFloating',
         props,

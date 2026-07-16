@@ -1,6 +1,6 @@
 import { StarIcon } from '@phosphor-icons/react';
 import { Avatar, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { avatars } from './_mockdata';
 
 const code = `
@@ -44,7 +44,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

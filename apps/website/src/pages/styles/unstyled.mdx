@@ -8,12 +8,12 @@ export default Layout(MDX_DATA.UnstyledComponents);
 
 ## 将 ReactUI 用作 headless UI 库
 
-你可以将 ReactUI 作为 headless UI 库使用。要做到这一点，只需不在应用中导入 `@mantine/*/styles.css`。
+你可以将 ReactUI 作为 headless UI 库使用。要做到这一点，只需不在应用中导入 `@ui/*/styles.css`。
 然后你就可以使用 [Styles API](/styles/styles-api/) 配合任意你喜欢的样式方案为 ReactUI 组件设置样式。
 
-## HeadlessMantineProvider
+## HeadlessUIProvider
 
-`HeadlessMantineProvider` 是 [MantineProvider](/theming/mantine-provider) 的替代方案，
+`HeadlessUIProvider` 是 [UIProvider](/theming/ui-provider) 的替代方案，
 用于你想将 ReactUI 作为 headless UI 库时。它会移除所有与 ReactUI 样式相关的功能：
 
 - 不再为组件应用 ReactUI class
@@ -21,7 +21,7 @@ export default Layout(MDX_DATA.UnstyledComponents);
 - 移除所有配色方案相关功能
 - 不生成全局样式
 
-`HeadlessMantineProvider` 的限制：
+`HeadlessUIProvider` 的限制：
 
 - [配色方案切换](/theming/color-schemes/) 将不可用。如果你的应用需要深色模式，你需要自行实现。
 - 所有与样式相关的 props（如 `color`、`radius`、`size` 等）都不会生效。
@@ -29,18 +29,18 @@ export default Layout(MDX_DATA.UnstyledComponents);
 - `lightHidden`/`darkHidden`、`visibleFrom`/`hiddenFrom` props 将不可用。
 - [Style props](/styles/style-props/) 只对显式值有效，例如 `mt="xs"` 无效，但 `mt={5}` 有效。
 
-要使用 `HeadlessMantineProvider`，请参考 [入门指南](/getting-started/)，并将 `MantineProvider` 替换为 `HeadlessMantineProvider`。
+要使用 `HeadlessUIProvider`，请参考 [入门指南](/getting-started/)，并将 `UIProvider` 替换为 `HeadlessUIProvider`。
 注意，你的应用中不需要使用 [ColorSchemeScript](/theming/color-schemes/#colorschemescript)，它不会产生任何效果，
 因此可以忽略指南中的相关部分。
 
 ```tsx
-import { HeadlessMantineProvider } from '@react-ui/ui';
+import { HeadlessUIProvider } from '@react-ui/ui';
 
 function App() {
   return (
-    <HeadlessMantineProvider>
+    <HeadlessUIProvider>
       {/* Your application */}
-    </HeadlessMantineProvider>
+    </HeadlessUIProvider>
   );
 }
 ```

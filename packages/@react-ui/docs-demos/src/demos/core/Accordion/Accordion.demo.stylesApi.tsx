@@ -1,5 +1,5 @@
 import { Accordion, AccordionProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { AccordionStylesApi } from '@react-ui/docs-styles-api';
 import { data } from './_base';
 
@@ -16,7 +16,7 @@ function Demo() {
   ));
 
   return (
-    <Accordion value="Apples" order={3}{{props}}>
+    <Accordion value="苹果" order={3}{{props}}>
       {items}
     </Accordion>
   );
@@ -32,13 +32,13 @@ function Demo(props: AccordionProps) {
   ));
 
   return (
-    <Accordion value="Apples" order={3} {...props}>
+    <Accordion value="苹果" order={3} {...props}>
       {items}
     </Accordion>
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: AccordionStylesApi,
   component: Demo,

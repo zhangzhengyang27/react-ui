@@ -14,7 +14,7 @@ export interface StylesApiDemoProps extends DemoAreaProps {
 function getCss(hovered: string | null) {
   return hovered
     ? `.${hovered} {\n  outline: 2px solid #fe0d45;\n  outline-offset: -2px; \n}\n`
-    : '/*\n * Hover over selectors to apply outline styles\n *\n */';
+    : '/*\n * 将鼠标悬停在选择器上以应用轮廓样式\n *\n */';
 }
 
 export function StylesApiDemo({
@@ -57,8 +57,8 @@ export function StylesApiDemo({
           controls={controls}
           dimmed={dimmed}
           striped={striped}
-          title="Component Styles API"
-          description="Hover over selectors to highlight corresponding elements"
+          title="组件样式 API"
+          description="将鼠标悬停在选择器上以高亮对应元素"
         >
           {cloneElement(children as React.JSX.Element, {
             classNames: selectors.reduce<Record<string, string>>((acc, item) => {
@@ -70,9 +70,9 @@ export function StylesApiDemo({
 
         <DemoCode
           code={[
-            { fileName: 'Demo.module.css', language: 'scss', code: getCss(hovered) },
+            { fileName: '演示样式.module.css', language: 'scss', code: getCss(hovered) },
             {
-              fileName: 'Demo.tsx',
+              fileName: '演示代码.tsx',
               language: 'tsx',
               code: code.replace('{{props}}', classNamesProp),
             },

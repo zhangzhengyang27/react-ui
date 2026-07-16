@@ -3,18 +3,18 @@ import type { StylesApiData } from '../types';
 
 export const MarqueeStylesApi: StylesApiData<MarqueeFactory> = {
   selectors: {
-    root: 'Root element',
-    content: 'Animated scrolling container',
-    group: 'Repeated children wrapper',
+    root: '根元素',
+    content: 'Animated scrolling 容器',
+    group: 'Repeated children 包装器',
   },
 
   vars: {
     root: {
-      '--marquee-duration': 'Controls animation duration',
-      '--marquee-gap': 'Controls gap between items',
-      '--marquee-repeat': 'Number of times content is repeated',
-      '--marquee-fade-color': 'Controls the fade edge gradient color',
-      '--marquee-fade-size': 'Controls the size of the fade gradient',
+      '--marquee-duration': '控制动画持续时间',
+      '--marquee-gap': '控制项之间的间距',
+      '--marquee-repeat': '内容重复次数',
+      '--marquee-fade-color': '控制渐变边缘颜色',
+      '--marquee-fade-size': '控制 the fade gradient 的 the size',
     },
   },
 
@@ -25,8 +25,8 @@ export const MarqueeStylesApi: StylesApiData<MarqueeFactory> = {
       value: 'horizontal | vertical',
       condition: 'Value depends on `orientation` prop',
     },
-    { modifier: 'data-reverse', selector: 'root', condition: '`reverse` prop is set' },
-    { modifier: 'data-pause-on-hover', selector: 'root', condition: '`pauseOnHover` prop is set' },
+    { modifier: 'data-reverse', selector: 'root', condition: '设置了 `reverse` 属性' },
+    { modifier: 'data-pause-on-hover', selector: 'root', condition: '设置了 `pauseOnHover` 属性' },
     {
       modifier: 'data-fade-edges',
       selector: 'root',

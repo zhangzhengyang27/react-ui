@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Group, Stack, Text } from '@react-ui/ui';
 import { useDebouncedCallback } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -24,8 +24,8 @@ function InputWithDebounce({ onChange }) {
 
   return (
     <input
-      aria-label="Enter text"
-      placeholder="Enter text..."
+      aria-label="输入文本"
+      placeholder="输入文本..."
       value={innerValue}
       onChange={(event) => handleChange(event.target.value)}
       style={{ padding: '8px', width: '100%' }}
@@ -43,7 +43,7 @@ function Demo() {
 
       <Group>
         <Button onClick={() => setVisible(!visible)}>
-          {visible ? 'Hide component' : 'Show component'}
+          {visible ? '隐藏组件' : '显示组件'}
         </Button>
       </Group>
 
@@ -75,8 +75,8 @@ function InputWithDebounce({ onChange }: { onChange: (value: string) => void }) 
 
   return (
     <input
-      aria-label="Enter text"
-      placeholder="Enter text..."
+      aria-label="输入文本"
+      placeholder="输入文本..."
       value={innerValue}
       onChange={(event) => handleChange(event.target.value)}
       style={{ padding: '8px', width: '100%' }}
@@ -94,7 +94,7 @@ function Demo() {
 
       <Group>
         <Button onClick={() => setVisible(!visible)}>
-          {visible ? 'Hide component' : 'Show component'}
+          {visible ? '隐藏组件' : '显示组件'}
         </Button>
       </Group>
 
@@ -109,7 +109,7 @@ function Demo() {
   );
 }
 
-export const unmount: MantineDemo = {
+export const unmount: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Box, TextInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useEffect } from 'react';
@@ -23,7 +23,7 @@ function Demo() {
       try {
         form.setValues(JSON.parse(window.localStorage.getItem('user-form')!));
       } catch (e) {
-        console.log('Failed to parse stored value');
+        console.log('解析存储值失败');
       }
     }
   }, []);
@@ -31,15 +31,15 @@ function Demo() {
   return (
     <Box maw={340} mx="auto">
       <TextInput
-        label="Name"
-        placeholder="Name"
+        label="姓名"
+        placeholder="姓名"
         key={form.key('name')}
         {...form.getInputProps('name')}
       />
       <TextInput
         mt="md"
-        label="Occupation"
-        placeholder="Occupation"
+        label="职业"
+        placeholder="职业"
         key={form.key('occupation')}
         {...form.getInputProps('occupation')}
       />
@@ -64,7 +64,7 @@ function Demo() {
         form.setValues(JSON.parse(window.localStorage.getItem('user-form')!));
       } catch (e) {
         // oxlint-disable-next-line no-console
-        console.log('Failed to parse stored value');
+        console.log('解析存储值失败');
       }
     }
   }, []);
@@ -72,15 +72,15 @@ function Demo() {
   return (
     <Box maw={340} mx="auto">
       <TextInput
-        label="Name"
-        placeholder="Name"
+        label="姓名"
+        placeholder="姓名"
         key={form.key('name')}
         {...form.getInputProps('name')}
       />
       <TextInput
         mt="md"
-        label="Occupation"
-        placeholder="Occupation"
+        label="职业"
+        placeholder="职业"
         key={form.key('occupation')}
         {...form.getInputProps('occupation')}
       />
@@ -88,7 +88,7 @@ function Demo() {
   );
 }
 
-export const localStorage: MantineDemo = {
+export const localStorage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

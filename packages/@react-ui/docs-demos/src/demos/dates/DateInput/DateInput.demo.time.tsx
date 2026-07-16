@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { useState } from 'react';
 import { DateInput, DateInputProps, DateStringValue } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 dayjs.extend(customParseFormat);
 
@@ -33,8 +33,8 @@ function Demo() {
       dateParser={dateParser}
       value={value}
       onChange={setValue}
-      label="Date and time input"
-      placeholder="Date and time input"
+      label="日期和时间输入"
+      placeholder="日期和时间输入"
     />
   );
 }
@@ -57,13 +57,13 @@ function Demo() {
       dateParser={dateParser}
       value={value}
       onChange={setValue}
-      label="Date and time input"
-      placeholder="Date and time input"
+      label="日期和时间输入"
+      placeholder="日期和时间输入"
     />
   );
 }
 
-export const time: MantineDemo = {
+export const time: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

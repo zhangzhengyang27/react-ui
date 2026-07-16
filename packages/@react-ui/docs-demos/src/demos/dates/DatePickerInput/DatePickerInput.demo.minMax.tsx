@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { DatePickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -10,8 +10,8 @@ function Demo() {
   const [value, setValue] = useState<string | null>(null);
   return (
     <DatePickerInput
-      label="Pick date"
-      placeholder="Pick date"
+      label="选择日期"
+      placeholder="选择日期"
       value={value}
       onChange={setValue}
       minDate={new Date(2022, 1, 10)}
@@ -25,8 +25,8 @@ function Demo() {
   const [value, setValue] = useState<string | null>(null);
   return (
     <DatePickerInput
-      label="Pick date"
-      placeholder="Pick date"
+      label="选择日期"
+      placeholder="选择日期"
       value={value}
       onChange={setValue}
       minDate={new Date(2022, 1, 10)}
@@ -35,7 +35,7 @@ function Demo() {
   );
 }
 
-export const minMax: MantineDemo = {
+export const minMax: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

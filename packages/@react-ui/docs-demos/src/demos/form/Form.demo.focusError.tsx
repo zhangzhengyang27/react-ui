@@ -2,7 +2,7 @@
 
 import { Button, Group, TextInput } from '@react-ui/ui';
 import { isEmail, isNotEmpty, useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Group, TextInput } from '@react-ui/ui';
@@ -18,8 +18,8 @@ function Demo() {
     },
 
     validate: {
-      name: isNotEmpty('Name is required'),
-      email: isEmail('Invalid email'),
+      name: isNotEmpty('姓名必填'),
+      email: isEmail('无效的邮箱'),
     },
   });
 
@@ -35,23 +35,23 @@ function Demo() {
     >
       <TextInput
         withAsterisk
-        label="Your name"
-        placeholder="Your name"
+        label="你的姓名"
+        placeholder="你的姓名"
         key={form.key('name')}
         {...form.getInputProps('name')}
       />
 
       <TextInput
         withAsterisk
-        label="Your email"
-        placeholder="your@email.com"
+        label="你的邮箱"
+        placeholder="yourname@example.com"
         mt="md"
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
 
       <Group justify="flex-end" mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -68,8 +68,8 @@ function Demo() {
     },
 
     validate: {
-      name: isNotEmpty('Name is required'),
-      email: isEmail('Invalid email'),
+      name: isNotEmpty('姓名必填'),
+      email: isEmail('无效的邮箱'),
     },
   });
 
@@ -85,29 +85,29 @@ function Demo() {
     >
       <TextInput
         withAsterisk
-        label="Your name"
-        placeholder="Your name"
+        label="你的姓名"
+        placeholder="你的姓名"
         key={form.key('name')}
         {...form.getInputProps('name')}
       />
 
       <TextInput
         withAsterisk
-        label="Your email"
-        placeholder="your@email.com"
+        label="你的邮箱"
+        placeholder="yourname@example.com"
         mt="md"
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
 
       <Group justify="flex-end" mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const focusError: MantineDemo = {
+export const focusError: UIDemo = {
   type: 'code',
   component: Demo,
   code,

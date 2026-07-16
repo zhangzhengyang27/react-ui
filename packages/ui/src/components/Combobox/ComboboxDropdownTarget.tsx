@@ -16,7 +16,7 @@ export type ComboboxDropdownTargetFactory = Factory<{
 
 export const ComboboxDropdownTarget = factory<ComboboxDropdownTargetFactory>((props, ref) => {
     const { children } = useProps('ComboboxDropdownTarget', null, props)
-    const child = getSingleElementChild(children)
+    const child = getSingleElementChild(children) as React.ReactElement<any>
     const ctx = useComboboxContext()
 
     if (!child) {
@@ -50,4 +50,4 @@ export const ComboboxDropdownTarget = factory<ComboboxDropdownTargetFactory>((pr
     })
 })
 
-ComboboxDropdownTarget.displayName = '@mantine/core/ComboboxDropdownTarget'
+ComboboxDropdownTarget.displayName = '@react-ui/ui/ComboboxDropdownTarget'

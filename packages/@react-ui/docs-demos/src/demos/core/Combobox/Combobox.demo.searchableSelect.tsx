@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Combobox, InputBase, useCombobox } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
 import { InputBase, Combobox, useCombobox } from '@react-ui/ui';
 
-const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
+const groceries = ['🍎 苹果', '🍌 香蕉', '🥦 西兰花', '🥕 胡萝卜', '🍫 巧克力'];
 
 function Demo() {
   const combobox = useCombobox({
@@ -46,7 +46,7 @@ function Demo() {
             combobox.closeDropdown();
             setSearch(value || '');
           }}
-          placeholder="Search value"
+          placeholder="搜索值"
           value={search}
           onChange={(event) => {
             combobox.updateSelectedOptionIndex();
@@ -57,7 +57,7 @@ function Demo() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          {options.length > 0 ? options : <Combobox.Empty>Nothing found</Combobox.Empty>}
+          {options.length > 0 ? options : <Combobox.Empty>未找到</Combobox.Empty>}
         </Combobox.Options>
       </Combobox.Dropdown>
     </Combobox>
@@ -65,7 +65,7 @@ function Demo() {
 }
 `;
 
-const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
+const groceries = ['🍎 苹果', '🍌 香蕉', '🥦 西兰花', '🥕 胡萝卜', '🍫 巧克力'];
 
 function Demo() {
   const combobox = useCombobox({
@@ -105,7 +105,7 @@ function Demo() {
             combobox.closeDropdown();
             setSearch(value || '');
           }}
-          placeholder="Search value"
+          placeholder="搜索值"
           value={search}
           onChange={(event) => {
             combobox.updateSelectedOptionIndex();
@@ -116,14 +116,14 @@ function Demo() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          {options.length > 0 ? options : <Combobox.Empty>Nothing found</Combobox.Empty>}
+          {options.length > 0 ? options : <Combobox.Empty>未找到</Combobox.Empty>}
         </Combobox.Options>
       </Combobox.Dropdown>
     </Combobox>
   );
 }
 
-export const searchableSelect: MantineDemo = {
+export const searchableSelect: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

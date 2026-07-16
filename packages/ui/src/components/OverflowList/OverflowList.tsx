@@ -1,5 +1,5 @@
 // Originally based on https://github.com/Eliav2/react-responsive-overflow-list (MIT License)
-// Contains the modified version adapted for Mantine
+// Contains the modified version adapted for UI
 import { cloneElement, isValidElement, useMemo, useRef, useState } from 'react'
 import { Fragment } from 'react/jsx-runtime'
 import { useIsomorphicEffect, useMergedRef } from '@react-ui/hooks'
@@ -11,7 +11,7 @@ import {
     factory,
     Factory,
     getSpacing,
-    MantineSpacing,
+    UISpacing,
     StylesApiProps,
     useProps,
     useStyles
@@ -45,7 +45,7 @@ export interface OverflowListProps<T = any>
     maxVisibleItems?: number
 
     /** Key of `theme.spacing` or any valid CSS value for `gap`, numbers are converted to rem @default 'xs' */
-    gap?: MantineSpacing
+    gap?: UISpacing
 
     /** Direction from which items are collapsed when they overflow, `'end'` collapses last items, `'start'` collapses first items @default 'end' */
     collapseFrom?: 'start' | 'end'

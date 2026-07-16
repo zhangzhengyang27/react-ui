@@ -29,10 +29,10 @@ cd web
 
 ## PostCSS 配置
 
-安装 PostCSS 插件和 [postcss-preset-mantine](/styles/postcss-preset)：
+安装 PostCSS 插件和 [postcss-preset-ui](/styles/postcss-preset)：
 
 <InstallScript
-  packages="postcss postcss-preset-mantine postcss-simple-vars"
+  packages="postcss postcss-preset-ui postcss-simple-vars"
   dev
 />
 
@@ -41,14 +41,14 @@ cd web
 ```js
 module.exports = {
   plugins: {
-    'postcss-preset-mantine': {},
+    'postcss-preset-ui': {},
     'postcss-simple-vars': {
       variables: {
-        'mantine-breakpoint-xs': '36em',
-        'mantine-breakpoint-sm': '48em',
-        'mantine-breakpoint-md': '62em',
-        'mantine-breakpoint-lg': '75em',
-        'mantine-breakpoint-xl': '88em',
+        'ui-breakpoint-xs': '36em',
+        'ui-breakpoint-sm': '48em',
+        'ui-breakpoint-md': '62em',
+        'ui-breakpoint-lg': '75em',
+        'ui-breakpoint-xl': '88em',
       },
     },
   },
@@ -57,7 +57,7 @@ module.exports = {
 
 ## 配置
 
-在 `web/src/App.tsx` 文件中添加样式导入、[MantineProvider](/theming/mantine-provider) 和 [ColorSchemeScript](/theming/color-schemes)：
+在 `web/src/App.tsx` 文件中添加样式导入、[UIProvider](/theming/ui-provider) 和 [ColorSchemeScript](/theming/color-schemes)：
 
 ```tsx
 // 导入你已安装包的样式。
@@ -68,17 +68,17 @@ import { FatalErrorBoundary, RedwoodProvider } from '@redwoodjs/web';
 import { RedwoodApolloProvider } from '@redwoodjs/web/apollo';
 import FatalErrorPage from 'src/pages/FatalErrorPage';
 import Routes from 'src/Routes';
-import { ColorSchemeScript, MantineProvider } from '@react-ui/ui';
+import { ColorSchemeScript, UIProvider } from '@react-ui/ui';
 
 const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>
     <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
       <ColorSchemeScript />
-      <MantineProvider>
+      <UIProvider>
         <RedwoodApolloProvider>
           <Routes />
         </RedwoodApolloProvider>
-      </MantineProvider>
+      </UIProvider>
     </RedwoodProvider>
   </FatalErrorBoundary>
 );

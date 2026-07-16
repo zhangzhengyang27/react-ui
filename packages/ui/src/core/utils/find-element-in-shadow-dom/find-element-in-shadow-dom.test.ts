@@ -4,7 +4,7 @@ import {
   getRootElement,
 } from './find-element-in-shadow-dom';
 
-describe('@mantine/core/utils/find-element-in-shadow-dom', () => {
+describe('@react-ui/ui/utils/find-element-in-shadow-dom', () => {
   afterEach(() => {
     document.body.innerHTML = '';
   });

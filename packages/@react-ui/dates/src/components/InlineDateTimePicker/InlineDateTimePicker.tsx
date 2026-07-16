@@ -9,7 +9,7 @@ import {
   ElementProps,
   Factory,
   genericFactory,
-  MantineSize,
+  UISize,
   StylesApiProps,
   Text,
   useProps,
@@ -68,7 +68,7 @@ export interface InlineDateTimePickerProps<Type extends DatePickerType = 'defaul
   labelSeparator?: string;
 
   /** Component size @default 'sm' */
-  size?: MantineSize;
+  size?: UISize;
 
   /** Min date */
   minDate?: DateStringValue | Date;
@@ -76,7 +76,7 @@ export interface InlineDateTimePickerProps<Type extends DatePickerType = 'defaul
   /** Max date */
   maxDate?: DateStringValue | Date;
 
-  /** @internal Adds data-mantine-stop-propagation to interactive elements */
+  /** @internal Adds data-ui-stop-propagation to interactive elements */
   __stopPropagation?: boolean;
 
   /** @internal Overrides the static selector used for class names */
@@ -378,7 +378,7 @@ export const InlineDateTimePicker = genericFactory<InlineDateTimePickerFactory>(
             onChange={handleStartTimeChange}
             onKeyDown={handleTimeInputKeyDown}
             size={size}
-            data-mantine-stop-propagation={__stopPropagation || undefined}
+            data-ui-stop-propagation={__stopPropagation || undefined}
             hoursRef={startTimePickerRefMerged}
           />
 
@@ -390,15 +390,15 @@ export const InlineDateTimePicker = genericFactory<InlineDateTimePickerFactory>(
               style: submitButtonProps?.style,
             })}
             unstyled={unstyled}
-            data-mantine-stop-propagation={__stopPropagation || undefined}
-            // eslint-disable-next-line react/no-children-prop
-            children={<CheckIcon size="30%" />}
+            data-ui-stop-propagation={__stopPropagation || undefined}
             {...submitButtonProps}
             onClick={(event) => {
               submitButtonProps?.onClick?.(event);
               onSubmit?.();
             }}
-          />
+          >
+            <CheckIcon size="30%" />
+          </ActionIcon>
         </div>
       )}
 
@@ -421,7 +421,7 @@ export const InlineDateTimePicker = genericFactory<InlineDateTimePickerFactory>(
               onChange={handleStartTimeChange}
               onKeyDown={handleTimeInputKeyDown}
               size={size}
-              data-mantine-stop-propagation={__stopPropagation || undefined}
+              data-ui-stop-propagation={__stopPropagation || undefined}
               hoursRef={startTimePickerRefMerged}
             />
 
@@ -439,7 +439,7 @@ export const InlineDateTimePicker = genericFactory<InlineDateTimePickerFactory>(
               onChange={handleEndTimeChange}
               onKeyDown={handleTimeInputKeyDown}
               size={size}
-              data-mantine-stop-propagation={__stopPropagation || undefined}
+              data-ui-stop-propagation={__stopPropagation || undefined}
               hoursRef={endTimePickerRefMerged}
             />
 
@@ -451,15 +451,15 @@ export const InlineDateTimePicker = genericFactory<InlineDateTimePickerFactory>(
                 style: submitButtonProps?.style,
               })}
               unstyled={unstyled}
-              data-mantine-stop-propagation={__stopPropagation || undefined}
-              // eslint-disable-next-line react/no-children-prop
-              children={<CheckIcon size="30%" />}
+              data-ui-stop-propagation={__stopPropagation || undefined}
               {...submitButtonProps}
               onClick={(event) => {
                 submitButtonProps?.onClick?.(event);
                 onSubmit?.();
               }}
-            />
+            >
+              <CheckIcon size="30%" />
+            </ActionIcon>
           </div>
         </>
       )}

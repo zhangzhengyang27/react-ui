@@ -1,19 +1,19 @@
 import { DateTimePicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { DateTimePicker } from '@react-ui/dates';
 
 function Demo() {
-  return <DateTimePicker label="Disabled" placeholder="Pick date and time" disabled />;
+  return <DateTimePicker label="已禁用" placeholder="选择日期和时间" disabled />;
 }
 `;
 
 function Demo() {
-  return <DateTimePicker label="Disabled" placeholder="Pick date and time" disabled />;
+  return <DateTimePicker label="已禁用" placeholder="选择日期和时间" disabled />;
 }
 
-export const disabled: MantineDemo = {
+export const disabled: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

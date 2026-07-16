@@ -1,5 +1,5 @@
 import { createStyles, keyframes } from '@react-ui/emotion';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { createStyles, keyframes } from '@react-ui/emotion';
@@ -22,7 +22,7 @@ const useStyles = createStyles((theme) => ({
 
 function Demo() {
   const { classes } = useStyles();
-  return <div className={classes.container}>Keyframes demo</div>;
+  return <div className={classes.container}>关键帧演示</div>;
 }
 `;
 
@@ -47,10 +47,10 @@ const useStyles = createStyles((theme, _, u) => ({
 
 function Demo() {
   const { classes } = useStyles();
-  return <div className={classes.container}>Keyframes demo</div>;
+  return <div className={classes.container}>关键帧演示</div>;
 }
 
-export const _keyframes: MantineDemo = {
+export const _keyframes: UIDemo = {
   type: 'code',
   component: Demo,
   code,

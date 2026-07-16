@@ -1,8 +1,8 @@
-import { Button, createTheme, MantineThemeProvider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { Button, createTheme, UIThemeProvider } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
-import { MantineProvider, createTheme, Button } from '@react-ui/ui';
+import { UIProvider, createTheme, Button } from '@react-ui/ui';
 
 const theme = createTheme({
   defaultGradient: {
@@ -14,9 +14,9 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
-      <Button variant="gradient">Button with custom default gradient</Button>
-    </MantineProvider>
+    <UIProvider theme={theme}>
+      <Button variant="gradient">自定义默认渐变按钮</Button>
+    </UIProvider>
   );
 }
 `;
@@ -31,13 +31,13 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
-      <Button variant="gradient">Button with custom default gradient</Button>
-    </MantineThemeProvider>
+    <UIThemeProvider theme={theme}>
+      <Button variant="gradient">自定义默认渐变按钮</Button>
+    </UIThemeProvider>
   );
 }
 
-export const defaultGradient: MantineDemo = {
+export const defaultGradient: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

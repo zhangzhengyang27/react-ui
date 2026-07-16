@@ -1,18 +1,11 @@
 import { Box, Text, TextProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: TextProps) {
   return (
     <Box maw={400} mx="auto">
       <Text {...props}>
-        From Bulbapedia: Bulbasaur is a small, quadrupedal Pokémon that has blue-green skin with
-        darker patches. It has red eyes with white pupils, pointed, ear-like structures on top of
-        its head, and a short, blunt snout with a wide mouth. A pair of small, pointed teeth are
-        visible in the upper jaw when its mouth is open. Each of its thick legs ends with three
-        sharp claws. On Bulbasaur&apos;s back is a green plant bulb, which is grown from a seed
-        planted there at birth. The bulb also conceals two slender, tentacle-like vines and provides
-        it with energy through photosynthesis as well as from the nutrient-rich seeds contained
-        within.
+        来自百科：妙蛙种子是一种小型四足宝可梦，拥有蓝绿色皮肤并带有深色斑点。它有着红色眼睛和白色瞳孔，头顶长有耳状突起，嘴巴宽阔、鼻子短钝。张开嘴时可以看到上颚有一对尖牙。它的粗短四肢末端各长有三只锐利爪子。背上的绿色球茎从出生时的种子长成，不仅藏有两条细长藤蔓，还能通过光合作用以及球茎内富含营养的种子为它提供能量。
       </Text>
     </Box>
   );
@@ -30,7 +23,7 @@ function Demo() {
 }
 `;
 
-export const linesConfigurator: MantineDemo = {
+export const linesConfigurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

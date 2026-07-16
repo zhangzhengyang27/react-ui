@@ -1,6 +1,6 @@
 import { CaretDownIcon } from '@phosphor-icons/react';
 import { Autocomplete, Stack } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { CaretDownIcon } from '@phosphor-icons/react';
@@ -10,8 +10,8 @@ function Demo() {
   return (
     <Stack>
       <Autocomplete
-        label="clearSectionMode='both' (default)"
-        placeholder="Pick value"
+        label="clearSectionMode='both'（默认）"
+        placeholder="选择值"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         defaultValue="React"
         clearable
@@ -21,7 +21,7 @@ function Demo() {
 
       <Autocomplete
         label="clearSectionMode='rightSection'"
-        placeholder="Pick value"
+        placeholder="选择值"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         defaultValue="React"
         clearable
@@ -31,7 +31,7 @@ function Demo() {
 
       <Autocomplete
         label="clearSectionMode='clear'"
-        placeholder="Pick value"
+        placeholder="选择值"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         defaultValue="React"
         clearable
@@ -47,8 +47,8 @@ function Demo() {
   return (
     <Stack>
       <Autocomplete
-        label="clearSectionMode='both' (default)"
-        placeholder="Pick value"
+        label="clearSectionMode='both'（默认）"
+        placeholder="选择值"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         defaultValue="React"
         clearable
@@ -58,7 +58,7 @@ function Demo() {
 
       <Autocomplete
         label="clearSectionMode='rightSection'"
-        placeholder="Pick value"
+        placeholder="选择值"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         defaultValue="React"
         clearable
@@ -68,7 +68,7 @@ function Demo() {
 
       <Autocomplete
         label="clearSectionMode='clear'"
-        placeholder="Pick value"
+        placeholder="选择值"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         defaultValue="React"
         clearable
@@ -79,7 +79,7 @@ function Demo() {
   );
 }
 
-export const clearSectionMode: MantineDemo = {
+export const clearSectionMode: UIDemo = {
   type: 'code',
   component: Demo,
   code,

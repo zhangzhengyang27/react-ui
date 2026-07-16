@@ -1,5 +1,5 @@
 import { Progress } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Progress } from '@react-ui/ui';
@@ -13,7 +13,7 @@ function Demo(props: any) {
   return <Progress {...props} />;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Demo,
   code,

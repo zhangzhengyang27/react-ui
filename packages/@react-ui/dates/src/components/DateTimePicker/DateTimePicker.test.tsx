@@ -6,7 +6,7 @@ import {
   screen,
   tests,
   userEvent,
-} from '@mantine-tests/core';
+} from '@react-ui/tests';
 import {
   clickInput,
   datesTests,
@@ -15,7 +15,7 @@ import {
   expectOpenedModal,
   expectOpenedPopover,
   expectValue,
-} from '@mantine-tests/dates';
+} from '@react-ui/tests/dates';
 import { DatesProvider } from '../DatesProvider';
 import { DateTimePicker, DateTimePickerProps } from './DateTimePicker';
 
@@ -352,10 +352,10 @@ describe('@react-ui/dates/DateTimePicker', () => {
     );
 
     expect(container.querySelector('[data-dates-input]')).toHaveClass(
-      'mantine-DateTimePicker-input'
+      'ui-DateTimePicker-input'
     );
 
-    expect(container.querySelector('table button')).toHaveClass('mantine-DateTimePicker-day');
+    expect(container.querySelector('table button')).toHaveClass('ui-DateTimePicker-day');
   });
 
   describe('range type', () => {
@@ -453,7 +453,7 @@ describe('@react-ui/dates/DateTimePicker', () => {
       );
 
       await clickInput(container);
-      const rangeInfo = container.querySelector('.mantine-DateTimePicker-rangeInfo');
+      const rangeInfo = container.querySelector('.ui-DateTimePicker-rangeInfo');
       expect(rangeInfo).toBeInTheDocument();
       expect(rangeInfo!.textContent).toContain('11/04/2022');
       expect(rangeInfo!.textContent).toContain('15/04/2022');

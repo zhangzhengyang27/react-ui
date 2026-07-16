@@ -9,16 +9,16 @@ interface MdxFlexboxGapSupportProps {
 export function MdxFlexboxGapSupport({ component }: MdxFlexboxGapSupportProps) {
   return (
     <>
-      <MdxTitle id="browser-support">Browser support</MdxTitle>
+      <MdxTitle id="browser-support">浏览器支持</MdxTitle>
       <MdxParagraph>
-        <MdxCode>{component}</MdxCode> uses{' '}
-        <MdxLink href="https://caniuse.com/flexbox-gap">flexbox gap</MdxLink> to add spacing between
-        children. In older browsers, <MdxCode>{component}</MdxCode> children may not have spacing.
-        You can install PostCSS{' '}
+        <MdxCode>{component}</MdxCode> 使用{' '}
+        <MdxLink href="https://caniuse.com/flexbox-gap">flexbox gap</MdxLink>在子元素之间添加间距。
+        在旧版浏览器中，<MdxCode>{component}</MdxCode> 的子元素可能没有间距。
+        你可以安装 PostCSS{' '}
         <MdxLink href="https://github.com/gavinmcfarland/flex-gap-polyfill">
           flex-gap-polyfill
         </MdxLink>{' '}
-        to add support for older browsers.
+        以支持旧版浏览器。
       </MdxParagraph>
     </>
   );

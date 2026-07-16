@@ -1,5 +1,5 @@
 import { Anchor, Avatar, Group, Popover, Stack, Text, UnstyledButton } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Popover, Avatar, Text, Group, Anchor, Stack } from '@react-ui/ui';
@@ -26,8 +26,8 @@ function Demo() {
             <Text size="sm" fw={700} style={{ lineHeight: 1 }}>
               ReactUI
             </Text>
-            <Anchor href="https://x.com/mantinedev" c="dimmed" size="xs" style={{ lineHeight: 1 }}>
-              @mantinedev
+            <Anchor href="https://x.com/uidev" c="dimmed" size="xs" style={{ lineHeight: 1 }}>
+              @uidev
             </Anchor>
           </Stack>
         </Group>
@@ -73,8 +73,8 @@ function Demo() {
             <Text size="sm" fw={700} style={{ lineHeight: 1 }}>
               ReactUI
             </Text>
-            <Anchor href="https://x.com/mantinedev" c="dimmed" size="xs" style={{ lineHeight: 1 }}>
-              @mantinedev
+            <Anchor href="https://x.com/uidev" c="dimmed" size="xs" style={{ lineHeight: 1 }}>
+              @uidev
             </Anchor>
           </Stack>
         </Group>
@@ -97,7 +97,7 @@ function Demo() {
   );
 }
 
-export const overlay: MantineDemo = {
+export const overlay: UIDemo = {
   type: 'code',
   component: Demo,
   code,

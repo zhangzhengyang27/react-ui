@@ -29,8 +29,8 @@ export const data: TreeNodeData[] = [
         ],
       },
       {
-        label: '@mantine',
-        value: 'node_modules/@mantine',
+        label: '@ui',
+        value: 'node_modules/@ui',
         children: [
           {
             label: 'core',
@@ -101,8 +101,8 @@ export const data: TreeNodeData[] = [
         ],
       },
       {
-        label: '@mantine',
-        value: 'node_modules/@mantine',
+        label: '@ui',
+        value: 'node_modules/@ui',
         children: [
           {
             label: 'core',

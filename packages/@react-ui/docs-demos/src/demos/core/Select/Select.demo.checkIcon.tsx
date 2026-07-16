@@ -1,5 +1,5 @@
 import { Select } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Select } from '@react-ui/ui';
@@ -12,8 +12,8 @@ function Demo() {
       data={['React', 'Angular', 'Svelte', 'Vue']}
       dropdownOpened
       pb={150}
-      label="Control check icon"
-      placeholder="Pick value"
+      label="控制勾选图标"
+      placeholder="选择值"
       defaultValue="React"
     />
   );
@@ -27,15 +27,15 @@ function Wrapper(props: any) {
       data={['React', 'Angular', 'Svelte', 'Vue']}
       dropdownOpened
       pb={150}
-      label="Control check icon"
-      placeholder="Pick value"
+      label="控制勾选图标"
+      placeholder="选择值"
       defaultValue="React"
       comboboxProps={{ hideDetached: false }}
     />
   );
 }
 
-export const checkIcon: MantineDemo = {
+export const checkIcon: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

@@ -1,6 +1,6 @@
 import { HeartBreakIcon, HeartIcon } from '@phosphor-icons/react';
 import { RangeSlider, Slider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Slider, RangeSlider } from '@react-ui/ui';
@@ -57,7 +57,7 @@ function Demo() {
   );
 }
 
-export const thumbChildren: MantineDemo = {
+export const thumbChildren: UIDemo = {
   type: 'code',
   component: Demo,
   code,

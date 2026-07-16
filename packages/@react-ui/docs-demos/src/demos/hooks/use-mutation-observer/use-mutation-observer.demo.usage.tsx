@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Text } from '@react-ui/ui';
 import { useMutationObserver } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -79,7 +79,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

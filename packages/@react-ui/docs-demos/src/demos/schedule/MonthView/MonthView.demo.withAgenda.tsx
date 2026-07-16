@@ -1,29 +1,29 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { MonthView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
-const startOfMonth = dayjs().startOf('month').format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
+const startOfMonth = dayjs('2024-01-15').startOf('month').format('YYYY-MM-DD');
 
 const eventsData = [
   {
     id: 'team-meeting',
-    title: 'Team Meeting',
+    title: '团队会议',
     start: `${startOfMonth} 09:00:00`,
     end: `${startOfMonth} 10:30:00`,
     color: 'blue',
   },
   {
     id: 'client-call',
-    title: 'Client Call',
+    title: '客户电话',
     start: `${today} 14:00:00`,
     end: `${today} 15:00:00`,
     color: 'green',
   },
   {
     id: 'weekly-review-series',
-    title: 'Weekly review',
+    title: '每周回顾',
     start: `${startOfMonth} 16:00:00`,
     end: `${startOfMonth} 17:00:00`,
     color: 'orange',
@@ -38,27 +38,27 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import { MonthView } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
-const startOfMonth = dayjs().startOf('month').format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
+const startOfMonth = dayjs('2024-01-15').startOf('month').format('YYYY-MM-DD');
 
 const events = [
   {
     id: 'team-meeting',
-    title: 'Team Meeting',
+    title: '团队会议',
     start: \`\${startOfMonth} 09:00:00\`,
     end: \`\${startOfMonth} 10:30:00\`,
     color: 'blue',
   },
   {
     id: 'client-call',
-    title: 'Client Call',
+    title: '客户电话',
     start: \`\${today} 14:00:00\`,
     end: \`\${today} 15:00:00\`,
     color: 'green',
   },
   {
     id: 'weekly-review-series',
-    title: 'Weekly review',
+    title: '每周回顾',
     start: \`\${startOfMonth} 16:00:00\`,
     end: \`\${startOfMonth} 17:00:00\`,
     color: 'orange',
@@ -88,7 +88,7 @@ function Demo() {
   return <MonthView date={date} onDateChange={setDate} events={eventsData} withAgenda />;
 }
 
-export const withAgenda: MantineDemo = {
+export const withAgenda: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

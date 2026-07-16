@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MonthPickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -12,8 +12,8 @@ function Demo() {
     <MonthPickerInput
       monthsListFormat="MM"
       yearsListFormat="YY"
-      label="Pick month"
-      placeholder="Pick month"
+      label="选择月份"
+      placeholder="选择月份"
       value={value}
       onChange={setValue}
     />
@@ -27,15 +27,15 @@ function Demo() {
     <MonthPickerInput
       monthsListFormat="MM"
       yearsListFormat="YY"
-      label="Pick month"
-      placeholder="Pick month"
+      label="选择月份"
+      placeholder="选择月份"
       value={value}
       onChange={setValue}
     />
   );
 }
 
-export const listFormat: MantineDemo = {
+export const listFormat: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

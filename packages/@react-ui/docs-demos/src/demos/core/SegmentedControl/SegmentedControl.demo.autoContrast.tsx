@@ -1,5 +1,5 @@
 import { SegmentedControl, Stack } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { SegmentedControl, Stack } from '@react-ui/ui';
@@ -23,7 +23,7 @@ function Demo() {
   );
 }
 
-export const autoContrast: MantineDemo = {
+export const autoContrast: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

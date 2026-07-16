@@ -76,7 +76,7 @@ interface ParseThemeColorResult {
    * For example, if the given color is `blue.7` it will be `7`.
    * If the given color does not have an index or is not a theme color, then it will be `undefined`
    */
-  shade: MantineColorShade | undefined;
+  shade: UIColorShade | undefined;
 
   /**
    * Color CSS variable. For example:
@@ -95,17 +95,17 @@ interface ParseThemeColorResult {
 
 ```tsx
 import {
-  MantineColor,
+  UIColor,
   parseThemeColor,
-  useMantineTheme,
+  useUITheme,
 } from '@react-ui/ui';
 
 interface DemoProps {
-  color: MantineColor;
+  color: UIColor;
 }
 
 function Demo({ color }: DemoProps) {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const parsedColor = parseThemeColor({ color, theme });
 
   return (
@@ -126,10 +126,10 @@ function Demo({ color }: DemoProps) {
 theme 对象作为第二个参数，返回解析后的颜色值或 CSS 变量：
 
 ```tsx
-import { getThemeColor, useMantineTheme } from '@react-ui/ui';
+import { getThemeColor, useUITheme } from '@react-ui/ui';
 
 function Demo() {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
 
   getThemeColor('blue', theme); // -> var(--ui-color-blue-filled)
   getThemeColor('blue.7', theme); // -> var(--ui-color-blue-7)
@@ -140,13 +140,13 @@ function Demo() {
 
 ## getGradient
 
-`getGradient` 函数将给定的 `MantineGradient` 对象转换为 CSS 渐变字符串：
+`getGradient` 函数将给定的 `UIGradient` 对象转换为 CSS 渐变字符串：
 
 ```tsx
-import { getGradient, useMantineTheme } from '@react-ui/ui';
+import { getGradient, useUITheme } from '@react-ui/ui';
 
 function Demo() {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
 
   getGradient({ deg: 180, from: 'blue', to: 'cyan.7' }, theme);
   // -> `linear-gradient(180deg, var(--ui-color-blue-filled) 0%, var(--ui-color-cyan-7) 100%)`

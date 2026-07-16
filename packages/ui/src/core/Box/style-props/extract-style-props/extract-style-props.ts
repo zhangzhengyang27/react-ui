@@ -1,15 +1,15 @@
 import { filterProps } from '../../../../core/utils'
-import type { MantineStyleProps } from '../style-props.types'
+import type { UIStyleProps } from '../style-props.types'
 
 /**
  * 从传入的对象中提取样式属性和其他属性
  * @template T - 传入对象的类型
- * @param {MantineStyleProps & T} others - 包含样式属性和其他属性的对象
- * @returns {{styleProps: MantineStyleProps & {sx?: any}, rest: T}} 包含分离后的样式属性和剩余属性的对象
+ * @param {UIStyleProps & T} others - 包含样式属性和其他属性的对象
+ * @returns {{styleProps: UIStyleProps & {sx?: any}, rest: T}} 包含分离后的样式属性和剩余属性的对象
  */
 export function extractStyleProps<T extends Record<string, any>>(
-    others: MantineStyleProps & T
-): { styleProps: MantineStyleProps & { sx?: any }; rest: T } {
+    others: UIStyleProps & T
+): { styleProps: UIStyleProps & { sx?: any }; rest: T } {
     const {
         m,
         mx,

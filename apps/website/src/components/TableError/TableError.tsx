@@ -8,16 +8,16 @@ export function TableError({ errorOf }: TableErrorProps) {
   return (
     <Text>
       <Text span c="red">
-        Error loading component {errorOf} data.{' '}
+        加载组件 {errorOf} 数据时出错。{' '}
       </Text>
-      If you see this message please let us know by{' '}
+      如果你看到这条消息，请通过{' '}
       <Anchor
         href="https://github.com/xiaoye/react-ui/issues/new"
         target="_blank"
       >
-        opening an issue on GitHub
+        在 GitHub 上提交 issue
       </Anchor>
-      .
+      告知我们。
     </Text>
   );
 }

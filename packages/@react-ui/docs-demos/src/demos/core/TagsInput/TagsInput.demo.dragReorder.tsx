@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -11,9 +11,9 @@ function Demo() {
 
   return (
     <TagsInput
-      label="Drag pills to reorder"
-      description="Tags can be reordered by dragging pills"
-      placeholder="Enter tag"
+      label="拖动胶囊重新排序"
+      description="可以通过拖动标签丸来重新排序"
+      placeholder="输入标签"
       value={value}
       onChange={setValue}
       withPillsReorder
@@ -27,9 +27,9 @@ function Demo() {
 
   return (
     <TagsInput
-      label="Drag pills to reorder"
-      description="Tags can be reordered by dragging pills"
-      placeholder="Enter tag"
+      label="拖动胶囊重新排序"
+      description="可以通过拖动标签丸来重新排序"
+      placeholder="输入标签"
       value={value}
       onChange={setValue}
       withPillsReorder
@@ -37,7 +37,7 @@ function Demo() {
   );
 }
 
-export const dragReorder: MantineDemo = {
+export const dragReorder: UIDemo = {
   type: 'code',
   component: Demo,
   code,

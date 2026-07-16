@@ -1,5 +1,5 @@
 import { Box, Container } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Box, Container } from '@react-ui/ui';
@@ -12,10 +12,10 @@ function Demo() {
       </Box>
 
       <Box data-breakout bg="var(--ui-color-indigo-light)" mt="xs">
-        <div>Breakout</div>
+        <div>突破容器</div>
 
         <Box data-container bg="indigo" c="white" h={50}>
-          <div>Container inside breakout</div>
+          <div>突破容器内的 Container</div>
         </Box>
       </Box>
     </Container>
@@ -31,17 +31,17 @@ function Demo() {
       </Box>
 
       <Box data-breakout bg="var(--ui-color-indigo-light)" mt="xs">
-        <div>Breakout</div>
+        <div>突破容器</div>
 
         <Box data-container bg="indigo" c="white" h={50}>
-          <div>Container inside breakout</div>
+          <div>突破容器内的 Container</div>
         </Box>
       </Box>
     </Container>
   );
 }
 
-export const breakout: MantineDemo = {
+export const breakout: UIDemo = {
   type: 'code',
   component: Demo,
   code,

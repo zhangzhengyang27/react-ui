@@ -7,7 +7,7 @@ export default Layout(MDX_DATA.CssVariables);
 
 # ReactUI CSS 变量
 
-[MantineProvider](/theming/mantine-provider) 会根据给定的 [theme](/theming/theme-object) 暴露所有 ReactUI CSS 变量。
+[UIProvider](/theming/ui-provider) 会根据给定的 [theme](/theming/theme-object) 暴露所有 ReactUI CSS 变量。
 你可以在 [CSS](/styles/css-modules) 文件、[style prop](/styles/style) 或任何其他样式中使用这些变量。
 注意，本页并未记录所有值，完整变量列表请参见 [本页](/styles/css-variables-list)。
 
@@ -1003,7 +1003,7 @@ function Demo() {
 
 ## CSS 变量解析器
 
-[MantineProvider](/theming/mantine-provider) 上的 `cssVariablesResolver` prop 允许你修改 ReactUI CSS 变量的值，甚至添加你自己的变量。
+[UIProvider](/theming/ui-provider) 上的 `cssVariablesResolver` prop 允许你修改 ReactUI CSS 变量的值，甚至添加你自己的变量。
 `cssVariablesResolver` 是一个接受 [theme](/theming/theme-object) 作为唯一参数的函数，
 返回一个将 CSS 变量分为三组的的对象：
 
@@ -1017,7 +1017,7 @@ function Demo() {
 import {
   createTheme,
   CSSVariablesResolver,
-  MantineProvider,
+  UIProvider,
 } from '@react-ui/ui';
 
 const themeOverride = createTheme({
@@ -1042,12 +1042,12 @@ const resolver: CSSVariablesResolver = (theme) => ({
 
 function Demo() {
   return (
-    <MantineProvider
+    <UIProvider
       theme={themeOverride}
       cssVariablesResolver={resolver}
     >
       {/* Your app here */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```

@@ -1,13 +1,13 @@
 import { Button, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Tooltip, Button } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <Tooltip{{props}} label="Tooltip" withArrow opened position="top-start">
-      <Button>Button with tooltip</Button>
+    <Tooltip{{props}} label="提示" withArrow opened position="top-start">
+      <Button>带提示的按钮</Button>
     </Tooltip>
   );
 }
@@ -15,13 +15,13 @@ function Demo() {
 
 function Wrapper(props: any) {
   return (
-    <Tooltip label="Tooltip" withArrow opened position="top-start" {...props}>
-      <Button>Button with tooltip</Button>
+    <Tooltip label="提示" withArrow opened position="top-start" {...props}>
+      <Button>带提示的按钮</Button>
     </Tooltip>
   );
 }
 
-export const arrow: MantineDemo = {
+export const arrow: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

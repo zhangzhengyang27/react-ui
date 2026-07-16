@@ -1,5 +1,5 @@
 import { Button, Popover, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { FLOATING_POSITION_DATA } from '../../../shared';
 
 const code = (props: any) => `
@@ -14,7 +14,7 @@ function Demo() {
       offset={{ mainAxis: ${props.mainAxis}, crossAxis: ${props.crossAxis} }}
     >
       <Popover.Target>
-        <Button>Popover target</Button>
+        <Button>气泡卡片目标</Button>
       </Popover.Target>
       <Popover.Dropdown>
         <Text size="xs">
@@ -35,7 +35,7 @@ function Wrapper(props: any) {
       offset={{ mainAxis: props.mainAxis, crossAxis: props.crossAxis }}
     >
       <Popover.Target>
-        <Button>Popover target</Button>
+        <Button>气泡卡片目标</Button>
       </Popover.Target>
       <Popover.Dropdown>
         <Text size="xs">
@@ -46,7 +46,7 @@ function Wrapper(props: any) {
   );
 }
 
-export const offsetAxis: MantineDemo = {
+export const offsetAxis: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

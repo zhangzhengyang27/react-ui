@@ -3,80 +3,80 @@ import type { StylesApiData } from '../types';
 
 export const InputStylesApi: StylesApiData<InputFactory> = {
   selectors: {
-    wrapper: 'Root element of the Input',
-    input: 'Input element',
-    section: 'Left and right sections',
-    bottomSection: 'Bottom section element, rendered inside the input border at the bottom',
+    wrapper: 'Input 的根元素',
+    input: '输入元素',
+    section: '左侧和右侧区域',
+    bottomSection: '底部区域元素，渲染在输入框底部边框内',
   },
 
   vars: {
     wrapper: {
-      '--input-fz': '`font-size` of the input element',
+      '--input-fz': '输入元素的 `font-size`',
       '--input-height':
-        '`height` or `min-height` of the input element (depends on `multiline` prop)',
-      '--input-left-section-width': '`width` of the left section',
-      '--input-right-section-width': '`width` of the right section',
+        '输入元素的 `height` 或 `min-height`（取决于 `multiline` 属性）',
+      '--input-left-section-width': '左侧区域的 `width`',
+      '--input-right-section-width': '右侧区域的 `width`',
       '--input-margin-bottom':
-        '`margin-bottom` of the input element, usually controlled by `Input.Wrapper`',
+        '输入元素的 `margin-bottom`，通常由 `Input.Wrapper` 控制',
       '--input-margin-top':
-        '`margin-top` of the input element, usually controlled by `Input.Wrapper`',
-      '--input-padding-y': '`padding-top` and `padding-bottom` of the input element',
-      '--input-radius': '`border-radius` of the input element',
-      '--input-left-section-pointer-events': 'Controls `pointer-events` of the left section',
-      '--input-right-section-pointer-events': 'Controls `pointer-events` of the right section',
+        '输入元素的 `margin-top`，通常由 `Input.Wrapper` 控制',
+      '--input-padding-y': '输入元素的 `padding-top` 和 `padding-bottom`',
+      '--input-radius': '输入元素的 `border-radius`',
+      '--input-left-section-pointer-events': '控制左侧区域的 `pointer-events`',
+      '--input-right-section-pointer-events': '控制右侧区域的 `pointer-events`',
     },
   },
 
   modifiers: [
-    { modifier: 'data-error', selector: ['wrapper', 'input'], condition: '`error` prop is set' },
+    { modifier: 'data-error', selector: ['wrapper', 'input'], condition: '设置了 `error` 属性' },
     {
       modifier: 'data-success',
       selector: ['wrapper', 'input'],
-      condition: '`success` prop is set and `error` is not set',
+      condition: '设置了 `success` 属性且未设置 `error`',
     },
-    { modifier: 'data-disabled', selector: 'input', condition: '`disabled` prop is set' },
+    { modifier: 'data-disabled', selector: 'input', condition: '设置了 `disabled` 属性' },
     {
       modifier: 'data-with-right-section',
       selector: 'wrapper',
-      condition: '`rightSection` prop is set',
+      condition: '设置了 `rightSection` 属性',
     },
     {
       modifier: 'data-with-left-section',
       selector: 'wrapper',
-      condition: '`leftSection` prop is set',
+      condition: '设置了 `leftSection` 属性',
     },
-    { modifier: 'data-multiline', selector: 'wrapper', condition: '`multiline` prop is set' },
-    { modifier: 'data-pointer', selector: 'wrapper', condition: '`pointer` prop is set' },
-    { modifier: 'data-position', selector: 'section', value: 'Section position: left or right' },
+    { modifier: 'data-multiline', selector: 'wrapper', condition: '设置了 `multiline` 属性' },
+    { modifier: 'data-pointer', selector: 'wrapper', condition: '设置了 `pointer` 属性' },
+    { modifier: 'data-position', selector: 'section', value: '区域位置：左侧或右侧' },
   ],
 };
 
 export const InputWrapperStylesApi: StylesApiData<InputWrapperFactory> = {
   selectors: {
-    root: 'Root element',
-    label: 'Label element',
-    required: 'Required asterisk element, rendered inside label',
-    description: 'Description element',
-    error: 'Error element',
-    success: 'Success element',
+    root: '根元素',
+    label: '标签元素',
+    required: '必填星号元素，渲染在标签内',
+    description: '描述元素',
+    error: '错误元素',
+    success: '成功元素',
   },
 
   vars: {
     label: {
-      '--input-label-size': 'Controls label `font-size`',
-      '--input-asterisk-color': 'Controls label asterisk text `color`',
+      '--input-label-size': '控制标签的 `font-size`',
+      '--input-asterisk-color': '控制标签星号文本的 `color`',
     },
 
     error: {
-      '--input-error-size': 'Controls error `font-size`',
+      '--input-error-size': '控制错误文本的 `font-size`',
     },
 
     success: {
-      '--input-success-size': 'Controls success `font-size`',
+      '--input-success-size': '控制成功文本的 `font-size`',
     },
 
     description: {
-      '--input-description-size': 'Controls description `font-size`',
+      '--input-description-size': '控制描述文本的 `font-size`',
     },
   },
 };

@@ -1,5 +1,5 @@
 import { Highlight, Stack, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Highlight, Stack, Text } from '@react-ui/ui';
@@ -20,7 +20,7 @@ function Demo() {
         <Text size="sm" fw={500} mb={5}>
           Without whole word matching (default)
         </Text>
-        <Highlight highlight="the">The theme is there</Highlight>
+        <Highlight highlight="the">主题在那里</Highlight>
       </div>
     </Stack>
   );
@@ -43,13 +43,13 @@ function Demo() {
         <Text size="sm" fw={500} mb={5}>
           Without whole word matching (default)
         </Text>
-        <Highlight highlight="the">The theme is there</Highlight>
+        <Highlight highlight="the">主题在那里</Highlight>
       </div>
     </Stack>
   );
 }
 
-export const wholeword: MantineDemo = {
+export const wholeword: UIDemo = {
   type: 'code',
   code,
   component: Demo,

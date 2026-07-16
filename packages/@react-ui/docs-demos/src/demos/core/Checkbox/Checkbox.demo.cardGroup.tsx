@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Checkbox, Group, Stack, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Checkbox.demo.card.module.css';
 
 const cssCode = `.root {
@@ -12,12 +12,12 @@ const cssCode = `.root {
     border-color: var(--ui-primary-color-filled);
   }
 
-  @mixin hover {
-    @mixin light {
+  &:hover {
+    [data-ui-color-scheme='light'] & {
       background-color: var(--ui-color-gray-0);
     }
 
-    @mixin dark {
+    [data-ui-color-scheme='dark'] & {
       background-color: var(--ui-color-dark-6);
     }
   }
@@ -44,11 +44,11 @@ import classes from './Demo.module.css';
 
 const data = [
   {
-    name: 'mantine/core',
-    description: 'Core components library: inputs, buttons, overlays, etc.',
+    name: '@react-ui/ui',
+    description: '核心组件库：输入框、按钮、遮罩层等。',
   },
-  { name: 'mantine/hooks', description: 'Collection of reusable hooks for React applications.' },
-  { name: 'mantine/notifications', description: 'Notifications system' },
+  { name: '@react-ui/hooks', description: '用于 React 应用的可复用 Hooks 集合。' },
+  { name: '@react-ui/notifications', description: '通知系统' },
 ];
 
 function Demo() {
@@ -71,8 +71,8 @@ function Demo() {
       <Checkbox.Group
         value={value}
         onChange={setValue}
-        label="Pick packages to install"
-        description="Choose all packages that you will need in your application"
+        label="选择要安装的包"
+        description="选择你的应用需要的所有包"
       >
         <Stack pt="md" gap="xs">
           {cards}
@@ -80,7 +80,7 @@ function Demo() {
       </Checkbox.Group>
 
       <Text fz="xs" mt="md">
-        CurrentValue: {value.join(', ') || '–'}
+        当前值：{value.join(', ') || '–'}
       </Text>
     </>
   );
@@ -89,11 +89,11 @@ function Demo() {
 
 const data = [
   {
-    name: 'mantine/core',
-    description: 'Core components library: inputs, buttons, overlays, etc.',
+    name: '@react-ui/ui',
+    description: '核心组件库：输入框、按钮、遮罩层等。',
   },
-  { name: 'mantine/hooks', description: 'Collection of reusable hooks for React applications.' },
-  { name: 'mantine/notifications', description: 'Notifications system' },
+  { name: '@react-ui/hooks', description: '用于 React 应用的可复用 Hooks 集合。' },
+  { name: '@react-ui/notifications', description: '通知系统' },
 ];
 
 function Demo() {
@@ -116,8 +116,8 @@ function Demo() {
       <Checkbox.Group
         value={value}
         onChange={setValue}
-        label="Pick packages to install"
-        description="Choose all packages that you will need in your application"
+        label="选择要安装的包"
+        description="选择你的应用需要的所有包"
       >
         <Stack pt="md" gap="xs">
           {cards}
@@ -125,20 +125,20 @@ function Demo() {
       </Checkbox.Group>
 
       <Text fz="xs" mt="md">
-        CurrentValue: {value.join(', ') || '–'}
+        当前值：{value.join(', ') || '–'}
       </Text>
     </>
   );
 }
 
-export const cardGroup: MantineDemo = {
+export const cardGroup: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 320,
   component: Demo,
   defaultExpanded: false,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
-    { fileName: 'Demo.module.css', language: 'scss', code: cssCode },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
+    { fileName: '演示样式.module.css', language: 'scss', code: cssCode },
   ],
 };

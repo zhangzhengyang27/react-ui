@@ -1,54 +1,54 @@
 import dayjs from 'dayjs';
 import { ScheduleEventData } from '@react-ui/schedule';
 
-const thisMonth = dayjs().format('YYYY-MM');
+const thisMonth = dayjs('2024-01-15').format('YYYY-MM');
 
 export const regularEvents: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Team Meeting',
+    title: '团队会议',
     start: `${thisMonth}-05 09:00:00`,
     end: `${thisMonth}-05 10:00:00`,
     color: 'blue',
   },
   {
     id: 2,
-    title: 'Project Review',
+    title: '项目评审',
     start: `${thisMonth}-05 14:00:00`,
     end: `${thisMonth}-05 15:30:00`,
     color: 'green',
   },
   {
     id: 3,
-    title: 'Conference',
+    title: '会议',
     start: `${thisMonth}-10 00:00:00`,
     end: `${thisMonth}-12 00:00:00`,
     color: 'violet',
   },
   {
     id: 4,
-    title: 'Lunch with Client',
+    title: '与客户共进午餐',
     start: `${thisMonth}-15 12:00:00`,
     end: `${thisMonth}-15 13:30:00`,
     color: 'orange',
   },
   {
     id: 5,
-    title: 'Sprint Planning',
+    title: '迭代计划',
     start: `${thisMonth}-15 15:00:00`,
     end: `${thisMonth}-15 17:00:00`,
     color: 'cyan',
   },
   {
     id: 6,
-    title: 'Code Review',
+    title: '代码审查',
     start: `${thisMonth}-20 10:00:00`,
     end: `${thisMonth}-20 11:00:00`,
     color: 'pink',
   },
   {
     id: 7,
-    title: 'Workshop Day',
+    title: '研讨会日',
     start: `${thisMonth}-25 00:00:00`,
     end: `${thisMonth}-25 00:00:00`,
     color: 'yellow',
@@ -58,26 +58,26 @@ export const regularEvents: ScheduleEventData[] = [
 export const dataCode = `
 import dayjs from 'dayjs';
 
-const thisMonth = dayjs().format('YYYY-MM');
+const thisMonth = dayjs('2024-01-15').format('YYYY-MM');
 
 export const events = [
   {
     id: 1,
-    title: 'Team Meeting',
+    title: '团队会议',
     start: \`\${thisMonth}-05 09:00:00\`,
     end: \`\${thisMonth}-05 10:00:00\`,
     color: 'blue',
   },
   {
     id: 2,
-    title: 'Project Review',
+    title: '项目评审',
     start: \`\${thisMonth}-05 14:00:00\`,
     end: \`\${thisMonth}-05 15:30:00\`,
     color: 'green',
   },
   {
     id: 3,
-    title: 'Conference',
+    title: '会议',
     start: \`\${thisMonth}-10 00:00:00\`,
     end: \`\${thisMonth}-12 00:00:00\`,
     color: 'violet',

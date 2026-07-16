@@ -9,7 +9,7 @@ import classes from './ComboboxLinksGroup.module.css';
 
 interface ComboboxLinksGroupProps {
   data: ComboboxExamplesGroup;
-  searchQuery: string | string[];
+  searchQuery: string;
   onClose: () => void;
 }
 

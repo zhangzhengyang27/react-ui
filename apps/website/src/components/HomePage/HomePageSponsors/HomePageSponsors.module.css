@@ -1,6 +1,6 @@
 .inner {
   position: relative;
-  padding-bottom: 80px;
+  padding-block: var(--hp-block-spacing);
 }
 
 .title {
@@ -27,7 +27,7 @@
   color: var(--ui-color-bright);
   background-color: light-dark(var(--ui-color-white), var(--ui-color-dark-6));
 
-  @mixin hover {
+  &:hover {
     background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-5));
   }
 }

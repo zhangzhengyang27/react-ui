@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { DatePickerInput, DatePickerInputProps } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import dayjs from 'dayjs';
@@ -26,7 +26,7 @@ const getDayProps: DatePickerInputProps['getDayProps'] = (date) => {
 const getYearControlProps: DatePickerInputProps['getYearControlProps'] = (date) => {
   const d = dayjs(date);
 
-  if (d.year() === new Date().getFullYear()) {
+  if (d.year() === 2024) {
     return {
       style: {
         color: 'var(--ui-color-blue-filled)',
@@ -35,7 +35,7 @@ const getYearControlProps: DatePickerInputProps['getYearControlProps'] = (date) 
     };
   }
 
-  if (d.year() === new Date().getFullYear() + 1) {
+  if (d.year() === 2024 + 1) {
     return { disabled: true };
   }
 
@@ -64,8 +64,8 @@ function Demo() {
   const [value, setValue] = useState<string | null>(null);
   return (
     <DatePickerInput
-      label="Pick date"
-      placeholder="Pick date"
+      label="选择日期"
+      placeholder="选择日期"
       value={value}
       onChange={setValue}
       getDayProps={getDayProps}
@@ -94,7 +94,7 @@ const getDayProps: DatePickerInputProps['getDayProps'] = (date) => {
 const getYearControlProps: DatePickerInputProps['getYearControlProps'] = (date) => {
   const d = dayjs(date);
 
-  if (d.year() === new Date().getFullYear()) {
+  if (d.year() === 2024) {
     return {
       style: {
         color: 'var(--ui-color-blue-filled)',
@@ -103,7 +103,7 @@ const getYearControlProps: DatePickerInputProps['getYearControlProps'] = (date) 
     };
   }
 
-  if (d.year() === new Date().getFullYear() + 1) {
+  if (d.year() === 2024 + 1) {
     return { disabled: true };
   }
 
@@ -132,8 +132,8 @@ function Demo() {
   const [value, setValue] = useState<string | null>(null);
   return (
     <DatePickerInput
-      label="Pick date"
-      placeholder="Pick date"
+      label="选择日期"
+      placeholder="选择日期"
       value={value}
       onChange={setValue}
       getDayProps={getDayProps}
@@ -143,7 +143,7 @@ function Demo() {
   );
 }
 
-export const controlProps: MantineDemo = {
+export const controlProps: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

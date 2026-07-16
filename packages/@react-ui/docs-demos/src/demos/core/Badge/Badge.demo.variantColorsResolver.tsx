@@ -3,19 +3,19 @@ import {
   darken,
   defaultVariantColorsResolver,
   Group,
-  MantineThemeProvider,
+  UIThemeProvider,
   parseThemeColor,
   rgba,
   VariantColorsResolver,
 } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ImageIcon, FingerprintIcon, WarningIcon } from '@phosphor-icons/react';
 import {
   Badge,
   Group,
-  MantineProvider,
+  UIProvider,
   defaultVariantColorsResolver,
   VariantColorsResolver,
   parseThemeColor,
@@ -64,7 +64,7 @@ const variantColorResolver: VariantColorsResolver = (input) => {
 
 function Demo() {
   return (
-    <MantineProvider theme={{ variantColorResolver }}>
+    <UIProvider theme={{ variantColorResolver }}>
       <Group>
         <Badge color="lime.4" variant="filled">
           Lime filled
@@ -78,7 +78,7 @@ function Demo() {
           Danger
         </Badge>
       </Group>
-    </MantineProvider>
+    </UIProvider>
   );
 }
 `;
@@ -124,7 +124,7 @@ const variantColorResolver: VariantColorsResolver = (input) => {
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={{ variantColorResolver }}>
+    <UIThemeProvider theme={{ variantColorResolver }}>
       <Group>
         <Badge color="lime.4" variant="filled" size="lg">
           Lime filled
@@ -138,11 +138,11 @@ function Demo() {
           Danger
         </Badge>
       </Group>
-    </MantineThemeProvider>
+    </UIThemeProvider>
   );
 }
 
-export const variantColorsResolver: MantineDemo = {
+export const variantColorsResolver: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

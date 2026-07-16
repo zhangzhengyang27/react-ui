@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Stepper } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -30,7 +30,7 @@ function Demo() {
   );
 }
 
-export const iconPosition: MantineDemo = {
+export const iconPosition: UIDemo = {
   type: 'code',
   component: Demo,
   code,

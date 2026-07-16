@@ -1,6 +1,6 @@
 import { Text, TextInput } from '@react-ui/ui';
 import { useInputState, usePrevious } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TextInput, Text } from '@react-ui/ui';
@@ -13,8 +13,8 @@ function Demo() {
   return (
     <div>
       <TextInput
-        label="Enter some text here"
-        placeholder="Enter some text here"
+        label="在此输入一些文本"
+        placeholder="在此输入一些文本"
         id="previous-demo-input"
         value={value}
         onChange={setValue}
@@ -33,8 +33,8 @@ function Demo() {
   return (
     <div>
       <TextInput
-        label="Enter some text here"
-        placeholder="Enter some text here"
+        label="在此输入一些文本"
+        placeholder="在此输入一些文本"
         id="previous-demo-input"
         value={value}
         onChange={setValue}
@@ -45,7 +45,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

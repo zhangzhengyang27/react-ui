@@ -1,5 +1,5 @@
 import { Box, Button, Group, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Group, Button, Box, Text } from '@react-ui/ui';
@@ -14,9 +14,9 @@ function Demo() {
         </Text>
 
         <Group grow wrap="nowrap">
-          <Button variant="default">First button</Button>
-          <Button variant="default">Second button with large content</Button>
-          <Button variant="default">Third button</Button>
+          <Button variant="default">第一个按钮</Button>
+          <Button variant="default">第二个带大量内容的按钮</Button>
+          <Button variant="default">第三个按钮</Button>
         </Group>
 
         <Text size="sm" mb={5} mt="md">
@@ -25,9 +25,9 @@ function Demo() {
         </Text>
 
         <Group grow preventGrowOverflow={false} wrap="nowrap">
-          <Button variant="default">First button</Button>
-          <Button variant="default">Second button with large content</Button>
-          <Button variant="default">Third button</Button>
+          <Button variant="default">第一个按钮</Button>
+          <Button variant="default">第二个带大量内容的按钮</Button>
+          <Button variant="default">第三个按钮</Button>
         </Group>
       </Box>
     </Box>
@@ -45,9 +45,9 @@ function Demo() {
         </Text>
 
         <Group grow wrap="nowrap">
-          <Button variant="default">First button</Button>
-          <Button variant="default">Second button with large content</Button>
-          <Button variant="default">Third button</Button>
+          <Button variant="default">第一个按钮</Button>
+          <Button variant="default">第二个带大量内容的按钮</Button>
+          <Button variant="default">第三个按钮</Button>
         </Group>
 
         <Text size="sm" mb={5} mt="md">
@@ -56,16 +56,16 @@ function Demo() {
         </Text>
 
         <Group grow preventGrowOverflow={false} wrap="nowrap">
-          <Button variant="default">First button</Button>
-          <Button variant="default">Second button with large content</Button>
-          <Button variant="default">Third button</Button>
+          <Button variant="default">第一个按钮</Button>
+          <Button variant="default">第二个带大量内容的按钮</Button>
+          <Button variant="default">第三个按钮</Button>
         </Group>
       </Box>
     </Box>
   );
 }
 
-export const preventGrowOverflow: MantineDemo = {
+export const preventGrowOverflow: UIDemo = {
   type: 'code',
   component: Demo,
   code,

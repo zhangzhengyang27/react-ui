@@ -1,5 +1,5 @@
 import { clamp } from '@react-ui/hooks';
-import { createStore, MantineStore, useStore } from '@react-ui/store';
+import { createStore, UIStore, useStore } from '@react-ui/store';
 
 export interface SpotlightState {
   opened: boolean;
@@ -10,7 +10,7 @@ export interface SpotlightState {
   registeredActions: Set<string>;
 }
 
-export type SpotlightStore = MantineStore<SpotlightState>;
+export type SpotlightStore = UIStore<SpotlightState>;
 
 export const createSpotlightStore = () =>
   createStore<SpotlightState>({

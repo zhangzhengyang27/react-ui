@@ -5,7 +5,7 @@ import {
   ElementProps,
   factory,
   Factory,
-  MantineRadius,
+  UIRadius,
   StylesApiProps,
   useDirection,
   useProps,
@@ -34,7 +34,7 @@ export interface ViewSelectProps
   onChange?: (value: ScheduleViewLevel) => void;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius` @default theme.defaultRadius */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 
   /** Labels override */
   labels?: ScheduleLabelsOverride;

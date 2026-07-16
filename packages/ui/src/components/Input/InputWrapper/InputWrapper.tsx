@@ -9,7 +9,7 @@ import {
     factory,
     Factory,
     getFontSize,
-    MantineFontSize,
+    UIFontSize,
     rem,
     StylesApiProps,
     useProps,
@@ -94,7 +94,7 @@ export interface InputWrapperProps
     __stylesApiProps?: Record<string, any>
     id?: string
     inputId?: string
-    size?: MantineFontSize
+    size?: UIFontSize
     labelElement?: 'label' | 'div'
 }
 

@@ -1,44 +1,44 @@
-import { Button, Code, Group, MantineThemeProvider, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { Button, Code, Group, UIThemeProvider, Text } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 
 function Demo() {
   return (
     <>
       <Text>
-        Focus ring: <Code>auto</Code>
+        聚焦环：<Code>auto</Code>
       </Text>
 
       <Group mt="xs">
-        <Button size="xs">Button 1</Button>
-        <Button size="xs">Button 2</Button>
+        <Button size="xs">按钮 1</Button>
+        <Button size="xs">按钮 2</Button>
       </Group>
 
-      <MantineThemeProvider inherit theme={{ focusRing: 'always' }}>
+      <UIThemeProvider inherit theme={{ focusRing: 'always' }}>
         <Text mt="lg">
-          Focus ring: <Code>always</Code>
+          聚焦环：<Code>always</Code>
         </Text>
 
         <Group mt="xs">
-          <Button size="xs">Button 1</Button>
-          <Button size="xs">Button 2</Button>
+          <Button size="xs">按钮 1</Button>
+          <Button size="xs">按钮 2</Button>
         </Group>
-      </MantineThemeProvider>
+      </UIThemeProvider>
 
-      <MantineThemeProvider inherit theme={{ focusRing: 'never' }}>
+      <UIThemeProvider inherit theme={{ focusRing: 'never' }}>
         <Text mt="lg">
-          Focus ring: <Code>never</Code>
+          聚焦环：<Code>never</Code>
         </Text>
 
         <Group mt="xs">
-          <Button size="xs">Button 1</Button>
-          <Button size="xs">Button 2</Button>
+          <Button size="xs">按钮 1</Button>
+          <Button size="xs">按钮 2</Button>
         </Group>
-      </MantineThemeProvider>
+      </UIThemeProvider>
     </>
   );
 }
 
-export const focusRing: MantineDemo = {
+export const focusRing: UIDemo = {
   type: 'code',
   component: Demo,
 };

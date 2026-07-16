@@ -1,5 +1,5 @@
 import { Progress, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Progress, Tooltip } from '@react-ui/ui';
@@ -7,21 +7,21 @@ import { Progress, Tooltip } from '@react-ui/ui';
 function Demo() {
   return (
     <Progress.Root size={40}>
-      <Tooltip label="Documents – 33Gb">
+      <Tooltip label="文档 – 33Gb">
         <Progress.Section value={33} color="cyan">
-          <Progress.Label>Documents</Progress.Label>
+          <Progress.Label>文档</Progress.Label>
         </Progress.Section>
       </Tooltip>
 
-      <Tooltip label="Photos – 28Gb">
+      <Tooltip label="照片 – 28Gb">
         <Progress.Section value={28} color="pink">
-          <Progress.Label>Photos</Progress.Label>
+          <Progress.Label>照片</Progress.Label>
         </Progress.Section>
       </Tooltip>
 
-      <Tooltip label="Other – 15Gb">
+      <Tooltip label="其他 – 15Gb">
         <Progress.Section value={15} color="orange">
-          <Progress.Label>Other</Progress.Label>
+          <Progress.Label>其他</Progress.Label>
         </Progress.Section>
       </Tooltip>
     </Progress.Root>
@@ -32,28 +32,28 @@ function Demo() {
 function Demo() {
   return (
     <Progress.Root size={40}>
-      <Tooltip label="Documents – 33Gb">
+      <Tooltip label="文档 – 33Gb">
         <Progress.Section value={33} color="cyan">
-          <Progress.Label>Documents</Progress.Label>
+          <Progress.Label>文档</Progress.Label>
         </Progress.Section>
       </Tooltip>
 
-      <Tooltip label="Photos – 28Gb">
+      <Tooltip label="照片 – 28Gb">
         <Progress.Section value={28} color="pink">
-          <Progress.Label>Photos</Progress.Label>
+          <Progress.Label>照片</Progress.Label>
         </Progress.Section>
       </Tooltip>
 
-      <Tooltip label="Other – 15Gb">
+      <Tooltip label="其他 – 15Gb">
         <Progress.Section value={15} color="orange">
-          <Progress.Label>Other</Progress.Label>
+          <Progress.Label>其他</Progress.Label>
         </Progress.Section>
       </Tooltip>
     </Progress.Root>
   );
 }
 
-export const tooltips: MantineDemo = {
+export const tooltips: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,10 +1,10 @@
 import dayjs from 'dayjs';
 import { ScheduleEventData, ScheduleResourceData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
-const tomorrow = dayjs().add(1, 'day').format('YYYY-MM-DD');
-const dayAfter = dayjs().add(2, 'day').format('YYYY-MM-DD');
-const dayAfter2 = dayjs().add(3, 'day').format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
+const tomorrow = dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD');
+const dayAfter = dayjs('2024-01-15').add(2, 'day').format('YYYY-MM-DD');
+const dayAfter2 = dayjs('2024-01-15').add(3, 'day').format('YYYY-MM-DD');
 
 export const resources: ScheduleResourceData[] = [
   { id: 'tokyo', label: 'Meeting room: Tokyo' },
@@ -16,7 +16,7 @@ export const resources: ScheduleResourceData[] = [
 export const resourceEvents: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Team Standup',
+    title: '团队站会',
     start: `${today} 09:00:00`,
     end: `${today} 09:30:00`,
     color: 'blue',
@@ -24,7 +24,7 @@ export const resourceEvents: ScheduleEventData[] = [
   },
   {
     id: 2,
-    title: 'Sprint Planning',
+    title: '迭代计划',
     start: `${today} 10:00:00`,
     end: `${today} 11:30:00`,
     color: 'green',
@@ -32,7 +32,7 @@ export const resourceEvents: ScheduleEventData[] = [
   },
   {
     id: 3,
-    title: 'Client Call',
+    title: '客户电话',
     start: `${tomorrow} 09:30:00`,
     end: `${tomorrow} 10:30:00`,
     color: 'violet',
@@ -40,7 +40,7 @@ export const resourceEvents: ScheduleEventData[] = [
   },
   {
     id: 4,
-    title: 'Design Review',
+    title: '设计评审',
     start: `${today} 13:00:00`,
     end: `${today} 14:00:00`,
     color: 'orange',
@@ -56,7 +56,7 @@ export const resourceEvents: ScheduleEventData[] = [
   },
   {
     id: 6,
-    title: 'Workshop',
+    title: '研讨会',
     start: `${dayAfter} 14:00:00`,
     end: `${dayAfter} 16:00:00`,
     color: 'pink',
@@ -64,7 +64,7 @@ export const resourceEvents: ScheduleEventData[] = [
   },
   {
     id: 7,
-    title: 'Architecture Review',
+    title: '架构评审',
     start: `${tomorrow} 10:00:00`,
     end: `${tomorrow} 11:00:00`,
     color: 'red',
@@ -72,7 +72,7 @@ export const resourceEvents: ScheduleEventData[] = [
   },
   {
     id: 8,
-    title: 'Retrospective',
+    title: '回顾会议',
     start: `${today} 15:00:00`,
     end: `${today} 16:00:00`,
     color: 'grape',
@@ -100,10 +100,10 @@ export const dataCode = `
 import dayjs from 'dayjs';
 import { ScheduleResourceData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
-const tomorrow = dayjs().add(1, 'day').format('YYYY-MM-DD');
-const dayAfter = dayjs().add(2, 'day').format('YYYY-MM-DD');
-const dayAfter2 = dayjs().add(3, 'day').format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
+const tomorrow = dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD');
+const dayAfter = dayjs('2024-01-15').add(2, 'day').format('YYYY-MM-DD');
+const dayAfter2 = dayjs('2024-01-15').add(3, 'day').format('YYYY-MM-DD');
 
 const resources: ScheduleResourceData[] = [
   { id: 'tokyo', label: 'Meeting room: Tokyo' },
@@ -115,7 +115,7 @@ const resources: ScheduleResourceData[] = [
 const events = [
   {
     id: 1,
-    title: 'Team Standup',
+    title: '团队站会',
     start: \`\${today} 09:00:00\`,
     end: \`\${today} 09:30:00\`,
     color: 'blue',
@@ -123,7 +123,7 @@ const events = [
   },
   {
     id: 2,
-    title: 'Sprint Planning',
+    title: '迭代计划',
     start: \`\${today} 10:00:00\`,
     end: \`\${today} 11:30:00\`,
     color: 'green',
@@ -131,7 +131,7 @@ const events = [
   },
   {
     id: 3,
-    title: 'Client Call',
+    title: '客户电话',
     start: \`\${tomorrow} 09:30:00\`,
     end: \`\${tomorrow} 10:30:00\`,
     color: 'violet',
@@ -139,7 +139,7 @@ const events = [
   },
   {
     id: 4,
-    title: 'Design Review',
+    title: '设计评审',
     start: \`\${today} 13:00:00\`,
     end: \`\${today} 14:00:00\`,
     color: 'orange',
@@ -155,7 +155,7 @@ const events = [
   },
   {
     id: 6,
-    title: 'Workshop',
+    title: '研讨会',
     start: \`\${dayAfter} 14:00:00\`,
     end: \`\${dayAfter} 16:00:00\`,
     color: 'pink',
@@ -163,7 +163,7 @@ const events = [
   },
   {
     id: 7,
-    title: 'Architecture Review',
+    title: '架构评审',
     start: \`\${tomorrow} 10:00:00\`,
     end: \`\${tomorrow} 11:00:00\`,
     color: 'red',
@@ -171,7 +171,7 @@ const events = [
   },
   {
     id: 8,
-    title: 'Retrospective',
+    title: '回顾会议',
     start: \`\${today} 15:00:00\`,
     end: \`\${today} 16:00:00\`,
     color: 'grape',

@@ -1,26 +1,26 @@
 import { Select } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Select } from '@react-ui/ui';
 
 function Demo() {
-  return <Select label="Select" placeholder="Select" data={['React', 'Angular', 'Vue', 'Svelte']} success="Looks good!" />;
+  return <Select label="选择" placeholder="选择" data={['React', 'Angular', 'Vue', 'Svelte']} success="看起来不错！" />;
 }
 `;
 
 function Demo() {
   return (
     <Select
-      label="Select"
-      placeholder="Select"
+      label="选择"
+      placeholder="选择"
       data={['React', 'Angular', 'Vue', 'Svelte']}
-      success="Looks good!"
+      success="看起来不错！"
     />
   );
 }
 
-export const success: MantineDemo = {
+export const success: UIDemo = {
   type: 'code',
   component: Demo,
   code,

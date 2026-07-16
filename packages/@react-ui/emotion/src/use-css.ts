@@ -3,13 +3,14 @@ import type { EmotionCache } from '@emotion/cache';
 import { RegisteredCache, serializeStyles } from '@emotion/serialize';
 import { getRegisteredStyles, insertStyles } from '@emotion/utils';
 import clsx from 'clsx';
-import { useEmotionCache } from './MantineEmotionProvider';
+import { useEmotionCache } from './UIEmotionProvider';
 import type { CSS } from './types';
 import { useGuaranteedMemo } from './use-guaranteed-memo';
 
 const refPropertyName = 'ref' as const;
 
 function getRef(args: any[]) {
+  // eslint-disable-next-line prefer-const -- ref 在条件分支中延迟赋值
   let ref: string | undefined;
 
   if (args.length !== 1) {

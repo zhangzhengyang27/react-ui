@@ -10,8 +10,8 @@ interface CopyCodeButtonProps {
 
 export function CopyCodeButton({
   code,
-  copyLabel = 'Copy',
-  copiedLabel = 'Copied',
+  copyLabel = '复制',
+  copiedLabel = '已复制',
 }: CopyCodeButtonProps) {
   const clipboard = useClipboard();
 
@@ -20,7 +20,7 @@ export function CopyCodeButton({
       onClick={() => clipboard.copy(code.trim())}
       variant="none"
       tooltipLabel={clipboard.copied ? copiedLabel : copyLabel}
-      aria-label={clipboard.copied ? copiedLabel : `${copyLabel} code`}
+      aria-label={clipboard.copied ? copiedLabel : `${copyLabel}代码`}
     >
       <CopyIcon copied={clipboard.copied} />
     </CodeHighlightControl>

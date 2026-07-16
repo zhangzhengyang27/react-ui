@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { AreaChart } from './AreaChart'
 
 const DATA = [
@@ -11,9 +11,9 @@ const DATA = [
 describe('AreaChart', () => {
     it('renders chart root', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <AreaChart data={DATA} dataKey="name" series={[{ name: 'sales' }]} data-testid="chart" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByTestId('chart')).toBeInTheDocument()
@@ -21,9 +21,9 @@ describe('AreaChart', () => {
 
     it('renders with custom height', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <AreaChart data={DATA} dataKey="name" series={[{ name: 'sales' }]} height={400} data-testid="chart" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByTestId('chart').getAttribute('style')).toContain('--area-chart-height')

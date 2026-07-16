@@ -1,6 +1,6 @@
 import { Badge, em } from '@react-ui/ui';
 import { useMediaQuery } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Badge } from '@react-ui/ui';
@@ -26,7 +26,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

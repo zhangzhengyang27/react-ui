@@ -7,13 +7,13 @@ export type TextareaStylesNames = 'root'
 export interface TextareaProps
     extends Omit<InputBaseProps, 'classNames' | 'styles' | 'unstyled' | 'vars' | 'attributes' | 'component'>,
         StylesApiProps<TextareaFactory> {
-    /** Number of visible text lines */
+    /** 可见文本行数 */
     rows?: number
 
-    /** Minimum number of visible lines (used for auto-resize scenarios) */
+    /** 最小可见行数（用于自动调整大小场景） */
     minRows?: number
 
-    /** Maximum number of visible lines (used for auto-resize scenarios) */
+    /** 最大可见行数（用于自动调整大小场景） */
     maxRows?: number
 }
 

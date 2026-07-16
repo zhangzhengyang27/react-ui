@@ -3,20 +3,20 @@ import {
   darken,
   defaultVariantColorsResolver,
   Group,
-  MantineThemeProvider,
+  UIThemeProvider,
   parseThemeColor,
   rgba,
   ThemeIcon,
   VariantColorsResolver,
 } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ImageIcon, FingerprintIcon, WarningIcon } from '@phosphor-icons/react';
 import {
   ThemeIcon,
   Group,
-  MantineProvider,
+  UIProvider,
   defaultVariantColorsResolver,
   VariantColorsResolver,
   parseThemeColor,
@@ -65,7 +65,7 @@ const variantColorResolver: VariantColorsResolver = (input) => {
 
 function Demo() {
   return (
-    <MantineProvider theme={{ variantColorResolver }}>
+    <UIProvider theme={{ variantColorResolver }}>
       <Group>
         <ThemeIcon color="lime.4" variant="filled">
           <ImageIcon size={20} />
@@ -79,7 +79,7 @@ function Demo() {
           <WarningIcon size={20} />
         </ThemeIcon>
       </Group>
-    </MantineProvider>
+    </UIProvider>
   );
 }
 `;
@@ -125,7 +125,7 @@ const variantColorResolver: VariantColorsResolver = (input) => {
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={{ variantColorResolver }}>
+    <UIThemeProvider theme={{ variantColorResolver }}>
       <Group>
         <ThemeIcon color="lime.4" variant="filled" size="lg">
           <ImageIcon size={20} />
@@ -139,11 +139,11 @@ function Demo() {
           <WarningIcon size={20} />
         </ThemeIcon>
       </Group>
-    </MantineThemeProvider>
+    </UIThemeProvider>
   );
 }
 
-export const variantColorsResolver: MantineDemo = {
+export const variantColorsResolver: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

@@ -19,7 +19,7 @@
     color: var(--ui-color-blue-0);
   }
 
-  @mixin hover {
+  &:hover {
     background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-6));
 
     &:not([data-active]) {

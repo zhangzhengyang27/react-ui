@@ -1,9 +1,9 @@
-import { MantineStylesTransform, useMantineTheme } from '@react-ui/ui';
+import { UIStylesTransform, useUITheme } from '@react-ui/ui';
 import { getHelpers } from './create-styles';
 import { useCss } from './use-css';
 
 function sxTransform() {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const { css } = useCss();
 
   return (sx: any) => {
@@ -13,7 +13,7 @@ function sxTransform() {
 }
 
 function stylesTransform() {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const { css } = useCss();
 
   return (styles: any, payload: any) => {
@@ -32,7 +32,7 @@ function stylesTransform() {
   };
 }
 
-export const emotionTransform: MantineStylesTransform = {
+export const emotionTransform: UIStylesTransform = {
   sx: sxTransform,
   styles: stylesTransform,
 };

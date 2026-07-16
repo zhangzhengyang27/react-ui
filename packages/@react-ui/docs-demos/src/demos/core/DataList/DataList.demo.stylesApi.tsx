@@ -1,5 +1,5 @@
 import { DataList } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { DataListStylesApi } from '@react-ui/docs-styles-api';
 
 const code = `
@@ -9,16 +9,16 @@ function Demo() {
   return (
     <DataList{{props}}>
       <DataList.Item>
-        <DataList.ItemLabel>Name</DataList.ItemLabel>
-        <DataList.ItemValue>John Doe</DataList.ItemValue>
+        <DataList.ItemLabel>姓名</DataList.ItemLabel>
+        <DataList.ItemValue>张三</DataList.ItemValue>
       </DataList.Item>
       <DataList.Item>
-        <DataList.ItemLabel>Email</DataList.ItemLabel>
+        <DataList.ItemLabel>邮箱</DataList.ItemLabel>
         <DataList.ItemValue>john@example.com</DataList.ItemValue>
       </DataList.Item>
       <DataList.Item>
-        <DataList.ItemLabel>Role</DataList.ItemLabel>
-        <DataList.ItemValue>Software Engineer</DataList.ItemValue>
+        <DataList.ItemLabel>角色</DataList.ItemLabel>
+        <DataList.ItemValue>软件工程师</DataList.ItemValue>
       </DataList.Item>
     </DataList>
   );
@@ -29,22 +29,22 @@ function Demo(props: any) {
   return (
     <DataList {...props}>
       <DataList.Item>
-        <DataList.ItemLabel>Name</DataList.ItemLabel>
-        <DataList.ItemValue>John Doe</DataList.ItemValue>
+        <DataList.ItemLabel>姓名</DataList.ItemLabel>
+        <DataList.ItemValue>张三</DataList.ItemValue>
       </DataList.Item>
       <DataList.Item>
-        <DataList.ItemLabel>Email</DataList.ItemLabel>
+        <DataList.ItemLabel>邮箱</DataList.ItemLabel>
         <DataList.ItemValue>john@example.com</DataList.ItemValue>
       </DataList.Item>
       <DataList.Item>
-        <DataList.ItemLabel>Role</DataList.ItemLabel>
-        <DataList.ItemValue>Software Engineer</DataList.ItemValue>
+        <DataList.ItemLabel>角色</DataList.ItemLabel>
+        <DataList.ItemValue>软件工程师</DataList.ItemValue>
       </DataList.Item>
     </DataList>
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: DataListStylesApi,
   component: Demo,

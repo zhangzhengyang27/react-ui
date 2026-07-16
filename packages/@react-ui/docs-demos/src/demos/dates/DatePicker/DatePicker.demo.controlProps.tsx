@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { DatePicker, DatePickerProps } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import dayjs from 'dayjs';
@@ -26,7 +26,7 @@ const getDayProps: DatePickerProps['getDayProps'] = (date) => {
 const getYearControlProps: DatePickerProps['getYearControlProps'] = (date) => {
   const d = dayjs(date);
 
-  if (d.year() === new Date().getFullYear()) {
+  if (d.year() === 2024) {
     return {
       style: {
         color: 'var(--ui-color-blue-filled)',
@@ -35,7 +35,7 @@ const getYearControlProps: DatePickerProps['getYearControlProps'] = (date) => {
     };
   }
 
-  if (d.year() === new Date().getFullYear() + 1) {
+  if (d.year() === 2024 + 1) {
     return { disabled: true };
   }
 
@@ -93,7 +93,7 @@ const getDayProps: DatePickerProps['getDayProps'] = (date) => {
 const getYearControlProps: DatePickerProps['getYearControlProps'] = (date) => {
   const d = dayjs(date);
 
-  if (d.year() === new Date().getFullYear()) {
+  if (d.year() === 2024) {
     return {
       style: {
         color: 'var(--ui-color-blue-filled)',
@@ -102,7 +102,7 @@ const getYearControlProps: DatePickerProps['getYearControlProps'] = (date) => {
     };
   }
 
-  if (d.year() === new Date().getFullYear() + 1) {
+  if (d.year() === 2024 + 1) {
     return { disabled: true };
   }
 
@@ -141,7 +141,7 @@ function Demo() {
   );
 }
 
-export const controlProps: MantineDemo = {
+export const controlProps: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

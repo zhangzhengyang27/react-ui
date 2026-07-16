@@ -19,15 +19,13 @@ export function StylesApiTablesList({ components, componentPrefix }: StylesApiTa
     <>
       <div className={classes.groupsHeader}>
         <Title order={2} className={classes.mainTitle}>
-          Styles API
+          样式 API
         </Title>
 
         <MdxParagraph style={{ marginTop: 0 }}>
-          <Code>{components[0]}</Code> component supports{' '}
-          <MdxLink href="/styles/styles-api">Styles API</MdxLink>. With Styles API, you can
-          customize styles of any inner element. Follow{' '}
-          <MdxLink href="/styles/styles-api">the documentation</MdxLink> to learn how to use CSS
-          modules, CSS variables and inline styles to get full control over component styles.
+          <Code>{components[0]}</Code> 组件支持{' '}
+          <MdxLink href="/styles/styles-api">样式 API</MdxLink>。通过样式 API，你可以自定义任意内部元素的样式。阅读{' '}
+          <MdxLink href="/styles/styles-api">文档</MdxLink>了解如何使用 CSS Modules、CSS 变量和内联样式来完全控制组件样式。
         </MdxParagraph>
       </div>
       {tables}

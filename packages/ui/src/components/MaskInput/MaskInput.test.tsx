@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { MaskInput } from './MaskInput'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('MaskInput', () => {
     it('applies mask on initial render', () => {
@@ -21,7 +21,7 @@ describe('MaskInput', () => {
     })
 
     it('fills placeholders for empty positions', () => {
-        renderWithProvider(<MaskInput mask="##-##" placeholderChar="*" data-testid="mask-input" />)
+        renderWithProvider(<MaskInput mask="##-##" slotChar="*" data-testid="mask-input" />)
         expect(screen.getByDisplayValue('**-**')).toBeInTheDocument()
     })
 })

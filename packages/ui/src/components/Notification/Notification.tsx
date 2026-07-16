@@ -6,8 +6,8 @@ import {
     factory,
     Factory,
     getRadius,
-    MantineColor,
-    MantineRadius,
+    UIColor,
+    UIRadius,
     StylesApiProps,
     useProps,
     useStyles
@@ -23,20 +23,20 @@ export type NotificationCssVariables = {
 }
 
 export interface NotificationProps extends BoxProps, StylesApiProps<NotificationFactory>, ElementProps<'div', 'title'> {
-    /** Notification title */
+    /** 通知标题 */
     title?: React.ReactNode
 
-    /** Notification message */
+    /** 通知消息 */
     message?: React.ReactNode
 
-    /** Icon displayed on the left side */
+    /** 左侧显示的图标 */
     icon?: React.ReactNode
 
-    /** Key of theme.colors or any valid CSS color */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 */
+    color?: UIColor
 
-    /** Key of theme.radius or any valid CSS value @default theme.defaultRadius */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 @default theme.defaultRadius */
+    radius?: UIRadius
 
     /** If true, a loading spinner will be displayed instead of the icon @default false */
     loading?: boolean
@@ -44,10 +44,10 @@ export interface NotificationProps extends BoxProps, StylesApiProps<Notification
     /** If true, the close button is displayed @default true */
     withCloseButton?: boolean
 
-    /** Called when the close button is clicked */
+    /** 点击关闭按钮时调用 */
     onClose?: () => void
 
-    /** Close button aria-label */
+    /** 关闭按钮的 aria-label */
     closeButtonProps?: React.ComponentPropsWithoutRef<'button'>
 }
 

@@ -1,6 +1,6 @@
 import { Box, Text } from '@react-ui/ui';
 import { useInViewport } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Box, Text } from '@react-ui/ui';
@@ -10,7 +10,7 @@ function Demo() {
   const { ref, inViewport } = useInViewport();
   return (
     <>
-      <Text ta="center">{inViewport ? 'Box is visible' : 'Scroll to see box'}</Text>
+      <Text ta="center">{inViewport ? '盒子可见' : '滚动查看盒子'}</Text>
       <Box h={64} style={{ overflow: 'scroll' }}>
         <Box h={128}></Box>
         <Box ref={ref} bg="blue" h={32} p={8}>
@@ -28,7 +28,7 @@ function Demo() {
   const { ref, inViewport } = useInViewport();
   return (
     <>
-      <Text ta="center">{inViewport ? 'Box is visible' : 'Scroll to see box'}</Text>
+      <Text ta="center">{inViewport ? '盒子可见' : '滚动查看盒子'}</Text>
       <Box h={64} style={{ overflow: 'scroll' }}>
         <Box h={128} />
         <Box ref={ref} bg="blue" h={32} p={8}>
@@ -41,7 +41,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

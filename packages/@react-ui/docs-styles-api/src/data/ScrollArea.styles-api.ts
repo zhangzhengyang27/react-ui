@@ -3,7 +3,7 @@ import type { StylesApiData } from '../types';
 
 export const ScrollAreaStylesApi: StylesApiData<ScrollAreaFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
     content: 'Wraps component children',
     viewport: 'Main scrollable area',
     scrollbar: 'Horizontal or vertical scrollbar root',

@@ -1,14 +1,14 @@
 import { Button, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Tooltip } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <Tooltip label="Tooltip for disabled button">
+    <Tooltip label="禁用按钮的提示">
       <Button data-disabled onClick={(event) => event.preventDefault()}>
-        Disabled button with tooltip
+        带提示的禁用按钮
       </Button>
     </Tooltip>
   );
@@ -17,15 +17,15 @@ function Demo() {
 
 function Demo() {
   return (
-    <Tooltip label="Tooltip for disabled button">
+    <Tooltip label="禁用按钮的提示">
       <Button data-disabled onClick={(event) => event.preventDefault()}>
-        Disabled button with tooltip
+        带提示的禁用按钮
       </Button>
     </Tooltip>
   );
 }
 
-export const disabledTooltip: MantineDemo = {
+export const disabledTooltip: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

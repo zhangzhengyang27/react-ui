@@ -6,7 +6,7 @@ import {
   UserCheckIcon,
 } from '@phosphor-icons/react';
 import { Stepper } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -66,7 +66,7 @@ function Demo() {
   );
 }
 
-export const icons: MantineDemo = {
+export const icons: UIDemo = {
   type: 'code',
   component: Demo,
   code,

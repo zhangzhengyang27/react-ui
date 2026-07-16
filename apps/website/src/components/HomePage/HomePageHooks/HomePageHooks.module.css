@@ -9,7 +9,7 @@
 .demos {
   margin-top: 50px;
 
-  @mixin smaller-than $mantine-breakpoint-md {
+  @media (max-width: 62em) {
     margin-top: 20px;
   }
 }
@@ -31,7 +31,7 @@
   font-size: var(--ui-font-size-lg);
   max-width: 500px;
 
-  @mixin smaller-than $mantine-breakpoint-md {
+  @media (max-width: 62em) {
     font-size: var(--ui-font-size-sm);
   }
 }
@@ -39,7 +39,7 @@
 .header {
   height: 120px;
 
-  @mixin smaller-than $mantine-breakpoint-md {
+  @media (max-width: 62em) {
     height: auto;
     margin-bottom: var(--ui-spacing-sm);
   }

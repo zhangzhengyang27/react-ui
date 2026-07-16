@@ -1,67 +1,67 @@
 import type {
-    MantineBreakpoint,
-    MantineColor,
-    MantineFontSize,
-    MantineLineHeight,
-    MantineSpacing
-} from '../../../core/MantineProvider'
+    UIBreakpoint,
+    UIColor,
+    UIFontSize,
+    UILineHeight,
+    UISpacing
+} from '../../../core/UIProvider'
 
 /** 定义泛型类型 `StyleProps<Value>`，用于描述响应式样式值的类型 */
-export type StyleProp<Value> = Value | Partial<Record<MantineBreakpoint | (string & {}), Value>>
+export type StyleProp<Value> = Value | Partial<Record<UIBreakpoint | (string & {}), Value>>
 
-export interface MantineStyleProps {
+export interface UIStyleProps {
     /** Margin, theme key: theme.spacing */
-    m?: StyleProp<MantineSpacing>
+    m?: StyleProp<UISpacing>
     /** MarginBlock, theme key: theme.spacing */
-    my?: StyleProp<MantineSpacing>
+    my?: StyleProp<UISpacing>
     /** MarginInline, theme key: theme.spacing */
-    mx?: StyleProp<MantineSpacing>
+    mx?: StyleProp<UISpacing>
     /** MarginTop, theme key: theme.spacing */
-    mt?: StyleProp<MantineSpacing>
+    mt?: StyleProp<UISpacing>
     /** MarginBottom, theme key: theme.spacing */
-    mb?: StyleProp<MantineSpacing>
+    mb?: StyleProp<UISpacing>
     /** MarginInlineStart, theme key: theme.spacing */
-    ms?: StyleProp<MantineSpacing>
+    ms?: StyleProp<UISpacing>
     /** MarginInlineEnd, theme key: theme.spacing */
-    me?: StyleProp<MantineSpacing>
+    me?: StyleProp<UISpacing>
     /** MarginLeft, theme key: theme.spacing */
-    ml?: StyleProp<MantineSpacing>
+    ml?: StyleProp<UISpacing>
     /** MarginRight, theme key: theme.spacing */
-    mr?: StyleProp<MantineSpacing>
+    mr?: StyleProp<UISpacing>
 
     /** Padding, theme key: theme.spacing */
-    p?: StyleProp<MantineSpacing>
+    p?: StyleProp<UISpacing>
     /** PaddingBlock, theme key: theme.spacing */
-    py?: StyleProp<MantineSpacing>
+    py?: StyleProp<UISpacing>
     /** PaddingInline, theme key: theme.spacing */
-    px?: StyleProp<MantineSpacing>
+    px?: StyleProp<UISpacing>
     /** PaddingTop, theme key: theme.spacing */
-    pt?: StyleProp<MantineSpacing>
+    pt?: StyleProp<UISpacing>
     /** PaddingBottom, theme key: theme.spacing */
-    pb?: StyleProp<MantineSpacing>
+    pb?: StyleProp<UISpacing>
     /** PaddingInlineStart, theme key: theme.spacing */
-    ps?: StyleProp<MantineSpacing>
+    ps?: StyleProp<UISpacing>
     /** PaddingInlineEnd, theme key: theme.spacing */
-    pe?: StyleProp<MantineSpacing>
+    pe?: StyleProp<UISpacing>
     /** PaddingLeft, theme key: theme.spacing */
-    pl?: StyleProp<MantineSpacing>
+    pl?: StyleProp<UISpacing>
     /** PaddingRight, theme key: theme.spacing */
-    pr?: StyleProp<MantineSpacing>
+    pr?: StyleProp<UISpacing>
 
     /** Border */
     bd?: StyleProp<React.CSSProperties['border']>
     /** BorderRadius, theme key: theme.radius */
-    bdrs?: StyleProp<MantineSpacing>
+    bdrs?: StyleProp<UISpacing>
     /** Background, theme key: theme.colors */
-    bg?: StyleProp<MantineColor>
+    bg?: StyleProp<UIColor>
     /** Color */
-    c?: StyleProp<MantineColor>
+    c?: StyleProp<UIColor>
     opacity?: StyleProp<React.CSSProperties['opacity']>
 
     /** FontFamily */
     ff?: StyleProp<'monospace' | 'text' | 'heading' | (string & {})>
     /** FontSize, theme key: theme.fontSizes */
-    fz?: StyleProp<MantineFontSize | `h${1 | 2 | 3 | 4 | 5 | 6}` | number | (string & {})>
+    fz?: StyleProp<UIFontSize | `h${1 | 2 | 3 | 4 | 5 | 6}` | number | (string & {})>
     /** FontWeight */
     fw?: StyleProp<React.CSSProperties['fontWeight']>
     /** LetterSpacing */
@@ -69,7 +69,7 @@ export interface MantineStyleProps {
     /** TextAlign */
     ta?: StyleProp<React.CSSProperties['textAlign']>
     /** LineHeight, theme key: lineHeights */
-    lh?: StyleProp<MantineLineHeight | `h${1 | 2 | 3 | 4 | 5 | 6}` | number | (string & {})>
+    lh?: StyleProp<UILineHeight | `h${1 | 2 | 3 | 4 | 5 | 6}` | number | (string & {})>
     /** FontStyle */
     fs?: StyleProp<React.CSSProperties['fontStyle']>
     /** TextTransform */

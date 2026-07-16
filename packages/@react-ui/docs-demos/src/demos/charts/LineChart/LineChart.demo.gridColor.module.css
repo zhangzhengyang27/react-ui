@@ -1,10 +1,10 @@
 .root {
-  @mixin light {
+  [data-ui-color-scheme='light'] & {
     --chart-grid-color: alpha(var(--ui-color-black), 0.15);
     --chart-text-color: var(--ui-color-gray-7);
   }
 
-  @mixin dark {
+  [data-ui-color-scheme='dark'] & {
     --chart-grid-color: alpha(var(--ui-color-white), 0.15);
     --chart-text-color: var(--ui-color-dark-0);
   }

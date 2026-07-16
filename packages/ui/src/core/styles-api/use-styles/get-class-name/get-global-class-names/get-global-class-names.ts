@@ -1,23 +1,23 @@
 import cx from 'clsx'
-import { MantineTheme } from '../../../../MantineProvider'
+import { UITheme } from '../../../../UIProvider'
 import { GetStylesApiOptions } from '../../../styles-api.types'
 
 /**
  * 获取全局类名的配置选项接口
- * @param {MantineTheme} theme - Mantine主题对象
+ * @param {UITheme} theme - UI主题对象
  * @param {boolean | undefined} unstyled - 是否禁用默认样式
  * @param {GetStylesApiOptions | undefined} options - 样式API选项
  */
 interface GetGlobalClassNamesOptions {
-    theme: MantineTheme
+    theme: UITheme
     unstyled: boolean | undefined
     options: GetStylesApiOptions | undefined
 }
 
 export const FOCUS_CLASS_NAMES = {
-    always: 'mantine-focus-always',
-    auto: 'mantine-focus-auto',
-    never: 'mantine-focus-never'
+    always: 'ui-focus-always',
+    auto: 'ui-focus-auto',
+    never: 'ui-focus-never'
 } as const
 
 /**

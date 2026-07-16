@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, CloseButton, FloatingWindow, Group, SegmentedControl, Text } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, CloseButton, FloatingWindow, Group, SegmentedControl, Text } from '@react-ui/ui';
@@ -15,7 +15,7 @@ function Demo() {
     <>
       <Group>
         <Button onClick={handlers.toggle} variant="default">
-          {visible ? 'Hide' : 'Show'} floating window
+          {visible ? '隐藏' : '显示'} 浮动窗口
         </Button>
         <SegmentedControl data={['x', 'y']} onChange={(val) => setAxis(val as 'x')} value={axis} />
       </Group>
@@ -31,7 +31,7 @@ function Demo() {
           axis={axis}
         >
           <Group justify="space-between" mb="md">
-            <Text>Axis demo</Text>
+            <Text>轴演示</Text>
             <CloseButton onClick={handlers.close} />
           </Group>
           <Text fz="sm">
@@ -53,7 +53,7 @@ function Demo() {
     <>
       <Group>
         <Button onClick={handlers.toggle} variant="default">
-          {visible ? 'Hide' : 'Show'} floating window
+          {visible ? '隐藏' : '显示'} 浮动窗口
         </Button>
         <SegmentedControl data={['x', 'y']} onChange={(val) => setAxis(val as 'x')} value={axis} />
       </Group>
@@ -69,7 +69,7 @@ function Demo() {
           axis={axis}
         >
           <Group justify="space-between" mb="md">
-            <Text>Axis demo</Text>
+            <Text>轴演示</Text>
             <CloseButton onClick={handlers.close} />
           </Group>
           <Text fz="sm">
@@ -82,7 +82,7 @@ function Demo() {
   );
 }
 
-export const axis: MantineDemo = {
+export const axis: UIDemo = {
   type: 'code',
   component: Demo,
   code,

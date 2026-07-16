@@ -1,19 +1,19 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { PasswordInput } from './PasswordInput'
 
 describe('PasswordInput', () => {
     it('renders with label, description and error', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <PasswordInput
                     label="Password"
                     description="Enter your password"
                     error="Invalid password"
                     placeholder="******"
                 />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('Password')).toBeInTheDocument()
@@ -24,9 +24,9 @@ describe('PasswordInput', () => {
 
     it('toggles password visibility', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <PasswordInput defaultValue="secret" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         const input = screen.getByDisplayValue('secret')
@@ -41,9 +41,9 @@ describe('PasswordInput', () => {
 
     it('disables input and toggle button', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <PasswordInput disabled />
-            </MantineProvider>
+            </UIProvider>
         )
 
         const input = document.querySelector('input[type="password"]')

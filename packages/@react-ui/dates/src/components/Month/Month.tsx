@@ -9,7 +9,7 @@ import {
   Factory,
   getFontSize,
   getSize,
-  MantineSize,
+  UISize,
   StylesApiProps,
   useProps,
   useResolvedStylesApi,
@@ -105,7 +105,7 @@ export interface MonthSettings {
   getDayAriaLabel?: (date: DateStringValue) => string;
 
   /** Controls size */
-  size?: MantineSize;
+  size?: UISize;
 
   /** Determines whether controls should be separated by space @default true */
   withCellSpacing?: boolean;
@@ -249,7 +249,7 @@ export const Month = factory<MonthFactory>((_props) => {
             styles={resolvedStyles}
             attributes={attributes}
             unstyled={unstyled}
-            data-mantine-stop-propagation={__stopPropagation || undefined}
+            data-ui-stop-propagation={__stopPropagation || undefined}
             highlightToday={highlightToday}
             renderDay={renderDay}
             date={date}

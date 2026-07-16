@@ -1,5 +1,5 @@
 import { MonthView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { manyEventsCode, manyEvents as manyEventsData } from './_data';
 
 const code = `
@@ -7,20 +7,20 @@ import { MonthView } from '@react-ui/schedule';
 import { events } from './data';
 
 function Demo() {
-  return <MonthView date={new Date()} events={events} />;
+  return <MonthView date={new Date('2024-01-15')} events={events} />;
 }
 `;
 
 function Demo() {
-  return <MonthView date={new Date()} events={manyEventsData} />;
+  return <MonthView date={new Date('2024-01-15')} events={manyEventsData} />;
 }
 
-export const manyEvents: MantineDemo = {
+export const manyEvents: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: manyEventsCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

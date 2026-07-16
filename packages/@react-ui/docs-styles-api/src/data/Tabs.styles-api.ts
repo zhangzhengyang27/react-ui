@@ -3,19 +3,19 @@ import type { StylesApiData } from '../types';
 
 export const TabsStylesApi: StylesApiData<TabsFactory> = {
   selectors: {
-    root: 'Root element (`Tabs` component)',
-    list: 'List of tabs (`Tabs.List` component)',
-    panel: 'Panel with tab content (`Tabs.Panel` component)',
-    tab: 'Tab button (`Tabs.Tab` component)',
-    tabLabel: 'Label of `Tabs.Tab`',
-    tabSection: 'Left and right sections of `Tabs.Tab`',
+    root: '`Tabs` 组件的根元素',
+    list: '标签页列表（`Tabs.List` 组件）',
+    panel: '带标签页内容的面板（`Tabs.Panel` 组件）',
+    tab: '标签页按钮（`Tabs.Tab` 组件）',
+    tabLabel: '`Tabs.Tab` 的标签',
+    tabSection: '`Tabs.Tab` 的左右区域',
   },
 
   vars: {
     root: {
       '--tabs-color':
-        'Controls colors of `Tabs.Tab`, only applicable when variant is `pills` or `default`',
-      '--tabs-radius': 'Controls `Tabs.Tab` `border-radius`',
+        '控制 `Tabs.Tab` 的颜色，仅在 variant 为 `pills` 或 `default` 时适用',
+      '--tabs-radius': '控制 `Tabs.Tab` 的 `border-radius`',
     },
   },
 
@@ -23,28 +23,28 @@ export const TabsStylesApi: StylesApiData<TabsFactory> = {
     {
       modifier: 'data-orientation',
       selector: ['root', 'tab', 'list', 'panel'],
-      value: 'Value of `orientation` prop',
+      value: '`orientation` 属性的值',
     },
     {
       modifier: 'data-placement',
       selector: ['root', 'tab', 'list'],
-      value: 'Value of placement prop',
-      condition: 'Value of `orientation` prop is "vertical" on `Tabs` component',
+      value: 'placement 属性的值',
+      condition: '`Tabs` 组件的 `orientation` 属性值为 "vertical"',
     },
     {
       modifier: 'data-inverted',
       selector: ['tab', 'list'],
-      condition: '`inverted` prop is set on `Tabs` component',
+      condition: '`Tabs` 组件设置了 `inverted` 属性',
     },
     {
       modifier: 'data-grow',
       selector: ['list'],
-      condition: '`grow` prop is set on `Tabs.List` component',
+      condition: '`Tabs.List` 组件设置了 `grow` 属性',
     },
     {
       modifier: 'data-position',
       selector: ['tabSection'],
-      value: 'Position of the section, left or right',
+      value: '区域位置：左侧或右侧',
     },
   ],
 };

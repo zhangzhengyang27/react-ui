@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Group, Modal } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -41,19 +41,19 @@ function Demo() {
         <Button
           onClick={() => {
             firstHandlers.open();
-            setModalData({ title: 'Edit your profile', message: 'Imagine a form here' });
+            setModalData({ title: '编辑你的资料', message: '这里想象一个表单' });
           }}
         >
-          Clear data in onClose
+          在 onClose 中清除数据
         </Button>
 
         <Button
           onClick={() => {
             secondHandlers.open();
-            setModalData({ title: 'Edit your profile', message: 'Imagine a form here' });
+            setModalData({ title: '编辑你的资料', message: '这里想象一个表单' });
           }}
         >
-          Clear data in onExitTransitionEnd
+          在 onExitTransitionEnd 中清除数据
         </Button>
       </Group>
     </>
@@ -96,28 +96,28 @@ function Demo() {
         <Button
           onClick={() => {
             firstHandlers.open();
-            setModalData({ title: 'Edit your profile', message: 'Imagine a form here' });
+            setModalData({ title: '编辑你的资料', message: '这里想象一个表单' });
           }}
           variant="default"
         >
-          Clear data in onClose
+          在 onClose 中清除数据
         </Button>
 
         <Button
           onClick={() => {
             secondHandlers.open();
-            setModalData({ title: 'Edit your profile', message: 'Imagine a form here' });
+            setModalData({ title: '编辑你的资料', message: '这里想象一个表单' });
           }}
           variant="default"
         >
-          Clear data in onExitTransitionEnd
+          在 onExitTransitionEnd 中清除数据
         </Button>
       </Group>
     </>
   );
 }
 
-export const transitionEnd: MantineDemo = {
+export const transitionEnd: UIDemo = {
   type: 'code',
   code,
   centered: true,

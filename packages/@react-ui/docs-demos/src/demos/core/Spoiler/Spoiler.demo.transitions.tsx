@@ -1,4 +1,4 @@
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { Wrapper } from './_wrapper';
 
 const code = `
@@ -6,7 +6,7 @@ import { Spoiler } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <Spoiler maxHeight={120} showLabel="Show more" hideLabel="Hide" transitionDuration={0}>
+    <Spoiler maxHeight={120} showLabel="显示更多" hideLabel="隐藏" transitionDuration={0}>
       {/* Content here */}
     </Spoiler>
   );
@@ -17,7 +17,7 @@ function Demo() {
   return <Wrapper transitionDuration={0} />;
 }
 
-export const transitions: MantineDemo = {
+export const transitions: UIDemo = {
   type: 'code',
   code,
   component: Demo,

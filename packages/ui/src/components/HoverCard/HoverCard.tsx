@@ -6,8 +6,8 @@ import {
     getFloatingPosition,
     getRadius,
     getShadow,
-    MantineRadius,
-    MantineShadow,
+    UIRadius,
+    UIShadow,
     StylesApiProps,
     useProps,
     useStyles,
@@ -31,10 +31,10 @@ export interface HoverCardProps extends StylesApiProps<HoverCardFactory> {
     /** HoverCard.Target and HoverCard.Dropdown components */
     children: React.ReactNode
 
-    /** Dropdown position relative to the target element */
+    //** 下拉框相对于目标元素的位置 */
     position?: FloatingPosition
 
-    /** Offset of the dropdown element */
+    /** 下拉元素的偏移量 */
     offset?: number
 
     /** Called when dropdown position changes */
@@ -58,7 +58,7 @@ export interface HoverCardProps extends StylesApiProps<HoverCardFactory> {
     /** Close delay in ms */
     closeDelay?: number
 
-    /** Determines whether component should have an arrow */
+    /** 决定组件是否显示箭头 */
     withArrow?: boolean
 
     /** Arrow size in px */
@@ -73,20 +73,20 @@ export interface HoverCardProps extends StylesApiProps<HoverCardFactory> {
     /** Arrow position */
     arrowPosition?: 'center' | 'side'
 
-    /** Determines whether dropdown should be rendered within the Portal */
+    /** 决定下拉框是否在 Portal 中渲染 */
     withinPortal?: boolean
 
-    /** Dropdown z-index */
+    /** 下拉层 z-index */
     zIndex?: string | number
 
     /** Dropdown width */
     width?: React.CSSProperties['width']
 
-    /** Key of theme.radius or any valid CSS value */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 */
+    radius?: UIRadius
 
     /** Key of theme.shadows or any other valid CSS box-shadow value */
-    shadow?: MantineShadow
+    shadow?: UIShadow
 
     /** If set, hovercard dropdown will not be rendered */
     disabled?: boolean
@@ -97,7 +97,7 @@ export interface HoverCardProps extends StylesApiProps<HoverCardFactory> {
     /** Floating ui middlewares */
     middlewares?: HoverCardMiddlewares
 
-    /** Props passed down to the Transition component */
+    /** 传递给 Transition 组件的属性 */
     transitionProps?: import('../Transition').TransitionOverride
 }
 
@@ -230,7 +230,7 @@ export function HoverCard(_props: HoverCardProps) {
 HoverCard.Target = HoverCardTarget
 HoverCard.Dropdown = HoverCardDropdown
 HoverCard.Group = HoverCardGroup
-HoverCard.displayName = '@mantine/core/HoverCard'
+HoverCard.displayName = '@react-ui/ui/HoverCard'
 
 export namespace HoverCard {
     export type Props = HoverCardProps

@@ -1,20 +1,20 @@
 import { Button } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { interactiveVariantsControl } from '../../../shared';
 
 const code = `
 import { Button } from '@react-ui/ui';
 
 function Demo() {
-  return <Button{{props}}>Button</Button>;
+  return <Button{{props}}>按钮</Button>;
 }
 `;
 
 function Wrapper(props: any) {
-  return <Button {...props}>Button</Button>;
+  return <Button {...props}>按钮</Button>;
 }
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

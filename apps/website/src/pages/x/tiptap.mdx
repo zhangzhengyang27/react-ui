@@ -41,7 +41,7 @@ import '@react-ui/ui/styles.css';
 ```tsx
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { RichTextEditor as MantineRichTextEditor } from '@react-ui/ui';
+import { RichTextEditor as UIRichTextEditor } from '@react-ui/ui';
 
 interface RichTextEditorProps {
   value: string;
@@ -61,16 +61,16 @@ export function RichTextEditor({
   });
 
   return (
-    <MantineRichTextEditor editor={editor}>
-      <MantineRichTextEditor.Toolbar>
-        <MantineRichTextEditor.ControlsGroup>
-          <MantineRichTextEditor.Bold />
-          <MantineRichTextEditor.Italic />
-        </MantineRichTextEditor.ControlsGroup>
-      </MantineRichTextEditor.Toolbar>
+    <UIRichTextEditor editor={editor}>
+      <UIRichTextEditor.Toolbar>
+        <UIRichTextEditor.ControlsGroup>
+          <UIRichTextEditor.Bold />
+          <UIRichTextEditor.Italic />
+        </UIRichTextEditor.ControlsGroup>
+      </UIRichTextEditor.Toolbar>
 
-      <MantineRichTextEditor.Content />
-    </MantineRichTextEditor>
+      <UIRichTextEditor.Content />
+    </UIRichTextEditor>
   );
 }
 ```

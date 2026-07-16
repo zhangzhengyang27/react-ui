@@ -1,19 +1,19 @@
 import { Textarea } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Textarea } from '@react-ui/ui';
 
 function Demo() {
-  return <Textarea label="Textarea" placeholder="Textarea" success="Looks good!" />;
+  return <Textarea label="文本域" placeholder="文本域" success="看起来不错！" />;
 }
 `;
 
 function Demo() {
-  return <Textarea label="Textarea" placeholder="Textarea" success="Looks good!" />;
+  return <Textarea label="文本域" placeholder="文本域" success="看起来不错！" />;
 }
 
-export const success: MantineDemo = {
+export const success: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,5 +1,5 @@
 import { Divider, Group, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Divider, Group, Text } from '@react-ui/ui';
@@ -7,17 +7,17 @@ import { Divider, Group, Text } from '@react-ui/ui';
 function Demo() {
   return (
     <Group>
-      <Text>Label</Text>
+      <Text>标签</Text>
       <Divider orientation="vertical" />
-      <Text>Label</Text>
+      <Text>标签</Text>
       <Divider size="sm" orientation="vertical" />
-      <Text>Label</Text>
+      <Text>标签</Text>
       <Divider size="md" orientation="vertical" />
-      <Text>Label</Text>
+      <Text>标签</Text>
       <Divider size="lg" orientation="vertical" />
-      <Text>Label</Text>
+      <Text>标签</Text>
       <Divider size="xl" orientation="vertical" />
-      <Text>Label</Text>
+      <Text>标签</Text>
     </Group>
   );
 }
@@ -26,22 +26,22 @@ function Demo() {
 function Demo() {
   return (
     <Group>
-      <Text>Label</Text>
+      <Text>标签</Text>
       <Divider orientation="vertical" />
-      <Text>Label</Text>
+      <Text>标签</Text>
       <Divider size="sm" orientation="vertical" />
-      <Text>Label</Text>
+      <Text>标签</Text>
       <Divider size="md" orientation="vertical" />
-      <Text>Label</Text>
+      <Text>标签</Text>
       <Divider size="lg" orientation="vertical" />
-      <Text>Label</Text>
+      <Text>标签</Text>
       <Divider size="xl" orientation="vertical" />
-      <Text>Label</Text>
+      <Text>标签</Text>
     </Group>
   );
 }
 
-export const orientation: MantineDemo = {
+export const orientation: UIDemo = {
   type: 'code',
   code,
   component: Demo,

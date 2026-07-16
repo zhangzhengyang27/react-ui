@@ -1,5 +1,5 @@
 import { NumberInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NumberInput } from '@react-ui/ui';
@@ -8,15 +8,15 @@ function Demo() {
   return (
     <>
       <NumberInput
-        label="Leading zeros removed on blur"
-        placeholder="Type 00100 and click outside"
+        label="失去焦点时移除前导零"
+        placeholder="输入 00100 然后点击外部"
         trimLeadingZeroesOnBlur
         defaultValue="00100"
       />
 
       <NumberInput
-        label="Leading zeros preserved"
-        placeholder="Type 00100 and click outside"
+        label="保留前导零"
+        placeholder="输入 00100 然后点击外部"
         trimLeadingZeroesOnBlur={false}
         defaultValue="00100"
         mt="md"
@@ -30,15 +30,15 @@ function Demo() {
   return (
     <>
       <NumberInput
-        label="Leading zeros removed on blur"
-        placeholder="Type 00100 and click outside"
+        label="失去焦点时移除前导零"
+        placeholder="输入 00100 然后点击外部"
         trimLeadingZeroesOnBlur
         defaultValue="00100"
       />
 
       <NumberInput
-        label="Leading zeros preserved"
-        placeholder="Type 00100 and click outside"
+        label="保留前导零"
+        placeholder="输入 00100 然后点击外部"
         trimLeadingZeroesOnBlur={false}
         defaultValue="00100"
         mt="md"
@@ -47,7 +47,7 @@ function Demo() {
   );
 }
 
-export const trimLeadingZeroes: MantineDemo = {
+export const trimLeadingZeroes: UIDemo = {
   type: 'code',
   component: Demo,
   code,

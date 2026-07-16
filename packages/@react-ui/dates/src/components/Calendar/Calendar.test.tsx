@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
-import { datesTests } from '@mantine-tests/dates';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
+import { datesTests } from '@react-ui/tests/dates';
 import { Calendar, CalendarProps, CalendarStylesNames } from './Calendar';
 
 const defaultProps: CalendarProps = {
@@ -68,7 +68,7 @@ describe('@react-ui/dates/Calendar', () => {
     {
       component: Calendar,
       props: { ...defaultProps, level: 'year' },
-      listSelector: '.mantine-Calendar-monthsList',
+      listSelector: '.ui-Calendar-monthsList',
     },
     'handle months list keyboard events'
   );
@@ -77,7 +77,7 @@ describe('@react-ui/dates/Calendar', () => {
     {
       component: Calendar,
       props: { ...defaultProps, level: 'decade' },
-      listSelector: '.mantine-Calendar-yearsList',
+      listSelector: '.ui-Calendar-yearsList',
     },
     'handle years list keyboard events'
   );

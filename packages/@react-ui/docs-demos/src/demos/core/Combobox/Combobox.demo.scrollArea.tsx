@@ -1,24 +1,24 @@
 import { useState } from 'react';
 import { Combobox, Input, InputBase, ScrollArea, useCombobox } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
 import { Input, InputBase, Combobox, useCombobox, ScrollArea } from '@react-ui/ui';
 
 const groceries = [
-  '🍎 Apples',
-  '🍌 Bananas',
-  '🥦 Broccoli',
-  '🥕 Carrots',
-  '🍫 Chocolate',
-  '🍇 Grapes',
+  '🍎 苹果',
+  '🍌 香蕉',
+  '🥦 西兰花',
+  '🥕 胡萝卜',
+  '🍫 巧克力',
+  '🍇 葡萄',
   '🍋 Lemon',
-  '🥬 Lettuce',
+  '🥬 生菜',
   '🍄 Mushrooms',
-  '🍊 Oranges',
+  '🍊 橙子',
   '🥔 Potatoes',
-  '🍅 Tomatoes',
+  '🍅 西红柿',
   '🥚 Eggs',
   '🥛 Milk',
   '🍞 Bread',
@@ -35,7 +35,7 @@ const groceries = [
   '🥖 Baguette',
   '🍣 Sushi',
   '🥝 Kiwi',
-  '🍓 Strawberries',
+  '🍓 草莓',
 ];
 
 function Demo() {
@@ -68,7 +68,7 @@ function Demo() {
           rightSectionPointerEvents="none"
           onClick={() => combobox.toggleDropdown()}
         >
-          {value || <Input.Placeholder>Pick value</Input.Placeholder>}
+          {value || <Input.Placeholder>选择值</Input.Placeholder>}
         </InputBase>
       </Combobox.Target>
 
@@ -85,18 +85,18 @@ function Demo() {
 `;
 
 const groceries = [
-  '🍎 Apples',
-  '🍌 Bananas',
-  '🥦 Broccoli',
-  '🥕 Carrots',
-  '🍫 Chocolate',
-  '🍇 Grapes',
+  '🍎 苹果',
+  '🍌 香蕉',
+  '🥦 西兰花',
+  '🥕 胡萝卜',
+  '🍫 巧克力',
+  '🍇 葡萄',
   '🍋 Lemon',
-  '🥬 Lettuce',
+  '🥬 生菜',
   '🍄 Mushrooms',
-  '🍊 Oranges',
+  '🍊 橙子',
   '🥔 Potatoes',
-  '🍅 Tomatoes',
+  '🍅 西红柿',
   '🥚 Eggs',
   '🥛 Milk',
   '🍞 Bread',
@@ -113,7 +113,7 @@ const groceries = [
   '🥖 Baguette',
   '🍣 Sushi',
   '🥝 Kiwi',
-  '🍓 Strawberries',
+  '🍓 草莓',
 ];
 
 function Demo() {
@@ -146,7 +146,7 @@ function Demo() {
           rightSectionPointerEvents="none"
           onClick={() => combobox.toggleDropdown()}
         >
-          {value || <Input.Placeholder>Pick value</Input.Placeholder>}
+          {value || <Input.Placeholder>选择值</Input.Placeholder>}
         </InputBase>
       </Combobox.Target>
 
@@ -161,7 +161,7 @@ function Demo() {
   );
 }
 
-export const scrollArea: MantineDemo = {
+export const scrollArea: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

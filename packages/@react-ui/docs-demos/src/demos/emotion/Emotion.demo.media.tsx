@@ -1,6 +1,6 @@
 import { em, getBreakpointValue } from '@react-ui/ui';
 import { createStyles } from '@react-ui/emotion';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { em, getBreakpointValue } from '@react-ui/ui';
@@ -62,7 +62,7 @@ function Demo() {
   return <div className={classes.container} />;
 }
 
-export const media: MantineDemo = {
+export const media: UIDemo = {
   type: 'code',
   component: Demo,
   code,

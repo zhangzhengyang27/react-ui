@@ -1,6 +1,6 @@
 import { Button, Group } from '@react-ui/ui';
 import { NavigationProgress, nprogress } from '@react-ui/nprogress';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Group } from '@react-ui/ui';
@@ -11,13 +11,13 @@ function Demo() {
     <>
       <NavigationProgress />
       <Group justify="center">
-        <Button onClick={() => nprogress.start()}>Start</Button>
-        <Button onClick={() => nprogress.stop()}>Stop</Button>
-        <Button onClick={() => nprogress.increment()}>Increment</Button>
-        <Button onClick={() => nprogress.decrement()}>Decrement</Button>
+        <Button onClick={() => nprogress.start()}>开始</Button>
+        <Button onClick={() => nprogress.stop()}>停止</Button>
+        <Button onClick={() => nprogress.increment()}>增加</Button>
+        <Button onClick={() => nprogress.decrement()}>减少</Button>
         <Button onClick={() => nprogress.set(50)}>Set 50%</Button>
-        <Button onClick={() => nprogress.reset()}>Reset</Button>
-        <Button onClick={() => nprogress.complete()}>Complete</Button>
+        <Button onClick={() => nprogress.reset()}>重置</Button>
+        <Button onClick={() => nprogress.complete()}>完成</Button>
       </Group>
     </>
   );
@@ -55,7 +55,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

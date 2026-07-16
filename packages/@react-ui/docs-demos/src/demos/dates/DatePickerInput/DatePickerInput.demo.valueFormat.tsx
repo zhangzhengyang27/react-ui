@@ -1,5 +1,5 @@
 import { DatePickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { DatePickerInput } from '@react-ui/dates';
@@ -9,8 +9,8 @@ function Demo() {
     <DatePickerInput
       valueFormat="YYYY MMM DD"
       type="multiple"
-      label="Pick date"
-      placeholder="Pick date"
+      label="选择日期"
+      placeholder="选择日期"
     />
   );
 }
@@ -21,13 +21,13 @@ function Demo() {
     <DatePickerInput
       valueFormat="YYYY MMM DD"
       type="multiple"
-      label="Pick date"
-      placeholder="Pick date"
+      label="选择日期"
+      placeholder="选择日期"
     />
   );
 }
 
-export const valueFormat: MantineDemo = {
+export const valueFormat: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

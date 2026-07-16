@@ -7,8 +7,8 @@ import {
     Factory,
     getSize,
     getThemeColor,
-    MantineColor,
-    MantineSize,
+    UIColor,
+    UISize,
     rem,
     StylesApiProps,
     useProps,
@@ -29,13 +29,13 @@ export type BurgerCssVariables = {
 
 export interface BurgerProps extends BoxProps, StylesApiProps<BurgerFactory>, ElementProps<'button'> {
     /** Controls burger `width` and `height`, numbers are converted to rem @default 'md' */
-    size?: MantineSize | (string & {}) | number
+    size?: UISize | (string & {}) | number
 
     /** Controls height of lines, by default calculated based on `size` prop */
     lineSize?: string | number
 
     /** Key of `theme.colors` of any valid CSS value, by default `theme.black` */
-    color?: MantineColor
+    color?: UIColor
 
     /** State of the burger, when `true` burger is transformed into X @default false */
     opened?: boolean

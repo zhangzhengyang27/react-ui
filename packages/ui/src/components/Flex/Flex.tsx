@@ -4,13 +4,13 @@ import {
     ElementProps,
     filterProps,
     InlineStyles,
-    MantineSpacing,
+    UISpacing,
     parseStyleProps,
     polymorphicFactory,
     PolymorphicFactory,
     StyleProp,
     StylesApiProps,
-    useMantineTheme,
+    useUITheme,
     useProps,
     useRandomClassName,
     useStyles
@@ -22,13 +22,13 @@ export type FlexStylesNames = 'root'
 
 export interface FlexProps extends BoxProps, StylesApiProps<FlexFactory>, ElementProps<'div'> {
     /** `gap` CSS property */
-    gap?: StyleProp<MantineSpacing>
+    gap?: StyleProp<UISpacing>
 
     /** `row-gap` CSS property */
-    rowGap?: StyleProp<MantineSpacing>
+    rowGap?: StyleProp<UISpacing>
 
     /** `column-gap` CSS property */
-    columnGap?: StyleProp<MantineSpacing>
+    columnGap?: StyleProp<UISpacing>
 
     /** `align-items` CSS property */
     align?: StyleProp<React.CSSProperties['alignItems']>
@@ -83,7 +83,7 @@ export const Flex = polymorphicFactory<FlexFactory>((_props, _ref) => {
         vars
     })
 
-    const theme = useMantineTheme()
+    const theme = useUITheme()
     const randomClassName = useRandomClassName()
     const parsedStyleProps = parseStyleProps({
         styleProps: { gap, rowGap, columnGap, align, justify, wrap, direction },

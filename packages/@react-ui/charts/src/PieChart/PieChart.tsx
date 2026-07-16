@@ -18,10 +18,10 @@ import {
   factory,
   Factory,
   getThemeColor,
-  MantineColor,
+  UIColor,
   rem,
   StylesApiProps,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useResolvedStylesApi,
   useStyles,
@@ -35,7 +35,7 @@ export interface PieChartCell {
   key?: string | number;
   name: string;
   value: number;
-  color: MantineColor;
+  color: UIColor;
 }
 
 export type PieChartStylesNames = 'root' | ChartTooltipStylesNames | ChartLegendStylesNames;
@@ -67,10 +67,10 @@ export interface PieChartProps
   pieProps?: Partial<Omit<PieProps, 'ref'>>;
 
   /** Controls color of the segments stroke, by default depends on color scheme */
-  strokeColor?: MantineColor;
+  strokeColor?: UIColor;
 
   /** Controls text color of all labels, white by default */
-  labelColor?: MantineColor;
+  labelColor?: UIColor;
 
   /** Controls padding between segments @default 0 */
   paddingAngle?: number;
@@ -252,7 +252,7 @@ export const PieChart = factory<PieChartFactory>((_props) => {
     ...others
   } = props;
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
 
   const getStyles = useStyles<PieChartFactory>({

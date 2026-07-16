@@ -3,12 +3,12 @@ import type { StylesApiData } from '../types';
 
 export const OverflowListStylesApi: StylesApiData<OverflowListFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
   },
 
   vars: {
     root: {
-      '--ol-gap': 'Controls gap between items',
+      '--ol-gap': '控制项之间的间距',
     },
   },
 

@@ -84,8 +84,8 @@ function MyStepper() {
 
   return (
     <Stepper ref={stepper} active={0}>
-      <Stepper.Step label="First step" ref={firstStep} />
-      <Stepper.Step label="Second step" />
+      <Stepper.Step label="第一步" ref={firstStep} />
+      <Stepper.Step label="第二步" />
     </Stepper>
   );
 }
@@ -101,7 +101,7 @@ import { Stepper } from '@react-ui/ui';
 // 这不会生效，step 子项不会渲染
 function WillNotWork() {
   return (
-    <Stepper.Step label="Nope" description="It will not work">
+    <Stepper.Step label="否" description="它不会生效">
       This part will not render
     </Stepper.Step>
   );
@@ -115,13 +115,13 @@ function WillWork() {
 function Demo() {
   return (
     <Stepper active={1}>
-      <Stepper.Step label="Regular step">First step</Stepper.Step>
+      <Stepper.Step label="常规步骤">第一步</Stepper.Step>
       {/* 包裹的 Stepper.Step 不会渲染子项，不要这样做 */}
       <WillNotWork />
-      <Stepper.Step label="Step with custom content">
+      <Stepper.Step label="带自定义内容的步骤">
         <WillWork />
       </Stepper.Step>
-      <Stepper.Step label="Regular step">Third step</Stepper.Step>
+      <Stepper.Step label="常规步骤">第三步</Stepper.Step>
     </Stepper>
   );
 }
@@ -141,10 +141,10 @@ function Demo() {
       <Stepper.Step />
 
       {/* 好，有 label 和 description */}
-      <Stepper.Step label="Step 1" description="Create an account" />
+      <Stepper.Step label="步骤 1" description="创建账户" />
 
       {/* 好，有 aria-label */}
-      <Stepper.Step aria-label="Create an account" />
+      <Stepper.Step aria-label="创建账户" />
     </Stepper>
   );
 }

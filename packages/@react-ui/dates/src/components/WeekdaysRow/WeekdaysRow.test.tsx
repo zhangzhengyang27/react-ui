@@ -1,5 +1,5 @@
-import { patchConsoleError, render, screen, tests } from '@mantine-tests/core';
-import { datesTests } from '@mantine-tests/dates';
+import { patchConsoleError, render, screen, tests } from '@react-ui/tests';
+import { datesTests } from '@react-ui/tests/dates';
 import { WeekdaysRow, WeekdaysRowProps, WeekdaysRowStylesNames } from './WeekdaysRow';
 
 const defaultProps: WeekdaysRowProps = {};
@@ -36,11 +36,11 @@ describe('@react-ui/dates/WeekdaysRow', () => {
 
   it('has correct default __staticSelector', () => {
     render(<Wrapper />);
-    expect(screen.getByRole('row')).toHaveClass('mantine-WeekdaysRow-weekdaysRow ');
+    expect(screen.getByRole('row')).toHaveClass('ui-WeekdaysRow-weekdaysRow ');
   });
 
   it('supports __staticSelector', () => {
     render(<Wrapper __staticSelector="Month" />);
-    expect(screen.getByRole('row')).toHaveClass('mantine-Month-weekdaysRow ');
+    expect(screen.getByRole('row')).toHaveClass('ui-Month-weekdaysRow ');
   });
 });

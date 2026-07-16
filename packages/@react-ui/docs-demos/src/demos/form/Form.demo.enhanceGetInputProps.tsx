@@ -1,6 +1,6 @@
 import { NumberInput, TextInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NumberInput, TextInput } from '@react-ui/ui';
@@ -25,14 +25,14 @@ function Demo() {
       <TextInput
         {...form.getInputProps('name')}
         key={form.key('name')}
-        label="Name"
-        placeholder="Name"
+        label="姓名"
+        placeholder="姓名"
       />
       <NumberInput
         {...form.getInputProps('age')}
         key={form.key('age')}
-        label="Age"
-        placeholder="Age"
+        label="年龄"
+        placeholder="年龄"
         mt="md"
       />
     </>
@@ -59,21 +59,21 @@ function Demo() {
       <TextInput
         {...form.getInputProps('name')}
         key={form.key('name')}
-        label="Name"
-        placeholder="Name"
+        label="姓名"
+        placeholder="姓名"
       />
       <NumberInput
         {...form.getInputProps('age')}
         key={form.key('age')}
-        label="Age"
-        placeholder="Age"
+        label="年龄"
+        placeholder="年龄"
         mt="md"
       />
     </>
   );
 }
 
-export const enhanceGetInputProps: MantineDemo = {
+export const enhanceGetInputProps: UIDemo = {
   type: 'code',
   component: Demo,
   code,

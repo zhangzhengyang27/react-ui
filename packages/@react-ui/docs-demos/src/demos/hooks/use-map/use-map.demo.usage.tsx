@@ -1,7 +1,7 @@
 import { PlusIcon, TrashIcon } from '@phosphor-icons/react';
 import { ActionIcon, Group, Table } from '@react-ui/ui';
 import { useMap } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { PlusIcon, TrashIcon } from '@phosphor-icons/react';
@@ -36,8 +36,8 @@ function Demo() {
     <Table layout="fixed">
       <Table.Thead>
         <Table.Tr>
-          <Table.Th>Page</Table.Th>
-          <Table.Th>Views last month</Table.Th>
+          <Table.Th>页面</Table.Th>
+          <Table.Th>上月浏览量</Table.Th>
           <Table.Th />
         </Table.Tr>
       </Table.Thead>
@@ -75,8 +75,8 @@ function Demo() {
     <Table layout="fixed">
       <Table.Thead>
         <Table.Tr>
-          <Table.Th>Page</Table.Th>
-          <Table.Th>Views last month</Table.Th>
+          <Table.Th>页面</Table.Th>
+          <Table.Th>上月浏览量</Table.Th>
           <Table.Th />
         </Table.Tr>
       </Table.Thead>
@@ -85,7 +85,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

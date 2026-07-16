@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { MobileMonthView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { regularEvents } from './_data';
 
 const code = `
@@ -11,8 +11,8 @@ import { MobileMonthView } from '@react-ui/schedule';
 import { events } from './data';
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
-  const [selectedDate, setSelectedDate] = useState<string | null>(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
+  const [selectedDate, setSelectedDate] = useState<string | null>(dayjs('2024-01-15').format('YYYY-MM-DD'));
 
   return (
     <MobileMonthView
@@ -28,8 +28,8 @@ function Demo() {
 `;
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
-  const [selectedDate, setSelectedDate] = useState<string | null>(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
+  const [selectedDate, setSelectedDate] = useState<string | null>(dayjs('2024-01-15').format('YYYY-MM-DD'));
 
   return (
     <MobileMonthView
@@ -43,7 +43,7 @@ function Demo() {
   );
 }
 
-export const withWeekNumbers: MantineDemo = {
+export const withWeekNumbers: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

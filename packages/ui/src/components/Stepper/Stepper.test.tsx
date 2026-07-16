@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Stepper } from './Stepper'
 
-const renderStepper = (ui: React.ReactElement) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderStepper = (ui: React.ReactElement) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Stepper', () => {
     it('renders steps with labels and descriptions', () => {

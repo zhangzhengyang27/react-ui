@@ -1,6 +1,6 @@
 import { Button, NumberInput, TextInput } from '@react-ui/ui';
 import { isInRange, isNotEmpty, useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, NumberInput, TextInput } from '@react-ui/ui';
@@ -24,8 +24,8 @@ function Demo() {
     mode: 'uncontrolled',
     initialValues: { name: '', age: 0 },
     validate: {
-      name: isNotEmpty('Name is required'),
-      age: isInRange({ min: 18 }, 'You must be at least 18 to register'),
+      name: isNotEmpty('姓名必填'),
+      age: isInRange({ min: 18 }, '注册年龄必须至少 18 岁'),
     },
   });
 
@@ -34,14 +34,14 @@ function Demo() {
       <TextInput
         {...form.getInputProps('name')}
         key={form.key('name')}
-        label="Name"
-        placeholder="Name"
+        label="姓名"
+        placeholder="姓名"
       />
       <NumberInput
         {...form.getInputProps('age')}
         key={form.key('age')}
-        label="Age"
-        placeholder="Age"
+        label="年龄"
+        placeholder="年龄"
         mt="md"
       />
       <Button onClick={() => apiRequest().then((values) => form.initialize(values))} mt="md">
@@ -70,8 +70,8 @@ function Demo() {
     mode: 'uncontrolled',
     initialValues: { name: '', age: 0 },
     validate: {
-      name: isNotEmpty('Name is required'),
-      age: isInRange({ min: 18 }, 'You must be at least 18 to register'),
+      name: isNotEmpty('姓名必填'),
+      age: isInRange({ min: 18 }, '注册年龄必须至少 18 岁'),
     },
   });
 
@@ -80,14 +80,14 @@ function Demo() {
       <TextInput
         {...form.getInputProps('name')}
         key={form.key('name')}
-        label="Name"
-        placeholder="Name"
+        label="姓名"
+        placeholder="姓名"
       />
       <NumberInput
         {...form.getInputProps('age')}
         key={form.key('age')}
-        label="Age"
-        placeholder="Age"
+        label="年龄"
+        placeholder="年龄"
         mt="md"
       />
       <Button onClick={() => apiRequest().then((values) => form.initialize(values))} mt="md">
@@ -97,7 +97,7 @@ function Demo() {
   );
 }
 
-export const initialize: MantineDemo = {
+export const initialize: UIDemo = {
   type: 'code',
   component: Demo,
   code,

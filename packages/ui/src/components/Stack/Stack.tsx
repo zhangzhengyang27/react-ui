@@ -6,7 +6,7 @@ import {
     factory,
     Factory,
     getSpacing,
-    MantineSpacing,
+    UISpacing,
     StylesApiProps,
     useProps,
     useStyles
@@ -20,7 +20,7 @@ export type StackCssVariables = {
 
 export interface StackProps extends BoxProps, StylesApiProps<StackFactory>, ElementProps<'div'> {
     /** Key of theme.spacing or any valid CSS value to set gap property, numbers are converted to rem @default 'md' */
-    gap?: MantineSpacing
+    gap?: UISpacing
 
     /** Controls align-items CSS property @default 'stretch' */
     align?: React.CSSProperties['alignItems']
@@ -51,7 +51,7 @@ const varsResolver = createVarsResolver<StackFactory>((_, { gap, align, justify 
 }))
 
 /**
- * 垂直弹性布局容器。对齐 mantine Stack（factory + useStyles + varsResolver + CSS module）。
+ * 垂直弹性布局容器。对齐 ui Stack（factory + useStyles + varsResolver + CSS module）。
  */
 export const Stack = factory<StackFactory>((_props, _ref) => {
     const props = useProps('Stack', defaultProps, _props)

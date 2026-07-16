@@ -5,10 +5,10 @@ import {
   getSpacing,
   InlineStyles,
   keys,
-  MantineBreakpoint,
+  UIBreakpoint,
   px,
   rem,
-  useMantineTheme,
+  useUITheme,
 } from '@react-ui/ui';
 import type { CarouselProps } from '../Carousel';
 
@@ -17,7 +17,7 @@ interface CarouselVariablesProps extends CarouselProps {
 }
 
 export function CarouselVariables({ slideGap, slideSize, selector }: CarouselVariablesProps) {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
 
   const baseStyles: Record<string, string | undefined> = filterProps({
     '--carousel-slide-gap': getSpacing(getBaseValue(slideGap)),
@@ -48,7 +48,7 @@ export function CarouselVariables({ slideGap, slideSize, selector }: CarouselVar
   );
 
   const media = sortedBreakpoints.map((breakpoint) => ({
-    query: `(min-width: ${theme.breakpoints[breakpoint.value as MantineBreakpoint]})`,
+    query: `(min-width: ${theme.breakpoints[breakpoint.value as UIBreakpoint]})`,
     styles: queries[breakpoint.value],
   }));
 

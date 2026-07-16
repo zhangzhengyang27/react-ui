@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MonthPicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -31,7 +31,7 @@ function Demo() {
   );
 }
 
-export const labelFormat: MantineDemo = {
+export const labelFormat: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

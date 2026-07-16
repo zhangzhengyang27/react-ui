@@ -23,7 +23,7 @@ export type PopoverTargetFactory = Factory<{
 
 export const PopoverTarget = factory<PopoverTargetFactory>((props, ref) => {
     const { children, popupType } = useProps('PopoverTarget', defaultProps, props)
-    const child = getSingleElementChild(children)
+    const child = getSingleElementChild(children) as React.ReactElement<any>
 
     if (!child) {
         throw new Error('[@react-ui/ui] Popover.Target children should be an element or a component that accepts ref')
@@ -49,4 +49,4 @@ export const PopoverTarget = factory<PopoverTargetFactory>((props, ref) => {
     })
 })
 
-PopoverTarget.displayName = '@mantine/core/PopoverTarget'
+PopoverTarget.displayName = '@react-ui/ui/PopoverTarget'

@@ -66,4 +66,4 @@ export function MenuTarget(props: MenuTargetProps) {
     )
 }
 
-MenuTarget.displayName = '@mantine/core/MenuTarget'
+MenuTarget.displayName = '@react-ui/ui/MenuTarget'

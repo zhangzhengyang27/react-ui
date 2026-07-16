@@ -5,14 +5,14 @@ import { PopoverStylesApi } from './Popover.styles-api';
 export const MenuStylesApi: StylesApiData<MenuFactory> = {
   selectors: {
     ...PopoverStylesApi.selectors,
-    divider: '`Menu.Divider` root element',
-    label: '`Menu.Label` root element',
-    item: '`Menu.Item` root element',
+    divider: '`Menu.Divider` root 元素',
+    label: '`Menu.Label` root 元素',
+    item: '`Menu.Item` root 元素',
     itemLabel: 'Label of `Menu.Item`',
     itemSection: 'Left and right sections of `Menu.Item`',
     itemIndicator: 'Indicator slot of `Menu.CheckboxItem` and `Menu.RadioItem`',
-    chevron: 'Sub menu chevron',
-    search: '`Menu.Search` input element',
+    chevron: '子菜单箭头',
+    search: '`Menu.Search` input 元素',
   },
 
   vars: {},
@@ -21,7 +21,7 @@ export const MenuStylesApi: StylesApiData<MenuFactory> = {
     {
       modifier: 'data-disabled',
       selector: 'item',
-      condition: '`disabled` prop is set on `Menu.Item`',
+      condition: '在 `Menu.Item` 上设置了 `disabled` 属性',
     },
   ],
 };

@@ -1,6 +1,6 @@
 import { Button, CloseButton, FloatingWindow, Group, Text } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, CloseButton, FloatingWindow, Group, Text } from '@react-ui/ui';
@@ -11,7 +11,7 @@ function Demo() {
   return (
     <>
       <Button onClick={handlers.toggle} variant="default">
-        {visible ? 'Hide' : 'Show'} floating window
+        {visible ? '隐藏' : '显示'} 浮动窗口
       </Button>
 
       {visible && (
@@ -25,7 +25,7 @@ function Demo() {
           constrainToViewport={false}
         >
           <Group justify="space-between" mb="md">
-            <Text>No constrain demo</Text>
+            <Text>无约束演示</Text>
             <CloseButton onClick={handlers.close} />
           </Group>
           <Text fz="sm">
@@ -43,7 +43,7 @@ function Demo() {
   return (
     <>
       <Button onClick={handlers.toggle} variant="default">
-        {visible ? 'Hide' : 'Show'} floating window
+        {visible ? '隐藏' : '显示'} 浮动窗口
       </Button>
 
       {visible && (
@@ -57,7 +57,7 @@ function Demo() {
           constrainToViewport={false}
         >
           <Group justify="space-between" mb="md">
-            <Text>No constrain demo</Text>
+            <Text>无约束演示</Text>
             <CloseButton onClick={handlers.close} />
           </Group>
           <Text fz="sm">
@@ -69,7 +69,7 @@ function Demo() {
   );
 }
 
-export const constrainToViewport: MantineDemo = {
+export const constrainToViewport: UIDemo = {
   type: 'code',
   component: Demo,
   code,

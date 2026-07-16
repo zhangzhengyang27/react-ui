@@ -1,8 +1,8 @@
 import { createUseExternalEvents, DataAttributes } from '@react-ui/ui';
 import { randomId } from '@react-ui/hooks';
 import {
-  MantineModal,
-  MantineModals,
+  UIModal,
+  UIModals,
   ModalSettings,
   OpenConfirmModal,
   OpenContextModal,
@@ -11,13 +11,13 @@ import {
 type ModalsEvents = {
   openModal: (payload: ModalSettings) => string;
   openConfirmModal: (payload: OpenConfirmModal) => string;
-  openContextModal: <TKey extends MantineModal>(
-    payload: OpenContextModal<Parameters<MantineModals[TKey]>[0]['innerProps']> & {
+  openContextModal: <TKey extends UIModal>(
+    payload: OpenContextModal<Parameters<UIModals[TKey]>[0]['innerProps']> & {
       modal: TKey;
     } & DataAttributes
   ) => string;
   closeModal: (id: string) => void;
-  closeContextModal: <TKey extends MantineModal>(id: TKey) => void;
+  closeContextModal: <TKey extends UIModal>(id: TKey) => void;
   closeAllModals: () => void;
   updateModal: (
     payload: { modalId: string } & Partial<ModalSettings> & Partial<OpenConfirmModal>
@@ -26,7 +26,7 @@ type ModalsEvents = {
 };
 
 export const [useModalsEvents, createEvent] =
-  createUseExternalEvents<ModalsEvents>('mantine-modals');
+  createUseExternalEvents<ModalsEvents>('ui-modals');
 
 export const openModal: ModalsEvents['openModal'] = (payload) => {
   const id = payload.modalId || randomId();
@@ -40,8 +40,8 @@ export const openConfirmModal: ModalsEvents['openConfirmModal'] = (payload) => {
   return id;
 };
 
-export const openContextModal: ModalsEvents['openContextModal'] = <TKey extends MantineModal>(
-  payload: OpenContextModal<Parameters<MantineModals[TKey]>[0]['innerProps']> & {
+export const openContextModal: ModalsEvents['openContextModal'] = <TKey extends UIModal>(
+  payload: OpenContextModal<Parameters<UIModals[TKey]>[0]['innerProps']> & {
     modal: TKey;
   } & DataAttributes
 ) => {
@@ -52,7 +52,7 @@ export const openContextModal: ModalsEvents['openContextModal'] = <TKey extends 
 
 export const closeModal = createEvent('closeModal');
 
-export const closeContextModal: ModalsEvents['closeContextModal'] = <TKey extends MantineModal>(
+export const closeContextModal: ModalsEvents['closeContextModal'] = <TKey extends UIModal>(
   id: TKey
 ) => createEvent('closeContextModal')(id);
 

@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { AspectRatio } from './AspectRatio'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('AspectRatio', () => {
     it('renders a div by default', () => {
@@ -17,7 +17,7 @@ describe('AspectRatio', () => {
     it('applies static classes', () => {
         renderWithProvider(<AspectRatio data-testid="ar">content</AspectRatio>)
 
-        expect(screen.getByTestId('ar')).toHaveClass('mantine-AspectRatio-root')
+        expect(screen.getByTestId('ar')).toHaveClass('ui-AspectRatio-root')
     })
 
     it('supports polymorphic rendering', () => {

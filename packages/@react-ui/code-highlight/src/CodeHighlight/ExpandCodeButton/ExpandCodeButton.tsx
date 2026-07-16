@@ -11,8 +11,8 @@ interface ExpandCodeButtonProps {
 export function ExpandCodeButton({
   expanded,
   onExpand,
-  expandCodeLabel = 'Expand code',
-  collapseCodeLabel = 'Collapse code',
+  expandCodeLabel = '展开代码',
+  collapseCodeLabel = '收起代码',
 }: ExpandCodeButtonProps) {
   return (
     <CodeHighlightControl

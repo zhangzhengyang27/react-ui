@@ -1,5 +1,5 @@
 import { Highlight, HighlightProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: HighlightProps) {
   return <Highlight maw={400} mx="auto" {...props} />;
@@ -17,7 +17,7 @@ function Demo() {
 }
 `;
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

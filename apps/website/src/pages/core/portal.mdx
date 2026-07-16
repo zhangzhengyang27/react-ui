@@ -20,12 +20,12 @@ function Demo() {
     <main style={{ position: 'relative', zIndex: 1 }}>
       {opened && (
         <Portal>
-          <div>Your modal content</div>
+          <div>你的模态框内容</div>
         </Portal>
       )}
 
       <button onClick={() => setOpened(true)} type="button">
-        Open modal
+        打开模态框
       </button>
     </main>
   );
@@ -45,15 +45,15 @@ function Demo() {
   return (
     <>
       <Portal reuseTargetNode={false}>
-        <p>First</p>
+        <p>第一</p>
       </Portal>
 
       <Portal reuseTargetNode={false}>
-        <p>Second</p>
+        <p>第二</p>
       </Portal>
 
       <Portal reuseTargetNode={false}>
-        <p>Third</p>
+        <p>第三</p>
       </Portal>
     </>
   );
@@ -71,7 +71,7 @@ const container = document.createElement('div');
 document.body.appendChild(container);
 
 function Demo() {
-  return <Portal target={container}>My portal</Portal>;
+  return <Portal target={container}>我的 Portal</Portal>;
 }
 ```
 
@@ -81,7 +81,7 @@ function Demo() {
 import { Portal } from '@react-ui/ui';
 
 function Demo() {
-  return <Portal target="#portal-container">My portal</Portal>;
+  return <Portal target="#portal-container">我的 Portal</Portal>;
 }
 ```
 

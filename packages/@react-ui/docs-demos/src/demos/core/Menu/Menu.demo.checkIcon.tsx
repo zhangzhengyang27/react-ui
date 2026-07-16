@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { CheckIcon } from '@phosphor-icons/react';
 import { Button, Menu } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -17,11 +17,11 @@ function Demo() {
   return (
     <Menu shadow="md" width={220} closeOnItemClick={false} checkIcon={<CheckIcon size={12} weight="bold" />}>
       <Menu.Target>
-        <Button>Filters</Button>
+        <Button>筛选</Button>
       </Menu.Target>
 
       <Menu.Dropdown>
-        <Menu.Label>Filters</Menu.Label>
+        <Menu.Label>筛选</Menu.Label>
         <Menu.CheckboxItem checked={filters.open} onChange={setFilter('open')}>
           Open
         </Menu.CheckboxItem>
@@ -55,11 +55,11 @@ function Demo() {
       checkIcon={<CheckIcon size={12} weight="bold" />}
     >
       <Menu.Target>
-        <Button>Filters</Button>
+        <Button>筛选</Button>
       </Menu.Target>
 
       <Menu.Dropdown>
-        <Menu.Label>Filters</Menu.Label>
+        <Menu.Label>筛选</Menu.Label>
         <Menu.CheckboxItem checked={filters.open} onChange={setFilter('open')}>
           Open
         </Menu.CheckboxItem>
@@ -78,7 +78,7 @@ function Demo() {
   );
 }
 
-export const checkIcon: MantineDemo = {
+export const checkIcon: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -12,7 +12,7 @@
 }
 
 .iconCell {
-  @mixin smaller-than em(500px) {
+  @media (max-width: 31.25em) {
     display: none;
   }
 }

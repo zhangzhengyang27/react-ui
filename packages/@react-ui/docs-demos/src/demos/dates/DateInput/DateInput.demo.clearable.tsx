@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { DateInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import dayjs from 'dayjs';
@@ -10,9 +10,9 @@ function Demo() {
   return (
     <DateInput
       clearable
-      defaultValue={dayjs().format('YYYY-MM-DD')}
-      label="Date input"
-      placeholder="Date input"
+      defaultValue={dayjs('2024-01-15').format('YYYY-MM-DD')}
+      label="日期输入"
+      placeholder="日期输入"
     />
   );
 }
@@ -22,14 +22,14 @@ function Demo() {
   return (
     <DateInput
       clearable
-      defaultValue={dayjs().format('YYYY-MM-DD')}
-      label="Date input"
-      placeholder="Date input"
+      defaultValue={dayjs('2024-01-15').format('YYYY-MM-DD')}
+      label="日期输入"
+      placeholder="日期输入"
     />
   );
 }
 
-export const clearable: MantineDemo = {
+export const clearable: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

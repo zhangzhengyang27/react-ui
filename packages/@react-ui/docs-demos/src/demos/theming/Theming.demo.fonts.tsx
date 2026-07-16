@@ -1,8 +1,8 @@
 import { Button, Code, Group, Title } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
-import { Button, Code, Title, MantineProvider, createTheme } from '@react-ui/ui';
+import { Button, Code, Title, UIProvider, createTheme } from '@react-ui/ui';
 
 const theme = createTheme({
   fontFamily: 'Verdana, sans-serif',
@@ -12,11 +12,11 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
-      <Title order={3}>Outfit or sans-serif title</Title>
-      <Button>Verdana button</Button>
-      <Code>Monaco, Courier Code</Code>
-    </MantineProvider>
+    <UIProvider theme={theme}>
+      <Title order={3}>Outfit 或无衬线标题</Title>
+      <Button>Verdana 按钮</Button>
+      <Code>Monaco、Courier 代码</Code>
+    </UIProvider>
   );
 }
 `;
@@ -28,14 +28,14 @@ function Demo() {
         Outfit or sans-serif title
       </Title>
       <Group mt="md">
-        <Button ff="Verdana, sans-serif">Verdana button</Button>
-        <Code ff="Monaco, Courier, monospace">Monaco, Courier Code</Code>
+        <Button ff="Verdana, sans-serif">Verdana 按钮</Button>
+        <Code ff="Monaco, Courier, monospace">Monaco、Courier 代码</Code>
       </Group>
     </>
   );
 }
 
-export const fonts: MantineDemo = {
+export const fonts: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Button, Group, ScrollArea, Stack } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { Content } from './_content';
 
 const code = `
@@ -25,9 +25,9 @@ function Demo() {
       </ScrollArea>
 
       <Group justify="center">
-        <Button onClick={scrollToBottom}>Scroll to bottom</Button>
-        <Button onClick={scrollToCenter}>Scroll to center</Button>
-        <Button onClick={scrollToTop}>Scroll to top</Button>
+        <Button onClick={scrollToBottom}>滚动到底部</Button>
+        <Button onClick={scrollToCenter}>滚动到中间</Button>
+        <Button onClick={scrollToTop}>滚动到顶部</Button>
       </Group>
     </Stack>
   );
@@ -48,15 +48,15 @@ function Demo() {
         <Content />
       </ScrollArea>
       <Group justify="center">
-        <Button onClick={scrollToBottom}>Scroll to bottom</Button>
-        <Button onClick={scrollToCenter}>Scroll to center</Button>
-        <Button onClick={scrollToTop}>Scroll to top</Button>
+        <Button onClick={scrollToBottom}>滚动到底部</Button>
+        <Button onClick={scrollToCenter}>滚动到中间</Button>
+        <Button onClick={scrollToTop}>滚动到顶部</Button>
       </Group>
     </Stack>
   );
 }
 
-export const scrollTo: MantineDemo = {
+export const scrollTo: UIDemo = {
   type: 'code',
   component: Demo,
   code,

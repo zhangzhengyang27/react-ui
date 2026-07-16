@@ -13,7 +13,7 @@ export const MenubarStylesApi: StylesApiData<MenubarFactory> = {
     {
       modifier: 'data-expanded',
       selector: 'target',
-      condition: 'Associated menu is opened',
+      condition: '关联菜单已打开',
     },
   ],
 };

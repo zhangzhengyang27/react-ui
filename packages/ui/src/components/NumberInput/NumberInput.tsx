@@ -7,7 +7,7 @@ import {
     factory,
     Factory,
     getSize,
-    MantineSize,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -26,13 +26,13 @@ export interface NumberInputProps
     extends BoxProps,
         StylesApiProps<NumberInputFactory>,
         ElementProps<'input', 'size' | 'value' | 'defaultValue' | 'onChange'> {
-    /** Label rendered above the input */
+    //** 渲染在输入框上方的标签 */
     label?: React.ReactNode
 
-    /** Description rendered below the label */
+    //** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
-    /** Error rendered below the input */
+    //** 渲染在输入框下方的错误 */
     error?: React.ReactNode
 
     /** Input placeholder */
@@ -45,7 +45,7 @@ export interface NumberInputProps
     invalid?: boolean
 
     /** Controls size of the input @default 'sm' */
-    size?: MantineSize
+    size?: UISize
 
     /** Variant of the input */
     variant?: string
@@ -65,7 +65,7 @@ export interface NumberInputProps
     /** Value for controlled component */
     value?: number | string
 
-    /** Called when value changes */
+    //** 值变化时调用 */
     onChange?: (value: number | string) => void
 
     /** If set, stepper controls will be hidden @default false */
@@ -335,6 +335,10 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
                 id={inputId}
                 type="text"
                 inputMode="decimal"
+                role="spinbutton"
+                aria-valuenow={currentNumber ?? undefined}
+                aria-valuemin={min}
+                aria-valuemax={max}
                 disabled={disabled}
                 invalid={invalid}
                 size={size}

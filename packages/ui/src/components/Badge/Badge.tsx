@@ -5,10 +5,10 @@ import {
     getRadius,
     getSize,
     getThemeColor,
-    MantineColor,
-    MantineGradient,
-    MantineRadius,
-    MantineSize,
+    UIColor,
+    UIGradient,
+    UIRadius,
+    UISize,
     polymorphicFactory,
     PolymorphicFactory,
     StylesApiProps,
@@ -34,19 +34,19 @@ export type BadgeCssVariables = {
 
 export interface BadgeProps extends BoxProps, StylesApiProps<BadgeFactory> {
     /** Controls `font-size`, `height` and horizontal `padding` @default 'md' */
-    size?: MantineSize | (string & {})
+    size?: UISize | (string & {})
 
     /** If set, badge `min-width` becomes equal to its `height` and horizontal padding is removed */
     circle?: boolean
 
     /** Key of `theme.radius` or any valid CSS value to set `border-radius` @default 'xl' */
-    radius?: MantineRadius
+    radius?: UIRadius
 
     /** Key of `theme.colors` or any valid CSS color @default theme.primaryColor */
-    color?: MantineColor
+    color?: UIColor
 
     /** Gradient configuration used when `variant="gradient"` @default theme.defaultGradient */
-    gradient?: MantineGradient
+    gradient?: UIGradient
 
     /** Content displayed on the left side of the badge label */
     leftSection?: React.ReactNode

@@ -1,6 +1,6 @@
 import { ChatCircleIcon, CodesandboxLogoIcon } from '@phosphor-icons/react';
 import { CodeHighlight, CodeHighlightControl } from '@react-ui/code-highlight';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const exampleCode = `
 function greet() {
@@ -25,12 +25,12 @@ function Demo() {
           component="a"
           href="https://codesandbox.io"
           target="_blank"
-          tooltipLabel="Open on codesandbox"
+          tooltipLabel="在 CodeSandbox 中打开"
           key="sandbox"
         >
           <CodesandboxLogoIcon />
         </CodeHighlightControl>,
-        <CodeHighlightControl tooltipLabel="Discuss with GPT" key="gpt">
+        <CodeHighlightControl tooltipLabel="与 GPT 讨论" key="gpt">
           <ChatCircleIcon />
         </CodeHighlightControl>,
       ]}
@@ -50,12 +50,12 @@ function Demo() {
           component="a"
           href="https://codesandbox.io"
           target="_blank"
-          tooltipLabel="Open on codesandbox"
+          tooltipLabel="在 CodeSandbox 中打开"
           key="sandbox"
         >
           <CodesandboxLogoIcon />
         </CodeHighlightControl>,
-        <CodeHighlightControl tooltipLabel="Discuss with GPT" key="gpt">
+        <CodeHighlightControl tooltipLabel="与 GPT 讨论" key="gpt">
           <ChatCircleIcon />
         </CodeHighlightControl>,
       ]}
@@ -63,7 +63,7 @@ function Demo() {
   );
 }
 
-export const customControl: MantineDemo = {
+export const customControl: UIDemo = {
   type: 'code',
   component: Demo,
   code,

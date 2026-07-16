@@ -1,6 +1,6 @@
 import { AtIcon } from '@phosphor-icons/react';
 import { TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { TagsInputStylesApi } from '@react-ui/docs-styles-api';
 
 const code = `
@@ -12,10 +12,10 @@ function Demo() {
     <TagsInput
      {{props}}
       leftSection={<AtIcon size={18} />}
-      label="TagsInput"
-      description="Description"
-      error="Error"
-      placeholder="TagsInput"
+      label="标签输入"
+      description="描述"
+      error="错误"
+      placeholder="标签输入"
       defaultValue={['First', 'Second']}
       data={['React', 'Angular']}
     />
@@ -30,9 +30,9 @@ function Demo(props: any) {
       dropdownOpened
       leftSection={<AtIcon size={18} />}
       withAsterisk
-      label="TagsInput"
-      description="Description"
-      placeholder="TagsInput"
+      label="标签输入"
+      description="描述"
+      placeholder="标签输入"
       defaultValue={['First', 'Second']}
       comboboxProps={{ hideDetached: false }}
       data={[
@@ -43,7 +43,7 @@ function Demo(props: any) {
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: TagsInputStylesApi,
   component: Demo,

@@ -1,7 +1,7 @@
 import { CaretDownIcon, CaretUpIcon } from '@phosphor-icons/react';
 import { Button } from '@react-ui/ui';
 import { useCounter } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { CaretDownIcon, CaretUpIcon } from '@phosphor-icons/react';
@@ -45,7 +45,7 @@ function Demo() {
   );
 }
 
-export const groupSection: MantineDemo = {
+export const groupSection: UIDemo = {
   type: 'code',
   component: Demo,
   code,

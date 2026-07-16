@@ -3,8 +3,8 @@ import type { StylesApiData } from '../types';
 
 export const ScrollerStylesApi: StylesApiData<ScrollerFactory> = {
   selectors: {
-    root: 'Root element',
-    container: 'Scrollable container',
+    root: '根元素',
+    container: 'Scrollable 容器',
     content: 'Wraps component children',
     control: 'Start and end scroll control buttons',
     chevron: 'Chevron icon inside controls',
@@ -21,7 +21,7 @@ export const ScrollerStylesApi: StylesApiData<ScrollerFactory> = {
     {
       modifier: 'data-draggable',
       selector: 'container',
-      condition: '`draggable` prop is set',
+      condition: '设置了 `draggable` 属性',
     },
     {
       modifier: 'data-position',

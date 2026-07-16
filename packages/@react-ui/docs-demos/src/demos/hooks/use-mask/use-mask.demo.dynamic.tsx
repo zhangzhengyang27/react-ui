@@ -1,6 +1,6 @@
 import { Text, TextInput } from '@react-ui/ui';
 import { useMask } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TextInput, Text } from '@react-ui/ui';
@@ -19,9 +19,9 @@ function Demo() {
 
   return (
     <>
-      <TextInput ref={ref} label="Credit card number" placeholder="Enter card number" />
+      <TextInput ref={ref} label="信用卡号" placeholder="输入卡号" />
       <Text size="sm" mt="sm">Raw value: {rawValue}</Text>
-      <Text size="xs" c="dimmed">Try starting with 34 or 37 for Amex format</Text>
+      <Text size="xs" c="dimmed">尝试以 34 或 37 开头以使用 Amex 格式</Text>
     </>
   );
 }
@@ -40,7 +40,7 @@ function Demo() {
 
   return (
     <>
-      <TextInput ref={ref} label="Credit card number" placeholder="Enter card number" />
+      <TextInput ref={ref} label="信用卡号" placeholder="输入卡号" />
       <Text size="sm" mt="sm">
         Raw value: {rawValue}
       </Text>
@@ -51,7 +51,7 @@ function Demo() {
   );
 }
 
-export const dynamic: MantineDemo = {
+export const dynamic: UIDemo = {
   type: 'code',
   code,
   component: Demo,

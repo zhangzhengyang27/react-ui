@@ -5,8 +5,8 @@ import {
     getDefaultZIndex,
     getRadius,
     getSize,
-    MantineRadius,
-    MantineSize,
+    UIRadius,
+    UISize,
     rem,
     StylesApiProps,
     useProps,
@@ -43,37 +43,37 @@ export type DrawerCssVariables = {
 export interface DrawerProps
     extends StylesApiProps<DrawerFactory>,
         Omit<ModalBaseProps, 'styles' | 'classNames' | 'variant' | 'vars'> {
-    /** Drawer title */
+    /** Drawer 标题 */
     title?: React.ReactNode
 
-    /** If set, the overlay is rendered */
+    /** 如果设置，则渲染遮罩层 */
     withOverlay?: boolean
 
-    /** Props passed down to the Overlay component */
+    /** 传递给 Overlay 组件的属性 */
     overlayProps?: Partial<DrawerOverlayProps>
 
-    /** Drawer content */
+    /** Drawer 内容 */
     children?: React.ReactNode
 
-    /** If set, the close button is rendered */
+    /** 如果设置，则渲染关闭按钮 */
     withCloseButton?: boolean
 
-    /** Props passed down to the close button */
+    /** 传递给关闭按钮的属性 */
     closeButtonProps?: Partial<DrawerCloseButtonProps>
 
-    /** Side of the screen on which drawer will be opened */
+    /** Drawer 将在屏幕的哪一侧打开 */
     position?: DrawerPosition
 
-    /** Controls width of the drawer */
-    size?: MantineSize | (string & {}) | number
+    /** 控制 Drawer 的宽度 */
+    size?: UISize | (string & {}) | number
 
-    /** Key of theme.radius or any valid CSS value to set border-radius */
-    radius?: MantineRadius
+    /** 主题圆角键或任意有效 CSS 值，用于设置 border-radius */
+    radius?: UIRadius
 
-    /** Drawer container offset from the viewport end */
+    /** Drawer 容器距离视口末端的偏移 */
     offset?: number | string
 
-    /** Scroll area component */
+    /** 滚动区域组件 */
     scrollAreaComponent?: React.FC<any>
 }
 
@@ -112,7 +112,7 @@ function getDrawerAlign(position: DrawerPosition | undefined) {
     }
 }
 
-const transitions: Record<DrawerPosition, import('../Transition').MantineTransitionName> = {
+const transitions: Record<DrawerPosition, import('../Transition').UITransitionName> = {
     top: 'slide-down',
     bottom: 'slide-up',
     left: 'slide-right',
@@ -216,7 +216,7 @@ export const Drawer = factory<DrawerFactory>((_props, _ref) => {
 })
 
 Drawer.classes = classes
-Drawer.displayName = '@mantine/core/Drawer'
+Drawer.displayName = '@react-ui/ui/Drawer'
 Drawer.Body = DrawerBody
 Drawer.CloseButton = DrawerCloseButton
 Drawer.Content = DrawerContent

@@ -2,9 +2,9 @@ import 'dayjs/locale/es';
 
 import dayjs from 'dayjs';
 import { AgendaView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const eventsData = [
   {
@@ -17,15 +17,15 @@ const eventsData = [
   {
     id: 'workshop',
     title: 'Taller de diseño',
-    start: dayjs().add(1, 'day').format('YYYY-MM-DD 10:00:00'),
-    end: dayjs().add(1, 'day').format('YYYY-MM-DD 12:00:00'),
+    start: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD 10:00:00'),
+    end: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD 12:00:00'),
     color: 'grape',
   },
   {
     id: 'conference',
     title: 'Conferencia',
-    start: dayjs().add(3, 'day').format('YYYY-MM-DD 00:00:00'),
-    end: dayjs().add(4, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'),
+    start: dayjs('2024-01-15').add(3, 'day').format('YYYY-MM-DD 00:00:00'),
+    end: dayjs('2024-01-15').add(4, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'),
     color: 'red',
   },
 ];
@@ -36,7 +36,7 @@ import 'dayjs/locale/es';
 import dayjs from 'dayjs';
 import { AgendaView } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const events = [
   {
@@ -49,15 +49,15 @@ const events = [
   {
     id: 'workshop',
     title: 'Taller de diseño',
-    start: dayjs().add(1, 'day').format('YYYY-MM-DD 10:00:00'),
-    end: dayjs().add(1, 'day').format('YYYY-MM-DD 12:00:00'),
+    start: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD 10:00:00'),
+    end: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD 12:00:00'),
     color: 'grape',
   },
   {
     id: 'conference',
     title: 'Conferencia',
-    start: dayjs().add(3, 'day').format('YYYY-MM-DD 00:00:00'),
-    end: dayjs().add(4, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'),
+    start: dayjs('2024-01-15').add(3, 'day').format('YYYY-MM-DD 00:00:00'),
+    end: dayjs('2024-01-15').add(4, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'),
     color: 'red',
   },
 ];
@@ -65,8 +65,8 @@ const events = [
 function Demo() {
   return (
     <AgendaView
-      rangeStart={dayjs().format('YYYY-MM-DD')}
-      rangeEnd={dayjs().add(7, 'day').format('YYYY-MM-DD')}
+      rangeStart={dayjs('2024-01-15').format('YYYY-MM-DD')}
+      rangeEnd={dayjs('2024-01-15').add(7, 'day').format('YYYY-MM-DD')}
       events={events}
       locale="es"
       labels={{
@@ -81,8 +81,8 @@ function Demo() {
 function Demo() {
   return (
     <AgendaView
-      rangeStart={dayjs().format('YYYY-MM-DD')}
-      rangeEnd={dayjs().add(7, 'day').format('YYYY-MM-DD')}
+      rangeStart={dayjs('2024-01-15').format('YYYY-MM-DD')}
+      rangeEnd={dayjs('2024-01-15').add(7, 'day').format('YYYY-MM-DD')}
       events={eventsData}
       locale="es"
       labels={{
@@ -93,7 +93,7 @@ function Demo() {
   );
 }
 
-export const localization: MantineDemo = {
+export const localization: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

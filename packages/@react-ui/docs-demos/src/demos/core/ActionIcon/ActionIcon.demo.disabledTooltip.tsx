@@ -1,6 +1,6 @@
 import { HeartIcon } from '@phosphor-icons/react';
 import { ActionIcon, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ActionIcon, Tooltip } from '@react-ui/ui';
@@ -8,9 +8,9 @@ import { HeartIcon } from '@phosphor-icons/react';
 
 function Demo() {
   return (
-    <Tooltip label="Tooltip for disabled button">
+    <Tooltip label="禁用按钮的提示">
       <ActionIcon
-        aria-label="Hover to see tooltip"
+        aria-label="悬停查看提示"
         size="xl"
         data-disabled
         onClick={(event) => event.preventDefault()}
@@ -24,9 +24,9 @@ function Demo() {
 
 function Demo() {
   return (
-    <Tooltip label="Tooltip for disabled button">
+    <Tooltip label="禁用按钮的提示">
       <ActionIcon
-        aria-label="Hover to see tooltip"
+        aria-label="悬停查看提示"
         size="xl"
         data-disabled
         onClick={(event) => event.preventDefault()}
@@ -37,7 +37,7 @@ function Demo() {
   );
 }
 
-export const disabledTooltip: MantineDemo = {
+export const disabledTooltip: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

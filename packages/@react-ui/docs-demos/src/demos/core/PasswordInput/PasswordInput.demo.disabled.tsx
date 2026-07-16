@@ -1,23 +1,23 @@
 import { PasswordInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { PasswordInput } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <PasswordInput disabled label="Disabled password input" placeholder="Disabled password input" />
+    <PasswordInput disabled label="已禁用密码输入" placeholder="已禁用密码输入" />
   );
 }
 `;
 
 function Demo() {
   return (
-    <PasswordInput disabled label="Disabled password input" placeholder="Disabled password input" />
+    <PasswordInput disabled label="已禁用密码输入" placeholder="已禁用密码输入" />
   );
 }
 
-export const disabled: MantineDemo = {
+export const disabled: UIDemo = {
   type: 'code',
   component: Demo,
   code,

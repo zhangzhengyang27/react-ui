@@ -1,5 +1,5 @@
 import { AreaChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { splitData, splitDataCode } from './_data';
 
 const code = `
@@ -16,7 +16,7 @@ function Demo() {
       strokeWidth={1}
       dotProps={{ r: 2, strokeWidth: 1 }}
       activeDotProps={{ r: 3, strokeWidth: 1 }}
-      series={[{ name: 'Apples', color: 'bright' }]}
+      series={[{ name: '苹果', color: 'bright' }]}
       splitColors={['violet', 'orange']}
     />
   );
@@ -33,17 +33,17 @@ function Demo() {
       strokeWidth={1}
       dotProps={{ r: 2, strokeWidth: 1 }}
       activeDotProps={{ r: 3, strokeWidth: 1 }}
-      series={[{ name: 'Apples', color: 'bright' }]}
+      series={[{ name: '苹果', color: 'bright' }]}
       splitColors={['violet', 'orange']}
     />
   );
 }
 
-export const splitColors: MantineDemo = {
+export const splitColors: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: splitDataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

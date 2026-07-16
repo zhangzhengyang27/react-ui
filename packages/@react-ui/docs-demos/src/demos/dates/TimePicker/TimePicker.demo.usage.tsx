@@ -1,19 +1,19 @@
 import { TimePicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TimePicker } from '@react-ui/dates';
 
 function Demo() {
-  return <TimePicker label="Enter time" />;
+  return <TimePicker label="输入时间" />;
 }
 `;
 
 function Demo() {
-  return <TimePicker label="Enter time" />;
+  return <TimePicker label="输入时间" />;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

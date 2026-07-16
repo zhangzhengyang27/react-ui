@@ -1,4 +1,4 @@
-import { useMantineStylesTransform, useMantineTheme } from '../../MantineProvider'
+import { useUIStylesTransform, useUITheme } from '../../UIProvider'
 
 interface UseTransformedStylesInput {
     props: Record<string, any>
@@ -17,8 +17,8 @@ interface UseTransformedStylesInput {
  * @property {boolean} withStylesTransform - 是否应用了样式转换
  */
 export function useStylesTransform({ props, stylesCtx, themeName }: UseTransformedStylesInput) {
-    const theme = useMantineTheme()
-    const stylesTransform = useMantineStylesTransform()?.()
+    const theme = useUITheme()
+    const stylesTransform = useUIStylesTransform()?.()
 
     const getTransformedStyles = (styles: any[]) => {
         if (!stylesTransform) {

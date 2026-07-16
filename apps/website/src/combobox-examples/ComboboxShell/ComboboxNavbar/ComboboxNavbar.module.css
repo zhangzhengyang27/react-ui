@@ -8,7 +8,7 @@
   background-color: light-dark(var(--ui-color-white), var(--ui-color-dark-7));
   border-inline-end: 1px solid var(--border-color);
 
-  @mixin smaller-than $docs-mdx-breakpoint {
+  @media (max-width: 67.5em) {
     width: unset;
     left: 0;
     right: 0;
@@ -16,7 +16,7 @@
   }
 
   &[data-hidden] {
-    @mixin smaller-than $docs-mdx-breakpoint {
+    @media (max-width: 67.5em) {
       display: none;
     }
   }

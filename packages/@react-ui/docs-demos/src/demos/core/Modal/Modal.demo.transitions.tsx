@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Group, Modal } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -15,7 +15,7 @@ function Demo() {
       <Modal
         opened={slowTransitionOpened}
         onClose={() => setSlowTransitionOpened(false)}
-        title="Please consider this"
+        title="请考虑这个"
         transitionProps={{ transition: 'rotate-left' }}
       >
         rotate-left transition
@@ -24,7 +24,7 @@ function Demo() {
       <Modal
         opened={noTransitionOpened}
         onClose={() => setNoTransitionOpened(false)}
-        title="Please consider this"
+        title="请考虑这个"
         transitionProps={{ transition: 'fade', duration: 600, timingFunction: 'linear' }}
       >
         fade transition 600ms linear transition
@@ -32,10 +32,10 @@ function Demo() {
 
       <Group justify="center">
         <Button onClick={() => setSlowTransitionOpened(true)} variant="default">
-          Rotate left transition
+          向左旋转过渡
         </Button>
         <Button onClick={() => setNoTransitionOpened(true)} variant="default">
-          Fade transition
+          淡入淡出过渡
         </Button>
       </Group>
     </>
@@ -52,7 +52,7 @@ function Demo() {
       <Modal
         opened={slowTransitionOpened}
         onClose={() => setSlowTransitionOpened(false)}
-        title="Please consider this"
+        title="请考虑这个"
         transitionProps={{ transition: 'rotate-left' }}
       >
         rotate-left transition
@@ -61,7 +61,7 @@ function Demo() {
       <Modal
         opened={noTransitionOpened}
         onClose={() => setNoTransitionOpened(false)}
-        title="Please consider this"
+        title="请考虑这个"
         transitionProps={{ transition: 'fade', duration: 600, timingFunction: 'linear' }}
       >
         fade transition 600ms linear transition
@@ -69,17 +69,17 @@ function Demo() {
 
       <Group justify="center">
         <Button onClick={() => setSlowTransitionOpened(true)} variant="default">
-          Rotate left transition
+          向左旋转过渡
         </Button>
         <Button onClick={() => setNoTransitionOpened(true)} variant="default">
-          Fade transition
+          淡入淡出过渡
         </Button>
       </Group>
     </>
   );
 }
 
-export const transitions: MantineDemo = {
+export const transitions: UIDemo = {
   type: 'code',
   code,
   component: Demo,

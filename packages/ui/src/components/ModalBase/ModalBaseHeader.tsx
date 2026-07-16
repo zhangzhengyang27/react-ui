@@ -17,4 +17,4 @@ export const ModalBaseHeader = forwardRef<HTMLElement, ModalBaseHeaderProps>(({ 
     )
 })
 
-ModalBaseHeader.displayName = '@mantine/core/ModalBaseHeader'
+ModalBaseHeader.displayName = '@react-ui/ui/ModalBaseHeader'

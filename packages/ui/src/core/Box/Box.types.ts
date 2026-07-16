@@ -1,9 +1,9 @@
-import type { MantineTheme } from '../../core/MantineProvider'
+import type { UITheme } from '../../core/UIProvider'
 
 /**
  * 扩展的 CSS 属性接口
  *
- * 继承自 React.CSSProperties，并允许添加任意自定义 CSS 属性。主要用于支持 Mantine 组件中需要扩展 CSS 属性的场景
+ * 继承自 React.CSSProperties，并允许添加任意自定义 CSS 属性。主要用于支持 UI 组件中需要扩展 CSS 属性的场景
  *
  * @example
  * const styles: CSSProperties = {
@@ -16,24 +16,24 @@ export interface CSSProperties extends React.CSSProperties {
 }
 
 /**
- * Mantine 样式类型
+ * UI 样式类型
  *
  * 可以是：
  * 1. 静态 CSS 属性对象
  * 2. 接收主题参数的函数，返回 CSS 属性对象
  */
-type MantineStyle = CSSProperties | ((theme: MantineTheme) => CSSProperties)
+type UIStyle = CSSProperties | ((theme: UITheme) => CSSProperties)
 
 /**
- * Mantine 样式属性类型
+ * UI 样式属性类型
  *
  * 支持以下形式：
- * - 单个 MantineStyle
- * - MantineStyle 数组
- * - 嵌套的 MantineStyleProp 数组
+ * - 单个 UIStyle
+ * - UIStyle 数组
+ * - 嵌套的 UIStyleProp 数组
  * - undefined（可选属性）
  */
-export type MantineStyleProp = MantineStyle | MantineStyle[] | MantineStyleProp[] | undefined
+export type UIStyleProp = UIStyle | UIStyle[] | UIStyleProp[] | undefined
 
 /**
  * CSS 变量类型
@@ -63,7 +63,7 @@ export type CssVariables<Variable extends string = CssVariable> = Partial<Record
  */
 export type CssVars<Variable extends string = CssVariable> =
     | CssVariables<Variable>
-    | ((theme: MantineTheme) => CssVariables<Variable>)
+    | ((theme: UITheme) => CssVariables<Variable>)
     | CssVars<Variable>[]
 
 /**

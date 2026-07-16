@@ -1,6 +1,6 @@
 import { Button, Group, Text, TextInput } from '@react-ui/ui';
 import { useMask } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Group, Text, TextInput } from '@react-ui/ui';
@@ -13,11 +13,11 @@ function Demo() {
 
   return (
     <>
-      <TextInput ref={ref} label="Phone number" placeholder="(___) ___-____" />
+      <TextInput ref={ref} label="电话号码" placeholder="(___) ___-____" />
       <Text size="sm" mt="sm">Masked: {value}</Text>
       <Text size="sm">Raw: {rawValue}</Text>
       <Group mt="xs">
-        <Button size="xs" variant="default" onClick={reset}>Reset</Button>
+        <Button size="xs" variant="default" onClick={reset}>重置</Button>
       </Group>
     </>
   );
@@ -31,7 +31,7 @@ function Demo() {
 
   return (
     <>
-      <TextInput ref={ref} label="Phone number" placeholder="(___) ___-____" />
+      <TextInput ref={ref} label="电话号码" placeholder="(___) ___-____" />
       <Text size="sm" mt="sm">
         Masked: {value}
       </Text>
@@ -45,7 +45,7 @@ function Demo() {
   );
 }
 
-export const reset: MantineDemo = {
+export const reset: UIDemo = {
   type: 'code',
   code,
   component: Demo,

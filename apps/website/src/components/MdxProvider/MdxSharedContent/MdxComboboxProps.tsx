@@ -26,17 +26,17 @@ interface MdxComboboxPropsProps {
 export function MdxComboboxProps({ component }: MdxComboboxPropsProps) {
   return (
     <>
-      <MdxTitle id="combobox-props">Combobox props</MdxTitle>
+      <MdxTitle id="combobox-props">Combobox 属性</MdxTitle>
       <MdxParagraph>
-        You can override <MdxLink href="/core/combobox">Combobox</MdxLink> props with{' '}
-        <MdxCode>comboboxProps</MdxCode>. This is useful when you need to change some of the props
-        that are not exposed by <MdxCode>{component}</MdxCode>, for example{' '}
-        <MdxCode>withinPortal</MdxCode>:
+        你可以使用 <MdxCode>comboboxProps</MdxCode> 覆盖{' '}
+        <MdxLink href="/core/combobox">Combobox</MdxLink> 的属性。
+        这在需要更改 <MdxCode>{component}</MdxCode> 未暴露的某些属性时非常有用，例如{' '}
+        <MdxCode>withinPortal</MdxCode>：
       </MdxParagraph>
 
       <MdxCodeHighlight language="tsx" code={getPortalCode(component)} />
 
-      <MdxTitle id="change-z-index">Change dropdown z-index</MdxTitle>
+      <MdxTitle id="change-z-index">修改下拉层 z-index</MdxTitle>
 
       <MdxCodeHighlight language="tsx" code={getZIndexCode(component)} />
     </>

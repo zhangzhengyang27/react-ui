@@ -20,7 +20,7 @@ export function SelectorsTable({
       <Table.Td>{selector}</Table.Td>
       <Table.Td>
         <TableInlineCode>
-          .mantine-{component}-{selector}
+          .ui-{component}-{selector}
         </TableInlineCode>
       </Table.Td>
       <Table.Td>
@@ -34,9 +34,9 @@ export function SelectorsTable({
       <Table layout={fixedLayout ? 'fixed' : undefined} {...others}>
         <Table.Thead>
           <Table.Tr>
-            <Table.Th w={fixedLayout ? 210 : undefined}>Selector</Table.Th>
-            <Table.Th w={fixedLayout ? 310 : undefined}>Static selector</Table.Th>
-            <Table.Th>Description</Table.Th>
+            <Table.Th w={fixedLayout ? 210 : undefined}>选择器</Table.Th>
+            <Table.Th w={fixedLayout ? 310 : undefined}>静态选择器</Table.Th>
+            <Table.Th>说明</Table.Th>
           </Table.Tr>
         </Table.Thead>
         <Table.Tbody>{rows}</Table.Tbody>

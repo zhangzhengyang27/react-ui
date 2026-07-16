@@ -1,5 +1,5 @@
 import { getTimeRange, TimeGrid } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { getTimeRange, TimeGrid } from '@react-ui/dates';
@@ -34,7 +34,7 @@ function Wrapper(props: any) {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

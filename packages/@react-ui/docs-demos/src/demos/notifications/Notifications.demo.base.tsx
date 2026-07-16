@@ -1,6 +1,6 @@
 import { Button } from '@react-ui/ui';
 import { notifications } from '@react-ui/notifications';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button } from '@react-ui/ui';
@@ -11,8 +11,8 @@ function Demo() {
     <Button
       onClick={() =>
         notifications.show({
-          title: 'Default notification',
-          message: 'Do not forget to star ReactUI on GitHub! 🌟',
+          title: '默认通知',
+          message: '别忘了在 GitHub 上给 ReactUI 点星！🌟',
         })
       }
     >
@@ -26,8 +26,8 @@ function Demo() {
     <Button
       onClick={() =>
         notifications.show({
-          title: 'Default notification',
-          message: 'Do not forget to star ReactUI on GitHub! 🌟',
+          title: '默认通知',
+          message: '别忘了在 GitHub 上给 ReactUI 点星！🌟',
         })
       }
     >
@@ -36,7 +36,7 @@ function Demo() {
   );
 }
 
-export const base: MantineDemo = {
+export const base: UIDemo = {
   type: 'code',
   code,
   centered: true,

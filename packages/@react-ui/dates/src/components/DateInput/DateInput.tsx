@@ -12,7 +12,7 @@ import {
   getFontSize,
   Input,
   InputVariant,
-  MantineSize,
+  UISize,
   Popover,
   PopoverProps,
   StylesApiProps,
@@ -323,7 +323,7 @@ export const DateInput = factory<DateInputFactory>((_props) => {
       maxDate={maxDate}
       locale={locale}
       getDayProps={_getDayProps}
-      size={inputProps.size as MantineSize}
+      size={inputProps.size as UISize}
       date={_date}
       onDateChange={setDate}
       getMonthControlProps={(date) => ({

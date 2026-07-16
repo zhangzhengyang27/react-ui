@@ -8,7 +8,7 @@ import {
     factory,
     Factory,
     getSpacing,
-    MantineSpacing,
+    UISpacing,
     rem,
     StyleProp,
     StylesApiProps,
@@ -52,9 +52,9 @@ export interface CarouselProps
     nextControlProps?: React.ComponentPropsWithoutRef<'button'>
     previousControlProps?: React.ComponentPropsWithoutRef<'button'>
     controlSize?: React.CSSProperties['width']
-    controlsOffset?: MantineSpacing
+    controlsOffset?: UISpacing
     slideSize?: StyleProp<string | number>
-    slideGap?: StyleProp<MantineSpacing>
+    slideGap?: StyleProp<UISpacing>
     orientation?: 'horizontal' | 'vertical'
     height?: React.CSSProperties['height']
     includeGapInSize?: boolean

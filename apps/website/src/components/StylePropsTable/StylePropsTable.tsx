@@ -25,5 +25,5 @@ export function StylePropsTable({ source = STYlE_PROPS_DATA }: { source: any }) 
     ];
   });
 
-  return <MdxDataTable head={['Prop', 'CSS Property', 'Theme key']} data={data} />;
+  return <MdxDataTable head={['属性', 'CSS 属性', '主题键']} data={data} />;
 }

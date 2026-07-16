@@ -5,11 +5,11 @@
     outline: 0;
   }
 
-  @mixin where-light {
+  [data-ui-color-scheme='light'] & {
     --chart-link-color: var(--ui-color-gray-1);
   }
 
-  @mixin where-dark {
+  [data-ui-color-scheme='dark'] & {
     --chart-link-color: var(--ui-color-dark-5);
   }
 }

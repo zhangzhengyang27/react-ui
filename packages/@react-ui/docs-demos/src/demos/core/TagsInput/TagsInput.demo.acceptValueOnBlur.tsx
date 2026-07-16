@@ -1,5 +1,5 @@
 import { TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TagsInput } from '@react-ui/ui';
@@ -8,14 +8,14 @@ function Demo() {
   return (
     <>
       <TagsInput
-        label="Value IS accepted on blur"
-        placeholder="Enter text, then blur the field"
+        label="失焦时接受值"
+        placeholder="输入文本，然后失焦"
         data={['React', 'Angular', 'Svelte']}
         acceptValueOnBlur
       />
       <TagsInput
-        label="Value IS NOT accepted on blur"
-        placeholder="Enter text, then blur the field"
+        label="失焦时不接受值"
+        placeholder="输入文本，然后失焦"
         data={['React', 'Angular', 'Svelte']}
         acceptValueOnBlur={false}
         mt="md"
@@ -29,14 +29,14 @@ function Demo() {
   return (
     <>
       <TagsInput
-        label="Value IS accepted on blur"
-        placeholder="Enter text, then blur the field"
+        label="失焦时接受值"
+        placeholder="输入文本，然后失焦"
         data={['React', 'Angular', 'Svelte']}
         acceptValueOnBlur
       />
       <TagsInput
-        label="Value IS NOT accepted on blur"
-        placeholder="Enter text, then blur the field"
+        label="失焦时不接受值"
+        placeholder="输入文本，然后失焦"
         data={['React', 'Angular', 'Svelte']}
         acceptValueOnBlur={false}
         mt="md"
@@ -45,7 +45,7 @@ function Demo() {
   );
 }
 
-export const acceptValueOnBlur: MantineDemo = {
+export const acceptValueOnBlur: UIDemo = {
   type: 'code',
   component: Demo,
   code,

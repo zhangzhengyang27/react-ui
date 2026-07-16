@@ -1,6 +1,6 @@
 import { Button, Popover, Select } from '@react-ui/ui';
 import { DatePickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Popover, Select } from '@react-ui/ui';
@@ -10,18 +10,18 @@ function Demo() {
   return (
     <Popover width={300} position="bottom" withArrow shadow="md">
       <Popover.Target>
-        <Button>Toggle popover</Button>
+        <Button>切换气泡卡片</Button>
       </Popover.Target>
       <Popover.Dropdown bg="var(--ui-color-body)">
         <Select
-          label="Select within Popover"
-          placeholder="Select within Popover"
+          label="在 Popover 中选择"
+          placeholder="在 Popover 中选择"
           comboboxProps={{ withinPortal: false }}
           data={['React', 'Angular', 'Svelte', 'Vue']}
         />
         <DatePickerInput
-          label="DatePickerInput within Popover"
-          placeholder="DatePickerInput within Popover"
+          label="在 Popover 中选择日期"
+          placeholder="在 Popover 中选择日期"
           popoverProps={{ withinPortal: false }}
           mt="md"
         />
@@ -35,18 +35,18 @@ function Demo() {
   return (
     <Popover width={300} position="bottom" withArrow shadow="md">
       <Popover.Target>
-        <Button>Toggle popover</Button>
+        <Button>切换气泡卡片</Button>
       </Popover.Target>
       <Popover.Dropdown bg="var(--ui-color-body)">
         <Select
-          label="Select within Popover"
-          placeholder="Select within Popover"
+          label="在 Popover 中选择"
+          placeholder="在 Popover 中选择"
           comboboxProps={{ withinPortal: false }}
           data={['React', 'Angular', 'Svelte', 'Vue']}
         />
         <DatePickerInput
-          label="DatePickerInput within Popover"
-          placeholder="DatePickerInput within Popover"
+          label="在 Popover 中选择日期"
+          placeholder="在 Popover 中选择日期"
           popoverProps={{ withinPortal: false }}
           mt="md"
         />
@@ -55,7 +55,7 @@ function Demo() {
   );
 }
 
-export const portalChildren: MantineDemo = {
+export const portalChildren: UIDemo = {
   type: 'code',
   component: Demo,
   code,

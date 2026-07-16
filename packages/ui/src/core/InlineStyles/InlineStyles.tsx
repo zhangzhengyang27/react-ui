@@ -1,4 +1,4 @@
-import { useMantineStyleNonce } from '../MantineProvider'
+import { useUIStyleNonce } from '../UIProvider'
 import { InlineStylesInput, stylesToString } from './styles-to-string/styles-to-string'
 
 export interface InlineStylesProps
@@ -13,10 +13,10 @@ export interface InlineStylesProps
  * @remarks 自动添加nonce属性用于CSP安全策略，样式通过dangerouslySetInnerHTML注入
  */
 export function InlineStyles(props: InlineStylesInput) {
-    const nonce = useMantineStyleNonce()
+    const nonce = useUIStyleNonce()
     return (
         <style
-            data-mantine-styles="inline"
+            data-ui-styles="inline"
             nonce={nonce?.()}
             dangerouslySetInnerHTML={{ __html: stylesToString(props) }}
         />

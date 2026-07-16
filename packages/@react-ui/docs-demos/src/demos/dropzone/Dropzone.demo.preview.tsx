@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Image, SimpleGrid, Text } from '@react-ui/ui';
 import { Dropzone, FileWithPath, IMAGE_MIME_TYPE } from '@react-ui/dropzone';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -19,7 +19,7 @@ function Demo() {
   return (
     <div>
       <Dropzone accept={IMAGE_MIME_TYPE} onDrop={setFiles}>
-        <Text ta="center">Drop images here</Text>
+        <Text ta="center">将图片拖到这里</Text>
       </Dropzone>
 
       <SimpleGrid cols={{ base: 1, sm: 4 }} mt={previews.length > 0 ? 'xl' : 0}>
@@ -41,7 +41,7 @@ function Demo() {
   return (
     <div>
       <Dropzone accept={IMAGE_MIME_TYPE} onDrop={setFiles}>
-        <Text ta="center">Drop images here</Text>
+        <Text ta="center">将图片拖到这里</Text>
       </Dropzone>
 
       <SimpleGrid cols={{ base: 1, sm: 4 }} mt={previews.length > 0 ? 'xl' : 0}>
@@ -51,7 +51,7 @@ function Demo() {
   );
 }
 
-export const preview: MantineDemo = {
+export const preview: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -83,7 +83,7 @@ export function polymorphicFactory<Payload extends PolymorphicFactoryPayload>(
 }
 
 /**
- * 定义一个Mantine的多态组件类型，支持组件多态性和主题扩展
+ * 定义一个UI的多态组件类型，支持组件多态性和主题扩展
  *
  * @template Payload 扩展自PolymorphicFactoryPayload的类型参数，包含组件的默认配置
  * @template C 可选的组件类型参数，默认为Payload中的defaultComponent
@@ -96,7 +96,7 @@ export function polymorphicFactory<Payload extends PolymorphicFactoryPayload>(
  * - 多态组件属性支持(PolymorphicComponentWithProps)
  * - 静态子组件支持(StaticComponents)
  */
-export type MantinePolymorphicComponent<Payload extends PolymorphicFactoryPayload> = (<C = Payload['defaultComponent']>(
+export type UIPolymorphicComponent<Payload extends PolymorphicFactoryPayload> = (<C = Payload['defaultComponent']>(
     props: PolymorphicComponentProps<C, Payload['props']>
 ) => React.ReactElement) &
     Omit<React.FunctionComponent<PolymorphicComponentProps<any, Payload['props']>>, never> &

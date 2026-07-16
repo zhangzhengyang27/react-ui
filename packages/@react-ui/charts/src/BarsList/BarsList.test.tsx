@@ -1,4 +1,4 @@
-import { render, tests } from '@mantine-tests/core';
+import { render, tests } from '@react-ui/tests';
 import { BarsList, BarsListProps, BarsListStylesNames } from './BarsList';
 
 const defaultProps: BarsListProps = {
@@ -23,7 +23,7 @@ describe('@react-ui/charts/BarsList', () => {
 
   it('renders correct number of bars', () => {
     const { container } = render(<BarsList {...defaultProps} />);
-    const bars = container.querySelectorAll('.mantine-BarsList-bar');
+    const bars = container.querySelectorAll('.ui-BarsList-bar');
     expect(bars).toHaveLength(3);
   });
 
@@ -31,7 +31,7 @@ describe('@react-ui/charts/BarsList', () => {
     const { container } = render(
       <BarsList {...defaultProps} valueFormatter={(value) => `$${value.toLocaleString()}`} />
     );
-    const values = container.querySelectorAll('.mantine-BarsList-barValue');
+    const values = container.querySelectorAll('.ui-BarsList-barValue');
     expect(values[0]).toHaveTextContent('$1,200,000');
   });
 
@@ -39,7 +39,7 @@ describe('@react-ui/charts/BarsList', () => {
     const { container } = render(
       <BarsList {...defaultProps} barsLabel="Source" valueLabel="Count" />
     );
-    const labelsRow = container.querySelector('.mantine-BarsList-labelsRow');
+    const labelsRow = container.querySelector('.ui-BarsList-labelsRow');
     expect(labelsRow).toBeInTheDocument();
     expect(labelsRow).toHaveTextContent('Source');
     expect(labelsRow).toHaveTextContent('Count');
@@ -49,7 +49,7 @@ describe('@react-ui/charts/BarsList', () => {
     const { container } = render(
       <BarsList data={defaultProps.data} barsLabel={undefined} valueLabel={undefined} />
     );
-    const labelsRow = container.querySelector('.mantine-BarsList-labelsRow');
+    const labelsRow = container.querySelector('.ui-BarsList-labelsRow');
     expect(labelsRow).not.toBeInTheDocument();
   });
 
@@ -75,7 +75,7 @@ describe('@react-ui/charts/BarsList', () => {
         })}
       />
     );
-    const barLabels = container.querySelectorAll('.mantine-BarsList-barLabel');
+    const barLabels = container.querySelectorAll('.ui-BarsList-barLabel');
     expect(barLabels[0]).toHaveAttribute('data-value', '1200000');
     expect(barLabels[0]).toHaveClass('custom-class');
   });

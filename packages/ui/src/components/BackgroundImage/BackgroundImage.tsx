@@ -6,7 +6,7 @@ import {
     useProps,
     useStyles,
     type BoxProps,
-    type MantineRadius,
+    type UIRadius,
     type PolymorphicFactory,
     type StylesApiProps
 } from '../../core'
@@ -18,7 +18,7 @@ export type BackgroundImageCssVariables = {
 }
 
 export interface BackgroundImageProps extends BoxProps, StylesApiProps<BackgroundImageFactory> {
-    radius?: MantineRadius
+    radius?: UIRadius
     src: string
 }
 

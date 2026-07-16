@@ -1,9 +1,9 @@
 import { CodeHighlight } from '@react-ui/code-highlight';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const exampleCode = `
 function Button() {
-  return <button>Click me</button>;
+  return <button>点击我</button>;
 }
 `;
 
@@ -18,8 +18,8 @@ function Demo() {
       <CodeHighlight
         code={\`// Custom copy label\${exampleCode}\`}
         language="tsx"
-        copyLabel="Copy button code"
-        copiedLabel="Copied!"
+        copyLabel="复制按钮代码"
+        copiedLabel="已复制！"
         radius="md"
       />
       <CodeHighlight
@@ -40,8 +40,8 @@ function Demo() {
       <CodeHighlight
         code={`// Custom copy label${exampleCode}`}
         language="tsx"
-        copyLabel="Copy button code"
-        copiedLabel="Copied!"
+        copyLabel="复制按钮代码"
+        copiedLabel="已复制！"
         radius="md"
       />
       <CodeHighlight
@@ -55,7 +55,7 @@ function Demo() {
   );
 }
 
-export const copy: MantineDemo = {
+export const copy: UIDemo = {
   type: 'code',
   component: Demo,
   code,

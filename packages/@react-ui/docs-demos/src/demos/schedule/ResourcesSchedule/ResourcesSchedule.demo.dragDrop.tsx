@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { ResourcesSchedule, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { dataCode, resourceEvents, resources } from './_data';
 
 const code = `
@@ -11,7 +11,7 @@ import { ResourcesSchedule, ScheduleEventData } from '@react-ui/schedule';
 import { events as initialEvents, resources } from './data';
 
 function Demo() {
-  const today = dayjs().format('YYYY-MM-DD');
+  const today = dayjs('2024-01-15').format('YYYY-MM-DD');
   const [date, setDate] = useState(today);
   const [events, setEvents] = useState<ScheduleEventData[]>(initialEvents);
 
@@ -40,7 +40,7 @@ function Demo() {
 `;
 
 function Demo() {
-  const today = dayjs().format('YYYY-MM-DD');
+  const today = dayjs('2024-01-15').format('YYYY-MM-DD');
   const [date, setDate] = useState(today);
   const [events, setEvents] = useState<ScheduleEventData[]>(resourceEvents);
 
@@ -69,12 +69,12 @@ function Demo() {
   );
 }
 
-export const dragDrop: MantineDemo = {
+export const dragDrop: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

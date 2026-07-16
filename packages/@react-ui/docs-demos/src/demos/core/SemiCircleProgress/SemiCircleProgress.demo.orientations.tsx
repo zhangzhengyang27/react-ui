@@ -1,5 +1,5 @@
 import { SemiCircleProgress, SimpleGrid } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { SemiCircleProgress, SimpleGrid } from '@react-ui/ui';
@@ -11,28 +11,28 @@ function Demo() {
         value={60}
         orientation="up"
         fillDirection="left-to-right"
-        label="Up, L→R"
+        label="向上，左→右"
         size={150}
       />
       <SemiCircleProgress
         value={60}
         orientation="up"
         fillDirection="right-to-left"
-        label="Up, R→L"
+        label="向上，右→左"
         size={150}
       />
       <SemiCircleProgress
         value={60}
         orientation="down"
         fillDirection="left-to-right"
-        label="Down, L→R"
+        label="向下，左→右"
         size={150}
       />
       <SemiCircleProgress
         value={60}
         orientation="down"
         fillDirection="right-to-left"
-        label="Down, R→L"
+        label="向下，右→左"
         size={150}
       />
     </SimpleGrid>
@@ -47,35 +47,35 @@ function Demo() {
         value={60}
         orientation="up"
         fillDirection="left-to-right"
-        label="Up, L→R"
+        label="向上，左→右"
         size={150}
       />
       <SemiCircleProgress
         value={60}
         orientation="up"
         fillDirection="right-to-left"
-        label="Up, R→L"
+        label="向上，右→左"
         size={150}
       />
       <SemiCircleProgress
         value={60}
         orientation="down"
         fillDirection="left-to-right"
-        label="Down, L→R"
+        label="向下，左→右"
         size={150}
       />
       <SemiCircleProgress
         value={60}
         orientation="down"
         fillDirection="right-to-left"
-        label="Down, R→L"
+        label="向下，右→左"
         size={150}
       />
     </SimpleGrid>
   );
 }
 
-export const orientations: MantineDemo = {
+export const orientations: UIDemo = {
   type: 'code',
   component: Demo,
   code,

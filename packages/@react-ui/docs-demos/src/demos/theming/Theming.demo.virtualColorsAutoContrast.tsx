@@ -1,5 +1,5 @@
 import { Button } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const demoCode = `
 import { Button } from '@react-ui/ui';
@@ -14,7 +14,7 @@ export function Demo() {
 `;
 
 const appCode = `
-import { Button, colorsTuple, createTheme, MantineProvider, virtualColor } from '@react-ui/ui';
+import { Button, colorsTuple, createTheme, UIProvider, virtualColor } from '@react-ui/ui';
 import { Demo } from './Demo';
 
 const theme = createTheme({
@@ -31,9 +31,9 @@ const theme = createTheme({
 
 function App() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       <Demo />
-    </MantineProvider>
+    </UIProvider>
   );
 }
 `;
@@ -46,12 +46,12 @@ function Demo() {
   );
 }
 
-export const virtualColorsAutoContrast: MantineDemo = {
+export const virtualColorsAutoContrast: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   code: [
-    { fileName: 'App.tsx', code: appCode, language: 'tsx' },
-    { fileName: 'Demo.tsx', code: demoCode, language: 'tsx' },
+    { fileName: '应用.tsx', code: appCode, language: 'tsx' },
+    { fileName: '演示代码.tsx', code: demoCode, language: 'tsx' },
   ],
 };

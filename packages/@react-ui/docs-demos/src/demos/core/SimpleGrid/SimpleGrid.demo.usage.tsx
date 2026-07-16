@@ -1,5 +1,5 @@
 import { SimpleGrid, SimpleGridProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { defaultItems } from './_demo-item';
 
 function Demo(props: SimpleGridProps) {
@@ -26,7 +26,7 @@ function Demo() {
 }
 `;
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Demo,
   code,

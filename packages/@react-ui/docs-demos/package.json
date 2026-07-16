@@ -26,7 +26,7 @@
     "./styles.layer.css": "./styles.layer.css"
   },
   "repository": {
-    "url": "https://github.com/react-ui-org/react-ui.git",
+    "url": "https://github.com/react-ui/react-ui.git",
     "type": "git",
     "directory": "packages/@react-ui/docs-demos"
   },
@@ -54,7 +54,7 @@
     "@react-ui/tiptap": "workspace:*",
     "@react-ui/demo": "workspace:*",
     "@react-ui/dev-icons": "workspace:*",
-    "@react-ui/mantine-logo": "workspace:*",
+    "@react-ui/logo": "workspace:*",
     "@tiptap/core": "^3.26.1",
     "@tiptap/extension-floating-menu": "^3.23.6",
     "@tiptap/extension-link": "^3.26.1",

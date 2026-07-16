@@ -11,12 +11,12 @@ export default Layout(MDX_DATA.useSetState);
 import { useSetState } from '@react-ui/hooks';
 
 const [state, setState] = useSetState({
-  name: 'John',
+  name: '张三',
   age: 35,
   job: 'Engineer',
 });
 
-state; // -> { name: 'John', age: 35, job: 'Engineer' }
+state; // -> { name: '张三', age: 35, job: 'Engineer' }
 
 setState({ name: 'Jane' }); // -> { name: 'Jane', age: 35, job: 'Engineer' }
 setState({ age: 25, job: 'Manager' }); // -> { name: 'Jane', age: 25, job: 'Manager' }

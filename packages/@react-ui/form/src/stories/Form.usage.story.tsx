@@ -118,7 +118,7 @@ export function Initialize() {
       <Button
         onClick={() =>
           form.initialize({
-            name: 'Mantine',
+            name: 'UI',
             terms: true,
             area: 'Some area',
             select: 'React',

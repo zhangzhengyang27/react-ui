@@ -14,10 +14,10 @@ ReactUI 是一个 React 组件库，专注于提供出色的用户体验和开�
 
 <PackagesInstallation packages="@react-ui/ui @react-ui/hooks" />
 
-安装 PostCSS 插件和 [postcss-preset-mantine](/styles/postcss-preset)：
+安装 PostCSS 插件和 [postcss-preset-ui](/styles/postcss-preset)：
 
 <InstallScript
-  packages="postcss postcss-preset-mantine postcss-simple-vars"
+  packages="postcss postcss-preset-ui postcss-simple-vars"
   dev
 />
 
@@ -30,14 +30,14 @@ ReactUI 是一个 React 组件库，专注于提供出色的用户体验和开�
 ```js
 module.exports = {
   plugins: {
-    'postcss-preset-mantine': {},
+    'postcss-preset-ui': {},
     'postcss-simple-vars': {
       variables: {
-        'mantine-breakpoint-xs': '36em',
-        'mantine-breakpoint-sm': '48em',
-        'mantine-breakpoint-md': '62em',
-        'mantine-breakpoint-lg': '75em',
-        'mantine-breakpoint-xl': '88em',
+        'ui-breakpoint-xs': '36em',
+        'ui-breakpoint-sm': '48em',
+        'ui-breakpoint-md': '62em',
+        'ui-breakpoint-lg': '75em',
+        'ui-breakpoint-xl': '88em',
       },
     },
   },
@@ -52,12 +52,12 @@ module.exports = {
 import '@react-ui/ui/styles.css';
 ```
 
-## 使用 MantineProvider
+## 使用 UIProvider
 
-使用 [MantineProvider](/theming/mantine-provider/) 包裹应用：
+使用 [UIProvider](/theming/ui-provider/) 包裹应用：
 
 ```tsx
-import { createTheme, MantineProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@react-ui/ui';
 
 const theme = createTheme({
   /** 在此自定义主题 */
@@ -65,25 +65,25 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       {/* 你的应用 */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```
 
-如果你的应用使用服务端渲染，请在 `<head />` 中添加 [ColorSchemeScript](/theming/color-schemes) 并将 `mantineHtmlProps` 展开到 `<html />` 元素上，以避免 hydration 警告：
+如果你的应用使用服务端渲染，请在 `<head />` 中添加 [ColorSchemeScript](/theming/color-schemes) 并将 `uiHtmlProps` 展开到 `<html />` 元素上，以避免 hydration 警告：
 
 ```tsx
-import { ColorSchemeScript, mantineHtmlProps } from '@react-ui/ui';
+import { ColorSchemeScript, uiHtmlProps } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <html lang="en" {...mantineHtmlProps}>
+    <html lang="en" {...uiHtmlProps}>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>My awesome app</title>
+        <title>我的超棒应用</title>
         <ColorSchemeScript />
       </head>
       <body>{/* 你的应用 */}</body>
@@ -125,7 +125,7 @@ function Demo() {
 - [主题对象](/theming/theme-object) — 了解可用的主题属性
 - [颜色](/theming/colors) — 了解如何添加/替换主题颜色
 - [CSS 模块](/styles/css-modules) — 了解如何在 ReactUI 中使用 CSS Modules
-- [postcss-preset-mantine](/styles/postcss-preset) — 了解 postcss-preset-mantine 的功能和混入
+- [postcss-preset-ui](/styles/postcss-preset) — 了解 postcss-preset-ui 的功能和混入
 - [响应式样式](/styles/responsive) — 了解如何为组件应用响应式样式
 - [样式 API](/styles/styles-api) — 了解如何为任意组件的内部元素添加样式
 - [多态组件](/guides/polymorphic) — 了解多态组件

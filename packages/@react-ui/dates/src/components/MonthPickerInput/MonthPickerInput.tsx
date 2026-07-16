@@ -4,7 +4,7 @@ import {
   factory,
   Factory,
   InputVariant,
-  MantineComponentStaticProperties,
+  UIComponentStaticProperties,
   StylesApiProps,
   useProps,
   useResolvedStylesApi,
@@ -51,7 +51,7 @@ type MonthPickerInputComponent = (<Type extends DatePickerType = 'default'>(
   props: MonthPickerInputProps<Type> & { ref?: React.Ref<HTMLButtonElement> }
 ) => React.JSX.Element) & {
   displayName?: string;
-} & MantineComponentStaticProperties<MonthPickerInputFactory>;
+} & UIComponentStaticProperties<MonthPickerInputFactory>;
 
 export const MonthPickerInput: MonthPickerInputComponent = factory<MonthPickerInputFactory>(
   (_props) => {

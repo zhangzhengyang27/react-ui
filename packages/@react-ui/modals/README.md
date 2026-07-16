@@ -1,10 +1,10 @@
-# Mantine modals manager
+# UI modals manager
 
 [![npm](https://img.shields.io/npm/dm/@react-ui/modals)](https://www.npmjs.com/package/@react-ui/modals)
 
 Manage modals state
 
-[View documentation](https://mantine.dev/)
+[View documentation](#)
 
 ## Installation
 

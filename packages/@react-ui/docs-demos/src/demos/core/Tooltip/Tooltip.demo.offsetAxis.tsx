@@ -1,5 +1,5 @@
 import { Button, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { FLOATING_POSITION_DATA } from '../../../shared';
 
 const code = (props: any) => `
@@ -10,10 +10,10 @@ function Demo() {
     <Tooltip
       position="${props.position}"
       opened
-      label="Tooltip"
+      label="提示"
       offset={{ mainAxis: ${props.mainAxis}, crossAxis: ${props.crossAxis} }}
     >
-      <Button>Button with tooltip</Button>
+      <Button>带提示的按钮</Button>
     </Tooltip>
   );
 }
@@ -24,15 +24,15 @@ function Wrapper(props: any) {
     <Tooltip
       position={props.position}
       opened
-      label="Tooltip"
+      label="提示"
       offset={{ mainAxis: props.mainAxis, crossAxis: props.crossAxis }}
     >
-      <Button>Button with tooltip</Button>
+      <Button>带提示的按钮</Button>
     </Tooltip>
   );
 }
 
-export const offsetAxis: MantineDemo = {
+export const offsetAxis: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

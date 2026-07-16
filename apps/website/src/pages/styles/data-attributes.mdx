@@ -33,7 +33,7 @@ function Demo() {
 将输出以下 HTML：
 
 ```html
-<button class="my-button" data-disabled>Disabled button</button>
+<button class="my-button" data-disabled>禁用按钮</button>
 ```
 
 然后你可以使用此属性为禁用按钮应用样式：
@@ -51,7 +51,7 @@ function Demo() {
 当未设置 `disabled` prop 时，`data-disabled` 属性不会被添加到按钮：
 
 ```html
-<button class="my-button">Not disabled button</button>
+<button class="my-button">非禁用按钮</button>
 ```
 
 在某些情况下，`data-*` 属性具有相关联的值。例如，[Button](/core/button) 组件的 `section` 元素具有相关联的 `data-position` 属性，其值可以是 `left` 或 `right`。以下示例将渲染两个 `section` 元素，一个带有 `data-position="left"`，另一个带有 `data-position="right"`：

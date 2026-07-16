@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Slider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Slider } from '@react-ui/ui';
@@ -39,7 +39,7 @@ function Demo() {
   );
 }
 
-export const remSlider: MantineDemo = {
+export const remSlider: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

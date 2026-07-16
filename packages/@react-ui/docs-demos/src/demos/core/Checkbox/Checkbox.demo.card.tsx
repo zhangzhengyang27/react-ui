@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Checkbox, Group, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Checkbox.demo.card.module.css';
 
 const cssCode = `.root {
@@ -12,12 +12,12 @@ const cssCode = `.root {
     border-color: var(--ui-primary-color-filled);
   }
 
-  @mixin hover {
-    @mixin light {
+  &:hover {
+    [data-ui-color-scheme='light'] & {
       background-color: var(--ui-color-gray-0);
     }
 
-    @mixin dark {
+    [data-ui-color-scheme='dark'] & {
       background-color: var(--ui-color-dark-6);
     }
   }
@@ -55,9 +55,9 @@ function Demo() {
         <Checkbox.Indicator />
 
         <div>
-          <Text className={classes.label}>mantine/core</Text>
+          <Text className={classes.label}>@react-ui/ui</Text>
           <Text className={classes.description}>
-            Core components library: inputs, buttons, overlays, etc.
+            核心组件库：输入框、按钮、遮罩层等。
           </Text>
         </div>
       </Group>
@@ -75,9 +75,9 @@ function Demo() {
         <Checkbox.Indicator />
 
         <div>
-          <Text className={classes.label}>mantine/core</Text>
+          <Text className={classes.label}>@react-ui/ui</Text>
           <Text className={classes.description}>
-            Core components library: inputs, buttons, overlays, etc.
+            核心组件库：输入框、按钮、遮罩层等。
           </Text>
         </div>
       </Group>
@@ -85,14 +85,14 @@ function Demo() {
   );
 }
 
-export const card: MantineDemo = {
+export const card: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 320,
   component: Demo,
   defaultExpanded: false,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
-    { fileName: 'Demo.module.css', language: 'scss', code: cssCode },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
+    { fileName: '演示样式.module.css', language: 'scss', code: cssCode },
   ],
 };

@@ -1,6 +1,6 @@
 import { XIcon } from '@phosphor-icons/react';
 import { Chip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Chip } from '@react-ui/ui';
@@ -28,7 +28,7 @@ function Demo() {
   );
 }
 
-export const icon: MantineDemo = {
+export const icon: UIDemo = {
   type: 'code',
   component: Demo,
   code,

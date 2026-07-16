@@ -6,7 +6,7 @@
   border-radius: var(--ui-radius-sm);
   cursor: help;
 
-  @mixin hover {
+  &:hover {
     background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-6));
   }
 }

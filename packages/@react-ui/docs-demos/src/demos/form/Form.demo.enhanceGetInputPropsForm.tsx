@@ -1,6 +1,6 @@
 import { Button, NumberInput, TextInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NumberInput, TextInput, Button } from '@react-ui/ui';
@@ -29,17 +29,17 @@ function Demo() {
       <TextInput
         {...form.getInputProps('name')}
         key={form.key('name')}
-        label="Your name"
-        placeholder="Your name"
+        label="你的姓名"
+        placeholder="你的姓名"
       />
       <NumberInput
         {...form.getInputProps('age')}
         key={form.key('age')}
-        label="Age"
-        placeholder="Age"
+        label="年龄"
+        placeholder="年龄"
         mt="md"
       />
-      <Button onClick={() => form.initialize({ name: 'John', age: 20 })} mt="md">
+      <Button onClick={() => form.initialize({ name: '张三', age: 20 })} mt="md">
         Initialize form
       </Button>
     </>
@@ -70,24 +70,24 @@ function Demo() {
       <TextInput
         {...form.getInputProps('name')}
         key={form.key('name')}
-        label="Your name"
-        placeholder="Your name"
+        label="你的姓名"
+        placeholder="你的姓名"
       />
       <NumberInput
         {...form.getInputProps('age')}
         key={form.key('age')}
-        label="Age"
-        placeholder="Age"
+        label="年龄"
+        placeholder="年龄"
         mt="md"
       />
-      <Button onClick={() => form.initialize({ name: 'John', age: 20 })} mt="md">
+      <Button onClick={() => form.initialize({ name: '张三', age: 20 })} mt="md">
         Initialize form
       </Button>
     </>
   );
 }
 
-export const enhanceGetInputPropsForm: MantineDemo = {
+export const enhanceGetInputPropsForm: UIDemo = {
   type: 'code',
   component: Demo,
   code,

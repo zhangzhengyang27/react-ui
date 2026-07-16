@@ -1,5 +1,5 @@
 import { Group, Menu } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { DemoMenuItems } from './_menu-items';
 
 const code = `
@@ -42,7 +42,7 @@ function Demo() {
   return <Group>{menus}</Group>;
 }
 
-export const navigation: MantineDemo = {
+export const navigation: UIDemo = {
   type: 'code',
   code,
   component: Demo,

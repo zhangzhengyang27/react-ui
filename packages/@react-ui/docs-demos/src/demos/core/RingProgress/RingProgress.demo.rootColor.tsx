@@ -1,5 +1,5 @@
 import { RingProgress } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { RingProgress } from '@react-ui/ui';
@@ -13,7 +13,7 @@ function Demo() {
   return <RingProgress sections={[{ value: 40, color: 'yellow' }]} rootColor="red" />;
 }
 
-export const rootColor: MantineDemo = {
+export const rootColor: UIDemo = {
   type: 'code',
   code,
   centered: true,

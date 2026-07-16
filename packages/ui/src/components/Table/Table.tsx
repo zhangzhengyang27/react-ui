@@ -8,7 +8,7 @@ import {
     type BoxProps,
     type ElementProps,
     type Factory,
-    type MantineSize,
+    type UISize,
     type StylesApiProps
 } from '../../core'
 import classes from './Table.module.css'
@@ -43,31 +43,31 @@ export interface TableData {
 }
 
 export interface TableProps extends BoxProps, ElementProps<'table'>, StylesApiProps<TableFactory> {
-    /** Two-dimensional array or TableData object used to auto-generate thead/tbody */
+    /** 用于自动生成 thead/tbody 的二维数组或 TableData 对象 */
     data?: React.ReactNode[][] | TableData
 
-    /** Adds striped styles to tbody rows */
+    /** 为 tbody 行添加条纹样式 */
     striped?: boolean
 
-    /** Highlights tbody rows on hover */
+    /** 悬停时高亮 tbody 行 */
     highlightOnHover?: boolean
 
-    /** Adds border around the whole table */
+    /** 为整个表格添加边框 */
     withTableBorder?: boolean
 
-    /** Adds vertical borders between columns */
+    /** 在列之间添加垂直边框 */
     withColumnBorders?: boolean
 
-    /** Adds horizontal borders between rows */
+    /** 在行之间添加水平边框 */
     withRowBorders?: boolean
 
     /** Horizontal cell padding, key of theme.spacing or any valid CSS value @default 'sm' */
-    horizontalSpacing?: MantineSize | number | string
+    horizontalSpacing?: UISize | number | string
 
     /** Vertical cell padding, key of theme.spacing or any valid CSS value @default 'sm' */
-    verticalSpacing?: MantineSize | number | string
+    verticalSpacing?: UISize | number | string
 
-    /** Position of the caption element @default 'top' */
+    /** caption 元素的位置 @default 'top' */
     captionSide?: 'top' | 'bottom'
 }
 
@@ -91,7 +91,8 @@ export type TableFactory = Factory<{
 const defaultProps = {
     horizontalSpacing: 'sm',
     verticalSpacing: 'sm',
-    captionSide: 'top'
+    captionSide: 'top',
+    withRowBorders: true
 } satisfies Partial<TableProps>
 
 const varsResolver = createVarsResolver<TableFactory>((_, { horizontalSpacing, verticalSpacing, captionSide }) => ({
@@ -169,7 +170,8 @@ function isTableData(data: React.ReactNode[][] | TableData): data is TableData {
 }
 
 function buildDataContent(data: React.ReactNode[][] | TableData) {
-    const tableData = isTableData(data) ? data : { body: data }
+    // 二维数组时,首行作为表头,其余行作为表体
+    const tableData = isTableData(data) ? data : { head: data[0], body: data.slice(1) }
     const { caption, head, body } = tableData
 
     if (!Array.isArray(body) || body.length === 0) {

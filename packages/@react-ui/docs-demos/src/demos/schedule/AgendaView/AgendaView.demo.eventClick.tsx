@@ -2,34 +2,34 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import { Modal, Stack, Text } from '@react-ui/ui';
 import { AgendaView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const eventsData: ScheduleEventData[] = [
   {
     id: 'standup',
-    title: 'Team Standup',
+    title: '团队站会',
     start: `${today} 09:00:00`,
     end: `${today} 09:30:00`,
     color: 'blue',
-    payload: { description: 'Daily team sync', location: 'Room A' },
+    payload: { description: '每日团队同步', location: 'A 会议室' },
   },
   {
     id: 'workshop',
-    title: 'Design Workshop',
+    title: '设计工作坊',
     start: `${today} 10:00:00`,
     end: `${today} 12:00:00`,
     color: 'grape',
-    payload: { description: 'Collaborative design session', location: 'Creative Space' },
+    payload: { description: '协作设计会议', location: '创意空间' },
   },
   {
     id: 'review',
-    title: 'Code Review',
-    start: dayjs().add(1, 'day').format('YYYY-MM-DD 14:00:00'),
-    end: dayjs().add(1, 'day').format('YYYY-MM-DD 15:00:00'),
+    title: '代码审查',
+    start: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD 14:00:00'),
+    end: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD 15:00:00'),
     color: 'green',
-    payload: { description: 'Review pull requests', location: 'Zoom' },
+    payload: { description: '评审拉取请求', location: 'Zoom' },
   },
 ];
 
@@ -39,32 +39,32 @@ import { useState } from 'react';
 import { Modal, Stack, Text } from '@react-ui/ui';
 import { AgendaView, ScheduleEventData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const events: ScheduleEventData[] = [
   {
     id: 'standup',
-    title: 'Team Standup',
+    title: '团队站会',
     start: \`\${today} 09:00:00\`,
     end: \`\${today} 09:30:00\`,
     color: 'blue',
-    payload: { description: 'Daily team sync', location: 'Room A' },
+    payload: { description: '每日团队同步', location: 'A 会议室' },
   },
   {
     id: 'workshop',
-    title: 'Design Workshop',
+    title: '设计工作坊',
     start: \`\${today} 10:00:00\`,
     end: \`\${today} 12:00:00\`,
     color: 'grape',
-    payload: { description: 'Collaborative design session', location: 'Creative Space' },
+    payload: { description: '协作设计会议', location: '创意空间' },
   },
   {
     id: 'review',
-    title: 'Code Review',
-    start: dayjs().add(1, 'day').format('YYYY-MM-DD 14:00:00'),
-    end: dayjs().add(1, 'day').format('YYYY-MM-DD 15:00:00'),
+    title: '代码审查',
+    start: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD 14:00:00'),
+    end: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD 15:00:00'),
     color: 'green',
-    payload: { description: 'Review pull requests', location: 'Zoom' },
+    payload: { description: '评审拉取请求', location: 'Zoom' },
   },
 ];
 
@@ -74,8 +74,8 @@ function Demo() {
   return (
     <>
       <AgendaView
-        rangeStart={dayjs().format('YYYY-MM-DD')}
-        rangeEnd={dayjs().add(7, 'day').format('YYYY-MM-DD')}
+        rangeStart={dayjs('2024-01-15').format('YYYY-MM-DD')}
+        rangeEnd={dayjs('2024-01-15').add(7, 'day').format('YYYY-MM-DD')}
         events={events}
         onEventClick={(event) => setSelected(event)}
       />
@@ -113,8 +113,8 @@ function Demo() {
   return (
     <>
       <AgendaView
-        rangeStart={dayjs().format('YYYY-MM-DD')}
-        rangeEnd={dayjs().add(7, 'day').format('YYYY-MM-DD')}
+        rangeStart={dayjs('2024-01-15').format('YYYY-MM-DD')}
+        rangeEnd={dayjs('2024-01-15').add(7, 'day').format('YYYY-MM-DD')}
         events={eventsData}
         onEventClick={(event) => setSelected(event)}
       />
@@ -139,7 +139,7 @@ function Demo() {
   );
 }
 
-export const eventClick: MantineDemo = {
+export const eventClick: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

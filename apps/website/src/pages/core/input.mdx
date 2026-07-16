@@ -17,7 +17,7 @@ import { Input, TextInput } from '@react-ui/ui';
 // 错误用法，input 不具备可访问性
 function Incorrect() {
   return (
-    <Input.Wrapper label="Input label">
+    <Input.Wrapper label="输入标签">
       <Input />
     </Input.Wrapper>
   );
@@ -27,7 +27,7 @@ function Incorrect() {
 // 它默认具备可访问性，并包含 Input.Wrapper
 function Correct() {
   return (
-    <TextInput label="Input label" description="Input description" />
+    <TextInput label="输入标签" description="输入描述" />
   );
 }
 ```
@@ -94,12 +94,12 @@ import { TextInput } from '@react-ui/ui';
 
 // 会显示必填星号，并向输入元素添加 `required` 属性
 function RequiredDemo() {
-  return <TextInput label="test-label" required />;
+  return <TextInput label="测试标签" required />;
 }
 
 // 只显示星号，不会向输入元素添加 `required` 属性
 function AsteriskDemo() {
-  return <TextInput label="test-label" withAsterisk />;
+  return <TextInput label="测试标签" withAsterisk />;
 }
 ```
 
@@ -200,14 +200,14 @@ import { Input } from '@react-ui/ui';
 
 // ok – 输入框由 aria-label 标记
 function WithAriaLabel() {
-  return <Input aria-label="Your email" />;
+  return <Input aria-label="你的邮箱" />;
 }
 
 // ok – 输入框由 label 元素标记
 function WithLabel() {
   return (
     <>
-      <label htmlFor="my-email">Your email</label>
+      <label htmlFor="my-email">你的邮箱</label>
       <Input id="my-email" />
     </>
   );
@@ -222,7 +222,7 @@ import { Input } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <Input.Wrapper label="Your email" id="your-email">
+    <Input.Wrapper label="你的邮箱" id="your-email">
       <Input id="your-email" />
     </Input.Wrapper>
   );
@@ -238,7 +238,7 @@ import { useId } from '@react-ui/hooks';
 function Demo() {
   const id = useId();
   return (
-    <Input.Wrapper label="Your email" id={id}>
+    <Input.Wrapper label="你的邮箱" id={id}>
       <Input id={id} />
     </Input.Wrapper>
   );

@@ -1,5 +1,5 @@
 import { Pill } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { PillStylesApi } from '@react-ui/docs-styles-api';
 import classes from './_demo.module.css';
 
@@ -8,7 +8,7 @@ import { Pill } from '@react-ui/ui';
 import classes from './Demo.module.css';
 
 function Demo() {
-  return <Pill{{props}} withRemoveButton>Test pill</Pill>;
+  return <Pill{{props}} withRemoveButton>测试胶囊</Pill>;
 }
 `;
 
@@ -22,7 +22,7 @@ function Demo(props: any) {
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: PillStylesApi,
   component: Demo,

@@ -1,14 +1,14 @@
 import { describe, expect, it, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Rating } from './Rating'
 
 describe('Rating', () => {
     it('renders rating with default value', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Rating defaultValue={3} data-testid="rating" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByTestId('rating')).toBeInTheDocument()
@@ -18,9 +18,9 @@ describe('Rating', () => {
     it('calls onChange when star is clicked', () => {
         const onChange = vi.fn()
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Rating onChange={onChange} data-testid="rating" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         const buttons = screen.getAllByRole('button')
@@ -31,9 +31,9 @@ describe('Rating', () => {
     it('supports clearable rating', () => {
         const onChange = vi.fn()
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Rating value={3} clearable onChange={onChange} data-testid="rating" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         const buttons = screen.getAllByRole('button')
@@ -44,9 +44,9 @@ describe('Rating', () => {
     it('does not call onChange when readOnly', () => {
         const onChange = vi.fn()
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Rating readOnly onChange={onChange} data-testid="rating" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         const buttons = screen.getAllByRole('button')

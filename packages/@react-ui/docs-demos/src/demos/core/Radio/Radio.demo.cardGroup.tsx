@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Group, Radio, Stack, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Radio.demo.card.module.css';
 
 const cssCode = `.root {
@@ -12,12 +12,12 @@ const cssCode = `.root {
     border-color: var(--ui-primary-color-filled);
   }
 
-  @mixin hover {
-    @mixin light {
+  &:hover {
+    [data-ui-color-scheme='light'] & {
       background-color: var(--ui-color-gray-0);
     }
 
-    @mixin dark {
+    [data-ui-color-scheme='dark'] & {
       background-color: var(--ui-color-dark-6);
     }
   }
@@ -46,10 +46,10 @@ import classes from './Demo.module.css';
 const data = [
   {
     name: '@react-ui/ui',
-    description: 'Core components library: inputs, buttons, overlays, etc.',
+    description: '核心组件库：输入、按钮、浮层等',
   },
-  { name: '@react-ui/hooks', description: 'Collection of reusable hooks for React applications.' },
-  { name: '@react-ui/notifications', description: 'Notifications system' },
+  { name: '@react-ui/hooks', description: '用于 React 应用的可复用 Hooks 集合。' },
+  { name: '@react-ui/notifications', description: '通知系统' },
 ];
 
 function Demo() {
@@ -72,8 +72,8 @@ function Demo() {
       <Radio.Group
         value={value}
         onChange={setValue}
-        label="Pick one package to install"
-        description="Choose a package that you will need in your application"
+        label="选择一个要安装的包"
+        description="选择一个你的应用需要的包"
       >
         <Stack pt="md" gap="xs">
           {cards}
@@ -81,7 +81,7 @@ function Demo() {
       </Radio.Group>
 
       <Text fz="xs" mt="md">
-        CurrentValue: {value || '–'}
+        当前值：{value || '–'}
       </Text>
     </>
   );
@@ -91,10 +91,10 @@ function Demo() {
 const data = [
   {
     name: '@react-ui/ui',
-    description: 'Core components library: inputs, buttons, overlays, etc.',
+    description: '核心组件库：输入、按钮、浮层等',
   },
-  { name: '@react-ui/hooks', description: 'Collection of reusable hooks for React applications.' },
-  { name: '@react-ui/notifications', description: 'Notifications system' },
+  { name: '@react-ui/hooks', description: '用于 React 应用的可复用 Hooks 集合。' },
+  { name: '@react-ui/notifications', description: '通知系统' },
 ];
 
 function Demo() {
@@ -117,8 +117,8 @@ function Demo() {
       <Radio.Group
         value={value}
         onChange={setValue}
-        label="Pick one package to install"
-        description="Choose a package that you will need in your application"
+        label="选择一个要安装的包"
+        description="选择一个你的应用需要的包"
       >
         <Stack pt="md" gap="xs">
           {cards}
@@ -126,20 +126,20 @@ function Demo() {
       </Radio.Group>
 
       <Text fz="xs" mt="md">
-        CurrentValue: {value || '–'}
+        当前值：{value || '–'}
       </Text>
     </>
   );
 }
 
-export const cardGroup: MantineDemo = {
+export const cardGroup: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 320,
   component: Demo,
   defaultExpanded: false,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
-    { fileName: 'Demo.module.css', language: 'scss', code: cssCode },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
+    { fileName: '演示样式.module.css', language: 'scss', code: cssCode },
   ],
 };

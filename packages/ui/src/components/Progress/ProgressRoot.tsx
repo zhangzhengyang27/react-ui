@@ -7,8 +7,8 @@ import {
     type BoxProps,
     type ElementProps,
     type Factory,
-    type MantineRadius,
-    type MantineSize,
+    type UIRadius,
+    type UISize,
     type StylesApiProps,
     useProps,
     useStyles
@@ -24,11 +24,11 @@ export interface ProgressRootProps
     extends BoxProps,
         StylesApiProps<ProgressRootFactory>,
         ElementProps<'div'> {
-    /** Key of theme.radius or any valid CSS value */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 */
+    radius?: UIRadius
 
     /** Controls progress height */
-    size?: MantineSize
+    size?: UISize
 
     /** If true, the progress bar will have striped background */
     striped?: boolean

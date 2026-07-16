@@ -16,7 +16,7 @@ export type ComboboxTargetFactory = Factory<{
 
 export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
     const { children } = useProps('ComboboxTarget', null, props)
-    const child = getSingleElementChild(children)
+    const child = getSingleElementChild(children) as React.ReactElement<any>
 
     if (!child) {
         throw new Error('[@react-ui/ui] Combobox.Target children should be an element or a component that accepts ref')
@@ -51,4 +51,4 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
     })
 })
 
-ComboboxTarget.displayName = '@mantine/core/ComboboxTarget'
+ComboboxTarget.displayName = '@react-ui/ui/ComboboxTarget'

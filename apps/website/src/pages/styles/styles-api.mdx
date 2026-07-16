@@ -32,7 +32,7 @@ Styles API 是一组 props 和技术，允许你自定义 ReactUI 组件内部�
 你可以在组件 props 和 `theme.components` 中的 `classNames` 和 `styles` 中使用这些选择器：
 
 ```tsx
-import { Button, createTheme, MantineProvider } from '@react-ui/ui';
+import { Button, createTheme, UIProvider } from '@react-ui/ui';
 
 function ClassNamesDemo() {
   return (
@@ -81,9 +81,9 @@ const theme = createTheme({
 
 function ProviderDemo() {
   return (
-    <MantineProvider theme={theme}>
-      <Button>Button</Button>
-    </MantineProvider>
+    <UIProvider theme={theme}>
+      <Button>按钮</Button>
+    </UIProvider>
   );
 }
 ```
@@ -102,7 +102,7 @@ function ProviderDemo() {
 import { useState } from 'react';
 import {
   createTheme,
-  MantineProvider,
+  UIProvider,
   TextInput,
 } from '@react-ui/ui';
 // 样式与上一个示例相同
@@ -122,9 +122,9 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       {/* Your app here */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```
@@ -165,17 +165,17 @@ function Demo() {
 
 ## 静态 classes
 
-每个支持 Styles API 的组件都包含可用于不使用 `classNames` 或 `styles` props 样式化组件的静态 class。默认情况下，静态 class 采用 `.mantine-{ComponentName}-{selector}` 格式。例如，[Button](/core/button) 组件的 `root` 选择器将具有 `.mantine-Button-root` class。
+每个支持 Styles API 的组件都包含可用于不使用 `classNames` 或 `styles` props 样式化组件的静态 class。默认情况下，静态 class 采用 `.ui-{ComponentName}-{selector}` 格式。例如，[Button](/core/button) 组件的 `root` 选择器将具有 `.ui-Button-root` class。
 
-你可以使用静态 class 通过 CSS 或[任何其他样式解决方案](/styles/css-modules#styling-mantine-components-without-css-modules)来样式化组件：
+你可以使用静态 class 通过 CSS 或[任何其他样式解决方案](/styles/css-modules#styling-without-css-modules)来样式化组件：
 
 ```css
-.mantine-Button-root {
+.ui-Button-root {
   background-color: red;
 }
 ```
 
-静态 class 的前缀可以通过 [MantineProvider](/theming/mantine-provider#classnamesprefix) 的 `classNamesPrefix` 更改。
+静态 class 的前缀可以通过 [UIProvider](/theming/ui-provider#classnamesprefix) 的 `classNamesPrefix` 更改。
 
 ## 组件 classes
 

@@ -1,5 +1,5 @@
 import { act, fireEvent } from '@testing-library/react';
-import { render, screen, tests } from '@mantine-tests/core';
+import { render, screen, tests } from '@react-ui/tests';
 import { Notifications, NotificationsProps, NotificationsStylesNames } from './Notifications';
 import { createNotificationsStore, notifications } from './notifications.store';
 
@@ -281,7 +281,7 @@ describe('@react-ui/ui/Notifications', () => {
 
     const notification = screen.getByRole('alert');
 
-    expect(container.querySelector('.mantine-Notification-closeButton')).not.toBeInTheDocument();
+    expect(container.querySelector('.ui-Notification-closeButton')).not.toBeInTheDocument();
 
     act(() => {
       pointerDown(notification, { clientX: 0, clientY: 0 });

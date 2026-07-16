@@ -1,7 +1,7 @@
 import {
     Box,
     BoxProps,
-    MantineColor,
+    UIColor,
     polymorphicFactory,
     PolymorphicFactory,
     StylesApiProps,
@@ -17,7 +17,7 @@ export interface HighlightProps extends BoxProps, StylesApiProps<HighlightFactor
     highlight: string
 
     /** Key of `theme.colors` or any valid CSS color @default theme.primaryColor */
-    color?: MantineColor
+    color?: UIColor
 
     /** Highlight content, must be a string */
     children: string
@@ -47,7 +47,7 @@ function getChunks({ text, highlight }: { text: string; highlight: string }) {
 }
 
 /**
- * 高亮文本中的指定子串组件。对齐 mantine Highlight（polymorphicFactory + CSS module）。
+ * 高亮文本中的指定子串组件。对齐 ui Highlight（polymorphicFactory + CSS module）。
  * 使用 Mark 组件渲染被高亮子串。
  */
 export const Highlight = polymorphicFactory<HighlightFactory>((_props, _ref) => {

@@ -1,5 +1,5 @@
-import { render, screen, tests } from '@mantine-tests/core';
-import { datesTests } from '@mantine-tests/dates';
+import { render, screen, tests } from '@react-ui/tests';
+import { datesTests } from '@react-ui/tests/dates';
 import {
   DecadeLevelGroup,
   DecadeLevelGroupProps,
@@ -39,7 +39,7 @@ describe('@react-ui/dates/DecadeLevelGroup', () => {
   datesTests.itHandlesControlsKeyboardEvents({
     component: DecadeLevelGroup,
     props: defaultProps,
-    listSelector: '.mantine-DecadeLevelGroup-yearsList',
+    listSelector: '.ui-DecadeLevelGroup-yearsList',
   });
 
   it('renders correct number of columns based on numberOfColumns prop', () => {
@@ -80,7 +80,7 @@ describe('@react-ui/dates/DecadeLevelGroup', () => {
   it('has correct default __staticSelector', () => {
     const { container } = render(<DecadeLevelGroup {...defaultProps} />);
     expect(container.querySelector('table button')).toHaveClass(
-      'mantine-DecadeLevelGroup-yearsListControl'
+      'ui-DecadeLevelGroup-yearsListControl'
     );
   });
 
@@ -89,7 +89,7 @@ describe('@react-ui/dates/DecadeLevelGroup', () => {
       <DecadeLevelGroup {...defaultProps} __staticSelector="Calendar" />
     );
     expect(container.querySelector('table button')).toHaveClass(
-      'mantine-Calendar-yearsListControl'
+      'ui-Calendar-yearsListControl'
     );
   });
 });

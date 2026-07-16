@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router';
-import { useComputedColorScheme, useDirection, useMantineColorScheme } from '@react-ui/ui';
+import { useComputedUIColorScheme, useDirection, useUIColorScheme } from '@react-ui/ui';
 import { useHotkeys } from '@react-ui/hooks';
 
 const EXCLUDE_RTL = ['/combobox'];
 
 export function HotKeysHandler() {
   const router = useRouter();
-  const { setColorScheme } = useMantineColorScheme();
+  const { setColorScheme } = useUIColorScheme();
   const { toggleDirection } = useDirection();
-  const computedColorScheme = useComputedColorScheme('light');
+  const computedColorScheme = useComputedUIColorScheme('light');
   useHotkeys(
     [
       ['mod + J', () => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')],

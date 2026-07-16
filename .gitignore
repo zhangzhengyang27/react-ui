@@ -15,6 +15,9 @@ node_modules
 .cspellcache
 **/*.timestamp-*.mjs
 
+# TypeScript 增量构建缓存
+**/*.tsbuildinfo
+
 pnpm-lock.yaml
 yarn.lock
 

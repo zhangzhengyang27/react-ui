@@ -5,10 +5,10 @@ export default Layout(MDX_DATA.PostCSSPreset);
 
 # ReactUI PostCSS preset
 
-`postcss-preset-mantine` 提供了多个 CSS 函数和 mixin，帮助你编写样式。
+`postcss-preset-ui` 提供了多个 CSS 函数和 mixin，帮助你编写样式。
 它不是必须使用的，但强烈推荐。所有涉及样式的 demo 都假设你已经安装了这个 preset。
 
-`postcss-preset-mantine` 包含以下 PostCSS 插件：
+`postcss-preset-ui` 包含以下 PostCSS 插件：
 
 - [postcss-nested](https://www.npmjs.com/package/postcss-nested)
 - [postcss-mixins](https://www.npmjs.com/package/postcss-mixins) 及 ReactUI 专用 mixins
@@ -16,20 +16,20 @@ export default Layout(MDX_DATA.PostCSSPreset);
 
 ## 安装
 
-将 `postcss-preset-mantine` 作为开发依赖安装：
+将 `postcss-preset-ui` 作为开发依赖安装：
 
-<InstallScript dev packages="postcss-preset-mantine" />
+<InstallScript dev packages="postcss-preset-ui" />
 
 ## 用法
 
 注意，PostCSS 的配置方式可能因构建工具/框架而异。请参考
 [框架专用指南](/getting-started) 了解更多。
-将 `postcss-preset-mantine` 添加到你的 `postcss.config.cjs` 文件中（通常位于项目根目录）：
+将 `postcss-preset-ui` 添加到你的 `postcss.config.cjs` 文件中（通常位于项目根目录）：
 
 ```js
 module.exports = {
   plugins: {
-    'postcss-preset-mantine': {},
+    'postcss-preset-ui': {},
   },
 };
 ```
@@ -71,7 +71,7 @@ module.exports = {
 ```js
 module.exports = {
   plugins: {
-    'postcss-preset-mantine': {
+    'postcss-preset-ui': {
       autoRem: true,
     },
   },
@@ -205,15 +205,15 @@ module.exports = {
 }
 ```
 
-你也可以将 `smaller-than` 和 `larger-than` mixins 与 [mantine 断点](/styles/responsive/#breakpoints-variables-in-css-modules) 一起使用：
+你也可以将 `smaller-than` 和 `larger-than` mixins 与 [ui 断点](/styles/responsive/#breakpoints-variables-in-css-modules) 一起使用：
 
 ```scss
 .demo {
-  @mixin smaller-than $mantine-breakpoint-sm {
+  @mixin smaller-than $ui-breakpoint-sm {
     color: red;
   }
 
-  @mixin larger-than $mantine-breakpoint-sm {
+  @mixin larger-than $ui-breakpoint-sm {
     color: blue;
   }
 }
@@ -443,7 +443,7 @@ module.exports = {
 ```tsx
 module.exports = {
   plugins: {
-    'postcss-preset-mantine': {
+    'postcss-preset-ui': {
       autoRem: true,
       mixins: {
         clearfix: {
@@ -480,7 +480,7 @@ module.exports = {
 
 ```tsx
 module.exports = {
-  'postcss-preset-mantine': {
+  'postcss-preset-ui': {
     features: {
       // Turn off `light-dark` function
       lightDarkFunction: false,

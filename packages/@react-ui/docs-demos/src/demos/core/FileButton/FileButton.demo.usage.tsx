@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, FileButton, Group, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -12,7 +12,7 @@ function Demo() {
     <>
       <Group justify="center">
         <FileButton onChange={setFile} accept="image/png,image/jpeg">
-          {(props) => <Button {...props}>Upload image</Button>}
+          {(props) => <Button {...props}>上传图片</Button>}
         </FileButton>
       </Group>
 
@@ -32,7 +32,7 @@ function Demo() {
     <>
       <Group justify="center">
         <FileButton onChange={setFile} accept="image/png,image/jpeg">
-          {(props) => <Button {...props}>Upload image</Button>}
+          {(props) => <Button {...props}>上传图片</Button>}
         </FileButton>
       </Group>
 
@@ -45,7 +45,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

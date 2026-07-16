@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { NumberInput } from './NumberInput'
 
 function Wrapper({ children }: { children: React.ReactNode }) {
-    return <MantineProvider>{children}</MantineProvider>
+    return <UIProvider>{children}</UIProvider>
 }
 
 describe('NumberInput', () => {
@@ -118,7 +118,7 @@ describe('NumberInput', () => {
             </Wrapper>
         )
 
-        expect(screen.getByRole('spinbutton')).toHaveValue(5)
+        expect(screen.getByRole('spinbutton')).toHaveValue('5')
 
         rerender(
             <Wrapper>
@@ -126,6 +126,6 @@ describe('NumberInput', () => {
             </Wrapper>
         )
 
-        expect(screen.getByRole('spinbutton')).toHaveValue(10)
+        expect(screen.getByRole('spinbutton')).toHaveValue('10')
     })
 })

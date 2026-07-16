@@ -1,6 +1,6 @@
 import { Group } from '@react-ui/ui';
 import { DatePicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Group } from '@react-ui/ui';
@@ -25,7 +25,7 @@ function Demo() {
   );
 }
 
-export const firstDayOfWeek: MantineDemo = {
+export const firstDayOfWeek: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,19 +1,19 @@
 import dayjs from 'dayjs';
 import { YearPickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import dayjs from 'dayjs';
 import { YearPickerInput } from '@react-ui/dates';
 
 function Demo() {
-  const today = dayjs();
+  const today = dayjs('2024-01-15');
 
   return (
     <YearPickerInput
       type="range"
-      label="With presets"
-      placeholder="Select years range"
+      label="带预设"
+      placeholder="选择年份范围"
       presets={[
         {
           value: [today.subtract(2, 'year').startOf('year').format('YYYY-MM-DD'), today.startOf('year').format('YYYY-MM-DD')],
@@ -32,7 +32,7 @@ function Demo() {
             today.subtract(10, 'year').startOf('year').format('YYYY-MM-DD'),
             today.startOf('year').format('YYYY-MM-DD'),
           ],
-          label: 'Last decade',
+          label: '过去十年',
         },
       ]}
     />
@@ -41,13 +41,13 @@ function Demo() {
 `;
 
 function Demo() {
-  const today = dayjs();
+  const today = dayjs('2024-01-15');
 
   return (
     <YearPickerInput
       type="range"
-      label="With presets"
-      placeholder="Select years range"
+      label="带预设"
+      placeholder="选择年份范围"
       presets={[
         {
           value: [
@@ -75,14 +75,14 @@ function Demo() {
             today.subtract(10, 'year').startOf('year').format('YYYY-MM-DD'),
             today.startOf('year').format('YYYY-MM-DD'),
           ],
-          label: 'Last decade',
+          label: '过去十年',
         },
       ]}
     />
   );
 }
 
-export const presetsRange: MantineDemo = {
+export const presetsRange: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

@@ -1,8 +1,8 @@
-import { createTheme, Input, MantineThemeProvider, NativeSelect, TextInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { createTheme, Input, UIThemeProvider, NativeSelect, TextInput } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
-import { TextInput, NativeSelect, MantineProvider, createTheme, Input } from '@react-ui/ui';
+import { TextInput, NativeSelect, UIProvider, createTheme, Input } from '@react-ui/ui';
 
 const theme = createTheme({
   components: {
@@ -22,20 +22,20 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       <TextInput
-        label="Text input"
-        placeholder="Text input"
-        description="Description below the input"
+        label="文本输入"
+        placeholder="文本输入"
+        description="输入框下方的描述"
       />
 
       <NativeSelect
         mt="md"
-        label="Native select"
+        label="原生选择"
         data={['React', 'Angular', 'Vue', 'Svelte']}
-        description="Description below the input"
+        description="输入框下方的描述"
       />
-    </MantineProvider>
+    </UIProvider>
   );
 }
 `;
@@ -58,24 +58,24 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
+    <UIThemeProvider theme={theme}>
       <TextInput
-        label="Text input"
-        placeholder="Text input"
-        description="Description below the input"
+        label="文本输入"
+        placeholder="文本输入"
+        description="输入框下方的描述"
       />
 
       <NativeSelect
         mt="md"
-        label="Native select"
+        label="原生选择"
         data={['React', 'Angular', 'Vue', 'Svelte']}
-        description="Description below the input"
+        description="输入框下方的描述"
       />
-    </MantineThemeProvider>
+    </UIThemeProvider>
   );
 }
 
-export const defaultProps: MantineDemo = {
+export const defaultProps: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

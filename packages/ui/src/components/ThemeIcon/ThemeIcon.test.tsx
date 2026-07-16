@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { ThemeIcon } from './ThemeIcon'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('ThemeIcon', () => {
     it('renders children inside themed container', () => {
@@ -21,7 +21,7 @@ describe('ThemeIcon', () => {
     it('applies static classes', () => {
         renderWithProvider(<ThemeIcon data-testid="theme-icon">icon</ThemeIcon>)
 
-        expect(screen.getByTestId('theme-icon')).toHaveClass('mantine-ThemeIcon-root')
+        expect(screen.getByTestId('theme-icon')).toHaveClass('ui-ThemeIcon-root')
     })
 
     it('supports data-variant attribute', () => {

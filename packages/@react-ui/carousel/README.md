@@ -1,10 +1,10 @@
-# Mantine carousel
+# UI carousel
 
 [![npm](https://img.shields.io/npm/dm/@react-ui/carousel)](https://www.npmjs.com/package/@react-ui/carousel)
 
 Embla based carousel
 
-[View documentation](https://mantine.dev/)
+[View documentation](#)
 
 ## Installation
 

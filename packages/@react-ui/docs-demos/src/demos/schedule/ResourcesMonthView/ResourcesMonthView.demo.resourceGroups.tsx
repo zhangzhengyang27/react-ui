@@ -1,14 +1,14 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { ResourcesMonthView, ScheduleResourceGroup } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { resourceEvents } from './_data';
 
 const resources = [
   { id: 'tokyo', label: 'Meeting room: Tokyo' },
   { id: 'paris', label: 'Meeting room: Paris' },
   { id: 'new-york', label: 'Meeting room: New York' },
-  { id: 'overflow', label: 'Overflow room' },
+  { id: 'overflow', label: '溢出会议室' },
 ];
 
 const groups: ScheduleResourceGroup[] = [
@@ -26,7 +26,7 @@ const resources = [
   { id: 'tokyo', label: 'Meeting room: Tokyo' },
   { id: 'paris', label: 'Meeting room: Paris' },
   { id: 'new-york', label: 'Meeting room: New York' },
-  { id: 'overflow', label: 'Overflow room' },
+  { id: 'overflow', label: '溢出会议室' },
 ];
 
 const groups: ScheduleResourceGroup[] = [
@@ -35,7 +35,7 @@ const groups: ScheduleResourceGroup[] = [
 ];
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
 
   return (
     <ResourcesMonthView
@@ -44,14 +44,14 @@ function Demo() {
       resources={resources}
       events={events}
       groups={groups}
-      startScrollDate={dayjs().format('YYYY-MM-DD')}
+      startScrollDate={dayjs('2024-01-15').format('YYYY-MM-DD')}
     />
   );
 }
 `;
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
 
   return (
     <ResourcesMonthView
@@ -60,14 +60,14 @@ function Demo() {
       resources={resources}
       events={resourceEvents}
       groups={groups}
-      startScrollDate={dayjs().format('YYYY-MM-DD')}
+      startScrollDate={dayjs('2024-01-15').format('YYYY-MM-DD')}
     />
   );
 }
 
-export const resourceGroups: MantineDemo = {
+export const resourceGroups: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
-  code: [{ code, language: 'tsx', fileName: 'Demo.tsx' }],
+  code: [{ code, language: 'tsx', fileName: '演示代码.tsx' }],
 };

@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import Autoplay from 'embla-carousel-autoplay';
 import { Carousel } from '@react-ui/carousel';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { Slides } from './_slides';
 
 const code = `
@@ -42,7 +42,7 @@ function Demo() {
   );
 }
 
-export const autoplay: MantineDemo = {
+export const autoplay: UIDemo = {
   type: 'code',
   component: Demo,
   code,

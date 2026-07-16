@@ -60,7 +60,7 @@ export interface UseCollapseReturnValue {
 
 /**
  * 垂直折叠动画 hook：通过测量内容高度对 height 做 transition。
- * 对齐 mantine useCollapse。
+ * 对齐 ui useCollapse。
  */
 export function useCollapse({
     transitionDuration,

@@ -1,5 +1,5 @@
 import { createRef } from 'react';
-import { render, tests } from '@mantine-tests/core';
+import { render, tests } from '@react-ui/tests';
 import { DropzoneFullScreen } from './DropzoneFullScreen';
 import { DropzoneAccept, DropzoneIdle, DropzoneReject } from './DropzoneStatus';
 import { Dropzone, DropzoneProps, DropzoneStylesNames } from './index';
@@ -20,10 +20,10 @@ describe('@react-ui/dropzone/Dropzone', () => {
 
   it('displays LoadingOverlay based on loading prop', () => {
     const { rerender, container } = render(<Dropzone {...defaultProps} loading={false} />);
-    expect(container.querySelectorAll('.mantine-LoadingOverlay-root')).toHaveLength(0);
+    expect(container.querySelectorAll('.ui-LoadingOverlay-root')).toHaveLength(0);
 
     rerender(<Dropzone {...defaultProps} loading />);
-    expect(container.querySelectorAll('.mantine-LoadingOverlay-root')).toHaveLength(1);
+    expect(container.querySelectorAll('.ui-LoadingOverlay-root')).toHaveLength(1);
   });
 
   it('has a name attribute on the internal input element', () => {

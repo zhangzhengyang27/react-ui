@@ -6,7 +6,7 @@ import {
   FolderSimpleIcon,
 } from '@phosphor-icons/react';
 import { Group, moveTreeNode, RenderTreeNodePayload, Tree, TreeNodeData } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Tree.demo.dragDropHandle.module.css';
 
 const cssCode = `.handle {
@@ -80,7 +80,7 @@ function Leaf({
         type="button"
         {...dragHandleProps}
         className={classes.handle}
-        aria-label="Drag to reorder"
+        aria-label="拖动重新排序"
       >
         <DotsSixVerticalIcon size={14} weight="bold" />
       </button>
@@ -148,7 +148,7 @@ function Leaf({
         type="button"
         {...dragHandleProps}
         className={classes.handle}
-        aria-label="Drag to reorder"
+        aria-label="拖动重新排序"
       >
         <DotsSixVerticalIcon size={14} weight="bold" />
       </button>
@@ -180,13 +180,13 @@ function Demo() {
   );
 }
 
-export const dragDropHandle: MantineDemo = {
+export const dragDropHandle: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   maxWidth: 340,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
-    { fileName: 'Demo.module.css', language: 'scss', code: cssCode },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
+    { fileName: '演示样式.module.css', language: 'scss', code: cssCode },
   ],
 };

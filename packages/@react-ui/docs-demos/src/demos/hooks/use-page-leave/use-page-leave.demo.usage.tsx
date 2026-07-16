@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Text } from '@react-ui/ui';
 import { usePageLeave } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -20,7 +20,7 @@ function Demo() {
   return <Text ta="center">Mouse left the page {leftsCount} times</Text>;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

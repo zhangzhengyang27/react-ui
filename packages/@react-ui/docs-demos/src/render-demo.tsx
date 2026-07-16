@@ -1,6 +1,6 @@
-import { Demo, MantineDemo } from '@react-ui/demo';
+import { Demo, UIDemo } from '@react-ui/demo';
 
-export function renderDemo(demo: MantineDemo) {
+export function renderDemo(demo: UIDemo) {
   return () => (
     <div
       style={{

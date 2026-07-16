@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { SimpleGrid } from './SimpleGrid'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('SimpleGrid', () => {
     it('renders a div by default', () => {
@@ -17,7 +17,7 @@ describe('SimpleGrid', () => {
     it('applies static classes', () => {
         renderWithProvider(<SimpleGrid data-testid="grid">content</SimpleGrid>)
 
-        expect(screen.getByTestId('grid')).toHaveClass('mantine-SimpleGrid-root')
+        expect(screen.getByTestId('grid')).toHaveClass('ui-SimpleGrid-root')
     })
 
     it('sets data-auto-cols when minColWidth is provided', () => {

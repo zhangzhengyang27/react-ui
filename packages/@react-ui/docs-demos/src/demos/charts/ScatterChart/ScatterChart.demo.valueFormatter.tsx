@@ -1,5 +1,5 @@
 import { ScatterChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { spendingsData, spendingsDataCode } from './_data';
 
 const code = `
@@ -37,11 +37,11 @@ function Demo() {
   );
 }
 
-export const valueFormatter: MantineDemo = {
+export const valueFormatter: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: spendingsDataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

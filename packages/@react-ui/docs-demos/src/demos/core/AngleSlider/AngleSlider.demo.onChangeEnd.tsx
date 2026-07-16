@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AngleSlider, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -33,7 +33,7 @@ function Demo() {
   );
 }
 
-export const onChangeEnd: MantineDemo = {
+export const onChangeEnd: UIDemo = {
   type: 'code',
   component: Demo,
   code,

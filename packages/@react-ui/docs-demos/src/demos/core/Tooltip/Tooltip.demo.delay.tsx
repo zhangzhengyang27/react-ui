@@ -1,5 +1,5 @@
 import { Button, Group, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Tooltip, Group } from '@react-ui/ui';
@@ -7,11 +7,11 @@ import { Button, Tooltip, Group } from '@react-ui/ui';
 function Demo() {
   return (
     <Group justify="center">
-      <Tooltip label="Opened after 500ms" openDelay={500}>
-        <Button>Delay open - 500ms</Button>
+      <Tooltip label="500 毫秒后打开" openDelay={500}>
+        <Button>延迟打开 - 500毫秒</Button>
       </Tooltip>
-      <Tooltip label="Closes after 500ms" closeDelay={500}>
-        <Button>Delay close - 500ms</Button>
+      <Tooltip label="500 毫秒后关闭" closeDelay={500}>
+        <Button>延迟关闭 - 500毫秒</Button>
       </Tooltip>
     </Group>
   );
@@ -21,17 +21,17 @@ function Demo() {
 export function Demo() {
   return (
     <Group justify="center">
-      <Tooltip label="Opened after 500ms" openDelay={500}>
-        <Button>Delay open - 500ms</Button>
+      <Tooltip label="500 毫秒后打开" openDelay={500}>
+        <Button>延迟打开 - 500毫秒</Button>
       </Tooltip>
-      <Tooltip label="Closes after 500ms" closeDelay={500}>
-        <Button>Delay close - 500ms</Button>
+      <Tooltip label="500 毫秒后关闭" closeDelay={500}>
+        <Button>延迟关闭 - 500毫秒</Button>
       </Tooltip>
     </Group>
   );
 }
 
-export const delay: MantineDemo = {
+export const delay: UIDemo = {
   type: 'code',
   code,
   component: Demo,

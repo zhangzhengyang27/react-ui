@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { YearPickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -11,8 +11,8 @@ function Demo() {
   return (
     <YearPickerInput
       decadeLabelFormat="YY"
-      label="Pick year"
-      placeholder="Pick year"
+      label="选择年份"
+      placeholder="选择年份"
       value={value}
       onChange={setValue}
     />
@@ -25,15 +25,15 @@ function Demo() {
   return (
     <YearPickerInput
       decadeLabelFormat="YY"
-      label="Pick year"
-      placeholder="Pick year"
+      label="选择年份"
+      placeholder="选择年份"
       value={value}
       onChange={setValue}
     />
   );
 }
 
-export const decadeLabelFormat: MantineDemo = {
+export const decadeLabelFormat: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Box, RangeSlider, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { RangeSlider, Text, Box } from '@react-ui/ui';
@@ -12,8 +12,7 @@ function Demo() {
   return (
     <Box pb="md">
       <Text size="sm" mb="xs">
-        Hidden marks allow you to snap to specific values without displaying them visually. Current
-        value: [{value[0]}, {value[1]}]
+        隐藏刻度允许你在不将其视觉上显示的情况下吸附到特定值。当前值：[{value[0]}, {value[1]}]
       </Text>
       <RangeSlider
         value={value}
@@ -44,8 +43,7 @@ function Demo() {
   return (
     <Box pb="md">
       <Text size="sm" mb="xs">
-        Hidden marks allow you to snap to specific values without displaying them visually. Current
-        value: [{value[0]}, {value[1]}]
+        隐藏刻度允许你在不将其视觉上显示的情况下吸附到特定值。当前值：[{value[0]}, {value[1]}]
       </Text>
       <RangeSlider
         value={value}
@@ -69,7 +67,7 @@ function Demo() {
   );
 }
 
-export const hiddenMarks: MantineDemo = {
+export const hiddenMarks: UIDemo = {
   type: 'code',
   component: Demo,
   code,

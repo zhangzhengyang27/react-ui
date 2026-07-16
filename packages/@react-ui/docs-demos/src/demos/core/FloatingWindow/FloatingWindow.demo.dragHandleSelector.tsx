@@ -1,6 +1,6 @@
 import { Button, CloseButton, FloatingWindow, Group, Text } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, CloseButton, FloatingWindow, Group, Text } from '@react-ui/ui';
@@ -12,7 +12,7 @@ function Demo() {
   return (
     <>
       <Button onClick={handlers.toggle} variant="default">
-        {visible ? 'Hide' : 'Show'} floating window
+        {visible ? '隐藏' : '显示'} 浮动窗口
       </Button>
 
       {visible && (
@@ -30,7 +30,7 @@ function Demo() {
             className="drag-handle"
             style={{ cursor: 'move' }}
           >
-            <Text>Drag handle demo</Text>
+            <Text>拖动手柄演示</Text>
             <CloseButton onClick={handlers.close} />
           </Group>
           <Text fz="sm" px="md" pb="sm">
@@ -49,7 +49,7 @@ function Demo() {
   return (
     <>
       <Button onClick={handlers.toggle} variant="default">
-        {visible ? 'Hide' : 'Show'} floating window
+        {visible ? '隐藏' : '显示'} 浮动窗口
       </Button>
 
       {visible && (
@@ -67,7 +67,7 @@ function Demo() {
             className="drag-handle"
             style={{ cursor: 'move' }}
           >
-            <Text>Drag handle demo</Text>
+            <Text>拖动手柄演示</Text>
             <CloseButton onClick={handlers.close} />
           </Group>
           <Text fz="sm" px="md" pb="sm">
@@ -79,7 +79,7 @@ function Demo() {
   );
 }
 
-export const dragHandleSelector: MantineDemo = {
+export const dragHandleSelector: UIDemo = {
   type: 'code',
   component: Demo,
   code,

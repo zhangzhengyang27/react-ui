@@ -8,7 +8,7 @@ import {
     factory,
     Factory,
     getSpacing,
-    MantineSpacing,
+    UISpacing,
     StylesApiProps,
     useProps,
     useStyles,
@@ -67,7 +67,7 @@ export interface TreeDragState {
 
 export interface TreeProps extends BoxProps, StylesApiProps<TreeFactory>, ElementProps<'ul'> {
     data: TreeNodeData[]
-    levelOffset?: MantineSpacing
+    levelOffset?: UISpacing
     expandOnClick?: boolean
     expandOnSpace?: boolean
     checkOnSpace?: boolean

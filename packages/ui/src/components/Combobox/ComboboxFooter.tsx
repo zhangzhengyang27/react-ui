@@ -23,4 +23,4 @@ export const ComboboxFooter = factory<ComboboxFooterFactory>((_props, ref) => {
     )
 })
 
-ComboboxFooter.displayName = '@mantine/core/ComboboxFooter'
+ComboboxFooter.displayName = '@react-ui/ui/ComboboxFooter'

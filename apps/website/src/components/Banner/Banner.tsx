@@ -46,7 +46,7 @@ export function Banner({ id, children }: BannerProps) {
         type="button"
         className={classes.closeButton}
         onClick={handleClose}
-        aria-label="Close banner"
+        aria-label="关闭横幅"
       >
         <XIcon />
       </button>

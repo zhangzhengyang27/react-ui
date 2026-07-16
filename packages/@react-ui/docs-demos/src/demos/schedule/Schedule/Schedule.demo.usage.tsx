@@ -1,5 +1,5 @@
 import { Schedule } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { dataCode, events } from './_data';
 
 const code = `
@@ -15,12 +15,12 @@ function Demo() {
   return <Schedule events={events} />;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

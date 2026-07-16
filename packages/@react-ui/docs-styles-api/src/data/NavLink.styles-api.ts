@@ -3,27 +3,27 @@ import type { StylesApiData } from '../types';
 
 export const NavLinkStylesApi: StylesApiData<NavLinkFactory> = {
   selectors: {
-    root: 'Root element',
-    body: 'Contains label and description',
-    section: 'Left and right sections',
-    label: 'NavLink label',
-    description: 'Dimmed description displayed below the label',
-    children: 'Wrapper around nested links',
-    chevron: 'Default chevron icon',
-    collapse: 'Nested links Collapse container',
+    root: '根元素',
+    body: '包含标签和描述',
+    section: '左侧和右侧区域',
+    label: 'NavLink 标签',
+    description: '标签下方显示的暗淡描述',
+    children: '嵌套链接的包装器',
+    chevron: '默认 chevron 图标',
+    collapse: 'Nested links Collapse 容器',
   },
 
   vars: {
     root: {
-      '--nl-bg': 'Controls link `background-color`',
-      '--nl-color': 'Controls link `color`',
-      '--nl-hover': 'Controls link `background-color` when hovered',
+      '--nl-bg': '控制 link `background-color`',
+      '--nl-color': '控制 link `color`',
+      '--nl-hover': '控制 link `background-color` when hovered',
     },
 
     children: {
-      '--nl-offset': 'Controls nested links offset',
+      '--nl-offset': '控制嵌套链接偏移',
     },
   },
 
-  modifiers: [{ modifier: 'data-active', selector: 'root', condition: '`active` prop is set' }],
+  modifiers: [{ modifier: 'data-active', selector: 'root', condition: '设置了 `active` 属性' }],
 };

@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Box,
   BoxProps,
@@ -8,7 +8,7 @@ import {
   factory,
   Factory,
   getThemeColor,
-  MantineColor,
+  UIColor,
   StylesApiProps,
   useProps,
   useStyles,
@@ -34,7 +34,7 @@ export interface CurrentTimeIndicatorProps
   __staticSelector?: string;
 
   /** Key of `theme.colors` or any valid CSS color value @default 'red' */
-  color?: MantineColor;
+  color?: UIColor;
 
   /** Offset from the left side */
   startOffset?: string;
@@ -138,9 +138,16 @@ export const CurrentTimeIndicator = factory<CurrentTimeIndicatorFactory>((_props
 
   const ctx = useDatesContext();
   const [, setTick] = useState(0);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   useInterval(() => setTick((tick) => tick + 1), 1000 * 60, {
     autoInvoke: true,
   });
+
+  if (!mounted) {
+    return null;
+  }
 
   const now = getCurrentTime ? dayjs(getCurrentTime()) : dayjs();
   const offsetPercent = getCurrentTimePosition({ startTime, endTime, intervalMinutes, now });

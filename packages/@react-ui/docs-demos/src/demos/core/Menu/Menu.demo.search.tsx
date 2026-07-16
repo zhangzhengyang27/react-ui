@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Menu, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -26,14 +26,14 @@ function Demo() {
   return (
     <Menu shadow="md" width={240}>
       <Menu.Target>
-        <Button>Toggle menu</Button>
+        <Button>切换菜单</Button>
       </Menu.Target>
 
       <Menu.Dropdown>
         <Menu.Search
           value={query}
           onChange={(event) => setQuery(event.currentTarget.value)}
-          placeholder="Search items"
+          placeholder="搜索项目"
         />
 
         {items.length > 0 ? (
@@ -69,14 +69,14 @@ function Demo() {
   return (
     <Menu shadow="md" width={240}>
       <Menu.Target>
-        <Button>Toggle menu</Button>
+        <Button>切换菜单</Button>
       </Menu.Target>
 
       <Menu.Dropdown>
         <Menu.Search
           value={query}
           onChange={(event) => setQuery(event.currentTarget.value)}
-          placeholder="Search items"
+          placeholder="搜索项目"
         />
 
         {items.length > 0 ? (
@@ -91,7 +91,7 @@ function Demo() {
   );
 }
 
-export const search: MantineDemo = {
+export const search: UIDemo = {
   type: 'code',
   component: Demo,
   code,

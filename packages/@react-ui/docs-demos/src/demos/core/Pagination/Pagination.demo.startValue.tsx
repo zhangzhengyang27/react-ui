@@ -1,5 +1,5 @@
 import { Pagination, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Text, Pagination } from '@react-ui/ui';
@@ -23,7 +23,7 @@ function Demo() {
   );
 }
 
-export const startValue: MantineDemo = {
+export const startValue: UIDemo = {
   type: 'code',
   code,
   component: Demo,

@@ -1,5 +1,5 @@
 import { Checkbox, CheckboxGroupProps, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Checkbox, Group } from '@react-ui/ui';
@@ -35,7 +35,7 @@ function Wrapper(props: Partial<CheckboxGroupProps>) {
   );
 }
 
-export const groupConfigurator: MantineDemo = {
+export const groupConfigurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
@@ -45,10 +45,10 @@ export const groupConfigurator: MantineDemo = {
     {
       prop: 'label',
       type: 'string',
-      initialValue: 'Select your favorite frameworks/libraries',
+      initialValue: '选择你最喜欢的框架/库',
       libraryValue: '',
     },
-    { prop: 'description', type: 'string', initialValue: 'This is anonymous', libraryValue: '' },
+    { prop: 'description', type: 'string', initialValue: '这是匿名的', libraryValue: '' },
     { prop: 'error', type: 'string', initialValue: '', libraryValue: '' },
     { prop: 'withAsterisk', type: 'boolean', initialValue: true, libraryValue: false },
   ],

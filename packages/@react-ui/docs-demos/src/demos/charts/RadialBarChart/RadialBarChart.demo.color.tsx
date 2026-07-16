@@ -1,5 +1,5 @@
 import { RadialBarChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = (props: any) => `
 import { RadialBarChart } from '@react-ui/charts';
@@ -33,7 +33,7 @@ function Wrapper(props: any) {
   return <RadialBarChart data={data} dataKey="value" h={220} w={220} />;
 }
 
-export const color: MantineDemo = {
+export const color: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

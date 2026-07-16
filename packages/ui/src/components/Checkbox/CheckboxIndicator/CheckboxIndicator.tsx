@@ -1,8 +1,8 @@
-import { Box, BoxProps, ElementProps, factory, Factory, MantineSize, StylesApiProps, useProps, useStyles } from '../../../core'
+import { Box, BoxProps, ElementProps, factory, Factory, UISize, StylesApiProps, useProps, useStyles } from '../../../core'
 import classes from '../Checkbox.module.css'
 
 export interface CheckboxIndicatorProps extends BoxProps, StylesApiProps<CheckboxIndicatorFactory>, ElementProps<'span'> {
-    size?: MantineSize | (string & {}) | number
+    size?: UISize | (string & {}) | number
     checked?: boolean
     indeterminate?: boolean
     disabled?: boolean

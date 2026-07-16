@@ -1,6 +1,6 @@
 import { Button, Popover, Text } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useDisclosure } from '@react-ui/hooks';
@@ -16,7 +16,7 @@ function Demo() {
         </Button>
       </Popover.Target>
       <Popover.Dropdown style={{ pointerEvents: 'none' }}>
-        <Text size="sm">This popover is shown when user hovers the target element</Text>
+        <Text size="sm">当用户悬停目标元素时显示此气泡卡片</Text>
       </Popover.Dropdown>
     </Popover>
   );
@@ -33,13 +33,13 @@ function Demo() {
         </Button>
       </Popover.Target>
       <Popover.Dropdown style={{ pointerEvents: 'none' }}>
-        <Text size="sm">This popover is shown when user hovers the target element</Text>
+        <Text size="sm">当用户悬停目标元素时显示此气泡卡片</Text>
       </Popover.Dropdown>
     </Popover>
   );
 }
 
-export const hover: MantineDemo = {
+export const hover: UIDemo = {
   type: 'code',
   code,
   centered: true,

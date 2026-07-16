@@ -1,5 +1,5 @@
 import { RadarChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './_data';
 
 const code = (props: Record<string, any>) => `
@@ -30,11 +30,11 @@ function Wrapper(props: any) {
   );
 }
 
-export const color: MantineDemo = {
+export const color: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
   controls: [

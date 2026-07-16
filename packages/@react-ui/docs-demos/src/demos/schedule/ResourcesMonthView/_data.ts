@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 import { ScheduleEventData, ScheduleResourceData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
-const tomorrow = dayjs().add(1, 'day').format('YYYY-MM-DD');
-const nextWeek = dayjs().add(5, 'day').format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
+const tomorrow = dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD');
+const nextWeek = dayjs('2024-01-15').add(5, 'day').format('YYYY-MM-DD');
 
 export const resources: ScheduleResourceData[] = [
   { id: 'tokyo', label: 'Meeting room: Tokyo' },
@@ -14,7 +14,7 @@ export const resources: ScheduleResourceData[] = [
 export const resourceEvents: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Team Standup',
+    title: '团队站会',
     start: `${today} 09:00:00`,
     end: `${today} 09:30:00`,
     color: 'blue',
@@ -22,7 +22,7 @@ export const resourceEvents: ScheduleEventData[] = [
   },
   {
     id: 2,
-    title: 'Sprint Planning',
+    title: '迭代计划',
     start: `${today} 10:00:00`,
     end: `${today} 11:30:00`,
     color: 'green',
@@ -30,7 +30,7 @@ export const resourceEvents: ScheduleEventData[] = [
   },
   {
     id: 3,
-    title: 'Design Review',
+    title: '设计评审',
     start: `${tomorrow} 13:00:00`,
     end: `${tomorrow} 14:00:00`,
     color: 'orange',
@@ -38,7 +38,7 @@ export const resourceEvents: ScheduleEventData[] = [
   },
   {
     id: 4,
-    title: 'Client Call',
+    title: '客户电话',
     start: `${tomorrow} 09:30:00`,
     end: `${tomorrow} 10:30:00`,
     color: 'violet',
@@ -46,7 +46,7 @@ export const resourceEvents: ScheduleEventData[] = [
   },
   {
     id: 5,
-    title: 'Workshop',
+    title: '研讨会',
     start: `${nextWeek} 14:00:00`,
     end: `${nextWeek} 16:00:00`,
     color: 'pink',
@@ -58,9 +58,9 @@ export const dataCode = `
 import dayjs from 'dayjs';
 import { ScheduleResourceData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
-const tomorrow = dayjs().add(1, 'day').format('YYYY-MM-DD');
-const nextWeek = dayjs().add(5, 'day').format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
+const tomorrow = dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD');
+const nextWeek = dayjs('2024-01-15').add(5, 'day').format('YYYY-MM-DD');
 
 const resources: ScheduleResourceData[] = [
   { id: 'tokyo', label: 'Meeting room: Tokyo' },
@@ -71,7 +71,7 @@ const resources: ScheduleResourceData[] = [
 const events = [
   {
     id: 1,
-    title: 'Team Standup',
+    title: '团队站会',
     start: \`\${today} 09:00:00\`,
     end: \`\${today} 09:30:00\`,
     color: 'blue',
@@ -79,7 +79,7 @@ const events = [
   },
   {
     id: 2,
-    title: 'Sprint Planning',
+    title: '迭代计划',
     start: \`\${today} 10:00:00\`,
     end: \`\${today} 11:30:00\`,
     color: 'green',
@@ -87,7 +87,7 @@ const events = [
   },
   {
     id: 3,
-    title: 'Design Review',
+    title: '设计评审',
     start: \`\${tomorrow} 13:00:00\`,
     end: \`\${tomorrow} 14:00:00\`,
     color: 'orange',
@@ -95,7 +95,7 @@ const events = [
   },
   {
     id: 4,
-    title: 'Client Call',
+    title: '客户电话',
     start: \`\${tomorrow} 09:30:00\`,
     end: \`\${tomorrow} 10:30:00\`,
     color: 'violet',
@@ -103,7 +103,7 @@ const events = [
   },
   {
     id: 5,
-    title: 'Workshop',
+    title: '研讨会',
     start: \`\${nextWeek} 14:00:00\`,
     end: \`\${nextWeek} 16:00:00\`,
     color: 'pink',

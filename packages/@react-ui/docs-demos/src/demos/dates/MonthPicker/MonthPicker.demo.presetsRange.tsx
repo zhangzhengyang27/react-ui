@@ -1,13 +1,13 @@
 import dayjs from 'dayjs';
 import { MonthPicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import dayjs from 'dayjs';
 import { MonthPicker } from '@react-ui/dates';
 
 function Demo() {
-  const today = dayjs();
+  const today = dayjs('2024-01-15');
 
   return (
     <MonthPicker
@@ -23,14 +23,14 @@ function Demo() {
         },
         {
           value: [today.startOf('year').format('YYYY-MM-DD'), today.startOf('month').format('YYYY-MM-DD')],
-          label: 'This year',
+          label: '今年',
         },
         {
           value: [
             today.subtract(1, 'year').startOf('year').format('YYYY-MM-DD'),
             today.subtract(1, 'year').endOf('year').startOf('month').format('YYYY-MM-DD'),
           ],
-          label: 'Last year',
+          label: '去年',
         },
       ]}
     />
@@ -39,7 +39,7 @@ function Demo() {
 `;
 
 function Demo() {
-  const today = dayjs();
+  const today = dayjs('2024-01-15');
 
   return (
     <MonthPicker
@@ -64,21 +64,21 @@ function Demo() {
             today.startOf('year').format('YYYY-MM-DD'),
             today.startOf('month').format('YYYY-MM-DD'),
           ],
-          label: 'This year',
+          label: '今年',
         },
         {
           value: [
             today.subtract(1, 'year').startOf('year').format('YYYY-MM-DD'),
             today.subtract(1, 'year').endOf('year').startOf('month').format('YYYY-MM-DD'),
           ],
-          label: 'Last year',
+          label: '去年',
         },
       ]}
     />
   );
 }
 
-export const presetsRange: MantineDemo = {
+export const presetsRange: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

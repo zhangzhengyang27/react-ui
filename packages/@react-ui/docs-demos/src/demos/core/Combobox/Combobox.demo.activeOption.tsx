@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { CheckIcon, Combobox, Group, Input, InputBase, useCombobox } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
 import { Input, InputBase, Combobox, useCombobox, CheckIcon, Group } from '@react-ui/ui';
 
-const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
+const groceries = ['🍎 苹果', '🍌 香蕉', '🥦 西兰花', '🥕 胡萝卜', '🍫 巧克力'];
 
 function Demo() {
   const combobox = useCombobox({
@@ -20,7 +20,7 @@ function Demo() {
     },
   });
 
-  const [value, setValue] = useState<string | null>('🥦 Broccoli');
+  const [value, setValue] = useState<string | null>('🥦 西兰花');
 
   const options = groceries.map((item) => (
     <Combobox.Option value={item} key={item} active={item === value}>
@@ -49,7 +49,7 @@ function Demo() {
           rightSectionPointerEvents="none"
           onClick={() => combobox.toggleDropdown()}
         >
-          {value || <Input.Placeholder>Pick value</Input.Placeholder>}
+          {value || <Input.Placeholder>选择值</Input.Placeholder>}
         </InputBase>
       </Combobox.Target>
 
@@ -61,7 +61,7 @@ function Demo() {
 }
 `;
 
-const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
+const groceries = ['🍎 苹果', '🍌 香蕉', '🥦 西兰花', '🥕 胡萝卜', '🍫 巧克力'];
 
 function Demo() {
   const combobox = useCombobox({
@@ -75,7 +75,7 @@ function Demo() {
     },
   });
 
-  const [value, setValue] = useState<string | null>('🥦 Broccoli');
+  const [value, setValue] = useState<string | null>('🥦 西兰花');
 
   const options = groceries.map((item) => (
     <Combobox.Option value={item} key={item} active={item === value}>
@@ -104,7 +104,7 @@ function Demo() {
           rightSectionPointerEvents="none"
           onClick={() => combobox.toggleDropdown()}
         >
-          {value || <Input.Placeholder>Pick value</Input.Placeholder>}
+          {value || <Input.Placeholder>选择值</Input.Placeholder>}
         </InputBase>
       </Combobox.Target>
 
@@ -115,7 +115,7 @@ function Demo() {
   );
 }
 
-export const activeOption: MantineDemo = {
+export const activeOption: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

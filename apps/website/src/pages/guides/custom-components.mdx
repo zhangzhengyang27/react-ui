@@ -18,7 +18,7 @@ import {
   factory,
   Factory,
   getRadius,
-  MantineRadius,
+  UIRadius,
   StylesApiProps,
   useProps,
   useStyles,
@@ -34,7 +34,7 @@ export type ExampleComponentCssVariables = {
 export interface ExampleComponentProps
   extends BoxProps, StylesApiProps<ExampleComponentFactory>, ElementProps<'div'> {
   /** 组件圆角 */
-  radius: MantineRadius;
+  radius: UIRadius;
 }
 
 export type ExampleComponentFactory = Factory<{
@@ -252,17 +252,17 @@ export const ExampleComponent = factory<ExampleComponentFactory>((_props) => {
 export interface ExampleComponentProps
   extends BoxProps, StylesApiProps<ExampleComponentFactory>, ElementProps<'div'> {
   /** 组件圆角 */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 }
 
 // ✅ useProps 可以正确推断类型
-// `radius` prop 是 `MantineRadius`
+// `radius` prop 是 `UIRadius`
 const defaultProps = {
   radius: 'md',
 } satisfies Partial<ExampleComponentProps>;
 
 // ❌ useProps 无法正确推断类型
-// `radius` prop 是 `MantineRadius | undefined`
+// `radius` prop 是 `UIRadius | undefined`
 const defaultProps: Partial<ExampleComponentProps> = {
   radius: 'md',
 };
@@ -271,7 +271,7 @@ const defaultProps: Partial<ExampleComponentProps> = {
 你可以通过以下方式使用 [defaultProps](/theming/default-props)：
 
 ```tsx
-import { MantineProvider, Button, Group, createTheme } from '@react-ui/ui';
+import { UIProvider, Button, Group, createTheme } from '@react-ui/ui';
 import { ExampleComponent } from './ExampleComponent';
 
 const theme = createTheme({
@@ -295,7 +295,7 @@ const theme = createTheme({
 ```tsx
 // 🔝 完整组件代码见上文
 const getStyles = useStyles<ExampleComponentFactory>({
-  // 组件名称，用于生成静态选择器（.mantine-ExampleComponent-root）
+  // 组件名称，用于生成静态选择器（.ui-ExampleComponent-root）
   // 以及 theme 对象中 `classNames`、`styles` 的支持
   name: 'ExampleComponent',
 

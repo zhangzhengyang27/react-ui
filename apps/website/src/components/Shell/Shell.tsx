@@ -1,6 +1,6 @@
 import { Container } from '@react-ui/ui'
 import { useDisclosure } from '@react-ui/hooks'
-import { HeaderControls } from '@react-ui/mantine-header'
+import { HeaderControls } from '@react-ui/header'
 import { DocsHeader } from './DocsHeader/DocsHeader'
 import { DocsMobileNavbar } from './DocsNavbar/DocsMobileNavbar'
 import { DocsNavbar } from './DocsNavbar/DocsNavbar'

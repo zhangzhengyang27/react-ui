@@ -1,21 +1,21 @@
 import { RangeSlider, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `import { RangeSlider, Text } from '@react-ui/ui';
 
 function Demo() {
   return (
     <>
-      <Text size="sm">No label</Text>
+      <Text size="sm">无标签</Text>
       <RangeSlider defaultValue={[20, 60]} label={null} />
 
-      <Text size="sm" mt="xl">Formatted label</Text>
+      <Text size="sm" mt="xl">格式化标签</Text>
       <RangeSlider defaultValue={[20, 60]} label={(value) => \`\${value} °C\`} />
 
-      <Text size="sm" mt="xl">Label always visible</Text>
+      <Text size="sm" mt="xl">标签始终可见</Text>
       <RangeSlider defaultValue={[20, 60]} labelAlwaysOn />
 
-      <Text size="sm" mt="xl">Custom label transition</Text>
+      <Text size="sm" mt="xl">自定义标签过渡</Text>
       <RangeSlider
         defaultValue={40}
         labelTransitionProps={{
@@ -32,21 +32,21 @@ function Demo() {
 function Demo() {
   return (
     <>
-      <Text size="sm">No label</Text>
+      <Text size="sm">无标签</Text>
       <RangeSlider defaultValue={[20, 60]} label={null} />
 
       <Text size="sm" mt="xl">
-        Formatted label
+        格式化标签
       </Text>
       <RangeSlider defaultValue={[20, 60]} label={(value) => `${value} °C`} />
 
       <Text size="sm" mt="xl">
-        Label always visible
+        标签始终可见
       </Text>
       <RangeSlider defaultValue={[20, 60]} labelAlwaysOn />
 
       <Text size="sm" mt="xl">
-        Custom label transition
+        自定义标签过渡
       </Text>
       <RangeSlider
         defaultValue={[20, 60]}
@@ -60,7 +60,7 @@ function Demo() {
   );
 }
 
-export const label: MantineDemo = {
+export const label: UIDemo = {
   type: 'code',
   component: Demo,
   code,

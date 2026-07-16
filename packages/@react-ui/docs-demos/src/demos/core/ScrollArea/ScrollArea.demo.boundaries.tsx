@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Badge, Box, Group, ScrollArea, Stack, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -81,7 +81,7 @@ function Demo() {
   );
 }
 
-export const boundaries: MantineDemo = {
+export const boundaries: UIDemo = {
   type: 'code',
   component: Demo,
   code,

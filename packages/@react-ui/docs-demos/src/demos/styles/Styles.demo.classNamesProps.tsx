@@ -1,11 +1,11 @@
 import cx from 'clsx';
-import { createTheme, MantineThemeProvider, TextInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { createTheme, UIThemeProvider, TextInput } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Styles.demo.classNamesProps.module.css';
 
 const code = `
 import cx from 'clsx';
-import { MantineProvider, createTheme, TextInput } from '@react-ui/ui';
+import { UIProvider, createTheme, TextInput } from '@react-ui/ui';
 import classes from './Demo.module.css';
 
 const theme = createTheme({
@@ -21,10 +21,10 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
-      <TextInput required label="Required input" placeholder="Required input" />
-      <TextInput error label="Input with error" placeholder="Input with error" mt="md" />
-    </MantineProvider>
+    <UIProvider theme={theme}>
+      <TextInput required label="必填输入" placeholder="必填输入" />
+      <TextInput error label="带错误的输入" placeholder="带错误的输入" mt="md" />
+    </UIProvider>
   );
 }
 `;
@@ -52,18 +52,18 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
-      <TextInput required label="Required input" placeholder="Required input" />
-      <TextInput error label="Input with error" placeholder="Input with error" mt="md" />
-    </MantineThemeProvider>
+    <UIThemeProvider theme={theme}>
+      <TextInput required label="必填输入" placeholder="必填输入" />
+      <TextInput error label="带错误的输入" placeholder="带错误的输入" mt="md" />
+    </UIThemeProvider>
   );
 }
 
-export const classNamesProps: MantineDemo = {
+export const classNamesProps: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
   ],
 };

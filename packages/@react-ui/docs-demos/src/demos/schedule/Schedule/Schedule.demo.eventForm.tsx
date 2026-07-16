@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { PlusIcon } from '@phosphor-icons/react';
 import { ActionIcon, Box, Group } from '@react-ui/ui';
 import { Schedule, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { _eventFormCode, EventData, EventForm } from '../_EventForm';
 import { dataCode, events } from './_data';
 
@@ -11,7 +11,7 @@ function Demo() {
   const [allEvents, setAllEvents] = useState<ScheduleEventData[]>(events);
   const [formOpened, setFormOpened] = useState(false);
   const [selectedEventData, setSelectedEventData] = useState<EventData | null>(null);
-  const mobileSelectedDate = useRef<string>(dayjs().format('YYYY-MM-DD'));
+  const mobileSelectedDate = useRef<string>(dayjs('2024-01-15').format('YYYY-MM-DD'));
 
   const handleTimeSlotClick = ({ slotStart, slotEnd }: { slotStart: string; slotEnd: string }) => {
     setSelectedEventData({
@@ -137,7 +137,7 @@ function Demo() {
                 mx="sm"
                 size="lg"
                 onClick={handleCreateEvent}
-                aria-label="Create new event"
+                aria-label="创建新事件"
               >
                 <PlusIcon size={18} />
               </ActionIcon>
@@ -170,7 +170,7 @@ function Demo() {
   const [allEvents, setAllEvents] = useState<ScheduleEventData[]>(events);
   const [formOpened, setFormOpened] = useState(false);
   const [selectedEventData, setSelectedEventData] = useState<EventData | null>(null);
-  const mobileSelectedDate = useRef<string>(dayjs().format('YYYY-MM-DD'));
+  const mobileSelectedDate = useRef<string>(dayjs('2024-01-15').format('YYYY-MM-DD'));
 
   const handleTimeSlotClick = ({ slotStart, slotEnd }: { slotStart: string; slotEnd: string }) => {
     setSelectedEventData({
@@ -296,7 +296,7 @@ function Demo() {
                 mx="sm"
                 size="lg"
                 onClick={handleCreateEvent}
-                aria-label="Create new event"
+                aria-label="创建新事件"
               >
                 <PlusIcon size={18} />
               </ActionIcon>
@@ -317,13 +317,13 @@ function Demo() {
   );
 }`;
 
-export const eventForm: MantineDemo = {
+export const eventForm: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
-    { code: _eventFormCode, language: 'tsx', fileName: 'EventForm.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
+    { code: _eventFormCode, language: 'tsx', fileName: '事件表单.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'events.ts' },
   ],
 };

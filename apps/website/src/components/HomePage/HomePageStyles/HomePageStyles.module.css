@@ -1,10 +1,6 @@
 .root {
-  padding-block: 120px;
+  padding-block: var(--hp-block-spacing);
   position: relative;
-
-  @mixin smaller-than $mantine-breakpoint-md {
-    padding-block: 40px;
-  }
 }
 
 .main {

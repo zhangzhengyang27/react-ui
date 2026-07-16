@@ -1,5 +1,5 @@
 import { NumberInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NumberInput } from '@react-ui/ui';
@@ -8,15 +8,15 @@ function Demo() {
   return (
     <>
       <NumberInput
-        label="Thousands are separated with a comma"
-        placeholder="Thousands are separated with a comma"
+        label="千位使用逗号分隔"
+        placeholder="千位使用逗号分隔"
         thousandSeparator=","
         defaultValue={1_000_000}
       />
 
       <NumberInput
-        label="Thousands are separated with a space"
-        placeholder="Thousands are separated with a space"
+        label="千位使用空格分隔"
+        placeholder="千位使用空格分隔"
         thousandSeparator=" "
         defaultValue={1_000_000}
         mt="md"
@@ -30,15 +30,15 @@ function Demo() {
   return (
     <>
       <NumberInput
-        label="Thousands are separated with a comma"
-        placeholder="Thousands are separated with a comma"
+        label="千位使用逗号分隔"
+        placeholder="千位使用逗号分隔"
         thousandSeparator=","
         defaultValue={1_000_000}
       />
 
       <NumberInput
-        label="Thousands are separated with a space"
-        placeholder="Thousands are separated with a space"
+        label="千位使用空格分隔"
+        placeholder="千位使用空格分隔"
         thousandSeparator=" "
         defaultValue={1_000_000}
         mt="md"
@@ -47,7 +47,7 @@ function Demo() {
   );
 }
 
-export const thousandsSeparator: MantineDemo = {
+export const thousandsSeparator: UIDemo = {
   type: 'code',
   component: Demo,
   code,

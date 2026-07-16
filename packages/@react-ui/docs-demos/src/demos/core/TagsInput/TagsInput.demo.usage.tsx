@@ -1,19 +1,19 @@
 import { TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TagsInput } from '@react-ui/ui';
 
 function Demo() {
-  return <TagsInput label="Press Enter to submit a tag" placeholder="Enter tag" />;
+  return <TagsInput label="按 Enter 提交标签" placeholder="输入标签" />;
 }
 `;
 
 function Demo() {
-  return <TagsInput label="Press Enter to submit a tag" placeholder="Enter tag" />;
+  return <TagsInput label="按 Enter 提交标签" placeholder="输入标签" />;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

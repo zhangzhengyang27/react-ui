@@ -20,9 +20,9 @@ import {
   factory,
   Factory,
   getThemeColor,
-  MantineColor,
+  UIColor,
   StylesApiProps,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useResolvedStylesApi,
   useStyles,
@@ -34,7 +34,7 @@ import type {
   BaseChartStylesNames,
   ChartSeries,
   GridChartBaseProps,
-  MantineChartDotProps,
+  UIChartDotProps,
 } from '../types';
 import { AreaGradient } from './AreaGradient';
 import { AreaSplit } from './AreaSplit';
@@ -47,7 +47,7 @@ function valueToPercent(value: number) {
 
 export interface AreaChartSeries extends ChartSeries {
   strokeDasharray?: string | number;
-  color: MantineColor;
+  color: UIColor;
   curveType?: AreaChartCurveType;
 }
 
@@ -90,10 +90,10 @@ export interface AreaChartProps
   withDots?: boolean;
 
   /** Props passed down to all dots. Ignored if `withDots={false}` is set. */
-  dotProps?: MantineChartDotProps;
+  dotProps?: UIChartDotProps;
 
   /** Props passed down to all active dots. Ignored if `withDots={false}` is set. */
-  activeDotProps?: MantineChartDotProps;
+  activeDotProps?: UIChartDotProps;
 
   /** Stroke width for the chart areas @default 2 */
   strokeWidth?: number;
@@ -105,7 +105,7 @@ export interface AreaChartProps
   fillOpacity?: number;
 
   /** A tuple of colors used when `type="split"` is set, ignored in all other cases. A tuple may include theme colors reference or any valid CSS colors @default ['green.7', 'red.7'] */
-  splitColors?: [MantineColor, MantineColor];
+  splitColors?: [UIColor, UIColor];
 
   /** Offset for the split gradient. By default, value is inferred from `data` and `series` if possible. Must be generated from the data array with `getSplitOffset` function. */
   splitOffset?: number;
@@ -214,7 +214,7 @@ export const AreaChart = factory<AreaChartFactory>((_props) => {
     ...others
   } = props;
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const baseId = useId();
   const splitId = `${baseId}-split`;
   const withXTickLine = gridAxis !== 'none' && (tickLine === 'x' || tickLine === 'xy');

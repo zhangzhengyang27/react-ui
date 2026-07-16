@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { useRef, useState } from 'react';
 import { Box, Grid, Text } from '@react-ui/ui';
 import { ScheduleEventData, WeekView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 interface SidebarItem {
   title: string;
@@ -11,9 +11,9 @@ interface SidebarItem {
 }
 
 const initialSidebarItems: SidebarItem[] = [
-  { title: 'Quick Sync', duration: 30, color: 'teal' },
-  { title: 'Workshop', duration: 120, color: 'orange' },
-  { title: 'One-on-One', duration: 60, color: 'violet' },
+  { title: '快速同步', duration: 30, color: 'teal' },
+  { title: '研讨会', duration: 120, color: 'orange' },
+  { title: '一对一', duration: 60, color: 'violet' },
 ];
 
 const code = `
@@ -29,9 +29,9 @@ interface SidebarItem {
 }
 
 const initialSidebarItems: SidebarItem[] = [
-  { title: 'Quick Sync', duration: 30, color: 'teal' },
-  { title: 'Workshop', duration: 120, color: 'orange' },
-  { title: 'One-on-One', duration: 60, color: 'violet' },
+  { title: '快速同步', duration: 30, color: 'teal' },
+  { title: '研讨会', duration: 120, color: 'orange' },
+  { title: '一对一', duration: 60, color: 'violet' },
 ];
 
 function Demo() {
@@ -113,7 +113,7 @@ function Demo() {
             transition: 'border-color 150ms',
           }}
         >
-          <Text fw={500} mb="xs">Unscheduled</Text>
+          <Text fw={500} mb="xs">未安排</Text>
           {sidebarItems.map((item) => (
             <Box
               key={item.title}
@@ -136,13 +136,13 @@ function Demo() {
             </Box>
           ))}
           {sidebarItems.length === 0 && (
-            <Text size="xs" c="dimmed">Drag events here to unschedule</Text>
+            <Text size="xs" c="dimmed">将事件拖到这里取消安排</Text>
           )}
         </Box>
       </Grid.Col>
       <Grid.Col span={{ base: 12, sm: 9 }}>
         <WeekView
-          date={new Date()}
+          date={new Date('2024-01-15')}
           events={events}
           startTime="08:00:00"
           endTime="18:00:00"
@@ -278,7 +278,7 @@ function Demo() {
       </Grid.Col>
       <Grid.Col span={{ base: 12, sm: 9 }}>
         <WeekView
-          date={new Date()}
+          date={new Date('2024-01-15')}
           events={events}
           startTime="08:00:00"
           endTime="18:00:00"
@@ -291,7 +291,7 @@ function Demo() {
   );
 }
 
-export const bidirectionalDragDrop: MantineDemo = {
+export const bidirectionalDragDrop: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

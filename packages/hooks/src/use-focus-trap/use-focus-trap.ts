@@ -5,6 +5,14 @@ import { scopeTab } from './scope-tab'
 
 export function useFocusTrap(active = true): React.RefCallback<HTMLElement | null> {
     const ref = useRef<HTMLElement | null>(null) as MutableRefObject<HTMLElement | null>
+    const focusTimeoutRef = useRef<number | null>(null)
+
+    const clearFocusTimeout = () => {
+        if (focusTimeoutRef.current !== null) {
+            window.clearTimeout(focusTimeoutRef.current)
+            focusTimeoutRef.current = null
+        }
+    }
 
     const focusNode = (node: HTMLElement) => {
         let focusElement: HTMLElement | null = node.querySelector('[data-autofocus]')
@@ -40,7 +48,10 @@ export function useFocusTrap(active = true): React.RefCallback<HTMLElement | nul
             }
 
             // Delay processing the HTML node by a frame. This ensures focus is assigned correctly.
-            setTimeout(() => {
+            // 清理上一次未触发的 timer,避免 ref 重调时遗留挂起的 focus 调用
+            clearFocusTimeout()
+            focusTimeoutRef.current = window.setTimeout(() => {
+                focusTimeoutRef.current = null
                 if (node.getRootNode()) {
                     focusNode(node)
                 } else if (process.env.NODE_ENV === 'development') {
@@ -59,7 +70,9 @@ export function useFocusTrap(active = true): React.RefCallback<HTMLElement | nul
         }
 
         if (ref.current) {
-            setTimeout(() => {
+            clearFocusTimeout()
+            focusTimeoutRef.current = window.setTimeout(() => {
+                focusTimeoutRef.current = null
                 if (ref.current) {
                     focusNode(ref.current)
                 }
@@ -73,7 +86,10 @@ export function useFocusTrap(active = true): React.RefCallback<HTMLElement | nul
         }
 
         document.addEventListener('keydown', handleKeyDown)
-        return () => document.removeEventListener('keydown', handleKeyDown)
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown)
+            clearFocusTimeout()
+        }
     }, [active])
 
     return setRef

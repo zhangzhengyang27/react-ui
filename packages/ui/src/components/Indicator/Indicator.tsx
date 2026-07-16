@@ -7,8 +7,8 @@ import {
     Factory,
     getRadius,
     getThemeColor,
-    MantineColor,
-    MantineRadius,
+    UIColor,
+    UIRadius,
     parseThemeColor,
     rem,
     StylesApiProps,
@@ -51,14 +51,14 @@ export interface IndicatorProps extends BoxProps, StylesApiProps<IndicatorFactor
     /** Indicator width and height @default 10 */
     size?: number | string
 
-    /** Label displayed inside the indicator */
+    /** 内部显示的标签 the indicator */
     label?: React.ReactNode
 
     /** Key of `theme.radius` or any valid CSS value to set `border-radius` @default 100 */
-    radius?: MantineRadius
+    radius?: UIRadius
 
     /** Key of `theme.colors` or any valid CSS color value @default theme.primaryColor */
-    color?: MantineColor
+    color?: UIColor
 
     /** Adds border to the root element */
     withBorder?: boolean

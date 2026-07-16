@@ -1,5 +1,5 @@
 import { TimePicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TimePicker } from '@react-ui/dates';
@@ -7,8 +7,8 @@ import { TimePicker } from '@react-ui/dates';
 function Demo() {
   return (
     <>
-      <TimePicker label="Enter time (24h format)" min="10:00" max="18:30" />
-      <TimePicker label="Enter time (12h format)" min="10:00" max="18:30" format="12h" mt="md" />
+      <TimePicker label="输入时间（24小时制）" min="10:00" max="18:30" />
+      <TimePicker label="输入时间（12小时制）" min="10:00" max="18:30" format="12h" mt="md" />
     </>
   );
 }
@@ -17,13 +17,13 @@ function Demo() {
 function Demo() {
   return (
     <>
-      <TimePicker label="Enter time (24h format)" min="10:00" max="18:30" />
-      <TimePicker label="Enter time (12h format)" min="10:00" max="18:30" format="12h" mt="md" />
+      <TimePicker label="输入时间（24小时制）" min="10:00" max="18:30" />
+      <TimePicker label="输入时间（12小时制）" min="10:00" max="18:30" format="12h" mt="md" />
     </>
   );
 }
 
-export const minMax: MantineDemo = {
+export const minMax: UIDemo = {
   type: 'code',
   component: Demo,
   code,

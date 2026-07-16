@@ -20,8 +20,8 @@ import {
     type ElementProps,
     type ExtendComponent,
     type Factory,
-    type MantineRadius,
-    type MantineThemeComponent,
+    type UIRadius,
+    type UIThemeComponent,
     type StylesApiProps
 } from '../../core'
 
@@ -67,7 +67,7 @@ export type AccordionCssVariables = {
  * @property {number|string} [chevronIconSize=16] - 默认chevron图标的大小（当未设置chevron属性时生效）
  * @property {AccordionHeadingOrder} [order] - 标题层级顺序（不影响视觉效果）
  * @property {React.ReactNode} [chevron] - 自定义chevron图标
- * @property {MantineRadius} [radius=theme.defaultRadius] - 边框圆角大小，可以是theme.radius的键或有效的CSS值
+ * @property {UIRadius} [radius=theme.defaultRadius] - 边框圆角大小，可以是theme.radius的键或有效的CSS值
  */
 export interface AccordionProps<Multiple extends boolean = false>
     extends BoxProps,
@@ -85,7 +85,7 @@ export interface AccordionProps<Multiple extends boolean = false>
     chevronIconSize?: number | string
     order?: AccordionHeadingOrder
     chevron?: React.ReactNode
-    radius?: MantineRadius
+    radius?: UIRadius
 }
 
 /**
@@ -249,14 +249,14 @@ export function Accordion<Multiple extends boolean = false>(_props: AccordionPro
 /**
  * 扩展Accordion组件样式
  * @param c - 要扩展的Accordion组件工厂
- * @returns 扩展后的Mantine主题组件
+ * @returns 扩展后的UI主题组件
  */
-const extendAccordion = (c: ExtendComponent<AccordionFactory>): MantineThemeComponent => c
+const extendAccordion = (c: ExtendComponent<AccordionFactory>): UIThemeComponent => c
 
 Accordion.extend = extendAccordion
 Accordion.withProps = getWithProps<AccordionProps, AccordionProps>(Accordion as any)
 Accordion.classes = classes
-Accordion.displayName = '@mantine/core/Accordion'
+Accordion.displayName = '@react-ui/ui/Accordion'
 Accordion.Item = AccordionItem
 Accordion.Panel = AccordionPanel
 Accordion.Control = AccordionControl

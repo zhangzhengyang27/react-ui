@@ -1,7 +1,7 @@
 import React from 'react';
 import { DotsSixVerticalIcon } from '@phosphor-icons/react';
 import { SplitterPaneSize, useSplitter } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import React from 'react';
@@ -26,7 +26,7 @@ function Demo() {
     ],
   });
 
-  const labels = ['Fixed 240px sidebar', 'Flexible content'];
+  const labels = ['固定 240px 侧边栏', '灵活内容'];
 
   return (
     <div
@@ -109,7 +109,7 @@ function Demo() {
     panels: [{ defaultSize: '240px', min: '160px', max: '50%' }, { defaultSize: 100 }],
   });
 
-  const labels = ['Fixed 240px sidebar', 'Flexible content'];
+  const labels = ['固定 240px 侧边栏', '灵活内容'];
 
   return (
     <div
@@ -176,7 +176,7 @@ function Demo() {
   );
 }
 
-export const cssUnits: MantineDemo = {
+export const cssUnits: UIDemo = {
   type: 'code',
   code,
   component: Demo,

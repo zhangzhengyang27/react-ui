@@ -81,28 +81,28 @@ export interface MaskInputProps
     /** Assigns a function that clears the input value to the given ref */
     resetRef?: React.RefObject<(() => void) | null>
 
-    /** Controlled value */
+    //** 受控值 */
     value?: string
 
     /** Uncontrolled default value */
     defaultValue?: string
 
-    /** Called when value changes */
+    //** 值变化时调用 */
     onChange?: (value: string) => void
 
-    /** Label rendered above the input */
+    //** 渲染在输入框上方的标签 */
     label?: React.ReactNode
 
-    /** Description rendered below the label */
+    //** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
-    /** Error rendered below the input */
+    //** 渲染在输入框下方的错误 */
     error?: React.ReactNode
 
     /** Success message rendered below the input */
     success?: React.ReactNode
 
-    /** If set, required asterisk is added to the label */
+    //** 如果设置，则会在标签上添加必填星号 */
     required?: boolean
 
     /** Props passed to the label element */

@@ -1,10 +1,10 @@
 import { createContext } from 'react'
-import { MantineSize } from '../../core'
+import { UISize } from '../../core'
 import { InputVariant } from '../Input'
 
 export interface PillsInputContextValue {
     fieldRef: React.RefObject<HTMLInputElement | null>
-    size: MantineSize | (string & {})
+    size: UISize | (string & {})
     disabled: boolean | undefined
     hasError: boolean | undefined
     variant: InputVariant | (string & {}) | undefined

@@ -1,15 +1,15 @@
 import { useRef, useState } from 'react';
 import { ScrollArea, TextInput, UnstyledButton } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState, useRef } from 'react';
 import { ScrollArea, UnstyledButton, TextInput } from '@react-ui/ui';
 
 const groceries: string[] = [
-  '🍎 Apples',
-  '🍌 Bananas',
-  '🍊 Oranges',
+  '🍎 苹果',
+  '🍌 香蕉',
+  '🍊 橙子',
   '🥛 Milk',
   '🍞 Bread',
   '🥚 Eggs',
@@ -19,12 +19,12 @@ const groceries: string[] = [
   '🍚 Rice',
   '🥔 Potatoes',
   '🧅 Onions',
-  '🍅 Tomatoes',
+  '🍅 西红柿',
   '🥒 Cucumbers',
-  '🥕 Carrots',
-  '🥬 Lettuce',
+  '🥕 胡萝卜',
+  '🥬 生菜',
   '🍃 Spinach',
-  '🥦 Broccoli',
+  '🥦 西兰花',
   '🧀 Cheese',
   '🍦 Yogurt',
   '🧈 Butter',
@@ -36,7 +36,7 @@ const groceries: string[] = [
   '🥤 Juice',
   '💧 Water',
   '🍪 Cookies',
-  '🍫 Chocolate',
+  '🍫 巧克力',
 ];
 
 function Demo() {
@@ -88,7 +88,7 @@ function Demo() {
             });
           }
         }}
-        placeholder="Search groceries"
+        placeholder="搜索杂货"
       />
       <ScrollArea h={150} type="always" mt="md" viewportRef={viewportRef}>
         {items}
@@ -99,9 +99,9 @@ function Demo() {
 `;
 
 const groceries: string[] = [
-  '🍎 Apples',
-  '🍌 Bananas',
-  '🍊 Oranges',
+  '🍎 苹果',
+  '🍌 香蕉',
+  '🍊 橙子',
   '🥛 Milk',
   '🍞 Bread',
   '🥚 Eggs',
@@ -111,12 +111,12 @@ const groceries: string[] = [
   '🍚 Rice',
   '🥔 Potatoes',
   '🧅 Onions',
-  '🍅 Tomatoes',
+  '🍅 西红柿',
   '🥒 Cucumbers',
-  '🥕 Carrots',
-  '🥬 Lettuce',
+  '🥕 胡萝卜',
+  '🥬 生菜',
   '🍃 Spinach',
-  '🥦 Broccoli',
+  '🥦 西兰花',
   '🧀 Cheese',
   '🍦 Yogurt',
   '🧈 Butter',
@@ -128,7 +128,7 @@ const groceries: string[] = [
   '🥤 Juice',
   '💧 Water',
   '🍪 Cookies',
-  '🍫 Chocolate',
+  '🍫 巧克力',
 ];
 
 function Demo() {
@@ -180,7 +180,7 @@ function Demo() {
             });
           }
         }}
-        placeholder="Search groceries"
+        placeholder="搜索杂货"
       />
       <ScrollArea h={150} type="always" mt="md" viewportRef={viewportRef}>
         {items}
@@ -189,7 +189,7 @@ function Demo() {
   );
 }
 
-export const scrollIntoView: MantineDemo = {
+export const scrollIntoView: UIDemo = {
   type: 'code',
   component: Demo,
   code,

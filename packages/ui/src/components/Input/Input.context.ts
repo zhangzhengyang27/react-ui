@@ -1,8 +1,8 @@
 import { createContext } from 'react'
-import { MantineSize } from '../../core'
+import { UISize } from '../../core'
 
 interface InputContextValue {
-    size: MantineSize | (string & {})
+    size: UISize | (string & {})
 }
 
 export const InputContext = createContext<InputContextValue>({ size: 'sm' })

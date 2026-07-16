@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Badge } from './Badge'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Badge', () => {
     it('renders a div by default', () => {
@@ -17,7 +17,7 @@ describe('Badge', () => {
     it('applies static classes', () => {
         renderWithProvider(<Badge data-testid="badge">Badge</Badge>)
 
-        expect(screen.getByTestId('badge')).toHaveClass('mantine-Badge-root')
+        expect(screen.getByTestId('badge')).toHaveClass('ui-Badge-root')
     })
 
     it('renders left and right sections', () => {
@@ -30,8 +30,8 @@ describe('Badge', () => {
         const root = screen.getByTestId('badge')
         expect(root).toHaveAttribute('data-with-left-section')
         expect(root).toHaveAttribute('data-with-right-section')
-        expect(screen.getByText('L')).toHaveClass('mantine-Badge-section')
-        expect(screen.getByText('R')).toHaveClass('mantine-Badge-section')
+        expect(screen.getByText('L')).toHaveClass('ui-Badge-section')
+        expect(screen.getByText('R')).toHaveClass('ui-Badge-section')
     })
 
     it('sets data-block when fullWidth is true', () => {

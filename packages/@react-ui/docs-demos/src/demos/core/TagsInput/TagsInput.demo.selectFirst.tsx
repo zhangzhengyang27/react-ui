@@ -1,5 +1,5 @@
 import { TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TagsInput } from '@react-ui/ui';
@@ -7,8 +7,8 @@ import { TagsInput } from '@react-ui/ui';
 function Demo() {
   return (
     <TagsInput
-      label="Enter tags"
-      placeholder="Enter tags"
+      label="输入标签"
+      placeholder="输入标签"
       selectFirstOptionOnChange
       data={[
         'Apple', 'Banana', 'Kiwi', 'Mango', 'Watermelon', 'Raspberry', 'Strawberry',
@@ -21,15 +21,15 @@ function Demo() {
 function Demo() {
   return (
     <TagsInput
-      label="Enter tags"
-      placeholder="Enter tags"
+      label="输入标签"
+      placeholder="输入标签"
       selectFirstOptionOnChange
       data={['Apple', 'Banana', 'Kiwi', 'Mango', 'Watermelon', 'Raspberry', 'Strawberry']}
     />
   );
 }
 
-export const selectFirst: MantineDemo = {
+export const selectFirst: UIDemo = {
   type: 'code',
   component: Demo,
   code,

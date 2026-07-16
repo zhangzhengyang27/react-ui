@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 import { ScheduleEventData, ScheduleResourceData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
-const tomorrow = dayjs().add(1, 'day').format('YYYY-MM-DD');
-const nextWeek = dayjs().add(5, 'day').format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
+const tomorrow = dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD');
+const nextWeek = dayjs('2024-01-15').add(5, 'day').format('YYYY-MM-DD');
 
 export const resources: ScheduleResourceData[] = [
   { id: 'tokyo', label: 'Meeting room: Tokyo' },
@@ -15,7 +15,7 @@ export const resources: ScheduleResourceData[] = [
 export const resourceEvents: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Team Standup',
+    title: '团队站会',
     start: `${today} 09:00:00`,
     end: `${today} 09:30:00`,
     color: 'blue',
@@ -23,7 +23,7 @@ export const resourceEvents: ScheduleEventData[] = [
   },
   {
     id: 2,
-    title: 'Sprint Planning',
+    title: '迭代计划',
     start: `${today} 10:00:00`,
     end: `${today} 11:30:00`,
     color: 'green',
@@ -31,7 +31,7 @@ export const resourceEvents: ScheduleEventData[] = [
   },
   {
     id: 3,
-    title: 'Client Call',
+    title: '客户电话',
     start: `${today} 09:30:00`,
     end: `${today} 10:30:00`,
     color: 'violet',
@@ -39,7 +39,7 @@ export const resourceEvents: ScheduleEventData[] = [
   },
   {
     id: 4,
-    title: 'Design Review',
+    title: '设计评审',
     start: `${tomorrow} 13:00:00`,
     end: `${tomorrow} 14:00:00`,
     color: 'orange',
@@ -55,7 +55,7 @@ export const resourceEvents: ScheduleEventData[] = [
   },
   {
     id: 6,
-    title: 'Workshop',
+    title: '研讨会',
     start: `${nextWeek} 14:00:00`,
     end: `${nextWeek} 16:00:00`,
     color: 'pink',
@@ -63,7 +63,7 @@ export const resourceEvents: ScheduleEventData[] = [
   },
   {
     id: 7,
-    title: 'Architecture Review',
+    title: '架构评审',
     start: `${today} 10:00:00`,
     end: `${today} 11:00:00`,
     color: 'red',
@@ -71,7 +71,7 @@ export const resourceEvents: ScheduleEventData[] = [
   },
   {
     id: 8,
-    title: 'Retrospective',
+    title: '回顾会议',
     start: `${tomorrow} 15:00:00`,
     end: `${tomorrow} 16:00:00`,
     color: 'grape',
@@ -83,9 +83,9 @@ export const dataCode = `
 import dayjs from 'dayjs';
 import { ScheduleResourceData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
-const tomorrow = dayjs().add(1, 'day').format('YYYY-MM-DD');
-const nextWeek = dayjs().add(5, 'day').format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
+const tomorrow = dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD');
+const nextWeek = dayjs('2024-01-15').add(5, 'day').format('YYYY-MM-DD');
 
 const resources: ScheduleResourceData[] = [
   { id: 'tokyo', label: 'Meeting room: Tokyo' },
@@ -95,13 +95,13 @@ const resources: ScheduleResourceData[] = [
 ];
 
 const events = [
-  { id: 1, title: 'Team Standup', start: \`\${today} 09:00:00\`, end: \`\${today} 09:30:00\`, color: 'blue', resourceId: 'tokyo' },
-  { id: 2, title: 'Sprint Planning', start: \`\${today} 10:00:00\`, end: \`\${today} 11:30:00\`, color: 'green', resourceId: 'tokyo' },
-  { id: 3, title: 'Client Call', start: \`\${today} 09:30:00\`, end: \`\${today} 10:30:00\`, color: 'violet', resourceId: 'paris' },
-  { id: 4, title: 'Design Review', start: \`\${tomorrow} 13:00:00\`, end: \`\${tomorrow} 14:00:00\`, color: 'orange', resourceId: 'paris' },
+  { id: 1, title: '团队站会', start: \`\${today} 09:00:00\`, end: \`\${today} 09:30:00\`, color: 'blue', resourceId: 'tokyo' },
+  { id: 2, title: '迭代计划', start: \`\${today} 10:00:00\`, end: \`\${today} 11:30:00\`, color: 'green', resourceId: 'tokyo' },
+  { id: 3, title: '客户电话', start: \`\${today} 09:30:00\`, end: \`\${today} 10:30:00\`, color: 'violet', resourceId: 'paris' },
+  { id: 4, title: '设计评审', start: \`\${tomorrow} 13:00:00\`, end: \`\${tomorrow} 14:00:00\`, color: 'orange', resourceId: 'paris' },
   { id: 5, title: '1:1 Meeting', start: \`\${today} 11:00:00\`, end: \`\${today} 11:30:00\`, color: 'cyan', resourceId: 'new-york' },
-  { id: 6, title: 'Workshop', start: \`\${nextWeek} 14:00:00\`, end: \`\${nextWeek} 16:00:00\`, color: 'pink', resourceId: 'new-york' },
-  { id: 7, title: 'Architecture Review', start: \`\${today} 10:00:00\`, end: \`\${today} 11:00:00\`, color: 'red', resourceId: 'london' },
-  { id: 8, title: 'Retrospective', start: \`\${tomorrow} 15:00:00\`, end: \`\${tomorrow} 16:00:00\`, color: 'grape', resourceId: 'london' },
+  { id: 6, title: '研讨会', start: \`\${nextWeek} 14:00:00\`, end: \`\${nextWeek} 16:00:00\`, color: 'pink', resourceId: 'new-york' },
+  { id: 7, title: '架构评审', start: \`\${today} 10:00:00\`, end: \`\${today} 11:00:00\`, color: 'red', resourceId: 'london' },
+  { id: 8, title: '回顾会议', start: \`\${tomorrow} 15:00:00\`, end: \`\${tomorrow} 16:00:00\`, color: 'grape', resourceId: 'london' },
 ];
 `;

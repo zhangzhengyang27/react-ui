@@ -1,9 +1,9 @@
-import { createTheme, Loader, MantineThemeProvider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { createTheme, Loader, UIThemeProvider } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 import { CssLoader, cssLoaderModuleCssCode, cssLoaderTsxCode } from './_CssLoader';
 
 const code = `
-import { MantineProvider, Loader } from '@react-ui/ui';
+import { UIProvider, Loader } from '@react-ui/ui';
 import { CssLoader } from './CssLoader';
 
 const theme = createTheme({
@@ -19,9 +19,9 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
+    <UIThemeProvider theme={theme}>
       <Loader />
-    </MantineThemeProvider>
+    </UIThemeProvider>
   );
 }
 `;
@@ -39,19 +39,19 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
+    <UIThemeProvider theme={theme}>
       <Loader />
-    </MantineThemeProvider>
+    </UIThemeProvider>
   );
 }
 
-export const cssLoader: MantineDemo = {
+export const cssLoader: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
-    { fileName: 'CssLoader.tsx', language: 'tsx', code: cssLoaderTsxCode },
-    { fileName: 'CssLoader.module.css', language: 'scss', code: cssLoaderModuleCssCode },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
+    { fileName: 'Css加载器.tsx', language: 'tsx', code: cssLoaderTsxCode },
+    { fileName: 'Css加载器样式.module.css', language: 'scss', code: cssLoaderModuleCssCode },
   ],
 };

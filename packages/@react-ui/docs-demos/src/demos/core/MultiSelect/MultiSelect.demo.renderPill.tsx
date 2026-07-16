@@ -1,15 +1,15 @@
 import { Avatar, MultiSelect, Pill } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { MultiSelect, Pill, Avatar } from '@react-ui/ui';
 
 const users = [
-  { value: 'Emily Johnson', label: 'Emily Johnson', image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-7.png' },
-  { value: 'Ava Rodriguez', label: 'Ava Rodriguez', image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png' },
-  { value: 'Olivia Chen', label: 'Olivia Chen', image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-4.png' },
-  { value: 'Ethan Barnes', label: 'Ethan Barnes', image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png' },
-  { value: 'Mason Taylor', label: 'Mason Taylor', image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-2.png' },
+  { value: 'Emily Johnson', label: 'Emily Johnson', image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-7.png' },
+  { value: 'Ava Rodriguez', label: 'Ava Rodriguez', image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-8.png' },
+  { value: 'Olivia Chen', label: 'Olivia Chen', image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-4.png' },
+  { value: 'Ethan Barnes', label: 'Ethan Barnes', image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-1.png' },
+  { value: 'Mason Taylor', label: 'Mason Taylor', image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-2.png' },
 ];
 
 const usersMap = new Map(users.map((user) => [user.value.toString(), user]));
@@ -18,8 +18,8 @@ function Demo() {
   return (
     <MultiSelect
       data={users}
-      label="Candidates"
-      placeholder="Select candidates"
+      label="候选人"
+      placeholder="选择候选人"
       defaultValue={['Emily Johnson', 'Ava Rodriguez']}
       renderPill={({ option, onRemove }) => {
         const user = usersMap.get(option?.value.toString());
@@ -41,27 +41,27 @@ const users = [
   {
     value: 'Emily Johnson',
     label: 'Emily Johnson',
-    image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-7.png',
+    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-7.png',
   },
   {
     value: 'Ava Rodriguez',
     label: 'Ava Rodriguez',
-    image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png',
+    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-8.png',
   },
   {
     value: 'Olivia Chen',
     label: 'Olivia Chen',
-    image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-4.png',
+    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-4.png',
   },
   {
     value: 'Ethan Barnes',
     label: 'Ethan Barnes',
-    image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png',
+    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-1.png',
   },
   {
     value: 'Mason Taylor',
     label: 'Mason Taylor',
-    image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-2.png',
+    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-2.png',
   },
 ];
 
@@ -71,8 +71,8 @@ function Demo() {
   return (
     <MultiSelect
       data={users}
-      label="Candidates"
-      placeholder="Select candidates"
+      label="候选人"
+      placeholder="选择候选人"
       defaultValue={['Emily Johnson', 'Ava Rodriguez']}
       renderPill={({ option, onRemove }) => {
         const user = usersMap.get(option?.value.toString());
@@ -89,7 +89,7 @@ function Demo() {
   );
 }
 
-export const renderPill: MantineDemo = {
+export const renderPill: UIDemo = {
   type: 'code',
   component: Demo,
   code,

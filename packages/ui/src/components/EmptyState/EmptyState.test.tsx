@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { EmptyState } from './EmptyState'
 
 function Wrapper({ children }: { children: React.ReactNode }) {
-    return <MantineProvider>{children}</MantineProvider>
+    return <UIProvider>{children}</UIProvider>
 }
 
 describe('@react-ui/ui/EmptyState', () => {
@@ -45,11 +45,11 @@ describe('@react-ui/ui/EmptyState', () => {
 
     it('applies align data attribute', () => {
         const { container } = render(<EmptyState align="left" />, { wrapper: Wrapper })
-        expect(container.querySelector('.mantine-EmptyState-root')).toHaveAttribute('data-align', 'left')
+        expect(container.querySelector('.ui-EmptyState-root')).toHaveAttribute('data-align', 'left')
     })
 
     it('applies variant data attribute', () => {
         const { container } = render(<EmptyState variant="filled" />, { wrapper: Wrapper })
-        expect(container.querySelector('.mantine-EmptyState-root')).toHaveAttribute('data-variant', 'filled')
+        expect(container.querySelector('.ui-EmptyState-root')).toHaveAttribute('data-variant', 'filled')
     })
 })

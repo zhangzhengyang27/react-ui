@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Alert } from './Alert'
 
 describe('Alert', () => {
     it('renders with children', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Alert>Alert message</Alert>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('Alert message')).toBeInTheDocument()
@@ -16,11 +16,11 @@ describe('Alert', () => {
 
     it('renders title and icon', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Alert title="Alert title" icon="icon">
                     Alert message
                 </Alert>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('Alert title')).toBeInTheDocument()
@@ -30,11 +30,11 @@ describe('Alert', () => {
     it('calls onClose when close button is clicked', () => {
         const onClose = vi.fn()
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Alert withCloseButton onClose={onClose}>
                     Alert message
                 </Alert>
-            </MantineProvider>
+            </UIProvider>
         )
 
         screen.getByRole('button').click()

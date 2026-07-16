@@ -22,14 +22,16 @@ export interface UseFetchReturnValue<T> {
     abort: () => void
 }
 
+export type UseFetchUrl<T> = string | (() => Promise<T>)
+
 /**
  * 基于 fetch 的数据获取 Hook，支持自动请求、重新请求与中止。
- * @param url 请求地址
+ * @param url 请求地址或返回 Promise 的函数
  * @param options fetch 配置项
  * @returns 数据、加载状态、错误与操作函数
  */
 export function useFetch<T>(
-    url: string,
+    url: UseFetchUrl<T>,
     { autoInvoke = true, ...options }: UseFetchOptions = {}
 ): UseFetchReturnValue<T> {
     const [data, setData] = useState<T | null>(null)
@@ -45,13 +47,17 @@ export function useFetch<T>(
         controller.current = new AbortController()
         setLoading(true)
 
-        return fetch(url, { ...options, signal: controller.current.signal })
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error(`Request failed with status ${res.status}`)
-                }
-                return res.json()
-            })
+        const request = typeof url === 'function'
+            ? (url as () => Promise<T>)()
+            : fetch(url, { ...options, signal: controller.current.signal })
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error(`Request failed with status ${res.status}`)
+                    }
+                    return res.json()
+                })
+
+        return request
             .then(res => {
                 setData(res)
                 setLoading(false)

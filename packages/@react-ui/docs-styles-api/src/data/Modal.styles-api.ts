@@ -3,29 +3,29 @@ import type { StylesApiData } from '../types';
 
 export const ModalStylesApi: StylesApiData<ModalFactory> = {
   selectors: {
-    root: 'Root element',
-    inner: 'Element used to center modal, has fixed position, takes entire screen',
-    content: '`Modal.Content` root element',
-    header: 'Contains title and close button',
-    overlay: 'Overlay displayed under the `Modal.Content`',
-    title: 'Modal title (h2 tag), displayed in the header',
-    body: 'Modal body, displayed after header',
-    close: 'Close button',
+    root: '根元素',
+    inner: '用于居中模态框的元素，固定定位，占据整个屏幕',
+    content: '`Modal.Content` 根元素',
+    header: '包含标题和关闭按钮',
+    overlay: '显示在 `Modal.Content` 下方的遮罩层',
+    title: '模态框标题（h2 标签），显示在 header 中',
+    body: '模态框主体，显示在 header 之后',
+    close: '关闭按钮',
   },
 
   vars: {
     root: {
-      '--modal-radius': 'Controls `border-radius` of `Modal.Content`',
-      '--modal-size': 'Controls `width` of `Modal.Content`',
+      '--modal-radius': '控制 `Modal.Content` 的 `border-radius`',
+      '--modal-size': '控制 `Modal.Content` 的 `width`',
       '--modal-x-offset':
-        'Controls left and right `padding` of the inner element used to position `Modal.Content`',
+        '控制用于定位 `Modal.Content` 的内部元素的左右 `padding`',
       '--modal-y-offset':
-        'Controls top and bottom `padding` of the inner element used to position `Modal.Content`',
+        '控制用于定位 `Modal.Content` 的内部元素的上下 `padding`',
     },
   },
 
   modifiers: [
-    { modifier: 'data-full-screen', selector: 'root', condition: '`fullScreen` prop is set' },
-    { modifier: 'data-centered', selector: 'root', condition: '`centered` prop is set' },
+    { modifier: 'data-full-screen', selector: 'root', condition: '设置了 `fullScreen` 属性' },
+    { modifier: 'data-centered', selector: 'root', condition: '设置了 `centered` 属性' },
   ],
 };

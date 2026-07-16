@@ -1,7 +1,7 @@
 .root {
   padding-block: 120px;
 
-  @mixin smaller-than $mantine-breakpoint-md {
+  @media (max-width: 62em) {
     padding-block: 40px;
   }
 }

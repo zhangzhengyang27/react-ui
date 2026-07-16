@@ -2,12 +2,12 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import { Select } from '@react-ui/ui';
 import { ResourcesDayView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { _eventFormCode, EventData, EventForm } from '../_EventForm';
 import { dataCode, resourceEvents, resources } from './_data';
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
   const [events, setEvents] = useState<ScheduleEventData[]>(resourceEvents);
   const [formOpened, setFormOpened] = useState(false);
   const [selectedEventData, setSelectedEventData] = useState<EventData | null>(null);
@@ -127,8 +127,8 @@ function Demo() {
         onDelete={selectedEventData?.id ? handleDeleteEvent : undefined}
       >
         <Select
-          label="Conference Room"
-          placeholder="Select a room"
+          label="会议室"
+          placeholder="选择会议室"
           radius="md"
           data={resources.map((r) => ({ value: String(r.id), label: String(r.label) }))}
           value={selectedResourceId}
@@ -147,7 +147,7 @@ import { EventData, EventForm } from './EventForm';
 import { events as initialEvents, resources } from './data';
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
   const [events, setEvents] = useState<ScheduleEventData[]>(initialEvents);
   const [formOpened, setFormOpened] = useState(false);
   const [selectedEventData, setSelectedEventData] = useState<EventData | null>(null);
@@ -267,8 +267,8 @@ function Demo() {
         onDelete={selectedEventData?.id ? handleDeleteEvent : undefined}
       >
         <Select
-          label="Conference Room"
-          placeholder="Select a room"
+          label="会议室"
+          placeholder="选择会议室"
           radius="md"
           data={resources.map((r) => ({ value: String(r.id), label: String(r.label) }))}
           value={selectedResourceId}
@@ -279,13 +279,13 @@ function Demo() {
   );
 }`;
 
-export const eventForm: MantineDemo = {
+export const eventForm: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
-    { code: _eventFormCode, language: 'tsx', fileName: 'EventForm.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
+    { code: _eventFormCode, language: 'tsx', fileName: '事件表单.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

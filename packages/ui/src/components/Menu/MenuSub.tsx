@@ -27,7 +27,7 @@ export interface MenuSubProps extends Omit<PopoverProps, 'onChange' | 'opened' |
     /** Dropdown position relative to the target element @default 'right-start' */
     position?: FloatingPosition
 
-    /** Offset of the dropdown element @default 0 */
+    /** 下拉元素的偏移量 @default 0 */
     offset?: number
 }
 

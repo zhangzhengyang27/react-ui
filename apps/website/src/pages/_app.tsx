@@ -1,8 +1,8 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { CodeHighlightAdapterProvider, createShikiAdapter } from '@react-ui/code-highlight'
-import { DirectionProvider, MantineProvider, Notifications } from '@react-ui/ui'
-import { MantineEmotionProvider } from '@react-ui/emotion'
+import { DirectionProvider, UIProvider, Notifications } from '@react-ui/ui'
+import { UIEmotionProvider } from '@react-ui/emotion'
 import { GaScript } from '@/components/GaScript'
 import { HotKeysHandler } from '@/components/HotKeysHandler'
 import { MdxProvider } from '@/components/MdxProvider'
@@ -54,8 +54,8 @@ export default function App({ Component, pageProps, router }: AppProps) {
             </Head>
             <GaScript />
             <DirectionProvider initialDirection="ltr" detectDirection={false}>
-                <MantineEmotionProvider cache={emotionCache}>
-                    <MantineProvider theme={theme} defaultColorScheme="light">
+                <UIEmotionProvider cache={emotionCache}>
+                    <UIProvider theme={theme} defaultColorScheme="light">
                         <CodeHighlightAdapterProvider adapter={shikiAdapter}>
                             <Search />
                             <Notifications />
@@ -72,8 +72,8 @@ export default function App({ Component, pageProps, router }: AppProps) {
                                 </MdxProvider>
                             </ModalsProviderDemo>
                         </CodeHighlightAdapterProvider>
-                    </MantineProvider>
-                </MantineEmotionProvider>
+                    </UIProvider>
+                </UIEmotionProvider>
             </DirectionProvider>
         </>
     )

@@ -1,5 +1,5 @@
 import { Button, Group, Pagination, TextInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Group, Pagination, TextInput } from '@react-ui/ui';
@@ -9,14 +9,14 @@ function Demo() {
     <div>
       <Group>
         <Pagination total={45} size="sm" />
-        <Button size="sm">sm button</Button>
-        <TextInput size="sm" placeholder="sm input" />
+        <Button size="sm">sm 按钮</Button>
+        <TextInput size="sm" placeholder="sm 输入" />
       </Group>
 
       <Group mt="md">
         <Pagination total={45} size="input-sm" />
-        <Button size="sm">sm button</Button>
-        <TextInput size="sm" placeholder="sm input" />
+        <Button size="sm">sm 按钮</Button>
+        <TextInput size="sm" placeholder="sm 输入" />
       </Group>
     </div>
   );
@@ -28,20 +28,20 @@ function Demo() {
     <div>
       <Group>
         <Pagination total={45} size="sm" />
-        <Button size="sm">sm button</Button>
-        <TextInput size="sm" placeholder="sm input" />
+        <Button size="sm">sm 按钮</Button>
+        <TextInput size="sm" placeholder="sm 输入" />
       </Group>
 
       <Group mt="md">
         <Pagination total={45} size="input-sm" />
-        <Button size="sm">sm button</Button>
-        <TextInput size="sm" placeholder="sm input" />
+        <Button size="sm">sm 按钮</Button>
+        <TextInput size="sm" placeholder="sm 输入" />
       </Group>
     </div>
   );
 }
 
-export const size: MantineDemo = {
+export const size: UIDemo = {
   type: 'code',
   component: Demo,
   code,

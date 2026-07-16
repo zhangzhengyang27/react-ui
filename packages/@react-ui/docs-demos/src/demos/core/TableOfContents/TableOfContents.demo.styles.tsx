@@ -1,5 +1,5 @@
 import { TableOfContents } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './TableOfContents.demo.styles.module.css';
 
 const cssCode = `.control {
@@ -55,12 +55,12 @@ function Demo() {
   );
 }
 
-export const styles: MantineDemo = {
+export const styles: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
   ],
   maxWidth: 340,
   centered: true,

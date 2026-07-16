@@ -1,9 +1,9 @@
-import { createTheme, MantineThemeProvider, Title } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { createTheme, UIThemeProvider, Title } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Theming.demo.headingStyles.module.css';
 
 const code = `
-import { Title, MantineProvider } from '@react-ui/ui';
+import { Title, UIProvider } from '@react-ui/ui';
 import classes from './Demo.module.css';
 
 const theme = createTheme({
@@ -18,14 +18,14 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
-      <Title order={1}>Heading 1</Title>
-      <Title order={2}>Heading 2</Title>
-      <Title order={3}>Heading 3</Title>
-      <Title order={4}>Heading 4</Title>
-      <Title order={5}>Heading 5</Title>
-      <Title order={6}>Heading 6</Title>
-    </MantineThemeProvider>
+    <UIThemeProvider theme={theme}>
+      <Title order={1}>标题 1</Title>
+      <Title order={2}>标题 2</Title>
+      <Title order={3}>标题 3</Title>
+      <Title order={4}>标题 4</Title>
+      <Title order={5}>标题 5</Title>
+      <Title order={6}>标题 6</Title>
+    </UIThemeProvider>
   );
 }
 `;
@@ -55,22 +55,22 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
-      <Title order={1}>Heading 1</Title>
-      <Title order={2}>Heading 2</Title>
-      <Title order={3}>Heading 3</Title>
-      <Title order={4}>Heading 4</Title>
-      <Title order={5}>Heading 5</Title>
-      <Title order={6}>Heading 6</Title>
-    </MantineThemeProvider>
+    <UIThemeProvider theme={theme}>
+      <Title order={1}>标题 1</Title>
+      <Title order={2}>标题 2</Title>
+      <Title order={3}>标题 3</Title>
+      <Title order={4}>标题 4</Title>
+      <Title order={5}>标题 5</Title>
+      <Title order={6}>标题 6</Title>
+    </UIThemeProvider>
   );
 }
 
-export const headingsStyles: MantineDemo = {
+export const headingsStyles: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
-    { fileName: 'Demo.module.css', language: 'scss', code: cssCode },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
+    { fileName: '演示样式.module.css', language: 'scss', code: cssCode },
   ],
 };

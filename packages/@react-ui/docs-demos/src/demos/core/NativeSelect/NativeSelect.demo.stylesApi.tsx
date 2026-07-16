@@ -1,12 +1,12 @@
 import { NativeSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { NativeSelectStylesApi } from '@react-ui/docs-styles-api';
 
 const code = `
 import { NativeSelect } from '@react-ui/ui';
 
 function Demo() {
-  return <NativeSelect{{props}} data={['React', 'Angular']} label="NativeSelect label" description="NativeSelect description" error="NativeSelect error" withAsterisk />;
+  return <NativeSelect{{props}} data={['React', 'Angular']} label="NativeSelect 标签" description="NativeSelect 描述" error="NativeSelect 错误" withAsterisk />;
 }
 `;
 
@@ -15,15 +15,15 @@ function Demo(props: any) {
     <NativeSelect
       {...props}
       data={['React', 'Angular']}
-      label="NativeSelect label"
-      description="NativeSelect description"
-      error="NativeSelect error"
+      label="NativeSelect 标签"
+      description="NativeSelect 描述"
+      error="NativeSelect 错误"
       withAsterisk
     />
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: NativeSelectStylesApi,
   component: Demo,

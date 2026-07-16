@@ -32,8 +32,8 @@ export function EventForm({
     initialValues: {
       id: values?.id,
       title: values?.title || '',
-      start: values?.start || new Date(),
-      end: values?.end || new Date(),
+      start: values?.start || new Date('2024-01-15'),
+      end: values?.end || new Date('2024-01-15'),
       color: values?.color || 'blue',
     },
     validate: {
@@ -57,8 +57,8 @@ export function EventForm({
     form.setValues({
       id: values?.id,
       title: values?.title || '',
-      start: values?.start || new Date(),
-      end: values?.end || new Date(),
+      start: values?.start || new Date('2024-01-15'),
+      end: values?.end || new Date('2024-01-15'),
       color: values?.color || 'blue',
     });
   }, [values]);
@@ -83,20 +83,20 @@ export function EventForm({
     <Modal
       opened={opened}
       onClose={onClose}
-      title={form.values.id ? 'Edit Event' : 'Create Event'}
+      title={form.values.id ? '编辑事件' : '创建事件'}
       {...others}
     >
       <form onSubmit={form.onSubmit(handleSubmit)}>
         <Stack gap="md">
           <TextInput
-            label="Event Title"
-            placeholder="Enter event title"
+            label="事件标题"
+            placeholder="输入事件标题"
             data-autofocus
             {...form.getInputProps('title')}
           />
 
-          <DateTimePicker label="Start Time" clearable {...form.getInputProps('start')} />
-          <DateTimePicker label="End Time" {...form.getInputProps('end')} clearable />
+          <DateTimePicker label="开始时间" clearable {...form.getInputProps('start')} />
+          <DateTimePicker label="结束时间" {...form.getInputProps('end')} clearable />
 
           {children}
 
@@ -152,8 +152,8 @@ export function EventForm({
     initialValues: {
       id: values?.id,
       title: values?.title || '',
-      start: values?.start || new Date(),
-      end: values?.end || new Date(),
+      start: values?.start || new Date('2024-01-15'),
+      end: values?.end || new Date('2024-01-15'),
       color: values?.color || 'blue',
     },
     validate: {
@@ -177,8 +177,8 @@ export function EventForm({
     form.setValues({
       id: values?.id,
       title: values?.title || '',
-      start: values?.start || new Date(),
-      end: values?.end || new Date(),
+      start: values?.start || new Date('2024-01-15'),
+      end: values?.end || new Date('2024-01-15'),
       color: values?.color || 'blue',
     });
   }, [values]);
@@ -203,24 +203,24 @@ export function EventForm({
     <Modal
       opened={opened}
       onClose={onClose}
-      title={form.values.id ? 'Edit Event' : 'Create Event'}
+      title={form.values.id ? '编辑事件' : '创建事件'}
       {...others}
     >
       <form onSubmit={form.onSubmit(handleSubmit)}>
         <Stack gap="md">
           <TextInput
-            label="Event Title"
-            placeholder="Enter event title"
+            label="事件标题"
+            placeholder="输入事件标题"
             data-autofocus
             {...form.getInputProps('title')}
           />
 
           <DateTimePicker
-            label="Start Time"
+            label="开始时间"
             clearable
             {...form.getInputProps('start')}
           />
-          <DateTimePicker label="End Time" {...form.getInputProps('end')} clearable />
+          <DateTimePicker label="结束时间" {...form.getInputProps('end')} clearable />
 
           <Group justify="flex-end" gap="sm">
             {form.values.id && onDelete && (

@@ -25,7 +25,7 @@ export function ConfiguratorStringControl({
       value={value}
       onChange={(event) => onChange(event.currentTarget.value)}
       label={getControlLabel(prop)}
-      placeholder="Enter prop value"
+      placeholder="输入属性值"
       {...others}
     />
   );

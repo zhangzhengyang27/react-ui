@@ -1,5 +1,5 @@
 import { Avatar, Indicator } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Avatar, Indicator } from '@react-ui/ui';
@@ -10,7 +10,7 @@ function Demo() {
       <Avatar
         size="lg"
         radius="xl"
-        src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-3.png"
+        src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-3.png"
       />
     </Indicator>
   );
@@ -23,13 +23,13 @@ function Demo() {
       <Avatar
         size="lg"
         radius="xl"
-        src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-3.png"
+        src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-3.png"
       />
     </Indicator>
   );
 }
 
-export const offset: MantineDemo = {
+export const offset: UIDemo = {
   type: 'code',
   component: Demo,
   code,

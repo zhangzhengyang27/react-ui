@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import lodash from 'lodash';
-import { render, screen, tests } from '@mantine-tests/core';
+import { render, screen, tests } from '@react-ui/tests';
 import { Day, DayProps, DayStylesNames } from './Day';
 
 const defaultProps: DayProps = {
@@ -52,12 +52,12 @@ describe('@react-ui/dates/Day', () => {
 
   it('has correct default __staticSelector', () => {
     render(<Day {...defaultProps} />);
-    expect(screen.getByRole('button')).toHaveClass('mantine-Day-day');
+    expect(screen.getByRole('button')).toHaveClass('ui-Day-day');
   });
 
   it('supports __staticSelector', () => {
     render(<Day {...defaultProps} __staticSelector="Month" />);
-    expect(screen.getByRole('button')).toHaveClass('mantine-Month-day');
+    expect(screen.getByRole('button')).toHaveClass('ui-Month-day');
   });
 
   it('allows to customize day rendering with renderDay function', () => {

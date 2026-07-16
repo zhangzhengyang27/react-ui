@@ -1,5 +1,5 @@
 import { BarChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { mixedStackData, mixedStackDataCode } from './_data';
 
 const code = `
@@ -109,11 +109,11 @@ function Demo() {
   );
 }
 
-export const stripes: MantineDemo = {
+export const stripes: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: mixedStackDataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

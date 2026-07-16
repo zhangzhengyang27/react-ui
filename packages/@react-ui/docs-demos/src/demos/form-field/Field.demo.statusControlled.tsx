@@ -1,6 +1,6 @@
 import { Text, TextInput } from '@react-ui/ui';
 import { useField } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Text, TextInput } from '@react-ui/ui';
@@ -11,7 +11,7 @@ function Demo() {
 
   return (
     <>
-      <TextInput {...field.getInputProps()} label="Name" placeholder="Enter your name" mb="md" />
+      <TextInput {...field.getInputProps()} label="姓名" placeholder="输入你的姓名" mb="md" />
 
       <Text fz="sm">
         Dirty:{' '}
@@ -35,7 +35,7 @@ function Demo() {
 
   return (
     <>
-      <TextInput {...field.getInputProps()} label="Name" placeholder="Enter your name" mb="md" />
+      <TextInput {...field.getInputProps()} label="姓名" placeholder="输入你的姓名" mb="md" />
 
       <Text fz="sm">
         Dirty:{' '}
@@ -53,7 +53,7 @@ function Demo() {
   );
 }
 
-export const statusControlled: MantineDemo = {
+export const statusControlled: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,6 +1,6 @@
 import { HeartIcon } from '@phosphor-icons/react';
 import { ActionIcon } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './ActionIcon.demo.disabledStyles.module.css';
 
 const code = `
@@ -10,7 +10,7 @@ import classes from './Demo.module.css';
 
 function Demo() {
   return (
-    <ActionIcon size="xl" className={classes.button} disabled aria-label="Disabled with styles">
+    <ActionIcon size="xl" className={classes.button} disabled aria-label="带样式的禁用">
       <HeartIcon />
     </ActionIcon>
   );
@@ -29,18 +29,18 @@ const cssCode = `
 
 function Demo() {
   return (
-    <ActionIcon size="xl" className={classes.button} disabled aria-label="Disabled with styles">
+    <ActionIcon size="xl" className={classes.button} disabled aria-label="带样式的禁用">
       <HeartIcon />
     </ActionIcon>
   );
 }
 
-export const disabledStyles: MantineDemo = {
+export const disabledStyles: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   code: [
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
   ],
 };

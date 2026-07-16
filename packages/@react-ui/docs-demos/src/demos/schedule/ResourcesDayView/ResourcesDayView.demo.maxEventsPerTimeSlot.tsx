@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { ResourcesDayView, ScheduleEventData, ScheduleResourceData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const demoResources: ScheduleResourceData[] = [
   { id: 'tokyo', label: 'Meeting room: Tokyo' },
@@ -13,7 +13,7 @@ const demoResources: ScheduleResourceData[] = [
 const demoEvents: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Team Standup',
+    title: '团队站会',
     start: `${today} 09:00:00`,
     end: `${today} 10:00:00`,
     color: 'blue',
@@ -21,7 +21,7 @@ const demoEvents: ScheduleEventData[] = [
   },
   {
     id: 2,
-    title: 'Sprint Planning',
+    title: '迭代计划',
     start: `${today} 09:00:00`,
     end: `${today} 10:30:00`,
     color: 'green',
@@ -29,7 +29,7 @@ const demoEvents: ScheduleEventData[] = [
   },
   {
     id: 3,
-    title: 'Code Review',
+    title: '代码审查',
     start: `${today} 09:30:00`,
     end: `${today} 10:00:00`,
     color: 'violet',
@@ -45,7 +45,7 @@ const demoEvents: ScheduleEventData[] = [
   },
   {
     id: 5,
-    title: 'Client Call',
+    title: '客户电话',
     start: `${today} 09:00:00`,
     end: `${today} 10:00:00`,
     color: 'cyan',
@@ -53,7 +53,7 @@ const demoEvents: ScheduleEventData[] = [
   },
   {
     id: 6,
-    title: 'Design Review',
+    title: '设计评审',
     start: `${today} 09:00:00`,
     end: `${today} 10:00:00`,
     color: 'pink',
@@ -61,7 +61,7 @@ const demoEvents: ScheduleEventData[] = [
   },
   {
     id: 7,
-    title: 'Architecture Review',
+    title: '架构评审',
     start: `${today} 09:00:00`,
     end: `${today} 10:00:00`,
     color: 'red',
@@ -74,7 +74,7 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import { ResourcesDayView, ScheduleEventData, ScheduleResourceData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const resources: ScheduleResourceData[] = [
   { id: 'tokyo', label: 'Meeting room: Tokyo' },
@@ -86,7 +86,7 @@ const events: ScheduleEventData[] = [
 ];
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
 
   return (
     <ResourcesDayView
@@ -103,7 +103,7 @@ function Demo() {
 `;
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
 
   return (
     <ResourcesDayView
@@ -118,7 +118,7 @@ function Demo() {
   );
 }
 
-export const maxEventsPerTimeSlot: MantineDemo = {
+export const maxEventsPerTimeSlot: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

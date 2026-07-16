@@ -1,5 +1,5 @@
 import cx from 'clsx';
-import { UnstyledButton, useMantineTheme } from '@react-ui/ui';
+import { UnstyledButton, useUITheme } from '@react-ui/ui';
 import type { TimePickerAmPmLabels, TimePickerFormat } from '../TimePicker';
 import { TimeValue } from '../TimeValue';
 import { useTimeGridContext } from './TimeGrid.context';
@@ -22,7 +22,7 @@ export function TimeGridControl({
   ...others
 }: TimeGridControlProps) {
   const ctx = useTimeGridContext();
-  const theme = useMantineTheme();
+  const theme = useUITheme();
 
   return (
     <UnstyledButton

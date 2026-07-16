@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { CaretRightIcon, FingerprintIcon, GaugeIcon, HeartbeatIcon } from '@phosphor-icons/react';
 import { Box, Group, NavLink } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -9,13 +9,13 @@ import { GaugeIcon, FingerprintIcon, HeartbeatIcon, CaretRightIcon } from '@phos
 import { Box, NavLink } from '@react-ui/ui';
 
 const data = [
-  { icon: GaugeIcon, label: 'Dashboard', description: 'Item with description' },
+  { icon: GaugeIcon, label: '仪表盘', description: '带描述的项目' },
   {
     icon: FingerprintIcon,
-    label: 'Security',
+    label: '安全',
     rightSection: <CaretRightIcon size={16} />,
   },
-  { icon: HeartbeatIcon, label: 'Activity' },
+  { icon: HeartbeatIcon, label: '活动' },
 ];
 
 function Demo() {
@@ -40,13 +40,13 @@ function Demo() {
 `;
 
 const data = [
-  { icon: GaugeIcon, label: 'Dashboard', description: 'Item with description' },
+  { icon: GaugeIcon, label: '仪表盘', description: '带描述的项目' },
   {
     icon: FingerprintIcon,
-    label: 'Security',
-    rightSection: <CaretRightIcon size={16} className="mantine-rotate-rtl" />,
+    label: '安全',
+    rightSection: <CaretRightIcon size={16} className="ui-rotate-rtl" />,
   },
-  { icon: HeartbeatIcon, label: 'Activity' },
+  { icon: HeartbeatIcon, label: '活动' },
 ];
 
 function Demo(props: any) {
@@ -73,7 +73,7 @@ function Demo(props: any) {
   );
 }
 
-export const active: MantineDemo = {
+export const active: UIDemo = {
   type: 'configurator',
   component: Demo,
   code,
@@ -83,9 +83,9 @@ export const active: MantineDemo = {
       prop: 'variant',
       type: 'segmented',
       data: [
-        { value: 'subtle', label: 'Subtle' },
-        { value: 'light', label: 'Light' },
-        { value: 'filled', label: 'Filled' },
+        { value: 'subtle', label: '柔和' },
+        { value: 'light', label: '浅色' },
+        { value: 'filled', label: '填充' },
       ],
 
       libraryValue: 'light',

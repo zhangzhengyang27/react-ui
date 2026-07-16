@@ -1,16 +1,16 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { getStartOfWeek, WeekView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const weekStart = dayjs(getStartOfWeek({ date: new Date(), firstDayOfWeek: 1 })).format(
+const weekStart = dayjs(getStartOfWeek({ date: new Date('2024-01-15'), firstDayOfWeek: 1 })).format(
   'YYYY-MM-DD'
 );
 
 const recurringEventsData = [
   {
     id: 'weekly-sync-series',
-    title: 'Weekly sync (series)',
+    title: '每周同步（系列）',
     start: `${weekStart} 10:00:00`,
     end: `${weekStart} 11:00:00`,
     color: 'blue',
@@ -21,7 +21,7 @@ const recurringEventsData = [
   },
   {
     id: 'weekly-sync-override',
-    title: 'Weekly sync (moved this week)',
+    title: '每周同步（本周已移动）',
     start: `${dayjs(weekStart).add(2, 'day').format('YYYY-MM-DD')} 15:00:00`,
     end: `${dayjs(weekStart).add(2, 'day').format('YYYY-MM-DD')} 16:00:00`,
     color: 'grape',
@@ -30,7 +30,7 @@ const recurringEventsData = [
   },
   {
     id: 'one-off-week',
-    title: 'One-off interview',
+    title: '一次性面试',
     start: `${dayjs(weekStart).add(1, 'day').format('YYYY-MM-DD')} 13:00:00`,
     end: `${dayjs(weekStart).add(1, 'day').format('YYYY-MM-DD')} 14:00:00`,
     color: 'green',
@@ -42,12 +42,12 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import { WeekView, getStartOfWeek } from '@react-ui/schedule';
 
-const weekStart = dayjs(getStartOfWeek({ date: new Date(), firstDayOfWeek: 1 })).format('YYYY-MM-DD');
+const weekStart = dayjs(getStartOfWeek({ date: new Date('2024-01-15'), firstDayOfWeek: 1 })).format('YYYY-MM-DD');
 
 const events = [
   {
     id: 'weekly-sync-series',
-    title: 'Weekly sync (series)',
+    title: '每周同步（系列）',
     start: \`\${weekStart} 10:00:00\`,
     end: \`\${weekStart} 11:00:00\`,
     color: 'blue',
@@ -58,7 +58,7 @@ const events = [
   },
   {
     id: 'weekly-sync-override',
-    title: 'Weekly sync (moved this week)',
+    title: '每周同步（本周已移动）',
     start: \`\${dayjs(weekStart).add(2, 'day').format('YYYY-MM-DD')} 15:00:00\`,
     end: \`\${dayjs(weekStart).add(2, 'day').format('YYYY-MM-DD')} 16:00:00\`,
     color: 'grape',
@@ -98,7 +98,7 @@ function Demo() {
   );
 }
 
-export const recurringEvents: MantineDemo = {
+export const recurringEvents: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

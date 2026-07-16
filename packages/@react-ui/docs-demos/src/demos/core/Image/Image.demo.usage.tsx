@@ -1,5 +1,5 @@
 import { Image } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Image } from '@react-ui/ui';
@@ -8,7 +8,7 @@ function Demo() {
   return (
     <Image
       radius="md"
-      src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png"
+      src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-7.png"
     />
   );
 }
@@ -18,12 +18,12 @@ function Demo() {
   return (
     <Image
       radius="md"
-      src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png"
+      src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-7.png"
     />
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

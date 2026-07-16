@@ -1,10 +1,10 @@
 import { createRef } from 'react'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { ScrollArea } from './ScrollArea'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 const getViewport = () => screen.getByTestId('scrollarea').querySelector('[data-scrollarea-viewport]') as HTMLDivElement
 
@@ -17,11 +17,11 @@ describe('ScrollArea', () => {
         )
 
         const root = screen.getByTestId('scrollarea')
-        expect(root).toHaveClass('mantine-ScrollArea-root')
+        expect(root).toHaveClass('ui-ScrollArea-root')
 
         const viewport = getViewport()
         expect(viewport).toBeInTheDocument()
-        expect(viewport).toHaveClass('mantine-ScrollArea-viewport')
+        expect(viewport).toHaveClass('ui-ScrollArea-viewport')
     })
 
     it('does not render custom scrollbars when type is "never"', () => {

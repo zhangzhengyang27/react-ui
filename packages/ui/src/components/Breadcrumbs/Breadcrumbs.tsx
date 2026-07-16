@@ -8,7 +8,7 @@ import {
     Factory,
     getSpacing,
     isElement,
-    MantineSpacing,
+    UISpacing,
     StylesApiProps,
     useProps,
     useStyles
@@ -25,7 +25,7 @@ export interface BreadcrumbsProps extends BoxProps, StylesApiProps<BreadcrumbsFa
     separator?: React.ReactNode
 
     /** Controls spacing between separator and breadcrumb @default 'xs' */
-    separatorMargin?: MantineSpacing
+    separatorMargin?: UISpacing
 
     /** React nodes that should be separated with `separator` */
     children: React.ReactNode

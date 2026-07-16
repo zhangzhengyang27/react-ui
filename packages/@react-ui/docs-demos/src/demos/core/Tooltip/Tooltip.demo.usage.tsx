@@ -1,13 +1,13 @@
 import { Button, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Tooltip, Button } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <Tooltip label="Tooltip">
-      <Button>Button with tooltip</Button>
+    <Tooltip label="提示">
+      <Button>带提示的按钮</Button>
     </Tooltip>
   );
 }
@@ -15,13 +15,13 @@ function Demo() {
 
 function Demo() {
   return (
-    <Tooltip label="Tooltip">
-      <Button>Button with tooltip</Button>
+    <Tooltip label="提示">
+      <Button>带提示的按钮</Button>
     </Tooltip>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

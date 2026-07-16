@@ -1,10 +1,10 @@
-# Mantine tiptap
+# UI tiptap
 
 [![npm](https://img.shields.io/npm/dm/@react-ui/tiptap)](https://www.npmjs.com/package/@react-ui/tiptap)
 
 Rich text editor based on [tiptap](https://tiptap.dev/)
 
-[View documentation](https://mantine.dev/)
+[View documentation](#)
 
 ## Installation
 

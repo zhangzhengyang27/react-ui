@@ -1,6 +1,6 @@
 import { MagnifyingGlassIcon } from '@phosphor-icons/react';
 import { SpotlightActionData, SpotlightActionGroupData } from '@react-ui/spotlight';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { SpotlightDemoBase } from './_demo-base';
 
 const code = `
@@ -10,20 +10,20 @@ import { MagnifyingGlassIcon } from '@phosphor-icons/react';
 
 const actions: (SpotlightActionGroupData | SpotlightActionData)[] = [
   {
-    group: 'Pages',
+    group: '页面',
     actions: [
-      { id: 'home', label: 'Home page', description: 'Where we present the product' },
-      { id: 'careers', label: 'Careers page', description: 'Where we list open positions' },
-      { id: 'about-us', label: 'About us page', description: 'Where we tell what we do' },
+      { id: 'home', label: '首页', description: '我们展示产品的地方' },
+      { id: 'careers', label: '招聘页', description: '我们列出空缺职位的地方' },
+      { id: 'about-us', label: '关于我们页', description: '我们介绍业务的地方' },
     ],
   },
 
   {
-    group: 'Apps',
+    group: '应用',
     actions: [
-      { id: 'svg-compressor', label: 'SVG compressor', description: 'Compress SVG images' },
-      { id: 'base64', label: 'Base 64 converter', description: 'Convert data to base 64 format' },
-      { id: 'fake-data', label: 'Fake data generator', description: 'Lorem ipsum generator' },
+      { id: 'svg-compressor', label: 'SVG 压缩器', description: '压缩 SVG 图片' },
+      { id: 'base64', label: 'Base 64 转换器', description: '将数据转换为 base 64 格式' },
+      { id: 'fake-data', label: '假数据生成器', description: 'Lorem ipsum 生成器' },
     ],
   },
 ];
@@ -31,14 +31,14 @@ const actions: (SpotlightActionGroupData | SpotlightActionData)[] = [
 function Demo() {
   return (
     <>
-      <Button onClick={spotlight.open}>Open spotlight</Button>
+      <Button onClick={spotlight.open}>打开聚光灯</Button>
       <Spotlight
         actions={actions}
-        nothingFound="Nothing found..."
+        nothingFound="未找到..."
         highlightQuery
         searchProps={{
           leftSection: <MagnifyingGlassIcon size={20} />,
-          placeholder: 'Search...',
+          placeholder: '搜索...',
         }}
       />
     </>
@@ -48,20 +48,20 @@ function Demo() {
 
 const actions: (SpotlightActionGroupData | SpotlightActionData)[] = [
   {
-    group: 'Pages',
+    group: '页面',
     actions: [
-      { id: 'home', label: 'Home page', description: 'Where we present the product' },
-      { id: 'careers', label: 'Careers page', description: 'Where we list open positions' },
-      { id: 'about-us', label: 'About us page', description: 'Where we tell what we do' },
+      { id: 'home', label: '首页', description: '我们展示产品的地方' },
+      { id: 'careers', label: '招聘页', description: '我们列出空缺职位的地方' },
+      { id: 'about-us', label: '关于我们页', description: '我们介绍业务的地方' },
     ],
   },
 
   {
-    group: 'Apps',
+    group: '应用',
     actions: [
-      { id: 'svg-compressor', label: 'SVG compressor', description: 'Compress SVG images' },
-      { id: 'base64', label: 'Base 64 converter', description: 'Convert data to base 64 format' },
-      { id: 'fake-data', label: 'Fake data generator', description: 'Lorem ipsum generator' },
+      { id: 'svg-compressor', label: 'SVG 压缩器', description: '压缩 SVG 图片' },
+      { id: 'base64', label: 'Base 64 转换器', description: '将数据转换为 base 64 格式' },
+      { id: 'fake-data', label: '假数据生成器', description: 'Lorem ipsum 生成器' },
     ],
   },
 ];
@@ -70,18 +70,18 @@ function Demo() {
   return (
     <SpotlightDemoBase
       actions={actions}
-      nothingFound="Nothing found..."
+      nothingFound="未找到..."
       highlightQuery
       shortcut={null}
       searchProps={{
         leftSection: <MagnifyingGlassIcon size={20} />,
-        placeholder: 'Search...',
+        placeholder: '搜索...',
       }}
     />
   );
 }
 
-export const groups: MantineDemo = {
+export const groups: UIDemo = {
   type: 'code',
   component: Demo,
   code,

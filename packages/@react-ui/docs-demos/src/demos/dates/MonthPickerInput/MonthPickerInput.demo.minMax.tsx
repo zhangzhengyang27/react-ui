@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MonthPickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -10,8 +10,8 @@ function Demo() {
   const [value, setValue] = useState<string | null>(null);
   return (
     <MonthPickerInput
-      label="Pick month"
-      placeholder="Pick month"
+      label="选择月份"
+      placeholder="选择月份"
       value={value}
       onChange={setValue}
       minDate={new Date(2022, 1)}
@@ -25,8 +25,8 @@ function Demo() {
   const [value, setValue] = useState<string | null>(null);
   return (
     <MonthPickerInput
-      label="Pick month"
-      placeholder="Pick month"
+      label="选择月份"
+      placeholder="选择月份"
       value={value}
       onChange={setValue}
       minDate={new Date(2022, 1)}
@@ -35,7 +35,7 @@ function Demo() {
   );
 }
 
-export const minMax: MantineDemo = {
+export const minMax: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

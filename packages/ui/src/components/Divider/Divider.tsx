@@ -7,8 +7,8 @@ import {
     Factory,
     getSize,
     getThemeColor,
-    MantineColor,
-    MantineSize,
+    UIColor,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -23,10 +23,10 @@ export type DividerCssVariables = {
 
 export interface DividerProps extends BoxProps, StylesApiProps<DividerFactory>, ElementProps<'div'> {
     /** Key of `theme.colors` or any valid CSS color value */
-    color?: MantineColor
+    color?: UIColor
 
     /** Controls width/height (depends on orientation) @default 'xs' */
-    size?: MantineSize | number | (string & {})
+    size?: UISize | number | (string & {})
 
     /** Divider label, visible only with `orientation="horizontal"` */
     label?: React.ReactNode

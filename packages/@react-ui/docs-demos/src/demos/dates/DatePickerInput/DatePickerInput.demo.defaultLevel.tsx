@@ -1,5 +1,5 @@
 import { DatePickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { DatePickerInput } from '@react-ui/dates';
@@ -9,14 +9,14 @@ function Demo() {
     <>
       <DatePickerInput
         defaultLevel="decade"
-        label="Decade level"
-        placeholder="Decade level"
+        label="十年层级"
+        placeholder="十年层级"
         mb="md"
       />
       <DatePickerInput
         defaultLevel="year"
-        label="Year level"
-        placeholder="Year level"
+        label="年份层级"
+        placeholder="年份层级"
       />
     </>
   );
@@ -28,16 +28,16 @@ function Demo() {
     <>
       <DatePickerInput
         defaultLevel="decade"
-        label="Decade level"
-        placeholder="Decade level"
+        label="十年层级"
+        placeholder="十年层级"
         mb="md"
       />
-      <DatePickerInput defaultLevel="year" label="Year level" placeholder="Year level" />
+      <DatePickerInput defaultLevel="year" label="年份层级" placeholder="年份层级" />
     </>
   );
 }
 
-export const defaultLevel: MantineDemo = {
+export const defaultLevel: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

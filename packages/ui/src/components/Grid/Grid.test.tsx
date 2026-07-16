@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Grid } from './Grid'
 
-const renderGrid = (ui: React.ReactElement) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderGrid = (ui: React.ReactElement) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Grid', () => {
     it('renders columns', () => {

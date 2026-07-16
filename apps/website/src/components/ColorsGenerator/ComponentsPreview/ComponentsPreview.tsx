@@ -1,8 +1,8 @@
-import { Button, Input, MantineColorsTuple, MantineProvider, Table } from '@react-ui/ui';
+import { Button, Input, UIColorsTuple, UIProvider, Table } from '@react-ui/ui';
 import { useDebouncedValue } from '@react-ui/hooks';
 
 interface ComponentsPreviewProps {
-  colors: MantineColorsTuple;
+  colors: UIColorsTuple;
 }
 
 export function ComponentsPreview({ colors }: ComponentsPreviewProps) {
@@ -11,18 +11,18 @@ export function ComponentsPreview({ colors }: ComponentsPreviewProps) {
   return (
     <>
       <Input.Label display="block" size="md" labelElement="div" mt="xl" mb="sm">
-        Variants preview
+        变体预览
       </Input.Label>
 
-      <MantineProvider theme={{ colors: { '__colors-generator__': debouncedColors } }}>
+      <UIProvider theme={{ colors: { '__colors-generator__': debouncedColors } }}>
         <Table.ScrollContainer minWidth={600}>
           <Table withTableBorder withColumnBorders>
             <Table.Thead>
               <Table.Tr>
-                <Table.Th ta="center">Filled</Table.Th>
-                <Table.Th ta="center">Light</Table.Th>
-                <Table.Th ta="center">Outline</Table.Th>
-                <Table.Th ta="center">Subtle</Table.Th>
+                <Table.Th ta="center">填充</Table.Th>
+                <Table.Th ta="center">浅色</Table.Th>
+                <Table.Th ta="center">轮廓</Table.Th>
+                <Table.Th ta="center">微妙</Table.Th>
               </Table.Tr>
             </Table.Thead>
 
@@ -30,29 +30,29 @@ export function ComponentsPreview({ colors }: ComponentsPreviewProps) {
               <Table.Tr>
                 <Table.Td>
                   <Button color="__colors-generator__" fullWidth autoContrast>
-                    Button
+                    按钮
                   </Button>
                 </Table.Td>
                 <Table.Td>
                   <Button color="__colors-generator__" variant="light" fullWidth>
-                    Button
+                    按钮
                   </Button>
                 </Table.Td>
                 <Table.Td>
                   <Button color="__colors-generator__" variant="outline" fullWidth>
-                    Button
+                    按钮
                   </Button>
                 </Table.Td>
                 <Table.Td>
                   <Button color="__colors-generator__" variant="subtle" fullWidth>
-                    Button
+                    按钮
                   </Button>
                 </Table.Td>
               </Table.Tr>
             </Table.Tbody>
           </Table>
         </Table.ScrollContainer>
-      </MantineProvider>
+      </UIProvider>
     </>
   );
 }

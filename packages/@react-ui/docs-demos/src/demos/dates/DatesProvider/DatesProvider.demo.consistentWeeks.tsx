@@ -1,5 +1,5 @@
 import { DatePicker, DatesProvider } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { DatePicker, DatesProvider } from '@react-ui/dates';
@@ -21,7 +21,7 @@ function Demo() {
   );
 }
 
-export const consistentWeeks: MantineDemo = {
+export const consistentWeeks: UIDemo = {
   type: 'code',
   component: Demo,
   code,

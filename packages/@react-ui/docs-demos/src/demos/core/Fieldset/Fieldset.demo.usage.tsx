@@ -1,5 +1,5 @@
 import { Fieldset, TextInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Fieldset, TextInput } from '@react-ui/ui';
@@ -7,8 +7,8 @@ import { Fieldset, TextInput } from '@react-ui/ui';
 function Demo() {
   return (
     <Fieldset legend="Personal information"{{props}}>
-      <TextInput label="Your name" placeholder="Your name" />
-      <TextInput label="Email" placeholder="Email" mt="md" />
+      <TextInput label="你的姓名" placeholder="你的姓名" />
+      <TextInput label="邮箱" placeholder="邮箱" mt="md" />
     </Fieldset>
   );
 }
@@ -17,13 +17,13 @@ function Demo() {
 function Wrapper(props: any) {
   return (
     <Fieldset legend="Personal information" {...props}>
-      <TextInput label="Your name" placeholder="Your name" />
-      <TextInput label="Email" placeholder="Email" mt="md" />
+      <TextInput label="你的姓名" placeholder="你的姓名" />
+      <TextInput label="邮箱" placeholder="邮箱" mt="md" />
     </Fieldset>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

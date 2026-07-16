@@ -14,7 +14,7 @@ export const SpotlightStylesApi: StylesApiData<SpotlightFactory> = {
     actionLabel: '`Spotlight.Action` label',
     actionDescription: '`Spotlight.Action` description',
     actionSection: '`Spotlight.Action` left and right sections',
-    actionsGroup: '`Spotlight.ActionsGroup` root element',
+    actionsGroup: '`Spotlight.ActionsGroup` root 元素',
   },
 
   vars: {},
@@ -29,13 +29,13 @@ export const SpotlightStylesApi: StylesApiData<SpotlightFactory> = {
     {
       modifier: 'data-position',
       selector: 'actionSection',
-      value: 'Section position: left or right',
+      value: '区块位置：左或右',
     },
 
     {
       modifier: 'data-dimmed',
       selector: 'actionSection',
-      condition: '`dimmedSections` prop is set on `Spotlight.Action` component',
+      condition: '`dimmedSections` prop is set on `Spotlight.Action` 组件',
     },
   ],
 };

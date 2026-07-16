@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Code, TextInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -31,28 +31,28 @@ function Demo() {
         onSubmit={form.onSubmit((values) => setSubmittedValues(JSON.stringify(values, null, 2)))}
       >
         <TextInput
-          label="First name"
-          placeholder="First name"
+          label="名字"
+          placeholder="名字"
           key={form.key('firstName')}
           {...form.getInputProps('firstName')}
         />
         <TextInput
-          label="Last name"
-          placeholder="Last name"
+          label="姓氏"
+          placeholder="姓氏"
           mt="md"
           key={form.key('lastName')}
           {...form.getInputProps('lastName')}
         />
         <TextInput
           type="number"
-          label="Age"
-          placeholder="Age"
+          label="年龄"
+          placeholder="年龄"
           mt="md"
           key={form.key('age')}
           {...form.getInputProps('age')}
         />
         <Button type="submit" mt="md">
-          Submit
+          提交
         </Button>
       </form>
 
@@ -89,28 +89,28 @@ function Demo() {
         onSubmit={form.onSubmit((values) => setSubmittedValues(JSON.stringify(values, null, 2)))}
       >
         <TextInput
-          label="First name"
-          placeholder="First name"
+          label="名字"
+          placeholder="名字"
           key={form.key('firstName')}
           {...form.getInputProps('firstName')}
         />
         <TextInput
-          label="Last name"
-          placeholder="Last name"
+          label="姓氏"
+          placeholder="姓氏"
           mt="md"
           key={form.key('lastName')}
           {...form.getInputProps('lastName')}
         />
         <TextInput
           type="number"
-          label="Age"
-          placeholder="Age"
+          label="年龄"
+          placeholder="年龄"
           mt="md"
           key={form.key('age')}
           {...form.getInputProps('age')}
         />
         <Button type="submit" mt="md">
-          Submit
+          提交
         </Button>
       </form>
 
@@ -123,7 +123,7 @@ function Demo() {
   );
 }
 
-export const transformValues: MantineDemo = {
+export const transformValues: UIDemo = {
   type: 'code',
   component: Demo,
   code,

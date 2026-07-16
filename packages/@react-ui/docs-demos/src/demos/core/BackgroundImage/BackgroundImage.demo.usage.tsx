@@ -1,12 +1,12 @@
 import { BackgroundImage, BackgroundImageProps, Box, Center, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: BackgroundImageProps) {
   return (
     <Box maw={300} mx="auto">
       <BackgroundImage
         {...props}
-        src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-6.png"
+        src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-6.png"
       >
         <Center p="md">
           <Text c="white">
@@ -27,7 +27,7 @@ function Demo() {
   return (
     <Box maw={300} mx="auto">
       <BackgroundImage
-        src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-6.png"
+        src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-6.png"
         {{props}}
       >
         <Center p="md">
@@ -42,7 +42,7 @@ function Demo() {
 }
 `;
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

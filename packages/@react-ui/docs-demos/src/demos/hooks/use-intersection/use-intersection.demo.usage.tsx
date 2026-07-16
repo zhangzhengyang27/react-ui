@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Box, Paper, Text } from '@react-ui/ui';
 import { useIntersection } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useRef } from 'react';
@@ -29,7 +29,7 @@ function Demo() {
           }}
         >
           <Text c="#fff" fw={700}>
-            {entry?.isIntersecting ? 'Fully visible' : 'Obscured'}
+            {entry?.isIntersecting ? '完全可见' : '被遮挡'}
           </Text>
         </Paper>
       </Box>
@@ -59,7 +59,7 @@ function Demo() {
           }}
         >
           <Text c="#fff" fw={700}>
-            {entry?.isIntersecting ? 'Fully visible' : 'Obscured'}
+            {entry?.isIntersecting ? '完全可见' : '被遮挡'}
           </Text>
         </Paper>
       </Box>
@@ -67,7 +67,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

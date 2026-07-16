@@ -1,5 +1,5 @@
 import { MultiSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { MultiSelect } from '@react-ui/ui';
@@ -7,11 +7,11 @@ import { MultiSelect } from '@react-ui/ui';
 function Demo() {
   return (
     <MultiSelect
-      label="Your favorite libraries"
-      placeholder="Pick value"
+      label="你最喜欢的库"
+      placeholder="选择值"
       data={['React', 'Angular', 'Vue', 'Svelte']}
       searchable
-      nothingFoundMessage="Nothing found..."
+      nothingFoundMessage="未找到..."
     />
   );
 }
@@ -20,16 +20,16 @@ function Demo() {
 function Demo() {
   return (
     <MultiSelect
-      label="Your favorite libraries"
-      placeholder="Pick value"
+      label="你最喜欢的库"
+      placeholder="选择值"
       data={['React', 'Angular', 'Vue', 'Svelte']}
       searchable
-      nothingFoundMessage="Nothing found..."
+      nothingFoundMessage="未找到..."
     />
   );
 }
 
-export const nothingFound: MantineDemo = {
+export const nothingFound: UIDemo = {
   type: 'code',
   component: Demo,
   code,

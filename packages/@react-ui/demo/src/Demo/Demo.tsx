@@ -6,13 +6,13 @@ interface DemoComponent {
   component: React.FC<any>;
 }
 
-export type MantineDemo =
+export type UIDemo =
   | ({ type: 'code' } & DemoComponent & CodeDemoProps)
   | ({ type: 'configurator' } & DemoComponent & ConfiguratorDemoProps)
   | ({ type: 'styles-api' } & DemoComponent & StylesApiDemoProps);
 
 interface DemoProps {
-  data: MantineDemo;
+  data: UIDemo;
   demoProps?: {
     defaultExpanded?: boolean;
     maxCollapsedHeight?: number;

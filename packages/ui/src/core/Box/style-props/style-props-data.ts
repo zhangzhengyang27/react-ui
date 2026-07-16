@@ -1,12 +1,12 @@
 import type { StylePropType } from './resolvers'
-import type { MantineStyleProps } from './style-props.types'
+import type { UIStyleProps } from './style-props.types'
 
 export interface SystemPropData {
     type: StylePropType
     property: string | string[]
 }
 
-export const STYlE_PROPS_DATA: Record<keyof MantineStyleProps, SystemPropData> = {
+export const STYlE_PROPS_DATA: Record<keyof UIStyleProps, SystemPropData> = {
     m: { type: 'spacing', property: 'margin' },
     mt: { type: 'spacing', property: 'marginTop' },
     mb: { type: 'spacing', property: 'marginBottom' },

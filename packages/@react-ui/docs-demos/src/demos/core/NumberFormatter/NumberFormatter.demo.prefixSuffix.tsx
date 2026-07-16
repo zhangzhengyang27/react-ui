@@ -1,5 +1,5 @@
 import { NumberFormatter } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NumberFormatter } from '@react-ui/ui';
@@ -31,7 +31,7 @@ function Demo() {
   );
 }
 
-export const prefixSuffix: MantineDemo = {
+export const prefixSuffix: UIDemo = {
   type: 'code',
   component: Demo,
   code,

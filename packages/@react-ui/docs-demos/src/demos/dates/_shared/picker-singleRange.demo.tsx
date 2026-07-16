@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const getCode = (name: string) => `
 import { useState } from 'react';
@@ -20,7 +20,7 @@ function getDemo(Component: React.FC<any>) {
   };
 }
 
-export function getPickerSingleRangeDemo(Component: React.FC<any>): MantineDemo {
+export function getPickerSingleRangeDemo(Component: React.FC<any>): UIDemo {
   return {
     type: 'code',
     centered: true,

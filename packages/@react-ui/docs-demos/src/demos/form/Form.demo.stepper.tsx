@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Code, Group, PasswordInput, Stepper, TextInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -27,17 +27,17 @@ function Demo() {
         return {
           username:
             values.username.trim().length < 6
-              ? 'Username must include at least 6 characters'
+              ? '用户名至少包含 6 个字符'
               : null,
           password:
-            values.password.length < 6 ? 'Password must include at least 6 characters' : null,
+            values.password.length < 6 ? '密码至少包含 6 个字符' : null,
         };
       }
 
       if (active === 1) {
         return {
-          name: values.name.trim().length < 2 ? 'Name must include at least 2 characters' : null,
-          email: /^\\S+@\\S+$/.test(values.email) ? null : 'Invalid email',
+          name: values.name.trim().length < 2 ? '姓名至少包含 2 个字符' : null,
+          email: /^\\S+@\\S+$/.test(values.email) ? null : '无效的邮箱',
         };
       }
 
@@ -57,49 +57,49 @@ function Demo() {
   return (
     <>
       <Stepper active={active}>
-        <Stepper.Step label="First step" description="Profile settings">
+        <Stepper.Step label="第一步" description="个人资料设置">
           <TextInput
-            label="Username"
-            placeholder="Username"
+            label="用户名"
+            placeholder="用户名"
             key={form.key('username')}
             {...form.getInputProps('username')}
           />
           <PasswordInput
             mt="md"
-            label="Password"
-            placeholder="Password"
+            label="密码"
+            placeholder="密码"
             key={form.key('password')}
             {...form.getInputProps('password')}
           />
         </Stepper.Step>
 
-        <Stepper.Step label="Second step" description="Personal information">
+        <Stepper.Step label="第二步" description="个人信息">
           <TextInput
-            label="Name"
-            placeholder="Name"
+            label="姓名"
+            placeholder="姓名"
             key={form.key('name')}
             {...form.getInputProps('name')}
           />
           <TextInput
             mt="md"
-            label="Email"
-            placeholder="Email"
+            label="邮箱"
+            placeholder="邮箱"
             key={form.key('email')}
             {...form.getInputProps('email')}
           />
         </Stepper.Step>
 
-        <Stepper.Step label="Final step" description="Social media">
+        <Stepper.Step label="最后一步" description="社交媒体">
           <TextInput
-            label="Website"
-            placeholder="Website"
+            label="网站"
+            placeholder="网站"
             key={form.key('website')}
             {...form.getInputProps('website')}
           />
           <TextInput
             mt="md"
-            label="GitHub"
-            placeholder="GitHub"
+            label="GitHub 用户名"
+            placeholder="GitHub 用户名"
             key={form.key('github')}
             {...form.getInputProps('github')}
           />
@@ -118,7 +118,7 @@ function Demo() {
             Back
           </Button>
         )}
-        {active !== 3 && <Button onClick={nextStep}>Next step</Button>}
+        {active !== 3 && <Button onClick={nextStep}>下一步</Button>}
       </Group>
     </>
   );
@@ -144,17 +144,17 @@ function Demo() {
         return {
           username:
             values.username.trim().length < 6
-              ? 'Username must include at least 6 characters'
+              ? '用户名至少包含 6 个字符'
               : null,
           password:
-            values.password.length < 6 ? 'Password must include at least 6 characters' : null,
+            values.password.length < 6 ? '密码至少包含 6 个字符' : null,
         };
       }
 
       if (active === 1) {
         return {
-          name: values.name.trim().length < 2 ? 'Name must include at least 2 characters' : null,
-          email: /^\S+@\S+$/.test(values.email) ? null : 'Invalid email',
+          name: values.name.trim().length < 2 ? '姓名至少包含 2 个字符' : null,
+          email: /^\S+@\S+$/.test(values.email) ? null : '无效的邮箱',
         };
       }
 
@@ -174,49 +174,49 @@ function Demo() {
   return (
     <>
       <Stepper active={active}>
-        <Stepper.Step label="First step" description="Profile settings">
+        <Stepper.Step label="第一步" description="个人资料设置">
           <TextInput
-            label="Username"
-            placeholder="Username"
+            label="用户名"
+            placeholder="用户名"
             key={form.key('username')}
             {...form.getInputProps('username')}
           />
           <PasswordInput
             mt="md"
-            label="Password"
-            placeholder="Password"
+            label="密码"
+            placeholder="密码"
             key={form.key('password')}
             {...form.getInputProps('password')}
           />
         </Stepper.Step>
 
-        <Stepper.Step label="Second step" description="Personal information">
+        <Stepper.Step label="第二步" description="个人信息">
           <TextInput
-            label="Name"
-            placeholder="Name"
+            label="姓名"
+            placeholder="姓名"
             key={form.key('name')}
             {...form.getInputProps('name')}
           />
           <TextInput
             mt="md"
-            label="Email"
-            placeholder="Email"
+            label="邮箱"
+            placeholder="邮箱"
             key={form.key('email')}
             {...form.getInputProps('email')}
           />
         </Stepper.Step>
 
-        <Stepper.Step label="Final step" description="Social media">
+        <Stepper.Step label="最后一步" description="社交媒体">
           <TextInput
-            label="Website"
-            placeholder="Website"
+            label="网站"
+            placeholder="网站"
             key={form.key('website')}
             {...form.getInputProps('website')}
           />
           <TextInput
             mt="md"
-            label="GitHub"
-            placeholder="GitHub"
+            label="GitHub 用户名"
+            placeholder="GitHub 用户名"
             key={form.key('github')}
             {...form.getInputProps('github')}
           />
@@ -235,13 +235,13 @@ function Demo() {
             Back
           </Button>
         )}
-        {active !== 3 && <Button onClick={nextStep}>Next step</Button>}
+        {active !== 3 && <Button onClick={nextStep}>下一步</Button>}
       </Group>
     </>
   );
 }
 
-export const stepper: MantineDemo = {
+export const stepper: UIDemo = {
   type: 'code',
   component: Demo,
   code,

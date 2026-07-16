@@ -1,5 +1,5 @@
 import { PasswordInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { inputControls } from '../../../shared';
 
 const code = `
@@ -10,17 +10,17 @@ function Demo() {
   return (
     <PasswordInput
       {{props}}
-      placeholder="Input placeholder"
+      placeholder="输入占位符"
     />
   );
 }
 `;
 
 function Wrapper(props: any) {
-  return <PasswordInput {...props} placeholder="Input placeholder" />;
+  return <PasswordInput {...props} placeholder="输入占位符" />;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

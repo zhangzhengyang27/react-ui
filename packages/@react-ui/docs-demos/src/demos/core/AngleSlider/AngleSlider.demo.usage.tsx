@@ -1,19 +1,19 @@
 import { AngleSlider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { AngleSlider } from '@react-ui/ui';
 
 function Demo() {
-  return <AngleSlider aria-label="Angle slider"{{props}} />;
+  return <AngleSlider aria-label="角度滑块"{{props}} />;
 }
 `;
 
 function Wrapper(props: any) {
-  return <AngleSlider aria-label="Angle slider" {...props} />;
+  return <AngleSlider aria-label="角度滑块" {...props} />;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

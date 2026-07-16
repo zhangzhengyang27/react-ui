@@ -1,5 +1,5 @@
 import { Input, TextInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Input.demo.focusStyles.module.css';
 
 const code = `
@@ -9,10 +9,10 @@ import classes from './Demo.module.css';
 function Demo() {
   return (
     <>
-      <Input placeholder="Regular Input component" classNames={classes} />
+      <Input placeholder="常规 Input 组件" classNames={classes} />
       <TextInput
-        placeholder="TextInput component"
-        label="TextInput component"
+        placeholder="文本输入组件"
+        label="TextInput 组件"
         mt="md"
         classNames={classes}
       />
@@ -35,10 +35,10 @@ const cssCode = `
 function Demo() {
   return (
     <>
-      <Input placeholder="Regular Input component" classNames={classes} />
+      <Input placeholder="常规 Input 组件" classNames={classes} />
       <TextInput
-        placeholder="TextInput component"
-        label="TextInput component"
+        placeholder="文本输入组件"
+        label="TextInput 组件"
         mt="md"
         classNames={classes}
       />
@@ -46,13 +46,13 @@ function Demo() {
   );
 }
 
-export const focusStyles: MantineDemo = {
+export const focusStyles: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,
   centered: true,
   code: [
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
   ],
 };

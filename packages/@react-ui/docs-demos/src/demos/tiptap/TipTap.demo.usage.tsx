@@ -5,10 +5,10 @@ import TextAlign from '@tiptap/extension-text-align';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { Link, RichTextEditor } from '@react-ui/tiptap';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const content =
-  '<h2 style="text-align: center;">Welcome to ReactUI rich text editor</h2><p><code>RichTextEditor</code> component focuses on usability and is designed to be as simple as possible to bring a familiar editing experience to regular users. <code>RichTextEditor</code> is based on <a href="https://tiptap.dev/" rel="noopener noreferrer" target="_blank">Tiptap.dev</a> and supports all of its features:</p><ul><li>General text formatting: <strong>bold</strong>, <em>italic</em>, <u>underline</u>, <s>strike-through</s> </li><li>Headings (h1-h6)</li><li>Sub and super scripts (<sup>&lt;sup /&gt;</sup> and <sub>&lt;sub /&gt;</sub> tags)</li><li>Ordered and bullet lists</li><li>Text align&nbsp;</li><li>And all <a href="https://tiptap.dev/extensions" target="_blank" rel="noopener noreferrer">other extensions</a></li></ul>';
+  '<h2 style="text-align: center;">欢迎使用 ReactUI 富文本编辑器</h2><p><code>RichTextEditor</code> 组件注重易用性，旨在为普通用户带来熟悉的编辑体验。<code>RichTextEditor</code> 基于 <a href="https://tiptap.dev/" rel="noopener noreferrer" target="_blank">Tiptap.dev</a>，支持它的所有功能：</p><ul><li>通用文本格式：<strong>粗体</strong>、<em>斜体</em>、<u>下划线</u>、<s>删除线</s></li><li>标题（h1-h6）</li><li>上标和下标（<sup>&lt;sup /&gt;</sup> 和 <sub>&lt;sub /&gt;</sub> 标签）</li><li>有序和无序列表</li><li>文本对齐</li><li>以及所有 <a href="https://tiptap.dev/extensions" target="_blank" rel="noopener noreferrer">其他扩展</a></li></ul>';
 
 const code = `
 import { RichTextEditor, Link } from '@react-ui/tiptap';
@@ -20,7 +20,7 @@ import Superscript from '@tiptap/extension-superscript';
 import SubScript from '@tiptap/extension-subscript';
 
 const content =
-  '<h2 style="text-align: center;">Welcome to ReactUI rich text editor</h2><p><code>RichTextEditor</code> component focuses on usability and is designed to be as simple as possible to bring a familiar editing experience to regular users. <code>RichTextEditor</code> is based on <a href="https://tiptap.dev/" rel="noopener noreferrer" target="_blank">Tiptap.dev</a> and supports all of its features:</p><ul><li>General text formatting: <strong>bold</strong>, <em>italic</em>, <u>underline</u>, <s>strike-through</s> </li><li>Headings (h1-h6)</li><li>Sub and super scripts (<sup>&lt;sup /&gt;</sup> and <sub>&lt;sub /&gt;</sub> tags)</li><li>Ordered and bullet lists</li><li>Text align&nbsp;</li><li>And all <a href="https://tiptap.dev/extensions" target="_blank" rel="noopener noreferrer">other extensions</a></li></ul>';
+  '<h2 style="text-align: center;">欢迎使用 ReactUI 富文本编辑器</h2><p><code>RichTextEditor</code> 组件注重易用性，旨在为普通用户带来熟悉的编辑体验。<code>RichTextEditor</code> 基于 <a href="https://tiptap.dev/" rel="noopener noreferrer" target="_blank">Tiptap.dev</a>，支持它的所有功能：</p><ul><li>通用文本格式：<strong>粗体</strong>、<em>斜体</em>、<u>下划线</u>、<s>删除线</s></li><li>标题（h1-h6）</li><li>上标和下标（<sup>&lt;sup /&gt;</sup> 和 <sub>&lt;sub /&gt;</sub> 标签）</li><li>有序和无序列表</li><li>文本对齐</li><li>以及所有 <a href="https://tiptap.dev/extensions" target="_blank" rel="noopener noreferrer">其他扩展</a></li></ul>';
 
 function Demo() {
   const editor = useEditor({
@@ -157,7 +157,7 @@ function Demo({ stickyOffset = 'var(--docs-header-height)' }: { stickyOffset: st
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

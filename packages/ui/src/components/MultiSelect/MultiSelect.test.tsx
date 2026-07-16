@@ -1,9 +1,9 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { MultiSelect } from './MultiSelect'
 
-const renderMultiSelect = (ui: React.ReactElement) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderMultiSelect = (ui: React.ReactElement) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('MultiSelect', () => {
     it('renders with placeholder', () => {

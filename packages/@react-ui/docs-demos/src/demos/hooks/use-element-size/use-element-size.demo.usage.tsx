@@ -1,6 +1,6 @@
-import { Group, Text, useMantineTheme } from '@react-ui/ui';
+import { Group, Text, useUITheme } from '@react-ui/ui';
 import { useElementSize } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useElementSize } from '@react-ui/hooks';
@@ -17,7 +17,7 @@ function Demo() {
 }`;
 
 function Demo() {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const { ref, width, height } = useElementSize();
 
   return (
@@ -29,7 +29,7 @@ function Demo() {
       <Group justify="center">
         <textarea
           ref={ref}
-          aria-label="Resize me"
+          aria-label="拖动我"
           style={{
             width: 400,
             height: 120,
@@ -46,7 +46,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

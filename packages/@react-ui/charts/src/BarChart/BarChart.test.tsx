@@ -1,4 +1,4 @@
-import { autoPatchWarn, tests } from '@mantine-tests/core';
+import { autoPatchWarn, tests } from '@react-ui/tests';
 import { BarChart, BarChartProps, BarChartStylesNames } from './BarChart';
 
 const defaultProps: BarChartProps = {

@@ -6,7 +6,7 @@ import {
   ProhibitIcon,
 } from '@phosphor-icons/react';
 import { Badge, NavLink } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Badge, NavLink } from '@react-ui/ui';
@@ -17,27 +17,27 @@ function Demo() {
     <>
       <NavLink
         href="#required-for-focus"
-        label="With icon"
+        label="带图标"
         leftSection={<HouseIcon size={16} />}
       />
       <NavLink
         href="#required-for-focus"
-        label="With right section"
+        label="带右侧区域"
         leftSection={<GaugeIcon size={16} />}
         rightSection={
-          <CaretRightIcon size={12} className="mantine-rotate-rtl" />
+          <CaretRightIcon size={12} className="ui-rotate-rtl" />
         }
       />
       <NavLink
         href="#required-for-focus"
-        label="Disabled"
+        label="已禁用"
         leftSection={<ProhibitIcon size={16} />}
         disabled
       />
       <NavLink
         href="#required-for-focus"
-        label="With description"
-        description="Additional information"
+        label="带描述"
+        description="附加信息"
         leftSection={
           <Badge size="xs" color="red" circle>
             3
@@ -46,29 +46,29 @@ function Demo() {
       />
       <NavLink
         href="#required-for-focus"
-        label="Active subtle"
+        label="轻微激活"
         leftSection={<HeartbeatIcon size={16} />}
         rightSection={
-          <CaretRightIcon size={12} className="mantine-rotate-rtl" />
+          <CaretRightIcon size={12} className="ui-rotate-rtl" />
         }
         variant="subtle"
         active
       />
       <NavLink
         href="#required-for-focus"
-        label="Active light"
+        label="浅色激活"
         leftSection={<HeartbeatIcon size={16} />}
         rightSection={
-          <CaretRightIcon size={12} className="mantine-rotate-rtl" />
+          <CaretRightIcon size={12} className="ui-rotate-rtl" />
         }
         active
       />
       <NavLink
         href="#required-for-focus"
-        label="Active filled"
+        label="填充激活"
         leftSection={<HeartbeatIcon size={16} />}
         rightSection={
-          <CaretRightIcon size={12} className="mantine-rotate-rtl" />
+          <CaretRightIcon size={12} className="ui-rotate-rtl" />
         }
         variant="filled"
         active
@@ -81,23 +81,23 @@ function Demo() {
 function Demo() {
   return (
     <>
-      <NavLink href="#required-for-focus" label="With icon" leftSection={<HouseIcon size={16} />} />
+      <NavLink href="#required-for-focus" label="带图标" leftSection={<HouseIcon size={16} />} />
       <NavLink
         href="#required-for-focus"
-        label="With right section"
+        label="带右侧区域"
         leftSection={<GaugeIcon size={16} />}
-        rightSection={<CaretRightIcon size={12} className="mantine-rotate-rtl" />}
+        rightSection={<CaretRightIcon size={12} className="ui-rotate-rtl" />}
       />
       <NavLink
         href="#required-for-focus"
-        label="Disabled"
+        label="已禁用"
         leftSection={<ProhibitIcon size={16} />}
         disabled
       />
       <NavLink
         href="#required-for-focus"
-        label="With description"
-        description="Additional information"
+        label="带描述"
+        description="附加信息"
         leftSection={
           <Badge size="xs" color="red" circle>
             3
@@ -106,24 +106,24 @@ function Demo() {
       />
       <NavLink
         href="#required-for-focus"
-        label="Active subtle"
+        label="轻微激活"
         leftSection={<HeartbeatIcon size={16} />}
-        rightSection={<CaretRightIcon size={12} className="mantine-rotate-rtl" />}
+        rightSection={<CaretRightIcon size={12} className="ui-rotate-rtl" />}
         variant="subtle"
         active
       />
       <NavLink
         href="#required-for-focus"
-        label="Active light"
+        label="浅色激活"
         leftSection={<HeartbeatIcon size={16} />}
-        rightSection={<CaretRightIcon size={12} className="mantine-rotate-rtl" />}
+        rightSection={<CaretRightIcon size={12} className="ui-rotate-rtl" />}
         active
       />
       <NavLink
         href="#required-for-focus"
-        label="Active filled"
+        label="填充激活"
         leftSection={<HeartbeatIcon size={16} />}
-        rightSection={<CaretRightIcon size={12} className="mantine-rotate-rtl" />}
+        rightSection={<CaretRightIcon size={12} className="ui-rotate-rtl" />}
         variant="filled"
         active
       />
@@ -131,7 +131,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 240,

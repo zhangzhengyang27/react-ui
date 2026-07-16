@@ -66,10 +66,10 @@ function Demo() {
 你可以向 `style` prop 传递一个 style 对象和/或函数的数组——在这种情况下，所有样式将合并为一个对象。当你想创建 ReactUI 组件的包装器、添加内联样式并保留向其传递 `style` prop 的选项时，这很有用。
 
 ```tsx
-import { Box, MantineStyleProp } from '@react-ui/ui';
+import { Box, UIStyleProp } from '@react-ui/ui';
 
 interface DemoProps {
-  style?: MantineStyleProp;
+  style?: UIStyleProp;
 }
 
 function Demo({ style }: DemoProps) {

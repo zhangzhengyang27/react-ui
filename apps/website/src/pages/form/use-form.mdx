@@ -112,7 +112,7 @@ const form = useForm({
     },
   },
   validate: {
-    email: (value) => (value.length < 2 ? 'Invalid email' : null),
+    email: (value) => (value.length < 2 ? '无效的邮箱' : null),
     user: {
       firstName: (value) =>
         value.length < 2

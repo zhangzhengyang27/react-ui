@@ -9,7 +9,7 @@ export const TimePickerStylesApi: StylesApiData<TimePickerFactory> = {
     control: 'Button in the dropdown which is used to select hours/minutes/seconds/am-pm',
     controlsList: 'List of buttons with hours/minutes/seconds/am-pm',
     controlsListGroup: 'Group of controlsLists',
-    dropdown: 'Popover dropdown',
+    dropdown: 'Popover 下拉框',
     fieldsRoot: 'A wrapper element for all fieldsGroups',
     fieldsGroup: 'A wrapper element for hours/minutes/seconds/am-pm fields',
     field: 'Hours/minutes/seconds/am-pm input field',

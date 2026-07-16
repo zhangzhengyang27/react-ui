@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Mark } from './Mark'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Mark', () => {
     it('renders a mark element by default', () => {
@@ -17,7 +17,7 @@ describe('Mark', () => {
     it('applies static classes', () => {
         renderWithProvider(<Mark data-testid="mark">Marked</Mark>)
 
-        expect(screen.getByTestId('mark')).toHaveClass('mantine-Mark-root')
+        expect(screen.getByTestId('mark')).toHaveClass('ui-Mark-root')
     })
 
     it('accepts a custom color', () => {

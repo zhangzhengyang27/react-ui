@@ -17,7 +17,7 @@ function Input({ id }: { id?: string }) {
 
   return (
     <>
-      <label htmlFor={uuid}>Input label</label>
+      <label htmlFor={uuid}>输入标签</label>
       <input type="text" id={uuid} />
     </>
   );
@@ -26,7 +26,7 @@ function Input({ id }: { id?: string }) {
 // input 和 label 将拥有 id 'my-id'
 const withId = <Input id="my-id" />;
 
-// input 和 label 将拥有随机 id 'mantine-fZMoF'
+// input 和 label 将拥有随机 id 'ui-fZMoF'
 const withoutId = <Input />;
 ```
 

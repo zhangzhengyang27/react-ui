@@ -1,6 +1,6 @@
 import { Button, Code, Group, Text } from '@react-ui/ui';
 import { randomId, useHash } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useHash, randomId } from '@react-ui/hooks';
@@ -10,7 +10,7 @@ function Demo() {
   const [hash, setHash] = useHash();
   return (
     <>
-      <Button onClick={() => setHash(randomId())}>Set hash to random string</Button>
+      <Button onClick={() => setHash(randomId())}>将 hash 设为随机字符串</Button>
       <Text>Current hash: <Code>{hash}</Code></Text>
     </>
   );
@@ -22,7 +22,7 @@ function Demo() {
   return (
     <>
       <Group justify="center">
-        <Button onClick={() => setHash(randomId())}>Set hash to random string</Button>
+        <Button onClick={() => setHash(randomId())}>将 hash 设为随机字符串</Button>
       </Group>
 
       <Text ta="center" mt="md">
@@ -32,7 +32,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { CloseButton } from './CloseButton'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('CloseButton', () => {
     it('renders a button by default', () => {
@@ -31,7 +31,7 @@ describe('CloseButton', () => {
     it('applies static classes', () => {
         renderWithProvider(<CloseButton data-testid="close" />)
 
-        expect(screen.getByTestId('close')).toHaveClass('mantine-CloseButton-root')
+        expect(screen.getByTestId('close')).toHaveClass('ui-CloseButton-root')
     })
 
     it('sets disabled attribute and data-disabled', () => {

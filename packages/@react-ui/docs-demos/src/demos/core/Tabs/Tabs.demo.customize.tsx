@@ -1,6 +1,6 @@
 import { ChatCircleIcon, GearSixIcon, ImageIcon } from '@phosphor-icons/react';
 import { Tabs } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Tabs.demo.customize.module.css';
 
 const code = `
@@ -16,19 +16,19 @@ function Demo() {
           value="settings"
           leftSection={<GearSixIcon size={16} />}
         >
-          Settings
+          设置
         </Tabs.Tab>
         <Tabs.Tab
           value="messages"
           leftSection={<ChatCircleIcon size={16} />}
         >
-          Messages
+          消息
         </Tabs.Tab>
         <Tabs.Tab
           value="gallery"
           leftSection={<ImageIcon size={16} />}
         >
-          Gallery
+          相册
         </Tabs.Tab>
       </Tabs.List>
     </Tabs>
@@ -44,7 +44,7 @@ const cssCode = `
   &:first-of-type {
     border-radius: 4px 0 0 4px;
 
-    @mixin rtl {
+    [dir='rtl'] & {
       border-radius: 0 4px 4px 0;
     }
   }
@@ -52,7 +52,7 @@ const cssCode = `
   &:last-of-type {
     border-radius: 0 4px 4px 0;
 
-    @mixin rtl {
+    [dir='rtl'] & {
       border-radius: 4px 0 0 4px;
     }
   }
@@ -60,13 +60,13 @@ const cssCode = `
   & + & {
     border-left-width: 0;
 
-    @mixin rtl {
+    [dir='rtl'] & {
       border-right-width: 0;
       border-left-width: 1px;
     }
   }
 
-  @mixin hover {
+  &:hover {
     background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-5));
   }
 
@@ -76,7 +76,7 @@ const cssCode = `
     border-color: var(--ui-color-blue-filled);
     color: var(--ui-color-white);
 
-    @mixin hover {
+    &:hover {
       background-color: var(--ui-color-blue-filled-hover);
     }
   }
@@ -88,24 +88,24 @@ function Demo() {
     <Tabs variant="unstyled" defaultValue="settings" classNames={classes}>
       <Tabs.List grow>
         <Tabs.Tab value="settings" leftSection={<GearSixIcon size={16} />}>
-          Settings
+          设置
         </Tabs.Tab>
         <Tabs.Tab value="messages" leftSection={<ChatCircleIcon size={16} />}>
-          Messages
+          消息
         </Tabs.Tab>
         <Tabs.Tab value="gallery" leftSection={<ImageIcon size={16} />}>
-          Gallery
+          相册
         </Tabs.Tab>
       </Tabs.List>
     </Tabs>
   );
 }
 
-export const customize: MantineDemo = {
+export const customize: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
   ],
 };

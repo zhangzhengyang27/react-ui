@@ -8,34 +8,28 @@ interface MdxInputSectionsProps {
 export function MdxInputSections({ component }: MdxInputSectionsProps) {
   return (
     <>
-      <MdxTitle id="left-and-right-sections">Left and right sections</MdxTitle>
+      <MdxTitle id="left-and-right-sections">左侧与右侧区域</MdxTitle>
       <MdxParagraph>
-        <MdxCode>{component}</MdxCode> supports <MdxCode>leftSection</MdxCode> and{' '}
-        <MdxCode>rightSection</MdxCode> props. These sections are rendered with absolute positioning
-        inside the input wrapper. You can use them to display icons, input controls, or any other
-        elements.
+        <MdxCode>{component}</MdxCode> 支持 <MdxCode>leftSection</MdxCode> 和{' '}
+        <MdxCode>rightSection</MdxCode> 属性。这些区域在输入框包装器内使用绝对定位渲染。
+        你可以用它们来显示图标、输入控件或其他任何元素。
       </MdxParagraph>
 
       <MdxParagraph>
-        You can use the following props to control sections styles and content:
+        可以使用以下属性控制区域的样式和内容：
       </MdxParagraph>
       <MdxUl>
         <MdxLi>
-          <MdxCode>rightSection</MdxCode> / <MdxCode>leftSection</MdxCode> – React node to render on
-          the corresponding side of input
+          <MdxCode>rightSection</MdxCode> / <MdxCode>leftSection</MdxCode> — 在输入框对应一侧渲染的 React 节点
         </MdxLi>
 
         <MdxLi>
-          <MdxCode>rightSectionWidth</MdxCode>/<MdxCode>leftSectionWidth</MdxCode> – controls the
-          width of the right section and padding on the corresponding side of the input. By default,
-          it is controlled by the component <MdxCode>size</MdxCode> prop.
+          <MdxCode>rightSectionWidth</MdxCode>/<MdxCode>leftSectionWidth</MdxCode> — 控制右侧区域的宽度以及输入框对应一侧的内边距。默认由组件的 <MdxCode>size</MdxCode> 属性控制。
         </MdxLi>
 
         <MdxLi>
-          <MdxCode>rightSectionPointerEvents</MdxCode>/<MdxCode>leftSectionPointerEvents</MdxCode> –
-          controls the <MdxCode>pointer-events</MdxCode> property of the section. If you want to
-          render a non-interactive element, set it to <MdxCode>none</MdxCode> to pass clicks through
-          to the input.
+          <MdxCode>rightSectionPointerEvents</MdxCode>/<MdxCode>leftSectionPointerEvents</MdxCode> —
+          控制区域的 <MdxCode>pointer-events</MdxCode> 属性。如果要渲染非交互元素，请将其设置为 <MdxCode>none</MdxCode>，使点击事件透传到输入框。
         </MdxLi>
       </MdxUl>
     </>

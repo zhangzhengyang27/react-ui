@@ -1,20 +1,20 @@
 import { Input } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { inputOnlyControls } from '../../../shared';
 
 const code = `
 import { Input } from '@react-ui/ui';
 
 function Demo() {
-  return <Input{{props}} placeholder="Input component" />;
+  return <Input{{props}} placeholder="输入组件" />;
 }
 `;
 
 function Wrapper(props: any) {
-  return <Input placeholder="Input component" {...props} />;
+  return <Input placeholder="输入组件" {...props} />;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

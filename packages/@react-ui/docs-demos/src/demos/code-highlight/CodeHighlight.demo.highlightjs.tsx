@@ -1,4 +1,4 @@
-// !!! demo not used on mantine.dev to reduce bundle size
+// !!! demo not used on ui.dev to reduce bundle size
 // used only for reference in development and documentation
 import hljs from 'highlight.js/lib/core';
 import tsLang from 'highlight.js/lib/languages/typescript';
@@ -7,7 +7,7 @@ import {
   CodeHighlightAdapterProvider,
   createHighlightJsAdapter,
 } from '@react-ui/code-highlight';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 hljs.registerLanguage('typescript', tsLang);
 
@@ -60,7 +60,7 @@ function Demo() {
   );
 }
 
-export const highlightjs: MantineDemo = {
+export const highlightjs: UIDemo = {
   type: 'code',
   component: Demo,
   code,

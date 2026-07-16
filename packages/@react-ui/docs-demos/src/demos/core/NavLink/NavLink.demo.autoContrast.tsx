@@ -1,5 +1,5 @@
 import { NavLink } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NavLink } from '@react-ui/ui';
@@ -7,8 +7,8 @@ import { NavLink } from '@react-ui/ui';
 function Demo() {
   return (
     <>
-      <NavLink color="lime.4" variant="filled" active label="Default" />
-      <NavLink color="lime.4" variant="filled" active autoContrast label="Auto contrast" />
+      <NavLink color="lime.4" variant="filled" active label="默认" />
+      <NavLink color="lime.4" variant="filled" active autoContrast label="自动对比度" />
     </>
   );
 }
@@ -17,13 +17,13 @@ function Demo() {
 function Demo() {
   return (
     <>
-      <NavLink color="lime.4" variant="filled" active label="Default" />
-      <NavLink color="lime.4" variant="filled" active autoContrast label="Auto contrast" />
+      <NavLink color="lime.4" variant="filled" active label="默认" />
+      <NavLink color="lime.4" variant="filled" active autoContrast label="自动对比度" />
     </>
   );
 }
 
-export const autoContrast: MantineDemo = {
+export const autoContrast: UIDemo = {
   type: 'code',
   component: Demo,
   code,

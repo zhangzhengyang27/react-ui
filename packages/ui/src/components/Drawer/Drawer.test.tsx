@@ -1,16 +1,16 @@
 import { describe, expect, it, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Drawer } from './Drawer'
 
 describe('Drawer', () => {
     it('renders when opened is true', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Drawer opened onClose={vi.fn()} title="Drawer title">
                     Drawer content
                 </Drawer>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('Drawer title')).toBeInTheDocument()
@@ -19,11 +19,11 @@ describe('Drawer', () => {
 
     it('does not render content when opened is false', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Drawer opened={false} onClose={vi.fn()} title="Drawer title">
                     Drawer content
                 </Drawer>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.queryByText('Drawer title')).not.toBeInTheDocument()
@@ -33,11 +33,11 @@ describe('Drawer', () => {
     it('calls onClose when close button is clicked', () => {
         const onClose = vi.fn()
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Drawer opened onClose={onClose} title="Drawer title">
                     Drawer content
                 </Drawer>
-            </MantineProvider>
+            </UIProvider>
         )
 
         screen.getAllByRole('button')[0].click()
@@ -46,21 +46,21 @@ describe('Drawer', () => {
 
     it('renders with different positions', () => {
         const { rerender } = render(
-            <MantineProvider>
+            <UIProvider>
                 <Drawer opened onClose={vi.fn()} position="right" title="Drawer title">
                     Drawer content
                 </Drawer>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('Drawer title')).toBeInTheDocument()
 
         rerender(
-            <MantineProvider>
+            <UIProvider>
                 <Drawer opened onClose={vi.fn()} position="bottom" title="Drawer title">
                     Drawer content
                 </Drawer>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('Drawer title')).toBeInTheDocument()

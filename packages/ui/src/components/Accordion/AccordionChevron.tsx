@@ -24,4 +24,4 @@ export function AccordionChevron({ style, size = 16, ...others }: AccordionChevr
     )
 }
 
-AccordionChevron.displayName = '@mantine/core/AccordionChevron'
+AccordionChevron.displayName = '@react-ui/ui/AccordionChevron'

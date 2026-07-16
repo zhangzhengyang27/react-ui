@@ -50,11 +50,11 @@ export function CssVariablesGroup({ data }: CssVariablesGroupProps) {
 
   return (
     <Table.ScrollContainer minWidth={500}>
-      <Table layout="fixed">
+      <Table style={{ tableLayout: 'fixed' }}>
         <Table.Thead>
           <Table.Tr>
-            <Table.Th w={400}>Variable</Table.Th>
-            <Table.Th>Default value</Table.Th>
+            <Table.Th w={400}>变量</Table.Th>
+            <Table.Th>默认值</Table.Th>
           </Table.Tr>
         </Table.Thead>
         <Table.Tbody>{rows}</Table.Tbody>

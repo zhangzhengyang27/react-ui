@@ -1,4 +1,4 @@
-import type { MantineTheme } from '../../../../core/MantineProvider'
+import type { UITheme } from '../../../../core/UIProvider'
 import { keys } from '../../../../core/utils'
 import { resolvers } from '../resolvers'
 import type { SystemPropData } from '../style-props-data'
@@ -70,7 +70,7 @@ function getBreakpointValue(value: StyleProp<unknown>, breakpoint: string) {
 
 interface ParseStylePropsOptions {
     styleProps: Record<string, StyleProp<any>>
-    theme: MantineTheme
+    theme: UITheme
     data: Record<string, SystemPropData>
 }
 

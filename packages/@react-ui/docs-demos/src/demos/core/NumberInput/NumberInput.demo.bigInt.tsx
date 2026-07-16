@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NumberInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -11,8 +11,8 @@ function Demo() {
 
   return (
     <NumberInput
-      label="BigInt value"
-      description="BigInt mode is inferred from defaultValue/value"
+      label="BigInt 值"
+      description="从 defaultValue/value 推断 BigInt 模式"
       value={value}
       onChange={setValue}
       step={BigInt(10)}
@@ -29,8 +29,8 @@ function Demo() {
 
   return (
     <NumberInput
-      label="BigInt value"
-      description="BigInt mode is inferred from defaultValue/value"
+      label="BigInt 值"
+      description="从 defaultValue/value 推断 BigInt 模式"
       value={value}
       onChange={setValue}
       step={BigInt(10)}
@@ -41,7 +41,7 @@ function Demo() {
   );
 }
 
-export const bigInt: MantineDemo = {
+export const bigInt: UIDemo = {
   type: 'code',
   component: Demo,
   code,

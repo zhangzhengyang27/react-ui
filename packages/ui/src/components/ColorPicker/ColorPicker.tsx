@@ -10,7 +10,7 @@ import {
     Factory,
     getSize,
     getSpacing,
-    MantineSize,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -55,7 +55,7 @@ export interface __ColorPickerProps {
     /** Uncontrolled component default value */
     defaultValue?: string
 
-    /** Called when value changes */
+    //** 值变化时调用 */
     onChange?: (value: string) => void
 
     /** Called when the user stops dragging one of the sliders or changes the value with keyboard */
@@ -74,7 +74,7 @@ export interface __ColorPickerProps {
     swatchesPerRow?: number
 
     /** Component size @default 'md' */
-    size?: MantineSize | (string & {})
+    size?: UISize | (string & {})
 }
 
 export interface ColorPickerProps
@@ -193,7 +193,10 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
         onChange
     })
 
-    const [parsed, setParsed] = useState<HsvaColor>(parseColor(_value))
+    const [parsed, setParsed] = useState<HsvaColor>(() => parseColor(_value))
+    // 跟踪最新的 parsed,避免 onChangeEnd 闭包捕获过期值
+    const parsedRef = useRef(parsed)
+    parsedRef.current = parsed
 
     const startScrubbing = () => {
         window.clearTimeout(scrubTimeoutRef.current)
@@ -225,7 +228,9 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
 
     useDidUpdate(() => {
         formatRef.current = format || 'hex'
-        setValue(convertHsvaTo(formatRef.current, parsed))
+        // 优先用 _value 重新解析,避免 value 与 format 同时变化时 parsed 状态滞后导致引用过期值
+        const nextParsed = isColorValid(_value) ? parseColor(_value) : parsed
+        setValue(convertHsvaTo(formatRef.current, nextParsed))
     }, [format])
 
     return (
@@ -239,7 +244,7 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
                             value={parsed}
                             onChange={handleChange}
                             onChangeEnd={({ s, v }) =>
-                                onChangeEnd?.(convertHsvaTo(formatRef.current, { ...parsed, s: s!, v: v! }))
+                                onChangeEnd?.(convertHsvaTo(formatRef.current, { ...parsedRef.current, s: s!, v: v! }))
                             }
                             color={_value}
                             size={size!}
@@ -254,7 +259,7 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
                                 <HueSlider
                                     value={parsed.h}
                                     onChange={h => handleChange({ h })}
-                                    onChangeEnd={h => onChangeEnd?.(convertHsvaTo(formatRef.current, { ...parsed, h }))}
+                                    onChangeEnd={h => onChangeEnd?.(convertHsvaTo(formatRef.current, { ...parsedRef.current, h }))}
                                     size={size}
                                     focusable={focusable}
                                     aria-label={hueLabel}
@@ -267,7 +272,7 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
                                         value={parsed.a}
                                         onChange={a => handleChange({ a })}
                                         onChangeEnd={a => {
-                                            onChangeEnd?.(convertHsvaTo(formatRef.current, { ...parsed, a }))
+                                            onChangeEnd?.(convertHsvaTo(formatRef.current, { ...parsedRef.current, a }))
                                         }}
                                         size={size}
                                         color={convertHsvaTo('hex', parsed)}

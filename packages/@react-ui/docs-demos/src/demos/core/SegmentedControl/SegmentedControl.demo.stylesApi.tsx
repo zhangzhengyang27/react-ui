@@ -1,5 +1,5 @@
 import { SegmentedControl } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { SegmentedControlStylesApi } from '@react-ui/docs-styles-api';
 
 const code = `
@@ -14,7 +14,7 @@ function Demo(props: any) {
   return <SegmentedControl data={['React', 'Angular', 'Vue']} {...props} />;
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: SegmentedControlStylesApi,
   component: Demo,

@@ -1,5 +1,5 @@
 import { ScatterChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './_data';
 
 const code = `
@@ -16,7 +16,7 @@ function Demo() {
       yAxisLabel="BMI"
       referenceLines={[
         { y: 14, label: 'Underweight ↓', color: 'red.7' },
-        { y: 19, label: 'Normal weight', color: 'teal.7' },
+        { y: 19, label: '正常体重', color: 'teal.7' },
         { y: 30, label: 'Overweight ↑', color: 'red.7' },
       ]}
     />
@@ -34,18 +34,18 @@ function Demo() {
       yAxisLabel="BMI"
       referenceLines={[
         { y: 14, label: 'Underweight ↓', color: 'red.7' },
-        { y: 19, label: 'Normal weight', color: 'teal.7' },
+        { y: 19, label: '正常体重', color: 'teal.7' },
         { y: 30, label: 'Overweight ↑', color: 'red.7' },
       ]}
     />
   );
 }
 
-export const referenceLines: MantineDemo = {
+export const referenceLines: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

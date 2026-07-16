@@ -1,10 +1,10 @@
 .root {
-  @mixin light {
+  [data-ui-color-scheme='light'] & {
     --average-bar-color: var(--ui-color-dark-8);
     --you-bar-color: var(--ui-color-blue-3);
   }
 
-  @mixin dark {
+  [data-ui-color-scheme='dark'] & {
     --you-bar-color: var(--ui-color-blue-8);
     --average-bar-color: var(--ui-color-gray-4);
   }

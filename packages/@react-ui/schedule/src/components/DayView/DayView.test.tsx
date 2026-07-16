@@ -2,7 +2,7 @@ import 'dayjs/locale/ru';
 
 import dayjs from 'dayjs';
 import { DatesProvider } from '@react-ui/dates';
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
 import { toDateString } from '../../utils';
 import { DayView, DayViewProps, DayViewStylesNames } from './DayView';
 
@@ -74,13 +74,13 @@ describe('@react-ui/schedule/DayView', () => {
     const { container } = render(<DayView {...defaultProps} />);
     expect(screen.getByText('November 3, 2025')).toBeInTheDocument();
     // 97 slots: 96 intervals + all-day slot
-    expect(container.querySelectorAll('.mantine-DayView-dayViewSlot')).toHaveLength(97);
+    expect(container.querySelectorAll('.ui-DayView-dayViewSlot')).toHaveLength(97);
   });
 
   it('supports custom intervalMinutes', () => {
     const { container } = render(<DayView {...defaultProps} intervalMinutes={60} />);
     // 25 slots: 24 intervals + all-day slot
-    expect(container.querySelectorAll('.mantine-DayView-dayViewSlot')).toHaveLength(25);
+    expect(container.querySelectorAll('.ui-DayView-dayViewSlot')).toHaveLength(25);
   });
 
   it('supports custom startTime and endTime', () => {
@@ -88,7 +88,7 @@ describe('@react-ui/schedule/DayView', () => {
       <DayView {...defaultProps} startTime="08:00:00" endTime="12:00:00" intervalMinutes={60} />
     );
     // 5 slots: 4 intervals + all-day slot
-    expect(container.querySelectorAll('.mantine-DayView-dayViewSlot')).toHaveLength(5);
+    expect(container.querySelectorAll('.ui-DayView-dayViewSlot')).toHaveLength(5);
   });
 
   it('supports locale (prop)', () => {
@@ -109,23 +109,23 @@ describe('@react-ui/schedule/DayView', () => {
   it('renders all-day slot based on withAllDaySlot prop', () => {
     const { container, rerender } = render(<DayView {...defaultProps} withAllDaySlot />);
     expect(
-      container.querySelector('.mantine-DayView-dayViewSlot[data-all-day]')
+      container.querySelector('.ui-DayView-dayViewSlot[data-all-day]')
     ).toBeInTheDocument();
 
     rerender(<DayView {...defaultProps} withAllDaySlot={false} />);
     expect(
-      container.querySelector('.mantine-DayView-dayViewSlot[data-all-day]')
+      container.querySelector('.ui-DayView-dayViewSlot[data-all-day]')
     ).not.toBeInTheDocument();
   });
 
   it('supports withSubHourGridLines={false}', () => {
     const { container, rerender } = render(<DayView {...defaultProps} />);
-    expect(container.querySelector('.mantine-DayView-dayView')).not.toHaveAttribute(
+    expect(container.querySelector('.ui-DayView-dayView')).not.toHaveAttribute(
       'data-hide-sub-hour-grid-lines'
     );
 
     rerender(<DayView {...defaultProps} withSubHourGridLines={false} />);
-    expect(container.querySelector('.mantine-DayView-dayView')).toHaveAttribute(
+    expect(container.querySelector('.ui-DayView-dayView')).toHaveAttribute(
       'data-hide-sub-hour-grid-lines'
     );
   });
@@ -154,11 +154,11 @@ describe('@react-ui/schedule/DayView', () => {
     jest.useFakeTimers().setSystemTime(new Date('2025-11-03T10:30:00Z'));
 
     const { container, rerender } = render(<DayView {...defaultProps} withCurrentTimeIndicator />);
-    expect(container.querySelector('.mantine-DayView-currentTimeIndicator')).toBeInTheDocument();
+    expect(container.querySelector('.ui-DayView-currentTimeIndicator')).toBeInTheDocument();
 
     rerender(<DayView {...defaultProps} withCurrentTimeIndicator={false} />);
     expect(
-      container.querySelector('.mantine-DayView-currentTimeIndicator')
+      container.querySelector('.ui-DayView-currentTimeIndicator')
     ).not.toBeInTheDocument();
     jest.useRealTimers();
   });
@@ -178,7 +178,7 @@ describe('@react-ui/schedule/DayView', () => {
     );
 
     // Canvas is rounded up from 02:30 to 03:00 (3 whole slots), so 02:00 sits at 120/180 = 66.66%
-    const indicator = container.querySelector('.mantine-DayView-currentTimeIndicator');
+    const indicator = container.querySelector('.ui-DayView-currentTimeIndicator');
     expect(indicator?.getAttribute('style')).toContain('66.66');
     jest.useRealTimers();
   });
@@ -195,7 +195,7 @@ describe('@react-ui/schedule/DayView', () => {
       />
     );
     expect(
-      container.querySelector('.mantine-DayView-currentTimeIndicatorTimeBubble')
+      container.querySelector('.ui-DayView-currentTimeIndicatorTimeBubble')
     ).toHaveTextContent('10:30 AM');
 
     rerender(
@@ -207,7 +207,7 @@ describe('@react-ui/schedule/DayView', () => {
       />
     );
     expect(
-      container.querySelector('.mantine-DayView-currentTimeIndicatorTimeBubble')
+      container.querySelector('.ui-DayView-currentTimeIndicatorTimeBubble')
     ).not.toBeInTheDocument();
     jest.useRealTimers();
   });
@@ -217,13 +217,13 @@ describe('@react-ui/schedule/DayView', () => {
 
     const { container, rerender } = render(<DayView {...defaultProps} date="2025-11-04" />);
     expect(
-      container.querySelector('.mantine-DayView-currentTimeIndicator')
+      container.querySelector('.ui-DayView-currentTimeIndicator')
     ).not.toBeInTheDocument();
 
     rerender(
       <DayView {...defaultProps} date="2025-11-04" getCurrentTime={() => '2025-11-04 10:30:00'} />
     );
-    expect(container.querySelector('.mantine-DayView-currentTimeIndicator')).toBeInTheDocument();
+    expect(container.querySelector('.ui-DayView-currentTimeIndicator')).toBeInTheDocument();
     jest.useRealTimers();
   });
 
@@ -240,22 +240,22 @@ describe('@react-ui/schedule/DayView', () => {
       />
     );
     expect(
-      container.querySelector('.mantine-DayView-currentTimeIndicatorTimeBubble')
+      container.querySelector('.ui-DayView-currentTimeIndicatorTimeBubble')
     ).toHaveTextContent('20:45');
     jest.useRealTimers();
   });
 
   it('supports __staticSelector prop', () => {
     const { container } = render(<DayView {...defaultProps} __staticSelector="TestDayView" />);
-    expect(container.querySelector('.mantine-TestDayView-dayView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-TestDayView-dayView')).toBeInTheDocument();
   });
 
   it('hides header when withHeader={false}', () => {
     const { container, rerender } = render(<DayView {...defaultProps} withHeader={false} />);
-    expect(container.querySelector('.mantine-DayView-header')).not.toBeInTheDocument();
+    expect(container.querySelector('.ui-DayView-header')).not.toBeInTheDocument();
 
     rerender(<DayView {...defaultProps} withHeader />);
-    expect(container.querySelector('.mantine-DayView-header')).toBeInTheDocument();
+    expect(container.querySelector('.ui-DayView-header')).toBeInTheDocument();
   });
 
   it('calls onDateChange when navigating with header controls', async () => {
@@ -301,16 +301,16 @@ describe('@react-ui/schedule/DayView', () => {
     );
 
     expect(
-      container.querySelector('button.mantine-DayView-headerControl[data-previous-prop]')
+      container.querySelector('button.ui-DayView-headerControl[data-previous-prop]')
     ).toBeInTheDocument();
     expect(
-      container.querySelector('button.mantine-DayView-headerControl[data-next-prop]')
+      container.querySelector('button.ui-DayView-headerControl[data-next-prop]')
     ).toBeInTheDocument();
     expect(
-      container.querySelector('button.mantine-DayView-headerControl[data-today-prop]')
+      container.querySelector('button.ui-DayView-headerControl[data-today-prop]')
     ).toBeInTheDocument();
     expect(
-      container.querySelector('.mantine-DayView-viewSelect[data-view-select-prop]')
+      container.querySelector('.ui-DayView-viewSelect[data-view-select-prop]')
     ).toBeInTheDocument();
   });
 
@@ -606,7 +606,7 @@ describe('@react-ui/schedule/DayView', () => {
       const { container } = render(<DayView {...defaultProps} onTimeSlotClick={spy} />);
 
       const slot = container.querySelector(
-        '.mantine-DayView-dayViewSlot[data-hour-start]'
+        '.ui-DayView-dayViewSlot[data-hour-start]'
       ) as HTMLButtonElement;
       expect(slot).toBeInTheDocument();
       await userEvent.click(slot);
@@ -690,7 +690,7 @@ describe('@react-ui/schedule/DayView', () => {
       );
 
       const event = container.querySelector(
-        '.mantine-ScheduleEvent-eventInner'
+        '.ui-ScheduleEvent-eventInner'
       ) as HTMLButtonElement;
       if (event) {
         await userEvent.click(event);
@@ -717,7 +717,7 @@ describe('@react-ui/schedule/DayView', () => {
         />
       );
 
-      const slots = container.querySelectorAll('.mantine-DayView-dayViewSlot:not([data-all-day])');
+      const slots = container.querySelectorAll('.ui-DayView-dayViewSlot:not([data-all-day])');
       expect(slots[0]).toHaveAttribute('data-business', 'true');
       expect(slots[1]).not.toHaveAttribute('data-business');
     });
@@ -738,7 +738,7 @@ describe('@react-ui/schedule/DayView', () => {
       );
 
       const slot = container.querySelector(
-        '.mantine-DayView-dayViewSlot:not([data-all-day])'
+        '.ui-DayView-dayViewSlot:not([data-all-day])'
       ) as HTMLButtonElement;
       await userEvent.click(slot);
 
@@ -761,7 +761,7 @@ describe('@react-ui/schedule/DayView', () => {
       );
 
       const slot = container.querySelector(
-        '.mantine-DayView-dayViewSlot:not([data-all-day])'
+        '.ui-DayView-dayViewSlot:not([data-all-day])'
       ) as HTMLButtonElement;
       await userEvent.click(slot);
 
@@ -807,20 +807,20 @@ describe('@react-ui/schedule/DayView', () => {
     it('shows AgendaView when agenda button is clicked', async () => {
       const { container } = render(<DayView {...defaultProps} withAgenda />);
 
-      expect(container.querySelector('.mantine-DayView-agendaView')).not.toBeInTheDocument();
+      expect(container.querySelector('.ui-DayView-agendaView')).not.toBeInTheDocument();
 
       await userEvent.click(screen.getAllByText('Agenda')[0]);
 
-      expect(container.querySelector('.mantine-DayView-agendaView')).toBeInTheDocument();
+      expect(container.querySelector('.ui-DayView-agendaView')).toBeInTheDocument();
     });
 
     it('toggles AgendaView off when agenda button is clicked again', async () => {
       const { container } = render(<DayView {...defaultProps} withAgenda />);
       await userEvent.click(screen.getAllByText('Agenda')[0]);
-      expect(container.querySelector('.mantine-DayView-agendaView')).toBeInTheDocument();
+      expect(container.querySelector('.ui-DayView-agendaView')).toBeInTheDocument();
 
       await userEvent.click(screen.getAllByText('Agenda')[0]);
-      expect(container.querySelector('.mantine-DayView-agendaView')).not.toBeInTheDocument();
+      expect(container.querySelector('.ui-DayView-agendaView')).not.toBeInTheDocument();
     });
 
     it('passes the current day as the agenda range', async () => {

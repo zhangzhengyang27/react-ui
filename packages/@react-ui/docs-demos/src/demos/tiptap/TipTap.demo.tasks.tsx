@@ -3,7 +3,7 @@ import TipTapTaskList from '@tiptap/extension-task-list';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { getTaskListExtension, RichTextEditor } from '@react-ui/tiptap';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import TaskItem from '@tiptap/extension-task-item';
@@ -27,8 +27,8 @@ function Demo() {
     ],
     content: \`
         <ul data-type="taskList">
-          <li data-type="taskItem" data-checked="true">A list item</li>
-          <li data-type="taskItem" data-checked="false">And another one</li>
+          <li data-type="taskItem" data-checked="true">一个列表项</li>
+          <li data-type="taskItem" data-checked="false">再来一个</li>
         </ul>
         <p></p>
       \`,
@@ -68,8 +68,8 @@ function Demo() {
     ],
     content: `
         <ul data-type="taskList">
-          <li data-type="taskItem" data-checked="true">A list item</li>
-          <li data-type="taskItem" data-checked="false">And another one</li>
+          <li data-type="taskItem" data-checked="true">一个列表项</li>
+          <li data-type="taskItem" data-checked="false">再来一个</li>
         </ul>
         <p></p>
       `,
@@ -90,7 +90,7 @@ function Demo() {
   );
 }
 
-export const tasks: MantineDemo = {
+export const tasks: UIDemo = {
   type: 'code',
   component: Demo,
   code,

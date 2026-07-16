@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button, Stack, Text } from '@react-ui/ui';
 import { useInterval } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState, useEffect } from 'react';
@@ -19,7 +19,7 @@ function Demo() {
 
   return (
     <Stack align="center">
-      <Text>Page loaded <b>{seconds}</b> seconds ago</Text>
+      <Text>页面加载于 <b>{seconds}</b> 秒前</Text>
       <Button onClick={interval.toggle} color={interval.active ? 'red' : 'teal'}>
         {interval.active ? 'Stop' : 'Start'} counting
       </Button>
@@ -49,7 +49,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

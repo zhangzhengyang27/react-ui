@@ -1,26 +1,26 @@
 import { Autocomplete } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Autocomplete } from '@react-ui/ui';
 
 function Demo() {
-  return <Autocomplete label="Autocomplete" placeholder="Autocomplete" data={['React', 'Angular', 'Vue', 'Svelte']} success="Looks good!" />;
+  return <Autocomplete label="自动完成" placeholder="自动完成" data={['React', 'Angular', 'Vue', 'Svelte']} success="看起来不错！" />;
 }
 `;
 
 function Demo() {
   return (
     <Autocomplete
-      label="Autocomplete"
-      placeholder="Autocomplete"
+      label="自动完成"
+      placeholder="自动完成"
       data={['React', 'Angular', 'Vue', 'Svelte']}
-      success="Looks good!"
+      success="看起来不错！"
     />
   );
 }
 
-export const success: MantineDemo = {
+export const success: UIDemo = {
   type: 'code',
   component: Demo,
   code,

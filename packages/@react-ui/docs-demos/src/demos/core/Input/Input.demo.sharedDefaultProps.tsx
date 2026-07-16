@@ -1,15 +1,15 @@
 import {
   createTheme,
   Input,
-  MantineThemeProvider,
+  UIThemeProvider,
   NativeSelect,
   NumberInput,
   TextInput,
 } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
-import { TextInput, NumberInput, NativeSelect, MantineProvider, createTheme, Input } from '@react-ui/ui';
+import { TextInput, NumberInput, NativeSelect, UIProvider, createTheme, Input } from '@react-ui/ui';
 
 const theme = createTheme({
   components: {
@@ -36,17 +36,17 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
-      <TextInput label="Text input" placeholder="Inherits size and radius from Input" />
+    <UIProvider theme={theme}>
+      <TextInput label="文本输入" placeholder="继承 Input 的大小和圆角" />
 
       <NativeSelect
         mt="md"
-        label="Native select"
+        label="原生选择"
         data={['React', 'Angular', 'Vue', 'Svelte']}
       />
 
-      <NumberInput mt="md" label="Number input" placeholder="Overrides shared size with lg" />
-    </MantineProvider>
+      <NumberInput mt="md" label="数字输入" placeholder="用 lg 覆盖共享大小" />
+    </UIProvider>
   );
 }
 `;
@@ -76,17 +76,17 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
-      <TextInput label="Text input" placeholder="Inherits size and radius from Input" />
+    <UIThemeProvider theme={theme}>
+      <TextInput label="文本输入" placeholder="继承 Input 的大小和圆角" />
 
-      <NativeSelect mt="md" label="Native select" data={['React', 'Angular', 'Vue', 'Svelte']} />
+      <NativeSelect mt="md" label="原生选择" data={['React', 'Angular', 'Vue', 'Svelte']} />
 
-      <NumberInput mt="md" label="Number input" placeholder="Overrides shared size with lg" />
-    </MantineThemeProvider>
+      <NumberInput mt="md" label="数字输入" placeholder="用 lg 覆盖共享大小" />
+    </UIThemeProvider>
   );
 }
 
-export const sharedDefaultProps: MantineDemo = {
+export const sharedDefaultProps: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

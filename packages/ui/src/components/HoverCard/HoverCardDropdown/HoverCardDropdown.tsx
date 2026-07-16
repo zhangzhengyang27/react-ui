@@ -39,7 +39,7 @@ export const HoverCardDropdown = factory<HoverCardDropdownFactory>((_props, ref)
                         aria-labelledby={ctx.getTargetId()}
                         data-position={ctx.placement}
                         {...others}
-                        className={['mantine-HoverCard-dropdown', className].filter(Boolean).join(' ')}
+                        className={['ui-HoverCard-dropdown', className].filter(Boolean).join(' ')}
                         style={{
                             ...transitionStyles,
                             position: 'absolute',
@@ -62,8 +62,8 @@ export const HoverCardDropdown = factory<HoverCardDropdownFactory>((_props, ref)
                             arrowRadius={ctx.arrowRadius}
                             arrowOffset={ctx.arrowOffset}
                             arrowPosition={ctx.arrowPosition}
-                            className="mantine-HoverCard-arrow"
-                            style={{ backgroundColor: 'var(--hovercard-bg, white)' }}
+                            className="ui-HoverCard-arrow"
+                            style={{ backgroundColor: 'var(--ui-color-body)' }}
                         />
                     </Box>
                 )}
@@ -72,4 +72,4 @@ export const HoverCardDropdown = factory<HoverCardDropdownFactory>((_props, ref)
     )
 })
 
-HoverCardDropdown.displayName = '@mantine/core/HoverCardDropdown'
+HoverCardDropdown.displayName = '@react-ui/ui/HoverCardDropdown'

@@ -12,10 +12,10 @@ ReactUI 在默认主题中使用 [open-color](https://yeun.github.io/open-color/
 颜色以字符串数组的形式暴露在 [theme object](/theming/theme-object) 上。你可以通过颜色名称和索引（0-9）访问颜色色阶；索引越大，颜色越深：
 
 ```tsx
-import { useMantineTheme } from '@react-ui/ui';
+import { useUITheme } from '@react-ui/ui';
 
 function Demo() {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
 
   return (
     <div
@@ -116,17 +116,17 @@ const theme = createTheme({
 > 你不能分配 CSS 颜色值；例如，以下代码会在主题合并期间抛出错误：
 >
 > ```tsx
-> import { MantineProvider } from '@react-ui/ui';
+> import { UIProvider } from '@react-ui/ui';
 >
 > function Demo() {
 >   return (
->     <MantineProvider
+>     <UIProvider
 >       theme={{
 >         primaryColor: '#CEFEDC', // This will throw an error
 >       }}
 >     >
 >       {/* Your app here */}
->     </MantineProvider>
+>     </UIProvider>
 >   );
 > }
 > ```
@@ -140,13 +140,13 @@ const theme = createTheme({
 你也可以分别为浅色和深色配色方案自定义 primary shade：
 
 ```tsx
-import { MantineProvider } from '@react-ui/ui';
+import { UIProvider } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <MantineProvider theme={{ primaryShade: { light: 6, dark: 8 } }}>
+    <UIProvider theme={{ primaryShade: { light: 6, dark: 8 } }}>
       {/* Your app here */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```
@@ -192,16 +192,16 @@ function Demo() {
 ```tsx
 interface VariantColorsResolverInput {
   /** `color` prop passed to component */
-  color: MantineColor | undefined;
+  color: UIColor | undefined;
 
   /** `variant` prop passed to component */
   variant: string;
 
   /** `gradient` prop passed to component, used only for gradient variant by default */
-  gradient?: MantineGradient;
+  gradient?: UIGradient;
 
   /** Theme object */
-  theme: MantineTheme;
+  theme: UITheme;
 }
 ```
 
@@ -230,11 +230,11 @@ interface VariantColorResolverResult {
 
 ```tsx
 import { generateColors } from '@react-ui/colors-generator';
-import { MantineProvider } from '@react-ui/ui';
+import { UIProvider } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <MantineProvider
+    <UIProvider
       theme={{
         colors: {
           'pale-blue': generateColors('#375EAC'),
@@ -242,7 +242,7 @@ function Demo() {
       }}
     >
       {/* Your app here */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```
@@ -253,22 +253,22 @@ function Demo() {
 
 ## 添加自定义颜色类型
 
-TypeScript 在访问主题时只会自动补全 ReactUI 的默认颜色。要将你的自定义颜色添加到 MantineColor 类型中，你可以使用 TypeScript 模块声明。
+TypeScript 在访问主题时只会自动补全 ReactUI 的默认颜色。要将你的自定义颜色添加到 UIColor 类型中，你可以使用 TypeScript 模块声明。
 
 ```ts
 import {
-  DefaultMantineColor,
-  MantineColorsTuple,
+  DefaultUIColor,
+  UIColorsTuple,
 } from '@react-ui/ui';
 
 type ExtendedCustomColors =
   | 'primaryColorName'
   | 'secondaryColorName'
-  | DefaultMantineColor;
+  | DefaultUIColor;
 
 declare module '@react-ui/ui' {
-  export interface MantineThemeColorsOverride {
-    colors: Record<ExtendedCustomColors, MantineColorsTuple>;
+  export interface UIThemeColorsOverride {
+    colors: Record<ExtendedCustomColors, UIColorsTuple>;
   }
 }
 ```

@@ -29,14 +29,14 @@ export function HomePageOverlaysDemo() {
 
   return (
     <>
-      <Modal opened={modalOpened} onClose={modalHandlers.close} title="Authenticate" radius="md">
+      <Modal opened={modalOpened} onClose={modalHandlers.close} title="身份验证" radius="md">
         <AuthenticationForm noShadow noPadding />
       </Modal>
 
       <Drawer
         opened={drawerOpened}
         onClose={drawerHandlers.close}
-        title="Authenticate"
+        title="身份验证"
         radius="md"
         offset={5}
       >
@@ -60,7 +60,7 @@ export function HomePageOverlaysDemo() {
                   rightSection={<SlidersHorizontalIcon size={22} />}
                   justify="space-between"
                 >
-                  Filters
+                  筛选
                 </Button>
               </Popover.Target>
 
@@ -72,9 +72,9 @@ export function HomePageOverlaysDemo() {
                   size="md"
                   className={classes.label}
                 >
-                  Order status
+                  订单状态
                 </Input.Label>
-                <SegmentedControl data={['In progress', 'Delivered']} radius="md" size="md" />
+                <SegmentedControl data={['进行中', '已送达']} radius="md" size="md" />
 
                 <Input.Label
                   labelElement="div"
@@ -84,14 +84,14 @@ export function HomePageOverlaysDemo() {
                   size="md"
                   className={classes.label}
                 >
-                  Brand
+                  品牌
                 </Input.Label>
 
-                <Checkbox label="Cannon" size="md" defaultChecked />
-                <Checkbox label="Nikon" mt={8} size="md" defaultChecked />
-                <Checkbox label="Sony" mt={8} size="md" />
-                <Checkbox label="Fuji" mt={8} size="md" />
-                <Checkbox label="Leica" mt={8} size="md" />
+                <Checkbox label="佳能" size="md" defaultChecked />
+                <Checkbox label="尼康" mt={8} size="md" defaultChecked />
+                <Checkbox label="索尼" mt={8} size="md" />
+                <Checkbox label="富士" mt={8} size="md" />
+                <Checkbox label="徕卡" mt={8} size="md" />
 
                 <Input.Label
                   labelElement="div"
@@ -101,16 +101,16 @@ export function HomePageOverlaysDemo() {
                   size="md"
                   className={classes.label}
                 >
-                  Price range
+                  价格区间
                 </Input.Label>
 
                 <Radio.Group defaultValue="200">
                   <Stack gap={8}>
-                    <Radio label="Less than $100" value="100" size="md" />
+                    <Radio label="低于 $100" value="100" size="md" />
                     <Radio label="$100 - $200" value="200" size="md" />
                     <Radio label="$200 - $500" value="500" size="md" />
                     <Radio label="$500 - $1000" value="1000" size="md" />
-                    <Radio label="More than $1000" value="1001" size="md" />
+                    <Radio label="高于 $1000" value="1001" size="md" />
                   </Stack>
                 </Radio.Group>
               </Popover.Dropdown>
@@ -119,7 +119,7 @@ export function HomePageOverlaysDemo() {
 
           <div>
             <Input.Label labelElement="div" size="lg" mb="sm">
-              Hover card
+              悬停卡片
             </Input.Label>
             <HoverCard
               width={320}
@@ -164,8 +164,7 @@ export function HomePageOverlaysDemo() {
                 </Group>
 
                 <Text size="sm" mt="md">
-                  Customizable React components and hooks library with focus on usability,
-                  accessibility and developer experience
+                  可定制的 React 组件与 Hooks 库，专注于可用性、可访问性与开发者体验
                 </Text>
 
                 <Group mt="md" gap="xl">
@@ -173,13 +172,13 @@ export function HomePageOverlaysDemo() {
                     <Box component="b" c="bright">
                       0
                     </Box>{' '}
-                    Following
+                    正在关注
                   </Text>
                   <Text size="sm">
                     <Box component="b" c="bright">
                       1,174
                     </Box>{' '}
-                    Followers
+                    关注者
                   </Text>
                 </Group>
               </HoverCard.Dropdown>
@@ -188,24 +187,24 @@ export function HomePageOverlaysDemo() {
 
           <div>
             <Input.Label labelElement="div" size="lg" mb="sm" display="block">
-              Tooltip
+              提示框
             </Input.Label>
-            <Tooltip label="Tooltip" withArrow>
+            <Tooltip label="提示文本" withArrow>
               <Badge className={classes.tooltip} size="lg" variant="dot" color="yellow">
-                Hover me to see a tooltip
+                悬停查看提示框
               </Badge>
             </Tooltip>
           </div>
           <div>
             <Input.Label labelElement="div" size="lg" mb="sm" display="block">
-              Modal and Drawer
+              模态框与抽屉
             </Input.Label>
             <Group>
               <Button variant="default" radius="md" onClick={modalHandlers.open}>
-                Open modal
+                打开模态框
               </Button>
               <Button variant="default" radius="md" onClick={drawerHandlers.open}>
-                Open drawer
+                打开抽屉
               </Button>
             </Group>
           </div>
@@ -213,11 +212,11 @@ export function HomePageOverlaysDemo() {
 
         <div>
           <Input.Label labelElement="div" size="lg">
-            Floating tooltip
+            浮动提示框
           </Input.Label>
-          <Tooltip.Floating label="Floating tooltip" withinPortal={false}>
+          <Tooltip.Floating label="浮动提示文本" withinPortal={false}>
             <div className={classes.floating}>
-              Hover me to see a tooltip that follows mouse cursor
+              悬停查看跟随鼠标的浮动提示框
             </div>
           </Tooltip.Floating>
         </div>

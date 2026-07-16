@@ -61,7 +61,9 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
             type="button"
             role="tab"
             aria-selected={isActive}
+            tabIndex={isActive ? 0 : -1}
             disabled={disabled}
+            data-value={value}
             {...others}
             {...ctx.getStyles('tab', { className, classNames, style, styles })}
             mod={[{ active: isActive, disabled }, mod]}

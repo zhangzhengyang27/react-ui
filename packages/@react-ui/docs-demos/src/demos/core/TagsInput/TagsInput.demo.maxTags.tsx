@@ -1,5 +1,5 @@
 import { TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TagsInput } from '@react-ui/ui';
@@ -7,9 +7,9 @@ import { TagsInput } from '@react-ui/ui';
 function Demo() {
   return (
     <TagsInput
-      label="Press Enter to submit a tag"
-      description="Add up to 3 tags"
-      placeholder="Enter tag"
+      label="按 Enter 提交标签"
+      description="最多添加 3 个标签"
+      placeholder="输入标签"
       maxTags={3}
       defaultValue={['first', 'second']}
     />
@@ -20,16 +20,16 @@ function Demo() {
 function Demo() {
   return (
     <TagsInput
-      label="Press Enter to submit a tag"
-      description="Add up to 3 tags"
-      placeholder="Enter tag"
+      label="按 Enter 提交标签"
+      description="最多添加 3 个标签"
+      placeholder="输入标签"
       maxTags={3}
       defaultValue={['first', 'second']}
     />
   );
 }
 
-export const maxTags: MantineDemo = {
+export const maxTags: UIDemo = {
   type: 'code',
   component: Demo,
   code,

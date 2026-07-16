@@ -1,0 +1,29 @@
+.control {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--ui-radius-md);
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  [data-ui-color-scheme='light'] & {
+    border-color: var(--ui-color-gray-3);
+    color: var(--ui-color-gray-7);
+    background-color: var(--ui-color-white);
+
+    &:hover {
+      background-color: var(--ui-color-gray-0);
+    }
+  }
+
+  [data-ui-color-scheme='dark'] & {
+    border-color: var(--ui-color-dark-4);
+    color: var(--ui-color-white);
+    background-color: var(--ui-color-dark-6);
+
+    &:hover {
+      background-color: var(--ui-color-dark-5);
+    }
+  }
+}

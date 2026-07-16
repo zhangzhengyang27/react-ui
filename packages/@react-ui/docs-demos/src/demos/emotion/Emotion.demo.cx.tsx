@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { createStyles } from '@react-ui/emotion';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -115,7 +115,7 @@ function Demo() {
   );
 }
 
-export const cx: MantineDemo = {
+export const cx: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,5 +1,5 @@
 import { Menu } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { MenuStylesApi } from '@react-ui/docs-styles-api';
 import { DemoMenuItems } from './_menu-items';
 
@@ -23,7 +23,7 @@ function Demo(props: any) {
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: MenuStylesApi,
   component: Demo,

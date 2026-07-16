@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Box, SemiCircleProgress, Slider, Stack, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { SemiCircleProgress, Stack, Text } from '@react-ui/ui';
@@ -84,7 +84,7 @@ function Demo() {
   );
 }
 
-export const batteryIndicator: MantineDemo = {
+export const batteryIndicator: UIDemo = {
   type: 'code',
   component: Demo,
   code,

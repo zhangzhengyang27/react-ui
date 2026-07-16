@@ -1,13 +1,13 @@
-import { getThemeColor, MantineColor, MantineTheme } from '@react-ui/ui';
+import { getThemeColor, UIColor, UITheme } from '@react-ui/ui';
 
 interface PieChartDataItem {
-  color: MantineColor;
+  color: UIColor;
   [key: string]: any;
 }
 
 interface GetPieChartDataInput<T extends PieChartDataItem> {
   data: T[];
-  theme: MantineTheme;
+  theme: UITheme;
   strokeWidth: number | undefined;
   highlightedIndex: number | null;
   cellProps:

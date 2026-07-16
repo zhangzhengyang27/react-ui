@@ -1,10 +1,10 @@
 import { HeartIcon } from '@phosphor-icons/react';
-import { ActionIcon, createTheme, Group, MantineThemeProvider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { ActionIcon, createTheme, Group, UIThemeProvider } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 import classes from './ActionIcon.demo.customSize.module.css';
 
 const code = `
-import { ActionIcon, createTheme, Group, MantineThemeProvider } from '@react-ui/ui';
+import { ActionIcon, createTheme, Group, UIThemeProvider } from '@react-ui/ui';
 import { HeartIcon } from '@phosphor-icons/react';
 import classes from './Demo.module.css';
 
@@ -18,17 +18,17 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
+    <UIThemeProvider theme={theme}>
       <Group justify="center">
-        <ActionIcon size="xxs" aria-label="Custom xxs size">
+        <ActionIcon size="xxs" aria-label="自定义 xxs 尺寸">
           <HeartIcon size={10} />
         </ActionIcon>
 
-        <ActionIcon size="xxl" aria-label="Custom xxl size">
+        <ActionIcon size="xxl" aria-label="自定义 xxl 尺寸">
           <HeartIcon size={32} />
         </ActionIcon>
       </Group>
-    </MantineThemeProvider>
+    </UIThemeProvider>
   );
 }
 `;
@@ -50,25 +50,25 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
+    <UIThemeProvider theme={theme}>
       <Group justify="center">
-        <ActionIcon size="xxs" aria-label="Custom xxs size">
+        <ActionIcon size="xxs" aria-label="自定义 xxs 尺寸">
           <HeartIcon size={10} />
         </ActionIcon>
 
-        <ActionIcon size="xxl" aria-label="Custom xxl size">
+        <ActionIcon size="xxl" aria-label="自定义 xxl 尺寸">
           <HeartIcon size={32} />
         </ActionIcon>
       </Group>
-    </MantineThemeProvider>
+    </UIThemeProvider>
   );
 }
 
-export const customSize: MantineDemo = {
+export const customSize: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
   ],
 };

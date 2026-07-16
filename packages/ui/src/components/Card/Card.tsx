@@ -8,10 +8,10 @@ import {
     getRadius,
     getShadow,
     getSize,
-    MantineColor,
-    MantineRadius,
-    MantineShadow,
-    MantineSpacing,
+    UIColor,
+    UIRadius,
+    UIShadow,
+    UISpacing,
     StylesApiProps,
     useProps,
     useStyles
@@ -29,19 +29,19 @@ export interface CardProps extends BoxProps, StylesApiProps<CardFactory> {
     children?: React.ReactNode
 
     /** Key of theme.spacing or any valid CSS value to set padding, numbers are converted to rem @default 'md' */
-    padding?: MantineSpacing
+    padding?: UISpacing
 
-    /** Key of theme.radius or any valid CSS value to set border-radius, numbers are converted to rem @default theme.defaultRadius */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 to set border-radius, numbers are converted to rem @default theme.defaultRadius */
+    radius?: UIRadius
 
     /** Key of theme.shadows or any valid CSS value to set box-shadow */
-    shadow?: MantineShadow
+    shadow?: UIShadow
 
     /** Adds border to the root element @default false */
     withBorder?: boolean
 
     /** Background color, key of theme.colors or any valid CSS color */
-    bg?: MantineColor
+    bg?: UIColor
 }
 
 export type CardFactory = Factory<{

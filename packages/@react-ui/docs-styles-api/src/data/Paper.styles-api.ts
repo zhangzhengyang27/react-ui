@@ -3,13 +3,13 @@ import type { StylesApiData } from '../types';
 
 export const PaperStylesApi: StylesApiData<PaperFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
   },
 
   vars: {
     root: {
-      '--paper-radius': 'Controls `border-radius`',
-      '--paper-shadow': 'Controls `box-shadow`',
+      '--paper-radius': '控制 `border-radius`',
+      '--paper-shadow': '控制 `box-shadow`',
     },
   },
 

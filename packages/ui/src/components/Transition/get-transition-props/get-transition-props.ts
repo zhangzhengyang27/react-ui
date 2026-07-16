@@ -10,7 +10,7 @@ const defaultTransition: MinimalTransitionOverride = {
 
 /**
  * 合并组件级 transition 默认值与传入的 transition props。
- * 对齐 mantine getTransitionProps。
+ * 对齐 ui getTransitionProps。
  */
 export function getTransitionProps(
     transitionProps: TransitionOverride | undefined,

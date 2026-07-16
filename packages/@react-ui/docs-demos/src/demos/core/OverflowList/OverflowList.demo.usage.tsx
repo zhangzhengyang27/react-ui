@@ -1,5 +1,5 @@
 import { Badge, OverflowList } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './_data';
 
 const code = `
@@ -33,11 +33,11 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'OverflowListDemo.tsx', code, language: 'tsx' },
+    { fileName: '溢出列表演示.tsx', code, language: 'tsx' },
     { fileName: 'data.ts', code: dataCode, language: 'tsx' },
   ],
 };

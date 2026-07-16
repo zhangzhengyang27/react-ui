@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { Box, GetStylesApi, getThemeColor, UnstyledButton, useMantineTheme } from '@react-ui/ui';
+import { Box, GetStylesApi, getThemeColor, UnstyledButton, useUITheme } from '@react-ui/ui';
 import { useDatesContext } from '@react-ui/dates';
 import { ScheduleLabelsOverride } from '../../labels';
 import { DateLabelFormat, DateStringValue, DayOfWeek, ScheduleMode } from '../../types';
@@ -116,7 +116,7 @@ export function YearViewMonth({
   firstDayIndex,
 }: YearViewMonthProps) {
   const ctx = useDatesContext();
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const today = dayjs();
 
   const weekdays = withWeekDays

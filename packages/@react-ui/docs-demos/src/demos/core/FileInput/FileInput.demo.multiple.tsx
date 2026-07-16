@@ -1,19 +1,19 @@
 import { FileInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { FileInput } from '@react-ui/ui';
 
 function Demo() {
-  return <FileInput label="Upload files" placeholder="Upload files" multiple />;
+  return <FileInput label="上传文件" placeholder="上传文件" multiple />;
 }
 `;
 
 function Demo() {
-  return <FileInput multiple label="Upload files" placeholder="Upload files" />;
+  return <FileInput multiple label="上传文件" placeholder="上传文件" />;
 }
 
-export const multiple: MantineDemo = {
+export const multiple: UIDemo = {
   type: 'code',
   code,
   component: Demo,

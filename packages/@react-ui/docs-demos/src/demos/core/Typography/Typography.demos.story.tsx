@@ -1,7 +1,7 @@
 import { renderDemo } from '../../../render-demo';
 import * as demos from './index';
 
-export default { title: 'Typography' };
+export default { title: '排版' };
 
 export const Demo_usage = {
   name: '⭐ Demo: usage',

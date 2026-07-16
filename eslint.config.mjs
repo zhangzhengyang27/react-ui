@@ -29,7 +29,7 @@ export default tseslint.config(
             // 转换选项
             parserOptions: {
                 // ts 项目的 tsconfig 文件位置
-                project: ['./tsconfig.eslint.json', '**/*/tsconfig.json'],
+                project: ['./tsconfig.eslint.json', '**/tsconfig.json'],
                 // ts 配置的根目录
                 tsconfigRootDir: import.meta.dirname
             }

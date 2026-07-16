@@ -1,6 +1,6 @@
 import { FileTextIcon } from '@phosphor-icons/react';
 import { FileInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { FileInput } from '@react-ui/ui';
@@ -13,14 +13,14 @@ function Demo() {
     <>
       <FileInput
         leftSection={icon}
-        label="Attach your CV"
-        placeholder="Your CV"
+        label="上传你的简历"
+        placeholder="你的简历"
         leftSectionPointerEvents="none"
       />
       <FileInput
         rightSection={icon}
-        label="Attach your CV"
-        placeholder="Your CV"
+        label="上传你的简历"
+        placeholder="你的简历"
         rightSectionPointerEvents="none"
         mt="md"
       />
@@ -36,14 +36,14 @@ function Demo() {
     <>
       <FileInput
         leftSection={icon}
-        label="Attach your CV"
-        placeholder="Your CV"
+        label="上传你的简历"
+        placeholder="你的简历"
         leftSectionPointerEvents="none"
       />
       <FileInput
         rightSection={icon}
-        label="Attach your CV"
-        placeholder="Your CV"
+        label="上传你的简历"
+        placeholder="你的简历"
         rightSectionPointerEvents="none"
         mt="md"
       />
@@ -51,7 +51,7 @@ function Demo() {
   );
 }
 
-export const sections: MantineDemo = {
+export const sections: UIDemo = {
   type: 'code',
   component: Demo,
   code,

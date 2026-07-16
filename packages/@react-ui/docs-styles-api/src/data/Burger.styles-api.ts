@@ -3,17 +3,17 @@ import type { StylesApiData } from '../types';
 
 export const BurgerStylesApi: StylesApiData<BurgerFactory> = {
   selectors: {
-    root: 'Root element (button)',
+    root: '根元素（button）',
     burger: 'Inner element that contains burger lines',
   },
 
   vars: {
     root: {
-      '--burger-line-size': 'Controls height of lines',
-      '--burger-color': 'Controls background-color of lines',
-      '--burger-size': 'Controls width and height of the button',
-      '--burger-transition-duration': 'Controls transition-duration of lines',
-      '--burger-transition-timing-function': 'Controls transition-timing-function of lines',
+      '--burger-line-size': '控制 lines 的 height',
+      '--burger-color': '控制 lines 的 background-color',
+      '--burger-size': '控制 the button 的 width and height',
+      '--burger-transition-duration': '控制 lines 的 transition-duration',
+      '--burger-transition-timing-function': '控制 lines 的 transition-timing-function',
     },
   },
 

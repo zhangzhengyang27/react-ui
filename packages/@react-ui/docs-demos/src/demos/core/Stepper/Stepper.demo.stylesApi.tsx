@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Group, Stepper } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { StepperStylesApi } from '@react-ui/docs-styles-api';
 import { Content } from './_content';
 
@@ -68,7 +68,7 @@ function Demo(props: any) {
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   centered: true,
   maxWidth: '100%',

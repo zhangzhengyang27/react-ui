@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { EmblaCarouselType } from 'embla-carousel';
 import { Carousel } from '@react-ui/carousel';
 import { Progress } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { Slides } from './_slides';
 
 const code = `
@@ -84,7 +84,7 @@ function Demo() {
   );
 }
 
-export const progress: MantineDemo = {
+export const progress: UIDemo = {
   type: 'code',
   component: Demo,
   code,

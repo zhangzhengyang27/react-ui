@@ -1,6 +1,6 @@
 import { Button, TreeSelect } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './data';
 
 const code = `
@@ -17,8 +17,8 @@ function Demo() {
       </Button>
 
       <TreeSelect
-        label="Your favorite item"
-        placeholder="Pick value"
+        label="你最喜欢的项目"
+        placeholder="选择值"
         data={data}
         dropdownOpened={dropdownOpened}
       />
@@ -36,8 +36,8 @@ function Demo() {
       </Button>
 
       <TreeSelect
-        label="Your favorite item"
-        placeholder="Pick value"
+        label="你最喜欢的项目"
+        placeholder="选择值"
         data={data}
         dropdownOpened={dropdownOpened}
       />
@@ -45,11 +45,11 @@ function Demo() {
   );
 }
 
-export const dropdownOpened: MantineDemo = {
+export const dropdownOpened: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
     { fileName: 'data.ts', language: 'tsx', code: dataCode },
   ],
   maxWidth: 340,

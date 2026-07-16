@@ -24,19 +24,19 @@ import {
   TreeNodeData,
   useTree,
 } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Tree.demo.docsEditor.module.css';
 
 const docsCode = `import { TreeNodeData } from '@react-ui/ui';
 
 export const data: TreeNodeData[] = [
   {
-    label: 'Getting started',
+    label: '开始使用',
     value: 'getting-started',
     children: [
       { label: 'Introduction', value: 'getting-started/introduction' },
       { label: 'Installation', value: 'getting-started/installation' },
-      { label: 'Quick start', value: 'getting-started/quick-start' },
+      { label: '快速开始', value: 'getting-started/quick-start' },
     ],
   },
   {
@@ -49,7 +49,7 @@ export const data: TreeNodeData[] = [
         children: [
           { label: 'Button', value: 'components/inputs/button' },
           { label: 'TextInput', value: 'components/inputs/text-input' },
-          { label: 'Select', value: 'components/inputs/select' },
+          { label: '选择', value: 'components/inputs/select' },
         ],
       },
       {
@@ -63,7 +63,7 @@ export const data: TreeNodeData[] = [
     ],
   },
   {
-    label: 'Hooks',
+    label: '钩子',
     value: 'hooks',
     children: [
       { label: 'use-toggle', value: 'hooks/use-toggle' },
@@ -74,12 +74,12 @@ export const data: TreeNodeData[] = [
 
 const docsData: TreeNodeData[] = [
   {
-    label: 'Getting started',
+    label: '开始使用',
     value: 'getting-started',
     children: [
       { label: 'Introduction', value: 'getting-started/introduction' },
       { label: 'Installation', value: 'getting-started/installation' },
-      { label: 'Quick start', value: 'getting-started/quick-start' },
+      { label: '快速开始', value: 'getting-started/quick-start' },
     ],
   },
   {
@@ -92,7 +92,7 @@ const docsData: TreeNodeData[] = [
         children: [
           { label: 'Button', value: 'components/inputs/button' },
           { label: 'TextInput', value: 'components/inputs/text-input' },
-          { label: 'Select', value: 'components/inputs/select' },
+          { label: '选择', value: 'components/inputs/select' },
         ],
       },
       {
@@ -106,7 +106,7 @@ const docsData: TreeNodeData[] = [
     ],
   },
   {
-    label: 'Hooks',
+    label: '钩子',
     value: 'hooks',
     children: [
       { label: 'use-toggle', value: 'hooks/use-toggle' },
@@ -238,7 +238,7 @@ function Leaf({ node, expanded, hasChildren, elementProps, search }: LeafProps) 
           </ActionIcon>
         </Menu.Target>
         <Menu.Dropdown>
-          <Menu.Item leftSection={<PencilSimpleIcon size={14} />}>Rename</Menu.Item>
+          <Menu.Item leftSection={<PencilSimpleIcon size={14} />}>重命名</Menu.Item>
           <Menu.Item leftSection={<TrashIcon size={14} />} color="red">
             Delete
           </Menu.Item>
@@ -272,7 +272,7 @@ function Demo() {
     <div>
       <TextInput
         leftSection={<MagnifyingGlassIcon size={14} />}
-        placeholder="Search docs..."
+        placeholder="搜索文档..."
         mb="sm"
         value={search}
         onChange={(event) => handleSearchChange(event.currentTarget.value)}
@@ -343,7 +343,7 @@ function Leaf({ node, expanded, hasChildren, elementProps, search }: LeafProps) 
           </ActionIcon>
         </Menu.Target>
         <Menu.Dropdown>
-          <Menu.Item leftSection={<PencilSimpleIcon size={14} />}>Rename</Menu.Item>
+          <Menu.Item leftSection={<PencilSimpleIcon size={14} />}>重命名</Menu.Item>
           <Menu.Item leftSection={<TrashIcon size={14} />} color="red">
             Delete
           </Menu.Item>
@@ -377,7 +377,7 @@ function Demo() {
     <div>
       <TextInput
         leftSection={<MagnifyingGlassIcon size={14} />}
-        placeholder="Search docs..."
+        placeholder="搜索文档..."
         mb="sm"
         value={search}
         onChange={(event) => handleSearchChange(event.currentTarget.value)}
@@ -396,14 +396,14 @@ function Demo() {
   );
 }
 
-export const docsEditor: MantineDemo = {
+export const docsEditor: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   maxWidth: 360,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
-    { fileName: 'Demo.module.css', language: 'scss', code: cssCode },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
+    { fileName: '演示样式.module.css', language: 'scss', code: cssCode },
     { fileName: 'data.ts', language: 'tsx', code: docsCode },
   ],
 };

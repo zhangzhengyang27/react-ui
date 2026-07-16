@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Center } from './Center'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Center', () => {
     it('renders a div by default', () => {
@@ -17,7 +17,7 @@ describe('Center', () => {
     it('applies static classes', () => {
         renderWithProvider(<Center data-testid="center">content</Center>)
 
-        expect(screen.getByTestId('center')).toHaveClass('mantine-Center-root')
+        expect(screen.getByTestId('center')).toHaveClass('ui-Center-root')
     })
 
     it('supports polymorphic rendering', () => {

@@ -1,7 +1,7 @@
 import { Button, Text } from '@react-ui/ui';
 import { modals } from '@react-ui/modals';
 import { notifications } from '@react-ui/notifications';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Text } from '@react-ui/ui';
@@ -9,19 +9,19 @@ import { modals } from '@react-ui/modals';
 
 function Demo() {
   const openModal = () => modals.openConfirmModal({
-    title: 'Please confirm your action',
+    title: '请确认你的操作',
     children: (
       <Text size="sm">
         This action is so important that you are required to confirm it with a modal. Please click
         one of these buttons to proceed.
       </Text>
     ),
-    labels: { confirm: 'Confirm', cancel: 'Cancel' },
-    onCancel: () => console.log('Cancel'),
-    onConfirm: () => console.log('Confirmed'),
+    labels: { confirm: '确认', cancel: '取消' },
+    onCancel: () => console.log('取消'),
+    onConfirm: () => console.log('已确认'),
   });
 
-  return <Button onClick={openModal}>Open confirm modal</Button>;
+  return <Button onClick={openModal}>打开确认模态框</Button>;
 }
 `;
 
@@ -29,7 +29,7 @@ function Demo() {
   const openModal = () =>
     modals.openConfirmModal({
       modalId: 'test-id',
-      title: 'Please confirm your action',
+      title: '请确认你的操作',
       children: (
         <Text size="sm">
           This action is so important that you are required to confirm it with a modal. Please click
@@ -38,22 +38,22 @@ function Demo() {
       ),
       onCancel: () =>
         notifications.show({
-          title: 'Canceled',
-          message: 'Confirm modal was canceled',
+          title: '已取消',
+          message: '确认模态框已取消',
           color: 'gray',
         }),
       onConfirm: () =>
         notifications.show({
-          title: 'Confirmed',
-          message: 'Confirm modal was confirmed',
+          title: '已确认',
+          message: '确认模态框已确认',
           color: 'teal',
         }),
     });
 
-  return <Button onClick={openModal}>Open confirm modal</Button>;
+  return <Button onClick={openModal}>打开确认模态框</Button>;
 }
 
-export const confirm: MantineDemo = {
+export const confirm: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

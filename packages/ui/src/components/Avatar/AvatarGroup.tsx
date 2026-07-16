@@ -7,7 +7,7 @@ import {
     factory,
     Factory,
     getSpacing,
-    MantineSpacing,
+    UISpacing,
     StylesApiProps,
     useProps,
     useStyles
@@ -28,7 +28,7 @@ export type AvatarGroupCssVariables = {
 export interface AvatarGroupProps
     extends BoxProps, StylesApiProps<AvatarGroupFactory>, ElementProps<'div'> {
     /** Negative space between Avatar components @default 'sm' */
-    spacing?: MantineSpacing
+    spacing?: UISpacing
 }
 
 export type AvatarGroupFactory = Factory<{

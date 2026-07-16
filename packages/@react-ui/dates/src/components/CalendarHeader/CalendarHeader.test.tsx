@@ -1,5 +1,5 @@
-import { render, screen, tests } from '@mantine-tests/core';
-import { datesTests } from '@mantine-tests/dates';
+import { render, screen, tests } from '@react-ui/tests';
+import { datesTests } from '@react-ui/tests/dates';
 import { CalendarHeader, CalendarHeaderProps, CalendarHeaderStylesNames } from './CalendarHeader';
 
 const defaultProps: CalendarHeaderProps = {
@@ -41,12 +41,12 @@ describe('@react-ui/dates/CalendarHeader', () => {
   it('has correct default __staticSelector', () => {
     render(<CalendarHeader {...defaultProps} />);
     expect(screen.getByLabelText('next')).toHaveClass(
-      'mantine-CalendarHeader-calendarHeaderControl'
+      'ui-CalendarHeader-calendarHeaderControl'
     );
   });
 
   it('supports custom __staticSelector', () => {
     render(<CalendarHeader {...defaultProps} __staticSelector="Calendar" />);
-    expect(screen.getByLabelText('next')).toHaveClass('mantine-Calendar-calendarHeaderControl');
+    expect(screen.getByLabelText('next')).toHaveClass('ui-Calendar-calendarHeaderControl');
   });
 });

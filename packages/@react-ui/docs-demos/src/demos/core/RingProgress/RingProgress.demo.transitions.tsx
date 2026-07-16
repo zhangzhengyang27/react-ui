@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, RingProgress, Stack, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -17,7 +17,7 @@ function Demo() {
         label={<Text ta="center">{value}%</Text>}
       />
 
-      <Button onClick={() => setValue(Math.floor(Math.random() * 100))}>Set random value</Button>
+      <Button onClick={() => setValue(Math.floor(Math.random() * 100))}>设置随机值</Button>
     </Stack>
   );
 }
@@ -34,12 +34,12 @@ function Demo() {
         label={<Text ta="center">{value}%</Text>}
       />
 
-      <Button onClick={() => setValue(Math.floor(Math.random() * 100))}>Set random value</Button>
+      <Button onClick={() => setValue(Math.floor(Math.random() * 100))}>设置随机值</Button>
     </Stack>
   );
 }
 
-export const transitions: MantineDemo = {
+export const transitions: UIDemo = {
   type: 'code',
   component: Demo,
   code,

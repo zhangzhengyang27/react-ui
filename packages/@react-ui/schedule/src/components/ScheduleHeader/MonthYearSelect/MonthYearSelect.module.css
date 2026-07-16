@@ -42,7 +42,7 @@
     text-align: center;
   }
 
-  @mixin hover {
+  &:hover {
     background-color: var(--ui-color-default-hover);
   }
 
@@ -50,7 +50,7 @@
     background-color: var(--ui-primary-color-filled);
     color: var(--ui-primary-color-contrast);
 
-    @mixin hover {
+    &:hover {
       background-color: var(--ui-primary-color-filled-hover);
     }
   }

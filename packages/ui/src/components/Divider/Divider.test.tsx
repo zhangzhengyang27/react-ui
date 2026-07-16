@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Divider } from './Divider'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Divider', () => {
     it('renders a div by default', () => {
@@ -17,7 +17,7 @@ describe('Divider', () => {
     it('applies static classes', () => {
         renderWithProvider(<Divider data-testid="divider" />)
 
-        expect(screen.getByTestId('divider')).toHaveClass('mantine-Divider-root')
+        expect(screen.getByTestId('divider')).toHaveClass('ui-Divider-root')
     })
 
     it('sets orientation data attribute', () => {
@@ -31,7 +31,7 @@ describe('Divider', () => {
 
         const root = screen.getByTestId('divider')
         expect(root).toHaveAttribute('data-with-label')
-        expect(screen.getByText('Label')).toHaveClass('mantine-Divider-label')
+        expect(screen.getByText('Label')).toHaveClass('ui-Divider-label')
     })
 
     it('sets label position data attribute', () => {

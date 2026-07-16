@@ -26,7 +26,7 @@
     gap: var(--ui-spacing-md);
   }
 
-  @mixin hover {
+  &:hover {
     transform: scale(1.01);
     box-shadow: var(--ui-shadow-md);
   }

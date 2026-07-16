@@ -1,5 +1,5 @@
 import { List } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { List } from '@react-ui/ui';
@@ -7,11 +7,11 @@ import { List } from '@react-ui/ui';
 function Demo() {
   return (
     <List type="ordered">
-      <List.Item>First item</List.Item>
-      <List.Item value={5}>This item is #5</List.Item>
+      <List.Item>第一个项目</List.Item>
+      <List.Item value={5}>这是第 5 项</List.Item>
       <List.Item>This item is #6 (continues from previous)</List.Item>
-      <List.Item value={10}>This item is #10</List.Item>
-      <List.Item>This item is #11</List.Item>
+      <List.Item value={10}>这是第 10 项</List.Item>
+      <List.Item>这是第 11 项</List.Item>
     </List>
   );
 }
@@ -20,16 +20,16 @@ function Demo() {
 function Demo() {
   return (
     <List type="ordered">
-      <List.Item>First item</List.Item>
-      <List.Item value={5}>This item is #5</List.Item>
+      <List.Item>第一个项目</List.Item>
+      <List.Item value={5}>这是第 5 项</List.Item>
       <List.Item>This item is #6 (continues from previous)</List.Item>
-      <List.Item value={10}>This item is #10</List.Item>
-      <List.Item>This item is #11</List.Item>
+      <List.Item value={10}>这是第 10 项</List.Item>
+      <List.Item>这是第 11 项</List.Item>
     </List>
   );
 }
 
-export const value: MantineDemo = {
+export const value: UIDemo = {
   type: 'code',
   component: Demo,
   code,

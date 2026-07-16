@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Group, Paper, Text } from '@react-ui/ui';
 import { useDrag } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -87,7 +87,7 @@ function Demo() {
       ))}
 
       {notifications.length === 0 && (
-        <Text ta="center" c="dimmed" py="md">All cleared!</Text>
+        <Text ta="center" c="dimmed" py="md">全部清除！</Text>
       )}
 
       <Group justify="center" mt="md">
@@ -182,13 +182,13 @@ function Demo() {
       )}
 
       <Group justify="center" mt="md">
-        <Button onClick={() => setNotifications(initialItems)}>Reset</Button>
+        <Button onClick={() => setNotifications(initialItems)}>重置</Button>
       </Group>
     </div>
   );
 }
 
-export const swipe: MantineDemo = {
+export const swipe: UIDemo = {
   type: 'code',
   code,
   component: Demo,

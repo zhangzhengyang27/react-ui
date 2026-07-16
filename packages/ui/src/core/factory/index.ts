@@ -4,10 +4,10 @@ export { createPolymorphicComponent, polymorphic } from './create-polymorphic-co
 export type {
     FactoryPayload,
     ExtendComponent,
-    MantineComponent,
-    MantineComponentStaticProperties,
+    UIComponent,
+    UIComponentStaticProperties,
     FactoryComponentWithProps
 } from './factory'
-export type { MantinePolymorphicComponent } from './polymorphic-factory'
+export type { UIPolymorphicComponent } from './polymorphic-factory'
 export type { PolymorphicComponentProps, PolymorphicRef } from './create-polymorphic-component'
 export type { Factory, PolymorphicFactory } from './create-factory'

@@ -21,6 +21,10 @@ export function useResizeObserver<T extends HTMLElement = any>(
     const frameID = useRef(0)
     const [rect, setRect] = useState<ObserverRect>(defaultState)
     const observerRef = useRef<ResizeObserver | null>(null)
+    // 用 ref 跟踪 options,避免内联对象每次渲染都触发 refCallback 重建
+    // 进而 disconnect+重建 observer 造成性能损耗
+    const optionsRef = useRef(options)
+    optionsRef.current = options
 
     const refCallback: React.RefCallback<T | null> = useCallback(
         node => {
@@ -62,9 +66,9 @@ export function useResizeObserver<T extends HTMLElement = any>(
                     })
                 }
             })
-            observerRef.current.observe(node, options)
+            observerRef.current.observe(node, optionsRef.current)
         },
-        [options]
+        []
     )
 
     return [refCallback, rect] as const

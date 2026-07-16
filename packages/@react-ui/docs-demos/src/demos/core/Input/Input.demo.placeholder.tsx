@@ -1,5 +1,5 @@
 import { Input } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Input } from '@react-ui/ui';
@@ -7,7 +7,7 @@ import { Input } from '@react-ui/ui';
 function Demo() {
   return (
     <Input component="button" pointer>
-      <Input.Placeholder>Placeholder content</Input.Placeholder>
+      <Input.Placeholder>占位内容</Input.Placeholder>
     </Input>
   );
 }
@@ -16,12 +16,12 @@ function Demo() {
 function Demo() {
   return (
     <Input component="button" pointer>
-      <Input.Placeholder>Placeholder content</Input.Placeholder>
+      <Input.Placeholder>占位内容</Input.Placeholder>
     </Input>
   );
 }
 
-export const placeholder: MantineDemo = {
+export const placeholder: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

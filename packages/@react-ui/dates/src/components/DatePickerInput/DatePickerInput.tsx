@@ -4,7 +4,7 @@ import {
   factory,
   Factory,
   InputVariant,
-  MantineComponentStaticProperties,
+  UIComponentStaticProperties,
   StylesApiProps,
   useProps,
   useResolvedStylesApi,
@@ -48,7 +48,7 @@ type DatePickerInputComponent = (<Type extends DatePickerType = 'default'>(
   props: DatePickerInputProps<Type> & { ref?: React.Ref<HTMLButtonElement> }
 ) => React.JSX.Element) & {
   displayName?: string;
-} & MantineComponentStaticProperties<DatePickerInputFactory>;
+} & UIComponentStaticProperties<DatePickerInputFactory>;
 
 export const DatePickerInput: DatePickerInputComponent = factory<DatePickerInputFactory>(
   (_props) => {

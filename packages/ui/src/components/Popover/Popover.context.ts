@@ -5,7 +5,7 @@ export interface PopoverContextValue {
     y: number | undefined
     arrowX: number | undefined
     arrowY: number | undefined
-    arrowRef: React.RefObject<HTMLDivElement>
+    arrowRef: React.RefObject<HTMLDivElement | null>
     opened: boolean
     reference: (node: HTMLElement | null) => void
     floating: (node: HTMLElement | null) => void

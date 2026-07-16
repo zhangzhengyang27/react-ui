@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Schedule } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const recurringEventsData = [
   {
@@ -77,7 +77,7 @@ function Demo() {
   return <Schedule view="week" date={date} onDateChange={setDate} events={recurringEventsData} />;
 }
 
-export const recurringEvents: MantineDemo = {
+export const recurringEvents: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

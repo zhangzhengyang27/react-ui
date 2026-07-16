@@ -1,20 +1,20 @@
 import { ShoppingCartSimpleIcon } from '@phosphor-icons/react';
 import { Button, EmptyState } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Demo() {
   return (
     <EmptyState
       withIndicatorBackground
       icon={<ShoppingCartSimpleIcon />}
-      title="Your cart is empty"
+      title="购物车为空"
     >
       <EmptyState.Description>
         Your shopping cart is empty right now. Browse our catalog and add the items you like to get
         started with your first order.
       </EmptyState.Description>
       <EmptyState.Actions>
-        <Button variant="default">Browse products</Button>
+        <Button variant="default">浏览产品</Button>
       </EmptyState.Actions>
     </EmptyState>
   );
@@ -26,20 +26,20 @@ import { ShoppingCartSimpleIcon } from '@phosphor-icons/react';
 
 function Demo() {
   return (
-    <EmptyState withIndicatorBackground icon={<ShoppingCartSimpleIcon />} title="Your cart is empty">
+    <EmptyState withIndicatorBackground icon={<ShoppingCartSimpleIcon />} title="购物车为空">
       <EmptyState.Description>
         Your shopping cart is empty right now. Browse our catalog and add the items you like to get
         started with your first order.
       </EmptyState.Description>
       <EmptyState.Actions>
-        <Button variant="default">Browse products</Button>
+        <Button variant="default">浏览产品</Button>
       </EmptyState.Actions>
     </EmptyState>
   );
 }
 `;
 
-export const indicatorBackground: MantineDemo = {
+export const indicatorBackground: UIDemo = {
   type: 'code',
   component: Demo,
   code,

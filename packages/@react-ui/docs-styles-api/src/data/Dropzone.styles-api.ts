@@ -3,7 +3,7 @@ import type { StylesApiData } from '../types';
 
 export const DropzoneStylesApi: StylesApiData<DropzoneFactory> = {
   selectors: {
-    root: 'Dropzone root element',
+    root: 'Dropzone root 元素',
     inner: 'Dropzone inner element (wraps children)',
   },
 
@@ -13,7 +13,7 @@ export const DropzoneStylesApi: StylesApiData<DropzoneFactory> = {
       '--dropzone-reject-bg': 'Controls `background-color` when file is rejected',
       '--dropzone-accept-color': 'Controls `color` when file is accepted',
       '--dropzone-reject-color': 'Controls `color` when file is rejected',
-      '--dropzone-radius': 'Controls `border-radius`',
+      '--dropzone-radius': '控制 `border-radius`',
     },
   },
 
@@ -29,8 +29,8 @@ export const DropzoneStylesApi: StylesApiData<DropzoneFactory> = {
       condition: 'Files that are dragged over the dropzone are rejected',
     },
     { modifier: 'data-idle', selector: 'root', condition: 'Dropzone is idle' },
-    { modifier: 'data-loading', selector: 'root', condition: '`loading` prop is set' },
-    { modifier: 'data-disabled', selector: 'root', condition: '`disabled` prop is set' },
+    { modifier: 'data-loading', selector: 'root', condition: '设置了 `loading` 属性' },
+    { modifier: 'data-disabled', selector: 'root', condition: '设置了 `disabled` 属性' },
     {
       modifier: 'data-activate-on-click',
       selector: 'root',
@@ -41,7 +41,7 @@ export const DropzoneStylesApi: StylesApiData<DropzoneFactory> = {
 
 export const DropzoneFullScreenStylesApi: StylesApiData<DropzoneFullScreenFactory> = {
   selectors: {
-    fullScreen: 'Dropzone.Fullscreen root element',
+    fullScreen: 'Dropzone.Fullscreen root 元素',
     ...DropzoneStylesApi.selectors,
   },
 

@@ -1,5 +1,5 @@
 import { Menu } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { DemoMenuItems } from './_menu-items';
 
 const code = `
@@ -22,7 +22,7 @@ function Demo() {
   );
 }
 
-export const transitions: MantineDemo = {
+export const transitions: UIDemo = {
   type: 'code',
   code,
   component: Demo,

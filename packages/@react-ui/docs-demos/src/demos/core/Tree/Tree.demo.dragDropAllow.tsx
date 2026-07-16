@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FileTextIcon, FolderOpenIcon, FolderSimpleIcon } from '@phosphor-icons/react';
 import { Group, moveTreeNode, RenderTreeNodePayload, Tree, TreeNodeData } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -141,7 +141,7 @@ function Demo() {
   );
 }
 
-export const dragDropAllow: MantineDemo = {
+export const dragDropAllow: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

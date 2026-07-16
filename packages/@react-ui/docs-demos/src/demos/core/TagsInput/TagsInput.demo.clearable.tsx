@@ -1,5 +1,5 @@
 import { TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TagsInput } from '@react-ui/ui';
@@ -7,8 +7,8 @@ import { TagsInput } from '@react-ui/ui';
 function Demo() {
   return (
     <TagsInput
-      label="Press Enter to submit a tag"
-      placeholder="Enter tag"
+      label="按 Enter 提交标签"
+      placeholder="输入标签"
       defaultValue={['React']}
       clearable
     />
@@ -19,15 +19,15 @@ function Demo() {
 function Demo() {
   return (
     <TagsInput
-      label="Press Enter to submit a tag"
-      placeholder="Enter tag"
+      label="按 Enter 提交标签"
+      placeholder="输入标签"
       defaultValue={['React']}
       clearable
     />
   );
 }
 
-export const clearable: MantineDemo = {
+export const clearable: UIDemo = {
   type: 'code',
   component: Demo,
   code,

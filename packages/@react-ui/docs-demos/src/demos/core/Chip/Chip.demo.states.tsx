@@ -1,5 +1,5 @@
 import { Chip, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Demo() {
   return (
@@ -49,7 +49,7 @@ function Demo() {
   );
 }
 
-export const states: MantineDemo = {
+export const states: UIDemo = {
   type: 'code',
   component: Demo,
 };

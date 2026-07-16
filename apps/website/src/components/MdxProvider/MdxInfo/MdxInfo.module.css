@@ -26,11 +26,11 @@
     margin-bottom: 0;
   }
 
-  & :global(.mantine-Code-root) {
+  & :global(.ui-Code-root) {
     background-color: light-dark(var(--docs-bq-code-bg-light), var(--docs-bq-code-bg-dark));
   }
 
-  & :global(.mantine-CodeHighlight-root) {
+  & :global(.ui-CodeHighlight-root) {
     margin-top: var(--ui-spacing-md);
     background-color: var(--ui-color-body);
   }

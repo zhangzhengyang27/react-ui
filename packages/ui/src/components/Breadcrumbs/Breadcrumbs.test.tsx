@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Breadcrumbs } from './Breadcrumbs'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Breadcrumbs', () => {
     it('renders a div by default', () => {
@@ -27,7 +27,7 @@ describe('Breadcrumbs', () => {
             </Breadcrumbs>
         )
 
-        expect(screen.getByTestId('bc')).toHaveClass('mantine-Breadcrumbs-root')
+        expect(screen.getByTestId('bc')).toHaveClass('ui-Breadcrumbs-root')
     })
 
     it('uses default separator', () => {
@@ -38,7 +38,7 @@ describe('Breadcrumbs', () => {
             </Breadcrumbs>
         )
 
-        expect(screen.getByText('/')).toHaveClass('mantine-Breadcrumbs-separator')
+        expect(screen.getByText('/')).toHaveClass('ui-Breadcrumbs-separator')
     })
 
     it('supports custom separator', () => {
@@ -49,6 +49,6 @@ describe('Breadcrumbs', () => {
             </Breadcrumbs>
         )
 
-        expect(screen.getByText('>')).toHaveClass('mantine-Breadcrumbs-separator')
+        expect(screen.getByText('>')).toHaveClass('ui-Breadcrumbs-separator')
     })
 })

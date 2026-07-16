@@ -1,14 +1,14 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { DayView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const initialEvents: ScheduleEventData[] = [
   {
     id: 'blocked-time',
-    title: 'Blocked',
+    title: '已阻塞',
     start: `${today} 12:00:00`,
     end: `${today} 14:00:00`,
     color: 'red',
@@ -16,14 +16,14 @@ const initialEvents: ScheduleEventData[] = [
   },
   {
     id: 'team-meeting',
-    title: 'Team meeting',
+    title: '团队会议',
     start: `${today} 10:00:00`,
     end: `${today} 11:00:00`,
     color: 'violet',
   },
   {
     id: 'code-review',
-    title: 'Code review',
+    title: '代码审查',
     start: `${today} 15:00:00`,
     end: `${today} 16:00:00`,
     color: 'green',
@@ -48,12 +48,12 @@ import { useState } from 'react';
 import { DayView, ScheduleEventData } from '@react-ui/schedule';
 import classes from './Demo.module.css';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const initialEvents: ScheduleEventData[] = [
   {
     id: 'blocked-time',
-    title: 'Blocked',
+    title: '已阻塞',
     start: \`\${today} 12:00:00\`,
     end: \`\${today} 14:00:00\`,
     color: 'red',
@@ -61,14 +61,14 @@ const initialEvents: ScheduleEventData[] = [
   },
   {
     id: 'team-meeting',
-    title: 'Team meeting',
+    title: '团队会议',
     start: \`\${today} 10:00:00\`,
     end: \`\${today} 11:00:00\`,
     color: 'violet',
   },
   {
     id: 'code-review',
-    title: 'Code review',
+    title: '代码审查',
     start: \`\${today} 15:00:00\`,
     end: \`\${today} 16:00:00\`,
     color: 'green',
@@ -113,7 +113,7 @@ function Demo() {
 
   return (
     <DayView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       startTime="08:00:00"
       endTime="18:00:00"
@@ -155,7 +155,7 @@ function Demo() {
 
   return (
     <DayView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       startTime="08:00:00"
       endTime="18:00:00"
@@ -178,12 +178,12 @@ function Demo() {
   );
 }
 
-export const backgroundEventsCustomStyle: MantineDemo = {
+export const backgroundEventsCustomStyle: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
-    { fileName: 'Demo.module.css', language: 'css', code: cssCode },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
+    { fileName: '演示样式.module.css', language: 'css', code: cssCode },
   ],
 };

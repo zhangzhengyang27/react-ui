@@ -1,4 +1,4 @@
-import { createContextContainer, tests } from '@mantine-tests/core';
+import { createContextContainer, tests } from '@react-ui/tests';
 import { Carousel } from '../Carousel';
 import { CarouselSlide, CarouselSlideProps, CarouselSlideStylesNames } from './CarouselSlide';
 
@@ -13,7 +13,7 @@ describe('@react-ui/carousel/CarouselSlide', () => {
     displayName: '@react-ui/carousel/CarouselSlide',
     stylesApiSelectors: ['slide'],
     providerStylesApi: false,
-    selector: '.mantine-Carousel-slide',
+    selector: '.ui-Carousel-slide',
     stylesApiName: 'Carousel',
     compound: true,
   });

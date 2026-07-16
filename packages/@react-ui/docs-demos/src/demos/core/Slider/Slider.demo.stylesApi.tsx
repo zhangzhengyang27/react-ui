@@ -1,5 +1,5 @@
 import { Slider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { SliderStylesApi } from '@react-ui/docs-styles-api';
 
 const code = `
@@ -25,7 +25,7 @@ function Demo(props: any) {
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: SliderStylesApi,
   component: Demo,

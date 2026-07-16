@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Checkbox, Table } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -24,7 +24,7 @@ function Demo() {
     >
       <Table.Td>
         <Checkbox
-          aria-label="Select row"
+          aria-label="选择行"
           checked={selectedRows.includes(element.position)}
           onChange={(event) =>
             setSelectedRows(
@@ -47,10 +47,10 @@ function Demo() {
       <Table.Thead>
         <Table.Tr>
           <Table.Th />
-          <Table.Th>Element position</Table.Th>
-          <Table.Th>Element name</Table.Th>
-          <Table.Th>Symbol</Table.Th>
-          <Table.Th>Atomic mass</Table.Th>
+          <Table.Th>元素位置</Table.Th>
+          <Table.Th>元素名称</Table.Th>
+          <Table.Th>符号</Table.Th>
+          <Table.Th>原子质量</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>
@@ -77,7 +77,7 @@ function Demo() {
     >
       <Table.Td>
         <Checkbox
-          aria-label="Select row"
+          aria-label="选择行"
           checked={selectedRows.includes(element.position)}
           onChange={(event) =>
             setSelectedRows(
@@ -100,10 +100,10 @@ function Demo() {
       <Table.Thead visibleFrom="sm">
         <Table.Tr>
           <Table.Th />
-          <Table.Th>Element position</Table.Th>
-          <Table.Th>Element name</Table.Th>
-          <Table.Th>Symbol</Table.Th>
-          <Table.Th>Atomic mass</Table.Th>
+          <Table.Th>元素位置</Table.Th>
+          <Table.Th>元素名称</Table.Th>
+          <Table.Th>符号</Table.Th>
+          <Table.Th>原子质量</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>
@@ -111,7 +111,7 @@ function Demo() {
   );
 }
 
-export const rowSelection: MantineDemo = {
+export const rowSelection: UIDemo = {
   type: 'code',
   component: Demo,
   defaultExpanded: false,

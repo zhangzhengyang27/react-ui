@@ -1,10 +1,10 @@
 .root {
-  @mixin where-light {
+  [data-ui-color-scheme='light'] & {
     --chart-empty-background: var(--ui-color-gray-1);
     --chart-cursor-color: var(--ui-color-gray-4);
   }
 
-  @mixin where-dark {
+  [data-ui-color-scheme='dark'] & {
     --chart-empty-background: var(--ui-color-dark-6);
     --chart-cursor-color: var(--ui-color-dark-4);
   }
@@ -23,11 +23,11 @@
   align-items: center;
   justify-content: space-between;
 
-  @mixin where-light {
+  [data-ui-color-scheme='light'] & {
     border: 1px solid var(--ui-color-gray-2);
   }
 
-  @mixin where-dark {
+  [data-ui-color-scheme='dark'] & {
     border: 1px solid var(--ui-color-dark-4);
   }
 }

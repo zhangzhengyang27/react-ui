@@ -1,49 +1,49 @@
 import { useEffect, useState } from 'react';
-import { Button, Group, MantineProvider, useMantineColorScheme } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { Button, Group, UIProvider, useUIColorScheme } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 
 const code = (props: any) => `
-import { MantineProvider, Button, Group } from '@react-ui/ui';
+import { UIProvider, Button, Group } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <MantineProvider theme={{ primaryShade: ${props.primaryShade} }}>
+    <UIProvider theme={{ primaryShade: ${props.primaryShade} }}>
       <Group>
-        <Button>Filled</Button>
-        <Button variant="light">Light</Button>
-        <Button variant="outline">Outline</Button>
+        <Button>填充</Button>
+        <Button variant="light">浅色</Button>
+        <Button variant="outline">轮廓</Button>
       </Group>
-    </MantineProvider>
+    </UIProvider>
   );
 }
 `;
 
 function Wrapper(props: any) {
   const [attr, setAttr] = useState<string | undefined>(undefined);
-  const { colorScheme } = useMantineColorScheme();
+  const { colorScheme } = useUIColorScheme();
 
   useEffect(() => {
     setAttr(colorScheme);
   }, [colorScheme]);
 
   return (
-    <div id="primary-color-demo-root" data-mantine-color-scheme={attr}>
-      <MantineProvider
+    <div id="primary-color-demo-root" data-ui-color-scheme={attr}>
+      <UIProvider
         cssVariablesSelector="#primary-color-demo-root"
         getRootElement={() => document.createElement('div')}
         theme={{ primaryShade: props.primaryShade }}
       >
         <Group>
-          <Button>Filled</Button>
-          <Button variant="light">Light</Button>
-          <Button variant="outline">Outline</Button>
+          <Button>填充</Button>
+          <Button variant="light">浅色</Button>
+          <Button variant="outline">轮廓</Button>
         </Group>
-      </MantineProvider>
+      </UIProvider>
     </div>
   );
 }
 
-export const primaryShadeConfigurator: MantineDemo = {
+export const primaryShadeConfigurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

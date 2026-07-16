@@ -1,5 +1,5 @@
 import { Autocomplete, ComboboxItem, OptionsFilter } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Autocomplete, ComboboxItem, OptionsFilter } from '@react-ui/ui';
@@ -16,8 +16,8 @@ const optionsFilter: OptionsFilter = ({ options, search }) => {
 function Demo() {
   return (
     <Autocomplete
-      label="Your favorite library"
-      placeholder="Pick value or enter anything"
+      label="你最喜欢的库"
+      placeholder="选择值或输入任意内容"
       data={['4 – React', '1 – Angular', '3 – Vue', '2 – Svelte']}
       filter={optionsFilter}
     />
@@ -37,15 +37,15 @@ const optionsFilter: OptionsFilter = ({ options, search }) => {
 function Demo() {
   return (
     <Autocomplete
-      label="Your favorite library"
-      placeholder="Pick value or enter anything"
+      label="你最喜欢的库"
+      placeholder="选择值或输入任意内容"
       data={['4 – React', '1 – Angular', '3 – Vue', '2 – Svelte']}
       filter={optionsFilter}
     />
   );
 }
 
-export const sort: MantineDemo = {
+export const sort: UIDemo = {
   type: 'code',
   component: Demo,
   code,

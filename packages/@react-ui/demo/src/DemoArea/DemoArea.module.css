@@ -37,16 +37,16 @@
         var(--stripe-color) 12px
       );
 
-    @mixin rtl {
+    [dir='rtl'] & {
       border-top-right-radius: calc(var(--ui-radius-md) - 1px);
       border-top-left-radius: 0;
     }
 
-    @mixin light {
+    [data-ui-color-scheme='light'] & {
       --stripe-color: rgba(0, 0, 0, 0.03);
     }
 
-    @mixin dark {
+    [data-ui-color-scheme='dark'] & {
       --stripe-color: rgba(255, 255, 255, 0.03);
     }
   }

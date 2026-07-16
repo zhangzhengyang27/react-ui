@@ -7,8 +7,8 @@ import {
     Factory,
     getRadius,
     getThemeColor,
-    MantineColor,
-    MantineRadius,
+    UIColor,
+    UIRadius,
     parseThemeColor,
     rem,
     rgba,
@@ -34,10 +34,10 @@ export interface BlockquoteProps
     iconSize?: number | string
 
     /** Key of `theme.colors` or any valid CSS color @default theme.primaryColor */
-    color?: MantineColor
+    color?: UIColor
 
     /** Key of `theme.radius` or any valid CSS value to set `border-radius` @default theme.defaultRadius */
-    radius?: MantineRadius
+    radius?: UIRadius
 
     /** Reference to a cited quote */
     cite?: React.ReactNode

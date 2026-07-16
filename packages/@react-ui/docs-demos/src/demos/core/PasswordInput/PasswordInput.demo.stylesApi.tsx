@@ -1,6 +1,6 @@
 import { LockIcon } from '@phosphor-icons/react';
 import { PasswordInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { PasswordInputStylesApi } from '@react-ui/docs-styles-api';
 
 const code = `
@@ -10,10 +10,10 @@ import { PasswordInput } from '@react-ui/ui';
 function Demo() {
   return (
     <PasswordInput
-      label="Label"
-      placeholder="PasswordInput"
-      description="Description"
-      error="Error"
+      label="标签"
+      placeholder="密码输入"
+      description="描述"
+      error="错误"
       withAsterisk
       leftSection={<LockIcon size={18} />}
       {{props}}
@@ -25,10 +25,10 @@ function Demo() {
 function Demo(props: any) {
   return (
     <PasswordInput
-      label="Label"
-      placeholder="PasswordInput"
-      description="Description"
-      error="Error"
+      label="标签"
+      placeholder="密码输入"
+      description="描述"
+      error="错误"
       withAsterisk
       leftSection={<LockIcon size={18} />}
       {...props}
@@ -36,7 +36,7 @@ function Demo(props: any) {
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: PasswordInputStylesApi,
   component: Demo,

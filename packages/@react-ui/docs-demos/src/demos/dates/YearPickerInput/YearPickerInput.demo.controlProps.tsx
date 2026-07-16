@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { YearPickerInput, YearPickerInputProps } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import dayjs from 'dayjs';
@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { YearPickerInput, YearPickerInputProps } from '@react-ui/dates';
 
 const getYearControlProps: YearPickerInputProps['getYearControlProps'] = (date) => {
-  if (dayjs(date).year() === new Date().getFullYear()) {
+  if (dayjs(date).year() === 2024) {
     return {
       style: {
         color: 'var(--ui-color-blue-filled)',
@@ -18,7 +18,7 @@ const getYearControlProps: YearPickerInputProps['getYearControlProps'] = (date) 
     };
   }
 
-  if (dayjs(date).year() === new Date().getFullYear() + 1) {
+  if (dayjs(date).year() === 2024 + 1) {
     return { disabled: true };
   }
 
@@ -29,8 +29,8 @@ function Demo() {
   const [value, setValue] = useState<string | null>(null);
   return (
     <YearPickerInput
-      label="Pick year"
-      placeholder="Pick year"
+      label="选择年份"
+      placeholder="选择年份"
       value={value}
       onChange={setValue}
       getYearControlProps={getYearControlProps}
@@ -40,7 +40,7 @@ function Demo() {
 `;
 
 const getYearControlProps: YearPickerInputProps['getYearControlProps'] = (date) => {
-  if (dayjs(date).year() === new Date().getFullYear()) {
+  if (dayjs(date).year() === 2024) {
     return {
       style: {
         color: 'var(--ui-color-blue-filled)',
@@ -49,7 +49,7 @@ const getYearControlProps: YearPickerInputProps['getYearControlProps'] = (date) 
     };
   }
 
-  if (dayjs(date).year() === new Date().getFullYear() + 1) {
+  if (dayjs(date).year() === 2024 + 1) {
     return { disabled: true };
   }
 
@@ -60,8 +60,8 @@ function Demo() {
   const [value, setValue] = useState<string | null>(null);
   return (
     <YearPickerInput
-      label="Pick year"
-      placeholder="Pick year"
+      label="选择年份"
+      placeholder="选择年份"
       value={value}
       onChange={setValue}
       getYearControlProps={getYearControlProps}
@@ -69,7 +69,7 @@ function Demo() {
   );
 }
 
-export const controlProps: MantineDemo = {
+export const controlProps: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

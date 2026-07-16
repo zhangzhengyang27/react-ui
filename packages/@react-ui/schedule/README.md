@@ -2,9 +2,9 @@
 
 [![npm](https://img.shields.io/npm/dm/@react-ui/schedule)](https://www.npmjs.com/package/@react-ui/schedule)
 
-Schedule Mantine component
+Schedule UI component
 
-[View documentation](https://mantine.dev/)
+[View documentation](#)
 
 ## Installation
 

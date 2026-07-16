@@ -1,7 +1,7 @@
 import { CaretDownIcon } from '@phosphor-icons/react';
 import { Stack } from '@react-ui/ui';
 import { MonthPickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { CaretDownIcon } from '@phosphor-icons/react';
@@ -12,9 +12,9 @@ function Demo() {
   return (
     <Stack>
       <MonthPickerInput
-        label="clearSectionMode='both' (default)"
-        placeholder="Pick month"
-        defaultValue={new Date()}
+        label="clearSectionMode='both'（默认）"
+        placeholder="选择月份"
+        defaultValue={new Date('2024-01-15')}
         clearable
         rightSection={<CaretDownIcon size={16} />}
         clearSectionMode="both"
@@ -22,8 +22,8 @@ function Demo() {
 
       <MonthPickerInput
         label="clearSectionMode='rightSection'"
-        placeholder="Pick month"
-        defaultValue={new Date()}
+        placeholder="选择月份"
+        defaultValue={new Date('2024-01-15')}
         clearable
         rightSection={<CaretDownIcon size={16} />}
         clearSectionMode="rightSection"
@@ -31,8 +31,8 @@ function Demo() {
 
       <MonthPickerInput
         label="clearSectionMode='clear'"
-        placeholder="Pick month"
-        defaultValue={new Date()}
+        placeholder="选择月份"
+        defaultValue={new Date('2024-01-15')}
         clearable
         rightSection={<CaretDownIcon size={16} />}
         clearSectionMode="clear"
@@ -46,9 +46,9 @@ function Demo() {
   return (
     <Stack>
       <MonthPickerInput
-        label="clearSectionMode='both' (default)"
-        placeholder="Pick month"
-        defaultValue={new Date()}
+        label="clearSectionMode='both'（默认）"
+        placeholder="选择月份"
+        defaultValue={new Date('2024-01-15')}
         clearable
         rightSection={<CaretDownIcon size={16} />}
         clearSectionMode="both"
@@ -56,8 +56,8 @@ function Demo() {
 
       <MonthPickerInput
         label="clearSectionMode='rightSection'"
-        placeholder="Pick month"
-        defaultValue={new Date()}
+        placeholder="选择月份"
+        defaultValue={new Date('2024-01-15')}
         clearable
         rightSection={<CaretDownIcon size={16} />}
         clearSectionMode="rightSection"
@@ -65,8 +65,8 @@ function Demo() {
 
       <MonthPickerInput
         label="clearSectionMode='clear'"
-        placeholder="Pick month"
-        defaultValue={new Date()}
+        placeholder="选择月份"
+        defaultValue={new Date('2024-01-15')}
         clearable
         rightSection={<CaretDownIcon size={16} />}
         clearSectionMode="clear"
@@ -75,7 +75,7 @@ function Demo() {
   );
 }
 
-export const clearSectionMode: MantineDemo = {
+export const clearSectionMode: UIDemo = {
   type: 'code',
   component: Demo,
   code,

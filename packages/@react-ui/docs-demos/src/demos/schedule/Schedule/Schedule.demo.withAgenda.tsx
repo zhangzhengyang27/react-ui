@@ -1,35 +1,35 @@
 import dayjs from 'dayjs';
 import { Schedule } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
-const tomorrow = dayjs().add(1, 'day').format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
+const tomorrow = dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD');
 
 const eventsData = [
   {
     id: 'standup',
-    title: 'Morning Standup',
+    title: '早间站会',
     start: `${today} 09:00:00`,
     end: `${today} 09:30:00`,
     color: 'blue',
   },
   {
     id: 'team-meeting',
-    title: 'Team Meeting',
+    title: '团队会议',
     start: `${today} 10:00:00`,
     end: `${today} 11:30:00`,
     color: 'green',
   },
   {
     id: 'code-review',
-    title: 'Code Review',
+    title: '代码审查',
     start: `${tomorrow} 14:00:00`,
     end: `${tomorrow} 15:00:00`,
     color: 'violet',
   },
   {
     id: 'weekly-review-series',
-    title: 'Weekly review',
+    title: '每周回顾',
     start: `${dayjs(today).startOf('week').format('YYYY-MM-DD')} 16:00:00`,
     end: `${dayjs(today).startOf('week').format('YYYY-MM-DD')} 17:00:00`,
     color: 'orange',
@@ -43,34 +43,34 @@ const code = `
 import dayjs from 'dayjs';
 import { Schedule } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
-const tomorrow = dayjs().add(1, 'day').format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
+const tomorrow = dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD');
 
 const events = [
   {
     id: 'standup',
-    title: 'Morning Standup',
+    title: '早间站会',
     start: \`\${today} 09:00:00\`,
     end: \`\${today} 09:30:00\`,
     color: 'blue',
   },
   {
     id: 'team-meeting',
-    title: 'Team Meeting',
+    title: '团队会议',
     start: \`\${today} 10:00:00\`,
     end: \`\${today} 11:30:00\`,
     color: 'green',
   },
   {
     id: 'code-review',
-    title: 'Code Review',
+    title: '代码审查',
     start: \`\${tomorrow} 14:00:00\`,
     end: \`\${tomorrow} 15:00:00\`,
     color: 'violet',
   },
   {
     id: 'weekly-review-series',
-    title: 'Weekly review',
+    title: '每周回顾',
     start: \`\${dayjs(today).startOf('week').format('YYYY-MM-DD')} 16:00:00\`,
     end: \`\${dayjs(today).startOf('week').format('YYYY-MM-DD')} 17:00:00\`,
     color: 'orange',
@@ -94,7 +94,7 @@ function Demo() {
   return <Schedule events={eventsData} withAgenda />;
 }
 
-export const withAgenda: MantineDemo = {
+export const withAgenda: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

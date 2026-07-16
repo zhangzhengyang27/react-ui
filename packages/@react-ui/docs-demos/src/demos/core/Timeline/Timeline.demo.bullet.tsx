@@ -1,6 +1,6 @@
 import { SunIcon, VideoCameraIcon } from '@phosphor-icons/react';
 import { Avatar, Text, ThemeIcon, Timeline } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ThemeIcon, Text, Avatar, Timeline } from '@react-ui/ui';
@@ -9,13 +9,13 @@ import { SunIcon, VideoCameraIcon } from '@phosphor-icons/react';
 function Demo() {
   return (
     <Timeline bulletSize={24}>
-      <Timeline.Item title="Default bullet">
+      <Timeline.Item title="默认标记">
         <Text c="dimmed" size="sm">
           Default bullet without anything
         </Text>
       </Timeline.Item>
       <Timeline.Item
-        title="Avatar"
+        title="头像"
         bullet={
           <Avatar
             size={22}
@@ -28,13 +28,13 @@ function Demo() {
           Timeline bullet as avatar image
         </Text>
       </Timeline.Item>
-      <Timeline.Item title="Icon" bullet={<SunIcon size={13} />}>
+      <Timeline.Item title="图标" bullet={<SunIcon size={13} />}>
         <Text c="dimmed" size="sm">
           Timeline bullet as icon
         </Text>
       </Timeline.Item>
       <Timeline.Item
-        title="ThemeIcon"
+        title="主题图标"
         bullet={
           <ThemeIcon
             size={22}
@@ -58,13 +58,13 @@ function Demo() {
 function Demo() {
   return (
     <Timeline bulletSize={24}>
-      <Timeline.Item title="Default bullet">
+      <Timeline.Item title="默认标记">
         <Text c="dimmed" size="sm">
           Default bullet without anything
         </Text>
       </Timeline.Item>
       <Timeline.Item
-        title="Avatar"
+        title="头像"
         bullet={
           <Avatar
             size={22}
@@ -77,13 +77,13 @@ function Demo() {
           Timeline bullet as avatar image
         </Text>
       </Timeline.Item>
-      <Timeline.Item title="Icon" bullet={<SunIcon size={13} />}>
+      <Timeline.Item title="图标" bullet={<SunIcon size={13} />}>
         <Text c="dimmed" size="sm">
           Timeline bullet as icon
         </Text>
       </Timeline.Item>
       <Timeline.Item
-        title="ThemeIcon"
+        title="主题图标"
         bullet={
           <ThemeIcon
             size={22}
@@ -103,7 +103,7 @@ function Demo() {
   );
 }
 
-export const bullet: MantineDemo = {
+export const bullet: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 320,

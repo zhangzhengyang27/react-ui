@@ -16,8 +16,8 @@ import {
   getRadius,
   LoaderProps,
   LoadingOverlay,
-  MantineColor,
-  MantineRadius,
+  UIColor,
+  UIRadius,
   StylesApiProps,
   useProps,
   useStyles,
@@ -47,13 +47,13 @@ export type DropzoneCssVariables = {
 export interface DropzoneProps
   extends BoxProps, StylesApiProps<DropzoneFactory>, ElementProps<'div', 'onDrop'> {
   /** Key of `theme.colors` or any valid CSS color to set colors of `Dropzone.Accept` @default theme.primaryColor */
-  acceptColor?: MantineColor;
+  acceptColor?: UIColor;
 
   /** Key of `theme.colors` or any valid CSS color to set colors of `Dropzone.Reject` @default 'red' */
-  rejectColor?: MantineColor;
+  rejectColor?: UIColor;
 
   /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem @default theme.defaultRadius */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 
   /** Determines whether files capturing should be disabled @default false */
   disabled?: boolean;

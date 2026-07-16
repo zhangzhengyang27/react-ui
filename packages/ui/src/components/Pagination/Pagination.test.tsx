@@ -1,13 +1,13 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { getPaginationItems, Pagination } from './Pagination'
 
 const renderPagination = (props: React.ComponentProps<typeof Pagination>) =>
     render(
-        <MantineProvider>
+        <UIProvider>
             <Pagination {...props} />
-        </MantineProvider>
+        </UIProvider>
     )
 
 describe('Pagination', () => {
@@ -56,9 +56,9 @@ describe('Pagination', () => {
         expect(screen.getByLabelText('Page 2')).toHaveAttribute('aria-current', 'page')
 
         rerender(
-            <MantineProvider>
+            <UIProvider>
                 <Pagination total={5} value={4} />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByLabelText('Page 4')).toHaveAttribute('aria-current', 'page')
@@ -67,7 +67,7 @@ describe('Pagination', () => {
     it('renders dots for large page counts', () => {
         renderPagination({ total: 20, value: 10 })
 
-        expect(screen.getAllByText('...').length).toBeGreaterThan(0)
+        expect(screen.getAllByLabelText('...').length).toBeGreaterThan(0)
     })
 
     it('disables previous and first controls on the first page', () => {

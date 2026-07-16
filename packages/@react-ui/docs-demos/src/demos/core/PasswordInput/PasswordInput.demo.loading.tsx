@@ -1,19 +1,19 @@
 import { PasswordInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { PasswordInput } from '@react-ui/ui';
 
 function Demo() {
-  return <PasswordInput placeholder="Your password" loading />;
+  return <PasswordInput placeholder="你的密码" loading />;
 }
 `;
 
 function Demo() {
-  return <PasswordInput placeholder="Your password" loading />;
+  return <PasswordInput placeholder="你的密码" loading />;
 }
 
-export const loading: MantineDemo = {
+export const loading: UIDemo = {
   type: 'code',
   component: Demo,
   code,

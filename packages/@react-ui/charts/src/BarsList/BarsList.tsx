@@ -8,11 +8,11 @@ import {
   Factory,
   getSpacing,
   getThemeColor,
-  MantineColor,
-  MantineSpacing,
+  UIColor,
+  UISpacing,
   rem,
   StylesApiProps,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useStyles,
 } from '@react-ui/ui';
@@ -32,10 +32,10 @@ export interface BarsListBarData {
   value: number;
 
   /** Bar background color */
-  color?: MantineColor;
+  color?: UIColor;
 
   /** Bar text color, overrides barTextColor and autoContrast for this specific bar */
-  textColor?: MantineColor;
+  textColor?: UIColor;
 
   /** Bar variant, used to calculate text color when autoContrast is enabled */
   variant?: 'light' | 'filled';
@@ -62,7 +62,7 @@ export interface BarsListProps
   renderBar?: (data: BarsListBarData, defaultBar: React.ReactNode) => React.ReactNode;
 
   /** Controls gap between bars @default 5 */
-  barGap?: MantineSpacing;
+  barGap?: UISpacing;
 
   /** Minimum bar width @default 100 */
   minBarSize?: number | string;
@@ -71,10 +71,10 @@ export interface BarsListProps
   barHeight?: number | string;
 
   /** Default bar background color, used when item does not have color specified */
-  barColor?: MantineColor;
+  barColor?: UIColor;
 
   /** Bar text color, overrides autoContrast */
-  barTextColor?: MantineColor;
+  barTextColor?: UIColor;
 
   /** If set, adjusts text color based on background color */
   autoContrast?: boolean;
@@ -129,7 +129,7 @@ export const BarsList = factory<BarsListFactory>((_props) => {
     ...others
   } = props;
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
 
   const getStyles = useStyles<BarsListFactory>({
     name: 'BarsList',

@@ -1,10 +1,10 @@
 import { Marquee, Stack, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
-import { MantineLogo } from '@react-ui/mantine-logo';
+import { UIDemo } from '@react-ui/demo';
+import { UILogo } from '@react-ui/logo';
 
 const code = `
 import { Marquee, Stack, Text } from '@react-ui/ui';
-import { MantineLogo } from '@react-ui/mantine-logo';
+import { UILogo } from '@react-ui/logo';
 
 function Demo() {
   return (
@@ -12,40 +12,40 @@ function Demo() {
       <div>
         <Text size="sm" mb="xs">Default fade (5%)</Text>
         <Marquee>
-          <MantineLogo width={80} type="full" color="blue" />
-          <MantineLogo width={80} type="full" color="cyan" />
-          <MantineLogo width={80} type="full" color="teal" />
-          <MantineLogo width={80} type="full" color="green" />
+          <UILogo size={80} type="full" color="blue" />
+          <UILogo size={80} type="full" color="cyan" />
+          <UILogo size={80} type="full" color="teal" />
+          <UILogo size={80} type="full" color="green" />
         </Marquee>
       </div>
 
       <div>
         <Text size="sm" mb="xs">Larger fade (15%)</Text>
         <Marquee fadeEdgeSize="15%">
-          <MantineLogo width={80} type="full" color="lime" />
-          <MantineLogo width={80} type="full" color="yellow" />
-          <MantineLogo width={80} type="full" color="orange" />
-          <MantineLogo width={80} type="full" color="red" />
+          <UILogo size={80} type="full" color="lime" />
+          <UILogo size={80} type="full" color="yellow" />
+          <UILogo size={80} type="full" color="orange" />
+          <UILogo size={80} type="full" color="red" />
         </Marquee>
       </div>
 
       <div>
-        <Text size="sm" mb="xs">Custom fade color</Text>
+        <Text size="sm" mb="xs">自定义渐隐颜色</Text>
         <Marquee fadeEdgeColor="var(--ui-color-blue-light)">
-          <MantineLogo width={80} type="full" color="violet" />
-          <MantineLogo width={80} type="full" color="grape" />
-          <MantineLogo width={80} type="full" color="pink" />
-          <MantineLogo width={80} type="full" color="red" />
+          <UILogo size={80} type="full" color="violet" />
+          <UILogo size={80} type="full" color="grape" />
+          <UILogo size={80} type="full" color="pink" />
+          <UILogo size={80} type="full" color="red" />
         </Marquee>
       </div>
 
       <div>
-        <Text size="sm" mb="xs">No fade</Text>
+        <Text size="sm" mb="xs">无渐隐</Text>
         <Marquee fadeEdges={false}>
-          <MantineLogo width={80} type="full" color="blue" />
-          <MantineLogo width={80} type="full" color="teal" />
-          <MantineLogo width={80} type="full" color="green" />
-          <MantineLogo width={80} type="full" color="yellow" />
+          <UILogo size={80} type="full" color="blue" />
+          <UILogo size={80} type="full" color="teal" />
+          <UILogo size={80} type="full" color="green" />
+          <UILogo size={80} type="full" color="yellow" />
         </Marquee>
       </div>
     </Stack>
@@ -61,10 +61,10 @@ function Demo() {
           Default fade (5%)
         </Text>
         <Marquee>
-          <MantineLogo width={80} type="full" color="blue" />
-          <MantineLogo width={80} type="full" color="cyan" />
-          <MantineLogo width={80} type="full" color="teal" />
-          <MantineLogo width={80} type="full" color="green" />
+          <UILogo size={80} type="full" color="blue" />
+          <UILogo size={80} type="full" color="cyan" />
+          <UILogo size={80} type="full" color="teal" />
+          <UILogo size={80} type="full" color="green" />
         </Marquee>
       </div>
 
@@ -73,10 +73,10 @@ function Demo() {
           Larger fade (15%)
         </Text>
         <Marquee fadeEdgeSize="15%">
-          <MantineLogo width={80} type="full" color="lime" />
-          <MantineLogo width={80} type="full" color="yellow" />
-          <MantineLogo width={80} type="full" color="orange" />
-          <MantineLogo width={80} type="full" color="red" />
+          <UILogo size={80} type="full" color="lime" />
+          <UILogo size={80} type="full" color="yellow" />
+          <UILogo size={80} type="full" color="orange" />
+          <UILogo size={80} type="full" color="red" />
         </Marquee>
       </div>
 
@@ -85,10 +85,10 @@ function Demo() {
           Custom fade color
         </Text>
         <Marquee fadeEdgeColor="var(--ui-color-blue-light)">
-          <MantineLogo width={80} type="full" color="violet" />
-          <MantineLogo width={80} type="full" color="grape" />
-          <MantineLogo width={80} type="full" color="pink" />
-          <MantineLogo width={80} type="full" color="red" />
+          <UILogo size={80} type="full" color="violet" />
+          <UILogo size={80} type="full" color="grape" />
+          <UILogo size={80} type="full" color="pink" />
+          <UILogo size={80} type="full" color="red" />
         </Marquee>
       </div>
 
@@ -97,17 +97,17 @@ function Demo() {
           No fade
         </Text>
         <Marquee fadeEdges={false}>
-          <MantineLogo width={80} type="full" color="blue" />
-          <MantineLogo width={80} type="full" color="teal" />
-          <MantineLogo width={80} type="full" color="green" />
-          <MantineLogo width={80} type="full" color="yellow" />
+          <UILogo size={80} type="full" color="blue" />
+          <UILogo size={80} type="full" color="teal" />
+          <UILogo size={80} type="full" color="green" />
+          <UILogo size={80} type="full" color="yellow" />
         </Marquee>
       </div>
     </Stack>
   );
 }
 
-export const fadeEdges: MantineDemo = {
+export const fadeEdges: UIDemo = {
   type: 'code',
   component: Demo,
   code,

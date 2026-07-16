@@ -43,20 +43,20 @@ interface My${input.component}Props extends ${input.component}Props,
 export function MdxPolymorphic(props: MdxPolymorphicProps) {
   return (
     <>
-      <MdxTitle id="polymorphic-component">Polymorphic component</MdxTitle>
+      <MdxTitle id="polymorphic-component">多态组件</MdxTitle>
       <MdxParagraph>
-        <MdxCode>{props.component}</MdxCode> is a{' '}
-        <MdxLink href="/guides/polymorphic/">polymorphic component</MdxLink> – its default root
-        element is <MdxCode>{props.defaultElement}</MdxCode>, but it can be changed to any other
-        element or component with the <MdxCode>component</MdxCode> prop:
+        <MdxCode>{props.component}</MdxCode> 是一个{' '}
+        <MdxLink href="/guides/polymorphic/">多态组件</MdxLink> — 其默认根元素为{' '}
+        <MdxCode>{props.defaultElement}</MdxCode>，但可以通过 <MdxCode>component</MdxCode>{' '}
+        属性更改为任何其他元素或组件：
       </MdxParagraph>
 
       <MdxCodeHighlight language="tsx" code={getElementCode(props)} />
       {props.withNext && (
         <>
           <MdxParagraph>
-            You can also use components in the <MdxCode>component</MdxCode> prop, for example,
-            Next.js <MdxCode>Link</MdxCode>:
+            你也可以在 <MdxCode>component</MdxCode> 属性中使用组件，例如 Next.js 的{' '}
+            <MdxCode>Link</MdxCode>：
           </MdxParagraph>
           <MdxCodeHighlight language="tsx" code={getNextLinkCode(props)} />
         </>
@@ -65,32 +65,30 @@ export function MdxPolymorphic(props: MdxPolymorphicProps) {
       <MdxInfo icon={<TypeScriptCircleIcon size={32} />} color="#3178C6">
         <MdxParagraph>
           <span style={{ fontSize: 18, fontWeight: 500, fontFamily: 'var(--docs-font-primary)' }}>
-            Polymorphic components with TypeScript
+            TypeScript 多态组件
           </span>
         </MdxParagraph>
 
         <MdxParagraph>
-          Note that polymorphic component prop types are different from regular components – they do
-          not extend HTML element props of the default element. For example,{' '}
-          <MdxCode>{props.component}Props</MdxCode> does not extend{' '}
+          注意多态组件的属性类型与普通组件不同 — 它们不会扩展默认元素的 HTML 元素属性。
+          例如，尽管 <MdxCode>{props.defaultElement}</MdxCode> 是默认元素，
+          <MdxCode>{props.component}Props</MdxCode> 并不会扩展{' '}
           <MdxCode>
             React.ComponentProps{"'<'"}div{"'>'"}
-          </MdxCode>{' '}
-          although <MdxCode>{props.defaultElement}</MdxCode> is the default element.
+          </MdxCode>。
         </MdxParagraph>
 
         <MdxParagraph>
-          If you want to create a wrapper for a polymorphic component that is not polymorphic (does
-          not support the <MdxCode>component</MdxCode> prop), then your component props interface
-          should extend HTML element props, for example:{' '}
+          如果你想为一个多态组件创建一个不支持多态（不支持 <MdxCode>component</MdxCode>{' '}
+          属性）的包装组件，那么你的组件属性接口应该扩展 HTML 元素属性，例如：{' '}
         </MdxParagraph>
 
         <MdxCodeHighlight language="tsx" code={getInterfaceCode(props)} />
 
         <MdxParagraph>
-          If you want your component to remain polymorphic after wrapping, use the{' '}
-          <MdxCode>polymorphic</MdxCode> function described in{' '}
-          <MdxLink href="/guides/polymorphic/">this guide</MdxLink>.
+          如果你想让组件在包装后仍然保持多态，请使用{' '}
+          <MdxLink href="/guides/polymorphic/">本指南</MdxLink>中介绍的{' '}
+          <MdxCode>polymorphic</MdxCode> 函数。
         </MdxParagraph>
       </MdxInfo>
     </>

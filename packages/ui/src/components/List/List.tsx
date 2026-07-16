@@ -6,8 +6,8 @@ import {
     getFontSize,
     getLineHeight,
     getSpacing,
-    MantineSize,
-    MantineSpacing,
+    UISize,
+    UISpacing,
     polymorphicFactory,
     PolymorphicFactory,
     StylesApiProps,
@@ -25,7 +25,7 @@ export interface ListProps extends BoxProps, StylesApiProps<ListFactory> {
     type?: 'ordered' | 'unordered'
 
     /** Controls font-size of list items @default 'md' */
-    size?: MantineSize
+    size?: UISize
 
     /** Replaces default list marker icon in all child items */
     icon?: React.ReactNode
@@ -37,7 +37,7 @@ export interface ListProps extends BoxProps, StylesApiProps<ListFactory> {
     center?: boolean
 
     /** Space between list items @default 0 */
-    spacing?: MantineSpacing
+    spacing?: UISpacing
 
     /** Sets list-style-type CSS property, overrides default type marker */
     listStyleType?: React.CSSProperties['listStyleType']

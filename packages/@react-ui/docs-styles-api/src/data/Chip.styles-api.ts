@@ -3,7 +3,7 @@ import type { StylesApiData } from '../types';
 
 export const ChipStylesApi: StylesApiData<ChipFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
     checkIcon: 'Check icon, visible when checked prop is true',
     iconWrapper: 'Wraps `checkIcon` for alignment',
     input: 'Input element, hidden by default',
@@ -12,12 +12,12 @@ export const ChipStylesApi: StylesApiData<ChipFactory> = {
 
   vars: {
     root: {
-      '--chip-fz': 'Controls `font-size`',
-      '--chip-size': 'Controls `height`',
-      '--chip-icon-size': 'Controls width and height of the icon',
+      '--chip-fz': '控制 `font-size`',
+      '--chip-size': '控制 `height`',
+      '--chip-icon-size': '控制 the icon 的 width and height',
       '--chip-padding': 'Controls horizontal padding when chip is not checked',
       '--chip-checked-padding': 'Controls horizontal padding when chip is checked',
-      '--chip-radius': 'Controls `border-radius`',
+      '--chip-radius': '控制 `border-radius`',
       '--chip-bg': 'Controls `background-color` when chip is checked',
       '--chip-hover': 'Controls `background-color` when chip is checked and hovered',
       '--chip-color': 'Controls `color` when chip is checked',
@@ -28,6 +28,6 @@ export const ChipStylesApi: StylesApiData<ChipFactory> = {
 
   modifiers: [
     { modifier: 'data-checked', selector: 'label', condition: 'Chip is checked' },
-    { modifier: 'data-disabled', selector: 'label', condition: '`disabled` prop is set' },
+    { modifier: 'data-disabled', selector: 'label', condition: '设置了 `disabled` 属性' },
   ],
 };

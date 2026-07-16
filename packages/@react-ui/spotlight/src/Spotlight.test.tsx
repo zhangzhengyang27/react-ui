@@ -1,4 +1,4 @@
-import { render, screen, tests } from '@mantine-tests/core';
+import { render, screen, tests } from '@react-ui/tests';
 import { Spotlight, SpotlightProps, SpotlightStylesNames } from './Spotlight';
 import { createSpotlightStore, spotlight, triggerSelectedAction } from './spotlight.store';
 import { SpotlightAction } from './SpotlightAction';
@@ -41,9 +41,9 @@ describe('@react-ui/ui/Spotlight', () => {
       'overlay',
       'search',
     ],
-    selector: '.mantine-Spotlight-root',
-    sizeSelector: '.mantine-Spotlight-root',
-    variantSelector: '.mantine-Spotlight-root',
+    selector: '.ui-Spotlight-root',
+    sizeSelector: '.ui-Spotlight-root',
+    variantSelector: '.ui-Spotlight-root',
   });
 
   it('exposes static components and functions', () => {
@@ -63,7 +63,7 @@ describe('@react-ui/ui/Spotlight', () => {
     );
 
     expect(screen.getByText('Nothing found')).toBeInTheDocument();
-    expect(container.querySelector('.mantine-Spotlight-actionsList')).toBe(null);
+    expect(container.querySelector('.ui-Spotlight-actionsList')).toBe(null);
   });
 
   it('triggerSelectedAction does not throw when listId is empty', () => {

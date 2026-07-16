@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { RichTextEditor } from '@react-ui/tiptap';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useEditor } from '@tiptap/react';
@@ -16,7 +16,7 @@ function Demo() {
   const editor = useEditor({
     extensions: [StarterKit],
     shouldRerenderOnTransaction: true,
-    content: '<p>Source code control example</p><p>New line with <strong>bold text</strong></p><p>New line with <em>italic</em> <em>text</em></p>',
+    content: '<p>源码控制示例</p><p>带 <strong>粗体文本</strong> 的新行</p><p>带 <em>斜体</em> <em>文本</em> 的新行</p>',
   });
 
   return (
@@ -52,7 +52,7 @@ function Demo() {
     shouldRerenderOnTransaction: true,
     extensions: [StarterKit],
     content:
-      '<p>Source code control example</p><p>New line with <strong>bold text</strong></p><p>New line with <em>italic</em> <em>text</em></p>',
+      '<p>源码控制示例</p><p>带 <strong>粗体文本</strong> 的新行</p><p>带 <em>斜体</em> <em>文本</em> 的新行</p>',
   });
 
   return (
@@ -79,7 +79,7 @@ function Demo() {
   );
 }
 
-export const sourceCodeSwitcher: MantineDemo = {
+export const sourceCodeSwitcher: UIDemo = {
   type: 'code',
   component: Demo,
   code,

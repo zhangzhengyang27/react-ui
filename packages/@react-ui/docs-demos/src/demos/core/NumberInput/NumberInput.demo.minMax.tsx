@@ -1,5 +1,5 @@
 import { NumberInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NumberInput } from '@react-ui/ui';
@@ -7,8 +7,8 @@ import { NumberInput } from '@react-ui/ui';
 function Demo() {
   return (
     <NumberInput
-      label="Enter value between 10 and 20"
-      placeholder="Don't enter more than 20 and less than 10"
+      label="输入 10 到 20 之间的值"
+      placeholder="请输入 10 到 20 之间的数字"
       min={10}
       max={20}
     />
@@ -19,15 +19,15 @@ function Demo() {
 function Demo() {
   return (
     <NumberInput
-      label="Enter value between 10 and 20"
-      placeholder="Don't enter more than 20 and less than 10"
+      label="输入 10 到 20 之间的值"
+      placeholder="请输入 10 到 20 之间的数字"
       min={10}
       max={20}
     />
   );
 }
 
-export const minMax: MantineDemo = {
+export const minMax: UIDemo = {
   type: 'code',
   component: Demo,
   code,

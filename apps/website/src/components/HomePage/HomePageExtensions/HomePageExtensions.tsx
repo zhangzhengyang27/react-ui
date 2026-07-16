@@ -53,26 +53,25 @@ export function HomePageExtensions() {
   return (
     <section className={classes.root}>
       <HomePageContainer>
-        <HomePageTitle order={2}>Extensions</HomePageTitle>
+        <HomePageTitle order={2}>扩展</HomePageTitle>
 
         <HomePageDescription className={classes.description}>
-          Extensions are additional packages that provide extra functionality to ReactUI, such as
-          rich text editor, notifications system, charts, modals manager and more. They are built to
-          be easily integrated into your application and provide a seamless experience.
+          扩展是为 ReactUI 提供额外功能的附加包，例如富文本编辑器、通知系统、图表、模态框管理器等。
+          它们易于集成到你的应用中，提供无缝的使用体验。
         </HomePageDescription>
 
-        <HomePageLearnMore href="/x/extensions">Browse all extensions</HomePageLearnMore>
+        <HomePageLearnMore href="/x/extensions">浏览全部扩展</HomePageLearnMore>
 
         <SimpleGrid cols={{ md: 2 }} className={classes.grid} verticalSpacing={30}>
-          <ExtensionDemo title="Rich text editor" description="TipTap based rich text editor">
+          <ExtensionDemo title="富文本编辑器" description="基于 TipTap 的富文本编辑器">
             <RichText stickyOffset={56} />
           </ExtensionDemo>
 
           <div>
             <Stack>
               <ExtensionDemo
-                title="Notifications system"
-                description="Show/update/hide notifications at any part of your application"
+                title="通知系统"
+                description="在应用的任何位置显示、更新或隐藏通知"
               >
                 <Group justify="center">
                   <Button
@@ -86,9 +85,9 @@ export function HomePageExtensions() {
                         id: 'home-page-demo',
                         withBorder: true,
                         loading: true,
-                        title: 'Loading your data',
+                        title: '正在加载数据',
                         radius: 'md',
-                        message: 'Data will be loaded in 3 seconds, you cannot close this yet',
+                        message: '数据将在 3 秒内加载完成，当前不可关闭',
                         autoClose: false,
                         withCloseButton: false,
                       });
@@ -98,10 +97,10 @@ export function HomePageExtensions() {
                           id,
                           color: 'teal',
                           withBorder: true,
-                          title: 'Data was loaded',
+                          title: '数据已加载',
                           radius: 'md',
                           message:
-                            'Notification will close in 2 seconds, you can close this notification now',
+                            '通知将在 2 秒后自动关闭，你现在可以手动关闭此通知',
                           icon: <CheckIcon size={18} />,
                           loading: false,
                           autoClose: 2000,
@@ -109,14 +108,14 @@ export function HomePageExtensions() {
                       }, 3000);
                     }}
                   >
-                    Show notification
+                    显示通知
                   </Button>
                 </Group>
               </ExtensionDemo>
 
               <ExtensionDemo
                 title="Spotlight"
-                description="Ctrl + K command palette, can be used for search or common actions"
+                description="Ctrl + K 命令面板，可用于搜索或执行常用操作"
               >
                 <Group justify="center">
                   <Button
@@ -131,12 +130,12 @@ export function HomePageExtensions() {
                     miw={300}
                     justify="space-between"
                   >
-                    Open search spotlight
+                    打开搜索面板
                   </Button>
                 </Group>
               </ExtensionDemo>
 
-              <ExtensionDemo title="Carousel" description="Embla based carousel component">
+              <ExtensionDemo title="Carousel" description="基于 Embla 的轮播组件">
                 <Carousel
                   withIndicators
                   emblaOptions={{ loop: true }}

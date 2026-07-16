@@ -3,13 +3,13 @@ import type { StylesApiData } from '../types';
 
 export const StackStylesApi: StylesApiData<StackFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
   },
 
   vars: {
     root: {
-      '--stack-align': 'Controls `align-items` property',
-      '--stack-justify': 'Controls `justify-content` property',
+      '--stack-align': '控制 `align-items` 属性',
+      '--stack-justify': '控制 `justify-content` 属性',
       '--stack-gap': 'Controls `gap` property',
     },
   },

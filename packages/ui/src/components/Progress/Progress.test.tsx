@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Progress } from './Progress'
 
 describe('Progress', () => {
     it('renders progress bar with value', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Progress value={50} data-testid="progress" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         const progress = screen.getByTestId('progress')
@@ -18,9 +18,9 @@ describe('Progress', () => {
 
     it('renders progress label', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Progress value={40} label="40%" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('40%')).toBeInTheDocument()
@@ -28,14 +28,14 @@ describe('Progress', () => {
 
     it('renders multiple sections', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Progress
                     sections={[
                         { value: 30, color: 'blue', label: 'A' },
                         { value: 20, color: 'green', label: 'B' }
                     ]}
                 />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('A')).toBeInTheDocument()
@@ -44,9 +44,9 @@ describe('Progress', () => {
 
     it('clamps section values between 0 and 100', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Progress value={150} data-testid="progress" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         const section = screen.getByTestId('progress').firstChild as HTMLElement

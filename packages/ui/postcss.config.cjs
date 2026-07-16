@@ -2,7 +2,7 @@ const nested = require('postcss-nested');
 
 /**
  * Custom auto-rem plugin: converts px values to scaled rem.
- * Replaces postcss-preset-mantine's autoRem feature.
+ * Replaces postcss-preset-ui's autoRem feature.
  *
  * Behavior:
  * - Processes declarations whose value contains 'px'

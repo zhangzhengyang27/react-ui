@@ -13,14 +13,14 @@ export default Layout(MDX_DATA.Modals);
 使用 `ModalsProvider` 组件包裹你的应用：
 
 ```tsx
-import { MantineProvider } from '@react-ui/ui';
+import { UIProvider } from '@react-ui/ui';
 import { ModalsProvider } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <MantineProvider>
+    <UIProvider>
       <ModalsProvider>{/* 你的应用内容 */}</ModalsProvider>
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```
@@ -120,7 +120,7 @@ const modals = {
   /* ...其他弹窗 */
 };
 declare module '@react-ui/ui' {
-  export interface MantineModalsOverride {
+  export interface UIModalsOverride {
     modals: typeof modals;
   }
 }

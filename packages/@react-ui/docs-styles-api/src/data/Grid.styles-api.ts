@@ -4,16 +4,16 @@ import type { StylesApiData } from '../types';
 export const GridStylesApi: StylesApiData<GridFactory> = {
   selectors: {
     container: 'Container element, only used with `type="container"` prop',
-    root: 'Root element',
-    inner: 'Columns wrapper',
-    col: '`Grid.Col` root element',
+    root: '根元素',
+    inner: 'Columns 包装器',
+    col: '`Grid.Col` root 元素',
   },
 
   vars: {
     root: {
       '--grid-overflow': 'Controls `overflow` property',
-      '--grid-align': 'Controls `align-items` property',
-      '--grid-justify': 'Controls `justify-content` property',
+      '--grid-align': '控制 `align-items` 属性',
+      '--grid-justify': '控制 `justify-content` 属性',
     },
   },
 

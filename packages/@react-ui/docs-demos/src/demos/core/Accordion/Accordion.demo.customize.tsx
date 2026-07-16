@@ -1,5 +1,5 @@
 import { Accordion } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './_base';
 import classes from './Accordion.demo.customize.module.css';
 
@@ -68,12 +68,12 @@ function Demo() {
   );
 }
 
-export const customize: MantineDemo = {
+export const customize: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
     { fileName: 'data.ts', code: dataCode, language: 'tsx' },
   ],
   centered: true,

@@ -1,5 +1,5 @@
 import { Button, Popover, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { FLOATING_POSITION_DATA } from '../../../shared';
 
 const code = `
@@ -14,7 +14,7 @@ function Demo() {
       {{props}}
     >
       <Popover.Target>
-        <Button>Popover target</Button>
+        <Button>气泡卡片目标</Button>
       </Popover.Target>
       <Popover.Dropdown>
         <Text size="xs">
@@ -30,7 +30,7 @@ function Wrapper(props: any) {
   return (
     <Popover width={200} opened {...props}>
       <Popover.Target>
-        <Button>Popover target</Button>
+        <Button>气泡卡片目标</Button>
       </Popover.Target>
       <Popover.Dropdown>
         <Text size="xs">
@@ -41,7 +41,7 @@ function Wrapper(props: any) {
   );
 }
 
-export const offset: MantineDemo = {
+export const offset: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

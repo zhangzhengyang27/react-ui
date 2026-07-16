@@ -27,9 +27,11 @@ interface CreateEdgeComponent {
     name: string
     action: 'onNext' | 'onPrevious' | 'onFirst' | 'onLast'
     type: 'next' | 'previous'
+    /** 无障碍标签 */
+    ariaLabel: string
 }
 
-function createEdgeComponent({ icon, name, action, type }: CreateEdgeComponent) {
+function createEdgeComponent({ icon, name, action, type, ariaLabel }: CreateEdgeComponent) {
     const defaultProps = { icon } satisfies Partial<PaginationEdgeProps>
 
     const Component = (props: PaginationEdgeProps) => {
@@ -42,6 +44,7 @@ function createEdgeComponent({ icon, name, action, type }: CreateEdgeComponent) 
                 disabled={ctx.disabled || disabled}
                 onClick={ctx[action]}
                 withPadding={false}
+                aria-label={ariaLabel}
                 {...others}
             >
                 {Icon && (
@@ -64,26 +67,30 @@ export const PaginationNext = createEdgeComponent({
     icon: PaginationNextIcon,
     name: 'PaginationNext',
     action: 'onNext',
-    type: 'next'
+    type: 'next',
+    ariaLabel: 'Next page'
 })
 
 export const PaginationPrevious = createEdgeComponent({
     icon: PaginationPreviousIcon,
     name: 'PaginationPrevious',
     action: 'onPrevious',
-    type: 'previous'
+    type: 'previous',
+    ariaLabel: 'Previous page'
 })
 
 export const PaginationFirst = createEdgeComponent({
     icon: PaginationFirstIcon,
     name: 'PaginationFirst',
     action: 'onFirst',
-    type: 'previous'
+    type: 'previous',
+    ariaLabel: 'First page'
 })
 
 export const PaginationLast = createEdgeComponent({
     icon: PaginationLastIcon,
     name: 'PaginationLast',
     action: 'onLast',
-    type: 'next'
+    type: 'next',
+    ariaLabel: 'Last page'
 })

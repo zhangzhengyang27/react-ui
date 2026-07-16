@@ -3,21 +3,21 @@ import type { StylesApiData } from '../types';
 
 export const TreemapStylesApi: StylesApiData<TreemapFactory> = {
   selectors: {
-    root: 'Root element',
-    tooltip: 'Tooltip root element',
-    tooltipBody: 'Tooltip wrapper around all items',
-    tooltipItem: 'Tooltip item representing data series',
-    tooltipItemBody: 'Tooltip item wrapper around item color and name',
-    tooltipItemColor: 'Tooltip item color',
-    tooltipItemName: 'Tooltip item name',
-    tooltipItemData: 'Tooltip item data',
-    tooltipLabel: 'Label of the tooltip',
+    root: '根元素',
+    tooltip: 'Tooltip root 元素',
+    tooltipBody: '包裹所有提示项的容器',
+    tooltipItem: '提示项，表示数据系列',
+    tooltipItemBody: '提示项颜色与名称的包装器',
+    tooltipItemColor: '提示项颜色',
+    tooltipItemName: '提示项名称',
+    tooltipItemData: '提示项数据',
+    tooltipLabel: '提示框标签',
   },
 
   vars: {
     root: {
-      '--chart-stroke-color': 'Controls color of the chart stroke',
-      '--chart-height': 'Controls height of the chart',
+      '--chart-stroke-color': '控制 the chart stroke 的 color',
+      '--chart-height': '控制 the chart 的 height',
     },
   },
 

@@ -6,7 +6,7 @@ import {
     factory,
     Factory,
     getRadius,
-    MantineRadius,
+    UIRadius,
     rem,
     StylesApiProps,
     useProps,
@@ -35,8 +35,8 @@ export interface ImageProps extends BoxProps, StylesApiProps<ImageFactory> {
     /** Object-fit style @default 'cover' */
     fit?: React.CSSProperties['objectFit']
 
-    /** Key of theme.radius or any valid CSS value to set border-radius, numbers are converted to rem @default theme.defaultRadius */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 to set border-radius, numbers are converted to rem @default theme.defaultRadius */
+    radius?: UIRadius
 
     /** Fallback image src displayed when main image fails to load */
     fallbackSrc?: string

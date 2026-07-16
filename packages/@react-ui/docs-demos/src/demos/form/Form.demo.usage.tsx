@@ -2,7 +2,7 @@
 
 import { Button, Checkbox, Group, TextInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Checkbox, Group, TextInput } from '@react-ui/ui';
@@ -17,7 +17,7 @@ function Demo() {
     },
 
     validate: {
-      email: (value) => (/^\\S+@\\S+$/.test(value) ? null : 'Invalid email'),
+      email: (value) => (/^\\S+@\\S+$/.test(value) ? null : '无效的邮箱'),
     },
   });
 
@@ -25,21 +25,21 @@ function Demo() {
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <TextInput
         withAsterisk
-        label="Email"
-        placeholder="your@email.com"
+        label="邮箱"
+        placeholder="yourname@example.com"
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
 
       <Checkbox
         mt="md"
-        label="I agree to sell my privacy"
+        label="我同意出售我的隐私"
         key={form.key('termsOfService')}
         {...form.getInputProps('termsOfService', { type: 'checkbox' })}
       />
 
       <Group justify="flex-end" mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -55,7 +55,7 @@ function Demo() {
     },
 
     validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : '无效的邮箱'),
     },
   });
 
@@ -63,27 +63,27 @@ function Demo() {
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <TextInput
         withAsterisk
-        label="Email"
-        placeholder="your@email.com"
+        label="邮箱"
+        placeholder="yourname@example.com"
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
 
       <Checkbox
         mt="md"
-        label="I agree to sell my privacy"
+        label="我同意出售我的隐私"
         key={form.key('termsOfService')}
         {...form.getInputProps('termsOfService', { type: 'checkbox' })}
       />
 
       <Group justify="flex-end" mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

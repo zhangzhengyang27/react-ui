@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react';
 import { MagnifyingGlassIcon } from '@phosphor-icons/react';
 import { Badge, Button, Center, Group, Text } from '@react-ui/ui';
 import { createSpotlight, Spotlight } from '@react-ui/spotlight';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -15,26 +15,26 @@ const data = [
   {
     image: 'https://img.icons8.com/clouds/256/000000/futurama-bender.png',
     title: 'Bender Bending Rodríguez',
-    description: 'Fascinated with cooking, though has no sense of taste',
+    description: '对烹饪很着迷，但没有味觉',
     new: true,
   },
 
   {
     image: 'https://img.icons8.com/clouds/256/000000/futurama-mom.png',
     title: 'Carol Miller',
-    description: 'One of the richest people on Earth',
+    description: '地球上最富有的人之一',
     new: false,
   },
   {
     image: 'https://img.icons8.com/clouds/256/000000/homer-simpson.png',
     title: 'Homer Simpson',
-    description: 'Overweight, lazy, and often ignorant',
+    description: '超重、懒惰且常常无知',
     new: false,
   },
   {
     image: 'https://img.icons8.com/clouds/256/000000/spongebob-squarepants.png',
     title: 'Spongebob Squarepants',
-    description: 'Not just a sponge',
+    description: '不仅仅是海绵',
     new: false,
   },
 ];
@@ -63,19 +63,19 @@ function Demo() {
           )}
         </div>
 
-        {item.new && <Badge variant="default">new</Badge>}
+        {item.new && <Badge variant="default">新</Badge>}
       </Group>
     </Spotlight.Action>
   ));
 
   return (
     <>
-      <Button onClick={spotlight.open}>Open spotlight</Button>
+      <Button onClick={spotlight.open}>打开聚光灯</Button>
 
       <Spotlight.Root query={query} onQueryChange={setQuery}>
-        <Spotlight.Search placeholder="Search..." leftSection={<MagnifyingGlassIcon />} />
+        <Spotlight.Search placeholder="搜索..." leftSection={<MagnifyingGlassIcon />} />
         <Spotlight.ActionsList>
-          {items.length > 0 ? items : <Spotlight.Empty>Nothing found...</Spotlight.Empty>}
+          {items.length > 0 ? items : <Spotlight.Empty>未找到...</Spotlight.Empty>}
         </Spotlight.ActionsList>
       </Spotlight.Root>
     </>
@@ -87,26 +87,26 @@ const data = [
   {
     image: 'https://img.icons8.com/clouds/256/000000/futurama-bender.png',
     title: 'Bender Bending Rodríguez',
-    description: 'Fascinated with cooking, though has no sense of taste',
+    description: '对烹饪很着迷，但没有味觉',
     new: true,
   },
 
   {
     image: 'https://img.icons8.com/clouds/256/000000/futurama-mom.png',
     title: 'Carol Miller',
-    description: 'One of the richest people on Earth',
+    description: '地球上最富有的人之一',
     new: false,
   },
   {
     image: 'https://img.icons8.com/clouds/256/000000/homer-simpson.png',
     title: 'Homer Simpson',
-    description: 'Overweight, lazy, and often ignorant',
+    description: '超重、懒惰且常常无知',
     new: false,
   },
   {
     image: 'https://img.icons8.com/clouds/256/000000/spongebob-squarepants.png',
     title: 'Spongebob Squarepants',
-    description: 'Not just a sponge',
+    description: '不仅仅是海绵',
     new: false,
   },
 ];
@@ -136,26 +136,26 @@ function Demo() {
             )}
           </div>
 
-          {item.new && <Badge variant="default">new</Badge>}
+          {item.new && <Badge variant="default">新</Badge>}
         </Group>
       </Spotlight.Action>
     ));
 
   return (
     <>
-      <Button onClick={spotlight.open}>Open spotlight</Button>
+      <Button onClick={spotlight.open}>打开聚光灯</Button>
 
       <Spotlight.Root store={store} query={query} onQueryChange={setQuery} shortcut={null}>
-        <Spotlight.Search placeholder="Search..." leftSection={<MagnifyingGlassIcon />} />
+        <Spotlight.Search placeholder="搜索..." leftSection={<MagnifyingGlassIcon />} />
         <Spotlight.ActionsList>
-          {items.length > 0 ? items : <Spotlight.Empty>Nothing found...</Spotlight.Empty>}
+          {items.length > 0 ? items : <Spotlight.Empty>未找到...</Spotlight.Empty>}
         </Spotlight.ActionsList>
       </Spotlight.Root>
     </>
   );
 }
 
-export const customAction: MantineDemo = {
+export const customAction: UIDemo = {
   type: 'code',
   component: Demo,
   code,

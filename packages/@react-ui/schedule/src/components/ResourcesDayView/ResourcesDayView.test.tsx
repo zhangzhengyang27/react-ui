@@ -3,7 +3,7 @@ import 'dayjs/locale/ru';
 import dayjs from 'dayjs';
 import { fireEvent } from '@testing-library/react';
 import { DatesProvider } from '@react-ui/dates';
-import { render, screen, userEvent } from '@mantine-tests/core';
+import { render, screen, userEvent } from '@react-ui/tests';
 import { toDateString } from '../../utils';
 import { ResourcesDayView, ResourcesDayViewProps } from './ResourcesDayView';
 
@@ -83,13 +83,13 @@ describe('@react-ui/schedule/ResourcesDayView', () => {
     const { container } = render(<ResourcesDayView {...defaultProps} events={events} />);
     expect(screen.getByText('All Day in Room A')).toBeInTheDocument();
     expect(
-      container.querySelector('.mantine-ResourcesDayView-resourcesDayViewAllDayEvent')
+      container.querySelector('.ui-ResourcesDayView-resourcesDayViewAllDayEvent')
     ).not.toBe(null);
   });
 
   it('renders with mode="static" (slots not interactive)', () => {
     const { container } = render(<ResourcesDayView {...defaultProps} mode="static" />);
-    const slots = container.querySelectorAll('.mantine-ResourcesDayView-resourcesDayViewRowSlot');
+    const slots = container.querySelectorAll('.ui-ResourcesDayView-resourcesDayViewRowSlot');
     slots.forEach((slot) => {
       expect(slot).toHaveAttribute('tabIndex', '-1');
     });
@@ -105,7 +105,7 @@ describe('@react-ui/schedule/ResourcesDayView', () => {
 
   it('does not render header when withHeader={false}', () => {
     const { container } = render(<ResourcesDayView {...defaultProps} withHeader={false} />);
-    expect(container.querySelector('.mantine-ResourcesDayView-header')).not.toBeInTheDocument();
+    expect(container.querySelector('.ui-ResourcesDayView-header')).not.toBeInTheDocument();
   });
 
   it('calls onTimeSlotClick with resourceId when slot is clicked', async () => {
@@ -225,7 +225,7 @@ describe('@react-ui/schedule/ResourcesDayView', () => {
     const { container } = render(<ResourcesDayView {...defaultProps} withCurrentTimeIndicator />);
 
     expect(
-      container.querySelector('.mantine-ResourcesDayView-resourcesDayViewCurrentTimeIndicator')
+      container.querySelector('.ui-ResourcesDayView-resourcesDayViewCurrentTimeIndicator')
     ).toBeInTheDocument();
 
     jest.useRealTimers();
@@ -239,7 +239,7 @@ describe('@react-ui/schedule/ResourcesDayView', () => {
     );
 
     expect(
-      container.querySelector('.mantine-ResourcesDayView-resourcesDayViewCurrentTimeIndicator')
+      container.querySelector('.ui-ResourcesDayView-resourcesDayViewCurrentTimeIndicator')
     ).not.toBeInTheDocument();
 
     jest.useRealTimers();
@@ -253,11 +253,11 @@ describe('@react-ui/schedule/ResourcesDayView', () => {
     );
 
     expect(
-      container.querySelector('.mantine-ResourcesDayView-resourcesDayViewCurrentTimeIndicatorThumb')
+      container.querySelector('.ui-ResourcesDayView-resourcesDayViewCurrentTimeIndicatorThumb')
     ).toBeInTheDocument();
     expect(
       container.querySelector(
-        '.mantine-ResourcesDayView-resourcesDayViewCurrentTimeIndicatorTimeBubble'
+        '.ui-ResourcesDayView-resourcesDayViewCurrentTimeIndicatorTimeBubble'
       )
     ).not.toBeInTheDocument();
 
@@ -267,13 +267,13 @@ describe('@react-ui/schedule/ResourcesDayView', () => {
   it('highlightBusinessHours marks business and non-business slots', () => {
     const { container } = render(<ResourcesDayView {...defaultProps} highlightBusinessHours />);
 
-    const slots = container.querySelectorAll('.mantine-ResourcesDayView-resourcesDayViewRowSlot');
+    const slots = container.querySelectorAll('.ui-ResourcesDayView-resourcesDayViewRowSlot');
 
     const businessSlots = container.querySelectorAll(
-      '.mantine-ResourcesDayView-resourcesDayViewRowSlot[data-business-hours]'
+      '.ui-ResourcesDayView-resourcesDayViewRowSlot[data-business-hours]'
     );
     const nonBusinessSlots = container.querySelectorAll(
-      '.mantine-ResourcesDayView-resourcesDayViewRowSlot[data-non-business-hours]'
+      '.ui-ResourcesDayView-resourcesDayViewRowSlot[data-non-business-hours]'
     );
 
     expect(businessSlots.length).toBeGreaterThan(0);
@@ -412,7 +412,7 @@ describe('@react-ui/schedule/ResourcesDayView', () => {
     );
 
     expect(
-      container.querySelector('.mantine-ResourcesDayView-resourcesDayViewScrollArea.custom-scroll')
+      container.querySelector('.ui-ResourcesDayView-resourcesDayViewScrollArea.custom-scroll')
     ).toBeInTheDocument();
   });
 
@@ -517,7 +517,7 @@ describe('@react-ui/schedule/ResourcesDayView', () => {
     );
 
     expect(
-      container.querySelectorAll('.mantine-ResourcesDayView-resourcesDayViewResizeHandle').length
+      container.querySelectorAll('.ui-ResourcesDayView-resourcesDayViewResizeHandle').length
     ).toBeGreaterThan(0);
   });
 
@@ -553,7 +553,7 @@ describe('@react-ui/schedule/ResourcesDayView', () => {
     );
 
     const resizeHandles = container.querySelectorAll(
-      '.mantine-ResourcesDayView-resourcesDayViewResizeHandle'
+      '.ui-ResourcesDayView-resourcesDayViewResizeHandle'
     );
     expect(resizeHandles).toHaveLength(2);
   });
@@ -577,7 +577,7 @@ describe('@react-ui/schedule/ResourcesDayView', () => {
     );
 
     const handle = container.querySelector<HTMLElement>(
-      '.mantine-ResourcesDayView-resourcesDayViewResizeHandle[data-edge="end"]'
+      '.ui-ResourcesDayView-resourcesDayViewResizeHandle[data-edge="end"]'
     )!;
 
     fireEvent.pointerDown(handle);
@@ -623,7 +623,7 @@ describe('@react-ui/schedule/ResourcesDayView', () => {
     expect(slot).toHaveAttribute('tabIndex', '-1');
 
     const allSlots = container.querySelectorAll(
-      '.mantine-ResourcesDayView-resourcesDayViewRowSlot'
+      '.ui-ResourcesDayView-resourcesDayViewRowSlot'
     );
     allSlots.forEach((s) => {
       expect(s).toHaveAttribute('tabIndex', '-1');
@@ -635,7 +635,7 @@ describe('@react-ui/schedule/ResourcesDayView', () => {
     expect(eventButton.closest('[draggable="true"]')).not.toBeInTheDocument();
 
     const resizeHandles = container.querySelectorAll(
-      '.mantine-ResourcesDayView-resourcesDayViewResizeHandle'
+      '.ui-ResourcesDayView-resourcesDayViewResizeHandle'
     );
     expect(resizeHandles).toHaveLength(0);
   });
@@ -903,14 +903,14 @@ describe('@react-ui/schedule/ResourcesDayView', () => {
     expect(screen.getByText('Floor 1')).toBeInTheDocument();
     expect(screen.getByText('Floor 2')).toBeInTheDocument();
     expect(
-      container.querySelector('.mantine-ResourcesDayView-resourcesDayViewGroupColumn')
+      container.querySelector('.ui-ResourcesDayView-resourcesDayViewGroupColumn')
     ).toBeInTheDocument();
   });
 
   it('does not render group column when groups prop is not provided', () => {
     const { container } = render(<ResourcesDayView {...defaultProps} />);
     expect(
-      container.querySelector('.mantine-ResourcesDayView-resourcesDayViewGroupColumn')
+      container.querySelector('.ui-ResourcesDayView-resourcesDayViewGroupColumn')
     ).not.toBeInTheDocument();
   });
 
@@ -929,7 +929,7 @@ describe('@react-ui/schedule/ResourcesDayView', () => {
     );
 
     const labels = container.querySelectorAll(
-      '.mantine-ResourcesDayView-resourcesDayViewResourceLabel'
+      '.ui-ResourcesDayView-resourcesDayViewResourceLabel'
     );
     expect(labels[0]).toHaveTextContent('Room B');
     expect(labels[1]).toHaveTextContent('Room A');
@@ -965,7 +965,7 @@ describe('@react-ui/schedule/ResourcesDayView', () => {
     expect(screen.getByText('Floor 1')).toBeInTheDocument();
     expect(screen.getByText('Room C')).toBeInTheDocument();
     const emptyGroupCells = container.querySelectorAll(
-      '.mantine-ResourcesDayView-resourcesDayViewGroupColumnEmpty'
+      '.ui-ResourcesDayView-resourcesDayViewGroupColumnEmpty'
     );
     expect(emptyGroupCells.length).toBe(1);
   });

@@ -1,5 +1,5 @@
 import { Sparkline } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Sparkline } from '@react-ui/charts';
@@ -21,7 +21,7 @@ function Wrapper(props: any) {
   return <Sparkline w={200} h={60} data={[10, 20, 40, 20, 40, 10, 50]} {...props} />;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

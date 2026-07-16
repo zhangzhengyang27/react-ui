@@ -1,5 +1,5 @@
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
-import { datesTests } from '@mantine-tests/dates';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
+import { datesTests } from '@react-ui/tests/dates';
 import { DatePicker, DatePickerProps, DatePickerStylesNames } from './DatePicker';
 
 const defaultProps = {
@@ -174,11 +174,11 @@ describe('@react-ui/dates/DatePicker', () => {
 
   it('has correct default __staticSelector', () => {
     const { container } = render(<DatePicker {...defaultProps} />);
-    expect(container.querySelector('.mantine-DatePicker-month')).toBeInTheDocument();
+    expect(container.querySelector('.ui-DatePicker-month')).toBeInTheDocument();
   });
 
   it('supports custom __staticSelector', () => {
     const { container } = render(<DatePicker {...defaultProps} __staticSelector="Calendar" />);
-    expect(container.querySelector('.mantine-Calendar-month')).toBeInTheDocument();
+    expect(container.querySelector('.ui-Calendar-month')).toBeInTheDocument();
   });
 });

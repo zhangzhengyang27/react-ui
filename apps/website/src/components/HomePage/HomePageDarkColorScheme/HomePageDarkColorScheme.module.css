@@ -17,7 +17,7 @@
 .darkIcon {
   color: var(--ui-color-yellow-4);
 
-  @mixin light {
+  [data-ui-color-scheme='light'] & {
     display: none;
   }
 }
@@ -25,7 +25,7 @@
 .lightIcon {
   color: var(--ui-color-blue-7);
 
-  @mixin dark {
+  [data-ui-color-scheme='dark'] & {
     display: none;
   }
 }

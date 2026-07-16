@@ -10,7 +10,7 @@ import {
   TreeNodeData,
   useTree,
 } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -102,7 +102,7 @@ function Demo() {
   return (
     <div>
       <TextInput
-        placeholder="Search..."
+        placeholder="搜索..."
         mb="sm"
         value={search}
         onChange={(event) => handleSearchChange(event.currentTarget.value)}
@@ -203,7 +203,7 @@ function Demo() {
   return (
     <div>
       <TextInput
-        placeholder="Search..."
+        placeholder="搜索..."
         mb="sm"
         value={search}
         onChange={(event) => handleSearchChange(event.currentTarget.value)}
@@ -236,7 +236,7 @@ function Demo() {
   );
 }
 
-export const searchHighlight: MantineDemo = {
+export const searchHighlight: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

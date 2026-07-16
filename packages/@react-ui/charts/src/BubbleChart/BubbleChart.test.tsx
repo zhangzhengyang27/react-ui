@@ -1,4 +1,4 @@
-import { autoPatchWarn, tests } from '@mantine-tests/core';
+import { autoPatchWarn, tests } from '@react-ui/tests';
 import { BubbleChart, BubbleChartProps, BubbleChartStylesNames } from './BubbleChart';
 
 const defaultProps: BubbleChartProps = {

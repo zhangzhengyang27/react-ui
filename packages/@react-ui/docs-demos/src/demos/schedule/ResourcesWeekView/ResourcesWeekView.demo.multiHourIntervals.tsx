@@ -2,12 +2,12 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import { SegmentedControl, Stack } from '@react-ui/ui';
 import { ResourcesWeekView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { resources } from './_data';
 
-const day1 = dayjs().format('YYYY-MM-DD');
-const day2 = dayjs().add(1, 'day').format('YYYY-MM-DD');
-const day3 = dayjs().add(2, 'day').format('YYYY-MM-DD');
+const day1 = dayjs('2024-01-15').format('YYYY-MM-DD');
+const day2 = dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD');
+const day3 = dayjs('2024-01-15').add(2, 'day').format('YYYY-MM-DD');
 
 const events: ScheduleEventData[] = [
   {
@@ -79,9 +79,9 @@ const events: ScheduleEventData[] = [
 const dataCode = `import dayjs from 'dayjs';
 import { ScheduleEventData, ScheduleResourceData } from '@react-ui/schedule';
 
-const day1 = dayjs().format('YYYY-MM-DD');
-const day2 = dayjs().add(1, 'day').format('YYYY-MM-DD');
-const day3 = dayjs().add(2, 'day').format('YYYY-MM-DD');
+const day1 = dayjs('2024-01-15').format('YYYY-MM-DD');
+const day2 = dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD');
+const day3 = dayjs('2024-01-15').add(2, 'day').format('YYYY-MM-DD');
 
 export const resources: ScheduleResourceData[] = [
   { id: 'tokyo', label: 'Meeting room: Tokyo' },
@@ -110,7 +110,7 @@ import { ResourcesWeekView } from '@react-ui/schedule';
 import { events, resources } from './data';
 
 function Demo() {
-  const today = dayjs().format('YYYY-MM-DD');
+  const today = dayjs('2024-01-15').format('YYYY-MM-DD');
   const [date, setDate] = useState(today);
   const [intervalMinutes, setIntervalMinutes] = useState('240');
 
@@ -169,12 +169,12 @@ function Demo() {
   );
 }
 
-export const multiHourIntervals: MantineDemo = {
+export const multiHourIntervals: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

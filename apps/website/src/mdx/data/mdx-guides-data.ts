@@ -2,14 +2,14 @@ import { Frontmatter } from '@/types';
 
 export const MDX_GUIDES_DATA: Record<string, Frontmatter> = {
   Polymorphic: {
-    title: 'Polymorphic components',
+    title: '多态组件',
     slug: '/guides/polymorphic',
-    search: 'polymorphic, change root element, component prop',
+    search: '多态, 更改根元素, component prop',
     hideHeader: true,
   },
 
   CustomComponents: {
-    title: 'Custom components',
+    title: '自定义组件',
     slug: '/guides/custom-components',
     search: 'factory, genericFactory, useStyles, varsResolver',
     searchTags:
@@ -18,101 +18,101 @@ export const MDX_GUIDES_DATA: Record<string, Frontmatter> = {
   },
 
   NextJs: {
-    title: 'Usage with Next.js',
+    title: '配合 Next.js 使用',
     slug: '/guides/next',
-    search: 'Get started with Next.js',
+    search: 'ReactUI 配合 Next.js 入门',
     hideHeader: true,
   },
 
   Vite: {
-    title: 'Usage with Vite',
+    title: '配合 Vite 使用',
     slug: '/guides/vite',
-    search: 'Get started with Vite',
+    search: 'ReactUI 配合 Vite 入门',
     hideHeader: true,
   },
 
   ReactRouter: {
-    title: 'Usage with React Router',
+    title: '配合 React Router 使用',
     slug: '/guides/react-router',
-    search: 'Get started with React Router',
+    search: 'ReactUI 配合 React Router 入门',
     hideHeader: true,
   },
 
   Gatsby: {
-    title: 'Usage with Gatsby',
+    title: '配合 Gatsby 使用',
     slug: '/guides/gatsby',
-    search: 'Get started with Gatsby',
+    search: 'ReactUI 配合 Gatsby 入门',
     hideHeader: true,
   },
 
   Redwood: {
-    title: 'Usage with Redwood',
+    title: '配合 Redwood 使用',
     slug: '/guides/redwood',
-    search: 'Get started with Redwood',
+    search: 'ReactUI 配合 Redwood 入门',
     hideHeader: true,
   },
 
   Storybook: {
-    title: 'Usage with Storybook',
+    title: '配合 Storybook 使用',
     slug: '/guides/storybook',
-    search: 'Setup ReactUI with Storybook',
+    search: 'ReactUI 配合 Storybook 配置',
     hideHeader: true,
   },
 
   TypeScript: {
-    title: 'Usage with TypeScript',
+    title: '配合 TypeScript 使用',
     slug: '/guides/typescript',
-    search: 'Usage with TypeScript',
+    search: 'ReactUI 配合 TypeScript 使用',
     hideHeader: true,
   },
 
   JavaScript: {
-    title: 'Usage with JavaScript',
+    title: '配合 JavaScript 使用',
     slug: '/guides/javascript',
-    search: 'Usage with JavaScript',
+    search: 'ReactUI 配合 JavaScript 使用',
     hideHeader: true,
   },
 
   Icons: {
-    title: 'Icons libraries',
+    title: '图标库',
     slug: '/guides/icons',
-    search: 'Usage of icons libraries with ReactUI',
+    search: 'ReactUI 图标库使用',
     hideHeader: true,
   },
 
   Jest: {
-    title: 'Testing with Jest',
+    title: '使用 Jest 测试',
     slug: '/guides/jest',
-    search: 'Testing with Jest and React Testing Library',
+    search: '使用 Jest 和 React Testing Library 测试 ReactUI',
     hideHeader: true,
   },
 
   Vitest: {
-    title: 'Testing with Vitest',
+    title: '使用 Vitest 测试',
     slug: '/guides/vitest',
-    search: 'Testing with Vitest and React Testing Library',
+    search: '使用 Vitest 和 React Testing Library 测试 ReactUI',
     hideHeader: true,
   },
 
   FunctionsReference: {
-    title: 'Functions reference',
+    title: '函数参考',
     slug: '/guides/functions-reference',
     search:
-      'A list of functions exported from ReactUI packages that are not documented anywhere else',
+      'ReactUI 各包中导出但未在其他地方记录的函数列表',
     hideHeader: true,
   },
 
   LLMDocumentation: {
-    title: 'ReactUI with LLMs',
+    title: 'ReactUI 与大语言模型',
     slug: '/guides/llms',
-    search: 'LLM, AI, ChatGPT, Claude, Copilot, Cursor, Windsurf, documentation',
+    search: '大语言模型, AI, ChatGPT, Claude, Copilot, Cursor, Windsurf, documentation',
     hideHeader: true,
   },
 
   ControlledVsUncontrolled: {
-    title: 'Controlled vs Uncontrolled',
+    title: '受控与非受控',
     slug: '/guides/controlled-vs-uncontrolled',
-    search: 'Controlled vs Uncontrolled components in React',
+    search: 'React 中的受控与非受控组件',
     hideHeader: true,
   },
 };

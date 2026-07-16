@@ -1,5 +1,5 @@
 import { Button, Flex } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Flex, Button } from '@react-ui/ui';
@@ -11,9 +11,9 @@ function Demo() {
       gap={{ base: 'sm', sm: 'lg' }}
       justify={{ sm: 'center' }}
     >
-      <Button>Button 1</Button>
-      <Button>Button 2</Button>
-      <Button>Button 3</Button>
+      <Button>按钮 1</Button>
+      <Button>按钮 2</Button>
+      <Button>按钮 3</Button>
     </Flex>
   );
 }
@@ -26,14 +26,14 @@ function Demo() {
       gap={{ base: 'sm', sm: 'lg' }}
       justify={{ sm: 'center' }}
     >
-      <Button>Button 1</Button>
-      <Button>Button 2</Button>
-      <Button>Button 3</Button>
+      <Button>按钮 1</Button>
+      <Button>按钮 2</Button>
+      <Button>按钮 3</Button>
     </Flex>
   );
 }
 
-export const responsive: MantineDemo = {
+export const responsive: UIDemo = {
   type: 'code',
   component: Demo,
   code,

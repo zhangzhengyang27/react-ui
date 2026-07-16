@@ -8,20 +8,20 @@ export const MultiSelectStylesApi: StylesApiData<MultiSelectFactory> = {
     ...InputStylesApi.selectors,
     ...InputWrapperStylesApi.selectors,
     ...ComboboxLikeSelectors,
-    pill: 'Value pill',
-    inputField: 'Input field',
-    pillsList: 'List of pills, also contains input field',
+    pill: '值标签',
+    inputField: '输入字段',
+    pillsList: '标签列表，同时包含输入字段',
   },
 
   vars: {},
 
   modifiers: [
-    { modifier: 'data-combobox-selected', selector: 'option', condition: 'Option is selected' },
+    { modifier: 'data-combobox-selected', selector: 'option', condition: '选项被选中' },
     {
       modifier: 'data-combobox-active',
       selector: 'option',
-      condition: 'Options was activated by keyboard',
+      condition: '选项被键盘激活',
     },
-    { modifier: 'data-combobox-disabled', selector: 'option', condition: 'Option is disabled' },
+    { modifier: 'data-combobox-disabled', selector: 'option', condition: '选项被禁用' },
   ],
 };

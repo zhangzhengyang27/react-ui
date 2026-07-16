@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ColorPicker, DEFAULT_THEME, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -54,7 +54,7 @@ function Demo() {
   );
 }
 
-export const swatchesOnly: MantineDemo = {
+export const swatchesOnly: UIDemo = {
   type: 'code',
   component: Demo,
   code,

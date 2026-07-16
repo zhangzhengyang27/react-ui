@@ -1,5 +1,5 @@
 import { Avatar } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { avatars } from './_mockdata';
 
 const code = `
@@ -30,7 +30,7 @@ function Demo() {
   );
 }
 
-export const link: MantineDemo = {
+export const link: UIDemo = {
   type: 'code',
   centered: true,
   code,

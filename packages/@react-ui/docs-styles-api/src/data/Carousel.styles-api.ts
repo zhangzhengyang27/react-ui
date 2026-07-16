@@ -3,30 +3,30 @@ import type { StylesApiData } from '../types';
 
 export const CarouselStylesApi: StylesApiData<CarouselFactory> = {
   selectors: {
-    root: 'Root element',
-    slide: '`Carousel.Slide` root element',
-    container: 'Slides container',
+    root: '根元素',
+    slide: '`Carousel.Slide` root 元素',
+    container: 'Slides 容器',
     viewport: 'Main element, contains slides container and all controls',
-    controls: 'Next/previous controls container',
+    controls: 'Next/previous controls 容器',
     control: 'Next/previous control',
-    indicators: 'Indicators container',
+    indicators: 'Indicators 容器',
     indicator: 'Indicator button',
   },
 
   vars: {
     root: {
       '--carousel-control-size': 'Controls `width` and `height` of the next/previous buttons',
-      '--carousel-controls-offset': 'Controls offsets of the next/previous buttons',
-      '--carousel-height': 'Controls height of the carousel',
+      '--carousel-controls-offset': '控制 the next/previous buttons 的 offsets',
+      '--carousel-height': '控制 the carousel 的 height',
     },
   },
 
   modifiers: [
-    { modifier: 'data-orientation', selector: 'root', value: 'Value of `orientation` prop' },
+    { modifier: 'data-orientation', selector: 'root', value: '`orientation` 属性的值' },
     {
       modifier: 'data-include-gap-in-size',
       selector: 'root',
-      condition: '`includeGapInSize` prop is set',
+      condition: '设置了 `includeGapInSize` 属性',
     },
     {
       modifier: 'data-inactive',

@@ -19,13 +19,13 @@
   opacity: 1;
   border-radius: var(--ui-radius-default);
 
-  @mixin hover {
+  &:hover {
     &:where(:not([data-disabled], :disabled)) {
-      @mixin where-light {
+      [data-ui-color-scheme='light'] & {
         background-color: var(--ui-color-gray-0);
       }
 
-      @mixin where-dark {
+      [data-ui-color-scheme='dark'] & {
         background-color: var(--ui-color-dark-5);
       }
     }
@@ -41,7 +41,7 @@
     background-color: var(--ui-primary-color-filled);
     color: var(--ui-primary-color-contrast, var(--ui-color-white));
 
-    @mixin hover {
+    &:hover {
       background-color: var(--ui-primary-color-filled-hover);
     }
   }
@@ -50,7 +50,7 @@
     background-color: var(--ui-primary-color-light-hover);
     border-radius: 0;
 
-    @mixin hover {
+    &:hover {
       background-color: var(--ui-primary-color-light);
     }
   }

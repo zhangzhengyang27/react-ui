@@ -2,7 +2,7 @@
 
 import { TextInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TextInput } from '@react-ui/ui';
@@ -23,15 +23,15 @@ function Demo() {
   return (
     <div>
       <TextInput
-        label="Name"
-        placeholder="Name"
+        label="姓名"
+        placeholder="姓名"
         key={form.key('name')}
         {...form.getInputProps('name')}
       />
       <TextInput
         mt="md"
-        label="Email"
-        placeholder="Email"
+        label="邮箱"
+        placeholder="邮箱"
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
@@ -55,15 +55,15 @@ function Demo() {
   return (
     <div>
       <TextInput
-        label="Name"
-        placeholder="Name"
+        label="姓名"
+        placeholder="姓名"
         key={form.key('name')}
         {...form.getInputProps('name')}
       />
       <TextInput
         mt="md"
-        label="Email"
-        placeholder="Email"
+        label="邮箱"
+        placeholder="邮箱"
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
@@ -71,7 +71,7 @@ function Demo() {
   );
 }
 
-export const onValuesChange: MantineDemo = {
+export const onValuesChange: UIDemo = {
   type: 'code',
   component: Demo,
   code,

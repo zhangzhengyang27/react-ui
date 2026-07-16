@@ -3,7 +3,7 @@ import 'dayjs/locale/ru';
 import dayjs from 'dayjs';
 import React from 'react';
 import { DatesProvider } from '@react-ui/dates';
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
 import { ScheduleEventData } from '../../types';
 import { getWeekNumber, toDateString } from '../../utils';
 import {
@@ -86,7 +86,7 @@ describe('@react-ui/schedule/MobileMonthView', () => {
 
   it('renders days of the given month', () => {
     const { container } = render(<MobileMonthView {...defaultProps} />);
-    const days = container.querySelectorAll('.mantine-MobileMonthView-mobileMonthViewDay');
+    const days = container.querySelectorAll('.ui-MobileMonthView-mobileMonthViewDay');
     expect(days.length).toBeGreaterThan(28);
     expect(screen.getByRole('button', { name: 'November 1, 2025' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'November 30, 2025' })).toBeInTheDocument();
@@ -94,13 +94,13 @@ describe('@react-ui/schedule/MobileMonthView', () => {
 
   it('supports firstDayOfWeek prop', () => {
     const { container } = render(<MobileMonthView {...defaultProps} firstDayOfWeek={0} />);
-    const weekdays = container.querySelectorAll('.mantine-MobileMonthView-mobileMonthViewWeekday');
+    const weekdays = container.querySelectorAll('.ui-MobileMonthView-mobileMonthViewWeekday');
     expect(weekdays[0].textContent?.toLowerCase()).toContain('s');
   });
 
   it('supports changing weekendDays', () => {
     const { container } = render(<MobileMonthView {...defaultProps} weekendDays={[1, 2]} />);
-    const days = container.querySelectorAll('.mantine-MobileMonthView-mobileMonthViewDay');
+    const days = container.querySelectorAll('.ui-MobileMonthView-mobileMonthViewDay');
     const mondayDays = Array.from(days).filter((day) => day.hasAttribute('data-weekend'));
     expect(mondayDays.length).toBeGreaterThan(0);
   });
@@ -108,7 +108,7 @@ describe('@react-ui/schedule/MobileMonthView', () => {
   it('displays week numbers when withWeekNumbers is set', () => {
     const { container } = render(<MobileMonthView {...defaultProps} withWeekNumbers />);
     const weekNumbers = container.querySelectorAll(
-      '.mantine-MobileMonthView-mobileMonthViewWeekNumber'
+      '.ui-MobileMonthView-mobileMonthViewWeekNumber'
     );
     expect(weekNumbers.length).toBeGreaterThan(0);
   });
@@ -116,21 +116,21 @@ describe('@react-ui/schedule/MobileMonthView', () => {
   it('hides week numbers when withWeekNumbers is false', () => {
     const { container } = render(<MobileMonthView {...defaultProps} withWeekNumbers={false} />);
     const weekNumbers = container.querySelectorAll(
-      '.mantine-MobileMonthView-mobileMonthViewWeekNumber'
+      '.ui-MobileMonthView-mobileMonthViewWeekNumber'
     );
     expect(weekNumbers).toHaveLength(0);
   });
 
   it('supports changing weekdayFormat with dayjs format string', () => {
     const { container } = render(<MobileMonthView {...defaultProps} weekdayFormat="dd" />);
-    const weekdays = container.querySelectorAll('.mantine-MobileMonthView-mobileMonthViewWeekday');
+    const weekdays = container.querySelectorAll('.ui-MobileMonthView-mobileMonthViewWeekday');
     expect(weekdays[0].textContent).toBe('Mo');
     expect(weekdays[6].textContent).toBe('Su');
   });
 
   it('changes locale via prop', () => {
     const { container } = render(<MobileMonthView {...defaultProps} locale="ru" />);
-    const weekdays = container.querySelectorAll('.mantine-MobileMonthView-mobileMonthViewWeekday');
+    const weekdays = container.querySelectorAll('.ui-MobileMonthView-mobileMonthViewWeekday');
     expect(weekdays[0].textContent?.toLowerCase()).toContain('п');
     expect(weekdays[6].textContent?.toLowerCase()).toContain('в');
   });
@@ -141,7 +141,7 @@ describe('@react-ui/schedule/MobileMonthView', () => {
         <MobileMonthView {...defaultProps} />
       </DatesProvider>
     );
-    const weekdays = container.querySelectorAll('.mantine-MobileMonthView-mobileMonthViewWeekday');
+    const weekdays = container.querySelectorAll('.ui-MobileMonthView-mobileMonthViewWeekday');
     expect(weekdays[0].textContent?.toLowerCase()).toContain('п');
     expect(weekdays[6].textContent?.toLowerCase()).toContain('в');
   });
@@ -149,7 +149,7 @@ describe('@react-ui/schedule/MobileMonthView', () => {
   it('supports hiding weekdays with withWeekDays={false}', () => {
     const { container } = render(<MobileMonthView {...defaultProps} withWeekDays={false} />);
     expect(
-      container.querySelectorAll('.mantine-MobileMonthView-mobileMonthViewWeekday')
+      container.querySelectorAll('.ui-MobileMonthView-mobileMonthViewWeekday')
     ).toHaveLength(0);
   });
 
@@ -223,14 +223,14 @@ describe('@react-ui/schedule/MobileMonthView', () => {
     jest.useFakeTimers().setSystemTime(new Date('2025-11-15'));
     const { container, rerender } = render(<MobileMonthView {...defaultProps} highlightToday />);
     const today = container.querySelector(
-      '.mantine-MobileMonthView-mobileMonthViewDay[data-today]'
+      '.ui-MobileMonthView-mobileMonthViewDay[data-today]'
     )!;
     expect(today).toBeInTheDocument();
     expect(today.textContent).toStrictEqual('15');
 
     rerender(<MobileMonthView {...defaultProps} highlightToday={false} />);
     expect(
-      container.querySelector('.mantine-MobileMonthView-mobileMonthViewDay[data-today]')
+      container.querySelector('.ui-MobileMonthView-mobileMonthViewDay[data-today]')
     ).not.toBeInTheDocument();
     jest.useRealTimers();
   });
@@ -238,7 +238,7 @@ describe('@react-ui/schedule/MobileMonthView', () => {
   it('renders event indicators for events on specific days', () => {
     const { container } = render(<MobileMonthView {...defaultProps} />);
     const indicators = container.querySelectorAll(
-      '.mantine-MobileMonthView-mobileMonthViewDayIndicator'
+      '.ui-MobileMonthView-mobileMonthViewDayIndicator'
     );
     expect(indicators.length).toBeGreaterThan(0);
   });
@@ -289,7 +289,7 @@ describe('@react-ui/schedule/MobileMonthView', () => {
     render(<MobileMonthView {...defaultProps} events={manyEvents} />);
     const nov5Button = screen.getByRole('button', { name: 'November 5, 2025' });
     const indicators = nov5Button.querySelectorAll(
-      '.mantine-MobileMonthView-mobileMonthViewDayIndicator'
+      '.ui-MobileMonthView-mobileMonthViewDayIndicator'
     );
     expect(indicators).toHaveLength(3);
   });
@@ -300,12 +300,12 @@ describe('@react-ui/schedule/MobileMonthView', () => {
     await userEvent.click(screen.getByRole('button', { name: 'November 5, 2025' }));
 
     const selectedDay = container.querySelector(
-      '.mantine-MobileMonthView-mobileMonthViewDay[data-selected]'
+      '.ui-MobileMonthView-mobileMonthViewDay[data-selected]'
     );
     expect(selectedDay).toBeInTheDocument();
     expect(selectedDay?.textContent).toContain('5');
 
-    const eventsList = container.querySelectorAll('.mantine-MobileMonthView-mobileMonthViewEvent');
+    const eventsList = container.querySelectorAll('.ui-MobileMonthView-mobileMonthViewEvent');
     expect(eventsList.length).toBe(2);
   });
 
@@ -333,13 +333,13 @@ describe('@react-ui/schedule/MobileMonthView', () => {
     );
 
     let selectedDay = container.querySelector(
-      '.mantine-MobileMonthView-mobileMonthViewDay[data-selected]'
+      '.ui-MobileMonthView-mobileMonthViewDay[data-selected]'
     );
     expect(selectedDay?.textContent).toContain('5');
 
     rerender(<MobileMonthView {...defaultProps} selectedDate="2025-11-10" />);
     selectedDay = container.querySelector(
-      '.mantine-MobileMonthView-mobileMonthViewDay[data-selected]'
+      '.ui-MobileMonthView-mobileMonthViewDay[data-selected]'
     );
     expect(selectedDay?.textContent).toContain('10');
   });
@@ -371,7 +371,7 @@ describe('@react-ui/schedule/MobileMonthView', () => {
   it('hides outside days when withOutsideDays is false', () => {
     const { container } = render(<MobileMonthView {...defaultProps} withOutsideDays={false} />);
     const hiddenDays = container.querySelectorAll(
-      '.mantine-MobileMonthView-mobileMonthViewDay[data-hidden]'
+      '.ui-MobileMonthView-mobileMonthViewDay[data-hidden]'
     );
     expect(hiddenDays.length).toBeGreaterThan(0);
   });
@@ -379,12 +379,12 @@ describe('@react-ui/schedule/MobileMonthView', () => {
   it('shows outside days when withOutsideDays is true', () => {
     const { container } = render(<MobileMonthView {...defaultProps} withOutsideDays />);
     const outsideDays = container.querySelectorAll(
-      '.mantine-MobileMonthView-mobileMonthViewDay[data-outside]'
+      '.ui-MobileMonthView-mobileMonthViewDay[data-outside]'
     );
     expect(outsideDays.length).toBeGreaterThan(0);
 
     const hiddenDays = container.querySelectorAll(
-      '.mantine-MobileMonthView-mobileMonthViewDay[data-hidden]'
+      '.ui-MobileMonthView-mobileMonthViewDay[data-hidden]'
     );
     expect(hiddenDays).toHaveLength(0);
   });
@@ -392,7 +392,7 @@ describe('@react-ui/schedule/MobileMonthView', () => {
   it('supports static mode', () => {
     const { container } = render(<MobileMonthView {...defaultProps} mode="static" />);
     const staticDays = container.querySelectorAll(
-      '.mantine-MobileMonthView-mobileMonthViewDay[data-static]'
+      '.ui-MobileMonthView-mobileMonthViewDay[data-static]'
     );
     expect(staticDays.length).toBeGreaterThan(0);
   });
@@ -482,7 +482,7 @@ describe('@react-ui/schedule/MobileMonthView', () => {
   it('renders default header when renderHeader is not provided', () => {
     const { container } = render(<MobileMonthView {...defaultProps} />);
     expect(
-      container.querySelector('.mantine-MobileMonthView-mobileMonthViewHeader')
+      container.querySelector('.ui-MobileMonthView-mobileMonthViewHeader')
     ).toBeInTheDocument();
   });
 
@@ -501,7 +501,7 @@ describe('@react-ui/schedule/MobileMonthView', () => {
       })
     );
     expect(
-      container.querySelector('.mantine-MobileMonthView-mobileMonthViewHeader')
+      container.querySelector('.ui-MobileMonthView-mobileMonthViewHeader')
     ).toBeInTheDocument();
   });
 

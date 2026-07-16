@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Input } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = (props: any) => `
 import { Input } from '@react-ui/ui';
@@ -10,7 +10,7 @@ function Demo(){
 
   return (
     <Input
-      placeholder="Clearable input"
+      placeholder="可清除输入"
       value={value}
       onChange={(event) => setValue(event.currentTarget.value)}
       rightSection={value !== '' ? <Input.ClearButton onClick={() => setValue('')} /> : undefined}
@@ -26,7 +26,7 @@ function Wrapper(props: any) {
 
   return (
     <Input
-      placeholder="Clearable input"
+      placeholder="可清除输入"
       value={value}
       onChange={(event) => setValue(event.currentTarget.value)}
       rightSection={value !== '' ? <Input.ClearButton onClick={() => setValue('')} /> : undefined}
@@ -36,7 +36,7 @@ function Wrapper(props: any) {
   );
 }
 
-export const clearButton: MantineDemo = {
+export const clearButton: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

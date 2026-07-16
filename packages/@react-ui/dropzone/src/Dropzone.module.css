@@ -15,23 +15,23 @@
     cursor: default;
   }
 
-  @mixin where-light {
+  [data-ui-color-scheme='light'] & {
     background-color: var(--ui-color-white);
     border-color: var(--ui-color-gray-4);
   }
 
-  @mixin where-dark {
+  [data-ui-color-scheme='dark'] & {
     background-color: var(--ui-color-dark-6);
     border-color: var(--ui-color-dark-4);
   }
 
-  @mixin hover {
+  &:hover {
     &:where([data-activate-on-click]:not([data-loading])) {
-      @mixin where-light {
+      [data-ui-color-scheme='light'] & {
         background-color: var(--ui-color-gray-0);
       }
 
-      @mixin where-dark {
+      [data-ui-color-scheme='dark'] & {
         background-color: var(--ui-color-dark-5);
       }
     }

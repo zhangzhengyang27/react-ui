@@ -33,7 +33,7 @@ CSS 属性。它控制元素内部文本的换行方式。
 你也可以在 [theme](/theming/theme-object) 上设置 `textWrap`：
 
 ```tsx
-import { createTheme, MantineProvider, Title } from '@react-ui/ui';
+import { createTheme, UIProvider, Title } from '@react-ui/ui';
 
 const theme = createTheme({
   headings: {
@@ -43,9 +43,9 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
-      <Title>Some very long title that should wrap</Title>
-    </MantineProvider>
+    <UIProvider theme={theme}>
+      <Title>某个应该换行的很长标题</Title>
+    </UIProvider>
   );
 }
 ```

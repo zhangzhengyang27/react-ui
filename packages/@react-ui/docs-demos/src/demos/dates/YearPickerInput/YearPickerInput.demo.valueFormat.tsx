@@ -1,23 +1,23 @@
 import { YearPickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { YearPickerInput } from '@react-ui/dates';
 
 function Demo() {
   return (
-    <YearPickerInput valueFormat="YY" type="multiple" label="Pick year" placeholder="Pick year" />
+    <YearPickerInput valueFormat="YY" type="multiple" label="选择年份" placeholder="选择年份" />
   );
 }
 `;
 
 function Demo() {
   return (
-    <YearPickerInput valueFormat="YY" type="multiple" label="Pick year" placeholder="Pick year" />
+    <YearPickerInput valueFormat="YY" type="multiple" label="选择年份" placeholder="选择年份" />
   );
 }
 
-export const valueFormat: MantineDemo = {
+export const valueFormat: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

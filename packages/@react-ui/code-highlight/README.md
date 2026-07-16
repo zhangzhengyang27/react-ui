@@ -1,10 +1,10 @@
-# Mantine code highlight
+# UI code highlight
 
 [![npm](https://img.shields.io/npm/dm/@react-ui/code-highlight)](https://www.npmjs.com/package/@react-ui/code-highlight)
 
-Code highlight built with highlight.js and Mantine
+Code highlight built with highlight.js and UI
 
-[View documentation](https://mantine.dev/)
+[View documentation](#)
 
 ## Installation
 

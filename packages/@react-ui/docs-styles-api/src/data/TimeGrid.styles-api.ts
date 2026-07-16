@@ -3,7 +3,7 @@ import type { StylesApiData } from '../types';
 
 export const TimeGridStylesApi: StylesApiData<TimeGridFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
     control: 'Time grid control',
     simpleGrid: 'SimpleGrid component root',
   },

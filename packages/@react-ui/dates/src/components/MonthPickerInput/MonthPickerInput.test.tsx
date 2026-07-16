@@ -1,6 +1,6 @@
 import { __InputStylesNames } from '@react-ui/ui';
-import { inputDefaultProps, inputStylesApiSelectors, render, tests } from '@mantine-tests/core';
-import { datesTests, expectValue } from '@mantine-tests/dates';
+import { inputDefaultProps, inputStylesApiSelectors, render, tests } from '@react-ui/tests';
+import { datesTests, expectValue } from '@react-ui/tests/dates';
 import { MonthPickerInput, MonthPickerInputProps } from './MonthPickerInput';
 
 const defaultProps = {
@@ -99,11 +99,11 @@ describe('@react-ui/dates/MonthPickerInput', () => {
       />
     );
     expect(container.querySelector('[data-dates-input]')).toHaveClass(
-      'mantine-MonthPickerInput-input'
+      'ui-MonthPickerInput-input'
     );
 
     expect(container.querySelector('table button')).toHaveClass(
-      'mantine-MonthPickerInput-monthsListControl'
+      'ui-MonthPickerInput-monthsListControl'
     );
   });
 });

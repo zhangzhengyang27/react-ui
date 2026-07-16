@@ -29,4 +29,4 @@ export const ComboboxGroup = factory<ComboboxGroupFactory>((_props, ref) => {
     )
 })
 
-ComboboxGroup.displayName = '@mantine/core/ComboboxGroup'
+ComboboxGroup.displayName = '@react-ui/ui/ComboboxGroup'

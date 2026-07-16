@@ -1,4 +1,4 @@
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { BaseDemo } from './_base';
 
 const code = `
@@ -9,8 +9,8 @@ import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from '@react-ui/dropzone';
 export function BaseDemo(props: Partial<DropzoneProps>) {
   return (
     <Dropzone
-      onDrop={(files) => console.log('accepted files', files)}
-      onReject={(files) => console.log('rejected files', files)}
+      onDrop={(files) => console.log('已接受的文件', files)}
+      onReject={(files) => console.log('已拒绝的文件', files)}
       maxSize={5 * 1024 ** 2}
       accept={IMAGE_MIME_TYPE}
       {...props}
@@ -40,7 +40,7 @@ export function BaseDemo(props: Partial<DropzoneProps>) {
 }
 `;
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: BaseDemo,
   code,

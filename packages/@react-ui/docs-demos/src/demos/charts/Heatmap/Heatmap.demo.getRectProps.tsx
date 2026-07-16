@@ -1,6 +1,6 @@
 /* oxlint-disable no-console */
 import { Heatmap } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './_data';
 
 const code = `
@@ -34,13 +34,13 @@ function Demo() {
   );
 }
 
-export const getRectProps: MantineDemo = {
+export const getRectProps: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   overflow: 'hidden',
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
     { fileName: 'data.ts', code: dataCode, language: 'tsx' },
   ],
 };

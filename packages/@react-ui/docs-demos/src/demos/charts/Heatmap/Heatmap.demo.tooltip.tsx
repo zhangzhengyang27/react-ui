@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { Heatmap } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './_data';
 
 const code = `
@@ -18,7 +18,7 @@ function Demo() {
       withWeekdayLabels
       withMonthLabels
       getTooltipLabel={({ date, value }) =>
-        \`\${dayjs(date).format('DD MMM, YYYY')} – \${value === null || value === 0 ? 'No contributions' : \`\${value} contribution\${value > 1 ? 's' : ''}\`}\`
+        \`\${dayjs(date).format('DD MMM, YYYY')} – \${value === null || value === 0 ? '无贡献' : \`\${value} contribution\${value > 1 ? 's' : ''}\`}\`
       }
     />
   );
@@ -35,19 +35,19 @@ function Demo() {
       withWeekdayLabels
       withMonthLabels
       getTooltipLabel={({ date, value }) =>
-        `${dayjs(date).format('DD MMM, YYYY')} – ${value === null || value === 0 ? 'No contributions' : `${value} contribution${value > 1 ? 's' : ''}`}`
+        `${dayjs(date).format('DD MMM, YYYY')} – ${value === null || value === 0 ? '无贡献' : `${value} contribution${value > 1 ? 's' : ''}`}`
       }
     />
   );
 }
 
-export const tooltip: MantineDemo = {
+export const tooltip: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   overflow: 'hidden',
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
     { fileName: 'data.ts', code: dataCode, language: 'tsx' },
   ],
 };

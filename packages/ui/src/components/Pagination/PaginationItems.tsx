@@ -4,7 +4,7 @@ import { PaginationControl } from './PaginationControl'
 import { PaginationDots } from './PaginationDots'
 
 export interface PaginationItemsProps {
-    /** Dots icon component */
+    /** 省略号图标组件 */
     dotsIcon?: PaginationIcon
 }
 
@@ -21,6 +21,7 @@ export function PaginationItems({ dotsIcon }: PaginationItemsProps) {
                 key={index}
                 active={page === ctx.active}
                 aria-current={page === ctx.active ? 'page' : undefined}
+                aria-label={`Page ${page}`}
                 onClick={() => ctx.onChange(page)}
                 disabled={ctx.disabled}
                 {...ctx.getItemProps?.(page)}

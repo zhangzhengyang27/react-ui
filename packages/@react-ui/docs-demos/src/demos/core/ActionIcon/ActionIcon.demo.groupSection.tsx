@@ -1,7 +1,7 @@
 import { CaretDownIcon, CaretUpIcon } from '@phosphor-icons/react';
 import { ActionIcon } from '@react-ui/ui';
 import { useCounter } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { CaretDownIcon, CaretUpIcon } from '@phosphor-icons/react';
@@ -17,7 +17,7 @@ function Demo() {
         variant="default"
         size="lg"
         onClick={decrement}
-        aria-label="Decrement value"
+        aria-label="减小值"
       >
         <CaretDownIcon color="var(--ui-color-red-text)" />
       </ActionIcon>
@@ -28,7 +28,7 @@ function Demo() {
         variant="default"
         size="lg"
         onClick={increment}
-        aria-label="Increment value"
+        aria-label="增大值"
       >
         <CaretUpIcon color="var(--ui-color-teal-text)" />
       </ActionIcon>
@@ -42,20 +42,20 @@ function Demo() {
 
   return (
     <ActionIcon.Group>
-      <ActionIcon variant="default" size="lg" onClick={decrement} aria-label="Decrement value">
+      <ActionIcon variant="default" size="lg" onClick={decrement} aria-label="减小值">
         <CaretDownIcon color="var(--ui-color-red-text)" />
       </ActionIcon>
       <ActionIcon.GroupSection variant="default" size="lg" bg="var(--ui-color-body)" miw={60}>
         {value}
       </ActionIcon.GroupSection>
-      <ActionIcon variant="default" size="lg" onClick={increment} aria-label="Increment value">
+      <ActionIcon variant="default" size="lg" onClick={increment} aria-label="增大值">
         <CaretUpIcon color="var(--ui-color-teal-text)" />
       </ActionIcon>
     </ActionIcon.Group>
   );
 }
 
-export const groupSection: MantineDemo = {
+export const groupSection: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -14,7 +14,7 @@
     color: var(--ui-color-anchor);
     text-decoration: none;
 
-    @mixin hover {
+    &:hover {
       text-decoration: underline;
     }
   }

@@ -1,5 +1,5 @@
 import { Accordion, AccordionProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './_base';
 
 const code = `
@@ -37,11 +37,11 @@ function Demo(props: AccordionProps) {
   );
 }
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
     { fileName: 'data.ts', code: dataCode, language: 'tsx' },
   ],
   controls: [
@@ -53,7 +53,7 @@ export const configurator: MantineDemo = {
       data: [
         { label: 'Default', value: 'default' },
         { label: 'Contained', value: 'contained' },
-        { label: 'Filled', value: 'filled' },
+        { label: '填充', value: 'filled' },
         { label: 'Separated', value: 'separated' },
         { label: 'Unstyled', value: 'unstyled' },
       ],
@@ -63,8 +63,8 @@ export const configurator: MantineDemo = {
       prop: 'chevronPosition',
       type: 'segmented',
       data: [
-        { label: 'Left', value: 'left' },
-        { label: 'Right', value: 'right' },
+        { label: '左', value: 'left' },
+        { label: '右', value: 'right' },
       ],
       initialValue: 'right',
       libraryValue: 'right',

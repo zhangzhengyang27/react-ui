@@ -76,7 +76,7 @@ export function ColorsInput({
           value={inputState}
           onChange={handleInputChange}
           error={error}
-          label="Enter base color"
+          label="输入基础颜色"
           className={classes.input}
           size="md"
           radius="md"
@@ -91,7 +91,7 @@ export function ColorsInput({
 
         <Switch
           className={classes.switch}
-          label="Display colors info"
+          label="显示颜色信息"
           size="md"
           checked={displayColorsInfo}
           onChange={(event) => setDisplayColorsInfo(event.currentTarget.checked)}
@@ -114,11 +114,11 @@ export function ColorsInput({
           radius="md"
           onClick={() => clipboard.copy(window.location.href)}
         >
-          {clipboard.copied ? 'Copied' : 'Copy URL'}
+          {clipboard.copied ? '已复制' : '复制链接'}
         </Button>
       </div>
       <div className={classes.presets}>
-        <Input.Label size="md">Preset</Input.Label>
+        <Input.Label size="md">预设</Input.Label>
         <Group gap="xs">{presetControls}</Group>
       </div>
     </div>

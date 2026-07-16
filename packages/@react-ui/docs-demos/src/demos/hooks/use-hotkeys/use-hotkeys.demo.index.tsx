@@ -1,7 +1,7 @@
 import { Box, Group, Kbd } from '@react-ui/ui';
 import { useHotkeys } from '@react-ui/hooks';
 import { modals } from '@react-ui/modals';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const shortcutCode = `
 import { Box, Group, Kbd } from '@react-ui/ui';
@@ -28,11 +28,11 @@ export function Shortcut({ symbol, description }: { symbol: string; description:
 const code = `
 import { useHotkeys } from '@react-ui/hooks';
 import { spotlight } from '@react-ui/spotlight';
-import { useMantineColorScheme } from '@react-ui/ui';
+import { useUIColorScheme } from '@react-ui/ui';
 import { Shortcut } from './Shortcut';
 
 function Demo() {
-  const { toggleColorScheme } = useMantineColorScheme();
+  const { toggleColorScheme } = useUIColorScheme();
 
   useHotkeys([
     ['mod + K', () => spotlight.open()],
@@ -42,8 +42,8 @@ function Demo() {
 
   return (
     <>
-      <Shortcut symbol="K" description="Open search" />
-      <Shortcut symbol="J" description="Toggle color scheme" />
+      <Shortcut symbol="K" description="打开搜索" />
+      <Shortcut symbol="J" description="切换颜色方案" />
     </>
   );
 }
@@ -85,7 +85,7 @@ function Demo() {
           children: (
             <iframe
               src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-              title="YouTube video player"
+              title="YouTube 视频播放器"
               style={{ border: 0, margin: 0, width: '100%', height: 300 }}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -97,18 +97,18 @@ function Demo() {
 
   return (
     <>
-      <Shortcut symbol="K" description="Open search" />
-      <Shortcut symbol="J" description="Toggle color scheme" />
+      <Shortcut symbol="K" description="打开搜索" />
+      <Shortcut symbol="J" description="切换颜色方案" />
     </>
   );
 }
 
-export const index: MantineDemo = {
+export const index: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
-    { code: shortcutCode, language: 'tsx', fileName: 'Shortcut.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
+    { code: shortcutCode, language: 'tsx', fileName: '快捷键.tsx' },
   ],
   centered: true,
   defaultExpanded: false,

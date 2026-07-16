@@ -7,7 +7,7 @@ import {
   ScheduleHeader,
   ScheduleViewLevel,
 } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { events } from './_data';
 
 const code = `
@@ -75,7 +75,7 @@ function getHeaderLabel(date: DateStringValue, view: ScheduleViewLevel) {
 
 function Demo() {
   const [date, setDate] = useState<DateStringValue>(
-    dayjs().format('YYYY-MM-DD')
+    dayjs('2024-01-15').format('YYYY-MM-DD')
   );
   const [view, setView] = useState<ScheduleViewLevel>('week');
 
@@ -104,7 +104,7 @@ function Demo() {
         <ScheduleHeader.Today
           onClick={() =>
             setDate(
-              dayjs().format('YYYY-MM-DD') as DateStringValue
+              dayjs('2024-01-15').format('YYYY-MM-DD') as DateStringValue
             )
           }
         />
@@ -181,7 +181,7 @@ function getHeaderLabel(date: DateStringValue, view: ScheduleViewLevel) {
 
 function Demo() {
   const [date, setDate] = useState<DateStringValue>(
-    dayjs().format('YYYY-MM-DD') as DateStringValue
+    dayjs('2024-01-15').format('YYYY-MM-DD') as DateStringValue
   );
   const [view, setView] = useState<ScheduleViewLevel>('week');
 
@@ -200,9 +200,9 @@ function Demo() {
           onClick={() => setDate(nav.next.format('YYYY-MM-DD') as DateStringValue)}
         />
         <ScheduleHeader.Today
-          onClick={() => setDate(dayjs().format('YYYY-MM-DD') as DateStringValue)}
+          onClick={() => setDate(dayjs('2024-01-15').format('YYYY-MM-DD') as DateStringValue)}
         />
-        <ScheduleHeader.Control onClick={() => window.print()}>Print</ScheduleHeader.Control>
+        <ScheduleHeader.Control onClick={() => window.print()}>打印</ScheduleHeader.Control>
         <div style={{ marginInlineStart: 'auto' }}>
           <ScheduleHeader.ViewSelect value={view} onChange={setView} />
         </div>
@@ -223,7 +223,7 @@ function Demo() {
   );
 }
 
-export const customHeader: MantineDemo = {
+export const customHeader: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

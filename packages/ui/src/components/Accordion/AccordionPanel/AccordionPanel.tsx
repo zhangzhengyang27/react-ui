@@ -21,7 +21,7 @@ export type AccordionPanelStylesNames = 'panel' | 'content'
 export interface AccordionPanelProps
     extends BoxProps,
         CompoundStylesApiProps<AccordionPanelFactory>,
-        ElementProps<'div'> {
+        Omit<ElementProps<'div'>, 'onTransitionStart' | 'onTransitionEnd'> {
     /** Called when the panel animation completes */
     onTransitionEnd?: () => void
 }
@@ -55,5 +55,5 @@ export const AccordionPanel = factory<AccordionPanelFactory>((props, ref) => {
     )
 })
 
-AccordionPanel.displayName = '@mantine/core/AccordionPanel'
+AccordionPanel.displayName = '@react-ui/ui/AccordionPanel'
 AccordionPanel.classes = classes

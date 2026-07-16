@@ -3,9 +3,9 @@ import type { StylesApiData } from '../types';
 
 export const PaginationStylesApi: StylesApiData<PaginationFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
     control: 'Control element: items, next/previous, first/last buttons',
-    dots: 'Dots icon wrapper',
+    dots: 'Dots icon 包装器',
     items: 'Wrapper around page number controls, used with `layout="responsive"`',
     label: 'Compact label element displayed in narrow containers with `layout="responsive"`',
   },
@@ -14,9 +14,9 @@ export const PaginationStylesApi: StylesApiData<PaginationFactory> = {
     root: {
       '--pagination-active-bg': 'Active control `background-color`',
       '--pagination-active-color': 'Active control `color`',
-      '--pagination-control-fz': 'Controls `font-size`',
-      '--pagination-control-radius': 'Controls control `border-radius`',
-      '--pagination-control-size': 'Controls control `min-width` and `height`',
+      '--pagination-control-fz': '控制 `font-size`',
+      '--pagination-control-radius': '控制 control `border-radius`',
+      '--pagination-control-size': '控制 control `min-width` and `height`',
     },
   },
 

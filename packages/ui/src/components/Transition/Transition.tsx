@@ -1,6 +1,6 @@
-import { Activity, useMantineEnv } from '../../core'
+import { Activity, useUIEnv } from '../../core'
 import { getTransitionStyles } from './get-transition-styles/get-transition-styles'
-import { MantineTransition } from './transitions'
+import { UITransition } from './transitions'
 import { useTransition } from './use-transition'
 
 export interface TransitionProps {
@@ -16,7 +16,7 @@ export interface TransitionProps {
     keepMountedMode?: 'activity' | 'display-none'
 
     /** Transition name or object */
-    transition?: MantineTransition
+    transition?: UITransition
 
     /** Transition duration in ms @default 250 */
     duration?: number
@@ -56,7 +56,7 @@ export type TransitionOverride = Partial<Omit<TransitionProps, 'mounted'>>
 
 /**
  * 过渡组件：基于 mounted 状态驱动 enter/exit 动画，通过 render prop 注入过渡样式。
- * 对齐 mantine Transition。引擎无关（纯内联样式 + React 19 Activity）。
+ * 对齐 ui Transition。引擎无关（纯内联样式 + React 19 Activity）。
  */
 export function Transition({
     keepMounted,
@@ -74,7 +74,7 @@ export function Transition({
     enterDelay,
     exitDelay
 }: TransitionProps) {
-    const env = useMantineEnv()
+    const env = useUIEnv()
     const { transitionDuration, transitionStatus, transitionTimingFunction } = useTransition({
         mounted,
         exitDuration,

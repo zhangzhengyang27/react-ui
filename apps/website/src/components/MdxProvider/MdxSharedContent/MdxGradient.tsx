@@ -9,23 +9,22 @@ interface MdxGradientProps {
 export function MdxGradient({ component }: MdxGradientProps) {
   return (
     <>
-      <MdxTitle id="gradient-variant">Gradient variant</MdxTitle>
+      <MdxTitle id="gradient-variant">渐变变体</MdxTitle>
       <MdxParagraph>
-        When the <MdxCode>variant</MdxCode> prop is set to <MdxCode>gradient</MdxCode>, you can
-        control the gradient with the <MdxCode>gradient</MdxCode> prop, which accepts an object with{' '}
-        <MdxCode>from</MdxCode>, <MdxCode>to</MdxCode> and <MdxCode>deg</MdxCode> properties. If the
-        <MdxCode>gradient</MdxCode> prop is not set, <MdxCode>{component}</MdxCode> will use{' '}
-        <MdxCode>theme.defaultGradient</MdxCode> which can be configured on the{' '}
-        <MdxLink href="/theming/theme-object">theme object</MdxLink>. The{' '}
-        <MdxCode>gradient</MdxCode> prop is ignored when <MdxCode>variant</MdxCode> is not{' '}
-        <MdxCode>gradient</MdxCode>.
+        当 <MdxCode>variant</MdxCode> 属性设置为 <MdxCode>gradient</MdxCode> 时，你可以通过{' '}
+        <MdxCode>gradient</MdxCode> 属性控制渐变，它接受一个包含 <MdxCode>from</MdxCode>、
+        <MdxCode>to</MdxCode> 和 <MdxCode>deg</MdxCode> 属性的对象。如果未设置{' '}
+        <MdxCode>gradient</MdxCode> 属性，<MdxCode>{component}</MdxCode> 将使用可在{' '}
+        <MdxLink href="/theming/theme-object">主题对象</MdxLink>中配置的{' '}
+        <MdxCode>theme.defaultGradient</MdxCode>。当 <MdxCode>variant</MdxCode> 不是{' '}
+        <MdxCode>gradient</MdxCode> 时，<MdxCode>gradient</MdxCode> 属性将被忽略。
       </MdxParagraph>
 
       <MdxParagraph>
-        Note that <MdxCode>variant=&quot;gradient&quot;</MdxCode> supports only linear gradients
-        with two colors. If you need a more complex gradient, use the{' '}
-        <MdxLink href="/styles/styles-api">Styles API</MdxLink> to modify{' '}
-        <MdxCode>{component}</MdxCode> styles.
+        注意 <MdxCode>variant=&quot;gradient&quot;</MdxCode> 仅支持两种颜色的线性渐变。
+        如果需要更复杂的渐变，请使用{' '}
+        <MdxLink href="/styles/styles-api">样式 API</MdxLink>来修改{' '}
+        <MdxCode>{component}</MdxCode> 的样式。
       </MdxParagraph>
     </>
   );

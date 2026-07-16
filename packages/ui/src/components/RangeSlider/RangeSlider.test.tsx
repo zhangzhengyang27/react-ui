@@ -1,14 +1,14 @@
 import { describe, expect, it, vi } from 'vitest'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { RangeSlider } from './RangeSlider'
 
 describe('RangeSlider', () => {
     it('renders range slider with default value', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <RangeSlider defaultValue={[20, 80]} data-testid="range" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         const inputs = screen.getByTestId('range').querySelectorAll('input')
@@ -19,9 +19,9 @@ describe('RangeSlider', () => {
     it('calls onChange when value changes', () => {
         const onChange = vi.fn()
         render(
-            <MantineProvider>
+            <UIProvider>
                 <RangeSlider defaultValue={[0, 100]} onChange={onChange} data-testid="range" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         const inputs = screen.getByTestId('range').querySelectorAll('input')
@@ -31,9 +31,9 @@ describe('RangeSlider', () => {
 
     it('renders disabled range slider', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <RangeSlider disabled data-testid="range" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByTestId('range')).toHaveAttribute('data-disabled')

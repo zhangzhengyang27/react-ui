@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { YearPicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -17,7 +17,7 @@ function Demo() {
   return <YearPicker defaultDate="2040-02-01" value={value} onChange={setValue} />;
 }
 
-export const defaultDate: MantineDemo = {
+export const defaultDate: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

@@ -4,7 +4,7 @@ import {
     BoxProps,
     createVarsResolver,
     getSpacing,
-    MantineSpacing,
+    UISpacing,
     polymorphicFactory,
     PolymorphicFactory,
     StylesApiProps,
@@ -23,7 +23,7 @@ export type AppShellStylesNames = 'root' | 'header' | 'navbar' | 'aside' | 'foot
 
 export interface AppShellProps extends BoxProps, StylesApiProps<AppShellFactory> {
     /** Controls padding of the main section @default 'md' */
-    padding?: MantineSpacing
+    padding?: UISpacing
 
     /** Header configuration with height */
     header?: { height: React.CSSProperties['height'] }

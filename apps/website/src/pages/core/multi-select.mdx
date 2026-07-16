@@ -159,7 +159,7 @@ function Demo() {
 
 <Demo data={MultiSelectDemos.dragReorder} />
 
-如果你使用 `renderPill` 属性自定义 pill 渲染，请将渲染回调负载中的 `reorderProps` 展开到可聚焦的 pill 根元素上，以保持重新排序功能正常。`reorderProps` 包含 `tabIndex`、`data-mantine-pill-index` 属性和驱动键盘重新排序的键盘处理器，因此它必须落在用户可聚焦的元素上：
+如果你使用 `renderPill` 属性自定义 pill 渲染，请将渲染回调负载中的 `reorderProps` 展开到可聚焦的 pill 根元素上，以保持重新排序功能正常。`reorderProps` 包含 `tabIndex`、`data-ui-pill-index` 属性和驱动键盘重新排序的键盘处理器，因此它必须落在用户可聚焦的元素上：
 
 ```tsx
 import { MultiSelect } from '@react-ui/ui';
@@ -300,7 +300,7 @@ function Demo() {
       data={[]}
       clearable
       clearButtonProps={{
-        'aria-label': 'Clear input',
+        'aria-label': '清除输入',
       }}
     />
   );

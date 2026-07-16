@@ -1,8 +1,8 @@
 import { Button, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
-import { MantineProvider, createTheme, Group, Button } from '@react-ui/ui';
+import { UIProvider, createTheme, Group, Button } from '@react-ui/ui';
 
 const theme = createTheme({
   colors: {
@@ -23,9 +23,9 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       <Group>
-        <Button color="oklch-blue">Filled</Button>
+        <Button color="oklch-blue">填充</Button>
         <Button color="oklch-blue" variant="outline">
           Outline
         </Button>
@@ -33,7 +33,7 @@ function Demo() {
           Light
         </Button>
       </Group>
-    </MantineProvider>
+    </UIProvider>
   );
 }
 `;
@@ -41,7 +41,7 @@ function Demo() {
 function Demo() {
   return (
     <Group>
-      <Button color="oklch-blue">Filled</Button>
+      <Button color="oklch-blue">填充</Button>
       <Button color="oklch-blue" variant="outline">
         Outline
       </Button>
@@ -52,7 +52,7 @@ function Demo() {
   );
 }
 
-export const oklch: MantineDemo = {
+export const oklch: UIDemo = {
   type: 'code',
   component: Demo,
   code,

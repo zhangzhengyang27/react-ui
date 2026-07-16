@@ -13,12 +13,12 @@ export const AutocompleteStylesApi: StylesApiData<AutocompleteFactory> = {
   vars: {},
 
   modifiers: [
-    { modifier: 'data-combobox-selected', selector: 'option', condition: 'Option is selected' },
+    { modifier: 'data-combobox-selected', selector: 'option', condition: '选项被选中' },
     {
       modifier: 'data-combobox-active',
       selector: 'option',
-      condition: 'Options was activated by keyboard',
+      condition: '选项被键盘激活',
     },
-    { modifier: 'data-combobox-disabled', selector: 'option', condition: 'Option is disabled' },
+    { modifier: 'data-combobox-disabled', selector: 'option', condition: '选项被禁用' },
   ],
 };

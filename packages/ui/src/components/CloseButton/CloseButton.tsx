@@ -3,8 +3,8 @@ import {
     createVarsResolver,
     getRadius,
     getSize,
-    MantineRadius,
-    MantineSize,
+    UIRadius,
+    UISize,
     polymorphicFactory,
     PolymorphicFactory,
     rem,
@@ -26,10 +26,10 @@ export interface __CloseButtonProps {
     'data-disabled'?: boolean
 
     /** Controls width and height of the button. Numbers are converted to rem. @default 'md' */
-    size?: MantineSize | (string & {}) | number
+    size?: UISize | (string & {}) | number
 
     /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. @default theme.defaultRadius */
-    radius?: MantineRadius
+    radius?: UIRadius
 
     /** Sets `disabled` attribute, assigns disabled styles */
     disabled?: boolean

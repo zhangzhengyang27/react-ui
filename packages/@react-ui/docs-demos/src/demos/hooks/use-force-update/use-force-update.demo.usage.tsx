@@ -1,18 +1,21 @@
+import { useId, useState } from 'react';
 import { Button, Group, Text } from '@react-ui/ui';
 import { randomId, useForceUpdate } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
+import { useId, useState } from 'react';
 import { Button, Text, Group } from '@react-ui/ui';
 import { useForceUpdate, randomId } from '@react-ui/hooks';
 
 function Demo() {
   const forceUpdate = useForceUpdate();
+  const [id, setId] = useState(useId());
 
   return (
     <Group justify="center">
-      <Text>{randomId()}</Text>
-      <Button onClick={forceUpdate}>Force update</Button>
+      <Text>{id}</Text>
+      <Button onClick={() => { setId(randomId()); forceUpdate(); }}>强制更新</Button>
     </Group>
   );
 }
@@ -20,16 +23,17 @@ function Demo() {
 
 function Demo() {
   const forceUpdate = useForceUpdate();
+  const [id, setId] = useState(useId());
 
   return (
     <Group justify="center">
-      <Text>{randomId()}</Text>
-      <Button onClick={forceUpdate}>Force update</Button>
+      <Text>{id}</Text>
+      <Button onClick={() => { setId(randomId()); forceUpdate(); }}>强制更新</Button>
     </Group>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

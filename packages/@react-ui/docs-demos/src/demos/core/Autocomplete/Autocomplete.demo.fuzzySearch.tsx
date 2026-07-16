@@ -1,6 +1,6 @@
 import Fuse from 'fuse.js';
 import { Autocomplete, ComboboxItem, OptionsFilter } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Autocomplete, ComboboxItem, OptionsFilter } from '@react-ui/ui';
@@ -23,8 +23,8 @@ const optionsFilter: OptionsFilter = ({ options, search }) => {
 function Demo() {
   return (
     <Autocomplete
-      label="Your favorite library"
-      placeholder="Pick value or enter anything"
+      label="你最喜欢的库"
+      placeholder="选择值或输入任意内容"
       data={['React', 'Angular', 'Vue', 'Svelte', 'Ember']}
       filter={optionsFilter}
     />
@@ -49,15 +49,15 @@ const optionsFilter: OptionsFilter = ({ options, search }) => {
 function Demo() {
   return (
     <Autocomplete
-      label="Your favorite library"
-      placeholder="Pick value or enter anything"
+      label="你最喜欢的库"
+      placeholder="选择值或输入任意内容"
       data={['React', 'Angular', 'Vue', 'Svelte', 'Ember']}
       filter={optionsFilter}
     />
   );
 }
 
-export const fuzzySearch: MantineDemo = {
+export const fuzzySearch: UIDemo = {
   type: 'code',
   component: Demo,
   code,

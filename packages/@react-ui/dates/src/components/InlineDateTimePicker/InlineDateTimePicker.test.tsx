@@ -1,4 +1,4 @@
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
 import { InlineDateTimePicker, type InlineDateTimePickerProps } from './InlineDateTimePicker';
 
 const defaultProps: InlineDateTimePickerProps = {
@@ -163,7 +163,7 @@ describe('@react-ui/dates/InlineDateTimePicker', () => {
         />
       );
 
-      const rangeInfo = container.querySelector('.mantine-InlineDateTimePicker-rangeInfo');
+      const rangeInfo = container.querySelector('.ui-InlineDateTimePicker-rangeInfo');
       expect(rangeInfo).toBeInTheDocument();
       expect(rangeInfo!.textContent).toContain('11/04/2022');
       expect(rangeInfo!.textContent).toContain('15/04/2022');

@@ -16,7 +16,7 @@ export interface NotificationData extends Omit<NotificationProps, 'onClose'>, Re
     /** Position of the notification, if not set, the position is determined based on `position` prop on Notifications component */
     position?: NotificationPosition
 
-    /** Notification message, required for all notifications */
+    /** 通知消息, required for all notifications */
     message: React.ReactNode
 
     /** Display priority. Higher numbers are shown before lower ones when the number of active notifications exceeds `limit`. */

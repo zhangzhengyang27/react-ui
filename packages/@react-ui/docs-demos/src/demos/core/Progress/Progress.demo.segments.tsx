@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { Group, PasswordInput, Progress } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
 import { Group, PasswordInput, Progress } from '@react-ui/ui';
 
 const requirements = [
-  { re: /[0-9]/, label: 'Includes number' },
-  { re: /[a-z]/, label: 'Includes lowercase letter' },
-  { re: /[A-Z]/, label: 'Includes uppercase letter' },
-  { re: /[$&+,:;=?@#|'<>.^*()%!-]/, label: 'Includes special symbol' },
+  { re: /[0-9]/, label: '包含数字' },
+  { re: /[a-z]/, label: '包含小写字母' },
+  { re: /[A-Z]/, label: '包含大写字母' },
+  { re: /[$&+,:;=?@#|'<>.^*()%!-]/, label: '包含特殊符号' },
 ];
 
 function getStrength(password: string) {
@@ -52,8 +52,8 @@ function Demo() {
       <PasswordInput
         value={value}
         onChange={(event) => setValue(event.currentTarget.value)}
-        placeholder="Enter password"
-        label="Enter password"
+        placeholder="输入密码"
+        label="输入密码"
       />
 
       <Group grow gap={5} mt="xs">
@@ -73,10 +73,10 @@ function Demo() {
 `;
 
 const requirements = [
-  { re: /[0-9]/, label: 'Includes number' },
-  { re: /[a-z]/, label: 'Includes lowercase letter' },
-  { re: /[A-Z]/, label: 'Includes uppercase letter' },
-  { re: /[$&+,:;=?@#|'<>.^*()%!-]/, label: 'Includes special symbol' },
+  { re: /[0-9]/, label: '包含数字' },
+  { re: /[a-z]/, label: '包含小写字母' },
+  { re: /[A-Z]/, label: '包含大写字母' },
+  { re: /[$&+,:;=?@#|'<>.^*()%!-]/, label: '包含特殊符号' },
 ];
 
 function getStrength(password: string) {
@@ -118,8 +118,8 @@ function Demo() {
       <PasswordInput
         value={value}
         onChange={(event) => setValue(event.currentTarget.value)}
-        placeholder="Enter password"
-        label="Enter password"
+        placeholder="输入密码"
+        label="输入密码"
       />
 
       <Group grow gap={5} mt="xs">
@@ -137,7 +137,7 @@ function Demo() {
   );
 }
 
-export const segments: MantineDemo = {
+export const segments: UIDemo = {
   type: 'code',
   component: Demo,
   code,

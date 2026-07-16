@@ -1,5 +1,4 @@
 testid
-mantine
 scrollarea
 scrollbars
 bdrs

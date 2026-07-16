@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { useRef, useState } from 'react';
 import { Box, Grid, Text } from '@react-ui/ui';
 import { MonthView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 interface SidebarItem {
   title: string;
@@ -11,7 +11,7 @@ interface SidebarItem {
 
 const initialSidebarItems: SidebarItem[] = [
   { title: 'Team Offsite', color: 'teal' },
-  { title: 'Release Day', color: 'orange' },
+  { title: '发布日', color: 'orange' },
   { title: 'All Hands', color: 'violet' },
 ];
 
@@ -28,7 +28,7 @@ interface SidebarItem {
 
 const initialSidebarItems: SidebarItem[] = [
   { title: 'Team Offsite', color: 'teal' },
-  { title: 'Release Day', color: 'orange' },
+  { title: '发布日', color: 'orange' },
   { title: 'All Hands', color: 'violet' },
 ];
 
@@ -110,7 +110,7 @@ function Demo() {
             transition: 'border-color 150ms',
           }}
         >
-          <Text fw={500} mb="xs">Unscheduled</Text>
+          <Text fw={500} mb="xs">未安排</Text>
           {sidebarItems.map((item) => (
             <Box
               key={item.title}
@@ -132,13 +132,13 @@ function Demo() {
             </Box>
           ))}
           {sidebarItems.length === 0 && (
-            <Text size="xs" c="dimmed">Drag events here to unschedule</Text>
+            <Text size="xs" c="dimmed">将事件拖到这里取消安排</Text>
           )}
         </Box>
       </Grid.Col>
       <Grid.Col span={{ base: 12, sm: 9 }}>
         <MonthView
-          date={new Date()}
+          date={new Date('2024-01-15')}
           events={events}
           withEventsDragAndDrop
           onEventDrop={handleEventDrop}
@@ -267,7 +267,7 @@ function Demo() {
       </Grid.Col>
       <Grid.Col span={{ base: 12, sm: 9 }}>
         <MonthView
-          date={new Date()}
+          date={new Date('2024-01-15')}
           events={events}
           withEventsDragAndDrop
           onEventDrop={handleEventDrop}
@@ -278,7 +278,7 @@ function Demo() {
   );
 }
 
-export const bidirectionalDragDrop: MantineDemo = {
+export const bidirectionalDragDrop: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

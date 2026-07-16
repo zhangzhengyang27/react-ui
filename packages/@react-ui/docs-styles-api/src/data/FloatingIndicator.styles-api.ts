@@ -3,12 +3,12 @@ import type { StylesApiData } from '../types';
 
 export const FloatingIndicatorStylesApi: StylesApiData<FloatingIndicatorFactory> = {
   selectors: {
-    root: 'Indicator element that animates to match the target position and size',
+    root: '指示器元素，动画匹配目标位置和大小',
   },
 
   vars: {
     root: {
-      '--transition-duration': 'Controls indicator transition duration',
+      '--transition-duration': '控制指示器过渡持续时间',
     },
   },
 
@@ -16,7 +16,7 @@ export const FloatingIndicatorStylesApi: StylesApiData<FloatingIndicatorFactory>
     {
       modifier: 'data-initialized',
       selector: 'root',
-      condition: 'Indicator has been initialized and transitions are enabled',
+      condition: '指示器已初始化且过渡已启用',
     },
     {
       modifier: 'data-hidden',

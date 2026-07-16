@@ -1,19 +1,19 @@
 import { AngleSlider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { AngleSlider } from '@react-ui/ui';
 
 function Demo() {
-  return <AngleSlider aria-label="Angle slider" formatLabel={(value) => \`\${value}°\`} />;
+  return <AngleSlider aria-label="角度滑块" formatLabel={(value) => \`\${value}°\`} />;
 }
 `;
 
 function Demo() {
-  return <AngleSlider aria-label="Angle slider" formatLabel={(value) => `${value}°`} />;
+  return <AngleSlider aria-label="角度滑块" formatLabel={(value) => `${value}°`} />;
 }
 
-export const formatLabel: MantineDemo = {
+export const formatLabel: UIDemo = {
   type: 'code',
   component: Demo,
   code,

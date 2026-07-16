@@ -1,5 +1,5 @@
 import { TreeSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { inputControls } from '../../../shared';
 import { data } from './data';
 
@@ -12,7 +12,7 @@ function Demo() {
   return (
     <TreeSelect
       {{props}}
-      placeholder="Pick value"
+      placeholder="选择值"
       data={data}
     />
   );
@@ -20,10 +20,10 @@ function Demo() {
 `;
 
 function Wrapper(props: any) {
-  return <TreeSelect {...props} placeholder="Pick value" data={data} />;
+  return <TreeSelect {...props} placeholder="选择值" data={data} />;
 }
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

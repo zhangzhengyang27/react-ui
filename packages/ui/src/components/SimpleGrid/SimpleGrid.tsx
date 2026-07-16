@@ -4,7 +4,7 @@ import {
     ElementProps,
     Factory,
     factory,
-    MantineSpacing,
+    UISpacing,
     StyleProp,
     StylesApiProps,
     useProps,
@@ -21,10 +21,10 @@ export interface SimpleGridProps extends BoxProps, StylesApiProps<SimpleGridFact
     cols?: StyleProp<number>
 
     /** Spacing between columns @default 'md' */
-    spacing?: StyleProp<MantineSpacing>
+    spacing?: StyleProp<UISpacing>
 
     /** Spacing between rows. When not set, falls back to spacing value @default undefined */
-    verticalSpacing?: StyleProp<MantineSpacing>
+    verticalSpacing?: StyleProp<UISpacing>
 
     /** Minimum column width when using auto-fit/auto-fill. When set, cols prop is ignored */
     minColWidth?: string | number

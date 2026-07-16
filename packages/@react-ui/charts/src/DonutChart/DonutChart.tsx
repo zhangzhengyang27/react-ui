@@ -18,10 +18,10 @@ import {
   factory,
   Factory,
   getThemeColor,
-  MantineColor,
+  UIColor,
   rem,
   StylesApiProps,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useResolvedStylesApi,
   useStyles,
@@ -34,7 +34,7 @@ import classes from './DonutChart.module.css';
 export interface DonutChartCell {
   name: string;
   value: number;
-  color: MantineColor;
+  color: UIColor;
 }
 
 export type DonutChartStylesNames =
@@ -70,10 +70,10 @@ export interface DonutChartProps
   pieProps?: Partial<Omit<PieProps, 'ref'>>;
 
   /** Controls color of the segments stroke, by default depends on color scheme */
-  strokeColor?: MantineColor;
+  strokeColor?: UIColor;
 
   /** Controls text color of all labels, by default depends on color scheme */
-  labelColor?: MantineColor;
+  labelColor?: UIColor;
 
   /** Controls padding between segments @default 0 */
   paddingAngle?: number;
@@ -233,7 +233,7 @@ export const DonutChart = factory<DonutChartFactory>((_props) => {
     ...others
   } = props;
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
 
   const getStyles = useStyles<DonutChartFactory>({

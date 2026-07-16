@@ -1,6 +1,6 @@
 import { Box, Button, Collapse, Group, Text } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useDisclosure } from '@react-ui/hooks';
@@ -12,7 +12,7 @@ function Demo() {
   return (
     <Box maw={400} mx="auto">
       <Group justify="center" mb={5}>
-        <Button onClick={toggle}>Toggle with linear transition</Button>
+        <Button onClick={toggle}>切换线性过渡</Button>
       </Group>
 
       <Collapse expanded={expanded} transitionDuration={1000} transitionTimingFunction="linear">
@@ -29,7 +29,7 @@ function Demo() {
   return (
     <Box maw={400} mx="auto">
       <Group justify="center" mb={5}>
-        <Button onClick={toggle}>Toggle with linear transition</Button>
+        <Button onClick={toggle}>切换线性过渡</Button>
       </Group>
 
       <Collapse expanded={expanded} transitionDuration={1000} transitionTimingFunction="linear">
@@ -48,7 +48,7 @@ function Demo() {
   );
 }
 
-export const transition: MantineDemo = {
+export const transition: UIDemo = {
   type: 'code',
   code,
   component: Demo,

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Menu } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -12,16 +12,16 @@ function Demo() {
   return (
     <Menu shadow="md" width={220} closeOnItemClick={false}>
       <Menu.Target>
-        <Button>Sort by</Button>
+        <Button>排序</Button>
       </Menu.Target>
 
       <Menu.Dropdown>
-        <Menu.Label>Order</Menu.Label>
+        <Menu.Label>排序</Menu.Label>
         <Menu.RadioGroup value={sort} onChange={setSort}>
-          <Menu.RadioItem value="newest">Newest first</Menu.RadioItem>
-          <Menu.RadioItem value="oldest">Oldest first</Menu.RadioItem>
-          <Menu.RadioItem value="popular">Most popular</Menu.RadioItem>
-          <Menu.RadioItem value="commented">Most commented</Menu.RadioItem>
+          <Menu.RadioItem value="newest">最新的在前</Menu.RadioItem>
+          <Menu.RadioItem value="oldest">最旧的在前</Menu.RadioItem>
+          <Menu.RadioItem value="popular">最受欢迎</Menu.RadioItem>
+          <Menu.RadioItem value="commented">评论最多</Menu.RadioItem>
         </Menu.RadioGroup>
       </Menu.Dropdown>
     </Menu>
@@ -35,23 +35,23 @@ function Demo() {
   return (
     <Menu shadow="md" width={220} closeOnItemClick={false}>
       <Menu.Target>
-        <Button>Sort by</Button>
+        <Button>排序</Button>
       </Menu.Target>
 
       <Menu.Dropdown>
-        <Menu.Label>Order</Menu.Label>
+        <Menu.Label>排序</Menu.Label>
         <Menu.RadioGroup value={sort} onChange={setSort}>
-          <Menu.RadioItem value="newest">Newest first</Menu.RadioItem>
-          <Menu.RadioItem value="oldest">Oldest first</Menu.RadioItem>
-          <Menu.RadioItem value="popular">Most popular</Menu.RadioItem>
-          <Menu.RadioItem value="commented">Most commented</Menu.RadioItem>
+          <Menu.RadioItem value="newest">最新的在前</Menu.RadioItem>
+          <Menu.RadioItem value="oldest">最旧的在前</Menu.RadioItem>
+          <Menu.RadioItem value="popular">最受欢迎</Menu.RadioItem>
+          <Menu.RadioItem value="commented">评论最多</Menu.RadioItem>
         </Menu.RadioGroup>
       </Menu.Dropdown>
     </Menu>
   );
 }
 
-export const radioItem: MantineDemo = {
+export const radioItem: UIDemo = {
   type: 'code',
   component: Demo,
   code,

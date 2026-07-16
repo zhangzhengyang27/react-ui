@@ -3,7 +3,7 @@ import 'dayjs/locale/ru';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import { DatesProvider } from '@react-ui/dates';
-import { render, tests } from '@mantine-tests/core';
+import { render, tests } from '@react-ui/tests';
 import {
   CurrentTimeIndicator,
   CurrentTimeIndicatorProps,
@@ -31,7 +31,7 @@ describe('@react-ui/schedule/CurrentTimeIndicator', () => {
     jest.useFakeTimers().setSystemTime(new Date('2025-11-17 14:30:00').getTime());
     const { container } = render(<CurrentTimeIndicator currentTimeFormat="HH:mm" withTimeBubble />);
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
     ).toHaveTextContent('14:30');
     jest.useRealTimers();
   });
@@ -39,24 +39,24 @@ describe('@react-ui/schedule/CurrentTimeIndicator', () => {
   it('hides thumb when withThumb is false', () => {
     const { container, rerender } = render(<CurrentTimeIndicator withThumb={false} />);
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicatorThumb')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicatorThumb')
     ).not.toBeInTheDocument();
 
     rerender(<CurrentTimeIndicator withThumb />);
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicatorThumb')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicatorThumb')
     ).toBeInTheDocument();
   });
 
   it('hides time bubble when withTimeBubble is false', () => {
     const { container, rerender } = render(<CurrentTimeIndicator withTimeBubble={false} />);
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
     ).not.toBeInTheDocument();
 
     rerender(<CurrentTimeIndicator withTimeBubble />);
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
     ).toBeInTheDocument();
   });
 
@@ -66,7 +66,7 @@ describe('@react-ui/schedule/CurrentTimeIndicator', () => {
       <CurrentTimeIndicator currentTimeFormat="h:mm a" withTimeBubble locale="ru" />
     );
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
     ).toHaveTextContent('2:30 дня');
     jest.useRealTimers();
   });
@@ -79,7 +79,7 @@ describe('@react-ui/schedule/CurrentTimeIndicator', () => {
       </DatesProvider>
     );
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
     ).toHaveTextContent('2:30 дня');
     jest.useRealTimers();
   });
@@ -90,7 +90,7 @@ describe('@react-ui/schedule/CurrentTimeIndicator', () => {
       <CurrentTimeIndicator currentTimeFormat="h:mm A" withTimeBubble />
     );
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
     ).toHaveTextContent('2:30 PM');
     jest.useRealTimers();
   });
@@ -102,7 +102,7 @@ describe('@react-ui/schedule/CurrentTimeIndicator', () => {
       <CurrentTimeIndicator currentTimeFormat={format} withTimeBubble />
     );
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
     ).toHaveTextContent('Current time is: 2025-11-17 14:30:00');
     jest.useRealTimers();
   });
@@ -111,7 +111,7 @@ describe('@react-ui/schedule/CurrentTimeIndicator', () => {
     jest.useFakeTimers().setSystemTime(new Date('2025-11-17 08:00:00').getTime());
     const { container } = render(<CurrentTimeIndicator startTime="09:00:00" endTime="17:00:00" />);
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicator')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicator')
     ).not.toBeInTheDocument();
     jest.useRealTimers();
   });
@@ -120,7 +120,7 @@ describe('@react-ui/schedule/CurrentTimeIndicator', () => {
     jest.useFakeTimers().setSystemTime(new Date('2025-11-17 18:00:00').getTime());
     const { container } = render(<CurrentTimeIndicator startTime="09:00:00" endTime="17:00:00" />);
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicator')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicator')
     ).not.toBeInTheDocument();
     jest.useRealTimers();
   });
@@ -129,7 +129,7 @@ describe('@react-ui/schedule/CurrentTimeIndicator', () => {
     jest.useFakeTimers().setSystemTime(new Date('2025-11-17 12:30:00').getTime());
     const { container } = render(<CurrentTimeIndicator startTime="09:00:00" endTime="17:00:00" />);
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicator')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicator')
     ).toBeInTheDocument();
     jest.useRealTimers();
   });
@@ -138,7 +138,7 @@ describe('@react-ui/schedule/CurrentTimeIndicator', () => {
     jest.useFakeTimers().setSystemTime(new Date('2025-11-17 09:00:00').getTime());
     const { container } = render(<CurrentTimeIndicator startTime="09:00:00" endTime="17:00:00" />);
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicator')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicator')
     ).not.toBeInTheDocument();
     jest.useRealTimers();
   });
@@ -147,7 +147,7 @@ describe('@react-ui/schedule/CurrentTimeIndicator', () => {
     jest.useFakeTimers().setSystemTime(new Date('2025-11-17 17:00:00').getTime());
     const { container } = render(<CurrentTimeIndicator startTime="09:00:00" endTime="17:00:00" />);
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicator')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicator')
     ).not.toBeInTheDocument();
     jest.useRealTimers();
   });
@@ -156,7 +156,7 @@ describe('@react-ui/schedule/CurrentTimeIndicator', () => {
     jest.useFakeTimers().setSystemTime(new Date('2025-11-17 09:00:01').getTime());
     const { container } = render(<CurrentTimeIndicator startTime="09:00:00" endTime="17:00:00" />);
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicator')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicator')
     ).toBeInTheDocument();
     jest.useRealTimers();
   });
@@ -165,7 +165,7 @@ describe('@react-ui/schedule/CurrentTimeIndicator', () => {
     jest.useFakeTimers().setSystemTime(new Date('2025-11-17 16:59:59').getTime());
     const { container } = render(<CurrentTimeIndicator startTime="09:00:00" endTime="17:00:00" />);
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicator')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicator')
     ).toBeInTheDocument();
     jest.useRealTimers();
   });
@@ -180,7 +180,7 @@ describe('@react-ui/schedule/CurrentTimeIndicator', () => {
       />
     );
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
     ).toHaveTextContent('20:45');
     jest.useRealTimers();
   });
@@ -197,10 +197,10 @@ describe('@react-ui/schedule/CurrentTimeIndicator', () => {
       />
     );
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicator')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicator')
     ).toBeInTheDocument();
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicatorTimeBubble')
     ).toHaveTextContent('12:30');
     jest.useRealTimers();
   });
@@ -215,7 +215,7 @@ describe('@react-ui/schedule/CurrentTimeIndicator', () => {
       />
     );
     expect(
-      container.querySelector('.mantine-CurrentTimeIndicator-currentTimeIndicator')
+      container.querySelector('.ui-CurrentTimeIndicator-currentTimeIndicator')
     ).toBeInTheDocument();
     jest.useRealTimers();
   });

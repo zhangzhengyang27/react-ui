@@ -3,8 +3,8 @@ import type { StylesApiData } from '../types';
 
 export const CardStylesApi: StylesApiData<CardFactory> = {
   selectors: {
-    root: 'Root element',
-    section: '`Card.Section` root element',
+    root: '根元素',
+    section: '`Card.Section` root 元素',
   },
 
   vars: {
@@ -28,17 +28,17 @@ export const CardStylesApi: StylesApiData<CardFactory> = {
     {
       modifier: 'data-with-border',
       selector: 'root',
-      condition: '`withBorder` prop is set on `Card` component',
+      condition: '`withBorder` prop is set on `Card` 组件',
     },
     {
       modifier: 'data-with-border',
       selector: 'section',
-      condition: '`withBorder` prop is set on `Card.Section` component',
+      condition: '`withBorder` prop is set on `Card.Section` 组件',
     },
     {
       modifier: 'data-inherit-padding',
       selector: 'section',
-      condition: '`inheritPadding` prop is set on `Card.Section` component',
+      condition: '`inheritPadding` prop is set on `Card.Section` 组件',
     },
   ],
 };

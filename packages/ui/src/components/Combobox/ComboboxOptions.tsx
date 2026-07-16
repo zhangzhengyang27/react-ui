@@ -23,4 +23,4 @@ export const ComboboxOptions = factory<ComboboxOptionsFactory>((_props, ref) => 
     )
 })
 
-ComboboxOptions.displayName = '@mantine/core/ComboboxOptions'
+ComboboxOptions.displayName = '@react-ui/ui/ComboboxOptions'

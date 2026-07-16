@@ -1,5 +1,5 @@
 import { MoonStarsIcon, SunIcon } from '@phosphor-icons/react';
-import { Button, Group, Image, SimpleGrid, useMantineColorScheme } from '@react-ui/ui';
+import { Button, Group, Image, SimpleGrid, useUIColorScheme } from '@react-ui/ui';
 import { MdxCodeHighlight } from '@/components/MdxProvider';
 import { HomePageContainer } from '../shared/HomePageContainer/HomePageContainer';
 import { HomePageDescription } from '../shared/HomePageDescription/HomePageDescription';
@@ -8,18 +8,18 @@ import { HomePageLearnMore } from '../shared/HomePageLearnMore/HomePageLearnMore
 import demo from './images/new.webp';
 import classes from './HomePageDarkColorScheme.module.css';
 
-const code = `import { MantineProvider } from '@react-ui/ui';
+const code = `import { UIProvider } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <MantineProvider defaultColorScheme="dark">
+    <UIProvider defaultColorScheme="dark">
       <App />
-    </MantineProvider>
+    </UIProvider>
   );
 }`;
 
 export function HomePageDarkColorScheme() {
-  const { toggleColorScheme } = useMantineColorScheme();
+  const { toggleColorScheme } = useUIColorScheme();
 
   return (
     <section className={classes.root}>

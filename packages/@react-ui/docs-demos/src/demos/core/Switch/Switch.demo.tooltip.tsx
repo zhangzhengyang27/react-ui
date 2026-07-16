@@ -1,13 +1,13 @@
 import { Switch, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Switch, Tooltip } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <Tooltip label="Switch tooltip" refProp="rootRef">
-      <Switch label="Switch with tooltip" />
+    <Tooltip label="开关提示" refProp="rootRef">
+      <Switch label="带提示的开关" />
     </Tooltip>
   );
 }
@@ -15,13 +15,13 @@ function Demo() {
 
 function Demo() {
   return (
-    <Tooltip label="Switch tooltip" refProp="rootRef">
-      <Switch label="Switch with tooltip" />
+    <Tooltip label="开关提示" refProp="rootRef">
+      <Switch label="带提示的开关" />
     </Tooltip>
   );
 }
 
-export const tooltip: MantineDemo = {
+export const tooltip: UIDemo = {
   type: 'code',
   component: Demo,
   code,

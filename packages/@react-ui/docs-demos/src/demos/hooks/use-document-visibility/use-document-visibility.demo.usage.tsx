@@ -1,6 +1,6 @@
 import { Text } from '@react-ui/ui';
 import { useDocumentTitle, useDocumentVisibility } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Text } from '@react-ui/ui';
@@ -9,17 +9,17 @@ import { useDocumentTitle, useDocumentVisibility } from '@react-ui/hooks';
 function Demo() {
   const documentState = useDocumentVisibility();
   useDocumentTitle(\`Document is \${documentState}\`);
-  return <Text>Switch to another tab to see document title change</Text>;
+  return <Text>切换到另一个标签查看文档标题变化</Text>;
 }
 `;
 
 function Demo() {
   const documentState = useDocumentVisibility();
   useDocumentTitle(`Document is ${documentState}`);
-  return <Text>Switch to another tab to see document title change</Text>;
+  return <Text>切换到另一个标签查看文档标题变化</Text>;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

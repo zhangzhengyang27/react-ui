@@ -8,13 +8,13 @@ import {
   Factory,
   getRadius,
   getThemeColor,
-  MantineColor,
-  MantineRadius,
+  UIColor,
+  UIRadius,
   rem,
   ScrollArea,
   StylesApiProps,
   UnstyledButton,
-  useComputedColorScheme,
+  useComputedUIColorScheme,
   useProps,
   useStyles,
 } from '@react-ui/ui';
@@ -96,10 +96,10 @@ export interface CodeHighlightSettings {
   collapseCodeLabel?: string;
 
   /** Controls background color of the code. By default, the value depends on color scheme. */
-  background?: MantineColor;
+  background?: UIColor;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius @default 0 */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 
   /** Adds border to the root element @default false */
   withBorder?: boolean;
@@ -145,8 +145,8 @@ export type CodeHighlightFactory = Factory<{
 
 const defaultProps = {
   withCopyButton: true,
-  expandCodeLabel: 'Expand code',
-  collapseCodeLabel: 'Collapse code',
+  expandCodeLabel: '展开代码',
+  collapseCodeLabel: '收起代码',
 } satisfies Partial<CodeHighlightProps>;
 
 const varsResolver = createVarsResolver<CodeHighlightFactory>(
@@ -218,7 +218,7 @@ export const CodeHighlight = factory<CodeHighlightFactory>((_props) => {
   const shouldDisplayControls =
     (controls && controls.length > 0) || withExpandButton || withCopyButton;
 
-  const colorScheme = useComputedColorScheme();
+  const colorScheme = useComputedUIColorScheme();
   const highlight = useHighlight();
   const highlightedCode = highlight({
     code: code.trim(),

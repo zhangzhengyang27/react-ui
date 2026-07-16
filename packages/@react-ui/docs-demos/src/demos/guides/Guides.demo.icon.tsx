@@ -1,5 +1,5 @@
 import { AtomIcon } from '@phosphor-icons/react';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { AtomIcon } from '@phosphor-icons/react';
@@ -18,7 +18,7 @@ function Demo() {
   return <AtomIcon size={80} color="var(--ui-color-blue-filled)" />;
 }
 
-export const icon: MantineDemo = {
+export const icon: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

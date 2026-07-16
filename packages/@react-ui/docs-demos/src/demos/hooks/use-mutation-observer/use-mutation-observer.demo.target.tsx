@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Kbd, Text } from '@react-ui/ui';
 import { useMutationObserverTarget } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -30,7 +30,7 @@ function Demo() {
   return (
     <>
       <Text>
-        Press <Kbd>Ctrl</Kbd> + <Kbd>Shift</Kbd> + <Kbd>L</Kbd> to change direction
+        按下 <Kbd>Ctrl</Kbd> + <Kbd>Shift</Kbd> + <Kbd>L</Kbd> 切换方向
       </Text>
 
       <Text mt={10}>Direction was changed to: {lastMutation || 'Not changed yet'}</Text>
@@ -61,7 +61,7 @@ function Demo() {
   return (
     <>
       <Text>
-        Press <Kbd>Ctrl</Kbd> + <Kbd>Shift</Kbd> + <Kbd>L</Kbd> to change direction
+        按下 <Kbd>Ctrl</Kbd> + <Kbd>Shift</Kbd> + <Kbd>L</Kbd> 切换方向
       </Text>
 
       <Text mt={10}>Direction was changed to: {lastMutation || 'Not changed yet'}</Text>
@@ -69,7 +69,7 @@ function Demo() {
   );
 }
 
-export const target: MantineDemo = {
+export const target: UIDemo = {
   type: 'code',
   component: Demo,
   code,

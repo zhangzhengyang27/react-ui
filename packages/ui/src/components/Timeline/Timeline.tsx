@@ -10,8 +10,8 @@ import {
     getSize,
     getThemeColor,
     isElement,
-    MantineColor,
-    MantineRadius,
+    UIColor,
+    UIRadius,
     StylesApiProps,
     useProps,
     useStyles
@@ -29,23 +29,23 @@ export interface TimelineProps extends BoxProps, StylesApiProps<TimelineFactory>
     /** Index of the current active item @default -1 */
     active?: number
 
-    /** Key of theme.colors or any valid CSS color @default theme.primaryColor */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 @default theme.primaryColor */
+    color?: UIColor
 
-    /** Width of the line between bullets @default 4 */
+    /** 项目符号之间连线的宽度 @default 4 */
     lineWidth?: number | string
 
-    /** Diameter of the bullet @default 20 */
+    /** 项目符号的直径 @default 20 */
     bulletSize?: number | string
 
     /** If set, items after the active item will be marked as active instead of before */
     reverseActive?: boolean
 
-    /** Timeline alignment @default 'left' */
+    /** 时间轴对齐方式 @default 'left' */
     align?: 'left' | 'right'
 
-    /** Key of theme.radius or any valid CSS value @default theme.defaultRadius */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 @default theme.defaultRadius */
+    radius?: UIRadius
 
     /** Timeline items */
     children: React.ReactNode
@@ -124,7 +124,7 @@ export const Timeline = factory<TimelineFactory>((_props, ref) => {
 
         const itemActive = reverseActive ? index >= active! : index <= active!
 
-        return cloneElement(child, {
+        return cloneElement(child as React.ReactElement<any>, {
             key: index,
             index,
             totalItems,

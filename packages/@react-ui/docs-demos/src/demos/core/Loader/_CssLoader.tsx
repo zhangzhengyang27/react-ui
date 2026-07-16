@@ -1,17 +1,17 @@
 import cx from 'clsx';
-import { Box, MantineLoaderComponent } from '@react-ui/ui';
+import { Box, UILoaderComponent } from '@react-ui/ui';
 import classes from './CssLoader.module.css';
 
-export const CssLoader: MantineLoaderComponent = ({ className, ...others }) => (
+export const CssLoader: UILoaderComponent = ({ className, ...others }) => (
   <Box component="span" className={cx(classes.loader, className)} {...others} />
 );
 
 export const cssLoaderTsxCode = `
 import cx from 'clsx';
-import { Box, MantineLoaderComponent } from '@react-ui/ui';
+import { Box, UILoaderComponent } from '@react-ui/ui';
 import classes from './CssLoader.module.css';
 
-export const CssLoader: MantineLoaderComponent = ({ className, ...others }) => (
+export const CssLoader: UILoaderComponent = ({ className, ...others }) => (
   <Box component="span" className={cx(classes.loader, className)} {...others} />
 );
 `;

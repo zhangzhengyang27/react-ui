@@ -1,6 +1,6 @@
 import { ImageIcon } from '@phosphor-icons/react';
 import { ThemeIcon, ThemeIconProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: ThemeIconProps) {
   return (
@@ -25,7 +25,7 @@ function Demo() {
 }
 `;
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

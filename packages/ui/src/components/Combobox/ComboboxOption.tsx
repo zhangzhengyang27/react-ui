@@ -68,4 +68,4 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
     )
 })
 
-ComboboxOption.displayName = '@mantine/core/ComboboxOption'
+ComboboxOption.displayName = '@react-ui/ui/ComboboxOption'

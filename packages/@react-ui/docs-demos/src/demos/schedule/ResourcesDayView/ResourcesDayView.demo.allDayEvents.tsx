@@ -1,10 +1,10 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { ResourcesDayView, ScheduleEventData, ScheduleResourceData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
-const tomorrow = dayjs().add(1, 'day').format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
+const tomorrow = dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD');
 
 const resources: ScheduleResourceData[] = [
   { id: 'tokyo', label: 'Meeting room: Tokyo' },
@@ -31,7 +31,7 @@ const events: ScheduleEventData[] = [
   },
   {
     id: 2,
-    title: 'Sprint Planning',
+    title: '迭代计划',
     start: `${today} 10:00:00`,
     end: `${today} 11:30:00`,
     color: 'green',
@@ -48,7 +48,7 @@ const events: ScheduleEventData[] = [
   },
   {
     id: 4,
-    title: 'Client Call',
+    title: '客户电话',
     start: `${today} 09:30:00`,
     end: `${today} 10:30:00`,
     color: 'violet',
@@ -56,7 +56,7 @@ const events: ScheduleEventData[] = [
   },
   {
     id: 5,
-    title: 'Holiday',
+    title: '假日',
     start: `${today} 00:00:00`,
     end: `${tomorrow} 00:00:00`,
     color: 'orange',
@@ -68,8 +68,8 @@ const dataCode = `
 import dayjs from 'dayjs';
 import { ScheduleEventData, ScheduleResourceData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
-const tomorrow = dayjs().add(1, 'day').format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
+const tomorrow = dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD');
 
 const resources: ScheduleResourceData[] = [
   { id: 'tokyo', label: 'Meeting room: Tokyo' },
@@ -83,10 +83,10 @@ const resources: ScheduleResourceData[] = [
 const events: ScheduleEventData[] = [
   { id: 1, title: 'Offsite', start: \`\${today} 00:00:00\`, end: \`\${tomorrow} 00:00:00\`, color: 'blue', resourceId: 'tokyo' },
   { id: 6, title: 'On call', start: \`\${today} 00:00:00\`, end: \`\${tomorrow} 00:00:00\`, color: 'grape', resourceId: 'tokyo' },
-  { id: 2, title: 'Sprint Planning', start: \`\${today} 10:00:00\`, end: \`\${today} 11:30:00\`, color: 'green', resourceId: 'tokyo' },
+  { id: 2, title: '迭代计划', start: \`\${today} 10:00:00\`, end: \`\${today} 11:30:00\`, color: 'green', resourceId: 'tokyo' },
   { id: 3, title: 'Maintenance', start: \`\${today} 00:00:00\`, end: \`\${tomorrow} 00:00:00\`, color: 'gray', display: 'background', resourceId: 'paris' },
-  { id: 4, title: 'Client Call', start: \`\${today} 09:30:00\`, end: \`\${today} 10:30:00\`, color: 'violet', resourceId: 'paris' },
-  { id: 5, title: 'Holiday', start: \`\${today} 00:00:00\`, end: \`\${tomorrow} 00:00:00\`, color: 'orange', resourceId: 'new-york' },
+  { id: 4, title: '客户电话', start: \`\${today} 09:30:00\`, end: \`\${today} 10:30:00\`, color: 'violet', resourceId: 'paris' },
+  { id: 5, title: '假日', start: \`\${today} 00:00:00\`, end: \`\${tomorrow} 00:00:00\`, color: 'orange', resourceId: 'new-york' },
 ];
 `;
 
@@ -97,7 +97,7 @@ import { ResourcesDayView } from '@react-ui/schedule';
 import { events, resources } from './data';
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
 
   return (
     <ResourcesDayView
@@ -113,7 +113,7 @@ function Demo() {
 `;
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
 
   return (
     <ResourcesDayView
@@ -127,12 +127,12 @@ function Demo() {
   );
 }
 
-export const allDayEvents: MantineDemo = {
+export const allDayEvents: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

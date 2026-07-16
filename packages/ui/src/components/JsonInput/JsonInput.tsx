@@ -24,13 +24,13 @@ export interface JsonInputProps
             | 'errorProps'
         >,
         StylesApiProps<JsonInputFactory> {
-    /** Controlled value */
+    //** 受控值 */
     value?: string
 
     /** Uncontrolled default value */
     defaultValue?: string
 
-    /** Called when value changes */
+    //** 值变化时调用 */
     onChange?: (value: string) => void
 
     /** If set, value is formatted on blur @default false */
@@ -50,16 +50,16 @@ export interface JsonInputProps
     /** Maximum number of visible lines */
     maxRows?: number
 
-    /** Label rendered above the input */
+    //** 渲染在输入框上方的标签 */
     label?: React.ReactNode
 
-    /** Description rendered below the label */
+    //** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
-    /** Error rendered below the input */
+    //** 渲染在输入框下方的错误 */
     error?: React.ReactNode
 
-    /** If set, required asterisk is added to the label */
+    //** 如果设置，则会在标签上添加必填星号 */
     required?: boolean
 
     /** Props passed to the label element */

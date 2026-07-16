@@ -14,7 +14,7 @@ import classes from './HomePageLLM.module.css';
 const features: HomePageFeaturesData = [
   {
     icon: FileTextIcon,
-    title: 'LLM 文档',
+    title: '大语言模型文档',
     description:
       'llms.txt 和 llms-full.txt 文件遵循 LLMs.txt 标准，可与 Cursor、Windsurf、ChatGPT、Claude 等 AI 工具配合使用',
   },
@@ -34,7 +34,7 @@ const features: HomePageFeaturesData = [
     icon: BookOpenTextIcon,
     title: '始终保持最新',
     description:
-      'LLM 文档随每次发布自动重新生成，AI 工具始终可以访问最新的 API 和示例',
+      '大语言模型文档随每次发布自动重新生成，AI 工具始终可以访问最新的 API 和示例',
   },
 ];
 
@@ -47,11 +47,11 @@ export function HomePageLLM() {
             <div className={classes.main}>
               <HomePageTitle order={2}>为 AI 辅助开发而构建</HomePageTitle>
               <HomePageDescription className={classes.description}>
-                LLM 优化文档、复杂任务的 Agent 技能、以及用于直接 API 访问的 MCP 服务器 ——
+                大语言模型优化文档、复杂任务的 Agent 技能、以及用于直接 API 访问的 MCP 服务器 ——
                 ReactUI 专为 Cursor、Claude Code、Windsurf 等你正在使用的 AI 编码工具而设计。
               </HomePageDescription>
               <HomePageLearnMore href="/guides/llms/">
-                了解更多 LLM 集成
+                了解更多大语言模型集成
               </HomePageLearnMore>
 
               <HomePageFeatures data={features} />

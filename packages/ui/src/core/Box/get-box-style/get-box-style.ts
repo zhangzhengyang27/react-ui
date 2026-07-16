@@ -1,20 +1,20 @@
-import type { MantineTheme } from '../../../core/MantineProvider'
-import type { CssVarsProp, MantineStyleProp } from '../Box.types'
+import type { UITheme } from '../../../core/UIProvider'
+import type { CssVarsProp, UIStyleProp } from '../Box.types'
 
 interface GetBoxStyleOptions {
-    theme: MantineTheme
+    theme: UITheme
     styleProps: React.CSSProperties
-    style?: MantineStyleProp
+    style?: UIStyleProp
     vars?: CssVarsProp
 }
 
 /**
  * 合并多种样式定义为一个标准的React CSS属性对象
- * @param {MantineStyleProp | CssVarsProp | undefined} styles - 需要合并的样式，可以是数组、函数或对象
- * @param {MantineTheme} theme - Mantine主题对象，用于解析函数类型的样式
+ * @param {UIStyleProp | CssVarsProp | undefined} styles - 需要合并的样式，可以是数组、函数或对象
+ * @param {UITheme} theme - UI主题对象，用于解析函数类型的样式
  * @returns {React.CSSProperties} 合并后的CSS样式对象
  */
-function mergeStyles(styles: MantineStyleProp | CssVarsProp | undefined, theme: MantineTheme): React.CSSProperties {
+function mergeStyles(styles: UIStyleProp | CssVarsProp | undefined, theme: UITheme): React.CSSProperties {
     if (Array.isArray(styles)) {
         return [...styles].reduce<Record<string, any>>((acc, item) => ({ ...acc, ...mergeStyles(item, theme) }), {})
     }

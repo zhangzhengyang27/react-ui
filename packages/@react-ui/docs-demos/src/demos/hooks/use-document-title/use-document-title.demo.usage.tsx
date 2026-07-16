@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@react-ui/ui';
 import { randomId, useDocumentTitle } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -23,10 +23,10 @@ function Demo() {
   const [title, setTitle] = useState('');
   useDocumentTitle(title);
 
-  return <Button onClick={() => setTitle(randomId())}>Set document title to random id</Button>;
+  return <Button onClick={() => setTitle(randomId())}>将文档标题设为随机 ID</Button>;
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

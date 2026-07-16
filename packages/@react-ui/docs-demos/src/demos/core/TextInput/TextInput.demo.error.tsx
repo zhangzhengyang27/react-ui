@@ -1,5 +1,5 @@
 import { TextInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TextInput } from '@react-ui/ui';
@@ -7,12 +7,12 @@ import { TextInput } from '@react-ui/ui';
 function Demo() {
   return (
     <>
-      <TextInput label="Boolean error" placeholder="Boolean error" error />
+      <TextInput label="布尔错误" placeholder="布尔错误" error />
       <TextInput
         mt="md"
-        label="With error message"
-        placeholder="With error message"
-        error="Invalid name"
+        label="带错误信息"
+        placeholder="带错误信息"
+        error="无效的名称"
       />
     </>
   );
@@ -22,18 +22,18 @@ function Demo() {
 function Demo() {
   return (
     <>
-      <TextInput label="Boolean error" placeholder="Boolean error" error />
+      <TextInput label="布尔错误" placeholder="布尔错误" error />
       <TextInput
         mt="md"
-        label="With error message"
-        placeholder="With error message"
-        error="Invalid name"
+        label="带错误信息"
+        placeholder="带错误信息"
+        error="无效的名称"
       />
     </>
   );
 }
 
-export const error: MantineDemo = {
+export const error: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

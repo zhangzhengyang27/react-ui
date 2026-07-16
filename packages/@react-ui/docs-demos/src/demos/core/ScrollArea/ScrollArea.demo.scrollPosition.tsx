@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Box, Code, ScrollArea, Stack, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { Content } from './_content';
 
 const code = `
@@ -47,7 +47,7 @@ function Demo() {
   );
 }
 
-export const scrollPosition: MantineDemo = {
+export const scrollPosition: UIDemo = {
   type: 'code',
   component: Demo,
   code,

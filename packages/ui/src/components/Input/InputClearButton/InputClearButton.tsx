@@ -4,7 +4,7 @@ import {
     ElementProps,
     factory,
     Factory,
-    MantineSize,
+    UISize,
     StylesApiProps,
     useProps,
     useResolvedStylesApi
@@ -14,7 +14,7 @@ import { InputContext } from '../Input.context'
 
 export interface InputClearButtonProps
     extends BoxProps, StylesApiProps<InputClearButtonFactory>, ElementProps<'button'> {
-    size?: MantineSize | (string & {})
+    size?: UISize | (string & {})
 }
 
 export type InputClearButtonFactory = Factory<{

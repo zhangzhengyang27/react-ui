@@ -6,13 +6,13 @@
   --resources-week-view-group-label-width: 80px;
   --resources-week-view-all-day-height: 20px;
 
-  @mixin where-light {
+  [data-ui-color-scheme='light'] & {
     --resources-week-view-border-color: var(--ui-color-gray-3);
     --resources-week-view-business-hours-bg: var(--ui-color-white);
     --resources-week-view-non-business-hours-bg: var(--ui-color-gray-0);
   }
 
-  @mixin where-dark {
+  [data-ui-color-scheme='dark'] & {
     --resources-week-view-border-color: var(--ui-color-dark-4);
     --resources-week-view-business-hours-bg: var(--ui-color-dark-7);
     --resources-week-view-non-business-hours-bg: var(--ui-color-dark-6);
@@ -28,7 +28,7 @@
 }
 
 .resourcesWeekViewScrollArea {
-  :where([data-mantine-scrollbar]) {
+  :where([data-ui-scrollbar]) {
     z-index: 20;
   }
 
@@ -231,12 +231,12 @@
     border-inline-end: none;
   }
 
-  @mixin hover {
-    @mixin where-light {
+  &:hover {
+    [data-ui-color-scheme='light'] & {
       background-color: var(--ui-color-gray-1);
     }
 
-    @mixin where-dark {
+    [data-ui-color-scheme='dark'] & {
       background-color: var(--ui-color-dark-5);
     }
   }
@@ -254,11 +254,11 @@
   }
 
   &:where([data-drop-target]) {
-    @mixin where-light {
+    [data-ui-color-scheme='light'] & {
       background-color: var(--ui-color-blue-1);
     }
 
-    @mixin where-dark {
+    [data-ui-color-scheme='dark'] & {
       background-color: var(--ui-color-dark-5);
     }
 
@@ -271,11 +271,11 @@
       border: 1px solid;
       border-radius: 2px;
 
-      @mixin where-light {
+      [data-ui-color-scheme='light'] & {
         border-color: var(--ui-color-blue-4);
       }
 
-      @mixin where-dark {
+      [data-ui-color-scheme='dark'] & {
         border-color: var(--ui-color-blue-6);
       }
     }
@@ -295,11 +295,11 @@
       z-index: 2;
       border: 1px solid;
 
-      @mixin where-light {
+      [data-ui-color-scheme='light'] & {
         border-color: var(--ui-primary-color-2);
       }
 
-      @mixin where-dark {
+      [data-ui-color-scheme='dark'] & {
         border-color: var(--ui-primary-color-9);
       }
     }

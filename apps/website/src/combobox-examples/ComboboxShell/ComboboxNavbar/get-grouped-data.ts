@@ -1,4 +1,4 @@
-import { ComboboxExample } from '../../combobox-examples-data';
+import { ComboboxExample } from '@react-ui/docs-demos';
 
 export interface ComboboxExamplesGroup {
   group: string;
@@ -23,14 +23,14 @@ export function getGroupedData(data: ComboboxExample[]): ComboboxExamplesGroup[]
   });
 
   return [
-    { group: 'Select', items: items.select },
-    { group: 'Autocomplete', items: items.autocomplete },
-    { group: 'Multiselect', items: items.multiselect },
-    { group: 'Button', items: items.button },
-    { group: 'Dropdown', items: items.dropdown },
-    { group: 'Animations', items: items.animations },
-    { group: 'Virtualization', items: items.virtualization },
-    { group: 'Tree select', items: items.treeselect },
-    { group: 'Other', items: items.other },
+    { group: '选择', items: items.select },
+    { group: '自动完成', items: items.autocomplete },
+    { group: '多选', items: items.multiselect },
+    { group: '按钮', items: items.button },
+    { group: '下拉', items: items.dropdown },
+    { group: '动画', items: items.animations },
+    { group: '虚拟化', items: items.virtualization },
+    { group: '树选择', items: items.treeselect },
+    { group: '其他', items: items.other },
   ];
 }

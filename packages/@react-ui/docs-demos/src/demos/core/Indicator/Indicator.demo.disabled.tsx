@@ -1,6 +1,6 @@
 import { Avatar, Button, Indicator, Stack } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useDisclosure } from '@react-ui/hooks';
@@ -15,10 +15,10 @@ function Demo() {
         <Avatar
           size="lg"
           radius="sm"
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-5.png"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-5.png"
         />
       </Indicator>
-      <Button onClick={toggle}>Toggle indicator</Button>
+      <Button onClick={toggle}>切换指示器</Button>
     </Stack>
   );
 }
@@ -33,15 +33,15 @@ function Demo() {
         <Avatar
           size="lg"
           radius="sm"
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-5.png"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-5.png"
         />
       </Indicator>
-      <Button onClick={toggle}>Toggle indicator</Button>
+      <Button onClick={toggle}>切换指示器</Button>
     </Stack>
   );
 }
 
-export const disabled: MantineDemo = {
+export const disabled: UIDemo = {
   type: 'code',
   component: Demo,
   code,

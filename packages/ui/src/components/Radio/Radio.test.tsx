@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Radio } from './Radio'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Radio', () => {
     it('renders a hidden radio input', () => {
@@ -11,7 +11,7 @@ describe('Radio', () => {
 
         const input = screen.getByRole('radio', { hidden: true })
         expect(input).toHaveAttribute('type', 'radio')
-        expect(input).toHaveClass('mantine-Radio-input')
+        expect(input).toHaveClass('ui-Radio-input')
         expect(screen.getByText('Option A')).toBeInTheDocument()
     })
 
@@ -51,9 +51,9 @@ describe('Radio', () => {
         expect(input).not.toBeChecked()
 
         rerender(
-            <MantineProvider>
+            <UIProvider>
                 <Radio label="Option A" checked readOnly />
-            </MantineProvider>
+            </UIProvider>
         )
         expect(input).toBeChecked()
     })

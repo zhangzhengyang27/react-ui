@@ -19,10 +19,10 @@ npx create-react-router@latest my-react-router-app
 
 ## PostCSS 配置
 
-安装 PostCSS 插件和 [postcss-preset-mantine](/styles/postcss-preset)：
+安装 PostCSS 插件和 [postcss-preset-ui](/styles/postcss-preset)：
 
 <InstallScript
-  packages="postcss postcss-preset-mantine postcss-simple-vars"
+  packages="postcss postcss-preset-ui postcss-simple-vars"
   dev
 />
 
@@ -31,14 +31,14 @@ npx create-react-router@latest my-react-router-app
 ```js
 module.exports = {
   plugins: {
-    'postcss-preset-mantine': {},
+    'postcss-preset-ui': {},
     'postcss-simple-vars': {
       variables: {
-        'mantine-breakpoint-xs': '36em',
-        'mantine-breakpoint-sm': '48em',
-        'mantine-breakpoint-md': '62em',
-        'mantine-breakpoint-lg': '75em',
-        'mantine-breakpoint-xl': '88em',
+        'ui-breakpoint-xs': '36em',
+        'ui-breakpoint-sm': '48em',
+        'ui-breakpoint-md': '62em',
+        'ui-breakpoint-lg': '75em',
+        'ui-breakpoint-xl': '88em',
       },
     },
   },
@@ -47,7 +47,7 @@ module.exports = {
 
 ## 配置
 
-在 `app/root.tsx` 中添加样式导入、[MantineProvider](/theming/mantine-provider/) 和 [ColorSchemeScript](/theming/color-schemes)：
+在 `app/root.tsx` 中添加样式导入、[UIProvider](/theming/ui-provider/) 和 [ColorSchemeScript](/theming/color-schemes)：
 
 ```tsx
 // 导入你已安装包的样式。
@@ -61,11 +61,11 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@react-ui/ui';
+import { ColorSchemeScript, UIProvider, uiHtmlProps } from '@react-ui/ui';
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" {...mantineHtmlProps}>
+    <html lang="en" {...uiHtmlProps}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -74,7 +74,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <MantineProvider>{children}</MantineProvider>
+        <UIProvider>{children}</UIProvider>
         <ScrollRestoration />
         <Scripts />
       </body>

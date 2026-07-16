@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Highlight } from './Highlight'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Highlight', () => {
     it('renders children and highlights matching substring', () => {
@@ -12,7 +12,7 @@ describe('Highlight', () => {
         expect(screen.getByText(content => content.includes('Hello'))).toBeInTheDocument()
         const mark = screen.getByText('world')
         expect(mark.tagName).toBe('MARK')
-        expect(mark).toHaveClass('mantine-Mark-root')
+        expect(mark).toHaveClass('ui-Mark-root')
     })
 
     it('renders plain text when highlight does not match', () => {

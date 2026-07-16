@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { MantineColor } from '@react-ui/ui';
+import { UIColor } from '@react-ui/ui';
 
 /** Resource data object passed to resource view components */
 export interface ScheduleResourceData {
@@ -10,7 +10,7 @@ export interface ScheduleResourceData {
   label: React.ReactNode;
 
   /** Optional color for the resource */
-  color?: MantineColor;
+  color?: UIColor;
 
   /** Additional resource data, defined by the user, not used internally by the library */
   payload?: Record<PropertyKey, any>;
@@ -28,10 +28,10 @@ export interface ScheduleResourceGroup {
 /** Date value type used by internal package utils */
 export type AnyDateValue = DateStringValue | Date | dayjs.Dayjs;
 
-/** Date value used by all Mantine components, format: `YYYY-MM-DD` */
+/** Date value used by all UI components, format: `YYYY-MM-DD` */
 export type DateStringValue = string;
 
-/** DateTime value used by all Mantine components, format: `YYYY-MM-DD HH:mm:ss` */
+/** DateTime value used by all UI components, format: `YYYY-MM-DD HH:mm:ss` */
 export type DateTimeStringValue = string;
 
 /** Day of the week, 0 – Sunday, 1 – Monday, etc. */
@@ -91,7 +91,7 @@ interface ScheduleEventBase<Payload extends EventPayload = EventPayload> {
   end: Date | DateTimeStringValue;
 
   /** Event background color. Key of `theme.colors` or any valid CSS color. */
-  color: MantineColor;
+  color: UIColor;
 
   /** Event variant, default is `'light'` */
   variant?: 'filled' | 'light';

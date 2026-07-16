@@ -1,6 +1,6 @@
 import { Button, Text, TextInput } from '@react-ui/ui';
 import { formRootRule, isNotEmpty, useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Text, TextInput } from '@react-ui/ui';
@@ -22,8 +22,8 @@ function Demo() {
           value.firstName.trim().length > 0 && value.firstName === value.lastName
             ? 'First name and last name cannot be the same'
             : null,
-        firstName: isNotEmpty('First name is required'),
-        lastName: isNotEmpty('Last name is required'),
+        firstName: isNotEmpty('名字必填'),
+        lastName: isNotEmpty('姓氏必填'),
       },
     },
   });
@@ -31,13 +31,13 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit(() => {})}>
       <TextInput
-        label="First name"
-        placeholder="First name"
+        label="名字"
+        placeholder="名字"
         {...form.getInputProps('user.firstName')}
       />
       <TextInput
-        label="Last name"
-        placeholder="Last name"
+        label="姓氏"
+        placeholder="姓氏"
         mt="md"
         {...form.getInputProps('user.lastName')}
       />
@@ -47,7 +47,7 @@ function Demo() {
         </Text>
       )}
       <Button type="submit" mt="lg">
-        Submit
+        提交
       </Button>
     </form>
   );
@@ -70,8 +70,8 @@ function Demo() {
           value.firstName.trim().length > 0 && value.firstName === value.lastName
             ? 'First name and last name cannot be the same'
             : null,
-        firstName: isNotEmpty('First name is required'),
-        lastName: isNotEmpty('Last name is required'),
+        firstName: isNotEmpty('名字必填'),
+        lastName: isNotEmpty('姓氏必填'),
       },
     },
   });
@@ -79,13 +79,13 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit(() => {})}>
       <TextInput
-        label="First name"
-        placeholder="First name"
+        label="名字"
+        placeholder="名字"
         {...form.getInputProps('user.firstName')}
       />
       <TextInput
-        label="Last name"
-        placeholder="Last name"
+        label="姓氏"
+        placeholder="姓氏"
         mt="md"
         {...form.getInputProps('user.lastName')}
       />
@@ -95,13 +95,13 @@ function Demo() {
         </Text>
       )}
       <Button type="submit" mt="lg">
-        Submit
+        提交
       </Button>
     </form>
   );
 }
 
-export const rootRuleObject: MantineDemo = {
+export const rootRuleObject: UIDemo = {
   type: 'code',
   component: Demo,
   code,

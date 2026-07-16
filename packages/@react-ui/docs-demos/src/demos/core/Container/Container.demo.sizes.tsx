@@ -1,8 +1,8 @@
-import { Container, createTheme, MantineThemeProvider, rem } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { Container, createTheme, UIThemeProvider, rem } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
-import { Container, MantineProvider, createTheme, rem } from '@react-ui/ui';
+import { Container, UIProvider, createTheme, rem } from '@react-ui/ui';
 
 const CONTAINER_SIZES: Record<string, number> = {
   xxs: 300,
@@ -32,11 +32,11 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       <Container size="xxs" bg="var(--ui-color-blue-light)">
         Container with custom size
       </Container>
-    </MantineProvider>
+    </UIProvider>
   );
 }
 
@@ -70,15 +70,15 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={theme}>
+    <UIThemeProvider theme={theme}>
       <Container size="xxs" bg="var(--ui-color-blue-light)">
         Container with custom size
       </Container>
-    </MantineThemeProvider>
+    </UIThemeProvider>
   );
 }
 
-export const sizes: MantineDemo = {
+export const sizes: UIDemo = {
   type: 'code',
   component: Demo,
   code,

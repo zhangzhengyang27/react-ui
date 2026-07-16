@@ -1,19 +1,19 @@
 import { ActionIcon } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ActionIcon } from '@react-ui/ui';
 
 function Demo() {
-  return <ActionIcon size="xl" loading loaderProps={{ type: 'dots' }} aria-label="Loading..." />;
+  return <ActionIcon size="xl" loading loaderProps={{ type: 'dots' }} aria-label="加载中..." />;
 }
 `;
 
 function Demo() {
-  return <ActionIcon size="xl" loading aria-label="Loading..." loaderProps={{ type: 'dots' }} />;
+  return <ActionIcon size="xl" loading aria-label="加载中..." loaderProps={{ type: 'dots' }} />;
 }
 
-export const loaderProps: MantineDemo = {
+export const loaderProps: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

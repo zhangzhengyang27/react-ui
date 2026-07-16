@@ -1,5 +1,5 @@
 import { CompositeChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './_data';
 
 const code = `
@@ -17,13 +17,13 @@ function Demo() {
       maxBarWidth={30}
       series={[
         {
-          name: 'Tomatoes',
-          label: 'Tomatoes sales',
+          name: '西红柿',
+          label: '番茄销售额',
           color: 'rgba(18, 120, 255, 0.2)',
           type: 'bar',
         },
-        { name: 'Apples', label: 'Apples sales', color: 'red.8', type: 'line' },
-        { name: 'Oranges', label: 'Oranges sales', color: 'yellow.8', type: 'area' },
+        { name: '苹果', label: '苹果销售额', color: 'red.8', type: 'line' },
+        { name: '橙子', label: '橙子销售额', color: 'yellow.8', type: 'area' },
       ]}
     />
   );
@@ -41,23 +41,23 @@ function Demo() {
       maxBarWidth={30}
       series={[
         {
-          name: 'Tomatoes',
-          label: 'Tomatoes sales',
+          name: '西红柿',
+          label: '番茄销售额',
           color: 'rgba(18, 120, 255, 0.2)',
           type: 'bar',
         },
-        { name: 'Apples', label: 'Apples sales', color: 'red.8', type: 'line' },
-        { name: 'Oranges', label: 'Oranges sales', color: 'yellow.8', type: 'area' },
+        { name: '苹果', label: '苹果销售额', color: 'red.8', type: 'line' },
+        { name: '橙子', label: '橙子销售额', color: 'yellow.8', type: 'area' },
       ]}
     />
   );
 }
 
-export const seriesLabels: MantineDemo = {
+export const seriesLabels: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

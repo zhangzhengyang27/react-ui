@@ -1,6 +1,6 @@
 import { Button, Loader, TextInput } from '@react-ui/ui';
 import { useField } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Loader, TextInput } from '@react-ui/ui';
@@ -9,7 +9,7 @@ import { useField } from '@react-ui/form';
 function validateAsync(value: string): Promise<string | null> {
   return new Promise((resolve) => {
     window.setTimeout(() => {
-      resolve(value === 'mantine' ? null : 'Value must be "mantine"');
+      resolve(value === 'ui' ? null : 'Value must be "ui"');
     }, 800);
   });
 }
@@ -24,12 +24,12 @@ function Demo() {
     <>
       <TextInput
         {...field.getInputProps()}
-        label="Enter 'mantine'"
-        placeholder="Enter 'mantine'"
+        label="输入 'ui'"
+        placeholder="输入 'ui'"
         rightSection={field.isValidating ? <Loader size={18} /> : null}
         mb="md"
       />
-      <Button onClick={field.validate}>Validate async</Button>
+      <Button onClick={field.validate}>异步验证</Button>
     </>
   );
 }
@@ -38,7 +38,7 @@ function Demo() {
 function validateAsync(value: string): Promise<string | null> {
   return new Promise((resolve) => {
     window.setTimeout(() => {
-      resolve(value === 'mantine' ? null : 'Value must be "mantine"');
+      resolve(value === 'ui' ? null : 'Value must be "ui"');
     }, 800);
   });
 }
@@ -53,17 +53,17 @@ function Demo() {
     <>
       <TextInput
         {...field.getInputProps()}
-        label="Enter 'mantine'"
-        placeholder="Enter 'mantine'"
+        label="输入 'ui'"
+        placeholder="输入 'ui'"
         rightSection={field.isValidating ? <Loader size={18} /> : null}
         mb="md"
       />
-      <Button onClick={field.validate}>Validate async</Button>
+      <Button onClick={field.validate}>异步验证</Button>
     </>
   );
 }
 
-export const asyncValidation: MantineDemo = {
+export const asyncValidation: UIDemo = {
   type: 'code',
   component: Demo,
   code,

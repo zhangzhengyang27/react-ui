@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Blockquote } from './Blockquote'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Blockquote', () => {
     it('renders a blockquote by default', () => {
@@ -17,7 +17,7 @@ describe('Blockquote', () => {
     it('applies static classes', () => {
         renderWithProvider(<Blockquote data-testid="bq">quote</Blockquote>)
 
-        expect(screen.getByTestId('bq')).toHaveClass('mantine-Blockquote-root')
+        expect(screen.getByTestId('bq')).toHaveClass('ui-Blockquote-root')
     })
 
     it('renders icon and cite', () => {
@@ -27,7 +27,7 @@ describe('Blockquote', () => {
             </Blockquote>
         )
 
-        expect(screen.getByText('@')).toHaveClass('mantine-Blockquote-icon')
-        expect(screen.getByText('Author')).toHaveClass('mantine-Blockquote-cite')
+        expect(screen.getByText('@')).toHaveClass('ui-Blockquote-icon')
+        expect(screen.getByText('Author')).toHaveClass('ui-Blockquote-cite')
     })
 })

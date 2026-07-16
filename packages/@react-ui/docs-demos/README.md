@@ -1,4 +1,4 @@
-# Mantine demos
+# UI demos
 
-Demo components that are used on mantine.dev website. Not intended for public use.
+Demo components that are used on ui.dev website. Not intended for public use.
 Not published on npm.

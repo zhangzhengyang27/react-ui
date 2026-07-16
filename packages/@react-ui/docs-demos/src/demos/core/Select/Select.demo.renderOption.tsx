@@ -6,7 +6,7 @@ import {
   TextAlignRightIcon,
 } from '@phosphor-icons/react';
 import { Group, Select, SelectProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TextAlignCenterIcon, TextAlignJustifyIcon, TextAlignLeftIcon, TextAlignRightIcon, CheckIcon } from '@phosphor-icons/react';
@@ -37,12 +37,12 @@ const renderSelectOption: SelectProps['renderOption'] = ({ option, checked }) =>
 function Demo() {
   return (
     <Select
-      label="Select with renderOption"
-      placeholder="Select text align"
+      label="带 renderOption 的选择器"
+      placeholder="选择文本对齐方式"
       data={[
-        { value: 'left', label: 'Left' },
-        { value: 'center', label: 'Center' },
-        { value: 'right', label: 'Right' },
+        { value: 'left', label: '左' },
+        { value: 'center', label: '居中' },
+        { value: 'right', label: '右' },
         { value: 'justify', label: 'Justify' },
       ]}
       renderOption={renderSelectOption}
@@ -75,12 +75,12 @@ const renderSelectOption: SelectProps['renderOption'] = ({ option, checked }) =>
 function Demo() {
   return (
     <Select
-      label="Select with renderOption"
-      placeholder="Select text align"
+      label="带 renderOption 的选择器"
+      placeholder="选择文本对齐方式"
       data={[
-        { value: 'left', label: 'Left' },
-        { value: 'center', label: 'Center' },
-        { value: 'right', label: 'Right' },
+        { value: 'left', label: '左' },
+        { value: 'center', label: '居中' },
+        { value: 'right', label: '右' },
         { value: 'justify', label: 'Justify' },
       ]}
       renderOption={renderSelectOption}
@@ -88,7 +88,7 @@ function Demo() {
   );
 }
 
-export const renderOption: MantineDemo = {
+export const renderOption: UIDemo = {
   type: 'code',
   component: Demo,
   code,

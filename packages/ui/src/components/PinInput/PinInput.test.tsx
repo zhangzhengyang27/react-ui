@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { PinInput } from './PinInput'
 
-const renderPinInput = (ui: React.ReactElement) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderPinInput = (ui: React.ReactElement) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('PinInput', () => {
     it('renders 4 inputs by default', () => {

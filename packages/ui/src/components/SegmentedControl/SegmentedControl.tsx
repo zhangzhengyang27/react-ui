@@ -7,9 +7,9 @@ import {
     Factory,
     getRadius,
     getSize,
-    MantineColor,
-    MantineRadius,
-    MantineSize,
+    UIColor,
+    UIRadius,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -35,20 +35,20 @@ export interface SegmentedControlProps extends BoxProps, StylesApiProps<Segmente
     /** Default value for uncontrolled component */
     defaultValue?: string
 
-    /** Called when value changes */
+    //** 值变化时调用 */
     onChange?: (value: string) => void
 
     /** Data used to render controls */
     data: (string | SegmentedControlItem)[]
 
-    /** Key of theme.colors or any valid CSS color */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 */
+    color?: UIColor
 
     /** Controls control height @default sm */
-    size?: MantineSize
+    size?: UISize
 
     /** Controls border-radius */
-    radius?: MantineRadius
+    radius?: UIRadius
 
     /** If true, the control takes full width @default false */
     fullWidth?: boolean

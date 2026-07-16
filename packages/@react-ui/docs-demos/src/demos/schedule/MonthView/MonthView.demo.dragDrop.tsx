@@ -1,23 +1,23 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { MonthView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const initialEvents: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Team Meeting',
+    title: '团队会议',
     start: `${today} 09:00:00`,
     end: `${today} 10:30:00`,
     color: 'blue',
   },
   {
     id: 2,
-    title: 'Project Deadline',
-    start: dayjs().add(5, 'day').format('YYYY-MM-DD 00:00:00'),
-    end: dayjs().add(6, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'),
+    title: '项目截止日期',
+    start: dayjs('2024-01-15').add(5, 'day').format('YYYY-MM-DD 00:00:00'),
+    end: dayjs('2024-01-15').add(6, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'),
     color: 'red',
   },
 ];
@@ -27,21 +27,21 @@ import { useState } from 'react';
 import dayjs from 'dayjs';
 import { MonthView, ScheduleEventData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const initialEvents: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Team Meeting',
+    title: '团队会议',
     start: \`\${today} 09:00:00\`,
     end: \`\${today} 10:30:00\`,
     color: 'blue',
   },
   {
     id: 2,
-    title: 'Project Deadline',
-    start: dayjs().add(5, 'day').format('YYYY-MM-DD 00:00:00'),
-    end: dayjs().add(6, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'),
+    title: '项目截止日期',
+    start: dayjs('2024-01-15').add(5, 'day').format('YYYY-MM-DD 00:00:00'),
+    end: dayjs('2024-01-15').add(6, 'day').startOf('day').format('YYYY-MM-DD HH:mm:ss'),
     color: 'red',
   },
 ];
@@ -57,7 +57,7 @@ function Demo() {
     );
   };
 
-  return <MonthView date={new Date()} events={events} withEventsDragAndDrop onEventDrop={handleEventDrop} />;
+  return <MonthView date={new Date('2024-01-15')} events={events} withEventsDragAndDrop onEventDrop={handleEventDrop} />;
 }
 `;
 
@@ -82,7 +82,7 @@ function Demo() {
 
   return (
     <MonthView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       withEventsDragAndDrop
       onEventDrop={handleEventDrop}
@@ -90,7 +90,7 @@ function Demo() {
   );
 }
 
-export const dragDrop: MantineDemo = {
+export const dragDrop: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

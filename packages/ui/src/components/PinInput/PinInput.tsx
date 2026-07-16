@@ -9,7 +9,7 @@ import {
     getFontSize,
     getSize,
     getSpacing,
-    MantineSize,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -27,13 +27,13 @@ export interface PinInputProps
     /** Number of input boxes */
     length?: number
 
-    /** Controlled value */
+    //** 受控值 */
     value?: string
 
-    /** Initial value for uncontrolled component */
+    //** 非受控组件的初始值 */
     defaultValue?: string
 
-    /** Called when value changes */
+    //** 值变化时调用 */
     onChange?: (value: string) => void
 
     /** Called when all inputs are filled */
@@ -49,7 +49,7 @@ export interface PinInputProps
     placeholder?: string
 
     /** Controls size of inputs @default 'sm' */
-    size?: MantineSize
+    size?: UISize
 
     /** Gap between inputs */
     gap?: React.CSSProperties['gap']
@@ -267,6 +267,7 @@ export const PinInput = factory<PinInputFactory>((_props, ref) => {
                 value={inputValue}
                 placeholder={placeholder}
                 autoComplete={autoComplete}
+                aria-label={`第 ${index + 1} 位,共 ${length} 位`}
                 data-masked={mask || undefined}
                 {...getStyles('input')}
                 onChange={event => handleChange(event, index)}
@@ -278,7 +279,7 @@ export const PinInput = factory<PinInputFactory>((_props, ref) => {
     })
 
     return (
-        <div ref={ref} {...getStyles('root')} {...others}>
+        <div ref={ref} role="group" {...getStyles('root')} {...others}>
             {inputs}
             {name && <input type="hidden" name={name} form={form} value={values} readOnly />}
         </div>

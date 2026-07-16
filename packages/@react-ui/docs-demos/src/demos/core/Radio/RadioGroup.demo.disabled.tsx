@@ -1,5 +1,5 @@
 import { Group, Radio } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Radio, Group } from '@react-ui/ui';
@@ -9,8 +9,8 @@ function Demo() {
     <Radio.Group
       disabled
       name="favoriteFramework"
-      label="Select your favorite framework/library"
-      description="This is anonymous"
+      label="选择你最喜欢的框架/库"
+      description="这是匿名的"
     >
       <Group mt="xs">
         <Radio label="React" value="react" />
@@ -27,8 +27,8 @@ function Demo() {
     <Radio.Group
       disabled
       name="favoriteFramework"
-      label="Select your favorite framework/library"
-      description="This is anonymous"
+      label="选择你最喜欢的框架/库"
+      description="这是匿名的"
     >
       <Group mt="xs">
         <Radio label="React" value="react" />
@@ -39,7 +39,7 @@ function Demo() {
   );
 }
 
-export const groupDisabled: MantineDemo = {
+export const groupDisabled: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

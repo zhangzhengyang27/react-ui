@@ -1,5 +1,5 @@
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
-import { datesTests } from '@mantine-tests/dates';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
+import { datesTests } from '@react-ui/tests/dates';
 import { MonthPicker, MonthPickerProps, MonthPickerStylesNames } from './MonthPicker';
 
 const defaultProps = {
@@ -44,7 +44,7 @@ describe('@react-ui/dates/MonthPicker', () => {
   datesTests.itHandlesControlsKeyboardEvents({
     component: MonthPicker,
     props: defaultProps,
-    listSelector: '.mantine-MonthPicker-monthsList',
+    listSelector: '.ui-MonthPicker-monthsList',
   });
 
   it('can be uncontrolled (type="default")', async () => {
@@ -155,12 +155,12 @@ describe('@react-ui/dates/MonthPicker', () => {
 
   it('has correct default __staticSelector', () => {
     const { container } = render(<MonthPicker {...defaultProps} />);
-    expect(container.querySelector('.mantine-MonthPicker-monthsList')).toBeInTheDocument();
+    expect(container.querySelector('.ui-MonthPicker-monthsList')).toBeInTheDocument();
   });
 
   it('supports custom __staticSelector', () => {
     const { container } = render(<MonthPicker {...defaultProps} __staticSelector="Calendar" />);
-    expect(container.querySelector('.mantine-Calendar-monthsList')).toBeInTheDocument();
+    expect(container.querySelector('.ui-Calendar-monthsList')).toBeInTheDocument();
   });
 
   it('correctly handles presets', () => {

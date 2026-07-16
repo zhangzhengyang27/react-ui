@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { YearView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const year = dayjs().year();
+const year = dayjs('2024-01-15').year();
 
 const recurringEventsData = [
   {
@@ -40,7 +40,7 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import { YearView } from '@react-ui/schedule';
 
-const year = dayjs().year();
+const year = dayjs('2024-01-15').year();
 
 const events = [
   {
@@ -78,7 +78,7 @@ function Demo() {
   );
 }
 
-export const recurringEvents: MantineDemo = {
+export const recurringEvents: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

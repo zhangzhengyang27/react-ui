@@ -1,5 +1,5 @@
 import { Container } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Container } from '@react-ui/ui';
@@ -13,7 +13,7 @@ function Demo() {
 
   return (
     <>
-      <Container {...demoProps}>Default Container</Container>
+      <Container {...demoProps}>默认 Container</Container>
 
       <Container size="xs" {...demoProps}>
         xs Container
@@ -49,7 +49,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

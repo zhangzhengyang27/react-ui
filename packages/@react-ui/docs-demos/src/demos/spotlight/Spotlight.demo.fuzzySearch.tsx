@@ -3,36 +3,36 @@
 import { FileTextIcon, GaugeIcon, HouseIcon, MagnifyingGlassIcon } from '@phosphor-icons/react';
 import Fuse from 'fuse.js';
 import { SpotlightActionData, SpotlightFilterFunction } from '@react-ui/spotlight';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { SpotlightDemoBase } from './_demo-base';
 
 const actions: SpotlightActionData[] = [
   {
     id: 'home',
-    label: 'Home',
-    description: 'Get to home page',
-    onClick: () => console.log('Home'),
+    label: '首页',
+    description: '前往首页',
+    onClick: () => console.log('首页'),
     leftSection: <HouseIcon size={24} />,
   },
   {
     id: 'dashboard',
-    label: 'Dashboard',
-    description: 'Get full information about current system status',
-    onClick: () => console.log('Dashboard'),
+    label: '仪表盘',
+    description: '获取当前系统状态的完整信息',
+    onClick: () => console.log('仪表盘'),
     leftSection: <GaugeIcon size={24} />,
   },
   {
     id: 'documentation',
-    label: 'Documentation',
-    description: 'Visit documentation to learn more about all features',
-    onClick: () => console.log('Documentation'),
+    label: '文档',
+    description: '访问文档以了解更多功能',
+    onClick: () => console.log('文档'),
     leftSection: <FileTextIcon size={24} />,
   },
   {
     id: 'settings',
-    label: 'Settings',
-    description: 'Manage application preferences and configurations',
-    onClick: () => console.log('Settings'),
+    label: '设置',
+    description: '管理应用偏好和配置',
+    onClick: () => console.log('设置'),
     leftSection: <HouseIcon size={24} />,
   },
 ];
@@ -92,30 +92,30 @@ import { HouseIcon, GaugeIcon, FileTextIcon, MagnifyingGlassIcon } from '@phosph
 const actions: SpotlightActionData[] = [
   {
     id: 'home',
-    label: 'Home',
-    description: 'Get to home page',
-    onClick: () => console.log('Home'),
+    label: '首页',
+    description: '前往首页',
+    onClick: () => console.log('首页'),
     leftSection: <HouseIcon size={24} />,
   },
   {
     id: 'dashboard',
-    label: 'Dashboard',
-    description: 'Get full information about current system status',
-    onClick: () => console.log('Dashboard'),
+    label: '仪表盘',
+    description: '获取当前系统状态的完整信息',
+    onClick: () => console.log('仪表盘'),
     leftSection: <GaugeIcon size={24} />,
   },
   {
     id: 'documentation',
-    label: 'Documentation',
-    description: 'Visit documentation to learn more about all features',
-    onClick: () => console.log('Documentation'),
+    label: '文档',
+    description: '访问文档以了解更多功能',
+    onClick: () => console.log('文档'),
     leftSection: <FileTextIcon size={24} />,
   },
   {
     id: 'settings',
-    label: 'Settings',
-    description: 'Manage application preferences and configurations',
-    onClick: () => console.log('Settings'),
+    label: '设置',
+    description: '管理应用偏好和配置',
+    onClick: () => console.log('设置'),
     leftSection: <HouseIcon size={24} />,
   },
 ];
@@ -164,15 +164,15 @@ const fuzzySearchFilter: SpotlightFilterFunction = (query, searchActions) => {
 function Demo() {
   return (
     <>
-      <Button onClick={spotlight.open}>Open spotlight</Button>
+      <Button onClick={spotlight.open}>打开聚光灯</Button>
       <Spotlight
         actions={actions}
         filter={fuzzySearchFilter}
-        nothingFound="Nothing found..."
+        nothingFound="未找到..."
         highlightQuery
         searchProps={{
           leftSection: <MagnifyingGlassIcon size={20} />,
-          placeholder: 'Search...',
+          placeholder: '搜索...',
         }}
       />
     </>
@@ -185,18 +185,18 @@ function Demo() {
     <SpotlightDemoBase
       actions={actions}
       filter={fuzzySearchFilter}
-      nothingFound="Nothing found..."
+      nothingFound="未找到..."
       highlightQuery
       shortcut={null}
       searchProps={{
         leftSection: <MagnifyingGlassIcon size={20} />,
-        placeholder: 'Search...',
+        placeholder: '搜索...',
       }}
     />
   );
 }
 
-export const fuzzySearch: MantineDemo = {
+export const fuzzySearch: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { MagnifyingGlassIcon } from '@phosphor-icons/react';
 import { Button } from '@react-ui/ui';
 import { createSpotlight, Spotlight } from '@react-ui/spotlight';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -21,12 +21,12 @@ function Demo() {
 
   return (
     <>
-      <Button onClick={spotlight.open}>Open spotlight</Button>
+      <Button onClick={spotlight.open}>打开聚光灯</Button>
 
       <Spotlight.Root query={query} onQueryChange={setQuery}>
-        <Spotlight.Search placeholder="Search..." leftSection={<MagnifyingGlassIcon />} />
+        <Spotlight.Search placeholder="搜索..." leftSection={<MagnifyingGlassIcon />} />
         <Spotlight.ActionsList>
-          {items.length > 0 ? items : <Spotlight.Empty>Nothing found...</Spotlight.Empty>}
+          {items.length > 0 ? items : <Spotlight.Empty>未找到...</Spotlight.Empty>}
         </Spotlight.ActionsList>
       </Spotlight.Root>
     </>
@@ -46,19 +46,19 @@ function Demo() {
 
   return (
     <>
-      <Button onClick={spotlight.open}>Open spotlight</Button>
+      <Button onClick={spotlight.open}>打开聚光灯</Button>
 
       <Spotlight.Root store={store} query={query} onQueryChange={setQuery} shortcut={null}>
-        <Spotlight.Search placeholder="Search..." leftSection={<MagnifyingGlassIcon />} />
+        <Spotlight.Search placeholder="搜索..." leftSection={<MagnifyingGlassIcon />} />
         <Spotlight.ActionsList>
-          {items.length > 0 ? items : <Spotlight.Empty>Nothing found...</Spotlight.Empty>}
+          {items.length > 0 ? items : <Spotlight.Empty>未找到...</Spotlight.Empty>}
         </Spotlight.ActionsList>
       </Spotlight.Root>
     </>
   );
 }
 
-export const compound: MantineDemo = {
+export const compound: UIDemo = {
   type: 'code',
   component: Demo,
   code,

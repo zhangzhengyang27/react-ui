@@ -46,12 +46,12 @@ function Demo() {
           size="sm"
         />
 
-        <div>Logo</div>
+        <div>徽标</div>
       </AppShell.Header>
 
-      <AppShell.Navbar>Navbar</AppShell.Navbar>
+      <AppShell.Navbar>导航栏</AppShell.Navbar>
 
-      <AppShell.Main>Main</AppShell.Main>
+      <AppShell.Main>主内容</AppShell.Main>
     </AppShell>
   );
 }
@@ -103,7 +103,7 @@ interface Configuration {
    ** 在移动模式下，该部分始终具有 100% 宽度，
    ** 其折叠状态由 `collapsed.mobile` 控制
    ** 而非 `collapsed.desktop` */
-  breakpoint: MantineBreakpoint | (string & {}) | number;
+  breakpoint: UIBreakpoint | (string & {}) | number;
 
   /** 确定该部分是否应折叠 */
   collapsed?: { desktop?: boolean; mobile?: boolean };
@@ -134,7 +134,7 @@ import { AppShell } from '@react-ui/ui';
 function Demo() {
   return (
     <AppShell header={{ height: 48 }}>
-      <AppShell.Header>Header</AppShell.Header>
+      <AppShell.Header>头部</AppShell.Header>
     </AppShell>
   );
 }
@@ -151,7 +151,7 @@ import { AppShell } from '@react-ui/ui';
 function Demo() {
   return (
     <AppShell header={{ height: { base: 48, sm: 60, lg: 76 } }}>
-      <AppShell.Header>Header</AppShell.Header>
+      <AppShell.Header>头部</AppShell.Header>
     </AppShell>
   );
 }
@@ -175,7 +175,7 @@ import { AppShell } from '@react-ui/ui';
 function Demo() {
   return (
     <AppShell navbar={{ width: 48, breakpoint: 'sm' }}>
-      <AppShell.Navbar>Navbar</AppShell.Navbar>
+      <AppShell.Navbar>导航栏</AppShell.Navbar>
     </AppShell>
   );
 }
@@ -194,7 +194,7 @@ function Demo() {
     <AppShell
       navbar={{ width: { sm: 200, lg: 300 }, breakpoint: 'sm' }}
     >
-      <AppShell.Navbar>Navbar</AppShell.Navbar>
+      <AppShell.Navbar>导航栏</AppShell.Navbar>
     </AppShell>
   );
 }
@@ -257,7 +257,7 @@ function Demo() {
       header={{ height: 60, collapsed: !pinned, offset: false }}
       padding="md"
     >
-      <AppShell.Header>Header</AppShell.Header>
+      <AppShell.Header>头部</AppShell.Header>
 
       <AppShell.Main
         pt={`calc(${rem(60)} + var(--ui-spacing-md))`}
@@ -295,8 +295,8 @@ export function CollapseDesktop() {
         collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
       }}
     >
-      <AppShell.Header>Header</AppShell.Header>
-      <AppShell.Navbar>Navbar</AppShell.Navbar>
+      <AppShell.Header>头部</AppShell.Header>
+      <AppShell.Navbar>导航栏</AppShell.Navbar>
       <AppShell.Main>
         <Button onClick={toggleDesktop} visibleFrom="sm">
           切换 navbar
@@ -338,7 +338,7 @@ import { AppShell } from '@react-ui/ui';
 function Demo() {
   return (
     <AppShell>
-      <AppShell.Header withBorder={false}>Header</AppShell.Header>
+      <AppShell.Header withBorder={false}>头部</AppShell.Header>
     </AppShell>
   );
 }
@@ -370,9 +370,9 @@ import { AppShell } from '@react-ui/ui';
 function Demo() {
   return (
     <AppShell>
-      <AppShell.Header zIndex={100}>Header</AppShell.Header>
-      <AppShell.Navbar zIndex={300}>Navbar</AppShell.Navbar>
-      <AppShell.Aside zIndex={300}>Aside</AppShell.Aside>
+      <AppShell.Header zIndex={100}>头部</AppShell.Header>
+      <AppShell.Navbar zIndex={300}>导航栏</AppShell.Navbar>
+      <AppShell.Aside zIndex={300}>侧边栏</AppShell.Aside>
     </AppShell>
   );
 }
@@ -429,7 +429,7 @@ function Demo() {
   return (
     <AppShell navbar={{ width: 300, breakpoint: 0 }}>
       <AppShell.Navbar>
-        <AppShell.Section>Navbar header</AppShell.Section>
+        <AppShell.Section>导航栏头部</AppShell.Section>
         <AppShell.Section grow component={ScrollArea}>
           将扩展以填充可用空间的 Navbar 主体部分
         </AppShell.Section>
@@ -437,7 +437,7 @@ function Demo() {
           始终在底部的 Navbar footer
         </AppShell.Section>
       </AppShell.Navbar>
-      <AppShell.Main>Main</AppShell.Main>
+      <AppShell.Main>主内容</AppShell.Main>
     </AppShell>
   );
 }

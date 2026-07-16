@@ -1,6 +1,6 @@
 import { Text, UnstyledButton } from '@react-ui/ui';
 import { useScrollSpy } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Text, UnstyledButton } from '@react-ui/ui';
@@ -30,7 +30,7 @@ function Demo() {
 
   return (
     <div>
-      <Text>Scroll to heading:</Text>
+      <Text>滚动到标题：</Text>
       <ul style={{ margin: 0, padding: 0 }}>{headings}</ul>
     </div>
   );
@@ -61,13 +61,13 @@ function Demo() {
 
   return (
     <div>
-      <Text>Scroll to heading:</Text>
+      <Text>滚动到标题：</Text>
       <ul style={{ margin: 0, padding: 0 }}>{headings}</ul>
     </div>
   );
 }
 
-export const selector: MantineDemo = {
+export const selector: UIDemo = {
   type: 'code',
   component: Demo,
   code,

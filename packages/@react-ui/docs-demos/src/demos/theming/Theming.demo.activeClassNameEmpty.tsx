@@ -1,27 +1,27 @@
-import { Button, MantineThemeProvider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { Button, UIThemeProvider } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
-import { MantineProvider, Button } from '@react-ui/ui';
+import { UIProvider, Button } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <MantineProvider theme={{ activeClassName: '' }}>
-      <Button>No active styles</Button>
-    </MantineProvider>
+    <UIProvider theme={{ activeClassName: '' }}>
+      <Button>无激活样式</Button>
+    </UIProvider>
   );
 }
 `;
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={{ activeClassName: '' }}>
-      <Button>No active styles</Button>
-    </MantineThemeProvider>
+    <UIThemeProvider theme={{ activeClassName: '' }}>
+      <Button>无激活样式</Button>
+    </UIThemeProvider>
   );
 }
 
-export const activeClassNameEmpty: MantineDemo = {
+export const activeClassNameEmpty: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

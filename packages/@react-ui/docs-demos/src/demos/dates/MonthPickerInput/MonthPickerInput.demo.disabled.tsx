@@ -1,5 +1,5 @@
 import { MonthPickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { MonthPickerInput } from '@react-ui/dates';
@@ -9,8 +9,8 @@ function Demo() {
     <MonthPickerInput
       valueFormat="YYYY MMM"
       type="multiple"
-      label="Disabled"
-      placeholder="Pick month"
+      label="已禁用"
+      placeholder="选择月份"
       disabled
     />
   );
@@ -22,14 +22,14 @@ function Demo() {
     <MonthPickerInput
       valueFormat="YYYY MMM"
       type="multiple"
-      label="Disabled"
-      placeholder="Pick month"
+      label="已禁用"
+      placeholder="选择月份"
       disabled
     />
   );
 }
 
-export const disabled: MantineDemo = {
+export const disabled: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

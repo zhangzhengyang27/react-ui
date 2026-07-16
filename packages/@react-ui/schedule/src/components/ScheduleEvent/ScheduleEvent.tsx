@@ -7,7 +7,7 @@ import {
   factory,
   Factory,
   getRadius,
-  MantineRadius,
+  UIRadius,
   StylesApiProps,
   UnstyledButton,
   useProps,
@@ -39,7 +39,7 @@ export interface ScheduleEventProps
   event: ScheduleEventData;
 
   /** Key of `theme.radius` or any valid CSS value to set border-radius @default 'sm' */
-  radius?: MantineRadius;
+  radius?: UIRadius;
 
   /** If set, event has `white-space: nowrap` @default false */
   nowrap?: boolean;
@@ -95,7 +95,7 @@ export type ScheduleEventFactory = Factory<{
 const defaultProps = {
   __staticSelector: 'ScheduleEvent',
   mode: 'default',
-  radius: 'sm' as MantineRadius,
+  radius: 'sm' as UIRadius,
 } satisfies Partial<ScheduleEventProps>;
 
 const varsResolver = createVarsResolver<ScheduleEventFactory>(

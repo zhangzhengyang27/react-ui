@@ -1,6 +1,6 @@
-import { MantineLoaderComponent } from '@react-ui/ui';
+import { UILoaderComponent } from '@react-ui/ui';
 
-export const RingLoader: MantineLoaderComponent = ({ style, ...others }) => (
+export const RingLoader: UILoaderComponent = ({ style, ...others }) => (
   <svg
     {...others}
     style={{
@@ -81,9 +81,9 @@ export const RingLoader: MantineLoaderComponent = ({ style, ...others }) => (
 );
 
 export const ringLoaderCode = `
-import { MantineLoaderComponent } from '@react-ui/ui';
+import { UILoaderComponent } from '@react-ui/ui';
 
-export const RingLoader: MantineLoaderComponent = ({ style, ...others }) => (
+export const RingLoader: UILoaderComponent = ({ style, ...others }) => (
   <svg
     {...others}
     style={{

@@ -1,5 +1,5 @@
 import { Combobox, TextInput, useCombobox } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { ComboboxStylesApi } from '@react-ui/docs-styles-api';
 
 const code = `
@@ -11,30 +11,30 @@ function Demo() {
   return (
     <Combobox store={combobox}{{props}}>
       <Combobox.Target>
-        <TextInput placeholder="Pick value" />
+        <TextInput placeholder="选择值" />
       </Combobox.Target>
 
       <Combobox.Dropdown>
-        <Combobox.Header>Combobox header</Combobox.Header>
-        <Combobox.Search placeholder="Search input" />
+        <Combobox.Header>Combobox 头部</Combobox.Header>
+        <Combobox.Search placeholder="搜索输入" />
 
         <Combobox.Options>
-          <Combobox.Group label="First group">
-            <Combobox.Option value="1">First</Combobox.Option>
-            <Combobox.Option value="2">Second</Combobox.Option>
+          <Combobox.Group label="第一组">
+            <Combobox.Option value="1">第一</Combobox.Option>
+            <Combobox.Option value="2">第二</Combobox.Option>
           </Combobox.Group>
 
-          <Combobox.Group label="Second group">
-            <Combobox.Option value="3">Third</Combobox.Option>
-            <Combobox.Option value="4">Fourth</Combobox.Option>
+          <Combobox.Group label="第二组">
+            <Combobox.Option value="3">第三</Combobox.Option>
+            <Combobox.Option value="4">第四</Combobox.Option>
           </Combobox.Group>
 
-          <Combobox.Group label="Third group">
-            <Combobox.Empty>Nothing found in this group...</Combobox.Empty>
+          <Combobox.Group label="第三组">
+            <Combobox.Empty>该分组中未找到任何内容...</Combobox.Empty>
           </Combobox.Group>
         </Combobox.Options>
 
-        <Combobox.Footer>Combobox footer</Combobox.Footer>
+        <Combobox.Footer>Combobox 底部</Combobox.Footer>
       </Combobox.Dropdown>
     </Combobox>
   );
@@ -49,36 +49,36 @@ function Demo(props: any) {
   return (
     <Combobox store={combobox} {...props} middlewares={{ flip: false, shift: false }}>
       <Combobox.Target>
-        <TextInput placeholder="Pick value" />
+        <TextInput placeholder="选择值" />
       </Combobox.Target>
 
       <Combobox.Dropdown>
-        <Combobox.Header>Combobox header</Combobox.Header>
-        <Combobox.Search placeholder="Search input" />
+        <Combobox.Header>Combobox 头部</Combobox.Header>
+        <Combobox.Search placeholder="搜索输入" />
 
         <Combobox.Options>
-          <Combobox.Group label="First group">
-            <Combobox.Option value="1">First</Combobox.Option>
-            <Combobox.Option value="2">Second</Combobox.Option>
+          <Combobox.Group label="第一组">
+            <Combobox.Option value="1">第一</Combobox.Option>
+            <Combobox.Option value="2">第二</Combobox.Option>
           </Combobox.Group>
 
-          <Combobox.Group label="Second group">
-            <Combobox.Option value="3">Third</Combobox.Option>
-            <Combobox.Option value="4">Fourth</Combobox.Option>
+          <Combobox.Group label="第二组">
+            <Combobox.Option value="3">第三</Combobox.Option>
+            <Combobox.Option value="4">第四</Combobox.Option>
           </Combobox.Group>
 
-          <Combobox.Group label="Third group">
-            <Combobox.Empty>Nothing found in this group...</Combobox.Empty>
+          <Combobox.Group label="第三组">
+            <Combobox.Empty>该分组中未找到任何内容...</Combobox.Empty>
           </Combobox.Group>
         </Combobox.Options>
 
-        <Combobox.Footer>Combobox footer</Combobox.Footer>
+        <Combobox.Footer>Combobox 底部</Combobox.Footer>
       </Combobox.Dropdown>
     </Combobox>
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: ComboboxStylesApi,
   component: Demo,

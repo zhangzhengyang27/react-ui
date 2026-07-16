@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Combobox, TextInput, useCombobox } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
 import { Combobox, TextInput, useCombobox } from '@react-ui/ui';
 
-const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
+const groceries = ['🍎 苹果', '🍌 香蕉', '🥦 西兰花', '🥕 胡萝卜', '🍫 巧克力'];
 
 function Demo() {
   const combobox = useCombobox();
@@ -32,8 +32,8 @@ function Demo() {
     >
       <Combobox.Target>
         <TextInput
-          label="Pick value or type anything"
-          placeholder="Pick value or type anything"
+          label="选择值或输入任意内容"
+          placeholder="选择值或输入任意内容"
           value={value}
           onChange={(event) => {
             setValue(event.currentTarget.value);
@@ -48,7 +48,7 @@ function Demo() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          {options.length === 0 ? <Combobox.Empty>Nothing found</Combobox.Empty> : options}
+          {options.length === 0 ? <Combobox.Empty>未找到</Combobox.Empty> : options}
         </Combobox.Options>
       </Combobox.Dropdown>
     </Combobox>
@@ -56,7 +56,7 @@ function Demo() {
 }
 `;
 
-const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
+const groceries = ['🍎 苹果', '🍌 香蕉', '🥦 西兰花', '🥕 胡萝卜', '🍫 巧克力'];
 
 function Demo() {
   const combobox = useCombobox();
@@ -82,8 +82,8 @@ function Demo() {
     >
       <Combobox.Target>
         <TextInput
-          label="Pick value or type anything"
-          placeholder="Pick value or type anything"
+          label="选择值或输入任意内容"
+          placeholder="选择值或输入任意内容"
           value={value}
           onChange={(event) => {
             setValue(event.currentTarget.value);
@@ -98,14 +98,14 @@ function Demo() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          {options.length === 0 ? <Combobox.Empty>Nothing found</Combobox.Empty> : options}
+          {options.length === 0 ? <Combobox.Empty>未找到</Combobox.Empty> : options}
         </Combobox.Options>
       </Combobox.Dropdown>
     </Combobox>
   );
 }
 
-export const autocomplete: MantineDemo = {
+export const autocomplete: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

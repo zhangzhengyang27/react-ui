@@ -1,6 +1,6 @@
 import { EyedropperIcon } from '@phosphor-icons/react';
 import { ColorInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ColorInput } from '@react-ui/ui';
@@ -12,15 +12,15 @@ function Demo() {
   return (
     <>
       <ColorInput
-        label="With custom left section"
-        placeholder="Replaces color swatch"
+        label="自定义左侧区域"
+        placeholder="替换色板"
         leftSection={icon}
         leftSectionPointerEvents="none"
         withEyeDropper={false}
       />
       <ColorInput
-        label="With custom right section"
-        placeholder="Replaces eye dropper"
+        label="自定义右侧区域"
+        placeholder="替换取色器"
         rightSection={icon}
         rightSectionPointerEvents="none"
         mt="md"
@@ -36,15 +36,15 @@ function Demo() {
   return (
     <>
       <ColorInput
-        label="With custom left section"
-        placeholder="Replaces color swatch"
+        label="自定义左侧区域"
+        placeholder="替换色板"
         leftSection={icon}
         leftSectionPointerEvents="none"
         withEyeDropper={false}
       />
       <ColorInput
-        label="With custom right section"
-        placeholder="Replaces eye dropper"
+        label="自定义右侧区域"
+        placeholder="替换取色器"
         rightSection={icon}
         rightSectionPointerEvents="none"
         mt="md"
@@ -53,7 +53,7 @@ function Demo() {
   );
 }
 
-export const sections: MantineDemo = {
+export const sections: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,5 +1,4 @@
 // Required to disable for webkit-user-select, although deprecated, it is still required for Safari support
-/* eslint-disable @typescript-eslint/no-deprecated */
 import { useCallback, useRef, useState } from 'react'
 
 type Vector2 = [number, number]

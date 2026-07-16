@@ -10,7 +10,7 @@ export interface DemoCodeProps {
 
 export function DemoCode({ code, maxCollapsedHeight, defaultExpanded = true }: DemoCodeProps) {
   const _code: CodeHighlightTabsCode | CodeHighlightTabsCode[] | undefined =
-    typeof code === 'string' ? [{ code, fileName: 'Demo.tsx', language: 'tsx' }] : code;
+    typeof code === 'string' ? [{ code, fileName: '示例.tsx', language: 'tsx' }] : code;
   return _code ? (
     <CodeHighlightTabs
       code={_code}

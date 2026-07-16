@@ -1,19 +1,19 @@
 import { NumberInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NumberInput } from '@react-ui/ui';
 
 function Demo() {
-  return <NumberInput label="Number Input" placeholder="Number Input" success="Looks good!" />;
+  return <NumberInput label="数字输入" placeholder="数字输入" success="看起来不错！" />;
 }
 `;
 
 function Demo() {
-  return <NumberInput label="Number Input" placeholder="Number Input" success="Looks good!" />;
+  return <NumberInput label="数字输入" placeholder="数字输入" success="看起来不错！" />;
 }
 
-export const success: MantineDemo = {
+export const success: UIDemo = {
   type: 'code',
   component: Demo,
   code,

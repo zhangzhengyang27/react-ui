@@ -7,7 +7,7 @@ import {
     factory,
     Factory,
     getFontSize,
-    MantineFontSize,
+    UIFontSize,
     rem,
     StylesApiProps,
     useProps,
@@ -25,7 +25,7 @@ export interface InputSuccessProps
     extends BoxProps, StylesApiProps<InputSuccessFactory>, ElementProps<'div'> {
     __staticSelector?: string
     __inheritStyles?: boolean
-    size?: MantineFontSize
+    size?: UIFontSize
 }
 
 export type InputSuccessFactory = Factory<{

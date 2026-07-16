@@ -1,5 +1,5 @@
 import { Autocomplete } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Autocomplete } from '@react-ui/ui';
@@ -12,15 +12,15 @@ function Demo() {
   return (
     <>
       <Autocomplete
-        label="With scroll area (default)"
-        placeholder="Pick value or enter anything"
+        label="使用滚动区域（默认）"
+        placeholder="选择值或输入任意内容"
         data={data}
         maxDropdownHeight={200}
       />
 
       <Autocomplete
-        label="With native scroll"
-        placeholder="Pick value or enter anything"
+        label="使用原生滚动"
+        placeholder="选择值或输入任意内容"
         data={data}
         withScrollArea={false}
         styles={{ dropdown: { maxHeight: 200, overflowY: 'auto' } }}
@@ -39,15 +39,15 @@ function Demo() {
   return (
     <>
       <Autocomplete
-        label="With scroll area (default)"
-        placeholder="Pick value or enter anything"
+        label="使用滚动区域（默认）"
+        placeholder="选择值或输入任意内容"
         data={data}
         maxDropdownHeight={200}
       />
 
       <Autocomplete
-        label="With native scroll"
-        placeholder="Pick value or enter anything"
+        label="使用原生滚动"
+        placeholder="选择值或输入任意内容"
         data={data}
         withScrollArea={false}
         styles={{ dropdown: { maxHeight: 200, overflowY: 'auto' } }}
@@ -57,7 +57,7 @@ function Demo() {
   );
 }
 
-export const scrollArea: MantineDemo = {
+export const scrollArea: UIDemo = {
   type: 'code',
   component: Demo,
   code,

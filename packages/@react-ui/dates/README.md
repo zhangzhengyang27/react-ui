@@ -1,10 +1,10 @@
-# Mantine dates
+# UI dates
 
 [![npm](https://img.shields.io/npm/dm/@react-ui/dates)](https://www.npmjs.com/package/@react-ui/dates)
 
 Calendars, date and time pickers
 
-[View documentation](https://mantine.dev/)
+[View documentation](#)
 
 ## Installation
 

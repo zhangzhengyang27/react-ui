@@ -4,11 +4,11 @@
   display: flex;
   flex-direction: column;
 
-  @mixin where-light {
+  [data-ui-color-scheme='light'] & {
     --agenda-view-border-color: var(--ui-color-gray-3);
   }
 
-  @mixin where-dark {
+  [data-ui-color-scheme='dark'] & {
     --agenda-view-border-color: var(--ui-color-dark-4);
   }
 }
@@ -47,11 +47,11 @@
   font-size: var(--ui-font-size-sm);
   text-transform: capitalize;
 
-  @mixin where-light {
+  [data-ui-color-scheme='light'] & {
     background-color: var(--ui-color-gray-0);
   }
 
-  @mixin where-dark {
+  [data-ui-color-scheme='dark'] & {
     background-color: var(--ui-color-dark-6);
   }
 }
@@ -66,12 +66,12 @@
     border-bottom: 1px solid var(--agenda-view-border-color);
   }
 
-  @mixin hover {
-    @mixin where-light {
+  &:hover {
+    [data-ui-color-scheme='light'] & {
       background-color: var(--ui-color-gray-0);
     }
 
-    @mixin where-dark {
+    [data-ui-color-scheme='dark'] & {
       background-color: var(--ui-color-dark-6);
     }
   }

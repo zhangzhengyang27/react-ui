@@ -1,5 +1,5 @@
 import { Button, ButtonFactory, Group, PartialVarsResolver } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const inlineCode = `
 import { Button, PartialVarsResolver, ButtonFactory, Group } from '@react-ui/ui';
@@ -43,7 +43,7 @@ function Demo() {
 `;
 
 const providerCode = `
-import { Button, Group, MantineProvider, createTheme } from '@react-ui/ui';
+import { Button, Group, UIProvider, createTheme } from '@react-ui/ui';
 
 const theme = createTheme({
   components: {
@@ -77,12 +77,12 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       <Group>
-        <Button size="xxl">XXL Button</Button>
-        <Button size="xxs">XXS Button</Button>
+        <Button size="xxl">XXL 按钮</Button>
+        <Button size="xxs">XXS 按钮</Button>
       </Group>
-    </MantineProvider>
+    </UIProvider>
   );
 }
 `;
@@ -150,12 +150,12 @@ function Demo() {
   );
 }
 
-export const vars: MantineDemo = {
+export const vars: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   code: [
-    { code: providerCode, language: 'tsx', fileName: 'MantineProvider.tsx' },
-    { code: inlineCode, language: 'tsx', fileName: 'Inline.tsx' },
+    { code: providerCode, language: 'tsx', fileName: '主题提供者.tsx' },
+    { code: inlineCode, language: 'tsx', fileName: '内联.tsx' },
   ],
 };

@@ -1,5 +1,5 @@
 import { Box, useMatches } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Box, useMatches } from '@react-ui/ui';
@@ -33,7 +33,7 @@ function Demo() {
   );
 }
 
-export const useMatchesHook: MantineDemo = {
+export const useMatchesHook: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,6 +1,6 @@
 import { Button, Group, Text } from '@react-ui/ui';
 import { useCounter } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Group, Button, Text } from '@react-ui/ui';
@@ -13,10 +13,10 @@ function Demo() {
     <>
       <Text>Count: {count}</Text>
       <Group justify="center">
-        <Button onClick={handlers.increment}>Increment</Button>
-        <Button onClick={handlers.decrement}>Decrement</Button>
-        <Button onClick={handlers.reset}>Reset</Button>
-        <Button onClick={() => handlers.set(5)}>Set 5</Button>
+        <Button onClick={handlers.increment}>增加</Button>
+        <Button onClick={handlers.decrement}>减少</Button>
+        <Button onClick={handlers.reset}>重置</Button>
+        <Button onClick={() => handlers.set(5)}>设为 5</Button>
       </Group>
     </>
   );
@@ -49,7 +49,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

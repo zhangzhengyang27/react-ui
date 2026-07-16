@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Image } from './Image'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Image', () => {
     it('renders an img with src and alt', () => {
@@ -17,7 +17,7 @@ describe('Image', () => {
     it('applies static classes', () => {
         renderWithProvider(<Image src="image.png" data-testid="image" />)
 
-        expect(screen.getByTestId('image')).toHaveClass('mantine-Image-root')
+        expect(screen.getByTestId('image')).toHaveClass('ui-Image-root')
     })
 
     it('renders fallback content when src is missing', () => {

@@ -1,6 +1,6 @@
 import { Text, TextInput } from '@react-ui/ui';
 import { useMask } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TextInput, Text } from '@react-ui/ui';
@@ -13,7 +13,7 @@ function Demo() {
 
   return (
     <>
-      <TextInput ref={ref} label="Time (HH:MM)" placeholder="__:__" />
+      <TextInput ref={ref} label="时间 (HH:MM)" placeholder="__:__" />
       <Text size="sm" mt="sm">Raw value: {rawValue}</Text>
     </>
   );
@@ -27,7 +27,7 @@ function Demo() {
 
   return (
     <>
-      <TextInput ref={ref} label="Time (HH:MM)" placeholder="__:__" />
+      <TextInput ref={ref} label="时间 (HH:MM)" placeholder="__:__" />
       <Text size="sm" mt="sm">
         Raw value: {rawValue}
       </Text>
@@ -35,7 +35,7 @@ function Demo() {
   );
 }
 
-export const regex: MantineDemo = {
+export const regex: UIDemo = {
   type: 'code',
   code,
   component: Demo,

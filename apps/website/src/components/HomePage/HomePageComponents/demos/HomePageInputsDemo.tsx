@@ -20,7 +20,7 @@ const inputProps = {
 const treeSelectData = [
   {
     value: 'frontend',
-    label: 'Frontend',
+    label: '前端',
     children: [
       { value: 'react', label: 'React' },
       { value: 'vue', label: 'Vue' },
@@ -29,7 +29,7 @@ const treeSelectData = [
   },
   {
     value: 'backend',
-    label: 'Backend',
+    label: '后端',
     children: [
       { value: 'nodejs', label: 'Node.js' },
       { value: 'go', label: 'Go' },
@@ -42,53 +42,53 @@ export function HomePageInputsDemo() {
   return (
     <div>
       <SimpleGrid cols={{ md: 3 }} spacing="xl" verticalSpacing={25}>
-        <TextInput label="Text input" placeholder="Text input" {...inputProps} />
+        <TextInput label="文本输入" placeholder="请输入文本" {...inputProps} />
         <NumberInput
-          label="Number input"
-          placeholder="Number input"
+          label="数字输入"
+          placeholder="请输入数字"
           {...inputProps}
           prefix="$ "
           thousandSeparator
           defaultValue={30712}
         />
         <DatePickerInput
-          label="Date range picker"
-          placeholder="Your last vacation"
+          label="日期范围选择器"
+          placeholder="选择日期范围"
           popoverProps={{ radius: 'md' }}
           type="range"
           {...inputProps}
         />
         <ColorInput
-          label="Color input"
+          label="颜色输入"
           defaultValue="#129ce0"
-          placeholder="What other library has color input?"
+          placeholder="选择颜色"
           format="rgba"
           popoverProps={{ radius: 'md' }}
           {...inputProps}
         />
         <TreeSelect
-          label="Tree select"
-          placeholder="Pick from the tree"
+          label="树形选择"
+          placeholder="从树中选择"
           {...inputProps}
           data={treeSelectData}
           defaultValue="react"
           comboboxProps={{ radius: 'md' }}
         />
 
-        <FileInput label="File input" placeholder="Upload file" {...inputProps} />
+        <FileInput label="文件输入" placeholder="上传文件" {...inputProps} />
 
         <Select
-          label="Select"
-          placeholder="Pick one option"
+          label="下拉选择"
+          placeholder="选择一项"
           {...inputProps}
           checkIconPosition="right"
-          defaultValue="🇫🇷 France"
-          data={['🇩🇪 Germany', '🇫🇷 France', '🇬🇧 United Kingdom', '🇺🇸 United States of America']}
+          defaultValue="🇫🇷 法国"
+          data={['🇩🇪 德国', '🇫🇷 法国', '🇬🇧 英国', '🇺🇸 美国']}
         />
 
         <MultiSelect
-          label="Multiselect"
-          placeholder="Search and pick"
+          label="多选"
+          placeholder="搜索并选择"
           {...inputProps}
           comboboxProps={{ radius: 'md' }}
           defaultValue={['React', 'Vue']}
@@ -98,7 +98,7 @@ export function HomePageInputsDemo() {
         />
 
         <div>
-          <Input.Label size="lg">Pin input</Input.Label>
+          <Input.Label size="lg">PIN 码输入</Input.Label>
           <PinInput {...inputProps} />
         </div>
       </SimpleGrid>

@@ -2,7 +2,7 @@
 
 import { Box, Button, Group, NumberInput, TextInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useForm } from '@react-ui/form';
@@ -13,12 +13,12 @@ function Demo() {
     mode: 'uncontrolled',
     initialValues: { name: '', age: undefined },
     validate: (values) => ({
-      name: values.name.length < 2 ? 'Too short name' : null,
+      name: values.name.length < 2 ? '姓名太短' : null,
       age:
         values.age === undefined
-          ? 'Age is required'
+          ? '年龄必填'
           : values.age < 18
-            ? 'You must be at least 18'
+            ? '你必须至少 18 岁'
             : null,
     }),
   });
@@ -27,21 +27,21 @@ function Demo() {
     <Box maw={340} mx="auto">
       <form onSubmit={form.onSubmit((values) => console.log(values))}>
         <TextInput
-          label="Name"
-          placeholder="Name"
+          label="姓名"
+          placeholder="姓名"
           key={form.key('name')}
           {...form.getInputProps('name')}
         />
         <NumberInput
           mt="sm"
-          label="Age"
-          placeholder="You age"
+          label="年龄"
+          placeholder="你的年龄"
           key={form.key('age')}
           {...form.getInputProps('age')}
         />
 
         <Group justify="flex-end" mt="md">
-          <Button type="submit">Submit</Button>
+          <Button type="submit">提交</Button>
         </Group>
       </form>
     </Box>
@@ -54,12 +54,12 @@ function Demo() {
     mode: 'uncontrolled',
     initialValues: { name: '', age: undefined },
     validate: (values) => ({
-      name: values.name.length < 2 ? 'Too short name' : null,
+      name: values.name.length < 2 ? '姓名太短' : null,
       age:
         values.age === undefined
-          ? 'Age is required'
+          ? '年龄必填'
           : values.age < 18
-            ? 'You must be at least 18'
+            ? '你必须至少 18 岁'
             : null,
     }),
   });
@@ -68,28 +68,28 @@ function Demo() {
     <Box maw={340} mx="auto">
       <form onSubmit={form.onSubmit((values) => console.log(values))}>
         <TextInput
-          label="Name"
-          placeholder="Name"
+          label="姓名"
+          placeholder="姓名"
           key={form.key('name')}
           {...form.getInputProps('name')}
         />
         <NumberInput
           mt="sm"
-          label="Age"
-          placeholder="You age"
+          label="年龄"
+          placeholder="你的年龄"
           key={form.key('age')}
           {...form.getInputProps('age')}
         />
 
         <Group justify="flex-end" mt="md">
-          <Button type="submit">Submit</Button>
+          <Button type="submit">提交</Button>
         </Group>
       </form>
     </Box>
   );
 }
 
-export const validateFunction: MantineDemo = {
+export const validateFunction: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Button, CloseButton, FloatingWindow, Group, Text } from '@react-ui/ui';
 import { SetFloatingWindowPosition, useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useRef } from 'react';
@@ -19,7 +19,7 @@ function Demo() {
     <>
       <Group>
         <Button onClick={handlers.toggle} variant="default">
-          {visible ? 'Hide' : 'Show'} floating window
+          {visible ? '隐藏' : '显示'} 浮动窗口
         </Button>
         <Button onClick={setPosition} variant="default">
           Set position to bottom right corner
@@ -37,7 +37,7 @@ function Demo() {
           setPositionRef={setPositionRef}
         >
           <Group justify="space-between" mb="md">
-            <Text>Set position demo</Text>
+            <Text>设置位置演示</Text>
             <CloseButton onClick={handlers.close} />
           </Group>
           <Text fz="sm">
@@ -61,7 +61,7 @@ function Demo() {
     <>
       <Group>
         <Button onClick={handlers.toggle} variant="default">
-          {visible ? 'Hide' : 'Show'} floating window
+          {visible ? '隐藏' : '显示'} 浮动窗口
         </Button>
         <Button onClick={setPosition} variant="default">
           Set position to bottom right corner
@@ -79,7 +79,7 @@ function Demo() {
           setPositionRef={setPositionRef}
         >
           <Group justify="space-between" mb="md">
-            <Text>Set position demo</Text>
+            <Text>设置位置演示</Text>
             <CloseButton onClick={handlers.close} />
           </Group>
           <Text fz="sm">
@@ -91,7 +91,7 @@ function Demo() {
   );
 }
 
-export const setPosition: MantineDemo = {
+export const setPosition: UIDemo = {
   type: 'code',
   component: Demo,
   code,

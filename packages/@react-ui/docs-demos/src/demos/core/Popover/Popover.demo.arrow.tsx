@@ -1,5 +1,5 @@
 import { Button, Popover, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Popover, Button, Text } from '@react-ui/ui';
@@ -8,10 +8,10 @@ function Demo() {
   return (
     <Popover width={200} opened position="bottom-start" withArrow{{props}}>
       <Popover.Target>
-        <Button>Target element</Button>
+        <Button>目标元素</Button>
       </Popover.Target>
       <Popover.Dropdown>
-        <Text size="xs">Arrow position can be changed for *-start and *-end positions</Text>
+        <Text size="xs">箭头位置可针对 *-start 和 *-end 位置进行更改</Text>
       </Popover.Dropdown>
     </Popover>
   );
@@ -22,16 +22,16 @@ function Wrapper(props: any) {
   return (
     <Popover width={200} opened position="bottom-start" withArrow {...props}>
       <Popover.Target>
-        <Button>Target element</Button>
+        <Button>目标元素</Button>
       </Popover.Target>
       <Popover.Dropdown>
-        <Text size="xs">Arrow position can be changed for *-start and *-end positions</Text>
+        <Text size="xs">箭头位置可针对 *-start 和 *-end 位置进行更改</Text>
       </Popover.Dropdown>
     </Popover>
   );
 }
 
-export const arrow: MantineDemo = {
+export const arrow: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

@@ -1,6 +1,6 @@
 import { InfoIcon } from '@phosphor-icons/react';
 import { Alert } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { staticVariantsControl } from '../../../shared';
 
 const code = `
@@ -21,7 +21,7 @@ function Wrapper(props: any) {
   return <Alert icon={<InfoIcon />} {...props} />;
 }
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

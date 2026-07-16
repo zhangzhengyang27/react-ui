@@ -23,7 +23,7 @@ const defaultProps = {
 
 export const ComboboxPopoverTarget = factory<ComboboxPopoverTargetFactory>((props, ref) => {
     const { children, refProp } = useProps('ComboboxPopoverTarget', defaultProps, props)
-    const child = getSingleElementChild(children)
+    const child = getSingleElementChild(children) as React.ReactElement<any>
 
     if (!child) {
         throw new Error(

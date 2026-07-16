@@ -1,6 +1,6 @@
 import { Button, Group } from '@react-ui/ui';
 import { notifications } from '@react-ui/notifications';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Group, Button } from '@react-ui/ui';
@@ -16,7 +16,7 @@ function Demo() {
             .forEach((_, index) => {
               notifications.show({
                 title: \`Notification \${index + 1}\`,
-                message: 'Most notifications are added to queue',
+                message: '大多数通知已加入队列',
                 autoClose: false,
               });
             });
@@ -46,7 +46,7 @@ function Demo() {
             .forEach((_, index) => {
               notifications.show({
                 title: `Notification ${index + 1}`,
-                message: 'Most notifications are added to queue',
+                message: '大多数通知已加入队列',
                 autoClose: false,
               });
             });
@@ -66,7 +66,7 @@ function Demo() {
   );
 }
 
-export const clean: MantineDemo = {
+export const clean: UIDemo = {
   type: 'code',
   code,
   component: Demo,

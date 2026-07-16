@@ -36,7 +36,7 @@ export function StylesApiTable({ component, componentPrefix }: StylesApiTablePro
   return (
     <>
       <Title order={3} className={classes.title}>
-        {componentName} Styles API
+        {componentName} 样式 API
       </Title>
 
       <Tabs
@@ -47,9 +47,9 @@ export function StylesApiTable({ component, componentPrefix }: StylesApiTablePro
         variant="pills"
       >
         <Tabs.List data-with-radius>
-          <Tabs.Tab value="selectors">Selectors</Tabs.Tab>
-          {hasVariables && <Tabs.Tab value="variables">CSS variables</Tabs.Tab>}
-          {hasModifiers && <Tabs.Tab value="modifiers">Data attributes</Tabs.Tab>}
+          <Tabs.Tab value="selectors">选择器</Tabs.Tab>
+          {hasVariables && <Tabs.Tab value="variables">CSS 变量</Tabs.Tab>}
+          {hasModifiers && <Tabs.Tab value="modifiers">数据属性</Tabs.Tab>}
         </Tabs.List>
 
         <Tabs.Panel value="selectors">

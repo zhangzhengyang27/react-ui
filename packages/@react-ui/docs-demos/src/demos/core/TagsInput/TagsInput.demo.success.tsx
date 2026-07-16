@@ -1,26 +1,26 @@
 import { TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TagsInput } from '@react-ui/ui';
 
 function Demo() {
-  return <TagsInput label="Tags Input" placeholder="Tags Input" data={['React', 'Angular', 'Vue', 'Svelte']} success="Looks good!" />;
+  return <TagsInput label="标签输入" placeholder="标签输入" data={['React', 'Angular', 'Vue', 'Svelte']} success="看起来不错！" />;
 }
 `;
 
 function Demo() {
   return (
     <TagsInput
-      label="Tags Input"
-      placeholder="Tags Input"
+      label="标签输入"
+      placeholder="标签输入"
       data={['React', 'Angular', 'Vue', 'Svelte']}
-      success="Looks good!"
+      success="看起来不错！"
     />
   );
 }
 
-export const success: MantineDemo = {
+export const success: UIDemo = {
   type: 'code',
   component: Demo,
   code,

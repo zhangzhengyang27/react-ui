@@ -6,14 +6,14 @@ export const PasswordInputStylesApi: StylesApiData<PasswordInputFactory> = {
   selectors: {
     ...InputStylesApi.selectors,
     ...InputWrapperStylesApi.selectors,
-    innerInput: 'Actual input element',
+    innerInput: 'Actual input 元素',
     visibilityToggle: 'Visibility toggle button',
   },
 
   vars: {
     root: {
-      '--psi-button-size': 'Controls visibility toggle button `width` and `height`',
-      '--psi-icon-size': 'Controls visibility toggle icon `width` and `height`',
+      '--psi-button-size': '控制 visibility toggle button `width` and `height`',
+      '--psi-icon-size': '控制 visibility toggle icon `width` and `height`',
     },
   },
 };

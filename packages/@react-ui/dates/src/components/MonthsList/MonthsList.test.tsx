@@ -1,5 +1,5 @@
-import { render, screen, tests } from '@mantine-tests/core';
-import { datesTests } from '@mantine-tests/dates';
+import { render, screen, tests } from '@react-ui/tests';
+import { datesTests } from '@react-ui/tests/dates';
 import { MonthsList, MonthsListProps, MonthsListStylesNames } from './MonthsList';
 
 const defaultProps: MonthsListProps = {
@@ -26,13 +26,13 @@ describe('@react-ui/dates/MonthsList', () => {
 
   it('has correct default __staticSelector', () => {
     render(<MonthsList {...defaultProps} />);
-    expect(screen.getByRole('table')).toHaveClass('mantine-MonthsList-monthsList');
-    expect(screen.getAllByRole('button')[0]).toHaveClass('mantine-MonthsList-monthsListControl');
+    expect(screen.getByRole('table')).toHaveClass('ui-MonthsList-monthsList');
+    expect(screen.getAllByRole('button')[0]).toHaveClass('ui-MonthsList-monthsListControl');
   });
 
   it('supports custom __staticSelector', () => {
     render(<MonthsList {...defaultProps} __staticSelector="Calendar" />);
-    expect(screen.getByRole('table')).toHaveClass('mantine-Calendar-monthsList');
-    expect(screen.getAllByRole('button')[0]).toHaveClass('mantine-Calendar-monthsListControl');
+    expect(screen.getByRole('table')).toHaveClass('ui-Calendar-monthsList');
+    expect(screen.getAllByRole('button')[0]).toHaveClass('ui-Calendar-monthsListControl');
   });
 });

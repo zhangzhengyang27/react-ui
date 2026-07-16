@@ -1,6 +1,6 @@
 import { Button, ComboboxPopover, Group } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, ComboboxPopover, Group } from '@react-ui/ui';
@@ -11,13 +11,13 @@ function Demo() {
 
   return (
     <Group>
-      <Button onClick={toggle}>Toggle dropdown</Button>
+      <Button onClick={toggle}>切换下拉</Button>
       <ComboboxPopover
         data={['React', 'Angular', 'Vue', 'Svelte']}
         dropdownOpened={dropdownOpened}
       >
         <ComboboxPopover.Target>
-          <Button variant="default" miw={200}>Select framework</Button>
+          <Button variant="default" miw={200}>选择框架</Button>
         </ComboboxPopover.Target>
       </ComboboxPopover>
     </Group>
@@ -30,7 +30,7 @@ function Demo() {
 
   return (
     <Group>
-      <Button onClick={toggle}>Toggle dropdown</Button>
+      <Button onClick={toggle}>切换下拉</Button>
       <ComboboxPopover data={['React', 'Angular', 'Vue', 'Svelte']} dropdownOpened={dropdownOpened}>
         <ComboboxPopover.Target>
           <Button variant="default" miw={200}>
@@ -42,7 +42,7 @@ function Demo() {
   );
 }
 
-export const dropdownOpened: MantineDemo = {
+export const dropdownOpened: UIDemo = {
   type: 'code',
   component: Demo,
   code,

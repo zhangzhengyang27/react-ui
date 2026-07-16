@@ -1,6 +1,6 @@
 import { Button, FocusTrap, Modal, TextInput } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useDisclosure } from '@react-ui/hooks';
@@ -11,19 +11,19 @@ function Demo() {
 
   return (
     <>
-      <Modal opened={opened} onClose={close} title="Focus demo">
+      <Modal opened={opened} onClose={close} title="焦点演示">
         <FocusTrap.InitialFocus />
-        <TextInput label="First input" placeholder="First input" />
+        <TextInput label="第一个输入" placeholder="第一个输入" />
         <TextInput
           data-autofocus
-          label="Input with initial focus"
-          placeholder="It has data-autofocus attribute"
+          label="带初始焦点的输入"
+          placeholder="具有 data-autofocus 属性"
           mt="md"
         />
       </Modal>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
@@ -35,25 +35,25 @@ function Demo() {
 
   return (
     <>
-      <Modal opened={opened} onClose={close} title="Focus demo">
+      <Modal opened={opened} onClose={close} title="焦点演示">
         <FocusTrap.InitialFocus />
-        <TextInput label="First input" placeholder="First input" />
+        <TextInput label="第一个输入" placeholder="第一个输入" />
         <TextInput
           data-autofocus
-          label="Input with initial focus"
-          placeholder="It has data-autofocus attribute"
+          label="带初始焦点的输入"
+          placeholder="具有 data-autofocus 属性"
           mt="md"
         />
       </Modal>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
 }
 
-export const initialFocusTrap: MantineDemo = {
+export const initialFocusTrap: UIDemo = {
   type: 'code',
   code,
   centered: true,

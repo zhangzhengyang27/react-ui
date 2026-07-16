@@ -1,16 +1,16 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { getStartOfWeek, ScheduleEventData, WeekView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const weekStart = dayjs(getStartOfWeek({ date: new Date(), firstDayOfWeek: 1 }));
+const weekStart = dayjs(getStartOfWeek({ date: new Date('2024-01-15'), firstDayOfWeek: 1 }));
 
 const weekdays = Array.from({ length: 5 }, (_, i) => weekStart.add(i, 'day').format('YYYY-MM-DD'));
 
 const initialEvents: ScheduleEventData[] = [
   ...weekdays.map((day, i) => ({
     id: `lunch-${i}`,
-    title: 'Lunch break',
+    title: '午餐休息',
     start: `${day} 12:00:00`,
     end: `${day} 13:00:00`,
     color: 'red',
@@ -18,14 +18,14 @@ const initialEvents: ScheduleEventData[] = [
   })),
   {
     id: 'team-meeting',
-    title: 'Team meeting',
+    title: '团队会议',
     start: `${weekdays[0]} 10:00:00`,
     end: `${weekdays[0]} 11:00:00`,
     color: 'violet',
   },
   {
     id: 'code-review',
-    title: 'Code review',
+    title: '代码审查',
     start: `${weekdays[2]} 15:00:00`,
     end: `${weekdays[2]} 16:00:00`,
     color: 'green',
@@ -51,7 +51,7 @@ import { getStartOfWeek, ScheduleEventData, WeekView } from '@react-ui/schedule'
 import classes from './Demo.module.css';
 
 const weekStart = dayjs(
-  getStartOfWeek({ date: new Date(), firstDayOfWeek: 1 })
+  getStartOfWeek({ date: new Date('2024-01-15'), firstDayOfWeek: 1 })
 );
 
 const weekdays = Array.from({ length: 5 }, (_, i) =>
@@ -61,7 +61,7 @@ const weekdays = Array.from({ length: 5 }, (_, i) =>
 const initialEvents: ScheduleEventData[] = [
   ...weekdays.map((day, i) => ({
     id: \`lunch-\${i}\`,
-    title: 'Lunch break',
+    title: '午餐休息',
     start: \`\${day} 12:00:00\`,
     end: \`\${day} 13:00:00\`,
     color: 'red',
@@ -69,14 +69,14 @@ const initialEvents: ScheduleEventData[] = [
   })),
   {
     id: 'team-meeting',
-    title: 'Team meeting',
+    title: '团队会议',
     start: \`\${weekdays[0]} 10:00:00\`,
     end: \`\${weekdays[0]} 11:00:00\`,
     color: 'violet',
   },
   {
     id: 'code-review',
-    title: 'Code review',
+    title: '代码审查',
     start: \`\${weekdays[2]} 15:00:00\`,
     end: \`\${weekdays[2]} 16:00:00\`,
     color: 'green',
@@ -121,7 +121,7 @@ function Demo() {
 
   return (
     <WeekView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       startTime="08:00:00"
       endTime="18:00:00"
@@ -162,7 +162,7 @@ function Demo() {
 
   return (
     <WeekView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       startTime="08:00:00"
       endTime="18:00:00"
@@ -184,12 +184,12 @@ function Demo() {
   );
 }
 
-export const backgroundEventsCustomStyle: MantineDemo = {
+export const backgroundEventsCustomStyle: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
-    { fileName: 'Demo.module.css', language: 'css', code: cssCode },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
+    { fileName: '演示样式.module.css', language: 'css', code: cssCode },
   ],
 };

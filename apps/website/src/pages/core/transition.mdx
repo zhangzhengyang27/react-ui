@@ -18,7 +18,7 @@ import { Transition } from '@react-ui/ui';
 function Demo({ opened }: { opened: boolean }) {
   return (
     <Transition mounted={opened} transition="fade">
-      {(styles) => <div style={styles}>Your modal</div>}
+      {(styles) => <div style={styles}>你的模态框</div>}
     </Transition>
   );
 }
@@ -43,7 +43,7 @@ function Demo({ opened }: { opened: boolean }) {
       duration={400}
       timingFunction="ease"
     >
-      {(styles) => <div style={styles}>Your modal</div>}
+      {(styles) => <div style={styles}>你的模态框</div>}
     </Transition>
   );
 }
@@ -71,7 +71,7 @@ function Demo({ opened }: { opened: boolean }) {
 Transition 尊重 `prefers-reduced-motion` 媒体查询和你主题中的 `respectReducedMotion` 设置。当偏好减少动画时，所有过渡会立即完成：
 
 ```tsx
-import { createTheme, MantineProvider, Transition } from '@react-ui/ui';
+import { createTheme, UIProvider, Transition } from '@react-ui/ui';
 
 const theme = createTheme({
   respectReducedMotion: true, // default
@@ -79,11 +79,11 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       <Transition mounted transition="fade" duration={400}>
-        {(styles) => <div style={styles}>Content</div>}
+        {(styles) => <div style={styles}>内容</div>}
       </Transition>
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```
@@ -113,7 +113,7 @@ function Demo() {
       onExit={() => console.log('Exit started')}
       onExited={() => console.log('Exit completed')}
     >
-      {(styles) => <div style={styles}>Content</div>}
+      {(styles) => <div style={styles}>内容</div>}
     </Transition>
   );
 }
@@ -129,7 +129,7 @@ import { Transition } from '@react-ui/ui';
 function Demo() {
   return (
     <Transition mounted={false} keepMounted transition="fade">
-      {(styles) => <div style={styles}>Content</div>}
+      {(styles) => <div style={styles}>内容</div>}
     </Transition>
   );
 }

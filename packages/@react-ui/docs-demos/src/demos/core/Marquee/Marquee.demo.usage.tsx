@@ -1,22 +1,22 @@
 import { Marquee } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
-import { MantineLogo } from '@react-ui/mantine-logo';
+import { UIDemo } from '@react-ui/demo';
+import { UILogo } from '@react-ui/logo';
 
 const code = `
 import { Marquee } from '@react-ui/ui';
-import { MantineLogo } from '@react-ui/mantine-logo';
+import { UILogo } from '@react-ui/logo';
 
 function Demo() {
   return (
     <Marquee gap="lg">
-      <MantineLogo width={80} type="full" color="blue" />
-      <MantineLogo width={80} type="full" color="cyan" />
-      <MantineLogo width={80} type="full" color="teal" />
-      <MantineLogo width={80} type="full" color="green" />
-      <MantineLogo width={80} type="full" color="lime" />
-      <MantineLogo width={80} type="full" color="yellow" />
-      <MantineLogo width={80} type="full" color="orange" />
-      <MantineLogo width={80} type="full" color="red" />
+      <UILogo size={80} type="full" color="blue" />
+      <UILogo size={80} type="full" color="cyan" />
+      <UILogo size={80} type="full" color="teal" />
+      <UILogo size={80} type="full" color="green" />
+      <UILogo size={80} type="full" color="lime" />
+      <UILogo size={80} type="full" color="yellow" />
+      <UILogo size={80} type="full" color="orange" />
+      <UILogo size={80} type="full" color="red" />
     </Marquee>
   );
 }
@@ -25,19 +25,19 @@ function Demo() {
 function Demo() {
   return (
     <Marquee gap="lg">
-      <MantineLogo width={80} type="full" color="blue" />
-      <MantineLogo width={80} type="full" color="cyan" />
-      <MantineLogo width={80} type="full" color="teal" />
-      <MantineLogo width={80} type="full" color="green" />
-      <MantineLogo width={80} type="full" color="lime" />
-      <MantineLogo width={80} type="full" color="yellow" />
-      <MantineLogo width={80} type="full" color="orange" />
-      <MantineLogo width={80} type="full" color="red" />
+      <UILogo size={80} type="full" color="blue" />
+      <UILogo size={80} type="full" color="cyan" />
+      <UILogo size={80} type="full" color="teal" />
+      <UILogo size={80} type="full" color="green" />
+      <UILogo size={80} type="full" color="lime" />
+      <UILogo size={80} type="full" color="yellow" />
+      <UILogo size={80} type="full" color="orange" />
+      <UILogo size={80} type="full" color="red" />
     </Marquee>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

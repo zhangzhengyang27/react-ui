@@ -1,5 +1,5 @@
 import { Button } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { AddressBookIcon } from './_CustomIcon';
 
 const code = `
@@ -7,7 +7,7 @@ import { Button } from '@react-ui/ui';
 import { AddressBookIcon } from './AddressBookIcon';
 
 function Demo() {
-  return <Button leftSection={<AddressBookIcon size={18} />}>Demo</Button>;
+  return <Button leftSection={<AddressBookIcon size={18} />}>演示</Button>;
 }
 `;
 
@@ -38,15 +38,15 @@ export function AddressBookIcon({ size, style, ...others }: AddressBookIconProps
 `;
 
 function Demo() {
-  return <Button leftSection={<AddressBookIcon size={18} />}>Demo</Button>;
+  return <Button leftSection={<AddressBookIcon size={18} />}>演示</Button>;
 }
 
-export const customIcon: MantineDemo = {
+export const customIcon: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   code: [
-    { fileName: 'AddressBookIcon.tsx', code: iconCode, language: 'tsx' },
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
+    { fileName: '通讯录图标.tsx', code: iconCode, language: 'tsx' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
   ],
 };

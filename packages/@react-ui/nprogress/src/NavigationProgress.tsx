@@ -3,7 +3,7 @@ import {
   BasePortalProps,
   ElementProps,
   getDefaultZIndex,
-  MantineColor,
+  UIColor,
   OptionalPortal,
   Progress,
 } from '@react-ui/ui';
@@ -23,7 +23,7 @@ export interface NavigationProgressProps extends ElementProps<'div'> {
   initialProgress?: number;
 
   /** Key of `theme.colors` of any other valid CSS color @default theme.primaryColor */
-  color?: MantineColor;
+  color?: UIColor;
 
   /** Controls height of the progress bar */
   size?: number;

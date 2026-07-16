@@ -1,6 +1,6 @@
 import { CrosshairIcon } from '@phosphor-icons/react';
 import { ColorInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ColorInput } from '@react-ui/ui';
@@ -10,8 +10,8 @@ function Demo() {
   return (
     <ColorInput
       eyeDropperIcon={<CrosshairIcon size={18} />}
-      label="With custom eye dropper icon"
-      placeholder="Pick color"
+      label="自定义取色器图标"
+      placeholder="选择颜色"
     />
   );
 }
@@ -21,13 +21,13 @@ function Demo() {
   return (
     <ColorInput
       eyeDropperIcon={<CrosshairIcon size={18} />}
-      label="With custom eye dropper icon"
-      placeholder="Pick color"
+      label="自定义取色器图标"
+      placeholder="选择颜色"
     />
   );
 }
 
-export const eyeDropperIcon: MantineDemo = {
+export const eyeDropperIcon: UIDemo = {
   type: 'code',
   component: Demo,
   code,

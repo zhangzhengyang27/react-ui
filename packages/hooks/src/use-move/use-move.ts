@@ -32,6 +32,10 @@ export function useMove<T extends HTMLElement = any>(
     const isSliding = useRef(false)
     const frame = useRef(0)
     const cleanupRef = useRef<(() => void) | null>(null)
+    const handlersRef = useRef(handlers)
+    handlersRef.current = handlers
+    const onChangeRef = useRef(onChange)
+    onChangeRef.current = onChange
     const [active, setActive] = useState(false)
 
     useEffect(() => {
@@ -53,7 +57,7 @@ export function useMove<T extends HTMLElement = any>(
 
                         if (rect.width && rect.height) {
                             const _x = clamp((x - rect.left) / rect.width, 0, 1)
-                            onChange({
+                            onChangeRef.current({
                                 x: dir === 'ltr' ? _x : 1 - _x,
                                 y: clamp((y - rect.top) / rect.height, 0, 1)
                             })
@@ -79,7 +83,7 @@ export function useMove<T extends HTMLElement = any>(
             const startScrubbing = () => {
                 if (!isSliding.current && mounted.current) {
                     isSliding.current = true
-                    handlers?.onScrubStart?.()
+                    handlersRef.current?.onScrubStart?.()
                     setActive(true)
                     bindEvents()
                 }
@@ -91,7 +95,7 @@ export function useMove<T extends HTMLElement = any>(
                     setActive(false)
                     unbindEvents()
                     setTimeout(() => {
-                        handlers?.onScrubEnd?.()
+                        handlersRef.current?.onScrubEnd?.()
                     }, 0)
                 }
             }
@@ -102,7 +106,9 @@ export function useMove<T extends HTMLElement = any>(
                 onMouseMove(event)
             }
 
-            const onMouseMove = (event: MouseEvent) => onScrub({ x: event.clientX, y: event.clientY })
+            const onMouseMove = (event: MouseEvent) => {
+                onScrub({ x: event.clientX, y: event.clientY })
+            }
 
             const onTouchStart = (event: TouchEvent) => {
                 if (event.cancelable) {
@@ -136,7 +142,7 @@ export function useMove<T extends HTMLElement = any>(
                 }
             }
         },
-        [dir, onChange, handlers]
+        [dir]
     )
 
     return { ref: refCallback, active }

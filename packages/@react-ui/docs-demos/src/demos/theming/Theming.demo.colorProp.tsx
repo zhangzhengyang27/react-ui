@@ -1,5 +1,5 @@
 import { Button, Group, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Group, Button, Text } from '@react-ui/ui';
@@ -11,8 +11,8 @@ function Demo() {
         Filled variant
       </Text>
       <Group>
-        <Button color="cyan">Theme color</Button>
-        <Button color="#1D72FE">Hex color</Button>
+        <Button color="cyan">主题色</Button>
+        <Button color="#1D72FE">十六进制颜色</Button>
       </Group>
 
       <Text size="sm" mb={5} mt="md" fw={500}>
@@ -51,8 +51,8 @@ function Demo() {
         Filled variant
       </Text>
       <Group>
-        <Button color="cyan">Theme color</Button>
-        <Button color="#1D72FE">Hex color</Button>
+        <Button color="cyan">主题色</Button>
+        <Button color="#1D72FE">十六进制颜色</Button>
       </Group>
 
       <Text size="sm" mb={5} mt="md" fw={500}>
@@ -82,7 +82,7 @@ function Demo() {
   );
 }
 
-export const colorProp: MantineDemo = {
+export const colorProp: UIDemo = {
   type: 'code',
   component: Demo,
   defaultExpanded: false,

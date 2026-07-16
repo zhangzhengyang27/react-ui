@@ -8,8 +8,8 @@ import {
     Factory,
     getSize,
     getThemeColor,
-    MantineColor,
-    MantineSize,
+    UIColor,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -39,37 +39,37 @@ export interface RadioProps extends BoxProps, StylesApiProps<RadioFactory>, Elem
     /** Label rendered next to the radio input */
     label?: React.ReactNode
 
-    /** Description rendered below the label */
+    //** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
-    /** Error rendered below the radio */
+    /** 单选框下方渲染的错误 */
     error?: React.ReactNode
 
-    /** Controls size of the radio and label */
-    size?: MantineSize | (string & {})
+    /** 控制单选框和标签的大小 */
+    size?: UISize | (string & {})
 
-    /** Key of theme.colors or any valid CSS color to set radio background when checked */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 to set radio background when checked */
+    color?: UIColor
 
     /** Color of the radio dot, defaults to white */
     iconColor?: string
 
-    /** If set, required asterisk is added to the label */
+    //** 如果设置，则会在标签上添加必填星号 */
     required?: boolean
 
-    /** Props passed to the root label element */
+    /** 传递给根标签元素的属性 */
     wrapperProps?: Record<string, any>
 
     /** If set, component is controlled */
     checked?: boolean
 
-    /** Default checked state for uncontrolled component */
+    /** 非受控组件的默认选中状态 */
     defaultChecked?: boolean
 
-    /** Called when checked state changes */
+    /** 选中状态变化时调用 */
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 
-    /** Value used when component is used inside Radio.Group */
+    /** 在 Radio.Group 内部使用时使用的值 */
     value?: string
 }
 

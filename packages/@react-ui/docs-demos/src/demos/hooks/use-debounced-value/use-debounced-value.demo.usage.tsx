@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Box, Text, TextInput } from '@react-ui/ui';
 import { useDebouncedValue } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -15,7 +15,7 @@ function Demo() {
   return (
     <>
       <TextInput
-        label="Enter value to see debounce"
+        label="输入值查看防抖"
         value={value}
         onChange={(event) => setValue(event.currentTarget.value)}
       />
@@ -34,8 +34,8 @@ function Demo() {
   return (
     <Box maw={400} mx="auto">
       <TextInput
-        label="Enter value to see debounce effect"
-        placeholder="Enter value to see debounce effect"
+        label="输入值查看防抖效果"
+        placeholder="输入值查看防抖效果"
         value={value}
         onChange={(event) => setValue(event.currentTarget.value)}
       />
@@ -55,7 +55,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

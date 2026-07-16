@@ -1,7 +1,7 @@
 import 'dayjs/locale/ru';
 
 import { DatesProvider } from '@react-ui/dates';
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
 import { Schedule, ScheduleProps, ScheduleStylesNames } from './Schedule';
 
 const defaultProps: ScheduleProps = {
@@ -38,34 +38,34 @@ describe('@react-ui/schedule/Schedule', () => {
 
   it('renders week view by default', () => {
     const { container } = render(<Schedule {...defaultProps} />);
-    expect(container.querySelector('.mantine-WeekView-weekView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-WeekView-weekView')).toBeInTheDocument();
   });
 
   it('supports defaultView prop', () => {
     const { container: dayContainer } = render(<Schedule {...defaultProps} defaultView="day" />);
-    expect(dayContainer.querySelector('.mantine-DayView-dayView')).toBeInTheDocument();
+    expect(dayContainer.querySelector('.ui-DayView-dayView')).toBeInTheDocument();
 
     const { container: monthContainer } = render(
       <Schedule {...defaultProps} defaultView="month" />
     );
-    expect(monthContainer.querySelector('.mantine-MonthView-monthView')).toBeInTheDocument();
+    expect(monthContainer.querySelector('.ui-MonthView-monthView')).toBeInTheDocument();
 
     const { container: yearContainer } = render(<Schedule {...defaultProps} defaultView="year" />);
-    expect(yearContainer.querySelector('.mantine-YearView-yearView')).toBeInTheDocument();
+    expect(yearContainer.querySelector('.ui-YearView-yearView')).toBeInTheDocument();
   });
 
   it('supports controlled view prop', () => {
     const { container, rerender } = render(<Schedule {...defaultProps} view="day" />);
-    expect(container.querySelector('.mantine-DayView-dayView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-DayView-dayView')).toBeInTheDocument();
 
     rerender(<Schedule {...defaultProps} view="week" />);
-    expect(container.querySelector('.mantine-WeekView-weekView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-WeekView-weekView')).toBeInTheDocument();
 
     rerender(<Schedule {...defaultProps} view="month" />);
-    expect(container.querySelector('.mantine-MonthView-monthView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-MonthView-monthView')).toBeInTheDocument();
 
     rerender(<Schedule {...defaultProps} view="year" />);
-    expect(container.querySelector('.mantine-YearView-yearView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-YearView-yearView')).toBeInTheDocument();
   });
 
   it('calls onViewChange when view is changed via header controls', async () => {
@@ -84,16 +84,16 @@ describe('@react-ui/schedule/Schedule', () => {
 
   it('supports uncontrolled view switching', async () => {
     const { container } = render(<Schedule {...defaultProps} defaultView="week" />);
-    expect(container.querySelector('.mantine-WeekView-weekView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-WeekView-weekView')).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole('tab', { name: 'Switch to day view' }));
-    expect(container.querySelector('.mantine-DayView-dayView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-DayView-dayView')).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole('tab', { name: 'Switch to month view' }));
-    expect(container.querySelector('.mantine-MonthView-monthView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-MonthView-monthView')).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole('tab', { name: 'Switch to year view' }));
-    expect(container.querySelector('.mantine-YearView-yearView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-YearView-yearView')).toBeInTheDocument();
   });
 
   it('calls onDateChange when date is changed via navigation', async () => {
@@ -125,16 +125,16 @@ describe('@react-ui/schedule/Schedule', () => {
 
   it('passes common props to all views', () => {
     const { container, rerender } = render(<Schedule {...defaultProps} view="day" radius="lg" />);
-    expect(container.querySelector('.mantine-DayView-dayView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-DayView-dayView')).toBeInTheDocument();
 
     rerender(<Schedule {...defaultProps} view="week" radius="lg" />);
-    expect(container.querySelector('.mantine-WeekView-weekView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-WeekView-weekView')).toBeInTheDocument();
 
     rerender(<Schedule {...defaultProps} view="month" radius="lg" />);
-    expect(container.querySelector('.mantine-MonthView-monthView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-MonthView-monthView')).toBeInTheDocument();
 
     rerender(<Schedule {...defaultProps} view="year" radius="lg" />);
-    expect(container.querySelector('.mantine-YearView-yearView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-YearView-yearView')).toBeInTheDocument();
   });
 
   it('passes dayViewProps only to day view', () => {
@@ -151,7 +151,7 @@ describe('@react-ui/schedule/Schedule', () => {
     );
 
     // Day view should have 11 slots (10 hours + 1 all-day slot)
-    expect(container.querySelectorAll('.mantine-DayView-dayViewSlot')).toHaveLength(11);
+    expect(container.querySelectorAll('.ui-DayView-dayViewSlot')).toHaveLength(11);
   });
 
   it('passes weekViewProps only to week view', () => {
@@ -168,7 +168,7 @@ describe('@react-ui/schedule/Schedule', () => {
       />
     );
 
-    expect(container.querySelector('.mantine-WeekView-weekViewWeekNumber')).not.toBeInTheDocument();
+    expect(container.querySelector('.ui-WeekView-weekViewWeekNumber')).not.toBeInTheDocument();
   });
 
   it('passes monthViewProps only to month view', () => {
@@ -183,7 +183,7 @@ describe('@react-ui/schedule/Schedule', () => {
       />
     );
 
-    expect(container.querySelector('.mantine-MonthView-monthViewWeekNumber')).toBeInTheDocument();
+    expect(container.querySelector('.ui-MonthView-monthViewWeekNumber')).toBeInTheDocument();
   });
 
   it('passes yearViewProps only to year view', () => {
@@ -226,7 +226,7 @@ describe('@react-ui/schedule/Schedule', () => {
       <Schedule {...defaultProps} view="day" renderEventBody={renderSpy} />
     );
 
-    expect(container.querySelector('.mantine-DayView-dayView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-DayView-dayView')).toBeInTheDocument();
     expect(renderSpy).toHaveBeenCalled();
   });
 
@@ -252,7 +252,7 @@ describe('@react-ui/schedule/Schedule', () => {
 
   it('supports __staticSelector prop', () => {
     const { container } = render(<Schedule {...defaultProps} __staticSelector="TestSchedule" />);
-    expect(container.querySelector('.mantine-TestSchedule-root')).toBeInTheDocument();
+    expect(container.querySelector('.ui-TestSchedule-root')).toBeInTheDocument();
   });
 
   it('navigates from week view to day view when clicking day header', async () => {
@@ -268,15 +268,15 @@ describe('@react-ui/schedule/Schedule', () => {
       />
     );
 
-    expect(container.querySelector('.mantine-WeekView-weekView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-WeekView-weekView')).toBeInTheDocument();
 
     // Click on the first day label (weekday + number)
-    const dayLabels = container.querySelectorAll('.mantine-WeekView-weekViewDayLabel');
+    const dayLabels = container.querySelectorAll('.ui-WeekView-weekViewDayLabel');
     await userEvent.click(dayLabels[0] as HTMLElement);
 
     expect(onViewChangeSpy).toHaveBeenCalledWith('day');
     expect(onDateChangeSpy).toHaveBeenCalled();
-    expect(container.querySelector('.mantine-DayView-dayView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-DayView-dayView')).toBeInTheDocument();
   });
 
   it('navigates from month view to week view when clicking week number', async () => {
@@ -293,15 +293,15 @@ describe('@react-ui/schedule/Schedule', () => {
       />
     );
 
-    expect(container.querySelector('.mantine-MonthView-monthView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-MonthView-monthView')).toBeInTheDocument();
 
     // Click on the first week number
-    const weekNumbers = container.querySelectorAll('.mantine-MonthView-monthViewWeekNumber');
+    const weekNumbers = container.querySelectorAll('.ui-MonthView-monthViewWeekNumber');
     await userEvent.click(weekNumbers[0] as HTMLElement);
 
     expect(onViewChangeSpy).toHaveBeenCalledWith('week');
     expect(onDateChangeSpy).toHaveBeenCalled();
-    expect(container.querySelector('.mantine-WeekView-weekView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-WeekView-weekView')).toBeInTheDocument();
   });
 
   it('handles both controlled and uncontrolled state simultaneously', async () => {

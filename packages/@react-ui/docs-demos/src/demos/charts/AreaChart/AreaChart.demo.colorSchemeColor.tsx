@@ -1,14 +1,14 @@
 import { AreaChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './_data';
 import classes from './AreaChart.demo.colorSchemeColor.module.css';
 
 const cssCode = `.root {
-  @mixin light {
+  [data-ui-color-scheme='light'] & {
     --area-color: var(--ui-color-orange-8);
   }
 
-  @mixin dark {
+  [data-ui-color-scheme='dark'] & {
     --area-color: var(--ui-color-lime-4);
   }
 }
@@ -26,7 +26,7 @@ function Demo() {
       data={data}
       dataKey="date"
       className={classes.root}
-      series={[{ name: 'Apples', color: 'var(--area-color)' }]}
+      series={[{ name: '苹果', color: 'var(--area-color)' }]}
     />
   );
 }
@@ -39,17 +39,17 @@ function Demo() {
       data={data}
       dataKey="date"
       className={classes.root}
-      series={[{ name: 'Apples', color: 'var(--area-color)' }]}
+      series={[{ name: '苹果', color: 'var(--area-color)' }]}
     />
   );
 }
 
-export const colorSchemeColor: MantineDemo = {
+export const colorSchemeColor: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
-    { code: cssCode, language: 'scss', fileName: 'Demo.module.css' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
+    { code: cssCode, language: 'scss', fileName: '演示样式.module.css' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

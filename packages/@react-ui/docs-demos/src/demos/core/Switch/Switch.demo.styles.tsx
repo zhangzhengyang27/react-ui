@@ -1,5 +1,5 @@
 import { Switch } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Switch.demo.styles.module.css';
 
 const cssCode = `.track {
@@ -34,12 +34,12 @@ function Demo() {
   return <Switch classNames={classes} size="lg" />;
 }
 
-export const styles: MantineDemo = {
+export const styles: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
   ],
   centered: true,
   defaultExpanded: false,

@@ -1,5 +1,5 @@
 import { Table, TableProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { elements } from './_data';
 
 function Wrapper(props: TableProps) {
@@ -7,9 +7,9 @@ function Wrapper(props: TableProps) {
     <Table {...props}>
       <Table.Thead>
         <Table.Tr>
-          <Table.Th>Position</Table.Th>
-          <Table.Th>Name</Table.Th>
-          <Table.Th>Symbol</Table.Th>
+          <Table.Th>位置</Table.Th>
+          <Table.Th>姓名</Table.Th>
+          <Table.Th>符号</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>
@@ -37,7 +37,7 @@ function Demo() {
 }
 `;
 
-export const spacingConfigurator: MantineDemo = {
+export const spacingConfigurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

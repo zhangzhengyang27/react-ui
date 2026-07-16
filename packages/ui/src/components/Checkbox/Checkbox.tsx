@@ -9,9 +9,9 @@ import {
     getRadius,
     getSize,
     getThemeColor,
-    MantineColor,
-    MantineRadius,
-    MantineSize,
+    UIColor,
+    UIRadius,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
@@ -38,49 +38,49 @@ export type CheckboxCssVariables = {
 }
 
 export interface CheckboxProps extends BoxProps, StylesApiProps<CheckboxFactory>, ElementProps<'input', 'size'> {
-    /** Label rendered next to the checkbox input */
+    /** 渲染在复选框输入旁的标签 */
     label?: React.ReactNode
 
-    /** Description rendered below the label */
+    /** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
-    /** Error rendered below the checkbox */
+    /** 渲染在复选框下方的错误 */
     error?: React.ReactNode
 
-    /** Controls size of the checkbox and label */
-    size?: MantineSize | (string & {})
+    /** 控制复选框和标签的大小 */
+    size?: UISize | (string & {})
 
-    /** Key of theme.radius or any valid CSS value to set border-radius of the checkbox square */
-    radius?: MantineRadius
+    /** 主题圆角键或任意有效 CSS 值，用于设置复选框方块的 border-radius */
+    radius?: UIRadius
 
-    /** Key of theme.colors or any valid CSS color to set checkbox background when checked */
-    color?: MantineColor
+    /** 主题色键或任意有效 CSS 颜色，用于设置选中时复选框的背景色 */
+    color?: UIColor
 
-    /** Color of the check icon, defaults to white */
+    /** 勾选图标的颜色，默认为白色 */
     iconColor?: string
 
-    /** Custom icon displayed inside the checkbox when checked or indeterminate */
+    /** 选中或不确定状态时显示在复选框内的自定义图标 */
     icon?: React.ReactNode | ((props: { indeterminate: boolean; checked: boolean }) => React.ReactNode)
 
-    /** If set, the checkbox is displayed in an indeterminate state */
+    /** 如果设置，则复选框显示为不确定状态 */
     indeterminate?: boolean
 
-    /** If set, required asterisk is added to the label */
+    /** 如果设置，则会在标签上添加必填星号 */
     required?: boolean
 
-    /** Props passed to the root label element */
+    /** 传递给根标签元素的属性 */
     wrapperProps?: Record<string, any>
 
-    /** If set, component is controlled */
+    /** 如果设置，则组件为受控组件 */
     checked?: boolean
 
-    /** Default checked state for uncontrolled component */
+    /** 非受控组件的默认选中状态 */
     defaultChecked?: boolean
 
-    /** Called when checked state changes */
+    /** 选中状态变化时调用 */
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 
-    /** Value used when component is used inside Checkbox.Group */
+    /** 在 Checkbox.Group 内使用时所用的值 */
     value?: string
 }
 

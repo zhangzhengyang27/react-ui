@@ -4,14 +4,12 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: alpha(var(--ui-color-body), 0.85);
+  background-color: color-mix(in srgb, var(--ui-color-body) 85%, transparent);
   backdrop-filter: blur(5px);
 
   &[data-without-nav] {
     height: var(--docs-main-header-section-height);
   }
-
-  --nav-section-height: calc(var(--docs-header-height) - var(--docs-main-header-section-height));
 }
 
 .headerMain {
@@ -36,7 +34,7 @@
   gap: 7px;
   margin-inline-start: 40px;
 
-  @mixin smaller-than $docs-mdx-breakpoint {
+  @media (max-width: 67.5em) {
     display: none;
   }
 }
@@ -50,41 +48,16 @@
   font-size: var(--ui-font-size-sm);
   border-radius: var(--ui-radius-md);
   font-weight: 600;
+  white-space: nowrap;
 
-  @mixin hover {
+  &:hover {
     background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-6));
     color: var(--ui-color-bright);
   }
-}
-
-.headerNavigation {
-  height: var(--nav-section-height);
-  display: flex;
-  align-items: flex-end;
-  gap: var(--ui-spacing-lg);
-
-  @mixin smaller-than $docs-mdx-breakpoint {
-    display: none;
-  }
-}
-
-.navigationLink {
-  text-decoration: none;
-  display: block;
-  height: 100%;
-  line-height: var(--nav-section-height);
-  font-size: var(--ui-font-size-sm);
-  font-weight: 600;
-  border-bottom: 2px solid transparent;
-  color: light-dark(var(--ui-color-gray-7), var(--ui-color-dark-0));
 
   &[data-active] {
-    border-bottom-color: light-dark(var(--ui-color-blue-6), var(--ui-color-blue-5));
-    color: var(--ui-color-bright);
-  }
-
-  @mixin hover {
-    color: var(--ui-color-bright);
+    color: var(--ui-color-blue-6);
+    background-color: light-dark(var(--ui-color-blue-0), var(--ui-color-dark-6));
   }
 }
 
@@ -100,19 +73,19 @@
   align-items: center;
   gap: var(--ui-spacing-md);
 
-  @mixin smaller-than $docs-mdx-breakpoint {
+  @media (max-width: 67.5em) {
     display: none;
   }
 }
 
 .burger {
-  @mixin larger-than $docs-mdx-breakpoint {
+  @media (min-width: 67.5em) {
     display: none;
   }
 }
 
 .mobileHeaderControls {
-  @mixin larger-than $docs-mdx-breakpoint {
+  @media (min-width: 67.5em) {
     display: none;
   }
 }

@@ -3,7 +3,7 @@ import 'dayjs/locale/ru';
 import dayjs from 'dayjs';
 import { fireEvent } from '@testing-library/react';
 import { DatesProvider } from '@react-ui/dates';
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
 import { getWeekNumber, toDateString } from '../../utils';
 import { MonthView, MonthViewProps, MonthViewStylesNames } from './MonthView';
 
@@ -50,7 +50,7 @@ describe('@react-ui/schedule/MonthView', () => {
 
   it('renders days of the month (date string)', () => {
     const { container } = render(<MonthView {...defaultProps} />);
-    const days = container.querySelectorAll('.mantine-MonthView-monthViewDay');
+    const days = container.querySelectorAll('.ui-MonthView-monthViewDay');
     expect(days.length).toStrictEqual(42);
     expect(days[0].textContent).toStrictEqual('27'); // Oct 27
     expect(days[days.length - 1].textContent).toStrictEqual('7'); // Dec 7
@@ -58,7 +58,7 @@ describe('@react-ui/schedule/MonthView', () => {
 
   it('renders days of the month (Date object)', () => {
     const { container } = render(<MonthView date={new Date(2025, 10, 5)} />);
-    const days = container.querySelectorAll('.mantine-MonthView-monthViewDay');
+    const days = container.querySelectorAll('.ui-MonthView-monthViewDay');
     expect(days.length).toStrictEqual(42);
     expect(days[0].textContent).toStrictEqual('27'); // Oct 27
     expect(days[days.length - 1].textContent).toStrictEqual('7'); // Dec 7
@@ -66,7 +66,7 @@ describe('@react-ui/schedule/MonthView', () => {
 
   it('supports consistentWeeks={false} prop', () => {
     const { container } = render(<MonthView {...defaultProps} consistentWeeks={false} />);
-    const days = container.querySelectorAll('.mantine-MonthView-monthViewDay');
+    const days = container.querySelectorAll('.ui-MonthView-monthViewDay');
     expect(days.length).toStrictEqual(35);
     expect(days[0].textContent).toStrictEqual('27'); // Oct 27
     expect(days[days.length - 1].textContent).toStrictEqual('30'); // Nov 30
@@ -74,7 +74,7 @@ describe('@react-ui/schedule/MonthView', () => {
 
   it('renders week numbers when withWeekNumbers is true', () => {
     const { container } = render(<MonthView {...defaultProps} withWeekNumbers />);
-    const weekNumbers = container.querySelectorAll('.mantine-MonthView-monthViewWeekNumber');
+    const weekNumbers = container.querySelectorAll('.ui-MonthView-monthViewWeekNumber');
     expect(weekNumbers.length).toStrictEqual(6);
     expect(weekNumbers[0].textContent).toStrictEqual('44');
     expect(weekNumbers[weekNumbers.length - 1].textContent).toStrictEqual('49');
@@ -82,7 +82,7 @@ describe('@react-ui/schedule/MonthView', () => {
 
   it('renders weekdays names when withWeekDays is true', () => {
     const { container } = render(<MonthView {...defaultProps} withWeekDays />);
-    const weekdays = container.querySelectorAll('.mantine-MonthView-monthViewWeekday');
+    const weekdays = container.querySelectorAll('.ui-MonthView-monthViewWeekday');
     expect(weekdays.length).toStrictEqual(7);
     expect(weekdays[0].textContent).toStrictEqual('Mon');
     expect(weekdays[weekdays.length - 1].textContent).toStrictEqual('Sun');
@@ -90,14 +90,14 @@ describe('@react-ui/schedule/MonthView', () => {
 
   it('supports custom firstDayOfWeek (prop)', () => {
     const { container } = render(<MonthView {...defaultProps} withWeekDays firstDayOfWeek={0} />);
-    const weekdays = container.querySelectorAll('.mantine-MonthView-monthViewWeekday');
+    const weekdays = container.querySelectorAll('.ui-MonthView-monthViewWeekday');
     expect(weekdays.length).toStrictEqual(7);
     expect(weekdays[0].textContent).toStrictEqual('Sun');
     expect(weekdays[weekdays.length - 1].textContent).toStrictEqual('Sat');
 
     const firstWeekDays = container
-      .querySelectorAll('.mantine-MonthView-monthViewWeek')[0]
-      .querySelectorAll('.mantine-MonthView-monthViewDay');
+      .querySelectorAll('.ui-MonthView-monthViewWeek')[0]
+      .querySelectorAll('.ui-MonthView-monthViewDay');
     expect(firstWeekDays[0].textContent).toStrictEqual('26'); // Oct 26
     expect(firstWeekDays[firstWeekDays.length - 1].textContent).toStrictEqual('1'); // Nov 1
   });
@@ -108,7 +108,7 @@ describe('@react-ui/schedule/MonthView', () => {
         <MonthView {...defaultProps} withWeekDays />
       </DatesProvider>
     );
-    const weekdays = container.querySelectorAll('.mantine-MonthView-monthViewWeekday');
+    const weekdays = container.querySelectorAll('.ui-MonthView-monthViewWeekday');
     expect(weekdays.length).toStrictEqual(7);
     expect(weekdays[0].textContent).toStrictEqual('Sun');
     expect(weekdays[weekdays.length - 1].textContent).toStrictEqual('Sat');
@@ -116,7 +116,7 @@ describe('@react-ui/schedule/MonthView', () => {
 
   it('supports locale (prop)', () => {
     const { container } = render(<MonthView {...defaultProps} withWeekDays locale="ru" />);
-    const weekdays = container.querySelectorAll('.mantine-MonthView-monthViewWeekday');
+    const weekdays = container.querySelectorAll('.ui-MonthView-monthViewWeekday');
     expect(weekdays[0].textContent).toStrictEqual('пнд');
   });
 
@@ -126,27 +126,27 @@ describe('@react-ui/schedule/MonthView', () => {
         <MonthView {...defaultProps} withWeekDays />
       </DatesProvider>
     );
-    const weekdays = container.querySelectorAll('.mantine-MonthView-monthViewWeekday');
+    const weekdays = container.querySelectorAll('.ui-MonthView-monthViewWeekday');
     expect(weekdays[0].textContent).toStrictEqual('пнд');
   });
 
   it('does not render weekdays names when withWeekDays is false', () => {
     const { container } = render(<MonthView {...defaultProps} withWeekDays={false} />);
-    const weekdays = container.querySelectorAll('.mantine-MonthView-monthViewWeekday');
+    const weekdays = container.querySelectorAll('.ui-MonthView-monthViewWeekday');
     expect(weekdays.length).toStrictEqual(0);
-    expect(container.querySelector('.mantine-MonthView-monthViewWeekdays')).not.toBeInTheDocument();
+    expect(container.querySelector('.ui-MonthView-monthViewWeekdays')).not.toBeInTheDocument();
   });
 
   it('allows changing weekdayFormat', () => {
     const { container } = render(<MonthView {...defaultProps} withWeekDays weekdayFormat="dddd" />);
-    const weekdays = container.querySelectorAll('.mantine-MonthView-monthViewWeekday');
+    const weekdays = container.querySelectorAll('.ui-MonthView-monthViewWeekday');
     expect(weekdays[0].textContent).toStrictEqual('Monday');
     expect(weekdays[weekdays.length - 1].textContent).toStrictEqual('Sunday');
   });
 
   it('supports weekendDays prop', () => {
     const { container } = render(<MonthView {...defaultProps} withWeekDays weekendDays={[1, 2]} />);
-    const days = container.querySelectorAll('.mantine-MonthView-monthViewDay');
+    const days = container.querySelectorAll('.ui-MonthView-monthViewDay');
     expect(days[0]).toHaveAttribute('data-weekend'); // Oct 27, Monday
     expect(days[1]).toHaveAttribute('data-weekend'); // Oct 28, Tuesday
     expect(days[2]).not.toHaveAttribute('data-weekend'); // Oct 29, Wednesday
@@ -155,7 +155,7 @@ describe('@react-ui/schedule/MonthView', () => {
 
   it('allows setting empty array to weekendDays prop', () => {
     const { container } = render(<MonthView {...defaultProps} withWeekDays weekendDays={[]} />);
-    const days = container.querySelectorAll('.mantine-MonthView-monthViewDay');
+    const days = container.querySelectorAll('.ui-MonthView-monthViewDay');
     days.forEach((day) => {
       expect(day).not.toHaveAttribute('data-weekend');
     });
@@ -164,16 +164,16 @@ describe('@react-ui/schedule/MonthView', () => {
   describe('withWeekendDays', () => {
     it('renders all 7 columns by default', () => {
       const { container } = render(<MonthView {...defaultProps} withWeekDays />);
-      expect(container.querySelectorAll('.mantine-MonthView-monthViewWeekday')).toHaveLength(7);
-      expect(container.querySelectorAll('.mantine-MonthView-monthViewDay')).toHaveLength(42);
+      expect(container.querySelectorAll('.ui-MonthView-monthViewWeekday')).toHaveLength(7);
+      expect(container.querySelectorAll('.ui-MonthView-monthViewDay')).toHaveLength(42);
     });
 
     it('hides weekend days when withWeekendDays is false', () => {
       const { container } = render(
         <MonthView {...defaultProps} withWeekDays withWeekendDays={false} weekdayFormat="dddd" />
       );
-      const weekdays = container.querySelectorAll('.mantine-MonthView-monthViewWeekday');
-      const days = container.querySelectorAll('.mantine-MonthView-monthViewDay');
+      const weekdays = container.querySelectorAll('.ui-MonthView-monthViewWeekday');
+      const days = container.querySelectorAll('.ui-MonthView-monthViewDay');
 
       expect(weekdays).toHaveLength(5);
       expect(weekdays[0].textContent).toStrictEqual('Monday');
@@ -186,7 +186,7 @@ describe('@react-ui/schedule/MonthView', () => {
 
     it('sets --month-view-columns variable to the number of visible columns', () => {
       const { container } = render(<MonthView {...defaultProps} withWeekendDays={false} />);
-      const root = container.querySelector('.mantine-MonthView-monthView') as HTMLElement;
+      const root = container.querySelector('.ui-MonthView-monthView') as HTMLElement;
       expect(root).toHaveAttribute('data-without-weekend-days');
       expect(root.style.getPropertyValue('--month-view-columns')).toBe('5');
     });
@@ -201,11 +201,11 @@ describe('@react-ui/schedule/MonthView', () => {
           weekdayFormat="dddd"
         />
       );
-      const weekdays = container.querySelectorAll('.mantine-MonthView-monthViewWeekday');
+      const weekdays = container.querySelectorAll('.ui-MonthView-monthViewWeekday');
       expect(weekdays).toHaveLength(5);
       expect(weekdays[0].textContent).toStrictEqual('Wednesday');
       expect(weekdays[weekdays.length - 1].textContent).toStrictEqual('Sunday');
-      expect(container.querySelectorAll('.mantine-MonthView-monthViewDay')).toHaveLength(30);
+      expect(container.querySelectorAll('.ui-MonthView-monthViewDay')).toHaveLength(30);
     });
 
     it('hides weekend days relative to firstDayOfWeek', () => {
@@ -218,7 +218,7 @@ describe('@react-ui/schedule/MonthView', () => {
           weekdayFormat="dddd"
         />
       );
-      const weekdays = container.querySelectorAll('.mantine-MonthView-monthViewWeekday');
+      const weekdays = container.querySelectorAll('.ui-MonthView-monthViewWeekday');
       expect(weekdays).toHaveLength(5);
       expect(weekdays[0].textContent).toStrictEqual('Monday');
       expect(weekdays[weekdays.length - 1].textContent).toStrictEqual('Friday');
@@ -281,7 +281,7 @@ describe('@react-ui/schedule/MonthView', () => {
 
       const fragments = screen
         .getAllByText('Trip')
-        .map((node) => node.closest('.mantine-ScheduleEvent-event'));
+        .map((node) => node.closest('.ui-ScheduleEvent-event'));
 
       expect(fragments).toHaveLength(2);
       expect(fragments[0]).toHaveAttribute('data-clip-end');
@@ -296,8 +296,8 @@ describe('@react-ui/schedule/MonthView', () => {
       <MonthView {...defaultProps} __staticSelector="Test" withWeekDays withWeekNumbers />
     );
 
-    expect(container.querySelector('.mantine-Test-monthView')).toBeInTheDocument();
-    expect(container.querySelector('.mantine-MonthView-monthView')).not.toBeInTheDocument();
+    expect(container.querySelector('.ui-Test-monthView')).toBeInTheDocument();
+    expect(container.querySelector('.ui-MonthView-monthView')).not.toBeInTheDocument();
   });
 
   it('supports onDayClick prop', async () => {
@@ -394,30 +394,30 @@ describe('@react-ui/schedule/MonthView', () => {
   it('sets data-today attribute on today date when highlightToday is true', () => {
     jest.useFakeTimers().setSystemTime(new Date('2025-11-15'));
     const { container, rerender } = render(<MonthView {...defaultProps} highlightToday />);
-    const today = container.querySelector('.mantine-MonthView-monthViewDay[data-today]')!;
+    const today = container.querySelector('.ui-MonthView-monthViewDay[data-today]')!;
     expect(today).toBeInTheDocument();
     expect(today.textContent).toStrictEqual('15');
 
     rerender(<MonthView {...defaultProps} highlightToday={false} />);
     expect(
-      container.querySelector('.mantine-MonthView-monthViewDay[data-today]')
+      container.querySelector('.ui-MonthView-monthViewDay[data-today]')
     ).not.toBeInTheDocument();
     jest.useRealTimers();
   });
 
   it('supports withOutsideDays={false} prop', () => {
     const { container } = render(<MonthView date="2025-11-01" withOutsideDays={false} />);
-    const days = container.querySelectorAll('button.mantine-MonthView-monthViewDay');
+    const days = container.querySelectorAll('button.ui-MonthView-monthViewDay');
     expect(days.length).toStrictEqual(30);
     expect(days[0].textContent).toStrictEqual('1');
   });
 
   it('renders header based on withHeader prop', () => {
     const { container, rerender } = render(<MonthView {...defaultProps} withHeader={false} />);
-    expect(container.querySelector('.mantine-MonthView-header')).not.toBeInTheDocument();
+    expect(container.querySelector('.ui-MonthView-header')).not.toBeInTheDocument();
 
     rerender(<MonthView {...defaultProps} withHeader />);
-    expect(container.querySelector('.mantine-MonthView-header')).toBeInTheDocument();
+    expect(container.querySelector('.ui-MonthView-header')).toBeInTheDocument();
   });
 
   it('supports todayControlProps, nextControlProps, previousControlProps and viewSelectProps props', () => {
@@ -432,16 +432,16 @@ describe('@react-ui/schedule/MonthView', () => {
     );
 
     expect(
-      container.querySelector('button.mantine-MonthView-headerControl[data-today-prop]')
+      container.querySelector('button.ui-MonthView-headerControl[data-today-prop]')
     ).toBeInTheDocument();
     expect(
-      container.querySelector('button.mantine-MonthView-headerControl[data-next-prop]')
+      container.querySelector('button.ui-MonthView-headerControl[data-next-prop]')
     ).toBeInTheDocument();
     expect(
-      container.querySelector('button.mantine-MonthView-headerControl[data-previous-prop]')
+      container.querySelector('button.ui-MonthView-headerControl[data-previous-prop]')
     ).toBeInTheDocument();
     expect(
-      container.querySelector('.mantine-MonthView-viewSelect[data-view-select-prop]')
+      container.querySelector('.ui-MonthView-viewSelect[data-view-select-prop]')
     ).toBeInTheDocument();
   });
 
@@ -628,7 +628,7 @@ describe('@react-ui/schedule/MonthView', () => {
 
       const tripFragments = screen
         .getAllByText('Trip')
-        .map((node) => node.closest('.mantine-ScheduleEvent-event'));
+        .map((node) => node.closest('.ui-ScheduleEvent-event'));
 
       expect(tripFragments).toHaveLength(2);
       expect(tripFragments[0]).toHaveAttribute('data-clip-end');
@@ -667,7 +667,7 @@ describe('@react-ui/schedule/MonthView', () => {
         />
       );
 
-      fireEvent.dragStart(screen.getAllByText('Trip')[0].closest('.mantine-ScheduleEvent-event')!, {
+      fireEvent.dragStart(screen.getAllByText('Trip')[0].closest('.ui-ScheduleEvent-event')!, {
         dataTransfer: {
           setData: jest.fn(),
         },
@@ -791,7 +791,7 @@ describe('@react-ui/schedule/MonthView', () => {
       render(<MonthView {...defaultProps} mode="static" />);
       const buttons = screen
         .getAllByRole('button')
-        .filter((btn) => btn.classList.contains('mantine-MonthView-monthViewDay'));
+        .filter((btn) => btn.classList.contains('ui-MonthView-monthViewDay'));
 
       buttons.forEach((btn) => {
         expect(btn).toHaveAttribute('tabIndex', '-1');
@@ -929,11 +929,11 @@ describe('@react-ui/schedule/MonthView', () => {
         <MonthView {...defaultProps} withAgenda events={agendaEvents} />
       );
 
-      expect(container.querySelector('.mantine-MonthView-agendaView')).not.toBeInTheDocument();
+      expect(container.querySelector('.ui-MonthView-agendaView')).not.toBeInTheDocument();
 
       await userEvent.click(screen.getAllByText('Agenda')[0]);
 
-      expect(container.querySelector('.mantine-MonthView-agendaView')).toBeInTheDocument();
+      expect(container.querySelector('.ui-MonthView-agendaView')).toBeInTheDocument();
     });
 
     it('toggles AgendaView off when agenda button is clicked again', async () => {
@@ -941,10 +941,10 @@ describe('@react-ui/schedule/MonthView', () => {
         <MonthView {...defaultProps} withAgenda events={agendaEvents} />
       );
       await userEvent.click(screen.getAllByText('Agenda')[0]);
-      expect(container.querySelector('.mantine-MonthView-agendaView')).toBeInTheDocument();
+      expect(container.querySelector('.ui-MonthView-agendaView')).toBeInTheDocument();
 
       await userEvent.click(screen.getAllByText('Agenda')[0]);
-      expect(container.querySelector('.mantine-MonthView-agendaView')).not.toBeInTheDocument();
+      expect(container.querySelector('.ui-MonthView-agendaView')).not.toBeInTheDocument();
     });
 
     it('passes the visible month as the agenda range', async () => {

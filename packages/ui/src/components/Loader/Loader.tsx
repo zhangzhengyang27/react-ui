@@ -7,13 +7,13 @@ import {
     Factory,
     getSize,
     getThemeColor,
-    MantineColor,
-    MantineSize,
+    UIColor,
+    UISize,
     StylesApiProps,
     useProps,
     useStyles
 } from '../../core'
-import type { MantineLoader, MantineLoadersRecord } from './Loader.types'
+import type { UILoader, UILoadersRecord } from './Loader.types'
 import { Bars } from './loaders/Bars'
 import { Dots } from './loaders/Dots'
 import { Oval } from './loaders/Oval'
@@ -29,16 +29,16 @@ export interface LoaderProps
         StylesApiProps<LoaderFactory>,
         ElementProps<'svg', 'display' | 'opacity'> {
     /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. @default 'md' */
-    size?: MantineSize | (string & {}) | number
+    size?: UISize | (string & {}) | number
 
     /** Key of `theme.colors` or any valid CSS color @default theme.primaryColor */
-    color?: MantineColor
+    color?: UIColor
 
     /** Loader type, key of `loaders` prop @default 'oval' */
-    type?: MantineLoader
+    type?: UILoader
 
     /** Object of loaders components, can be customized via default props or inline. */
-    loaders?: MantineLoadersRecord
+    loaders?: UILoadersRecord
 
     /** Overrides default loader with given content */
     children?: React.ReactNode
@@ -54,7 +54,7 @@ export type LoaderFactory = Factory<{
     }
 }>
 
-export const defaultLoaders: MantineLoadersRecord = {
+export const defaultLoaders: UILoadersRecord = {
     bars: Bars,
     oval: Oval,
     dots: Dots
@@ -74,7 +74,7 @@ const varsResolver = createVarsResolver<LoaderFactory>((theme, { size, color }) 
 
 /**
  * 加载指示器，支持 oval/dots/bars 三种内置类型及自定义。
- * 对齐 mantine Loader。样式采用 CSS module（与 ActionIcon 一致），不依赖 emotion。
+ * 对齐 ui Loader。样式采用 CSS module（与 ActionIcon 一致），不依赖 emotion。
  */
 export const Loader = factory<LoaderFactory>((_props, _ref) => {
     const props = useProps('Loader', defaultProps, _props)

@@ -63,7 +63,7 @@ function onSameLevel(target: HTMLButtonElement, sibling: HTMLButtonElement, pare
 
 /**
  * 定义获取元素兄弟节点的配置参数
- * @param {string} parentSelector - 用于查找父节点的选择器，例如 '[role="tablist"]', '.mantine-Text-root'
+ * @param {string} parentSelector - 用于查找父节点的选择器，例如 '[role="tablist"]', '.ui-Text-root'
  * @param {string} siblingSelector - 用于查找兄弟元素的选择器，例如 '[data-tab]'
  * @param {boolean} [loop] - 是否允许在下一个/上一个索引处循环
  * @param {'vertical' | 'horizontal'} orientation - 确定使用哪些方向键

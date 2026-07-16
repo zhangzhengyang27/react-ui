@@ -9,8 +9,8 @@ import {
     type BoxProps,
     type ElementProps,
     type Factory,
-    type MantineColor,
-    type MantineRadius,
+    type UIColor,
+    type UIRadius,
     type StylesApiProps
 } from '../../core'
 import { CloseButton } from '../CloseButton'
@@ -23,11 +23,11 @@ export type AlertCssVariables = {
 }
 
 export interface AlertProps extends BoxProps, ElementProps<'div', 'title'>, StylesApiProps<AlertFactory> {
-    /** Key of theme.radius or any valid CSS value */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 */
+    radius?: UIRadius
 
-    /** Key of theme.colors or any valid CSS color */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 */
+    color?: UIColor
 
     /** Alert title */
     title?: React.ReactNode
@@ -38,10 +38,10 @@ export interface AlertProps extends BoxProps, ElementProps<'div', 'title'>, Styl
     /** Determines whether close button should be displayed */
     withCloseButton?: boolean
 
-    /** Called when the close button is clicked */
+    /** 点击关闭按钮时调用 */
     onClose?: () => void
 
-    /** Close button aria-label */
+    /** 关闭按钮的 aria-label */
     closeButtonLabel?: string
 
     /** If set, adjusts text color based on background color for filled variant */
@@ -164,7 +164,7 @@ export const Alert = factory<AlertFactory>((_props, ref) => {
 })
 
 Alert.classes = classes
-Alert.displayName = '@mantine/core/Alert'
+Alert.displayName = '@react-ui/ui/Alert'
 
 export namespace Alert {
     export type Props = AlertProps

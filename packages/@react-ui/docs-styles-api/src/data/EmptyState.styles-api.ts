@@ -3,23 +3,23 @@ import type { StylesApiData } from '../types';
 
 export const EmptyStateStylesApi: StylesApiData<EmptyStateFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
     body: 'Wrapper around `title`, `description` and `actions`',
-    indicator: 'Wrapper around the icon or illustration',
-    title: 'Title element',
-    description: 'Description element',
-    actions: 'Wrapper around action buttons',
+    indicator: '图标或插图的包装器',
+    title: '标题元素',
+    description: '描述元素',
+    actions: '操作按钮的包装器',
   },
 
   vars: {
     root: {
-      '--empty-state-indicator-size': 'Controls indicator icon size',
-      '--empty-state-gap': 'Controls gap between elements',
-      '--empty-state-title-fz': 'Controls title `font-size`',
-      '--empty-state-description-fz': 'Controls description `font-size`',
+      '--empty-state-indicator-size': '控制指示器图标大小',
+      '--empty-state-gap': '控制元素之间的间距',
+      '--empty-state-title-fz': '控制 title `font-size`',
+      '--empty-state-description-fz': '控制 description `font-size`',
       '--empty-state-indicator-bg':
         'Controls indicator background of `filled` and `light` variants',
-      '--empty-state-indicator-color': 'Controls indicator color of `filled` and `light` variants',
+      '--empty-state-indicator-color': '控制 indicator color of `filled` and `light` variants',
     },
   },
 

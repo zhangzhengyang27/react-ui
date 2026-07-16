@@ -1,4 +1,4 @@
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
 import { TimeGrid, TimeGridProps, TimeGridStylesNames } from './TimeGrid';
 
 const defaultProps: TimeGridProps = {

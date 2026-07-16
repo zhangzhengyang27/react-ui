@@ -1,6 +1,6 @@
 import { Button, Group, Text } from '@react-ui/ui';
 import { useWindowScroll } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useWindowScroll } from '@react-ui/hooks';
@@ -14,7 +14,7 @@ function Demo() {
       <Text>
         Scroll position x: {scroll.x}, y: {scroll.y}
       </Text>
-      <Button onClick={() => scrollTo({ y: 0 })}>Scroll to top</Button>
+      <Button onClick={() => scrollTo({ y: 0 })}>滚动到顶部</Button>
     </Group>
   );
 }
@@ -28,12 +28,12 @@ function Demo() {
       <Text>
         Scroll position x: {scroll.x}, y: {scroll.y}
       </Text>
-      <Button onClick={() => scrollTo({ y: 0 })}>Scroll to top</Button>
+      <Button onClick={() => scrollTo({ y: 0 })}>滚动到顶部</Button>
     </Group>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

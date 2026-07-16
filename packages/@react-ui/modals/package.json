@@ -1,8 +1,8 @@
 {
   "name": "@react-ui/modals",
   "version": "9.4.1",
-  "description": "Modals manager based on Mantine components",
-  "homepage": "https://mantine.dev/x/modals/",
+  "description": "Modals manager based on React UI components",
+  "homepage": "https://react-ui.dev/x/modals/",
   "license": "MIT",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "keywords": [
@@ -29,7 +29,7 @@
     }
   },
   "repository": {
-    "url": "https://github.com/mantinedev/mantine.git",
+    "url": "https://github.com/react-ui/react-ui.git",
     "type": "git",
     "directory": "packages/@react-ui/modals"
   },

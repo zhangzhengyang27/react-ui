@@ -1,14 +1,14 @@
 import { describe, expect, it, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { SegmentedControl } from './SegmentedControl'
 
 describe('SegmentedControl', () => {
     it('renders controls from string data', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <SegmentedControl data={['React', 'Vue', 'Angular']} data-testid="sc" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('React')).toBeInTheDocument()
@@ -19,9 +19,9 @@ describe('SegmentedControl', () => {
     it('calls onChange when selection changes', () => {
         const onChange = vi.fn()
         render(
-            <MantineProvider>
+            <UIProvider>
                 <SegmentedControl data={['A', 'B', 'C']} onChange={onChange} data-testid="sc" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         screen.getByText('B').click()
@@ -31,7 +31,7 @@ describe('SegmentedControl', () => {
     it('supports disabled item', () => {
         const onChange = vi.fn()
         render(
-            <MantineProvider>
+            <UIProvider>
                 <SegmentedControl
                     data={[
                         { value: 'A', label: 'A' },
@@ -40,7 +40,7 @@ describe('SegmentedControl', () => {
                     onChange={onChange}
                     data-testid="sc"
                 />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('B').parentElement).toHaveAttribute('data-disabled')

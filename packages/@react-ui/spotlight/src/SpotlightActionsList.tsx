@@ -31,7 +31,7 @@ export const SpotlightActionsList = factory<SpotlightActionsListFactory>((props)
     props
   );
   const ctx = useSpotlightContext();
-  const generatedId = `mantine-${useId().replace(/:/g, '')}`;
+  const generatedId = `ui-${useId().replace(/:/g, '')}`;
   const listId = id || generatedId;
 
   useEffect(() => {

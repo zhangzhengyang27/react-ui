@@ -5,7 +5,7 @@ import {
     useProps,
     type BoxProps,
     type Factory,
-    type MantineRadius,
+    type UIRadius,
     type StylesApiProps
 } from '../../core'
 import classes from './Radio.module.css'
@@ -19,10 +19,10 @@ export interface RadioCardProps extends BoxProps, StylesApiProps<RadioCardFactor
     /** If set, card is in checked state */
     checked?: boolean
 
-    /** Default checked state for uncontrolled component */
+    /** 非受控组件的默认选中状态 */
     defaultChecked?: boolean
 
-    /** Called when checked state changes */
+    /** 选中状态变化时调用 */
     onChange?: (checked: boolean) => void
 
     /** Called when card is clicked */
@@ -31,8 +31,8 @@ export interface RadioCardProps extends BoxProps, StylesApiProps<RadioCardFactor
     /** If set, card is disabled */
     disabled?: boolean
 
-    /** Key of theme.radius or any valid CSS value */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 */
+    radius?: UIRadius
 
     /** Card value, used when inside Radio.Group */
     value?: string

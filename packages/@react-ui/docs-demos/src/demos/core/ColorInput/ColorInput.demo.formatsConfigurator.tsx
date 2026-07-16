@@ -1,12 +1,12 @@
 import { ColorInput, ColorInputProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: ColorInputProps) {
   return (
     <ColorInput
       maw={320}
       mx="auto"
-      label="Choose color format"
+      label="选择颜色格式"
       placeholder={props.format}
       defaultValue="#C5D899"
       {...props}
@@ -22,7 +22,7 @@ function Demo() {
 }
 `;
 
-export const formatsConfigurator: MantineDemo = {
+export const formatsConfigurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

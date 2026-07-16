@@ -1,17 +1,17 @@
 import { MagnifyingGlassIcon } from '@phosphor-icons/react';
 import { Button, EmptyState } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: any) {
   return (
     <EmptyState
       icon={<MagnifyingGlassIcon />}
-      title="No results found"
-      description="We couldn't find anything matching your search. Try adjusting your filters or searching with different keywords to see more results."
+      title="未找到结果"
+      description="未找到与搜索匹配的内容。请尝试调整筛选条件或使用不同的关键词以查看更多结果。"
       {...props}
     >
       <EmptyState.Actions>
-        <Button variant="default">Reset filters</Button>
+        <Button variant="default">重置筛选</Button>
       </EmptyState.Actions>
     </EmptyState>
   );
@@ -25,18 +25,18 @@ function Demo() {
   return (
     <EmptyState
       icon={<MagnifyingGlassIcon />}
-      title="No results found"
-      description="We couldn't find anything matching your search. Try adjusting your filters or searching with different keywords to see more results."{{props}}
+      title="未找到结果"
+      description="未找到与搜索匹配的内容。请尝试调整筛选条件或使用不同的关键词以查看更多结果。"{{props}}
     >
       <EmptyState.Actions>
-        <Button variant="default">Reset filters</Button>
+        <Button variant="default">重置筛选</Button>
       </EmptyState.Actions>
     </EmptyState>
   );
 }
 `;
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
@@ -48,9 +48,9 @@ export const usage: MantineDemo = {
       prop: 'align',
       type: 'segmented',
       data: [
-        { value: 'center', label: 'Center' },
-        { value: 'left', label: 'Left' },
-        { value: 'right', label: 'Right' },
+        { value: 'center', label: '居中' },
+        { value: 'left', label: '左' },
+        { value: 'right', label: '右' },
       ],
       initialValue: 'center',
       libraryValue: 'center',

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { CheckIcon, Combobox, Group, Pill, PillsInput, useCombobox } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
 import { PillsInput, Pill, Combobox, CheckIcon, Group, useCombobox } from '@react-ui/ui';
 
-const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
+const groceries = ['🍎 苹果', '🍌 香蕉', '🥦 西兰花', '🥕 胡萝卜', '🍫 巧克力'];
 
 function Demo() {
   const combobox = useCombobox({
@@ -54,7 +54,7 @@ function Demo() {
                 onFocus={() => combobox.openDropdown()}
                 onBlur={() => combobox.closeDropdown()}
                 value={search}
-                placeholder="Search values"
+                placeholder="搜索值"
                 onChange={(event) => {
                   combobox.updateSelectedOptionIndex();
                   setSearch(event.currentTarget.value);
@@ -73,7 +73,7 @@ function Demo() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          {options.length > 0 ? options : <Combobox.Empty>Nothing found...</Combobox.Empty>}
+          {options.length > 0 ? options : <Combobox.Empty>未找到...</Combobox.Empty>}
         </Combobox.Options>
       </Combobox.Dropdown>
     </Combobox>
@@ -81,7 +81,7 @@ function Demo() {
 }
 `;
 
-const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
+const groceries = ['🍎 苹果', '🍌 香蕉', '🥦 西兰花', '🥕 胡萝卜', '🍫 巧克力'];
 
 function Demo() {
   const combobox = useCombobox({
@@ -129,7 +129,7 @@ function Demo() {
                 onFocus={() => combobox.openDropdown()}
                 onBlur={() => combobox.closeDropdown()}
                 value={search}
-                placeholder="Search values"
+                placeholder="搜索值"
                 onChange={(event) => {
                   combobox.updateSelectedOptionIndex();
                   setSearch(event.currentTarget.value);
@@ -148,14 +148,14 @@ function Demo() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          {options.length > 0 ? options : <Combobox.Empty>Nothing found...</Combobox.Empty>}
+          {options.length > 0 ? options : <Combobox.Empty>未找到...</Combobox.Empty>}
         </Combobox.Options>
       </Combobox.Dropdown>
     </Combobox>
   );
 }
 
-export const searchableMultiselect: MantineDemo = {
+export const searchableMultiselect: UIDemo = {
   type: 'code',
   component: Demo,
   code,

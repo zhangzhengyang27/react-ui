@@ -9,7 +9,7 @@ import {
   matches,
   useForm,
 } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useForm, isNotEmpty, isEmail, isInRange, hasLength, matches, isUrl, isOneOf } from '@react-ui/form';
@@ -42,46 +42,46 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit(() => {})}>
       <TextInput
-        label="Name"
-        placeholder="Name"
+        label="姓名"
+        placeholder="姓名"
         withAsterisk
         key={form.key('name')}
         {...form.getInputProps('name')}
       />
       <TextInput
-        label="Your job"
-        placeholder="Your job"
+        label="你的工作"
+        placeholder="你的工作"
         withAsterisk
         mt="md"
         key={form.key('job')}
         {...form.getInputProps('job')}
       />
       <TextInput
-        label="Your email"
-        placeholder="Your email"
+        label="你的邮箱"
+        placeholder="你的邮箱"
         withAsterisk
         mt="md"
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
       <TextInput
-        label="Your favorite color"
-        placeholder="Your favorite color"
+        label="你最喜欢的颜色"
+        placeholder="你最喜欢的颜色"
         withAsterisk
         mt="md"
         key={form.key('favoriteColor')}
         {...form.getInputProps('favoriteColor')}
       />
       <NumberInput
-        label="Your age"
-        placeholder="Your age"
+        label="你的年龄"
+        placeholder="你的年龄"
         withAsterisk
         mt="md"
         key={form.key('age')}
         {...form.getInputProps('age')}
       />
       <TextInput
-        label="Your website"
+        label="你的网站"
         placeholder="https://example.com"
         withAsterisk
         mt="md"
@@ -89,7 +89,7 @@ function Demo() {
         {...form.getInputProps('website')}
       />
       <NativeSelect
-        label="Your role"
+        label="你的角色"
         data={['', 'developer', 'designer', 'manager']}
         withAsterisk
         mt="md"
@@ -98,7 +98,7 @@ function Demo() {
       />
 
       <Group justify="flex-end" mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
@@ -132,46 +132,46 @@ function Demo() {
   return (
     <form onSubmit={form.onSubmit(() => {})}>
       <TextInput
-        label="Name"
-        placeholder="Name"
+        label="姓名"
+        placeholder="姓名"
         withAsterisk
         key={form.key('name')}
         {...form.getInputProps('name')}
       />
       <TextInput
-        label="Your job"
-        placeholder="Your job"
+        label="你的工作"
+        placeholder="你的工作"
         withAsterisk
         mt="md"
         key={form.key('job')}
         {...form.getInputProps('job')}
       />
       <TextInput
-        label="Your email"
-        placeholder="Your email"
+        label="你的邮箱"
+        placeholder="你的邮箱"
         withAsterisk
         mt="md"
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
       <TextInput
-        label="Your favorite color"
-        placeholder="Your favorite color"
+        label="你最喜欢的颜色"
+        placeholder="你最喜欢的颜色"
         withAsterisk
         mt="md"
         key={form.key('favoriteColor')}
         {...form.getInputProps('favoriteColor')}
       />
       <NumberInput
-        label="Your age"
-        placeholder="Your age"
+        label="你的年龄"
+        placeholder="你的年龄"
         withAsterisk
         mt="md"
         key={form.key('age')}
         {...form.getInputProps('age')}
       />
       <TextInput
-        label="Your website"
+        label="你的网站"
         placeholder="https://example.com"
         withAsterisk
         mt="md"
@@ -179,7 +179,7 @@ function Demo() {
         {...form.getInputProps('website')}
       />
       <NativeSelect
-        label="Your role"
+        label="你的角色"
         data={['', 'developer', 'designer', 'manager']}
         withAsterisk
         mt="md"
@@ -188,13 +188,13 @@ function Demo() {
       />
 
       <Group justify="flex-end" mt="md">
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提交</Button>
       </Group>
     </form>
   );
 }
 
-export const validatorsEmpty: MantineDemo = {
+export const validatorsEmpty: UIDemo = {
   type: 'code',
   component: Demo,
   code,

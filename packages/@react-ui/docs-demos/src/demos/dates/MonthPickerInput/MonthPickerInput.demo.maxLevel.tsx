@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MonthPickerInput } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -11,8 +11,8 @@ function Demo() {
   return (
     <MonthPickerInput
       maxLevel="year"
-      label="Pick month"
-      placeholder="Pick month"
+      label="选择月份"
+      placeholder="选择月份"
       value={value}
       onChange={setValue}
     />
@@ -25,15 +25,15 @@ function Demo() {
   return (
     <MonthPickerInput
       maxLevel="year"
-      label="Pick month"
-      placeholder="Pick month"
+      label="选择月份"
+      placeholder="选择月份"
       value={value}
       onChange={setValue}
     />
   );
 }
 
-export const maxLevel: MantineDemo = {
+export const maxLevel: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Checkbox, Table } from '@react-ui/ui';
 import { useSelection } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Checkbox, Table } from '@react-ui/ui';
@@ -29,7 +29,7 @@ function Demo() {
       <Table.Tr key={element.name} bg={isSelected ? 'var(--ui-color-blue-light)' : undefined}>
         <Table.Td>
           <Checkbox
-            aria-label="Select row"
+            aria-label="选择行"
             checked={isSelected}
             onChange={(event) => {
               if (event.target.checked) {
@@ -54,7 +54,7 @@ function Demo() {
         <Table.Tr>
           <Table.Th>
             <Checkbox
-              aria-label="Select deselect all rows"
+              aria-label="全选/取消全选行"
               indeterminate={handlers.isSomeSelected()}
               checked={handlers.isAllSelected()}
               onChange={() => {
@@ -66,10 +66,10 @@ function Demo() {
               }}
             />
           </Table.Th>
-          <Table.Th>Element position</Table.Th>
-          <Table.Th>Element name</Table.Th>
-          <Table.Th>Symbol</Table.Th>
-          <Table.Th>Atomic mass</Table.Th>
+          <Table.Th>元素位置</Table.Th>
+          <Table.Th>元素名称</Table.Th>
+          <Table.Th>符号</Table.Th>
+          <Table.Th>原子质量</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>
@@ -100,7 +100,7 @@ function Demo() {
       <Table.Tr key={element.name} bg={isSelected ? 'var(--ui-color-blue-light)' : undefined}>
         <Table.Td>
           <Checkbox
-            aria-label="Select row"
+            aria-label="选择行"
             checked={isSelected}
             onChange={(event) => {
               if (event.target.checked) {
@@ -125,7 +125,7 @@ function Demo() {
         <Table.Tr>
           <Table.Th>
             <Checkbox
-              aria-label="Select deselect all rows"
+              aria-label="全选/取消全选行"
               indeterminate={handlers.isSomeSelected()}
               checked={handlers.isAllSelected()}
               onChange={() => {
@@ -137,10 +137,10 @@ function Demo() {
               }}
             />
           </Table.Th>
-          <Table.Th>Element position</Table.Th>
-          <Table.Th>Element name</Table.Th>
-          <Table.Th>Symbol</Table.Th>
-          <Table.Th>Atomic mass</Table.Th>
+          <Table.Th>元素位置</Table.Th>
+          <Table.Th>元素名称</Table.Th>
+          <Table.Th>符号</Table.Th>
+          <Table.Th>原子质量</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>
@@ -148,7 +148,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

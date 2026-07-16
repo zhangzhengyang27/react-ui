@@ -6,7 +6,7 @@ interface PageHeadProps {
 }
 
 const metaDescription =
-  'React components and hooks library with native dark theme support and focus on usability, accessibility and developer experience';
+  'React 组件与 Hooks 库，内置原生深色主题支持，专注于可用性、可访问性与开发者体验';
 
 export function PageHead({ title, description }: PageHeadProps) {
   const _title = title ? `${title} | ReactUI` : 'ReactUI';

@@ -1,12 +1,12 @@
 import { Anchor } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Anchor } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <Anchor href="https://mantine.dev/" target="_blank">
+    <Anchor href="#" target="_blank">
       Anchor component
     </Anchor>
   );
@@ -15,13 +15,13 @@ function Demo() {
 
 function Demo() {
   return (
-    <Anchor href="https://mantine.dev/" target="_blank">
+    <Anchor href="#" target="_blank">
       Anchor component
     </Anchor>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,5 +1,5 @@
 import { Select } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Select } from '@react-ui/ui';
@@ -8,15 +8,15 @@ function Demo() {
   return (
     <>
       <Select
-        label="Zero padding"
-        placeholder="Pick value"
+        label="零内边距"
+        placeholder="选择值"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         comboboxProps={{ dropdownPadding: 0 }}
       />
       <Select
         mt="md"
         label="10px padding"
-        placeholder="Pick value"
+        placeholder="选择值"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         comboboxProps={{ dropdownPadding: 10 }}
       />
@@ -29,15 +29,15 @@ function Demo() {
   return (
     <>
       <Select
-        label="Zero padding"
-        placeholder="Pick value"
+        label="零内边距"
+        placeholder="选择值"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         comboboxProps={{ dropdownPadding: 0 }}
       />
       <Select
         mt="md"
         label="10px padding"
-        placeholder="Pick value"
+        placeholder="选择值"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         comboboxProps={{ dropdownPadding: 10 }}
       />
@@ -45,7 +45,7 @@ function Demo() {
   );
 }
 
-export const dropdownPadding: MantineDemo = {
+export const dropdownPadding: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,5 +1,5 @@
 import { SemiCircleProgress } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { SemiCircleProgress } from '@react-ui/ui';
@@ -13,7 +13,7 @@ function Demo() {
   return <SemiCircleProgress value={30} emptySegmentColor="var(--ui-color-dimmed)" />;
 }
 
-export const emptySegmentColor: MantineDemo = {
+export const emptySegmentColor: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -96,4 +96,4 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((_props, ref) => 
 })
 
 ActionIconGroup.classes = classes
-ActionIconGroup.displayName = '@mantine/core/ActionIconGroup'
+ActionIconGroup.displayName = '@react-ui/ui/ActionIconGroup'

@@ -1,5 +1,5 @@
 import { Highlight } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Highlight } from '@react-ui/ui';
@@ -8,9 +8,9 @@ function Demo() {
   return (
     <Highlight
       component="a"
-      href="https://mantine.dev"
+      href="#"
       target="_blank"
-      highlight="mantine"
+      highlight="ui"
       fw={500}
       c="var(--ui-color-anchor)"
     >
@@ -25,9 +25,9 @@ function Demo() {
   return (
     <Highlight
       component="a"
-      href="https://mantine.dev"
+      href="#"
       target="_blank"
-      highlight="mantine"
+      highlight="ui"
       fw={500}
       c="var(--ui-color-anchor)"
     >
@@ -36,7 +36,7 @@ function Demo() {
   );
 }
 
-export const props: MantineDemo = {
+export const props: UIDemo = {
   type: 'code',
   code,
   centered: true,

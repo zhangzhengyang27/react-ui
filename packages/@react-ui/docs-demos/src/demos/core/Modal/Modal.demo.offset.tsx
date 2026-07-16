@@ -1,6 +1,6 @@
 import { Button, Modal } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { AuthenticationForm } from '../../../shared/AuthenticationForm/AuthenticationForm';
 
 const code = `
@@ -12,12 +12,12 @@ function Demo() {
 
   return (
     <>
-      <Modal opened={opened} onClose={close} title="Authentication" yOffset="1vh" xOffset={0}>
+      <Modal opened={opened} onClose={close} title="认证" yOffset="1vh" xOffset={0}>
         {/* Modal content */}
       </Modal>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
@@ -29,18 +29,18 @@ function Demo() {
 
   return (
     <>
-      <Modal opened={opened} onClose={close} title="Authentication" yOffset="1vh" xOffset={0}>
+      <Modal opened={opened} onClose={close} title="认证" yOffset="1vh" xOffset={0}>
         <AuthenticationForm noPadding noShadow />
       </Modal>
 
       <Button variant="default" onClick={open}>
-        Open modal
+        打开模态框
       </Button>
     </>
   );
 }
 
-export const offset: MantineDemo = {
+export const offset: UIDemo = {
   type: 'code',
   code,
   centered: true,

@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Skeleton } from './Skeleton'
 
 describe('Skeleton', () => {
     it('renders skeleton element', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Skeleton data-testid="skeleton" />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByTestId('skeleton')).toBeInTheDocument()
@@ -16,9 +16,9 @@ describe('Skeleton', () => {
 
     it('renders children as placeholder template', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Skeleton data-testid="skeleton">Content</Skeleton>
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByText('Content')).toBeInTheDocument()
@@ -26,9 +26,9 @@ describe('Skeleton', () => {
 
     it('renders circle skeleton', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Skeleton data-testid="skeleton" circle />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByTestId('skeleton')).toHaveAttribute('data-circle')
@@ -36,9 +36,9 @@ describe('Skeleton', () => {
 
     it('renders non-animated skeleton', () => {
         render(
-            <MantineProvider>
+            <UIProvider>
                 <Skeleton data-testid="skeleton" animate={false} />
-            </MantineProvider>
+            </UIProvider>
         )
 
         expect(screen.getByTestId('skeleton')).not.toHaveAttribute('data-animate')

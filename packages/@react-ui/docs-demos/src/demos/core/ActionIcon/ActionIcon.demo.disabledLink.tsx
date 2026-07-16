@@ -1,6 +1,6 @@
 import { ArrowSquareOutIcon } from '@phosphor-icons/react';
 import { ActionIcon } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { ActionIcon } from '@react-ui/ui';
@@ -10,10 +10,10 @@ function Demo() {
   return (
     <ActionIcon
       component="a"
-      href="https://mantine.dev"
+      href="#"
       data-disabled
       size="xl"
-      aria-label="Open in a new tab"
+      aria-label="在新标签页中打开"
       onClick={(event) => event.preventDefault()}
     >
       <ArrowSquareOutIcon />
@@ -26,10 +26,10 @@ function Demo() {
   return (
     <ActionIcon
       component="a"
-      href="https://mantine.dev"
+      href="#"
       data-disabled
       size="xl"
-      aria-label="Open in a new tab"
+      aria-label="在新标签页中打开"
       onClick={(event) => event.preventDefault()}
     >
       <ArrowSquareOutIcon />
@@ -37,7 +37,7 @@ function Demo() {
   );
 }
 
-export const disabledLink: MantineDemo = {
+export const disabledLink: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

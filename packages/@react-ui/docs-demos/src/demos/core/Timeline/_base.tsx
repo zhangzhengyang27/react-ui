@@ -10,60 +10,60 @@ export function TimelineBase({ noIcon, ...props }: Partial<TimelineProps> & { no
   const displayIcon = !noIcon;
   return (
     <Timeline active={1} bulletSize={24} lineWidth={2} {...props}>
-      <Timeline.Item bullet={displayIcon ? <GitBranchIcon size={13} /> : null} title="New branch">
+      <Timeline.Item bullet={displayIcon ? <GitBranchIcon size={13} /> : null} title="新分支">
         <Text c="dimmed" size="sm">
-          You&apos;ve created new branch{' '}
+          你创建了新的分支{' '}
           <Text variant="link" component="span" inherit>
             fix-notifications
           </Text>{' '}
-          from master
+          从 master 分支
         </Text>
         <Text size="xs" mt={4}>
-          2 hours ago
+          2 小时前
         </Text>
       </Timeline.Item>
 
-      <Timeline.Item bullet={displayIcon ? <GitCommitIcon size={13} /> : null} title="Commits">
+      <Timeline.Item bullet={displayIcon ? <GitCommitIcon size={13} /> : null} title="提交">
         <Text c="dimmed" size="sm">
-          You&apos;ve pushed 23 commits to{' '}
+          你推送了 23 个提交到{' '}
           <Text variant="link" component="span" inherit>
             fix-notifications
           </Text>{' '}
           branch
         </Text>
         <Text size="xs" mt={4}>
-          52 minutes ago
+          52 分钟前
         </Text>
       </Timeline.Item>
 
       <Timeline.Item
-        title="Pull request"
+        title="拉取请求"
         bullet={displayIcon ? <GitPullRequestIcon size={13} /> : null}
         lineVariant="dashed"
       >
         <Text c="dimmed" size="sm">
-          You&apos;ve submitted a pull request{' '}
+          你提交了拉取请求{' '}
           <Text variant="link" component="span" inherit>
-            Fix incorrect notification message (#187)
+            修复不正确的通知消息 (#187)
           </Text>{' '}
         </Text>
         <Text size="xs" mt={4}>
-          34 minutes ago
+          34 分钟前
         </Text>
       </Timeline.Item>
 
       <Timeline.Item
-        title="Code review"
+        title="代码审查"
         bullet={displayIcon ? <ChatCircleDotsIcon size={13} /> : null}
       >
         <Text c="dimmed" size="sm">
           <Text variant="link" component="span" inherit>
-            Robert Gluesticker
+            罗伯特
           </Text>{' '}
-          left a code review on your pull request
+          在你的拉取请求上留下了代码审查
         </Text>
         <Text size="xs" mt={4}>
-          12 minutes ago
+          12 分钟前
         </Text>
       </Timeline.Item>
     </Timeline>

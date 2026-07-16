@@ -30,10 +30,10 @@ import { Button, EmptyState } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <EmptyState icon={<Icon />} title="No results found">
+    <EmptyState icon={<Icon />} title="未找到结果">
       {/* 在标题之后渲染 */}
       <EmptyState.Actions>
-        <Button variant="default">Reset filters</Button>
+        <Button variant="default">重置筛选</Button>
       </EmptyState.Actions>
     </EmptyState>
   );
@@ -82,7 +82,7 @@ import { EmptyState } from '@react-ui/ui';
 function Demo() {
   return (
     <EmptyState>
-      <EmptyState.Title order={2}>No results found</EmptyState.Title>
+      <EmptyState.Title order={2}>未找到结果</EmptyState.Title>
     </EmptyState>
   );
 }

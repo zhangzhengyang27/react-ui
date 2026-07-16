@@ -1,6 +1,6 @@
 import { FileTextIcon, FolderOpenIcon, FolderSimpleIcon } from '@phosphor-icons/react';
 import { getTreeExpandedState, Group, RenderTreeNodePayload, Tree, useTree } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './data';
 
 const code = `
@@ -65,11 +65,11 @@ function Demo() {
   return <Tree data={data} tree={tree} withLines renderNode={(payload) => <Leaf {...payload} />} />;
 }
 
-export const expandedState: MantineDemo = {
+export const expandedState: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
     { fileName: 'data.ts', language: 'tsx', code: dataCode },
   ],
 };

@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Tabs } from './Tabs'
 
-const wrapper = ({ children }: { children: React.ReactNode }) => <MantineProvider>{children}</MantineProvider>
+const wrapper = ({ children }: { children: React.ReactNode }) => <UIProvider>{children}</UIProvider>
 
 describe('Tabs', () => {
     it('renders tabs and panels as a compound component', () => {

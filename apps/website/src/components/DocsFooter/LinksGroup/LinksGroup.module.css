@@ -5,11 +5,11 @@
     margin-right: 0;
   }
 
-  @mixin smaller-than 62.5em {
+  @media (max-width: 62.5em) {
     margin-right: 40px;
   }
 
-  @mixin rtl {
+  [dir='rtl'] & {
     margin-right: 0;
     margin-left: 60px;
 
@@ -17,7 +17,7 @@
       margin-left: 0;
     }
 
-    @mixin smaller-than 62.5em {
+    @media (max-width: 62.5em) {
       margin-left: 40px;
     }
   }
@@ -30,7 +30,7 @@
   padding-bottom: 3px;
   color: light-dark(var(--ui-color-gray-6), var(--ui-color-dark-1));
 
-  @mixin hover {
+  &:hover {
     text-decoration: underline;
   }
 }

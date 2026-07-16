@@ -1,6 +1,6 @@
 import { EyeIcon, EyeSlashIcon } from '@phosphor-icons/react';
 import { PasswordInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { PasswordInput } from '@react-ui/ui';
@@ -18,8 +18,8 @@ function Demo() {
     <PasswordInput
       maw={320}
       mx="auto"
-      label="Change visibility toggle icon"
-      placeholder="Change visibility toggle icon"
+      label="更改可见性切换图标"
+      placeholder="更改可见性切换图标"
       defaultValue="secret"
       visibilityToggleIcon={VisibilityToggleIcon}
     />
@@ -39,15 +39,15 @@ function Demo() {
     <PasswordInput
       maw={320}
       mx="auto"
-      label="Change visibility toggle icon"
-      placeholder="Change visibility toggle icon"
+      label="更改可见性切换图标"
+      placeholder="更改可见性切换图标"
       defaultValue="secret"
       visibilityToggleIcon={VisibilityToggleIcon}
     />
   );
 }
 
-export const visibilityIcon: MantineDemo = {
+export const visibilityIcon: UIDemo = {
   type: 'code',
   component: Demo,
   code,

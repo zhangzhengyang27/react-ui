@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { Group, Text } from '@react-ui/ui';
 import { useDrag } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useRef, useState } from 'react';
@@ -195,7 +195,7 @@ function Demo() {
   );
 }
 
-export const axis: MantineDemo = {
+export const axis: UIDemo = {
   type: 'code',
   code,
   component: Demo,

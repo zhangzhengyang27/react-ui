@@ -3,25 +3,25 @@ import type { StylesApiData } from '../types';
 
 export const AvatarStylesApi: StylesApiData<AvatarFactory> = {
   selectors: {
-    root: 'Root element',
-    image: '`img` element',
+    root: '根元素',
+    image: '`img` 元素',
     placeholder: 'Avatar placeholder, displayed when the image cannot be loaded',
   },
 
   vars: {
     root: {
-      '--avatar-bd': 'Controls placeholder `border`',
-      '--avatar-bg': 'Controls placeholder `background`',
-      '--avatar-color': 'Controls placeholder text `color`',
+      '--avatar-bd': '控制 placeholder `border`',
+      '--avatar-bg': '控制 placeholder `background`',
+      '--avatar-color': '控制 placeholder text `color`',
       '--avatar-size': 'Controls `width`, `min-width` and `height`',
-      '--avatar-radius': 'Controls `border-radius`',
+      '--avatar-radius': '控制 `border-radius`',
     },
   },
 };
 
 export const AvatarGroupStylesApi: StylesApiData<AvatarGroupFactory> = {
   selectors: {
-    group: 'Root element',
+    group: '根元素',
   },
 
   vars: {

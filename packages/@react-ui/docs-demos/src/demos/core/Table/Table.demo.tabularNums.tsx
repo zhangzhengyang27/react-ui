@@ -1,5 +1,5 @@
 import { NumberFormatter, Table } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { NumberFormatter, Table } from '@react-ui/ui';
@@ -26,8 +26,8 @@ function Demo() {
     <Table{{props}}>
       <Table.Thead>
         <Table.Tr>
-          <Table.Th>Product</Table.Th>
-          <Table.Th>Units sold</Table.Th>
+          <Table.Th>产品</Table.Th>
+          <Table.Th>售出单位</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>
@@ -58,8 +58,8 @@ export function Wrapper(props: any) {
     <Table {...props}>
       <Table.Thead>
         <Table.Tr>
-          <Table.Th>Product</Table.Th>
-          <Table.Th>Units sold</Table.Th>
+          <Table.Th>产品</Table.Th>
+          <Table.Th>售出单位</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>
@@ -67,7 +67,7 @@ export function Wrapper(props: any) {
   );
 }
 
-export const tabularNums: MantineDemo = {
+export const tabularNums: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

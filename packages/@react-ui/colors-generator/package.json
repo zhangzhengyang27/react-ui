@@ -2,7 +2,7 @@
   "name": "@react-ui/colors-generator",
   "version": "9.4.1",
   "description": "A library to generate 10 shades of color based on provided color value",
-  "homepage": "https://mantine.dev",
+  "homepage": "https://react-ui.dev",
   "license": "MIT",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "keywords": [
@@ -27,7 +27,7 @@
     }
   },
   "repository": {
-    "url": "https://github.com/mantinedev/mantine.git",
+    "url": "https://github.com/react-ui/react-ui.git",
     "type": "git",
     "directory": "packages/@react-ui/colors-generator"
   },

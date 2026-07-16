@@ -1,7 +1,7 @@
 /* oxlint-disable no-console */
 import { Button, Checkbox, Group } from '@react-ui/ui';
 import { hasLength, useForm } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Checkbox, Group } from '@react-ui/ui';
@@ -25,7 +25,7 @@ function Demo() {
       <Checkbox.Group
         {...form.getInputProps('frameworks')}
         key={form.key('frameworks')}
-        label="Select your favorite frameworks/libraries"
+        label="选择你最喜欢的框架/库"
         withAsterisk
       >
         <Group my={5}>
@@ -37,7 +37,7 @@ function Demo() {
       </Checkbox.Group>
 
       <Button type="submit" mt="md">
-        Submit
+        提交
       </Button>
     </form>
   );
@@ -62,7 +62,7 @@ function Demo() {
       <Checkbox.Group
         {...form.getInputProps('frameworks')}
         key={form.key('frameworks')}
-        label="Select your favorite frameworks/libraries"
+        label="选择你最喜欢的框架/库"
         withAsterisk
       >
         <Group my={5}>
@@ -74,13 +74,13 @@ function Demo() {
       </Checkbox.Group>
 
       <Button type="submit" mt="md">
-        Submit
+        提交
       </Button>
     </form>
   );
 }
 
-export const groupWithUseForm: MantineDemo = {
+export const groupWithUseForm: UIDemo = {
   type: 'code',
   component: Demo,
   code,

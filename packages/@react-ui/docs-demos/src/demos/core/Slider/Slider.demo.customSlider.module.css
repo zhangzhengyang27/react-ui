@@ -31,7 +31,7 @@
   padding-inline: 10px;
   justify-content: flex-end;
 
-  @mixin dark {
+  [data-ui-color-scheme='dark'] & {
     background-color: var(--ui-color-dark-6);
   }
 }
@@ -49,7 +49,7 @@
   justify-content: center;
   color: var(--ui-color-gray-5);
 
-  @mixin dark {
+  [data-ui-color-scheme='dark'] & {
     background-color: var(--ui-color-dark-6);
     border-color: var(--ui-color-dark-4);
     color: var(--ui-color-dark-0);
@@ -76,7 +76,7 @@
 
     color: var(--ui-color-black);
 
-    @mixin dark {
+    [data-ui-color-scheme='dark'] & {
       color: var(--ui-color-white);
     }
   }

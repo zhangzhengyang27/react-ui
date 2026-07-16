@@ -1,5 +1,5 @@
 import { Slider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: any) {
   return <Slider {...props} defaultValue={20} />;
@@ -13,7 +13,7 @@ function Demo() {
 }
 `;
 
-export const thumbSize: MantineDemo = {
+export const thumbSize: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

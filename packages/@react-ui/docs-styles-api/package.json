@@ -1,8 +1,8 @@
 {
   "name": "@react-ui/docs-styles-api",
   "version": "1.0.0",
-  "description": "Mantine components styles api data",
-  "homepage": "https://mantine.dev",
+  "description": "React UI components styles api data",
+  "homepage": "https://react-ui.dev",
   "license": "MIT",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "keywords": [],
@@ -18,7 +18,7 @@
     }
   },
   "repository": {
-    "url": "https://github.com/mantinedev/mantine.git",
+    "url": "https://github.com/react-ui/react-ui.git",
     "type": "git",
     "directory": "packages/@react-ui/docs-styles-api"
   },

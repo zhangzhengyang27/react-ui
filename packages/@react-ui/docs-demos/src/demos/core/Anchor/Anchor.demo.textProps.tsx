@@ -1,5 +1,5 @@
 import { Anchor } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Anchor } from '@react-ui/ui';
@@ -33,7 +33,7 @@ function Demo() {
   );
 }
 
-export const textProps: MantineDemo = {
+export const textProps: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,5 +1,5 @@
 import { Autocomplete } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Autocomplete } from '@react-ui/ui';
@@ -11,8 +11,8 @@ const data = Array(100)
 function Demo() {
   return (
     <Autocomplete
-      label="Fits viewport height"
-      placeholder="Pick value"
+      label="适应视口高度"
+      placeholder="选择值"
       data={data}
       floatingHeight="viewport"
     />
@@ -27,15 +27,15 @@ const data = Array(100)
 function Demo() {
   return (
     <Autocomplete
-      label="Fits viewport height"
-      placeholder="Pick value"
+      label="适应视口高度"
+      placeholder="选择值"
       data={data}
       floatingHeight="viewport"
     />
   );
 }
 
-export const floatingHeight: MantineDemo = {
+export const floatingHeight: UIDemo = {
   type: 'code',
   component: Demo,
   code,

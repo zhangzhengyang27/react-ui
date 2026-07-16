@@ -1,6 +1,6 @@
 import { Button, Select } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Select, Button } from '@react-ui/ui';
@@ -15,8 +15,8 @@ function Demo() {
       </Button>
 
       <Select
-        label="Your favorite library"
-        placeholder="Pick value"
+        label="你最喜欢的库"
+        placeholder="选择值"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         dropdownOpened={dropdownOpened}
       />
@@ -34,8 +34,8 @@ function Demo() {
       </Button>
 
       <Select
-        label="Your favorite library"
-        placeholder="Pick value"
+        label="你最喜欢的库"
+        placeholder="选择值"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         dropdownOpened={dropdownOpened}
       />
@@ -43,7 +43,7 @@ function Demo() {
   );
 }
 
-export const dropdownOpened: MantineDemo = {
+export const dropdownOpened: UIDemo = {
   type: 'code',
   component: Demo,
   code,

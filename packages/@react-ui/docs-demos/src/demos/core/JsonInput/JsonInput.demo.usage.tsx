@@ -1,5 +1,5 @@
 import { JsonInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { JsonInput } from '@react-ui/ui';
@@ -7,9 +7,9 @@ import { JsonInput } from '@react-ui/ui';
 function Demo() {
   return (
     <JsonInput
-      label="Your package.json"
-      placeholder="Textarea will autosize to fit the content"
-      validationError="Invalid JSON"
+      label="你的 package.json"
+      placeholder="文本域将自动调整大小以适应内容"
+      validationError="JSON 格式无效"
       formatOnBlur
       autosize
       minRows={4}
@@ -23,9 +23,9 @@ function Demo() {
     <JsonInput
       maw={400}
       mx="auto"
-      label="Your package.json"
-      placeholder="Textarea will autosize to fit the content"
-      validationError="Invalid JSON"
+      label="你的 package.json"
+      placeholder="文本域将自动调整大小以适应内容"
+      validationError="JSON 格式无效"
       formatOnBlur
       autosize
       minRows={4}
@@ -33,7 +33,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

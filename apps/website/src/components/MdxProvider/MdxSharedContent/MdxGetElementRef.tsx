@@ -31,7 +31,7 @@ function Demo() {
 export function MdxGetElementRef(props: MdxGetElementRefProps) {
   return (
     <>
-      <MdxTitle id="get-element-ref">Get element ref</MdxTitle>
+      <MdxTitle id="get-element-ref">获取元素引用</MdxTitle>
       <MdxCodeHighlight language="tsx" code={getRefCode(props)} />
     </>
   );

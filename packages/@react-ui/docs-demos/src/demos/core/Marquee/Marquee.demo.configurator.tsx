@@ -1,43 +1,43 @@
 import { Marquee, MarqueeProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
-import { MantineLogo } from '@react-ui/mantine-logo';
+import { UIDemo } from '@react-ui/demo';
+import { UILogo } from '@react-ui/logo';
 
 function Wrapper(props: Partial<MarqueeProps>) {
   return (
     <Marquee {...props} mah={200} maw={400}>
-      <MantineLogo width={120} type="full" color="blue" />
-      <MantineLogo width={120} type="full" color="cyan" />
-      <MantineLogo width={120} type="full" color="teal" />
-      <MantineLogo width={120} type="full" color="green" />
-      <MantineLogo width={120} type="full" color="lime" />
-      <MantineLogo width={120} type="full" color="yellow" />
-      <MantineLogo width={120} type="full" color="orange" />
-      <MantineLogo width={120} type="full" color="red" />
+      <UILogo size={120} type="full" color="blue" />
+      <UILogo size={120} type="full" color="cyan" />
+      <UILogo size={120} type="full" color="teal" />
+      <UILogo size={120} type="full" color="green" />
+      <UILogo size={120} type="full" color="lime" />
+      <UILogo size={120} type="full" color="yellow" />
+      <UILogo size={120} type="full" color="orange" />
+      <UILogo size={120} type="full" color="red" />
     </Marquee>
   );
 }
 
 const code = `
 import { Marquee } from '@react-ui/ui';
-import { MantineLogo } from '@react-ui/mantine-logo';
+import { UILogo } from '@react-ui/logo';
 
 function Demo() {
   return (
     <Marquee{{props}} mah={200} maw={400}>
-      <MantineLogo width={120} type="full" color="blue" />
-      <MantineLogo width={120} type="full" color="cyan" />
-      <MantineLogo width={120} type="full" color="teal" />
-      <MantineLogo width={120} type="full" color="green" />
-      <MantineLogo width={120} type="full" color="lime" />
-      <MantineLogo width={120} type="full" color="yellow" />
-      <MantineLogo width={120} type="full" color="orange" />
-      <MantineLogo width={120} type="full" color="red" />
+      <UILogo size={120} type="full" color="blue" />
+      <UILogo size={120} type="full" color="cyan" />
+      <UILogo size={120} type="full" color="teal" />
+      <UILogo size={120} type="full" color="green" />
+      <UILogo size={120} type="full" color="lime" />
+      <UILogo size={120} type="full" color="yellow" />
+      <UILogo size={120} type="full" color="orange" />
+      <UILogo size={120} type="full" color="red" />
     </Marquee>
   );
 }
 `;
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

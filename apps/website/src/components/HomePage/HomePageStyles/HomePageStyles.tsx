@@ -29,7 +29,7 @@ const features: HomePageFeaturesData = [
     icon: CodeBlockIcon,
     title: 'PostCSS 预设',
     description:
-      'postcss-preset-mantine 提供 mixin 和函数，用于应用暗色/亮色、RTL 和响应式样式',
+      'postcss-preset-ui 提供 mixin 和函数，用于应用暗色/亮色、RTL 和响应式样式',
   },
   {
     icon: PlugIcon,

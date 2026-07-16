@@ -1,5 +1,5 @@
 import { Card, Image, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Card, Image, Text } from '@react-ui/ui';
@@ -61,7 +61,7 @@ function Demo() {
   );
 }
 
-export const link: MantineDemo = {
+export const link: UIDemo = {
   type: 'code',
   code,
   component: Demo,

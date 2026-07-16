@@ -5,13 +5,17 @@ export const REPLACE_TYPES: Record<string, string> = {
     'typeof JSON.parse',
 };
 
-export function prepareType(type: string): string {
+export function prepareType(type: string | undefined): string {
+  if (!type) {
+    return '';
+  }
+
   if (type in REPLACE_TYPES) {
     return REPLACE_TYPES[type];
   }
 
   return type
-    .replaceAll('DefaultMantineColor', 'MantineColor')
+    .replaceAll('DefaultUIColor', 'UIColor')
     .replaceAll('| undefined', '')
     .trim();
 }

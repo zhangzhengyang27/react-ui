@@ -1,8 +1,8 @@
-import { MantineTheme } from '../../../../MantineProvider'
+import { UITheme } from '../../../../UIProvider'
 import { resolveClassNames } from '../resolve-class-names/resolve-class-names'
 
 interface GetThemeClassNamesOptions {
-    theme: MantineTheme
+    theme: UITheme
     themeName: string[]
     selector: string
     props: Record<string, any>

@@ -21,4 +21,4 @@ export const MenuDivider = factory<MenuDividerFactory>((props, _ref) => {
 })
 
 MenuDivider.classes = classes
-MenuDivider.displayName = '@mantine/core/MenuDivider'
+MenuDivider.displayName = '@react-ui/ui/MenuDivider'

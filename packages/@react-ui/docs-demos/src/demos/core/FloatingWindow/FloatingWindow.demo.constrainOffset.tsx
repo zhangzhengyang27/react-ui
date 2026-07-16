@@ -1,6 +1,6 @@
 import { Button, CloseButton, FloatingWindow, Group, Text } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, CloseButton, FloatingWindow, Group, Text } from '@react-ui/ui';
@@ -12,7 +12,7 @@ function Demo() {
   return (
     <>
       <Button onClick={handlers.toggle} variant="default">
-        {visible ? 'Hide' : 'Show'} floating window
+        {visible ? '隐藏' : '显示'} 浮动窗口
       </Button>
 
       {visible && (
@@ -27,7 +27,7 @@ function Demo() {
           constrainOffset={30}
         >
           <Group justify="space-between" mb="md">
-            <Text>Constrain offset demo</Text>
+            <Text>约束偏移演示</Text>
             <CloseButton onClick={handlers.close} />
           </Group>
           <Text fz="sm">
@@ -47,7 +47,7 @@ function Demo() {
   return (
     <>
       <Button onClick={handlers.toggle} variant="default">
-        {visible ? 'Hide' : 'Show'} floating window
+        {visible ? '隐藏' : '显示'} 浮动窗口
       </Button>
 
       {visible && (
@@ -62,7 +62,7 @@ function Demo() {
           constrainOffset={30}
         >
           <Group justify="space-between" mb="md">
-            <Text>Constrain offset demo</Text>
+            <Text>约束偏移演示</Text>
             <CloseButton onClick={handlers.close} />
           </Group>
           <Text fz="sm">
@@ -75,7 +75,7 @@ function Demo() {
   );
 }
 
-export const constrainOffset: MantineDemo = {
+export const constrainOffset: UIDemo = {
   type: 'code',
   component: Demo,
   code,

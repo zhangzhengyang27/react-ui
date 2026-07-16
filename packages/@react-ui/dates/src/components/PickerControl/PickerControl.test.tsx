@@ -1,5 +1,5 @@
 import lodash from 'lodash';
-import { render, screen, tests } from '@mantine-tests/core';
+import { render, screen, tests } from '@react-ui/tests';
 import { PickerControl, PickerControlProps, PickerControlStylesNames } from './PickerControl';
 
 const defaultProps: PickerControlProps = {};
@@ -55,11 +55,11 @@ describe('@react-ui/dates/PickerControl', () => {
 
   it('has correct default __staticSelector', () => {
     render(<PickerControl {...defaultProps} />);
-    expect(screen.getByRole('button')).toHaveClass('mantine-PickerControl-pickerControl');
+    expect(screen.getByRole('button')).toHaveClass('ui-PickerControl-pickerControl');
   });
 
   it('supports custom __staticSelector', () => {
     render(<PickerControl {...defaultProps} __staticSelector="Calendar" />);
-    expect(screen.getByRole('button')).toHaveClass('mantine-Calendar-pickerControl');
+    expect(screen.getByRole('button')).toHaveClass('ui-Calendar-pickerControl');
   });
 });

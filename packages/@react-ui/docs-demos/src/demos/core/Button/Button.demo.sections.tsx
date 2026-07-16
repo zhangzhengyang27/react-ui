@@ -1,6 +1,6 @@
 import { ArrowRightIcon, DownloadSimpleIcon, ImageIcon } from '@phosphor-icons/react';
 import { Button, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Group, Button } from '@react-ui/ui';
@@ -10,17 +10,17 @@ function Demo() {
   return (
     <Group justify="center">
       <Button leftSection={<ImageIcon size={14} />} variant="default">
-        Gallery
+        相册
       </Button>
 
-      <Button rightSection={<DownloadSimpleIcon size={14} />}>Download</Button>
+      <Button rightSection={<DownloadSimpleIcon size={14} />}>下载</Button>
 
       <Button
         variant="light"
         leftSection={<ImageIcon size={14} />}
         rightSection={<ArrowRightIcon size={14} />}
       >
-        Visit gallery
+        访问相册
       </Button>
     </Group>
   );
@@ -31,22 +31,22 @@ function Demo() {
   return (
     <Group justify="center">
       <Button leftSection={<ImageIcon size={14} />} variant="default">
-        Gallery
+        相册
       </Button>
 
-      <Button rightSection={<DownloadSimpleIcon size={14} />}>Download</Button>
+      <Button rightSection={<DownloadSimpleIcon size={14} />}>下载</Button>
       <Button
         variant="light"
         leftSection={<ImageIcon size={14} />}
-        rightSection={<ArrowRightIcon size={14} className="mantine-rotate-rtl" />}
+        rightSection={<ArrowRightIcon size={14} className="ui-rotate-rtl" />}
       >
-        Visit gallery
+        访问相册
       </Button>
     </Group>
   );
 }
 
-export const sections: MantineDemo = {
+export const sections: UIDemo = {
   type: 'code',
   component: Demo,
   code,

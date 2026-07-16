@@ -1,5 +1,5 @@
 import { ColorInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { ColorInputStylesApi } from '@react-ui/docs-styles-api';
 
 const code = `
@@ -8,10 +8,10 @@ import { ColorInput } from '@react-ui/ui';
 function Demo() {
   return (
     <ColorInput
-      label="Label"
-      placeholder="ColorInput"
-      description="Description"
-      error="Error"
+      label="标签"
+      placeholder="颜色输入"
+      description="描述"
+      error="错误"
       withAsterisk
       swatches={['#000', '#fff', '#f00', '#0f0', '#00f']}
       format="rgba"
@@ -24,10 +24,10 @@ function Demo() {
 function Demo(props: any) {
   return (
     <ColorInput
-      label="Label"
-      placeholder="ColorInput"
-      description="Description"
-      error="Error"
+      label="标签"
+      placeholder="颜色输入"
+      description="描述"
+      error="错误"
       withAsterisk
       swatches={['#000', '#fff', '#f00', '#0f0', '#00f']}
       format="rgba"
@@ -36,7 +36,7 @@ function Demo(props: any) {
   );
 }
 
-export const stylesApi: MantineDemo = {
+export const stylesApi: UIDemo = {
   type: 'styles-api',
   data: ColorInputStylesApi,
   component: Demo,

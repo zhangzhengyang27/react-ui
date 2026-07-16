@@ -1,17 +1,17 @@
 import { Pill, PillsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { PillsInput, Pill } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <PillsInput label="PillsInput">
+    <PillsInput label="标签输入">
       <Pill.Group>
         <Pill>React</Pill>
         <Pill>Vue</Pill>
         <Pill>Svelte</Pill>
-        <PillsInput.Field placeholder="Enter tags" />
+        <PillsInput.Field placeholder="输入标签" />
       </Pill.Group>
     </PillsInput>
   );
@@ -20,18 +20,18 @@ function Demo() {
 
 function Demo() {
   return (
-    <PillsInput label="PillsInput">
+    <PillsInput label="标签输入">
       <Pill.Group>
         <Pill>React</Pill>
         <Pill>Vue</Pill>
         <Pill>Svelte</Pill>
-        <PillsInput.Field placeholder="Enter tags" />
+        <PillsInput.Field placeholder="输入标签" />
       </Pill.Group>
     </PillsInput>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

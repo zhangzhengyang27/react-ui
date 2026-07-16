@@ -1,5 +1,5 @@
 import { Autocomplete } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Autocomplete } from '@react-ui/ui';
@@ -7,8 +7,8 @@ import { Autocomplete } from '@react-ui/ui';
 function Demo() {
   return (
     <Autocomplete
-      label="Your favorite library"
-      placeholder="Pick value or enter anything"
+      label="你最喜欢的库"
+      placeholder="选择值或输入任意内容"
       data={['React', 'Angular', 'Vue', 'Svelte']}
       disabled
     />
@@ -19,15 +19,15 @@ function Demo() {
 function Demo() {
   return (
     <Autocomplete
-      label="Your favorite library"
-      placeholder="Pick value or enter anything"
+      label="你最喜欢的库"
+      placeholder="选择值或输入任意内容"
       data={['React', 'Angular', 'Vue', 'Svelte']}
       disabled
     />
   );
 }
 
-export const disabled: MantineDemo = {
+export const disabled: UIDemo = {
   type: 'code',
   component: Demo,
   code,

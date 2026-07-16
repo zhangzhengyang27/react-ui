@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 /**
  * 剪贴板操作选项配置
@@ -25,11 +25,18 @@ export interface UseClipboardReturnValue {
 export function useClipboard(options: UseClipboardOptions = { timeout: 2000 }): UseClipboardReturnValue {
     const [error, setError] = useState<Error | null>(null)
     const [copied, setCopied] = useState(false)
-    const [copyTimeout, setCopyTimeout] = useState<number | null>(null)
+    // 用 ref 存储 timeout id:writeText 是异步的,异步回调闭包若捕获 useState 旧值
+    // 会导致 clearTimeout 失效、copied 提前被重置;ref 始终指向最新值
+    const copyTimeoutRef = useRef<number | null>(null)
 
     const handleCopyResult = (value: boolean) => {
-        window.clearTimeout(copyTimeout!)
-        setCopyTimeout(window.setTimeout(() => setCopied(false), options.timeout))
+        if (copyTimeoutRef.current !== null) {
+            window.clearTimeout(copyTimeoutRef.current)
+        }
+        copyTimeoutRef.current = window.setTimeout(() => {
+            copyTimeoutRef.current = null
+            setCopied(false)
+        }, options.timeout)
         setCopied(value)
     }
 
@@ -47,8 +54,21 @@ export function useClipboard(options: UseClipboardOptions = { timeout: 2000 }): 
     const reset = () => {
         setCopied(false)
         setError(null)
-        window.clearTimeout(copyTimeout!)
+        if (copyTimeoutRef.current !== null) {
+            window.clearTimeout(copyTimeoutRef.current)
+            copyTimeoutRef.current = null
+        }
     }
+
+    // 卸载时清理 timer,避免对已卸载组件 setState
+    useEffect(() => {
+        return () => {
+            if (copyTimeoutRef.current !== null) {
+                window.clearTimeout(copyTimeoutRef.current)
+                copyTimeoutRef.current = null
+            }
+        }
+    }, [])
 
     return { copy, reset, error, copied }
 }

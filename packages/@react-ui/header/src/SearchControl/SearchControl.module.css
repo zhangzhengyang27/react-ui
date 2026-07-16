@@ -1,0 +1,44 @@
+.root {
+  height: 34px;
+  padding-left: var(--ui-spacing-sm);
+  padding-right: 4px;
+  border-radius: var(--ui-radius-md);
+  color: var(--ui-color-placeholder);
+  border: 1px solid;
+
+  [data-ui-color-scheme='light'] & {
+    border-color: var(--ui-color-gray-3);
+    background-color: var(--ui-color-white);
+  }
+
+  [data-ui-color-scheme='dark'] & {
+    border-color: var(--ui-color-dark-4);
+    background-color: var(--ui-color-dark-6);
+  }
+
+  [dir='rtl'] & {
+    padding-left: 4px;
+    padding-right: var(--ui-spacing-sm);
+  }
+}
+
+.shortcut {
+  font-size: 11px;
+  line-height: 1;
+  padding: 4px 7px;
+  border-radius: var(--ui-radius-sm);
+  border: 1px solid;
+  font-weight: bold;
+
+  [data-ui-color-scheme='light'] & {
+    color: var(--ui-color-gray-7);
+    border-color: var(--ui-color-gray-2);
+    background-color: var(--ui-color-gray-0);
+  }
+
+  [data-ui-color-scheme='dark'] & {
+    color: var(--ui-color-dark-0);
+    border-color: var(--ui-color-dark-7);
+    background-color: var(--ui-color-dark-7);
+  }
+}

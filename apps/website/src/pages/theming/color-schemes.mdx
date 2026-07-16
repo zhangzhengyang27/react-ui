@@ -6,30 +6,30 @@ export default Layout(MDX_DATA.ColorSchemes);
 
 # 配色方案
 
-[MantineProvider](/theming/mantine-provider/) 管理应用中的配色方案上下文。你可以使用 `defaultColorScheme` 属性配置默认配色方案值；可选值为 `light`、`dark` 和 `auto`（使用系统配色方案）。默认值为 `light`。
+[UIProvider](/theming/ui-provider/) 管理应用中的配色方案上下文。你可以使用 `defaultColorScheme` 属性配置默认配色方案值；可选值为 `light`、`dark` 和 `auto`（使用系统配色方案）。默认值为 `light`。
 
 ```tsx
-import { MantineProvider } from '@react-ui/ui';
+import { UIProvider } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <MantineProvider defaultColorScheme="dark">
+    <UIProvider defaultColorScheme="dark">
       {/* Your app here */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```
 
 ## data-ui-color-scheme 属性
 
-当 [MantineProvider](/theming/mantine-provider/) 挂载时，它会在 `<html />` 元素上设置一个 `data-ui-color-scheme` 属性，值为用户之前选择的值或 `defaultColorScheme` 属性的值。`data-ui-color-scheme` 属性用于所有组件样式中，以确定每个组件应使用哪些颜色。
+当 [UIProvider](/theming/ui-provider/) 挂载时，它会在 `<html />` 元素上设置一个 `data-ui-color-scheme` 属性，值为用户之前选择的值或 `defaultColorScheme` 属性的值。`data-ui-color-scheme` 属性用于所有组件样式中，以确定每个组件应使用哪些颜色。
 
-## use-mantine-color-scheme hook
+## use-ui-color-scheme hook
 
-`useMantineColorScheme` hook 可用于获取和设置当前配色方案值：
+`useUIColorScheme` hook 可用于获取和设置当前配色方案值：
 
 ```tsx
-function useMantineColorScheme(): {
+function useUIColorScheme(): {
   /** Current color scheme value */
   colorScheme: 'dark' | 'light' | 'auto';
 
@@ -48,20 +48,20 @@ function useMantineColorScheme(): {
 
 ## use-computed-color-scheme hook
 
-`useComputedColorScheme` 返回计算后的配色方案值——它返回 `light` 或 `dark`。它可用于实现配色方案切换逻辑：
+`useComputedUIColorScheme` 返回计算后的配色方案值——它返回 `light` 或 `dark`。它可用于实现配色方案切换逻辑：
 
 ```tsx
 import {
-  useComputedColorScheme,
-  useMantineColorScheme,
+  useComputedUIColorScheme,
+  useUIColorScheme,
 } from '@react-ui/ui';
 
 function Demo() {
   // -> colorScheme 是 'auto' | 'light' | 'dark'
-  const { colorScheme, setColorScheme } = useMantineColorScheme();
+  const { colorScheme, setColorScheme } = useUIColorScheme();
 
   // -> computedColorScheme 是 'light' | 'dark'，参数是默认值
-  const computedColorScheme = useComputedColorScheme('light');
+  const computedColorScheme = useComputedUIColorScheme('light');
 
   // 错误的配色方案切换实现
   // 如果 colorScheme 是 'auto'，则无法在所有情况下正确更改配色方案：
@@ -80,13 +80,13 @@ function Demo() {
 
 ## 配色方案切换时的过渡动画
 
-默认情况下，在配色方案更改时会禁用所有元素上的过渡动画，以避免不一致的动画效果。要在配色方案更改期间启用过渡动画，请在 `useMantineColorScheme` hook 上设置 `keepTransitions: true` 选项：
+默认情况下，在配色方案更改时会禁用所有元素上的过渡动画，以避免不一致的动画效果。要在配色方案更改期间启用过渡动画，请在 `useUIColorScheme` hook 上设置 `keepTransitions: true` 选项：
 
 ```tsx
-import { useMantineColorScheme } from '@react-ui/ui';
+import { useUIColorScheme } from '@react-ui/ui';
 
 function Demo() {
-  const { colorScheme, setColorScheme } = useMantineColorScheme({
+  const { colorScheme, setColorScheme } = useUIColorScheme({
     keepTransitions: true,
   });
 }
@@ -96,7 +96,7 @@ function Demo() {
 
 默认情况下，配色方案值存储在 local storage 中，其值会在组件挂载之前保存到 state 中，以避免出现不准确的配色方案闪烁。这意味着配色方案值在客户端和服务器上可能不同，因为服务器无法访问 local storage，并且始终使用默认值。
 
-如果你的应用中有服务端渲染（例如，如果你使用 [Next.js](/guides/next) 或 [React Router](/guides/react-router)），那么你不能在应用中使用 `colorScheme` 值以避免 hydration 问题。相反，你可以使用 [postcss-preset-mantine](/styles/postcss-preset) 中的 `dark` 和 `light` mixins 来生成根据配色方案值隐藏元素的样式：
+如果你的应用中有服务端渲染（例如，如果你使用 [Next.js](/guides/next) 或 [React Router](/guides/react-router)），那么你不能在应用中使用 `colorScheme` 值以避免 hydration 问题。相反，你可以使用 [postcss-preset-ui](/styles/postcss-preset) 中的 `dark` 和 `light` mixins 来生成根据配色方案值隐藏元素的样式：
 
 <Demo data={ThemingDemos.colorSchemeControl} />
 
@@ -125,18 +125,18 @@ function Demo() {
 
 ## 自动配色方案
 
-在 `MantineProvider` 和 `ColorSchemeScript` 上设置 `defaultColorScheme="auto"` 以使用系统配色方案。在这种情况下，配色方案值将由用户的操作系统控制：
+在 `UIProvider` 和 `ColorSchemeScript` 上设置 `defaultColorScheme="auto"` 以使用系统配色方案。在这种情况下，配色方案值将由用户的操作系统控制：
 
 ```tsx
-import { ColorSchemeScript, MantineProvider } from '@react-ui/ui';
+import { ColorSchemeScript, UIProvider } from '@react-ui/ui';
 
 function Demo() {
   return (
     <>
       <ColorSchemeScript defaultColorScheme="auto" />
-      <MantineProvider defaultColorScheme="auto">
+      <UIProvider defaultColorScheme="auto">
         {/* Your app here */}
-      </MantineProvider>
+      </UIProvider>
     </>
   );
 }
@@ -149,16 +149,16 @@ function Demo() {
 配色方案管理器必须具有以下方法：
 
 ```tsx
-interface MantineColorSchemeManager {
+interface UIColorSchemeManager {
   /** Function to retrieve color scheme value from external storage, for example window.localStorage */
-  get: (defaultValue: MantineColorScheme) => MantineColorScheme;
+  get: (defaultValue: UIColorScheme) => UIColorScheme;
 
   /** Function to set color scheme value in external storage, for example window.localStorage */
-  set: (value: MantineColorScheme) => void;
+  set: (value: UIColorScheme) => void;
 
   /** Function to subscribe to color scheme changes triggered by external events */
   subscribe: (
-    onUpdate: (colorScheme: MantineColorScheme) => void
+    onUpdate: (colorScheme: UIColorScheme) => void
   ) => void;
 
   /** Function to unsubscribe from color scheme changes triggered by external events */
@@ -173,19 +173,19 @@ interface MantineColorSchemeManager {
 
 ```tsx
 import {
-  isMantineColorScheme,
-  MantineColorScheme,
-  MantineColorSchemeManager,
+  isUIColorScheme,
+  UIColorScheme,
+  UIColorSchemeManager,
 } from '@react-ui/ui';
 
 export interface LocalStorageColorSchemeManagerOptions {
-  /** Local storage key used to retrieve value with `localStorage.getItem(key)`, `mantine-color-scheme` by default */
+  /** Local storage key used to retrieve value with `localStorage.getItem(key)`, `ui-color-scheme-value` by default */
   key?: string;
 }
 
 export function localStorageColorSchemeManager({
-  key = 'mantine-color-scheme',
-}: LocalStorageColorSchemeManagerOptions = {}): MantineColorSchemeManager {
+  key = 'ui-color-scheme-value',
+}: LocalStorageColorSchemeManagerOptions = {}): UIColorSchemeManager {
   let handleStorageEvent: (event: StorageEvent) => void;
 
   return {
@@ -196,7 +196,7 @@ export function localStorageColorSchemeManager({
 
       try {
         return (
-          (window.localStorage.getItem(key) as MantineColorScheme) ||
+          (window.localStorage.getItem(key) as UIColorScheme) ||
           defaultValue
         );
       } catch {
@@ -222,7 +222,7 @@ export function localStorageColorSchemeManager({
           event.storageArea === window.localStorage &&
           event.key === key
         ) {
-          isMantineColorScheme(event.newValue) &&
+          isUIColorScheme(event.newValue) &&
             onUpdate(event.newValue);
         }
       };
@@ -241,10 +241,10 @@ export function localStorageColorSchemeManager({
 }
 ```
 
-然后可以将自定义配色方案管理器传递给 [MantineProvider](/theming/mantine-provider)：
+然后可以将自定义配色方案管理器传递给 [UIProvider](/theming/ui-provider)：
 
 ```tsx
-import { MantineProvider } from '@react-ui/ui';
+import { UIProvider } from '@react-ui/ui';
 import { localStorageColorSchemeManager } from './localStorageColorSchemeManager';
 
 const colorSchemeManager = localStorageColorSchemeManager({
@@ -253,27 +253,27 @@ const colorSchemeManager = localStorageColorSchemeManager({
 
 function Demo() {
   return (
-    <MantineProvider colorSchemeManager={colorSchemeManager}>
+    <UIProvider colorSchemeManager={colorSchemeManager}>
       {/* Your app here */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```
 
 ## 默认配色方案
 
-当用户尚未选择任何配色方案时，将使用默认配色方案值。它必须同时设置在 [MantineProvider](/theming/mantine-provider/) 和 `ColorSchemeScript` 上。如果未设置 `defaultColorScheme`，则使用 `light`。
+当用户尚未选择任何配色方案时，将使用默认配色方案值。它必须同时设置在 [UIProvider](/theming/ui-provider/) 和 `ColorSchemeScript` 上。如果未设置 `defaultColorScheme`，则使用 `light`。
 
 ```tsx
-import { ColorSchemeScript, MantineProvider } from '@react-ui/ui';
+import { ColorSchemeScript, UIProvider } from '@react-ui/ui';
 
 function Demo() {
   return (
     <>
       <ColorSchemeScript defaultColorScheme="dark" />
-      <MantineProvider defaultColorScheme="dark">
+      <UIProvider defaultColorScheme="dark">
         {/* Your app here */}
-      </MantineProvider>
+      </UIProvider>
     </>
   );
 }
@@ -281,18 +281,18 @@ function Demo() {
 
 ## 强制配色方案
 
-你可以使用 `forceColorScheme` 属性将配色方案值强制为 `light` 或 `dark`。它必须同时设置在 [MantineProvider](/theming/mantine-provider/) 和 `ColorSchemeScript` 上。如果设置了 `forceColorScheme`，则 `defaultColorScheme` 和 `colorSchemeManager` 将被忽略。当设置了 `forceColorScheme` 时，无法使用 `setColorScheme` 函数更改配色方案值。
+你可以使用 `forceColorScheme` 属性将配色方案值强制为 `light` 或 `dark`。它必须同时设置在 [UIProvider](/theming/ui-provider/) 和 `ColorSchemeScript` 上。如果设置了 `forceColorScheme`，则 `defaultColorScheme` 和 `colorSchemeManager` 将被忽略。当设置了 `forceColorScheme` 时，无法使用 `setColorScheme` 函数更改配色方案值。
 
 ```tsx
-import { ColorSchemeScript, MantineProvider } from '@react-ui/ui';
+import { ColorSchemeScript, UIProvider } from '@react-ui/ui';
 
 function Demo() {
   return (
     <>
       <ColorSchemeScript forceColorScheme="light" />
-      <MantineProvider forceColorScheme="light">
+      <UIProvider forceColorScheme="light">
         {/* Your app here */}
-      </MantineProvider>
+      </UIProvider>
     </>
   );
 }
@@ -313,7 +313,7 @@ function Demo() {
 ```tsx
 import '@react-ui/ui/styles.css';
 
-import { ColorSchemeScript, MantineProvider } from '@react-ui/ui';
+import { ColorSchemeScript, UIProvider } from '@react-ui/ui';
 
 export const metadata = {
   title: 'My ReactUI app',
@@ -331,7 +331,7 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body>
-        <MantineProvider>{children}</MantineProvider>
+        <UIProvider>{children}</UIProvider>
       </body>
     </html>
   );

@@ -1,5 +1,5 @@
 import { Grid } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { ColWrapper as Col } from './_col-wrapper';
 
 const code = `
@@ -26,7 +26,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

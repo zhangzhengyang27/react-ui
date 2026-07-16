@@ -1,16 +1,16 @@
 import { CompositeChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './_data';
 import classes from './CompositeChart.demo.gridColor.module.css';
 
 const cssCode = `
 .root {
-  @mixin light {
+  [data-ui-color-scheme='light'] & {
     --chart-grid-color: alpha(var(--ui-color-black), 0.15);
     --chart-text-color: var(--ui-color-gray-7);
   }
 
-  @mixin dark {
+  [data-ui-color-scheme='dark'] & {
     --chart-grid-color: alpha(var(--ui-color-white), 0.15);
     --chart-text-color: var(--ui-color-dark-0);
   }
@@ -31,9 +31,9 @@ function Demo() {
       className={classes.root}
       maxBarWidth={30}
       series={[
-        { name: 'Tomatoes', color: 'rgba(18, 120, 255, 0.2)', type: 'bar' },
-        { name: 'Apples', color: 'red.8', type: 'line' },
-        { name: 'Oranges', color: 'yellow.8', type: 'area' },
+        { name: '西红柿', color: 'rgba(18, 120, 255, 0.2)', type: 'bar' },
+        { name: '苹果', color: 'red.8', type: 'line' },
+        { name: '橙子', color: 'yellow.8', type: 'area' },
       ]}
     />
   );
@@ -49,20 +49,20 @@ function Demo() {
       className={classes.root}
       maxBarWidth={30}
       series={[
-        { name: 'Tomatoes', color: 'rgba(18, 120, 255, 0.2)', type: 'bar' },
-        { name: 'Apples', color: 'red.8', type: 'line' },
-        { name: 'Oranges', color: 'yellow.8', type: 'area' },
+        { name: '西红柿', color: 'rgba(18, 120, 255, 0.2)', type: 'bar' },
+        { name: '苹果', color: 'red.8', type: 'line' },
+        { name: '橙子', color: 'yellow.8', type: 'area' },
       ]}
     />
   );
 }
 
-export const gridColor: MantineDemo = {
+export const gridColor: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code: cssCode, language: 'scss', fileName: 'Demo.module.css' },
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code: cssCode, language: 'scss', fileName: '演示样式.module.css' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: dataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

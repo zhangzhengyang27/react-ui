@@ -1,15 +1,15 @@
 import { css, Global as EmotionGlobal } from '@emotion/react';
-import { MantineTheme, useMantineTheme } from '@react-ui/ui';
+import { UITheme, useUITheme } from '@react-ui/ui';
 import type { CSSObject } from './types';
 
 type EmotionStyles = CSSObject | CSSObject[];
 
 interface GlobalStylesProps {
-  styles: EmotionStyles | ((theme: MantineTheme) => EmotionStyles);
+  styles: EmotionStyles | ((theme: UITheme) => EmotionStyles);
 }
 
 export function Global({ styles }: GlobalStylesProps) {
-  const theme = useMantineTheme();
+  const theme = useUITheme();
   return (
     <EmotionGlobal styles={css((typeof styles === 'function' ? styles(theme) : styles) as any)} />
   );

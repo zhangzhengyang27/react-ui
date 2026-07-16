@@ -1,7 +1,7 @@
 import { Button, Group, TextInput } from '@react-ui/ui';
 import { useForm } from '@react-ui/form';
 import { randomId } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useForm } from '@react-ui/form';
@@ -20,21 +20,21 @@ function Demo() {
   return (
     <div>
       <TextInput
-        label="Name"
-        placeholder="Name"
+        label="姓名"
+        placeholder="姓名"
         key={form.key('name')}
         {...form.getInputProps('name')}
       />
       <TextInput
         mt="md"
-        label="Email"
-        placeholder="Email"
+        label="邮箱"
+        placeholder="邮箱"
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
 
       <Group justify="center" mt="xl">
-        <Button onClick={() => form.setFieldValue('name', randomId())}>Random name</Button>
+        <Button onClick={() => form.setFieldValue('name', randomId())}>随机姓名</Button>
         <Button onClick={() => form.setFieldValue('email', \`\${randomId()}@test.com\`)}>
           Random email
         </Button>
@@ -56,21 +56,21 @@ function Demo() {
   return (
     <div>
       <TextInput
-        label="Name"
-        placeholder="Name"
+        label="姓名"
+        placeholder="姓名"
         key={form.key('name')}
         {...form.getInputProps('name')}
       />
       <TextInput
         mt="md"
-        label="Email"
-        placeholder="Email"
+        label="邮箱"
+        placeholder="邮箱"
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
 
       <Group justify="center" mt="xl">
-        <Button onClick={() => form.setFieldValue('name', randomId())}>Random name</Button>
+        <Button onClick={() => form.setFieldValue('name', randomId())}>随机姓名</Button>
         <Button onClick={() => form.setFieldValue('email', `${randomId()}@test.com`)}>
           Random email
         </Button>
@@ -79,7 +79,7 @@ function Demo() {
   );
 }
 
-export const setFieldValue: MantineDemo = {
+export const setFieldValue: UIDemo = {
   type: 'code',
   component: Demo,
   code,

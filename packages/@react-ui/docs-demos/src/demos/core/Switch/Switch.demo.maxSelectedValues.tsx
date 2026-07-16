@@ -1,5 +1,5 @@
 import { Group, Switch } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Group, Switch } from '@react-ui/ui';
@@ -31,7 +31,7 @@ function Demo() {
   );
 }
 
-export const maxSelectedValues: MantineDemo = {
+export const maxSelectedValues: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Checkbox } from './Checkbox'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Checkbox', () => {
     it('renders a hidden checkbox input', () => {
@@ -11,7 +11,7 @@ describe('Checkbox', () => {
 
         const input = screen.getByRole('checkbox', { hidden: true })
         expect(input).toHaveAttribute('type', 'checkbox')
-        expect(input).toHaveClass('mantine-Checkbox-input')
+        expect(input).toHaveClass('ui-Checkbox-input')
         expect(screen.getByText('Accept terms')).toBeInTheDocument()
     })
 
@@ -54,9 +54,9 @@ describe('Checkbox', () => {
         expect(input).not.toBeChecked()
 
         rerender(
-            <MantineProvider>
+            <UIProvider>
                 <Checkbox label="Accept terms" checked readOnly />
-            </MantineProvider>
+            </UIProvider>
         )
         expect(input).toBeChecked()
     })

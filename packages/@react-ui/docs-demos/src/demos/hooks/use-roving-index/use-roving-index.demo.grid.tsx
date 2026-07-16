@@ -1,6 +1,6 @@
 import { SimpleGrid, UnstyledButton } from '@react-ui/ui';
 import { useRovingIndex } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { SimpleGrid, UnstyledButton } from '@react-ui/ui';
@@ -70,7 +70,7 @@ function Demo() {
   );
 }
 
-export const grid: MantineDemo = {
+export const grid: UIDemo = {
   type: 'code',
   component: Demo,
   code,

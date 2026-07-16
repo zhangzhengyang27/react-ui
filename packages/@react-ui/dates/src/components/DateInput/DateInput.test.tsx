@@ -6,14 +6,14 @@ import {
   screen,
   tests,
   userEvent,
-} from '@mantine-tests/core';
+} from '@react-ui/tests';
 import {
   clickControl,
   datesTests,
   expectNoPopover,
   expectOpenedPopover,
   expectValue,
-} from '@mantine-tests/dates';
+} from '@react-ui/tests/dates';
 import { DateInput, DateInputProps } from './DateInput';
 
 const defaultProps: DateInputProps = {
@@ -404,8 +404,8 @@ describe('@react-ui/dates/DateInput', () => {
         popoverProps={{ opened: true, withinPortal: false, transitionProps: { duration: 0 } }}
       />
     );
-    expect(container.querySelector('[data-dates-input]')).toHaveClass('mantine-DateInput-input');
+    expect(container.querySelector('[data-dates-input]')).toHaveClass('ui-DateInput-input');
 
-    expect(container.querySelector('table button')!).toHaveClass('mantine-DateInput-day');
+    expect(container.querySelector('table button')!).toHaveClass('ui-DateInput-day');
   });
 });

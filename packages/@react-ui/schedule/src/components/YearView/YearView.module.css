@@ -3,11 +3,11 @@
   --year-view-font-size: var(--ui-font-size-sm);
   container-type: inline-size;
 
-  @mixin where-light {
+  [data-ui-color-scheme='light'] & {
     --year-view-border-color: var(--ui-color-gray-3);
   }
 
-  @mixin where-dark {
+  [data-ui-color-scheme='dark'] & {
     --year-view-border-color: var(--ui-color-dark-4);
   }
 }
@@ -115,12 +115,12 @@
     padding: 0;
   }
 
-  @mixin hover {
-    @mixin where-light {
+  &:hover {
+    [data-ui-color-scheme='light'] & {
       background-color: var(--ui-color-gray-0);
     }
 
-    @mixin where-dark {
+    [data-ui-color-scheme='dark'] & {
       background-color: var(--ui-color-dark-6);
     }
   }
@@ -187,13 +187,13 @@
     color: var(--day-dimmed-color);
   }
 
-  @mixin hover {
+  &:hover {
     &:where(:not([data-today], [data-day-placeholder])) {
-      @mixin where-light {
+      [data-ui-color-scheme='light'] & {
         background-color: var(--ui-color-gray-0);
       }
 
-      @mixin where-dark {
+      [data-ui-color-scheme='dark'] & {
         background-color: var(--ui-color-dark-6);
       }
     }
@@ -203,7 +203,7 @@
     background-color: var(--ui-primary-color-filled);
     color: var(--ui-primary-color-contrast);
 
-    @mixin hover {
+    &:hover {
       background-color: var(--ui-primary-color-filled-hover);
     }
   }
@@ -224,12 +224,12 @@
   text-transform: capitalize;
   border-radius: var(--year-view-radius);
 
-  @mixin hover {
-    @mixin where-light {
+  &:hover {
+    [data-ui-color-scheme='light'] & {
       background-color: var(--ui-color-gray-0);
     }
 
-    @mixin where-dark {
+    [data-ui-color-scheme='dark'] & {
       background-color: var(--ui-color-dark-6);
     }
   }

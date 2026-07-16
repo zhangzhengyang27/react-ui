@@ -1,6 +1,6 @@
 import { Button, Group, Switch } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Group, Switch } from '@react-ui/ui';
@@ -11,16 +11,16 @@ function Demo() {
   return (
     <>
       <Group>
-        <Button loading={loading}>Filled button</Button>
+        <Button loading={loading}>填充按钮</Button>
         <Button variant="light" loading={loading}>
-          Light button
+          浅色按钮
         </Button>
         <Button variant="outline" loading={loading}>
-          Outline button
+          描边按钮
         </Button>
       </Group>
 
-      <Switch checked={loading} onChange={toggle} label="Loading state" mt="md" />
+      <Switch checked={loading} onChange={toggle} label="加载状态" mt="md" />
     </>
   );
 }
@@ -31,21 +31,21 @@ function Demo() {
   return (
     <>
       <Group>
-        <Button loading={loading}>Filled button</Button>
+        <Button loading={loading}>填充按钮</Button>
         <Button variant="light" loading={loading}>
-          Light button
+          浅色按钮
         </Button>
         <Button variant="outline" loading={loading}>
-          Outline button
+          描边按钮
         </Button>
       </Group>
 
-      <Switch checked={loading} onChange={toggle} label="Loading state" mt="md" />
+      <Switch checked={loading} onChange={toggle} label="加载状态" mt="md" />
     </>
   );
 }
 
-export const loading: MantineDemo = {
+export const loading: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

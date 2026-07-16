@@ -1,4 +1,4 @@
-import { filterProps, getSpacing, InlineStyles, keys, rem, useMantineTheme } from '../../core'
+import { filterProps, getSpacing, InlineStyles, keys, rem, useUITheme } from '../../core'
 import type { GridProps } from './Grid'
 
 interface GridVariablesProps extends GridProps {
@@ -12,12 +12,14 @@ function getBaseValue<Value>(value: Value | Partial<Record<string, Value>> | und
     return value as Value | undefined
 }
 
-export function GridVariables({ cols, gutter, selector }: GridVariablesProps) {
-    const theme = useMantineTheme()
+export function GridVariables({ cols, gutter, rowGap, columnGap, selector }: GridVariablesProps) {
+    const theme = useUITheme()
 
     const baseStyles: Record<string, string | undefined> = filterProps({
         '--grid-cols': getBaseValue(cols)?.toString(),
-        '--grid-gutter': getSpacing(getBaseValue(gutter))
+        '--grid-gutter': getSpacing(getBaseValue(gutter)),
+        '--grid-row-gap': getSpacing(getBaseValue(rowGap)),
+        '--grid-column-gap': getSpacing(getBaseValue(columnGap))
     })
 
     const breakpointKeys = keys(theme.breakpoints)
@@ -28,6 +30,14 @@ export function GridVariables({ cols, gutter, selector }: GridVariablesProps) {
 
         if (typeof gutter === 'object' && gutter[breakpoint] !== undefined) {
             styles['--grid-gutter'] = getSpacing(gutter[breakpoint])!
+        }
+
+        if (typeof rowGap === 'object' && rowGap[breakpoint] !== undefined) {
+            styles['--grid-row-gap'] = getSpacing(rowGap[breakpoint])!
+        }
+
+        if (typeof columnGap === 'object' && columnGap[breakpoint] !== undefined) {
+            styles['--grid-column-gap'] = getSpacing(columnGap[breakpoint])!
         }
 
         if (typeof cols === 'object' && cols[breakpoint] !== undefined) {

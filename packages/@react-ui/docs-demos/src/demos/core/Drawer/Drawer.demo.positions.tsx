@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Drawer, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Demo() {
   const [opened, setOpened] = useState(false);
@@ -19,28 +19,28 @@ function Demo() {
         position={position}
         withCloseButton={false}
       >
-        Press escape to close the drawer
+        按 Esc 关闭抽屉
       </Drawer>
 
       <Group justify="center">
         <Button variant="default" onClick={() => open('left')}>
-          Left
+          左
         </Button>
         <Button variant="default" onClick={() => open('right')}>
-          Right
+          右
         </Button>
         <Button variant="default" onClick={() => open('top')}>
-          Top
+          上
         </Button>
         <Button variant="default" onClick={() => open('bottom')}>
-          Bottom
+          下
         </Button>
       </Group>
     </>
   );
 }
 
-export const positions: MantineDemo = {
+export const positions: UIDemo = {
   type: 'code',
   component: Demo,
 };

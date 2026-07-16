@@ -1,6 +1,6 @@
 import { Button, Group } from '@react-ui/ui';
 import { useRovingIndex } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Group } from '@react-ui/ui';
@@ -47,7 +47,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

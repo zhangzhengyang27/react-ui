@@ -10,23 +10,23 @@ export const MDX_META_DATA: Record<string, Frontmatter> = {
   },
 
   About: {
-    title: 'About ReactUI',
+    title: '关于 ReactUI',
     slug: '/about',
-    search: 'About ReactUI component library',
+    search: '关于 ReactUI 组件库',
     hideSiblings: true,
     hideHeader: true,
   },
 
   GettingStarted: {
-    title: 'Getting started',
-    search: 'Getting started with ReactUI',
+    title: '开始使用',
+    search: 'ReactUI 入门',
     slug: '/getting-started',
     hideSiblings: true,
     hideHeader: true,
   },
 
   Support: {
-    title: 'Support',
+    title: '支持',
     slug: '/support',
     hideInSearch: true,
     hideSiblings: true,
@@ -34,17 +34,17 @@ export const MDX_META_DATA: Record<string, Frontmatter> = {
   },
 
   BrowserSupport: {
-    title: 'Browser support',
+    title: '浏览器支持',
     slug: '/browser-support',
-    search: 'Browser versions supported by ReactUI',
+    search: 'ReactUI 支持的浏览器版本',
     hideSiblings: true,
     hideHeader: true,
   },
 
   Contribute: {
-    title: 'Contributing to ReactUI',
+    title: '为 ReactUI 做贡献',
     slug: '/contribute',
-    search: 'Learn how to contribute to ReactUI',
+    search: '学习如何为 ReactUI 做贡献',
     hideSiblings: true,
     hideHeader: true,
   },

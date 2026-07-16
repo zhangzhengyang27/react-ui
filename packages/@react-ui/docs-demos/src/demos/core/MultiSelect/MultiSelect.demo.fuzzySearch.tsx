@@ -1,6 +1,6 @@
 import Fuse from 'fuse.js';
 import { ComboboxItem, MultiSelect, OptionsFilter } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { MultiSelect, ComboboxItem, OptionsFilter } from '@react-ui/ui';
@@ -23,8 +23,8 @@ const optionsFilter: OptionsFilter = ({ options, search }) => {
 function Demo() {
   return (
     <MultiSelect
-      label="What countries have you visited?"
-      placeholder="Pick values"
+      label="你去过哪些国家？"
+      placeholder="选择值"
       data={['Great Britain', 'Russian Federation', 'United States', 'Germany', 'France']}
       filter={optionsFilter}
       searchable
@@ -50,8 +50,8 @@ const optionsFilter: OptionsFilter = ({ options, search }) => {
 function Demo() {
   return (
     <MultiSelect
-      label="What countries have you visited?"
-      placeholder="Pick values"
+      label="你去过哪些国家？"
+      placeholder="选择值"
       data={['Great Britain', 'Russian Federation', 'United States', 'Germany', 'France']}
       filter={optionsFilter}
       searchable
@@ -59,7 +59,7 @@ function Demo() {
   );
 }
 
-export const fuzzySearch: MantineDemo = {
+export const fuzzySearch: UIDemo = {
   type: 'code',
   component: Demo,
   code,

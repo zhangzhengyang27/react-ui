@@ -1,6 +1,6 @@
 import { DotsSixVerticalIcon } from '@phosphor-icons/react';
 import { useSplitter, UseSplitterRedistributeInput } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { DotsSixVerticalIcon } from '@phosphor-icons/react';
@@ -328,7 +328,7 @@ function Demo() {
   );
 }
 
-export const redistributeCustom: MantineDemo = {
+export const redistributeCustom: UIDemo = {
   type: 'code',
   code,
   component: Demo,

@@ -1,6 +1,6 @@
 import { TextInput } from '@react-ui/ui';
 import { isEmail, useField } from '@react-ui/form';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TextInput } from '@react-ui/ui';
@@ -10,10 +10,10 @@ function Demo() {
   const field = useField({
     initialValue: '',
     validateOnChange: true,
-    validate: isEmail('Invalid email'),
+    validate: isEmail('无效的邮箱'),
   });
 
-  return <TextInput {...field.getInputProps()} label="Email" placeholder="Enter your email" />;
+  return <TextInput {...field.getInputProps()} label="邮箱" placeholder="输入你的邮箱" />;
 }
 `;
 
@@ -21,13 +21,13 @@ function Demo() {
   const field = useField({
     initialValue: '',
     validateOnChange: true,
-    validate: isEmail('Invalid email'),
+    validate: isEmail('无效的邮箱'),
   });
 
-  return <TextInput {...field.getInputProps()} label="Email" placeholder="Enter your email" />;
+  return <TextInput {...field.getInputProps()} label="邮箱" placeholder="输入你的邮箱" />;
 }
 
-export const validateOnChange: MantineDemo = {
+export const validateOnChange: UIDemo = {
   type: 'code',
   component: Demo,
   code,

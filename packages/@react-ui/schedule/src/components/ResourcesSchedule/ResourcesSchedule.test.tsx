@@ -1,7 +1,7 @@
 import 'dayjs/locale/ru';
 
 import { DatesProvider } from '@react-ui/dates';
-import { render, screen, userEvent } from '@mantine-tests/core';
+import { render, screen, userEvent } from '@react-ui/tests';
 import { ResourcesSchedule, ResourcesScheduleProps } from './ResourcesSchedule';
 
 const resources = [
@@ -30,31 +30,31 @@ describe('@react-ui/schedule/ResourcesSchedule', () => {
   it('renders ResourcesDayView by default (defaultView="day")', () => {
     const { container } = render(<ResourcesSchedule {...defaultProps} />);
     expect(
-      container.querySelector('.mantine-ResourcesDayView-resourcesDayView')
+      container.querySelector('.ui-ResourcesDayView-resourcesDayView')
     ).toBeInTheDocument();
   });
 
   it('switches to month view when view button clicked', async () => {
     const { container } = render(<ResourcesSchedule {...defaultProps} defaultView="day" />);
     expect(
-      container.querySelector('.mantine-ResourcesDayView-resourcesDayView')
+      container.querySelector('.ui-ResourcesDayView-resourcesDayView')
     ).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole('tab', { name: 'Switch to month view' }));
     expect(
-      container.querySelector('.mantine-ResourcesMonthView-resourcesMonthView')
+      container.querySelector('.ui-ResourcesMonthView-resourcesMonthView')
     ).toBeInTheDocument();
   });
 
   it('renders with controlled view prop', () => {
     const { container, rerender } = render(<ResourcesSchedule {...defaultProps} view="day" />);
     expect(
-      container.querySelector('.mantine-ResourcesDayView-resourcesDayView')
+      container.querySelector('.ui-ResourcesDayView-resourcesDayView')
     ).toBeInTheDocument();
 
     rerender(<ResourcesSchedule {...defaultProps} view="month" />);
     expect(
-      container.querySelector('.mantine-ResourcesMonthView-resourcesMonthView')
+      container.querySelector('.ui-ResourcesMonthView-resourcesMonthView')
     ).toBeInTheDocument();
   });
 
@@ -86,36 +86,36 @@ describe('@react-ui/schedule/ResourcesSchedule', () => {
   it('defaultView="week" renders ResourcesWeekView', () => {
     const { container } = render(<ResourcesSchedule {...defaultProps} defaultView="week" />);
     expect(
-      container.querySelector('.mantine-ResourcesWeekView-resourcesWeekView')
+      container.querySelector('.ui-ResourcesWeekView-resourcesWeekView')
     ).toBeInTheDocument();
   });
 
   it('defaultView="month" renders ResourcesMonthView', () => {
     const { container } = render(<ResourcesSchedule {...defaultProps} defaultView="month" />);
     expect(
-      container.querySelector('.mantine-ResourcesMonthView-resourcesMonthView')
+      container.querySelector('.ui-ResourcesMonthView-resourcesMonthView')
     ).toBeInTheDocument();
   });
 
   it('supports uncontrolled switching through all views: day → week → month → day', async () => {
     const { container } = render(<ResourcesSchedule {...defaultProps} defaultView="day" />);
     expect(
-      container.querySelector('.mantine-ResourcesDayView-resourcesDayView')
+      container.querySelector('.ui-ResourcesDayView-resourcesDayView')
     ).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole('tab', { name: 'Switch to week view' }));
     expect(
-      container.querySelector('.mantine-ResourcesWeekView-resourcesWeekView')
+      container.querySelector('.ui-ResourcesWeekView-resourcesWeekView')
     ).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole('tab', { name: 'Switch to month view' }));
     expect(
-      container.querySelector('.mantine-ResourcesMonthView-resourcesMonthView')
+      container.querySelector('.ui-ResourcesMonthView-resourcesMonthView')
     ).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole('tab', { name: 'Switch to day view' }));
     expect(
-      container.querySelector('.mantine-ResourcesDayView-resourcesDayView')
+      container.querySelector('.ui-ResourcesDayView-resourcesDayView')
     ).toBeInTheDocument();
   });
 
@@ -169,13 +169,13 @@ describe('@react-ui/schedule/ResourcesSchedule', () => {
     );
 
     const daySlots = container.querySelectorAll(
-      '.mantine-ResourcesDayView-resourcesDayViewRowSlot'
+      '.ui-ResourcesDayView-resourcesDayViewRowSlot'
     );
     expect(daySlots).toHaveLength(2 * 2);
 
     await userEvent.click(screen.getByRole('tab', { name: 'Switch to week view' }));
     const weekSlots = container.querySelectorAll(
-      '.mantine-ResourcesWeekView-resourcesWeekViewRowSlot'
+      '.ui-ResourcesWeekView-resourcesWeekViewRowSlot'
     );
     expect(weekSlots.length).toBeGreaterThan(2 * 2 * 7);
   });
@@ -190,13 +190,13 @@ describe('@react-ui/schedule/ResourcesSchedule', () => {
     );
 
     const weekSlots = container.querySelectorAll(
-      '.mantine-ResourcesWeekView-resourcesWeekViewRowSlot'
+      '.ui-ResourcesWeekView-resourcesWeekViewRowSlot'
     );
     expect(weekSlots).toHaveLength(2 * 2 * 7);
 
     await userEvent.click(screen.getByRole('tab', { name: 'Switch to day view' }));
     const daySlots = container.querySelectorAll(
-      '.mantine-ResourcesDayView-resourcesDayViewRowSlot'
+      '.ui-ResourcesDayView-resourcesDayViewRowSlot'
     );
     expect(daySlots.length).toBeGreaterThan(2 * 2);
   });
@@ -211,14 +211,14 @@ describe('@react-ui/schedule/ResourcesSchedule', () => {
     );
 
     const monthCells = container.querySelectorAll(
-      '.mantine-ResourcesMonthView-resourcesMonthViewCell'
+      '.ui-ResourcesMonthView-resourcesMonthViewCell'
     );
     const totalDays = monthCells.length / 2;
     expect(totalDays).toBeLessThan(31);
 
     await userEvent.click(screen.getByRole('tab', { name: 'Switch to day view' }));
     expect(
-      container.querySelector('.mantine-ResourcesDayView-resourcesDayView')
+      container.querySelector('.ui-ResourcesDayView-resourcesDayView')
     ).toBeInTheDocument();
   });
 
@@ -320,7 +320,7 @@ describe('@react-ui/schedule/ResourcesSchedule', () => {
     const { container } = render(
       <ResourcesSchedule {...defaultProps} defaultView="day" mode="static" />
     );
-    const slots = container.querySelectorAll('.mantine-ResourcesDayView-resourcesDayViewRowSlot');
+    const slots = container.querySelectorAll('.ui-ResourcesDayView-resourcesDayViewRowSlot');
     slots.forEach((slot) => {
       expect(slot).toHaveAttribute('tabIndex', '-1');
     });
@@ -330,7 +330,7 @@ describe('@react-ui/schedule/ResourcesSchedule', () => {
     const { container } = render(
       <ResourcesSchedule {...defaultProps} defaultView="week" mode="static" />
     );
-    const slots = container.querySelectorAll('.mantine-ResourcesWeekView-resourcesWeekViewRowSlot');
+    const slots = container.querySelectorAll('.ui-ResourcesWeekView-resourcesWeekViewRowSlot');
     slots.forEach((slot) => {
       expect(slot).toHaveAttribute('tabIndex', '-1');
     });
@@ -342,15 +342,15 @@ describe('@react-ui/schedule/ResourcesSchedule', () => {
     );
 
     expect(
-      container.querySelector('.mantine-ResourcesDayView-resourcesDayViewResizeHandle')
+      container.querySelector('.ui-ResourcesDayView-resourcesDayViewResizeHandle')
     ).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole('tab', { name: 'Switch to week view' }));
     expect(
-      container.querySelector('.mantine-ResourcesDayView-resourcesDayViewResizeHandle')
+      container.querySelector('.ui-ResourcesDayView-resourcesDayViewResizeHandle')
     ).not.toBeInTheDocument();
     expect(
-      container.querySelector('.mantine-ResourcesWeekView-resourcesWeekViewResizeHandle')
+      container.querySelector('.ui-ResourcesWeekView-resourcesWeekViewResizeHandle')
     ).toBeInTheDocument();
   });
 

@@ -1,5 +1,5 @@
 import { DateTimePicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { DateTimePicker } from '@react-ui/dates';
@@ -8,8 +8,8 @@ function Demo() {
   return (
     <DateTimePicker
       valueFormat="DD MMM YYYY hh:mm A"
-      label="Pick date and time"
-      placeholder="Pick date and time"
+      label="选择日期和时间"
+      placeholder="选择日期和时间"
     />
   );
 }
@@ -19,13 +19,13 @@ function Demo() {
   return (
     <DateTimePicker
       valueFormat="DD MMM YYYY hh:mm A"
-      label="Pick date and time"
-      placeholder="Pick date and time"
+      label="选择日期和时间"
+      placeholder="选择日期和时间"
     />
   );
 }
 
-export const format: MantineDemo = {
+export const format: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 400,

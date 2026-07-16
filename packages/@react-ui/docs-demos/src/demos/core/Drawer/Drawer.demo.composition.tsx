@@ -1,6 +1,6 @@
 import { Button, Drawer } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useDisclosure } from '@react-ui/hooks';
@@ -15,15 +15,15 @@ function Demo() {
         <Drawer.Overlay />
         <Drawer.Content>
           <Drawer.Header>
-            <Drawer.Title>Drawer title</Drawer.Title>
+            <Drawer.Title>抽屉标题</Drawer.Title>
             <Drawer.CloseButton />
           </Drawer.Header>
-          <Drawer.Body>Drawer content</Drawer.Body>
+          <Drawer.Body>抽屉内容</Drawer.Body>
         </Drawer.Content>
       </Drawer.Root>
 
       <Button variant="default" onClick={open}>
-        Open Drawer
+        打开抽屉
       </Button>
     </>
   );
@@ -39,21 +39,21 @@ function Demo() {
         <Drawer.Overlay />
         <Drawer.Content>
           <Drawer.Header>
-            <Drawer.Title>Drawer title</Drawer.Title>
+            <Drawer.Title>抽屉标题</Drawer.Title>
             <Drawer.CloseButton />
           </Drawer.Header>
-          <Drawer.Body>Drawer content</Drawer.Body>
+          <Drawer.Body>抽屉内容</Drawer.Body>
         </Drawer.Content>
       </Drawer.Root>
 
       <Button variant="default" onClick={open}>
-        Open Drawer
+        打开抽屉
       </Button>
     </>
   );
 }
 
-export const composition: MantineDemo = {
+export const composition: UIDemo = {
   type: 'code',
   code,
   centered: true,

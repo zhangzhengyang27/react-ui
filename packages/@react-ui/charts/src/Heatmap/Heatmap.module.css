@@ -2,7 +2,7 @@
   display: block;
   width: fit-content;
 
-  @mixin where-light {
+  [data-ui-color-scheme='light'] & {
     --heatmap-level-1: rgba(81, 207, 102, 0.3);
     --heatmap-level-2: rgba(64, 192, 87, 0.45);
     --heatmap-level-3: rgba(55, 178, 77, 0.75);
@@ -10,7 +10,7 @@
     --heatmap-empty-rect-bg: var(--ui-color-gray-2);
   }
 
-  @mixin where-dark {
+  [data-ui-color-scheme='dark'] & {
     --heatmap-level-1: rgba(43, 138, 62, 0.3);
     --heatmap-level-2: rgba(47, 158, 68, 0.45);
     --heatmap-level-3: rgba(55, 178, 77, 0.75);

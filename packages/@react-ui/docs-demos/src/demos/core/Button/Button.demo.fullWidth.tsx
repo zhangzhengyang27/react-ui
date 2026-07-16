@@ -1,19 +1,19 @@
 import { Button } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button } from '@react-ui/ui';
 
 function Demo() {
-  return <Button fullWidth>Full width button</Button>;
+  return <Button fullWidth>全宽按钮</Button>;
 }
 `;
 
 function Demo() {
-  return <Button fullWidth>Full width button</Button>;
+  return <Button fullWidth>全宽按钮</Button>;
 }
 
-export const fullWidth: MantineDemo = {
+export const fullWidth: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Combobox, TextInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -13,16 +13,16 @@ function Demo() {
     <Combobox onOptionSubmit={setValue}>
       <Combobox.EventsTarget>
         <TextInput
-          placeholder="Pick value"
+          placeholder="选择值"
           value={value}
           onChange={(event) => setValue(event.currentTarget.value)}
         />
       </Combobox.EventsTarget>
 
       <Combobox.Options mt="sm">
-        <Combobox.Option value="First">First</Combobox.Option>
-        <Combobox.Option value="Second">Second</Combobox.Option>
-        <Combobox.Option value="Third">Third</Combobox.Option>
+        <Combobox.Option value="First">第一</Combobox.Option>
+        <Combobox.Option value="Second">第二</Combobox.Option>
+        <Combobox.Option value="Third">第三</Combobox.Option>
       </Combobox.Options>
     </Combobox>
   );
@@ -36,22 +36,22 @@ function Demo() {
     <Combobox onOptionSubmit={setValue}>
       <Combobox.EventsTarget>
         <TextInput
-          placeholder="Pick value"
+          placeholder="选择值"
           value={value}
           onChange={(event) => setValue(event.currentTarget.value)}
         />
       </Combobox.EventsTarget>
 
       <Combobox.Options mt="sm">
-        <Combobox.Option value="First">First</Combobox.Option>
-        <Combobox.Option value="Second">Second</Combobox.Option>
-        <Combobox.Option value="Third">Third</Combobox.Option>
+        <Combobox.Option value="First">第一</Combobox.Option>
+        <Combobox.Option value="Second">第二</Combobox.Option>
+        <Combobox.Option value="Third">第三</Combobox.Option>
       </Combobox.Options>
     </Combobox>
   );
 }
 
-export const noDropdown: MantineDemo = {
+export const noDropdown: UIDemo = {
   type: 'code',
   component: Demo,
   code,

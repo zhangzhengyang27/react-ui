@@ -1,5 +1,5 @@
 import { Box, Pagination } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Box, Pagination } from '@react-ui/ui';
@@ -21,7 +21,7 @@ function Demo() {
   );
 }
 
-export const responsive: MantineDemo = {
+export const responsive: UIDemo = {
   type: 'code',
   component: Demo,
   code,

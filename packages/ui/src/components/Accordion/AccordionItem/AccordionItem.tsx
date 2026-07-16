@@ -45,5 +45,5 @@ export const AccordionItem = factory<AccordionItemFactory>((props, ref) => {
     )
 })
 
-AccordionItem.displayName = '@mantine/core/AccordionItem'
+AccordionItem.displayName = '@react-ui/ui/AccordionItem'
 AccordionItem.classes = classes

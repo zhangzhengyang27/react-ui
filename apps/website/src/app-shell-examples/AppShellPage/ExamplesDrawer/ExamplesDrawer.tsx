@@ -13,7 +13,7 @@ import {
   UnstyledButton,
 } from '@react-ui/ui';
 import { useDisclosure } from '@react-ui/hooks';
-import { APP_SHELL_EXAMPLES_DATA } from '../../app-shell-examples-data';
+import { APP_SHELL_EXAMPLES_DATA } from '@react-ui/docs-demos';
 import classes from './ExamplesDrawer.module.css';
 
 export function ExamplesDrawer() {
@@ -50,11 +50,11 @@ export function ExamplesDrawer() {
             href="/core/app-shell"
             variant="default"
             size="md"
-            leftSection={<ArrowLeftIcon className="mantine-rotate-rtl" size={20} />}
+            leftSection={<ArrowLeftIcon className="ui-rotate-rtl" size={20} />}
             style={{ boxShadow: 'var(--ui-shadow-sm)' }}
             radius="xl"
           >
-            Back to documentation
+            返回文档
           </Button>
 
           <Button
@@ -67,7 +67,7 @@ export function ExamplesDrawer() {
             style={{ boxShadow: 'var(--ui-shadow-sm)' }}
             radius="xl"
           >
-            View {currentState === 'code' ? 'demo' : 'code'}
+            {currentState === 'code' ? '查看演示' : '查看代码'}
           </Button>
 
           <Button
@@ -77,7 +77,7 @@ export function ExamplesDrawer() {
             leftSection={<ListIcon size={20} />}
             w="var(--button-height)"
             style={{ boxShadow: 'var(--ui-shadow-sm)' }}
-            aria-label="Other examples"
+            aria-label="其他示例"
             className={classes.menuButton}
           />
         </Group>
@@ -91,9 +91,9 @@ export function ExamplesDrawer() {
         withCloseButton={false}
         padding={0}
       >
-        <ScrollArea h="100dvh" type="hover" p="md">
+        <ScrollArea h="100dvh" type="scroll" p="md">
           <Title order={3} fz="lg" fw={500} pl="lg" pt="md">
-            AppShell component examples
+            AppShell 组件示例
           </Title>
 
           <Divider my="sm" />

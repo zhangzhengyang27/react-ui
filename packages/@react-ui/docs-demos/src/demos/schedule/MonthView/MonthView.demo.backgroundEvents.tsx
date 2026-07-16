@@ -1,14 +1,14 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { MonthView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const initialEvents: ScheduleEventData[] = [
   {
     id: 'company-offsite',
-    title: 'Company offsite',
+    title: '公司团建',
     start: `${dayjs(today).startOf('week').add(1, 'day').format('YYYY-MM-DD')} 00:00:00`,
     end: `${dayjs(today).startOf('week').add(3, 'day').format('YYYY-MM-DD')} 23:59:59`,
     color: 'blue',
@@ -16,14 +16,14 @@ const initialEvents: ScheduleEventData[] = [
   },
   {
     id: 'team-meeting',
-    title: 'Team meeting',
+    title: '团队会议',
     start: `${today} 10:00:00`,
     end: `${today} 11:00:00`,
     color: 'violet',
   },
   {
     id: 'code-review',
-    title: 'Code review',
+    title: '代码审查',
     start: `${dayjs(today).add(1, 'day').format('YYYY-MM-DD')} 14:00:00`,
     end: `${dayjs(today).add(1, 'day').format('YYYY-MM-DD')} 15:00:00`,
     color: 'green',
@@ -35,12 +35,12 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import { MonthView, ScheduleEventData } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const initialEvents: ScheduleEventData[] = [
   {
     id: 'company-offsite',
-    title: 'Company offsite',
+    title: '公司团建',
     start: \`\${dayjs(today).startOf('week').add(1, 'day').format('YYYY-MM-DD')} 00:00:00\`,
     end: \`\${dayjs(today).startOf('week').add(3, 'day').format('YYYY-MM-DD')} 23:59:59\`,
     color: 'blue',
@@ -48,14 +48,14 @@ const initialEvents: ScheduleEventData[] = [
   },
   {
     id: 'team-meeting',
-    title: 'Team meeting',
+    title: '团队会议',
     start: \`\${today} 10:00:00\`,
     end: \`\${today} 11:00:00\`,
     color: 'violet',
   },
   {
     id: 'code-review',
-    title: 'Code review',
+    title: '代码审查',
     start: \`\${dayjs(today).add(1, 'day').format('YYYY-MM-DD')} 14:00:00\`,
     end: \`\${dayjs(today).add(1, 'day').format('YYYY-MM-DD')} 15:00:00\`,
     color: 'green',
@@ -100,7 +100,7 @@ function Demo() {
 
   return (
     <MonthView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       withEventsDragAndDrop
       onEventDrop={handleEventDrop}
@@ -138,7 +138,7 @@ function Demo() {
 
   return (
     <MonthView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       withEventsDragAndDrop
       onEventDrop={handleEventDrop}
@@ -146,7 +146,7 @@ function Demo() {
   );
 }
 
-export const backgroundEvents: MantineDemo = {
+export const backgroundEvents: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

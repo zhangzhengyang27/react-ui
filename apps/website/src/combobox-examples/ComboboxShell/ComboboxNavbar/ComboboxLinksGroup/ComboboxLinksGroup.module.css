@@ -57,7 +57,7 @@
   text-decoration: none;
   color: light-dark(var(--ui-color-gray-7), var(--ui-color-dark-1));
 
-  @mixin hover {
+  &:hover {
     &:not([data-navbar-link-active]) {
       background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-8));
     }

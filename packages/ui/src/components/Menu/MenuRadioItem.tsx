@@ -7,8 +7,8 @@ import {
     type ElementProps,
     factory,
     type Factory,
-    type MantineColor,
-    useMantineTheme,
+    type UIColor,
+    useUITheme,
     useProps
 } from '../../core'
 import { UnstyledButton } from '../UnstyledButton'
@@ -25,8 +25,8 @@ export interface MenuRadioItemProps
     /** Item label */
     children?: React.ReactNode
 
-    /** Key of theme.colors or any valid CSS color */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色 */
+    color?: UIColor
 
     /** If set, closes the menu when this item is clicked */
     closeMenuOnClick?: boolean
@@ -75,7 +75,7 @@ export const MenuRadioItem = factory<MenuRadioItemFactory>((props, ref) => {
 
     const ctx = useMenuContext()
     const groupCtx = useMenuRadioGroupContext()
-    const theme = useMantineTheme()
+    const theme = useUITheme()
     const itemRef = useRef<HTMLButtonElement>(null)
 
     const _checked = checkedProp ?? (groupCtx ? groupCtx.value === value : false)
@@ -112,7 +112,7 @@ export const MenuRadioItem = factory<MenuRadioItemFactory>((props, ref) => {
             disabled={disabled}
             data-menu-item
             data-disabled={disabled || dataDisabled || undefined}
-            data-mantine-stop-propagation
+            data-ui-stop-propagation
             onClick={handleClick}
             onKeyDown={createScopedKeydownHandler({
                 siblingSelector: '[data-menu-item]:not([data-disabled])',

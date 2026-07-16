@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ColorInput, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -16,8 +16,8 @@ function Demo() {
       </Text>
 
       <ColorInput
-        label="Pick color"
-        placeholder="Pick color"
+        label="选择颜色"
+        placeholder="选择颜色"
         defaultValue="#FFFFFF"
         onChangeEnd={setChangeEndValue}
       />
@@ -36,8 +36,8 @@ function Demo() {
       </Text>
 
       <ColorInput
-        label="Pick color"
-        placeholder="Pick color"
+        label="选择颜色"
+        placeholder="选择颜色"
         defaultValue="#FFFFFF"
         onChangeEnd={setChangeEndValue}
       />
@@ -45,7 +45,7 @@ function Demo() {
   );
 }
 
-export const onChangeEnd: MantineDemo = {
+export const onChangeEnd: UIDemo = {
   type: 'code',
   component: Demo,
   code,

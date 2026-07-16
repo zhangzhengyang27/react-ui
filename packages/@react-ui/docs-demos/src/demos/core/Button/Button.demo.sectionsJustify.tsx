@@ -1,6 +1,6 @@
 import { ImageIcon } from '@phosphor-icons/react';
 import { Button } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = (props: any) => `
 import { Button } from '@react-ui/ui';
@@ -11,15 +11,15 @@ function Demo() {
   return (
     <>
       <Button justify="${props.justify}" fullWidth leftSection={icon} rightSection={icon} variant="default">
-        Button label
+        按钮标签
       </Button>
 
       <Button justify="${props.justify}" fullWidth leftSection={icon} variant="default" mt="md">
-        Button label
+        按钮标签
       </Button>
 
       <Button justify="${props.justify}" fullWidth rightSection={icon} variant="default" mt="md">
-        Button label
+        按钮标签
       </Button>
 
       <Button
@@ -30,7 +30,7 @@ function Demo() {
         variant="default"
         mt="md"
       >
-        Button label
+        按钮标签
       </Button>
     </>
   );
@@ -42,15 +42,15 @@ function Wrapper(props: any) {
   return (
     <>
       <Button fullWidth leftSection={icon} rightSection={icon} variant="default" {...props}>
-        Button label
+        按钮标签
       </Button>
 
       <Button fullWidth leftSection={icon} variant="default" mt="md" {...props}>
-        Button label
+        按钮标签
       </Button>
 
       <Button fullWidth rightSection={icon} variant="default" mt="md" {...props}>
-        Button label
+        按钮标签
       </Button>
 
       <Button
@@ -61,13 +61,13 @@ function Wrapper(props: any) {
         mt="md"
         {...props}
       >
-        Button label
+        按钮标签
       </Button>
     </>
   );
 }
 
-export const sectionsJustify: MantineDemo = {
+export const sectionsJustify: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

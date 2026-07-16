@@ -1,5 +1,5 @@
 import { WeekView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { overlappingEvents as overlappingEventsData } from './_data';
 
 const code = `
@@ -9,7 +9,7 @@ import { events } from './data';
 function Demo() {
   return (
     <WeekView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={events}
       startTime="08:00:00"
       endTime="18:00:00"
@@ -21,7 +21,7 @@ function Demo() {
 function Demo() {
   return (
     <WeekView
-      date={new Date()}
+      date={new Date('2024-01-15')}
       events={overlappingEventsData}
       startTime="08:00:00"
       endTime="18:00:00"
@@ -29,7 +29,7 @@ function Demo() {
   );
 }
 
-export const overlappingEvents: MantineDemo = {
+export const overlappingEvents: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

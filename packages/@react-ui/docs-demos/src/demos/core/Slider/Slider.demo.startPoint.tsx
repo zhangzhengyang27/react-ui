@@ -1,5 +1,5 @@
 import { Slider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Slider } from '@react-ui/ui';
@@ -42,7 +42,7 @@ function Demo() {
   );
 }
 
-export const startPoint: MantineDemo = {
+export const startPoint: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,6 +1,6 @@
 import { Button } from '@react-ui/ui';
 import { modals } from '@react-ui/modals';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Button, Text, Stack, Center, Loader } from '@react-ui/ui';
@@ -38,7 +38,7 @@ function Demo() {
         onClick={() => {
           const modalId = modals.openContextModal({
             modal: 'asyncDemonstration',
-            title: 'Processing...',
+            title: '处理中...',
             closeOnEscape: false,
             closeOnClickOutside: false,
             closeButtonProps:{ disabled:true },
@@ -52,7 +52,7 @@ function Demo() {
           setTimeout(() => {
             modals.updateContextModal({
               modalId,
-              title: "Processing Complete!",
+              title: "处理完成！",
               closeOnEscape: true,
               closeOnClickOutside: true,
               closeButtonProps:{ disabled: false },
@@ -78,7 +78,7 @@ function Demo() {
       onClick={() => {
         const modalId = modals.openContextModal({
           modal: 'asyncDemonstration',
-          title: 'Processing...',
+          title: '处理中...',
           closeOnEscape: false,
           closeOnClickOutside: false,
           closeButtonProps: { disabled: true },
@@ -91,7 +91,7 @@ function Demo() {
         setTimeout(() => {
           modals.updateContextModal({
             modalId,
-            title: 'Processing Complete!',
+            title: '处理完成！',
             closeOnEscape: true,
             closeOnClickOutside: true,
             closeButtonProps: { disabled: false },
@@ -108,7 +108,7 @@ function Demo() {
   );
 }
 
-export const updateContextModal: MantineDemo = {
+export const updateContextModal: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

@@ -1,6 +1,6 @@
 import { Box, Code, Group, Text } from '@react-ui/ui';
 import { useMouse } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Text, Code, Group, Box } from '@react-ui/ui';
@@ -37,7 +37,7 @@ function Demo() {
   );
 }
 
-export const ref: MantineDemo = {
+export const ref: UIDemo = {
   type: 'code',
   code,
   component: Demo,

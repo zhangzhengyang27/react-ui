@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Stepper } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Stepper.demo.stylesApi3.module.css';
 
 const cssCode = `.separator {
@@ -73,7 +73,7 @@ function Demo() {
   );
 }
 
-export const stylesApi3: MantineDemo = {
+export const stylesApi3: UIDemo = {
   type: 'code',
   component: Demo,
   code: [

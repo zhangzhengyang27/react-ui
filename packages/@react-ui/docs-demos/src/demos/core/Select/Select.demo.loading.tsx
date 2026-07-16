@@ -1,5 +1,5 @@
 import { Select } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Select } from '@react-ui/ui';
@@ -7,7 +7,7 @@ import { Select } from '@react-ui/ui';
 function Demo() {
   return (
     <Select
-      placeholder="Pick value"
+      placeholder="选择值"
       data={['React', 'Angular', 'Vue', 'Svelte']}
       loading
     />
@@ -16,10 +16,10 @@ function Demo() {
 `;
 
 function Demo() {
-  return <Select placeholder="Pick value" data={['React', 'Angular', 'Vue', 'Svelte']} loading />;
+  return <Select placeholder="选择值" data={['React', 'Angular', 'Vue', 'Svelte']} loading />;
 }
 
-export const loading: MantineDemo = {
+export const loading: UIDemo = {
   type: 'code',
   component: Demo,
   code,

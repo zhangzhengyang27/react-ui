@@ -1,7 +1,7 @@
 import { DotsSixVerticalIcon } from '@phosphor-icons/react';
 import { Button, Group } from '@react-ui/ui';
 import { useSplitter } from '@react-ui/hooks';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { DotsSixVerticalIcon } from '@phosphor-icons/react';
@@ -94,7 +94,7 @@ function Demo() {
       </div>
       <Group mt="md">
         <Button size="xs" onClick={() => splitter.toggleCollapse(0)}>
-          {splitter.collapsed[0] ? 'Expand Panel A' : 'Collapse Panel A'}
+          {splitter.collapsed[0] ? '展开面板 A' : '收起面板 A'}
         </Button>
       </Group>
     </>
@@ -188,14 +188,14 @@ function Demo() {
       </div>
       <Group mt="md">
         <Button size="xs" onClick={() => splitter.toggleCollapse(0)}>
-          {splitter.collapsed[0] ? 'Expand Panel A' : 'Collapse Panel A'}
+          {splitter.collapsed[0] ? '展开面板 A' : '收起面板 A'}
         </Button>
       </Group>
     </>
   );
 }
 
-export const collapsible: MantineDemo = {
+export const collapsible: UIDemo = {
   type: 'code',
   code,
   component: Demo,

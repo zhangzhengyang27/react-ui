@@ -6,7 +6,7 @@ import {
     Factory,
     getRadius,
     getSize,
-    MantineRadius,
+    UIRadius,
     StylesApiProps,
     useProps,
     useStyles
@@ -26,8 +26,8 @@ export interface SkeletonProps extends BoxProps, StylesApiProps<SkeletonFactory>
     /** Skeleton width */
     width?: React.CSSProperties['width']
 
-    /** Key of theme.radius or any valid CSS value @default theme.defaultRadius */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值 @default theme.defaultRadius */
+    radius?: UIRadius
 
     /** If true, skeleton will be rounded into a circle @default false */
     circle?: boolean

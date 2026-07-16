@@ -9,7 +9,7 @@ import {
     type BoxProps,
     type ElementProps,
     type Factory,
-    type MantineSize,
+    type UISize,
     type StylesApiProps
 } from '../../core'
 import { Portal } from '../Portal'
@@ -22,10 +22,10 @@ export type AffixCssVariables = {
 }
 
 export interface AffixPosition {
-    top?: MantineSize | (string & {}) | number
-    left?: MantineSize | (string & {}) | number
-    bottom?: MantineSize | (string & {}) | number
-    right?: MantineSize | (string & {}) | number
+    top?: UISize | (string & {}) | number
+    left?: UISize | (string & {}) | number
+    bottom?: UISize | (string & {}) | number
+    right?: UISize | (string & {}) | number
 }
 
 export interface AffixProps extends BoxProps, StylesApiProps<AffixFactory>, ElementProps<'div'> {
@@ -89,4 +89,4 @@ export const Affix = factory<AffixFactory>((_props, _ref) => {
 })
 
 Affix.classes = classes
-Affix.displayName = '@mantine/core/Affix'
+Affix.displayName = '@react-ui/ui/Affix'

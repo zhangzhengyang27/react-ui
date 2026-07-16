@@ -1,5 +1,5 @@
 import { SankeyChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { colorData, colorDataCode } from './_data';
 
 const code = `
@@ -15,11 +15,11 @@ function Demo() {
   return <SankeyChart data={colorData} linkOpacity={0.2} />;
 }
 
-export const linkOpacity: MantineDemo = {
+export const linkOpacity: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: colorDataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

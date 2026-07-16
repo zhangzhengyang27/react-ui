@@ -15,7 +15,7 @@ function hDocs(hook: string, description: string): Frontmatter {
 
 export const MDX_HOOKS_DATA: Record<string, Frontmatter> = {
   HooksPackage: {
-    title: 'Get started',
+    title: '开始使用',
     slug: '/hooks/package',
     hideInSearch: true,
     hideHeader: true,
@@ -53,7 +53,7 @@ export const MDX_HOOKS_DATA: Record<string, Frontmatter> = {
     title: 'use-element-size',
     package: '@react-ui/hooks',
     slug: '/hooks/use-element-size',
-    description: 'Returns element width and height and observes changes with ResizeObserver',
+    description: '返回元素宽高并通过 ResizeObserver 监听变化',
     source: '@react-ui/hooks/src/use-resize-observer/use-resize-observer.ts',
     docs: 'hooks/use-element-size.mdx',
   },

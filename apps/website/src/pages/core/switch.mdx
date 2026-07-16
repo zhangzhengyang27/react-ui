@@ -45,8 +45,8 @@ function Demo() {
         console.log('Switch value:', !!formData.get('notifications'));
       }}
     >
-      <Switch label="Enable notifications" name="notifications" defaultChecked />
-      <button type="submit">Submit</button>
+      <Switch label="启用通知" name="notifications" defaultChecked />
+      <button type="submit">提交</button>
     </form>
   );
 }
@@ -81,7 +81,7 @@ function Demo() {
 要将光标更改为 pointer，请在 [theme](/theming/theme-object/) 上设置 `cursorType`：
 
 ```tsx
-import { createTheme, MantineProvider, Switch } from '@react-ui/ui';
+import { createTheme, UIProvider, Switch } from '@react-ui/ui';
 
 const theme = createTheme({
   cursorType: 'pointer',
@@ -89,9 +89,9 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
-      <Switch label="Pointer cursor" />
-    </MantineProvider>
+    <UIProvider theme={theme}>
+      <Switch label="指针光标" />
+    </UIProvider>
   );
 }
 ```
@@ -122,11 +122,11 @@ export function UncontrolledForm() {
         console.log('Switch group value:', formData.get('frameworks'));
       }}
     >
-      <Switch.Group label="Frameworks" name="frameworks" hiddenInputValuesSeparator="|">
+      <Switch.Group label="框架" name="frameworks" hiddenInputValuesSeparator="|">
         <Switch label="React" value="react" />
         <Switch label="Angular" value="ng" />
       </Switch.Group>
-      <button type="submit">Submit</button>
+      <button type="submit">提交</button>
     </form>
   );
 }
@@ -195,11 +195,11 @@ function Bad() {
 
 // -> 好，输入框有 aria-label
 function Good() {
-  return <Switch aria-label="I agree to everything" />;
+  return <Switch aria-label="我同意所有内容" />;
 }
 
 // -> 好，输入框有关联标签
 function AlsoGood() {
-  return <Switch label="I agree to everything" />;
+  return <Switch label="我同意所有内容" />;
 }
 ```

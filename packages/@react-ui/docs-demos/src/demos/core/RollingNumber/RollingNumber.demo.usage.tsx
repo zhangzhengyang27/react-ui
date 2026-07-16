@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Group, RollingNumber } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -13,9 +13,9 @@ function Demo() {
     <>
       <RollingNumber value={value} fz="36px" />
       <Group mt="md">
-        <Button onClick={() => setValue((v) => v + 1)}>Increment</Button>
-        <Button onClick={() => setValue((v) => v - 1)}>Decrement</Button>
-        <Button onClick={() => setValue(Math.floor(Math.random() * 10000))}>Random</Button>
+        <Button onClick={() => setValue((v) => v + 1)}>增加</Button>
+        <Button onClick={() => setValue((v) => v - 1)}>减少</Button>
+        <Button onClick={() => setValue(Math.floor(Math.random() * 10000))}>随机</Button>
       </Group>
     </>
   );
@@ -29,15 +29,15 @@ function Demo() {
     <>
       <RollingNumber value={value} fz="36px" />
       <Group mt="md">
-        <Button onClick={() => setValue((v) => v + 1)}>Increment</Button>
-        <Button onClick={() => setValue((v) => v - 1)}>Decrement</Button>
-        <Button onClick={() => setValue(Math.floor(Math.random() * 10000))}>Random</Button>
+        <Button onClick={() => setValue((v) => v + 1)}>增加</Button>
+        <Button onClick={() => setValue((v) => v - 1)}>减少</Button>
+        <Button onClick={() => setValue(Math.floor(Math.random() * 10000))}>随机</Button>
       </Group>
     </>
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   component: Demo,
   code,

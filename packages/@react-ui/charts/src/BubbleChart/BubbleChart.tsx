@@ -22,10 +22,10 @@ import {
   GetStylesApi,
   getThemeColor,
   Group,
-  MantineColor,
+  UIColor,
   StylesApiProps,
   Text,
-  useMantineTheme,
+  useUITheme,
   useProps,
   useStyles,
 } from '@react-ui/ui';
@@ -90,7 +90,7 @@ export interface BubbleChartProps
   range: [number, number];
 
   /** Color of the chart items. Key of `theme.colors` or any valid CSS color. @default blue.6 */
-  color?: MantineColor;
+  color?: UIColor;
 
   /** Props passed down to the `XAxis` recharts component */
   xAxisProps?: Omit<XAxisProps, 'ref'>;
@@ -108,10 +108,10 @@ export interface BubbleChartProps
   scatterProps?: Partial<Omit<ScatterProps, 'ref'>>;
 
   /** Color of the text displayed inside the chart @default 'dimmed' */
-  textColor?: MantineColor;
+  textColor?: UIColor;
 
   /** Color of the grid and cursor lines, by default depends on color scheme */
-  gridColor?: MantineColor;
+  gridColor?: UIColor;
 
   /** Chart label displayed next to the x axis */
   label?: string;
@@ -167,7 +167,7 @@ export const BubbleChart = factory<BubbleChartFactory>((_props) => {
     ...others
   } = props;
 
-  const theme = useMantineTheme();
+  const theme = useUITheme();
 
   const getStyles = useStyles<BubbleChartFactory>({
     name: 'BubbleChart',

@@ -50,4 +50,4 @@ export const ComboboxDropdown = factory<ComboboxDropdownFactory>((_props, ref) =
     )
 })
 
-ComboboxDropdown.displayName = '@mantine/core/ComboboxDropdown'
+ComboboxDropdown.displayName = '@react-ui/ui/ComboboxDropdown'

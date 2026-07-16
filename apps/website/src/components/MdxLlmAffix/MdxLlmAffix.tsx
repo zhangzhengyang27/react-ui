@@ -26,8 +26,8 @@ export function MdxLlmAffix({ meta }: MdxLlmAffixProps) {
       setTimeout(() => setCopied(false), 2000);
     } catch (error) {
       notifications.show({
-        title: 'Failed to copy',
-        message: 'Unable to copy LLM documentation content, see console for details',
+        title: '复制失败',
+        message: '无法复制大语言模型文档内容，详情请查看控制台',
         color: 'red',
       });
     }
@@ -36,11 +36,11 @@ export function MdxLlmAffix({ meta }: MdxLlmAffixProps) {
   return (
     <Affix position={{ bottom: 20, right: 20 }} visibleFrom="sm">
       <Card className={classes.root}>
-        <Text className={classes.title}>LLM</Text>
+        <Text className={classes.title}>大语言模型</Text>
 
         <Stack gap={4}>
           <Tooltip
-            label="Open LLM optimized docs ↗"
+            label="打开大语言模型优化文档 ↗"
             position="left"
             transitionProps={{ duration: 0 }}
           >
@@ -56,7 +56,7 @@ export function MdxLlmAffix({ meta }: MdxLlmAffixProps) {
             </ActionIcon>
           </Tooltip>
           <Tooltip
-            label={copied ? 'Copied!' : 'Copy LLM optimized docs'}
+            label={copied ? '已复制！' : '复制大语言模型优化文档'}
             position="left"
             transitionProps={{ duration: 0 }}
           >
@@ -74,7 +74,7 @@ export function MdxLlmAffix({ meta }: MdxLlmAffixProps) {
             </ActionIcon>
           </Tooltip>
           <Tooltip
-            label="Submit LLM documentation feedback ↗"
+            label="提交大语言模型文档反馈 ↗"
             position="left"
             transitionProps={{ duration: 0 }}
           >

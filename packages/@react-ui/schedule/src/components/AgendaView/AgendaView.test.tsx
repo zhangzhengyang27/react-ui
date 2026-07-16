@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, tests, userEvent } from '@mantine-tests/core';
+import { render, screen, tests, userEvent } from '@react-ui/tests';
 import { ScheduleEventData } from '../../types';
 import { AgendaView, AgendaViewProps, AgendaViewStylesNames } from './AgendaView';
 
@@ -75,7 +75,7 @@ describe('@react-ui/schedule/AgendaView', () => {
 
   it('renders date group headers', () => {
     const { container } = render(<AgendaView {...defaultProps} />);
-    const dateHeaders = container.querySelectorAll('.mantine-AgendaView-agendaViewDateHeader');
+    const dateHeaders = container.querySelectorAll('.ui-AgendaView-agendaViewDateHeader');
     expect(dateHeaders.length).toBe(3);
   });
 
@@ -136,7 +136,7 @@ describe('@react-ui/schedule/AgendaView', () => {
     const { container } = render(
       <AgendaView rangeStart="2025-11-10" rangeEnd="2025-11-11" events={allDayEvents} />
     );
-    const dateHeaders = container.querySelectorAll('.mantine-AgendaView-agendaViewDateHeader');
+    const dateHeaders = container.querySelectorAll('.ui-AgendaView-agendaViewDateHeader');
     expect(dateHeaders).toHaveLength(1);
   });
 

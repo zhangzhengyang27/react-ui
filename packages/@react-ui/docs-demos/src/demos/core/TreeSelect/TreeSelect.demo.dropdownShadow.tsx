@@ -1,5 +1,5 @@
 import { TreeSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { data, dataCode } from './data';
 
 const code = `
@@ -9,8 +9,8 @@ import { data } from './data';
 function Demo() {
   return (
     <TreeSelect
-      label="Your favorite item"
-      placeholder="Pick value"
+      label="你最喜欢的项目"
+      placeholder="选择值"
       data={data}
       comboboxProps={{ shadow: 'md' }}
     />
@@ -21,19 +21,19 @@ function Demo() {
 function Demo() {
   return (
     <TreeSelect
-      label="Your favorite item"
-      placeholder="Pick value"
+      label="你最喜欢的项目"
+      placeholder="选择值"
       data={data}
       comboboxProps={{ shadow: 'md' }}
     />
   );
 }
 
-export const dropdownShadow: MantineDemo = {
+export const dropdownShadow: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
     { fileName: 'data.ts', language: 'tsx', code: dataCode },
   ],
   maxWidth: 340,

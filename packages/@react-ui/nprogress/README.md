@@ -1,10 +1,10 @@
-# Mantine Navigation Progress
+# UI Navigation Progress
 
 [![npm](https://img.shields.io/npm/dm/@react-ui/nprogress)](https://www.npmjs.com/package/@react-ui/nprogress)
 
 A navigation progress bar
 
-[Documentation](https://mantine.dev/)
+[Documentation](#)
 
 ## Installation
 

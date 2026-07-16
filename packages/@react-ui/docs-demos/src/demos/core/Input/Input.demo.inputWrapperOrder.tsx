@@ -1,5 +1,5 @@
 import { TextInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TextInput } from '@react-ui/ui';
@@ -8,17 +8,17 @@ function Demo() {
   return (
     <>
       <TextInput
-        label="Custom layout"
-        placeholder="Custom layout"
-        description="Description below the input"
+        label="自定义布局"
+        placeholder="自定义布局"
+        description="输入框下方的描述"
         inputWrapperOrder={['label', 'error', 'input', 'description']}
       />
       <TextInput
         mt="xl"
-        label="Custom layout"
-        placeholder="Custom layout"
-        description="Error and description are"
-        error="both below the input"
+        label="自定义布局"
+        placeholder="自定义布局"
+        description="错误和描述"
+        error="都在输入框下方"
         inputWrapperOrder={['label', 'input', 'description', 'error']}
       />
     </>
@@ -30,24 +30,24 @@ function Demo() {
   return (
     <>
       <TextInput
-        label="Custom layout"
-        placeholder="Custom layout"
-        description="Description below the input"
+        label="自定义布局"
+        placeholder="自定义布局"
+        description="输入框下方的描述"
         inputWrapperOrder={['label', 'error', 'input', 'description']}
       />
       <TextInput
         mt="md"
-        label="Custom layout"
-        placeholder="Custom layout"
-        description="Error and description are"
-        error="both below the input"
+        label="自定义布局"
+        placeholder="自定义布局"
+        description="错误和描述"
+        error="都在输入框下方"
         inputWrapperOrder={['label', 'input', 'description', 'error']}
       />
     </>
   );
 }
 
-export const inputWrapperOrder: MantineDemo = {
+export const inputWrapperOrder: UIDemo = {
   type: 'code',
   component: Demo,
   maxWidth: 340,

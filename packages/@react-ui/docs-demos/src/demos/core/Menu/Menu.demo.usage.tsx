@@ -1,5 +1,5 @@
 import { Menu } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { DemoMenuItems } from './_menu-items';
 
 const code = `
@@ -10,11 +10,11 @@ function Demo() {
   return (
     <Menu shadow="md" width={200}>
       <Menu.Target>
-        <Button>Toggle menu</Button>
+        <Button>切换菜单</Button>
       </Menu.Target>
 
       <Menu.Dropdown>
-        <Menu.Label>Application</Menu.Label>
+        <Menu.Label>应用</Menu.Label>
         <Menu.Item leftSection={<GearSixIcon size={14} />}>
           Settings
         </Menu.Item>
@@ -37,7 +37,7 @@ function Demo() {
 
         <Menu.Divider />
 
-        <Menu.Label>Danger zone</Menu.Label>
+        <Menu.Label>危险区域</Menu.Label>
         <Menu.Item
           leftSection={<IconArrowsLeftRight size={14} />}
         >
@@ -63,7 +63,7 @@ function Demo() {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'code',
   code,
   component: Demo,

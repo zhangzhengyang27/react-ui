@@ -14,9 +14,9 @@ import {
     type BoxProps,
     type ElementProps,
     type Factory,
-    type MantineColor,
-    type MantineRadius,
-    type MantineSize,
+    type UIColor,
+    type UIRadius,
+    type UISize,
     type StylesApiProps
 } from '../../core'
 import { PaginationProvider } from './Pagination.context'
@@ -39,7 +39,7 @@ export interface PaginationRootProps
         StylesApiProps<PaginationRootFactory>,
         ElementProps<'div', 'value' | 'onChange'> {
     /** `height` and `min-width` of controls @default 'md' */
-    size?: MantineSize | `input-${MantineSize}` | (string & {}) | number
+    size?: UISize | `input-${UISize}` | (string & {}) | number
 
     /** Total number of pages, must be an integer */
     total: number
@@ -63,10 +63,10 @@ export interface PaginationRootProps
     boundaries?: number
 
     /** Key of `theme.colors`, active item color @default theme.primaryColor */
-    color?: MantineColor
+    color?: UIColor
 
     /** Key of `theme.radius` or any valid CSS value to set `border-radius`, numbers are converted to rem @default theme.defaultRadius */
-    radius?: MantineRadius
+    radius?: UIRadius
 
     /** Called when next page control is clicked */
     onNextPage?: () => void

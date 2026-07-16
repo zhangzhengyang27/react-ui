@@ -1,5 +1,5 @@
 import { Loader } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Loader } from '@react-ui/ui';
@@ -13,7 +13,7 @@ function Wrapper(props: any) {
   return <Loader {...props} />;
 }
 
-export const size: MantineDemo = {
+export const size: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

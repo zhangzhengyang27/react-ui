@@ -13,15 +13,15 @@ export function DemoMenuItems({ widthRightSection = true, withTarget = true }) {
     <>
       {withTarget && (
         <Menu.Target>
-          <Button>Toggle menu</Button>
+          <Button>切换菜单</Button>
         </Menu.Target>
       )}
 
       <Menu.Dropdown>
-        <Menu.Label>Application</Menu.Label>
-        <Menu.Item leftSection={<GearSixIcon size={14} />}>Settings</Menu.Item>
-        <Menu.Item leftSection={<ChatCircleIcon size={14} />}>Messages</Menu.Item>
-        <Menu.Item leftSection={<ImageIcon size={14} />}>Gallery</Menu.Item>
+        <Menu.Label>应用</Menu.Label>
+        <Menu.Item leftSection={<GearSixIcon size={14} />}>设置</Menu.Item>
+        <Menu.Item leftSection={<ChatCircleIcon size={14} />}>消息</Menu.Item>
+        <Menu.Item leftSection={<ImageIcon size={14} />}>相册</Menu.Item>
         {widthRightSection && (
           <Menu.Item
             leftSection={<MagnifyingGlassIcon size={14} />}
@@ -35,8 +35,8 @@ export function DemoMenuItems({ widthRightSection = true, withTarget = true }) {
           </Menu.Item>
         )}
         <Menu.Divider />
-        <Menu.Label>Danger zone</Menu.Label>
-        <Menu.Item leftSection={<ArrowsLeftRightIcon size={14} />}>Transfer my data</Menu.Item>
+        <Menu.Label>危险区域</Menu.Label>
+        <Menu.Item leftSection={<ArrowsLeftRightIcon size={14} />}>转移我的数据</Menu.Item>
         <Menu.Item color="red" leftSection={<TrashIcon size={14} />}>
           Delete my account
         </Menu.Item>

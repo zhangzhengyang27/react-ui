@@ -1,5 +1,5 @@
 import { MaskInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { MaskInput } from '@react-ui/ui';
@@ -7,7 +7,7 @@ import { MaskInput } from '@react-ui/ui';
 function Demo() {
   return (
     <MaskInput
-      label="Credit card"
+      label="信用卡"
       placeholder="____ ____ ____ ____"
       mask="9999 9999 9999 9999"
       modify={(value) => {
@@ -24,7 +24,7 @@ function Demo() {
 function Demo() {
   return (
     <MaskInput
-      label="Credit card"
+      label="信用卡"
       placeholder="____ ____ ____ ____"
       mask="9999 9999 9999 9999"
       modify={(value) => {
@@ -37,7 +37,7 @@ function Demo() {
   );
 }
 
-export const dynamic: MantineDemo = {
+export const dynamic: UIDemo = {
   type: 'code',
   code,
   component: Demo,

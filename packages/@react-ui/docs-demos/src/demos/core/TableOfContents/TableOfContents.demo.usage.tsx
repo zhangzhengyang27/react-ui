@@ -1,5 +1,5 @@
 import { TableOfContents } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TableOfContents } from '@react-ui/ui';
@@ -36,7 +36,7 @@ function Wrapper(props: any) {
   );
 }
 
-export const usage: MantineDemo = {
+export const usage: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,

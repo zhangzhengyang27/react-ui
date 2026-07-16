@@ -1,4 +1,4 @@
-import { render } from '@mantine-tests/core';
+import { render } from '@react-ui/tests';
 import { HiddenDatesInput } from './HiddenDatesInput';
 
 describe('@react-ui/dates/HiddenDatesInput', () => {

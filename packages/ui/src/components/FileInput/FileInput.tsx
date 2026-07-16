@@ -25,7 +25,7 @@ export interface FileInputProps
             | 'errorProps'
         >,
         StylesApiProps<FileInputFactory> {
-    /** Controlled value */
+    //** 受控值 */
     value?: File | File[] | null
 
     /** Uncontrolled default value */
@@ -55,16 +55,16 @@ export interface FileInputProps
     /** Text displayed when no file is selected */
     placeholder?: string
 
-    /** Label rendered above the input */
+    //** 渲染在输入框上方的标签 */
     label?: React.ReactNode
 
-    /** Description rendered below the label */
+    //** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
-    /** Error rendered below the input */
+    //** 渲染在输入框下方的错误 */
     error?: React.ReactNode
 
-    /** If set, required asterisk is added to the label */
+    //** 如果设置，则会在标签上添加必填星号 */
     required?: boolean
 
     /** Props passed to the label element */

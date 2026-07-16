@@ -7,12 +7,12 @@
     border-color: var(--ui-primary-color-filled);
   }
 
-  @mixin hover {
-    @mixin light {
+  &:hover {
+    [data-ui-color-scheme='light'] & {
       background-color: var(--ui-color-gray-0);
     }
 
-    @mixin dark {
+    [data-ui-color-scheme='dark'] & {
       background-color: var(--ui-color-dark-6);
     }
   }

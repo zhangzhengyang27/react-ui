@@ -1,8 +1,8 @@
 {
   "name": "@react-ui/dropzone",
   "version": "9.4.1",
-  "description": "Dropzone component built with Mantine theme and components",
-  "homepage": "https://mantine.dev/x/dropzone/",
+  "description": "Dropzone component built with React UI theme and components",
+  "homepage": "https://react-ui.dev/x/dropzone/",
   "license": "MIT",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "keywords": [
@@ -34,7 +34,7 @@
     "./styles.layer.css": "./styles.layer.css"
   },
   "repository": {
-    "url": "https://github.com/mantinedev/mantine.git",
+    "url": "https://github.com/react-ui/react-ui.git",
     "type": "git",
     "directory": "packages/@react-ui/dropzone"
   },

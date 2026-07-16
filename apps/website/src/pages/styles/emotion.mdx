@@ -66,22 +66,22 @@ declare module '@react-ui/ui' {
 }
 ```
 
-用 `MantineEmotionProvider` 包裹你的应用，并将 `emotionTransform` 添加到 `MantineProvider`：
+用 `UIEmotionProvider` 包裹你的应用，并将 `emotionTransform` 添加到 `UIProvider`：
 
 ```tsx
 import '@react-ui/ui/styles.css';
 
-import { MantineProvider } from '@react-ui/ui';
+import { UIProvider } from '@react-ui/ui';
 import {
   emotionTransform,
-  MantineEmotionProvider,
+  UIEmotionProvider,
 } from '@react-ui/emotion';
 
 export default function App() {
   return (
-    <MantineProvider stylesTransform={emotionTransform}>
-      <MantineEmotionProvider>App</MantineEmotionProvider>
-    </MantineProvider>
+    <UIProvider stylesTransform={emotionTransform}>
+      <UIEmotionProvider>应用</UIEmotionProvider>
+    </UIProvider>
   );
 }
 ```
@@ -183,25 +183,25 @@ Document.getInitialProps = createGetInitialProps(
 );
 ```
 
-将 `MantineEmotionProvider` 和 `emotionTransform` 添加到你的 `pages/_app.tsx` 文件中：
+将 `UIEmotionProvider` 和 `emotionTransform` 添加到你的 `pages/_app.tsx` 文件中：
 
 ```tsx
 import '@react-ui/ui/styles.css';
 
 import Head from 'next/head';
-import { MantineProvider } from '@react-ui/ui';
+import { UIProvider } from '@react-ui/ui';
 import {
   emotionTransform,
-  MantineEmotionProvider,
+  UIEmotionProvider,
 } from '@react-ui/emotion';
 import { emotionCache } from '../emotion/cache';
 
 export default function App({ Component, pageProps }: any) {
   return (
-    <MantineEmotionProvider cache={emotionCache}>
-      <MantineProvider stylesTransform={emotionTransform}>
+    <UIEmotionProvider cache={emotionCache}>
+      <UIProvider stylesTransform={emotionTransform}>
         <Head>
-          <title>ReactUI Template</title>
+          <title>ReactUI 模板</title>
           <meta
             name="viewport"
             content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
@@ -209,8 +209,8 @@ export default function App({ Component, pageProps }: any) {
           <link rel="shortcut icon" href="/favicon.svg" />
         </Head>
         <Component {...pageProps} />
-      </MantineProvider>
-    </MantineEmotionProvider>
+      </UIProvider>
+    </UIEmotionProvider>
   );
 }
 ```
@@ -321,16 +321,16 @@ export function RootStyleRegistry({
 }
 ```
 
-将 `RootStyleRegistry`、`MantineEmotionProvider` 和 `emotionTransform` 添加到你的 `app/layout.tsx` 中。
+将 `RootStyleRegistry`、`UIEmotionProvider` 和 `emotionTransform` 添加到你的 `app/layout.tsx` 中。
 它看起来应该像这样：
 
 ```tsx
 import '@react-ui/ui/styles.css';
 
-import { ColorSchemeScript, MantineProvider } from '@react-ui/ui';
+import { ColorSchemeScript, UIProvider } from '@react-ui/ui';
 import {
   emotionTransform,
-  MantineEmotionProvider,
+  UIEmotionProvider,
 } from '@react-ui/emotion';
 import { RootStyleRegistry } from './EmotionRootStyleRegistry';
 
@@ -352,11 +352,11 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body>
         <RootStyleRegistry>
-          <MantineEmotionProvider>
-            <MantineProvider stylesTransform={emotionTransform}>
+          <UIEmotionProvider>
+            <UIProvider stylesTransform={emotionTransform}>
               {children}
-            </MantineProvider>
-          </MantineEmotionProvider>
+            </UIProvider>
+          </UIEmotionProvider>
         </RootStyleRegistry>
       </body>
     </html>
@@ -514,14 +514,14 @@ function Demo() {
 注意，为了避免类型冲突，你不应使用 `Component.extend` 方法，而是直接传递组件配置对象。
 
 ```tsx
-import { createTheme, MantineTheme, TextProps } from '@react-ui/ui';
+import { createTheme, UITheme, TextProps } from '@react-ui/ui';
 import { EmotionHelpers } from '@react-ui/emotion';
 
 export const theme = createTheme({
   components: {
     Text: {
       styles: (
-        theme: MantineTheme,
+        theme: UITheme,
         _props: TextProps,
         u: EmotionHelpers
       ) => ({
@@ -581,7 +581,7 @@ export const theme = createTheme({
 
 ### 媒体查询
 
-你可以像使用 Sass 一样使用嵌套媒体查询。在查询体内，你可以使用在 [MantineProvider](/theming/mantine-provider) 中定义的 `theme.breakpoints`，或仅使用静态值：
+你可以像使用 Sass 一样使用嵌套媒体查询。在查询体内，你可以使用在 [UIProvider](/theming/ui-provider) 中定义的 `theme.breakpoints`，或仅使用静态值：
 
 <Demo data={EmotionDemos.media} />
 
@@ -603,9 +603,9 @@ const u = {
   notRtl: '[dir="ltr"] &',
   notLtr: '[dir="rtl"] &',
   ref: getStylesRef,
-  smallerThan: (breakpoint: MantineBreakpoint | number) =>
+  smallerThan: (breakpoint: UIBreakpoint | number) =>
     `@media (max-width: ${em(getBreakpointValue(theme, breakpoint) - 0.1)})`,
-  largerThan: (breakpoint: MantineBreakpoint | number) =>
+  largerThan: (breakpoint: UIBreakpoint | number) =>
     `@media (min-width: ${em(getBreakpointValue(theme, breakpoint))})`,
 };
 ```

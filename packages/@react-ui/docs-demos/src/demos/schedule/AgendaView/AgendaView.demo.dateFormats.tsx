@@ -1,29 +1,29 @@
 import dayjs from 'dayjs';
 import { AgendaView } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const eventsData = [
   {
     id: 'standup',
-    title: 'Morning Standup',
+    title: '早间站会',
     start: `${today} 09:00:00`,
     end: `${today} 09:30:00`,
     color: 'blue',
   },
   {
     id: 'meeting',
-    title: 'Team Meeting',
-    start: dayjs().add(1, 'day').format('YYYY-MM-DD 10:00:00'),
-    end: dayjs().add(1, 'day').format('YYYY-MM-DD 11:30:00'),
+    title: '团队会议',
+    start: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD 10:00:00'),
+    end: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD 11:30:00'),
     color: 'green',
   },
   {
     id: 'review',
-    title: 'Code Review',
-    start: dayjs().add(2, 'day').format('YYYY-MM-DD 14:00:00'),
-    end: dayjs().add(2, 'day').format('YYYY-MM-DD 15:00:00'),
+    title: '代码审查',
+    start: dayjs('2024-01-15').add(2, 'day').format('YYYY-MM-DD 14:00:00'),
+    end: dayjs('2024-01-15').add(2, 'day').format('YYYY-MM-DD 15:00:00'),
     color: 'violet',
   },
 ];
@@ -32,28 +32,28 @@ const code = `
 import dayjs from 'dayjs';
 import { AgendaView } from '@react-ui/schedule';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const events = [
   {
     id: 'standup',
-    title: 'Morning Standup',
+    title: '早间站会',
     start: \`\${today} 09:00:00\`,
     end: \`\${today} 09:30:00\`,
     color: 'blue',
   },
   {
     id: 'meeting',
-    title: 'Team Meeting',
-    start: dayjs().add(1, 'day').format('YYYY-MM-DD 10:00:00'),
-    end: dayjs().add(1, 'day').format('YYYY-MM-DD 11:30:00'),
+    title: '团队会议',
+    start: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD 10:00:00'),
+    end: dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD 11:30:00'),
     color: 'green',
   },
   {
     id: 'review',
-    title: 'Code Review',
-    start: dayjs().add(2, 'day').format('YYYY-MM-DD 14:00:00'),
-    end: dayjs().add(2, 'day').format('YYYY-MM-DD 15:00:00'),
+    title: '代码审查',
+    start: dayjs('2024-01-15').add(2, 'day').format('YYYY-MM-DD 14:00:00'),
+    end: dayjs('2024-01-15').add(2, 'day').format('YYYY-MM-DD 15:00:00'),
     color: 'violet',
   },
 ];
@@ -61,8 +61,8 @@ const events = [
 function Demo() {
   return (
     <AgendaView
-      rangeStart={dayjs().format('YYYY-MM-DD')}
-      rangeEnd={dayjs().add(7, 'day').format('YYYY-MM-DD')}
+      rangeStart={dayjs('2024-01-15').format('YYYY-MM-DD')}
+      rangeEnd={dayjs('2024-01-15').add(7, 'day').format('YYYY-MM-DD')}
       events={events}
       headerFormat="MMM D"
       dateHeaderFormat="ddd, D MMM"
@@ -74,8 +74,8 @@ function Demo() {
 function Demo() {
   return (
     <AgendaView
-      rangeStart={dayjs().format('YYYY-MM-DD')}
-      rangeEnd={dayjs().add(7, 'day').format('YYYY-MM-DD')}
+      rangeStart={dayjs('2024-01-15').format('YYYY-MM-DD')}
+      rangeEnd={dayjs('2024-01-15').add(7, 'day').format('YYYY-MM-DD')}
       events={eventsData}
       headerFormat="MMM D"
       dateHeaderFormat="ddd, D MMM"
@@ -83,7 +83,7 @@ function Demo() {
   );
 }
 
-export const dateFormats: MantineDemo = {
+export const dateFormats: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,

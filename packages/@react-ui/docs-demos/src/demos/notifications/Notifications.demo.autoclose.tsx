@@ -1,6 +1,6 @@
 import { Button, Group } from '@react-ui/ui';
 import { notifications } from '@react-ui/notifications';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Group, Button } from '@react-ui/ui';
@@ -10,7 +10,7 @@ function Demo() {
   return (
     <Group justify="center">
       <Button
-        onClick={() => notifications.show({ message: 'I will close in 4 seconds' })}
+        onClick={() => notifications.show({ message: '我将在 4 秒后关闭' })}
       >
         Notifications Provider timeout
       </Button>
@@ -18,7 +18,7 @@ function Demo() {
       <Button
         onClick={() =>
           notifications.show({
-            message: 'I will close in 500ms',
+            message: '我将在 500 毫秒后关闭',
             autoClose: 500,
           })
         }
@@ -30,8 +30,8 @@ function Demo() {
         onClick={() =>
           notifications.show({
             color: 'blue',
-            title: 'I will never close',
-            message: 'unless you click X',
+            title: '我永远不会关闭',
+            message: '除非你点击 X',
             autoClose: false,
           })
         }
@@ -46,14 +46,14 @@ function Demo() {
 function Demo() {
   return (
     <Group justify="center">
-      <Button onClick={() => notifications.show({ message: 'I will close in 4 seconds' })}>
+      <Button onClick={() => notifications.show({ message: '我将在 4 秒后关闭' })}>
         Notifications Provider timeout
       </Button>
 
       <Button
         onClick={() =>
           notifications.show({
-            message: 'I will close in 500ms',
+            message: '我将在 500 毫秒后关闭',
             autoClose: 500,
           })
         }
@@ -65,8 +65,8 @@ function Demo() {
         onClick={() =>
           notifications.show({
             color: 'blue',
-            title: 'I will never close',
-            message: 'unless you click X',
+            title: '我永远不会关闭',
+            message: '除非你点击 X',
             autoClose: false,
           })
         }
@@ -77,7 +77,7 @@ function Demo() {
   );
 }
 
-export const autoclose: MantineDemo = {
+export const autoclose: UIDemo = {
   type: 'code',
   code,
   component: Demo,

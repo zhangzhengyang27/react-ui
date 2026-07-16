@@ -1,5 +1,5 @@
 import { Slider, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Slider, Text } from '@react-ui/ui';
@@ -15,7 +15,7 @@ const marks = [
 function Demo() {
   return (
     <>
-      <Text>Decimal step</Text>
+      <Text>小数控件</Text>
       <Slider
         defaultValue={0}
         min={-10}
@@ -25,7 +25,7 @@ function Demo() {
         styles={{ markLabel: { display: 'none' } }}
       />
 
-      <Text mt="md">Step matched with marks</Text>
+      <Text mt="md">与标记匹配的步长</Text>
       <Slider
         defaultValue={50}
         label={(val) => marks.find((mark) => mark.value === val)!.label}
@@ -49,7 +49,7 @@ const marks = [
 function Demo() {
   return (
     <>
-      <Text>Decimal step</Text>
+      <Text>小数控件</Text>
       <Slider
         defaultValue={0}
         min={-10}
@@ -59,7 +59,7 @@ function Demo() {
         styles={{ markLabel: { display: 'none' } }}
       />
 
-      <Text mt="md">Step matched with marks</Text>
+      <Text mt="md">与标记匹配的步长</Text>
       <Slider
         defaultValue={50}
         label={(val) => marks.find((mark) => mark.value === val)!.label}
@@ -71,7 +71,7 @@ function Demo() {
   );
 }
 
-export const step: MantineDemo = {
+export const step: UIDemo = {
   type: 'code',
   component: Demo,
   code,

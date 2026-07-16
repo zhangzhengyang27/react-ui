@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, ComboboxPopover } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -18,7 +18,7 @@ function Demo() {
     >
       <ComboboxPopover.Target>
         <Button variant="default" miw={200}>
-          {value.length > 0 ? value.join(', ') : 'Select frameworks'}
+          {value.length > 0 ? value.join(', ') : '选择框架'}
         </Button>
       </ComboboxPopover.Target>
     </ComboboxPopover>
@@ -38,14 +38,14 @@ function Demo() {
     >
       <ComboboxPopover.Target>
         <Button variant="default" miw={200}>
-          {value.length > 0 ? value.join(', ') : 'Select frameworks'}
+          {value.length > 0 ? value.join(', ') : '选择框架'}
         </Button>
       </ComboboxPopover.Target>
     </ComboboxPopover>
   );
 }
 
-export const multiple: MantineDemo = {
+export const multiple: UIDemo = {
   type: 'code',
   component: Demo,
   code,

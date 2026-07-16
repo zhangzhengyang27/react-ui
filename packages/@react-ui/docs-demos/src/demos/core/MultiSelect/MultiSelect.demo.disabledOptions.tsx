@@ -1,5 +1,5 @@
 import { MultiSelect } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { MultiSelect } from '@react-ui/ui';
@@ -7,8 +7,8 @@ import { MultiSelect } from '@react-ui/ui';
 function Demo() {
   return (
     <MultiSelect
-      label="Your favorite libraries"
-      placeholder="Pick value"
+      label="你最喜欢的库"
+      placeholder="选择值"
       data={[
         { value: 'react', label: 'React' },
         { value: 'ng', label: 'Angular' },
@@ -23,8 +23,8 @@ function Demo() {
 function Demo() {
   return (
     <MultiSelect
-      label="Your favorite libraries"
-      placeholder="Pick value"
+      label="你最喜欢的库"
+      placeholder="选择值"
       data={[
         { value: 'react', label: 'React' },
         { value: 'ng', label: 'Angular' },
@@ -35,7 +35,7 @@ function Demo() {
   );
 }
 
-export const disabledOptions: MantineDemo = {
+export const disabledOptions: UIDemo = {
   type: 'code',
   component: Demo,
   code,

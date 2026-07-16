@@ -56,7 +56,7 @@ export function MdxPackagesInstallation({ extraPackages = [] }: MdxPackagesInsta
 
   return (
     <>
-      <MdxParagraph>Choose packages that you will use in your application:</MdxParagraph>
+      <MdxParagraph>选择你需要在应用中使用的包：</MdxParagraph>
       <Table mb="xl">
         <Table.Thead>
           <Table.Tr>
@@ -67,14 +67,14 @@ export function MdxPackagesInstallation({ extraPackages = [] }: MdxPackagesInsta
                 indeterminate={selection.length < PACKAGES_DATA.length && selection.length > 0}
               />
             </Table.Th>
-            <Table.Th>Package</Table.Th>
-            <Table.Th className={classes.hiddenMobile}>Description</Table.Th>
+            <Table.Th>包</Table.Th>
+            <Table.Th className={classes.hiddenMobile}>说明</Table.Th>
           </Table.Tr>
         </Table.Thead>
         <tbody>{rows}</tbody>
       </Table>
 
-      <MdxParagraph>Install dependencies:</MdxParagraph>
+      <MdxParagraph>安装依赖：</MdxParagraph>
 
       <MdxInstallScript packages={getPackagesList(selection, extraPackages)} />
     </>

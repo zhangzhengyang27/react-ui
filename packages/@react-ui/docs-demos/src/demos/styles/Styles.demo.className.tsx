@@ -1,5 +1,5 @@
 import { Box } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Styles.demo.className.module.css';
 
 const code = `
@@ -9,7 +9,7 @@ import classes from './Demo.module.css';
 function Demo() {
   return (
     <Box className={classes.box}>
-      Box component with <span className={classes.highlight}>some styles</span>
+      Box 组件带<span className={classes.highlight}>一些样式</span>
     </Box>
   );
 }
@@ -34,16 +34,16 @@ const cssCode = `
 function Demo() {
   return (
     <Box className={classes.box}>
-      Box component with <span className={classes.highlight}>some styles</span>
+      Box 组件带<span className={classes.highlight}>一些样式</span>
     </Box>
   );
 }
 
-export const className: MantineDemo = {
+export const className: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code },
-    { fileName: 'Demo.module.css', language: 'scss', code: cssCode },
+    { fileName: '演示代码.tsx', language: 'tsx', code },
+    { fileName: '演示样式.module.css', language: 'scss', code: cssCode },
   ],
 };

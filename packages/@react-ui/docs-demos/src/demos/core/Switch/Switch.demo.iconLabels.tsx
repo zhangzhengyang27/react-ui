@@ -1,6 +1,6 @@
 import { MoonStarsIcon, SunIcon } from '@phosphor-icons/react';
 import { Switch } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Switch } from '@react-ui/ui';
@@ -29,7 +29,7 @@ function Demo() {
   );
 }
 
-export const iconLabels: MantineDemo = {
+export const iconLabels: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

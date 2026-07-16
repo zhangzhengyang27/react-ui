@@ -1,5 +1,5 @@
 import { SimpleGrid, Stack, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { GridItem } from './_demo-item';
 
 const code = `
@@ -53,7 +53,7 @@ function Demo() {
   );
 }
 
-export const autoFlow: MantineDemo = {
+export const autoFlow: UIDemo = {
   type: 'code',
   component: Demo,
   code,

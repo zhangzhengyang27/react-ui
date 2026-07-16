@@ -33,7 +33,7 @@ export default Layout(MDX_DATA.TypographyTheming);
 `theme.fontSizes` 属性定义所有 ReactUI 组件的 font-size 值：
 
 ```tsx
-import { createTheme, MantineProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@react-ui/ui';
 
 const theme = createTheme({
   fontSizes: {
@@ -47,9 +47,9 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       {/* Your app here */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```
@@ -70,7 +70,7 @@ function Demo() {
 `theme.lineHeights` 属性定义 [Text](/core/text) 组件的 line-height 值；大多数其他组件默认使用 `theme.lineHeights.md`：
 
 ```tsx
-import { createTheme, MantineProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@react-ui/ui';
 
 const theme = createTheme({
   lineHeights: {
@@ -84,9 +84,9 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       {/* Your app here */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```
@@ -106,7 +106,7 @@ function Demo() {
 要自定义 [Title](/core/title/) 和 [Typography](/core/typography/) 组件中的标题样式，请设置 `theme.headings`：
 
 ```tsx
-import { createTheme, MantineProvider, rem } from '@react-ui/ui';
+import { createTheme, UIProvider, rem } from '@react-ui/ui';
 
 const theme = createTheme({
   headings: {
@@ -130,9 +130,9 @@ const theme = createTheme({
 
 function Demo() {
   return (
-    <MantineProvider theme={theme}>
+    <UIProvider theme={theme}>
       {/* Your app here */}
-    </MantineProvider>
+    </UIProvider>
   );
 }
 ```

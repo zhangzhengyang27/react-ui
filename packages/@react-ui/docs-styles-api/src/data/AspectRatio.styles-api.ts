@@ -3,12 +3,12 @@ import type { StylesApiData } from '../types';
 
 export const AspectRatioStylesApi: StylesApiData<AspectRatioFactory> = {
   selectors: {
-    root: 'Root element',
+    root: '根元素',
   },
 
   vars: {
     root: {
-      '--ar-ratio': 'Aspect ratio',
+      '--ar-ratio': '纵横比',
     },
   },
 };

@@ -1,5 +1,5 @@
 import { TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TagsInput } from '@react-ui/ui';
@@ -7,8 +7,8 @@ import { TagsInput } from '@react-ui/ui';
 function Demo() {
   return (
     <TagsInput
-      label="Press Enter to submit a tag"
-      placeholder="Pick tag from list"
+      label="按 Enter 提交标签"
+      placeholder="从列表选择标签"
       data={['React', 'Angular', 'Svelte']}
     />
   );
@@ -18,14 +18,14 @@ function Demo() {
 function Demo() {
   return (
     <TagsInput
-      label="Press Enter to submit a tag"
-      placeholder="Pick tag from list"
+      label="按 Enter 提交标签"
+      placeholder="从列表选择标签"
       data={['React', 'Angular', 'Svelte']}
     />
   );
 }
 
-export const data: MantineDemo = {
+export const data: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -2,74 +2,74 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import { HoverCard, UnstyledButton } from '@react-ui/ui';
 import { ResourcesDayView, ScheduleEventData } from '@react-ui/schedule';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { _eventDetailsCode, EventDetails } from '../_EventDetails';
 import { resources } from './_data';
 
-const today = dayjs().format('YYYY-MM-DD');
+const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
 const eventData: ScheduleEventData[] = [
   {
     id: 1,
-    title: 'Team Standup',
+    title: '团队站会',
     start: `${today} 09:00:00`,
     end: `${today} 09:30:00`,
     color: 'blue',
     resourceId: 'tokyo',
     payload: {
-      description: 'Daily team sync meeting',
+      description: '每日团队同步会议',
       attendees: ['Alice', 'Bob', 'Charlie'],
       location: 'Floor 3',
     },
   },
   {
     id: 2,
-    title: 'Sprint Planning',
+    title: '迭代计划',
     start: `${today} 10:00:00`,
     end: `${today} 11:30:00`,
     color: 'green',
     resourceId: 'tokyo',
     payload: {
-      description: 'Plan next sprint tasks and goals',
+      description: '规划下一个冲刺任务和目标',
       attendees: ['Diana', 'Eve'],
       location: 'Main Hall',
     },
   },
   {
     id: 3,
-    title: 'Client Call',
+    title: '客户电话',
     start: `${today} 09:30:00`,
     end: `${today} 10:30:00`,
     color: 'violet',
     resourceId: 'paris',
     payload: {
-      description: 'Quarterly review with client',
+      description: '季度客户评审',
       attendees: ['Frank', 'Grace'],
       location: 'Zoom',
     },
   },
   {
     id: 4,
-    title: 'Design Review',
+    title: '设计评审',
     start: `${today} 13:00:00`,
     end: `${today} 14:00:00`,
     color: 'orange',
     resourceId: 'paris',
     payload: {
-      description: 'Review UI/UX designs for new feature',
+      description: '评审新功能的 UI/UX 设计',
       attendees: ['Henry', 'Alice'],
       location: 'Studio B',
     },
   },
   {
     id: 5,
-    title: 'Workshop',
+    title: '研讨会',
     start: `${today} 14:00:00`,
     end: `${today} 16:00:00`,
     color: 'pink',
     resourceId: 'new-york',
     payload: {
-      description: 'Hands-on coding workshop',
+      description: '动手编程工作坊',
       attendees: ['Bob', 'Charlie', 'Diana'],
       location: 'Lab 2',
     },
@@ -85,7 +85,7 @@ import { EventDetails } from './EventDetails';
 import { events as initialEvents, resources } from './data';
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
   const [events, setEvents] = useState<ScheduleEventData[]>(initialEvents);
 
   return (
@@ -122,7 +122,7 @@ function Demo() {
 `;
 
 function Demo() {
-  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));
   const [events, setEvents] = useState<ScheduleEventData[]>(eventData);
 
   return (
@@ -155,13 +155,13 @@ function Demo() {
   );
 }
 
-export const renderEvent: MantineDemo = {
+export const renderEvent: UIDemo = {
   defaultExpanded: false,
   type: 'code',
   component: Demo,
   code: [
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
-    { fileName: 'EventDetails.tsx', code: _eventDetailsCode, language: 'tsx' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
+    { fileName: '事件详情.tsx', code: _eventDetailsCode, language: 'tsx' },
     {
       fileName: 'data.ts',
       code: `import { ScheduleEventData } from '@react-ui/schedule';\n\nexport const eventsData: ScheduleEventData[] = ${JSON.stringify(eventData, null, 2)};`,

@@ -1,5 +1,5 @@
 import { TextInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TextInput } from '@react-ui/ui';
@@ -7,8 +7,8 @@ import { TextInput } from '@react-ui/ui';
 function Demo() {
   return (
     <>
-      <TextInput size="xs" hiddenFrom="sm" label="My input" placeholder="My input" />
-      <TextInput size="xl" visibleFrom="sm" label="My input" placeholder="My input" />
+      <TextInput size="xs" hiddenFrom="sm" label="我的输入" placeholder="我的输入" />
+      <TextInput size="xl" visibleFrom="sm" label="我的输入" placeholder="我的输入" />
     </>
   );
 }
@@ -17,14 +17,14 @@ function Demo() {
 function Demo() {
   return (
     <>
-      <TextInput size="xs" hiddenFrom="sm" label="My input" placeholder="My input" />
-      <TextInput size="xl" visibleFrom="sm" label="My input" placeholder="My input" />
+      <TextInput size="xs" hiddenFrom="sm" label="我的输入" placeholder="我的输入" />
+      <TextInput size="xl" visibleFrom="sm" label="我的输入" placeholder="我的输入" />
     </>
   );
 }
 
-export const sizesMedia: MantineDemo = {
+export const sizesMedia: UIDemo = {
   type: 'code',
   component: Demo,
-  code: [{ fileName: 'Demo.tsx', code, language: 'tsx' }],
+  code: [{ fileName: '演示代码.tsx', code, language: 'tsx' }],
 };

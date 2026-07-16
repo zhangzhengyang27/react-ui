@@ -12,7 +12,7 @@ import {
   TreeNodeFilter,
   useTree,
 } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useMemo, useState } from 'react';
@@ -130,7 +130,7 @@ function Demo() {
   return (
     <div>
       <TextInput
-        placeholder="Fuzzy search..."
+        placeholder="模糊搜索..."
         mb="sm"
         value={search}
         onChange={(event) => handleSearchChange(event.currentTarget.value)}
@@ -246,7 +246,7 @@ function Demo() {
   return (
     <div>
       <TextInput
-        placeholder="Fuzzy search..."
+        placeholder="模糊搜索..."
         mb="sm"
         value={search}
         onChange={(event) => handleSearchChange(event.currentTarget.value)}
@@ -261,7 +261,7 @@ function Demo() {
   );
 }
 
-export const searchFuzzy: MantineDemo = {
+export const searchFuzzy: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,

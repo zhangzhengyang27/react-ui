@@ -1,5 +1,5 @@
 import { Tabs } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Tabs } from '@react-ui/ui';
@@ -17,13 +17,13 @@ function Demo() {
   return (
     <Tabs defaultValue="chat" allowTabDeactivation>
       <Tabs.List>
-        <Tabs.Tab value="chat">Chat</Tabs.Tab>
-        <Tabs.Tab value="gallery">Gallery</Tabs.Tab>
-        <Tabs.Tab value="account">Account</Tabs.Tab>
+        <Tabs.Tab value="chat">聊天</Tabs.Tab>
+        <Tabs.Tab value="gallery">相册</Tabs.Tab>
+        <Tabs.Tab value="account">账户</Tabs.Tab>
       </Tabs.List>
 
       <Tabs.Panel value="chat" pt="xs">
-        Chat panel
+        聊天面板
       </Tabs.Panel>
       <Tabs.Panel value="gallery" pt="xs">
         Gallery panel
@@ -35,7 +35,7 @@ function Demo() {
   );
 }
 
-export const deactivate: MantineDemo = {
+export const deactivate: UIDemo = {
   type: 'code',
   component: Demo,
   code,

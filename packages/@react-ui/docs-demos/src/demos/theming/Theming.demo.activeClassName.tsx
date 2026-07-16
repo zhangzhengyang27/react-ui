@@ -1,16 +1,16 @@
-import { Button, MantineThemeProvider } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { Button, UIThemeProvider } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Theming.demo.activeClassName.module.css';
 
 const tsxCode = `
-import { MantineProvider, Button } from '@react-ui/ui';
+import { UIProvider, Button } from '@react-ui/ui';
 import classes from './active.module.css';
 
 function Demo() {
   return (
-    <MantineProvider theme={{ activeClassName: classes.active }}>
-      <Button>Press me to see active styles</Button>
-    </MantineProvider>
+    <UIProvider theme={{ activeClassName: classes.active }}>
+      <Button>按下我查看激活样式</Button>
+    </UIProvider>
   );
 }
 `;
@@ -27,18 +27,18 @@ const cssCode = `
 
 function Demo() {
   return (
-    <MantineThemeProvider theme={{ activeClassName: classes.active }}>
-      <Button>Press me to see active styles</Button>
-    </MantineThemeProvider>
+    <UIThemeProvider theme={{ activeClassName: classes.active }}>
+      <Button>按下我查看激活样式</Button>
+    </UIThemeProvider>
   );
 }
 
-export const activeClassName: MantineDemo = {
+export const activeClassName: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   code: [
-    { fileName: 'Demo.tsx', language: 'tsx', code: tsxCode },
-    { fileName: 'active.module.css', language: 'scss', code: cssCode },
+    { fileName: '演示代码.tsx', language: 'tsx', code: tsxCode },
+    { fileName: '激活样式.module.css', language: 'scss', code: cssCode },
   ],
 };

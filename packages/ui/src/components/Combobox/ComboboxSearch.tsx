@@ -7,4 +7,4 @@ export const ComboboxSearch = forwardRef<HTMLInputElement, ComboboxSearchProps>(
     <Input ref={ref} {...props} />
 ))
 
-ComboboxSearch.displayName = '@mantine/core/ComboboxSearch'
+ComboboxSearch.displayName = '@react-ui/ui/ComboboxSearch'

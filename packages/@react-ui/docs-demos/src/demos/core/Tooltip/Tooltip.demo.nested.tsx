@@ -1,16 +1,16 @@
 import { Button, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Tooltip, Button } from '@react-ui/ui';
 
 function Demo() {
   return (
-    <Tooltip label="top" position="top" closeDelay={1500}>
-      <Tooltip label="bottom" position="bottom" openDelay={500} closeDelay={1000}>
-        <Tooltip label="left" position="left" openDelay={1000} closeDelay={500}>
-          <Tooltip label="right" position="right" openDelay={1500}>
-            <Button>Nested Tooltips</Button>
+    <Tooltip label="顶部" position="top" closeDelay={1500}>
+      <Tooltip label="底部" position="bottom" openDelay={500} closeDelay={1000}>
+        <Tooltip label="左侧" position="left" openDelay={1000} closeDelay={500}>
+          <Tooltip label="右侧" position="right" openDelay={1500}>
+            <Button>嵌套提示</Button>
           </Tooltip>
         </Tooltip>
       </Tooltip>
@@ -21,11 +21,11 @@ function Demo() {
 
 function Demo() {
   return (
-    <Tooltip label="top" position="top" closeDelay={1500}>
-      <Tooltip label="bottom" position="bottom" openDelay={500} closeDelay={1000}>
-        <Tooltip label="left" position="left" openDelay={1000} closeDelay={500}>
-          <Tooltip label="right" position="right" openDelay={1500}>
-            <Button>Nested Tooltips</Button>
+    <Tooltip label="顶部" position="top" closeDelay={1500}>
+      <Tooltip label="底部" position="bottom" openDelay={500} closeDelay={1000}>
+        <Tooltip label="左侧" position="left" openDelay={1000} closeDelay={500}>
+          <Tooltip label="右侧" position="right" openDelay={1500}>
+            <Button>嵌套提示</Button>
           </Tooltip>
         </Tooltip>
       </Tooltip>
@@ -33,7 +33,7 @@ function Demo() {
   );
 }
 
-export const nested: MantineDemo = {
+export const nested: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

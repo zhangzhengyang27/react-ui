@@ -1,5 +1,5 @@
 import { TagsInput } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { TagsInput } from '@react-ui/ui';
@@ -7,8 +7,8 @@ import { TagsInput } from '@react-ui/ui';
 function Demo() {
   return (
     <TagsInput
-      label="Press Enter to submit a tag"
-      placeholder="Duplicates are allowed"
+      label="按 Enter 提交标签"
+      placeholder="允许重复"
       allowDuplicates
     />
   );
@@ -19,14 +19,14 @@ function Demo() {
 function Demo() {
   return (
     <TagsInput
-      label="Press Enter to submit a tag"
-      placeholder="Duplicates are allowed"
+      label="按 Enter 提交标签"
+      placeholder="允许重复"
       allowDuplicates
     />
   );
 }
 
-export const allowDuplicates: MantineDemo = {
+export const allowDuplicates: UIDemo = {
   type: 'code',
   component: Demo,
   code,

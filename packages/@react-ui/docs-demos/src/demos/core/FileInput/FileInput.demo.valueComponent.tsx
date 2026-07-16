@@ -1,5 +1,5 @@
 import { FileInput, FileInputProps, Pill } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { FileInput, FileInputProps, Pill } from '@react-ui/ui';
@@ -25,8 +25,8 @@ const ValueComponent: FileInputProps['valueComponent'] = ({ value }) => {
 function Demo() {
   return (
     <FileInput
-      label="Upload files"
-      placeholder="Upload files"
+      label="上传文件"
+      placeholder="上传文件"
       multiple
       valueComponent={ValueComponent}
     />
@@ -55,15 +55,15 @@ const ValueComponent: FileInputProps['valueComponent'] = ({ value }) => {
 function Demo() {
   return (
     <FileInput
-      label="Upload files"
-      placeholder="Upload files"
+      label="上传文件"
+      placeholder="上传文件"
       multiple
       valueComponent={ValueComponent}
     />
   );
 }
 
-export const valueComponent: MantineDemo = {
+export const valueComponent: UIDemo = {
   type: 'code',
   code,
   component: Demo,

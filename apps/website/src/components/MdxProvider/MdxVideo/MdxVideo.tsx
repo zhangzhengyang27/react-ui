@@ -10,7 +10,7 @@ export function MdxVideo({ src }: VideoProps) {
     <video
       src={src}
       className={classes.video}
-      aria-label="Demonstration video"
+      aria-label="演示视频"
       loop
       autoPlay
       muted

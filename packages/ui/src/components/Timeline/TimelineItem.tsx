@@ -10,9 +10,9 @@ import {
     getRadius,
     getThemeColor,
     GetStylesApiOptions,
-    MantineColor,
-    MantineRadius,
-    useMantineTheme,
+    UIColor,
+    UIRadius,
+    useUITheme,
     useProps
 } from '../../core'
 import type { TimelineStylesNames } from './Timeline'
@@ -30,8 +30,8 @@ export interface TimelineItemProps
     /** Custom bullet content */
     bullet?: React.ReactNode
 
-    /** Key of theme.colors or any valid CSS color, overrides Timeline color */
-    color?: MantineColor
+    /** 主题颜色的键或任意有效的 CSS 颜色, overrides Timeline color */
+    color?: UIColor
 
     /** If set, overrides active state computed by Timeline */
     active?: boolean
@@ -39,8 +39,8 @@ export interface TimelineItemProps
     /** Line variant @default 'solid' */
     lineVariant?: 'solid' | 'dashed' | 'dotted'
 
-    /** Key of theme.radius or any valid CSS value, overrides Timeline radius */
-    radius?: MantineRadius
+    /** 主题圆角的键或任意有效的 CSS 值, overrides Timeline radius */
+    radius?: UIRadius
 
     /** Item content */
     children?: React.ReactNode
@@ -88,7 +88,7 @@ export const TimelineItem = factory<TimelineItemFactory>((props, ref) => {
         ...others
     } = useProps('TimelineItem', defaultProps, props as TimelineItemInternalProps)
 
-    const theme = useMantineTheme()
+    const theme = useUITheme()
     const getStyles = __getStyles!
 
     const isLast = index === (totalItems ?? 0) - 1

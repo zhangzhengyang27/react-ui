@@ -1,5 +1,5 @@
 import { Select } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Select } from '@react-ui/ui';
@@ -8,17 +8,17 @@ function Demo() {
   return (
     <>
       <Select
-        label="Option can NOT be deselected"
-        placeholder="Pick value"
+        label="选项不可取消选择"
+        placeholder="选择值"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         defaultValue="React"
         allowDeselect={false}
       />
 
       <Select
-        label="Option can be deselected"
-        description="This is default behavior, click 'React' in the dropdown"
-        placeholder="Pick value"
+        label="选项可以取消选择"
+        description="这是默认行为，点击下拉框中的 React"
+        placeholder="选择值"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         defaultValue="React"
         allowDeselect
@@ -33,17 +33,17 @@ function Demo() {
   return (
     <>
       <Select
-        label="Option can NOT be deselected"
-        placeholder="Pick value"
+        label="选项不可取消选择"
+        placeholder="选择值"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         defaultValue="React"
         allowDeselect={false}
       />
 
       <Select
-        label="Option can be deselected"
-        description="This is default behavior, click 'React' in the dropdown"
-        placeholder="Pick value"
+        label="选项可以取消选择"
+        description="这是默认行为，点击下拉框中的 React"
+        placeholder="选择值"
         data={['React', 'Angular', 'Vue', 'Svelte']}
         defaultValue="React"
         allowDeselect
@@ -53,7 +53,7 @@ function Demo() {
   );
 }
 
-export const allowDeselect: MantineDemo = {
+export const allowDeselect: UIDemo = {
   type: 'code',
   component: Demo,
   code,

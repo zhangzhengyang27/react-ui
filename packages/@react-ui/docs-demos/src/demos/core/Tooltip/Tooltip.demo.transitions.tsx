@@ -1,8 +1,8 @@
-import { Badge, Group, keys, MANTINE_TRANSITIONS, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { Badge, Group, keys, UI_TRANSITIONS, Tooltip } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
 
 export function Demo() {
-  const transitions = keys(MANTINE_TRANSITIONS).map((transition) => (
+  const transitions = keys(UI_TRANSITIONS).map((transition) => (
     <Tooltip key={transition} label={transition} transitionProps={{ transition, duration: 300 }}>
       <Badge variant="light">{transition}</Badge>
     </Tooltip>
@@ -15,7 +15,7 @@ export function Demo() {
   );
 }
 
-export const transitions: MantineDemo = {
+export const transitions: UIDemo = {
   type: 'code',
   component: Demo,
 };

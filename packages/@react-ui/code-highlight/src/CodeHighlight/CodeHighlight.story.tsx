@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { CodesandboxLogoIcon } from '@phosphor-icons/react';
 import hljs from 'highlight.js';
-import { getCodeFileIcon } from '@mantinex/dev-icons';
+import { getCodeFileIcon } from '@uix/dev-icons';
 import { createHighlightJsAdapter } from '../CodeHighlightProvider/adapters/highlight-js-adapter';
 import { createShikiAdapter } from '../CodeHighlightProvider/adapters/shiki-adapter';
 import { CodeHighlightAdapterProvider } from '../CodeHighlightProvider/CodeHighlightProvider';
@@ -113,19 +113,19 @@ const cssCode = `.root {
   border: var(--ai-bd);
   cursor: var(--cursor);
 
-  @mixin hover {
+  &:hover {
     &:not([data-loading]):not(:disabled):not([data-disabled]) {
       --bg: var(--ai-hover);
     }
   }
 
-  @mixin light {
+  [data-ui-color-scheme='light'] & {
     --loading-overlay-bg: rgba(255, 255, 255, 0.35);
     --disabled-bg: var(--ui-color-gray-1);
     --disabled-color: var(--ui-color-gray-5);
   }
 
-  @mixin dark {
+  [data-ui-color-scheme='dark'] & {
     --loading-overlay-bg: rgba(0, 0, 0, 0.35);
     --disabled-bg: var(--ui-color-dark-6);
     --disabled-color: var(--ui-color-dark-3);

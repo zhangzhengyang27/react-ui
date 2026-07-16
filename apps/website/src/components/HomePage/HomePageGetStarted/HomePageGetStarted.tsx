@@ -9,15 +9,14 @@ export function HomePageGetStarted() {
   return (
     <section className={classes.root}>
       <HomePageContainer>
-        <HomePageTitle order={2}>Ready to get started?</HomePageTitle>
+        <HomePageTitle order={2}>准备好开始了吗？</HomePageTitle>
 
         <HomePageDescription className={classes.description}>
-          ReactUI can be used with any modern React framework or build tool: get started with
-          Next.js, Vite, React Router and other tools in minutes by following the installation guide
-          or using one of the available templates.
+          ReactUI 可与任何现代 React 框架或构建工具配合使用：按照安装指南，只需几分钟即可在
+          Next.js、Vite、React Router 等工具中开始使用，或使用现有模板之一。
         </HomePageDescription>
 
-        <HomePageLearnMore href="/">Get started without a framework</HomePageLearnMore>
+        <HomePageLearnMore href="/">不使用框架开始</HomePageLearnMore>
 
         <div className={classes.guides} data-dimmed>
           <FrameworksGuides />

@@ -1,5 +1,5 @@
 import { Stack, Switch } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Switch, Stack } from '@react-ui/ui';
@@ -7,10 +7,10 @@ import { Switch, Stack } from '@react-ui/ui';
 function Demo() {
   return (
     <Stack>
-      <Switch value="value" label="Default switch" />
-      <Switch checked value="value" label="Checked switch" />
-      <Switch disabled value="value" label="Disabled switch" />
-      <Switch checked disabled value="value" label="Disabled checked switch" />
+      <Switch value="value" label="默认开关" />
+      <Switch checked value="value" label="已选中的开关" />
+      <Switch disabled value="value" label="已禁用开关" />
+      <Switch checked disabled value="value" label="已禁用且已选中开关" />
     </Stack>
   );
 }
@@ -19,15 +19,15 @@ function Demo() {
 function Demo() {
   return (
     <Stack>
-      <Switch checked={false} value="value" label="Default switch" />
-      <Switch checked value="value" label="Checked switch" />
-      <Switch disabled value="value" label="Disabled switch" />
-      <Switch checked disabled value="value" label="Disabled checked switch" />
+      <Switch checked={false} value="value" label="默认开关" />
+      <Switch checked value="value" label="已选中的开关" />
+      <Switch disabled value="value" label="已禁用开关" />
+      <Switch checked disabled value="value" label="已禁用且已选中开关" />
     </Stack>
   );
 }
 
-export const states: MantineDemo = {
+export const states: UIDemo = {
   type: 'code',
   centered: true,
   component: Demo,

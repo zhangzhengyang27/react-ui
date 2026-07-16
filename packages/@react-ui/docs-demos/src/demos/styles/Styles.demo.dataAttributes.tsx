@@ -1,6 +1,6 @@
 import { ArrowRightIcon } from '@phosphor-icons/react';
 import { Button, ButtonProps, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import classes from './Styles.demo.dataAttributes.module.css';
 
 const code = `
@@ -19,14 +19,14 @@ function Demo() {
         leftSection="12"
         rightSection={<ArrowRightIcon size={18} />}
       >
-        Send files
+        发送文件
       </SendFilesButton>
       <SendFilesButton
         leftSection="3"
         rightSection={<ArrowRightIcon size={18} />}
         disabled
       >
-        Send files
+        发送文件
       </SendFilesButton>
     </Group>
   );
@@ -42,11 +42,11 @@ const cssCode = `
   /* The following styles will be applied only when button is disabled */
   &[data-disabled] {
     /* You can use ReactUI PostCSS mixins inside data attributes */
-    @mixin light {
+    [data-ui-color-scheme='light'] & {
       border: 1px solid var(--ui-color-gray-2);
     }
 
-    @mixin dark {
+    [data-ui-color-scheme='dark'] & {
       border: 1px solid var(--ui-color-dark-4);
     }
 
@@ -73,7 +73,7 @@ const cssCode = `
   }
 
   &[data-position='right'] {
-    @mixin rtl {
+    [dir='rtl'] & {
       transform: rotate(180deg);
     }
   }
@@ -88,21 +88,21 @@ function Demo() {
   return (
     <Group>
       <SendFilesButton leftSection="12" rightSection={<ArrowRightIcon size={18} />}>
-        Send files
+        发送文件
       </SendFilesButton>
       <SendFilesButton leftSection="3" rightSection={<ArrowRightIcon size={18} />} disabled>
-        Send files
+        发送文件
       </SendFilesButton>
     </Group>
   );
 }
 
-export const dataAttributes: MantineDemo = {
+export const dataAttributes: UIDemo = {
   type: 'code',
   component: Demo,
   centered: true,
   code: [
-    { fileName: 'Demo.module.css', code: cssCode, language: 'scss' },
-    { fileName: 'Demo.tsx', code, language: 'tsx' },
+    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
+    { fileName: '演示代码.tsx', code, language: 'tsx' },
   ],
 };

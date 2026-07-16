@@ -7,7 +7,7 @@ import {
     factory,
     Factory,
     getSize,
-    MantineSize,
+    UISize,
     StylesApiProps,
     useProps,
     useResolvedStylesApi,
@@ -52,16 +52,16 @@ export interface ColorInputProps
         __ColorPickerProps,
         StylesApiProps<ColorInputFactory>,
         ElementProps<'input', 'size' | 'onChange' | 'value' | 'defaultValue'> {
-    /** Label rendered above the input */
+    //** 渲染在输入框上方的标签 */
     label?: React.ReactNode
 
-    /** Description rendered below the label */
+    //** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
-    /** Error rendered below the input */
+    //** 渲染在输入框下方的错误 */
     error?: React.ReactNode
 
-    /** If set, required asterisk is added to the label */
+    //** 如果设置，则会在标签上添加必填星号 */
     required?: boolean
 
     /** If input is not allowed, the user can only pick value with color picker and swatches */
@@ -98,7 +98,7 @@ export interface ColorInputProps
     errorProps?: React.ComponentProps<'div'>
 
     /** Controls size of the input @default 'sm' */
-    size?: MantineSize
+    size?: UISize
 
     /** Variant of the input */
     variant?: string

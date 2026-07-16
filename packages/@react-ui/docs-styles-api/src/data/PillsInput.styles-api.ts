@@ -13,13 +13,13 @@ export const PillsInputStylesApi: StylesApiData<PillsInputFactory> = {
 
 export const PillsInputFieldStylesApi: StylesApiData<PillsInputFieldFactory> = {
   selectors: {
-    field: 'Root element',
+    field: '根元素',
   },
 
   vars: {},
 
   modifiers: [
     { modifier: 'data-type', selector: 'field', value: 'Value of `type` prop' },
-    { modifier: 'data-disabled', selector: 'field', condition: '`disabled` prop is set' },
+    { modifier: 'data-disabled', selector: 'field', condition: '设置了 `disabled` 属性' },
   ],
 };

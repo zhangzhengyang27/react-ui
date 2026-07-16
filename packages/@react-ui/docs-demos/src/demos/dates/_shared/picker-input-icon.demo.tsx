@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { CalendarBlankIcon } from '@phosphor-icons/react';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const getCode = (name: string) => `
 import { useState } from 'react';
@@ -14,8 +14,8 @@ function Demo() {
     <${name}
       leftSection={<CalendarBlankIcon size={18} />}
       leftSectionPointerEvents="none"
-      label="Pick date"
-      placeholder="Pick date"
+      label="选择日期"
+      placeholder="选择日期"
       value={value}
       onChange={setValue}
     />
@@ -30,8 +30,8 @@ function getDemo(Component: React.FC<any>) {
       <Component
         leftSection={<CalendarBlankIcon size={18} />}
         leftSectionPointerEvents="none"
-        label="Pick date"
-        placeholder="Pick date"
+        label="选择日期"
+        placeholder="选择日期"
         value={value}
         onChange={setValue}
       />
@@ -39,7 +39,7 @@ function getDemo(Component: React.FC<any>) {
   };
 }
 
-export function getPickerInputIconDemo(Component: React.FC<any>): MantineDemo {
+export function getPickerInputIconDemo(Component: React.FC<any>): UIDemo {
   return {
     type: 'code',
     centered: true,

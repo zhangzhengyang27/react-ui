@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { MantineProvider } from '../../core'
+import { UIProvider } from '../../core'
 import { Burger } from './Burger'
 
-const renderWithProvider = (ui: React.ReactNode) => render(<MantineProvider>{ui}</MantineProvider>)
+const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIProvider>)
 
 describe('Burger', () => {
     it('renders a button by default', () => {
@@ -16,20 +16,20 @@ describe('Burger', () => {
     it('applies static classes', () => {
         renderWithProvider(<Burger data-testid="burger" />)
 
-        expect(screen.getByTestId('burger')).toHaveClass('mantine-Burger-root')
+        expect(screen.getByTestId('burger')).toHaveClass('ui-Burger-root')
     })
 
     it('sets data-opened on burger element when opened is true', () => {
         renderWithProvider(<Burger data-testid="burger" opened />)
 
-        const element = screen.getByTestId('burger').querySelector('.mantine-Burger-burger')
+        const element = screen.getByTestId('burger').querySelector('.ui-Burger-burger')
         expect(element).toHaveAttribute('data-opened')
     })
 
     it('does not set data-opened on burger element when opened is false', () => {
         renderWithProvider(<Burger data-testid="burger" opened={false} />)
 
-        const element = screen.getByTestId('burger').querySelector('.mantine-Burger-burger')
+        const element = screen.getByTestId('burger').querySelector('.ui-Burger-burger')
         expect(element).not.toHaveAttribute('data-opened')
     })
 

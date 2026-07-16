@@ -18,4 +18,4 @@ export const ModalBaseBody = forwardRef<HTMLDivElement, ModalBaseBodyProps>(({ c
     )
 })
 
-ModalBaseBody.displayName = '@mantine/core/ModalBaseBody'
+ModalBaseBody.displayName = '@react-ui/ui/ModalBaseBody'

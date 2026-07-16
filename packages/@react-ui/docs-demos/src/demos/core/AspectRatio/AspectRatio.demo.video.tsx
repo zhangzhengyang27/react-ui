@@ -1,5 +1,5 @@
 import { AspectRatio } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { AspectRatio } from '@react-ui/ui';
@@ -9,7 +9,7 @@ function Demo() {
     <AspectRatio ratio={16 / 9}>
       <iframe
         src="https://www.youtube.com/embed/mzJ4vCjSt28"
-        title="YouTube video player"
+        title="YouTube 视频播放器"
         style={{ border: 0 }}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
@@ -24,7 +24,7 @@ function Demo() {
     <AspectRatio ratio={16 / 9}>
       <iframe
         src="https://www.youtube.com/embed/mzJ4vCjSt28"
-        title="YouTube video player"
+        title="YouTube 视频播放器"
         style={{ border: 0 }}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
@@ -33,7 +33,7 @@ function Demo() {
   );
 }
 
-export const video: MantineDemo = {
+export const video: UIDemo = {
   type: 'code',
   component: Demo,
   code,

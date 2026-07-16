@@ -6,12 +6,12 @@ import {
     Factory,
     factory,
     getStyleObject,
-    useMantineEnv,
-    useMantineTheme,
+    useUIEnv,
+    useUITheme,
     useProps
 } from '../../core'
 
-export interface CollapseProps extends BoxProps, Omit<React.ComponentProps<'div'>, keyof BoxProps> {
+export interface CollapseProps extends BoxProps, Omit<React.ComponentProps<'div'>, keyof BoxProps | 'onTransitionStart' | 'onTransitionEnd'> {
     /** Collapse orientation @default 'vertical' */
     orientation?: 'vertical' | 'horizontal'
 
@@ -52,7 +52,7 @@ const defaultProps = {
 
 /**
  * 折叠容器：基于 useCollapse 实现高度/宽度过渡动画。
- * 对齐 mantine Collapse。引擎无关（Box + 内联样式 + React 19 Activity）。
+ * 对齐 ui Collapse。引擎无关（Box + 内联样式 + React 19 Activity）。
  */
 export const Collapse = factory<CollapseFactory>((props, ref) => {
     const {
@@ -69,8 +69,8 @@ export const Collapse = factory<CollapseFactory>((props, ref) => {
         ...others
     } = useProps('Collapse', defaultProps, props)
 
-    const env = useMantineEnv()
-    const theme = useMantineTheme()
+    const env = useUIEnv()
+    const theme = useUITheme()
     const shouldReduceMotion = useReducedMotion()
     const reduceMotion = theme.respectReducedMotion ? shouldReduceMotion : false
     const duration = reduceMotion ? 0 : transitionDuration

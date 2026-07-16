@@ -4,7 +4,7 @@ import {
     ElementProps,
     Factory,
     factory,
-    MantineSpacing,
+    UISpacing,
     StyleProp,
     StylesApiProps,
     useProps,
@@ -23,7 +23,13 @@ export interface GridProps extends BoxProps, StylesApiProps<GridFactory>, Elemen
     cols?: StyleProp<number>
 
     /** Spacing between columns and rows @default 'md' */
-    gutter?: StyleProp<MantineSpacing>
+    gutter?: StyleProp<UISpacing>
+
+    /** Spacing between rows, overrides `gutter` for row spacing */
+    rowGap?: StyleProp<UISpacing>
+
+    /** Spacing between columns, overrides `gutter` for column spacing */
+    columnGap?: StyleProp<UISpacing>
 
     /** Determines whether columns in the last row should grow to fill the remaining space */
     grow?: boolean
@@ -45,7 +51,7 @@ const defaultProps = {
 
 export const Grid = factory<GridFactory>((_props, _ref) => {
     const props = useProps('Grid', defaultProps, _props)
-    const { classNames, className, style, styles, unstyled, vars, cols, gutter, grow, children, ...others } = props
+    const { classNames, className, style, styles, unstyled, vars, cols, gutter, rowGap, columnGap, grow, children, ...others } = props
 
     const getStyles = useStyles<GridFactory>({
         name: 'Grid',
@@ -82,7 +88,7 @@ export const Grid = factory<GridFactory>((_props, _ref) => {
 
 Grid.Col = GridCol
 Grid.classes = classes
-Grid.displayName = '@mantine/core/Grid'
+Grid.displayName = '@react-ui/ui/Grid'
 
 export namespace Grid {
     export type Props = GridProps

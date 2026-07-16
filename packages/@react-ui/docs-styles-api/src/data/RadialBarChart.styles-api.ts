@@ -3,17 +3,17 @@ import type { StylesApiData } from '../types';
 
 export const RadialBarChartStylesApi: StylesApiData<RadialBarChartFactory> = {
   selectors: {
-    root: 'Root element',
-    tooltip: 'Tooltip root element',
-    legend: 'Legend root element',
-    legendItem: 'Legend item representing data series',
-    legendItemColor: 'Legend item color',
-    legendItemName: 'Legend item name',
+    root: '根元素',
+    tooltip: 'Tooltip root 元素',
+    legend: 'Legend root 元素',
+    legendItem: '图例项，表示数据系列',
+    legendItemColor: '图例项颜色',
+    legendItemName: '图例项名称',
   },
 
   vars: {
     root: {
-      '--chart-empty-background': 'Background color of the empty space in the chart',
+      '--chart-empty-background': '图表中空白区域的背景颜色',
     },
   },
 

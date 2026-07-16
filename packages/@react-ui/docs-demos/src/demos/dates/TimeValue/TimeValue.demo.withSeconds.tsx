@@ -1,6 +1,6 @@
 import { Text } from '@react-ui/ui';
 import { TimeValue } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Text } from '@react-ui/ui';
@@ -33,7 +33,7 @@ function Demo() {
   );
 }
 
-export const withSeconds: MantineDemo = {
+export const withSeconds: UIDemo = {
   type: 'code',
   component: Demo,
   code,

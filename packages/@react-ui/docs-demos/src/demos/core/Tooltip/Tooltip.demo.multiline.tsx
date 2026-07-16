@@ -1,5 +1,5 @@
 import { Button, Tooltip } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Tooltip, Button } from '@react-ui/ui';
@@ -11,9 +11,9 @@ function Demo() {
       w={220}
       withArrow
       transitionProps={{ duration: 200 }}
-      label="Use this button to save this information in your profile, after that you will be able to access it any time and share it via email."
+      label="使用此按钮将信息保存到你的个人资料，之后你可以随时访问并通过邮件分享。"
     >
-      <Button>Multiline tooltip</Button>
+      <Button>多行提示</Button>
     </Tooltip>
   );
 }
@@ -26,14 +26,14 @@ export function Demo() {
       w={220}
       withArrow
       transitionProps={{ duration: 200 }}
-      label="Use this button to save this information in your profile, after that you will be able to access it any time and share it via email."
+      label="使用此按钮将信息保存到你的个人资料，之后你可以随时访问并通过邮件分享。"
     >
-      <Button>Multiline tooltip</Button>
+      <Button>多行提示</Button>
     </Tooltip>
   );
 }
 
-export const multiline: MantineDemo = {
+export const multiline: UIDemo = {
   type: 'code',
   code,
   centered: true,

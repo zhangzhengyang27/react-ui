@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { InlineDateTimePicker } from '@react-ui/dates';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { useState } from 'react';
@@ -25,7 +25,7 @@ function Demo() {
   return <InlineDateTimePicker type="range" value={value} onChange={setValue} />;
 }
 
-export const rangeControlled: MantineDemo = {
+export const rangeControlled: UIDemo = {
   type: 'code',
   centered: true,
   maxWidth: 280,

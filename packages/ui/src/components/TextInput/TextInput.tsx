@@ -1,10 +1,10 @@
 import { useId } from '@react-ui/hooks'
 import { factory, Factory, StylesApiProps, useProps, useStyles } from '../../core'
-import { InputBase, InputBaseProps } from '../InputBase'
+import { InputBase, InputBaseProps, InputBaseStylesNames } from '../InputBase'
 import { InputWrapper } from '../Input'
 import classes from './TextInput.module.css'
 
-export type TextInputStylesNames = 'root'
+export type TextInputStylesNames = 'root' | InputBaseStylesNames
 
 export interface TextInputProps
     extends Omit<
@@ -12,16 +12,16 @@ export interface TextInputProps
             'classNames' | 'styles' | 'unstyled' | 'vars' | 'attributes' | 'labelProps' | 'descriptionProps' | 'errorProps'
         >,
         StylesApiProps<TextInputFactory> {
-    /** Label rendered above the input */
+    //** 渲染在输入框上方的标签 */
     label?: React.ReactNode
 
-    /** Description rendered below the label */
+    //** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
-    /** Error rendered below the input */
+    //** 渲染在输入框下方的错误 */
     error?: React.ReactNode
 
-    /** If set, required asterisk is added to the label */
+    //** 如果设置，则会在标签上添加必填星号 */
     required?: boolean
 
     /** If set, required asterisk is added to the label even if `required` is not set */

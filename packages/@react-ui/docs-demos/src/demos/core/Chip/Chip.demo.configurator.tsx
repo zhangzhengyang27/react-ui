@@ -1,5 +1,5 @@
 import { Chip, ChipProps } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 function Wrapper(props: ChipProps) {
   return (
@@ -13,11 +13,11 @@ const code = `
 import { Chip } from '@react-ui/ui';
 
 function Demo() {
-  return <Chip defaultChecked{{props}}>Awesome chip</Chip>
+  return <Chip defaultChecked{{props}}>很棒的芯片</Chip>
 }
 `;
 
-export const configurator: MantineDemo = {
+export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
@@ -28,9 +28,9 @@ export const configurator: MantineDemo = {
       prop: 'variant',
       type: 'segmented',
       data: [
-        { value: 'filled', label: 'Filled' },
-        { value: 'outline', label: 'Outline' },
-        { value: 'light', label: 'Light' },
+        { value: 'filled', label: '填充' },
+        { value: 'outline', label: '轮廓' },
+        { value: 'light', label: '浅色' },
       ],
       initialValue: 'filled',
       libraryValue: 'filled',

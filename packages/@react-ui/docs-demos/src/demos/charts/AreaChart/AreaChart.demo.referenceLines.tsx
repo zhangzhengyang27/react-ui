@@ -1,5 +1,5 @@
 import { AreaChart } from '@react-ui/charts';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 import { yScaleData, yScaleDataCode } from './_data';
 
 const code = `
@@ -14,10 +14,10 @@ function Demo() {
       dataKey="date"
       yAxisProps={{ domain: [0, 100] }}
       referenceLines={[
-        { y: 40, label: 'Average sales', color: 'red.6' },
-        { x: 'Mar 25', label: 'Report out' },
+        { y: 40, label: '平均销售额', color: 'red.6' },
+        { x: 'Mar 25', label: '报告输出' },
       ]}
-      series={[{ name: 'Apples', color: 'indigo.6' }]}
+      series={[{ name: '苹果', color: 'indigo.6' }]}
     />
   );
 }
@@ -31,19 +31,19 @@ function Demo() {
       dataKey="date"
       yAxisProps={{ domain: [0, 100] }}
       referenceLines={[
-        { y: 40, label: 'Average sales', color: 'red.6' },
-        { x: 'Mar 25', label: 'Report out' },
+        { y: 40, label: '平均销售额', color: 'red.6' },
+        { x: 'Mar 25', label: '报告输出' },
       ]}
-      series={[{ name: 'Apples', color: 'indigo.6' }]}
+      series={[{ name: '苹果', color: 'indigo.6' }]}
     />
   );
 }
 
-export const referenceLines: MantineDemo = {
+export const referenceLines: UIDemo = {
   type: 'code',
   component: Demo,
   code: [
-    { code, language: 'tsx', fileName: 'Demo.tsx' },
+    { code, language: 'tsx', fileName: '演示代码.tsx' },
     { code: yScaleDataCode, language: 'tsx', fileName: 'data.ts' },
   ],
 };

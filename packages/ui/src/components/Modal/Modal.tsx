@@ -5,7 +5,7 @@ import {
     getDefaultZIndex,
     getRadius,
     getSize,
-    MantineRadius,
+    UIRadius,
     rem,
     StylesApiProps,
     useProps,
@@ -33,40 +33,40 @@ export type ModalCssVariables = {
 export interface ModalProps
     extends StylesApiProps<ModalFactory>,
         Omit<ModalBaseProps, 'styles' | 'classNames' | 'variant' | 'vars'> {
-    /** Modal title */
+    /** 模态框标题 */
     title?: React.ReactNode
 
-    /** If set, the overlay is rendered */
+    /** 如果设置，则渲染遮罩层 */
     withOverlay?: boolean
 
-    /** Props passed down to the Overlay component */
+    /** 传递给 Overlay 组件的属性 */
     overlayProps?: Partial<ModalOverlayProps>
 
-    /** Modal content */
+    /** 模态框内容 */
     children?: React.ReactNode
 
-    /** If set, the close button is rendered */
+    /** 如果设置，则渲染关闭按钮 */
     withCloseButton?: boolean
 
-    /** Props passed down to the close button */
+    /** 传递给关闭按钮的属性 */
     closeButtonProps?: Partial<ModalCloseButtonProps>
 
-    /** Top/bottom modal offset */
+    /** 模态框顶部/底部偏移 */
     yOffset?: React.CSSProperties['marginTop']
 
-    /** Left/right modal offset */
+    /** 模态框左侧/右侧偏移 */
     xOffset?: React.CSSProperties['marginLeft']
 
-    /** Scroll area component */
+    /** 滚动区域组件 */
     scrollAreaComponent?: React.FC<any>
 
-    /** Key of theme.radius or any valid CSS value to set border-radius */
-    radius?: MantineRadius
+    /** 主题圆角键或任意有效 CSS 值，用于设置 border-radius */
+    radius?: UIRadius
 
-    /** If set, the modal is centered vertically */
+    /** 如果设置，则模态框垂直居中 */
     centered?: boolean
 
-    /** If set, the modal takes the entire screen */
+    /** 如果设置，则模态框占据整个屏幕 */
     fullScreen?: boolean
 }
 

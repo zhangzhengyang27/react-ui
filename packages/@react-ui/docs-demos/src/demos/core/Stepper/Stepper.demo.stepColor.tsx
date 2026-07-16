@@ -1,6 +1,6 @@
 import { XCircleIcon } from '@phosphor-icons/react';
 import { Stepper } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { Stepper } from '@react-ui/ui';
@@ -37,7 +37,7 @@ function Demo() {
   );
 }
 
-export const stepColor: MantineDemo = {
+export const stepColor: UIDemo = {
   type: 'code',
   component: Demo,
   code,

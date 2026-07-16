@@ -1,5 +1,5 @@
 import { AngleSlider, Group } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { AngleSlider, Group } from '@react-ui/ui';
@@ -8,7 +8,7 @@ function Demo() {
   return (
     <Group p="lg" gap={50}>
       <AngleSlider
-        aria-label="Angle slider"
+        aria-label="角度滑块"
         formatLabel={(value) => \`\${value}°\`}
         size={100}
         restrictToMarks
@@ -25,7 +25,7 @@ function Demo() {
       />
 
       <AngleSlider
-        aria-label="Angle slider"
+        aria-label="角度滑块"
         formatLabel={(value) => \`\${value}°\`}
         size={100}
         marks={[
@@ -48,7 +48,7 @@ function Demo() {
   return (
     <Group p="lg" gap={50}>
       <AngleSlider
-        aria-label="Angle slider"
+        aria-label="角度滑块"
         formatLabel={(value) => `${value}°`}
         size={100}
         restrictToMarks
@@ -65,7 +65,7 @@ function Demo() {
       />
 
       <AngleSlider
-        aria-label="Angle slider"
+        aria-label="角度滑块"
         formatLabel={(value) => `${value}°`}
         size={100}
         marks={[
@@ -83,7 +83,7 @@ function Demo() {
   );
 }
 
-export const marks: MantineDemo = {
+export const marks: UIDemo = {
   type: 'code',
   component: Demo,
   code,

@@ -1,5 +1,5 @@
 import { MaskInput, Text } from '@react-ui/ui';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
 const code = `
 import { MaskInput, Text } from '@react-ui/ui';
@@ -9,7 +9,7 @@ function Demo() {
   return (
     <>
       <MaskInput
-        label="Promo code"
+        label="优惠码"
         placeholder="AAA-9999"
         mask="AAA-9999"
         transform={(char) => char.toUpperCase()}
@@ -27,7 +27,7 @@ function Demo() {
   return (
     <>
       <MaskInput
-        label="Promo code"
+        label="优惠码"
         placeholder="AAA-9999"
         mask="AAA-9999"
         transform={(char) => char.toUpperCase()}
@@ -40,7 +40,7 @@ function Demo() {
   );
 }
 
-export const transform: MantineDemo = {
+export const transform: UIDemo = {
   type: 'code',
   code,
   component: Demo,

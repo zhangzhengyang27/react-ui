@@ -2,9 +2,9 @@ import Highlight from '@tiptap/extension-highlight';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { RichTextEditor } from '@react-ui/tiptap';
-import { MantineDemo } from '@react-ui/demo';
+import { UIDemo } from '@react-ui/demo';
 
-const content = '<p>Subtle rich text editor variant</p>';
+const content = '<p>柔和的富文本编辑器变体</p>';
 
 const code = `
 import Highlight from '@tiptap/extension-highlight';
@@ -12,7 +12,7 @@ import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { RichTextEditor } from '@react-ui/tiptap';
 
-const content = '<p>Subtle rich text editor variant</p>';
+const content = '<p>柔和的富文本编辑器变体</p>';
 
 function Demo() {
   const editor = useEditor({
@@ -68,7 +68,7 @@ function Demo() {
   );
 }
 
-export const subtleVariant: MantineDemo = {
+export const subtleVariant: UIDemo = {
   type: 'code',
   component: Demo,
   code,

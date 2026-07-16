@@ -46,12 +46,52 @@ export const TabsList = factory<TabsListFactory>((props, ref) => {
         return child
     })
 
+    // ARIA Tabs 键盘导航:根据 orientation 用 Arrow 键在 tab 间移动焦点并激活,
+    // Home/End 跳首末,遵循 https://www.w3.org/WAI/ARIA/apg/patterns/tabs/
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+        others.onKeyDown?.(event)
+
+        const list = event.currentTarget
+        const tabNodes = Array.from(
+            list.querySelectorAll<HTMLElement>('[role="tab"]:not([disabled])')
+        )
+        if (tabNodes.length === 0) return
+
+        const currentIndex = tabNodes.findIndex(node => node === document.activeElement)
+        let nextIndex = currentIndex
+
+        const isHorizontal = ctx.orientation === 'horizontal'
+        switch (event.key) {
+            case isHorizontal ? 'ArrowRight' : 'ArrowDown':
+                nextIndex = currentIndex < 0 ? 0 : (currentIndex + 1) % tabNodes.length
+                break
+            case isHorizontal ? 'ArrowLeft' : 'ArrowUp':
+                nextIndex = currentIndex <= 0 ? tabNodes.length - 1 : currentIndex - 1
+                break
+            case 'Home':
+                nextIndex = 0
+                break
+            case 'End':
+                nextIndex = tabNodes.length - 1
+                break
+            default:
+                return
+        }
+
+        event.preventDefault()
+        const nextTab = tabNodes[nextIndex]
+        nextTab.focus()
+        // 通过点击触发激活,复用 TabsTab 的 onClick 逻辑(内含 activateTab)
+        nextTab.click()
+    }
+
     return (
         <Box
             ref={ref}
             role="tablist"
             aria-orientation={ctx.orientation}
             {...others}
+            onKeyDown={handleKeyDown}
             {...ctx.getStyles('list', { className, classNames, style, styles })}
             mod={[{ grow, position }, mod]}
         >

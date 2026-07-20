@@ -1,6 +1,7 @@
 import { forwardRef } from 'react'
 import { PolymorphicComponentProps } from './create-polymorphic-component'
 import { ComponentClasses, FactoryPayload, identity, StaticComponents, ThemeExtend } from './factory'
+import type { VarsResolver } from '../styles-api'
 
 /**
  * 定义多态工厂的有效载荷接口，扩展基础工厂载荷
@@ -58,7 +59,9 @@ export function polymorphicFactory<Payload extends PolymorphicFactoryPayload>(
         ThemeExtend<Payload> &
         ComponentClasses<Payload> &
         PolymorphicComponentWithProps<Payload> &
-        StaticComponents<Payload['staticComponents']>
+        StaticComponents<Payload['staticComponents']> & {
+            varsResolver?: VarsResolver<Payload>
+        }
 
     // 包装 render 函数，确保 React 19 forwardRef 始终接收 (props, ref) 双参数
     const Component = forwardRef((props: Payload['props'], ref: React.Ref<Payload['defaultRef']>) =>
@@ -95,6 +98,7 @@ export function polymorphicFactory<Payload extends PolymorphicFactoryPayload>(
  * - 组件类名管理(ComponentClasses)
  * - 多态组件属性支持(PolymorphicComponentWithProps)
  * - 静态子组件支持(StaticComponents)
+ * - 可选的 CSS 变量解析器静态成员(varsResolver)
  */
 export type UIPolymorphicComponent<Payload extends PolymorphicFactoryPayload> = (<C = Payload['defaultComponent']>(
     props: PolymorphicComponentProps<C, Payload['props']>
@@ -103,4 +107,6 @@ export type UIPolymorphicComponent<Payload extends PolymorphicFactoryPayload> = 
     ThemeExtend<Payload> &
     ComponentClasses<Payload> &
     PolymorphicComponentWithProps<Payload> &
-    StaticComponents<Payload['staticComponents']>
+    StaticComponents<Payload['staticComponents']> & {
+        varsResolver?: VarsResolver<Payload>
+    }

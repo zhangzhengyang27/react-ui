@@ -30,7 +30,7 @@ function createConverter(units: string, { shouldScale = false } = {}) {
                 return value
                     .split(',')
                     .map(val => converter(val))
-                    .join('')
+                    .join(',')
             }
 
             if (value.includes(' ')) {

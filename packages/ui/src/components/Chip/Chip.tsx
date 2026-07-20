@@ -61,7 +61,7 @@ export type ChipFactory = Factory<{
     ref: HTMLButtonElement
     stylesNames: ChipStylesNames
     vars: ChipCssVariables
-    static_components: {
+    staticComponents: {
         Group: typeof ChipGroup
     }
 }>

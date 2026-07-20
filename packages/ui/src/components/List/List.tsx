@@ -51,6 +51,9 @@ export type ListFactory = PolymorphicFactory<{
     defaultComponent: 'ul'
     defaultRef: HTMLUListElement
     stylesNames: ListStylesNames
+    staticComponents: {
+        Item: typeof ListItem
+    }
 }>
 
 const defaultProps = {

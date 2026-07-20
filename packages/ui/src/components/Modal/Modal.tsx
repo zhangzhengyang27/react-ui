@@ -75,7 +75,7 @@ export type ModalFactory = Factory<{
     ref: HTMLDivElement
     stylesNames: ModalStylesNames
     vars: ModalCssVariables
-    static_components: {
+    staticComponents: {
         Root: typeof ModalRoot
         Body: typeof ModalBody
         CloseButton: typeof ModalCloseButton

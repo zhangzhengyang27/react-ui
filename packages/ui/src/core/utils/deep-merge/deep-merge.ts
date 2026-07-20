@@ -21,7 +21,7 @@ export function deepMerge<T extends object>(target: T, source: any): T {
     if (isObject(target) && isObject(source)) {
         Object.keys(source).forEach(key => {
             if (isObject(_source[key])) {
-                if (!(key in target)) {
+                if (!(key in target) || !isObject(result[key])) {
                     result[key] = _source[key]
                 } else {
                     result[key] = deepMerge(result[key], _source[key])

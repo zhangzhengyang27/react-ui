@@ -82,7 +82,7 @@ export type DrawerFactory = Factory<{
     ref: HTMLDivElement
     stylesNames: DrawerStylesNames
     vars: DrawerCssVariables
-    static_components: {
+    staticComponents: {
         Body: typeof DrawerBody
         CloseButton: typeof DrawerCloseButton
         Content: typeof DrawerContent

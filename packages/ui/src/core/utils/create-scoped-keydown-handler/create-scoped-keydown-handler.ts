@@ -89,7 +89,7 @@ interface GetElementsSiblingsInput {
  * @param {Function} [options.onKeyDown] - 自定义键盘事件处理函数
  * @param {boolean} [options.loop=true] - 是否允许在导航到边界时循环
  * @param {boolean} [options.activateOnFocus=false] - 是否在聚焦时自动触发点击事件
- * @param {'rtl'|'ltr'} [options.dir='rtl'] - 方向设置，影响左右箭头的行为
+ * @param {'rtl'|'ltr'} [options.dir='ltr'] - 方向设置，影响左右箭头的行为
  * @param {'horizontal'|'vertical'} [options.orientation] - 导航方向，决定使用水平还是垂直箭头
  * @returns {Function} 键盘事件处理函数，用于处理方向键导航
  */
@@ -99,7 +99,7 @@ export function createScopedKeydownHandler({
     onKeyDown,
     loop = true,
     activateOnFocus = false,
-    dir = 'rtl',
+    dir = 'ltr',
     orientation
 }: GetElementsSiblingsInput) {
     return (event: React.KeyboardEvent<HTMLButtonElement>) => {
@@ -110,6 +110,10 @@ export function createScopedKeydownHandler({
                 siblingSelector
             ) || []
         ).filter(node => onSameLevel(event.currentTarget, node, parentSelector))
+
+        if (elements.length === 0) {
+            return
+        }
 
         const current = elements.findIndex(el => event.currentTarget === el)
         const _nextIndex = getNextIndex(current, elements, loop)

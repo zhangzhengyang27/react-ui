@@ -46,6 +46,13 @@ export type AppShellFactory = PolymorphicFactory<{
     defaultComponent: 'div'
     defaultRef: HTMLDivElement
     stylesNames: AppShellStylesNames
+    staticComponents: {
+        Header: typeof AppShellHeader
+        Navbar: typeof AppShellNavbar
+        Aside: typeof AppShellAside
+        Footer: typeof AppShellFooter
+        Main: typeof AppShellMain
+    }
 }>
 
 const defaultProps = {

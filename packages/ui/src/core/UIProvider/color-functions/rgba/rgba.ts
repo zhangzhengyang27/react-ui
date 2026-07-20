@@ -18,7 +18,7 @@ export function rgba(color: string, alpha: number) {
 
     if (color.startsWith('oklch')) {
         if (color.includes('/')) {
-            return color.replace(/\/\s*[\d.]+\s*\)/, `/ ${alpha})`)
+            return color.replace(/\/\s*[\d.]+%?\s*\)/, `/ ${alpha})`)
         }
 
         return color.replace(')', ` / ${alpha})`)

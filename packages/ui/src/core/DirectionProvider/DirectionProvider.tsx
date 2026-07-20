@@ -1,4 +1,4 @@
-import { createContext, use, useCallback, useState } from 'react'
+import { createContext, use, useCallback, useMemo, useState } from 'react'
 import { useIsomorphicEffect, useMutationObserverTarget } from '@react-ui/hooks'
 
 export type Direction = 'ltr' | 'rtl'
@@ -47,7 +47,9 @@ export function DirectionProvider({
         []
     )
 
-    const toggleDirection = () => setDirection(dir === 'ltr' ? 'rtl' : 'ltr')
+    const toggleDirection = useCallback(() => {
+        setDirection(dir === 'ltr' ? 'rtl' : 'ltr')
+    }, [dir, setDirection])
 
     useIsomorphicEffect(() => {
         if (detectDirection) {
@@ -74,5 +76,10 @@ export function DirectionProvider({
         typeof document !== 'undefined' && detectDirection ? document.documentElement : null
     )
 
-    return <DirectionContext.Provider value={{ dir, toggleDirection, setDirection }}>{children}</DirectionContext.Provider>
+    const contextValue = useMemo(
+        () => ({ dir, toggleDirection, setDirection }),
+        [dir, toggleDirection, setDirection]
+    )
+
+    return <DirectionContext.Provider value={contextValue}>{children}</DirectionContext.Provider>
 }

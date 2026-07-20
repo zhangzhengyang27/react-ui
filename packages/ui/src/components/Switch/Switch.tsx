@@ -71,7 +71,7 @@ export type SwitchFactory = Factory<{
     ref: HTMLInputElement
     stylesNames: SwitchStylesNames
     vars: SwitchCssVariables
-    static_components: {
+    staticComponents: {
         Group: typeof SwitchGroup
     }
 }>

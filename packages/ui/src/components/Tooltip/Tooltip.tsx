@@ -109,7 +109,7 @@ export type TooltipFactory = Factory<{
     ref: HTMLDivElement
     stylesNames: TooltipStylesNames
     vars: TooltipCssVariables
-    static_components: {
+    staticComponents: {
         Group: typeof TooltipGroup
         Floating: typeof TooltipFloating
     }

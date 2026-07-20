@@ -9,7 +9,7 @@ const headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
  * @returns {string|unknown} 如果value是主题中定义的行高键名，返回对应的CSS变量；如果是标题类型，返回标题行高变量；否则返回原始值
  */
 export function lineHeightResolver(value: unknown, theme: UITheme) {
-    if (typeof value === 'string' && value in theme.lineHeights) {
+    if (typeof value === 'string' && Object.hasOwn(theme.lineHeights, value)) {
         return `var(--ui-line-height-${value})`
     }
 

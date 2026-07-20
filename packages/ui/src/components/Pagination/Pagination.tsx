@@ -77,7 +77,7 @@ export type PaginationFactory = Factory<{
     ref: HTMLDivElement
     stylesNames: PaginationStylesNames
     vars: PaginationCssVariables
-    static_components: {
+    staticComponents: {
         Root: typeof PaginationRoot
         Control: typeof PaginationControl
         Dots: typeof PaginationDots

@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react'
+import { CSSProperties, useMemo } from 'react'
 import type { UIStyleProp } from '../../Box'
 import { FactoryPayload } from '../../factory'
 import {
@@ -75,7 +75,7 @@ export function useStyles<Payload extends FactoryPayload>({
     const classNamesPrefix = useUIClassNamesPrefix()
     const withStaticClasses = useUIWithStaticClasses()
     const headless = useUIIsHeadless()
-    const themeName = (Array.isArray(name) ? name : [name]).filter(n => n) as string[]
+    const themeName = useMemo(() => (Array.isArray(name) ? name : [name]).filter(n => n) as string[], [name])
     const { withStylesTransform, getTransformedStyles } = useStylesTransform({
         props,
         stylesCtx,

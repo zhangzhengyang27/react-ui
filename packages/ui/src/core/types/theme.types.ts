@@ -8,6 +8,4 @@ export interface VariantColorResolverResult {
     hoverColor?: string
 }
 
-export interface UITheme {}
-
-export type UIThemeOverrides = Partial<UITheme>
+export type { UITheme, UIThemeOverride as UIThemeOverrides } from '../UIProvider/theme.types'

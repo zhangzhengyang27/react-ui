@@ -5,7 +5,7 @@ const headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
 
 export function fontSizeResolver(value: unknown, theme: UITheme) {
     if (typeof value === 'string') {
-        if (value in theme.fontSizes) {
+        if (Object.hasOwn(theme.fontSizes, value)) {
             return `var(--ui-font-size-${value})`
         }
         if (headings.includes(value)) {

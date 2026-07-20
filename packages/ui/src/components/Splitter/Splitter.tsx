@@ -19,6 +19,11 @@ export type SplitterFactory = Factory<{
     props: SplitterProps
     ref: HTMLDivElement
     stylesNames: SplitterStylesNames
+    staticComponents: {
+        Panel: typeof SplitterPanel
+        Pane: typeof SplitterPanel
+        Resizer: typeof SplitterResizer
+    }
 }>
 
 const defaultProps = {

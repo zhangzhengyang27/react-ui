@@ -6,7 +6,7 @@ export interface SystemPropData {
     property: string | string[]
 }
 
-export const STYlE_PROPS_DATA: Record<keyof UIStyleProps, SystemPropData> = {
+export const STYLE_PROPS_DATA: Record<keyof UIStyleProps, SystemPropData> = {
     m: { type: 'spacing', property: 'margin' },
     mt: { type: 'spacing', property: 'marginTop' },
     mb: { type: 'spacing', property: 'marginBottom' },
@@ -65,3 +65,8 @@ export const STYlE_PROPS_DATA: Record<keyof UIStyleProps, SystemPropData> = {
     display: { type: 'identity', property: 'display' },
     flex: { type: 'identity', property: 'flex' }
 }
+
+/**
+ * @deprecated 拼写错误，请使用 `STYLE_PROPS_DATA`。此别名仅为向后兼容保留，将在后续主版本移除。
+ */
+export const STYlE_PROPS_DATA = STYLE_PROPS_DATA

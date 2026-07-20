@@ -2,7 +2,7 @@ import type { UITheme } from '../../../../../core/UIProvider'
 import { rem } from '../../../../../core/utils'
 
 export function radiusResolver(value: unknown, theme: UITheme) {
-    if (typeof value === 'string' && value in theme.radius) {
+    if (typeof value === 'string' && Object.hasOwn(theme.radius, value)) {
         return `var(--ui-radius-${value})`
     }
 

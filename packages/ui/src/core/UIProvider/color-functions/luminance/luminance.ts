@@ -46,11 +46,11 @@ export function luminance(color: string): number {
 /**
  * 判断给定的颜色是否为浅色
  * @param {string} color - 要检查的颜色值，可以是CSS颜色字符串或CSS变量
- * @param {number} [luminanceThreshold=0.179] - 亮度阈值，高于此值则认为是浅色
+ * @param {number} [luminanceThreshold=0.3] - 亮度阈值，高于此值则认为是浅色（与主题默认 luminanceThreshold 一致）
  * @returns {boolean} 如果颜色亮度高于阈值则返回true，否则返回false
  * @note 对于CSS变量(以'var('开头的颜色)，总是返回false
  */
-export function isLightColor(color: string, luminanceThreshold = 0.179) {
+export function isLightColor(color: string, luminanceThreshold = 0.3) {
     if (color.startsWith('var(')) {
         return false
     }

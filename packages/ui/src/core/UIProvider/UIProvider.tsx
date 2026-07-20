@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { UIContext, type UIContextValue } from './UI.context'
 import { UIThemeProvider } from './UIThemeProvider'
 import { ThemeProvider } from '../ThemeProvider/ThemeProvider'
 import type { UIColorScheme } from './theme.types'
 import type { UIThemeOverrides } from '../types/theme.types'
+import {
+    defaultCssVariablesResolver,
+    type CSSVariablesResolver
+} from './UICssVariables/default-css-variables-resolver'
 
 export interface UIProviderProps {
     /** 主题覆盖，与默认主题合并 */
@@ -19,6 +23,8 @@ export interface UIProviderProps {
     headless?: boolean
     /** CSS 变量选择器，默认 ':root' */
     cssVariablesSelector?: string
+    /** CSS 变量解析器，默认 defaultCssVariablesResolver */
+    cssVariablesResolver?: CSSVariablesResolver
     /** 运行环境，默认 'default' */
     env?: 'default' | 'test'
     /** 子节点 */
@@ -37,36 +43,65 @@ export function UIProvider({
     withStaticClasses = true,
     headless = false,
     cssVariablesSelector = ':root',
+    cssVariablesResolver = defaultCssVariablesResolver,
     env = 'default'
 }: UIProviderProps) {
     const [internalColorScheme, setInternalColorScheme] = useState<UIColorScheme>('light')
     const colorScheme = controlledColorScheme ?? internalColorScheme
 
-    const setColorScheme = controlledColorScheme
-        ? () => {}
-        : (value: UIColorScheme) => setInternalColorScheme(value)
+    const setColorScheme = useCallback(
+        (value: UIColorScheme) => {
+            if (!controlledColorScheme) {
+                setInternalColorScheme(value)
+            }
+        },
+        [controlledColorScheme]
+    )
 
-    const value: UIContextValue = {
-        colorScheme,
-        setColorScheme,
-        clearColorScheme: () => setInternalColorScheme('light'),
-        getRootElement: () => (typeof document !== 'undefined' ? document.documentElement : undefined),
-        classNamesPrefix,
-        getStyleNonce: () => undefined,
-        cssVariablesResolver: undefined,
-        cssVariablesSelector,
-        withStaticClasses,
-        headless,
-        stylesTransform: undefined,
-        env
-    }
+    const clearColorScheme = useCallback(() => {
+        setInternalColorScheme('light')
+    }, [])
+
+    const getRootElement = useCallback(
+        () => (typeof document !== 'undefined' ? document.documentElement : undefined),
+        []
+    )
+
+    const value: UIContextValue = useMemo(
+        () => ({
+            colorScheme,
+            setColorScheme,
+            clearColorScheme,
+            getRootElement,
+            classNamesPrefix,
+            getStyleNonce: () => undefined,
+            cssVariablesResolver,
+            cssVariablesSelector,
+            withStaticClasses,
+            headless,
+            stylesTransform: undefined,
+            env
+        }),
+        [
+            colorScheme,
+            setColorScheme,
+            clearColorScheme,
+            getRootElement,
+            classNamesPrefix,
+            cssVariablesResolver,
+            cssVariablesSelector,
+            withStaticClasses,
+            headless,
+            env
+        ]
+    )
 
     useEffect(() => {
         if (typeof document === 'undefined') return
-        const root = value.getRootElement()
+        const root = getRootElement()
         if (!root) return
         root.setAttribute('data-ui-color-scheme', colorScheme)
-    }, [colorScheme, value])
+    }, [colorScheme, getRootElement])
 
     return (
         <UIContext.Provider value={value}>

@@ -92,6 +92,10 @@ export type ButtonFactory = PolymorphicFactory<{
     stylesNames: ButtonStylesNames
     vars: ButtonCssVariables
     variant: ButtonVariant
+    staticComponents: {
+        Group: typeof ButtonGroup
+        GroupSection: typeof ButtonGroupSection
+    }
 }>
 
 const loaderTransition: UITransition = {

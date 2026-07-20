@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import type { UIThemeComponent } from '../UIProvider'
-import type { ClassNames, PartialVarsResolver, Styles } from '../styles-api'
+import type { ClassNames, PartialVarsResolver, Styles, VarsResolver } from '../styles-api'
 
 export type DataAttributes = Record<`data-${string}`, any>
 
@@ -72,11 +72,16 @@ export type ExtendComponent<Payload extends FactoryPayload> = Payload['compound'
  * 条件类型工具，用于确保输入类型是一个对象类型
  *
  * 如果输入类型 `Input` 已经是一个对象类型（Record<string, any>），则直接返回该类型；
- * 否则返回一个空对象类型 Record<string, never>
+ * 否则返回空对象类型 `{}`。
+ *
+ * 注意：此处回退必须是 `{}`（交叉类型的单位元），不能用 `Record<string, never>`。
+ * 因为 `StaticComponents` 会被交叉（`&`）进 `UIComponentStaticProperties`，
+ * `[key: string]: never` 索引签名会把 extend/withProps/classes 及具体子组件赋值全部坍缩为 `never`。
+ * `{}` 不引入索引签名，既能避免未声明的静态属性被静默当作 `any`，又不影响其它静态成员。
  *
  * @template Input - 要检查的输入类型
  */
-export type StaticComponents<Input> = Input extends Record<string, any> ? Input : Record<string, any>
+export type StaticComponents<Input> = Input extends Record<string, any> ? Input : {}
 
 /**
  * 定义主题扩展接口，允许通过extend方法扩展组件样式
@@ -106,13 +111,16 @@ export type ComponentClasses<Payload extends FactoryPayload> = {
  * - 组件类名管理 (ComponentClasses)
  * - 静态子组件定义 (StaticComponents)
  * - 工厂组件属性类型 (FactoryComponentWithProps)
+ * - 可选的 CSS 变量解析器静态成员 (varsResolver)
  *
  * @template Payload 扩展自 FactoryPayload 的泛型参数，用于定义组件的基础能力集
  */
 export type UIComponentStaticProperties<Payload extends FactoryPayload> = ThemeExtend<Payload> &
     ComponentClasses<Payload> &
     StaticComponents<Payload['staticComponents']> &
-    FactoryComponentWithProps<Payload>
+    FactoryComponentWithProps<Payload> & {
+        varsResolver?: VarsResolver<Payload>
+    }
 
 /**
  * 定义一个工厂组件类型，该类型包含一个 `withProps` 方法，用于创建带有部分属性的 React 转发引用组件
@@ -185,6 +193,8 @@ export function getWithProps<T, Props>(Component: T): (props: Partial<Props>) =>
     return (fixedProps: any) => {
         const Extended = forwardRef((props, ref) => <_Component {...fixedProps} {...props} ref={ref as any} />) as any
         Extended.extend = _Component.extend
+        Extended.classes = _Component.classes
+        Extended.varsResolver = _Component.varsResolver
         Extended.displayName = `WithProps(${_Component.displayName})`
         return Extended
     }
@@ -212,6 +222,8 @@ export function factory<Payload extends FactoryPayload>(
     Component.withProps = (fixedProps: any) => {
         const Extended = forwardRef((props, ref) => <Component {...fixedProps} {...props} ref={ref as any} />) as any
         Extended.extend = Component.extend
+        Extended.classes = Component.classes
+        Extended.varsResolver = Component.varsResolver
         Extended.displayName = `WithProps(${Component.displayName})`
         return Extended
     }

@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { useIsomorphicEffect } from '@react-ui/hooks'
 
 function dispatchEvent<T>(type: string, detail?: T) {
@@ -8,10 +9,14 @@ export function createUseExternalEvents<Handlers extends Record<string, (detail:
     prefix: string
 ) {
     function _useExternalEvents(events: Handlers) {
-        const handlers = Object.keys(events).reduce<any>((acc, eventKey) => {
-            acc[`${prefix}:${eventKey}`] = (event: CustomEvent) => events[eventKey](event.detail)
-            return acc
-        }, {})
+        const handlers = useMemo(
+            () =>
+                Object.keys(events).reduce<any>((acc, eventKey) => {
+                    acc[`${prefix}:${eventKey}`] = (event: CustomEvent) => events[eventKey](event.detail)
+                    return acc
+                }, {}),
+            [events]
+        )
 
         useIsomorphicEffect(() => {
             Object.keys(handlers).forEach((eventKey) => {

@@ -73,7 +73,7 @@ export type StepperFactory = Factory<{
     ref: HTMLDivElement
     stylesNames: StepperStylesNames
     vars: StepperCssVariables
-    static_components: {
+    staticComponents: {
         Step: typeof StepperStep
         Completed: typeof StepperCompleted
     }

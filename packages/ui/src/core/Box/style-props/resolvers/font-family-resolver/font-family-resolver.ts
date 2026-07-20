@@ -12,7 +12,7 @@ const values = {
  * @returns {unknown} 解析后的字体家族值，如果传入的是预定义值则返回对应的实际值，否则原样返回
  */
 export function fontFamilyResolver(fontFamily: unknown) {
-    if (typeof fontFamily === 'string' && fontFamily in values) {
+    if (typeof fontFamily === 'string' && Object.hasOwn(values, fontFamily)) {
         return values[fontFamily as keyof typeof values]
     }
 

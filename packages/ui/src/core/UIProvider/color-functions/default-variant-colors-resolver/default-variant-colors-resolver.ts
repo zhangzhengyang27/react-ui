@@ -24,12 +24,13 @@ export interface VariantColorResolverResult {
 export type VariantColorsResolver = (input: VariantColorsResolverInput) => VariantColorResolverResult
 
 export const defaultVariantColorsResolver: VariantColorsResolver = ({
-    color,
+    color: inputColor,
     theme,
     variant,
     gradient,
     autoContrast
 }) => {
+    const color = inputColor ?? theme.primaryColor
     const parsed = parseThemeColor({ color, theme })
 
     const _autoContrast = typeof autoContrast === 'boolean' ? autoContrast : theme.autoContrast

@@ -8,6 +8,10 @@ import { parseThemeColor, type UITheme } from '../../../../../core/UIProvider'
  * @throws {Error} 如果颜色值无法解析可能会抛出错误
  */
 export function colorResolver(color: unknown, theme: UITheme) {
+    if (typeof color !== 'string') {
+        return color as string
+    }
+
     const parsedColor = parseThemeColor({ color, theme })
 
     if (parsedColor.color === 'dimmed') {
@@ -28,6 +32,10 @@ export function colorResolver(color: unknown, theme: UITheme) {
  * @returns {string} 解析后的颜色值，如果是主题颜色则返回对应的CSS变量，否则返回解析后的颜色值
  */
 export function textColorResolver(color: unknown, theme: UITheme) {
+    if (typeof color !== 'string') {
+        return color as string
+    }
+
     const parsedColor = parseThemeColor({ color, theme })
 
     if (parsedColor.isThemeColor && parsedColor.shade === undefined) {

@@ -9,7 +9,7 @@ export function cssObjectToString(css: React.CSSProperties) {
     return keys(css)
         .reduce(
             (acc: string, rule: keyof React.CSSProperties) =>
-                css[rule] !== undefined ? `${acc}${camelToKebabCase(rule)}:${css[rule]};` : acc,
+                css[rule] != null ? `${acc}${camelToKebabCase(rule)}:${css[rule]};` : acc,
             ''
         )
         .trim()

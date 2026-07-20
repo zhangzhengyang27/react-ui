@@ -10,6 +10,10 @@ import type { UITheme } from '../../core/UIProvider'
  *   '--custom-property': 'value',
  *   color: 'red'
  * }
+ *
+ * 注意：此处保留宽松的 `[key: string]: any` 索引签名是有意为之。`UIStyleProp` 是递归联合类型
+ * （`UIStyle | UIStyle[] | UIStyleProp[]`），且各组件以标准 `React.CSSProperties` 传入 `style`，
+ * 收紧为 `` [key: `--${string}`] `` 会破坏全库 style 属性的可赋值性（需配套重构 UIStyleProp）。
  */
 export interface CSSProperties extends React.CSSProperties {
     [key: string]: any

@@ -30,23 +30,28 @@ export function useUIColorScheme({ keepTransitions }: { keepTransitions?: boolea
     throw new Error('[@react-ui/ui] UIProvider was not found in tree');
   }
 
-  const setColorScheme = (value: UIColorScheme) => {
-    ctx.setColorScheme(value);
-    clearStylesRef.current = keepTransitions ? () => {} : disableTransition(nonceValue.current);
-    window.clearTimeout(timeoutRef.current);
-    timeoutRef.current = window.setTimeout(() => {
-      clearStylesRef.current?.();
-    }, 10);
-  };
+  const { setColorScheme: setCtxColorScheme, clearColorScheme: clearCtxColorScheme } = ctx;
 
-  const clearColorScheme = () => {
-    ctx.clearColorScheme();
+  const scheduleTransitionCleanup = useCallback(() => {
     clearStylesRef.current = keepTransitions ? () => {} : disableTransition(nonceValue.current);
     window.clearTimeout(timeoutRef.current);
     timeoutRef.current = window.setTimeout(() => {
       clearStylesRef.current?.();
     }, 10);
-  };
+  }, [keepTransitions]);
+
+  const setColorScheme = useCallback(
+    (value: UIColorScheme) => {
+      setCtxColorScheme(value);
+      scheduleTransitionCleanup();
+    },
+    [setCtxColorScheme, scheduleTransitionCleanup]
+  );
+
+  const clearColorScheme = useCallback(() => {
+    clearCtxColorScheme();
+    scheduleTransitionCleanup();
+  }, [clearCtxColorScheme, scheduleTransitionCleanup]);
 
   const osColorScheme = useColorScheme('light', { getInitialValueInEffect: false });
   const computedColorScheme = ctx.colorScheme === 'auto' ? osColorScheme : ctx.colorScheme;

@@ -39,7 +39,7 @@ export function parseThemeColor({ color, theme, colorScheme }: ParseThemeColorOp
     if (color === 'dimmed') {
         return {
             color,
-            value: colorScheme === 'dark' ? theme.colors.dark[2] : theme.colors.gray[7],
+            value: colorScheme === 'dark' ? theme.colors.dark[2] : theme.colors.gray[6],
             shade: undefined,
             isThemeColor: false,
             isLight: isLightColor(
@@ -62,7 +62,11 @@ export function parseThemeColor({ color, theme, colorScheme }: ParseThemeColorOp
     }
 
     const [_color, shade] = color.split('.')
-    const colorShade = shade ? (Number(shade) as UIColorShade) : undefined
+    const parsedShade = shade ? Number(shade) : undefined
+    const colorShade =
+        parsedShade !== undefined && Number.isInteger(parsedShade) && parsedShade >= 0 && parsedShade <= 9
+            ? (parsedShade as UIColorShade)
+            : undefined
     const isThemeColor = _color in theme.colors
 
     if (isThemeColor) {
@@ -77,7 +81,7 @@ export function parseThemeColor({ color, theme, colorScheme }: ParseThemeColorOp
             shade: colorShade,
             isThemeColor,
             isLight: isLightColor(colorValue, theme.luminanceThreshold),
-            variable: shade ? `--ui-color-${_color}-${colorShade}` : `--ui-color-${_color}-filled`
+            variable: colorShade !== undefined ? `--ui-color-${_color}-${colorShade}` : `--ui-color-${_color}-filled`
         }
     }
 

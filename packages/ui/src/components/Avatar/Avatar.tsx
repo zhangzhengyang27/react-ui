@@ -53,7 +53,7 @@ export type AvatarFactory = Factory<{
     stylesNames: AvatarStylesNames
     vars: AvatarCssVariables
     variant: AvatarVariant
-    static_components: {
+    staticComponents: {
         Group: typeof AvatarGroup
     }
 }>

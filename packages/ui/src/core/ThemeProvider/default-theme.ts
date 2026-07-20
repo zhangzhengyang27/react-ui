@@ -1,1 +1,1 @@
-export const DEFAULT_THEME = {}
+export { DEFAULT_THEME } from '../UIProvider/default-theme'

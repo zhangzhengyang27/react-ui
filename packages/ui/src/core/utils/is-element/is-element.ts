@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, isValidElement } from 'react'
 
 /**
  * 检查给定值是否为有效的React元素
@@ -10,12 +10,8 @@ export function isElement(value: any): value is React.ReactElement {
         return false
     }
 
-    if (typeof value === 'object') {
-        if (value.type === Fragment) {
-            return false
-        }
-
-        return true
+    if (isValidElement(value)) {
+        return value.type !== Fragment
     }
 
     return false

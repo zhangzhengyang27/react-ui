@@ -89,7 +89,7 @@ export type CheckboxFactory = Factory<{
     ref: HTMLInputElement
     stylesNames: CheckboxStylesNames
     vars: CheckboxCssVariables
-    static_components: {
+    staticComponents: {
         Group: typeof CheckboxGroup
         Indicator: typeof CheckboxIndicator
         Card: typeof CheckboxCard

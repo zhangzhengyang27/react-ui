@@ -67,7 +67,7 @@ export type ProgressFactory = Factory<{
     ref: HTMLDivElement
     stylesNames: ProgressStylesNames
     vars: ProgressCssVariables
-    static_components: {
+    staticComponents: {
         Root: typeof ProgressRoot
         Section: typeof ProgressSection
         Label: typeof ProgressLabel

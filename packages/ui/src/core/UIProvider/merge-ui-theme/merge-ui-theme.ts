@@ -76,7 +76,7 @@ export function mergeUITheme(currentTheme: UITheme, themeOverride?: UIThemeOverr
     const result = deepMerge(currentTheme, themeOverride)
 
     if (themeOverride.fontFamily && !themeOverride.headings?.fontFamily) {
-        result.headings.fontFamily = themeOverride.fontFamily
+        result.headings = { ...result.headings, fontFamily: themeOverride.fontFamily }
     }
 
     validateUITheme(result)

@@ -1,5 +1,8 @@
 import type { PartialDeep } from 'type-fest'
 import type { VariantColorsResolver } from './color-functions'
+import type { _ClassNames } from '../styles-api/use-styles/get-class-name/get-class-name'
+import type { _Styles } from '../styles-api/use-styles/get-style/get-style'
+import type { VarsResolver } from '../styles-api/use-styles/get-style/resolve-vars/resolve-vars'
 
 /**
  * UI 主题配置接口，定义了整个 UI UI 库的主题配置结构
@@ -153,10 +156,10 @@ export type UIStylesRecord = Record<string, React.CSSProperties>
 
 /** 组件主题配置接口 */
 export interface UIThemeComponent {
-    classNames?: any
-    styles?: any
-    vars?: any
-    defaultProps?: any
+    classNames?: _ClassNames
+    styles?: _Styles | _Styles[]
+    vars?: VarsResolver
+    defaultProps?: Record<string, any> | ((theme: UITheme) => Record<string, any>)
 }
 
 /** 组件主题配置集合 */

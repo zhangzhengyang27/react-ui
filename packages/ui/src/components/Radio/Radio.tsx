@@ -78,7 +78,7 @@ export type RadioFactory = Factory<{
     ref: HTMLInputElement
     stylesNames: RadioStylesNames
     vars: RadioCssVariables
-    static_components: {
+    staticComponents: {
         Group: typeof RadioGroup
         Indicator: typeof RadioIndicator
         Card: typeof RadioCard

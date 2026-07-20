@@ -101,12 +101,19 @@ export function parseStyleProps({ styleProps, data, theme }: ParseStylePropsOpti
                 if (
                     (styleProp as string) === 'hiddenFrom' ||
                     (styleProp as string) === 'visibleFrom' ||
+                    (styleProp as string) === 'lightHidden' ||
+                    (styleProp as string) === 'darkHidden' ||
                     (styleProp as string) === 'sx'
                 ) {
                     return acc
                 }
 
                 const propertyData = data[styleProp]
+
+                if (!propertyData) {
+                    return acc
+                }
+
                 const properties = Array.isArray(propertyData.property)
                     ? propertyData.property
                     : [propertyData.property]

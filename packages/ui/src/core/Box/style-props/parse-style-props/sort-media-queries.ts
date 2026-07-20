@@ -6,12 +6,21 @@ export interface SortMediaQueriesResult extends Omit<ParseStylePropsResult, 'med
 }
 
 /**
- * 替换媒体查询字符串中的特定部分
- * @param {string} query - 需要处理的媒体查询字符串
- * @returns {string} 处理后的字符串，移除了'(min-width: '和'em)'部分
+ * 从媒体查询字符串中提取断点数值，并统一换算为 px
+ * 支持 px/em/rem 及无单位数值（em/rem 按 16px 基准换算），
+ * 避免不同单位的断点混用时 Number() 得到 NaN 导致排序失效
+ * @param {string} query - 媒体查询字符串，如 '(min-width: 48em)'
+ * @returns {number} 断点对应的 px 数值，无法解析时返回 0
  */
-function replaceMediaQuery(query: string) {
-    return query.replace('(min-width: ', '').replace('em)', '')
+function getBreakpointValue(query: string): number {
+    const match = query.match(/min-width:\s*([\d.]+)\s*(px|em|rem)?/i)
+
+    if (!match) {
+        return 0
+    }
+
+    const value = parseFloat(match[1])
+    return match[2] === 'em' || match[2] === 'rem' ? value * 16 : value
 }
 
 /**
@@ -23,7 +32,7 @@ function replaceMediaQuery(query: string) {
 export function sortMediaQueries({ media, ...props }: ParseStylePropsResult): SortMediaQueriesResult {
     const breakpoints = Object.keys(media)
     const sortedMedia = breakpoints
-        .sort((a, b) => Number(replaceMediaQuery(a)) - Number(replaceMediaQuery(b)))
+        .sort((a, b) => getBreakpointValue(a) - getBreakpointValue(b))
         .map(query => ({ query, styles: media[query] }))
 
     return { ...props, media: sortedMedia }

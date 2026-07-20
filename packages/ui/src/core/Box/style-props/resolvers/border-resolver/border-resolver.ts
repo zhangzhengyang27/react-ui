@@ -15,7 +15,7 @@ export function borderResolver(value: unknown, theme: UITheme) {
     }
 
     if (typeof value === 'string') {
-        const [size, style, ...colorTuple] = value.split('').filter(val => val.trim() !== '')
+        const [size, style, ...colorTuple] = value.split(' ').filter(val => val.trim() !== '')
 
         let result = `${rem(size)}`
         style && (result += ` ${style}`)

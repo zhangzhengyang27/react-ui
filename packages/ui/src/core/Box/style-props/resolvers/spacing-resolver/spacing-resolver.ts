@@ -16,7 +16,7 @@ export function spacingResolver(value: unknown, theme: UITheme) {
     if (typeof value === 'string') {
         const mod = value.replace('-', '')
 
-        if (!(mod in theme.spacing)) {
+        if (!Object.hasOwn(theme.spacing, mod)) {
             return rem(value)
         }
 

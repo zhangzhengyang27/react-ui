@@ -12,7 +12,10 @@ export function mergeVars(vars: (ResolvedVars | undefined)[]) {
     return vars.reduce<ResolvedVars>((acc, current) => {
         if (current) {
             Object.keys(current).forEach(key => {
-                acc[key] = { ...acc[key], ...filterProps(current[key]!) }
+                const currentVars = current[key]
+                if (currentVars) {
+                    acc[key] = { ...acc[key], ...filterProps(currentVars) }
+                }
             })
         }
 

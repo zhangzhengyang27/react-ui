@@ -22,7 +22,7 @@ export type MenuStylesNames = 'item' | 'itemLabel' | 'itemSection' | 'label' | '
 export type MenuFactory = Factory<{
     props: MenuProps
     stylesNames: MenuStylesNames
-    static_components: {
+    staticComponents: {
         Item: typeof MenuItem
         Label: typeof MenuLabel
         Dropdown: typeof MenuDropdown

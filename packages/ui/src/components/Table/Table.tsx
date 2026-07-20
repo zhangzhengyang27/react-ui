@@ -76,7 +76,7 @@ export type TableFactory = Factory<{
     ref: HTMLTableElement
     stylesNames: TableStylesNames
     vars: TableCssVariables
-    static_components: {
+    staticComponents: {
         Thead: typeof Thead
         Tbody: typeof Tbody
         Tfoot: typeof Tfoot

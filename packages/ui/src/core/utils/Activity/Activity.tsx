@@ -12,8 +12,5 @@ export interface ActivityProps {
  * 待 React 正式导出 Activity 后可替换为原生实现。
  */
 export function Activity({ mode, children }: ActivityProps) {
-    if (mode === 'hidden') {
-        return <div style={{ display: 'none' }}>{children}</div>
-    }
-    return <>{children}</>
+    return <div style={{ display: mode === 'hidden' ? 'none' : 'contents' }}>{children}</div>
 }

@@ -11,7 +11,7 @@ export interface RGBA {
  * @returns 如果是有效的十六进制颜色值则返回 true，否则返回 false
  */
 function isHexColor(hex: string): boolean {
-    const HEX_REGEXP = /^#?([0-9A-F]{3}){1,2}([0-9A-F]{2})?$/i
+    const HEX_REGEXP = /^#?([0-9A-F]{3}|[0-9A-F]{4}|[0-9A-F]{6}|[0-9A-F]{8})$/i
 
     return HEX_REGEXP.test(hex)
 }
@@ -33,6 +33,20 @@ function hexToRgba(color: string): RGBA {
             shorthandHex[1],
             shorthandHex[2],
             shorthandHex[2]
+        ].join('')
+    }
+
+    if (hexString.length === 4) {
+        const shorthandHex = hexString.split('')
+        hexString = [
+            shorthandHex[0],
+            shorthandHex[0],
+            shorthandHex[1],
+            shorthandHex[1],
+            shorthandHex[2],
+            shorthandHex[2],
+            shorthandHex[3],
+            shorthandHex[3]
         ].join('')
     }
 
@@ -62,28 +76,45 @@ function hexToRgba(color: string): RGBA {
 
 /**
  * 将 RGB 或 RGBA 颜色字符串转换为 RGBA 对象
- * @param color - RGB 或 RGBA 颜色字符串（如 "rgb(255, 0, 0)" 或 "rgba(255, 0, 0, 0.5)"）
+ * @param color - RGB 或 RGBA 颜色字符串，支持传统逗号语法（"rgb(255, 0, 0)"、"rgba(255, 0, 0, 0.5)"）
+ *   与现代空格语法（"rgb(255 0 0)"、"rgb(255 0 0 / 0.5)"、"rgb(255 0 0 / 50%)"）
  * @returns 包含 r, g, b, a 属性的 RGBA 对象
  */
 function rgbStringToRgba(color: string): RGBA {
-    const [r, g, b, a] = color
-        .replace(/[^0-9,./]/g, '')
-        .split(/[/,]/)
+    const body = color.replace(/^rgba?\(/i, '').replace(/\)\s*$/, '').trim()
+    const [mainPart, alphaPart] = body.split('/')
+    const [r, g, b, legacyAlpha] = mainPart
+        .trim()
+        .split(/[\s,]+/)
+        .filter(Boolean)
         .map(Number)
 
-    return { r, g, b, a: a || 1 }
+    let a: number | undefined
+    if (alphaPart !== undefined) {
+        const alphaStr = alphaPart.trim()
+        a = alphaStr.endsWith('%') ? parseFloat(alphaStr) / 100 : parseFloat(alphaStr)
+    } else {
+        a = legacyAlpha
+    }
+
+    return { r, g, b, a: a ?? 1 }
 }
 
 /**
  * 将 HSL 或 HSLA 颜色字符串转换为 RGBA 对象
- * @param hslaString - HSL 或 HSLA 颜色字符串（如 "hsl(120, 100%, 50%)" 或 "hsla(120, 100%, 50%, 0.5)"）
+ * @param hslaString - HSL 或 HSLA 颜色字符串，支持传统逗号语法（"hsl(120, 100%, 50%)"、"hsla(120, 100%, 50%, 0.5)"）
+ *   与现代空格语法（"hsl(120 100% 50%)"、"hsl(120 100% 50% / 0.5)"、"hsl(120 100% 50% / 50%)"）
  * @returns 包含 r, g, b, a 属性的 RGBA 对象
  */
 function hslStringToRgba(hslaString: string): RGBA {
-    const hslaRegex = /^hsla?\(\s*(\d+)\s*,\s*(\d+%)\s*,\s*(\d+%)\s*(,\s*(0?\.\d+|\d+(\.\d+)?))?\s*\)$/i
+    const body = hslaString.replace(/^hsla?\(/i, '').replace(/\)\s*$/, '').trim()
+    const [mainPart, alphaPart] = body.split('/')
+    const tokens = mainPart
+        .trim()
+        .split(/[\s,]+/)
+        .filter(Boolean)
 
-    const matches = hslaString.match(hslaRegex)
-    if (!matches) {
+    if (tokens.length < 3) {
         return {
             r: 0,
             g: 0,
@@ -92,10 +123,17 @@ function hslStringToRgba(hslaString: string): RGBA {
         }
     }
 
-    const h = parseInt(matches[1], 10)
-    const s = parseInt(matches[2], 10) / 100
-    const l = parseInt(matches[3], 10) / 100
-    const a = matches[5] ? parseFloat(matches[5]) : undefined
+    const h = parseFloat(tokens[0])
+    const s = parseFloat(tokens[1]) / 100
+    const l = parseFloat(tokens[2]) / 100
+
+    let a: number | undefined
+    if (alphaPart !== undefined) {
+        const alphaStr = alphaPart.trim()
+        a = alphaStr.endsWith('%') ? parseFloat(alphaStr) / 100 : parseFloat(alphaStr)
+    } else if (tokens[3] !== undefined) {
+        a = parseFloat(tokens[3])
+    }
 
     const chroma = (1 - Math.abs(2 * l - 1)) * s
     const huePrime = h / 60
@@ -136,7 +174,7 @@ function hslStringToRgba(hslaString: string): RGBA {
         r: Math.round((r + m) * 255),
         g: Math.round((g + m) * 255),
         b: Math.round((b + m) * 255),
-        a: a || 1
+        a: a ?? 1
     }
 }
 

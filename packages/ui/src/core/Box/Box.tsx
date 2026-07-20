@@ -8,7 +8,7 @@ import { isNumberLike } from '../../core/utils'
 import type { CssVarsProp, UIStyleProp } from './Box.types'
 import { getBoxMod } from './get-box-mod/get-box-mod'
 import { getBoxStyle } from './get-box-style/get-box-style'
-import { extractStyleProps, UIStyleProps, parseStyleProps, STYlE_PROPS_DATA } from './style-props'
+import { extractStyleProps, UIStyleProps, parseStyleProps, STYLE_PROPS_DATA } from './style-props'
 import { useRandomClassName } from './use-random-classname/use-random-classname'
 
 // 定义 Mod 类型：可以是键值对对象或字符串
@@ -92,7 +92,7 @@ const _Box = forwardRef<HTMLDivElement, BoxComponentProps & { component: any; cl
         const parsedStyleProps = parseStyleProps({
             styleProps,
             theme,
-            data: STYlE_PROPS_DATA
+            data: STYLE_PROPS_DATA
         })
 
         const props = {

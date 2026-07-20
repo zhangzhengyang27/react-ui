@@ -1,0 +1,13 @@
+.group {
+  background-color: light-dark(var(--ui-color-gray-1), var(--ui-color-dark-5));
+  border-radius: var(--ui-radius-sm);
+  margin-bottom: var(--ui-spacing-xs);
+}
+
+.groupLabel {
+  color: light-dark(var(--ui-color-black), var(--ui-color-white));
+}
+
+.groupLabel::after {
+    display: none;
+  }

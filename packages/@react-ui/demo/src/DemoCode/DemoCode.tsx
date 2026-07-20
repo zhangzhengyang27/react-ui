@@ -6,9 +6,17 @@ export interface DemoCodeProps {
   code?: string | CodeHighlightTabsCode[];
   defaultExpanded?: boolean;
   maxCollapsedHeight?: number;
+  withLineNumbers?: boolean;
+  withExpandButton?: boolean;
 }
 
-export function DemoCode({ code, maxCollapsedHeight, defaultExpanded = true }: DemoCodeProps) {
+export function DemoCode({
+  code,
+  maxCollapsedHeight,
+  defaultExpanded = true,
+  withLineNumbers = true,
+  withExpandButton = true,
+}: DemoCodeProps) {
   const _code: CodeHighlightTabsCode | CodeHighlightTabsCode[] | undefined =
     typeof code === 'string' ? [{ code, fileName: '示例.tsx', language: 'tsx' }] : code;
   return _code ? (
@@ -16,9 +24,12 @@ export function DemoCode({ code, maxCollapsedHeight, defaultExpanded = true }: D
       code={_code}
       className={classes.code}
       getFileIcon={getCodeFileIcon}
-      withExpandButton
+      withExpandButton={withExpandButton}
+      withLineNumbers={withLineNumbers}
       maxCollapsedHeight={maxCollapsedHeight}
       defaultExpanded={defaultExpanded}
+      expandCodeLabel="展开代码"
+      collapseCodeLabel="收起代码"
     />
   ) : null;
 }

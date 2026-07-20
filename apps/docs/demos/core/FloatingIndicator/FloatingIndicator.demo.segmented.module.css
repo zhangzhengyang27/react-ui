@@ -1,0 +1,37 @@
+.root {
+  position: relative;
+  background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-8));
+  width: fit-content;
+  border-radius: var(--ui-radius-md);
+  padding: 5px;
+  border: 1px solid light-dark(var(--ui-color-gray-2), var(--ui-color-dark-4));
+}
+
+.control {
+  padding: 7px 12px;
+  line-height: 1;
+  color: light-dark(var(--ui-color-gray-7), var(--ui-color-dark-2));
+  border-radius: var(--ui-radius-md);
+  font-size: var(--ui-font-size-sm);
+  transition: color 100ms ease;
+  font-weight: 600;
+}
+
+.control:hover {
+    color: light-dark(var(--ui-color-black), var(--ui-color-white));
+    background-color: light-dark(var(--ui-color-gray-1), var(--ui-color-dark-7));
+  }
+
+.control[data-active] {
+    color: var(--ui-color-white);
+  }
+
+.controlLabel {
+  position: relative;
+  z-index: 1;
+}
+
+.indicator {
+  background-color: var(--ui-primary-color-filled);
+  border-radius: var(--ui-radius-md);
+}

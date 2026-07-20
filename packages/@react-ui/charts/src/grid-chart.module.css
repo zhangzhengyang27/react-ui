@@ -3,26 +3,26 @@
   width: 100%;
 
   --chart-bar-label-color: var(--ui-color-dimmed);
+}
 
-  svg {
-    overflow: visible;
-    outline: 0;
-  }
+.root svg {
+  overflow: visible;
+  outline: 0;
+}
 
-  [data-ui-color-scheme='light'] & {
-    --chart-grid-color: rgba(173, 181, 189, 0.6);
-    --chart-cursor-fill: rgba(173, 181, 189, 0.15);
-  }
+[data-ui-color-scheme='light'] .root {
+  --chart-grid-color: rgba(173, 181, 189, 0.6);
+  --chart-cursor-fill: rgba(173, 181, 189, 0.15);
+}
 
-  [data-ui-color-scheme='dark'] & {
-    --chart-cursor-fill: rgba(105, 105, 105, 0.15);
-    --chart-grid-color: rgba(105, 105, 105, 0.6);
-  }
+[data-ui-color-scheme='dark'] .root {
+  --chart-cursor-fill: rgba(105, 105, 105, 0.15);
+  --chart-grid-color: rgba(105, 105, 105, 0.6);
+}
 
-  & :where(text) {
-    font-family: var(--ui-font-family);
-    color: var(--chart-text-color, var(--ui-color-dimmed));
-  }
+.root :where(text) {
+  font-family: var(--ui-font-family);
+  color: var(--chart-text-color, var(--ui-color-dimmed));
 }
 
 .container {
@@ -48,12 +48,12 @@
   box-shadow: var(--ui-shadow-md);
   border-radius: var(--ui-radius-default);
   padding: var(--ui-spacing-sm);
+}
 
-  [data-ui-color-scheme='light'] & {
-    border: 1px solid var(--ui-color-gray-3);
-  }
+[data-ui-color-scheme='light'] .tooltip {
+  border: 1px solid var(--ui-color-gray-3);
+}
 
-  [data-ui-color-scheme='dark'] & {
-    border: 1px solid var(--ui-color-dark-4);
-  }
+[data-ui-color-scheme='dark'] .tooltip {
+  border: 1px solid var(--ui-color-dark-4);
 }

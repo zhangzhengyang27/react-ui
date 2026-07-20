@@ -1,5 +1,3 @@
-.root {
-  svg {
-    outline: 0;
-  }
+.root svg {
+  outline: 0;
 }

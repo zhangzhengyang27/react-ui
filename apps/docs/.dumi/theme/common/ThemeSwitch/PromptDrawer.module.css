@@ -1,0 +1,184 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.drawerBody {
+  display: flex;
+  height: 100%;
+  gap: var(--ui-spacing-md);
+  min-height: 0;
+}
+
+.previewPane {
+  flex: 1 1 50%;
+  min-width: 0;
+  padding: var(--ui-spacing-sm) var(--ui-spacing-sm);
+  overflow: auto;
+}
+
+.chatPane {
+  flex: 1 1 50%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--ui-spacing-sm);
+  height: 100%;
+  min-height: 0;
+}
+
+.messagesArea {
+  flex: 1;
+  min-height: 0;
+}
+
+.welcome {
+  padding: 0 0 var(--ui-spacing-md);
+}
+
+.welcomeCard {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-spacing-md);
+  padding: var(--ui-spacing-md) var(--ui-spacing-lg);
+  border-radius: var(--ui-radius-lg, 8px);
+  background: linear-gradient(97deg, #f2f9fe 0%, #f7f3ff 100%);
+}
+
+.root[data-dark="true"] .welcomeCard {
+  background: linear-gradient(97deg, rgba(90, 196, 255, 0.12) 0%, rgba(174, 136, 255, 0.12) 100%);
+}
+
+.welcomeIcon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.welcomeText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-spacing-xs);
+}
+
+.promptsSection {
+  padding: 0 0 var(--ui-spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ui-spacing-sm);
+}
+
+.promptsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ui-spacing-xs);
+  justify-content: center;
+}
+
+.messagesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-spacing-md);
+  padding: var(--ui-spacing-sm) 0;
+}
+
+.msgRow {
+  display: flex;
+  gap: var(--ui-spacing-sm);
+  align-items: flex-start;
+}
+
+.msgRowUser {
+  justify-content: flex-end;
+}
+
+.aiAvatar {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.aiContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-spacing-xs);
+}
+
+.userBubble {
+  max-width: 80%;
+  padding: var(--ui-spacing-xs) var(--ui-spacing-md);
+  background: var(--ui-color-primary, #1677ff);
+  color: #fff;
+  border-radius: var(--ui-radius-lg, 8px);
+  word-break: break-word;
+}
+
+.codeBlock {
+  margin: 0;
+  padding: var(--ui-spacing-md);
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f2f9fe 0%, #f7f3ff 100%);
+  font-size: 13px;
+  line-height: 1.6;
+  border: none;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: rgba(0, 0, 0, 0.85);
+  font-family: inherit;
+}
+
+.root[data-dark="true"] .codeBlock {
+  background: linear-gradient(135deg, rgba(90, 196, 255, 0.08) 0%, rgba(174, 136, 255, 0.08) 100%);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.aiFooter {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.systemBubble {
+  align-self: flex-start;
+  padding: var(--ui-spacing-xs) var(--ui-spacing-md);
+  background: var(--ui-color-dimmed, rgba(0, 0, 0, 0.25));
+  color: #fff;
+  border-radius: 999px;
+  font-size: var(--ui-font-size-sm);
+}
+
+.recommendList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ui-spacing-xs);
+  justify-content: center;
+}
+
+.inputArea {
+  padding: var(--ui-spacing-sm) 0;
+  border-top: 1px solid var(--ui-color-border, rgba(0, 0, 0, 0.08));
+  display: flex;
+  gap: var(--ui-spacing-xs);
+  align-items: flex-end;
+}
+
+.textarea {
+  flex: 1;
+  min-width: 0;
+}
+
+.sendButton {
+  flex-shrink: 0;
+}
+
+.loadingRow {
+  display: flex;
+  gap: var(--ui-spacing-xs);
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: var(--ui-spacing-sm) 0;
+}

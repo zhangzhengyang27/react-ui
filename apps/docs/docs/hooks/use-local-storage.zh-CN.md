@@ -1,0 +1,199 @@
+---
+category: Hooks
+title: UseLocalStorage
+subtitle: 本地存储
+description: react-ui 本地存储 Hook 文档。
+---
+
+
+## 用法
+
+`use-local-storage` Hook 允许你将 `localStorage` 中的值作为 React 状态使用。
+该 Hook 的工作方式与 `useState` 相同，但还会将值写入 `localStorage`：
+
+```tsx
+import { useLocalStorage } from '@react-ui/hooks';
+
+// 该 Hook 会从 localStorage.getItem('color-scheme') 读取值
+// 如果 localStorage 不可用或给定键的值不存在，
+// 'dark' 将被赋给 value 变量
+const [value, setValue] = useLocalStorage({
+  key: 'color-scheme',
+  defaultValue: 'dark',
+});
+
+// 值会同时被设置到 state 和 localStorage 的 'color-scheme' 中
+setValue('light');
+
+// 你也可以像 useState Hook 一样使用回调来设置值
+setValue((current) => (current === 'dark' ? 'light' : 'dark'));
+```
+
+## 示例
+
+一个使用 `use-local-storage` Hook 将当前颜色方案存储在 `localStorage` 中的切换按钮示例：
+
+```tsx
+import { MoonStarsIcon, SunIcon } from '@phosphor-icons/react';
+import { ActionIcon } from '@react-ui/ui';
+import { useLocalStorage } from '@react-ui/hooks';
+
+function ColorSchemeToggle() {
+  const [colorScheme, setColorScheme] = useLocalStorage<
+    'light' | 'dark'
+  >({
+    key: 'color-scheme',
+    defaultValue: 'light',
+  });
+
+  const toggleColorScheme = () =>
+    setColorScheme((current) =>
+      current === 'dark' ? 'light' : 'dark'
+    );
+
+  return (
+    <ActionIcon onClick={toggleColorScheme}>
+      {colorScheme === 'dark' ? <SunIcon /> : <MoonStarsIcon />}
+    </ActionIcon>
+  );
+}
+```
+
+## 移除值
+
+使用 `removeValue` 回调来清理 `localStorage`/`sessionStorage`。
+当值被移除时，它会重置为 `defaultValue`：
+
+```tsx
+import { useLocalStorage } from '@react-ui/hooks';
+
+const [value, setValue, removeValue] = useLocalStorage({
+  key: 'color-scheme',
+  defaultValue: 'light',
+});
+```
+
+## 浏览器标签页同步
+
+`use-local-storage` 订阅 [storage 事件](https://developer.mozilla.org/en-US/docs/Web/API/Window/storage_event)。
+当一个标签页中的状态发生变化时，它会自动更新所有其他打开的浏览器标签页中的值。
+你可以通过并排打开两个 ReactUI 文档标签页并更改颜色方案来测试此功能
+（右上角按钮或 MacOS 上按 `⌘ + J`，Windows 和 Linux 上按 `Ctrl + J`）。
+
+## 序列化/反序列化 JSON
+
+默认情况下，该 Hook 使用 `JSON.stringify`/`JSON.parse` 序列化/反序列化数据。
+如果你需要存储无法通过 `JSON.stringify` 序列化的数据——请提供你自己的序列化处理函数：
+
+```tsx
+import { useLocalStorage } from '@react-ui/hooks';
+
+const [value, setValue] = useLocalStorage({
+  key: 'color-scheme',
+  serialize: (value) => {
+    /* 返回值序列化为字符串 */
+  },
+  deserialize: (localStorageValue) => {
+    /* 解析 localStorage 字符串值并返回值 */
+  },
+});
+```
+
+## 与 superjson 一起使用
+
+[superjson](https://github.com/blitz-js/superjson) 与 `JSON.stringify`/`JSON.parse` 兼容，但支持 `Date`、`Map`、`Set` 和 `BigInt`：
+
+```tsx
+import superjson from 'superjson';
+import { useLocalStorage } from '@react-ui/hooks';
+
+const defaultValue = { name: '张三', age: 25 };
+
+const [value, setValue] = useLocalStorage({
+  key: 'data',
+  defaultValue,
+  serialize: superjson.stringify,
+  deserialize: (str) =>
+    str === undefined ? defaultValue : superjson.parse(str),
+});
+```
+
+## use-session-storage
+
+`use-session-storage` Hook 的工作方式与 `use-local-storage` Hook 相同，但使用 `sessionStorage` 而不是 `window.localStorage`：
+
+```tsx
+import { useSessionStorage } from '@react-ui/hooks';
+
+const [value, setValue] = useSessionStorage({
+  key: 'session-key',
+  defaultValue: 'ui',
+});
+```
+
+## 设置值类型
+
+你可以像 `useState` Hook 一样指定值类型：
+
+```tsx
+import { useLocalStorage } from '@react-ui/hooks';
+
+const [value, setValue] = useLocalStorage<'dark' | 'light'>({
+  key: 'color-scheme',
+  defaultValue: 'light',
+});
+```
+
+## 读取存储值
+
+要在不使用 Hook 的情况下从存储中读取值，请使用 `readLocalStorageValue`/`readSessionStorageValue` 函数。
+这些函数接受与 `use-local-storage`/`use-session-storage` Hook 相同的参数：
+
+```tsx
+import { readLocalStorageValue } from '@react-ui/hooks';
+
+const value = readLocalStorageValue({ key: 'color-scheme' });
+```
+
+## 类型定义
+
+```tsx
+interface UseStorageOptions<T> {
+  /** Local storage key */
+  key: string;
+
+  /** Default value that will be set if value is not found in local storage */
+  defaultValue?: T;
+
+  /** If set to true, value will be updated in useEffect after mount. Default value is true. */
+  getInitialValueInEffect?: boolean;
+
+  /** Determines whether the value must be synced between browser tabs, `true` by default */
+  sync?: boolean;
+
+  /** Function to serialize value into a string to be saved in local storage */
+  serialize?: (value: T) => string;
+
+  /** Function to deserialize string value from local storage to value */
+  deserialize?: (value: string) => T;
+}
+
+type UseStorageReturnValue<T> = [
+  T, // 当前值
+  (val: T | ((prevState: T) => T)) => void, // 在存储中设置值的回调
+  () => void, // 从存储中移除值的回调
+];
+
+function useLocalStorage<T = string>(
+  options: UseStorageOptions<T>,
+): UseStorageReturnValue<T>;
+```
+
+## 导出类型
+
+`UseStorageOptions` 和 `UseStorageReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
+
+```tsx
+import type { UseStorageOptions, UseStorageReturnValue } from '@react-ui/hooks';
+```

@@ -2,7 +2,12 @@ import { CodeDemo, CodeDemoProps } from '../CodeDemo/CodeDemo';
 import { ConfiguratorDemo, ConfiguratorDemoProps } from '../ConfiguratorDemo/ConfiguratorDemo';
 import { StylesApiDemo, StylesApiDemoProps } from '../StylesApiDemo/StylesApiDemo';
 
-interface DemoComponent {
+export interface DemoMetadata {
+  title?: string;
+  description?: string;
+}
+
+interface DemoComponent extends DemoMetadata {
   component: React.FC<any>;
 }
 
@@ -20,22 +25,25 @@ interface DemoProps {
 }
 
 export function Demo({ data, demoProps }: DemoProps) {
+  const { title, description, ...rest } = data;
+  const metadata: DemoMetadata = { title, description };
+
   switch (data.type) {
     case 'code':
       return (
-        <CodeDemo {...data} {...demoProps}>
+        <CodeDemo {...rest} {...demoProps} {...metadata}>
           <data.component />
         </CodeDemo>
       );
     case 'configurator':
       return (
-        <ConfiguratorDemo {...data} {...demoProps}>
+        <ConfiguratorDemo {...rest} {...demoProps} {...metadata}>
           <data.component />
         </ConfiguratorDemo>
       );
     case 'styles-api':
       return (
-        <StylesApiDemo {...data} {...demoProps}>
+        <StylesApiDemo {...rest} {...demoProps} {...metadata}>
           <data.component />
         </StylesApiDemo>
       );

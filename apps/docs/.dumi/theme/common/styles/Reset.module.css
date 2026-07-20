@@ -1,0 +1,18 @@
+:global(html) {
+  direction: initial;
+}
+
+:global(html.rtl) {
+  direction: rtl;
+}
+
+:global(body) {
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  color: var(--ui-color-text);
+  font-size: var(--ui-font-size-sm);
+  font-family: var(--ui-font-family);
+  line-height: var(--ui-line-height);
+  background: var(--ui-color-body);
+  transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}

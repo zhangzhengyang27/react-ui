@@ -1,0 +1,4 @@
+import { handlers } from '../../../demos/core/NumberInput';
+import { renderDemo } from '../../../demos/render-demo';
+
+export default renderDemo(handlers);

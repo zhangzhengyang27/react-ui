@@ -4,23 +4,35 @@ import { createStore, UIStore, useStore } from '@react-ui/store';
 export interface SpotlightState {
   opened: boolean;
   selected: number;
-  listId: string;
   query: string;
   empty: boolean;
   registeredActions: Set<string>;
 }
 
-export type SpotlightStore = UIStore<SpotlightState>;
+export interface SpotlightStore extends UIStore<SpotlightState> {
+  getListId: () => string;
+  setListId: (id: string) => void;
+}
 
-export const createSpotlightStore = () =>
-  createStore<SpotlightState>({
+export const createSpotlightStore = () => {
+  const store = createStore<SpotlightState>({
     opened: false,
     empty: false,
     selected: -1,
-    listId: '',
     query: '',
     registeredActions: new Set(),
   });
+
+  let listId = '';
+
+  return {
+    ...store,
+    getListId: () => listId,
+    setListId: (id: string) => {
+      listId = id;
+    },
+  } as SpotlightStore;
+};
 
 export const useSpotlight = (store: SpotlightStore) => useStore(store);
 
@@ -52,7 +64,7 @@ export function setSelectedAction(index: number, store: SpotlightStore) {
 }
 
 export function setListId(id: string, store: SpotlightStore) {
-  store.updateState((state) => ({ ...state, listId: id }));
+  store.setListId(id);
 }
 
 function findElementByQuerySelector<T extends HTMLElement>(
@@ -91,7 +103,8 @@ function findElementByQuerySelector<T extends HTMLElement>(
 
 export function selectAction(index: number, store: SpotlightStore): number {
   const state = store.getState();
-  const actionsList = state.listId ? findElementByQuerySelector(`#${state.listId}`) : null;
+  const listId = store.getListId();
+  const actionsList = listId ? findElementByQuerySelector(`#${listId}`) : null;
   const selected = actionsList?.querySelector<HTMLButtonElement>('[data-selected]');
   const actions = actionsList?.querySelectorAll<HTMLButtonElement>('[data-action]') ?? [];
   const nextIndex = index === -1 ? actions.length - 1 : index === actions.length ? 0 : index;
@@ -114,9 +127,9 @@ export function selectPreviousAction(store: SpotlightStore) {
 }
 
 export function triggerSelectedAction(store: SpotlightStore) {
-  const state = store.getState();
-  const selected = state.listId
-    ? findElementByQuerySelector<HTMLButtonElement>(`#${state.listId} [data-selected]`)
+  const listId = store.getListId();
+  const selected = listId
+    ? findElementByQuerySelector<HTMLButtonElement>(`#${listId} [data-selected]`)
     : null;
   selected?.click();
 }

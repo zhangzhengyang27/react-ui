@@ -1,0 +1,250 @@
+---
+category: Guides
+title: Next
+subtitle: Next.js
+description: react-ui Next 文档。
+---
+
+
+## 创建新应用
+
+按照 [create-next-app](https://nextjs.org/docs/pages/api-reference/create-next-app) 指南
+创建新的 Next.js 应用：
+
+<NpmScript yarnScript="yarn create next-app --typescript" npmScript="npx create-next-app@latest --typescript"></NpmScript>
+
+## 安装
+
+<PackagesInstallation></PackagesInstallation>
+
+## PostCSS 配置
+
+安装 PostCSS 插件和 [postcss-preset-ui](/docs/styles/postcss-preset)：
+
+<InstallScript packages="postcss postcss-preset-ui postcss-simple-vars" dev></InstallScript>
+
+在应用根目录创建 `postcss.config.cjs` 文件，内容如下：
+
+```js
+module.exports = {
+  plugins: {
+    'postcss-preset-ui': {},
+    'postcss-simple-vars': {
+      variables: {
+        'ui-breakpoint-xs': '36em',
+        'ui-breakpoint-sm': '48em',
+        'ui-breakpoint-md': '62em',
+        'ui-breakpoint-lg': '75em',
+        'ui-breakpoint-xl': '88em',
+      },
+    },
+  },
+};
+```
+
+## 使用 Pages Router 配置
+
+在 `pages/_app.tsx` 文件中添加样式导入和 [UIProvider](/docs/theming/ui-provider)：
+
+
+创建包含 [ColorSchemeScript](/docs/theming/color-schemes) 组件的 `pages/_document.tsx` 文件。
+注意，即使你的应用只使用一种颜色方案，也需要此文件。
+
+
+配置完成！启动开发服务器：
+
+```tsx
+// 导入你已安装包的样式。
+// 除 `@react-ui/hooks` 外，所有包都需要导入样式
+import '@react-ui/ui/styles.css';
+
+import type { AppProps } from 'next/app';
+import { createTheme, UIProvider } from '@react-ui/ui';
+
+const theme = createTheme({
+  /** 在此放置你的 ui 主题覆盖 */
+});
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <UIProvider theme={theme}>
+      <Component {...pageProps} />
+    </UIProvider>
+  );
+}
+```
+
+```tsx
+import { Head, Html, Main, NextScript } from 'next/document';
+import { ColorSchemeScript, uiHtmlProps } from '@react-ui/ui';
+
+export default function Document() {
+  return (
+    <Html lang="en" {...uiHtmlProps}>
+      <Head>
+        <ColorSchemeScript defaultColorScheme="auto" />
+      </Head>
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
+}
+```
+
+```bash
+npm run dev
+```
+
+## 使用 App Router 配置
+
+在 `app/layout.tsx` 文件中添加 [UIProvider](/docs/theming/ui-provider)、[ColorSchemeScript](/docs/theming/color-schemes)
+和样式导入：
+
+
+配置完成！启动开发服务器：
+
+```tsx
+// 导入你已安装包的样式。
+// 除 `@react-ui/hooks` 外，所有包都需要导入样式
+import '@react-ui/ui/styles.css';
+
+import { ColorSchemeScript, UIProvider, uiHtmlProps } from '@react-ui/ui';
+
+export const metadata = {
+  title: 'My ReactUI app',
+  description: 'I have followed setup instructions carefully',
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" {...uiHtmlProps}>
+      <head>
+        <ColorSchemeScript />
+      </head>
+      <body>
+        <UIProvider>{children}</UIProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+```bash
+npm run dev
+```
+
+## 同时使用 app 和 pages router
+
+如果在一个应用中同时使用 app 和 pages router，你需要按照上面的说明同时配置 `pages/_app.tsx`
+和 `app/layout.tsx` 文件。
+
+## 在多态组件中使用 Next.js Link
+
+```tsx
+import Link from 'next/link';
+import { Button } from '@react-ui/ui';
+
+function Demo() {
+  return (
+    <Button component={Link} href="/hello">
+      Next link button
+    </Button>
+  );
+}
+```
+
+## 服务端组件
+
+所有 ReactUI 组件都需要上下文以支持[默认属性](/docs/theming/default-props)
+和 [Styles API](/docs/styles/styles-api)。ReactUI 组件不能用作服务端组件。
+这意味着组件会在服务端和客户端同时渲染。
+
+所有 `@react-ui/*` 包的入口文件（`index.js`）顶部都有 `'use client';` 指令——
+你不需要在页面/布局/组件中额外添加 `'use client';`。
+
+## 在服务端组件中使用复合组件
+
+某些组件（如 [Popover](/components/popover)）有关联的复合组件（`Component.XXX`），
+其中 `XXX` 是复合组件名称。复合组件不能在服务端组件中使用。
+相反，请使用 `ComponentXXX` 语法，或在文件顶部添加 `'use client';` 指令。
+
+在服务端组件中无法工作的示例：
+
+
+使用 `'use client';` 指令的示例：
+
+
+使用 `ComponentXXX` 语法的示例：
+
+```tsx
+import { Popover } from '@react-ui/ui';
+
+// 这会抛出错误
+export default function Page() {
+  return (
+    <Popover>
+      <Popover.Target>目标</Popover.Target>
+      <Popover.Dropdown>下拉</Popover.Dropdown>
+    </Popover>
+  );
+}
+```
+
+```tsx
+'use client';
+
+import { Popover } from '@react-ui/ui';
+
+// 不会报错
+export default function Page() {
+  return (
+    <Popover>
+      <Popover.Target>目标</Popover.Target>
+      <Popover.Dropdown>下拉</Popover.Dropdown>
+    </Popover>
+  );
+}
+```
+
+```tsx
+import {
+  Popover,
+  PopoverDropdown,
+  PopoverTarget,
+} from '@react-ui/ui';
+
+// 不会报错
+export default function Page() {
+  return (
+    <Popover>
+      <PopoverTarget>触发器</PopoverTarget>
+      <PopoverDropdown>下拉</PopoverDropdown>
+    </Popover>
+  );
+}
+```
+
+## App Router 摇树优化
+
+要在 App Router 中启用摇树优化，请在 `next.config.mjs` 中开启实验性的 `optimizePackageImports` 功能：
+
+```tsx
+export default {
+  // ...其他配置
+  experimental: {
+    optimizePackageImports: ['@react-ui/ui', '@react-ui/hooks'],
+  },
+};
+```
+
+## 故障排除
+
+如果你在 Next.js 应用中使用 ReactUI 时遇到任何问题，请查看
+[GitHub Discussions](https://github.com/xiaoye/react-ui/discussions)，其中涵盖了
+与 App Router 和服务端组件相关的最常见问题。

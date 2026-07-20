@@ -1,0 +1,41 @@
+.root {
+  font-size: 13px;
+}
+
+.row {
+  padding-block: 3px;
+  padding-inline-end: 4px;
+}
+
+.row[data-selected] {
+    background-color: var(--ui-color-blue-light) !important;
+    color: var(--ui-color-bright);
+  }
+
+.row:hover {
+    background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-6));
+  }
+
+.row:hover .actions {
+      opacity: 1;
+    }
+
+.row:hover .count {
+      opacity: 0;
+    }
+
+.label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.count {
+  transition: opacity 100ms ease;
+}
+
+.actions {
+  opacity: 0;
+  transition: opacity 100ms ease;
+}

@@ -1,0 +1,42 @@
+---
+title: 支持
+order: 14
+---
+
+# 支持
+
+本指南帮助你了解如何获取帮助、报告问题以及参与社区。
+
+## 获取帮助
+
+如果你在使用 ReactUI 时遇到问题、需要帮助或想请求新功能，可以：
+
+- 在 [GitHub Issues](https://github.com/xiaoye/react-ui/issues) 中搜索是否已有类似问题
+- 在 [GitHub Discussions](https://github.com/xiaoye/react-ui/discussions) 中提问
+- 查阅文档中的 [开始使用](/getting-started) 和组件文档
+
+## 报告问题
+
+我们使用 GitHub Issues 来跟踪 bug。如果你发现了 bug，请按以下步骤操作：
+
+1. 在 [GitHub Issues](https://github.com/xiaoye/react-ui/issues) 中搜索是否已有类似问题。
+2. 确认你使用的是最新版本的 ReactUI，问题可能已被修复。
+3. 如果没有找到类似问题，[创建新 issue](https://github.com/xiaoye/react-ui/issues/new/choose)，请使用提供的模板并尽可能提供详细信息，包括[最小复现示例](https://stackoverflow.com/help/minimal-reproducible-example)。
+4. 等待 issue 被审核和处理。
+
+## 功能请求
+
+如果你希望添加新功能或改进现有功能，请：
+
+1. 在 [GitHub Discussions](https://github.com/xiaoye/react-ui/discussions) 中搜索是否已有类似讨论。
+2. 如果没有，创建新的 Discussion 描述你的需求和使用场景。
+3. 等待社区和维护者的反馈。
+
+## 支持 ReactUI
+
+欢迎以各种方式支持项目：
+
+- 在 [GitHub](https://github.com/xiaoye/react-ui) 上 Star 项目，帮助更多人发现它。
+- 在 [GitHub Discussions](https://github.com/xiaoye/react-ui/discussions) 中分享你的反馈和使用经验。
+- 帮助回答其他用户的问题。
+- [参与贡献](/contribute)代码或改进文档。

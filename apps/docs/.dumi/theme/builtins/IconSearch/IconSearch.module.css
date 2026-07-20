@@ -1,0 +1,22 @@
+.searchBar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  gap: var(--ui-spacing-sm);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ui-spacing-xs);
+  background-color: var(--ui-color-body);
+  border-radius: var(--ui-radius-default);
+  transition: box-shadow 200ms ease-in-out;
+}
+
+.searchBar > :first-child {
+  flex: 0 0 auto;
+}
+
+.searchBar > :last-child {
+  flex: 1;
+  min-width: 0;
+}

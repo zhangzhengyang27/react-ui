@@ -1,0 +1,14 @@
+:global(#nprogress .bar) {
+  background: var(--ui-primary-color-filled);
+}
+
+:global(#nprogress .peg) {
+  box-shadow:
+    0 0 10px var(--ui-primary-color-filled),
+    0 0 5px var(--ui-primary-color-filled);
+}
+
+:global(#nprogress .spinner-icon) {
+  border-top-color: var(--ui-primary-color-filled);
+  border-inline-start-color: var(--ui-primary-color-filled);
+}

@@ -1,0 +1,53 @@
+---
+category: Hooks
+title: UseMouse
+subtitle: 鼠标位置
+description: react-ui 鼠标位置 Hook 文档。
+---
+
+
+## 用法
+
+如果你不提供 `ref`，鼠标位置将相对于文档元素进行跟踪：
+
+<code src="./use-mouse/demo/ref.tsx"></code>
+
+<code src="./use-mouse/demo/usage.tsx"></code>
+
+## API 参考
+
+设置 `resetOnExit` 选项，以在鼠标离开元素时将鼠标位置重置为 `0, 0`：
+
+
+该 Hook 返回一个包含 `ref` 和 `x`、`y` 鼠标坐标的对象：
+
+
+在第一次渲染（以及 SSR 期间），`x` 和 `y` 值都等于 `0`。
+
+```tsx
+import { useMouse } from '@react-ui/hooks';
+
+const { ref, x, y } = useMouse({ resetOnExit: true });
+```
+
+```tsx
+import { useMouse } from '@react-ui/hooks';
+
+const {
+  ref, // -> 传递给目标元素；如果未使用，则文档元素将作为目标元素
+  x, // -> 鼠标 x 坐标
+  y, // -> 鼠标 y 坐标
+} = useMouse();
+```
+
+## 类型定义
+
+```tsx
+function useMouse<T extends HTMLElement = any>(options?: {
+  resetOnExit?: boolean;
+}): {
+  x: number;
+  y: number;
+  ref: React.RefObject<T>;
+};
+```

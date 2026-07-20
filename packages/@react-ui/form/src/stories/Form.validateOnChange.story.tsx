@@ -64,8 +64,6 @@ export function ValidateOnChangeUncontrolled() {
     },
   });
 
-  console.log('render');
-
   return (
     <FormBase form={form}>
       <TextInput label="Name" {...form.getInputProps('name')} />

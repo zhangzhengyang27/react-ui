@@ -1,0 +1,124 @@
+---
+category: Form
+title: Actions
+subtitle: 表单动作
+description: react-ui Actions 文档。
+---
+
+
+## 用法
+
+表单操作允许你从应用中的任何位置更改表单状态。
+表单操作机制类似于 [通知系统](/docs/x/notifications/)、
+[模态框管理器](/docs/x/modals/) 和其他类似的包。
+
+要使用表单操作，请在 [use-form](/docs/form/use-form/) 设置中设置 `name` 属性：
+
+
+然后调用 `createFormActions` 函数，传入与 `useForm` 设置中相同的表单名称：
+
+
+之后，你就可以使用 `demoFormActions` 从应用中的任何位置更改表单状态。
+例如，在发起请求后，或在与表单状态没有访问权限的组件发生用户交互后：
+
+```tsx
+import { useForm } from '@react-ui/ui';
+
+export interface DemoFormValues {
+  name: string;
+  age: number;
+}
+
+function Demo() {
+  const form = useForm<DemoFormValues>({
+    mode: 'uncontrolled',
+    name: 'demo-form',
+    initialValues: {
+      name: '',
+      age: 0,
+    },
+  });
+}
+```
+
+```tsx
+// 从定义 useForm 的文件中导入表单值类型
+import { createFormActions } from '@react-ui/ui';
+import type { DemoFormValues } from './DemoForm';
+
+export const demoFormActions =
+  createFormActions<DemoFormValues>('demo-form');
+```
+
+```tsx
+import { useEffect } from 'react';
+import { Button } from '@react-ui/ui';
+import { demoFormActions } from './demoFormActions';
+
+function ExternalComponent() {
+  useEffect(() => {
+    fetch('/api/user')
+      .then((res) => res.json())
+      .then((res) =>
+        demoFormActions.setValues({
+          name: res.name,
+          age: res.age,
+        })
+      );
+  }, []);
+
+  return (
+    <Button onClick={() => demoFormActions.reset()}>
+      重置演示表单
+    </Button>
+  );
+}
+```
+
+## 表单名称
+
+表单名称必须是仅包含字母、数字和短横线的字符串：
+
+
+注意，表单名称必须是唯一的。如果你有多个相同名称的表单，表单操作将更新所有该名称的表单状态。
+
+```tsx
+import { useForm } from '@react-ui/ui';
+
+// ✅ 有效的表单名称
+const valid = useForm({
+  name: 'valid-FORM-name-10',
+  mode: 'uncontrolled',
+});
+
+// ❌ 无效的表单名称：不能包含空格和特殊字符
+const invalid = useForm({
+  name: 'invalid_form name',
+  mode: 'uncontrolled',
+});
+```
+
+## 表单操作
+
+`createFormActions` 函数返回一个具有以下方法的对象：
+
+- `setFieldValue`
+- `setValues`
+- `setInitialValues`
+- `setErrors`
+- `setFieldError`
+- `clearFieldError`
+- `clearErrors`
+- `reset`
+- `validate`
+- `validateField`
+- `reorderListItem`
+- `removeListItem`
+- `insertListItem`
+- `setDirty`
+- `setTouched`
+- `resetDirty`
+- `resetTouched`
+
+所有方法的工作方式都与 [use-form](/docs/form/use-form/) Hook 方法类似——
+它们接受相同的参数，但不返回任何内容。

@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "jsx": "react-jsx",
+        "strict": false,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "baseUrl": ".",
+        "paths": {
+            "@react-ui/ui": ["../../packages/ui/src/index.ts"],
+            "@react-ui/ui/*": ["../../packages/ui/src/*"],
+            "@react-ui/hooks": ["../../packages/hooks/src/index.ts"],
+            "@react-ui/hooks/*": ["../../packages/hooks/src/*"],
+            "@docs/docgen": [".docgen/docgen.json"],
+            "@docs/hooks": [".docgen/hooks.json"],
+            "@docs/css-exports": [".docgen/css-exports.json"],
+            "@docs/theme-tokens": [".docgen/theme-tokens.json"],
+            "@docs/count": [".docgen/count.json"]
+        }
+    },
+    "include": ["src", "docs", "components", ".dumi", ".dumirc.ts", "scripts"]
+}

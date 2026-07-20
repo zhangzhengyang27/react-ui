@@ -1,0 +1,54 @@
+.wrapper {
+  margin: var(--ui-spacing-md) 0;
+}
+
+.communityBanner {
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  border-radius: var(--ui-radius-default);
+  background-color: var(--ui-color-gray-0);
+  border: 1px dashed var(--ui-color-gray-4);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bannerIcon {
+  font-size: 24px;
+  color: var(--ui-color-gray-6);
+}
+
+.bannerContent {
+  flex: 1;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.row {
+  border-bottom: 1px solid var(--ui-color-gray-2);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.cellType {
+  width: 90px;
+  padding: 12px 8px;
+  vertical-align: middle;
+}
+
+.cellName {
+  padding: 12px 8px;
+  vertical-align: middle;
+}
+
+.cellAction {
+  width: 120px;
+  padding: 12px 8px;
+  vertical-align: middle;
+  text-align: end;
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "react-ui-component-lookup",
+      "type": "skill-md",
+      "description": "Look up react-ui React component documentation, props, and usage examples. Use when working with react-ui components and needing API details, default values, or usage patterns.",
+      "url": "/.well-known/agent-skills/react-ui-component-lookup/SKILL.md"
+    },
+    {
+      "name": "react-ui-theme-customization",
+      "type": "skill-md",
+      "description": "Customize react-ui theme using UIProvider and theme tokens. Use when adjusting visual styles, colors, spacing, or other theme properties in a react-ui project.",
+      "url": "/.well-known/agent-skills/react-ui-theme-customization/SKILL.md"
+    },
+    {
+      "name": "react-ui-migration",
+      "type": "skill-md",
+      "description": "Migrate between react-ui major versions or address breaking changes in component APIs.",
+      "url": "/.well-known/agent-skills/react-ui-migration/SKILL.md"
+    }
+  ]
+}

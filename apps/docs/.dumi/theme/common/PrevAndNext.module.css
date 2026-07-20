@@ -1,0 +1,76 @@
+.prevNextNav {
+  width: calc(100% - 234px);
+  margin-inline-end: 170px;
+  margin-inline-start: 64px;
+  overflow: hidden;
+  font-size: var(--ui-font-size-md);
+  border-top: 1px solid var(--ui-color-default-border);
+  display: flex;
+}
+
+.pageNav {
+  flex: 1;
+  height: 72px;
+  line-height: 72px;
+  text-decoration: none;
+}
+
+.pageNav :global(.footer-nav-icon-before),
+.pageNav :global(.footer-nav-icon-after) {
+  color: #999;
+  font-size: 20px;
+  transition: all 200ms ease;
+}
+
+.pageNav :global(.chinese) {
+  margin-inline-start: var(--ui-spacing-xs);
+}
+
+.prevNav {
+  text-align: start;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.prevNav :global(.footer-nav-icon-after) {
+  display: none;
+}
+
+.prevNav :global(.footer-nav-icon-before) {
+  position: relative;
+  line-height: 0;
+  vertical-align: middle;
+  transition: inset-inline-end 200ms;
+  margin-inline-end: 1em;
+  inset-inline-end: 0;
+}
+
+.prevNav:hover :global(.footer-nav-icon-before) {
+  inset-inline-end: 0.2em;
+}
+
+.nextNav {
+  text-align: end;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nextNav :global(.footer-nav-icon-before) {
+  display: none;
+}
+
+.nextNav :global(.footer-nav-icon-after) {
+  position: relative;
+  margin-bottom: 1px;
+  line-height: 0;
+  vertical-align: middle;
+  transition: inset-inline-start 200ms;
+  margin-inline-start: 1em;
+  inset-inline-start: 0;
+}
+
+.nextNav:hover :global(.footer-nav-icon-after) {
+  inset-inline-start: 0.2em;
+}

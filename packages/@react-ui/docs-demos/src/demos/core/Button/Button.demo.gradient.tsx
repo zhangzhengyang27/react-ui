@@ -32,6 +32,8 @@ export const gradient: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
+  title: '渐变背景',
+  description: '使用 gradient 属性为按钮设置线性渐变背景。',
   centered: true,
   controls: gradientControls,
 };

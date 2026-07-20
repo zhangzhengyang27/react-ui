@@ -1,0 +1,25 @@
+.toggleBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ui-spacing-xs) var(--ui-spacing-md);
+  border-top: 1px solid var(--demo-border);
+  background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-8));
+}
+
+.toggleButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ui-spacing-xs);
+  padding: 6px 12px;
+  border-radius: var(--ui-radius-md);
+  font-size: var(--ui-font-size-sm);
+  font-weight: 600;
+  color: light-dark(var(--ui-color-gray-6), var(--ui-color-dark-1));
+  transition: color 120ms ease, background-color 120ms ease;
+
+  &:hover {
+    color: var(--ui-color-bright);
+    background-color: light-dark(var(--ui-color-gray-1), var(--ui-color-dark-6));
+  }
+}

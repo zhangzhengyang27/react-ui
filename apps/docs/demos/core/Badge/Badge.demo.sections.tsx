@@ -1,0 +1,35 @@
+import { AtIcon } from '@phosphor-icons/react';
+import { Badge, Group } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
+
+const code = `
+import { Badge, Group } from '@react-ui/ui';
+import { AtIcon } from '@phosphor-icons/react';
+
+function Demo() {
+  const icon = <AtIcon size={12} />;
+  return (
+    <Group>
+      <Badge leftSection={icon}>带左侧区域</Badge>
+      <Badge rightSection={icon}>带右侧区域</Badge>
+    </Group>
+  );
+}
+`;
+
+function Demo() {
+  const icon = <AtIcon size={12} />;
+  return (
+    <Group>
+      <Badge leftSection={icon}>带左侧区域</Badge>
+      <Badge rightSection={icon}>带右侧区域</Badge>
+    </Group>
+  );
+}
+
+export const sections: UIDemo = {
+  type: 'code',
+  component: Demo,
+  centered: true,
+  code,
+};

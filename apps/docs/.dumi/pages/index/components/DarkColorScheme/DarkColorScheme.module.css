@@ -1,0 +1,39 @@
+.root {
+  padding-block: var(--hp-block-spacing, 80px);
+}
+
+.image {
+  box-shadow: var(--ui-shadow-md);
+  border-radius: var(--ui-radius-md);
+  border: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-5));
+}
+
+.darkIcon,
+.lightIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.darkIcon {
+  color: var(--ui-color-yellow-4);
+
+  [data-ui-color-scheme='light'] & {
+    display: none;
+  }
+}
+
+.lightIcon {
+  color: var(--ui-color-blue-7);
+
+  [data-ui-color-scheme='dark'] & {
+    display: none;
+  }
+}
+
+.description {
+  margin-top: 0;
+}
+
+.demo {
+  margin-top: var(--ui-spacing-xl);
+}

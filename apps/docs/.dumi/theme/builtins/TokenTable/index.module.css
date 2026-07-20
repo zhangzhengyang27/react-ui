@@ -1,0 +1,9 @@
+.codeSpan {
+  margin: 0 1px;
+  padding: 0.2em 0.4em;
+  font-size: 0.9em;
+  background: var(--ui-color-gray-1);
+  border: 1px solid var(--ui-color-gray-3);
+  border-radius: var(--ui-radius-sm);
+  font-family: monospace;
+}

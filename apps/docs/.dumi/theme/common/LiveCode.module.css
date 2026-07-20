@@ -1,0 +1,34 @@
+.editor :global(.dumi-default-source-code) {
+  background: var(--ui-color-body);
+}
+
+.editor :global(.dumi-default-source-code-scroll-container) {
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+
+.editor :global(.dumi-default-source-code > pre),
+.editor :global(.dumi-default-source-code-scroll-content > pre),
+.editor :global(.dumi-default-source-code-editor-textarea) {
+  padding: var(--ui-spacing-sm) var(--ui-spacing-md);
+}
+
+.editor :global(.dumi-default-source-code > pre),
+.editor :global(.dumi-default-source-code-scroll-content > pre) {
+  font-size: var(--ui-font-size-md);
+  line-height: 2;
+  font-family: 'Lucida Console', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+/* disable dumi default copy button */
+.editor :global(.dumi-default-source-code-copy) {
+  display: none;
+}
+
+.editor :global(.dumi-default-source-code-editor)::after {
+  border-radius: 0 !important;
+}
+
+.editor :global(.dumi-default-source-code-editor):hover:not(:focus-within)::after {
+  box-shadow: 0 0 0 1px var(--ui-color-blue-5) inset;
+}

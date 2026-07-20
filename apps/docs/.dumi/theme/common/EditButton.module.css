@@ -1,0 +1,19 @@
+.editButton {
+  position: relative;
+  top: -2px;
+  display: inline-block;
+  text-decoration: none;
+  vertical-align: middle;
+  margin-inline-start: var(--ui-spacing-xs);
+  color: var(--ui-color-dimmed);
+  font-size: var(--ui-font-size-lg);
+  transition: color 200ms ease;
+}
+
+.editButton:hover {
+  color: var(--ui-color-text);
+}
+
+.editButton svg {
+  display: block;
+}

@@ -1,0 +1,28 @@
+---
+category: Hooks
+title: UseReducedMotion
+subtitle: 减少动画
+description: react-ui 减少动画 Hook 文档。
+---
+
+
+## 用法
+
+`use-reduced-motion` Hook 检测用户是否[偏好减少动画](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)。
+它在内部使用 [use-media-query](/docs/hooks/use-media-query/) Hook。
+该 Hook 依赖 `window.matchMedia()` [API](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)，
+如果 API 不可用（例如在服务端渲染期间），除非在第一个参数中提供了初始值，否则始终返回 `false`。
+
+使用此 Hook 检测用户是否偏好减少动画（`(prefers-reduced-motion: reduce)` 媒体查询），并基于此值设置动画时长。
+
+<code src="./use-reduced-motion/demo/usage.tsx"></code>
+
+## 类型定义
+
+```tsx
+interface UseMediaQueryOptions {
+  getInitialValueInEffect: boolean;
+}
+
+function useReducedMotion(initialValue?: boolean, options?: UseMediaQueryOptions): boolean;
+```

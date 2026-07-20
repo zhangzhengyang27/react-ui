@@ -1,0 +1,67 @@
+@layer theme, base, global, antd, components, utilities;
+
+@layer global {
+  :global(body),
+  :global(div),
+  :global(dl),
+  :global(dt),
+  :global(dd),
+  :global(ul),
+  :global(ol),
+  :global(li),
+  :global(h1),
+  :global(h2),
+  :global(h3),
+  :global(h4),
+  :global(h5),
+  :global(h6),
+  :global(pre),
+  :global(code),
+  :global(form),
+  :global(fieldset),
+  :global(legend),
+  :global(input),
+  :global(textarea),
+  :global(p),
+  :global(blockquote),
+  :global(th),
+  :global(td),
+  :global(hr),
+  :global(button),
+  :global(article),
+  :global(aside),
+  :global(details),
+  :global(figcaption),
+  :global(figure),
+  :global(footer),
+  :global(header),
+  :global(hgroup),
+  :global(menu),
+  :global(nav),
+  :global(section) {
+    margin: 0;
+    padding: 0;
+  }
+
+  :global(ul),
+  :global(ol) {
+    list-style: none;
+  }
+
+  :global(img) {
+    vertical-align: middle;
+    border-style: none;
+  }
+
+  :global([id]) {
+    scroll-margin-top: 80px;
+  }
+
+  :global([data-prefers-color='dark']) {
+    color-scheme: dark;
+  }
+
+  :global([data-prefers-color='light']) {
+    color-scheme: light;
+  }
+}

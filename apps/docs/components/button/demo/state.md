@@ -1,0 +1,3 @@
+- `loading` 接收 boolean，加载状态会自动渲染内置 Loader 并禁用点击。
+- `disabled` 接收 boolean，禁用状态显示灰色样式。
+- `color="red"` 配合 `variant="filled"` 可作为危险按钮使用。

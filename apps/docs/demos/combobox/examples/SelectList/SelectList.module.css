@@ -1,0 +1,14 @@
+.list {
+  background-color: var(--ui-color-body);
+  padding: var(--ui-spacing-xs) 6px;
+  border: 1px solid light-dark(var(--ui-color-gray-4), var(--ui-color-dark-4));
+  border-top: 0;
+  border-bottom-left-radius: var(--ui-radius-md);
+  border-bottom-right-radius: var(--ui-radius-md);
+  min-height: 190px;
+}
+
+.input {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}

@@ -1,0 +1,59 @@
+/* ResourceLayout styles - migrated from antd-style createStyles.
+   Hardcoded numeric values (40/24/1208/176/56/16) preserved from original. */
+
+.resourcePage footer {
+  margin-top: 176px;
+}
+
+.resourcePage footer :global(.rc-footer-container) {
+  max-width: 1208px;
+  margin: 0 auto;
+  padding-inline-end: 0;
+  padding-inline-start: 0;
+}
+
+.resourceContent {
+  padding: 0 40px;
+  max-width: 1208px;
+  margin: 0 auto;
+  box-sizing: content-box;
+  min-height: 100vh;
+}
+
+@media only screen and (max-width: 767.99px) {
+  .resourceContent article {
+    padding: 0 24px;
+  }
+
+  /* Preserve spacing for any legacy antd Col children rendered by markdown. */
+  .resourceContent :global(.ant-col) {
+    padding-top: var(--ui-spacing-md) !important;
+    padding-bottom: var(--ui-spacing-md) !important;
+  }
+}
+
+.banner {
+  padding: 0 40px;
+  overflow: hidden;
+}
+
+.banner h1 {
+  box-sizing: content-box;
+  max-width: 1208px;
+  margin: 56px auto 16px;
+}
+
+.banner section {
+  max-width: 1208px;
+  margin: 0 auto 56px;
+  font-weight: 200;
+  font-size: var(--ui-font-size-lg);
+  line-height: 24px;
+}
+
+@media only screen and (max-width: 767.99px) {
+  .banner {
+    margin: 0 -24px;
+    padding: 0 24px;
+  }
+}

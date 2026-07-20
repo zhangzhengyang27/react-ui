@@ -1,0 +1,36 @@
+.root {
+  padding-block: 120px;
+
+  @media (max-width: 62em) {
+    padding-block: 40px;
+  }
+}
+
+.column {
+  max-width: var(--hp-column-max-width, 100%);
+}
+
+.main {
+  position: sticky;
+  top: 120px;
+}
+
+.codePreview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 300px;
+}
+
+.codeBlock {
+  padding: 24px;
+  border-radius: var(--ui-radius-lg);
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-x: auto;
+  background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-8));
+  border: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-5));
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace;
+  width: 100%;
+}

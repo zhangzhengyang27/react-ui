@@ -1,0 +1,71 @@
+.container {
+  width: 100%;
+}
+
+.tabs {
+  margin-bottom: var(--ui-spacing-lg);
+  display: flex;
+  justify-content: center;
+}
+
+.tabLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tabLabel svg {
+  width: 14px;
+  height: 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 62em) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.codePanel {
+  background: var(--ui-color-body);
+  border: 1px solid var(--ui-color-gray-3);
+  border-radius: var(--ui-radius-lg);
+  padding: var(--ui-spacing-lg);
+  height: 100%;
+  min-height: 320px;
+}
+
+.previewPanel {
+  background: var(--ui-color-body);
+  border: 1px solid var(--ui-color-gray-3);
+  border-radius: var(--ui-radius-lg);
+  padding: var(--ui-spacing-lg);
+  height: 100%;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.code {
+  margin: 0;
+  font-family: var(--ui-font-family-monospace);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ui-color-dimmed);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.panelLabel {
+  margin-bottom: var(--ui-spacing-sm) !important;
+  color: var(--ui-color-dimmed) !important;
+  font-size: 12px !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

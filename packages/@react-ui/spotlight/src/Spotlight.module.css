@@ -115,7 +115,7 @@
 }
 
 .footer {
-  padding: var(--ui-spacing-xs) calc(var(--ui-spacing-md) + rem(4px));
+  padding: var(--ui-spacing-xs) calc(var(--ui-spacing-md) + 4px);
   border-top: 1px solid;
 
   [data-ui-color-scheme='light'] & {

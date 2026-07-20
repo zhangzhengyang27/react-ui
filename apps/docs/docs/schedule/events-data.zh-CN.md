@@ -1,0 +1,356 @@
+---
+category: Schedule
+title: EventsData
+subtitle: 事件数据
+description: react-ui EventsData 文档。
+---
+
+
+## 概述
+
+所有 `@react-ui/schedule` 组件都通过 `events` prop 接收事件。每个事件的类型为 `ScheduleEventData`，可以是以下三种形态之一：
+
+- **One-off event** – 没有重复的常规事件
+- **Recurring series event** – 一个源事件，会展开为多次出现
+- **Recurring override event** – 替换系列中某次生成出现的事件
+
+所有三种变体共享 `ScheduleEventBase` 中描述的一组基础字段。
+
+## ScheduleEventBase
+
+`ScheduleEventBase` 定义了每个事件都拥有的字段，无论其形态如何。
+
+
+`start` 和 `end` 接受 `Date` 实例或 `YYYY-MM-DD HH:mm:ss` 格式的字符串（即所有 ReactUI 日期组件使用的 `DateTimeStringValue` 类型）。
+
+```tsx
+import type { DateTimeStringValue, EventPayload } from '@react-ui/schedule';
+import type { UIColor } from '@react-ui/ui';
+
+interface ScheduleEventBase<Payload extends EventPayload = EventPayload> {
+  /** Unique event id, used for key and identification */
+  id: string | number;
+
+  /** Event title, displayed in month, week and day views */
+  title: string;
+
+  /** Event start date/time */
+  start: Date | DateTimeStringValue;
+
+  /** Event end date/time */
+  end: Date | DateTimeStringValue;
+
+  /** Event background color. Key of `theme.colors` or any valid CSS color. */
+  color: UIColor;
+
+  /** Event variant, default is `'light'` */
+  variant?: 'filled' | 'light';
+
+  /** Event display mode. Background events render as full-width,
+   *  non-interactive blocks behind regular events. @default 'default' */
+  display?: 'default' | 'background';
+
+  /** Additional event data, defined by the user, not used internally by the library */
+  payload?: Payload;
+}
+```
+
+## ScheduleSingleEventData
+
+没有重复规则的一次性事件。这是最常见的形态：
+
+```tsx
+import type { ScheduleSingleEventData } from '@react-ui/schedule';
+
+const event: ScheduleSingleEventData = {
+  id: 'meeting-1',
+  title: 'Team sync',
+  start: '2024-01-15 10:00:00',
+  end: '2024-01-15 11:00:00',
+  color: 'blue',
+};
+```
+
+## ScheduleRecurringSeriesEventData
+
+重复系列的源事件。添加了一个包含 [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545) 重复规则的 `recurrence` 字段：
+
+
+`recurrence` 对象具有以下形态：
+
+
+有关重复规则和系列展开的更多详情，请参阅 [重复事件指南](/docs/schedule/recurring-events)。
+
+```tsx
+import type { ScheduleRecurringSeriesEventData } from '@react-ui/schedule';
+
+const series: ScheduleRecurringSeriesEventData = {
+  id: 'weekly-planning',
+  title: 'Weekly planning',
+  start: '2024-01-15 10:00:00',
+  end: '2024-01-15 11:00:00',
+  color: 'blue',
+  recurrence: {
+    rrule: 'FREQ=WEEKLY;BYDAY=MO;COUNT=12',
+    exdate: ['2024-02-12 10:00:00'],
+    dtstart: '2024-01-15 10:00:00',
+  },
+};
+```
+
+```tsx
+interface ScheduleRecurrenceData {
+  /** Recurrence rule string, for example: `FREQ=WEEKLY;BYDAY=MO,WE` */
+  rrule: string;
+
+  /** Exception datetimes in `YYYY-MM-DD HH:mm:ss` or valid date string format */
+  exdate?: DateTimeStringValue[];
+
+  /** Optional explicit series start datetime */
+  dtstart?: DateTimeStringValue;
+}
+```
+
+## ScheduleRecurringOverrideEventData
+
+Override event 替换系列中的某个生成出现：
+
+
+- `recurringEventId` – 父系列事件的 id
+- `recurrenceId` – 原始出现日期时间，格式为 `YYYY-MM-DD HH:mm:ss`
+
+```tsx
+import type { ScheduleRecurringOverrideEventData } from '@react-ui/schedule';
+
+const override: ScheduleRecurringOverrideEventData = {
+  id: 'weekly-planning-override',
+  title: 'Weekly planning (moved)',
+  start: '2024-01-17 16:00:00',
+  end: '2024-01-17 17:00:00',
+  color: 'grape',
+  recurringEventId: 'weekly-planning',
+  recurrenceId: '2024-01-15 10:00:00',
+};
+```
+
+## EventPayload
+
+使用 `payload` 字段为事件附加任意数据。payload 不被库内部使用——它用于你可以在回调（`onEventClick`、`onEventDrop` 等）和自定义事件渲染器（`renderEventBody`）中访问的应用特定数据：
+
+
+`EventPayload` 本身只是 `Record<PropertyKey, any>`——通常你会将自己的 payload 类型作为泛型参数传递给 `ScheduleEventData<MyPayload>`。
+
+```tsx
+import type { ScheduleEventData } from '@react-ui/schedule';
+
+interface MyEventPayload {
+  description: string;
+  attendees: string[];
+  location?: string;
+}
+
+const event: ScheduleEventData<MyEventPayload> = {
+  id: 'meeting-1',
+  title: 'Team sync',
+  start: '2024-01-15 10:00:00',
+  end: '2024-01-15 11:00:00',
+  color: 'blue',
+  payload: {
+    description: 'Weekly planning meeting',
+    attendees: ['Alice', 'Bob'],
+    location: 'Conference room A',
+  },
+};
+```
+
+## 重复实例元数据
+
+当重复系列为可见日期范围展开时，每个生成的事件都包含一个 `recurringInstance` 元数据对象。该对象由库添加——你自己不需要设置它，但可以在回调和自定义渲染器中读取它，以区分生成出现与常规事件：
+
+
+在 `onEventClick` 中读取元数据的示例：
+
+```tsx
+interface RecurringInstanceMeta {
+  /** If true, event is generated from recurrence rule */
+  isRecurringInstance: boolean;
+
+  /** Parent series event id */
+  recurringEventId: string | number;
+
+  /** Original occurrence datetime key */
+  recurrenceId: DateTimeStringValue;
+
+  /** Original occurrence dates before any drag/drop updates */
+  originalStart: DateTimeStringValue;
+  originalEnd: DateTimeStringValue;
+}
+```
+
+```tsx
+<Schedule
+  events={events}
+  onEventClick={(event) => {
+    if (event.recurringInstance?.isRecurringInstance) {
+      console.log('Clicked generated occurrence of', event.recurringInstance.recurringEventId);
+    } else {
+      console.log('Clicked regular event', event.id);
+    }
+  }}
+/>
+```
+
+## 回调 payload
+
+所有事件回调都接受描述用户与之交互内容的结构化数据。以下部分记录每个回调接收的确切 payload。
+
+### onEventClick
+
+在任何视图中点击事件时调用：
+
+
+- `event` – 被点击的事件，如果是生成出现，则包含 `recurringInstance` 元数据。
+- `e` – 原生 React 鼠标事件。
+
+### onEventDrop
+
+在拖拽后放下事件时调用（需要 `withEventsDragAndDrop`）：
+
+
+- `eventId` – 被放下事件的 id（与 `event.id` 相同）。对于生成的重复实例，这是合成的出现 id（`"<seriesId>::<recurrenceId>"`），而不是系列 id。处理出现时请使用 `event.recurringInstance?.recurringEventId` 获取父系列 id。
+- `newStart` / `newEnd` – `YYYY-MM-DD HH:mm:ss` 格式的新日期时间值。
+- `event` – 完整事件数据，如果适用则包含 `recurringInstance` 元数据。
+
+### onEventResize
+
+通过拖动事件顶部或底部边缘调整事件大小时调用（需要 `withEventResize`）：
+
+
+payload 与 `onEventDrop` 具有相同的形态，包括关于生成重复实例的 `eventId` 注意事项。
+
+### onEventDragStart / onEventDragEnd
+
+事件拖拽开始或结束时调用：
+
+
+`onEventDragEnd` 在成功放下和取消的拖拽时都会被调用——如果你需要新位置，请使用 `onEventDrop`。
+
+### onTimeSlotClick
+
+在 `DayView` 或 `WeekView` 中点击时间槽时调用：
+
+
+- `slotStart` / `slotEnd` – `YYYY-MM-DD HH:mm:ss` 格式的槽范围。槽长度由视图的 `intervalMinutes` prop 控制。
+
+### onAllDaySlotClick
+
+在 `DayView` 或 `WeekView` 中点击全天槽时调用：
+
+
+- `date` – `YYYY-MM-DD` 格式的点击日期。
+
+### onDayClick
+
+在 `MonthView` 或 `YearView` 中点击日期时调用：
+
+
+- `date` – `YYYY-MM-DD` 格式的点击日期。
+
+### onSlotDragEnd
+
+通过跨时间槽或日期单元格拖动选择槽范围时调用（需要 `withDragSlotSelect`）：
+
+
+- `rangeStart` / `rangeEnd` – `YYYY-MM-DD HH:mm:ss` 格式的选择范围。
+
+### onExternalEventDrop
+
+当从调度组件外部拖动的项目被放到槽上时调用：
+
+
+- `dataTransfer` – 外部项目在其 `onDragStart` 处理程序中设置的原生 `DataTransfer` 对象。使用 `dataTransfer.getData(type)` 读取你的自定义数据。
+- `dropDateTime` – `YYYY-MM-DD HH:mm:ss` 格式的放下目标日期时间。
+
+### canDragEvent / canResizeEvent
+
+权限回调——返回 `false` 以阻止特定事件的拖拽或调整大小：
+
+```tsx
+onEventClick?: (
+  event: ScheduleEventData,
+  e: React.MouseEvent<HTMLButtonElement>
+) => void;
+```
+
+```tsx
+onEventDrop?: (data: {
+  eventId: string | number;
+  newStart: DateTimeStringValue;
+  newEnd: DateTimeStringValue;
+  event: ScheduleEventData;
+}) => void;
+```
+
+```tsx
+onEventResize?: (data: {
+  eventId: string | number;
+  newStart: DateTimeStringValue;
+  newEnd: DateTimeStringValue;
+  event: ScheduleEventData;
+}) => void;
+```
+
+```tsx
+onEventDragStart?: (event: ScheduleEventData) => void;
+onEventDragEnd?: () => void;
+```
+
+```tsx
+onTimeSlotClick?: (data: {
+  slotStart: DateTimeStringValue;
+  slotEnd: DateTimeStringValue;
+  nativeEvent: React.MouseEvent<HTMLButtonElement>;
+}) => void;
+```
+
+```tsx
+onAllDaySlotClick?: (
+  date: DateStringValue,
+  event: React.MouseEvent<HTMLButtonElement>
+) => void;
+```
+
+```tsx
+onDayClick?: (
+  date: DateStringValue,
+  event: React.MouseEvent<HTMLButtonElement>
+) => void;
+```
+
+```tsx
+onSlotDragEnd?: (
+  rangeStart: DateTimeStringValue,
+  rangeEnd: DateTimeStringValue
+) => void;
+```
+
+```tsx
+onExternalEventDrop?: (
+  dataTransfer: DataTransfer,
+  dropDateTime: DateTimeStringValue
+) => void;
+```
+
+```tsx
+canDragEvent?: (event: ScheduleEventData) => boolean;
+canResizeEvent?: (event: ScheduleEventData) => boolean;
+```
+
+## 日期和时间值格式
+
+事件数据和回调 payload 一致使用以下字符串格式：
+
+- `DateStringValue` – `YYYY-MM-DD`（例如 `2024-01-15`）
+- `DateTimeStringValue` – `YYYY-MM-DD HH:mm:ss`（例如 `2024-01-15 10:00:00`）
+
+这些类型在 `@react-ui/ui` 和 `@react-ui/schedule` 之间共享，并从两个包中导出。

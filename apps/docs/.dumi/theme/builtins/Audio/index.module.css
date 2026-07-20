@@ -1,0 +1,21 @@
+.playBtn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: var(--ui-spacing-xs);
+  margin: 0;
+}
+
+.icon {
+  font-size: var(--ui-font-size-xl);
+  color: var(--ui-color-anchor);
+  transition: color var(--ui-transition-duration);
+}
+
+.icon:hover {
+  color: var(--ui-primary-color-filled);
+}
+
+.icon:active {
+  color: var(--ui-primary-color-7);
+}

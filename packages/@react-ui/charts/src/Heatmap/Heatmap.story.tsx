@@ -20,8 +20,6 @@ function generateRandomValues(count: number, date = new Date()) {
 
 const convertedRandomValues = generateRandomValues(365);
 
-console.log(convertedRandomValues);
-
 export function Usage() {
   return (
     <div style={{ padding: 40 }}>

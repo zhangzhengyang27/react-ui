@@ -1,0 +1,89 @@
+import { Avatar, Group, Indicator } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
+
+const code = `
+import { Avatar, Group, Indicator } from '@react-ui/ui';
+
+function Demo() {
+  return (
+    <Group>
+      <Indicator inline label="99" color="lime.4">
+        <Avatar
+          size="lg"
+          radius="xl"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-1.png"
+        />
+      </Indicator>
+
+      <Indicator inline label="99" color="lime.4" autoContrast>
+        <Avatar
+          size="lg"
+          radius="xl"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-2.png"
+        />
+      </Indicator>
+
+      <Indicator inline label="99" color="cyan.9">
+        <Avatar
+          size="lg"
+          radius="xl"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-3.png"
+        />
+      </Indicator>
+
+      <Indicator inline label="99" color="cyan.9" autoContrast>
+        <Avatar
+          size="lg"
+          radius="xl"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-4.png"
+        />
+      </Indicator>
+    </Group>
+  );
+}
+`;
+
+function Demo() {
+  return (
+    <Group>
+      <Indicator inline label="99" color="lime.4">
+        <Avatar
+          size="lg"
+          radius="xl"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-1.png"
+        />
+      </Indicator>
+
+      <Indicator inline label="99" color="lime.4" autoContrast>
+        <Avatar
+          size="lg"
+          radius="xl"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-2.png"
+        />
+      </Indicator>
+
+      <Indicator inline label="99" color="cyan.9">
+        <Avatar
+          size="lg"
+          radius="xl"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-3.png"
+        />
+      </Indicator>
+
+      <Indicator inline label="99" color="cyan.9" autoContrast>
+        <Avatar
+          size="lg"
+          radius="xl"
+          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-4.png"
+        />
+      </Indicator>
+    </Group>
+  );
+}
+
+export const autoContrast: UIDemo = {
+  type: 'code',
+  component: Demo,
+  code,
+  centered: true,
+};

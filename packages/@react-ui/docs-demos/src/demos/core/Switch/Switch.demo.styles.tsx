@@ -7,7 +7,7 @@ const cssCode = `.track {
     background-color 200ms ease,
     border-color 200ms ease;
 
-  input:checked + & {
+  &:is(input:checked + *) {
     background-color: var(--ui-color-lime-5);
     border-color: var(--ui-color-lime-5);
 

@@ -29,10 +29,7 @@ export function Usage() {
       name: (value) => (value.length === 0 ? 'Required' : null),
       nested: {
         field: (value) => (value === 'test' ? 'Invalid' : null),
-        [formRootRule]: (value) => {
-          console.log('validate nested', value);
-          return 'error';
-        },
+        [formRootRule]: () => 'error',
       },
 
       nestList: {
@@ -140,8 +137,6 @@ export function ControlMode() {
     },
   });
 
-  console.log('render');
-
   return (
     <FormBase form={form}>
       <Select
@@ -194,13 +189,12 @@ export function FocusOnError() {
     },
   });
 
-  form.watch('name', (value) => {
+  form.watch('name', () => {
     setCounter((c) => c + 1);
-    console.log('name', value, { counter });
   });
 
-  form.watch('area', (value) => {
-    console.log('area', value, { counter });
+  form.watch('area', () => {
+    // noop
   });
 
   return (

@@ -1,0 +1,40 @@
+.wrapper {
+  margin: var(--ui-spacing-md) 0;
+}
+
+.codeWrapper {
+  margin-top: var(--ui-spacing-sm);
+  margin-bottom: 0;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+.pre {
+  margin: 0;
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: var(--ui-radius-default);
+  background: var(--ui-color-gray-0);
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+  font-family: var(--ui-font-family-monospace);
+}
+
+.copyBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--ui-color-dimmed);
+  cursor: pointer;
+  padding: 0 12px;
+  font-size: 16px;
+  transition: color var(--ui-transition-duration);
+}
+
+.copyBtn:hover {
+  color: var(--ui-primary-color-filled);
+}

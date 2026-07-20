@@ -1,0 +1,42 @@
+.tableTitle {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  user-select: none;
+  margin-bottom: var(--ui-spacing-md);
+  gap: var(--ui-spacing-xs);
+}
+
+.arrowIcon {
+  font-size: var(--ui-font-size-lg);
+  transition: transform 200ms ease;
+}
+
+.help {
+  font-size: var(--ui-font-size-sm);
+  font-weight: normal;
+  color: var(--ui-color-dimmed);
+  cursor: pointer;
+}
+
+.help a {
+  color: var(--ui-color-dimmed);
+}
+
+.tokenTitle {
+  font-size: var(--ui-font-size-lg);
+  font-weight: bold;
+}
+
+.table {
+  margin-bottom: var(--ui-spacing-md);
+  width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+.table :global(table) {
+  width: 100%;
+}

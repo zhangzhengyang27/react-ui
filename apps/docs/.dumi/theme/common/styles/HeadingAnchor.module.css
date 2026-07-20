@@ -1,0 +1,53 @@
+:global(h1 > a[aria-hidden]:first-child),
+:global(h2 > a[aria-hidden]:first-child),
+:global(h3 > a[aria-hidden]:first-child),
+:global(h4 > a[aria-hidden]:first-child),
+:global(h5 > a[aria-hidden]:first-child),
+:global(h6 > a[aria-hidden]:first-child) {
+  float: inline-start;
+  width: 20px;
+  padding-inline-end: 4px;
+  font-size: 0;
+  line-height: inherit;
+  text-align: end;
+  margin-inline-start: -24px;
+}
+
+:global([data-direction='rtl'] h1 > a[aria-hidden]:first-child),
+:global([data-direction='rtl'] h2 > a[aria-hidden]:first-child),
+:global([data-direction='rtl'] h3 > a[aria-hidden]:first-child),
+:global([data-direction='rtl'] h4 > a[aria-hidden]:first-child),
+:global([data-direction='rtl'] h5 > a[aria-hidden]:first-child),
+:global([data-direction='rtl'] h6 > a[aria-hidden]:first-child) {
+  float: inline-end;
+}
+
+:global(h1 > a[aria-hidden]:first-child:hover),
+:global(h2 > a[aria-hidden]:first-child:hover),
+:global(h3 > a[aria-hidden]:first-child:hover),
+:global(h4 > a[aria-hidden]:first-child:hover),
+:global(h5 > a[aria-hidden]:first-child:hover),
+:global(h6 > a[aria-hidden]:first-child:hover) {
+  border: 0;
+}
+
+:global(h1 > a[aria-hidden]:first-child > .icon-link::before),
+:global(h2 > a[aria-hidden]:first-child > .icon-link::before),
+:global(h3 > a[aria-hidden]:first-child > .icon-link::before),
+:global(h4 > a[aria-hidden]:first-child > .icon-link::before),
+:global(h5 > a[aria-hidden]:first-child > .icon-link::before),
+:global(h6 > a[aria-hidden]:first-child > .icon-link::before) {
+  font-size: var(--ui-font-size-xl);
+  content: '#';
+  color: var(--ui-color-dimmed);
+  font-family: var(--ui-font-family-monospace);
+}
+
+:global(h1:not(:hover) > a[aria-hidden]:first-child > .icon-link),
+:global(h2:not(:hover) > a[aria-hidden]:first-child > .icon-link),
+:global(h3:not(:hover) > a[aria-hidden]:first-child > .icon-link),
+:global(h4:not(:hover) > a[aria-hidden]:first-child > .icon-link),
+:global(h5:not(:hover) > a[aria-hidden]:first-child > .icon-link),
+:global(h6:not(:hover) > a[aria-hidden]:first-child > .icon-link) {
+  visibility: hidden;
+}

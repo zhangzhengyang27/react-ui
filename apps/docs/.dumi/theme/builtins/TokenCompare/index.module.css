@@ -1,0 +1,38 @@
+.container {
+  background-color: var(--ui-color-white);
+  border-radius: var(--ui-radius-lg);
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.col {
+  flex: 1 1 33%;
+  height: var(--ui-spacing-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ui-color-text);
+  border-inline-end: 1px solid var(--ui-color-gray-3);
+}
+
+.colDark {
+  background-color: var(--ui-color-black);
+  color: var(--ui-color-white);
+}
+
+.dot {
+  border-radius: 100%;
+  width: calc(var(--ui-spacing-xl) / 5);
+  height: calc(var(--ui-spacing-xl) / 5);
+  background-color: var(--ui-color-black);
+  box-shadow: 0 0 0 1px rgba(150, 150, 150, 0.25);
+}
+
+.dotColor {
+  width: calc(var(--ui-font-size-md) * 6);
+  white-space: nowrap;
+}

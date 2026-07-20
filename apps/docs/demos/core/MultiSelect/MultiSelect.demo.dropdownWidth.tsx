@@ -1,0 +1,36 @@
+import { MultiSelect } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
+
+const code = `
+import { MultiSelect } from '@react-ui/ui';
+
+function Demo() {
+  return (
+    <MultiSelect
+      label="你最喜欢的库"
+      placeholder="选择值"
+      data={['React', 'Angular', 'Vue', 'Svelte']}
+      comboboxProps={{ width: 200, position: 'bottom-start' }}
+    />
+  );
+}
+`;
+
+function Demo() {
+  return (
+    <MultiSelect
+      label="你最喜欢的库"
+      placeholder="选择值"
+      data={['React', 'Angular', 'Vue', 'Svelte']}
+      comboboxProps={{ width: 200, position: 'bottom-start' }}
+    />
+  );
+}
+
+export const dropdownWidth: UIDemo = {
+  type: 'code',
+  component: Demo,
+  code,
+  maxWidth: 340,
+  centered: true,
+};

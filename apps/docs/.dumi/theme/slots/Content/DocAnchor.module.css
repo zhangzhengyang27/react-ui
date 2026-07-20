@@ -1,0 +1,72 @@
+.tocWrapper {
+  position: fixed;
+  top: calc(64px + var(--ui-spacing-xl) - 4px);
+  inset-inline-end: 0;
+  width: 220px;
+  padding: 0;
+  border-radius: var(--ui-radius-md, 8px);
+  box-sizing: border-box;
+  margin-inline-end: calc(8px - 100vw + 100%);
+  z-index: 10;
+}
+
+.tocWrapper > div {
+  box-sizing: border-box;
+  width: 100%;
+  max-height: calc(100vh - 64px - var(--ui-spacing-xl) - 24px);
+  margin: auto;
+  overflow: auto;
+  padding: var(--ui-spacing-xs);
+  backdrop-filter: blur(8px);
+}
+
+@media only screen and (max-width: 992px) {
+  .tocWrapper {
+    display: none;
+  }
+}
+
+.anchorToc {
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+
+.anchorGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.anchorLink {
+  display: block;
+  padding: 4px 8px;
+  font-size: var(--ui-font-size-sm);
+  color: var(--ui-color-dimmed);
+  text-decoration: none;
+  border-inline-start: 2px solid transparent;
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+.anchorLink:hover {
+  color: var(--ui-color-anchor);
+}
+
+.anchorLinkParent {
+  font-weight: 500;
+}
+
+.anchorLinkChild {
+  padding-inline-start: 20px;
+}
+
+.anchorLinkActive {
+  color: var(--ui-color-anchor);
+  border-inline-start-color: var(--ui-color-anchor);
+}
+
+.anchorLinkDebug {
+  color: #722ed1;
+}
+
+.anchorLinkDebug:hover {
+  color: #9254de;
+}

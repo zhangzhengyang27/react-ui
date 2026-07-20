@@ -48,8 +48,6 @@ export function DirtyUncontrolled() {
     },
   });
 
-  console.log('render');
-
   return (
     <div style={{ maxWidth: 500, margin: 'auto', padding: 40 }}>
       <TextInput {...form.getInputProps('text')} key={form.key('text')} />

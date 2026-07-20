@@ -1,0 +1,53 @@
+---
+category: Hooks
+title: UseHash
+subtitle: URL 哈希
+description: react-ui URL 哈希 Hook 文档。
+---
+
+
+## 用法
+
+`use-hash` Hook 返回 URL 中的 hash，通过 [hashchange 事件](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event) 订阅其变化，
+并允许你使用 `setHash` 函数更改它：
+
+<code src="./use-hash/demo/usage.tsx"></code>
+
+## 初始状态值
+
+默认情况下，`use-hash` 会在 `useEffect` 中获取值。如果你想在调用 Hook 时立即获取初始值，
+请将 `getInitialValueInEffect` 设置为 `false`。注意，此选项与服务端渲染不兼容——
+只有当你的应用是纯客户端时才可使用。
+
+```tsx
+import { Button } from '@react-ui/ui';
+import { useHash } from '@react-ui/hooks';
+
+function Demo() {
+  const [hash, setHash] = useHash({ getInitialValueInEffect: false });
+  return (
+    <Button onClick={() => setHash('new-hash')}>更改哈希</Button>
+  );
+}
+```
+
+## 类型定义
+
+```tsx
+interface UseHashOptions {
+  getInitialValueInEffect?: boolean;
+}
+
+type UseHashReturnValue = [string, (value: string) => void];
+
+function useHash(options?: UseHashOptions): UseHashReturnValue
+```
+
+## 导出类型
+
+`UseHashOptions` 和 `UseHashReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
+
+```tsx
+import { UseHashOptions, UseHashReturnValue } from '@react-ui/hooks';
+```

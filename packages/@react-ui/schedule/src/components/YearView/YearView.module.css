@@ -98,8 +98,8 @@
 }
 
 .yearViewWeekNumber {
-  flex: 0 0 calc(var(--week-numbers-offset) - rem(4px));
-  margin-inline-end: rem(4px);
+  flex: 0 0 calc(var(--week-numbers-offset) - 4px);
+  margin-inline-end: 4px;
   display: flex;
   align-items: center;
   justify-content: center;

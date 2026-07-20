@@ -1,0 +1,53 @@
+---
+category: Guides
+title: Javascript
+subtitle: JavaScript
+description: react-ui Javascript 文档。
+---
+
+
+## 可以将 ReactUI 与 JavaScript 一起使用吗？
+
+是的，所有 `@react-ui/*` 包（以及所有其他 npm 包）都可以与 JavaScript 一起使用。
+`@react-ui/*` 包使用 TypeScript 编写并具有类型定义，因此即使与 JavaScript 一起使用，
+你也能获得一些 TypeScript 的好处（如 IDE 自动补全）。
+
+## 将演示代码转换为 JavaScript
+
+ReactUI 文档中的所有演示都是用 TypeScript 编写的。在大多数情况下，TypeScript 和 JavaScript 代码没有区别——你不需要做任何改动。
+
+要将 TypeScript 代码转换为 JavaScript，你可以使用 [TypeScript playground](https://www.typescriptlang.org/play?jsx=1&preserveValueImports=false#code/Q)
+——将演示代码粘贴到 playground 中，所有类型都会被移除。注意，你还需要从代码中移除类型导入。
+
+转换后的代码示例：
+
+```tsx
+// TypeScript 代码
+import { Button, ButtonProps } from '@react-ui/ui';
+
+interface MyButtonProps extends ButtonProps {
+  myProp: string;
+}
+
+function MyButton({ myProp, ...others }: MyButtonProps) {
+  return <Button {...others} />;
+}
+```
+
+```tsx
+// JavaScript 代码
+import { Button } from '@react-ui/ui';
+
+function MyButton({ myProp, ...others }) {
+  return <Button {...others} />;
+}
+```
+
+## 应该将 ReactUI 与 JavaScript 一起使用吗？
+
+我们推荐将 ReactUI 与 TypeScript 一起使用。这不需要深入的 TypeScript 知识，
+而且会让你的代码更健壮、更易于维护。例如，当你向组件传递无效 props 或使用不存在的 props 时，
+你会得到类型错误。TypeScript 还能帮助你在迁移到 ReactUI 新版本时——当你代码中的 props/组件被移除/重命名/更改时，你会得到类型错误。
+
+如果你还不熟悉 TypeScript，使用 ReactUI 搭配 TypeScript 将是一个很好的学习机会。
+你可以使用任何[模板](/getting-started)开始——所有模板都内置 TypeScript 支持。

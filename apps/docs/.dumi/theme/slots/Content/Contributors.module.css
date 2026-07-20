@@ -1,0 +1,28 @@
+.listMobile {
+  margin: 1em 0 !important;
+}
+
+.title {
+  font-size: var(--ui-font-size-sm);
+  opacity: 0.5;
+  margin-bottom: var(--ui-spacing-xs);
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  clear: both;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list li {
+  height: 24px;
+  transition: margin 0.3s ease;
+  margin-inline-end: calc(-1 * var(--ui-spacing-xs));
+}
+
+.list:hover li {
+  margin-inline-end: 0;
+}

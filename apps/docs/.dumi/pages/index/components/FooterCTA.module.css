@@ -1,0 +1,15 @@
+.section {
+  padding: 80px 24px;
+  text-align: center;
+  background: var(--ui-color-body);
+  border-top: 1px solid var(--ui-color-gray-3);
+}
+
+.title {
+  margin-bottom: var(--ui-spacing-sm) !important;
+}
+
+.desc {
+  margin-bottom: var(--ui-spacing-xl) !important;
+  color: var(--ui-color-dimmed) !important;
+}

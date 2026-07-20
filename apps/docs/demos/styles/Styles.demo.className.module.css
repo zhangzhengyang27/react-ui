@@ -1,0 +1,13 @@
+.box {
+  font-size: var(--ui-font-size-xl);
+  text-align: center;
+  font-weight: 600;
+}
+
+.highlight {
+  padding: 4px 10px;
+  display: inline-block;
+  border-radius: var(--ui-radius-md);
+  background: var(--ui-color-blue-light);
+  color: var(--ui-color-blue-light-color);
+}

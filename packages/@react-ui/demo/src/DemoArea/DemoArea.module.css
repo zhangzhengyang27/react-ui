@@ -6,7 +6,7 @@
   border-top-right-radius: calc(var(--ui-radius-md) - 1px);
 
   &:where([data-with-padding]) {
-    padding: var(--ui-spacing-md);
+    padding: var(--ui-spacing-xl);
   }
 
   &[data-dimmed] {

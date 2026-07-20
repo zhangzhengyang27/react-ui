@@ -1,0 +1,17 @@
+.anticonsList {
+  margin: var(--ui-spacing-md) 0;
+  overflow: hidden;
+  direction: ltr;
+  list-style: none;
+  display: grid;
+  grid-gap: var(--ui-spacing-md);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  padding: 0;
+}
+
+.copiedCode {
+  padding: 0 var(--ui-spacing-xs);
+  font-size: var(--ui-font-size-sm);
+  background-color: var(--ui-color-gray-2);
+  border-radius: var(--ui-radius-xs);
+}

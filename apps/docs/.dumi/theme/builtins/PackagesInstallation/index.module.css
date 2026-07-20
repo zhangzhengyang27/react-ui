@@ -1,0 +1,46 @@
+.wrapper {
+  margin: var(--ui-spacing-md) 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--ui-spacing-md);
+}
+
+.row {
+  cursor: pointer;
+  border-bottom: 1px solid var(--ui-color-gray-2);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.row:hover {
+  background-color: var(--ui-color-gray-0);
+}
+
+.cellCheckbox {
+  width: 50px;
+  padding: 10px 8px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.cellPackage {
+  padding: 10px 8px;
+  vertical-align: middle;
+}
+
+.cellDesc {
+  padding: 10px 8px;
+  vertical-align: middle;
+  color: var(--ui-color-dimmed);
+}
+
+@media (max-width: 48em) {
+  .cellDesc {
+    display: none;
+  }
+}

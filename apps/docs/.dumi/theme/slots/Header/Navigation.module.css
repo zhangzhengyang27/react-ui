@@ -1,0 +1,84 @@
+.nav {
+  height: 100%;
+  font-size: var(--ui-font-size-sm);
+  font-family: Avenir, var(--ui-font-family), sans-serif;
+  border: 0;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.navInline {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  font-size: var(--ui-font-size-md);
+  font-family: Avenir, var(--ui-font-family), sans-serif;
+}
+
+.navItem {
+  min-width: 56px;
+  height: 64px;
+  padding-inline-start: 8px;
+  padding-inline-end: 8px;
+  line-height: 64px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navItem a {
+  color: var(--ui-color-text);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.navItem a:hover {
+  color: var(--ui-color-anchor);
+}
+
+.navItemActive a {
+  color: var(--ui-color-anchor);
+}
+
+.navInlineItem {
+  padding: 10px 16px;
+  line-height: 1.5;
+}
+
+.navInlineItem a {
+  color: var(--ui-color-text);
+  text-decoration: none;
+  display: block;
+}
+
+.navInlineItem a:hover {
+  color: var(--ui-color-anchor);
+}
+
+.navInlineItemActive a {
+  color: var(--ui-color-anchor);
+}
+
+.additionalTrigger {
+  min-width: 56px;
+  height: 64px;
+  padding-inline-start: 8px;
+  padding-inline-end: 8px;
+  line-height: 64px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: var(--ui-color-text);
+  font-size: var(--ui-font-size-md);
+}
+
+.additionalTrigger:hover {
+  color: var(--ui-color-anchor);
+}

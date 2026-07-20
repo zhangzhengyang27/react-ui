@@ -1,0 +1,31 @@
+.searchWrapper {
+  display: flex;
+  gap: var(--ui-spacing-md);
+}
+
+.searchWrapper > :first-child {
+  flex: 0 0 328px;
+}
+
+.searchWrapper > :last-child {
+  flex: 1;
+}
+
+.fallbackWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.fallbackWrapper > * {
+  flex: 0 0 15%;
+  margin: var(--ui-spacing-xs) 0;
+}
+
+.skeletonWrapper {
+  text-align: center;
+}
+
+.skeletonWrapper > * {
+  width: 100% !important;
+}

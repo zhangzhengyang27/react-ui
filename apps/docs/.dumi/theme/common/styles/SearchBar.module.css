@@ -1,0 +1,37 @@
+:global(html .dumi-default-search-bar-input) {
+  color: var(--ui-color-text);
+  background: var(--ui-color-default);
+}
+
+:global(html .dumi-default-search-bar-input:focus) {
+  background: var(--ui-color-default);
+}
+
+:global(html .dumi-default-search-bar-input::placeholder) {
+  color: var(--ui-color-placeholder) !important;
+}
+
+:global(html .dumi-default-search-popover) {
+  background-color: var(--ui-color-default) !important;
+}
+
+:global(html .dumi-default-search-popover::before) {
+  border-bottom-color: var(--ui-color-default) !important;
+}
+
+:global(html .dumi-default-search-result dl dt) {
+  background-color: var(--ui-color-default) !important;
+}
+
+:global(html .dumi-default-search-result dl dd a:hover) {
+  background-color: var(--ui-color-default-hover);
+}
+
+:global(html .dumi-default-search-result dl dd a:hover h4),
+:global(html .dumi-default-search-result dl dd a:hover p) {
+  color: var(--ui-color-text) !important;
+}
+
+:global(html .dumi-default-search-result dl dd a:hover svg) {
+  fill: var(--ui-color-text) !important;
+}

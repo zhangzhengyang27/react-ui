@@ -1,7 +1,7 @@
 import { cloneElement, useState } from 'react';
 import { DemoAreaProps } from '../DemoArea';
-import { DemoCode } from '../DemoCode';
 import { DemoColumns } from '../DemoColumns';
+import { DemoHeader, DemoHeaderProps } from '../DemoHeader';
 import { DemoRoot } from '../DemoRoot';
 import {
   ConfiguratorBooleanControl,
@@ -40,7 +40,7 @@ export type ConfiguratorControlOptions =
   | ConfiguratorSizeControlOptions
   | ConfiguratorNumberControlOptions;
 
-export interface ConfiguratorDemoProps extends DemoAreaProps {
+export interface ConfiguratorDemoProps extends DemoAreaProps, DemoHeaderProps {
   code: Code;
   controls: ConfiguratorControlOptions[];
 }
@@ -48,6 +48,8 @@ export interface ConfiguratorDemoProps extends DemoAreaProps {
 export function ConfiguratorDemo({
   code,
   controls,
+  title,
+  description,
   children,
   centered,
   maxWidth,
@@ -79,8 +81,11 @@ export function ConfiguratorDemo({
     );
   });
 
+  const codeArray = getCodeArray({ code, controls, state });
+
   return (
     <DemoRoot>
+      <DemoHeader title={title} description={description} code={codeArray} />
       <DemoColumns
         controls={items}
         centered={centered}
@@ -94,7 +99,6 @@ export function ConfiguratorDemo({
       >
         {cloneElement(children as React.JSX.Element, state)}
       </DemoColumns>
-      <DemoCode code={getCodeArray({ code, controls, state })} />
     </DemoRoot>
   );
 }

@@ -14,7 +14,6 @@ import {
 export default { title: 'Modals manager' };
 
 const ContextModal = ({ context, id, innerProps }: ContextModalProps<{ contextProp: string }>) => {
-  console.log(innerProps, id, context);
   return (
     <div>
       <div>Test custom modal: {innerProps.contextProp}</div>
@@ -147,7 +146,6 @@ function CloseAllApp() {
 
   const handleClick = () => {
     const modalId = Date.now();
-    console.log('Open modal', modalId);
 
     modals.openModal({
       title: `Created at ${modalId}`,
@@ -159,7 +157,6 @@ function CloseAllApp() {
       ),
       centered: true,
       onClose: () => {
-        console.log('Close modal', modalId);
         modals.closeAll();
       },
     });

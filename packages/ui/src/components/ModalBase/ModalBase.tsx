@@ -1,3 +1,4 @@
+import { useCallback, useMemo } from 'react'
 import { RemoveScroll as RemoveScrollRaw } from 'react-remove-scroll'
 import {
     Box,
@@ -130,28 +131,52 @@ export function ModalBase({
 
     const { key: removeScrollKey, ...otherRemoveScrollProps } = removeScrollProps || {}
 
+    const getTitleId = useCallback(() => `${_id}-title`, [_id])
+    const getBodyId = useCallback(() => `${_id}-body`, [_id])
+    const memoTransitionProps = useMemo(() => ({ ...transitionProps, keepMounted }), [transitionProps, keepMounted])
+
+    const value = useMemo(
+        () => ({
+            opened,
+            onClose,
+            closeOnClickOutside,
+            onExitTransitionEnd,
+            onEnterTransitionEnd,
+            transitionProps: memoTransitionProps,
+            getTitleId,
+            getBodyId,
+            titleMounted,
+            bodyMounted,
+            setTitleMounted,
+            setBodyMounted,
+            trapFocus,
+            closeOnEscape,
+            zIndex,
+            unstyled
+        }),
+        [
+            opened,
+            onClose,
+            closeOnClickOutside,
+            onExitTransitionEnd,
+            onEnterTransitionEnd,
+            memoTransitionProps,
+            getTitleId,
+            getBodyId,
+            titleMounted,
+            bodyMounted,
+            setTitleMounted,
+            setBodyMounted,
+            trapFocus,
+            closeOnEscape,
+            zIndex,
+            unstyled
+        ]
+    )
+
     return (
         <OptionalPortal {...portalProps} withinPortal={withinPortal}>
-            <ModalBaseProvider
-                value={{
-                    opened,
-                    onClose,
-                    closeOnClickOutside,
-                    onExitTransitionEnd,
-                    onEnterTransitionEnd,
-                    transitionProps: { ...transitionProps, keepMounted },
-                    getTitleId: () => `${_id}-title`,
-                    getBodyId: () => `${_id}-body`,
-                    titleMounted,
-                    bodyMounted,
-                    setTitleMounted,
-                    setBodyMounted,
-                    trapFocus,
-                    closeOnEscape,
-                    zIndex,
-                    unstyled
-                }}
-            >
+            <ModalBaseProvider value={value}>
                 <RemoveScroll enabled={opened && lockScroll} key={removeScrollKey} {...otherRemoveScrollProps}>
                     <Box
                         ref={ref}

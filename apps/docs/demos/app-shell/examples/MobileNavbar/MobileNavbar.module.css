@@ -1,0 +1,9 @@
+.control {
+  display: block;
+  padding: var(--ui-spacing-xs) var(--ui-spacing-md);
+  border-radius: var(--ui-radius-md);
+  font-weight: 600;
+}
+.control:hover {
+    background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-6));
+  }

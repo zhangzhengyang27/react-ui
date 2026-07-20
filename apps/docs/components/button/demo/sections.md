@@ -1,0 +1,2 @@
+- `leftSection` / `rightSection`：按钮标签左右两侧的内容（通常放图标）。
+- `fullWidth`：宽度 100%，常用于表单底部的提交按钮。

@@ -24,6 +24,9 @@ export interface PopoverContextValue {
     onToggle: () => void
     getDropdownId: () => string
     getTargetId: () => string
+    /** 由 Popover.Target 调用，当 child 自带 id 时同步到 context，
+     *  让 PopoverDropdown 的 aria-labelledby 能正确指向 target */
+    setTargetId: (id: string) => void
     controlled: boolean
     transitionProps?: import('../Transition').TransitionOverride
     trapFocus: boolean | undefined

@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useClickOutside, useId } from '@react-ui/hooks'
 import {
     createVarsResolver,
@@ -203,6 +203,14 @@ export function Popover(_props: PopoverProps) {
     const [targetNode, setTargetNode] = useState<HTMLElement | null>(null)
     const [dropdownNode, setDropdownNode] = useState<HTMLElement | null>(null)
     const uid = useId(id)
+    // targetId 动态管理：当 Popover.Target 的 child 自带 id 时（如 ColorInput 传入的 inputId），
+    // 用 child 的 id 替代默认 uid，让外部 label.htmlFor 能正确关联到 target input。
+    // 同时 PopoverDropdown 的 aria-labelledby 也会通过 getTargetId() 拿到正确的 id。
+    const [targetId, setTargetId] = useState(uid)
+    // uid 可能因 id prop 变化而变化，同步重置
+    useEffect(() => {
+        setTargetId(uid)
+    }, [uid])
 
     const popover = usePopover({
         middlewares,
@@ -269,7 +277,8 @@ export function Popover(_props: PopoverProps) {
                 zIndex,
                 onClose: popover.onClose,
                 onToggle: popover.onToggle,
-                getTargetId: () => uid,
+                getTargetId: () => targetId,
+                setTargetId,
                 getDropdownId: () => `${uid}-dropdown`,
                 controlled: popover.controlled,
                 closeOnEscape,

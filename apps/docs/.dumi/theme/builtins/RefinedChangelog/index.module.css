@@ -1,0 +1,25 @@
+.container {
+  margin-block: var(--ui-spacing-md);
+  padding: var(--ui-spacing-md);
+}
+
+.container .changelog-version {
+  line-height: var(--ui-line-height-md);
+  margin: 0 !important;
+}
+
+.isDeprecated {
+  /* deprecated 状态样式占位,可通过上下文扩展 */
+}
+
+.bugIcon {
+  line-height: var(--ui-line-height-md);
+  font-size: var(--ui-font-size-md);
+  color: var(--ui-color-error);
+  cursor: pointer;
+}
+
+.popoverTitle {
+  font-weight: 600;
+  margin-bottom: var(--ui-spacing-xs);
+}

@@ -1,0 +1,165 @@
+---
+category: Hooks
+title: UseMask
+subtitle: 输入掩码
+description: react-ui 输入掩码 Hook 文档。
+---
+
+
+## 用法
+
+`useMask` 通过 ref 回调为任何 `<input>` 元素附加实时输入掩码。
+它会根据定义的模式格式化用户输入，并同时暴露掩码显示值和原始未掩码值。
+如果你需要一个现成的输入组件，请使用 [MaskInput](/components/mask-input)，
+它用这个 Hook 包装了所有标准输入属性。
+
+<code src="./use-mask/demo/usage.tsx"></code>
+
+## isComplete、slotChar 和 transform
+
+使用 `isComplete` 检查是否所有必需的掩码槽位都已填充——例如，用于控制提交按钮。
+`slotChar` 选项接受多字符字符串，为每个槽位显示位置提示。
+`transform` 选项在验证前转换每个字符——本示例使用它将输入自动转为大写，
+这样 `A` 标记（`[A-Z]`）就能接受小写字母：
+
+<code src="./use-mask/demo/complete.tsx"></code>
+
+## 动态掩码
+
+使用 `modify` 选项根据当前输入值更改掩码。
+本示例在标准信用卡格式和美国运通格式之间切换：
+
+<code src="./use-mask/demo/dynamic.tsx"></code>
+
+## 自定义标记
+
+使用 `tokens` 选项覆盖或扩展内置的标记映射：
+
+<code src="./use-mask/demo/customTokens.tsx"></code>
+
+## 转义
+
+在标记字符前加 `\` 可将其视为字面量。
+在本示例中，`A` 通常是大写字母标记，但 `\A` 使其成为字面量字符：
+
+<code src="./use-mask/demo/escape.tsx"></code>
+
+## 正则数组格式
+
+对于内置标记不够的复杂掩码，可以传递一个由字符串字面量和 `RegExp` 对象组成的数组。
+本示例创建一个时间输入，其中第一位数字限制为 `0-2`，分钟的十位数字限制为 `0-5`：
+
+<code src="./use-mask/demo/regex.tsx"></code>
+
+## 重置
+
+使用 Hook 返回的 `reset` 函数以编程方式清除输入值：
+
+<code src="./use-mask/demo/reset.tsx"></code>
+
+## 掩码模式语法
+
+掩码字符串定义了预期格式。每个字符要么是**标记**（可编辑槽位），要么是**字面量**（自动插入的固定字符）。
+
+### 内置标记
+
+- `9` – 任意单个数字（`[0-9]`）
+- `a` – 任意单个字母（`[A-Za-z]`）
+- `A` – 任意大写字母（`[A-Z]`）
+- `*` – 任意字母数字字符（`[A-Za-z0-9]`）
+- `#` – 数字或符号（`[-+0-9]`）
+
+### 可选段
+
+在最后一个必需字符后附加 `?`，将剩余槽位标记为可选：
+
+```tsx
+useMask({ mask: '(999) 999-9999? x9999' }) // 分机号是可选的
+```
+
+## 工具函数
+
+以下纯函数与 Hook 一起导出：
+
+- `formatMask(raw, options)` – 将掩码应用于原始值字符串
+- `unformatMask(masked, options)` – 从掩码值中剥离所有掩码字面量
+- `isMaskComplete(masked, options)` – 检查是否所有必需槽位都已填充
+- `generatePattern(mode, options)` – 为 HTML `pattern` 属性生成正则字符串
+
+```tsx
+import { formatMask, unformatMask, isMaskComplete } from '@react-ui/hooks';
+
+const options = { mask: '(999) 999-9999' };
+
+formatMask('1234567890', options);      // "(123) 456-7890"
+unformatMask('(123) 456-7890', options); // "1234567890"
+isMaskComplete('(123) 456-7890', options); // true
+```
+
+## 类型定义
+
+```tsx
+interface UseMaskOptions {
+  // Mask pattern string or array of string literals and RegExp objects
+  mask: string | Array<string | RegExp>;
+
+  // Override or extend the default token map
+  tokens?: Record<string, RegExp>;
+
+  // Called on each keystroke, can return overrides for mask, tokens, or slotChar
+  modify?: (value: string) => Partial<Pick<UseMaskOptions, 'mask' | 'tokens' | 'slotChar'>> | undefined;
+
+  // Transform each character before validation and insertion
+  transform?: (char: string) => string;
+
+  // Character displayed in unfilled slots, "_" by default
+  slotChar?: string | null;
+
+  // Show mask pattern even when the field is empty and unfocused
+  alwaysShowMask?: boolean;
+
+  // Show mask placeholder on focus, true by default
+  showMaskOnFocus?: boolean;
+
+  // Clear value on blur when mask is incomplete, false by default
+  autoClear?: boolean;
+
+  // Sets aria-invalid on the input
+  invalid?: boolean;
+
+  // Called on every change with raw and masked values
+  onChangeRaw?: (rawValue: string, maskedValue: string) => void;
+
+  // Called when all required mask slots are filled
+  onComplete?: (maskedValue: string, rawValue: string) => void;
+
+}
+
+interface UseMaskReturnValue {
+  // Ref callback to attach to the input element
+  ref: React.RefCallback<HTMLInputElement>;
+
+  // Current masked display value
+  value: string;
+
+  // Current raw unmasked value
+  rawValue: string;
+
+  // Whether all required mask slots are filled
+  isComplete: boolean;
+
+  // Clear the input value and reset state
+  reset: () => void;
+}
+
+function useMask(options: UseMaskOptions): UseMaskReturnValue;
+```
+
+## 导出类型
+
+`UseMaskOptions` 和 `UseMaskReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
+
+```tsx
+import type { UseMaskOptions, UseMaskReturnValue } from '@react-ui/hooks';
+```

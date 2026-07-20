@@ -1,0 +1,31 @@
+.root {
+  position: relative;
+  padding: var(--ui-spacing-md);
+  transition: border-color 150ms ease;
+}
+
+.root[data-checked] {
+    border-color: var(--ui-primary-color-filled);
+  }
+
+[data-ui-color-scheme='light'] .root:hover {
+      background-color: var(--ui-color-gray-0);
+    }
+
+[data-ui-color-scheme='dark'] .root:hover {
+      background-color: var(--ui-color-dark-6);
+    }
+
+.label {
+  font-family: var(--ui-font-family-monospace);
+  font-weight: bold;
+  font-size: var(--ui-font-size-md);
+  line-height: 1.3;
+  color: var(--ui-color-bright);
+}
+
+.description {
+  margin-top: 8px;
+  color: var(--ui-color-dimmed);
+  font-size: var(--ui-font-size-xs);
+}

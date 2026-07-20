@@ -1,0 +1,184 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  max-width: 100%;
+  background: var(--ui-color-body);
+  box-shadow: var(--ui-shadow-sm);
+  backdrop-filter: blur(8px);
+}
+
+@media only screen and (max-width: 768px) {
+  .header {
+    text-align: center;
+    border: none;
+  }
+}
+
+.header :global(.dumi-default-search-bar) {
+  display: inline-flex;
+  align-items: center;
+  flex: auto;
+  max-width: 220px;
+  height: 32px;
+  margin: 0;
+  margin-inline-end: 16px !important;
+  background: var(--ui-color-body);
+  border-radius: var(--ui-radius-sm);
+  transition: background 300ms ease;
+}
+
+.header :global(.dumi-default-search-bar) > svg {
+  width: 14px;
+  fill: #ced4d9;
+  flex-shrink: 0;
+  margin-inline-start: -6px;
+}
+
+.header :global(.dumi-default-search-bar) > input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  padding-inline-start: 32px;
+}
+
+.header :global(.dumi-default-search-bar) > input:focus {
+  box-shadow: none;
+  background: transparent;
+}
+
+.header :global(.dumi-default-search-bar) > input::placeholder {
+  color: #ced4d9;
+}
+
+.header :global(.dumi-default-search-bar):hover,
+.header :global(.dumi-default-search-bar):focus-within {
+  background: var(--ui-color-gray-1);
+}
+
+.header :global(.dumi-default-search-bar) :global(.dumi-default-search-shortcut) {
+  display: none;
+}
+
+.header :global(.dumi-default-search-bar) :global(.dumi-default-search-popover) {
+  inset-inline-start: var(--ui-spacing-sm);
+  inset-inline-end: unset;
+  z-index: 1;
+}
+
+.header :global(.dumi-default-search-bar) :global(.dumi-default-search-popover)::before {
+  inset-inline-start: 100px;
+  inset-inline-end: unset;
+}
+
+.header :global(.dumi-default-search-bar) :global(.dumi-default-search-popover) > section {
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+
+.menuRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0;
+  column-gap: 2px;
+  padding-inline-end: var(--ui-spacing-md);
+}
+
+.menuRow > * {
+  flex: none;
+  margin: 0;
+}
+
+.dataDirectionIcon {
+  width: 20px;
+}
+
+.popoverDropdown {
+  padding: 0;
+}
+
+.banner {
+  width: 100%;
+  text-align: center;
+  word-break: keep-all;
+  user-select: none;
+  --alert-bg: transparent;
+  --alert-bd: 0;
+  --alert-color: #000;
+  background: linear-gradient(90deg, #84fab0, #8fd3f4) !important;
+  color: #000 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+.link {
+  margin-inline-start: 10px;
+  color: #000 !important;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 768px) {
+  .link {
+    margin-inline-start: 0;
+  }
+}
+
+.versionSelect {
+  width: 88px;
+  min-width: 88px;
+  margin-inline-end: 6px;
+}
+
+.bar {
+  display: flex;
+  flex-flow: nowrap;
+  height: 64px;
+  align-items: center;
+}
+
+.barHome .logoCol {
+  flex: none;
+}
+
+.barHome .menuCol {
+  flex: auto;
+}
+
+.barNotHome .logoCol {
+  flex: 0 0 auto;
+  width: 25%;
+}
+
+.barNotHome .menuCol {
+  flex: 1 1 auto;
+}
+
+@media (max-width: 62em) {
+  .barNotHome .logoCol {
+    width: 25%;
+  }
+  .barNotHome .menuCol {
+    flex: 1 1 auto;
+  }
+}
+
+@media (max-width: 48em) {
+  .barNotHome .logoCol {
+    width: 100%;
+  }
+  .barNotHome .menuCol {
+    display: none;
+  }
+}
+
+.navPhoneIcon {
+  font-size: 18px;
+  color: var(--ui-color-text);
+}

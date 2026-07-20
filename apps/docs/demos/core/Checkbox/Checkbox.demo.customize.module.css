@@ -1,0 +1,20 @@
+.root {
+  border: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-4));
+  padding: var(--ui-spacing-xs) var(--ui-spacing-sm);
+  border-radius: var(--ui-radius-md);
+  font-weight: 600;
+  transition:
+    color 100ms ease,
+    background-color 100ms ease,
+    border-color 100ms ease;
+  cursor: pointer;
+}
+.root[data-checked] {
+    background-color: var(--ui-color-blue-filled);
+    border-color: var(--ui-color-blue-filled);
+    color: var(--ui-color-white);
+  }
+.root * {
+    pointer-events: none;
+    user-select: none;
+  }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import { useMergedRef } from '@react-ui/hooks'
 import { Box, BoxProps, ElementProps, Factory, GetStylesApi, useProps } from '../../../core'
 import { ScrollAreaProvider } from '../ScrollArea.context'
@@ -41,27 +41,46 @@ export function ScrollAreaRoot(_props: ScrollAreaRootProps) {
     const [scrollbarYEnabled, setScrollbarYEnabled] = useState(false)
     const rootRef = useMergedRef(ref, setScrollArea)
 
+    const getStylesRef = useRef(getStyles)
+    getStylesRef.current = getStyles
+    const stableGetStyles = useCallback<typeof getStyles>((...args) => getStylesRef.current(...args), [])
+
+    const value = useMemo(
+        () => ({
+            type,
+            scrollArea,
+            viewport,
+            onViewportChange: setViewport,
+            content,
+            onContentChange: setContent,
+            scrollbarX,
+            onScrollbarXChange: setScrollbarX,
+            scrollbarXEnabled,
+            onScrollbarXEnabledChange: setScrollbarXEnabled,
+            scrollbarY,
+            onScrollbarYChange: setScrollbarY,
+            scrollbarYEnabled,
+            onScrollbarYEnabledChange: setScrollbarYEnabled,
+            onCornerWidthChange: setCornerWidth,
+            onCornerHeightChange: setCornerHeight,
+            getStyles: stableGetStyles
+        }),
+        [
+            type,
+            scrollArea,
+            viewport,
+            content,
+            scrollbarX,
+            scrollbarY,
+            scrollbarXEnabled,
+            scrollbarYEnabled,
+            stableGetStyles
+        ]
+    )
+
     return (
         <ScrollAreaProvider
-            value={{
-                type,
-                scrollArea,
-                viewport,
-                onViewportChange: setViewport,
-                content,
-                onContentChange: setContent,
-                scrollbarX,
-                onScrollbarXChange: setScrollbarX,
-                scrollbarXEnabled,
-                onScrollbarXEnabledChange: setScrollbarXEnabled,
-                scrollbarY,
-                onScrollbarYChange: setScrollbarY,
-                scrollbarYEnabled,
-                onScrollbarYEnabledChange: setScrollbarYEnabled,
-                onCornerWidthChange: setCornerWidth,
-                onCornerHeightChange: setCornerHeight,
-                getStyles
-            }}
+            value={value}
         >
             <Box
                 {...others}

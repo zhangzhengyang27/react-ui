@@ -37,7 +37,8 @@ export const ComboboxPopoverTarget = factory<ComboboxPopoverTargetFactory>((prop
 
     return cloneElement(child, {
         [refProp!]: targetRef,
-        id: ctx.targetId,
+        // 优先使用 child 自带的 id，让外部 label.htmlFor 能正确关联
+        id: childProps.id ?? ctx.targetId,
         'aria-haspopup': 'listbox',
         'aria-expanded': ctx.opened,
         'aria-controls': ctx.opened ? ctx.dropdownId : undefined,

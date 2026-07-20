@@ -1,0 +1,178 @@
+---
+category: Form
+title: Status
+subtitle: 表单状态
+description: react-ui Status 文档。
+---
+
+
+## 触碰（touched）和脏（dirty）状态
+
+`form.isTouched` 和 `form.isDirty` 字段提供了当前字段状态的信息：
+
+- 当用户聚焦过某个字段，或通过 `form.setFieldValue` 以编程方式更改其值时，该字段被视为 `touched`（已触碰）
+- 当字段值发生变化且新值与 `initialValues` 中指定的字段值不同（使用 [fast-deep-equal](https://www.npmjs.com/package/fast-deep-equal) 比较）时，该字段被视为 `dirty`（已脏）
+
+<code src="./status/demo/status.tsx"></code>
+
+## isTouched 和 isDirty 函数
+
+```tsx
+import { useForm } from '@react-ui/ui';
+
+const form = useForm({
+  mode: 'uncontrolled',
+  initialValues: { a: 1, nested: { field: '' } },
+});
+
+// 将路径作为第一个参数传入，以获取单个字段的状态
+form.isTouched('a'); // -> 字段 'a' 是否被聚焦或更改？
+form.isDirty('a'); // -> 字段 'a' 是否被修改？
+form.isDirty('nested.field'); // -> 也支持嵌套字段
+
+// 如果未提供字段路径，
+// 则函数将返回整个表单的状态
+form.isTouched(); // -> 表单中是否有任何字段被聚焦或更改？
+form.isDirty(); // -> 表单中是否有任何字段被修改？
+```
+
+## touchTrigger 选项
+
+`touchTrigger` 选项允许自定义更改触碰状态的事件。
+它接受两个选项：
+
+- `change`（默认）– 当字段值变化或已被聚焦时，该字段将被视为已触碰
+- `focus` – 仅当字段被聚焦时，该字段才会被视为已触碰
+
+使用 `focus` 触发器的示例：
+
+```tsx
+import { useForm } from '@react-ui/ui';
+
+const form = useForm({
+  mode: 'uncontrolled',
+  initialValues: { a: 1 },
+  touchTrigger: 'focus',
+});
+
+form.isTouched('a'); // -> false
+form.setFieldValue('a', 2);
+form.isTouched('a'); // -> false
+
+// 当用户聚焦字段时，onFocus 会自动被调用
+form.getInputProps('a').onFocus();
+form.isTouched('a'); // -> true
+```
+
+## 初始值
+
+你可以通过 `initialTouched` 和 `initialDirty` 属性提供初始的触碰和脏值。
+这两个属性都支持与 [errors 相同的字段路径格式](/docs/form/errors/)：
+
+```tsx
+import { useForm } from '@react-ui/ui';
+
+const form = useForm({
+  mode: 'uncontrolled',
+  initialValues: { a: 1, nested: { field: '' } },
+  initialTouched: { a: true, 'nested.field': true },
+  initialDirty: { a: true, 'nested.field': true },
+});
+```
+
+## resetTouched 和 resetDirty
+
+`form.resetTouched` 和 `form.resetDirty` 函数将使所有字段变为干净且未触碰状态。
+注意，`form.reset` 也会重置 `touched` 和 `dirty` 状态：
+
+
+要重置用于脏检查的值，请使用新值调用 `form.resetDirty`：
+
+```tsx
+import { useForm } from '@react-ui/ui';
+
+const form = useForm({
+  mode: 'uncontrolled',
+  initialValues: { a: 1 },
+  initialTouched: { a: true },
+  initialDirty: { a: true },
+});
+
+form.isDirty('a'); // -> true
+form.isTouched('a'); // -> true
+
+form.resetTouched();
+form.isTouched('a'); // -> false
+
+form.resetDirty();
+form.isDirty('a'); // -> false
+```
+
+```tsx
+import { useForm } from '@react-ui/ui';
+
+const form = useForm({
+  mode: 'uncontrolled',
+  initialValues: { a: 1 },
+});
+
+form.setValues({ a: 2 });
+form.isDirty(); // -> true
+
+form.resetDirty({ a: 2 });
+form.isDirty(); // -> false
+
+form.setValues({ a: 3 });
+form.isDirty(); // -> true
+```
+
+## 提交状态
+
+如果传递给 `form.onSubmit` 的函数返回一个 Promise，`form.submitting` 字段将被设置为 `true`。
+Promise 解决或拒绝后，`form.submitting` 将被设置为 `false`：
+
+
+你也可以手动将 `form.submitting` 设置为 `true` 或 `false`：
+
+```tsx
+import { useForm } from '@react-ui/ui';
+
+const form = useForm({ mode: 'uncontrolled' });
+form.submitting; // -> false
+
+form.setSubmitting(true);
+form.submitting; // -> true
+
+form.setSubmitting(false);
+form.submitting; // -> false
+```
+
+<code src="./status/demo/submitting.tsx"></code>
+
+## 验证状态
+
+当任何异步验证正在进行时，`form.validating` 属性为 `true`。
+这适用于 `form.validate()`、`form.validateField()`、`form.isValid()` 以及由 `form.onSubmit` 触发的验证。
+
+`form.isValidating(path)` 如果特定字段当前正在被验证，则返回 `true`。
+当 `form.validate()` 或 `form.onSubmit` 运行所有规则时，每个带有规则的字段都被视为正在验证。
+当调用 `form.validateField(path)` 时，只有目标字段被视为正在验证。
+
+```tsx
+import { useForm } from '@react-ui/ui';
+
+const form = useForm({
+  mode: 'uncontrolled',
+  initialValues: { username: '' },
+  validate: {
+    username: async (value) => {
+      // 模拟 API 调用
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      return value === 'admin' ? '用户名已被占用' : null;
+    },
+  },
+});
+
+form.validating; // -> 空闲时为 false，验证期间为 true
+form.isValidating('username'); // -> 当 `username` 规则正在运行时为 true
+```

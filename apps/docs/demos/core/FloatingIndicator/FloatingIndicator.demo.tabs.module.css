@@ -1,0 +1,35 @@
+.list {
+  position: relative;
+  margin-bottom: var(--ui-spacing-md);
+}
+
+.indicator {
+  background-color: var(--ui-color-white);
+  border-radius: var(--ui-radius-md);
+  border: 1px solid var(--ui-color-gray-2);
+  box-shadow: var(--ui-shadow-sm);
+}
+
+[data-ui-color-scheme='dark'] .indicator {
+    background-color: var(--ui-color-dark-6);
+    border-color: var(--ui-color-dark-4);
+  }
+
+.tab {
+  z-index: 1;
+  font-weight: 600;
+  transition: color 100ms ease;
+  color: var(--ui-color-gray-7);
+}
+
+.tab[data-active] {
+    color: var(--ui-color-black);
+  }
+
+[data-ui-color-scheme='dark'] .tab {
+    color: var(--ui-color-dark-1);
+  }
+
+[data-ui-color-scheme='dark'] .tab[data-active] {
+      color: var(--ui-color-white);
+    }

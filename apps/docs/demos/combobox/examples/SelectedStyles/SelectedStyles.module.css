@@ -1,0 +1,6 @@
+
+  .option[data-combobox-selected] {
+    background-color: var(--ui-color-red-9);
+    color: var(--ui-color-red-0);
+    font-weight: 600;
+  }

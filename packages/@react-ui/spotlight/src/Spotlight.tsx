@@ -6,6 +6,7 @@ import {
   useProps,
 } from '@react-ui/ui';
 import { useUncontrolled } from '@react-ui/hooks';
+import { useMemo } from 'react';
 import { defaultSpotlightFilter } from './default-spotlight-filter';
 import { isActionsGroup } from './is-actions-group';
 import { limitActions } from './limit-actions';
@@ -139,27 +140,33 @@ export const Spotlight = factory<SpotlightFactory>((_props) => {
     onChange: onQueryChange,
   });
 
-  const filteredActions = limitActions(filter(_query, actions), limit).map((item) => {
-    if (isActionsGroup(item)) {
-      const items = item.actions.map(({ id, ...actionData }) => (
-        <SpotlightAction key={id} highlightQuery={highlightQuery} {...actionData} />
-      ));
+  const filteredActions = useMemo(
+    () =>
+      limitActions(filter(_query, actions), limit).map((item) => {
+        if (isActionsGroup(item)) {
+          const items = item.actions.map(({ id, ...actionData }) => (
+            <SpotlightAction key={id} highlightQuery={highlightQuery} {...actionData} />
+          ));
 
-      return (
-        <SpotlightActionsGroup key={item.group} label={item.group}>
-          {items}
-        </SpotlightActionsGroup>
-      );
-    }
+          return (
+            <SpotlightActionsGroup key={item.group} label={item.group}>
+              {items}
+            </SpotlightActionsGroup>
+          );
+        }
 
-    return <SpotlightAction key={item.id} highlightQuery={highlightQuery} {...item} />;
-  });
+        return <SpotlightAction key={item.id} highlightQuery={highlightQuery} {...item} />;
+      }),
+    [_query, actions, filter, highlightQuery, limit]
+  );
 
   return (
     <SpotlightRoot {...others} query={_query} onQueryChange={setQuery}>
       <SpotlightSearch {...searchProps} />
       {filteredActions.length > 0 && (
-        <SpotlightActionsList {...(scrollAreaProps as any)}>{filteredActions}</SpotlightActionsList>
+        <SpotlightActionsList key="spotlight-actions-list" {...(scrollAreaProps as any)}>
+          {filteredActions}
+        </SpotlightActionsList>
       )}
       {filteredActions.length === 0 && nothingFound && (
         <SpotlightEmpty>{nothingFound}</SpotlightEmpty>

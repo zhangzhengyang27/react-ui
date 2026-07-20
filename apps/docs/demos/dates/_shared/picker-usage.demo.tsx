@@ -1,0 +1,28 @@
+import { useState } from 'react';
+import { UIDemo } from '@react-ui/demo';
+
+const getCode = (name: string) => `
+import { useState } from 'react';
+import { ${name} } from '@react-ui/dates';
+
+function Demo() {
+  const [value, setValue] = useState<string | null>(null);
+  return <${name} value={value} onChange={setValue} />;
+}
+`;
+
+function getDemo(Component: React.FC<any>) {
+  return () => {
+    const [value, setValue] = useState<string | null>(null);
+    return <Component value={value} onChange={setValue} />;
+  };
+}
+
+export function getPickerUsageDemo(Component: React.FC<any>): UIDemo {
+  return {
+    type: 'code',
+    centered: true,
+    code: getCode(Component.displayName!.replace('@react-ui/dates/', '')),
+    component: getDemo(Component),
+  };
+}

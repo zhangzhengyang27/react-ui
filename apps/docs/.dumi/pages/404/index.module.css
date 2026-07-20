@@ -1,0 +1,19 @@
+.root {
+  min-height: 60vh;
+  padding: var(--ui-spacing-xl) var(--ui-spacing-md);
+  text-align: center;
+}
+
+.code {
+  font-size: 80px;
+  font-weight: 900;
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -2px;
+}
+
+@media (max-width: 48em) {
+  .code {
+    font-size: 56px;
+  }
+}

@@ -1,0 +1,96 @@
+.listWrap {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.listWrap > li {
+  line-height: 2;
+}
+
+.linkRef {
+  margin-inline-start: var(--ui-spacing-xs);
+}
+
+.bug {
+  font-size: var(--ui-font-size-md);
+  color: #aaa;
+  margin-inline-start: var(--ui-spacing-xs);
+  display: inline-block;
+  vertical-align: inherit;
+  cursor: pointer;
+}
+
+.bug:hover {
+  color: #333;
+}
+
+.bugReasonTitle {
+  padding: var(--ui-spacing-xs);
+  font-weight: 600;
+}
+
+.bugReasonList {
+  width: 100%;
+  max-width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bugReasonList li {
+  padding: var(--ui-spacing-xs);
+}
+
+.bugReasonList a {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-spacing-xs);
+  color: inherit;
+  text-decoration: none;
+}
+
+.bugReasonList a:hover {
+  color: var(--ui-primary-color-filled);
+}
+
+.extraLink {
+  font-size: var(--ui-font-size-md);
+}
+
+.versionWrap {
+  margin-bottom: 1em;
+}
+
+.versionTitle {
+  height: 28px;
+  line-height: 28px;
+  font-weight: 600;
+  font-size: 20px;
+  margin: 0 !important;
+  padding: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.versionTitle:hover {
+  color: var(--ui-primary-color-filled);
+}
+
+.versionTag {
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.versionTag:last-child {
+  margin-inline-end: 0;
+}
+
+.drawerTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ui-spacing-md);
+}

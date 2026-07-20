@@ -1,0 +1,122 @@
+---
+category: Styles
+title: StylesPerformance
+subtitle: 样式性能
+description: react-ui StylesPerformance 文档。
+---
+
+
+## CSS 模块
+
+[CSS modules](/docs/styles/css-modules) 是应用样式的最高性能方式——
+它会生成静态 CSS，且不会被重复计算。99% 的 ReactUI 组件样式都通过 CSS modules 生成，
+组件已经开箱即用进行了优化。
+
+在大多数情况下，建议你也使用 [CSS modules](/docs/styles/css-modules) 为组件设置样式。
+你可以通过 `className` prop 为 HTML 元素应用样式，并通过 `className` 和 `classNames` props
+为 ReactUI 组件应用样式。
+
+使用 `className` 应用样式：
+
+
+使用 `classNames` 应用样式（更多信息请参考 [Styles API 指南](/docs/styles/styles-api)）：
+
+<code src="./styles-performance/demo/className.tsx"></code>
+
+<code src="./styles-performance/demo/classNames.tsx"></code>
+
+## 内联样式
+
+内联样式（`style` 和 `styles` props）的性能低于 CSS modules，
+但如果它是你项目中首选的样式方案，大多数情况下仍然足够高效。
+
+内联样式的注意事项：
+
+- 样式不会在组件之间复用；每个组件都会生成自己的样式。例如，
+  如果你有 100 个相同样式的按钮，CSS modules 会为它们生成 1 个 class，
+  而内联样式会生成 100 个 `style` 属性
+- 如果过度使用内联样式，会增加打包体积和输出的 HTML 体积
+- _与性能无关_：内联样式的优先级高于 CSS modules，因此如果你想覆盖内联样式，
+  必须使用 `!important` 或其他内联样式
+
+内联样式示例：
+
+<code src="./styles-performance/demo/styles.tsx"></code>
+
+## 样式属性
+
+[Style props](/docs/styles/style-props) 会将组件 props 转换为内联样式。Style props 与内联样式有相同的注意事项。
+不建议将它们作为组件样式的主要手段。通常，style props 适合为组件应用 1–3 个样式——
+这样使用不会影响性能。
+
+## 响应式 style props
+
+响应式 [style props](/docs/styles/style-props) 的性能比普通 style props 更差，
+因为它们需要在组件旁边注入 `<style />` 标签。为少量组件使用响应式 style props 没有问题，
+但不建议在大型组件列表中使用。例如，如果你有 1000 个带响应式边距的输入框，
+最好重构为使用 `classNames` prop：
+
+
+### 去重响应式 style props
+
+如果你有许多组件使用相同的响应式 style props，可以在 [UIProvider](/docs/theming/ui-provider) 上启用
+`deduplicateInlineStyles`，让具有相同响应式样式的组件自动共享同一个 `<style />` 标签。
+它利用 React 19 的样式提升（style hoisting）机制，对样式进行去重并提升到 `<head />`：
+
+
+注意，去重只有在多个组件共享**完全相同**的响应式 style prop 值时才有帮助。
+如果每个组件的响应式值都不同，仍然需要各自独立的 `<style />` 标签。
+
+目前，去重适用于所有组件上的 [style props](/docs/styles/style-props) 以及
+[Flex](/components/flex) 组件上的响应式 props。[Grid](/components/grid) 和
+[SimpleGrid](/components/simple-grid) 等组件暂不支持。
+
+```tsx
+import { TextInput } from '@react-ui/ui';
+
+// 推荐，style props 用于为少量组件应用 margin-top
+function StyleProps() {
+  return (
+    <>
+      <TextInput label="输入 1" />
+      <TextInput label="输入 2" mt={{ base: 10, md: 20 }} />
+      <TextInput label="输入 3" mt={{ base: 10, md: 20 }} />
+    </>
+  );
+}
+
+// 较差，会生成 1000 个独立的 <style /> 标签
+// 最好重构为使用 className prop
+function StylePropsArray() {
+  const inputs = Array(1000)
+    .fill(0)
+    .map((_, index) => (
+      <TextInput
+        key={index}
+        label={`Input ${index}`}
+        mt={{ base: 10, md: 20 }}
+      />
+    ));
+
+  return <>{inputs}</>;
+}
+```
+
+```tsx
+import { UIProvider } from '@react-ui/ui';
+
+function Demo() {
+  return (
+    <UIProvider deduplicateInlineStyles>
+      {/* Components with the same responsive style props
+          will now share a single <style /> tag */}
+    </UIProvider>
+  );
+}
+```
+
+## 组件响应式 props
+
+部分组件（如 [SimpleGrid](/components/simple-grid) 和 [Grid](/components/grid)）
+依赖与响应式 style props 相同的机制来应用样式。它们的限制也相同——
+在页面中使用少量此类组件没有问题，但不建议在大型列表中使用。

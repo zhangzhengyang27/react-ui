@@ -1,0 +1,141 @@
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+:global(pre code) {
+  display: block;
+  padding: var(--ui-spacing-md) var(--ui-spacing-xl);
+  color: var(--ui-color-text);
+  font-size: var(--ui-font-size-sm);
+  font-family: 'Lucida Console', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  line-height: 2;
+  white-space: pre;
+  background: var(--ui-color-default);
+  border: 1px solid var(--ui-color-default-border);
+  border-radius: var(--ui-radius-md);
+}
+
+:global(code[class*='language-']),
+:global(pre[class*='language-']) {
+  color: var(--ui-color-text);
+  font-family: 'Lucida Console', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  line-height: var(--ui-line-height);
+  direction: ltr;
+  white-space: pre;
+  text-align: start;
+  word-wrap: normal;
+  word-break: normal;
+  word-spacing: normal;
+  tab-size: 4;
+  hyphens: none;
+  background: none;
+}
+
+:global(code[class*='css']) {
+  direction: ltr;
+}
+
+:global(pre[class*='language-'] ::selection),
+:global(code[class*='language-'] ::selection) {
+  text-shadow: none;
+  background: #b3d4fc;
+}
+
+@media print {
+  :global(code[class*='language-']),
+  :global(pre[class*='language-']) {
+    text-shadow: none;
+  }
+}
+
+/* Code blocks */
+:global(pre[class*='language-']) {
+  margin: var(--ui-spacing-md) 0;
+  padding: var(--ui-spacing-sm) var(--ui-spacing-lg);
+  overflow: auto;
+}
+
+:global(:not(pre) > code[class*='language-']),
+:global(pre[class*='language-']) {
+  background: var(--ui-color-body);
+}
+
+/* Inline code */
+:global(:not(pre) > code[class*='language-']) {
+  padding: 0.1em;
+  white-space: normal;
+  border-radius: 0.3em;
+}
+
+:global(.token.comment),
+:global(.token.prolog),
+:global(.token.doctype),
+:global(.token.cdata) {
+  color: slategray;
+}
+
+:global(.token.punctuation) {
+  color: #999;
+}
+
+:global(.namespace) {
+  opacity: 0.7;
+}
+
+:global(.markdown .token.property),
+:global(.markdown .token.tag),
+:global(.markdown .token.boolean),
+:global(.markdown .token.number),
+:global(.markdown .token.constant),
+:global(.markdown .token.symbol),
+:global(.markdown .token.deleted) {
+  color: #f81d22;
+}
+
+:global(.markdown .token.selector),
+:global(.markdown .token.attr-name),
+:global(.markdown .token.string),
+:global(.markdown .token.char),
+:global(.markdown .token.builtin),
+:global(.markdown .token.inserted) {
+  color: #0b8235;
+}
+
+:global(.markdown .token.operator),
+:global(.markdown .token.entity),
+:global(.markdown .token.url),
+:global(.markdown .language-css .token.string),
+:global(.markdown .style .token.string) {
+  color: #0b8235;
+}
+
+:global(.markdown .token.atrule),
+:global(.markdown .token.attr-value),
+:global(.markdown .token.keyword) {
+  color: #008dff;
+}
+
+:global(.markdown .token.function) {
+  color: #f81d22;
+}
+
+:global(.markdown .token.regex),
+:global(.markdown .token.important),
+:global(.markdown .token.variable) {
+  color: #e90;
+}
+
+:global(.markdown .token.important),
+:global(.markdown .token.bold) {
+  font-weight: bold;
+}
+
+:global(.markdown .token.italic) {
+  font-style: italic;
+}
+
+:global(.markdown .token.entity) {
+  cursor: help;
+}

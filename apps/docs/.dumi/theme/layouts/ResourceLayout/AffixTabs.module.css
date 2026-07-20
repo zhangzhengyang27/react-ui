@@ -1,0 +1,42 @@
+/* AffixTabs styles - migrated from antd-style createStyles.
+   boxShadowSecondary replaced with --ui-shadow-sm.
+   motionDurationSlow hardcoded to 0.3s (antd default for slow). */
+
+.affixTabs {
+  position: fixed;
+  top: 0;
+  inset-inline-end: 0;
+  inset-inline-start: 0;
+  z-index: 1001;
+  padding: 0 40px;
+  background: var(--ui-color-body);
+  box-shadow: var(--ui-shadow-sm);
+  transform: translate3d(0, -100%, 0);
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.affixTabsFixed {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+.tabs {
+  max-width: 1208px;
+  margin: 0 auto;
+}
+
+.tabsList {
+  margin: 0;
+  border-bottom-color: transparent;
+}
+
+.tab {
+  padding: 21px 0;
+}
+
+.span {
+  text-transform: capitalize;
+}

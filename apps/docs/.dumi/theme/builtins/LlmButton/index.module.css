@@ -1,0 +1,7 @@
+.button {
+  min-width: 300px;
+  border-radius: var(--ui-radius-md);
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+}

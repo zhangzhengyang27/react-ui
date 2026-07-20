@@ -39,6 +39,14 @@ export function useFetch<T>(
     const [error, setError] = useState<Error | null>(null)
     const controller = useRef<AbortController | null>(null)
 
+    // 把 url 和 options 存到 ref，避免作为依赖项导致无限循环。
+    // 原因：options 默认值 {} 在每次渲染都创建新对象，若作为 useCallback 依赖，
+    // refetch 引用每次变化 → useEffect 反复触发 → setState → 重渲染 → 死循环。
+    const urlRef = useRef(url)
+    urlRef.current = url
+    const optionsRef = useRef(options)
+    optionsRef.current = options
+
     const refetch = useCallback(() => {
         if (controller.current) {
             controller.current.abort()
@@ -47,9 +55,12 @@ export function useFetch<T>(
         controller.current = new AbortController()
         setLoading(true)
 
-        const request = typeof url === 'function'
-            ? (url as () => Promise<T>)()
-            : fetch(url, { ...options, signal: controller.current.signal })
+        const currentUrl = urlRef.current
+        const currentOptions = optionsRef.current
+
+        const request = typeof currentUrl === 'function'
+            ? (currentUrl as () => Promise<T>)()
+            : fetch(currentUrl, { ...currentOptions, signal: controller.current.signal })
                 .then(res => {
                     if (!res.ok) {
                         throw new Error(`Request failed with status ${res.status}`)
@@ -73,7 +84,7 @@ export function useFetch<T>(
 
                 return err
             })
-    }, [url, options])
+    }, [])
 
     const abort = useCallback(() => {
         controller.current?.abort()

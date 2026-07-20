@@ -18,6 +18,8 @@ export const configurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
+  title: '变体与尺寸',
+  description: '通过配置面板调整按钮的变体、颜色、大小和圆角。',
   centered: true,
   controls: [
     interactiveVariantsControl,

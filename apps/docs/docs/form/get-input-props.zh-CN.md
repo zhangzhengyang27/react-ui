@@ -1,0 +1,191 @@
+---
+category: Form
+title: GetInputProps
+subtitle: 获取输入属性
+description: react-ui GetInputProps 文档。
+---
+
+
+## getInputProps 处理程序
+
+`form.getInputProps` 返回一个对象，其中包含 `value`（非受控模式下为 `defaultValue`）、`onChange`、`onFocus`、`onBlur`、`error`
+以及在 `enhanceGetInputProps` 函数中指定的所有 props。返回值应展开到输入组件上。
+
+你可以将以下选项作为第二个参数传递给 `form.getInputProps`：
+
+- `type`：默认 `input`。如果输入需要 `checked` prop 而不是 `value` prop，则必须设置为 `checkbox`。对于单选输入，设置为 `radio`——需要 `value` 选项。
+- `value`：当 `type` 为 `radio` 时必填。指定单个单选选项的值。
+- `withError`：默认 `type === 'input'`。确定返回的对象是否应包含 `error` 属性，其值为 `form.errors[path]`。
+- `withFocus`：默认 `true`（`type: 'radio'` 时为 `false`）。确定返回的对象是否应包含 `onFocus` 处理程序。如果禁用，则触碰状态只会在字段值发生变化时改变。
+- 任何可以通过 `enhanceGetInputProps` 函数访问的附加 props。这些 props 不会传递给输入框。
+
+```tsx
+import { Checkbox, TextInput } from '@react-ui/ui';
+import { useForm } from '@react-ui/ui';
+
+function Demo() {
+  const form = useForm({
+    mode: 'uncontrolled',
+    initialValues: { name: '', accepted: false },
+    validate: {
+      name: (value) => value.trim().length > 2,
+    },
+  });
+
+  return (
+    <>
+      <TextInput
+        key={form.key('name')}
+        {...form.getInputProps('name')}
+      />
+      <Checkbox
+        key={form.key('accepted')}
+        {...form.getInputProps('accepted', { type: 'checkbox' })}
+      />
+    </>
+  );
+}
+```
+
+## 单选输入
+
+将 `type: 'radio'` 与 `value` 选项一起使用，以将 `getInputProps` 用于单个单选输入。
+当 `type` 为 `radio` 时，`getInputProps` 会将表单值与提供的选项 `value` 进行比较，返回 `checked`（非受控模式下为 `defaultChecked`），
+并将 `value` 透传给输入框。
+
+<code src="./get-input-props/demo/radioGetInputProps.tsx"></code>
+
+## enhanceGetInputProps
+
+`enhanceGetInputProps` 是一个函数，可用于向 `form.getInputProps` 返回的对象添加额外的 props。
+你可以在 `useForm` Hook 选项中定义它。它的参数是一个具有以下属性的对象：
+
+- `inputProps` – `form.getInputProps` 默认返回的对象
+- `field` – 字段路径，`form.getInputProps` 的第一个参数，例如 `name`、`user.email`、`users.0.name`
+- `options` – `form.getInputProps` 的第二个参数，例如 `{ type: 'checkbox' }`，可用于向 `enhanceGetInputProps` 函数传递额外的选项
+- `form` – 表单实例
+
+使用 `enhanceGetInputProps` 根据字段路径禁用输入的示例：
+
+
+使用 `enhanceGetInputProps` 根据传给 `form.getInputProps` 的选项向输入添加额外 props 的示例：
+
+
+使用 `enhanceGetInputProps` 在表单尚未初始化时向所有输入添加 `disabled` prop 的示例：
+
+<code src="./get-input-props/demo/enhanceGetInputProps.tsx"></code>
+
+<code src="./get-input-props/demo/enhanceGetInputPropsOptions.tsx"></code>
+
+<code src="./get-input-props/demo/enhanceGetInputPropsForm.tsx"></code>
+
+## 初始化表单
+
+调用时，`form.initialize` 处理程序将 `initialValues` 和 `values` 设置为相同的值，
+并将表单标记为已初始化。它只能使用一次。后续的 `form.initialize` 调用将被忽略。
+
+`form.initialize` 在你希望将表单值与后端 API 响应同步时非常有用：
+
+
+与 [TanStack Query](https://tanstack.com/query/latest)（react-query）一起使用的示例：
+
+```tsx
+import { useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { useForm } from '@react-ui/ui';
+
+function Demo() {
+  const query = useQuery({
+    queryKey: ['current-user'],
+    queryFn: () => fetch('/api/users/me').then((res) => res.json()),
+  });
+
+  const form = useForm({
+    mode: 'uncontrolled',
+    initialValues: {
+      name: '',
+      email: '',
+    },
+  });
+
+  useEffect(() => {
+    if (query.data) {
+      // 即使 query.data 变化，表单也只会初始化一次
+      form.initialize(query.data);
+    }
+  }, [query.data]);
+}
+```
+
+<code src="./get-input-props/demo/initialize.tsx"></code>
+
+## 将 getInputProps 与自定义输入集成
+
+`form.getInputProps` 返回一个具有以下属性的对象：
+
+- `value`
+- `defaultValue`
+- `onChange`
+- `onFocus`
+- `onBlur`
+- `error`
+
+要创建与 `form.getInputProps` 配合使用的自定义输入，请确保你的组件
+接受这些 props，并将它们传递给输入组件或以其他方式使用它们。
+
+创建自定义输入组件的示例：
+
+
+然后与 `form.getInputProps` 一起使用：
+
+```tsx
+interface CustomInputProps {
+  value?: string;
+  defaultValue?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  error?: string;
+}
+
+export function CustomInput({
+  value,
+  defaultValue,
+  onChange,
+  onFocus,
+  onBlur,
+  error,
+}: CustomInputProps) {
+  return (
+    <div>
+      <input
+        value={value}
+        defaultValue={defaultValue}
+        onChange={onChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
+      />
+      {error && <div>{error}</div>}
+    </div>
+  );
+}
+```
+
+```tsx
+import { useForm } from '@react-ui/ui';
+import { CustomInput } from './CustomInput';
+
+function Demo() {
+  const form = useForm({
+    mode: 'uncontrolled',
+    initialValues: { name: '' },
+  });
+
+  return (
+    <CustomInput
+      {...form.getInputProps('name')}
+      key={form.key('name')}
+    />
+  );
+}
+```

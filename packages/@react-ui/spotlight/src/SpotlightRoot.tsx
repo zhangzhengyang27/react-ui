@@ -11,6 +11,7 @@ import {
   useResolvedStylesApi,
   useStyles,
 } from '@react-ui/ui';
+import { useCallback, useMemo } from 'react';
 import { useDidUpdate, useHotkeys } from '@react-ui/hooks';
 import { getHotkeys } from './get-hotkeys';
 import { SpotlightProvider } from './Spotlight.context';
@@ -138,10 +139,13 @@ export const SpotlightRoot = factory<SpotlightRootFactory>((_props) => {
 
   const { opened, query: storeQuery } = useSpotlight(store);
   const _query = typeof query === 'string' ? query : storeQuery;
-  const setQuery = (q: string) => {
-    onQueryChange?.(q);
-    spotlightActions.setQuery(q, store);
-  };
+  const setQuery = useCallback(
+    (q: string) => {
+      onQueryChange?.(q);
+      spotlightActions.setQuery(q, store);
+    },
+    [onQueryChange, store]
+  );
 
   const getStyles = useStyles<SpotlightRootFactory>({
     name: 'Spotlight',
@@ -171,18 +175,24 @@ export const SpotlightRoot = factory<SpotlightRootFactory>((_props) => {
     return null;
   }
 
+  const ctx = useMemo(
+    () => ({
+      getStyles,
+      query: _query,
+      setQuery,
+      store,
+      closeOnActionTrigger,
+    }),
+    [getStyles, _query, setQuery, store, closeOnActionTrigger]
+  );
+
   return (
     <SpotlightProvider
-      value={{
-        getStyles,
-        query: _query,
-        setQuery,
-        store,
-        closeOnActionTrigger,
-      }}
+      value={ctx}
     >
       <Modal
         {...others}
+        withinPortal={false}
         withCloseButton={false}
         opened={opened || !!forceOpened}
         padding={0}

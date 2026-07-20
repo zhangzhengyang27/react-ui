@@ -1,0 +1,29 @@
+.code {
+  position: relative;
+  margin-top: calc(-1 * var(--ui-spacing-md));
+}
+
+.copyButton {
+  color: var(--ui-color-dimmed);
+  position: absolute;
+  z-index: 2;
+  top: 16px;
+  inset-inline-end: var(--ui-spacing-md);
+  width: 32px;
+  text-align: center;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.copyButton:hover {
+  color: var(--ui-color-text);
+}
+
+.copyButtonSuccess {
+  color: var(--ui-color-success);
+}

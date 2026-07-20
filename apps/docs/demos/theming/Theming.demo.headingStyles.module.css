@@ -1,0 +1,8 @@
+
+  .heading:is(h1) {
+    font-family: var(--docs-font-primary), sans-serif;
+    font-weight: 900;
+  }
+.heading:is(h5, h6) {
+    color: var(--ui-color-dimmed);
+  }

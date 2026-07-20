@@ -1,0 +1,65 @@
+import { Splitter, SplitterProps } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
+
+function Wrapper(props: SplitterProps) {
+  return (
+    <Splitter {...props} h={200}>
+      <Splitter.Pane
+        defaultSize={50}
+        min={20}
+        bg="blue"
+        c="white"
+        fw={500}
+        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      >
+        First pane
+      </Splitter.Pane>
+      <Splitter.Pane
+        defaultSize={50}
+        min={20}
+        bg="teal"
+        c="white"
+        fw={500}
+        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      >
+        Second pane
+      </Splitter.Pane>
+    </Splitter>
+  );
+}
+
+const code = `
+import { Splitter } from '@react-ui/ui';
+
+function Demo() {
+  return (
+    <Splitter{{props}} h={200}>
+      <Splitter.Pane defaultSize={50} min={20} bg="blue">
+        First pane
+      </Splitter.Pane>
+      <Splitter.Pane defaultSize={50} min={20} bg="teal">
+        Second pane
+      </Splitter.Pane>
+    </Splitter>
+  );
+}`;
+
+export const usage: UIDemo = {
+  type: 'configurator',
+  component: Wrapper,
+  code,
+  centered: true,
+  maxWidth: '100%',
+  controls: [
+    {
+      prop: 'orientation',
+      type: 'segmented',
+      initialValue: 'horizontal',
+      libraryValue: 'horizontal',
+      data: [
+        { value: 'horizontal', label: '水平' },
+        { value: 'vertical', label: '垂直' },
+      ],
+    },
+  ],
+};

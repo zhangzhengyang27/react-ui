@@ -1,0 +1,111 @@
+/* 完全照抄 ant.design 侧边栏样式
+   参考来源：https://ant.design/components/button-cn
+   - 菜单项：高度 40px、字号 14px、圆角 8px、margin 4px、padding 0 12px 0 36px
+   - 默认态：文字 rgba(0,0,0,0.88)、背景透明
+   - hover 态：文字主色、背景 rgba(0,0,0,0.06)
+   - 选中态：文字主色、背景 #e6f4ff（主色 10% alpha）
+   - 分组标题：字号 14px、颜色 rgba(0,0,0,0.45)、padding 8px 12px 8px 36px
+   - 侧边栏：右侧 1px 分隔线、padding 0 4px 48px
+*/
+
+.mainMenu {
+  position: sticky;
+  top: 64px;
+  /* 阻止 flex 容器（.main 是 display:flex）默认的 align-items: stretch
+     把 sidebar 拉伸到与 Content 等高。否则 sidebar 高度会变得比视口还高，
+     导致 sticky 视觉失效——sidebar 跟随窗口一起滚动，而非贴住顶部独立滚动。 */
+  align-self: flex-start;
+  flex: 0 0 280px;
+  width: 280px;
+  max-width: 280px;
+  padding: 0 4px 48px;
+  border-inline-end: 1px solid var(--ui-color-default-border);
+  font-family: var(--ui-font-family);
+}
+
+.asideContainer {
+  min-height: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* 菜单根节点，对齐 antd .ant-menu */
+.menuRoot {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* 顶级分组容器 */
+.menuGroup {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* 分组标题：对应 antd .ant-menu-item-group-title */
+.groupTitle {
+  margin: 0;
+  padding: 8px 12px 8px 36px;
+  font-size: var(--ui-font-size-sm);
+  line-height: 22px;
+  color: var(--ui-color-dimmed);
+  font-weight: 400;
+}
+
+/* 菜单项（叶子节点） - 对应 antd 的 li.ant-menu-item */
+.menuItem {
+  margin: 4px;
+  overflow: hidden;
+  border-radius: 8px;
+  font-size: var(--ui-font-size-sm);
+}
+
+.menuItem > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 40px;
+  padding: 0 12px 0 36px;
+  color: var(--ui-color-text);
+  font-size: var(--ui-font-size-sm);
+  line-height: 40px;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+.menuItem > a:hover {
+  color: var(--ui-color-anchor);
+  background: var(--ui-color-default-hover);
+}
+
+/* 选中态：对应 antd 的 li.ant-menu-item-selected */
+.menuItemActive > a {
+  color: var(--ui-color-anchor);
+  background: var(--ui-primary-color-light);
+  font-weight: 400;
+}
+
+.menuItemDisabled > a {
+  color: var(--ui-color-disabled-color);
+  pointer-events: none;
+}
+
+/* 二级分组标题（/docs/spec 分类） - 对应 antd 的 .ant-menu-item-group-title */
+.subGroupTitle {
+  margin: 0;
+  padding: 8px 12px 8px 36px;
+  font-size: var(--ui-font-size-sm);
+  line-height: 22px;
+  color: var(--ui-color-dimmed);
+  font-weight: 400;
+}
+
+/* 二级分组下的菜单项（与一级项保持相同缩进，符合 antd 平铺风格） */
+.subGroupItem > a {
+  padding-inline-start: 36px;
+}

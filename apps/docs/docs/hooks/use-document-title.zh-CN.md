@@ -1,0 +1,23 @@
+---
+category: Hooks
+title: UseDocumentTitle
+subtitle: 文档标题
+description: react-ui 文档标题 Hook 文档。
+---
+
+
+## 用法
+
+`use-document-title` Hook 使用 `React.useLayoutEffect` 设置 `document.title` 属性。
+`use-document-title` 在服务端渲染期间不会被调用。请在仅客户端应用中使用此 Hook；
+对于同构应用，请考虑更高级的选项（例如 [react-helmet](https://github.com/nfl/react-helmet)）。
+
+在任何组件中使用应设置为文档标题的字符串调用该 Hook。`use-document-title` 在值变化且不为空字符串时触发（末尾空白会被截断）。
+
+<code src="./use-document-title/demo/usage.tsx"></code>
+
+## 类型定义
+
+```tsx
+function useDocumentTitle(title: string): void;
+```

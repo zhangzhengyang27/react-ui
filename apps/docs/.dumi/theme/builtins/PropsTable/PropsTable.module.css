@@ -1,0 +1,51 @@
+.propName {
+  font-family: var(--ui-font-family-monospace);
+  font-size: 12px;
+  max-width: 100%;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &[data-deprecated] {
+    color: var(--ui-color-dimmed);
+    text-decoration: line-through;
+  }
+}
+
+.scrollContainer {
+  margin-inline: calc(var(--docs-inline-spacing, 0px) * -1);
+  padding-inline: var(--docs-inline-spacing, 0px);
+
+  @media (max-width: 67.5em) {
+    overflow-x: auto;
+  }
+}
+
+.table {
+  font-size: var(--ui-font-size-sm);
+  min-width: 900px;
+}
+
+.stickyTh {
+  position: sticky;
+  top: 60px;
+  z-index: 10;
+  background-color: light-dark(var(--ui-color-body), var(--ui-color-dark-7));
+}
+
+.typeCode,
+.enumCode,
+.defaultCode {
+  font-size: 12px;
+  max-width: 100%;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.enumCode {
+  color: var(--ui-color-blue-6);
+}
+
+.defaultCode {
+  color: var(--ui-color-teal-6);
+}

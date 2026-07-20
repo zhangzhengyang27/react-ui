@@ -1,0 +1,23 @@
+---
+category: Hooks
+title: UseFavicon
+subtitle: 网站图标
+description: react-ui 网站图标 Hook 文档。
+---
+
+
+## 用法
+
+`use-favicon` Hook 在 `useLayoutEffect` 中向 head 添加一个带有指定 favicon 的 `<link />` 元素。
+该 Hook 在服务端渲染期间不会被调用。
+
+使用应设置为 favicon 的 URL（支持格式：`.ico`、`.png`、`.svg` 和 `.gif`）调用该 Hook。
+该 Hook 在 URL 变化且不为空字符串（末尾空白会被截断）或 `null` 时触发。
+
+<code src="./use-favicon/demo/usage.tsx"></code>
+
+## 类型定义
+
+```tsx
+function useFavicon(url: string): void;
+```

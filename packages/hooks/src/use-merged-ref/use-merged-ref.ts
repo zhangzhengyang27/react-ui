@@ -1,4 +1,4 @@
-import { LegacyRef, useCallback, type MutableRefObject, type RefCallback } from 'react'
+import { LegacyRef, useCallback, useRef, type MutableRefObject, type RefCallback } from 'react'
 
 type PossibleRef<T> = LegacyRef<T> | undefined
 
@@ -49,8 +49,36 @@ export function mergeRefs<T>(...refs: PossibleRef<T>[]): RefCallback<T> {
 
 /**
  * 合并多个 ref 的 hook。
- * 当传入的 refs 变化时返回新的 callback，使 React 能正确调用 cleanup 并重新绑定事件。
+ * 返回稳定的 callback，避免传入的 refs  identity 变化时 React 反复调用旧/新 ref 触发 setState 循环。
+ * 通过 ref 访问最新的 refs，支持 React 19 ref cleanup。
  */
 export function useMergedRef<T>(...refs: PossibleRef<T>[]) {
-    return useCallback(mergeRefs(...refs), refs)
+    const refsRef = useRef(refs)
+    refsRef.current = refs
+
+    return useCallback((node: T | null) => {
+        const cleanupMap = new Map<PossibleRef<T>, () => void>()
+
+        refsRef.current.forEach(ref => {
+            const cleanup = assignRef(ref, node)
+            if (typeof cleanup === 'function') {
+                cleanupMap.set(ref, cleanup)
+            }
+        })
+
+        return () => {
+            refsRef.current.forEach(ref => {
+                const cleanup = cleanupMap.get(ref)
+                if (typeof cleanup === 'function') {
+                    cleanup()
+                } else if (typeof ref === 'object' && ref !== null && 'current' in ref) {
+                    // Only null out object refs during cleanup; calling function refs
+                    // (especially React dispatchSetState used as ref) with null during
+                    // commit/deletion can schedule state updates and trigger infinite loops.
+                    assignRef(ref, null)
+                }
+            })
+            cleanupMap.clear()
+        }
+    }, []) // stable callback
 }

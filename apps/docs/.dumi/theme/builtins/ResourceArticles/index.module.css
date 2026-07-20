@@ -1,0 +1,64 @@
+.articles h4 {
+  margin: 40px 0 24px;
+  font-weight: 500;
+  font-size: var(--ui-font-size-xl);
+}
+
+.articles :global(.ui-skeleton) h3 {
+  margin: 0;
+}
+
+.articles :global(.ui-skeleton) ul li {
+  display: block;
+  margin-inline-start: 0;
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table td {
+  width: 50%;
+  vertical-align: top;
+}
+
+.articleList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.articleList li {
+  margin: 1em 0;
+  padding: 0;
+  font-size: var(--ui-font-size-md);
+  list-style: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.articleItem {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-spacing-xs);
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  max-width: unset;
+}
+
+.columnTitle {
+  margin: 40px 0 24px;
+  font-weight: 500;
+  font-size: var(--ui-font-size-xl);
+}
+
+.tabs {
+  justify-content: center;
+}

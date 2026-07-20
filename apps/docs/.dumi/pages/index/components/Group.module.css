@@ -1,0 +1,37 @@
+.box {
+  position: relative;
+  transition: all 300ms ease;
+  background-size: cover;
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+}
+
+.container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.typographyWrapper {
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ui-spacing-xs);
+}
+
+.marginStyle {
+  max-width: 1208px;
+  margin-inline: auto;
+  box-sizing: border-box;
+  padding-inline: var(--ui-spacing-xl);
+}
+
+.withoutChildren {
+  min-height: 300px;
+  border-radius: var(--ui-radius-lg);
+  background-color: #e9e9e9;
+}

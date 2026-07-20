@@ -5,7 +5,6 @@ import { FormBase } from './_base';
 export default { title: 'Form' };
 
 function Input(props: any) {
-  console.log('render', props.name);
   return <input {...props} />;
 }
 

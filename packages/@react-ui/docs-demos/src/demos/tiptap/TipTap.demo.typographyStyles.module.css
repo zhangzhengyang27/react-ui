@@ -1,14 +1,12 @@
-.root {
-  h2 {
-    color: light-dark(var(--ui-color-gray-6), var(--ui-color-dark-2));
-    font-size: var(--ui-font-size-xl);
-  }
+.root h2 {
+  color: light-dark(var(--ui-color-gray-6), var(--ui-color-dark-2));
+  font-size: var(--ui-font-size-xl);
+}
 
-  p {
-    font-size: var(--ui-font-size-lg);
-  }
+.root p {
+  font-size: var(--ui-font-size-lg);
+}
 
-  a {
-    color: var(--ui-color-red-6);
-  }
+.root a {
+  color: var(--ui-color-red-6);
 }

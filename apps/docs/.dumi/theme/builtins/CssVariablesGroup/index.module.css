@@ -1,0 +1,11 @@
+.table {
+  margin: var(--ui-spacing-md) 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+.table :global(table) {
+  width: 100%;
+}

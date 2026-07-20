@@ -1,0 +1,20 @@
+.root {
+  background-color: var(--notification-color, var(--ui-primary-color-filled));
+}
+
+.root::before {
+    background-color: var(--ui-color-white);
+  }
+
+.description,
+.title {
+  color: var(--ui-color-white);
+}
+
+.closeButton {
+  color: var(--ui-color-white);
+}
+
+.closeButton:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }

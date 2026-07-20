@@ -1,0 +1,75 @@
+---
+category: Hooks
+title: UseIntersection
+subtitle: 交叉观察
+description: react-ui 交叉观察 Hook 文档。
+---
+
+
+## 用法
+
+`use-intersection` Hook 使用 [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+返回给定元素与其滚动容器或 body 元素的交叉信息：
+
+<code src="./use-intersection/demo/usage.tsx"></code>
+
+## API 参考
+
+该 Hook 接受 `IntersectionObserver` 的选项作为其唯一的可选参数：
+
+
+该 Hook 返回一个应传递给被观察元素的 `ref` 函数，以及由 `IntersectionObserver` 回调返回的最新 entry。
+请参阅 [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) 文档以了解所有选项。
+
+在第一次渲染（以及 SSR 期间）或未观察任何元素时，entry 为 `null`。
+
+```tsx
+import { useIntersection } from '@react-ui/hooks';
+
+useIntersection({
+  root: document.querySelector('#some-element'),
+  rootMargin: '0rem',
+  threshold: 1.0,
+});
+```
+
+```tsx
+import { Paper } from '@react-ui/ui';
+import { useIntersection } from '@react-ui/hooks';
+
+function Demo() {
+  const { ref } = useIntersection();
+
+  return (
+    <>
+      {/* 普通元素： */}
+      <div ref={ref} />
+
+      {/* ReactUI 组件： */}
+      <Paper ref={ref} />
+    </>
+  );
+}
+```
+
+## 类型定义
+
+```tsx
+interface UseIntersectionReturnValue<T> {
+  ref: React.RefCallback<T | null>;
+  entry: IntersectionObserverEntry | null;
+}
+
+function useIntersection<T extends HTMLElement = any>(
+  options?: IntersectionObserverInit,
+): UseIntersectionReturnValue<T>
+```
+
+## 导出类型
+
+`UseIntersectionReturnValue` 类型从 `@react-ui/hooks` 包导出，
+可在应用中导入：
+
+```tsx
+import type { UseIntersectionReturnValue } from '@react-ui/hooks';
+```

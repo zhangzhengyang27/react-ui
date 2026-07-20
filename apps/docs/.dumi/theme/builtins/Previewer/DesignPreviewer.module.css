@@ -1,0 +1,55 @@
+.wrapper {
+  position: relative;
+  border: 1px solid var(--ui-color-gray-3);
+  border-radius: var(--ui-radius-default);
+  padding: var(--ui-spacing-md) var(--ui-spacing-lg) calc(var(--ui-spacing-md) * 2);
+  margin-bottom: var(--ui-spacing-lg);
+}
+
+.title {
+  font-size: var(--ui-font-size-lg);
+  font-weight: 700;
+  color: var(--ui-color-text);
+}
+
+.title:hover {
+  color: var(--ui-color-text);
+}
+
+.description {
+  margin-top: var(--ui-spacing-md);
+}
+
+.demo {
+  margin-top: var(--ui-spacing-lg);
+  display: flex;
+  justify-content: center;
+}
+
+.copy {
+  position: absolute;
+  inset-inline-end: var(--ui-spacing-md);
+  inset-block-start: var(--ui-spacing-md);
+  cursor: pointer;
+}
+
+.copyTip {
+  color: var(--ui-color-dimmed);
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.copiedTip {
+  color: var(--ui-color-green-6);
+  display: inline-flex;
+  align-items: center;
+}
+
+.tip {
+  color: var(--ui-color-dimmed);
+  margin-top: calc(var(--ui-spacing-md) * 2);
+}

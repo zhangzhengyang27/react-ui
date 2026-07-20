@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
     createVarsResolver,
     Factory,
@@ -192,6 +192,15 @@ export function HoverCard(_props: HoverCardProps) {
         middlewares
     })
 
+    // targetId 动态管理：当 HoverCard.Target 的 child 自带 id 时（如外部 label 关联的 input），
+    // 用 child 的 id 替代默认 uid，让外部 label.htmlFor 能正确关联到 target input。
+    // 同时 HoverCardDropdown 的 aria-labelledby 也会通过 getTargetId() 拿到正确的 id。
+    const [targetId, setTargetId] = useState(hovercard.uid)
+    // uid 可能因内部原因变化，同步重置
+    useEffect(() => {
+        setTargetId(hovercard.uid)
+    }, [hovercard.uid])
+
     return (
         <HoverCardContextProvider
             value={{
@@ -215,7 +224,8 @@ export function HoverCard(_props: HoverCardProps) {
                 withinPortal,
                 zIndex,
                 onClose,
-                getTargetId: () => hovercard.uid,
+                getTargetId: () => targetId,
+                setTargetId,
                 getDropdownId: () => `${hovercard.uid}-dropdown`,
                 controlled: typeof opened === 'boolean',
                 disabled,

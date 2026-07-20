@@ -10,29 +10,24 @@ export default tseslint.config(
             '**/*/build/**/*',
             'packages/**/es/**/*',
             '**/*/dist/**/*',
-            'apps/website/docs-dist/**/*',
             '**/.next/**/*',
             '**/next-env.d.ts',
             'packages/ui/src/components/Menubar/**/*',
-            'packages/ui/src/components/Tree/**/*'
+            'packages/ui/src/components/Tree/**/*',
+            // Story 文件仅供本地开发调试，不参与 lint，避免 monorepo 范围过大导致 ESLint OOM
+            '**/*.story.tsx',
+            '**/*.stories.tsx',
         ]
     },
     {
-        // 继承的配置
+        // 继承的配置（使用非 type-aware 的 recommended，避免为每个 tsconfig 加载 TS Program 导致 OOM）
         extends: [js.configs.recommended, ...tseslint.configs.recommended],
         // 使用配置的文件
         files: ['**/*.{ts,tsx,js}'],
         // 语言选项
         languageOptions: {
             // 使用的解析器
-            parser: tseslint.parser,
-            // 转换选项
-            parserOptions: {
-                // ts 项目的 tsconfig 文件位置
-                project: ['./tsconfig.eslint.json', '**/tsconfig.json'],
-                // ts 配置的根目录
-                tsconfigRootDir: import.meta.dirname
-            }
+            parser: tseslint.parser
         },
         rules: {
             semi: 'off',

@@ -1,24 +1,26 @@
 import { DemoArea, DemoAreaProps } from '../DemoArea';
-import { DemoCode, DemoCodeProps } from '../DemoCode';
+import { DemoCodeProps } from '../DemoCode';
+import { DemoHeader, DemoHeaderProps } from '../DemoHeader';
 import { DemoRoot } from '../DemoRoot';
 
-export interface CodeDemoProps extends DemoCodeProps, DemoAreaProps {}
+export interface CodeDemoProps extends DemoCodeProps, DemoAreaProps, DemoHeaderProps {}
 
 export function CodeDemo({
   code,
   children,
+  title,
+  description,
   withPadding,
   centered,
-  defaultExpanded = true,
   maxWidth,
-  minHeight,
+  minHeight = 120,
   dimmed,
   striped,
-  maxCollapsedHeight,
   overflow,
 }: CodeDemoProps) {
   return (
     <DemoRoot>
+      <DemoHeader title={title} description={description} code={code} />
       <DemoArea
         withPadding={withPadding}
         centered={centered}
@@ -30,11 +32,6 @@ export function CodeDemo({
       >
         {children}
       </DemoArea>
-      <DemoCode
-        code={code}
-        defaultExpanded={defaultExpanded}
-        maxCollapsedHeight={maxCollapsedHeight}
-      />
     </DemoRoot>
   );
 }

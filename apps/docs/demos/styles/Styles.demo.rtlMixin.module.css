@@ -1,0 +1,13 @@
+.demo {
+  text-align: center;
+  color: var(--ui-color-white);
+  padding: var(--ui-spacing-md);
+
+  /* LTR styles */
+  background-color: var(--ui-color-blue-filled);
+}
+
+  [dir='rtl'] .demo {
+    /* RTL styles override LTR styles */
+    background-color: var(--ui-color-red-filled);
+  }

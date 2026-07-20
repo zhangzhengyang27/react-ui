@@ -1,0 +1,57 @@
+.cardLink {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  transition: transform var(--ui-transition-duration) ease-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.cover {
+  overflow: hidden;
+}
+
+.coverImg {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  transition: transform var(--ui-transition-duration) ease-out;
+}
+
+.card:hover .coverImg {
+  transform: scale(1.3);
+}
+
+.body {
+  padding: var(--ui-spacing-md);
+}
+
+.title {
+  margin-bottom: 4px;
+}
+
+.badge {
+  position: absolute;
+  top: 8px;
+  inset-inline-end: 8px;
+  padding: var(--ui-spacing-xs) var(--ui-spacing-sm);
+  color: var(--ui-color-white);
+  font-size: var(--ui-font-size-sm);
+  line-height: 1;
+  background: rgba(0, 0, 0, 0.65);
+  border-radius: var(--ui-radius-default);
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.2);
+  display: inline-flex;
+  align-items: center;
+  column-gap: var(--ui-spacing-xs);
+}

@@ -8,7 +8,7 @@
 
   font-size: var(--dpc-fz, var(--ui-font-size-sm));
   height: var(--dpc-size);
-  width: calc((var(--dpc-size) * 7) / 3 + rem(1.5px));
+  width: calc((var(--dpc-size) * 7) / 3 + 1.5px);
   display: flex;
   justify-content: center;
   align-items: center;

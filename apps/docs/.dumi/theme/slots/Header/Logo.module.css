@@ -1,0 +1,38 @@
+.logo {
+  height: 64px;
+  padding-inline-start: 40px;
+  overflow: hidden;
+  color: var(--ui-color-text);
+  font-weight: bold;
+  font-size: var(--ui-font-size-lg);
+  font-family: Avenir, var(--ui-font-family), sans-serif;
+  line-height: 64px;
+  letter-spacing: -0.18px;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  column-gap: var(--ui-spacing-sm);
+}
+
+.logo:hover {
+  color: var(--ui-color-text);
+}
+
+.logo img {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@media only screen and (max-width: 768px) {
+  .logo {
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+  }
+}
+
+.title {
+  line-height: 32px;
+}

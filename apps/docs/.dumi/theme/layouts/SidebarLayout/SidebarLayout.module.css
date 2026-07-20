@@ -1,0 +1,7 @@
+/* SidebarLayout styles - migrated from antd-style createStaticStyles.
+   marginXL replaced with --ui-spacing-xl. */
+
+.main {
+  display: flex;
+  margin-top: var(--ui-spacing-xl);
+}

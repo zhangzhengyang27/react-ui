@@ -1,0 +1,92 @@
+---
+category: Schedule
+title: MobileMonthView
+subtitle: 移动端月视图
+description: react-ui MobileMonthView 文档。
+---
+
+
+## 用法
+
+MobileMonthView 是一个移动设备优化的日历视图，顶部显示带有事件指示器的月份网格，底部显示所选日期的事件列表。该组件设计为与 iOS 上的日历应用工作方式类似。
+
+该组件不包含拖拽功能，并针对移动设备上的触摸交互进行了优化。
+
+<code src="./mobile-month-view/demo/usage.tsx"></code>
+
+## 周数
+
+设置 `withWeekNumbers` 以在第一列显示周数。
+
+<code src="./mobile-month-view/demo/withWeekNumbers.tsx"></code>
+
+## 显示外部日期
+
+默认情况下，上个月和下个月的日期是隐藏的。设置 `withOutsideDays` 以显示它们。
+
+<code src="./mobile-month-view/demo/withOutsideDays.tsx"></code>
+
+## 高亮今天
+
+设置 `highlightToday={false}` 以禁用当前日期的高亮。
+
+<code src="./mobile-month-view/demo/highlightToday.tsx"></code>
+
+## 每周第一天
+
+设置 `firstDayOfWeek` 以控制每周从哪一天开始。0 是星期日，1 是星期一（默认），依此类推。
+
+<code src="./mobile-month-view/demo/firstDayOfWeek.tsx"></code>
+
+## 自定义标题
+
+使用 `renderHeader` 自定义标题。回调接收默认标题元素、当前模式和当前日期，允许你包装或替换默认标题。
+
+<code src="./mobile-month-view/demo/renderHeader.tsx"></code>
+
+## 固定周数
+
+设置 `consistentWeeks={false}` 以仅显示包含当前月份日期的周。
+
+<code src="./mobile-month-view/demo/consistentWeeks.tsx"></code>
+
+## 工作日格式
+
+使用 `weekdayFormat` prop 自定义工作日名称显示。它接受 dayjs 格式字符串。
+
+<code src="./mobile-month-view/demo/weekdayFormat.tsx"></code>
+
+## 隐藏工作日
+
+设置 `withWeekDays={false}` 以隐藏工作日名称行。
+
+<code src="./mobile-month-view/demo/withoutWeekDays.tsx"></code>
+
+## 静态模式
+
+设置 `mode="static"` 以禁用所有交互。在此模式下，日期不可点击，不会发生选择变化。
+
+<code src="./mobile-month-view/demo/staticMode.tsx"></code>
+
+## 本地化
+
+使用 `locale` prop 设置日期格式化的 dayjs locale。
+结合 `labels` prop 以翻译所有 UI 文本。
+
+<code src="./mobile-month-view/demo/localization.tsx"></code>
+
+## 无障碍
+
+MobileMonthView 遵循与 [MonthView](./month-view.mdx#accessibility) 相同的键盘导航模式。
+
+### 焦点管理
+
+月份的第一天包含在 tab 顺序中（`tabIndex={0}`），而所有其他日期的 `tabIndex={-1}`。当某天通过方向键导航获得焦点时，组件会更新 `tabIndex` 值，使新获得焦点的日期成为 tab 停靠点。
+
+### 键盘交互
+
+<KeyboardEventsTable data={[ { key: 'ArrowRight', description: '聚焦下一个非禁用日期', }, { key: 'ArrowLeft', description: '聚焦上一个非禁用日期', }, { key: 'ArrowDown', description: '聚焦下周的同一天', }, { key: 'ArrowUp', description: '聚焦上周的同一天', }, ]}></KeyboardEventsTable>
+
+### 日期标签
+
+每个日期按钮都有一个 `aria-label` 属性，格式为 "Month Day, Year"（例如 "November 15, 2025"）。这为屏幕阅读器用户提供了完整的日期信息。

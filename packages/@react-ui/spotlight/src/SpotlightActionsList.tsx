@@ -1,11 +1,11 @@
 import { useEffect, useId } from 'react';
 import {
+  Box,
   BoxProps,
   CompoundStylesApiProps,
   ElementProps,
   factory,
   Factory,
-  ScrollArea,
   useProps,
 } from '@react-ui/ui';
 import { useSpotlightContext } from './Spotlight.context';
@@ -36,20 +36,19 @@ export const SpotlightActionsList = factory<SpotlightActionsListFactory>((props)
 
   useEffect(() => {
     spotlightActions.setListId(listId, ctx.store);
-    return () => spotlightActions.setListId('', ctx.store);
+    return () => {
+      spotlightActions.setListId('', ctx.store);
+    };
   }, []);
 
   return (
-    <ScrollArea.Autosize
+    <Box
       {...ctx.getStyles('actionsList', { className, style, classNames, styles })}
-      type="scroll"
-      scrollbarSize="var(--spotlight-actions-list-padding)"
-      offsetScrollbars="y"
       id={listId}
       {...others}
     >
       {children}
-    </ScrollArea.Autosize>
+    </Box>
   );
 });
 

@@ -19,7 +19,6 @@ const testCache = createCache({ key: 'test' });
 
 function CacheConsumer() {
   const cache = useEmotionCache();
-  console.log(cache);
   return <div>Cache consumer</div>;
 }
 

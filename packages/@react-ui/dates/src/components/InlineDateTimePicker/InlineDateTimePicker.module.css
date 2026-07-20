@@ -11,10 +11,10 @@
 
 .rangeInfo {
   margin-top: var(--ui-spacing-md);
-  font-size: calc(var(--ui-font-size-sm) - rem(2px));
+  font-size: calc(var(--ui-font-size-sm) - 2px);
   color: var(--ui-color-text);
   line-height: 1.4;
-  height: calc((var(--ui-font-size-sm) - rem(2px)) * 1.4);
+  height: calc((var(--ui-font-size-sm) - 2px) * 1.4);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

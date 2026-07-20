@@ -1,0 +1,12 @@
+.alert {
+  padding: 12px 16px;
+}
+
+.alert :global(.ui-alert-title) {
+  font-weight: bold;
+}
+
+/* 使用 `&&` 加一点点权重 */
+.desc p {
+  margin: 0;
+}

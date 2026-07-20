@@ -1,0 +1,28 @@
+.container {
+  position: fixed;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 99999999;
+  background-color: var(--ui-color-dimmed);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alertBox {
+  border: 1px solid var(--ui-color-warning-border, var(--ui-color-orange-4));
+  background-color: var(--ui-color-warning-bg, var(--ui-color-orange-0));
+  color: var(--ui-color-text);
+  padding: var(--ui-spacing-xs) var(--ui-spacing-sm);
+  border-radius: var(--ui-radius-md);
+  z-index: 9999999999;
+  line-height: 22px;
+  width: 520px;
+}
+
+.alertBox a {
+  color: var(--ui-color-anchor);
+  text-decoration-line: none;
+}

@@ -20,6 +20,8 @@ export type ModalContentFactory = Factory<{
     compound: true
 }>
 
+const ModalContentScrollFallback = ({ children: c }: { children?: React.ReactNode }) => <div>{c}</div>
+
 export const ModalContent = factory<ModalContentFactory>((_props, ref) => {
     const props = useProps('ModalContent', null, _props)
     const { children, ...others } = props
@@ -27,7 +29,7 @@ export const ModalContent = factory<ModalContentFactory>((_props, ref) => {
 
     const Scroll: React.FC<any> =
         ctx.scrollAreaComponent === 'div' || !ctx.scrollAreaComponent
-            ? ({ children: c }) => <div>{c}</div>
+            ? ModalContentScrollFallback
             : ctx.scrollAreaComponent
 
     return (

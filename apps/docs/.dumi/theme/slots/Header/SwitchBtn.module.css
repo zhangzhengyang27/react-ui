@@ -1,0 +1,45 @@
+.btn {
+  width: 32px;
+}
+
+.btnInner {
+  transition: all 200ms ease;
+  display: flex;
+}
+
+.btnInner img {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.innerDiv {
+  position: relative;
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.label {
+  position: absolute;
+  font-size: 1.2em;
+  line-height: 1;
+  border: 1px solid var(--ui-color-text);
+  color: var(--ui-color-text);
+}
+
+.label1Active {
+  inset-inline-start: -5%;
+  top: 0;
+  z-index: 1;
+  background-color: var(--ui-color-text);
+  color: var(--ui-color-body);
+  transform: scale(0.7);
+  transform-origin: 0 0;
+}
+
+.label2Inactive {
+  inset-inline-end: -5%;
+  bottom: 0;
+  z-index: 0;
+  transform: scale(0.5);
+  transform-origin: 100% 100%;
+}

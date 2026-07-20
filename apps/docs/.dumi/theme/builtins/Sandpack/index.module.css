@@ -1,0 +1,13 @@
+.fallback {
+  width: 100%;
+}
+
+.fallback > * {
+  width: 100% !important;
+  border-radius: var(--ui-radius-lg);
+}
+
+.placeholder {
+  color: var(--ui-color-dimmed);
+  font-size: var(--ui-font-size-lg);
+}

@@ -1,0 +1,21 @@
+.wrapper {
+  color: var(--ui-color-text);
+  font-size: var(--ui-font-size-md);
+  line-height: 2;
+}
+
+.title {
+  margin: 1em 0;
+}
+
+.description {
+  margin: 1em 0;
+  padding-inline-start: 0.8em;
+  color: var(--ui-color-dimmed);
+  font-size: 90%;
+  border-inline-start: 4px solid var(--ui-color-gray-3);
+}
+
+.description p {
+  margin: 0;
+}

@@ -1,0 +1,54 @@
+import { MultiSelect } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
+
+const code = `
+import { MultiSelect } from '@react-ui/ui';
+
+
+function Demo() {
+  return (
+    <MultiSelect
+      {{props}}
+      data={['React', 'Angular', 'Svelte', 'Vue']}
+      dropdownOpened
+      pb={150}
+      label="控制勾选图标"
+      placeholder="选择值"
+      defaultValue={["React"]}
+    />
+  );
+}
+`;
+
+function Wrapper(props: any) {
+  return (
+    <MultiSelect
+      {...props}
+      data={['React', 'Angular', 'Svelte', 'Vue']}
+      dropdownOpened
+      pb={150}
+      label="控制勾选图标"
+      placeholder="选择值"
+      defaultValue={['React']}
+    />
+  );
+}
+
+export const checkIcon: UIDemo = {
+  type: 'configurator',
+  component: Wrapper,
+  code,
+  centered: true,
+  maxWidth: 340,
+  controls: [
+    { type: 'boolean', prop: 'withCheckIcon', initialValue: true, libraryValue: true },
+    { type: 'boolean', prop: 'withAlignedLabels', initialValue: false, libraryValue: false },
+    {
+      type: 'segmented',
+      prop: 'checkIconPosition',
+      initialValue: 'left',
+      libraryValue: null,
+      data: ['left', 'right'],
+    },
+  ],
+};

@@ -1,0 +1,20 @@
+.icon {
+  width: 22px;
+  height: 22px;
+}
+
+[data-ui-color-scheme='dark'] .dark {
+    display: none;
+  }
+
+[data-ui-color-scheme='light'] .dark {
+    display: block;
+  }
+
+[data-ui-color-scheme='light'] .light {
+    display: none;
+  }
+
+[data-ui-color-scheme='dark'] .light {
+    display: block;
+  }

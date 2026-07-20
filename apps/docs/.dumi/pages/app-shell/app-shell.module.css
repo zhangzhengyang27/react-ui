@@ -1,0 +1,32 @@
+.control {
+  display: block;
+  width: 100%;
+  padding: var(--ui-spacing-sm) var(--ui-spacing-lg);
+  border-radius: var(--ui-radius-md);
+
+  &:hover:not([data-active]) {
+    background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-6));
+  }
+
+  &[data-active] {
+    color: var(--ui-color-white);
+    background-color: var(--ui-color-blue-filled);
+  }
+}
+
+.name {
+  display: block;
+  font-weight: 600;
+  color: inherit;
+}
+
+.description {
+  display: block;
+  opacity: 0.6;
+  font-size: var(--ui-font-size-sm);
+  color: inherit;
+}
+
+.menuButton {
+  padding-inline-end: 5px;
+}

@@ -1,0 +1,79 @@
+.card {
+  width: 320px;
+  max-width: 320px;
+}
+
+.cardBody {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.cardLogo {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  object-fit: contain;
+  background: var(--ui-color-gray-1);
+  border: 1px solid var(--ui-color-default-border);
+  padding: 8px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cardName {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ui-color-text);
+  text-decoration: none;
+}
+
+.cardName:hover {
+  color: var(--ui-color-anchor);
+}
+
+.cardDesc {
+  font-size: 13px;
+  color: var(--ui-color-dimmed);
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sponsorLabel {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--ui-font-size-xs);
+  color: var(--ui-color-dimmed);
+}
+
+.heartIcon {
+  color: #ff4d4f;
+  font-size: var(--ui-font-size-xs);
+}
+
+.visitBtn {
+  font-size: 13px;
+  height: 28px;
+  padding-inline: 10px;
+  color: var(--ui-color-anchor) !important;
+}
+
+.becomeBtn {
+  font-size: 13px;
+  height: 28px;
+  padding-inline: 10px;
+  color: var(--ui-color-dimmed) !important;
+}

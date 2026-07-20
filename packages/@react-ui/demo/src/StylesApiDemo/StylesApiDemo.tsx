@@ -1,12 +1,12 @@
 import { cloneElement, useState } from 'react';
 import { Text, UnstyledButton } from '@react-ui/ui';
 import { DemoAreaProps } from '../DemoArea';
-import { DemoCode } from '../DemoCode';
 import { DemoColumns } from '../DemoColumns';
+import { DemoHeader, DemoHeaderProps } from '../DemoHeader';
 import { DemoRoot } from '../DemoRoot';
 import classes from './StylesApiDemo.module.css';
 
-export interface StylesApiDemoProps extends DemoAreaProps {
+export interface StylesApiDemoProps extends DemoAreaProps, DemoHeaderProps {
   data: { selectors: Record<string, string> };
   code: string;
 }
@@ -20,6 +20,8 @@ function getCss(hovered: string | null) {
 export function StylesApiDemo({
   data,
   code,
+  title,
+  description,
   withPadding,
   maxWidth,
   centered,
@@ -44,12 +46,11 @@ export function StylesApiDemo({
     </UnstyledButton>
   ));
 
-  const classNamesProp = hovered ? ` classNames={{ ${hovered}: classes.${hovered} }}` : '';
-
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: getCss(hovered) }} />
       <DemoRoot>
+        <DemoHeader title={title} description={description} code={code} />
         <DemoColumns
           withPadding={withPadding}
           maxWidth={maxWidth}
@@ -67,17 +68,6 @@ export function StylesApiDemo({
             }, {}),
           })}
         </DemoColumns>
-
-        <DemoCode
-          code={[
-            { fileName: '演示样式.module.css', language: 'scss', code: getCss(hovered) },
-            {
-              fileName: '演示代码.tsx',
-              language: 'tsx',
-              code: code.replace('{{props}}', classNamesProp),
-            },
-          ]}
-        />
       </DemoRoot>
     </>
   );

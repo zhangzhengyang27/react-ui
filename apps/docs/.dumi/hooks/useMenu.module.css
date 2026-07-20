@@ -1,0 +1,48 @@
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.labelContent {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.subtitle {
+  margin-inline-start: var(--ui-spacing-xs);
+  font-weight: normal;
+  font-size: var(--ui-font-size-xs);
+  opacity: 0.8;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  margin-inline-end: 0;
+  padding: 0 var(--ui-spacing-xs);
+  border-radius: var(--ui-radius-sm);
+  font-size: var(--ui-font-size-xs);
+  line-height: 1.6;
+  flex-shrink: 0;
+}
+
+.tagProcessing {
+  background: var(--ui-color-blue-1);
+  color: var(--ui-color-blue-7);
+}
+
+.tagRed {
+  background: var(--ui-color-red-1);
+  color: var(--ui-color-red-7);
+}
+
+.tagSuccess {
+  background: var(--ui-color-green-1);
+  color: var(--ui-color-green-7);
+}

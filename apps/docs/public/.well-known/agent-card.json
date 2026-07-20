@@ -1,0 +1,40 @@
+{
+  "name": "react-ui",
+  "version": "1.0.0",
+  "description": "react-ui is a React UI library providing 90+ enterprise-class components for building web applications. Access component documentation, design tokens, theme customization, and migration guides.",
+  "provider": {
+    "organization": "react-ui",
+    "url": "https://react-ui.dev"
+  },
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "supportedInterfaces": [
+    {
+      "protocol": "https",
+      "url": "https://react-ui.dev",
+      "version": "1.0"
+    }
+  ],
+  "skills": [
+    {
+      "id": "component-lookup",
+      "name": "Component Lookup",
+      "description": "Look up react-ui React component documentation, props, default values, and usage examples.",
+      "tags": ["components", "documentation", "react"]
+    },
+    {
+      "id": "theme-customization",
+      "name": "Theme Customization",
+      "description": "Customize react-ui theme using UIProvider and theme tokens.",
+      "tags": ["theme", "design-tokens", "customization"]
+    },
+    {
+      "id": "migration",
+      "name": "Version Migration",
+      "description": "Migrate between react-ui major versions and learn about breaking changes.",
+      "tags": ["migration", "upgrade", "breaking-changes"]
+    }
+  ]
+}

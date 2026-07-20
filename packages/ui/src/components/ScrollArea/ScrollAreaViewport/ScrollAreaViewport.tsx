@@ -37,7 +37,7 @@ export function ScrollAreaViewport({ children, style, ref, onWheel, ...others }:
                 ...style
             }}
         >
-            <div {...ctx.getStyles('content')} ref={ctx.onContentChange}>
+            <div {...ctx.getStyles('content')} ref={useMergedRef(ctx.onContentChange)}>
                 {children}
             </div>
         </Box>

@@ -1,0 +1,31 @@
+.root {
+  padding: var(--ui-spacing-xl) var(--ui-spacing-lg);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ui-spacing-xl);
+  margin-top: var(--ui-spacing-lg);
+}
+
+.asset {
+  flex: 1;
+  min-width: 280px;
+}
+
+.image {
+  max-width: 100%;
+}
+
+.imageWrapper {
+  padding: var(--ui-spacing-xl);
+  border-radius: var(--ui-radius-md);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 120px;
+  border: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-7));
+}

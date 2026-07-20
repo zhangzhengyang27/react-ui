@@ -10,7 +10,7 @@ export const ScrollAreaScrollbarX = (props: ScrollAreaScrollbarAxisProps) => {
     const ctx = useScrollAreaContext()
     const [computedStyle, setComputedStyle] = useState<CSSStyleDeclaration>()
     const ref = useRef<HTMLDivElement>(null)
-    const composeRefs = useMergedRef(forwardedRef, ref, node => ctx.onScrollbarXChange(node))
+    const composeRefs = useMergedRef(forwardedRef, ref, ctx.onScrollbarXChange)
 
     useEffect(() => {
         if (ref.current) {

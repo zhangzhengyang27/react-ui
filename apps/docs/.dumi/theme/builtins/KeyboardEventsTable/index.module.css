@@ -1,0 +1,20 @@
+.table {
+  margin: var(--ui-spacing-md) 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+.table :global(table) {
+  width: 100%;
+}
+
+.code {
+  padding: 0.2em 0.4em;
+  font-size: 0.9em;
+  background: var(--ui-color-gray-1);
+  border: 1px solid var(--ui-color-gray-3);
+  border-radius: var(--ui-radius-sm);
+  font-family: monospace;
+}

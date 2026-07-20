@@ -1,0 +1,58 @@
+import { Textarea } from '@react-ui/ui';
+import { UIDemo } from '@react-ui/demo';
+
+const code = `
+import { Textarea } from '@react-ui/ui';
+
+function Demo() {
+  return (
+    <>
+      <Textarea
+        placeholder="自动高度，无行数限制"
+        label="自动高度，无行数限制"
+        autosize
+        minRows={4}
+      />
+
+      <Textarea
+        label="自动高度，最多 4 行"
+        placeholder="自动高度，最多 4 行"
+        autosize
+        minRows={2}
+        maxRows={4}
+      />
+    </>
+  );
+}
+
+`;
+
+function Demo() {
+  return (
+    <>
+      <Textarea
+        placeholder="自动高度，无行数限制"
+        label="自动高度，无行数限制"
+        autosize
+        minRows={4}
+      />
+
+      <Textarea
+        label="自动高度，最多 4 行"
+        placeholder="自动高度，最多 4 行"
+        autosize
+        minRows={2}
+        maxRows={4}
+        mt="md"
+      />
+    </>
+  );
+}
+
+export const autosize: UIDemo = {
+  type: 'code',
+  code,
+  component: Demo,
+  maxWidth: 340,
+  centered: true,
+};

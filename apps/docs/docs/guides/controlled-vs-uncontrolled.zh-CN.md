@@ -1,0 +1,169 @@
+---
+category: Guides
+title: ControlledVsUncontrolled
+subtitle: 受控与非受控
+description: react-ui ControlledVsUncontrolled 文档。
+---
+
+
+## 受控组件
+
+受控组件是指其值由 React 状态控制的表单元素。组件的值由状态设置，变更通过更新该状态的事件处理函数处理。
+React 成为表单数据的唯一真实来源。
+
+受控 `TextInput` 组件示例：
+
+
+在此示例中，输入框的值始终与组件状态同步。每次按键都会触发状态更新，从而使用新值重新渲染。
+
+```tsx
+import { useState } from 'react';
+import { TextInput } from '@react-ui/ui';
+
+function Demo() {
+  const [value, setValue] = useState('');
+
+  return (
+    <TextInput
+      label="受控文本输入"
+      value={value}
+      onChange={(event) => setValue(event.currentTarget.value)}
+    />
+  );
+}
+```
+
+## 非受控组件
+
+非受控组件通过 DOM（或内部状态）自行管理状态，类似于传统 HTML 表单元素。React 不直接控制值，
+而是在需要时使用 ref 或 DOM 方法访问当前值，通常在表单提交时。
+
+非受控 `TextInput` 组件示例：
+
+
+这里，输入框保持自己的状态。React 仅在通过 ref 显式请求时才读取值。
+
+```tsx
+import { useRef } from 'react';
+import { TextInput, Button } from '@react-ui/ui';
+
+function Demo() {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (inputRef.current) {
+      alert(`Input value: ${inputRef.current.value}`);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <TextInput label="非受控文本输入" ref={inputRef} />
+      <Button type="submit">提交</Button>
+    </form>
+  );
+}
+```
+
+## 主要区别
+
+主要区别在于状态存储的位置。受控组件将状态存储在 React 中，而非受控组件将状态存储在 DOM 中。
+这一根本区别会影响你在组件生命周期中与组件交互的方式。
+
+对于受控组件，你需要显式定义 value prop 并处理每次变更。
+对于非受控组件，你设置 defaultValue 并让 DOM 处理更新，仅在需要时访问值。
+
+受控组件需要 onChange 处理程序才能保持交互，而非受控组件无需任何变更处理程序即可工作，就像标准 HTML 输入一样。
+
+## 何时使用哪种模式
+
+在以下情况使用受控组件：
+- 你需要实时验证或操作输入值。
+- 你想对用户输入强制执行特定格式或约束。
+- 你需要根据输入变化提供即时反馈或动态更新 UI。
+
+在以下情况使用非受控组件：
+- 你想简化代码并减少简单表单样板。
+- 你不需要在表单提交前验证或操作输入值。
+- 你正在处理大型表单且关注性能，希望最小化重新渲染。
+
+## FormData 与非受控组件
+
+非受控表单通常与 [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) API 一起使用，
+它可以让你轻松收集表单值，而无需为每个输入管理状态。所有 ReactUI 组件都支持使用 `FormData` 的非受控用法。
+
+使用非受控 `Checkbox` 与 `FormData` 的示例：
+
+```tsx
+import { Checkbox } from '@react-ui/ui';
+
+function Demo() {
+  return (
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        console.log('Checkbox value:', !!formData.get('terms'));
+      }}
+    >
+      <Checkbox label="接受条款和条件" name="terms" defaultChecked />
+      <button type="submit">提交</button>
+    </form>
+  );
+}
+```
+
+## 非受控 use-form
+
+[@react-ui/ui](/docs/form/use-form) 支持非受控模式，可用于构建高性能的大型表单。如果你正在处理包含大量字段的复杂表单，
+非受控模式下的 `useForm` hook 是一个很好的选择。
+
+使用 `useForm` 的非受控模式示例：
+
+```tsx
+import { useState } from 'react';
+import { Button, Code, Text, TextInput } from '@react-ui/ui';
+import { hasLength, isEmail, useForm } from '@react-ui/ui';
+
+function Demo() {
+  const form = useForm({
+    mode: 'uncontrolled',
+    initialValues: { name: '', email: '' },
+    validate: {
+      name: hasLength({ min: 3 }, 'Must be at least 3 characters'),
+      email: isEmail('无效的邮箱'),
+    },
+  });
+
+  const [submittedValues, setSubmittedValues] = useState<typeof form.values | null>(null);
+
+  return (
+    <form onSubmit={form.onSubmit(setSubmittedValues)}>
+      <TextInput
+        {...form.getInputProps('name')}
+        key={form.key('name')}
+        label="姓名"
+        placeholder="姓名"
+      />
+      <TextInput
+        {...form.getInputProps('email')}
+        key={form.key('email')}
+        mt="md"
+        label="邮箱"
+        placeholder="邮箱"
+      />
+      <Button type="submit" mt="md">
+        提交
+      </Button>
+
+      <Text mt="md">Form values:</Text>
+      <Code block>{JSON.stringify(form.values, null, 2)}</Code>
+
+      <Text mt="md">Submitted values:</Text>
+      <Code block>{submittedValues ? JSON.stringify(submittedValues, null, 2) : '–'}</Code>
+    </form>
+  );
+}
+```

@@ -1,0 +1,4 @@
+import { error } from '../../../demos/core/NativeSelect';
+import { renderDemo } from '../../../demos/render-demo';
+
+export default renderDemo(error);

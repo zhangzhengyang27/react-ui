@@ -1,0 +1,53 @@
+import { Carousel, CarouselProps } from '@react-ui/carousel';
+import { UIDemo } from '@react-ui/demo';
+import { Slides } from './_slides';
+
+function Wrapper(props: CarouselProps) {
+  return (
+    <Carousel height={200} slideSize="70%" {...props}>
+      <Slides count={5} />
+    </Carousel>
+  );
+}
+
+const code = `
+import { Carousel } from '@react-ui/carousel';
+
+
+function Demo() {
+  return (
+    <Carousel
+      slideSize="70%"
+      height={200}
+      {{props}}
+    >
+      {/* ...slides */}
+    </Carousel>
+  );
+}
+`;
+
+export const configurator: UIDemo = {
+  type: 'configurator',
+  component: Wrapper,
+  code,
+  centered: true,
+  maxWidth: '100%',
+  controls: [
+    {
+      prop: 'orientation',
+      type: 'segmented',
+      initialValue: 'horizontal',
+      libraryValue: 'horizontal',
+      data: [
+        { label: '水平', value: 'horizontal' },
+        { label: '垂直', value: 'vertical' },
+      ],
+    },
+    { prop: 'slideGap', type: 'size', initialValue: 'md', libraryValue: '__' },
+    { prop: 'controlsOffset', type: 'size', initialValue: 'sm', libraryValue: '__' },
+    { prop: 'controlSize', type: 'number', min: 14, max: 40, initialValue: 26, libraryValue: '__' },
+    { prop: 'withControls', type: 'boolean', initialValue: true, libraryValue: '__' },
+    { prop: 'withIndicators', type: 'boolean', initialValue: false, libraryValue: '__' },
+  ],
+};

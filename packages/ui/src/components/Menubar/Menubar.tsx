@@ -106,6 +106,8 @@ export const Menubar = factory<MenubarFactory>((_props, ref) => {
     }, [setOpenIndex])
 
     const closeTimeoutRef = useRef(-1)
+    // focusMenuItem 的延迟 focus 定时器 id，卸载时需清理，避免卸载后仍触发 focus
+    const focusMenuItemTimeoutRef = useRef(-1)
 
     const cancelClose = useCallback(() => {
         window.clearTimeout(closeTimeoutRef.current)
@@ -116,7 +118,13 @@ export const Menubar = factory<MenubarFactory>((_props, ref) => {
         closeTimeoutRef.current = window.setTimeout(closeMenu, 120)
     }, [closeMenu])
 
-    useIsomorphicEffect(() => () => window.clearTimeout(closeTimeoutRef.current), [])
+    useIsomorphicEffect(
+        () => () => {
+            window.clearTimeout(closeTimeoutRef.current)
+            window.clearTimeout(focusMenuItemTimeoutRef.current)
+        },
+        []
+    )
 
     const getOpenSource = useCallback(() => openSourceRef.current, [])
 
@@ -127,23 +135,21 @@ export const Menubar = factory<MenubarFactory>((_props, ref) => {
         previousOpenIndexRef.current = _openIndex
     })
 
-    const targetsRef = useRef<{ id: string; node: HTMLButtonElement | null }[]>([])
-
-    const registerTarget = useCallback(
-        (index: number, id: string, node: HTMLButtonElement | null) => {
-            targetsRef.current[index] = { id, node }
-        },
-        []
-    )
-
+    // target 不再走注册表：节点从 DOM 查询（MenubarTarget 渲染 data-menubar-target 与
+    // data-menubar-id），index 按 DOM 顺序解析。原注册机制存在首次挂载死锁——
+    // MenubarMenu 的 index 初始 -1 且仅能由 getMenuIndex 查注册表得到，而 MenubarTarget
+    // 在 index === -1 时跳过注册，二者互相等待导致菜单永远无法打开（对齐 Mantine 上游方案）
     const getTargets = useCallback(
-        () => targetsRef.current.map((item) => item.node).filter(Boolean) as HTMLButtonElement[],
+        () =>
+            Array.from(
+                rootRef.current?.querySelectorAll<HTMLButtonElement>('[data-menubar-target]') ?? []
+            ),
         []
     )
 
     const getMenuIndex = useCallback(
-        (id: string) => targetsRef.current.findIndex((item) => item?.id === id),
-        []
+        (id: string) => getTargets().findIndex(target => target.getAttribute('data-menubar-id') === id),
+        [getTargets]
     )
 
     const getEnabledIndexes = useCallback(
@@ -159,15 +165,17 @@ export const Menubar = factory<MenubarFactory>((_props, ref) => {
 
     const focusTarget = useCallback(
         (index: number) => {
-            targetsRef.current[index]?.node?.focus()
+            getTargets()[index]?.focus()
         },
-        []
+        [getTargets]
     )
 
     const focusMenuItem = useCallback(
         (index: number, itemPosition: 'first' | 'last') => {
-            window.setTimeout(() => {
-                const target = targetsRef.current[index]?.node
+            // id 存入 ref：重调时取消上一个待执行的 focus，卸载时统一清理
+            window.clearTimeout(focusMenuItemTimeoutRef.current)
+            focusMenuItemTimeoutRef.current = window.setTimeout(() => {
+                const target = getTargets()[index]
                 const controls = target?.getAttribute('aria-controls')
                 const dropdown = controls
                     ? document.getElementById(controls)
@@ -182,7 +190,7 @@ export const Menubar = factory<MenubarFactory>((_props, ref) => {
                 }
             }, 40)
         },
-        []
+        [getTargets]
     )
 
     const getAdjacentIndex = useCallback(
@@ -248,7 +256,6 @@ export const Menubar = factory<MenubarFactory>((_props, ref) => {
         getAdjacentIndex,
         focusTarget,
         focusMenuItem,
-        registerTarget,
     }
 
     const mergedRootRef = useMergedRef(ref, rootRef)

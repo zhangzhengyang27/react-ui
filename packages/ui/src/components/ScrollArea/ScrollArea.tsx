@@ -35,7 +35,7 @@ export interface ScrollAreaProps extends BoxProps, StylesApiProps<ScrollAreaFact
      * - `'never'` – scrollbars always hidden
      * @default 'always'
      * */
-    type?: 'always' | 'never' | 'scroll'
+    type?: 'always' | 'never'
 
     /**
      * Axis at which scrollbars must be rendered
@@ -68,7 +68,7 @@ export interface ScrollAreaProps extends BoxProps, StylesApiProps<ScrollAreaFact
     /** Called when scrollarea is scrolled to the bottom (within 0.8px tolerance for sub-pixel rendering) */
     onBottomReached?: () => void
 
-    /** Called when scrollarea is scrolled all the way to the top */
+    /** Called when scrollarea is scrolled all the way to the top (within 0.8px tolerance for sub-pixel rendering) */
     onTopReached?: () => void
 
     /** Called when scrollarea is scrolled to the left (within 0.8px tolerance for sub-pixel rendering) */
@@ -212,9 +212,15 @@ export const ScrollArea = factory<ScrollAreaFactory>((_props, _ref) => {
                     const { scrollTop, scrollHeight, clientHeight, scrollLeft, scrollWidth, clientWidth } =
                         e.currentTarget
 
+                    // 该方向无溢出时 reach 判定恒成立(如仅纵向滚动时 isAtRight 恒 true 误报 onRightReached),
+                    // 先检查该方向存在溢出再做边界判定
+                    const hasVerticalOverflow = scrollHeight > clientHeight
+                    const hasHorizontalOverflow = scrollWidth > clientWidth
+
                     // Vertical boundaries
-                    const isAtBottom = scrollTop - (scrollHeight - clientHeight) >= -0.8
-                    const isAtTop = scrollTop === 0
+                    const isAtBottom = hasVerticalOverflow && scrollTop - (scrollHeight - clientHeight) >= -0.8
+                    // 与底部判定一致,顶部同样保留 0.8px 容差以兼容亚像素渲染
+                    const isAtTop = hasVerticalOverflow && scrollTop <= 0.8
 
                     if (isAtBottom && !prevAtBottomRef.current) {
                         onBottomReached?.()
@@ -227,8 +233,8 @@ export const ScrollArea = factory<ScrollAreaFactory>((_props, _ref) => {
                     prevAtTopRef.current = isAtTop
 
                     // Horizontal boundaries
-                    const isAtRight = scrollLeft - (scrollWidth - clientWidth) >= -0.8
-                    const isAtLeft = scrollLeft === 0
+                    const isAtRight = hasHorizontalOverflow && scrollLeft - (scrollWidth - clientWidth) >= -0.8
+                    const isAtLeft = hasHorizontalOverflow && scrollLeft <= 0.8
 
                     if (isAtRight && !prevAtRightRef.current) {
                         onRightReached?.()
@@ -262,7 +268,7 @@ export const ScrollArea = factory<ScrollAreaFactory>((_props, _ref) => {
 })
 
 ScrollArea.classes = classes
-;(ScrollArea as any).varsResolver = varsResolver
+ScrollArea.varsResolver = varsResolver
 ScrollArea.displayName = '@react-ui/ui/ScrollArea'
 
 export const ScrollAreaAutosize = factory<ScrollAreaAutosizeFactory>((_props, _ref) => {
@@ -284,6 +290,8 @@ export const ScrollAreaAutosize = factory<ScrollAreaAutosizeFactory>((_props, _r
         vars,
         onBottomReached,
         onTopReached,
+        onLeftReached,
+        onRightReached,
         startScrollPosition,
         onOverflowChange,
         ...others
@@ -369,6 +377,8 @@ export const ScrollAreaAutosize = factory<ScrollAreaAutosizeFactory>((_props, _r
                     scrollbars={scrollbars}
                     onBottomReached={onBottomReached}
                     onTopReached={onTopReached}
+                    onLeftReached={onLeftReached}
+                    onRightReached={onRightReached}
                     startScrollPosition={startScrollPosition}
                     data-autosize="true"
                 >

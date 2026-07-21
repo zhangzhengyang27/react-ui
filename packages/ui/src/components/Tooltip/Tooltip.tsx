@@ -205,6 +205,9 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
     // 依赖数组只保留 target,避免 tooltip 对象每渲染变化导致 effect 重复执行
     const setReference = tooltip.reference
     useEffect(() => {
+        // 注意：字符串选择器/ref 仅在本 effect 执行时（mount 及 target 变化）解析一次，
+        // target 元素必须此时已存在于 DOM 中；后挂载的元素不会被重新解析。
+        // 该模式下事件监听依赖 reference，仅支持受控 opened，故无需按打开状态重解析。
         const targetNode: HTMLElement | null =
             target instanceof HTMLElement
                 ? target

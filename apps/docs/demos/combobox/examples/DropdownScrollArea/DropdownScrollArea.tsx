@@ -77,7 +77,7 @@ export function DropdownScrollArea() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          <ScrollArea.Autosize mah={200} type="scroll">
+          <ScrollArea.Autosize mah={200} type="always">
             {options.length === 0 ? <Combobox.Empty>未找到</Combobox.Empty> : options}
           </ScrollArea.Autosize>
         </Combobox.Options>

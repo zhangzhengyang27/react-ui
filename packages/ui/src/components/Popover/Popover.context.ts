@@ -15,7 +15,6 @@ export interface PopoverContextValue {
     arrowRadius: number
     arrowPosition: 'center' | 'side'
     placement: import('../../core').FloatingPosition
-    withinPortal: boolean | undefined
     closeOnEscape: boolean | undefined
     zIndex: string | number | undefined
     width: string | number
@@ -24,11 +23,12 @@ export interface PopoverContextValue {
     onToggle: () => void
     getDropdownId: () => string
     getTargetId: () => string
+    /** Popover 生成的默认 id，child 自带 id 被移除时 Target 需回退到该值 */
+    uid: string
     /** 由 Popover.Target 调用，当 child 自带 id 时同步到 context，
      *  让 PopoverDropdown 的 aria-labelledby 能正确指向 target */
     setTargetId: (id: string) => void
     controlled: boolean
-    transitionProps?: import('../Transition').TransitionOverride
     trapFocus: boolean | undefined
 }
 

@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import {
     arrow,
     autoUpdate,
@@ -109,11 +109,15 @@ export function useTooltip(settings: UseTooltipOptions): UseTooltipReturn {
         useDismiss(context, { enabled: typeof settings.opened === 'undefined' })
     ])
 
+    // onPositionChange 不能在渲染阶段调用（用户回调内 setState 会触发 render-phase 更新警告），
+    // 改为在 effect 中比对 placement 变化后再调用
     const previousPlacementRef = useRef(placement)
-    if (previousPlacementRef.current !== placement) {
-        previousPlacementRef.current = placement
-        settings.onPositionChange?.(placement)
-    }
+    useEffect(() => {
+        if (previousPlacementRef.current !== placement) {
+            previousPlacementRef.current = placement
+            settings.onPositionChange?.(placement)
+        }
+    }, [placement, settings.onPositionChange])
 
     return {
         x,

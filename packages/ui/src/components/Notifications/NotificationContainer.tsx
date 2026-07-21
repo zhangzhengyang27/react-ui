@@ -45,7 +45,8 @@ export function NotificationContainer({
     }
 
     const handleAutoClose = () => {
-        if (paused || typeof autoCloseDuration !== 'number') {
+        // 悬停中不启动自动关闭,避免 effect 因 autoCloseDuration/paused 变化在悬停期间重跑时误启动定时器
+        if (paused || isHoveredRef.current || typeof autoCloseDuration !== 'number') {
             return
         }
         autoCloseTimeout.current = window.setTimeout(handleHide, autoCloseDuration)
@@ -81,9 +82,10 @@ export function NotificationContainer({
                 onHoverStart?.()
             }}
             onMouseLeave={() => {
-                handleAutoClose()
+                // 先清除悬停标记再恢复自动关闭,handleAutoClose 内部会检查 isHoveredRef
                 isHoveredRef.current = false
                 onHoverEnd?.()
+                handleAutoClose()
             }}
         />
     )

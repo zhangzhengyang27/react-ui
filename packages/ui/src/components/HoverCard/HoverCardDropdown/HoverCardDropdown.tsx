@@ -29,7 +29,7 @@ export const HoverCardDropdown = factory<HoverCardDropdownFactory>((_props, ref)
 
     return (
         <Portal>
-            <Transition mounted={ctx.opened || false} transition="fade" duration={150}>
+            <Transition mounted={ctx.opened || false} transition="fade" duration={150} {...ctx.transitionProps}>
                 {transitionStyles => (
                     <Box
                         ref={mergedRef}
@@ -42,6 +42,8 @@ export const HoverCardDropdown = factory<HoverCardDropdownFactory>((_props, ref)
                         className={['ui-HoverCard-dropdown', className].filter(Boolean).join(' ')}
                         style={{
                             ...transitionStyles,
+                            // floatingStrategy prop 已移除（决策 A）：useFloating 固定为默认 absolute 策略，
+                            // x/y 为文档绝对坐标，与 position: 'absolute' 保持一致（改为 fixed 会导致坐标错位）
                             position: 'absolute',
                             top: ctx.y ?? 0,
                             left: ctx.x ?? 0,

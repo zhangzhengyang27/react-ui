@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import { useMergedRef } from '@react-ui/hooks'
 import { ElementProps, UIStyleProp } from '../../../core'
 import { Popover } from '../../Popover'
@@ -47,12 +47,6 @@ export const MenubarTarget = React.forwardRef<HTMLButtonElement, MenubarTargetPr
     const menuCtx = useMenubarMenuContext()
     const buttonRef = useRef<HTMLButtonElement>(null)
     const mergedRef = useMergedRef(ref, buttonRef)
-
-    useLayoutEffect(() => {
-        if (menuCtx.index !== -1) {
-            ctx.registerTarget(menuCtx.index, menuCtx.id, buttonRef.current)
-        }
-    }, [menuCtx.index, menuCtx.id])
 
     const isDisabled = disabled || dataDisabled
     const isActive = ctx.activeIndex === menuCtx.index

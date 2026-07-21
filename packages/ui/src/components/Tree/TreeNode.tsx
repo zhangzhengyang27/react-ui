@@ -13,6 +13,17 @@ function getValuesRange(anchor: string | null, value: string | undefined, flatVa
 
     const anchorIndex = flatValues.indexOf(anchor)
     const valueIndex = flatValues.indexOf(value)
+
+    // 锚点失效(如被过滤/移除,indexOf 返回 -1)时若直接参与计算,
+    // start=-1 会使 slice(-1, ...) 从数组尾部截取,得到错误选区;此处降级为单选目标节点
+    if (anchorIndex === -1) {
+        return valueIndex === -1 ? [] : [value]
+    }
+    // 目标节点失效时仅保留锚点
+    if (valueIndex === -1) {
+        return [anchor]
+    }
+
     const start = Math.min(anchorIndex, valueIndex)
     const end = Math.max(anchorIndex, valueIndex)
 

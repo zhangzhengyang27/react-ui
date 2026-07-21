@@ -19,7 +19,7 @@ export type PopoverDropdownFactory = Factory<{
 
 export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => {
     const props = useProps('PopoverDropdown', null, _props)
-    const { children, className, style, ...others } = props
+    const { children, className, style, onKeyDown, ...others } = props
 
     const ctx = usePopoverContext()
     const mergedRef = useMergedRef(ref, ctx.floating)
@@ -28,6 +28,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
         return null
     }
 
+    // transitionProps prop 已移除（决策 A）：过渡固定为 fade/150ms；Portal 无条件渲染
     return (
         <Portal>
             <Transition mounted={ctx.opened} transition="fade" duration={150}>
@@ -40,6 +41,15 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
                             aria-labelledby={ctx.getTargetId()}
                             data-position={ctx.placement}
                             {...others}
+                            onKeyDown={(event: React.KeyboardEvent<HTMLDivElement>) => {
+                                onKeyDown?.(event)
+                                // closeOnEscape 此前只进入 context 无人消费，Escape 永远无法关闭浮层；
+                                // stopPropagation 避免嵌套浮层（如 Menu.Sub）一次 Escape 全部关闭
+                                if (event.key === 'Escape' && ctx.closeOnEscape && !event.defaultPrevented) {
+                                    event.stopPropagation()
+                                    ctx.onClose?.()
+                                }
+                            }}
                             className={['ui-Popover-dropdown', className].filter(Boolean).join(' ')}
                             style={{
                                 ...transitionStyles,

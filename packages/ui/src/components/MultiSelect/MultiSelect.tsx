@@ -4,7 +4,7 @@ import { BoxProps, factory, Factory, UISize, rem, StylesApiProps, useProps, useS
 import { Badge } from '../Badge'
 import { CloseButton } from '../CloseButton'
 import { Combobox } from '../Combobox'
-import type { ComboboxOptionData } from '../Combobox'
+import type { ComboboxOptionData, ComboboxProps } from '../Combobox'
 import { InputBase } from '../InputBase'
 import { InputWrapper } from '../Input'
 import classes from './MultiSelect.module.css'
@@ -88,8 +88,11 @@ export interface MultiSelectProps
     /** 下拉项中对勾图标的位置 @default 'left' */
     checkIconPosition?: 'left' | 'right'
 
-    /** Props passed down to the Combobox component */
-    comboboxProps?: Record<string, any>
+    /** Props passed down to the Combobox component（核心受控 props 由 MultiSelect 内部管理，不可覆盖） */
+    comboboxProps?: Omit<
+        Partial<ComboboxProps>,
+        'opened' | 'onChange' | 'searchValue' | 'onSearchChange' | 'selectedValues' | 'onOptionSubmit' | 'disabled' | 'children'
+    >
 }
 
 export type MultiSelectFactory = Factory<{
@@ -144,12 +147,8 @@ function parseMultiSelectData(data?: MultiSelectData): ComboboxOptionData[] {
     })
 }
 
-interface MultiSelectTargetProps extends React.ComponentPropsWithoutRef<'div'> {
-    component?: 'input'
-}
-
-const MultiSelectTarget = forwardRef<HTMLDivElement, MultiSelectTargetProps>(
-    ({ component, children, ...others }, ref) => (
+const MultiSelectTarget = forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
+    ({ children, ...others }, ref) => (
         <div ref={ref} {...others}>
             {children}
         </div>
@@ -190,11 +189,12 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     } = props
 
     const parsedData = useMemo(() => parseMultiSelectData(data), [data])
+    // 不向 useUncontrolled 传 onChange：其非受控 setter 内部会调 onChange，
+    // 而下方 handler 已显式调用 onChange?.()，两处都传会导致每次变更触发两次
     const [selectedValues, setSelectedValues] = useUncontrolled<string[]>({
         value,
         defaultValue,
-        finalValue: [],
-        onChange
+        finalValue: []
     })
 
     const [searchValue, setSearchValue] = useState('')
@@ -306,6 +306,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
 
     const input = (
         <Combobox
+            {...comboboxProps}
             opened={opened}
             onChange={setOpened}
             searchValue={searchable ? searchValue : undefined}
@@ -314,11 +315,9 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
             onOptionSubmit={handleOptionSubmit}
             position={position}
             disabled={disabled}
-            {...comboboxProps}
         >
             <Combobox.Target>
                 <MultiSelectTarget
-                    component="input"
                     className={classes.wrapper}
                     onClick={(event: React.MouseEvent<HTMLDivElement>) => {
                         if (!(event.target as HTMLElement).closest('button')) {
@@ -340,13 +339,10 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
                         role="combobox"
                         size={size}
                         rightSection={rightSection}
-                        onClick={() => {
-                            if (!disabled) {
-                                setOpened(true)
-                            }
-                        }}
-                        onFocus={() => {
-                            if (!disabled) {
+                        onFocus={event => {
+                            // 仅键盘导航（Tab 切入）时打开；鼠标点击的开/关由 wrapper 的 click toggle 统一处理，
+                            // 否则 focus 先打开、随后的 click toggle 又关闭，造成闪现即收
+                            if (!disabled && event.currentTarget.matches(':focus-visible')) {
                                 setOpened(true)
                             }
                         }}
@@ -402,19 +398,15 @@ function renderOptions(
     checkIconPosition?: 'left' | 'right'
 ) {
     const result: React.ReactNode[] = []
-    let lastGroup: string | undefined
+    // 记录每个组名的出现次数，组不连续（如 A,B,A）时为同名组生成唯一 key
+    const groupOccurrences = new Map<string, number>()
 
-    data.forEach(item => {
-        if (item.group && item.group !== lastGroup) {
-            result.push(<Combobox.Group key={`group-${item.group}`} label={item.group} />)
-            lastGroup = item.group
-        }
-
+    const renderOption = (item: ComboboxOptionData) => {
         const selected = selectedValues.includes(item.value)
         const disabled = item.disabled || (isMaxSelected && !selected)
         const check = <MultiSelectCheckIcon className={classes.check} />
 
-        result.push(
+        return (
             <Combobox.Option key={item.value} value={item.value} disabled={disabled}>
                 <span
                     style={{
@@ -431,7 +423,34 @@ function renderOptions(
                 </span>
             </Combobox.Option>
         )
-    })
+    }
+
+    let index = 0
+    while (index < data.length) {
+        const item = data[index]
+
+        if (item.group) {
+            const group = item.group
+            const occurrence = groupOccurrences.get(group) ?? 0
+            groupOccurrences.set(group, occurrence + 1)
+
+            // 收集同一连续段的选项，渲染进 Combobox.Group 内部（而非组外的空壳）
+            const groupItems: ComboboxOptionData[] = []
+            while (index < data.length && data[index].group === group) {
+                groupItems.push(data[index])
+                index++
+            }
+
+            result.push(
+                <Combobox.Group key={`group-${group}-${occurrence}`} label={group}>
+                    {groupItems.map(renderOption)}
+                </Combobox.Group>
+            )
+        } else {
+            result.push(renderOption(item))
+            index++
+        }
+    }
 
     return result
 }

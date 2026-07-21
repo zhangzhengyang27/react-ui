@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
 import type { NotificationProps } from '../Notification'
 
 export type NotificationPosition =
@@ -118,14 +118,8 @@ export function createNotificationsStore(initialState: Partial<NotificationsStat
 export const notificationsStore = createNotificationsStore()
 
 export function useNotifications(store: NotificationsStore = notificationsStore) {
-    const [state, setState] = useState(store.getState())
-
-    useEffect(() => {
-        const unsubscribe = store.subscribe(() => setState(store.getState()))
-        return unsubscribe
-    }, [store])
-
-    return state
+    // 使用 useSyncExternalStore 替代手写 subscribe + setState,避免并发渲染下漏更新/状态撕裂
+    return useSyncExternalStore(store.subscribe, store.getState, store.getState)
 }
 
 export function updateNotificationsState(
@@ -166,15 +160,13 @@ export function showNotification(notification: NotificationData, store: Notifica
 }
 
 export function hideNotification(id: string, store: NotificationsStore = notificationsStore) {
-    updateNotificationsState(store, notifications =>
-        notifications.filter(notification => {
-            if (notification.id === id) {
-                notification.onClose?.(notification)
-                return false
-            }
-            return true
-        })
-    )
+    const current = store.getState()
+    const hiddenNotification = [...current.notifications, ...current.queue].find(item => item.id === id)
+
+    updateNotificationsState(store, notifications => notifications.filter(notification => notification.id !== id))
+
+    // 状态提交完成后再调用 onClose,避免用户在回调中 show/hide 时被外层 setState 覆盖丢失
+    hiddenNotification?.onClose?.(hiddenNotification)
 
     return id
 }

@@ -191,7 +191,7 @@ export function TreeSelectSearchable() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          <ScrollArea.Autosize mah={250} type="scroll">
+          <ScrollArea.Autosize mah={250} type="always">
             {flatNodes.length === 0 ? (
               <Combobox.Empty>未找到结果</Combobox.Empty>
             ) : (

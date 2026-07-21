@@ -19,6 +19,7 @@ export interface JsonInputProps
             | 'value'
             | 'defaultValue'
             | 'onChange'
+            | 'onBlur'
             | 'labelProps'
             | 'descriptionProps'
             | 'errorProps'
@@ -32,6 +33,9 @@ export interface JsonInputProps
 
     //** 值变化时调用 */
     onChange?: (value: string) => void
+
+    /** 失焦时调用（JsonInput 渲染 textarea，事件类型为 HTMLTextAreaElement） */
+    onBlur?: React.FocusEventHandler<HTMLTextAreaElement>
 
     /** If set, value is formatted on blur @default false */
     formatOnBlur?: boolean
@@ -151,7 +155,7 @@ export const JsonInput = factory<JsonInputFactory>((_props, ref) => {
         if (formatOnBlur) {
             setValue(formatJson(valueRef.current, serialization?.space))
         }
-        onBlur?.(event as unknown as React.FocusEvent<HTMLInputElement>)
+        onBlur?.(event)
     }
 
     const inputId = useId(id)

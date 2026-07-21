@@ -80,7 +80,7 @@ export function DropdownHeader() {
           <Combobox.Header>
             <Text fz="xs">注意：胡萝卜当前不可用</Text>
           </Combobox.Header>
-          <ScrollArea.Autosize mah={200} type="scroll">
+          <ScrollArea.Autosize mah={200} type="always">
             {options.length === 0 ? <Combobox.Empty>未找到</Combobox.Empty> : options}
           </ScrollArea.Autosize>
         </Combobox.Options>

@@ -14,6 +14,9 @@ export type SplitterPanelFactory = Factory<{
     props: SplitterPanelProps
     ref: HTMLDivElement
     stylesNames: 'panel'
+    staticComponents: {
+        isSplitterPanel: true
+    }
 }>
 
 const defaultProps = {} satisfies Partial<SplitterPanelProps>
@@ -56,6 +59,8 @@ export const SplitterPanel = factory<SplitterPanelFactory>((_props, ref) => {
 
 SplitterPanel.classes = classes
 SplitterPanel.displayName = '@react-ui/ui/SplitterPanel'
+// 静态标记:供 Splitter 的 isPanel 识别(HOC/memo 包装后 displayName 可能丢失)
+SplitterPanel.isSplitterPanel = true
 
 export namespace SplitterPanel {
     export type Props = SplitterPanelProps

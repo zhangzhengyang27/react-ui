@@ -101,7 +101,7 @@ export default function AppShellPage() {
         withCloseButton={false}
         padding={0}
       >
-        <ScrollArea h="100dvh" type="scroll" p="md">
+        <ScrollArea h="100dvh" type="always" p="md">
           <Title order={3} fz="lg" fw={500} pl="lg" pt="md">
             AppShell 组件示例
           </Title>

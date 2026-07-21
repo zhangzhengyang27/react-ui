@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useMergedRef } from '@react-ui/hooks'
 import { Box, BoxProps, ElementProps, Factory, GetStylesApi, useProps } from '../../../core'
 import { ScrollAreaProvider } from '../ScrollArea.context'
@@ -12,7 +12,7 @@ export type ScrollAreaRootCssVariables = {
 
 export interface ScrollAreaRootProps extends BoxProps, ElementProps<'div'> {
     getStyles: GetStylesApi<ScrollAreaFactory>
-    type?: 'always' | 'never' | 'scroll'
+    type?: 'always' | 'never'
     scrollbars?: 'x' | 'y' | 'xy' | false
     ref?: React.Ref<HTMLDivElement>
 }
@@ -40,6 +40,15 @@ export function ScrollAreaRoot(_props: ScrollAreaRootProps) {
     const [scrollbarXEnabled, setScrollbarXEnabled] = useState(false)
     const [scrollbarYEnabled, setScrollbarYEnabled] = useState(false)
     const rootRef = useMergedRef(ref, setScrollArea)
+
+    // scrollbars={false} 时不渲染 Scrollbar 子组件，enabled 标志不会被其挂载逻辑置 true，
+    // Viewport 的 overflow 将恒为 hidden 导致超出内容被裁剪；此处主动置 true 恢复原生滚动
+    useEffect(() => {
+        if (scrollbars === false) {
+            setScrollbarXEnabled(true)
+            setScrollbarYEnabled(true)
+        }
+    }, [scrollbars])
 
     const getStylesRef = useRef(getStyles)
     getStylesRef.current = getStyles

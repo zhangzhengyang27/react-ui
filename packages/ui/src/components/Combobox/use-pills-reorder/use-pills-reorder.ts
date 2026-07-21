@@ -100,8 +100,16 @@ export function usePillsReorder<T>({ value, onChange, enabled }: UsePillsReorder
     }
 
     const input = event.currentTarget;
-    const caretAtStart =
-      input.value.length === 0 || (input.selectionStart === 0 && input.selectionEnd === 0);
+    let caretAtStart = input.value.length === 0;
+    if (!caretAtStart) {
+      try {
+        // type="number"/"email" 等输入框访问 selectionStart/selectionEnd 会抛
+        // InvalidStateError，捕获后视为光标不在开头，跳过本次焦点移动
+        caretAtStart = input.selectionStart === 0 && input.selectionEnd === 0;
+      } catch {
+        return;
+      }
+    }
     if (!caretAtStart) {
       return;
     }

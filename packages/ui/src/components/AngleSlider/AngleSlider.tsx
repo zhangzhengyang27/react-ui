@@ -147,12 +147,19 @@ export const AngleSlider = factory<AngleSliderFactory>((_props, ref) => {
             return
         }
 
+        // 未处理的按键直接返回,避免任意键都触发 setValue + onChangeEnd
+        const commitKeys = ['ArrowLeft', 'ArrowDown', 'ArrowRight', 'ArrowUp', 'Home', 'End']
+        if (!commitKeys.includes(event.key)) {
+            return
+        }
+
         let newValue = _value
 
         if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') {
             event.preventDefault()
             if (_value === 0) {
-                newValue = 359
+                // 回绕按 step 网格:0 的前一个是 360 - step 归一化后的值,而非硬编码 359
+                newValue = normalizeRadialValue(360 - step, step)
             } else {
                 newValue = normalizeRadialValue(_value - step, step)
             }
@@ -160,11 +167,8 @@ export const AngleSlider = factory<AngleSliderFactory>((_props, ref) => {
 
         if (event.key === 'ArrowRight' || event.key === 'ArrowUp') {
             event.preventDefault()
-            if (_value === 359) {
-                newValue = 0
-            } else {
-                newValue = normalizeRadialValue(_value + step, step)
-            }
+            // 网格最大值的下一个经归一化回到 0(360 会被归一化为 0),无需硬编码 359 判断
+            newValue = normalizeRadialValue(_value + step, step)
         }
 
         if (event.key === 'Home') {
@@ -172,7 +176,8 @@ export const AngleSlider = factory<AngleSliderFactory>((_props, ref) => {
         }
 
         if (event.key === 'End') {
-            newValue = 359
+            // 值域为 [0, 360) 的 step 网格,End 取网格上的最大值而非不可达的 359/360
+            newValue = normalizeRadialValue(360 - step, step)
         }
 
         if (restrictToMarks && Array.isArray(marks)) {
@@ -196,11 +201,11 @@ export const AngleSlider = factory<AngleSliderFactory>((_props, ref) => {
         onChangeEnd?.(newValue)
     }
 
-    const marksItems = marks?.map((mark) => (
+    const marksItems = marks?.map((mark, index) => (
         <div
             {...getStyles('mark', { style: { '--angle': `${mark.value}deg` } })}
             data-label={mark.label || undefined}
-            key={mark.value}
+            key={`${mark.value}-${index}`}
         />
     ))
 
@@ -210,6 +215,14 @@ export const AngleSlider = factory<AngleSliderFactory>((_props, ref) => {
             {...getStyles('root', { focusable: true })}
             mod={[{ disabled }, mod]}
             {...others}
+            // useRadialMove 通过原生事件监听实现拖拽,用户的 onMouseDown/onTouchStart 需在此链式调用,
+            // 否则解构后从未触发
+            onMouseDown={(event) => {
+                onMouseDown?.(event)
+            }}
+            onTouchStart={(event) => {
+                onTouchStart?.(event)
+            }}
         >
             {marksItems && marksItems.length > 0 && <div {...getStyles('marks')}>{marksItems}</div>}
 
@@ -221,7 +234,8 @@ export const AngleSlider = factory<AngleSliderFactory>((_props, ref) => {
             <div
                 tabIndex={tabIndex ?? (disabled ? -1 : 0)}
                 role="slider"
-                aria-valuemax={360}
+                // 值域为 [0, 360),360 会被归一化为 0 而不可达,aria-valuemax 取 359 诚实表达上界
+                aria-valuemax={359}
                 aria-valuemin={0}
                 aria-valuenow={_value}
                 onKeyDown={handleKeyDown}

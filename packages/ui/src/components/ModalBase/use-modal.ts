@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useId } from '@react-ui/hooks'
 import type { TransitionOverride } from '../Transition'
+import { isTopmostModal, popModal, pushModal } from './modal-stack'
 
 interface UseModalInput {
     opened: boolean
@@ -19,9 +20,20 @@ export function useModal({ id, transitionProps, opened, closeOnEscape, onClose }
 
     const transitionDuration = typeof transitionProps?.duration === 'number' ? transitionProps.duration : 200
 
+    // opened 期间登记到模态栈,供嵌套模态框按打开顺序仲裁 Escape 行为
+    useEffect(() => {
+        if (opened) {
+            pushModal(_id)
+            return () => popModal(_id)
+        }
+
+        return undefined
+    }, [opened, _id])
+
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === 'Escape' && closeOnEscape && !event.isComposing && opened) {
+            // 仅栈顶模态框响应 Escape,避免嵌套打开时一次按键关闭所有模态框
+            if (event.key === 'Escape' && closeOnEscape && !event.isComposing && opened && isTopmostModal(_id)) {
                 const shouldTrigger =
                     (event.target as HTMLElement)?.getAttribute('data-ui-stop-propagation') !== 'true'
                 if (shouldTrigger) {
@@ -32,7 +44,7 @@ export function useModal({ id, transitionProps, opened, closeOnEscape, onClose }
 
         window.addEventListener('keydown', handleKeyDown, true)
         return () => window.removeEventListener('keydown', handleKeyDown, true)
-    }, [closeOnEscape, opened, onClose])
+    }, [closeOnEscape, opened, onClose, _id])
 
     return {
         _id,

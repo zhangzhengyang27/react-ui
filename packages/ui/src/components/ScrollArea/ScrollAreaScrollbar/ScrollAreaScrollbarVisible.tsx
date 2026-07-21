@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { useScrollAreaContext } from '../ScrollArea.context'
 import type { ScrollAreaScrollbarAxisPrivateProps, ScrollAreaScrollbarAxisProps, Sizes } from '../ScrollArea.types'
 import { getScrollPositionFromPointer, getThumbOffsetFromScroll, getThumbRatio } from '../utils'
@@ -23,6 +23,30 @@ export function ScrollAreaScrollbarVisible(props: ScrollAreaScrollbarVisibleProp
     })
 
     const thumbRatio = getThumbRatio(sizes.viewport, sizes.content)
+
+    // useCallback 稳定化:Thumb 内 scroll 监听的 useEffect 依赖 onThumbPositionChange,
+    // 内联箭头会导致父组件每次渲染都重绑 viewport 的 scroll 监听;
+    // 依赖 sizes 是必要的,sizes 变化时本就需要按新尺寸重算 thumb 位置
+    const handleThumbPositionChangeX = useCallback(() => {
+        if (context.viewport && thumbRef.current) {
+            const scrollPos = context.viewport.scrollLeft
+            const offset = getThumbOffsetFromScroll(scrollPos, sizes)
+            thumbRef.current.style.transform = `translate3d(${offset}px, 0, 0)`
+        }
+    }, [context.viewport, sizes])
+
+    const handleThumbPositionChangeY = useCallback(() => {
+        if (context.viewport && thumbRef.current) {
+            const scrollPos = context.viewport.scrollTop
+            const offset = getThumbOffsetFromScroll(scrollPos, sizes)
+            if (sizes.scrollbar.size === 0) {
+                thumbRef.current.style.setProperty('--thumb-opacity', '0')
+            } else {
+                thumbRef.current.style.setProperty('--thumb-opacity', '1')
+            }
+            thumbRef.current.style.transform = `translate3d(0, ${offset}px, 0)`
+        }
+    }, [context.viewport, sizes])
 
     const commonProps: Omit<
         ScrollAreaScrollbarAxisPrivateProps,
@@ -51,13 +75,7 @@ export function ScrollAreaScrollbarVisible(props: ScrollAreaScrollbarVisibleProp
             <ScrollAreaScrollbarX
                 {...commonProps}
                 forceMount={forceMount}
-                onThumbPositionChange={() => {
-                    if (context.viewport && thumbRef.current) {
-                        const scrollPos = context.viewport.scrollLeft
-                        const offset = getThumbOffsetFromScroll(scrollPos, sizes)
-                        thumbRef.current.style.transform = `translate3d(${offset}px, 0, 0)`
-                    }
-                }}
+                onThumbPositionChange={handleThumbPositionChangeX}
                 onWheelScroll={scrollPos => {
                     if (context.viewport) {
                         context.viewport.scrollLeft = scrollPos
@@ -77,18 +95,7 @@ export function ScrollAreaScrollbarVisible(props: ScrollAreaScrollbarVisibleProp
             <ScrollAreaScrollbarY
                 {...commonProps}
                 forceMount={forceMount}
-                onThumbPositionChange={() => {
-                    if (context.viewport && thumbRef.current) {
-                        const scrollPos = context.viewport.scrollTop
-                        const offset = getThumbOffsetFromScroll(scrollPos, sizes)
-                        if (sizes.scrollbar.size === 0) {
-                            thumbRef.current.style.setProperty('--thumb-opacity', '0')
-                        } else {
-                            thumbRef.current.style.setProperty('--thumb-opacity', '1')
-                        }
-                        thumbRef.current.style.transform = `translate3d(0, ${offset}px, 0)`
-                    }
-                }}
+                onThumbPositionChange={handleThumbPositionChangeY}
                 onWheelScroll={scrollPos => {
                     if (context.viewport) {
                         context.viewport.scrollTop = scrollPos

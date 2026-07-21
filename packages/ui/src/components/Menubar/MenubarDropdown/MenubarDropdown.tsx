@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { Menu, MenuDropdownProps } from '../../Menu'
 import { useMenubarContext, useMenubarMenuContext } from '../Menubar.context'
 
@@ -14,6 +15,10 @@ export function MenubarDropdown(props: MenubarDropdownProps) {
     const { onKeyDown, onMouseEnter, onMouseLeave, ...others } = props
     const ctx = useMenubarContext()
     const menuCtx = useMenubarMenuContext()
+
+    // Escape 后延迟归还焦点的定时器 id，卸载时清理，避免卸载后仍触发 focusTarget
+    const focusTimeoutRef = useRef(-1)
+    useEffect(() => () => window.clearTimeout(focusTimeoutRef.current), [])
 
     const handleMouseEnter = createEventHandler<any>(onMouseEnter, () => ctx.cancelClose())
 
@@ -58,9 +63,15 @@ export function MenubarDropdown(props: MenubarDropdownProps) {
             event.preventDefault()
             switchToAdjacent(-1)
         } else if (event.key === 'Escape') {
+            // ARIA menubar 模式：Escape 应关闭菜单并把焦点归还到 menubar target（原实现只归还焦点不关闭）。
+            // 本 handler 经 onKeyDown 链先于 PopoverDropdown 的 Escape 关闭逻辑执行，
+            // preventDefault 后 PopoverDropdown 的 !event.defaultPrevented 判断会跳过其关闭，避免重复关闭
+            event.preventDefault()
+            ctx.closeMenu()
             const index = menuCtx.index
             ctx.setActiveIndex(index)
-            window.setTimeout(() => ctx.focusTarget(index), 0)
+            window.clearTimeout(focusTimeoutRef.current)
+            focusTimeoutRef.current = window.setTimeout(() => ctx.focusTarget(index), 0)
         }
     })
 

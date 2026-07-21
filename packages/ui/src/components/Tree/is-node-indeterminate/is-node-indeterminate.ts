@@ -1,4 +1,3 @@
-import { memoize } from '../memoize'
 import { getAllCheckedNodes } from '../get-all-checked-nodes/get-all-checked-nodes'
 import type { TreeNodeData } from '../Tree'
 
@@ -14,5 +13,3 @@ export function isNodeIndeterminate(
     const checkedNodes = getAllCheckedNodes(data, checkedState).result
     return checkedNodes.some((node) => node.value === value && node.indeterminate)
 }
-
-export const memoizedIsNodeIndeterminate = memoize(isNodeIndeterminate)

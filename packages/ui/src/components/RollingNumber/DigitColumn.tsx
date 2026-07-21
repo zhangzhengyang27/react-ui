@@ -21,14 +21,23 @@ export function DigitColumn({
     const digitIndex = parseInt(digit, 10)
     const previousDigitIndex = previousDigit !== null ? parseInt(previousDigit, 10) : digitIndex
 
+    // 递增跨边界(如 9→0):从真实数位向前滚到 strip 尾部重复区
     const wrapsForward =
         valueDirection === 'up' &&
         previousDigit !== null &&
         digitIndex < previousDigitIndex &&
         digitIndex <= 1
 
-    const animateToIndex = wrapsForward ? digitIndex + 10 : digitIndex
-    const direction = digitIndex >= previousDigitIndex ? 'up' : 'down'
+    // 递减跨边界(如 10→9):从 strip 尾部重复区(index previousDigitIndex + 10)
+    // 向后单步滚到真实数位,避免从 index 0 反向滚 9 步
+    const wrapsBackward =
+        valueDirection === 'down' &&
+        previousDigit !== null &&
+        digitIndex > previousDigitIndex &&
+        previousDigitIndex <= 1
+
+    const rollFromIndex = wrapsBackward ? previousDigitIndex + 10 : previousDigitIndex
+    const rollToIndex = wrapsForward ? digitIndex + 10 : digitIndex
 
     const digitStyles = getStyles('digit')
     const columnStyles = getStyles('digitColumn')
@@ -41,10 +50,9 @@ export function DigitColumn({
                 style={{
                     ...columnStyles.style,
                     transform: `translateY(${-digitIndex}em)`,
-                    ['--rolling-number-roll-from' as any]: `translateY(${-previousDigitIndex}em)`,
-                    ['--rolling-number-roll-to' as any]: `translateY(${-animateToIndex}em)`,
+                    ['--rolling-number-roll-from' as any]: `translateY(${-rollFromIndex}em)`,
+                    ['--rolling-number-roll-to' as any]: `translateY(${-rollToIndex}em)`,
                 }}
-                data-direction={direction}
             >
                 {STRIP_CELLS.map((d, i) => (
                     <span key={i}>{d}</span>

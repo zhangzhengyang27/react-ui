@@ -134,7 +134,9 @@ export const OverflowList = factory<OverflowListFactory>((_props, _ref) => {
 
     const containerRef = useRef<HTMLDivElement>(null)
     const rootRef = useMergedRef(containerRef, _ref)
-    const finalVisibleCount = visibleCount - subtractCount
+    // 溢出指示器自身放不下时 subtractCount 可能超过 visibleCount,
+    // clamp 到 >= 0,避免 slice(负数) 反而取到末尾元素
+    const finalVisibleCount = Math.max(0, visibleCount - subtractCount)
     const overflowCount = data.length - finalVisibleCount
     const showOverflow = overflowCount > 0 && phase !== 'measuring'
     const isCollapseStart = collapseFrom === 'start'
@@ -311,9 +313,12 @@ export const OverflowList = factory<OverflowListFactory>((_props, _ref) => {
             : overflowElement
 
     let finalItems = data
-    if (maxVisibleItems) {
+    // 与测量逻辑 Math.min(count, maxVisibleItems) 的语义保持一致:
+    // 0 表示隐藏全部,仅 Infinity 表示不限;原 if (maxVisibleItems) 把 0 当作不限
+    // (且 slice(-0) 会返回整个数组,无法表达"取 0 个")
+    if (maxVisibleItems !== Infinity) {
         finalItems = isCollapseStart
-            ? finalItems.slice(-maxVisibleItems!)
+            ? finalItems.slice(finalItems.length - maxVisibleItems!)
             : finalItems.slice(0, maxVisibleItems)
     }
 

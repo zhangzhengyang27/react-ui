@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { findTreeNode } from './get-children-nodes-values/get-children-nodes-values'
 import type { TreeDragDropPayload, TreeDragDropPosition } from './move-tree-node/move-tree-node'
 import type { TreeDragState, TreeNodeData } from './Tree'
@@ -107,6 +107,12 @@ export function useTreeNodeDragDrop({
         return () => window.removeEventListener('mouseup', handleWindowMouseUp)
     }, [withDragHandle, isDragHandleActive])
 
+    // 保存 dragstart 的 rAF id,dragend/卸载时取消,
+    // 避免同帧内快速拖放时 dragend 后 rAF 又把 data-dragging 加回导致样式永久残留
+    const dragStartFrameRef = useRef(-1)
+
+    useEffect(() => () => cancelAnimationFrame(dragStartFrameRef.current), [])
+
     if (!onDragDrop) {
         return EMPTY_DRAG_PROPS
     }
@@ -127,7 +133,7 @@ export function useTreeNodeDragDrop({
             treeItem.setAttribute('data-dragging', 'true')
         }
 
-        requestAnimationFrame(() => {
+        dragStartFrameRef.current = requestAnimationFrame(() => {
             target.setAttribute('data-dragging', 'true')
         })
     }
@@ -204,6 +210,8 @@ export function useTreeNodeDragDrop({
     }
 
     const handleDragEnd = (event: React.DragEvent) => {
+        cancelAnimationFrame(dragStartFrameRef.current)
+
         const target = event.currentTarget as HTMLElement
         target.removeAttribute('data-dragging')
 

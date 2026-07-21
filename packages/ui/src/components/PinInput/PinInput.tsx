@@ -131,11 +131,13 @@ export const PinInput = factory<PinInputFactory>((_props, ref) => {
         ...others
     } = props
 
+    // 注意：不向 useUncontrolled 传 onChange —— 其非受控分支的 setter 内部会调用 onChange，
+    // 而 updateValue 已显式调用 onChange?.()，若两处都传会导致每次输入 onChange 触发两次。
+    // 此处以 updateValue 的显式调用作为唯一出口（受控模式下不会走到 setValues，行为一致）
     const [values, setUncontrolledValues] = useUncontrolled<string>({
         value,
         defaultValue,
-        finalValue: '',
-        onChange
+        finalValue: ''
     })
 
     const valuesRef = useRef(values)
@@ -228,20 +230,17 @@ export const PinInput = factory<PinInputFactory>((_props, ref) => {
         if (disabled || readOnly) return
 
         event.preventDefault()
-        const pasted = event.clipboardData.getData('text').slice(0, length)
-        const currentValues = valuesRef.current
-        const chars = Array.from({ length: length! }, (_, i) => currentValues[i] || EMPTY_VALUE)
+        const pasted = event.clipboardData.getData('text')
+        // 粘贴语义：用粘贴文本中的合法字符替换整个值，非法字符直接丢弃（不占位），截断到 length
+        const validChars = Array.from(pasted)
+            .map(char => getNextValue(char, type!))
+            .filter(char => char !== EMPTY_VALUE)
+            .slice(0, length!)
 
-        for (let i = 0; i < pasted.length; i++) {
-            const char = getNextValue(pasted[i], type!)
-            if (char) {
-                chars[i] = char
-            }
-        }
-
-        const nextValues = chars.join('')
+        const nextValues = validChars.join('')
         updateValue(nextValues)
-        focusInput(Math.min(nextValues.replace(new RegExp(EMPTY_VALUE, 'g'), '').length, length! - 1))
+        // 焦点落在最后一个已填字符上（原实现用 EMPTY_VALUE 空串做 replace 实为空操作，这里直接按合法字符数定位）
+        focusInput(Math.min(validChars.length, length! - 1))
     }
 
     const handleFocus = (index: number) => {

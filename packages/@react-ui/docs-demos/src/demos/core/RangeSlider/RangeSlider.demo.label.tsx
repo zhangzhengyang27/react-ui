@@ -14,16 +14,6 @@ function Demo() {
 
       <Text size="sm" mt="xl">标签始终可见</Text>
       <RangeSlider defaultValue={[20, 60]} labelAlwaysOn />
-
-      <Text size="sm" mt="xl">自定义标签过渡</Text>
-      <RangeSlider
-        defaultValue={40}
-        labelTransitionProps={{
-          transition: 'skew-down',
-          duration: 150,
-          timingFunction: 'linear',
-        }}
-      />
     </>
   );
 }
@@ -44,18 +34,6 @@ function Demo() {
         标签始终可见
       </Text>
       <RangeSlider defaultValue={[20, 60]} labelAlwaysOn />
-
-      <Text size="sm" mt="xl">
-        自定义标签过渡
-      </Text>
-      <RangeSlider
-        defaultValue={[20, 60]}
-        labelTransitionProps={{
-          transition: 'skew-down',
-          duration: 150,
-          timingFunction: 'linear',
-        }}
-      />
     </>
   );
 }

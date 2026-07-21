@@ -74,7 +74,7 @@ function Demo() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          <ScrollArea.Autosize type="scroll" mah={200}>
+          <ScrollArea.Autosize type="always" mah={200}>
             {options}
           </ScrollArea.Autosize>
         </Combobox.Options>
@@ -152,7 +152,7 @@ function Demo() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          <ScrollArea.Autosize type="scroll" mah={200}>
+          <ScrollArea.Autosize type="always" mah={200}>
             {options}
           </ScrollArea.Autosize>
         </Combobox.Options>

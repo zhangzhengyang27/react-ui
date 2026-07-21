@@ -6,8 +6,6 @@ import {
     getAllChildrenNodes,
     getChildrenNodesValues,
 } from './get-children-nodes-values/get-children-nodes-values'
-import { memoizedIsNodeChecked } from './is-node-checked/is-node-checked'
-import { memoizedIsNodeIndeterminate } from './is-node-indeterminate/is-node-indeterminate'
 import type { TreeNodeData } from './Tree'
 
 export type TreeExpandedState = Record<string, boolean>
@@ -58,7 +56,15 @@ function getInitialCheckedState(initialState: string[], data: TreeNodeData[], ch
 
     const acc: string[] = []
 
-    initialState.forEach((node) => acc.push(...getChildrenNodesValues(node, data)))
+    initialState.forEach((node) => {
+        // data 变化(如搜索过滤)时,保留不存在于 data 中的已勾选值(取并集),
+        // 避免勾选状态永久丢失,仅在显式取消勾选时移除
+        if (findTreeNode(node, data)) {
+            acc.push(...getChildrenNodesValues(node, data))
+        } else {
+            acc.push(node)
+        }
+    })
 
     return Array.from(new Set(acc))
 }
@@ -169,8 +175,18 @@ export function useTree({
     const [loadingNodes, setLoadingNodes] = useState<string[]>([])
     const [loadErrors, setLoadErrors] = useState<Record<string, Error>>({})
 
+    // 记录最近一次 initialize 使用的 data 引用。Tree 的 effect 依赖 [data, tree],
+    // 而 controller 对象身份随内部状态变化,若不判重,身份变化会反复触发 initialize→
+    // 生成新 expanded/checked 对象→状态变化→身份再变化的死循环;
+    // 更换 controller 实例时(用户替换 tree prop)此 ref 为全新,仍可正常初始化
+    const initializedDataRef = useRef<TreeNodeData[] | null>(null)
+
     const initialize = useCallback(
         (_data: TreeNodeData[]) => {
+            if (initializedDataRef.current === _data) {
+                return
+            }
+            initializedDataRef.current = _data
             setExpandedState(getInitialTreeExpandedState(_expandedState, _data, _selectedState))
             setCheckedState(getInitialCheckedState(_checkedState, _data, checkStrictly))
             setData(_data)
@@ -304,7 +320,10 @@ export function useTree({
             }
 
             setAnchorNode(value)
-            setSelectedState([..._selectedState, value])
+            const next = [..._selectedState, value]
+            setSelectedState(next)
+            // 补齐遗漏的 return,与其它分支保持一致(均返回最新选中态)
+            return next
         },
         [_selectedState]
     )
@@ -374,6 +393,27 @@ export function useTree({
         setCheckedState([])
     }, [])
 
+    // 每次 data/checkedState 变化时一次性计算全部节点的勾选状态,供
+    // isNodeChecked/isNodeIndeterminate/getCheckedNodes 共享,替代旧的逐节点
+    // JSON.stringify memoize(每节点 O(n) 序列化整树导致 O(n²)、模块级缓存无界增长、
+    // label 含循环引用时崩溃)
+    const checkedNodes = useMemo(() => getAllCheckedNodes(data, _checkedState).result, [data, _checkedState])
+
+    const checkedNodesMap = useMemo(() => {
+        const map = new Map<string, CheckedNodeStatus>()
+        for (const node of checkedNodes) {
+            const existing = map.get(node.value)
+            if (existing) {
+                // value 重复时合并标记,保持与旧实现 some() 等价的语义
+                existing.checked = existing.checked || node.checked
+                existing.indeterminate = existing.indeterminate || node.indeterminate
+            } else {
+                map.set(node.value, { ...node })
+            }
+        }
+        return map
+    }, [checkedNodes])
+
     const getCheckedNodes = useCallback((): CheckedNodeStatus[] => {
         if (checkStrictly) {
             return _checkedState.map((value) => {
@@ -388,17 +428,20 @@ export function useTree({
                 }
             })
         }
-        return getAllCheckedNodes(data, _checkedState).result
-    }, [checkStrictly, _checkedState, data])
+        return checkedNodes
+    }, [checkStrictly, _checkedState, data, checkedNodes])
 
     const isNodeChecked = useCallback(
         (value: string) => {
             if (checkStrictly) {
                 return _checkedState.includes(value)
             }
-            return memoizedIsNodeChecked(value, data, _checkedState)
+            if (_checkedState.includes(value)) {
+                return true
+            }
+            return checkedNodesMap.get(value)?.checked === true
         },
-        [checkStrictly, _checkedState, data]
+        [checkStrictly, _checkedState, checkedNodesMap]
     )
 
     const isNodeIndeterminate = useCallback(
@@ -406,9 +449,9 @@ export function useTree({
             if (checkStrictly) {
                 return false
             }
-            return memoizedIsNodeIndeterminate(value, data, _checkedState)
+            return checkedNodesMap.get(value)?.indeterminate === true
         },
-        [checkStrictly, _checkedState, data]
+        [checkStrictly, checkedNodesMap]
     )
 
     const isNodeLoading = useCallback(

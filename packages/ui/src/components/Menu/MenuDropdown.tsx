@@ -28,7 +28,10 @@ export const MenuDropdown = factory<MenuDropdownFactory>((props, ref) => {
 
         if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
             event.preventDefault()
-            wrapperRef.current?.querySelectorAll<HTMLButtonElement>('[data-menu-item]:not(:disabled)')[0]?.focus()
+            // 与 MenuItem 键盘导航选择器同口径：data-disabled 同时覆盖原生禁用与仅标记禁用的项
+            wrapperRef.current
+                ?.querySelectorAll<HTMLButtonElement>('[data-menu-item]:not([data-disabled])')[0]
+                ?.focus()
         }
     }
 

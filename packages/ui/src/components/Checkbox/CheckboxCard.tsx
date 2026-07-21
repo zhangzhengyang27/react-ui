@@ -101,8 +101,12 @@ export const CheckboxCard = factory<CheckboxCardFactory>((_props, ref) => {
     })
 
     const ctx = useCheckboxGroupContext()
+    // 决策 C：group 内未传 value 时无法从 group 状态推导 checked。
+    // 原实现以 ctx.value.includes('') 伪造 checked，导致 onChange 谎报 checked=true 而 UI 永不变；
+    // 现在不再伪造——保持 undefined 走非受控逻辑，并在点击时 warn 提示补传 value
+    const missingGroupValue = ctx !== null && value === undefined && checked === undefined
     const _checked =
-        typeof checked === 'boolean' ? checked : ctx ? ctx.value.includes(value || '') : undefined
+        typeof checked === 'boolean' ? checked : ctx && value !== undefined ? ctx.value.includes(value) : undefined
 
     const [_value, setValue] = useUncontrolled({
         value: _checked,
@@ -122,6 +126,15 @@ export const CheckboxCard = factory<CheckboxCardFactory>((_props, ref) => {
                 aria-checked={_value}
                 onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
                     onClick?.(event)
+                    if (missingGroupValue) {
+                        // 决策 C：不再伪造 checked 调 onChange（此前会谎报 checked=true 但 UI 永不变）
+                        if (process.env.NODE_ENV !== 'production') {
+                            console.warn(
+                                '[@react-ui/ui] CheckboxCard is used within Checkbox.Group without a `value` prop, the click is ignored. Provide a `value` to make it checkable.'
+                            )
+                        }
+                        return
+                    }
                     if (ctx && value !== undefined) {
                         const nextValue = !_value
                             ? [...ctx.value, value]

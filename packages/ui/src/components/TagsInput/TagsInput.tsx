@@ -111,11 +111,7 @@ function parseTagsInputData(data?: TagsInputData): ComboboxOptionData[] {
     })
 }
 
-interface TagsInputTargetProps extends React.ComponentPropsWithoutRef<'div'> {
-    component?: 'input'
-}
-
-const TagsInputTarget = forwardRef<HTMLDivElement, TagsInputTargetProps>(({ component, children, ...others }, ref) => (
+const TagsInputTarget = forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(({ children, ...others }, ref) => (
     <div ref={ref} {...others}>
         {children}
     </div>
@@ -154,11 +150,12 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     } = props
 
     const parsedData = useMemo(() => parseTagsInputData(data), [data])
+    // 不向 useUncontrolled 传 onChange：其非受控 setter 内部会调 onChange，
+    // 而下方 handler 已显式调用 onChange?.()，两处都传会导致每次变更触发两次
     const [selectedValues, setSelectedValues] = useUncontrolled<string[]>({
         value,
         defaultValue,
-        finalValue: [],
-        onChange
+        finalValue: []
     })
 
     const [searchValue, setSearchValue] = useState('')
@@ -186,8 +183,9 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
         onChange?.(nextValues)
     }
 
-    const removeTag = (tagValue: string) => {
-        const nextValues = selectedValues.filter(v => v !== tagValue)
+    // 按 index 删除：allowDuplicates 时存在重复 tagValue，按值 filter 会误删所有同名 tag
+    const removeTag = (tagIndex: number) => {
+        const nextValues = selectedValues.filter((_, index) => index !== tagIndex)
         if (value === undefined) {
             setSelectedValues(nextValues)
         }
@@ -211,7 +209,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
             addTag(searchValue)
             setSearchValue('')
         } else if (event.key === 'Backspace' && searchValue === '' && selectedValues.length > 0) {
-            removeTag(selectedValues[selectedValues.length - 1])
+            removeTag(selectedValues.length - 1)
         }
     }
 
@@ -222,14 +220,29 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
         const delimiter = splitChars.find(char => pasted.includes(char))
         if (delimiter) {
             event.preventDefault()
-            pasted.split(delimiter).forEach(part => addTag(part))
+            // 不能逐段调用 addTag：其闭包中的 selectedValues 是同一渲染快照，
+            // 多次调用都基于旧值计算，导致只有最后一段生效。改为单次累加后统一更新
+            const nextValues = [...selectedValues]
+            for (const part of pasted.split(delimiter)) {
+                const trimmed = part.trim()
+                if (!trimmed) continue
+                if (maxTags !== undefined && nextValues.length >= maxTags) break
+                if (!allowDuplicates && nextValues.includes(trimmed)) continue
+                nextValues.push(trimmed)
+            }
+            if (nextValues.length > selectedValues.length) {
+                if (value === undefined) {
+                    setSelectedValues(nextValues)
+                }
+                onChange?.(nextValues)
+            }
         }
     }
 
-    const handleRemove = (event: React.MouseEvent<HTMLButtonElement>, tagValue: string) => {
+    const handleRemove = (event: React.MouseEvent<HTMLButtonElement>, tagIndex: number) => {
         event.stopPropagation()
         if (disabled) return
-        removeTag(tagValue)
+        removeTag(tagIndex)
     }
 
     const handleClear = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -242,9 +255,9 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
         onChange?.([])
     }
 
-    const valuesList = selectedValues.map(tagValue => (
+    const valuesList = selectedValues.map((tagValue, index) => (
         <Badge
-            key={tagValue}
+            key={`${tagValue}-${index}`}
             className={classes.pill}
             size="xs"
             variant="light"
@@ -252,7 +265,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
                 <CloseButton
                     size="xs"
                     aria-label={`移除 ${tagValue}`}
-                    onClick={(event: React.MouseEvent<HTMLButtonElement>) => handleRemove(event, tagValue)}
+                    onClick={(event: React.MouseEvent<HTMLButtonElement>) => handleRemove(event, index)}
                 />
             }
         >
@@ -295,7 +308,6 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
         >
             <Combobox.Target>
                 <TagsInputTarget
-                    component="input"
                     className={classes.wrapper}
                     onClick={(event: React.MouseEvent<HTMLDivElement>) => {
                         if (!(event.target as HTMLElement).closest('button')) {
@@ -312,17 +324,17 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
                         type="text"
                         value={searchValue}
                         placeholder={selectedValues.length === 0 ? placeholder : undefined}
-                        disabled={disabled || isMaxTags}
+                        // 达到 maxTags 用 readOnly 而非 disabled：disabled 会吞掉 keydown，
+                        // 导致 Backspace 无法再删除 tag；readOnly 下 keydown 仍会触发
+                        disabled={disabled}
+                        readOnly={isMaxTags}
                         role="combobox"
                         size={size}
                         rightSection={rightSection}
-                        onClick={() => {
-                            if (!disabled && !isMaxTags) {
-                                setOpened(true)
-                            }
-                        }}
-                        onFocus={() => {
-                            if (!disabled && !isMaxTags) {
+                        onFocus={event => {
+                            // 仅键盘导航（Tab 切入）时打开；鼠标点击的开/关由 wrapper 的 click toggle 统一处理，
+                            // 否则 focus 先打开、随后的 click toggle 又关闭，造成闪现即收
+                            if (!disabled && !isMaxTags && event.currentTarget.matches(':focus-visible')) {
                                 setOpened(true)
                             }
                         }}
@@ -374,22 +386,45 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
 
 function renderOptions(data: ComboboxOptionData[], selectedValues: string[]) {
     const result: React.ReactNode[] = []
-    let lastGroup: string | undefined
+    // 记录每个组名的出现次数，组不连续（如 A,B,A）时为同名组生成唯一 key
+    const groupOccurrences = new Map<string, number>()
 
-    data.forEach(item => {
-        if (item.group && item.group !== lastGroup) {
-            result.push(<Combobox.Group key={`group-${item.group}`} label={item.group} />)
-            lastGroup = item.group
-        }
-
+    const renderOption = (item: ComboboxOptionData) => {
         const disabled = item.disabled || selectedValues.includes(item.value)
 
-        result.push(
+        return (
             <Combobox.Option key={item.value} value={item.value} disabled={disabled}>
                 {item.label}
             </Combobox.Option>
         )
-    })
+    }
+
+    let index = 0
+    while (index < data.length) {
+        const item = data[index]
+
+        if (item.group) {
+            const group = item.group
+            const occurrence = groupOccurrences.get(group) ?? 0
+            groupOccurrences.set(group, occurrence + 1)
+
+            // 收集同一连续段的选项，渲染进 Combobox.Group 内部（而非组外的空壳）
+            const groupItems: ComboboxOptionData[] = []
+            while (index < data.length && data[index].group === group) {
+                groupItems.push(data[index])
+                index++
+            }
+
+            result.push(
+                <Combobox.Group key={`group-${group}-${occurrence}`} label={group}>
+                    {groupItems.map(renderOption)}
+                </Combobox.Group>
+            )
+        } else {
+            result.push(renderOption(item))
+            index++
+        }
+    }
 
     return result
 }

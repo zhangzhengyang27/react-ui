@@ -343,7 +343,7 @@ export function TreeMultiSelectCombobox() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          <ScrollArea.Autosize mah={250} type="scroll">
+          <ScrollArea.Autosize mah={250} type="always">
             {flatNodes.map((flatNode) => (
               <TreeOption
                 key={flatNode.node.value}

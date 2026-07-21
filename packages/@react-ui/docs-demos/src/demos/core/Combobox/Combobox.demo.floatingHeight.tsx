@@ -58,7 +58,7 @@ function Demo() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          <ScrollArea.Autosize mah="var(--combobox-floating-options-max-height)" type="scroll">
+          <ScrollArea.Autosize mah="var(--combobox-floating-options-max-height)" type="always">
             {options}
           </ScrollArea.Autosize>
         </Combobox.Options>
@@ -210,7 +210,7 @@ function Demo() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          <ScrollArea.Autosize mah="var(--combobox-floating-options-max-height)" type="scroll">
+          <ScrollArea.Autosize mah="var(--combobox-floating-options-max-height)" type="always">
             {options}
           </ScrollArea.Autosize>
         </Combobox.Options>

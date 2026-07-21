@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { clamp, useId } from '@react-ui/hooks'
 import {
     BoxProps,
@@ -215,34 +215,42 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     const inputId = useId(id)
     const isControlled = valueProp !== undefined
     const [focused, setFocused] = useState(false)
-    const [uncontrolledValue, setUncontrolledValue] = useState(() => parseRawValue(defaultValue ?? valueProp))
+    // 本地文本 state 作为输入框显示值的唯一来源：受控模式下中间态（空串、"-"、"1."）
+    // 解析不出合法数值、不触发 onChange，若直接绑定 value prop 会导致 DOM 与 React 值追踪器
+    // 失同步，重渲染时输入被弹回（无法清空、无法键入负号）
+    const [localText, setLocalText] = useState(() => parseRawValue(defaultValue ?? valueProp))
 
+    // value prop 外部变化且与本地解析值不同时，同步本地文本（本地输入导致的 onChange 不回写）
     useEffect(() => {
-        if (isControlled) {
-            setUncontrolledValue(parseRawValue(valueProp))
+        if (isControlled && parseValue(localText) !== parseValue(parseRawValue(valueProp))) {
+            setLocalText(parseRawValue(valueProp))
         }
     }, [isControlled, valueProp])
 
-    const rawValue = isControlled ? parseRawValue(valueProp) : uncontrolledValue
+    const rawValue = localText
     const inputValue = focused ? rawValue : formatDisplayValue(rawValue, prefix, suffix, thousandSeparator)
 
     const currentNumber = parseValue(rawValue)
+    // 记录最近一次合法数值：受控模式下文本解析失败（空串、"-" 等中间态）时，
+    // 步进以其为基准，避免回退到 0 导致结果违背用户预期
+    const lastValidNumberRef = useRef<number | undefined>(undefined)
+    if (currentNumber !== undefined) {
+        lastValidNumberRef.current = currentNumber
+    }
 
     const updateValue = (nextValue: number) => {
         const clamped = clamp(nextValue, min, max)
         onChange?.(clamped)
-        if (!isControlled) {
-            setUncontrolledValue(parseRawValue(clamped))
-        }
+        setLocalText(parseRawValue(clamped))
     }
 
     const increment = () => {
-        const base = currentNumber ?? 0
+        const base = currentNumber ?? lastValidNumberRef.current ?? 0
         updateValue(base + (step ?? 1))
     }
 
     const decrement = () => {
-        const base = currentNumber ?? 0
+        const base = currentNumber ?? lastValidNumberRef.current ?? 0
         updateValue(base - (step ?? 1))
     }
 
@@ -265,10 +273,10 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
         const withoutMinus = normalized.replace(/-/g, '')
         const sanitized = hasLeadingMinus ? `-${withoutMinus}` : withoutMinus
 
-        if (!isControlled) {
-            setUncontrolledValue(sanitized)
-        }
+        // 先更新本地文本，中间态（空串、"-"、"1."）也能正常显示
+        setLocalText(sanitized)
 
+        // 仅在能解析出合法数值时才通知外部
         const parsed = parseValue(sanitized)
         if (parsed !== undefined) {
             onChange?.(clamp(parsed, min, max))
@@ -285,14 +293,13 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
         const parsed = parseValue(rawValue)
         if (parsed !== undefined) {
             const clamped = clamp(parsed, min, max)
-            if (!isControlled) {
-                setUncontrolledValue(parseRawValue(clamped))
-            }
+            setLocalText(parseRawValue(clamped))
             if (clamped !== parsed) {
                 onChange?.(clamped)
             }
-        } else if (!isControlled) {
-            setUncontrolledValue('')
+        } else {
+            // 失焦时清理无法解析的中间态文本
+            setLocalText('')
         }
         onBlur?.(event)
     }
@@ -305,6 +312,7 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
                 disabled={disabled}
                 data-direction="up"
                 aria-label="Increment"
+                onMouseDown={event => event.preventDefault()}
                 onClick={increment}
             >
                 <span {...getStyles('icon')}>
@@ -317,6 +325,7 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
                 disabled={disabled}
                 data-direction="down"
                 aria-label="Decrement"
+                onMouseDown={event => event.preventDefault()}
                 onClick={decrement}
             >
                 <span {...getStyles('icon')}>

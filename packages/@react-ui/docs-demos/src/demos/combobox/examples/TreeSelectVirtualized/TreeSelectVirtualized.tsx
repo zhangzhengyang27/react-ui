@@ -159,7 +159,7 @@ export function TreeSelectVirtualized() {
         <Combobox.Options>
           <ScrollArea.Autosize
             mah={250}
-            type="scroll"
+            type="always"
             viewportRef={setScrollParent}
             onMouseDown={(event) => event.preventDefault()}
           >

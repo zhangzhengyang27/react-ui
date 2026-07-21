@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useClickOutside, useId } from '@react-ui/hooks'
 import {
     createVarsResolver,
@@ -12,8 +12,7 @@ import {
     StylesApiProps,
     useProps,
     useStyles,
-    type FloatingPosition,
-    type FloatingStrategy
+    type FloatingPosition
 } from '../../core'
 import { PopoverContextProvider } from './Popover.context'
 import { PopoverContextMenu, type PopoverContextMenuProps } from './PopoverContextMenu'
@@ -78,9 +77,6 @@ export interface PopoverProps extends StylesApiProps<PopoverFactory> {
     /** Arrow position */
     arrowPosition?: 'center' | 'side'
 
-    /** 决定下拉框是否在 Portal 中渲染 */
-    withinPortal?: boolean
-
     /** 下拉层 z-index */
     zIndex?: string | number
 
@@ -96,9 +92,6 @@ export interface PopoverProps extends StylesApiProps<PopoverFactory> {
     /** Determines whether focus should be trapped within dropdown */
     trapFocus?: boolean
 
-    /** Changes floating ui position strategy */
-    floatingStrategy?: FloatingStrategy
-
     /** Determines whether dropdown should be closed on outside clicks */
     closeOnClickOutside?: boolean
 
@@ -110,12 +103,6 @@ export interface PopoverProps extends StylesApiProps<PopoverFactory> {
 
     /** 创建可访问性连接的 ID 基础 */
     id?: string
-
-    /** 传递给 Transition 组件的属性 */
-    transitionProps?: import('../Transition').TransitionOverride
-
-    /** Determines whether focus should be returned to the target element when dropdown closes */
-    returnFocus?: boolean
 }
 
 export type PopoverFactory = Factory<{
@@ -133,7 +120,6 @@ const defaultProps = {
     arrowRadius: 0,
     arrowPosition: 'side',
     closeOnClickOutside: true,
-    withinPortal: true,
     closeOnEscape: true,
     trapFocus: false,
     zIndex: getDefaultZIndex('popover'),
@@ -155,7 +141,6 @@ export function Popover(_props: PopoverProps) {
         offset,
         onPositionChange,
         opened,
-        transitionProps,
         onClose,
         onOpen,
         onChange,
@@ -170,7 +155,6 @@ export function Popover(_props: PopoverProps) {
         classNames,
         styles,
         closeOnClickOutside,
-        withinPortal,
         closeOnEscape,
         clickOutsideEvents,
         trapFocus,
@@ -182,8 +166,6 @@ export function Popover(_props: PopoverProps) {
         disabled,
         variant,
         vars,
-        floatingStrategy,
-        returnFocus,
         ...others
     } = props
 
@@ -227,15 +209,18 @@ export function Popover(_props: PopoverProps) {
         disabled
     })
 
-    useClickOutside(
-        () => {
-            if (closeOnClickOutside) {
-                popover.onClose()
-            }
-        },
-        clickOutsideEvents,
-        [targetNode, dropdownNode]
-    )
+    // useClickOutside 内部 effect 依赖 [callback, nodes]：
+    // 内联 callback 与每次渲染新建的 nodes 数组会导致 document 监听被反复卸载/重订阅，
+    // 因此用 useCallback/useMemo 稳定化这两个参数
+    const handleOutsideClick = useCallback(() => {
+        if (closeOnClickOutside) {
+            popover.onClose()
+        }
+    }, [closeOnClickOutside, popover.onClose])
+
+    const clickOutsideNodes = useMemo(() => [targetNode, dropdownNode], [targetNode, dropdownNode])
+
+    useClickOutside(handleOutsideClick, clickOutsideEvents, clickOutsideNodes)
 
     const reference = useCallback(
         (node: HTMLElement | null) => {
@@ -264,7 +249,6 @@ export function Popover(_props: PopoverProps) {
                 arrowY: popover.floating.middlewareData?.arrow?.y,
                 opened: popover.opened,
                 arrowRef,
-                transitionProps,
                 width,
                 withArrow,
                 arrowSize: arrowSize!,
@@ -273,12 +257,12 @@ export function Popover(_props: PopoverProps) {
                 arrowPosition: arrowPosition!,
                 placement: popover.floating.placement,
                 trapFocus,
-                withinPortal,
                 zIndex,
                 onClose: popover.onClose,
                 onToggle: popover.onToggle,
                 getTargetId: () => targetId,
                 setTargetId,
+                uid,
                 getDropdownId: () => `${uid}-dropdown`,
                 controlled: popover.controlled,
                 closeOnEscape,

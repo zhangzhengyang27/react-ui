@@ -71,7 +71,7 @@ export function VirtualizedTanstack() {
         <Combobox.Options>
           <ScrollArea.Autosize
             mah={220}
-            type="scroll"
+            type="always"
             scrollbarSize={4}
             viewportRef={setScrollParent}
             onMouseDown={(event) => event.preventDefault()}

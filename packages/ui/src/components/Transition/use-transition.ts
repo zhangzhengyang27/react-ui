@@ -96,6 +96,18 @@ export function useTransition({
         handleTransitionWithDelay(mounted)
     }, [mounted])
 
+    // 空闲期(entered/exited)把最新的 duration/exitDuration 同步到内部状态:
+    // 此前 transitionDuration 仅在 mounted 切换时经 handleStateChange 更新,
+    // 空闲时修改 duration prop 不会生效;过渡进行中(entering/exiting)不覆盖,
+    // 避免样式时长与正在运行的定时器不一致
+    useDidUpdate(() => {
+        if (transitionStatus === 'entered') {
+            setTransitionDuration(reduceMotion ? 0 : duration)
+        } else if (transitionStatus === 'exited') {
+            setTransitionDuration(reduceMotion ? 0 : exitDuration)
+        }
+    }, [duration, exitDuration, reduceMotion, transitionStatus])
+
     useEffect(
         () => () => {
             clearAllTimeouts()

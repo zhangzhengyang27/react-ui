@@ -35,7 +35,8 @@ export const ModalBaseOverlay = forwardRef<HTMLDivElement, ModalBaseOverlayProps
                         unstyled={ctx.unstyled}
                         onClick={event => {
                             onClick?.(event)
-                            ctx.closeOnClickOutside && ctx.onClose()
+                            // 用户 onClick 中调用 preventDefault 时不关闭,尊重其阻止关闭的意图
+                            !event.defaultPrevented && ctx.closeOnClickOutside && ctx.onClose()
                         }}
                         {...others}
                     />

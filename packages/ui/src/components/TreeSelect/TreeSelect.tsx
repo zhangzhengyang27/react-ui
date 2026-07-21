@@ -13,7 +13,7 @@ import {
     useStyles,
 } from '../../core'
 import { Combobox } from '../Combobox'
-import type { ComboboxStylesNames } from '../Combobox'
+import type { ComboboxProps, ComboboxStylesNames } from '../Combobox'
 import {
     __BaseInputProps,
     __InputStylesNames,
@@ -106,7 +106,10 @@ export interface TreeSelectProps<Mode extends TreeSelectMode = 'single'>
     defaultDropdownOpened?: boolean
     onDropdownOpen?: () => void
     onDropdownClose?: () => void
-    comboboxProps?: Record<string, any>
+    comboboxProps?: Omit<
+        Partial<ComboboxProps>,
+        'opened' | 'onChange' | 'selectedValues' | 'onOptionSubmit' | 'disabled' | 'children'
+    >
     clearSearchOnChange?: boolean
     openOnFocus?: boolean
     chevronAriaLabels?: TreeSelectChevronAriaLabels
@@ -347,7 +350,7 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
         if (!searchable || !_searchValue) {
             return data
         }
-        if (mode === 'single' && _value) {
+        if (mode === 'single' && _value != null) {
             const node = findTreeNode(_value as string, data)
             if (node && _searchValue === (typeof node.label === 'string' ? node.label : '')) {
                 return data
@@ -378,9 +381,6 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
         [filteredData, expandedForRender]
     )
 
-    const flatNodesRef = useRef(flatNodes)
-    flatNodesRef.current = flatNodes
-
     const nodeLookup = useMemo(() => {
         const lookup: Record<string, TreeNodeData> = {}
         const walk = (nodes: TreeNodeData[]) => {
@@ -395,13 +395,17 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
         return lookup
     }, [data])
 
-    const getNodeLabel = (nodeValue: string): string => {
-        const node = nodeLookup[nodeValue]
-        if (!node) {
-            return nodeValue
-        }
-        return typeof node.label === 'string' ? node.label : nodeValue
-    }
+    // memo 化：作为 label 同步 effect 的依赖时，data 变化经 nodeLookup 传导，触发过期 label 重新同步
+    const getNodeLabel = useCallback(
+        (nodeValue: string): string => {
+            const node = nodeLookup[nodeValue]
+            if (!node) {
+                return nodeValue
+            }
+            return typeof node.label === 'string' ? node.label : nodeValue
+        },
+        [nodeLookup]
+    )
 
     const getStyles = useStyles<TreeSelectFactory>({
         name: 'TreeSelect',
@@ -424,14 +428,12 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
         rest: { type, autoComplete, ...rest },
     } = extractStyleProps(others)
 
-    const reopenRef = useRef(false)
-    const restoreSearchRef = useRef<string | null>(null)
-
     const handleOptionSubmit = (val: string) => {
         if (mode === 'single') {
             if (expandOnClick) {
                 const node = findTreeNode(val, data)
                 if (node && Array.isArray(node.children) && node.children.length > 0) {
+                    // 展开父节点不是选中，不关闭下拉
                     toggleExpand(val)
                     return
                 }
@@ -439,8 +441,10 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
             const nextValue = allowDeselect && val === _value ? null : val
             setValue(nextValue)
             if (clearSearchOnChange) {
-                handleSearchChange(nextValue ? getNodeLabel(nextValue) : '')
+                handleSearchChange(nextValue != null ? getNodeLabel(nextValue) : '')
             }
+            // 单选语义：选中叶子节点后关闭下拉（Combobox 不再无条件关闭）
+            setOpened(false)
         } else if (mode === 'multiple') {
             if (expandOnClick) {
                 const node = findTreeNode(val, data)
@@ -458,11 +462,9 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
             } else {
                 return
             }
-            reopenRef.current = true
+            // 多选语义：选中后下拉保持打开，无需重开补丁
             if (clearSearchOnChange) {
                 setSearchValue('')
-            } else {
-                restoreSearchRef.current = _searchValue
             }
         } else if (mode === 'checkbox') {
             const nodeChecked = checkStrictly
@@ -488,11 +490,9 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
                 return
             }
             setValue(newValue)
-            reopenRef.current = true
+            // 多选语义：勾选后下拉保持打开，无需重开补丁
             if (clearSearchOnChange) {
                 setSearchValue('')
-            } else {
-                restoreSearchRef.current = _searchValue
             }
 
             if (expandOnClick) {
@@ -506,22 +506,12 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
         }
     }
 
-    useEffect(() => {
-        if (reopenRef.current) {
-            setOpened(true)
-            reopenRef.current = false
-        }
-        if (restoreSearchRef.current !== null) {
-            setSearchValue(restoreSearchRef.current)
-            restoreSearchRef.current = null
-        }
-    }, [_opened, _searchValue])
-
     const selectedValues = useMemo(() => {
         if (isMulti) {
             return Array.isArray(_value) ? _value : []
         }
-        return _value ? [_value as string] : []
+        // '' 是合法节点值，不能用 falsy 判断
+        return _value != null ? [_value as string] : []
     }, [isMulti, _value])
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -532,7 +522,7 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
             setOpened(!_opened)
         }
 
-        if (event.key === 'Backspace' && _searchValue.length === 0 && isMulti) {
+        if (event.key === 'Backspace' && _searchValue.length === 0 && isMulti && !readOnly) {
             const arr = (_value as string[]) || []
             if (arr.length > 0) {
                 const removed = arr[arr.length - 1]
@@ -547,15 +537,18 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
             return
         }
         if (value === null) {
-            handleSearchChange('')
+            setSearchValue('')
         } else if (typeof value === 'string') {
-            handleSearchChange(getNodeLabel(value))
+            setSearchValue(getNodeLabel(value))
         }
-    }, [value])
+        // 依赖 getNodeLabel（经 nodeLookup 依赖 data）：data 变化但 value 不变时重新同步 label，避免过期。
+        // 不列入 setSearchValue：useUncontrolled 的 setter 每次渲染重建，列入会导致每渲染都执行同步
+    }, [value, mode, searchable, getNodeLabel])
 
     const prevDropdownOpenedRef = useRef(false)
     useEffect(() => {
-        if (_opened && !prevDropdownOpenedRef.current && searchable && _value) {
+        // 打开时展开选中节点的祖先（不限 searchable），确保选中项在下拉中可见
+        if (_opened && !prevDropdownOpenedRef.current && _value != null) {
             const targets = Array.isArray(_value) ? _value : [_value]
             const newExpanded = { ..._expandedState }
             let changed = false
@@ -575,7 +568,8 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
             }
         }
         prevDropdownOpenedRef.current = _opened
-    }, [_opened])
+        // 不列入 setExpandedState：useUncontrolled 的 setter 每次渲染重建，上升沿守卫已保证只在打开瞬间执行
+    }, [_opened, _value, _expandedState, data])
 
     const clearButton = (
         <InputClearButton
@@ -588,13 +582,12 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
         />
     )
 
-    const hasValue = isMulti
-        ? Array.isArray(_value) && _value.length > 0
-        : _value != null && _value !== ''
+    // '' 是合法节点值，单选判断有无值只能用 != null（不能用 falsy 或 !== ''）
+    const hasValue = isMulti ? Array.isArray(_value) && _value.length > 0 : _value != null
     const _clearable = clearable && hasValue && !disabled && !readOnly
 
     const singleDisplayLabel = useMemo(() => {
-        if (mode !== 'single' || !_value) {
+        if (mode !== 'single' || _value == null) {
             return ''
         }
         return getNodeLabel(_value as string)
@@ -695,7 +688,9 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
     })
 
     const dropdown = (
-        <Combobox.Dropdown>
+        // maxDropdownHeight 需同时作用在 Dropdown 上：其 CSS max-height 默认 300px，
+        // 只传给内层 ScrollArea 时超过 300 的高度会被 Dropdown 截断
+        <Combobox.Dropdown style={{ maxHeight: maxDropdownHeight ?? 220 }}>
             <Combobox.Options className={classes.optionsWrapper} aria-multiselectable={isMulti || undefined}>
                 <ScrollArea
                     type="always"
@@ -716,12 +711,12 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
         return (
             <>
                 <Combobox
+                    {...comboboxProps}
                     opened={_opened}
                     onChange={setOpened}
                     selectedValues={selectedValues}
                     onOptionSubmit={handleOptionSubmit}
                     disabled={disabled}
-                    {...comboboxProps}
                 >
                     <Combobox.Target>
                         <PillsInput
@@ -832,12 +827,12 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
     return (
         <>
             <Combobox
+                {...comboboxProps}
                 opened={_opened}
                 onChange={setOpened}
                 selectedValues={selectedValues}
                 onOptionSubmit={handleOptionSubmit}
                 disabled={disabled}
-                {...comboboxProps}
             >
                 <Combobox.Target>
                     <InputBase
@@ -870,7 +865,7 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
                             if (searchable) {
                                 setOpened(false)
                             }
-                            handleSearchChange(_value ? getNodeLabel(_value as string) : '')
+                            handleSearchChange(_value != null ? getNodeLabel(_value as string) : '')
                             onBlur?.(event)
                         }}
                         onClick={(event) => {

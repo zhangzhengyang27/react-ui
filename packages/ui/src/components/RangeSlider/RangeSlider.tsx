@@ -68,9 +68,6 @@ export interface RangeSliderProps extends BoxProps, StylesApiProps<RangeSliderFa
     /** 生成标签的函数，设为 null 可禁用 */
     label?: ((value: number) => React.ReactNode) | React.ReactNode | null
 
-    /** 传递给 Transition 组件的属性 */
-    labelTransitionProps?: object
-
     /** 如果为 true，值标签始终可见 @default false */
     labelAlwaysOn?: boolean
 
@@ -138,6 +135,10 @@ function clamp(value: number, min: number, max: number) {
 }
 
 function getPercentage(value: number, min: number, max: number) {
+    // min === max 时分母为 0,返回 0 避免算出 NaN%
+    if (max - min === 0) {
+        return 0
+    }
     return ((value - min) / (max - min)) * 100
 }
 
@@ -147,7 +148,11 @@ function findClosestMark(value: number, marks: RangeSliderMark[]) {
 }
 
 function precisionRound(value: number, step: number) {
-    const decimals = step.toString().split('.')[1]?.length || 0
+    // 科学计数法安全:step 为 1e-7 时 toString 返回 '1e-7',split('.') 数不出小数位
+    // 改用 toExponential 统一解析,如 2.5e-3 → 尾数 1 位小数 + 指数 3 → 共 4 位
+    const [mantissa, exponentPart] = step.toExponential().split('e')
+    const mantissaDecimals = mantissa.split('.')[1]?.length ?? 0
+    const decimals = Math.max(0, mantissaDecimals - parseInt(exponentPart, 10))
     return Number(value.toFixed(decimals))
 }
 
@@ -175,7 +180,6 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
         label,
         labelAlwaysOn,
         showLabelOnHover,
-        labelTransitionProps,
         minRange,
         maxRange,
         pushOnOverlap,
@@ -228,7 +232,8 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
             let nextValue = clamp(rawValue, min, max)
 
             if (restrictToMarks && marks && marks.length > 0) {
-                nextValue = findClosestMark(nextValue, marks)
+                // marks 可能包含范围外的值,吸附到最近 mark 后需再次 clamp
+                nextValue = clamp(findClosestMark(nextValue, marks), min, max)
             }
 
             const next: [number, number] = [...currentValue]
@@ -238,18 +243,25 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
 
             // minRange / maxRange 约束
             if (minRange > 0 || maxRange !== Infinity) {
-                const distance = Math.abs(next[index] - next[otherIndex])
+                let distance = Math.abs(next[index] - next[otherIndex])
 
                 if (minRange > 0 && distance < minRange) {
                     if (pushOnOverlap) {
                         if (index === 0) {
                             next[1] = Math.min(max, next[0] + minRange)
+                            // push 被 max 截断时回拉本侧,避免 minRange 被静默违反
+                            next[0] = Math.max(min, next[1] - minRange)
                         } else {
                             next[0] = Math.max(min, next[1] - minRange)
+                            // push 被 min 截断时回拉本侧,避免 minRange 被静默违反
+                            next[1] = Math.min(max, next[0] + minRange)
                         }
                     } else {
                         next[index] = currentValue[index]
                     }
+
+                    // push 可能改变了另一侧,重算 distance 供 maxRange 校验使用
+                    distance = Math.abs(next[index] - next[otherIndex])
                 }
 
                 if (maxRange !== Infinity && distance > maxRange) {
@@ -321,9 +333,55 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
         update(index, Number(event.target.value))
     }
 
+    // restrictToMarks 下原生键盘按 step 步进后会吸附回原 mark(step 小于 mark 间距一半时永远卡住),
+    // 改为拦截 commit 类按键,直接在相邻 marks 之间导航
+    const handleInputKeyDown = (index: number) => (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (!(restrictToMarks && marks && marks.length > 0)) {
+            return
+        }
+
+        const commitKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End']
+        if (!commitKeys.includes(event.key)) {
+            return
+        }
+
+        event.preventDefault()
+
+        const sorted = marks.map((m) => m.value).sort((a, b) => a - b)
+        const current = currentValue[index]
+        let nextValue = current
+
+        if (event.key === 'Home') {
+            nextValue = sorted[0]
+        } else if (event.key === 'End') {
+            nextValue = sorted[sorted.length - 1]
+        } else if (event.key === 'ArrowRight' || event.key === 'ArrowUp') {
+            nextValue = sorted.find((markValue) => markValue > current) ?? current
+        } else {
+            nextValue = [...sorted].reverse().find((markValue) => markValue < current) ?? current
+        }
+
+        if (nextValue !== current) {
+            update(index, nextValue)
+        }
+    }
+
+    // 记录获得焦点时的值:blur 时仅当值确实变化才发 onChangeEnd,
+    // 避免焦点在两个 thumb 之间切换(值未变)时多余触发
+    const focusValueRef = useRef<[number, number] | null>(null)
+
+    const handleInputFocus = (index: number) => () => {
+        setFocused(index)
+        focusValueRef.current = valueRef.current
+    }
+
     const handleInputBlur = () => {
         setFocused(-1)
-        onChangeEnd?.(currentValue)
+        const focusValue = focusValueRef.current
+        focusValueRef.current = null
+        if (focusValue && (focusValue[0] !== currentValue[0] || focusValue[1] !== currentValue[1])) {
+            onChangeEnd?.(currentValue)
+        }
     }
 
     const renderLabel = (rawValue: number) => {
@@ -378,11 +436,12 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
                 />
                 {renderThumb(0, sorted[0], startPercent)}
                 {renderThumb(1, sorted[1], endPercent)}
-                {marks?.map((mark) => {
+                {marks?.map((mark, index) => {
                     const percent = getPercentage(mark.value, min, max)
                     return (
                         <div
-                            key={mark.value}
+                            // mark.value 可能重复,附加 index 避免撞 key
+                            key={`${mark.value}-${index}`}
                             {...getStyles('mark')}
                             style={{ [inverted ? 'right' : 'left']: `${percent}%` }}
                         >
@@ -398,8 +457,10 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
                 step={step}
                 value={currentValue[0]}
                 disabled={disabled}
+                aria-label="滑块最小值"
                 onChange={handleInputChange(0)}
-                onFocus={() => setFocused(0)}
+                onKeyDown={handleInputKeyDown(0)}
+                onFocus={handleInputFocus(0)}
                 onBlur={handleInputBlur}
                 className={classes.input}
                 data-thumb="0"
@@ -411,8 +472,10 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
                 step={step}
                 value={currentValue[1]}
                 disabled={disabled}
+                aria-label="滑块最大值"
                 onChange={handleInputChange(1)}
-                onFocus={() => setFocused(1)}
+                onKeyDown={handleInputKeyDown(1)}
+                onFocus={handleInputFocus(1)}
                 onBlur={handleInputBlur}
                 className={classes.input}
                 data-thumb="1"
@@ -422,7 +485,7 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
 })
 
 RangeSlider.classes = classes
-;(RangeSlider as any).varsResolver = varsResolver
+RangeSlider.varsResolver = varsResolver
 RangeSlider.displayName = '@react-ui/ui/RangeSlider'
 
 export namespace RangeSlider {

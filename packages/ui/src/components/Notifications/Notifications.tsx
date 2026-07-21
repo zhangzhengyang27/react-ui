@@ -12,7 +12,7 @@ import {
     useProps,
     useStyles
 } from '../../core'
-import { OptionalPortal } from '../Portal'
+import { OptionalPortal, type OptionalPortalProps } from '../Portal'
 import { NotificationContainer } from './NotificationContainer'
 import { getGroupedNotifications, positions } from './get-grouped-notifications/get-grouped-notifications'
 import type { NotificationPosition, NotificationsStore } from './notifications.store'
@@ -42,7 +42,7 @@ export interface NotificationsProps extends BoxProps, StylesApiProps<Notificatio
     zIndex?: string | number
 
     /** Props passed down to the `Portal` component */
-    portalProps?: any
+    portalProps?: Partial<OptionalPortalProps>
 
     /** Store for notifications state @default notificationsStore */
     store?: NotificationsStore
@@ -129,7 +129,8 @@ export const Notifications = factory<NotificationsFactory>((_props, ref) => {
     useEffect(() => {
         store?.setState({
             ...store.getState(),
-            limit: limit || 5,
+            // 用 ?? 替代 ||,避免 limit=0 被误当作 falsy 回退成 5(0 表示全部入队不展示)
+            limit: limit ?? 5,
             defaultPosition: position
         })
     }, [limit, position, store])
@@ -165,7 +166,7 @@ export const Notifications = factory<NotificationsFactory>((_props, ref) => {
 })
 
 Notifications.classes = classes
-;(Notifications as any).varsResolver = varsResolver
+Notifications.varsResolver = varsResolver
 Notifications.displayName = '@react-ui/ui/Notifications'
 Notifications.show = notifications.show
 Notifications.hide = notifications.hide

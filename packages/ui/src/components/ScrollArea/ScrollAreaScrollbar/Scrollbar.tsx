@@ -75,6 +75,16 @@ export function Scrollbar(props: ScrollbarProps) {
         return () => document.removeEventListener('wheel', handleWheel, { passive: false } as any)
     }, [viewport, scrollbar, maxScrollPos])
 
+    // 拖拽滚动条期间组件卸载时 onLostPointerCapture 不会触发,
+    // 在卸载清理中恢复 body 的 user-select,避免 'none' 永久残留(rectRef 非空即拖拽进行中)
+    useEffect(() => {
+        return () => {
+            if (rectRef.current !== null) {
+                document.body.style.webkitUserSelect = prevWebkitUserSelectRef.current
+            }
+        }
+    }, [])
+
     useEffect(() => {
         handleThumbPositionChangeRef.current()
     }, [sizes])

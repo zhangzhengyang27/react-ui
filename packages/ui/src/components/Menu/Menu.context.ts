@@ -6,7 +6,6 @@ export interface MenuContextValue {
     closeDropdownImmediately: () => void
     closeDropdown: () => void
     openDropdown: () => void
-    getItemIndex: (node: HTMLButtonElement) => number | null
     closeOnItemClick: boolean | undefined
     loop: boolean | undefined
     trigger: 'click' | 'hover' | 'click-hover' | undefined

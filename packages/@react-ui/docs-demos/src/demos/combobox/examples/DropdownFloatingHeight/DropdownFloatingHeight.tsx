@@ -123,7 +123,7 @@ export function DropdownFloatingHeight() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          <ScrollArea.Autosize mah="var(--combobox-floating-options-max-height)" type="scroll">
+          <ScrollArea.Autosize mah="var(--combobox-floating-options-max-height)" type="always">
             {options.length === 0 ? <Combobox.Empty>未找到</Combobox.Empty> : options}
           </ScrollArea.Autosize>
         </Combobox.Options>

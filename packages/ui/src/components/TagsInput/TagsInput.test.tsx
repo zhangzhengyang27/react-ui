@@ -66,7 +66,8 @@ describe('TagsInput', () => {
         fireEvent.change(input, { target: { value: 'Angular' } })
         fireEvent.keyDown(input, { key: 'Enter' })
 
-        expect(input).toBeDisabled()
+        // 达到 maxTags 后输入框为 readOnly（而非 disabled），保证 Backspace 仍可删除 tag
+        expect(input).toHaveAttribute('readonly')
     })
 
     it('selects option from data when clicked', async () => {

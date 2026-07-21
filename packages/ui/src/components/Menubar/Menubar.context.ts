@@ -25,7 +25,6 @@ export interface MenubarContextValue {
     getAdjacentIndex: (current: number, direction: 1 | -1) => number
     focusTarget: (index: number) => void
     focusMenuItem: (index: number, position: 'first' | 'last') => void
-    registerTarget: (index: number, id: string, node: HTMLButtonElement | null) => void
 }
 
 export const [MenubarContextProvider, useMenubarContext] = createSafeContext<MenubarContextValue>(

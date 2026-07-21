@@ -97,6 +97,7 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((_props, ref) => 
         disabled,
         vars,
         withinPortal,
+        defaultOpened,
         ...others
     } = props
 
@@ -115,7 +116,7 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((_props, ref) => 
         varsResolver
     })
 
-    const [opened, setOpened] = useState(!!props.defaultOpened)
+    const [opened, setOpened] = useState(!!defaultOpened)
     const [coords, setCoords] = useState({ x: 0, y: 0 })
     const boundaryRef = useRef<HTMLElement | null>(null)
 
@@ -140,17 +141,17 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((_props, ref) => 
         let nextY = y
 
         if (position === 'right') {
-            nextX = x + (offset || 10)
+            nextX = x + (offset ?? 10)
             nextY = y
         } else if (position === 'left') {
-            nextX = x - (offset || 10)
+            nextX = x - (offset ?? 10)
             nextY = y
         } else if (position === 'top') {
             nextX = x
-            nextY = y - (offset || 10)
+            nextY = y - (offset ?? 10)
         } else if (position === 'bottom') {
             nextX = x
-            nextY = y + (offset || 10)
+            nextY = y + (offset ?? 10)
         }
 
         setCoords({ x: nextX, y: nextY })

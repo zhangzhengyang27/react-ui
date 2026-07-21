@@ -3,7 +3,8 @@ export function getPreviousIndex(
   elements: NodeListOf<HTMLDivElement> | HTMLDivElement[],
   loop: boolean
 ) {
-  for (let i = currentIndex - 1; i >= 0; i -= 1) {
+  // currentIndex 可能超出当前列表长度（如搜索过滤导致选项减少），先 clamp 防止越界访问
+  for (let i = Math.min(currentIndex - 1, elements.length - 1); i >= 0; i -= 1) {
     if (!elements[i].hasAttribute('data-combobox-disabled')) {
       return i;
     }

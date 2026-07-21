@@ -10,6 +10,7 @@ import {
 } from '../../core'
 import { Popover } from '../Popover'
 import { useMenuContext } from './Menu.context'
+import { useSubMenuContext } from './MenuSub.context'
 import classes from './Menu.module.css'
 
 export type MenuSubDropdownStylesNames = 'dropdown'
@@ -40,6 +41,7 @@ export const MenuSubDropdown = factory<MenuSubDropdownFactory>((props, ref) => {
 
     const wrapperRef = useRef<HTMLDivElement>(null)
     const ctx = useMenuContext()
+    const subCtx = useSubMenuContext()
 
     return (
         <Popover.Dropdown
@@ -56,6 +58,15 @@ export const MenuSubDropdown = factory<MenuSubDropdownFactory>((props, ref) => {
             })}
             tabIndex={-1}
             data-menu-dropdown
+            onMouseEnter={event => {
+                // 进入下拉时取消待定的关闭定时器，保持子菜单展开
+                subCtx.openDelayed()
+                onMouseEnter?.(event)
+            }}
+            onMouseLeave={event => {
+                subCtx.closeDelayed()
+                onMouseLeave?.(event)
+            }}
         >
             {children}
         </Popover.Dropdown>

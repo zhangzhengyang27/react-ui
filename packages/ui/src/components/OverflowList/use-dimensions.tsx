@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { flushSync } from 'react-dom'
 
 interface ResizeObserverDimensions {
     width: number
@@ -29,16 +28,15 @@ export function useDimensions<T extends HTMLElement | null>(
         resizeObserverRef.current = new ResizeObserver((entries) => {
             if (entries[0]) {
                 const entry = entries[0]
-                const updateDimensions = () => {
-                    setDimensions({
-                        width: entry.borderBoxSize[0]?.inlineSize ?? entry.target.clientWidth,
-                        height: entry.borderBoxSize[0]?.blockSize ?? entry.target.clientHeight,
-                        contentWidth: entry.contentRect.width,
-                        contentHeight: entry.contentRect.height
-                    })
-                }
-
-                flushSync(updateDimensions)
+                // 无需 flushSync:React 18/19 对 RO 回调中的更新自动批处理且在绘制前提交,
+                // 测量级联运行在 layout effect 中,仍在同一帧内完成;
+                // flushSync 会强制每次 RO 通知都同步渲染,徒增每帧开销
+                setDimensions({
+                    width: entry.borderBoxSize[0]?.inlineSize ?? entry.target.clientWidth,
+                    height: entry.borderBoxSize[0]?.blockSize ?? entry.target.clientHeight,
+                    contentWidth: entry.contentRect.width,
+                    contentHeight: entry.contentRect.height
+                })
             }
         })
 

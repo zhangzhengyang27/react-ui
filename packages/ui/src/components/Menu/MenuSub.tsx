@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { useUncontrolled, useId } from '@react-ui/hooks'
 import { useProps, type FloatingPosition } from '../../core'
 import { Popover, type PopoverProps } from '../Popover'
@@ -35,8 +35,7 @@ const defaultProps = {
     offset: 0,
     position: 'right-start' as FloatingPosition,
     openDelay: 0,
-    closeDelay: 100,
-    transitionProps: { duration: 0 }
+    closeDelay: 100
 } satisfies Partial<MenuSubProps>
 
 export function MenuSub(_props: MenuSubProps) {
@@ -84,19 +83,22 @@ export function MenuSub(_props: MenuSubProps) {
         setOpened(false)
     }, [setOpened])
 
-    const openDelayed = () => {
+    const openDelayed = useCallback(() => {
         clearTimeouts()
         openTimeoutRef.current = setTimeout(() => {
             setOpened(true)
         }, openDelay)
-    }
+    }, [setOpened, openDelay])
 
-    const closeDelayed = () => {
+    const closeDelayed = useCallback(() => {
         clearTimeouts()
         closeTimeoutRef.current = setTimeout(() => {
             setOpened(false)
         }, closeDelay)
-    }
+    }, [setOpened, closeDelay])
+
+    // 卸载时清理悬停定时器，避免组件卸载后定时器仍触发 setOpened/用户回调
+    useEffect(() => () => clearTimeouts(), [])
 
     return (
         <SubMenuContext.Provider
@@ -104,6 +106,8 @@ export function MenuSub(_props: MenuSubProps) {
                 opened,
                 open,
                 close,
+                openDelayed,
+                closeDelayed,
                 parentContext: null
             }}
         >
@@ -112,7 +116,6 @@ export function MenuSub(_props: MenuSubProps) {
                 position={position}
                 opened={opened}
                 onChange={(nextOpened) => (nextOpened ? open() : close())}
-                withinPortal={false}
                 withArrow={false}
                 trapFocus={false}
                 closeOnClickOutside

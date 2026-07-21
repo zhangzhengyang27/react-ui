@@ -1,20 +1,9 @@
 import { useCallback, useMemo, useState } from 'react'
 import { autoUpdate, flip, offset, shift, useFloating } from '@floating-ui/react'
 import { useClickOutside, useId, useUncontrolled } from '@react-ui/hooks'
-import {
-    Box,
-    createVarsResolver,
-    Factory,
-    getRadius,
-    getShadow,
-    UIRadius,
-    UIShadow,
-    StylesApiProps,
-    useProps,
-    useStyles
-} from '../../core'
+import { Box, Factory, useProps } from '../../core'
 import { FloatingPosition, FloatingStrategy } from '../../core'
-import { ComboboxContextProvider, ComboboxOptionData } from './Combobox.context'
+import { ComboboxContextProvider, ComboboxOptionData, ComboboxContextValue } from './Combobox.context'
 import { ComboboxDropdown } from './ComboboxDropdown'
 import { ComboboxDropdownTarget } from './ComboboxDropdownTarget'
 import { ComboboxEmpty } from './ComboboxEmpty'
@@ -27,8 +16,8 @@ import { ComboboxOptions } from './ComboboxOptions'
 import { ComboboxSearch } from './ComboboxSearch'
 import { ComboboxTarget } from './ComboboxTarget'
 import { ComboboxChevron } from './ComboboxChevron'
-import classes from './Combobox.module.css'
 
+// 注意：该类型仍被 TreeSelect 等组件的 StylesApi 复用，故保留导出
 export type ComboboxStylesNames =
     | 'dropdown'
     | 'options'
@@ -40,11 +29,7 @@ export type ComboboxStylesNames =
     | 'header'
     | 'footer'
 
-export type ComboboxCssVariables = {
-    dropdown: '--combobox-radius' | '--combobox-shadow'
-}
-
-export interface ComboboxProps extends StylesApiProps<ComboboxFactory> {
+export interface ComboboxProps {
     /** Combobox.Target and Combobox.Dropdown components */
     children: React.ReactNode
 
@@ -72,18 +57,6 @@ export interface ComboboxProps extends StylesApiProps<ComboboxFactory> {
     /** 下拉元素的偏移量 */
     offset?: number
 
-    /** Dropdown radius */
-    radius?: UIRadius
-
-    /** Dropdown shadow */
-    shadow?: UIShadow
-
-    /** 下拉层 z-index */
-    zIndex?: string | number
-
-    /** Determines whether dropdown should be rendered within portal, defaults to true */
-    withinPortal?: boolean
-
     /** Floating ui position strategy */
     floatingStrategy?: FloatingStrategy
 
@@ -105,24 +78,14 @@ export interface ComboboxProps extends StylesApiProps<ComboboxFactory> {
 
 export type ComboboxFactory = Factory<{
     props: ComboboxProps
-    stylesNames: ComboboxStylesNames
-    vars: ComboboxCssVariables
 }>
 
 const defaultProps = {
     position: 'bottom-start',
     offset: 4,
     closeOnEscape: true,
-    closeOnClickOutside: true,
-    zIndex: 300
+    closeOnClickOutside: true
 } satisfies Partial<ComboboxProps>
-
-const varsResolver = createVarsResolver<ComboboxFactory>((_, { radius, shadow }) => ({
-    dropdown: {
-        '--combobox-radius': radius === undefined ? undefined : getRadius(radius),
-        '--combobox-shadow': getShadow(shadow)
-    }
-}))
 
 export function Combobox(_props: ComboboxProps) {
     const props = useProps('Combobox', defaultProps, _props)
@@ -136,20 +99,12 @@ export function Combobox(_props: ComboboxProps) {
         onSearchChange,
         position,
         offset: offsetValue,
-        radius,
-        shadow,
-        zIndex,
-        withinPortal,
         floatingStrategy,
         disabled,
         onOptionSubmit,
         selectedValues,
         closeOnEscape,
         closeOnClickOutside,
-        classNames,
-        styles,
-        unstyled,
-        vars,
         ...others
     } = props
 
@@ -188,9 +143,8 @@ export function Combobox(_props: ComboboxProps) {
     const reference = useCallback(
         (node: HTMLElement | null) => {
             setTargetNode(node)
-            if (node) {
-                floating.refs.setReference(node)
-            }
+            // node 为 null（卸载）时同样转发，确保 floating-ui 能解绑 autoUpdate 等清理逻辑
+            floating.refs.setReference(node)
         },
         [floating.refs.setReference]
     )
@@ -198,34 +152,38 @@ export function Combobox(_props: ComboboxProps) {
     const dropdownRef = useCallback(
         (node: HTMLElement | null) => {
             setDropdownNode(node)
-            if (node) {
-                floating.refs.setFloating(node)
-            }
+            // node 为 null（卸载）时同样转发，确保 floating-ui 能解绑 autoUpdate 等清理逻辑
+            floating.refs.setFloating(node)
         },
         [floating.refs.setFloating]
     )
 
-    useClickOutside(
-        () => {
-            if (closeOnClickOutside && _opened) {
-                setOpened(false)
-            }
-        },
-        null,
-        [targetNode, dropdownNode]
-    )
+    // useClickOutside 内部 effect 依赖 [callback, nodes]：
+    // 内联 callback 与每次渲染新建的 nodes 数组会导致 document 监听被反复卸载/重订阅，
+    // 因此用 useCallback/useMemo 稳定化这两个参数
+    const handleOutsideClick = useCallback(() => {
+        if (closeOnClickOutside && _opened) {
+            setOpened(false)
+        }
+    }, [closeOnClickOutside, _opened, setOpened])
 
-    const registerOption = useCallback((value: string, data: ComboboxOptionData) => {
+    const clickOutsideNodes = useMemo(() => [targetNode, dropdownNode], [targetNode, dropdownNode])
+
+    useClickOutside(handleOutsideClick, null, clickOutsideNodes)
+
+    // 注册条目按实例唯一键 key 区分：重复 value 的选项不再共享条目，
+    // 其一卸载时不会误删同 value 兄弟实例的注册
+    const registerOption = useCallback((key: string, data: ComboboxOptionData) => {
         setOptions(current => {
-            if (current.some(item => item.value === value)) {
+            if (current.some(item => item.key === key)) {
                 return current
             }
-            return [...current, data]
+            return [...current, { ...data, key }]
         })
     }, [])
 
-    const unregisterOption = useCallback((value: string) => {
-        setOptions(current => current.filter(item => item.value !== value))
+    const unregisterOption = useCallback((key: string) => {
+        setOptions(current => current.filter(item => item.key !== key))
     }, [])
 
     const onOptionSelect = useCallback(
@@ -234,10 +192,10 @@ export function Combobox(_props: ComboboxProps) {
             if (option) {
                 onOptionSubmit?.(value, option)
             }
-            setOpened(false)
-            setSearchValue('')
+            // 关闭语义由消费方决定：单选组件在 onOptionSubmit 中自行关闭，多选组件保持打开，
+            // 这里不再无条件 setOpened(false)
         },
-        [options, onOptionSubmit, setOpened, setSearchValue]
+        [options, onOptionSubmit]
     )
 
     const getNextActiveIndex = (start: number, direction: 1 | -1) => {
@@ -301,43 +259,56 @@ export function Combobox(_props: ComboboxProps) {
         }
     }, [disabled, _opened, setOpened])
 
-    useStyles<ComboboxFactory>({
-        name: 'Combobox',
-        props,
-        classes,
-        classNames,
-        styles,
-        unstyled,
-        vars,
-        varsResolver,
-        rootSelector: 'dropdown'
-    })
+    // memo 化 context value，避免无关重渲染时所有选项组件跟着全量重渲染
+    const contextValue = useMemo<ComboboxContextValue>(
+        () => ({
+            opened: _opened,
+            setOpened,
+            x: floating.x,
+            y: floating.y,
+            targetRef: reference,
+            dropdownRef,
+            targetId,
+            dropdownId,
+            activeIndex,
+            setActiveIndex,
+            selectedValues: values,
+            onOptionSelect,
+            registerOption,
+            unregisterOption,
+            options,
+            searchValue: _searchValue,
+            setSearchValue,
+            onTargetKeyDown,
+            onTargetClick,
+            disabled
+        }),
+        [
+            _opened,
+            setOpened,
+            floating.x,
+            floating.y,
+            reference,
+            dropdownRef,
+            targetId,
+            dropdownId,
+            activeIndex,
+            setActiveIndex,
+            values,
+            onOptionSelect,
+            registerOption,
+            unregisterOption,
+            options,
+            _searchValue,
+            setSearchValue,
+            onTargetKeyDown,
+            onTargetClick,
+            disabled
+        ]
+    )
 
     return (
-        <ComboboxContextProvider
-            value={{
-                opened: _opened,
-                setOpened,
-                x: floating.x,
-                y: floating.y,
-                targetRef: reference,
-                dropdownRef,
-                targetId,
-                dropdownId,
-                activeIndex,
-                setActiveIndex,
-                selectedValues: values,
-                onOptionSelect,
-                registerOption,
-                unregisterOption,
-                options,
-                searchValue: _searchValue,
-                setSearchValue,
-                onTargetKeyDown,
-                onTargetClick,
-                disabled
-            }}
-        >
+        <ComboboxContextProvider value={contextValue}>
             <Box {...others}>{children}</Box>
         </ComboboxContextProvider>
     )

@@ -134,11 +134,12 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
     } = props
 
     const parsedData = useMemo(() => parseAutocompleteData(data), [data])
+    // 不向 useUncontrolled 传 onChange：其非受控 setter 内部会调 onChange，
+    // 而下方 handler 已显式调用 onChange?.()，两处都传会导致每次变更触发两次
     const [selectedValue, setSelectedValue] = useUncontrolled<string>({
         value,
         defaultValue,
-        finalValue: '',
-        onChange
+        finalValue: ''
     })
 
     const [opened, setOpened] = useState(false)
@@ -197,7 +198,7 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
         <Combobox
             opened={opened}
             onChange={setOpened}
-            selectedValues={selectedValue ? [selectedValue] : []}
+            selectedValues={[selectedValue]}
             onOptionSubmit={handleOptionSubmit}
             position={position}
             disabled={disabled}
@@ -272,20 +273,41 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
 
 function renderOptions(data: ComboboxOptionData[]) {
     const result: React.ReactNode[] = []
-    let lastGroup: string | undefined
+    // 记录每个组名的出现次数，组不连续（如 A,B,A）时为同名组生成唯一 key
+    const groupOccurrences = new Map<string, number>()
 
-    data.forEach(item => {
-        if (item.group && item.group !== lastGroup) {
-            result.push(<Combobox.Group key={`group-${item.group}`} label={item.group} />)
-            lastGroup = item.group
+    const renderOption = (item: ComboboxOptionData) => (
+        <Combobox.Option key={item.value} value={item.value} disabled={item.disabled}>
+            {item.label}
+        </Combobox.Option>
+    )
+
+    let index = 0
+    while (index < data.length) {
+        const item = data[index]
+
+        if (item.group) {
+            const group = item.group
+            const occurrence = groupOccurrences.get(group) ?? 0
+            groupOccurrences.set(group, occurrence + 1)
+
+            // 收集同一连续段的选项，渲染进 Combobox.Group 内部（而非组外的空壳）
+            const groupItems: ComboboxOptionData[] = []
+            while (index < data.length && data[index].group === group) {
+                groupItems.push(data[index])
+                index++
+            }
+
+            result.push(
+                <Combobox.Group key={`group-${group}-${occurrence}`} label={group}>
+                    {groupItems.map(renderOption)}
+                </Combobox.Group>
+            )
+        } else {
+            result.push(renderOption(item))
+            index++
         }
-
-        result.push(
-            <Combobox.Option key={item.value} value={item.value} disabled={item.disabled}>
-                {item.label}
-            </Combobox.Option>
-        )
-    })
+    }
 
     return result
 }

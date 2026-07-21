@@ -1,4 +1,4 @@
-import { Children, cloneElement, isValidElement, useMemo, useRef, useState } from 'react'
+import { Children, cloneElement, isValidElement, useEffect, useMemo, useRef, useState } from 'react'
 import { Box, BoxProps, Factory, factory, StylesApiProps, useProps, useStyles } from '../../core'
 import classes from './Splitter.module.css'
 import { SplitterContext } from './SplitterContext'
@@ -31,7 +31,13 @@ const defaultProps = {
 } satisfies Partial<SplitterProps>
 
 function isPanel(child: React.ReactNode): child is React.ReactElement {
-    return isValidElement(child) && (child.type as any)?.displayName === '@react-ui/ui/SplitterPanel'
+    if (!isValidElement(child)) {
+        return false
+    }
+    const type = child.type as any
+    // 优先查静态标记,displayName 字符串匹配仅作兜底,
+    // 避免 HOC/memo 包装后 displayName 变化导致 Panel 被静默丢弃
+    return type?.isSplitterPanel === true || type?.displayName === '@react-ui/ui/SplitterPanel'
 }
 
 export const Splitter = factory<SplitterFactory>((_props, ref) => {
@@ -42,6 +48,20 @@ export const Splitter = factory<SplitterFactory>((_props, ref) => {
     const panels = Children.toArray(children).filter(isPanel)
 
     const [sizes, setSizes] = useState<number[]>(() => Array(panels.length).fill(100 / panels.length))
+
+    // 面板数量动态变化时同步 sizes,避免 sizes[index] 为 undefined 导致 flex-basis: NaN%
+    // 策略:新增面板补 0(总和已为 100%,无剩余空间可均分,保持现有布局不变,由用户拖动 resizer 分配),多余截断
+    useEffect(() => {
+        setSizes((prev) => {
+            if (prev.length === panels.length) {
+                return prev
+            }
+            if (prev.length > panels.length) {
+                return prev.slice(0, panels.length)
+            }
+            return [...prev, ...Array(panels.length - prev.length).fill(0)]
+        })
+    }, [panels.length])
 
     const ctxValue = useMemo(() => ({ orientation: orientation!, sizes, setSizes, containerRef }), [orientation, sizes])
 

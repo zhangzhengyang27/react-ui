@@ -26,14 +26,14 @@ export interface SelectProps
     /** Select options data */
     data?: SelectData
 
-    //** 受控值 */
-    value?: string
+    //** 受控值，null 表示未选中（'' 是合法选项值） */
+    value?: string | null
 
     //** 非受控组件的初始值 */
-    defaultValue?: string
+    defaultValue?: string | null
 
-    /** 选中值变化时调用 */
-    onChange?: (value: string) => void
+    /** 选中值变化时调用，null 表示未选中 */
+    onChange?: (value: string | null) => void
 
     //** 未选择值时显示的占位符 */
     placeholder?: string
@@ -158,11 +158,13 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     } = props
 
     const parsedData = useMemo(() => parseSelectData(data), [data])
-    const [selectedValue, setSelectedValue] = useUncontrolled<string>({
+    // 用 null 而非 '' 表示"未选中"，避免 '' 选项值被当作未选中哨兵
+    // 不向 useUncontrolled 传 onChange：其非受控 setter 内部会调 onChange，
+    // 而下方 handler 已显式调用 onChange?.()，两处都传会导致每次变更触发两次
+    const [selectedValue, setSelectedValue] = useUncontrolled<string | null>({
         value,
         defaultValue,
-        finalValue: '',
-        onChange
+        finalValue: null
     })
 
     const [searchValue, setSearchValue] = useState('')
@@ -189,14 +191,14 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     const handleClear = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.stopPropagation()
         if (value === undefined) {
-            setSelectedValue('')
+            setSelectedValue(null)
         }
-        onChange?.('')
+        onChange?.(null)
     }
 
     const rightSection = (
         <div className={classes.section}>
-            {clearable && selectedValue ? (
+            {clearable && selectedValue !== null ? (
                 <CloseButton size="xs" onClick={handleClear} aria-label="清除选择" />
             ) : (
                 <SelectChevronIcon className={classes.chevron} />
@@ -225,7 +227,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
             onChange={setOpened}
             searchValue={searchValue}
             onSearchChange={setSearchValue}
-            selectedValues={selectedValue ? [selectedValue] : []}
+            selectedValues={selectedValue !== null ? [selectedValue] : []}
             onOptionSubmit={handleOptionSubmit}
             position={position}
             disabled={disabled}
@@ -244,8 +246,11 @@ export const Select = factory<SelectFactory>((_props, ref) => {
                     role="combobox"
                     size={size}
                     rightSection={rightSection}
-                    onFocus={() => {
-                        if (!disabled) {
+                    onFocus={event => {
+                        // 仅键盘导航（Tab 切入）时通过 focus 打开；
+                        // 鼠标点击的事件顺序为 mousedown → focus → click，
+                        // 若此处无条件打开，随后的 click 会被 ComboboxTarget toggle 关闭，造成闪现即收
+                        if (!disabled && event.currentTarget.matches(':focus-visible')) {
                             setOpened(true)
                         }
                     }}
@@ -295,22 +300,18 @@ export const Select = factory<SelectFactory>((_props, ref) => {
 
 function renderOptions(
     data: ComboboxOptionData[],
-    selectedValue: string,
+    selectedValue: string | null,
     checkIconPosition?: 'left' | 'right'
 ) {
     const result: React.ReactNode[] = []
-    let lastGroup: string | undefined
+    // 记录每个组名的出现次数，组不连续（如 A,B,A）时为同名组生成唯一 key
+    const groupOccurrences = new Map<string, number>()
 
-    data.forEach(item => {
-        if (item.group && item.group !== lastGroup) {
-            result.push(<Combobox.Group key={`group-${item.group}`} label={item.group} />)
-            lastGroup = item.group
-        }
-
+    const renderOption = (item: ComboboxOptionData) => {
         const selected = selectedValue === item.value
         const check = <SelectCheckIcon className={classes.check} />
 
-        result.push(
+        return (
             <Combobox.Option key={item.value} value={item.value} disabled={item.disabled}>
                 <span
                     style={{
@@ -327,7 +328,34 @@ function renderOptions(
                 </span>
             </Combobox.Option>
         )
-    })
+    }
+
+    let index = 0
+    while (index < data.length) {
+        const item = data[index]
+
+        if (item.group) {
+            const group = item.group
+            const occurrence = groupOccurrences.get(group) ?? 0
+            groupOccurrences.set(group, occurrence + 1)
+
+            // 收集同一连续段的选项，渲染进 Combobox.Group 内部（而非组外的空壳）
+            const groupItems: ComboboxOptionData[] = []
+            while (index < data.length && data[index].group === group) {
+                groupItems.push(data[index])
+                index++
+            }
+
+            result.push(
+                <Combobox.Group key={`group-${group}-${occurrence}`} label={group}>
+                    {groupItems.map(renderOption)}
+                </Combobox.Group>
+            )
+        } else {
+            result.push(renderOption(item))
+            index++
+        }
+    }
 
     return result
 }

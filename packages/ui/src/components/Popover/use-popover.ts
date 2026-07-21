@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { useId, useUncontrolled } from '@react-ui/hooks'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { useId, useIsomorphicEffect, useUncontrolled } from '@react-ui/hooks'
 import type { FloatingAxesOffsets, FloatingPosition } from '../../core'
 import type { PopoverMiddlewares } from './Popover.types'
 
@@ -172,6 +172,12 @@ export function usePopover(options: UsePopoverOptions): UsePopoverReturn {
     })
     const [arrowData, setArrowData] = useState<{ x?: number; y?: number }>({})
 
+    // middlewares 常以内联对象传入（如 middlewares={{ flip: true }}），每次渲染都是新引用；
+    // 若将其放入 update 的依赖数组，会导致 update 重建 → 定位 effect 重跑 → 无限渲染循环。
+    // 因此用 ref 持有最新值，依赖数组只保留原始值（flip/shift 布尔）。
+    const middlewaresRef = useRef(options.middlewares)
+    middlewaresRef.current = options.middlewares
+
     const update = useCallback(() => {
         const reference = referenceRef.current
         const floating = floatingRef.current
@@ -182,14 +188,31 @@ export function usePopover(options: UsePopoverOptions): UsePopoverReturn {
             floating,
             options.position,
             resolveOffset(options.offset),
-            options.middlewares
+            middlewaresRef.current
         )
-        setPosition(computed)
+        // 值未变化时返回 prev，避免 setState 触发不必要的重渲染（同时也是循环的熔断器）
+        setPosition(prev =>
+            prev.x === computed.x && prev.y === computed.y && prev.placement === computed.placement
+                ? prev
+                : computed
+        )
 
-        setArrowData(
-            computeArrow(reference, floating, computed.placement, options.arrowRef.current, options.arrowOffset)
+        const nextArrow = computeArrow(
+            reference,
+            floating,
+            computed.placement,
+            options.arrowRef.current,
+            options.arrowOffset
         )
-    }, [options.position, options.offset, options.middlewares, options.arrowRef, options.arrowOffset])
+        setArrowData(prev => (prev.x === nextArrow.x && prev.y === nextArrow.y ? prev : nextArrow))
+    }, [
+        options.position,
+        options.offset,
+        options.middlewares?.flip,
+        options.middlewares?.shift,
+        options.arrowRef,
+        options.arrowOffset
+    ])
 
     const onClose = useCallback(() => {
         if (_opened) {
@@ -210,22 +233,32 @@ export function usePopover(options: UsePopoverOptions): UsePopoverReturn {
         }
     }, [_opened, options.disabled, options.onOpen, options.onClose, setOpened])
 
+    // rAF id 存入 ref：重调时先取消上一帧避免堆积，卸载时统一 cancel，防止卸载后仍执行 update
+    const rafRef = useRef(-1)
+
+    const scheduleUpdate = useCallback(() => {
+        cancelAnimationFrame(rafRef.current)
+        rafRef.current = requestAnimationFrame(update)
+    }, [update])
+
     const setReference = useCallback((node: HTMLElement | null) => {
         referenceRef.current = node
         if (node && _opened) {
-            requestAnimationFrame(update)
+            scheduleUpdate()
         }
-    }, [_opened, update])
+    }, [_opened, scheduleUpdate])
 
     const setFloating = useCallback((node: HTMLElement | null) => {
         floatingRef.current = node
         if (node && _opened) {
-            requestAnimationFrame(update)
+            scheduleUpdate()
         }
-    }, [_opened, update])
+    }, [_opened, scheduleUpdate])
 
-    // 打开时计算定位
-    useLayoutEffect(() => {
+    useEffect(() => () => cancelAnimationFrame(rafRef.current), [])
+
+    // 打开时计算定位（SSR 下退化为 useEffect，避免 useLayoutEffect 警告）
+    useIsomorphicEffect(() => {
         if (!_opened) return
         update()
     }, [_opened, update])
@@ -242,11 +275,15 @@ export function usePopover(options: UsePopoverOptions): UsePopoverReturn {
         }
     }, [_opened, update])
 
+    // onPositionChange 不能在渲染阶段调用（用户回调内 setState 会触发 render-phase 更新警告），
+    // 改为在 effect 中比对 placement 变化后再调用
     const previousPlacementRef = useRef(position.placement)
-    if (previousPlacementRef.current !== position.placement) {
-        previousPlacementRef.current = position.placement
-        options.onPositionChange?.(position.placement)
-    }
+    useEffect(() => {
+        if (previousPlacementRef.current !== position.placement) {
+            previousPlacementRef.current = position.placement
+            options.onPositionChange?.(position.placement)
+        }
+    }, [position.placement, options.onPositionChange])
 
     return {
         floating: {

@@ -4,6 +4,16 @@ function toInt(value?: string) {
     return value ? parseInt(value, 10) : 0
 }
 
+// 将 CSS transition-duration('s' 或 'ms' 单位)统一换算为毫秒,无法解析时按 0 处理
+function toMs(value: string) {
+    const parsed = parseFloat(value)
+    if (Number.isNaN(parsed)) {
+        return 0
+    }
+
+    return value.trim().endsWith('ms') ? parsed : parsed * 1000
+}
+
 function isParent(
     parentElement: HTMLElement | EventTarget | null,
     childElement: HTMLElement | null
@@ -141,7 +151,33 @@ export function useFloatingIndicator({
         return undefined
     }, [parent])
 
+    // displayAfterTransitionEnd 依赖 parent 的 transitionend 事件复位 hidden;
+    // 当 parent 无过渡(如减弱动效下 transition-duration 为 0,不产生 transitionend 事件)时直接显示,
+    // 并以安全超时兜底复位,避免指示器永久隐藏
     useEffect(() => {
+        if (!displayAfterTransitionEnd || !hidden || !parent) {
+            return undefined
+        }
+
+        const maxDuration = window
+            .getComputedStyle(parent)
+            .transitionDuration.split(',')
+            .reduce((max, item) => Math.max(max, toMs(item)), 0)
+
+        if (maxDuration === 0) {
+            setHidden(false)
+            return undefined
+        }
+
+        const timer = window.setTimeout(() => setHidden(false), maxDuration + 100)
+        return () => {
+            window.clearTimeout(timer)
+        }
+    }, [displayAfterTransitionEnd, hidden, parent])
+
+    useEffect(() => {
+        // target/parent 就绪前组件渲染 null,ref 尚未赋值;需将其纳入依赖,
+        // 否则 effect 不会在指示器元素挂载后重跑,transitionend 监听器永远不会挂载
         if (ref.current && onTransitionEnd) {
             const node = ref.current
             const handleIndicatorTransitionEnd = (event: TransitionEvent) => {
@@ -157,7 +193,7 @@ export function useFloatingIndicator({
         }
 
         return undefined
-    }, [onTransitionEnd])
+    }, [onTransitionEnd, target, parent])
 
     useEffect(() => {
         const timer = window.setTimeout(() => {

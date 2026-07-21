@@ -1,4 +1,5 @@
-import { useId, useUncontrolled } from '@react-ui/hooks'
+import { useEffect, useRef } from 'react'
+import { useId, useMergedRef, useUncontrolled } from '@react-ui/hooks'
 import {
     Box,
     BoxProps,
@@ -96,9 +97,7 @@ export type CheckboxFactory = Factory<{
     }
 }>
 
-const defaultProps = {
-    size: 'sm'
-} satisfies Partial<CheckboxProps>
+const defaultProps = {} satisfies Partial<CheckboxProps>
 
 const varsResolver = createVarsResolver<CheckboxFactory>((theme, { size, radius, color, iconColor }) => ({
     root: {
@@ -173,10 +172,14 @@ export const Checkbox = factory<CheckboxFactory>((_props, ref) => {
     } = props
 
     const group = useCheckboxGroupContext()
+    // group 的 size/disabled 作为兜底（自身 prop 优先）；size 默认值 'sm' 在此解析，
+    // 避免在 defaultProps 中写死导致 group.size 永远无法生效
+    const resolvedSize = size ?? group?.size ?? 'sm'
+    const resolvedDisabled = disabled ?? group?.disabled
     const getStyles = useStyles<CheckboxFactory>({
         name: 'Checkbox',
         classes,
-        props,
+        props: { ...props, size: resolvedSize },
         className,
         style,
         classNames,
@@ -215,6 +218,15 @@ export const Checkbox = factory<CheckboxFactory>((_props, ref) => {
         onChange?.(event)
     }
 
+    const inputRef = useRef<HTMLInputElement | null>(null)
+    // indeterminate 没有对应的 React 属性，只能通过 DOM property 设置，
+    // 否则仅 data-indeterminate 视觉态生效，原生 input 与辅助技术无法感知半选态
+    useEffect(() => {
+        if (inputRef.current) {
+            inputRef.current.indeterminate = !!indeterminate
+        }
+    }, [indeterminate])
+
     const iconNode =
         typeof icon === 'function' ? icon({ indeterminate: !!indeterminate, checked: resolvedChecked }) : icon
 
@@ -224,15 +236,16 @@ export const Checkbox = factory<CheckboxFactory>((_props, ref) => {
             htmlFor={resolvedId}
             {...getStyles('root')}
             {...wrapperProps}
-            mod={[{ disabled, error: hasError, 'with-label': hasLabel }, mod]}
+            mod={[{ disabled: resolvedDisabled, error: hasError, 'with-label': hasLabel }, mod]}
         >
             <Box
                 component="input"
-                ref={ref}
+                ref={useMergedRef(ref, inputRef)}
                 id={resolvedId}
                 type="checkbox"
-                disabled={disabled}
+                disabled={resolvedDisabled}
                 checked={resolvedChecked}
+                aria-checked={indeterminate ? 'mixed' : resolvedChecked}
                 name={group?.name}
                 value={value}
                 onChange={handleChange}

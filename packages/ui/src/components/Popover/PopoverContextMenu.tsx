@@ -10,6 +10,13 @@ export interface PopoverContextMenuProps {
     disabled?: boolean
 }
 
+function createEventHandler<T>(handler: ((event: T) => void) | undefined, fn: (event: T) => void) {
+    return (event: T) => {
+        handler?.(event)
+        fn(event)
+    }
+}
+
 export function PopoverContextMenu(props: PopoverContextMenuProps) {
     const { children, disabled } = useProps('PopoverContextMenu', null, props)
 
@@ -21,8 +28,10 @@ export function PopoverContextMenu(props: PopoverContextMenuProps) {
     }
 
     const ctx = usePopoverContext()
+    const childProps = child.props as any
 
-    const handleContextMenu = (event: React.MouseEvent<unknown>) => {
+    // 与 MenuContextMenu 保持一致：链式调用 child 自带的 onContextMenu，而不是直接覆盖
+    const onContextMenu = createEventHandler<any>(childProps.onContextMenu, (event: React.MouseEvent<unknown>) => {
         if (disabled || ctx.disabled) {
             return
         }
@@ -30,11 +39,10 @@ export function PopoverContextMenu(props: PopoverContextMenuProps) {
         if (!ctx.opened) {
             ctx.onToggle()
         }
-    }
+    })
 
     return cloneElement(child, {
-        ...child.props,
-        onContextMenu: handleContextMenu
+        onContextMenu
     } as any)
 }
 

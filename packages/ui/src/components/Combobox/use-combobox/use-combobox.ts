@@ -181,17 +181,28 @@ export function useCombobox({
       }
 
       const nextIndex = index >= items!.length ? 0 : index < 0 ? items!.length - 1 : index
-      selectedOptionIndex.current = nextIndex
 
-      if (items?.[nextIndex] && !items[nextIndex].hasAttribute('data-combobox-disabled')) {
-        clearSelectedItem()
-        items[nextIndex].setAttribute('data-combobox-selected', 'true')
-        items[nextIndex].setAttribute('aria-selected', 'true')
-        items[nextIndex].scrollIntoView({ block: 'nearest', behavior: scrollBehavior })
-        return items[nextIndex].id
+      // 目标索引落在 disabled 选项上时，向后（回绕）找最近的可用选项，
+      // 避免 selectedOptionIndex 停在 disabled 选项上导致 aria/点击指向无效项
+      let targetIndex = -1
+      for (let i = 0; i < items.length; i += 1) {
+        const candidate = (nextIndex + i) % items.length
+        if (!items[candidate].hasAttribute('data-combobox-disabled')) {
+          targetIndex = candidate
+          break
+        }
       }
 
-      return null
+      if (targetIndex === -1) {
+        return null
+      }
+
+      selectedOptionIndex.current = targetIndex
+      clearSelectedItem()
+      items[targetIndex].setAttribute('data-combobox-selected', 'true')
+      items[targetIndex].setAttribute('aria-selected', 'true')
+      items[targetIndex].scrollIntoView({ block: 'nearest', behavior: scrollBehavior })
+      return items[targetIndex].id
     },
     [scrollBehavior, clearSelectedItem]
   )
@@ -259,6 +270,8 @@ export function useCombobox({
         return
       }
 
+      // 重排前先清掉旧定时器，避免连续调用时旧回调仍然执行
+      window.clearTimeout(selectedIndexUpdateTimeout.current)
       selectedIndexUpdateTimeout.current = window.setTimeout(() => {
         const root = getRootElement(targetRef.current)
         const items = findElementsBySelector<HTMLDivElement>(
@@ -289,7 +302,10 @@ export function useCombobox({
       root
     )
     const item = items?.[selectedOptionIndex.current]
-    item?.click()
+    // 索引可能停在 disabled 选项上（如外部直接调用 selectOption），点击前校验避免提交无效项
+    if (item && !item.hasAttribute('data-combobox-disabled')) {
+      item.click()
+    }
   }, [])
 
   const setListId = useCallback((id: string) => {
@@ -297,10 +313,14 @@ export function useCombobox({
   }, [])
 
   const focusSearchInput = useCallback(() => {
+    // 重排前先清掉旧定时器，避免连续调用时旧回调仍然执行
+    window.clearTimeout(focusSearchTimeout.current)
     focusSearchTimeout.current = window.setTimeout(() => searchRef.current?.focus(), 0)
   }, [])
 
   const focusTarget = useCallback(() => {
+    // 重排前先清掉旧定时器，避免连续调用时旧回调仍然执行
+    window.clearTimeout(focusTargetTimeout.current)
     focusTargetTimeout.current = window.setTimeout(() => targetRef.current?.focus(), 0)
   }, [])
 

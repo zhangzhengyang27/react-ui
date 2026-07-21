@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useUncontrolled } from '@react-ui/hooks'
 import { factory, Factory, StylesApiProps, useProps, useResolvedStylesApi, useStyles } from '../../core'
 import { Popover, PopoverStylesNames } from '../Popover'
@@ -90,12 +90,6 @@ export interface MenuProps extends StylesApiProps<MenuFactory> {
     /** 设置所有菜单项的 tabindex */
     menuItemTabIndex?: -1 | 0
 
-    /** 决定下拉框关闭时是否自动将焦点返回到控件 */
-    returnFocus?: boolean
-
-    /** 决定下拉框是否在 Portal 中渲染 */
-    withinPortal?: boolean
-
     //** 下拉框相对于目标元素的位置 */
     position?: import('../../core').FloatingPosition
 
@@ -116,9 +110,6 @@ export interface MenuProps extends StylesApiProps<MenuFactory> {
 
     /** 下拉层 z-index */
     zIndex?: string | number
-
-    /** 传递给 Transition 组件的属性 */
-    transitionProps?: import('../Transition').TransitionOverride
 }
 
 const defaultProps = {
@@ -173,6 +164,9 @@ function useDelayedHover({
         }, closeDelay)
     }
 
+    // 卸载时清理悬停延迟定时器，避免组件卸载后定时器仍触发 open/close 回调
+    useEffect(() => clearTimeouts, [])
+
     return { openDropdown, closeDropdown, clearTimeouts }
 }
 
@@ -198,7 +192,6 @@ export const Menu = factory<MenuFactory>((_props, _ref) => {
         variant,
         vars,
         menuItemTabIndex,
-        returnFocus,
         ...others
     } = props
 
@@ -242,15 +235,6 @@ export const Menu = factory<MenuFactory>((_props, _ref) => {
         openDelay: openDelay!
     })
 
-    const getItemIndex = (node: HTMLButtonElement) => {
-        const dropdown = node.closest('[data-menu-dropdown]')
-        if (!dropdown) {
-            return null
-        }
-        const items = Array.from(dropdown.querySelectorAll<HTMLButtonElement>('[data-menu-item]'))
-        return items.indexOf(node)
-    }
-
     const { resolvedClassNames, resolvedStyles } = useResolvedStylesApi<MenuFactory>({
         classNames,
         styles,
@@ -263,7 +247,6 @@ export const Menu = factory<MenuFactory>((_props, _ref) => {
                 getStyles,
                 opened: _opened,
                 toggleDropdown,
-                getItemIndex,
                 openedViaClick,
                 setOpenedViaClick,
                 closeOnItemClick,
@@ -277,7 +260,6 @@ export const Menu = factory<MenuFactory>((_props, _ref) => {
             }}
         >
             <Popover
-                returnFocus={returnFocus}
                 {...others}
                 opened={_opened}
                 onChange={toggleDropdown}

@@ -106,6 +106,9 @@ describe('ScrollArea', () => {
         )
 
         const viewport = getViewport()
+        // jsdom 无布局能力,reach 判定需要溢出尺寸,手动模拟
+        Object.defineProperty(viewport, 'scrollHeight', { value: 500, configurable: true })
+        Object.defineProperty(viewport, 'clientHeight', { value: 100, configurable: true })
         viewport.scrollTop = viewport.scrollHeight - viewport.clientHeight
         fireEvent.scroll(viewport)
 
@@ -121,6 +124,9 @@ describe('ScrollArea', () => {
         )
 
         const viewport = getViewport()
+        // jsdom 无布局能力,reach 判定需要溢出尺寸,手动模拟
+        Object.defineProperty(viewport, 'scrollHeight', { value: 500, configurable: true })
+        Object.defineProperty(viewport, 'clientHeight', { value: 100, configurable: true })
         viewport.scrollTop = 100
         fireEvent.scroll(viewport)
         viewport.scrollTop = 0
@@ -138,6 +144,9 @@ describe('ScrollArea', () => {
         )
 
         const viewport = getViewport()
+        // jsdom 无布局能力,reach 判定需要溢出尺寸,手动模拟
+        Object.defineProperty(viewport, 'scrollWidth', { value: 500, configurable: true })
+        Object.defineProperty(viewport, 'clientWidth', { value: 100, configurable: true })
         viewport.scrollLeft = viewport.scrollWidth - viewport.clientWidth
         fireEvent.scroll(viewport)
 
@@ -153,6 +162,9 @@ describe('ScrollArea', () => {
         )
 
         const viewport = getViewport()
+        // jsdom 无布局能力,reach 判定需要溢出尺寸,手动模拟
+        Object.defineProperty(viewport, 'scrollWidth', { value: 500, configurable: true })
+        Object.defineProperty(viewport, 'clientWidth', { value: 100, configurable: true })
         viewport.scrollLeft = 100
         fireEvent.scroll(viewport)
         viewport.scrollLeft = 0

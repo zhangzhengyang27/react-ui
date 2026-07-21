@@ -18,6 +18,8 @@ export const ComboboxDropdownTarget = factory<ComboboxDropdownTargetFactory>((pr
     const { children } = useProps('ComboboxDropdownTarget', null, props)
     const child = getSingleElementChild(children) as React.ReactElement<any>
     const ctx = useComboboxContext()
+    // hooks 必须在条件 throw 之前调用，否则 children 变化时 hooks 数量不一致，违反 hooks 规则
+    const targetRef = useMergedRef(ctx.targetRef, ref)
 
     if (!child) {
         throw new Error(
@@ -26,7 +28,6 @@ export const ComboboxDropdownTarget = factory<ComboboxDropdownTargetFactory>((pr
     }
 
     const childProps = child.props as any
-    const targetRef = useMergedRef(ctx.targetRef, ref)
 
     return cloneElement(child, {
         ref: targetRef,

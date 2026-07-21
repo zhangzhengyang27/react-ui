@@ -67,24 +67,29 @@ export type OptionsFilter<T extends string = string> = (input: OptionsFilterInpu
 export function defaultOptionsFilter({ options, search, limit }: OptionsFilterInput): ComboboxParsedItem[] {
     const parsedSearch = search.trim().toLowerCase()
     const result: ComboboxParsedItem[] = []
+    // limit 按选项条数累计而非顶层条目数：整个 group 不能只计为 1 项，
+    // 否则分组场景下实际渲染的选项数可能远超 limit
+    let matchedCount = 0
 
     const matches = (item: ComboboxItem) =>
         (item.label ?? '').toLowerCase().includes(parsedSearch) ||
         (item.value ?? '').toLowerCase().includes(parsedSearch)
 
     for (const option of options) {
-        if (result.length >= limit) {
+        if (matchedCount >= limit) {
             break
         }
 
         if (isOptionsGroup(option)) {
-            const filteredItems = option.items.filter(matches)
+            const filteredItems = option.items.filter(matches).slice(0, limit - matchedCount)
 
             if (filteredItems.length > 0) {
                 result.push({ group: option.group, items: filteredItems })
+                matchedCount += filteredItems.length
             }
         } else if (matches(option)) {
             result.push(option)
+            matchedCount += 1
         }
     }
 
@@ -159,6 +164,9 @@ export interface ComboboxPopoverProps<
     /** Allows searching through options @default false */
     searchable?: boolean
 
+    /** Placeholder of the search input @default 'Search...' */
+    searchPlaceholder?: string
+
     /** Controlled search value */
     searchValue?: string
 
@@ -206,7 +214,8 @@ const defaultProps = {
     withCheckIcon: true,
     allowDeselect: true,
     checkIconPosition: 'left',
-    hiddenInputValuesDivider: ','
+    hiddenInputValuesDivider: ',',
+    searchPlaceholder: 'Search...'
 } satisfies Partial<ComboboxPopoverProps>
 
 function isValueChecked(value: string | string[] | undefined | null, optionValue: string) {
@@ -334,6 +343,7 @@ export const ComboboxPopover = genericFactory<ComboboxPopoverFactory>((_props) =
         checkIconPosition,
         nothingFoundMessage,
         searchable,
+        searchPlaceholder,
         searchValue,
         defaultSearchValue,
         onSearchChange,
@@ -347,7 +357,6 @@ export const ComboboxPopover = genericFactory<ComboboxPopoverFactory>((_props) =
     } = props
 
     const parsedData = useMemo(() => getParsedComboboxData(data), [data])
-    const optionsLockup = useMemo(() => getOptionsLockup(parsedData), [parsedData])
 
     const [_value, setValue] = useUncontrolled<ComboboxPopoverValue<boolean, string>>({
         value,
@@ -385,7 +394,8 @@ export const ComboboxPopover = genericFactory<ComboboxPopoverFactory>((_props) =
         })
     }, [filter, parsedData, searchable, _searchValue, limit])
 
-    const selectedValues = Array.isArray(_value) ? _value : _value ? [_value] : []
+    // '' 是合法选项值，不能用 falsy 判断
+    const selectedValues = Array.isArray(_value) ? _value : _value != null ? [_value] : []
 
     const handleOptionSubmit = (optionValue: string, option: ComboboxOptionData) => {
         onOptionSubmit?.(optionValue as any)
@@ -411,8 +421,7 @@ export const ComboboxPopover = genericFactory<ComboboxPopoverFactory>((_props) =
     const dropdownContent = withScrollArea ? (
         <ScrollArea.Autosize
             mah={maxDropdownHeight ?? 250}
-            type="scroll"
-            scrollbarSize="var(--combobox-padding)"
+            type="always"
             offsetScrollbars="y"
             {...scrollAreaProps}
         >
@@ -458,7 +467,7 @@ export const ComboboxPopover = genericFactory<ComboboxPopoverFactory>((_props) =
                             type="text"
                             value={_searchValue}
                             onChange={(event) => setSearchValue(event.currentTarget.value)}
-                            placeholder="Search..."
+                            placeholder={searchPlaceholder}
                             style={{ width: '100%', marginBottom: 8 }}
                         />
                     )}

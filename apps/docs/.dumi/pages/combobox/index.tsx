@@ -136,7 +136,7 @@ export default function ComboboxPage() {
           onChange={(event) => setSearch(event.currentTarget.value)}
           ref={searchInputRef}
         />
-        <ScrollArea className={classes.scroll} type="scroll" scrollbarSize={6}>
+        <ScrollArea className={classes.scroll} type="always" scrollbarSize={6}>
           {groupedData.map((item) => (
             <ComboboxLinksGroup
               data={item}

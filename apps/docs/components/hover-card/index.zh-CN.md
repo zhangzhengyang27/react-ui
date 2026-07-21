@@ -24,12 +24,6 @@ group:
 
 <code src="./demo/delay.tsx"></code>
 
-### HoverCard 延迟组
-
-使用 `HoverCard.Group` 组件同步多个 `HoverCard` 组件的打开和关闭延迟：
-
-<code src="./demo/group.tsx"></code>
-
 ### 与交互元素一起使用
 
 `HoverCard` 仅在鼠标位于目标元素或下拉菜单上时显示。

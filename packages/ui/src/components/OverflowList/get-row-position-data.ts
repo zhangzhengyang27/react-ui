@@ -56,7 +56,11 @@ export function getRowPositionsData(
     }
 
     const itemsSizesMap = groupNodesByTopPosition(children)
-    const rowPositions = Object.keys(itemsSizesMap).map(Number)
+    // 容器部分滚出视口时 top 可能为负数,负数键不按数值序迭代(Object.keys 仅对非负整数键保证升序),
+    // 显式按数值排序避免行序错乱
+    const rowPositions = Object.keys(itemsSizesMap)
+        .map(Number)
+        .sort((a, b) => a - b)
 
     return { itemsSizesMap, rowPositions, children }
 }

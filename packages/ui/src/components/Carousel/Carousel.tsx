@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import {
     Box,
@@ -164,19 +164,28 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
 
     const _id = useId(id)
 
+    // embla-carousel-react 8.x 内部会对 options 做深比较(areOptionsEqual),
+    // 值变化时自动调用 emblaApi.reInit,故 loop/align 等 options 变化无需手动 reInit
     const [emblaRef, embla] = useEmblaCarousel({
         axis: orientation === 'horizontal' ? 'x' : 'y',
         startIndex: initialSlide,
         loop,
-        draggable,
+        // embla 8.x 的选项名是 watchDrag,旧的 draggable 会被静默忽略
+        watchDrag: draggable,
         dragFree,
         align,
         slidesToScroll,
         containScroll: 'trimSnaps'
-    } as any)
+    })
 
     const [selected, setSelected] = useState(0)
     const [slidesCount, setSlidesCount] = useState(0)
+    // 挂载时 effect 会立即同步一次选中项,initialSlide > 0 时不应误报 onSlideChange
+    const initializedRef = useRef(false)
+    // ref 镜像 selected:handleSelect 不再依赖 selected state,
+    // 避免每次翻页后回调身份变化导致 embla 'select' 监听反复解绑/重绑
+    const selectedRef = useRef(selected)
+    selectedRef.current = selected
 
     const handleScroll = useCallback(
         (index: number) => embla && embla.scrollTo(index),
@@ -187,8 +196,12 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
         if (!embla) return
         const slide = embla.selectedScrollSnap()
         setSelected(slide)
-        slide !== selected && onSlideChange?.(slide)
-    }, [embla, selected, onSlideChange])
+        if (!initializedRef.current) {
+            initializedRef.current = true
+            return
+        }
+        slide !== selectedRef.current && onSlideChange?.(slide)
+    }, [embla, onSlideChange])
 
     const handlePrevious = useCallback(() => {
         embla?.scrollPrev()
@@ -203,16 +216,30 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
     const handleKeydown = useCallback(
         (event: React.KeyboardEvent<HTMLDivElement>) => {
             if (!withKeyboardEvents) return
-            if (event.key === 'ArrowRight') {
+
+            // 事件来自输入控件时不拦截,避免劫持 slide 内输入框的方向键操作
+            const target = event.target as HTMLElement
+            if (
+                target.tagName === 'INPUT' ||
+                target.tagName === 'TEXTAREA' ||
+                target.tagName === 'SELECT' ||
+                target.isContentEditable
+            ) {
+                return
+            }
+
+            // 垂直方向 carousel 使用 Up/Down 翻页而非 Left/Right
+            const isHorizontal = orientation === 'horizontal'
+            if (event.key === (isHorizontal ? 'ArrowRight' : 'ArrowDown')) {
                 event.preventDefault()
                 handleNext()
             }
-            if (event.key === 'ArrowLeft') {
+            if (event.key === (isHorizontal ? 'ArrowLeft' : 'ArrowUp')) {
                 event.preventDefault()
                 handlePrevious()
             }
         },
-        [withKeyboardEvents, handleNext, handlePrevious]
+        [withKeyboardEvents, orientation, handleNext, handlePrevious]
     )
 
     useEffect(() => {
@@ -317,7 +344,7 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
 })
 
 Carousel.classes = classes
-;(Carousel as any).varsResolver = varsResolver
+Carousel.varsResolver = varsResolver
 Carousel.displayName = '@react-ui/ui/Carousel'
 Carousel.Slide = CarouselSlide
 

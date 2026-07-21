@@ -144,7 +144,7 @@ export function TreeSelectCombobox() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          <ScrollArea.Autosize mah={250} type="scroll">
+          <ScrollArea.Autosize mah={250} type="always">
             {flatNodes.map(({ node, level, hasChildren, isLastChild, lineGuides }) => {
               const isSelected = value === node.value;
               const isExpanded = !!expanded[node.value];

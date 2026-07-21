@@ -264,7 +264,8 @@ export const ColorInput = factory<ColorInputFactory>((_props, ref) => {
     }
 
     const handleInputBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-        if (fixOnBlur) {
+        // 仅当修正后的值与当前值不同时才回写，避免值未变也触发多余 onChange
+        if (fixOnBlur && lastValidValue !== _value) {
             setValue(lastValidValue)
         }
         onBlur?.(event)

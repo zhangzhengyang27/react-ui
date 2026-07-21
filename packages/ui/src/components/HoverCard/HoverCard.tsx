@@ -11,12 +11,10 @@ import {
     StylesApiProps,
     useProps,
     useStyles,
-    type FloatingPosition,
-    type FloatingStrategy
+    type FloatingPosition
 } from '../../core'
 import { HoverCardContextProvider } from './HoverCard.context'
 import { HoverCardDropdown, HoverCardDropdownProps } from './HoverCardDropdown/HoverCardDropdown'
-import { HoverCardGroup, type HoverCardGroupProps } from './HoverCardGroup'
 import { HoverCardTarget, HoverCardTargetProps } from './HoverCardTarget/HoverCardTarget'
 import { HoverCardMiddlewares, useHoverCard } from './use-hover-card'
 import classes from './HoverCard.module.css'
@@ -73,9 +71,6 @@ export interface HoverCardProps extends StylesApiProps<HoverCardFactory> {
     /** Arrow position */
     arrowPosition?: 'center' | 'side'
 
-    /** 决定下拉框是否在 Portal 中渲染 */
-    withinPortal?: boolean
-
     /** 下拉层 z-index */
     zIndex?: string | number
 
@@ -90,9 +85,6 @@ export interface HoverCardProps extends StylesApiProps<HoverCardFactory> {
 
     /** If set, hovercard dropdown will not be rendered */
     disabled?: boolean
-
-    /** Changes floating ui position strategy */
-    floatingStrategy?: FloatingStrategy
 
     /** Floating ui middlewares */
     middlewares?: HoverCardMiddlewares
@@ -116,7 +108,6 @@ const defaultProps = {
     arrowOffset: 5,
     arrowRadius: 0,
     arrowPosition: 'side',
-    withinPortal: true,
     zIndex: getDefaultZIndex('popover'),
     width: 'max-content',
     middlewares: { flip: true, shift: true }
@@ -137,6 +128,7 @@ export function HoverCard(_props: HoverCardProps) {
         offset,
         onPositionChange,
         opened,
+        defaultOpened,
         transitionProps,
         onClose,
         onOpen,
@@ -150,7 +142,6 @@ export function HoverCard(_props: HoverCardProps) {
         unstyled,
         classNames,
         styles,
-        withinPortal,
         zIndex,
         width,
         radius,
@@ -158,7 +149,6 @@ export function HoverCard(_props: HoverCardProps) {
         disabled,
         variant,
         vars,
-        floatingStrategy,
         middlewares,
         ...others
     } = props
@@ -184,11 +174,11 @@ export function HoverCard(_props: HoverCardProps) {
         closeDelay,
         onPositionChange,
         opened,
+        defaultOpened,
         onOpen,
         onClose,
         arrowRef,
         arrowOffset,
-        strategy: floatingStrategy,
         middlewares
     })
 
@@ -221,11 +211,11 @@ export function HoverCard(_props: HoverCardProps) {
                 arrowRadius: arrowRadius!,
                 arrowPosition: arrowPosition!,
                 placement: hovercard.placement,
-                withinPortal,
                 zIndex,
                 onClose,
                 getTargetId: () => targetId,
                 setTargetId,
+                uid: hovercard.uid,
                 getDropdownId: () => `${hovercard.uid}-dropdown`,
                 controlled: typeof opened === 'boolean',
                 disabled,
@@ -239,7 +229,6 @@ export function HoverCard(_props: HoverCardProps) {
 
 HoverCard.Target = HoverCardTarget
 HoverCard.Dropdown = HoverCardDropdown
-HoverCard.Group = HoverCardGroup
 HoverCard.displayName = '@react-ui/ui/HoverCard'
 
 export namespace HoverCard {
@@ -247,5 +236,4 @@ export namespace HoverCard {
     export type Factory = HoverCardFactory
     export type TargetProps = HoverCardTargetProps
     export type DropdownProps = HoverCardDropdownProps
-    export type GroupProps = HoverCardGroupProps
 }

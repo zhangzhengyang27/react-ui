@@ -5,14 +5,12 @@ import { MenubarMenuContextProvider, useMenubarContext } from '../Menubar.contex
 
 export interface MenubarMenuProps extends Omit<
     MenuProps,
-    'opened' | 'defaultOpened' | 'onChange' | 'onOpen' | 'onClose' | 'trigger' | 'returnFocus'
+    'opened' | 'defaultOpened' | 'onChange' | 'onOpen' | 'onClose' | 'trigger'
 > {
     children?: React.ReactNode
 }
 
-const DEFAULT_TRANSITION_DURATION = 150
-
-export function MenubarMenu({ children, transitionProps, ...others }: MenubarMenuProps) {
+export function MenubarMenu({ children, ...others }: MenubarMenuProps) {
     const ctx = useMenubarContext()
     const id = useId()
     const [index, setIndex] = useState(-1)
@@ -33,16 +31,6 @@ export function MenubarMenu({ children, transitionProps, ...others }: MenubarMen
         }
     }
 
-    const baseDuration = transitionProps?.duration ?? DEFAULT_TRANSITION_DURATION
-    const baseExitDuration = transitionProps?.exitDuration ?? baseDuration
-    const animateEnter = ctx.getPreviousOpenIndex() === null
-    const animateExit = ctx.openIndex === null
-    const resolvedTransitionProps = {
-        ...transitionProps,
-        duration: animateEnter ? baseDuration : 0,
-        exitDuration: animateExit ? baseExitDuration : 0,
-    }
-
     return (
         <MenubarMenuContextProvider value={{ id, index, opened }}>
             <Menu
@@ -52,11 +40,9 @@ export function MenubarMenu({ children, transitionProps, ...others }: MenubarMen
                 menuItemTabIndex={-1}
                 trapFocus={false}
                 {...others}
-                transitionProps={resolvedTransitionProps}
                 opened={opened}
                 onChange={handleChange}
                 trigger="click"
-                returnFocus={false}
             >
                 {children}
             </Menu>

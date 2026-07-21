@@ -17,9 +17,13 @@ import type { TransitionOverride } from '../Transition'
 import { ModalBaseProvider } from './ModalBase.context'
 import { useModal } from './use-modal'
 
-const RemoveScroll = RemoveScrollRaw as React.FC<React.PropsWithChildren<{ enabled?: boolean; [key: string]: any }>>
+// 用 ComponentProps 从 react-remove-scroll 实际类型推导 props,替代原先的 [key: string]: any 逃逸;
+// children 由 JSX 提供、forwardProps/ref 不使用,均剔除;保留 key 以兼容下方 removeScrollProps.key 的解构
+type RemoveScrollProps = Omit<React.ComponentProps<typeof RemoveScrollRaw>, 'children' | 'forwardProps' | 'ref'> & {
+    key?: React.Key
+}
 
-type RemoveScrollProps = Omit<React.ComponentProps<typeof RemoveScroll>, 'children'>
+const RemoveScroll = RemoveScrollRaw as React.FC<React.PropsWithChildren<RemoveScrollProps>>
 
 export interface ModalBaseProps extends BoxProps, ElementProps<'div', 'title'> {
     unstyled?: boolean
@@ -177,7 +181,9 @@ export function ModalBase({
     return (
         <OptionalPortal {...portalProps} withinPortal={withinPortal}>
             <ModalBaseProvider value={value}>
-                <RemoveScroll enabled={opened && lockScroll} key={removeScrollKey} {...otherRemoveScrollProps}>
+                {/* react-remove-scroll 的 enabled 默认为 true,必须显式转 boolean;
+                    否则 lockScroll 未设置时 enabled=undefined 仍会锁滚动,与 "If set 才锁定" 的约定矛盾 */}
+                <RemoveScroll enabled={opened && !!lockScroll} key={removeScrollKey} {...otherRemoveScrollProps}>
                     <Box
                         ref={ref}
                         {...others}

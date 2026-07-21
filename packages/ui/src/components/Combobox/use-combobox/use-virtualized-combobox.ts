@@ -44,6 +44,21 @@ export interface UseVirtualizedComboboxOptions {
     onSelectedOptionSubmit: (index: number) => void
 }
 
+// 默认参数提升为模块级常量：内联箭头函数每次渲染都是新引用，
+// 会使其作为依赖的 useCallback（selectOption 等）逐渲染失效
+const defaultIsOptionDisabled = () => false
+const defaultGetOptionId = () => null
+const defaultSetSelectedOptionIndex = () => {}
+const defaultOnSelectedOptionSubmit = () => {}
+
+const defaultVirtualizedComboboxOptions: UseVirtualizedComboboxOptions = {
+    totalOptionsCount: 0,
+    getOptionId: defaultGetOptionId,
+    selectedOptionIndex: -1,
+    setSelectedOptionIndex: defaultSetSelectedOptionIndex,
+    onSelectedOptionSubmit: defaultOnSelectedOptionSubmit
+}
+
 export function useVirtualizedCombobox(
     {
         defaultOpened,
@@ -53,19 +68,13 @@ export function useVirtualizedCombobox(
         onDropdownOpen,
         loop = true,
         totalOptionsCount,
-        isOptionDisabled = () => false,
+        isOptionDisabled = defaultIsOptionDisabled,
         getOptionId,
         selectedOptionIndex,
         setSelectedOptionIndex,
         activeOptionIndex,
         onSelectedOptionSubmit
-    }: UseVirtualizedComboboxOptions = {
-        totalOptionsCount: 0,
-        getOptionId: () => null,
-        selectedOptionIndex: -1,
-        setSelectedOptionIndex: () => {},
-        onSelectedOptionSubmit: () => {}
-    }
+    }: UseVirtualizedComboboxOptions = defaultVirtualizedComboboxOptions
 ): ComboboxStore {
     const [dropdownOpened, setDropdownOpened] = useUncontrolled({
         value: opened,
@@ -185,10 +194,14 @@ export function useVirtualizedCombobox(
     }, [])
 
     const focusSearchInput = useCallback(() => {
+        // 重排前先清掉旧定时器，避免连续调用时旧回调仍然执行
+        window.clearTimeout(focusSearchTimeout.current)
         focusSearchTimeout.current = window.setTimeout(() => searchRef.current?.focus(), 0)
     }, [])
 
     const focusTarget = useCallback(() => {
+        // 重排前先清掉旧定时器，避免连续调用时旧回调仍然执行
+        window.clearTimeout(focusTargetTimeout.current)
         focusTargetTimeout.current = window.setTimeout(() => targetRef.current?.focus(), 0)
     }, [])
 
@@ -211,6 +224,9 @@ export function useVirtualizedCombobox(
             if (index === 'active' && typeof activeOptionIndex === 'number') {
                 setSelectedOptionIndex(activeOptionIndex)
             }
+
+            // 'selected' 有意不做处理：非虚拟化 store 需 setTimeout 查 DOM 找回选中项索引，
+            // 而虚拟化场景 selectedOptionIndex 由父组件受控传入，本身就是权威值，无需再同步
         },
         [setSelectedOptionIndex, activeOptionIndex]
     )

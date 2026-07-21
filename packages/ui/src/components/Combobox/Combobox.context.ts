@@ -5,6 +5,8 @@ export interface ComboboxOptionData {
     label: string
     disabled?: boolean
     group?: string
+    /** 选项实例唯一键，注册时由 Combobox 写入；重复 value 的选项靠它区分注册条目 */
+    key?: string
 }
 
 export interface ComboboxContextValue {
@@ -20,8 +22,8 @@ export interface ComboboxContextValue {
     setActiveIndex: (index: number) => void
     selectedValues: string[]
     onOptionSelect: (value: string) => void
-    registerOption: (value: string, data: ComboboxOptionData) => void
-    unregisterOption: (value: string) => void
+    registerOption: (key: string, data: ComboboxOptionData) => void
+    unregisterOption: (key: string) => void
     options: ComboboxOptionData[]
     searchValue: string
     setSearchValue: (value: string) => void

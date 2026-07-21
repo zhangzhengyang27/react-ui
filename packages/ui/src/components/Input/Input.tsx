@@ -279,17 +279,22 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
     ) : null
 
     const _leftSection = loading && loadingPosition === 'left' ? loadingIndicator : leftSection
-    const _rightSection: React.ReactNode = InputClearSection({
-        __clearable,
-        __clearSection,
-        rightSection: loading && loadingPosition === 'right' ? loadingIndicator : rightSection,
-        __defaultRightSection,
-        size,
-        __clearSectionMode
-    })
+    // 以 JSX 而非普通函数方式调用，使其成为独立组件边界，
+    // 避免未来 InputClearSection 内部添加 hook 时破坏 Rules of Hooks
+    const _rightSection: React.ReactNode = (
+        <InputClearSection
+            __clearable={__clearable}
+            __clearSection={__clearSection}
+            rightSection={loading && loadingPosition === 'right' ? loadingIndicator : rightSection}
+            __defaultRightSection={__defaultRightSection}
+            size={size}
+            __clearSectionMode={__clearSectionMode}
+        />
+    )
 
+    // size 兜底用 ??：仅 null/undefined 时回退，避免 || 吞掉空串等 falsy 值
     return (
-        <InputContext.Provider value={{ size: size || 'sm' }}>
+        <InputContext.Provider value={{ size: size ?? 'sm' }}>
             <Box
                 ref={rootRef as any}
                 dir={dir}
@@ -371,7 +376,8 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
 })
 
 Input.classes = classes
-;(Input as any).varsResolver = varsResolver
+// factory 类型体系已声明 varsResolver 静态成员，直接赋值使类型层与运行时对齐
+Input.varsResolver = varsResolver
 Input.Wrapper = InputWrapper
 Input.Label = InputLabel
 Input.Error = InputError

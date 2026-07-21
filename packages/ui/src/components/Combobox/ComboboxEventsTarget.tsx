@@ -29,18 +29,21 @@ export const ComboboxEventsTarget = factory<ComboboxEventsTargetFactory>((props,
     const { children, refProp, autoComplete, ...others } = useProps('ComboboxEventsTarget', defaultProps, props)
     const child = getSingleElementChild(children) as React.ReactElement<any>
 
+    // hooks 必须在条件 throw 之前调用，否则 children 变化时 hooks 数量不一致，违反 hooks 规则
+    const ctx = useComboboxContext()
+    const targetRef = useMergedRef(ref, ctx.targetRef)
+
     if (!child) {
         throw new Error(
             '[@react-ui/ui] Combobox.EventsTarget children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported'
         )
     }
 
-    const ctx = useComboboxContext()
     const childProps = child.props as any
 
     return cloneElement(child, {
         ...others,
-        [refProp!]: useMergedRef(ref, ctx.targetRef),
+        [refProp!]: targetRef,
         // 优先使用 child 自带的 id，让外部 label.htmlFor 能正确关联
         id: childProps.id ?? ctx.targetId,
         'aria-haspopup': 'listbox',

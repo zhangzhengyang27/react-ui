@@ -332,11 +332,16 @@ export const MaskInput = factory<MaskInputFactory>((_props, ref) => {
         ? value
         : buildDisplayValue(maskedValue, slots, options.slotChar)
 
+    // useUncontrolled 非受控分支的 setter 每次渲染都是新身份，直接作为依赖会导致 effect 每次渲染重跑；
+    // 这里用 ref 持有最新 setValue，effect 只需在 resetRef 变化时重新挂载
+    const setValueRef = useRef(setValue)
+    setValueRef.current = setValue
+
     // Assign reset function to resetRef
     useEffect(() => {
         if (resetRef) {
             assignRef(resetRef, () => {
-                setValue('')
+                setValueRef.current('')
                 if (inputRef.current) {
                     inputRef.current.value = ''
                 }
@@ -347,7 +352,7 @@ export const MaskInput = factory<MaskInputFactory>((_props, ref) => {
                 assignRef(resetRef, null)
             }
         }
-    }, [resetRef, setValue])
+    }, [resetRef])
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = event.currentTarget.value
@@ -361,7 +366,22 @@ export const MaskInput = factory<MaskInputFactory>((_props, ref) => {
 
         // Update the input element's displayed value
         if (inputRef.current) {
+            // 直接改写 value 会让光标跳到末尾：先记录改写前的光标位置，
+            // 改写后把光标恢复到"原光标前已输入的有效字符数"对应的位置
+            const prevValue = inputRef.current.value
+            const selectionStart = inputRef.current.selectionStart ?? prevValue.length
+            let typedBeforeCursor = 0
+            for (let i = 0; i < selectionStart && i < prevValue.length; i++) {
+                const slot = currentSlots[i]
+                if (slot && slot.type === 'token' && slot.pattern.test(prevValue[i])) {
+                    typedBeforeCursor++
+                }
+            }
+
             inputRef.current.value = newDisplay
+
+            const nextCursor = Math.min(typedBeforeCursor, newDisplay.length)
+            inputRef.current.setSelectionRange(nextCursor, nextCursor)
         }
 
         setValue(currentOptions.separate ? inputValue : newRaw)

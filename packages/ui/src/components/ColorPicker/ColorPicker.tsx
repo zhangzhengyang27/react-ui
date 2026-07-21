@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useDidUpdate, useUncontrolled } from '@react-ui/hooks'
 import {
     Box,
@@ -210,14 +210,20 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
         }, 200)
     }
 
-    const handleChange = (color: Partial<HsvaColor>) => {
-        setParsed(current => {
-            const next = { ...current, ...color }
-            valueRef.current = convertHsvaTo(formatRef.current, next)
-            return next
-        })
+    // 卸载时清理 scrub 超时定时器，避免组件销毁后定时器仍然触发
+    useEffect(() => {
+        return () => window.clearTimeout(scrubTimeoutRef.current)
+    }, [])
 
-        setValue(valueRef.current)
+    const handleChange = (color: Partial<HsvaColor>) => {
+        // 同步从当前 state 纯函数计算 next 值：setParsed(updater) 非同步执行，
+        // 若在 updater 内写 valueRef 再读取，会依赖 React eager-state 内部优化，
+        // 快速拖动时（fiber 存在待处理更新）updater 被推迟，onChange 颜色落后一帧
+        const next = { ...parsed, ...color }
+        const nextValue = convertHsvaTo(formatRef.current, next)
+        valueRef.current = nextValue
+        setParsed(next)
+        setValue(nextValue)
     }
 
     useDidUpdate(() => {

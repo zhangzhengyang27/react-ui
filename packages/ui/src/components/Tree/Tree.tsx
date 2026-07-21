@@ -169,7 +169,10 @@ export const Tree = factory<TreeFactory>((_props, ref) => {
 
     useEffect(() => {
         controller.initialize(data)
-    }, [data])
+        // 依赖用户传入的 tree 而非解析后的 controller:用户更换 controller 实例时需重新初始化;
+        // tree/controller 的对象身份会随内部状态变化,之所以可安全放入依赖,
+        // 是因为 use-tree 的 initialize 已按 data 引用判重,身份变化不会触发重复初始化死循环
+    }, [data, tree])
 
     const nodes = data.map((node, index) => (
         <TreeNode

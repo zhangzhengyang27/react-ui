@@ -74,7 +74,6 @@ function Demo() {
 
 - `label` – 格式化函数，接收值作为参数，设置为 null 可禁用标签，默认为 `f => f`
 - `labelAlwaysOn` – 如果为 true，标签将始终显示；默认情况下仅在用户拖动时可见
-- `labelTransitionProps` – 传递给 [Transition](/components/transition) 组件的属性，可用于自定义标签动画
 
 <code src="./demo/label.tsx"></code>
 

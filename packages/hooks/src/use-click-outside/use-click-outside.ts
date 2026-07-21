@@ -17,36 +17,34 @@ export function useClickOutside<T extends HTMLElement = any>(
 ) {
     const ref = useRef<T>(null)
     const eventsList = events || DEFAULT_EVENTS
+    // 用 ref 跟踪最新 callback/nodes，避免内联数组/函数进入 deps 导致每次渲染重挂监听
+    const callbackRef = useRef(callback)
+    callbackRef.current = callback
+    const nodesRef = useRef(nodes)
+    nodesRef.current = nodes
+    // eventsList 用 join 作为稳定 dep（数组身份每次不同但内容相同时字符串相同）
+    const eventsKey = eventsList.join(',')
 
     useEffect(() => {
         const listener = (event: any) => {
             const { target } = event ?? {}
-            if (Array.isArray(nodes)) {
-                /**
-                 * 检查目标元素是否应该被忽略
-                 * @param {HTMLElement} target - 要检查的DOM元素
-                 * @returns {boolean} 如果目标元素不在文档中且不是HTML元素则返回true，否则返回false
-                 */
-                const shouldIgnore = !document.body.contains(target) && target.tagName != 'HTML'
-                /**
-                 * 检查事件是否发生在指定节点之外
-                 * @param {Node} node - 要检查的DOM节点
-                 * @param {Event} event - 触发的事件对象
-                 * @returns {boolean} 如果事件发生在节点之外返回true，否则返回false
-                 */
-                const shouldTrigger = nodes.every(node => !!node && !event.composedPath().includes(node))
-                shouldTrigger && !shouldIgnore && callback()
+            const currentNodes = nodesRef.current
+            if (Array.isArray(currentNodes)) {
+                const shouldIgnore = !document.body.contains(target) && target.tagName !== 'HTML'
+                const shouldTrigger = currentNodes.every(node => !!node && !event.composedPath().includes(node))
+                shouldTrigger && !shouldIgnore && callbackRef.current()
             } else if (ref.current && !ref.current.contains(target)) {
-                callback()
+                callbackRef.current()
             }
         }
 
-        eventsList.forEach(fn => document.addEventListener(fn, listener))
+        const eventsArr = eventsKey.split(',')
+        eventsArr.forEach(fn => document.addEventListener(fn, listener))
 
         return () => {
-            eventsList.forEach(fn => document.removeEventListener(fn, listener))
+            eventsArr.forEach(fn => document.removeEventListener(fn, listener))
         }
-    }, [ref, callback, nodes, eventsList])
+    }, [ref, eventsKey])
 
     return ref
 }

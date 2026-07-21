@@ -4,7 +4,7 @@ import React from 'react'
  * 获取React的useId钩子函数，如果不存在则返回undefined
  * @returns {string | undefined} 生成的唯一ID或undefined（当useId不可用时）
  */
-const __useId: () => string | undefined = (React as any)['useId'.toString()] || (() => undefined)
+const __useId: () => string | undefined = (React as any)['useId'] || (() => undefined)
 
 /**
  * 生成一个带有 'ui-' 前缀的 React ID

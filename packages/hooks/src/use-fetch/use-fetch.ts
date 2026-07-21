@@ -15,8 +15,8 @@ export interface UseFetchReturnValue<T> {
     /** 请求错误 */
     error: Error | null
 
-    /** 重新发起请求 */
-    refetch: () => Promise<any>
+    /** 重新发起请求，失败时 reject（AbortError 也会 reject，调用方需在 catch 中过滤） */
+    refetch: () => Promise<T>
 
     /** 中止当前请求 */
     abort: () => void
@@ -82,7 +82,9 @@ export function useFetch<T>(
                     setError(err)
                 }
 
-                return err
+                // 重新抛出错误，让调用方的 .catch 处理；
+                // 之前返回 err 会让 .then 收到 Error 对象，无法区分成功与失败
+                throw err
             })
     }, [])
 
@@ -92,7 +94,9 @@ export function useFetch<T>(
 
     useEffect(() => {
         if (autoInvoke) {
-            refetch()
+            // autoInvoke 路径静默捕获 rejection：错误已存入 error state，
+            // 不应作为 unhandled rejection 冒泡；手动调 refetch() 的消费者需自行 .catch
+            refetch().catch(() => {})
         }
 
         return () => {

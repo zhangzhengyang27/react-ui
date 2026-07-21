@@ -32,6 +32,8 @@ export function useMove<T extends HTMLElement = any>(
     const isSliding = useRef(false)
     const frame = useRef(0)
     const cleanupRef = useRef<(() => void) | null>(null)
+    // onScrubEnd 通过 setTimeout(0) 延迟触发，需保存 timer 句柄以便卸载时清理
+    const scrubEndTimerRef = useRef<number | null>(null)
     const handlersRef = useRef(handlers)
     handlersRef.current = handlers
     const onChangeRef = useRef(onChange)
@@ -94,7 +96,8 @@ export function useMove<T extends HTMLElement = any>(
                     isSliding.current = false
                     setActive(false)
                     unbindEvents()
-                    setTimeout(() => {
+                    scrubEndTimerRef.current = window.setTimeout(() => {
+                        scrubEndTimerRef.current = null
                         handlersRef.current?.onScrubEnd?.()
                     }, 0)
                 }
@@ -133,6 +136,10 @@ export function useMove<T extends HTMLElement = any>(
             cleanupRef.current = () => {
                 unbindEvents()
                 cancelAnimationFrame(frame.current)
+                if (scrubEndTimerRef.current !== null) {
+                    window.clearTimeout(scrubEndTimerRef.current)
+                    scrubEndTimerRef.current = null
+                }
             }
 
             return () => {

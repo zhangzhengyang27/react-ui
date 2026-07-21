@@ -15,8 +15,19 @@ export function useDebouncedState<T = any>(
     const timeoutRef = useRef<number | null>(null)
     const leadingRef = useRef(true)
 
-    const clearTimeoutRef = () => window.clearTimeout(timeoutRef.current!)
+    // 显式判空避免非空断言：clearTimeout(null) 虽合法但类型不安全
+    const clearTimeoutRef = () => {
+        if (timeoutRef.current !== null) {
+            window.clearTimeout(timeoutRef.current)
+            timeoutRef.current = null
+        }
+    }
     useEffect(() => clearTimeoutRef, [])
+
+    // options.leading 切换时重置 leadingRef，避免从 false 切到 true 后首次调用不立即触发
+    useEffect(() => {
+        leadingRef.current = true
+    }, [options.leading])
 
     const debouncedSetValue = useCallback(
         (newValue: SetStateAction<T>) => {

@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useIsomorphicEffect } from '../use-isomorphic-effect/use-isomorphic-effect'
 
 export interface UseFileDialogOptions {
@@ -88,48 +88,53 @@ export function useFileDialog(input: UseFileDialogOptions = {}): UseFileDialogRe
     const [files, setFiles] = useState<FileList | null>(getInitialFilesList(options.initialFiles))
     const inputRef = useRef<HTMLInputElement | null>(null)
 
-    const handleChange = useCallback(
-        (event: Event) => {
-            const target = event.target as HTMLInputElement
-            if (target?.files) {
-                setFiles(target.files)
-                options.onChange?.(target.files)
-            }
-        },
-        [options.onChange]
-    )
+    // 用 ref 跟踪最新 options,避免 options 对象进入 useCallback deps
+    // 每次 render 新身份导致 createAndSetupInput/open 也每次新身份,消费者 memoization 失效
+    const optionsRef = useRef(options)
+    useEffect(() => {
+        optionsRef.current = options
+    })
+
+    const handleChange = useCallback((event: Event) => {
+        const target = event.target as HTMLInputElement
+        if (target?.files) {
+            setFiles(target.files)
+            optionsRef.current.onChange?.(target.files)
+        }
+    }, [])
 
     const createAndSetupInput = useCallback(() => {
         inputRef.current?.remove()
-        inputRef.current = createInput(options)
+        const opts = optionsRef.current
+        inputRef.current = createInput(opts)
 
         if (inputRef.current) {
             inputRef.current.addEventListener('change', handleChange, { once: true })
-            if (options.onCancel) {
-                inputRef.current.addEventListener('cancel', options.onCancel, { once: true })
+            if (opts.onCancel) {
+                inputRef.current.addEventListener('cancel', opts.onCancel, { once: true })
             }
             document.body.appendChild(inputRef.current)
         }
-    }, [options, handleChange])
+    }, [handleChange])
 
     useIsomorphicEffect(() => {
         createAndSetupInput()
         return () => inputRef.current?.remove()
-    }, [])
+    }, [createAndSetupInput])
 
     const reset = useCallback(() => {
         setFiles(null)
-        options.onChange?.(null)
-    }, [options.onChange])
+        optionsRef.current.onChange?.(null)
+    }, [])
 
     const open = useCallback(() => {
-        if (options.resetOnOpen) {
+        if (optionsRef.current.resetOnOpen) {
             reset()
         }
 
         createAndSetupInput()
         inputRef.current?.click()
-    }, [options.resetOnOpen, reset, createAndSetupInput])
+    }, [reset, createAndSetupInput])
 
     return { files, open, reset }
 }

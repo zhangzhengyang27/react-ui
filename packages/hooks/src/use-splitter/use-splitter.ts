@@ -368,6 +368,11 @@ interface SplitterInternalState {
   startSizes: number[];
   startRaw: SplitterPaneSize[];
   preCollapseSizes: SplitterPaneSize[];
+  // 拖拽前 body.style 的原始值,用于 onPointerUp 时恢复
+  // 避免清空消费者可能已设置的自定义 userSelect/cursor 样式
+  prevBodyUserSelect: string;
+  prevBodyWebkitUserSelect: string;
+  prevBodyCursor: string;
 }
 
 function createInitialInternalState(): SplitterInternalState {
@@ -381,6 +386,9 @@ function createInitialInternalState(): SplitterInternalState {
     startSizes: [],
     startRaw: [],
     preCollapseSizes: [],
+    prevBodyUserSelect: '',
+    prevBodyWebkitUserSelect: '',
+    prevBodyCursor: '',
   };
 }
 
@@ -929,6 +937,11 @@ export function useSplitter<T extends HTMLElement = any>(
           s.preCollapseSizes = [...preCollapseSizesRef.current];
 
           setActiveHandle(handleIndex);
+          // 保存 body.style 原值,onPointerUp 时恢复
+          // 不直接置空,避免清空消费者可能已设置的自定义样式
+          s.prevBodyUserSelect = document.body.style.userSelect;
+          s.prevBodyWebkitUserSelect = document.body.style.webkitUserSelect;
+          s.prevBodyCursor = document.body.style.cursor;
           document.body.style.userSelect = 'none';
           document.body.style.webkitUserSelect = 'none';
           document.body.style.cursor = isHorizontal ? 'col-resize' : 'row-resize';
@@ -1014,9 +1027,10 @@ export function useSplitter<T extends HTMLElement = any>(
           s.handleIndex = -1;
 
           setActiveHandle(-1);
-          document.body.style.userSelect = '';
-          document.body.style.webkitUserSelect = '';
-          document.body.style.cursor = '';
+          // 恢复 onPointerDown 时保存的 body.style 原值
+          document.body.style.userSelect = s.prevBodyUserSelect;
+          document.body.style.webkitUserSelect = s.prevBodyWebkitUserSelect;
+          document.body.style.cursor = s.prevBodyCursor;
 
           documentControllerRef.current?.abort();
           documentControllerRef.current = null;
@@ -1206,9 +1220,10 @@ export function useSplitter<T extends HTMLElement = any>(
 
       if (internalStateRef.current.isDragging) {
         internalStateRef.current.isDragging = false;
-        document.body.style.userSelect = '';
-        document.body.style.webkitUserSelect = '';
-        document.body.style.cursor = '';
+        // 恢复 onPointerDown 时保存的 body.style 原值
+        document.body.style.userSelect = internalStateRef.current.prevBodyUserSelect;
+        document.body.style.webkitUserSelect = internalStateRef.current.prevBodyWebkitUserSelect;
+        document.body.style.cursor = internalStateRef.current.prevBodyCursor;
       }
     },
     []

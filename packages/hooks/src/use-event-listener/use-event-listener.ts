@@ -5,30 +5,42 @@ export function useEventListener<K extends keyof HTMLElementEventMap, T extends 
     listener: (this: T, ev: HTMLElementEventMap[K]) => any,
     options?: boolean | AddEventListenerOptions
 ): React.RefCallback<T | null> {
-    const previousListener = useRef<Function | null>(null)
+    // 用 ref 跟踪最新 listener，避免 listener 进入 callbackRef deps 导致身份 churn
+    // 消费者内联传入 listener 时，callbackRef 身份保持稳定，不再每次渲染重挂监听
+    const listenerRef = useRef(listener)
+    listenerRef.current = listener
     const previousNode = useRef<T | null>(null)
 
     const callbackRef: React.RefCallback<T | null> = useCallback(
         (node) => {
             if (!node) {
-                return
+                return undefined
             }
 
-            if (previousNode.current && previousListener.current) {
-                previousNode.current.removeEventListener(type, previousListener.current as any, options)
-            }
-
-            node.addEventListener(type, listener as any, options)
+            previousNode.current?.removeEventListener(
+                type,
+                listenerRef.current as any,
+                options
+            )
+            node.addEventListener(type, listenerRef.current as any, options)
             previousNode.current = node
-            previousListener.current = listener
+
+            // React 19 ref callback cleanup：节点分离时移除监听
+            return () => {
+                node.removeEventListener(type, listenerRef.current as any, options)
+            }
         },
-        [type, listener, options]
+        [type, options]
     )
 
     useEffect(
         () => () => {
-            if (previousNode.current && previousListener.current) {
-                previousNode.current.removeEventListener(type, previousListener.current as any, options)
+            if (previousNode.current) {
+                previousNode.current.removeEventListener(
+                    type,
+                    listenerRef.current as any,
+                    options
+                )
             }
         },
         [type, options]

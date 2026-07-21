@@ -23,6 +23,8 @@ export function useIdle(timeout: number, options?: UseIdleOptions): boolean {
     const { events, initialState } = { ...DEFAULT_OPTIONS, ...options }
     const [idle, setIdle] = useState(initialState)
     const timer = useRef<number | null>(null)
+    // events 用 join 作为稳定 dep，避免内联数组每次渲染新身份导致重挂监听
+    const eventsKey = events.join(',')
 
     useEffect(() => {
         const handleEvents = () => {
@@ -37,20 +39,21 @@ export function useIdle(timeout: number, options?: UseIdleOptions): boolean {
             }, timeout)
         }
 
-        events.forEach(event => document.addEventListener(event, handleEvents))
+        const eventsArr = eventsKey.split(',')
+        eventsArr.forEach(event => document.addEventListener(event, handleEvents))
 
         timer.current = window.setTimeout(() => {
             setIdle(true)
         }, timeout)
 
         return () => {
-            events.forEach(event => document.removeEventListener(event, handleEvents))
+            eventsArr.forEach(event => document.removeEventListener(event, handleEvents))
             if (timer.current) {
                 window.clearTimeout(timer.current)
             }
             timer.current = null
         }
-    }, [timeout, events])
+    }, [timeout, eventsKey])
 
     return idle
 }

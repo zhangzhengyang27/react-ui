@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useIsomorphicEffect } from '../use-isomorphic-effect/use-isomorphic-effect';
 
 export interface UseOrientationOptions {
@@ -59,10 +59,10 @@ export function useOrientation({
     )
   );
 
-  const handleOrientationChange = (event: Event) => {
+  const handleOrientationChange = useCallback((event: Event) => {
     const target = event.currentTarget as ScreenOrientation;
     setOrientation({ angle: target?.angle || 0, type: target?.type || 'landscape-primary' });
-  };
+  }, []);
 
   useIsomorphicEffect(() => {
     if (window.screen.orientation) {
@@ -76,7 +76,7 @@ export function useOrientation({
     }
 
     return undefined;
-  }, []);
+  }, [handleOrientationChange]);
 
   return orientation;
 }

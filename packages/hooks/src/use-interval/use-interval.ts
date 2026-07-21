@@ -26,7 +26,9 @@ export function useInterval(
 ): UseIntervalReturnValue {
     const [active, setActive] = useState(false)
     const intervalRef = useRef<number | null>(null)
-    const fnRef = useRef<() => void>(null)
+    // 修复类型：fnRef 初值为 null，类型应为 (() => void) | null
+    const fnRef = useRef<(() => void) | null>(null)
+    fnRef.current = fn
     const intervalValueRef = useRef(interval)
     intervalValueRef.current = interval
 
@@ -64,10 +66,13 @@ export function useInterval(
     }, [])
 
     useEffect(() => {
-        fnRef.current = fn
-        active && start()
+        // fn 不进入 deps：fnRef.current 在渲染期已同步为最新 fn，
+        // 内联 fn 不会导致 interval 重启（避免每次渲染 clear+reset interval 的功能失效）
+        if (active) {
+            start()
+        }
         return stop
-    }, [fn, active, interval, start, stop])
+    }, [active, interval, start, stop])
 
     useEffect(() => {
         if (autoInvoke) {

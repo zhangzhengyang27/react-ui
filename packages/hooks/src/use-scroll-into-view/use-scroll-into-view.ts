@@ -69,13 +69,14 @@ export function useScrollIntoView<
 
   const _easing = easing ?? easeInOutQuad;
 
-  const cancel = (): void => {
+  // useCallback 包裹以稳定身份，避免被 useEffect(() => cancel, []) 陈旧捕获
+  const cancel = useCallback((): void => {
     if (frameID.current) {
       cancelAnimationFrame(frameID.current);
       frameID.current = 0;
       setScrolling(false);
     }
-  };
+  }, []);
 
   const scrollIntoView = useCallback(
     ({ alignment = 'start' }: UseScrollIntoViewAnimation = {}) => {
@@ -158,7 +159,7 @@ export function useScrollIntoView<
   });
 
   // Cleanup requestAnimationFrame
-  useEffect(() => cancel, []);
+  useEffect(() => cancel, [cancel]);
 
   return {
     scrollableRef,

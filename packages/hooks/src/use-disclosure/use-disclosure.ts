@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 /**
  * 控制开关状态的React Hook
@@ -8,6 +8,10 @@ import { useCallback, useState } from 'react'
  * @param {Function} [callbacks.onClose] - 当状态变为关闭时触发的回调
  * @returns {[boolean, {open: Function, close: Function, toggle: Function}]}
  * 返回一个元组，包含当前状态和操作对象(open/close/toggle方法)
+ *
+ * 注意：onOpen/onClose 通过 useEffect 在状态变化后触发（非同步）。
+ * 之前的实现把副作用放在 setState updater 内，违反 React Hooks 规范——
+ * StrictMode 下 updater 双调用会导致 onOpen/onClose 被调用两次。
  */
 export function useDisclosure(
     initialState = false,
@@ -15,30 +19,23 @@ export function useDisclosure(
 ) {
     const { onOpen, onClose } = callbacks || {}
     const [opened, setOpened] = useState(initialState)
+    // 跟踪上一次的 opened 值，用于检测状态变化方向
+    const prevOpenedRef = useRef(initialState)
 
-    const open = useCallback(() => {
-        setOpened(isOpened => {
-            if (!isOpened) {
+    useEffect(() => {
+        if (prevOpenedRef.current !== opened) {
+            if (opened) {
                 onOpen?.()
-                return true
-            }
-            return isOpened
-        })
-    }, [onOpen])
-
-    const close = useCallback(() => {
-        setOpened(isOpened => {
-            if (isOpened) {
+            } else {
                 onClose?.()
-                return false
             }
-            return isOpened
-        })
-    }, [onClose])
+            prevOpenedRef.current = opened
+        }
+    }, [opened, onOpen, onClose])
 
-    const toggle = useCallback(() => {
-        opened ? close() : open()
-    }, [close, open, opened])
+    const open = useCallback(() => setOpened(true), [])
+    const close = useCallback(() => setOpened(false), [])
+    const toggle = useCallback(() => setOpened(prev => !prev), [])
 
     return [opened, { open, close, toggle }] as const
 }

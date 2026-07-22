@@ -1,5 +1,5 @@
 import { cloneElement } from 'react'
-import { useMergedRef } from '@react-ui/hooks'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import { factory, getSingleElementChild, useProps, type Factory } from '../../core'
 import { useComboboxContext } from './Combobox.context'
 
@@ -35,7 +35,7 @@ export const ComboboxEventsTarget = factory<ComboboxEventsTargetFactory>((props,
 
     if (!child) {
         throw new Error(
-            '[@react-ui/ui] Combobox.EventsTarget children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported'
+            '[@xiaoye-react/ui] Combobox.EventsTarget children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported'
         )
     }
 
@@ -62,4 +62,4 @@ export const ComboboxEventsTarget = factory<ComboboxEventsTargetFactory>((props,
     })
 })
 
-ComboboxEventsTarget.displayName = '@react-ui/ui/ComboboxEventsTarget'
+ComboboxEventsTarget.displayName = '@xiaoye-react/ui/ComboboxEventsTarget'

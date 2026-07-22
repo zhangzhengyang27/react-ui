@@ -11,7 +11,7 @@ description: react-ui ThemeObject 文档。
 要自定义主题，请将主题覆盖对象传递给 [UIProvider](/docs/theming/ui-provider/) 的 `theme` 属性。主题覆盖对象会与默认主题进行深度合并。
 
 ```tsx
-import { createTheme, UIProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   colors: {
@@ -89,11 +89,11 @@ function Demo() {
 - [Indicator](/components/indicator)
 - [Timeline](/components/timeline)
 - [Spotlight](/docs/x/spotlight)
-- 所有基于 [Calendar](/docs/dates/calendar) 组件的 [@react-ui/ui](/docs/dates/getting-started) 组件
+- 所有基于 [Calendar](/docs/dates/calendar) 组件的 [@xiaoye-react/ui](/docs/dates/getting-started) 组件
 
 `autoContrast` 会检查给定颜色的亮度是否高于或低于 `luminanceThreshold` 值，并相应地将文本颜色更改为 `theme.white` 或 `theme.black`。
 
-`autoContrast` 可以在主题级别全局设置，也可以通过 `autoContrast` 属性为每个组件单独设置，但 [Spotlight](/docs/x/spotlight) 和 [@react-ui/ui](/docs/dates/getting-started) 组件仅支持全局主题设置。
+`autoContrast` 可以在主题级别全局设置，也可以通过 `autoContrast` 属性为每个组件单独设置，但 [Spotlight](/docs/x/spotlight) 和 [@xiaoye-react/ui](/docs/dates/getting-started) 组件仅支持全局主题设置。
 
 
 ### luminanceThreshold
@@ -160,7 +160,7 @@ function Demo() {
 `theme.other` 是一个对象，可用于存储任何你想通过 theme 对象访问的其他属性。
 
 ```tsx
-import { createTheme, UIProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   fontWeights: {
@@ -178,7 +178,7 @@ function Demo() {
 ```
 
 ```tsx
-import { createTheme, UIProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   other: {
@@ -223,7 +223,7 @@ function Demo() {
 要将主题覆盖对象存储在变量中，请使用 `createTheme` 函数：
 
 ```tsx
-import { createTheme, UIProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@xiaoye-react/ui';
 
 const myTheme = createTheme({
   primaryColor: 'orange',
@@ -248,7 +248,7 @@ import {
   createTheme,
   UIProvider,
   mergeThemeOverrides,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 const theme1 = createTheme({
   primaryColor: 'orange',
@@ -276,7 +276,7 @@ function Demo() {
 `useUITheme` Hook 从 [UIProvider](/docs/theming/ui-provider) 上下文中返回主题对象：
 
 ```tsx
-import { useUITheme } from '@react-ui/ui';
+import { useUITheme } from '@xiaoye-react/ui';
 
 function Demo() {
   const theme = useUITheme();
@@ -286,10 +286,10 @@ function Demo() {
 
 ## 默认主题
 
-你可以从 `@react-ui/ui` 包中导入默认主题对象。它包含所有具有默认值的主题属性。当你将主题覆盖传递给 [UIProvider](/docs/theming/ui-provider) 时，它会与默认主题进行深度合并。
+你可以从 `@xiaoye-react/ui` 包中导入默认主题对象。它包含所有具有默认值的主题属性。当你将主题覆盖传递给 [UIProvider](/docs/theming/ui-provider) 时，它会与默认主题进行深度合并。
 
 ```tsx
-import { DEFAULT_THEME } from '@react-ui/ui';
+import { DEFAULT_THEME } from '@xiaoye-react/ui';
 ```
 
 ## 在组件外部访问主题
@@ -305,7 +305,7 @@ import {
   createTheme,
   DEFAULT_THEME,
   mergeUITheme,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 const themeOverride = createTheme({
   primaryColor: 'orange',

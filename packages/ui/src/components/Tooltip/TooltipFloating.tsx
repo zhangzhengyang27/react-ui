@@ -1,5 +1,5 @@
 import { cloneElement, useRef, useState } from 'react'
-import { useMergedRef } from '@react-ui/hooks'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import {
     Box,
     createVarsResolver,
@@ -123,7 +123,7 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((_props, ref) => 
     const child = getSingleElementChild(children)
     if (!child) {
         throw new Error(
-            '[@react-ui/ui] Tooltip.Floating component children should be an element or a component that accepts ref, fragments, strings, numbers and other primitive values are not supported'
+            '[@xiaoye-react/ui] Tooltip.Floating component children should be an element or a component that accepts ref, fragments, strings, numbers and other primitive values are not supported'
         )
     }
 
@@ -199,7 +199,7 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((_props, ref) => 
 
 TooltipFloating.classes = classes
 ;(TooltipFloating as any).varsResolver = varsResolver
-TooltipFloating.displayName = '@react-ui/ui/TooltipFloating'
+TooltipFloating.displayName = '@xiaoye-react/ui/TooltipFloating'
 
 export namespace TooltipFloating {
     export type Props = TooltipFloatingProps

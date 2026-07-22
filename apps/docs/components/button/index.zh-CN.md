@@ -119,7 +119,7 @@ Button 禁用时不会触发 `onMouseLeave` 事件（[详见 React 相关 issue]
 Button.Group 内部的子 Button 之间不应再包裹额外元素：
 
 ```tsx
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

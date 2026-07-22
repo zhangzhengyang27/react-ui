@@ -196,4 +196,4 @@ export const FlatTreeNode = memo(function FlatTreeNode({
     )
 })
 
-FlatTreeNode.displayName = '@react-ui/ui/FlatTreeNode'
+FlatTreeNode.displayName = '@xiaoye-react/ui/FlatTreeNode'

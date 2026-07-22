@@ -11,7 +11,7 @@ const changeEventBoolean = {
   nativeEvent: {},
 } as any;
 
-describe('@react-ui/hooks/use-input-state', () => {
+describe('@xiaoye-react/hooks/use-input-state', () => {
   it('sets correct initial state', () => {
     const hook = renderHook(() => useInputState('test-value'));
     const [value] = hook.result.current;

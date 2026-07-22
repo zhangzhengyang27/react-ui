@@ -55,11 +55,11 @@ module.exports = {
 
 ```tsx
 // 导入你已安装包的样式。
-// 除 `@react-ui/hooks` 外，所有包都需要导入样式
-import '@react-ui/ui/styles.css';
+// 除 `@xiaoye-react/hooks` 外，所有包都需要导入样式
+import '@xiaoye-react/ui/styles.css';
 
 import type { AppProps } from 'next/app';
-import { createTheme, UIProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   /** 在此放置你的 ui 主题覆盖 */
@@ -76,7 +76,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
 ```tsx
 import { Head, Html, Main, NextScript } from 'next/document';
-import { ColorSchemeScript, uiHtmlProps } from '@react-ui/ui';
+import { ColorSchemeScript, uiHtmlProps } from '@xiaoye-react/ui';
 
 export default function Document() {
   return (
@@ -107,10 +107,10 @@ npm run dev
 
 ```tsx
 // 导入你已安装包的样式。
-// 除 `@react-ui/hooks` 外，所有包都需要导入样式
-import '@react-ui/ui/styles.css';
+// 除 `@xiaoye-react/hooks` 外，所有包都需要导入样式
+import '@xiaoye-react/ui/styles.css';
 
-import { ColorSchemeScript, UIProvider, uiHtmlProps } from '@react-ui/ui';
+import { ColorSchemeScript, UIProvider, uiHtmlProps } from '@xiaoye-react/ui';
 
 export const metadata = {
   title: 'My ReactUI app',
@@ -148,7 +148,7 @@ npm run dev
 
 ```tsx
 import Link from 'next/link';
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -165,7 +165,7 @@ function Demo() {
 和 [Styles API](/docs/styles/styles-api)。ReactUI 组件不能用作服务端组件。
 这意味着组件会在服务端和客户端同时渲染。
 
-所有 `@react-ui/*` 包的入口文件（`index.js`）顶部都有 `'use client';` 指令——
+所有 `@xiaoye-react/*` 包的入口文件（`index.js`）顶部都有 `'use client';` 指令——
 你不需要在页面/布局/组件中额外添加 `'use client';`。
 
 ## 在服务端组件中使用复合组件
@@ -183,7 +183,7 @@ function Demo() {
 使用 `ComponentXXX` 语法的示例：
 
 ```tsx
-import { Popover } from '@react-ui/ui';
+import { Popover } from '@xiaoye-react/ui';
 
 // 这会抛出错误
 export default function Page() {
@@ -199,7 +199,7 @@ export default function Page() {
 ```tsx
 'use client';
 
-import { Popover } from '@react-ui/ui';
+import { Popover } from '@xiaoye-react/ui';
 
 // 不会报错
 export default function Page() {
@@ -217,7 +217,7 @@ import {
   Popover,
   PopoverDropdown,
   PopoverTarget,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 // 不会报错
 export default function Page() {
@@ -238,7 +238,7 @@ export default function Page() {
 export default {
   // ...其他配置
   experimental: {
-    optimizePackageImports: ['@react-ui/ui', '@react-ui/hooks'],
+    optimizePackageImports: ['@xiaoye-react/ui', '@xiaoye-react/hooks'],
   },
 };
 ```

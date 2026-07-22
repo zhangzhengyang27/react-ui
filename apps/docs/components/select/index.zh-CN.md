@@ -35,7 +35,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { Select } from '@react-ui/ui';
+import { Select } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState<string | null>('');
@@ -54,7 +54,7 @@ function Demo() {
 
 ```tsx
 import { useState } from 'react';
-import { ComboboxItem, Select } from '@react-ui/ui';
+import { ComboboxItem, Select } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState<ComboboxItem | null>(null);
@@ -113,7 +113,7 @@ function Demo() {
 
 ```tsx
 import { useState } from 'react';
-import { Select } from '@react-ui/ui';
+import { Select } from '@xiaoye-react/ui';
 
 function Demo() {
   const [searchValue, setSearchValue] = useState('');
@@ -148,7 +148,7 @@ function Demo() {
 推断值类型。如需显式设置值类型，请传递类型参数：
 
 ```tsx
-import { Select } from '@react-ui/ui';
+import { Select } from '@xiaoye-react/ui';
 
 type SelectValue = 'React' | 'Angular' | 'Svelte' | number;
 
@@ -255,7 +255,7 @@ function Demo() {
 若在下拉框中遇到水平无限滚动，请将 `shift` 中间件的 `padding` 设置为 `0`：
 
 ```tsx
-import { Select } from '@react-ui/ui';
+import { Select } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -315,7 +315,7 @@ function Demo() {
 要为清除按钮设置 `aria-label`，请使用 `clearButtonProps`。注意，仅在设置 `clearable` 时才需要这样做。
 
 ```tsx
-import { Select } from '@react-ui/ui';
+import { Select } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

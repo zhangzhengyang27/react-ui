@@ -28,8 +28,8 @@ function useWindowScroll(): UseWindowScrollReturnValue;
 
 ## 导出类型
 
-`UseWindowScrollTo`、`UseWindowScrollPosition` 和 `UseWindowScrollReturnValue` 类型从 `@react-ui/hooks` 包导出：
+`UseWindowScrollTo`、`UseWindowScrollPosition` 和 `UseWindowScrollReturnValue` 类型从 `@xiaoye-react/hooks` 包导出：
 
 ```tsx
-import type { UseWindowScrollTo, UseWindowScrollPosition, UseWindowScrollReturnValue } from '@react-ui/hooks';
+import type { UseWindowScrollTo, UseWindowScrollPosition, UseWindowScrollReturnValue } from '@xiaoye-react/hooks';
 ```

@@ -1,5 +1,5 @@
-import { Button, Input, UIColorsTuple, UIProvider, Table } from '@react-ui/ui';
-import { useDebouncedValue } from '@react-ui/hooks';
+import { Button, Input, UIColorsTuple, UIProvider, Table } from '@xiaoye-react/ui';
+import { useDebouncedValue } from '@xiaoye-react/hooks';
 
 interface ComponentsPreviewProps {
   colors: UIColorsTuple;

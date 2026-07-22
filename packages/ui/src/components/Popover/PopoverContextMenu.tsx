@@ -46,4 +46,4 @@ export function PopoverContextMenu(props: PopoverContextMenuProps) {
     } as any)
 }
 
-PopoverContextMenu.displayName = '@react-ui/ui/PopoverContextMenu'
+PopoverContextMenu.displayName = '@xiaoye-react/ui/PopoverContextMenu'

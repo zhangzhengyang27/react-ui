@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, SegmentedControl } from '@react-ui/ui';
+import { Flex, SegmentedControl } from '@xiaoye-react/ui';
 
 import useLocale from '../../hooks/useLocale';
 import SemanticPreview from './SemanticPreview';

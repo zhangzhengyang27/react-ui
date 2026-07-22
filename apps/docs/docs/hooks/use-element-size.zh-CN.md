@@ -17,7 +17,7 @@ description: react-ui 元素尺寸 Hook 文档。
 在第一次渲染（以及 SSR 期间）或未观察任何元素时，`width` 和 `height` 属性等于 `0`。
 
 ```tsx
-import { useElementSize } from '@react-ui/hooks';
+import { useElementSize } from '@xiaoye-react/hooks';
 
 const { ref, width, height } = useElementSize();
 ```

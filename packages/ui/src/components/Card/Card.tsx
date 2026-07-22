@@ -113,7 +113,7 @@ Card.Section = CardSection
 
 Card.classes = classes
 ;(Card as any).varsResolver = varsResolver
-Card.displayName = '@react-ui/ui/Card'
+Card.displayName = '@xiaoye-react/ui/Card'
 
 export namespace Card {
     export type Props = CardProps

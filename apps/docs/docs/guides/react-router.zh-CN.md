@@ -52,8 +52,8 @@ module.exports = {
 
 ```tsx
 // 导入你已安装包的样式。
-// 除 `@react-ui/hooks` 外，所有包都需要导入样式
-import '@react-ui/ui/styles.css';
+// 除 `@xiaoye-react/hooks` 外，所有包都需要导入样式
+import '@xiaoye-react/ui/styles.css';
 
 import {
   Links,
@@ -62,7 +62,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-import { ColorSchemeScript, UIProvider, uiHtmlProps } from '@react-ui/ui';
+import { ColorSchemeScript, UIProvider, uiHtmlProps } from '@xiaoye-react/ui';
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (

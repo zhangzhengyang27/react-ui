@@ -153,7 +153,7 @@ AppShell.Footer = AppShellFooter
 AppShell.Main = AppShellMain
 AppShell.classes = classes
 ;(AppShell as any).varsResolver = varsResolver
-AppShell.displayName = '@react-ui/ui/AppShell'
+AppShell.displayName = '@xiaoye-react/ui/AppShell'
 
 export namespace AppShell {
     export type Props = AppShellProps

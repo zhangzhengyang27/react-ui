@@ -1,4 +1,4 @@
-import { Text, TextProps } from '@react-ui/ui';
+import { Text, TextProps } from '@xiaoye-react/ui';
 import classes from './HtmlText.module.css';
 
 interface HtmlTextProps extends TextProps {

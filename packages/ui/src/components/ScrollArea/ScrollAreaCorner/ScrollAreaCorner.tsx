@@ -32,4 +32,4 @@ export function ScrollAreaCorner(props: ScrollAreaCornerProps) {
     return hasBothScrollbarsVisible ? <Corner {...props} /> : null
 }
 
-ScrollAreaCorner.displayName = '@react-ui/ui/ScrollAreaCorner'
+ScrollAreaCorner.displayName = '@xiaoye-react/ui/ScrollAreaCorner'

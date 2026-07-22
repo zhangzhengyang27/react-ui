@@ -1,5 +1,5 @@
 import React from 'react';
-import { Popover, Button, Text } from '@react-ui/ui';
+import { Popover, Button, Text } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

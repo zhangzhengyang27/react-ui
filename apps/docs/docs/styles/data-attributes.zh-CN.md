@@ -35,7 +35,7 @@ description: react-ui DataAttributes 文档。
 然后你可以使用此属性为左侧和右侧 section 应用样式：
 
 ```tsx
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -65,7 +65,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -123,7 +123,7 @@ function Demo() {
 使用 `mod` prop 的示例：
 
 ```tsx
-import { Box } from '@react-ui/ui';
+import { Box } from '@xiaoye-react/ui';
 
 <Box mod="data-button" />;
 // -> <div data-button />

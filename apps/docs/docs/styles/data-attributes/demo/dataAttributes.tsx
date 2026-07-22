@@ -1,6 +1,6 @@
 import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
-import { Button, ButtonProps, Group } from '@react-ui/ui';
+import { Button, ButtonProps, Group } from '@xiaoye-react/ui';
 import classes from './dataAttributes.module.css';
 
 function SendFilesButton(props: ButtonProps & React.ComponentProps<'button'>) {

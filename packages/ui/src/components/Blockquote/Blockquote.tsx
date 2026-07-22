@@ -117,7 +117,7 @@ export const Blockquote = factory<BlockquoteFactory>((_props, _ref) => {
 
 Blockquote.classes = classes
 ;(Blockquote as any).varsResolver = varsResolver
-Blockquote.displayName = '@react-ui/ui/Blockquote'
+Blockquote.displayName = '@xiaoye-react/ui/Blockquote'
 
 export namespace Blockquote {
     export type Props = BlockquoteProps

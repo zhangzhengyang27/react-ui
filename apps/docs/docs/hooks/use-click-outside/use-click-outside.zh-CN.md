@@ -22,7 +22,7 @@ description: react-ui 点击外部监听 Hook 文档。
 该 Hook 返回一个 `ref` 对象，必须将其传递给要捕获外部点击的元素。
 
 ```tsx
-import { useClickOutside } from '@react-ui/hooks';
+import { useClickOutside } from '@xiaoye-react/hooks';
 
 function Example() {
   const handleClickOutside = () =>
@@ -44,8 +44,8 @@ function Example() {
 ```tsx
 // 仅适用于 useState，不适用于 useRef
 import { useState } from 'react';
-import { Portal } from '@react-ui/ui';
-import { useClickOutside } from '@react-ui/hooks';
+import { Portal } from '@xiaoye-react/ui';
+import { useClickOutside } from '@xiaoye-react/hooks';
 
 function Demo() {
   const [dropdown, setDropdown] = useState<HTMLDivElement | null>(
@@ -73,7 +73,7 @@ function Demo() {
 ## 设置 ref 类型
 
 ```tsx
-import { useClickOutside } from '@react-ui/hooks';
+import { useClickOutside } from '@xiaoye-react/hooks';
 
 const ref = useClickOutside<HTMLDivElement>(() =>
   console.log('Click outside')

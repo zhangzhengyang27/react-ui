@@ -198,7 +198,7 @@ export const AreaChart = factory<AreaChartFactory>((_props, ref) => {
 
 AreaChart.classes = classes
 ;(AreaChart as any).varsResolver = varsResolver
-AreaChart.displayName = '@react-ui/ui/AreaChart'
+AreaChart.displayName = '@xiaoye-react/ui/AreaChart'
 
 export namespace AreaChart {
     export type Props = AreaChartProps

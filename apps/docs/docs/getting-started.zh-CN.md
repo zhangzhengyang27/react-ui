@@ -13,7 +13,7 @@ ReactUI 是一个 React 组件库，专注于提供出色的用户体验和开�
 
 首先安装核心包和 hooks 包：
 
-<PackagesInstallation packages="@react-ui/ui @react-ui/hooks"></PackagesInstallation>
+<PackagesInstallation packages="@xiaoye-react/ui @xiaoye-react/hooks"></PackagesInstallation>
 
 安装 PostCSS 插件和 [postcss-preset-ui](/docs/styles/postcss-preset)：
 
@@ -47,7 +47,7 @@ module.exports = {
 在应用根文件中引入样式（仅需引入一次）。例如在 Next.js pages router 的 `_app.tsx` 中：
 
 ```tsx
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 ```
 
 ## 使用 UIProvider
@@ -55,7 +55,7 @@ import '@react-ui/ui/styles.css';
 使用 [UIProvider](/docs/theming/ui-provider/) 包裹应用：
 
 ```tsx
-import { createTheme, UIProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   /** 在此自定义主题 */
@@ -73,7 +73,7 @@ function Demo() {
 如果你的应用使用服务端渲染，请在 `<head />` 中添加 [ColorSchemeScript](/docs/theming/color-schemes) 并将 `uiHtmlProps` 展开到 `<html />` 元素上，以避免 hydration 警告：
 
 ```tsx
-import { ColorSchemeScript, uiHtmlProps } from '@react-ui/ui';
+import { ColorSchemeScript, uiHtmlProps } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -111,7 +111,7 @@ function Demo() {
     "**/*.scss",
     "**/*.sass",
     "**/*.less",
-    "node_modules/@react-ui/ui/styles.css"
+    "node_modules/@xiaoye-react/ui/styles.css"
   ]
 }
 ```

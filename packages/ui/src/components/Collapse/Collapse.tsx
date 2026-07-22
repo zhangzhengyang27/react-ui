@@ -1,4 +1,4 @@
-import { useCollapse, useHorizontalCollapse, useReducedMotion } from '@react-ui/hooks'
+import { useCollapse, useHorizontalCollapse, useReducedMotion } from '@xiaoye-react/hooks'
 import {
     Activity,
     Box,
@@ -131,7 +131,7 @@ export const Collapse = factory<CollapseFactory>((props, ref) => {
     )
 })
 
-Collapse.displayName = '@react-ui/ui/Collapse'
+Collapse.displayName = '@xiaoye-react/ui/Collapse'
 
 export namespace Collapse {
     export type Props = CollapseProps

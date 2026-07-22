@@ -29,7 +29,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { ColorInput } from '@react-ui/ui';
+import { ColorInput } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState('');

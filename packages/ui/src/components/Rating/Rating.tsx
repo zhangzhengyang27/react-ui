@@ -240,7 +240,7 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
 
 Rating.classes = classes
 ;(Rating as any).varsResolver = varsResolver
-Rating.displayName = '@react-ui/ui/Rating'
+Rating.displayName = '@xiaoye-react/ui/Rating'
 
 export namespace Rating {
     export type Props = RatingProps

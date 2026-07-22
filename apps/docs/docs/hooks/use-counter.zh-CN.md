@@ -36,9 +36,9 @@ function useCounter(
 
 ## 导出类型
 
-`UseCounterOptions`、`UseCounterHandlers` 和 `UseCounterReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseCounterOptions`、`UseCounterHandlers` 和 `UseCounterReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseCounterOptions, UseCounterHandlers, UseCounterReturnValue } from '@react-ui/hooks';
+import type { UseCounterOptions, UseCounterHandlers, UseCounterReturnValue } from '@xiaoye-react/hooks';
 ```

@@ -30,7 +30,7 @@ group:
 - 每个节点可以有一个 `children` 键，其值为子节点数组
 
 ```tsx
-import { TreeNodeData } from '@react-ui/ui';
+import { TreeNodeData } from '@xiaoye-react/ui';
 
 const data: TreeNodeData[] = [
   {
@@ -70,7 +70,7 @@ const data: TreeNodeData[] = [
 
 ```tsx
 import { useState } from 'react';
-import { TreeSelect } from '@react-ui/ui';
+import { TreeSelect } from '@xiaoye-react/ui';
 
 // 单选模式
 function SingleDemo() {
@@ -209,7 +209,7 @@ function MultipleDemo() {
 可控制节点的展开状态：
 
 ```tsx
-import { TreeSelect } from '@react-ui/ui';
+import { TreeSelect } from '@xiaoye-react/ui';
 
 // 默认展开指定节点
 <TreeSelect data={data} defaultExpandedValues={['fruits', 'vegetables']} />
@@ -254,7 +254,7 @@ import { TreeSelect } from '@react-ui/ui';
 要为清除按钮设置 `aria-label`，请使用 `clearButtonProps`。注意仅在设置 `clearable` 时才需要。
 
 ```tsx
-import { TreeSelect } from '@react-ui/ui';
+import { TreeSelect } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

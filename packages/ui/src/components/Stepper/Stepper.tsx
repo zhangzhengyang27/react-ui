@@ -194,7 +194,7 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
 
 Stepper.classes = classes
 ;(Stepper as any).varsResolver = varsResolver
-Stepper.displayName = '@react-ui/ui/Stepper'
+Stepper.displayName = '@xiaoye-react/ui/Stepper'
 Stepper.Step = StepperStep
 Stepper.Completed = StepperCompleted
 

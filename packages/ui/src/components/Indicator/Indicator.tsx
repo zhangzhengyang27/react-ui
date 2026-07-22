@@ -177,7 +177,7 @@ export const Indicator = factory<IndicatorFactory>((_props, ref) => {
 
 Indicator.classes = classes
 ;(Indicator as any).varsResolver = varsResolver
-Indicator.displayName = '@react-ui/ui/Indicator'
+Indicator.displayName = '@xiaoye-react/ui/Indicator'
 
 export namespace Indicator {
     export type Props = IndicatorProps

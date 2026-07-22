@@ -29,4 +29,4 @@ export const ComboboxGroup = factory<ComboboxGroupFactory>((_props, ref) => {
     )
 })
 
-ComboboxGroup.displayName = '@react-ui/ui/ComboboxGroup'
+ComboboxGroup.displayName = '@xiaoye-react/ui/ComboboxGroup'

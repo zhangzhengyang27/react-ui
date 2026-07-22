@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs } from '@react-ui/ui';
+import { Tabs } from '@xiaoye-react/ui';
 import SourceCode from 'dumi/theme-default/builtins/SourceCode';
 
 import BunLogo from './bun';

@@ -17,7 +17,7 @@ description: react-ui 防抖回调 Hook 文档。
 默认情况下，组件卸载时不会触发回调。如果你想在组件卸载前执行待处理的回调，请设置 `flushOnUnmount: true`：
 
 ```tsx
-import { useDebouncedCallback } from '@react-ui/hooks';
+import { useDebouncedCallback } from '@xiaoye-react/hooks';
 
 const callback = useDebouncedCallback(
   () => console.log('Hello'),
@@ -30,7 +30,7 @@ const callback = useDebouncedCallback(
 设置 `leading: true` 以在第一次调用时立即执行回调，然后在延迟窗口内忽略后续调用：
 
 ```tsx
-import { useDebouncedCallback } from '@react-ui/hooks';
+import { useDebouncedCallback } from '@xiaoye-react/hooks';
 
 const callback = useDebouncedCallback(
   () => console.log('Hello'),
@@ -44,7 +44,7 @@ const callback = useDebouncedCallback(
 这对于实时搜索等场景很有用，你可以在连续输入期间获得中间结果：
 
 ```tsx
-import { useDebouncedCallback } from '@react-ui/hooks';
+import { useDebouncedCallback } from '@xiaoye-react/hooks';
 
 const callback = useDebouncedCallback(
   (query: string) => fetchResults(query),
@@ -57,7 +57,7 @@ const callback = useDebouncedCallback(
 你可以调用 `flush` 方法立即执行防抖回调，或调用 `cancel` 丢弃待处理的调用：
 
 ```tsx
-import { useDebouncedCallback } from '@react-ui/hooks';
+import { useDebouncedCallback } from '@xiaoye-react/hooks';
 
 const callback = useDebouncedCallback(() => console.log('Hello'), 1000);
 
@@ -88,9 +88,9 @@ function useDebouncedCallback<T extends (...args: any[]) => any>(
 
 ## 导出类型
 
-`UseDebouncedCallbackOptions` 和 `UseDebouncedCallbackReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseDebouncedCallbackOptions` 和 `UseDebouncedCallbackReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseDebouncedCallbackOptions, UseDebouncedCallbackReturnValue } from '@react-ui/hooks';
+import type { UseDebouncedCallbackOptions, UseDebouncedCallbackReturnValue } from '@xiaoye-react/hooks';
 ```

@@ -22,7 +22,7 @@ Migrate react-ui projects between major versions or adapt to breaking changes.
 ## General migration steps
 
 1. Review the `CHANGELOG.md` for the target version
-2. Update `@react-ui/ui` and `@react-ui/hooks` in your `package.json`
+2. Update `@xiaoye-react/ui` and `@xiaoye-react/hooks` in your `package.json`
 3. Run the test suite and fix any failing tests
 4. Check for deprecated APIs in component documentation
 5. Update `UIProvider` configuration if theme APIs changed

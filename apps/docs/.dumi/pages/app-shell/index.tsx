@@ -10,9 +10,9 @@ import {
   Text,
   Title,
   UnstyledButton,
-} from '@react-ui/ui';
-import { useDisclosure } from '@react-ui/hooks';
-import { APP_SHELL_EXAMPLES_DATA, AppShellDemo } from '@react-ui/docs-demos';
+} from '@xiaoye-react/ui';
+import { useDisclosure } from '@xiaoye-react/hooks';
+import { APP_SHELL_EXAMPLES_DATA, AppShellDemo } from '@xiaoye-react/docs-demos';
 import classes from './app-shell.module.css';
 
 export default function AppShellPage() {

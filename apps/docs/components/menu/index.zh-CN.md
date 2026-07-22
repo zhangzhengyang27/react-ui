@@ -79,7 +79,7 @@ group:
 为防止在触摸设备上出现原生文本选择呼出菜单，`Menu.ContextMenu` 会在包裹的元素上禁用文本选择（`user-select: none`）。
 
 ```tsx
-import { Menu } from '@react-ui/ui';
+import { Menu } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -104,7 +104,7 @@ function Demo() {
 
 ```tsx
 import { useState } from 'react';
-import { Menu } from '@react-ui/ui';
+import { Menu } from '@xiaoye-react/ui';
 
 function Demo() {
   const [opened, setOpened] = useState(false);
@@ -152,7 +152,7 @@ Menu 下拉菜单可以使用 [Transition](/components/transition/) 组件中的
 注意，传给 `component` 属性的组件应允许将 props 展开到其根元素上：
 
 ```tsx
-import { Menu } from '@react-ui/ui';
+import { Menu } from '@xiaoye-react/ui';
 
 // ❌ 不能与 Menu.Item 一起使用
 function IncorrectItem() {

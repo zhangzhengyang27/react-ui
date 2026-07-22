@@ -8,7 +8,7 @@ description: react-ui Notifications 文档。
 
 ## 安装
 
-<InstallScript packages="@react-ui/ui"></InstallScript>
+<InstallScript packages="@xiaoye-react/ui"></InstallScript>
 
 安装完成后，在应用根目录导入包样式：
 
@@ -23,14 +23,14 @@ description: react-ui Notifications 文档。
 全部完成！你现在可以使用通知系统的所有功能。
 
 ```tsx
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 // ‼️ notifications 样式必须在核心包样式之后导入
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 ```
 
 ```tsx
-import { UIProvider } from '@react-ui/ui';
-import { Notifications } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
+import { Notifications } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -49,12 +49,12 @@ function Demo() {
 你已经按照上面的安装说明操作，但某些功能仍然无法正常工作（`position` 属性不生效、通知卡住在底部）？你掉入了未导入通知样式的陷阱！要解决这个问题，请在应用根目录导入通知样式：
 
 ```tsx
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 ```
 
 ## 函数
 
-`@react-ui/ui` 包导出一个 `notifications` 对象，包含以下函数：
+`@xiaoye-react/ui` 包导出一个 `notifications` 对象，包含以下函数：
 
 - `notifications.show` – 将给定的通知添加到通知列表或队列中，具体取决于当前状态和 `limit`
 - `notifications.hide` – 从通知状态和队列中移除具有给定 `id` 的通知
@@ -63,13 +63,13 @@ import '@react-ui/ui/styles.css';
 - `notifications.clean` – 从通知状态和队列中移除所有通知
 - `notifications.cleanQueue` – 从队列中移除所有通知
 
-所有函数都可以从 `@react-ui/ui` 包导入，并可在应用的任何部分使用：
+所有函数都可以从 `@xiaoye-react/ui` 包导入，并可在应用的任何部分使用：
 
 
 你也可以单独导入这些函数：
 
 ```tsx
-import { notifications } from '@react-ui/ui';
+import { notifications } from '@xiaoye-react/ui';
 ```
 
 ```tsx
@@ -81,7 +81,7 @@ import {
   showNotification, // notifications.show
   updateNotification, // notifications.update
   updateNotificationsState, // notifications.updateState
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 ```
 
 ## 通知属性
@@ -109,7 +109,7 @@ import {
 
 ```tsx
 import { XIcon } from '@phosphor-icons/react';
-import { notifications } from '@react-ui/ui';
+import { notifications } from '@xiaoye-react/ui';
 
 // 最低要求 – message 对所有通知都是必需的
 notifications.show({ message: 'Hello' });
@@ -143,7 +143,7 @@ notifications.show({
 要使特定通知不可关闭，请在 `notifications.show` 或 `notifications.update` 中设置 `allowClose: false`。这会隐藏关闭按钮，并禁用该通知的拖动/滚动关闭。
 
 ```tsx
-import { Notifications } from '@react-ui/ui';
+import { Notifications } from '@xiaoye-react/ui';
 
 function Demo() {
   return <Notifications allowDragDismiss={false} allowScrollDismiss={false} />;
@@ -171,7 +171,7 @@ function Demo() {
 `position` 也可以在 `Notifications` 组件上定义。在以下示例中，如果 `notifications.show` 函数中未定义 `position`，通知将显示在屏幕右上角：
 
 ```tsx
-import { Notifications } from '@react-ui/ui';
+import { Notifications } from '@xiaoye-react/ui';
 
 function Demo() {
   return <Notifications position="top-right" zIndex={1000} />;
@@ -188,7 +188,7 @@ function Demo() {
 达到 `limit` 后添加的所有通知都会进入队列，并在当前状态中的通知隐藏时显示。
 
 ```tsx
-import { Notifications } from '@react-ui/ui';
+import { Notifications } from '@xiaoye-react/ui';
 
 function Demo() {
   return <Notifications limit={5} />;
@@ -222,7 +222,7 @@ function Demo() {
 使用 `notifications.cleanQueue` 函数移除队列中的所有通知，使用 `notifications.clean` 移除状态和队列中的所有通知：
 
 ```tsx
-import { notifications } from '@react-ui/ui';
+import { notifications } from '@xiaoye-react/ui';
 
 const id = notifications.show({ message: 'Hello!' });
 notifications.hide(id);
@@ -245,7 +245,7 @@ notifications.hide(id);
 `notifications.show` 和 `notifications.update` 函数的 `autoClose` 属性优先级更高。
 
 ```tsx
-import { Notifications } from '@react-ui/ui';
+import { Notifications } from '@xiaoye-react/ui';
 
 // 所有通知将在 4000ms 后自动关闭
 function Demo() {
@@ -254,7 +254,7 @@ function Demo() {
 ```
 
 ```tsx
-import { notifications } from '@react-ui/ui';
+import { notifications } from '@xiaoye-react/ui';
 
 notifications.show({
   message: 'I will close in 500ms seconds',
@@ -278,7 +278,7 @@ notifications.update({
 - `pauseResetOnHover="notification"` – 仅暂停被悬停通知的自动关闭
 
 ```tsx
-import { Notifications } from '@react-ui/ui';
+import { Notifications } from '@xiaoye-react/ui';
 
 function Demo() {
   return <Notifications pauseResetOnHover="notification" />;

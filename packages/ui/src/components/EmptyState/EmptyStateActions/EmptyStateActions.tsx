@@ -33,4 +33,4 @@ export const EmptyStateActions = factory<EmptyStateActionsFactory>((_props, ref)
 })
 
 EmptyStateActions.classes = classes
-EmptyStateActions.displayName = '@react-ui/ui/EmptyStateActions'
+EmptyStateActions.displayName = '@xiaoye-react/ui/EmptyStateActions'

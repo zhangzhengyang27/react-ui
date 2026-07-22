@@ -22,7 +22,7 @@ group:
 或其他组件。
 
 ```tsx
-import { Input, TextInput } from '@react-ui/ui';
+import { Input, TextInput } from '@xiaoye-react/ui';
 
 // 错误用法，input 不具备可访问性
 function Incorrect() {
@@ -98,7 +98,7 @@ Input 是一个[多态组件](/docs/guides/polymorphic)，默认根元素是 `in
 唯一的区别是输入元素是否会带有 `required` 属性。以 [TextInput](/components/text-input/) 组件为例：
 
 ```tsx
-import { TextInput } from '@react-ui/ui';
+import { TextInput } from '@xiaoye-react/ui';
 
 // 会显示必填星号，并向输入元素添加 `required` 属性
 function RequiredDemo() {
@@ -210,7 +210,7 @@ function AsteriskDemo() {
 可使用 [use-id](/docs/hooks/use-id) 生成唯一 id：
 
 ```tsx
-import { Input } from '@react-ui/ui';
+import { Input } from '@xiaoye-react/ui';
 
 // ok – 输入框由 aria-label 标记
 function WithAriaLabel() {
@@ -229,7 +229,7 @@ function WithLabel() {
 ```
 
 ```tsx
-import { Input } from '@react-ui/ui';
+import { Input } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -241,8 +241,8 @@ function Demo() {
 ```
 
 ```tsx
-import { Input } from '@react-ui/ui';
-import { useId } from '@react-ui/hooks';
+import { Input } from '@xiaoye-react/ui';
+import { useId } from '@xiaoye-react/hooks';
 
 function Demo() {
   const id = useId();

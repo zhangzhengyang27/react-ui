@@ -12,7 +12,7 @@ description: react-ui 分页 Hook 文档。
 它以受控和非受控状态管理分页：
 
 ```tsx
-import { usePagination } from '@react-ui/hooks';
+import { usePagination } from '@xiaoye-react/hooks';
 
 const pagination = usePagination({ total: 10, initialPage: 1 });
 
@@ -42,7 +42,7 @@ pagination.range; // -> [1, 2, 3, 4, 5, 'dots', 10];
 
 ```tsx
 import { useState } from 'react';
-import { usePagination } from '@react-ui/hooks';
+import { usePagination } from '@xiaoye-react/hooks';
 
 const [page, onChange] = useState(1);
 const pagination = usePagination({ total: 10, page, onChange });
@@ -62,7 +62,7 @@ pagination.range; // -> [1, 'dots', 4, 5, 6, 'dots', 10];
 <code src="./use-pagination/demo/siblings.tsx"></code>
 
 ```tsx
-import { usePagination } from '@react-ui/hooks';
+import { usePagination } from '@xiaoye-react/hooks';
 
 const pagination = usePagination({ total: 20, siblings: 3 });
 ```
@@ -75,7 +75,7 @@ const pagination = usePagination({ total: 20, siblings: 3 });
 <code src="./use-pagination/demo/boundaries.tsx"></code>
 
 ```tsx
-import { usePagination } from '@react-ui/hooks';
+import { usePagination } from '@xiaoye-react/hooks';
 
 const pagination = usePagination({ total: 20, boundaries: 3 });
 ```
@@ -141,9 +141,9 @@ function usePagination(settings: UsePaginationOptions): UsePaginationReturnValue
 
 ## 导出类型
 
-`UsePaginationOptions` 和 `UsePaginationReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UsePaginationOptions` 和 `UsePaginationReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UsePaginationOptions, UsePaginationReturnValue } from '@react-ui/hooks';
+import type { UsePaginationOptions, UsePaginationReturnValue } from '@xiaoye-react/hooks';
 ```

@@ -1,4 +1,4 @@
-import { useId, useUncontrolled } from '@react-ui/hooks'
+import { useId, useUncontrolled } from '@xiaoye-react/hooks'
 
 import { AccordionProvider } from './Accordion.context'
 import { AccordionChevronPosition, AccordionHeadingOrder, AccordionValue } from './Accordion.types'
@@ -256,7 +256,7 @@ const extendAccordion = (c: ExtendComponent<AccordionFactory>): UIThemeComponent
 Accordion.extend = extendAccordion
 Accordion.withProps = getWithProps<AccordionProps, AccordionProps>(Accordion as any)
 Accordion.classes = classes
-Accordion.displayName = '@react-ui/ui/Accordion'
+Accordion.displayName = '@xiaoye-react/ui/Accordion'
 Accordion.Item = AccordionItem
 Accordion.Panel = AccordionPanel
 Accordion.Control = AccordionControl

@@ -1,7 +1,7 @@
 import { MdxCodeHighlight, MdxCode, MdxParagraph, MdxTitle } from '../MdxShared/base';
 
 export default function TargetComponent({ component }: { component: string }) {
-  const getTargetCode = `import { ${component}, Button } from '@react-ui/ui';
+  const getTargetCode = `import { ${component}, Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -37,7 +37,7 @@ function Demo() {
 
   const getNoRefCode = `
 // 以下代码无法正常工作
-import { ${component} } from '@react-ui/ui';
+import { ${component} } from '@xiaoye-react/ui';
 
 // ❌ ref 未转发到根元素
 function MyComponent() {
@@ -57,7 +57,7 @@ function Demo() {
 
   const getWithRefCode = `
 // 以下代码可以正常工作
-import { ${component} } from '@react-ui/ui';
+import { ${component} } from '@xiaoye-react/ui';
 
 // ✅ ref 已转发到根元素
 function MyComponent({ ref, ...others }: React.ComponentProps<'div'>) {

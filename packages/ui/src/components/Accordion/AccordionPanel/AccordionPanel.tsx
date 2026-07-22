@@ -55,5 +55,5 @@ export const AccordionPanel = factory<AccordionPanelFactory>((props, ref) => {
     )
 })
 
-AccordionPanel.displayName = '@react-ui/ui/AccordionPanel'
+AccordionPanel.displayName = '@xiaoye-react/ui/AccordionPanel'
 AccordionPanel.classes = classes

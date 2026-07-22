@@ -180,4 +180,4 @@ export function TreeSelectOption({
     )
 }
 
-TreeSelectOption.displayName = '@react-ui/ui/TreeSelectOption'
+TreeSelectOption.displayName = '@xiaoye-react/ui/TreeSelectOption'

@@ -1,7 +1,7 @@
 // 用于 color.md 中的颜色对比
 import React from 'react';
 import { clsx } from 'clsx';
-import { Flex } from '@react-ui/ui';
+import { Flex } from '@xiaoye-react/ui';
 
 import useLocale from '../../../hooks/useLocale';
 import { tokenMeta } from '../versionToken';

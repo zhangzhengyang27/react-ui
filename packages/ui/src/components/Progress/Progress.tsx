@@ -167,7 +167,7 @@ export const Progress = factory<ProgressFactory>((_props, ref) => {
 
 Progress.classes = classes
 ;(Progress as any).varsResolver = varsResolver
-Progress.displayName = '@react-ui/ui/Progress'
+Progress.displayName = '@xiaoye-react/ui/Progress'
 Progress.Root = ProgressRoot
 Progress.Section = ProgressSection
 Progress.Label = ProgressLabel

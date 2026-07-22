@@ -22,7 +22,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { Chip } from '@react-ui/ui';
+import { Chip } from '@xiaoye-react/ui';
 
 function Demo() {
   const [checked, setChecked] = useState(false);
@@ -60,7 +60,7 @@ function Demo() {
 
 ```tsx
 import { useState } from 'react';
-import { Chip } from '@react-ui/ui';
+import { Chip } from '@xiaoye-react/ui';
 
 function Single() {
   // multiple 为 false（默认）时值为字符串

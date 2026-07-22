@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { useMergedRef } from '@react-ui/hooks'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import { useScrollAreaContext } from '../ScrollArea.context'
 import { useScrollbarContext } from '../ScrollAreaScrollbar/Scrollbar.context'
 import { composeEventHandlers } from '../utils'
@@ -49,7 +49,7 @@ export function Thumb(props: ThumbProps) {
     )
 }
 
-Thumb.displayName = '@react-ui/ui/ScrollAreaThumbInner'
+Thumb.displayName = '@xiaoye-react/ui/ScrollAreaThumbInner'
 
 interface ScrollAreaThumbProps extends ThumbProps {
     forceMount?: true
@@ -66,4 +66,4 @@ export function ScrollAreaThumb(props: ScrollAreaThumbProps) {
     return null
 }
 
-ScrollAreaThumb.displayName = '@react-ui/ui/ScrollAreaThumb'
+ScrollAreaThumb.displayName = '@xiaoye-react/ui/ScrollAreaThumb'

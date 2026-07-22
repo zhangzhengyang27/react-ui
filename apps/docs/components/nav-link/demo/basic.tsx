@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from '@react-ui/ui';
+import { NavLink } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

@@ -76,7 +76,7 @@ export const Kbd = polymorphicFactory<KbdFactory>((_props, _ref) => {
 
 Kbd.classes = classes
 ;(Kbd as any).varsResolver = varsResolver
-Kbd.displayName = '@react-ui/ui/Kbd'
+Kbd.displayName = '@xiaoye-react/ui/Kbd'
 
 export namespace Kbd {
     export type Props = KbdProps

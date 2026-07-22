@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { useMergedRef } from '@react-ui/hooks'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import { ElementProps, UIStyleProp } from '../../../core'
 import { Popover } from '../../Popover'
 import { UnstyledButton } from '../../UnstyledButton'
@@ -202,4 +202,4 @@ export const MenubarTarget = React.forwardRef<HTMLButtonElement, MenubarTargetPr
     )
 })
 
-MenubarTarget.displayName = '@react-ui/ui/MenubarTarget'
+MenubarTarget.displayName = '@xiaoye-react/ui/MenubarTarget'

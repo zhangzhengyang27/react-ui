@@ -239,7 +239,7 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, _ref) => {
 
 Button.classes = classes
 ;(Button as any).varsResolver = varsResolver
-Button.displayName = '@react-ui/ui/Button'
+Button.displayName = '@xiaoye-react/ui/Button'
 Button.Group = ButtonGroup
 Button.GroupSection = ButtonGroupSection
 

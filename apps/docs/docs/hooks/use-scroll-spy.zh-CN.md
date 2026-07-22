@@ -34,7 +34,7 @@ description: react-ui 滚动监听 Hook 文档。
 
 ```tsx
 import { useEffect } from 'react';
-import { useScrollSpy } from '@react-ui/hooks';
+import { useScrollSpy } from '@xiaoye-react/hooks';
 
 function Demo({ dependency }) {
   const { reinitialize } = useScrollSpy();
@@ -49,7 +49,7 @@ function Demo({ dependency }) {
 
 ## 类型定义
 
-定义中使用的所有类型都从 `@react-ui/hooks` 包导出。
+定义中使用的所有类型都从 `@xiaoye-react/hooks` 包导出。
 
 ```tsx
 interface UseScrollSpyHeadingData {
@@ -102,9 +102,9 @@ function useScrollSpy(options?: UseScrollSpyOptions): UseScrollSpyReturnValue
 
 ## 导出类型
 
-`UseScrollSpyOptions` 和 `UseScrollSpyReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseScrollSpyOptions` 和 `UseScrollSpyReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseScrollSpyOptions, UseScrollSpyReturnValue } from '@react-ui/hooks';
+import type { UseScrollSpyOptions, UseScrollSpyReturnValue } from '@xiaoye-react/hooks';
 ```

@@ -19,7 +19,7 @@ import {
   Title,
   Textarea,
   notifications,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 import useLocale from '../../hooks/useLocale';
 

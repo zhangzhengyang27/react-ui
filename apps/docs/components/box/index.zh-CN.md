@@ -25,7 +25,7 @@ group:
 可将 `Box` 用作自定义组件的基础，或作为 HTML 元素的替代：
 
 ```tsx
-import { Box } from '@react-ui/ui';
+import { Box } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

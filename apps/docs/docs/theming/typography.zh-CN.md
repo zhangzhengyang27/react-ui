@@ -35,7 +35,7 @@ description: react-ui Typography 文档。
 <DataTable head={['Key', 'Value', 'Value in px']} data={Object.keys(DEFAULT_THEME.fontSizes).map((size) => [ size, `${DEFAULT_THEME.fontSizes[size]}`, `${px(DEFAULT_THEME.fontSizes[size])}px`, ])}></DataTable>
 
 ```tsx
-import { createTheme, UIProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   fontSizes: {
@@ -68,7 +68,7 @@ function Demo() {
 <DataTable head={['Key', 'Value']} data={Object.keys(DEFAULT_THEME.lineHeights).map((size) => [ size, `${DEFAULT_THEME.lineHeights[size]}`, ])}></DataTable>
 
 ```tsx
-import { createTheme, UIProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   lineHeights: {
@@ -97,7 +97,7 @@ function Demo() {
 使用 `theme.headings` 可以为每个标题级别自定义 font-size、font-weight 和 line-height。如果你需要对样式进行更多控制，请使用 [:is 选择器](https://developer.mozilla.org/en-US/docs/Web/CSS/:is) 配合 [Styles API](/docs/styles/styles-api) 来定位特定标题级别：
 
 ```tsx
-import { createTheme, UIProvider, rem } from '@react-ui/ui';
+import { createTheme, UIProvider, rem } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   headings: {

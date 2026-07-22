@@ -66,8 +66,8 @@ function useHeadroom(input?: UseHeadroomOptions): UseHeadroomReturnValue;
 
 ## 导出类型
 
-`UseHeadroomOptions` 类型从 `@react-ui/hooks` 包导出：
+`UseHeadroomOptions` 类型从 `@xiaoye-react/hooks` 包导出：
 
 ```tsx
-import { UseHeadroomOptions } from '@react-ui/hooks';
+import { UseHeadroomOptions } from '@xiaoye-react/hooks';
 ```

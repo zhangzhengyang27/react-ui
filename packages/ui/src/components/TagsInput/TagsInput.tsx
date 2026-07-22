@@ -1,5 +1,5 @@
 import { forwardRef, useMemo, useRef, useState } from 'react'
-import { useId, useMergedRef, useUncontrolled } from '@react-ui/hooks'
+import { useId, useMergedRef, useUncontrolled } from '@xiaoye-react/hooks'
 import { BoxProps, factory, Factory, UISize, rem, StylesApiProps, useProps, useStyles } from '../../core'
 import { Badge } from '../Badge'
 import { CloseButton } from '../CloseButton'
@@ -116,7 +116,7 @@ const TagsInputTarget = forwardRef<HTMLDivElement, React.ComponentPropsWithoutRe
         {children}
     </div>
 ))
-TagsInputTarget.displayName = '@react-ui/ui/TagsInputTarget'
+TagsInputTarget.displayName = '@xiaoye-react/ui/TagsInputTarget'
 
 export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     const props = useProps('TagsInput', defaultProps, _props)
@@ -430,7 +430,7 @@ function renderOptions(data: ComboboxOptionData[], selectedValues: string[]) {
 }
 
 TagsInput.classes = classes
-TagsInput.displayName = '@react-ui/ui/TagsInput'
+TagsInput.displayName = '@xiaoye-react/ui/TagsInput'
 
 export namespace TagsInput {
     export type Props = TagsInputProps

@@ -1,7 +1,0 @@
-[
-  {
-    "fileName": "BasicAppShell.tsx",
-    "language": "tsx",
-    "code": "import { useDisclosure } from '@react-ui/hooks';\n\nexport function BasicAppShell() {\n  const [opened, { toggle }] = useDisclosure();\n\n  return (\n    <AppShell\n      header={{ height: 60 }}\n      navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened } }}\n      padding=\"md\"\n    >\n      <AppShell.Header>\n        <Group h=\"100%\" px=\"md\">\n          <Burger opened={opened} onClick={toggle} hiddenFrom=\"sm\" size=\"sm\" />\n          Header has a burger icon below sm breakpoint\n        </Group>\n      </AppShell.Header>\n      <AppShell.Navbar p=\"md\">\n        Navbar is collapsed on mobile at sm breakpoint. At that point it is no longer offset by\n        padding in the main element and it takes the full width of the screen when opened.\n      </AppShell.Navbar>\n      <AppShell.Main>\n        <Text>这是主内容区，你的应用内容在这里。</Text>\n        <Text>最常用的布局——导航栏和头部固定定位</Text>\n      </AppShell.Main>\n    </AppShell>\n  );\n}\n"
-  }
-]

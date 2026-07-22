@@ -117,7 +117,7 @@ export const Marquee = factory<MarqueeFactory>((_props, ref) => {
 
 Marquee.classes = classes
 Marquee.varsResolver = varsResolver
-Marquee.displayName = '@react-ui/ui/Marquee'
+Marquee.displayName = '@xiaoye-react/ui/Marquee'
 
 export namespace Marquee {
     export type Props = MarqueeProps

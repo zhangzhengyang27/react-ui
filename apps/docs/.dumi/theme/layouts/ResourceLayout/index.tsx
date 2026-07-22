@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react';
 import React from 'react';
 import { FormattedMessage, useRouteMeta } from 'dumi';
-import { Title } from '@react-ui/ui';
+import { Title } from '@xiaoye-react/ui';
 
 import CommonHelmet from '../../common/CommonHelmet';
 import EditButton from '../../common/EditButton';

@@ -10,19 +10,19 @@ description: react-ui Tiptap 文档。
 
 使用 yarn 安装：
 
-<InstallScript packages="@react-ui/ui @react-ui/ui @react-ui/hooks @tiptap/react @tiptap/pm @tiptap/extension-link @tiptap/starter-kit"></InstallScript>
+<InstallScript packages="@xiaoye-react/ui @xiaoye-react/ui @xiaoye-react/hooks @tiptap/react @tiptap/pm @tiptap/extension-link @tiptap/starter-kit"></InstallScript>
 
 安装完成后，在应用根目录导入包样式：
 
 ```tsx
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 // ‼️ tiptap 样式必须在核心包样式之后导入
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 ```
 
 ## TipTap 编辑器
 
-`@react-ui/ui` 包为 [Tiptap](https://tiptap.dev/) 提供了 UI。`RichTextEditor` 组件与 tiptap 的 [Editor](https://tiptap.dev/api/editor) 实例一起工作。这意味着你可以通过 [useEditor hook](https://tiptap.dev/installation/react) 完全控制编辑器的[状态和配置](https://tiptap.dev/guide/configuration)。
+`@xiaoye-react/ui` 包为 [Tiptap](https://tiptap.dev/) 提供了 UI。`RichTextEditor` 组件与 tiptap 的 [Editor](https://tiptap.dev/api/editor) 实例一起工作。这意味着你可以通过 [useEditor hook](https://tiptap.dev/installation/react) 完全控制编辑器的[状态和配置](https://tiptap.dev/guide/configuration)。
 
 换句话说，`RichTextEditor` 组件不会替你管理状态；控件只是在 `Editor` 实例上执行操作。如果你想实现与状态或组件值相关的功能（例如受控模式、将值转换为 HTML/Markdown），你应该查阅 [tiptap.dev](https://tiptap.dev/) 网站上的文档。
 
@@ -43,7 +43,7 @@ import '@react-ui/ui/styles.css';
 ```tsx
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { RichTextEditor as UIRichTextEditor } from '@react-ui/ui';
+import { RichTextEditor as UIRichTextEditor } from '@xiaoye-react/ui';
 
 interface RichTextEditorProps {
   value: string;
@@ -135,12 +135,12 @@ export function RichTextEditor({
 
 ## 链接扩展
 
-`@react-ui/ui` 包提供了一个自定义的 `Link` 扩展，必须用它替代 `@tiptap/extension-link`，才能使 `Ctrl + K` 键盘快捷键正常工作：
+`@xiaoye-react/ui` 包提供了一个自定义的 `Link` 扩展，必须用它替代 `@tiptap/extension-link`，才能使 `Ctrl + K` 键盘快捷键正常工作：
 
 ```tsx
-// 使用 @react-ui/ui 包导出的 Link 扩展
+// 使用 @xiaoye-react/ui 包导出的 Link 扩展
 import { useEditor } from '@tiptap/react';
-import { Link, RichTextEditor } from '@react-ui/ui';
+import { Link, RichTextEditor } from '@xiaoye-react/ui';
 
 function Demo() {
   const editor = useEditor({
@@ -204,7 +204,7 @@ function Demo() {
 
 ```tsx
 import { useEditor } from '@tiptap/react';
-import { RichTextEditor } from '@react-ui/ui';
+import { RichTextEditor } from '@xiaoye-react/ui';
 
 function Demo() {
   const editor = useEditor({
@@ -246,8 +246,8 @@ function Demo() {
 使用 `useRichTextEditorContext` hook 从上下文中获取 [Editor](https://tiptap.dev/api/editor)。该 hook 可用于创建自定义控件或运行 Tiptap [编辑器 API](https://tiptap.dev/api/editor) 支持的任何操作。
 
 ```tsx
-import { Button } from '@react-ui/ui';
-import { useRichTextEditorContext } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
+import { useRichTextEditorContext } from '@xiaoye-react/ui';
 
 function Demo() {
   const { editor } = useRichTextEditorContext();
@@ -283,11 +283,11 @@ function Demo() {
 所有可用标签：
 
 
-默认标签（可从 `@react-ui/ui` 包导入）：
+默认标签（可从 `@xiaoye-react/ui` 包导入）：
 
 ```tsx
 import { useEditor } from '@tiptap/react';
-import { RichTextEditor } from '@react-ui/ui';
+import { RichTextEditor } from '@xiaoye-react/ui';
 
 function Demo() {
   const editor = useEditor({
@@ -312,7 +312,7 @@ function Demo() {
 ```
 
 ```tsx
-// RichTextEditorLabels 类型可从 @react-ui/ui 包导入
+// RichTextEditorLabels 类型可从 @xiaoye-react/ui 包导入
 export interface RichTextEditorLabels {
   /** RichTextEditor.Bold control aria-label */
   boldControlLabel: string;
@@ -443,7 +443,7 @@ export interface RichTextEditorLabels {
 ```
 
 ```tsx
-import { RichTextEditorLabels } from '@react-ui/ui';
+import { RichTextEditorLabels } from '@xiaoye-react/ui';
 
 export const DEFAULT_LABELS: RichTextEditorLabels = {
   // Controls labels

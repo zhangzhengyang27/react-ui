@@ -1,9 +1,9 @@
-import { NativeSelect } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { NativeSelect } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
 const code = `
-import { NativeSelect } from '@react-ui/ui';
+import { NativeSelect } from '@xiaoye-react/ui';
 
 function Demo() {
   return <NativeSelect{{props}} data={['React', 'Angular', 'Vue']} />;

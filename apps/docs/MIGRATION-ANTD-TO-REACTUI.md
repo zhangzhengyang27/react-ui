@@ -16,7 +16,7 @@
 
 迁移目标：
 
-1. 文档站所有 UI 组件、布局、主题、样式均使用 `@react-ui/ui` + `@react-ui/hooks`。
+1. 文档站所有 UI 组件、布局、主题、样式均使用 `@xiaoye-react/ui` + `@xiaoye-react/hooks`。
 2. 图标统一迁移到 `react-icons`。
 3. 从 `package.json` 中彻底移除 `antd` 及相关生态依赖。
 4. AI 主题生成器与主题编辑器用 react-ui 重写，不再依赖 `@ant-design/x` 和 `antd-token-previewer`。

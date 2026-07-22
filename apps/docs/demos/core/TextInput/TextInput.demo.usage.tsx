@@ -1,9 +1,9 @@
-import { TextInput } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { TextInput } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
 const code = `
-import { TextInput } from '@react-ui/ui';
+import { TextInput } from '@xiaoye-react/ui';
 
 
 function Demo() {

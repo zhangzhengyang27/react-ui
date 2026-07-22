@@ -1,9 +1,9 @@
-import { DateInput } from '@react-ui/dates';
-import { UIDemo } from '@react-ui/demo';
+import { DateInput } from '@xiaoye-react/dates';
+import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
 const code = `
-import { DateInput } from '@react-ui/dates';
+import { DateInput } from '@xiaoye-react/dates';
 
 
 function Demo() {

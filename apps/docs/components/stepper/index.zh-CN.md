@@ -90,7 +90,7 @@ Styles API 自定义样式示例：
 
 ```tsx
 import { useRef } from 'react';
-import { Stepper } from '@react-ui/ui';
+import { Stepper } from '@xiaoye-react/ui';
 
 function MyStepper() {
   const firstStep = useRef<HTMLButtonElement>(null);
@@ -110,7 +110,7 @@ function MyStepper() {
 `Stepper` 组件依赖 `Stepper.Step` 的顺序。不支持包裹 `Stepper.Step`。相反，需使用不同的方法：
 
 ```tsx
-import { Stepper } from '@react-ui/ui';
+import { Stepper } from '@xiaoye-react/ui';
 
 // 这不会生效，step 子项不会渲染
 function WillNotWork() {
@@ -146,7 +146,7 @@ function Demo() {
 `<Stepper.Step />` 组件渲染一个 button 元素；若未指定 `label` 或 `description`，请设置 `aria-label` 或 `title` 属性以使屏幕阅读器可以识别该组件：
 
 ```tsx
-import { Stepper } from '@react-ui/ui';
+import { Stepper } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

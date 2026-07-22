@@ -1,9 +1,9 @@
-import { ColorInput } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { ColorInput } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
 const code = `
-import { ColorInput } from '@react-ui/ui';
+import { ColorInput } from '@xiaoye-react/ui';
 
 
 function Demo() {

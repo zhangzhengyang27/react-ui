@@ -29,7 +29,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { Button, Popover } from '@react-ui/ui';
+import { Button, Popover } from '@xiaoye-react/ui';
 
 function Demo() {
   const [opened, setOpened] = useState(false);
@@ -89,7 +89,7 @@ function Demo() {
 关闭 `shift` 和 `flip` 中间件的示例：
 
 ```tsx
-import { Popover } from '@react-ui/ui';
+import { Popover } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -110,7 +110,7 @@ function Demo() {
 中间件的 padding 更改为 `20px`，请使用以下配置：
 
 ```tsx
-import { Popover } from '@react-ui/ui';
+import { Popover } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -166,7 +166,7 @@ function Demo() {
 
 ```tsx
 import { useState } from 'react';
-import { Button, Popover } from '@react-ui/ui';
+import { Button, Popover } from '@xiaoye-react/ui';
 
 function Demo() {
   const [opened, setOpened] = useState(false);
@@ -193,7 +193,7 @@ Popover 使用 [FocusTrap](/components/focus-trap/) 组件管理焦点。
 将 `data-autofocus` 属性添加到应接收初始焦点的元素上：
 
 ```tsx
-import { Popover } from '@react-ui/ui';
+import { Popover } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

@@ -39,5 +39,5 @@ export const Thead = factory<TheadFactory>((props, ref) => {
     )
 })
 
-Thead.displayName = '@react-ui/ui/Thead'
+Thead.displayName = '@xiaoye-react/ui/Thead'
 Thead.classes = classes

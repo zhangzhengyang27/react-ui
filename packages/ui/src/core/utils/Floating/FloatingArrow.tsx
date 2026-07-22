@@ -104,4 +104,4 @@ export function FloatingArrow({
     )
 }
 
-FloatingArrow.displayName = '@react-ui/ui/FloatingArrow'
+FloatingArrow.displayName = '@xiaoye-react/ui/FloatingArrow'

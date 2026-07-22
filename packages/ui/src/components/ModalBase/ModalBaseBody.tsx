@@ -18,4 +18,4 @@ export const ModalBaseBody = forwardRef<HTMLDivElement, ModalBaseBodyProps>(({ c
     )
 })
 
-ModalBaseBody.displayName = '@react-ui/ui/ModalBaseBody'
+ModalBaseBody.displayName = '@xiaoye-react/ui/ModalBaseBody'

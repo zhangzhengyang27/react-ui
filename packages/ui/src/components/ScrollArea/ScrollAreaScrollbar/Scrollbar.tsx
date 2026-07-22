@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useMergedRef } from '@react-ui/hooks'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import { useScrollAreaContext } from '../ScrollArea.context'
 import type { Sizes } from '../ScrollArea.types'
 import { useResizeObserver } from '../use-resize-observer'
@@ -146,4 +146,4 @@ export function Scrollbar(props: ScrollbarProps) {
     )
 }
 
-Scrollbar.displayName = '@react-ui/ui/ScrollAreaScrollbarContainer'
+Scrollbar.displayName = '@xiaoye-react/ui/ScrollAreaScrollbarContainer'

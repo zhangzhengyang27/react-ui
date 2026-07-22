@@ -27,7 +27,7 @@ export default defineConfig({
                 'react-dom',
                 'react/jsx-runtime',
                 'styled-components',
-                '@react-ui/hooks',
+                '@xiaoye-react/hooks',
                 'embla-carousel-react',
                 'recharts',
                 'react-number-format',

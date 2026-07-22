@@ -22,7 +22,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { Radio } from '@react-ui/ui';
+import { Radio } from '@xiaoye-react/ui';
 
 function Demo() {
   const [checked, setChecked] = useState(false);
@@ -44,7 +44,7 @@ function Demo() {
 非受控 `Radio` 与 `FormData` 的用法示例：
 
 ```tsx
-import { Radio } from '@react-ui/ui';
+import { Radio } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -85,7 +85,7 @@ function Demo() {
 要将光标更改为 pointer，请在 [theme](/docs/theming/theme-object/) 上设置 `cursorType`：
 
 ```tsx
-import { createTheme, UIProvider, Radio } from '@react-ui/ui';
+import { createTheme, UIProvider, Radio } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   cursorType: 'pointer',
@@ -121,7 +121,7 @@ function Demo() {
 
 ```tsx
 import { useState } from 'react';
-import { Radio } from '@react-ui/ui';
+import { Radio } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState('react');
@@ -174,7 +174,7 @@ function Demo() {
 设置 `aria-label` 或 `label` 属性以使单选按钮可访问：
 
 ```tsx
-import { Radio } from '@react-ui/ui';
+import { Radio } from '@xiaoye-react/ui';
 
 // 不好，输入框没有标签
 function Bad() {

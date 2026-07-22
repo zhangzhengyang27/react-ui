@@ -1,4 +1,4 @@
-import { SimpleGrid, Text, Title } from '@react-ui/ui';
+import { SimpleGrid, Text, Title } from '@xiaoye-react/ui';
 import { HomePageContainer } from '../shared/Container';
 import { HomePageDescription } from '../shared/Description';
 import { HomePageLearnMore } from '../shared/LearnMore';

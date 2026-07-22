@@ -1,10 +1,10 @@
 import { HeartIcon } from '@phosphor-icons/react';
-import { ActionIcon } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { ActionIcon } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { gradientControls } from '../../shared';
 
 const code = (props: any) => `
-import { ActionIcon } from '@react-ui/ui';
+import { ActionIcon } from '@xiaoye-react/ui';
 import { HeartIcon } from '@phosphor-icons/react';
 
 function Demo() {

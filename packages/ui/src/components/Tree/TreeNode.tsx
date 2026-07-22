@@ -290,4 +290,4 @@ export function TreeNode({
     )
 }
 
-TreeNode.displayName = '@react-ui/ui/TreeNode'
+TreeNode.displayName = '@xiaoye-react/ui/TreeNode'

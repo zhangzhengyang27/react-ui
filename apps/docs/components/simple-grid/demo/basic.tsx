@@ -1,5 +1,5 @@
 import React from 'react';
-import { SimpleGrid, Paper } from '@react-ui/ui';
+import { SimpleGrid, Paper } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

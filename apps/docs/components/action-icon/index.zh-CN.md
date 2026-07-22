@@ -96,7 +96,7 @@ group:
 注意，不可用任何额外的元素包裹子 `ActionIcon` 组件：
 
 ```tsx
-import { ActionIcon } from '@react-ui/ui';
+import { ActionIcon } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -108,7 +108,7 @@ function Demo() {
 ```
 
 ```tsx
-import { ActionIcon } from '@react-ui/ui';
+import { ActionIcon } from '@xiaoye-react/ui';
 
 // 将无法正常工作
 function Demo() {
@@ -137,7 +137,7 @@ function Demo() {
 
 ```tsx
 import { HeartIcon } from '@phosphor-icons/react';
-import { ActionIcon, VisuallyHidden } from '@react-ui/ui';
+import { ActionIcon, VisuallyHidden } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

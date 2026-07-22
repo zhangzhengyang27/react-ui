@@ -33,4 +33,4 @@ export const ComboboxChevron = factory<ComboboxChevronFactory>((_props, ref) => 
     )
 })
 
-ComboboxChevron.displayName = '@react-ui/ui/ComboboxChevron'
+ComboboxChevron.displayName = '@xiaoye-react/ui/ComboboxChevron'

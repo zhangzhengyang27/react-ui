@@ -1,4 +1,4 @@
-import { useId } from '@react-ui/hooks'
+import { useId } from '@xiaoye-react/hooks'
 import {
     Box,
     createVarsResolver,
@@ -164,7 +164,7 @@ export const Alert = factory<AlertFactory>((_props, ref) => {
 })
 
 Alert.classes = classes
-Alert.displayName = '@react-ui/ui/Alert'
+Alert.displayName = '@xiaoye-react/ui/Alert'
 
 export namespace Alert {
     export type Props = AlertProps

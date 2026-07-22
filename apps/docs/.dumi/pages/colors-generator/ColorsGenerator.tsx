@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { generateColorsMap } from '@react-ui/colors-generator';
-import { Title } from '@react-ui/ui';
-import { useLocalStorage } from '@react-ui/hooks';
+import { generateColorsMap } from '@xiaoye-react/colors-generator';
+import { Title } from '@xiaoye-react/ui';
+import { useLocalStorage } from '@xiaoye-react/hooks';
 import { ColorsInput } from './ColorsInput/ColorsInput';
 import { ColorsList } from './ColorsList/ColorsList';
 import { ColorsOutput } from './ColorsOutput/ColorsOutput';

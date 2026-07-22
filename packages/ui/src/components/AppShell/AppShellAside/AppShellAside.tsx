@@ -47,7 +47,7 @@ export const AppShellAside = factory<AppShellAsideFactory>((_props, ref) => {
 })
 
 AppShellAside.classes = classes
-AppShellAside.displayName = '@react-ui/ui/AppShellAside'
+AppShellAside.displayName = '@xiaoye-react/ui/AppShellAside'
 
 export namespace AppShellAside {
     export type Props = AppShellAsideProps

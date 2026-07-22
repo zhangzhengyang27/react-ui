@@ -51,7 +51,7 @@ Vanilla extract 提供了 [createTheme](https://vanilla-extract.style/documentat
 
 ```tsx
 // theme.ts
-import { createTheme } from '@react-ui/ui';
+import { createTheme } from '@xiaoye-react/ui';
 
 // Do not forget to pass theme to UIProvider
 export const theme = createTheme({
@@ -87,12 +87,12 @@ export const demo = style({
 
 ## rem 和 em
 
-要将 px 转换为 [rem 或 em](/docs/styles/rem)，可以使用 `@react-ui/ui` 包中的 `rem` 和 `em` 函数：
+要将 px 转换为 [rem 或 em](/docs/styles/rem)，可以使用 `@xiaoye-react/ui` 包中的 `rem` 和 `em` 函数：
 
 ```tsx
 // Demo.css.ts
 import { style } from '@vanilla-extract/css';
-import { rem } from '@react-ui/ui';
+import { rem } from '@xiaoye-react/ui';
 
 export const demo = style({
   fontSize: rem(16),

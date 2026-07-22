@@ -9,7 +9,7 @@ description: react-ui UiProvider 文档。
 ## 用法
 
 ```tsx
-import { createTheme, UIProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   /** Your theme override here */
@@ -175,7 +175,7 @@ interface UIProviderProps {
 ```
 
 ```tsx
-import { createTheme, UIProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   fontFamily: 'Open Sans, sans-serif',
@@ -195,7 +195,7 @@ function Demo() {
 import {
   localStorageColorSchemeManager,
   UIProvider,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 const colorSchemeManager = localStorageColorSchemeManager({
   key: 'my-app-color-scheme',
@@ -211,7 +211,7 @@ function Demo() {
 ```
 
 ```tsx
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -223,7 +223,7 @@ function Demo() {
 ```
 
 ```tsx
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -235,7 +235,7 @@ function Demo() {
 ```
 
 ```tsx
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -247,7 +247,7 @@ function Demo() {
 ```
 
 ```tsx
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -259,7 +259,7 @@ function Demo() {
 ```
 
 ```tsx
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -271,7 +271,7 @@ function Demo() {
 ```
 
 ```tsx
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 
 const getRootElement = () =>
   typeof window === 'undefined' ? undefined : document.body;
@@ -286,7 +286,7 @@ function Demo() {
 ```
 
 ```tsx
-import { UIProvider, Text } from '@react-ui/ui';
+import { UIProvider, Text } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -298,7 +298,7 @@ function Demo() {
 ```
 
 ```tsx
-import { UIProvider, Text } from '@react-ui/ui';
+import { UIProvider, Text } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -310,7 +310,7 @@ function Demo() {
 ```
 
 ```tsx
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -322,7 +322,7 @@ function Demo() {
 ```
 
 ```tsx
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -334,7 +334,7 @@ function Demo() {
 ```
 
 ```tsx
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

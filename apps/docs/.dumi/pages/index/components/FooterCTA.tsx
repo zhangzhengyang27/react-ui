@@ -1,5 +1,5 @@
 import React from 'react';
-import { Group, Text, Title } from '@react-ui/ui';
+import { Group, Text, Title } from '@xiaoye-react/ui';
 import { useLocation } from 'dumi';
 
 import useLocale from '../../../hooks/useLocale';

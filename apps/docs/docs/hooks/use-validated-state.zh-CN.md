@@ -12,7 +12,7 @@ description: react-ui 校验状态 Hook 文档。
 它返回一个包含当前验证状态、最后一个有效值和当前值的对象：
 
 ```tsx
-import { useValidatedState } from '@react-ui/hooks';
+import { useValidatedState } from '@xiaoye-react/hooks';
 
 const [{ lastValidValue, value, valid }, setValue] =
   useValidatedState('valid', (state) => state === 'valid');
@@ -62,8 +62,8 @@ function useValidatedState<T>(
 
 ## 导出类型
 
-`UseValidatedStateValue` 和 `UseValidatedStateReturnValue` 类型从 `@react-ui/hooks` 包导出：
+`UseValidatedStateValue` 和 `UseValidatedStateReturnValue` 类型从 `@xiaoye-react/hooks` 包导出：
 
 ```tsx
-import type { UseValidatedStateValue, UseValidatedStateReturnValue } from '@react-ui/hooks';
+import type { UseValidatedStateValue, UseValidatedStateReturnValue } from '@xiaoye-react/hooks';
 ```

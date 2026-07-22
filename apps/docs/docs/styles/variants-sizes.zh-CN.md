@@ -36,11 +36,11 @@ description: react-ui VariantsSizes 文档。
 为 [Button](/components/button) 组件添加自定义变体类型的示例：
 
 ```tsx
-import { ButtonVariant, UISize } from '@react-ui/ui';
+import { ButtonVariant, UISize } from '@xiaoye-react/ui';
 
 type ExtendedButtonVariant = ButtonVariant | 'contrast' | 'radial-gradient';
 
-declare module '@react-ui/ui' {
+declare module '@xiaoye-react/ui' {
   export interface ButtonProps {
     variant?: ExtendedButtonVariant;
   }

@@ -48,7 +48,7 @@ export const Fieldset = factory<FieldsetFactory>((_props, ref) => {
 })
 
 Fieldset.classes = classes
-Fieldset.displayName = '@react-ui/ui/Fieldset'
+Fieldset.displayName = '@xiaoye-react/ui/Fieldset'
 
 export namespace Fieldset {
     export type Props = FieldsetProps

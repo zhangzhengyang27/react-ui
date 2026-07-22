@@ -9,7 +9,7 @@ export const useTheme = () => {
     const ctx = useContext(ThemeContext)
     if (!ctx) {
         throw new Error(
-            '@react-ui/ui: Provider was not found in component tree, make sure you have it in your app'
+            '@xiaoye-react/ui: Provider was not found in component tree, make sure you have it in your app'
         )
     }
 

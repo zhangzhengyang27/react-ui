@@ -91,7 +91,7 @@ export const SimpleGrid = factory<SimpleGridFactory>((_props, _ref) => {
 })
 
 SimpleGrid.classes = classes
-SimpleGrid.displayName = '@react-ui/ui/SimpleGrid'
+SimpleGrid.displayName = '@xiaoye-react/ui/SimpleGrid'
 
 export namespace SimpleGrid {
     export type Props = SimpleGridProps

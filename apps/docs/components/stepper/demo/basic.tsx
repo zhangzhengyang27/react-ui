@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Stepper, Group, Button } from '@react-ui/ui';
+import { Stepper, Group, Button } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => {

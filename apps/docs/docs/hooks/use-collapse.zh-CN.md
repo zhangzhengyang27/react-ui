@@ -68,9 +68,9 @@ function useCollapse(input: UseCollapseInput): UseCollapseReturnValue;
 
 ## 导出类型
 
-`UseCollapseInput`、`UseCollapseState` 和 `UseCollapseReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseCollapseInput`、`UseCollapseState` 和 `UseCollapseReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseCollapseInput, UseCollapseState, UseCollapseReturnValue } from '@react-ui/hooks';
+import type { UseCollapseInput, UseCollapseState, UseCollapseReturnValue } from '@xiaoye-react/hooks';
 ```

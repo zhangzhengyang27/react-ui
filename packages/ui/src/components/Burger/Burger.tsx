@@ -108,7 +108,7 @@ export const Burger = factory<BurgerFactory>((_props, _ref) => {
 
 Burger.classes = classes
 ;(Burger as any).varsResolver = varsResolver
-Burger.displayName = '@react-ui/ui/Burger'
+Burger.displayName = '@xiaoye-react/ui/Burger'
 
 export namespace Burger {
     export type Props = BurgerProps

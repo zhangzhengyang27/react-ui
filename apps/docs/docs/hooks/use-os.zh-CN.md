@@ -34,9 +34,9 @@ function getOS(options?: UseOsOptions): UseOSReturnValue;
 
 ## 导出类型
 
-`UseOsOptions` 和 `UseOSReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseOsOptions` 和 `UseOSReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseOsOptions, UseOSReturnValue } from '@react-ui/hooks';
+import type { UseOsOptions, UseOSReturnValue } from '@xiaoye-react/hooks';
 ```

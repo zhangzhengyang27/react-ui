@@ -1,5 +1,5 @@
 import { useCallback, useLayoutEffect, useRef, useState } from 'react'
-import { useId, useIsomorphicEffect, useMergedRef, useUncontrolled } from '@react-ui/hooks'
+import { useId, useIsomorphicEffect, useMergedRef, useUncontrolled } from '@xiaoye-react/hooks'
 import {
     Box,
     BoxProps,
@@ -278,7 +278,7 @@ export const Menubar = factory<MenubarFactory>((_props, ref) => {
 })
 
 Menubar.classes = classes
-Menubar.displayName = '@react-ui/ui/Menubar'
+Menubar.displayName = '@xiaoye-react/ui/Menubar'
 Menubar.Menu = MenubarMenu
 Menubar.Target = MenubarTarget
 Menubar.Dropdown = MenubarDropdown

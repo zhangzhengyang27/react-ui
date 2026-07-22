@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
-import { Menu } from '@react-ui/ui';
+import { Menu } from '@xiaoye-react/ui';
 import { useFullSidebarData, useLocation } from 'dumi';
 
 import useLocale from '../../../hooks/useLocale';

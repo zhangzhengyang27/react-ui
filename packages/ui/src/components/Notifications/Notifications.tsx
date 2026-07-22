@@ -167,7 +167,7 @@ export const Notifications = factory<NotificationsFactory>((_props, ref) => {
 
 Notifications.classes = classes
 Notifications.varsResolver = varsResolver
-Notifications.displayName = '@react-ui/ui/Notifications'
+Notifications.displayName = '@xiaoye-react/ui/Notifications'
 Notifications.show = notifications.show
 Notifications.hide = notifications.hide
 Notifications.update = notifications.update

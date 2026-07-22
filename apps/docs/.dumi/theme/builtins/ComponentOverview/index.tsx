@@ -1,6 +1,6 @@
 import React, { memo, useMemo, useRef, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { Badge, Card, Divider, Flex, TextInput, Title } from '@react-ui/ui';
+import { Badge, Card, Divider, Flex, TextInput, Title } from '@xiaoye-react/ui';
 import { useIntl, useLocation, useSidebarData } from 'dumi';
 import debounce from 'lodash/debounce';
 import scrollIntoView from 'scroll-into-view-if-needed';

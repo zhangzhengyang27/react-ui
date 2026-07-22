@@ -22,7 +22,7 @@ group:
 
 ```tsx
 import { HeartIcon } from '@phosphor-icons/react';
-import { ActionIcon, VisuallyHidden } from '@react-ui/ui';
+import { ActionIcon, VisuallyHidden } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

@@ -39,8 +39,8 @@ function useIdle(timeout: number, options?: UseIdleOptions): boolean;
 
 ## 导出类型
 
-`UseIdleOptions` 类型从 `@react-ui/hooks` 包导出：
+`UseIdleOptions` 类型从 `@xiaoye-react/hooks` 包导出：
 
 ```tsx
-import type { UseIdleOptions } from '@react-ui/hooks';
+import type { UseIdleOptions } from '@xiaoye-react/hooks';
 ```

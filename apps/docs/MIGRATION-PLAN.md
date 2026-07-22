@@ -7,8 +7,8 @@
 | mdx 文档正文 | `src/pages/{core,charts,hooks,dates,form,styles,theming,guides,x,schedule}/*.mdx` + 根目录 mdx | `docs/{core,charts,hooks,dates,form,styles,theming,guides,x,schedule}/*.zh-CN.md` + 根目录 zh-CN.md |
 | 导航/元数据 | `src/mdx/data/mdx-*-data.ts`（11 个文件） | `.dumirc.ts` 的 `nav` 配置 + 各页 frontmatter |
 | 特殊页面 | `src/pages/{getting-started,about,contribute,support,browser-support}.mdx` + `index.tsx` | `docs/{getting-started,about,contribute,support,browser-support}.zh-CN.md` + `index/index.tsx` |
-| Demo 内容 | `packages/@react-ui/docs-demos/src/demos/**` | `apps/docs/demos/**`（已复制完成） |
-| Demo 引擎 | `packages/@react-ui/demo/src/**` | `.dumi/theme/builtins/DemoEngine/`（已搭建完成） |
+| Demo 内容 | `packages/@xiaoye-react/docs-demos/src/demos/**` | `apps/docs/demos/**`（已复制完成） |
+| Demo 引擎 | `packages/@xiaoye-react/demo/src/**` | `.dumi/theme/builtins/DemoEngine/`（已搭建完成） |
 | 19 个 Mdx 辅助组件 | `src/components/MdxProvider/MdxSharedContent/*.tsx` | `.dumi/theme/builtins/{Gradient,Polymorphic,...}/index.tsx`（已搭建完成） |
 | MdxProvider 剩余辅助组件 | `src/components/MdxProvider/{MdxInstallScript,MdxNpmScript,MdxPackagesInstallation,MdxKeyboardEventsTable,MdxTemplatesList,MdxVideo,MdxInfo,MdxPre,MdxDataTable,MdxExamplesButton,MdxSponsorButton,MdxLlmButton}.tsx` | `.dumi/theme/builtins/{InstallScript,NpmScript,PackagesInstallation,KeyboardEventsTable,TemplatesList,Video,Info,Pre,DataTable,ExamplesButton,SponsorButton,LlmButton}/index.tsx` |
 
@@ -74,8 +74,8 @@
 ### 1.3 在 markdown 中可用的标签名
 
 dumi 通过 frontmatter 或 `builtins` 自动注册，标签名约定为 PascalCase：
-- `<InstallScript packages={['@react-ui/ui', '@react-ui/hooks']} />`
-- `<NpmScript pkg="@react-ui/ui" />`
+- `<InstallScript packages={['@xiaoye-react/ui', '@xiaoye-react/hooks']} />`
+- `<NpmScript pkg="@xiaoye-react/ui" />`
 - `<PackagesInstallation />`
 - `<KeyboardEventsTable data={...} />`
 - `<TemplatesList />`
@@ -98,7 +98,7 @@ dumi 通过 frontmatter 或 `builtins` 自动注册，标签名约定为 PascalC
 
 ```javascript
 // 输入：button.mdx
-import { ButtonDemos, StylesDemos, ThemingDemos } from '@react-ui/docs-demos';
+import { ButtonDemos, StylesDemos, ThemingDemos } from '@xiaoye-react/docs-demos';
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
 
@@ -133,7 +133,7 @@ export default Layout(MDX_DATA.Button);
 **demo tsx 模板**（code 类型）：
 ```tsx
 import React from 'react';
-import { Button, Group } from '@react-ui/ui';
+import { Button, Group } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (
@@ -148,8 +148,8 @@ export default App;
 **demo tsx 模板**（configurator 类型）：
 ```tsx
 import React from 'react';
-import { Button } from '@react-ui/ui';
-import { ConfiguratorDemo } from '@react-ui/demo';
+import { Button } from '@xiaoye-react/ui';
+import { ConfiguratorDemo } from '@xiaoye-react/demo';
 import DemoWrap from '../../_util/demoWrap';
 import { configurator as demo } from '../../../demos/core/Button';
 
@@ -334,7 +334,7 @@ nav: [
 - ✅ DemoEngine 基础设施搭建（`.dumi/theme/builtins/DemoEngine/`）
 - ✅ 19 个 Mdx 辅助组件创建（`.dumi/theme/builtins/{Gradient,Polymorphic,...}/`）
 - ✅ docs-demos 2147 个文件复制到 `apps/docs/demos/`
-- ✅ `@react-ui/demo` alias 配置完成
+- ✅ `@xiaoye-react/demo` alias 配置完成
 - ✅ `render-demo.tsx` 添加 UIProvider 包裹
 - ✅ 35 个 demo 文件相对路径修复
 - ✅ Gradient 组件导入路径修复

@@ -150,7 +150,7 @@ export const Text = polymorphicFactory<TextFactory>((_props, _ref) => {
 
 Text.classes = classes
 ;(Text as any).varsResolver = varsResolver
-Text.displayName = '@react-ui/ui/Text'
+Text.displayName = '@xiaoye-react/ui/Text'
 
 export namespace Text {
     export type Props = TextProps

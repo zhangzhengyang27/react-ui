@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code, ColorSwatch, DEFAULT_THEME, defaultCssVariablesResolver, keys } from '@react-ui/ui';
+import { Code, ColorSwatch, DEFAULT_THEME, defaultCssVariablesResolver, keys } from '@xiaoye-react/ui';
 import DataTable from '../DataTable';
 
 function ColorPreview({ value }: { value: string }) {

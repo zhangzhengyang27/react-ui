@@ -20,8 +20,8 @@ description: react-ui GetInputProps 文档。
 - 任何可以通过 `enhanceGetInputProps` 函数访问的附加 props。这些 props 不会传递给输入框。
 
 ```tsx
-import { Checkbox, TextInput } from '@react-ui/ui';
-import { useForm } from '@react-ui/ui';
+import { Checkbox, TextInput } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -92,7 +92,7 @@ function Demo() {
 ```tsx
 import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { useForm } from '@react-ui/ui';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const query = useQuery({
@@ -172,7 +172,7 @@ export function CustomInput({
 ```
 
 ```tsx
-import { useForm } from '@react-ui/ui';
+import { useForm } from '@xiaoye-react/ui';
 import { CustomInput } from './CustomInput';
 
 function Demo() {

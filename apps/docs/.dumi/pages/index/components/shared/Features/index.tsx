@@ -1,4 +1,4 @@
-import { Text, ThemeIcon } from '@react-ui/ui';
+import { Text, ThemeIcon } from '@xiaoye-react/ui';
 import classes from './HomePageFeature.module.css';
 
 interface HomePageFeatureProps {

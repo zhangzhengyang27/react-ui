@@ -1,9 +1,9 @@
-import { Badge } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { Badge } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { gradientControls } from '../../shared';
 
 const code = (props: any) => `
-import { Badge } from '@react-ui/ui';
+import { Badge } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

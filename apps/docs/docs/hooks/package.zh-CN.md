@@ -8,11 +8,11 @@ description: react-ui 包概览 Hook 文档。
 
 ## 安装
 
-<InstallScript packages="@react-ui/hooks"></InstallScript>
+<InstallScript packages="@xiaoye-react/hooks"></InstallScript>
 
 ## 用法
 
-`@react-ui/hooks` 包可以在任何 Web React 应用中使用，其中状态管理 Hook
+`@xiaoye-react/hooks` 包可以在任何 Web React 应用中使用，其中状态管理 Hook
 （如 [use-pagination](/docs/hooks/use-pagination) 或 [use-queue](/docs/hooks/use-queue)）
 也兼容 React Native。即使你不使用 ReactUI 组件或其他 ReactUI 库，
 也可以单独使用该包——它是独立的，除了 React 之外没有其他依赖。

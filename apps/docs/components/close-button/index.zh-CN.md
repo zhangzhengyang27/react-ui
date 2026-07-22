@@ -31,7 +31,7 @@ group:
 要使 `CloseButton` 对屏幕阅读器可访问，需要设置 `aria-label` 或使用 [VisuallyHidden](/components/visually-hidden) 组件：
 
 ```tsx
-import { CloseButton, VisuallyHidden } from '@react-ui/ui';
+import { CloseButton, VisuallyHidden } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import ReactDOM from 'react-dom'
-import { useDidUpdate, useReducedMotion } from '@react-ui/hooks'
+import { useDidUpdate, useReducedMotion } from '@xiaoye-react/hooks'
 import { useUITheme } from '../../core'
 
 export type TransitionStatus = 'entered' | 'exited' | 'entering' | 'exiting' | 'pre-exiting' | 'pre-entering'

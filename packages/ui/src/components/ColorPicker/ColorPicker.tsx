@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useDidUpdate, useUncontrolled } from '@react-ui/hooks'
+import { useDidUpdate, useUncontrolled } from '@xiaoye-react/hooks'
 import {
     Box,
     BoxProps,
@@ -326,7 +326,7 @@ export const ColorPicker = factory<ColorPickerFactory>((_props, ref) => {
 
 ColorPicker.classes = classes
 ;(ColorPicker as any).varsResolver = varsResolver
-ColorPicker.displayName = '@react-ui/ui/ColorPicker'
+ColorPicker.displayName = '@xiaoye-react/ui/ColorPicker'
 
 export namespace ColorPicker {
     export type Props = ColorPickerProps

@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from 'react';
 import React from 'react';
 import { AiOutlineCode, AiOutlineSkin } from 'react-icons/ai';
-import { Tabs } from '@react-ui/ui';
+import { Tabs } from '@xiaoye-react/ui';
 import { useRouteMeta } from 'dumi';
 import type { IContentTabsProps } from 'dumi/theme-default/slots/ContentTabs';
 

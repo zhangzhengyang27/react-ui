@@ -33,9 +33,9 @@ function useFocusWithin<T extends HTMLElement = any>(
 
 ## 导出类型
 
-`UseFocusWithinOptions` 和 `UseFocusWithinReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseFocusWithinOptions` 和 `UseFocusWithinReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseFocusWithinOptions, UseFocusWithinReturnValue } from '@react-ui/hooks';
+import type { UseFocusWithinOptions, UseFocusWithinReturnValue } from '@xiaoye-react/hooks';
 ```

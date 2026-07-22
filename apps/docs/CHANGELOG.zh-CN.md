@@ -21,7 +21,7 @@ tag: vVERSION
 
 - 🎉 `react-ui` 首个公开版本发布。
 - 📦 包含 core 通用组件（Button、Input、Modal、Select、Tabs 等 117 个）。
-- 🪝 提供 `@react-ui/hooks` 工具钩子集合（82 个）。
+- 🪝 提供 `@xiaoye-react/hooks` 工具钩子集合（82 个）。
 - 📊 内置 charts 图表组件（基于 recharts，17 个）。
 - 📅 提供 dates 日期组件、form 表单方案、theming 主题系统、styles 样式工具。
 - 🎨 支持 light / dark 主题切换，CSS 变量统一使用 `--ui-*` 前缀。

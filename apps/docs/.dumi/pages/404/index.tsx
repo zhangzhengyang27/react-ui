@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { AiOutlineHome } from 'react-icons/ai';
-import { Button, Stack, Text, Title } from '@react-ui/ui';
+import { Button, Stack, Text, Title } from '@xiaoye-react/ui';
 import { useLocation } from 'dumi';
 
 import Link from '../../theme/common/Link';

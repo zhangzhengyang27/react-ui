@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NativeSelect } from '@react-ui/ui';
+import { NativeSelect } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => {

@@ -65,4 +65,4 @@ export function ModalBaseContent({
     )
 }
 
-ModalBaseContent.displayName = '@react-ui/ui/ModalBaseContent'
+ModalBaseContent.displayName = '@xiaoye-react/ui/ModalBaseContent'

@@ -27,7 +27,7 @@ description: react-ui Polymorphic 文档。
 **!important** 必须将 `props` 参数展开到根元素中。否则将没有样式，组件也可能无法访问。
 
 ```tsx
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -49,7 +49,7 @@ function Demo() {
 
 ```tsx
 import { Link } from 'react-router-dom';
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -71,7 +71,7 @@ Next.js 的 Link 在不同 Next.js 版本中的工作方式与其他类似组件
 
 ```tsx
 import Link from 'next/link';
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -84,7 +84,7 @@ function Demo() {
 
 ```tsx
 import Link from 'next/link';
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -105,7 +105,7 @@ function Demo() {
 
 ```tsx
 import Link from 'next/link';
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -125,7 +125,7 @@ function Demo() {
 ```tsx
 import cx from 'clsx';
 import { NavLink } from 'react-router-dom';
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -169,7 +169,7 @@ function Demo() {
 或者通过向多态组件传递 `any` 类型参数来禁用类型检查：
 
 ```tsx
-import { Box } from '@react-ui/ui';
+import { Box } from '@xiaoye-react/ui';
 
 function KeepTypes() {
   return (
@@ -200,7 +200,7 @@ function NukeTypes() {
 要使 ReactUI 组件变为多态，请按照上一个示例的方式使用 `polymorphic` 函数：
 
 ```tsx
-import { polymorphic, Group, GroupProps } from '@react-ui/ui';
+import { polymorphic, Group, GroupProps } from '@xiaoye-react/ui';
 
 const PolymorphicGroup = polymorphic<'button', GroupProps>(Group);
 

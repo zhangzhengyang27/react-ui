@@ -1,5 +1,5 @@
 import { cloneElement } from 'react'
-import { useMergedRef } from '@react-ui/hooks'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import { factory, getSingleElementChild, useProps, type Factory } from '../../core'
 import { useComboboxContext } from './Combobox.context'
 
@@ -23,7 +23,7 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
     const targetRef = useMergedRef(ctx.targetRef, ref)
 
     if (!child) {
-        throw new Error('[@react-ui/ui] Combobox.Target children should be an element or a component that accepts ref')
+        throw new Error('[@xiaoye-react/ui] Combobox.Target children should be an element or a component that accepts ref')
     }
 
     const childProps = child.props as any
@@ -61,4 +61,4 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
     })
 })
 
-ComboboxTarget.displayName = '@react-ui/ui/ComboboxTarget'
+ComboboxTarget.displayName = '@xiaoye-react/ui/ComboboxTarget'

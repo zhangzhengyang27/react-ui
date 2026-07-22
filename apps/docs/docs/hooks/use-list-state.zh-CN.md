@@ -11,7 +11,7 @@ description: react-ui 列表状态 Hook 文档。
 `use-list-state` Hook 提供了一组用于操作列表状态的 API：
 
 ```tsx
-import { useListState } from '@react-ui/hooks';
+import { useListState } from '@xiaoye-react/hooks';
 
 const [values, handlers] = useListState([{ a: 1 }]);
 
@@ -96,7 +96,7 @@ const filter = () => handlers.filter((item) => item.a === 'new-prop');
 
 ## UseListStateHandlers 类型
 
-`@react-ui/hooks` 包导出 `UseListStateHandlers`。它是一个泛型类型，
+`@xiaoye-react/hooks` 包导出 `UseListStateHandlers`。它是一个泛型类型，
 包含 `useListState` Hook 中的所有处理函数。可用于为组件中的处理函数添加类型。
 
 `UseListStateHandlers` 类型：
@@ -131,7 +131,7 @@ export interface UseListStateHandlers<T> {
 ```
 
 ```tsx
-import { UseListStateHandlers } from '@react-ui/hooks';
+import { UseListStateHandlers } from '@xiaoye-react/hooks';
 
 interface Props {
   handlers: UseListStateHandlers<string>;
@@ -152,7 +152,7 @@ function Demo({ handlers }: Props) {
 如果你用空数组调用该 Hook，则必须指定项目类型：
 
 ```tsx
-import { useListState } from '@react-ui/hooks';
+import { useListState } from '@xiaoye-react/hooks';
 
 useListState(['hello']); // ok，项目类型为 string
 useListState([]); // 不行，项目类型为 any
@@ -169,9 +169,9 @@ function useListState<T>(
 
 ## 导出类型
 
-`UseListStateHandlers` 类型从 `@react-ui/hooks` 包导出，
+`UseListStateHandlers` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseListStateHandlers } from '@react-ui/hooks';
+import type { UseListStateHandlers } from '@xiaoye-react/hooks';
 ```

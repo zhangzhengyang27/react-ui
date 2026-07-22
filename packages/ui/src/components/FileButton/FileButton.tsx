@@ -1,5 +1,5 @@
 import { forwardRef, useRef } from 'react'
-import { assignRef, useMergedRef } from '@react-ui/hooks'
+import { assignRef, useMergedRef } from '@xiaoye-react/hooks'
 
 export interface FileButtonProps<Multiple extends boolean = false> {
     /** Called when files are picked */
@@ -82,7 +82,7 @@ export const FileButton = forwardRef<HTMLInputElement, FileButtonProps>(
         )
     }
 ) as <Multiple extends boolean = false>(props: FileButtonProps<Multiple>) => React.JSX.Element
-;(FileButton as any).displayName = '@react-ui/ui/FileButton'
+;(FileButton as any).displayName = '@xiaoye-react/ui/FileButton'
 
 export namespace FileButton {
     export type Props<Multiple extends boolean = false> = FileButtonProps<Multiple>

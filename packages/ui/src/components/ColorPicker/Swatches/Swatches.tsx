@@ -80,4 +80,4 @@ export function Swatches({
     )
 }
 
-Swatches.displayName = '@react-ui/ui/Swatches'
+Swatches.displayName = '@xiaoye-react/ui/Swatches'

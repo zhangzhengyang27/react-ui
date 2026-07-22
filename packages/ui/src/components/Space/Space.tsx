@@ -12,7 +12,7 @@ export const Space = factory<SpaceFactory>((props, _ref) => {
     return <Box ref={_ref} {...others} w={w} miw={miw ?? w} h={h} mih={mih ?? h} />
 })
 
-Space.displayName = '@react-ui/ui/Space'
+Space.displayName = '@xiaoye-react/ui/Space'
 
 export namespace Space {
     export type Props = SpaceProps

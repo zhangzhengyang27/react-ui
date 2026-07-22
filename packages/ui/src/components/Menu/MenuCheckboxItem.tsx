@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useMergedRef, useUncontrolled } from '@react-ui/hooks'
+import { useMergedRef, useUncontrolled } from '@xiaoye-react/hooks'
 import {
     type BoxProps,
     type CompoundStylesApiProps,
@@ -158,4 +158,4 @@ export const MenuCheckboxItem = factory<MenuCheckboxItemFactory>((props, ref) =>
 })
 
 MenuCheckboxItem.classes = classes
-MenuCheckboxItem.displayName = '@react-ui/ui/MenuCheckboxItem'
+MenuCheckboxItem.displayName = '@xiaoye-react/ui/MenuCheckboxItem'

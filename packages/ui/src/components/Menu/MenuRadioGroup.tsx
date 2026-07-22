@@ -1,4 +1,4 @@
-import { useUncontrolled } from '@react-ui/hooks'
+import { useUncontrolled } from '@xiaoye-react/hooks'
 import { useProps } from '../../core'
 import { MenuRadioGroupContext } from './MenuRadioGroup.context'
 
@@ -36,4 +36,4 @@ export function MenuRadioGroup(_props: MenuRadioGroupProps) {
     )
 }
 
-MenuRadioGroup.displayName = '@react-ui/ui/MenuRadioGroup'
+MenuRadioGroup.displayName = '@xiaoye-react/ui/MenuRadioGroup'

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Transition, Button, Paper, Text } from '@react-ui/ui';
+import { Transition, Button, Paper, Text } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => {

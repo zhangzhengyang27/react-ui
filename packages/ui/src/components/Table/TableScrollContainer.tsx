@@ -104,7 +104,7 @@ export const TableScrollContainer = factory<TableScrollContainerFactory>((_props
 
 TableScrollContainer.classes = classes
 ;(TableScrollContainer as any).varsResolver = varsResolver
-TableScrollContainer.displayName = '@react-ui/ui/TableScrollContainer'
+TableScrollContainer.displayName = '@xiaoye-react/ui/TableScrollContainer'
 
 export namespace TableScrollContainer {
     export type Props = TableScrollContainerProps

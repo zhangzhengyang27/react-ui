@@ -1,4 +1,4 @@
-import { Anchor, Text } from '@react-ui/ui';
+import { Anchor, Text } from '@xiaoye-react/ui';
 
 interface TableErrorProps {
   errorOf: string;

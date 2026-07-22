@@ -29,7 +29,7 @@ group:
 大多数情况下，使用 ReactUI 组件时建议优先使用 margin 属性而非 `Space`：
 
 ```tsx
-import { Text } from '@react-ui/ui';
+import { Text } from '@xiaoye-react/ui';
 
 // 不需要 Space，使用 `mt` 属性即可实现相同效果
 function Demo() {
@@ -45,7 +45,7 @@ function Demo() {
 但当使用普通 HTML 元素时，无法访问 `theme.spacing`，此时可使用 `Space` 组件来避免直接订阅主题：
 
 ```tsx
-import { Space } from '@react-ui/ui';
+import { Space } from '@xiaoye-react/ui';
 
 // div 上没有 margin 属性，使用 Space 来添加来自主题的间距
 function Demo() {

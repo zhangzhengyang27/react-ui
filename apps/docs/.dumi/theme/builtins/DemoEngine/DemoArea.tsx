@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import { Box } from '@react-ui/ui';
+import { Box } from '@xiaoye-react/ui';
 
 export interface DemoAreaProps {
   children?: React.ReactNode;

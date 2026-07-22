@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ComboboxPopover, InputBase } from '@react-ui/ui';
+import { ComboboxPopover, InputBase } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const data = [

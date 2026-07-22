@@ -176,7 +176,7 @@ export const ScatterChart = factory<ScatterChartFactory>((_props, ref) => {
 
 ScatterChart.classes = classes
 ;(ScatterChart as any).varsResolver = varsResolver
-ScatterChart.displayName = '@react-ui/ui/ScatterChart'
+ScatterChart.displayName = '@xiaoye-react/ui/ScatterChart'
 
 export namespace ScatterChart {
     export type Props = ScatterChartProps

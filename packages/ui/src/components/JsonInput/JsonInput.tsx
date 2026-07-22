@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useId, useUncontrolled } from '@react-ui/hooks'
+import { useId, useUncontrolled } from '@xiaoye-react/hooks'
 import { factory, Factory, StylesApiProps, useProps, useStyles } from '../../core'
 import { InputBase, InputBaseProps } from '../InputBase'
 import { InputWrapper } from '../Input'
@@ -197,7 +197,7 @@ export const JsonInput = factory<JsonInputFactory>((_props, ref) => {
 })
 
 JsonInput.classes = classes
-JsonInput.displayName = '@react-ui/ui/JsonInput'
+JsonInput.displayName = '@xiaoye-react/ui/JsonInput'
 
 export namespace JsonInput {
     export type Props = JsonInputProps

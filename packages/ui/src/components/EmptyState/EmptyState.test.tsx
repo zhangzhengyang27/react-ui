@@ -7,7 +7,7 @@ function Wrapper({ children }: { children: React.ReactNode }) {
     return <UIProvider>{children}</UIProvider>
 }
 
-describe('@react-ui/ui/EmptyState', () => {
+describe('@xiaoye-react/ui/EmptyState', () => {
     it('renders title and description', () => {
         render(<EmptyState title="No data" description="There is nothing here yet." />, {
             wrapper: Wrapper

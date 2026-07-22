@@ -27,7 +27,7 @@ group:
 以及更新它的处理函数。创建的 store 必须传递给 `Combobox` 的 `store` 属性：
 
 ```tsx
-import { Combobox, useCombobox } from '@react-ui/ui';
+import { Combobox, useCombobox } from '@xiaoye-react/ui';
 
 function Demo() {
   const combobox = useCombobox();
@@ -42,7 +42,7 @@ function Demo() {
 `useCombobox` Hook 接受一个选项对象，包含以下属性：
 
 
-可从 `@react-ui/ui` 包导入 `UseComboboxOptions` 类型：
+可从 `@xiaoye-react/ui` 包导入 `UseComboboxOptions` 类型：
 
 ```tsx
 interface UseComboboxOptions {
@@ -70,7 +70,7 @@ interface UseComboboxOptions {
 ```
 
 ```tsx
-import type { UseComboboxOptions } from '@react-ui/ui';
+import type { UseComboboxOptions } from '@xiaoye-react/ui';
 ```
 
 ### Combobox store
@@ -78,7 +78,7 @@ import type { UseComboboxOptions } from '@react-ui/ui';
 Combobox store 是一个具有以下属性的对象：
 
 
-可从 `@react-ui/ui` 包导入 `ComboboxStore` 类型：
+可从 `@xiaoye-react/ui` 包导入 `ComboboxStore` 类型：
 
 ```tsx
 interface ComboboxStore {
@@ -156,7 +156,7 @@ interface ComboboxStore {
 ```
 
 ```tsx
-import type { ComboboxStore } from '@react-ui/ui';
+import type { ComboboxStore } from '@xiaoye-react/ui';
 ```
 
 ### useCombobox 处理函数
@@ -169,7 +169,7 @@ Combobox store 处理函数可用于控制 `Combobox` 状态。
 在下拉框打开时调用 `selectFirstOption`，在关闭时调用 `resetSelectedOption`：
 
 ```tsx
-import { Button, Combobox, useCombobox } from '@react-ui/ui';
+import { Button, Combobox, useCombobox } from '@xiaoye-react/ui';
 
 function Demo() {
   const combobox = useCombobox();
@@ -189,7 +189,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Combobox, useCombobox } from '@react-ui/ui';
+import { Combobox, useCombobox } from '@xiaoye-react/ui';
 
 function Demo() {
   const combobox = useCombobox({

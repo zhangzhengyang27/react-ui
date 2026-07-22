@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiFillHeart } from 'react-icons/ai';
-import { Anchor } from '@react-ui/ui';
+import { Anchor } from '@xiaoye-react/ui';
 
 import type { Sponsor } from './sponsors';
 import { getSponsorDescription, getSponsorUrl } from './sponsors';

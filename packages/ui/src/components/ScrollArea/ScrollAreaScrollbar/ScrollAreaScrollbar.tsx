@@ -26,4 +26,4 @@ export function ScrollAreaScrollbar(props: ScrollAreaScrollbarProps) {
     return <ScrollAreaScrollbarVisible {...scrollbarProps} forceMount={forceMount} />
 }
 
-ScrollAreaScrollbar.displayName = '@react-ui/ui/ScrollAreaScrollbar'
+ScrollAreaScrollbar.displayName = '@xiaoye-react/ui/ScrollAreaScrollbar'

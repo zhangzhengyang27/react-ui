@@ -29,7 +29,7 @@ group:
 `verticalSpacing` 属性：
 
 ```tsx
-import { SimpleGrid } from '@react-ui/ui';
+import { SimpleGrid } from '@xiaoye-react/ui';
 
 // `spacing` 同时用于水平和垂直间距
 const Spacing = () => <SimpleGrid spacing="xl" />;

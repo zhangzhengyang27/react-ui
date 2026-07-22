@@ -1,5 +1,5 @@
 import React from 'react';
-import { Splitter } from '@react-ui/ui';
+import { Splitter } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

@@ -27,7 +27,7 @@ Portal 是 [ReactDOM.createPortal](https://reactjs.org/docs/portals.html) API �
 
 ```tsx
 import { useState } from 'react';
-import { Portal } from '@react-ui/ui';
+import { Portal } from '@xiaoye-react/ui';
 
 function Demo() {
   const [opened, setOpened] = useState(false);
@@ -53,7 +53,7 @@ function Demo() {
 默认情况下，Portal 对所有实例复用同一个目标节点（`reuseTargetNode={true}`）。要为每个实例创建新的目标节点，请设置 `reuseTargetNode={false}`。在以下示例中，三个段落将分别渲染在独立的目标节点中：
 
 ```tsx
-import { Portal } from '@react-ui/ui';
+import { Portal } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -85,7 +85,7 @@ function Demo() {
 若未指定目标元素，则会为每个 Portal 组件创建并附加一个新的目标元素到 `document.body`。
 
 ```tsx
-import { Portal } from '@react-ui/ui';
+import { Portal } from '@xiaoye-react/ui';
 
 const container = document.createElement('div');
 document.body.appendChild(container);
@@ -96,7 +96,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Portal } from '@react-ui/ui';
+import { Portal } from '@xiaoye-react/ui';
 
 function Demo() {
   return <Portal target="#portal-container">我的 Portal</Portal>;
@@ -108,7 +108,7 @@ function Demo() {
 `OptionalPortal` 组件允许配置子元素是否应在 `Portal` 中渲染。它接受与 `Portal` 组件相同的属性：
 
 ```tsx
-import { OptionalPortal } from '@react-ui/ui';
+import { OptionalPortal } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -154,7 +154,7 @@ function Demo() {
 `OptionalPortal` 组件允许配置子元素是否应在 `Portal` 中渲染。它接受与 `Portal` 组件相同的属性：
 
 ```tsx
-import { OptionalPortal } from '@react-ui/ui';
+import { OptionalPortal } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

@@ -1,5 +1,5 @@
 import { Ref } from 'react'
-import { useScroller } from '@react-ui/hooks'
+import { useScroller } from '@xiaoye-react/hooks'
 import {
     Box,
     BoxProps,
@@ -168,7 +168,7 @@ export const Scroller = factory<ScrollerFactory>((_props, ref) => {
 
 Scroller.classes = classes
 Scroller.varsResolver = varsResolver
-Scroller.displayName = '@react-ui/ui/Scroller'
+Scroller.displayName = '@xiaoye-react/ui/Scroller'
 
 export namespace Scroller {
     export type Props = ScrollerProps

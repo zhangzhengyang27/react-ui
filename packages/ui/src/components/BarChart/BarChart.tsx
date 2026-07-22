@@ -194,7 +194,7 @@ export const BarChart = factory<BarChartFactory>((_props, ref) => {
 
 BarChart.classes = classes
 ;(BarChart as any).varsResolver = varsResolver
-BarChart.displayName = '@react-ui/ui/BarChart'
+BarChart.displayName = '@xiaoye-react/ui/BarChart'
 
 export namespace BarChart {
     export type Props = BarChartProps

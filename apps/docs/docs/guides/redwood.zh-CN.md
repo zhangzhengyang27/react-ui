@@ -61,14 +61,14 @@ module.exports = {
 
 ```tsx
 // 导入你已安装包的样式。
-// 除 `@react-ui/hooks` 外，所有包都需要导入样式
-import '@react-ui/ui/styles.css';
+// 除 `@xiaoye-react/hooks` 外，所有包都需要导入样式
+import '@xiaoye-react/ui/styles.css';
 
 import { FatalErrorBoundary, RedwoodProvider } from '@redwoodjs/web';
 import { RedwoodApolloProvider } from '@redwoodjs/web/apollo';
 import FatalErrorPage from 'src/pages/FatalErrorPage';
 import Routes from 'src/Routes';
-import { ColorSchemeScript, UIProvider } from '@react-ui/ui';
+import { ColorSchemeScript, UIProvider } from '@xiaoye-react/ui';
 
 const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>

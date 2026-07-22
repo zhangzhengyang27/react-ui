@@ -1,5 +1,5 @@
 // 为 docs 补齐 charts 类目的骨架。
-// 背景：packages/@react-ui/charts 的组件未被 generate-component-docs.js
+// 背景：packages/@xiaoye-react/charts 的组件未被 generate-component-docs.js
 // （仅扫描 packages/ui）覆盖，因此 9 个 chart 组件缺 index.zh-CN.md 骨架。
 // 另：getting-started 是图表入门指南（文档，非组件），单独生成 doc 页。
 //

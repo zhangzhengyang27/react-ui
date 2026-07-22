@@ -62,7 +62,7 @@ export const InputBase = polymorphicFactory<InputBaseFactory>((props, ref) => {
 
 InputBase.classes = { ...Input.classes, ...Input.Wrapper.classes }
 ;(InputBase as any).varsResolver = (Input as any).varsResolver
-InputBase.displayName = '@react-ui/ui/InputBase'
+InputBase.displayName = '@xiaoye-react/ui/InputBase'
 
 export namespace InputBase {
     export type Props = InputBaseProps

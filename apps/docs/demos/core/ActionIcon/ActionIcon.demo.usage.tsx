@@ -1,10 +1,10 @@
 import { SlidersHorizontalIcon } from '@phosphor-icons/react';
-import { ActionIcon } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { ActionIcon } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { interactiveVariantsControl } from '../../shared';
 
 const code = `
-import { ActionIcon } from '@react-ui/ui';
+import { ActionIcon } from '@xiaoye-react/ui';
 import { SlidersHorizontalIcon } from '@phosphor-icons/react';
 
 function Demo() {

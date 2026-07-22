@@ -7,8 +7,8 @@ function Wrapper({ children }: { children: React.ReactNode }) {
     return <UIProvider>{children}</UIProvider>
 }
 
-vi.mock('@react-ui/hooks', async () => {
-    const actual = await vi.importActual<typeof import('@react-ui/hooks')>('@react-ui/hooks')
+vi.mock('@xiaoye-react/hooks', async () => {
+    const actual = await vi.importActual<typeof import('@xiaoye-react/hooks')>('@xiaoye-react/hooks')
     return {
         ...actual,
         useScrollSpy: () => ({
@@ -20,7 +20,7 @@ vi.mock('@react-ui/hooks', async () => {
     }
 })
 
-describe('@react-ui/ui/TableOfContents', () => {
+describe('@xiaoye-react/ui/TableOfContents', () => {
     it('renders initial data controls', () => {
         render(
             <TableOfContents

@@ -1,5 +1,5 @@
 import { cloneElement, useEffect, useMemo, useState } from 'react';
-import { Text, UnstyledButton } from '@react-ui/ui';
+import { Text, UnstyledButton } from '@xiaoye-react/ui';
 
 import { DemoAreaProps } from './DemoArea';
 import { DemoColumns } from './DemoColumns';

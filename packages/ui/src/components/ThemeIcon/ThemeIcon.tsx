@@ -96,7 +96,7 @@ export const ThemeIcon = factory<ThemeIconFactory>((_props, ref) => {
 })
 
 ThemeIcon.classes = classes
-ThemeIcon.displayName = '@react-ui/ui/ThemeIcon'
+ThemeIcon.displayName = '@xiaoye-react/ui/ThemeIcon'
 
 export namespace ThemeIcon {
     export type Props = ThemeIconProps

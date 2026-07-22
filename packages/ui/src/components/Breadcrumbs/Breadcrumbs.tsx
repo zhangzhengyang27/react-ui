@@ -112,7 +112,7 @@ export const Breadcrumbs = factory<BreadcrumbsFactory>((_props, _ref) => {
 
 Breadcrumbs.classes = classes
 ;(Breadcrumbs as any).varsResolver = varsResolver
-Breadcrumbs.displayName = '@react-ui/ui/Breadcrumbs'
+Breadcrumbs.displayName = '@xiaoye-react/ui/Breadcrumbs'
 
 export namespace Breadcrumbs {
     export type Props = BreadcrumbsProps

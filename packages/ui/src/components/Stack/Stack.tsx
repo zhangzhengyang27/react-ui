@@ -89,7 +89,7 @@ export const Stack = factory<StackFactory>((_props, _ref) => {
 
 Stack.classes = classes
 ;(Stack as any).varsResolver = varsResolver
-Stack.displayName = '@react-ui/ui/Stack'
+Stack.displayName = '@xiaoye-react/ui/Stack'
 
 export namespace Stack {
     export type Props = StackProps

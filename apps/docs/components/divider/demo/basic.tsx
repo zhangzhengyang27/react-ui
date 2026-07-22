@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, Text } from '@react-ui/ui';
+import { Divider, Text } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

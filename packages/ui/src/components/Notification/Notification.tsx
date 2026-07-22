@@ -134,7 +134,7 @@ export const Notification = factory<NotificationFactory>((_props, ref) => {
 
 Notification.classes = classes
 ;(Notification as any).varsResolver = varsResolver
-Notification.displayName = '@react-ui/ui/Notification'
+Notification.displayName = '@xiaoye-react/ui/Notification'
 
 export namespace Notification {
     export type Props = NotificationProps

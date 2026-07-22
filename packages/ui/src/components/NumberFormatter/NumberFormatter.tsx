@@ -34,7 +34,7 @@ const extendNumberFormatter = (c: ExtendComponent<NumberFormatterFactory>): UITh
   c;
 
 NumberFormatter.extend = extendNumberFormatter;
-NumberFormatter.displayName = '@react-ui/ui/NumberFormatter';
+NumberFormatter.displayName = '@xiaoye-react/ui/NumberFormatter';
 
 export namespace NumberFormatter {
   export type Props = NumberFormatterProps;

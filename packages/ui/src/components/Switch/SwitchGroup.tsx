@@ -1,4 +1,4 @@
-import { useUncontrolled } from '@react-ui/hooks'
+import { useUncontrolled } from '@xiaoye-react/hooks'
 import {
     BoxProps,
     ElementProps,
@@ -129,7 +129,7 @@ export const SwitchGroup = factory<SwitchGroupFactory>((_props, ref) => {
     )
 })
 
-SwitchGroup.displayName = '@react-ui/ui/SwitchGroup'
+SwitchGroup.displayName = '@xiaoye-react/ui/SwitchGroup'
 
 export namespace SwitchGroup {
     export type Props = SwitchGroupProps

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Textarea } from '@react-ui/ui';
+import { Textarea } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => {

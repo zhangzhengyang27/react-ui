@@ -9,7 +9,7 @@ import {
   AiOutlineThunderbolt,
   AiOutlineTool,
 } from 'react-icons/ai';
-import { Card, Text, Title } from '@react-ui/ui';
+import { Card, Text, Title } from '@xiaoye-react/ui';
 
 import useLocale from '../../../hooks/useLocale';
 import Group from './Group';

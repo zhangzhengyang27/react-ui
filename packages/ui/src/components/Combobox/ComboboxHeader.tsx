@@ -23,4 +23,4 @@ export const ComboboxHeader = factory<ComboboxHeaderFactory>((_props, ref) => {
     )
 })
 
-ComboboxHeader.displayName = '@react-ui/ui/ComboboxHeader'
+ComboboxHeader.displayName = '@xiaoye-react/ui/ComboboxHeader'

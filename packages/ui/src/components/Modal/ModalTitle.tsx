@@ -23,4 +23,4 @@ export const ModalTitle = factory<ModalTitleFactory>((_props, ref) => {
 })
 
 ModalTitle.classes = classes
-ModalTitle.displayName = '@react-ui/ui/ModalTitle'
+ModalTitle.displayName = '@xiaoye-react/ui/ModalTitle'

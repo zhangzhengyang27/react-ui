@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
-import { Card, Grid, Text, Tooltip } from '@react-ui/ui';
+import { Card, Grid, Text, Tooltip } from '@xiaoye-react/ui';
 
 import useLocale from '../../../hooks/useLocale';
 import classes from './index.module.css';

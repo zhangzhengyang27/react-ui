@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { useId } from '@react-ui/hooks'
+import { useId } from '@xiaoye-react/hooks'
 import {
     Box,
     BoxProps,
@@ -301,4 +301,4 @@ export const InputWrapper = factory<InputWrapperFactory>((_props, ref) => {
 
 InputWrapper.classes = classes
 InputWrapper.varsResolver = varsResolver
-InputWrapper.displayName = '@react-ui/ui/InputWrapper'
+InputWrapper.displayName = '@xiaoye-react/ui/InputWrapper'

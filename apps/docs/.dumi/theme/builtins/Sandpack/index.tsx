@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import type { SandpackSetup } from '@codesandbox/sandpack-react';
-import { Skeleton } from '@react-ui/ui';
+import { Skeleton } from '@xiaoye-react/ui';
 import { useSearchParams } from 'dumi';
 
 import { version } from '../../../../package.json';
@@ -44,7 +44,7 @@ const Sandpack: React.FC<React.PropsWithChildren<SandpackProps>> = (props) => {
     dependencies: {
       react: '^19.0.0',
       'react-dom': '^19.0.0',
-      '@react-ui/ui': version,
+      '@xiaoye-react/ui': version,
       ...extraDependencies,
     },
     devDependencies: {

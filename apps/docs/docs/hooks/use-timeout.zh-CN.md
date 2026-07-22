@@ -24,7 +24,7 @@ description: react-ui 超时 Hook 文档。
 - `clear` – 取消计时器
 
 ```tsx
-import { useTimeout } from '@react-ui/hooks';
+import { useTimeout } from '@xiaoye-react/hooks';
 
 const { start, clear } = useTimeout(callback, delay, {
   autoInvoke: true,
@@ -52,8 +52,8 @@ function useTimeout(
 
 ## 导出类型
 
-`UseTimeoutOptions` 和 `UseTimeoutReturnValue` 类型从 `@react-ui/hooks` 包导出：
+`UseTimeoutOptions` 和 `UseTimeoutReturnValue` 类型从 `@xiaoye-react/hooks` 包导出：
 
 ```tsx
-import type { UseTimeoutOptions, UseTimeoutReturnValue } from '@react-ui/hooks';
+import type { UseTimeoutOptions, UseTimeoutReturnValue } from '@xiaoye-react/hooks';
 ```

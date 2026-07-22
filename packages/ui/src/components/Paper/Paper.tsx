@@ -84,7 +84,7 @@ export const Paper = polymorphicFactory<PaperFactory>((_props, _ref) => {
 
 Paper.classes = classes
 ;(Paper as any).varsResolver = varsResolver
-Paper.displayName = '@react-ui/ui/Paper'
+Paper.displayName = '@xiaoye-react/ui/Paper'
 
 export namespace Paper {
     export type Props = PaperProps

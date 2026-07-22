@@ -19,7 +19,7 @@ import {
   useClickOutside,
   useFocusTrap,
   useMergedRef,
-} from '@react-ui/hooks';
+} from '@xiaoye-react/hooks';
 
 function Demo() {
   const myRef = useRef();
@@ -48,7 +48,7 @@ function Demo() {
 
 ```tsx
 import { useRef } from 'react';
-import { mergeRefs, useClickOutside } from '@react-ui/hooks';
+import { mergeRefs, useClickOutside } from '@xiaoye-react/hooks';
 
 function Demo() {
   const myRef = useRef();
@@ -65,7 +65,7 @@ function Demo() {
 
 ```tsx
 import { useState } from 'react';
-import { assignRef } from '@react-ui/hooks';
+import { assignRef } from '@xiaoye-react/hooks';
 
 interface NumberInputHandlers {
   increment: () => void;
@@ -96,7 +96,7 @@ function Demo({ handlersRef }: DemoProps) {
 ## 设置节点类型
 
 ```tsx
-import { useMergedRef } from '@react-ui/hooks';
+import { useMergedRef } from '@xiaoye-react/hooks';
 
 const ref = useMergedRef<HTMLDivElement>();
 ```

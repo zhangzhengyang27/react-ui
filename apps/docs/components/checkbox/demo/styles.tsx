@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox, Stack } from '@react-ui/ui';
+import { Checkbox, Stack } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const palette = ['blue', 'grape', 'violet', 'pink', 'red', 'orange', 'green', 'teal', 'cyan'] as const;

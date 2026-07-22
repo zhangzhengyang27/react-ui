@@ -1,9 +1,9 @@
-import { TimePicker } from '@react-ui/dates';
-import { UIDemo } from '@react-ui/demo';
+import { TimePicker } from '@xiaoye-react/dates';
+import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
 const code = `
-import { TimePicker } from '@react-ui/dates';
+import { TimePicker } from '@xiaoye-react/dates';
 
 
 function Demo() {

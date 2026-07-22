@@ -1,5 +1,5 @@
 import { cloneElement, useRef } from 'react'
-import { useLongPress } from '@react-ui/hooks'
+import { useLongPress } from '@xiaoye-react/hooks'
 import { getSingleElementChild, useProps } from '../../core'
 import { usePopoverContext } from '../Popover/Popover.context'
 import { useMenuContext } from './Menu.context'
@@ -144,4 +144,4 @@ export function MenuContextMenu(props: MenuContextMenuProps) {
     } as any)
 }
 
-MenuContextMenu.displayName = '@react-ui/ui/MenuContextMenu'
+MenuContextMenu.displayName = '@xiaoye-react/ui/MenuContextMenu'

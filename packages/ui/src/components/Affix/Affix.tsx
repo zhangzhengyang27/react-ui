@@ -89,4 +89,4 @@ export const Affix = factory<AffixFactory>((_props, _ref) => {
 })
 
 Affix.classes = classes
-Affix.displayName = '@react-ui/ui/Affix'
+Affix.displayName = '@xiaoye-react/ui/Affix'

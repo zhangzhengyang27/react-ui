@@ -1,5 +1,5 @@
 import React from 'react';
-import { Affix, Button } from '@react-ui/ui';
+import { Affix, Button } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

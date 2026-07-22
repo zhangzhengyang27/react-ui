@@ -1,5 +1,5 @@
 import React from 'react';
-import { FocusTrap, Stack, TextInput } from '@react-ui/ui';
+import { FocusTrap, Stack, TextInput } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

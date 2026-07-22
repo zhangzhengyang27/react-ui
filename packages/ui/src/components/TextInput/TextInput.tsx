@@ -1,4 +1,4 @@
-import { useId } from '@react-ui/hooks'
+import { useId } from '@xiaoye-react/hooks'
 import { factory, Factory, StylesApiProps, useProps, useStyles } from '../../core'
 import { InputBase, InputBaseProps, InputBaseStylesNames } from '../InputBase'
 import { InputWrapper } from '../Input'
@@ -115,7 +115,7 @@ export const TextInput = factory<TextInputFactory>((_props, ref) => {
 })
 
 TextInput.classes = classes
-TextInput.displayName = '@react-ui/ui/TextInput'
+TextInput.displayName = '@xiaoye-react/ui/TextInput'
 
 export namespace TextInput {
     export type Props = TextInputProps

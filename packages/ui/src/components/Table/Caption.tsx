@@ -39,5 +39,5 @@ export const Caption = factory<CaptionFactory>((props, ref) => {
     )
 })
 
-Caption.displayName = '@react-ui/ui/Caption'
+Caption.displayName = '@xiaoye-react/ui/Caption'
 Caption.classes = classes

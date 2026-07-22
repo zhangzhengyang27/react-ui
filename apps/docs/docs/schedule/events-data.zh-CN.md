@@ -8,7 +8,7 @@ description: react-ui EventsData 文档。
 
 ## 概述
 
-所有 `@react-ui/schedule` 组件都通过 `events` prop 接收事件。每个事件的类型为 `ScheduleEventData`，可以是以下三种形态之一：
+所有 `@xiaoye-react/schedule` 组件都通过 `events` prop 接收事件。每个事件的类型为 `ScheduleEventData`，可以是以下三种形态之一：
 
 - **One-off event** – 没有重复的常规事件
 - **Recurring series event** – 一个源事件，会展开为多次出现
@@ -24,8 +24,8 @@ description: react-ui EventsData 文档。
 `start` 和 `end` 接受 `Date` 实例或 `YYYY-MM-DD HH:mm:ss` 格式的字符串（即所有 ReactUI 日期组件使用的 `DateTimeStringValue` 类型）。
 
 ```tsx
-import type { DateTimeStringValue, EventPayload } from '@react-ui/schedule';
-import type { UIColor } from '@react-ui/ui';
+import type { DateTimeStringValue, EventPayload } from '@xiaoye-react/schedule';
+import type { UIColor } from '@xiaoye-react/ui';
 
 interface ScheduleEventBase<Payload extends EventPayload = EventPayload> {
   /** Unique event id, used for key and identification */
@@ -60,7 +60,7 @@ interface ScheduleEventBase<Payload extends EventPayload = EventPayload> {
 没有重复规则的一次性事件。这是最常见的形态：
 
 ```tsx
-import type { ScheduleSingleEventData } from '@react-ui/schedule';
+import type { ScheduleSingleEventData } from '@xiaoye-react/schedule';
 
 const event: ScheduleSingleEventData = {
   id: 'meeting-1',
@@ -82,7 +82,7 @@ const event: ScheduleSingleEventData = {
 有关重复规则和系列展开的更多详情，请参阅 [重复事件指南](/docs/schedule/recurring-events)。
 
 ```tsx
-import type { ScheduleRecurringSeriesEventData } from '@react-ui/schedule';
+import type { ScheduleRecurringSeriesEventData } from '@xiaoye-react/schedule';
 
 const series: ScheduleRecurringSeriesEventData = {
   id: 'weekly-planning',
@@ -120,7 +120,7 @@ Override event 替换系列中的某个生成出现：
 - `recurrenceId` – 原始出现日期时间，格式为 `YYYY-MM-DD HH:mm:ss`
 
 ```tsx
-import type { ScheduleRecurringOverrideEventData } from '@react-ui/schedule';
+import type { ScheduleRecurringOverrideEventData } from '@xiaoye-react/schedule';
 
 const override: ScheduleRecurringOverrideEventData = {
   id: 'weekly-planning-override',
@@ -141,7 +141,7 @@ const override: ScheduleRecurringOverrideEventData = {
 `EventPayload` 本身只是 `Record<PropertyKey, any>`——通常你会将自己的 payload 类型作为泛型参数传递给 `ScheduleEventData<MyPayload>`。
 
 ```tsx
-import type { ScheduleEventData } from '@react-ui/schedule';
+import type { ScheduleEventData } from '@xiaoye-react/schedule';
 
 interface MyEventPayload {
   description: string;
@@ -353,4 +353,4 @@ canResizeEvent?: (event: ScheduleEventData) => boolean;
 - `DateStringValue` – `YYYY-MM-DD`（例如 `2024-01-15`）
 - `DateTimeStringValue` – `YYYY-MM-DD HH:mm:ss`（例如 `2024-01-15 10:00:00`）
 
-这些类型在 `@react-ui/ui` 和 `@react-ui/schedule` 之间共享，并从两个包中导出。
+这些类型在 `@xiaoye-react/ui` 和 `@xiaoye-react/schedule` 之间共享，并从两个包中导出。

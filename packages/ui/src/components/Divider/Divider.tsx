@@ -103,7 +103,7 @@ export const Divider = factory<DividerFactory>((_props, _ref) => {
 
 Divider.classes = classes
 ;(Divider as any).varsResolver = varsResolver
-Divider.displayName = '@react-ui/ui/Divider'
+Divider.displayName = '@xiaoye-react/ui/Divider'
 
 export namespace Divider {
     export type Props = DividerProps

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BackgroundImage, Center, Text } from '@react-ui/ui';
+import { BackgroundImage, Center, Text } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

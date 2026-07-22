@@ -36,9 +36,9 @@ function useFetch<T>(
 
 ## 导出类型
 
-`UseFetchOptions` 和 `UseFetchReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseFetchOptions` 和 `UseFetchReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseFetchOptions, UseFetchReturnValue } from '@react-ui/hooks';
+import type { UseFetchOptions, UseFetchReturnValue } from '@xiaoye-react/hooks';
 ```

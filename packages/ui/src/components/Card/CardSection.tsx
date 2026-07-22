@@ -68,7 +68,7 @@ export const CardSection = factory<CardSectionFactory>((_props, ref) => {
 })
 
 CardSection.classes = classes
-CardSection.displayName = '@react-ui/ui/CardSection'
+CardSection.displayName = '@xiaoye-react/ui/CardSection'
 
 export namespace CardSection {
     export type Props = CardSectionProps

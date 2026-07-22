@@ -181,7 +181,7 @@ export const Modal = factory<ModalFactory>((_props, _ref) => {
 })
 
 Modal.classes = classes
-Modal.displayName = '@react-ui/ui/Modal'
+Modal.displayName = '@xiaoye-react/ui/Modal'
 Modal.Root = ModalRoot
 Modal.Body = ModalBody
 Modal.CloseButton = ModalCloseButton

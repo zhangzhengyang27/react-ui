@@ -1,5 +1,5 @@
 import { createContext, use, useCallback, useMemo, useState } from 'react'
-import { useIsomorphicEffect, useMutationObserverTarget } from '@react-ui/hooks'
+import { useIsomorphicEffect, useMutationObserverTarget } from '@xiaoye-react/hooks'
 
 export type Direction = 'ltr' | 'rtl'
 

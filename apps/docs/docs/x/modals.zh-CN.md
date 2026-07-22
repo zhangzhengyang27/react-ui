@@ -8,15 +8,15 @@ description: react-ui Modals 文档。
 
 ## 安装
 
-<InstallScript packages="@react-ui/ui"></InstallScript>
+<InstallScript packages="@xiaoye-react/ui"></InstallScript>
 
 ## 设置 ModalsProvider
 
 使用 `ModalsProvider` 组件包裹你的应用：
 
 ```tsx
-import { UIProvider } from '@react-ui/ui';
-import { ModalsProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
+import { ModalsProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -29,7 +29,7 @@ function Demo() {
 
 ## 确认弹窗
 
-`@react-ui/ui` 包包含一个专门用于确认的弹窗。该组件带有确认和取消按钮，并支持通过子元素展示有关操作的额外信息。使用 `openConfirmModal` 函数打开确认弹窗：
+`@xiaoye-react/ui` 包包含一个专门用于确认的弹窗。该组件带有确认和取消按钮，并支持通过子元素展示有关操作的额外信息。使用 `openConfirmModal` 函数打开确认弹窗：
 
 
 `openConfirmModal` 函数接受一个参数，包含以下属性：
@@ -51,7 +51,7 @@ function Demo() {
 要为确认弹窗设置共享标签，请在 `ModalsProvider` 上设置 `labels`：
 
 ```tsx
-import { ModalsProvider } from '@react-ui/ui';
+import { ModalsProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -74,8 +74,8 @@ function Demo() {
 然后使用 `modals.openContextModal` 函数打开其中一个弹窗。`modals.openContextModal` 函数接受两个参数：弹窗键（应与 ModalsProvider 中定义的键一致）和弹窗属性：
 
 ```tsx
-import { Button, Text } from '@react-ui/ui';
-import { ContextModalProps, ModalsProvider } from '@react-ui/ui';
+import { Button, Text } from '@xiaoye-react/ui';
+import { ContextModalProps, ModalsProvider } from '@xiaoye-react/ui';
 
 const TestModal = ({
   context,
@@ -127,7 +127,7 @@ const modals = {
   demonstration: TestModal,
   /* ...其他弹窗 */
 };
-declare module '@react-ui/ui' {
+declare module '@xiaoye-react/ui' {
   export interface UIModalsOverride {
     modals: typeof modals;
   }
@@ -142,7 +142,7 @@ function Demo() {
 ```
 
 ```tsx
-import { closeModal, openContextModal } from '@react-ui/ui';
+import { closeModal, openContextModal } from '@xiaoye-react/ui';
 
 openContextModal({
   modal: 'demonstration',

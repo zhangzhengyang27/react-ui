@@ -28,15 +28,15 @@ export default defineConfig({
     // 仅中文文档
     locales: [{ id: 'zh-CN', name: '中文', suffix: '' }],
 
-    // @react-ui/ui 指向已构建的 ES 产物（含正确顺序的 CSS module）。
+    // @xiaoye-react/ui 指向已构建的 ES 产物（含正确顺序的 CSS module）。
     // 注意：不能指向 src 源码——mako 重新编译 CSS module 时会按文件名字母序排列，
     // 导致 UnstyledButton 的 reset 排在 Button 之后，覆盖 background: var(--button-bg)。
-    // @react-ui/hooks 无 CSS，保留指向 src 便于调试。
+    // @xiaoye-react/hooks 无 CSS，保留指向 src 便于调试。
     alias: {
-        '@react-ui/ui': path.join(__dirname, '../../packages/ui/es/index.js'),
-        '@react-ui/hooks': path.join(__dirname, '../../packages/hooks/src/index.ts'),
-        // @react-ui/demo 包未发布，指向本地 DemoEngine（已导出 Demo/UIDemo/ConfiguratorControlOptions）
-        '@react-ui/demo': path.join(__dirname, '.dumi/theme/builtins/DemoEngine/index.ts'),
+        '@xiaoye-react/ui': path.join(__dirname, '../../packages/ui/es/index.js'),
+        '@xiaoye-react/hooks': path.join(__dirname, '../../packages/hooks/src/index.ts'),
+        // @xiaoye-react/demo 包未发布，指向本地 DemoEngine（已导出 Demo/UIDemo/ConfiguratorControlOptions）
+        '@xiaoye-react/demo': path.join(__dirname, '.dumi/theme/builtins/DemoEngine/index.ts'),
         // docgen 生成的 JSON 数据
         '@docs/docgen': path.join(__dirname, '.docgen/docgen.json'),
         '@docs/hooks': path.join(__dirname, '.docgen/hooks.json'),
@@ -44,15 +44,15 @@ export default defineConfig({
         '@docs/theme-tokens': path.join(__dirname, '.docgen/theme-tokens.json'),
         '@docs/count': path.join(__dirname, '.docgen/count.json'),
         // styles-api 数据
-        '@react-ui/docs-styles-api': path.join(__dirname, '../../packages/@react-ui/docs-styles-api/src/index.ts'),
+        '@xiaoye-react/docs-styles-api': path.join(__dirname, '../../packages/@xiaoye-react/docs-styles-api/src/index.ts'),
         // colors-generator
-        '@react-ui/colors-generator': path.join(__dirname, '../../packages/@react-ui/colors-generator/src/index.ts'),
+        '@xiaoye-react/colors-generator': path.join(__dirname, '../../packages/@xiaoye-react/colors-generator/src/index.ts'),
         // docs-demos
-        '@react-ui/docs-demos': path.join(__dirname, '../../packages/@react-ui/docs-demos/src/index.ts'),
+        '@xiaoye-react/docs-demos': path.join(__dirname, '../../packages/@xiaoye-react/docs-demos/src/index.ts'),
         // dev-icons / meta / modals
-        '@react-ui/dev-icons': path.join(__dirname, '../../packages/@react-ui/dev-icons/src/index.ts'),
-        '@react-ui/meta': path.join(__dirname, '../../packages/@react-ui/meta/src/index.ts'),
-        '@react-ui/modals': path.join(__dirname, '../../packages/@react-ui/modals/src/index.ts'),
+        '@xiaoye-react/dev-icons': path.join(__dirname, '../../packages/@xiaoye-react/dev-icons/src/index.ts'),
+        '@xiaoye-react/meta': path.join(__dirname, '../../packages/@xiaoye-react/meta/src/index.ts'),
+        '@xiaoye-react/modals': path.join(__dirname, '../../packages/@xiaoye-react/modals/src/index.ts'),
     },
 
     extraRehypePlugins: [rehypeDocs, rehypeChangelog],

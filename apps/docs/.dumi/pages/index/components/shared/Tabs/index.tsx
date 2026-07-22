@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FloatingIndicator, UnstyledButton } from '@react-ui/ui';
+import { FloatingIndicator, UnstyledButton } from '@xiaoye-react/ui';
 import classes from './HomePageTabs.module.css';
 
 interface HomePageTabsProps {

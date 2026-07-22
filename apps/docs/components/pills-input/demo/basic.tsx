@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PillsInput, Pill } from '@react-ui/ui';
+import { PillsInput, Pill } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => {

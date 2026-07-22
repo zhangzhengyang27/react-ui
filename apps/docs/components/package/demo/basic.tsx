@@ -1,5 +1,5 @@
 import React from "react";
-import { Package } from "@react-ui/ui";
+import { Package } from "@xiaoye-react/ui";
 import DemoWrap from "../../_util/demoWrap";
 
 const App: React.FC = () => (

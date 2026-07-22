@@ -1,5 +1,5 @@
-import { Switch } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { Switch } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import classes from './Switch.demo.styles.module.css';
 
 const cssCode = `.track {
@@ -22,7 +22,7 @@ const cssCode = `.track {
 }`;
 
 const code = `
-import { Switch } from '@react-ui/ui';
+import { Switch } from '@xiaoye-react/ui';
 import classes from './Demo.module.css';
 
 function Demo() {

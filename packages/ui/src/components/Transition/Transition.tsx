@@ -140,7 +140,7 @@ export function Transition({
     )
 }
 
-Transition.displayName = '@react-ui/ui/Transition'
+Transition.displayName = '@xiaoye-react/ui/Transition'
 
 export namespace Transition {
     export type Props = TransitionProps

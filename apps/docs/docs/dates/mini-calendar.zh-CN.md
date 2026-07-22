@@ -39,7 +39,7 @@ description: react-ui MiniCalendar 文档。
 使用 `nextControlProps` 和 `previousControlProps` 为导航按钮添加 `aria-label` 和其他 props：
 
 ```tsx
-import { MiniCalendar } from '@react-ui/ui';
+import { MiniCalendar } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

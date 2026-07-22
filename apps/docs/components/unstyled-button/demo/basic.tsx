@@ -1,5 +1,5 @@
 import React from 'react';
-import { UnstyledButton } from '@react-ui/ui';
+import { UnstyledButton } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

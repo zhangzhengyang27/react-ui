@@ -32,7 +32,7 @@ group:
 简写属性和复合组件可以混合使用。当同时提供时，`icon`、`title` 和 `description` 属性的内容先渲染，然后是 `children`：
 
 ```tsx
-import { Button, EmptyState } from '@react-ui/ui';
+import { Button, EmptyState } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -65,7 +65,7 @@ function Demo() {
 默认情况下，`EmptyState.Title` 渲染一个没有语义标题级别的 `div` 元素。若空状态标题应为标题，请设置 `order` 属性以将其渲染为 `h1`–`h6` 元素：
 
 ```tsx
-import { EmptyState } from '@react-ui/ui';
+import { EmptyState } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Progress, Stack } from '@react-ui/ui';
+import { Progress, Stack } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

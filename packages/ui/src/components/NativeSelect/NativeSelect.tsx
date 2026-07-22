@@ -1,4 +1,4 @@
-import { useId, useUncontrolled } from '@react-ui/hooks'
+import { useId, useUncontrolled } from '@xiaoye-react/hooks'
 import {
     BoxProps,
     createVarsResolver,
@@ -190,7 +190,7 @@ export const NativeSelect = factory<NativeSelectFactory>((_props, ref) => {
 
 NativeSelect.classes = classes
 ;(NativeSelect as any).varsResolver = varsResolver
-NativeSelect.displayName = '@react-ui/ui/NativeSelect'
+NativeSelect.displayName = '@xiaoye-react/ui/NativeSelect'
 
 export namespace NativeSelect {
     export type Props = NativeSelectProps

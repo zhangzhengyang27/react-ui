@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fieldset, TextInput } from '@react-ui/ui';
+import { Fieldset, TextInput } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

@@ -24,7 +24,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { Tabs } from '@react-ui/ui';
+import { Tabs } from '@xiaoye-react/ui';
 
 function Demo() {
   const [activeTab, setActiveTab] = useState<string | null>('first');
@@ -48,7 +48,7 @@ function Demo() {
 若无需订阅 Tabs 的状态变化，请使用 `defaultValue`：
 
 ```tsx
-import { Tabs } from '@react-ui/ui';
+import { Tabs } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -119,7 +119,7 @@ function Demo() {
 渲染在 `Tabs.Panel` 内部的组件会在每次挂载（标签页切换）时重置其状态。
 
 ```tsx
-import { Tabs } from '@react-ui/ui';
+import { Tabs } from '@xiaoye-react/ui';
 
 // 第二个标签页面板仅在用户激活第二个标签页时才会挂载
 function Demo() {
@@ -141,7 +141,7 @@ function Demo() {
 
 ```tsx
 import { useRef } from 'react';
-import { Tabs } from '@react-ui/ui';
+import { Tabs } from '@xiaoye-react/ui';
 
 function Demo() {
   const secondTabRef = useRef<HTMLButtonElement>(null);
@@ -169,7 +169,7 @@ function Demo() {
 也可使用 `component` 属性将标签页渲染为链接：
 
 ```tsx
-import { Tabs } from '@react-ui/ui';
+import { Tabs } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -200,7 +200,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Tabs } from '@react-ui/ui';
+import { Tabs } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -226,7 +226,7 @@ function Demo() {
 ```tsx
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Tabs } from '@react-ui/ui';
+import { Tabs } from '@xiaoye-react/ui';
 
 function Demo() {
   const pathname = usePathname();
@@ -262,7 +262,7 @@ import {
   Route,
   useLocation,
 } from 'react-router-dom';
-import { Tabs } from '@react-ui/ui';
+import { Tabs } from '@xiaoye-react/ui';
 
 // 路由：<Route path="/tabs/:tabValue" element={<Demo />} />
 
@@ -302,7 +302,7 @@ function Demo() {
 
 ```tsx
 import { useNavigate, useParams } from 'react-router-dom';
-import { Tabs } from '@react-ui/ui';
+import { Tabs } from '@xiaoye-react/ui';
 
 function Demo() {
   const navigate = useNavigate();
@@ -327,7 +327,7 @@ function Demo() {
 ```tsx
 // 对应文件 /tabs/[activeTab].tsx
 import { useRouter } from 'next/router';
-import { Tabs } from '@react-ui/ui';
+import { Tabs } from '@xiaoye-react/ui';
 
 function Demo() {
   const router = useRouter();
@@ -364,7 +364,7 @@ function Demo() {
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { Tabs } from '@react-ui/ui';
+import { Tabs } from '@xiaoye-react/ui';
 
 function Demo() {
   const router = useRouter();
@@ -417,7 +417,7 @@ Tabs 组件遵循关于可访问性的 [WAI-ARIA 建议](https://www.w3.org/TR/w
 
 ```tsx
 import { CoinIcon } from '@phosphor-icons/react';
-import { Tabs, VisuallyHidden } from '@react-ui/ui';
+import { Tabs, VisuallyHidden } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -444,7 +444,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Tabs } from '@react-ui/ui';
+import { Tabs } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

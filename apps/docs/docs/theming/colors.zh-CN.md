@@ -44,7 +44,7 @@ description: react-ui Colors 文档。
 - 将动态字符串数组转换为 ReactUI 颜色元组（数组仍应包含 10 个值）
 
 ```tsx
-import { colorsTuple, createTheme } from '@react-ui/ui';
+import { colorsTuple, createTheme } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   colors: {
@@ -83,7 +83,7 @@ const theme = createTheme({
 > 你不能分配 CSS 颜色值；例如，以下代码会在主题合并期间抛出错误：
 >
 > ```tsx
-> import { UIProvider } from '@react-ui/ui';
+> import { UIProvider } from '@xiaoye-react/ui';
 >
 > function Demo() {
 >   return (
@@ -108,7 +108,7 @@ const theme = createTheme({
 你也可以分别为浅色和深色配色方案自定义 primary shade：
 
 ```tsx
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -194,15 +194,15 @@ interface VariantColorResolverResult {
 
 ## 颜色生成
 
-你可以使用 [颜色生成器](/colors-generator) 基于单个值生成 10 个色阶，或安装 `@react-ui/colors-generator` 包以在应用中生成动态颜色：
+你可以使用 [颜色生成器](/colors-generator) 基于单个值生成 10 个色阶，或安装 `@xiaoye-react/colors-generator` 包以在应用中生成动态颜色：
 
-<InstallScript packages="chroma-js @react-ui/colors-generator"></InstallScript>
+<InstallScript packages="chroma-js @xiaoye-react/colors-generator"></InstallScript>
 
 该包导出一个 `generateColors` 函数，它接受一个颜色值并返回 10 个色阶的数组。注意，`generateColors` 函数对深色（蓝色、紫色、红色）效果最佳，对浅色（黄色、青色、橙色）可能会产生对比度较差的颜色。通常，最好提前生成颜色以避免对比度问题。
 
 ```tsx
-import { generateColors } from '@react-ui/colors-generator';
-import { UIProvider } from '@react-ui/ui';
+import { generateColors } from '@xiaoye-react/colors-generator';
+import { UIProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -231,14 +231,14 @@ TypeScript 在访问主题时只会自动补全 ReactUI 的默认颜色。要将
 import {
   DefaultUIColor,
   UIColorsTuple,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 type ExtendedCustomColors =
   | 'primaryColorName'
   | 'secondaryColorName'
   | DefaultUIColor;
 
-declare module '@react-ui/ui' {
+declare module '@xiaoye-react/ui' {
   export interface UIThemeColorsOverride {
     colors: Record<ExtendedCustomColors, UIColorsTuple>;
   }

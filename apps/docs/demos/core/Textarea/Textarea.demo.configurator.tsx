@@ -1,9 +1,9 @@
-import { Textarea } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { Textarea } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
 const code = `
-import { Textarea } from '@react-ui/ui';
+import { Textarea } from '@xiaoye-react/ui';
 
 
 function Demo() {

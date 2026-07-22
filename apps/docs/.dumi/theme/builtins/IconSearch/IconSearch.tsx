@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { EmptyState, SegmentedControl, TextInput } from '@react-ui/ui';
+import { EmptyState, SegmentedControl, TextInput } from '@xiaoye-react/ui';
 import { useIntl } from 'dumi';
 import debounce from 'lodash/debounce';
 import { AiOutlineSearch } from 'react-icons/ai';

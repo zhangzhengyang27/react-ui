@@ -127,7 +127,7 @@ export const List = polymorphicFactory<ListFactory>((_props, _ref) => {
 List.Item = ListItem
 List.classes = classes
 ;(List as any).varsResolver = varsResolver
-List.displayName = '@react-ui/ui/List'
+List.displayName = '@xiaoye-react/ui/List'
 
 export namespace List {
     export type Props = ListProps

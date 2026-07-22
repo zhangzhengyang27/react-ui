@@ -49,9 +49,9 @@ function useFullscreenDocument(): UseFullscreenDocumentReturnValue
 
 ## 导出类型
 
-`UseFullscreenElementReturnValue` 和 `UseFullscreenDocumentReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseFullscreenElementReturnValue` 和 `UseFullscreenDocumentReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseFullscreenElementReturnValue, UseFullscreenDocumentReturnValue } from '@react-ui/hooks';
+import type { UseFullscreenElementReturnValue, UseFullscreenDocumentReturnValue } from '@xiaoye-react/hooks';
 ```

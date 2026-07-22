@@ -187,7 +187,7 @@ export const SemiCircleProgress = factory<SemiCircleProgressFactory>((_props, re
     )
 })
 
-SemiCircleProgress.displayName = '@react-ui/ui/SemiCircleProgress'
+SemiCircleProgress.displayName = '@xiaoye-react/ui/SemiCircleProgress'
 SemiCircleProgress.classes = classes
 SemiCircleProgress.varsResolver = varsResolver
 

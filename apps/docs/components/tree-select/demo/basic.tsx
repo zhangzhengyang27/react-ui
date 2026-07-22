@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TreeSelect } from '@react-ui/ui';
+import { TreeSelect } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => {

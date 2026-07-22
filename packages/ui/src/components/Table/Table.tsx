@@ -209,7 +209,7 @@ function buildDataContent(data: React.ReactNode[][] | TableData) {
 
 Table.classes = classes
 ;(Table as any).varsResolver = varsResolver
-Table.displayName = '@react-ui/ui/Table'
+Table.displayName = '@xiaoye-react/ui/Table'
 Table.Thead = Thead
 Table.Tbody = Tbody
 Table.Tfoot = Tfoot

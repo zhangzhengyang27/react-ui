@@ -1,5 +1,5 @@
 import React from 'react';
-import { Anchor, Title, Text } from '@react-ui/ui';
+import { Anchor, Title, Text } from '@xiaoye-react/ui';
 
 // MdxLink — 链接组件
 export function MdxLink({ href, children }: { href?: string; children?: React.ReactNode }) {

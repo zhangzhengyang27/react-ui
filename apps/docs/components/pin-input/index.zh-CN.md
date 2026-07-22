@@ -22,7 +22,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { PinInput } from '@react-ui/ui';
+import { PinInput } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState('');
@@ -37,7 +37,7 @@ function Demo() {
 非受控 `PinInput` 与 `FormData` 的示例用法：
 
 ```tsx
-import { PinInput } from '@react-ui/ui';
+import { PinInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -70,7 +70,7 @@ function Demo() {
 某些操作系统会暴露最后接收到的短信验证码，供键盘等应用使用。如果当前表单输入请求此验证码，键盘会自适应并提供该验证码作为键盘建议。`oneTimeCode` 属性会使输入框设置 `autocomplete="one-time-code"`，从而允许使用该功能。
 
 ```tsx
-import { PinInput } from '@react-ui/ui';
+import { PinInput } from '@xiaoye-react/ui';
 
 function OneTimeCodeInput() {
   return <PinInput oneTimeCode />;
@@ -88,7 +88,7 @@ function OneTimeCodeInput() {
 输入框没有关联标签。请设置 `aria-label` 使屏幕阅读器可以识别该组件：
 
 ```tsx
-import { PinInput } from '@react-ui/ui';
+import { PinInput } from '@xiaoye-react/ui';
 
 function Accessibility() {
   return <PinInput aria-label="一次性验证码" />;

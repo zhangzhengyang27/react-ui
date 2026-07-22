@@ -11,7 +11,7 @@ description: react-ui 更新副作用 Hook 文档。
 `use-did-update` Hook 的工作方式与 `useEffect` 相同，但组件挂载时不会被调用：
 
 ```tsx
-import { useDidUpdate } from '@react-ui/hooks';
+import { useDidUpdate } from '@xiaoye-react/hooks';
 
 function Demo() {
   useDidUpdate(

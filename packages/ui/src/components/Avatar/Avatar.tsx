@@ -141,7 +141,7 @@ export const Avatar = factory<AvatarFactory>((_props, ref) => {
 })
 
 Avatar.classes = classes
-Avatar.displayName = '@react-ui/ui/Avatar'
+Avatar.displayName = '@xiaoye-react/ui/Avatar'
 Avatar.Group = AvatarGroup
 
 export namespace Avatar {

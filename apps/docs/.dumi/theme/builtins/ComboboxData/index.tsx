@@ -1,14 +1,14 @@
 import { MdxCodeHighlight, MdxCode, MdxParagraph, MdxTitle } from '../MdxShared/base';
 
 export default function ComboboxData({ component }: { component: string }) {
-  const getStringArrayCode = `import { ${component} } from '@react-ui/ui';
+  const getStringArrayCode = `import { ${component} } from '@xiaoye-react/ui';
 
 function Demo() {
   return <${component} data={['React', 'Angular']} />;
 }
 `;
 
-  const getArrayCode = `import { ${component} } from '@react-ui/ui';
+  const getArrayCode = `import { ${component} } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -22,7 +22,7 @@ function Demo() {
 }
 `;
 
-  const getStringGroupsCode = `import { ${component} } from '@react-ui/ui';
+  const getStringGroupsCode = `import { ${component} } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -36,7 +36,7 @@ function Demo() {
 }
 `;
 
-  const getGroupsCode = `import { ${component} } from '@react-ui/ui';
+  const getGroupsCode = `import { ${component} } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

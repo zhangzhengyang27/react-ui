@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { useId, useIsomorphicEffect, useUncontrolled } from '@react-ui/hooks'
+import { useId, useIsomorphicEffect, useUncontrolled } from '@xiaoye-react/hooks'
 import type { FloatingAxesOffsets, FloatingPosition } from '../../core'
 import type { PopoverMiddlewares } from './Popover.types'
 

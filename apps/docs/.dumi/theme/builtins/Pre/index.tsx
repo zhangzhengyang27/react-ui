@@ -8,7 +8,7 @@ interface PreProps {
 /**
  * 代码块容器组件。
  * dumi 默认会处理 markdown 中的 ``` 代码围栏，本组件用于在 JSX 标签中手动渲染代码块。
- * 旧 MdxPre 依赖 @react-ui/code-highlight，这里简化为原生 pre + code。
+ * 旧 MdxPre 依赖 @xiaoye-react/code-highlight，这里简化为原生 pre + code。
  */
 const Pre: React.FC<PreProps> = ({ children, className }) => {
   return (

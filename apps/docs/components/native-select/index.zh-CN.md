@@ -28,7 +28,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { NativeSelect } from '@react-ui/ui';
+import { NativeSelect } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState('');
@@ -50,7 +50,7 @@ function Demo() {
 非受控 `NativeSelect` 与 `FormData` 的示例用法：
 
 ```tsx
-import { NativeSelect } from '@react-ui/ui';
+import { NativeSelect } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -106,7 +106,7 @@ function Demo() {
 要通过 `children` 属性添加选项，请使用 `option` 元素添加选项，使用 `optgroup` 元素进行分组：
 
 ```tsx
-import { NativeSelect } from '@react-ui/ui';
+import { NativeSelect } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -116,7 +116,7 @@ function Demo() {
 ```
 
 ```tsx
-import { NativeSelect } from '@react-ui/ui';
+import { NativeSelect } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -133,7 +133,7 @@ function Demo() {
 ```
 
 ```tsx
-import { NativeSelect } from '@react-ui/ui';
+import { NativeSelect } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -154,7 +154,7 @@ function Demo() {
 ```
 
 ```tsx
-import { NativeSelect } from '@react-ui/ui';
+import { NativeSelect } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

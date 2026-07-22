@@ -100,7 +100,7 @@ export const TabsList = factory<TabsListFactory>((props, ref) => {
     )
 })
 
-TabsList.displayName = '@react-ui/ui/TabsList'
+TabsList.displayName = '@xiaoye-react/ui/TabsList'
 TabsList.classes = classes
 
 export namespace TabsList {

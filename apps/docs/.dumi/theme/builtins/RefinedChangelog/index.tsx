@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AiOutlineBug } from 'react-icons/ai';
 import { clsx } from 'clsx';
-import { Button, Flex, Popover } from '@react-ui/ui';
+import { Button, Flex, Popover } from '@xiaoye-react/ui';
 import dayjs from 'dayjs';
 import type { Dayjs } from 'dayjs';
 

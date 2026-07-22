@@ -40,7 +40,7 @@ export const TypographyStylesProvider = polymorphicFactory<TypographyStylesProvi
 })
 
 TypographyStylesProvider.classes = classes
-TypographyStylesProvider.displayName = '@react-ui/ui/TypographyStylesProvider'
+TypographyStylesProvider.displayName = '@xiaoye-react/ui/TypographyStylesProvider'
 
 export namespace TypographyStylesProvider {
     export type Props = TypographyStylesProviderProps

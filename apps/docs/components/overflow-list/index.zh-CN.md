@@ -23,7 +23,7 @@ group:
 `OverflowList` 的 data 属性支持任意类型的数组。默认情况下，`OverflowList` 会自动从数据数组中推断数据类型。要显式指定数据类型，请向组件传入泛型类型参数：
 
 ```tsx
-import { OverflowList } from '@react-ui/ui';
+import { OverflowList } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

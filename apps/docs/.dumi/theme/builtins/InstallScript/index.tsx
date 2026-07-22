@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AiOutlineCopy } from 'react-icons/ai';
-import { SegmentedControl, Notifications } from '@react-ui/ui';
+import { SegmentedControl, Notifications } from '@xiaoye-react/ui';
 
 import classes from './index.module.css';
 
@@ -35,7 +35,7 @@ const InstallScript: React.FC<InstallScriptProps> = ({ packages, dev }) => {
   const [pm, setPm] = useState<PM>('npm');
   const pkgList = Array.isArray(packages)
     ? packages
-    : (packages ?? '@react-ui/ui').split(/\s+/).filter(Boolean);
+    : (packages ?? '@xiaoye-react/ui').split(/\s+/).filter(Boolean);
   const cmd = buildCommand(pm, pkgList, dev);
 
   const onCopy = async () => {

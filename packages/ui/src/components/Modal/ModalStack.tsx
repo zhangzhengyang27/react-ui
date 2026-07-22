@@ -43,7 +43,7 @@ export function ModalStack({ children }: ModalStackProps) {
     )
 }
 
-ModalStack.displayName = '@react-ui/ui/ModalStack'
+ModalStack.displayName = '@xiaoye-react/ui/ModalStack'
 
 export namespace ModalStack {
     export type Props = ModalStackProps

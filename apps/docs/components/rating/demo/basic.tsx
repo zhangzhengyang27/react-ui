@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Rating } from '@react-ui/ui';
+import { Rating } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => {

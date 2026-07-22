@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { useIsomorphicEffect } from '@react-ui/hooks'
+import { useIsomorphicEffect } from '@xiaoye-react/hooks'
 
 export function useResizeObserver(element: HTMLElement | null, onResize: () => void) {
     const callbackRef = useRef(onResize)

@@ -34,5 +34,5 @@ export const Td = factory<TdFactory>((props, ref) => {
     )
 })
 
-Td.displayName = '@react-ui/ui/Td'
+Td.displayName = '@xiaoye-react/ui/Td'
 Td.classes = classes

@@ -22,7 +22,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { Switch } from '@react-ui/ui';
+import { Switch } from '@xiaoye-react/ui';
 
 function Demo() {
   const [checked, setChecked] = useState(false);
@@ -44,7 +44,7 @@ function Demo() {
 非受控 `Switch` 与 `FormData` 的用法示例：
 
 ```tsx
-import { Switch } from '@react-ui/ui';
+import { Switch } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -90,7 +90,7 @@ function Demo() {
 要将光标更改为 pointer，请在 [theme](/docs/theming/theme-object/) 上设置 `cursorType`：
 
 ```tsx
-import { createTheme, UIProvider, Switch } from '@react-ui/ui';
+import { createTheme, UIProvider, Switch } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   cursorType: 'pointer',
@@ -154,7 +154,7 @@ export function UncontrolledForm() {
 
 ```tsx
 import { useState } from 'react';
-import { Switch } from '@react-ui/ui';
+import { Switch } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState<string[]>([]);
@@ -178,7 +178,7 @@ function Demo() {
 
 ```tsx
 import { useRef } from 'react';
-import { Switch } from '@react-ui/ui';
+import { Switch } from '@xiaoye-react/ui';
 
 function Demo() {
   const ref = useRef<HTMLInputElement>(null);
@@ -191,7 +191,7 @@ function Demo() {
 `Switch` 是一个普通的 `input[type="checkbox"]`。如果在没有 `label` 属性的情况下使用 `Switch`，请设置 `aria-label`：
 
 ```tsx
-import { Switch } from '@react-ui/ui';
+import { Switch } from '@xiaoye-react/ui';
 
 // -> 不好，输入框没有标签
 function Bad() {

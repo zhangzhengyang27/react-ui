@@ -1,5 +1,5 @@
 import React from 'react';
-import { Notification } from '@react-ui/ui';
+import { Notification } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

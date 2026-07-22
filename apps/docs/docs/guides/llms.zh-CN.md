@@ -59,7 +59,7 @@ ReactUI 还在 [`xiaoye/react-ui-skills`](https://github.com/xiaoye/react-ui-ski
 当前可用的 skills：
 
 - `reactui-combobox` – 使用 `Combobox` 构建自定义 select/autocomplete/multiselect 组件
-- `reactui-form` – 使用 `@react-ui/ui` 构建表单、验证、嵌套字段和表单上下文
+- `reactui-form` – 使用 `@xiaoye-react/ui` 构建表单、验证、嵌套字段和表单上下文
 - `reactui-custom-components` – 使用 ReactUI factory API 和 Styles API 创建自定义组件
 
 ### 安装 skills
@@ -89,7 +89,7 @@ npx skills add https://github.com/xiaoye/react-ui-skills --skill reactui-custom-
 
 ReactUI 还提供了一个 MCP server 包：
 
-- `@react-ui/mcp-server`
+- `@xiaoye-react/mcp-server`
 
 该服务器读取发布在 `react-ui.dev` 上的 ReactUI 静态 MCP 数据，并暴露 AI 代理可直接调用的工具：
 
@@ -123,7 +123,7 @@ ReactUI 还提供了一个 MCP server 包：
 #### Windsurf
 
 1. 打开 Windsurf MCP/server 设置
-2. 使用相同配置注册 `@react-ui/mcp-server`
+2. 使用相同配置注册 `@xiaoye-react/mcp-server`
 3. 直接在聊天中请求组件文档、props 和示例
 
 #### 其他 MCP 客户端（VS Code/Cline 等）
@@ -131,7 +131,7 @@ ReactUI 还提供了一个 MCP server 包：
 如果客户端支持自定义 MCP 服务器，请添加相同的 command 和 args：
 
 - command: `npx`
-- args: `["-y", "@react-ui/mcp-server"]`
+- args: `["-y", "@xiaoye-react/mcp-server"]`
 
 然后使用如下提示词：
 
@@ -144,7 +144,7 @@ ReactUI 还提供了一个 MCP server 包：
   "mcpServers": {
     "reactui": {
       "command": "npx",
-      "args": ["-y", "@react-ui/mcp-server"]
+      "args": ["-y", "@xiaoye-react/mcp-server"]
     }
   }
 }
@@ -155,7 +155,7 @@ ReactUI 还提供了一个 MCP server 包：
   "mcpServers": {
     "reactui": {
       "command": "npx",
-      "args": ["-y", "@react-ui/mcp-server"],
+      "args": ["-y", "@xiaoye-react/mcp-server"],
       "env": {
         "REACTUI_MCP_DATA_URL": "https://react-ui.dev/mcp"
       }

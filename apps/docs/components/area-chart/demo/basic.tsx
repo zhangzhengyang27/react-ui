@@ -1,5 +1,5 @@
 import React from 'react';
-import { AreaChart } from '@react-ui/ui';
+import { AreaChart } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

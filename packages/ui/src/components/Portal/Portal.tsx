@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { assignRef, useIsomorphicEffect } from '@react-ui/hooks'
+import { assignRef, useIsomorphicEffect } from '@xiaoye-react/hooks'
 import { factory, Factory, useProps } from '../../core'
 
 // 仅包含 Portal 会写到容器节点上的属性,供创建节点与后续增量同步复用
@@ -134,7 +134,7 @@ export const Portal = factory<PortalFactory>((props, ref) => {
     return createPortal(<>{children}</>, nodeRef.current)
 })
 
-Portal.displayName = '@react-ui/ui/Portal'
+Portal.displayName = '@xiaoye-react/ui/Portal'
 
 export namespace Portal {
     export type Props = PortalProps

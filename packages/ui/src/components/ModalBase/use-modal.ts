@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useId } from '@react-ui/hooks'
+import { useId } from '@xiaoye-react/hooks'
 import type { TransitionOverride } from '../Transition'
 import { isTopmostModal, popModal, pushModal } from './modal-stack'
 

@@ -170,7 +170,7 @@ export const SplitterResizer = factory<SplitterResizerFactory>((_props, ref) => 
 })
 
 SplitterResizer.classes = classes
-SplitterResizer.displayName = '@react-ui/ui/SplitterResizer'
+SplitterResizer.displayName = '@xiaoye-react/ui/SplitterResizer'
 
 export namespace SplitterResizer {
     export type Props = SplitterResizerProps

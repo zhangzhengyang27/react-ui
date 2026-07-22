@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel, Center, Text } from '@react-ui/ui';
+import { Carousel, Center, Text } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

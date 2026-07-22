@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 import classes from './index.module.css';
 

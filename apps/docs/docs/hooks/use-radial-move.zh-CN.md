@@ -48,9 +48,9 @@ function useRadialMove<T extends HTMLElement = HTMLDivElement>(
 
 ## 导出类型
 
-`UseRadialMoveOptions` 和 `UseRadialMoveReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseRadialMoveOptions` 和 `UseRadialMoveReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseRadialMoveOptions, UseRadialMoveReturnValue } from '@react-ui/hooks';
+import type { UseRadialMoveOptions, UseRadialMoveReturnValue } from '@xiaoye-react/hooks';
 ```

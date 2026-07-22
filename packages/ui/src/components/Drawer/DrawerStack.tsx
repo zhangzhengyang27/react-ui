@@ -43,4 +43,4 @@ export function DrawerStack({ children }: DrawerStackProps) {
     )
 }
 
-DrawerStack.displayName = '@react-ui/ui/DrawerStack'
+DrawerStack.displayName = '@xiaoye-react/ui/DrawerStack'

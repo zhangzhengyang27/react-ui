@@ -1,5 +1,5 @@
 import React from 'react';
-import { RadarChart } from '@react-ui/ui';
+import { RadarChart } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

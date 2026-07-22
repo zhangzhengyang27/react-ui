@@ -101,7 +101,7 @@ window.ResizeObserver = ResizeObserver;
 ```tsx
 // ./test-utils/render.tsx
 import { render as testingLibraryRender } from '@testing-library/react';
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 // 导入你的 theme 对象
 import { theme } from '../src/theme';
 

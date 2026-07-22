@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoadingOverlay, Box, Text } from '@react-ui/ui';
+import { LoadingOverlay, Box, Text } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

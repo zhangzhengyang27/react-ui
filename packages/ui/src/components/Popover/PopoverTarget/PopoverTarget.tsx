@@ -1,5 +1,5 @@
 import { cloneElement, useEffect } from 'react'
-import { useMergedRef } from '@react-ui/hooks'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import { factory, getSingleElementChild, useProps, type Factory } from '../../../core'
 import { usePopoverContext } from '../Popover.context'
 
@@ -47,7 +47,7 @@ export const PopoverTarget = factory<PopoverTargetFactory>((props, ref) => {
 
     // throw 必须在全部 hooks 之后：children 由有效变无效时，hooks 数量不能随条件变化（Rules of Hooks）
     if (!child) {
-        throw new Error('[@react-ui/ui] Popover.Target children should be an element or a component that accepts ref')
+        throw new Error('[@xiaoye-react/ui] Popover.Target children should be an element or a component that accepts ref')
     }
 
     return cloneElement(child, {
@@ -66,4 +66,4 @@ export const PopoverTarget = factory<PopoverTargetFactory>((props, ref) => {
     })
 })
 
-PopoverTarget.displayName = '@react-ui/ui/PopoverTarget'
+PopoverTarget.displayName = '@xiaoye-react/ui/PopoverTarget'

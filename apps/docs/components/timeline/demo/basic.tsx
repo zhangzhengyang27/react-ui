@@ -1,5 +1,5 @@
 import React from 'react';
-import { Timeline, Text } from '@react-ui/ui';
+import { Timeline, Text } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

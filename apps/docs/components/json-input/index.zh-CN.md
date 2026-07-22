@@ -30,7 +30,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { JsonInput } from '@react-ui/ui';
+import { JsonInput } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState('');
@@ -45,7 +45,7 @@ function Demo() {
 非受控 `JsonInput` 与 `FormData` 的示例用法：
 
 ```tsx
-import { JsonInput } from '@react-ui/ui';
+import { JsonInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -79,7 +79,7 @@ function Demo() {
 
 ```tsx
 import { useState } from 'react';
-import { JsonInput } from '@react-ui/ui';
+import { JsonInput } from '@xiaoye-react/ui';
 import superjson from 'superjson';
 
 function Demo() {

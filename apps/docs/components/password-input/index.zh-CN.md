@@ -28,7 +28,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { PasswordInput } from '@react-ui/ui';
+import { PasswordInput } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState('');
@@ -48,7 +48,7 @@ function Demo() {
 非受控 `PasswordInput` 与 `FormData` 的示例用法：
 
 ```tsx
-import { PasswordInput } from '@react-ui/ui';
+import { PasswordInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -90,7 +90,7 @@ function Demo() {
 注意，当使用 `rightSection` 属性时，不会渲染可见性切换按钮。
 
 ```tsx
-import { TextInput } from '@react-ui/ui';
+import { TextInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return <TextInput type="password" />;
@@ -119,7 +119,7 @@ function Demo() {
 要为可见性切换按钮设置 `aria-label`，请使用 `visibilityToggleButtonProps` 属性：
 
 ```tsx
-import { PasswordInput } from '@react-ui/ui';
+import { PasswordInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

@@ -1,6 +1,6 @@
 import React, { cloneElement, isValidElement } from 'react';
 import { AiOutlineBug } from 'react-icons/ai';
-import { Button, Drawer, Flex, Popover, Pill, Timeline } from '@react-ui/ui';
+import { Button, Drawer, Flex, Popover, Pill, Timeline } from '@xiaoye-react/ui';
 
 import type { ChangelogInfo } from '../../../hooks/useChangelog';
 import useChangelog from '../../../hooks/useChangelog';

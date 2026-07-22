@@ -21,7 +21,7 @@ Styles API 是一组 props 和技术，允许你自定义 ReactUI 组件内部�
 你可以在组件 props 和 `theme.components` 中的 `classNames` 和 `styles` 中使用这些选择器：
 
 ```tsx
-import { Button, createTheme, UIProvider } from '@react-ui/ui';
+import { Button, createTheme, UIProvider } from '@xiaoye-react/ui';
 
 function ClassNamesDemo() {
   return (
@@ -93,7 +93,7 @@ import {
   createTheme,
   UIProvider,
   TextInput,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 // 样式与上一个示例相同
 import classes from './Demo.module.css';
 
@@ -173,7 +173,7 @@ function Demo() {
 你可以使用这些 class 创建与 ReactUI 组件样式相同的组件：
 
 ```tsx
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return <button type="button" className={Button.classes.root} />;
@@ -185,7 +185,7 @@ function Demo() {
 你可以使用 `attributes` prop 将属性传递给 ReactUI 组件的内部元素。例如，它可以用于为测试目的添加 data attributes：
 
 ```tsx
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

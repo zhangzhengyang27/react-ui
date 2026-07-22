@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useId, useIsomorphicEffect } from '@react-ui/hooks'
+import { useId, useIsomorphicEffect } from '@xiaoye-react/hooks'
 import { Menu, MenuProps } from '../../Menu'
 import { MenubarMenuContextProvider, useMenubarContext } from '../Menubar.context'
 
@@ -50,4 +50,4 @@ export function MenubarMenu({ children, ...others }: MenubarMenuProps) {
     )
 }
 
-MenubarMenu.displayName = '@react-ui/ui/MenubarMenu'
+MenubarMenu.displayName = '@xiaoye-react/ui/MenubarMenu'

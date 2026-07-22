@@ -26,4 +26,4 @@ export const ModalBaseCloseButton = forwardRef<HTMLButtonElement, ModalBaseClose
     }
 )
 
-ModalBaseCloseButton.displayName = '@react-ui/ui/ModalBaseCloseButton'
+ModalBaseCloseButton.displayName = '@xiaoye-react/ui/ModalBaseCloseButton'

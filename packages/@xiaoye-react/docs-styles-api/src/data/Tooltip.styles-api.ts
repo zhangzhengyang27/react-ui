@@ -1,0 +1,21 @@
+import type { TooltipFactory } from '@xiaoye-react/ui';
+import type { StylesApiData } from '../types';
+
+export const TooltipStylesApi: StylesApiData<TooltipFactory> = {
+  selectors: {
+    tooltip: '根元素',
+    arrow: 'Tooltip arrow, rendered inside tooltip',
+  },
+
+  vars: {
+    tooltip: {
+      '--tooltip-bg': 'Tooltip `background-color`',
+      '--tooltip-radius': 'Tooltip `border-radius`',
+      '--tooltip-color': 'Controls tooltip text color',
+    },
+  },
+
+  modifiers: [
+    { modifier: 'data-multiline', selector: 'tooltip', condition: '设置了 `multiline` 属性' },
+  ],
+};

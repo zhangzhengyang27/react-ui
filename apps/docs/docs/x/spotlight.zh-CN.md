@@ -8,14 +8,14 @@ description: react-ui Spotlight 文档。
 
 ## 安装
 
-<InstallScript packages="@react-ui/ui"></InstallScript>
+<InstallScript packages="@xiaoye-react/ui"></InstallScript>
 
 安装完成后，在应用根目录导入包样式：
 
 ```tsx
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 // ‼️ spotlight 样式必须在核心包样式之后导入
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 ```
 
 ## 用法
@@ -26,16 +26,16 @@ import '@react-ui/ui/styles.css';
 
 ## 操作
 
-`@react-ui/ui` 包导出一个包含控制 spotlight 操作的对象：
+`@xiaoye-react/ui` 包导出一个包含控制 spotlight 操作的对象：
 
 
 这些操作可以传递给事件监听器，或在应用中的任何地方使用（不限于 React 组件）：
 
 
-如果你更喜欢这种语法，也可以直接从 `@react-ui/ui` 包导入这些操作：
+如果你更喜欢这种语法，也可以直接从 `@xiaoye-react/ui` 包导入这些操作：
 
 ```tsx
-import { spotlight } from '@react-ui/ui';
+import { spotlight } from '@xiaoye-react/ui';
 
 spotlight.open(); // -> 打开 spotlight
 spotlight.close(); // -> 关闭 spotlight
@@ -43,8 +43,8 @@ spotlight.toggle(); // -> 切换 spotlight 打开状态
 ```
 
 ```tsx
-import { Button } from '@react-ui/ui';
-import { spotlight } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
+import { spotlight } from '@xiaoye-react/ui';
 
 function Demo() {
   return <Button onClick={spotlight.open}>打开 spotlight</Button>;
@@ -56,7 +56,7 @@ import {
   closeSpotlight,
   openSpotlight,
   toggleSpotlight,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 openSpotlight(); // 与 spotlight.open() 相同
 closeSpotlight(); // 与 spotlight.close() 相同
@@ -68,8 +68,8 @@ toggleSpotlight(); // 与 spotlight.toggle() 相同
 上文介绍的 `spotlight` 对象使用默认状态仓库；如果你的应用中只有一个 spotlight，这样工作得很好。如果你需要多个 spotlight，需要为每个 spotlight 创建自己的状态仓库：
 
 ```tsx
-import { Button } from '@react-ui/ui';
-import { createSpotlight, Spotlight } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
+import { createSpotlight, Spotlight } from '@xiaoye-react/ui';
 
 // 你可以在应用中的任何地方导入 `firstSpotlight` 和 `secondSpotlight`
 // 并使用 `open`、`close` 和 `toggle` 操作
@@ -99,7 +99,7 @@ function Demo() {
 `Spotlight` 使用 [use-hotkeys](/docs/hooks/use-hotkeys) hook 处理键盘快捷键。默认情况下，使用 `Ctrl + K` 和 `Cmd + K` 快捷键打开 spotlight；你可以通过 `shortcut` 属性更改：
 
 ```tsx
-import { Spotlight } from '@react-ui/ui';
+import { Spotlight } from '@xiaoye-react/ui';
 
 function SingleShortcut() {
   return <Spotlight shortcut="mod + J" actions={[]} />;
@@ -185,7 +185,7 @@ type SpotlightFilterFunction = (
 `Spotlight` 组件使用 [react-remove-scroll](https://github.com/theKashey/react-remove-scroll) 包锁定滚动。要正确调整这些 `elements` 的大小，请为它们添加 `className`（[文档](https://github.com/theKashey/react-remove-scroll#positionfixed-elements)）：
 
 ```tsx
-import { RemoveScroll } from '@react-ui/ui';
+import { RemoveScroll } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

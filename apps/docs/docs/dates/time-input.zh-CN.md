@@ -26,7 +26,7 @@ description: react-ui TimeInput 文档。
 
 ```tsx
 import { useState } from 'react';
-import { TimeInput } from '@react-ui/ui';
+import { TimeInput } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState('');
@@ -60,6 +60,6 @@ function Demo() {
 
 <InputFeatures component="TimeInput" element="input"></InputFeatures>
 
-<GetElementRef component="TimeInput" refType="input" package="@react-ui/ui"></GetElementRef>
+<GetElementRef component="TimeInput" refType="input" package="@xiaoye-react/ui"></GetElementRef>
 
-<InputAccessibility component="TimeInput" packageName="@react-ui/ui"></InputAccessibility>
+<InputAccessibility component="TimeInput" packageName="@xiaoye-react/ui"></InputAccessibility>

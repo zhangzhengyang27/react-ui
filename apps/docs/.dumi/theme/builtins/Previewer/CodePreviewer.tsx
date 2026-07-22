@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { AiOutlineUp } from 'react-icons/ai';
-import { Badge } from '@react-ui/ui';
+import { Badge } from '@xiaoye-react/ui';
 import { clsx } from 'clsx';
 import { FormattedMessage, useLiveDemo, useSiteData } from 'dumi';
 

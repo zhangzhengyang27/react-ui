@@ -1,4 +1,4 @@
-import { useDidUpdate, useMergedRef, useMove, clampUseMovePosition, UseMovePosition } from '@react-ui/hooks'
+import { useDidUpdate, useMergedRef, useMove, clampUseMovePosition, UseMovePosition } from '@xiaoye-react/hooks'
 import { useContext, useRef, useState } from 'react'
 import {
     Box,
@@ -171,5 +171,5 @@ export const ColorSlider = factory<ColorSliderFactory>((_props, ref) => {
     )
 })
 
-ColorSlider.displayName = '@react-ui/ui/ColorSlider'
+ColorSlider.displayName = '@xiaoye-react/ui/ColorSlider'
 ColorSlider.classes = classes

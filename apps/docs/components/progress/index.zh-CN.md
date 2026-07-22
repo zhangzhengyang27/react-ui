@@ -51,7 +51,7 @@ group:
 设置 `aria-label` 属性以标记进度条：
 
 ```tsx
-import { Progress } from '@react-ui/ui';
+import { Progress } from '@xiaoye-react/ui';
 
 function Demo() {
   return <Progress aria-label="上传进度" value={10} />;

@@ -130,7 +130,7 @@ export const TimelineItem = factory<TimelineItemFactory>((props, ref) => {
 })
 
 TimelineItem.classes = classes
-TimelineItem.displayName = '@react-ui/ui/TimelineItem'
+TimelineItem.displayName = '@xiaoye-react/ui/TimelineItem'
 
 export namespace TimelineItem {
     export type Props = TimelineItemProps

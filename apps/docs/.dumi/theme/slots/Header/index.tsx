@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AiOutlineGithub, AiOutlineMenu } from 'react-icons/ai';
-import { ActionIcon, Alert, Popover, Select, Tooltip } from '@react-ui/ui';
+import { ActionIcon, Alert, Popover, Select, Tooltip } from '@xiaoye-react/ui';
 import { clsx } from 'clsx';
 import dayjs from 'dayjs';
 import { useLocation, useSiteData } from 'dumi';

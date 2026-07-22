@@ -18,8 +18,8 @@ import {
   Switch,
   Text,
   TextInput,
-} from '@react-ui/ui';
-import { useDisclosure } from '@react-ui/hooks';
+} from '@xiaoye-react/ui';
+import { useDisclosure } from '@xiaoye-react/hooks';
 
 import useLocale from '../../../hooks/useLocale';
 import GroupSection from './Group';
@@ -30,7 +30,7 @@ import classes from './ComponentShowcase.module.css';
 const locales = {
   cn: {
     title: '组件一览',
-    desc: '真实渲染 @react-ui/ui 组件，所见即所得。',
+    desc: '真实渲染 @xiaoye-react/ui 组件，所见即所得。',
     tabs: {
       button: '按钮',
       input: '输入',
@@ -40,7 +40,7 @@ const locales = {
   },
   en: {
     title: 'Components Showcase',
-    desc: 'Real @react-ui/ui components rendered directly.',
+    desc: 'Real @xiaoye-react/ui components rendered directly.',
     tabs: {
       button: 'Button',
       input: 'Input',
@@ -50,7 +50,7 @@ const locales = {
   },
 };
 
-const buttonCode = `import { Button, Group } from '@react-ui/ui';
+const buttonCode = `import { Button, Group } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -74,7 +74,7 @@ const ButtonPreview: React.FC = () => (
   </ReactUIDemoWrapper>
 );
 
-const inputCode = `import { TextInput, Switch, Chip, Stack } from '@react-ui/ui';
+const inputCode = `import { TextInput, Switch, Chip, Stack } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -96,7 +96,7 @@ const InputPreview: React.FC = () => (
   </ReactUIDemoWrapper>
 );
 
-const feedbackCode = `import { Progress, RingProgress, Badge, Group } from '@react-ui/ui';
+const feedbackCode = `import { Progress, RingProgress, Badge, Group } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -130,8 +130,8 @@ const FeedbackPreview: React.FC = () => (
   </ReactUIDemoWrapper>
 );
 
-const overlayCode = `import { Button, Modal, Text } from '@react-ui/ui';
-import { useDisclosure } from '@react-ui/hooks';
+const overlayCode = `import { Button, Modal, Text } from '@xiaoye-react/ui';
+import { useDisclosure } from '@xiaoye-react/hooks';
 
 function Demo() {
   const [opened, handlers] = useDisclosure(false);

@@ -1,4 +1,4 @@
-import { useId } from '@react-ui/hooks'
+import { useId } from '@xiaoye-react/hooks'
 import { useState } from 'react'
 import {
     BoxProps,
@@ -205,7 +205,7 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
 
 PasswordInput.classes = classes
 ;(PasswordInput as any).varsResolver = varsResolver
-PasswordInput.displayName = '@react-ui/ui/PasswordInput'
+PasswordInput.displayName = '@xiaoye-react/ui/PasswordInput'
 
 export namespace PasswordInput {
     export type Props = PasswordInputProps

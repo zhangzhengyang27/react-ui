@@ -91,7 +91,7 @@ export const ProgressSection = factory<ProgressSectionFactory>((_props, ref) => 
 })
 
 ProgressSection.classes = classes
-ProgressSection.displayName = '@react-ui/ui/ProgressSection'
+ProgressSection.displayName = '@xiaoye-react/ui/ProgressSection'
 
 export namespace ProgressSection {
     export type Props = ProgressSectionProps

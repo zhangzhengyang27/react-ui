@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { RangeSlider } from '@react-ui/ui';
+import { RangeSlider } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => {

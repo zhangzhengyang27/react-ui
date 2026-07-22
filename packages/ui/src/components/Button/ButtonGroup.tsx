@@ -31,4 +31,4 @@ export const ButtonGroup = factory<ButtonGroupFactory>((_props, ref) => {
     )
 })
 
-ButtonGroup.displayName = '@react-ui/ui/ButtonGroup'
+ButtonGroup.displayName = '@xiaoye-react/ui/ButtonGroup'

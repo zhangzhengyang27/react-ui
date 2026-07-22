@@ -1,9 +1,9 @@
-import { TagsInput } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { TagsInput } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
 const code = `
-import { TagsInput } from '@react-ui/ui';
+import { TagsInput } from '@xiaoye-react/ui';
 
 
 function Demo() {

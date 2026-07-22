@@ -22,7 +22,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { RangeSlider } from '@react-ui/ui';
+import { RangeSlider } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState<[number, number]>([20, 80]);
@@ -39,7 +39,7 @@ function Demo() {
 非受控 `RangeSlider` 与 `FormData` 的示例用法：
 
 ```tsx
-import { RangeSlider } from '@react-ui/ui';
+import { RangeSlider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -168,7 +168,7 @@ const marks = [
 当传入函数时，它会接收相应滑块的映射值：
 
 ```tsx
-import { RangeSlider } from '@react-ui/ui';
+import { RangeSlider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -181,7 +181,7 @@ function Demo() {
 ```
 
 ```tsx
-import { RangeSlider } from '@react-ui/ui';
+import { RangeSlider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

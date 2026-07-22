@@ -1,11 +1,11 @@
-import { Input } from '@react-ui/ui';
+import { Input } from '@xiaoye-react/ui';
 
 interface ColorsOutputProps {
   colors: string[];
 }
 
 function getProviderCode(colors: string[]) {
-  return `import { UIProvider, createTheme, UIColorsTuple } from '@react-ui/ui';
+  return `import { UIProvider, createTheme, UIColorsTuple } from '@xiaoye-react/ui';
 
 const myColor: UIColorsTuple = ${JSON.stringify(colors, null, 2).replace(/"/g, "'")};
 

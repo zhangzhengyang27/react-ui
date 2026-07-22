@@ -126,7 +126,7 @@ export const DataList = factory<DataListFactory>((_props, ref) => {
 
 DataList.classes = classes
 ;(DataList as any).varsResolver = varsResolver
-DataList.displayName = '@react-ui/ui/DataList'
+DataList.displayName = '@xiaoye-react/ui/DataList'
 DataList.Item = DataListItem
 DataList.ItemLabel = DataListItemLabel
 DataList.ItemValue = DataListItemValue

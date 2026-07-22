@@ -1,4 +1,4 @@
-import { useUncontrolled } from '@react-ui/hooks'
+import { useUncontrolled } from '@xiaoye-react/hooks'
 
 import {
     Box,
@@ -216,7 +216,7 @@ export const NavLink = polymorphicFactory<NavLinkFactory>((_props, ref) => {
 
 NavLink.classes = classes
 ;(NavLink as any).varsResolver = varsResolver
-NavLink.displayName = '@react-ui/ui/NavLink'
+NavLink.displayName = '@xiaoye-react/ui/NavLink'
 
 export namespace NavLink {
     export type Props = NavLinkProps

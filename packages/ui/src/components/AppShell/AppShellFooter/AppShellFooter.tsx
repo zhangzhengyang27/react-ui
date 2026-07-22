@@ -39,7 +39,7 @@ export const AppShellFooter = factory<AppShellFooterFactory>((_props, ref) => {
 })
 
 AppShellFooter.classes = classes
-AppShellFooter.displayName = '@react-ui/ui/AppShellFooter'
+AppShellFooter.displayName = '@xiaoye-react/ui/AppShellFooter'
 
 export namespace AppShellFooter {
     export type Props = AppShellFooterProps

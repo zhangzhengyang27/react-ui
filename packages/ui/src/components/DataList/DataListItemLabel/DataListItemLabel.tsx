@@ -40,7 +40,7 @@ export const DataListItemLabel = factory<DataListItemLabelFactory>((_props, ref)
 })
 
 DataListItemLabel.classes = classes
-DataListItemLabel.displayName = '@react-ui/ui/DataListItemLabel'
+DataListItemLabel.displayName = '@xiaoye-react/ui/DataListItemLabel'
 
 export namespace DataListItemLabel {
     export type Props = DataListItemLabelProps

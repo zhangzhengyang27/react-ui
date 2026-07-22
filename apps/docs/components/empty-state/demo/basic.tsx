@@ -1,5 +1,5 @@
 import React from 'react';
-import { EmptyState, Text, Button } from '@react-ui/ui';
+import { EmptyState, Text, Button } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

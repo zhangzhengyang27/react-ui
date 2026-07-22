@@ -10,7 +10,7 @@ description: 用于管理布尔显隐状态的 Hook。
 `useDisclosure` 用于管理布尔状态，并提供 `open`、`close` 与 `toggle` 操作函数，同时支持可选的 `onOpen` 与 `onClose` 回调。常用于控制 Modal、Popover 等需要显隐切换的组件。
 
 ```tsx
-import { useDisclosure } from '@react-ui/hooks';
+import { useDisclosure } from '@xiaoye-react/hooks';
 
 function Demo() {
   const [opened, handlers] = useDisclosure(false);
@@ -31,7 +31,7 @@ function Demo() {
 `onOpen` 与 `onClose` 回调在 `opened` 状态变化时执行：
 
 ```tsx
-import { useDisclosure } from '@react-ui/hooks';
+import { useDisclosure } from '@xiaoye-react/hooks';
 
 function Demo() {
   const [opened, handlers] = useDisclosure(false, {
@@ -81,12 +81,12 @@ function useDisclosure(
 
 ## 导出类型
 
-`UseDisclosureOptions`、`UseDisclosureHandlers` 与 `UseDisclosureReturnValue` 类型均已从 `@react-ui/hooks` 导出，可在应用中按需导入：
+`UseDisclosureOptions`、`UseDisclosureHandlers` 与 `UseDisclosureReturnValue` 类型均已从 `@xiaoye-react/hooks` 导出，可在应用中按需导入：
 
 ```tsx
 import type {
   UseDisclosureOptions,
   UseDisclosureHandlers,
   UseDisclosureReturnValue,
-} from '@react-ui/hooks';
+} from '@xiaoye-react/hooks';
 ```

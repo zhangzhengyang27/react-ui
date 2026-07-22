@@ -12,7 +12,7 @@ description: react-ui 本地存储 Hook 文档。
 该 Hook 的工作方式与 `useState` 相同，但还会将值写入 `localStorage`：
 
 ```tsx
-import { useLocalStorage } from '@react-ui/hooks';
+import { useLocalStorage } from '@xiaoye-react/hooks';
 
 // 该 Hook 会从 localStorage.getItem('color-scheme') 读取值
 // 如果 localStorage 不可用或给定键的值不存在，
@@ -35,8 +35,8 @@ setValue((current) => (current === 'dark' ? 'light' : 'dark'));
 
 ```tsx
 import { MoonStarsIcon, SunIcon } from '@phosphor-icons/react';
-import { ActionIcon } from '@react-ui/ui';
-import { useLocalStorage } from '@react-ui/hooks';
+import { ActionIcon } from '@xiaoye-react/ui';
+import { useLocalStorage } from '@xiaoye-react/hooks';
 
 function ColorSchemeToggle() {
   const [colorScheme, setColorScheme] = useLocalStorage<
@@ -65,7 +65,7 @@ function ColorSchemeToggle() {
 当值被移除时，它会重置为 `defaultValue`：
 
 ```tsx
-import { useLocalStorage } from '@react-ui/hooks';
+import { useLocalStorage } from '@xiaoye-react/hooks';
 
 const [value, setValue, removeValue] = useLocalStorage({
   key: 'color-scheme',
@@ -86,7 +86,7 @@ const [value, setValue, removeValue] = useLocalStorage({
 如果你需要存储无法通过 `JSON.stringify` 序列化的数据——请提供你自己的序列化处理函数：
 
 ```tsx
-import { useLocalStorage } from '@react-ui/hooks';
+import { useLocalStorage } from '@xiaoye-react/hooks';
 
 const [value, setValue] = useLocalStorage({
   key: 'color-scheme',
@@ -105,7 +105,7 @@ const [value, setValue] = useLocalStorage({
 
 ```tsx
 import superjson from 'superjson';
-import { useLocalStorage } from '@react-ui/hooks';
+import { useLocalStorage } from '@xiaoye-react/hooks';
 
 const defaultValue = { name: '张三', age: 25 };
 
@@ -123,7 +123,7 @@ const [value, setValue] = useLocalStorage({
 `use-session-storage` Hook 的工作方式与 `use-local-storage` Hook 相同，但使用 `sessionStorage` 而不是 `window.localStorage`：
 
 ```tsx
-import { useSessionStorage } from '@react-ui/hooks';
+import { useSessionStorage } from '@xiaoye-react/hooks';
 
 const [value, setValue] = useSessionStorage({
   key: 'session-key',
@@ -136,7 +136,7 @@ const [value, setValue] = useSessionStorage({
 你可以像 `useState` Hook 一样指定值类型：
 
 ```tsx
-import { useLocalStorage } from '@react-ui/hooks';
+import { useLocalStorage } from '@xiaoye-react/hooks';
 
 const [value, setValue] = useLocalStorage<'dark' | 'light'>({
   key: 'color-scheme',
@@ -150,7 +150,7 @@ const [value, setValue] = useLocalStorage<'dark' | 'light'>({
 这些函数接受与 `use-local-storage`/`use-session-storage` Hook 相同的参数：
 
 ```tsx
-import { readLocalStorageValue } from '@react-ui/hooks';
+import { readLocalStorageValue } from '@xiaoye-react/hooks';
 
 const value = readLocalStorageValue({ key: 'color-scheme' });
 ```
@@ -191,9 +191,9 @@ function useLocalStorage<T = string>(
 
 ## 导出类型
 
-`UseStorageOptions` 和 `UseStorageReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseStorageOptions` 和 `UseStorageReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseStorageOptions, UseStorageReturnValue } from '@react-ui/hooks';
+import type { UseStorageOptions, UseStorageReturnValue } from '@xiaoye-react/hooks';
 ```

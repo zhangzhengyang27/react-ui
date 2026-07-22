@@ -154,7 +154,7 @@ export const PieChart = factory<PieChartFactory>((_props, ref) => {
 
 PieChart.classes = classes
 ;(PieChart as any).varsResolver = varsResolver
-PieChart.displayName = '@react-ui/ui/PieChart'
+PieChart.displayName = '@xiaoye-react/ui/PieChart'
 
 export namespace PieChart {
     export type Props = PieChartProps

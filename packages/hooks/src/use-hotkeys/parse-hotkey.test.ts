@@ -1,6 +1,6 @@
 import { getHotkeyMatcher, parseHotkey } from './parse-hotkey';
 
-describe('@react-ui/hooks/use-hot-key/parse-hotkey', () => {
+describe('@xiaoye-react/hooks/use-hot-key/parse-hotkey', () => {
   it('should parse hotkey correctly', () => {
     expect(parseHotkey('meta+S')).toMatchObject({
       alt: false,

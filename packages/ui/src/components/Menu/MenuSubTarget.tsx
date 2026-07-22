@@ -19,7 +19,7 @@ export function MenuSubTarget(props: MenuSubTargetProps) {
     const child = getSingleElementChild(children) as React.ReactElement<any>
 
     if (!child) {
-        throw new Error('[@react-ui/ui] Menu.Sub.Target children should be an element or a component that accepts ref')
+        throw new Error('[@xiaoye-react/ui] Menu.Sub.Target children should be an element or a component that accepts ref')
     }
 
     const childProps = child.props as any
@@ -42,4 +42,4 @@ export function MenuSubTarget(props: MenuSubTargetProps) {
     )
 }
 
-MenuSubTarget.displayName = '@react-ui/ui/MenuSubTarget'
+MenuSubTarget.displayName = '@xiaoye-react/ui/MenuSubTarget'

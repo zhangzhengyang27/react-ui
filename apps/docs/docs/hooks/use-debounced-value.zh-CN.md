@@ -64,9 +64,9 @@ function useDebouncedValue<T = any>(
 
 ## 导出类型
 
-`UseDebouncedValueOptions` 和 `UseDebouncedValueReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseDebouncedValueOptions` 和 `UseDebouncedValueReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseDebouncedValueOptions, UseDebouncedValueReturnValue } from '@react-ui/hooks';
+import type { UseDebouncedValueOptions, UseDebouncedValueReturnValue } from '@xiaoye-react/hooks';
 ```

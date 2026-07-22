@@ -57,7 +57,7 @@ function stringifyValue(value: unknown, depth = 0): string {
  * - 含 token 时把 token 转换为 CSS 变量覆盖代码（通过 <style> 注入到 :root）。
  */
 export function generateThemeCode(themeConfig?: any): string {
-  const importLines = ["import { UIProvider } from '@react-ui/ui';"];
+  const importLines = ["import { UIProvider } from '@xiaoye-react/ui';"];
 
   const token = themeConfig?.token;
   const tokenKeys = token && typeof token === 'object' ? Object.keys(token) : [];
@@ -110,7 +110,7 @@ export function generateFullCopyFile(params: { themeConfig?: any; copyCode?: str
       '// ========== App.tsx ==========',
       '',
       "import React from 'react';",
-      "import { UIProvider } from '@react-ui/ui';",
+      "import { UIProvider } from '@xiaoye-react/ui';",
       '',
       'export default () => {',
       '  return (',

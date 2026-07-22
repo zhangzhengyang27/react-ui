@@ -55,7 +55,7 @@ export const Textarea = factory<TextareaFactory>((_props, ref) => {
 })
 
 Textarea.classes = classes
-Textarea.displayName = '@react-ui/ui/Textarea'
+Textarea.displayName = '@xiaoye-react/ui/Textarea'
 
 export namespace Textarea {
     export type Props = TextareaProps

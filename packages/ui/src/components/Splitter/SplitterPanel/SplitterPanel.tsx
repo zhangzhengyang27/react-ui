@@ -58,7 +58,7 @@ export const SplitterPanel = factory<SplitterPanelFactory>((_props, ref) => {
 })
 
 SplitterPanel.classes = classes
-SplitterPanel.displayName = '@react-ui/ui/SplitterPanel'
+SplitterPanel.displayName = '@xiaoye-react/ui/SplitterPanel'
 // 静态标记:供 Splitter 的 isPanel 识别(HOC/memo 包装后 displayName 可能丢失)
 SplitterPanel.isSplitterPanel = true
 

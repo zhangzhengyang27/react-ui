@@ -103,7 +103,7 @@ export const Code = polymorphicFactory<CodeFactory>((_props, _ref) => {
 
 Code.classes = classes
 ;(Code as any).varsResolver = varsResolver
-Code.displayName = '@react-ui/ui/Code'
+Code.displayName = '@xiaoye-react/ui/Code'
 
 export namespace Code {
     export type Props = CodeProps

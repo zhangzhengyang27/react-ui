@@ -1,5 +1,5 @@
 import { FiCode, FiEdit3, FiTerminal, FiZap } from 'react-icons/fi';
-import { SimpleGrid } from '@react-ui/ui';
+import { SimpleGrid } from '@xiaoye-react/ui';
 import { HomePageContainer } from '../shared/Container';
 import { HomePageDescription } from '../shared/Description';
 import { HomePageFeatures, HomePageFeaturesData } from '../shared/Features';
@@ -39,7 +39,7 @@ export function FormSection() {
             <div className={classes.main}>
               <HomePageTitle order={2}>表单库</HomePageTitle>
               <HomePageDescription className={classes.description}>
-                @react-ui/form — 专为 ReactUI 组件设计的高性能表单库，与所有 ReactUI 输入组件
+                @xiaoye-react/form — 专为 ReactUI 组件设计的高性能表单库，与所有 ReactUI 输入组件
                 开箱即用。
               </HomePageDescription>
               <HomePageLearnMore href="/docs/react/getting-started">探索全部表单功能</HomePageLearnMore>
@@ -49,7 +49,7 @@ export function FormSection() {
           <div className={classes.column}>
             <div className={classes.codePreview}>
               <pre className={classes.codeBlock}>
-                <code>{`import { useForm } from '@react-ui/form';
+                <code>{`import { useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',

@@ -12,7 +12,7 @@ description: react-ui CustomComponents 文档。
 CSS 变量以及后面介绍的其他属性。除 `props` 外，所有属性都是可选的。
 
 
-创建的 `ExampleComponentFactory` 随后作为第一个类型参数传递给所有从 `@react-ui/ui` 包导入的辅助函数：
+创建的 `ExampleComponentFactory` 随后作为第一个类型参数传递给所有从 `@xiaoye-react/ui` 包导入的辅助函数：
 上例中的 `useStyles`、`createVarsResolver` 和 `factory`。
 
 `Factory` 类型用于验证和 IDE 自动补全。它不会修改传入的类型：
@@ -185,7 +185,7 @@ const defaultProps: Partial<ExampleComponentProps> = {
 ```
 
 ```tsx
-import { UIProvider, Button, Group, createTheme } from '@react-ui/ui';
+import { UIProvider, Button, Group, createTheme } from '@xiaoye-react/ui';
 import { ExampleComponent } from './ExampleComponent';
 
 const theme = createTheme({
@@ -264,7 +264,7 @@ const getStyles = useStyles<ExampleComponentFactory>({
 `varsResolver` 在 [Button](/components/button) 组件中的使用示例：
 
 ```tsx
-import { getFontSize, getSize, createVarsResolver } from '@react-ui/ui';
+import { getFontSize, getSize, createVarsResolver } from '@xiaoye-react/ui';
 
 const varsResolver = createVarsResolver<ButtonFactory>(
   (theme, { radius, color, gradient, variant, size, justify, autoContrast }) => {
@@ -339,7 +339,7 @@ ReactUI 组件支持命名空间导出，以将相关类型与组件分组。
 [Button](/components/button) 组件命名空间导出示例：
 
 ```tsx
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 // Props 类型，无需单独导入
 type Props = Button.Props;
@@ -392,7 +392,7 @@ import {
   StylesApiProps,
   useProps,
   useStyles,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 import classes from './PolymorphicExample.module.css';
 
 export type PolymorphicExampleStylesNames = 'root';
@@ -442,7 +442,7 @@ export const PolymorphicExample = polymorphicFactory<PolymorphicExampleFactory>(
   return <Box {...getStyles('root')} {...others} />;
 });
 
-PolymorphicExample.displayName = '@react-ui/ui/PolymorphicExample';
+PolymorphicExample.displayName = '@xiaoye-react/ui/PolymorphicExample';
 ```
 
 ## genericFactory

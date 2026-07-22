@@ -37,7 +37,7 @@ function isPanel(child: React.ReactNode): child is React.ReactElement {
     const type = child.type as any
     // 优先查静态标记,displayName 字符串匹配仅作兜底,
     // 避免 HOC/memo 包装后 displayName 变化导致 Panel 被静默丢弃
-    return type?.isSplitterPanel === true || type?.displayName === '@react-ui/ui/SplitterPanel'
+    return type?.isSplitterPanel === true || type?.displayName === '@xiaoye-react/ui/SplitterPanel'
 }
 
 export const Splitter = factory<SplitterFactory>((_props, ref) => {
@@ -108,7 +108,7 @@ Splitter.Panel = SplitterPanel
 Splitter.Pane = SplitterPanel
 Splitter.Resizer = SplitterResizer
 Splitter.classes = classes
-Splitter.displayName = '@react-ui/ui/Splitter'
+Splitter.displayName = '@xiaoye-react/ui/Splitter'
 
 export namespace Splitter {
     export type Props = SplitterProps

@@ -87,7 +87,7 @@ interface UseScrollerReturnValue<T extends HTMLElement = HTMLDivElement> {
 
 ## 导出类型
 
-`UseScrollerOptions`、`UseScrollerReturnValue` 和 `UseScrollerScrollState` 类型从 `@react-ui/hooks` 包导出，
+`UseScrollerOptions`、`UseScrollerReturnValue` 和 `UseScrollerScrollState` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
@@ -95,5 +95,5 @@ import type {
   UseScrollerOptions,
   UseScrollerReturnValue,
   UseScrollerScrollState,
-} from '@react-ui/hooks';
+} from '@xiaoye-react/hooks';
 ```

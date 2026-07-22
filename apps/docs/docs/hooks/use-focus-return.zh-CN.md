@@ -21,7 +21,7 @@ description: react-ui 焦点返回 Hook 文档。
 如果 `shouldReturnFocus` 选项设置为 `false`，你可以调用返回的函数来聚焦最后一个活动元素：
 
 ```tsx
-import { useFocusReturn } from '@react-ui/hooks';
+import { useFocusReturn } from '@xiaoye-react/hooks';
 
 useFocusReturn({
   // 焦点陷阱区域是否处于活动状态？
@@ -35,7 +35,7 @@ useFocusReturn({
 ```
 
 ```tsx
-import { useFocusReturn } from '@react-ui/hooks';
+import { useFocusReturn } from '@xiaoye-react/hooks';
 
 const returnFocus = useFocusReturn({
   opened: false,
@@ -61,9 +61,9 @@ function useFocusReturn(options: UseFocusReturnOptions): UseFocusReturnReturnVal
 
 ## 导出类型
 
-`UseFocusReturnOptions` 和 `UseFocusReturnReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseFocusReturnOptions` 和 `UseFocusReturnReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseFocusReturnOptions, UseFocusReturnReturnValue } from '@react-ui/hooks';
+import type { UseFocusReturnOptions, UseFocusReturnReturnValue } from '@xiaoye-react/hooks';
 ```

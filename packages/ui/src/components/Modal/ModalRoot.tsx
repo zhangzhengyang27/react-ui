@@ -125,7 +125,7 @@ export const ModalRoot = factory<ModalRootFactory>((_props, _ref) => {
 
 ModalRoot.classes = classes
 ModalRoot.varsResolver = varsResolver
-ModalRoot.displayName = '@react-ui/ui/ModalRoot'
+ModalRoot.displayName = '@xiaoye-react/ui/ModalRoot'
 
 export namespace ModalRoot {
     export type Props = ModalRootProps

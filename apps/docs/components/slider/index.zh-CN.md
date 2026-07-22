@@ -22,7 +22,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { Slider } from '@react-ui/ui';
+import { Slider } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState(40);
@@ -39,7 +39,7 @@ function Demo() {
 非受控 `Slider` 与 `FormData` 的示例用法：
 
 ```tsx
-import { Slider } from '@react-ui/ui';
+import { Slider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -197,7 +197,7 @@ const marks = [
 当传入函数时，它会接收映射后的值：
 
 ```tsx
-import { Slider } from '@react-ui/ui';
+import { Slider } from '@xiaoye-react/ui';
 
 function Demo() {
   return <Slider thumbLabel="Thumb aria-label" />;
@@ -205,7 +205,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Slider } from '@react-ui/ui';
+import { Slider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

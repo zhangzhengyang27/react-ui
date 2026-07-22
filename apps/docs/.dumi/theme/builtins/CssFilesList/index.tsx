@@ -1,6 +1,6 @@
 import React from 'react';
 import { FiCheck, FiCopy } from 'react-icons/fi';
-import { ActionIcon, Code, CopyButton, Group } from '@react-ui/ui';
+import { ActionIcon, Code, CopyButton, Group } from '@xiaoye-react/ui';
 import CSS_FILES_LIST from '@docs/css-exports';
 import DataTable from '../DataTable';
 
@@ -13,7 +13,7 @@ interface CssFilePathProps {
 }
 
 function CssFilePath({ filePath }: CssFilePathProps) {
-  const importCode = `import '@react-ui/ui/styles/${filePath}';`;
+  const importCode = `import '@xiaoye-react/ui/styles/${filePath}';`;
   return (
     <Group wrap="nowrap" gap={5}>
       <CopyButton value={importCode}>

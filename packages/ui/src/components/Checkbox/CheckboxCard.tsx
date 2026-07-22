@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react'
-import { useUncontrolled } from '@react-ui/hooks'
+import { useUncontrolled } from '@xiaoye-react/hooks'
 import {
     BoxProps,
     createVarsResolver,
@@ -130,7 +130,7 @@ export const CheckboxCard = factory<CheckboxCardFactory>((_props, ref) => {
                         // 决策 C：不再伪造 checked 调 onChange（此前会谎报 checked=true 但 UI 永不变）
                         if (process.env.NODE_ENV !== 'production') {
                             console.warn(
-                                '[@react-ui/ui] CheckboxCard is used within Checkbox.Group without a `value` prop, the click is ignored. Provide a `value` to make it checkable.'
+                                '[@xiaoye-react/ui] CheckboxCard is used within Checkbox.Group without a `value` prop, the click is ignored. Provide a `value` to make it checkable.'
                             )
                         }
                         return
@@ -150,7 +150,7 @@ export const CheckboxCard = factory<CheckboxCardFactory>((_props, ref) => {
 
 CheckboxCard.classes = classes
 ;(CheckboxCard as any).varsResolver = varsResolver
-CheckboxCard.displayName = '@react-ui/ui/CheckboxCard'
+CheckboxCard.displayName = '@xiaoye-react/ui/CheckboxCard'
 
 export namespace CheckboxCard {
     export type Props = CheckboxCardProps

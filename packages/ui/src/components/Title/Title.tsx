@@ -114,7 +114,7 @@ export const Title = factory<TitleFactory>((_props, _ref) => {
 
 Title.classes = classes
 ;(Title as any).varsResolver = varsResolver
-Title.displayName = '@react-ui/ui/Title'
+Title.displayName = '@xiaoye-react/ui/Title'
 
 export namespace Title {
     export type Props = TitleProps

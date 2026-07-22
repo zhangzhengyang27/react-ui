@@ -1,9 +1,9 @@
-import { Input } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { Input } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { inputOnlyControls } from '../../shared';
 
 const code = `
-import { Input } from '@react-ui/ui';
+import { Input } from '@xiaoye-react/ui';
 
 function Demo() {
   return <Input{{props}} placeholder="输入组件" />;

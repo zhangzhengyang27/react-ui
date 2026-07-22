@@ -22,7 +22,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { Rating } from '@react-ui/ui';
+import { Rating } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState(0);
@@ -37,7 +37,7 @@ function Demo() {
 非受控 `Rating` 与 `FormData` 的示例用法：
 
 ```tsx
-import { Rating } from '@react-ui/ui';
+import { Rating } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

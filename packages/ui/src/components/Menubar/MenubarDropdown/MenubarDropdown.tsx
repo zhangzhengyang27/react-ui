@@ -87,4 +87,4 @@ export function MenubarDropdown(props: MenubarDropdownProps) {
     )
 }
 
-MenubarDropdown.displayName = '@react-ui/ui/MenubarDropdown'
+MenubarDropdown.displayName = '@xiaoye-react/ui/MenubarDropdown'

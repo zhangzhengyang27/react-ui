@@ -1,0 +1,50 @@
+{
+  "name": "@xiaoye-react/emotion",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Emotion bindings for React UI",
+  "homepage": "https://react-ui.dev/",
+  "license": "MIT",
+  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
+  "keywords": [
+    "react",
+    "ui"
+  ],
+  "sideEffects": false,
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    }
+  },
+  "repository": {
+    "url": "https://github.com/react-ui/react-ui.git",
+    "type": "git",
+    "directory": "packages/@xiaoye-react/emotion"
+  },
+  "peerDependencies": {
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.11.4",
+    "@emotion/serialize": "^1.1.4",
+    "@emotion/utils": "^1.2.1",
+    "@xiaoye-react/ui": "workspace:*",
+    "@xiaoye-react/hooks": "workspace:*",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "dependencies": {
+    "csstype": "^3.2.3",
+    "html-react-parser": "^5.2.17"
+  },
+  "devDependencies": {
+    "@emotion/cache": "^11.14.0",
+    "@xiaoye-react/ui": "workspace:*",
+    "@xiaoye-react/hooks": "workspace:*",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  }
+}

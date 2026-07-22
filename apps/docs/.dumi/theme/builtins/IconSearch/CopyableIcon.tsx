@@ -1,5 +1,5 @@
 import React from 'react';
-import { Notifications } from '@react-ui/ui';
+import { Notifications } from '@xiaoye-react/ui';
 import { clsx } from 'clsx';
 
 import useLocale from '../../../hooks/useLocale';

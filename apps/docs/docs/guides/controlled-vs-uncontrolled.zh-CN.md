@@ -18,7 +18,7 @@ React 成为表单数据的唯一真实来源。
 
 ```tsx
 import { useState } from 'react';
-import { TextInput } from '@react-ui/ui';
+import { TextInput } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState('');
@@ -45,7 +45,7 @@ function Demo() {
 
 ```tsx
 import { useRef } from 'react';
-import { TextInput, Button } from '@react-ui/ui';
+import { TextInput, Button } from '@xiaoye-react/ui';
 
 function Demo() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -97,7 +97,7 @@ function Demo() {
 使用非受控 `Checkbox` 与 `FormData` 的示例：
 
 ```tsx
-import { Checkbox } from '@react-ui/ui';
+import { Checkbox } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -117,15 +117,15 @@ function Demo() {
 
 ## 非受控 use-form
 
-[@react-ui/ui](/docs/form/use-form) 支持非受控模式，可用于构建高性能的大型表单。如果你正在处理包含大量字段的复杂表单，
+[@xiaoye-react/ui](/docs/form/use-form) 支持非受控模式，可用于构建高性能的大型表单。如果你正在处理包含大量字段的复杂表单，
 非受控模式下的 `useForm` hook 是一个很好的选择。
 
 使用 `useForm` 的非受控模式示例：
 
 ```tsx
 import { useState } from 'react';
-import { Button, Code, Text, TextInput } from '@react-ui/ui';
-import { hasLength, isEmail, useForm } from '@react-ui/ui';
+import { Button, Code, Text, TextInput } from '@xiaoye-react/ui';
+import { hasLength, isEmail, useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({

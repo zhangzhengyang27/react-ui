@@ -143,7 +143,7 @@ export const DrawerRoot = factory<DrawerRootFactory>((_props, ref) => {
 })
 
 DrawerRoot.classes = classes
-DrawerRoot.displayName = '@react-ui/ui/DrawerRoot'
+DrawerRoot.displayName = '@xiaoye-react/ui/DrawerRoot'
 
 export namespace DrawerRoot {
     export type Props = DrawerRootProps

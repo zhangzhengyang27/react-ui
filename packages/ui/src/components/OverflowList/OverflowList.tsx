@@ -2,7 +2,7 @@
 // Contains the modified version adapted for UI
 import { cloneElement, isValidElement, useMemo, useRef, useState } from 'react'
 import { Fragment } from 'react/jsx-runtime'
-import { useIsomorphicEffect, useMergedRef } from '@react-ui/hooks'
+import { useIsomorphicEffect, useMergedRef } from '@xiaoye-react/hooks'
 import {
     Box,
     BoxProps,
@@ -348,7 +348,7 @@ export const OverflowList = factory<OverflowListFactory>((_props, _ref) => {
     )
 })
 
-OverflowList.displayName = '@react-ui/ui/OverflowList'
+OverflowList.displayName = '@xiaoye-react/ui/OverflowList'
 OverflowList.classes = classes
 OverflowList.varsResolver = varsResolver
 

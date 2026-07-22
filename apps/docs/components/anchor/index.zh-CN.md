@@ -30,7 +30,7 @@ group:
 还可使用 [default props](/docs/theming/default-props) 为所有 `Anchor` 组件配置 `underline` 属性：
 
 ```tsx
-import { Anchor, createTheme, UIProvider } from '@react-ui/ui';
+import { Anchor, createTheme, UIProvider } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   components: {

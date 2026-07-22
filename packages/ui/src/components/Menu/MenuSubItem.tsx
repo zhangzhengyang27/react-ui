@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useMergedRef } from '@react-ui/hooks'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import {
     type BoxProps,
     type CompoundStylesApiProps,
@@ -134,4 +134,4 @@ export const MenuSubItem = factory<MenuSubItemFactory>((props, ref) => {
 })
 
 MenuSubItem.classes = classes
-MenuSubItem.displayName = '@react-ui/ui/MenuSubItem'
+MenuSubItem.displayName = '@xiaoye-react/ui/MenuSubItem'

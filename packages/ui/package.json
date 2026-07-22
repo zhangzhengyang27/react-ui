@@ -1,5 +1,5 @@
 {
-    "name": "@react-ui/ui",
+    "name": "@xiaoye-react/ui",
     "version": "1.0.0",
     "description": "小叶的 react ui 组件库",
     "type": "module",
@@ -29,7 +29,7 @@
         "type-fest": "4.41.0"
     },
     "devDependencies": {
-        "@react-ui/hooks": "workspace:*",
+        "@xiaoye-react/hooks": "workspace:*",
         "@testing-library/jest-dom": "^6.4.6",
         "@testing-library/react": "^16.0.0",
         "@types/jsdom": "^21.1.7",
@@ -43,7 +43,7 @@
         "vitest": "^1.6.0"
     },
     "peerDependencies": {
-        "@react-ui/hooks": "workspace:*",
+        "@xiaoye-react/hooks": "workspace:*",
         "react": "19.1.1",
         "react-dom": "19.1.1"
     },

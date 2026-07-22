@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
-import { Alert, Divider, EmptyState, Skeleton, Tabs } from '@react-ui/ui';
+import { Alert, Divider, EmptyState, Skeleton, Tabs } from '@xiaoye-react/ui';
 import dayjs from 'dayjs';
 import { FormattedMessage } from 'dumi';
 

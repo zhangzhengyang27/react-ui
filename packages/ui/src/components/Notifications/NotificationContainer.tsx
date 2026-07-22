@@ -91,4 +91,4 @@ export function NotificationContainer({
     )
 }
 
-NotificationContainer.displayName = '@react-ui/ui/NotificationContainer'
+NotificationContainer.displayName = '@xiaoye-react/ui/NotificationContainer'

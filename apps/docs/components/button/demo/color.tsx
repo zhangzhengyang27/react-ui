@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Group } from '@react-ui/ui';
+import { Button, Group } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const palette = ['blue', 'grape', 'violet', 'pink', 'red', 'orange', 'yellow', 'lime', 'green', 'teal', 'cyan'] as const;

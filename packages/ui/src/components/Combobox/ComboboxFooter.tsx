@@ -23,4 +23,4 @@ export const ComboboxFooter = factory<ComboboxFooterFactory>((_props, ref) => {
     )
 })
 
-ComboboxFooter.displayName = '@react-ui/ui/ComboboxFooter'
+ComboboxFooter.displayName = '@xiaoye-react/ui/ComboboxFooter'

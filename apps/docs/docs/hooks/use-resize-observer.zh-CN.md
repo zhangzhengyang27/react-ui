@@ -21,7 +21,7 @@ description: react-ui 尺寸观察者 Hook 文档。
 如果你只需要订阅 `width` 和 `height`，请参阅 [use-element-size](/docs/hooks/use-element-size/) Hook。
 
 ```tsx
-import { useResizeObserver } from '@react-ui/hooks';
+import { useResizeObserver } from '@xiaoye-react/hooks';
 
 function Demo() {
   const [ref, rect] = useResizeObserver();

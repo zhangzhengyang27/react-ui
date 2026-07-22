@@ -1,9 +1,9 @@
-import { Select } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { Select } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
 const code = `
-import { Select } from '@react-ui/ui';
+import { Select } from '@xiaoye-react/ui';
 
 
 function Demo() {

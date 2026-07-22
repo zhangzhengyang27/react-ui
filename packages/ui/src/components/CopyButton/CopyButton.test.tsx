@@ -13,7 +13,7 @@ Object.assign(navigator, {
     }
 })
 
-describe('@react-ui/ui/CopyButton', () => {
+describe('@xiaoye-react/ui/CopyButton', () => {
     it('calls children with copy function and copied state', () => {
         render(
             <CopyButton value="test-value">

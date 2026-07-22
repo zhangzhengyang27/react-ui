@@ -19,26 +19,26 @@ description: react-ui CssFilesList 文档。
 如果你不确定某个组件内部使用了哪些组件，可以导入所有被复用组件的样式：
 
 ```tsx
-import '@react-ui/ui/styles/UnstyledButton.css';
-import '@react-ui/ui/styles/Button.css';
+import '@xiaoye-react/ui/styles/UnstyledButton.css';
+import '@xiaoye-react/ui/styles/Button.css';
 ```
 
 ```tsx
-import '@react-ui/ui/styles/ScrollArea.css';
-import '@react-ui/ui/styles/UnstyledButton.css';
-import '@react-ui/ui/styles/VisuallyHidden.css';
-import '@react-ui/ui/styles/Paper.css';
-import '@react-ui/ui/styles/Popover.css';
-import '@react-ui/ui/styles/CloseButton.css';
-import '@react-ui/ui/styles/Group.css';
-import '@react-ui/ui/styles/Loader.css';
-import '@react-ui/ui/styles/Overlay.css';
-import '@react-ui/ui/styles/ModalBase.css';
-import '@react-ui/ui/styles/Input.css';
-import '@react-ui/ui/styles/InlineInput.css';
-import '@react-ui/ui/styles/Flex.css';
-import '@react-ui/ui/styles/FloatingIndicator.css';
-import '@react-ui/ui/styles/ActionIcon.css';
+import '@xiaoye-react/ui/styles/ScrollArea.css';
+import '@xiaoye-react/ui/styles/UnstyledButton.css';
+import '@xiaoye-react/ui/styles/VisuallyHidden.css';
+import '@xiaoye-react/ui/styles/Paper.css';
+import '@xiaoye-react/ui/styles/Popover.css';
+import '@xiaoye-react/ui/styles/CloseButton.css';
+import '@xiaoye-react/ui/styles/Group.css';
+import '@xiaoye-react/ui/styles/Loader.css';
+import '@xiaoye-react/ui/styles/Overlay.css';
+import '@xiaoye-react/ui/styles/ModalBase.css';
+import '@xiaoye-react/ui/styles/Input.css';
+import '@xiaoye-react/ui/styles/InlineInput.css';
+import '@xiaoye-react/ui/styles/Flex.css';
+import '@xiaoye-react/ui/styles/FloatingIndicator.css';
+import '@xiaoye-react/ui/styles/ActionIcon.css';
 ```
 
 ## 全局样式
@@ -50,9 +50,9 @@ import '@react-ui/ui/styles/ActionIcon.css';
 - `global.css` – ReactUI 组件中使用的全局 class
 
 ```tsx
-import '@react-ui/ui/styles/baseline.css';
-import '@react-ui/ui/styles/default-css-variables.css';
-import '@react-ui/ui/styles/global.css';
+import '@xiaoye-react/ui/styles/baseline.css';
+import '@xiaoye-react/ui/styles/default-css-variables.css';
+import '@xiaoye-react/ui/styles/global.css';
 ```
 
 ## 导入顺序
@@ -63,14 +63,14 @@ import '@react-ui/ui/styles/global.css';
 
 ```tsx
 // ✅ 正确顺序 – Button 样式会覆盖 UnstyledButton 样式
-import '@react-ui/ui/styles/UnstyledButton.css';
-import '@react-ui/ui/styles/Button.css';
+import '@xiaoye-react/ui/styles/UnstyledButton.css';
+import '@xiaoye-react/ui/styles/Button.css';
 ```
 
 ```tsx
 // ❌ 错误顺序 – UnstyledButton 样式会覆盖 Button 样式
-import '@react-ui/ui/styles/Button.css';
-import '@react-ui/ui/styles/UnstyledButton.css';
+import '@xiaoye-react/ui/styles/Button.css';
+import '@xiaoye-react/ui/styles/UnstyledButton.css';
 ```
 
 ## 文件列表

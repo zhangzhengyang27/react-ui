@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Tooltip } from '@react-ui/ui';
+import { Button, Tooltip } from '@xiaoye-react/ui';
 import { clsx } from 'clsx';
 
 import classes from './SwitchBtn.module.css';

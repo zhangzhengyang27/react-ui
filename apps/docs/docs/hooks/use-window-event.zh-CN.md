@@ -12,7 +12,7 @@ description: react-ui 窗口事件 Hook 文档。
 
 ```tsx
 import { useEffect } from 'react';
-import { useWindowEvent } from '@react-ui/hooks';
+import { useWindowEvent } from '@xiaoye-react/hooks';
 
 const handler = (event: KeyboardEvent) => console.log(event);
 
@@ -32,7 +32,7 @@ useWindowEvent('keydown', handler);
 
 ```tsx
 import { useRef } from 'react';
-import { useWindowEvent } from '@react-ui/hooks';
+import { useWindowEvent } from '@xiaoye-react/hooks';
 
 function Demo() {
   const inputRef = useRef<HTMLInputElement>(null);

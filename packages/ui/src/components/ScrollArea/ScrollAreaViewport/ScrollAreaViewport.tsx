@@ -1,4 +1,4 @@
-import { useMergedRef } from '@react-ui/hooks'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import { Box, BoxProps, ElementProps } from '../../../core'
 import { useScrollAreaContext } from '../ScrollArea.context'
 
@@ -44,4 +44,4 @@ export function ScrollAreaViewport({ children, style, ref, onWheel, ...others }:
     )
 }
 
-ScrollAreaViewport.displayName = '@react-ui/ui/ScrollAreaViewport'
+ScrollAreaViewport.displayName = '@xiaoye-react/ui/ScrollAreaViewport'

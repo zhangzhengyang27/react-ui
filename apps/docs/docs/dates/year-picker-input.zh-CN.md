@@ -113,6 +113,6 @@ description: react-ui YearPickerInput 文档。
 
 <InputFeatures component="MonthPickerInput" element="button"></InputFeatures>
 
-<GetElementRef component="YearPickerInput" refType="button" package="@react-ui/ui"></GetElementRef>
+<GetElementRef component="YearPickerInput" refType="button" package="@xiaoye-react/ui"></GetElementRef>
 
-<InputAccessibility component="YearPickerInput" packageName="@react-ui/ui"></InputAccessibility>
+<InputAccessibility component="YearPickerInput" packageName="@xiaoye-react/ui"></InputAccessibility>

@@ -16,7 +16,7 @@ group:
 
 ### 用法
 
-Notification 是通知系统的基础组件。可基于它构建自己的通知系统，或使用 [@react-ui/ui](/docs/x/notifications/) 包。
+Notification 是通知系统的基础组件。可基于它构建自己的通知系统，或使用 [@xiaoye-react/ui](/docs/x/notifications/) 包。
 
 <code src="./demo/configurator.tsx"></code>
 
@@ -31,7 +31,7 @@ Notification 是通知系统的基础组件。可基于它构建自己的通知�
 为了支持屏幕阅读器，请使用 `closeButtonProps` 设置关闭按钮的 aria-label 或 title：
 
 ```tsx
-import { Notification } from '@react-ui/ui';
+import { Notification } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

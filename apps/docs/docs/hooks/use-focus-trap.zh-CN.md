@@ -12,7 +12,7 @@ description: react-ui 焦点陷阱 Hook 文档。
 该节点必须至少包含一个可聚焦元素。当节点卸载时，焦点陷阱会自动释放。
 
 ```tsx
-import { useFocusTrap } from '@react-ui/hooks';
+import { useFocusTrap } from '@xiaoye-react/hooks';
 
 function Demo() {
   const focusTrapRef = useFocusTrap();
@@ -33,7 +33,7 @@ function Demo() {
 该 Hook 返回应传递给元素的 `ref`：
 
 ```tsx
-import { useFocusTrap } from '@react-ui/hooks';
+import { useFocusTrap } from '@xiaoye-react/hooks';
 
 useFocusTrap(); // -> 焦点陷阱未激活
 useFocusTrap(true); // -> 焦点陷阱激活
@@ -42,8 +42,8 @@ useFocusTrap(false); // -> 焦点陷阱禁用
 ```
 
 ```tsx
-import { Paper } from '@react-ui/ui';
-import { useFocusTrap } from '@react-ui/hooks';
+import { Paper } from '@xiaoye-react/ui';
+import { useFocusTrap } from '@xiaoye-react/hooks';
 
 function Demo() {
   const focusTrapRef = useFocusTrap();
@@ -70,7 +70,7 @@ import {
   useClickOutside,
   useFocusTrap,
   useMergedRef,
-} from '@react-ui/hooks';
+} from '@xiaoye-react/hooks';
 
 function Demo() {
   const myRef = useRef();
@@ -92,7 +92,7 @@ function Demo() {
 要指定应接收初始焦点的元素，请添加 `data-autofocus` 属性：
 
 ```tsx
-import { useFocusTrap } from '@react-ui/hooks';
+import { useFocusTrap } from '@xiaoye-react/hooks';
 
 function Demo() {
   const focusTrapRef = useFocusTrap();

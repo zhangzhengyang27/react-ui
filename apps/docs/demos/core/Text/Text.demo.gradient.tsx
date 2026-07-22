@@ -1,9 +1,9 @@
-import { Text } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { Text } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { gradientControls } from '../../shared';
 
 const code = (props: any) => `
-import { Text } from '@react-ui/ui';
+import { Text } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

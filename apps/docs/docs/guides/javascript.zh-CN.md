@@ -8,8 +8,8 @@ description: react-ui Javascript 文档。
 
 ## 可以将 ReactUI 与 JavaScript 一起使用吗？
 
-是的，所有 `@react-ui/*` 包（以及所有其他 npm 包）都可以与 JavaScript 一起使用。
-`@react-ui/*` 包使用 TypeScript 编写并具有类型定义，因此即使与 JavaScript 一起使用，
+是的，所有 `@xiaoye-react/*` 包（以及所有其他 npm 包）都可以与 JavaScript 一起使用。
+`@xiaoye-react/*` 包使用 TypeScript 编写并具有类型定义，因此即使与 JavaScript 一起使用，
 你也能获得一些 TypeScript 的好处（如 IDE 自动补全）。
 
 ## 将演示代码转换为 JavaScript
@@ -23,7 +23,7 @@ ReactUI 文档中的所有演示都是用 TypeScript 编写的。在大多数情
 
 ```tsx
 // TypeScript 代码
-import { Button, ButtonProps } from '@react-ui/ui';
+import { Button, ButtonProps } from '@xiaoye-react/ui';
 
 interface MyButtonProps extends ButtonProps {
   myProp: string;
@@ -36,7 +36,7 @@ function MyButton({ myProp, ...others }: MyButtonProps) {
 
 ```tsx
 // JavaScript 代码
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 function MyButton({ myProp, ...others }) {
   return <Button {...others} />;

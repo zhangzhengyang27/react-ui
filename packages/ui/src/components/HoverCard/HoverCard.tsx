@@ -229,7 +229,7 @@ export function HoverCard(_props: HoverCardProps) {
 
 HoverCard.Target = HoverCardTarget
 HoverCard.Dropdown = HoverCardDropdown
-HoverCard.displayName = '@react-ui/ui/HoverCard'
+HoverCard.displayName = '@xiaoye-react/ui/HoverCard'
 
 export namespace HoverCard {
     export type Props = HoverCardProps

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Blockquote } from '@react-ui/ui';
+import { Blockquote } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { useId, useMergedRef, useUncontrolled } from '@react-ui/hooks'
+import { useId, useMergedRef, useUncontrolled } from '@xiaoye-react/hooks'
 import {
     Box,
     BoxProps,
@@ -284,7 +284,7 @@ export const Checkbox = factory<CheckboxFactory>((_props, ref) => {
 
 Checkbox.classes = classes
 ;(Checkbox as any).varsResolver = varsResolver
-Checkbox.displayName = '@react-ui/ui/Checkbox'
+Checkbox.displayName = '@xiaoye-react/ui/Checkbox'
 ;(Checkbox as any).Group = CheckboxGroup
 Checkbox.Indicator = CheckboxIndicator
 Checkbox.Card = CheckboxCard

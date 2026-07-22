@@ -1,9 +1,9 @@
-import { Button } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { Button } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { interactiveVariantsControl } from '../../shared';
 
 const code = `
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return <Button{{props}}>按钮</Button>;

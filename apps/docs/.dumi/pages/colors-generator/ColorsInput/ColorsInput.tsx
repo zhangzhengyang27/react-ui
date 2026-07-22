@@ -10,8 +10,8 @@ import {
   rem,
   Switch,
   TextInput,
-} from '@react-ui/ui';
-import { useClipboard } from '@react-ui/hooks';
+} from '@xiaoye-react/ui';
+import { useClipboard } from '@xiaoye-react/hooks';
 import { COLORS_PRESET } from './colors-preset';
 import classes from './ColorsInput.module.css';
 

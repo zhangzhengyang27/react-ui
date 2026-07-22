@@ -32,7 +32,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { NumberInput } from '@react-ui/ui';
+import { NumberInput } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState<string | number>('');
@@ -49,7 +49,7 @@ function Demo() {
 非受控 `NumberInput` 与 `FormData` 的用法示例：
 
 ```tsx
-import { NumberInput } from '@react-ui/ui';
+import { NumberInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -101,7 +101,7 @@ function Demo() {
 当需要访问格式化值或有关变化的元数据时（例如，它来自用户输入、增减按钮还是程序化更改），请使用 `onValueChange`。对于简单的表单处理，`onChange` 已足够。
 
 ```tsx
-import { NumberInput } from '@react-ui/ui';
+import { NumberInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -135,7 +135,7 @@ function Demo() {
 当用户尝试使用控件或键盘箭头递增超过 `max` 或递减低于 `min` 时，会触发这些回调。
 
 ```tsx
-import { NumberInput } from '@react-ui/ui';
+import { NumberInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -155,7 +155,7 @@ function Demo() {
 这在希望用户替换值而非编辑时非常有用：
 
 ```tsx
-import { NumberInput } from '@react-ui/ui';
+import { NumberInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return <NumberInput selectAllOnFocus defaultValue={100} />;

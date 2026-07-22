@@ -1,10 +1,10 @@
-# @react-ui/ui
+# @xiaoye-react/ui
 
 > 小叶的 React 组件库，对标 Mantine 设计理念，提供完整的主题系统、表单、浮层、图表等 128+ 组件。
 
 ## 简介
 
-`@react-ui/ui` 是基于 React 19 的现代化组件库，具有以下特点：
+`@xiaoye-react/ui` 是基于 React 19 的现代化组件库，具有以下特点：
 
 - **主题系统**：完整的 CSS 变量主题，支持明暗双模式切换，可通过 `varsResolver` 灵活定制
 - **组件丰富**：128+ 组件覆盖表单输入、选择器、浮层、导航、数据展示、反馈等场景
@@ -17,16 +17,16 @@
 ## 安装
 
 ```bash
-pnpm add @react-ui/ui
+pnpm add @xiaoye-react/ui
 # 或
-npm install @react-ui/ui
+npm install @xiaoye-react/ui
 ```
 
 ## 使用
 
 ```tsx
-import { Button, TextInput, UIProvider } from '@react-ui/ui'
-import '@react-ui/ui/style.css'
+import { Button, TextInput, UIProvider } from '@xiaoye-react/ui'
+import '@xiaoye-react/ui/style.css'
 
 function App() {
     return (
@@ -41,7 +41,7 @@ function App() {
 ## 主题定制
 
 ```tsx
-import { UIProvider, createTheme } from '@react-ui/ui'
+import { UIProvider, createTheme } from '@xiaoye-react/ui'
 
 const customTheme = createTheme({
     primaryColor: 'blue',

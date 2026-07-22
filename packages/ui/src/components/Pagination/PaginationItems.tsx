@@ -34,4 +34,4 @@ export function PaginationItems({ dotsIcon }: PaginationItemsProps) {
     return <>{items}</>
 }
 
-PaginationItems.displayName = '@react-ui/ui/PaginationItems'
+PaginationItems.displayName = '@xiaoye-react/ui/PaginationItems'

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react'
-import { assignRef, useId, useMergedRef, useUncontrolled } from '@react-ui/hooks'
+import { assignRef, useId, useMergedRef, useUncontrolled } from '@xiaoye-react/hooks'
 import {
     factory,
     useProps,
@@ -436,7 +436,7 @@ export const MaskInput = factory<MaskInputFactory>((_props, ref) => {
 })
 
 MaskInput.classes = classes
-MaskInput.displayName = '@react-ui/ui/MaskInput'
+MaskInput.displayName = '@xiaoye-react/ui/MaskInput'
 
 export namespace MaskInput {
     export type Props = MaskInputProps

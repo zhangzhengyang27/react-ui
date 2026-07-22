@@ -1,4 +1,4 @@
-import { usePagination } from '@react-ui/hooks'
+import { usePagination } from '@xiaoye-react/hooks'
 import {
     Box,
     createVarsResolver,
@@ -213,4 +213,4 @@ export const PaginationRoot = factory<PaginationRootFactory>((_props, ref) => {
 
 PaginationRoot.classes = classes
 ;(PaginationRoot as any).varsResolver = varsResolver
-PaginationRoot.displayName = '@react-ui/ui/PaginationRoot'
+PaginationRoot.displayName = '@xiaoye-react/ui/PaginationRoot'

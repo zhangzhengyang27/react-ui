@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { AiOutlineLink, AiOutlineQuestionCircle, AiOutlineRight } from 'react-icons/ai';
-import { Flex, Popover, Table } from '@react-ui/ui';
+import { Flex, Popover, Table } from '@xiaoye-react/ui';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-jsx';
 

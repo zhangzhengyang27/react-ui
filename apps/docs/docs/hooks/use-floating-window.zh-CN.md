@@ -134,9 +134,9 @@ interface UseFloatingWindowReturnValue<T extends HTMLElement> {
 
 ## 导出类型
 
-`UseFloatingWindowOptions` 和 `UseFloatingWindowReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseFloatingWindowOptions` 和 `UseFloatingWindowReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseFloatingWindowOptions, UseFloatingWindowReturnValue } from '@react-ui/hooks';
+import type { UseFloatingWindowOptions, UseFloatingWindowReturnValue } from '@xiaoye-react/hooks';
 ```

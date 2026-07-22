@@ -1,9 +1,9 @@
-import { Button, Tooltip } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { Button, Tooltip } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { FLOATING_POSITION_DATA } from '../../shared';
 
 const code = (props: any) => `
-import { Tooltip, Button } from '@react-ui/ui';
+import { Tooltip, Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

@@ -83,6 +83,6 @@ dayjs.extend(customParseFormat);
 
 <InputFeatures component="DateInput" element="input"></InputFeatures>
 
-<GetElementRef component="DateInput" refType="input" package="@react-ui/ui"></GetElementRef>
+<GetElementRef component="DateInput" refType="input" package="@xiaoye-react/ui"></GetElementRef>
 
-<InputAccessibility component="DateInput" packageName="@react-ui/ui"></InputAccessibility>
+<InputAccessibility component="DateInput" packageName="@xiaoye-react/ui"></InputAccessibility>

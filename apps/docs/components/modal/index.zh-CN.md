@@ -115,7 +115,7 @@ Modal 使用 [FocusTrap](/components/focus-trap/) 来捕获焦点。将 `data-au
 包来锁定滚动。可通过 `removeScrollProps` 将属性传递给 `RemoveScroll` 组件：
 
 ```tsx
-import { Modal } from '@react-ui/ui';
+import { Modal } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -202,7 +202,7 @@ interface UseModalsStackReturnType<T extends string> {
 ```
 
 ```tsx
-import { Modal, useModalsStack } from '@react-ui/ui';
+import { Modal, useModalsStack } from '@xiaoye-react/ui';
 
 function Demo() {
   const stack = useModalsStack(['first', 'second']);
@@ -223,7 +223,7 @@ function Demo() {
 包来锁定滚动。要正确调整这些元素的大小，请为它们添加 `className`（[文档](https://github.com/theKashey/react-remove-scroll#positionfixed-elements)）：
 
 ```tsx
-import { RemoveScroll } from '@react-ui/ui';
+import { RemoveScroll } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -249,7 +249,7 @@ function Demo() {
 要设置关闭按钮的 `aria-label`，请使用 `closeButtonProps`：
 
 ```tsx
-import { Modal } from '@react-ui/ui';
+import { Modal } from '@xiaoye-react/ui';
 
 function Demo() {
   return <Modal title="模态框标签" opened onClose={() => {}} />;
@@ -257,7 +257,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Modal } from '@react-ui/ui';
+import { Modal } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

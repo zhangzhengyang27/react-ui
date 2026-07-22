@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { useUncontrolled } from '@react-ui/hooks'
+import { useUncontrolled } from '@xiaoye-react/hooks'
 import { useProps } from '../../core'
 import { MenuCheckboxGroupContext } from './MenuCheckboxGroup.context'
 
@@ -42,4 +42,4 @@ export function MenuCheckboxGroup(_props: MenuCheckboxGroupProps) {
     )
 }
 
-MenuCheckboxGroup.displayName = '@react-ui/ui/MenuCheckboxGroup'
+MenuCheckboxGroup.displayName = '@xiaoye-react/ui/MenuCheckboxGroup'

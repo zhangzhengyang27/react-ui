@@ -49,7 +49,7 @@ Avatar.Group 内部的子 Avatar 之间不应再包裹额外元素，但可用�
 与 [Tooltip](/components/tooltip/) 配合使用的示例：
 
 ```tsx
-import { Avatar } from '@react-ui/ui';
+import { Avatar } from '@xiaoye-react/ui';
 
 // 以下写法无法正常工作
 function Demo() {
@@ -77,7 +77,7 @@ function Demo() {
 Avatar 渲染 `<img />` HTML 元素。建议始终设置 `alt` 属性以描述图片内容；当图片无法加载时，`alt` 也会作为占位符的 `title` 属性。
 
 ```tsx
-import { Avatar } from '@react-ui/ui';
+import { Avatar } from '@xiaoye-react/ui';
 
 function Demo() {
   // ❌ 未设置 alt

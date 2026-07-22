@@ -1,5 +1,5 @@
 import React from "react";
-import { AlphaSlider } from "@react-ui/ui";
+import { AlphaSlider } from "@xiaoye-react/ui";
 import DemoWrap from "../../_util/demoWrap";
 
 const App: React.FC = () => (

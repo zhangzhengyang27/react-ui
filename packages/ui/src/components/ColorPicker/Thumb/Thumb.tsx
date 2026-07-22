@@ -16,4 +16,4 @@ export function Thumb({ position, ...others }: ThumbProps) {
     )
 }
 
-Thumb.displayName = '@react-ui/ui/ColorPickerThumb'
+Thumb.displayName = '@xiaoye-react/ui/ColorPickerThumb'

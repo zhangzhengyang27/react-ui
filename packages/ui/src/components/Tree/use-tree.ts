@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useRef, useState } from 'react'
-import { useUncontrolled } from '@react-ui/hooks'
+import { useUncontrolled } from '@xiaoye-react/hooks'
 import { CheckedNodeStatus, getAllCheckedNodes } from './get-all-checked-nodes/get-all-checked-nodes'
 import {
     findTreeNode,

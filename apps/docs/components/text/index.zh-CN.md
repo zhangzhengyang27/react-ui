@@ -58,7 +58,7 @@ Text 始终应用 font-size、font-family 和 line-height 样式，
 使用 `span` 属性作为 `component="span"` 的简写：
 
 ```tsx
-import { Text } from '@react-ui/ui';
+import { Text } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

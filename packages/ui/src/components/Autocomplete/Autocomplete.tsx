@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { useId, useUncontrolled } from '@react-ui/hooks'
+import { useId, useUncontrolled } from '@xiaoye-react/hooks'
 import { BoxProps, factory, Factory, UISize, rem, StylesApiProps, useProps, useStyles } from '../../core'
 import { CloseButton } from '../CloseButton'
 import { Combobox } from '../Combobox'
@@ -313,7 +313,7 @@ function renderOptions(data: ComboboxOptionData[]) {
 }
 
 Autocomplete.classes = classes
-Autocomplete.displayName = '@react-ui/ui/Autocomplete'
+Autocomplete.displayName = '@xiaoye-react/ui/Autocomplete'
 
 export namespace Autocomplete {
     export type Props = AutocompleteProps

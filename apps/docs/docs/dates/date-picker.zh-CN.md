@@ -175,7 +175,7 @@ description: react-ui DatePicker 文档。
 
 ## 本地化
 
-通常最好在 [DatesProvider](/docs/dates/getting-started/) 中指定 `@react-ui/ui` 包的 locale，
+通常最好在 [DatesProvider](/docs/dates/getting-started/) 中指定 `@xiaoye-react/ui` 包的 locale，
 但你也可以按组件覆盖 locale：
 
 <code src="./date-picker/demo/locale.tsx"></code>
@@ -199,7 +199,7 @@ description: react-ui DatePicker 文档。
 <KeyboardEventsTable data={[ { key: 'ArrowRight', description: '聚焦下一个非禁用日期', }, { key: 'ArrowLeft', description: '聚焦上一个非禁用日期', }, { key: 'ArrowDown', description: '聚焦同一列中的下一个非禁用日期', }, { key: 'ArrowUp', description: '聚焦同一列中的上一个非禁用日期', }, ]}></KeyboardEventsTable>
 
 ```tsx
-import { DatePicker } from '@react-ui/ui';
+import { DatePicker } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -220,7 +220,7 @@ function Demo() {
 ```
 
 ```tsx
-import { DatePicker } from '@react-ui/ui';
+import { DatePicker } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

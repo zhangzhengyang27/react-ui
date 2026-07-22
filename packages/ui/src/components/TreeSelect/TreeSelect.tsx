@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react'
-import { useId, useUncontrolled } from '@react-ui/hooks'
+import { useId, useUncontrolled } from '@xiaoye-react/hooks'
 import {
     BoxProps,
     ElementProps,
@@ -926,4 +926,4 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
 })
 
 TreeSelect.classes = { ...InputBase.classes, ...classes }
-TreeSelect.displayName = '@react-ui/ui/TreeSelect'
+TreeSelect.displayName = '@xiaoye-react/ui/TreeSelect'

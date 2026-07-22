@@ -1,9 +1,9 @@
-import { NumberInput } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { NumberInput } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
 const code = `
-import { NumberInput } from '@react-ui/ui';
+import { NumberInput } from '@xiaoye-react/ui';
 
 
 function Demo() {

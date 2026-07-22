@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Button, Flex, Tooltip, Text } from '@react-ui/ui';
+import { Button, Flex, Tooltip, Text } from '@xiaoye-react/ui';
 
 import useLocale from '../../../hooks/useLocale';
 import ExternalLinkIcon from '../../icons/ExternalLinkIcon';

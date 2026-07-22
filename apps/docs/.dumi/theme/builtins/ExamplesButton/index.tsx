@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineExport } from 'react-icons/ai';
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 interface ExamplesButtonProps {
   label: string;

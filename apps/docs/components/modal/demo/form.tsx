@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Group, Modal, Stack, Text, TextInput } from '@react-ui/ui';
+import { Button, Group, Modal, Stack, Text, TextInput } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => {

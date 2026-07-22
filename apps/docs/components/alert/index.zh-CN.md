@@ -27,7 +27,7 @@ group:
 - 设置 `closeButtonLabel` 属性以使关闭按钮可访问
 
 ```tsx
-import { Alert } from '@react-ui/ui';
+import { Alert } from '@xiaoye-react/ui';
 
 function Invalid() {
   // -> 不正确

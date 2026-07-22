@@ -1,5 +1,5 @@
 import cx from 'clsx';
-import { Text, TextProps } from '@react-ui/ui';
+import { Text, TextProps } from '@xiaoye-react/ui';
 import classes from './HomePageDescription.module.css';
 
 interface HomePageDescriptionProps extends TextProps {}

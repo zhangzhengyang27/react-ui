@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pill } from '@react-ui/ui';
+import { Pill } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

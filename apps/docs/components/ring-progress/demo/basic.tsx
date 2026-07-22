@@ -1,5 +1,5 @@
 import React from 'react';
-import { RingProgress } from '@react-ui/ui';
+import { RingProgress } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

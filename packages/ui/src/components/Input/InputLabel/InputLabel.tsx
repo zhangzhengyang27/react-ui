@@ -111,4 +111,4 @@ export const InputLabel = factory<InputLabelFactory>((_props, ref) => {
 
 InputLabel.classes = classes
 InputLabel.varsResolver = varsResolver
-InputLabel.displayName = '@react-ui/ui/InputLabel'
+InputLabel.displayName = '@xiaoye-react/ui/InputLabel'

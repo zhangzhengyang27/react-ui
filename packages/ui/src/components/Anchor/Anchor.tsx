@@ -45,7 +45,7 @@ export const Anchor = polymorphicFactory<AnchorFactory>((props, _ref) => {
 })
 
 Anchor.classes = classes
-Anchor.displayName = '@react-ui/ui/Anchor'
+Anchor.displayName = '@xiaoye-react/ui/Anchor'
 
 export namespace Anchor {
     export type Props = AnchorProps

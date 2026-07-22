@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TagsInput } from '@react-ui/ui';
+import { TagsInput } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => {

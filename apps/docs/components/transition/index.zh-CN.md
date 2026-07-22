@@ -23,7 +23,7 @@ Transition 组件用于为固定或绝对定位的元素添加出现/消失动�
 Transition 组件的示例用法：
 
 ```tsx
-import { Transition } from '@react-ui/ui';
+import { Transition } from '@xiaoye-react/ui';
 
 function Demo({ opened }: { opened: boolean }) {
   return (
@@ -42,7 +42,7 @@ ReactUI 包含几个预设过渡：
 要使用其中一个，请将 `transition` 属性设置为以下值之一：
 
 ```tsx
-import { Transition } from '@react-ui/ui';
+import { Transition } from '@xiaoye-react/ui';
 
 function Demo({ opened }: { opened: boolean }) {
   return (
@@ -83,7 +83,7 @@ Transition 尊重 `prefers-reduced-motion` 媒体查询和主题中的 `respectR
 这提高了对前庭障碍用户的可访问性，他们可能会因动画而感到晕动症。
 
 ```tsx
-import { createTheme, UIProvider, Transition } from '@react-ui/ui';
+import { createTheme, UIProvider, Transition } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   respectReducedMotion: true, // default
@@ -110,7 +110,7 @@ function Demo() {
 - `onExited` - 退出过渡完成时调用
 
 ```tsx
-import { Transition } from '@react-ui/ui';
+import { Transition } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -140,7 +140,7 @@ function Demo() {
 - 保持焦点/滚动位置
 
 ```tsx
-import { Transition } from '@react-ui/ui';
+import { Transition } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

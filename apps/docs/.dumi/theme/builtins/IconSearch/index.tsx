@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Skeleton } from '@react-ui/ui';
+import { Skeleton } from '@xiaoye-react/ui';
 
 import classes from './index.module.css';
 

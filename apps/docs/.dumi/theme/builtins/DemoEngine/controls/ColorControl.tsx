@@ -11,7 +11,7 @@ import {
   Popover,
   TextInput,
   UnstyledButton,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 import { ColorWheelIcon } from './ColorWheelIcon';
 import { getControlLabel } from './get-control-label';
 import { ConfiguratorControl } from './types';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineRobot } from 'react-icons/ai';
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 import classes from './index.module.css';
 

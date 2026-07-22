@@ -1,6 +1,6 @@
 import { useLocation } from 'dumi';
-import { useComputedUIColorScheme, useDirection, useUIColorScheme } from '@react-ui/ui';
-import { useHotkeys } from '@react-ui/hooks';
+import { useComputedUIColorScheme, useDirection, useUIColorScheme } from '@xiaoye-react/ui';
+import { useHotkeys } from '@xiaoye-react/hooks';
 
 const EXCLUDE_RTL = ['/combobox'];
 

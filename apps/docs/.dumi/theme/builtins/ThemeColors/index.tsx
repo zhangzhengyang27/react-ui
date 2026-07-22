@@ -1,5 +1,5 @@
 import React from 'react';
-import { DEFAULT_THEME, SimpleGrid } from '@react-ui/ui';
+import { DEFAULT_THEME, SimpleGrid } from '@xiaoye-react/ui';
 import ColorsGroup from './ColorsGroup';
 
 const ThemeColors: React.FC = () => {

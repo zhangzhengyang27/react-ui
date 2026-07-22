@@ -100,7 +100,7 @@ export const ProgressRoot = factory<ProgressRootFactory>((_props, ref) => {
 })
 
 ProgressRoot.classes = classes
-ProgressRoot.displayName = '@react-ui/ui/ProgressRoot'
+ProgressRoot.displayName = '@xiaoye-react/ui/ProgressRoot'
 
 export namespace ProgressRoot {
     export type Props = ProgressRootProps

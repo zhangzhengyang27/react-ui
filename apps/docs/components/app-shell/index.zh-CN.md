@@ -23,8 +23,8 @@ group:
 Navbar 在移动端默认隐藏，可以通过汉堡按钮切换。
 
 ```tsx
-import { AppShell, Burger } from '@react-ui/ui';
-import { useDisclosure } from '@react-ui/hooks';
+import { AppShell, Burger } from '@xiaoye-react/ui';
+import { useDisclosure } from '@xiaoye-react/hooks';
 
 function Demo() {
   const [opened, { toggle }] = useDisclosure();
@@ -119,7 +119,7 @@ interface Configuration {
 - 当视口宽度 >= `theme.breakpoints.lg` 时，`height` 为 76
 
 ```tsx
-import { AppShell } from '@react-ui/ui';
+import { AppShell } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -131,7 +131,7 @@ function Demo() {
 ```
 
 ```tsx
-import { AppShell } from '@react-ui/ui';
+import { AppShell } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -161,7 +161,7 @@ function Demo() {
 - 当视口宽度 >= `theme.breakpoints.lg` 时，`width` 为 300
 
 ```tsx
-import { AppShell } from '@react-ui/ui';
+import { AppShell } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -173,7 +173,7 @@ function Demo() {
 ```
 
 ```tsx
-import { AppShell } from '@react-ui/ui';
+import { AppShell } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -205,7 +205,7 @@ function Demo() {
 - 当视口宽度 >= `theme.breakpoints.lg` 时，`padding` 为 `theme.spacing.xl`
 
 ```tsx
-import { AppShell } from '@react-ui/ui';
+import { AppShell } from '@xiaoye-react/ui';
 
 function Demo() {
   return <AppShell padding="md">{/* AppShell 内容 */}</AppShell>;
@@ -213,7 +213,7 @@ function Demo() {
 ```
 
 ```tsx
-import { AppShell } from '@react-ui/ui';
+import { AppShell } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -233,8 +233,8 @@ function Demo() {
 在向下滚动时隐藏 header，向上滚动时显示 header（[示例](/app-shell?e=Headroom)）。
 
 ```tsx
-import { AppShell, rem } from '@react-ui/ui';
-import { useHeadroom } from '@react-ui/hooks';
+import { AppShell, rem } from '@xiaoye-react/ui';
+import { useHeadroom } from '@xiaoye-react/hooks';
 
 function Demo() {
   const { pinned } = useHeadroom({ fixedAt: 120 });
@@ -264,8 +264,8 @@ function Demo() {
 针对移动端和桌面端分别设置折叠状态的[示例](/app-shell?e=CollapseDesktop)：
 
 ```tsx
-import { AppShell, Button } from '@react-ui/ui';
-import { useDisclosure } from '@react-ui/hooks';
+import { AppShell, Button } from '@xiaoye-react/ui';
+import { useDisclosure } from '@xiaoye-react/hooks';
 
 export function CollapseDesktop() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
@@ -310,7 +310,7 @@ export function CollapseDesktop() {
 要移除特定组件的边框，请在该组件上设置 `withBorder={false}`：
 
 ```tsx
-import { AppShell } from '@react-ui/ui';
+import { AppShell } from '@xiaoye-react/ui';
 
 // 所有组件都不会有边框
 function Demo() {
@@ -321,7 +321,7 @@ function Demo() {
 ```
 
 ```tsx
-import { AppShell } from '@react-ui/ui';
+import { AppShell } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -343,7 +343,7 @@ function Demo() {
 要更改特定部分的 `z-index`，请在该部分上设置 `zIndex` 属性：
 
 ```tsx
-import { AppShell } from '@react-ui/ui';
+import { AppShell } from '@xiaoye-react/ui';
 
 // 所有部分的 z-index 为 200
 function Demo() {
@@ -352,7 +352,7 @@ function Demo() {
 ```
 
 ```tsx
-import { AppShell } from '@react-ui/ui';
+import { AppShell } from '@xiaoye-react/ui';
 
 // AppShell.Header 的 z-index 为 100
 // AppShell.Navbar 和 AppShell.Aside 的 z-index 为 300
@@ -372,7 +372,7 @@ function Demo() {
 在 `AppShell` 组件上使用 `transitionDuration` 和 `transitionTimingFunction` 属性来控制部分动画：
 
 ```tsx
-import { AppShell } from '@react-ui/ui';
+import { AppShell } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -392,7 +392,7 @@ function Demo() {
 当想在应用的某些页面上隐藏 shell 时，这很有用。
 
 ```tsx
-import { AppShell } from '@react-ui/ui';
+import { AppShell } from '@xiaoye-react/ui';
 
 function Demo() {
   return <AppShell disabled>{/* AppShell 内容 */}</AppShell>;
@@ -412,7 +412,7 @@ function Demo() {
 - 带有 `grow` 的中间部分占用所有剩余空间，并在内容超过可用高度时可滚动
 
 ```tsx
-import { AppShell, ScrollArea } from '@react-ui/ui';
+import { AppShell, ScrollArea } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

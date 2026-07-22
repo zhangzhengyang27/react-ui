@@ -11,7 +11,7 @@ description: react-ui 非受控状态 Hook 文档。
 `use-uncontrolled` Hook 用于管理受控组件和非受控组件的状态：
 
 ```tsx
-import { useUncontrolled } from '@react-ui/hooks';
+import { useUncontrolled } from '@xiaoye-react/hooks';
 
 interface CustomInputProps {
   value?: string;
@@ -46,7 +46,7 @@ function CustomInput({
 默认情况下，Hook 会自动设置类型，但你可以提供自己的类型：
 
 ```tsx
-import { useUncontrolled } from '@react-ui/hooks';
+import { useUncontrolled } from '@xiaoye-react/hooks';
 
 function Demo() {
   const [_value, handleChange] = useUncontrolled<number>({
@@ -91,8 +91,8 @@ function useUncontrolled<T>(input: UseUncontrolledOptions<T>): UseUncontrolledRe
 
 ## 导出类型
 
-`UseUncontrolledOptions` 和 `UseUncontrolledReturnValue` 类型从 `@react-ui/hooks` 包导出：
+`UseUncontrolledOptions` 和 `UseUncontrolledReturnValue` 类型从 `@xiaoye-react/hooks` 包导出：
 
 ```tsx
-import type { UseUncontrolledOptions, UseUncontrolledReturnValue } from '@react-ui/hooks';
+import type { UseUncontrolledOptions, UseUncontrolledReturnValue } from '@xiaoye-react/hooks';
 ```

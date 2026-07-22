@@ -31,7 +31,7 @@ export const VisuallyHidden = factory<VisuallyHiddenFactory>((_props, _ref) => {
 })
 
 VisuallyHidden.classes = classes
-VisuallyHidden.displayName = '@react-ui/ui/VisuallyHidden'
+VisuallyHidden.displayName = '@xiaoye-react/ui/VisuallyHidden'
 
 export namespace VisuallyHidden {
     export type Props = VisuallyHiddenProps

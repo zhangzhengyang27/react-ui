@@ -25,7 +25,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { ColorPicker } from '@react-ui/ui';
+import { ColorPicker } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState('#ffffff');
@@ -42,7 +42,7 @@ function Demo() {
 非受控 `ColorPicker` 与 `FormData` 的示例用法：
 
 ```tsx
-import { ColorPicker } from '@react-ui/ui';
+import { ColorPicker } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -113,7 +113,7 @@ ColorPicker 组件默认具备可访问性：
 要使组件对屏幕阅读器可访问，请设置 `saturationLabel`、`hueLabel` 和 `alphaLabel`：
 
 ```tsx
-import { ColorPicker } from '@react-ui/ui';
+import { ColorPicker } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

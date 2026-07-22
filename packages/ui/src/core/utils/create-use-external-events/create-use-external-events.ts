@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useIsomorphicEffect } from '@react-ui/hooks'
+import { useIsomorphicEffect } from '@xiaoye-react/hooks'
 
 function dispatchEvent<T>(type: string, detail?: T) {
     window.dispatchEvent(new CustomEvent(type, { detail }))

@@ -1,5 +1,5 @@
 import { cloneElement } from 'react'
-import { useMergedRef } from '@react-ui/hooks'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import { factory, getSingleElementChild, useProps, type Factory } from '../../core'
 import { useComboboxContext } from './Combobox.context'
 
@@ -23,7 +23,7 @@ export const ComboboxDropdownTarget = factory<ComboboxDropdownTargetFactory>((pr
 
     if (!child) {
         throw new Error(
-            '[@react-ui/ui] Combobox.DropdownTarget component children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported'
+            '[@xiaoye-react/ui] Combobox.DropdownTarget component children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported'
         )
     }
 
@@ -52,4 +52,4 @@ export const ComboboxDropdownTarget = factory<ComboboxDropdownTargetFactory>((pr
     })
 })
 
-ComboboxDropdownTarget.displayName = '@react-ui/ui/ComboboxDropdownTarget'
+ComboboxDropdownTarget.displayName = '@xiaoye-react/ui/ComboboxDropdownTarget'

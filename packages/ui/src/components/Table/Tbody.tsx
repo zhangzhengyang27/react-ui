@@ -39,5 +39,5 @@ export const Tbody = factory<TbodyFactory>((props, ref) => {
     )
 })
 
-Tbody.displayName = '@react-ui/ui/Tbody'
+Tbody.displayName = '@xiaoye-react/ui/Tbody'
 Tbody.classes = classes

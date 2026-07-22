@@ -1,5 +1,5 @@
 import React from 'react';
-import { TableOfContents, Box, Text } from '@react-ui/ui';
+import { TableOfContents, Box, Text } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

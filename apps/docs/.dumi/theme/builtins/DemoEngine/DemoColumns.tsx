@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import { SimpleGrid, Text } from '@react-ui/ui';
+import { SimpleGrid, Text } from '@xiaoye-react/ui';
 import { DemoArea, DemoAreaProps } from './DemoArea';
 
 export interface DemoColumnsProps extends DemoAreaProps {

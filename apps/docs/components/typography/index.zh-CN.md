@@ -20,7 +20,7 @@ ReactUI 不包含排版全局样式。
 使用 `Typography` 为 HTML 内容添加排版样式：
 
 ```tsx
-import { Typography } from '@react-ui/ui';
+import { Typography } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

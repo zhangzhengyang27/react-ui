@@ -100,7 +100,7 @@ export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
 })
 
 RadioCard.classes = classes
-RadioCard.displayName = '@react-ui/ui/RadioCard'
+RadioCard.displayName = '@xiaoye-react/ui/RadioCard'
 
 export namespace RadioCard {
     export type Props = RadioCardProps

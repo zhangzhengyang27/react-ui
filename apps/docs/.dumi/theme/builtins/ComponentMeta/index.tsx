@@ -9,7 +9,7 @@ import {
   AiOutlineIssuesClose,
   AiOutlineLoading,
 } from 'react-icons/ai';
-import { Anchor, Divider, Flex, Text, Tooltip } from '@react-ui/ui';
+import { Anchor, Divider, Flex, Text, Tooltip } from '@xiaoye-react/ui';
 import kebabCase from 'lodash/kebabCase';
 
 import useIssueCount from '../../../hooks/useIssueCount';
@@ -127,9 +127,9 @@ const ComponentMeta: React.FC<ComponentMetaProps> = (props) => {
 
   const importCode =
     component === 'Icon'
-      ? `import { ThemeIcon } from '@react-ui/ui';`
+      ? `import { ThemeIcon } from '@xiaoye-react/ui';`
       : component
-        ? `import { ${transformComponentName(component)} } from '@react-ui/ui';`
+        ? `import { ${transformComponentName(component)} } from '@xiaoye-react/ui';`
         : '';
 
   const onCopy = async () => {

@@ -1,13 +1,13 @@
 import { XCircleIcon } from '@phosphor-icons/react';
-import { Button, Drawer } from '@react-ui/ui';
-import { useDisclosure } from '@react-ui/hooks';
-import { UIDemo } from '@react-ui/demo';
+import { Button, Drawer } from '@xiaoye-react/ui';
+import { useDisclosure } from '@xiaoye-react/hooks';
+import { UIDemo } from '@xiaoye-react/demo';
 import { AuthenticationForm } from '../../shared/AuthenticationForm/AuthenticationForm';
 
 const code = `
 import { XCircleIcon } from '@phosphor-icons/react';
-import { useDisclosure } from '@react-ui/hooks';
-import { Drawer, Button } from '@react-ui/ui';
+import { useDisclosure } from '@xiaoye-react/hooks';
+import { Drawer, Button } from '@xiaoye-react/ui';
 
 function Demo() {
   const [opened, { open, close }] = useDisclosure(false);

@@ -24,4 +24,4 @@ export function AccordionChevron({ style, size = 16, ...others }: AccordionChevr
     )
 }
 
-AccordionChevron.displayName = '@react-ui/ui/AccordionChevron'
+AccordionChevron.displayName = '@xiaoye-react/ui/AccordionChevron'

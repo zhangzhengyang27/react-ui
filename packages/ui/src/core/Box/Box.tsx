@@ -133,7 +133,7 @@ const _Box = forwardRef<HTMLDivElement, BoxComponentProps & { component: any; cl
     }
 )
 
-_Box.displayName = '@react-ui/ui/Box'
+_Box.displayName = '@xiaoye-react/ui/Box'
 
 // 导出 Box 组件，支持多态组件模式
 export const Box = createPolymorphicComponent<'div', BoxComponentProps>(_Box)

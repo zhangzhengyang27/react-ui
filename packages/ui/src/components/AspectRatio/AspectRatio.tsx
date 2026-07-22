@@ -64,7 +64,7 @@ export const AspectRatio = polymorphicFactory<AspectRatioFactory>((_props, _ref)
 
 AspectRatio.classes = classes
 ;(AspectRatio as any).varsResolver = varsResolver
-AspectRatio.displayName = '@react-ui/ui/AspectRatio'
+AspectRatio.displayName = '@xiaoye-react/ui/AspectRatio'
 
 export namespace AspectRatio {
     export type Props = AspectRatioProps

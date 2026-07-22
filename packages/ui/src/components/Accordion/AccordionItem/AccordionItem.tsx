@@ -45,5 +45,5 @@ export const AccordionItem = factory<AccordionItemFactory>((props, ref) => {
     )
 })
 
-AccordionItem.displayName = '@react-ui/ui/AccordionItem'
+AccordionItem.displayName = '@xiaoye-react/ui/AccordionItem'
 AccordionItem.classes = classes

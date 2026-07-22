@@ -72,7 +72,7 @@ export const AvatarGroup = factory<AvatarGroupFactory>((_props, ref) => {
 
 AvatarGroup.classes = classes
 ;(AvatarGroup as any).varsResolver = varsResolver
-AvatarGroup.displayName = '@react-ui/ui/AvatarGroup'
+AvatarGroup.displayName = '@xiaoye-react/ui/AvatarGroup'
 
 export namespace AvatarGroup {
     export type Props = AvatarGroupProps

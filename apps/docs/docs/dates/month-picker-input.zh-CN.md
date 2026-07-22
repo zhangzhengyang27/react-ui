@@ -119,6 +119,6 @@ description: react-ui MonthPickerInput 文档。
 
 <InputFeatures component="MonthPickerInput" element="button"></InputFeatures>
 
-<GetElementRef component="MonthPickerInput" refType="button" package="@react-ui/ui"></GetElementRef>
+<GetElementRef component="MonthPickerInput" refType="button" package="@xiaoye-react/ui"></GetElementRef>
 
-<InputAccessibility component="MonthPickerInput" packageName="@react-ui/ui"></InputAccessibility>
+<InputAccessibility component="MonthPickerInput" packageName="@xiaoye-react/ui"></InputAccessibility>

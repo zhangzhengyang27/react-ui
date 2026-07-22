@@ -8,7 +8,7 @@ description: react-ui SchemaValidation 文档。
 
 ## 基于模式的验证
 
-`@react-ui/ui` 内置支持 [Standard Schema](https://standardschema.dev/)——
+`@xiaoye-react/ui` 内置支持 [Standard Schema](https://standardschema.dev/)——
 一个由许多流行的模式验证库实现的社区规范，包括
 [zod](https://www.npmjs.com/package/zod)、[valibot](https://www.npmjs.com/package/valibot)
 和 [arktype](https://www.npmjs.com/package/arktype)。使用 `schemaResolver` 来验证
@@ -46,7 +46,7 @@ Standard Schema 规范允许异步验证。当你知道模式是同步的（例�
 
 ```tsx
 import { z } from 'zod/v4';
-import { useForm, schemaResolver } from '@react-ui/ui';
+import { useForm, schemaResolver } from '@xiaoye-react/ui';
 
 const schema = z.object({
   name: z.string().min(2, { error: '名字应至少有 2 个字母' }),
@@ -75,7 +75,7 @@ form.errors;
 
 ```tsx
 import { z } from 'zod/v4';
-import { useForm, schemaResolver } from '@react-ui/ui';
+import { useForm, schemaResolver } from '@xiaoye-react/ui';
 
 const nestedSchema = z.object({
   nested: z.object({
@@ -102,7 +102,7 @@ form.errors;
 
 ```tsx
 import { z } from 'zod/v4';
-import { useForm, schemaResolver } from '@react-ui/ui';
+import { useForm, schemaResolver } from '@xiaoye-react/ui';
 
 const listSchema = z.object({
   list: z.array(
@@ -129,7 +129,7 @@ form.errors;
 
 ```tsx
 import { z } from 'zod/v4';
-import { useForm, schemaResolver } from '@react-ui/ui';
+import { useForm, schemaResolver } from '@xiaoye-react/ui';
 
 const schema = z
   .object({

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useClickOutside, useId } from '@react-ui/hooks'
+import { useClickOutside, useId } from '@xiaoye-react/hooks'
 import {
     createVarsResolver,
     Factory,
@@ -277,7 +277,7 @@ export function Popover(_props: PopoverProps) {
 Popover.Target = PopoverTarget
 Popover.Dropdown = PopoverDropdown
 Popover.ContextMenu = PopoverContextMenu
-Popover.displayName = '@react-ui/ui/Popover'
+Popover.displayName = '@xiaoye-react/ui/Popover'
 
 export namespace Popover {
     export type Props = PopoverProps

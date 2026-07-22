@@ -43,9 +43,9 @@ function useOrientation(options?: UseOrientationOptions): UseOrientationReturnTy
 
 ## 导出类型
 
-`UseOrientationOptions` 和 `UseOrientationReturnType` 类型从 `@react-ui/hooks` 包导出，
+`UseOrientationOptions` 和 `UseOrientationReturnType` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseOrientationOptions, UseOrientationReturnType } from '@react-ui/hooks';
+import type { UseOrientationOptions, UseOrientationReturnType } from '@xiaoye-react/hooks';
 ```

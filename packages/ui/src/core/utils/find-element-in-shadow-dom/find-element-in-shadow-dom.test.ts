@@ -4,7 +4,7 @@ import {
   getRootElement,
 } from './find-element-in-shadow-dom';
 
-describe('@react-ui/ui/utils/find-element-in-shadow-dom', () => {
+describe('@xiaoye-react/ui/utils/find-element-in-shadow-dom', () => {
   afterEach(() => {
     document.body.innerHTML = '';
   });

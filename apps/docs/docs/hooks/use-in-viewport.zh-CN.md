@@ -25,9 +25,9 @@ function useInViewport<T extends HTMLElement = any>(): UseInViewportReturnValue<
 
 ## 导出类型
 
-`UseInViewportReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseInViewportReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseInViewportReturnValue } from '@react-ui/hooks';
+import type { UseInViewportReturnValue } from '@xiaoye-react/hooks';
 ```

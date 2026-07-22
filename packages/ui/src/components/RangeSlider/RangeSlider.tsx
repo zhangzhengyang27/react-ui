@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from 'react'
-import { useMergedRef, useMove } from '@react-ui/hooks'
+import { useMergedRef, useMove } from '@xiaoye-react/hooks'
 import {
     Box,
     BoxProps,
@@ -486,7 +486,7 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
 
 RangeSlider.classes = classes
 RangeSlider.varsResolver = varsResolver
-RangeSlider.displayName = '@react-ui/ui/RangeSlider'
+RangeSlider.displayName = '@xiaoye-react/ui/RangeSlider'
 
 export namespace RangeSlider {
     export type Props = RangeSliderProps

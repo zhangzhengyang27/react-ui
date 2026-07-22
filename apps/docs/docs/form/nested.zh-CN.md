@@ -12,7 +12,7 @@ description: react-ui Nested 文档。
 属性路径包含目标属性所在的对象/数组的键/索引：
 
 ```tsx
-import { useForm } from '@react-ui/ui';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -52,7 +52,7 @@ await form.validateField('deeply.nested.object.0.item');
 ## 设置嵌套对象值
 
 ```tsx
-import { useForm } from '@react-ui/ui';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -75,7 +75,7 @@ form.setFieldValue('user', { name: 'Jane', occupation: 'Architect' });
 ## 嵌套对象值验证
 
 ```tsx
-import { useForm } from '@react-ui/ui';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -116,7 +116,7 @@ form.errors; // -> { 'user.name': '名字太短', 'user.occupation': '职业太�
 ## 列表值验证
 
 ```tsx
-import { useForm } from '@react-ui/ui';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',

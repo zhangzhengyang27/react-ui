@@ -174,7 +174,7 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
 
 Chip.classes = classes
 ;(Chip as any).varsResolver = varsResolver
-Chip.displayName = '@react-ui/ui/Chip'
+Chip.displayName = '@xiaoye-react/ui/Chip'
 Chip.Group = ChipGroup
 
 export namespace Chip {

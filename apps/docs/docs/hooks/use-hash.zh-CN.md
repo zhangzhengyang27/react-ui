@@ -20,8 +20,8 @@ description: react-ui URL 哈希 Hook 文档。
 只有当你的应用是纯客户端时才可使用。
 
 ```tsx
-import { Button } from '@react-ui/ui';
-import { useHash } from '@react-ui/hooks';
+import { Button } from '@xiaoye-react/ui';
+import { useHash } from '@xiaoye-react/hooks';
 
 function Demo() {
   const [hash, setHash] = useHash({ getInitialValueInEffect: false });
@@ -45,9 +45,9 @@ function useHash(options?: UseHashOptions): UseHashReturnValue
 
 ## 导出类型
 
-`UseHashOptions` 和 `UseHashReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseHashOptions` 和 `UseHashReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import { UseHashOptions, UseHashReturnValue } from '@react-ui/hooks';
+import { UseHashOptions, UseHashReturnValue } from '@xiaoye-react/hooks';
 ```

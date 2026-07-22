@@ -26,4 +26,4 @@ export const DrawerHeader = factory<DrawerHeaderFactory>((_props, ref) => {
 })
 
 DrawerHeader.classes = classes
-DrawerHeader.displayName = '@react-ui/ui/DrawerHeader'
+DrawerHeader.displayName = '@xiaoye-react/ui/DrawerHeader'

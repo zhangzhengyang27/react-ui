@@ -47,4 +47,4 @@ export const PaginationLabel = factory<PaginationLabelFactory>((_props, ref) => 
 })
 
 PaginationLabel.classes = classes
-PaginationLabel.displayName = '@react-ui/ui/PaginationLabel'
+PaginationLabel.displayName = '@xiaoye-react/ui/PaginationLabel'

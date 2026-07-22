@@ -1,9 +1,9 @@
-import { Autocomplete } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { Autocomplete } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
 const code = `
-import { Autocomplete } from '@react-ui/ui';
+import { Autocomplete } from '@xiaoye-react/ui';
 
 
 function Demo() {

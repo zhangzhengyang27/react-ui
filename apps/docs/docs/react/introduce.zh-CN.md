@@ -13,7 +13,7 @@ title: react-ui 介绍
 - 🎨 主题系统基于 CSS 变量，统一使用 `--ui-*` 前缀，支持 light / dark 双主题切换。
 - 🛡 使用 TypeScript 开发，提供完整的类型定义文件。
 - 🧩 组件采用工厂模式 + CSS Modules，组件 props 继承自 `ElementProps`，完整支持 HTML 属性。
-- 🪝 配套提供 `@react-ui/hooks` 工具钩子集合，覆盖常见状态管理场景。
+- 🪝 配套提供 `@xiaoye-react/hooks` 工具钩子集合，覆盖常见状态管理场景。
 - 📊 内置 charts 图表组件（基于 recharts）与 form 表单方案。
 
 ## 兼容环境
@@ -30,7 +30,7 @@ title: react-ui 介绍
 
 ## 版本
 
-- 稳定版：[![npm package](https://img.shields.io/npm/v/@react-ui/ui.svg?style=flat-square)](https://www.npmjs.org/package/@react-ui/ui)
+- 稳定版：[![npm package](https://img.shields.io/npm/v/@xiaoye-react/ui.svg?style=flat-square)](https://www.npmjs.org/package/@xiaoye-react/ui)
 
 ## 安装
 
@@ -38,7 +38,7 @@ title: react-ui 介绍
 
 **推荐使用 [pnpm](https://pnpm.io/zh/) 进行开发**，也可使用 npm / yarn。
 
-<InstallDependencies npm='$ npm install @react-ui/ui @react-ui/hooks --save' yarn='$ yarn add @react-ui/ui @react-ui/hooks' pnpm='$ pnpm install @react-ui/ui @react-ui/hooks --save'></InstallDependencies>
+<InstallDependencies npm='$ npm install @xiaoye-react/ui @xiaoye-react/hooks --save' yarn='$ yarn add @xiaoye-react/ui @xiaoye-react/hooks' pnpm='$ pnpm install @xiaoye-react/ui @xiaoye-react/hooks --save'></InstallDependencies>
 
 ### 浏览器引入
 
@@ -48,7 +48,7 @@ title: react-ui 介绍
 
 ```jsx
 import React from 'react';
-import { Button, TextInput } from '@react-ui/ui';
+import { Button, TextInput } from '@xiaoye-react/ui';
 
 const App = () => {
   return (
@@ -64,7 +64,7 @@ export default App;
 
 ## 按需加载
 
-`@react-ui/ui` 默认通过 `package.json` 的 `exports` 字段提供 ESM 产物，主流打包器（webpack、mako、vite、esbuild）会自动按需加载你导入的组件，无需额外配置 babel-plugin-import 之类的工具。
+`@xiaoye-react/ui` 默认通过 `package.json` 的 `exports` 字段提供 ESM 产物，主流打包器（webpack、mako、vite、esbuild）会自动按需加载你导入的组件，无需额外配置 babel-plugin-import 之类的工具。
 
 ## TypeScript
 

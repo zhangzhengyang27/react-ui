@@ -161,7 +161,7 @@ export const CheckboxIndicator = factory<CheckboxIndicatorFactory>((_props, ref)
 
 CheckboxIndicator.classes = classes
 ;(CheckboxIndicator as any).varsResolver = varsResolver
-CheckboxIndicator.displayName = '@react-ui/ui/CheckboxIndicator'
+CheckboxIndicator.displayName = '@xiaoye-react/ui/CheckboxIndicator'
 
 export namespace CheckboxIndicator {
     export type Props = CheckboxIndicatorProps

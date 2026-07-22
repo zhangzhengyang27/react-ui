@@ -72,7 +72,7 @@ description: react-ui StylesPerformance 文档。
 [SimpleGrid](/components/simple-grid) 等组件暂不支持。
 
 ```tsx
-import { TextInput } from '@react-ui/ui';
+import { TextInput } from '@xiaoye-react/ui';
 
 // 推荐，style props 用于为少量组件应用 margin-top
 function StyleProps() {
@@ -103,7 +103,7 @@ function StylePropsArray() {
 ```
 
 ```tsx
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

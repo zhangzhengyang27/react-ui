@@ -37,7 +37,7 @@ Card 是一个[多态组件](/docs/guides/polymorphic/)，可更改其根元素�
 注意，`Card` 依赖直接子元素的映射，不可为 `Card.Section` 使用片段或其他包装器：
 
 ```tsx
-import { Card, Text } from '@react-ui/ui';
+import { Card, Text } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -59,7 +59,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Card } from '@react-ui/ui';
+import { Card } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

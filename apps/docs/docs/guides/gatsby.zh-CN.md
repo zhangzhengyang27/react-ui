@@ -59,7 +59,7 @@ module.exports = {
 
 ```tsx
 // src/theme.ts
-import { createTheme } from '@react-ui/ui';
+import { createTheme } from '@xiaoye-react/ui';
 
 export const theme = createTheme({
   fontFamily: 'serif',
@@ -68,7 +68,7 @@ export const theme = createTheme({
 ```
 
 ```tsx
-import { ColorSchemeScript, UIProvider } from '@react-ui/ui';
+import { ColorSchemeScript, UIProvider } from '@xiaoye-react/ui';
 import { theme } from './src/theme';
 
 export const onPreRenderHTML = ({
@@ -89,10 +89,10 @@ export const wrapPageElement = ({ element }) => {
 
 ```tsx
 // 导入你已安装包的样式。
-// 除 `@react-ui/hooks` 外，所有包都需要导入样式
-import '@react-ui/ui/styles.css';
+// 除 `@xiaoye-react/hooks` 外，所有包都需要导入样式
+import '@xiaoye-react/ui/styles.css';
 
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 import { theme } from './src/theme';
 
 export const wrapPageElement = ({ element }) => {

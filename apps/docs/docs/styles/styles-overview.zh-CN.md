@@ -37,7 +37,7 @@ description: react-ui StylesOverview 文档。
 注意，[style props](/docs/styles/style-props/) 从未打算作为组件样式的主要方式。在大多数情况下，最好将每个组件使用的 style props 数量限制在 3-4 个以内。如果你发现自己使用了超过 4 个 style props，请考虑创建一个单独的样式文件——这样更容易维护，并且[性能更好](/docs/styles/styles-performance/)。
 
 ```tsx
-import { Text } from '@react-ui/ui';
+import { Text } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -54,7 +54,7 @@ function Demo() {
 ```
 
 ```tsx
-import { TextInput } from '@react-ui/ui';
+import { TextInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -68,7 +68,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Paper } from '@react-ui/ui';
+import { Paper } from '@xiaoye-react/ui';
 
 function Demo() {
   return <Paper p="xl">我的自定义卡片</Paper>;
@@ -88,7 +88,7 @@ function Demo() {
 [style 属性](/docs/styles/style/) 的工作方式与 React 的 `style` prop 相同。不建议将其作为组件样式的主要方式。在大多数情况下，最好创建一个单独的样式文件——这样更容易维护，并且[性能更好](/docs/styles/styles-performance/)。
 
 ```tsx
-import { Button, Flex } from '@react-ui/ui';
+import { Button, Flex } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -101,7 +101,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Box } from '@react-ui/ui';
+import { Box } from '@xiaoye-react/ui';
 
 function Demo({ color }: { color: string }) {
   // 之后你可以在任何嵌套元素中使用 var(--my-color)
@@ -192,7 +192,7 @@ function Demo({ collapsed }: { collapsed: boolean }) {
 ```
 
 ```tsx
-import { Box } from '@react-ui/ui';
+import { Box } from '@xiaoye-react/ui';
 
 function Demo() {
   // bg="red.5" 引用 theme.colors.red[5]
@@ -209,7 +209,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Box } from '@react-ui/ui';
+import { Box } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

@@ -30,7 +30,7 @@ export interface DirectionProviderProps {
 ```
 
 ```tsx
-import { DirectionProvider, UIProvider } from '@react-ui/ui';
+import { DirectionProvider, UIProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

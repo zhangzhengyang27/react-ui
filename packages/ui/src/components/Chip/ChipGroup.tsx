@@ -1,4 +1,4 @@
-import { useUncontrolled } from '@react-ui/hooks'
+import { useUncontrolled } from '@xiaoye-react/hooks'
 import {
     BoxProps,
     ElementProps,
@@ -144,7 +144,7 @@ export const ChipGroup = factory<ChipGroupFactory>((_props, ref) => {
     )
 })
 
-ChipGroup.displayName = '@react-ui/ui/ChipGroup'
+ChipGroup.displayName = '@xiaoye-react/ui/ChipGroup'
 
 export namespace ChipGroup {
     export type Props = ChipGroupProps

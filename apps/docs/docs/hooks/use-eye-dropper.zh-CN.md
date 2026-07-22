@@ -34,7 +34,7 @@ function useEyeDropper(): UseEyeDropperReturnValue;
 
 ## 导出类型
 
-`EyeDropperOpenOptions`、`EyeDropperOpenReturnType` 和 `UseEyeDropperReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`EyeDropperOpenOptions`、`EyeDropperOpenReturnType` 和 `UseEyeDropperReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
@@ -42,5 +42,5 @@ import type {
   EyeDropperOpenOptions,
   EyeDropperOpenReturnType,
   UseEyeDropperReturnValue,
-} from '@react-ui/hooks';
+} from '@xiaoye-react/hooks';
 ```

@@ -82,7 +82,7 @@ export const Mark = polymorphicFactory<MarkFactory>((_props, _ref) => {
 
 Mark.classes = classes
 ;(Mark as any).varsResolver = varsResolver
-Mark.displayName = '@react-ui/ui/Mark'
+Mark.displayName = '@xiaoye-react/ui/Mark'
 
 export namespace Mark {
     export type Props = MarkProps

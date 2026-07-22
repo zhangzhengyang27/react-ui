@@ -32,7 +32,7 @@ group:
 - `Menubar.Dropdown` – 下拉容器，接受的子元素与 `Menu.Dropdown` 相同
 
 ```tsx
-import { Menu, Menubar } from '@react-ui/ui';
+import { Menu, Menubar } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -94,7 +94,7 @@ function Demo() {
 单个菜单接受与 [Menu](/components/menu) 相同的属性——将它们传给 `Menubar.Menu` 以覆盖单个菜单的设置，例如 `position`、`withinPortal`、`closeOnItemClick`、`shadow`、`width` 或 `transitionProps`。
 
 ```tsx
-import { Menubar } from '@react-ui/ui';
+import { Menubar } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

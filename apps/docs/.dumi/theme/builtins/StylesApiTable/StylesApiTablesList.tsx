@@ -1,4 +1,4 @@
-import { Code, Title } from '@react-ui/ui';
+import { Code, Title } from '@xiaoye-react/ui';
 import { StylesApiTable } from './StylesApiTable';
 import classes from './StylesApiTable.module.css';
 

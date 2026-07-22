@@ -29,7 +29,7 @@ description: react-ui Rem 文档。
 ```
 
 ```tsx
-import { createTheme, UIProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   scale: 1.6,
@@ -57,7 +57,7 @@ function Demo() {
 同样的转换也发生在 [style props](/docs/styles/style-props/) 中：
 
 ```tsx
-import { ColorSwatch } from '@react-ui/ui';
+import { ColorSwatch } from '@xiaoye-react/ui';
 
 function DemoPx() {
   // Specify ColorSwatch size in px, it will be automatically converted to rem
@@ -72,7 +72,7 @@ function DemoRem() {
 ```
 
 ```tsx
-import { Box } from '@react-ui/ui';
+import { Box } from '@xiaoye-react/ui';
 
 function Demo() {
   // width: calc(2rem * var(--ui-scale))
@@ -83,10 +83,10 @@ function Demo() {
 
 ## rem 和 em 函数
 
-`@react-ui/ui` 包导出了 `rem` 和 `em` 函数，可用于将 `px` 转换为 `rem`/`em`：
+`@xiaoye-react/ui` 包导出了 `rem` 和 `em` 函数，可用于将 `px` 转换为 `rem`/`em`：
 
 ```tsx
-import { em, rem } from '@react-ui/ui';
+import { em, rem } from '@xiaoye-react/ui';
 
 // numbers and values in px are converted to rem
 rem(32); // -> calc(2rem * var(--ui-scale))
@@ -109,10 +109,10 @@ rem('16px 2rem'); // -> calc(1rem * var(--ui-scale)) 2rem
 
 ## 将 rem 转换为 px
 
-要将 `rem`/`em` 转换为 `px`，可以使用 `@react-ui/ui` 导出的 `px` 函数：
+要将 `rem`/`em` 转换为 `px`，可以使用 `@xiaoye-react/ui` 导出的 `px` 函数：
 
 ```tsx
-import { px } from '@react-ui/ui';
+import { px } from '@xiaoye-react/ui';
 
 px('2rem'); // -> 32
 px('10rem'); // -> 160

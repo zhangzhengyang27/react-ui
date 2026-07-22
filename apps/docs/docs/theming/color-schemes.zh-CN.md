@@ -40,7 +40,7 @@ function useUIColorScheme(): {
 import {
   useComputedUIColorScheme,
   useUIColorScheme,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 function Demo() {
   // -> colorScheme 是 'auto' | 'light' | 'dark'
@@ -69,7 +69,7 @@ function Demo() {
 默认情况下，在配色方案更改时会禁用所有元素上的过渡动画，以避免不一致的动画效果。要在配色方案更改期间启用过渡动画，请在 `useUIColorScheme` hook 上设置 `keepTransitions: true` 选项：
 
 ```tsx
-import { useUIColorScheme } from '@react-ui/ui';
+import { useUIColorScheme } from '@xiaoye-react/ui';
 
 function Demo() {
   const { colorScheme, setColorScheme } = useUIColorScheme({
@@ -98,7 +98,7 @@ function Demo() {
 你可以向 `ColorSchemeScript` 组件生成的 `<script />` 标签添加任何额外的属性，例如，你可以添加一个 [nonce](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) 属性：
 
 ```tsx
-import { ColorSchemeScript } from '@react-ui/ui';
+import { ColorSchemeScript } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -115,7 +115,7 @@ function Demo() {
 在 `UIProvider` 和 `ColorSchemeScript` 上设置 `defaultColorScheme="auto"` 以使用系统配色方案。在这种情况下，配色方案值将由用户的操作系统控制：
 
 ```tsx
-import { ColorSchemeScript, UIProvider } from '@react-ui/ui';
+import { ColorSchemeScript, UIProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -167,7 +167,7 @@ import {
   isUIColorScheme,
   UIColorScheme,
   UIColorSchemeManager,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 export interface LocalStorageColorSchemeManagerOptions {
   /** Local storage key used to retrieve value with `localStorage.getItem(key)`, `ui-color-scheme-value` by default */
@@ -201,7 +201,7 @@ export function localStorageColorSchemeManager({
       } catch (error) {
         // eslint-disable-next-line no-console
         console.warn(
-          '[@react-ui/ui] Local storage color scheme manager was unable to save color scheme.',
+          '[@xiaoye-react/ui] Local storage color scheme manager was unable to save color scheme.',
           error
         );
       }
@@ -233,7 +233,7 @@ export function localStorageColorSchemeManager({
 ```
 
 ```tsx
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 import { localStorageColorSchemeManager } from './localStorageColorSchemeManager';
 
 const colorSchemeManager = localStorageColorSchemeManager({
@@ -254,7 +254,7 @@ function Demo() {
 当用户尚未选择任何配色方案时，将使用默认配色方案值。它必须同时设置在 [UIProvider](/docs/theming/ui-provider/) 和 `ColorSchemeScript` 上。如果未设置 `defaultColorScheme`，则使用 `light`。
 
 ```tsx
-import { ColorSchemeScript, UIProvider } from '@react-ui/ui';
+import { ColorSchemeScript, UIProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -273,7 +273,7 @@ function Demo() {
 你可以使用 `forceColorScheme` 属性将配色方案值强制为 `light` 或 `dark`。它必须同时设置在 [UIProvider](/docs/theming/ui-provider/) 和 `ColorSchemeScript` 上。如果设置了 `forceColorScheme`，则 `defaultColorScheme` 和 `colorSchemeManager` 将被忽略。当设置了 `forceColorScheme` 时，无法使用 `setColorScheme` 函数更改配色方案值。
 
 ```tsx
-import { ColorSchemeScript, UIProvider } from '@react-ui/ui';
+import { ColorSchemeScript, UIProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -300,9 +300,9 @@ function Demo() {
 支持禁用 JavaScript 的 Next.js app router 示例：
 
 ```tsx
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 
-import { ColorSchemeScript, UIProvider } from '@react-ui/ui';
+import { ColorSchemeScript, UIProvider } from '@xiaoye-react/ui';
 
 export const metadata = {
   title: 'My ReactUI app',

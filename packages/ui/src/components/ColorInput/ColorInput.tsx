@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useDidUpdate, useEyeDropper, useId, useUncontrolled } from '@react-ui/hooks'
+import { useDidUpdate, useEyeDropper, useId, useUncontrolled } from '@xiaoye-react/hooks'
 import {
     BoxProps,
     createVarsResolver,
@@ -389,7 +389,7 @@ export const ColorInput = factory<ColorInputFactory>((_props, ref) => {
 })
 
 ColorInput.classes = classes
-ColorInput.displayName = '@react-ui/ui/ColorInput'
+ColorInput.displayName = '@xiaoye-react/ui/ColorInput'
 
 export namespace ColorInput {
     export type Props = ColorInputProps

@@ -57,7 +57,7 @@ description: react-ui Uncontrolled 文档。
 来监听表单值变化：
 
 ```tsx
-import { useForm } from '@react-ui/ui';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -71,7 +71,7 @@ form.getValues(); // { name: 'John Smith' }
 ```
 
 ```tsx
-import { useForm } from '@react-ui/ui';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -94,7 +94,7 @@ const handleNameChange = () => {
 
 ```tsx
 import { useEffect } from 'react';
-import { useForm } from '@react-ui/ui';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({ mode: 'uncontrolled' });
 
@@ -105,7 +105,7 @@ useEffect(() => {
 ```
 
 ```tsx
-import { useForm } from '@react-ui/ui';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -133,7 +133,7 @@ const form = useForm({
 元素并将 `key` 传递给它：
 
 ```tsx
-import { useForm } from '@react-ui/ui';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -148,8 +148,8 @@ function Demo() {
 ```
 
 ```tsx
-import { useForm } from '@react-ui/ui';
-import { randomId } from '@react-ui/hooks';
+import { useForm } from '@xiaoye-react/ui';
+import { randomId } from '@xiaoye-react/hooks';
 
 // ❌ 错误：即使在列表中也不要覆盖 key prop
 function Demo() {
@@ -201,7 +201,7 @@ function Demo() {
 你必须添加对 `defaultValue` prop 的支持。添加 `defaultValue` 支持的最佳方式是使用 [use-uncontrolled](/docs/hooks/use-uncontrolled/) Hook：
 
 ```tsx
-import { useUncontrolled } from '@react-ui/hooks';
+import { useUncontrolled } from '@xiaoye-react/hooks';
 
 interface CustomInputProps {
   value?: string;

@@ -91,7 +91,7 @@ group:
 默认情况下，分段描边颜色与 body 元素的背景色相同（`--ui-color-body` CSS 变量）。如需根据颜色方案改变描边颜色，可定义一个 CSS 变量并传递给 `strokeColor` 属性：
 
 ```tsx
-import { DonutChart } from '@react-ui/ui';
+import { DonutChart } from '@xiaoye-react/ui';
 
 function Demo() {
   return <DonutChart data={[]} strokeColor="red.5" />;

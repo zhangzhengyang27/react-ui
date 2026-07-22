@@ -18,7 +18,7 @@ const commonRefs: Record<string, string> = {
 function getRefCode(input: GetElementRefProps) {
   const refType = input.refType in commonRefs ? commonRefs[input.refType] : input.refType;
   return `import { useRef } from 'react';
-import { ${input.component} } from '${input.package || '@react-ui/ui'}';
+import { ${input.component} } from '${input.package || '@xiaoye-react/ui'}';
 
 function Demo() {
   const ref = useRef<${refType}>(null);

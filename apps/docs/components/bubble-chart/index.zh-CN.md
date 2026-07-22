@@ -50,7 +50,7 @@ BubbleChart 用于展示三维数据关系，通过气泡的位置和大小反�
 若应用只使用一种颜色方案，可直接使用 `gridColor` 和 `textColor` 属性，而不必使用 CSS 变量：
 
 ```tsx
-import { BubbleChart } from '@react-ui/ui';
+import { BubbleChart } from '@xiaoye-react/ui';
 import { data } from './data';
 
 function Demo() {

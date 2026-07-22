@@ -4,4 +4,4 @@ export interface StepperCompletedProps {
 }
 
 export const StepperCompleted: React.FC<StepperCompletedProps> = () => null
-StepperCompleted.displayName = '@react-ui/ui/StepperCompleted'
+StepperCompleted.displayName = '@xiaoye-react/ui/StepperCompleted'

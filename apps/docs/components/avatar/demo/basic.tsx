@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Group } from '@react-ui/ui';
+import { Avatar, Group } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

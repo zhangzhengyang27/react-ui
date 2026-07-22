@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FloatingIndicator, Group, Paper, Button } from '@react-ui/ui';
+import { FloatingIndicator, Group, Paper, Button } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => {

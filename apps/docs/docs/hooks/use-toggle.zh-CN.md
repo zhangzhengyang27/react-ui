@@ -22,7 +22,7 @@ description: react-ui 切换 Hook 文档。
 如果你未提供包含选项的数组，`use-toggle` 将使用布尔值，默认值为 `false`：
 
 ```tsx
-import { useToggle } from '@react-ui/hooks';
+import { useToggle } from '@xiaoye-react/hooks';
 
 const [value, toggle] = useToggle(['light', 'dark'] as const);
 
@@ -34,7 +34,7 @@ toggle('dark'); // -> value == 'dark'
 ```
 
 ```tsx
-import { useToggle } from '@react-ui/hooks';
+import { useToggle } from '@xiaoye-react/hooks';
 
 const [value, toggle] = useToggle();
 // -> value === false
@@ -46,7 +46,7 @@ toggle(); // -> value === true
 默认情况下，TypeScript 会推断你的类型，但在大多数情况下，最好使用 const 断言来防止类型扩大：
 
 ```tsx
-import { useToggle } from '@react-ui/hooks';
+import { useToggle } from '@xiaoye-react/hooks';
 
 useToggle(['light', 'dark']); // value 为 string
 useToggle(['light', 'dark'] as const); // value 为 'dark' | 'light'
@@ -64,8 +64,8 @@ function useToggle<T = boolean>(options?: T[]): UseToggleReturnValue<T>;
 
 ## 导出类型
 
-`UseToggleReturnValue` 类型从 `@react-ui/hooks` 包导出：
+`UseToggleReturnValue` 类型从 `@xiaoye-react/hooks` 包导出：
 
 ```tsx
-import type { UseToggleReturnValue } from '@react-ui/hooks';
+import type { UseToggleReturnValue } from '@xiaoye-react/hooks';
 ```

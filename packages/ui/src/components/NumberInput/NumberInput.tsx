@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { clamp, useId } from '@react-ui/hooks'
+import { clamp, useId } from '@xiaoye-react/hooks'
 import {
     BoxProps,
     createVarsResolver,
@@ -368,7 +368,7 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
 
 NumberInput.classes = classes
 ;(NumberInput as any).varsResolver = varsResolver
-NumberInput.displayName = '@react-ui/ui/NumberInput'
+NumberInput.displayName = '@xiaoye-react/ui/NumberInput'
 
 export namespace NumberInput {
     export type Props = NumberInputProps

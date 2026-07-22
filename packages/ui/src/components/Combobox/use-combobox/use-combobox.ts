@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react'
-import { useUncontrolled } from '@react-ui/hooks'
+import { useUncontrolled } from '@xiaoye-react/hooks'
 import { findElementBySelector, findElementsBySelector, getRootElement } from '../../../core/utils'
 import { getFirstIndex, getNextIndex, getPreviousIndex } from './get-index/get-index'
 

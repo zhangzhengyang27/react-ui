@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import { getSandpackCssText } from '@codesandbox/sandpack-react';
 import dayjs from 'dayjs';
 import { createSearchParams, useOutlet, useSearchParams, useServerInsertedHTML } from 'dumi';
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 
 import { DarkContext } from '../../hooks/useDark';
 import useLayoutState from '../../hooks/useLayoutState';

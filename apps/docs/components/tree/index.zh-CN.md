@@ -68,7 +68,7 @@ const data = [
 可导入 `TreeNodeData` 类型来定义树的数据类型：
 
 ```tsx
-import { TreeNodeData } from '@react-ui/ui';
+import { TreeNodeData } from '@xiaoye-react/ui';
 
 const data: TreeNodeData[] = [
   {
@@ -314,7 +314,7 @@ export interface UseTreeReturnType {
 如果 `'*'` 作为第二个参数传给 `getTreeExpandedState`，所有节点都会展开：
 
 ```tsx
-import { getTreeExpandedState } from '@react-ui/ui';
+import { getTreeExpandedState } from '@xiaoye-react/ui';
 
 // 展开两个给定节点
 getTreeExpandedState(data, ['src', 'src/components']);
@@ -333,7 +333,7 @@ getTreeExpandedState(data, '*');
 `renderNode` 负载包含 `isLoading` 和 `loadError` 字段，可用它们显示加载指示器或错误消息。使用 `tree.invalidateNode(value)` 清除节点的缓存，并允许在下次展开时重新获取。
 
 ```tsx
-import { mergeAsyncChildren, Tree, TreeNodeData, useTree } from '@react-ui/ui';
+import { mergeAsyncChildren, Tree, TreeNodeData, useTree } from '@xiaoye-react/ui';
 
 function Demo() {
   const [data, setData] = useState<TreeNodeData[]>([
@@ -375,7 +375,7 @@ function Demo() {
 可向 `filterTreeData` 传入自定义过滤函数以实现模糊匹配。此示例使用 [fuse.js](https://www.fusejs.io/)：
 
 ```tsx
-import { filterTreeData } from '@react-ui/ui';
+import { filterTreeData } from '@xiaoye-react/ui';
 
 // 使用默认的不区分大小写 label 匹配进行过滤
 const filtered = filterTreeData(data, 'button');
@@ -417,7 +417,7 @@ const filtered = filterTreeData(data, 'btn', (query, node) =>
 默认情况下，可以从节点的任意位置开始拖动。在 `Tree` 上设置 `withDragHandle`，将拖动开始限制在展开 `renderNode` 负载中的 `dragHandleProps` 的元素上。当节点包含会干扰拖动的交互控件（输入框、按钮）时，这非常有用。
 
 ```tsx
-import { moveTreeNode, Tree, TreeNodeData } from '@react-ui/ui';
+import { moveTreeNode, Tree, TreeNodeData } from '@xiaoye-react/ui';
 
 function Demo() {
   const [data, setData] = useState<TreeNodeData[]>(initialData);
@@ -453,7 +453,7 @@ function Demo() {
 `FlatTreeNode` 接受与 `Tree` 相同的行为属性（`expandOnClick`、`selectOnClick`、`expandOnSpace`、`checkOnSpace`、`renderNode`）和一个用于虚拟定位器的 `style` 属性。容器元素必须具有 `data-tree-root` 和 `role="tree"` 属性，键盘导航才能正常工作。
 
 ```tsx
-import { FlatTreeNode, flattenTreeData, useTree } from '@react-ui/ui';
+import { FlatTreeNode, flattenTreeData, useTree } from '@xiaoye-react/ui';
 
 const tree = useTree();
 const flatList = flattenTreeData(data, tree.expandedState);

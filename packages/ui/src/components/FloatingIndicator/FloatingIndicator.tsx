@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useMergedRef, useReducedMotion } from '@react-ui/hooks'
+import { useMergedRef, useReducedMotion } from '@xiaoye-react/hooks'
 import {
     Box,
     BoxProps,
@@ -119,7 +119,7 @@ export const FloatingIndicator = factory<FloatingIndicatorFactory>((_props, ref)
     )
 })
 
-FloatingIndicator.displayName = '@react-ui/ui/FloatingIndicator'
+FloatingIndicator.displayName = '@xiaoye-react/ui/FloatingIndicator'
 FloatingIndicator.classes = classes
 FloatingIndicator.varsResolver = varsResolver
 

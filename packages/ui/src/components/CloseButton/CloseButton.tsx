@@ -123,7 +123,7 @@ export const CloseButton = polymorphicFactory<CloseButtonFactory>((_props, _ref)
 
 CloseButton.classes = classes
 ;(CloseButton as any).varsResolver = varsResolver
-CloseButton.displayName = '@react-ui/ui/CloseButton'
+CloseButton.displayName = '@xiaoye-react/ui/CloseButton'
 
 export namespace CloseButton {
     export type Props = CloseButtonProps

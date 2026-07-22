@@ -39,7 +39,7 @@ export const AppShellMain = factory<AppShellMainFactory>((_props, ref) => {
 })
 
 AppShellMain.classes = classes
-AppShellMain.displayName = '@react-ui/ui/AppShellMain'
+AppShellMain.displayName = '@xiaoye-react/ui/AppShellMain'
 
 export namespace AppShellMain {
     export type Props = AppShellMainProps

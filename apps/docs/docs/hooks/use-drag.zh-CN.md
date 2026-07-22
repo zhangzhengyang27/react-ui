@@ -146,9 +146,9 @@ function useDrag<T extends HTMLElement = any>(
 
 ## 导出类型
 
-`UseDragState`、`UseDragOptions` 和 `UseDragReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseDragState`、`UseDragOptions` 和 `UseDragReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseDragState, UseDragOptions, UseDragReturnValue } from '@react-ui/hooks';
+import type { UseDragState, UseDragOptions, UseDragReturnValue } from '@xiaoye-react/hooks';
 ```

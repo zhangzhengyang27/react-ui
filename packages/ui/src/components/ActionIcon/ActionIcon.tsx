@@ -195,6 +195,6 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((_props, ref) =>
 })
 
 ActionIcon.classes = classes
-ActionIcon.displayName = '@react-ui/ui/ActionIcon'
+ActionIcon.displayName = '@xiaoye-react/ui/ActionIcon'
 ActionIcon.Group = ActionIconGroup
 ActionIcon.GroupSection = ActionIconGroupSection

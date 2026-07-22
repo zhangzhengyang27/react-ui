@@ -86,4 +86,4 @@ export const InputError = factory<InputErrorFactory>((_props, ref) => {
 
 InputError.classes = classes
 InputError.varsResolver = varsResolver
-InputError.displayName = '@react-ui/ui/InputError'
+InputError.displayName = '@xiaoye-react/ui/InputError'

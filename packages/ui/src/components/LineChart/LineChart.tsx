@@ -176,7 +176,7 @@ export const LineChart = factory<LineChartFactory>((_props, ref) => {
 
 LineChart.classes = classes
 ;(LineChart as any).varsResolver = varsResolver
-LineChart.displayName = '@react-ui/ui/LineChart'
+LineChart.displayName = '@xiaoye-react/ui/LineChart'
 
 export namespace LineChart {
     export type Props = LineChartProps

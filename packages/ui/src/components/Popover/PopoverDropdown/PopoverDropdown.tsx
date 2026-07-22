@@ -1,4 +1,4 @@
-import { useMergedRef } from '@react-ui/hooks'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import { Box, ElementProps, factory, rem, useProps, type BoxProps, type Factory } from '../../../core'
 import { FloatingArrow } from '../../../core/utils/Floating'
 import { FocusTrap } from '../../FocusTrap'
@@ -83,4 +83,4 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
     )
 })
 
-PopoverDropdown.displayName = '@react-ui/ui/PopoverDropdown'
+PopoverDropdown.displayName = '@xiaoye-react/ui/PopoverDropdown'

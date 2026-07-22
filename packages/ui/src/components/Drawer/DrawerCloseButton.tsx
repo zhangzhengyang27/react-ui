@@ -26,4 +26,4 @@ export const DrawerCloseButton = factory<DrawerCloseButtonFactory>((_props, ref)
 })
 
 DrawerCloseButton.classes = classes
-DrawerCloseButton.displayName = '@react-ui/ui/DrawerCloseButton'
+DrawerCloseButton.displayName = '@xiaoye-react/ui/DrawerCloseButton'

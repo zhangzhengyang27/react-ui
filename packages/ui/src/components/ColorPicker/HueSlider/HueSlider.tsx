@@ -40,7 +40,7 @@ export const HueSlider = factory<HueSliderFactory>((props: HueSliderProps, _ref)
     )
 })
 
-HueSlider.displayName = '@react-ui/ui/HueSlider'
+HueSlider.displayName = '@xiaoye-react/ui/HueSlider'
 HueSlider.classes = ColorSlider.classes
 
 export namespace HueSlider {

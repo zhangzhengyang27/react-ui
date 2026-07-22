@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollArea, Paper } from '@react-ui/ui';
+import { ScrollArea, Paper } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

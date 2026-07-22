@@ -42,4 +42,4 @@ export const EmptyStateTitle = factory<EmptyStateTitleFactory>((_props, ref) => 
 })
 
 EmptyStateTitle.classes = classes
-EmptyStateTitle.displayName = '@react-ui/ui/EmptyStateTitle'
+EmptyStateTitle.displayName = '@xiaoye-react/ui/EmptyStateTitle'

@@ -33,7 +33,7 @@ group:
 `Dialog` 在 [Portal](/components/portal/) 中渲染，并具有固定定位。设置 `position` 属性以控制 dialog 的位置：
 
 ```tsx
-import { Dialog } from '@react-ui/ui';
+import { Dialog } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

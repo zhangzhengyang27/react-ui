@@ -87,4 +87,4 @@ export const InputDescription = factory<InputDescriptionFactory>((_props, ref) =
 
 InputDescription.classes = classes
 InputDescription.varsResolver = varsResolver
-InputDescription.displayName = '@react-ui/ui/InputDescription'
+InputDescription.displayName = '@xiaoye-react/ui/InputDescription'

@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { useMergedRef } from '@react-ui/hooks'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import {
     Box,
     BoxProps,
@@ -89,4 +89,4 @@ export const PillsInputField = factory<PillsInputFieldFactory>((_props, ref) => 
 })
 
 PillsInputField.classes = classes
-PillsInputField.displayName = '@react-ui/ui/PillsInputField'
+PillsInputField.displayName = '@xiaoye-react/ui/PillsInputField'

@@ -8,14 +8,14 @@ description: react-ui Carousel 文档。
 
 ## 安装
 
-<InstallScript packages="embla-carousel@^8.5.2 embla-carousel-react@^8.5.2 @react-ui/ui"></InstallScript>
+<InstallScript packages="embla-carousel@^8.5.2 embla-carousel-react@^8.5.2 @xiaoye-react/ui"></InstallScript>
 
 安装完成后，在应用根目录导入包样式：
 
 ```tsx
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 // ‼️ carousel 样式必须在核心包样式之后导入
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 ```
 
 ## 不要忘记导入样式
@@ -23,7 +23,7 @@ import '@react-ui/ui/styles.css';
 你已经按照上面的安装说明操作，但某些功能仍然无法正常工作（Carousel 幻灯片垂直渲染、没有控件或指示器）？你掉入了未导入轮播样式的陷阱！要解决这个问题，请在应用根目录导入轮播样式：
 
 ```tsx
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 ```
 
 ## 文档示例
@@ -32,7 +32,7 @@ import '@react-ui/ui/styles.css';
 
 ## 用法
 
-`@react-ui/ui` 包基于 [embla carousel](https://www.embla-carousel.com/)：
+`@xiaoye-react/ui` 包基于 [embla carousel](https://www.embla-carousel.com/)：
 
 <code src="./carousel/demo/usage.tsx"></code>
 
@@ -97,7 +97,7 @@ import '@react-ui/ui/styles.css';
 - 容器元素必须具有固定高度
 
 ```tsx
-import { Carousel } from '@react-ui/ui';
+import { Carousel } from '@xiaoye-react/ui';
 
 export function PercentageHeight() {
   return (
@@ -120,7 +120,7 @@ export function PercentageHeight() {
 
 ## Embla 插件
 
-设置 `plugins` 属性以使用 [embla 插件](https://www.embla-carousel.com/docs/plugins) 增强轮播。注意，插件不会随 `@react-ui/ui` 包一起安装，你需要单独安装。
+设置 `plugins` 属性以使用 [embla 插件](https://www.embla-carousel.com/docs/plugins) 增强轮播。注意，插件不会随 `@xiaoye-react/ui` 包一起安装，你需要单独安装。
 
 使用 [autoplay 插件](https://www.embla-carousel.com/docs/plugins/autoplay) 的示例：
 
@@ -158,7 +158,7 @@ export function PercentageHeight() {
 使用 `nextControlProps` 和 `previousControlProps` 属性为下一张/上一张控件设置 `aria-label`：
 
 ```tsx
-import { Carousel } from '@react-ui/ui';
+import { Carousel } from '@xiaoye-react/ui';
 
 export function AccessibleCarousel() {
   return (
@@ -172,7 +172,7 @@ export function AccessibleCarousel() {
 ```
 
 ```tsx
-import { Carousel } from '@react-ui/ui';
+import { Carousel } from '@xiaoye-react/ui';
 
 export function AccessibleControlsCarousel() {
   return (

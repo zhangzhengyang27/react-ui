@@ -7,14 +7,14 @@ description: react-ui GettingStarted 文档。
 
 ## 安装
 
-<InstallScript packages="@react-ui/ui dayjs"></InstallScript>
+<InstallScript packages="@xiaoye-react/ui dayjs"></InstallScript>
 
 安装完成后，在应用根目录导入包样式：
 
 ```tsx
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 // ‼️ 在核心包样式之后导入 dates 样式
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 ```
 
 ## 不要忘记导入样式
@@ -25,28 +25,28 @@ import '@react-ui/ui/styles.css';
 要解决这个问题，请在应用根目录导入 dates 样式：
 
 ```tsx
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 ```
 
 ## 用法
 
-安装 `@react-ui/ui` 包并导入样式后，你就可以使用其中的所有组件：
+安装 `@xiaoye-react/ui` 包并导入样式后，你就可以使用其中的所有组件：
 
 <code src="./getting-started/demo/usage.tsx"></code>
 
 ## 字符串形式的日期值
 
-`@react-ui/ui` 组件使用日期字符串：`YYYY-MM-DD` 或 `YYYY-MM-DD HH:mm:ss`，具体取决于组件。这些字符串不包含任何时区相关信息。
+`@xiaoye-react/ui` 组件使用日期字符串：`YYYY-MM-DD` 或 `YYYY-MM-DD HH:mm:ss`，具体取决于组件。这些字符串不包含任何时区相关信息。
 
 ## dayjs
 
-`@react-ui/ui` 组件底层使用 [dayjs](https://day.js.org/) 进行日期操作和格式化。
+`@xiaoye-react/ui` 组件底层使用 [dayjs](https://day.js.org/) 进行日期操作和格式化。
 dayjs 是必需的依赖项——你不能将其更改为其他日期库。如果你想在应用中
 使用不同的日期库，需要单独安装它。
 
 ## DatesProvider
 
-`DatesProvider` 组件允许你设置各种在所有从 `@react-ui/ui` 包导出的组件之间共享的设置。`DatesProvider` 支持以下设置：
+`DatesProvider` 组件允许你设置各种在所有从 `@xiaoye-react/ui` 包导出的组件之间共享的设置。`DatesProvider` 支持以下设置：
 
 - `locale` – dayjs 语言环境。注意，你还需要从 dayjs 导入相应的 locale 模块。默认值为 `en`。
 - `firstDayOfWeek` – 0 到 6 之间的数字，其中 0 是星期日，6 是星期六。默认值为 1 – 星期一。
@@ -87,7 +87,7 @@ dayjs.extend(customParseFormat);
 ```tsx
 import 'dayjs/locale/ru';
 
-import { DatesProvider } from '@react-ui/ui';
+import { DatesProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -103,7 +103,7 @@ function Demo() {
 
 import 'dayjs/locale/ru';
 
-import { DatesProvider } from '@react-ui/ui';
+import { DatesProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

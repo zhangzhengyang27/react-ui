@@ -113,7 +113,7 @@ export const Flex = polymorphicFactory<FlexFactory>((_props, _ref) => {
 })
 
 Flex.classes = classes
-Flex.displayName = '@react-ui/ui/Flex'
+Flex.displayName = '@xiaoye-react/ui/Flex'
 
 export namespace Flex {
     export type Props = FlexProps

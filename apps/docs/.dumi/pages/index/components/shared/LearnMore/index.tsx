@@ -1,6 +1,6 @@
 import { FiArrowUpRight } from 'react-icons/fi';
 import cx from 'clsx';
-import { Anchor, AnchorProps } from '@react-ui/ui';
+import { Anchor, AnchorProps } from '@xiaoye-react/ui';
 import classes from './HomePageLearnMore.module.css';
 
 interface HomePageLearnMoreProps extends AnchorProps {

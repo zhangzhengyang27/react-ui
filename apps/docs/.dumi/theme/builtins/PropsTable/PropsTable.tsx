@@ -1,5 +1,5 @@
 import Fuse from 'fuse.js';
-import { Highlight, Table, Text } from '@react-ui/ui';
+import { Highlight, Table, Text } from '@xiaoye-react/ui';
 import docgenData from '@docs/docgen';
 import { HtmlText } from '../HtmlText';
 import { TableError } from '../TableError';

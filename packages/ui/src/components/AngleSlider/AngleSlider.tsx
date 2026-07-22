@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { normalizeRadialValue, useMergedRef, useRadialMove, useUncontrolled } from '@react-ui/hooks'
+import { normalizeRadialValue, useMergedRef, useRadialMove, useUncontrolled } from '@xiaoye-react/hooks'
 import {
     Box,
     BoxProps,
@@ -247,7 +247,7 @@ export const AngleSlider = factory<AngleSliderFactory>((_props, ref) => {
     )
 })
 
-AngleSlider.displayName = '@react-ui/ui/AngleSlider'
+AngleSlider.displayName = '@xiaoye-react/ui/AngleSlider'
 AngleSlider.classes = classes
 AngleSlider.varsResolver = varsResolver
 

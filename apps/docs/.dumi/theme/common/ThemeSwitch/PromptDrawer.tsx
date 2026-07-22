@@ -13,7 +13,7 @@ import {
   Textarea,
   Title,
   Tooltip,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 import useLocale from '../../../hooks/useLocale';
 import ComponentsBlock from '../../../pages/index/components/PreviewPane/Simple';

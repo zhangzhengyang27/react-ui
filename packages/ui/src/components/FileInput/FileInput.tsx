@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useId, useUncontrolled } from '@react-ui/hooks'
+import { useId, useUncontrolled } from '@xiaoye-react/hooks'
 import { factory, Factory, StylesApiProps, useProps, useStyles } from '../../core'
 import { CloseButton } from '../CloseButton'
 import { InputBase, InputBaseProps } from '../InputBase'
@@ -236,7 +236,7 @@ export const FileInput = factory<FileInputFactory>((_props, ref) => {
 })
 
 FileInput.classes = classes
-FileInput.displayName = '@react-ui/ui/FileInput'
+FileInput.displayName = '@xiaoye-react/ui/FileInput'
 
 export namespace FileInput {
     export type Props = FileInputProps

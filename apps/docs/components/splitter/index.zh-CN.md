@@ -94,8 +94,8 @@ Styles API 集成。
 
 ```tsx
 import { useRef } from 'react';
-import { Splitter } from '@react-ui/ui';
-import { UseSplitterReturnValue } from '@react-ui/hooks';
+import { Splitter } from '@xiaoye-react/ui';
+import { UseSplitterReturnValue } from '@xiaoye-react/hooks';
 
 function Demo() {
   const splitterRef = useRef<UseSplitterReturnValue>(null);
@@ -124,7 +124,7 @@ function Demo() {
 `Splitter.Pane` 必须是 `Splitter` 的直接子元素。
 
 ```tsx
-import { Splitter } from '@react-ui/ui';
+import { Splitter } from '@xiaoye-react/ui';
 
 // 这样不会生效——被包裹的面板不会被识别
 function WillNotWork() {

@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { useId, useUncontrolled } from '@react-ui/hooks'
+import { useId, useUncontrolled } from '@xiaoye-react/hooks'
 import { BoxProps, factory, Factory, UISize, rem, StylesApiProps, useProps, useStyles } from '../../core'
 import { CloseButton } from '../CloseButton'
 import { Combobox } from '../Combobox'
@@ -361,7 +361,7 @@ function renderOptions(
 }
 
 Select.classes = classes
-Select.displayName = '@react-ui/ui/Select'
+Select.displayName = '@xiaoye-react/ui/Select'
 
 export namespace Select {
     export type Props = SelectProps

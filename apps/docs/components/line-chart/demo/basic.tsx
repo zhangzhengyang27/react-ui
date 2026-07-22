@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart } from '@react-ui/ui';
+import { LineChart } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

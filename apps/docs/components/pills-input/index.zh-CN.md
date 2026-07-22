@@ -44,7 +44,7 @@ group:
 如果设置了 `label` 属性，输入框将是可访问的，不需要再设置 `aria-label`：
 
 ```tsx
-import { PillsInput } from '@react-ui/ui';
+import { PillsInput } from '@xiaoye-react/ui';
 
 // 不可访问的输入框——屏幕阅读器无法正确朗读
 function Demo() {
@@ -57,7 +57,7 @@ function Demo() {
 ```
 
 ```tsx
-import { PillsInput } from '@react-ui/ui';
+import { PillsInput } from '@xiaoye-react/ui';
 
 // 可访问的输入框——它具有 aria-label
 function Demo() {
@@ -70,7 +70,7 @@ function Demo() {
 ```
 
 ```tsx
-import { PillsInput } from '@react-ui/ui';
+import { PillsInput } from '@xiaoye-react/ui';
 
 // 可访问的输入框——它具有关联的 label 元素
 function Demo() {

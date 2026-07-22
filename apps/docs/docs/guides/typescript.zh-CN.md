@@ -8,7 +8,7 @@ description: react-ui Typescript 文档。
 
 ## 组件 props 类型
 
-每个导出组件的 `@react-ui/` 包也会导出这些组件的 props 类型。
+每个导出组件的 `@xiaoye-react/` 包也会导出这些组件的 props 类型。
 你可以在组件名后添加 `Props` 来导入组件的 props 类型。
 例如，可以像这样导入 Button 和 DatePicker 的组件 props：
 
@@ -19,12 +19,12 @@ description: react-ui Typescript 文档。
 扩展普通组件 props 的示例：
 
 ```tsx
-import type { ButtonProps } from '@react-ui/ui';
-import type { DatePickerProps } from '@react-ui/ui';
+import type { ButtonProps } from '@xiaoye-react/ui';
+import type { DatePickerProps } from '@xiaoye-react/ui';
 ```
 
 ```tsx
-import { Group, GroupProps } from '@react-ui/ui';
+import { Group, GroupProps } from '@xiaoye-react/ui';
 
 // 接口包含 `React.ComponentProps<'div'>`
 interface MyGroupProps extends GroupProps {
@@ -44,7 +44,7 @@ function MyGroup({ spacing, ...others }: MyGroupProps) {
 扩展多态组件 props 的示例：
 
 ```tsx
-import { Button, ButtonProps, ElementProps } from '@react-ui/ui';
+import { Button, ButtonProps, ElementProps } from '@xiaoye-react/ui';
 
 interface MyButtonProps
   extends ButtonProps,
@@ -62,9 +62,9 @@ function MyButton({ height, ...others }: MyButtonProps) {
 所有 ReactUI 组件都会导出包含相关类型的命名空间。例如，可以通过 `Button.Props` 访问 [Button](/components/button) 组件的 props：
 
 ```tsx
-import {  Button } from '@react-ui/ui';
+import {  Button } from '@xiaoye-react/ui';
 
-// 与 `import type { ButtonProps } from '@react-ui/ui';` 相同
+// 与 `import type { ButtonProps } from '@xiaoye-react/ui';` 相同
 type MyButtonProps = Button.Props;
 ```
 
@@ -75,7 +75,7 @@ type MyButtonProps = Button.Props;
 并允许通过第二个类型参数省略某些属性。
 
 ```tsx
-import { ButtonProps, ElementProps } from '@react-ui/ui';
+import { ButtonProps, ElementProps } from '@xiaoye-react/ui';
 
 // 等价于 `React.ComponentProps<'button'>`
 type ButtonElementProps = ElementProps<'button'>;
@@ -93,7 +93,7 @@ type OmitButtonProps = ElementProps<'button', keyof ButtonProps>;
 `UITheme` 是 [theme object](/docs/theming/theme-object) 的类型。你可以用它来为接受 theme 对象作为参数的函数添加类型：
 
 ```tsx
-import { UITheme, useUITheme } from '@react-ui/ui';
+import { UITheme, useUITheme } from '@xiaoye-react/ui';
 
 function getPrimaryColor(theme: UITheme) {
   return theme.colors.blue[5];
@@ -114,7 +114,7 @@ import {
   createTheme,
   UIThemeOverride,
   mergeThemeOverrides,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 const baseTheme = createTheme({
   fontFamily: 'Helvetica, sans-serif',
@@ -143,7 +143,7 @@ const mergedTheme = mergeThemes([overrideTheme, overrideTheme2]);
 import {
   UIColorScheme,
   useUIColorScheme,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 function getComputedColorScheme(colorScheme: UIColorScheme) {
   return colorScheme === 'auto' ? 'light' : colorScheme;
@@ -160,7 +160,7 @@ function Demo() {
 `UISize` 类型是 `'xs' | 'sm' | 'md' | 'lg' | 'xl'` 的联合类型。你可以用它来为各种接受 size 参数的 props 添加类型，例如 `radius`、`shadow`、`p`。
 
 ```tsx
-import { UISize, Paper } from '@react-ui/ui';
+import { UISize, Paper } from '@xiaoye-react/ui';
 
 interface DemoProps {
   size: UISize;
@@ -194,7 +194,7 @@ function Demo({ size, radius, shadow }: DemoProps) {
 
 ```tsx
 // ui.d.ts
-declare module '@react-ui/ui' {
+declare module '@xiaoye-react/ui' {
   export interface UIThemeOther {
     myCustomProperty: string;
     myCustomFunction: () => void;
@@ -206,14 +206,14 @@ declare module '@react-ui/ui' {
 import {
   DefaultUIColor,
   UIColorsTuple,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 type ExtendedCustomColors =
   | 'primaryColorName'
   | 'secondaryColorName'
   | DefaultUIColor;
 
-declare module '@react-ui/ui' {
+declare module '@xiaoye-react/ui' {
   export interface UIThemeColorsOverride {
     colors: Record<ExtendedCustomColors, UIColorsTuple>;
   }
@@ -224,7 +224,7 @@ declare module '@react-ui/ui' {
 import {
   DefaultUISize,
   UIThemeSizesOverride,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 type ExtendedCustomSpacing =
   | 'xxl'
@@ -235,7 +235,7 @@ type ExtendedCustomRadius =
   | 'xxs'
   | DefaultUISize;
 
-declare module '@react-ui/ui' {
+declare module '@xiaoye-react/ui' {
   export interface UIThemeSizesOverride {
     spacing: Record<ExtendedCustomSpacing, string>;
     radius: Record<ExtendedCustomRadius, string>;
@@ -251,11 +251,11 @@ declare module '@react-ui/ui' {
 为 [Button](/components/button) 组件添加自定义 variant 类型的示例：
 
 ```tsx
-import { ButtonVariant, UISize } from '@react-ui/ui';
+import { ButtonVariant, UISize } from '@xiaoye-react/ui';
 
 type ExtendedButtonVariant = ButtonVariant | 'contrast' | 'radial-gradient';
 
-declare module '@react-ui/ui' {
+declare module '@xiaoye-react/ui' {
   export interface ButtonProps {
     variant?: ExtendedButtonVariant;
   }

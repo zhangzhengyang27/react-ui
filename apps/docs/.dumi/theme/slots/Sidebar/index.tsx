@@ -1,6 +1,6 @@
 import React from 'react';
 import { clsx } from 'clsx';
-import { Box, ScrollArea } from '@react-ui/ui';
+import { Box, ScrollArea } from '@xiaoye-react/ui';
 
 import useMenu, { DocsMenuItem } from '../../../hooks/useMenu';
 

@@ -1,5 +1,5 @@
 import { use, useCallback, useEffect, useRef } from 'react';
-import { useColorScheme } from '@react-ui/hooks';
+import { useColorScheme } from '@xiaoye-react/hooks';
 import { noop } from '../../utils';
 import { UIContext, useUIStyleNonce } from '../UI.context';
 import { UIColorScheme } from '../theme.types';
@@ -27,7 +27,7 @@ export function useUIColorScheme({ keepTransitions }: { keepTransitions?: boolea
   const nonceValue = useRef(nonce?.());
 
   if (!ctx) {
-    throw new Error('[@react-ui/ui] UIProvider was not found in tree');
+    throw new Error('[@xiaoye-react/ui] UIProvider was not found in tree');
   }
 
   const { setColorScheme: setCtxColorScheme, clearColorScheme: clearCtxColorScheme } = ctx;

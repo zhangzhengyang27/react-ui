@@ -17,4 +17,4 @@ export const ModalBaseHeader = forwardRef<HTMLElement, ModalBaseHeaderProps>(({ 
     )
 })
 
-ModalBaseHeader.displayName = '@react-ui/ui/ModalBaseHeader'
+ModalBaseHeader.displayName = '@xiaoye-react/ui/ModalBaseHeader'

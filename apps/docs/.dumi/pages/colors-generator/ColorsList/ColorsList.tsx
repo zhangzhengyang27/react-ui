@@ -1,5 +1,5 @@
 import chroma from 'chroma-js';
-import { ColorSwatch, Group, isLightColor } from '@react-ui/ui';
+import { ColorSwatch, Group, isLightColor } from '@xiaoye-react/ui';
 import classes from './ColorsList.module.css';
 
 interface ColorsListProps {

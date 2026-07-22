@@ -1,7 +1,7 @@
 import { MdxCodeHighlight, MdxCode, MdxLi, MdxParagraph, MdxTitle, MdxUl } from '../MdxShared/base';
 
 export default function WrapperProps({ component }: { component: string }) {
-  const getCode = `import { ${component} } from '@react-ui/ui';
+  const getCode = `import { ${component} } from '@xiaoye-react/ui';
 
 function Demo() {
   return <${component} wrapperProps={{ 'data-testid': 'wrapper' }} data-testid="input" />;

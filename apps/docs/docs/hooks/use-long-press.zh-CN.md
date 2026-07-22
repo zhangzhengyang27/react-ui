@@ -58,7 +58,7 @@ function useLongPress(
 例如，`['touch']` 仅返回触摸处理函数，将鼠标输入留给你的自定义处理函数：
 
 ```tsx
-import { useLongPress } from '@react-ui/hooks';
+import { useLongPress } from '@xiaoye-react/hooks';
 
 function Demo() {
   const handlers = useLongPress(() => console.log('Long pressed'), {
@@ -76,7 +76,7 @@ function Demo() {
 或传递数字以设置自定义阈值：
 
 ```tsx
-import { useLongPress } from '@react-ui/hooks';
+import { useLongPress } from '@xiaoye-react/hooks';
 
 function Demo() {
   const handlers = useLongPress(() => console.log('Long pressed'), {
@@ -89,7 +89,7 @@ function Demo() {
 
 ## 导出类型
 
-`UseLongPressEvent`、`UseLongPressOptions` 和 `UseLongPressReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseLongPressEvent`、`UseLongPressOptions` 和 `UseLongPressReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
@@ -97,5 +97,5 @@ import type {
   UseLongPressEvent,
   UseLongPressOptions,
   UseLongPressReturnValue,
-} from '@react-ui/hooks';
+} from '@xiaoye-react/hooks';
 ```

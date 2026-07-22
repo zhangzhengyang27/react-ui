@@ -9,7 +9,7 @@ interface PolymorphicProps {
 }
 
 function getElementCode(input: PolymorphicProps) {
-  return `import { ${input.component} } from '${input.package || '@react-ui/ui'}';
+  return `import { ${input.component} } from '${input.package || '@xiaoye-react/ui'}';
 
 function Demo() {
   return <${input.component} component="${input.changeToElement}" />;
@@ -19,7 +19,7 @@ function Demo() {
 
 function getNextLinkCode(input: PolymorphicProps) {
   return `import Link from 'next/link';
-import { ${input.component} } from '${input.package || '@react-ui/ui'}';
+import { ${input.component} } from '${input.package || '@xiaoye-react/ui'}';
 
 function Demo() {
   return <${input.component} component={Link} href="/" />;
@@ -28,7 +28,7 @@ function Demo() {
 
 function getInterfaceCode(input: PolymorphicProps) {
   return `import type { ${input.component}Props, ElementProps } from '${
-    input.package || '@react-ui/ui'
+    input.package || '@xiaoye-react/ui'
   }';
 
 interface My${input.component}Props extends ${input.component}Props,

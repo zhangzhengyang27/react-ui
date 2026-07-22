@@ -8,7 +8,7 @@ description: react-ui Icons 文档。
 
 ## Phosphor 图标
 
-ReactUI 的示例和文档使用 [Phosphor icons](https://phosphoricons.com/)，部分 `@react-ui/` 包也依赖它们。如果你不知道该用哪个图标库，我们推荐 [Phosphor icons](https://phosphoricons.com/)。
+ReactUI 的示例和文档使用 [Phosphor icons](https://phosphoricons.com/)，部分 `@xiaoye-react/` 包也依赖它们。如果你不知道该用哪个图标库，我们推荐 [Phosphor icons](https://phosphoricons.com/)。
 
 ## 图标尺寸
 

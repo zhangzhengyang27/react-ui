@@ -52,9 +52,9 @@ function useFileDialog(input?: UseFileDialogOptions): UseFileDialogReturnValue;
 
 ## 导出类型
 
-`UseFileDialogOptions` 和 `UseFileDialogReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseFileDialogOptions` 和 `UseFileDialogReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseFileDialogOptions, UseFileDialogReturnValue } from '@react-ui/hooks';
+import type { UseFileDialogOptions, UseFileDialogReturnValue } from '@xiaoye-react/hooks';
 ```

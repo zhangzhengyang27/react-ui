@@ -385,7 +385,7 @@ Input.Success = InputSuccess
 Input.Description = InputDescription
 Input.Placeholder = InputPlaceholder
 Input.ClearButton = InputClearButton
-Input.displayName = '@react-ui/ui/Input'
+Input.displayName = '@xiaoye-react/ui/Input'
 
 export namespace Input {
     export type Props = InputProps

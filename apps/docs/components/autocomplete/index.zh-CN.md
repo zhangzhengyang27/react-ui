@@ -35,7 +35,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { Autocomplete } from '@react-ui/ui';
+import { Autocomplete } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState('');
@@ -52,7 +52,7 @@ function Demo() {
 非受控 `Autocomplete` 与 `FormData` 的示例用法：
 
 ```tsx
-import { Autocomplete } from '@react-ui/ui';
+import { Autocomplete } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

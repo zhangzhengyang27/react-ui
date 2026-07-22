@@ -216,7 +216,7 @@ export const Drawer = factory<DrawerFactory>((_props, _ref) => {
 })
 
 Drawer.classes = classes
-Drawer.displayName = '@react-ui/ui/Drawer'
+Drawer.displayName = '@xiaoye-react/ui/Drawer'
 Drawer.Body = DrawerBody
 Drawer.CloseButton = DrawerCloseButton
 Drawer.Content = DrawerContent

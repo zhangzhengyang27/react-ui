@@ -73,7 +73,7 @@ export const Highlight = polymorphicFactory<HighlightFactory>((_props, _ref) => 
 })
 
 Highlight.classes = classes
-Highlight.displayName = '@react-ui/ui/Highlight'
+Highlight.displayName = '@xiaoye-react/ui/Highlight'
 
 export namespace Highlight {
     export type Props = HighlightProps

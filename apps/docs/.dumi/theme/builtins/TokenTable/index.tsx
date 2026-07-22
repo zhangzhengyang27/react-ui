@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import * as React from 'react';
-import { Table } from '@react-ui/ui';
+import { Table } from '@xiaoye-react/ui';
 
 import useLocale from '../../../hooks/useLocale';
 import BezierVisualizer from '../../common/BezierVisualizer';

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useMergedRef } from '@react-ui/hooks'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import { Box, BoxProps, ElementProps, Factory, GetStylesApi, useProps } from '../../../core'
 import { ScrollAreaProvider } from '../ScrollArea.context'
 import type { ScrollAreaFactory } from '../ScrollArea'
@@ -103,4 +103,4 @@ export function ScrollAreaRoot(_props: ScrollAreaRootProps) {
     )
 }
 
-ScrollAreaRoot.displayName = '@react-ui/ui/ScrollAreaRoot'
+ScrollAreaRoot.displayName = '@xiaoye-react/ui/ScrollAreaRoot'

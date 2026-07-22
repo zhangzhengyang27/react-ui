@@ -135,7 +135,7 @@ Grid 组件使用 flexbox 配合原生 `gap` 进行布局，所有现代浏览�
 媒体查询示例（默认）：
 
 ```tsx
-import { Grid } from '@react-ui/ui';
+import { Grid } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -150,7 +150,7 @@ function Demo() {
 容器查询示例：
 
 ```tsx
-import { Grid } from '@react-ui/ui';
+import { Grid } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

@@ -191,7 +191,7 @@ export const RadarChart = factory<RadarChartFactory>((_props, ref) => {
 
 RadarChart.classes = classes
 ;(RadarChart as any).varsResolver = varsResolver
-RadarChart.displayName = '@react-ui/ui/RadarChart'
+RadarChart.displayName = '@xiaoye-react/ui/RadarChart'
 
 export namespace RadarChart {
     export type Props = RadarChartProps

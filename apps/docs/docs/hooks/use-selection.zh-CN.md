@@ -54,9 +54,9 @@ function useSelection<T>(input: UseSelectionInput<T>): UseSelectionReturnValue<T
 
 ## 导出类型
 
-`UseSelectionInput`、`UseSelectionReturnValue` 和 `UseSelectionHandlers` 类型从 `@react-ui/hooks` 包导出，
+`UseSelectionInput`、`UseSelectionReturnValue` 和 `UseSelectionHandlers` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseSelectionInput, UseSelectionReturnValue, UseSelectionHandlers } from '@react-ui/hooks';
+import type { UseSelectionInput, UseSelectionReturnValue, UseSelectionHandlers } from '@xiaoye-react/hooks';
 ```

@@ -143,7 +143,7 @@ export const Timeline = factory<TimelineFactory>((_props, ref) => {
 
 Timeline.classes = classes
 ;(Timeline as any).varsResolver = varsResolver
-Timeline.displayName = '@react-ui/ui/Timeline'
+Timeline.displayName = '@xiaoye-react/ui/Timeline'
 Timeline.Item = TimelineItem
 
 export namespace Timeline {

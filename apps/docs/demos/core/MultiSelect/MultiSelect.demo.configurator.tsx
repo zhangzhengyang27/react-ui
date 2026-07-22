@@ -1,9 +1,9 @@
-import { MultiSelect } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { MultiSelect } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
 const code = `
-import { MultiSelect } from '@react-ui/ui';
+import { MultiSelect } from '@xiaoye-react/ui';
 
 
 function Demo() {

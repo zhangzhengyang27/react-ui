@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Tabs, Title } from '@react-ui/ui';
-import * as stylesData from '@react-ui/docs-styles-api';
+import { Tabs, Title } from '@xiaoye-react/ui';
+import * as stylesData from '@xiaoye-react/docs-styles-api';
 import { getComponentName } from '../PropsTable/getComponentName';
 import { TableError } from '../TableError';
 import { ModifiersTable } from './ModifiersTable';

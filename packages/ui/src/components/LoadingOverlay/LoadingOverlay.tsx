@@ -44,7 +44,7 @@ export const LoadingOverlay = factory<LoadingOverlayFactory>((_props, ref) => {
     )
 })
 
-LoadingOverlay.displayName = '@react-ui/ui/LoadingOverlay'
+LoadingOverlay.displayName = '@xiaoye-react/ui/LoadingOverlay'
 
 export namespace LoadingOverlay {
     export type Props = LoadingOverlayProps

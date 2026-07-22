@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useDidUpdate } from '@react-ui/hooks'
+import { useDidUpdate } from '@xiaoye-react/hooks'
 import {
     Box,
     BoxProps,
@@ -170,7 +170,7 @@ export const RollingNumber = factory<RollingNumberFactory>((_props, ref) => {
 
 RollingNumber.classes = classes
 RollingNumber.varsResolver = varsResolver
-RollingNumber.displayName = '@react-ui/ui/RollingNumber'
+RollingNumber.displayName = '@xiaoye-react/ui/RollingNumber'
 
 export namespace RollingNumber {
     export type Props = RollingNumberProps

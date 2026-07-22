@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useMergedRef } from '@react-ui/hooks'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import { useScrollAreaContext } from '../ScrollArea.context'
 import type { ScrollAreaScrollbarAxisProps } from '../ScrollArea.types'
 import { getThumbSize, isScrollingWithinScrollbarBounds, toInt } from '../utils'
@@ -56,4 +56,4 @@ export const ScrollAreaScrollbarX = (props: ScrollAreaScrollbarAxisProps) => {
     )
 }
 
-ScrollAreaScrollbarX.displayName = '@react-ui/ui/ScrollAreaScrollbarX'
+ScrollAreaScrollbarX.displayName = '@xiaoye-react/ui/ScrollAreaScrollbarX'

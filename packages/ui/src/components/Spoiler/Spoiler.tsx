@@ -10,7 +10,7 @@ import {
     useProps,
     useStyles
 } from '../../core'
-import { useElementSize, useId, useUncontrolled } from '@react-ui/hooks'
+import { useElementSize, useId, useUncontrolled } from '@xiaoye-react/hooks'
 import { Anchor } from '../Anchor'
 import classes from './Spoiler.module.css'
 
@@ -154,7 +154,7 @@ export const Spoiler = factory<SpoilerFactory>((_props, ref) => {
 
 Spoiler.classes = classes
 ;(Spoiler as any).varsResolver = varsResolver
-Spoiler.displayName = '@react-ui/ui/Spoiler'
+Spoiler.displayName = '@xiaoye-react/ui/Spoiler'
 
 export namespace Spoiler {
     export type Props = SpoilerProps

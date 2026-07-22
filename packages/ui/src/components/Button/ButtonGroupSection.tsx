@@ -23,4 +23,4 @@ export const ButtonGroupSection = factory<ButtonGroupSectionFactory>((_props, re
     )
 })
 
-ButtonGroupSection.displayName = '@react-ui/ui/ButtonGroupSection'
+ButtonGroupSection.displayName = '@xiaoye-react/ui/ButtonGroupSection'

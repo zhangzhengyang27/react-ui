@@ -1,11 +1,11 @@
-import { Box, Button, Group, LoadingOverlay } from '@react-ui/ui';
-import { useDisclosure } from '@react-ui/hooks';
-import { UIDemo } from '@react-ui/demo';
+import { Box, Button, Group, LoadingOverlay } from '@xiaoye-react/ui';
+import { useDisclosure } from '@xiaoye-react/hooks';
+import { UIDemo } from '@xiaoye-react/demo';
 import { AuthenticationForm } from '../../shared/AuthenticationForm/AuthenticationForm';
 
 const code = `
-import { useDisclosure } from '@react-ui/hooks';
-import { LoadingOverlay, Button, Group, Box } from '@react-ui/ui';
+import { useDisclosure } from '@xiaoye-react/hooks';
+import { LoadingOverlay, Button, Group, Box } from '@xiaoye-react/ui';
 
 function Demo() {
   const [visible, { toggle }] = useDisclosure(false);

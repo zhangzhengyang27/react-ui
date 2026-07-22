@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Checkbox, Stack } from '@react-ui/ui';
+import { Checkbox, Stack } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => {

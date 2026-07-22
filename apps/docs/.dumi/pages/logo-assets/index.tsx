@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Group } from '@react-ui/ui';
-import { useClipboard } from '@react-ui/hooks';
+import { Button, Group } from '@xiaoye-react/ui';
+import { useClipboard } from '@xiaoye-react/hooks';
 
 import classes from './logo-assets.module.css';
 

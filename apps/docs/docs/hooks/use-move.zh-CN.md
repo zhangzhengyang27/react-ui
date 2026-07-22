@@ -21,7 +21,7 @@ description: react-ui 移动手势 Hook 文档。
 `x` 和 `y` 值始终在 `0` 到 `1` 之间；你可以用它们来计算你边界内的值。
 
 ```tsx
-import { useMove } from '@react-ui/hooks';
+import { useMove } from '@xiaoye-react/hooks';
 
 const {
   ref, // -> 传递给目标元素
@@ -55,7 +55,7 @@ const {
 当你想使用外部事件来更改值时，这很有用，例如使用键盘方向键更改值：
 
 ```tsx
-import { clampUseMovePosition } from '@react-ui/hooks';
+import { clampUseMovePosition } from '@xiaoye-react/hooks';
 
 clampUseMovePosition({ x: 0.5, y: 0.5 }); // -> { x: 0.5, y: 0.5 }
 clampUseMovePosition({ x: 1.5, y: 0.5 }); // -> { x: 1, y: 0.5 }
@@ -64,11 +64,11 @@ clampUseMovePosition({ x: -0.5, y: 0.5 }); // -> { x: 0, y: 0.5 }
 
 ## UseMovePosition
 
-`@react-ui/hooks` 导出 `UseMovePosition` 类型，它可用作 `useState` 的类型参数：
+`@xiaoye-react/hooks` 导出 `UseMovePosition` 类型，它可用作 `useState` 的类型参数：
 
 ```tsx
 import { useState } from 'react';
-import { UseMovePosition } from '@react-ui/hooks';
+import { UseMovePosition } from '@xiaoye-react/hooks';
 
 const [value, setValue] = useState<UseMovePosition>({
   x: 0.5,
@@ -103,9 +103,9 @@ function useMove<T extends HTMLElement = any>(
 
 ## 导出类型
 
-`UseMovePosition`、`UseMoveReturnValue` 和 `UseMoveHandlers` 类型从 `@react-ui/hooks` 包导出，
+`UseMovePosition`、`UseMoveReturnValue` 和 `UseMoveHandlers` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseMovePosition, UseMoveHandlers, UseMoveReturnValue } from '@react-ui/hooks';
+import type { UseMovePosition, UseMoveHandlers, UseMoveReturnValue } from '@xiaoye-react/hooks';
 ```

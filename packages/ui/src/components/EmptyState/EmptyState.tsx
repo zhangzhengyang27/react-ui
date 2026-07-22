@@ -183,7 +183,7 @@ export const EmptyState = factory<EmptyStateFactory>((_props, ref) => {
         if (
             isValidElement(child) &&
             (child.type === EmptyStateIndicator ||
-                (child.type as any)?.displayName === '@react-ui/ui/EmptyStateIndicator')
+                (child.type as any)?.displayName === '@xiaoye-react/ui/EmptyStateIndicator')
         ) {
             childrenIndicator = child
         } else {
@@ -212,7 +212,7 @@ export const EmptyState = factory<EmptyStateFactory>((_props, ref) => {
 
 EmptyState.classes = classes
 ;(EmptyState as any).varsResolver = varsResolver
-EmptyState.displayName = '@react-ui/ui/EmptyState'
+EmptyState.displayName = '@xiaoye-react/ui/EmptyState'
 EmptyState.Indicator = EmptyStateIndicator
 EmptyState.Title = EmptyStateTitle
 EmptyState.Description = EmptyStateDescription

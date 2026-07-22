@@ -21,4 +21,4 @@ export const MenuLabel = factory<MenuLabelFactory>((props, ref) => {
 })
 
 MenuLabel.classes = classes
-MenuLabel.displayName = '@react-ui/ui/MenuLabel'
+MenuLabel.displayName = '@xiaoye-react/ui/MenuLabel'

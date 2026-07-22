@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import { CopyButton, Text } from '@react-ui/ui';
+import { CopyButton, Text } from '@xiaoye-react/ui';
 
 export interface DemoHeaderProps {
   title?: string;

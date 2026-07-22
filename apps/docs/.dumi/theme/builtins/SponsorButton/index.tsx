@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiFillGithub, AiFillHeart } from 'react-icons/ai';
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 interface SponsorButtonProps {
   href?: string;

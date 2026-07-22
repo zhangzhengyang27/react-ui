@@ -1,9 +1,9 @@
-import { DateTimePicker } from '@react-ui/dates';
-import { UIDemo } from '@react-ui/demo';
+import { DateTimePicker } from '@xiaoye-react/dates';
+import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
 const code = `
-import { DateTimePicker } from '@react-ui/dates';
+import { DateTimePicker } from '@xiaoye-react/dates';
 
 
 function Demo() {

@@ -11,8 +11,8 @@ description: react-ui CreateFormContext 文档。
 `createFormContext` 函数创建一个 context Provider 和 Hook，用于从 context 中获取表单对象：
 
 ```tsx
-import { TextInput } from '@react-ui/ui';
-import { createFormContext } from '@react-ui/ui';
+import { TextInput } from '@xiaoye-react/ui';
+import { createFormContext } from '@xiaoye-react/ui';
 
 // 表单值的定义是必需的
 interface FormValues {
@@ -68,7 +68,7 @@ export function Context() {
 
 ```tsx
 // form-context.ts 文件
-import { createFormContext } from '@react-ui/ui';
+import { createFormContext } from '@xiaoye-react/ui';
 
 interface UserFormValues {
   age: number;
@@ -82,7 +82,7 @@ export const [UserFormProvider, useUserFormContext, useUserForm] =
 
 ```tsx
 // NameInput.tsx
-import { TextInput } from '@react-ui/ui';
+import { TextInput } from '@xiaoye-react/ui';
 import { useUserFormContext } from './form-context';
 
 export function NameInput() {
@@ -99,7 +99,7 @@ export function NameInput() {
 
 ```tsx
 // UserForm.tsx
-import { NumberInput } from '@react-ui/ui';
+import { NumberInput } from '@xiaoye-react/ui';
 import { UserFormProvider, useUserForm } from './form-context';
 import { NameInput } from './NameInput';
 

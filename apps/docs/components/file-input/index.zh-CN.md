@@ -34,7 +34,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { FileInput } from '@react-ui/ui';
+import { FileInput } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState<File | null>(null);
@@ -44,7 +44,7 @@ function Demo() {
 
 ```tsx
 import { useState } from 'react';
-import { FileInput } from '@react-ui/ui';
+import { FileInput } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState<File[]>([]);
@@ -61,7 +61,7 @@ function Demo() {
 非受控 `FileInput` 与 `FormData` 的示例用法：
 
 ```tsx
-import { FileInput } from '@react-ui/ui';
+import { FileInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -127,7 +127,7 @@ function Demo() {
 `multiple` 值。
 
 ```tsx
-import type { FileInputProps } from '@react-ui/ui';
+import type { FileInputProps } from '@xiaoye-react/ui';
 
 type SingleInputProps = FileInputProps<false>;
 type MultipleInputProps = FileInputProps<true>;

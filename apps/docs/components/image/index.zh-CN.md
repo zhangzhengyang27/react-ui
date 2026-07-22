@@ -44,7 +44,7 @@ group:
 
 ```tsx
 import NextImage from 'next/image';
-import { Image } from '@react-ui/ui';
+import { Image } from '@xiaoye-react/ui';
 import myImage from './my-image.jpg';
 
 function Demo() {

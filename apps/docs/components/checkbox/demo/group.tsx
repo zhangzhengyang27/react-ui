@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Checkbox, Stack, Text } from '@react-ui/ui';
+import { Checkbox, Stack, Text } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const fruits = [

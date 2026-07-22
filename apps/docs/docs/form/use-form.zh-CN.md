@@ -8,9 +8,9 @@ description: react-ui UseForm 文档。
 
 ## 安装
 
-`@react-ui/ui` 包不依赖任何其他库。你可以将其与 `@react-ui/ui` 输入框一起使用，也可以单独使用：
+`@xiaoye-react/ui` 包不依赖任何其他库。你可以将其与 `@xiaoye-react/ui` 输入框一起使用，也可以单独使用：
 
-<InstallScript packages="@react-ui/ui"></InstallScript>
+<InstallScript packages="@xiaoye-react/ui"></InstallScript>
 
 ## 用法
 
@@ -66,7 +66,7 @@ description: react-ui UseForm 文档。
 [触碰与脏状态指南](/docs/form/status/)
 
 ```tsx
-import { useForm } from '@react-ui/ui';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -135,7 +135,7 @@ form.reorderListItem('fruits', { from: 1, to: 0 });
 ```
 
 ```tsx
-import { useForm } from '@react-ui/ui';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -192,7 +192,7 @@ form.clearFieldError('path');
 ```
 
 ```tsx
-import { useForm } from '@react-ui/ui';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({ mode: 'uncontrolled' });
@@ -233,7 +233,7 @@ function Demo() {
 ```
 
 ```tsx
-import { useForm } from '@react-ui/ui';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -274,8 +274,8 @@ form.resetDirty();
 当你想将 `form` 作为 prop 传递给另一个组件时，可以使用 `UseFormReturnType`：
 
 ```tsx
-import { TextInput } from '@react-ui/ui';
-import { useForm, UseFormReturnType } from '@react-ui/ui';
+import { TextInput } from '@xiaoye-react/ui';
+import { useForm, UseFormReturnType } from '@xiaoye-react/ui';
 
 interface FormValues {
   name: string;

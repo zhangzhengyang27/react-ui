@@ -9,7 +9,7 @@ function Wrapper({ children }: { children: React.ReactNode }) {
     return <UIProvider>{children}</UIProvider>
 }
 
-describe('@react-ui/ui/Indicator', () => {
+describe('@xiaoye-react/ui/Indicator', () => {
     it('renders given label', () => {
         render(<Indicator {...defaultProps} label="test-label" />, { wrapper: Wrapper })
         expect(screen.getByText('test-label')).toBeInTheDocument()

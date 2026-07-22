@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge, Group } from '@react-ui/ui';
+import { Badge, Group } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

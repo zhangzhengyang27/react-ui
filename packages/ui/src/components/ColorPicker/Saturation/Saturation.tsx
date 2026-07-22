@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { clampUseMovePosition, useMove, UseMovePosition } from '@react-ui/hooks'
+import { clampUseMovePosition, useMove, UseMovePosition } from '@xiaoye-react/hooks'
 import { Box, ElementProps, UISize } from '../../../core'
 import { useColorPickerContext } from '../ColorPicker.context'
 import { HsvaColor } from '../ColorPicker.types'
@@ -122,4 +122,4 @@ export function Saturation({
     )
 }
 
-Saturation.displayName = '@react-ui/ui/Saturation'
+Saturation.displayName = '@xiaoye-react/ui/Saturation'

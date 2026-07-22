@@ -100,7 +100,7 @@ export const ColorSwatch = polymorphicFactory<ColorSwatchFactory>((_props, ref) 
 
 ColorSwatch.classes = classes
 ;(ColorSwatch as any).varsResolver = varsResolver
-ColorSwatch.displayName = '@react-ui/ui/ColorSwatch'
+ColorSwatch.displayName = '@xiaoye-react/ui/ColorSwatch'
 
 export namespace ColorSwatch {
     export type Props = ColorSwatchProps

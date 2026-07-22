@@ -1,4 +1,4 @@
-import { useUncontrolled } from '@react-ui/hooks'
+import { useUncontrolled } from '@xiaoye-react/hooks'
 import { BoxProps, ElementProps, factory, Factory, UISize, StylesApiProps, useProps, useStyles } from '../../core'
 import { InputWrapper } from '../Input'
 import { CheckboxGroupContext } from './CheckboxGroup.context'
@@ -121,7 +121,7 @@ export const CheckboxGroup = factory<CheckboxGroupFactory>((_props, ref) => {
     )
 })
 
-CheckboxGroup.displayName = '@react-ui/ui/CheckboxGroup'
+CheckboxGroup.displayName = '@xiaoye-react/ui/CheckboxGroup'
 
 export namespace CheckboxGroup {
     export type Props = CheckboxGroupProps

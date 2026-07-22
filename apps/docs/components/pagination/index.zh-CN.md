@@ -28,7 +28,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { Pagination } from '@react-ui/ui';
+import { Pagination } from '@xiaoye-react/ui';
 
 function Demo() {
   const [activePage, setPage] = useState(1);
@@ -119,7 +119,7 @@ function Demo() {
 
 ```tsx
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { Pagination } from '@react-ui/ui';
+import { Pagination } from '@xiaoye-react/ui';
 
 function Demo() {
   const router = useRouter();
@@ -139,7 +139,7 @@ function Demo() {
 
 ```tsx
 import { useSearchParams } from 'react-router-dom';
-import { Pagination } from '@react-ui/ui';
+import { Pagination } from '@xiaoye-react/ui';
 
 function Demo() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -155,7 +155,7 @@ function Demo() {
 
 ```tsx
 import { useQueryState, parseAsInteger } from 'nuqs';
-import { Pagination } from '@react-ui/ui';
+import { Pagination } from '@xiaoye-react/ui';
 
 function Demo() {
   const [page, setPage] = useQueryState('page', parseAsInteger.withDefault(1));

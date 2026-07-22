@@ -61,7 +61,7 @@ export const ProgressLabel = factory<ProgressLabelFactory>((_props, ref) => {
 })
 
 ProgressLabel.classes = classes
-ProgressLabel.displayName = '@react-ui/ui/ProgressLabel'
+ProgressLabel.displayName = '@xiaoye-react/ui/ProgressLabel'
 
 export namespace ProgressLabel {
     export type Props = ProgressLabelProps

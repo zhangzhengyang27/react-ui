@@ -9,7 +9,7 @@ import {
   Text,
   Title,
   notifications,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 import { HomePageContainer } from '../shared/Container';
 import { HomePageDescription } from '../shared/Description';
 import { HomePageLearnMore } from '../shared/LearnMore';

@@ -237,7 +237,7 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
     const child = getSingleElementChild(children) as React.ReactElement<any>
     if (!target && !child) {
         throw new Error(
-            '[@react-ui/ui] Tooltip component children should be an element or a component that accepts ref. Use target prop to specify target element without children.'
+            '[@xiaoye-react/ui] Tooltip component children should be an element or a component that accepts ref. Use target prop to specify target element without children.'
         )
     }
 
@@ -336,6 +336,6 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
 })
 
 Tooltip.classes = classes
-Tooltip.displayName = '@react-ui/ui/Tooltip'
+Tooltip.displayName = '@xiaoye-react/ui/Tooltip'
 Tooltip.Group = TooltipGroup
 Tooltip.Floating = TooltipFloating

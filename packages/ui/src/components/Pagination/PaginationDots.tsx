@@ -53,4 +53,4 @@ export const PaginationDots = factory<PaginationDotsFactory>((_props, ref) => {
 })
 
 PaginationDots.classes = classes
-PaginationDots.displayName = '@react-ui/ui/PaginationDots'
+PaginationDots.displayName = '@xiaoye-react/ui/PaginationDots'

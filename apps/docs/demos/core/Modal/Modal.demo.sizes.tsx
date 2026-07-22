@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Button, Group, Modal } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { Button, Group, Modal } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { AuthenticationForm } from '../../shared/AuthenticationForm/AuthenticationForm';
 
 const SIZES = ['xs', 'sm', 'md', 'lg', 'xl', '55rem', '70%', '100%'];

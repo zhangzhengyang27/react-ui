@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accordion } from '@react-ui/ui';
+import { Accordion } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

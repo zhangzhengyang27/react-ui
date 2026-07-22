@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react'
-import { useClickOutside, useMergedRef } from '@react-ui/hooks'
+import { useClickOutside, useMergedRef } from '@xiaoye-react/hooks'
 import {
     Box,
     BoxProps,
@@ -213,7 +213,7 @@ export const Tree = factory<TreeFactory>((_props, ref) => {
     )
 })
 
-Tree.displayName = '@react-ui/ui/Tree'
+Tree.displayName = '@xiaoye-react/ui/Tree'
 Tree.classes = classes
 Tree.varsResolver = varsResolver
 

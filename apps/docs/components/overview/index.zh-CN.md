@@ -16,14 +16,14 @@ react-ui 是一套基于 React 的现代化组件库，采用 Mantine 风格的 
 
 ## 安装 {#install}
 
-<InstallScript packages="@react-ui/ui"></InstallScript>
+<InstallScript packages="@xiaoye-react/ui"></InstallScript>
 
 ## 使用 {#usage}
 
-所有组件均从 `@react-ui/ui` 命名空间导入，必须包裹在 `UIProvider` 内使用：
+所有组件均从 `@xiaoye-react/ui` 命名空间导入，必须包裹在 `UIProvider` 内使用：
 
 ```tsx
-import { UIProvider, Button } from '@react-ui/ui';
+import { UIProvider, Button } from '@xiaoye-react/ui';
 
 function App() {
   return (

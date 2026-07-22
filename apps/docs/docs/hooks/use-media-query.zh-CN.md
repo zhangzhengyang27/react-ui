@@ -23,7 +23,7 @@ description: react-ui 媒体查询 Hook 文档。
 如果你希望改变这一行为，可以覆盖初始值：
 
 ```tsx
-import { useMediaQuery } from '@react-ui/hooks';
+import { useMediaQuery } from '@xiaoye-react/hooks';
 
 function Demo() {
   // 在第二个参数中设置初始值，并将 getInitialValueInEffect 选项设为 false
@@ -49,9 +49,9 @@ function useMediaQuery(
 
 ## 导出类型
 
-`UseMediaQueryOptions` 类型从 `@react-ui/hooks` 包导出，
+`UseMediaQueryOptions` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseMediaQueryOptions } from '@react-ui/hooks';
+import type { UseMediaQueryOptions } from '@xiaoye-react/hooks';
 ```

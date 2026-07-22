@@ -1,5 +1,5 @@
-import { Menu, MenuProps } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { Menu, MenuProps } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { FLOATING_ARROW_POSITION_DATA } from '../../shared/floating-position-data';
 import { DemoMenuItems } from './_menu-items';
 
@@ -12,7 +12,7 @@ function Wrapper(props: MenuProps) {
 }
 
 const code = `
-import { Menu } from '@react-ui/ui';
+import { Menu } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

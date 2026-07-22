@@ -34,7 +34,7 @@ description: react-ui Unstyled 文档。
 因此可以忽略指南中的相关部分。
 
 ```tsx
-import { HeadlessUIProvider } from '@react-ui/ui';
+import { HeadlessUIProvider } from '@xiaoye-react/ui';
 
 function App() {
   return (

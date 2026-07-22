@@ -27,7 +27,7 @@ group:
 自定义选择器、深度和值获取的示例：
 
 ```tsx
-import { TableOfContents } from '@react-ui/ui';
+import { TableOfContents } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -49,7 +49,7 @@ function Demo() {
 将控件更改为链接的示例：
 
 ```tsx
-import { TableOfContents } from '@react-ui/ui';
+import { TableOfContents } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -70,7 +70,7 @@ function Demo() {
 `TableOfContents` 在挂载时获取数据。若需在 `TableOfContents` 组件挂载之前渲染标题（例如在服务端渲染期间），可传入 `initialData` 属性，值为标题数据数组。`initialData` 会在挂载时被实际数据替换。
 
 ```tsx
-import { TableOfContents } from '@react-ui/ui';
+import { TableOfContents } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -107,7 +107,7 @@ function Demo() {
 
 ```tsx
 import { useRef, useLayoutEffect } from 'react';
-import { TableOfContents } from '@react-ui/ui';
+import { TableOfContents } from '@xiaoye-react/ui';
 
 function Demo({ dependency }) {
   const reinitializeRef = useRef(() => {});

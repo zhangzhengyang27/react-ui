@@ -1,4 +1,4 @@
-import { Table, TableProps } from '@react-ui/ui';
+import { Table, TableProps } from '@xiaoye-react/ui';
 import { HtmlText } from '../HtmlText';
 import { TableInlineCode } from '../TableInlineCode';
 import type { StylesApiData } from './StylesApiTable';

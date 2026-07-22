@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineEdit } from 'react-icons/ai';
-import { Tooltip } from '@react-ui/ui';
+import { Tooltip } from '@xiaoye-react/ui';
 
 import classes from './EditButton.module.css';
 

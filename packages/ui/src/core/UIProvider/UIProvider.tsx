@@ -112,4 +112,4 @@ export function UIProvider({
     )
 }
 
-UIProvider.displayName = '@react-ui/ui/UIProvider'
+UIProvider.displayName = '@xiaoye-react/ui/UIProvider'

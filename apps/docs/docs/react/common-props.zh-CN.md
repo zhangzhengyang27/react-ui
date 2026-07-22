@@ -31,7 +31,7 @@ title: 通用属性
 `react-ui` 的所有组件 props 都继承自 `ElementProps`，确保完整支持对应 HTML 元素的所有原生属性。例如 `Button` 继承自 `ElementProps<'button'>`，`TextInput` 继承自 `ElementProps<'input'>`。
 
 ```tsx
-import type { ElementProps } from '@react-ui/ui';
+import type { ElementProps } from '@xiaoye-react/ui';
 
 type MyProps = ElementProps<'button'> & {
   variant?: 'filled' | 'outline';
@@ -43,7 +43,7 @@ type MyProps = ElementProps<'button'> & {
 `react-ui` 使用 TypeScript 编写，组件 props 类型导出齐全，IDE 会自动补全所有原生 HTML 属性与组件自定义属性。
 
 ```tsx
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 // 这里 variant 是组件自定义属性，type 是原生 button 属性
 <Button variant="filled" type="submit" disabled>提交</Button>

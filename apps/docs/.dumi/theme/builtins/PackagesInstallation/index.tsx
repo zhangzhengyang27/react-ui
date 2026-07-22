@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox, Text } from '@react-ui/ui';
+import { Checkbox, Text } from '@xiaoye-react/ui';
 import InstallDependencies from '../InstallDependencies';
 import { PACKAGES_DATA } from './data';
 
@@ -19,7 +19,7 @@ function getPackagesList(selection: string[], extraPackages: string[]) {
   }, []);
 
   const unique = Array.from(
-    new Set(['@react-ui/ui', '@react-ui/hooks', ...packages, ...extraPackages]),
+    new Set(['@xiaoye-react/ui', '@xiaoye-react/hooks', ...packages, ...extraPackages]),
   );
   return unique.join(' ');
 }
@@ -30,8 +30,8 @@ function getPackagesList(selection: string[], extraPackages: string[]) {
  */
 const PackagesInstallation: React.FC<PackagesInstallationProps> = ({ extraPackages = [] }) => {
   const [selection, setSelection] = React.useState<string[]>([
-    '@react-ui/ui',
-    '@react-ui/hooks',
+    '@xiaoye-react/ui',
+    '@xiaoye-react/hooks',
   ]);
 
   const toggleSelection = (item: string) => {

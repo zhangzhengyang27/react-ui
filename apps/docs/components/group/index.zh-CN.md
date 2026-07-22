@@ -32,7 +32,7 @@ group:
 
 ```tsx
 // 无效的 Group 用法，请勿这样做
-import { Group } from '@react-ui/ui';
+import { Group } from '@xiaoye-react/ui';
 
 function InvalidDemo() {
   return (

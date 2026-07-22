@@ -87,7 +87,7 @@ useMask({ mask: '(999) 999-9999? x9999' }) // 分机号是可选的
 - `generatePattern(mode, options)` – 为 HTML `pattern` 属性生成正则字符串
 
 ```tsx
-import { formatMask, unformatMask, isMaskComplete } from '@react-ui/hooks';
+import { formatMask, unformatMask, isMaskComplete } from '@xiaoye-react/hooks';
 
 const options = { mask: '(999) 999-9999' };
 
@@ -157,9 +157,9 @@ function useMask(options: UseMaskOptions): UseMaskReturnValue;
 
 ## 导出类型
 
-`UseMaskOptions` 和 `UseMaskReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseMaskOptions` 和 `UseMaskReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseMaskOptions, UseMaskReturnValue } from '@react-ui/hooks';
+import type { UseMaskOptions, UseMaskReturnValue } from '@xiaoye-react/hooks';
 ```

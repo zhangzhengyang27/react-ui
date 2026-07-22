@@ -162,7 +162,7 @@ export const Pagination = factory<PaginationFactory>((_props, ref) => {
 })
 
 Pagination.classes = classes
-Pagination.displayName = '@react-ui/ui/Pagination'
+Pagination.displayName = '@xiaoye-react/ui/Pagination'
 Pagination.Root = PaginationRoot
 Pagination.Control = PaginationControl
 Pagination.Dots = PaginationDots

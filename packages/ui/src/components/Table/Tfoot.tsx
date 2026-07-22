@@ -39,5 +39,5 @@ export const Tfoot = factory<TfootFactory>((props, ref) => {
     )
 })
 
-Tfoot.displayName = '@react-ui/ui/Tfoot'
+Tfoot.displayName = '@xiaoye-react/ui/Tfoot'
 Tfoot.classes = classes

@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiOutlineArrowUp } from 'react-icons/ai';
-import { ActionIcon, Tooltip } from '@react-ui/ui';
-import { useWindowScroll } from '@react-ui/hooks';
+import { ActionIcon, Tooltip } from '@xiaoye-react/ui';
+import { useWindowScroll } from '@xiaoye-react/hooks';
 
 import classes from './BackToTop.module.css';
 

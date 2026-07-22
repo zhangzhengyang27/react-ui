@@ -4,7 +4,7 @@ import {
     useFloatingWindow,
     UseFloatingWindowOptions,
     useMergedRef,
-} from '@react-ui/hooks'
+} from '@xiaoye-react/hooks'
 import {
     BoxProps,
     ElementProps,
@@ -116,7 +116,7 @@ export const FloatingWindow = factory<FloatingWindowFactory>((_props, ref) => {
     )
 })
 
-FloatingWindow.displayName = '@react-ui/ui/FloatingWindow'
+FloatingWindow.displayName = '@xiaoye-react/ui/FloatingWindow'
 FloatingWindow.classes = classes
 
 export namespace FloatingWindow {

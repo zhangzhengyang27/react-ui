@@ -29,7 +29,7 @@ group:
 要使 `Burger` 对屏幕阅读器可访问，需要设置 `aria-label` 或使用 [VisuallyHidden](/components/visually-hidden) 组件：
 
 ```tsx
-import { Burger, VisuallyHidden } from '@react-ui/ui';
+import { Burger, VisuallyHidden } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

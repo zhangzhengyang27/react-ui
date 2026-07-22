@@ -213,7 +213,7 @@ CSS 属性。这些变量用于让文本在高像素密度屏幕上显示得更�
 如果你需要覆盖字体平滑值，最好的方式是禁用 `theme.fontSmoothing`，然后在 body 元素上设置[全局样式](/docs/styles/global-styles/#add-global-styles-in-your-application)：
 
 ```tsx
-import { createTheme } from '@react-ui/ui';
+import { createTheme } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   // 控制 --ui-font-family
@@ -230,7 +230,7 @@ const theme = createTheme({
 ```
 
 ```tsx
-import { createTheme, DEFAULT_THEME } from '@react-ui/ui';
+import { createTheme, DEFAULT_THEME } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   fontFamily: `Roboto, ${DEFAULT_THEME.fontFamily}`,
@@ -252,7 +252,7 @@ const theme = createTheme({
 ```
 
 ```tsx
-import { Text } from '@react-ui/ui';
+import { Text } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -270,7 +270,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Text } from '@react-ui/ui';
+import { Text } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -282,7 +282,7 @@ function Demo() {
 ```
 
 ```tsx
-import { createTheme } from '@react-ui/ui';
+import { createTheme } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   fontSizes: {
@@ -296,7 +296,7 @@ const theme = createTheme({
 ```
 
 ```tsx
-import { createTheme } from '@react-ui/ui';
+import { createTheme } from '@xiaoye-react/ui';
 
 // 只修改 xs 字体大小，其他值将从 DEFAULT_THEME 获取
 const theme = createTheme({
@@ -307,7 +307,7 @@ const theme = createTheme({
 ```
 
 ```tsx
-import { createTheme } from '@react-ui/ui';
+import { createTheme } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   fontSizes: {
@@ -330,7 +330,7 @@ const theme = createTheme({
 ```
 
 ```tsx
-import { Text } from '@react-ui/ui';
+import { Text } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -342,7 +342,7 @@ function Demo() {
 ```
 
 ```tsx
-import { createTheme } from '@react-ui/ui';
+import { createTheme } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   lineHeights: {
@@ -364,7 +364,7 @@ const theme = createTheme({
 ```
 
 ```tsx
-import { Box } from '@react-ui/ui';
+import { Box } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -376,7 +376,7 @@ function Demo() {
 ```
 
 ```tsx
-import { createTheme } from '@react-ui/ui';
+import { createTheme } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   headings: {
@@ -398,7 +398,7 @@ const theme = createTheme({
 ```
 
 ```tsx
-import { createTheme } from '@react-ui/ui';
+import { createTheme } from '@xiaoye-react/ui';
 
 // 只修改 h1 的字体大小，其他值将从 DEFAULT_THEME 获取
 const theme = createTheme({
@@ -413,7 +413,7 @@ const theme = createTheme({
 ```
 
 ```tsx
-import { createTheme } from '@react-ui/ui';
+import { createTheme } from '@xiaoye-react/ui';
 
 // 在你的主题中禁用字体平滑
 const theme = createTheme({
@@ -693,7 +693,7 @@ body {
 />
 
 ```tsx
-import { createTheme } from '@react-ui/ui';
+import { createTheme } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   colors: {
@@ -714,7 +714,7 @@ const theme = createTheme({
 ```
 
 ```tsx
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -742,7 +742,7 @@ function Demo() {
 要定义自定义间距值，请使用 `theme.spacing` 属性：
 
 ```tsx
-import { createTheme } from '@react-ui/ui';
+import { createTheme } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   spacing: {
@@ -768,7 +768,7 @@ const theme = createTheme({
 要定义自定义圆角值，请使用 `theme.radius` 和 `theme.defaultRadius` 属性：
 
 ```tsx
-import { createTheme } from '@react-ui/ui';
+import { createTheme } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   defaultRadius: 'sm',
@@ -791,7 +791,7 @@ const theme = createTheme({
 要定义自定义阴影值，请使用 `theme.shadows` 属性：
 
 ```tsx
-import { createTheme } from '@react-ui/ui';
+import { createTheme } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   shadows: {
@@ -806,7 +806,7 @@ const theme = createTheme({
 
 ## z-index 变量
 
-z-index 变量在 `@react-ui/ui/styles.css` 中定义。与其他变量不同，
+z-index 变量在 `@xiaoye-react/ui/styles.css` 中定义。与其他变量不同，
 z-index 变量不受 theme 控制，也不会暴露在 theme 对象中。
 
 <CssVariablesGroup data={[ { variable: '--ui-z-index-app', defaultValue: '100', }, { variable: '--ui-z-index-modal', defaultValue: '200', }, { variable: '--ui-z-index-popover', defaultValue: '300', }, { variable: '--ui-z-index-overlay', defaultValue: '400', }, { variable: '--ui-z-index-max', defaultValue: '9999', }, ]}></CssVariablesGroup>
@@ -824,7 +824,7 @@ z-index 变量不受 theme 控制，也不会暴露在 theme 对象中。
 ```
 
 ```tsx
-import { Modal } from '@react-ui/ui';
+import { Modal } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -859,7 +859,7 @@ import {
   createTheme,
   CSSVariablesResolver,
   UIProvider,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 const themeOverride = createTheme({
   other: {

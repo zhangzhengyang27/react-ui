@@ -1,8 +1,8 @@
 import React from 'react';
 import { FiFileText } from 'react-icons/fi';
-import { ActionIcon, Code, Group, Text } from '@react-ui/ui';
-import { GithubIcon } from '@react-ui/dev-icons';
-import { allVersions } from '@react-ui/meta';
+import { ActionIcon, Code, Group, Text } from '@xiaoye-react/ui';
+import { GithubIcon } from '@xiaoye-react/dev-icons';
+import { allVersions } from '@xiaoye-react/meta';
 
 import classes from './index.module.css';
 

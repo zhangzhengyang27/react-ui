@@ -28,7 +28,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { TextInput } from '@react-ui/ui';
+import { TextInput } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState('');
@@ -46,7 +46,7 @@ function Demo() {
 TextInput 可像原生 `input[type="text"]` 一样用于非受控表单。设置 `name` 属性后，表单提交时该值将包含在 `FormData` 对象中；通过 `defaultValue` 属性可设置非受控表单中的初始值。
 
 ```tsx
-import { TextInput } from '@react-ui/ui';
+import { TextInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

@@ -96,4 +96,4 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((_props, ref) => 
 })
 
 ActionIconGroup.classes = classes
-ActionIconGroup.displayName = '@react-ui/ui/ActionIconGroup'
+ActionIconGroup.displayName = '@xiaoye-react/ui/ActionIconGroup'

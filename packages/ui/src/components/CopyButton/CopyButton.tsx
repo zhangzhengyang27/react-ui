@@ -1,4 +1,4 @@
-import { useClipboard } from '@react-ui/hooks'
+import { useClipboard } from '@xiaoye-react/hooks'
 import { useProps } from '../../core'
 
 export interface CopyButtonProps {
@@ -23,7 +23,7 @@ export function CopyButton(props: CopyButtonProps) {
     return <>{children({ copy, copied: clipboard.copied, ...others })}</>
 }
 
-CopyButton.displayName = '@react-ui/ui/CopyButton'
+CopyButton.displayName = '@xiaoye-react/ui/CopyButton'
 
 export namespace CopyButton {
     export type Props = CopyButtonProps

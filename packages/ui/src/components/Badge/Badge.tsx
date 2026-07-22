@@ -165,7 +165,7 @@ export const Badge = polymorphicFactory<BadgeFactory>((_props, _ref) => {
 
 Badge.classes = classes
 ;(Badge as any).varsResolver = varsResolver
-Badge.displayName = '@react-ui/ui/Badge'
+Badge.displayName = '@xiaoye-react/ui/Badge'
 
 export namespace Badge {
     export type Props = BadgeProps

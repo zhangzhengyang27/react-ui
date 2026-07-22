@@ -1,10 +1,10 @@
-import { TreeSelect } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { TreeSelect } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 import { data } from './data';
 
 const code = `
-import { TreeSelect } from '@react-ui/ui';
+import { TreeSelect } from '@xiaoye-react/ui';
 import { data } from './data';
 
 

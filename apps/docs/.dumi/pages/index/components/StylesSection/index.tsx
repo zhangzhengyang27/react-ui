@@ -1,5 +1,5 @@
 import { FiBox, FiCpu, FiLayers, FiPenTool } from 'react-icons/fi';
-import { SimpleGrid } from '@react-ui/ui';
+import { SimpleGrid } from '@xiaoye-react/ui';
 import { HomePageContainer } from '../shared/Container';
 import { HomePageDescription } from '../shared/Description';
 import { HomePageFeatures, HomePageFeaturesData } from '../shared/Features';

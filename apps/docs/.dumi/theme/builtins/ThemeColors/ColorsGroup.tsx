@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { getContrastColor, Text, Tooltip, UnstyledButton, useUITheme } from '@react-ui/ui';
-import { useClipboard } from '@react-ui/hooks';
+import { getContrastColor, Text, Tooltip, UnstyledButton, useUITheme } from '@xiaoye-react/ui';
+import { useClipboard } from '@xiaoye-react/hooks';
 
 import classes from './ColorsGroup.module.css';
 

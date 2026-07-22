@@ -21,4 +21,4 @@ export const ModalBaseTitle = forwardRef<HTMLHeadingElement, ModalBaseTitleProps
     }
 )
 
-ModalBaseTitle.displayName = '@react-ui/ui/ModalBaseTitle'
+ModalBaseTitle.displayName = '@xiaoye-react/ui/ModalBaseTitle'

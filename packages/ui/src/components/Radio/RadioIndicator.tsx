@@ -54,7 +54,7 @@ export const RadioIndicator = factory<RadioIndicatorFactory>((_props, ref) => {
 })
 
 RadioIndicator.classes = classes
-RadioIndicator.displayName = '@react-ui/ui/RadioIndicator'
+RadioIndicator.displayName = '@xiaoye-react/ui/RadioIndicator'
 
 export namespace RadioIndicator {
     export type Props = RadioIndicatorProps

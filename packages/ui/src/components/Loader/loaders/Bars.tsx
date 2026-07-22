@@ -10,4 +10,4 @@ export const Bars: UILoaderComponent = ({ className, ...others }) => (
     </span>
 )
 
-Bars.displayName = '@react-ui/ui/Bars'
+Bars.displayName = '@xiaoye-react/ui/Bars'

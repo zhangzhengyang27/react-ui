@@ -1,5 +1,5 @@
 {
-    "name": "@react-ui/hooks",
+    "name": "@xiaoye-react/hooks",
     "version": "1.0.0",
     "description": "小叶的 React Hooks 库，用于 主要用于 UI 包使用",
     "type": "module",

@@ -23,4 +23,4 @@ export const ModalBody = factory<ModalBodyFactory>((_props, ref) => {
 })
 
 ModalBody.classes = classes
-ModalBody.displayName = '@react-ui/ui/ModalBody'
+ModalBody.displayName = '@xiaoye-react/ui/ModalBody'

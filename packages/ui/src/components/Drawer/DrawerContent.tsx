@@ -38,4 +38,4 @@ export const DrawerContent = factory<DrawerContentFactory>((_props, ref) => {
 })
 
 DrawerContent.classes = classes
-DrawerContent.displayName = '@react-ui/ui/DrawerContent'
+DrawerContent.displayName = '@xiaoye-react/ui/DrawerContent'

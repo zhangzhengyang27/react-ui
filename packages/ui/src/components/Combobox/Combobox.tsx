@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 import { autoUpdate, flip, offset, shift, useFloating } from '@floating-ui/react'
-import { useClickOutside, useId, useUncontrolled } from '@react-ui/hooks'
+import { useClickOutside, useId, useUncontrolled } from '@xiaoye-react/hooks'
 import { Box, Factory, useProps } from '../../core'
 import { FloatingPosition, FloatingStrategy } from '../../core'
 import { ComboboxContextProvider, ComboboxOptionData, ComboboxContextValue } from './Combobox.context'
@@ -326,7 +326,7 @@ Combobox.EventsTarget = ComboboxEventsTarget
 Combobox.DropdownTarget = ComboboxDropdownTarget
 Combobox.Search = ComboboxSearch
 Combobox.Chevron = ComboboxChevron
-Combobox.displayName = '@react-ui/ui/Combobox'
+Combobox.displayName = '@xiaoye-react/ui/Combobox'
 
 export namespace Combobox {
     export type Props = ComboboxProps

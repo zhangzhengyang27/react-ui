@@ -34,5 +34,5 @@ export const Tr = factory<TrFactory>((props, ref) => {
     )
 })
 
-Tr.displayName = '@react-ui/ui/Tr'
+Tr.displayName = '@xiaoye-react/ui/Tr'
 Tr.classes = classes

@@ -47,7 +47,7 @@ export const AppShellNavbar = factory<AppShellNavbarFactory>((_props, ref) => {
 })
 
 AppShellNavbar.classes = classes
-AppShellNavbar.displayName = '@react-ui/ui/AppShellNavbar'
+AppShellNavbar.displayName = '@xiaoye-react/ui/AppShellNavbar'
 
 export namespace AppShellNavbar {
     export type Props = AppShellNavbarProps

@@ -1,5 +1,5 @@
-import { UIProvider } from '@react-ui/ui';
-import { Demo, UIDemo } from '@react-ui/demo';
+import { UIProvider } from '@xiaoye-react/ui';
+import { Demo, UIDemo } from '@xiaoye-react/demo';
 
 export function renderDemo(demo: UIDemo) {
   return () => (

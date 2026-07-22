@@ -13,8 +13,8 @@ description: react-ui 输入状态 Hook 文档。
 
 ```tsx
 import { useState } from 'react';
-import { NumberInput, TextInput } from '@react-ui/ui';
-import { useInputState } from '@react-ui/hooks';
+import { NumberInput, TextInput } from '@xiaoye-react/ui';
+import { useInputState } from '@xiaoye-react/hooks';
 
 function WithUseInputState() {
   const [stringValue, setStringValue] = useInputState('');
@@ -73,9 +73,9 @@ function useInputState<T>(initialState: T): UseInputStateReturnValue<T>
 
 ## 导出类型
 
-`UseInputStateReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseInputStateReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseInputStateReturnValue } from '@react-ui/hooks';
+import type { UseInputStateReturnValue } from '@xiaoye-react/hooks';
 ```

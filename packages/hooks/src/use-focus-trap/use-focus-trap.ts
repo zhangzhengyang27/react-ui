@@ -28,7 +28,7 @@ export function useFocusTrap(active = true): React.RefCallback<HTMLElement | nul
         if (focusElement) {
             focusElement.focus({ preventScroll: true })
         } else if (process.env.NODE_ENV === 'development') {
-            console.warn('[@react-ui/hooks/use-focus-trap] Failed to find focusable element within provided node', node)
+            console.warn('[@xiaoye-react/hooks/use-focus-trap] Failed to find focusable element within provided node', node)
         }
     }
 
@@ -55,7 +55,7 @@ export function useFocusTrap(active = true): React.RefCallback<HTMLElement | nul
                 if (node.getRootNode()) {
                     focusNode(node)
                 } else if (process.env.NODE_ENV === 'development') {
-                    console.warn('[@react-ui/hooks/use-focus-trap] Ref node is not part of the dom', node)
+                    console.warn('[@xiaoye-react/hooks/use-focus-trap] Ref node is not part of the dom', node)
                 }
             })
 

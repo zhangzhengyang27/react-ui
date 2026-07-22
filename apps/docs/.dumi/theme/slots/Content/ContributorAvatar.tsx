@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Tooltip } from '@react-ui/ui';
+import { Avatar, Tooltip } from '@xiaoye-react/ui';
 
 export interface AvatarListItem {
   username?: string;

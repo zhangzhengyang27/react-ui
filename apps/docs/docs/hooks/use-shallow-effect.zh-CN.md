@@ -15,7 +15,7 @@ description: react-ui 浅层 Effect Hook 文档。
 
 ```tsx
 import { useEffect } from 'react';
-import { useShallowEffect } from '@react-ui/hooks';
+import { useShallowEffect } from '@xiaoye-react/hooks';
 
 // 每次渲染都会调用
 useEffect(() => {}, [{ a: 1 }]);
@@ -25,7 +25,7 @@ useShallowEffect(() => {}, [{ a: 1 }]);
 ```
 
 ```tsx
-import { useShallowEffect } from '@react-ui/hooks';
+import { useShallowEffect } from '@xiaoye-react/hooks';
 
 // 原始值的处理方式与 useEffect 相同
 useShallowEffect(() => {}, [1, 2, 3]);

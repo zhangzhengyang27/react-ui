@@ -26,7 +26,7 @@ cd react-ui-demo
 ### 2. 安装 react-ui
 
 ```bash
-npm install @react-ui/ui @react-ui/hooks
+npm install @xiaoye-react/ui @xiaoye-react/hooks
 ```
 
 ### 3. 使用组件
@@ -34,7 +34,7 @@ npm install @react-ui/ui @react-ui/hooks
 在 `src/App.tsx` 中引入并渲染 react-ui 组件：
 
 ```tsx
-import { Button, Stack, TextInput, UIProvider } from '@react-ui/ui';
+import { Button, Stack, TextInput, UIProvider } from '@xiaoye-react/ui';
 
 function App() {
   return (
@@ -69,7 +69,7 @@ npm run dev
 react-ui 使用 TypeScript 编写，并提供完整的类型定义。组件 Props 继承自 `ElementProps`，因此支持对应原生 HTML 元素的所有属性。
 
 ```tsx
-import type { ButtonProps } from '@react-ui/ui';
+import type { ButtonProps } from '@xiaoye-react/ui';
 ```
 
 ## 主题

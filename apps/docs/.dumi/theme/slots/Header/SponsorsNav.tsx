@@ -1,5 +1,5 @@
 import React from 'react';
-import { HoverCard } from '@react-ui/ui';
+import { HoverCard } from '@xiaoye-react/ui';
 
 import useLocale from '../../../hooks/useLocale';
 import SponsorCard from './SponsorCard';

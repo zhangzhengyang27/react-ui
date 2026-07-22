@@ -119,7 +119,7 @@ console.log(classes);
 > - 如果组件使用 [Portal](/components/portal)，则使用 styled-components 和其他类似库无法通过静态选择器样式化 ReactUI 组件的内部元素，因为某些元素会渲染在组件根节点之外，内部元素不属于组件树的一部分
 
 ```tsx
-import { TextInput } from '@react-ui/ui';
+import { TextInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -150,7 +150,7 @@ function Demo() {
 
 ```tsx
 import styled from '@emotion/styled';
-import { Slider } from '@react-ui/ui';
+import { Slider } from '@xiaoye-react/ui';
 
 const StyledSlider = styled(Slider)`
   & .ui-Slider-bar {

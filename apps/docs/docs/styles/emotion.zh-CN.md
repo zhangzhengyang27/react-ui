@@ -14,9 +14,9 @@ description: react-ui Emotion 文档。
 - **服务端渲染支持有限** – 现代框架（如使用 app router 的 Next.js）不完全支持 Emotion，或需要额外配置。
 - **运行时开销** – 样式在运行时生成和注入，在包含大量组件的页面上可能导致性能问题。
 - **额外的打包体积** – 你的打包文件将包含 `@emotion/react`（21.2kB minified）、
-  `@react-ui/emotion`（~2kb minified）以及你在组件中使用的所有样式。
+  `@xiaoye-react/emotion`（~2kb minified）以及你在组件中使用的所有样式。
 
-`@react-ui/emotion` 包可用于以下框架：
+`@xiaoye-react/emotion` 包可用于以下框架：
 
 - **Vite** 和 **CRA**，基础配置即可
 - **Next.js pages router**，包提供了额外的服务端渲染配置
@@ -39,7 +39,7 @@ description: react-ui Emotion 文档。
 
 安装依赖：
 
-<InstallScript packages="@react-ui/emotion @emotion/react @emotion/cache @emotion/serialize @emotion/utils"></InstallScript>
+<InstallScript packages="@xiaoye-react/emotion @emotion/react @emotion/cache @emotion/serialize @emotion/utils"></InstallScript>
 
 在 `src` 目录下创建 `emotion.d.ts` 文件，为 `sx` 和 `styles` props 添加类型支持：
 
@@ -50,11 +50,11 @@ description: react-ui Emotion 文档。
 完成！现在你可以在你的应用中使用 `sx`、`styles` props 和 `createStyles`：
 
 ```tsx
-import '@react-ui/ui';
+import '@xiaoye-react/ui';
 
-import type { EmotionStyles, EmotionSx } from '@react-ui/emotion';
+import type { EmotionStyles, EmotionSx } from '@xiaoye-react/emotion';
 
-declare module '@react-ui/ui' {
+declare module '@xiaoye-react/ui' {
   export interface BoxProps {
     sx?: EmotionSx;
     styles?: EmotionStyles;
@@ -63,13 +63,13 @@ declare module '@react-ui/ui' {
 ```
 
 ```tsx
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 import {
   emotionTransform,
   UIEmotionProvider,
-} from '@react-ui/emotion';
+} from '@xiaoye-react/emotion';
 
 export default function App() {
   return (
@@ -81,7 +81,7 @@ export default function App() {
 ```
 
 ```tsx
-import { Box } from '@react-ui/ui';
+import { Box } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -111,7 +111,7 @@ function Demo() {
 
 安装依赖：
 
-<InstallScript packages="@react-ui/emotion @emotion/react @emotion/cache @emotion/serialize @emotion/utils @emotion/server"></InstallScript>
+<InstallScript packages="@xiaoye-react/emotion @emotion/react @emotion/cache @emotion/serialize @emotion/utils @emotion/server"></InstallScript>
 
 创建 `emotion` 文件夹，并添加 `cache.ts` 和 `emotion.d.ts` 文件。
 
@@ -136,11 +136,11 @@ export const emotionCache = createCache({ key: 'css' });
 ```
 
 ```tsx
-import '@react-ui/ui';
+import '@xiaoye-react/ui';
 
-import type { EmotionStyles, EmotionSx } from '@react-ui/emotion';
+import type { EmotionStyles, EmotionSx } from '@xiaoye-react/emotion';
 
-declare module '@react-ui/ui' {
+declare module '@xiaoye-react/ui' {
   export interface BoxProps {
     sx?: EmotionSx;
     styles?: EmotionStyles;
@@ -156,8 +156,8 @@ import NextDocument, {
   NextScript,
 } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
-import { ColorSchemeScript } from '@react-ui/ui';
-import { createGetInitialProps } from '@react-ui/emotion';
+import { ColorSchemeScript } from '@xiaoye-react/ui';
+import { createGetInitialProps } from '@xiaoye-react/emotion';
 // Import cache created in the previous step
 import { emotionCache } from '../emotion/cache';
 
@@ -184,14 +184,14 @@ Document.getInitialProps = createGetInitialProps(
 ```
 
 ```tsx
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 
 import Head from 'next/head';
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 import {
   emotionTransform,
   UIEmotionProvider,
-} from '@react-ui/emotion';
+} from '@xiaoye-react/emotion';
 import { emotionCache } from '../emotion/cache';
 
 export default function App({ Component, pageProps }: any) {
@@ -214,7 +214,7 @@ export default function App({ Component, pageProps }: any) {
 ```
 
 ```tsx
-import { Box } from '@react-ui/ui';
+import { Box } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -244,7 +244,7 @@ function Demo() {
 
 安装依赖：
 
-<InstallScript packages="@react-ui/emotion @emotion/react @emotion/cache @emotion/serialize @emotion/utils @emotion/server"></InstallScript>
+<InstallScript packages="@xiaoye-react/emotion @emotion/react @emotion/cache @emotion/serialize @emotion/utils @emotion/server"></InstallScript>
 
 创建 `app/emotion.d.ts` 文件，内容如下：
 
@@ -260,11 +260,11 @@ function Demo() {
 注意，大多数使用 `sx`、`styles` 或 `createStyles` 的组件都需要 `'use client'`：
 
 ```tsx
-import '@react-ui/ui';
+import '@xiaoye-react/ui';
 
-import type { EmotionStyles, EmotionSx } from '@react-ui/emotion';
+import type { EmotionStyles, EmotionSx } from '@xiaoye-react/emotion';
 
-declare module '@react-ui/ui' {
+declare module '@xiaoye-react/ui' {
   export interface BoxProps {
     sx?: EmotionSx;
     styles?: EmotionStyles;
@@ -327,13 +327,13 @@ export function RootStyleRegistry({
 ```
 
 ```tsx
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 
-import { ColorSchemeScript, UIProvider } from '@react-ui/ui';
+import { ColorSchemeScript, UIProvider } from '@xiaoye-react/ui';
 import {
   emotionTransform,
   UIEmotionProvider,
-} from '@react-ui/emotion';
+} from '@xiaoye-react/emotion';
 import { RootStyleRegistry } from './EmotionRootStyleRegistry';
 
 export const metadata = {
@@ -369,7 +369,7 @@ export default function RootLayout({ children }: { children: any }) {
 ```tsx
 'use client';
 
-import { Box } from '@react-ui/ui';
+import { Box } from '@xiaoye-react/ui';
 
 export default function HomePage() {
   return (
@@ -406,7 +406,7 @@ export default function HomePage() {
 与其自身的 `sx` 合并时非常有用，例如：
 
 ```tsx
-import { Box, Button } from '@react-ui/ui';
+import { Box, Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -449,8 +449,8 @@ function Demo() {
 ```
 
 ```tsx
-import { Box } from '@react-ui/ui'
-import { EmotionSx, mergeSx } from '@react-ui/emotion'
+import { Box } from '@xiaoye-react/ui'
+import { EmotionSx, mergeSx } from '@xiaoye-react/emotion'
 
 interface MyCustomBoxProps {
   sx?: EmotionSx
@@ -475,7 +475,7 @@ function App() {
 `styles` prop 接受一个样式对象的对象，或一个接收 theme、组件 props 和 utilities 并返回样式对象的函数：
 
 ```tsx
-import { Button } from '@react-ui/ui';
+import { Button } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -513,8 +513,8 @@ function Demo() {
 注意，为了避免类型冲突，你不应使用 `Component.extend` 方法，而是直接传递组件配置对象。
 
 ```tsx
-import { createTheme, UITheme, TextProps } from '@react-ui/ui';
-import { EmotionHelpers } from '@react-ui/emotion';
+import { createTheme, UITheme, TextProps } from '@xiaoye-react/ui';
+import { EmotionHelpers } from '@xiaoye-react/emotion';
 
 export const theme = createTheme({
   components: {

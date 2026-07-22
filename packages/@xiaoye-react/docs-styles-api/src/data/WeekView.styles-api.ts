@@ -1,0 +1,88 @@
+import type { WeekViewFactory } from '@xiaoye-react/schedule';
+import type { StylesApiData } from '../types';
+
+export const WeekViewStylesApi: StylesApiData<WeekViewFactory> = {
+  selectors: {
+    weekView: '根元素',
+    weekViewRoot: 'Week view root 容器',
+    weekViewHeader: '带日期标签的头部行',
+    weekViewInner: 'Inner 容器',
+    weekViewAllDaySlotsEvents: 'All-day events 容器',
+    weekViewAllDaySlots: 'All-day slots 容器',
+    weekViewAllDaySlotsList: 'List of all-day slots',
+    weekViewAllDaySlot: 'Individual all-day slot',
+    weekViewAllDaySlotsLabel: 'All-day slots label',
+    weekViewScrollArea: '时间段的滚动区域',
+    weekViewCorner: 'Top-left corner 元素',
+    weekViewSlotLabels: '时间段标签的容器',
+    weekViewSlotLabel: '单个时间段标签',
+    weekViewDayLabel: 'Day label 元素',
+    weekViewDayWeekday: '星期标签',
+    weekViewDay: '日期列',
+    weekViewDayNumber: '头部中的日期数字',
+    weekViewDaySlot: '单个日期时间段',
+    weekViewDaySlots: '日期时间段的容器',
+    weekViewWeekLabel: '周标签',
+    weekViewWeekNumber: '周数指示器',
+    weekViewBackgroundEvent: 'Background event 元素',
+    header: '头部容器，属于 ScheduleHeader',
+    headerControl: '头部控制元素，属于 ScheduleHeader',
+    viewSelect: '视图选择元素，属于 ScheduleHeader',
+    monthYearSelectTarget: '月/年选择目标按钮，属于 MonthYearSelect',
+    monthYearSelectDropdown: '月/年选择下拉框，属于 MonthYearSelect',
+    monthYearSelectControl: '月/年选择控件，属于 MonthYearSelect',
+    monthYearSelectList: '月/年选择列表，属于 MonthYearSelect',
+    monthYearSelectLabel: '月/年选择标签，属于 MonthYearSelect',
+    currentTimeIndicator: 'Current time indicator container, part of CurrentTimeIndicator',
+    currentTimeIndicatorLine: 'Current time indicator line, part of CurrentTimeIndicator',
+    currentTimeIndicatorThumb: 'Current time indicator thumb, part of CurrentTimeIndicator',
+    currentTimeIndicatorTimeBubble:
+      'Current time indicator time bubble, part of CurrentTimeIndicator',
+    agendaView: 'AgendaView 根元素，当日程打开时显示',
+    agendaViewHeader: 'AgendaView header 容器',
+    agendaViewHeaderLabel: 'AgendaView 日期范围标签',
+    agendaViewBody: 'AgendaView body 容器',
+    agendaViewDateGroup: 'AgendaView date group 容器',
+    agendaViewDateHeader: 'AgendaView 日期头部文本',
+    agendaViewEvent: 'AgendaView 事件项按钮',
+    agendaViewEventBody: 'AgendaView event body 容器',
+    agendaViewEventColor: 'AgendaView 事件颜色指示器',
+    agendaViewEventTitle: 'AgendaView 事件标题文本',
+    agendaViewEventTime: 'AgendaView 事件时间标签',
+    agendaViewNoEvents: 'AgendaView 无事件消息',
+  },
+
+  vars: {
+    weekView: {
+      '--week-view-radius': 'Controls `border-radius` of the week view',
+      '--week-view-slot-height': 'Controls `height` of 1-hour time slots',
+      '--week-view-all-day-slots-height': 'Controls `height` of all-day slots section',
+    },
+  },
+
+  modifiers: [
+    { modifier: 'data-today', selector: 'weekViewDayLabel', condition: '当天' },
+    { modifier: 'data-weekend', selector: 'weekViewDay', condition: '周末' },
+    {
+      modifier: 'data-highlight-today',
+      selector: 'weekViewDay',
+      condition: '`highlightToday="column"` and day is today',
+    },
+    {
+      modifier: 'data-hour-start',
+      selector: 'weekViewDaySlot',
+      condition: '时间段位于整点开始',
+    },
+    {
+      modifier: 'data-business-hours',
+      selector: 'weekViewDaySlot',
+      condition: '`highlightBusinessHours` 为 true 且时间段在工作时间内',
+    },
+    {
+      modifier: 'data-non-business-hours',
+      selector: 'weekViewDaySlot',
+      condition: '`highlightBusinessHours` 为 true 且时间段在工作时间外',
+    },
+    { modifier: 'data-static', selector: 'weekView', condition: '`mode="static"` is set' },
+  ],
+};

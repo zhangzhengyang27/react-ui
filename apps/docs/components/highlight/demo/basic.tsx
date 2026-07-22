@@ -1,5 +1,5 @@
 import React from 'react';
-import { Highlight } from '@react-ui/ui';
+import { Highlight } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

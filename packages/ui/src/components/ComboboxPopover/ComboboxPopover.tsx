@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import cx from 'clsx'
-import { useUncontrolled } from '@react-ui/hooks'
+import { useUncontrolled } from '@xiaoye-react/hooks'
 import { Factory, genericFactory, rem, StylesApiProps, useProps } from '../../core'
 import { CheckIcon } from '../Checkbox'
 import { Combobox } from '../Combobox'
@@ -490,5 +490,5 @@ export const ComboboxPopover = genericFactory<ComboboxPopoverFactory>((_props) =
 })
 
 ComboboxPopover.classes = classes
-ComboboxPopover.displayName = '@react-ui/ui/ComboboxPopover'
+ComboboxPopover.displayName = '@xiaoye-react/ui/ComboboxPopover'
 ComboboxPopover.Target = ComboboxPopoverTarget

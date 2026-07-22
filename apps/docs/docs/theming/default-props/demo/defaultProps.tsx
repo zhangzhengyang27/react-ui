@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, createTheme, Group, UIThemeProvider } from '@react-ui/ui';
+import { Button, createTheme, Group, UIThemeProvider } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   components: {

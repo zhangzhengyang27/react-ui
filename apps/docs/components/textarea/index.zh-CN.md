@@ -29,7 +29,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { Textarea } from '@react-ui/ui';
+import { Textarea } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState('');
@@ -51,7 +51,7 @@ function Demo() {
 非受控 `Textarea` 与 `FormData` 的用法示例：
 
 ```tsx
-import { Textarea } from '@react-ui/ui';
+import { Textarea } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Flex } from '@react-ui/ui';
-import type { FlexProps } from '@react-ui/ui';
+import { Flex } from '@xiaoye-react/ui';
+import type { FlexProps } from '@xiaoye-react/ui';
 import { clsx } from 'clsx';
 
 import ImagePreview from '../ImagePreview';

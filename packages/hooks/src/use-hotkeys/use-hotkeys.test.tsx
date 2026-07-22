@@ -7,7 +7,7 @@ const dispatchEvent = (data: any) => {
   document.documentElement.dispatchEvent(event);
 };
 
-describe('@react-ui/hooks/use-hotkey', () => {
+describe('@xiaoye-react/hooks/use-hotkey', () => {
   it('should listen to document events', () => {
     const handler = vi.fn();
     renderHook(() => useHotkeys([['shift+ctrl+S', handler]]));

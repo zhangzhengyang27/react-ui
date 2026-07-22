@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from '@react-ui/ui';
+import { Table } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

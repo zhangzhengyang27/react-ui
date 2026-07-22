@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Popover } from '@react-ui/ui';
+import { Popover } from '@xiaoye-react/ui';
 
 import classes from './index.module.css';
 

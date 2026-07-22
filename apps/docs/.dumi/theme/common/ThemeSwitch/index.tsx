@@ -7,7 +7,7 @@ import {
   AiOutlineSun,
   AiOutlineSync,
 } from 'react-icons/ai';
-import { ActionIcon, Menu } from '@react-ui/ui';
+import { ActionIcon, Menu } from '@xiaoye-react/ui';
 import { FormattedMessage, useLocation, useNavigate } from 'dumi';
 
 import useLocalStorage from '../../../hooks/useLocalStorage';

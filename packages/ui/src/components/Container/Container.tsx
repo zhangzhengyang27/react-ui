@@ -72,7 +72,7 @@ export const Container = factory<ContainerFactory>((_props, _ref) => {
 
 Container.classes = classes
 ;(Container as any).varsResolver = varsResolver
-Container.displayName = '@react-ui/ui/Container'
+Container.displayName = '@xiaoye-react/ui/Container'
 
 export namespace Container {
     export type Props = ContainerProps

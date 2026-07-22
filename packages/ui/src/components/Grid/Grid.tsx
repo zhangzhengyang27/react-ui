@@ -88,7 +88,7 @@ export const Grid = factory<GridFactory>((_props, _ref) => {
 
 Grid.Col = GridCol
 Grid.classes = classes
-Grid.displayName = '@react-ui/ui/Grid'
+Grid.displayName = '@xiaoye-react/ui/Grid'
 
 export namespace Grid {
     export type Props = GridProps

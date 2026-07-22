@@ -20,7 +20,7 @@ description: react-ui Responsive 文档。
 <DataTable head={['Breakpoint', 'Viewport width', 'Value in px']} data={Object.keys(DEFAULT_THEME.breakpoints).map((size) => [ size, `${DEFAULT_THEME.breakpoints[size]}`, `${px(DEFAULT_THEME.breakpoints[size])}px`, ])}></DataTable>
 
 ```tsx
-import { createTheme, UIProvider } from '@react-ui/ui';
+import { createTheme, UIProvider } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   breakpoints: {
@@ -130,7 +130,7 @@ function CustomComponent() {
 
 ## use-matches hook
 
-`use-matches` hook 是从 `@react-ui/ui` 导出的 [use-media-query](/docs/hooks/use-media-query/) 的替代方案，如果你需要匹配多个媒体查询和值。它接受一个以媒体查询为键、以给定断点处的值为值的对象。
+`use-matches` hook 是从 `@xiaoye-react/ui` 导出的 [use-media-query](/docs/hooks/use-media-query/) 的替代方案，如果你需要匹配多个媒体查询和值。它接受一个以媒体查询为键、以给定断点处的值为值的对象。
 
 注意，`use-matches` hook 底层使用与 [use-media-query](/docs/hooks/use-media-query/) 相同的逻辑，不建议将其作为主要响应式样式来源，特别是如果你的应用中有 ssr。
 
@@ -164,7 +164,7 @@ function CustomComponent() {
 在这种情况下，元素将拥有以下样式：
 
 ```tsx
-import { Box } from '@react-ui/ui';
+import { Box } from '@xiaoye-react/ui';
 
 function Demo() {
   return <Box w={{ base: 320, sm: 480, lg: 640 }} />;

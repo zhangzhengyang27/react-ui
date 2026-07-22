@@ -28,7 +28,7 @@ export const OptionalPortal = factory<OptionalPortalFactory>(({ withinPortal = t
     return <Portal ref={_ref} {...others}>{children}</Portal>
 })
 
-OptionalPortal.displayName = '@react-ui/ui/OptionalPortal'
+OptionalPortal.displayName = '@xiaoye-react/ui/OptionalPortal'
 
 export namespace OptionalPortal {
     export type Props = OptionalPortalProps

@@ -37,7 +37,7 @@ description: react-ui 滚动到视口 Hook 文档。
 返回的 `scrollIntoView` 函数接受一个可选参数 `alignment` - 基于当前轴相对于父元素的目标元素对齐方式。
 
 ```tsx
-import { useScrollIntoView } from '@react-ui/hooks';
+import { useScrollIntoView } from '@xiaoye-react/hooks';
 
 const { scrollIntoView } = useScrollIntoView();
 
@@ -53,7 +53,7 @@ scrollIntoView({ alignment: 'center' });
 你可以在 [easings.net](https://easings.net/) 找到其他流行示例。
 
 ```tsx
-import { useScrollIntoView } from '@react-ui/hooks';
+import { useScrollIntoView } from '@xiaoye-react/hooks';
 
 useScrollIntoView({
   easing: (t) => (t < 0.5 ? 16 * t ** 5 : 1 - (-2 * t + 2) ** 5 / 2), // easeInOutQuint
@@ -123,9 +123,9 @@ function useScrollIntoView<
 
 ## 导出类型
 
-`UseScrollIntoViewOptions` 和 `UseScrollIntoViewReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseScrollIntoViewOptions` 和 `UseScrollIntoViewReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseScrollIntoViewOptions, UseScrollIntoViewReturnValue } from '@react-ui/hooks';
+import type { UseScrollIntoViewOptions, UseScrollIntoViewReturnValue } from '@xiaoye-react/hooks';
 ```

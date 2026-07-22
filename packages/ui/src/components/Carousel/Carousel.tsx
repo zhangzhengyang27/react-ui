@@ -17,7 +17,7 @@ import {
 } from '../../core'
 import { UnstyledButton } from '../UnstyledButton'
 import { VisuallyHidden } from '../VisuallyHidden'
-import { useId } from '@react-ui/hooks'
+import { useId } from '@xiaoye-react/hooks'
 import { CarouselProvider } from './Carousel.context'
 import { CarouselSlide } from './CarouselSlide'
 import classes from './Carousel.module.css'
@@ -345,7 +345,7 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
 
 Carousel.classes = classes
 Carousel.varsResolver = varsResolver
-Carousel.displayName = '@react-ui/ui/Carousel'
+Carousel.displayName = '@xiaoye-react/ui/Carousel'
 Carousel.Slide = CarouselSlide
 
 export namespace Carousel {

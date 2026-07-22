@@ -1,5 +1,5 @@
 import React from 'react';
-import { Kbd, Table, Text } from '@react-ui/ui';
+import { Kbd, Table, Text } from '@xiaoye-react/ui';
 
 import classes from './index.module.css';
 

@@ -21,7 +21,7 @@ interface ParseThemeColorResult {
 export function parseThemeColor({ color, theme, colorScheme }: ParseThemeColorOptions): ParseThemeColorResult {
     if (typeof color !== 'string') {
         throw new Error(
-            `[@react-ui/ui] Failed to parse color. Expected color to be a string, instead got ${typeof color}`
+            `[@xiaoye-react/ui] Failed to parse color. Expected color to be a string, instead got ${typeof color}`
         )
     }
 

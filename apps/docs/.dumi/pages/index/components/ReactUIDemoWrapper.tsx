@@ -1,5 +1,5 @@
 import React from 'react';
-import { UIProvider } from '@react-ui/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 
 interface ReactUIDemoWrapperProps {
   children: React.ReactNode;

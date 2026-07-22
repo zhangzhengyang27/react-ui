@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react'
-import { useUncontrolled, useId } from '@react-ui/hooks'
+import { useUncontrolled, useId } from '@xiaoye-react/hooks'
 import { useProps, type FloatingPosition } from '../../core'
 import { Popover, type PopoverProps } from '../Popover'
 import { useMenuContext } from './Menu.context'
@@ -127,7 +127,7 @@ export function MenuSub(_props: MenuSubProps) {
     )
 }
 
-MenuSub.displayName = '@react-ui/ui/MenuSub'
+MenuSub.displayName = '@xiaoye-react/ui/MenuSub'
 MenuSub.Target = MenuSubTarget
 MenuSub.Dropdown = MenuSubDropdown
 MenuSub.Item = MenuSubItem

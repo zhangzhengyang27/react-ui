@@ -1,10 +1,10 @@
-# @react-ui/hooks
+# @xiaoye-react/hooks
 
-> 小叶的 React Hooks 库，为 [@react-ui/ui](https://www.npmjs.com/package/@react-ui/ui) 提供底层 hooks 支持，也可独立使用。
+> 小叶的 React Hooks 库，为 [@xiaoye-react/ui](https://www.npmjs.com/package/@xiaoye-react/ui) 提供底层 hooks 支持，也可独立使用。
 
 ## 简介
 
-`@react-ui/hooks` 是一个包含 60+ 个 React hooks 的工具库，覆盖以下场景：
+`@xiaoye-react/hooks` 是一个包含 60+ 个 React hooks 的工具库，覆盖以下场景：
 
 - **状态管理**：`useToggle`、`useCounter`、`useMap`、`useSet`、`useListState`、`useSetState`、`useQueue`、`usePrevious`、`useStateHistory`
 - **表单与非受控**：`useUncontrolled`、`useInputState`、`useDisclosure`、`useValidatedState`
@@ -19,15 +19,15 @@
 ## 安装
 
 ```bash
-pnpm add @react-ui/hooks
+pnpm add @xiaoye-react/hooks
 # 或
-npm install @react-ui/hooks
+npm install @xiaoye-react/hooks
 ```
 
 ## 使用
 
 ```tsx
-import { useDisclosure, useToggle, useLocalStorage } from '@react-ui/hooks'
+import { useDisclosure, useToggle, useLocalStorage } from '@xiaoye-react/hooks'
 
 function Demo() {
     const [opened, { open, close, toggle }] = useDisclosure()

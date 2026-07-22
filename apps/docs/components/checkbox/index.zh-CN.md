@@ -27,7 +27,7 @@ react-ui Checkbox 采用 Mantine 风格的 `label` / `description` / `error` / `
 
 ```tsx
 import { useState } from 'react';
-import { Checkbox } from '@react-ui/ui';
+import { Checkbox } from '@xiaoye-react/ui';
 
 function Demo() {
   const [checked, setChecked] = useState(false);
@@ -48,7 +48,7 @@ function Demo() {
 
 ```tsx
 import { useState } from 'react';
-import { Checkbox } from '@react-ui/ui';
+import { Checkbox } from '@xiaoye-react/ui';
 
 function Demo() {
   const [checked, setChecked] = useState(true);
@@ -63,9 +63,9 @@ function Demo() {
 }
 ```
 
-### 与 @react-ui/ui 一起使用的 Checkbox
+### 与 @xiaoye-react/ui 一起使用的 Checkbox
 
-将 `Checkbox` 与 [@react-ui/ui](/docs/form/use-form) 一起使用的示例：
+将 `Checkbox` 与 [@xiaoye-react/ui](/docs/form/use-form) 一起使用的示例：
 
 <code src="./demo/withUseForm.tsx"></code>
 
@@ -78,7 +78,7 @@ function Demo() {
 非受控 `Checkbox` 与 `FormData` 的用法示例：
 
 ```tsx
-import { Checkbox } from '@react-ui/ui';
+import { Checkbox } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -156,7 +156,7 @@ function Demo() {
 
 ```tsx
 import { useState } from 'react';
-import { Checkbox } from '@react-ui/ui';
+import { Checkbox } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState<string[]>([]);
@@ -183,9 +183,9 @@ function Demo() {
 
 <code src="./demo/maxSelectedValues.tsx"></code>
 
-### 与 @react-ui/ui 一起使用的 Checkbox.Group
+### 与 @xiaoye-react/ui 一起使用的 Checkbox.Group
 
-将 `Checkbox.Group` 与 [@react-ui/ui](/docs/form/use-form) 一起使用的示例：
+将 `Checkbox.Group` 与 [@xiaoye-react/ui](/docs/form/use-form) 一起使用的示例：
 
 <code src="./demo/groupWithUseForm.tsx"></code>
 
@@ -245,7 +245,7 @@ export function UncontrolledForm() {
 
 ```tsx
 import { useRef } from 'react';
-import { Checkbox } from '@react-ui/ui';
+import { Checkbox } from '@xiaoye-react/ui';
 
 function Demo() {
   const ref = useRef<HTMLDivElement>(null);
@@ -269,7 +269,7 @@ function Demo() {
 如需将属性传递给根元素，请使用 `wrapperProps` 属性。
 
 ```tsx
-import { Checkbox } from '@react-ui/ui';
+import { Checkbox } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -288,7 +288,7 @@ function Demo() {
 它将用于输入元素的 `id` 属性和标签元素的 `htmlFor` 属性。
 
 ```tsx
-import { Checkbox } from '@react-ui/ui';
+import { Checkbox } from '@xiaoye-react/ui';
 
 function Demo() {
   return <Checkbox id="my-checkbox" label="我的复选框" />;
@@ -302,7 +302,7 @@ Checkbox 组件基于原生 `input[type="checkbox"]` 元素，因此默认具备
 设置 `aria-label` 或 `label` 属性以使复选框对屏幕阅读器可访问：
 
 ```tsx
-import { Checkbox } from '@react-ui/ui';
+import { Checkbox } from '@xiaoye-react/ui';
 
 // 不好，输入框没有标签
 function Bad() {

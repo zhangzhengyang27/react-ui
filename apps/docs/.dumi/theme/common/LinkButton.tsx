@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, type ButtonProps } from '@react-ui/ui';
+import { Button, type ButtonProps } from '@xiaoye-react/ui';
 import Link from './Link';
 import type { LinkProps } from './Link';
 

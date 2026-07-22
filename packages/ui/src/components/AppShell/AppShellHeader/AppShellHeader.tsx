@@ -39,7 +39,7 @@ export const AppShellHeader = factory<AppShellHeaderFactory>((_props, ref) => {
 })
 
 AppShellHeader.classes = classes
-AppShellHeader.displayName = '@react-ui/ui/AppShellHeader'
+AppShellHeader.displayName = '@xiaoye-react/ui/AppShellHeader'
 
 export namespace AppShellHeader {
     export type Props = AppShellHeaderProps

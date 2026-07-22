@@ -1,9 +1,9 @@
-import { PasswordInput } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { PasswordInput } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
 const code = `
-import { PasswordInput } from '@react-ui/ui';
+import { PasswordInput } from '@xiaoye-react/ui';
 
 
 function Demo() {

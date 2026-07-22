@@ -164,7 +164,7 @@ export const RingProgress = factory<RingProgressFactory>((_props, ref) => {
 
 RingProgress.classes = classes
 ;(RingProgress as any).varsResolver = varsResolver
-RingProgress.displayName = '@react-ui/ui/RingProgress'
+RingProgress.displayName = '@xiaoye-react/ui/RingProgress'
 
 export namespace RingProgress {
     export type Props = RingProgressProps

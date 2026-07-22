@@ -1,5 +1,5 @@
 import React from 'react';
-import { Scroller, Paper } from '@react-ui/ui';
+import { Scroller, Paper } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

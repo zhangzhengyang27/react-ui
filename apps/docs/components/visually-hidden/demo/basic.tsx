@@ -1,5 +1,5 @@
 import React from 'react';
-import { VisuallyHidden } from '@react-ui/ui';
+import { VisuallyHidden } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

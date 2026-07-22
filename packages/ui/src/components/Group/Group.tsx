@@ -134,7 +134,7 @@ export const Group = factory<GroupFactory>((_props, _ref) => {
 
 Group.classes = classes
 ;(Group as any).varsResolver = varsResolver
-Group.displayName = '@react-ui/ui/Group'
+Group.displayName = '@xiaoye-react/ui/Group'
 
 export namespace Group {
     export type Props = GroupProps

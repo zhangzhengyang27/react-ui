@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
-import { Alert } from '@react-ui/ui';
+import { Alert } from '@xiaoye-react/ui';
 
 interface InfoProps {
   children?: React.ReactNode;

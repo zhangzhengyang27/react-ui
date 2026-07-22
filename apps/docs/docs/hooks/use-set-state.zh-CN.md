@@ -14,7 +14,7 @@ description: react-ui 状态设置 Hook 文档。
 注意，它只能与对象一起使用；不支持原始值和数组：
 
 ```tsx
-import { useSetState } from '@react-ui/hooks';
+import { useSetState } from '@xiaoye-react/hooks';
 
 const [state, setState] = useSetState({
   name: '张三',
@@ -30,7 +30,7 @@ setState((current) => ({ age: current.age + 7 })); // -> { name: 'Jane', age: 32
 ```
 
 ```tsx
-import { useSetState } from '@react-ui/hooks';
+import { useSetState } from '@xiaoye-react/hooks';
 
 useSetState([1, 2, 3]); // -> 无效
 useSetState(1); // -> 无效
@@ -51,9 +51,9 @@ function useSetState<T extends Record<string, any>>(initialState: T): UseSetStat
 
 ## 导出类型
 
-`UseSetStateCallback` 和 `UseSetStateReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseSetStateCallback` 和 `UseSetStateReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseSetStateCallback, UseSetStateReturnValue } from '@react-ui/hooks';
+import type { UseSetStateCallback, UseSetStateReturnValue } from '@xiaoye-react/hooks';
 ```

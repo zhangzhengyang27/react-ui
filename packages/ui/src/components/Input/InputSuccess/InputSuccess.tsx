@@ -87,4 +87,4 @@ export const InputSuccess = factory<InputSuccessFactory>((_props, ref) => {
 
 InputSuccess.classes = classes
 InputSuccess.varsResolver = varsResolver
-InputSuccess.displayName = '@react-ui/ui/InputSuccess'
+InputSuccess.displayName = '@xiaoye-react/ui/InputSuccess'

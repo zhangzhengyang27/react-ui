@@ -126,5 +126,5 @@ export const AccordionControl = factory<AccordionControlFactory>((props, ref) =>
     )
 })
 
-AccordionControl.displayName = '@react-ui/ui/AccordionControl'
+AccordionControl.displayName = '@xiaoye-react/ui/AccordionControl'
 AccordionControl.classes = classes

@@ -7,7 +7,7 @@ import {
   AiOutlinePieChart,
   AiOutlineThunderbolt,
 } from 'react-icons/ai';
-import { Card, Text, Title } from '@react-ui/ui';
+import { Card, Text, Title } from '@xiaoye-react/ui';
 import { useLocation } from 'dumi';
 
 import useLocale from '../../../hooks/useLocale';

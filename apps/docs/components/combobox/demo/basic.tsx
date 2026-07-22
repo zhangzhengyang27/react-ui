@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Combobox, InputBase } from '@react-ui/ui';
+import { Combobox, InputBase } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => {

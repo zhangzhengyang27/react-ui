@@ -7,14 +7,14 @@ description: react-ui CodeHighlight 文档。
 
 ## 安装
 
-<InstallScript packages="@react-ui/ui"></InstallScript>
+<InstallScript packages="@xiaoye-react/ui"></InstallScript>
 
 安装完成后，在应用根目录导入包样式：
 
 ```tsx
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 // ‼️ code-highlight 样式必须在核心包样式之后导入
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 ```
 
 ## 示例
@@ -27,7 +27,7 @@ import '@react-ui/ui/styles.css';
 
 ## 适配器
 
-`@react-ui/ui` 包不依赖任何特定的代码高亮库。你可以选择包提供的默认适配器之一，或创建自己的适配器。
+`@xiaoye-react/ui` 包不依赖任何特定的代码高亮库。你可以选择包提供的默认适配器之一，或创建自己的适配器。
 
 默认适配器：
 
@@ -50,8 +50,8 @@ import '@react-ui/ui/styles.css';
 本页后续所有代码高亮示例均使用 shiki 适配器。
 
 ```tsx
-import { UIProvider } from '@react-ui/ui';
-import { CodeHighlightAdapterProvider, createShikiAdapter } from '@react-ui/code-highlight';
+import { UIProvider } from '@xiaoye-react/ui';
+import { CodeHighlightAdapterProvider, createShikiAdapter } from '@xiaoye-react/code-highlight';
 
 // Shiki 需要异步代码来加载高亮器
 async function loadShiki() {
@@ -93,8 +93,8 @@ function App() {
 之后，你就可以在应用中使用 `CodeHighlight` 组件。
 
 ```tsx
-import { UIProvider } from '@react-ui/ui';
-import { CodeHighlightAdapterProvider, createHighlightJsAdapter } from '@react-ui/code-highlight';
+import { UIProvider } from '@xiaoye-react/ui';
+import { CodeHighlightAdapterProvider, createHighlightJsAdapter } from '@xiaoye-react/code-highlight';
 import hljs from 'highlight.js/lib/core';
 import tsLang from 'highlight.js/lib/languages/typescript';
 
@@ -127,7 +127,7 @@ function App() {
 创建带有自定义主题和逻辑的自定义 shiki 适配器示例：
 
 ```tsx
-import { type CodeHighlightAdapter, stripShikiCodeBlocks } from '@react-ui/code-highlight';
+import { type CodeHighlightAdapter, stripShikiCodeBlocks } from '@xiaoye-react/code-highlight';
 
 // Shiki transformers 可用于高亮 diff 和其他标记
 // https://shiki.style/packages/transformers
@@ -189,7 +189,7 @@ export const customShikiAdapter: CodeHighlightAdapter = {
 
 ## 带图标的标签页
 
-你可以使用任意 React 节点作为标签页图标。下面的示例使用了 `@react-ui/dev-icons` 包中的 TypeScript 和 CSS 图标，但你也可以使用其他图标库或自定义图标：
+你可以使用任意 React 节点作为标签页图标。下面的示例使用了 `@xiaoye-react/dev-icons` 包中的 TypeScript 和 CSS 图标，但你也可以使用其他图标库或自定义图标：
 
 <code src="./code-highlight/demo/tabsIcons.tsx"></code>
 

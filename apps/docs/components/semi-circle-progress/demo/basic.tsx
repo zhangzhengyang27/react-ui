@@ -1,5 +1,5 @@
 import React from 'react';
-import { SemiCircleProgress } from '@react-ui/ui';
+import { SemiCircleProgress } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

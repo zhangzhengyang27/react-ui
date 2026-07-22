@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Stack, Text, Title } from '@react-ui/ui';
+import { Card, Stack, Text, Title } from '@xiaoye-react/ui';
 
 import classes from './Simple.module.css';
 

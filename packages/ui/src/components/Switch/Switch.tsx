@@ -1,4 +1,4 @@
-import { useId, useUncontrolled } from '@react-ui/hooks'
+import { useId, useUncontrolled } from '@xiaoye-react/hooks'
 import { useContext } from 'react'
 import {
     Box,
@@ -201,7 +201,7 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
 
 Switch.classes = classes
 ;(Switch as any).varsResolver = varsResolver
-Switch.displayName = '@react-ui/ui/Switch'
+Switch.displayName = '@xiaoye-react/ui/Switch'
 Switch.Group = SwitchGroup
 
 export namespace Switch {

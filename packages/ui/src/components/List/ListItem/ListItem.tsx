@@ -58,7 +58,7 @@ export const ListItem = factory<ListItemFactory>((_props, ref) => {
 })
 
 ListItem.classes = classes
-ListItem.displayName = '@react-ui/ui/ListItem'
+ListItem.displayName = '@xiaoye-react/ui/ListItem'
 
 export namespace ListItem {
     export type Props = ListItemProps

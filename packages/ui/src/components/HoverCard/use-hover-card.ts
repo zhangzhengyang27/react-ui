@@ -13,7 +13,7 @@ import {
     useRole,
     type Middleware
 } from '@floating-ui/react'
-import { useId } from '@react-ui/hooks'
+import { useId } from '@xiaoye-react/hooks'
 import type { FloatingAxesOffsets, FloatingPosition } from '../../core'
 
 export interface HoverCardMiddlewares {

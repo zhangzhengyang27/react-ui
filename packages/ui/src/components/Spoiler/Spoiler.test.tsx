@@ -3,8 +3,8 @@ import { describe, expect, it, vi } from 'vitest'
 import { UIProvider } from '../../core'
 import { Spoiler } from './Spoiler'
 
-vi.mock('@react-ui/hooks', async () => {
-    const actual = await vi.importActual<typeof import('@react-ui/hooks')>('@react-ui/hooks')
+vi.mock('@xiaoye-react/hooks', async () => {
+    const actual = await vi.importActual<typeof import('@xiaoye-react/hooks')>('@xiaoye-react/hooks')
     return {
         ...actual,
         useElementSize: () => ({ ref: vi.fn(), width: 200, height: 300 })
@@ -22,7 +22,7 @@ const defaultProps = {
     children: 'test-children'
 }
 
-describe('@react-ui/ui/Spoiler', () => {
+describe('@xiaoye-react/ui/Spoiler', () => {
     it('renders children', () => {
         render(<Spoiler {...defaultProps} />, { wrapper: Wrapper })
         expect(screen.getByText('test-children')).toBeInTheDocument()

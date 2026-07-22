@@ -59,7 +59,7 @@ function createEdgeComponent({ icon, name, action, type, ariaLabel }: CreateEdge
         )
     }
 
-    Component.displayName = `@react-ui/ui/${name}`
+    Component.displayName = `@xiaoye-react/ui/${name}`
     return Component
 }
 

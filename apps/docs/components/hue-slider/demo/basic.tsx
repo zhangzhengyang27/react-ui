@@ -1,5 +1,5 @@
 import React from "react";
-import { HueSlider } from "@react-ui/ui";
+import { HueSlider } from "@xiaoye-react/ui";
 import DemoWrap from "../../_util/demoWrap";
 
 const App: React.FC = () => (

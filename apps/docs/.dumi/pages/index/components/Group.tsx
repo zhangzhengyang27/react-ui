@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, Title } from '@react-ui/ui';
+import { Text, Title } from '@xiaoye-react/ui';
 import { clsx } from 'clsx';
 
 import SiteContext from '../../../theme/slots/SiteContext';

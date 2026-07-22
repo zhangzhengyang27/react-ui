@@ -39,7 +39,7 @@ export const Center = polymorphicFactory<CenterFactory>((_props, _ref) => {
 })
 
 Center.classes = classes
-Center.displayName = '@react-ui/ui/Center'
+Center.displayName = '@xiaoye-react/ui/Center'
 
 export namespace Center {
     export type Props = CenterProps

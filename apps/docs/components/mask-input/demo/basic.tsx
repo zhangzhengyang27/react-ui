@@ -1,5 +1,5 @@
 import React from 'react';
-import { MaskInput } from '@react-ui/ui';
+import { MaskInput } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

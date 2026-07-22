@@ -24,7 +24,7 @@ description: react-ui 交叉观察 Hook 文档。
 在第一次渲染（以及 SSR 期间）或未观察任何元素时，entry 为 `null`。
 
 ```tsx
-import { useIntersection } from '@react-ui/hooks';
+import { useIntersection } from '@xiaoye-react/hooks';
 
 useIntersection({
   root: document.querySelector('#some-element'),
@@ -34,8 +34,8 @@ useIntersection({
 ```
 
 ```tsx
-import { Paper } from '@react-ui/ui';
-import { useIntersection } from '@react-ui/hooks';
+import { Paper } from '@xiaoye-react/ui';
+import { useIntersection } from '@xiaoye-react/hooks';
 
 function Demo() {
   const { ref } = useIntersection();
@@ -67,9 +67,9 @@ function useIntersection<T extends HTMLElement = any>(
 
 ## 导出类型
 
-`UseIntersectionReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseIntersectionReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseIntersectionReturnValue } from '@react-ui/hooks';
+import type { UseIntersectionReturnValue } from '@xiaoye-react/hooks';
 ```

@@ -47,7 +47,7 @@ export const AlphaSlider = factory<AlphaSliderFactory>((props: AlphaSliderProps,
     )
 })
 
-AlphaSlider.displayName = '@react-ui/ui/AlphaSlider'
+AlphaSlider.displayName = '@xiaoye-react/ui/AlphaSlider'
 AlphaSlider.classes = ColorSlider.classes
 
 export namespace AlphaSlider {

@@ -60,7 +60,7 @@ export const data = {
 注意，在这种情况下，如果不传递 `colors` 属性，只能使用 4 种颜色。如果需要更多颜色，应手动传递给组件：
 
 ```tsx
-import { Heatmap } from '@react-ui/ui';
+import { Heatmap } from '@xiaoye-react/ui';
 import { data } from './data';
 import classes from './Demo.module.css';
 
@@ -103,7 +103,7 @@ const data = {
 ```
 
 ```tsx
-import { Heatmap } from '@react-ui/ui';
+import { Heatmap } from '@xiaoye-react/ui';
 
 const data = {
   '2025-02-14': 2,

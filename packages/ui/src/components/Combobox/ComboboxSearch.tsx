@@ -7,4 +7,4 @@ export const ComboboxSearch = forwardRef<HTMLInputElement, ComboboxSearchProps>(
     <Input ref={ref} {...props} />
 ))
 
-ComboboxSearch.displayName = '@react-ui/ui/ComboboxSearch'
+ComboboxSearch.displayName = '@xiaoye-react/ui/ComboboxSearch'

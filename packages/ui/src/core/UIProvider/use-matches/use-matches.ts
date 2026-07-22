@@ -1,4 +1,4 @@
-import { useMediaQuery, UseMediaQueryOptions } from '@react-ui/hooks'
+import { useMediaQuery, UseMediaQueryOptions } from '@xiaoye-react/hooks'
 import { useUITheme } from '../UIThemeProvider'
 import { UIBreakpoint } from '../theme.types'
 

@@ -1,9 +1,9 @@
-import { Button, Popover, Text } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { Button, Popover, Text } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { FLOATING_POSITION_DATA } from '../../shared';
 
 const code = `
-import { Popover, Button, Text } from '@react-ui/ui';
+import { Popover, Button, Text } from '@xiaoye-react/ui';
 
 
 function Demo() {

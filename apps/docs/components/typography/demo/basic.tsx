@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography } from '@react-ui/ui';
+import { Typography } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

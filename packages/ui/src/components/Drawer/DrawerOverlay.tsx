@@ -26,4 +26,4 @@ export const DrawerOverlay = factory<DrawerOverlayFactory>((_props, ref) => {
 })
 
 DrawerOverlay.classes = classes
-DrawerOverlay.displayName = '@react-ui/ui/DrawerOverlay'
+DrawerOverlay.displayName = '@xiaoye-react/ui/DrawerOverlay'

@@ -6,4 +6,4 @@ export const Oval: UILoaderComponent = ({ className, ...others }) => (
     <span className={cx(classes.ovalLoader, className)} {...others} />
 )
 
-Oval.displayName = '@react-ui/ui/Oval'
+Oval.displayName = '@xiaoye-react/ui/Oval'

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Marquee } from '@react-ui/ui';
+import { Marquee } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { AiOutlineCheck, AiOutlineCopy } from 'react-icons/ai';
-import { CopyButton, Tooltip } from '@react-ui/ui';
+import { CopyButton, Tooltip } from '@xiaoye-react/ui';
 import { FormattedMessage } from 'dumi';
 
 import ExpandIcon from '../../icons/ExpandIcon';

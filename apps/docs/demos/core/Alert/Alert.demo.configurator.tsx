@@ -1,10 +1,10 @@
 import { InfoIcon } from '@phosphor-icons/react';
-import { Alert } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { Alert } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { staticVariantsControl } from '../../shared';
 
 const code = `
-import { Alert } from '@react-ui/ui';
+import { Alert } from '@xiaoye-react/ui';
 import { InfoIcon } from '@phosphor-icons/react';
 
 function Demo() {

@@ -32,7 +32,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { TagsInput } from '@react-ui/ui';
+import { TagsInput } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState<string[]>([]);
@@ -46,7 +46,7 @@ function Demo() {
 
 ```tsx
 import { useState } from 'react';
-import { TagsInput } from '@react-ui/ui';
+import { TagsInput } from '@xiaoye-react/ui';
 
 function Demo() {
   const [searchValue, setSearchValue] = useState('');
@@ -156,7 +156,7 @@ function Demo() {
 若使用 `renderPill` 属性自定义 pill 渲染，请将渲染回调负载中的 `reorderProps` 展开到可聚焦的 pill 根元素上，以保持重新排序功能正常。`reorderProps` 包含 `tabIndex`、`data-ui-pill-index` 属性和驱动键盘重新排序的键盘处理器，因此它必须落在用户可聚焦的元素上：
 
 ```tsx
-import { TagsInput } from '@react-ui/ui';
+import { TagsInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -265,7 +265,7 @@ function Demo() {
 要为清除按钮设置 `aria-label`，请使用 `clearButtonProps`。注意仅在设置 `clearable` 时才需要。
 
 ```tsx
-import { TagsInput } from '@react-ui/ui';
+import { TagsInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

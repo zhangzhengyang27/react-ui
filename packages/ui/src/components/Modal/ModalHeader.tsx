@@ -23,4 +23,4 @@ export const ModalHeader = factory<ModalHeaderFactory>((_props, ref) => {
 })
 
 ModalHeader.classes = classes
-ModalHeader.displayName = '@react-ui/ui/ModalHeader'
+ModalHeader.displayName = '@xiaoye-react/ui/ModalHeader'

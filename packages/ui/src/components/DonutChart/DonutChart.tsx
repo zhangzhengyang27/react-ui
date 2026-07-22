@@ -163,7 +163,7 @@ export const DonutChart = factory<DonutChartFactory>((_props, ref) => {
 
 DonutChart.classes = classes
 ;(DonutChart as any).varsResolver = varsResolver
-DonutChart.displayName = '@react-ui/ui/DonutChart'
+DonutChart.displayName = '@xiaoye-react/ui/DonutChart'
 
 export namespace DonutChart {
     export type Props = DonutChartProps

@@ -1,5 +1,5 @@
 import React from 'react';
-import { OverflowList, Badge } from '@react-ui/ui';
+import { OverflowList, Badge } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const data = Array.from({ length: 20 }, (_, i) => `标签 ${i + 1}`);

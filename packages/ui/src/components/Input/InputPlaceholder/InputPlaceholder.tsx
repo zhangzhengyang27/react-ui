@@ -65,4 +65,4 @@ export const InputPlaceholder = factory<InputPlaceholderFactory>((_props, ref) =
 })
 
 InputPlaceholder.classes = classes
-InputPlaceholder.displayName = '@react-ui/ui/InputPlaceholder'
+InputPlaceholder.displayName = '@xiaoye-react/ui/InputPlaceholder'

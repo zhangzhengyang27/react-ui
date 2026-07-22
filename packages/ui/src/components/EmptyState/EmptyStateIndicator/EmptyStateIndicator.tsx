@@ -38,4 +38,4 @@ export const EmptyStateIndicator = factory<EmptyStateIndicatorFactory>((_props, 
 })
 
 EmptyStateIndicator.classes = classes
-EmptyStateIndicator.displayName = '@react-ui/ui/EmptyStateIndicator'
+EmptyStateIndicator.displayName = '@xiaoye-react/ui/EmptyStateIndicator'

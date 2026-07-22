@@ -1,12 +1,12 @@
 import { FiMoon, FiSun } from 'react-icons/fi';
-import { Button, Group, Image, SimpleGrid, useUIColorScheme } from '@react-ui/ui';
+import { Button, Group, Image, SimpleGrid, useUIColorScheme } from '@xiaoye-react/ui';
 import { HomePageContainer } from '../shared/Container';
 import { HomePageDescription } from '../shared/Description';
 import { HomePageTitle } from '../shared/Title';
 import demo from './images/new.webp';
 import classes from './DarkColorScheme.module.css';
 
-const code = `import { UIProvider } from '@react-ui/ui';
+const code = `import { UIProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

@@ -1,4 +1,4 @@
-import { useId, useUncontrolled } from '@react-ui/hooks'
+import { useId, useUncontrolled } from '@xiaoye-react/hooks'
 import { useRef } from 'react'
 import {
     BoxProps,
@@ -287,7 +287,7 @@ export const PinInput = factory<PinInputFactory>((_props, ref) => {
 
 PinInput.classes = classes
 ;(PinInput as any).varsResolver = varsResolver
-PinInput.displayName = '@react-ui/ui/PinInput'
+PinInput.displayName = '@xiaoye-react/ui/PinInput'
 
 export namespace PinInput {
     export type Props = PinInputProps

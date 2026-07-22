@@ -34,5 +34,5 @@ export const Th = factory<ThFactory>((props, ref) => {
     )
 })
 
-Th.displayName = '@react-ui/ui/Th'
+Th.displayName = '@xiaoye-react/ui/Th'
 Th.classes = classes

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tabs } from '@react-ui/ui';
+import { Tabs } from '@xiaoye-react/ui';
 import { clsx } from 'clsx';
 import throttle from 'lodash/throttle';
 

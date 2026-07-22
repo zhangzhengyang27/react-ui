@@ -1,5 +1,5 @@
 import { Box, BoxProps, factory, Factory, StylesApiProps, useProps, useStyles } from '../../core'
-import { useMediaQuery } from '@react-ui/hooks'
+import { useMediaQuery } from '@xiaoye-react/hooks'
 import classes from './MediaQuery.module.css'
 
 export interface MediaQueryProps extends BoxProps, StylesApiProps<MediaQueryFactory> {
@@ -48,7 +48,7 @@ export const MediaQuery = factory<MediaQueryFactory>((_props, ref) => {
 })
 
 MediaQuery.classes = classes
-MediaQuery.displayName = '@react-ui/ui/MediaQuery'
+MediaQuery.displayName = '@xiaoye-react/ui/MediaQuery'
 
 export namespace MediaQuery {
     export type Props = MediaQueryProps

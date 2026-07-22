@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Text, Group, Button } from '@react-ui/ui';
+import { Card, Text, Group, Button } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

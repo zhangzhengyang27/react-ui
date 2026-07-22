@@ -26,7 +26,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { AngleSlider } from '@react-ui/ui';
+import { AngleSlider } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState(180);
@@ -47,7 +47,7 @@ function Demo() {
 非受控 `AngleSlider` 与 `FormData` 的示例：
 
 ```tsx
-import { AngleSlider } from '@react-ui/ui';
+import { AngleSlider } from '@xiaoye-react/ui';
 
 export function WithFormData() {
   return (
@@ -103,7 +103,7 @@ export function WithFormData() {
 <KeyboardEventsTable data={[ { key: 'ArrowDown', description: '按步长减小值' }, { key: 'ArrowLeft', description: '按步长减小值' }, { key: 'ArrowUp', description: '按步长增加值' }, { key: 'ArrowRight', description: '按步长增加值' }, { key: 'Home', description: '将值设置为 0' }, { key: 'End', description: '将值设置为 359' }, ]}></KeyboardEventsTable>
 
 ```tsx
-import { AngleSlider } from '@react-ui/ui';
+import { AngleSlider } from '@xiaoye-react/ui';
 
 function Demo() {
   return <AngleSlider aria-label="渐变角度" />;

@@ -28,7 +28,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { Spoiler } from '@react-ui/ui';
+import { Spoiler } from '@xiaoye-react/ui';
 
 function Demo() {
   const [expanded, setExpanded] = useState(false);
@@ -51,7 +51,7 @@ function Demo() {
 使用 `onExpandedChange` 订阅展开状态变化：
 
 ```tsx
-import { Spoiler } from '@react-ui/ui';
+import { Spoiler } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -76,7 +76,7 @@ function Demo() {
 
 ```tsx
 import { useRef } from 'react';
-import { Spoiler } from '@react-ui/ui';
+import { Spoiler } from '@xiaoye-react/ui';
 
 function Demo() {
   const spoilerControlRef = useRef<HTMLButtonElement>(null);
@@ -118,7 +118,7 @@ Spoiler 组件实现了适当的 ARIA 属性以支持屏幕阅读器：
 ```
 
 ```tsx
-import { Spoiler } from '@react-ui/ui';
+import { Spoiler } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

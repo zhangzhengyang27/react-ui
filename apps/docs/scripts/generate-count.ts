@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename)
 const ROOT_DIR = path.resolve(__dirname, '../../..')
 const COMPONENTS_DIR = path.join(__dirname, '../components')
 const DOCS_DIR = path.join(__dirname, '../docs')
-const DEMOS_DIR = path.join(ROOT_DIR, 'packages/@react-ui/docs-demos/src')
+const DEMOS_DIR = path.join(ROOT_DIR, 'packages/@xiaoye-react/docs-demos/src')
 const OUTPUT_PATH = path.join(__dirname, '../.docgen/count.json')
 
 function collectFiles(dir: string, predicate: (p: string) => boolean): string[] {

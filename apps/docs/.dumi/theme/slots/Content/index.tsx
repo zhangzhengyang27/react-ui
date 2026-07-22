@@ -1,7 +1,7 @@
 import React, { Suspense, useLayoutEffect, useMemo, useState } from 'react';
 import { clsx } from 'clsx';
 import { FormattedMessage, useLocation as useDumiLocation, useRouteMeta } from 'dumi';
-import { Flex, Group, Skeleton, Title } from '@react-ui/ui';
+import { Flex, Group, Skeleton, Title } from '@xiaoye-react/ui';
 
 import useLayoutState from '../../../hooks/useLayoutState';
 import useLocation from '../../../hooks/useLocation';

@@ -19,7 +19,7 @@ description: react-ui 快捷键 Hook 文档。
 默认情况下，如果焦点在 `input`、`textarea` 和 `select` 元素中，热键事件将被忽略。
 
 ```tsx
-import { useHotkeys } from '@react-ui/hooks';
+import { useHotkeys } from '@xiaoye-react/hooks';
 
 function Demo() {
   // 仅在焦点位于 input 和 textarea 元素中时忽略热键事件
@@ -38,13 +38,13 @@ function Demo() {
 ## 目标元素
 
 `use-hotkeys` Hook 只能与 document 元素一起工作；如果你需要支持其他元素，则需要创建自己的事件监听器。
-为此，`@react-ui/hooks` 包导出了一个 `getHotkeyHandler` 函数，应与 `onKeyDown` 一起使用：
+为此，`@xiaoye-react/hooks` 包导出了一个 `getHotkeyHandler` 函数，应与 `onKeyDown` 一起使用：
 
 
 使用 `getHotkeyHandler`，你还可以使用 `.addEventListener` 将事件添加到任何 DOM 节点：
 
 ```tsx
-import { getHotkeyHandler } from '@react-ui/hooks';
+import { getHotkeyHandler } from '@xiaoye-react/hooks';
 
 document.body.addEventListener(
   'keydown',
@@ -68,7 +68,7 @@ document.body.addEventListener(
 
 ## 类型
 
-`@react-ui/hooks` 包导出 `HotkeyItemOptions` 和 `HotkeyItem` 类型：
+`@xiaoye-react/hooks` 包导出 `HotkeyItemOptions` 和 `HotkeyItem` 类型：
 
 
 `HotkeyItemOptions` 提供 `usePhysicalKeys` 选项以强制使用物理键分配。这对于非 QWERTY 键盘布局很有用。
@@ -89,7 +89,7 @@ type HotkeyItem = [
 ```
 
 ```tsx
-import { HotkeyItem, useHotkeys } from '@react-ui/hooks';
+import { HotkeyItem, useHotkeys } from '@xiaoye-react/hooks';
 
 const hotkeys: HotkeyItem[] = [
   [
@@ -128,8 +128,8 @@ function useHotkeys(
 
 ## 导出类型
 
-`HotkeyItemOptions` 和 `HotkeyItem` 类型从 `@react-ui/hooks` 包导出：
+`HotkeyItemOptions` 和 `HotkeyItem` 类型从 `@xiaoye-react/hooks` 包导出：
 
 ```tsx
-import type { HotkeyItemOptions, HotkeyItem } from '@react-ui/hooks';
+import type { HotkeyItemOptions, HotkeyItem } from '@xiaoye-react/hooks';
 ```

@@ -1,5 +1,5 @@
 import { forwardRef, useMemo, useRef, useState } from 'react'
-import { useId, useMergedRef, useUncontrolled } from '@react-ui/hooks'
+import { useId, useMergedRef, useUncontrolled } from '@xiaoye-react/hooks'
 import { BoxProps, factory, Factory, UISize, rem, StylesApiProps, useProps, useStyles } from '../../core'
 import { Badge } from '../Badge'
 import { CloseButton } from '../CloseButton'
@@ -154,7 +154,7 @@ const MultiSelectTarget = forwardRef<HTMLDivElement, React.ComponentPropsWithout
         </div>
     )
 )
-MultiSelectTarget.displayName = '@react-ui/ui/MultiSelectTarget'
+MultiSelectTarget.displayName = '@xiaoye-react/ui/MultiSelectTarget'
 
 export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     const props = useProps('MultiSelect', defaultProps, _props)
@@ -456,7 +456,7 @@ function renderOptions(
 }
 
 MultiSelect.classes = classes
-MultiSelect.displayName = '@react-ui/ui/MultiSelect'
+MultiSelect.displayName = '@xiaoye-react/ui/MultiSelect'
 
 export namespace MultiSelect {
     export type Props = MultiSelectProps

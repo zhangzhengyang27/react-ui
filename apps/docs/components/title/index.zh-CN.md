@@ -42,7 +42,7 @@ CSS 属性。它控制元素内部文本的换行方式。
 也可在 [theme](/docs/theming/theme-object) 上设置 `textWrap`：
 
 ```tsx
-import { createTheme, UIProvider, Title } from '@react-ui/ui';
+import { createTheme, UIProvider, Title } from '@xiaoye-react/ui';
 
 const theme = createTheme({
   headings: {

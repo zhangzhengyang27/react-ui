@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Text, TextInput, Title } from '@react-ui/ui';
+import { Text, TextInput, Title } from '@xiaoye-react/ui';
 import { FiSearch } from 'react-icons/fi';
 import { getComponentName } from './getComponentName';
 import { PropsTable } from './PropsTable';

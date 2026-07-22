@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 import React, { useEffect, useMemo } from 'react';
 import { AiOutlineCopy, AiOutlineCheck } from 'react-icons/ai';
-import { CopyButton, Tabs } from '@react-ui/ui';
+import { CopyButton, Tabs } from '@xiaoye-react/ui';
 import { clsx } from 'clsx';
 import toReactElement from 'jsonml-to-react-element';
 import JsonML from 'jsonml.js/lib/utils';

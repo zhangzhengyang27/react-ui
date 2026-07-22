@@ -31,5 +31,5 @@ Look up component documentation for react-ui, a React UI library with 90+ compon
 
 ## Notes
 
-- For TypeScript types, refer to the component's type definitions in the `@react-ui/ui` package
+- For TypeScript types, refer to the component's type definitions in the `@xiaoye-react/ui` package
 - Component examples show only the rendered effect by default; code is revealed by clicking the icon

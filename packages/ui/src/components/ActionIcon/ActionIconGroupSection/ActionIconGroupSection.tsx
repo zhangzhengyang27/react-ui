@@ -141,4 +141,4 @@ export const ActionIconGroupSection = factory<ActionIconGroupSectionFactory>((_p
 })
 
 ActionIconGroupSection.classes = classes
-ActionIconGroupSection.displayName = '@react-ui/ui/ActionIconGroupSection'
+ActionIconGroupSection.displayName = '@xiaoye-react/ui/ActionIconGroupSection'

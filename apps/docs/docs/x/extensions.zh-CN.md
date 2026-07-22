@@ -8,21 +8,21 @@ description: react-ui Extensions 文档。
 
 ## 官方扩展
 
-官方扩展由 ReactUI 维护者构建。这些扩展的包名具有 `@react-ui/` 作用域，
-例如 `@react-ui/dates` 或 `@react-ui/charts`。
+官方扩展由 ReactUI 维护者构建。这些扩展的包名具有 `@xiaoye-react/` 作用域，
+例如 `@xiaoye-react/dates` 或 `@xiaoye-react/charts`。
 
 官方扩展列表：
 
-- [@react-ui/dates](/docs/dates/getting-started) – 日期和时间选择器、日历以及其他日期相关组件
-- [@react-ui/charts](/docs/charts/getting-started) – 基于 recharts 的图表和数据可视化组件
-- [@react-ui/notifications](/docs/x/notifications) – 通知系统
-- [@react-ui/code-highlight](/docs/x/code-highlight) – ReactUI 网站上使用的代码高亮组件
-- [@react-ui/spotlight](/docs/x/spotlight) – 控制中心（`Ctrl + K` 搜索栏），可用于搜索
-- [@react-ui/carousel](/docs/x/carousel) – 基于 embla-carousel 的轮播组件
-- [@react-ui/dropzone](/docs/x/dropzone) – 基于 react-dropzone 的拖拽文件上传组件
-- [@react-ui/modals](/docs/x/modals) – 弹窗管理器
-- [@react-ui/tiptap](/docs/x/tiptap) – 基于 tiptap 的富文本编辑器
-- [@react-ui/nprogress](/docs/x/nprogress) – 导航进度组件
+- [@xiaoye-react/dates](/docs/dates/getting-started) – 日期和时间选择器、日历以及其他日期相关组件
+- [@xiaoye-react/charts](/docs/charts/getting-started) – 基于 recharts 的图表和数据可视化组件
+- [@xiaoye-react/notifications](/docs/x/notifications) – 通知系统
+- [@xiaoye-react/code-highlight](/docs/x/code-highlight) – ReactUI 网站上使用的代码高亮组件
+- [@xiaoye-react/spotlight](/docs/x/spotlight) – 控制中心（`Ctrl + K` 搜索栏），可用于搜索
+- [@xiaoye-react/carousel](/docs/x/carousel) – 基于 embla-carousel 的轮播组件
+- [@xiaoye-react/dropzone](/docs/x/dropzone) – 基于 react-dropzone 的拖拽文件上传组件
+- [@xiaoye-react/modals](/docs/x/modals) – 弹窗管理器
+- [@xiaoye-react/tiptap](/docs/x/tiptap) – 基于 tiptap 的富文本编辑器
+- [@xiaoye-react/nprogress](/docs/x/nprogress) – 导航进度组件
 
 ## 社区扩展
 
@@ -62,7 +62,7 @@ description: react-ui Extensions 文档。
 - [Window](https://gfazioli.github.io/ui-window/) – 支持拖拽和调整大小的窗口组件
 - [ReactUI Form Builder](https://pradip-v2.github.io/ui-form-builder/) – 表单构建器和查看器组件
 - [ReactUI Choropleth Map](https://maetes.github.io/ui-choropleth/) – 用于 GeoJson 的等值区域地图组件
-- [Lightbox](https://rilrom.github.io/ui-bites/lightbox/) – 基于 @react-ui/ui 的全屏图片灯箱
+- [Lightbox](https://rilrom.github.io/ui-bites/lightbox/) – 基于 @xiaoye-react/ui 的全屏图片灯箱
 
 ## 创建你自己的扩展
 

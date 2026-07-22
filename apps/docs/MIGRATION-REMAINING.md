@@ -123,8 +123,8 @@
 ### 2.4 适配要点
 
 1. **next/router 替换**：`useRouter` → `useLocation`（dumi/umi）
-2. **依赖确认**：`@react-ui/colors-generator` 包是否已在根 workspace（需在根 package.json 或 apps/docs/package.json 添加）
-3. **localStorage hook**：`@react-ui/hooks` 的 `useLocalStorage` 已可用
+2. **依赖确认**：`@xiaoye-react/colors-generator` 包是否已在根 workspace（需在根 package.json 或 apps/docs/package.json 添加）
+3. **localStorage hook**：`@xiaoye-react/hooks` 的 `useLocalStorage` 已可用
 4. **导航入口**：在 Header Navigation 或首页 EcosystemSection 添加入口
 5. **样式适配**：保留原 CSS Module，CSS 变量前缀 `--ui-*` 已对齐
 
@@ -369,7 +369,7 @@ FooterCTA                 ← 已有
 {
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
-    "@react-ui/colors-generator": "workspace:*",
+    "@xiaoye-react/colors-generator": "workspace:*",
     "fuse.js": "^7.4.2",
     "chroma-js": "^3.2.0"
   },
@@ -400,11 +400,11 @@ FooterCTA                 ← 已有
 
 ```typescript
 alias: {
-  '@react-ui/ui': path.join(__dirname, '../../packages/ui/es/index.js'),
-  '@react-ui/hooks': path.join(__dirname, '../../packages/hooks/src/index.ts'),
-  '@react-ui/demo': path.join(__dirname, '.dumi/theme/builtins/DemoEngine/index.ts'),
+  '@xiaoye-react/ui': path.join(__dirname, '../../packages/ui/es/index.js'),
+  '@xiaoye-react/hooks': path.join(__dirname, '../../packages/hooks/src/index.ts'),
+  '@xiaoye-react/demo': path.join(__dirname, '.dumi/theme/builtins/DemoEngine/index.ts'),
   // 新增
-  '@react-ui/colors-generator': path.join(__dirname, '../../packages/colors-generator/src/index.ts'),
+  '@xiaoye-react/colors-generator': path.join(__dirname, '../../packages/colors-generator/src/index.ts'),
   '@docs/docgen': path.join(__dirname, '.docgen/docgen.json'),
   '@docs/hooks': path.join(__dirname, '.docgen/hooks.json'),
   '@docs/css-exports': path.join(__dirname, '.docgen/css-exports.json'),

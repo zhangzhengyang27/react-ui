@@ -9,11 +9,11 @@ description: react-ui 队列 Hook 文档。
 ## 用法
 
 `use-queue` Hook 限制当前状态中的数据项数量，并将其余项放入队列。
-例如，在 [@react-ui/ui](/docs/x/notifications/) 包中，当前显示的通知数量是有限的，
+例如，在 [@xiaoye-react/ui](/docs/x/notifications/) 包中，当前显示的通知数量是有限的，
 其他新通知会被添加到队列中，一旦有可用空间就会显示。
 
 ```tsx
-import { useQueue } from '@react-ui/hooks';
+import { useQueue } from '@xiaoye-react/hooks';
 
 const { state, queue, add, update, cleanQueue } = useQueue({
   initialValues: [1],
@@ -72,7 +72,7 @@ update(() => []);
 如果你未提供 `initialValues`，请为 state 项传入类型：
 
 ```tsx
-import { useQueue } from '@react-ui/hooks';
+import { useQueue } from '@xiaoye-react/hooks';
 
 const q = useQueue({
   limit: 2,
@@ -86,7 +86,7 @@ typeof q.state[number]; // -> { name: string; id: number; }
 ```
 
 ```tsx
-import { useQueue } from '@react-ui/hooks';
+import { useQueue } from '@xiaoye-react/hooks';
 
 const q = useQueue<{ name: string; id: number }>({
   limit: 2,
@@ -129,9 +129,9 @@ function useQueue<T>(options: UseQueueOptions<T>): UseQueueReturnValue<T>
 
 ## 导出类型
 
-`UseQueueOptions` 和 `UseQueueReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseQueueOptions` 和 `UseQueueReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseQueueOptions, UseQueueReturnValue } from '@react-ui/hooks';
+import type { UseQueueOptions, UseQueueReturnValue } from '@xiaoye-react/hooks';
 ```

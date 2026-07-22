@@ -16,7 +16,7 @@ function serializeJSON<T>(value: T, hookName: string = 'use-local-storage') {
     try {
         return JSON.stringify(value)
     } catch (error) {
-        throw new Error(`@react-ui/hooks ${hookName}: Failed to serialize the value`)
+        throw new Error(`@xiaoye-react/hooks ${hookName}: Failed to serialize the value`)
     }
 }
 

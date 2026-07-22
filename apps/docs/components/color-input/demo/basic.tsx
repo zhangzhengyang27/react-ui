@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ColorInput } from '@react-ui/ui';
+import { ColorInput } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => {

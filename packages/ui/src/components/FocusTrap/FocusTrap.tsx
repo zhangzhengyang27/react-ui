@@ -1,5 +1,5 @@
 import { cloneElement } from 'react'
-import { useFocusTrap, useMergedRef } from '@react-ui/hooks'
+import { useFocusTrap, useMergedRef } from '@xiaoye-react/hooks'
 import { getSingleElementChild } from '../../core'
 import { VisuallyHidden } from '../VisuallyHidden'
 
@@ -33,8 +33,8 @@ export function FocusTrapInitialFocus(props: React.ComponentProps<'span'>) {
     return <VisuallyHidden tabIndex={-1} data-autofocus {...props} />
 }
 
-FocusTrap.displayName = '@react-ui/ui/FocusTrap'
-FocusTrapInitialFocus.displayName = '@react-ui/ui/FocusTrapInitialFocus'
+FocusTrap.displayName = '@xiaoye-react/ui/FocusTrap'
+FocusTrapInitialFocus.displayName = '@xiaoye-react/ui/FocusTrapInitialFocus'
 FocusTrap.InitialFocus = FocusTrapInitialFocus
 
 export namespace FocusTrap {

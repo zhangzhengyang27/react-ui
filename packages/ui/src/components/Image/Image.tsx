@@ -136,7 +136,7 @@ export const Image = factory<ImageFactory>((_props, ref) => {
 
 Image.classes = classes
 ;(Image as any).varsResolver = varsResolver
-Image.displayName = '@react-ui/ui/Image'
+Image.displayName = '@xiaoye-react/ui/Image'
 
 export namespace Image {
     export type Props = ImageProps

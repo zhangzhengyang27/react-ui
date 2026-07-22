@@ -1,5 +1,5 @@
 import React from 'react';
-import { MediaQuery, Text } from '@react-ui/ui';
+import { MediaQuery, Text } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

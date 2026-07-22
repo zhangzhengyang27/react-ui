@@ -182,7 +182,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>((_props, ref) =
 
 SegmentedControl.classes = classes
 ;(SegmentedControl as any).varsResolver = varsResolver
-SegmentedControl.displayName = '@react-ui/ui/SegmentedControl'
+SegmentedControl.displayName = '@xiaoye-react/ui/SegmentedControl'
 
 export namespace SegmentedControl {
     export type Props = SegmentedControlProps

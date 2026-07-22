@@ -57,4 +57,4 @@ export function MenuSearch(props: MenuSearchProps) {
     )
 }
 
-MenuSearch.displayName = '@react-ui/ui/MenuSearch'
+MenuSearch.displayName = '@xiaoye-react/ui/MenuSearch'

@@ -159,7 +159,7 @@ export const Pill = factory<PillFactory>((_props, _ref) => {
 
 Pill.classes = classes
 ;(Pill as any).varsResolver = varsResolver
-Pill.displayName = '@react-ui/ui/Pill'
+Pill.displayName = '@xiaoye-react/ui/Pill'
 Pill.Group = PillGroup
 
 export namespace Pill {

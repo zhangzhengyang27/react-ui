@@ -166,7 +166,7 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
 })
 
 StepperStep.classes = classes
-StepperStep.displayName = '@react-ui/ui/StepperStep'
+StepperStep.displayName = '@xiaoye-react/ui/StepperStep'
 
 export namespace StepperStep {
     export type Props = StepperStepProps

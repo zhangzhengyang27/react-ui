@@ -23,8 +23,8 @@ function useHover<T extends HTMLElement = any>(): UseHoverReturnValue<T>
 
 ## 导出类型
 
-`UseHoverReturnValue` 类型从 `@react-ui/hooks` 包导出：
+`UseHoverReturnValue` 类型从 `@xiaoye-react/hooks` 包导出：
 
 ```tsx
-import type { UseHoverReturnValue } from '@react-ui/hooks';
+import type { UseHoverReturnValue } from '@xiaoye-react/hooks';
 ```

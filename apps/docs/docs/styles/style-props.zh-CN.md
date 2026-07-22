@@ -20,7 +20,7 @@ description: react-ui StyleProps 文档。
 在 `c`、`bd` 和 `bg` 属性中，你可以引用 `theme.colors` 中的颜色：
 
 ```tsx
-import { Box } from '@react-ui/ui';
+import { Box } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -45,7 +45,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Box } from '@react-ui/ui';
+import { Box } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -93,7 +93,7 @@ function Demo() {
 此时元素将拥有以下样式：
 
 ```tsx
-import { Box } from '@react-ui/ui';
+import { Box } from '@xiaoye-react/ui';
 
 function Demo() {
   return <Box w={{ base: 320, sm: 480, lg: 640 }} />;

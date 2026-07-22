@@ -26,7 +26,7 @@ Tooltip 要求单个元素或组件作为子元素——
 所有 ReactUI 组件都默认支持 ref。
 
 ```tsx
-import { Badge, Tooltip } from '@react-ui/ui';
+import { Badge, Tooltip } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -78,7 +78,7 @@ HTML 元素或包含 HTML 元素的 ref 对象。当不将 tooltip 目标渲染�
 
 ```tsx
 // 不会生效的代码示例
-import { Tooltip } from '@react-ui/ui';
+import { Tooltip } from '@xiaoye-react/ui';
 
 function MyComponent() {
   return <div>我的组件</div>;
@@ -96,7 +96,7 @@ function Demo() {
 
 ```tsx
 // 会生效的代码示例
-import { Tooltip } from '@react-ui/ui';
+import { Tooltip } from '@xiaoye-react/ui';
 
 const MyComponent = ({ ref, ...props }) => (
   <div ref={ref} {...props}>
@@ -162,7 +162,7 @@ function Demo() {
 - `touch` – 触摸屏设备事件，默认为 `false`
 
 ```tsx
-import { Tooltip } from '@react-ui/ui';
+import { Tooltip } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -196,7 +196,7 @@ Tooltip 基于 [Transition](/components/transition/) 组件构建；它支持 `t
 所有可用的预置过渡：
 
 ```tsx
-import { Button, Tooltip } from '@react-ui/ui';
+import { Button, Tooltip } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -243,7 +243,7 @@ Tooltip 遵循 [WAI-ARIA 建议](https://www.w3.org/TR/wai-aria-practices/#toolt
 聚焦/失焦 tooltip 事件：
 
 ```tsx
-import { Button, Tooltip } from '@react-ui/ui';
+import { Button, Tooltip } from '@xiaoye-react/ui';
 
 // Tooltip 将对屏幕阅读器可见
 function Demo() {

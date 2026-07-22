@@ -52,7 +52,7 @@ ArrowUp/ArrowDown 跨行导航并保持列位置不变。
 
 ```tsx
 import { useState } from 'react';
-import { useRovingIndex } from '@react-ui/hooks';
+import { useRovingIndex } from '@xiaoye-react/hooks';
 
 function Demo() {
   const [focusedIndex, setFocusedIndex] = useState(0);
@@ -72,7 +72,7 @@ function Demo() {
 这对于标签页式界面很有用，因为焦点和选择需要保持同步：
 
 ```tsx
-import { useRovingIndex } from '@react-ui/hooks';
+import { useRovingIndex } from '@xiaoye-react/hooks';
 
 function Demo() {
   const { getItemProps } = useRovingIndex({
@@ -89,7 +89,7 @@ function Demo() {
 设置 `dir="rtl"` 以交换 ArrowLeft/ArrowRight 在从右到左布局中的行为：
 
 ```tsx
-import { useRovingIndex } from '@react-ui/hooks';
+import { useRovingIndex } from '@xiaoye-react/hooks';
 
 function Demo() {
   const { getItemProps } = useRovingIndex({
@@ -168,7 +168,7 @@ function useRovingIndex(input: UseRovingIndexInput): UseRovingIndexReturnValue;
 
 ## 导出类型
 
-`UseRovingIndexInput`、`UseRovingIndexGetItemPropsInput` 和 `UseRovingIndexReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseRovingIndexInput`、`UseRovingIndexGetItemPropsInput` 和 `UseRovingIndexReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
@@ -176,5 +176,5 @@ import type {
   UseRovingIndexInput,
   UseRovingIndexGetItemPropsInput,
   UseRovingIndexReturnValue,
-} from '@react-ui/hooks';
+} from '@xiaoye-react/hooks';
 ```

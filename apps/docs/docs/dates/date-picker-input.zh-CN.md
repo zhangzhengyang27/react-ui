@@ -183,6 +183,6 @@ prop，清除按钮将不会显示。
 
 <InputFeatures component="DatePickerInput" element="button"></InputFeatures>
 
-<GetElementRef component="DatePickerInput" refType="button" package="@react-ui/ui"></GetElementRef>
+<GetElementRef component="DatePickerInput" refType="button" package="@xiaoye-react/ui"></GetElementRef>
 
-<InputAccessibility component="DatePickerInput" packageName="@react-ui/ui"></InputAccessibility>
+<InputAccessibility component="DatePickerInput" packageName="@xiaoye-react/ui"></InputAccessibility>

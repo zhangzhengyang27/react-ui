@@ -39,4 +39,4 @@ export const EmptyStateDescription = factory<EmptyStateDescriptionFactory>((_pro
 })
 
 EmptyStateDescription.classes = classes
-EmptyStateDescription.displayName = '@react-ui/ui/EmptyStateDescription'
+EmptyStateDescription.displayName = '@xiaoye-react/ui/EmptyStateDescription'

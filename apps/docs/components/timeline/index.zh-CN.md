@@ -39,7 +39,7 @@ group:
 `Timeline` 组件依赖 `Timeline.Item` 的顺序。不支持包裹 `Timeline.Item`。相反，需使用不同的方法：
 
 ```tsx
-import { Timeline } from '@react-ui/ui';
+import { Timeline } from '@xiaoye-react/ui';
 
 // 这不会生效，step 子项不会渲染
 function WillNotWork() {

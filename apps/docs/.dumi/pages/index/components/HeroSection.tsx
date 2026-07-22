@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineBgColors } from 'react-icons/ai';
-import { Button, Group, Text, Title } from '@react-ui/ui';
+import { Button, Group, Text, Title } from '@xiaoye-react/ui';
 import { useLocation } from 'dumi';
 
 import useLocale from '../../../hooks/useLocale';
@@ -73,7 +73,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onOpenPromptDrawer }) => {
             </Button>
           )}
         </Group>
-        <div className={classes.codeBlock}>npm install @react-ui/ui @react-ui/hooks</div>
+        <div className={classes.codeBlock}>npm install @xiaoye-react/ui @xiaoye-react/hooks</div>
       </div>
     </section>
   );

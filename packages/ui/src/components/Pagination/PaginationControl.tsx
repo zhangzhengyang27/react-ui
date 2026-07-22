@@ -65,4 +65,4 @@ export const PaginationControl = factory<PaginationControlFactory>((_props, ref)
 })
 
 PaginationControl.classes = classes
-PaginationControl.displayName = '@react-ui/ui/PaginationControl'
+PaginationControl.displayName = '@xiaoye-react/ui/PaginationControl'

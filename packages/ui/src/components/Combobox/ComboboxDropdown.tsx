@@ -1,5 +1,5 @@
 import { Box, ElementProps, factory, useProps, type BoxProps, type Factory } from '../../core'
-import { useMergedRef } from '@react-ui/hooks'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import { Portal } from '../Portal'
 import { Transition } from '../Transition'
 import { useComboboxContext } from './Combobox.context'
@@ -50,4 +50,4 @@ export const ComboboxDropdown = factory<ComboboxDropdownFactory>((_props, ref) =
     )
 })
 
-ComboboxDropdown.displayName = '@react-ui/ui/ComboboxDropdown'
+ComboboxDropdown.displayName = '@xiaoye-react/ui/ComboboxDropdown'

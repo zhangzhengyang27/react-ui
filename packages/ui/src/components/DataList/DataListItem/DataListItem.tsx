@@ -31,7 +31,7 @@ export const DataListItem = factory<DataListItemFactory>((_props, ref) => {
 })
 
 DataListItem.classes = classes
-DataListItem.displayName = '@react-ui/ui/DataListItem'
+DataListItem.displayName = '@xiaoye-react/ui/DataListItem'
 
 export namespace DataListItem {
     export type Props = DataListItemProps

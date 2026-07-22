@@ -1,9 +1,9 @@
-import { Pill, PillsInput } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { Pill, PillsInput } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
 const code = `
-import { PillsInput, Pill } from '@react-ui/ui';
+import { PillsInput, Pill } from '@xiaoye-react/ui';
 
 
 function Demo() {

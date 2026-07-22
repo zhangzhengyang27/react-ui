@@ -3,7 +3,7 @@
  */
 import * as React from 'react';
 import { AiFillInfoCircle, AiFillCheckCircle, AiFillWarning, AiFillCloseCircle } from 'react-icons/ai';
-import { Alert } from '@react-ui/ui';
+import { Alert } from '@xiaoye-react/ui';
 
 import classes from './Container.module.css';
 

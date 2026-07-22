@@ -23,4 +23,4 @@ export const ComboboxOptions = factory<ComboboxOptionsFactory>((_props, ref) => 
     )
 })
 
-ComboboxOptions.displayName = '@react-ui/ui/ComboboxOptions'
+ComboboxOptions.displayName = '@xiaoye-react/ui/ComboboxOptions'

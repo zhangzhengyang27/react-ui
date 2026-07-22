@@ -11,7 +11,7 @@ description: react-ui 挂载状态 Hook 文档。
 `useMounted` Hook 在组件已挂载时返回 `true`，未挂载时返回 `false`。
 
 ```tsx
-import { useMounted } from '@react-ui/hooks';
+import { useMounted } from '@xiaoye-react/hooks';
 
 function Demo() {
   const mounted = useMounted();

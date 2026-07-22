@@ -22,7 +22,7 @@ group:
 
 ```tsx
 import { useState } from 'react';
-import { SegmentedControl } from '@react-ui/ui';
+import { SegmentedControl } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState('react');
@@ -49,7 +49,7 @@ function Demo() {
 非受控 `SegmentedControl` 与 `FormData` 的示例用法：
 
 ```tsx
-import { SegmentedControl } from '@react-ui/ui';
+import { SegmentedControl } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -84,7 +84,7 @@ function Demo() {
 2. 对象数组 – 当 `value` 和 `label` 不同时使用
 
 ```tsx
-import { SegmentedControl } from '@react-ui/ui';
+import { SegmentedControl } from '@xiaoye-react/ui';
 
 function ArrayOfStrings() {
   return (
@@ -114,7 +114,7 @@ function ArrayOfObjects() {
 字符串联合的示例：
 
 ```tsx
-import { SegmentedControl } from '@react-ui/ui';
+import { SegmentedControl } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

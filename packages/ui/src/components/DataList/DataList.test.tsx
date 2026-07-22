@@ -21,7 +21,7 @@ const defaultProps = {
     )
 }
 
-describe('@react-ui/ui/DataList', () => {
+describe('@xiaoye-react/ui/DataList', () => {
     it('renders dl element', () => {
         const { container } = render(<DataList {...defaultProps} />, { wrapper: Wrapper })
         expect(container.querySelector('dl')).not.toBe(null)

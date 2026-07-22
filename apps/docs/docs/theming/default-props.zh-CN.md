@@ -21,7 +21,7 @@ import {
   Button,
   createTheme,
   UIThemeProvider,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 const theme = createTheme({
   components: {
@@ -57,7 +57,7 @@ import {
   UIProvider,
   Menu,
   Tabs,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 const theme = createTheme({
   components: {
@@ -97,7 +97,7 @@ function Demo() {
 所有 ReactUI 组件都有一个 `withProps` 静态函数，可用于向组件添加默认 props：
 
 ```tsx
-import { Button, TextInput } from '@react-ui/ui';
+import { Button, TextInput } from '@xiaoye-react/ui';
 
 const LinkButton = Button.withProps({
   component: 'a',

@@ -123,7 +123,7 @@ export const Loader = factory<LoaderFactory>((_props, _ref) => {
 Loader.defaultLoaders = defaultLoaders
 Loader.classes = classes
 ;(Loader as any).varsResolver = varsResolver
-Loader.displayName = '@react-ui/ui/Loader'
+Loader.displayName = '@xiaoye-react/ui/Loader'
 
 export namespace Loader {
     export type Props = LoaderProps

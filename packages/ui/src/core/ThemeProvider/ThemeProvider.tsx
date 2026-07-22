@@ -23,4 +23,4 @@ export function ThemeProvider({ theme, children, inherit = true }: ThemeProvider
     return <ThemeContext.Provider value={mergedTheme}>{children}</ThemeContext.Provider>
 }
 
-ThemeProvider.displayName = '@react-ui/ui/ThemeProvider'
+ThemeProvider.displayName = '@xiaoye-react/ui/ThemeProvider'

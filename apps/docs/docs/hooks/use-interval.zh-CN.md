@@ -15,7 +15,7 @@ description: react-ui 定时器 Hook 文档。
 要在组件挂载时自动启动 interval，请将 `autoInvoke` 选项设置为 `true`：
 
 ```tsx
-import { useInterval } from '@react-ui/hooks';
+import { useInterval } from '@xiaoye-react/hooks';
 
 const interval = useInterval(
   () => console.log('Interval tick'),
@@ -39,7 +39,7 @@ const interval = useInterval(
 - `active` – 当前 interval 状态
 
 ```tsx
-import { useInterval } from '@react-ui/hooks';
+import { useInterval } from '@xiaoye-react/hooks';
 
 const { start, stop, toggle, active } = useInterval(fn, interval);
 ```
@@ -75,9 +75,9 @@ function useInterval(
 
 ## 导出类型
 
-`UseIntervalOptions` 和 `UseIntervalReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UseIntervalOptions` 和 `UseIntervalReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseIntervalOptions, UseIntervalReturnValue } from '@react-ui/hooks';
+import type { UseIntervalOptions, UseIntervalReturnValue } from '@xiaoye-react/hooks';
 ```

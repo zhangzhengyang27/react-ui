@@ -1,4 +1,4 @@
-import { useId, useUncontrolled } from '@react-ui/hooks'
+import { useId, useUncontrolled } from '@xiaoye-react/hooks'
 import {
     Box,
     BoxProps,
@@ -207,7 +207,7 @@ export const Radio = factory<RadioFactory>((_props, ref) => {
 
 Radio.classes = classes
 ;(Radio as any).varsResolver = varsResolver
-Radio.displayName = '@react-ui/ui/Radio'
+Radio.displayName = '@xiaoye-react/ui/Radio'
 Radio.Group = RadioGroup
 Radio.Indicator = RadioIndicator
 Radio.Card = RadioCard

@@ -78,6 +78,6 @@ description: react-ui DateTimePicker 文档。
 
 <ClearSectionMode></ClearSectionMode>
 
-<GetElementRef component="DateTimePicker" refType="button" package="@react-ui/ui"></GetElementRef>
+<GetElementRef component="DateTimePicker" refType="button" package="@xiaoye-react/ui"></GetElementRef>
 
-<InputAccessibility component="DateTimePicker" packageName="@react-ui/ui"></InputAccessibility>
+<InputAccessibility component="DateTimePicker" packageName="@xiaoye-react/ui"></InputAccessibility>

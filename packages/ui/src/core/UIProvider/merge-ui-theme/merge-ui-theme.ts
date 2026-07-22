@@ -9,7 +9,7 @@ import type { UITheme, UIThemeOverride } from '../theme.types'
  * @see https://react-ui.dev/theming/colors/#primary-color
  */
 export const INVALID_PRIMARY_COLOR_ERROR =
-    '[@react-ui/ui] UIProvider: Invalid theme.primaryColor, it accepts only key of theme.colors, learn more – https://react-ui.dev/theming/colors/#primary-color'
+    '[@xiaoye-react/ui] UIProvider: Invalid theme.primaryColor, it accepts only key of theme.colors, learn more – https://react-ui.dev/theming/colors/#primary-color'
 
 /**
  * 无效主色调深浅值错误消息
@@ -22,7 +22,7 @@ export const INVALID_PRIMARY_COLOR_ERROR =
  * primaryShade: { light: 6, dark: 8 }
  */
 export const INVALID_PRIMARY_SHADE_ERROR =
-    '[@react-ui/ui] UIProvider: Invalid theme.primaryShade, it accepts only 0-9 integers or an object { light: 0-9, dark: 0-9 }'
+    '[@xiaoye-react/ui] UIProvider: Invalid theme.primaryShade, it accepts only 0-9 integers or an object { light: 0-9, dark: 0-9 }'
 
 /**
  * 验证给定的色度值是否是有效的主色调值

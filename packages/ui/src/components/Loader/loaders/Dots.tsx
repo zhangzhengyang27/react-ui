@@ -10,4 +10,4 @@ export const Dots: UILoaderComponent = ({ className, ...others }) => (
     </span>
 )
 
-Dots.displayName = '@react-ui/ui/Dots'
+Dots.displayName = '@xiaoye-react/ui/Dots'

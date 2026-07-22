@@ -8,14 +8,14 @@ description: react-ui 图表组件入门指南。
 
 ## 安装
 
-<InstallScript packages="@react-ui/ui recharts"></InstallScript>
+<InstallScript packages="@xiaoye-react/ui recharts"></InstallScript>
 
 安装完成后，在应用根目录导入包样式：
 
 ```tsx
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 // ‼️ 图表样式必须在核心包样式之后导入
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 ```
 
 ## 不要忘记导入样式
@@ -26,11 +26,11 @@ import '@react-ui/ui/styles.css';
 要解决这个问题，请在应用根目录导入图表样式：
 
 ```tsx
-import '@react-ui/ui/styles.css';
+import '@xiaoye-react/ui/styles.css';
 ```
 
 ## 基于 recharts
 
-`@react-ui/ui` 包中的大多数组件都基于 [recharts](https://recharts.org/) 库。
-如果你需要 `@react-ui/ui` 文档未涵盖的高级功能，
+`@xiaoye-react/ui` 包中的大多数组件都基于 [recharts](https://recharts.org/) 库。
+如果你需要 `@xiaoye-react/ui` 文档未涵盖的高级功能，
 可以参考 [recharts 文档](https://recharts.org/en-US/api) 获取更多信息。

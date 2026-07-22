@@ -12,7 +12,7 @@ description: react-ui ColorFunctions 文档。
 第一个参数接受任意格式的颜色，第二个参数为要增加/减少的亮度值。
 
 ```tsx
-import { darken, lighten } from '@react-ui/ui';
+import { darken, lighten } from '@xiaoye-react/ui';
 
 lighten('#228BE6', 0.1); // lighten by 10%
 // -> rgba(56, 151, 233, 1)
@@ -36,7 +36,7 @@ lighten('var(--ui-color-gray-4)', 0.74);
 上查看更多信息。
 
 ```tsx
-import { alpha } from '@react-ui/ui';
+import { alpha } from '@xiaoye-react/ui';
 
 alpha('#4578FC', 0.45); // -> rgba(69, 120, 252, 0.45)
 alpha('var(--ui-color-gray-4)', 0.74);
@@ -98,7 +98,7 @@ import {
   UIColor,
   parseThemeColor,
   useUITheme,
-} from '@react-ui/ui';
+} from '@xiaoye-react/ui';
 
 interface DemoProps {
   color: UIColor;
@@ -126,7 +126,7 @@ function Demo({ color }: DemoProps) {
 theme 对象作为第二个参数，返回解析后的颜色值或 CSS 变量：
 
 ```tsx
-import { getThemeColor, useUITheme } from '@react-ui/ui';
+import { getThemeColor, useUITheme } from '@xiaoye-react/ui';
 
 function Demo() {
   const theme = useUITheme();
@@ -143,7 +143,7 @@ function Demo() {
 `getGradient` 函数将给定的 `UIGradient` 对象转换为 CSS 渐变字符串：
 
 ```tsx
-import { getGradient, useUITheme } from '@react-ui/ui';
+import { getGradient, useUITheme } from '@xiaoye-react/ui';
 
 function Demo() {
   const theme = useUITheme();
@@ -158,7 +158,7 @@ function Demo() {
 `isLightColor` 函数可用于提升文本与背景之间的对比度：
 
 ```tsx
-import { Box, isLightColor } from '@react-ui/ui';
+import { Box, isLightColor } from '@xiaoye-react/ui';
 
 interface DemoProps {
   color: string;
@@ -178,7 +178,7 @@ export function Demo({ color }: DemoProps) {
 `luminance` 函数返回颜色的亮度值。它可用于检查颜色对比度：
 
 ```tsx
-import { luminance } from '@react-ui/ui';
+import { luminance } from '@xiaoye-react/ui';
 
 luminance('#fff'); // -> 1
 luminance('#000'); // -> 0

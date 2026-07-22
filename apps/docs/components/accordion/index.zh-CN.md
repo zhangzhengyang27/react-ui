@@ -73,7 +73,7 @@ Accordion 常用于：
 对于 `multiple={true}`，将 `defaultValue` 设置为字符串数组：
 
 ```tsx
-import { Accordion } from '@react-ui/ui';
+import { Accordion } from '@xiaoye-react/ui';
 
 function Demo() {
   // 默认打开第二项
@@ -87,7 +87,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Accordion } from '@react-ui/ui';
+import { Accordion } from '@xiaoye-react/ui';
 
 function Demo() {
   // 默认同时打开两项
@@ -109,7 +109,7 @@ function Demo() {
 
 ```tsx
 import { useState } from 'react';
-import { Accordion } from '@react-ui/ui';
+import { Accordion } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState<string | null>(null);
@@ -125,7 +125,7 @@ function Demo() {
 
 ```tsx
 import { useState } from 'react';
-import { Accordion } from '@react-ui/ui';
+import { Accordion } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState<string[]>([]);
@@ -151,7 +151,7 @@ function Demo() {
 若需要在 `Accordion.Control` 上方显示交互元素，请改用 `position: absolute`。
 
 ```tsx
-import { Accordion } from '@react-ui/ui';
+import { Accordion } from '@xiaoye-react/ui';
 
 // ❌ 错误用法：不要这样做
 function Demo() {
@@ -198,11 +198,11 @@ function Demo() {
 
 ### TypeScript 类型
 
-从 `@react-ui/ui` 导出的 `AccordionProps` 类型是一个泛型，接受一个布尔类型
+从 `@xiaoye-react/ui` 导出的 `AccordionProps` 类型是一个泛型，接受一个布尔类型
 来描述 `multiple` 状态：
 
 ```tsx
-import type { AccordionProps } from '@react-ui/ui';
+import type { AccordionProps } from '@xiaoye-react/ui';
 
 type MultipleAccordionProps = AccordionProps<true>;
 type DefaultAccordionProps = AccordionProps<false>;

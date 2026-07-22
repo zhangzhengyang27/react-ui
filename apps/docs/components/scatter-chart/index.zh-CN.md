@@ -60,7 +60,7 @@ group:
 若应用只使用一种颜色方案，可直接使用 `gridColor` 和 `textColor` 属性，而不必使用 CSS 变量：
 
 ```tsx
-import { ScatterChart } from '@react-ui/ui';
+import { ScatterChart } from '@xiaoye-react/ui';
 import { data } from './data';
 
 function Demo() {

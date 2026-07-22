@@ -96,4 +96,4 @@ export const PillGroup = factory<PillGroupFactory>((_props, _ref) => {
 
 PillGroup.classes = classes
 PillGroup.varsResolver = varsResolver
-PillGroup.displayName = '@react-ui/ui/PillGroup'
+PillGroup.displayName = '@xiaoye-react/ui/PillGroup'

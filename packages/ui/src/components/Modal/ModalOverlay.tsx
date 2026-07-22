@@ -23,4 +23,4 @@ export const ModalOverlay = factory<ModalOverlayFactory>((_props, ref) => {
 })
 
 ModalOverlay.classes = classes
-ModalOverlay.displayName = '@react-ui/ui/ModalOverlay'
+ModalOverlay.displayName = '@xiaoye-react/ui/ModalOverlay'

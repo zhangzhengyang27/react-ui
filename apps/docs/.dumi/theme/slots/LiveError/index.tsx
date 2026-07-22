@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import React from 'react';
-import { Alert } from '@react-ui/ui';
+import { Alert } from '@xiaoye-react/ui';
 
 const LiveError: FC<{ error: Error | null }> = ({ error }) => {
   if (!error) {

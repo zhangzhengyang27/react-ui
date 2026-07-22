@@ -371,7 +371,7 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
 
 Slider.classes = classes
 Slider.varsResolver = varsResolver
-Slider.displayName = '@react-ui/ui/Slider'
+Slider.displayName = '@xiaoye-react/ui/Slider'
 
 export namespace Slider {
     export type Props = SliderProps

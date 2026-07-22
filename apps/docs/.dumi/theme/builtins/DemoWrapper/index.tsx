@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { AiOutlineBug, AiOutlineCode } from 'react-icons/ai';
-import { ActionIcon, Tooltip } from '@react-ui/ui';
+import { ActionIcon, Tooltip } from '@xiaoye-react/ui';
 import type { IDumiDemoGridProps } from 'dumi';
 import { DumiDemo, FormattedMessage } from 'dumi';
 

@@ -48,4 +48,4 @@ export const InputClearButton = factory<InputClearButtonFactory>((_props, ref) =
     )
 })
 
-InputClearButton.displayName = '@react-ui/ui/InputClearButton'
+InputClearButton.displayName = '@xiaoye-react/ui/InputClearButton'

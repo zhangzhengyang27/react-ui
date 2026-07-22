@@ -18,7 +18,7 @@ export function useUITheme() {
     const ctx = useContext(UIThemeContext)
     if (!ctx) {
         throw new Error(
-            '@react-ui/ui: UIProvider was not found in component tree, make sure you have it in your app'
+            '@xiaoye-react/ui: UIProvider was not found in component tree, make sure you have it in your app'
         )
     }
 
@@ -54,4 +54,4 @@ export function UIThemeProvider({ theme, children, inherit = true }: UIThemeProv
 }
 
 // 设置组件在 React DevTools 中的显示名称
-UIThemeProvider.displayName = '@react-ui/ui/UIThemeProvider'
+UIThemeProvider.displayName = '@xiaoye-react/ui/UIThemeProvider'

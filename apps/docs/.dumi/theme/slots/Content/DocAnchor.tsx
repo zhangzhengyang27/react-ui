@@ -1,5 +1,5 @@
 import React from 'react';
-import { Anchor, Text } from '@react-ui/ui';
+import { Anchor, Text } from '@xiaoye-react/ui';
 import { clsx } from 'clsx';
 import { useRouteMeta, useTabMeta } from 'dumi';
 

@@ -41,7 +41,7 @@ Drawer 可放置在 `left`（默认）、`top`、`right` 和 `bottom`。使用 `
 可通过将 `size` 属性设置为预定义尺寸或任意有效宽度来更改 drawer 的宽度/高度（取决于 `position`），例如 `size="55%"` 或 `size={200}`：
 
 ```tsx
-import { Drawer } from '@react-ui/ui';
+import { Drawer } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -97,7 +97,7 @@ function Demo() {
 `Drawer` 使用 [react-remove-scroll](https://github.com/theKashey/react-remove-scroll) 包来锁定滚动。可通过 `removeScrollProps` 将属性传递给 `RemoveScroll` 组件：
 
 ```tsx
-import { Drawer } from '@react-ui/ui';
+import { Drawer } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -180,7 +180,7 @@ interface UseDrawersStackReturnType<T extends string> {
 ```
 
 ```tsx
-import { Drawer, useDrawersStack } from '@react-ui/ui';
+import { Drawer, useDrawersStack } from '@xiaoye-react/ui';
 
 function Demo() {
   const stack = useDrawersStack(['first', 'second']);
@@ -200,7 +200,7 @@ function Demo() {
 `Drawer` 组件使用 [react-remove-scroll](https://github.com/theKashey/react-remove-scroll) 包来锁定滚动。要正确调整这些 `elements` 的大小，请向它们添加 `className`（[文档](https://github.com/theKashey/react-remove-scroll#positionfixed-elements)）：
 
 ```tsx
-import { RemoveScroll } from '@react-ui/ui';
+import { RemoveScroll } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -225,7 +225,7 @@ function Demo() {
 要使用关闭按钮 `aria-label`，请使用 `closeButtonProps`：
 
 ```tsx
-import { Drawer } from '@react-ui/ui';
+import { Drawer } from '@xiaoye-react/ui';
 
 function Demo() {
   return <Drawer title="抽屉标签" opened onClose={() => {}} />;
@@ -233,7 +233,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Drawer } from '@react-ui/ui';
+import { Drawer } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

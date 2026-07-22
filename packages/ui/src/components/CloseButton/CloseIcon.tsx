@@ -24,4 +24,4 @@ export function CloseIcon({ size = 'var(--cb-icon-size, 70%)', style, ...others 
     )
 }
 
-CloseIcon.displayName = '@react-ui/ui/CloseIcon'
+CloseIcon.displayName = '@xiaoye-react/ui/CloseIcon'

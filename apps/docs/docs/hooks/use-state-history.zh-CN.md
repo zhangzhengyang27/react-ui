@@ -15,7 +15,7 @@ description: react-ui 状态历史 Hook 文档。
 
 ## 类型定义
 
-`UseStateHistoryHandlers` 和 `UseStateHistoryValue` 接口从 `@react-ui/hooks` 包导出。
+`UseStateHistoryHandlers` 和 `UseStateHistoryValue` 接口从 `@xiaoye-react/hooks` 包导出。
 
 ```tsx
 interface UseStateHistoryHandlers<T> {
@@ -41,8 +41,8 @@ function useStateHistory<T>(initialValue: T): UseStateHistoryReturnValue<T>;
 
 ## 导出类型
 
-`UseStateHistoryHandlers`、`UseStateHistoryReturnValue` 和 `UseStateHistoryValue` 类型从 `@react-ui/hooks` 包导出：
+`UseStateHistoryHandlers`、`UseStateHistoryReturnValue` 和 `UseStateHistoryValue` 类型从 `@xiaoye-react/hooks` 包导出：
 
 ```tsx
-import type { UseStateHistoryHandlers, UseStateHistoryReturnValue, UseStateHistoryValue } from '@react-ui/hooks';
+import type { UseStateHistoryHandlers, UseStateHistoryReturnValue, UseStateHistoryValue } from '@xiaoye-react/hooks';
 ```

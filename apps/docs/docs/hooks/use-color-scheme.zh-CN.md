@@ -51,9 +51,9 @@ function useColorScheme(
 
 ## 导出类型
 
-`UseColorSchemeValue` 和 `UseMediaQueryOptions` 类型从 `@react-ui/hooks` 包导出，
+`UseColorSchemeValue` 和 `UseMediaQueryOptions` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseColorSchemeValue, UseMediaQueryOptions } from '@react-ui/hooks';
+import type { UseColorSchemeValue, UseMediaQueryOptions } from '@xiaoye-react/hooks';
 ```

@@ -26,4 +26,4 @@ export const DrawerBody = factory<DrawerBodyFactory>((_props, ref) => {
 })
 
 DrawerBody.classes = classes
-DrawerBody.displayName = '@react-ui/ui/DrawerBody'
+DrawerBody.displayName = '@xiaoye-react/ui/DrawerBody'

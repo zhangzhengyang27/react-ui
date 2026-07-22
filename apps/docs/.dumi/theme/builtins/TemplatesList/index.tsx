@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineDash, AiOutlineExport } from 'react-icons/ai';
-import { Anchor, Badge, Stack, Text } from '@react-ui/ui';
+import { Anchor, Badge, Stack, Text } from '@xiaoye-react/ui';
 import { COMMUNITY_TEMPLATES_DATA } from './community-data';
 import { TEMPLATES_DATA, type Template } from './data';
 

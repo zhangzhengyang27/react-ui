@@ -122,7 +122,7 @@ export const Overlay = polymorphicFactory<OverlayFactory>((_props, _ref) => {
 
 Overlay.classes = classes
 ;(Overlay as any).varsResolver = varsResolver
-Overlay.displayName = '@react-ui/ui/Overlay'
+Overlay.displayName = '@xiaoye-react/ui/Overlay'
 
 export namespace Overlay {
     export type Props = OverlayProps

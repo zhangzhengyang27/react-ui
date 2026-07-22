@@ -23,4 +23,4 @@ export const ComboboxEmpty = factory<ComboboxEmptyFactory>((_props, ref) => {
     )
 })
 
-ComboboxEmpty.displayName = '@react-ui/ui/ComboboxEmpty'
+ComboboxEmpty.displayName = '@xiaoye-react/ui/ComboboxEmpty'

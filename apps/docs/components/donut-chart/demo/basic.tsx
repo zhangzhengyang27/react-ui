@@ -1,5 +1,5 @@
 import React from 'react';
-import { DonutChart } from '@react-ui/ui';
+import { DonutChart } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

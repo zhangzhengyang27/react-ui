@@ -40,7 +40,7 @@ export const Typography = factory<TypographyFactory>((_props, ref) => {
 })
 
 Typography.classes = classes
-Typography.displayName = '@react-ui/ui/Typography'
+Typography.displayName = '@xiaoye-react/ui/Typography'
 
 export namespace Typography {
     export type Props = TypographyProps

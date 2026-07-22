@@ -1,4 +1,4 @@
-import { assignRef, useId, useScrollSpy, UseScrollSpyHeadingData } from '@react-ui/hooks'
+import { assignRef, useId, useScrollSpy, UseScrollSpyHeadingData } from '@xiaoye-react/hooks'
 import {
     Box,
     BoxProps,
@@ -57,7 +57,7 @@ export interface TableOfContentsProps extends BoxProps, StylesApiProps<TableOfCo
     autoContrast?: boolean
 
     /** Options passed down to `use-scroll-spy` hook */
-    scrollSpyOptions?: import('@react-ui/hooks').UseScrollSpyOptions
+    scrollSpyOptions?: import('@xiaoye-react/hooks').UseScrollSpyOptions
 
     /** Data used to render content until actual values are retrieved from the DOM */
     initialData?: InitialTableOfContentsData[]
@@ -187,7 +187,7 @@ export const TableOfContents = factory<TableOfContentsFactory>((_props, ref) => 
     )
 })
 
-TableOfContents.displayName = '@react-ui/ui/TableOfContents'
+TableOfContents.displayName = '@xiaoye-react/ui/TableOfContents'
 TableOfContents.classes = classes
 ;(TableOfContents as any).varsResolver = varsResolver
 

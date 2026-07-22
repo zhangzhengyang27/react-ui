@@ -1,4 +1,4 @@
-import { useUncontrolled } from '@react-ui/hooks'
+import { useUncontrolled } from '@xiaoye-react/hooks'
 import { BoxProps, ElementProps, factory, Factory, UISize, StylesApiProps, useProps, useStyles } from '../../core'
 import { InputWrapper } from '../Input'
 import { RadioGroupContext } from './RadioGroup.context'
@@ -120,7 +120,7 @@ export const RadioGroup = factory<RadioGroupFactory>((_props, ref) => {
     )
 })
 
-RadioGroup.displayName = '@react-ui/ui/RadioGroup'
+RadioGroup.displayName = '@xiaoye-react/ui/RadioGroup'
 
 export namespace RadioGroup {
     export type Props = RadioGroupProps

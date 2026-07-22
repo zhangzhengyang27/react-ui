@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useUncontrolled } from '@react-ui/hooks'
+import { useUncontrolled } from '@xiaoye-react/hooks'
 import { factory, Factory, StylesApiProps, useProps, useResolvedStylesApi, useStyles } from '../../core'
 import { Popover, PopoverStylesNames } from '../Popover'
 import { MenuContextProvider, type MenuContextValue } from './Menu.context'
@@ -277,7 +277,7 @@ export const Menu = factory<MenuFactory>((_props, _ref) => {
     )
 })
 
-Menu.displayName = '@react-ui/ui/Menu'
+Menu.displayName = '@xiaoye-react/ui/Menu'
 Menu.classes = classes
 Menu.Item = MenuItem
 Menu.Label = MenuLabel

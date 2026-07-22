@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import React, { Suspense } from 'react';
-import { Skeleton } from '@react-ui/ui';
+import { Skeleton } from '@xiaoye-react/ui';
 
 import useLocale from '../../../hooks/useLocale';
 import type { BehaviorMapProps } from './BehaviorMap';

@@ -11,7 +11,7 @@ function listReactUiPackages() {
   });
 }
 
-const reactUiPackages = new Set(listReactUiPackages().map((n) => `@react-ui/${n}`));
+const reactUiPackages = new Set(listReactUiPackages().map((n) => `@xiaoye-react/${n}`));
 
 const packageJsonFiles = listReactUiPackages().map((name) =>
   path.join(PACKAGES_DIR, name, 'package.json')
@@ -61,11 +61,11 @@ packageJsonFiles.forEach((filePath) => {
       }
     });
 
-    // 3. Replace @mantine/* with @react-ui/* in peerDependencies
+    // 3. Replace @mantine/* with @xiaoye-react/* in peerDependencies
     if (section === 'peerDependencies') {
       Object.keys(json[section]).forEach((depName) => {
         if (depName.startsWith('@mantine/')) {
-          const newName = depName.replace('@mantine/', '@react-ui/');
+          const newName = depName.replace('@mantine/', '@xiaoye-react/');
           report.peerMantineReplacements.push({
             file: filePath,
             oldName: depName,

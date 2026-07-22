@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeIcon } from '@react-ui/ui';
+import { ThemeIcon } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

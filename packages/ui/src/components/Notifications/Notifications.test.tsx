@@ -18,7 +18,7 @@ afterEach(() => {
     vi.useRealTimers()
 })
 
-describe('@react-ui/ui/Notifications', () => {
+describe('@xiaoye-react/ui/Notifications', () => {
     it('shows notification via notifications.show', () => {
         render(<div />, { wrapper: Wrapper })
         act(() => {

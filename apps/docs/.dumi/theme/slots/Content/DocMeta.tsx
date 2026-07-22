@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useMemo, useState } from 'react';
 import { AiOutlineCalendar } from 'react-icons/ai';
-import { Avatar, Flex, Skeleton, Text } from '@react-ui/ui';
+import { Avatar, Flex, Skeleton, Text } from '@xiaoye-react/ui';
 import dayjs from 'dayjs';
 import { useRouteMeta } from 'dumi';
 

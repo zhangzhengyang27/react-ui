@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataList } from '@react-ui/ui';
+import { DataList } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (

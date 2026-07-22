@@ -35,9 +35,9 @@ function useNetwork(): UserNetworkReturnValue;
 
 ## 导出类型
 
-`UserNetworkReturnValue` 类型从 `@react-ui/hooks` 包导出，
+`UserNetworkReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UserNetworkReturnValue } from '@react-ui/hooks';
+import type { UserNetworkReturnValue } from '@xiaoye-react/hooks';
 ```

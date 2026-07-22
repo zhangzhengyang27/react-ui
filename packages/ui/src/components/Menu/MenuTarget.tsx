@@ -24,7 +24,7 @@ export function MenuTarget(props: MenuTargetProps) {
 
     // throw 必须在全部 hooks 之后：children 由有效变无效时，hooks 数量不能随条件变化（Rules of Hooks）
     if (!child) {
-        throw new Error('[@react-ui/ui] Menu.Target children should be an element or a component that accepts ref')
+        throw new Error('[@xiaoye-react/ui] Menu.Target children should be an element or a component that accepts ref')
     }
 
     const onClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -67,4 +67,4 @@ export function MenuTarget(props: MenuTargetProps) {
     )
 }
 
-MenuTarget.displayName = '@react-ui/ui/MenuTarget'
+MenuTarget.displayName = '@xiaoye-react/ui/MenuTarget'

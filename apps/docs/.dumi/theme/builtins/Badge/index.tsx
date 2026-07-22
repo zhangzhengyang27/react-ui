@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Badge } from '@react-ui/ui';
-import type { BoxProps } from '@react-ui/ui';
+import { Badge } from '@xiaoye-react/ui';
+import type { BoxProps } from '@xiaoye-react/ui';
 
 // https://github.com/umijs/dumi/blob/master/src/client/theme-default/builtins/Badge/index.tsx
 interface BadgeProps {

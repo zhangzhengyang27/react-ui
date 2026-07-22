@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { useIsomorphicEffect, useMergedRef } from '@react-ui/hooks'
+import { useIsomorphicEffect, useMergedRef } from '@xiaoye-react/hooks'
 import {
     Box,
     BoxProps,
@@ -269,7 +269,7 @@ export const ScrollArea = factory<ScrollAreaFactory>((_props, _ref) => {
 
 ScrollArea.classes = classes
 ScrollArea.varsResolver = varsResolver
-ScrollArea.displayName = '@react-ui/ui/ScrollArea'
+ScrollArea.displayName = '@xiaoye-react/ui/ScrollArea'
 
 export const ScrollAreaAutosize = factory<ScrollAreaAutosizeFactory>((_props, _ref) => {
     const props = useProps('ScrollAreaAutosize', defaultProps, _props as ScrollAreaAutosizeProps)
@@ -389,7 +389,7 @@ export const ScrollAreaAutosize = factory<ScrollAreaAutosizeFactory>((_props, _r
     )
 })
 
-ScrollAreaAutosize.displayName = '@react-ui/ui/ScrollAreaAutosize'
+ScrollAreaAutosize.displayName = '@xiaoye-react/ui/ScrollAreaAutosize'
 ScrollAreaAutosize.classes = classes
 ScrollArea.Autosize = ScrollAreaAutosize
 

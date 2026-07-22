@@ -151,7 +151,7 @@ export const Dialog = factory<DialogFactory>((_props, _ref) => {
 
 Dialog.classes = classes
 ;(Dialog as any).varsResolver = varsResolver
-Dialog.displayName = '@react-ui/ui/Dialog'
+Dialog.displayName = '@xiaoye-react/ui/Dialog'
 
 export namespace Dialog {
     export type Props = DialogProps

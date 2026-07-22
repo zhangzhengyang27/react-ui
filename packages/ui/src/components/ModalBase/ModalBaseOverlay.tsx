@@ -46,4 +46,4 @@ export const ModalBaseOverlay = forwardRef<HTMLDivElement, ModalBaseOverlayProps
     }
 )
 
-ModalBaseOverlay.displayName = '@react-ui/ui/ModalBaseOverlay'
+ModalBaseOverlay.displayName = '@xiaoye-react/ui/ModalBaseOverlay'

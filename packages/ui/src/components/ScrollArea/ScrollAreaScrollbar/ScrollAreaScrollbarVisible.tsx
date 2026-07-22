@@ -113,4 +113,4 @@ export function ScrollAreaScrollbarVisible(props: ScrollAreaScrollbarVisibleProp
     return null
 }
 
-ScrollAreaScrollbarVisible.displayName = '@react-ui/ui/ScrollAreaScrollbarVisible'
+ScrollAreaScrollbarVisible.displayName = '@xiaoye-react/ui/ScrollAreaScrollbarVisible'

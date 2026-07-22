@@ -1,0 +1,46 @@
+{
+  "name": "@xiaoye-react/charts",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Charts components built with recharts and React UI",
+  "homepage": "https://react-ui.dev/",
+  "license": "MIT",
+  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
+  "keywords": [
+    "react",
+    "ui"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.mjs",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    },
+    "./styles.css": "./styles.css",
+    "./styles.layer.css": "./styles.layer.css"
+  },
+  "repository": {
+    "url": "https://github.com/react-ui/react-ui.git",
+    "type": "git",
+    "directory": "packages/@xiaoye-react/charts"
+  },
+  "peerDependencies": {
+    "@xiaoye-react/ui": "workspace:*",
+    "@xiaoye-react/hooks": "workspace:*",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "recharts": ">=3.2.1"
+  },
+  "devDependencies": {
+    "@xiaoye-react/ui": "workspace:*",
+    "@xiaoye-react/hooks": "workspace:*",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  }
+}

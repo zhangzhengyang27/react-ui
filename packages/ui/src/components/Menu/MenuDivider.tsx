@@ -21,4 +21,4 @@ export const MenuDivider = factory<MenuDividerFactory>((props, _ref) => {
 })
 
 MenuDivider.classes = classes
-MenuDivider.displayName = '@react-ui/ui/MenuDivider'
+MenuDivider.displayName = '@xiaoye-react/ui/MenuDivider'

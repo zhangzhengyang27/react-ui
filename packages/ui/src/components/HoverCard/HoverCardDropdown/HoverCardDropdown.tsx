@@ -1,5 +1,5 @@
 import { Box, factory, rem, useProps, type BoxProps, type Factory } from '../../../core'
-import { useMergedRef } from '@react-ui/hooks'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import { FloatingArrow } from '../../../core/utils/Floating'
 import { Portal } from '../../Portal'
 import { Transition } from '../../Transition'
@@ -74,4 +74,4 @@ export const HoverCardDropdown = factory<HoverCardDropdownFactory>((_props, ref)
     )
 })
 
-HoverCardDropdown.displayName = '@react-ui/ui/HoverCardDropdown'
+HoverCardDropdown.displayName = '@xiaoye-react/ui/HoverCardDropdown'

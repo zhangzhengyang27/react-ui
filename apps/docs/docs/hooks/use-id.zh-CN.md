@@ -13,7 +13,7 @@ description: react-ui 唯一 ID Hook 文档。
 生成的随机 id 保存在 ref 中，除非组件卸载，否则不会改变。
 
 ```tsx
-import { useId } from '@react-ui/hooks';
+import { useId } from '@xiaoye-react/hooks';
 
 function Input({ id }: { id?: string }) {
   const uuid = useId(id);

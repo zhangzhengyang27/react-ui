@@ -45,4 +45,4 @@ export const CarouselSlide = factory<CarouselSlideFactory>((props, ref) => {
 })
 
 CarouselSlide.classes = classes
-CarouselSlide.displayName = '@react-ui/ui/CarouselSlide'
+CarouselSlide.displayName = '@xiaoye-react/ui/CarouselSlide'

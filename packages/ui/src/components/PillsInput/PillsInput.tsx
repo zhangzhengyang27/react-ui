@@ -92,7 +92,7 @@ export const PillsInput = factory<PillsInputFactory>((_props, ref) => {
     )
 })
 
-PillsInput.displayName = '@react-ui/ui/PillsInput'
+PillsInput.displayName = '@xiaoye-react/ui/PillsInput'
 PillsInput.classes = InputBase.classes
 PillsInput.Field = PillsInputField
 

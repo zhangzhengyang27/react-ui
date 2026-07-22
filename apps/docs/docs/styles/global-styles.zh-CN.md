@@ -8,7 +8,7 @@ description: react-ui GlobalStyles 文档。
 
 ## CSS 重置
 
-`@react-ui/ui` 包包含最小的 CSS reset——它仅包含组件在现代浏览器中工作所需的基本样式。如果你需要支持旧浏览器，可以额外包含 [normalize.css](https://necolas.github.io/normalize.css/) 或任何你喜欢的其他 CSS reset。
+`@xiaoye-react/ui` 包包含最小的 CSS reset——它仅包含组件在现代浏览器中工作所需的基本样式。如果你需要支持旧浏览器，可以额外包含 [normalize.css](https://necolas.github.io/normalize.css/) 或任何你喜欢的其他 CSS reset。
 
 ```css
 body {
@@ -36,7 +36,7 @@ select {
 
 ## Body 和 :root 元素样式
 
-`@react-ui/ui` 包包含以下 `body` 和 `:root` 元素样式：
+`@xiaoye-react/ui` 包包含以下 `body` 和 `:root` 元素样式：
 
 ```css
 :root {
@@ -57,7 +57,7 @@ body {
 
 ## 静态 classes
 
-`@react-ui/ui` 包包含以下静态 class：
+`@xiaoye-react/ui` 包包含以下静态 class：
 
 - `ui-active` – 包含 `:active` 样式
 - `ui-focus-auto` – 包含 `:focus-visible` 样式

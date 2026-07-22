@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Notifications } from '@react-ui/ui';
+import { Notifications } from '@xiaoye-react/ui';
 
 import CopyableIcon from './CopyableIcon';
 import { categories, type CategoriesKeys, type IconEntry } from './fields';

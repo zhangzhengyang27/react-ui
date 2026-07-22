@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useMergedRef } from '@react-ui/hooks'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import {
     type BoxProps,
     type CompoundStylesApiProps,
@@ -149,4 +149,4 @@ export const MenuRadioItem = factory<MenuRadioItemFactory>((props, ref) => {
 })
 
 MenuRadioItem.classes = classes
-MenuRadioItem.displayName = '@react-ui/ui/MenuRadioItem'
+MenuRadioItem.displayName = '@xiaoye-react/ui/MenuRadioItem'

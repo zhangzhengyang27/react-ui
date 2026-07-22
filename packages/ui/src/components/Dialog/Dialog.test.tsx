@@ -7,7 +7,7 @@ function Wrapper({ children }: { children: React.ReactNode }) {
     return <UIProvider>{children}</UIProvider>
 }
 
-describe('@react-ui/ui/Dialog', () => {
+describe('@xiaoye-react/ui/Dialog', () => {
     it('renders when opened', () => {
         render(
             <Dialog opened title="Confirm" onClose={vi.fn()}>

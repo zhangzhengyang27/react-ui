@@ -8,10 +8,10 @@ import {
   Text,
   TextInput,
   UnstyledButton,
-} from '@react-ui/ui';
-import { useDisclosure, useHotkeys } from '@react-ui/hooks';
-import { COMBOBOX_EXAMPLES_DATA, ComboboxDemo } from '@react-ui/docs-demos';
-import type { ComboboxExample } from '@react-ui/docs-demos';
+} from '@xiaoye-react/ui';
+import { useDisclosure, useHotkeys } from '@xiaoye-react/hooks';
+import { COMBOBOX_EXAMPLES_DATA, ComboboxDemo } from '@xiaoye-react/docs-demos';
+import type { ComboboxExample } from '@xiaoye-react/docs-demos';
 import classes from './combobox.module.css';
 
 interface ComboboxExamplesGroup {

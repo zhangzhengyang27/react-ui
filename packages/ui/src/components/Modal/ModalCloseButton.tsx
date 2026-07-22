@@ -23,4 +23,4 @@ export const ModalCloseButton = factory<ModalCloseButtonFactory>((_props, ref) =
 })
 
 ModalCloseButton.classes = classes
-ModalCloseButton.displayName = '@react-ui/ui/ModalCloseButton'
+ModalCloseButton.displayName = '@xiaoye-react/ui/ModalCloseButton'

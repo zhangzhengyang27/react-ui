@@ -99,7 +99,7 @@ export const Skeleton = factory<SkeletonFactory>((_props, ref) => {
 
 Skeleton.classes = classes
 ;(Skeleton as any).varsResolver = varsResolver
-Skeleton.displayName = '@react-ui/ui/Skeleton'
+Skeleton.displayName = '@xiaoye-react/ui/Skeleton'
 
 export namespace Skeleton {
     export type Props = SkeletonProps

@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiOutlineInfoCircle, AiOutlinePushpin } from 'react-icons/ai';
 import { get, set } from '@rc-component/util';
-import { Button, Flex, Popover, Pill, Title, Text } from '@react-ui/ui';
+import { Button, Flex, Popover, Pill, Title, Text } from '@xiaoye-react/ui';
 import { clsx } from 'clsx';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-jsx';

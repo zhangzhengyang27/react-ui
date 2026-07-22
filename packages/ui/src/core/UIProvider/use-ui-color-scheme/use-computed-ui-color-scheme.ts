@@ -1,4 +1,4 @@
-import { useColorScheme, UseMediaQueryOptions } from '@react-ui/hooks';
+import { useColorScheme, UseMediaQueryOptions } from '@xiaoye-react/hooks';
 import { useUIColorScheme } from './use-ui-color-scheme';
 
 export function useComputedUIColorScheme(

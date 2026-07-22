@@ -87,7 +87,7 @@ export function useUIContext() {
     const ctx = useContext(UIContext)
 
     if (!ctx) {
-        throw new Error('[@react-ui/ui] UIProvider was not found in tree')
+        throw new Error('[@xiaoye-react/ui] UIProvider was not found in tree')
     }
 
     return ctx

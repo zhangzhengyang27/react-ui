@@ -224,7 +224,7 @@ function useSplitter<T extends HTMLElement = any>(
 
 `UseSplitterPanel`、`UseSplitterOptions`、`UseSplitterReturnValue`、`UseSplitterRedistributeInput`、
 `UseSplitterRedistributeFn`、`UseSplitterResolvedPanel`、`SplitterPaneSize` 和 `SplitterStep` 类型
-从 `@react-ui/hooks` 包导出：
+从 `@xiaoye-react/hooks` 包导出：
 
 ```tsx
 import type {
@@ -236,5 +236,5 @@ import type {
   UseSplitterRedistributeInput,
   UseSplitterRedistributeFn,
   UseSplitterResolvedPanel,
-} from '@react-ui/hooks';
+} from '@xiaoye-react/hooks';
 ```

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useReactId } from '@react-ui/hooks'
+import { useReactId } from '@xiaoye-react/hooks'
 import { Box, ElementProps, factory, useProps, type BoxProps, type Factory } from '../../core'
 import { useComboboxContext } from './Combobox.context'
 import classes from './Combobox.module.css'
@@ -77,4 +77,4 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
     )
 })
 
-ComboboxOption.displayName = '@react-ui/ui/ComboboxOption'
+ComboboxOption.displayName = '@xiaoye-react/ui/ComboboxOption'

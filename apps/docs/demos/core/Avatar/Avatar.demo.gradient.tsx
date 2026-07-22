@@ -1,9 +1,9 @@
-import { Avatar } from '@react-ui/ui';
-import { UIDemo } from '@react-ui/demo';
+import { Avatar } from '@xiaoye-react/ui';
+import { UIDemo } from '@xiaoye-react/demo';
 import { gradientControls } from '../../shared';
 
 const code = (props: any) => `
-import { Avatar } from '@react-ui/ui';
+import { Avatar } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

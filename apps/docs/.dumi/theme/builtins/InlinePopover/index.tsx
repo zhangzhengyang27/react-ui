@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlinePicture } from 'react-icons/ai';
-import { Anchor, Tooltip } from '@react-ui/ui';
+import { Anchor, Tooltip } from '@xiaoye-react/ui';
 
 import useLocale from '../../../hooks/useLocale';
 import classes from './index.module.css';

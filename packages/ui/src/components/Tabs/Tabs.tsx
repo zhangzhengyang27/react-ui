@@ -1,4 +1,4 @@
-import { useUncontrolled } from '@react-ui/hooks'
+import { useUncontrolled } from '@xiaoye-react/hooks'
 import {
     Box,
     createVarsResolver,
@@ -166,7 +166,7 @@ export const Tabs = factory<TabsFactory>((_props, ref) => {
 
 Tabs.classes = classes
 ;(Tabs as any).varsResolver = varsResolver
-Tabs.displayName = '@react-ui/ui/Tabs'
+Tabs.displayName = '@xiaoye-react/ui/Tabs'
 Tabs.List = TabsList
 Tabs.Tab = TabsTab
 Tabs.Panel = TabsPanel

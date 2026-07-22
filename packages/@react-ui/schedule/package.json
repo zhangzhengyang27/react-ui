@@ -1,5 +1,6 @@
 {
   "name": "@react-ui/schedule",
+  "private": true,
   "version": "9.4.1",
   "description": "Schedule React UI component",
   "homepage": "https://react-ui.dev/",

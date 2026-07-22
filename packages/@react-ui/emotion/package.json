@@ -1,5 +1,6 @@
 {
   "name": "@react-ui/emotion",
+  "private": true,
   "version": "9.4.1",
   "description": "Emotion bindings for React UI",
   "homepage": "https://react-ui.dev/",

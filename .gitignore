@@ -22,3 +22,7 @@ pnpm-lock.yaml
 yarn.lock
 
 node_modules/
+
+# IDE 工作目录(不提交)
+.trae/
+.workbuddy/

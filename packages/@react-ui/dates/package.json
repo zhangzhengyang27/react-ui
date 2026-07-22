@@ -1,5 +1,6 @@
 {
   "name": "@react-ui/dates",
+  "private": true,
   "version": "9.4.1",
   "description": "Calendars, date and time pickers based on React UI components",
   "homepage": "https://react-ui.dev/dates/getting-started/",

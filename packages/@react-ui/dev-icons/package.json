@@ -1,5 +1,6 @@
 {
   "name": "@react-ui/dev-icons",
+  "private": true,
   "version": "2.0.0",
   "description": "Dev icons used on *.react-ui.dev websites",
   "homepage": "https://react-ui.dev/",

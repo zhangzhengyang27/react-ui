@@ -1,5 +1,6 @@
 {
   "name": "@react-ui/colors-generator",
+  "private": true,
   "version": "9.4.1",
   "description": "A library to generate 10 shades of color based on provided color value",
   "homepage": "https://react-ui.dev",

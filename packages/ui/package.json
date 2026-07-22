@@ -1,11 +1,14 @@
 {
     "name": "@react-ui/ui",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "小叶的 react ui 组件库",
     "type": "module",
     "main": "es/index.js",
     "module": "es/index.js",
     "types": "es/index.d.ts",
+    "publishConfig": {
+        "access": "public"
+    },
     "files": [
         "es"
     ],

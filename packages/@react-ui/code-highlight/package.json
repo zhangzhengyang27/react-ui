@@ -1,5 +1,6 @@
 {
   "name": "@react-ui/code-highlight",
+  "private": true,
   "version": "9.4.1",
   "description": "Code highlight with React UI theme",
   "homepage": "https://react-ui.dev/x/code-highlight/",

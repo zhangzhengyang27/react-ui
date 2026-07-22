@@ -1,5 +1,6 @@
 {
   "name": "@react-ui/header",
+  "private": true,
   "version": "2.0.0",
   "description": "Components used in headers of react-ui.dev websites",
   "homepage": "https://react-ui.dev/",

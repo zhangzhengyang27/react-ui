@@ -1,11 +1,14 @@
 {
     "name": "@react-ui/hooks",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "小叶的 React Hooks 库，用于 主要用于 UI 包使用",
     "type": "module",
     "main": "es/index.js",
     "module": "es/index.js",
     "types": "es/index.d.ts",
+    "publishConfig": {
+        "access": "public"
+    },
     "exports": {
         ".": {
             "types": "./src/index.ts",

@@ -1,5 +1,6 @@
 {
   "name": "@react-ui/docs-styles-api",
+  "private": true,
   "version": "1.0.0",
   "description": "React UI components styles api data",
   "homepage": "https://react-ui.dev",

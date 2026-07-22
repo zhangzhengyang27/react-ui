@@ -1,5 +1,6 @@
 {
   "name": "@react-ui/docs-demos",
+  "private": true,
   "version": "1.0.0",
   "description": "ReactUI components demos used on react-ui.dev website",
   "homepage": "https://react-ui.dev",

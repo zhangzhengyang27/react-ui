@@ -1,5 +1,6 @@
 {
   "name": "@react-ui/form",
+  "private": true,
   "version": "9.4.1",
   "description": "React UI form management library",
   "homepage": "https://react-ui.dev",

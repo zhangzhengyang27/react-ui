@@ -1,5 +1,6 @@
 {
   "name": "@react-ui/nprogress",
+  "private": true,
   "version": "9.4.1",
   "description": "Navigation progress bar",
   "homepage": "https://react-ui.dev/x/nprogress/",

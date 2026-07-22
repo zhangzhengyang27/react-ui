@@ -1,5 +1,6 @@
 {
   "name": "@react-ui/tiptap",
+  "private": true,
   "version": "9.4.1",
   "description": "Rich text editor based on tiptap",
   "homepage": "https://react-ui.dev/x/tiptap",

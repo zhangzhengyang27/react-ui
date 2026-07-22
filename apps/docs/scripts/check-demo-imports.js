@@ -24,7 +24,7 @@ function extractJsxTags(source) {
 
 function extractImports(source) {
   const imports = new Set();
-  const regex = /import\s+\{\s*([^}]+)\s*\}\s+from\s+['"]@react-ui\/ui['"]/g;
+  const regex = /import\s+\{\s*([^}]+)\s*\}\s+from\s+['"]@xiaoye-react\/ui['"]/g;
   let m;
   while ((m = regex.exec(source)) !== null) {
     m[1].split(',').forEach((name) => imports.add(name.trim().split(/\s+as\s+/)[0]));

@@ -5,7 +5,7 @@ const path = require('node:path');
 const ROOTS = [
   path.join(__dirname, '..', 'demos'),
   path.join(__dirname, '..', '.dumi'),
-  path.resolve(__dirname, '../../packages/@react-ui'),
+  path.resolve(__dirname, '../../packages/@xiaoye-react'),
   path.resolve(__dirname, '../../packages/ui'),
   path.resolve(__dirname, '../../packages/hooks'),
 ];

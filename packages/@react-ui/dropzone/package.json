@@ -1,7 +1,7 @@
 {
   "name": "@react-ui/dropzone",
   "private": true,
-  "version": "9.4.1",
+  "version": "1.0.0",
   "description": "Dropzone component built with React UI theme and components",
   "homepage": "https://react-ui.dev/x/dropzone/",
   "license": "MIT",

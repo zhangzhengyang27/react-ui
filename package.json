@@ -1,6 +1,6 @@
 {
     "name": "react-ui",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "小叶的 react ui 组件库",
     "main": "index.js",
     "scripts": {
@@ -17,7 +17,13 @@
         "lint:style": "stylelint \"{packages,apps}/**/*.{css,ts}\"",
         "lint": "npm run lint:es && npm run lint:style",
         "spellcheck": "cspell lint --dot --gitignore --color --cache --show-suggestions \"(packages|apps)/**/*.@(html|js|cjs|mjs|ts|tsx|css|scss|md)\"",
-        "commit": "git-cz"
+        "commit": "git-cz",
+        "prepublishOnly:hooks": "cd packages/hooks && pnpm build && pnpm test",
+        "prepublishOnly:ui": "cd packages/ui && pnpm build && pnpm test",
+        "publish:hooks": "pnpm prepublishOnly:hooks && cd packages/hooks && npm publish --access public",
+        "publish:ui": "pnpm prepublishOnly:ui && cd packages/ui && npm publish --access public",
+        "publish:all": "pnpm publish:hooks && pnpm publish:ui",
+        "release:tag": "git tag -a v1.0.0 -m \"release: v1.0.0\" && git push origin v1.0.0"
     },
     "author": "xiaoye",
     "license": "MIT",

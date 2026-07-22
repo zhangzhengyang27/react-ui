@@ -1,7 +1,7 @@
 {
   "name": "@react-ui/meta",
   "private": true,
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "Meta data for react-ui.dev websites",
   "homepage": "https://react-ui.dev/",
   "license": "MIT",

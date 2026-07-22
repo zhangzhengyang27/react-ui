@@ -1,7 +1,7 @@
 {
   "name": "@react-ui/carousel",
   "private": true,
-  "version": "9.4.1",
+  "version": "1.0.0",
   "description": "Embla based carousel",
   "homepage": "https://react-ui.dev/x/carousel/",
   "license": "MIT",

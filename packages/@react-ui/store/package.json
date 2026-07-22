@@ -1,7 +1,7 @@
 {
   "name": "@react-ui/store",
   "private": true,
-  "version": "9.4.1",
+  "version": "1.0.0",
   "description": "A library to sync external React state updates",
   "homepage": "https://react-ui.dev",
   "license": "MIT",

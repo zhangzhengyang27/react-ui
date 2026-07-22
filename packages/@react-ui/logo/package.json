@@ -1,7 +1,7 @@
 {
   "name": "@react-ui/logo",
   "private": true,
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "ReactUI logo as react component",
   "homepage": "https://react-ui.dev/",
   "license": "MIT",

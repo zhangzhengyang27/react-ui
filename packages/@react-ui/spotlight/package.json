@@ -1,7 +1,7 @@
 {
   "name": "@react-ui/spotlight",
   "private": true,
-  "version": "9.4.1",
+  "version": "1.0.0",
   "description": "Command center components for react and React UI",
   "homepage": "https://react-ui.dev",
   "license": "MIT",

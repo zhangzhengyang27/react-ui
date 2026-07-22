@@ -1,7 +1,7 @@
 {
   "name": "@react-ui/modals",
   "private": true,
-  "version": "9.4.1",
+  "version": "1.0.0",
   "description": "Modals manager based on React UI components",
   "homepage": "https://react-ui.dev/x/modals/",
   "license": "MIT",

@@ -11,9 +11,9 @@
     },
     "exports": {
         ".": {
-            "types": "./src/index.ts",
-            "import": "./src/index.ts",
-            "require": "./src/index.ts"
+            "types": "./es/index.d.ts",
+            "import": "./es/index.js",
+            "require": "./es/index.js"
         }
     },
     "files": [

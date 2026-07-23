@@ -199,7 +199,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
     const rightSection = (
         <div className={classes.section}>
             {clearable && selectedValue !== null ? (
-                <CloseButton size="xs" onClick={handleClear} aria-label="清除选择" />
+                <CloseButton size="xs" onClick={handleClear} aria-label="Clear selection" />
             ) : (
                 <SelectChevronIcon className={classes.chevron} />
             )}

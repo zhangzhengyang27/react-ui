@@ -7,8 +7,8 @@ const renderWithProvider = (ui: React.ReactNode) => render(<UIProvider>{ui}</UIP
 
 describe('FileInput', () => {
     it('renders placeholder when no file is selected', () => {
-        renderWithProvider(<FileInput placeholder="请选择文件" data-testid="file-input" />)
-        expect(screen.getByText('请选择文件')).toBeInTheDocument()
+        renderWithProvider(<FileInput placeholder="Please select file" data-testid="file-input" />)
+        expect(screen.getByText('Please select file')).toBeInTheDocument()
     })
 
     it('displays selected file name', () => {
@@ -47,7 +47,7 @@ describe('FileInput', () => {
         const file = new File(['hello'], 'hello.txt', { type: 'text/plain' })
 
         renderWithProvider(<FileInput clearable defaultValue={file} onChange={handleChange} />)
-        fireEvent.click(screen.getByLabelText('清除'))
+        fireEvent.click(screen.getByLabelText('Clear'))
         expect(handleChange).toHaveBeenCalledWith(null)
     })
 })

@@ -53,7 +53,7 @@ describe('Autocomplete', () => {
         const onChange = vi.fn()
         renderAutocomplete(<Autocomplete data={['React', 'Vue']} defaultValue="Vue" clearable onChange={onChange} />)
 
-        const clearButton = screen.getByRole('button', { name: '清除输入' })
+        const clearButton = screen.getByRole('button', { name: 'Clear input' })
         fireEvent.click(clearButton)
 
         expect(onChange).toHaveBeenCalledWith('')

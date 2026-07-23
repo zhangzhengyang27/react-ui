@@ -138,7 +138,7 @@ export const Dialog = factory<DialogFactory>((_props, _ref) => {
                             <CloseButton
                                 {...getStyles('close')}
                                 onClick={() => props.onClose()}
-                                aria-label="关闭对话框"
+                                aria-label="Close dialog"
                             />
                         )}
                     </ModalBaseHeader>

@@ -280,7 +280,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     const rightSection = (
         <div className={classes.section}>
             {shouldShowClear ? (
-                <CloseButton size="xs" onClick={handleClear} aria-label="清除选择" />
+                <CloseButton size="xs" onClick={handleClear} aria-label="Clear selection" />
             ) : (
                 <MultiSelectChevronIcon className={classes.chevron} />
             )}

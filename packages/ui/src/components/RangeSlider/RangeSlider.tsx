@@ -457,7 +457,7 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
                 step={step}
                 value={currentValue[0]}
                 disabled={disabled}
-                aria-label="滑块最小值"
+                aria-label="Minimum slider value"
                 onChange={handleInputChange(0)}
                 onKeyDown={handleInputKeyDown(0)}
                 onFocus={handleInputFocus(0)}
@@ -472,7 +472,7 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
                 step={step}
                 value={currentValue[1]}
                 disabled={disabled}
-                aria-label="滑块最大值"
+                aria-label="Maximum slider value"
                 onChange={handleInputChange(1)}
                 onKeyDown={handleInputKeyDown(1)}
                 onFocus={handleInputFocus(1)}

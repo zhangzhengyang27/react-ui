@@ -1,4 +1,7 @@
-import { LegacyRef, useCallback, useRef, type MutableRefObject, type RefCallback } from 'react'
+import React, { LegacyRef, useCallback, useRef, type MutableRefObject, type RefCallback } from 'react'
+
+// React 19 introduced official ref cleanup support; returning a cleanup function in React 18 logs a dev warning.
+const SUPPORTS_REF_CLEANUP = typeof React !== 'undefined' && React.version?.startsWith('19.') === true
 
 type PossibleRef<T> = LegacyRef<T> | undefined
 
@@ -26,18 +29,18 @@ export function mergeRefs<T>(...refs: PossibleRef<T>[]): RefCallback<T> {
     return (node: T | null) => {
         refs.forEach(ref => {
             const cleanup = assignRef(ref, node)
-            if (typeof cleanup === 'function') {
+            if (SUPPORTS_REF_CLEANUP && typeof cleanup === 'function') {
                 cleanupMap.set(ref, cleanup)
             }
         })
 
-        if (cleanupMap.size > 0) {
+        if (SUPPORTS_REF_CLEANUP && cleanupMap.size > 0) {
             return () => {
                 refs.forEach(ref => {
                     const cleanup = cleanupMap.get(ref)
                     if (typeof cleanup === 'function') {
                         cleanup()
-                    } else {
+                    } else if (typeof ref === 'object' && ref !== null && 'current' in ref) {
                         assignRef(ref, null)
                     }
                 })
@@ -61,10 +64,14 @@ export function useMergedRef<T>(...refs: PossibleRef<T>[]) {
 
         refsRef.current.forEach(ref => {
             const cleanup = assignRef(ref, node)
-            if (typeof cleanup === 'function') {
+            if (SUPPORTS_REF_CLEANUP && typeof cleanup === 'function') {
                 cleanupMap.set(ref, cleanup)
             }
         })
+
+        if (!SUPPORTS_REF_CLEANUP) {
+            return
+        }
 
         return () => {
             refsRef.current.forEach(ref => {

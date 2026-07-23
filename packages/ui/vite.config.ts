@@ -25,15 +25,7 @@ export default defineConfig({
             external: [
                 'react',
                 'react-dom',
-                'react/jsx-runtime',
-                'styled-components',
-                '@xiaoye-react/hooks',
-                'embla-carousel-react',
-                'recharts',
-                'react-number-format',
-                'react-remove-scroll',
-                'clsx',
-                'type-fest'
+                'react/jsx-runtime'
             ]
         }
     }

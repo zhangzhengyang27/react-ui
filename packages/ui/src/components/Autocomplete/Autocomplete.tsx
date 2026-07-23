@@ -174,7 +174,7 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
     const rightSection = (
         <div className={classes.section}>
             {clearable && selectedValue ? (
-                <CloseButton size="xs" onClick={handleClear} aria-label="清除输入" />
+                <CloseButton size="xs" onClick={handleClear} aria-label="Clear input" />
             ) : (
                 <AutocompleteChevronIcon className={classes.chevron} />
             )}

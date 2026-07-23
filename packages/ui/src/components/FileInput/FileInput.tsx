@@ -182,7 +182,7 @@ export const FileInput = factory<FileInputFactory>((_props, ref) => {
     }
 
     const clearButton = clearable && hasValue && (
-        <CloseButton size="sm" variant="transparent" aria-label="清除" onClick={handleClear} />
+        <CloseButton size="sm" variant="transparent" aria-label="Clear" onClick={handleClear} />
     )
 
     const input = (

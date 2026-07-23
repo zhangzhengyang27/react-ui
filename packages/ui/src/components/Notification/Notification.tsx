@@ -120,7 +120,7 @@ export const Notification = factory<NotificationFactory>((_props, ref) => {
             {withCloseButton && (
                 <CloseButton
                     {...getStyles('closeButton')}
-                    aria-label="关闭通知"
+                    aria-label="Close notification"
                     {...closeButtonProps}
                     onClick={event => {
                         closeButtonProps?.onClick?.(event)

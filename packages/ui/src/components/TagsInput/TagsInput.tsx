@@ -276,7 +276,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     const shouldShowClear = clearable && selectedValues.length > 0
     const rightSection = (
         <div className={classes.section}>
-            {shouldShowClear ? <CloseButton size="xs" onClick={handleClear} aria-label="清除全部" /> : null}
+            {shouldShowClear ? <CloseButton size="xs" onClick={handleClear} aria-label="Clear all" /> : null}
         </div>
     )
 

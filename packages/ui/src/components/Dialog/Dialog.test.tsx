@@ -37,7 +37,7 @@ describe('@xiaoye-react/ui/Dialog', () => {
             </Dialog>,
             { wrapper: Wrapper }
         )
-        fireEvent.click(screen.getByRole('button', { name: /关闭对话框/i }))
+        fireEvent.click(screen.getByRole('button', { name: /Close dialog/i }))
         expect(onClose).toHaveBeenCalled()
     })
 

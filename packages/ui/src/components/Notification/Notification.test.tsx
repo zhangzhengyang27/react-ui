@@ -7,12 +7,12 @@ describe('Notification', () => {
     it('renders title and message', () => {
         render(
             <UIProvider>
-                <Notification title="成功" message="操作已完成" />
+                <Notification title="Success" message="Operation completed" />
             </UIProvider>
         )
 
-        expect(screen.getByText('成功')).toBeInTheDocument()
-        expect(screen.getByText('操作已完成')).toBeInTheDocument()
+        expect(screen.getByText('Success')).toBeInTheDocument()
+        expect(screen.getByText('Operation completed')).toBeInTheDocument()
     })
 
     it('renders icon', () => {

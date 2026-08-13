@@ -5,6 +5,7 @@ node_modules
 **/es
 
 **/tmp
+**/.dumi/tmp-production
 **/docs-dist
 
 # next.js / nextra

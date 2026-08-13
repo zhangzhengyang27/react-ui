@@ -10,7 +10,14 @@ export default defineConfig({
             outDir: 'es',
             include: ['src/**/*.ts', 'src/**/*.tsx', '../../@types/**/*.d.ts'],
             exclude: ['src/**/*.test.ts', 'src/**/*.test.tsx', 'src/test-setup.ts'],
-            rollupTypes: false
+            rollupTypes: false,
+            // Workaround: vite-plugin-dts adds an extra underscore to re-exported
+            // identifiers starting with '__' (e.g. __ColorPickerProps → ___ColorPickerProps).
+            // This hook normalizes them back before writing.
+            beforeWriteFile: (filePath, content) => ({
+                filePath,
+                content: content.replace(/___ColorPickerProps/g, '__ColorPickerProps')
+            })
         })
     ],
     build: {

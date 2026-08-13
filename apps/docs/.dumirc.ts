@@ -15,6 +15,11 @@ export default defineConfig({
     mfsu: false,
     // 用 mako（Rust 极速打包器）替代默认 webpack，dev/build 速度提升 5-10x
     mako: {},
+    // 关闭生产构建 source map：mako 默认 normalizedDevtool='source-map'，
+    // 会为超大 chunk 生成数十 MB 的 .map，使 dist 膨胀到 3G+。
+    // devtool 是 umi/dumi 顶层配置键（mako 子配置不支持该键）；
+    // bundler-mako 读取 opts.config.devtool，为 false 时关闭 JS 与 less 的 source map。
+    devtool: false,
     outputPath: 'dist',
     favicons: ['/favicon.svg'],
 

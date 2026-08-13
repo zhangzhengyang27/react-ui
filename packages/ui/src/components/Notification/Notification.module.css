@@ -5,13 +5,18 @@
     display: flex;
     align-items: flex-start;
     gap: var(--ui-spacing-sm);
-    padding: var(--ui-spacing-sm);
+    padding: var(--ui-spacing-md);
     border-radius: var(--notification-radius);
     background-color: var(--ui-color-body);
     border: 1px solid var(--ui-color-default-border);
-    box-shadow: var(--ui-shadow-sm);
+    box-shadow: var(--ui-shadow-md);
     position: relative;
     overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.root:hover {
+    box-shadow: var(--ui-shadow-lg);
 }
 
 .root::before {
@@ -22,6 +27,7 @@
     bottom: 0;
     width: 4px;
     background-color: var(--notification-color);
+    border-radius: 4px 0 0 4px;
 }
 
 .icon {
@@ -57,4 +63,10 @@
 
 .closeButton {
     flex-shrink: 0;
+    opacity: 0.6;
+    transition: opacity 0.15s ease;
+}
+
+.closeButton:hover {
+    opacity: 1;
 }

@@ -1,4 +1,5 @@
 import { Box, ElementProps, factory, useProps, type BoxProps, type Factory } from '../../core'
+import { useComboboxContext } from './Combobox.context'
 import classes from './Combobox.module.css'
 
 export interface ComboboxOptionsProps extends BoxProps, ElementProps<'div'> {
@@ -14,10 +15,12 @@ export type ComboboxOptionsFactory = Factory<{
 
 export const ComboboxOptions = factory<ComboboxOptionsFactory>((_props, ref) => {
     const props = useProps('ComboboxOptions', null, _props)
-    const { children, ...others } = props
+    const { children, id, ...others } = props
+    // 挂上 store 的 listId，useCombobox store 的 DOM 查询（#listId [data-combobox-option]）才能命中
+    const ctx = useComboboxContext()
 
     return (
-        <Box ref={ref} role="presentation" className={classes.options} {...others}>
+        <Box ref={ref} role="presentation" id={ctx.listId ?? id} className={classes.options} {...others}>
             {children}
         </Box>
     )

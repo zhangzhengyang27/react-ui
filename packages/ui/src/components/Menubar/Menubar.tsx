@@ -215,6 +215,7 @@ export const Menubar = factory<MenubarFactory>((_props, ref) => {
         [getEnabledIndexes, loop]
     )
 
+    // 仅在相关状态变化时同步激活项，避免每次渲染都做 DOM 查询
     useIsomorphicEffect(() => {
         const enabled = getEnabledIndexes()
         if (enabled.length === 0) {
@@ -231,7 +232,7 @@ export const Menubar = factory<MenubarFactory>((_props, ref) => {
         if (!enabled.includes(activeIndex)) {
             setActiveIndex(enabled[0])
         }
-    })
+    }, [activeIndex, _openIndex])
 
     const contextValue: MenubarContextValue = {
         getStyles,

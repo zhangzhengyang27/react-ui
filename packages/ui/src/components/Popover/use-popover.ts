@@ -5,6 +5,7 @@ import {
     flip as flipMiddleware,
     shift as shiftMiddleware,
     arrow as arrowMiddleware,
+    autoUpdate,
     type Placement
 } from '@floating-ui/react'
 import { useId, useUncontrolled } from '@xiaoye-react/hooks'
@@ -65,11 +66,6 @@ export function usePopover(options: UsePopoverOptions): UsePopoverReturn {
 
     const placement = toPlacement(options.position)
 
-    // 用 ref 持有最新 middlewares，避免内联对象（middlewares={{ flip: true }}）每次渲染
-    // 进入 useFloating 的 deps 导致浮层重建/重算；flip/shift 布尔驱动 middleware 开关。
-    const middlewaresRef = useRef(options.middlewares)
-    middlewaresRef.current = options.middlewares
-
     const flipEnabled = options.middlewares?.flip ?? false
     const shiftEnabled = options.middlewares?.shift ?? false
 
@@ -82,7 +78,9 @@ export function usePopover(options: UsePopoverOptions): UsePopoverReturn {
         ...(options.arrowRef ? [arrowMiddleware({ element: options.arrowRef, padding: options.arrowOffset })] : [])
     ]
 
-    const { x, y, refs, middlewareData, update } = useFloating({
+    // computedPlacement 是 flip/shift 生效后的实际位置（可能与请求的 placement 不同），
+    // 对外暴露与 onPositionChange 回调必须用它，否则翻转后箭头方向/回调全部错误
+    const { x, y, refs, middlewareData, update, placement: computedPlacement } = useFloating({
         placement,
         middleware: middlewares
     })
@@ -116,20 +114,29 @@ export function usePopover(options: UsePopoverOptions): UsePopoverReturn {
         }
     }, [_opened, update])
 
-    // onPositionChange：比对 placement 变化后调用，避免渲染阶段调用用户回调
-    const previousPlacementRef = useRef(placement)
+    // 打开期间挂 autoUpdate：滚动 / 缩放 / 目标尺寸变化时自动重定位。
+    // floating-ui 0.27 的 useFloating 不会自动接管这些更新，必须显式挂载；
+    // autoUpdate 自身返回清理函数，关闭时解绑。
     useEffect(() => {
-        if (previousPlacementRef.current !== placement) {
-            previousPlacementRef.current = placement
-            options.onPositionChange?.(placement as FloatingPosition)
+        if (_opened && refs.reference.current && refs.floating.current) {
+            return autoUpdate(refs.reference.current, refs.floating.current, update)
         }
-    }, [placement, options.onPositionChange])
+    }, [_opened, update])
+
+    // onPositionChange：比对实际 placement（含 flip 后）变化后调用，避免渲染阶段调用用户回调
+    const previousPlacementRef = useRef(computedPlacement)
+    useEffect(() => {
+        if (previousPlacementRef.current !== computedPlacement) {
+            previousPlacementRef.current = computedPlacement
+            options.onPositionChange?.(computedPlacement as FloatingPosition)
+        }
+    }, [computedPlacement, options.onPositionChange])
 
     return {
         floating: {
             x,
             y,
-            placement: placement as FloatingPosition,
+            placement: computedPlacement as FloatingPosition,
             refs: {
                 setReference: node => refs.setReference(node),
                 setFloating: node => refs.setFloating(node)

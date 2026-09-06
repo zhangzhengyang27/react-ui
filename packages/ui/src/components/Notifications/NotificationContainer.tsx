@@ -52,7 +52,14 @@ export function NotificationContainer({
         autoCloseTimeout.current = window.setTimeout(handleHide, autoCloseDuration)
     }
 
+    // onOpen 通常是埋点/上报类副作用：用 ref 守卫保证只触发一次
+    //（React 18/19 开发环境 StrictMode 会双调用 effect）
+    const onOpenCalledRef = useRef(false)
     useEffect(() => {
+        if (onOpenCalledRef.current) {
+            return
+        }
+        onOpenCalledRef.current = true
         onOpen?.(data)
     }, [])
 

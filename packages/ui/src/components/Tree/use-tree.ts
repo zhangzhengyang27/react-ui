@@ -17,7 +17,7 @@ function getInitialTreeExpandedState(
     acc: TreeExpandedState = {}
 ) {
     data.forEach(node => {
-        acc[node.value] = node.value in initialState ? initialState[node.value] : node.value === value
+        acc[node.value] = node.value in initialState ? initialState[node.value] : Array.isArray(value) ? value.includes(node.value) : node.value === value
 
         if (Array.isArray(node.children)) {
             getInitialTreeExpandedState(initialState, node.children, value, acc)
@@ -352,7 +352,8 @@ export function useTree({
             anchorNode === value && setAnchorNode(null)
             setSelectedState(_selectedState.filter(item => item !== value))
         },
-        [_selectedState]
+        // anchorNode 必须进 deps：否则同批次先 toggleSelected 再 deselect 时读到旧值，anchor 不被清除
+        [_selectedState, anchorNode]
     )
 
     const clearSelected = useCallback(() => {

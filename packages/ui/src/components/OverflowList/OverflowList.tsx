@@ -324,7 +324,11 @@ export const OverflowList = factory<OverflowListFactory>((_props, _ref) => {
                 const dataIndex = indexOffset + index
                 const itemComponent = renderItem(item, dataIndex)
 
-                return <Fragment key={dataIndex}>{itemComponent}</Fragment>
+                // collapseFrom="start" + 动态 data 时，索引 key 会让 React 复用错误的 item 实例，
+                // 提供getItemKey 时优先使用业务 key
+                const itemKey = getItemKey?.(item, dataIndex) ?? dataIndex
+
+                return <Fragment key={itemKey}>{itemComponent}</Fragment>
             })}
 
             {!isCollapseStart && clonedOverflowElement}

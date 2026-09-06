@@ -1,4 +1,5 @@
 import { cloneElement, useEffect, useRef } from 'react'
+import { useMergedRef } from '@xiaoye-react/hooks'
 import {
     Box,
     createVarsResolver,
@@ -6,6 +7,7 @@ import {
     FloatingArrow,
     getDefaultZIndex,
     getFloatingPosition,
+    useDirection,
     getRadius,
     getSingleElementChild,
     useProps,
@@ -186,8 +188,10 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
 
     const arrowRef = useRef<HTMLDivElement>(null)
 
+    const { dir } = useDirection()
+
     const tooltip = useTooltip({
-        position: getFloatingPosition('ltr', position!),
+        position: getFloatingPosition(dir, position!),
         closeDelay: resolvedCloseDelay,
         openDelay: resolvedOpenDelay,
         onPositionChange,
@@ -240,6 +244,11 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
             '[@xiaoye-react/ui] Tooltip component children should be an element or a component that accepts ref. Use target prop to specify target element without children.'
         )
     }
+
+    // React 19 中 child 的 ref 是普通 prop：合并而非覆盖，否则子元素自带 ref 时
+    // floating-ui 的 reference setter 永远不被调用，tooltip 定位失效
+    const childProps = (child?.props ?? {}) as any
+    const mergedRef = useMergedRef(ref as React.Ref<any>, childProps.ref)
 
     const tooltipStyles = getStyles('tooltip')
 
@@ -326,9 +335,10 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
             {cloneElement(
                 child!,
                 tooltip.getReferenceProps({
-                    ref,
-                    ...child!.props,
-                    className: [className, child!.props.className].filter(Boolean).join(' ')
+                    ...childProps,
+                    // ref 必须在展开 childProps 之后：避免被 childProps.ref 覆盖
+                    ref: mergedRef,
+                    className: [className, childProps.className].filter(Boolean).join(' ')
                 })
             )}
         </>

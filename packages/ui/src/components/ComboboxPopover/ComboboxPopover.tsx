@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import cx from 'clsx'
 import { useUncontrolled } from '@xiaoye-react/hooks'
 import { Factory, genericFactory, rem, StylesApiProps, useProps } from '../../core'
@@ -396,6 +396,15 @@ export const ComboboxPopover = genericFactory<ComboboxPopoverFactory>((_props) =
 
     // '' 是合法选项值，不能用 falsy 判断
     const selectedValues = Array.isArray(_value) ? _value : _value != null ? [_value] : []
+
+    // 下拉关闭时清空搜索词（含点外部关闭），避免重开时仍停留在上次的过滤结果
+    const prevOpenedRef = useRef(_opened)
+    useEffect(() => {
+        if (prevOpenedRef.current && !_opened && searchable) {
+            setSearchValue('')
+        }
+        prevOpenedRef.current = _opened
+    }, [_opened, searchable, setSearchValue])
 
     const handleOptionSubmit = (optionValue: string, option: ComboboxOptionData) => {
         onOptionSubmit?.(optionValue as any)

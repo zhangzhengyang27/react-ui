@@ -127,7 +127,9 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((_props, ref) => 
         )
     }
 
-    const targetRef = useMergedRef(boundaryRef, (child as any).ref, ref)
+    // React 19 弃用 element.ref 访问（开发环境会告警），ref 一律从 child.props.ref 读取
+    const childPropsRef = ((child.props as any)?.ref ?? null) as React.Ref<any> | null
+    const targetRef = useMergedRef(boundaryRef, childPropsRef, ref)
 
     const handleMouseMove = (event: React.MouseEvent<unknown>) => {
         (child.props as any)?.onMouseMove?.(event)

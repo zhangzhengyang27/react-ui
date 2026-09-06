@@ -7,8 +7,6 @@ export type { DrawerProps, DrawerFactory }
 export { DrawerRoot } from './DrawerRoot'
 export type { DrawerRootProps, DrawerRootFactory, DrawerRootCssVariables } from './DrawerRoot'
 
-export { DrawerStack, DrawerStackContext } from './DrawerStack'
-export type { DrawerStackProps } from './DrawerStack'
 
 export type { DrawerBodyProps } from './DrawerBody'
 export type { DrawerCloseButtonProps } from './DrawerCloseButton'

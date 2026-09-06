@@ -5,6 +5,7 @@ import {
     Factory,
     getDefaultZIndex,
     getFloatingPosition,
+    useDirection,
     getRadius,
     getShadow,
     UIRadius,
@@ -194,9 +195,11 @@ export function Popover(_props: PopoverProps) {
         setTargetId(uid)
     }, [uid])
 
+    const { dir } = useDirection()
+
     const popover = usePopover({
         middlewares,
-        position: getFloatingPosition('ltr', position!),
+        position: getFloatingPosition(dir, position!),
         offset: offset! + (withArrow ? arrowSize! / 2 : 0),
         arrowRef,
         arrowOffset,

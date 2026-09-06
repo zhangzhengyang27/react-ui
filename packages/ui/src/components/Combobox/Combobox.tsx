@@ -1,9 +1,10 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import { autoUpdate, flip, offset, shift, useFloating } from '@floating-ui/react'
 import { useClickOutside, useId, useUncontrolled } from '@xiaoye-react/hooks'
 import { Box, Factory, useProps } from '../../core'
 import { FloatingPosition, FloatingStrategy } from '../../core'
 import { ComboboxContextProvider, ComboboxOptionData, ComboboxContextValue } from './Combobox.context'
+import type { ComboboxStore } from './use-combobox/use-combobox'
 import { ComboboxDropdown } from './ComboboxDropdown'
 import { ComboboxDropdownTarget } from './ComboboxDropdownTarget'
 import { ComboboxEmpty } from './ComboboxEmpty'
@@ -74,6 +75,9 @@ export interface ComboboxProps {
 
     /** Determines whether dropdown should be closed on outside clicks */
     closeOnClickOutside?: boolean
+
+    /** useCombobox 返回的 store：提供后 store 的 DOM 查询（键盘导航/选项选择）才能找到选项列表 */
+    store?: ComboboxStore
 }
 
 export type ComboboxFactory = Factory<{
@@ -105,6 +109,7 @@ export function Combobox(_props: ComboboxProps) {
         selectedValues,
         closeOnEscape,
         closeOnClickOutside,
+        store,
         ...others
     } = props
 
@@ -132,18 +137,28 @@ export function Combobox(_props: ComboboxProps) {
 
     const values = useMemo(() => selectedValues ?? [], [selectedValues])
 
+    // store 对象每次渲染都是新引用，取其 listId 原始值作为 memo 依赖
+    const storeListId = store?.listId ?? null
+
     const floating = useFloating({
         open: _opened,
         strategy: floatingStrategy,
         placement: position,
-        middleware: [offset(offsetValue), flip({ padding: 8 }), shift({ padding: 8 })],
-        whileElementsMounted: autoUpdate
+        middleware: [offset(offsetValue), flip({ padding: 8 }), shift({ padding: 8 })]
     })
+
+    // floating-ui 0.27 没有 whileElementsMounted 选项，autoUpdate 需手动挂载：
+    // 打开期间滚动/缩放/目标尺寸变化时自动重定位，关闭时解绑
+    useEffect(() => {
+        if (_opened && floating.refs.reference.current && floating.refs.floating.current) {
+            return autoUpdate(floating.refs.reference.current, floating.refs.floating.current, floating.update)
+        }
+    }, [_opened, floating.update])
 
     const reference = useCallback(
         (node: HTMLElement | null) => {
             setTargetNode(node)
-            // node 为 null（卸载）时同样转发，确保 floating-ui 能解绑 autoUpdate 等清理逻辑
+            // node 为 null（卸载）时同样转发，确保 floating-ui 引用及时释放
             floating.refs.setReference(node)
         },
         [floating.refs.setReference]
@@ -152,7 +167,7 @@ export function Combobox(_props: ComboboxProps) {
     const dropdownRef = useCallback(
         (node: HTMLElement | null) => {
             setDropdownNode(node)
-            // node 为 null（卸载）时同样转发，确保 floating-ui 能解绑 autoUpdate 等清理逻辑
+            // node 为 null（卸载）时同样转发，确保 floating-ui 引用及时释放
             floating.refs.setFloating(node)
         },
         [floating.refs.setFloating]
@@ -185,6 +200,21 @@ export function Combobox(_props: ComboboxProps) {
     const unregisterOption = useCallback((key: string) => {
         setOptions(current => current.filter(item => item.key !== key))
     }, [])
+
+    // 把注册表顺序对齐到 DOM 顺序：搜索过滤后清空时，重新挂载的选项会追加到注册表末尾，
+    // 导致键盘导航顺序与视觉顺序不一致。挂载全部就绪后按 compareDocumentPosition 排序。
+    useLayoutEffect(() => {
+        if (options.length < 2 || !options.every(option => option.node?.isConnected)) {
+            return
+        }
+        const sorted = [...options].sort((a, b) => {
+            if (a.node === b.node) return 0
+            return a.node!.compareDocumentPosition(b.node!) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1
+        })
+        if (sorted.some((option, i) => option.key !== options[i].key)) {
+            setOptions(sorted)
+        }
+    })
 
     const onOptionSelect = useCallback(
         (value: string) => {
@@ -270,6 +300,7 @@ export function Combobox(_props: ComboboxProps) {
             dropdownRef,
             targetId,
             dropdownId,
+            listId: store?.listId ?? null,
             activeIndex,
             setActiveIndex,
             selectedValues: values,
@@ -292,6 +323,7 @@ export function Combobox(_props: ComboboxProps) {
             dropdownRef,
             targetId,
             dropdownId,
+            storeListId,
             activeIndex,
             setActiveIndex,
             values,

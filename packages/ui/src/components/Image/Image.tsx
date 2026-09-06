@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import {
     Box,
     BoxProps,
@@ -97,6 +97,27 @@ export const Image = factory<ImageFactory>((_props, ref) => {
 
     const [error, setError] = useState(false)
 
+    // src 变化时重置错误态：否则失败一次后 img 被卸载，换新地址也永远显示 fallback
+    const prevSrcRef = useRef(src)
+    if (prevSrcRef.current !== src) {
+        prevSrcRef.current = src
+        if (error) {
+            setError(false)
+        }
+    }
+
+    // img 专属属性（loading/srcSet/crossOrigin 等）应落在 <img> 上而不是包装 Box 上
+    const {
+        loading,
+        srcSet,
+        sizes,
+        crossOrigin,
+        referrerPolicy,
+        decoding,
+        fetchPriority,
+        ...boxProps
+    } = others as Record<string, any>
+
     const getStyles = useStyles<ImageFactory>({
         name: 'Image',
         props,
@@ -120,7 +141,7 @@ export const Image = factory<ImageFactory>((_props, ref) => {
     const showFallback = isError && (fallbackSrc || fallback)
 
     return (
-        <Box {...getStyles('root')} mod={[{ fit }, mod]} {...others}>
+        <Box {...getStyles('root')} mod={[{ fit }, mod]} {...boxProps}>
             {showFallback ? (
                 fallbackSrc ? (
                     <img {...getStyles('image')} src={fallbackSrc} alt={alt} onError={() => setError(true)} />
@@ -128,7 +149,21 @@ export const Image = factory<ImageFactory>((_props, ref) => {
                     <div {...getStyles('fallback')}>{fallback}</div>
                 )
             ) : (
-                <img ref={ref} {...getStyles('image')} src={src} alt={alt} onLoad={onLoad} onError={handleError} />
+                <img
+                    ref={ref}
+                    {...getStyles('image')}
+                    src={src}
+                    alt={alt}
+                    onLoad={onLoad}
+                    onError={handleError}
+                    loading={loading}
+                    srcSet={srcSet}
+                    sizes={sizes}
+                    crossOrigin={crossOrigin}
+                    referrerPolicy={referrerPolicy}
+                    decoding={decoding}
+                    fetchPriority={fetchPriority}
+                />
             )}
         </Box>
     )

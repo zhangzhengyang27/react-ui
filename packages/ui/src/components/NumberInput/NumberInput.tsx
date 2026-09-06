@@ -290,6 +290,20 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
 
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
         setFocused(false)
+        if (isControlled) {
+            const parsed = parseValue(rawValue)
+            if (parsed !== undefined) {
+                const clamped = clamp(parsed, min, max)
+                if (clamped !== parsed) {
+                    onChange?.(clamped)
+                }
+            }
+            // 受控模式显示值以 prop 为准回流：父组件在 onChange 中拒绝变更时，
+            // 失焦后显示值与真实值不再脱节（valueProp 后续变化由上方同步 effect 兜底）
+            setLocalText(parseRawValue(valueProp))
+            onBlur?.(event)
+            return
+        }
         const parsed = parseValue(rawValue)
         if (parsed !== undefined) {
             const clamped = clamp(parsed, min, max)

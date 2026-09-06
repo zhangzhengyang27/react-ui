@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import {
     createVarsResolver,
     factory,
@@ -21,7 +22,6 @@ import { DrawerHeader, type DrawerHeaderProps } from './DrawerHeader'
 import { DrawerOverlay, type DrawerOverlayProps } from './DrawerOverlay'
 import { DrawerProvider } from './Drawer.context'
 import { DrawerRoot, type DrawerRootProps, type DrawerRootFactory } from './DrawerRoot'
-import { DrawerStack, type DrawerStackProps } from './DrawerStack'
 import { DrawerTitle, type DrawerTitleProps } from './DrawerTitle'
 import classes from './Drawer.module.css'
 
@@ -90,7 +90,6 @@ export type DrawerFactory = Factory<{
         Overlay: typeof DrawerOverlay
         Title: typeof DrawerTitle
         Root: typeof DrawerRoot
-        Stack: typeof DrawerStack
     }
 }>
 
@@ -185,6 +184,10 @@ export const Drawer = factory<DrawerFactory>((_props, _ref) => {
         varsResolver
     })
 
+    // 内联 transitionProps 对象每次渲染都是新引用，会击穿 ModalBase 内部的 memoTransitionProps，
+    // 导致整个弹层子树跟着重渲染，这里 memo 化
+    const drawerTransitionProps = useMemo(() => ({ transition: transitions[position!], duration: 200 }), [position])
+
     const hasHeader = !!title || withCloseButton
 
     return (
@@ -194,7 +197,7 @@ export const Drawer = factory<DrawerFactory>((_props, _ref) => {
                 radius={radius}
                 opened={opened}
                 zIndex={zIndex}
-                transitionProps={{ transition: transitions[position], duration: 200 }}
+                transitionProps={drawerTransitionProps}
                 {...others}
                 {...getStyles('root')}
                 data-position={position}
@@ -224,7 +227,6 @@ Drawer.Header = DrawerHeader
 Drawer.Overlay = DrawerOverlay
 Drawer.Title = DrawerTitle
 Drawer.Root = DrawerRoot
-Drawer.Stack = DrawerStack
 
 export namespace Drawer {
     export type Props = DrawerProps
@@ -238,7 +240,6 @@ export namespace Drawer {
     export type OverlayProps = DrawerOverlayProps
     export type TitleProps = DrawerTitleProps
     export type RootProps = DrawerRootProps
-    export type StackProps = DrawerStackProps
 
     export namespace Root {
         export type Props = DrawerRootProps

@@ -20,13 +20,13 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
 
     // hooks 必须在条件 throw 之前调用，否则 children 变化时 hooks 数量不一致，违反 hooks 规则
     const ctx = useComboboxContext()
-    const targetRef = useMergedRef(ctx.targetRef, ref)
+    const childProps = (child?.props ?? {}) as any
+    // 合并 child 自带 ref 而不是覆盖，避免丢失外部传入的 ref
+    const targetRef = useMergedRef(ctx.targetRef, ref, childProps.ref)
 
     if (!child) {
         throw new Error('[@xiaoye-react/ui] Combobox.Target children should be an element or a component that accepts ref')
     }
-
-    const childProps = child.props as any
 
     const isTextInput = childProps.component === 'input' || child.type === 'input' || child.type === 'textarea'
     const ignoreClick = isTextInput && childProps.readOnly !== true

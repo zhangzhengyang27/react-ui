@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useId } from '@xiaoye-react/hooks'
+import { useFocusReturn, useId } from '@xiaoye-react/hooks'
 import type { TransitionOverride } from '../Transition'
 import { isTopmostModal, popModal, pushModal } from './modal-stack'
 
@@ -13,12 +13,15 @@ interface UseModalInput {
     returnFocus: boolean | undefined
 }
 
-export function useModal({ id, transitionProps, opened, closeOnEscape, onClose }: UseModalInput) {
+export function useModal({ id, transitionProps, opened, closeOnEscape, onClose, returnFocus }: UseModalInput) {
     const _id = useId(id)
     const [titleMounted, setTitleMounted] = useState(false)
     const [bodyMounted, setBodyMounted] = useState(false)
 
     const transitionDuration = typeof transitionProps?.duration === 'number' ? transitionProps.duration : 200
+
+    // 关闭后把焦点还给触发元素：此前 returnFocus prop 只是透传、从未生效
+    useFocusReturn({ opened, shouldReturnFocus: !!returnFocus })
 
     // opened 期间登记到模态栈,供嵌套模态框按打开顺序仲裁 Escape 行为
     useEffect(() => {

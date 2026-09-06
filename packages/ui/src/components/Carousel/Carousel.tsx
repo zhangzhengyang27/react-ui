@@ -246,9 +246,16 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
         if (embla) {
             handleSelect()
             setSlidesCount(embla.scrollSnapList().length)
+            // slides 异步加载/增删时 embla 会 reInit 并派发 slidesChanged，
+            // 不监听它的话 slidesCount 冻结为初始值，指示器数量错乱
+            const handleSlidesChanged = () => {
+                setSlidesCount(embla.scrollSnapList().length)
+            }
             embla.on('select', handleSelect)
+            embla.on('slidesChanged', handleSlidesChanged)
             return () => {
                 embla.off('select', handleSelect)
+                embla.off('slidesChanged', handleSlidesChanged)
             }
         }
     }, [embla, handleSelect])

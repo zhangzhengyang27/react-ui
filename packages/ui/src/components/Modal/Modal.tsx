@@ -20,7 +20,6 @@ import { ModalHeader, type ModalHeaderProps } from './ModalHeader'
 import { ModalOverlay, type ModalOverlayProps } from './ModalOverlay'
 import { ModalProvider } from './Modal.context'
 import { ModalRoot, type ModalRootProps, type ModalRootFactory } from './ModalRoot'
-import { ModalStack, type ModalStackProps } from './ModalStack'
 import { ModalTitle, type ModalTitleProps } from './ModalTitle'
 import classes from './Modal.module.css'
 
@@ -83,7 +82,6 @@ export type ModalFactory = Factory<{
         Header: typeof ModalHeader
         Overlay: typeof ModalOverlay
         Title: typeof ModalTitle
-        Stack: typeof ModalStack
     }
 }>
 
@@ -189,7 +187,6 @@ Modal.Content = ModalContent
 Modal.Header = ModalHeader
 Modal.Overlay = ModalOverlay
 Modal.Title = ModalTitle
-Modal.Stack = ModalStack
 
 export namespace Modal {
     export type Props = ModalProps
@@ -206,9 +203,5 @@ export namespace Modal {
     export namespace Root {
         export type Props = ModalRootProps
         export type Factory = ModalRootFactory
-    }
-
-    export namespace Stack {
-        export type Props = ModalStackProps
     }
 }

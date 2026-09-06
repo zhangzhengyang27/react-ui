@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import { useReactId } from '@xiaoye-react/hooks'
+import { useEffect, useRef } from 'react'
+import { useMergedRef, useReactId } from '@xiaoye-react/hooks'
 import { Box, ElementProps, factory, useProps, type BoxProps, type Factory } from '../../core'
 import { useComboboxContext } from './Combobox.context'
 import classes from './Combobox.module.css'
@@ -31,6 +31,9 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
     // 每个实例稳定的唯一 id：作为注册键区分重复 value 的选项，
     // 并在注册完成前（index 为 -1）充当元素 id 兜底，避免多选项短暂共享 ${dropdownId}--1
     const instanceId = useReactId()
+    // 持有自身 DOM 节点，注册时上报给 Combobox 用于按视觉顺序排序注册表
+    const nodeRef = useRef<HTMLDivElement | null>(null)
+    const mergedRef = useMergedRef(ref, nodeRef)
     const index = ctx.options.findIndex(item => item.key === instanceId)
     // index 为 -1（尚未注册）时不能与 activeIndex(-1) 相等即视为激活
     const active = index >= 0 && index === ctx.activeIndex
@@ -39,7 +42,7 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
     const label = typeof children === 'string' ? children : value
 
     useEffect(() => {
-        ctx.registerOption(instanceId, { value, label, disabled })
+        ctx.registerOption(instanceId, { value, label, disabled, node: nodeRef.current })
         return () => {
             ctx.unregisterOption(instanceId)
         }
@@ -47,7 +50,7 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
 
     return (
         <Box
-            ref={ref}
+            ref={mergedRef}
             role="option"
             id={index >= 0 ? `${ctx.dropdownId}-${index}` : instanceId}
             aria-selected={selected}

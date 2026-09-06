@@ -4,6 +4,7 @@ import {
     Factory,
     getDefaultZIndex,
     getFloatingPosition,
+    useDirection,
     getRadius,
     getShadow,
     UIRadius,
@@ -167,8 +168,10 @@ export function HoverCard(_props: HoverCardProps) {
 
     const arrowRef = useRef<HTMLDivElement | null>(null)
 
+    const { dir } = useDirection()
+
     const hovercard = useHoverCard({
-        position: getFloatingPosition('ltr', position!),
+        position: getFloatingPosition(dir, position!),
         offset: offset! + (withArrow ? arrowSize! / 2 : 0),
         openDelay,
         closeDelay,

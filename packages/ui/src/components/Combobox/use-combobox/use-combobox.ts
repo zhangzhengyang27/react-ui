@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useId, useRef } from 'react'
 import { useUncontrolled } from '@xiaoye-react/hooks'
 import { findElementBySelector, findElementsBySelector, getRootElement } from '../../../core/utils'
 import { getFirstIndex, getNextIndex, getPreviousIndex } from './get-index/get-index'
@@ -119,7 +119,10 @@ export function useCombobox({
         onChange: onOpenedChange
     })
 
-    const listId = useRef<string | null>(null)
+    // useId 生成默认 listId：null 会让 store 内所有 `#null ...` 选择器查不到元素，
+    // selectOption/键盘导航全部静默失效；setListId 仍可用于外部覆盖
+    const defaultListId = useId()
+    const listId = useRef<string | null>(defaultListId)
     const selectedOptionIndex = useRef<number>(-1)
     const searchRef = useRef<HTMLInputElement | null>(null)
     const targetRef = useRef<HTMLElement | null>(null)

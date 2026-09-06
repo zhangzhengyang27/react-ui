@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import {
     createVarsResolver,
     factory,
@@ -129,12 +130,18 @@ export const DrawerRoot = factory<DrawerRootFactory>((_props, ref) => {
         varsResolver
     })
 
+    // memo 化避免内联对象击穿 ModalBase 的 transitionProps memo
+    const mergedTransitionProps = useMemo(
+        () => ({ transition: transitions[position!], ...transitionProps }),
+        [position, transitionProps]
+    )
+
     return (
         <DrawerProvider value={{ scrollAreaComponent, getStyles: getStyles as any, radius }}>
             <ModalBase
                 ref={ref}
                 {...getStyles('root')}
-                transitionProps={{ transition: transitions[position!], ...transitionProps }}
+                transitionProps={mergedTransitionProps}
                 data-offset-scrollbars={scrollAreaComponent === ScrollArea.Autosize || undefined}
                 {...others}
             />

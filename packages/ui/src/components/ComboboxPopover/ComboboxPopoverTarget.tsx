@@ -27,15 +27,15 @@ export const ComboboxPopoverTarget = factory<ComboboxPopoverTargetFactory>((prop
 
     // hooks 必须在条件 throw 之前调用，否则 children 变化时 hooks 数量不一致，违反 hooks 规则
     const ctx = useComboboxContext()
-    const targetRef = useMergedRef(ctx.targetRef, ref)
+    const childProps = (child?.props ?? {}) as any
+    // 合并 child 自带 ref 而不是覆盖（cloneElement 的 ref 会直接替换子元素原有 ref）
+    const targetRef = useMergedRef(ctx.targetRef, ref, childProps.ref)
 
     if (!child) {
         throw new Error(
             '[@xiaoye-react/ui] ComboboxPopover.Target component children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported'
         )
     }
-
-    const childProps = child.props as any
 
     return cloneElement(child, {
         [refProp!]: targetRef,
@@ -53,8 +53,11 @@ export const ComboboxPopoverTarget = factory<ComboboxPopoverTargetFactory>((prop
             }
             childProps.onClick?.(event)
         },
-        onKeyDown: (event: React.KeyboardEvent<HTMLElement>) => {
+        // 与 ComboboxTarget 一致：ctx 键盘处理放捕获阶段，防止嵌套输入框 Enter 双触发
+        onKeyDownCapture: (event: React.KeyboardEvent<HTMLElement>) => {
             ctx.onTargetKeyDown(event)
+        },
+        onKeyDown: (event: React.KeyboardEvent<HTMLElement>) => {
             childProps.onKeyDown?.(event)
         }
     })

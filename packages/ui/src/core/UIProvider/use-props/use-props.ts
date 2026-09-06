@@ -21,8 +21,16 @@ export function useProps<T extends Record<string, any>, U extends Partial<T> | n
               [Key in Extract<keyof T, keyof U>]-?: U[Key] | NonNullable<T[Key]>
           }) {
     const theme = useUITheme()
-    const contextPropsPayload = theme.components[component]?.defaultProps
-    const contextProps = typeof contextPropsPayload === 'function' ? contextPropsPayload(theme) : contextPropsPayload
+    // component 支持传单个名称或名称数组（复合组件依次读取各层主题默认属性）
+    const names = Array.isArray(component) ? component : [component]
+    const contextProps = names.reduce<Record<string, unknown>>((acc, name) => {
+        const payload = theme.components[name]?.defaultProps
+        const resolved = typeof payload === 'function' ? payload(theme) : payload
+        return { ...acc, ...resolved }
+    }, {})
 
-    return { ...defaultProps, ...contextProps, ...filterProps(props) }
+    return { ...defaultProps, ...contextProps, ...filterProps(props) } as T &
+        (U extends null | undefined
+            ? {}
+            : { [Key in Extract<keyof T, keyof U>]-?: U[Key] | NonNullable<T[Key]> })
 }

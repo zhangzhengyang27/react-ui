@@ -109,7 +109,7 @@ export const Notification = factory<NotificationFactory>((_props, ref) => {
     })
 
     return (
-        <Box ref={ref} {...getStyles('root')} mod={[{ withIcon: !!icon || loading }, mod]} {...others}>
+        <Box ref={ref} role="alert" {...getStyles('root')} mod={[{ withIcon: !!icon || loading }, mod]} {...others}>
             {(icon || loading) && <div {...getStyles('icon')}>{loading ? <Loader size={28} /> : icon}</div>}
 
             <div {...getStyles('body')}>

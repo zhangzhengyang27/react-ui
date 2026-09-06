@@ -1,57 +1,65 @@
 {
-  "name": "@xiaoye-react/dropzone",
-  "private": true,
-  "version": "1.0.0",
-  "description": "Dropzone component built with React UI theme and components",
-  "homepage": "https://react-ui.dev/x/dropzone/",
-  "license": "MIT",
-  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
-  "keywords": [
-    "components",
-    "dragndrop",
-    "dropzone",
-    "frontend",
-    "library",
-    "next",
-    "nextjs",
-    "react",
-    "ui",
-    "ui-kit",
-    "upload"
-  ],
-  "sideEffects": [
-    "*.css"
-  ],
-  "main": "./cjs/index.cjs",
-  "module": "./esm/index.mjs",
-  "types": "./lib/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./src/index.ts",
-      "import": "./src/index.ts",
-      "require": "./src/index.ts"
+    "name": "@xiaoye-react/dropzone",
+    "private": true,
+    "version": "1.0.0",
+    "description": "Dropzone component built with React UI theme and components",
+    "homepage": "https://react-ui.dev/x/dropzone/",
+    "license": "MIT",
+    "author": "Vitaly Rtishchev <rtivital@gmail.com>",
+    "keywords": [
+        "components",
+        "dragndrop",
+        "dropzone",
+        "frontend",
+        "library",
+        "next",
+        "nextjs",
+        "react",
+        "ui",
+        "ui-kit",
+        "upload"
+    ],
+    "sideEffects": [
+        "*.css"
+    ],
+    "main": "./cjs/index.cjs",
+    "module": "./esm/index.mjs",
+    "types": "./lib/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./src/index.ts",
+            "import": "./src/index.ts",
+            "require": "./src/index.ts"
+        },
+        "./styles.css": "./styles.css",
+        "./styles.layer.css": "./styles.layer.css"
     },
-    "./styles.css": "./styles.css",
-    "./styles.layer.css": "./styles.layer.css"
-  },
-  "repository": {
-    "url": "https://github.com/react-ui/react-ui.git",
-    "type": "git",
-    "directory": "packages/@xiaoye-react/dropzone"
-  },
-  "peerDependencies": {
-    "@xiaoye-react/ui": "workspace:*",
-    "@xiaoye-react/hooks": "workspace:*",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
-  },
-  "dependencies": {
-    "react-dropzone": "15.0.0"
-  },
-  "devDependencies": {
-    "@xiaoye-react/ui": "workspace:*",
-    "@xiaoye-react/hooks": "workspace:*",
-    "react": "19.1.1",
-    "react-dom": "19.1.1"
-  }
+    "repository": {
+        "url": "https://github.com/react-ui/react-ui.git",
+        "type": "git",
+        "directory": "packages/@xiaoye-react/dropzone"
+    },
+    "peerDependencies": {
+        "@xiaoye-react/ui": "workspace:*",
+        "@xiaoye-react/hooks": "workspace:*",
+        "react": "^19.1.1",
+        "react-dom": "^19.1.1"
+    },
+    "dependencies": {
+        "react-dropzone": "15.0.0"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-react": "^4.3.1",
+        "@xiaoye-react/hooks": "workspace:*",
+        "@xiaoye-react/tests": "workspace:*",
+        "@xiaoye-react/ui": "workspace:*",
+        "jsdom": "^24.1.0",
+        "react": "19.1.1",
+        "react-dom": "19.1.1",
+        "vitest": "^1.6.0"
+    },
+    "scripts": {
+        "test": "vitest run",
+        "test:watch": "vitest"
+    }
 }

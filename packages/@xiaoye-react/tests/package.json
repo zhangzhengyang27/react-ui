@@ -30,6 +30,11 @@
       "types": "./src/dates.ts",
       "import": "./src/dates.ts",
       "require": "./src/dates.ts"
+    },
+    "./setup": {
+      "types": "./src/setup.ts",
+      "import": "./src/setup.ts",
+      "require": "./src/setup.ts"
     }
   },
   "dependencies": {

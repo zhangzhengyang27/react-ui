@@ -15,4 +15,8 @@ patchConsoleWarn.release = () => {
   console.warn = initialWarn;
 };
 
-export { patchConsoleError, patchConsoleWarn };
+// 历史别名：部分扩展包测试以此名称引入（从未接入 runner 的旧测试文件）
+const autoPatchWarn = patchConsoleWarn;
+const autoPatchError = patchConsoleError;
+
+export { patchConsoleError, patchConsoleWarn, autoPatchWarn, autoPatchError };

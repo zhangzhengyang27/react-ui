@@ -37,7 +37,7 @@ import { itSupportsPositionProps } from './style-props/it-supports-position-prop
 import { itSupportsSizeProps } from './style-props/it-supports-size-props';
 export { render, renderWithAct } from './render';
 export { wait } from './wait';
-export { patchConsoleError, patchConsoleWarn } from './patch-console-error';
+export { patchConsoleError, patchConsoleWarn, autoPatchWarn, autoPatchError } from './patch-console-error';
 export { createContextContainer } from './create-context-container';
 export { inputDefaultProps, inputStylesApiSelectors } from './inputs/inputs-test-props';
 export { inputWrapperQueries } from './queries/input-wrapper.queries';

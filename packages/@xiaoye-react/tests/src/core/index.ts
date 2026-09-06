@@ -9,6 +9,7 @@ import { itSupportsInputSections } from './inputs/it-supports-input-sections';
 import { itSupportsInputWrapperElements } from './inputs/it-supports-input-wrapper-elements';
 import { itSupportsInputWrapperOrder } from './inputs/it-supports-input-wrapper-order';
 import { itSupportsInputWrapperProps } from './inputs/it-supports-input-wrapper-props';
+import { itSupportsSharedInputDefaults } from './inputs/it-supports-shared-input-defaults';
 import { itSupportsSystemProps } from './it-supports-system-props';
 import { itHasClasses } from './shared/it-has-classes';
 import { itHasExtend } from './shared/it-has-extend';
@@ -76,6 +77,7 @@ const tests = {
   itSupportsInputWrapperElements,
   itHandlesSwitchCheckboxState,
   itConnectsLabelAndInput,
+  itSupportsSharedInputDefaults,
   itSupportsSystemProps,
   itSupportsInputWrapperProps,
   itSupportsInputProps,

@@ -279,6 +279,11 @@ describe('@xiaoye-react/ui/Notifications', () => {
       );
     });
 
+    // 假定时器会冻结 Transition 的挂载链路，需要手动推进让通知元素真正渲染
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
+
     const notification = screen.getByRole('alert');
 
     expect(container.querySelector('.ui-Notification-closeButton')).not.toBeInTheDocument();

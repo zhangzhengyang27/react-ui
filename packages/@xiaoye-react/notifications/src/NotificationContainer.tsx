@@ -41,6 +41,7 @@ export function NotificationContainer({
   const {
     autoClose: _autoClose,
     message,
+    title,
     allowClose,
     position: _position,
     style: dataStyle,
@@ -322,9 +323,10 @@ export function NotificationContainer({
       onClose={handleHide}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-    >
-      {message}
-    </Notification>
+      // Notification 只从 props 读取 message/title，作为 children 传入不会渲染
+      message={message}
+      title={title}
+    />
   );
 }
 

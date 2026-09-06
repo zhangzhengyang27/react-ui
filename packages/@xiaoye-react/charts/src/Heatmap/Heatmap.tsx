@@ -138,7 +138,7 @@ const defaultProps = {
   legendLabels: ['Less', 'More'] as [string, string],
 } satisfies Partial<HeatmapProps>;
 
-export const Heatmap = factory<HeatmapFactory>((_props) => {
+export const Heatmap = factory<HeatmapFactory>((_props, ref) => {
   const props = useProps('Heatmap', defaultProps, _props);
   const {
     classNames,
@@ -356,6 +356,7 @@ export const Heatmap = factory<HeatmapFactory>((_props) => {
 
   return (
     <Box
+      ref={ref}
       component="svg"
       width={svgWidth}
       height={rectSizeWithGap * 7 + gap + monthsOffset + legendHeight}

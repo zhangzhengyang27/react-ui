@@ -1,6 +1,7 @@
-import { Box, BoxProps, factory, Factory, StylesApiProps, useProps } from '../../core'
+import { Box, BoxProps, factory, Factory, StylesApiProps, useStyles, useProps } from '../../core'
 import { Loader, LoaderProps } from '../Loader'
 import { Overlay, OverlayProps } from '../Overlay'
+import classes from './LoadingOverlay.module.css'
 
 export type LoadingOverlayStylesNames = 'root'
 
@@ -30,10 +31,20 @@ const defaultProps = {
 
 export const LoadingOverlay = factory<LoadingOverlayFactory>((_props, ref) => {
     const props = useProps('LoadingOverlay', defaultProps, _props)
-    const { visible, loaderProps, overlayProps, children, ...others } = props
+    const { visible, loaderProps, overlayProps, children, classNames, styles, unstyled, vars, ...others } = props
+
+    const getStyles = useStyles<LoadingOverlayFactory>({
+        name: 'LoadingOverlay',
+        classes,
+        props,
+        classNames,
+        styles,
+        unstyled,
+        rootSelector: 'root'
+    })
 
     return (
-        <Box ref={ref} style={{ position: 'relative', ...others.style }} {...others}>
+        <Box ref={ref} {...getStyles('root')} {...others}>
             {children}
             {visible && (
                 <Overlay {...overlayProps} center>
@@ -45,9 +56,4 @@ export const LoadingOverlay = factory<LoadingOverlayFactory>((_props, ref) => {
 })
 
 LoadingOverlay.displayName = '@xiaoye-react/ui/LoadingOverlay'
-
-export namespace LoadingOverlay {
-    export type Props = LoadingOverlayProps
-    export type Factory = LoadingOverlayFactory
-    export type StylesNames = LoadingOverlayStylesNames
-}
+LoadingOverlay.classes = classes

@@ -103,7 +103,7 @@ const varsResolver = createVarsResolver<BarsListFactory>(
   })
 );
 
-export const BarsList = factory<BarsListFactory>((_props) => {
+export const BarsList = factory<BarsListFactory>((_props, ref) => {
   const props = useProps('BarsList', defaultProps, _props);
   const {
     classNames,
@@ -211,7 +211,7 @@ export const BarsList = factory<BarsListFactory>((_props) => {
     ) : null;
 
   return (
-    <Box {...getStyles('root')} variant={variant} {...others}>
+    <Box ref={ref} {...getStyles('root')} variant={variant} {...others}>
       {labelsRow}
       {bars}
     </Box>

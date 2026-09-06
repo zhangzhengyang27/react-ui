@@ -128,6 +128,7 @@ export const Modal = factory<ModalFactory>((_props, _ref) => {
         scrollAreaComponent,
         fullScreen,
         centered,
+        __staticSelector = 'Modal',
         className,
         style,
         classNames,
@@ -138,7 +139,8 @@ export const Modal = factory<ModalFactory>((_props, _ref) => {
     } = props
 
     const getStyles = useStyles<ModalFactory>({
-        name: 'Modal',
+        // __staticSelector：组合组件（如 Spotlight 的 Modal）沿用外层静态类名 ui-Spotlight-*
+        name: __staticSelector,
         classes,
         props,
         className,

@@ -20,10 +20,11 @@ describe('@xiaoye-react/dropzone/Dropzone', () => {
 
   it('displays LoadingOverlay based on loading prop', () => {
     const { rerender, container } = render(<Dropzone {...defaultProps} loading={false} />);
-    expect(container.querySelectorAll('.ui-LoadingOverlay-root')).toHaveLength(0);
+    // LoadingOverlay 根节点作为 children 包装器始终渲染，遮罩层（Overlay）才随 loading 显隐
+    expect(container.querySelectorAll('.ui-Overlay-root')).toHaveLength(0);
 
     rerender(<Dropzone {...defaultProps} loading />);
-    expect(container.querySelectorAll('.ui-LoadingOverlay-root')).toHaveLength(1);
+    expect(container.querySelectorAll('.ui-Overlay-root')).toHaveLength(1);
   });
 
   it('has a name attribute on the internal input element', () => {

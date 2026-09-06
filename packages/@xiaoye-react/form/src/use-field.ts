@@ -210,18 +210,35 @@ export function useField<
     [valueRef.current, initialValue]
   );
 
+  // 用 ref 读取最新 validate/errorResolver：空依赖闭包会让内联 validate 永远跑首帧版本
+  const validateRef = useRef(validate);
+  validateRef.current = validate;
+  const errorResolverRef = useRef(errorResolver);
+  errorResolverRef.current = errorResolver;
+
+  // 异步验证竞态守卫：快速连续触发时，后发出的验证可能先返回，
+  // 先发出的旧 promise 后 resolve 会用旧结果覆盖新结果
+  const validateGenerationRef = useRef(0);
+
   const _validate = useCallback(async () => {
-    const validationResult = validate?.(valueRef.current);
+    const generation = ++validateGenerationRef.current;
+    const validationResult = validateRef.current?.(valueRef.current);
 
     if (validationResult instanceof Promise) {
       setIsValidating(true);
       try {
         const result = await validationResult;
+        if (generation !== validateGenerationRef.current) {
+          return undefined;
+        }
         setIsValidating(false);
         setError(result);
       } catch (err) {
+        if (generation !== validateGenerationRef.current) {
+          return undefined;
+        }
         setIsValidating(false);
-        const resolvedError = errorResolver(err);
+        const resolvedError = errorResolverRef.current(err);
         setError(resolvedError);
         return resolvedError;
       }

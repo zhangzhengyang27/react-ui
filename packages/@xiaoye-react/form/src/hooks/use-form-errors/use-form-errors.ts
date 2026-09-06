@@ -17,11 +17,11 @@ export function useFormErrors<Values extends Record<string, any>>(
   const errorsRef = useRef(errorsState);
 
   const setErrors: SetErrors = useCallback((errors) => {
-    setErrorsState((current) => {
-      const newErrors = filterErrors(typeof errors === 'function' ? errors(current) : errors);
-      errorsRef.current = newErrors;
-      return newErrors;
-    });
+    // 基于 ref 同步计算后同时写入 ref 与 state：setState updater 必须保持纯函数，
+    // StrictMode/并发渲染下 updater 会被双调用或丢弃，在内部写 ref 会造成脱同步
+    const newErrors = filterErrors(typeof errors === 'function' ? errors(errorsRef.current) : errors);
+    errorsRef.current = newErrors;
+    setErrorsState(newErrors);
   }, []);
 
   const clearErrors: ClearErrors = useCallback(() => setErrors({}), []);

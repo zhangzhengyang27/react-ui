@@ -109,7 +109,9 @@ export function useFormValues<Values extends Record<PropertyKey, any>>({
   );
 
   const setValuesSnapshot = useCallback((payload: Values) => {
-    valuesSnapshot.current = payload;
+    // 浅拷贝后再存：resetValues 以 mergeWithPreviousValues:false 直接引用快照，
+    // 若共享同一对象，调用方对 getValues() 结果的就地修改会污染快照，reset 还原到脏数据
+    valuesSnapshot.current = { ...payload };
   }, []);
 
   const initialize = useCallback(
@@ -126,7 +128,8 @@ export function useFormValues<Values extends Record<PropertyKey, any>>({
 
   const resetValues = useCallback(() => {
     setValues({
-      values: valuesSnapshot.current,
+      // 再次浅拷贝：setValues 落到 refValues 后不应与快照共享同一对象引用
+      values: { ...valuesSnapshot.current },
       updateState: true,
       mergeWithPreviousValues: false,
     });

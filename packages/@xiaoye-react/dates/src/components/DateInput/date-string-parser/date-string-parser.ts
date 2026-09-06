@@ -6,11 +6,13 @@ export function dateStringParser(dateString: string | null): DateStringValue | n
     return null;
   }
 
-  const date = new Date(dateString);
+  // 用 dayjs 解析而非 new Date：ISO 日期串（YYYY-MM-DD）在 new Date 下按 UTC 解析，
+  // 转本地时区后在 UTC 负偏移地区会差一天
+  const date = dayjs(dateString);
 
-  if (Number.isNaN(date.getTime()) || !dateString) {
+  if (!date.isValid()) {
     return null;
   }
 
-  return dayjs(date).format('YYYY-MM-DD');
+  return date.format('YYYY-MM-DD') as DateStringValue;
 }

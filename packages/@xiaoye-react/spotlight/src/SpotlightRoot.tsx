@@ -171,10 +171,7 @@ export const SpotlightRoot = factory<SpotlightRootFactory>((_props) => {
     opened ? onSpotlightOpen?.() : onSpotlightClose?.();
   }, [opened]);
 
-  if (disabled) {
-    return null;
-  }
-
+  // useMemo 必须在条件 return 之前：disabled 切换会改变 hooks 数量导致 React 崩溃
   const ctx = useMemo(
     () => ({
       getStyles,
@@ -185,6 +182,10 @@ export const SpotlightRoot = factory<SpotlightRootFactory>((_props) => {
     }),
     [getStyles, _query, setQuery, store, closeOnActionTrigger]
   );
+
+  if (disabled) {
+    return null;
+  }
 
   return (
     <SpotlightProvider

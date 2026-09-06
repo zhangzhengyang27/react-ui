@@ -89,6 +89,10 @@ export function completeNavigationProgressAction(store: NprogressStore) {
 }
 
 export function startNavigationProgressAction(store: NprogressStore) {
+  // 先清理遗留的 complete() 重置定时器：complete 后立刻 start 下一次加载时，
+  // 约 stepInterval + 50ms 后遗留 timeout 会把正在爬升的进度条打回 0
+  cleanupNavigationProgressAction(store);
+
   updateNavigationProgressStateAction(
     (s) => ({ progress: getIntervalProgressValue(s.progress), mounted: true }),
     store

@@ -37,7 +37,7 @@ export function HooksSection() {
           83+ 个 Hooks，用于处理应用中复杂和常见的场景
         </HomePageDescription>
 
-        <HomePageLearnMore href="/docs/hooks/introduce">浏览全部 Hooks</HomePageLearnMore>
+        <HomePageLearnMore href="/docs/hooks/package">浏览全部 Hooks</HomePageLearnMore>
 
         <SimpleGrid cols={{ md: 2 }} className={classes.demos} spacing="xl">
           {hooksData.map((hook) => (

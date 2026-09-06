@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import type {
   ClearErrors,
   ClearFieldError,
@@ -103,10 +103,16 @@ export function createFormActions<FormValues extends Record<string, any> = Recor
 }
 
 function useFormEvent(eventKey: string | undefined, handler: (event: any) => void) {
+  // 经 ref 转发最新 handler：effect 依赖只有 eventKey，
+  // 直接绑定首帧 handler 会让闭包捕获的 rules/onValuesChange 永远停留在首帧版本
+  const handlerRef = useRef(handler);
+  handlerRef.current = handler;
+
   useIsomorphicEffect(() => {
     if (eventKey) {
-      window.addEventListener(eventKey, handler);
-      return () => window.removeEventListener(eventKey, handler);
+      const listener = (event: any) => handlerRef.current(event);
+      window.addEventListener(eventKey, listener);
+      return () => window.removeEventListener(eventKey, listener);
     }
     return undefined;
   }, [eventKey]);

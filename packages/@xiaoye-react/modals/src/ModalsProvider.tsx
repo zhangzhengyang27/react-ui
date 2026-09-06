@@ -202,7 +202,14 @@ export function ModalsProvider({ children, modalProps, labels, modals }: ModalsP
     switch (currentModal?.type) {
       case 'context': {
         const { innerProps, ...rest } = currentModal.props;
-        const ContextModal = modals![currentModal.ctx];
+        const ContextModal = modals?.[currentModal.ctx];
+
+        if (!ContextModal) {
+          // 友好报错替代 "Element type is invalid"：指明缺少哪个注册的 context modal
+          throw new Error(
+            `[@xiaoye-react/modals] Context modal "${currentModal.ctx}" was not registered. Pass it to <ModalsProvider modals={{ ... }}>`
+          );
+        }
 
         return {
           modalProps: rest,

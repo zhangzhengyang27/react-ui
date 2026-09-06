@@ -204,6 +204,19 @@ export function NotificationContainer({
     onHoverEnd?.();
   };
 
+  // 元素被移除（dismiss/外部 hide）时 mouseleave 不会触发，
+  // 不补发 onHoverEnd 会让父级 hover 计数永远 >0，全站通知 autoClose 静默失效
+  const hoverEndRef = useRef(onHoverEnd)
+  hoverEndRef.current = onHoverEnd
+  useEffect(
+    () => () => {
+      if (hoveredRef.current) {
+        hoverEndRef.current?.()
+      }
+    },
+    []
+  )
+
   const handleWheel = useEffectEvent((event: WheelEvent) => {
     if (dismissed || active) {
       return;

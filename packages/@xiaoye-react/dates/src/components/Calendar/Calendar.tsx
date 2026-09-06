@@ -306,42 +306,42 @@ export const Calendar = factory<CalendarFactory>((_props) => {
   }
   const currentDate = _date || fallbackDateRef.current;
 
+  // 导航前先锚定到月初：29/30/31 日的锚点做月/年加减时 dayjs 不做月末钳制，
+  // 会溢出跳月（如 2024-01-31 + 1 month → 2024-03-02）
+  const anchorDate = dayjs(currentDate).startOf('month');
+
   const handleNextMonth = () => {
-    const nextDate = dayjs(currentDate).add(_columnsToScroll, 'month').format('YYYY-MM-DD');
+    const nextDate = anchorDate.add(_columnsToScroll, 'month').format('YYYY-MM-DD');
     onNextMonth?.(nextDate);
     setDate(nextDate);
   };
 
   const handlePreviousMonth = () => {
-    const nextDate = dayjs(currentDate).subtract(_columnsToScroll, 'month').format('YYYY-MM-DD');
+    const nextDate = anchorDate.subtract(_columnsToScroll, 'month').format('YYYY-MM-DD');
     onPreviousMonth?.(nextDate);
     setDate(nextDate);
   };
 
   const handleNextYear = () => {
-    const nextDate = dayjs(currentDate).add(_columnsToScroll, 'year').format('YYYY-MM-DD');
+    const nextDate = anchorDate.add(_columnsToScroll, 'year').format('YYYY-MM-DD');
     onNextYear?.(nextDate);
     setDate(nextDate);
   };
 
   const handlePreviousYear = () => {
-    const nextDate = dayjs(currentDate).subtract(_columnsToScroll, 'year').format('YYYY-MM-DD');
+    const nextDate = anchorDate.subtract(_columnsToScroll, 'year').format('YYYY-MM-DD');
     onPreviousYear?.(nextDate);
     setDate(nextDate);
   };
 
   const handleNextDecade = () => {
-    const nextDate = dayjs(currentDate)
-      .add(10 * _columnsToScroll, 'year')
-      .format('YYYY-MM-DD');
+    const nextDate = anchorDate.add(10 * _columnsToScroll, 'year').format('YYYY-MM-DD');
     onNextDecade?.(nextDate);
     setDate(nextDate);
   };
 
   const handlePreviousDecade = () => {
-    const nextDate = dayjs(currentDate)
-      .subtract(10 * _columnsToScroll, 'year')
-      .format('YYYY-MM-DD');
+    const nextDate = anchorDate.subtract(10 * _columnsToScroll, 'year').format('YYYY-MM-DD');
     onPreviousDecade?.(nextDate);
     setDate(nextDate);
   };

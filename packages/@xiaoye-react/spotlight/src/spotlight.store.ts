@@ -71,6 +71,14 @@ function findElementByQuerySelector<T extends HTMLElement>(
   selector: string,
   root: Document | Element | ShadowRoot = document
 ): T | null {
+  // 直接在 document 上先查一次：常规场景（无 shadow DOM）避免进入全树递归
+  if (root === document && selector.startsWith('#')) {
+    const byId = document.getElementById(selector.slice(1));
+    if (byId) {
+      return byId as T;
+    }
+  }
+
   // Directly try to find the element in the current root.
   const element = root.querySelector<T>(selector);
   if (element) {
@@ -135,10 +143,17 @@ export function triggerSelectedAction(store: SpotlightStore) {
 }
 
 export function registerAction(id: string, store: SpotlightStore) {
-  const state = store.getState();
-  state.registeredActions.add(id);
+  // 以不可变方式更新 Set 并走 setState：就地修改不触发订阅者重渲染
+  store.setState((state) => ({
+    ...state,
+    registeredActions: new Set(state.registeredActions).add(id),
+  }));
   return () => {
-    state.registeredActions.delete(id);
+    store.setState((state) => {
+      const next = new Set(state.registeredActions);
+      next.delete(id);
+      return { ...state, registeredActions: next };
+    });
   };
 }
 

@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useFormActions } from './actions';
 import { getInputOnChange } from './get-input-on-change';
 import { useFormErrors } from './hooks/use-form-errors/use-form-errors';
@@ -114,9 +114,19 @@ export function useForm<
     [handleValuesChanges]
   );
 
-  const debouncedValidateField = useMemo(() => {
-    const timers: Record<string, ReturnType<typeof setTimeout>> = {};
+  // 计时器表放 ref 而非 useMemo：rules 为内联对象（每渲染新引用）时 memo 重建，
+  // 重建后旧表里的已排定 timeout 全部失联（clearTimeout 清的是新空表），防抖完全失效；
+  // 卸载时统一清理，挂起的回调也不再触达已卸载组件
+  const debounceTimersRef = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
+  useEffect(
+    () => () => {
+      Object.values(debounceTimersRef.current).forEach((timer) => window.clearTimeout(timer));
+      debounceTimersRef.current = {};
+    },
+    []
+  );
 
+  const debouncedValidateField = useCallback((path: string) => {
     const handleValidation = (path: string) => {
       const signal = $validating.getAbortSignal(path);
       const result = validateFieldValue(
@@ -153,9 +163,9 @@ export function useForm<
     };
 
     return (path: string) => {
-      clearTimeout(timers[path]);
+      clearTimeout(debounceTimersRef.current[path]);
       if (validateDebounce > 0) {
-        timers[path] = setTimeout(() => handleValidation(path), validateDebounce);
+        debounceTimersRef.current[path] = setTimeout(() => handleValidation(path), validateDebounce);
       } else {
         handleValidation(path);
       }
@@ -205,9 +215,14 @@ export function useForm<
     const generation = ++validateGeneration.current;
     const signal = $validating.getAbortSignal('__form__');
 
-    const handleResult = (results: { hasErrors: boolean; errors: Record<string, any> }) => {
+    const handleResult = (results: {
+      hasErrors: boolean;
+      errors: Record<string, any>;
+    }): { hasErrors: boolean; errors: Record<string, any> } | null => {
       if (generation !== validateGeneration.current) {
-        return { hasErrors: false, errors: {} };
+        // 过期代际返回 null（而不是伪造"验证通过"）：并发提交时旧结果的 hasErrors 恒为 false，
+        // 会让 onSubmit 误以为验证通过直接 handleSubmit，绕过全部校验
+        return null;
       }
       $errors.setErrors(results.errors);
       return results;
@@ -328,7 +343,13 @@ export function useForm<
 
       setSubmitting(true);
 
-      const handleValidation = (results: { hasErrors: boolean; errors: Record<string, any> }) => {
+      const handleValidation = (results: { hasErrors: boolean; errors: Record<string, any> } | null) => {
+        // null 表示本次验证已被更新的验证取代：直接放弃本次提交流程，
+        // submitting 状态由持有最新代际的那次调用负责收尾
+        if (results === null) {
+          return;
+        }
+
         if (results.hasErrors) {
           if (onSubmitPreventDefault === 'validation-failed') {
             event?.preventDefault();

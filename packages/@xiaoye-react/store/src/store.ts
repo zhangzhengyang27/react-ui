@@ -20,19 +20,24 @@ export function createStore<Value extends Record<string, any>>(
   let initialized = false;
   const listeners = new Set<UIStoreSubscriber<Value>>();
 
+  // 闭包实现而非方法 + this：解构使用（const { setState } = store）时不会丢失上下文
+  const updateState = (value: Value | SetStateCallback<Value>) => {
+    state = typeof value === 'function' ? value(state) : value;
+  };
+
+  const setState = (value: Value | SetStateCallback<Value>) => {
+    updateState(value);
+    listeners.forEach((listener) => listener(state));
+  };
+
   return {
     getState() {
       return state;
     },
 
-    updateState(value) {
-      state = typeof value === 'function' ? value(state) : value;
-    },
+    updateState,
 
-    setState(value) {
-      this.updateState(value);
-      listeners.forEach((listener) => listener(state));
-    },
+    setState,
 
     initialize(value) {
       if (!initialized) {

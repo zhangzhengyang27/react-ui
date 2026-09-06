@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import {
   BasePortalProps,
   ElementProps,
@@ -52,18 +52,35 @@ export function NavigationProgress({
   store = nprogressStore,
   ...others
 }: NavigationProgressProps) {
-  store.initialize({
-    mounted: false,
-    progress: initialProgress,
-    interval: -1,
-    step: 1,
-    stepInterval,
-    timeouts: [],
-  });
+  // initialize 移入 effect：渲染期写共享单例 store 属于副作用，
+  // 且并发渲染下被丢弃的渲染也会消耗一次性标志；多实例互相覆盖的问题同样源于此
+  const initializedRef = useRef(false);
+  useEffect(() => {
+    if (!initializedRef.current) {
+      initializedRef.current = true;
+      store.initialize({
+        mounted: false,
+        progress: initialProgress,
+        interval: -1,
+        step: 1,
+        stepInterval,
+        timeouts: [],
+      });
+    }
+  }, [store, initialProgress, stepInterval]);
 
   const state = useNprogress(store);
 
-  useEffect(() => () => resetNavigationProgressAction(store), [store]);
+  // 仅在自身实例持有 interval/timeouts 时清理，避免卸载一个实例把其他正在跑的实例一并清掉
+  useEffect(
+    () => () => {
+      const current = store.getState();
+      if (current.interval !== -1 || current.timeouts.length > 0) {
+        resetNavigationProgressAction(store);
+      }
+    },
+    [store]
+  );
 
   return (
     <OptionalPortal {...portalProps} withinPortal={withinPortal}>

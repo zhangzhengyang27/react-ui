@@ -75,18 +75,13 @@ const varsResolver = createVarsResolver<OverflowListFactory>((_, { gap }) => ({
     }
 }))
 
-function getDataSignature<T>(
-    data: T[],
-    getItemKey: ((item: T, index: number) => React.Key) | undefined
-): string {
+function getDataSignature<T>(data: T[], getItemKey: ((item: T, index: number) => React.Key) | undefined): string {
     return data
         .map((item, index) => {
             if (getItemKey) {
                 return getItemKey(item, index)
             }
-            return item !== null && (typeof item === 'object' || typeof item === 'function')
-                ? index
-                : String(item)
+            return item !== null && (typeof item === 'object' || typeof item === 'function') ? index : String(item)
         })
         .join('\u0000')
 }
@@ -128,9 +123,7 @@ export const OverflowList = factory<OverflowListFactory>((_props, _ref) => {
 
     const [visibleCount, setVisibleCount] = useState(data.length)
     const [subtractCount, setSubtractCount] = useState(0)
-    const [phase, setPhase] = useState<'normal' | 'measuring' | 'measuring-overflow-indicator'>(
-        'normal'
-    )
+    const [phase, setPhase] = useState<'normal' | 'measuring' | 'measuring-overflow-indicator'>('normal')
 
     const containerRef = useRef<HTMLDivElement>(null)
     const rootRef = useMergedRef(containerRef, _ref)
@@ -177,14 +170,11 @@ export const OverflowList = factory<OverflowListFactory>((_props, _ref) => {
             setPhase('measuring')
             setSubtractCount(0)
         }
-    }, [dimensions])
+        // 依赖 dimensions 的实际数值而非对象身份，避免 ResizeObserver 每次回调产生
+        // 新对象引用导致 phase 处于 normal 时被反复重置（多余测量往返）。
+    }, [dimensions?.width, dimensions?.height])
 
-    const fitsInRows = (
-        itemWidths: number[],
-        containerWidth: number,
-        columnGap: number,
-        startIndex = 0
-    ) => {
+    const fitsInRows = (itemWidths: number[], containerWidth: number, columnGap: number, startIndex = 0) => {
         let rows = 1
         let rowWidth = 0
 
@@ -221,7 +211,7 @@ export const OverflowList = factory<OverflowListFactory>((_props, _ref) => {
             const containerWidth = container.getBoundingClientRect().width
             const columnGap = parseFloat(getComputedStyle(container).columnGap) || 0
             const children = rowData.children
-            const widths = children.map((child) => child.getBoundingClientRect().width)
+            const widths = children.map(child => child.getBoundingClientRect().width)
 
             let count = 0
             for (let i = widths.length - 1; i >= 0; i--) {
@@ -237,8 +227,7 @@ export const OverflowList = factory<OverflowListFactory>((_props, _ref) => {
         }
 
         if (data.length === 1) {
-            const itemRef = rowData.itemsSizesMap[rowData.rowPositions[0]].elements.values().next()
-                .value
+            const itemRef = rowData.itemsSizesMap[rowData.rowPositions[0]].elements.values().next().value
             const containerWidth = container.getBoundingClientRect().width
             const itemWidth = itemRef?.getBoundingClientRect().width ?? 0
 
@@ -281,13 +270,10 @@ export const OverflowList = factory<OverflowListFactory>((_props, _ref) => {
             const columnGap = parseFloat(getComputedStyle(container).columnGap) || 0
             const overflowWidth = _overflowRef.current.getBoundingClientRect().width
             const children = rowData.children
-            const itemWidths = [
-                overflowWidth,
-                ...children.map((child) => child.getBoundingClientRect().width)
-            ]
+            const itemWidths = [overflowWidth, ...children.map(child => child.getBoundingClientRect().width)]
 
             if (!fitsInRows(itemWidths, containerWidth, columnGap)) {
-                setSubtractCount((c) => c + 1)
+                setSubtractCount(c => c + 1)
                 return true
             }
 
@@ -300,7 +286,7 @@ export const OverflowList = factory<OverflowListFactory>((_props, _ref) => {
         const lastRow = itemsSizesMap[lastRowTop]
 
         if (overflowMiddleY > lastRow.bottom) {
-            setSubtractCount((c) => c + 1)
+            setSubtractCount(c => c + 1)
             return true
         }
 
@@ -331,9 +317,7 @@ export const OverflowList = factory<OverflowListFactory>((_props, _ref) => {
             {finalItems.map((item, index) => {
                 const isVisible =
                     phase === 'measuring' ||
-                    (isCollapseStart
-                        ? index >= finalItems.length - finalVisibleCount
-                        : index < finalVisibleCount)
+                    (isCollapseStart ? index >= finalItems.length - finalVisibleCount : index < finalVisibleCount)
                 if (!isVisible) {
                     return null
                 }

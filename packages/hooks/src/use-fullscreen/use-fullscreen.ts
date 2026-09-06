@@ -52,7 +52,7 @@ interface FullscreenEvents {
 
 function addEvents(element: HTMLElement, events: FullscreenEvents) {
     const { onFullScreen, onError } = events
-    prefixes.forEach((prefix) => {
+    prefixes.forEach(prefix => {
         element.addEventListener(`${prefix}fullscreenchange`, onFullScreen)
         element.addEventListener(`${prefix}fullscreenerror`, onError)
     })
@@ -61,7 +61,7 @@ function addEvents(element: HTMLElement, events: FullscreenEvents) {
 }
 
 function removeEvents(element: HTMLElement, { onFullScreen, onError }: FullscreenEvents) {
-    prefixes.forEach((prefix) => {
+    prefixes.forEach(prefix => {
         element.removeEventListener(`${prefix}fullscreenchange`, onFullScreen)
         element.removeEventListener(`${prefix}fullscreenerror`, onError)
     })
@@ -94,7 +94,7 @@ export function useFullscreenElement<T extends HTMLElement = any>(): UseFullscre
         }
     }, [])
 
-    const refCallback: React.RefCallback<T | null> = useCallback((node) => {
+    const refCallback: React.RefCallback<T | null> = useCallback(node => {
         if (prevNodeRef.current && prevNodeRef.current !== node) {
             removeEvents(prevNodeRef.current, {
                 onFullScreen: handleFullscreenChange,
@@ -111,6 +111,22 @@ export function useFullscreenElement<T extends HTMLElement = any>(): UseFullscre
 
         refElement.current = node
         prevNodeRef.current = node
+
+        // React 19 ref cleanup：节点分离时移除监听，避免反复挂载导致监听器堆积
+        return () => {
+            if (node) {
+                removeEvents(node, {
+                    onFullScreen: handleFullscreenChange,
+                    onError: handleFullscreenError
+                })
+            }
+            if (refElement.current === node) {
+                refElement.current = null
+            }
+            if (prevNodeRef.current === node) {
+                prevNodeRef.current = null
+            }
+        }
     }, [])
 
     return { ref: refCallback, toggle, fullscreen }

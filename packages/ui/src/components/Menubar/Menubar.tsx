@@ -138,7 +138,7 @@ export const Menubar = factory<MenubarFactory>((_props, ref) => {
     // target 不再走注册表：节点从 DOM 查询（MenubarTarget 渲染 data-menubar-target 与
     // data-menubar-id），index 按 DOM 顺序解析。原注册机制存在首次挂载死锁——
     // MenubarMenu 的 index 初始 -1 且仅能由 getMenuIndex 查注册表得到，而 MenubarTarget
-    // 在 index === -1 时跳过注册，二者互相等待导致菜单永远无法打开（对齐 Mantine 上游方案）
+    // 在 index === -1 时跳过注册，二者互相等待导致菜单永远无法打开（参考实现方案）
     const getTargets = useCallback(
         () =>
             Array.from(

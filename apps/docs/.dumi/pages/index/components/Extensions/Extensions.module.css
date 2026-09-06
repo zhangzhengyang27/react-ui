@@ -63,3 +63,33 @@
     box-shadow: none;
   }
 }
+
+.extensionCard {
+  display: block;
+  padding: var(--ui-spacing-sm) var(--ui-spacing-md);
+  border: 1px solid light-dark(var(--ui-color-gray-3), var(--ui-color-dark-5));
+  border-radius: var(--ui-radius-md);
+  background-color: light-dark(var(--ui-color-white), var(--ui-color-dark-7));
+  text-decoration: none;
+  transition:
+    border-color 100ms ease,
+    box-shadow 100ms ease;
+
+  &:hover {
+    border-color: var(--ui-color-primary-color-filled, var(--ui-color-blue-6));
+    box-shadow: var(--ui-shadow-sm);
+  }
+}
+
+.extensionName {
+  font-size: var(--ui-font-size-sm);
+  font-weight: 600;
+  color: light-dark(var(--ui-color-gray-9), var(--ui-color-gray-0));
+}
+
+.extensionDesc {
+  margin-top: 2px;
+  font-size: var(--ui-font-size-xs);
+  color: var(--ui-color-dimmed);
+  line-height: 1.4;
+}

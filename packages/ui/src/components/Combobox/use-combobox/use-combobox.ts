@@ -6,363 +6,334 @@ import { getFirstIndex, getNextIndex, getPreviousIndex } from './get-index/get-i
 export type ComboboxDropdownEventSource = 'keyboard' | 'mouse' | 'unknown'
 
 export interface ComboboxStore {
-  /** Current dropdown opened state */
-  dropdownOpened: boolean
+    /** Current dropdown opened state */
+    dropdownOpened: boolean
 
-  /** Opens dropdown */
-  openDropdown: (eventSource?: ComboboxDropdownEventSource) => void
+    /** Opens dropdown */
+    openDropdown: (eventSource?: ComboboxDropdownEventSource) => void
 
-  /** Closes dropdown */
-  closeDropdown: (eventSource?: ComboboxDropdownEventSource) => void
+    /** Closes dropdown */
+    closeDropdown: (eventSource?: ComboboxDropdownEventSource) => void
 
-  /** Toggles dropdown opened state */
-  toggleDropdown: (eventSource?: ComboboxDropdownEventSource) => void
+    /** Toggles dropdown opened state */
+    toggleDropdown: (eventSource?: ComboboxDropdownEventSource) => void
 
-  /** Selected option index ref */
-  selectedOptionIndex: number
+    /** Selected option index ref */
+    selectedOptionIndex: number
 
-  /** Returns currently selected option index or `-1` if none of the options is selected */
-  getSelectedOptionIndex: () => number
+    /** Returns currently selected option index or `-1` if none of the options is selected */
+    getSelectedOptionIndex: () => number
 
-  /** Selects `Combobox.Option` by index */
-  selectOption: (index: number) => void
+    /** Selects `Combobox.Option` by index. Returns the selected option id, or `null` if no option is available */
+    selectOption: (index: number) => string | null
 
-  /** Selects first `Combobox.Option` with `active` prop.
-   *  If there are no such options, the function does nothing.
-   */
-  selectActiveOption: () => string | null
+    /** Selects first `Combobox.Option` with `active` prop.
+     *  If there are no such options, the function does nothing.
+     */
+    selectActiveOption: () => string | null
 
-  /** Selects first `Combobox.Option` that is not disabled.
-   *  If there are no such options, the function does nothing.
-   * */
-  selectFirstOption: () => string | null
+    /** Selects first `Combobox.Option` that is not disabled.
+     *  If there are no such options, the function does nothing.
+     * */
+    selectFirstOption: () => string | null
 
-  /** Selects next `Combobox.Option` that is not disabled.
-   *  If the current option is the last one, the function selects first option, if `loop` is true.
-   */
-  selectNextOption: () => string | null
+    /** Selects next `Combobox.Option` that is not disabled.
+     *  If the current option is the last one, the function selects first option, if `loop` is true.
+     */
+    selectNextOption: () => string | null
 
-  /** Selects previous `Combobox.Option` that is not disabled.
-   *  If the current option is the first one, the function selects last option, if `loop` is true.
-   * */
-  selectPreviousOption: () => string | null
+    /** Selects previous `Combobox.Option` that is not disabled.
+     *  If the current option is the first one, the function selects last option, if `loop` is true.
+     * */
+    selectPreviousOption: () => string | null
 
-  /** Resets selected option index to -1, removes `data-combobox-selected` from selected option */
-  resetSelectedOption: () => void
+    /** Resets selected option index to -1, removes `data-combobox-selected` from selected option */
+    resetSelectedOption: () => void
 
-  /** Triggers `onClick` event of selected option.
-   *  If there is no selected option, the function does nothing.
-   */
-  clickSelectedOption: () => void
+    /** Triggers `onClick` event of selected option.
+     *  If there is no selected option, the function does nothing.
+     */
+    clickSelectedOption: () => void
 
-  /** Updates selected option index to currently selected or active option.
-   *  The function is required to be used with searchable components to update selected option index
-   *  when options list changes based on search query.
-   */
-  updateSelectedOptionIndex: (
-    target?: 'active' | 'selected' | number,
-    options?: { scrollIntoView?: boolean }
-  ) => void
+    /** Updates selected option index to currently selected or active option.
+     *  The function is required to be used with searchable components to update selected option index
+     *  when options list changes based on search query.
+     */
+    updateSelectedOptionIndex: (target?: 'active' | 'selected' | number, options?: { scrollIntoView?: boolean }) => void
 
-  /** List id, used for `aria-*` attributes */
-  listId: string | null
+    /** List id, used for `aria-*` attributes */
+    listId: string | null
 
-  /** Sets list id */
-  setListId: (id: string) => void
+    /** Sets list id */
+    setListId: (id: string) => void
 
-  /** Ref of `Combobox.Search` input */
-  searchRef: React.RefObject<HTMLInputElement | null>
+    /** Ref of `Combobox.Search` input */
+    searchRef: React.RefObject<HTMLInputElement | null>
 
-  /** Moves focus to `Combobox.Search` input */
-  focusSearchInput: () => void
+    /** Moves focus to `Combobox.Search` input */
+    focusSearchInput: () => void
 
-  /** Ref of the target element */
-  targetRef: React.RefObject<HTMLElement | null>
+    /** Ref of the target element */
+    targetRef: React.RefObject<HTMLElement | null>
 
-  /** Moves focus to the target element */
-  focusTarget: () => void
+    /** Moves focus to the target element */
+    focusTarget: () => void
 }
 
 export interface UseComboboxOptions {
-  /** Default value for `dropdownOpened`, `false` by default. Used when the component is uncontrolled */
-  defaultOpened?: boolean
+    /** Default value for `dropdownOpened`, `false` by default. Used when the component is uncontrolled */
+    defaultOpened?: boolean
 
-  /** Controlled `dropdownOpened` state. When set, the dropdown opened state is controlled by the parent component */
-  opened?: boolean
+    /** Controlled `dropdownOpened` state. When set, the dropdown opened state is controlled by the parent component */
+    opened?: boolean
 
-  /** Called when `dropdownOpened` state changes. Required for controlled mode */
-  onOpenedChange?: (opened: boolean) => void
+    /** Called when `dropdownOpened` state changes. Required for controlled mode */
+    onOpenedChange?: (opened: boolean) => void
 
-  /** Called when dropdown closes with event source: keyboard, mouse or unknown. Useful for analytics or side effects on dropdown closure */
-  onDropdownClose?: (eventSource: ComboboxDropdownEventSource) => void
+    /** Called when dropdown closes with event source: keyboard, mouse or unknown. Useful for analytics or side effects on dropdown closure */
+    onDropdownClose?: (eventSource: ComboboxDropdownEventSource) => void
 
-  /** Called when dropdown opens with event source: keyboard, mouse or unknown. Useful for analytics or side effects on dropdown opening */
-  onDropdownOpen?: (eventSource: ComboboxDropdownEventSource) => void
+    /** Called when dropdown opens with event source: keyboard, mouse or unknown. Useful for analytics or side effects on dropdown opening */
+    onDropdownOpen?: (eventSource: ComboboxDropdownEventSource) => void
 
-  /** Determines whether arrow key presses should loop through items (first to last and last to first). Defaults to `true` */
-  loop?: boolean
+    /** Determines whether arrow key presses should loop through items (first to last and last to first). Defaults to `true` */
+    loop?: boolean
 
-  /** `behavior` passed down to `element.scrollIntoView`. Controls the scrolling animation when options are scrolled into view. Defaults to `'instant'` */
-  scrollBehavior?: ScrollBehavior
+    /** `behavior` passed down to `element.scrollIntoView`. Controls the scrolling animation when options are scrolled into view. Defaults to `'instant'` */
+    scrollBehavior?: ScrollBehavior
 }
 
 export function useCombobox({
-  defaultOpened,
-  opened,
-  onOpenedChange,
-  onDropdownClose,
-  onDropdownOpen,
-  loop = true,
-  scrollBehavior = 'instant',
+    defaultOpened,
+    opened,
+    onOpenedChange,
+    onDropdownClose,
+    onDropdownOpen,
+    loop = true,
+    scrollBehavior = 'instant'
 }: UseComboboxOptions = {}): ComboboxStore {
-  const [dropdownOpened, setDropdownOpened] = useUncontrolled({
-    value: opened,
-    defaultValue: defaultOpened,
-    finalValue: false,
-    onChange: onOpenedChange,
-  })
+    const [dropdownOpened, setDropdownOpened] = useUncontrolled({
+        value: opened,
+        defaultValue: defaultOpened,
+        finalValue: false,
+        onChange: onOpenedChange
+    })
 
-  const listId = useRef<string | null>(null)
-  const selectedOptionIndex = useRef<number>(-1)
-  const searchRef = useRef<HTMLInputElement | null>(null)
-  const targetRef = useRef<HTMLElement | null>(null)
-  const focusSearchTimeout = useRef<number>(-1)
-  const focusTargetTimeout = useRef<number>(-1)
-  const selectedIndexUpdateTimeout = useRef<number>(-1)
+    const listId = useRef<string | null>(null)
+    const selectedOptionIndex = useRef<number>(-1)
+    const searchRef = useRef<HTMLInputElement | null>(null)
+    const targetRef = useRef<HTMLElement | null>(null)
+    const focusSearchTimeout = useRef<number>(-1)
+    const focusTargetTimeout = useRef<number>(-1)
+    const selectedIndexUpdateTimeout = useRef<number>(-1)
 
-  const openDropdown: ComboboxStore['openDropdown'] = useCallback(
-    (eventSource = 'unknown') => {
-      if (!dropdownOpened) {
-        setDropdownOpened(true)
-        onDropdownOpen?.(eventSource)
-      }
-    },
-    [setDropdownOpened, onDropdownOpen, dropdownOpened]
-  )
-
-  const closeDropdown: ComboboxStore['closeDropdown'] = useCallback(
-    (eventSource = 'unknown') => {
-      if (dropdownOpened) {
-        setDropdownOpened(false)
-        onDropdownClose?.(eventSource)
-      }
-    },
-    [setDropdownOpened, onDropdownClose, dropdownOpened]
-  )
-
-  const toggleDropdown: ComboboxStore['toggleDropdown'] = useCallback(
-    (eventSource = 'unknown') => {
-      if (dropdownOpened) {
-        closeDropdown(eventSource)
-      } else {
-        openDropdown(eventSource)
-      }
-    },
-    [closeDropdown, openDropdown, dropdownOpened]
-  )
-
-  const clearSelectedItem = useCallback(() => {
-    const root = getRootElement(targetRef.current)
-    const selected = findElementBySelector(`#${listId.current} [data-combobox-selected]`, root)
-    selected?.removeAttribute('data-combobox-selected')
-    selected?.removeAttribute('aria-selected')
-  }, [])
-
-  const selectOption = useCallback(
-    (index: number) => {
-      const root = getRootElement(targetRef.current)
-      const list = findElementBySelector(`#${listId.current!}`, root)
-      const items = list
-        ? findElementsBySelector<HTMLDivElement>('[data-combobox-option]', list)
-        : null
-
-      if (!items) {
-        return null
-      }
-
-      const nextIndex = index >= items!.length ? 0 : index < 0 ? items!.length - 1 : index
-
-      // 目标索引落在 disabled 选项上时，向后（回绕）找最近的可用选项，
-      // 避免 selectedOptionIndex 停在 disabled 选项上导致 aria/点击指向无效项
-      let targetIndex = -1
-      for (let i = 0; i < items.length; i += 1) {
-        const candidate = (nextIndex + i) % items.length
-        if (!items[candidate].hasAttribute('data-combobox-disabled')) {
-          targetIndex = candidate
-          break
-        }
-      }
-
-      if (targetIndex === -1) {
-        return null
-      }
-
-      selectedOptionIndex.current = targetIndex
-      clearSelectedItem()
-      items[targetIndex].setAttribute('data-combobox-selected', 'true')
-      items[targetIndex].setAttribute('aria-selected', 'true')
-      items[targetIndex].scrollIntoView({ block: 'nearest', behavior: scrollBehavior })
-      return items[targetIndex].id
-    },
-    [scrollBehavior, clearSelectedItem]
-  )
-
-  const selectActiveOption = useCallback(() => {
-    const root = getRootElement(targetRef.current)
-    const activeOption = findElementBySelector<HTMLDivElement>(
-      `#${listId.current} [data-combobox-active]`,
-      root
+    const openDropdown: ComboboxStore['openDropdown'] = useCallback(
+        (eventSource = 'unknown') => {
+            if (!dropdownOpened) {
+                setDropdownOpened(true)
+                onDropdownOpen?.(eventSource)
+            }
+        },
+        [setDropdownOpened, onDropdownOpen, dropdownOpened]
     )
 
-    if (activeOption) {
-      const items = findElementsBySelector<HTMLDivElement>(
-        `#${listId.current} [data-combobox-option]`,
-        root
-      )
-      const index = items.findIndex((option) => option === activeOption)
-      return selectOption(index)
-    }
-
-    return selectOption(0)
-  }, [selectOption])
-
-  const selectNextOption = useCallback(() => {
-    const root = getRootElement(targetRef.current)
-    const items = findElementsBySelector<HTMLDivElement>(
-      `#${listId.current} [data-combobox-option]`,
-      root
+    const closeDropdown: ComboboxStore['closeDropdown'] = useCallback(
+        (eventSource = 'unknown') => {
+            if (dropdownOpened) {
+                setDropdownOpened(false)
+                onDropdownClose?.(eventSource)
+            }
+        },
+        [setDropdownOpened, onDropdownClose, dropdownOpened]
     )
-    return selectOption(getNextIndex(selectedOptionIndex.current, items, loop))
-  }, [selectOption, loop])
 
-  const selectPreviousOption = useCallback(() => {
-    const root = getRootElement(targetRef.current)
-    const items = findElementsBySelector<HTMLDivElement>(
-      `#${listId.current} [data-combobox-option]`,
-      root
+    const toggleDropdown: ComboboxStore['toggleDropdown'] = useCallback(
+        (eventSource = 'unknown') => {
+            if (dropdownOpened) {
+                closeDropdown(eventSource)
+            } else {
+                openDropdown(eventSource)
+            }
+        },
+        [closeDropdown, openDropdown, dropdownOpened]
     )
-    return selectOption(getPreviousIndex(selectedOptionIndex.current, items, loop))
-  }, [selectOption, loop])
 
-  const selectFirstOption = useCallback(() => {
-    const root = getRootElement(targetRef.current)
-    const items = findElementsBySelector<HTMLDivElement>(
-      `#${listId.current} [data-combobox-option]`,
-      root
-    )
-    return selectOption(getFirstIndex(items))
-  }, [selectOption])
-
-  const updateSelectedOptionIndex: ComboboxStore['updateSelectedOptionIndex'] = useCallback(
-    (target = 'selected', options) => {
-      if (typeof target === 'number') {
-        selectedOptionIndex.current = target
+    const clearSelectedItem = useCallback(() => {
         const root = getRootElement(targetRef.current)
+        const selected = findElementBySelector(`#${listId.current} [data-combobox-selected]`, root)
+        selected?.removeAttribute('data-combobox-selected')
+        selected?.removeAttribute('aria-selected')
+    }, [])
 
-        const items = findElementsBySelector<HTMLDivElement>(
-          `#${listId.current} [data-combobox-option]`,
-          root
-        )
+    const selectOption = useCallback(
+        (index: number) => {
+            const root = getRootElement(targetRef.current)
+            const list = findElementBySelector(`#${listId.current!}`, root)
+            const items = list ? findElementsBySelector<HTMLDivElement>('[data-combobox-option]', list) : null
 
-        if (options?.scrollIntoView) {
-          items[target]?.scrollIntoView({ block: 'nearest', behavior: scrollBehavior })
-        }
-        return
-      }
+            if (!items) {
+                return null
+            }
 
-      // 重排前先清掉旧定时器，避免连续调用时旧回调仍然执行
-      window.clearTimeout(selectedIndexUpdateTimeout.current)
-      selectedIndexUpdateTimeout.current = window.setTimeout(() => {
-        const root = getRootElement(targetRef.current)
-        const items = findElementsBySelector<HTMLDivElement>(
-          `#${listId.current} [data-combobox-option]`,
-          root
-        )
-        const index = items.findIndex((option) => option.hasAttribute(`data-combobox-${target}`))
+            const nextIndex = index >= items!.length ? 0 : index < 0 ? items!.length - 1 : index
 
-        selectedOptionIndex.current = index
+            // 目标索引落在 disabled 选项上时，向后（回绕）找最近的可用选项，
+            // 避免 selectedOptionIndex 停在 disabled 选项上导致 aria/点击指向无效项
+            let targetIndex = -1
+            for (let i = 0; i < items.length; i += 1) {
+                const candidate = (nextIndex + i) % items.length
+                if (!items[candidate].hasAttribute('data-combobox-disabled')) {
+                    targetIndex = candidate
+                    break
+                }
+            }
 
-        if (options?.scrollIntoView) {
-          items[index]?.scrollIntoView({ block: 'nearest', behavior: scrollBehavior })
-        }
-      }, 0)
-    },
-    [scrollBehavior]
-  )
+            if (targetIndex === -1) {
+                return null
+            }
 
-  const resetSelectedOption = useCallback(() => {
-    selectedOptionIndex.current = -1
-    clearSelectedItem()
-  }, [clearSelectedItem])
-
-  const clickSelectedOption = useCallback(() => {
-    const root = getRootElement(targetRef.current)
-    const items = findElementsBySelector<HTMLDivElement>(
-      `#${listId.current} [data-combobox-option]`,
-      root
+            selectedOptionIndex.current = targetIndex
+            clearSelectedItem()
+            items[targetIndex].setAttribute('data-combobox-selected', 'true')
+            items[targetIndex].setAttribute('aria-selected', 'true')
+            items[targetIndex].scrollIntoView({ block: 'nearest', behavior: scrollBehavior })
+            return items[targetIndex].id
+        },
+        [scrollBehavior, clearSelectedItem]
     )
-    const item = items?.[selectedOptionIndex.current]
-    // 索引可能停在 disabled 选项上（如外部直接调用 selectOption），点击前校验避免提交无效项
-    if (item && !item.hasAttribute('data-combobox-disabled')) {
-      item.click()
+
+    const selectActiveOption = useCallback(() => {
+        const root = getRootElement(targetRef.current)
+        const activeOption = findElementBySelector<HTMLDivElement>(`#${listId.current} [data-combobox-active]`, root)
+
+        if (activeOption) {
+            const items = findElementsBySelector<HTMLDivElement>(`#${listId.current} [data-combobox-option]`, root)
+            const index = items.findIndex(option => option === activeOption)
+            return selectOption(index)
+        }
+
+        return selectOption(0)
+    }, [selectOption])
+
+    const selectNextOption = useCallback(() => {
+        const root = getRootElement(targetRef.current)
+        const items = findElementsBySelector<HTMLDivElement>(`#${listId.current} [data-combobox-option]`, root)
+        return selectOption(getNextIndex(selectedOptionIndex.current, items, loop))
+    }, [selectOption, loop])
+
+    const selectPreviousOption = useCallback(() => {
+        const root = getRootElement(targetRef.current)
+        const items = findElementsBySelector<HTMLDivElement>(`#${listId.current} [data-combobox-option]`, root)
+        return selectOption(getPreviousIndex(selectedOptionIndex.current, items, loop))
+    }, [selectOption, loop])
+
+    const selectFirstOption = useCallback(() => {
+        const root = getRootElement(targetRef.current)
+        const items = findElementsBySelector<HTMLDivElement>(`#${listId.current} [data-combobox-option]`, root)
+        return selectOption(getFirstIndex(items))
+    }, [selectOption])
+
+    const updateSelectedOptionIndex: ComboboxStore['updateSelectedOptionIndex'] = useCallback(
+        (target = 'selected', options) => {
+            if (typeof target === 'number') {
+                selectedOptionIndex.current = target
+                const root = getRootElement(targetRef.current)
+
+                const items = findElementsBySelector<HTMLDivElement>(`#${listId.current} [data-combobox-option]`, root)
+
+                if (options?.scrollIntoView) {
+                    items[target]?.scrollIntoView({ block: 'nearest', behavior: scrollBehavior })
+                }
+                return
+            }
+
+            // 重排前先清掉旧定时器，避免连续调用时旧回调仍然执行
+            window.clearTimeout(selectedIndexUpdateTimeout.current)
+            selectedIndexUpdateTimeout.current = window.setTimeout(() => {
+                const root = getRootElement(targetRef.current)
+                const items = findElementsBySelector<HTMLDivElement>(`#${listId.current} [data-combobox-option]`, root)
+                const index = items.findIndex(option => option.hasAttribute(`data-combobox-${target}`))
+
+                selectedOptionIndex.current = index
+
+                if (options?.scrollIntoView) {
+                    items[index]?.scrollIntoView({ block: 'nearest', behavior: scrollBehavior })
+                }
+            }, 0)
+        },
+        [scrollBehavior]
+    )
+
+    const resetSelectedOption = useCallback(() => {
+        selectedOptionIndex.current = -1
+        clearSelectedItem()
+    }, [clearSelectedItem])
+
+    const clickSelectedOption = useCallback(() => {
+        const root = getRootElement(targetRef.current)
+        const items = findElementsBySelector<HTMLDivElement>(`#${listId.current} [data-combobox-option]`, root)
+        const item = items?.[selectedOptionIndex.current]
+        // 索引可能停在 disabled 选项上（如外部直接调用 selectOption），点击前校验避免提交无效项
+        if (item && !item.hasAttribute('data-combobox-disabled')) {
+            item.click()
+        }
+    }, [])
+
+    const setListId = useCallback((id: string) => {
+        listId.current = id
+    }, [])
+
+    const focusSearchInput = useCallback(() => {
+        // 重排前先清掉旧定时器，避免连续调用时旧回调仍然执行
+        window.clearTimeout(focusSearchTimeout.current)
+        focusSearchTimeout.current = window.setTimeout(() => searchRef.current?.focus(), 0)
+    }, [])
+
+    const focusTarget = useCallback(() => {
+        // 重排前先清掉旧定时器，避免连续调用时旧回调仍然执行
+        window.clearTimeout(focusTargetTimeout.current)
+        focusTargetTimeout.current = window.setTimeout(() => targetRef.current?.focus(), 0)
+    }, [])
+
+    const getSelectedOptionIndex = useCallback(() => selectedOptionIndex.current, [])
+
+    useEffect(
+        () => () => {
+            window.clearTimeout(focusSearchTimeout.current)
+            window.clearTimeout(focusTargetTimeout.current)
+            window.clearTimeout(selectedIndexUpdateTimeout.current)
+        },
+        []
+    )
+
+    return {
+        dropdownOpened,
+        openDropdown,
+        closeDropdown,
+        toggleDropdown,
+
+        selectedOptionIndex: selectedOptionIndex.current,
+        getSelectedOptionIndex,
+        selectOption,
+        selectFirstOption,
+        selectActiveOption,
+        selectNextOption,
+        selectPreviousOption,
+        resetSelectedOption,
+        updateSelectedOptionIndex,
+
+        listId: listId.current,
+        setListId,
+        clickSelectedOption,
+
+        searchRef,
+        focusSearchInput,
+
+        targetRef,
+        focusTarget
     }
-  }, [])
-
-  const setListId = useCallback((id: string) => {
-    listId.current = id
-  }, [])
-
-  const focusSearchInput = useCallback(() => {
-    // 重排前先清掉旧定时器，避免连续调用时旧回调仍然执行
-    window.clearTimeout(focusSearchTimeout.current)
-    focusSearchTimeout.current = window.setTimeout(() => searchRef.current?.focus(), 0)
-  }, [])
-
-  const focusTarget = useCallback(() => {
-    // 重排前先清掉旧定时器，避免连续调用时旧回调仍然执行
-    window.clearTimeout(focusTargetTimeout.current)
-    focusTargetTimeout.current = window.setTimeout(() => targetRef.current?.focus(), 0)
-  }, [])
-
-  const getSelectedOptionIndex = useCallback(() => selectedOptionIndex.current, [])
-
-  useEffect(
-    () => () => {
-      window.clearTimeout(focusSearchTimeout.current)
-      window.clearTimeout(focusTargetTimeout.current)
-      window.clearTimeout(selectedIndexUpdateTimeout.current)
-    },
-    []
-  )
-
-  return {
-    dropdownOpened,
-    openDropdown,
-    closeDropdown,
-    toggleDropdown,
-
-    selectedOptionIndex: selectedOptionIndex.current,
-    getSelectedOptionIndex,
-    selectOption,
-    selectFirstOption,
-    selectActiveOption,
-    selectNextOption,
-    selectPreviousOption,
-    resetSelectedOption,
-    updateSelectedOptionIndex,
-
-    listId: listId.current,
-    setListId,
-    clickSelectedOption,
-
-    searchRef,
-    focusSearchInput,
-
-    targetRef,
-    focusTarget,
-  }
 }
 
 export namespace useCombobox {
-  export type Store = ComboboxStore
+    export type Store = ComboboxStore
 }

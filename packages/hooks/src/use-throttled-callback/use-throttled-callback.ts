@@ -1,10 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react'
 import { useCallbackRef } from '../use-callback-ref/use-callback-ref'
 
-export function useThrottledCallbackWithClearTimeout<T extends (...args: any[]) => any>(
-    callback: T,
-    wait: number
-) {
+export function useThrottledCallbackWithClearTimeout<T extends (...args: any[]) => any>(callback: T, wait: number) {
     const handleCallback = useCallbackRef(callback)
     const latestInArgsRef = useRef<Parameters<T>>(null)
     const latestOutArgsRef = useRef<Parameters<T>>(null)
@@ -55,6 +52,6 @@ export function useThrottledCallbackWithClearTimeout<T extends (...args: any[]) 
 
 export function useThrottledCallback<T extends (...args: any[]) => any>(callback: T, wait: number) {
     const [throttled, clearTimeout] = useThrottledCallbackWithClearTimeout(callback, wait)
-    useEffect(() => clearTimeout, [])
+    useEffect(() => clearTimeout, [clearTimeout])
     return throttled
 }

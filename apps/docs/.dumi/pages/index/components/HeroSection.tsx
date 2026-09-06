@@ -11,7 +11,7 @@ import classes from './HeroSection.module.css';
 
 const locales = {
   cn: {
-    slogan: '基于 React 的现代化组件库，Mantine 风格 API，内置 60+ 组件与 30+ Hooks。',
+    slogan: '基于 React 的现代化组件库，Mantine 风格 API，内置 128+ 组件与 83+ Hooks。',
     subSlogan: '覆盖 Charts、Dates、Schedule、Form 等专业场景，主题随心，TypeScript 优先。',
     start: '快速开始',
     components: '浏览组件',
@@ -19,7 +19,7 @@ const locales = {
   },
   en: {
     slogan: 'A modern React component library with Mantine-style APIs.',
-    subSlogan: '60+ components, 30+ hooks, plus Charts, Dates, Schedule and Form modules.',
+    subSlogan: '128+ components, 83+ hooks, plus Charts, Dates, Schedule and Form modules.',
     start: 'Getting Started',
     components: 'Browse Components',
     aiTheme: 'AI Theme',

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useWindowEvent } from '../use-window-event/use-window-event'
 
 export type StorageType = 'localStorage' | 'sessionStorage'
@@ -56,15 +56,10 @@ function createStorageHandler(type: StorageType) {
     return { getItem, setItem, removeItem }
 }
 
-export type UseStorageReturnValue<T> = [
-    T,
-    (val: T | ((prevState: T) => T)) => void,
-    () => void
-]
+export type UseStorageReturnValue<T> = [T, (val: T | ((prevState: T) => T)) => void, () => void]
 
 export function createStorage<T>(type: StorageType, hookName: string) {
-    const eventName =
-        type === 'localStorage' ? 'react-ui-local-storage' : 'react-ui-session-storage'
+    const eventName = type === 'localStorage' ? 'react-ui-local-storage' : 'react-ui-session-storage'
     const { getItem, setItem, removeItem } = createStorageHandler(type)
 
     return function useStorage({
@@ -81,10 +76,7 @@ export function createStorage<T>(type: StorageType, hookName: string) {
 
                 try {
                     storageBlockedOrSkipped =
-                        typeof window === 'undefined' ||
-                        !(type in window) ||
-                        window[type] === null ||
-                        !!skipStorage
+                        typeof window === 'undefined' || !(type in window) || window[type] === null || !!skipStorage
                 } catch {
                     storageBlockedOrSkipped = true
                 }
@@ -101,30 +93,31 @@ export function createStorage<T>(type: StorageType, hookName: string) {
 
         const [value, setValue] = useState<T>(readStorageValue(getInitialValueInEffect))
 
+        // 持有最新 value 的 ref，供函数式更新同步读取 prev（避免依赖 updater 的执行时机）
+        const valueRef = useRef(value)
+        valueRef.current = value
+
         const setStorageValue = useCallback(
             (val: T | ((prevState: T) => T)) => {
                 if (val instanceof Function) {
-                    setValue(current => {
-                        const result = val(current)
-                        try {
-                            setItem(key, serialize(result))
-                            queueMicrotask(() => {
-                                window.dispatchEvent(
-                                    new CustomEvent(eventName, { detail: { key, value: result } })
-                                )
-                            })
-                        } catch {
-                            // Storage may be blocked or unavailable
-                        }
-                        return result
-                    })
+                    // 函数式更新：同步基于 valueRef 计算新值，updater 保持纯函数；
+                    // 副作用（写 storage + dispatchEvent）在 updater 之外仅执行一次，
+                    // 避免 StrictMode 双调用 updater 导致重复写 storage / 重复派发事件。
+                    const computed = (val as (prevState: T) => T)(valueRef.current)
+                    setValue(computed)
+                    try {
+                        setItem(key, serialize(computed))
+                        queueMicrotask(() => {
+                            window.dispatchEvent(new CustomEvent(eventName, { detail: { key, value: computed } }))
+                        })
+                    } catch {
+                        // Storage may be blocked or unavailable
+                    }
                 } else {
                     setValue(val)
                     try {
                         setItem(key, serialize(val))
-                        window.dispatchEvent(
-                            new CustomEvent(eventName, { detail: { key, value: val } })
-                        )
+                        window.dispatchEvent(new CustomEvent(eventName, { detail: { key, value: val } }))
                     } catch {
                         // Storage may be blocked or unavailable
                     }
@@ -137,9 +130,7 @@ export function createStorage<T>(type: StorageType, hookName: string) {
             setValue(defaultValue as T)
             try {
                 removeItem(key)
-                window.dispatchEvent(
-                    new CustomEvent(eventName, { detail: { key, value: defaultValue } })
-                )
+                window.dispatchEvent(new CustomEvent(eventName, { detail: { key, value: defaultValue } }))
             } catch {
                 // Storage may be blocked or unavailable
             }
@@ -186,16 +177,11 @@ export function createStorage<T>(type: StorageType, hookName: string) {
 export function readValue(type: StorageType) {
     const { getItem } = createStorageHandler(type)
 
-    return function read<T>({
-        key,
-        defaultValue,
-        deserialize = deserializeJSON
-    }: UseStorageOptions<T>) {
+    return function read<T>({ key, defaultValue, deserialize = deserializeJSON }: UseStorageOptions<T>) {
         let storageBlockedOrSkipped
 
         try {
-            storageBlockedOrSkipped =
-                typeof window === 'undefined' || !(type in window) || window[type] === null
+            storageBlockedOrSkipped = typeof window === 'undefined' || !(type in window) || window[type] === null
         } catch {
             storageBlockedOrSkipped = true
         }

@@ -2,9 +2,9 @@ import { HomePageContainer } from '../shared/Container';
 import classes from './Stats.module.css';
 
 const stats = [
-  { value: '120+', label: '可定制组件' },
-  { value: '70+', label: 'React Hooks' },
-  { value: '30+', label: '扩展模块' },
+  { value: '128+', label: '可定制组件' },
+  { value: '83+', label: 'React Hooks' },
+  { value: '23', label: '扩展模块' },
   { value: '0', label: '运行时依赖' },
 ];
 

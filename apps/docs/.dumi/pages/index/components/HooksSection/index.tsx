@@ -34,7 +34,7 @@ export function HooksSection() {
       <HomePageContainer>
         <HomePageTitle order={2}>Hooks 库</HomePageTitle>
         <HomePageDescription>
-          70+ 个 Hooks，用于处理应用中复杂和常见的场景
+          83+ 个 Hooks，用于处理应用中复杂和常见的场景
         </HomePageDescription>
 
         <HomePageLearnMore href="/docs/hooks/introduce">浏览全部 Hooks</HomePageLearnMore>

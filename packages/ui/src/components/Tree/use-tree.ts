@@ -4,7 +4,7 @@ import { CheckedNodeStatus, getAllCheckedNodes } from './get-all-checked-nodes/g
 import {
     findTreeNode,
     getAllChildrenNodes,
-    getChildrenNodesValues,
+    getChildrenNodesValues
 } from './get-children-nodes-values/get-children-nodes-values'
 import type { TreeNodeData } from './Tree'
 
@@ -16,7 +16,7 @@ function getInitialTreeExpandedState(
     value: string | string[] | undefined,
     acc: TreeExpandedState = {}
 ) {
-    data.forEach((node) => {
+    data.forEach(node => {
         acc[node.value] = node.value in initialState ? initialState[node.value] : node.value === value
 
         if (Array.isArray(node.children)) {
@@ -42,7 +42,7 @@ export function getTreeExpandedState(
         return result
     }
 
-    expandedNodesValues.forEach((node) => {
+    expandedNodesValues.forEach(node => {
         state[node] = true
     })
 
@@ -56,7 +56,7 @@ function getInitialCheckedState(initialState: string[], data: TreeNodeData[], ch
 
     const acc: string[] = []
 
-    initialState.forEach((node) => {
+    initialState.forEach(node => {
         // data 变化(如搜索过滤)时,保留不存在于 data 中的已勾选值(取并集),
         // 避免勾选状态永久丢失,仅在显式取消勾选时移除
         if (findTreeNode(node, data)) {
@@ -144,28 +144,28 @@ export function useTree({
     onSelectedStateChange,
     onExpandedStateChange,
     onLoadChildren,
-    checkStrictly = false,
+    checkStrictly = false
 }: UseTreeInput = {}): UseTreeReturnType {
     const [data, setData] = useState<TreeNodeData[]>([])
     const [_expandedState, setExpandedState] = useUncontrolled({
         value: expandedState,
         defaultValue: initialExpandedState,
         finalValue: {},
-        onChange: onExpandedStateChange,
+        onChange: onExpandedStateChange
     })
 
     const [_selectedState, setSelectedState] = useUncontrolled({
         value: selectedState,
         defaultValue: initialSelectedState,
         finalValue: [],
-        onChange: onSelectedStateChange,
+        onChange: onSelectedStateChange
     })
 
     const [_checkedState, setCheckedState] = useUncontrolled({
         value: checkedState,
         defaultValue: initialCheckedState,
         finalValue: [],
-        onChange: onCheckedStateChange,
+        onChange: onCheckedStateChange
     })
 
     const [anchorNode, setAnchorNode] = useState<string | null>(null)
@@ -181,17 +181,26 @@ export function useTree({
     // 更换 controller 实例时(用户替换 tree prop)此 ref 为全新,仍可正常初始化
     const initializedDataRef = useRef<TreeNodeData[] | null>(null)
 
+    // 用 ref 持有最新状态，避免 initialize 依赖 _selectedState/_checkedState/_expandedState
+    // 导致身份随内部状态变化而 churn，进而反复触发 Tree 的 [data, tree] effect。
+    const selectedStateRef = useRef(_selectedState)
+    selectedStateRef.current = _selectedState
+    const checkedStateRef = useRef(_checkedState)
+    checkedStateRef.current = _checkedState
+    const expandedStateRef = useRef(_expandedState)
+    expandedStateRef.current = _expandedState
+
     const initialize = useCallback(
         (_data: TreeNodeData[]) => {
             if (initializedDataRef.current === _data) {
                 return
             }
             initializedDataRef.current = _data
-            setExpandedState(getInitialTreeExpandedState(_expandedState, _data, _selectedState))
-            setCheckedState(getInitialCheckedState(_checkedState, _data, checkStrictly))
+            setExpandedState(getInitialTreeExpandedState(expandedStateRef.current, _data, selectedStateRef.current))
+            setCheckedState(getInitialCheckedState(checkedStateRef.current, _data, checkStrictly))
             setData(_data)
         },
-        [_selectedState, _checkedState, _expandedState, checkStrictly]
+        [checkStrictly]
     )
 
     const loadNodeImpl = useCallback(
@@ -206,7 +215,7 @@ export function useTree({
 
             loadingNodesRef.current.add(value)
             setLoadingNodes(Array.from(loadingNodesRef.current))
-            setLoadErrors((prev) => {
+            setLoadErrors(prev => {
                 if (!(value in prev)) {
                     return prev
                 }
@@ -221,7 +230,7 @@ export function useTree({
                 loadedNodesRef.current.add(value)
             } catch (error) {
                 const err = error instanceof Error ? error : new Error(String(error))
-                setLoadErrors((prev) => ({ ...prev, [value]: err }))
+                setLoadErrors(prev => ({ ...prev, [value]: err }))
             } finally {
                 loadingNodesRef.current.delete(value)
                 setLoadingNodes(Array.from(loadingNodesRef.current))
@@ -281,7 +290,7 @@ export function useTree({
 
     const expandAllNodes = useCallback(() => {
         const nextState = { ..._expandedState }
-        Object.keys(nextState).forEach((key) => {
+        Object.keys(nextState).forEach(key => {
             nextState[key] = true
             tryLoadAsync(key)
         })
@@ -291,7 +300,7 @@ export function useTree({
 
     const collapseAllNodes = useCallback(() => {
         const nextState = { ..._expandedState }
-        Object.keys(nextState).forEach((key) => {
+        Object.keys(nextState).forEach(key => {
             nextState[key] = false
         })
 
@@ -314,7 +323,7 @@ export function useTree({
 
             if (_selectedState.includes(value)) {
                 setAnchorNode(null)
-                const next = _selectedState.filter((item) => item !== value)
+                const next = _selectedState.filter(item => item !== value)
                 setSelectedState(next)
                 return next
             }
@@ -332,11 +341,7 @@ export function useTree({
         (value: string) => {
             setAnchorNode(value)
             setSelectedState(
-                multiple
-                    ? _selectedState.includes(value)
-                        ? _selectedState
-                        : [..._selectedState, value]
-                    : [value]
+                multiple ? (_selectedState.includes(value) ? _selectedState : [..._selectedState, value]) : [value]
             )
         },
         [_selectedState]
@@ -345,7 +350,7 @@ export function useTree({
     const deselect = useCallback(
         (value: string) => {
             anchorNode === value && setAnchorNode(null)
-            setSelectedState(_selectedState.filter((item) => item !== value))
+            setSelectedState(_selectedState.filter(item => item !== value))
         },
         [_selectedState]
     )
@@ -372,10 +377,10 @@ export function useTree({
     const uncheckNode = useCallback(
         (value: string) => {
             if (checkStrictly) {
-                setCheckedState(_checkedState.filter((item) => item !== value))
+                setCheckedState(_checkedState.filter(item => item !== value))
             } else {
                 const checkedNodes = getChildrenNodesValues(value, data)
-                setCheckedState(_checkedState.filter((item) => !checkedNodes.includes(item)))
+                setCheckedState(_checkedState.filter(item => !checkedNodes.includes(item)))
             }
         },
         [data, _checkedState, checkStrictly]
@@ -416,7 +421,7 @@ export function useTree({
 
     const getCheckedNodes = useCallback((): CheckedNodeStatus[] => {
         if (checkStrictly) {
-            return _checkedState.map((value) => {
+            return _checkedState.map(value => {
                 const node = findTreeNode(value, data)
                 return {
                     checked: true,
@@ -424,7 +429,7 @@ export function useTree({
                     value,
                     hasChildren: node
                         ? (Array.isArray(node.children) && node.children.length > 0) || !!node.hasChildren
-                        : false,
+                        : false
                 }
             })
         }
@@ -454,16 +459,13 @@ export function useTree({
         [checkStrictly, checkedNodesMap]
     )
 
-    const isNodeLoading = useCallback(
-        (value: string) => loadingNodes.includes(value),
-        [loadingNodes]
-    )
+    const isNodeLoading = useCallback((value: string) => loadingNodes.includes(value), [loadingNodes])
 
     const getNodeLoadError = useCallback((value: string) => loadErrors[value] || null, [loadErrors])
 
     const invalidateNode = useCallback((value: string) => {
         loadedNodesRef.current.delete(value)
-        setLoadErrors((prev) => {
+        setLoadErrors(prev => {
             if (!(value in prev)) {
                 return prev
             }
@@ -510,7 +512,7 @@ export function useTree({
             isNodeLoading,
             getNodeLoadError,
             loadNode: loadNodeImpl,
-            invalidateNode,
+            invalidateNode
         }),
         [
             checkStrictly,
@@ -542,7 +544,7 @@ export function useTree({
             isNodeLoading,
             getNodeLoadError,
             loadNodeImpl,
-            invalidateNode,
+            invalidateNode
         ]
     )
 }

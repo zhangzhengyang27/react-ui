@@ -38,7 +38,10 @@ export function useHover<T extends HTMLElement = any>(): UseHoverReturnValue<T> 
 
             previousNode.current = node
 
+            // React 19 ref cleanup：移除监听并重置状态，避免目标节点被 GC 前监听器残留
             return () => {
+                node?.removeEventListener('mouseenter', handleMouseEnter)
+                node?.removeEventListener('mouseleave', handleMouseLeave)
                 previousNode.current = null
                 setHovered(false)
             }

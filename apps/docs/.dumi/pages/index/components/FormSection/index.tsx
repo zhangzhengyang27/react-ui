@@ -42,7 +42,7 @@ export function FormSection() {
                 @xiaoye-react/form — 专为 ReactUI 组件设计的高性能表单库，与所有 ReactUI 输入组件
                 开箱即用。
               </HomePageDescription>
-              <HomePageLearnMore href="/docs/react/getting-started">探索全部表单功能</HomePageLearnMore>
+              <HomePageLearnMore href="/docs/form/package">探索全部表单功能</HomePageLearnMore>
               <HomePageFeatures data={features} />
             </div>
           </div>

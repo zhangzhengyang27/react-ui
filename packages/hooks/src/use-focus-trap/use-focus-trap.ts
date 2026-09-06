@@ -28,7 +28,10 @@ export function useFocusTrap(active = true): React.RefCallback<HTMLElement | nul
         if (focusElement) {
             focusElement.focus({ preventScroll: true })
         } else if (process.env.NODE_ENV === 'development') {
-            console.warn('[@xiaoye-react/hooks/use-focus-trap] Failed to find focusable element within provided node', node)
+            console.warn(
+                '[@xiaoye-react/hooks/use-focus-trap] Failed to find focusable element within provided node',
+                node
+            )
         }
     }
 
@@ -39,6 +42,8 @@ export function useFocusTrap(active = true): React.RefCallback<HTMLElement | nul
             }
 
             if (node === null) {
+                // 节点分离时清理挂起的 focus 定时器，避免对已卸载节点调用 focus
+                clearFocusTimeout()
                 ref.current = null
                 return
             }

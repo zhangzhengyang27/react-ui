@@ -1,9 +1,9 @@
 import { useRef } from 'react';
 import { FiCheck, FiSearch } from 'react-icons/fi';
+import { Spotlight, spotlight } from '@xiaoye-react/spotlight';
 import {
   Button,
   Group,
-  Image,
   SimpleGrid,
   Stack,
   Text,
@@ -16,11 +16,70 @@ import { HomePageLearnMore } from '../shared/LearnMore';
 import { HomePageTitle } from '../shared/Title';
 import classes from './Extensions.module.css';
 
-const images = [
-  'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
-  'https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
-  'https://images.unsplash.com/photo-1605774337664-7a846e9cdf17?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
-  'https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
+const spotlightActions = [
+  {
+    id: 'notifications',
+    label: '通知系统',
+    description: '查看通知系统文档',
+    onClick: () => window.open('/docs/x/notifications', '_self'),
+  },
+  {
+    id: 'spotlight',
+    label: 'Spotlight',
+    description: '查看 Spotlight 文档',
+    onClick: () => window.open('/docs/x/spotlight', '_self'),
+  },
+  {
+    id: 'carousel',
+    label: 'Carousel',
+    description: '查看 Carousel 文档',
+    onClick: () => window.open('/docs/x/carousel', '_self'),
+  },
+  {
+    id: 'tiptap',
+    label: '富文本编辑器',
+    description: '查看 Tiptap 文档',
+    onClick: () => window.open('/docs/x/tiptap', '_self'),
+  },
+];
+
+const officialExtensions = [
+  {
+    name: '@xiaoye-react/dates',
+    label: '日期选择器',
+    description: '日历、日期/时间选择器及日期相关组件',
+    href: '/docs/dates/getting-started',
+  },
+  {
+    name: '@xiaoye-react/charts',
+    label: '图表',
+    description: '基于 recharts 的图表和数据可视化组件',
+    href: '/docs/charts/getting-started',
+  },
+  {
+    name: '@xiaoye-react/carousel',
+    label: 'Carousel',
+    description: '基于 embla-carousel 的轮播组件',
+    href: '/docs/x/carousel',
+  },
+  {
+    name: '@xiaoye-react/tiptap',
+    label: '富文本编辑器',
+    description: '基于 tiptap 的富文本编辑器',
+    href: '/docs/x/tiptap',
+  },
+  {
+    name: '@xiaoye-react/dropzone',
+    label: 'Dropzone',
+    description: '基于 react-dropzone 的拖拽文件上传组件',
+    href: '/docs/x/dropzone',
+  },
+  {
+    name: '@xiaoye-react/modals',
+    label: '弹窗管理器',
+    description: '以声明式 API 管理模态框',
+    href: '/docs/x/modals',
+  },
 ];
 
 interface ExtensionDemoProps {
@@ -56,7 +115,7 @@ export function Extensions() {
           它们易于集成到你的应用中，提供无缝的使用体验。
         </HomePageDescription>
 
-        <HomePageLearnMore href="/docs/react/getting-started">浏览全部扩展</HomePageLearnMore>
+        <HomePageLearnMore href="/docs/x/extensions">浏览全部扩展</HomePageLearnMore>
 
         <SimpleGrid cols={{ md: 2 }} className={classes.grid} verticalSpacing={30}>
           <ExtensionDemo title="通知系统" description="在应用的任何位置显示、更新或隐藏通知">
@@ -110,16 +169,35 @@ export function Extensions() {
                   rightSection={<FiSearch size={20} color="var(--ui-color-dimmed)" />}
                   miw={300}
                   justify="space-between"
+                  onClick={spotlight.open}
                 >
                   打开搜索面板
                 </Button>
               </Group>
+              <Spotlight
+                actions={spotlightActions}
+                nothingFound="未找到..."
+                highlightQuery
+                shortcut={['mod + K', '/']}
+                searchProps={{
+                  leftSection: <FiSearch size={20} />,
+                  placeholder: '搜索...',
+                }}
+              />
             </ExtensionDemo>
 
-            <ExtensionDemo title="图片画廊" description="基于 Unsplash 的图片展示">
-              <SimpleGrid cols={2} spacing="xs">
-                {images.slice(0, 4).map((image) => (
-                  <Image key={image} src={image} height={100} radius="md" alt="" />
+            <ExtensionDemo title="官方扩展" description="官方维护的附加包，覆盖日期、图表、编辑等专业场景">
+              <SimpleGrid cols={2} spacing="sm">
+                {officialExtensions.map((ext) => (
+                  <a
+                    key={ext.name}
+                    href={ext.href}
+                    className={classes.extensionCard}
+                    aria-label={`${ext.label}（${ext.name}）`}
+                  >
+                    <Text className={classes.extensionName}>{ext.label}</Text>
+                    <Text className={classes.extensionDesc}>{ext.description}</Text>
+                  </a>
                 ))}
               </SimpleGrid>
             </ExtensionDemo>

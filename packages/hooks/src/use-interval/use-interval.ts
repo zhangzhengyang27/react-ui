@@ -32,14 +32,20 @@ export function useInterval(
     const intervalValueRef = useRef(interval)
     intervalValueRef.current = interval
 
+    // 稳定的 interval 回调：动态读取 fnRef.current，确保每次触发都调用最新 fn。
+    // 不能直接 setInterval(fnRef.current, ...)，那会捕获函数引用快照，后续 fn 更新无效。
+    const intervalCallback = useCallback(() => {
+        fnRef.current?.()
+    }, [])
+
     const start = useCallback(() => {
-        setActive((old) => {
+        setActive(old => {
             if (!old && !intervalRef.current) {
-                intervalRef.current = window.setInterval(fnRef.current!, intervalValueRef.current)
+                intervalRef.current = window.setInterval(intervalCallback, intervalValueRef.current)
             }
             return true
         })
-    }, [])
+    }, [intervalCallback])
 
     const stop = useCallback(() => {
         setActive(false)
@@ -50,7 +56,7 @@ export function useInterval(
     }, [])
 
     const toggle = useCallback(() => {
-        setActive((current) => {
+        setActive(current => {
             if (current) {
                 if (intervalRef.current) {
                     window.clearInterval(intervalRef.current)
@@ -59,11 +65,11 @@ export function useInterval(
                 return false
             }
             if (!intervalRef.current) {
-                intervalRef.current = window.setInterval(fnRef.current!, intervalValueRef.current)
+                intervalRef.current = window.setInterval(intervalCallback, intervalValueRef.current)
             }
             return true
         })
-    }, [])
+    }, [intervalCallback])
 
     useEffect(() => {
         // fn 不进入 deps：fnRef.current 在渲染期已同步为最新 fn，
@@ -72,7 +78,16 @@ export function useInterval(
             start()
         }
         return stop
-    }, [active, interval, start, stop])
+    }, [active, start, stop])
+
+    // interval 变化时重建定时器：直接 clear 并按新周期重建，
+    // 不依赖 active state 的时序（stop 的 setActive(false) 是异步的，紧随 start 会用旧值判断）。
+    useEffect(() => {
+        if (intervalRef.current !== null) {
+            window.clearInterval(intervalRef.current)
+            intervalRef.current = window.setInterval(intervalCallback, intervalValueRef.current)
+        }
+    }, [interval, intervalCallback])
 
     useEffect(() => {
         if (autoInvoke) {

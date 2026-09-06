@@ -14,7 +14,17 @@ export interface UseStateHistoryValue<T> {
 
 export type UseStateHistoryReturnValue<T> = [T, UseStateHistoryHandlers<T>, UseStateHistoryValue<T>]
 
-export function useStateHistory<T>(initialValue: T): UseStateHistoryReturnValue<T> {
+export interface UseStateHistoryOptions {
+    /** 历史栈最大长度，超出后丢弃最旧的记录，防止长时间运行内存无限增长。默认 Infinity（不限制）。 */
+    limit?: number
+}
+
+export function useStateHistory<T>(
+    initialValue: T,
+    options: UseStateHistoryOptions = {}
+): UseStateHistoryReturnValue<T> {
+    const { limit = Infinity } = options
+
     const [state, setState] = useState<UseStateHistoryValue<T>>({
         history: [initialValue],
         current: 0
@@ -22,19 +32,23 @@ export function useStateHistory<T>(initialValue: T): UseStateHistoryReturnValue<
 
     const set = useCallback(
         (val: T) =>
-            setState((currentState) => {
-                const nextState = [...currentState.history.slice(0, currentState.current + 1), val]
+            setState(currentState => {
+                let nextState = [...currentState.history.slice(0, currentState.current + 1), val]
+                // 超限时从头部丢弃最旧记录，保持 current 索引仍指向最新值
+                if (limit !== Infinity && nextState.length > limit) {
+                    nextState = nextState.slice(nextState.length - limit)
+                }
                 return {
                     history: nextState,
                     current: nextState.length - 1
                 }
             }),
-        []
+        [limit]
     )
 
     const back = useCallback(
         (steps = 1) =>
-            setState((currentState) => ({
+            setState(currentState => ({
                 history: currentState.history,
                 current: Math.max(0, currentState.current - steps)
             })),
@@ -43,7 +57,7 @@ export function useStateHistory<T>(initialValue: T): UseStateHistoryReturnValue<
 
     const forward = useCallback(
         (steps = 1) =>
-            setState((currentState) => ({
+            setState(currentState => ({
                 history: currentState.history,
                 current: Math.min(currentState.history.length - 1, currentState.current + steps)
             })),
@@ -62,5 +76,6 @@ export function useStateHistory<T>(initialValue: T): UseStateHistoryReturnValue<
 export namespace useStateHistory {
     export type Handlers<T> = UseStateHistoryHandlers<T>
     export type Value<T> = UseStateHistoryValue<T>
+    export type Options = UseStateHistoryOptions
     export type ReturnValue<T> = UseStateHistoryReturnValue<T>
 }

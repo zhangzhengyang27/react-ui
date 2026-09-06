@@ -6,7 +6,7 @@ export function useThrottledState<T = any>(defaultValue: T, wait: number) {
 
     const [setThrottledValue, clearTimeout] = useThrottledCallbackWithClearTimeout(setValue, wait)
 
-    useEffect(() => clearTimeout, [])
+    useEffect(() => clearTimeout, [clearTimeout])
 
     return [value, setThrottledValue] as const
 }

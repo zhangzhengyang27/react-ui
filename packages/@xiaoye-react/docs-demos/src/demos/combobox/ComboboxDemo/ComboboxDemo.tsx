@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import cx from 'clsx';
 import { CodeHighlightTabs } from '@xiaoye-react/code-highlight';
 import { Badge, RemoveScroll, Text } from '@xiaoye-react/ui';
@@ -8,17 +7,24 @@ import { COMBOBOX_EXAMPLES_DATA } from '../combobox-examples-data';
 import { COMBOBOX_EXAMPLES_COMPONENTS, ComboboxExampleId } from '../examples';
 import classes from './ComboboxDemo.module.css';
 
+// 替代迁移前 next/router 的用法：直接读写 URL 查询参数（dumi 环境无 next/router）。
+// 首帧固定渲染 null 与 SSR 输出保持一致，参数同步放在 effect 中避免水合不一致。
 export function ComboboxDemo() {
-  const router = useRouter();
-  const id = router.query.e as ComboboxExampleId;
+  const [id, setId] = useState<ComboboxExampleId | undefined>(undefined);
   const codeData = COMBOBOX_EXAMPLES_COMPONENTS[id];
   const metaData = COMBOBOX_EXAMPLES_DATA.find((item) => item.id === id);
 
   useEffect(() => {
-    if (!id || !(id in COMBOBOX_EXAMPLES_COMPONENTS)) {
-      router.replace('/combobox?e=BasicSelect');
+    const fromUrl = new URLSearchParams(window.location.search).get('e') as ComboboxExampleId | null;
+    if (fromUrl && fromUrl in COMBOBOX_EXAMPLES_COMPONENTS) {
+      setId(fromUrl);
+      return;
     }
-  }, [id]);
+    const url = new URL(window.location.href);
+    url.searchParams.set('e', 'BasicSelect');
+    window.history.replaceState(null, '', url);
+    setId('BasicSelect');
+  }, []);
 
   if (!codeData || !metaData) {
     return null;

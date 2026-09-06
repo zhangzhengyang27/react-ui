@@ -19,7 +19,8 @@ export function borderResolver(value: unknown, theme: UITheme) {
 
         let result = `${rem(size)}`
         style && (result += ` ${style}`)
-        colorTuple.length > 0 && (result += ` ${colorResolver(colorTuple.join(''), theme)}`)
+        colorTuple.length > 0 && (result += ` ${// join(' ') 还原拆分时被过滤掉的空格，多词颜色函数（如 color-mix(in srgb, ...)）才能生成合法 CSS
+            colorResolver(colorTuple.join(' '), theme)}`)
 
         return result.trim()
     }

@@ -13,7 +13,9 @@ function assignSizeVariables(variables: Record<string, string>, sizes: Record<st
 
 export const defaultCssVariablesResolver: CSSVariablesResolver = (theme) => {
     const lightPrimaryShade = getPrimaryShade(theme, 'light')
-    const defaultRadius = theme.defaultRadius in theme.radius ? theme.radius[theme.defaultRadius as 'xs'] : rem(theme.defaultRadius)
+    const defaultRadius = Object.hasOwn(theme.radius, theme.defaultRadius)
+        ? theme.radius[theme.defaultRadius as 'xs']
+        : rem(theme.defaultRadius)
 
     const result: ConvertCSSVariablesInput = {
         variables: {

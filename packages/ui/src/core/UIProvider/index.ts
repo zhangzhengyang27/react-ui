@@ -6,6 +6,7 @@ export { createTheme } from './create-theme/create-theme'
 export { DEFAULT_THEME } from './default-theme'
 export { virtualColor, isVirtualColor } from './UICssVariables/virtual-color/virtual-color'
 export { defaultCssVariablesResolver } from './UICssVariables'
+export { UICssVariables } from './UICssVariables/UICssVariables'
 export { ColorSchemeScript } from './ColorSchemeScript'
 export type { ColorSchemeScriptProps } from './ColorSchemeScript'
 

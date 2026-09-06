@@ -1,4 +1,4 @@
-import { createContext, use, useCallback, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useMemo, useState } from 'react'
 import { useIsomorphicEffect, useMutationObserverTarget } from '@xiaoye-react/hooks'
 
 export type Direction = 'ltr' | 'rtl'
@@ -16,7 +16,7 @@ export const DirectionContext = createContext<DirectionContextValue>({
 })
 
 export function useDirection() {
-    return use(DirectionContext)
+    return useContext(DirectionContext)
 }
 
 export interface DirectionProviderProps {
@@ -29,6 +29,10 @@ export interface DirectionProviderProps {
     /** Determines whether direction should be updated on mount based on `dir` attribute set on root element (usually html element) @default true  */
     detectDirection?: boolean
 }
+
+// 模块级常量：避免内联字面量每次渲染进入 useMutationObserverTarget 的依赖导致 observer 反复重连
+const DIR_MUTATION_OPTIONS: MutationObserverInit = { attributes: true, attributeFilter: ['dir'] }
+const EMPTY_MUTATION_OPTIONS: MutationObserverInit = {}
 
 export function DirectionProvider({
     children,
@@ -72,7 +76,7 @@ export function DirectionProvider({
 
     useMutationObserverTarget(
         mutationCallback,
-        detectDirection ? { attributes: true, attributeFilter: ['dir'] } : {},
+        detectDirection ? DIR_MUTATION_OPTIONS : EMPTY_MUTATION_OPTIONS,
         typeof document !== 'undefined' && detectDirection ? document.documentElement : null
     )
 

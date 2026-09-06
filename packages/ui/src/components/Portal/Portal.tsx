@@ -112,7 +112,8 @@ export const Portal = factory<PortalFactory>((props, ref) => {
 
         return () => {
             if (!target && !reuseTargetNode && nodeRef.current) {
-                document.body.removeChild(nodeRef.current)
+                // 节点可能已被外部（动画库/用户代码）从 body 摘除，直接 removeChild 会抛 NotFoundError 打断卸载流程
+                nodeRef.current.parentNode?.removeChild(nodeRef.current)
             }
         }
     }, [target, reuseTargetNode])

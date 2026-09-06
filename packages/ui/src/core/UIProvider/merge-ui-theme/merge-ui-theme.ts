@@ -45,7 +45,7 @@ function isValidPrimaryShade(shade: number) {
  * @asserts {theme is UITheme} 断言参数是有效的 UI 主题
  */
 export function validateUITheme(theme: UITheme): asserts theme is UITheme {
-    if (!(theme.primaryColor in theme.colors)) {
+    if (!Object.hasOwn(theme.colors, theme.primaryColor)) {
         throw new Error(INVALID_PRIMARY_COLOR_ERROR)
     }
 

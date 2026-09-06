@@ -129,7 +129,10 @@ export function parseStyleProps({ styleProps, data, theme }: ParseStylePropsOpti
 
                 acc.hasResponsiveStyles = true
 
-                const breakpoints = getBreakpointKeys(styleProps[styleProp])
+                // 跳过 theme.breakpoints 未定义的键，避免生成 @media (min-width: undefined) 的非法查询
+                const breakpoints = getBreakpointKeys(styleProps[styleProp]).filter(bp =>
+                    Object.hasOwn(theme.breakpoints, bp)
+                )
 
                 properties.forEach(property => {
                     if (baseValue != null) {

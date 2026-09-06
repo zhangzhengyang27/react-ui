@@ -1,4 +1,4 @@
-import { use, useCallback, useEffect, useRef } from 'react';
+import { useCallback, useContext, useEffect, useRef } from 'react';
 import { useColorScheme } from '@xiaoye-react/hooks';
 import { noop } from '../../utils';
 import { UIContext, useUIStyleNonce } from '../UI.context';
@@ -22,13 +22,14 @@ function disableTransition(nonce: string | undefined) {
 export function useUIColorScheme({ keepTransitions }: { keepTransitions?: boolean } = {}) {
   const clearStylesRef = useRef<() => void>(noop);
   const timeoutRef = useRef<number>(-1);
-  const ctx = use(UIContext);
-  const nonce = useUIStyleNonce();
-  const nonceValue = useRef(nonce?.());
+  const ctx = useContext(UIContext);
 
   if (!ctx) {
     throw new Error('[@xiaoye-react/ui] UIProvider was not found in tree');
   }
+
+  const nonce = useUIStyleNonce();
+  const nonceValue = useRef(nonce?.());
 
   const { setColorScheme: setCtxColorScheme, clearColorScheme: clearCtxColorScheme } = ctx;
 

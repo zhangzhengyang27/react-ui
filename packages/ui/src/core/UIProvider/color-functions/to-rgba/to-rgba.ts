@@ -80,21 +80,30 @@ function hexToRgba(color: string): RGBA {
  *   与现代空格语法（"rgb(255 0 0)"、"rgb(255 0 0 / 0.5)"、"rgb(255 0 0 / 50%)"）
  * @returns 包含 r, g, b, a 属性的 RGBA 对象
  */
+function parseAlphaToken(token: string) {
+    return token.endsWith('%') ? parseFloat(token) / 100 : parseFloat(token)
+}
+
 function rgbStringToRgba(color: string): RGBA {
     const body = color.replace(/^rgba?\(/i, '').replace(/\)\s*$/, '').trim()
     const [mainPart, alphaPart] = body.split('/')
-    const [r, g, b, legacyAlpha] = mainPart
+    const tokens = mainPart
         .trim()
         .split(/[\s,]+/)
         .filter(Boolean)
-        .map(Number)
+    const rgbTokens = tokens.slice(0, 3)
+    const legacyAlpha = tokens[3]
+    const parseRgbToken = (token: string) =>
+        // rgb(100% 0% 0%) 百分比写法：按 255 折算
+        token.endsWith('%') ? (parseFloat(token) / 100) * 255 : Number(token)
+    const [r, g, b] = rgbTokens.map(parseRgbToken)
 
     let a: number | undefined
     if (alphaPart !== undefined) {
         const alphaStr = alphaPart.trim()
         a = alphaStr.endsWith('%') ? parseFloat(alphaStr) / 100 : parseFloat(alphaStr)
     } else {
-        a = legacyAlpha
+        a = legacyAlpha === undefined ? undefined : parseAlphaToken(legacyAlpha)
     }
 
     return { r, g, b, a: a ?? 1 }

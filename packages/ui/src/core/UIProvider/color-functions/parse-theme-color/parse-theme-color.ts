@@ -67,7 +67,8 @@ export function parseThemeColor({ color, theme, colorScheme }: ParseThemeColorOp
         parsedShade !== undefined && Number.isInteger(parsedShade) && parsedShade >= 0 && parsedShade <= 9
             ? (parsedShade as UIColorShade)
             : undefined
-    const isThemeColor = _color in theme.colors
+    // Object.hasOwn 而非 in：避免 valueOf/constructor 等原型链属性名被误判为主题色
+    const isThemeColor = Object.hasOwn(theme.colors, _color)
 
     if (isThemeColor) {
         const colorValue =

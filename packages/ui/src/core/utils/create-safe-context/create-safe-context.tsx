@@ -18,7 +18,8 @@ export function createSafeContext<ContextValue>(errorMessage: string) {
     const useSafeContext = () => {
         const ctx = useContext(Context)
 
-        if (ctx === null) {
+        // == 同时拦截 undefined：<Provider value={undefined}> 不应绕过友好报错
+        if (ctx == null) {
             throw new Error(errorMessage)
         }
 

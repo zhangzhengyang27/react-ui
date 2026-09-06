@@ -4,20 +4,19 @@ import { UIBreakpoint } from '../theme.types'
 
 type UseMatchesInput<T> = Partial<Record<UIBreakpoint, T>>
 
-const BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl']
-
 function getFirstMatchingValue<T>(
     value: UseMatchesInput<T>,
-    biggestMatch: UIBreakpoint | undefined
+    biggestMatch: UIBreakpoint | undefined,
+    breakpoints: UIBreakpoint[]
 ): T | undefined {
     if (!biggestMatch) {
         return value.base
     }
 
-    let index = BREAKPOINTS.indexOf(biggestMatch)
+    let index = breakpoints.indexOf(biggestMatch)
 
     while (index >= 0) {
-        const breakpoint = BREAKPOINTS[index]
+        const breakpoint = breakpoints[index]
         if (Object.hasOwn(value, breakpoint)) {
             return value[breakpoint]
         }
@@ -39,13 +38,13 @@ function getFirstMatchingBreakpoint(matches: (boolean | undefined)[]) {
 
 export function useMatches<T>(payload: UseMatchesInput<T>, options?: UseMediaQueryOptions) {
     const theme = useUITheme()
-    const xsMatches = useMediaQuery(`(min-width: ${theme.breakpoints.xs})`, false, options)
-    const smMatches = useMediaQuery(`(min-width: ${theme.breakpoints.sm})`, false, options)
-    const mdMatches = useMediaQuery(`(min-width: ${theme.breakpoints.md})`, false, options)
-    const lgMatches = useMediaQuery(`(min-width: ${theme.breakpoints.lg})`, false, options)
-    const xlMatches = useMediaQuery(`(min-width: ${theme.breakpoints.xl})`, false, options)
+    // 断点序取自主题：自定义主题增删断点同样生效。
+    // 主题对象在 UIThemeProvider 内 memo 化，断点键序在一次主题下稳定，hooks 数量恒定。
+    const breakpoints = Object.keys(theme.breakpoints) as UIBreakpoint[]
+    const matches = breakpoints.map(breakpoint =>
+        useMediaQuery(`(min-width: ${theme.breakpoints[breakpoint]})`, false, options)
+    )
 
-    const breakpoints = [xsMatches, smMatches, mdMatches, lgMatches, xlMatches]
-    const firstMatchingBreakpointIndex = getFirstMatchingBreakpoint(breakpoints)
-    return getFirstMatchingValue(payload, BREAKPOINTS[firstMatchingBreakpointIndex])
+    const firstMatchingBreakpointIndex = getFirstMatchingBreakpoint(matches)
+    return getFirstMatchingValue(payload, breakpoints[firstMatchingBreakpointIndex], breakpoints)
 }

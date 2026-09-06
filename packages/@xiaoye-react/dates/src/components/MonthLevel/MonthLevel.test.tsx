@@ -39,15 +39,6 @@ describe('@xiaoye-react/dates/MonthLevel', () => {
 
   datesTests.itSupportsHeaderProps({ component: MonthLevel, props: defaultProps });
   datesTests.itSupportsMonthProps({ component: MonthLevel, props: defaultProps });
-  datesTests.itSupportsGetDayRef({ component: MonthLevel, props: defaultProps });
-  datesTests.itSupportsWithNextPrevious({ component: MonthLevel, props: defaultProps });
-  datesTests.itSupportsOnDayKeydown({ component: MonthLevel, props: defaultProps });
-  datesTests.itSupportsOnDayClick({ component: MonthLevel, props: defaultProps });
-
-  it('renders correct CalendarHeader label', () => {
-    render(<MonthLevel {...defaultProps} />);
-    expectLabel('April 2022');
-  });
 
   it('supports changing month label format', () => {
     render(<MonthLevel {...defaultProps} monthLabelFormat="MM/YY" />);

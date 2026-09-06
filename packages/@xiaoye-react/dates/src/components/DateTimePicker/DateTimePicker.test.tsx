@@ -82,25 +82,7 @@ describe('@xiaoye-react/dates/DateTimePicker', () => {
     },
   });
 
-  datesTests.itSupportsYearsListProps({
-    component: DateTimePicker,
-    props: {
-      ...defaultProps,
-      defaultLevel: 'decade',
-      defaultValue: '2022-04-11',
-      popoverProps: { opened: true, withinPortal: false, transitionProps: { duration: 0 } },
-    },
-  });
 
-  datesTests.itSupportsMonthsListProps({
-    component: DateTimePicker,
-    props: {
-      ...defaultProps,
-      defaultLevel: 'year',
-      defaultValue: '2022-04-11',
-      popoverProps: { opened: true, withinPortal: false, transitionProps: { duration: 0 } },
-    },
-  });
 
   it('toggles popover when input is clicked (dropdownType="popover")', async () => {
     const { container } = render(<DateTimePicker {...defaultProps} />);

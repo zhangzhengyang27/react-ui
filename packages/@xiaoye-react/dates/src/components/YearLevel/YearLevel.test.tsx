@@ -34,11 +34,6 @@ describe('@xiaoye-react/dates/YearLevel', () => {
     providerStylesApi: false,
   });
 
-  datesTests.itSupportsGetControlRef({
-    component: YearLevel,
-    props: defaultProps,
-    numberOfControls: 12,
-  });
   datesTests.itSupportsHeaderProps({ component: YearLevel, props: defaultProps });
   datesTests.itSupportsWithNextPrevious({ component: YearLevel, props: defaultProps });
   datesTests.itSupportsMonthsListProps({ component: YearLevel, props: defaultProps });

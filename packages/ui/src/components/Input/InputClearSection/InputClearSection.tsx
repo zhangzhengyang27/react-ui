@@ -40,7 +40,13 @@ export function InputClearSection({
         return rightSection === null ? null : clearSection || __defaultRightSection
     }
 
-    if (clearSection && (rightSection || __defaultRightSection)) {
+    // both（默认）：显式传入的 rightSection 优先于清除按钮（对齐 Mantine 语义），
+    // 组合展示仅用于「清除按钮 + 默认右侧内容」（如下拉箭头）的场景
+    if (rightSection) {
+        return rightSection;
+    }
+
+    if (clearSection && __defaultRightSection) {
         return (
             <div
                 data-combined-clear-section
@@ -52,7 +58,7 @@ export function InputClearSection({
                 }}
             >
                 {clearSection}
-                {rightSection || __defaultRightSection}
+                {__defaultRightSection}
             </div>
         )
     }

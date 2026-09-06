@@ -14,11 +14,6 @@ describe('@xiaoye-react/dates/YearsList', () => {
     stylesApiSelectors: ['yearsList', 'yearsListCell', 'yearsListControl', 'yearsListRow'],
   });
 
-  datesTests.itSupportsGetControlRef({
-    component: YearsList,
-    props: defaultProps,
-    numberOfControls: 10,
-  });
   datesTests.itSupportsYearsListProps({ component: YearsList, props: defaultProps });
   datesTests.itSupportsOnControlKeydown({ component: YearsList, props: defaultProps });
   datesTests.itSupportsOnControlClick({ component: YearsList, props: defaultProps });

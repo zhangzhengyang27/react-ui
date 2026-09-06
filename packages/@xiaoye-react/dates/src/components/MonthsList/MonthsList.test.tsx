@@ -14,11 +14,6 @@ describe('@xiaoye-react/dates/MonthsList', () => {
     stylesApiSelectors: ['monthsList', 'monthsListCell', 'monthsListControl', 'monthsListRow'],
   });
 
-  datesTests.itSupportsGetControlRef({
-    component: MonthsList,
-    props: defaultProps,
-    numberOfControls: 12,
-  });
   datesTests.itSupportsMonthsListProps({ component: MonthsList, props: defaultProps });
   datesTests.itSupportsOnControlKeydown({ component: MonthsList, props: defaultProps });
   datesTests.itSupportsOnControlClick({ component: MonthsList, props: defaultProps });

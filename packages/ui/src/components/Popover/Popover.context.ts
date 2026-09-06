@@ -30,6 +30,8 @@ export interface PopoverContextValue {
     setTargetId: (id: string) => void
     controlled: boolean
     trapFocus: boolean | undefined
+    withinPortal: boolean | undefined
+    portalProps: Record<string, any> | undefined
 }
 
 export const [PopoverContextProvider, usePopoverContext] = createSafeContext<PopoverContextValue>(

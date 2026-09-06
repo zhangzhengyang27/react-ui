@@ -126,6 +126,11 @@ export const PickerInputBase = factory<PickerInputBaseFactory>((_props) => {
     type,
     onDropdownClose,
     withTime,
+    // 内部 Popover/Modal 专属 props：不剥离会被 ...others 透传到 DOM 并触发 React 告警
+    withinPortal: _withinPortal,
+    returnFocus: _returnFocus,
+    transitionProps: _transitionProps,
+    closeOnEscape: _closeOnEscape,
     ...others
   } = useInputProps('PickerInputBase', { size: 'sm' }, _props);
 

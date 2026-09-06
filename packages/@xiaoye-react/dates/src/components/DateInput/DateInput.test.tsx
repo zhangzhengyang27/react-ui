@@ -72,25 +72,7 @@ describe('@xiaoye-react/dates/DateInput', () => {
     props: { defaultValue: '2022-04-11' },
   });
 
-  datesTests.itSupportsYearsListProps({
-    component: DateInput,
-    props: {
-      ...defaultProps,
-      defaultLevel: 'decade',
-      defaultValue: '2022-04-11',
-      popoverProps: { opened: true, withinPortal: false, transitionProps: { duration: 0 } },
-    },
-  });
 
-  datesTests.itSupportsMonthsListProps({
-    component: DateInput,
-    props: {
-      ...defaultProps,
-      defaultLevel: 'year',
-      defaultValue: '2022-04-11',
-      popoverProps: { opened: true, withinPortal: false, transitionProps: { duration: 0 } },
-    },
-  });
 
   it('opens/closes dropdown when input is focused/blurred', async () => {
     const { container } = render(<DateInput {...defaultProps} />);

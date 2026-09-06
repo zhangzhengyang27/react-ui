@@ -2,7 +2,7 @@ import { useMergedRef } from '@xiaoye-react/hooks'
 import { Box, ElementProps, factory, rem, useProps, type BoxProps, type Factory } from '../../../core'
 import { FloatingArrow } from '../../../core/utils/Floating'
 import { FocusTrap } from '../../FocusTrap'
-import { Portal } from '../../Portal'
+import { OptionalPortal } from '../../Portal'
 import { Transition } from '../../Transition'
 import { usePopoverContext } from '../Popover.context'
 
@@ -30,7 +30,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
 
     // transitionProps prop 已移除（决策 A）：过渡固定为 fade/150ms；Portal 无条件渲染
     return (
-        <Portal>
+        <OptionalPortal withinPortal={ctx.withinPortal}>
             <Transition mounted={ctx.opened} transition="fade" duration={150}>
                 {transitionStyles => (
                     <FocusTrap active={ctx.trapFocus && ctx.opened} innerRef={mergedRef}>
@@ -79,7 +79,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
                     </FocusTrap>
                 )}
             </Transition>
-        </Portal>
+        </OptionalPortal>
     )
 })
 

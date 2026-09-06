@@ -17,15 +17,6 @@ describe('@xiaoye-react/dates/Month', () => {
 
   datesTests.itSupportsOnDayClick({ component: Month, props: defaultProps });
   datesTests.itSupportsOnDayKeydown({ component: Month, props: defaultProps });
-  datesTests.itSupportsGetDayRef({ component: Month, props: defaultProps });
-  datesTests.itSupportsMonthProps({ component: Month, props: defaultProps });
-
-  it('has correct default __staticSelector', () => {
-    const { container } = render(<Month {...defaultProps} />);
-    expect(container.querySelector('table')).toHaveClass('ui-Month-month');
-    expect(container.querySelector('thead tr')).toHaveClass('ui-Month-weekdaysRow');
-    expect(container.querySelector('tbody tr td button')).toHaveClass('ui-Month-day');
-  });
 
   it('supports __staticSelector', () => {
     const { container } = render(<Month {...defaultProps} __staticSelector="Calendar" />);

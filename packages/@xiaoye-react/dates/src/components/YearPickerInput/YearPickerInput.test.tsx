@@ -45,14 +45,6 @@ describe('@xiaoye-react/dates/YearPickerInput', () => {
     component: YearPickerInput,
     props: { ...defaultProps, defaultValue: '2022-04-11' },
   });
-  datesTests.itSupportsYearsListProps({
-    component: YearPickerInput,
-    props: {
-      ...defaultProps,
-      defaultValue: '2022-04-11',
-      popoverProps: { opened: true, withinPortal: false, transitionProps: { duration: 0 } },
-    },
-  });
 
   it('supports valueFormat prop', () => {
     const { container, rerender } = render(

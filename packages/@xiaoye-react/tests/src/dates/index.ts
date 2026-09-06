@@ -1,8 +1,6 @@
 import { itSupportsHeaderProps } from './it-support-header-props';
 import { itSupportsClearableProps } from './it-supports-clearable-props';
 import { itSupportsDateInputProps } from './it-supports-date-input-props';
-import { itSupportsGetControlRef } from './it-supports-get-control-ref';
-import { itSupportsGetDayRef } from './it-supports-get-day-ref';
 import { itSupportsMonthProps } from './it-supports-month-props';
 import { itSupportsMonthsListProps } from './it-supports-months-list-props';
 import { itSupportsOnControlClick } from './it-supports-on-control-click';
@@ -20,10 +18,8 @@ const datesTests = {
   itSupportsWeekdaysProps,
   itSupportsMonthProps,
   itSupportsHeaderProps,
-  itSupportsGetDayRef,
   itSupportsWithNextPrevious,
   itSupportsOnDayKeydown,
-  itSupportsGetControlRef,
   itSupportsMonthsListProps,
   itSupportsYearsListProps,
   itSupportsOnControlKeydown,

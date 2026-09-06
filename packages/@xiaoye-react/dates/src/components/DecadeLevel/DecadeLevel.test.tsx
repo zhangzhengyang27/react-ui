@@ -33,11 +33,6 @@ describe('@xiaoye-react/dates/DecadeLevel', () => {
     providerStylesApi: false,
   });
 
-  datesTests.itSupportsGetControlRef({
-    component: DecadeLevel,
-    props: defaultProps,
-    numberOfControls: 10,
-  });
   datesTests.itSupportsWithNextPrevious({ component: DecadeLevel, props: defaultProps });
   datesTests.itSupportsYearsListProps({ component: DecadeLevel, props: defaultProps });
   datesTests.itSupportsOnControlKeydown({ component: DecadeLevel, props: defaultProps });

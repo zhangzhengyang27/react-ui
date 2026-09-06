@@ -90,6 +90,12 @@ export interface PopoverProps extends StylesApiProps<PopoverFactory> {
     /** If set, popover dropdown will not be rendered */
     disabled?: boolean
 
+    /** If set, popover dropdown is rendered inline instead of a portal @default true */
+    withinPortal?: boolean
+
+    /** Props passed down to the underlying Portal when withinPortal is true */
+    portalProps?: Record<string, any>
+
     /** Determines whether focus should be trapped within dropdown */
     trapFocus?: boolean
 
@@ -160,6 +166,8 @@ export function Popover(_props: PopoverProps) {
         clickOutsideEvents,
         trapFocus,
         zIndex,
+        withinPortal = true,
+        portalProps,
         radius,
         shadow,
         id,
@@ -261,6 +269,8 @@ export function Popover(_props: PopoverProps) {
                 placement: popover.floating.placement,
                 trapFocus,
                 zIndex,
+                withinPortal,
+                portalProps,
                 onClose: popover.onClose,
                 onToggle: popover.onToggle,
                 getTargetId: () => targetId,

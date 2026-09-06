@@ -1,4 +1,4 @@
-import React, { CSSProperties, useRef, useState } from 'react'
+import React, { CSSProperties, useEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 import { useDidUpdate } from '../use-did-update/use-did-update'
 import { mergeRefs } from '../use-merged-ref/use-merged-ref'
@@ -94,7 +94,24 @@ export function useCollapse({
         }
     }
 
+    // rAF 链句柄：卸载或 expanded 快速翻转时取消未完成的动画帧，
+    // 避免卸载后 flushSync/setState 的脏副作用与新旧两条链的样式交错
+    const rafIdsRef = useRef<number[]>([])
+    const cancelPendingRafs = () => {
+        rafIdsRef.current.forEach(id => window.cancelAnimationFrame(id))
+        rafIdsRef.current = []
+    }
+
+    const queueRaf = (callback: () => void) => {
+        const id = window.requestAnimationFrame(() => {
+            rafIdsRef.current = rafIdsRef.current.filter(existing => existing !== id)
+            callback()
+        })
+        rafIdsRef.current.push(id)
+    }
+
     useDidUpdate(() => {
+        cancelPendingRafs()
         const shouldTransition = transitionDuration !== 0
 
         if (shouldTransition) {
@@ -102,23 +119,30 @@ export function useCollapse({
         }
 
         if (expanded) {
-            window.requestAnimationFrame(() => {
+            queueRaf(() => {
                 flushSync(() => setState('entering'))
                 mergeStyles({ willChange: 'height', display: 'block', overflow: 'hidden' })
-                window.requestAnimationFrame(() => {
+                queueRaf(() => {
                     const height = getElementHeight(elementRef)
                     mergeStyles({ ...getTransitionStyles(height), height })
                 })
             })
         } else {
-            window.requestAnimationFrame(() => {
+            queueRaf(() => {
                 flushSync(() => setState('exiting'))
                 const height = getElementHeight(elementRef)
                 mergeStyles({ ...getTransitionStyles(height), willChange: 'height', height })
-                window.requestAnimationFrame(() => mergeStyles({ height: 0, overflow: 'hidden' }))
+                queueRaf(() => mergeStyles({ height: 0, overflow: 'hidden' }))
             })
         }
     }, [expanded])
+
+    useEffect(
+        () => () => {
+            cancelPendingRafs()
+        },
+        []
+    )
 
     const handleTransitionEnd = (event: React.TransitionEvent): void => {
         if (event.target !== elementRef.current || event.propertyName !== 'height') {

@@ -104,6 +104,9 @@ export function createStorage<T>(type: StorageType, hookName: string) {
                     // 副作用（写 storage + dispatchEvent）在 updater 之外仅执行一次，
                     // 避免 StrictMode 双调用 updater 导致重复写 storage / 重复派发事件。
                     const computed = (val as (prevState: T) => T)(valueRef.current)
+                    // 立即回写 ref：同一事件批次内连续多次函数式更新能正确叠加，
+                    // 否则后续调用仍读到旧值，中间更新被覆盖丢失
+                    valueRef.current = computed
                     setValue(computed)
                     try {
                         setItem(key, serialize(computed))

@@ -18,9 +18,8 @@ import { useCallback, useRef, useState } from 'react'
  * - **不应直接序列化或克隆返回的 Set 实例**。若需克隆,先 `new Set(originalSet)` 复制为纯 Set。
  * - 此实现为响应式 Set 的参考实现,方法覆写属已知设计权衡。
  *
- * **性能说明**：方法覆写通过 `useCallback` 稳定化（不再每次渲染重新赋值），
- * 重渲染由独立的版本号 state 触发；`add` 内部始终操作同一个 Set 引用（`setRef.current`），
- * 仅在 mutation 后通过版本号 + 1 触发渲染，避免每次都 `new Set()` 深拷贝整表。
+ * 方法覆写通过 `useCallback` 稳定化；每次 mutation 生成新 Set 实例驱动重渲染，
+ * 保证 `set` 引用随内容变更而变化（useEffect/memo 等依赖引用相等性的消费方才能正确感知更新）。
  */
 export function useSet<T>(values?: T[]): Set<T> {
     const setRef = useRef<Set<T> | null>(null)
@@ -29,31 +28,26 @@ export function useSet<T>(values?: T[]): Set<T> {
     }
     const set = setRef.current
 
-    const [, setVersion] = useState(0)
-    const bump = useCallback(() => setVersion(v => v + 1), [])
+    // 每次变更生成新 Set：保证 set 引用随变更变化，
+    // 依赖引用相等性的 useEffect / memo 消费方才能正确感知更新（与 Mantine 上游契约一致）
+    const [, setSet] = useState(() => new Set(values))
 
-    const add = useCallback(
-        (...args: [T]) => {
-            const result = Set.prototype.add.apply(setRef.current, args)
-            bump()
-            return result
-        },
-        [bump]
-    )
+    const add = useCallback((...args: [T]) => {
+        const result = Set.prototype.add.apply(setRef.current, args)
+        setSet(new Set(setRef.current!))
+        return result
+    }, [])
 
     const clear = useCallback(() => {
         Set.prototype.clear.apply(setRef.current)
-        bump()
-    }, [bump])
+        setSet(new Set(setRef.current!))
+    }, [])
 
-    const del = useCallback(
-        (...args: [T]) => {
-            const result = Set.prototype.delete.apply(setRef.current, args)
-            bump()
-            return result
-        },
-        [bump]
-    )
+    const del = useCallback((...args: [T]) => {
+        const result = Set.prototype.delete.apply(setRef.current, args)
+        setSet(new Set(setRef.current!))
+        return result
+    }, [])
 
     set.add = add as Set<T>['add']
     set.clear = clear as Set<T>['clear']

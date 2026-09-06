@@ -37,12 +37,17 @@ export function useDebouncedCallback<T extends (...args: any[]) => any>(
     // 避免闭包自引用（currentCallback）导致的陈旧返回。
     const isPendingRef = useRef(false)
     const isFirstCallRef = useRef(true)
+    // 是否存在真实的尾随（trailing）待执行调用。
+    // leading 模式下防抖 timer 只是「前导锁定」的复位计时器，
+    // 没有它就无法区分「锁定中」和「有待执行回调」，flush/maxWait 会把已立即触发过的调用再执行一遍
+    const hasTrailingRef = useRef(false)
 
     const clearTimers = () => {
         window.clearTimeout(debounceTimerRef.current)
         window.clearTimeout(maxWaitTimerRef.current)
         debounceTimerRef.current = 0
         maxWaitTimerRef.current = 0
+        hasTrailingRef.current = false
     }
 
     const lastCallback = useMemo(() => {
@@ -54,12 +59,13 @@ export function useDebouncedCallback<T extends (...args: any[]) => any>(
                 const isFirstCall = isFirstCallRef.current
                 isFirstCallRef.current = false
                 isPendingRef.current = true
+                hasTrailingRef.current = true
 
                 const startMaxWaitTimer = () => {
                     if (maxWait !== undefined && maxWaitTimerRef.current === 0) {
                         maxWaitTimerRef.current = window.setTimeout(() => {
                             maxWaitTimerRef.current = 0
-                            if (debounceTimerRef.current !== 0) {
+                            if (debounceTimerRef.current !== 0 && hasTrailingRef.current) {
                                 const latestArgs = latestArgsRef.current!
                                 clearTimers()
                                 isPendingRef.current = false
@@ -76,6 +82,8 @@ export function useDebouncedCallback<T extends (...args: any[]) => any>(
                 }
 
                 if (leading && isFirstCall) {
+                    // 前导立即执行；此时只有复位计时器在跑，没有待执行的尾随调用
+                    hasTrailingRef.current = false
                     handleCallback(...args)
                     debounceTimerRef.current = window.setTimeout(resetLeadingState, delay)
                     startMaxWaitTimer()
@@ -83,7 +91,7 @@ export function useDebouncedCallback<T extends (...args: any[]) => any>(
                 }
 
                 const flush = () => {
-                    if (debounceTimerRef.current !== 0) {
+                    if (debounceTimerRef.current !== 0 && hasTrailingRef.current) {
                         const latestArgs = latestArgsRef.current!
                         clearTimers()
                         isPendingRef.current = false
@@ -98,7 +106,7 @@ export function useDebouncedCallback<T extends (...args: any[]) => any>(
             },
             {
                 flush: () => {
-                    if (debounceTimerRef.current !== 0) {
+                    if (debounceTimerRef.current !== 0 && hasTrailingRef.current) {
                         const latestArgs = latestArgsRef.current
                         clearTimers()
                         isPendingRef.current = false

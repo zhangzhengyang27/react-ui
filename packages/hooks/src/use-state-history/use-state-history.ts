@@ -23,7 +23,9 @@ export function useStateHistory<T>(
     initialValue: T,
     options: UseStateHistoryOptions = {}
 ): UseStateHistoryReturnValue<T> {
+    // limit 最小为 1：0 会把历史清空并使 current 变成 -1，state 取值 undefined
     const { limit = Infinity } = options
+    const maxEntries = limit >= 1 ? limit : 1
 
     const [state, setState] = useState<UseStateHistoryValue<T>>({
         history: [initialValue],
@@ -35,15 +37,15 @@ export function useStateHistory<T>(
             setState(currentState => {
                 let nextState = [...currentState.history.slice(0, currentState.current + 1), val]
                 // 超限时从头部丢弃最旧记录，保持 current 索引仍指向最新值
-                if (limit !== Infinity && nextState.length > limit) {
-                    nextState = nextState.slice(nextState.length - limit)
+                if (maxEntries !== Infinity && nextState.length > maxEntries) {
+                    nextState = nextState.slice(nextState.length - maxEntries)
                 }
                 return {
                     history: nextState,
                     current: nextState.length - 1
                 }
             }),
-        [limit]
+        [maxEntries]
     )
 
     const back = useCallback(

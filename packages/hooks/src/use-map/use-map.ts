@@ -18,9 +18,8 @@ import { useCallback, useRef, useState } from 'react'
  * - **不应直接序列化或克隆返回的 Map 实例**。若需克隆,先 `new Map(originalMap)` 复制为纯 Map。
  * - 此实现为响应式 Map 的参考实现,方法覆写属已知设计权衡。
  *
- * **性能说明**：方法覆写通过 `useCallback` 稳定化（不再每次渲染重新赋值），
- * 重渲染由独立的版本号 state 触发；`set` 内部始终操作同一个 Map 引用（`mapRef.current`），
- * 仅在 mutation 后通过版本号 + 1 触发渲染，避免每次都 `new Map()` 深拷贝整表。
+ * 方法覆写通过 `useCallback` 稳定化；每次 mutation 生成新 Map 实例驱动重渲染，
+ * 保证 `map` 引用随内容变更而变化（useEffect/memo 等依赖引用相等性的消费方才能正确感知更新）。
  */
 export function useMap<T, V>(initialState?: [T, V][]): Map<T, V> {
     const mapRef = useRef<Map<T, V> | null>(null)
@@ -29,32 +28,26 @@ export function useMap<T, V>(initialState?: [T, V][]): Map<T, V> {
     }
     const map = mapRef.current
 
-    // 版本号驱动重渲染，避免每次 set 都 new Map 深拷贝
-    const [, setVersion] = useState(0)
-    const bump = useCallback(() => setVersion(v => v + 1), [])
+    // 每次变更生成新 Map：保证 map 引用随变更变化，
+    // 依赖引用相等性的 useEffect / memo 消费方才能正确感知更新（与 Mantine 上游契约一致）
+    const [, setMap] = useState(() => new Map<T, V>(initialState))
 
-    const set = useCallback(
-        (...args: [T, V]) => {
-            Map.prototype.set.apply(mapRef.current, args)
-            bump()
-            return mapRef.current
-        },
-        [bump]
-    )
+    const set = useCallback((...args: [T, V]) => {
+        Map.prototype.set.apply(mapRef.current, args)
+        setMap(new Map(mapRef.current!))
+        return mapRef.current
+    }, [])
 
     const clear = useCallback(() => {
         Map.prototype.clear.apply(mapRef.current)
-        bump()
-    }, [bump])
+        setMap(new Map(mapRef.current!))
+    }, [])
 
-    const del = useCallback(
-        (...args: [T]) => {
-            const result = Map.prototype.delete.apply(mapRef.current, args)
-            bump()
-            return result
-        },
-        [bump]
-    )
+    const del = useCallback((...args: [T]) => {
+        const result = Map.prototype.delete.apply(mapRef.current, args)
+        setMap(new Map(mapRef.current!))
+        return result
+    }, [])
 
     // 覆盖为实例自有属性（与上游 useMap 语义一致）
     map.set = set as Map<T, V>['set']

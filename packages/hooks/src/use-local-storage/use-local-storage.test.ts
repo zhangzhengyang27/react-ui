@@ -43,3 +43,23 @@ describe('useLocalStorage', () => {
         expect(result.current[0]).toBe('default')
     })
 })
+
+describe('useLocalStorage: 同一事件批次内连续函数式更新', () => {
+    beforeEach(() => {
+        window.localStorage.clear()
+    })
+
+    it('composes consecutive functional updates instead of dropping them', () => {
+        const { result } = renderHook(() =>
+            useLocalStorage<number>({ key: 'consecutive-updates', defaultValue: 0 })
+        )
+
+        act(() => {
+            result.current[1](v => v + 1)
+            result.current[1](v => v + 1)
+        })
+
+        expect(result.current[0]).toBe(2)
+        expect(window.localStorage.getItem('consecutive-updates')).toBe('2')
+    })
+})

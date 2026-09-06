@@ -1,5 +1,3 @@
-import { itHandlesControlsKeyboardEvents } from './it-handles-controls-keyboard-events';
-import { itHandlesMonthKeyboardEvents } from './it-handles-month-keyboard-events';
 import { itSupportsHeaderProps } from './it-support-header-props';
 import { itSupportsClearableProps } from './it-supports-clearable-props';
 import { itSupportsDateInputProps } from './it-supports-date-input-props';
@@ -31,8 +29,6 @@ const datesTests = {
   itSupportsOnControlKeydown,
   itSupportsOnControlClick,
   itSupportsOnDayClick,
-  itHandlesMonthKeyboardEvents,
-  itHandlesControlsKeyboardEvents,
   itSupportsOnControlMouseEnter,
   itSupportsClearableProps,
   itSupportsDateInputProps

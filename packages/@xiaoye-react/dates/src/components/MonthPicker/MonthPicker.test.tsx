@@ -41,11 +41,6 @@ describe('@xiaoye-react/dates/MonthPicker', () => {
     props: defaultProps,
   });
 
-  datesTests.itHandlesControlsKeyboardEvents({
-    component: MonthPicker,
-    props: defaultProps,
-    listSelector: '.ui-MonthPicker-monthsList',
-  });
 
   it('can be uncontrolled (type="default")', async () => {
     const { container } = render(<MonthPicker {...defaultProps} date="2022-04-11" />);

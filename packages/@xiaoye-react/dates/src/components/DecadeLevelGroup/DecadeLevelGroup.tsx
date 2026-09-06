@@ -1,8 +1,6 @@
 import dayjs from 'dayjs';
-import { useRef } from 'react';
 import { BoxProps, ElementProps, factory, Factory, StylesApiProps, useProps } from '@xiaoye-react/ui';
 import { DateStringValue } from '../../types';
-import { handleControlKeyDown } from '../../utils';
 import { DecadeLevel, DecadeLevelSettings, DecadeLevelStylesNames } from '../DecadeLevel';
 import { LevelsGroup, LevelsGroupStylesNames } from '../LevelsGroup';
 
@@ -86,8 +84,6 @@ export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>((_props) => {
     ...others
   } = props;
 
-  const controlsRef = useRef<HTMLButtonElement[][][]>([]);
-
   const decades = Array(numberOfColumns)
     .fill(0)
     .map((_, decadeIndex) => {
@@ -106,26 +102,6 @@ export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>((_props) => {
           decadeLabelFormat={decadeLabelFormat}
           __onControlClick={__onControlClick}
           __onControlMouseEnter={__onControlMouseEnter}
-          __onControlKeyDown={(event, payload) =>
-            handleControlKeyDown({
-              levelIndex: decadeIndex,
-              rowIndex: payload.rowIndex,
-              cellIndex: payload.cellIndex,
-              event,
-              controlsRef,
-            })
-          }
-          __getControlRef={(rowIndex, cellIndex, node) => {
-            if (!Array.isArray(controlsRef.current[decadeIndex])) {
-              controlsRef.current[decadeIndex] = [];
-            }
-
-            if (!Array.isArray(controlsRef.current[decadeIndex][rowIndex])) {
-              controlsRef.current[decadeIndex][rowIndex] = [];
-            }
-
-            controlsRef.current[decadeIndex][rowIndex][cellIndex] = node;
-          }}
           levelControlAriaLabel={
             typeof levelControlAriaLabel === 'function'
               ? levelControlAriaLabel(currentDecade)

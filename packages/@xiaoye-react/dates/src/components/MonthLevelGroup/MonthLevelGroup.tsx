@@ -1,8 +1,6 @@
 import dayjs from 'dayjs';
-import { useRef } from 'react';
 import { BoxProps, ElementProps, factory, Factory, StylesApiProps, useProps } from '@xiaoye-react/ui';
 import { DateStringValue } from '../../types';
-import { handleControlKeyDown } from '../../utils';
 import { LevelsGroup, LevelsGroupStylesNames } from '../LevelsGroup';
 import { MonthLevel, MonthLevelSettings, MonthLevelStylesNames } from '../MonthLevel';
 
@@ -98,7 +96,6 @@ export const MonthLevelGroup = factory<MonthLevelGroupFactory>((_props) => {
     ...others
   } = props;
 
-  const daysRefs = useRef<HTMLButtonElement[][][]>([]);
 
   const months = Array(numberOfColumns)
     .fill(0)
@@ -115,26 +112,6 @@ export const MonthLevelGroup = factory<MonthLevelGroupFactory>((_props) => {
           __stopPropagation={__stopPropagation}
           __onDayClick={__onDayClick}
           __onDayMouseEnter={__onDayMouseEnter}
-          __onDayKeyDown={(event, payload) =>
-            handleControlKeyDown({
-              levelIndex: monthIndex,
-              rowIndex: payload.rowIndex,
-              cellIndex: payload.cellIndex,
-              event,
-              controlsRef: daysRefs,
-            })
-          }
-          __getDayRef={(rowIndex, cellIndex, node) => {
-            if (!Array.isArray(daysRefs.current[monthIndex])) {
-              daysRefs.current[monthIndex] = [];
-            }
-
-            if (!Array.isArray(daysRefs.current[monthIndex][rowIndex])) {
-              daysRefs.current[monthIndex][rowIndex] = [];
-            }
-
-            daysRefs.current[monthIndex][rowIndex][cellIndex] = node;
-          }}
           levelControlAriaLabel={
             typeof levelControlAriaLabel === 'function'
               ? levelControlAriaLabel(currentMonth)

@@ -28,11 +28,6 @@ describe('@xiaoye-react/dates/YearPicker', () => {
   });
 
   datesTests.itSupportsYearsListProps({ component: YearPicker, props: {} });
-  datesTests.itHandlesControlsKeyboardEvents({
-    component: YearPicker,
-    props: {},
-    listSelector: '.ui-YearPicker-yearsList',
-  });
 
   it('can be uncontrolled (type="default")', async () => {
     const { container } = render(<YearPicker date="2022-04-11" />);

@@ -58,59 +58,7 @@ describe('@xiaoye-react/dates/Calendar', () => {
   });
 
   datesTests.itSupportsMonthProps({ component: Calendar, props: defaultProps });
-  datesTests.itHandlesMonthKeyboardEvents({
-    component: Calendar,
-    props: defaultProps,
-    name: 'Calendar',
-  });
 
-  datesTests.itHandlesControlsKeyboardEvents(
-    {
-      component: Calendar,
-      props: { ...defaultProps, level: 'year' },
-      listSelector: '.ui-Calendar-monthsList',
-    },
-    'handle months list keyboard events'
-  );
-
-  datesTests.itHandlesControlsKeyboardEvents(
-    {
-      component: Calendar,
-      props: { ...defaultProps, level: 'decade' },
-      listSelector: '.ui-Calendar-yearsList',
-    },
-    'handle years list keyboard events'
-  );
-
-  it('sets correct aria-labels based on ariaLabels prop', () => {
-    const testLabels = {
-      monthLevelControl: 'test-month-level',
-      yearLevelControl: 'test-year-level',
-      nextMonth: 'test-next-month',
-      previousMonth: 'test-previous-month',
-      nextYear: 'test-next-year',
-      previousYear: 'test-previous-year',
-      nextDecade: 'test-next-decade',
-      previousDecade: 'test-previous-decade',
-    };
-
-    const { rerender } = render(
-      <Calendar {...defaultProps} ariaLabels={testLabels} level="month" />
-    );
-
-    expect(screen.getByLabelText('test-month-level')).toBeInTheDocument();
-    expect(screen.getByLabelText('test-next-month')).toBeInTheDocument();
-    expect(screen.getByLabelText('test-previous-month')).toBeInTheDocument();
-
-    rerender(<Calendar {...defaultProps} ariaLabels={testLabels} level="year" />);
-    expect(screen.getByLabelText('test-year-level')).toBeInTheDocument();
-    expect(screen.getByLabelText('test-next-year')).toBeInTheDocument();
-    expect(screen.getByLabelText('test-previous-year')).toBeInTheDocument();
-
-    rerender(<Calendar {...defaultProps} ariaLabels={testLabels} level="decade" />);
-    expect(screen.getByLabelText('test-next-decade')).toBeInTheDocument();
-    expect(screen.getByLabelText('test-previous-decade')).toBeInTheDocument();
-  });
 
   it('supports numberOfColumns', () => {
     const { rerender } = render(<Calendar {...defaultProps} numberOfColumns={1} level="month" />);

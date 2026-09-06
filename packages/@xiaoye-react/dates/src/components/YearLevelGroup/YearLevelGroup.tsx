@@ -1,8 +1,6 @@
 import dayjs from 'dayjs';
-import { useRef } from 'react';
 import { BoxProps, ElementProps, factory, Factory, StylesApiProps, useProps } from '@xiaoye-react/ui';
 import { DateStringValue } from '../../types';
-import { handleControlKeyDown } from '../../utils';
 import { LevelsGroup, LevelsGroupStylesNames } from '../LevelsGroup';
 import { YearLevel, YearLevelSettings, YearLevelStylesNames } from '../YearLevel';
 
@@ -85,8 +83,6 @@ export const YearLevelGroup = factory<YearLevelGroupFactory>((_props) => {
     ...others
   } = props;
 
-  const controlsRef = useRef<HTMLButtonElement[][][]>([]);
-
   const years = Array(numberOfColumns)
     .fill(0)
     .map((_, yearIndex) => {
@@ -104,26 +100,6 @@ export const YearLevelGroup = factory<YearLevelGroupFactory>((_props) => {
           __stopPropagation={__stopPropagation}
           __onControlClick={__onControlClick}
           __onControlMouseEnter={__onControlMouseEnter}
-          __onControlKeyDown={(event, payload) =>
-            handleControlKeyDown({
-              levelIndex: yearIndex,
-              rowIndex: payload.rowIndex,
-              cellIndex: payload.cellIndex,
-              event,
-              controlsRef,
-            })
-          }
-          __getControlRef={(rowIndex, cellIndex, node) => {
-            if (!Array.isArray(controlsRef.current[yearIndex])) {
-              controlsRef.current[yearIndex] = [];
-            }
-
-            if (!Array.isArray(controlsRef.current[yearIndex][rowIndex])) {
-              controlsRef.current[yearIndex][rowIndex] = [];
-            }
-
-            controlsRef.current[yearIndex][rowIndex][cellIndex] = node;
-          }}
           levelControlAriaLabel={
             typeof levelControlAriaLabel === 'function'
               ? levelControlAriaLabel(currentYear)

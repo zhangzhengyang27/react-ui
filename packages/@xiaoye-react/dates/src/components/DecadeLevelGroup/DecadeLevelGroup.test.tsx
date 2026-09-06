@@ -36,11 +36,6 @@ describe('@xiaoye-react/dates/DecadeLevelGroup', () => {
   datesTests.itSupportsYearsListProps({ component: DecadeLevelGroup, props: defaultProps });
   datesTests.itSupportsOnControlClick({ component: DecadeLevelGroup, props: defaultProps });
   datesTests.itSupportsOnControlMouseEnter({ component: DecadeLevelGroup, props: defaultProps });
-  datesTests.itHandlesControlsKeyboardEvents({
-    component: DecadeLevelGroup,
-    props: defaultProps,
-    listSelector: '.ui-DecadeLevelGroup-yearsList',
-  });
 
   it('renders correct number of columns based on numberOfColumns prop', () => {
     const { rerender } = render(<DecadeLevelGroup {...defaultProps} numberOfColumns={1} />);

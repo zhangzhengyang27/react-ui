@@ -308,40 +308,47 @@ export const Calendar = factory<CalendarFactory>((_props) => {
 
   // 导航前先锚定到月初：29/30/31 日的锚点做月/年加减时 dayjs 不做月末钳制，
   // 会溢出跳月（如 2024-01-31 + 1 month → 2024-03-02）
-  const anchorDate = dayjs(currentDate).startOf('month');
+  // 翻页保持「日」不变（2022-04-11 + 1 month → 2022-05-11）；
+  // 目标月天数不足时钳制到月末（2024-01-31 + 1 month → 2024-02-29 而非溢出跳到 3 月）。
+  // 计算前先锚定到 1 号再平移，避免 dayjs 对 29-31 日直接加月时溢出。
+  const shiftDate = (amount: number, unit: 'month' | 'year') => {
+    const base = dayjs(currentDate);
+    const targetMonth = base.date(1).add(amount, unit);
+    return targetMonth.date(Math.min(base.date(), targetMonth.daysInMonth()));
+  };
 
   const handleNextMonth = () => {
-    const nextDate = anchorDate.add(_columnsToScroll, 'month').format('YYYY-MM-DD');
+    const nextDate = shiftDate(_columnsToScroll, 'month').format('YYYY-MM-DD');
     onNextMonth?.(nextDate);
     setDate(nextDate);
   };
 
   const handlePreviousMonth = () => {
-    const nextDate = anchorDate.subtract(_columnsToScroll, 'month').format('YYYY-MM-DD');
+    const nextDate = shiftDate(-_columnsToScroll, 'month').format('YYYY-MM-DD');
     onPreviousMonth?.(nextDate);
     setDate(nextDate);
   };
 
   const handleNextYear = () => {
-    const nextDate = anchorDate.add(_columnsToScroll, 'year').format('YYYY-MM-DD');
+    const nextDate = shiftDate(_columnsToScroll, 'year').format('YYYY-MM-DD');
     onNextYear?.(nextDate);
     setDate(nextDate);
   };
 
   const handlePreviousYear = () => {
-    const nextDate = anchorDate.subtract(_columnsToScroll, 'year').format('YYYY-MM-DD');
+    const nextDate = shiftDate(-_columnsToScroll, 'year').format('YYYY-MM-DD');
     onPreviousYear?.(nextDate);
     setDate(nextDate);
   };
 
   const handleNextDecade = () => {
-    const nextDate = anchorDate.add(10 * _columnsToScroll, 'year').format('YYYY-MM-DD');
+    const nextDate = shiftDate(10 * _columnsToScroll, 'year').format('YYYY-MM-DD');
     onNextDecade?.(nextDate);
     setDate(nextDate);
   };
 
   const handlePreviousDecade = () => {
-    const nextDate = anchorDate.subtract(10 * _columnsToScroll, 'year').format('YYYY-MM-DD');
+    const nextDate = shiftDate(-10 * _columnsToScroll, 'year').format('YYYY-MM-DD');
     onPreviousDecade?.(nextDate);
     setDate(nextDate);
   };

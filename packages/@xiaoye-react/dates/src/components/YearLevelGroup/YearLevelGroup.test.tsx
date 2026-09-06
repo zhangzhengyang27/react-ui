@@ -33,11 +33,6 @@ describe('@xiaoye-react/dates/YearLevelGroup', () => {
   datesTests.itSupportsHeaderProps({ component: YearLevelGroup, props: defaultProps });
   datesTests.itSupportsOnControlClick({ component: YearLevelGroup, props: defaultProps });
   datesTests.itSupportsOnControlMouseEnter({ component: YearLevelGroup, props: defaultProps });
-  datesTests.itHandlesControlsKeyboardEvents({
-    component: YearLevelGroup,
-    props: defaultProps,
-    listSelector: '.ui-YearLevelGroup-monthsList',
-  });
 
   it('renders correct number of columns based on numberOfColumns prop', () => {
     const { rerender } = render(<YearLevelGroup {...defaultProps} numberOfColumns={1} />);

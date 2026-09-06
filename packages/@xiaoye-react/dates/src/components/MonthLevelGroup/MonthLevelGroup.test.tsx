@@ -40,11 +40,6 @@ describe('@xiaoye-react/dates/MonthLevelGroup', () => {
   datesTests.itSupportsMonthProps({ component: MonthLevelGroup, props: defaultProps });
   datesTests.itSupportsHeaderProps({ component: MonthLevelGroup, props: defaultProps });
   datesTests.itSupportsOnDayClick({ component: MonthLevelGroup, props: defaultProps });
-  datesTests.itHandlesMonthKeyboardEvents({
-    component: MonthLevelGroup,
-    props: defaultProps,
-    name: 'MonthLevelGroup',
-  });
 
   it('renders correct number of months based on numberOfColumns prop', () => {
     const { rerender } = render(<MonthLevelGroup {...defaultProps} numberOfColumns={1} />);

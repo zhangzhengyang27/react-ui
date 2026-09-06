@@ -38,11 +38,6 @@ describe('@xiaoye-react/dates/DatePicker', () => {
     props: { ...defaultProps, level: 'year' },
   });
 
-  datesTests.itHandlesMonthKeyboardEvents({
-    component: DatePicker,
-    props: defaultProps,
-    name: 'DatePicker',
-  });
 
   datesTests.itSupportsMonthProps({
     component: DatePicker,

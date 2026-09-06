@@ -5,6 +5,7 @@ export { Drawer } from './Drawer'
 export type { DrawerProps, DrawerFactory }
 
 export { DrawerRoot } from './DrawerRoot'
+export { DrawerStack, DrawerStackContext } from './DrawerStack'
 export type { DrawerRootProps, DrawerRootFactory, DrawerRootCssVariables } from './DrawerRoot'
 
 

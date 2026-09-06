@@ -31,7 +31,6 @@ import { HiddenDatesInput } from '../HiddenDatesInput';
 import { isSameMonth } from '../Month';
 import { MonthLevelSettings } from '../MonthLevel';
 import { YearLevelSettings } from '../YearLevel';
-import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { dateStringParser } from './date-string-parser/date-string-parser';
 

@@ -109,14 +109,29 @@ export function UIProvider({
         ]
     )
 
-    // 无依赖：'auto' 时系统偏好变化会触发本组件重渲染，属性随之同步；
-    // matchMedia 读取放在 effect 内，避免渲染期访问（SSR / jsdom 环境不安全）
+    // matchMedia 读取放在 effect 内，避免渲染期访问（SSR / jsdom 环境不安全）；
+    // auto 模式下订阅系统偏好变化实时同步属性，非 auto 时仅在 colorScheme 变化时写入
     useEffect(() => {
         if (typeof document === 'undefined') return
         const root = getRootElement()
         if (!root) return
+
         root.setAttribute('data-ui-color-scheme', resolveColorScheme(colorScheme))
-    })
+
+        if (colorScheme !== 'auto') return undefined
+
+        let query: MediaQueryList
+        try {
+            query = window.matchMedia('(prefers-color-scheme: dark)')
+        } catch {
+            return undefined
+        }
+        const onSystemChange = () => {
+            root.setAttribute('data-ui-color-scheme', getSystemColorScheme())
+        }
+        query.addEventListener('change', onSystemChange)
+        return () => query.removeEventListener('change', onSystemChange)
+    }, [colorScheme, getRootElement])
 
     return (
         <UIContext.Provider value={value}>

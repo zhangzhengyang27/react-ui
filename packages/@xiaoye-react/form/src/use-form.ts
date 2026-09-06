@@ -126,51 +126,52 @@ export function useForm<
     []
   );
 
-  const debouncedValidateField = useCallback((path: string) => {
-    const handleValidation = (path: string) => {
-      const signal = $validating.getAbortSignal(path);
-      const result = validateFieldValue(
-        path,
-        rules,
-        $values.refValues.current,
-        resolveValidationError,
-        signal
-      );
+  const debouncedValidateField = useCallback(
+    (path: string) => {
+      const handleValidation = (path: string) => {
+        const signal = $validating.getAbortSignal(path);
+        const result = validateFieldValue(
+          path,
+          rules,
+          $values.refValues.current,
+          resolveValidationError,
+          signal
+        );
 
-      const applyResult = (results: { hasError: boolean; error: React.ReactNode }) => {
-        if (signal.aborted) {
-          return;
-        }
-        if (results.hasError) {
-          $errors.setFieldError(path as any, results.error);
+        const applyResult = (results: { hasError: boolean; error: React.ReactNode }) => {
+          if (signal.aborted) {
+            return;
+          }
+          if (results.hasError) {
+            $errors.setFieldError(path as any, results.error);
+          } else {
+            $errors.clearFieldError(path);
+          }
+        };
+
+        const cleanup = () => {
+          if (!signal.aborted) {
+            $validating.setFieldValidating(path, false);
+          }
+        };
+
+        if (result instanceof Promise) {
+          $validating.setFieldValidating(path, true);
+          result.then(applyResult).finally(cleanup);
         } else {
-          $errors.clearFieldError(path);
+          applyResult(result);
         }
       };
 
-      const cleanup = () => {
-        if (!signal.aborted) {
-          $validating.setFieldValidating(path, false);
-        }
-      };
-
-      if (result instanceof Promise) {
-        $validating.setFieldValidating(path, true);
-        result.then(applyResult).finally(cleanup);
-      } else {
-        applyResult(result);
-      }
-    };
-
-    return (path: string) => {
       clearTimeout(debounceTimersRef.current[path]);
       if (validateDebounce > 0) {
         debounceTimersRef.current[path] = setTimeout(() => handleValidation(path), validateDebounce);
       } else {
         handleValidation(path);
       }
-    };
-  }, [validateDebounce, rules, resolveValidationError]);
+    },
+    [validateDebounce, rules, resolveValidationError]
+  );
 
   const setFieldValue: SetFieldValue<Values> = useCallback(
     (path, value, options) => {
@@ -211,18 +212,27 @@ export function useForm<
     [onValuesChange, handleValuesChanges]
   );
 
+  // 记录当前代际是否属于提交流程：onSubmit 需要区分「被新提交取代」（新提交负责收尾
+  // submitting）和「被外部 validate() 取代」（无人收尾，需兜底复位），否则 submitting 卡死
+  const submitGenerationRef = useRef<number | null>(null);
+  const pendingSubmitValidationRef = useRef(false);
+
   const validate = useCallback(() => {
     const generation = ++validateGeneration.current;
+    if (pendingSubmitValidationRef.current) {
+      submitGenerationRef.current = generation;
+      pendingSubmitValidationRef.current = false;
+    }
     const signal = $validating.getAbortSignal('__form__');
 
     const handleResult = (results: {
       hasErrors: boolean;
       errors: Record<string, any>;
-    }): { hasErrors: boolean; errors: Record<string, any> } | null => {
+    }): { hasErrors: boolean; errors: Record<string, any> } => {
       if (generation !== validateGeneration.current) {
-        // 过期代际返回 null（而不是伪造"验证通过"）：并发提交时旧结果的 hasErrors 恒为 false，
-        // 会让 onSubmit 误以为验证通过直接 handleSubmit，绕过全部校验
-        return null;
+        // 过期代际：不应用错误（避免旧结果覆盖新状态），但原样返回结果，
+        // 公开类型不出现 null；取代判定由调用方比对代际完成
+        return results;
       }
       $errors.setErrors(results.errors);
       return results;
@@ -343,10 +353,12 @@ export function useForm<
 
       setSubmitting(true);
 
-      const handleValidation = (results: { hasErrors: boolean; errors: Record<string, any> } | null) => {
-        // null 表示本次验证已被更新的验证取代：直接放弃本次提交流程，
-        // submitting 状态由持有最新代际的那次调用负责收尾
-        if (results === null) {
+      const handleValidation = (results: { hasErrors: boolean; errors: Record<string, any> }) => {
+        // 本次提交的验证已被更新的验证取代：放弃本次提交流程。
+        // 取代者是新提交（最新代际属于提交流程）时由它收尾 submitting；
+        // 取代者是外部 validate() 时无人收尾，这里兜底复位，避免提交按钮永久禁用
+        if (submitGenerationRef.current !== validateGeneration.current) {
+          setSubmitting(false);
           return;
         }
 
@@ -371,6 +383,7 @@ export function useForm<
         }
       };
 
+      pendingSubmitValidationRef.current = true;
       const result = validate();
       if (result instanceof Promise) {
         result.then(handleValidation).catch(() => {

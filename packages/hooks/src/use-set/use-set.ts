@@ -22,30 +22,32 @@ import { useCallback, useRef, useState } from 'react'
  * 保证 `set` 引用随内容变更而变化（useEffect/memo 等依赖引用相等性的消费方才能正确感知更新）。
  */
 export function useSet<T>(values?: T[]): Set<T> {
-    const setRef = useRef<Set<T> | null>(null)
-    if (setRef.current === null) {
-        setRef.current = new Set(values)
-    }
-    const set = setRef.current
-
-    // 每次变更生成新 Set：保证 set 引用随变更变化，
+    // 每次变更生成新 Set 并作为返回值：保证 set 引用随变更变化，
     // 依赖引用相等性的 useEffect / memo 消费方才能正确感知更新（与 Mantine 上游契约一致）
-    const [, setSet] = useState(() => new Set(values))
+    const [set, setSet] = useState(() => new Set(values))
+    const setRef = useRef(set)
+    setRef.current = set
 
     const add = useCallback((...args: [T]) => {
         const result = Set.prototype.add.apply(setRef.current, args)
-        setSet(new Set(setRef.current!))
+        const next = new Set(setRef.current!)
+        setRef.current = next
+        setSet(next)
         return result
     }, [])
 
     const clear = useCallback(() => {
         Set.prototype.clear.apply(setRef.current)
-        setSet(new Set(setRef.current!))
+        const next = new Set(setRef.current!)
+        setRef.current = next
+        setSet(next)
     }, [])
 
     const del = useCallback((...args: [T]) => {
         const result = Set.prototype.delete.apply(setRef.current, args)
-        setSet(new Set(setRef.current!))
+        const next = new Set(setRef.current!)
+        setRef.current = next
+        setSet(next)
         return result
     }, [])
 

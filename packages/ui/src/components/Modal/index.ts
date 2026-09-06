@@ -6,10 +6,12 @@ import type { ModalContentProps } from './ModalContent'
 import type { ModalHeaderProps } from './ModalHeader'
 import type { ModalOverlayProps } from './ModalOverlay'
 import type { ModalRootProps, ModalRootFactory, ModalRootStylesNames, ModalRootCssVariables } from './ModalRoot'
+import type { ModalStackProps } from './ModalStack'
 import type { ModalTitleProps } from './ModalTitle'
 
 export { Modal } from './Modal'
 export { ModalRoot } from './ModalRoot'
+export { ModalStack, ModalStackContext } from './ModalStack'
 export { ModalBody } from './ModalBody'
 export { ModalCloseButton } from './ModalCloseButton'
 export { ModalContent } from './ModalContent'
@@ -25,6 +27,7 @@ export type {
     ModalCssVariables,
     ModalFactory,
     ModalRootProps,
+    ModalStackProps,
     ModalRootFactory,
     ModalRootStylesNames,
     ModalRootCssVariables,

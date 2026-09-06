@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { cloneElement, useRef, useState } from 'react'
 import { useMergedRef } from '@xiaoye-react/hooks'
 import {
@@ -127,9 +128,12 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((_props, ref) => 
         )
     }
 
-    // React 19 弃用 element.ref 访问（开发环境会告警），ref 一律从 child.props.ref 读取
+    const REACT_MAJOR = parseInt(React.version, 10)
+// React 19 的 ref 在 child.props 上（访问 element.ref 会触发弃用告警）；
+// React 18 的 ref 不进 props，按版本兼容读取，避免丢掉 child 自带的 ref
     const childPropsRef = ((child.props as any)?.ref ?? null) as React.Ref<any> | null
-    const targetRef = useMergedRef(boundaryRef, childPropsRef, ref)
+    const childElementRef = REACT_MAJOR >= 19 ? null : ((child as any).ref ?? null)
+    const targetRef = useMergedRef(boundaryRef, childPropsRef, childElementRef, ref)
 
     const handleMouseMove = (event: React.MouseEvent<unknown>) => {
         (child.props as any)?.onMouseMove?.(event)

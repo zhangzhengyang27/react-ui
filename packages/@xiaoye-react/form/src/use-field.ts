@@ -228,13 +228,17 @@ export function useField<
       setIsValidating(true);
       try {
         const result = await validationResult;
+        // 过期结果只丢弃 setError，isValidating 仍要复位（它是「是否有在途异步」的标志，
+        // 跳过复位会卡死；新验证发起时已自行置 true，此处复位不影响它）
         if (generation !== validateGenerationRef.current) {
+          setIsValidating(false);
           return undefined;
         }
         setIsValidating(false);
         setError(result);
       } catch (err) {
         if (generation !== validateGenerationRef.current) {
+          setIsValidating(false);
           return undefined;
         }
         setIsValidating(false);

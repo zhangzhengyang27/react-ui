@@ -214,7 +214,7 @@ export function Combobox(_props: ComboboxProps) {
         if (sorted.some((option, i) => option.key !== options[i].key)) {
             setOptions(sorted)
         }
-    })
+    }, [options])
 
     const onOptionSelect = useCallback(
         (value: string) => {

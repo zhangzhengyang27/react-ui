@@ -22,6 +22,7 @@ import { DrawerHeader, type DrawerHeaderProps } from './DrawerHeader'
 import { DrawerOverlay, type DrawerOverlayProps } from './DrawerOverlay'
 import { DrawerProvider } from './Drawer.context'
 import { DrawerRoot, type DrawerRootProps, type DrawerRootFactory } from './DrawerRoot'
+import { DrawerStack } from './DrawerStack'
 import { DrawerTitle, type DrawerTitleProps } from './DrawerTitle'
 import classes from './Drawer.module.css'
 
@@ -90,6 +91,7 @@ export type DrawerFactory = Factory<{
         Overlay: typeof DrawerOverlay
         Title: typeof DrawerTitle
         Root: typeof DrawerRoot
+        Stack: typeof DrawerStack
     }
 }>
 
@@ -119,6 +121,7 @@ const transitions: Record<DrawerPosition, import('../Transition').UITransitionNa
 }
 
 const defaultProps = {
+    returnFocus: true,
     closeOnClickOutside: true,
     withinPortal: true,
     lockScroll: true,
@@ -227,6 +230,7 @@ Drawer.Header = DrawerHeader
 Drawer.Overlay = DrawerOverlay
 Drawer.Title = DrawerTitle
 Drawer.Root = DrawerRoot
+Drawer.Stack = DrawerStack
 
 export namespace Drawer {
     export type Props = DrawerProps

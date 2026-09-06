@@ -130,6 +130,7 @@ export function createStorage<T>(type: StorageType, hookName: string) {
         )
 
         const removeStorageValue = useCallback(() => {
+            valueRef.current = defaultValue as T
             setValue(defaultValue as T)
             try {
                 removeItem(key)

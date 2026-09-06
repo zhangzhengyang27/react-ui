@@ -20,7 +20,7 @@ export const ComboboxOptions = factory<ComboboxOptionsFactory>((_props, ref) => 
     const ctx = useComboboxContext()
 
     return (
-        <Box ref={ref} role="presentation" id={ctx.listId ?? id} className={classes.options} {...others}>
+        <Box ref={ref} role="presentation" id={id ?? ctx.listId ?? undefined} className={classes.options} {...others}>
             {children}
         </Box>
     )

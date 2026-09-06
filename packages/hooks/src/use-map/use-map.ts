@@ -22,30 +22,33 @@ import { useCallback, useRef, useState } from 'react'
  * 保证 `map` 引用随内容变更而变化（useEffect/memo 等依赖引用相等性的消费方才能正确感知更新）。
  */
 export function useMap<T, V>(initialState?: [T, V][]): Map<T, V> {
-    const mapRef = useRef<Map<T, V> | null>(null)
-    if (mapRef.current === null) {
-        mapRef.current = new Map<T, V>(initialState)
-    }
-    const map = mapRef.current
-
-    // 每次变更生成新 Map：保证 map 引用随变更变化，
+    // 每次变更生成新 Map 并作为返回值：保证 map 引用随变更变化，
     // 依赖引用相等性的 useEffect / memo 消费方才能正确感知更新（与 Mantine 上游契约一致）
-    const [, setMap] = useState(() => new Map<T, V>(initialState))
+    const [map, setMap] = useState(() => new Map<T, V>(initialState))
+    const mapRef = useRef(map)
+    mapRef.current = map
 
     const set = useCallback((...args: [T, V]) => {
         Map.prototype.set.apply(mapRef.current, args)
-        setMap(new Map(mapRef.current!))
-        return mapRef.current
+        // 同步推进 ref：同一事件批次内连续 mutation 基于最新实例，且每次都产出新引用
+        const next = new Map(mapRef.current!)
+        mapRef.current = next
+        setMap(next)
+        return next
     }, [])
 
     const clear = useCallback(() => {
         Map.prototype.clear.apply(mapRef.current)
-        setMap(new Map(mapRef.current!))
+        const next = new Map(mapRef.current!)
+        mapRef.current = next
+        setMap(next)
     }, [])
 
     const del = useCallback((...args: [T]) => {
         const result = Map.prototype.delete.apply(mapRef.current, args)
-        setMap(new Map(mapRef.current!))
+        const next = new Map(mapRef.current!)
+        mapRef.current = next
+        setMap(next)
         return result
     }, [])
 

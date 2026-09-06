@@ -20,6 +20,7 @@ import { ModalHeader, type ModalHeaderProps } from './ModalHeader'
 import { ModalOverlay, type ModalOverlayProps } from './ModalOverlay'
 import { ModalProvider } from './Modal.context'
 import { ModalRoot, type ModalRootProps, type ModalRootFactory } from './ModalRoot'
+import { ModalStack, type ModalStackProps } from './ModalStack'
 import { ModalTitle, type ModalTitleProps } from './ModalTitle'
 import classes from './Modal.module.css'
 
@@ -76,6 +77,7 @@ export type ModalFactory = Factory<{
     vars: ModalCssVariables
     staticComponents: {
         Root: typeof ModalRoot
+        Stack: typeof ModalStack
         Body: typeof ModalBody
         CloseButton: typeof ModalCloseButton
         Content: typeof ModalContent
@@ -181,6 +183,7 @@ export const Modal = factory<ModalFactory>((_props, _ref) => {
 Modal.classes = classes
 Modal.displayName = '@xiaoye-react/ui/Modal'
 Modal.Root = ModalRoot
+Modal.Stack = ModalStack
 Modal.Body = ModalBody
 Modal.CloseButton = ModalCloseButton
 Modal.Content = ModalContent

@@ -93,8 +93,10 @@ export function startNavigationProgressAction(store: NprogressStore) {
   // 约 stepInterval + 50ms 后遗留 timeout 会把正在爬升的进度条打回 0
   cleanupNavigationProgressAction(store);
 
+  // 从 100 起步会永久卡死：getIntervalProgressValue 对 >=99 恒返回原值，
+  // complete 遗留的归零定时器已被上面的 cleanup 清掉，必须在这里手动归零
   updateNavigationProgressStateAction(
-    (s) => ({ progress: getIntervalProgressValue(s.progress), mounted: true }),
+    (s) => ({ progress: s.progress >= 99 ? 0 : getIntervalProgressValue(s.progress), mounted: true }),
     store
   );
 

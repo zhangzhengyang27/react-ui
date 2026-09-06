@@ -120,8 +120,9 @@ export function useCombobox({
     })
 
     // useId 生成默认 listId：null 会让 store 内所有 `#null ...` 选择器查不到元素，
-    // selectOption/键盘导航全部静默失效；setListId 仍可用于外部覆盖
-    const defaultListId = useId()
+    // selectOption/键盘导航全部静默失效；setListId 仍可用于外部覆盖。
+    // React 18 的 useId 返回 ':r0:'（含冒号），直接拼进 #id 选择器会抛 SyntaxError，需清洗
+    const defaultListId = `ui-combobox-list-${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`
     const listId = useRef<string | null>(defaultListId)
     const selectedOptionIndex = useRef<number>(-1)
     const searchRef = useRef<HTMLInputElement | null>(null)

@@ -71,16 +71,9 @@ export function NavigationProgress({
 
   const state = useNprogress(store);
 
-  // 仅在自身实例持有 interval/timeouts 时清理，避免卸载一个实例把其他正在跑的实例一并清掉
-  useEffect(
-    () => () => {
-      const current = store.getState();
-      if (current.interval !== -1 || current.timeouts.length > 0) {
-        resetNavigationProgressAction(store);
-      }
-    },
-    [store]
-  );
+  // store 为共享单例时，卸载任一实例都会复位全局进度——这是单例设计的固有语义，
+  // 多实例应各自传入独立 store（createNprogress()）
+  useEffect(() => () => resetNavigationProgressAction(store), [store]);
 
   return (
     <OptionalPortal {...portalProps} withinPortal={withinPortal}>

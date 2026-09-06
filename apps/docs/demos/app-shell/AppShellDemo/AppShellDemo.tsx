@@ -6,10 +6,13 @@ import { APP_SHELL_EXAMPLES_COMPONENTS } from '../examples';
 // 替代迁移前 next/router 的用法：直接读写 URL 查询参数（dumi 环境无 next/router）
 export function AppShellDemo() {
   const [exampleId, setExampleId] = useState<string | undefined>(undefined);
-  const state = new URLSearchParams(typeof window === 'undefined' ? '' : window.location.search).get('s') ?? '';
+  // state 也走 state + effect：渲染期直读 window.location 会在 ?s=code 直达时产生水合不一致
+  const [state, setState] = useState('');
 
   useEffect(() => {
-    const fromUrl = new URLSearchParams(window.location.search).get('e');
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl = params.get('e');
+    setState(params.get('s') ?? '');
     if (fromUrl && fromUrl in APP_SHELL_EXAMPLES_COMPONENTS) {
       setExampleId(fromUrl);
       return;

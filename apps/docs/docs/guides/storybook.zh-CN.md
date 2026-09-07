@@ -73,7 +73,7 @@ function App() {
 ```tsx
 // 导入你已安装的包样式
 // 除 @xiaoye-react/hooks 外，所有包都需要导入样式
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 
 import { ColorSchemeScript, UIProvider } from '@xiaoye-react/ui';
 import { theme } from '../theme';

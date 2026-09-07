@@ -5,6 +5,8 @@ import type { PopoverContextMenuProps } from './PopoverContextMenu'
 import type { PopoverMiddlewares, PopoverWidth } from './Popover.types'
 
 export { Popover } from './Popover'
+export { PopoverDropdown } from './PopoverDropdown/PopoverDropdown'
+export { PopoverTarget } from './PopoverTarget/PopoverTarget'
 export { PopoverContextMenu } from './PopoverContextMenu'
 export type {
     PopoverProps,

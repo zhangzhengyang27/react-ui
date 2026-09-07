@@ -23,9 +23,9 @@ description: react-ui Notifications 文档。
 全部完成！你现在可以使用通知系统的所有功能。
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 // ‼️ notifications 样式必须在核心包样式之后导入
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/notifications/styles.css';
 ```
 
 ```tsx
@@ -49,7 +49,7 @@ function Demo() {
 你已经按照上面的安装说明操作，但某些功能仍然无法正常工作（`position` 属性不生效、通知卡住在底部）？你掉入了未导入通知样式的陷阱！要解决这个问题，请在应用根目录导入通知样式：
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 ```
 
 ## 函数
@@ -69,7 +69,7 @@ import '@xiaoye-react/ui/styles.css';
 你也可以单独导入这些函数：
 
 ```tsx
-import { notifications } from '@xiaoye-react/ui';
+import { notifications } from '@xiaoye-react/notifications';
 ```
 
 ```tsx
@@ -109,7 +109,7 @@ import {
 
 ```tsx
 import { XIcon } from '@phosphor-icons/react';
-import { notifications } from '@xiaoye-react/ui';
+import { notifications } from '@xiaoye-react/notifications';
 
 // 最低要求 – message 对所有通知都是必需的
 notifications.show({ message: 'Hello' });
@@ -222,7 +222,7 @@ function Demo() {
 使用 `notifications.cleanQueue` 函数移除队列中的所有通知，使用 `notifications.clean` 移除状态和队列中的所有通知：
 
 ```tsx
-import { notifications } from '@xiaoye-react/ui';
+import { notifications } from '@xiaoye-react/notifications';
 
 const id = notifications.show({ message: 'Hello!' });
 notifications.hide(id);
@@ -254,7 +254,7 @@ function Demo() {
 ```
 
 ```tsx
-import { notifications } from '@xiaoye-react/ui';
+import { notifications } from '@xiaoye-react/notifications';
 
 notifications.show({
   message: 'I will close in 500ms seconds',

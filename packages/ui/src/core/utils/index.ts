@@ -1,3 +1,5 @@
+export { closeOnEscape } from './close-on-escape/close-on-escape'
+export { findClosestNumber } from './find-closest-number/find-closest-number'
 export { px, rem, em } from './units-converters'
 export { noop } from './noop/noop'
 export { deepMerge } from './deep-merge/deep-merge'

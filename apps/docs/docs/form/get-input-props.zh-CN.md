@@ -21,7 +21,7 @@ description: react-ui GetInputProps 文档。
 
 ```tsx
 import { Checkbox, TextInput } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 function Demo() {
   const form = useForm({
@@ -92,7 +92,7 @@ function Demo() {
 ```tsx
 import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 function Demo() {
   const query = useQuery({
@@ -172,7 +172,7 @@ export function CustomInput({
 ```
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 import { CustomInput } from './CustomInput';
 
 function Demo() {

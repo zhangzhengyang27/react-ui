@@ -11,7 +11,7 @@ description: react-ui Values 文档。
 在大多数情况下，你都应该设置 `initialValues`：
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -33,7 +33,7 @@ const form = useForm({
 `form.setValues` 也可用于一次设置多个值。payload 将与当前 values 状态进行浅合并：
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -62,7 +62,7 @@ form.getValues(); // -> { name: '张三', email: '', age: 21 }
 ```tsx
 import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 function Demo() {
   const query = useQuery({
@@ -109,7 +109,7 @@ function Demo() {
 
 ```tsx
 import { useEffect } from 'react';
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 function Demo() {
   const form = useForm({
@@ -147,7 +147,7 @@ function Demo() {
 它接受一个可选参数 `values`，用于指定需要转换的值。如果未提供，则返回 `form.getValues()` 的转换结果：
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 function Demo() {
   const form = useForm({
@@ -223,7 +223,7 @@ function Demo() {
 ## 获取值类型
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 function Demo() {
   const form = useForm({ initialValues: { name: '', age: 0 } });
@@ -242,7 +242,7 @@ function Demo() {
 当你想创建自定义提交函数时，它会很有用：
 
 ```tsx
-import { TransformedValues, useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 function Demo() {
   const form = useForm({
@@ -274,7 +274,7 @@ function Demo() {
 类型无法正确推断或你想提供更具体的类型时非常有用：
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 interface FormValues {
   name: string; // 常规字段，与推断类型相同
@@ -309,7 +309,7 @@ function Demo() {
 参数：
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 interface FormValues {
   name: string;

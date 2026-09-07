@@ -8,7 +8,7 @@ description: react-ui Modals 文档。
 
 ## 安装
 
-<InstallScript packages="@xiaoye-react/ui"></InstallScript>
+<InstallScript packages="@xiaoye-react/modals"></InstallScript>
 
 ## 设置 ModalsProvider
 
@@ -16,7 +16,7 @@ description: react-ui Modals 文档。
 
 ```tsx
 import { UIProvider } from '@xiaoye-react/ui';
-import { ModalsProvider } from '@xiaoye-react/ui';
+import { ModalsProvider } from '@xiaoye-react/modals';
 
 function Demo() {
   return (
@@ -51,7 +51,7 @@ function Demo() {
 要为确认弹窗设置共享标签，请在 `ModalsProvider` 上设置 `labels`：
 
 ```tsx
-import { ModalsProvider } from '@xiaoye-react/ui';
+import { ModalsProvider } from '@xiaoye-react/modals';
 
 function Demo() {
   return (
@@ -75,7 +75,7 @@ function Demo() {
 
 ```tsx
 import { Button, Text } from '@xiaoye-react/ui';
-import { ContextModalProps, ModalsProvider } from '@xiaoye-react/ui';
+import { ModalsProvider } from '@xiaoye-react/modals';
 
 const TestModal = ({
   context,
@@ -142,7 +142,7 @@ function Demo() {
 ```
 
 ```tsx
-import { closeModal, openContextModal } from '@xiaoye-react/ui';
+import { closeModal, openContextModal } from '@xiaoye-react/modals';
 
 openContextModal({
   modal: 'demonstration',

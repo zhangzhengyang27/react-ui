@@ -26,7 +26,7 @@ description: react-ui Validators 文档。
 值被视为空。字符串在验证前会被去除首尾空格。
 
 ```tsx
-import { isNotEmpty, useForm } from '@xiaoye-react/ui';
+import { isNotEmpty, useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -58,7 +58,7 @@ const form = useForm({
 `isEmail` 使用 `/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/` 正则表达式来判断表单值是否为邮箱：
 
 ```tsx
-import { isEmail, useForm } from '@xiaoye-react/ui';
+import { isEmail, useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -77,7 +77,7 @@ const form = useForm({
 `matches` 检查表单值是否与给定的正则表达式匹配。如果表单值不是字符串，验证将失败。
 
 ```tsx
-import { matches, useForm } from '@xiaoye-react/ui';
+import { matches, useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -96,7 +96,7 @@ const form = useForm({
 `isInRange` 检查表单值是否在给定的 `min`-`max` 范围内。如果表单值不是数字，验证将失败。
 
 ```tsx
-import { isInRange, useForm } from '@xiaoye-react/ui';
+import { isInRange, useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -124,7 +124,7 @@ const form = useForm({
 字符串在验证前会被去除首尾空格。
 
 ```tsx
-import { hasLength, useForm } from '@xiaoye-react/ui';
+import { hasLength, useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -159,7 +159,7 @@ const form = useForm({
 注意 `matchesField` 只能用于基本类型值（数组和对象无法比较）。
 
 ```tsx
-import { matchesField, useForm } from '@xiaoye-react/ui';
+import { matchesField, useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -182,7 +182,7 @@ const form = useForm({
 `isJSONString` 检查表单值是否为有效的 JSON 字符串。
 
 ```tsx
-import { isJSONString, useForm } from '@xiaoye-react/ui';
+import { isJSONString, useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -202,7 +202,7 @@ const form = useForm({
 并且会拒绝 `localhost`。你可以通过将选项作为第一个参数传递来自定义此行为。
 
 ```tsx
-import { isUrl, useForm } from '@xiaoye-react/ui';
+import { isUrl, useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -237,7 +237,7 @@ const form = useForm({
 使用严格相等进行比较。
 
 ```tsx
-import { isOneOf, useForm } from '@xiaoye-react/ui';
+import { isOneOf, useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -261,7 +261,7 @@ const form = useForm({
 `isNotEmptyHTML` 检查表单值是否不是空 HTML 字符串。空字符串、仅包含 HTML 标签和空格的字符串被视为空。
 
 ```tsx
-import { isNotEmptyHTML, useForm } from '@xiaoye-react/ui';
+import { isNotEmptyHTML, useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',

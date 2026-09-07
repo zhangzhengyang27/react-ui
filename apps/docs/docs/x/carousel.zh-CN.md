@@ -13,9 +13,9 @@ description: react-ui Carousel 文档。
 安装完成后，在应用根目录导入包样式：
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 // ‼️ carousel 样式必须在核心包样式之后导入
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 ```
 
 ## 不要忘记导入样式
@@ -23,7 +23,7 @@ import '@xiaoye-react/ui/styles.css';
 你已经按照上面的安装说明操作，但某些功能仍然无法正常工作（Carousel 幻灯片垂直渲染、没有控件或指示器）？你掉入了未导入轮播样式的陷阱！要解决这个问题，请在应用根目录导入轮播样式：
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 ```
 
 ## 文档示例

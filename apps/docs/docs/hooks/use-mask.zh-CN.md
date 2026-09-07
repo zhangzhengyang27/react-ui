@@ -77,25 +77,6 @@ description: react-ui 输入掩码 Hook 文档。
 useMask({ mask: '(999) 999-9999? x9999' }) // 分机号是可选的
 ```
 
-## 工具函数
-
-以下纯函数与 Hook 一起导出：
-
-- `formatMask(raw, options)` – 将掩码应用于原始值字符串
-- `unformatMask(masked, options)` – 从掩码值中剥离所有掩码字面量
-- `isMaskComplete(masked, options)` – 检查是否所有必需槽位都已填充
-- `generatePattern(mode, options)` – 为 HTML `pattern` 属性生成正则字符串
-
-```tsx
-import { formatMask, unformatMask, isMaskComplete } from '@xiaoye-react/hooks';
-
-const options = { mask: '(999) 999-9999' };
-
-formatMask('1234567890', options);      // "(123) 456-7890"
-unformatMask('(123) 456-7890', options); // "1234567890"
-isMaskComplete('(123) 456-7890', options); // true
-```
-
 ## 类型定义
 
 ```tsx

@@ -36,7 +36,7 @@ description: react-ui 滚动隐藏 Hook 文档。
 ## 类型定义
 
 ```tsx
-interface UseHeadroomOptions {
+interface UseHeadroomInput {
   /** Number in px at which element should be fixed, 0 by default */
   fixedAt?: number;
 
@@ -61,13 +61,13 @@ interface UseHeadroomReturnValue {
   scrollProgress: number;
 }
 
-function useHeadroom(input?: UseHeadroomOptions): UseHeadroomReturnValue;
+function useHeadroom(input?: UseHeadroomInput): UseHeadroomReturnValue;
 ```
 
 ## 导出类型
 
-`UseHeadroomOptions` 类型从 `@xiaoye-react/hooks` 包导出：
+`UseHeadroomInput` 类型从 `@xiaoye-react/hooks` 包导出：
 
 ```tsx
-import { UseHeadroomOptions } from '@xiaoye-react/hooks';
+import { UseHeadroomInput } from '@xiaoye-react/hooks';
 ```

@@ -51,7 +51,7 @@ module.exports = {
 ```tsx
 // 导入你已安装包的样式。
 // 除 `@xiaoye-react/hooks` 外，所有包都需要导入样式
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 
 import { UIProvider } from '@xiaoye-react/ui';
 

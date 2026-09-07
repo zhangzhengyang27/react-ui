@@ -46,7 +46,7 @@ Standard Schema 规范允许异步验证。当你知道模式是同步的（例�
 
 ```tsx
 import { z } from 'zod/v4';
-import { useForm, schemaResolver } from '@xiaoye-react/ui';
+import { useForm, schemaResolver } from '@xiaoye-react/form';
 
 const schema = z.object({
   name: z.string().min(2, { error: '名字应至少有 2 个字母' }),
@@ -75,7 +75,7 @@ form.errors;
 
 ```tsx
 import { z } from 'zod/v4';
-import { useForm, schemaResolver } from '@xiaoye-react/ui';
+import { useForm, schemaResolver } from '@xiaoye-react/form';
 
 const nestedSchema = z.object({
   nested: z.object({
@@ -102,7 +102,7 @@ form.errors;
 
 ```tsx
 import { z } from 'zod/v4';
-import { useForm, schemaResolver } from '@xiaoye-react/ui';
+import { useForm, schemaResolver } from '@xiaoye-react/form';
 
 const listSchema = z.object({
   list: z.array(
@@ -129,7 +129,7 @@ form.errors;
 
 ```tsx
 import { z } from 'zod/v4';
-import { useForm, schemaResolver } from '@xiaoye-react/ui';
+import { useForm, schemaResolver } from '@xiaoye-react/form';
 
 const schema = z
   .object({

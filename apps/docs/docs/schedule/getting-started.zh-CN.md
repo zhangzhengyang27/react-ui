@@ -13,8 +13,8 @@ description: react-ui GettingStarted 文档。
 安装完成后，在应用根目录导入包样式：
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
+import '@xiaoye-react/schedule/styles.css';
 // ‼️ 在核心包和 dates 包样式之后导入 schedule 样式
 import '@xiaoye-react/schedule/styles.css';
 ```

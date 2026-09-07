@@ -11,7 +11,7 @@ description: react-ui Errors 文档。
 `form.errors` 是一个包含验证错误的 React 节点对象：
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -43,7 +43,7 @@ form.errors; // ->
 与 [初始值](/docs/form/values/) 一样，你可以设置初始表单错误：
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -58,7 +58,7 @@ const form = useForm({
 ## setErrors 处理程序
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 const form = useForm({ mode: 'uncontrolled' });
 form.setErrors({ firstName: '太短', email: '邮箱无效' });
@@ -72,7 +72,7 @@ form.errors;
 `form.setFieldError` 处理程序设置给定字段的错误：
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -89,7 +89,7 @@ form.errors; // -> { email: '邮箱无效' }
 `form.clearErrors` 处理程序清除所有表单错误：
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -106,7 +106,7 @@ form.errors; // -> {}
 `form.clearFieldError` 处理程序清除给定字段的错误：
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -125,7 +125,7 @@ form.errors; // -> { email: '邮箱无效' }
 注意，为 `false`、`null` 或 `undefined` 的错误将被自动移除：
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -138,7 +138,7 @@ const form = useForm({
 ```
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -156,11 +156,11 @@ form.errors; // -> { name: 'name-error' }, email 错误不包含在 errors 对�
 你也可以直接从 `form` 实例获取该类型：
 
 ```tsx
-import type { FormErrors } from '@xiaoye-react/ui';
+import type { FormErrors } from '@xiaoye-react/form';
 ```
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 const form = useForm({ mode: 'uncontrolled' });
 

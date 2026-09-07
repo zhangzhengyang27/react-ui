@@ -78,15 +78,3 @@ function useDisclosure(
   options?: UseDisclosureOptions,
 ): UseDisclosureReturnValue;
 ```
-
-## 导出类型
-
-`UseDisclosureOptions`、`UseDisclosureHandlers` 与 `UseDisclosureReturnValue` 类型均已从 `@xiaoye-react/hooks` 导出，可在应用中按需导入：
-
-```tsx
-import type {
-  UseDisclosureOptions,
-  UseDisclosureHandlers,
-  UseDisclosureReturnValue,
-} from '@xiaoye-react/hooks';
-```

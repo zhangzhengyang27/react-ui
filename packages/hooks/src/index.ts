@@ -13,7 +13,7 @@ export type { UseClipboardOptions, UseClipboardReturnValue } from './use-clipboa
 export { useColorScheme } from './use-color-scheme/use-color-scheme'
 export type { UseColorSchemeValue } from './use-color-scheme/use-color-scheme'
 export { useCounter } from './use-counter/use-counter'
-export type { UseCounterOPtions, UseCounterHandlers, UseCounterReturnValue } from './use-counter/use-counter'
+export type { UseCounterOptions, UseCounterHandlers, UseCounterReturnValue } from './use-counter/use-counter'
 export { useIsomorphicEffect } from './use-isomorphic-effect/use-isomorphic-effect'
 export {
     useMutationObserver,

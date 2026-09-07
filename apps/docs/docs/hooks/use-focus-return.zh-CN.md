@@ -49,21 +49,21 @@ returnFocus();
 ## 类型定义
 
 ```tsx
-interface UseFocusReturnOptions {
+interface UseFocusReturnInput {
   opened: boolean;
   shouldReturnFocus?: boolean;
 }
 
 type UseFocusReturnReturnValue = () => void;
 
-function useFocusReturn(options: UseFocusReturnOptions): UseFocusReturnReturnValue
+function useFocusReturn(options: UseFocusReturnInput): UseFocusReturnReturnValue
 ```
 
 ## 导出类型
 
-`UseFocusReturnOptions` 和 `UseFocusReturnReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
+`UseFocusReturnInput` 和 `UseFocusReturnReturnValue` 类型从 `@xiaoye-react/hooks` 包导出，
 可在应用中导入：
 
 ```tsx
-import type { UseFocusReturnOptions, UseFocusReturnReturnValue } from '@xiaoye-react/hooks';
+import type { UseFocusReturnInput, UseFocusReturnReturnValue } from '@xiaoye-react/hooks';
 ```

@@ -1,4 +1,7 @@
 import { SimpleGrid, Text, Title } from '@xiaoye-react/ui';
+import { useLocation } from 'dumi';
+import Link from '../../../../theme/common/Link';
+import * as utils from '../../../../theme/utils';
 import { HomePageContainer } from '../shared/Container';
 import { HomePageDescription } from '../shared/Description';
 import { HomePageLearnMore } from '../shared/LearnMore';
@@ -29,6 +32,9 @@ const hooksData = [
 ];
 
 export function HooksSection() {
+  const { pathname, search } = useLocation();
+  const localized = (path: string) => utils.getLocalizedPathname(path, utils.isZhCN(pathname), search);
+
   return (
     <section className={classes.root}>
       <HomePageContainer>
@@ -44,9 +50,9 @@ export function HooksSection() {
             <section className={classes.column} key={hook.title}>
               <header className={classes.header}>
                 <Title order={3} className={classes.title}>
-                  <a href={hook.link} className={classes.titleLink}>
+                  <Link href={localized(hook.link)} className={classes.titleLink}>
                     {hook.title}
-                  </a>
+                  </Link>
                 </Title>
                 <Text className={classes.description}>{hook.description}</Text>
               </header>

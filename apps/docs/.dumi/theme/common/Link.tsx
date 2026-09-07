@@ -3,7 +3,9 @@ import React, { useMemo } from 'react';
 import { Link as DumiLink, useAppData, useLocation, useNavigate } from 'dumi';
 
 export interface LinkProps {
-  to: string | { pathname?: string; search?: string; hash?: string };
+  to?: string | { pathname?: string; search?: string; hash?: string };
+  /** 外链或原生路径：与 to 二选一；显式传入时不会被 to 的计算结果覆盖 */
+  href?: string;
   style?: React.CSSProperties;
   className?: string;
   onClick?: MouseEventHandler;
@@ -12,7 +14,7 @@ export interface LinkProps {
 }
 
 const Link: React.FC<React.PropsWithChildren<LinkProps>> = (props) => {
-  const { component, children, to, ref, ...rest } = props;
+  const { component, children, to, href: hrefProp, ref, ...rest } = props;
   const { pathname } = useLocation();
   const { preloadRoute } = useAppData();
   const navigate = useNavigate();
@@ -20,8 +22,11 @@ const Link: React.FC<React.PropsWithChildren<LinkProps>> = (props) => {
     if (typeof to === 'object') {
       return `${to.pathname || pathname}${to.search || ''}${to.hash || ''}`;
     }
-    return to;
-  }, [pathname, to]);
+    if (typeof to === 'string') {
+      return to;
+    }
+    return hrefProp;
+  }, [pathname, to, hrefProp]);
   const onClick = (e: MouseEvent<HTMLAnchorElement>) => {
     rest.onClick?.(e);
     if (!href?.startsWith('http')) {

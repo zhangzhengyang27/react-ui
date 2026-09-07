@@ -8,39 +8,35 @@ description: react-ui Unstyled 文档。
 
 ## 将 ReactUI 用作 headless UI 库
 
-你可以将 ReactUI 作为 headless UI 库使用。要做到这一点，只需不在应用中导入 `@ui/*/styles.css`。
+你可以将 ReactUI 作为 headless UI 库使用。要做到这一点，只需不在应用中导入 `@xiaoye-react/ui/style.css`。
 然后你就可以使用 [Styles API](/docs/styles/styles-api/) 配合任意你喜欢的样式方案为 ReactUI 组件设置样式。
 
-## HeadlessUIProvider
+## UIProvider 的 headless 模式
 
-`HeadlessUIProvider` 是 [UIProvider](/docs/theming/ui-provider) 的替代方案，
-用于你想将 ReactUI 作为 headless UI 库时。它会移除所有与 ReactUI 样式相关的功能：
+`UIProvider` 支持 `headless` 属性，用于你想将 ReactUI 作为 headless UI 库时。启用后会移除所有与 ReactUI 样式相关的功能：
 
-- 不再为组件应用 ReactUI class
-- 不再通过 `style` 属性添加内联 CSS 变量
+- 不再注入全局样式
 - 移除所有配色方案相关功能
-- 不生成全局样式
+- 不生成默认主题样式
 
-`HeadlessUIProvider` 的限制：
+`headless` 模式的限制：
 
 - [配色方案切换](/docs/theming/color-schemes/) 将不可用。如果你的应用需要深色模式，你需要自行实现。
-- 所有与样式相关的 props（如 `color`、`radius`、`size` 等）都不会生效。
-- 一些依赖样式的组件将无法使用（如 [Grid](/components/grid)、[SimpleGrid](/components/simple-grid)、[Container](/components/container) 等）。
+- 一些依赖样式的组件将无法正常显示（如 [Grid](/components/grid)、[SimpleGrid](/components/simple-grid)、[Container](/components/container) 等）。
 - `lightHidden`/`darkHidden`、`visibleFrom`/`hiddenFrom` props 将不可用。
-- [Style props](/docs/styles/style-props/) 只对显式值有效，例如 `mt="xs"` 无效，但 `mt={5}` 有效。
 
-要使用 `HeadlessUIProvider`，请参考 [入门指南](/getting-started/)，并将 `UIProvider` 替换为 `HeadlessUIProvider`。
+要启用 `headless` 模式，请参考 [入门指南](/getting-started/)，并为 `UIProvider` 设置 `headless` 属性。
 注意，你的应用中不需要使用 [ColorSchemeScript](/docs/theming/color-schemes/#colorschemescript)，它不会产生任何效果，
 因此可以忽略指南中的相关部分。
 
 ```tsx
-import { HeadlessUIProvider } from '@xiaoye-react/ui';
+import { UIProvider } from '@xiaoye-react/ui';
 
 function App() {
   return (
-    <HeadlessUIProvider>
+    <UIProvider headless>
       {/* Your application */}
-    </HeadlessUIProvider>
+    </UIProvider>
   );
 }
 ```

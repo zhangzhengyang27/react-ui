@@ -13,9 +13,9 @@ description: react-ui 图表组件入门指南。
 安装完成后，在应用根目录导入包样式：
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 // ‼️ 图表样式必须在核心包样式之后导入
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/charts/styles.css';
 ```
 
 ## 不要忘记导入样式
@@ -26,7 +26,7 @@ import '@xiaoye-react/ui/styles.css';
 要解决这个问题，请在应用根目录导入图表样式：
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 ```
 
 ## 基于 recharts

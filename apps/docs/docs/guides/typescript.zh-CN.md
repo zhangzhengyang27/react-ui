@@ -20,7 +20,7 @@ description: react-ui Typescript 文档。
 
 ```tsx
 import type { ButtonProps } from '@xiaoye-react/ui';
-import type { DatePickerProps } from '@xiaoye-react/ui';
+import type { DatePickerProps } from '@xiaoye-react/dates';
 ```
 
 ```tsx
@@ -113,7 +113,7 @@ function Demo() {
 import {
   createTheme,
   UIThemeOverride,
-  mergeThemeOverrides,
+  mergeUITheme,
 } from '@xiaoye-react/ui';
 
 const baseTheme = createTheme({
@@ -121,7 +121,7 @@ const baseTheme = createTheme({
 });
 
 function mergeThemes(themes: UIThemeOverride[]) {
-  return mergeThemeOverrides(baseTheme, ...themes);
+  return mergeUITheme(baseTheme, ...themes);
 }
 
 const overrideTheme = createTheme({

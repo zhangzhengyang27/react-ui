@@ -63,7 +63,7 @@ declare module '@xiaoye-react/ui' {
 ```
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 
 import { UIProvider } from '@xiaoye-react/ui';
 import {
@@ -184,7 +184,7 @@ Document.getInitialProps = createGetInitialProps(
 ```
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 
 import Head from 'next/head';
 import { UIProvider } from '@xiaoye-react/ui';
@@ -327,7 +327,7 @@ export function RootStyleRegistry({
 ```
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 
 import { ColorSchemeScript, UIProvider } from '@xiaoye-react/ui';
 import {

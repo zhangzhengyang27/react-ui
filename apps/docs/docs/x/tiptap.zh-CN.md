@@ -10,14 +10,14 @@ description: react-ui Tiptap 文档。
 
 使用 yarn 安装：
 
-<InstallScript packages="@xiaoye-react/ui @xiaoye-react/ui @xiaoye-react/hooks @tiptap/react @tiptap/pm @tiptap/extension-link @tiptap/starter-kit"></InstallScript>
+<InstallScript packages="@xiaoye-react/ui @xiaoye-react/tiptap @xiaoye-react/hooks @tiptap/react @tiptap/pm @tiptap/extension-link @tiptap/starter-kit"></InstallScript>
 
 安装完成后，在应用根目录导入包样式：
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 // ‼️ tiptap 样式必须在核心包样式之后导入
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/tiptap/styles.css';
 ```
 
 ## TipTap 编辑器
@@ -43,7 +43,7 @@ import '@xiaoye-react/ui/styles.css';
 ```tsx
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { RichTextEditor as UIRichTextEditor } from '@xiaoye-react/ui';
+import { RichTextEditor as UIRichTextEditor } from '@xiaoye-react/tiptap';
 
 interface RichTextEditorProps {
   value: string;
@@ -140,7 +140,7 @@ export function RichTextEditor({
 ```tsx
 // 使用 @xiaoye-react/ui 包导出的 Link 扩展
 import { useEditor } from '@tiptap/react';
-import { Link, RichTextEditor } from '@xiaoye-react/ui';
+import { Link, RichTextEditor } from '@xiaoye-react/tiptap';
 
 function Demo() {
   const editor = useEditor({
@@ -204,7 +204,7 @@ function Demo() {
 
 ```tsx
 import { useEditor } from '@tiptap/react';
-import { RichTextEditor } from '@xiaoye-react/ui';
+import { RichTextEditor } from '@xiaoye-react/tiptap';
 
 function Demo() {
   const editor = useEditor({
@@ -247,7 +247,7 @@ function Demo() {
 
 ```tsx
 import { Button } from '@xiaoye-react/ui';
-import { useRichTextEditorContext } from '@xiaoye-react/ui';
+import { useRichTextEditorContext } from '@xiaoye-react/tiptap';
 
 function Demo() {
   const { editor } = useRichTextEditorContext();
@@ -287,7 +287,7 @@ function Demo() {
 
 ```tsx
 import { useEditor } from '@tiptap/react';
-import { RichTextEditor } from '@xiaoye-react/ui';
+import { RichTextEditor } from '@xiaoye-react/tiptap';
 
 function Demo() {
   const editor = useEditor({
@@ -443,7 +443,7 @@ export interface RichTextEditorLabels {
 ```
 
 ```tsx
-import { RichTextEditorLabels } from '@xiaoye-react/ui';
+import { RichTextEditorLabels } from '@xiaoye-react/tiptap';
 
 export const DEFAULT_LABELS: RichTextEditorLabels = {
   // Controls labels

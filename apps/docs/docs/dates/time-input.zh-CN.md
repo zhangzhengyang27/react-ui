@@ -26,7 +26,7 @@ description: react-ui TimeInput 文档。
 
 ```tsx
 import { useState } from 'react';
-import { TimeInput } from '@xiaoye-react/ui';
+import { TimeInput } from '@xiaoye-react/dates';
 
 function Demo() {
   const [value, setValue] = useState('');

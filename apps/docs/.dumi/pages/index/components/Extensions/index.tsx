@@ -1,45 +1,44 @@
 import { useRef } from 'react';
 import { FiCheck, FiSearch } from 'react-icons/fi';
+import { useLocation, useNavigate } from 'dumi';
 import { Spotlight, spotlight } from '@xiaoye-react/spotlight';
-import {
-  Button,
-  Group,
-  SimpleGrid,
-  Stack,
-  Text,
-  Title,
-  notifications,
-} from '@xiaoye-react/ui';
+import { Button, Group, SimpleGrid, Stack, Text, Title } from '@xiaoye-react/ui';
+import { notifications } from '@xiaoye-react/notifications';
+import Link from '../../../../theme/common/Link';
+import * as utils from '../../../../theme/utils';
 import { HomePageContainer } from '../shared/Container';
 import { HomePageDescription } from '../shared/Description';
 import { HomePageLearnMore } from '../shared/LearnMore';
 import { HomePageTitle } from '../shared/Title';
 import classes from './Extensions.module.css';
 
-const spotlightActions = [
+const getSpotlightActions = (
+  navigate: (path: string) => void,
+  localized: (path: string) => string
+) => [
   {
     id: 'notifications',
     label: '通知系统',
     description: '查看通知系统文档',
-    onClick: () => window.open('/docs/x/notifications', '_self'),
+    onClick: () => navigate(localized('/docs/x/notifications')),
   },
   {
     id: 'spotlight',
     label: 'Spotlight',
     description: '查看 Spotlight 文档',
-    onClick: () => window.open('/docs/x/spotlight', '_self'),
+    onClick: () => navigate(localized('/docs/x/spotlight')),
   },
   {
     id: 'carousel',
     label: 'Carousel',
     description: '查看 Carousel 文档',
-    onClick: () => window.open('/docs/x/carousel', '_self'),
+    onClick: () => navigate(localized('/docs/x/carousel')),
   },
   {
     id: 'tiptap',
     label: '富文本编辑器',
     description: '查看 Tiptap 文档',
-    onClick: () => window.open('/docs/x/tiptap', '_self'),
+    onClick: () => navigate(localized('/docs/x/tiptap')),
   },
 ];
 
@@ -103,6 +102,10 @@ function ExtensionDemo({ title, description, children }: ExtensionDemoProps) {
 }
 
 export function Extensions() {
+  const navigate = useNavigate();
+  const { pathname, search } = useLocation();
+  const localized = (path: string) => utils.getLocalizedPathname(path, utils.isZhCN(pathname), search);
+
   const timeoutRef = useRef<number>(-1);
 
   return (
@@ -175,7 +178,7 @@ export function Extensions() {
                 </Button>
               </Group>
               <Spotlight
-                actions={spotlightActions}
+                actions={getSpotlightActions(navigate, localized)}
                 nothingFound="未找到..."
                 highlightQuery
                 shortcut={['mod + K', '/']}
@@ -189,15 +192,15 @@ export function Extensions() {
             <ExtensionDemo title="官方扩展" description="官方维护的附加包，覆盖日期、图表、编辑等专业场景">
               <SimpleGrid cols={2} spacing="sm">
                 {officialExtensions.map((ext) => (
-                  <a
+                  <Link
                     key={ext.name}
-                    href={ext.href}
+                    href={localized(ext.href)}
                     className={classes.extensionCard}
                     aria-label={`${ext.label}（${ext.name}）`}
                   >
                     <Text className={classes.extensionName}>{ext.label}</Text>
                     <Text className={classes.extensionDesc}>{ext.description}</Text>
-                  </a>
+                  </Link>
                 ))}
               </SimpleGrid>
             </ExtensionDemo>

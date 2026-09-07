@@ -66,7 +66,7 @@ description: react-ui UseForm 文档。
 [触碰与脏状态指南](/docs/form/status/)
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -135,7 +135,7 @@ form.reorderListItem('fruits', { from: 1, to: 0 });
 ```
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -192,7 +192,7 @@ form.clearFieldError('path');
 ```
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 function Demo() {
   const form = useForm({ mode: 'uncontrolled' });
@@ -233,7 +233,7 @@ function Demo() {
 ```
 
 ```tsx
-import { useForm } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -275,7 +275,7 @@ form.resetDirty();
 
 ```tsx
 import { TextInput } from '@xiaoye-react/ui';
-import { useForm, UseFormReturnType } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/form';
 
 interface FormValues {
   name: string;

@@ -62,7 +62,7 @@ npm run dev
 
 - [组件总览](/components/overview)：查看全部可用组件。
 - [Hooks 集合](/docs/hooks/package)：查看全部工具 Hook。
-- [更新日志](/docs/react/changelog)：查看版本发布记录。
+- 更新日志：查看版本发布记录（见仓库 CHANGELOG.zh-CN.md）。
 
 ## TypeScript
 

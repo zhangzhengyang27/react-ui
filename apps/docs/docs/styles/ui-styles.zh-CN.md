@@ -14,7 +14,7 @@ description: react-ui UiStyles 文档。
 通过添加此导入，你的应用中将包含所有 `@xiaoye-react/ui` 组件的样式。
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 ```
 
 ## 按组件导入样式
@@ -25,8 +25,7 @@ import '@xiaoye-react/ui/styles.css';
 注意，单个组件样式仅适用于 `@xiaoye-react/ui` 包。其他包具有最小样式，可以使用 `@xiaoye-react/{package}/styles.css` 导入。
 
 ```tsx
-import '@xiaoye-react/ui/styles/UnstyledButton.css';
-import '@xiaoye-react/ui/styles/Button.css';
+import '@xiaoye-react/ui/style.css';
 ```
 
 ## 样式导入顺序
@@ -38,23 +37,22 @@ import '@xiaoye-react/ui/styles/Button.css';
 
 ```tsx
 // ✅ 正确顺序
-import '@xiaoye-react/ui/styles.css';
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
+import './application.css';
 // ❌ 错误顺序
-import '@xiaoye-react/ui/styles.css';
-import '@xiaoye-react/ui/styles.css';
+import './application.css';
+import '@xiaoye-react/ui/style.css';
 ```
 
 ```tsx
 // ✅ 正确顺序 - 你的样式将覆盖 ReactUI 样式
-import '@xiaoye-react/ui/styles.css';
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
+import './application.css';
 import classes from './Demo.module.css';
 
 // ❌ 错误顺序 – ReactUI 样式将覆盖你的样式
 import classes from './Demo.module.css';
-import '@xiaoye-react/ui/styles.css';
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 ```
 
 ## CSS 层
@@ -64,22 +62,22 @@ import '@xiaoye-react/ui/styles.css';
 所有导出样式的 `@xiaoye-react/*` 包都有一个额外的文件，其中所有样式都包裹在 `@layer ui` 指令中。
 
 
-这些文件包含与 `styles.css` 文件相同的样式，但包裹在 `@layer ui` 指令中。请确保不要在应用中同时导入 `styles.css` 和 `styles.layer.css` 文件。
+这些文件包含与 `styles.css` 文件相同的样式，但包裹在 `@layer ui` 指令中。注意：当前 `@xiaoye-react/ui` 包仅提供 `style.css`（不含 `@layer` 包裹的 layer 变体），此节内容适用于提供 layer 变体的其他 ReactUI 包。
 
 
-与包样式类似，你可以导入带有 `@layer ui` 指令的单个组件样式：
+提供了 layer 变体的 ReactUI 包（如 dates、charts、schedule 等）支持导入带 `@layer ui`
+指令的单包样式：
 
 ```tsx
-import '@xiaoye-react/ui/styles.layer.css';
-import '@xiaoye-react/ui/styles.layer.css';
+import '@xiaoye-react/dates/styles.layer.css';
 
 // ... 其他样式
 ```
 
 ```tsx
-// ❌ 不要同时导入 styles.css 和 styles.layer.css
-import '@xiaoye-react/ui/styles.css';
-import '@xiaoye-react/ui/styles.layer.css';
+// ❌ 不要同时导入同一包的 styles.css 和 styles.layer.css
+import '@xiaoye-react/dates/styles.css';
+import '@xiaoye-react/dates/styles.layer.css';
 ```
 
 ```tsx

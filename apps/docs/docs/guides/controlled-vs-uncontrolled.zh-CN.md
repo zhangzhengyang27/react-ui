@@ -125,7 +125,7 @@ function Demo() {
 ```tsx
 import { useState } from 'react';
 import { Button, Code, Text, TextInput } from '@xiaoye-react/ui';
-import { hasLength, isEmail, useForm } from '@xiaoye-react/ui';
+import { hasLength, isEmail, useForm } from '@xiaoye-react/form';
 
 function Demo() {
   const form = useForm({

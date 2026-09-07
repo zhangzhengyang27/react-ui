@@ -12,9 +12,9 @@ description: react-ui GettingStarted 文档。
 安装完成后，在应用根目录导入包样式：
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 // ‼️ 在核心包样式之后导入 dates 样式
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/dates/styles.css';
 ```
 
 ## 不要忘记导入样式
@@ -25,7 +25,7 @@ import '@xiaoye-react/ui/styles.css';
 要解决这个问题，请在应用根目录导入 dates 样式：
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 ```
 
 ## 用法
@@ -87,7 +87,7 @@ dayjs.extend(customParseFormat);
 ```tsx
 import 'dayjs/locale/ru';
 
-import { DatesProvider } from '@xiaoye-react/ui';
+import { DatesProvider } from '@xiaoye-react/dates';
 
 function Demo() {
   return (
@@ -103,7 +103,7 @@ function Demo() {
 
 import 'dayjs/locale/ru';
 
-import { DatesProvider } from '@xiaoye-react/ui';
+import { DatesProvider } from '@xiaoye-react/dates';
 
 function Demo() {
   return (

@@ -237,7 +237,7 @@ findClosestNumber(5, []); // 5
 如果输入为 `null` 或 `undefined`，则返回 `null` 或 `undefined`。
 
 ```tsx
-import { toDateString } from '@xiaoye-react/ui';
+import { toDateString } from '@xiaoye-react/dates';
 
 toDateString(new Date(2025, 0, 15)); // '2025-01-15'
 toDateString('2025-01-15 14:30:00'); // '2025-01-15'
@@ -252,7 +252,7 @@ toDateString(undefined); // undefined
 如果输入为 `null` 或 `undefined`，则返回 `null` 或 `undefined`。
 
 ```tsx
-import { toDateTimeString } from '@xiaoye-react/ui';
+import { toDateTimeString } from '@xiaoye-react/dates';
 
 toDateTimeString(new Date(2025, 0, 15, 14, 30, 0)); // '2025-01-15 14:30:00'
 toDateTimeString('2025-01-15'); // '2025-01-15 00:00:00'
@@ -266,7 +266,7 @@ toDateTimeString(null); // null
 如果日期值为 `null`，则使用当前日期。
 
 ```tsx
-import { assignTime } from '@xiaoye-react/ui';
+import { assignTime } from '@xiaoye-react/dates';
 
 assignTime('2025-01-15', '14:30:00'); // '2025-01-15 14:30:00'
 assignTime('2025-01-15 08:00:00', '20:15:30'); // '2025-01-15 20:15:30'
@@ -279,7 +279,7 @@ assignTime(null, '10:00:00'); // '[current date] 10:00:00'
 它将日期限制在可选的 min 和 max 边界之间，返回 `YYYY-MM-DD HH:mm:ss` 字符串。
 
 ```tsx
-import { clampDate } from '@xiaoye-react/ui';
+import { clampDate } from '@xiaoye-react/dates';
 
 clampDate('2025-01-01', '2025-12-31', '2025-06-15');
 // '2025-06-15 00:00:00' – 在范围内

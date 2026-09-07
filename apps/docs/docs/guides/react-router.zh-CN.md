@@ -53,7 +53,7 @@ module.exports = {
 ```tsx
 // 导入你已安装包的样式。
 // 除 `@xiaoye-react/hooks` 外，所有包都需要导入样式
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 
 import {
   Links,
@@ -62,11 +62,11 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-import { ColorSchemeScript, UIProvider, uiHtmlProps } from '@xiaoye-react/ui';
+import { ColorSchemeScript, UIProvider } from '@xiaoye-react/ui';
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" {...uiHtmlProps}>
+    <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

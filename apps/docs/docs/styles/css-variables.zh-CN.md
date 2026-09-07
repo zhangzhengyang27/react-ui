@@ -806,7 +806,7 @@ const theme = createTheme({
 
 ## z-index 变量
 
-z-index 变量在 `@xiaoye-react/ui/styles.css` 中定义。与其他变量不同，
+z-index 变量在 `@xiaoye-react/ui/style.css` 中定义。与其他变量不同，
 z-index 变量不受 theme 控制，也不会暴露在 theme 对象中。
 
 <CssVariablesGroup data={[ { variable: '--ui-z-index-app', defaultValue: '100', }, { variable: '--ui-z-index-modal', defaultValue: '200', }, { variable: '--ui-z-index-popover', defaultValue: '300', }, { variable: '--ui-z-index-overlay', defaultValue: '400', }, { variable: '--ui-z-index-max', defaultValue: '9999', }, ]}></CssVariablesGroup>

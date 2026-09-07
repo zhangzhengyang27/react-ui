@@ -144,13 +144,6 @@ function Demo() {
 `theme.defaultGradient` 控制支持 `variant="gradient"` 的组件的默认渐变配置（如 [Button](/components/button)、[ActionIcon](/components/action-icon)、[Badge](/components/badge) 等）。
 
 
-### fontWeights
-
-`theme.fontWeights` 控制所有组件中使用的 `font-weight` 值。默认值为 `regular: 400`、`medium: 600`、`bold: 700`。每个值都会映射到一个 CSS 变量：`--ui-font-weight-regular`、`--ui-font-weight-medium`、`--ui-font-weight-bold`。
-
-例如，要将 medium 字重从 `600` 改回 ReactUI 8 中的默认值 `500`：
-
-
 ### components
 
 `theme.components` 允许使用 `classNames` 和 `styles` 属性覆盖组件的[默认 props](/docs/theming/default-props)和样式。你可以在 [default props](/docs/theming/default-props) 和 [Styles API](/docs/styles/styles-api) 指南中了解更多。
@@ -241,13 +234,13 @@ function Demo() {
 
 ## 合并多个主题覆盖
 
-使用 `mergeThemeOverrides` 函数将多个主题合并为一个主题覆盖对象：
+使用 `mergeUITheme` 函数将多个主题合并为一个主题覆盖对象：
 
 ```tsx
 import {
   createTheme,
   UIProvider,
-  mergeThemeOverrides,
+  mergeUITheme,
 } from '@xiaoye-react/ui';
 
 const theme1 = createTheme({
@@ -260,7 +253,7 @@ const theme2 = createTheme({
 });
 
 // 注意：最好将主题覆盖对象存储在组件体外部，以避免不必要的重新渲染
-const myTheme = mergeThemeOverrides(theme1, theme2);
+const myTheme = mergeUITheme(theme1, theme2);
 
 function Demo() {
   return (

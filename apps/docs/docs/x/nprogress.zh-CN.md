@@ -8,14 +8,14 @@ description: react-ui Nprogress 文档。
 
 ## 安装
 
-<InstallScript packages="@xiaoye-react/ui"></InstallScript>
+<InstallScript packages="@xiaoye-react/nprogress"></InstallScript>
 
 安装完成后，在应用根目录导入包样式：
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 // ‼️ nprogress 样式必须在核心包样式之后导入
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/nprogress/styles.css';
 ```
 
 ## 设置 NavigationProgress
@@ -24,7 +24,7 @@ import '@xiaoye-react/ui/styles.css';
 
 ```tsx
 import { UIProvider } from '@xiaoye-react/ui';
-import { NavigationProgress } from '@xiaoye-react/ui';
+import { NavigationProgress } from '@xiaoye-react/nprogress';
 
 function Demo() {
   return (

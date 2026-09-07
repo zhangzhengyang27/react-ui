@@ -75,4 +75,4 @@ export default App;
 - [首页](/)
 - [组件总览](/components/overview)
 - [快速上手](/docs/react/getting-started)
-- [更新日志](/docs/react/changelog)
+- 更新日志

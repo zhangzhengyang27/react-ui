@@ -6,7 +6,7 @@ const DEFAULT_OPTIONS = {
     max: Infinity
 }
 
-export interface UseCounterOPtions {
+export interface UseCounterOptions {
     min?: number
     max?: number
 }

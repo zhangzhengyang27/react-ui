@@ -47,7 +47,7 @@ module.exports = {
 在应用根文件中引入样式（仅需引入一次）。例如在 Next.js pages router 的 `_app.tsx` 中：
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 ```
 
 ## 使用 UIProvider
@@ -70,14 +70,14 @@ function Demo() {
 }
 ```
 
-如果你的应用使用服务端渲染，请在 `<head />` 中添加 [ColorSchemeScript](/docs/theming/color-schemes) 并将 `uiHtmlProps` 展开到 `<html />` 元素上，以避免 hydration 警告：
+如果你的应用使用服务端渲染，请在 `<head />` 中添加 [ColorSchemeScript](/docs/theming/color-schemes) 以避免 hydration 警告：
 
 ```tsx
-import { ColorSchemeScript, uiHtmlProps } from '@xiaoye-react/ui';
+import { ColorSchemeScript } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
-    <html lang="en" {...uiHtmlProps}>
+    <html lang="en">
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -111,7 +111,7 @@ function Demo() {
     "**/*.scss",
     "**/*.sass",
     "**/*.less",
-    "node_modules/@xiaoye-react/ui/styles.css"
+    "node_modules/@xiaoye-react/ui/style.css"
   ]
 }
 ```

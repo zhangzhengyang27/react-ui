@@ -16,7 +16,7 @@ description: react-ui TimeGrid 文档。
 
 ```tsx
 import { useState } from 'react';
-import { TimeGrid } from '@xiaoye-react/ui';
+import { TimeGrid } from '@xiaoye-react/dates';
 
 function Demo() {
   const [value, setValue] = useState<string | null>('10:00');
@@ -30,7 +30,7 @@ function Demo() {
 要生成时间范围，请使用从 `@xiaoye-react/ui` 包导出的 `getTimeRange` 函数：
 
 ```tsx
-import { TimeGrid, getTimeRange } from '@xiaoye-react/ui';
+import { TimeGrid, getTimeRange } from '@xiaoye-react/dates';
 
 function WithArray() {
   return <TimeGrid data={['10:00', '12:00']} />

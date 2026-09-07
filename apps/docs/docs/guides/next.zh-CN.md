@@ -56,7 +56,7 @@ module.exports = {
 ```tsx
 // 导入你已安装包的样式。
 // 除 `@xiaoye-react/hooks` 外，所有包都需要导入样式
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 
 import type { AppProps } from 'next/app';
 import { createTheme, UIProvider } from '@xiaoye-react/ui';
@@ -76,11 +76,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
 ```tsx
 import { Head, Html, Main, NextScript } from 'next/document';
-import { ColorSchemeScript, uiHtmlProps } from '@xiaoye-react/ui';
+import { ColorSchemeScript } from '@xiaoye-react/ui';
 
 export default function Document() {
   return (
-    <Html lang="en" {...uiHtmlProps}>
+    <Html lang="en">
       <Head>
         <ColorSchemeScript defaultColorScheme="auto" />
       </Head>
@@ -108,9 +108,9 @@ npm run dev
 ```tsx
 // 导入你已安装包的样式。
 // 除 `@xiaoye-react/hooks` 外，所有包都需要导入样式
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 
-import { ColorSchemeScript, UIProvider, uiHtmlProps } from '@xiaoye-react/ui';
+import { ColorSchemeScript, UIProvider } from '@xiaoye-react/ui';
 
 export const metadata = {
   title: 'My ReactUI app',
@@ -123,7 +123,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" {...uiHtmlProps}>
+    <html lang="en">
       <head>
         <ColorSchemeScript />
       </head>

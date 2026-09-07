@@ -8,12 +8,12 @@ description: react-ui Dropzone 文档。
 
 ## 安装
 
-<InstallScript packages="@xiaoye-react/ui"></InstallScript>
+<InstallScript packages="@xiaoye-react/dropzone"></InstallScript>
 
 安装完成后，在应用根目录导入包样式：
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 // ‼️ dropzone 样式必须在核心包样式之后导入
 import '@xiaoye-react/dropzone/styles.css';
 ```

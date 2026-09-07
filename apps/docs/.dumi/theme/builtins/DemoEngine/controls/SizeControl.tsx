@@ -24,8 +24,9 @@ export function ConfiguratorSizeControl({
   prop,
   ...others
 }: ConfiguratorSizeControlProps) {
-  const _value = MARKS.find((mark) => mark.label === value)!.value;
-  const handleChange = (val: number) => onChange(MARKS.find((mark) => mark.value === val)!.label);
+  // value 不是预设尺寸档位（如自定义 CSS 值）时回退到第一档，避免 .find() 返回 undefined 导致白屏
+  const _value = MARKS.find((mark) => mark.label === value)?.value ?? MARKS[0].value;
+  const handleChange = (val: number) => onChange(MARKS.find((mark) => mark.value === val)?.label ?? MARKS[0].label);
 
   return (
     <Input.Wrapper labelElement="div" label={getControlLabel(prop)} {...others}>

@@ -112,7 +112,7 @@ function Demo() {
 
 ## 自动配色方案
 
-在 `UIProvider` 和 `ColorSchemeScript` 上设置 `defaultColorScheme="auto"` 以使用系统配色方案。在这种情况下，配色方案值将由用户的操作系统控制：
+在 `ColorSchemeScript` 上设置 `defaultColorScheme="auto"`，并在 `UIProvider` 上设置 `colorScheme="auto"`，以使用系统配色方案。在这种情况下，配色方案值将由用户的操作系统控制：
 
 ```tsx
 import { ColorSchemeScript, UIProvider } from '@xiaoye-react/ui';
@@ -121,7 +121,7 @@ function Demo() {
   return (
     <>
       <ColorSchemeScript defaultColorScheme="auto" />
-      <UIProvider defaultColorScheme="auto">
+      <UIProvider colorScheme="auto">
         {/* Your app here */}
       </UIProvider>
     </>
@@ -129,160 +129,82 @@ function Demo() {
 }
 ```
 
-## 配色方案管理器
+## 配色方案持久化
 
-默认情况下，配色方案值存储在 local storage 中，但你可以实现自己的配色方案管理器，将值存储在任何其他外部存储中。
-
-配色方案管理器必须具有以下方法：
-
-
-通常，最好将配色方案管理器包装在一个创建函数中，以提供配置方式。默认的基于 local storage 的配色方案管理器示例：
-
-
-然后可以将自定义配色方案管理器传递给 [UIProvider](/docs/theming/ui-provider)：
+`UIProvider` 的 `colorScheme` 是受控属性，组件内部**不会**自动把配色方案写入 local storage。
+如需持久化，请自行管理状态并在切换时写入存储：
 
 ```tsx
-interface UIColorSchemeManager {
-  /** Function to retrieve color scheme value from external storage, for example window.localStorage */
-  get: (defaultValue: UIColorScheme) => UIColorScheme;
+import { useState } from 'react';
+import { ColorSchemeScript, UIProvider } from '@xiaoye-react/ui';
 
-  /** Function to set color scheme value in external storage, for example window.localStorage */
-  set: (value: UIColorScheme) => void;
+function App() {
+  const [colorScheme, setColorScheme] = useState(() => {
+    if (typeof window === 'undefined') {
+      return 'light';
+    }
+    return window.localStorage.getItem('my-app-color-scheme') ?? 'light';
+  });
 
-  /** Function to subscribe to color scheme changes triggered by external events */
-  subscribe: (
-    onUpdate: (colorScheme: UIColorScheme) => void
-  ) => void;
-
-  /** Function to unsubscribe from color scheme changes triggered by external events */
-  unsubscribe: () => void;
-
-  /** Function to clear value from external storage */
-  clear: () => void;
-}
-```
-
-```tsx
-import {
-  isUIColorScheme,
-  UIColorScheme,
-  UIColorSchemeManager,
-} from '@xiaoye-react/ui';
-
-export interface LocalStorageColorSchemeManagerOptions {
-  /** Local storage key used to retrieve value with `localStorage.getItem(key)`, `ui-color-scheme-value` by default */
-  key?: string;
-}
-
-export function localStorageColorSchemeManager({
-  key = 'ui-color-scheme-value',
-}: LocalStorageColorSchemeManagerOptions = {}): UIColorSchemeManager {
-  let handleStorageEvent: (event: StorageEvent) => void;
-
-  return {
-    get: (defaultValue) => {
-      if (typeof window === 'undefined') {
-        return defaultValue;
-      }
-
-      try {
-        return (
-          (window.localStorage.getItem(key) as UIColorScheme) ||
-          defaultValue
-        );
-      } catch {
-        return defaultValue;
-      }
-    },
-
-    set: (value) => {
-      try {
-        window.localStorage.setItem(key, value);
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.warn(
-          '[@xiaoye-react/ui] Local storage color scheme manager was unable to save color scheme.',
-          error
-        );
-      }
-    },
-
-    subscribe: (onUpdate) => {
-      handleStorageEvent = (event) => {
-        if (
-          event.storageArea === window.localStorage &&
-          event.key === key
-        ) {
-          isUIColorScheme(event.newValue) &&
-            onUpdate(event.newValue);
-        }
-      };
-
-      window.addEventListener('storage', handleStorageEvent);
-    },
-
-    unsubscribe: () => {
-      window.removeEventListener('storage', handleStorageEvent);
-    },
-
-    clear: () => {
-      window.localStorage.removeItem(key);
-    },
+  const handleColorSchemeChange = (value: string) => {
+    setColorScheme(value);
+    window.localStorage.setItem('my-app-color-scheme', value);
   };
-}
-```
 
-```tsx
-import { UIProvider } from '@xiaoye-react/ui';
-import { localStorageColorSchemeManager } from './localStorageColorSchemeManager';
-
-const colorSchemeManager = localStorageColorSchemeManager({
-  key: 'my-color-scheme',
-});
-
-function Demo() {
   return (
-    <UIProvider colorSchemeManager={colorSchemeManager}>
+    <UIProvider colorScheme={colorScheme as any}>
+      <button onClick={() => handleColorSchemeChange(colorScheme === 'light' ? 'dark' : 'light')}>
+        切换配色方案
+      </button>
       {/* Your app here */}
     </UIProvider>
   );
 }
 ```
 
+切换配色方案也可以使用 `use-ui-color-scheme` hook（见上文），它会调用 `UIProvider`
+上下文的 `setColorScheme` / `toggleColorScheme`，持久化逻辑同样需要你自己接入。
+
 ## 默认配色方案
 
-当用户尚未选择任何配色方案时，将使用默认配色方案值。它必须同时设置在 [UIProvider](/docs/theming/ui-provider/) 和 `ColorSchemeScript` 上。如果未设置 `defaultColorScheme`，则使用 `light`。
+`ColorSchemeScript` 支持 `defaultColorScheme` 属性（`light` / `dark` / `auto`），
+用于在服务端渲染时把 `data-ui-color-scheme` 属性直接写到 `<html />` 上，避免首屏闪烁：
 
 ```tsx
-import { ColorSchemeScript, UIProvider } from '@xiaoye-react/ui';
+import { ColorSchemeScript } from '@xiaoye-react/ui';
 
 function Demo() {
-  return (
-    <>
-      <ColorSchemeScript defaultColorScheme="dark" />
-      <UIProvider defaultColorScheme="dark">
-        {/* Your app here */}
-      </UIProvider>
-    </>
-  );
+  return <ColorSchemeScript defaultColorScheme="dark" />;
 }
 ```
 
+注意，`UIProvider` 本身**没有** `defaultColorScheme` 属性：未受控时其内部状态初始为 `light`，
+挂载后会覆写 `data-ui-color-scheme` 属性。如果你希望应用默认使用深色方案，
+请使用受控的 `colorScheme` prop 并自行管理初始值（见上文「配色方案持久化」）。
+
 ## 强制配色方案
 
-你可以使用 `forceColorScheme` 属性将配色方案值强制为 `light` 或 `dark`。它必须同时设置在 [UIProvider](/docs/theming/ui-provider/) 和 `ColorSchemeScript` 上。如果设置了 `forceColorScheme`，则 `defaultColorScheme` 和 `colorSchemeManager` 将被忽略。当设置了 `forceColorScheme` 时，无法使用 `setColorScheme` 函数更改配色方案值。
+`ColorSchemeScript` 支持 `forceColorScheme` 属性，将服务端渲染的配色方案强制为 `light` 或 `dark`：
 
 ```tsx
-import { ColorSchemeScript, UIProvider } from '@xiaoye-react/ui';
+import { ColorSchemeScript } from '@xiaoye-react/ui';
+
+function Demo() {
+  return <ColorSchemeScript forceColorScheme="light" />;
+}
+```
+
+如果需要在应用运行期间强制固定配色方案（不允许用户切换），
+使用受控的 `colorScheme` prop 并传入固定值即可：
+
+```tsx
+import { UIProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
-    <>
-      <ColorSchemeScript forceColorScheme="light" />
-      <UIProvider forceColorScheme="light">
-        {/* Your app here */}
-      </UIProvider>
-    </>
+    <UIProvider colorScheme="light">
+      {/* Your app here */}
+    </UIProvider>
   );
 }
 ```
@@ -300,7 +222,7 @@ function Demo() {
 支持禁用 JavaScript 的 Next.js app router 示例：
 
 ```tsx
-import '@xiaoye-react/ui/styles.css';
+import '@xiaoye-react/ui/style.css';
 
 import { ColorSchemeScript, UIProvider } from '@xiaoye-react/ui';
 

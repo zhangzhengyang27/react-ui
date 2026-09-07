@@ -50,10 +50,18 @@ export const PopoverTarget = factory<PopoverTargetFactory>((props, ref) => {
         throw new Error('[@xiaoye-react/ui] Popover.Target children should be an element or a component that accepts ref')
     }
 
+    // withRoles=false 时目标元素可能不带任何 role（如普通 div），
+    // 此时注入 aria-expanded/aria-haspopup 属于非法 ARIA，axe 会报 aria-allowed-attr
+    const ariaProps = ctx.withRoles === false
+        ? {}
+        : {
+              'aria-haspopup': popupType,
+              'aria-expanded': ctx.opened,
+              'aria-controls': ctx.opened ? ctx.getDropdownId() : undefined,
+          }
+
     return cloneElement(child, {
-        'aria-haspopup': popupType,
-        'aria-expanded': ctx.opened,
-        'aria-controls': ctx.opened ? ctx.getDropdownId() : undefined,
+        ...ariaProps,
         id: effectiveId,
         className: [childProps.className].filter(Boolean).join(' '),
         ref: targetRef,

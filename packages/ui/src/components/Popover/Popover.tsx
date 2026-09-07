@@ -96,6 +96,9 @@ export interface PopoverProps extends StylesApiProps<PopoverFactory> {
     /** Props passed down to the underlying Portal when withinPortal is true */
     portalProps?: Record<string, any>
 
+    /** If false, Popover.Target 不注入 aria-haspopup/aria-expanded 等 ARIA 属性 @default true */
+    withRoles?: boolean
+
     /** Determines whether focus should be trapped within dropdown */
     trapFocus?: boolean
 
@@ -168,6 +171,7 @@ export function Popover(_props: PopoverProps) {
         zIndex,
         withinPortal = true,
         portalProps,
+        withRoles = true,
         radius,
         shadow,
         id,
@@ -271,6 +275,7 @@ export function Popover(_props: PopoverProps) {
                 zIndex,
                 withinPortal,
                 portalProps,
+                withRoles,
                 onClose: popover.onClose,
                 onToggle: popover.onToggle,
                 getTargetId: () => targetId,

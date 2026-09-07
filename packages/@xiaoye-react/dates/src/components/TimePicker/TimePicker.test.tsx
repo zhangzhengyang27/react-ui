@@ -19,6 +19,9 @@ describe('@xiaoye-react/dates/TimePicker', () => {
     varsResolver: true,
     displayName: '@xiaoye-react/dates/TimePicker',
     stylesApiSelectors: ['root'],
+    // TimePicker 的根元素是 .ui-TimePicker-root；默认的 *:not(style) 会先匹配到包装 div
+    selector: '.ui-TimePicker-root',
+    sizeSelector: '.ui-TimePicker-root',
   });
 
   tests.itSupportsSharedInputDefaults<TimePickerProps>({

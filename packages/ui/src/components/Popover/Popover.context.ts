@@ -32,6 +32,7 @@ export interface PopoverContextValue {
     trapFocus: boolean | undefined
     withinPortal: boolean | undefined
     portalProps: Record<string, any> | undefined
+    withRoles: boolean | undefined
 }
 
 export const [PopoverContextProvider, usePopoverContext] = createSafeContext<PopoverContextValue>(

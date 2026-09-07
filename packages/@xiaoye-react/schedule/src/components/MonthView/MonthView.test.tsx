@@ -1,3 +1,4 @@
+import { fireEvent } from '@testing-library/react';
 import 'dayjs/locale/ru';
 
 import dayjs from 'dayjs';
@@ -894,7 +895,7 @@ describe('@xiaoye-react/schedule/MonthView', () => {
 
       const day = screen.getByRole('button', { name: 'November 5, 2025' });
 
-      await userEvent.click(day);
+      fireEvent.click(day);
 
       expect(daySpy).not.toHaveBeenCalled();
       // Note: We don't test event clicks in static mode because ScheduleEvent

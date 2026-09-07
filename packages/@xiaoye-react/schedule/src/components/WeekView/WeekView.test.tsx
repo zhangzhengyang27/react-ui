@@ -1,3 +1,4 @@
+import { fireEvent } from '@testing-library/react';
 import 'dayjs/locale/ru';
 
 import dayjs from 'dayjs';
@@ -876,7 +877,7 @@ describe('@xiaoye-react/schedule/WeekView', () => {
       const slot = container.querySelector(
         '.ui-WeekView-weekViewDaySlot'
       ) as HTMLButtonElement;
-      await userEvent.click(slot);
+      fireEvent.click(slot);
 
       expect(externalClickSpy).not.toHaveBeenCalled();
     });

@@ -1,3 +1,4 @@
+import { fireEvent } from '@testing-library/react';
 import 'dayjs/locale/ru';
 
 import dayjs from 'dayjs';
@@ -617,7 +618,7 @@ describe('@xiaoye-react/schedule/ResourcesDayView', () => {
     const slot = screen.getAllByRole('button', {
       name: /Resource time slot Room A/,
     })[0];
-    await userEvent.click(slot);
+    fireEvent.click(slot);
     expect(slotClickSpy).not.toHaveBeenCalled();
 
     expect(slot).toHaveAttribute('tabIndex', '-1');
@@ -630,7 +631,7 @@ describe('@xiaoye-react/schedule/ResourcesDayView', () => {
     });
 
     const eventButton = screen.getByTitle('Static Event');
-    await userEvent.click(eventButton);
+    fireEvent.click(eventButton);
     expect(eventClickSpy).not.toHaveBeenCalled();
     expect(eventButton.closest('[draggable="true"]')).not.toBeInTheDocument();
 

@@ -1,3 +1,4 @@
+import { fireEvent } from '@testing-library/react';
 import 'dayjs/locale/ru';
 
 import dayjs from 'dayjs';
@@ -428,11 +429,11 @@ describe('@xiaoye-react/schedule/ResourcesMonthView', () => {
       />
     );
 
-    await userEvent.click(screen.getByRole('button', { name: 'Room A January 10, 2025' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Room A January 10, 2025' }));
     expect(daySpy).not.toHaveBeenCalled();
 
     const eventButton = screen.getByText('Static Event').closest('button')!;
-    await userEvent.click(eventButton);
+    fireEvent.click(eventButton);
     expect(eventSpy).not.toHaveBeenCalled();
 
     const cells = container.querySelectorAll(

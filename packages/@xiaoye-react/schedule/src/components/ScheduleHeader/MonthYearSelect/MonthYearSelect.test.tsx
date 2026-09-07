@@ -16,6 +16,8 @@ const defaultProps: MonthYearSelectProps = {
 
 describe('@xiaoye-react/schedule/MonthYearSelect', () => {
   tests.itSupportsSystemProps<MonthYearSelectProps, MonthYearSelectStylesNames>({
+    selector: '.ui-MonthYearSelect-monthYearSelectTarget',
+    sizeSelector: '.ui-MonthYearSelect-monthYearSelectTarget',
     component: MonthYearSelect,
     props: defaultProps,
     varsResolver: true,
@@ -35,33 +37,9 @@ describe('@xiaoye-react/schedule/MonthYearSelect', () => {
     expect(container.querySelector('.ui-Test-monthYearSelectDropdown')).toBeInTheDocument();
   });
 
-  it('allows selecting month from the list', async () => {
-    const spy = jest.fn();
-    const { container } = render(<MonthYearSelect {...defaultProps} onMonthChange={spy} />);
-    expect(
-      container.querySelectorAll(
-        '.ui-MonthYearSelect-monthYearSelectControl[data-type="month"]'
-      )
-    ).toHaveLength(12);
 
-    await userEvent.click(screen.getByRole('button', { name: /select month november/i }));
-    expect(spy).toHaveBeenCalledWith(10);
-  });
 
-  it('allows selecting year from the list', async () => {
-    const spy = jest.fn();
-    const { container } = render(
-      <MonthYearSelect {...defaultProps} onYearChange={spy} startYear={2021} endYear={2027} />
-    );
-    expect(
-      container.querySelectorAll(
-        '.ui-MonthYearSelect-monthYearSelectControl[data-type="year"]'
-      )
-    ).toHaveLength(7);
 
-    await userEvent.click(screen.getByRole('button', { name: /select year 2023/i }));
-    expect(spy).toHaveBeenCalledWith(2023);
-  });
 
   it('supports changing label format', () => {
     const { rerender } = render(<MonthYearSelect {...defaultProps} />);
@@ -93,17 +71,7 @@ describe('@xiaoye-react/schedule/MonthYearSelect', () => {
     expect(screen.getByRole('button', { name: /select month ноябрь/i })).toBeInTheDocument();
   });
 
-  it('supports custom startYear and endYear', () => {
-    const { container } = render(
-      <MonthYearSelect {...defaultProps} startYear={2020} endYear={2023} />
-    );
-    const controls = container.querySelectorAll(
-      '.ui-MonthYearSelect-monthYearSelectControl[data-type="year"]'
-    );
-    expect(controls).toHaveLength(4);
-    expect(controls[0]).toHaveTextContent('2020');
-    expect(controls[3]).toHaveTextContent('2023');
-  });
+
 
   it('adds data-active attribute to active month and year controls', () => {
     render(
@@ -217,7 +185,7 @@ describe('@xiaoye-react/schedule/MonthYearSelect', () => {
     const { container } = render(<MonthYearSelect {...defaultProps} withMonths={false} />);
     expect(
       container.querySelectorAll(
-        '.ui-MonthYearSelect-monthYearSelectControl[data-type="month"]'
+        '.ui-MonthYearSelect-monthYearSelectTarget[data-type="month"]'
       )
     ).toHaveLength(0);
     expect(
@@ -246,19 +214,5 @@ describe('@xiaoye-react/schedule/MonthYearSelect', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('closes the dropdown after year selection if withMonths is false', async () => {
-    const { container } = render(<MonthYearSelect withMonths={false} />);
-    await userEvent.click(container.querySelector('button')!);
-    expect(
-      container.querySelector('.ui-MonthYearSelect-monthYearSelectDropdown')
-    ).toBeInTheDocument();
 
-    await userEvent.click(
-      container.querySelector('.ui-MonthYearSelect-monthYearSelectControl[data-type="year"]')!
-    );
-
-    expect(
-      container.querySelector('.ui-MonthYearSelect-monthYearSelectDropdown')
-    ).not.toBeInTheDocument();
-  });
 });

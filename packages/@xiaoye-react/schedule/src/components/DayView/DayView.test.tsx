@@ -1,3 +1,4 @@
+import { fireEvent } from '@testing-library/react';
 import 'dayjs/locale/ru';
 
 import dayjs from 'dayjs';
@@ -668,7 +669,7 @@ describe('@xiaoye-react/schedule/DayView', () => {
       );
 
       const slot = screen.getByRole('button', { name: 'Time slot 08:00:00 - 09:00:00' });
-      await userEvent.click(slot);
+      fireEvent.click(slot);
 
       expect(spy).not.toHaveBeenCalled();
     });
@@ -678,7 +679,7 @@ describe('@xiaoye-react/schedule/DayView', () => {
       render(<DayView {...defaultProps} mode="static" onAllDaySlotClick={spy} />);
 
       const allDaySlot = screen.getByRole('button', { name: 'Time slot All day' });
-      await userEvent.click(allDaySlot);
+      fireEvent.click(allDaySlot);
 
       expect(spy).not.toHaveBeenCalled();
     });
@@ -693,7 +694,7 @@ describe('@xiaoye-react/schedule/DayView', () => {
         '.ui-ScheduleEvent-eventInner'
       ) as HTMLButtonElement;
       if (event) {
-        await userEvent.click(event);
+        fireEvent.click(event);
       }
 
       expect(spy).not.toHaveBeenCalled();
@@ -763,7 +764,7 @@ describe('@xiaoye-react/schedule/DayView', () => {
       const slot = container.querySelector(
         '.ui-DayView-dayViewSlot:not([data-all-day])'
       ) as HTMLButtonElement;
-      await userEvent.click(slot);
+      fireEvent.click(slot);
 
       expect(externalClickSpy).not.toHaveBeenCalled();
     });

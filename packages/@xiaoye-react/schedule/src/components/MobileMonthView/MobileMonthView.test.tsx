@@ -1,3 +1,4 @@
+import { fireEvent } from '@testing-library/react';
 import 'dayjs/locale/ru';
 
 import dayjs from 'dayjs';
@@ -400,7 +401,7 @@ describe('@xiaoye-react/schedule/MobileMonthView', () => {
   it('does not call onDayClick in static mode', async () => {
     const spy = jest.fn();
     render(<MobileMonthView {...defaultProps} onDayClick={spy} mode="static" />);
-    await userEvent.click(screen.getByRole('button', { name: 'November 1, 2025' }));
+    fireEvent.click(screen.getByRole('button', { name: 'November 1, 2025' }));
     expect(spy).not.toHaveBeenCalled();
   });
 

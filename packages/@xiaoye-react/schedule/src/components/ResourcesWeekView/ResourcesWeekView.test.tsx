@@ -1,3 +1,4 @@
+import { fireEvent } from '@testing-library/react';
 import 'dayjs/locale/ru';
 
 import dayjs from 'dayjs';
@@ -675,7 +676,7 @@ describe('@xiaoye-react/schedule/ResourcesWeekView', () => {
         .find((btn) =>
           btn.classList.contains('ui-ResourcesWeekView-resourcesWeekViewRowSlot')
         )!;
-      await userEvent.click(slot);
+      fireEvent.click(slot);
       expect(spy).not.toHaveBeenCalled();
     });
 
@@ -699,7 +700,7 @@ describe('@xiaoye-react/schedule/ResourcesWeekView', () => {
 
       const event = screen.getByText('Static Event').closest('button')!;
       expect(event).toHaveAttribute('tabIndex', '-1');
-      await userEvent.click(event);
+      fireEvent.click(event);
       expect(spy).not.toHaveBeenCalled();
     });
 

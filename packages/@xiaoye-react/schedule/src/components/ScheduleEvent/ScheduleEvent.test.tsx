@@ -1,3 +1,4 @@
+import { fireEvent } from '@testing-library/react';
 import { render, screen, tests, userEvent } from '@xiaoye-react/tests';
 import { ScheduleEvent, ScheduleEventProps, ScheduleEventStylesNames } from './ScheduleEvent';
 
@@ -96,14 +97,14 @@ describe('@xiaoye-react/schedule/ScheduleEvent', () => {
   it('forwards onClick in default mode', async () => {
     const spy = jest.fn();
     render(<ScheduleEvent {...defaultProps} onClick={spy} />);
-    await userEvent.click(screen.getByRole('button'));
+    fireEvent.click(screen.getByRole('button'));
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('suppresses consumer onClick in static mode', async () => {
     const spy = jest.fn();
     render(<ScheduleEvent {...defaultProps} mode="static" onClick={spy} />);
-    await userEvent.click(screen.getByRole('button'));
+    fireEvent.click(screen.getByRole('button'));
     expect(spy).not.toHaveBeenCalled();
   });
 

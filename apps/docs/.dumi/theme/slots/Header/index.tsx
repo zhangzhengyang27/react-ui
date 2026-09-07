@@ -65,13 +65,11 @@ const Header: React.FC = () => {
     if (isLoading) {
       return [];
     }
-    return versions.map<{ value: string; label: string }>((item) => {
-      const isMatch = item.version.startsWith(pkg.version[0]);
-      const label = isMatch ? pkg.version : item.version;
-      const value = isChineseMirror && item.chineseMirrorUrl ? item.chineseMirrorUrl : item.url;
-      return { value, label };
-    });
-  }, [versions, isLoading, pkg.version, isChineseMirror]);
+    return versions.map<{ value: string; label: string }>((item) => ({
+      value: isChineseMirror && item.chineseMirrorUrl ? item.chineseMirrorUrl : item.url,
+      label: item.version,
+    }));
+  }, [versions, isLoading, isChineseMirror]);
 
   const [headerState, setHeaderState] = useState<HeaderState>({
     menuVisible: false,
@@ -198,7 +196,7 @@ const Header: React.FC = () => {
       key="version"
       size="xs"
       data={versionOptions}
-      defaultValue={pkg.version}
+      defaultValue="/"
       onChange={handleVersionChange}
       className={classes.versionSelect}
     />,

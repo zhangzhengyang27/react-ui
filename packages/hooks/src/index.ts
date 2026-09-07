@@ -158,7 +158,7 @@ export type { UseIntersectionReturnValue } from './use-intersection/use-intersec
 export { useIsFirstRender } from './use-is-first-render/use-is-first-render'
 export { useLogger } from './use-logger/use-logger'
 export { useLongPress } from './use-long-press/use-long-press'
-export type { UseLongPressOptions, UseLongPressReturnValue } from './use-long-press/use-long-press'
+export type { UseLongPressEvent, UseLongPressOptions, UseLongPressReturnValue } from './use-long-press/use-long-press'
 export { useNetwork } from './use-network/use-network'
 export type { UserNetworkReturnValue } from './use-network/use-network'
 export { useOrientation } from './use-orientation/use-orientation'

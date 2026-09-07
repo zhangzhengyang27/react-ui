@@ -15,6 +15,7 @@
         "release": "pnpm build:packages && pnpm --filter './packages/**' release",
         "lint:es": "NODE_OPTIONS=--max-old-space-size=8192 eslint \"{packages,apps}/**/*.{js,jsx,ts,tsx}\"",
         "lint:style": "stylelint \"{packages,apps}/**/*.{css,ts}\"",
+        "docs:lint": "node apps/docs/scripts/lint-docs-imports.mjs",
         "lint": "npm run lint:es && npm run lint:style",
         "spellcheck": "cspell lint --dot --gitignore --color --cache --show-suggestions \"(packages|apps)/**/*.@(html|js|cjs|mjs|ts|tsx|css|scss|md)\"",
         "commit": "git-cz",

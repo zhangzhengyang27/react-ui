@@ -104,7 +104,7 @@ import '@xiaoye-react/ui/styles/Button.layer.css';
 // 它们将在 ReactUI 样式之后应用
 import classes from './Demo.module.css';
 
-import '@xiaoye-react/ui/styles.layer.css';
+import '@xiaoye-react/dates/styles.layer.css';
 ```
 
 ```scss

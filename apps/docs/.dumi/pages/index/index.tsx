@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Notifications } from '@xiaoye-react/notifications';
 
 import useLocale from '../../hooks/useLocale';
 import PromptDrawer from '../../theme/common/ThemeSwitch/PromptDrawer';
@@ -37,9 +36,6 @@ const Homepage: React.FC = () => {
 
   return (
     <section>
-      {/* 通知系统 Provider：使「扩展-通知系统」demo 的 notifications.show() 能渲染到组件树 */}
-      <Notifications position="top-right" />
-
       <HeroSection onOpenPromptDrawer={handlePromptDrawerOpen} />
 
       <FeaturesSection />

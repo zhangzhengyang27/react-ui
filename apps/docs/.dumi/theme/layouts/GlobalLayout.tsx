@@ -3,6 +3,8 @@ import { getSandpackCssText } from '@codesandbox/sandpack-react';
 import dayjs from 'dayjs';
 import { createSearchParams, useOutlet, useSearchParams, useServerInsertedHTML } from 'dumi';
 import { UIProvider } from '@xiaoye-react/ui';
+import { Notifications } from '@xiaoye-react/notifications';
+import ModalsProviderDemo from '../builtins/ModalsProviderDemo';
 
 import { DarkContext } from '../../hooks/useDark';
 import useLayoutState from '../../hooks/useLayoutState';
@@ -209,7 +211,12 @@ const GlobalLayout: React.FC = () => {
   return (
     <UIProvider colorScheme={isDark ? 'dark' : 'light'}>
       <DarkContext.Provider value={isDark}>
-        <SiteContext.Provider value={siteContextValue}>{outlet}</SiteContext.Provider>
+        {/* 页面级单例渲染器：供通知/弹窗类 demo 使用（store 为空时不渲染内容）。
+            注意必须唯一——若在每个 demo 内重复挂载，全局 store 的同一条通知会被渲染 N 次 */}
+        <Notifications position="top-right" />
+        <ModalsProviderDemo>
+          <SiteContext.Provider value={siteContextValue}>{outlet}</SiteContext.Provider>
+        </ModalsProviderDemo>
       </DarkContext.Provider>
       <HotKeysHandler />
       <GaScript />

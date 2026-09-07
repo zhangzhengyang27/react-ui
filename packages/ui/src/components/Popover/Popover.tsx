@@ -99,6 +99,18 @@ export interface PopoverProps extends StylesApiProps<PopoverFactory> {
     /** If false, Popover.Target 不注入 aria-haspopup/aria-expanded 等 ARIA 属性 @default true */
     withRoles?: boolean
 
+    /** 传递给下拉层 Transition 的属性（duration/timingFunction/transition 等） */
+    transitionProps?: {
+        duration?: number
+        timingFunction?: string
+        transition?: string
+        onEntered?: () => void
+        onExited?: () => void
+    }
+
+    /** 关闭后是否将焦点返回触发元素 @default true */
+    returnFocus?: boolean
+
     /** Determines whether focus should be trapped within dropdown */
     trapFocus?: boolean
 
@@ -172,6 +184,8 @@ export function Popover(_props: PopoverProps) {
         withinPortal = true,
         portalProps,
         withRoles = true,
+        transitionProps,
+        returnFocus = true,
         radius,
         shadow,
         id,
@@ -206,6 +220,18 @@ export function Popover(_props: PopoverProps) {
     useEffect(() => {
         setTargetId(uid)
     }, [uid])
+
+    // returnFocus：下拉关闭时若焦点仍停留在下拉层内，则返回触发元素（对齐 Mantine 语义）
+    useEffect(() => {
+        if (opened || !returnFocus || typeof document === 'undefined') {
+            return
+        }
+        const active = document.activeElement as HTMLElement | null
+        const dropdown = document.getElementById(`${uid}-dropdown`)
+        if (dropdown && active && (active === dropdown || dropdown.contains(active))) {
+            document.getElementById(targetId)?.focus?.()
+        }
+    }, [opened, returnFocus, uid, targetId])
 
     const { dir } = useDirection()
 
@@ -276,6 +302,8 @@ export function Popover(_props: PopoverProps) {
                 withinPortal,
                 portalProps,
                 withRoles,
+                transitionProps,
+                returnFocus,
                 onClose: popover.onClose,
                 onToggle: popover.onToggle,
                 getTargetId: () => targetId,

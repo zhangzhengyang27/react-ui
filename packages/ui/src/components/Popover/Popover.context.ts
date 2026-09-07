@@ -33,6 +33,16 @@ export interface PopoverContextValue {
     withinPortal: boolean | undefined
     portalProps: Record<string, any> | undefined
     withRoles: boolean | undefined
+    transitionProps:
+        | {
+              duration?: number
+              timingFunction?: string
+              transition?: string
+              onEntered?: () => void
+              onExited?: () => void
+          }
+        | undefined
+    returnFocus: boolean | undefined
 }
 
 export const [PopoverContextProvider, usePopoverContext] = createSafeContext<PopoverContextValue>(

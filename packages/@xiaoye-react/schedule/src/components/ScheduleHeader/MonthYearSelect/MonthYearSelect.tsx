@@ -226,7 +226,6 @@ export const MonthYearSelect = factory<MonthYearSelectFactory>((_props) => {
   return (
     <Popover
       position="bottom-start"
-      __staticSelector={__staticSelector}
       trapFocus
       transitionProps={{ transition: 'pop', duration: 120 }}
       radius={radius || 'var(--schedule-radius, var(--ui-radius-default))'}

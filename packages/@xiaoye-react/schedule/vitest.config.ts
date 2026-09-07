@@ -16,6 +16,9 @@ export default defineConfig({
     test: {
         environment: 'jsdom',
         globals: true,
+        // 日历视图组件单文件渲染量大（数百节点 × 多视图切换流程），
+        // 并发全量跑时在 5s 默认超时边缘偶发抖动
+        testTimeout: 20000,
         setupFiles: ['../tests/src/setup.ts'],
         include: ['src/**/*.test.{ts,tsx}'],
         css: true

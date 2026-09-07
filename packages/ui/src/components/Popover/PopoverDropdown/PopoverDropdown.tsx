@@ -31,7 +31,14 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
     // transitionProps prop 已移除（决策 A）：过渡固定为 fade/150ms；Portal 无条件渲染
     return (
         <OptionalPortal withinPortal={ctx.withinPortal}>
-            <Transition mounted={ctx.opened} transition="fade" duration={150}>
+            <Transition
+                mounted={ctx.opened}
+                transition={(ctx.transitionProps?.transition as any) ?? 'fade'}
+                duration={ctx.transitionProps?.duration ?? 150}
+                timingFunction={ctx.transitionProps?.timingFunction}
+                onEntered={ctx.transitionProps?.onEntered}
+                onExited={ctx.transitionProps?.onExited}
+            >
                 {transitionStyles => (
                     <FocusTrap active={ctx.trapFocus && ctx.opened} innerRef={mergedRef}>
                         <Box

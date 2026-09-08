@@ -23,12 +23,12 @@ const locales = {
     features: [
       {
         icon: <AiOutlineAppstore />,
-        title: '60+ 组件',
+        title: '128+ 组件',
         desc: 'Button、Modal、Form、Table、Chart 等原子与复合组件，开箱即用。',
       },
       {
         icon: <AiOutlineThunderbolt />,
-        title: '30+ Hooks',
+        title: '83+ Hooks',
         desc: 'use-form、use-list-state、use-disclosure 等状态与 DOM 工具 hook。',
       },
       {
@@ -69,12 +69,12 @@ const locales = {
     features: [
       {
         icon: <AiOutlineAppstore />,
-        title: '60+ Components',
+        title: '128+ Components',
         desc: 'Button, Modal, Form, Table, Chart and more, ready to use.',
       },
       {
         icon: <AiOutlineThunderbolt />,
-        title: '30+ Hooks',
+        title: '83+ Hooks',
         desc: 'use-form, use-list-state, use-disclosure and more utilities.',
       },
       {

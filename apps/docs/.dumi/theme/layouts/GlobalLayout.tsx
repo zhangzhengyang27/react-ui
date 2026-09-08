@@ -208,8 +208,18 @@ const GlobalLayout: React.FC = () => {
     />
   ));
 
+  // 「AI 生成主题」产生的配色覆盖：primaryColor + 自定义 brand 色板，
+  // 经 UIProvider 合并默认主题并重新生成 CSS 变量，实现整站换肤
+  const themeOverride = React.useMemo(() => {
+    const dt = dynamicTheme as { primaryColor?: string; colors?: Record<string, string[]> } | undefined;
+    if (!dt?.colors || !dt.primaryColor) {
+      return undefined;
+    }
+    return { colors: dt.colors, primaryColor: dt.primaryColor };
+  }, [dynamicTheme]);
+
   return (
-    <UIProvider colorScheme={isDark ? 'dark' : 'light'}>
+    <UIProvider theme={themeOverride} colorScheme={isDark ? 'dark' : 'light'}>
       <DarkContext.Provider value={isDark}>
         {/* 页面级单例渲染器：供通知/弹窗类 demo 使用（store 为空时不渲染内容）。
             注意必须唯一——若在每个 demo 内重复挂载，全局 store 的同一条通知会被渲染 N 次 */}

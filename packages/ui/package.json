@@ -1,8 +1,24 @@
 {
     "name": "@xiaoye-react/ui",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "小叶的 react ui 组件库",
     "type": "module",
+    "license": "MIT",
+    "author": "xiaoye",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/xiaoye/react-ui.git",
+        "directory": "packages/ui"
+    },
+    "keywords": [
+        "react",
+        "ui",
+        "components",
+        "component-library",
+        "typescript",
+        "hooks"
+    ],
+    "sideEffects": false,
     "main": "es/index.js",
     "module": "es/index.js",
     "types": "es/index.d.ts",

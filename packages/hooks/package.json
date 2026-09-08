@@ -1,8 +1,21 @@
 {
     "name": "@xiaoye-react/hooks",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "小叶的 React Hooks 库，用于 主要用于 UI 包使用",
     "type": "module",
+    "license": "MIT",
+    "author": "xiaoye",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/xiaoye/react-ui.git",
+        "directory": "packages/hooks"
+    },
+    "keywords": [
+        "react",
+        "hooks",
+        "typescript"
+    ],
+    "sideEffects": false,
     "main": "es/index.js",
     "module": "es/index.js",
     "types": "es/index.d.ts",

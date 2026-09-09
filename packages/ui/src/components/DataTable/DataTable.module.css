@@ -1,0 +1,170 @@
+.root {
+    --datatable-horizontal-spacing: var(--ui-spacing-sm);
+    --datatable-vertical-spacing: var(--ui-spacing-sm);
+
+    width: 100%;
+    font-size: var(--ui-font-size-sm);
+    color: var(--ui-color-text);
+}
+
+.root[data-with-table-border] {
+    border: 1px solid var(--ui-color-default-border);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.th {
+    padding: var(--datatable-vertical-spacing) var(--datatable-horizontal-spacing);
+    font-weight: var(--ui-font-weight-bold);
+    text-align: left;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.td {
+    padding: var(--datatable-vertical-spacing) var(--datatable-horizontal-spacing);
+    text-align: left;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.td[data-ellipsis] {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.root[data-with-row-borders] .thead .tr {
+    border-bottom: 1px solid var(--ui-color-default-border);
+}
+
+.root[data-with-row-borders] .tbody .tr {
+    border-top: 1px solid var(--ui-color-default-border);
+}
+
+.root[data-striped] .tbody .tr:nth-child(odd) {
+    background-color: var(--ui-color-default-hover);
+}
+
+.root[data-highlight-on-hover] .tbody .tr:hover {
+    background-color: var(--ui-color-default-hover);
+}
+
+.tr[data-clickable] {
+    cursor: pointer;
+}
+
+.tr[data-selected] {
+    background-color: var(--ui-primary-color-light);
+}
+
+.thButton {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--ui-spacing-xs) / 2);
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    font-weight: inherit;
+    color: inherit;
+    text-align: inherit;
+    cursor: pointer;
+}
+
+.thButton:focus-visible {
+    outline: 2px solid var(--ui-primary-color-5);
+    outline-offset: 2px;
+}
+
+.thButton:hover .sortIcon {
+    opacity: 1;
+}
+
+.sortIcon {
+    flex: none;
+    opacity: 0.35;
+    transition: transform 0.15s ease;
+}
+
+.sortIcon[data-direction='desc'] {
+    transform: rotate(180deg);
+}
+
+.selectionCell {
+    width: 40px;
+    text-align: center;
+}
+
+/* 固定列 */
+
+.th[data-sticky],
+.td[data-sticky] {
+    position: sticky;
+    z-index: 2;
+    background-color: var(--ui-color-body);
+}
+
+.root[data-striped] .tbody .tr:nth-child(odd) .td[data-sticky] {
+    background-color: var(--ui-color-default-hover);
+}
+
+.root[data-sticky-header] .thead .th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: var(--ui-color-body);
+}
+
+.th[data-sticky] {
+    z-index: 3;
+}
+
+.th[data-sticky-last='left'],
+.td[data-sticky-last='left'] {
+    border-right: 1px solid var(--ui-color-default-border);
+}
+
+.th[data-sticky-last='right'],
+.td[data-sticky-last='right'] {
+    border-left: 1px solid var(--ui-color-default-border);
+}
+
+/* 底栏 */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--ui-spacing-sm);
+    flex-wrap: wrap;
+    padding: var(--datatable-vertical-spacing) 0;
+}
+
+.footerTotal {
+    color: var(--ui-color-dimmed);
+    font-size: var(--ui-font-size-sm);
+    white-space: nowrap;
+}
+
+.footerControls {
+    display: flex;
+    align-items: center;
+    gap: var(--ui-spacing-xs);
+    margin-left: auto;
+}
+
+.pageSizeSelect {
+    width: 108px;
+}
+
+/* 空态 */
+
+.emptyCell {
+    padding: var(--ui-spacing-xl) var(--datatable-horizontal-spacing);
+    text-align: center;
+}

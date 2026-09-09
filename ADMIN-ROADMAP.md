@@ -10,7 +10,8 @@
 > - ✅ P2 完成：新包 `@xiaoye-react/pro`（PageContainer / SearchFilter / ProTable，17 单测），三种 CRUD 模板（Modal 编辑 / Drawer 编辑 / 主从详情）进文档；ui 510 / dropzone 61 / pro 17 全部通过。
 > - ✅ 文档首页已增加「管理端方案」入口（生态区卡片，中英双语）。
 > - ✅ P3 a11y 完成：DataTable 键盘行导航（方向键/Enter）、Cascader 面板方向键导航、Transfer 面板 aria 与列表键盘导航（ui 全量 515 测试）。
-> - 后续可选：pro 包接入统一发版流程；Playwright 截图回归。
+> - ✅ pro 包发版流程：vite 构建（es + style.css + d.ts）、exports/files 配置、publish:pro 脚本；Playwright 截图回归覆盖 10 个关键管理端 demo（e2e:screenshots）。
+> - 可选后续：CI 接入截图回归（跨平台基线需按平台生成）。
 
 ## 一、现状盘点
 

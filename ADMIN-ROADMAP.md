@@ -3,7 +3,11 @@
 > 目标：从「C 端优先的通用库」转向「管理端优先、兼容 C 端」。
 > 衡量标准：搭建一个典型中后台页面（列表页 / 表单页 / 详情页 / 仪表盘）时，**不再需要业务侧自建任何组件**。
 
-> **进度（2026-09-09）**：M1 组件部分已完成 —— DataTable MVP 与 Cascader 均已落地并通过全量回归（ui 包 490 个测试、lint/typecheck/build/cspell 全绿）。余项：两个组件的 dumi 文档页与 demo。
+> **进度（2026-09-10）**：
+> - ✅ M1 完成：DataTable MVP + Cascader（组件、单测 23 个、文档页与示例）。
+> - ✅ M2 提前完成：DataTable 虚拟滚动（@tanstack/react-virtual）、行展开、列设置面板（单测累计 22 个，ui 包全量 496 通过）。
+> - 待办：P1（Transfer / Upload / Descriptions）→ P2（pro 模式层）。
+> - 已知限制：虚拟滚动以数据行为虚拟单元，展开行内容高度不计入测量（见 DataTable FAQ）。
 
 ## 一、现状盘点
 

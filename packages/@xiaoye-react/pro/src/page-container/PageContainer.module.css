@@ -1,0 +1,47 @@
+.root {
+    --page-container-header-gap: var(--ui-spacing-md);
+    --page-container-content-gap: 0;
+
+    width: 100%;
+    color: var(--ui-color-text);
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--ui-spacing-xs) / 2);
+    margin-bottom: var(--page-container-header-gap);
+}
+
+.titleRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--ui-spacing-md);
+}
+
+.title {
+    font-size: calc(1.25rem * var(--ui-scale));
+    font-weight: var(--ui-font-weight-bold);
+    line-height: 1.4;
+}
+
+.subtitle {
+    margin-top: calc(var(--ui-spacing-xs) / 2);
+    font-size: var(--ui-font-size-sm);
+    color: var(--ui-color-dimmed);
+}
+
+.extra {
+    display: flex;
+    align-items: center;
+    gap: var(--ui-spacing-xs);
+    flex: none;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--page-container-content-gap);
+    min-width: 0;
+}

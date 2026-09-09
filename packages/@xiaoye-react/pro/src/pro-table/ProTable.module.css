@@ -1,0 +1,22 @@
+.root {
+    width: 100%;
+    color: var(--ui-color-text);
+}
+
+.root > * + * {
+    margin-top: var(--ui-spacing-sm);
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--ui-spacing-sm);
+}
+
+.toolbarActions {
+    display: flex;
+    align-items: center;
+    gap: var(--ui-spacing-xs);
+    min-width: 0;
+}

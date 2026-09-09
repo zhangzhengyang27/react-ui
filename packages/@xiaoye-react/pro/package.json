@@ -1,0 +1,52 @@
+{
+    "name": "@xiaoye-react/pro",
+    "private": true,
+    "version": "0.1.0",
+    "description": "Admin-oriented page patterns (PageContainer, SearchFilter, ProTable) built on @xiaoye-react/ui",
+    "license": "MIT",
+    "keywords": [
+        "react",
+        "ui",
+        "admin",
+        "protable",
+        "components",
+        "component-library"
+    ],
+    "sideEffects": [
+        "*.css"
+    ],
+    "main": "./es/index.js",
+    "types": "./src/index.ts",
+    "exports": {
+        ".": {
+            "types": "./src/index.ts",
+            "import": "./src/index.ts",
+            "require": "./src/index.ts"
+        }
+    },
+    "peerDependencies": {
+        "@xiaoye-react/hooks": "workspace:*",
+        "@xiaoye-react/ui": "workspace:*",
+        "react": "^19.1.1",
+        "react-dom": "^19.1.1"
+    },
+    "devDependencies": {
+        "@testing-library/jest-dom": "^6.4.6",
+        "@testing-library/react": "^16.0.0",
+        "@testing-library/user-event": "^14.5.2",
+        "@types/react": "19.2.3",
+        "@vitejs/plugin-react": "^4.3.1",
+        "@xiaoye-react/hooks": "workspace:*",
+        "@xiaoye-react/tests": "workspace:*",
+        "@xiaoye-react/ui": "workspace:*",
+        "jsdom": "^24.1.0",
+        "react": "19.1.1",
+        "react-dom": "19.1.1",
+        "typescript": "5.5.2",
+        "vitest": "^1.6.0"
+    },
+    "scripts": {
+        "test": "vitest run",
+        "test:watch": "vitest"
+    }
+}

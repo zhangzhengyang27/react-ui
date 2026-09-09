@@ -1,0 +1,35 @@
+.root {
+    --search-filter-columns: 3;
+    --search-filter-grid-gap: var(--ui-spacing-sm);
+
+    width: 100%;
+    color: var(--ui-color-text);
+}
+
+.fieldsGrid {
+    display: grid;
+    grid-template-columns: repeat(var(--search-filter-columns), minmax(0, 1fr));
+    gap: var(--search-filter-grid-gap);
+    align-items: end;
+}
+
+.field {
+    min-width: 0;
+}
+
+.fieldLabel {
+    display: block;
+    margin-bottom: calc(var(--ui-spacing-xs) / 2);
+    font-size: var(--ui-font-size-sm);
+    color: var(--ui-color-text);
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: var(--ui-spacing-xs);
+}
+
+.expandButton {
+    flex: none;
+}

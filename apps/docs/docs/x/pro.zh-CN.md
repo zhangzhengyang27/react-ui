@@ -79,6 +79,18 @@ import { ProTable } from '@xiaoye-react/pro';
 
 <code src="./pro/demo/crud.tsx"></code>
 
+### 列表 + Drawer 编辑
+
+字段较多或需要更大编辑空间时，用 `Drawer` 承载表单：操作列内联「编辑」入口，校验失败信息展示在对应字段下方：
+
+<code src="./pro/demo/drawer-edit.tsx"></code>
+
+### 主从详情
+
+左表右详情：点击列表行（`dataTableProps.onRowClick`）联动右侧 `Descriptions` 展示完整信息，适合「列表扫一眼、详情看仔细」的审阅类页面：
+
+<code src="./pro/demo/master-detail.tsx"></code>
+
 ## API
 
 ### ProTableProps

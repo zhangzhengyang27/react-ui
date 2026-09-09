@@ -5,6 +5,7 @@ import {
   AiOutlineFileText,
   AiOutlineForm,
   AiOutlinePieChart,
+  AiOutlineTable,
   AiOutlineThunderbolt,
 } from 'react-icons/ai';
 import { Card, Text, Title } from '@xiaoye-react/ui';
@@ -64,6 +65,13 @@ const locales = {
         desc: 'Schema 校验、嵌套表单、Field 组件，快速搭建复杂表单。',
         path: '/docs/form/package/',
       },
+      {
+        key: 'pro',
+        icon: <AiOutlineTable />,
+        title: '管理端方案',
+        desc: 'PageContainer、SearchFilter、ProTable 模式层与 CRUD 页面模板。',
+        path: '/x/pro/',
+      },
     ],
   },
   en: {
@@ -111,6 +119,13 @@ const locales = {
         title: 'Form',
         desc: 'Schema validation, nested forms, Field components for complex forms.',
         path: '/docs/form/package/',
+      },
+      {
+        key: 'pro',
+        icon: <AiOutlineTable />,
+        title: 'Admin Pro',
+        desc: 'PageContainer, SearchFilter, ProTable patterns and CRUD page templates.',
+        path: '/x/pro/',
       },
     ],
   },

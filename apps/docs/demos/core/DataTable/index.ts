@@ -1,0 +1,6 @@
+export { usage } from './DataTable.demo.usage'
+export { sorting } from './DataTable.demo.sorting'
+export { selection } from './DataTable.demo.selection'
+export { pagination } from './DataTable.demo.pagination'
+export { states } from './DataTable.demo.states'
+export { stickyColumns } from './DataTable.demo.stickyColumns'

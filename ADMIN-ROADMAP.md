@@ -7,8 +7,9 @@
 > - ✅ M1 完成：DataTable MVP + Cascader（组件、单测 23 个、文档页与示例）。
 > - ✅ M2 提前完成：DataTable 虚拟滚动（@tanstack/react-virtual）、行展开、列设置面板（单测累计 22 个）。
 > - ✅ P1 完成：Descriptions（6 单测）、Transfer（8 单测）、Upload（dropzone 包，11 单测），文档与示例齐备。
-> - ✅ P2 完成：新包 `@xiaoye-react/pro`（PageContainer / SearchFilter / ProTable，17 单测），CRUD 列表页端到端模板已进文档；ui 510 / dropzone 61 / pro 17 全部通过。
-> - 后续可选：CRUD 模板补充「列表 + Drawer 编辑」「主从详情」两种形态；pro 包接入统一发版流程。
+> - ✅ P2 完成：新包 `@xiaoye-react/pro`（PageContainer / SearchFilter / ProTable，17 单测），三种 CRUD 模板（Modal 编辑 / Drawer 编辑 / 主从详情）进文档；ui 510 / dropzone 61 / pro 17 全部通过。
+> - ✅ 文档首页已增加「管理端方案」入口（生态区卡片，中英双语）。
+> - 后续可选：pro 包接入统一发版流程；a11y 增强（DataTable 键盘行导航、Cascader 方向键）。
 
 ## 一、现状盘点
 

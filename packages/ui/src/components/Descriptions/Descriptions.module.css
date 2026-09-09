@@ -1,0 +1,43 @@
+.root {
+    --descriptions-horizontal-spacing: var(--ui-spacing-sm);
+    --descriptions-vertical-spacing: var(--ui-spacing-sm);
+
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--ui-font-size-sm);
+    color: var(--ui-color-text);
+}
+
+.root[data-bordered] {
+    border: 1px solid var(--ui-color-default-border);
+}
+
+.root[data-bordered] .label,
+.root[data-bordered] .value {
+    border: 1px solid var(--ui-color-default-border);
+}
+
+.root[data-bordered] .label {
+    background-color: var(--ui-color-default-hover);
+}
+
+.label {
+    padding: var(--descriptions-vertical-spacing) var(--descriptions-horizontal-spacing);
+    font-weight: var(--ui-font-weight-bold);
+    text-align: left;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+.value {
+    padding: var(--descriptions-vertical-spacing) var(--descriptions-horizontal-spacing);
+    text-align: left;
+    vertical-align: top;
+}
+
+.root:not([data-bordered]) .value > div:first-child {
+    font-weight: var(--ui-font-weight-bold);
+    color: var(--ui-color-dimmed);
+    font-size: var(--ui-font-size-xs);
+    margin-bottom: calc(var(--ui-spacing-xs) / 2);
+}

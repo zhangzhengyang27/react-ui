@@ -19,6 +19,16 @@ _Dropzone.FullScreen = DropzoneFullScreen;
 export const Dropzone = _Dropzone;
 
 export { DropzoneFullScreen };
+export { Upload } from './Upload';
+export type {
+  UploadFactory,
+  UploadFile,
+  UploadFileStatus,
+  UploadHandlers,
+  UploadProps,
+  UploadStylesNames,
+  UploadUploadOptions,
+} from './Upload';
 export { DropzoneAccept, DropzoneIdle, DropzoneReject } from './DropzoneStatus';
 export * from './mime-types';
 

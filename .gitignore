@@ -27,3 +27,7 @@ node_modules/
 # IDE 工作目录(不提交)
 .trae/
 .workbuddy/
+
+# Playwright
+playwright-report/
+test-results/

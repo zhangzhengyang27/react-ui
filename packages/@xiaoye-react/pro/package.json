@@ -1,6 +1,5 @@
 {
     "name": "@xiaoye-react/pro",
-    "private": true,
     "version": "0.1.0",
     "description": "Admin-oriented page patterns (PageContainer, SearchFilter, ProTable) built on @xiaoye-react/ui",
     "license": "MIT",
@@ -16,17 +15,25 @@
         "*.css"
     ],
     "main": "./es/index.js",
-    "types": "./src/index.ts",
+    "module": "./es/index.js",
+    "types": "./es/index.d.ts",
+    "publishConfig": {
+        "access": "public"
+    },
+    "files": [
+        "es"
+    ],
     "exports": {
         ".": {
-            "types": "./src/index.ts",
-            "import": "./src/index.ts",
-            "require": "./src/index.ts"
-        }
+            "types": "./es/index.d.ts",
+            "import": "./es/index.js",
+            "require": "./es/index.js"
+        },
+        "./style.css": "./es/style.css"
     },
     "peerDependencies": {
-        "@xiaoye-react/hooks": "workspace:*",
-        "@xiaoye-react/ui": "workspace:*",
+        "@xiaoye-react/hooks": "workspace:^",
+        "@xiaoye-react/ui": "workspace:^",
         "react": "^19.1.1",
         "react-dom": "^19.1.1"
     },
@@ -43,10 +50,14 @@
         "react": "19.1.1",
         "react-dom": "19.1.1",
         "typescript": "5.5.2",
+        "vite": "^5.4.0",
+        "vite-plugin-dts": "^4.3.0",
         "vitest": "^1.6.0"
     },
     "scripts": {
+        "build": "vite build",
         "test": "vitest run",
-        "test:watch": "vitest"
+        "test:watch": "vitest",
+        "release": "npm publish"
     }
 }

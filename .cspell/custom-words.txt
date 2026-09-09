@@ -72,3 +72,5 @@ zhejiang
 hangzhou
 jiangsu
 nanjing
+lazyload
+networkidle

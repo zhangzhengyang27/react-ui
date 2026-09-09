@@ -193,3 +193,33 @@ function Demo() {
 要预览该组件，请点击按钮并将图片拖放到浏览器窗口：
 
 <code src="./dropzone/demo/fullScreen.tsx"></code>
+
+
+## Upload 上传 {#upload}
+
+`Upload` 在 Dropzone 的基础上提供完整的上传管理：受控文件列表、上传进度、成功/失败状态与手动上传 API。
+
+<code src="./dropzone/demo/usage-upload.tsx"></code>
+
+### 上传流程
+
+1. 用户通过 Dropzone 选择文件后，文件进入 `pending` 状态（经过 `beforeUpload` 与 `maxSize` 校验，失败则直接进入 `error` 状态并展示原因）
+2. `autoUpload`（默认开启）时立即调用 `upload` 函数；关闭时可通过 `uploadRef.current.submit()` 手动触发
+3. 上传中通过 `onProgress` 上报进度（0–100），完成后进入 `success`，抛错则进入 `error`
+
+### UploadProps
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| value / defaultValue / onChange | 文件列表（受控/非受控） | `UploadFile[]` | `[]` |
+| upload | 上传实现 | `(file: File, options: { onProgress }) => Promise<any>` | - |
+| beforeUpload | 上传前校验，返回 `false` 跳过、字符串进入 error 状态 | `(file: File) => boolean \| string \| Promise<boolean \| string>` | - |
+| autoUpload | 选择后立即上传 | `boolean` | `true` |
+| multiple / accept | 透传给 Dropzone 的选择限制 | 同 Dropzone | - |
+| maxSize | 单文件大小上限（字节），超出进入 error 状态 | `number` | - |
+| maxFiles | 文件数量上限，超出的文件被忽略 | `number` | - |
+| uploadRef | 接收 `{ submit, clear }`，用于手动触发上传/清空 | `React.MutableRefObject<UploadHandlers \| null>` | - |
+| onUploadSuccess / onUploadError | 单文件上传成功/失败回调 | `(file: UploadFile, ...) => void` | - |
+| onRemove | 文件移除回调 | `(file: UploadFile) => void` | - |
+
+文件项类型 `UploadFile`：`{ id, file, status: 'pending' | 'uploading' | 'success' | 'error', progress?, error?, response? }`。

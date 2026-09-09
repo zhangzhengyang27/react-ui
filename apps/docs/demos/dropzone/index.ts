@@ -6,3 +6,4 @@ export { enableChildPointerEvent } from './Dropzone.demo.enableChildPointerEvent
 export { fullScreen } from './Dropzone.demo.fullScreen';
 export { stylesApi } from './Dropzone.demo.stylesApi';
 export { preview } from './Dropzone.demo.preview';
+export { uploadUsage } from './Upload.demo.usage';

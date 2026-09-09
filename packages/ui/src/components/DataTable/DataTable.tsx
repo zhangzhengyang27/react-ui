@@ -601,7 +601,37 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
                     data-odd={striped && rowIndex % 2 === 1 ? true : undefined}
                     data-selected={selected ? true : undefined}
                     aria-selected={withSelection ? selected : undefined}
+                    tabIndex={onRowClick ? 0 : undefined}
                     onClick={onRowClick ? () => onRowClick(record, rowIndex) : undefined}
+                    onKeyDown={
+                        onRowClick
+                            ? event => {
+                                // 方向键在数据行之间移动焦点
+                                if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+                                    const tbody = event.currentTarget.closest('tbody')
+                                    if (!tbody) return
+                                    const rows = Array.from(
+                                        tbody.querySelectorAll<HTMLTableRowElement>('tr[tabindex="0"]')
+                                    )
+                                    const currentIndex = rows.indexOf(event.currentTarget)
+                                    const nextIndex =
+                                        event.key === 'ArrowDown'
+                                            ? Math.min(currentIndex + 1, rows.length - 1)
+                                            : Math.max(currentIndex - 1, 0)
+                                    const nextRow = rows[nextIndex]
+                                    if (nextRow) {
+                                        event.preventDefault()
+                                        nextRow.focus()
+                                    }
+                                    return
+                                }
+                                if (event.key === 'Enter' || event.key === ' ') {
+                                    event.preventDefault()
+                                    onRowClick(record, rowIndex)
+                                }
+                            }
+                            : undefined
+                    }
                 >
                     {withExpand && (
                         <td

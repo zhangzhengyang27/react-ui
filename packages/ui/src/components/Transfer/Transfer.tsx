@@ -159,6 +159,30 @@ export const Transfer = factory<TransferFactory>((_props, ref) => {
         )
     }
 
+    /** 面板列表内方向键移动焦点（checkbox 天然可 Tab，方向键提供更快的遍历） */
+    const handleItemKeyDown = (event: React.KeyboardEvent) => {
+        if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') {
+            return
+        }
+        const listEl = (event.currentTarget as HTMLElement).parentElement
+        const checkboxes = Array.from(
+            listEl?.querySelectorAll<HTMLInputElement>(':scope > label input[type="checkbox"]') ?? []
+        )
+        const currentIndex = checkboxes.indexOf(event.target as HTMLInputElement)
+        if (currentIndex === -1) {
+            return
+        }
+        const nextIndex =
+            event.key === 'ArrowDown'
+                ? Math.min(currentIndex + 1, checkboxes.length - 1)
+                : Math.max(currentIndex - 1, 0)
+        const next = checkboxes[nextIndex]
+        if (next && next !== event.target) {
+            event.preventDefault()
+            next.focus()
+        }
+    }
+
     const renderPanel = (side: 'source' | 'target') => {
         const isSource = side === 'source'
         const searchValue = isSource ? sourceSearch : targetSearch
@@ -195,7 +219,12 @@ export const Transfer = factory<TransferFactory>((_props, ref) => {
         } as React.CSSProperties
 
         return (
-            <div {...getStyles('panel', { style: listStyle })} data-side={side}>
+            <div
+                {...getStyles('panel', { style: listStyle })}
+                data-side={side}
+                role="group"
+                aria-label={typeof (isSource ? titles?.[0] : titles?.[1]) === 'string' ? (isSource ? titles?.[0] : titles?.[1]) as string : undefined}
+            >
                 <div {...getStyles('panelHeader')}>
                     {withSelectAll && (
                         <Button
@@ -228,7 +257,12 @@ export const Transfer = factory<TransferFactory>((_props, ref) => {
                         <div {...getStyles('empty')}>{nothingFoundMessage}</div>
                     ) : (
                         visibleItems.map(item => (
-                            <label key={item.value} {...getStyles('item')} data-disabled={item.disabled || disabled ? true : undefined}>
+                            <label
+                                key={item.value}
+                                {...getStyles('item')}
+                                data-disabled={item.disabled || disabled ? true : undefined}
+                                onKeyDown={handleItemKeyDown}
+                            >
                                 <Checkbox
                                     size="xs"
                                     checked={isSource ? selectedValues.includes(item.value) : true}

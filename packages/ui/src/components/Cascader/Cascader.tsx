@@ -398,7 +398,64 @@ export const Cascader = factory<CascaderFactory>((_props: CascaderBaseProps, _re
         </Pill>
     ))
 
-    const renderColumnItem = (node: CascaderNode, parentPath: string[], levelIndex: number) => {
+    /** 面板键盘导航：上下在列内移动，左右在级层级间移动 */
+    const columnsRef = useRef<HTMLDivElement | null>(null)
+    // ArrowRight 展开是异步渲染，展开后需聚焦的新列由 effect 补聚焦
+    const pendingFocusRef = useRef<{ levelIndex: number; itemIndex: number } | null>(null)
+
+    useEffect(() => {
+        const pending = pendingFocusRef.current
+        if (!pending || !columnsRef.current) {
+            return
+        }
+        const column = columnsRef.current.children[pending.levelIndex] as HTMLElement | undefined
+        const item = column?.querySelectorAll<HTMLButtonElement>(':scope > button')[pending.itemIndex]
+        item?.focus()
+        pendingFocusRef.current = null
+    })
+
+    const handlePanelKeyDown = (
+        event: React.KeyboardEvent<HTMLButtonElement>,
+        node: CascaderNode,
+        parentPath: string[],
+        levelIndex: number,
+        itemIndex: number
+    ) => {
+        const columnEl = event.currentTarget.parentElement as HTMLElement | null
+        const columnsEl = columnEl?.parentElement as HTMLElement | null
+        if (!columnEl || !columnsEl) {
+            return
+        }
+
+        const columnItems = Array.from(columnEl.querySelectorAll<HTMLButtonElement>(':scope > button'))
+        const focusInColumn = (target: HTMLElement) => {
+            event.preventDefault()
+            target.focus()
+        }
+
+        if (event.key === 'ArrowDown') {
+            const next = columnItems[itemIndex + 1]
+            if (next) focusInColumn(next)
+        } else if (event.key === 'ArrowUp') {
+            const prev = columnItems[itemIndex - 1]
+            if (prev) focusInColumn(prev)
+        } else if (event.key === 'ArrowRight') {
+            if (!isCascaderLeaf(node, !!loadData)) {
+                event.preventDefault()
+                pendingFocusRef.current = { levelIndex: levelIndex + 1, itemIndex: 0 }
+                handleColumnItemClick(node, parentPath)
+            }
+        } else if (event.key === 'ArrowLeft') {
+            if (levelIndex > 0) {
+                const prevColumn = columnsEl.children[levelIndex - 1] as HTMLElement | undefined
+                const prevItems = prevColumn?.querySelectorAll<HTMLButtonElement>(':scope > button')
+                const target = prevItems?.[Math.min(itemIndex, (prevItems?.length ?? 1) - 1)]
+                if (target) focusInColumn(target)
+            }
+        }
+    }
+
+    const renderColumnItem = (node: CascaderNode, parentPath: string[], levelIndex: number, itemIndex: number) => {
         const itemPath = [...parentPath, node.value]
         const isActive = activePath[levelIndex] === node.value
         const isSelected = isCascaderLeaf(node, !!loadData)
@@ -420,6 +477,7 @@ export const Cascader = factory<CascaderFactory>((_props: CascaderBaseProps, _re
                 data-selected={isSelected ? 'true' : undefined}
                 data-disabled={node.disabled ? 'true' : undefined}
                 onClick={() => handleColumnItemClick(node, parentPath)}
+                onKeyDown={event => handlePanelKeyDown(event, node, parentPath, levelIndex, itemIndex)}
             >
                 <span className={classes.itemLabel}>{node.label}</span>
                 {isLoading ? (
@@ -463,10 +521,10 @@ export const Cascader = factory<CascaderFactory>((_props: CascaderBaseProps, _re
         }
 
         return (
-            <div {...getStyles('columns')}>
+            <div {...getStyles('columns')} ref={columnsRef}>
                 {columns.map((column, levelIndex) => (
                     <div key={levelIndex} {...getStyles('column')}>
-                        {column.nodes.map(node => renderColumnItem(node, column.parentPath, levelIndex))}
+                        {column.nodes.map((node, itemIndex) => renderColumnItem(node, column.parentPath, levelIndex, itemIndex))}
                     </div>
                 ))}
             </div>

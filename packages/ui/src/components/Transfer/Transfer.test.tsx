@@ -79,6 +79,29 @@ describe('Transfer', () => {
         expect(onChange).not.toHaveBeenCalled()
     })
 
+    it('面板列表方向键在项之间移动焦点', () => {
+        render(<Transfer data={fruits} />, { wrapper })
+
+        const apple = screen.getByRole('checkbox', { name: '苹果' })
+        const banana = screen.getByRole('checkbox', { name: '香蕉' })
+
+        apple.focus()
+        fireEvent.keyDown(apple, { key: 'ArrowDown' })
+        expect(document.activeElement).toBe(banana)
+
+        fireEvent.keyDown(banana, { key: 'ArrowUp' })
+        expect(document.activeElement).toBe(apple)
+    })
+
+    it('面板携带 role=group 与 aria-label', () => {
+        render(<Transfer data={fruits} titles={['来源', '目标']} />, { wrapper })
+
+        const groups = screen.getAllByRole('group')
+        expect(groups).toHaveLength(2)
+        expect(groups[0]).toHaveAttribute('aria-label', '来源')
+        expect(groups[1]).toHaveAttribute('aria-label', '目标')
+    })
+
     it('disabled 禁用整个组件', () => {
         const onChange = vi.fn()
         render(<Transfer data={fruits} disabled onChange={onChange} />, { wrapper })

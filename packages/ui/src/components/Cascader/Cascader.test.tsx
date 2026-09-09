@@ -96,6 +96,31 @@ describe('Cascader', () => {
         expect((screen.getByRole('textbox') as HTMLInputElement).value).toBe('Root / Child A')
     })
 
+    it('键盘导航：上下在列内移动焦点，右展开下一级，左回上一级', async () => {
+        const onChange = vi.fn()
+        render(<Cascader data={regionData} onChange={onChange} defaultDropdownOpened />, { wrapper })
+
+        const zhejiang = screen.getByRole('option', { name: 'Zhejiang' })
+        zhejiang.focus()
+        fireEvent.keyDown(zhejiang, { key: 'ArrowDown' })
+        expect(document.activeElement).toBe(screen.getByRole('option', { name: 'Jiangsu' }))
+
+        // ArrowRight 展开当前节点并聚焦下一列第一项
+        fireEvent.keyDown(screen.getByRole('option', { name: 'Zhejiang' }), { key: 'ArrowRight' })
+        await waitFor(() => expect(screen.getByRole('option', { name: 'Hangzhou' })).toBeInTheDocument())
+        expect(document.activeElement).toBe(screen.getByRole('option', { name: 'Hangzhou' }))
+
+        // ArrowLeft 回到上一列
+        fireEvent.keyDown(screen.getByRole('option', { name: 'Hangzhou' }), { key: 'ArrowLeft' })
+        expect(document.activeElement).toBe(screen.getByRole('option', { name: 'Zhejiang' }))
+
+        // Enter 等价于点击：选中叶子
+        fireEvent.keyDown(screen.getByRole('option', { name: 'Hangzhou' }), { key: 'ArrowRight' })
+        await waitFor(() => expect(screen.getByRole('option', { name: 'West Lake' })).toBeInTheDocument())
+        fireEvent.click(screen.getByRole('option', { name: 'West Lake' }))
+        expect(onChange).toHaveBeenCalledWith('xihu')
+    })
+
     it('clearable：清除选中值', () => {
         const onChange = vi.fn()
         render(<Cascader data={regionData} defaultValue="xihu" clearable onChange={onChange} />, { wrapper })

@@ -323,6 +323,34 @@ describe('DataTable', () => {
         expect(screen.getAllByRole('columnheader')).toHaveLength(2)
     })
 
+    it('键盘行导航：方向键移动焦点，Enter 触发行点击', () => {
+        const onRowClick = vi.fn()
+        render(
+            <DataTable columns={basicColumns as any} records={users} onRowClick={onRowClick} />,
+            { wrapper }
+        )
+
+        const rows = screen.getAllByRole('row').slice(1)
+        expect(rows[0]).toHaveAttribute('tabindex', '0')
+
+        rows[0].focus()
+        fireEvent.keyDown(rows[0], { key: 'ArrowDown' })
+        expect(document.activeElement).toBe(rows[1])
+
+        fireEvent.keyDown(rows[1], { key: 'Enter' })
+        expect(onRowClick).toHaveBeenCalledWith(users[1], 1)
+
+        fireEvent.keyDown(rows[1], { key: 'ArrowUp' })
+        expect(document.activeElement).toBe(rows[0])
+    })
+
+    it('无 onRowClick 时行不可聚焦', () => {
+        render(<DataTable columns={basicColumns as any} records={users} />, { wrapper })
+
+        const rows = screen.getAllByRole('row').slice(1)
+        expect(rows[0]).not.toHaveAttribute('tabindex')
+    })
+
     it('ellipsis 单元格添加 title 提示', () => {
         render(
             <DataTable columns={[{ accessor: 'email', ellipsis: true }] as any} records={users} />, { wrapper }

@@ -57,6 +57,11 @@
     cursor: pointer;
 }
 
+.tr[data-clickable]:focus-visible {
+    outline: 2px solid var(--ui-primary-color-5);
+    outline-offset: -2px;
+}
+
 .tr[data-selected] {
     background-color: var(--ui-primary-color-light);
 }

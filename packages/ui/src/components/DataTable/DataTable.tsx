@@ -1,5 +1,7 @@
-import { useMemo } from 'react'
+import { Fragment, useMemo, useRef } from 'react'
 import { useUncontrolled, useReactId } from '@xiaoye-react/hooks'
+import { useVirtualizer } from '@tanstack/react-virtual'
+import { AccordionChevron } from '../Accordion'
 import {
     Box,
     createVarsResolver,
@@ -18,6 +20,7 @@ import { EmptyState } from '../EmptyState'
 import { LoadingOverlay } from '../LoadingOverlay'
 import { NativeSelect } from '../NativeSelect'
 import { Pagination } from '../Pagination'
+import { Popover } from '../Popover'
 import { Radio } from '../Radio'
 import { TableScrollContainer } from '../Table'
 import classes from './DataTable.module.css'
@@ -39,6 +42,8 @@ export type DataTableStylesNames =
     | 'footerTotal'
     | 'selectionCell'
     | 'emptyCell'
+    | 'columnSettingsBar'
+    | 'columnSettingsPanel'
 
 export type DataTableCssVariables = {
     root: '--datatable-horizontal-spacing' | '--datatable-vertical-spacing'
@@ -90,6 +95,36 @@ export interface DataTableProps<T = any>
 
     /** 固定表头，建议配合 maxHeight 使用 */
     stickyHeader?: boolean
+
+    /** 开启行虚拟滚动，适合大数据量（万级以上）。建议同时设置 maxHeight */
+    virtualized?: boolean
+
+    /** 虚拟滚动的行高估计值（px），行高一致时越准确越好 @default 42 */
+    estimatedRowHeight?: number
+
+    /** 展开行内容渲染函数，提供后表格首列出现展开控件 */
+    renderExpanded?: (record: T, index: number) => React.ReactNode
+
+    /** 已展开行的 key 集合（受控） */
+    expandedRows?: string[]
+
+    /** 已展开行 key 集合初始值（非受控） */
+    defaultExpandedRows?: string[]
+
+    /** 已展开行变化回调 */
+    onExpandedRowsChange?: (keys: string[]) => void
+
+    /** 显示列设置面板，可控制列的显示/隐藏 @default false */
+    withColumnSettings?: boolean
+
+    /** 被隐藏列的 key 集合（受控），key 为列 accessor（函数型 accessor 使用列索引） */
+    hiddenColumnKeys?: string[]
+
+    /** 被隐藏列 key 集合初始值（非受控） */
+    defaultHiddenColumnKeys?: string[]
+
+    /** 隐藏列变化回调 */
+    onHiddenColumnKeysChange?: (keys: string[]) => void
 
     /** 排序状态（受控）。受控时不自动排序数据，由使用方处理 */
     sortStatus?: DataTableSortStatus | null
@@ -152,10 +187,12 @@ const defaultProps = {
     verticalSpacing: 'sm',
     withTableBorder: true,
     withRowBorders: true,
-    pageSizeOptions: [10, 20, 50, 100]
+    pageSizeOptions: [10, 20, 50, 100],
+    estimatedRowHeight: 42
 } satisfies Partial<DataTableProps>
 
 const SELECTION_COLUMN_WIDTH = 40
+const EXPAND_COLUMN_WIDTH = 40
 
 const varsResolver = createVarsResolver<DataTableFactory>((_, { horizontalSpacing, verticalSpacing }) => ({
     root: {
@@ -181,6 +218,16 @@ function SortIcon(props: React.SVGProps<SVGSVGElement>) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
             />
+        </svg>
+    )
+}
+
+function ColumnsIcon(props: React.SVGProps<SVGSVGElement>) {
+    return (
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden {...props}>
+            <rect x="2.5" y="2.5" width="3" height="11" rx="1" stroke="currentColor" />
+            <rect x="6.5" y="2.5" width="3" height="11" rx="1" stroke="currentColor" opacity="0.35" />
+            <rect x="10.5" y="2.5" width="3" height="11" rx="1" stroke="currentColor" />
         </svg>
     )
 }
@@ -224,6 +271,16 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
         minWidth,
         maxHeight,
         stickyHeader,
+        virtualized,
+        estimatedRowHeight,
+        renderExpanded,
+        expandedRows,
+        defaultExpandedRows,
+        onExpandedRowsChange,
+        withColumnSettings,
+        hiddenColumnKeys,
+        defaultHiddenColumnKeys,
+        onHiddenColumnKeysChange,
         sortStatus,
         defaultSortStatus,
         onSortStatusChange,
@@ -258,8 +315,47 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
     })
 
     const withSelection = selectionMode === 'checkbox' || selectionMode === 'radio'
+    const withExpand = typeof renderExpanded === 'function'
 
-    const visibleColumns = useMemo(() => columns.filter(column => column.hidden !== true), [columns])
+    // 列 key：字符串 accessor 直接使用，函数型 accessor 回退为列索引
+    const columnKeys = useMemo(
+        () => columns.map((column, index) => (typeof column.accessor === 'string' ? column.accessor : `__col_${index}`)),
+        [columns]
+    )
+
+    // 列显示/隐藏（列设置面板）
+    const [hiddenColumnKeysState, setHiddenColumnKeys] = useUncontrolled<string[]>({
+        value: hiddenColumnKeys,
+        defaultValue: defaultHiddenColumnKeys,
+        finalValue: [],
+        onChange: onHiddenColumnKeysChange
+    })
+
+    const visibleColumns = useMemo(
+        () =>
+            columns
+                .map((column, index) => ({ column, key: columnKeys[index] }))
+                .filter(({ column, key }) => column.hidden !== true && !hiddenColumnKeysState.includes(key)),
+        [columns, columnKeys, hiddenColumnKeysState]
+    )
+
+    const totalColumnCount = visibleColumns.length + (withSelection ? 1 : 0) + (withExpand ? 1 : 0)
+
+    // 行展开
+    const [expandedRowsState, setExpandedRows] = useUncontrolled<string[]>({
+        value: expandedRows,
+        defaultValue: defaultExpandedRows,
+        finalValue: [],
+        onChange: onExpandedRowsChange
+    })
+
+    const handleToggleExpanded = (key: string) => {
+        setExpandedRows(
+            expandedRowsState.includes(key)
+                ? expandedRowsState.filter(item => item !== key)
+                : [...expandedRowsState, key]
+        )
+    }
 
     const getRowKey = (record: any, index: number) => (rowKey ? rowKey(record, index) : String(index))
 
@@ -296,6 +392,18 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
         () => displayRecords.map((record, index) => getRowKey(record, index)),
         [displayRecords, rowKey]
     )
+
+    // 行虚拟滚动：始终调用 hook（getScrollElement 为 null 时不生效），保证 hooks 顺序稳定
+    const virtualScrollRef = useRef<HTMLDivElement | null>(null)
+    const virtualScrollHeight = typeof maxHeight === 'number' ? maxHeight : 400
+    const rowVirtualizer = useVirtualizer({
+        count: displayRecords.length,
+        getScrollElement: () => (virtualized ? virtualScrollRef.current : null),
+        estimateSize: () => estimatedRowHeight ?? 42,
+        overscan: 8,
+        initialRect: { width: 0, height: virtualScrollHeight },
+        getItemKey: index => rowKeys[index]
+    })
 
     const allChecked = rowKeys.length > 0 && rowKeys.every(key => selectedKeysState.includes(key))
     const someChecked = rowKeys.some(key => selectedKeysState.includes(key))
@@ -348,9 +456,9 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
     const stickyState = useMemo(() => {
         const leftOffsets = new Map<number, number>()
         const rightOffsets = new Map<number, number>()
-        let left = withSelection ? SELECTION_COLUMN_WIDTH : 0
+        let left = (withSelection ? SELECTION_COLUMN_WIDTH : 0) + (withExpand ? EXPAND_COLUMN_WIDTH : 0)
         const leftStickyIndexes: number[] = []
-        visibleColumns.forEach((column, index) => {
+        visibleColumns.forEach(({ column }, index) => {
             if (column.sticky === 'left') {
                 leftOffsets.set(index, left)
                 left += resolveStickyWidth(column.width)
@@ -360,7 +468,7 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
         let right = 0
         const rightStickyIndexes: number[] = []
         for (let index = visibleColumns.length - 1; index >= 0; index -= 1) {
-            const column = visibleColumns[index]
+            const { column } = visibleColumns[index]
             if (column.sticky === 'right') {
                 right += resolveStickyWidth(column.width)
                 rightOffsets.set(index, right)
@@ -373,7 +481,7 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
             lastLeft: leftStickyIndexes.length > 0 ? leftStickyIndexes[leftStickyIndexes.length - 1] : -1,
             lastRight: rightStickyIndexes.length > 0 ? rightStickyIndexes[0] : -1
         }
-    }, [visibleColumns, withSelection])
+    }, [visibleColumns, withSelection, withExpand])
 
     const hasLeftStickyColumns = stickyState.lastLeft !== -1
     const radioGroupName = useReactId()
@@ -393,9 +501,13 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
     const renderHeader = () => (
         <thead {...getStyles('thead')}>
             <tr {...getStyles('tr')}>
+                {withExpand && <th {...getStyles('th', { className: classes.expandCell })} aria-label="展开" />}
                 {withSelection && (
                     <th
-                        {...getStyles('th', { className: classes.selectionCell })}
+                        {...getStyles('th', {
+                            className: classes.selectionCell,
+                            style: { left: withExpand ? EXPAND_COLUMN_WIDTH : undefined }
+                        })}
                         data-sticky="left"
                         data-sticky-last={hasLeftStickyColumns ? undefined : 'left'}
                     >
@@ -409,7 +521,7 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
                         )}
                     </th>
                 )}
-                {visibleColumns.map((column, index) => {
+                {visibleColumns.map(({ column }, index) => {
                     const ariaSort =
                         sortStatusState && sortStatusState.accessor === column.accessor
                             ? sortStatusState.direction === 'asc'
@@ -463,7 +575,7 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
             return (
                 <tbody {...getStyles('tbody')}>
                     <tr {...getStyles('tr')}>
-                        <td colSpan={visibleColumns.length + (withSelection ? 1 : 0)} {...getStyles('td')}>
+                        <td colSpan={totalColumnCount} {...getStyles('td')}>
                             <div {...getStyles('emptyCell')}>{empty ?? <EmptyState title="暂无数据" />}</div>
                         </td>
                     </tr>
@@ -471,88 +583,154 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
             )
         }
 
-        return (
-            <tbody {...getStyles('tbody')}>
-                {displayRecords.map((record, rowIndex) => {
-                    const key = rowKeys[rowIndex]
-                    const selected = withSelection && selectedKeysState.includes(key)
-                    return (
-                        <tr
-                            key={key}
-                            {...getStyles('tr')}
-                            data-clickable={onRowClick ? true : undefined}
-                            data-selected={selected ? true : undefined}
-                            aria-selected={withSelection ? selected : undefined}
-                            onClick={onRowClick ? () => onRowClick(record, rowIndex) : undefined}
+        const renderRow = (
+            record: any,
+            rowIndex: number,
+            measureRef?: (node: HTMLTableRowElement | null) => void
+        ) => {
+            const key = rowKeys[rowIndex]
+            const selected = withSelection && selectedKeysState.includes(key)
+            const expanded = withExpand && expandedRowsState.includes(key)
+            return (
+                <Fragment key={key}>
+                    <tr
+                        ref={measureRef}
+                        data-index={measureRef ? rowIndex : undefined}
+                        {...getStyles('tr')}
+                    data-clickable={onRowClick ? true : undefined}
+                    data-odd={striped && rowIndex % 2 === 1 ? true : undefined}
+                    data-selected={selected ? true : undefined}
+                    aria-selected={withSelection ? selected : undefined}
+                    onClick={onRowClick ? () => onRowClick(record, rowIndex) : undefined}
+                >
+                    {withExpand && (
+                        <td
+                            {...getStyles('td', { className: classes.expandCell })}
+                            data-sticky="left"
+                            data-sticky-last={hasLeftStickyColumns ? undefined : 'left'}
+                            onClick={event => event.stopPropagation()}
                         >
-                            {withSelection && (
-                                <td
-                                    {...getStyles('td', { className: classes.selectionCell })}
-                                    data-sticky="left"
-                                    data-sticky-last={hasLeftStickyColumns ? undefined : 'left'}
-                                    onClick={event => event.stopPropagation()}
-                                >
-                                    {selectionMode === 'checkbox' ? (
-                                        <Checkbox
-                                            checked={selected}
-                                            onChange={() => handleToggleRow(key)}
-                                            aria-label="选择此行"
-                                        />
-                                    ) : (
-                                        <Radio
-                                            checked={selected}
-                                            onChange={() => handleToggleRow(key)}
-                                            name={radioGroupName}
-                                            aria-label="选择此行"
-                                        />
-                                    )}
-                                </td>
-                            )}
-                            {visibleColumns.map((column, columnIndex) => {
-                                const value =
-                                    typeof column.accessor === 'function'
-                                        ? (column.accessor as (item: any) => any)(record)
-                                        : (record as any)?.[column.accessor as string]
-                                const content = column.render ? column.render(record, rowIndex) : formatCellValue(value)
-                                return (
-                                    <td
-                                        key={columnIndex}
-                                        {...getStyles('td', {
-                                            style: {
-                                                textAlign: column.textAlign,
-                                                minWidth: column.minWidth,
-                                                left: stickyState.leftOffsets.get(columnIndex),
-                                                right: stickyState.rightOffsets.get(columnIndex)
-                                            }
-                                        })}
-                                        data-ellipsis={column.ellipsis ? true : undefined}
-                                        data-sticky={column.sticky ?? undefined}
-                                        data-sticky-last={
-                                            column.sticky === 'left' && stickyState.lastLeft === columnIndex
-                                                ? 'left'
-                                                : column.sticky === 'right' && stickyState.lastRight === columnIndex
-                                                    ? 'right'
-                                                    : undefined
-                                        }
-                                        title={column.ellipsis && typeof value === 'string' ? value : undefined}
-                                        {...column.tdProps}
-                                    >
-                                        {content}
-                                    </td>
-                                )
+                            <button
+                                type="button"
+                                className={classes.expandButton}
+                                data-expanded={expandedRowsState.includes(key) ? true : undefined}
+                                aria-expanded={expandedRowsState.includes(key)}
+                                aria-label={expandedRowsState.includes(key) ? '收起行' : '展开行'}
+                                onClick={() => handleToggleExpanded(key)}
+                            >
+                                <AccordionChevron size={14} className={classes.expandIcon} />
+                            </button>
+                        </td>
+                    )}
+                    {withSelection && (
+                        <td
+                            {...getStyles('td', {
+                                className: classes.selectionCell,
+                                style: { left: withExpand ? EXPAND_COLUMN_WIDTH : undefined }
                             })}
+                            data-sticky="left"
+                            data-sticky-last={hasLeftStickyColumns ? undefined : 'left'}
+                            onClick={event => event.stopPropagation()}
+                        >
+                            {selectionMode === 'checkbox' ? (
+                                <Checkbox
+                                    checked={selected}
+                                    onChange={() => handleToggleRow(key)}
+                                    aria-label="选择此行"
+                                />
+                            ) : (
+                                <Radio
+                                    checked={selected}
+                                    onChange={() => handleToggleRow(key)}
+                                    name={radioGroupName}
+                                    aria-label="选择此行"
+                                />
+                            )}
+                        </td>
+                    )}
+                    {visibleColumns.map(({ column }, columnIndex) => {
+                        const value =
+                            typeof column.accessor === 'function'
+                                ? (column.accessor as (item: any) => any)(record)
+                                : (record as any)?.[column.accessor as string]
+                        const content = column.render ? column.render(record, rowIndex) : formatCellValue(value)
+                        return (
+                            <td
+                                key={columnIndex}
+                                {...getStyles('td', {
+                                    style: {
+                                        textAlign: column.textAlign,
+                                        minWidth: column.minWidth,
+                                        left: stickyState.leftOffsets.get(columnIndex),
+                                        right: stickyState.rightOffsets.get(columnIndex)
+                                    }
+                                })}
+                                data-ellipsis={column.ellipsis ? true : undefined}
+                                data-sticky={column.sticky ?? undefined}
+                                data-sticky-last={
+                                    column.sticky === 'left' && stickyState.lastLeft === columnIndex
+                                        ? 'left'
+                                        : column.sticky === 'right' && stickyState.lastRight === columnIndex
+                                            ? 'right'
+                                            : undefined
+                                }
+                                title={column.ellipsis && typeof value === 'string' ? value : undefined}
+                                {...column.tdProps}
+                            >
+                                {content}
+                            </td>
+                        )
+                    })}
+                    </tr>
+                    {expanded && (
+                        <tr {...getStyles('tr')} data-expanded-row>
+                            <td colSpan={totalColumnCount} {...getStyles('td', { className: classes.expandedCell })}>
+                                {renderExpanded?.(record, rowIndex)}
+                            </td>
                         </tr>
-                    )
-                })}
-            </tbody>
-        )
+                    )}
+                </Fragment>
+            )
+        }
+
+        if (virtualized) {
+            const virtualItems = rowVirtualizer.getVirtualItems()
+            const padTop = virtualItems.length > 0 ? virtualItems[0].start : 0
+            const padBottom =
+                virtualItems.length > 0
+                    ? rowVirtualizer.getTotalSize() - virtualItems[virtualItems.length - 1].end
+                    : 0
+
+            return (
+                <tbody {...getStyles('tbody')}>
+                    {padTop > 0 && (
+                        <tr aria-hidden style={{ height: padTop }}>
+                            <td colSpan={totalColumnCount} style={{ border: 0, padding: 0 }} />
+                        </tr>
+                    )}
+                    {virtualItems.map(virtualRow =>
+                        renderRow(displayRecords[virtualRow.index], virtualRow.index, node =>
+                            rowVirtualizer.measureElement(node)
+                        )
+                    )}
+                    {padBottom > 0 && (
+                        <tr aria-hidden style={{ height: padBottom }}>
+                            <td colSpan={totalColumnCount} style={{ border: 0, padding: 0 }} />
+                        </tr>
+                    )}
+                </tbody>
+            )
+        }
+
+        return <tbody {...getStyles('tbody')}>{displayRecords.map((record, rowIndex) => renderRow(record, rowIndex))}</tbody>
     }
 
     const table = (
-        <Box component="table" {...getStyles('table')}>
+        <Box component="table" {...getStyles('table', { style: minWidth != null ? { minWidth } : undefined })}>
             <colgroup>
+                {withExpand && <col style={{ width: EXPAND_COLUMN_WIDTH }} />}
                 {withSelection && <col style={{ width: SELECTION_COLUMN_WIDTH }} />}
-                {visibleColumns.map((column, index) => (
+                {visibleColumns.map(({ column }, index) => (
                     <col key={index} style={{ width: column.width }} />
                 ))}
             </colgroup>
@@ -561,14 +739,24 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
         </Box>
     )
 
-    const tableArea =
-        minWidth != null || maxHeight != null ? (
-            <TableScrollContainer minWidth={minWidth ?? 0} maxHeight={maxHeight}>
-                {table}
-            </TableScrollContainer>
-        ) : (
-            table
-        )
+    const tableArea = virtualized ? (
+        <div
+            ref={virtualScrollRef}
+            className={classes.virtualScroller}
+            style={{
+                maxHeight:
+                    typeof maxHeight === 'number' ? `${maxHeight}px` : (maxHeight as string | undefined) ?? undefined
+            }}
+        >
+            {table}
+        </div>
+    ) : minWidth != null || maxHeight != null ? (
+        <TableScrollContainer minWidth={minWidth ?? 0} maxHeight={maxHeight}>
+            {table}
+        </TableScrollContainer>
+    ) : (
+        table
+    )
 
     return (
         <Box
@@ -587,6 +775,42 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
             aria-busy={loading || undefined}
             {...others}
         >
+            {withColumnSettings && (
+                <div {...getStyles('columnSettingsBar')}>
+                    <Popover position="bottom-end">
+                        <Popover.Target>
+                            <button
+                                type="button"
+                                className={classes.columnSettingsButton}
+                                aria-label="列设置"
+                            >
+                                <ColumnsIcon />
+                            </button>
+                        </Popover.Target>
+                        <Popover.Dropdown>
+                            <div {...getStyles('columnSettingsPanel')}>
+                                {columns.map((column, index) => (
+                                    <Checkbox
+                                        key={columnKeys[index]}
+                                        size="xs"
+                                        label={getColumnTitle(column) ?? columnKeys[index]}
+                                        checked={column.hidden !== true && !hiddenColumnKeysState.includes(columnKeys[index])}
+                                        disabled={column.hidden === true}
+                                        onChange={event => {
+                                            const key = columnKeys[index]
+                                            setHiddenColumnKeys(
+                                                event.currentTarget.checked
+                                                    ? hiddenColumnKeysState.filter(item => item !== key)
+                                                    : [...hiddenColumnKeysState, key]
+                                            )
+                                        }}
+                                    />
+                                ))}
+                            </div>
+                        </Popover.Dropdown>
+                    </Popover>
+                </div>
+            )}
             <LoadingOverlay visible={!!loading}>{tableArea}</LoadingOverlay>
             {total != null && (
                 <div {...getStyles('footer')}>

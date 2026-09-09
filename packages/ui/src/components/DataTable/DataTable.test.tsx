@@ -245,6 +245,84 @@ describe('DataTable', () => {
         expect((stickyTd as HTMLElement).style.left).toBe('0px')
     })
 
+    it('行展开：点击展开控件显示内容，再次点击收起', () => {
+        const onExpandedRowsChange = vi.fn()
+        render(
+            <DataTable
+                columns={basicColumns as any}
+                records={users}
+                rowKey={(record: User) => record.name}
+                renderExpanded={(record: User) => <div>{`详情-${record.name}`}</div>}
+                onExpandedRowsChange={onExpandedRowsChange}
+            />,
+            { wrapper }
+        )
+
+        const toggle = screen.getAllByRole('button', { name: '展开行' })[0]
+        fireEvent.click(toggle)
+
+        expect(screen.getByText('详情-张三')).toBeInTheDocument()
+        expect(onExpandedRowsChange).toHaveBeenLastCalledWith(['张三'])
+
+        fireEvent.click(screen.getByRole('button', { name: '收起行' }))
+        expect(screen.queryByText('详情-张三')).not.toBeInTheDocument()
+        expect(onExpandedRowsChange).toHaveBeenLastCalledWith([])
+    })
+
+    it('行展开：defaultExpandedRows 初始展开', () => {
+        render(
+            <DataTable
+                columns={basicColumns as any}
+                records={users}
+                rowKey={(record: User) => record.name}
+                renderExpanded={(record: User) => <div>{`详情-${record.name}`}</div>}
+                defaultExpandedRows={['李四']}
+            />,
+            { wrapper }
+        )
+
+        expect(screen.getByText('详情-李四')).toBeInTheDocument()
+        expect(screen.queryByText('详情-张三')).not.toBeInTheDocument()
+    })
+
+    it('列设置：面板勾选控制列显隐', async () => {
+        const onHiddenColumnKeysChange = vi.fn()
+        render(
+            <DataTable
+                columns={basicColumns as any}
+                records={users}
+                withColumnSettings
+                onHiddenColumnKeysChange={onHiddenColumnKeysChange}
+            />,
+            { wrapper }
+        )
+
+        expect(screen.getByText('邮箱')).toBeInTheDocument()
+
+        fireEvent.click(screen.getByRole('button', { name: '列设置' }))
+        // 下拉经 Transition 异步挂载
+        const emailCheckbox = await screen.findByRole('checkbox', { name: '邮箱' })
+        expect(emailCheckbox).toBeChecked()
+
+        fireEvent.click(emailCheckbox)
+        expect(onHiddenColumnKeysChange).toHaveBeenLastCalledWith(['email'])
+    })
+
+    it('列设置：defaultHiddenColumnKeys 生效且不影响表头计数', () => {
+        render(
+            <DataTable
+                columns={basicColumns as any}
+                records={users}
+                withColumnSettings
+                defaultHiddenColumnKeys={['email']}
+            />,
+            { wrapper }
+        )
+
+        expect(screen.queryByText('邮箱')).not.toBeInTheDocument()
+        expect(screen.getAllByRole('columnheader')).toHaveLength(2)
+    })
+
     it('ellipsis 单元格添加 title 提示', () => {
         render(
             <DataTable columns={[{ accessor: 'email', ellipsis: true }] as any} records={users} />, { wrapper }
@@ -252,5 +330,58 @@ describe('DataTable', () => {
 
         const cell = screen.getByTitle('zhang@example.com')
         expect(cell).toBeInTheDocument()
+    })
+
+    it('非虚拟模式渲染全部行', () => {
+        const manyUsers = Array.from({ length: 1000 }, (_, index) => ({
+            name: `用户${index}`,
+            age: 20 + (index % 30),
+            email: `user${index}@example.com`
+        }))
+        render(<DataTable columns={basicColumns as any} records={manyUsers} />, { wrapper })
+
+        expect(screen.getAllByRole('row')).toHaveLength(1001) // 表头 + 1000 行
+    })
+
+    it('虚拟模式仅渲染可视区附近的行', () => {
+        // jsdom 无布局。virtual-core 的 getRect 与 measureElement 都读取 offsetHeight/offsetWidth，
+        // 这里注入固定几何信息：滚动视口 400px、行高 42px
+        const originalHeight = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight')
+        const originalWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetWidth')
+        Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+            configurable: true,
+            get(this: HTMLElement) {
+                return this.tagName === 'TR' ? 42 : 400
+            }
+        })
+        Object.defineProperty(HTMLElement.prototype, 'offsetWidth', {
+            configurable: true,
+            get() {
+                return 800
+            }
+        })
+
+        try {
+            const manyUsers = Array.from({ length: 1000 }, (_, index) => ({
+                name: `用户${index}`,
+                age: 20 + (index % 30),
+                email: `user${index}@example.com`
+            }))
+            render(
+                <DataTable columns={basicColumns as any} records={manyUsers} virtualized maxHeight={400} />,
+                { wrapper }
+            )
+
+            const rows = screen.getAllByRole('row')
+            // 视口 400px / 行高 42px ≈ 10 行 + 上下 overscan 8 行 + pad 行，远小于 1000
+            expect(rows.length).toBeGreaterThan(5)
+            expect(rows.length).toBeLessThan(45)
+            // 首行可见
+            expect(screen.getByText('用户0')).toBeInTheDocument()
+            expect(screen.queryByText('用户999')).not.toBeInTheDocument()
+        } finally {
+            if (originalHeight) Object.defineProperty(HTMLElement.prototype, 'offsetHeight', originalHeight)
+            if (originalWidth) Object.defineProperty(HTMLElement.prototype, 'offsetWidth', originalWidth)
+        }
     })
 })

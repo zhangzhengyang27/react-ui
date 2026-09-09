@@ -45,7 +45,7 @@
     border-top: 1px solid var(--ui-color-default-border);
 }
 
-.root[data-striped] .tbody .tr:nth-child(odd) {
+.root[data-striped] .tbody .tr[data-odd] {
     background-color: var(--ui-color-default-hover);
 }
 
@@ -59,6 +59,11 @@
 
 .tr[data-selected] {
     background-color: var(--ui-primary-color-light);
+}
+
+.virtualScroller {
+    overflow: auto;
+    max-height: 400px;
 }
 
 .thButton {
@@ -100,6 +105,82 @@
     text-align: center;
 }
 
+.expandCell {
+    width: 40px;
+    text-align: center;
+}
+
+.expandButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    border: none;
+    border-radius: var(--ui-default-radius, calc(0.25rem * var(--ui-scale)));
+    background: none;
+    color: var(--ui-color-dimmed);
+    cursor: pointer;
+}
+
+.expandButton:hover {
+    background-color: var(--ui-color-default-hover);
+    color: var(--ui-color-text);
+}
+
+.expandIcon {
+    transition: transform 0.15s ease;
+}
+
+.expandButton[data-expanded] .expandIcon {
+    transform: rotate(180deg);
+}
+
+.expandedCell {
+    background-color: var(--ui-color-default-hover);
+    padding: var(--ui-spacing-md) var(--datatable-horizontal-spacing);
+}
+
+/* 列设置 */
+
+.columnSettingsBar {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: var(--ui-spacing-xs);
+}
+
+.columnSettingsButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--ui-color-default-border);
+    border-radius: var(--ui-default-radius, calc(0.25rem * var(--ui-scale)));
+    background: var(--ui-color-body);
+    color: var(--ui-color-dimmed);
+    cursor: pointer;
+}
+
+.columnSettingsButton:hover {
+    color: var(--ui-color-text);
+    background-color: var(--ui-color-default-hover);
+}
+
+.columnSettingsButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.columnSettingsPanel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ui-spacing-xs);
+    min-width: 160px;
+    max-height: 280px;
+    overflow-y: auto;
+    padding: var(--ui-spacing-xs);
+}
+
 /* 固定列 */
 
 .th[data-sticky],
@@ -109,7 +190,7 @@
     background-color: var(--ui-color-body);
 }
 
-.root[data-striped] .tbody .tr:nth-child(odd) .td[data-sticky] {
+.root[data-striped] .tbody .tr[data-odd] .td[data-sticky] {
     background-color: var(--ui-color-default-hover);
 }
 

@@ -50,6 +50,24 @@ group:
 
 <code src="./demo/stickyColumns.tsx"></code>
 
+### 虚拟滚动
+
+设置 `virtualized` 开启行虚拟滚动，万级数据依然流畅。建议同时设置 `maxHeight` 与 `estimatedRowHeight`：
+
+<code src="./demo/virtualized.tsx"></code>
+
+### 行展开
+
+传入 `renderExpanded` 后表格首列出现展开控件，支持受控（`expandedRows`）与非受控（`defaultExpandedRows`）：
+
+<code src="./demo/rowExpansion.tsx"></code>
+
+### 列设置
+
+设置 `withColumnSettings` 后表格右上角出现列设置面板，可控制各列显示/隐藏：
+
+<code src="./demo/columnSettings.tsx"></code>
+
 ## API {#api}
 
 ### DataTableProps
@@ -71,6 +89,16 @@ group:
 | minWidth | 表格最小宽度，设置后横向滚动 | `string \\| number` | - |
 | maxHeight | 表格最大高度，设置后纵向滚动 | `string \\| number` | - |
 | stickyHeader | 固定表头 | `boolean` | `false` |
+| virtualized | 开启行虚拟滚动 | `boolean` | `false` |
+| estimatedRowHeight | 虚拟滚动行高估计值（px） | `number` | `42` |
+| renderExpanded | 展开行内容渲染函数 | `(record: T, index: number) => React.ReactNode` | - |
+| expandedRows | 已展开行 key 集合（受控） | `string[]` | - |
+| defaultExpandedRows | 已展开行初始值（非受控） | `string[]` | - |
+| onExpandedRowsChange | 已展开行变化回调 | `(keys: string[]) => void` | - |
+| withColumnSettings | 显示列设置面板 | `boolean` | `false` |
+| hiddenColumnKeys | 隐藏列 key 集合（受控） | `string[]` | - |
+| defaultHiddenColumnKeys | 隐藏列初始值（非受控） | `string[]` | - |
+| onHiddenColumnKeysChange | 隐藏列变化回调 | `(keys: string[]) => void` | - |
 | sortStatus | 排序状态（受控） | `DataTableSortStatus \\| null` | - |
 | defaultSortStatus | 排序状态初始值（非受控，本地排序） | `DataTableSortStatus` | - |
 | onSortStatusChange | 排序状态变化回调 | `(status: DataTableSortStatus) => void` | - |
@@ -121,3 +149,7 @@ group:
 ### 远端分页时排序会重新请求吗？
 
 受控排序下组件不会自动发起请求，请在 `onSortStatusChange` 中自行触发数据请求并更新 `records`。
+
+### 虚拟滚动与行展开可以同时使用吗？
+
+可以，但虚拟器以数据行为虚拟单元，展开行内容的高度不计入行高测量。若两者同时使用，建议展开内容控制在稳定高度内，否则滚动定位可能出现轻微偏移。

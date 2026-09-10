@@ -1,54 +1,54 @@
 :global(.markdown) {
-  color: var(--ui-color-text);
-  font-size: var(--ui-font-size-sm);
-  line-height: 2;
+    color: var(--ui-color-text);
+    font-size: var(--ui-font-size-sm);
+    line-height: 2;
 }
 
 :global(.highlight) {
-  line-height: 1.5;
+    line-height: 1.5;
 }
 
 :global(.markdown img) {
-  max-width: calc(100% - 32px);
-  max-height: 100%;
-  display: inline;
+    max-width: calc(100% - 32px);
+    max-height: 100%;
+    display: inline;
 }
 
 :global(.markdown > a > img),
 :global(.markdown > img) {
-  display: block;
-  margin: 0 auto;
+    display: block;
+    margin: 0 auto;
 }
 
 :global(.markdown p > img),
 :global(.markdown li > img) {
-  margin: 34px auto;
-  box-shadow: 0 8px 20px rgba(143, 168, 191, 0.35);
-  display: block;
+    margin: 34px auto;
+    box-shadow: 0 8px 20px rgba(143, 168, 191, 0.35);
+    display: block;
 }
 
 :global(.markdown p > img.markdown-inline-image) {
-  margin: 0;
-  box-shadow: none;
+    margin: 0;
+    box-shadow: none;
 }
 
 :global(.markdown h1) {
-  margin-top: 8px;
-  margin-bottom: var(--ui-spacing-md);
-  color: var(--ui-color-text);
-  font-weight: 500;
-  font-size: 30px;
-  font-family: Avenir, var(--ui-font-family), sans-serif;
-  line-height: 38px;
+    margin-top: 8px;
+    margin-bottom: var(--ui-spacing-md);
+    color: var(--ui-color-text);
+    font-weight: 500;
+    font-size: 30px;
+    font-family: Avenir, var(--ui-font-family), sans-serif;
+    line-height: 38px;
 }
 
 :global(.markdown h1 .subtitle) {
-  margin-inline-start: var(--ui-spacing-sm);
+    margin-inline-start: var(--ui-spacing-sm);
 }
 
 :global(.markdown h2) {
-  font-size: 24px;
-  line-height: 32px;
+    font-size: 24px;
+    line-height: 32px;
 }
 
 :global(.markdown h2),
@@ -56,199 +56,306 @@
 :global(.markdown h4),
 :global(.markdown h5),
 :global(.markdown h6) {
-  clear: both;
-  margin: 1.6em 0 0.6em;
-  color: var(--ui-color-text);
-  font-weight: 500;
-  font-family: Avenir, var(--ui-font-family), sans-serif;
+    clear: both;
+    margin: 1.6em 0 0.6em;
+    color: var(--ui-color-text);
+    font-weight: 500;
+    font-family: Avenir, var(--ui-font-family), sans-serif;
 }
 
 :global(.markdown h3) {
-  font-size: 18px;
+    font-size: 18px;
 }
 
 :global(.markdown h4) {
-  font-size: var(--ui-font-size-md);
+    font-size: var(--ui-font-size-md);
 }
 
 :global(.markdown h5) {
-  font-size: var(--ui-font-size-sm);
+    font-size: var(--ui-font-size-sm);
 }
 
 :global(.markdown h6) {
-  font-size: var(--ui-font-size-xs);
+    font-size: var(--ui-font-size-xs);
 }
 
 :global(.markdown hr) {
-  clear: both;
-  height: 1px;
-  margin: 24px 0;
-  background: var(--ui-color-default-border);
-  border: 0;
+    clear: both;
+    height: 1px;
+    margin: 24px 0;
+    background: var(--ui-color-default-border);
+    border: 0;
 }
 
 :global(.markdown p),
 :global(.markdown pre) {
-  margin: 1em 0;
-  text-align: start;
+    margin: 1em 0;
+    text-align: start;
 }
 
 :global(.ant-row-rtl) :global(.markdown p),
 :global(.ant-row-rtl) :global(.markdown pre) {
-  direction: rtl;
+    direction: rtl;
 }
 
 :global(.markdown ul > li),
 :global(.markdown ol > li) {
-  padding-inline-start: 4px;
-  margin-inline-start: var(--ui-spacing-md);
+    padding-inline-start: 4px;
+    margin-inline-start: var(--ui-spacing-md);
 }
 
 :global(.markdown ul > li > p),
 :global(.markdown ol > li > p) {
-  margin: 0.2em 0;
+    margin: 0.2em 0;
 }
 
 :global(.markdown ul > li:empty),
 :global(.markdown ol > li:empty) {
-  display: none;
+    display: none;
 }
 
 :global(.markdown ul > li) {
-  list-style-type: circle;
+    list-style-type: circle;
 }
 
 :global(.markdown ol > li) {
-  list-style-type: decimal;
+    list-style-type: decimal;
 }
 
 :global(.markdown code) {
-  margin: 0 1px;
-  padding: 0.2em 0.4em;
-  font-size: 0.9em;
-  background: #f5f5f5;
-  border: 1px solid var(--ui-color-default-border);
-  border-radius: var(--ui-radius-xs);
+    margin: 0 1px;
+    padding: 0.2em 0.4em;
+    font-size: 0.9em;
+    background: var(--ui-color-default);
+    border: 1px solid var(--ui-color-default-border);
+    border-radius: var(--ui-radius-xs);
 }
 
 :global(.markdown pre) {
-  font-family: var(--ui-font-family-monospace);
-  background: #f5f5f5;
-  border-radius: var(--ui-radius-md);
+    font-family: var(--ui-font-family-monospace);
+    background: var(--ui-color-default);
+    border-radius: var(--ui-radius-md);
 }
 
 :global(.markdown pre code) {
-  margin: 0;
-  padding: 0;
-  overflow: auto;
-  color: var(--ui-color-text);
-  font-size: var(--ui-font-size-xs);
-  direction: ltr;
-  text-align: start;
-  background-color: var(--ui-color-body);
-  border: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    color: var(--ui-color-text);
+    font-size: var(--ui-font-size-xs);
+    direction: ltr;
+    text-align: start;
+    background-color: transparent;
+    border: none;
 }
 
 :global(.markdown strong),
 :global(.markdown b) {
-  font-weight: 500;
+    font-weight: 500;
 }
 
 :global(.markdown .dumi-default-source-code) {
-  margin: 1em 0;
-  background-color: #f5f5f5;
-  border-radius: var(--ui-radius-md);
+    margin: 1em 0;
+    background-color: var(--ui-color-default);
+    border: 1px solid var(--ui-color-default-border);
+    border-radius: var(--ui-radius-md);
 }
 
 :global(.markdown .dumi-default-source-code > pre.prism-code) {
-  scrollbar-width: thin;
-  scrollbar-gutter: stable;
-  padding: var(--ui-spacing-sm) var(--ui-spacing-lg);
-  font-size: var(--ui-font-size-sm);
-  line-height: 2;
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+    padding: var(--ui-spacing-sm) var(--ui-spacing-lg);
+    font-size: var(--ui-font-size-sm);
+    line-height: 2;
+}
+
+/* prism 代码高亮：亮/暗双色方案（GitHub 风格），
+   覆盖 dumi 默认主题的固定配色，颜色跟随 data-prefers-color 翻转 */
+:global(.markdown .dumi-default-source-code .token.comment),
+:global(.markdown .dumi-default-source-code .token.prolog),
+:global(.markdown .dumi-default-source-code .token.doctype),
+:global(.markdown .dumi-default-source-code .token.cdata) {
+    color: #6e7781;
+}
+
+:global(.markdown .dumi-default-source-code .token.punctuation) {
+    color: #57606a;
+}
+
+:global(.markdown .dumi-default-source-code .token.keyword),
+:global(.markdown .dumi-default-source-code .token.atrule),
+:global(.markdown .dumi-default-source-code .token.important),
+:global(.markdown .dumi-default-source-code .token.deleted) {
+    color: #cf222e;
+}
+
+:global(.markdown .dumi-default-source-code .token.function),
+:global(.markdown .dumi-default-source-code .token.class-name) {
+    color: #8250df;
+}
+
+:global(.markdown .dumi-default-source-code .token.string),
+:global(.markdown .dumi-default-source-code .token.char),
+:global(.markdown .dumi-default-source-code .token.inserted),
+:global(.markdown .dumi-default-source-code .token.attr-value) {
+    color: #0a3069;
+}
+
+:global(.markdown .dumi-default-source-code .token.number),
+:global(.markdown .dumi-default-source-code .token.boolean),
+:global(.markdown .dumi-default-source-code .token.constant),
+:global(.markdown .dumi-default-source-code .token.symbol) {
+    color: #0550ae;
+}
+
+:global(.markdown .dumi-default-source-code .token.tag),
+:global(.markdown .dumi-default-source-code .token.selector),
+:global(.markdown .dumi-default-source-code .token.attr-name),
+:global(.markdown .dumi-default-source-code .token.builtin) {
+    color: #116329;
+}
+
+:global(.markdown .dumi-default-source-code .token.operator),
+:global(.markdown .dumi-default-source-code .token.entity),
+:global(.markdown .dumi-default-source-code .token.url),
+:global(.markdown .dumi-default-source-code .token.variable) {
+    color: #0550ae;
+}
+
+:global(.markdown .dumi-default-source-code .token.regex) {
+    color: #116329;
 }
 
 :global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code) {
-  background-color: #000;
+    background-color: var(--ui-color-default);
+}
+
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.comment),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.prolog),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.doctype),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.cdata) {
+    color: #8b949e;
+}
+
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.punctuation) {
+    color: #a8b3bf;
+}
+
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.keyword),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.atrule),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.important),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.deleted),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.operator),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.entity),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.url),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.variable) {
+    color: #ff7b72;
+}
+
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.function),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.class-name) {
+    color: #d2a8ff;
+}
+
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.string),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.char),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.inserted),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.attr-value) {
+    color: #a5d6ff;
+}
+
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.number),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.boolean),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.constant),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.symbol) {
+    color: #79c0ff;
+}
+
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.tag),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.selector),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.attr-name),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.builtin),
+:global([data-prefers-color='dark']) :global(.markdown .dumi-default-source-code .token.regex) {
+    color: #7ee787;
 }
 
 :global(.pic-plus) > * {
-  display: inline-block !important;
-  vertical-align: middle;
+    display: inline-block !important;
+    vertical-align: middle;
 }
 
 :global(.pic-plus) span {
-  margin: 0 var(--ui-spacing-md);
-  color: #aaa;
-  font-size: 30px;
-  user-select: none;
+    margin: 0 var(--ui-spacing-md);
+    color: #aaa;
+    font-size: 30px;
+    user-select: none;
 }
 
 :global(.markdown table td > a:not(:last-child)) {
-  margin-inline-end: 0 !important;
+    margin-inline-end: 0 !important;
 }
 
 :global(.markdown table td > a:not(:last-child))::after {
-  position: relative !important;
+    position: relative !important;
 }
 
 :global(.markdown blockquote) {
-  margin: 1em 0;
-  padding-inline-start: 0.8em;
-  color: var(--ui-color-dimmed);
-  font-size: 90%;
-  border-inline-start: 4px solid var(--ui-color-default-border);
+    margin: 1em 0;
+    padding-inline-start: 0.8em;
+    color: var(--ui-color-dimmed);
+    font-size: 90%;
+    border-inline-start: 4px solid var(--ui-color-default-border);
 }
 
 :global(.rtl) :global(.markdown blockquote) {
-  padding-inline-end: 0.8em;
-  padding-inline-start: 0;
-  border-inline-end: 4px solid var(--ui-color-default-border);
-  border-inline-start: none;
+    padding-inline-end: 0.8em;
+    padding-inline-start: 0;
+    border-inline-end: 4px solid var(--ui-color-default-border);
+    border-inline-start: none;
 }
 
 :global(.markdown blockquote p) {
-  margin: 0;
+    margin: 0;
 }
 
 :global(.markdown .anchor) {
-  margin-inline-start: 8px;
-  opacity: 0;
-  transition: opacity 0.3s;
+    margin-inline-start: 8px;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
 :global(.rtl) :global(.markdown .anchor) {
-  margin-inline-end: 8px;
-  margin-inline-start: 0;
+    margin-inline-end: 8px;
+    margin-inline-start: 0;
 }
 
 :global(.markdown .waiting) {
-  color: #ccc;
-  cursor: not-allowed;
+    color: #ccc;
+    cursor: not-allowed;
 }
 
 :global(.markdown a.edit-button) {
-  display: inline-block;
-  margin-inline-start: 8px;
-  text-decoration: none;
-  background: inherit;
+    display: inline-block;
+    margin-inline-start: 8px;
+    text-decoration: none;
+    background: inherit;
 }
 
 :global(.rtl) :global(.markdown a.edit-button) {
-  margin-inline-end: 8px;
-  margin-inline-start: 0;
-  transform: rotateY(180deg);
+    margin-inline-end: 8px;
+    margin-inline-start: 0;
+    transform: rotateY(180deg);
 }
 
 :global(.markdown a.edit-button) .anticon {
-  display: block;
-  color: var(--ui-color-dimmed);
-  font-size: var(--ui-font-size-md);
-  transition: all 0.3s;
+    display: block;
+    color: var(--ui-color-dimmed);
+    font-size: var(--ui-font-size-md);
+    transition: all 0.3s;
 }
 
 :global(.markdown a.edit-button) .anticon:hover {
-  color: var(--ui-color-text);
+    color: var(--ui-color-text);
 }
 
 :global(.markdown h1:hover .anchor),
@@ -257,235 +364,237 @@
 :global(.markdown h4:hover .anchor),
 :global(.markdown h5:hover .anchor),
 :global(.markdown h6:hover .anchor) {
-  display: inline-block;
-  opacity: 1;
+    display: inline-block;
+    opacity: 1;
 }
 
 :global(.markdown > br),
 :global(.markdown > p > br) {
-  clear: both;
+    clear: both;
 }
 
 :global(.markdown .dumi-default-table-content) {
-  scrollbar-width: thin;
-  scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
 }
 
 :global(.markdown .dumi-default-table table) {
-  margin: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  direction: ltr;
-  empty-cells: show;
-  border: 1px solid var(--ui-color-default-border);
-  border-collapse: collapse;
-  border-spacing: 0;
+    margin: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    direction: ltr;
+    empty-cells: show;
+    border: 1px solid var(--ui-color-default-border);
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 :global(.markdown .dumi-default-table table th),
 :global(.markdown .dumi-default-table table td) {
-  padding: var(--ui-spacing-sm) 24px;
-  text-align: start;
-  border: 1px solid var(--ui-color-default-border);
+    padding: var(--ui-spacing-sm) 24px;
+    text-align: start;
+    border: 1px solid var(--ui-color-default-border);
 }
 
 :global(.markdown .dumi-default-table table th:first-child),
 :global(.markdown .dumi-default-table table td:first-child) {
-  border-inline-start: 1px solid var(--ui-color-default-border);
+    border-inline-start: 1px solid var(--ui-color-default-border);
 }
 
 :global(.markdown .dumi-default-table table th:last-child),
 :global(.markdown .dumi-default-table table td:last-child) {
-  border-inline-end: 1px solid var(--ui-color-default-border);
+    border-inline-end: 1px solid var(--ui-color-default-border);
 }
 
 :global(.markdown .dumi-default-table table th img),
 :global(.markdown .dumi-default-table table td img) {
-  max-width: unset;
+    max-width: unset;
 }
 
 :global(.markdown .dumi-default-table table th) {
-  color: #5c6b77;
-  font-weight: 500;
-  white-space: nowrap;
-  background: rgba(0, 0, 0, 0.02);
-  border-width: 1px 1px 2px;
+    color: #5c6b77;
+    font-weight: 500;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0.02);
+    border-width: 1px 1px 2px;
 }
 
 :global(.markdown .dumi-default-table table tbody tr) {
-  transition: all 0.3s;
+    transition: all 0.3s;
 }
 
 :global(.markdown .dumi-default-table table tbody tr:hover) {
-  background: rgba(60, 90, 100, 0.04);
+    background: rgba(60, 90, 100, 0.04);
 }
 
 :global(.markdown .dumi-default-table table.component-api-table) {
-  margin: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  font-size: var(--ui-font-size-xs);
-  font-family: var(--ui-font-family-monospace);
-  line-height: var(--ui-line-height);
-  border: 1px solid var(--ui-color-default-border);
-  border-width: 0 1px;
+    margin: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    font-size: var(--ui-font-size-xs);
+    font-family: var(--ui-font-family-monospace);
+    line-height: var(--ui-line-height);
+    border: 1px solid var(--ui-color-default-border);
+    border-width: 0 1px;
 }
 
 :global(.markdown .dumi-default-table table.component-api-table th) {
-  border-width: 1px 0 2px;
+    border-width: 1px 0 2px;
 }
 
 :global(.markdown .dumi-default-table table.component-api-table td) {
-  border-width: 1px 0;
+    border-width: 1px 0;
 }
 
 :global(.markdown .dumi-default-table table.component-api-table td:first-child) {
-  width: 18%;
-  min-width: 58px;
-  color: var(--ui-color-text);
-  font-weight: 600;
-  white-space: nowrap;
+    width: 18%;
+    min-width: 58px;
+    color: var(--ui-color-text);
+    font-weight: 600;
+    white-space: nowrap;
 }
 
 :global(.markdown .dumi-default-table table.component-api-table td:nth-child(2)) {
-  min-width: 160px;
+    min-width: 160px;
 }
 
 :global(.markdown .dumi-default-table table.component-api-table td:nth-child(3)) {
-  width: 22%;
-  color: #c41d7f;
-  font-size: var(--ui-font-size-xs);
+    width: 22%;
+    color: #c41d7f;
+    font-size: var(--ui-font-size-xs);
 }
 
 :global(.markdown .dumi-default-table table.component-api-table td:nth-child(4)) {
-  width: 15%;
-  font-size: var(--ui-font-size-xs);
+    width: 15%;
+    font-size: var(--ui-font-size-xs);
 }
 
 :global(.markdown .dumi-default-table table.component-api-table td:nth-child(5)) {
-  width: 8%;
-  font-size: var(--ui-font-size-xs);
+    width: 8%;
+    font-size: var(--ui-font-size-xs);
 }
 
 :global(.markdown .dumi-default-table table.component-api-table td:nth-last-child(3):first-child) {
-  width: 38%;
+    width: 38%;
 }
 
-:global(.markdown .dumi-default-table table.component-api-table td:nth-last-child(3):first-child ~ td:nth-last-child(2)) {
-  width: 70%;
+:global(
+        .markdown .dumi-default-table table.component-api-table td:nth-last-child(3):first-child ~ td:nth-last-child(2)
+    ) {
+    width: 70%;
 }
 
 :global(.markdown .dumi-default-table tr:has(td:first-child > del)) {
-  color: #faad14 !important;
-  background-color: #fffbe6 !important;
-  display: var(--antd-site-api-deprecated-display, none);
+    color: #faad14 !important;
+    background-color: #fffbe6 !important;
+    display: var(--antd-site-api-deprecated-display, none);
 }
 
 :global(.markdown .dumi-default-table tr:has(td:first-child > del) del) {
-  color: #faad14;
+    color: #faad14;
 }
 
 :global(.markdown .dumi-default-table tr:has(td:first-child > del):hover del) {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 :global(.grid-demo) .ant-row > div,
 :global(.grid-demo) .code-box-demo .ant-row > div,
 :global([id^='grid-demo-']) .ant-row > div,
 :global([id^='grid-demo-']) .code-box-demo .ant-row > div {
-  min-height: 30px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  color: #fff;
-  text-align: center;
-  border-radius: 0;
+    min-height: 30px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: #fff;
+    text-align: center;
+    border-radius: 0;
 }
 
 :global(.grid-demo) .code-box-demo .ant-row > div:not(.gutter-row),
 :global([id^='grid-demo-']) .code-box-demo .ant-row > div:not(.gutter-row) {
-  padding: var(--ui-spacing-md) 0;
-  background: var(--ui-primary-color-filled);
+    padding: var(--ui-spacing-md) 0;
+    background: var(--ui-primary-color-filled);
 }
 
 :global(.grid-demo) .code-box-demo .ant-row > div:not(.gutter-row):nth-child(2n + 1),
 :global([id^='grid-demo-']) .code-box-demo .ant-row > div:not(.gutter-row):nth-child(2n + 1) {
-  background: color-mix(in srgb, var(--ui-primary-color-filled) 75%, transparent);
+    background: color-mix(in srgb, var(--ui-primary-color-filled) 75%, transparent);
 }
 
 :global(.grid-demo) .ant-row .demo-col,
 :global(.grid-demo) .code-box-demo .ant-row .demo-col,
 :global([id^='grid-demo-']) .ant-row .demo-col,
 :global([id^='grid-demo-']) .code-box-demo .ant-row .demo-col {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 30px 0;
-  color: #fff;
-  font-size: 18px;
-  text-align: center;
-  border: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 30px 0;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    border: none;
 }
 
 :global(.grid-demo) .ant-row .demo-col-1,
 :global([id^='grid-demo-']) .ant-row .demo-col-1 {
-  background: color-mix(in srgb, var(--ui-primary-color-filled) 75%, transparent);
+    background: color-mix(in srgb, var(--ui-primary-color-filled) 75%, transparent);
 }
 
 :global(.grid-demo) .ant-row .demo-col-2,
 :global(.grid-demo) .code-box-demo .ant-row .demo-col-2,
 :global([id^='grid-demo-']) .ant-row .demo-col-2,
 :global([id^='grid-demo-']) .code-box-demo .ant-row .demo-col-2 {
-  background: color-mix(in srgb, var(--ui-primary-color-filled) 75%, transparent);
+    background: color-mix(in srgb, var(--ui-primary-color-filled) 75%, transparent);
 }
 
 :global(.grid-demo) .ant-row .demo-col-3,
 :global(.grid-demo) .code-box-demo .ant-row .demo-col-3,
 :global([id^='grid-demo-']) .ant-row .demo-col-3,
 :global([id^='grid-demo-']) .code-box-demo .ant-row .demo-col-3 {
-  color: #999;
-  background: rgba(255, 255, 255, 0.2);
+    color: #999;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 :global(.grid-demo) .ant-row .demo-col-4,
 :global(.grid-demo) .code-box-demo .ant-row .demo-col-4,
 :global([id^='grid-demo-']) .ant-row .demo-col-4,
 :global([id^='grid-demo-']) .code-box-demo .ant-row .demo-col-4 {
-  background: color-mix(in srgb, var(--ui-primary-color-filled) 60%, transparent);
+    background: color-mix(in srgb, var(--ui-primary-color-filled) 60%, transparent);
 }
 
 :global(.grid-demo) .ant-row .demo-col-5,
 :global(.grid-demo) .code-box-demo .ant-row .demo-col-5,
 :global([id^='grid-demo-']) .ant-row .demo-col-5,
 :global([id^='grid-demo-']) .code-box-demo .ant-row .demo-col-5 {
-  color: #999;
-  background: rgba(255, 255, 255, 0.2);
+    color: #999;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 :global(.grid-demo) .code-box-demo .height-100,
 :global([id^='grid-demo-']) .code-box-demo .height-100 {
-  height: 100px;
-  line-height: 100px;
+    height: 100px;
+    line-height: 100px;
 }
 
 :global(.grid-demo) .code-box-demo .height-50,
 :global([id^='grid-demo-']) .code-box-demo .height-50 {
-  height: 50px;
-  line-height: 50px;
+    height: 50px;
+    line-height: 50px;
 }
 
 :global(.grid-demo) .code-box-demo .height-120,
 :global([id^='grid-demo-']) .code-box-demo .height-120 {
-  height: 120px;
-  line-height: 120px;
+    height: 120px;
+    line-height: 120px;
 }
 
 :global(.grid-demo) .code-box-demo .height-80,
 :global([id^='grid-demo-']) .code-box-demo .height-80 {
-  height: 80px;
-  line-height: 80px;
+    height: 80px;
+    line-height: 80px;
 }
 
 :global([id='grid-demo-playground']) > .code-box-demo .ant-row > div,
 :global([id='grid-demo-gutter']) > .code-box-demo .ant-row > div {
-  margin-top: 0;
-  margin-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }

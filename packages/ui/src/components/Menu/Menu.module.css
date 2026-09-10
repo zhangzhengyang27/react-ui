@@ -1,4 +1,10 @@
 .dropdown {
+    /* 背景与边框自持：es 构建产物中 Menu 与 Popover 的 .dropdown 类名哈希冲突，
+       Popover 的背景规则不会被命中，故此处显式声明，避免下拉透明 */
+    background-color: var(--menu-dropdown-bg, var(--ui-color-body));
+    border: calc(.0625rem * var(--ui-scale)) solid var(--popover-border-color, var(--ui-color-default-border));
+    border-radius: var(--popover-radius, var(--ui-radius-default));
+    box-shadow: var(--popover-shadow, var(--ui-shadow-md));
     padding: 4px;
 }
 

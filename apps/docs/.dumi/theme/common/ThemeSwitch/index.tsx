@@ -1,9 +1,5 @@
-import React, { use, useRef, useState } from 'react'
+import React, { use, useRef } from 'react'
 import {
-    AiOutlineBgColors,
-    AiOutlineLink,
-    AiOutlineShop,
-    AiOutlineSmile,
     AiOutlineSun,
     AiOutlineSync
 } from '../../icons'
@@ -16,10 +12,9 @@ import type { SiteContextProps } from '../../slots/SiteContext'
 import SiteContext from '../../slots/SiteContext'
 import { getLocalizedPathname, isZhCN } from '../../utils'
 import Link from '../Link'
-import PromptDrawer from './PromptDrawer'
 import ThemeIcon from './ThemeIcon'
 
-export type ThemeName = 'light' | 'dark' | 'auto' | 'compact' | 'motion-off' | 'happy-work'
+export type ThemeName = 'light' | 'dark' | 'auto' | 'compact' | 'motion-off'
 
 export const REACT_UI_SITE_THEME = 'react-ui-site-theme'
 
@@ -68,10 +63,9 @@ const CompactThemeIcon: React.FC<{ className?: string }> = props => (
 const ThemeSwitch: React.FC<ThemeSwitchProps> = () => {
     const { pathname, search } = useLocation()
     const navigate = useNavigate()
-    const { theme, updateSiteConfig, dynamicTheme } = use<SiteContextProps>(SiteContext)
+    const { theme, updateSiteConfig } = use<SiteContextProps>(SiteContext)
     const toggleAnimationTheme = useThemeAnimation()
     const lastThemeKeyRef = useRef<string>(theme.includes('dark') ? 'dark' : 'light')
-    const [isMarketDrawerOpen, setIsMarketDrawerOpen] = useState(false)
 
     const [, setTheme] = useLocalStorage<ThemeName>(REACT_UI_SITE_THEME, {
         defaultValue: undefined
@@ -122,21 +116,6 @@ const ThemeSwitch: React.FC<ThemeSwitchProps> = () => {
             type: 'divider'
         },
         {
-            id: 'app.theme.switch.happy-work',
-            icon: <AiOutlineSmile />,
-            key: 'happy-work',
-            showBadge: () => theme.includes('happy-work')
-        },
-        {
-            type: 'divider'
-        },
-        {
-            id: 'app.theme.switch.market',
-            icon: <AiOutlineShop />,
-            key: 'market',
-            showBadge: () => !!dynamicTheme
-        },
-        {
             id: 'app.footer.theme',
             icon: <AiOutlineBgColors />,
             key: 'theme-editor',
@@ -153,20 +132,6 @@ const ThemeSwitch: React.FC<ThemeSwitchProps> = () => {
 
         // 链接类型的菜单项特殊处理，不执行主题切换逻辑
         if (option?.isLink) {
-            return
-        }
-
-        // Market 选项特殊处理
-        if (key === 'market') {
-            // 如果已经有动态主题，点击时清除动态主题
-            if (dynamicTheme) {
-                updateSiteConfig({
-                    dynamicTheme: undefined
-                })
-            } else {
-                // 否则打开 Drawer 生成新主题
-                setIsMarketDrawerOpen(true)
-            }
             return
         }
 
@@ -237,20 +202,6 @@ const ThemeSwitch: React.FC<ThemeSwitchProps> = () => {
                 </Menu.Dropdown>
             </Menu>
 
-            <PromptDrawer
-                open={isMarketDrawerOpen}
-                onClose={() => setIsMarketDrawerOpen(false)}
-                onThemeChange={nextTheme => {
-                    const updates: Parameters<typeof updateSiteConfig>[0] = { dynamicTheme: nextTheme }
-                    // Sync the site theme (and URL param) with the AI-generated algorithm
-                    if (nextTheme?.algorithm) {
-                        const filteredTheme = theme.filter(t => !['light', 'dark', 'auto'].includes(t))
-                        updates.theme = [...filteredTheme, nextTheme.algorithm]
-                        setTheme(nextTheme.algorithm)
-                    }
-                    updateSiteConfig(updates)
-                }}
-            />
         </>
     )
 }

@@ -113,7 +113,6 @@ const Content: React.FC<ContentProps> = ({ children, className }) => {
           {showDocsMeta && (
             <ComponentMeta
               filename={meta.frontmatter.filename}
-              llmsPath={markdownPath}
               repo="xiaoye/react-ui"
               showChangelog={false}
               showImport={false}

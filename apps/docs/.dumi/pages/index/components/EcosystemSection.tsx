@@ -27,7 +27,7 @@ const locales = {
                 key: 'components',
                 icon: <AiOutlineAppstore />,
                 title: '组件库',
-                desc: '128+ 原子与复合组件，覆盖表单、数据展示、反馈、导航等场景。',
+                desc: '140+ 原子与复合组件，覆盖表单、数据展示、反馈、导航等场景。',
                 path: '/components/overview/'
             },
             {
@@ -82,7 +82,7 @@ const locales = {
                 key: 'components',
                 icon: <AiOutlineAppstore />,
                 title: 'Components',
-                desc: '128+ atomic and composite components for forms, data display, feedback, navigation.',
+                desc: '140+ atomic and composite components for forms, data display, feedback, navigation.',
                 path: '/components/overview/'
             },
             {

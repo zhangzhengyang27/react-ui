@@ -19,7 +19,7 @@ title: react-ui 介绍
 ## 兼容环境
 
 - 现代浏览器（Chrome / Edge / Firefox / Safari 最近两个稳定版本）
-- 支持服务端渲染
+- 纯 CSR 组件库，不支持服务端渲染（SSR）
 - [Electron](https://www.electronjs.org/)
 
 | Edge | Firefox | Chrome | Safari | Electron |

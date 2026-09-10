@@ -2,7 +2,7 @@
 category: Components
 title: Overview
 subtitle: 组件总览
-description: react-ui 组件库总览，60+ 原子与复合组件，覆盖表单、数据展示、反馈、导航等场景。
+description: react-ui 组件库总览，140+ 组件，覆盖表单、数据展示、反馈、导航等场景。
 group:
   title: 开始
   order: 0
@@ -11,7 +11,7 @@ group:
 ## 介绍 {#introduction}
 
 react-ui 是一套基于 React 的现代化组件库，采用 Mantine 风格的 API 设计，
-内置 60+ 原子与复合组件，全面覆盖表单、数据展示、反馈、导航、布局等场景。
+内置 140+ 组件，全面覆盖表单、数据展示、反馈、导航、布局等场景。
 所有组件均使用 TypeScript 编写，支持完整的类型推导与主题定制。
 
 ## 安装 {#install}
@@ -86,13 +86,17 @@ function App() {
 - [TagsInput 标签输入](/components/tags-input) — 动态标签输入
 - [ColorInput 颜色输入](/components/color-input) — 颜色选择输入框
 - [ColorPicker 颜色选择器](/components/color-picker) — 完整颜色选择面板
+- [Cascader 级联选择](/components/cascader) — 多级联动选项选择，支持懒加载与搜索
+- [Transfer 穿梭框](/components/transfer) — 两组数据之间双向选择，支持搜索与全选
 - [FileInput 文件上传](/components/file-input) — 文件选择输入
 
 ### 数据展示 {#data-display}
 
 展示各类数据与信息。
 
-- [Table 表格](/components/table) — 数据表格，支持排序/分页
+- [Table 表格](/components/table) — 展示型表格，支持自定义行列结构
+- [DataTable 数据表格](/components/data-table) — 面向管理端的数据表格，支持排序/行选择/分页/虚拟滚动/列设置
+- [Descriptions 描述列表](/components/descriptions) — 成组展示只读详情字段，支持多列布局与跨列
 - [List 列表](/components/list) — 有序/无序列表
 - [Card 卡片](/components/card) — 通用内容卡片
 - [Avatar 头像](/components/avatar) — 用户头像与头像组
@@ -185,7 +189,7 @@ react-ui 提供完整的主题系统能力，详见：
 ## 下一步 {#next-steps}
 
 - [快速开始](/docs/react/getting-started) — 在项目中集成 react-ui
-- [Hooks 工具集](/docs/hooks/package) — 30+ 实用 Hooks
+- [Hooks 工具集](/docs/hooks/package) — 83+ 实用 Hooks
 - [Form 表单模块](/docs/form/package) — 复杂表单解决方案
 - [Charts 图表](/docs/charts/getting-started) — 数据可视化
 - [Dates 日期](/docs/dates/getting-started) — 日期时间组件

@@ -23,7 +23,7 @@ const locales = {
         features: [
             {
                 icon: <AiOutlineAppstore />,
-                title: '128+ 组件',
+                title: '140+ 组件',
                 desc: 'Button、Modal、Form、Table、Chart 等原子与复合组件，开箱即用。'
             },
             {
@@ -69,7 +69,7 @@ const locales = {
         features: [
             {
                 icon: <AiOutlineAppstore />,
-                title: '128+ Components',
+                title: '140+ Components',
                 desc: 'Button, Modal, Form, Table, Chart and more, ready to use.'
             },
             {

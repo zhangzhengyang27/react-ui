@@ -7,7 +7,7 @@ group:
 
 # 开始使用
 
-ReactUI 是一个 React 组件库，专注于提供出色的用户体验和开发体验。它包含 120+ 组件、30+ hooks，覆盖布局、表单、反馈、覆盖层、数据展示、图表等场景。
+ReactUI 是一个 React 组件库，专注于提供出色的用户体验和开发体验。它包含 140+ 组件、83+ hooks，覆盖布局、表单、反馈、覆盖层、数据展示、图表等场景。
 
 ## 安装
 
@@ -70,7 +70,7 @@ function Demo() {
 }
 ```
 
-如果你的应用使用服务端渲染，请在 `<head />` 中添加 [ColorSchemeScript](/docs/theming/color-schemes) 以避免 hydration 警告：
+为避免页面加载时的颜色方案闪烁，建议在 `<head />` 中添加 [ColorSchemeScript](/docs/theming/color-schemes)：
 
 ```tsx
 import { ColorSchemeScript } from '@xiaoye-react/ui';

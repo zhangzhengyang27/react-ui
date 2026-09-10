@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { generateColorsMap } from '@xiaoye-react/colors-generator';
-import { Title } from '@xiaoye-react/ui';
 import { useLocalStorage } from '@xiaoye-react/hooks';
 import { ColorsInput } from './ColorsInput/ColorsInput';
 import { ColorsList } from './ColorsList/ColorsList';
@@ -30,9 +29,6 @@ export function ColorsGenerator() {
 
   return (
     <div style={{ maxWidth: 'calc(100vw - var(--ui-spacing-lg) * 2)', padding: '0 var(--ui-spacing-lg)' }}>
-      <Title fw={500} mb="md" pt="lg" c="bright">
-        ReactUI colors generator
-      </Title>
       <ColorsInput
         value={color}
         onChange={setColor}

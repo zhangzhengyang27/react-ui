@@ -13,7 +13,10 @@ export default defineConfig({
     // 路由与产物
     hash: true,
     mfsu: false,
-    // 用 mako（Rust 极速打包器）替代默认 webpack，dev/build 速度提升 5-10x
+    // 用 mako（Rust 极速打包器）替代默认 webpack，dev/build 速度提升 5-10x。
+    // 注：mako 无持久化缓存（0.11.x rust 绑定未实现），dev 每次全量编译约 3 分钟；
+    // webpack 路线虽有 filesystem cache（热启动约 2 分钟），但冷启动 20 分钟+ 且入口
+    // 产物更大，权衡后保留 mako。根治需迁移 rspress 等新一代框架（见 ROADMAP）。
     mako: {},
     // 关闭生产构建 source map：mako 默认 normalizedDevtool='source-map'，
     // 会为超大 chunk 生成数十 MB 的 .map，使 dist 膨胀到 3G+。

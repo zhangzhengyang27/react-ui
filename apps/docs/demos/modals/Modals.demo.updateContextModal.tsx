@@ -1,12 +1,11 @@
-import { Button } from '@xiaoye-react/ui';
-import { modals } from '@xiaoye-react/modals';
-import { UIDemo } from '@xiaoye-react/demo';
+import { Button } from '@xiaoye-react/ui'
+import { modals } from '@xiaoye-react/modals'
+import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
 import { Button, Text, Stack, Center, Loader } from '@xiaoye-react/ui';
 import { modals, ContextModalProps, ModalsProvider } from '@xiaoye-react/modals';
-import { CheckIcon } from '@phosphor-icons/react';
-
+import { CheckIcon } from '@phosphor-icons/react/dist/csr/Check';
 const TestModal = ({
   context,
   id,
@@ -70,47 +69,47 @@ function Demo() {
     </ModalsProvider>
   );
 }
-`;
+`
 
 function Demo() {
-  return (
-    <Button
-      onClick={() => {
-        const modalId = modals.openContextModal({
-          modal: 'asyncDemonstration',
-          title: '处理中...',
-          closeOnEscape: false,
-          closeOnClickOutside: false,
-          closeButtonProps: { disabled: true },
-          innerProps: {
-            modalBody: 'You cannot close this modal until 2 seconds have passed.',
-            loading: true,
-          },
-        });
+    return (
+        <Button
+            onClick={() => {
+                const modalId = modals.openContextModal({
+                    modal: 'asyncDemonstration',
+                    title: '处理中...',
+                    closeOnEscape: false,
+                    closeOnClickOutside: false,
+                    closeButtonProps: { disabled: true },
+                    innerProps: {
+                        modalBody: 'You cannot close this modal until 2 seconds have passed.',
+                        loading: true
+                    }
+                })
 
-        setTimeout(() => {
-          modals.updateContextModal({
-            modalId,
-            title: '处理完成！',
-            closeOnEscape: true,
-            closeOnClickOutside: true,
-            closeButtonProps: { disabled: false },
-            innerProps: {
-              modalBody: 'You can now close the modal.',
-              loading: false,
-            },
-          });
-        }, 2000);
-      }}
-    >
-      Open updating context modal
-    </Button>
-  );
+                setTimeout(() => {
+                    modals.updateContextModal({
+                        modalId,
+                        title: '处理完成！',
+                        closeOnEscape: true,
+                        closeOnClickOutside: true,
+                        closeButtonProps: { disabled: false },
+                        innerProps: {
+                            modalBody: 'You can now close the modal.',
+                            loading: false
+                        }
+                    })
+                }, 2000)
+            }}
+        >
+            Open updating context modal
+        </Button>
+    )
 }
 
 export const updateContextModal: UIDemo = {
-  type: 'code',
-  centered: true,
-  component: Demo,
-  code,
-};
+    type: 'code',
+    centered: true,
+    component: Demo,
+    code
+}

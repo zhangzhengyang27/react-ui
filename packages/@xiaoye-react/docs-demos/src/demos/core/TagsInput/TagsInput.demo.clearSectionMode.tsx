@@ -1,9 +1,9 @@
-import { CaretDownIcon } from '@phosphor-icons/react';
-import { Stack, TagsInput } from '@xiaoye-react/ui';
-import { UIDemo } from '@xiaoye-react/demo';
+import { CaretDownIcon } from '@phosphor-icons/react/dist/csr/CaretDown'
+import { Stack, TagsInput } from '@xiaoye-react/ui'
+import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
-import { CaretDownIcon } from '@phosphor-icons/react';
+import { CaretDownIcon } from '@phosphor-icons/react/dist/csr/CaretDown';
 import { Stack, TagsInput } from '@xiaoye-react/ui';
 
 function Demo() {
@@ -41,48 +41,48 @@ function Demo() {
     </Stack>
   );
 }
-`;
+`
 
 function Demo() {
-  return (
-    <Stack>
-      <TagsInput
-        label="clearSectionMode='both'（默认）"
-        placeholder="输入标签"
-        data={['React', 'Angular', 'Vue', 'Svelte']}
-        defaultValue={['React']}
-        clearable
-        rightSection={<CaretDownIcon size={16} />}
-        clearSectionMode="both"
-      />
+    return (
+        <Stack>
+            <TagsInput
+                label="clearSectionMode='both'（默认）"
+                placeholder="输入标签"
+                data={['React', 'Angular', 'Vue', 'Svelte']}
+                defaultValue={['React']}
+                clearable
+                rightSection={<CaretDownIcon size={16} />}
+                clearSectionMode="both"
+            />
 
-      <TagsInput
-        label="clearSectionMode='rightSection'"
-        placeholder="输入标签"
-        data={['React', 'Angular', 'Vue', 'Svelte']}
-        defaultValue={['React']}
-        clearable
-        rightSection={<CaretDownIcon size={16} />}
-        clearSectionMode="rightSection"
-      />
+            <TagsInput
+                label="clearSectionMode='rightSection'"
+                placeholder="输入标签"
+                data={['React', 'Angular', 'Vue', 'Svelte']}
+                defaultValue={['React']}
+                clearable
+                rightSection={<CaretDownIcon size={16} />}
+                clearSectionMode="rightSection"
+            />
 
-      <TagsInput
-        label="clearSectionMode='clear'"
-        placeholder="输入标签"
-        data={['React', 'Angular', 'Vue', 'Svelte']}
-        defaultValue={['React']}
-        clearable
-        rightSection={<CaretDownIcon size={16} />}
-        clearSectionMode="clear"
-      />
-    </Stack>
-  );
+            <TagsInput
+                label="clearSectionMode='clear'"
+                placeholder="输入标签"
+                data={['React', 'Angular', 'Vue', 'Svelte']}
+                defaultValue={['React']}
+                clearable
+                rightSection={<CaretDownIcon size={16} />}
+                clearSectionMode="clear"
+            />
+        </Stack>
+    )
 }
 
 export const clearSectionMode: UIDemo = {
-  type: 'code',
-  component: Demo,
-  code,
-  maxWidth: 340,
-  centered: true,
-};
+    type: 'code',
+    component: Demo,
+    code,
+    maxWidth: 340,
+    centered: true
+}

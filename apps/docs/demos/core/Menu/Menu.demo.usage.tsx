@@ -1,11 +1,15 @@
-import { Menu } from '@xiaoye-react/ui';
-import { UIDemo } from '@xiaoye-react/demo';
-import { DemoMenuItems } from './_menu-items';
+import { Menu } from '@xiaoye-react/ui'
+import { UIDemo } from '@xiaoye-react/demo'
+import { DemoMenuItems } from './_menu-items'
 
 const code = `
 import { Menu, Button, Text } from '@xiaoye-react/ui';
-import { GearSixIcon, MagnifyingGlassIcon, ImageIcon, ChatCircleIcon, TrashIcon, IconArrowsLeftRight } from '@phosphor-icons/react';
-
+import { GearSixIcon } from '@phosphor-icons/react/dist/csr/GearSix';
+import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/csr/MagnifyingGlass';
+import { ImageIcon } from '@phosphor-icons/react/dist/csr/Image';
+import { ChatCircleIcon } from '@phosphor-icons/react/dist/csr/ChatCircle';
+import { TrashIcon } from '@phosphor-icons/react/dist/csr/Trash';
+import { ArrowsLeftRightIcon } from '@phosphor-icons/react/dist/csr/ArrowsLeftRight';
 function Demo() {
   return (
     <Menu shadow="md" width={200}>
@@ -39,7 +43,7 @@ function Demo() {
 
         <Menu.Label>危险区域</Menu.Label>
         <Menu.Item
-          leftSection={<IconArrowsLeftRight size={14} />}
+          leftSection={<ArrowsLeftRightIcon size={14} />}
         >
           Transfer my data
         </Menu.Item>
@@ -53,19 +57,19 @@ function Demo() {
     </Menu>
   );
 }
-`;
+`
 
 function Demo() {
-  return (
-    <Menu shadow="md" width={200} withinPortal>
-      <DemoMenuItems />
-    </Menu>
-  );
+    return (
+        <Menu shadow="md" width={200} withinPortal>
+            <DemoMenuItems />
+        </Menu>
+    )
 }
 
 export const usage: UIDemo = {
-  type: 'code',
-  code,
-  component: Demo,
-  centered: true,
-};
+    type: 'code',
+    code,
+    component: Demo,
+    centered: true
+}

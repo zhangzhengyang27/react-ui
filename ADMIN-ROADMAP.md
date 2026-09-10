@@ -11,7 +11,8 @@
 > - ✅ 文档首页已增加「管理端方案」入口（生态区卡片，中英双语）。
 > - ✅ P3 a11y 完成：DataTable 键盘行导航（方向键/Enter）、Cascader 面板方向键导航、Transfer 面板 aria 与列表键盘导航（ui 全量 515 测试）。
 > - ✅ pro 包发版流程：vite 构建（es + style.css + d.ts）、exports/files 配置、publish:pro 脚本；Playwright 截图回归覆盖 10 个关键管理端 demo（e2e:screenshots）。
-> - 可选后续：CI 接入截图回归（跨平台基线需按平台生成）。
+> - ✅ 文档站启动优化：phosphor/react-icons 图标 barrel 全量退出编译图（438 文件改写，入口包 20.6→13.7MB），15 个不存在的图标导入 bug 修复；实测 mako 无持久化缓存（rust 绑定未实现）、webpack fs cache 冷 21min/热 146s 均不划算，保留 mako。
+> - 可选后续：CI 接入截图回归（跨平台基线需按平台生成）；长期根治启动耗时可评估迁移 rspress/vitepress 等新一代文档框架（dumi 架构绑定 webpack/mako，无法直接换 vite）。
 
 ## 一、现状盘点
 

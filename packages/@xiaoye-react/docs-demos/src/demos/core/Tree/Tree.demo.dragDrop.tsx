@@ -1,11 +1,15 @@
-import { useState } from 'react';
-import { FileTextIcon, FolderOpenIcon, FolderSimpleIcon } from '@phosphor-icons/react';
-import { Group, moveTreeNode, RenderTreeNodePayload, Tree, TreeNodeData } from '@xiaoye-react/ui';
-import { UIDemo } from '@xiaoye-react/demo';
+import { useState } from 'react'
+import { FileTextIcon } from '@phosphor-icons/react/dist/csr/FileText'
+import { FolderOpenIcon } from '@phosphor-icons/react/dist/csr/FolderOpen'
+import { FolderSimpleIcon } from '@phosphor-icons/react/dist/csr/FolderSimple'
+import { Group, moveTreeNode, RenderTreeNodePayload, Tree, TreeNodeData } from '@xiaoye-react/ui'
+import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
 import { useState } from 'react';
-import { FileTextIcon, FolderOpenIcon, FolderSimpleIcon } from '@phosphor-icons/react';
+import { FileTextIcon } from '@phosphor-icons/react/dist/csr/FileText';
+import { FolderOpenIcon } from '@phosphor-icons/react/dist/csr/FolderOpen';
+import { FolderSimpleIcon } from '@phosphor-icons/react/dist/csr/FolderSimple';
 import { Group, moveTreeNode, RenderTreeNodePayload, Tree, TreeNodeData } from '@xiaoye-react/ui';
 
 const data: TreeNodeData[] = [
@@ -62,65 +66,65 @@ function Demo() {
     />
   );
 }
-`;
+`
 
 const demoData: TreeNodeData[] = [
-  {
-    label: 'Pages',
-    value: 'pages',
-    children: [
-      { label: 'index.tsx', value: 'pages/index.tsx' },
-      { label: 'about.tsx', value: 'pages/about.tsx' },
-      { label: 'contact.tsx', value: 'pages/contact.tsx' },
-    ],
-  },
-  {
-    label: 'Components',
-    value: 'components',
-    children: [
-      { label: 'Header.tsx', value: 'components/Header.tsx' },
-      { label: 'Footer.tsx', value: 'components/Footer.tsx' },
-      { label: 'Sidebar.tsx', value: 'components/Sidebar.tsx' },
-    ],
-  },
-  { label: 'package.json', value: 'package.json' },
-  { label: 'tsconfig.json', value: 'tsconfig.json' },
-];
+    {
+        label: 'Pages',
+        value: 'pages',
+        children: [
+            { label: 'index.tsx', value: 'pages/index.tsx' },
+            { label: 'about.tsx', value: 'pages/about.tsx' },
+            { label: 'contact.tsx', value: 'pages/contact.tsx' }
+        ]
+    },
+    {
+        label: 'Components',
+        value: 'components',
+        children: [
+            { label: 'Header.tsx', value: 'components/Header.tsx' },
+            { label: 'Footer.tsx', value: 'components/Footer.tsx' },
+            { label: 'Sidebar.tsx', value: 'components/Sidebar.tsx' }
+        ]
+    },
+    { label: 'package.json', value: 'package.json' },
+    { label: 'tsconfig.json', value: 'tsconfig.json' }
+]
 
 function Leaf({ node, expanded, hasChildren, elementProps }: RenderTreeNodePayload) {
-  return (
-    <Group gap={6} {...elementProps}>
-      {hasChildren ? (
-        expanded ? (
-          <FolderOpenIcon size={14} style={{ opacity: 0.75 }} />
-        ) : (
-          <FolderSimpleIcon size={14} style={{ opacity: 0.75 }} />
-        )
-      ) : (
-        <FileTextIcon size={14} style={{ opacity: 0.75 }} />
-      )}
-      <span>{node.label}</span>
-    </Group>
-  );
+    return (
+        <Group gap={6} {...elementProps}>
+            {hasChildren ? (
+                expanded ? (
+                    <FolderOpenIcon size={14} style={{ opacity: 0.75 }} />
+                ) : (
+                    <FolderSimpleIcon size={14} style={{ opacity: 0.75 }} />
+                )
+            ) : (
+                <FileTextIcon size={14} style={{ opacity: 0.75 }} />
+            )}
+            <span>{node.label}</span>
+        </Group>
+    )
 }
 
 function Demo() {
-  const [treeData, setTreeData] = useState(demoData);
+    const [treeData, setTreeData] = useState(demoData)
 
-  return (
-    <Tree
-      data={treeData}
-      withLines
-      onDragDrop={(payload) => setTreeData((current) => moveTreeNode(current, payload))}
-      renderNode={(payload) => <Leaf {...payload} />}
-    />
-  );
+    return (
+        <Tree
+            data={treeData}
+            withLines
+            onDragDrop={payload => setTreeData(current => moveTreeNode(current, payload))}
+            renderNode={payload => <Leaf {...payload} />}
+        />
+    )
 }
 
 export const dragDrop: UIDemo = {
-  type: 'code',
-  component: Demo,
-  centered: true,
-  maxWidth: 340,
-  code,
-};
+    type: 'code',
+    component: Demo,
+    centered: true,
+    maxWidth: 340,
+    code
+}

@@ -1,11 +1,11 @@
-import { ArrowRightIcon } from '@phosphor-icons/react';
-import { Button, ButtonProps, Group } from '@xiaoye-react/ui';
-import { UIDemo } from '@xiaoye-react/demo';
-import classes from './Styles.demo.dataAttributes.module.css';
+import { ArrowRightIcon } from '@phosphor-icons/react/dist/csr/ArrowRight'
+import { Button, ButtonProps, Group } from '@xiaoye-react/ui'
+import { UIDemo } from '@xiaoye-react/demo'
+import classes from './Styles.demo.dataAttributes.module.css'
 
 const code = `
 import { Button, ButtonProps, Group } from '@xiaoye-react/ui';
-import { ArrowRightIcon } from '@phosphor-icons/react';
+import { ArrowRightIcon } from '@phosphor-icons/react/dist/csr/ArrowRight';
 import classes from './Demo.module.css';
 
 function SendFilesButton(props: ButtonProps & React.ComponentProps<'button'>) {
@@ -31,7 +31,7 @@ function Demo() {
     </Group>
   );
 }
-`;
+`
 
 const cssCode = `
 .root {
@@ -78,31 +78,31 @@ const cssCode = `
     }
   }
 }
-`;
+`
 
 function SendFilesButton(props: ButtonProps & React.ComponentProps<'button'>) {
-  return <Button {...props} classNames={classes} />;
+    return <Button {...props} classNames={classes} />
 }
 
 function Demo() {
-  return (
-    <Group>
-      <SendFilesButton leftSection="12" rightSection={<ArrowRightIcon size={18} />}>
-        发送文件
-      </SendFilesButton>
-      <SendFilesButton leftSection="3" rightSection={<ArrowRightIcon size={18} />} disabled>
-        发送文件
-      </SendFilesButton>
-    </Group>
-  );
+    return (
+        <Group>
+            <SendFilesButton leftSection="12" rightSection={<ArrowRightIcon size={18} />}>
+                发送文件
+            </SendFilesButton>
+            <SendFilesButton leftSection="3" rightSection={<ArrowRightIcon size={18} />} disabled>
+                发送文件
+            </SendFilesButton>
+        </Group>
+    )
 }
 
 export const dataAttributes: UIDemo = {
-  type: 'code',
-  component: Demo,
-  centered: true,
-  code: [
-    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
-    { fileName: '演示代码.tsx', code, language: 'tsx' },
-  ],
-};
+    type: 'code',
+    component: Demo,
+    centered: true,
+    code: [
+        { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
+        { fileName: '演示代码.tsx', code, language: 'tsx' }
+    ]
+}

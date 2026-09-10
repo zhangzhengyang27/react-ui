@@ -1,12 +1,13 @@
-import { ArrowLeftIcon, ArrowRightIcon } from '@phosphor-icons/react';
-import { Carousel } from '@xiaoye-react/carousel';
-import { UIDemo } from '@xiaoye-react/demo';
-import { Slides } from './_slides';
+import { ArrowLeftIcon } from '@phosphor-icons/react/dist/csr/ArrowLeft'
+import { ArrowRightIcon } from '@phosphor-icons/react/dist/csr/ArrowRight'
+import { Carousel } from '@xiaoye-react/carousel'
+import { UIDemo } from '@xiaoye-react/demo'
+import { Slides } from './_slides'
 
 const code = `
 import { Carousel } from '@xiaoye-react/carousel';
-import { ArrowRightIcon, ArrowLeftIcon } from '@phosphor-icons/react';
-
+import { ArrowRightIcon } from '@phosphor-icons/react/dist/csr/ArrowRight';
+import { ArrowLeftIcon } from '@phosphor-icons/react/dist/csr/ArrowLeft';
 function Demo() {
   return (
     <Carousel
@@ -21,24 +22,24 @@ function Demo() {
     </Carousel>
   );
 }
-`;
+`
 
 function Demo() {
-  return (
-    <Carousel
-      height={180}
-      nextControlIcon={<ArrowRightIcon size={16} />}
-      previousControlIcon={<ArrowLeftIcon size={16} />}
-    >
-      <Slides count={5} />
-    </Carousel>
-  );
+    return (
+        <Carousel
+            height={180}
+            nextControlIcon={<ArrowRightIcon size={16} />}
+            previousControlIcon={<ArrowLeftIcon size={16} />}
+        >
+            <Slides count={5} />
+        </Carousel>
+    )
 }
 
 export const icons: UIDemo = {
-  type: 'code',
-  component: Demo,
-  code,
-  centered: true,
-  maxWidth: 320,
-};
+    type: 'code',
+    component: Demo,
+    code,
+    centered: true,
+    maxWidth: 320
+}

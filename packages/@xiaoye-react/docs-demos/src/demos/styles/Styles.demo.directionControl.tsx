@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
-import { TextAlignLeftIcon, TextAlignRightIcon } from '@phosphor-icons/react';
-import { ActionIcon, useDirection } from '@xiaoye-react/ui';
-import { UIDemo } from '@xiaoye-react/demo';
+import { useEffect } from 'react'
+import { TextAlignLeftIcon } from '@phosphor-icons/react/dist/csr/TextAlignLeft'
+import { TextAlignRightIcon } from '@phosphor-icons/react/dist/csr/TextAlignRight'
+import { ActionIcon, useDirection } from '@xiaoye-react/ui'
+import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
 import { ActionIcon, useDirection } from '@xiaoye-react/ui';
-import { TextAlignLeftIcon, TextAlignRightIcon } from '@phosphor-icons/react';
-
+import { TextAlignLeftIcon } from '@phosphor-icons/react/dist/csr/TextAlignLeft';
+import { TextAlignRightIcon } from '@phosphor-icons/react/dist/csr/TextAlignRight';
 function Demo() {
   const { toggleDirection, dir } = useDirection();
   return (
@@ -19,22 +20,22 @@ function Demo() {
     </ActionIcon>
   );
 }
-`;
+`
 
 function Demo() {
-  const { toggleDirection, dir, setDirection } = useDirection();
-  useEffect(() => () => setDirection('ltr'), []);
+    const { toggleDirection, dir, setDirection } = useDirection()
+    useEffect(() => () => setDirection('ltr'), [])
 
-  return (
-    <ActionIcon onClick={() => toggleDirection()} variant="default" size="lg">
-      {dir === 'rtl' ? <TextAlignLeftIcon /> : <TextAlignRightIcon />}
-    </ActionIcon>
-  );
+    return (
+        <ActionIcon onClick={() => toggleDirection()} variant="default" size="lg">
+            {dir === 'rtl' ? <TextAlignLeftIcon /> : <TextAlignRightIcon />}
+        </ActionIcon>
+    )
 }
 
 export const directionControl: UIDemo = {
-  type: 'code',
-  component: Demo,
-  centered: true,
-  code,
-};
+    type: 'code',
+    component: Demo,
+    centered: true,
+    code
+}

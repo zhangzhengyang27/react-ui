@@ -1,11 +1,13 @@
-import { Box } from '@xiaoye-react/ui';
-import { UIDemo } from '@xiaoye-react/demo';
-import { TimelineBase } from './_base';
+import { Box } from '@xiaoye-react/ui'
+import { UIDemo } from '@xiaoye-react/demo'
+import { TimelineBase } from './_base'
 
 const code = `
 import { Timeline, Text } from '@xiaoye-react/ui';
-import { GitBranchIcon, GitPullRequestIcon, GitCommitIcon, ChatCircleDotsIcon } from '@phosphor-icons/react';
-
+import { GitBranchIcon } from '@phosphor-icons/react/dist/csr/GitBranch';
+import { GitPullRequestIcon } from '@phosphor-icons/react/dist/csr/GitPullRequest';
+import { GitCommitIcon } from '@phosphor-icons/react/dist/csr/GitCommit';
+import { ChatCircleDotsIcon } from '@phosphor-icons/react/dist/csr/ChatCircleDots';
 function Demo() {
   return (
     <Timeline active={1} bulletSize={24} lineWidth={2}>
@@ -31,18 +33,18 @@ function Demo() {
     </Timeline>
   );
 }
-`;
+`
 
 function Demo() {
-  return (
-    <Box maw={320} mx="auto">
-      <TimelineBase />
-    </Box>
-  );
+    return (
+        <Box maw={320} mx="auto">
+            <TimelineBase />
+        </Box>
+    )
 }
 
 export const usage: UIDemo = {
-  type: 'code',
-  component: Demo,
-  code,
-};
+    type: 'code',
+    component: Demo,
+    code
+}

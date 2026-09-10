@@ -1,13 +1,13 @@
-import React from 'react';
-import { AiOutlineInfoCircle } from 'react-icons/ai';
-import { Alert } from '@xiaoye-react/ui';
+import React from 'react'
+import { AiOutlineInfoCircle } from '../../icons'
+import { Alert } from '@xiaoye-react/ui'
 
 interface InfoProps {
-  children?: React.ReactNode;
-  className?: string;
-  color?: string;
-  icon?: React.ReactNode;
-  title?: React.ReactNode;
+    children?: React.ReactNode
+    className?: string
+    color?: string
+    icon?: React.ReactNode
+    title?: React.ReactNode
 }
 
 /**
@@ -16,21 +16,21 @@ interface InfoProps {
  * 默认 info 类型，可通过 color 自定义左侧边框色。
  */
 const Info: React.FC<InfoProps> = ({ children, color, icon, title }) => {
-  return (
-    <Alert
-      variant="light"
-      color="blue"
-      icon={icon ?? <AiOutlineInfoCircle />}
-      title={title}
-      style={{
-        margin: 'var(--ui-spacing-md) 0',
-        borderLeft: color ? `3px solid ${color}` : undefined,
-        backgroundColor: color ? `${color}10` : undefined,
-      }}
-    >
-      {children}
-    </Alert>
-  );
-};
+    return (
+        <Alert
+            variant="light"
+            color="blue"
+            icon={icon ?? <AiOutlineInfoCircle />}
+            title={title}
+            style={{
+                margin: 'var(--ui-spacing-md) 0',
+                borderLeft: color ? `3px solid ${color}` : undefined,
+                backgroundColor: color ? `${color}10` : undefined
+            }}
+        >
+            {children}
+        </Alert>
+    )
+}
 
-export default Info;
+export default Info

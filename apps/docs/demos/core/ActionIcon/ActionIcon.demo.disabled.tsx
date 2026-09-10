@@ -1,11 +1,10 @@
-import { HeartIcon } from '@phosphor-icons/react';
-import { ActionIcon, Group } from '@xiaoye-react/ui';
-import { UIDemo } from '@xiaoye-react/demo';
+import { HeartIcon } from '@phosphor-icons/react/dist/csr/Heart'
+import { ActionIcon, Group } from '@xiaoye-react/ui'
+import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
 import { ActionIcon, Group } from '@xiaoye-react/ui';
-import { HeartIcon } from '@phosphor-icons/react';
-
+import { HeartIcon } from '@phosphor-icons/react/dist/csr/Heart';
 function Demo() {
   return (
     <Group justify="center">
@@ -19,24 +18,24 @@ function Demo() {
     </Group>
   );
 }
-`;
+`
 
 function Demo() {
-  return (
-    <Group justify="center">
-      <ActionIcon size="xl" disabled aria-label="已禁用且不可交互">
-        <HeartIcon />
-      </ActionIcon>
+    return (
+        <Group justify="center">
+            <ActionIcon size="xl" disabled aria-label="已禁用且不可交互">
+                <HeartIcon />
+            </ActionIcon>
 
-      <ActionIcon size="xl" data-disabled aria-label="带有禁用样式但仍可交互">
-        <HeartIcon />
-      </ActionIcon>
-    </Group>
-  );
+            <ActionIcon size="xl" data-disabled aria-label="带有禁用样式但仍可交互">
+                <HeartIcon />
+            </ActionIcon>
+        </Group>
+    )
 }
 
 export const disabled: UIDemo = {
-  type: 'code',
-  component: Demo,
-  code,
-};
+    type: 'code',
+    component: Demo,
+    code
+}

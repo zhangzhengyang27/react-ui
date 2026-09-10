@@ -1,11 +1,10 @@
-import { ArrowSquareOutIcon } from '@phosphor-icons/react';
-import { Button, Menu } from '@xiaoye-react/ui';
-import { UIDemo } from '@xiaoye-react/demo';
+import { ArrowSquareOutIcon } from '@phosphor-icons/react/dist/csr/ArrowSquareOut'
+import { Button, Menu } from '@xiaoye-react/ui'
+import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
 import { Menu, Button } from '@xiaoye-react/ui';
-import { ArrowSquareOutIcon } from '@phosphor-icons/react';
-
+import { ArrowSquareOutIcon } from '@phosphor-icons/react/dist/csr/ArrowSquareOut';
 function Demo() {
   return (
     <Menu width={200} shadow="md">
@@ -29,35 +28,30 @@ function Demo() {
     </Menu>
   );
 }
-`;
+`
 
 function Demo() {
-  return (
-    <Menu width={200} shadow="md">
-      <Menu.Target>
-        <Button>切换菜单</Button>
-      </Menu.Target>
+    return (
+        <Menu width={200} shadow="md">
+            <Menu.Target>
+                <Button>切换菜单</Button>
+            </Menu.Target>
 
-      <Menu.Dropdown>
-        <Menu.Item component="a" href="#">
-          ReactUI website
-        </Menu.Item>
-        <Menu.Item
-          leftSection={<ArrowSquareOutIcon size={14} />}
-          component="a"
-          href="#"
-          target="_blank"
-        >
-          External link
-        </Menu.Item>
-      </Menu.Dropdown>
-    </Menu>
-  );
+            <Menu.Dropdown>
+                <Menu.Item component="a" href="#">
+                    ReactUI website
+                </Menu.Item>
+                <Menu.Item leftSection={<ArrowSquareOutIcon size={14} />} component="a" href="#" target="_blank">
+                    External link
+                </Menu.Item>
+            </Menu.Dropdown>
+        </Menu>
+    )
 }
 
 export const component: UIDemo = {
-  type: 'code',
-  code,
-  component: Demo,
-  centered: true,
-};
+    type: 'code',
+    code,
+    component: Demo,
+    centered: true
+}

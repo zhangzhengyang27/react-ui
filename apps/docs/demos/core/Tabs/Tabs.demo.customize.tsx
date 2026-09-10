@@ -1,11 +1,15 @@
-import { ChatCircleIcon, GearSixIcon, ImageIcon } from '@phosphor-icons/react';
-import { Tabs } from '@xiaoye-react/ui';
-import { UIDemo } from '@xiaoye-react/demo';
-import classes from './Tabs.demo.customize.module.css';
+import { ChatCircleIcon } from '@phosphor-icons/react/dist/csr/ChatCircle'
+import { GearSixIcon } from '@phosphor-icons/react/dist/csr/GearSix'
+import { ImageIcon } from '@phosphor-icons/react/dist/csr/Image'
+import { Tabs } from '@xiaoye-react/ui'
+import { UIDemo } from '@xiaoye-react/demo'
+import classes from './Tabs.demo.customize.module.css'
 
 const code = `
 import { Tabs } from '@xiaoye-react/ui';
-import { ImageIcon, ChatCircleIcon, GearSixIcon } from '@phosphor-icons/react';
+import { ImageIcon } from '@phosphor-icons/react/dist/csr/Image';
+import { ChatCircleIcon } from '@phosphor-icons/react/dist/csr/ChatCircle';
+import { GearSixIcon } from '@phosphor-icons/react/dist/csr/GearSix';
 import classes from './Demo.module.css';
 
 function Demo() {
@@ -34,7 +38,7 @@ function Demo() {
     </Tabs>
   );
 }
-`;
+`
 const cssCode = `
 .tab {
   position: relative;
@@ -81,31 +85,31 @@ const cssCode = `
     }
   }
 }
-`;
+`
 
 function Demo() {
-  return (
-    <Tabs variant="unstyled" defaultValue="settings" classNames={classes}>
-      <Tabs.List grow>
-        <Tabs.Tab value="settings" leftSection={<GearSixIcon size={16} />}>
-          设置
-        </Tabs.Tab>
-        <Tabs.Tab value="messages" leftSection={<ChatCircleIcon size={16} />}>
-          消息
-        </Tabs.Tab>
-        <Tabs.Tab value="gallery" leftSection={<ImageIcon size={16} />}>
-          相册
-        </Tabs.Tab>
-      </Tabs.List>
-    </Tabs>
-  );
+    return (
+        <Tabs variant="unstyled" defaultValue="settings" classNames={classes}>
+            <Tabs.List grow>
+                <Tabs.Tab value="settings" leftSection={<GearSixIcon size={16} />}>
+                    设置
+                </Tabs.Tab>
+                <Tabs.Tab value="messages" leftSection={<ChatCircleIcon size={16} />}>
+                    消息
+                </Tabs.Tab>
+                <Tabs.Tab value="gallery" leftSection={<ImageIcon size={16} />}>
+                    相册
+                </Tabs.Tab>
+            </Tabs.List>
+        </Tabs>
+    )
 }
 
 export const customize: UIDemo = {
-  type: 'code',
-  component: Demo,
-  code: [
-    { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
-    { fileName: '演示代码.tsx', code, language: 'tsx' },
-  ],
-};
+    type: 'code',
+    component: Demo,
+    code: [
+        { fileName: '演示样式.module.css', code: cssCode, language: 'scss' },
+        { fileName: '演示代码.tsx', code, language: 'tsx' }
+    ]
+}

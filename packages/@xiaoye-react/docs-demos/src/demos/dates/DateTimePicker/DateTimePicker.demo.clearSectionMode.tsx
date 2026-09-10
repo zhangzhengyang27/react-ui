@@ -1,10 +1,10 @@
-import { CaretDownIcon } from '@phosphor-icons/react';
-import { Stack } from '@xiaoye-react/ui';
-import { DateTimePicker } from '@xiaoye-react/dates';
-import { UIDemo } from '@xiaoye-react/demo';
+import { CaretDownIcon } from '@phosphor-icons/react/dist/csr/CaretDown'
+import { Stack } from '@xiaoye-react/ui'
+import { DateTimePicker } from '@xiaoye-react/dates'
+import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
-import { CaretDownIcon } from '@phosphor-icons/react';
+import { CaretDownIcon } from '@phosphor-icons/react/dist/csr/CaretDown';
 import { Stack } from '@xiaoye-react/ui';
 import { DateTimePicker } from '@xiaoye-react/dates';
 
@@ -40,45 +40,45 @@ function Demo() {
     </Stack>
   );
 }
-`;
+`
 
 function Demo() {
-  return (
-    <Stack>
-      <DateTimePicker
-        label="clearSectionMode='both'（默认）"
-        placeholder="选择日期和时间"
-        defaultValue={new Date('2024-01-15')}
-        clearable
-        rightSection={<CaretDownIcon size={16} />}
-        clearSectionMode="both"
-      />
+    return (
+        <Stack>
+            <DateTimePicker
+                label="clearSectionMode='both'（默认）"
+                placeholder="选择日期和时间"
+                defaultValue={new Date('2024-01-15')}
+                clearable
+                rightSection={<CaretDownIcon size={16} />}
+                clearSectionMode="both"
+            />
 
-      <DateTimePicker
-        label="clearSectionMode='rightSection'"
-        placeholder="选择日期和时间"
-        defaultValue={new Date('2024-01-15')}
-        clearable
-        rightSection={<CaretDownIcon size={16} />}
-        clearSectionMode="rightSection"
-      />
+            <DateTimePicker
+                label="clearSectionMode='rightSection'"
+                placeholder="选择日期和时间"
+                defaultValue={new Date('2024-01-15')}
+                clearable
+                rightSection={<CaretDownIcon size={16} />}
+                clearSectionMode="rightSection"
+            />
 
-      <DateTimePicker
-        label="clearSectionMode='clear'"
-        placeholder="选择日期和时间"
-        defaultValue={new Date('2024-01-15')}
-        clearable
-        rightSection={<CaretDownIcon size={16} />}
-        clearSectionMode="clear"
-      />
-    </Stack>
-  );
+            <DateTimePicker
+                label="clearSectionMode='clear'"
+                placeholder="选择日期和时间"
+                defaultValue={new Date('2024-01-15')}
+                clearable
+                rightSection={<CaretDownIcon size={16} />}
+                clearSectionMode="clear"
+            />
+        </Stack>
+    )
 }
 
 export const clearSectionMode: UIDemo = {
-  type: 'code',
-  component: Demo,
-  code,
-  maxWidth: 340,
-  centered: true,
-};
+    type: 'code',
+    component: Demo,
+    code,
+    maxWidth: 340,
+    centered: true
+}

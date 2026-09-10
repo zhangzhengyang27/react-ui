@@ -1,11 +1,10 @@
-import { ArrowLeftIcon } from '@phosphor-icons/react';
-import { Anchor, Box, Center } from '@xiaoye-react/ui';
-import { UIDemo } from '@xiaoye-react/demo';
+import { ArrowLeftIcon } from '@phosphor-icons/react/dist/csr/ArrowLeft'
+import { Anchor, Box, Center } from '@xiaoye-react/ui'
+import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
 import { Center, Anchor, Box } from '@xiaoye-react/ui';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
-
+import { ArrowLeftIcon } from '@phosphor-icons/react/dist/csr/ArrowLeft';
 function Demo() {
   return (
     <Anchor href="#" target="_blank">
@@ -16,21 +15,21 @@ function Demo() {
     </Anchor>
   );
 }
-`;
+`
 
 function Demo() {
-  return (
-    <Anchor href="#" target="_blank">
-      <Center inline>
-        <ArrowLeftIcon size={12} className="ui-rotate-rtl" />
-        <Box ml={5}>返回 ReactUI 网站</Box>
-      </Center>
-    </Anchor>
-  );
+    return (
+        <Anchor href="#" target="_blank">
+            <Center inline>
+                <ArrowLeftIcon size={12} className="ui-rotate-rtl" />
+                <Box ml={5}>返回 ReactUI 网站</Box>
+            </Center>
+        </Anchor>
+    )
 }
 
 export const inline: UIDemo = {
-  type: 'code',
-  code,
-  component: Demo,
-};
+    type: 'code',
+    code,
+    component: Demo
+}

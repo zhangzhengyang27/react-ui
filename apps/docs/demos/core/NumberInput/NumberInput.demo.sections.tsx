@@ -1,11 +1,10 @@
-import { CurrencyEthIcon } from '@phosphor-icons/react';
-import { NumberInput } from '@xiaoye-react/ui';
-import { UIDemo } from '@xiaoye-react/demo';
+import { CurrencyEthIcon } from '@phosphor-icons/react/dist/csr/CurrencyEth'
+import { NumberInput } from '@xiaoye-react/ui'
+import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
 import { NumberInput } from '@xiaoye-react/ui';
-import { CurrencyEthIcon } from '@phosphor-icons/react';
-
+import { CurrencyEthIcon } from '@phosphor-icons/react/dist/csr/CurrencyEth';
 function Demo() {
   const icon = <CurrencyEthIcon size={20} />;
   return (
@@ -20,27 +19,22 @@ function Demo() {
     </>
   );
 }
-`;
+`
 
 function Demo() {
-  const icon = <CurrencyEthIcon size={20} />;
-  return (
-    <>
-      <NumberInput leftSection={icon} label="带左侧区域" placeholder="带左侧区域" />
-      <NumberInput
-        rightSection={icon}
-        label="带右侧区域"
-        placeholder="带右侧区域"
-        mt="md"
-      />
-    </>
-  );
+    const icon = <CurrencyEthIcon size={20} />
+    return (
+        <>
+            <NumberInput leftSection={icon} label="带左侧区域" placeholder="带左侧区域" />
+            <NumberInput rightSection={icon} label="带右侧区域" placeholder="带右侧区域" mt="md" />
+        </>
+    )
 }
 
 export const sections: UIDemo = {
-  type: 'code',
-  component: Demo,
-  code,
-  centered: true,
-  maxWidth: 340,
-};
+    type: 'code',
+    component: Demo,
+    code,
+    centered: true,
+    maxWidth: 340
+}

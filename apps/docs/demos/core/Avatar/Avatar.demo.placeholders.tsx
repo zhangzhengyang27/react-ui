@@ -1,11 +1,10 @@
-import { StarIcon } from '@phosphor-icons/react';
-import { Avatar, Group } from '@xiaoye-react/ui';
-import { UIDemo } from '@xiaoye-react/demo';
+import { StarIcon } from '@phosphor-icons/react/dist/csr/Star'
+import { Avatar, Group } from '@xiaoye-react/ui'
+import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
 import { Avatar } from '@xiaoye-react/ui';
-import { StarIcon } from '@phosphor-icons/react';
-
+import { StarIcon } from '@phosphor-icons/react/dist/csr/Star';
 function Demo() {
   return (
     <>
@@ -26,25 +25,25 @@ function Demo() {
   );
 }
 
-`;
+`
 
 function Demo() {
-  return (
-    <Group justify="center">
-      <Avatar src={null} alt="无图片" />
-      <Avatar src={null} alt="无图片" color="indigo" />
-      <Avatar src={null} alt="无图片" color="red">
-        VR
-      </Avatar>
-      <Avatar color="blue" radius="xl">
-        <StarIcon size={20} />
-      </Avatar>
-    </Group>
-  );
+    return (
+        <Group justify="center">
+            <Avatar src={null} alt="无图片" />
+            <Avatar src={null} alt="无图片" color="indigo" />
+            <Avatar src={null} alt="无图片" color="red">
+                VR
+            </Avatar>
+            <Avatar color="blue" radius="xl">
+                <StarIcon size={20} />
+            </Avatar>
+        </Group>
+    )
 }
 
 export const placeholders: UIDemo = {
-  type: 'code',
-  code,
-  component: Demo,
-};
+    type: 'code',
+    code,
+    component: Demo
+}

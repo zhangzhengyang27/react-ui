@@ -1,9 +1,11 @@
-import { UIDemo } from '@xiaoye-react/demo';
-import { BaseDemo } from './_base';
+import { UIDemo } from '@xiaoye-react/demo'
+import { BaseDemo } from './_base'
 
 const code = `
 import { Group, Text } from '@xiaoye-react/ui';
-import { UploadSimpleIcon, ImageIcon, XIcon } from '@phosphor-icons/react';
+import { UploadSimpleIcon } from '@phosphor-icons/react/dist/csr/UploadSimple';
+import { ImageIcon } from '@phosphor-icons/react/dist/csr/Image';
+import { XIcon } from '@phosphor-icons/react/dist/csr/X';
 import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from '@xiaoye-react/dropzone';
 
 export function BaseDemo(props: Partial<DropzoneProps>) {
@@ -38,10 +40,10 @@ export function BaseDemo(props: Partial<DropzoneProps>) {
     </Dropzone>
   );
 }
-`;
+`
 
 export const usage: UIDemo = {
-  type: 'code',
-  component: BaseDemo,
-  code,
-};
+    type: 'code',
+    component: BaseDemo,
+    code
+}

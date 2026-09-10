@@ -1,11 +1,10 @@
-import { FileTextIcon } from '@phosphor-icons/react';
-import { FileInput } from '@xiaoye-react/ui';
-import { UIDemo } from '@xiaoye-react/demo';
+import { FileTextIcon } from '@phosphor-icons/react/dist/csr/FileText'
+import { FileInput } from '@xiaoye-react/ui'
+import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
 import { FileInput } from '@xiaoye-react/ui';
-import { FileTextIcon } from '@phosphor-icons/react';
-
+import { FileTextIcon } from '@phosphor-icons/react/dist/csr/FileText';
 function Demo() {
   const icon = <FileTextIcon size={18} />;
 
@@ -27,34 +26,29 @@ function Demo() {
     </>
   );
 }
-`;
+`
 
 function Demo() {
-  const icon = <FileTextIcon size={18} />;
+    const icon = <FileTextIcon size={18} />
 
-  return (
-    <>
-      <FileInput
-        leftSection={icon}
-        label="上传你的简历"
-        placeholder="你的简历"
-        leftSectionPointerEvents="none"
-      />
-      <FileInput
-        rightSection={icon}
-        label="上传你的简历"
-        placeholder="你的简历"
-        rightSectionPointerEvents="none"
-        mt="md"
-      />
-    </>
-  );
+    return (
+        <>
+            <FileInput leftSection={icon} label="上传你的简历" placeholder="你的简历" leftSectionPointerEvents="none" />
+            <FileInput
+                rightSection={icon}
+                label="上传你的简历"
+                placeholder="你的简历"
+                rightSectionPointerEvents="none"
+                mt="md"
+            />
+        </>
+    )
 }
 
 export const sections: UIDemo = {
-  type: 'code',
-  component: Demo,
-  code,
-  centered: true,
-  maxWidth: 340,
-};
+    type: 'code',
+    component: Demo,
+    code,
+    centered: true,
+    maxWidth: 340
+}

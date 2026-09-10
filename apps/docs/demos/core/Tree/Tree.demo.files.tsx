@@ -1,10 +1,11 @@
-import { FolderOpenIcon, FolderSimpleIcon } from '@phosphor-icons/react';
-import cx from 'clsx';
-import { Group, RenderTreeNodePayload, Tree } from '@xiaoye-react/ui';
-import { UIDemo } from '@xiaoye-react/demo';
-import { CssIcon, NpmIcon, TypeScriptCircleIcon } from '@xiaoye-react/dev-icons';
-import { data, dataCode } from './data';
-import classes from './Tree.demo.files.module.css';
+import { FolderOpenIcon } from '@phosphor-icons/react/dist/csr/FolderOpen'
+import { FolderSimpleIcon } from '@phosphor-icons/react/dist/csr/FolderSimple'
+import cx from 'clsx'
+import { Group, RenderTreeNodePayload, Tree } from '@xiaoye-react/ui'
+import { UIDemo } from '@xiaoye-react/demo'
+import { CssIcon, NpmIcon, TypeScriptCircleIcon } from '@xiaoye-react/dev-icons'
+import { data, dataCode } from './data'
+import classes from './Tree.demo.files.module.css'
 
 const cssCode = `.root {
   font-family: var(--ui-font-family-monospace);
@@ -26,10 +27,11 @@ const cssCode = `.root {
     background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-6));
     color: var(--ui-color-bright);
   }
-}`;
+}`
 
 const code = `
-import { FolderSimpleIcon, FolderOpenIcon } from '@phosphor-icons/react';
+import { FolderSimpleIcon } from '@phosphor-icons/react/dist/csr/FolderSimple';
+import { FolderOpenIcon } from '@phosphor-icons/react/dist/csr/FolderOpen';
 import cx from 'clsx';
 import { Group, RenderTreeNodePayload, Tree } from '@xiaoye-react/ui';
 import { CssIcon, NpmIcon, TypeScriptCircleIcon } from '@xiaoye-react/dev-icons';
@@ -87,68 +89,68 @@ function Demo() {
     />
   );
 }
-`;
+`
 
 interface FileIconProps {
-  name: string;
-  isFolder: boolean;
-  expanded: boolean;
+    name: string
+    isFolder: boolean
+    expanded: boolean
 }
 
 function FileIcon({ name, isFolder, expanded }: FileIconProps) {
-  if (name.endsWith('package.json')) {
-    return <NpmIcon size={14} />;
-  }
+    if (name.endsWith('package.json')) {
+        return <NpmIcon size={14} />
+    }
 
-  if (name.endsWith('.ts') || name.endsWith('.tsx') || name.endsWith('tsconfig.json')) {
-    return <TypeScriptCircleIcon size={14} />;
-  }
+    if (name.endsWith('.ts') || name.endsWith('.tsx') || name.endsWith('tsconfig.json')) {
+        return <TypeScriptCircleIcon size={14} />
+    }
 
-  if (name.endsWith('.css')) {
-    return <CssIcon size={14} />;
-  }
+    if (name.endsWith('.css')) {
+        return <CssIcon size={14} />
+    }
 
-  if (isFolder) {
-    return expanded ? (
-      <FolderOpenIcon color="var(--ui-color-yellow-9)" size={14} />
-    ) : (
-      <FolderSimpleIcon color="var(--ui-color-yellow-9)" size={14} />
-    );
-  }
+    if (isFolder) {
+        return expanded ? (
+            <FolderOpenIcon color="var(--ui-color-yellow-9)" size={14} />
+        ) : (
+            <FolderSimpleIcon color="var(--ui-color-yellow-9)" size={14} />
+        )
+    }
 
-  return null;
+    return null
 }
 
 function Leaf({ node, expanded, hasChildren, elementProps }: RenderTreeNodePayload) {
-  return (
-    <Group gap={6} {...elementProps} className={cx(classes.leaf, elementProps.className)}>
-      <FileIcon name={node.value} isFolder={hasChildren} expanded={expanded} />
-      <span>{node.label}</span>
-    </Group>
-  );
+    return (
+        <Group gap={6} {...elementProps} className={cx(classes.leaf, elementProps.className)}>
+            <FileIcon name={node.value} isFolder={hasChildren} expanded={expanded} />
+            <span>{node.label}</span>
+        </Group>
+    )
 }
 
 function Demo() {
-  return (
-    <Tree
-      classNames={classes}
-      selectOnClick
-      clearSelectionOnOutsideClick
-      withLines
-      data={data}
-      renderNode={(payload) => <Leaf {...payload} />}
-    />
-  );
+    return (
+        <Tree
+            classNames={classes}
+            selectOnClick
+            clearSelectionOnOutsideClick
+            withLines
+            data={data}
+            renderNode={payload => <Leaf {...payload} />}
+        />
+    )
 }
 
 export const files: UIDemo = {
-  type: 'code',
-  component: Demo,
-  centered: true,
-  maxWidth: 340,
-  code: [
-    { fileName: '演示代码.tsx', language: 'tsx', code },
-    { fileName: '演示样式.module.css', language: 'scss', code: cssCode },
-    { fileName: 'data.ts', language: 'tsx', code: dataCode },
-  ],
-};
+    type: 'code',
+    component: Demo,
+    centered: true,
+    maxWidth: 340,
+    code: [
+        { fileName: '演示代码.tsx', language: 'tsx', code },
+        { fileName: '演示样式.module.css', language: 'scss', code: cssCode },
+        { fileName: 'data.ts', language: 'tsx', code: dataCode }
+    ]
+}

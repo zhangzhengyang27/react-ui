@@ -1,10 +1,10 @@
-import { AtIcon } from '@phosphor-icons/react';
-import { TagsInput } from '@xiaoye-react/ui';
-import { UIDemo } from '@xiaoye-react/demo';
-import { TagsInputStylesApi } from '@xiaoye-react/docs-styles-api';
+import { AtIcon } from '@phosphor-icons/react/dist/csr/At'
+import { TagsInput } from '@xiaoye-react/ui'
+import { UIDemo } from '@xiaoye-react/demo'
+import { TagsInputStylesApi } from '@xiaoye-react/docs-styles-api'
 
 const code = `
-import { AtIcon } from '@phosphor-icons/react';
+import { AtIcon } from '@phosphor-icons/react/dist/csr/At';
 import { TagsInput } from '@xiaoye-react/ui';
 
 function Demo() {
@@ -21,33 +21,33 @@ function Demo() {
     />
   );
 }
-`;
+`
 
 function Demo(props: any) {
-  return (
-    <TagsInput
-      {...props}
-      dropdownOpened
-      leftSection={<AtIcon size={18} />}
-      withAsterisk
-      label="标签输入"
-      description="描述"
-      placeholder="标签输入"
-      defaultValue={['First', 'Second']}
-      comboboxProps={{ hideDetached: false }}
-      data={[
-        { group: 'Frontend', items: ['React', 'Angular'] },
-        { group: 'Backend', items: ['Node', 'Django'] },
-      ]}
-    />
-  );
+    return (
+        <TagsInput
+            {...props}
+            dropdownOpened
+            leftSection={<AtIcon size={18} />}
+            withAsterisk
+            label="标签输入"
+            description="描述"
+            placeholder="标签输入"
+            defaultValue={['First', 'Second']}
+            comboboxProps={{ hideDetached: false }}
+            data={[
+                { group: 'Frontend', items: ['React', 'Angular'] },
+                { group: 'Backend', items: ['Node', 'Django'] }
+            ]}
+        />
+    )
 }
 
 export const stylesApi: UIDemo = {
-  type: 'styles-api',
-  data: TagsInputStylesApi,
-  component: Demo,
-  code,
-  centered: true,
-  maxWidth: 340,
-};
+    type: 'styles-api',
+    data: TagsInputStylesApi,
+    component: Demo,
+    code,
+    centered: true,
+    maxWidth: 340
+}

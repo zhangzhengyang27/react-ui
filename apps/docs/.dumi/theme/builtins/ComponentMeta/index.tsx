@@ -161,7 +161,7 @@ const ComponentMeta: React.FC<ComponentMetaProps> = props => {
                     <div className={classes.row}>
                         <div className={classes.label}>{locale.source}</div>
                         <div className={classes.value}>
-                            <Flex justify="flex-start" align="center" gap="sm">
+                            <Flex direction="row" justify="flex-start" align="center" gap="sm">
                                 <Anchor className={classes.code} href={filledSource} target="_blank">
                                     <AiOutlineGithub className={classes.icon} />
                                     <span>{abbrSource}</span>
@@ -184,7 +184,7 @@ const ComponentMeta: React.FC<ComponentMetaProps> = props => {
                     <div className={classes.row}>
                         <div className={classes.label}>{locale.docs}</div>
                         <div className={classes.value}>
-                            <Flex justify="flex-start" align="center" gap="sm">
+                            <Flex direction="row" justify="flex-start" align="center" gap="sm">
                                 {showEdit && filename && (
                                     <Anchor
                                         className={classes.code}

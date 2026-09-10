@@ -10,7 +10,6 @@ import EditButton from '../../common/EditButton';
 import PrevAndNext from '../../common/PrevAndNext';
 import type { DemoContextProps } from '../DemoContext';
 import DemoContext from '../DemoContext';
-import Footer from '../Footer';
 import SiteContext from '../SiteContext';
 
 import BackToTop from './BackToTop';
@@ -129,7 +128,6 @@ const Content: React.FC<ContentProps> = ({ children, className }) => {
           </div>
         </article>
         <PrevAndNext rtl={isRTL} />
-        <Footer />
       </div>
     </DemoContext>
   );

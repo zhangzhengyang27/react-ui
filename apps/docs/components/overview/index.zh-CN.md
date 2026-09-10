@@ -3,6 +3,7 @@ category: Components
 title: Overview
 subtitle: 组件总览
 description: react-ui 组件库总览，140+ 组件，覆盖表单、数据展示、反馈、导航等场景。
+showImport: false
 group:
   title: 开始
   order: 0

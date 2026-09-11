@@ -57,8 +57,21 @@ export function UIProvider({
     cssVariablesResolver = defaultCssVariablesResolver,
     env = 'default'
 }: UIProviderProps) {
-    const [internalColorScheme, setInternalColorScheme] = useState<UIColorScheme>('light')
+    // 嵌套 Provider（未受控时）默认继承外层的颜色方案，而不是固定 light——
+    // 否则任何为了覆盖主题变量而嵌套的 <UIProvider theme={...}> 都会把
+    // <html> 的 data-ui-color-scheme 全局改写，导致整站主题被劫持
+    const parentContext = React.useContext(UIContext)
+    const [internalColorScheme, setInternalColorScheme] = useState<UIColorScheme>(
+        () => parentContext?.colorScheme ?? 'light'
+    )
     const colorScheme = controlledColorScheme ?? internalColorScheme
+
+    // 外层方案变化时同步（如站点在暗色下打开嵌套 Provider 的页面）
+    useEffect(() => {
+        if (!controlledColorScheme && parentContext?.colorScheme) {
+            setInternalColorScheme(parentContext.colorScheme)
+        }
+    }, [controlledColorScheme, parentContext?.colorScheme])
 
     const setColorScheme = useCallback(
         (value: UIColorScheme) => {

@@ -78,5 +78,11 @@ export default defineConfig({
             async: true,
             content: fs.readFileSync(path.join(__dirname, '.dumi', 'scripts', 'webmcp.js')).toString(),
         },
+        // Umami 访问统计（自托管 https://analytics.zhangzhengyang.com，网站条目 react-ui）
+        {
+            defer: true,
+            src: 'https://analytics.zhangzhengyang.com/script.js',
+            'data-website-id': 'abbb420d-20d7-440d-b882-b43ba8be1228',
+        },
     ],
 });

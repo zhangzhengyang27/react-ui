@@ -28,7 +28,7 @@
     "publish:ui": "pnpm prepublishOnly:ui && cd packages/ui && npm publish --access public",
     "publish:pro": "pnpm prepublishOnly:pro && cd packages/@xiaoye-react/pro && pnpm publish --access public",
     "publish:all": "pnpm publish:hooks && pnpm publish:ui && pnpm publish:pro",
-    "release:tag": "git tag -a v1.1.0 -m \"release: v1.1.0\" && git push origin v1.1.0"
+    "release:tag": "git tag -a v1.2.0 -m \"release: v1.2.0\" && git push origin v1.2.0"
   },
   "author": "xiaoye",
   "license": "MIT",

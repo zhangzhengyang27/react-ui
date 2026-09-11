@@ -1,7 +1,9 @@
 import React from 'react';
 import { Anchor, Text } from '@xiaoye-react/ui';
 import { clsx } from 'clsx';
-import { useRouteMeta, useTabMeta } from 'dumi';
+import { useTabMeta } from 'dumi';
+
+import { useSharedRouteMeta } from '../../common/RouteMetaContext';
 
 import classes from './DocAnchor.module.css';
 
@@ -19,7 +21,8 @@ interface AnchorItem {
 const HEADER_OFFSET = 100;
 
 const DocAnchor: React.FC<DocAnchorProps> = ({ showDebug, debugDemos = [] }) => {
-  const meta = useRouteMeta();
+  // 共享 RouteMeta（切页卡顿治理 · 修复 4）
+  const meta = useSharedRouteMeta();
   const tab = useTabMeta();
 
   const anchorItems = React.useMemo<AnchorItem[]>(

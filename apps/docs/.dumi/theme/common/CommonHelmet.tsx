@@ -1,8 +1,11 @@
 import React from 'react';
-import { Helmet, useRouteMeta } from 'dumi';
+import { Helmet } from 'dumi';
+
+import { useSharedRouteMeta } from './RouteMetaContext';
 
 const CommonHelmet: React.FC = () => {
-  const meta = useRouteMeta();
+  // 共享 RouteMeta（切页卡顿治理 · 修复 4）：避免每个组件各自 matchRoutes 扫全量路由表
+  const meta = useSharedRouteMeta();
 
   const [title, description] = React.useMemo<[string, string]>(() => {
     let helmetTitle: string;

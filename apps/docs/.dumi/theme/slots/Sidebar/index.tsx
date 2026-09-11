@@ -92,4 +92,7 @@ const Sidebar: React.FC = () => {
   );
 };
 
-export default Sidebar;
+// memo 边界：Sidebar 无 props、只依赖导航级上下文（sidebarData/location）。
+// 异步 chunk 加载翻转 siteData.loading 时上层布局可能重渲染，
+// memo 让 130+ 项菜单在这种重渲染中直接跳过（自身上下文未变时）。
+export default React.memo(Sidebar);

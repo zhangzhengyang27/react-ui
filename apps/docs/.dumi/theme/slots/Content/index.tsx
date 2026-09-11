@@ -1,12 +1,13 @@
 import React, { Suspense, useLayoutEffect, useMemo, useState } from 'react';
 import { clsx } from 'clsx';
-import { FormattedMessage, useLocation as useDumiLocation, useRouteMeta } from 'dumi';
+import { FormattedMessage, useLocation as useDumiLocation } from 'dumi';
 import { Flex, Group, Skeleton, Title } from '@xiaoye-react/ui';
 
 import useLayoutState from '../../../hooks/useLayoutState';
 import useLocation from '../../../hooks/useLocation';
 import ComponentMeta from '../../builtins/ComponentMeta';
 import EditButton from '../../common/EditButton';
+import { useSharedRouteMeta } from '../../common/RouteMetaContext';
 import PrevAndNext from '../../common/PrevAndNext';
 import type { DemoContextProps } from '../DemoContext';
 import DemoContext from '../DemoContext';
@@ -35,7 +36,8 @@ export interface ContentProps {
 }
 
 const Content: React.FC<ContentProps> = ({ children, className }) => {
-  const meta = useRouteMeta();
+  // 共享 RouteMeta（切页卡顿治理 · 修复 4）
+  const meta = useSharedRouteMeta();
   const rawLocation = useDumiLocation();
   const { pathname, hash } = useLocation();
   const { direction } = React.use(SiteContext);

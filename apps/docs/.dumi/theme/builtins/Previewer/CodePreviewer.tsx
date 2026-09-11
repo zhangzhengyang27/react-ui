@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { AiOutlineUp } from '../../icons'
 import { Badge } from '@xiaoye-react/ui'
 import { clsx } from 'clsx'
-import { FormattedMessage, useLiveDemo, useSiteData } from 'dumi'
+import { FormattedMessage, useLiveDemo } from 'dumi'
 
 import type { AntdPreviewerProps } from '.'
 import BrowserFrame from '../../common/BrowserFrame'
@@ -54,7 +54,6 @@ const CodePreviewerInner: React.FC<CodePreviewerInnerProps> = props => {
         codeExpand,
         setCodeExpand
     } = props
-    const { pkg } = useSiteData()
     const codeExpandCtx = useCodeExpand()
 
     const entryName = asset.entry ?? 'index.tsx'

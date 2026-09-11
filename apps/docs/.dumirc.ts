@@ -7,6 +7,20 @@ import rehypeChangelog from './.dumi/rehypeChangelog';
 import remarkAnchor from './.dumi/remarkAnchor';
 import remarkMeta from './.dumi/remarkMeta';
 
+// react-router 的 matchPath 每次调用都重新编译路由正则；本站路由表数千条 +
+// 异步 chunk 加载引发的高频重渲染，实测单次切页约 90 万次正则编译，是切页
+// 卡顿的主要来源。alias 到带缓存的补丁实现（apps/docs/patches/react-router-cache.ts）。
+// 注意：pnpm 下存在多份 react-router；bundle 里实际打包的是 renderer 依赖
+// react-router-dom@6.3.0 邻居目录中的 react-router@6.3.0，补丁的全量 re-export
+// 必须指向这一份，不能用顶层 node_modules 的 7.x 副本。
+const rendererEntry = require.resolve('@umijs/renderer-react', { paths: [__dirname] });
+const reactRouterDomEntry = require.resolve('react-router-dom', {
+    paths: [path.dirname(rendererEntry)],
+});
+const reactRouterActual = require.resolve('react-router/index.js', {
+    paths: [path.dirname(reactRouterDomEntry)],
+});
+
 export default defineConfig({
     plugins: ['dumi-plugin-color-chunk'],
 
@@ -41,6 +55,12 @@ export default defineConfig({
     // 导致 UnstyledButton 的 reset 排在 Button 之后，覆盖 background: var(--button-bg)。
     // @xiaoye-react/hooks 无 CSS，保留指向 src 便于调试。
     alias: {
+        // matchPath 正则编译缓存补丁：'react-router$' 为精确匹配（$ 后缀），
+        // 只拦截裸 'react-router' 导入（react-router-dom/内部实现走这里），
+        // 不影响 'react-router-dom' 等其它子路径。
+        'react-router$': path.join(__dirname, 'patches/react-router-cache.ts'),
+        // 补丁内部 re-export 的真实 react-router 实现（配置期解析出的具体文件）
+        'react-router-actual$': reactRouterActual,
         '@xiaoye-react/ui': path.join(__dirname, '../../packages/ui/es/index.js'),
         '@xiaoye-react/hooks': path.join(__dirname, '../../packages/hooks/src/index.ts'),
         // @xiaoye-react/demo 包未发布，指向本地 DemoEngine（已导出 Demo/UIDemo/ConfiguratorControlOptions）

@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useMemo, useState } from 'react'
 import { AiOutlineCalendar } from '../../icons'
 import { Avatar, Flex, Skeleton, Text } from '@xiaoye-react/ui'
 import dayjs from 'dayjs'
-import { useRouteMeta } from 'dumi'
+import { useSharedRouteMeta } from '../../common/RouteMetaContext'
 
 interface AuthorAvatarPoprs {
     name: string
@@ -32,7 +32,8 @@ const AuthorAvatar: React.FC<AuthorAvatarPoprs> = ({ name, avatar }) => {
 }
 
 const DocMeta: React.FC = () => {
-    const meta = useRouteMeta()
+    // 共享 RouteMeta（切页卡顿治理 · 修复 4）
+    const meta = useSharedRouteMeta()
 
     const { author } = meta.frontmatter
 

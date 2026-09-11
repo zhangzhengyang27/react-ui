@@ -3,7 +3,7 @@ import { AiOutlineGithub } from '../../icons'
 import { ActionIcon, Alert, Popover, Select, Tooltip } from '@xiaoye-react/ui'
 import { clsx } from 'clsx'
 import dayjs from 'dayjs'
-import { useLocation, useSiteData } from 'dumi'
+import { useLocation } from 'dumi'
 import DumiSearchBar from 'dumi/theme-default/slots/SearchBar'
 import useSWR from 'swr'
 
@@ -36,8 +36,6 @@ const fetcher = (...args: Parameters<typeof fetch>) => {
 // ================================= Header =================================
 const Header: React.FC = () => {
     const [, lang] = useLocale()
-
-    const { pkg } = useSiteData()
 
     const isChineseMirror = false
 

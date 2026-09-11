@@ -5,9 +5,9 @@ import 'dayjs/locale/zh-cn';
 
 import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import { Helmet, useOutlet, useSearchParams, useSiteData } from 'dumi';
-
 import useLocale from '../../../hooks/useLocale';
 import useLocation from '../../../hooks/useLocation';
+import { RouteMetaProvider } from '../../common/RouteMetaContext';
 import GlobalStyles from '../../common/GlobalStyles';
 import Header from '../../slots/Header';
 import SiteContext from '../../slots/SiteContext';
@@ -28,6 +28,22 @@ const locales = {
   },
 };
 
+// hash 滚动需要等异步 chunk 加载完后再跳锚点，因此要订阅 siteData.loading。
+// 该订阅必须留在叶子组件里：loading 在每个懒加载 chunk 加载前后都会翻转，
+// 若在布局层订阅，每次翻转都会重渲染 Header + Sidebar + 全部已挂载 demo。
+const HashScroller: React.FC<{ hash: string }> = ({ hash }) => {
+  const { loading } = useSiteData();
+
+  useEffect(() => {
+    const id = hash.replace('#', '');
+    if (id) {
+      document.getElementById(decodeURIComponent(id))?.scrollIntoView();
+    }
+  }, [loading, hash]);
+
+  return null;
+};
+
 const DocLayout: React.FC = () => {
   const outlet = useOutlet();
   const location = useLocation();
@@ -35,7 +51,6 @@ const DocLayout: React.FC = () => {
   const [locale, lang] = useLocale(locales);
   const timerRef = useRef<ReturnType<typeof setTimeout>>(null!);
   const { direction } = React.use(SiteContext);
-  const { loading } = useSiteData();
   const [searchParams] = useSearchParams();
   const hideLayout = searchParams.get('layout') === 'false';
 
@@ -56,12 +71,7 @@ const DocLayout: React.FC = () => {
   }, []);
 
   // handle hash change or visit page hash from Link component, and jump after async chunk loaded
-  useEffect(() => {
-    const id = hash.replace('#', '');
-    if (id) {
-      document.getElementById(decodeURIComponent(id))?.scrollIntoView();
-    }
-  }, [loading, hash]);
+  // （已下沉到 HashScroller 叶子组件，见顶部说明）
 
   useEffect(() => {
     if (typeof (window as any).ga !== 'undefined') {
@@ -107,7 +117,8 @@ const DocLayout: React.FC = () => {
       </Helmet>
       <GlobalStyles />
       {!hideLayout && <Header />}
-      {content}
+      <HashScroller hash={hash} />
+      <RouteMetaProvider>{content}</RouteMetaProvider>
     </>
   );
 };

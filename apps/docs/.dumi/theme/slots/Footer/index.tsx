@@ -26,7 +26,7 @@ const locales = {
     }
 }
 
-const REACT_UI_GITHUB = 'https://github.com/xiaoye/react-ui'
+const REACT_UI_GITHUB = 'https://github.com/zhangzhengyang27/react-ui'
 
 interface FooterLinkItem {
     icon?: React.ReactNode

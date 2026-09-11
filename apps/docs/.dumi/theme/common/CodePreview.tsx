@@ -11,6 +11,7 @@ import 'prismjs/components/prism-jsx'
 import DemoContext from '../slots/DemoContext'
 import LiveCode from './LiveCode'
 import styles from './CodePreview.module.css'
+import type { CodeHighlightTabsCode } from '../builtins/Previewer/CodeExpandContext'
 
 const LANGS = {
     tsx: 'TypeScript',
@@ -18,8 +19,18 @@ const LANGS = {
     style: 'CSS'
 }
 
+// DemoEngine 注册的多文件代码中，语言标识需要收敛为 LiveCode/Prism 支持的值
+const normalizeFileLang = (lang?: string): 'tsx' | 'jsx' | 'style' => {
+    const l = (lang ?? '').toLowerCase()
+    if (l === 'scss' || l === 'css' || l === 'less' || l === 'style') return 'style'
+    if (l === 'jsx' || l === 'js' || l === 'javascript') return 'jsx'
+    return 'tsx'
+}
+
 interface CodePreviewProps extends Omit<ComponentProps<typeof LiveCode>, 'initialValue' | 'lang' | 'onChange'> {
     sourceCode?: string
+    /** DemoEngine 注册的多文件代码（每个文件一个 Tab） */
+    files?: CodeHighlightTabsCode[]
     jsxCode?: string
     styleCode?: string
     entryName: string
@@ -46,10 +57,69 @@ type CodeType = 'tsx' | 'jsx' | 'style'
 
 type Codes = Partial<Record<CodeType, string>>
 
+/**
+ * 多文件代码：按文件分 Tab 展示（保留各自语言高亮），不再合并成一坨。
+ * 独立成组件是为了让内部 useState 不影响 CodePreview 主体的 hooks 顺序
+ * （files 数组形态若在 Configurator 等场景下发生变化，混合 hooks 会直接报错）。
+ */
+const FilesCodePreview: React.FC<
+    Pick<CodePreviewProps, 'files' | 'entryName' | 'error' | 'onSourceChange'>
+> = ({ files, entryName, error, onSourceChange }) => {
+    const [fileTab, setFileTab] = React.useState(0)
+    const activeIndex = Math.min(fileTab, files.length - 1)
+    const activeFile = files[activeIndex]
+    const activeLang = normalizeFileLang(activeFile?.language)
+    const activeCode = activeFile?.code ?? ''
+    return (
+        <Tabs className="highlight" value={String(activeIndex)} onChange={v => setFileTab(Number(v))} keepMounted={false}>
+            <Tabs.List position="center">
+                {files.map((file, i) => (
+                    <Tabs.Tab key={`${file.fileName}-${i}`} value={String(i)}>
+                        {file.fileName || `File ${i + 1}`}
+                    </Tabs.Tab>
+                ))}
+            </Tabs.List>
+            <Tabs.Panel key={activeIndex} value={String(activeIndex)}>
+                <div className={styles.code}>
+                    <LiveCode
+                        key={activeIndex}
+                        error={error}
+                        lang={activeLang}
+                        initialValue={activeCode}
+                        onChange={(code: string) => {
+                            // live 编辑的 source map 以 entry 文件名注册（约定第一个文件为入口），
+                            // 其余文件用自身文件名，避免沙箱找不到入口代码
+                            const sourceKey = activeIndex === 0 ? entryName : files[activeIndex]?.fileName || entryName
+                            onSourceChange?.({ [sourceKey]: code })
+                        }}
+                    />
+                    {/* button 嵌套 button 会导致水合失败，这里需要用 div 标签，不能用 button */}
+                    <CopyButton value={activeCode}>
+                        {({ copied, copy }) => (
+                            <div
+                                className={clsx(styles.copyButton, copied && styles.copyButtonSuccess)}
+                                onClick={copy}
+                                role="button"
+                                aria-label="Copy code"
+                            >
+                                {copied ? <AiOutlineCheck /> : <AiOutlineCopy />}
+                            </div>
+                        )}
+                    </CopyButton>
+                </div>
+            </Tabs.Panel>
+        </Tabs>
+    )
+}
+
 const CodePreview: React.FC<CodePreviewProps> = props => {
-    const { sourceCode = '', jsxCode = '', styleCode = '', entryName, error, onSourceChange } = props
+    const { sourceCode = '', files, jsxCode = '', styleCode = '', entryName, error, onSourceChange } = props
 
     const { codeType, setCodeType } = React.use(DemoContext)
+
+    if (files && files.length > 1) {
+        return <FilesCodePreview files={files} entryName={entryName} error={error} onSourceChange={onSourceChange} />
+    }
 
     const sourceCodes = useMemo<Codes>(() => {
         const codes: Codes = {}

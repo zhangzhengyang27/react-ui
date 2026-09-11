@@ -70,5 +70,5 @@ description: react-ui Extensions 文档。
 要提交新的扩展以在此页面展示：
 
 - 在 npm 上创建并发布扩展。你可以为包选择任意名称，例如 `reactui-oklch-color-picker` 或 `@xiaoye/reactui-emoji-picker`。
-- 如果你不确定如何开始开发扩展，可以使用[扩展模板](https://github.com/xiaoye/react-ui-extension-template)。它提供了完整的开发环境，包括测试、文档和示例。
-- 向 [ReactUI 仓库](https://github.com/xiaoye/react-ui) 提交一个 pull request，附上扩展链接和简短描述，以便在此页面展示。
+- 如果你不确定如何开始开发扩展，可以使用[扩展模板](https://github.com/zhangzhengyang27/react-ui-extension-template)。它提供了完整的开发环境，包括测试、文档和示例。
+- 向 [ReactUI 仓库](https://github.com/zhangzhengyang27/react-ui) 提交一个 pull request，附上扩展链接和简短描述，以便在此页面展示。

@@ -46,7 +46,7 @@ const FooterCTA: React.FC = () => {
         </LinkButton>
         <LinkButton
           size="large"
-          href="https://github.com/xiaoye/react-ui"
+          href="https://github.com/zhangzhengyang27/react-ui"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -99,7 +99,7 @@ const HeaderNavigation: React.FC<NavigationProps> = props => {
         <>
             <Menu.Item
                 onClick={() => {
-                    window.open('https://github.com/xiaoye/react-ui', '_blank', 'noopener,noreferrer')
+                    window.open('https://github.com/zhangzhengyang27/react-ui', '_blank', 'noopener,noreferrer')
                 }}
             >
                 GitHub
@@ -125,7 +125,7 @@ const HeaderNavigation: React.FC<NavigationProps> = props => {
                     </div>
                 ))}
                 <div className={classes.navInlineItem}>
-                    <a href="https://github.com/xiaoye/react-ui" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/zhangzhengyang27/react-ui" target="_blank" rel="noopener noreferrer">
                         GitHub
                     </a>
                 </div>

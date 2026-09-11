@@ -13,7 +13,9 @@ export function CodeDemo({
   withPadding,
   centered,
   maxWidth,
-  minHeight,
+  // 与 @xiaoye-react/demo 包内 CodeDemo 的默认值保持一致，
+  // 否则单按钮类 demo 的预览框会塌缩到内容高度
+  minHeight = 120,
   dimmed,
   striped,
   overflow,

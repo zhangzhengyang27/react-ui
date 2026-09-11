@@ -37,7 +37,7 @@ const SponsorCard: React.FC<SponsorCardProps> = ({ sponsor, lang }) => {
                 </span>
                 <div>
                     <Anchor
-                        href="https://github.com/xiaoye/react-ui#赞助"
+                        href="https://github.com/zhangzhengyang27/react-ui#赞助"
                         target="_blank"
                         rel="noopener noreferrer"
                         className={classes.becomeBtn}

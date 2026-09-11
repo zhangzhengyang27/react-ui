@@ -106,13 +106,13 @@ const Content: React.FC<ContentProps> = ({ children, className }) => {
               searchTitleKeywords={[meta.frontmatter.title, meta.frontmatter.subtitle].filter(
                 Boolean,
               )}
-              repo="xiaoye/react-ui"
+              repo="zhangzhengyang27/react-ui"
             />
           )}
           {showDocsMeta && (
             <ComponentMeta
               filename={meta.frontmatter.filename}
-              repo="xiaoye/react-ui"
+              repo="zhangzhengyang27/react-ui"
               showChangelog={false}
               showImport={false}
             />

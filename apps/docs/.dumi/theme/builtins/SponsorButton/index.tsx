@@ -12,7 +12,7 @@ interface SponsorButtonProps {
  * 基于 react-ui Button 实现。
  */
 const SponsorButton: React.FC<SponsorButtonProps> = ({
-    href = 'https://github.com/xiaoye/react-ui',
+    href = 'https://github.com/zhangzhengyang27/react-ui',
     label = '在 GitHub 上支持'
 }) => {
     return (

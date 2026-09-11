@@ -12,7 +12,7 @@ export function TableError({ errorOf }: TableErrorProps) {
       </Text>
       如果你看到这条消息，请通过{' '}
       <Anchor
-        href="https://github.com/xiaoye/react-ui/issues/new"
+        href="https://github.com/zhangzhengyang27/react-ui/issues/new"
         target="_blank"
       >
         在 GitHub 上提交 issue

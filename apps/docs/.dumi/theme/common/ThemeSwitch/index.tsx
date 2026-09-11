@@ -1,4 +1,4 @@
-import React, { use, useRef } from 'react'
+import React, { use } from 'react'
 import {
     AiOutlineBgColors,
     AiOutlineLink,
@@ -9,7 +9,6 @@ import { ActionIcon, Menu } from '@xiaoye-react/ui'
 import { FormattedMessage, useLocation, useNavigate } from 'dumi'
 
 import useLocalStorage from '../../../hooks/useLocalStorage'
-import useThemeAnimation from '../../../hooks/useThemeAnimation'
 import type { SiteContextProps } from '../../slots/SiteContext'
 import SiteContext from '../../slots/SiteContext'
 import { getLocalizedPathname, isZhCN } from '../../utils'
@@ -66,8 +65,6 @@ const ThemeSwitch: React.FC<ThemeSwitchProps> = () => {
     const { pathname, search } = useLocation()
     const navigate = useNavigate()
     const { theme, updateSiteConfig } = use<SiteContextProps>(SiteContext)
-    const toggleAnimationTheme = useThemeAnimation()
-    const lastThemeKeyRef = useRef<string>(theme.includes('dark') ? 'dark' : 'light')
 
     const [, setTheme] = useLocalStorage<ThemeName>(REACT_UI_SITE_THEME, {
         defaultValue: undefined
@@ -128,7 +125,7 @@ const ThemeSwitch: React.FC<ThemeSwitchProps> = () => {
     ]
 
     // 处理主题切换
-    const handleThemeChange = (key: string, domEvent: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    const handleThemeChange = (key: string) => {
         // 查找对应的选项配置
         const option = themeOptions.find(opt => opt.key === key)
 
@@ -146,11 +143,10 @@ const ThemeSwitch: React.FC<ThemeSwitchProps> = () => {
                 return
             }
 
-            // 亮色/暗色模式切换时应用动画效果
-            if (['light', 'dark'].includes(key)) {
-                lastThemeKeyRef.current = key
-                toggleAnimationTheme(domEvent, theme.includes('dark'))
-            }
+            // 注意：这里不再使用从 antd 搬来的 View Transition 切换动画——
+            // 它通过注入反转的 color-scheme 制造过渡效果，再在 transition ready 时移除，
+            // 而本站主题由 React（startTransition + UIProvider effect）异步应用，
+            // 时序上必然出现「亮 → 假暗 → 亮 → 真暗」的闪烁，故整体移除。
 
             const filteredTheme = theme.filter(t => !['light', 'dark', 'auto'].includes(t))
             const newTheme = [...filteredTheme, themeKey]
@@ -194,7 +190,7 @@ const ThemeSwitch: React.FC<ThemeSwitchProps> = () => {
                                         navigate(getLocalizedPathname(linkPath!, isZhCN(pathname), search))
                                         return
                                     }
-                                    handleThemeChange(key!, e as React.MouseEvent<HTMLElement, MouseEvent>)
+                                    handleThemeChange(key!)
                                 }}
                             >
                                 <FormattedMessage id={id} />

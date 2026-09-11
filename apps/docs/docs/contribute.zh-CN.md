@@ -10,15 +10,15 @@ order: 12
 ## 贡献方式
 
 - **改进文档：** 修复不完整或缺失的文档、措辞、示例或说明。
-- **反馈建议：** 在 [GitHub Discussions](https://github.com/xiaoye/react-ui/discussions) 中分享你的使用经验、需要的功能或改进建议。
+- **反馈建议：** 在 [GitHub Discussions](https://github.com/zhangzhengyang27/react-ui/discussions) 中分享你的使用经验、需要的功能或改进建议。
 - **分享 ReactUI：** 将文档链接分享给可能感兴趣的人！
-- **贡献代码：** 通过 [GitHub Issues](https://github.com/xiaoye/react-ui/issues/new) 提出新功能建议，或认领你感兴趣的 [现有 issue](https://github.com/xiaoye/react-ui/labels/help%20wanted)。
-- **代码审查：** 帮助发现 [源码](https://github.com/xiaoye/react-ui/tree/main/packages) 中的问题或提升性能。
+- **贡献代码：** 通过 [GitHub Issues](https://github.com/zhangzhengyang27/react-ui/issues/new) 提出新功能建议，或认领你感兴趣的 [现有 issue](https://github.com/zhangzhengyang27/react-ui/labels/help%20wanted)。
+- **代码审查：** 帮助发现 [源码](https://github.com/zhangzhengyang27/react-ui/tree/main/packages) 中的问题或提升性能。
 
 ## 贡献流程
 
 1. 确定你要贡献的内容。
-2. 如果要实现新功能，请先在 [GitHub Discussions](https://github.com/xiaoye/react-ui/discussions) 中与维护者讨论。
+2. 如果要实现新功能，请先在 [GitHub Discussions](https://github.com/zhangzhengyang27/react-ui/discussions) 中与维护者讨论。
 3. 确认方案后开始编码。
 4. 运行测试 `pnpm test`，全部通过后提交 PR。
 5. 接受代码审查并修复审查中发现的问题。
@@ -27,7 +27,7 @@ order: 12
 ## 本地开发
 
 - 安装 [editorconfig](https://editorconfig.org/) 编辑器扩展。
-- Fork [仓库](https://github.com/xiaoye/react-ui)，然后克隆你的 fork。
+- Fork [仓库](https://github.com/zhangzhengyang27/react-ui)，然后克隆你的 fork。
 - 安装依赖 —— `pnpm install`
 - 构建所有包 —— `pnpm build:packages`
 - 启动文档 —— 在 `apps/docs` 目录运行 `pnpm dev`

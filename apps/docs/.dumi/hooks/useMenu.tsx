@@ -111,7 +111,15 @@ const useMenu = (options: UseMenuOptions = {}): readonly [DocsMenuItem[], string
   const { before, after } = options;
 
   const menuItems = useMemo<DocsMenuItem[]>(() => {
-    const sidebarItems = [...(sidebarData ?? [])];
+    // dumi 会为每个 demo（demo/*.md 包装文件）生成独立路由；在 2 级导航下
+    // 这些路由会全部并入 /docs/hooks 侧边栏组，导致菜单被 axis/boundaries
+    // 等 demo 条目污染（206 条 vs 实际 ~95 个 Hook）。这里统一过滤掉。
+    const isDemoRoute = (link?: string) => !!link && /\/demo(\/|$)/.test(link);
+    const sidebarItems = [...(sidebarData ?? [])].map((group) =>
+      group?.children
+        ? { ...group, children: group.children.filter((item) => !isDemoRoute(item.link)) }
+        : group,
+    );
 
     // 将设计文档未分类的放在最后
     if (pathname.startsWith('/docs/spec')) {

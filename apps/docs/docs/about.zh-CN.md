@@ -26,4 +26,4 @@ ReactUI 由小叶（xiaoye）开发维护，所有包均遵循 [semver](https://
 
 ## 许可证
 
-ReactUI 基于 [MIT](https://github.com/xiaoye/react-ui/blob/main/LICENSE) 协议开源，可自由用于商业和非商业项目。
+ReactUI 基于 [MIT](https://github.com/zhangzhengyang27/react-ui/blob/main/LICENSE) 协议开源，可自由用于商业和非商业项目。

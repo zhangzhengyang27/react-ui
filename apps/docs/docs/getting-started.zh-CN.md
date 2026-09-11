@@ -130,4 +130,4 @@ function Demo() {
 
 ## 许可证
 
-ReactUI 基于 [MIT](https://github.com/xiaoye/react-ui/blob/main/LICENSE) 协议开源。
+ReactUI 基于 [MIT](https://github.com/zhangzhengyang27/react-ui/blob/main/LICENSE) 协议开源。

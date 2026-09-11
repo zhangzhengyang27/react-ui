@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Link } from 'dumi';
 
-import useLocale from '../../../hooks/useLocale';
-
 type LinkProps = Parameters<typeof Link>[0];
 
 export interface LocaleLinkProps extends LinkProps {
@@ -16,30 +14,16 @@ const LocaleLink: React.FC<React.PropsWithChildren<LocaleLinkProps>> = ({
 }) => {
   const Component = sourceType === 'a' ? 'a' : Link;
 
-  const [, localeType] = useLocale();
-
   const localeTo = React.useMemo(() => {
     if (!to || typeof to !== 'string') {
       return to;
     }
 
-    // Auto locale switch
-    const cells = to.match(/(\/[^#]*)(#.*)?/);
-    if (cells) {
-      let path = cells[1].replace(/\/$/, '');
-      const hash = cells[2] || '';
-
-      if (localeType === 'cn' && !path.endsWith('-cn')) {
-        path = `${path}-cn`;
-      } else if (localeType === 'en' && path.endsWith('-cn')) {
-        path = path.replace(/-cn$/, '');
-      }
-
-      return `${path}${hash}`;
-    }
-
+    // 本站仅有一个 zh-CN locale（suffix: ''），所有路由都不带 -cn 后缀，
+    // 这里不再做 locale 前缀改写——之前的 `path + '-cn'` 会生成全站死链
+    //（如 /docs/hooks/use-pagination-cn，路由表里并不存在）。
     return to;
-  }, [localeType, to]);
+  }, [to]);
 
   const linkProps: LocaleLinkProps = {
     ...props,

@@ -209,7 +209,7 @@ const Header: React.FC = () => {
             aria-label="RTL Switch Button"
         />,
         <ThemeSwitch key="theme" />,
-        <a key="github" href="https://github.com/xiaoye/react-ui" target="_blank" rel="noopener noreferrer">
+        <a key="github" href="https://github.com/zhangzhengyang27/react-ui" target="_blank" rel="noopener noreferrer">
             <Tooltip label="GitHub">
                 <ActionIcon variant="transparent" size="lg">
                     <AiOutlineGithub />

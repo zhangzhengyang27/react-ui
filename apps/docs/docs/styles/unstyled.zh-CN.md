@@ -25,7 +25,7 @@ description: react-ui Unstyled 文档。
 - 一些依赖样式的组件将无法正常显示（如 [Grid](/components/grid)、[SimpleGrid](/components/simple-grid)、[Container](/components/container) 等）。
 - `lightHidden`/`darkHidden`、`visibleFrom`/`hiddenFrom` props 将不可用。
 
-要启用 `headless` 模式，请参考 [入门指南](/getting-started/)，并为 `UIProvider` 设置 `headless` 属性。
+要启用 `headless` 模式，请参考 [入门指南](/docs/getting-started)，并为 `UIProvider` 设置 `headless` 属性。
 注意，你的应用中不需要使用 [ColorSchemeScript](/docs/theming/color-schemes/#colorschemescript)，它不会产生任何效果，
 因此可以忽略指南中的相关部分。
 

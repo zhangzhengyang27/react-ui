@@ -54,7 +54,7 @@ description: react-ui Llms 文档。
 
 ## 技能
 
-ReactUI 还在 [`xiaoye/react-ui-skills`](https://github.com/xiaoye/react-ui-skills) 仓库中为 AI 编码代理提供 skills。
+ReactUI 还在 [`xiaoye/react-ui-skills`](https://github.com/zhangzhengyang27/react-ui-skills) 仓库中为 AI 编码代理提供 skills。
 
 当前可用的 skills：
 
@@ -80,9 +80,9 @@ ReactUI 还在 [`xiaoye/react-ui-skills`](https://github.com/xiaoye/react-ui-ski
 如果你的代理不支持 `$skill-name` 提及，可以用纯文本引用 skill 名称并要求代理遵循。
 
 ```bash
-npx skills add https://github.com/xiaoye/react-ui-skills --skill reactui-combobox
-npx skills add https://github.com/xiaoye/react-ui-skills --skill reactui-form
-npx skills add https://github.com/xiaoye/react-ui-skills --skill reactui-custom-components
+npx skills add https://github.com/zhangzhengyang27/react-ui-skills --skill reactui-combobox
+npx skills add https://github.com/zhangzhengyang27/react-ui-skills --skill reactui-form
+npx skills add https://github.com/zhangzhengyang27/react-ui-skills --skill reactui-custom-components
 ```
 
 ## MCP server（实验性）
@@ -193,4 +193,4 @@ ReactUI 还提供了一个 MCP server 包：
 
 ## 贡献
 
-如果你发现大语言模型文档有任何问题或有改进建议，请在我们的 GitHub 仓库[提交 issue](https://github.com/xiaoye/react-ui/issues)。
+如果你发现大语言模型文档有任何问题或有改进建议，请在我们的 GitHub 仓库[提交 issue](https://github.com/zhangzhengyang27/react-ui/issues)。

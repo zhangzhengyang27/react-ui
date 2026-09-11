@@ -50,7 +50,7 @@ const locales = {
     }
 }
 
-const branchUrl = (repo: string) => `https://github.com/${repo}/edit/master/`
+const branchUrl = (repo: string) => `https://github.com/${repo}/edit/main/`
 
 function isVersionNumber(value?: string) {
     return value && /^\d+\.\d+\.\d+$/.test(value)

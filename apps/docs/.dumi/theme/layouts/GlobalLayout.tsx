@@ -44,6 +44,7 @@ const isThemeDark = (theme: ThemeName[], systemTheme: 'light' | 'dark') => {
 }
 
 const GlobalLayout: React.FC = () => {
+    // 站点全局布局：主题状态、UIProvider、方向与移动端模式都在这里管理
     const outlet = useOutlet()
     const [searchParams, setSearchParams] = useSearchParams()
     const [{ theme = [], direction, isMobile, bannerVisible = false, dynamicTheme, isDark = false }, setSiteState] =
@@ -126,11 +127,11 @@ const GlobalLayout: React.FC = () => {
     useEffect(() => {
         const color = theme.find(t => t === 'light' || t === 'dark')
         const html = document.querySelector<HTMLHtmlElement>('html')
-        const resolvedColor = theme.includes('auto') && systemTheme ? systemTheme : color
-        if (resolvedColor) {
-            html?.setAttribute('data-prefers-color', resolvedColor)
-            html?.setAttribute('data-ui-color-scheme', resolvedColor)
-        }
+        const resolvedColor = theme.includes('auto') && systemTheme ? systemTheme : (color ?? 'light')
+        // 无论 theme 是否为空都必须写入：SPA 路由切换时 html 属性会残留上一页的值，
+        // dumi 样式读 data-prefers-color、ui 组件读 data-ui-color-scheme，一旦不同步就会半暗半亮
+        html?.setAttribute('data-prefers-color', resolvedColor)
+        html?.setAttribute('data-ui-color-scheme', resolvedColor)
 
         setSiteState(prev => ({ ...prev, isDark: isThemeDark(theme, systemTheme) }))
     }, [systemTheme, theme])

@@ -246,5 +246,5 @@ export default {
 ## 故障排除
 
 如果你在 Next.js 应用中使用 ReactUI 时遇到任何问题，请查看
-[GitHub Discussions](https://github.com/xiaoye/react-ui/discussions)，其中涵盖了
+[GitHub Discussions](https://github.com/zhangzhengyang27/react-ui/discussions)，其中涵盖了
 与 App Router 和服务端组件相关的最常见问题。

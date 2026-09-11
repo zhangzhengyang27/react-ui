@@ -121,5 +121,5 @@ const config = {
 
 你可以在 ReactUI GitHub Discussions 中找到测试示例：
 
-- [如何测试 Modal/Drawer/Popover 组件？](https://github.com/xiaoye/react-ui/discussions)
-- [如何测试 Select/MultiSelect 组件？](https://github.com/xiaoye/react-ui/discussions)
+- [如何测试 Modal/Drawer/Popover 组件？](https://github.com/zhangzhengyang27/react-ui/discussions)
+- [如何测试 Select/MultiSelect 组件？](https://github.com/zhangzhengyang27/react-ui/discussions)

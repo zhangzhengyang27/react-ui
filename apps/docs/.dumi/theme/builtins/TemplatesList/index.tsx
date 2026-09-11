@@ -52,7 +52,7 @@ const TemplatesList: React.FC<TemplatesListProps> = ({ type, name, community = f
                     </div>
                     <Anchor
                         component="a"
-                        href="https://github.com/xiaoye/react-ui/discussions"
+                        href="https://github.com/zhangzhengyang27/react-ui/discussions"
                         target="_blank"
                         size="sm"
                     >

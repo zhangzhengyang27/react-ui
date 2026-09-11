@@ -4,7 +4,7 @@ import { Tooltip } from '@xiaoye-react/ui'
 
 import classes from './EditButton.module.css'
 
-const branchUrl = 'https://github.com/xiaoye/react-ui/edit/master/'
+const branchUrl = 'https://github.com/zhangzhengyang27/react-ui/edit/main/'
 
 export interface EditButtonProps {
     title: React.ReactNode

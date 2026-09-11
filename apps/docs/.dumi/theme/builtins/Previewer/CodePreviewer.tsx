@@ -10,7 +10,8 @@ import ClientOnly from '../../common/ClientOnly'
 import CodePreview from '../../common/CodePreview'
 import SiteContext from '../../slots/SiteContext'
 import Actions from './Actions'
-import { CodeExpandProvider, RealCode, useCodeExpand } from './CodeExpandContext'
+import { CodeExpandProvider, useCodeExpand } from './CodeExpandContext'
+import type { CodeHighlightTabsCode, RealCode } from './CodeExpandContext'
 import classes from './CodePreviewer.module.css'
 
 interface CodePreviewerInnerProps extends AntdPreviewerProps {
@@ -114,6 +115,10 @@ const CodePreviewerInner: React.FC<CodePreviewerInnerProps> = props => {
     // 如果 DemoEngine 注册了真实代码，CodePreviewer 用真实代码替换默认 entryCode。
     const hasRealCode = codeExpandCtx?.hasRealCode ?? false
     const realCodeSource = normalizeRealCodeToSourceCode(codeExpandCtx?.realCode ?? null)
+    const realCodeFiles: CodeHighlightTabsCode[] | undefined =
+        Array.isArray(codeExpandCtx?.realCode) && codeExpandCtx.realCode.length > 1
+            ? (codeExpandCtx.realCode as CodeHighlightTabsCode[])
+            : undefined
     const previewSourceCode = hasRealCode && realCodeSource ? realCodeSource : entryCode
 
     const codeBox: React.ReactNode = (
@@ -137,7 +142,8 @@ const CodePreviewerInner: React.FC<CodePreviewerInnerProps> = props => {
             {codeExpand && (
                 <section className={highlightClass} key="code">
                     <CodePreview
-                        sourceCode={previewSourceCode}
+                        sourceCode={realCodeFiles ? undefined : previewSourceCode}
+                        files={realCodeFiles}
                         jsxCode={hasRealCode ? undefined : jsx}
                         styleCode={hasRealCode ? undefined : style}
                         error={liveDemoError}

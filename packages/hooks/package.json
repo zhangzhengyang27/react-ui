@@ -16,7 +16,7 @@
         "typescript"
     ],
     "sideEffects": false,
-    "main": "es/index.js",
+    "main": "es/index.cjs",
     "module": "es/index.js",
     "types": "es/index.d.ts",
     "publishConfig": {
@@ -26,7 +26,7 @@
         ".": {
             "types": "./es/index.d.ts",
             "import": "./es/index.js",
-            "require": "./es/index.js"
+            "require": "./es/index.cjs"
         }
     },
     "files": [

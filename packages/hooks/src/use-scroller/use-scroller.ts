@@ -32,6 +32,9 @@ export function useScroller<T extends HTMLElement = HTMLDivElement>(
   const { scrollAmount = 200, draggable = true, onScrollStateChange } = options
 
   const containerRef = useRef<T | null>(null)
+  // 用 state 跟踪容器节点：监听/观察器 effect 依赖它，
+  // 元素卸载重挂载时才能重新绑定（只依赖 ref.current 会失联）
+  const [containerNode, setContainerNode] = useState<T | null>(null)
 
   const [canScrollStart, setCanScrollStart] = useState(false)
   const [canScrollEnd, setCanScrollEnd] = useState(false)
@@ -73,9 +76,9 @@ export function useScroller<T extends HTMLElement = HTMLDivElement>(
   }, [])
 
   useEffect(() => {
-    updateScrollState()
-    const container = containerRef.current
+    const container = containerNode
     if (container) {
+      updateScrollState()
       container.addEventListener('scroll', updateScrollState)
       const resizeObserver = new ResizeObserver(updateScrollState)
       resizeObserver.observe(container)
@@ -85,7 +88,7 @@ export function useScroller<T extends HTMLElement = HTMLDivElement>(
       }
     }
     return undefined
-  }, [updateScrollState])
+  }, [containerNode, updateScrollState])
 
   const scroll = useCallback(
     (direction: 'start' | 'end') => {
@@ -172,6 +175,7 @@ export function useScroller<T extends HTMLElement = HTMLDivElement>(
   const assignRef: RefCallback<T | null> = useCallback(
     (node) => {
       containerRef.current = node
+      setContainerNode(node)
       if (node) {
         updateScrollState()
       }

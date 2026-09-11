@@ -836,8 +836,10 @@ export function useSplitter<T extends HTMLElement = any>(
     [emitCollapseTransitions, updateSizes, pixelMode, measureContainer]
   );
 
+  const [containerNode, setContainerNode] = useState<T | null>(null);
   const containerRefCallback: React.RefCallback<T | null> = useCallback((node) => {
     containerRef.current = node;
+    setContainerNode(node);
   }, []);
 
   useEffect(() => {
@@ -845,7 +847,7 @@ export function useSplitter<T extends HTMLElement = any>(
       return undefined;
     }
 
-    const node = containerRef.current;
+    const node = containerNode;
     if (!node) {
       return undefined;
     }
@@ -874,7 +876,7 @@ export function useSplitter<T extends HTMLElement = any>(
       cancelAnimationFrame(frame);
       observer.disconnect();
     };
-  }, [pixelMode, orientation]);
+  }, [pixelMode, orientation, containerNode]);
 
   const handleRefCallbacks = useRef<Map<number, (node: HTMLElement | null) => void>>(new Map());
   const handleElementControllers = useRef<Map<number, AbortController>>(new Map());

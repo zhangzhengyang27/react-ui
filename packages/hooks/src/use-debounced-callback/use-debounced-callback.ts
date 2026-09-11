@@ -48,6 +48,10 @@ export function useDebouncedCallback<T extends (...args: any[]) => any>(
         debounceTimerRef.current = 0
         maxWaitTimerRef.current = 0
         hasTrailingRef.current = false
+        // 周期结束点（尾随触发/取消/maxWait 触发）统一恢复前导状态：
+        // 前导锁定的复位计时器会被下一次调用顶层的 clearTimeout 清掉，
+        // 若不在此恢复，首个突发过后 isFirstCallRef 永远为 false，leading 从此失效
+        isFirstCallRef.current = true
     }
 
     const lastCallback = useMemo(() => {

@@ -9,7 +9,10 @@ export function useThrottledCallbackWithClearTimeout<T extends (...args: any[]) 
     const waitRef = useRef(wait)
     const timeoutRef = useRef<number>(-1)
 
-    const clearTimeout = () => window.clearTimeout(timeoutRef.current)
+    // 引用必须稳定：useThrottledCallback/useThrottledState 以它作为 effect cleanup，
+    // 若每次渲染都是新引用，cleanup 会在每轮渲染后执行并清掉挂起的尾随定时器，
+    // active 将永远停留在 false，节流在首次触发后失效
+    const clearTimeout = useCallback(() => window.clearTimeout(timeoutRef.current), [])
 
     const callThrottledCallback = useCallback(
         (...args: Parameters<T>) => {

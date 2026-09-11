@@ -323,7 +323,8 @@ export function useFloatingWindow<T extends HTMLElement>(
     return () => {
       observer.disconnect()
     }
-  }, [options.constrainToViewport, options.constrainOffset])
+    // element 依赖保证节点卸载重挂载后重新绑定观察器
+  }, [element, options.constrainToViewport, options.constrainOffset])
 
   const setPosition = useCallback(
     (position: FloatingWindowPositionConfig) => {

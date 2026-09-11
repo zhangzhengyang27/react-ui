@@ -96,6 +96,12 @@ export function useMove<T extends HTMLElement = any>(
                     isSliding.current = false
                     setActive(false)
                     unbindEvents()
+                    // 取消未执行的 onScrub 帧并恢复 user-select，
+                    // 否则节点会永久保留拖拽时写入的 user-select: none
+                    cancelAnimationFrame(frame.current)
+                    if (node) {
+                        node.style.userSelect = ''
+                    }
                     scrubEndTimerRef.current = window.setTimeout(() => {
                         scrubEndTimerRef.current = null
                         handlersRef.current?.onScrubEnd?.()
@@ -139,6 +145,9 @@ export function useMove<T extends HTMLElement = any>(
                 if (scrubEndTimerRef.current !== null) {
                     window.clearTimeout(scrubEndTimerRef.current)
                     scrubEndTimerRef.current = null
+                }
+                if (node) {
+                    node.style.userSelect = ''
                 }
             }
 

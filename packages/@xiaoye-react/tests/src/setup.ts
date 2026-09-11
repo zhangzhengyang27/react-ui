@@ -18,6 +18,26 @@ if (typeof window !== 'undefined' && !window.ResizeObserver) {
     window.ResizeObserver = ResizeObserverMock as any
 }
 
+// jsdom 未实现 IntersectionObserver：embla-carousel（Carousel）初始化时必需
+class IntersectionObserverMock {
+    root = null
+    rootMargin = ''
+    thresholds = []
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+    takeRecords() {
+        return []
+    }
+}
+
+if (typeof window !== 'undefined' && !window.IntersectionObserver) {
+    window.IntersectionObserver = IntersectionObserverMock as any
+}
+if (typeof globalThis !== 'undefined' && !(globalThis as any).IntersectionObserver) {
+    ;(globalThis as any).IntersectionObserver = IntersectionObserverMock
+}
+
 if (typeof window !== 'undefined' && !Element.prototype.scrollTo) {
     Element.prototype.scrollTo = function scrollTo(this: Element, options?: ScrollToOptions | number, y?: number) {
         if (typeof options === 'object' && options !== null) {

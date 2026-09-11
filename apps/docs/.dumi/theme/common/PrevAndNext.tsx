@@ -4,7 +4,6 @@ import { AiOutlineLeft, AiOutlineRight } from '../icons'
 import { clsx } from 'clsx'
 
 import useMenu, { type DocsMenuItem } from '../../hooks/useMenu'
-import SiteContext from '../slots/SiteContext'
 
 import classes from './PrevAndNext.module.css'
 
@@ -36,8 +35,6 @@ const PrevAndNext: React.FC<{ rtl?: boolean }> = ({ rtl }) => {
 
     const [menuItems, selectedKey] = useMenu({ before, after })
 
-    const { isMobile } = React.use(SiteContext)
-
     const [prev, next] = useMemo(() => {
         const flatMenu = flattenMenu(menuItems)
         if (!flatMenu) {
@@ -51,10 +48,6 @@ const PrevAndNext: React.FC<{ rtl?: boolean }> = ({ rtl }) => {
         })
         return [flatMenu[activeMenuItemIndex - 1] ?? null, flatMenu[activeMenuItemIndex + 1] ?? null]
     }, [menuItems, selectedKey])
-
-    if (isMobile) {
-        return null
-    }
 
     return (
         <section className={classes.prevNextNav}>

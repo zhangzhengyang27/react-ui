@@ -4,7 +4,6 @@ import { getBannerData } from '../../pages/index/components/util';
 import type { ThemeName } from '../common/ThemeSwitch';
 
 export interface SiteContextProps {
-  isMobile: boolean;
   bannerVisible: boolean;
   direction: 'ltr' | 'rtl';
   theme: ThemeName[];
@@ -19,7 +18,6 @@ export interface SiteContextProps {
 }
 
 const SiteContext = React.createContext<SiteContextProps>({
-  isMobile: false,
   bannerVisible: !!getBannerData(),
   direction: 'ltr',
   theme: ['light'],

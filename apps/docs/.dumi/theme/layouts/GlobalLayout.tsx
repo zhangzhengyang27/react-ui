@@ -18,7 +18,6 @@ import SiteContext from '../slots/SiteContext'
 
 type SiteState = Partial<Omit<SiteContextProps, 'updateSiteConfig'>>
 
-const RESPONSIVE_MOBILE = 768
 
 export const REACT_UI_NOT_SHOW_BANNER = 'REACT_UI_NOT_SHOW_BANNER'
 
@@ -47,9 +46,8 @@ const GlobalLayout: React.FC = () => {
     // 站点全局布局：主题状态、UIProvider、方向与移动端模式都在这里管理
     const outlet = useOutlet()
     const [searchParams, setSearchParams] = useSearchParams()
-    const [{ theme = [], direction, isMobile, bannerVisible = false, dynamicTheme, isDark = false }, setSiteState] =
+    const [{ theme = [], direction, bannerVisible = false, dynamicTheme, isDark = false }, setSiteState] =
         useLayoutState<SiteState>({
-            isMobile: false,
             direction: 'ltr',
             theme: [],
             isDark: false,
@@ -119,10 +117,6 @@ const GlobalLayout: React.FC = () => {
         [searchParams, setSearchParams]
     )
 
-    const updateMobileMode = useCallback(() => {
-        updateSiteConfig({ isMobile: window.innerWidth < RESPONSIVE_MOBILE })
-    }, [updateSiteConfig])
-
     // 设置 data-prefers-color / data-ui-color-scheme 属性和 isDark 状态
     useEffect(() => {
         const color = theme.find(t => t === 'light' || t === 'dark')
@@ -176,14 +170,7 @@ const GlobalLayout: React.FC = () => {
             bannerVisible: hasBannerContent && (bannerLastTime ? !!storedBannerVisible : true)
         })
 
-        // Handle isMobile
-        updateMobileMode()
-
-        window.addEventListener('resize', updateMobileMode)
-        return () => {
-            window.removeEventListener('resize', updateMobileMode)
-        }
-    }, [bannerData, bannerLastTime, searchParams, systemTheme, updateMobileMode])
+    }, [bannerData, bannerLastTime, searchParams, systemTheme])
 
     const siteContextValue = React.useMemo<SiteContextProps>(
         () => ({
@@ -191,11 +178,10 @@ const GlobalLayout: React.FC = () => {
             updateSiteConfig,
             theme: theme!,
             isDark: isDark!,
-            isMobile: isMobile!,
             bannerVisible,
             dynamicTheme
         }),
-        [isMobile, direction, updateSiteConfig, theme, isDark, bannerVisible, dynamicTheme]
+        [direction, updateSiteConfig, theme, isDark, bannerVisible, dynamicTheme]
     )
 
     // Sandpack 样式按需注入：动态 import 使 @codesandbox/sandpack-react 整棵依赖树

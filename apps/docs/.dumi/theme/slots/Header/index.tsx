@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { AiOutlineGithub, AiOutlineMenu } from '../../icons'
+import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import { AiOutlineGithub } from '../../icons'
 import { ActionIcon, Alert, Popover, Select, Tooltip } from '@xiaoye-react/ui'
 import { clsx } from 'clsx'
 import dayjs from 'dayjs'
@@ -22,15 +22,6 @@ import Navigation from './Navigation'
 import SponsorsNav from './SponsorsNav'
 import SwitchBtn from './SwitchBtn'
 import classes from './Header.module.css'
-
-const RESPONSIVE_XS = 1120
-const RESPONSIVE_SM = 1200
-
-interface HeaderState {
-    menuVisible: boolean
-    windowWidth: number
-    searching: boolean
-}
 
 interface VersionItem {
     version: string
@@ -71,32 +62,13 @@ const Header: React.FC = () => {
         }))
     }, [versions, isLoading, isChineseMirror])
 
-    const [headerState, setHeaderState] = useState<HeaderState>({
-        menuVisible: false,
-        windowWidth: 1400,
-        searching: false
-    })
-
-    const { direction, isMobile, bannerVisible, updateSiteConfig } = React.use(SiteContext)
-    const pingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+    const { direction, bannerVisible, updateSiteConfig } = React.use(SiteContext)
     const location = useLocation()
     const { pathname, search } = location
 
     const [, setTopBannerDay] = useLocalStorage<string>(REACT_UI_NOT_SHOW_BANNER, {
         defaultValue: undefined
     })
-
-    const handleHideMenu = useCallback(() => {
-        setHeaderState(prev => ({ ...prev, menuVisible: false }))
-    }, [])
-
-    const onWindowResize = useCallback(() => {
-        setHeaderState(prev => ({ ...prev, windowWidth: window.innerWidth }))
-    }, [])
-
-    const onMenuVisibleChange = useCallback((visible: boolean) => {
-        setHeaderState(prev => ({ ...prev, menuVisible: visible }))
-    }, [])
 
     const onDirectionChange = () => {
         updateSiteConfig({ direction: direction !== 'rtl' ? 'rtl' : 'ltr' })
@@ -106,10 +78,6 @@ const Header: React.FC = () => {
         updateSiteConfig({ bannerVisible: false })
         setTopBannerDay(dayjs().toISOString())
     }
-
-    useEffect(() => {
-        handleHideMenu()
-    }, [handleHideMenu, location])
 
     // dumi 内置 SearchBar 的 input 元素缺少 id/name/aria-label，触发 a11y 警告。
     // 在此通过 useEffect 注入这些属性，让 label[for] 与 input[id] 能正确关联。
@@ -123,17 +91,6 @@ const Header: React.FC = () => {
             }
         }
     }, [location, lang])
-
-    useEffect(() => {
-        onWindowResize()
-        window.addEventListener('resize', onWindowResize)
-        return () => {
-            window.removeEventListener('resize', onWindowResize)
-            if (pingTimerRef.current) {
-                clearTimeout(pingTimerRef.current)
-            }
-        }
-    }, [onWindowResize])
 
     const handleVersionChange = useCallback((url: string) => {
         const currentUrl = window.location.href
@@ -150,9 +107,8 @@ const Header: React.FC = () => {
 
     const nextDirectionText = useMemo<string>(() => (direction !== 'rtl' ? 'RTL' : 'LTR'), [direction])
 
-    const { menuVisible, windowWidth, searching } = headerState
-
-    const isHome = ['', 'index', 'index-cn'].includes(pathname)
+    // dumi 的首页 pathname 是 '/'；'/index(-cn)' 兼容历史的首页路由别名
+    const isHome = ['/', '/index', '/index-cn'].includes(pathname)
     const isZhCN = lang === 'cn'
     const isRTL = direction === 'rtl'
 
@@ -160,13 +116,6 @@ const Header: React.FC = () => {
     const bannerData = getBannerData()
     const bannerTitle = bannerData?.title || ''
     const bannerHref = bannerData?.href || ''
-
-    let responsive: null | 'narrow' | 'crowded' = null
-    if (windowWidth < RESPONSIVE_XS) {
-        responsive = 'crowded'
-    } else if (windowWidth < RESPONSIVE_SM) {
-        responsive = 'narrow'
-    }
 
     const headerClassName = clsx(classes.header, 'clearfix', { 'home-header': isHome })
 
@@ -179,14 +128,12 @@ const Header: React.FC = () => {
         <Navigation
             key="nav"
             {...sharedProps}
-            responsive={responsive}
-            isMobile={isMobile}
             directionText={nextDirectionText}
             onDirectionChange={onDirectionChange}
         />
     )
 
-    let menu: React.ReactNode[] = [
+    const menu: React.ReactNode[] = [
         navigationNode,
         <SponsorsNav key="sponsors" />,
         <Select
@@ -218,35 +165,10 @@ const Header: React.FC = () => {
         </a>
     ]
 
-    if (windowWidth < RESPONSIVE_XS) {
-        menu = searching ? [] : [navigationNode]
-    } else if (windowWidth < RESPONSIVE_SM) {
-        menu = searching ? [] : menu
-    }
-
     const barClassName = isHome ? `${classes.bar} ${classes.barHome}` : `${classes.bar} ${classes.barNotHome}`
 
     return (
         <header className={headerClassName}>
-            {isMobile && (
-                <Popover
-                    opened={menuVisible}
-                    onChange={onMenuVisibleChange}
-                    position="bottom-end"
-                    withArrow
-                    arrowPosition="center"
-                    width={300}
-                >
-                    <Popover.Target>
-                        <ActionIcon variant="transparent" size="lg" className={classes.navPhoneIcon}>
-                            <AiOutlineMenu />
-                        </ActionIcon>
-                    </Popover.Target>
-                    <Popover.Dropdown>
-                        <div className={classes.popoverDropdown}>{menu}</div>
-                    </Popover.Dropdown>
-                </Popover>
-            )}
             {isZhCN && bannerVisible && bannerTitle && bannerHref && (
                 <Alert className={classes.banner} withCloseButton onClose={onBannerClose} color="blue" variant="filled">
                     <span>{bannerTitle}</span>
@@ -273,7 +195,8 @@ const Header: React.FC = () => {
                 <div className={classes.menuCol}>
                     <div className={classes.menuRow}>
                         <DumiSearchBar />
-                        {!isMobile && menu}
+                        {/* 本站不做移动端适配：导航栏始终渲染完整菜单，不提供汉堡折叠形态 */}
+                        {menu}
                     </div>
                 </div>
             </div>

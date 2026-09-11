@@ -12,7 +12,6 @@ import { FormattedMessage, Link } from 'dumi'
 
 import useLocale from '../../../hooks/useLocale'
 import useLocation from '../../../hooks/useLocation'
-import SiteContext from '../SiteContext'
 import AdditionalInfo from './AdditionalInfo'
 
 import classes from './Footer.module.css'
@@ -44,7 +43,6 @@ interface FooterColumn {
 const Footer: React.FC = () => {
     const location = useLocation()
     const [locale] = useLocale(locales)
-    const { isMobile } = React.use(SiteContext)
 
     const { getLink } = location
 
@@ -158,7 +156,7 @@ const Footer: React.FC = () => {
                 <div className={classes.container}>
                     <div className={classes.columns}>
                         {getColumns.map((column, index) => (
-                            <div key={index} style={{ marginBottom: isMobile && index === 0 ? 60 : 0 }}>
+                            <div key={index}>
                                 <h2 className={classes.columnTitle}>{column.title}</h2>
                                 {column.items.map((item, itemIndex) => (
                                     <div key={`${index}-${itemIndex}-${item.url}`} className={classes.item}>

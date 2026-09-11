@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Text, Title } from '@xiaoye-react/ui';
 import { clsx } from 'clsx';
 
-import SiteContext from '../../../theme/slots/SiteContext';
 import GroupMaskLayer from './GroupMaskLayer';
 
 import classes from './Group.module.css';
@@ -48,7 +47,6 @@ const Group: React.FC<React.PropsWithChildren<GroupProps>> = (props) => {
     }
   }, [backgroundPrefetchList]);
 
-  const { isMobile } = React.use(SiteContext);
   return (
     <div
       style={
@@ -73,7 +71,7 @@ const Group: React.FC<React.PropsWithChildren<GroupProps>> = (props) => {
                 fontWeight: 900,
                 color: titleColor,
                 margin: 0,
-                fontSize: isMobile ? 'var(--ui-h2-font-size)' : 'var(--ui-h1-font-size)',
+                fontSize: 'var(--ui-h1-font-size)',
               }}
             >
               {title}
@@ -84,7 +82,7 @@ const Group: React.FC<React.PropsWithChildren<GroupProps>> = (props) => {
             style={{
               color: titleColor,
               marginTop: 'var(--ui-spacing-sm)',
-              marginBottom: isMobile ? 'var(--ui-spacing-xl)' : 'var(--ui-spacing-lg)',
+              marginBottom: 'var(--ui-spacing-lg)',
             }}
           >
             {description}

@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import { clsx } from 'clsx';
 import { useIntl } from 'dumi';
 import useSWR from 'swr';
 import type { SWRConfiguration } from 'swr';
@@ -45,12 +44,12 @@ function getContributorKey(filename?: string): string | null {
 const CONTRIBUTORS_URL = '/contributors.json';
 
 const swrConfig: SWRConfiguration<ContributorsData, Error> = {
-  errorRetryCount: 3,
+  // contributors.json 目前没有对应的生成脚本，生产环境会 404：静默降级为不展示
+  errorRetryCount: 0,
 };
 
 const Contributors: React.FC<ContributorsProps> = ({ filename }) => {
   const { formatMessage } = useIntl();
-  const { isMobile } = React.use(SiteContext);
   const dataKey = getContributorKey(filename);
 
   const { data, error, isLoading } = useSWR<ContributorsData, Error>(
@@ -60,7 +59,6 @@ const Contributors: React.FC<ContributorsProps> = ({ filename }) => {
   );
 
   if (error) {
-    console.error('Failed to fetch contributors data:', error);
     return null;
   }
 
@@ -82,7 +80,7 @@ const Contributors: React.FC<ContributorsProps> = ({ filename }) => {
   });
 
   return (
-    <div className={clsx({ [classes.listMobile]: isMobile })}>
+    <div>
       <div className={classes.title}>{formatMessage({ id: 'app.content.contributors' })}</div>
       <ul className={classes.list}>
         {contributors.map((item) => (

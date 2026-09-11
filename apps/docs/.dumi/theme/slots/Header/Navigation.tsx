@@ -1,6 +1,4 @@
 import * as React from 'react'
-import { AiOutlineMenu } from '../../icons'
-import { Menu } from '@xiaoye-react/ui'
 import { useFullSidebarData, useLocation } from 'dumi'
 
 import useLocale from '../../../hooks/useLocale'
@@ -32,14 +30,12 @@ const locales = {
 }
 
 export interface NavigationProps extends SharedProps {
-    isMobile: boolean
-    responsive: null | 'narrow' | 'crowded'
     directionText: string
     onDirectionChange: () => void
 }
 
 const HeaderNavigation: React.FC<NavigationProps> = props => {
-    const { isZhCN, isMobile, responsive, directionText, onDirectionChange } = props
+    const { isZhCN, directionText, onDirectionChange } = props
     const { pathname, search } = useLocation()
     const [locale] = useLocale(locales)
 
@@ -82,7 +78,9 @@ const HeaderNavigation: React.FC<NavigationProps> = props => {
                   label: (
                       <Link
                           to={utils.getLocalizedPathname(
-                              blogList.sort((a, b) => (a.frontmatter?.date > b.frontmatter?.date ? -1 : 1))[0].link,
+                              // 复制后再排序：blogList 是 dumi 全局侧边栏数据的引用，render 中原地 sort 会污染共享状态
+                              [...blogList]
+                                  .sort((a, b) => (a.frontmatter?.date > b.frontmatter?.date ? -1 : 1))[0].link,
                               isZhCN,
                               search
                           )}
@@ -94,58 +92,6 @@ const HeaderNavigation: React.FC<NavigationProps> = props => {
               }
             : null
     ].filter(Boolean) as { label: React.ReactNode; key: string }[]
-
-    const additionalItems = (
-        <>
-            <Menu.Item
-                onClick={() => {
-                    window.open('https://github.com/zhangzhengyang27/react-ui', '_blank', 'noopener,noreferrer')
-                }}
-            >
-                GitHub
-            </Menu.Item>
-            <Menu.Item onClick={onDirectionChange}>{directionText}</Menu.Item>
-        </>
-    )
-
-    // Mobile: inline vertical nav with additional items inline
-    if (isMobile) {
-        return (
-            <nav className={classes.navInline}>
-                {navItems.map(item => (
-                    <div
-                        key={item.key}
-                        className={
-                            activeMenuItem === item.key
-                                ? `${classes.navInlineItem} ${classes.navInlineItemActive}`
-                                : classes.navInlineItem
-                        }
-                    >
-                        {item.label}
-                    </div>
-                ))}
-                <div className={classes.navInlineItem}>
-                    <a href="https://github.com/zhangzhengyang27/react-ui" target="_blank" rel="noopener noreferrer">
-                        GitHub
-                    </a>
-                </div>
-                <div className={classes.navInlineItem}>
-                    <button
-                        onClick={onDirectionChange}
-                        style={{
-                            background: 'transparent',
-                            border: 0,
-                            cursor: 'pointer',
-                            padding: 0,
-                            color: 'var(--ui-color-text)'
-                        }}
-                    >
-                        {directionText}
-                    </button>
-                </div>
-            </nav>
-        )
-    }
 
     // Desktop: horizontal nav
     return (
@@ -160,16 +106,6 @@ const HeaderNavigation: React.FC<NavigationProps> = props => {
                     {item.label}
                 </div>
             ))}
-            {responsive === 'crowded' && (
-                <Menu trigger="click" position="bottom-end">
-                    <Menu.Target>
-                        <button className={classes.additionalTrigger} type="button">
-                            <AiOutlineMenu />
-                        </button>
-                    </Menu.Target>
-                    <Menu.Dropdown>{additionalItems}</Menu.Dropdown>
-                </Menu>
-            )}
         </nav>
     )
 }

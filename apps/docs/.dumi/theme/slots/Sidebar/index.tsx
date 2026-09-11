@@ -31,7 +31,6 @@ const DocsMenu: React.FC<DocsMenuProps> = ({ items, selectedKey }) => {
   const seenLabels = new Set<string>();
   const renderLeaf = (item: DocsMenuItem, extraClass?: string) => {
     const label = nodeText(item.label);
-    if (label === 'Colors Generator') console.log('[SIDEBAR-DEBUG]', item.key, JSON.stringify(label), 'dup=', seenLabels.has(label));
     if (label && seenLabels.has(label)) return null;
     if (label) seenLabels.add(label);
     return (

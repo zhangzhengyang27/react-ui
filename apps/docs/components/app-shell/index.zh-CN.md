@@ -8,6 +8,7 @@ group:
   order: 2
 ---
 
+
 ## 何时使用 {#when-to-use}
 
 需要构建带有侧边栏、头部、导航的应用外壳布局，常用于后台管理系统时使用。
@@ -434,7 +435,7 @@ function Demo() {
 
 ### CSS 变量
 
-<DataTable head={['变量', '描述']} data={[ [<Code>--app-shell-navbar-width</Code>, 'Navbar 宽度'], [<Code>--app-shell-navbar-offset</Code>, 'Navbar 偏移'], [<Code>--app-shell-aside-width</Code>, 'Aside 宽度'], [<Code>--app-shell-aside-offset</Code>, 'Aside 偏移'], [<Code>--app-shell-header-height</Code>, 'Header 高度'], [<Code>--app-shell-header-offset</Code>, 'Header 偏移'], [<Code>--app-shell-footer-height</Code>, 'Footer 高度'], [<Code>--app-shell-footer-offset</Code>, 'Footer 偏移'], ]}></DataTable>
+<DataTable head={['变量', '描述']} data={[ [<code>--app-shell-navbar-width</code>, 'Navbar 宽度'], [<code>--app-shell-navbar-offset</code>, 'Navbar 偏移'], [<code>--app-shell-aside-width</code>, 'Aside 宽度'], [<code>--app-shell-aside-offset</code>, 'Aside 偏移'], [<code>--app-shell-header-height</code>, 'Header 高度'], [<code>--app-shell-header-offset</code>, 'Header 偏移'], [<code>--app-shell-footer-height</code>, 'Footer 高度'], [<code>--app-shell-footer-offset</code>, 'Footer 偏移'], ]}></DataTable>
 
 在样式中使用 CSS 变量的示例：
 

@@ -1,5 +1,7 @@
 import React, { use, useRef } from 'react'
 import {
+    AiOutlineBgColors,
+    AiOutlineLink,
     AiOutlineSun,
     AiOutlineSync
 } from '../../icons'

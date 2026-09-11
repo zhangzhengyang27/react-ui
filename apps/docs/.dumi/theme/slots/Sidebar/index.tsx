@@ -17,19 +17,36 @@ interface DocsMenuProps {
  * - 顶层分组（有 children）-> 分组标题 + 平铺子项
  * - 二级分组（type: 'group'）-> 子分组标题 + 平铺子项
  */
+/** 提取 React 节点的纯文本，用于按标题去重（dumi 会把页面目录下的实现文件
+ * 也注册成同名子路由，导致侧边栏出现重复项） */
+const nodeText = (node: React.ReactNode): string => {
+  if (node === null || node === undefined || typeof node === 'boolean') return '';
+  if (typeof node === 'string' || typeof node === 'number') return String(node);
+  if (Array.isArray(node)) return node.map(nodeText).join('');
+  if (React.isValidElement(node)) return nodeText((node.props as { children?: React.ReactNode })?.children);
+  return '';
+};
+
 const DocsMenu: React.FC<DocsMenuProps> = ({ items, selectedKey }) => {
-  const renderLeaf = (item: DocsMenuItem, extraClass?: string) => (
-    <div
-      key={item.key}
-      className={clsx(
-        classes.menuItem,
-        extraClass,
-        item.key === selectedKey && classes.menuItemActive,
-      )}
-    >
-      {item.label}
-    </div>
-  );
+  const seenLabels = new Set<string>();
+  const renderLeaf = (item: DocsMenuItem, extraClass?: string) => {
+    const label = nodeText(item.label);
+    if (label === 'Colors Generator') console.log('[SIDEBAR-DEBUG]', item.key, JSON.stringify(label), 'dup=', seenLabels.has(label));
+    if (label && seenLabels.has(label)) return null;
+    if (label) seenLabels.add(label);
+    return (
+      <div
+        key={item.key}
+        className={clsx(
+          classes.menuItem,
+          extraClass,
+          item.key === selectedKey && classes.menuItemActive,
+        )}
+      >
+        {item.label}
+      </div>
+    );
+  };
 
   const renderChildren = (children: DocsMenuItem[]) =>
     children.map((child) => {

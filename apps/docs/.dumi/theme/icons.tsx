@@ -28,7 +28,9 @@ function IconBase({ size, data, ...rest }: IconBaseProps & { data: IconNode }) {
             fill="currentColor"
             strokeWidth="0"
             {...data.attr}
-            {...(size !== undefined ? { height: size, width: size } : null)}
+            {...(size !== undefined
+                ? { height: size, width: size }
+                : { height: '1em', width: '1em' })}
             {...rest}
         >
             {data.child.map((node, i) => renderNode(node, i))}

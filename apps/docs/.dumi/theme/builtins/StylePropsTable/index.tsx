@@ -1,5 +1,6 @@
 import React from 'react';
-import { Code, DataTable, STYLE_PROPS_DATA } from '@xiaoye-react/ui';
+import { Code, STYLE_PROPS_DATA } from '@xiaoye-react/ui';
+import DataTable from '../DataTable';
 
 const THEME_KEYS: Record<string, string> = {
     color: 'theme.colors',

@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
-import { Notifications, Button } from '@xiaoye-react/ui';
+import React from 'react';
+import { Notifications, notifications, Button } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => {
   const show = () => {
-    // @ts-ignore
-    if (typeof window !== 'undefined' && (window as any).notifications?.show) {
-      // @ts-ignore
-      (window as any).notifications.show({ title: '提示', message: '操作成功' });
-    }
+    notifications.show({ title: '提示', message: '操作成功' });
   };
   return (
     <DemoWrap>

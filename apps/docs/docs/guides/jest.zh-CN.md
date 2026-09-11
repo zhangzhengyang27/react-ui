@@ -115,7 +115,7 @@ const config = {
 不同框架的 Jest 配置可能有所不同，并且通常会随时间变化。
 要了解如何为你的框架配置 Jest，可以查看 [Jest](https://jestjs.io/docs/getting-started)
 和 [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) 文档，
-或参考现成的[模板](/getting-started)。大多数模板都包含 Jest 配置，你可以将其作为参考。
+或参考现成的[模板](/docs/getting-started)。大多数模板都包含 Jest 配置，你可以将其作为参考。
 
 ## 测试示例
 

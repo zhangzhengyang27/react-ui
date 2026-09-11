@@ -112,14 +112,10 @@ const FilesCodePreview: React.FC<
     )
 }
 
-const CodePreview: React.FC<CodePreviewProps> = props => {
-    const { sourceCode = '', files, jsxCode = '', styleCode = '', entryName, error, onSourceChange } = props
+const SingleCodePreview: React.FC<CodePreviewProps> = props => {
+    const { sourceCode = '', jsxCode = '', styleCode = '', entryName, error, onSourceChange } = props
 
     const { codeType, setCodeType } = React.use(DemoContext)
-
-    if (files && files.length > 1) {
-        return <FilesCodePreview files={files} entryName={entryName} error={error} onSourceChange={onSourceChange} />
-    }
 
     const sourceCodes = useMemo<Codes>(() => {
         const codes: Codes = {}
@@ -229,6 +225,25 @@ const CodePreview: React.FC<CodePreviewProps> = props => {
             ))}
         </Tabs>
     )
+}
+
+/**
+ * 顶层只按文件形态分发：单文件与多文件路径是各自独立的组件，
+ * files 数量在组件挂载期间跨越 >1 阈值时也不会触发 React hooks 顺序错误
+ */
+const CodePreview: React.FC<CodePreviewProps> = props => {
+    const { files } = props
+    if (files && files.length > 1) {
+        return (
+            <FilesCodePreview
+                files={files}
+                entryName={props.entryName}
+                error={props.error}
+                onSourceChange={props.onSourceChange}
+            />
+        )
+    }
+    return <SingleCodePreview {...props} />
 }
 
 export default CodePreview

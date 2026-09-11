@@ -8,7 +8,7 @@
 
   mc.registerTool(
     {
-      name: 'search-antd-docs',
+      name: 'search-react-ui-docs',
       description: 'Search react-ui component documentation and return relevant results.',
       inputSchema: {
         type: 'object',

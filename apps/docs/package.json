@@ -7,7 +7,7 @@
         "dev": "dumi dev",
         "build": "dumi build",
         "preview": "dumi preview",
-        "docs:gen": "tsx scripts/docgen.ts && tsx scripts/generate-css-exports.ts && tsx scripts/generate-count.ts && tsx scripts/generate-demo-registry.ts && tsx scripts/generate-theme-tokens.ts",
+        "docs:gen": "tsx scripts/docgen.ts && tsx scripts/generate-css-exports.ts",
         "predev": "pnpm docs:gen",
         "prebuild": "pnpm docs:gen"
     },

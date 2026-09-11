@@ -45,12 +45,9 @@ export default defineConfig({
         '@xiaoye-react/hooks': path.join(__dirname, '../../packages/hooks/src/index.ts'),
         // @xiaoye-react/demo 包未发布，指向本地 DemoEngine（已导出 Demo/UIDemo/ConfiguratorControlOptions）
         '@xiaoye-react/demo': path.join(__dirname, '.dumi/theme/builtins/DemoEngine/index.ts'),
-        // docgen 生成的 JSON 数据
+        // docgen 生成的 JSON 数据（仅保留有消费者的产物）
         '@docs/docgen': path.join(__dirname, '.docgen/docgen.json'),
-        '@docs/hooks': path.join(__dirname, '.docgen/hooks.json'),
         '@docs/css-exports': path.join(__dirname, '.docgen/css-exports.json'),
-        '@docs/theme-tokens': path.join(__dirname, '.docgen/theme-tokens.json'),
-        '@docs/count': path.join(__dirname, '.docgen/count.json'),
         // styles-api 数据
         '@xiaoye-react/docs-styles-api': path.join(__dirname, '../../packages/@xiaoye-react/docs-styles-api/src/index.ts'),
         // colors-generator
@@ -66,7 +63,7 @@ export default defineConfig({
     extraRehypePlugins: [rehypeDocs, rehypeChangelog],
     extraRemarkPlugins: [remarkMeta, remarkAnchor],
 
-    metas: [{ name: 'theme-color', content: '#1677ff' }],
+    metas: [{ name: 'theme-color', content: '#339AF0' }],
 
     // 阶段六：导航由 docDirs/atomDirs 目录结构自动生成（dumi 2.4.47 不支持顶层 nav 配置键）。
     // 一级导航 = docs/ 下各子目录 + components/（dumi 默认按目录聚合为侧边栏与顶部导航）。

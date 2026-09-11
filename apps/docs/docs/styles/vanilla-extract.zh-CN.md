@@ -34,13 +34,6 @@ description: react-ui VanillaExtract 文档。
 
 <InstallScript packages="@ui/vanilla-extract"></InstallScript>
 
-## 模板
-
-你可以使用以下模板快速开始，或作为自己配置的参考。
-注意，所有模板都只包含最基础的配置。
-
-<TemplatesList name={[ 'vite-vanilla-extract-template', 'next-vanilla-extract-template', ]}></TemplatesList>
-
 ## 主题
 
 Vanilla extract 提供了 [createTheme](https://vanilla-extract.style/documentation/theming/)

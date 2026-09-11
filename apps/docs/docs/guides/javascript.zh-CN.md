@@ -50,4 +50,4 @@ function MyButton({ myProp, ...others }) {
 你会得到类型错误。TypeScript 还能帮助你在迁移到 ReactUI 新版本时——当你代码中的 props/组件被移除/重命名/更改时，你会得到类型错误。
 
 如果你还不熟悉 TypeScript，使用 ReactUI 搭配 TypeScript 将是一个很好的学习机会。
-你可以使用任何[模板](/getting-started)开始——所有模板都内置 TypeScript 支持。
+你可以使用任何[模板](/docs/getting-started)开始——所有模板都内置 TypeScript 支持。

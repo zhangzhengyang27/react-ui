@@ -15,7 +15,7 @@ description: react-ui PostcssPreset 文档。
 ## 用法
 
 注意，PostCSS 的配置方式可能因构建工具/框架而异。请参考
-[框架专用指南](/getting-started) 了解更多。
+[框架专用指南](/docs/getting-started) 了解更多。
 将 `postcss-preset-ui` 添加到你的 `postcss.config.cjs` 文件中（通常位于项目根目录）：
 
 

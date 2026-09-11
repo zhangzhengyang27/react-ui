@@ -15,13 +15,10 @@ export function HotKeysHandler() {
   const { toggleDirection } = useDirection();
   const computedColorScheme = useComputedUIColorScheme('light');
 
-  useHotkeys(
-    [
-      ['mod + J', () => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')],
-      ['mod + shift + L', () => !EXCLUDE_RTL.includes(pathname) && toggleDirection()],
-    ],
-    [],
-  );
+  useHotkeys([
+    ['mod + J', () => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')],
+    ['mod + shift + L', () => !EXCLUDE_RTL.includes(pathname) && toggleDirection()],
+  ]);
 
   return null;
 }

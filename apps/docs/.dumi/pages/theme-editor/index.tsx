@@ -33,6 +33,7 @@ const locales = {
         reset: '重置',
         copy: '复制配置',
         copied: '已复制到剪贴板',
+        copyError: '复制失败，请手动复制',
         saveSuccessfully: '主题配置已保存',
         resetSuccessfully: '主题配置已重置',
         tabColors: '颜色',
@@ -85,6 +86,7 @@ const locales = {
         reset: 'Reset',
         copy: 'Copy Config',
         copied: 'Copied to clipboard',
+        copyError: 'Copy failed, please copy manually',
         saveSuccessfully: 'Theme config saved',
         resetSuccessfully: 'Theme config reset',
         tabColors: 'Colors',
@@ -303,7 +305,7 @@ const ThemeEditorPage: React.FC = () => {
         } catch {
             notifications.show({
                 title: locale.title,
-                message: locale.copied,
+                message: locale.copyError,
                 color: 'red',
                 autoClose: 2500
             })

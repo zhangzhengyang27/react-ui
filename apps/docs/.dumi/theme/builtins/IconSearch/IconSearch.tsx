@@ -23,10 +23,15 @@ const IconSearch: React.FC = () => {
     const [searchKey, setSearchKey] = useState('')
     const [activeCategory, setActiveCategory] = useState<string>(ALL_VALUE)
 
-    const handleSearchIcon = debounce((e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchKey(e.target.value)
-        document.getElementById('list-of-icons')?.scrollIntoView({ behavior: 'smooth' })
-    }, 300)
+    // debounce 实例必须稳定：在 render 中新建会让防抖失效（每次渲染重置计时器）
+    const handleSearchIcon = useMemo(
+        () =>
+            debounce((e: React.ChangeEvent<HTMLInputElement>) => {
+                setSearchKey(e.target.value)
+                document.getElementById('list-of-icons')?.scrollIntoView({ behavior: 'smooth' })
+            }, 300),
+        []
+    )
 
     const handleChangeCategory = useCallback((value: string) => {
         setActiveCategory(value)

@@ -35,12 +35,6 @@ function listWorkspacePackages() {
 
 const WORKSPACE_PACKAGES = listWorkspacePackages();
 
-function readPackageExports(pkg) {
-  const pkgJson = JSON.parse(fs.readFileSync(path.join(SCOPED_DIR, pkg, 'package.json'), 'utf8'));
-  const exportKeys = Object.keys(pkgJson.exports ?? {});
-  return { exports: exportKeys, pkgJson };
-}
-
 // ---------- 导出符号构建（递归解析 export * 链） ----------
 function resolveTarget(base, spec) {
   const p = path.resolve(base, spec);

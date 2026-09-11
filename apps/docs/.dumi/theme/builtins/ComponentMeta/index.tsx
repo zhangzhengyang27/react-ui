@@ -10,7 +10,6 @@ import {
     AiOutlineLoading
 } from '../../icons'
 import { Anchor, Divider, Flex, Text, Tooltip } from '@xiaoye-react/ui'
-import kebabCase from 'lodash/kebabCase'
 
 import useIssueCount from '../../../hooks/useIssueCount'
 import useLocale from '../../../hooks/useLocale'
@@ -50,7 +49,8 @@ const locales = {
     }
 }
 
-const branchUrl = (repo: string) => `https://github.com/${repo}/edit/main/`
+// dumi frontmatter.filename 相对于 apps/docs，需带上该前缀才能指向仓库内的真实文件
+const branchUrl = (repo: string) => `https://github.com/${repo}/edit/main/apps/docs/`
 
 function isVersionNumber(value?: string) {
     return value && /^\d+\.\d+\.\d+$/.test(value)
@@ -97,10 +97,10 @@ const ComponentMeta: React.FC<ComponentMetaProps> = props => {
     // ======================== Source ========================
     const [filledSource, abbrSource, componentLlmsPath] = React.useMemo(() => {
         if (String(source) === 'true' && component) {
-            const kebabComponent = kebabCase(component)
+            // 组件源码目录为 packages/ui/src/components/<PascalCase>，与 frontmatter.title 一致
             return [
-                `https://github.com/${repo}/blob/master/components/${kebabComponent}`,
-                `components/${kebabComponent}`,
+                `https://github.com/${repo}/blob/main/packages/ui/src/components/${component}`,
+                `packages/ui/src/components/${component}`,
                 null
             ]
         }

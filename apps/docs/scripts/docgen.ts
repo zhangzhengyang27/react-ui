@@ -28,24 +28,6 @@ interface ComponentDoc {
     modifiers: string[]
 }
 
-interface HookParamDoc {
-    name: string
-    type: string
-    required: boolean
-    defaultValue: string | null
-    description: string
-}
-
-interface HookDoc {
-    name: string
-    description: string
-    params: HookParamDoc[]
-    returns: {
-        type: string
-        description: string
-    }
-}
-
 function getLiteralStringValues(type: Type): string[] {
     if (type.isUnion()) {
         return type.getUnionTypes().flatMap(getLiteralStringValues)
@@ -279,82 +261,6 @@ function parseParamTag(
     return { name, type: typeMatch[1], defaultValue, description }
 }
 
-function extractHookParams(func: import('ts-morph').FunctionDeclaration): HookParamDoc[] {
-    const jsDoc = func.getJsDocs()[0]
-    const tagMap: Record<string, { type?: string; defaultValue?: string; description: string }> = {}
-
-    if (jsDoc) {
-        for (const tag of jsDoc.getTags()) {
-            if (tag.getTagName() !== 'param') continue
-            const parsed = parseParamTag(tag.getText())
-            if (parsed) {
-                tagMap[parsed.name] = {
-                    type: parsed.type,
-                    defaultValue: parsed.defaultValue,
-                    description: parsed.description
-                }
-            }
-        }
-    }
-
-    return func.getParameters().map(param => {
-        const name = param.getName()
-        const required = !param.isOptional()
-        const initializer = param.getInitializer()?.getText() ?? null
-        const paramType = param.getTypeNode()?.getText() ?? param.getType().getText(func)
-
-        const tag = tagMap[name]
-        const description = tag ? cleanDescription(tag.description) : ''
-        const defaultValue = initializer ?? tag?.defaultValue ?? null
-        const type = normalizeType(tag?.type ?? paramType)
-
-        return {
-            name,
-            type,
-            required,
-            defaultValue,
-            description
-        }
-    })
-}
-
-function generateHookDoc(project: Project, hookFilePath: string): HookDoc | null {
-    let sourceFile = project.getSourceFile(hookFilePath)
-    if (!sourceFile) {
-        sourceFile = project.addSourceFileAtPath(hookFilePath)
-    }
-
-    const func = sourceFile.getFunctions().find(f => f.isExported() && f.getName()?.startsWith('use'))
-    const variable = sourceFile.getVariableDeclarations().find(v => v.isExported() && v.getName().startsWith('use'))
-
-    const declaration = func ?? variable
-    if (!declaration) {
-        console.warn(`[docgen] ${hookFilePath}: no exported useXxx declaration found`)
-        return null
-    }
-
-    const name = declaration.getName()!
-    const jsDoc = Node.isFunctionDeclaration(declaration)
-        ? declaration.getJsDocs()[0]
-        : declaration.getVariableStatement()?.getJsDocs()[0]
-    const description = jsDoc ? cleanDescription(jsDoc.getDescription()) : ''
-
-    const returnsTag = jsDoc?.getTags().find((tag: JSDocTag) => tag.getTagName() === 'returns')
-    const returnsDescription = returnsTag ? cleanDescription(returnsTag.getCommentText() ?? '') : ''
-
-    const returnType = declaration.getType().getText(declaration)
-
-    return {
-        name,
-        description,
-        params: func ? extractHookParams(func) : [],
-        returns: {
-            type: returnType,
-            description: returnsDescription
-        }
-    }
-}
-
 function main() {
     const project = new Project({
         tsConfigFilePath: path.join(ROOT_DIR, 'tsconfig.json')
@@ -382,32 +288,6 @@ function main() {
     fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true })
     fs.writeFileSync(OUTPUT_PATH, JSON.stringify(docs, null, 2), 'utf-8')
     console.log(`[docgen] Generated ${Object.keys(docs).length} component docs -> ${OUTPUT_PATH}`)
-
-    // Generate hook docs
-    const hooksDir = path.join(ROOT_DIR, 'packages/hooks/src')
-    const hookDocs: Record<string, HookDoc> = {}
-
-    const hookEntries = fs.readdirSync(hooksDir, { withFileTypes: true })
-    for (const entry of hookEntries) {
-        if (!entry.isDirectory() || !entry.name.startsWith('use-')) continue
-        const hookFilePath = path.join(hooksDir, entry.name, `${entry.name.replace(/^use-/, 'use-')}.ts`)
-        const mainHookPath = path.join(hooksDir, entry.name, `${entry.name}.ts`)
-        const targetPath = fs.existsSync(mainHookPath) ? mainHookPath : hookFilePath
-
-        if (!fs.existsSync(targetPath)) {
-            console.warn(`[docgen] ${entry.name}: hook file not found, skipping`)
-            continue
-        }
-
-        const doc = generateHookDoc(project, targetPath)
-        if (doc) {
-            hookDocs[doc.name] = doc
-        }
-    }
-
-    const hooksOutputPath = path.join(path.dirname(OUTPUT_PATH), 'hooks.json')
-    fs.writeFileSync(hooksOutputPath, JSON.stringify(hookDocs, null, 2), 'utf-8')
-    console.log(`[docgen] Generated ${Object.keys(hookDocs).length} hook docs -> ${hooksOutputPath}`)
 }
 
 main()

@@ -23,8 +23,9 @@ export default defineConfig({
     build: {
         lib: {
             entry: fileURLToPath(new URL('src/index.ts', import.meta.url)),
-            formats: ['es'],
-            fileName: () => 'index.js'
+            // 同时产出 ESM(.js) 与 CJS(.cjs)：type: module 下 .cjs 才会被 Node 当作 CommonJS
+            formats: ['es', 'cjs'],
+            fileName: format => (format === 'es' ? 'index.js' : 'index.cjs')
         },
         outDir: 'es',
         minify: true,

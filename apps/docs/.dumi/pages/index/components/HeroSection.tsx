@@ -11,15 +11,15 @@ import classes from './HeroSection.module.css'
 
 const locales = {
     cn: {
-        slogan: '基于 React 的现代化组件库，内置 140+ 组件与 83+ Hooks。',
-        subSlogan: '覆盖 Charts、Dates、Schedule、Form 等专业场景，主题随心，TypeScript 优先。',
+        slogan: '基于 React 的现代化组件库，内置 120+ 组件与 83+ Hooks。',
+        subSlogan: '覆盖 Dates、Schedule、Form 等专业场景，主题随心，TypeScript 优先。',
         start: '快速开始',
         components: '浏览组件',
         aiTheme: 'AI 生成主题'
     },
     en: {
-        slogan: 'A modern React component library with 140+ components and 83+ hooks.',
-        subSlogan: '140+ components, 83+ hooks, plus Charts, Dates, Schedule and Form modules.',
+        slogan: 'A modern React component library with 120+ components and 83+ hooks.',
+        subSlogan: '120+ components, 83+ hooks, plus Dates, Schedule and Form modules.',
         start: 'Getting Started',
         components: 'Browse Components',
         aiTheme: 'AI Theme'

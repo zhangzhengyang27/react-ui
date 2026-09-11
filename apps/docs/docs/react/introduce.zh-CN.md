@@ -14,7 +14,6 @@ title: react-ui 介绍
 - 🛡 使用 TypeScript 开发，提供完整的类型定义文件。
 - 🧩 组件采用工厂模式 + CSS Modules，组件 props 继承自 `ElementProps`，完整支持 HTML 属性。
 - 🪝 配套提供 `@xiaoye-react/hooks` 工具钩子集合，覆盖常见状态管理场景。
-- 📊 内置 charts 图表组件（基于 recharts）与 form 表单方案。
 
 ## 兼容环境
 

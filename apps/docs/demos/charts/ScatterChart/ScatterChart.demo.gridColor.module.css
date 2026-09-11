@@ -1,8 +1,0 @@
-[data-ui-color-scheme='light'] .root {
-    --chart-grid-color: alpha(var(--ui-color-black), 0.15);
-    --chart-text-color: var(--ui-color-gray-7);
-  }
-  [data-ui-color-scheme='dark'] .root {
-    --chart-grid-color: alpha(var(--ui-color-white), 0.15);
-    --chart-text-color: var(--ui-color-dark-0);
-  }

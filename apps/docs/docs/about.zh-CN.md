@@ -22,7 +22,6 @@ ReactUI 由小叶（xiaoye）开发维护，所有包均遵循 [semver](https://
 - **CSS Modules** — 样式隔离与 CSS 变量系统
 - **Floating UI** — 浮动元素定位
 - **Embla Carousel** — 轮播组件
-- **Recharts** — 图表组件
 
 ## 许可证
 

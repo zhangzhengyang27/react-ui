@@ -65,7 +65,7 @@ import '@xiaoye-react/ui/style.css';
 这些文件包含与 `styles.css` 文件相同的样式，但包裹在 `@layer ui` 指令中。注意：当前 `@xiaoye-react/ui` 包仅提供 `style.css`（不含 `@layer` 包裹的 layer 变体），此节内容适用于提供 layer 变体的其他 ReactUI 包。
 
 
-提供了 layer 变体的 ReactUI 包（如 dates、charts、schedule 等）支持导入带 `@layer ui`
+提供了 layer 变体的 ReactUI 包（如 dates、schedule 等）支持导入带 `@layer ui`
 指令的单包样式：
 
 ```tsx

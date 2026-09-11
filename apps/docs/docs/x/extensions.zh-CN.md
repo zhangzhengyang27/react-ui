@@ -9,12 +9,11 @@ description: react-ui Extensions 文档。
 ## 官方扩展
 
 官方扩展由 ReactUI 维护者构建。这些扩展的包名具有 `@xiaoye-react/` 作用域，
-例如 `@xiaoye-react/dates` 或 `@xiaoye-react/charts`。
+例如 `@xiaoye-react/dates`。
 
 官方扩展列表：
 
 - [@xiaoye-react/dates](/docs/dates/getting-started) – 日期和时间选择器、日历以及其他日期相关组件
-- [@xiaoye-react/charts](/docs/charts/getting-started) – 基于 recharts 的图表和数据可视化组件
 - [@xiaoye-react/notifications](/docs/x/notifications) – 通知系统
 - [@xiaoye-react/code-highlight](/docs/x/code-highlight) – ReactUI 网站上使用的代码高亮组件
 - [@xiaoye-react/spotlight](/docs/x/spotlight) – 控制中心（`Ctrl + K` 搜索栏），可用于搜索

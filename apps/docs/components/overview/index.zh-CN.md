@@ -52,27 +52,6 @@ function App() {
 - [Kbd 键盘按键](/components/kbd) — 展示键盘快捷键
 - [Mark 标记](/components/mark) — 文本高亮
 
-### 图表 {#charts}
-
-基于 recharts 封装的图表组件，更多见 [Charts 文档](/docs/charts/getting-started)。
-
-- [AreaChart 面积图](/components/area-chart)
-- [BarChart 柱状图](/components/bar-chart)
-- [LineChart 折线图](/components/line-chart)
-- [DonutChart 环形图](/components/donut-chart)
-- [PieChart 饼图](/components/pie-chart)
-- [RadarChart 雷达图](/components/radar-chart)
-- [ScatterChart 散点图](/components/scatter-chart)
-- [Heatmap 热力图](/components/heatmap)
-- [BarsList 条形列表](/components/bars-list)
-- [Sparkline 迷你走势图](/components/sparkline)
-- [CompositeChart 组合图](/components/composite-chart)
-- [FunnelChart 漏斗图](/components/funnel-chart)
-- [BubbleChart 气泡图](/components/bubble-chart)
-- [RadialBarChart 径向柱状图](/components/radial-bar-chart)
-- [SankeyChart 桑基图](/components/sankey-chart)
-- [TreeMap 矩形树图](/components/treemap)
-
 ### 布局 {#layout}
 
 用于组织页面结构与间距。
@@ -240,6 +219,5 @@ react-ui 提供完整的主题系统能力，详见：
 - [快速开始](/docs/react/getting-started) — 在项目中集成 react-ui
 - [Hooks 工具集](/docs/hooks/package) — 83+ 实用 Hooks
 - [Form 表单模块](/docs/form/package) — 复杂表单解决方案
-- [Charts 图表](/docs/charts/getting-started) — 数据可视化
 - [Dates 日期](/docs/dates/getting-started) — 日期时间组件
 - [Schedule 日程](/docs/schedule/getting-started) — 日程视图组件

@@ -5,7 +5,6 @@ import {
     AiOutlineCalendar,
     AiOutlineFileText,
     AiOutlineForm,
-    AiOutlinePieChart,
     AiOutlineThunderbolt,
     AiOutlineTool
 } from '../../../theme/icons'
@@ -23,18 +22,13 @@ const locales = {
         features: [
             {
                 icon: <AiOutlineAppstore />,
-                title: '140+ 组件',
-                desc: 'Button、Modal、Form、Table、Chart 等原子与复合组件，开箱即用。'
+                title: '120+ 组件',
+                desc: 'Button、Modal、Form、Table 等原子与复合组件，开箱即用。'
             },
             {
                 icon: <AiOutlineThunderbolt />,
                 title: '83+ Hooks',
                 desc: 'use-form、use-list-state、use-disclosure 等状态与 DOM 工具 hook。'
-            },
-            {
-                icon: <AiOutlinePieChart />,
-                title: 'Charts 图表',
-                desc: '基于 recharts 的 AreaChart、BarChart、LineChart、DonutChart 等。'
             },
             {
                 icon: <AiOutlineCalendar />,
@@ -69,18 +63,13 @@ const locales = {
         features: [
             {
                 icon: <AiOutlineAppstore />,
-                title: '140+ Components',
-                desc: 'Button, Modal, Form, Table, Chart and more, ready to use.'
+                title: '120+ Components',
+                desc: 'Button, Modal, Form, Table, and more, ready to use.'
             },
             {
                 icon: <AiOutlineThunderbolt />,
                 title: '83+ Hooks',
                 desc: 'use-form, use-list-state, use-disclosure and more utilities.'
-            },
-            {
-                icon: <AiOutlinePieChart />,
-                title: 'Charts',
-                desc: 'AreaChart, BarChart, LineChart, DonutChart based on recharts.'
             },
             {
                 icon: <AiOutlineCalendar />,

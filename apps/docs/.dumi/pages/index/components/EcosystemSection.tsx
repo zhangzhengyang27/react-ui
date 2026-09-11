@@ -27,7 +27,7 @@ const locales = {
                 key: 'components',
                 icon: <AiOutlineAppstore />,
                 title: '组件库',
-                desc: '140+ 原子与复合组件，覆盖表单、数据展示、反馈、导航等场景。',
+                desc: '120+ 原子与复合组件，覆盖表单、数据展示、反馈、导航等场景。',
                 path: '/components/overview/'
             },
             {
@@ -36,13 +36,6 @@ const locales = {
                 title: 'Hooks',
                 desc: 'use-form、use-list-state、use-disclosure 等状态与 DOM 工具 hook。',
                 path: '/docs/hooks/package/'
-            },
-            {
-                key: 'charts',
-                icon: <AiOutlinePieChart />,
-                title: 'Charts',
-                desc: 'AreaChart、BarChart、LineChart、DonutChart 等基于 recharts 的图表组件。',
-                path: '/docs/charts/getting-started/'
             },
             {
                 key: 'dates',
@@ -76,13 +69,13 @@ const locales = {
     },
     en: {
         title: 'Explore Ecosystem',
-        desc: 'From components to business modules, from state management to charts.',
+        desc: 'From components to business modules, from state management to forms.',
         items: [
             {
                 key: 'components',
                 icon: <AiOutlineAppstore />,
                 title: 'Components',
-                desc: '140+ atomic and composite components for forms, data display, feedback, navigation.',
+                desc: '120+ atomic and composite components for forms, data display, feedback, navigation.',
                 path: '/components/overview/'
             },
             {
@@ -91,13 +84,6 @@ const locales = {
                 title: 'Hooks',
                 desc: 'use-form, use-list-state, use-disclosure and more utilities.',
                 path: '/docs/hooks/package/'
-            },
-            {
-                key: 'charts',
-                icon: <AiOutlinePieChart />,
-                title: 'Charts',
-                desc: 'AreaChart, BarChart, LineChart, DonutChart based on recharts.',
-                path: '/docs/charts/getting-started/'
             },
             {
                 key: 'dates',

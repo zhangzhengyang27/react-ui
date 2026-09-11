@@ -47,12 +47,6 @@ const officialExtensions = [
         href: '/docs/dates/getting-started'
     },
     {
-        name: '@xiaoye-react/charts',
-        label: '图表',
-        description: '基于 recharts 的图表和数据可视化组件',
-        href: '/docs/charts/getting-started'
-    },
-    {
         name: '@xiaoye-react/carousel',
         label: 'Carousel',
         description: '基于 embla-carousel 的轮播组件',

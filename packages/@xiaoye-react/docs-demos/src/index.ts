@@ -141,23 +141,6 @@ export * as TimeValueDemos from './demos/dates/TimeValue';
 export * as TimeGridDemos from './demos/dates/TimeGrid';
 export * as MiniCalendarDemos from './demos/dates/MiniCalendar';
 
-// @xiaoye-react/charts
-export * as AreaChartDemos from './demos/charts/AreaChart';
-export * as BarChartDemos from './demos/charts/BarChart';
-export * as LineChartDemos from './demos/charts/LineChart';
-export * as SparklineDemos from './demos/charts/Sparkline';
-export * as DonutChartDemos from './demos/charts/DonutChart';
-export * as PieChartDemos from './demos/charts/PieChart';
-export * as RadarChartDemos from './demos/charts/RadarChart';
-export * as ScatterChartDemos from './demos/charts/ScatterChart';
-export * as BubbleChartDemos from './demos/charts/BubbleChart';
-export * as CompositeChartDemos from './demos/charts/CompositeChart';
-export * as RadialBarChartDemos from './demos/charts/RadialBarChart';
-export * as FunnelChartDemos from './demos/charts/FunnelChart';
-export * as HeatmapDemos from './demos/charts/Heatmap';
-export * as BarsListDemos from './demos/charts/BarsList';
-export * as TreemapDemos from './demos/charts/Treemap';
-export * as SankeyChartDemos from './demos/charts/SankeyChart';
 
 // @xiaoye-react/schedule
 export * as ScheduleDemos from './demos/schedule/Schedule';

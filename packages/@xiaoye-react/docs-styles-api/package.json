@@ -29,7 +29,6 @@
   },
   "devDependencies": {
     "@xiaoye-react/carousel": "workspace:*",
-    "@xiaoye-react/charts": "workspace:*",
     "@xiaoye-react/code-highlight": "workspace:*",
     "@xiaoye-react/ui": "workspace:*",
     "@xiaoye-react/dates": "workspace:*",
@@ -46,7 +45,6 @@
     "embla-carousel-react": "^8.6.0",
     "react": "19.1.1",
     "react-dom": "19.1.1",
-    "recharts": "^3.8.1",
     "shiki": "^4.2.0"
   }
 }

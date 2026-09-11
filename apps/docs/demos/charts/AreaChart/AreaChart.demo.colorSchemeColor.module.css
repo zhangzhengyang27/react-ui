@@ -1,6 +1,0 @@
-[data-ui-color-scheme='light'] .root {
-    --area-color: var(--ui-color-orange-8);
-  }
-  [data-ui-color-scheme='dark'] .root {
-    --area-color: var(--ui-color-lime-4);
-  }

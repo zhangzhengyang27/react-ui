@@ -1,9 +1,0 @@
-.root {
-  [data-ui-color-scheme='light'] & {
-    --line-color: var(--ui-color-orange-8);
-  }
-
-  [data-ui-color-scheme='dark'] & {
-    --line-color: var(--ui-color-lime-4);
-  }
-}

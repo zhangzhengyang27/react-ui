@@ -1,6 +1,0 @@
-.root {
-    --line-chart-height: 300px;
-
-    width: 100%;
-    height: var(--line-chart-height);
-}

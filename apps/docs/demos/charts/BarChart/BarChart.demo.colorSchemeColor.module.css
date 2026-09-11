@@ -1,6 +1,0 @@
-[data-ui-color-scheme='light'] .root {
-    --bar-color: var(--ui-color-orange-8);
-  }
-  [data-ui-color-scheme='dark'] .root {
-    --bar-color: var(--ui-color-lime-4);
-  }

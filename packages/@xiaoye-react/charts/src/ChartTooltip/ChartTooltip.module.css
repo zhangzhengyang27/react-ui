@@ -1,0 +1,77 @@
+.tooltip {
+    --tooltip-bg: white;
+    --tooltip-border: var(--ui-color-gray-3, #e9ecef);
+    --tooltip-title: var(--ui-color-dark-9, #000);
+    --tooltip-text: var(--ui-color-gray-7, #495057);
+
+    background: var(--tooltip-bg);
+    border: 1px solid var(--tooltip-border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 12%);
+    font-size: 12px;
+    line-height: 1.4;
+    min-width: 120px;
+}
+
+.label {
+    color: var(--tooltip-title);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.swatch {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.name {
+    color: var(--tooltip-text);
+    margin-inline-end: 12px;
+}
+
+.value {
+    color: var(--tooltip-title);
+    font-weight: 600;
+    margin-inline-start: auto;
+    font-variant-numeric: tabular-nums;
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 16px;
+    padding-top: 8px;
+}
+
+.legendItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+}
+
+.legendSwatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}

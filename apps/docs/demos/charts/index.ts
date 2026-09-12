@@ -1,5 +1,0 @@
-export { usage } from './Charts.demo.usage'
-export { line } from './Charts.demo.line'
-export { bar } from './Charts.demo.bar'
-export { donut } from './Charts.demo.donut'
-export { sparkline } from './Charts.demo.sparkline'

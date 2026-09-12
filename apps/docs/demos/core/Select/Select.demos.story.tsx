@@ -93,44 +93,14 @@ export const Demo_clearable = {
   render: renderDemo(demos.clearable),
 };
 
-export const Demo_clearSectionMode = {
-  name: '⭐ Demo: clearSectionMode',
-  render: renderDemo(demos.clearSectionMode),
-};
-
 export const Demo_sections = {
   name: '⭐ Demo: sections',
   render: renderDemo(demos.sections),
 };
 
-export const Demo_dropdownOpened = {
-  name: '⭐ Demo: dropdownOpened',
-  render: renderDemo(demos.dropdownOpened),
-};
-
 export const Demo_dropdownPosition = {
   name: '⭐ Demo: dropdownPosition',
   render: renderDemo(demos.dropdownPosition),
-};
-
-export const Demo_dropdownAnimation = {
-  name: '⭐ Demo: dropdownAnimation',
-  render: renderDemo(demos.dropdownAnimation),
-};
-
-export const Demo_dropdownPadding = {
-  name: '⭐ Demo: dropdownPadding',
-  render: renderDemo(demos.dropdownPadding),
-};
-
-export const Demo_dropdownShadow = {
-  name: '⭐ Demo: dropdownShadow',
-  render: renderDemo(demos.dropdownShadow),
-};
-
-export const Demo_withinPopover = {
-  name: '⭐ Demo: withinPopover',
-  render: renderDemo(demos.withinPopover),
 };
 
 export const Demo_dropdownOffset = {
@@ -143,22 +113,7 @@ export const Demo_renderOption = {
   render: renderDemo(demos.renderOption),
 };
 
-export const Demo_dropdownWidth = {
-  name: '⭐ Demo: dropdownWidth',
-  render: renderDemo(demos.dropdownWidth),
-};
-
-export const Demo_autoSelectOnBlur = {
-  name: '⭐ Demo: autoSelectOnBlur',
-  render: renderDemo(demos.autoSelectOnBlur),
-};
-
 export const Demo_loading = {
   name: '⭐ Demo: loading',
   render: renderDemo(demos.loading),
-};
-
-export const Demo_floatingHeight = {
-  name: '⭐ Demo: floatingHeight',
-  render: renderDemo(demos.floatingHeight),
 };

@@ -22,7 +22,6 @@ function Demo() {
         label="使用原生滚动"
         placeholder="选择值"
         data={data}
-        withScrollArea={false}
         styles={{ dropdown: { maxHeight: 200, overflowY: 'auto' } }}
         mt="md"
       />
@@ -49,7 +48,6 @@ function Demo() {
         label="使用原生滚动"
         placeholder="选择值"
         data={data}
-        withScrollArea={false}
         styles={{ dropdown: { maxHeight: 200, overflowY: 'auto' } }}
         mt="md"
       />

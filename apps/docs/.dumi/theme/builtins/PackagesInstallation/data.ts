@@ -26,11 +26,6 @@ export const PACKAGES_DATA: PackageItem[] = [
     dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui', '@xiaoye-react/dates', 'dayjs'],
   },
   {
-    package: '@xiaoye-react/charts',
-    description: '基于 Recharts 的图表库',
-    dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui', '@xiaoye-react/charts', 'recharts'],
-  },
-  {
     package: '@xiaoye-react/notifications',
     description: '通知系统',
     dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui', '@xiaoye-react/notifications'],

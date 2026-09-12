@@ -57,6 +57,12 @@ export const ComboboxTarget = factory<ComboboxTargetFactory>((props, ref) => {
         },
         onKeyDown: (event: React.KeyboardEvent<HTMLElement>) => {
             childProps.onKeyDown?.(event)
+        },
+        // blur 用捕获阶段监听：焦点从 wrapper 内任意子元素（如 TagsInput 内层输入框）离开时都能触发。
+        // 选项点击依赖 ComboboxOption 的 mousedown preventDefault，不会产生 blur 而误关下拉
+        onBlurCapture: (event: React.FocusEvent<HTMLElement>) => {
+            ctx.onTargetBlur(event)
+            childProps.onBlurCapture?.(event)
         }
     })
 })

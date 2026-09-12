@@ -10,27 +10,27 @@ function Demo() {
       label="你最喜欢的库"
       placeholder="选择值"
       data={['React', 'Angular', 'Vue', 'Svelte']}
-      comboboxProps={{ position: 'top', middlewares: { flip: false, shift: false } }}
+      position="top"
     />
   );
 }
 `;
 
 function Demo() {
-  return (
-    <Select
-      label="你最喜欢的库"
-      placeholder="选择值"
-      data={['React', 'Angular', 'Vue', 'Svelte']}
-      comboboxProps={{ position: 'top', middlewares: { flip: false, shift: false } }}
-    />
-  );
+    return (
+        <Select
+            label="你最喜欢的库"
+            placeholder="选择值"
+            data={['React', 'Angular', 'Vue', 'Svelte']}
+            position="top"
+        />
+    )
 }
 
 export const dropdownPosition: UIDemo = {
-  type: 'code',
-  component: Demo,
-  code,
-  maxWidth: 340,
-  centered: true,
-};
+    type: 'code',
+    component: Demo,
+    code,
+    maxWidth: 340,
+    centered: true
+}

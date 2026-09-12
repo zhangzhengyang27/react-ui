@@ -76,6 +76,9 @@ export interface ComboboxProps {
     /** Determines whether dropdown should be closed on outside clicks */
     closeOnClickOutside?: boolean
 
+    /** Determines whether dropdown should be closed when target loses focus @default true */
+    closeOnBlur?: boolean
+
     /** useCombobox 返回的 store：提供后 store 的 DOM 查询（键盘导航/选项选择）才能找到选项列表 */
     store?: ComboboxStore
 }
@@ -88,7 +91,8 @@ const defaultProps = {
     position: 'bottom-start',
     offset: 4,
     closeOnEscape: true,
-    closeOnClickOutside: true
+    closeOnClickOutside: true,
+    closeOnBlur: true
 } satisfies Partial<ComboboxProps>
 
 export function Combobox(_props: ComboboxProps) {
@@ -109,6 +113,7 @@ export function Combobox(_props: ComboboxProps) {
         selectedValues,
         closeOnEscape,
         closeOnClickOutside,
+        closeOnBlur,
         store,
         ...others
     } = props
@@ -151,7 +156,21 @@ export function Combobox(_props: ComboboxProps) {
     // 打开期间滚动/缩放/目标尺寸变化时自动重定位，关闭时解绑
     useEffect(() => {
         if (_opened && floating.refs.reference.current && floating.refs.floating.current) {
-            return autoUpdate(floating.refs.reference.current, floating.refs.floating.current, floating.update)
+            const target = floating.refs.reference.current
+            const floatingEl = floating.refs.floating.current
+            // 下拉 min-width 跟随目标宽度（.dropdown 的 --combobox-target-width），
+            // 需在打开与目标尺寸变化时同步，否则下拉宽度与触发器脱节
+            const syncTargetWidth = () => {
+                const width = target.getBoundingClientRect().width
+                if (width > 0) {
+                    floatingEl.style.setProperty('--combobox-target-width', `${width}px`)
+                }
+            }
+            syncTargetWidth()
+            return autoUpdate(target, floatingEl, () => {
+                syncTargetWidth()
+                floating.update()
+            })
         }
     }, [_opened, floating.update])
 
@@ -215,6 +234,21 @@ export function Combobox(_props: ComboboxProps) {
             setOptions(sorted)
         }
     }, [options])
+
+    // 选项集合变化（搜索过滤/数据更新）或下拉重新打开时重置键盘激活态：
+    // 残留的 activeIndex 可能越界（Enter 静默失效）或指向错误选项（Enter 误选）。
+    // 打开状态下重置为首个可用选项，使"输入后回车"总能选中第一条命中结果；
+    // 关闭时保持 -1，保证下次 ArrowDown 仍从第一项开始
+    const optionKeysSignature = options.map(option => option.key).join('|')
+    useEffect(() => {
+        if (!_opened) {
+            setActiveIndex(-1)
+            return
+        }
+        const firstEnabled = options.findIndex(option => !option.disabled)
+        setActiveIndex(firstEnabled)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [optionKeysSignature, _opened])
 
     const onOptionSelect = useCallback(
         (value: string) => {
@@ -289,6 +323,25 @@ export function Combobox(_props: ComboboxProps) {
         }
     }, [disabled, _opened, setOpened])
 
+    // 目标失焦时关闭下拉：Tab 切走后下拉不再悬浮残留。
+    // event.currentTarget 是 Combobox.Target 挂载的根元素（可能是 wrapper 而非 input 本身），
+    // 焦点仍在根元素内部（清除按钮、下拉内搜索框等）时不关闭；
+    // 点击下拉选项由 ComboboxOption 的 mousedown preventDefault 保证不产生 blur
+    const onTargetBlur = useCallback(
+        (event: React.FocusEvent<HTMLElement>) => {
+            if (!_opened || !closeOnBlur || disabled) {
+                return
+            }
+            const nextTarget = event.relatedTarget as HTMLElement | null
+            const targetRoot = event.currentTarget
+            if (nextTarget && (targetRoot?.contains(nextTarget) || dropdownNode?.contains(nextTarget))) {
+                return
+            }
+            setOpened(false)
+        },
+        [_opened, closeOnBlur, disabled, dropdownNode, setOpened]
+    )
+
     // memo 化 context value，避免无关重渲染时所有选项组件跟着全量重渲染
     const contextValue = useMemo<ComboboxContextValue>(
         () => ({
@@ -312,6 +365,7 @@ export function Combobox(_props: ComboboxProps) {
             setSearchValue,
             onTargetKeyDown,
             onTargetClick,
+            onTargetBlur,
             disabled
         }),
         [
@@ -335,6 +389,7 @@ export function Combobox(_props: ComboboxProps) {
             setSearchValue,
             onTargetKeyDown,
             onTargetClick,
+            onTargetBlur,
             disabled
         ]
     )

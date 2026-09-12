@@ -33,6 +33,8 @@ export interface ComboboxContextValue {
     setSearchValue: (value: string) => void
     onTargetKeyDown: (event: React.KeyboardEvent<HTMLElement>) => void
     onTargetClick: () => void
+    /** 目标失焦处理：焦点离开目标与下拉时关闭下拉（closeOnBlur） */
+    onTargetBlur: (event: React.FocusEvent<HTMLElement>) => void
     disabled?: boolean
 }
 

@@ -74,6 +74,12 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
                 }
                 others.onMouseEnter?.(event)
             }}
+            onMouseDown={(event: React.MouseEvent<HTMLDivElement>) => {
+                // 阻止 mousedown 默认行为（焦点转移）：选项点击期间目标元素不失焦，
+                // 消费方的 closeOnBlur 关闭逻辑不会在选项点击前误关下拉
+                event.preventDefault()
+                others.onMouseDown?.(event)
+            }}
         >
             {children}
         </Box>

@@ -1,26 +1,40 @@
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import { useId, useUncontrolled } from '@xiaoye-react/hooks'
 import { BoxProps, factory, Factory, UISize, rem, StylesApiProps, useProps, useStyles } from '../../core'
 import { CloseButton } from '../CloseButton'
 import { Combobox } from '../Combobox'
 import type { ComboboxOptionData } from '../Combobox'
+import {
+    ComboboxItem,
+    ComboboxItemGroup,
+    ComboboxParsedItem,
+    OptionsFilter,
+    defaultOptionsFilter,
+    getParsedComboboxData,
+    isOptionsGroup
+} from '../ComboboxPopover'
+import { __BaseInputProps } from '../Input'
 import { InputBase } from '../InputBase'
 import { InputWrapper } from '../Input'
+import { Loader } from '../Loader'
 import classes from './Select.module.css'
 
 export type SelectStylesNames = 'root' | 'dropdown' | 'options' | 'option' | 'empty' | 'group' | 'groupLabel'
 
-export interface SelectItem {
-    value: string
-    label: string
-    disabled?: boolean
-    group?: string
-}
+/** 选项对象类型别名，与 Combobox 选项数据同构 */
+export type SelectItem = ComboboxItem & { group?: string }
 
-export type SelectData = (string | SelectItem)[]
+/** 分组数据格式，展开后等价于为每个 item 补充 group 字段 */
+export type SelectGroupData = ComboboxItemGroup
+
+export type SelectData = (string | SelectItem | SelectGroupData)[]
+
+/** 自定义选项渲染，`checked` 为该选项是否为当前选中值 */
+export type SelectRenderOption = (input: { option: ComboboxItem; checked: boolean }) => React.ReactNode
 
 export interface SelectProps
     extends BoxProps,
+        __BaseInputProps,
         StylesApiProps<SelectFactory>,
         Omit<React.ComponentPropsWithoutRef<'input'>, 'size' | 'style' | 'value' | 'defaultValue' | 'onChange'> {
     /** Select options data */
@@ -73,6 +87,35 @@ export interface SelectProps
 
     /** 下拉项中对勾图标的位置 @default 'left' */
     checkIconPosition?: 'left' | 'right'
+
+    /** 点击已选中选项时是否取消选择 @default true */
+    allowDeselect?: boolean
+
+    /** 显示加载指示器，替代右侧图标 */
+    loading?: boolean
+
+    /** 输入框获得焦点时打开下拉框 @default false */
+    openOnFocus?: boolean
+
+    /** 最多渲染的选项数量，用于大数据量优化 */
+    limit?: number
+
+    /** 自定义选项渲染函数 */
+    renderOption?: SelectRenderOption
+
+    /** 自定义搜索过滤函数 */
+    filter?: OptionsFilter
+    /** 下拉框与目标元素的偏移距离（px） */
+    offset?: number
+
+    /** 输入框失焦时是否关闭下拉框 @default true */
+    closeOnBlur?: boolean
+
+    /** 受控搜索值 */
+    searchValue?: string
+
+    /** 搜索值变化时调用 */
+    onSearchChange?: (value: string) => void
 }
 
 export type SelectFactory = Factory<{
@@ -82,8 +125,37 @@ export type SelectFactory = Factory<{
 }>
 
 const defaultProps = {
-    size: 'sm'
+    size: 'sm',
+    allowDeselect: true,
+    closeOnBlur: true
 } satisfies Partial<SelectProps>
+
+/** 把分组结构拍平为渲染用的选项列表，group 字符串落在每个选项上 */
+function flattenParsedItems(items: ComboboxParsedItem[]): ComboboxOptionData[] {
+    const result: ComboboxOptionData[] = []
+    items.forEach(item => {
+        if (isOptionsGroup(item)) {
+            item.items.forEach(child => {
+                result.push({
+                    value: child.value,
+                    label: child.label ?? child.value,
+                    disabled: child.disabled,
+                    group: item.group
+                })
+            })
+        } else {
+            // SelectData 允许选项自带 group 字段（历史 SelectItem 形状），解析时保留
+            const group = (item as ComboboxItem & { group?: string }).group
+            result.push({
+                value: item.value,
+                label: item.label ?? item.value,
+                disabled: item.disabled,
+                group
+            })
+        }
+    })
+    return result
+}
 
 function SelectChevronIcon(props: React.ComponentProps<'svg'>) {
     return (
@@ -117,16 +189,6 @@ function SelectCheckIcon(props: React.ComponentProps<'svg'>) {
     )
 }
 
-function parseSelectData(data?: SelectData): ComboboxOptionData[] {
-    if (!data) return []
-    return data.map(item => {
-        if (typeof item === 'string') {
-            return { value: item, label: item }
-        }
-        return { value: item.value, label: item.label ?? item.value, disabled: item.disabled, group: item.group }
-    })
-}
-
 export const Select = factory<SelectFactory>((_props, ref) => {
     const props = useProps('Select', defaultProps, _props)
     const {
@@ -153,11 +215,28 @@ export const Select = factory<SelectFactory>((_props, ref) => {
         maxDropdownHeight,
         position,
         checkIconPosition,
+        allowDeselect,
+        loading,
+        openOnFocus,
+        limit,
+        renderOption,
+        filter = defaultOptionsFilter,
+        offset,
+        closeOnBlur,
+        searchValue: searchValueProp,
+        onSearchChange,
         id,
+        wrapperProps: wrapperPropsProp,
+        rightSection: rightSectionProp,
+        onFocus: consumerOnFocus,
+        onBlur: consumerOnBlur,
+        onMouseDown: consumerOnMouseDown,
         ...others
     } = props
 
-    const parsedData = useMemo(() => parseSelectData(data), [data])
+    // parsedItems 保留分组结构（供 OptionsFilter 使用），flatData 拍平后供渲染与选中值查找
+    const parsedItems = useMemo(() => getParsedComboboxData(data), [data])
+    const flatData = useMemo(() => flattenParsedItems(parsedItems), [parsedItems])
     // 用 null 而非 '' 表示"未选中"，避免 '' 选项值被当作未选中哨兵
     // 不向 useUncontrolled 传 onChange：其非受控 setter 内部会调 onChange，
     // 而下方 handler 已显式调用 onChange?.()，两处都传会导致每次变更触发两次
@@ -167,25 +246,55 @@ export const Select = factory<SelectFactory>((_props, ref) => {
         finalValue: null
     })
 
-    const [searchValue, setSearchValue] = useState('')
+    const [searchValue, setSearchValue] = useUncontrolled<string>({
+        value: searchValueProp,
+        finalValue: '',
+        onChange: onSearchChange
+    })
     const [opened, setOpened] = useState(false)
     const inputId = useId(id)
+    // 区分"鼠标点击聚焦"与"键盘聚焦"：点击路径 mousedown → focus → click，
+    // focus 时不打开（click 会负责 toggle/打开），避免闪现即收
+    const skipFocusOpenRef = useRef(false)
 
-    const selectedOption = parsedData.find(item => item.value === selectedValue)
+    const selectedOption = useMemo(
+        () => flatData.find(item => item.value === selectedValue),
+        [flatData, selectedValue]
+    )
 
     const filteredData = useMemo(() => {
-        if (!searchable || !searchValue) return parsedData
-        const query = searchValue.toLowerCase()
-        return parsedData.filter(item => item.label.toLowerCase().includes(query))
-    }, [parsedData, searchable, searchValue])
+        if (searchable && searchValue) {
+            // defaultOptionsFilter 等实现会按 limit 限制条数（分组按选项条数累计），
+            // 此处兜底再 slice 一次，保证自定义 filter 未处理 limit 时行为一致
+            const filtered = flattenParsedItems(
+                filter({ options: parsedItems, search: searchValue, limit: limit ?? Infinity })
+            )
+            return limit !== undefined ? filtered.slice(0, limit) : filtered
+        }
+        return limit !== undefined ? flatData.slice(0, limit) : flatData
+    }, [parsedItems, flatData, searchable, searchValue, filter, limit])
+
+    const handleOpenedChange = useCallback(
+        (next: boolean) => {
+            setOpened(next)
+            // 打开时清空上次搜索：残留的 searchValue 会让列表保持过滤、输入框显示旧查询。
+            // 在打开时（而非关闭时）清空，可避免关闭过渡动画期间列表突然展开的闪动
+            if (next) {
+                setSearchValue('')
+            }
+        },
+        [setSearchValue]
+    )
 
     const handleOptionSubmit = (optionValue: string) => {
+        // allowDeselect：点击已选中项取消选择；否则保持原值
+        const nextValue = allowDeselect && optionValue === selectedValue ? null : optionValue
         if (value === undefined) {
-            setSelectedValue(optionValue)
+            setSelectedValue(nextValue)
         }
-        onChange?.(optionValue)
+        onChange?.(nextValue)
         setSearchValue('')
-        setOpened(false)
+        handleOpenedChange(false)
     }
 
     const handleClear = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -194,19 +303,27 @@ export const Select = factory<SelectFactory>((_props, ref) => {
             setSelectedValue(null)
         }
         onChange?.(null)
+        setSearchValue('')
     }
 
-    const rightSection = (
+    // memo 化：稳定数组引用，避免 Combobox 内部 context 因 selectedValues 身份变化而整体失效
+    const selectedValues = useMemo(() => (selectedValue !== null ? [selectedValue] : []), [selectedValue])
+
+    const rightSection = rightSectionProp ?? (
         <div className={classes.section}>
-            {clearable && selectedValue !== null ? (
-                <CloseButton size="xs" onClick={handleClear} aria-label="Clear selection" />
-            ) : (
-                <SelectChevronIcon className={classes.chevron} />
+            {clearable && selectedValue !== null && !disabled && !loading && (
+                <CloseButton
+                    size="xs"
+                    onClick={handleClear}
+                    onMouseDown={event => event.preventDefault()}
+                    aria-label="Clear selection"
+                />
             )}
+            <SelectChevronIcon className={classes.chevron} data-opened={opened || undefined} />
         </div>
     )
 
-    const inputValue = searchable ? (opened ? searchValue : selectedOption?.label ?? '') : selectedOption?.label ?? ''
+    const inputValue = searchable && opened ? searchValue : selectedOption?.label ?? ''
 
     const getStyles = useStyles<SelectFactory>({
         name: 'Select',
@@ -221,16 +338,20 @@ export const Select = factory<SelectFactory>((_props, ref) => {
         rootSelector: 'root'
     })
 
+    const dropdownStyles = getStyles('dropdown')
+
     const input = (
         <Combobox
             opened={opened}
-            onChange={setOpened}
+            onChange={handleOpenedChange}
             searchValue={searchValue}
             onSearchChange={setSearchValue}
-            selectedValues={selectedValue !== null ? [selectedValue] : []}
+            selectedValues={selectedValues}
             onOptionSubmit={handleOptionSubmit}
             position={position}
+            offset={offset}
             disabled={disabled}
+            closeOnBlur={closeOnBlur}
         >
             <Combobox.Target>
                 <InputBase
@@ -242,36 +363,68 @@ export const Select = factory<SelectFactory>((_props, ref) => {
                     value={inputValue}
                     placeholder={placeholder}
                     disabled={disabled}
+                    invalid={!!error}
+                    loading={loading}
                     readOnly={!searchable}
                     role="combobox"
                     size={size}
                     rightSection={rightSection}
                     onFocus={event => {
-                        // 仅键盘导航（Tab 切入）时通过 focus 打开；
-                        // 鼠标点击的事件顺序为 mousedown → focus → click，
-                        // 若此处无条件打开，随后的 click 会被 ComboboxTarget toggle 关闭，造成闪现即收
-                        if (!disabled && event.currentTarget.matches(':focus-visible')) {
-                            setOpened(true)
+                        consumerOnFocus?.(event)
+                        if (disabled) {
+                            return
                         }
+                        const fromPointerDown = skipFocusOpenRef.current
+                        skipFocusOpenRef.current = false
+                        if (fromPointerDown) {
+                            return
+                        }
+                        // 仅键盘导航（Tab 切入）时通过 focus 打开；鼠标点击的打开由 onMouseDown 负责
+                        if (event.currentTarget.matches(':focus-visible') || openOnFocus) {
+                            handleOpenedChange(true)
+                        }
+                    }}
+                    onMouseDown={event => {
+                        consumerOnMouseDown?.(event)
+                        skipFocusOpenRef.current = true
+                        // 可搜索时输入框 readOnly=false，ComboboxTarget 会忽略 click 事件，
+                        // 鼠标路径 focus 又无 :focus-visible，必须由 mousedown 负责打开/重开
+                        if (searchable && !disabled && !opened) {
+                            handleOpenedChange(true)
+                        }
+                    }}
+                    onBlur={event => {
+                        consumerOnBlur?.(event)
                     }}
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                         if (searchable) {
                             setSearchValue(event.currentTarget.value)
                             if (!opened) {
+                                // 输入打开下拉时直接 setOpened：handleOpenedChange 打开时会清空搜索，
+                                // 同一批次内会覆盖刚设置的搜索词
                                 setOpened(true)
                             }
                         }
                     }}
-                    wrapperProps={{ style: { cursor: searchable ? undefined : 'pointer' } }}
+                    wrapperProps={{
+                        ...wrapperPropsProp,
+                        style: { ...wrapperPropsProp?.style, cursor: searchable ? undefined : 'pointer' }
+                    }}
                 />
             </Combobox.Target>
 
-            <Combobox.Dropdown style={{ maxHeight: maxDropdownHeight ? rem(maxDropdownHeight) : undefined }}>
-                <Combobox.Options>
+            <Combobox.Dropdown
+                className={dropdownStyles.className}
+                style={{
+                    ...dropdownStyles.style,
+                    maxHeight: maxDropdownHeight ? rem(maxDropdownHeight) : undefined
+                }}
+            >
+                <Combobox.Options {...getStyles('options')}>
                     {filteredData.length === 0 && nothingFoundMessage ? (
-                        <Combobox.Empty>{nothingFoundMessage}</Combobox.Empty>
+                        <Combobox.Empty {...getStyles('empty')}>{nothingFoundMessage}</Combobox.Empty>
                     ) : (
-                        renderOptions(filteredData, selectedValue, checkIconPosition)
+                        renderOptions(filteredData, selectedValue, checkIconPosition, getStyles, renderOption)
                     )}
                 </Combobox.Options>
             </Combobox.Dropdown>
@@ -301,29 +454,39 @@ export const Select = factory<SelectFactory>((_props, ref) => {
 function renderOptions(
     data: ComboboxOptionData[],
     selectedValue: string | null,
-    checkIconPosition?: 'left' | 'right'
+    checkIconPosition: 'left' | 'right' | undefined,
+    getStyles: (selector: 'option' | 'group') => { className?: string; style?: React.CSSProperties },
+    renderOption?: SelectRenderOption
 ) {
     const result: React.ReactNode[] = []
     // 记录每个组名的出现次数，组不连续（如 A,B,A）时为同名组生成唯一 key
     const groupOccurrences = new Map<string, number>()
+    // 同一渲染内所有选项共享的样式与图标，避免循环内重复创建
+    const optionStyles = getStyles('option')
+    const groupStyles = getStyles('group')
+    const check = <SelectCheckIcon className={classes.check} />
+    const contentStyle: React.CSSProperties = {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '8px',
+        width: '100%',
+        justifyContent: checkIconPosition === 'right' ? 'space-between' : undefined
+    }
 
-    const renderOption = (item: ComboboxOptionData) => {
+    const renderSingleOption = (item: ComboboxOptionData, keySuffix: number) => {
         const selected = selectedValue === item.value
-        const check = <SelectCheckIcon className={classes.check} />
 
         return (
-            <Combobox.Option key={item.value} value={item.value} disabled={item.disabled}>
-                <span
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                        width: '100%',
-                        justifyContent: checkIconPosition === 'right' ? 'space-between' : undefined
-                    }}
-                >
+            <Combobox.Option
+                key={`${item.value}-${keySuffix}`}
+                value={item.value}
+                disabled={item.disabled}
+                className={optionStyles.className}
+                style={optionStyles.style}
+            >
+                <span style={contentStyle}>
                     {checkIconPosition === 'left' && selected && check}
-                    {item.label}
+                    {renderOption ? renderOption({ option: item, checked: selected }) : item.label}
                     {checkIconPosition === 'right' && selected && check}
                 </span>
             </Combobox.Option>
@@ -347,12 +510,19 @@ function renderOptions(
             }
 
             result.push(
-                <Combobox.Group key={`group-${group}-${occurrence}`} label={group}>
-                    {groupItems.map(renderOption)}
+                <Combobox.Group
+                    key={`group-${group}-${occurrence}`}
+                    label={group}
+                    className={groupStyles.className}
+                    style={groupStyles.style}
+                >
+                    {groupItems.map((groupItem, groupItemIndex) =>
+                        renderSingleOption(groupItem, groupItemIndex)
+                    )}
                 </Combobox.Group>
             )
         } else {
-            result.push(renderOption(item))
+            result.push(renderSingleOption(item, index))
             index++
         }
     }

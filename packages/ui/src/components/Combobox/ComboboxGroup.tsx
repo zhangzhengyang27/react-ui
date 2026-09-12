@@ -17,10 +17,16 @@ export type ComboboxGroupFactory = Factory<{
 
 export const ComboboxGroup = factory<ComboboxGroupFactory>((_props, ref) => {
     const props = useProps('ComboboxGroup', null, _props)
-    const { label, children, ...others } = props
+    const { label, children, className, ...others } = props
 
     return (
-        <Box ref={ref} role="group" aria-label={typeof label === 'string' ? label : undefined} {...others}>
+        <Box
+            ref={ref}
+            role="group"
+            aria-label={typeof label === 'string' ? label : undefined}
+            className={[classes.group, className].filter(Boolean).join(' ')}
+            {...others}
+        >
             <div role="presentation" className={classes.groupLabel}>
                 {label}
             </div>

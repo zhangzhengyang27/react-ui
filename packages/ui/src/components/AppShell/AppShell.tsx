@@ -7,6 +7,7 @@ import {
     UISpacing,
     polymorphicFactory,
     PolymorphicFactory,
+    rem,
     StylesApiProps,
     useProps,
     useStyles
@@ -59,20 +60,25 @@ const defaultProps = {
     padding: 'md'
 } satisfies Partial<AppShellProps>
 
+// 数字尺寸（如 navbar.width: 220）必须带单位进 CSS 变量：
+// 无单位值替换进 grid-template 的轨道列表会让整条声明在计算值阶段失效，布局塌陷
+const toCssSize = (value: string | number | undefined): string | number | undefined =>
+    typeof value === 'number' ? rem(value) : value
+
 const varsResolver = createVarsResolver<AppShellFactory>((theme, { padding, header, footer, navbar, aside }) => ({
     root: {
         '--app-shell-padding': getSpacing(padding),
-        '--app-shell-header-height': header?.height !== undefined ? String(header.height) : undefined,
-        '--app-shell-footer-height': footer?.height !== undefined ? String(footer.height) : undefined,
+        '--app-shell-header-height': header?.height !== undefined ? toCssSize(header.height) : undefined,
+        '--app-shell-footer-height': footer?.height !== undefined ? toCssSize(footer.height) : undefined,
         '--app-shell-navbar-width': navbar?.collapsed
             ? '0px'
             : navbar?.width !== undefined
-              ? String(navbar.width)
+              ? toCssSize(navbar.width)
               : undefined,
         '--app-shell-aside-width': aside?.collapsed
             ? '0px'
             : aside?.width !== undefined
-              ? String(aside.width)
+              ? toCssSize(aside.width)
               : undefined
     }
 }))
@@ -114,10 +120,10 @@ export const AppShell = polymorphicFactory<AppShellFactory>((_props, _ref) => {
     const ctxValue = useMemo<AppShellContextValue>(
         () => ({
             padding,
-            headerHeight: header?.height,
-            footerHeight: footer?.height,
-            navbarWidth: navbar?.collapsed ? '0px' : navbar?.width,
-            asideWidth: aside?.collapsed ? '0px' : aside?.width,
+            headerHeight: header?.height !== undefined ? toCssSize(header.height) : undefined,
+            footerHeight: footer?.height !== undefined ? toCssSize(footer.height) : undefined,
+            navbarWidth: navbar?.collapsed ? '0px' : toCssSize(navbar?.width),
+            asideWidth: aside?.collapsed ? '0px' : toCssSize(aside?.width),
             navbarCollapsed: navbar?.collapsed,
             asideCollapsed: aside?.collapsed
         }),

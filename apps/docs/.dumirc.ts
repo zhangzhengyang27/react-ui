@@ -78,6 +78,7 @@ export default defineConfig({
         '@xiaoye-react/dev-icons': path.join(__dirname, '../../packages/@xiaoye-react/dev-icons/src/index.ts'),
         '@xiaoye-react/meta': path.join(__dirname, '../../packages/@xiaoye-react/meta/src/index.ts'),
         '@xiaoye-react/modals': path.join(__dirname, '../../packages/@xiaoye-react/modals/src/index.ts'),
+        '@xiaoye-react/charts': path.join(__dirname, '../../packages/@xiaoye-react/charts/src/index.ts'),
     },
 
     extraRehypePlugins: [rehypeDocs, rehypeChangelog],

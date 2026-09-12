@@ -10,7 +10,7 @@ group:
 
 ## 何时使用 {#when-to-use}
 
-需要让用户从一组候选项中选择一个或多个，支持下拉搜索时使用。
+需要让用户从一组候选项中选择一个时使用，支持下拉搜索。
 
 ## 代码演示 {#examples}
 
@@ -30,50 +30,18 @@ group:
 
 ### 受控
 
-`Select` 的值必须是原始类型（string、number 或 boolean）。
-`onChange` 函数以原始值作为唯一参数被调用。
+`Select` 的值是字符串类型，`null` 表示未选中。
+`onChange` 函数以选中值（或 `null`）作为唯一参数被调用：
 
 ```tsx
 import { useState } from 'react';
 import { Select } from '@xiaoye-react/ui';
 
 function Demo() {
-  const [value, setValue] = useState<string | null>('');
-  return <Select data={[]} value={value} onChange={setValue} />;
+  const [value, setValue] = useState<string | null>(null);
+  return <Select data={['React', 'Vue']} value={value} onChange={setValue} />;
 }
 ```
-
-### onChange 处理函数
-
-`onChange` 以两个参数被调用：
-
-- `value` - 选中选项的字符串值
-- `option` – 选中的选项对象
-
-若更喜欢在状态中使用对象格式，请使用 onChange 处理函数的第二个参数：
-
-```tsx
-import { useState } from 'react';
-import { ComboboxItem, Select } from '@xiaoye-react/ui';
-
-function Demo() {
-  const [value, setValue] = useState<ComboboxItem | null>(null);
-  return (
-    <Select
-      data={[{ value: 'react', label: 'React library' }]}
-      value={value ? value.value : null}
-      onChange={(_value, option) => setValue(option)}
-    />
-  );
-}
-```
-
-### autoSelectOnBlur
-
-设置 `autoSelectOnBlur` 属性，当输入框失去焦点时自动选中高亮选项。
-注意：此属性仅在 `searchable` 设置为 `true` 时生效。要查看实际效果：使用上下箭头选择一个选项，然后点击输入框外部：
-
-<code src="./demo/autoSelectOnBlur.tsx"></code>
 
 ### 可清除
 
@@ -81,11 +49,9 @@ function Demo() {
 
 - 组件没有值
 - 组件被禁用
-- 组件只读
+- 组件处于加载中
 
 <code src="./demo/clearable.tsx"></code>
-
-<code src="./demo/clearSectionMode.tsx"></code>
 
 ### 允许取消选择
 
@@ -96,14 +62,14 @@ function Demo() {
 
 ### 聚焦时打开
 
-设置 `openOnFocus` 属性，当输入框获得焦点时打开下拉框。
-注意：此属性仅在 `searchable` 设置为 `true` 时生效：
+设置 `openOnFocus` 属性，当输入框获得焦点时打开下拉框：
 
 <code src="./demo/openOnFocus.tsx"></code>
 
 ### 可搜索
 
-设置 `searchable` 属性以允许用户输入过滤选项：
+设置 `searchable` 属性以允许用户输入过滤选项。
+可搜索时，鼠标点击输入框或输入任意字符即可打开下拉框：
 
 <code src="./demo/searchable.tsx"></code>
 
@@ -122,7 +88,7 @@ function Demo() {
       searchable
       searchValue={searchValue}
       onSearchChange={setSearchValue}
-      data={[]}
+      data={['React', 'Vue']}
     />
   );
 }
@@ -131,33 +97,16 @@ function Demo() {
 ### 无结果
 
 设置 `nothingFoundMessage` 属性以在搜索查询没有匹配选项
-或没有可用数据时显示指定消息。如果未设置 `nothingFoundMessage` 属性，`Select` 下拉框将被隐藏。
+或没有可用数据时显示指定消息。如果未设置 `nothingFoundMessage` 属性，
+下拉框会渲染为空列表。
 
 <code src="./demo/nothingFound.tsx"></code>
 
 ### 选中选项图标
 
-将 `checkIconPosition` 属性设置为 `left` 或 `right` 以控制活动选项中勾选图标的位置。
-要移除勾选图标，请设置 `withCheckIcon={false}`。要让未选中标签与已选中标签对齐，请设置 `withAlignedLabels` 属性。
+将 `checkIconPosition` 属性设置为 `left`（默认）或 `right` 以控制选中选项中勾选图标的位置：
 
 <code src="./demo/checkIcon.tsx"></code>
-
-### 值类型
-
-`Select` 支持原始值（字符串、数字、布尔值）作为值类型。`Select` 会自动
-推断值类型。如需显式设置值类型，请传递类型参数：
-
-```tsx
-import { Select } from '@xiaoye-react/ui';
-
-type SelectValue = 'React' | 'Angular' | 'Svelte' | number;
-
-function Demo() {
-  return <Select<SelectValue> data={['React', 'Angular', 'Svelte', 100]} />;
-}
-```
-
-<code src="./demo/search.tsx"></code>
 
 ### 排序选项
 
@@ -172,6 +121,11 @@ function Demo() {
 
 <code src="./demo/fuzzySearch.tsx"></code>
 
+### 大数据量优化
+
+设置 `limit` 属性限制渲染的选项数量。结合 `searchable` 使用时，
+仅渲染前 `limit` 个命中结果，避免大数据量下渲染过多 DOM 节点：
+
 <code src="./demo/limit.tsx"></code>
 
 ### renderOption
@@ -183,28 +137,16 @@ function Demo() {
 
 ### 可滚动下拉框
 
-默认情况下，选项列表会包裹在 [ScrollArea.Autosize](/components/scroll-area) 中。
-若未更改默认设置，可使用 `maxDropdownHeight` 属性控制下拉框最大高度。
-
-如需使用原生滚动条，请设置 `withScrollArea={false}`。注意，在这种情况下，
-需使用 [Styles API](/docs/styles/styles-api) 更改下拉框样式。
+使用 `maxDropdownHeight` 属性控制下拉框最大高度（数字按 px 处理）。
+下拉框的 `dropdown`、`options`、`option` 等选择器支持通过 [Styles API](/docs/styles/styles-api) 自定义样式，
+例如改用原生滚动条：
 
 <code src="./demo/scrollArea.tsx"></code>
 
-### 适配视口高度
-
-设置 `floatingHeight="viewport"` 使下拉框增长到填充视口中可用的垂直
-空间。此模式下 `flip` 中间件被禁用——下拉框始终在配置的方向打开，
-并被限制在视口边缘而不是翻转到另一侧。适用于处理大型选项列表：
-
-<code src="./demo/floatingHeight.tsx"></code>
-
 ### 分组选项
 
-`group` 属性接受任何 React 节点，因此可将自定义标记
-（图标、徽标、样式化文本）渲染为分组标签，而不仅仅是纯字符串。这同样适用于
-`MultiSelect`、`Autocomplete` 和 `TagsInput`。注意，
-`NativeSelect` 渲染原生 `optgroup` 元素，仅支持字符串分组标签。
+选项数据支持两种分组格式：为每个选项设置 `group` 字段，或使用 `{ group, items }` 分组对象。
+注意，`NativeSelect` 渲染原生 `optgroup` 元素，仅支持字符串分组标签。
 
 <code src="./demo/groups.tsx"></code>
 
@@ -214,77 +156,27 @@ function Demo() {
 
 <code src="./demo/disabledOptions.tsx"></code>
 
-### 在 Popover 中使用
-
-要在 popover 中使用 `Select`，需设置 `withinPortal: false`：
-
-<code src="./demo/withinPopover.tsx"></code>
-
-### 控制下拉框打开状态
-
-可使用 `dropdownOpened` 属性控制下拉框的打开状态。此外，
-还可使用 `onDropdownClose` 和 `onDropdownOpen` 监听下拉框打开状态的变化。
-
-<code src="./demo/dropdownOpened.tsx"></code>
-
 ### 下拉框位置
 
-默认情况下，如果下方有足够空间，下拉框会显示在输入框下方；否则显示在输入框上方。
-可通过设置 `position` 和 `middlewares` 属性来更改此行为，这些属性会传递给底层的
-[Popover](/components/popover) 组件。
-
-下拉框始终显示在输入框上方的示例：
+默认情况下，如果下方有足够空间，下拉框会显示在输入框下方；否则自动翻转到输入框上方。
+可通过设置 `position` 属性强制指定位置：
 
 <code src="./demo/dropdownPosition.tsx"></code>
 
-### 下拉框宽度
-
-要更改下拉框宽度，请在 `comboboxProps` 中设置 `width` 属性。默认情况下，
-下拉框宽度等于输入框宽度。
-
-<code src="./demo/dropdownWidth.tsx"></code>
-
 ### 下拉框偏移
 
-要更改下拉框偏移，请在 `comboboxProps` 中设置 `offset` 属性：
+使用 `offset` 属性更改下拉框与输入框的偏移距离（px）：
 
 <code src="./demo/dropdownOffset.tsx"></code>
 
-### 防止水平无限滚动
+### 失焦关闭
 
-若在下拉框中遇到水平无限滚动，请将 `shift` 中间件的 `padding` 设置为 `0`：
+下拉框默认在输入框失焦时自动关闭（包括 Tab 切走）。设置 `closeOnBlur={false}` 可禁用此行为。
 
-```tsx
-import { Select } from '@xiaoye-react/ui';
+### 输入框两侧区域
 
-function Demo() {
-  return (
-    <Select
-      data={['React', 'Angular', 'Vue']}
-      comboboxProps={{
-        middlewares: {
-          shift: { padding: 0 }
-        }
-      }}
-    />
-  );
-}
-```
-
-### 下拉框动画
-
-默认情况下，下拉框动画被禁用。要启用它们，可设置 `transitionProps`，
-它将传递给底层的 [Transition](/components/transition) 组件。
-
-<code src="./demo/dropdownAnimation.tsx"></code>
-
-### 下拉框内边距
-
-<code src="./demo/dropdownPadding.tsx"></code>
-
-### 下拉框阴影
-
-<code src="./demo/dropdownShadow.tsx"></code>
+使用 `leftSection` / `rightSection` 在输入框两侧渲染图标等内容，
+配合 `leftSectionPointerEvents` / `rightSectionPointerEvents` 控制点击行为：
 
 <code src="./demo/sections.tsx"></code>
 
@@ -312,29 +204,9 @@ function Demo() {
 
 ### 成功状态
 
-要为清除按钮设置 `aria-label`，请使用 `clearButtonProps`。注意，仅在设置 `clearable` 时才需要这样做。
-
-```tsx
-import { Select } from '@xiaoye-react/ui';
-
-function Demo() {
-  return (
-    <Select
-      data={[]}
-      clearable
-      clearButtonProps={{
-        'aria-label': '清除输入',
-      }}
-    />
-  );
-}
-```
-
 <code src="./demo/success.tsx"></code>
 
 <code src="./demo/stylesApi.tsx"></code>
-
-<ClearSectionMode></ClearSectionMode>
 
 <ComboboxData component="Select"></ComboboxData>
 
@@ -354,24 +226,42 @@ function Demo() {
 
 <InputAccessibility component="Select"></InputAccessibility>
 
-
-
 ## API {#api}
 
 ### SelectProps
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| data | 选项数据 | `ComboboxItem[]` | — |
-| value | 当前值 | `string \| string[] \| null` | — |
-| defaultValue | 默认值 | `string \| string[] \| null` | — |
-| onChange | 值变化回调 | `(value) => void` | — |
+| data | 选项数据，支持字符串、`{ value, label, disabled?, group? }` 或 `{ group, items }` 分组对象 | `SelectData` | `[]` |
+| value | 受控值，`null` 表示未选中 | `string \| null` | — |
+| defaultValue | 非受控初始值 | `string \| null` | — |
+| onChange | 值变化回调，`null` 表示未选中 | `(value: string \| null) => void` | — |
 | placeholder | 占位提示 | `string` | — |
+| label | 输入框上方标签 | `ReactNode` | — |
+| description | 标签下方描述 | `ReactNode` | — |
+| error | 输入框下方错误信息，传入后输入框显示错误态 | `ReactNode` | — |
+| required | 标签上显示必填星号 | `boolean` | `false` |
+| size | 输入框大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'sm'` |
 | searchable | 是否可搜索 | `boolean` | `false` |
 | clearable | 是否可清空 | `boolean` | `false` |
+| allowDeselect | 点击已选中选项时是否取消选择 | `boolean` | `true` |
 | disabled | 是否禁用 | `boolean` | `false` |
+| loading | 是否显示加载指示器 | `boolean` | `false` |
+| openOnFocus | 获得焦点时打开下拉框 | `boolean` | `false` |
+| searchValue | 受控搜索值（需配合 `searchable`） | `string` | — |
+| onSearchChange | 搜索值变化回调 | `(value: string) => void` | — |
+| limit | 最多渲染的选项数量 | `number` | — |
+| filter | 自定义过滤函数 | `({ options, search, limit }) => ComboboxItem[]` | 包含匹配 |
+| renderOption | 自定义选项渲染 | `({ option, checked }) => ReactNode` | — |
+| nothingFoundMessage | 无匹配结果时显示的消息 | `ReactNode` | — |
+| maxDropdownHeight | 下拉框最大高度，数字按 px 处理 | `number \| string` | `300px` |
+| position | 下拉框位置 | `FloatingPosition` | `'bottom-start'` |
+| offset | 下拉框偏移距离（px） | `number` | `4` |
+| checkIconPosition | 勾选图标位置 | `'left' \| 'right'` | `'left'` |
+| closeOnBlur | 失焦时关闭下拉框 | `boolean` | `true` |
 
-支持所有原生 HTML 属性。
+除上述属性外，`Select` 还支持 `leftSection`、`rightSection`、`variant`、`radius` 等 Input 属性，
+以及所有原生 `<input>` 属性（`onFocus`、`onBlur`、`name`、`autoComplete` 等）。
 
 ## FAQ {#faq}
 

@@ -14,10 +14,15 @@ export type ComboboxEmptyFactory = Factory<{
 
 export const ComboboxEmpty = factory<ComboboxEmptyFactory>((_props, ref) => {
     const props = useProps('ComboboxEmpty', null, _props)
-    const { children, ...others } = props
+    const { children, className, ...others } = props
 
     return (
-        <Box ref={ref} role="presentation" className={classes.empty} {...others}>
+        <Box
+            ref={ref}
+            role="presentation"
+            className={[classes.empty, className].filter(Boolean).join(' ')}
+            {...others}
+        >
             {children}
         </Box>
     )

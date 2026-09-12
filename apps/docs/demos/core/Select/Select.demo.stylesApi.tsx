@@ -26,16 +26,16 @@ function Demo(props: any) {
     return (
         <Select
             {...props}
-            dropdownOpened
             leftSection={<AtIcon size={18} />}
             withAsterisk
             label="选择"
             description="描述"
             placeholder="选择"
-            comboboxProps={{ hideDetached: false }}
             data={[
-                { group: 'Frontend', items: ['React', 'Angular'] },
-                { group: 'Backend', items: ['Node', 'Django'] }
+                { value: 'React', label: 'React', group: 'Frontend' },
+                { value: 'Angular', label: 'Angular', group: 'Frontend' },
+                { value: 'Node', label: 'Node', group: 'Backend' },
+                { value: 'Django', label: 'Django', group: 'Backend' }
             ]}
         />
     )

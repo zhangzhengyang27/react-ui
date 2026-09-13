@@ -33,8 +33,7 @@ import {
     findTreeNode,
     getChildrenNodesValues,
 } from '../Tree/get-children-nodes-values/get-children-nodes-values'
-import { isNodeChecked } from '../Tree/is-node-checked/is-node-checked'
-import { isNodeIndeterminate } from '../Tree/is-node-indeterminate/is-node-indeterminate'
+import { getAllCheckedNodes } from '../Tree/get-all-checked-nodes/get-all-checked-nodes'
 import { getTreeExpandedState, TreeExpandedState } from '../Tree/use-tree'
 import { flattenTreeSelectData } from './flatten-tree-select-data'
 import {
@@ -346,6 +345,27 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
         return expandToLeafChecked(_value, data)
     }, [isCheckbox, _value, data, checkStrictly])
 
+    // checkbox 模式下 isNodeChecked/isNodeIndeterminate 每次调用都全树重算，
+    // N 个可见选项渲染即 O(n²)（下拉未打开时 options 也在 render 中构建）。
+    // 这里一次性计算全部节点勾选状态并建索引（对齐 use-tree 的 checkedNodesMap 模式）
+    const checkedNodesMap = useMemo(() => {
+        if (!isCheckbox || checkStrictly) {
+            return null
+        }
+        const map = new Map<string, { checked: boolean; indeterminate: boolean }>()
+        for (const node of getAllCheckedNodes(data, internalChecked).result) {
+            const existing = map.get(node.value)
+            if (existing) {
+                // value 重复时合并标记，保持与旧实现 some() 等价的语义
+                existing.checked = existing.checked || node.checked
+                existing.indeterminate = existing.indeterminate || node.indeterminate
+            } else {
+                map.set(node.value, { checked: node.checked, indeterminate: node.indeterminate })
+            }
+        }
+        return map
+    }, [isCheckbox, checkStrictly, data, internalChecked])
+
     const filteredData = useMemo(() => {
         if (!searchable || !_searchValue) {
             return data
@@ -469,7 +489,7 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
         } else if (mode === 'checkbox') {
             const nodeChecked = checkStrictly
                 ? internalChecked.includes(val)
-                : isNodeChecked(val, data, internalChecked)
+                : !!checkedNodesMap?.get(val)?.checked
 
             let newInternalChecked: string[]
             if (checkStrictly) {
@@ -655,16 +675,14 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
                     ? ((_value as string[]) || []).includes(flatNode.node.value)
                     : false
 
+        const checkedStatus = checkedNodesMap?.get(flatNode.node.value)
         const nodeChecked = isCheckbox
             ? checkStrictly
                 ? internalChecked.includes(flatNode.node.value)
-                : isNodeChecked(flatNode.node.value, data, internalChecked)
+                : !!checkedStatus?.checked
             : false
 
-        const nodeIndeterminate =
-            isCheckbox && !checkStrictly
-                ? isNodeIndeterminate(flatNode.node.value, data, internalChecked)
-                : false
+        const nodeIndeterminate = checkedStatus?.indeterminate ?? false
 
         return (
             <TreeSelectOption

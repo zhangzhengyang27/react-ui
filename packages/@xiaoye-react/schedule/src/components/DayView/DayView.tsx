@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import {
   Box,
   BoxProps,
@@ -485,20 +485,30 @@ export const DayView = factory<DayViewFactory>((_props) => {
     },
   });
 
-  const expandedEvents = expandRecurringEvents({
-    events,
-    rangeStart: dayjs(date).startOf('day').toDate(),
-    rangeEnd: dayjs(date).endOf('day').toDate(),
-    expansionLimit: recurrenceExpansionLimit,
-  });
+  // 事件展开 + 布局是渲染热路径：拖拽期间每次 dragover/pointermove 都触发重渲染，
+  // 不做 memo 会全量重算（对齐 Resources 视图的 memo 模式）
+  const expandedEvents = useMemo(
+    () =>
+      expandRecurringEvents({
+        events,
+        rangeStart: dayjs(date).startOf('day').toDate(),
+        rangeEnd: dayjs(date).endOf('day').toDate(),
+        expansionLimit: recurrenceExpansionLimit,
+      }),
+    [events, date, recurrenceExpansionLimit]
+  );
 
-  const eventsData = getDayViewEvents({
-    events: expandedEvents,
-    date,
-    startTime,
-    endTime,
-    intervalMinutes,
-  });
+  const eventsData = useMemo(
+    () =>
+      getDayViewEvents({
+        events: expandedEvents,
+        date,
+        startTime,
+        endTime,
+        intervalMinutes,
+      }),
+    [expandedEvents, date, startTime, endTime, intervalMinutes]
+  );
 
   const handleExternalDrop = useCallback(
     (e: React.DragEvent, slotIndex: number) => {

@@ -550,32 +550,50 @@ export const WeekView = factory<WeekViewFactory>((_props) => {
     });
   };
 
-  const weekdays = getWeekDays({
-    week: date,
-    withWeekendDays,
-    weekendDays: ctx.getWeekendDays(weekendDays),
-    firstDayOfWeek: ctx.getFirstDayOfWeek(firstDayOfWeek),
-  });
+  // 事件展开 + 布局是渲染热路径（rrule 展开上限可达数千实例）：
+  // 拖拽期间每次 dragover/pointermove 都触发重渲染，不做 memo 会全量重算。
+  // weekdays/ctx getter 结果一并 memo，保证下游依赖身份稳定
+  const resolvedWeekendDays = ctx.getWeekendDays(weekendDays);
+  const resolvedFirstDayOfWeek = ctx.getFirstDayOfWeek(firstDayOfWeek);
 
-  const expandedEvents = expandRecurringEvents({
-    events,
-    rangeStart: dayjs(weekdays[0]).startOf('day').toDate(),
-    rangeEnd: dayjs(weekdays[weekdays.length - 1])
-      .endOf('day')
-      .toDate(),
-    expansionLimit: recurrenceExpansionLimit,
-  });
+  const weekdays = useMemo(
+    () =>
+      getWeekDays({
+        week: date,
+        withWeekendDays,
+        weekendDays: resolvedWeekendDays,
+        firstDayOfWeek: resolvedFirstDayOfWeek,
+      }),
+    [date, withWeekendDays, resolvedWeekendDays, resolvedFirstDayOfWeek]
+  );
 
-  const weekEvents = getWeekViewEvents({
-    date,
-    events: expandedEvents,
-    startTime,
-    endTime,
-    intervalMinutes,
-    firstDayOfWeek: ctx.getFirstDayOfWeek(firstDayOfWeek),
-    weekendDays: ctx.getWeekendDays(weekendDays),
-    withWeekendDays,
-  });
+  const expandedEvents = useMemo(
+    () =>
+      expandRecurringEvents({
+        events,
+        rangeStart: dayjs(weekdays[0]).startOf('day').toDate(),
+        rangeEnd: dayjs(weekdays[weekdays.length - 1])
+          .endOf('day')
+          .toDate(),
+        expansionLimit: recurrenceExpansionLimit,
+      }),
+    [events, weekdays, recurrenceExpansionLimit]
+  );
+
+  const weekEvents = useMemo(
+    () =>
+      getWeekViewEvents({
+        date,
+        events: expandedEvents,
+        startTime,
+        endTime,
+        intervalMinutes,
+        firstDayOfWeek: resolvedFirstDayOfWeek,
+        weekendDays: resolvedWeekendDays,
+        withWeekendDays,
+      }),
+    [date, expandedEvents, startTime, endTime, intervalMinutes, resolvedFirstDayOfWeek, resolvedWeekendDays, withWeekendDays]
+  );
 
   const timeValues = slots.reduce<React.ReactNode[]>((acc, interval) => {
     if (!interval.isHourStart) {

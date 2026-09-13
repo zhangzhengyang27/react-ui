@@ -405,14 +405,19 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
         getItemKey: index => rowKeys[index]
     })
 
-    const allChecked = rowKeys.length > 0 && rowKeys.every(key => selectedKeysState.includes(key))
-    const someChecked = rowKeys.some(key => selectedKeysState.includes(key))
+    // 全选/半选与行选中判定的热路径：数组 includes 为 O(n×m)，万级数据全选后
+    // 每次渲染近 O(n²)；这里一次性建 Set 索引
+    const selectedKeysSet = useMemo(() => new Set(selectedKeysState), [selectedKeysState])
+    const rowKeysSet = useMemo(() => new Set(rowKeys), [rowKeys])
+
+    const allChecked = rowKeys.length > 0 && rowKeys.every(key => selectedKeysSet.has(key))
+    const someChecked = rowKeys.some(key => selectedKeysSet.has(key))
     const headerIndeterminate = someChecked && !allChecked
 
     const handleToggleAll = () => {
         setSelectedKeys(
             allChecked
-                ? selectedKeysState.filter(key => !rowKeys.includes(key))
+                ? selectedKeysState.filter(key => !rowKeysSet.has(key))
                 : Array.from(new Set([...selectedKeysState, ...rowKeys]))
         )
     }
@@ -423,7 +428,7 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
             return
         }
         setSelectedKeys(
-            selectedKeysState.includes(key)
+            selectedKeysSet.has(key)
                 ? selectedKeysState.filter(selected => selected !== key)
                 : [...selectedKeysState, key]
         )
@@ -589,7 +594,7 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
             measureRef?: (node: HTMLTableRowElement | null) => void
         ) => {
             const key = rowKeys[rowIndex]
-            const selected = withSelection && selectedKeysState.includes(key)
+            const selected = withSelection && selectedKeysSet.has(key)
             const expanded = withExpand && expandedRowsState.includes(key)
             return (
                 <Fragment key={key}>

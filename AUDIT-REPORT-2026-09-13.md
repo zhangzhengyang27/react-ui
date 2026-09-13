@@ -1,6 +1,8 @@
 # 组件库 Bug 与优化排查报告（2026-09-13）
 
-> **修复进度（2026-09-13）**：第一批 12 个 P0 已全部修复并通过测试（ui 526 项、form 409 项、schedule 1348 项、notifications 47 项；类型检查通过）。另同步修正了上一轮遗留的 Select/MultiSelect 清除按钮中文 aria-label 与测试断言不一致的问题。
+> **修复进度（2026-09-13）**：
+> ① 第一批 12 个 P0 已全部修复并通过测试（ui 526 项、form 409 项、schedule 1348 项、notifications 47 项；类型检查通过）。另同步修正了上一轮遗留的 Select/MultiSelect 清除按钮中文 aria-label 与测试断言不一致的问题。
+> ② 第二批（hooks 源头 + a11y 断链 + 性能热点）已完成：use-uncontrolled setter 稳定化、use-mask 光标恢复与 IME 守卫、use-effect-event/use-callback-ref 改 useInsertionEffect；InputBase aria-describedby 断链、Tabs tab/panel aria 关联、Popover/HoverCard targetId 挂载覆盖（顺带修复 HoverCardTarget 丢弃 child 事件处理器）；TreeSelect 勾选态 O(n²)、DataTable 全选判定 O(n×m)、schedule Week/Month/DayView 布局管线未 memo。验证：ui 526、hooks 110、schedule 1224、form 409、dates 1433 全部通过，ui/hooks tsc 通过。
 
 - 范围：`packages/ui`（125 组件）、`@xiaoye-react/form`、`pro`、`dates`、`schedule`、`hooks`、`spotlight/notifications/modals/nprogress/store/emotion/carousel/dropzone/tiptap/code-highlight/header/demo` 等全部源码（不含 test/story），约 10 万行。
 - 方法：18 路只读深度排查（未修改任何文件），每条结论附真实 file:line 与代码证据；关键 P0 已人工复核/沙箱模拟复现（MaskInput 乱序、form 重复提交、setPath 崩溃、Rating 清零、NumberInput 步进、Schedule 双触发均核实成立）。

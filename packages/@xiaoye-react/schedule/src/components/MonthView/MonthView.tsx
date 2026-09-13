@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import {
   Box,
   BoxProps,
@@ -350,27 +350,43 @@ export const MonthView = factory<MonthViewFactory>((_props) => {
   const columnsCount = 7 - hiddenColumns.length;
   const visibleColumnMap = getVisibleColumnMap(hiddenColumns);
 
-  const range = getMonthRange({
-    month: date,
-    withOutsideDays,
-    consistentWeeks,
-    firstDayOfWeek: ctx.getFirstDayOfWeek(firstDayOfWeek),
-  });
+  const resolvedFirstDayOfWeek = ctx.getFirstDayOfWeek(firstDayOfWeek);
 
-  const expandedEvents = expandRecurringEvents({
-    events,
-    rangeStart: dayjs(range.start).startOf('day').toDate(),
-    rangeEnd: dayjs(range.end).endOf('day').toDate(),
-    expansionLimit: recurrenceExpansionLimit,
-  });
+  const range = useMemo(
+    () =>
+      getMonthRange({
+        month: date,
+        withOutsideDays,
+        consistentWeeks,
+        firstDayOfWeek: resolvedFirstDayOfWeek,
+      }),
+    [date, withOutsideDays, consistentWeeks, resolvedFirstDayOfWeek]
+  );
 
-  const monthEvents = getMonthViewEvents({
-    date,
-    events: expandedEvents,
-    firstDayOfWeek: ctx.getFirstDayOfWeek(firstDayOfWeek),
-    withOutsideDays,
-    consistentWeeks,
-  });
+  // 事件展开 + 布局是渲染热路径：拖拽期间每次 dragover/pointermove 都触发重渲染，
+  // 不做 memo 会全量重算（对齐 Resources 视图的 memo 模式）
+  const expandedEvents = useMemo(
+    () =>
+      expandRecurringEvents({
+        events,
+        rangeStart: dayjs(range.start).startOf('day').toDate(),
+        rangeEnd: dayjs(range.end).endOf('day').toDate(),
+        expansionLimit: recurrenceExpansionLimit,
+      }),
+    [events, range, recurrenceExpansionLimit]
+  );
+
+  const monthEvents = useMemo(
+    () =>
+      getMonthViewEvents({
+        date,
+        events: expandedEvents,
+        firstDayOfWeek: resolvedFirstDayOfWeek,
+        withOutsideDays,
+        consistentWeeks,
+      }),
+    [date, expandedEvents, resolvedFirstDayOfWeek, withOutsideDays, consistentWeeks]
+  );
 
   const handleExternalDrop = useCallback(
     (e: React.DragEvent, day: string) => {
@@ -421,11 +437,15 @@ export const MonthView = factory<MonthViewFactory>((_props) => {
 
   const daysRef: MonthViewControlsRef = useRef<HTMLButtonElement[][]>([]);
 
-  const monthDays = getMonthDays({
-    month: dayjs(date).format('YYYY-MM-DD 00:00:00'),
-    firstDayOfWeek: ctx.getFirstDayOfWeek(firstDayOfWeek),
-    consistentWeeks: consistentWeeks && withOutsideDays,
-  });
+  const monthDays = useMemo(
+    () =>
+      getMonthDays({
+        month: dayjs(date).format('YYYY-MM-DD 00:00:00'),
+        firstDayOfWeek: resolvedFirstDayOfWeek,
+        consistentWeeks: consistentWeeks && withOutsideDays,
+      }),
+    [date, resolvedFirstDayOfWeek, consistentWeeks, withOutsideDays]
+  );
 
   const firstDayIndex = (() => {
     for (let weekIndex = 0; weekIndex < monthDays.length; weekIndex++) {

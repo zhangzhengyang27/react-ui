@@ -20,8 +20,22 @@ describe('MaskInput', () => {
         expect(handleChange).toHaveBeenCalledWith('123')
     })
 
-    it('fills placeholders for empty positions', () => {
-        renderWithProvider(<MaskInput mask="##-##" slotChar="*" data-testid="mask-input" />)
+    it('fills placeholders for empty positions when alwaysShowMask is set', () => {
+        renderWithProvider(<MaskInput mask="##-##" slotChar="*" alwaysShowMask data-testid="mask-input" />)
         expect(screen.getByDisplayValue('**-**')).toBeInTheDocument()
+    })
+
+    it('shows placeholder mask on focus and hides it on blurred empty input by default', () => {
+        renderWithProvider(<MaskInput mask="##-##" slotChar="*" data-testid="mask-input" />)
+        const input = screen.getByTestId('mask-input') as HTMLInputElement
+        // showMaskOnFocus 默认 true：未聚焦且无值时显示空
+        expect(input.value).toBe('')
+        fireEvent.focus(input)
+        expect(input.value).toBe('**-**')
+    })
+
+    it('keeps formatted value visible when blurred with partial input', () => {
+        renderWithProvider(<MaskInput mask="##-##" slotChar="*" defaultValue="1" data-testid="mask-input" />)
+        expect(screen.getByDisplayValue('1*-**')).toBeInTheDocument()
     })
 })

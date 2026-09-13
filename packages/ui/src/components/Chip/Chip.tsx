@@ -68,8 +68,7 @@ export type ChipFactory = Factory<{
 }>
 
 const defaultProps = {
-    variant: 'filled',
-    disabled: false
+    variant: 'filled'
 } satisfies Partial<ChipProps>
 
 const varsResolver = createVarsResolver<ChipFactory>((theme, { size, radius, color }) => ({
@@ -106,10 +105,14 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
     } = props
 
     const groupCtx = useChipGroupContext()
+    // group 的 size/disabled 作为兜底（自身 prop 优先）；不再在 defaultProps 写死
+    // size/disabled，否则组级兜底永远无法生效
+    const resolvedSize = size ?? groupCtx?.size ?? 'sm'
+    const resolvedDisabled = disabled ?? groupCtx?.disabled ?? false
 
     const getStyles = useStyles<ChipFactory>({
         name: 'Chip',
-        props,
+        props: { ...props, size: resolvedSize },
         classes,
         className,
         style,
@@ -135,9 +138,11 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
     isCheckedRef.current = isChecked
 
     const handleClick = () => {
-        if (disabled) return
+        if (resolvedDisabled) return
         if (isInGroup) {
             groupCtx!.onChange(value!)
+            // 组路径同样通知自身 onChange（对齐 Checkbox，此前提前 return 丢事件）
+            onChange?.(!isCheckedRef.current)
             return
         }
         const next = !isCheckedRef.current
@@ -154,7 +159,7 @@ export const Chip = factory<ChipFactory>((_props, ref) => {
             type="button"
             {...getStyles('root')}
             mod={[{ checked: isChecked, variant }, mod]}
-            disabled={disabled}
+            disabled={resolvedDisabled}
             onClick={handleClick}
             aria-pressed={isChecked}
             {...others}

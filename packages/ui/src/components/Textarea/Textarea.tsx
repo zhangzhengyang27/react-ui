@@ -2,7 +2,7 @@ import { factory, Factory, StylesApiProps, useProps, useStyles } from '../../cor
 import { InputBase, InputBaseProps } from '../InputBase'
 import classes from './Textarea.module.css'
 
-export type TextareaStylesNames = 'root'
+export type TextareaStylesNames = 'root' | 'fieldSizing'
 
 export interface TextareaProps
     extends Omit<InputBaseProps, 'classNames' | 'styles' | 'unstyled' | 'vars' | 'attributes' | 'component'>,
@@ -43,11 +43,20 @@ export const Textarea = factory<TextareaFactory>((_props, ref) => {
         rootSelector: 'root'
     })
 
+    const autosize = minRows !== undefined || maxRows !== undefined
+
     const inputBaseProps = {
         ...others,
         component: 'textarea',
         multiline: true,
-        rows,
+        // autosize 与 rows 互斥：field-sizing: content 由内容撑开，固定 rows 会让
+        // min-height 失去意义；不支持的浏览器回退用 minRows 作为初始行数
+        rows: autosize ? (minRows ?? rows) : rows,
+        __vars: {
+            ...(minRows !== undefined ? { '--textarea-min-rows': String(minRows) } : null),
+            ...(maxRows !== undefined ? { '--textarea-max-rows': String(maxRows) } : null)
+        },
+        ...getStyles(autosize ? 'fieldSizing' : 'root', { classNames, styles }),
         wrapperProps: { ...getStyles('root'), ...wrapperProps }
     } as any
 

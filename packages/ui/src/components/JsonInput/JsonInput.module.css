@@ -1,3 +1,12 @@
 .root {
     font-family: var(--ui-font-family-monospace, Menlo, Consolas, monospace);
 }
+
+/* 与 Textarea.module.css 的同名规则保持一致（minRows/maxRows 自动尺寸） */
+.fieldSizing {
+    field-sizing: content;
+    min-height: calc(var(--textarea-min-rows, 0) * var(--input-line-height, 1.5em) + 0.75rem);
+    max-height: calc(var(--textarea-max-rows, 99) * var(--input-line-height, 1.5em) + 0.75rem);
+    resize: vertical;
+    overflow: auto;
+}

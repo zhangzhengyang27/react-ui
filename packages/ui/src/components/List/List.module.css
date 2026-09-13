@@ -1,5 +1,5 @@
 .root {
-    list-style: none;
+    list-style: var(--list-style-type, none);
     margin: 0;
     padding: 0;
     counter-reset: list-item;
@@ -8,6 +8,16 @@
 
     &:where([data-with-padding]) {
         padding-left: var(--list-fz);
+    }
+
+    /* listStyleType prop 生效：.item 切回 list-item 让原生 marker 可见，并隐藏自绘标记 */
+    &:where([data-native-markers]) .item {
+        display: list-item;
+        margin-left: var(--list-fz);
+    }
+
+    &:where([data-native-markers]) .itemIcon {
+        display: none;
     }
 }
 

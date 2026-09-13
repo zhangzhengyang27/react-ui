@@ -126,7 +126,9 @@ export const ChipGroup = factory<ChipGroupFactory>((_props, ref) => {
     const hasWrapper = label || description || error
 
     const content = (
-        <ChipGroupContext.Provider value={{ isChipSelected, onChange: handleChange, multiple }}>
+        <ChipGroupContext.Provider
+            value={{ isChipSelected, onChange: handleChange, multiple, disabled, size }}
+        >
             <div ref={ref} {...getStyles('root')} {...others}>
                 {children}
             </div>
@@ -137,8 +139,9 @@ export const ChipGroup = factory<ChipGroupFactory>((_props, ref) => {
         return content
     }
 
+    // root 样式仅挂内层 div 一处（对齐 CheckboxGroup）：InputWrapper 再挂会导致 className/style 与 .root 类双重应用
     return (
-        <InputWrapper {...getStyles('root')} label={label} description={description} error={error} required={required}>
+        <InputWrapper label={label} description={description} error={error} required={required}>
             {content}
         </InputWrapper>
     )

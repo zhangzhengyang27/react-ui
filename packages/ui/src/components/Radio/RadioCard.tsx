@@ -72,13 +72,14 @@ export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
     // 组内未传 value 时无法从 group 状态推导 checked，点击忽略并 warn（与 CheckboxCard 行为一致）
     const missingGroupValue = groupCtx !== null && value === undefined && checked === undefined
     const groupChecked = groupCtx !== null && value !== undefined ? groupCtx.value === value : undefined
+    const resolvedDisabled = disabled ?? groupCtx?.disabled
 
     const [internalChecked, setInternalChecked] = useState(defaultChecked ?? false)
     const isChecked =
         checked !== undefined ? checked : groupChecked !== undefined ? groupChecked : internalChecked
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        if (disabled) return
+        if (resolvedDisabled) return
 
         if (missingGroupValue) {
             if (process.env.NODE_ENV !== 'production') {
@@ -111,7 +112,7 @@ export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
         <UnstyledButton
             ref={ref}
             type="button"
-            disabled={disabled}
+            disabled={resolvedDisabled}
             onClick={handleClick}
             aria-checked={isChecked}
             role="radio"

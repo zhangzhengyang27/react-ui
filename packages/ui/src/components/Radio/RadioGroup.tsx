@@ -102,7 +102,9 @@ export const RadioGroup = factory<RadioGroupFactory>((_props, ref) => {
     const hasWrapper = label || description || error
 
     const content = (
-        <RadioGroupContext.Provider value={{ value: selectedValue, onChange: setSelectedValue, name }}>
+        <RadioGroupContext.Provider
+            value={{ value: selectedValue, onChange: setSelectedValue, name, disabled, size }}
+        >
             <div ref={ref} {...getStyles('root')} {...others}>
                 {children}
             </div>
@@ -113,8 +115,9 @@ export const RadioGroup = factory<RadioGroupFactory>((_props, ref) => {
         return content
     }
 
+    // root 样式仅挂内层 div 一处（对齐 CheckboxGroup）：InputWrapper 再挂会导致 className/style 与 .root 类双重应用
     return (
-        <InputWrapper {...getStyles('root')} label={label} description={description} error={error} required={required}>
+        <InputWrapper label={label} description={description} error={error} required={required}>
             {content}
         </InputWrapper>
     )

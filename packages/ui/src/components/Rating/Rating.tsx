@@ -133,10 +133,10 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
     // 用含 hover 的 roundedValue 会导致点击任何星都命中"与当前值相同"而清零
     const baseValue = roundToFraction(clamp(isControlled ? value! : internalValue, 0, count), fractions)
 
-    const handleClick = (index: number) => {
+    const handleClick = (index: number, event: React.MouseEvent<HTMLButtonElement>) => {
         if (readOnly) return
 
-        const nextValue = index + 1
+        const nextValue = getValueFromPointer(index, event)
         const finalValue = clearable && nextValue === baseValue ? 0 : nextValue
 
         if (!isControlled) {
@@ -145,11 +145,30 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
         onChange?.(finalValue)
     }
 
-    const handleMouseEnter = (index: number) => {
+    // 按指针在星内的水平位置计算分数：fractions 等分单星（fractions=2 即半星），
+    // fractions=1 时退化为 index+1（ceil(p*1) 恒为 1）
+    const getValueFromPointer = (index: number, event: React.MouseEvent<HTMLButtonElement>) => {
+        const rect = event.currentTarget.getBoundingClientRect()
+        if (rect.width === 0) return index + 1
+        const percent = clamp((event.clientX - rect.left) / rect.width, 0, 1)
+        const fraction = clamp(Math.ceil(percent * fractions!), 1, fractions!)
+        return index + fraction / fractions!
+    }
+
+    const handleMouseEnter = (index: number, event: React.MouseEvent<HTMLButtonElement>) => {
         if (readOnly) return
-        const next = index + 1
+        const next = getValueFromPointer(index, event)
         setHoverValue(next)
         onHover?.(next)
+    }
+
+    const handleMouseMove = (index: number, event: React.MouseEvent<HTMLButtonElement>) => {
+        if (readOnly) return
+        const next = getValueFromPointer(index, event)
+        if (next !== hoverValue) {
+            setHoverValue(next)
+            onHover?.(next)
+        }
     }
 
     const handleMouseLeave = () => {
@@ -216,8 +235,9 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
                         key={index}
                         type="button"
                         {...getStyles('star')}
-                        onClick={() => handleClick(index)}
-                        onMouseEnter={() => handleMouseEnter(index)}
+                        onClick={event => handleClick(index, event)}
+                        onMouseEnter={event => handleMouseEnter(index, event)}
+                        onMouseMove={event => handleMouseMove(index, event)}
                         disabled={readOnly}
                         aria-label={`${starValue} star`}
                     >

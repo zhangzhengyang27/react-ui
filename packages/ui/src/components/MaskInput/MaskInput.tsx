@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { assignRef, useId, useMergedRef, useUncontrolled } from '@xiaoye-react/hooks'
 import {
     factory,
@@ -265,6 +265,8 @@ export const MaskInput = factory<MaskInputFactory>((_props, ref) => {
         onChangeRaw,
         onComplete,
         resetRef,
+        onFocus: consumerOnFocus,
+        onBlur: consumerOnBlur,
         value: valueProp,
         defaultValue,
         onChange,
@@ -301,6 +303,10 @@ export const MaskInput = factory<MaskInputFactory>((_props, ref) => {
         onChange
     })
 
+    // 占位掩码的显示由焦点态驱动：showMaskOnFocus（默认 true）下空值未聚焦不显示
+    // `___-___`，alwaysShowMask=true 或聚焦时才填充占位符
+    const [focused, setFocused] = useState(false)
+
     const inputId = useId(id)
     const hasWrapper = label || description || error || success
     const inputRef = useRef<HTMLInputElement | null>(null)
@@ -328,9 +334,14 @@ export const MaskInput = factory<MaskInputFactory>((_props, ref) => {
     const options = resolveOptions(value)
     const slots = parseMask(options.mask, options.tokens)
     const maskedValue = applyMaskToValue(value, slots, transform)
+    // 有输入时始终显示掩码格式（含未填槽位占位符）；空值时按焦点语义决定
+    // 是否显示占位掩码（showMaskOnFocus/alwaysShowMask，此前两个 prop 是死参数）
+    const shouldShowMaskPlaceholder = alwaysShowMask || (showMaskOnFocus && focused)
     const displayValue = options.separate
         ? value
-        : buildDisplayValue(maskedValue, slots, options.slotChar)
+        : maskedValue.length > 0 || shouldShowMaskPlaceholder
+            ? buildDisplayValue(maskedValue, slots, options.slotChar)
+            : ''
 
     // useUncontrolled 非受控分支的 setter 每次渲染都是新身份，直接作为依赖会导致 effect 每次渲染重跑；
     // 这里用 ref 持有最新 setValue，effect 只需在 resetRef 变化时重新挂载
@@ -417,7 +428,14 @@ export const MaskInput = factory<MaskInputFactory>((_props, ref) => {
         }
     }
 
-    const handleBlur = () => {
+    const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+        setFocused(true)
+        consumerOnFocus?.(event)
+    }
+
+    const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+        setFocused(false)
+        consumerOnBlur?.(event)
         if (autoClear && !isMaskComplete(maskedValue, slots)) {
             setValue('')
             if (inputRef.current) {
@@ -433,6 +451,7 @@ export const MaskInput = factory<MaskInputFactory>((_props, ref) => {
             ref={mergedRef}
             value={displayValue}
             onChange={handleChange}
+            onFocus={handleFocus}
             onBlur={handleBlur}
             wrapperProps={hasWrapper ? wrapperProps : { ...getStyles('root'), ...wrapperProps }}
         />

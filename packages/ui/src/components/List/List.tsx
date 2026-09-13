@@ -63,11 +63,13 @@ const defaultProps = {
     center: false
 } satisfies Partial<ListProps>
 
-const varsResolver = createVarsResolver<ListFactory>((theme, { size, spacing }) => ({
+const varsResolver = createVarsResolver<ListFactory>((theme, { size, spacing, listStyleType }) => ({
     root: {
         '--list-fz': getFontSize(size),
         '--list-lh': getLineHeight(size),
-        '--list-spacing': getSpacing(spacing)
+        '--list-spacing': getSpacing(spacing),
+        // 覆盖默认 marker（disc/decimal/square 等原生标记），此前该 prop 被解构丢弃
+        '--list-style-type': listStyleType
     }
 }))
 
@@ -115,6 +117,9 @@ export const List = polymorphicFactory<ListFactory>((_props, _ref) => {
                 component={type === 'ordered' ? 'ol' : 'ul'}
                 ref={_ref}
                 mod={[{ 'with-padding': withPadding, center }, mod]}
+                // listStyleType 生效时切换为原生标记：flex 布局的 .item 不渲染原生
+                // marker，且须隐藏 counter/dot 自绘标记避免双重显示
+                data-native-markers={listStyleType === undefined ? undefined : true}
                 {...getStyles('root')}
                 {...others}
             >

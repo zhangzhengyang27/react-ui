@@ -85,9 +85,7 @@ export type RadioFactory = Factory<{
     }
 }>
 
-const defaultProps = {
-    size: 'sm'
-} satisfies Partial<RadioProps>
+const defaultProps = {} satisfies Partial<RadioProps>
 
 const varsResolver = createVarsResolver<RadioFactory>((theme, { size, color, iconColor }) => ({
     root: {
@@ -126,10 +124,14 @@ export const Radio = factory<RadioFactory>((_props, ref) => {
     } = props
 
     const group = useRadioGroupContext()
+    // group 的 size/disabled 作为兜底（自身 prop 优先）；size 默认值 'sm' 在此解析，
+    // 避免在 defaultProps 中写死导致 group.size 永远无法生效
+    const resolvedSize = size ?? group?.size ?? 'sm'
+    const resolvedDisabled = disabled ?? group?.disabled
     const getStyles = useStyles<RadioFactory>({
         name: 'Radio',
         classes,
-        props,
+        props: { ...props, size: resolvedSize },
         className,
         style,
         classNames,
@@ -169,14 +171,14 @@ export const Radio = factory<RadioFactory>((_props, ref) => {
             htmlFor={resolvedId}
             {...getStyles('root')}
             {...wrapperProps}
-            mod={[{ disabled, error: hasError, 'with-label': hasLabel }, mod]}
+            mod={[{ disabled: resolvedDisabled, error: hasError, 'with-label': hasLabel }, mod]}
         >
             <Box
                 component="input"
                 ref={ref}
                 id={resolvedId}
                 type="radio"
-                disabled={disabled}
+                disabled={resolvedDisabled}
                 checked={resolvedChecked}
                 name={group?.name}
                 value={value}

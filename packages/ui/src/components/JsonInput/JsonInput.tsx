@@ -5,7 +5,7 @@ import { InputBase, InputBaseProps } from '../InputBase'
 import { InputWrapper } from '../Input'
 import classes from './JsonInput.module.css'
 
-export type JsonInputStylesNames = 'root'
+export type JsonInputStylesNames = 'root' | 'fieldSizing'
 
 export interface JsonInputProps
     extends Omit<
@@ -160,13 +160,20 @@ export const JsonInput = factory<JsonInputFactory>((_props, ref) => {
 
     const inputId = useId(id)
     const hasWrapper = label || description || error
+    const autosize = minRows !== undefined || maxRows !== undefined
 
     const inputBaseProps = {
         ...others,
         component: 'textarea',
         multiline: true,
         id: inputId,
-        rows,
+        // 与 Textarea 相同的 autosize 语义（见 Textarea.tsx 注释）
+        rows: autosize ? (minRows ?? rows) : rows,
+        __vars: {
+            ...(minRows !== undefined ? { '--textarea-min-rows': String(minRows) } : null),
+            ...(maxRows !== undefined ? { '--textarea-max-rows': String(maxRows) } : null)
+        },
+        ...getStyles(autosize ? 'fieldSizing' : 'root', { classNames, styles }),
         value,
         onChange: handleChange,
         onBlur: handleBlur,

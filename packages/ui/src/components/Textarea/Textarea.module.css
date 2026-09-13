@@ -1,3 +1,14 @@
 .root {
     width: 100%;
 }
+
+/* minRows/maxRows 自动尺寸（渐进增强）：
+   field-sizing: content 让高度随内容增长（Chrome/Edge 123+），
+   min/max-height 用「行高×行数 + 上下 padding」近似；不支持的浏览器回退 rows 属性 */
+.fieldSizing {
+    field-sizing: content;
+    min-height: calc(var(--textarea-min-rows, 0) * var(--input-line-height, 1.5em) + 0.75rem);
+    max-height: calc(var(--textarea-max-rows, 99) * var(--input-line-height, 1.5em) + 0.75rem);
+    resize: vertical;
+    overflow: auto;
+}

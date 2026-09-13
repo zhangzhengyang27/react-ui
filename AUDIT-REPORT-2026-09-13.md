@@ -12,6 +12,14 @@
 > ⑨ 第九批（小修快清）已完成：use-focus-trap/scope-tab 拦截 body 漂移的 Tab（点击 Modal 非焦点区后 Tab 不再逃逸到背景页，仅拦 body/documentElement 保住多陷阱互不干扰）；toTimeString 把 hours=24 钳到 23:59:59（修复 endTime '24:00' 生成 Safari/Firefox 解析不了的 "24:00:00"，覆盖 get-day-time-intervals 与两个 resize hook）；ScheduleHeader 删除调试遗留 --test 变量；demo 重复 lines 键去重；demo ConfiguratorSizeControl 非刻度值回落 md 不再崩溃；tiptap sink/lift 文案互换修正（sink=加深，对齐 IndentIncrease 图标）；HeaderControls 未传 githubLink 不再渲染无 href 死链接。**核实后不修**：「无位移把手点击置 justResized 吞点击」——两条测试显式编码了该行为（把手点击不算事件点击），以测试意图为准。验证：ui 526、schedule 1348、hooks 110 全部通过。
 > ⑩ 第十批（a11y 收尾）已完成：Menu.Sub 键盘支持（Sub.Target 的 ArrowRight/Enter/Space 打开子菜单并聚焦第一项、ArrowLeft 关闭、Escape 只关子菜单；Sub.Item 点击切换子菜单而不再关闭整个父菜单；Trigger 补 data-sub-menu-item）；Popover window Escape 监听补 defaultPrevented 守卫（配合内层 preventDefault 协调）；Tabs 无激活值时把 tablist 第一个未禁用 tab 设为可聚焦（roving tabindex 不再整体失效）；use-scroller 拖拽后 click 抑制改为 document 捕获层一次性监听（容器外释放不再残留监听吞掉后续点击）。验证：ui 526、hooks 110 全部通过，tsc 通过。
 > ⑪ 第十一批（剩余 P1 + 性能尾巴）已完成：TreeSelect 异步数据首次非空时补一次初始展开（defaultExpandAll/defaultExpandedValues 不再被挂载时空数据吞掉）；ComboboxPopover 内嵌搜索框接入 onTargetKeyDown（ArrowUp/Down/Enter/Escape/Home/End 键盘导航，searchable 模式不再只能鼠标选择）；MultiSelect 选中值查找 flatData.find→Map 索引；ui Carousel onSlideChange 走 ref（embla select 监听不再随内联回调每次父渲染 off/on）；CodeHighlight 同步高亮按 code/language/colorScheme memo（父级重渲染不再重跑 CPU 高亮）；SpotlightActionsList 注册 effect 补 listId/store 依赖（动态改 id 后键盘选择不再失灵）。验证：ui 526、code-highlight 70、spotlight 25 全部通过，tsc 通过。
+> ⑫ 第十二批（按用户决策：小修部分）已完成：
+> - Group 组级 disabled/size（明确缺陷直接修）：RadioGroup/SwitchGroup/ChipGroup 的 context 补传 disabled/size 并在 Radio/Switch/Chip/RadioCard 消费兜底（自身 prop 优先）；三个子组件 defaultProps 不再写死 size/disabled（否则组级永远无法生效）；同步修复 Switch 组内 input 缺 name/value（表单提交丢数据）、Switch/Chip 组路径提前 return 丢自身 onChange、三个 Group 带 label 时 .root 双挂 InputWrapper（对齐 CheckboxGroup）。
+> - Rating fractions（决策：实现半星）：按指针在星内的水平位置计算分数（fractions=2 即半星，fractions=1 退化为整星），mousemove 实时预览，键盘保持整星步进。
+> - MaskInput（决策：实现死参数）：补焦点态，alwaysShowMask=true 或（showMaskOnFocus 且聚焦）时显示占位掩码，空值未聚焦显示空；消费者 onFocus/onBlur 合并透传；测试更新为文档语义并补 2 个新用例。
+> - List listStyleType（决策：实现）：root 挂 --list-style-type 变量，生效时 .item 切回 list-item 显示原生 marker 并隐藏自绘标记。
+> - Textarea/JsonInput minRows/maxRows（决策：实现）：field-sizing: content（渐进增强）+ 行高×行数的 min/max-height；rows 回退为 minRows；新 fieldSizing 样式名。
+> - useSplitter 拖拽路径 stale closure：核实为 B2-1 setter 稳定化已顺带覆盖（setCurrentSizes 稳定且经 onChangeRef 转发最新回调），无需改动。
+> 验证：ui 528（含 2 个新用例）全部通过，tsc 通过。
 
 - 范围：`packages/ui`（125 组件）、`@xiaoye-react/form`、`pro`、`dates`、`schedule`、`hooks`、`spotlight/notifications/modals/nprogress/store/emotion/carousel/dropzone/tiptap/code-highlight/header/demo` 等全部源码（不含 test/story），约 10 万行。
 - 方法：18 路只读深度排查（未修改任何文件），每条结论附真实 file:line 与代码证据；关键 P0 已人工复核/沙箱模拟复现（MaskInput 乱序、form 重复提交、setPath 崩溃、Rating 清零、NumberInput 步进、Schedule 双触发均核实成立）。

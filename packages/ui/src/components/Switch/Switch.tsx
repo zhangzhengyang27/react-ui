@@ -76,9 +76,7 @@ export type SwitchFactory = Factory<{
     }
 }>
 
-const defaultProps = {
-    size: 'sm'
-} satisfies Partial<SwitchProps>
+const defaultProps = {} satisfies Partial<SwitchProps>
 
 const varsResolver = createVarsResolver<SwitchFactory>((theme, { size, color }) => ({
     root: {
@@ -119,6 +117,9 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
     } = props
 
     const groupCtx = useContext(SwitchGroupContext)
+    // group 的 size/disabled 作为兜底（自身 prop 优先）；size 默认值 'sm' 在此解析
+    const resolvedSize = size ?? groupCtx?.size ?? 'sm'
+    const resolvedDisabled = disabled ?? groupCtx?.disabled
 
     const [checkedState, setCheckedState] = useUncontrolled<boolean>({
         value: checked,
@@ -133,7 +134,7 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
     const resolvedId = useId(id)
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (disabled) {
+        if (resolvedDisabled) {
             return
         }
 
@@ -142,6 +143,8 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
                 ? [...groupCtx!.value, value!]
                 : groupCtx!.value.filter((v) => v !== value!)
             groupCtx!.onChange(nextValue)
+            // 组路径同样通知自身 onChange（对齐 Checkbox，此前提前 return 丢事件）
+            onChange?.(event)
             return
         }
 
@@ -155,7 +158,7 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
     const getStyles = useStyles<SwitchFactory>({
         name: 'Switch',
         classes,
-        props,
+        props: { ...props, size: resolvedSize },
         className,
         style,
         classNames,
@@ -174,15 +177,17 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
             component="label"
             htmlFor={resolvedId}
             {...getStyles('root')}
-            mod={[{ disabled, checked: resolvedChecked, 'with-labels': hasLabels }, mod]}
+            mod={[{ disabled: resolvedDisabled, checked: resolvedChecked, 'with-labels': hasLabels }, mod]}
         >
             <Box
                 component="input"
                 ref={ref}
                 id={resolvedId}
                 type="checkbox"
-                disabled={disabled}
+                disabled={resolvedDisabled}
                 checked={resolvedChecked}
+                name={groupCtx?.name}
+                value={value}
                 onChange={handleChange}
                 {...getStyles('input')}
                 {...others}

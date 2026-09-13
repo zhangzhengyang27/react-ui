@@ -44,13 +44,20 @@ export function getMobileMonthViewEvents({ date, events }: GetMobileMonthViewEve
   }
 
   const ids = new Set<string | number>();
+  // 与显示月相交即纳入（此前只看 event.start 所在月，起始日在月外的
+  // 跨日事件在续接日全部缺失）
+  const monthStart = dayjs(date).startOf('month');
+  const monthEnd = dayjs(date).endOf('month');
 
   for (const event of events) {
     if (event.display === 'background') {
       continue;
     }
 
-    if (dayjs(event.start).isSame(dayjs(date), 'month')) {
+    if (
+      !dayjs(event.end).isBefore(monthStart, 'day') &&
+      !dayjs(event.start).isAfter(monthEnd, 'day')
+    ) {
       groupEventByDate(validateEvent(event), groupedEvents);
 
       if (!ids.has(event.id)) {

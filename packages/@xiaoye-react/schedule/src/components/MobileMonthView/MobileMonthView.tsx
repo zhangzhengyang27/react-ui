@@ -262,7 +262,6 @@ export const MobileMonthView = factory<MobileMonthViewFactory>((_props) => {
   });
 
   const daysRef: MonthViewControlsRef = useRef<HTMLButtonElement[][]>([]);
-  const firstDayPosition = useRef<{ weekIndex: number; dayIndex: number } | null>(null);
 
   const expandedEvents = expandRecurringEvents({
     events,
@@ -285,11 +284,29 @@ export const MobileMonthView = factory<MobileMonthViewFactory>((_props) => {
       ))
     : null;
 
-  const weeks = getMonthDays({
+  const monthWeeks = getMonthDays({
     month: dayjs(date).format('YYYY-MM-DD'),
     firstDayOfWeek: ctx.getFirstDayOfWeek(firstDayOfWeek),
     consistentWeeks,
-  }).map((week, weekIndex) => {
+  });
+
+  // 每次渲染重算首个可交互单元格（对齐 MonthView）：跨渲染残留的 ref 会让
+  // 月份切换后 roving tabindex 落在隐藏/错误单元格（withOutsideDays=false
+  // 时甚至整个网格没有任何可 Tab 到的日期）
+  let firstDayPosition: { weekIndex: number; dayIndex: number } | null = null;
+  if (withOutsideDays) {
+    firstDayPosition = monthWeeks.length > 0 ? { weekIndex: 0, dayIndex: 0 } : null;
+  } else {
+    for (let weekIndex = 0; weekIndex < monthWeeks.length; weekIndex++) {
+      const dayIndex = monthWeeks[weekIndex].findIndex((dayDate) => isSameMonth(dayDate, date));
+      if (dayIndex !== -1) {
+        firstDayPosition = { weekIndex, dayIndex };
+        break;
+      }
+    }
+  }
+
+  const weeks = monthWeeks.map((week, weekIndex) => {
     const days = week.map((dayDate, dayIndex) => {
       const outside = !isSameMonth(dayDate, date);
       const weekend = ctx.getWeekendDays(weekendDays).includes(dayjs(dayDate).day());
@@ -304,13 +321,8 @@ export const MobileMonthView = factory<MobileMonthViewFactory>((_props) => {
 
       const shouldRender = withOutsideDays || !outside;
 
-      if (shouldRender && firstDayPosition.current === null) {
-        firstDayPosition.current = { weekIndex, dayIndex };
-      }
-
       const isFirstDay =
-        firstDayPosition.current?.weekIndex === weekIndex &&
-        firstDayPosition.current?.dayIndex === dayIndex;
+        firstDayPosition?.weekIndex === weekIndex && firstDayPosition?.dayIndex === dayIndex;
 
       const indicators = dayEvents.slice(0, 3).map((event) => (
         <div

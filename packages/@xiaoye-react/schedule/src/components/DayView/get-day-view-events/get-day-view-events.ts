@@ -37,11 +37,10 @@ export function getDayViewEvents({
     const eventStart = dayjs(event.start);
     const eventEnd = dayjs(event.end);
     const isOnDay = eventStart.isSame(dayStart, 'day');
+    // 任何跨越本日的事件都纳入（此前限制 display === 'background'，
+    // 导致多日 timed 事件只在开始日可见，后续天整段消失）
     const spansIntoDay =
-      !isOnDay &&
-      event.display === 'background' &&
-      eventStart.isBefore(dayEnd) &&
-      eventEnd.isAfter(dayStart);
+      !isOnDay && eventStart.isBefore(dayEnd) && eventEnd.isAfter(dayStart);
 
     if (isOnDay || spansIntoDay) {
       if (isOnDay && !isEventInTimeRange({ event, startTime, endTime })) {
@@ -58,8 +57,18 @@ export function getDayViewEvents({
 
       if (event.display === 'background') {
         backgroundFiltered.push(validated);
-      } else {
+      } else if (isOnDay) {
         filteredEvents.push(validated);
+      } else {
+        // 普通事件的续接日：裁剪到视图日再进入常规定位
+        // （getDayPosition 以事件自身起始日为锚，不裁剪会错位到视口外）
+        const clippedStart = eventStart.isBefore(dayStart) ? dayStart : eventStart;
+        const clippedEnd = eventEnd.isAfter(dayEnd) ? dayEnd : eventEnd;
+        filteredEvents.push({
+          ...validated,
+          start: clippedStart.format('YYYY-MM-DD HH:mm:ss'),
+          end: clippedEnd.format('YYYY-MM-DD HH:mm:ss'),
+        });
       }
     }
   }

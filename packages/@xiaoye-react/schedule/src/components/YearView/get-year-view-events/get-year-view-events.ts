@@ -44,9 +44,16 @@ export function getYearViewEvents({ date, events }: GetYearViewEventsInput) {
   }
 
   const ids = new Set<string | number>();
+  // 与显示年相交即纳入（此前只看 event.start 所在年，起始日在年外的
+  // 跨日事件在续接日全部缺失）
+  const yearStart = dayjs(date).startOf('year');
+  const yearEnd = dayjs(date).endOf('year');
 
   for (const event of events) {
-    if (dayjs(event.start).isSame(dayjs(date), 'year')) {
+    if (
+      !dayjs(event.end).isBefore(yearStart, 'day') &&
+      !dayjs(event.start).isAfter(yearEnd, 'day')
+    ) {
       groupEventByDate(validateEvent(event), groupedEvents);
 
       if (!ids.has(event.id)) {

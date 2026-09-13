@@ -37,9 +37,11 @@ export function getMonthViewEvents({
   const range = getMonthRange({ month: date, withOutsideDays, consistentWeeks, firstDayOfWeek });
 
   for (const event of events) {
+    // 事件与显示范围相交：结束不早于范围起点 且 开始不晚于范围终点。
+    // 此前误用 || 使条件对任意事件恒真，过滤完全失效
     if (
-      dayjs(event.end).isAfter(range.start, 'day') ||
-      dayjs(event.start).isBefore(range.end, 'day')
+      !dayjs(event.end).isBefore(range.start, 'day') &&
+      !dayjs(event.start).isAfter(range.end, 'day')
     ) {
       filteredEvents.push(validateEvent(event));
 

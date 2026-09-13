@@ -449,6 +449,11 @@ export const ResourcesMonthView = factory<ResourcesMonthViewFactory>((_props) =>
     [monthDays]
   );
 
+  // 头部"今天"按钮的 rAF 回调持有当前渲染的 scrollToDay（闭包固化 monthDays）：
+  // 跨月点击"今天"时旧闭包里 indexOf(today) 恒为 -1，滚动失效；经 ref 调最新版本
+  const scrollToDayRef = useRef(scrollToDay);
+  scrollToDayRef.current = scrollToDay;
+
   useIsomorphicEffect(() => {
     if (startScrollDate) {
       scrollToDay(startScrollDate);
@@ -1008,7 +1013,7 @@ export const ResourcesMonthView = factory<ResourcesMonthViewFactory>((_props) =>
             next: () => toDateString(dayjs(date).add(1, 'month').startOf('month')),
             today: () => {
               requestAnimationFrame(() => {
-                scrollToDay(dayjs().format('YYYY-MM-DD'));
+                scrollToDayRef.current(dayjs().format('YYYY-MM-DD'));
               });
               return toDateString(dayjs());
             },

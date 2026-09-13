@@ -112,7 +112,9 @@ export function getResourcesWeekViewEvents({
       const eventStart = dayjs(event.start);
       const dayStart = dayjs(day).startOf('day');
 
-      if (eventStart.isSame(dayStart, 'day')) {
+      // 只对普通事件记账：background 事件在开始日也写入 assignedIds 会把
+      // 续接日的 background 分支（下方）短路掉，多日 background 事件只在开始日渲染
+      if (event.display !== 'background' && eventStart.isSame(dayStart, 'day')) {
         assignedIds.add(event.id);
         return true;
       }

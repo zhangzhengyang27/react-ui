@@ -10,10 +10,11 @@
     border-radius: var(--paper-radius);
     box-shadow: var(--paper-shadow);
     background-color: var(--ui-color-body);
-}
 
-.root:where([data-ui-color-scheme='dark']) {
-    --paper-border-color: var(--ui-color-dark-4);
+    /* data-ui-color-scheme 只会设在 <html> 上，必须用祖先选择器匹配 */
+    [data-ui-color-scheme='dark'] & {
+        --paper-border-color: var(--ui-color-dark-4);
+    }
 }
 
 .root:where([data-with-border]) {

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useMergedRef } from '@xiaoye-react/hooks'
+import { useDirection } from '../../../core'
 import { useScrollAreaContext } from '../ScrollArea.context'
 import type { ScrollAreaScrollbarAxisProps } from '../ScrollArea.types'
 import { getThumbSize, isScrollingWithinScrollbarBounds, toInt } from '../utils'
@@ -8,6 +9,7 @@ import { Scrollbar } from './Scrollbar'
 export const ScrollAreaScrollbarX = (props: ScrollAreaScrollbarAxisProps) => {
     const { sizes, onSizesChange, style, ref: forwardedRef, ...others } = props
     const ctx = useScrollAreaContext()
+    const { dir } = useDirection()
     const [computedStyle, setComputedStyle] = useState<CSSStyleDeclaration>()
     const ref = useRef<HTMLDivElement>(null)
     const composeRefs = useMergedRef(forwardedRef, ref, ctx.onScrollbarXChange)
@@ -34,7 +36,12 @@ export const ScrollAreaScrollbarX = (props: ScrollAreaScrollbarAxisProps) => {
                 if (ctx.viewport) {
                     const scrollPos = ctx.viewport.scrollLeft + event.deltaX
                     props.onWheelScroll(scrollPos)
-                    if (isScrollingWithinScrollbarBounds(scrollPos, maxScrollPos)) {
+                    // RTL 下原生 scrollLeft 合法区间为 [-max, 0]，取反映射到 [0, max] 再判定
+                    const withinBounds =
+                        dir === 'rtl'
+                            ? isScrollingWithinScrollbarBounds(-scrollPos, maxScrollPos)
+                            : isScrollingWithinScrollbarBounds(scrollPos, maxScrollPos)
+                    if (withinBounds) {
                         event.preventDefault()
                     }
                 }

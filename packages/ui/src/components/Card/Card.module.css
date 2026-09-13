@@ -17,10 +17,11 @@
     border-radius: var(--card-radius);
     box-shadow: var(--card-shadow);
     padding: var(--card-padding);
-}
 
-.root:where([data-ui-color-scheme='dark']) {
-    --card-bd: var(--ui-color-dark-4);
+    /* data-ui-color-scheme 只会设在 <html> 上，必须用祖先选择器匹配 */
+    [data-ui-color-scheme='dark'] & {
+        --card-bd: var(--ui-color-dark-4);
+    }
 }
 
 .root:where([data-with-border]) {

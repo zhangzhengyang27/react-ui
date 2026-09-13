@@ -8,6 +8,7 @@ import {
     getRadius,
     getShadow,
     getSize,
+    getThemeColor,
     UIColor,
     UIRadius,
     UIShadow,
@@ -59,12 +60,13 @@ const defaultProps = {
     withBorder: false
 } satisfies Partial<CardProps>
 
-const varsResolver = createVarsResolver<CardFactory>((_, { padding, radius, shadow, bg }) => ({
+const varsResolver = createVarsResolver<CardFactory>((theme, { padding, radius, shadow, bg }) => ({
     root: {
         '--card-padding': getSize(padding, 'card-padding'),
         '--card-radius': radius === undefined ? undefined : getRadius(radius),
         '--card-shadow': getShadow(shadow),
-        '--card-bg': bg
+        // 主题色键（red / red.6）解析为 CSS 变量，任意 CSS 颜色原样透传
+        '--card-bg': bg === undefined ? undefined : getThemeColor(bg, theme)
     }
 }))
 

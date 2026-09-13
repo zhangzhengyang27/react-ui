@@ -6,6 +6,7 @@ import {
     factory,
     Factory,
     getRadius,
+    getThemeColor,
     getSize,
     UIColor,
     UIRadius,
@@ -71,11 +72,13 @@ const defaultProps = {
     disabled: false
 } satisfies Partial<ChipProps>
 
-const varsResolver = createVarsResolver<ChipFactory>((_, { size, radius, color }) => ({
+const varsResolver = createVarsResolver<ChipFactory>((theme, { size, radius, color }) => ({
     root: {
         '--chip-size': getSize(size, 'chip-size'),
         '--chip-radius': radius === undefined ? undefined : getRadius(radius),
-        '--chip-color': color === undefined ? undefined : `var(--ui-color-${color}-filled)`
+        // getThemeColor 对裸主题键同样解析为 --ui-color-<key>-filled（与旧写法等价），
+        // 并额外支持 shade（red.6）与任意 CSS 颜色
+        '--chip-color': color === undefined ? undefined : getThemeColor(color, theme)
     }
 }))
 

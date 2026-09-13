@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { Box, BoxProps, Factory, factory, StylesApiProps, useProps, useStyles } from '../../../core'
+import { Box, BoxProps, Factory, factory, StylesApiProps, useDirection, useProps, useStyles } from '../../../core'
 import classes from '../Splitter.module.css'
 import { useSplitterContext } from '../SplitterContext'
 
@@ -20,6 +20,7 @@ export const SplitterResizer = factory<SplitterResizerFactory>((_props, ref) => 
     const props = useProps('SplitterResizer', defaultProps, _props)
     const { classNames, className, style, styles, unstyled, vars, index, ...others } = props
     const ctx = useSplitterContext()
+    const { dir } = useDirection()
     const startStateRef = useRef<{ sizes: number[]; position: number; containerSize: number } | null>(null)
     // 记录挂到 document 上的拖拽监听器实例,卸载时精确移除对应的函数引用
     const dragListenersRef = useRef<{ move: (event: MouseEvent) => void; up: () => void } | null>(null)
@@ -77,7 +78,11 @@ export const SplitterResizer = factory<SplitterResizerFactory>((_props, ref) => 
         if (!startStateRef.current) return
         const { sizes, position, containerSize } = startStateRef.current
         const currentPosition = ctx.orientation === 'horizontal' ? event.clientX : event.clientY
-        const deltaPercent = ((currentPosition - position) / containerSize) * 100
+        let deltaPercent = ((currentPosition - position) / containerSize) * 100
+        // RTL 下水平分栏的面板行被反排（panel[index] 在右侧），拖拽方向语义相反
+        if (ctx.orientation === 'horizontal' && dir === 'rtl') {
+            deltaPercent = -deltaPercent
+        }
 
         const nextSizes = [...sizes]
         nextSizes[index] = Math.max(5, Math.min(95, sizes[index] + deltaPercent))
@@ -143,6 +148,11 @@ export const SplitterResizer = factory<SplitterResizerFactory>((_props, ref) => 
             delta = KEYBOARD_STEP
         } else {
             return
+        }
+
+        // RTL 水平分栏：方向键语义跟随视觉方向反转
+        if (isHorizontal && dir === 'rtl') {
+            delta = -delta
         }
 
         event.preventDefault()

@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from 'react'
+import { useDirection } from '../../../core'
 import { useScrollAreaContext } from '../ScrollArea.context'
 import type { ScrollAreaScrollbarAxisPrivateProps, ScrollAreaScrollbarAxisProps, Sizes } from '../ScrollArea.types'
 import { getScrollPositionFromPointer, getThumbOffsetFromScroll, getThumbRatio } from '../utils'
@@ -14,6 +15,7 @@ export interface ScrollAreaScrollbarVisibleProps
 export function ScrollAreaScrollbarVisible(props: ScrollAreaScrollbarVisibleProps) {
     const { orientation = 'vertical', forceMount, ...scrollbarProps } = props
     const context = useScrollAreaContext()
+    const { dir } = useDirection()
     const thumbRef = useRef<HTMLDivElement | null>(null)
     const pointerOffsetRef = useRef(0)
     const [sizes, setSizes] = useState<Sizes>({
@@ -30,10 +32,11 @@ export function ScrollAreaScrollbarVisible(props: ScrollAreaScrollbarVisibleProp
     const handleThumbPositionChangeX = useCallback(() => {
         if (context.viewport && thumbRef.current) {
             const scrollPos = context.viewport.scrollLeft
-            const offset = getThumbOffsetFromScroll(scrollPos, sizes)
+            // RTL 下原生 scrollLeft 为负值，必须传入 dir 让工具函数用 [-max, 0] 区间钳位
+            const offset = getThumbOffsetFromScroll(scrollPos, sizes, dir)
             thumbRef.current.style.transform = `translate3d(${offset}px, 0, 0)`
         }
-    }, [context.viewport, sizes])
+    }, [context.viewport, sizes, dir])
 
     const handleThumbPositionChangeY = useCallback(() => {
         if (context.viewport && thumbRef.current) {
@@ -67,8 +70,12 @@ export function ScrollAreaScrollbarVisible(props: ScrollAreaScrollbarVisibleProp
         }
     }
 
-    const getScrollPosition = (pointerPos: number) =>
+    // 竖向滚动与方向无关，固定 ltr 语义；横向按当前 dir 计算映射区间
+    const getScrollPositionY = (pointerPos: number) =>
         getScrollPositionFromPointer(pointerPos, pointerOffsetRef.current, sizes)
+
+    const getScrollPositionX = (pointerPos: number) =>
+        getScrollPositionFromPointer(pointerPos, pointerOffsetRef.current, sizes, dir)
 
     if (orientation === 'horizontal') {
         return (
@@ -83,7 +90,7 @@ export function ScrollAreaScrollbarVisible(props: ScrollAreaScrollbarVisibleProp
                 }}
                 onDragScroll={pointerPos => {
                     if (context.viewport) {
-                        context.viewport.scrollLeft = getScrollPosition(pointerPos)
+                        context.viewport.scrollLeft = getScrollPositionX(pointerPos)
                     }
                 }}
             />
@@ -103,7 +110,7 @@ export function ScrollAreaScrollbarVisible(props: ScrollAreaScrollbarVisibleProp
                 }}
                 onDragScroll={pointerPos => {
                     if (context.viewport) {
-                        context.viewport.scrollTop = getScrollPosition(pointerPos)
+                        context.viewport.scrollTop = getScrollPositionY(pointerPos)
                     }
                 }}
             />

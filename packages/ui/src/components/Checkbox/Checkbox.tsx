@@ -104,7 +104,8 @@ const varsResolver = createVarsResolver<CheckboxFactory>((theme, { size, radius,
         '--checkbox-size': getSize(size, 'checkbox-size'),
         '--checkbox-radius': radius === undefined ? undefined : getRadius(radius),
         '--checkbox-color': color ? getThemeColor(color, theme) : undefined,
-        '--checkbox-icon-color': iconColor
+        // 主题键解析，与 CheckboxIndicator 行为对齐
+        '--checkbox-icon-color': iconColor ? getThemeColor(iconColor, theme) : undefined
     }
 }))
 

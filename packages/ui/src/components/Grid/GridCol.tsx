@@ -30,7 +30,8 @@ const defaultProps = {
 export const GridCol = factory<GridColFactory>((_props, ref) => {
     const props = useProps('GridCol', defaultProps, _props)
     const { span, offset, order, style, ...others } = props
-    const { columns } = useGridContext()
+    const ctx = useGridContext()
+    const columns = ctx?.columns ?? 12
     const getStyles = useStyles<GridColFactory>({
         name: 'Grid',
         classes,
@@ -39,18 +40,31 @@ export const GridCol = factory<GridColFactory>((_props, ref) => {
         rootSelector: 'col'
     })
 
-    const gridColumn = offset ? `${offset + 1} / span ${Math.min(span ?? 1, columns - offset)}` : `span ${span}`
+    const resolvedSpan = span ?? 1
+    const resolvedStyle: React.CSSProperties = { order, ...style }
+
+    if (ctx?.grow) {
+        // grow 时根容器为 flex 布局（flex-grow 对 grid item 无效）：
+        // basis 按 span 比例并扣除列间距（整行恰好铺满，不产生意外换行），
+        // grow 按 span 比例分配最后一行的剩余空间；offset 用行内边距模拟
+        const unit = `(100% - ${Math.max(columns - 1, 0)} * var(--grid-column-gap, 0px)) / ${columns}`
+        resolvedStyle.flexGrow = resolvedSpan
+        resolvedStyle.flexBasis = `calc(${unit} * ${resolvedSpan})`
+        if (offset) {
+            resolvedStyle.marginInlineStart = `calc(${unit} * ${offset})`
+        }
+    } else {
+        resolvedStyle.gridColumn = offset
+            ? `${offset + 1} / span ${Math.min(resolvedSpan, columns - offset)}`
+            : `span ${resolvedSpan}`
+    }
 
     return (
         <Box
             ref={ref}
             {...getStyles('col')}
             {...others}
-            style={{
-                gridColumn,
-                order,
-                ...style
-            }}
+            style={resolvedStyle}
         />
     )
 })

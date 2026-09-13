@@ -3,10 +3,12 @@
     grid-template-columns: repeat(var(--grid-cols, 12), minmax(0, 1fr));
     row-gap: var(--grid-row-gap, var(--grid-gutter, 0));
     column-gap: var(--grid-column-gap, var(--grid-gutter, 0));
-}
 
-.root[data-grow='true'] > * {
-    flex-grow: 1;
+    /* flex-grow 对 grid item 无效：grow 需要 flex 布局才能让最后一行撑满剩余空间 */
+    &[data-grow='true'] {
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
 
 .col {

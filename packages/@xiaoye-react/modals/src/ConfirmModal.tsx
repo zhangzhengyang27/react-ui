@@ -19,7 +19,9 @@ export function ConfirmModal({
   id,
   cancelProps,
   confirmProps,
-  labels = { cancel: '', confirm: '' },
+  // 默认文案兜底：ModalsProvider 未配 labels 且 openConfirmModal 未传 labels 时，
+  // 空字符串会渲染出两个无文字按钮
+  labels = { cancel: '取消', confirm: '确认' },
   closeOnConfirm = true,
   closeOnCancel = true,
   groupProps,

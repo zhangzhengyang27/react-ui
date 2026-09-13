@@ -44,7 +44,11 @@ export function useClipboard(options: UseClipboardOptions = { timeout: 2000 }): 
         if ('clipboard' in navigator) {
             navigator.clipboard
                 .writeText(value)
-                .then(() => handleCopyResult(true))
+                // 成功时清除上次失败残留的 error，避免 copied=true 与 error 同时存在
+                .then(() => {
+                    setError(null)
+                    handleCopyResult(true)
+                })
                 .catch(err => setError(err))
         } else {
             setError(new Error('useClipboard: navigator.clipboard is not supported'))

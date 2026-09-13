@@ -261,29 +261,44 @@ export const Carousel = factory<CarouselFactory>((_props) => {
 
   const handleKeydown = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (withKeyboardEvents) {
-        if (event.key === 'ArrowRight') {
-          event.preventDefault();
-          handleNext();
-        }
+      if (!withKeyboardEvents) {
+        return;
+      }
 
-        if (event.key === 'ArrowLeft') {
-          event.preventDefault();
-          handlePrevious();
-        }
+      const target = event.target as HTMLElement | null;
+      // slide 内的输入框/可编辑区域的 ArrowLeft/Right、Home/End 是光标移动，
+      // 捕获阶段吞掉会破坏文本编辑并误触轮播滚动
+      if (
+        target &&
+        (target.isContentEditable ||
+          ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName))
+      ) {
+        return;
+      }
 
-        if (event.key === 'Home') {
-          event.preventDefault();
-          embla?.scrollTo(0);
-        }
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        handleNext();
+      }
 
-        if (event.key === 'End') {
-          event.preventDefault();
-          embla?.scrollTo(embla.scrollSnapList().length - 1);
-        }
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        handlePrevious();
+      }
+
+      if (event.key === 'Home') {
+        event.preventDefault();
+        embla?.scrollTo(0);
+      }
+
+      if (event.key === 'End') {
+        event.preventDefault();
+        embla?.scrollTo(embla.scrollSnapList().length - 1);
       }
     },
-    [embla, handleNext, handlePrevious]
+    // withKeyboardEvents 必须入 deps：embla 初始化后其余依赖稳定，
+    // 缺失会导致闭包固化首帧值，运行时切换该 prop 完全无效
+    [withKeyboardEvents, embla, handleNext, handlePrevious]
   );
 
   useEffect(() => {

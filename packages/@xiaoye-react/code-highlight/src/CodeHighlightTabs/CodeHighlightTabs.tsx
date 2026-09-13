@@ -136,7 +136,9 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>((_props) => {
   });
 
   useEffect(() => {
-    if (value >= code.length) {
+    // 空数组时不得把 value 钳到 -1：异步加载后 -1 >= length 恒 false，
+    // activeTab 会永久停留在 -1，代码区一直渲染 fallback 空内容
+    if (code.length > 0 && value >= code.length) {
       setValue(code.length - 1);
     }
   }, [value, code]);

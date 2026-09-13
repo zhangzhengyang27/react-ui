@@ -44,15 +44,21 @@ export const createShikiAdapter = (
           _colorScheme = dark;
         }
 
-        return {
-          isHighlighted: true,
-          highlightedCode: stripShikiCodeBlocks(
-            ctx.codeToHtml(code, {
-              lang: language,
-              theme: forceColorScheme || _colorScheme,
-            })
-          ),
-        };
+        try {
+          return {
+            isHighlighted: true,
+            highlightedCode: stripShikiCodeBlocks(
+              ctx.codeToHtml(code, {
+                lang: language,
+                theme: forceColorScheme || _colorScheme,
+              })
+            ),
+          };
+        } catch {
+          // 语言不在 bundle（如未注册的 lang）时 shiki 同步抛 ShikiError，
+          // 该函数在渲染体内调用，不降级会导致整个子树崩溃
+          return { highlightedCode: code, isHighlighted: false };
+        }
       };
     },
   };

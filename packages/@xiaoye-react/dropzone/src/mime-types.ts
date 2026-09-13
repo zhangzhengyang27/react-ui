@@ -12,7 +12,8 @@ export const MIME_TYPES = {
   // Documents
   mp4: 'video/mp4',
   zip: 'application/zip',
-  rar: 'application/x-rar',
+  // RFC 8078 注册名；浏览器拖入 .rar 报告的是 application/vnd.rar（旧 x-rar / x-rar-compressed 均匹配不上）
+  rar: 'application/vnd.rar',
   '7z': 'application/x-7z-compressed',
   csv: 'text/csv',
   pdf: 'application/pdf',

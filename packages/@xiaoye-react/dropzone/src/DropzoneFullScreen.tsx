@@ -99,13 +99,17 @@ export const DropzoneFullScreen = factory<DropzoneFullScreenFactory>((_props) =>
 
   const handleDragEnter = (event: DragEvent) => {
     if (event.dataTransfer?.types.includes('Files')) {
-      setCounter((prev) => prev + 1);
+      // dragenter/leave 在子元素间穿梭成对触发，但 dragleave 无法区分拖的是否是文件：
+      // 页面内非文件拖拽（拖选文本/拖动元素）只触发 leave 会把计数打成负数且无复位路径，
+      // 之后真实文件 dragenter 先归 0 再 open，counter===0 的 effect 立即 close，遮罩闪烁。
+      // 钳到非负：非文件拖拽的 leave 对计数无影响
+      setCounter((prev) => Math.max(0, prev + 1));
       open();
     }
   };
 
   const handleDragLeave = () => {
-    setCounter((prev) => prev - 1);
+    setCounter((prev) => Math.max(0, prev - 1));
   };
 
   useEffect(() => {

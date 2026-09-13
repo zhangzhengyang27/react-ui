@@ -245,10 +245,11 @@ export const Upload = factory<UploadFactory>((_props, ref) => {
     if (!upload) {
       return;
     }
-    files.filter(item => item.status === 'pending').forEach(item => {
+    // 读 filesRef 而非渲染期 files：同一事件内先 addFiles 后 submit 时不会遗漏刚加入的文件
+    filesRef.current.filter(item => item.status === 'pending').forEach(item => {
       void runUpload(item);
     });
-  }, [files, upload, runUpload]);
+  }, [upload, runUpload]);
 
   assignRef(uploadRef, { submit: submitPending, clear: () => commit([]) });
 
@@ -289,7 +290,9 @@ export const Upload = factory<UploadFactory>((_props, ref) => {
       }
     }
 
-    commit([...current, ...withValidation]);
+    // await 期间可能有并发变更（再次 drop、删除文件）：基于最新列表提交，
+    // 否则入口处快照会覆盖并发写入（丢文件/已删文件复活）
+    commit([...filesRef.current, ...withValidation]);
 
     if (autoUpload && upload) {
       withValidation.filter(item => item.status === 'pending').forEach(item => {

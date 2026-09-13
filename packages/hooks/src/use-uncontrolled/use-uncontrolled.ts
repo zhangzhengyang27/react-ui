@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 
 /**
  * 定义非受控组件的状态管理选项接口
@@ -80,8 +80,8 @@ export type UseUncontrolledReturnValue<T> = [T, (value: T, ...payload: any[]) =>
  * 不向 useUncontrolled 传 onChange，由组件显式调用 onChange 作为唯一出口；
  * **前提是所有 setter 调用点都受 `value === undefined` 守卫**（受控模式永不调 setter）。
  *
- * 受控模式下（`value !== undefined`）返回的 setter 是 `onChange` 本身（不会调 setState），
- * 所以受控模式下不存在双触发问题。
+ * 返回的 setter 是**稳定引用**（useCallback）：受控模式下不更新内部状态、仅转发最新 onChange；
+ * 非受控模式下更新内部状态并转发最新 onChange。下游可以放心把 setter 放进依赖数组。
  */
 export function useUncontrolled<T>({
     value,
@@ -91,14 +91,27 @@ export function useUncontrolled<T>({
 }: UseUncontrolledOptions<T>): UseUncontrolledReturnValue<T> {
     const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue !== undefined ? defaultValue : finalValue)
 
-    const handleUncontrolledChange = (val: T, ...payload: any[]) => {
+    // setter 必须是稳定引用：若每次渲染重建，下游以其为依赖的 useCallback/useMemo 会
+    // 每帧失效（Combobox contextValue、use-splitter 的 ref 回调缓存等大面积击穿）。
+    // onChange 经 ref 转发最新值，避免稳定 setter 闭包固化过期回调
+    const onChangeRef = useRef(onChange)
+    onChangeRef.current = onChange
+    const valueRef = useRef(value)
+    valueRef.current = value
+
+    const handleChange = useCallback((val: T, ...payload: any[]) => {
+        if (valueRef.current !== undefined) {
+            // 受控模式：不更新内部状态，仅转发 onChange（与既有受控语义一致）
+            onChangeRef.current?.(val, ...payload)
+            return
+        }
         setUncontrolledValue(val)
-        onChange?.(val, ...payload)
-    }
+        onChangeRef.current?.(val, ...payload)
+    }, [])
 
     if (value !== undefined) {
-        return [value as T, onChange, true]
+        return [value as T, handleChange, true]
     }
 
-    return [uncontrolledValue as T, handleUncontrolledChange, false]
+    return [uncontrolledValue as T, handleChange, false]
 }

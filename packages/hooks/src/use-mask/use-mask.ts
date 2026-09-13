@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 
 const DEFAULT_TOKENS: Record<string, RegExp> = {
     '0': /[0-9]/,
@@ -146,15 +146,19 @@ function checkComplete(masked: string, slots: MaskSlot[]): boolean {
  */
 export function useMask(options: UseMaskOptions): UseMaskReturnValue {
     const { mask, placeholderChar = '_', tokens = {} } = options
-    const resolvedTokens = { ...DEFAULT_TOKENS, ...tokens }
-    const slots = parseMask(mask, resolvedTokens)
+    // 掩码槽位按 mask/tokens 缓存：否则每次渲染重建 slots → updateValue/refCallback
+    // 身份变化 → React 每渲染卸载重挂 ref、重绑 input 监听
+    const slots = useMemo(() => parseMask(mask, { ...DEFAULT_TOKENS, ...tokens }), [mask, tokens])
 
     const inputRef = useRef<HTMLInputElement | null>(null)
+    // IME 组合（中文/日文输入法）期间每次中间 input 都重写 value 会丢弃组合文本，
+    // 组合期间跳过，compositionend 后统一应用掩码
+    const composingRef = useRef(false)
     const [maskedValue, setMaskedValue] = useState('')
     const [rawValue, setRawValue] = useState('')
 
     const updateValue = useCallback(
-        (input: string) => {
+        (input: string, cursor?: number) => {
             const processed = applyMask(input, slots)
             const raw = extractRaw(processed, slots)
             const display = buildDisplayValue(processed, slots, placeholderChar)
@@ -162,8 +166,47 @@ export function useMask(options: UseMaskOptions): UseMaskReturnValue {
             setMaskedValue(display)
             setRawValue(raw)
 
-            if (inputRef.current) {
-                inputRef.current.value = display
+            const inputEl = inputRef.current
+            if (inputEl) {
+                inputEl.value = display
+
+                if (cursor !== undefined) {
+                    // 整体重写 value 会让光标跳到末尾：记录每个输出字符来自输入串的哪个
+                    // 位置，把编辑后的光标按"其前被保留的有效字符数"映射回新显示串，
+                    // 并跟随其后自动插入的字面量
+                    const produced: number[] = []
+                    let inputIndex = 0
+                    for (const slot of slots) {
+                        if (inputIndex >= input.length) break
+                        if (slot.type === 'literal') {
+                            produced.push(inputIndex)
+                            if (input[inputIndex] === slot.char) {
+                                inputIndex++
+                            }
+                            continue
+                        }
+                        while (inputIndex < input.length) {
+                            const ch = input[inputIndex++]
+                            if (slot.pattern!.test(ch)) {
+                                produced.push(inputIndex)
+                                break
+                            }
+                        }
+                    }
+
+                    let filled = 0
+                    for (let p = 0; p < produced.length && produced[p] <= cursor; p++) {
+                        filled = p + 1
+                    }
+                    let nextCursor = Math.min(filled, display.length)
+                    while (
+                        nextCursor < display.length &&
+                        slots[nextCursor]?.type === 'literal'
+                    ) {
+                        nextCursor++
+                    }
+                    inputEl.setSelectionRange(nextCursor, nextCursor)
+                }
             }
         },
         [slots, placeholderChar]
@@ -172,8 +215,24 @@ export function useMask(options: UseMaskOptions): UseMaskReturnValue {
     const refCallback: React.RefCallback<HTMLInputElement | null> = useCallback(
         node => {
             const handleInput = () => {
-                if (inputRef.current) {
-                    updateValue(inputRef.current.value)
+                if (composingRef.current) {
+                    return
+                }
+                const input = inputRef.current
+                if (input) {
+                    updateValue(input.value, input.selectionStart ?? input.value.length)
+                }
+            }
+
+            const handleCompositionStart = () => {
+                composingRef.current = true
+            }
+
+            const handleCompositionEnd = () => {
+                composingRef.current = false
+                const input = inputRef.current
+                if (input) {
+                    updateValue(input.value, input.selectionStart ?? input.value.length)
                 }
             }
 
@@ -181,10 +240,14 @@ export function useMask(options: UseMaskOptions): UseMaskReturnValue {
 
             if (node) {
                 node.addEventListener('input', handleInput)
+                node.addEventListener('compositionstart', handleCompositionStart)
+                node.addEventListener('compositionend', handleCompositionEnd)
             }
 
             return () => {
                 node?.removeEventListener('input', handleInput)
+                node?.removeEventListener('compositionstart', handleCompositionStart)
+                node?.removeEventListener('compositionend', handleCompositionEnd)
             }
         },
         [updateValue]

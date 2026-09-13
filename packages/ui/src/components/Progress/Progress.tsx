@@ -135,7 +135,8 @@ export const Progress = factory<ProgressFactory>((_props, ref) => {
             {...getStyles('root')}
             mod={[{ striped, animated }, mod]}
             role="progressbar"
-            aria-valuenow={value}
+            // 与可视宽度一致地钳制：150/-5/NaN 原样输出会让读屏器读到矛盾值
+            aria-valuenow={value === undefined ? undefined : clamp(value || 0)}
             aria-valuemin={0}
             aria-valuemax={100}
             {...others}

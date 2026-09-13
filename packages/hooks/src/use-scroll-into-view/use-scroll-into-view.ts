@@ -74,6 +74,9 @@ export function useScrollIntoView<
     if (frameID.current) {
       cancelAnimationFrame(frameID.current);
       frameID.current = 0;
+      // 必须同步重置计时起点：否则取消后再次 scrollIntoView 时 elapsed 巨大、
+      // t≥1 直接跳到目标位置且立即触发 onScrollFinish（无动画）
+      startTime.current = 0;
       setScrolling(false);
     }
   }, []);

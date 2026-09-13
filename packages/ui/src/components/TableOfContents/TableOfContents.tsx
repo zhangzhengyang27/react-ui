@@ -168,7 +168,7 @@ export const TableOfContents = factory<TableOfContentsFactory>((_props, ref) => 
         return (
             <UnstyledButton
                 key={data.id || `${idBase}-${index}`}
-                __vars={{ '--depth-offset': `${data.depth - (minDepthToOffset || 1)}` }}
+                __vars={{ '--depth-offset': `${data.depth - (minDepthToOffset ?? 1)}` }}
                 data-active={index === spy.active || undefined}
                 variant={variant}
                 {...controlProps}

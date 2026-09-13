@@ -61,6 +61,22 @@ const defaultProps = {
     offset: [0, 0] as [number, number]
 } satisfies Partial<WatermarkProps>
 
+function measureTextWidth(lines: string[], fontSize: number): number {
+    // canvas 不可用（SSR/测试）时用 0.6em/字符 粗估，仅影响瓦片密度不影响正确性
+    if (typeof document === 'undefined') {
+        const longest = lines.reduce((max, line) => Math.max(max, line.length), 0)
+        return longest * fontSize * 0.6
+    }
+    const canvas = document.createElement('canvas')
+    const ctx = canvas.getContext('2d')
+    if (!ctx) {
+        const longest = lines.reduce((max, line) => Math.max(max, line.length), 0)
+        return longest * fontSize * 0.6
+    }
+    ctx.font = `${fontSize}px sans-serif`
+    return lines.reduce((max, line) => Math.max(max, ctx.measureText(line).width), 0)
+}
+
 function buildSvgDataUrl(
     content: string[],
     rotate: number,
@@ -70,8 +86,14 @@ function buildSvgDataUrl(
 ) {
     const lineHeight = fontSize * 1.4
     const textHeight = content.length * lineHeight
-    const width = gap[0]
-    const height = gap[1] + textHeight
+    // 瓦片宽度按最长文本实测（此前固定为 gap[0]，长文本被 SVG 按 viewBox 裁切，
+    // 平铺出残缺水印）；宽度/高度取文本经旋转后的水平/垂直投影并留出间隙
+    const textWidth = measureTextWidth(content, fontSize)
+    const radian = (rotate * Math.PI) / 180
+    const cos = Math.abs(Math.cos(radian))
+    const sin = Math.abs(Math.sin(radian))
+    const width = Math.ceil(textWidth * cos + textHeight * sin) + gap[0]
+    const height = Math.ceil(textWidth * sin + textHeight * cos) + gap[1]
 
     const textElements = content
         .map((line, index) => {
@@ -144,7 +166,9 @@ export const Watermark = factory<WatermarkFactory>((_props, ref) => {
     const backgroundImage = useMemo(() => {
         if (contentArray.length === 0) return undefined
         return buildSvgDataUrl(contentArray, rotate!, finalFontSize, finalColor, gap!)
-    }, [contentArray, rotate, finalFontSize, finalColor, gap])
+        // 依赖取原始值：内联 gap={[120, 60]} 的新数组身份不至于每次渲染重建 data URL
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [contentArray, rotate, finalFontSize, finalColor, gap?.[0], gap?.[1]])
 
     const backgroundPosition = useMemo(() => {
         if (!offset) return undefined

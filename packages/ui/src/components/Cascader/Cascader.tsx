@@ -476,6 +476,9 @@ export const Cascader = factory<CascaderFactory>((_props: CascaderBaseProps, _re
                 data-active={isActive ? 'true' : undefined}
                 data-selected={isSelected ? 'true' : undefined}
                 data-disabled={node.disabled ? 'true' : undefined}
+                // 阻止焦点转移：点击面板项期间输入框不失焦，
+                // 多选模式下 closeOnBlur 不会在选中前误关面板
+                onMouseDown={event => event.preventDefault()}
                 onClick={() => handleColumnItemClick(node, parentPath)}
                 onKeyDown={event => handlePanelKeyDown(event, node, parentPath, levelIndex, itemIndex)}
             >
@@ -496,22 +499,32 @@ export const Cascader = factory<CascaderFactory>((_props: CascaderBaseProps, _re
             }
             return (
                 <div {...getStyles('searchList')}>
-                    {searchResults.map(({ node, path }) => (
-                        <button
-                            key={node.value}
-                            type="button"
-                            role="option"
-                            aria-selected={false}
-                            {...getStyles('searchItem')}
-                            data-disabled={node.disabled ? 'true' : undefined}
-                            onClick={() => handleSelect(node, path.map(item => item.value))}
-                        >
-                            <span className={classes.itemLabel}>{node.label}</span>
-                            <span {...getStyles('searchPath')}>
-                                {path.slice(0, -1).map(getCascaderNodeLabel).join(pathSeparator)}
-                            </span>
-                        </button>
-                    ))}
+                    {searchResults.map(({ node, path }) => {
+                        const isSelected = isCascaderLeaf(node, !!loadData)
+                            ? isMulti
+                                ? selectedLeafValues.includes(node.value)
+                                : _value === node.value
+                            : false
+                        return (
+                            <button
+                                key={node.value}
+                                type="button"
+                                role="option"
+                                // 此前恒为 false，已选项对读屏器不可感知
+                                aria-selected={isSelected}
+                                {...getStyles('searchItem')}
+                                data-selected={isSelected ? 'true' : undefined}
+                                data-disabled={node.disabled ? 'true' : undefined}
+                                onMouseDown={event => event.preventDefault()}
+                                onClick={() => handleSelect(node, path.map(item => item.value))}
+                            >
+                                <span className={classes.itemLabel}>{node.label}</span>
+                                <span {...getStyles('searchPath')}>
+                                    {path.slice(0, -1).map(getCascaderNodeLabel).join(pathSeparator)}
+                                </span>
+                            </button>
+                        )
+                    })}
                 </div>
             )
         }

@@ -240,6 +240,9 @@ export function useFloatingWindow<T extends HTMLElement>(
       document.addEventListener('mouseup', onEnd, { signal })
       document.addEventListener('touchmove', onMove, { signal, passive: false })
       document.addEventListener('touchend', onEnd, { signal })
+      // 触摸被系统中断（来电/手势接管）后不会再来 touchend：
+      // 不监听 touchcancel 会永久卡在拖拽态且 body userSelect 无法恢复
+      document.addEventListener('touchcancel', onEnd, { signal })
     }
 
     const onMove = (e: TouchEvent | MouseEvent) => {
@@ -289,11 +292,21 @@ export function useFloatingWindow<T extends HTMLElement>(
 
     return () => {
       controller.abort()
+      // 拖拽进行中卸载：abort 不会触发 onEnd，body 的 userSelect 残留会导致
+      // 全局无法选中文本，这里兜底恢复
+      if (isDraggingRef.current) {
+        isDraggingRef.current = false
+        document.body.style.userSelect = ''
+        document.body.style.webkitUserSelect = ''
+        options.onDragEnd?.()
+      }
     }
   }, [
     options.constrainToViewport,
     options.constrainOffset,
     options.dragHandleSelector,
+    // 缺失会导致动态修改后 getHandle 读到过期闭包，应禁止拖拽的手柄区域仍可拖动
+    options.excludeDragHandleSelector,
     options.axis,
     options.onPositionChange,
     options.onDragStart,

@@ -687,6 +687,20 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
                                     return
                                 }
                                 if (event.key === 'Enter' || event.key === ' ') {
+                                    // 事件源是行内交互元素（复选框/展开按钮/链接等）时不拦截：
+                                    // preventDefault 会吞掉元素自身的键盘激活并误触 onRowClick
+                                    const target = event.target as HTMLElement
+                                    if (
+                                        target !== event.currentTarget &&
+                                        (target.tagName === 'BUTTON' ||
+                                            target.tagName === 'A' ||
+                                            target.tagName === 'INPUT' ||
+                                            target.tagName === 'SELECT' ||
+                                            target.tagName === 'TEXTAREA' ||
+                                            target.isContentEditable)
+                                    ) {
+                                        return
+                                    }
                                     event.preventDefault()
                                     onRowClick(record, rowIndex)
                                 }

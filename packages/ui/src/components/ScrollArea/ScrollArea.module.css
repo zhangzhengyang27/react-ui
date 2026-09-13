@@ -62,7 +62,7 @@
     &:where([data-orientation='vertical']) {
         width: var(--scrollarea-scrollbar-size);
         top: 0;
-        bottom: var(--sa-corner-width);
+        bottom: var(--sa-corner-height);
         inset-inline-end: 0;
     }
 

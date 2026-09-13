@@ -154,7 +154,8 @@ export const Alert = factory<AlertFactory>((_props, ref) => {
                         onClick={onClose}
                         variant="transparent"
                         size={16}
-                        aria-label={closeButtonLabel}
+                        // 无 label 默认值时是无名图标按钮，读屏只播报 "button"
+                        aria-label={closeButtonLabel ?? '关闭'}
                         unstyled={unstyled}
                     />
                 )}

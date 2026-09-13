@@ -175,8 +175,9 @@ export const DEFAULT_LABELS: RichTextEditorLabels = {
 
   // Task list
   tasksControlLabel: 'Task list',
-  tasksSinkLabel: 'Decrease task level',
-  tasksLiftLabel: 'Increase task level',
+  // sink = 加深层级（缩进），lift = 减少层级（反缩进），此前两条文案写反
+  tasksSinkLabel: 'Increase task level',
+  tasksLiftLabel: 'Decrease task level',
 
   // Link editor
   linkEditorInputLabel: 'Enter URL',

@@ -36,7 +36,8 @@ export function HeaderControls({
                 {withSearch && <SearchControl onClick={onSearch} />}
                 {withDiscord && <DiscordControl link={discordLink} />}
                 {withSupport && <SupportControl />}
-                {withGithub && <GithubControl link={githubLink!} />}
+                {/* githubLink 可选且 withGithub 默认 true：未传链接时不渲染无 href 的死链接 */}
+                {withGithub && githubLink && <GithubControl link={githubLink} />}
                 {withDirectionToggle && <DirectionControl />}
                 {withColorScheme && <ColorSchemeControl />}
             </Group>

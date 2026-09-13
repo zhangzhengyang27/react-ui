@@ -46,7 +46,6 @@ const SELECT_LABELS: Record<string, string> = {
   click: '点击',
   contextMenu: '右键菜单',
   dots: '圆点',
-  lines: '线条',
   none: '无',
   button: '按钮',
   checkbox: '复选框',

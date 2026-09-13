@@ -5,6 +5,7 @@ import { DateTimeStringValue, ScheduleEventData, ScheduleMode } from '../types';
 import { clampIntervalMinutes } from '../utils/clamp-interval-minutes/clamp-interval-minutes';
 import { getDayRelativePercent } from '../utils/get-day-relative-percent/get-day-relative-percent';
 import { parseTimeString } from '../utils/parse-time-string/parse-time-string';
+import { toTimeString } from '../utils/to-time-string/to-time-string';
 
 type ResizeEdge = 'start' | 'end';
 
@@ -77,7 +78,8 @@ export function useHorizontalEventResize({
       const totalMins = startMinutes + snappedMinutes;
       const hours = Math.floor(totalMins / 60);
       const mins = totalMins % 60;
-      return `${eventDate} ${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:00`;
+      // toTimeString 内部会把 hours=24 钳到 23:59:59，避免生成 Safari/Firefox 解析不了的 "24:00:00"
+      return `${eventDate} ${toTimeString({ hours, minutes: mins, seconds: 0 })}`;
     },
     [totalMinutes, startMinutes, clampAndSnap]
   );
@@ -213,6 +215,8 @@ export function useHorizontalEventResize({
       }
       resizeRef.current = null;
       setResizeState(null);
+      // 无论是否发生位移都置位：把手上的按下-抬起（含无位移点击）会派发 click，
+      // 置位让视图层的 wasResizing 守卫吞掉它，避免把手点击误触 onEventClick（测试编码的行为）
       justResizedRef.current = true;
       requestAnimationFrame(() => {
         justResizedRef.current = false;

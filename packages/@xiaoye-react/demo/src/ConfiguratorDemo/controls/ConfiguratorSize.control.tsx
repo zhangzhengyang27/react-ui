@@ -24,8 +24,10 @@ export function ConfiguratorSizeControl({
   prop,
   ...others
 }: ConfiguratorSizeControlProps) {
-  const _value = MARKS.find((mark) => mark.label === value)!.value;
-  const handleChange = (val: number) => onChange(MARKS.find((mark) => mark.value === val)!.label);
+  // 非 5 个刻度内的自定义值（如 'compact'）不崩溃：回落到 md 刻度
+  const _value = MARKS.find((mark) => mark.label === value)?.value ?? 50;
+  const handleChange = (val: number) =>
+    onChange(MARKS.find((mark) => mark.value === val)?.label ?? 'md');
 
   return (
     <Input.Wrapper labelElement="div" label={getControlLabel(prop)} {...others}>

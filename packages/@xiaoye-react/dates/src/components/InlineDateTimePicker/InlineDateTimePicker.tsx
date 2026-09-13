@@ -237,6 +237,16 @@ export const InlineDateTimePicker = genericFactory<InlineDateTimePickerFactory>(
   };
 
   const handleDateChange = (date: any) => {
+    // multiple 类型会把数组值经 clampDate 破坏成单条字符串，下一帧 .some 直接崩溃：
+    // 时间组合语义只支持单值/区间，multiple 在此显式不支持
+    if ((type as string) === 'multiple') {
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn(
+          '[@xiaoye-react/dates] InlineDateTimePicker does not support type="multiple"; use DateTimePicker or a plain DatePicker instead.'
+        );
+      }
+      return;
+    }
     if (isRange) {
       handleRangeDateChange(date);
     } else {

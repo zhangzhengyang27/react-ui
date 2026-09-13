@@ -227,8 +227,15 @@ export const DateTimePicker = genericFactory<DateTimePickerFactory>((_props) => 
     }
   };
 
-  const handleDropdownClose = () => {
-    clearIncompleteRange();
+  // popover 关闭路径会先经 PickerInputBase 的 handleClose（onChange 内）清理未完成区间，
+  // 再触发 onClose：两条路径共用同一份过期 _value 会把清理执行两次 → onChange([null,null]) 双触发。
+  // 因此 popover 关闭只做钳制；钳制对未完成区间跳过，避免把刚清空的值复活
+  const isIncompleteRange = isRange && Array.isArray(_value) && !!_value[0] && !_value[1];
+
+  const clampValueToRange = () => {
+    if (isIncompleteRange) {
+      return;
+    }
 
     if (isRange && Array.isArray(_value)) {
       const clampedStart = _value[0] ? clampDate(minDate, maxDate, _value[0]) : null;
@@ -242,6 +249,17 @@ export const DateTimePicker = genericFactory<DateTimePickerFactory>((_props) => 
         setValue(clamped);
       }
     }
+  };
+
+  const handleDropdownClose = () => {
+    clearIncompleteRange();
+    clampValueToRange();
+    onDropdownClose?.();
+  };
+
+  // 传给 PickerInputBase 的 onClose：清理已由 handleClose 负责
+  const handlePopoverDropdownClose = () => {
+    clampValueToRange();
     onDropdownClose?.();
   };
 
@@ -281,7 +299,7 @@ export const DateTimePicker = genericFactory<DateTimePickerFactory>((_props) => 
       {...others}
       type={type as any}
       __staticSelector="DateTimePicker"
-      onDropdownClose={handleDropdownClose}
+      onDropdownClose={handlePopoverDropdownClose}
       withTime
       attributes={attributes}
     >

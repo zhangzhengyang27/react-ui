@@ -219,6 +219,10 @@ export function useForm<
 
   const validate = useCallback(() => {
     const generation = ++validateGeneration.current;
+    // 提交级校验开始时中止全部在途字段级异步校验：否则基于旧值快照的字段结果
+    // 会在提交后 resolve 并 setFieldError/clearFieldError，把刚校验通过的错误"复活"
+    // 或清掉真实错误
+    $validating.abortFieldValidations();
     if (pendingSubmitValidationRef.current) {
       submitGenerationRef.current = generation;
       pendingSubmitValidationRef.current = false;

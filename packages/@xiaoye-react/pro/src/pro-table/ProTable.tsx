@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { assignRef } from '@xiaoye-react/hooks'
 import {
     Box,
@@ -145,6 +145,9 @@ export const ProTable = factory<ProTableFactory>((_props: ProTableProps<any>, re
     // 竞态保护：仅采纳最后一次请求的响应
     const requestIdRef = useRef(0)
 
+    // 竞态保护：仅采纳最后一次请求的响应。
+    // request/onRequestError 保持进依赖（仓库测试编码了"切换 request 函数即重新请求"
+    // 的语义）；消费方传内联函数需自行 useCallback，否则每次渲染都会重新请求
     const fetchRecords = useCallback(
         async (params: ProTableRequestParams) => {
             const requestId = requestIdRef.current + 1
@@ -195,9 +198,22 @@ export const ProTable = factory<ProTableFactory>((_props: ProTableProps<any>, re
         setPage(1)
     }
 
-    assignRef(actionsRef, {
-        refresh: () => setRefreshKey(key => key + 1)
-    })
+    // 写 ref 移入 effect：渲染期 assignRef 会在渲染期间调用函数式 ref，
+    // 回调里触发父级 setState 会引发 "Cannot update while rendering" 告警
+    const refreshAction = useMemo(() => ({ refresh: () => setRefreshKey(key => key + 1) }), [])
+    useEffect(() => {
+        assignRef(actionsRef, refreshAction)
+        return () => {
+            assignRef(actionsRef, null)
+        }
+    }, [actionsRef, refreshAction])
+
+    // 重置需同步回表格状态：只清 SearchFilter 内部 state 会让表格继续按旧筛选出数据
+    const handleResetAndSearch = () => {
+        const cleared = search.defaultValues ?? defaultSearchValues ?? {}
+        search.onReset?.()
+        handleSearch(cleared)
+    }
 
     return (
         <Box ref={ref} {...getStyles('root')} mod={mod} {...others}>
@@ -210,6 +226,7 @@ export const ProTable = factory<ProTableFactory>((_props: ProTableProps<any>, re
                         search.onSearch?.(values)
                         handleSearch(values)
                     }}
+                    onReset={handleResetAndSearch}
                 />
             )}
             <div {...getStyles('toolbar')}>

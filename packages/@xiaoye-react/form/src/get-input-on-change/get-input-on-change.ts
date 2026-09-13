@@ -11,6 +11,9 @@ export function getInputOnChange<Value>(
       if (currentTarget instanceof HTMLInputElement) {
         if (currentTarget.type === 'checkbox') {
           setValue(currentTarget.checked as any);
+        } else if (currentTarget.type === 'file') {
+          // file 输入的 .value 是 fakepath 字符串，表单值必须是 FileList
+          setValue(currentTarget.files as any);
         } else {
           setValue(currentTarget.value as any);
         }

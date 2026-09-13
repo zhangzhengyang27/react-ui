@@ -6,6 +6,8 @@ export interface $FormValidating {
   setFieldValidating: (path: string, validating: boolean) => void;
   setFormValidating: (validating: boolean) => void;
   getAbortSignal: (path: string) => AbortSignal;
+  /** 中止全部在途字段级异步校验（提交级校验开始时调用，防止过期结果污染错误状态） */
+  abortFieldValidations: () => void;
   clearValidating: () => void;
 }
 
@@ -45,6 +47,11 @@ export function useFormValidating(): $FormValidating {
     return abortControllers.current[path].signal;
   }, []);
 
+  const abortFieldValidations = useCallback(() => {
+    Object.values(abortControllers.current).forEach((c) => c.abort());
+    abortControllers.current = {};
+  }, []);
+
   const clearValidating = useCallback(() => {
     validatingRef.current = {};
     setValidatingFields({});
@@ -62,6 +69,7 @@ export function useFormValidating(): $FormValidating {
     setFieldValidating,
     setFormValidating,
     getAbortSignal,
+    abortFieldValidations,
     clearValidating,
   };
 }

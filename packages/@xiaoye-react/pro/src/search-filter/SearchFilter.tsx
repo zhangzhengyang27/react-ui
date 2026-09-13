@@ -251,7 +251,8 @@ export const SearchFilter = factory<SearchFilterFactory>((_props, ref) => {
                     </div>
                 ))}
                 <div {...getStyles('actions')}>
-                    <Button size="xs" type="submit" loading={loading} onClick={() => handleSubmit()}>
+                    {/* 不传 event 会漏掉 preventDefault：点击的默认行为再触发一次 form onSubmit → onSearch 双触发 */}
+                    <Button size="xs" type="submit" loading={loading} onClick={event => handleSubmit(event)}>
                         {searchText}
                     </Button>
                     <Button size="xs" variant="default" disabled={loading} onClick={handleReset}>

@@ -13,7 +13,7 @@ import {
 import { useMergedRef, useUncontrolled } from '@xiaoye-react/hooks';
 import { useUncontrolledDates } from '../../hooks';
 import { CalendarLevel, DateStringValue } from '../../types';
-import { toDateString } from '../../utils';
+import { getDefaultClampedDate, toDateString } from '../../utils';
 import { DecadeLevelSettings } from '../DecadeLevel';
 import { DecadeLevelGroup, DecadeLevelGroupStylesNames } from '../DecadeLevelGroup';
 import { MonthLevelSettings } from '../MonthLevel';
@@ -299,10 +299,12 @@ export const Calendar = factory<CalendarFactory>((_props) => {
 
   const fallbackDateRef = useRef<DateStringValue | null>(null);
   if (fallbackDateRef.current === null) {
-    const now = new Date();
-    fallbackDateRef.current = (
-      minDate && dayjs(now).isAfter(minDate) ? minDate : dayjs(now).format('YYYY-MM-DD')
-    ) as DateStringValue;
+    // 无 date/defaultDate 时的兜底显示月份：今天，并按 min/max 钳制。
+    // 此前条件写反（isAfter 时取 minDate），minDate 在过去时日历直接打开在 minDate 月份
+    fallbackDateRef.current = getDefaultClampedDate({
+      minDate: toDateString(minDate) as DateStringValue,
+      maxDate: toDateString(maxDate) as DateStringValue,
+    });
   }
   const currentDate = _date || fallbackDateRef.current;
 

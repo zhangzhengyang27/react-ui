@@ -162,15 +162,16 @@ export const PaginationRoot = factory<PaginationRootFactory>((_props, ref) => {
         varsResolver
     })
 
-    const { range, setPage, next, previous, active, first, last } = usePagination({
-        page: value,
-        initialPage: defaultValue,
-        onChange,
-        total,
-        siblings,
-        boundaries,
-        startValue
-    })
+    const { range, setPage, next, previous, active, first, last, startValue: resolvedStart, endValue: resolvedEnd } =
+        usePagination({
+            page: value,
+            initialPage: defaultValue,
+            onChange,
+            total,
+            siblings,
+            boundaries,
+            startValue
+        })
 
     const handleNext = () => {
         onNextPage?.()
@@ -195,6 +196,8 @@ export const PaginationRoot = factory<PaginationRootFactory>((_props, ref) => {
                 total,
                 range,
                 active,
+                startValue: resolvedStart,
+                endValue: resolvedEnd,
                 disabled,
                 layout,
                 getItemProps,

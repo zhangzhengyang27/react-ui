@@ -405,6 +405,62 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
         getItemKey: index => rowKeys[index]
     })
 
+    // 展开行与主行是两个 <tr>，tanstack 的 measureElement 只挂在主行上，
+    // 展开行高度不进入测量会导致滚动定位错乱。这里给展开行单独观察：
+    // 上报"主行+展开行"合成高度，卸载（收起）时恢复为主行自身高度
+    const expandedRefCacheRef = useRef(
+        new Map<string | number, { rowIndex: number; fn: (node: HTMLTableRowElement | null) => void }>()
+    )
+    const expandedObserversRef = useRef(
+        new Map<string | number, { observer: ResizeObserver; mainRow: HTMLTableRowElement; rowIndex: number }>()
+    )
+
+    const getExpandedMeasureRef = (key: string | number, rowIndex: number) => {
+        if (!virtualized) {
+            return undefined
+        }
+        const cached = expandedRefCacheRef.current.get(key)
+        if (cached && cached.rowIndex === rowIndex) {
+            return cached.fn
+        }
+        const fn = (node: HTMLTableRowElement | null) => {
+            if (node) {
+                const mainRow = node.previousElementSibling as HTMLTableRowElement | null
+                if (!mainRow) {
+                    return
+                }
+                const update = () => {
+                    if (!mainRow.isConnected) {
+                        return
+                    }
+                    rowVirtualizer.resizeItem(
+                        rowIndex,
+                        mainRow.getBoundingClientRect().height + node.getBoundingClientRect().height
+                    )
+                }
+                update()
+                const observer = new ResizeObserver(update)
+                observer.observe(node)
+                observer.observe(mainRow)
+                expandedObserversRef.current.set(key, { observer, mainRow, rowIndex })
+            } else {
+                const entry = expandedObserversRef.current.get(key)
+                if (entry) {
+                    entry.observer.disconnect()
+                    if (entry.mainRow.isConnected) {
+                        rowVirtualizer.resizeItem(
+                            entry.rowIndex,
+                            entry.mainRow.getBoundingClientRect().height
+                        )
+                    }
+                    expandedObserversRef.current.delete(key)
+                }
+            }
+        }
+        expandedRefCacheRef.current.set(key, { rowIndex, fn })
+        return fn
+    }
+
     // 全选/半选与行选中判定的热路径：数组 includes 为 O(n×m)，万级数据全选后
     // 每次渲染近 O(n²)；这里一次性建 Set 索引
     const selectedKeysSet = useMemo(() => new Set(selectedKeysState), [selectedKeysState])
@@ -718,7 +774,11 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
                     })}
                     </tr>
                     {expanded && (
-                        <tr {...getStyles('tr')} data-expanded-row>
+                        <tr
+                            ref={getExpandedMeasureRef(key, rowIndex)}
+                            {...getStyles('tr')}
+                            data-expanded-row
+                        >
                             <td colSpan={totalColumnCount} {...getStyles('td', { className: classes.expandedCell })}>
                                 {renderExpanded?.(record, rowIndex)}
                             </td>

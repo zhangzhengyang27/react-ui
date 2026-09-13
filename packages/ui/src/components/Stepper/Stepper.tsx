@@ -26,6 +26,7 @@ export type StepperStylesNames =
     | 'root'
     | 'step'
     | 'stepBody'
+    | 'stepContent'
     | 'stepText'
     | 'stepIcon'
     | 'stepLabel'
@@ -186,7 +187,8 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
                 aria-orientation={orientation}
             >
                 {clonedChildren}
-                {content && <div {...getStyles('stepBody')}>{content}</div>}
+                {/* 内容面板用独立样式名：stepBody 是步骤内部的 flex 行布局，复用会把内容（如表单）挤成居中窄条 */}
+                {content && <div {...getStyles('stepContent')}>{content}</div>}
             </Box>
         </StepperProvider>
     )

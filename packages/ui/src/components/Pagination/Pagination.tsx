@@ -127,7 +127,8 @@ export const Pagination = factory<PaginationFactory>((_props, ref) => {
         ...others
     } = props
 
-    if (total <= 0 || (hideWithOnePage && total === 1)) {
+    // !(total > 0) 同时拦住 0、负数与 NaN（NaN <= 0 为 false 会漏过）
+    if (!(total > 0) || (hideWithOnePage && total === 1)) {
         return null
     }
 

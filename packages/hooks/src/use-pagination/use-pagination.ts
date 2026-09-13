@@ -38,6 +38,12 @@ export interface UsePaginationReturnValue {
   /** Active page number */
   active: number;
 
+  /** Resolved start page number（归一化后的起始页码） */
+  startValue: number;
+
+  /** Resolved end page number（归一化后的结束页码） */
+  endValue: number;
+
   /** Function to set active page */
   setPage: (page: number) => void;
 
@@ -63,8 +69,10 @@ export function usePagination({
   onChange,
   startValue = 1,
 }: UsePaginationOptions): UsePaginationReturnValue {
-  const _startValue = Math.max(Math.trunc(startValue), 1);
-  const _endValue = Math.max(Math.trunc(total), _startValue);
+  // NaN 防御：Math.trunc(NaN)=NaN 且 Math.max(NaN, x)=NaN，
+  // 会沿 _endValue/_total/range 一路污染出空 range 与 NaN 页码回调
+  const _startValue = Math.max(Number.isFinite(startValue) ? Math.trunc(startValue) : 1, 1);
+  const _endValue = Number.isFinite(total) ? Math.max(Math.trunc(total), _startValue) : _startValue;
   const _total = _endValue - _startValue + 1;
   const _initialPage = initialPage ?? _startValue;
 
@@ -135,6 +143,8 @@ export function usePagination({
   return {
     range: paginationRange,
     active: activePage,
+    startValue: _startValue,
+    endValue: _endValue,
     setPage,
     next,
     previous,

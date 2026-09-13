@@ -5,6 +5,9 @@ export interface PaginationContextValue {
     total: number
     range: (number | 'dots')[]
     active: number
+    /** 归一化后的起始/结束页码（startValue 场景下 First/Previous 的禁用判断依赖它） */
+    startValue: number
+    endValue: number
     disabled: boolean | undefined
     layout?: 'default' | 'responsive'
     getItemProps?: (page: number) => Record<string, any>

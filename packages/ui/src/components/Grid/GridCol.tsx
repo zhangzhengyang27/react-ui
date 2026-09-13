@@ -54,9 +54,12 @@ export const GridCol = factory<GridColFactory>((_props, ref) => {
             resolvedStyle.marginInlineStart = `calc(${unit} * ${offset})`
         }
     } else {
+        // span 收敛到 [1, columns]：超出会创建隐式列导致横向溢出；
+        // offset+span 超界时裁掉 span（span 0 会让整条 grid-column 声明非法被丢弃）
+        const clampedSpan = Math.max(1, Math.min(resolvedSpan, columns - (offset ?? 0)))
         resolvedStyle.gridColumn = offset
-            ? `${offset + 1} / span ${Math.min(resolvedSpan, columns - offset)}`
-            : `span ${resolvedSpan}`
+            ? `${offset + 1} / span ${clampedSpan}`
+            : `span ${clampedSpan}`
     }
 
     return (

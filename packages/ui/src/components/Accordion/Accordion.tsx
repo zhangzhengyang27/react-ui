@@ -135,7 +135,12 @@ const varsResolver = createVarsResolver<AccordionFactory>((_, { transitionDurati
 }))
 
 export function Accordion<Multiple extends boolean = false>(_props: AccordionProps<Multiple>) {
-    const props = useProps('Accordion', defaultProps as AccordionProps<Multiple>, _props)
+    // 泛型组件无法经 forwardRef 包装（会丢失 Multiple 推导）；
+    // React 19 中 ref 作为普通 prop 传入函数组件，这里接住并挂到根节点，
+    // 与其他 factory 组件的 ref 行为对齐
+    const props = useProps('Accordion', defaultProps as AccordionProps<Multiple>, _props) as AccordionProps<Multiple> & {
+        ref?: React.Ref<HTMLDivElement>
+    }
     const {
         classNames,
         className,
@@ -160,6 +165,7 @@ export function Accordion<Multiple extends boolean = false>(_props: AccordionPro
         radius,
         chevronIconSize,
         attributes,
+        ref,
         ...others
     } = props
 
@@ -239,7 +245,7 @@ export function Accordion<Multiple extends boolean = false>(_props: AccordionPro
                 unstyled
             }}
         >
-            <Box {...getStyles('root')} id={uid} {...others} variant={variant} data-accordion>
+            <Box ref={ref} {...getStyles('root')} id={uid} {...others} variant={variant} data-accordion>
                 {children}
             </Box>
         </AccordionProvider>

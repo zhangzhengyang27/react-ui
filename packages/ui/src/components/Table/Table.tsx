@@ -174,12 +174,7 @@ function buildDataContent(data: React.ReactNode[][] | TableData) {
     const tableData = isTableData(data) ? data : { head: data[0], body: data.slice(1) }
     const { caption, head, body } = tableData
 
-    if (!Array.isArray(body) || body.length === 0) {
-        return null
-    }
-
     const captionElement = caption ? <caption>{caption}</caption> : null
-
     const headElement = head ? (
         <Thead>
             <Tr>
@@ -189,6 +184,16 @@ function buildDataContent(data: React.ReactNode[][] | TableData) {
             </Tr>
         </Thead>
     ) : null
+
+    // 空 body 时仍保留 caption/head：空表无表头会让列语义完全丢失
+    if (!Array.isArray(body) || body.length === 0) {
+        return (
+            <>
+                {captionElement}
+                {headElement}
+            </>
+        )
+    }
 
     const rows = body.map((row, rowIndex) => (
         <Tr key={rowIndex}>

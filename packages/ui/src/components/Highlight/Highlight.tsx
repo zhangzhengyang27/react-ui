@@ -37,7 +37,9 @@ function getChunks({ text, highlight }: { text: string; highlight: string }) {
         return [{ chunk: text, highlighted: false }]
     }
 
-    const regex = new RegExp(`(${highlight.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'g')
+    // gi 标志与下方 toLowerCase 判定保持一致：split 出的命中段即大小写不敏感匹配段，
+    // 缺 i 标志时"ABC hello"高亮"abc"不高亮、而恰好等于"ABC"时整段误标亮
+    const regex = new RegExp(`(${highlight.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi')
     const parts = text.split(regex)
 
     return parts.map(part => ({

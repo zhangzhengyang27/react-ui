@@ -55,6 +55,12 @@
     flex: 0 0 auto;
 }
 
+/* 步骤内容面板（Stepper 根下的 content）：与步骤内部的 stepBody 复用
+   flex 行布局会让整块内容（如表单）被居中排布且宽度不撑满，独立样式 */
+.stepContent {
+    width: 100%;
+}
+
 .step:where([data-orientation='horizontal']) .stepBody {
     flex-direction: column;
     text-align: center;

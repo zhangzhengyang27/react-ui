@@ -80,10 +80,16 @@ export const Breadcrumbs = factory<BreadcrumbsFactory>((_props, _ref) => {
 
     const items = Children.toArray(children).reduce<React.ReactNode[]>((acc, child, index, array) => {
         const item = isElement(child) ? (
-            cloneElement(child, {
-                ...getStyles('breadcrumb', { className: (child.props as any)?.className }),
-                key: index
-            })
+            (() => {
+                const breadcrumbStyles = getStyles('breadcrumb', { className: (child.props as any)?.className })
+                return cloneElement(child as React.ReactElement<any>, {
+                    ...breadcrumbStyles,
+                    // useStyles 返回值恒含 style 键（非根选择器时为 {}），
+                    // 直接展开会覆盖 child 自带的内联样式，这里合并且 child 优先
+                    style: { ...breadcrumbStyles.style, ...((child.props as any)?.style ?? {}) },
+                    key: index
+                })
+            })()
         ) : (
             <div {...getStyles('breadcrumb')} key={index}>
                 {child}

@@ -37,7 +37,10 @@ function createEdgeComponent({ icon, name, action, type, ariaLabel }: CreateEdge
     const Component = (props: PaginationEdgeProps) => {
         const { icon: Icon, ...others } = useProps(name, defaultProps, props)
         const ctx = usePaginationContext()
-        const disabled = type === 'next' ? ctx.active === ctx.total : ctx.active === 1
+        // startValue 场景下 active 最小值是 startValue 而非 1：
+        // 用归一化边界判断，否则 First/Previous 永不禁用（可点但无效）
+        const disabled =
+            type === 'next' ? ctx.active >= ctx.endValue : ctx.active <= ctx.startValue
 
         return (
             <PaginationControl

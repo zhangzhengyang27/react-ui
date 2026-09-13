@@ -29,6 +29,8 @@ export interface ComboboxContextValue {
     registerOption: (key: string, data: ComboboxOptionData) => void
     unregisterOption: (key: string) => void
     options: ComboboxOptionData[]
+    /** key → 注册表索引的 Map（由 Combobox memo）：选项用它 O(1) 查自身 index，避免逐实例 findIndex 的 O(n²) */
+    optionIndexMap: Map<string, number>
     searchValue: string
     setSearchValue: (value: string) => void
     onTargetKeyDown: (event: React.KeyboardEvent<HTMLElement>) => void

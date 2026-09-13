@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { useMemo } from 'react';
 import {
   Box,
   BoxProps,
@@ -204,21 +205,33 @@ export const Month = factory<MonthFactory>((_props) => {
   });
 
   const ctx = useDatesContext();
-  const dates = getMonthDays({
-    month,
-    firstDayOfWeek: ctx.getFirstDayOfWeek(firstDayOfWeek),
-    consistentWeeks: ctx.consistentWeeks,
-  });
+  const resolvedFirstDayOfWeek = ctx.getFirstDayOfWeek(firstDayOfWeek);
 
-  const dateInTabOrder = getDateInTabOrder({
-    dates,
-    minDate: toDateString(minDate) as DateStringValue,
-    maxDate: toDateString(maxDate) as DateStringValue,
-    getDayProps,
-    excludeDate,
-    hideOutsideDates,
-    month,
-  });
+  // 日历网格与 Tab 顺序在渲染热路径上：range 选择悬停时父级（picker）状态高频变化，
+  // 不做 memo 会每次渲染重建 42 个格子的日期与解析（对齐 schedule 视图的 memo 模式）
+  const dates = useMemo(
+    () =>
+      getMonthDays({
+        month,
+        firstDayOfWeek: resolvedFirstDayOfWeek,
+        consistentWeeks: ctx.consistentWeeks,
+      }),
+    [month, resolvedFirstDayOfWeek, ctx.consistentWeeks]
+  );
+
+  const dateInTabOrder = useMemo(
+    () =>
+      getDateInTabOrder({
+        dates,
+        minDate: toDateString(minDate) as DateStringValue,
+        maxDate: toDateString(maxDate) as DateStringValue,
+        getDayProps,
+        excludeDate,
+        hideOutsideDates,
+        month,
+      }),
+    [dates, minDate, maxDate, getDayProps, excludeDate, hideOutsideDates, month]
+  );
 
   const { resolvedClassNames, resolvedStyles } = useResolvedStylesApi<MonthFactory>({
     classNames,

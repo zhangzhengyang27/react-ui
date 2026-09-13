@@ -350,8 +350,6 @@ export const MonthView = factory<MonthViewFactory>((_props) => {
   const columnsCount = 7 - hiddenColumns.length;
   const visibleColumnMap = getVisibleColumnMap(hiddenColumns);
 
-  const resolvedFirstDayOfWeek = ctx.getFirstDayOfWeek(firstDayOfWeek);
-
   const range = useMemo(
     () =>
       getMonthRange({

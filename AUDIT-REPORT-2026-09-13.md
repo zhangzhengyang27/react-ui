@@ -4,6 +4,7 @@
 > ① 第一批 12 个 P0 已全部修复并通过测试（ui 526 项、form 409 项、schedule 1348 项、notifications 47 项；类型检查通过）。另同步修正了上一轮遗留的 Select/MultiSelect 清除按钮中文 aria-label 与测试断言不一致的问题。
 > ② 第二批（hooks 源头 + a11y 断链 + 性能热点）已完成：use-uncontrolled setter 稳定化、use-mask 光标恢复与 IME 守卫、use-effect-event/use-callback-ref 改 useInsertionEffect；InputBase aria-describedby 断链、Tabs tab/panel aria 关联、Popover/HoverCard targetId 挂载覆盖（顺带修复 HoverCardTarget 丢弃 child 事件处理器）；TreeSelect 勾选态 O(n²)、DataTable 全选判定 O(n×m)、schedule Week/Month/DayView 布局管线未 memo。验证：ui 526、hooks 110、schedule 1224、form 409、dates 1433 全部通过，ui/hooks tsc 通过。
 > ③ 第三批（主题/样式一致性 + RTL）已完成：Paper/Card 暗色模式变量选择器写反；Card.bg/Chip.color/Checkbox.iconColor 统一走 getThemeColor；Box hiddenFrom/visibleFrom 在 global.css 补齐默认断点规则；Grid grow 改为 flex 布局实现（flex-grow 对 grid item 无效）；ScrollArea 横向滚动条与 Splitter 接入 useDirection（RTL 拖拽/滚轮/方向键语义修正）。验证：ui 526 全部通过，tsc 通过。
+> ④ 第四批（性能尾巴）已完成：Combobox 选项 index 改为 context 级 Map 查表（渲染 O(n²)→O(n)）；dates Month 网格 dates/dateInTabOrder memo；schedule dragover 浅比较 bail-out + dragContextValue memo + isDropTarget 弃用 JSON.stringify 改浅比较。验证：ui 526、dates 1433、schedule 1348 全部通过。
 
 - 范围：`packages/ui`（125 组件）、`@xiaoye-react/form`、`pro`、`dates`、`schedule`、`hooks`、`spotlight/notifications/modals/nprogress/store/emotion/carousel/dropzone/tiptap/code-highlight/header/demo` 等全部源码（不含 test/story），约 10 万行。
 - 方法：18 路只读深度排查（未修改任何文件），每条结论附真实 file:line 与代码证据；关键 P0 已人工复核/沙箱模拟复现（MaskInput 乱序、form 重复提交、setPath 崩溃、Rating 清零、NumberInput 步进、Schedule 双触发均核实成立）。

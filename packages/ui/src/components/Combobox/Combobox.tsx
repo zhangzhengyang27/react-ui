@@ -134,6 +134,18 @@ export function Combobox(_props: ComboboxProps) {
 
     const [options, setOptions] = useState<ComboboxOptionData[]>([])
     const [activeIndex, setActiveIndex] = useState(-1)
+    // 选项用 key O(1) 查自身 index：逐实例 findIndex 会让 n 个选项的渲染变成 O(n²)，
+    // 大列表（limit 优化场景）下每次键入的全量重渲染明显卡顿。
+    // 注册表条目总是带 key（registerOption 写入），key 为空的理论态直接跳过
+    const optionIndexMap = useMemo(() => {
+        const map = new Map<string, number>()
+        options.forEach((option, i) => {
+            if (option.key !== undefined) {
+                map.set(option.key, i)
+            }
+        })
+        return map
+    }, [options])
     const [targetNode, setTargetNode] = useState<HTMLElement | null>(null)
     const [dropdownNode, setDropdownNode] = useState<HTMLElement | null>(null)
     const uid = useId()
@@ -361,6 +373,7 @@ export function Combobox(_props: ComboboxProps) {
             registerOption,
             unregisterOption,
             options,
+            optionIndexMap,
             searchValue: _searchValue,
             setSearchValue,
             onTargetKeyDown,
@@ -385,6 +398,7 @@ export function Combobox(_props: ComboboxProps) {
             registerOption,
             unregisterOption,
             options,
+            optionIndexMap,
             _searchValue,
             setSearchValue,
             onTargetKeyDown,

@@ -1,9 +1,25 @@
 import dayjs from 'dayjs';
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useEffectEvent } from '@xiaoye-react/hooks';
 import { DragContextValue } from '../components/DragContext/DragContext';
 import { DateTimeStringValue, ScheduleEventData, ScheduleMode } from '../types';
 import { useDragState } from './use-drag-state';
+
+/** 浅比较两个 drop target：{day, slotIndex} 等平面对象按字段比较，其余按严格相等 */
+function isSameDropTarget<T>(a: T | null, b: T): boolean {
+  if (a === b) {
+    return true;
+  }
+  if (a && b && typeof a === 'object' && typeof b === 'object') {
+    const keysA = Object.keys(a as Record<string, unknown>);
+    const keysB = Object.keys(b as Record<string, unknown>);
+    if (keysA.length !== keysB.length) {
+      return false;
+    }
+    return keysA.every(key => (a as Record<string, unknown>)[key] === (b as Record<string, unknown>)[key]);
+  }
+  return false;
+}
 
 export interface UseDragDropHandlersOptions<T = any> {
   /** Whether drag and drop is enabled */
@@ -136,7 +152,9 @@ export function useDragDropHandlers<T = any>(
 
       event.preventDefault();
       event.dataTransfer.dropEffect = isInternalDrag ? 'move' : 'copy';
-      setDropTarget(target);
+      // dragover 在拖拽期间持续高频触发：目标未变时跳过 setState，
+      // 否则每次 dragover 都导致整个视图（全部事件）重渲染
+      setDropTarget(current => (isSameDropTarget(current, target) ? current : target));
     },
     [enabled, mode, dragState.state.isDragging, onExternalDrop, handleDragEnd]
   );
@@ -201,24 +219,32 @@ export function useDragDropHandlers<T = any>(
 
   const isDropTarget = useCallback(
     (target: T) => {
-      // Handle complex target comparison (for WeekView with day + slotIndex)
-      if (dropTarget && typeof dropTarget === 'object' && typeof target === 'object') {
-        return JSON.stringify(dropTarget) === JSON.stringify(target);
-      }
-      return dropTarget === target;
+      return isSameDropTarget(dropTarget, target);
     },
     [dropTarget]
   );
 
-  const dragContextValue: DragContextValue = {
-    isDragging: dragState.state.isDragging,
-    draggedEventId: dragState.state.draggedEventId,
-    draggedEvent: dragState.state.draggedEvent,
-    dropTarget: dragState.state.dropTarget,
-    onDragStart: handleDragStart,
-    onDragEnd: handleDragEnd,
-    setDropTarget: dragState.setDropTarget,
-  };
+  // 拖拽/悬浮期间 dragover 每帧触发视图重渲染，context value 不 memo 会放大整树更新
+  const dragContextValue: DragContextValue = useMemo(
+    () => ({
+      isDragging: dragState.state.isDragging,
+      draggedEventId: dragState.state.draggedEventId,
+      draggedEvent: dragState.state.draggedEvent,
+      dropTarget: dragState.state.dropTarget,
+      onDragStart: handleDragStart,
+      onDragEnd: handleDragEnd,
+      setDropTarget: dragState.setDropTarget,
+    }),
+    [
+      dragState.state.isDragging,
+      dragState.state.draggedEventId,
+      dragState.state.draggedEvent,
+      dragState.state.dropTarget,
+      handleDragStart,
+      handleDragEnd,
+      dragState.setDropTarget,
+    ]
+  );
 
   return {
     dragContextValue,

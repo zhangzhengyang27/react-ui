@@ -34,7 +34,8 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
     // 持有自身 DOM 节点，注册时上报给 Combobox 用于按视觉顺序排序注册表
     const nodeRef = useRef<HTMLDivElement | null>(null)
     const mergedRef = useMergedRef(ref, nodeRef)
-    const index = ctx.options.findIndex(item => item.key === instanceId)
+    // O(1) 查表：逐实例 findIndex 会把 n 个选项的渲染变成 O(n²)
+    const index = ctx.optionIndexMap.get(instanceId) ?? -1
     // index 为 -1（尚未注册）时不能与 activeIndex(-1) 相等即视为激活
     const active = index >= 0 && index === ctx.activeIndex
     const selected = ctx.selectedValues.includes(value)

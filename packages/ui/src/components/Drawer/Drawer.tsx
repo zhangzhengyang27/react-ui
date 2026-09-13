@@ -1,4 +1,5 @@
-import { useMemo } from 'react'
+import { useContext, useEffect, useMemo } from 'react'
+import { useId } from '@xiaoye-react/hooks'
 import {
     createVarsResolver,
     factory,
@@ -22,7 +23,7 @@ import { DrawerHeader, type DrawerHeaderProps } from './DrawerHeader'
 import { DrawerOverlay, type DrawerOverlayProps } from './DrawerOverlay'
 import { DrawerProvider } from './Drawer.context'
 import { DrawerRoot, type DrawerRootProps, type DrawerRootFactory } from './DrawerRoot'
-import { DrawerStack } from './DrawerStack'
+import { DrawerStack, DrawerStackContext } from './DrawerStack'
 import { DrawerTitle, type DrawerTitleProps } from './DrawerTitle'
 import classes from './Drawer.module.css'
 
@@ -161,6 +162,7 @@ export const Drawer = factory<DrawerFactory>((_props, _ref) => {
         radius,
         opened,
         zIndex,
+        id,
         position,
         size,
         offset,
@@ -188,6 +190,22 @@ export const Drawer = factory<DrawerFactory>((_props, _ref) => {
         varsResolver
     })
 
+    // Drawer.Stack 内的子 Drawer 向栈注册，zIndex 由栈按挂载顺序递增分配
+    const stackCtx = useContext(DrawerStackContext)
+    const autoId = useId(id)
+
+    useEffect(() => {
+        if (!stackCtx) {
+            return undefined
+        }
+        // DrawerStack 的注册方法名与 ModalStack 一致（addModal/removeModal）
+        stackCtx.addModal(autoId, zIndex!)
+        return () => stackCtx.removeModal(autoId)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [stackCtx, autoId])
+
+    const resolvedZIndex = stackCtx ? stackCtx.getZIndex(autoId) : zIndex
+
     // 内联 transitionProps 对象每次渲染都是新引用，会击穿 ModalBase 内部的 memoTransitionProps，
     // 导致整个弹层子树跟着重渲染，这里 memo 化。
     // 用户 transitionProps 合并进方向过渡（与 DrawerRoot 行为一致），
@@ -205,7 +223,8 @@ export const Drawer = factory<DrawerFactory>((_props, _ref) => {
                 ref={_ref}
                 radius={radius}
                 opened={opened}
-                zIndex={zIndex}
+                zIndex={resolvedZIndex}
+                id={autoId}
                 transitionProps={drawerTransitionProps}
                 {...others}
                 {...getStyles('root')}

@@ -1,3 +1,5 @@
+import { useContext, useEffect } from 'react'
+import { useId } from '@xiaoye-react/hooks'
 import {
     createVarsResolver,
     factory,
@@ -20,7 +22,7 @@ import { ModalHeader, type ModalHeaderProps } from './ModalHeader'
 import { ModalOverlay, type ModalOverlayProps } from './ModalOverlay'
 import { ModalProvider } from './Modal.context'
 import { ModalRoot, type ModalRootProps, type ModalRootFactory } from './ModalRoot'
-import { ModalStack, type ModalStackProps } from './ModalStack'
+import { ModalStack, ModalStackContext, type ModalStackProps } from './ModalStack'
 import { ModalTitle, type ModalTitleProps } from './ModalTitle'
 import classes from './Modal.module.css'
 
@@ -126,6 +128,7 @@ export const Modal = factory<ModalFactory>((_props, _ref) => {
         radius,
         opened,
         zIndex,
+        id,
         yOffset,
         xOffset,
         scrollAreaComponent,
@@ -140,6 +143,23 @@ export const Modal = factory<ModalFactory>((_props, _ref) => {
         vars,
         ...others
     } = props
+
+    // Modal.Stack 内的子 Modal 向栈注册：关闭后焦点归还等行为不变，
+    // zIndex 由栈按挂载顺序递增分配，嵌套弹层自动层叠
+    const stackCtx = useContext(ModalStackContext)
+    const autoId = useId(id)
+
+    useEffect(() => {
+        if (!stackCtx) {
+            return undefined
+        }
+        stackCtx.addModal(autoId, zIndex!)
+        return () => stackCtx.removeModal(autoId)
+        // zIndex 不入依赖：注册一次，后续 zIndex prop 变化不影响栈内排序
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [stackCtx, autoId])
+
+    const resolvedZIndex = stackCtx ? stackCtx.getZIndex(autoId) : zIndex
 
     const getStyles = useStyles<ModalFactory>({
         // __staticSelector：组合组件（如 Spotlight 的 Modal）沿用外层静态类名 ui-Spotlight-*
@@ -161,9 +181,10 @@ export const Modal = factory<ModalFactory>((_props, _ref) => {
         <ModalProvider value={{ yOffset, scrollAreaComponent, getStyles, fullScreen }}>
             <ModalBase
                 ref={_ref}
+                id={autoId}
                 radius={radius}
                 opened={opened}
-                zIndex={zIndex}
+                zIndex={resolvedZIndex}
                 {...others}
                 {...getStyles('root')}
                 data-full-screen={fullScreen || undefined}

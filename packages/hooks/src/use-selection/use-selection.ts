@@ -1,5 +1,11 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useDidUpdate } from '../use-did-update/use-did-update';
+
+function shallowEqualArray<T>(a: readonly T[], b: readonly T[]): boolean {
+  if (a === b) return true;
+  if (a.length !== b.length) return false;
+  return a.every((item, index) => item === b[index]);
+}
 
 export interface UseSelectionInput<T> {
   /** The array of items to select from */
@@ -40,8 +46,12 @@ export type UseSelectionReturnValue<T> = readonly [T[], UseSelectionHandlers<T>]
 export function useSelection<T>(input: UseSelectionInput<T>): UseSelectionReturnValue<T> {
   const [selectionSet, setSelectionSet] = useState<Set<T>>(new Set(input.defaultSelection || []));
 
+  // 内联 data={items.filter(...)} 每渲染都是新数组身份，useDidUpdate 会每次渲染触发、
+  // 把用户刚选中的项清空。浅比较（长度 + 逐项引用）：内容相同的内联数组不再视为变化
+  const prevDataRef = useRef(input.data);
   useDidUpdate(() => {
-    if (input.resetSelectionOnDataChange) {
+    if (input.resetSelectionOnDataChange && !shallowEqualArray(prevDataRef.current, input.data)) {
+      prevDataRef.current = input.data;
       setSelectionSet(new Set());
     }
   }, [input.data, input.resetSelectionOnDataChange]);

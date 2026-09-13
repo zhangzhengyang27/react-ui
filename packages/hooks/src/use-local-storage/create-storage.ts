@@ -70,6 +70,13 @@ export function createStorage<T>(type: StorageType, hookName: string) {
         deserialize = deserializeJSON,
         serialize = (value: T) => serializeJSON(value, hookName)
     }: UseStorageOptions<T>): UseStorageReturnValue<T> {
+        // serialize/deserialize 经 ref 转发最新值：若固化进 useCallback 依赖，
+        // 消费方传内联函数（或依赖外部变量的自定义序列化）会被首帧闭包永久捕获
+        const serializeRef = useRef(serialize)
+        serializeRef.current = serialize
+        const deserializeRef = useRef(deserialize)
+        deserializeRef.current = deserialize
+
         const readStorageValue = useCallback(
             (skipStorage?: boolean): T => {
                 let storageBlockedOrSkipped
@@ -86,7 +93,7 @@ export function createStorage<T>(type: StorageType, hookName: string) {
                 }
 
                 const storageValue = getItem(key)
-                return storageValue !== null ? deserialize(storageValue) : (defaultValue as T)
+                return storageValue !== null ? deserializeRef.current(storageValue) : (defaultValue as T)
             },
             [key, defaultValue]
         )
@@ -109,7 +116,7 @@ export function createStorage<T>(type: StorageType, hookName: string) {
                     valueRef.current = computed
                     setValue(computed)
                     try {
-                        setItem(key, serialize(computed))
+                        setItem(key, serializeRef.current(computed))
                         queueMicrotask(() => {
                             window.dispatchEvent(new CustomEvent(eventName, { detail: { key, value: computed } }))
                         })
@@ -119,7 +126,7 @@ export function createStorage<T>(type: StorageType, hookName: string) {
                 } else {
                     setValue(val)
                     try {
-                        setItem(key, serialize(val))
+                        setItem(key, serializeRef.current(val))
                         window.dispatchEvent(new CustomEvent(eventName, { detail: { key, value: val } }))
                     } catch {
                         // Storage may be blocked or unavailable
@@ -143,7 +150,7 @@ export function createStorage<T>(type: StorageType, hookName: string) {
         useWindowEvent('storage', (event: StorageEvent) => {
             if (sync) {
                 if (event.storageArea === window[type] && event.key === key) {
-                    setValue(deserialize(event.newValue ?? undefined))
+                    setValue(deserializeRef.current(event.newValue ?? undefined))
                 }
             }
         })

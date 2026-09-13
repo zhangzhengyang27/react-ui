@@ -50,6 +50,9 @@ export interface RatingProps extends BoxProps, StylesApiProps<RatingFactory> {
 
     /** Number of fractions per star, e.g. 2 for half-stars @default 1 */
     fractions?: number
+
+    /** radio 组名称，缺省用内部生成 id（同一表单内多个 Rating 需显式区分） */
+    name?: string
 }
 
 export type RatingFactory = Factory<{
@@ -107,6 +110,7 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
         readOnly,
         clearable,
         fractions,
+        name,
         mod,
         ...others
     } = props
@@ -127,27 +131,22 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
     const isControlled = value !== undefined
     const [internalValue, setInternalValue] = React.useState(defaultValue ?? 0)
     const [hoverValue, setHoverValue] = React.useState<number | null>(null)
-    const currentValue = clamp(hoverValue ?? (isControlled ? value! : internalValue), 0, count)
-    const roundedValue = roundToFraction(currentValue, fractions)
-    // clearable 判断只能用不含 hover 的真实当前值：click 前必先触发 mouseenter，
-    // 用含 hover 的 roundedValue 会导致点击任何星都命中"与当前值相同"而清零
+    // clearable 判断用不含 hover 的真实当前值：hover 预览值不得参与清零判定
     const baseValue = roundToFraction(clamp(isControlled ? value! : internalValue, 0, count), fractions)
+    const currentValue = clamp(hoverValue ?? baseValue, 0, count)
+    const roundedValue = roundToFraction(currentValue, fractions)
+    const groupName = `${React.useId()}-rating`
 
-    const handleClick = (index: number, event: React.MouseEvent<HTMLButtonElement>) => {
-        if (readOnly) return
-
-        const nextValue = getValueFromPointer(index, event)
-        const finalValue = clearable && nextValue === baseValue ? 0 : nextValue
-
+    const updateValue = (next: number) => {
         if (!isControlled) {
-            setInternalValue(finalValue)
+            setInternalValue(next)
         }
-        onChange?.(finalValue)
+        onChange?.(next)
     }
 
     // 按指针在星内的水平位置计算分数：fractions 等分单星（fractions=2 即半星），
     // fractions=1 时退化为 index+1（ceil(p*1) 恒为 1）
-    const getValueFromPointer = (index: number, event: React.MouseEvent<HTMLButtonElement>) => {
+    const getValueFromPointer = (index: number, event: React.MouseEvent<HTMLElement>) => {
         const rect = event.currentTarget.getBoundingClientRect()
         if (rect.width === 0) return index + 1
         const percent = clamp((event.clientX - rect.left) / rect.width, 0, 1)
@@ -155,14 +154,7 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
         return index + fraction / fractions!
     }
 
-    const handleMouseEnter = (index: number, event: React.MouseEvent<HTMLButtonElement>) => {
-        if (readOnly) return
-        const next = getValueFromPointer(index, event)
-        setHoverValue(next)
-        onHover?.(next)
-    }
-
-    const handleMouseMove = (index: number, event: React.MouseEvent<HTMLButtonElement>) => {
+    const handleHover = (index: number, event: React.MouseEvent<HTMLElement>) => {
         if (readOnly) return
         const next = getValueFromPointer(index, event)
         if (next !== hoverValue) {
@@ -171,42 +163,22 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
         }
     }
 
-    const handleMouseLeave = () => {
+    const handleHoverEnd = () => {
         setHoverValue(null)
         onHover?.(0)
     }
 
-    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    const handleRadioChange = (starValue: number) => {
         if (readOnly) return
+        updateValue(starValue)
+    }
 
-        let nextValue = roundedValue
-
-        switch (event.key) {
-            case 'ArrowRight':
-            case 'ArrowUp':
-                nextValue = clamp(roundedValue + 1, 0, count!)
-                break
-            case 'ArrowLeft':
-            case 'ArrowDown':
-                nextValue = clamp(roundedValue - 1, 0, count!)
-                break
-            case 'Home':
-                nextValue = 0
-                break
-            case 'End':
-                nextValue = count!
-                break
-            default:
-                return
+    // 原生 radio 点击已选中项不触发 change：clearable 经 click 事件清零
+    const handleRadioClick = (starValue: number) => {
+        if (readOnly) return
+        if (clearable && baseValue === starValue) {
+            updateValue(0)
         }
-
-        event.preventDefault()
-        nextValue = roundToFraction(nextValue, fractions!)
-
-        if (!isControlled) {
-            setInternalValue(nextValue)
-        }
-        onChange?.(nextValue)
     }
 
     return (
@@ -214,14 +186,9 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
             ref={ref}
             {...getStyles('root')}
             mod={[{ readonly: readOnly }, mod]}
-            onMouseLeave={handleMouseLeave}
-            onKeyDown={handleKeyDown}
-            role={readOnly ? undefined : 'slider'}
-            tabIndex={readOnly ? undefined : 0}
-            aria-valuenow={readOnly ? undefined : roundedValue}
-            aria-valuemin={readOnly ? undefined : 0}
-            aria-valuemax={readOnly ? undefined : count}
-            aria-label={readOnly ? undefined : '评分'}
+            role="radiogroup"
+            aria-label="评分"
+            onMouseLeave={handleHoverEnd}
             {...others}
         >
             {Array.from({ length: count }).map((_, index) => {
@@ -229,18 +196,31 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
                 const filled = roundedValue >= starValue
                 const partial = roundedValue > index && roundedValue < starValue
                 const fillPercent = partial ? (roundedValue - index) * 100 : 0
+                // 原生 radio 无法表达分数勾选：整星部分由 radio 承载，分数部分保持视觉呈现
+                const isChecked = baseValue > 0 && Math.ceil(baseValue) === starValue
 
                 return (
-                    <button
+                    <Box
                         key={index}
-                        type="button"
+                        component="label"
                         {...getStyles('star')}
-                        onClick={event => handleClick(index, event)}
-                        onMouseEnter={event => handleMouseEnter(index, event)}
-                        onMouseMove={event => handleMouseMove(index, event)}
-                        disabled={readOnly}
-                        aria-label={`${starValue} star`}
+                        mod={{ filled: filled || partial }}
+                        onMouseEnter={event => handleHover(index, event)}
+                        onMouseMove={event => handleHover(index, event)}
                     >
+                        <input
+                            {...getStyles('input')}
+                            type="radio"
+                            name={name || groupName}
+                            value={starValue}
+                            checked={isChecked}
+                            disabled={readOnly}
+                            aria-label={`${starValue} star`}
+                            onChange={() => handleRadioChange(starValue)}
+                            onClick={() => handleRadioClick(starValue)}
+                            // roving tabindex：勾选中的星可 Tab；无勾选时首星可 Tab
+                            tabIndex={isChecked || (baseValue === 0 && index === 0) ? 0 : -1}
+                        />
                         <span {...getStyles('starSymbol')} style={{ color: 'var(--ui-color-default-border)' }}>
                             {StarSymbol}
                         </span>
@@ -254,7 +234,7 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
                         >
                             {StarSymbol}
                         </span>
-                    </button>
+                    </Box>
                 )
             })}
         </Box>

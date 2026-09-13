@@ -192,6 +192,11 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
         [embla]
     )
 
+    // 回调走 ref：handleSelect 依赖 onSlideChange 时，消费者传内联回调会让
+    // embla 监听每次父渲染都 off/on 并额外触发一次 handleSelect
+    const onSlideChangeRef = useRef(onSlideChange)
+    onSlideChangeRef.current = onSlideChange
+
     const handleSelect = useCallback(() => {
         if (!embla) return
         const slide = embla.selectedScrollSnap()
@@ -200,8 +205,8 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
             initializedRef.current = true
             return
         }
-        slide !== selectedRef.current && onSlideChange?.(slide)
-    }, [embla, onSlideChange])
+        slide !== selectedRef.current && onSlideChangeRef.current?.(slide)
+    }, [embla])
 
     const handlePrevious = useCallback(() => {
         embla?.scrollPrev()

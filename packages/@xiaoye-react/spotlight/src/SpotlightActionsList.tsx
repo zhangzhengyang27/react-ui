@@ -37,9 +37,12 @@ export const SpotlightActionsList = factory<SpotlightActionsListFactory>((props)
   useEffect(() => {
     spotlightActions.setListId(listId, ctx.store);
     return () => {
+      // React 保证 cleanup 先于新一轮 effect 执行，这里无条件清空是安全的
       spotlightActions.setListId('', ctx.store);
     };
-  }, []);
+    // listId/ctx.store 必须入 deps：此前为 []，动态修改 id 后 store 残留旧 id，
+    // selectAction/triggerSelectedAction 仍按旧 id 查 DOM，方向键与 Enter 静默失效
+  }, [listId, ctx.store]);
 
   return (
     <Box

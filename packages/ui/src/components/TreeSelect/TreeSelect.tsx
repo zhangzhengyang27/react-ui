@@ -302,6 +302,20 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
         },
     })
 
+    // 异步数据：useUncontrolled 的 defaultValue 只在挂载时读取一次，data 初始为空时
+    // initialExpanded 算出来是 {}，defaultExpandAll 全折叠。data 首次非空时补一次
+    // 初始展开（仅未受控且挂载时 data 为空的场景）
+    const initialExpandedAppliedRef = useRef(data.length > 0)
+    useEffect(() => {
+        if (data.length === 0 || initialExpandedAppliedRef.current) {
+            return
+        }
+        initialExpandedAppliedRef.current = true
+        if (expandedValues === undefined && (defaultExpandAll || (defaultExpandedValues?.length ?? 0) > 0)) {
+            setExpandedState(initialExpanded)
+        }
+    }, [data, expandedValues, defaultExpandAll, defaultExpandedValues, initialExpanded, setExpandedState])
+
     const toggleExpand = useCallback(
         (nodeValue: string) => {
             setExpandedState({ ..._expandedState, [nodeValue]: !_expandedState[nodeValue] })

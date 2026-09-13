@@ -18,6 +18,7 @@ import {
   useProps,
   useStyles,
 } from '@xiaoye-react/ui';
+import { useMemo } from 'react';
 import { useUncontrolled } from '@xiaoye-react/hooks';
 import {
   useHighlight,
@@ -220,11 +221,13 @@ export const CodeHighlight = factory<CodeHighlightFactory>((_props) => {
 
   const colorScheme = useComputedUIColorScheme();
   const highlight = useHighlight();
-  const highlightedCode = highlight({
-    code: code.trim(),
-    language,
-    colorScheme: codeColorScheme ?? colorScheme,
-  });
+  const effectiveColorScheme = codeColorScheme ?? colorScheme;
+  // 同步 CPU 高亮按输入 memo：任意父级重渲染（配置器键入等）都重跑高亮，
+  // 大代码块会阻塞主线程
+  const highlightedCode = useMemo(
+    () => highlight({ code: code.trim(), language, colorScheme: effectiveColorScheme }),
+    [highlight, code, language, effectiveColorScheme]
+  );
 
   const codeContent = highlightedCode.isHighlighted
     ? { dangerouslySetInnerHTML: { __html: highlightedCode.highlightedCode } }

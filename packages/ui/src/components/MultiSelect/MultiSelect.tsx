@@ -394,8 +394,12 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
 
     const isMaxSelected = maxSelectedValues !== undefined && selectedValues.length >= maxSelectedValues
 
+    // 选中值 → 选项的索引：渲染胶囊逐值 flatData.find 是 O(选中数×选项数)，
+    // 每次键入搜索都会重跑，大数据量下放大为明显开销
+    const flatDataMap = useMemo(() => new Map(flatData.map(item => [item.value, item])), [flatData])
+
     const valuesList = selectedValues.map((selectedValue, index) => {
-        const option = flatData.find(item => item.value === selectedValue)
+        const option = flatDataMap.get(selectedValue)
         const displayLabel = option?.label ?? selectedValue
 
         if (renderPill) {

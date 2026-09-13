@@ -4,6 +4,7 @@ import { useUncontrolled } from '@xiaoye-react/hooks'
 import { Factory, genericFactory, rem, StylesApiProps, useProps } from '../../core'
 import { CheckIcon } from '../Checkbox'
 import { Combobox } from '../Combobox'
+import { useComboboxContext } from '../Combobox/Combobox.context'
 import type { ComboboxOptionData } from '../Combobox/Combobox.context'
 import { ScrollArea, ScrollAreaProps } from '../ScrollArea'
 import type { ComboboxPopoverValue } from './ComboboxPopover.types'
@@ -228,6 +229,34 @@ const defaultProps = {
     hiddenInputValuesDivider: ',',
     searchPlaceholder: 'Search...'
 } satisfies Partial<ComboboxPopoverProps>
+
+/**
+ * searchable 模式下拉内嵌的搜索框：接入 Combobox 的键盘导航
+ * （ArrowUp/Down 移动激活项、Enter 提交、Escape 关闭、Home/End），
+ * 否则键盘用户聚焦搜索框后只能用鼠标选择
+ */
+function DropdownSearchInput({
+    value,
+    onChange,
+    placeholder
+}: {
+    value: string
+    onChange: (value: string) => void
+    placeholder: string | undefined
+}) {
+    const ctx = useComboboxContext()
+    return (
+        <input
+            type="text"
+            value={value}
+            onChange={event => onChange(event.currentTarget.value)}
+            onKeyDown={event => ctx.onTargetKeyDown(event)}
+            placeholder={placeholder}
+            aria-autocomplete="list"
+            style={{ width: '100%', marginBottom: 8 }}
+        />
+    )
+}
 
 function isValueChecked(value: string | string[] | undefined | null, optionValue: string) {
     return Array.isArray(value) ? value.includes(optionValue) : value === optionValue
@@ -486,12 +515,10 @@ export const ComboboxPopover = genericFactory<ComboboxPopoverFactory>((_props) =
                 {children}
                 <Combobox.Dropdown style={{ maxHeight: maxDropdownHeight ? rem(maxDropdownHeight) : undefined }}>
                     {searchable && (
-                        <input
-                            type="text"
+                        <DropdownSearchInput
                             value={_searchValue}
-                            onChange={(event) => setSearchValue(event.currentTarget.value)}
+                            onChange={setSearchValue}
                             placeholder={searchPlaceholder}
-                            style={{ width: '100%', marginBottom: 8 }}
                         />
                     )}
                     <Combobox.Options>

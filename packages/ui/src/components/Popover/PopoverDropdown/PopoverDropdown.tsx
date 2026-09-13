@@ -47,6 +47,9 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
                             id={ctx.getDropdownId()}
                             aria-labelledby={ctx.getTargetId()}
                             data-position={ctx.placement}
+                            // Modal 的 window 捕获 Escape 监听据它跳过（use-modal 用 closest 查找），
+                            // 浮层内的 Escape 由本组件 onKeyDown 处理，避免双关
+                            data-ui-stop-propagation="true"
                             {...others}
                             onKeyDown={(event: React.KeyboardEvent<HTMLDivElement>) => {
                                 onKeyDown?.(event)

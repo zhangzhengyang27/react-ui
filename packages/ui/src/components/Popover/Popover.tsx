@@ -268,6 +268,23 @@ export function Popover(_props: PopoverProps) {
 
     useClickOutside(handleOutsideClick, clickOutsideEvents, clickOutsideNodes)
 
+    // 打开期间的 Escape 处理：焦点在 Dropdown 内时由 PopoverDropdown 的 onKeyDown 关闭并
+    // stopPropagation（不会到达这里）；焦点在触发元素等 Dropdown 外的位置时由这里关闭。
+    // 配合 target/dropdown 上的 data-ui-stop-propagation 标记，模态框的 window 捕获监听
+    // 会跳过这些按键，修复 Modal 内打开 Popover 时一次 Escape 双关（弹窗+浮层一起关闭）
+    useEffect(() => {
+        if (!popover.opened || !closeOnEscape) {
+            return undefined
+        }
+        const handleEscape = (event: KeyboardEvent) => {
+            if (event.key === 'Escape' && !event.isComposing) {
+                popover.onClose()
+            }
+        }
+        window.addEventListener('keydown', handleEscape)
+        return () => window.removeEventListener('keydown', handleEscape)
+    }, [popover.opened, popover.onClose, closeOnEscape])
+
     const reference = useCallback(
         (node: HTMLElement | null) => {
             setTargetNode(node)

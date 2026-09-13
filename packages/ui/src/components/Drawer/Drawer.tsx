@@ -165,6 +165,7 @@ export const Drawer = factory<DrawerFactory>((_props, _ref) => {
         size,
         offset,
         scrollAreaComponent,
+        transitionProps,
         className,
         style,
         classNames,
@@ -188,8 +189,13 @@ export const Drawer = factory<DrawerFactory>((_props, _ref) => {
     })
 
     // 内联 transitionProps 对象每次渲染都是新引用，会击穿 ModalBase 内部的 memoTransitionProps，
-    // 导致整个弹层子树跟着重渲染，这里 memo 化
-    const drawerTransitionProps = useMemo(() => ({ transition: transitions[position!], duration: 200 }), [position])
+    // 导致整个弹层子树跟着重渲染，这里 memo 化。
+    // 用户 transitionProps 合并进方向过渡（与 DrawerRoot 行为一致），
+    // 整体覆盖会丢失 slide-* 过渡、回退到基础 'pop'
+    const drawerTransitionProps = useMemo(
+        () => ({ transition: transitions[position!], duration: 200, ...transitionProps }),
+        [position, transitionProps]
+    )
 
     const hasHeader = !!title || withCloseButton
 

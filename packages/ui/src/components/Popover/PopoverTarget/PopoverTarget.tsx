@@ -63,6 +63,9 @@ export const PopoverTarget = factory<PopoverTargetFactory>((props, ref) => {
     return cloneElement(child, {
         ...ariaProps,
         id: effectiveId,
+        // 打开期间标记：焦点在触发元素上按 Escape 时，Modal 的捕获监听跳过，
+        // 由 Popover 的 window 监听只关浮层（对齐 MenubarTarget 的做法）
+        'data-ui-stop-propagation': ctx.opened ? 'true' : undefined,
         className: [childProps.className].filter(Boolean).join(' '),
         ref: targetRef,
         onClick: (event: React.MouseEvent<HTMLElement>) => {

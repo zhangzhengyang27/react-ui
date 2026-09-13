@@ -68,6 +68,8 @@ const defaultProps = {
     trapFocus: true,
     closeOnEscape: true,
     keepMounted: false,
+    // 关闭后焦点归还触发元素，与 Popover/Modal/Drawer 默认值对齐
+    returnFocus: true,
     zIndex: getDefaultZIndex('modal'),
     withOverlay: true,
     withCloseButton: true,

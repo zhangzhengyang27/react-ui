@@ -110,8 +110,56 @@ export function useCollapse({
         rafIdsRef.current.push(id)
     }
 
+    // 镜像最新状态：收尾兜底定时器在数帧后触发，闭包里的 expanded/styles 已过期
+    const expandedRef = useRef(expanded)
+    expandedRef.current = expanded
+    const stylesRef = useRef(styles)
+    stylesRef.current = styles
+    const onTransitionEndRef = useRef(onTransitionEnd)
+    onTransitionEndRef.current = onTransitionEnd
+
+    const finalizeTimerRef = useRef<number | null>(null)
+    const cancelFinalize = () => {
+        if (finalizeTimerRef.current !== null) {
+            window.clearTimeout(finalizeTimerRef.current)
+            finalizeTimerRef.current = null
+        }
+    }
+
+    // 把过渡落到终态（与 handleTransitionEnd 的收尾逻辑一致，幂等）。
+    // duration=0 时 0ms 过渡不会派发 transitionend，必须直接调用；
+    // duration>0 时作为 transitionend 丢失（如祖先 display:none）的超时兜底
+    const finalizeTransition = () => {
+        finalizeTimerRef.current = null
+        if (expandedRef.current) {
+            const height = getElementHeight(elementRef)
+            if (height === stylesRef.current.height) {
+                setStyles({})
+            } else {
+                mergeStyles({ height })
+            }
+            setState('entered')
+            onTransitionEndRef.current?.()
+        } else if (stylesRef.current.height === 0) {
+            setStyles(collapsedStyles)
+            setState('exited')
+            onTransitionEndRef.current?.()
+        }
+    }
+
+    const scheduleFinalize = (height: number | string) => {
+        cancelFinalize()
+        const duration = transitionDuration ?? getAutoHeightDuration(height)
+        if (duration === 0) {
+            finalizeTransition()
+        } else {
+            finalizeTimerRef.current = window.setTimeout(finalizeTransition, duration + 60)
+        }
+    }
+
     useDidUpdate(() => {
         cancelPendingRafs()
+        cancelFinalize()
         const shouldTransition = transitionDuration !== 0
 
         if (shouldTransition) {
@@ -125,6 +173,7 @@ export function useCollapse({
                 queueRaf(() => {
                     const height = getElementHeight(elementRef)
                     mergeStyles({ ...getTransitionStyles(height), height })
+                    scheduleFinalize(height)
                 })
             })
         } else {
@@ -132,7 +181,10 @@ export function useCollapse({
                 flushSync(() => setState('exiting'))
                 const height = getElementHeight(elementRef)
                 mergeStyles({ ...getTransitionStyles(height), willChange: 'height', height })
-                queueRaf(() => mergeStyles({ height: 0, overflow: 'hidden' }))
+                queueRaf(() => {
+                    mergeStyles({ height: 0, overflow: 'hidden' })
+                    scheduleFinalize(height)
+                })
             })
         }
     }, [expanded])
@@ -140,6 +192,7 @@ export function useCollapse({
     useEffect(
         () => () => {
             cancelPendingRafs()
+            cancelFinalize()
         },
         []
     )
@@ -148,6 +201,9 @@ export function useCollapse({
         if (event.target !== elementRef.current || event.propertyName !== 'height') {
             return
         }
+
+        // 自然触发的 transitionend 优先收尾，取消超时兜底避免 onTransitionEnd 双触发
+        cancelFinalize()
 
         if (expanded) {
             const height = getElementHeight(elementRef)

@@ -120,13 +120,21 @@ export const Portal = factory<PortalFactory>((props, ref) => {
 
     // className/style/id 变化时同步到 Portal 自建节点(自持节点或共享节点),
     // 而非重建节点(重建会重挂载子树,且内联 style 对象每次渲染都是新引用,重建将导致每渲染都重建);
-    // target 指定的节点由用户自行维护,这里不处理
+    // target 指定的节点由用户自行维护,这里不处理。
+    // 共享节点上无属性的实例必须跳过同步：syncPortalNodeAttrs 会整体重置，
+    // 默认 reuseTargetNode 下所有实例（如 ModalBase→OptionalPortal）共用一个节点，
+    // 后挂载的无属性实例会把先前实例写入的 className/style/id 抹掉且不会恢复
+    const hasNodeAttrs = className !== undefined || style !== undefined || id !== undefined
+
     useIsomorphicEffect(() => {
         if (target || !nodeRef.current) {
             return
         }
+        if (reuseTargetNode && !hasNodeAttrs) {
+            return
+        }
         syncPortalNodeAttrs(nodeRef.current, { className, style, id })
-    }, [className, style, id, target])
+    }, [className, style, id, target, reuseTargetNode, hasNodeAttrs])
 
     if (!mounted || !nodeRef.current) {
         return null

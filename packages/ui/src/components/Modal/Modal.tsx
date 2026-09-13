@@ -94,6 +94,9 @@ const defaultProps = {
     trapFocus: true,
     closeOnEscape: true,
     keepMounted: false,
+    // 关闭后焦点归还触发元素，与 Drawer/ModalRoot/Popover 默认值对齐；
+    // 缺省时键盘用户关掉 Modal 焦点落在 body
+    returnFocus: true,
     zIndex: getDefaultZIndex('modal'),
     transitionProps: { duration: 200, transition: 'fade-down' },
     withOverlay: true,

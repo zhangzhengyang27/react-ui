@@ -37,8 +37,11 @@ export function useModal({ id, transitionProps, opened, closeOnEscape, onClose, 
         const handleKeyDown = (event: KeyboardEvent) => {
             // 仅栈顶模态框响应 Escape,避免嵌套打开时一次按键关闭所有模态框
             if (event.key === 'Escape' && closeOnEscape && !event.isComposing && opened && isTopmostModal(_id)) {
-                const shouldTrigger =
-                    (event.target as HTMLElement)?.getAttribute('data-ui-stop-propagation') !== 'true'
+                // 事件目标位于带 data-ui-stop-propagation 标记的元素内（浮层下拉、Menu 项等）
+                // 时不响应：这些位置的 Escape 由浮层自身处理，避免 Modal+Popover 嵌套时双关
+                const shouldTrigger = !(event.target as HTMLElement | null)?.closest?.(
+                    '[data-ui-stop-propagation="true"]'
+                )
                 if (shouldTrigger) {
                     onClose()
                 }

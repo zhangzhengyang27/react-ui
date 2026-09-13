@@ -77,6 +77,11 @@ export function NotificationContainer({
   };
 
   const handleAutoClose = () => {
+    // 先取消已有 timer：挂载时 autoClose effect 与 paused effect 都会调度一次，
+    // 不先取消会留下一个 autoCloseTimeout 引用不到的幽灵 timer，
+    // hover 暂停/手动取消只能清掉最后一个，幽灵 timer 到期仍会关闭通知
+    cancelAutoClose();
+
     if (
       dismissed ||
       active ||

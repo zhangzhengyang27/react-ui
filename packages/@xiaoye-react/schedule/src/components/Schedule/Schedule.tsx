@@ -277,10 +277,12 @@ export const Schedule = factory<ScheduleFactory>((_props) => {
     vars,
   });
 
+  // 不向 useUncontrolled 传 onChange：受控模式下 setter 就是 onChange 本身，
+  // 再叠加 handleViewChange 的显式调用会导致 onViewChange 双触发。
+  // onViewChange 由 handleViewChange 显式调用，作为唯一出口
   const [_view, _setView] = useUncontrolled<ScheduleViewLevel>({
     value: view,
     defaultValue: defaultView,
-    onChange: onViewChange,
   });
 
   const [_date, _setDate] = useUncontrolled<Date | DateStringValue>({

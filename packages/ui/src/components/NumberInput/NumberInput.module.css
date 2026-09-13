@@ -30,6 +30,8 @@
     color: var(--ui-color-dimmed);
     padding: 0;
     width: 100%;
+    /* Input 右侧 section 默认 pointer-events:none 且可继承，不恢复则按钮收不到真实点击 */
+    pointer-events: auto;
     transition:
         background-color 100ms ease,
         color 100ms ease;

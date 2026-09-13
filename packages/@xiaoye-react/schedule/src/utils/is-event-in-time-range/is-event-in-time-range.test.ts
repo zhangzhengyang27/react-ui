@@ -41,4 +41,20 @@ describe('@xiaoye-react/schedule/is-event-in-time-range', () => {
     });
     expect(isEventInTimeRange({ event, startTime: '10:00', endTime: '22:00' })).toBe(true);
   });
+
+  it('returns true for event ending at next-day midnight (24:00 semantics)', () => {
+    const event = testUtils.createEvent({
+      start: `${testUtils.testDate} 22:00:00`,
+      end: `2025-01-16 00:00:00`,
+    });
+    expect(isEventInTimeRange({ event, startTime: '00:00', endTime: '23:59' })).toBe(true);
+  });
+
+  it('returns false for event ending at next-day midnight when window excludes its start', () => {
+    const event = testUtils.createEvent({
+      start: `${testUtils.testDate} 22:00:00`,
+      end: `2025-01-16 00:00:00`,
+    });
+    expect(isEventInTimeRange({ event, startTime: '10:00', endTime: '22:00' })).toBe(false);
+  });
 });

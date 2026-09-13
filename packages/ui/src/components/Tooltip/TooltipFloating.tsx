@@ -120,6 +120,8 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((_props, ref) => 
     const [opened, setOpened] = useState(!!defaultOpened)
     const [coords, setCoords] = useState({ x: 0, y: 0 })
     const boundaryRef = useRef<HTMLElement | null>(null)
+    const tooltipRef = useRef<HTMLDivElement | null>(null)
+    const isPortaled = withinPortal !== false
 
     const child = getSingleElementChild(children)
     if (!child) {
@@ -138,8 +140,40 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((_props, ref) => 
     const handleMouseMove = (event: React.MouseEvent<unknown>) => {
         (child.props as any)?.onMouseMove?.(event)
         const rect = boundaryRef.current?.getBoundingClientRect()
-        if (!rect) return
 
+        if (isPortaled || !rect) {
+            // Portal 模式：tooltip 挂在 body 上，必须用视口坐标定位（配合 position:fixed）；
+            // clientX/Y - rect.left 只是相对目标左上角的偏移，直接当绝对坐标用会在
+            // 目标不在视口原点或页面有滚动时完全错位
+            const tooltipRect = tooltipRef.current?.getBoundingClientRect()
+            const width = tooltipRect?.width ?? 0
+            const height = tooltipRect?.height ?? 0
+            const cursorX = event.clientX
+            const cursorY = event.clientY
+
+            let nextX = cursorX
+            let nextY = cursorY
+
+            if (position === 'right') {
+                nextX = cursorX + (offset ?? 10)
+                nextY = cursorY - height / 2
+            } else if (position === 'left') {
+                nextX = cursorX - (offset ?? 10) - width
+                nextY = cursorY - height / 2
+            } else if (position === 'top') {
+                nextX = cursorX - width / 2
+                nextY = cursorY - (offset ?? 10) - height
+            } else if (position === 'bottom') {
+                nextX = cursorX - width / 2
+                nextY = cursorY + (offset ?? 10)
+            }
+
+            setCoords({ x: nextX, y: nextY })
+            return
+        }
+
+        // 非 Portal：tooltip 与目标同容器渲染，定位基准是最近的定位祖先，
+        // 沿用相对目标左上角的偏移
         const x = event.clientX - rect.left
         const y = event.clientY - rect.top
 
@@ -177,11 +211,14 @@ export const TooltipFloating = factory<TooltipFloatingFactory>((_props, ref) => 
         <>
             <OptionalPortal withinPortal={withinPortal}>
                 <Box
+                    ref={tooltipRef}
                     {...others}
                     {...getStyles('tooltip', {
                         style: {
                             zIndex: zIndex as React.CSSProperties['zIndex'],
                             display: !disabled && opened ? 'block' : 'none',
+                            // Portal 到 body 后 absolute 的定位基准是 body，跟随光标需要 fixed
+                            position: isPortaled ? 'fixed' : undefined,
                             top: Math.round(coords.y),
                             left: Math.round(coords.x)
                         }

@@ -366,22 +366,47 @@ export const MaskInput = factory<MaskInputFactory>((_props, ref) => {
 
         // Update the input element's displayed value
         if (inputRef.current) {
-            // 直接改写 value 会让光标跳到末尾：先记录改写前的光标位置，
-            // 改写后把光标恢复到"原光标前已输入的有效字符数"对应的位置
-            const prevValue = inputRef.current.value
-            const selectionStart = inputRef.current.selectionStart ?? prevValue.length
-            let typedBeforeCursor = 0
-            for (let i = 0; i < selectionStart && i < prevValue.length; i++) {
-                const slot = currentSlots[i]
-                if (slot && slot.type === 'token' && slot.pattern.test(prevValue[i])) {
-                    typedBeforeCursor++
-                }
-            }
-
+            // 直接改写 value 会让光标跳到末尾：记录编辑后的光标在输入串中的位置，
+            // 按"该位置前被掩码保留的有效字符数"把光标映射回新显示串，
+            // 并跟随其后自动插入的字面量（如 000-000 的 '-'）
+            const selectionStart = inputRef.current.selectionStart ?? inputValue.length
             inputRef.current.value = newDisplay
 
-            const nextCursor = Math.min(typedBeforeCursor, newDisplay.length)
-            inputRef.current.setSelectionRange(nextCursor, nextCursor)
+            if (!currentOptions.separate) {
+                const produced: number[] = []
+                let inputIndex = 0
+                for (const slot of currentSlots) {
+                    if (inputIndex >= inputValue.length) break
+                    if (slot.type === 'literal') {
+                        produced.push(inputIndex)
+                        if (inputValue[inputIndex] === slot.char) {
+                            inputIndex++
+                        }
+                        continue
+                    }
+                    while (inputIndex < inputValue.length) {
+                        const ch = inputValue[inputIndex++]
+                        const transformed = transform ? transform(ch) : ch
+                        if (slot.pattern.test(transformed)) {
+                            produced.push(inputIndex)
+                            break
+                        }
+                    }
+                }
+
+                let filled = 0
+                for (let p = 0; p < produced.length && produced[p] <= selectionStart; p++) {
+                    filled = p + 1
+                }
+                let nextCursor = Math.min(filled, newDisplay.length)
+                while (
+                    nextCursor < newDisplay.length &&
+                    currentSlots[nextCursor]?.type === 'literal'
+                ) {
+                    nextCursor++
+                }
+                inputRef.current.setSelectionRange(nextCursor, nextCursor)
+            }
         }
 
         setValue(currentOptions.separate ? inputValue : newRaw)

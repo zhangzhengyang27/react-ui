@@ -129,12 +129,15 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
     const [hoverValue, setHoverValue] = React.useState<number | null>(null)
     const currentValue = clamp(hoverValue ?? (isControlled ? value! : internalValue), 0, count)
     const roundedValue = roundToFraction(currentValue, fractions)
+    // clearable 判断只能用不含 hover 的真实当前值：click 前必先触发 mouseenter，
+    // 用含 hover 的 roundedValue 会导致点击任何星都命中"与当前值相同"而清零
+    const baseValue = roundToFraction(clamp(isControlled ? value! : internalValue, 0, count), fractions)
 
     const handleClick = (index: number) => {
         if (readOnly) return
 
         const nextValue = index + 1
-        const finalValue = clearable && nextValue === roundedValue ? 0 : nextValue
+        const finalValue = clearable && nextValue === baseValue ? 0 : nextValue
 
         if (!isControlled) {
             setInternalValue(finalValue)

@@ -353,12 +353,22 @@ export function useForm<
 
       setSubmitting(true);
 
+      pendingSubmitValidationRef.current = true;
+      const result = validate();
+      // validate() 在 pendingSubmitValidationRef 置位时会把本次代际写入 submitGenerationRef，
+      // 这里立即捕获：handleValidation 必须比对"自己这次提交"的代际。
+      // 若比对全局 submitGenerationRef，双击提交时后一次提交会覆写它，
+      // 前一次的过期校验结果也会被放行，导致 handleSubmit 执行两次
+      const submitGeneration = submitGenerationRef.current;
+
       const handleValidation = (results: { hasErrors: boolean; errors: Record<string, any> }) => {
         // 本次提交的验证已被更新的验证取代：放弃本次提交流程。
-        // 取代者是新提交（最新代际属于提交流程）时由它收尾 submitting；
+        // 取代者是新提交（其代际属于提交流程）时由它收尾 submitting；
         // 取代者是外部 validate() 时无人收尾，这里兜底复位，避免提交按钮永久禁用
-        if (submitGenerationRef.current !== validateGeneration.current) {
-          setSubmitting(false);
+        if (submitGeneration !== validateGeneration.current) {
+          if (submitGenerationRef.current !== validateGeneration.current) {
+            setSubmitting(false);
+          }
           return;
         }
 
@@ -383,8 +393,6 @@ export function useForm<
         }
       };
 
-      pendingSubmitValidationRef.current = true;
-      const result = validate();
       if (result instanceof Promise) {
         result.then(handleValidation).catch(() => {
           setSubmitting(false);

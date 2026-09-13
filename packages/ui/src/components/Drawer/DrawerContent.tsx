@@ -20,6 +20,10 @@ export type DrawerContentFactory = Factory<{
     compound: true
 }>
 
+// 兜底滚动组件必须是稳定的模块级引用：若在渲染中内联定义，每次渲染都是新的组件类型，
+// React 会把整个内容子树卸载重建（焦点/非受控值/滚动位置全部丢失）
+const DrawerContentScrollFallback = ({ children: c }: { children?: React.ReactNode }) => <div>{c}</div>
+
 export const DrawerContent = factory<DrawerContentFactory>((_props, ref) => {
     const props = useProps('DrawerContent', null, _props)
     const { children, ...others } = props
@@ -27,7 +31,7 @@ export const DrawerContent = factory<DrawerContentFactory>((_props, ref) => {
 
     const Scroll: React.FC<any> =
         ctx.scrollAreaComponent === 'div' || !ctx.scrollAreaComponent
-            ? ({ children: c }) => <div>{c}</div>
+            ? DrawerContentScrollFallback
             : ctx.scrollAreaComponent
 
     return (

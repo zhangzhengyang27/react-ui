@@ -1,9 +1,8 @@
 import { useRef } from 'react'
 import { useId, useUncontrolled } from '@xiaoye-react/hooks'
 import { factory, Factory, StylesApiProps, useProps, useStyles } from '../../core'
-import { CloseButton } from '../CloseButton'
 import { InputBase, InputBaseProps } from '../InputBase'
-import { InputWrapper } from '../Input'
+import { Input, InputWrapper } from '../Input'
 import classes from './FileInput.module.css'
 
 export type FileInputStylesNames = 'root'
@@ -182,7 +181,9 @@ export const FileInput = factory<FileInputFactory>((_props, ref) => {
     }
 
     const clearButton = clearable && hasValue && (
-        <CloseButton size="sm" variant="transparent" aria-label="Clear" onClick={handleClear} />
+        // Input.ClearButton 自带 pointer-events:all，CloseButton 在 Input 右侧
+        // section 的 pointer-events:none 中收不到真实点击
+        <Input.ClearButton size="sm" aria-label="Clear" onClick={handleClear} />
     )
 
     const input = (

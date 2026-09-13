@@ -8,6 +8,7 @@ import {
     type UIRadius,
     type StylesApiProps
 } from '../../core'
+import { useRadioGroupContext } from './RadioGroup.context'
 import classes from './Radio.module.css'
 
 export type RadioCardStylesNames = 'card'
@@ -62,15 +63,42 @@ export const RadioCard = factory<RadioCardFactory>((_props, ref) => {
         onChange,
         onClick,
         disabled,
+        value,
         mod,
         ...others
     } = props
 
+    const groupCtx = useRadioGroupContext()
+    // 组内未传 value 时无法从 group 状态推导 checked，点击忽略并 warn（与 CheckboxCard 行为一致）
+    const missingGroupValue = groupCtx !== null && value === undefined && checked === undefined
+    const groupChecked = groupCtx !== null && value !== undefined ? groupCtx.value === value : undefined
+
     const [internalChecked, setInternalChecked] = useState(defaultChecked ?? false)
-    const isChecked = checked !== undefined ? checked : internalChecked
+    const isChecked =
+        checked !== undefined ? checked : groupChecked !== undefined ? groupChecked : internalChecked
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         if (disabled) return
+
+        if (missingGroupValue) {
+            if (process.env.NODE_ENV !== 'production') {
+                console.warn(
+                    '[@xiaoye-react/ui] RadioCard is used within Radio.Group without a `value` prop, the click is ignored. Provide a `value` to make it selectable.'
+                )
+            }
+            onClick?.(event)
+            return
+        }
+
+        if (groupCtx && value !== undefined) {
+            groupCtx.onChange(value)
+            if (!isChecked) {
+                onChange?.(true)
+            }
+            onClick?.(event)
+            return
+        }
+
         const next = !isChecked
         if (checked === undefined) {
             setInternalChecked(next)

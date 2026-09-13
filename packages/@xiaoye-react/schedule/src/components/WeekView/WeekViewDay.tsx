@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { memo } from 'react';
 import { Box, GetStylesApi, UnstyledButton } from '@xiaoye-react/ui';
 import { useDatesContext } from '@xiaoye-react/dates';
 import { getLabel, ScheduleLabelsOverride } from '../../labels';
@@ -11,6 +12,148 @@ import {
 } from '../../utils';
 import type { WeekViewControlsRef } from './handle-week-view-key-down';
 import type { WeekViewFactory } from './WeekView';
+
+export interface WeekViewTimeSlotProps {
+  slot: DayTimeInterval;
+  slotIndex: number;
+  dayIndex: number;
+  /** String(day) 形式的日期串 */
+  day: string;
+  /** YYYY-MM-DD */
+  dayGroup: string;
+  dayOfWeek: DayOfWeek;
+  intervalMinutes: number;
+  /** `useStyles` return value of `WeekView`（身份每渲染变化，比较器忽略） */
+  getStyles: GetStylesApi<WeekViewFactory>;
+  businessHours?: BusinessHoursValue;
+  highlightBusinessHours?: boolean;
+  labels?: ScheduleLabelsOverride;
+  withEventsDragAndDrop: boolean;
+  withDragSlotSelect: boolean;
+  mode?: ScheduleMode;
+  slotsRef?: WeekViewControlsRef;
+  isFirstSlot: boolean;
+  isDropTarget: boolean;
+  isDragSelected: boolean;
+  onSlotClick?: WeekViewDayProps['onSlotClick'];
+  onSlotKeyDown?: WeekViewDayProps['onSlotKeyDown'];
+  onFirstSlotArrowUp?: WeekViewDayProps['onFirstSlotArrowUp'];
+  onSlotPointerDown?: WeekViewDayProps['onSlotPointerDown'];
+  getTimeSlotProps?: WeekViewDayProps['getTimeSlotProps'];
+}
+
+function shallowEqualProps<T extends Record<string, any>>(a: T, b: T): boolean {
+  const keysA = Object.keys(a);
+  const keysB = Object.keys(b);
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+  return keysA.every((key) => a[key] === b[key]);
+}
+
+/**
+ * 单个时间槽单元格。拖拽期间父视图每次 dragover 都会重渲染，
+ * memo 让未发生状态变化的槽位（绝大多数）直接跳过协调。
+ * getStyles/getTimeSlotProps 的身份随父渲染变化，但其输出由稳定的
+ * classNames/styles 配置决定，比较器忽略二者（若消费方的 getTimeSlotProps
+ * 输出依赖高频变化的数据，需自行保证引用稳定）
+ */
+export const WeekViewTimeSlot = memo(
+  function WeekViewTimeSlot({
+    slot,
+    slotIndex,
+    dayIndex,
+    day,
+    dayGroup,
+    dayOfWeek,
+    intervalMinutes,
+    getStyles,
+    businessHours,
+    highlightBusinessHours,
+    labels,
+    withEventsDragAndDrop,
+    withDragSlotSelect,
+    mode,
+    slotsRef,
+    isFirstSlot,
+    isDropTarget,
+    isDragSelected,
+    onSlotClick,
+    onSlotKeyDown,
+    onFirstSlotArrowUp,
+    onSlotPointerDown,
+    getTimeSlotProps,
+  }: WeekViewTimeSlotProps) {
+    const slotStart = `${dayGroup} ${slot.startTime}` as DateTimeStringValue;
+    const slotEnd = `${dayGroup} ${slot.endTime}` as DateTimeStringValue;
+    const { onClick: externalOnClick, ...externalSlotProps } =
+      getTimeSlotProps?.({ start: slotStart, end: slotEnd }) || {};
+
+    const handleClick =
+      mode === 'static'
+        ? undefined
+        : (e: React.MouseEvent<HTMLButtonElement>) => {
+            onSlotClick?.(day, slot.startTime, e);
+            externalOnClick?.(e);
+          };
+
+    return (
+      <UnstyledButton
+        ref={(node) => {
+          if (node && slotsRef?.current) {
+            if (!slotsRef.current[dayIndex]) {
+              slotsRef.current[dayIndex] = [];
+            }
+            slotsRef.current[dayIndex][slotIndex] = node;
+          }
+        }}
+        {...getStyles('weekViewDaySlot')}
+        mod={{
+          'hour-start': slot.isHourStart,
+          ...getBusinessHoursMod({
+            time: slot.startTime,
+            businessHours,
+            highlightBusinessHours,
+            dayOfWeek,
+          }),
+          'drop-target': isDropTarget,
+          'drag-selected': isDragSelected,
+          static: mode === 'static',
+        }}
+        __vars={{ '--slot-size': `${clampIntervalMinutes(intervalMinutes) / 60}` }}
+        aria-label={`${getLabel('timeSlot', labels)} ${dayGroup} ${slot.startTime} - ${slot.endTime}`}
+        tabIndex={mode === 'static' ? -1 : isFirstSlot ? 0 : -1}
+        data-drag-slot-index={withDragSlotSelect && mode !== 'static' ? slotIndex : undefined}
+        data-drag-slot-group={withDragSlotSelect && mode !== 'static' ? dayGroup : undefined}
+        onKeyDown={(e) => {
+          if (slotIndex === 0 && e.key === 'ArrowUp' && onFirstSlotArrowUp) {
+            e.preventDefault();
+            onFirstSlotArrowUp(dayIndex);
+          } else if (onSlotKeyDown) {
+            onSlotKeyDown(e, dayIndex, slotIndex);
+          }
+        }}
+        onPointerDown={
+          withDragSlotSelect && mode !== 'static'
+            ? (e) => onSlotPointerDown?.(e, slotIndex, dayGroup)
+            : undefined
+        }
+        onClick={handleClick}
+        onDragOver={
+          withEventsDragAndDrop && mode !== 'static' ? (e) => e.preventDefault() : undefined
+        }
+        {...externalSlotProps}
+      />
+    );
+  },
+  (prev, next) => {
+    const { getStyles: _prevGetStyles, getTimeSlotProps: _prevGetTimeSlotProps, ...prevRest } = prev;
+    const { getStyles: _nextGetStyles, getTimeSlotProps: _nextGetTimeSlotProps, ...nextRest } = next;
+    return shallowEqualProps(prevRest, nextRest);
+  }
+);
+
+WeekViewTimeSlot.displayName = '@xiaoye-react/schedule/WeekViewTimeSlot';
 
 export interface WeekViewDayProps {
   /** Date to display */
@@ -143,66 +286,33 @@ export function WeekViewDay({
     const isFirstSlot =
       firstSlotIndex?.dayIndex === dayIndex && firstSlotIndex?.slotIndex === slotIndex;
     const isDragSelected = isSlotDragSelected?.(slotIndex, dayGroup) || false;
-    const slotStart = `${dayGroup} ${slot.startTime}` as DateTimeStringValue;
-    const slotEnd = `${dayGroup} ${slot.endTime}` as DateTimeStringValue;
-    const { onClick: externalOnClick, ...externalSlotProps } =
-      getTimeSlotProps?.({ start: slotStart, end: slotEnd }) || {};
-
-    const handleClick =
-      mode === 'static'
-        ? undefined
-        : (e: React.MouseEvent<HTMLButtonElement>) => {
-            onSlotClick?.(String(day), slot.startTime, e);
-            externalOnClick?.(e);
-          };
 
     return (
-      <UnstyledButton
+      <WeekViewTimeSlot
         key={slot.startTime}
-        ref={(node) => {
-          if (node && slotsRef?.current) {
-            if (!slotsRef.current[dayIndex]) {
-              slotsRef.current[dayIndex] = [];
-            }
-            slotsRef.current[dayIndex][slotIndex] = node;
-          }
-        }}
-        {...getStyles('weekViewDaySlot')}
-        mod={{
-          'hour-start': slot.isHourStart,
-          ...getBusinessHoursMod({
-            time: slot.startTime,
-            businessHours,
-            highlightBusinessHours,
-            dayOfWeek,
-          }),
-          'drop-target': isDropTarget,
-          'drag-selected': isDragSelected,
-          static: mode === 'static',
-        }}
-        __vars={{ '--slot-size': `${clampIntervalMinutes(intervalMinutes) / 60}` }}
-        aria-label={`${getLabel('timeSlot', labels)} ${dayGroup} ${slot.startTime} - ${slot.endTime}`}
-        tabIndex={mode === 'static' ? -1 : isFirstSlot ? 0 : -1}
-        data-drag-slot-index={withDragSlotSelect && mode !== 'static' ? slotIndex : undefined}
-        data-drag-slot-group={withDragSlotSelect && mode !== 'static' ? dayGroup : undefined}
-        onKeyDown={(e) => {
-          if (slotIndex === 0 && e.key === 'ArrowUp' && onFirstSlotArrowUp) {
-            e.preventDefault();
-            onFirstSlotArrowUp(dayIndex);
-          } else if (onSlotKeyDown) {
-            onSlotKeyDown(e, dayIndex, slotIndex);
-          }
-        }}
-        onPointerDown={
-          withDragSlotSelect && mode !== 'static'
-            ? (e) => onSlotPointerDown?.(e, slotIndex, dayGroup)
-            : undefined
-        }
-        onClick={handleClick}
-        onDragOver={
-          withEventsDragAndDrop && mode !== 'static' ? (e) => e.preventDefault() : undefined
-        }
-        {...externalSlotProps}
+        slot={slot}
+        slotIndex={slotIndex}
+        dayIndex={dayIndex}
+        day={String(day)}
+        dayGroup={dayGroup}
+        dayOfWeek={dayOfWeek}
+        intervalMinutes={intervalMinutes}
+        getStyles={getStyles}
+        businessHours={businessHours}
+        highlightBusinessHours={highlightBusinessHours}
+        labels={labels}
+        withEventsDragAndDrop={!!withEventsDragAndDrop}
+        withDragSlotSelect={!!withDragSlotSelect}
+        mode={mode}
+        slotsRef={slotsRef}
+        isFirstSlot={isFirstSlot}
+        isDropTarget={isDropTarget}
+        isDragSelected={isDragSelected}
+        onSlotClick={onSlotClick}
+        onSlotKeyDown={onSlotKeyDown}
+        onFirstSlotArrowUp={onFirstSlotArrowUp}
+        onSlotPointerDown={onSlotPointerDown}
+        getTimeSlotProps={getTimeSlotProps}
       />
     );
   });

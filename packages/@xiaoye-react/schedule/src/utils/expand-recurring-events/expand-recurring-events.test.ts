@@ -179,4 +179,29 @@ describe('@xiaoye-react/schedule/expand-recurring-events', () => {
     expect(result).toHaveLength(1);
     expect(result[0].id).toBe('orphan-override');
   });
+
+  it('preserves wall-clock time across DST boundaries (weekly series spanning March)', () => {
+    // 2026-03-08（美国）切换 DST：跨越该边界的周期事件墙钟必须保持 09:00，
+    // 不得因时区偏移变化漂移 1 小时
+    const result = expandRecurringEvents({
+      events: [
+        {
+          id: 'weekly-1',
+          title: 'Weekly sync',
+          start: '2026-03-02 09:00:00',
+          end: '2026-03-02 10:00:00',
+          color: 'blue',
+          recurrence: { rrule: 'FREQ=WEEKLY;COUNT=6' },
+        },
+      ],
+      rangeStart: '2026-03-01 00:00:00',
+      rangeEnd: '2026-04-30 23:59:59',
+    });
+
+    expect(result).toHaveLength(6);
+    for (const event of result) {
+      expect(event.start?.endsWith('09:00:00')).toBe(true);
+      expect(event.end?.endsWith('10:00:00')).toBe(true);
+    }
+  });
 });

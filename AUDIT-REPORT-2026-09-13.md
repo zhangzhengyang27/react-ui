@@ -20,6 +20,10 @@
 > - Textarea/JsonInput minRows/maxRows（决策：实现）：field-sizing: content（渐进增强）+ 行高×行数的 min/max-height；rows 回退为 minRows；新 fieldSizing 样式名。
 > - useSplitter 拖拽路径 stale closure：核实为 B2-1 setter 稳定化已顺带覆盖（setCurrentSizes 稳定且经 onChangeRef 转发最新回调），无需改动。
 > 验证：ui 528（含 2 个新用例）全部通过，tsc 通过。
+> ⑬ 第十三批（按用户决策：大件部分）已完成：
+> - expandRecurringEvents RRuleSet + tzid（决策：完整方案）：tzid 取运行时时区（naive 事件时间即该时区墙钟），dtstart/exdate 按 rrule tzid 模式以「墙钟分量的 UTC-naive Date」构造，exdate 走 RRuleSet；结果读 UTC 分量还原墙钟串（tzid=本地时 rezone 为恒等映射，用 dayjs(instant) 会把偏移重复加回）。全链路无时区偏移参与运算，跨 DST 墙钟不再漂移、exdate/override 的 recurrenceId 精确匹配；补跨美国 DST 边界的墙钟保持回归测试。
+> - schedule 视图级 memo（决策：做）：WeekView slots useMemo；handleTimeSlotClick/handleSlotKeyDown/handleFirstSlotArrowUp/handleDaySlotsDragOver/handleDaySlotsDrop 全部 useCallback 稳定化；常量 firstSlotIndex 提升为模块级 FIRST_SLOT_INDEX；WeekViewDay 内抽出 WeekViewTimeSlot（React.memo + 自定义比较器忽略 getStyles/getTimeSlotProps 的每渲染新身份）。拖拽期间 dragover 触发的重渲染中，未变化的槽位单元格（绝大多数）直接跳过协调。
+> 验证：schedule 1349（含 1 个新用例）全部通过。
 
 - 范围：`packages/ui`（125 组件）、`@xiaoye-react/form`、`pro`、`dates`、`schedule`、`hooks`、`spotlight/notifications/modals/nprogress/store/emotion/carousel/dropzone/tiptap/code-highlight/header/demo` 等全部源码（不含 test/story），约 10 万行。
 - 方法：18 路只读深度排查（未修改任何文件），每条结论附真实 file:line 与代码证据；关键 P0 已人工复核/沙箱模拟复现（MaskInput 乱序、form 重复提交、setPath 崩溃、Rating 清零、NumberInput 步进、Schedule 双触发均核实成立）。

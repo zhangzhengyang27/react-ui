@@ -299,6 +299,9 @@ export type WeekViewFactory = Factory<{
   vars: WeekViewCssVariables;
 }>;
 
+// 首个可聚焦槽位固定为 (0, 0)：模块级常量保持引用稳定，供下游 memo 比较
+const FIRST_SLOT_INDEX = { dayIndex: 0, slotIndex: 0 } as const;
+
 const defaultProps = {
   __staticSelector: 'WeekView',
   withWeekendDays: true,
@@ -436,7 +439,11 @@ export const WeekView = factory<WeekViewFactory>((_props) => {
   const theme = useUITheme();
   const [scrolled, setScrolled] = useState(false);
   const ctx = useDatesContext();
-  const slots = getDayTimeIntervals({ startTime, endTime, intervalMinutes });
+  // slots 是大量槽位单元格与键盘导航的数据源，稳定其身份以支撑下游 memo
+  const slots = useMemo(
+    () => getDayTimeIntervals({ startTime, endTime, intervalMinutes }),
+    [startTime, endTime, intervalMinutes]
+  );
   const viewportRef = useRef<HTMLDivElement>(null);
 
   useAutoScrollOnDrag({
@@ -527,28 +534,32 @@ export const WeekView = factory<WeekViewFactory>((_props) => {
 
   const withDragHandlers = (withEventsDragAndDrop || !!onExternalEventDrop) && mode !== 'static';
 
-  const handleTimeSlotClick = (
-    day: string,
-    slotTime: string,
-    e: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    if (!onTimeSlotClick) {
-      return;
-    }
+  // 传给 memo 化槽位单元格的 handler 用 useCallback 稳定身份
+  const handleTimeSlotClick = useCallback(
+    (
+      day: string,
+      slotTime: string,
+      e: React.MouseEvent<HTMLButtonElement>
+    ) => {
+      if (!onTimeSlotClick) {
+        return;
+      }
 
-    const slotDate = dayjs(day).format('YYYY-MM-DD');
-    const slotIndex = slots.findIndex((s) => s.startTime === slotTime);
-    if (slotIndex === -1) {
-      return;
-    }
+      const slotDate = dayjs(day).format('YYYY-MM-DD');
+      const slotIndex = slots.findIndex((s) => s.startTime === slotTime);
+      if (slotIndex === -1) {
+        return;
+      }
 
-    const slot = slots[slotIndex];
-    onTimeSlotClick({
-      slotStart: `${slotDate} ${slot.startTime}`,
-      slotEnd: `${slotDate} ${slot.endTime}`,
-      nativeEvent: e,
-    });
-  };
+      const slot = slots[slotIndex];
+      onTimeSlotClick({
+        slotStart: `${slotDate} ${slot.startTime}`,
+        slotEnd: `${slotDate} ${slot.endTime}`,
+        nativeEvent: e,
+      });
+    },
+    [onTimeSlotClick, slots]
+  );
 
   // 事件展开 + 布局是渲染热路径（rrule 展开上限可达数千实例）：
   // 拖拽期间每次 dragover/pointermove 都触发重渲染，不做 memo 会全量重算。
@@ -633,7 +644,8 @@ export const WeekView = factory<WeekViewFactory>((_props) => {
   const daySlotsContainersRef = useRef<(HTMLDivElement | null)[]>([]);
   const mergedViewportRef = useMergedRef(viewportRef, scrollAreaProps?.viewportRef);
 
-  const firstSlotIndex = { dayIndex: 0, slotIndex: 0 };
+  // 常量提升到模块级会导致文件内引用调整，保持组件内但用模块级常量替代每次渲染的新对象
+  const firstSlotIndex = FIRST_SLOT_INDEX;
 
   useIsomorphicEffect(() => {
     if (!startScrollTime || !viewportRef.current) {
@@ -696,18 +708,45 @@ export const WeekView = factory<WeekViewFactory>((_props) => {
     return null;
   }, []);
 
-  const handleSlotKeyDown = (
-    event: React.KeyboardEvent<HTMLButtonElement>,
-    dayIndex: number,
-    slotIndex: number
-  ) => {
-    handleWeekViewKeyDown({
-      controlsRef: slotsRef,
-      dayIndex,
-      slotIndex,
-      event,
-    });
-  };
+  const handleSlotKeyDown = useCallback(
+    (
+      event: React.KeyboardEvent<HTMLButtonElement>,
+      dayIndex: number,
+      slotIndex: number
+    ) => {
+      handleWeekViewKeyDown({
+        controlsRef: slotsRef,
+        dayIndex,
+        slotIndex,
+        event,
+      });
+    },
+    []
+  );
+
+  const handleFirstSlotArrowUp = useCallback((dayIdx: number) => {
+    allDaySlotsRef.current[dayIdx]?.focus();
+  }, []);
+
+  const handleDaySlotsDragOver = useCallback(
+    (event: React.DragEvent, dayStr: string, dayIdx: number) => {
+      const slotIndex = getSlotIndexFromDragPoint(event, dayIdx);
+      if (slotIndex !== null) {
+        dragDrop.handleDragOver(event, { day: dayStr, slotIndex });
+      }
+    },
+    [getSlotIndexFromDragPoint, dragDrop.handleDragOver]
+  );
+
+  const handleDaySlotsDrop = useCallback(
+    (event: React.DragEvent, dayStr: string, dayIdx: number) => {
+      const slotIndex = getSlotIndexFromDragPoint(event, dayIdx);
+      if (slotIndex !== null) {
+        dragDrop.handleDrop(event, { day: dayStr, slotIndex });
+      }
+    },
+    [getSlotIndexFromDragPoint, dragDrop.handleDrop]
+  );
 
   const handleAllDaySlotKeyDown = (
     event: React.KeyboardEvent<HTMLButtonElement>,
@@ -904,26 +943,10 @@ export const WeekView = factory<WeekViewFactory>((_props) => {
         firstSlotIndex={firstSlotIndex}
         onSlotKeyDown={handleSlotKeyDown}
         onSlotClick={handleTimeSlotClick}
-        onFirstSlotArrowUp={
-          withAllDaySlots
-            ? (dayIdx) => {
-                allDaySlotsRef.current[dayIdx]?.focus();
-              }
-            : undefined
-        }
-        onDaySlotsDragOver={(event, dayStr, dayIdx) => {
-          const slotIndex = getSlotIndexFromDragPoint(event, dayIdx);
-          if (slotIndex !== null) {
-            dragDrop.handleDragOver(event, { day: dayStr, slotIndex });
-          }
-        }}
+        onFirstSlotArrowUp={handleFirstSlotArrowUp}
+        onDaySlotsDragOver={handleDaySlotsDragOver}
         onDaySlotsDragLeave={dragDrop.handleDragLeave}
-        onDaySlotsDrop={(event, dayStr, dayIdx) => {
-          const slotIndex = getSlotIndexFromDragPoint(event, dayIdx);
-          if (slotIndex !== null) {
-            dragDrop.handleDrop(event, { day: dayStr, slotIndex });
-          }
-        }}
+        onDaySlotsDrop={handleDaySlotsDrop}
         dropTargetSlotIndex={
           dragDrop.dropTarget?.day === day ? dragDrop.dropTarget.slotIndex : undefined
         }

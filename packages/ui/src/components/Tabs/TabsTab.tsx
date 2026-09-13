@@ -48,11 +48,14 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
         disabled,
         children,
         mod,
+        id,
         ...others
     } = useProps('TabsTab', null, props)
     const ctx = useTabsContext()
 
     const isActive = ctx.activeValue === value
+    // 消费者显式传入 id 时以其为准，aria-controls 与之保持一致
+    const tabId = id || ctx.getTabId(value)
 
     return (
         <Box
@@ -60,6 +63,8 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
             ref={ref}
             type="button"
             role="tab"
+            id={tabId}
+            aria-controls={ctx.getPanelId(value)}
             aria-selected={isActive}
             tabIndex={isActive ? 0 : -1}
             disabled={disabled}

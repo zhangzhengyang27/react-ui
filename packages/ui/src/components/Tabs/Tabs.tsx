@@ -1,4 +1,4 @@
-import { useUncontrolled } from '@xiaoye-react/hooks'
+import { useId, useUncontrolled } from '@xiaoye-react/hooks'
 import {
     Box,
     createVarsResolver,
@@ -124,6 +124,11 @@ export const Tabs = factory<TabsFactory>((_props, ref) => {
         onChange
     })
 
+    // tab/panel 的 id 关联：读屏器依赖 aria-controls / aria-labelledby 把标签页与面板配对
+    const uuid = useId()
+    const getTabId = (tabValue: string) => `${uuid}-${tabValue}-tab`
+    const getPanelId = (panelValue: string) => `${uuid}-${panelValue}-panel`
+
     const getStyles = useStyles<TabsFactory>({
         name: 'Tabs',
         classes,
@@ -154,7 +159,9 @@ export const Tabs = factory<TabsFactory>((_props, ref) => {
                 color,
                 radius,
                 orientation: orientation!,
-                keepMounted: keepMounted!
+                keepMounted: keepMounted!,
+                getTabId,
+                getPanelId
             }}
         >
             <Box ref={ref} {...getStyles('root')} mod={[{ orientation, variant }, mod]} {...others}>

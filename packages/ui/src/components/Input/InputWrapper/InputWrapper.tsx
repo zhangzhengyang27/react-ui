@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, useContext } from 'react'
 import { useId } from '@xiaoye-react/hooks'
 import {
     Box,
@@ -198,10 +198,16 @@ export const InputWrapper = factory<InputWrapperFactory>((_props, ref) => {
     const errorRendered = hasError && inputWrapperOrder.includes('error')
     const successRendered = hasSuccess && inputWrapperOrder.includes('error')
     const descriptionRendered = hasDescription && inputWrapperOrder.includes('description')
-    const _describedBy = `${errorRendered ? errorId : ''} ${successRendered ? successId : ''} ${
-        descriptionRendered ? descriptionId : ''
-    }`
-    const describedBy = _describedBy.trim().length > 0 ? _describedBy.trim() : undefined
+    // InputBase 会在外层 InputWrapper（如 TextInput 自带的 Wrapper）之内再渲染一层 Wrapper，
+    // 内层 Provider 若丢弃外层 describedBy，error/description 的 aria-describedby 关联会断链
+    const outerWrapper = useContext(InputWrapperContext)
+    const _describedBy = `${outerWrapper.describedBy ?? ''} ${errorRendered ? errorId : ''} ${
+        successRendered ? successId : ''
+    } ${descriptionRendered ? descriptionId : ''}`
+    const describedBy =
+        _describedBy.trim().length > 0
+            ? Array.from(new Set(_describedBy.split(/\s+/))).filter(Boolean).join(' ')
+            : undefined
     const labelId = labelProps?.id || `${idBase}-label`
 
     const _label = label && (

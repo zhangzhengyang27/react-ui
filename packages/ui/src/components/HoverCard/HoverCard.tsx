@@ -189,9 +189,14 @@ export function HoverCard(_props: HoverCardProps) {
     // 用 child 的 id 替代默认 uid，让外部 label.htmlFor 能正确关联到 target input。
     // 同时 HoverCardDropdown 的 aria-labelledby 也会通过 getTargetId() 拿到正确的 id。
     const [targetId, setTargetId] = useState(hovercard.uid)
-    // uid 可能因内部原因变化，同步重置
+    // uid 变化时同步重置 targetId。挂载时必须跳过且不能无条件覆盖：
+    // HoverCard.Target 的 child 自带 id 会在子组件 effect 中同步进 context，
+    // 父组件的挂载重置晚于子 effect 执行，会把自定义 id 抹掉；
+    // 仅当 targetId 仍等于旧 uid（未被 child id 接管）时才跟随新 uid
+    const prevUidRef = useRef(hovercard.uid)
     useEffect(() => {
-        setTargetId(hovercard.uid)
+        setTargetId(current => (current === prevUidRef.current ? hovercard.uid : current))
+        prevUidRef.current = hovercard.uid
     }, [hovercard.uid])
 
     return (

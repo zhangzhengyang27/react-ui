@@ -49,7 +49,9 @@ export const HoverCardTarget = factory<HoverCardTargetFactory>((props, ref) => {
         id: effectiveId,
         className: [childProps.className].filter(Boolean).join(' '),
         ref: targetRef,
-        ...ctx.getReferenceProps?.()
+        // 传入 childProps 让 floating-ui 的 prop getter 与 child 自有事件处理器合成
+        // （onFocus/onBlur/onKeyDown 等两者都会被调用），无参调用会覆盖丢失 child 的处理器
+        ...ctx.getReferenceProps?.(childProps)
     })
 })
 

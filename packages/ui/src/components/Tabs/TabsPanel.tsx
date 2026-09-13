@@ -28,7 +28,11 @@ export type TabsPanelFactory = Factory<{
 }>
 
 export const TabsPanel = factory<TabsPanelFactory>((props, ref) => {
-    const { classNames, className, style, styles, value, children, mod, ...others } = useProps('TabsPanel', null, props)
+    const { classNames, className, style, styles, value, children, mod, id, ...others } = useProps(
+        'TabsPanel',
+        null,
+        props
+    )
     const ctx = useTabsContext()
 
     const isActive = ctx.activeValue === value
@@ -41,6 +45,8 @@ export const TabsPanel = factory<TabsPanelFactory>((props, ref) => {
         <Box
             ref={ref}
             role="tabpanel"
+            id={id || ctx.getPanelId(value)}
+            aria-labelledby={ctx.getTabId(value)}
             {...others}
             {...ctx.getStyles('panel', { className, classNames, style, styles })}
             mod={[{ active: isActive, hidden: !isActive }, mod]}

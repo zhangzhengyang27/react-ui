@@ -11,6 +11,9 @@ export interface TabsContext {
     radius: UIRadius | undefined
     orientation: 'horizontal' | 'vertical'
     keepMounted: boolean
+    /** tab 与 tabpanel 的 id 关联（aria-controls / aria-labelledby） */
+    getTabId: (value: string) => string
+    getPanelId: (value: string) => string
 }
 
 export const [TabsProvider, useTabsContext] = createSafeContext<TabsContext>('Tabs component was not found in the tree')

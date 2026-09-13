@@ -58,7 +58,6 @@ export const MenuSubItem = factory<MenuSubItemFactory>((props, ref) => {
         styles,
         vars,
         color,
-        closeMenuOnClick,
         leftSection,
         rightSection,
         children,
@@ -76,11 +75,8 @@ export const MenuSubItem = factory<MenuSubItemFactory>((props, ref) => {
         if (dataDisabled) {
             return
         }
-        if (typeof closeMenuOnClick === 'boolean') {
-            closeMenuOnClick && ctx.closeDropdownImmediately()
-        } else {
-            ctx.closeOnItemClick && ctx.closeDropdownImmediately()
-        }
+        // Sub.Item 是子菜单触发项（由 Menu.Sub.Target 负责点击切换子菜单）：
+        // 不能沿用 MenuItem 的 closeOnItemClick，否则点击触发项会把整个父菜单关掉
         onClick?.(event)
     }
 

@@ -156,12 +156,18 @@ export function useScroller<T extends HTMLElement = HTMLDivElement>(
       container.style.userSelect = ''
 
       if (wasDragged) {
+        // 捕获层一次性抑制：拖拽后紧随的 click（释放点在容器内或外）吞掉后自移除。
+        // 旧实现把监听挂在容器上：拖拽在容器外释放（mouseleave→handleMouseUp）时，
+        // 释放后的 click 不经过容器、监听不会自移除，会吞掉容器内下一次正常点击
         const suppressClick = (event: MouseEvent) => {
-          event.stopPropagation()
-          event.preventDefault()
-          container.removeEventListener('click', suppressClick, true)
+          document.removeEventListener('click', suppressClick, true)
+          const container = containerRef.current
+          if (container && event.target instanceof Node && container.contains(event.target)) {
+            event.stopPropagation()
+            event.preventDefault()
+          }
         }
-        container.addEventListener('click', suppressClick, true)
+        document.addEventListener('click', suppressClick, true)
       }
     }
   }, [])

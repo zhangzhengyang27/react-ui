@@ -277,7 +277,12 @@ export function Popover(_props: PopoverProps) {
             return undefined
         }
         const handleEscape = (event: KeyboardEvent) => {
-            if (event.key === 'Escape' && !event.isComposing) {
+            // Dropdown 内的 Escape 已由元素级 handler 关闭并 stopPropagation；
+            // Menu.Sub.Target 等场景会 preventDefault 表示「本次 Escape 已被内层处理」
+            if (event.defaultPrevented || event.isComposing) {
+                return
+            }
+            if (event.key === 'Escape') {
                 popover.onClose()
             }
         }

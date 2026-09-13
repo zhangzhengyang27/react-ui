@@ -1,3 +1,5 @@
+import { useRef } from 'react'
+import { useIsomorphicEffect, useMergedRef } from '@xiaoye-react/hooks'
 import {
     Box,
     factory,
@@ -57,10 +59,27 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
     // 消费者显式传入 id 时以其为准，aria-controls 与之保持一致
     const tabId = id || ctx.getTabId(value)
 
+    const tabRef = useRef<HTMLButtonElement>(null)
+    const mergedRef = useMergedRef(ref, tabRef)
+
+    // 无激活值（未传 value/defaultValue）时所有 tab 的 tabIndex 都是 -1，
+    // roving tabindex 失效、Tab 键无法进入标签列表：把 tablist 内第一个
+    // 未禁用的 tab 设为可聚焦。激活值存在时由 JSX prop 接管，无需干预
+    useIsomorphicEffect(() => {
+        const node = tabRef.current
+        if (!node || ctx.activeValue !== undefined) {
+            return
+        }
+        const first = node
+            .closest('[role="tablist"]')
+            ?.querySelector<HTMLButtonElement>('[role="tab"]:not([disabled])')
+        node.tabIndex = first === node ? 0 : -1
+    })
+
     return (
         <Box
             component="button"
-            ref={ref}
+            ref={mergedRef}
             type="button"
             role="tab"
             id={tabId}

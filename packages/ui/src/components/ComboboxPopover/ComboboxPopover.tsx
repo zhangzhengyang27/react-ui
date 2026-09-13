@@ -18,7 +18,13 @@ export interface ComboboxItem {
 
 export interface ComboboxItemGroup {
     group: string
-    items: ComboboxItem[]
+    /** 组内条目支持字符串简写（等价于 { value, label }） */
+    items: (string | ComboboxItem)[]
+}
+
+/** 组内字符串简写归一化为选项对象 */
+export function toComboboxItem(item: string | ComboboxItem): ComboboxItem {
+    return typeof item === 'string' ? { value: item, label: item } : item
 }
 
 export type ComboboxData = (string | ComboboxItem | ComboboxItemGroup)[]
@@ -36,7 +42,7 @@ export function getParsedComboboxData(data?: ComboboxData): ComboboxParsedItem[]
             return { value: item, label: item }
         }
         if (isOptionsGroup(item)) {
-            return { group: item.group, items: item.items.map((i) => ({ ...i })) }
+            return { group: item.group, items: item.items.map(toComboboxItem) }
         }
         return { ...item }
     })
@@ -46,7 +52,8 @@ export function getOptionsLockup(data: ComboboxParsedItem[]) {
     const lockup: Record<string, ComboboxItem> = {}
     data.forEach((item) => {
         if (isOptionsGroup(item)) {
-            item.items.forEach((option) => {
+            item.items.forEach((raw) => {
+                const option = toComboboxItem(raw)
                 lockup[option.value] = option
             })
         } else {
@@ -71,9 +78,13 @@ export function defaultOptionsFilter({ options, search, limit }: OptionsFilterIn
     // 否则分组场景下实际渲染的选项数可能远超 limit
     let matchedCount = 0
 
-    const matches = (item: ComboboxItem) =>
-        (item.label ?? '').toLowerCase().includes(parsedSearch) ||
-        (item.value ?? '').toLowerCase().includes(parsedSearch)
+    const matches = (raw: string | ComboboxItem) => {
+        const item = toComboboxItem(raw)
+        return (
+            (item.label ?? '').toLowerCase().includes(parsedSearch) ||
+            (item.value ?? '').toLowerCase().includes(parsedSearch)
+        )
+    }
 
     for (const option of options) {
         if (matchedCount >= limit) {
@@ -285,7 +296,9 @@ function renderOptions(
         if (isOptionsGroup(item)) {
             return (
                 <Combobox.Group label={item.group} key={`group-${item.group}-${index}`}>
-                    {item.items.map((option) => (
+                    {item.items.map((raw) => {
+                        const option = toComboboxItem(raw)
+                        return (
                         <Option
                             data={option}
                             key={option.value}
@@ -296,7 +309,8 @@ function renderOptions(
                             unstyled={unstyled}
                             renderOption={renderOption}
                         />
-                    ))}
+                        )
+                    })}
                 </Combobox.Group>
             )
         }

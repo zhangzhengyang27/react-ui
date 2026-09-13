@@ -120,7 +120,7 @@ describe('Select', () => {
         fireEvent.change(input, { target: { value: 'Rea' } })
         await screen.findByRole('option', { name: 'React' })
 
-        fireEvent.click(screen.getByRole('button', { name: 'Clear selection' }))
+        fireEvent.click(screen.getByRole('button', { name: '清除选中值' }))
         await waitFor(() => {
             expect(screen.getByRole('option', { name: 'Vue' })).toBeInTheDocument()
         })
@@ -131,7 +131,7 @@ describe('Select', () => {
         const onChange = vi.fn()
         renderSelect(<Select data={['React', 'Vue']} clearable defaultValue="React" onChange={onChange} />)
 
-        fireEvent.click(screen.getByRole('button', { name: 'Clear selection' }))
+        fireEvent.click(screen.getByRole('button', { name: '清除选中值' }))
         expect(onChange).toHaveBeenCalledWith(null)
         expect(screen.getByRole('combobox')).toHaveValue('')
     })
@@ -290,7 +290,7 @@ describe('Select', () => {
         const { container } = renderSelect(<Select data={['a']} loading />)
         expect(container.querySelector(`.${Loader.classes.root}`)).toBeInTheDocument()
         // 加载中不渲染清除按钮
-        expect(screen.queryByRole('button', { name: 'Clear selection' })).not.toBeInTheDocument()
+        expect(screen.queryByRole('button', { name: '清除选中值' })).not.toBeInTheDocument()
     })
 
     it('limits rendered options', async () => {

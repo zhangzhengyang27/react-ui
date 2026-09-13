@@ -6,7 +6,7 @@ import type {
 import type { ComboboxPopoverValue } from './ComboboxPopover.types'
 import type { ComboboxPopoverTargetProps } from './ComboboxPopoverTarget'
 
-export { ComboboxPopover, defaultOptionsFilter, getParsedComboboxData, isOptionsGroup } from './ComboboxPopover'
+export { ComboboxPopover, defaultOptionsFilter, getParsedComboboxData, isOptionsGroup, toComboboxItem } from './ComboboxPopover'
 export { ComboboxPopoverTarget } from './ComboboxPopoverTarget'
 
 export type { ComboboxPopoverTargetProps } from './ComboboxPopoverTarget'

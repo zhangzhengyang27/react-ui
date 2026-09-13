@@ -59,7 +59,7 @@ describe('MultiSelect', () => {
             <MultiSelect data={['React', 'Vue']} defaultValue={['React']} clearable onChange={onChange} />
         )
 
-        const clearButton = screen.getByRole('button', { name: 'Clear selection' })
+        const clearButton = screen.getByRole('button', { name: '清除已选值' })
         fireEvent.click(clearButton)
 
         expect(onChange).toHaveBeenCalledWith([])

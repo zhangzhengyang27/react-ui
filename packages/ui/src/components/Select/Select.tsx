@@ -11,7 +11,8 @@ import {
     OptionsFilter,
     defaultOptionsFilter,
     getParsedComboboxData,
-    isOptionsGroup
+    isOptionsGroup,
+    toComboboxItem
 } from '../ComboboxPopover'
 import { __BaseInputProps } from '../Input'
 import { InputBase } from '../InputBase'
@@ -116,6 +117,9 @@ export interface SelectProps
 
     /** 搜索值变化时调用 */
     onSearchChange?: (value: string) => void
+
+    /** 清除按钮的额外属性（如自定义 aria-label） */
+    clearButtonProps?: React.ComponentPropsWithoutRef<'button'>
 }
 
 export type SelectFactory = Factory<{
@@ -135,7 +139,8 @@ function flattenParsedItems(items: ComboboxParsedItem[]): ComboboxOptionData[] {
     const result: ComboboxOptionData[] = []
     items.forEach(item => {
         if (isOptionsGroup(item)) {
-            item.items.forEach(child => {
+            item.items.forEach(raw => {
+                const child = toComboboxItem(raw)
                 result.push({
                     value: child.value,
                     label: child.label ?? child.value,
@@ -225,6 +230,7 @@ export const Select = factory<SelectFactory>((_props, ref) => {
         closeOnBlur,
         searchValue: searchValueProp,
         onSearchChange,
+        clearButtonProps,
         id,
         wrapperProps: wrapperPropsProp,
         rightSection: rightSectionProp,
@@ -316,14 +322,16 @@ export const Select = factory<SelectFactory>((_props, ref) => {
                     size="xs"
                     onClick={handleClear}
                     onMouseDown={event => event.preventDefault()}
-                    aria-label="Clear selection"
+                    aria-label="清除选中值"
+                    {...clearButtonProps}
                 />
             )}
             <SelectChevronIcon className={classes.chevron} data-opened={opened || undefined} />
         </div>
     )
 
-    const inputValue = searchable && opened ? searchValue : selectedOption?.label ?? ''
+    // 受控 value 不在 data 中时（如异步数据未加载）回退显示 value 本身，避免输入框无故清空
+    const inputValue = searchable && opened ? searchValue : selectedOption?.label ?? selectedValue ?? ''
 
     const getStyles = useStyles<SelectFactory>({
         name: 'Select',
@@ -455,7 +463,7 @@ function renderOptions(
     data: ComboboxOptionData[],
     selectedValue: string | null,
     checkIconPosition: 'left' | 'right' | undefined,
-    getStyles: (selector: 'option' | 'group') => { className?: string; style?: React.CSSProperties },
+    getStyles: (selector: 'option' | 'group' | 'groupLabel') => { className?: string; style?: React.CSSProperties },
     renderOption?: SelectRenderOption
 ) {
     const result: React.ReactNode[] = []
@@ -464,6 +472,7 @@ function renderOptions(
     // 同一渲染内所有选项共享的样式与图标，避免循环内重复创建
     const optionStyles = getStyles('option')
     const groupStyles = getStyles('group')
+    const groupLabelStyles = getStyles('groupLabel')
     const check = <SelectCheckIcon className={classes.check} />
     const contentStyle: React.CSSProperties = {
         display: 'flex',
@@ -515,6 +524,10 @@ function renderOptions(
                     label={group}
                     className={groupStyles.className}
                     style={groupStyles.style}
+                    groupLabelProps={{
+                        className: groupLabelStyles.className,
+                        style: groupLabelStyles.style
+                    }}
                 >
                     {groupItems.map((groupItem, groupItemIndex) =>
                         renderSingleOption(groupItem, groupItemIndex)

@@ -11,6 +11,8 @@ import {
     useProps,
     useStyles
 } from '../../core'
+import { ComboboxItemGroup } from '../ComboboxPopover'
+import { __BaseInputProps } from '../Input'
 import { InputBase } from '../InputBase'
 import { InputWrapper } from '../Input'
 import classes from './NativeSelect.module.css'
@@ -27,10 +29,11 @@ export interface NativeSelectDataItem {
     disabled?: boolean
 }
 
-export type NativeSelectData = (string | NativeSelectDataItem)[]
+export type NativeSelectData = (string | NativeSelectDataItem | ComboboxItemGroup)[]
 
 export interface NativeSelectProps
     extends BoxProps,
+        __BaseInputProps,
         ElementProps<'select', 'size'>,
         StylesApiProps<NativeSelectFactory> {
     /** Controls input and chevron size @default 'sm' */
@@ -153,6 +156,27 @@ export const NativeSelect = factory<NativeSelectFactory>((_props, ref) => {
     })
 
     const options = data?.map((item, index) => {
+        // 分组数据渲染为原生 optgroup，条目支持字符串简写
+        if (item && typeof item === 'object' && 'items' in item) {
+            return (
+                <optgroup key={`group-${item.group}-${index}`} label={item.group}>
+                    {item.items.map((child, childIndex) => {
+                        const normalized =
+                            typeof child === 'string' ? { value: child, label: child } : child
+                        return (
+                            <option
+                                key={normalized.value || childIndex}
+                                value={normalized.value}
+                                disabled={normalized.disabled}
+                            >
+                                {normalized.label || normalized.value}
+                            </option>
+                        )
+                    })}
+                </optgroup>
+            )
+        }
+
         if (typeof item === 'string') {
             return (
                 <option key={`${item}-${index}`} value={item}>

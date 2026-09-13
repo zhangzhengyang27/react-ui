@@ -12,11 +12,13 @@ export default defineConfig({
             exclude: ['src/**/*.test.ts', 'src/**/*.test.tsx', 'src/test-setup.ts'],
             rollupTypes: false,
             // Workaround: vite-plugin-dts adds an extra underscore to re-exported
-            // identifiers starting with '__' (e.g. __ColorPickerProps → ___ColorPickerProps).
-            // This hook normalizes them back before writing.
+            // identifiers starting with '__' (e.g. __BaseInputProps → ___BaseInputProps),
+            // and only rewrites the import/export side while type references keep the
+            // original double underscore, which breaks the emitted .d.ts.
+            // Normalize every triple-underscore identifier back to double underscore.
             beforeWriteFile: (filePath, content) => ({
                 filePath,
-                content: content.replace(/___ColorPickerProps/g, '__ColorPickerProps')
+                content: content.replace(/___([A-Za-z])/g, '__$1')
             })
         })
     ],

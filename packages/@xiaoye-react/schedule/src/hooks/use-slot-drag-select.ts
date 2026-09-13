@@ -85,13 +85,21 @@ export function useSlotDragSelect({ enabled = true, onDragEnd }: UseSlotDragSele
       setSelectedRange(null);
     };
 
+    // 触摸手势被系统接管后不会再来 pointerup：只清理选区不提交 onDragEnd
+    const handlePointerCancel = () => {
+      dragRef.current = null;
+      setSelectedRange(null);
+    };
+
     document.addEventListener('pointermove', handlePointerMove);
     document.addEventListener('pointerup', handlePointerUp);
+    document.addEventListener('pointercancel', handlePointerCancel);
 
     return () => {
       document.body.style.userSelect = savedUserSelect;
       document.removeEventListener('pointermove', handlePointerMove);
       document.removeEventListener('pointerup', handlePointerUp);
+      document.removeEventListener('pointercancel', handlePointerCancel);
     };
   }, [isDragging]);
 

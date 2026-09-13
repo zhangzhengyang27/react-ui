@@ -203,13 +203,22 @@ export function useEventResize({
       });
     };
 
+    // 触摸手势被系统接管（来电/滚动等）后不会再来 pointerup：
+    // pointercancel 只清理拖拽态不提交 resize，避免 isResizing 与 body userSelect 永久卡死
+    const handlePointerCancel = () => {
+      resizeRef.current = null;
+      setResizeState(null);
+    };
+
     document.addEventListener('pointermove', handlePointerMove);
     document.addEventListener('pointerup', handlePointerUp);
+    document.addEventListener('pointercancel', handlePointerCancel);
 
     return () => {
       document.body.style.userSelect = savedUserSelect;
       document.removeEventListener('pointermove', handlePointerMove);
       document.removeEventListener('pointerup', handlePointerUp);
+      document.removeEventListener('pointercancel', handlePointerCancel);
     };
   }, [isResizing]);
 

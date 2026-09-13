@@ -181,6 +181,12 @@ export const ScheduleEvent = factory<ScheduleEventFactory>((_props) => {
   };
 
   const handleDragEnd = () => {
+    // drop 路径会先经 DragContext 清理拖拽态，随后的原生 dragend 事件到达时
+    // 本次手势已结束：跳过，避免 onEventDragEnd / ctx.onDragEnd 重复触发
+    if (!isDragging && ctx.draggedEventId !== event.id) {
+      return;
+    }
+    dragEndHandledRef.current = true;
     onEventDragEnd?.();
     ctx.onDragEnd?.();
   };
@@ -190,15 +196,26 @@ export const ScheduleEvent = factory<ScheduleEventFactory>((_props) => {
 
   const dragEndRef = useRef(ctx.onDragEnd);
   dragEndRef.current = ctx.onDragEnd;
+  const dragEndHandledRef = useRef(false);
+  const isDraggingRef = useRef(false);
 
   useEffect(() => {
+    isDraggingRef.current = isCurrentlyDragging;
     if (isCurrentlyDragging) {
-      return () => {
-        dragEndRef.current?.();
-      };
+      dragEndHandledRef.current = false;
     }
-    return undefined;
   }, [isCurrentlyDragging]);
+
+  // 拖拽进行中事件被卸载（删除/过滤出视图）时 DragContext 收不到 dragend，
+  // 这里兜底通知一次；正常结束（dragend/drop）路径已在 handleDragEnd 或
+  // hook 的 handleDrop 中调用过，由 isDraggingRef/handled 标记跳过
+  useEffect(() => {
+    return () => {
+      if (isDraggingRef.current && !dragEndHandledRef.current) {
+        dragEndRef.current?.();
+      }
+    };
+  }, []);
 
   const showResizeHandles = withResize && mode !== 'static';
 

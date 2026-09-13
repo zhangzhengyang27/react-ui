@@ -213,6 +213,8 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
                     value={selectedValue}
                     placeholder={placeholder}
                     disabled={disabled}
+                    // 与 Select/MultiSelect 对齐：错误时输入框本体获得错误样式与 aria-invalid
+                    invalid={!!error}
                     role="combobox"
                     size={size}
                     rightSection={rightSection}

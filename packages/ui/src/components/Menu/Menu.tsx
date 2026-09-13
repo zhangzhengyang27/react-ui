@@ -213,15 +213,22 @@ export const Menu = factory<MenuFactory>((_props, _ref) => {
     })
     const [openedViaClick, setOpenedViaClick] = useState(false)
 
+    // 悬停延迟定时器的回调捕获的是设置时刻的 open/close，其中 _opened 是旧值：
+    // closeDelay 窗口内菜单已被 Escape 等途径关闭时，定时器到期会用旧 _opened=true
+    // 再触发一次 onClose。open/close 内改读 ref 拿最新状态，保证回调只在真实状态
+    // 跃迁时触发
+    const openedRef = useRef(_opened)
+    openedRef.current = _opened
+
     const close = () => {
         setOpened(false)
         setOpenedViaClick(false)
-        _opened && onClose?.()
+        openedRef.current && onClose?.()
     }
 
     const open = () => {
         setOpened(true)
-        !_opened && onOpen?.()
+        !openedRef.current && onOpen?.()
     }
 
     const toggleDropdown = () => {

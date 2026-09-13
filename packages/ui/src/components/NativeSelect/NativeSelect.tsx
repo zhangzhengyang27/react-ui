@@ -199,6 +199,8 @@ export const NativeSelect = factory<NativeSelectFactory>((_props, ref) => {
                 id={inputId}
                 ref={ref as any}
                 disabled={disabled}
+                // 与 Select/MultiSelect 对齐：错误时 select 本体获得错误样式与 aria-invalid
+                invalid={!!error}
                 value={selectedValue ?? ''}
                 onChange={handleChange as any}
                 size={size}

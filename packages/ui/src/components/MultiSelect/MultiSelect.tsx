@@ -285,6 +285,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
         onFocus: consumerOnFocus,
         onBlur: consumerOnBlur,
         onMouseDown: consumerOnMouseDown,
+        onKeyDown: consumerOnKeyDown,
         ...others
     } = props
 
@@ -535,6 +536,8 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
                             // 胶囊键盘重排（Alt+方向键）：Combobox 捕获阶段只处理 Enter/方向键上下，
                             // ArrowLeft 等按键冒泡到此处处理
                             pillsReorder.handleInputKeyDown(event)
+                            // 不吞掉消费者传入的 onKeyDown（与 focus/mouse 处理器同模式）
+                            consumerOnKeyDown?.(event)
                         }}
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                             if (searchable) {

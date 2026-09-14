@@ -33,6 +33,13 @@
   background: none;
 }
 
+/* prism 默认主题残留的 text-shadow: 0 1px white（由依赖带入的 prism.css 设置）：
+   浅色主题下不可见，深色主题下每个字下方出现白色重影。提一级特异性确保覆盖 */
+:global(body pre[class*='language-']),
+:global(body code[class*='language-']) {
+  text-shadow: none;
+}
+
 :global(code[class*='css']) {
   direction: ltr;
 }

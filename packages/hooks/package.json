@@ -1,6 +1,6 @@
 {
     "name": "@xiaoye-react/hooks",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "description": "小叶的 React Hooks 库，用于 主要用于 UI 包使用",
     "type": "module",
     "license": "MIT",
@@ -37,7 +37,8 @@
         "build": "vite build",
         "test": "vitest run",
         "test:watch": "vitest",
-        "release": "npm publish"
+        "release": "npm publish",
+        "prepublishOnly": "npm run build"
     },
     "devDependencies": {
         "@testing-library/jest-dom": "^6.4.6",

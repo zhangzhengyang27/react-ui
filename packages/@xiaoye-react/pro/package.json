@@ -1,6 +1,6 @@
 {
     "name": "@xiaoye-react/pro",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Admin-oriented page patterns (PageContainer, SearchFilter, ProTable) built on @xiaoye-react/ui",
     "license": "MIT",
     "keywords": [
@@ -58,6 +58,7 @@
         "build": "vite build",
         "test": "vitest run",
         "test:watch": "vitest",
-        "release": "npm publish"
+        "release": "npm publish",
+        "prepublishOnly": "npm run build"
     }
 }

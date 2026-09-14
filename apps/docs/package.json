@@ -45,6 +45,7 @@
         "@xiaoye-react/meta": "workspace:*",
         "@xiaoye-react/modals": "workspace:*",
         "@xiaoye-react/notifications": "workspace:*",
+        "@xiaoye-react/pro": "workspace:*",
         "@xiaoye-react/spotlight": "workspace:*",
         "@xiaoye-react/ui": "workspace:*",
         "chalk": "^5.6.2",

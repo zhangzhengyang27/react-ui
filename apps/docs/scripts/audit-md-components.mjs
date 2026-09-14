@@ -1,4 +1,5 @@
-// 扫描 md 正文（排除代码围栏——本站 codeBlockMode: passive，围栏内仅展示）
+// 扫描 md 正文（排除代码围栏与行内代码——本站 codeBlockMode: passive，围栏内仅展示；
+// 行内代码里的泛型如 `DataTableColumn<T>[]` 不是 JSX，一并排除）
 // 中使用的 JSX 大写组件是否为 dumi builtin；未导入的裸标识符会在运行时抛
 // ReferenceError 导致整页空白（app-shell 页面事故根因）
 import fs from 'node:fs';
@@ -25,7 +26,10 @@ let bad = 0;
 for (const dir of ['components', 'docs']) {
   for (const file of walk(path.join(docsRoot, dir))) {
     const s = fs.readFileSync(file, 'utf8');
-    const body = s.replace(/^---[\s\S]*?---/, '').replace(/^```[\s\S]*?^```/gm, '');
+    const body = s
+        .replace(/^---[\s\S]*?---/, '')
+        .replace(/^(?:> ?)?```[\s\S]*?^(?:> ?)?```/gm, '')
+        .replace(/`[^`\n]*`/g, '');
     const used = new Set();
     for (const m of body.matchAll(/<([A-Z][A-Za-z0-9]*)[\s/>]/g)) used.add(m[1]);
     const missing = [...used].filter(u => !allowed.has(u));

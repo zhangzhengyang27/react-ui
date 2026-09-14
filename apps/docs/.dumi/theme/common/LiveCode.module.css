@@ -17,7 +17,7 @@
 .editor :global(.dumi-default-source-code-scroll-content > pre) {
   font-size: var(--ui-font-size-md);
   line-height: 2;
-  font-family: 'Lucida Console', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: var(--ui-font-family-monospace);
 }
 
 /* disable dumi default copy button */

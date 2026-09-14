@@ -9,7 +9,7 @@
   padding: var(--ui-spacing-md) var(--ui-spacing-xl);
   color: var(--ui-color-text);
   font-size: var(--ui-font-size-sm);
-  font-family: 'Lucida Console', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: var(--ui-font-family-monospace);
   line-height: 2;
   white-space: pre;
   background: var(--ui-color-default);
@@ -20,7 +20,7 @@
 :global(code[class*='language-']),
 :global(pre[class*='language-']) {
   color: var(--ui-color-text);
-  font-family: 'Lucida Console', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: var(--ui-font-family-monospace);
   line-height: var(--ui-line-height);
   direction: ltr;
   white-space: pre;

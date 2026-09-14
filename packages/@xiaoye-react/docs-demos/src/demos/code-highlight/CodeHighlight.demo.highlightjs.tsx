@@ -6,7 +6,7 @@ import {
   CodeHighlight,
   CodeHighlightAdapterProvider,
   createHighlightJsAdapter,
-} from '@xiaoye-react/code-highlight';
+} from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 hljs.registerLanguage('typescript', tsLang);
@@ -27,7 +27,7 @@ export function filterProps<T extends Record<string, any>>(props: T) {
 `;
 
 const code = `
-import { CodeHighlight } from '@xiaoye-react/code-highlight';
+import { CodeHighlight } from '@xiaoye-react/ui';
 
 const exampleCode = \`${exampleCode}\`;
 

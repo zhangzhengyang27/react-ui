@@ -11,7 +11,7 @@ group:
 
 ## 安装
 
-> **⚠️ 尚未发布到 npm**：该组件位于仓库内的 `@xiaoye-react/dropzone` 包中，此包还没有发布到 npm。组件源码随本仓库提供，发布后此处会更新安装方式。
+<InstallScript packages="@xiaoye-react/ui react-dropzone"></InstallScript>
 
 
 安装完成后，在应用根目录导入包样式：
@@ -73,7 +73,7 @@ import '@xiaoye-react/dropzone/styles.css';
 你也可以通过向 `accept` 属性提供 mime 类型数组来指定文件类型：
 
 
-为了节省研究时间，你可以使用 `@xiaoye-react/dropzone` 导出的 `MIME_TYPES` 变量：
+为了节省研究时间，你可以使用 `@xiaoye-react/ui` 导出的 `MIME_TYPES` 变量：
 
 
 `MIME_TYPES` 包含以下数据：
@@ -85,7 +85,7 @@ import '@xiaoye-react/dropzone/styles.css';
 <DataTable head={['变量', 'Mime 类型']} data={[ ['IMAGE_MIME_TYPE', IMAGE_MIME_TYPE.join(', ')], ['PDF_MIME_TYPE', PDF_MIME_TYPE.join(', ')], ['MS_WORD_MIME_TYPE', MS_WORD_MIME_TYPE.join(', ')], ['MS_EXCEL_MIME_TYPE', MS_EXCEL_MIME_TYPE.join(', ')], ['MS_POWERPOINT_MIME_TYPE', MS_POWERPOINT_MIME_TYPE.join(', ')], ]}></DataTable>
 
 ```tsx
-import { Dropzone } from '@xiaoye-react/dropzone';
+import { Dropzone } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -103,7 +103,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Dropzone } from '@xiaoye-react/dropzone';
+import { Dropzone } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -123,7 +123,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Dropzone, MIME_TYPES } from '@xiaoye-react/dropzone';
+import { Dropzone, MIME_TYPES } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -143,7 +143,7 @@ function Demo() {
 ```
 
 ```tsx
-import { Dropzone, IMAGE_MIME_TYPE } from '@xiaoye-react/dropzone';
+import { Dropzone, IMAGE_MIME_TYPE } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -173,7 +173,7 @@ function Demo() {
 
 ```tsx
 import { useEffect, useRef } from 'react';
-import { Dropzone } from '@xiaoye-react/dropzone';
+import { Dropzone } from '@xiaoye-react/ui';
 
 function Demo() {
   const dropzoneRef = useRef<HTMLDivElement>(null);

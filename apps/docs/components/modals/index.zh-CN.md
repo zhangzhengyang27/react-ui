@@ -11,7 +11,7 @@ group:
 
 ## 安装
 
-> **⚠️ 尚未发布到 npm**：该组件位于仓库内的 `@xiaoye-react/modals` 包中，此包还没有发布到 npm。组件源码随本仓库提供，发布后此处会更新安装方式。
+<InstallScript packages="@xiaoye-react/ui"></InstallScript>
 
 
 ## 设置 ModalsProvider
@@ -20,7 +20,7 @@ group:
 
 ```tsx
 import { UIProvider } from '@xiaoye-react/ui';
-import { ModalsProvider } from '@xiaoye-react/modals';
+import { ModalsProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -55,7 +55,7 @@ function Demo() {
 要为确认弹窗设置共享标签，请在 `ModalsProvider` 上设置 `labels`：
 
 ```tsx
-import { ModalsProvider } from '@xiaoye-react/modals';
+import { ModalsProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -79,7 +79,7 @@ function Demo() {
 
 ```tsx
 import { Button, Text } from '@xiaoye-react/ui';
-import { ModalsProvider } from '@xiaoye-react/modals';
+import { ModalsProvider } from '@xiaoye-react/ui';
 
 const TestModal = ({
   context,
@@ -146,7 +146,7 @@ function Demo() {
 ```
 
 ```tsx
-import { closeModal, openContextModal } from '@xiaoye-react/modals';
+import { closeModal, openContextModal } from '@xiaoye-react/ui';
 
 openContextModal({
   modal: 'demonstration',

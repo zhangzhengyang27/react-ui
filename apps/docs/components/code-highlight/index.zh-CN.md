@@ -10,7 +10,7 @@ group:
 
 ## 安装
 
-> **⚠️ 尚未发布到 npm**：该组件位于仓库内的 `@xiaoye-react/code-highlight` 包中，此包还没有发布到 npm。组件源码随本仓库提供，发布后此处会更新安装方式。
+<InstallScript packages="@xiaoye-react/ui shiki"></InstallScript>
 
 
 安装完成后，在应用根目录导入包样式：
@@ -54,7 +54,7 @@ import '@xiaoye-react/code-highlight/styles.css';
 
 ```tsx
 import { UIProvider } from '@xiaoye-react/ui';
-import { CodeHighlightAdapterProvider, createShikiAdapter } from '@xiaoye-react/code-highlight';
+import { CodeHighlightAdapterProvider, createShikiAdapter } from '@xiaoye-react/ui';
 
 // Shiki 需要异步代码来加载高亮器
 async function loadShiki() {
@@ -96,7 +96,7 @@ function App() {
 
 ```tsx
 import { UIProvider } from '@xiaoye-react/ui';
-import { CodeHighlightAdapterProvider, createHighlightJsAdapter } from '@xiaoye-react/code-highlight';
+import { CodeHighlightAdapterProvider, createHighlightJsAdapter } from '@xiaoye-react/ui';
 import hljs from 'highlight.js/lib/core';
 import tsLang from 'highlight.js/lib/languages/typescript';
 
@@ -129,7 +129,7 @@ function App() {
 创建带有自定义主题和逻辑的自定义 shiki 适配器示例：
 
 ```tsx
-import { type CodeHighlightAdapter, stripShikiCodeBlocks } from '@xiaoye-react/code-highlight';
+import { type CodeHighlightAdapter, stripShikiCodeBlocks } from '@xiaoye-react/ui';
 
 // Shiki transformers 可用于高亮 diff 和其他标记
 // https://shiki.style/packages/transformers

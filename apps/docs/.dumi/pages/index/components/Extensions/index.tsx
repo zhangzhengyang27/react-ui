@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { FiCheck, FiSearch } from '../../../../theme/icons'
 import { useLocation, useNavigate } from 'dumi'
-import { Spotlight, spotlight } from '@xiaoye-react/spotlight'
+import { Spotlight, spotlight } from '@xiaoye-react/ui'
 import { Button, Group, SimpleGrid, Stack, Text, Title } from '@xiaoye-react/ui'
 import { notifications } from '@xiaoye-react/notifications'
 import Link from '../../../../theme/common/Link'
@@ -59,13 +59,13 @@ const officialExtensions = [
         href: '/docs/x/tiptap'
     },
     {
-        name: '@xiaoye-react/dropzone',
+        name: '@xiaoye-react/ui',
         label: 'Dropzone',
         description: '基于 react-dropzone 的拖拽文件上传组件',
         href: '/docs/x/dropzone'
     },
     {
-        name: '@xiaoye-react/modals',
+        name: '@xiaoye-react/ui',
         label: '弹窗管理器',
         description: '以声明式 API 管理模态框',
         href: '/docs/x/modals'

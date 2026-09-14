@@ -11,7 +11,7 @@ group:
 
 ## 安装
 
-> **⚠️ 尚未发布到 npm**：该组件位于仓库内的 `@xiaoye-react/nprogress` 包中，此包还没有发布到 npm。组件源码随本仓库提供，发布后此处会更新安装方式。
+<InstallScript packages="@xiaoye-react/ui"></InstallScript>
 
 
 安装完成后，在应用根目录导入包样式：
@@ -28,7 +28,7 @@ import '@xiaoye-react/nprogress/styles.css';
 
 ```tsx
 import { UIProvider } from '@xiaoye-react/ui';
-import { NavigationProgress } from '@xiaoye-react/nprogress';
+import { NavigationProgress } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

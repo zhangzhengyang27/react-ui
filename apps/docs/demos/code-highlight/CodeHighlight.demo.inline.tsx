@@ -1,10 +1,10 @@
-import { InlineCodeHighlight } from '@xiaoye-react/code-highlight';
+import { InlineCodeHighlight } from '@xiaoye-react/ui';
 import { Text } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { Text } from '@xiaoye-react/ui';
-import { InlineCodeHighlight } from '@xiaoye-react/code-highlight';
+import { InlineCodeHighlight } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

@@ -1,11 +1,11 @@
 import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/csr/MagnifyingGlass'
-import { SpotlightActionData, SpotlightActionGroupData } from '@xiaoye-react/spotlight'
+import { SpotlightActionData, SpotlightActionGroupData } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { SpotlightDemoBase } from './_demo-base'
 
 const code = `
 import { Button } from '@xiaoye-react/ui';
-import { Spotlight, SpotlightActionData, SpotlightActionGroupData, spotlight } from '@xiaoye-react/spotlight';
+import { Spotlight, SpotlightActionData, SpotlightActionGroupData, spotlight } from '@xiaoye-react/ui';
 import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/csr/MagnifyingGlass';
 const actions: (SpotlightActionGroupData | SpotlightActionData)[] = [
   {

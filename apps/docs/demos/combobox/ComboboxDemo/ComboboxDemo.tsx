@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import cx from 'clsx';
-import { CodeHighlightTabs } from '@xiaoye-react/code-highlight';
+import { CodeHighlightTabs } from '@xiaoye-react/ui';
 import { Badge, RemoveScroll, Text } from '@xiaoye-react/ui';
 import { getCodeFileIcon } from '@xiaoye-react/dev-icons';
 import { COMBOBOX_EXAMPLES_DATA } from '../combobox-examples-data';

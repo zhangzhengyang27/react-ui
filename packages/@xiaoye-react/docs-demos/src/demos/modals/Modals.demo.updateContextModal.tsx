@@ -1,10 +1,10 @@
 import { Button } from '@xiaoye-react/ui'
-import { modals } from '@xiaoye-react/modals'
+import { modals } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
 import { Button, Text, Stack, Center, Loader } from '@xiaoye-react/ui';
-import { modals, ContextModalProps, ModalsProvider } from '@xiaoye-react/modals';
+import { modals, ContextModalProps, ModalsProvider } from '@xiaoye-react/ui';
 import { CheckIcon } from '@phosphor-icons/react/dist/csr/Check';
 const TestModal = ({
   context,

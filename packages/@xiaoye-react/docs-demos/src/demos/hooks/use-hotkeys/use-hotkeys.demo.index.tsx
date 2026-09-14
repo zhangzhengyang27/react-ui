@@ -1,6 +1,6 @@
 import { Box, Group, Kbd } from '@xiaoye-react/ui';
 import { useHotkeys } from '@xiaoye-react/hooks';
-import { modals } from '@xiaoye-react/modals';
+import { modals } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const shortcutCode = `
@@ -27,7 +27,7 @@ export function Shortcut({ symbol, description }: { symbol: string; description:
 
 const code = `
 import { useHotkeys } from '@xiaoye-react/hooks';
-import { spotlight } from '@xiaoye-react/spotlight';
+import { spotlight } from '@xiaoye-react/ui';
 import { useUIColorScheme } from '@xiaoye-react/ui';
 import { Shortcut } from './Shortcut';
 

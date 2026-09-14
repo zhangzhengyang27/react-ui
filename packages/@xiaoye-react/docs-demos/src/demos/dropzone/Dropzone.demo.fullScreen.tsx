@@ -1,7 +1,7 @@
 /* oxlint-disable no-console */
 import { useState } from 'react'
 import { Button, Group } from '@xiaoye-react/ui'
-import { Dropzone, IMAGE_MIME_TYPE } from '@xiaoye-react/dropzone'
+import { Dropzone, IMAGE_MIME_TYPE } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { DropzoneDemoChildren } from './_base'
 
@@ -11,7 +11,7 @@ import { Group, Text, Button } from '@xiaoye-react/ui';
 import { UploadSimpleIcon } from '@phosphor-icons/react/dist/csr/UploadSimple';
 import { ImageIcon } from '@phosphor-icons/react/dist/csr/Image';
 import { XIcon } from '@phosphor-icons/react/dist/csr/X';
-import { Dropzone, IMAGE_MIME_TYPE } from '@xiaoye-react/dropzone';
+import { Dropzone, IMAGE_MIME_TYPE } from '@xiaoye-react/ui';
 
 function Demo() {
   const [active, setActive] = useState(false);

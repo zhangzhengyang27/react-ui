@@ -5,7 +5,7 @@ import { GaugeIcon } from '@phosphor-icons/react/dist/csr/Gauge'
 import { HouseIcon } from '@phosphor-icons/react/dist/csr/House'
 import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/csr/MagnifyingGlass'
 import Fuse from 'fuse.js'
-import { SpotlightActionData, SpotlightFilterFunction } from '@xiaoye-react/spotlight'
+import { SpotlightActionData, SpotlightFilterFunction } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { SpotlightDemoBase } from './_demo-base'
 
@@ -89,7 +89,7 @@ import {
   SpotlightActionData,
   SpotlightFilterFunction,
   spotlight,
-} from '@xiaoye-react/spotlight';
+} from '@xiaoye-react/ui';
 import { HouseIcon } from '@phosphor-icons/react/dist/csr/House';
 import { GaugeIcon } from '@phosphor-icons/react/dist/csr/Gauge';
 import { FileTextIcon } from '@phosphor-icons/react/dist/csr/FileText';

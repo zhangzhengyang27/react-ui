@@ -2,7 +2,7 @@ import { UIDemo } from '@xiaoye-react/demo';
 import { BaseDemo } from './_base';
 
 const code = `
-import { Dropzone } from '@xiaoye-react/dropzone';
+import { Dropzone } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

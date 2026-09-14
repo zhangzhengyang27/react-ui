@@ -4,7 +4,7 @@ import { FileTextIcon } from '@phosphor-icons/react/dist/csr/FileText'
 import { GaugeIcon } from '@phosphor-icons/react/dist/csr/Gauge'
 import { HouseIcon } from '@phosphor-icons/react/dist/csr/House'
 import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/csr/MagnifyingGlass'
-import { SpotlightActionData } from '@xiaoye-react/spotlight'
+import { SpotlightActionData } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { SpotlightDemoBase } from './_demo-base'
 
@@ -34,7 +34,7 @@ const actions: SpotlightActionData[] = [
 
 const code = `
 import { Button } from '@xiaoye-react/ui';
-import { Spotlight, SpotlightActionData, spotlight } from '@xiaoye-react/spotlight';
+import { Spotlight, SpotlightActionData, spotlight } from '@xiaoye-react/ui';
 import { HouseIcon } from '@phosphor-icons/react/dist/csr/House';
 import { GaugeIcon } from '@phosphor-icons/react/dist/csr/Gauge';
 import { FileTextIcon } from '@phosphor-icons/react/dist/csr/FileText';

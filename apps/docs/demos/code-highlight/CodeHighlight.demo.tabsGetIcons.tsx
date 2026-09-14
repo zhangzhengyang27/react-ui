@@ -1,4 +1,4 @@
-import { CodeHighlightTabs } from '@xiaoye-react/code-highlight';
+import { CodeHighlightTabs } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { CssIcon, TypeScriptIcon } from '@xiaoye-react/dev-icons';
 
@@ -16,7 +16,7 @@ const cssCode = `
 `;
 
 const code = `
-import { CodeHighlightTabs } from '@xiaoye-react/code-highlight';
+import { CodeHighlightTabs } from '@xiaoye-react/ui';
 import { TypeScriptIcon, CssIcon } from '@xiaoye-react/dev-icons';
 
 const tsxCode = \`${tsxCode}\`;

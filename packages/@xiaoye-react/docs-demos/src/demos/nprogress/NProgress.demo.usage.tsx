@@ -1,10 +1,10 @@
 import { Button, Group } from '@xiaoye-react/ui';
-import { NavigationProgress, nprogress } from '@xiaoye-react/nprogress';
+import { NavigationProgress, nprogress } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { Button, Group } from '@xiaoye-react/ui';
-import { nprogress, NavigationProgress } from '@xiaoye-react/nprogress';
+import { nprogress, NavigationProgress } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

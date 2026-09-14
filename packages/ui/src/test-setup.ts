@@ -21,3 +21,43 @@ if (typeof window !== 'undefined' && !Element.prototype.scrollTo) {
         }
     } as any
 }
+
+// —— 合并扩展包测试后补充的共享环境（与 packages/@xiaoye-react/tests/src/setup.ts 保持同构）——
+import { vi } from 'vitest'
+
+// 这批测试按 jest 全局编写（历史上从未接入 runner）：把 jest 别名到 vi
+;(globalThis as any).jest = vi
+
+// jsdom 未实现 IntersectionObserver：embla-carousel（Carousel）初始化时必需
+class IntersectionObserverMock {
+    root = null
+    rootMargin = ''
+    thresholds = []
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+    takeRecords() {
+        return []
+    }
+}
+
+if (typeof window !== 'undefined' && !window.IntersectionObserver) {
+    window.IntersectionObserver = IntersectionObserverMock as any
+}
+if (typeof globalThis !== 'undefined' && !(globalThis as any).IntersectionObserver) {
+    ;(globalThis as any).IntersectionObserver = IntersectionObserverMock
+}
+
+// jsdom 未实现 matchMedia：UIProvider 的 auto 色值、use-media-query 消费方会用到
+if (typeof window !== 'undefined' && !window.matchMedia) {
+    window.matchMedia = ((query: string) => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: () => {},
+        removeListener: () => {},
+        addEventListener: () => {},
+        removeEventListener: () => {},
+        dispatchEvent: () => false
+    })) as any
+}

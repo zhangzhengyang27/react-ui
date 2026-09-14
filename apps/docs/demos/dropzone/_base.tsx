@@ -4,7 +4,7 @@ import { ImageIcon } from '@phosphor-icons/react/dist/csr/Image'
 import { UploadSimpleIcon } from '@phosphor-icons/react/dist/csr/UploadSimple'
 import { XIcon } from '@phosphor-icons/react/dist/csr/X'
 import { Group, Text } from '@xiaoye-react/ui'
-import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from '@xiaoye-react/dropzone'
+import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from '@xiaoye-react/ui'
 
 export function DropzoneDemoChildren() {
     return (

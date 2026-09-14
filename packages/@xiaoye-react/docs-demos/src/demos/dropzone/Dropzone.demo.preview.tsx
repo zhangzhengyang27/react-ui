@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Image, SimpleGrid, Text } from '@xiaoye-react/ui';
-import { Dropzone, FileWithPath, IMAGE_MIME_TYPE } from '@xiaoye-react/dropzone';
+import { Dropzone, FileWithPath, IMAGE_MIME_TYPE } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { useState } from 'react';
 import { Text, Image, SimpleGrid } from '@xiaoye-react/ui';
-import { Dropzone, IMAGE_MIME_TYPE, FileWithPath } from '@xiaoye-react/dropzone';
+import { Dropzone, IMAGE_MIME_TYPE, FileWithPath } from '@xiaoye-react/ui';
 
 function Demo() {
   const [files, setFiles] = useState<FileWithPath[]>([]);

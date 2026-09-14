@@ -11,7 +11,7 @@ group:
 
 ## 安装
 
-> **⚠️ 尚未发布到 npm**：该组件位于仓库内的 `@xiaoye-react/spotlight` 包中，此包还没有发布到 npm。组件源码随本仓库提供，发布后此处会更新安装方式。
+<InstallScript packages="@xiaoye-react/ui"></InstallScript>
 
 
 安装完成后，在应用根目录导入包样式：
@@ -39,7 +39,7 @@ import '@xiaoye-react/spotlight/styles.css';
 如果你更喜欢这种语法，也可以直接从 `@xiaoye-react/ui` 包导入这些操作：
 
 ```tsx
-import { spotlight } from '@xiaoye-react/spotlight';
+import { spotlight } from '@xiaoye-react/ui';
 
 spotlight.open(); // -> 打开 spotlight
 spotlight.close(); // -> 关闭 spotlight
@@ -48,7 +48,7 @@ spotlight.toggle(); // -> 切换 spotlight 打开状态
 
 ```tsx
 import { Button } from '@xiaoye-react/ui';
-import { spotlight } from '@xiaoye-react/spotlight';
+import { spotlight } from '@xiaoye-react/ui';
 
 function Demo() {
   return <Button onClick={spotlight.open}>打开 spotlight</Button>;
@@ -56,7 +56,7 @@ function Demo() {
 ```
 
 ```tsx
-import { closeSpotlight, openSpotlight, toggleSpotlight } from '@xiaoye-react/spotlight';
+import { closeSpotlight, openSpotlight, toggleSpotlight } from '@xiaoye-react/ui';
 
 openSpotlight(); // 与 spotlight.open() 相同
 closeSpotlight(); // 与 spotlight.close() 相同
@@ -69,7 +69,7 @@ toggleSpotlight(); // 与 spotlight.toggle() 相同
 
 ```tsx
 import { Button } from '@xiaoye-react/ui';
-import { createSpotlight, Spotlight } from '@xiaoye-react/spotlight';
+import { createSpotlight, Spotlight } from '@xiaoye-react/ui';
 
 // 你可以在应用中的任何地方导入 `firstSpotlight` 和 `secondSpotlight`
 // 并使用 `open`、`close` 和 `toggle` 操作
@@ -99,7 +99,7 @@ function Demo() {
 `Spotlight` 使用 [use-hotkeys](/docs/hooks/use-hotkeys) hook 处理键盘快捷键。默认情况下，使用 `Ctrl + K` 和 `Cmd + K` 快捷键打开 spotlight；你可以通过 `shortcut` 属性更改：
 
 ```tsx
-import { Spotlight } from '@xiaoye-react/spotlight';
+import { Spotlight } from '@xiaoye-react/ui';
 
 function SingleShortcut() {
   return <Spotlight shortcut="mod + J" actions={[]} />;

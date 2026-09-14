@@ -1,10 +1,10 @@
 import { Button, TextInput } from '@xiaoye-react/ui';
-import { modals } from '@xiaoye-react/modals';
+import { modals } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { TextInput, Button } from '@xiaoye-react/ui';
-import { modals } from '@xiaoye-react/modals';
+import { modals } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

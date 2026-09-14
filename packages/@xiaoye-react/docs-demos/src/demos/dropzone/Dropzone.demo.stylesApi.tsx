@@ -1,5 +1,5 @@
 import { Text } from '@xiaoye-react/ui';
-import { Dropzone, IMAGE_MIME_TYPE } from '@xiaoye-react/dropzone';
+import { Dropzone, IMAGE_MIME_TYPE } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import classes from './Dropzone.demo.stylesApi.module.css';
 
@@ -27,7 +27,7 @@ const cssCode = `
 
 const code = `
 import { Text } from '@xiaoye-react/ui';
-import { Dropzone, IMAGE_MIME_TYPE } from '@xiaoye-react/dropzone';
+import { Dropzone, IMAGE_MIME_TYPE } from '@xiaoye-react/ui';
 import classes from './Demo.module.css';
 
 function Demo() {

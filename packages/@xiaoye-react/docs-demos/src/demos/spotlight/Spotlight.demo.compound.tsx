@@ -1,12 +1,12 @@
 import { useMemo, useState } from 'react'
 import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/csr/MagnifyingGlass'
 import { Button } from '@xiaoye-react/ui'
-import { createSpotlight, Spotlight } from '@xiaoye-react/spotlight'
+import { createSpotlight, Spotlight } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
 import { useState } from 'react';
-import { Spotlight, spotlight } from '@xiaoye-react/spotlight';
+import { Spotlight, spotlight } from '@xiaoye-react/ui';
 import { Button } from '@xiaoye-react/ui';
 import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/csr/MagnifyingGlass';
 const data = ['Home', 'About us', 'Contacts', 'Blog', 'Careers', 'Terms of service'];

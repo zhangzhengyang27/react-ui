@@ -1,4 +1,4 @@
-import { CodeHighlight } from '@xiaoye-react/code-highlight';
+import { CodeHighlight } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const exampleCode = `
@@ -17,7 +17,7 @@ export function filterProps<T extends Record<string, any>>(props: T) {
 `;
 
 const code = `
-import { CodeHighlight } from '@xiaoye-react/code-highlight';
+import { CodeHighlight } from '@xiaoye-react/ui';
 
 const exampleCode = \`${exampleCode}\`;
 

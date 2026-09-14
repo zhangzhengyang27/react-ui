@@ -15,7 +15,7 @@ const cssCode = `
 `;
 
 const code = `
-import { Dropzone } from '@xiaoye-react/dropzone';
+import { Dropzone } from '@xiaoye-react/ui';
 import classes from './Demo.module.css';
 
 function Demo() {

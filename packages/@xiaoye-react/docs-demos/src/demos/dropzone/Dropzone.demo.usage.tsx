@@ -6,7 +6,7 @@ import { Group, Text } from '@xiaoye-react/ui';
 import { UploadSimpleIcon } from '@phosphor-icons/react/dist/csr/UploadSimple';
 import { ImageIcon } from '@phosphor-icons/react/dist/csr/Image';
 import { XIcon } from '@phosphor-icons/react/dist/csr/X';
-import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from '@xiaoye-react/dropzone';
+import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from '@xiaoye-react/ui';
 
 export function BaseDemo(props: Partial<DropzoneProps>) {
   return (

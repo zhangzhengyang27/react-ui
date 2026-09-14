@@ -1,4 +1,4 @@
-import { CodeHighlight } from '@xiaoye-react/code-highlight';
+import { CodeHighlight } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const exampleCode = `
@@ -8,7 +8,7 @@ function Button() {
 `;
 
 const code = `
-import { CodeHighlight } from '@xiaoye-react/code-highlight';
+import { CodeHighlight } from '@xiaoye-react/ui';
 
 const exampleCode = \`${exampleCode}\`;
 

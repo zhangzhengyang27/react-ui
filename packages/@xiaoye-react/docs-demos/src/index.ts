@@ -235,7 +235,6 @@ export * as NprogressDemos from './demos/nprogress';
 export * as CodeHighlightDemos from './demos/code-highlight';
 export * as DropzoneDemos from './demos/dropzone';
 export * as ModalsDemos from './demos/modals';
-export * as TipTapDemos from './demos/tiptap';
 
 // Changelog demos
 export * as Changelog730Demos from './demos/changelog/7-3-0';

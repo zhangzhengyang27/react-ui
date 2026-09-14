@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { CodeHighlightTabs } from '@xiaoye-react/code-highlight';
+import { CodeHighlightTabs } from '@xiaoye-react/ui';
 import { getCodeFileIcon } from '@xiaoye-react/dev-icons';
 import { APP_SHELL_EXAMPLES_COMPONENTS } from '../examples';
 

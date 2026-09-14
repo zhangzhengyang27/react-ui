@@ -122,3 +122,8 @@ export * from './Typography'
 export * from './UnstyledButton'
 export * from './VisuallyHidden'
 export * from './Watermark'
+export * from './CodeHighlight';
+export * from './Dropzone';
+export * from './Modals';
+export * from './NavigationProgress';
+export * from './Spotlight';

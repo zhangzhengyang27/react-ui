@@ -1,4 +1,4 @@
-import { CodeHighlight } from '@xiaoye-react/code-highlight';
+import { CodeHighlight } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const exampleCode = `
@@ -26,7 +26,7 @@ const SelectItem = ({ image, label, description, ...others }: ItemProps) => (
 `;
 
 const code = `
-import { CodeHighlight } from '@xiaoye-react/code-highlight';
+import { CodeHighlight } from '@xiaoye-react/ui';
 
 const exampleCode = \`...\`;
 

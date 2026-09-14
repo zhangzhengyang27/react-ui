@@ -28,30 +28,17 @@ export const PACKAGES_DATA: PackageItem[] = [
   {
     package: '@xiaoye-react/notifications',
     description: '通知系统',
-    dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui', '@xiaoye-react/notifications'],
+    dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui'],
   },
   {
-    package: '@xiaoye-react/code-highlight',
+    package: '@xiaoye-react/ui',
     description: '使用主题颜色与样式的代码高亮',
-    dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui', '@xiaoye-react/code-highlight'],
+    dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui'],
   },
   {
-    package: '@xiaoye-react/tiptap',
-    description: '基于 Tiptap 的富文本编辑器',
-    dependencies: [
-      '@xiaoye-react/hooks',
-      '@xiaoye-react/ui',
-      '@xiaoye-react/tiptap',
-      '@tiptap/pm',
-      '@tiptap/react',
-      '@tiptap/extension-link',
-      '@tiptap/starter-kit',
-    ],
-  },
-  {
-    package: '@xiaoye-react/dropzone',
+    package: '@xiaoye-react/ui',
     description: '支持拖拽上传的文件捕获',
-    dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui', '@xiaoye-react/dropzone'],
+    dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui'],
   },
   {
     package: '@xiaoye-react/carousel',
@@ -65,18 +52,18 @@ export const PACKAGES_DATA: PackageItem[] = [
     ],
   },
   {
-    package: '@xiaoye-react/spotlight',
+    package: '@xiaoye-react/ui',
     description: '覆盖式命令中心',
-    dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui', '@xiaoye-react/spotlight'],
+    dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui'],
   },
   {
-    package: '@xiaoye-react/modals',
+    package: '@xiaoye-react/ui',
     description: '集中式模态框管理器',
-    dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui', '@xiaoye-react/modals'],
+    dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui'],
   },
   {
-    package: '@xiaoye-react/nprogress',
+    package: '@xiaoye-react/ui',
     description: '导航进度条',
-    dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui', '@xiaoye-react/nprogress'],
+    dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui'],
   },
 ];

@@ -1,6 +1,6 @@
 import { ChatCircleIcon } from '@phosphor-icons/react/dist/csr/ChatCircle'
 import { CodesandboxLogoIcon } from '@phosphor-icons/react/dist/csr/CodesandboxLogo'
-import { CodeHighlight, CodeHighlightControl } from '@xiaoye-react/code-highlight'
+import { CodeHighlight, CodeHighlightControl } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 
 const exampleCode = `
@@ -12,7 +12,7 @@ function greet() {
 const code = `
 import { CodesandboxLogoIcon } from '@phosphor-icons/react/dist/csr/CodesandboxLogo';
 import { ChatCircleIcon } from '@phosphor-icons/react/dist/csr/ChatCircle';
-import { CodeHighlight, CodeHighlightControl } from '@xiaoye-react/code-highlight';
+import { CodeHighlight, CodeHighlightControl } from '@xiaoye-react/ui';
 
 const exampleCode = \`${exampleCode}\`;
 

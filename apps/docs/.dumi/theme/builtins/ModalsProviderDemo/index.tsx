@@ -1,7 +1,7 @@
 import React from 'react'
 import { FiCheck } from '../../icons'
 import { Button, Center, Loader, Stack, Text } from '@xiaoye-react/ui'
-import { ContextModalProps, ModalsProvider } from '@xiaoye-react/modals'
+import { ContextModalProps, ModalsProvider } from '@xiaoye-react/ui'
 
 interface ModalsProviderDemoProps {
     children: React.ReactNode

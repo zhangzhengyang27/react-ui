@@ -1,4 +1,4 @@
-import { CodeHighlightTabs } from '@xiaoye-react/code-highlight';
+import { CodeHighlightTabs } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const tsxCode = `
@@ -46,7 +46,7 @@ export const cssCode = \`${cssCode}\`;
 `;
 
 const code = `
-import { CodeHighlightTabs } from '@xiaoye-react/code-highlight';
+import { CodeHighlightTabs } from '@xiaoye-react/ui';
 import { tsxCode, cssCode } from './code';
 
 function Demo() {

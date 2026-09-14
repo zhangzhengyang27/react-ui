@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { Button, Group } from '@xiaoye-react/ui';
-import { createSpotlight, Spotlight, SpotlightProps } from '@xiaoye-react/spotlight';
+import { createSpotlight, Spotlight, SpotlightProps } from '@xiaoye-react/ui';
 
 export function SpotlightDemoBase(props: Partial<SpotlightProps>) {
   const [store, actions] = useMemo(createSpotlight, []);

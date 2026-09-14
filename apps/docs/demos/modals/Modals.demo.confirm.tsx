@@ -1,11 +1,11 @@
 import { Button, Text } from '@xiaoye-react/ui';
-import { modals } from '@xiaoye-react/modals';
+import { modals } from '@xiaoye-react/ui';
 import { notifications } from '@xiaoye-react/notifications';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { Button, Text } from '@xiaoye-react/ui';
-import { modals } from '@xiaoye-react/modals';
+import { modals } from '@xiaoye-react/ui';
 
 function Demo() {
   const openModal = () => modals.openConfirmModal({

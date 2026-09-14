@@ -210,9 +210,13 @@ export const ProTable = factory<ProTableFactory>((_props: ProTableProps<any>, re
 
     // 重置需同步回表格状态：只清 SearchFilter 内部 state 会让表格继续按旧筛选出数据
     const handleResetAndSearch = () => {
-        const cleared = search.defaultValues ?? defaultSearchValues ?? {}
-        search.onReset?.()
-        handleSearch(cleared)
+        // search 可为 false/undefined（关闭筛选区），此时该回调不会被触发
+        if (!search) {
+            return;
+        }
+        const cleared = search.defaultValues ?? defaultSearchValues ?? {};
+        search.onReset?.();
+        handleSearch(cleared);
     }
 
     return (

@@ -9,7 +9,7 @@ description: react-ui 队列 Hook 文档。
 ## 用法
 
 `use-queue` Hook 限制当前状态中的数据项数量，并将其余项放入队列。
-例如，在 [@xiaoye-react/ui](/docs/x/notifications/) 包中，当前显示的通知数量是有限的，
+例如，在 [@xiaoye-react/ui](/components/notifications/) 包中，当前显示的通知数量是有限的，
 其他新通知会被添加到队列中，一旦有可用空间就会显示。
 
 ```tsx

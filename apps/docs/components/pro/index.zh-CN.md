@@ -1,8 +1,11 @@
 ---
-category: X
+category: Components
 title: Pro
 subtitle: 管理端模式层
 description: react-ui Pro 管理端模式层组件。
+group:
+  title: Pro 模式
+  order: 8
 ---
 
 
@@ -77,19 +80,19 @@ import { ProTable } from '@xiaoye-react/pro';
 
 `PageContainer` + `ProTable` + `Modal` 组合出的标准列表页：新建/编辑共用一个弹窗表单，保存后通过 `actionsRef` 刷新列表。业务代码只需要列定义、请求函数与表单字段：
 
-<code src="./pro/demo/crud.tsx"></code>
+<code src="./demo/crud.tsx"></code>
 
 ### 列表 + Drawer 编辑
 
 字段较多或需要更大编辑空间时，用 `Drawer` 承载表单：操作列内联「编辑」入口，校验失败信息展示在对应字段下方：
 
-<code src="./pro/demo/drawer-edit.tsx"></code>
+<code src="./demo/drawer-edit.tsx"></code>
 
 ### 主从详情
 
 左表右详情：点击列表行（`dataTableProps.onRowClick`）联动右侧 `Descriptions` 展示完整信息，适合「列表扫一眼、详情看仔细」的审阅类页面：
 
-<code src="./pro/demo/master-detail.tsx"></code>
+<code src="./demo/master-detail.tsx"></code>
 
 ## API
 

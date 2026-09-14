@@ -1,14 +1,18 @@
 ---
-category: X
+category: Components
 title: Spotlight
 subtitle: 聚光灯
 description: react-ui Spotlight 文档。
+group:
+  title: 导航
+  order: 3
 ---
 
 
 ## 安装
 
-<InstallScript packages="@xiaoye-react/spotlight"></InstallScript>
+> **⚠️ 尚未发布到 npm**：该组件位于仓库内的 `@xiaoye-react/spotlight` 包中，此包还没有发布到 npm。组件源码随本仓库提供，发布后此处会更新安装方式。
+
 
 安装完成后，在应用根目录导入包样式：
 
@@ -22,7 +26,7 @@ import '@xiaoye-react/spotlight/styles.css';
 
 `Spotlight` 组件可用作应用内的搜索或命令中心。ReactUI 文档站就将其用作搜索；你可以通过 `Ctrl + K` 快捷键触发它。`Spotlight` 基于 [Modal](/components/modal) 组件，支持其大部分属性。
 
-<code src="./spotlight/demo/usage.tsx"></code>
+<code src="./demo/usage.tsx"></code>
 
 ## 操作
 
@@ -120,7 +124,7 @@ function NoShortcut() {
 
 下面的示例渲染了 3000 个操作，但一次只显示 7 个：
 
-<code src="./spotlight/demo/limit.tsx"></code>
+<code src="./demo/limit.tsx"></code>
 
 ## 自定义过滤函数
 
@@ -139,7 +143,7 @@ type SpotlightFilterFunction = (
 
 你可以使用 [fuse.js](https://fusejs.io/) 库实现模糊搜索。如果你想在输入有拼写错误或部分匹配时也能找到操作，这会非常有用：
 
-<code src="./spotlight/demo/fuzzySearch.tsx"></code>
+<code src="./demo/fuzzySearch.tsx"></code>
 
 ## 可滚动的操作列表
 
@@ -150,13 +154,13 @@ type SpotlightFilterFunction = (
 
 换句话说，如果你希望操作列表随内容收缩，请不要设置 `scrollable` 属性，而是使用 `limit` 属性。如果你希望操作列表始终具有固定高度，请设置 `scrollable` 和 `maxHeight` 属性。
 
-<code src="./spotlight/demo/scrollable.tsx"></code>
+<code src="./demo/scrollable.tsx"></code>
 
 ## 操作分组
 
 `Spotlight` 支持操作分组；你可以用它们按类别对操作进行分组：
 
-<code src="./spotlight/demo/groups.tsx"></code>
+<code src="./demo/groups.tsx"></code>
 
 ## 复合组件
 
@@ -172,9 +176,9 @@ type SpotlightFilterFunction = (
 
 例如，使用复合组件模式可以自定义操作内容：
 
-<code src="./spotlight/demo/compound.tsx"></code>
+<code src="./demo/compound.tsx"></code>
 
-<code src="./spotlight/demo/customAction.tsx"></code>
+<code src="./demo/customAction.tsx"></code>
 
 ## 固定元素偏移
 

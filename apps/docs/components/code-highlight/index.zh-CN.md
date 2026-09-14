@@ -1,13 +1,17 @@
 ---
-category: X
+category: Components
 title: CodeHighlight
 subtitle: 代码高亮
 description: react-ui CodeHighlight 文档。
+group:
+  title: 通用
+  order: 1
 ---
 
 ## 安装
 
-<InstallScript packages="@xiaoye-react/code-highlight"></InstallScript>
+> **⚠️ 尚未发布到 npm**：该组件位于仓库内的 `@xiaoye-react/code-highlight` 包中，此包还没有发布到 npm。组件源码随本仓库提供，发布后此处会更新安装方式。
+
 
 安装完成后，在应用根目录导入包样式：
 
@@ -23,7 +27,7 @@ import '@xiaoye-react/code-highlight/styles.css';
 
 使用 [shiki](https://shiki.matsu.io/) 进行代码高亮的示例：
 
-<code src="./code-highlight/demo/usage.tsx"></code>
+<code src="./demo/usage.tsx"></code>
 
 ## 适配器
 
@@ -41,7 +45,6 @@ import '@xiaoye-react/code-highlight/styles.css';
 
 要使用 shiki 适配器，你需要安装 `shiki` 包：
 
-<InstallScript packages="shiki"></InstallScript>
 
 然后用 `CodeHighlightAdapterProvider` 包裹你的应用，并将 `createShikiAdapter` 作为 `adapter` 属性传入：
 
@@ -84,7 +87,6 @@ function App() {
 
 要使用 highlight.js 适配器，你需要安装 `highlight.js` 包：
 
-<InstallScript packages="highlight.js"></InstallScript>
 
 然后用 `CodeHighlightAdapterProvider` 包裹你的应用，并将 `createHighlightJsAdapter` 作为 `adapter` 属性传入：
 
@@ -179,46 +181,46 @@ export const customShikiAdapter: CodeHighlightAdapter = {
 
 你可以使用 `copyLabel` 和 `copiedLabel` 属性自定义复制按钮标签。如果需要移除复制按钮，请设置 `withCopyButton={false}`。
 
-<code src="./code-highlight/demo/copy.tsx"></code>
+<code src="./demo/copy.tsx"></code>
 
 ## 带标签页
 
 `CodeHighlightTabs` 组件允许你将多个代码块组织成标签页：
 
-<code src="./code-highlight/demo/tabs.tsx"></code>
+<code src="./demo/tabs.tsx"></code>
 
 ## 带图标的标签页
 
 你可以使用任意 React 节点作为标签页图标。下面的示例使用了 `@xiaoye-react/dev-icons` 包中的 TypeScript 和 CSS 图标，但你也可以使用其他图标库或自定义图标：
 
-<code src="./code-highlight/demo/tabsIcons.tsx"></code>
+<code src="./demo/tabsIcons.tsx"></code>
 
 ## 根据文件名显示标签页图标
 
 作为为每个标签页手动提供图标的替代方案，你可以使用 `getFileIcon` 属性根据文件名分配图标。`getFileIcon` 接受文件名，必须返回 React 节点或 `null`。
 
-<code src="./code-highlight/demo/tabsGetIcons.tsx"></code>
+<code src="./demo/tabsGetIcons.tsx"></code>
 
 ## 行号
 
 设置 `withLineNumbers` 属性以在代码旁显示行号：
 
-<code src="./code-highlight/demo/lineNumbers.tsx"></code>
+<code src="./demo/lineNumbers.tsx"></code>
 
 ## 可展开代码
 
 如果代码片段太长，你可以使用 `withExpandButton` 和 `defaultExpanded={false}` 属性使其可展开。要更改展开/折叠控件提示的标签，请使用 `expandCodeLabel` 和 `collapseCodeLabel`。
 
-<code src="./code-highlight/demo/expand.tsx"></code>
+<code src="./demo/expand.tsx"></code>
 
 ## 自定义控件
 
 将 `controls` 属性与 `CodeHighlightControl` 组件一起使用，为代码块添加自定义控件：
 
-<code src="./code-highlight/demo/customControl.tsx"></code>
+<code src="./demo/customControl.tsx"></code>
 
 ## 行内代码
 
 `InlineCodeHighlight` 组件允许你高亮行内代码片段：
 
-<code src="./code-highlight/demo/inline.tsx"></code>
+<code src="./demo/inline.tsx"></code>

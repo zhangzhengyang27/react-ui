@@ -1,14 +1,18 @@
 ---
-category: X
+category: Components
 title: Dropzone
 subtitle: 拖拽上传
 description: react-ui Dropzone 文档。
+group:
+  title: 数据录入
+  order: 4
 ---
 
 
 ## 安装
 
-<InstallScript packages="@xiaoye-react/dropzone"></InstallScript>
+> **⚠️ 尚未发布到 npm**：该组件位于仓库内的 `@xiaoye-react/dropzone` 包中，此包还没有发布到 npm。组件源码随本仓库提供，发布后此处会更新安装方式。
+
 
 安装完成后，在应用根目录导入包样式：
 
@@ -26,7 +30,7 @@ import '@xiaoye-react/dropzone/styles.css';
 - 限制单个文件大小
 - 渲染给定的子元素，并提供基于上下文的组件，根据当前状态显示元素
 
-<code src="./dropzone/demo/usage.tsx"></code>
+<code src="./demo/usage.tsx"></code>
 
 ## Dropzone.Accept、Dropzone.Reject 和 Dropzone.Idle
 
@@ -40,26 +44,26 @@ import '@xiaoye-react/dropzone/styles.css';
 
 设置 `loading` 属性以使用 [LoadingOverlay](/components/loading-overlay/) 组件指示加载状态。当 `loading` 属性为 true 时，用户无法拖放或选择新文件（`Dropzone` 变为禁用状态）：
 
-<code src="./dropzone/demo/loading.tsx"></code>
+<code src="./demo/loading.tsx"></code>
 
 ## 禁用状态
 
 如果你想实现自己的加载状态，可以在不使用 `LoadingOverlay` 的情况下禁用 `Dropzone`。与 `loading` 相同，当 `Dropzone` 被禁用时，用户无法拖放或选择新文件：
 
-<code src="./dropzone/demo/disabled.tsx"></code>
+<code src="./demo/disabled.tsx"></code>
 
 ## 手动打开文件浏览器
 
 要从组件外部打开文件浏览器，请使用 `openRef` 属性获取一个会触发文件浏览器的函数：
 
-<code src="./dropzone/demo/manual.tsx"></code>
+<code src="./demo/manual.tsx"></code>
 
 ## 启用子元素指针事件
 
 默认情况下，Dropzone 会禁用其子元素的指针事件，以便拖拽事件正常工作。当 `activateOnClick={false}` 时，点击 Dropzone 内的任何子元素都不会有任何反应。
 不过，你可以设置样式 `pointerEvents: 'all'` 使子元素可点击。注意，你只需要在交互元素（如按钮或链接）上设置这些样式。
 
-<code src="./dropzone/demo/enableChildPointerEvent.tsx"></code>
+<code src="./demo/enableChildPointerEvent.tsx"></code>
 
 ## MIME 类型
 
@@ -159,11 +163,11 @@ function Demo() {
 - `data-reject` – 当用户拖拽无法被接受的文件到 dropzone 上时
 - `data-idle` – 默认状态——用户没有拖拽任何文件到 dropzone 上
 
-<code src="./dropzone/demo/stylesApi.tsx"></code>
+<code src="./demo/stylesApi.tsx"></code>
 
 ## 图片预览
 
-<code src="./dropzone/demo/preview.tsx"></code>
+<code src="./demo/preview.tsx"></code>
 
 ## 获取 ref
 
@@ -192,14 +196,14 @@ function Demo() {
 
 要预览该组件，请点击按钮并将图片拖放到浏览器窗口：
 
-<code src="./dropzone/demo/fullScreen.tsx"></code>
+<code src="./demo/fullScreen.tsx"></code>
 
 
 ## Upload 上传 {#upload}
 
 `Upload` 在 Dropzone 的基础上提供完整的上传管理：受控文件列表、上传进度、成功/失败状态与手动上传 API。
 
-<code src="./dropzone/demo/usage-upload.tsx"></code>
+<code src="./demo/usage-upload.tsx"></code>
 
 ### 上传流程
 

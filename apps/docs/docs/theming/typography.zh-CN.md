@@ -11,7 +11,7 @@ description: react-ui Typography 文档。
 你可以使用以下主题属性更改标题、代码和所有其他组件的字体和其他文本样式：
 
 - `theme.fontFamily` – 控制除 [Title](/components/title/)、[Code](/components/code/) 和 [Kbd](/components/kbd/) 外所有组件的 font-family
-- `theme.fontFamilyMonospace` – 控制需要等宽字体的组件的 font-family：[Code](/components/code/)、[Kbd](/components/kbd/) 和 [CodeHighlight](/docs/x/code-highlight/)
+- `theme.fontFamilyMonospace` – 控制需要等宽字体的组件的 font-family：[Code](/components/code/)、[Kbd](/components/kbd/) 和 [CodeHighlight](/components/code-highlight/)
 - `theme.headings.fontFamily` – 控制 [Title](/components/title/) 和 [Typography](/components/typography/) 组件中 h1-h6 标签的 font-family；如果未定义则回退到 `theme.fontFamily`
 
 <code src="./typography/demo/fonts.tsx"></code>

@@ -1,14 +1,18 @@
 ---
-category: X
+category: Components
 title: Modals
 subtitle: 模态框
 description: react-ui Modals 文档。
+group:
+  title: 反馈
+  order: 6
 ---
 
 
 ## 安装
 
-<InstallScript packages="@xiaoye-react/modals"></InstallScript>
+> **⚠️ 尚未发布到 npm**：该组件位于仓库内的 `@xiaoye-react/modals` 包中，此包还没有发布到 npm。组件源码随本仓库提供，发布后此处会更新安装方式。
+
 
 ## 设置 ModalsProvider
 
@@ -62,9 +66,9 @@ function Demo() {
 }
 ```
 
-<code src="./modals/demo/confirm.tsx"></code>
+<code src="./demo/confirm.tsx"></code>
 
-<code src="./modals/demo/confirmCustomize.tsx"></code>
+<code src="./demo/confirmCustomize.tsx"></code>
 
 ## 上下文弹窗
 
@@ -101,7 +105,7 @@ function Demo() {
 }
 ```
 
-<code src="./modals/demo/context.tsx"></code>
+<code src="./demo/context.tsx"></code>
 
 ## 类型安全的上下文弹窗
 
@@ -159,19 +163,19 @@ closeModal('demonstration');
 
 使用 `modals.open` 函数，你可以打开包含任意内容的弹窗：
 
-<code src="./modals/demo/content.tsx"></code>
+<code src="./demo/content.tsx"></code>
 
 ## 多个打开的弹窗
 
 你可以打开多层弹窗。每个打开的弹窗都会作为弹窗队列中的第一个元素添加。要关闭所有打开的弹窗，请调用 `modals.closeAll()` 函数：
 
-<code src="./modals/demo/multipleSteps.tsx"></code>
+<code src="./demo/multipleSteps.tsx"></code>
 
 ## 弹窗属性
 
 你可以通过将属性添加到每个 `modals.x` 函数的参数中，向下传递属性给 [Modal](/components/modal) 组件。以下示例设置 `radius`、`size` 和 `withCloseButton` 属性：
 
-<code src="./modals/demo/modalProps.tsx"></code>
+<code src="./demo/modalProps.tsx"></code>
 
 ## 动态内容与弹窗管理器
 
@@ -182,6 +186,6 @@ closeModal('demonstration');
 
 上下文弹窗也可以使用 `modals.updateContextModal` 动态更新：
 
-<code src="./modals/demo/updateModal.tsx"></code>
+<code src="./demo/updateModal.tsx"></code>
 
-<code src="./modals/demo/updateContextModal.tsx"></code>
+<code src="./demo/updateContextModal.tsx"></code>

@@ -8,20 +8,26 @@ description: react-ui Extensions 文档。
 
 ## 官方扩展
 
-官方扩展由 ReactUI 维护者构建。这些扩展的包名具有 `@xiaoye-react/` 作用域，
-例如 `@xiaoye-react/dates`。
+官方扩展由 ReactUI 维护者构建。组件文档已统一并入[组件总览](/components/overview/)，此处按发布状态汇总：
 
-官方扩展列表：
+**已随主包发布**（安装 `@xiaoye-react/ui` 即可使用）：
 
+- [Carousel 轮播](/components/carousel) – 基于 embla-carousel 的轮播组件
+- [Notifications 通知中心](/components/notifications) – 通知系统
+
+**已独立发布**：
+
+- [Pro 管理端模式层](/components/pro) – `@xiaoye-react/pro`：PageContainer、SearchFilter、ProTable
+
+**独立扩展包（尚未发布到 npm，源码随本仓库提供）**：
+
+- [CodeHighlight 代码高亮](/components/code-highlight) – ReactUI 网站上使用的代码高亮组件
+- [Spotlight 控制中心](/components/spotlight) – `Ctrl + K` 搜索栏，可用于搜索
+- [Dropzone 拖拽上传](/components/dropzone) – 基于 react-dropzone 的拖拽文件上传组件
+- [Modals 弹窗管理器](/components/modals) – 弹窗管理器
+- [Tiptap 富文本编辑器](/components/tiptap) – 基于 tiptap 的富文本编辑器
+- [NProgress 导航进度](/components/nprogress) – 导航进度组件
 - [@xiaoye-react/dates](/docs/dates/getting-started) – 日期和时间选择器、日历以及其他日期相关组件
-- [@xiaoye-react/notifications](/docs/x/notifications) – 通知系统
-- [@xiaoye-react/code-highlight](/docs/x/code-highlight) – ReactUI 网站上使用的代码高亮组件
-- [@xiaoye-react/spotlight](/docs/x/spotlight) – 控制中心（`Ctrl + K` 搜索栏），可用于搜索
-- [@xiaoye-react/carousel](/docs/x/carousel) – 基于 embla-carousel 的轮播组件
-- [@xiaoye-react/dropzone](/docs/x/dropzone) – 基于 react-dropzone 的拖拽文件上传组件
-- [@xiaoye-react/modals](/docs/x/modals) – 弹窗管理器
-- [@xiaoye-react/tiptap](/docs/x/tiptap) – 基于 tiptap 的富文本编辑器
-- [@xiaoye-react/nprogress](/docs/x/nprogress) – 导航进度组件
 
 ## 社区扩展
 

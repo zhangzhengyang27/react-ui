@@ -1,16 +1,18 @@
 ---
-category: X
+category: Components
 title: Tiptap
 subtitle: 富文本编辑器
 description: react-ui Tiptap 文档。
+group:
+  title: 数据录入
+  order: 4
 ---
 
 
 ## 安装
 
-使用 yarn 安装：
+> **⚠️ 尚未发布到 npm**：该组件位于仓库内的 `@xiaoye-react/tiptap` 包中，此包还没有发布到 npm。组件源码随本仓库提供，发布后此处会更新安装方式。
 
-<InstallScript packages="@xiaoye-react/ui @xiaoye-react/tiptap @xiaoye-react/hooks @tiptap/react @tiptap/pm @tiptap/extension-link @tiptap/starter-kit"></InstallScript>
 
 安装完成后，在应用根目录导入包样式：
 
@@ -28,13 +30,13 @@ import '@xiaoye-react/tiptap/styles.css';
 
 ## 用法
 
-<code src="./tiptap/demo/usage.tsx"></code>
+<code src="./demo/usage.tsx"></code>
 
 ## 柔和变体
 
 `variant="subtle"` 会移除控件组的边框，使控件更大，并减少工具栏的间距：
 
-<code src="./tiptap/demo/subtleVariant.tsx"></code>
+<code src="./demo/subtleVariant.tsx"></code>
 
 ## 受控模式
 
@@ -81,7 +83,6 @@ export function RichTextEditor({
 
 某些控件需要安装额外的 [Tiptap 扩展](https://tiptap.dev/extensions)。例如，如果你想使用 `RichTextEditor.Superscript` 控件，需要安装 `@tiptap/extension-superscript` 包：
 
-<InstallScript packages="@tiptap/extension-superscript"></InstallScript>
 
 `@tiptap/starter-kit` 默认包含以下控件（应默认安装）：
 
@@ -129,9 +130,8 @@ export function RichTextEditor({
 
 要使用占位符，需要安装 [@tiptap/extension-placeholder](https://www.npmjs.com/package/@tiptap/extension-placeholder) 包：
 
-<InstallScript packages="@tiptap/extension-placeholder"></InstallScript>
 
-<code src="./tiptap/demo/placeholder.tsx"></code>
+<code src="./demo/placeholder.tsx"></code>
 
 ## 链接扩展
 
@@ -162,7 +162,6 @@ function Demo() {
 
 要使用文本颜色，需要安装额外的包：
 
-<InstallScript packages="@tiptap/extension-color @tiptap/extension-text-style"></InstallScript>
 
 你可以使用以下控件更改文本颜色：
 
@@ -170,30 +169,28 @@ function Demo() {
 - `RichTextEditor.Color` – 允许一键应用给定颜色
 - `RichTextEditor.UnsetColor` – 清除颜色样式
 
-<code src="./tiptap/demo/colors.tsx"></code>
+<code src="./demo/colors.tsx"></code>
 
 ## 代码高亮
 
 要使用代码高亮，需要安装额外的包：
 
-<InstallScript packages="lowlight @tiptap/extension-code-block-lowlight"></InstallScript>
 
-<code src="./tiptap/demo/codeHighlight.tsx"></code>
+<code src="./demo/codeHighlight.tsx"></code>
 
 ## 源代码模式
 
 你可以使用以下控件查看和编辑编辑器内容的源代码：
 - `RichTextEditor.SourceCode` – 允许切换源代码模式
 
-<code src="./tiptap/demo/sourceCodeSwitcher.tsx"></code>
+<code src="./demo/sourceCodeSwitcher.tsx"></code>
 
 ## 任务列表
 
 要使用任务列表，需要安装额外的包：
 
-<InstallScript packages="@tiptap/extension-task-item @tiptap/extension-task-list"></InstallScript>
 
-<code src="./tiptap/demo/tasks.tsx"></code>
+<code src="./demo/tasks.tsx"></code>
 
 ## 排版样式
 
@@ -221,25 +218,25 @@ function Demo() {
 }
 ```
 
-<code src="./tiptap/demo/typographyStyles.tsx"></code>
+<code src="./demo/typographyStyles.tsx"></code>
 
 ## 气泡菜单
 
 你可以在任何 `RichTextEditor` 控件中使用 [BubbleMenu](https://tiptap.dev/api/extensions/bubble-menu) 组件。气泡菜单会出现在选中的文本附近：
 
-<code src="./tiptap/demo/bubbleMenu.tsx"></code>
+<code src="./demo/bubbleMenu.tsx"></code>
 
 ## 浮动菜单
 
 你可以在任何 `RichTextEditor` 控件中使用 [FloatingMenu](https://tiptap.dev/api/extensions/floating-menu) 组件。浮动菜单会出现在空行中：
 
-<code src="./tiptap/demo/floatingMenu.tsx"></code>
+<code src="./demo/floatingMenu.tsx"></code>
 
 ## 粘性工具栏
 
 在 `RichTextEditor.Toolbar` 组件上设置 `sticky` 属性可使工具栏粘性定位；使用 `stickyOffset` 控制 `top` 属性。例如，在 react-ui.dev 文档网站上有一个高度为 `var(--docs-header-height)` 的页眉。此时，我们需要设置 `stickyOffset="var(--docs-header-height)"`，以使粘性定位与固定定位的元素正确配合。
 
-<code src="./tiptap/demo/usage.tsx" id="tiptap-sticky-toolbar"></code>
+<code src="./demo/usage.tsx" id="tiptap-sticky-toolbar"></code>
 
 ## 编辑器上下文
 
@@ -265,13 +262,13 @@ function Demo() {
 
 使用 `RichTextEditor.Control` 组件创建自定义控件。它支持 `button` 元素支持的所有属性，并具有 `active` 属性来指示激活状态。注意，你需要设置 `aria-label` 属性，以便屏幕阅读器能够识别该控件。
 
-<code src="./tiptap/demo/customControl.tsx"></code>
+<code src="./demo/customControl.tsx"></code>
 
 ## 更改图标
 
 你可以通过设置 `icon` 属性来更改控件的图标。它接受一个必须处理 `size` 属性的组件：
 
-<code src="./tiptap/demo/icons.tsx"></code>
+<code src="./demo/icons.tsx"></code>
 
 ## 标签与本地化
 

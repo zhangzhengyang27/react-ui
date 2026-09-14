@@ -9,8 +9,8 @@ description: react-ui Actions 文档。
 ## 用法
 
 表单操作允许你从应用中的任何位置更改表单状态。
-表单操作机制类似于 [通知系统](/docs/x/notifications/)、
-[模态框管理器](/docs/x/modals/) 和其他类似的包。
+表单操作机制类似于 [通知系统](/components/notifications/)、
+[模态框管理器](/components/modals/) 和其他类似的包。
 
 要使用表单操作，请在 [use-form](/docs/form/use-form/) 设置中设置 `name` 属性：
 

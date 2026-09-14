@@ -88,12 +88,12 @@ function Demo() {
 - [Progress](/components/progress)
 - [Indicator](/components/indicator)
 - [Timeline](/components/timeline)
-- [Spotlight](/docs/x/spotlight)
+- [Spotlight](/components/spotlight)
 - 所有基于 [Calendar](/docs/dates/calendar) 组件的 [@xiaoye-react/ui](/docs/dates/getting-started) 组件
 
 `autoContrast` 会检查给定颜色的亮度是否高于或低于 `luminanceThreshold` 值，并相应地将文本颜色更改为 `theme.white` 或 `theme.black`。
 
-`autoContrast` 可以在主题级别全局设置，也可以通过 `autoContrast` 属性为每个组件单独设置，但 [Spotlight](/docs/x/spotlight) 和 [@xiaoye-react/ui](/docs/dates/getting-started) 组件仅支持全局主题设置。
+`autoContrast` 可以在主题级别全局设置，也可以通过 `autoContrast` 属性为每个组件单独设置，但 [Spotlight](/components/spotlight) 和 [@xiaoye-react/ui](/docs/dates/getting-started) 组件仅支持全局主题设置。
 
 
 ### luminanceThreshold

@@ -6,6 +6,9 @@ description: react-ui PostcssPreset 文档。
 ---
 
 
+> **ℹ️ 发布状态**：本页描述的 `postcss-preset-ui` 预设**尚未作为独立包发布到 npm**。其能力（`rem`/`em` 函数、`autoRem`、深浅色 mixins 等）由本仓库内置的自定义 PostCSS 插件提供，实现见仓库根目录与 `packages/ui` 的 `postcss.config.cjs`。独立发包前，请直接复制仓库内的插件实现或参考其源码。
+
+
 ## 安装
 
 将 `postcss-preset-ui` 作为开发依赖安装：

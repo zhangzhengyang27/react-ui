@@ -63,7 +63,7 @@ function Demo() {
 ```js
 module.exports = {
   plugins: {
-    'postcss-preset-ui': {},
+    '<内置插件>': {},
     'postcss-simple-vars': {
       variables: {
         'ui-breakpoint-xs': '36em',

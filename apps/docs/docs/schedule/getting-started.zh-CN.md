@@ -8,6 +8,8 @@ description: react-ui GettingStarted 文档。
 
 ## 安装
 
+> **ℹ️ 发布状态**：`@xiaoye-react/schedule` 目前尚未发布到 npm，当前随本仓库源码提供（本文档内容与仓库实现一致）。包正式发布后，下述安装方式即可直接使用。
+
 <InstallScript packages="@xiaoye-react/schedule @xiaoye-react/ui dayjs"></InstallScript>
 
 安装完成后，在应用根目录导入包样式：

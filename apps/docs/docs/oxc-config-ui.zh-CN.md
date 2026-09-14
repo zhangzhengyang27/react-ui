@@ -5,7 +5,7 @@ order: 13
 
 # ReactUI oxc 配置
 
-[oxc-config-ui](https://github.com/react-ui-org/oxc-config-ui)
+oxc-config-ui（尚未提供）
 是一组用于 ReactUI 项目的 [oxc](https://oxc.rs) 配置，包含
 [oxlint](https://www.npmjs.com/package/oxlint)（代码检查器）和
 [oxfmt](https://www.npmjs.com/package/oxfmt)（代码格式化工具）。
@@ -80,4 +80,4 @@ pnpm format
 
 ReactUI 的 oxlint 配置继承了推荐的 [oxlint](https://oxc.rs/docs/guide/usage/linter)
 规则，并为 `react`、`typescript`、`jsx-a11y` 和 `jest` 插件添加了自定义规则。
-你可以在 [oxc-config-ui 仓库](https://github.com/react-ui-org/oxc-config-ui) 中找到完整的规则列表和源代码。
+你可以在 oxc-config-ui 仓库（尚未公开） 中找到完整的规则列表和源代码。

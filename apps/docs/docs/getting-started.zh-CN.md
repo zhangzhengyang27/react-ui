@@ -15,9 +15,9 @@ ReactUI 是一个 React 组件库，专注于提供出色的用户体验和开�
 
 <PackagesInstallation packages="@xiaoye-react/ui @xiaoye-react/hooks"></PackagesInstallation>
 
-安装 PostCSS 插件和 [postcss-preset-ui](/docs/styles/postcss-preset)：
+安装 PostCSS 插件（`postcss-preset-ui` 预设尚未独立发布，其能力由本仓库内置的自定义插件提供，见 [PostCSS 预设](/docs/styles/postcss-preset)：
 
-<InstallScript packages="postcss postcss-preset-ui postcss-simple-vars" dev></InstallScript>
+<InstallScript packages="postcss postcss-simple-vars" dev></InstallScript>
 
 > **PostCSS 配置**
 >
@@ -28,7 +28,6 @@ ReactUI 是一个 React 组件库，专注于提供出色的用户体验和开�
 ```js
 module.exports = {
   plugins: {
-    'postcss-preset-ui': {},
     'postcss-simple-vars': {
       variables: {
         'ui-breakpoint-xs': '36em',
@@ -123,7 +122,7 @@ function Demo() {
 - [主题对象](/docs/theming/theme-object) — 了解可用的主题属性
 - [颜色](/docs/theming/colors) — 了解如何添加/替换主题颜色
 - [CSS 模块](/docs/styles/css-modules) — 了解如何在 ReactUI 中使用 CSS Modules
-- [postcss-preset-ui](/docs/styles/postcss-preset) — 了解 postcss-preset-ui 的功能和混入
+- [PostCSS 预设](/docs/styles/postcss-preset) — 了解内置 PostCSS 插件的功能和混入
 - [响应式样式](/docs/styles/responsive) — 了解如何为组件应用响应式样式
 - [样式 API](/docs/styles/styles-api) — 了解如何为任意组件的内部元素添加样式
 - [多态组件](/docs/guides/polymorphic) — 了解多态组件

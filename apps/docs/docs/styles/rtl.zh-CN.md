@@ -70,6 +70,6 @@ function Demo() {
 
 ## rtl mixin
 
-如果你已安装 [postcss-preset-ui](/docs/styles/postcss-preset)，可以在 `.css` 文件中使用 `rtl` mixin：
+如果你已安装 [内置 PostCSS 插件](/docs/styles/postcss-preset)，可以在 `.css` 文件中使用 `rtl` mixin：
 
 <code src="./rtl/demo/rtlMixin.tsx"></code>

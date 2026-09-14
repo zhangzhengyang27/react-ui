@@ -18,7 +18,7 @@ description: react-ui VanillaExtract 文档。
 
 - Vanilla extract 的样式是类型安全的
 - 你可以在 Vanilla extract 样式中使用任意 JavaScript/TypeScript 代码，包括 [颜色函数](/docs/styles/color-functions)
-- 使用 Vanilla extract 时无法使用 [postcss-preset-ui](/docs/styles/postcss-preset) 的某些功能，例如 `light-dark` 函数和 `hover` mixin。
+- 使用 Vanilla extract 时无法使用 [内置 PostCSS 插件](/docs/styles/postcss-preset) 的某些功能，例如 `light-dark` 函数和 `hover` mixin。
   因此，你不能直接复制粘贴 ReactUI 文档中的所有 demo 并在 Vanilla extract 中使用。
 - Vanilla extract 需要额外的配置和设置，可能不适用于你的构建工具/框架。
   大多数流行工具（如 [Next.js](https://nextjs.org/) 和 [Vite](https://vitejs.dev/)）都有 Vanilla extract 插件，

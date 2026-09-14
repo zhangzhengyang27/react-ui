@@ -196,6 +196,8 @@ interface VariantColorResolverResult {
 
 你可以使用 [颜色生成器](/colors-generator) 基于单个值生成 10 个色阶，或安装 `@xiaoye-react/colors-generator` 包以在应用中生成动态颜色：
 
+> **ℹ️ 发布状态**：`@xiaoye-react/colors-generator` 尚未发布到 npm，当前随本仓库源码提供。
+
 <InstallScript packages="chroma-js @xiaoye-react/colors-generator"></InstallScript>
 
 该包导出一个 `generateColors` 函数，它接受一个颜色值并返回 10 个色阶的数组。注意，`generateColors` 函数对深色（蓝色、紫色、红色）效果最佳，对浅色（黄色、青色、橙色）可能会产生对比度较差的颜色。通常，最好提前生成颜色以避免对比度问题。

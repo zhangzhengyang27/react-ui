@@ -59,32 +59,20 @@ import '@xiaoye-react/ui/style.css';
 
 某些打包工具和框架不允许你控制应用中样式表的顺序。例如，Next.js 不保证[样式导入顺序](https://github.com/vercel/next.js/issues/16630)。在这种情况下，你可以使用 [CSS layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) 来确保你的样式始终覆盖 ReactUI 样式。
 
-所有导出样式的 `@xiaoye-react/*` 包都有一个额外的文件，其中所有样式都包裹在 `@layer ui` 指令中。
-
-
-这些文件包含与 `styles.css` 文件相同的样式，但包裹在 `@layer ui` 指令中。注意：当前 `@xiaoye-react/ui` 包仅提供 `style.css`（不含 `@layer` 包裹的 layer 变体），此节内容适用于提供 layer 变体的其他 ReactUI 包。
-
-
-提供了 layer 变体的 ReactUI 包（如 dates、schedule 等）支持导入带 `@layer ui`
-指令的单包样式：
+当前 `@xiaoye-react/ui` 仅提供 `style.css`（**不包含** `@layer ui` 包裹的 layer 变体）。
+带 layer 变体（`styles.layer.css`）的版本在规划中，尚未随包发布——下文示例仅说明 layer 变体发布后的预期用法：
 
 ```tsx
+// layer 变体发布后，可导入带 @layer ui 指令的单包样式
 import '@xiaoye-react/dates/styles.layer.css';
 
 // ... 其他样式
 ```
 
 ```tsx
-// ❌ 不要同时导入同一包的 styles.css 和 styles.layer.css
+// ❌ 届时不要同时导入同一包的 styles.css 和 styles.layer.css
 import '@xiaoye-react/dates/styles.css';
 import '@xiaoye-react/dates/styles.layer.css';
-```
-
-```tsx
-import '@xiaoye-react/ui/styles/UnstyledButton.layer.css';
-import '@xiaoye-react/ui/styles/Button.layer.css';
-
-// ... 其他样式
 ```
 
 ## CSS layers 的工作原理
@@ -122,12 +110,8 @@ unpkg CDN 上的样式适用于所有导出样式的 ReactUI 包。
 <!-- 常规样式 -->
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@xiaoye-react/ui@7.4.2/styles.css"
+  href="https://unpkg.com/@xiaoye-react/ui@2.1.0/styles.css"
 />
 
-<!-- 带 @layer 指令的样式 -->
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/@xiaoye-react/ui@7.4.2/styles.layer.css"
-/>
+<!-- layer 变体（styles.layer.css）暂未提供 -->
 ```

@@ -120,7 +120,7 @@ px('10rem'); // -> 160
 
 ## 在 css 文件中使用 rem/em 函数
 
-如果已安装 [postcss-preset-ui](/docs/styles/postcss-preset)，你可以在 [css 文件](/docs/styles/css-modules)中使用 `rem` 和 `em` 函数：
+如果已安装 [内置 PostCSS 插件](/docs/styles/postcss-preset)，你可以在 [css 文件](/docs/styles/css-modules)中使用 `rem` 和 `em` 函数：
 
 ```css
 .demo {
@@ -135,12 +135,12 @@ px('10rem'); // -> 160
 ## 在 css 文件中自动将 px 转换为 rem
 
 要在 css 文件中自动将 `px` 转换为 `rem`，请在
-[postcss-preset-ui](/docs/styles/postcss-preset) 配置中启用 `autoRem` 选项：
+[内置 PostCSS 插件](/docs/styles/postcss-preset) 配置中启用 `autoRem` 选项：
 
 ```js
 module.exports = {
   plugins: {
-    'postcss-preset-ui': {
+    '<内置插件>': {
       autoRem: true,
     },
   },

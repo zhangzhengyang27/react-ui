@@ -28,7 +28,7 @@ group:
 ```tsx
 import '@xiaoye-react/ui/style.css';
 // ‼️ notifications 样式必须在核心包样式之后导入
-import '@xiaoye-react/notifications/styles.css';
+import '@xiaoye-react/ui/style.css';
 ```
 
 ```tsx
@@ -72,7 +72,7 @@ import '@xiaoye-react/ui/style.css';
 你也可以单独导入这些函数：
 
 ```tsx
-import { notifications } from '@xiaoye-react/notifications';
+import { notifications } from '@xiaoye-react/ui';
 ```
 
 ```tsx
@@ -112,7 +112,7 @@ import {
 
 ```tsx
 import { XIcon } from '@phosphor-icons/react';
-import { notifications } from '@xiaoye-react/notifications';
+import { notifications } from '@xiaoye-react/ui';
 
 // 最低要求 – message 对所有通知都是必需的
 notifications.show({ message: 'Hello' });
@@ -225,7 +225,7 @@ function Demo() {
 使用 `notifications.cleanQueue` 函数移除队列中的所有通知，使用 `notifications.clean` 移除状态和队列中的所有通知：
 
 ```tsx
-import { notifications } from '@xiaoye-react/notifications';
+import { notifications } from '@xiaoye-react/ui';
 
 const id = notifications.show({ message: 'Hello!' });
 notifications.hide(id);
@@ -257,7 +257,7 @@ function Demo() {
 ```
 
 ```tsx
-import { notifications } from '@xiaoye-react/notifications';
+import { notifications } from '@xiaoye-react/ui';
 
 notifications.show({
   message: 'I will close in 500ms seconds',

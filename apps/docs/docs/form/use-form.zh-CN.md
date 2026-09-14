@@ -8,6 +8,8 @@ description: react-ui UseForm 文档。
 
 ## 安装
 
+> **ℹ️ 发布状态**：`@xiaoye-react/form` 目前尚未发布到 npm，当前随本仓库源码提供（本文档内容与仓库实现一致）。包正式发布后，下述安装方式即可直接使用。
+
 `@xiaoye-react/ui` 包不依赖任何其他库。你可以将其与 `@xiaoye-react/ui` 输入框一起使用，也可以单独使用：
 
 <InstallScript packages="@xiaoye-react/ui"></InstallScript>

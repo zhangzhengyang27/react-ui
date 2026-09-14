@@ -35,9 +35,11 @@ description: react-ui Emotion 文档。
 
 ## 配合 Vite 使用
 
-[查看完整配置的示例仓库](https://github.com/react-ui-org/vite-min-template/tree/emotion)
+查看完整配置的示例仓库（示例仓库尚未提供）
 
 安装依赖：
+
+> **ℹ️ 发布状态**：`@xiaoye-react/emotion` 目前尚未发布到 npm，当前随本仓库源码提供（本文档内容与仓库实现一致）。包正式发布后，下述安装方式即可直接使用。
 
 <InstallScript packages="@xiaoye-react/emotion @emotion/react @emotion/cache @emotion/serialize @emotion/utils"></InstallScript>
 
@@ -107,7 +109,7 @@ function Demo() {
 
 ## 配合 Next.js pages router 使用
 
-[查看完整配置的示例仓库](https://github.com/react-ui-org/next-pages-min-template/tree/emotion)
+查看完整配置的示例仓库（示例仓库尚未提供）
 
 安装依赖：
 
@@ -240,7 +242,7 @@ function Demo() {
 
 ## 配合 Next.js app router 使用
 
-[查看完整配置的示例仓库](https://github.com/react-ui-org/next-app-min-template/tree/emotion)
+查看完整配置的示例仓库（示例仓库尚未提供）
 
 安装依赖：
 

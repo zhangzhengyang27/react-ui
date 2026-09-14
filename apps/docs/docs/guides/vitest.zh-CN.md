@@ -139,4 +139,4 @@ describe('Welcome component', () => {
 
 ## 完整设置示例
 
-你可以在 [react-ui-vite-template](https://github.com/react-ui-org/vite-template) 中找到包含完整 Vitest 设置的示例。
+你可以在 react-ui-vite-template（尚未提供） 中找到包含完整 Vitest 设置的示例。

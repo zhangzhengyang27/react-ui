@@ -42,6 +42,8 @@
 > **核实后调整**：MobileMonthView 零长度事件（date-only 串）保持"全天"显示（isAllDayEvent 不覆盖该形态，补 start===end 判定，测试夹具语义为准）。
 > 验证：**全部 11 包测试全绿**（ui 529、schedule 1349、dates 1433、form 409、hooks 110、pro 17、notifications 47、dropzone 61、code-highlight 70、carousel 45、spotlight 25、modals 7），ui/hooks tsc 通过，hooks/pro/ui 构建成功。**审计报告所列 199 项至此全部处理完毕。**
 
+> ⑲ 第十九批（e2e 盲区回归，任务收尾补充）已完成：新增 Playwright 交互 e2e（`playwright.interactions.config.ts` + Vite harness 直连 ui/hooks 源码，`pnpm e2e:interactions`），7 用例锁定三类 jsdom 盲区——pointer-events 命中（NumberInput 步进/FileInput 清除）、mouseenter→click 顺序（Rating clearable 新星设值/已选清零）、transitionend 时序（Collapse duration=0 立即可见/隐藏容器内展开后可见）+ MaskInput 连续键入光标。变异验证：Rating 旧缺陷在 radio 架构下已结构性消除（change 后到保证最终状态）；pointer-events 类缺陷经真实 Chromium 实测不复现（section 实际计算为 auto，此前 CSS 链推断过虑），原 CSS 修复保留为防御性加固；Rating 星形补 pointer-events:none（视觉层不再拦截 radio 命中）。验证：7/7 e2e 通过，ui 相关单测通过。
+
 - 范围：`packages/ui`（125 组件）、`@xiaoye-react/form`、`pro`、`dates`、`schedule`、`hooks`、`spotlight/notifications/modals/nprogress/store/emotion/carousel/dropzone/tiptap/code-highlight/header/demo` 等全部源码（不含 test/story），约 10 万行。
 - 方法：18 路只读深度排查（未修改任何文件），每条结论附真实 file:line 与代码证据；关键 P0 已人工复核/沙箱模拟复现（MaskInput 乱序、form 重复提交、setPath 崩溃、Rating 清零、NumberInput 步进、Schedule 双触发均核实成立）。
 - 结论规模：**P0 × 12、P1 × 69、P2 × 118，合计 199 条**。

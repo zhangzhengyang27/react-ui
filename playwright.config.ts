@@ -2,6 +2,8 @@ import { defineConfig } from '@playwright/test'
 
 export default defineConfig({
     testDir: './e2e',
+    // 交互 e2e 用独立配置（playwright.interactions.config.ts，自带 Vite harness）
+    testIgnore: '**/interactions/**',
     fullyParallel: true,
     timeout: 60_000,
     expect: {

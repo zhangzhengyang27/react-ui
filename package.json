@@ -18,6 +18,7 @@
     "docs:lint": "node apps/docs/scripts/lint-docs-imports.mjs",
     "lint": "npm run lint:es && npm run lint:style",
     "e2e:screenshots": "playwright test",
+        "e2e:interactions": "playwright test -c playwright.interactions.config.ts",
     "e2e:update-snapshots": "playwright test --update-snapshots",
     "spellcheck": "cspell lint --dot --gitignore --color --cache --show-suggestions \"(packages|apps)/**/*.@(html|js|cjs|mjs|ts|tsx|css|scss|md)\"",
     "commit": "git-cz",

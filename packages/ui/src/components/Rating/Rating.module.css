@@ -33,6 +33,8 @@
     width: 100%;
     height: 100%;
     color: var(--ui-color-default-border);
+    /* 视觉层不拦截指针：radio input（inset:0）接收 hover/click */
+    pointer-events: none;
 }
 
 .starFilled {

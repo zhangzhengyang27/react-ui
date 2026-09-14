@@ -165,7 +165,13 @@ export const SpotlightRoot = factory<SpotlightRootFactory>((_props) => {
     props,
   });
 
-  useHotkeys(getHotkeys(shortcut, store), tagsToIgnore, triggerOnContentEditable);
+  // disabled 时不注册快捷键：否则 mod+K 仍会把共享 store 的 opened 置 true，
+  // disabled 翻回 false 后 Modal 以 opened=true 挂载，spotlight 意外弹出
+  useHotkeys(
+    disabled ? [] : getHotkeys(shortcut, store),
+    tagsToIgnore,
+    triggerOnContentEditable
+  );
 
   useDidUpdate(() => {
     opened ? onSpotlightOpen?.() : onSpotlightClose?.();

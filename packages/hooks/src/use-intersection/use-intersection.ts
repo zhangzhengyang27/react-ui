@@ -11,6 +11,9 @@ export function useIntersection<T extends HTMLElement = any>(
     const [entry, setEntry] = useState<IntersectionObserverEntry | null>(null)
 
     const observer = useRef<IntersectionObserver | null>(null)
+    // options 经 ref 转发：threshold 数组等内联引用不再每渲染 disconnect/重建 observer
+    const optionsRef = useRef(options)
+    optionsRef.current = options
 
     const ref: React.RefCallback<T | null> = useCallback(
         (element) => {
@@ -26,11 +29,11 @@ export function useIntersection<T extends HTMLElement = any>(
 
             observer.current = new IntersectionObserver(([_entry]) => {
                 setEntry(_entry)
-            }, options)
+            }, optionsRef.current)
 
             observer.current.observe(element)
         },
-        [options?.rootMargin, options?.root, options?.threshold]
+        []
     )
 
     return { ref, entry }

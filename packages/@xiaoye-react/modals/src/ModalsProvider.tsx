@@ -1,4 +1,4 @@
-import { useCallback, useReducer, useRef } from 'react';
+import { useCallback, useMemo, useReducer, useRef } from 'react';
 import { getDefaultZIndex, Modal } from '@xiaoye-react/ui';
 import { randomId } from '@xiaoye-react/hooks';
 import { ConfirmModal } from './ConfirmModal';
@@ -173,16 +173,23 @@ export function ModalsProvider({ children, modalProps, labels, modals }: ModalsP
     [dispatch]
   );
 
-  useModalsEvents({
-    openModal,
-    openConfirmModal,
-    openContextModal: ({ modal, ...payload }: any) => openContextModal(modal, payload),
-    closeModal,
-    closeContextModal: closeModal,
-    closeAllModals: closeAll,
-    updateModal,
-    updateContextModal,
-  });
+  // 事件对象 memo 化：内联字面量每渲染都是新引用，会让 createUseExternalEvents
+  // 内部 useMemo 失效、每渲染重挂全部 window 监听
+  const modalsEvents = useMemo(
+    () => ({
+      openModal,
+      openConfirmModal,
+      openContextModal: ({ modal, ...payload }: any) => openContextModal(modal, payload),
+      closeModal,
+      closeContextModal: closeModal,
+      closeAllModals: closeAll,
+      updateModal,
+      updateContextModal,
+    }),
+    [openModal, openConfirmModal, openContextModal, closeModal, closeAll, updateModal, updateContextModal]
+  );
+
+  useModalsEvents(modalsEvents);
 
   const ctx: ModalsContextProps = {
     modalProps: modalProps || {},

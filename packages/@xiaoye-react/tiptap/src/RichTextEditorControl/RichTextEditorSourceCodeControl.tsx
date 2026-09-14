@@ -17,7 +17,11 @@ export function RichTextEditorSourceCodeControl(props: RichTextEditorSourceCodeC
     if (isSourceCodeModeActive) {
       editor?.commands.setContent(editor.getText(), { emitUpdate: true });
     } else {
-      editor?.commands.setContent(`<textarea>${editor.getHTML()}</textarea>`);
+      // 与进入源码模式的 setContent 保持一致地 emitUpdate：
+      // 不对称会让外层受控 value 与编辑器文档失同步（外层重渲染回灌旧内容覆盖源码模式）
+      editor?.commands.setContent(`<textarea>${editor.getHTML()}</textarea>`, {
+        emitUpdate: true,
+      });
     }
 
     const isSourceCodeModeActiveNew = !isSourceCodeModeActive;

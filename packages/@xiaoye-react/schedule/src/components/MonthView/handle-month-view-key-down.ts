@@ -146,11 +146,11 @@ function focusOnNextFocusableControl({
 
   const controlToFocus = controlsRef.current?.[nextPosition.weekIndex]?.[nextPosition.dayIndex];
 
-  if (!controlToFocus) {
-    return;
-  }
-
+  // 占位格不注册 ref（undefined）与 hidden/disabled 同样需要跳过：
+  // 此前 undefined 直接 return，withOutsideDays=false 时方向键走到占位格就中断，
+  // 下方的跳过逻辑永远不可达
   if (
+    !controlToFocus ||
     controlToFocus.disabled ||
     controlToFocus.getAttribute('data-hidden') ||
     controlToFocus.getAttribute('data-day-placeholder')

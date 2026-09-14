@@ -125,6 +125,9 @@ export const Day = factory<DayFactory>((_props) => {
       {...getStyles('day', { style: hidden ? { display: 'none' } : undefined })}
       component={isStatic ? 'div' : 'button'}
       disabled={disabled}
+      // data-today 依赖运行时钟：SSR 服务器与客户端时区/时刻不同会产生属性级
+      // hydration 告警，这里仅抑制该属性的比对（值本身在客户端是正确的）
+      suppressHydrationWarning
       data-today={dayjs(date).isSame(new Date(), 'day') || undefined}
       data-hidden={hidden || undefined}
       data-highlight-today={highlightToday || undefined}

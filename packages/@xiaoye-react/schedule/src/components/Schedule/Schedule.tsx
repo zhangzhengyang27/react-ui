@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import {
   Box,
   BoxProps,
@@ -277,6 +278,28 @@ export const Schedule = factory<ScheduleFactory>((_props) => {
     vars,
   });
 
+  // responsive 布局此前同时挂载桌面与移动两套视图（仅 CSS display 切换），
+  // 事件展开 + 布局计算翻倍。用 ResizeObserver 跟踪容器宽度（与 @container 断点
+  // 一致的 600px），只挂载当前激活的一侧；首次测量前按桌面渲染
+  const responsiveRootRef = useRef<HTMLDivElement | null>(null);
+  const [isNarrowContainer, setIsNarrowContainer] = useState(false);
+
+  useEffect(() => {
+    if (layout !== 'responsive') {
+      return undefined;
+    }
+    const node = responsiveRootRef.current;
+    if (!node || typeof ResizeObserver === 'undefined') {
+      return undefined;
+    }
+    const observer = new ResizeObserver((entries) => {
+      const width = entries[0]?.contentRect.width ?? 0;
+      setIsNarrowContainer(width > 0 && width <= 600);
+    });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [layout]);
+
   // 不向 useUncontrolled 传 onChange：受控模式下 setter 就是 onChange 本身，
   // 再叠加 handleViewChange 的显式调用会导致 onViewChange 双触发。
   // onViewChange 由 handleViewChange 显式调用，作为唯一出口
@@ -379,9 +402,15 @@ export const Schedule = factory<ScheduleFactory>((_props) => {
 
   if (layout === 'responsive') {
     return (
-      <Box {...getStyles('root')} mod={[{ layout }, mod]} {...others}>
-        <Box {...getStyles('desktopView')}>{desktopContent}</Box>
-        <Box {...getStyles('mobileView')}>{mobileContent}</Box>
+      <Box
+        ref={responsiveRootRef}
+        {...getStyles('root')}
+        mod={[{ layout }, mod]}
+        {...others}
+      >
+        {/* 只挂载当前激活的一侧：事件展开 + 布局计算不再双倍执行 */}
+        <Box {...getStyles('desktopView')}>{isNarrowContainer ? null : desktopContent}</Box>
+        <Box {...getStyles('mobileView')}>{isNarrowContainer ? mobileContent : null}</Box>
       </Box>
     );
   }

@@ -294,6 +294,11 @@ export const Cascader = factory<CascaderFactory>((_props: CascaderBaseProps, _re
         try {
             const children = await loadData(node)
             setAsyncChildren(prev => ({ ...prev, [node.value]: children ?? [] }))
+        } catch (error) {
+            // 未处理的 rejection 会污染全局错误上报，且 UI 无任何错误反馈
+            if (process.env.NODE_ENV !== 'production') {
+                console.error(`[@xiaoye-react/ui] Cascader: loadData failed for node "${node.value}"`, error)
+            }
         } finally {
             setLoadingValues(prev => prev.filter(item => item !== node.value))
         }

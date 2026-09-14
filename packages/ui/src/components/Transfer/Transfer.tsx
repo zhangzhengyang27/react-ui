@@ -154,9 +154,16 @@ export const Transfer = factory<TransferFactory>((_props, ref) => {
             return items
         }
         const keyword = query.trim().toLowerCase()
-        return items.filter(
-            item => typeof item.label === 'string' && item.label.toLowerCase().includes(keyword)
-        )
+        return items.filter(item => {
+            // label 为 ReactNode 的条目无法文本匹配：保留而非隐藏（类型上合法的输入）
+            if (typeof item.label !== 'string') {
+                return true
+            }
+            return (
+                item.label.toLowerCase().includes(keyword) ||
+                String(item.value).toLowerCase().includes(keyword)
+            )
+        })
     }
 
     /** 面板列表内方向键移动焦点（checkbox 天然可 Tab，方向键提供更快的遍历） */

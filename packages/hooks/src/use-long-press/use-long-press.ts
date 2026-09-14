@@ -62,12 +62,23 @@ export function useLongPress(
       return {} as UseLongPressReturnValue;
     }
 
+    // 最近一次 touchstart 的时间戳：用于识别触摸后的仿真 mouse 事件
+    const lastTouchTimestamp = { current: 0 };
+
     const moveEnabled = cancelOnMove !== false;
     const moveThreshold =
       cancelOnMove === true ? DEFAULT_MOVE_THRESHOLD : cancelOnMove === false ? 0 : cancelOnMove;
 
     const start = (event: React.MouseEvent | React.TouchEvent) => {
       if (!isMouseEvent(event) && !isTouchEvent(event)) {
+        return;
+      }
+
+      // 触摸后浏览器会派发仿真 mouse 事件：同一手势 mouse 分支跳过，
+      // 否则一次触摸会跑两轮 start/timeout，产生重复 onStart 与误报 onCancel
+      if (isTouchEvent(event)) {
+        lastTouchTimestamp.current = Date.now();
+      } else if (Date.now() - lastTouchTimestamp.current < 500) {
         return;
       }
 

@@ -289,14 +289,24 @@ export function useTree({
     )
 
     const expandAllNodes = useCallback(() => {
-        const nextState = { ..._expandedState }
-        Object.keys(nextState).forEach(key => {
-            nextState[key] = true
-            tryLoadAsync(key)
-        })
+        // 一次性遍历树收集全部可展开节点：旧的逐 key findTreeNode 全树查找是 O(n²)，
+        // 数千节点的大树调用一次会冻结主线程数百毫秒
+        const nextState: Record<string, boolean> = { ..._expandedState }
+        const walk = (nodes: TreeNodeData[]) => {
+            nodes.forEach(node => {
+                nextState[node.value] = true
+                if (node.hasChildren && !Array.isArray(node.children)) {
+                    loadNodeImpl(node.value)
+                }
+                if (Array.isArray(node.children)) {
+                    walk(node.children)
+                }
+            })
+        }
+        walk(data)
 
         setExpandedState(nextState)
-    }, [_expandedState, tryLoadAsync])
+    }, [_expandedState, data, loadNodeImpl])
 
     const collapseAllNodes = useCallback(() => {
         const nextState = { ..._expandedState }

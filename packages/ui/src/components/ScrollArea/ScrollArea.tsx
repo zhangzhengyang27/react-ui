@@ -294,6 +294,7 @@ export const ScrollAreaAutosize = factory<ScrollAreaAutosizeFactory>((_props, _r
         onRightReached,
         startScrollPosition,
         onOverflowChange,
+        attributes,
         ...others
     } = props
 
@@ -363,6 +364,7 @@ export const ScrollAreaAutosize = factory<ScrollAreaAutosizeFactory>((_props, _r
                 }}
             >
                 <ScrollArea
+                    attributes={attributes}
                     classNames={classNames}
                     styles={styles}
                     scrollbarSize={scrollbarSize}

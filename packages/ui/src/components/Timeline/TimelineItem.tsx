@@ -89,7 +89,14 @@ export const TimelineItem = factory<TimelineItemFactory>((props, ref) => {
     } = useProps('TimelineItem', defaultProps, props as TimelineItemInternalProps)
 
     const theme = useUITheme()
-    const getStyles = __getStyles!
+    // 脱离 Timeline 单独使用时（虽不推荐，但组件被公开导出）给出可读错误，
+    // 而非 undefined.getStyles 的裸 TypeError
+    if (!__getStyles) {
+        throw new Error(
+            '[@xiaoye-react/ui] Timeline.Item component should only be used inside of the Timeline component'
+        )
+    }
+    const getStyles = __getStyles
 
     const isLast = index === (totalItems ?? 0) - 1
     const itemVars: CssVariables = {

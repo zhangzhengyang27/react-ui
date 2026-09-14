@@ -37,14 +37,20 @@ interface PendingFocus<T> {
 }
 
 const findSearchInput = (container: HTMLElement): HTMLInputElement | null => {
-  const lastChild = container.lastElementChild;
-  if (!lastChild) {
+  // MultiSelect 的输入框是 valuesList 容器的兄弟节点（同属 Input wrapper），
+  // 只在容器内查找永远找不到：向上扩大到父级再找
+  const searchIn = (parent: HTMLElement): HTMLInputElement | null => {
+    const lastChild = parent.lastElementChild;
+    if (lastChild instanceof HTMLInputElement) {
+      return lastChild;
+    }
+    const nested = lastChild?.querySelector<HTMLInputElement>('input');
+    if (nested) {
+      return nested;
+    }
     return null;
-  }
-  if (lastChild instanceof HTMLInputElement) {
-    return lastChild;
-  }
-  return lastChild.querySelector<HTMLInputElement>('input');
+  };
+  return searchIn(container) ?? searchIn(container.parentElement ?? container);
 };
 
 const valuesMatch = <T>(a: T[], b: T[]): boolean => {

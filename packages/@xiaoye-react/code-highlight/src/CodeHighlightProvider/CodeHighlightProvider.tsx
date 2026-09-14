@@ -46,9 +46,23 @@ export function CodeHighlightAdapterProvider({
   const highlight = useMemo(() => adapter.getHighlighter(ctx), [adapter, ctx]);
 
   useEffect(() => {
-    if (adapter.loadContext) {
-      adapter.loadContext().then(setCtx);
+    if (!adapter.loadContext) {
+      return undefined;
     }
+    // 竞态守卫：adapter 切换后，前一个 adapter 的慢 promise 后 resolve 会把
+    // ctx 覆盖成旧高亮器；同时 catch 兜底未处理的 rejection
+    let cancelled = false;
+    adapter
+      .loadContext()
+      .then((context: any) => {
+        if (!cancelled) {
+          setCtx(context);
+        }
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
   }, [adapter]);
 
   return <CodeHighlightContext value={{ adapter, highlight }}>{children}</CodeHighlightContext>;

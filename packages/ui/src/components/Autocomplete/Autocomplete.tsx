@@ -174,7 +174,13 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
     const rightSection = (
         <div className={classes.section}>
             {clearable && selectedValue ? (
-                <CloseButton size="xs" onClick={handleClear} aria-label="Clear input" />
+                // 阻止 mousedown 默认行为：焦点先落到清除按钮、按钮随即卸载会把焦点丢到 body
+                <CloseButton
+                    size="xs"
+                    onClick={handleClear}
+                    onMouseDown={event => event.preventDefault()}
+                    aria-label="Clear input"
+                />
             ) : (
                 <AutocompleteChevronIcon className={classes.chevron} />
             )}
@@ -194,11 +200,14 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
         rootSelector: 'root'
     })
 
+    // 稳定引用：内联数组每次渲染新建会击穿 Combobox contextValue 的 memo
+    const selectedValuesMemo = useMemo(() => [selectedValue], [selectedValue])
+
     const input = (
         <Combobox
             opened={opened}
             onChange={setOpened}
-            selectedValues={[selectedValue]}
+            selectedValues={selectedValuesMemo}
             onOptionSubmit={handleOptionSubmit}
             position={position}
             disabled={disabled}
@@ -278,8 +287,9 @@ function renderOptions(data: ComboboxOptionData[]) {
     // 记录每个组名的出现次数，组不连续（如 A,B,A）时为同名组生成唯一 key
     const groupOccurrences = new Map<string, number>()
 
-    const renderOption = (item: ComboboxOptionData) => (
-        <Combobox.Option key={item.value} value={item.value} disabled={item.disabled}>
+    const renderOption = (item: ComboboxOptionData, optionIndex: number) => (
+        // key 附带索引：与 Select 一致，跨组重复 value 不再触发 key 冲突
+        <Combobox.Option key={`${item.value}-${optionIndex}`} value={item.value} disabled={item.disabled}>
             {item.label}
         </Combobox.Option>
     )
@@ -287,6 +297,7 @@ function renderOptions(data: ComboboxOptionData[]) {
     let index = 0
     while (index < data.length) {
         const item = data[index]
+        const optionIndex = index
 
         if (item.group) {
             const group = item.group
@@ -302,11 +313,13 @@ function renderOptions(data: ComboboxOptionData[]) {
 
             result.push(
                 <Combobox.Group key={`group-${group}-${occurrence}`} label={group}>
-                    {groupItems.map(renderOption)}
+                    {groupItems.map((groupItem, groupItemIndex) =>
+                        renderOption(groupItem, optionIndex - groupItems.length + groupItemIndex)
+                    )}
                 </Combobox.Group>
             )
         } else {
-            result.push(renderOption(item))
+            result.push(renderOption(item, optionIndex))
             index++
         }
     }

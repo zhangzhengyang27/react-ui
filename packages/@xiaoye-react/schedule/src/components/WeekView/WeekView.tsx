@@ -971,8 +971,11 @@ export const WeekView = factory<WeekViewFactory>((_props) => {
       ref={(node) => {
         allDaySlotsRef.current[dayIndex] = node!;
       }}
-      tabIndex={dayIndex === 0 ? 0 : -1}
-      onKeyDown={(event) => handleAllDaySlotKeyDown(event, dayIndex)}
+      // static 模式下与 weekday 标签一致地退出 Tab 序（此前只有 weekday 有守卫）
+      tabIndex={mode === 'static' ? -1 : dayIndex === 0 ? 0 : -1}
+      onKeyDown={
+        mode === 'static' ? undefined : (event) => handleAllDaySlotKeyDown(event, dayIndex)
+      }
       onClick={
         mode === 'static' || !onAllDaySlotClick
           ? undefined

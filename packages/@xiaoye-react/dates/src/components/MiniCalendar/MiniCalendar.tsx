@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { useRef } from 'react';
 import {
   AccordionChevron,
   Box,
@@ -16,7 +17,7 @@ import {
   useStyles,
 } from '@xiaoye-react/ui';
 import { useUncontrolled } from '@xiaoye-react/hooks';
-import { toDateString } from '../../utils';
+import { getDefaultClampedDate, toDateString } from '../../utils';
 import { useDatesContext } from '../DatesProvider';
 import classes from './MiniCalendar.module.css';
 
@@ -148,10 +149,20 @@ export const MiniCalendar = factory<MiniCalendarFactory>((_props) => {
   const ctx = useDatesContext();
   const _locale = ctx.getLocale(locale);
 
+  // 未受控锚点日：惰性求值一次（ref），避免每次渲染 new Date() 导致
+  // 长驻页面跨午夜后锚点仍是旧"今天"；并按 min/max 钳制（对齐 Calendar）
+  const fallbackDateRef = useRef<DateStringValue | null>(null);
+  if (fallbackDateRef.current === null) {
+    fallbackDateRef.current = getDefaultClampedDate({
+      minDate: toDateString(minDate) as DateStringValue,
+      maxDate: toDateString(maxDate) as DateStringValue,
+    });
+  }
+
   const [_date, setDate] = useUncontrolled({
     value: toDateString(date),
     defaultValue: toDateString(defaultDate),
-    finalValue: toDateString(value) || dayjs().format('YYYY-MM-DD'),
+    finalValue: toDateString(value) || fallbackDateRef.current,
     onChange: onDateChange,
   });
 

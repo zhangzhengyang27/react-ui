@@ -822,6 +822,12 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
                                     }}
                                     onBlur={(event) => {
                                         onBlur?.(event)
+                                        // 焦点移到本组件内部（胶囊移除按钮等）时不关面板：
+                                        // 否则多选点 Pill 移除会误关下拉并清空搜索词
+                                        const related = event.relatedTarget as Node | null
+                                        if (related && event.currentTarget.parentElement?.contains(related)) {
+                                            return
+                                        }
                                         setOpened(false)
                                         if (clearSearchOnChange) {
                                             handleSearchChange('')

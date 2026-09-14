@@ -40,7 +40,22 @@ export function useUncontrolledDates<Type extends DatePickerType = 'default'>({
     storedType.current = type;
 
     if (value === undefined) {
-      _finalValue = defaultValue !== undefined ? defaultValue : getEmptyValue(type);
+      // 切换 type 时把旧形状的 defaultValue 映射成新形状（default→[v,v]/[v]，
+      // range/multiple→取首个），否则字符串 defaultValue 灌入 range/multiple
+      // 后续 _value.some 等 Array 方法直接崩溃
+      let convertedDefaultValue = defaultValue;
+      if (defaultValue !== undefined) {
+        if (type === 'range') {
+          const raw = Array.isArray(defaultValue) ? defaultValue : [defaultValue, null];
+          convertedDefaultValue = [raw[0] ?? null, raw[1] ?? null];
+        } else if (type === 'multiple') {
+          convertedDefaultValue = Array.isArray(defaultValue) ? defaultValue : [defaultValue];
+        }
+      }
+
+      _finalValue =
+        convertedDefaultValue !== undefined ? convertedDefaultValue : getEmptyValue(type);
+      _finalValue = convertDatesValue(_finalValue, withTime);
       _setValue(_finalValue);
     }
   }

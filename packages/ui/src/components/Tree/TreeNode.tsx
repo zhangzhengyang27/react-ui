@@ -233,6 +233,8 @@ export function TreeNode({
             })}
             role="treeitem"
             aria-selected={selected}
+            // 与 FlatTreeNode 一致：展开/折叠状态对辅助技术可见
+            aria-expanded={hasChildren ? isExpanded : undefined}
             data-value={node.value}
             data-selected={selected || undefined}
             data-level={level}

@@ -494,7 +494,18 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
                     }}
                 >
                     {valuesList.length > 0 && (
-                        <div className={classes.valuesList} {...pillsReorder.getListProps()}>
+                        // 阻断冒泡：胶囊区域点击不该触发外层 target 的下拉 toggle
+                        // （下拉展开时点胶囊查看/准备拖拽会被误关）；聚焦行为在此补齐
+                        <div
+                            className={classes.valuesList}
+                            {...pillsReorder.getListProps()}
+                            onClick={event => {
+                                event.stopPropagation()
+                                if (!(event.target as HTMLElement).closest('button')) {
+                                    inputRef.current?.focus()
+                                }
+                            }}
+                        >
                             {valuesList}
                         </div>
                     )}

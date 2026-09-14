@@ -42,22 +42,20 @@ export interface CascaderSearchResult {
     path: CascaderNode[]
 }
 
-/** 收集搜索命中的叶子节点及其路径 */
+/** 收集搜索命中的叶子节点及其路径。walk 携带父链构造 path，不再逐叶全树 findTreeNodePath（O(n²)→O(n)） */
 export function collectLeafMatches(nodes: CascaderNode[], query: string, hasLoadData: boolean): CascaderSearchResult[] {
     const results: CascaderSearchResult[] = []
-    const walk = (current: CascaderNode[]) => {
+    const walk = (current: CascaderNode[], trail: CascaderNode[]) => {
         for (const node of current) {
+            const path = [...trail, node]
             if (isCascaderLeaf(node, hasLoadData)) {
-                const path = findTreeNodePath(node.value, nodes)
-                if (path) {
-                    results.push({ node, path })
-                }
+                results.push({ node, path })
             } else if (Array.isArray(node.children) && node.children.length > 0) {
-                walk(node.children)
+                walk(node.children, path)
             }
         }
     }
 
-    walk(filterTreeData(nodes, query) as CascaderNode[])
+    walk(filterTreeData(nodes, query) as CascaderNode[], [])
     return results
 }

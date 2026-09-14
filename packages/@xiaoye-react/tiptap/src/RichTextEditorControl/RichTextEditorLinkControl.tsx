@@ -108,7 +108,18 @@ export const RichTextEditorLinkControl = factory<RichTextEditorLinkControlFactor
     }
   };
 
-  useWindowEvent('edit-link', handleOpen, false);
+  // 只响应本编辑器的 edit-link：全局事件按 editor 实例过滤（多编辑器同页互不干扰）
+  useWindowEvent(
+    'edit-link',
+    (event: Event) => {
+      const detail = (event as CustomEvent).detail as { editor?: unknown } | undefined;
+      if (detail?.editor && detail.editor !== ctx.editor) {
+        return;
+      }
+      handleOpen();
+    },
+    false
+  );
 
   const active = useEditorState({
     editor: ctx.editor ?? null,

@@ -1,4 +1,6 @@
-import { filterProps, getSpacing, InlineStyles, keys, rem, useUITheme } from '../../core'
+import { filterProps, getSpacing, InlineStyles, keys, rem, useUITheme,
+  getSortedBreakpoints,
+} from '../../core'
 import type { SimpleGridProps } from './SimpleGrid'
 
 interface SimpleGridVariablesProps extends SimpleGridProps {
@@ -46,7 +48,12 @@ export function SimpleGridVariables({
             : { '--sg-cols': getBaseValue(cols)?.toString() })
     })
 
-    const breakpointKeys = keys(theme.breakpoints)
+    // 按断点数值升序生成 @media：自定义主题追加乱序断点时，低断点规则
+    // 才不会被后面的高断点规则覆盖（级联顺序错误）
+    const breakpointKeys = getSortedBreakpoints(
+      keys(theme.breakpoints),
+      theme.breakpoints
+    ).map((breakpoint) => breakpoint.value);
     const media: { query: string; styles: Record<string, string> }[] = []
 
     breakpointKeys.forEach(breakpoint => {

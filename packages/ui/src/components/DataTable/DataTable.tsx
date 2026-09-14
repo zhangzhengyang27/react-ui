@@ -373,7 +373,17 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
     }, [records, isSortControlled, sortStatusState])
 
     const handleSortClick = (column: DataTableColumn) => {
-        const accessor = column.accessor as string
+        // 函数 accessor 无法从 record 按字符串取值：本地排序会全取 undefined，
+        // 受控模式还会把函数当 accessor 回传给消费方，禁用其排序
+        if (typeof column.accessor !== 'string') {
+            if (process.env.NODE_ENV !== 'production') {
+                console.warn(
+                    '[@xiaoye-react/ui] DataTable: columns with a function accessor cannot be sorted locally. Provide a string accessor or control sorting externally.'
+                )
+            }
+            return
+        }
+        const accessor = column.accessor
         const direction = getNextSortDirection(
             sortStatusState && sortStatusState.accessor === accessor ? sortStatusState.direction : undefined
         )

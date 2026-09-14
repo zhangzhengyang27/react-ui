@@ -217,13 +217,18 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
         const pasted = event.clipboardData.getData('text')
         if (!splitChars || splitChars.length === 0) return
 
-        const delimiter = splitChars.find(char => pasted.includes(char))
-        if (delimiter) {
+        // 按全部命中的分隔符一次切分：此前只用第一个命中的分隔符，
+        // splitChars={[',',';']} 时粘贴 "a,b;c" 会得到 "a" 和 "b;c" 两个 tag
+        const delimiters = splitChars.filter(char => pasted.includes(char))
+        if (delimiters.length > 0) {
             event.preventDefault()
+            const splitRegex = new RegExp(
+                `[${delimiters.map(char => char.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('')}]`
+            )
             // 不能逐段调用 addTag：其闭包中的 selectedValues 是同一渲染快照，
             // 多次调用都基于旧值计算，导致只有最后一段生效。改为单次累加后统一更新
             const nextValues = [...selectedValues]
-            for (const part of pasted.split(delimiter)) {
+            for (const part of pasted.split(splitRegex)) {
                 const trimmed = part.trim()
                 if (!trimmed) continue
                 if (maxTags !== undefined && nextValues.length >= maxTags) break

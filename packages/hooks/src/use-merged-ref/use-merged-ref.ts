@@ -42,6 +42,10 @@ export function mergeRefs<T>(...refs: PossibleRef<T>[]): RefCallback<T> {
                         cleanup()
                     } else if (typeof ref === 'object' && ref !== null && 'current' in ref) {
                         assignRef(ref, null)
+                    } else if (typeof ref === 'function') {
+                        // 该函数 ref 未返回 cleanup：React 19 不再自动调用 ref(null)，
+                        // 这里补齐 18 语义，避免函数 ref 滞留已分离节点
+                        ;(ref as (value: T | null) => void)(null)
                     }
                 })
                 cleanupMap.clear()
@@ -83,6 +87,9 @@ export function useMergedRef<T>(...refs: PossibleRef<T>[]) {
                     // (especially React dispatchSetState used as ref) with null during
                     // commit/deletion can schedule state updates and trigger infinite loops.
                     assignRef(ref, null)
+                } else if (typeof ref === 'function') {
+                    // 未返回 cleanup 的函数 ref：补齐 null 调用，避免滞留已分离节点
+                    ;(ref as (value: T | null) => void)(null)
                 }
             })
             cleanupMap.clear()

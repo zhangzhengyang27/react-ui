@@ -168,8 +168,10 @@ export const SplitterResizer = factory<SplitterResizerFactory>((_props, ref) => 
             // 水平分栏的分隔条本身是竖直的,aria-orientation 按分隔条自身方向取值
             tabIndex={0}
             aria-orientation={ctx.orientation === 'horizontal' ? 'vertical' : 'horizontal'}
-            aria-valuemin={0}
-            aria-valuemax={100}
+            // 与实际拖拽钳位一致（MIN_SIZE 约束）：此前声明 0-100，读屏报告的范围与
+            // 实际可调范围不符
+            aria-valuemin={5}
+            aria-valuemax={95}
             aria-valuenow={Math.round(ctx.sizes[index] ?? 0)}
             {...getStyles('resizer')}
             onMouseDown={handleMouseDown}

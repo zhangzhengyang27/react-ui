@@ -227,7 +227,9 @@ const defaultProps = {
     allowDeselect: true,
     checkIconPosition: 'left',
     hiddenInputValuesDivider: ',',
-    searchPlaceholder: 'Search...'
+    searchPlaceholder: 'Search...',
+    // 与 JSDoc 的 @default true 承诺对齐（此前缺失导致默认不渲染滚动容器）
+    withScrollArea: true
 } satisfies Partial<ComboboxPopoverProps>
 
 /**
@@ -325,12 +327,13 @@ function renderOptions(
         if (isOptionsGroup(item)) {
             return (
                 <Combobox.Group label={item.group} key={`group-${item.group}-${index}`}>
-                    {item.items.map((raw) => {
+                    {item.items.map((raw, childIndex) => {
                         const option = toComboboxItem(raw)
                         return (
                         <Option
                             data={option}
-                            key={option.value}
+                            // key 附带索引：跨组重复 value 不再触发 key 冲突（对齐 Select）
+                            key={`${option.value}-${index}-${childIndex}`}
                             value={value}
                             withCheckIcon={withCheckIcon}
                             withAlignedLabels={withAlignedLabels}
@@ -347,7 +350,7 @@ function renderOptions(
         return (
             <Option
                 data={item}
-                key={item.value}
+                key={`${'value' in item ? item.value : index}-${index}`}
                 value={value}
                 withCheckIcon={withCheckIcon}
                 withAlignedLabels={withAlignedLabels}

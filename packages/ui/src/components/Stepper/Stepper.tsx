@@ -183,7 +183,6 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
                 {...getStyles('root')}
                 mod={[{ orientation }, mod]}
                 {...others}
-                role="tablist"
                 aria-orientation={orientation}
             >
                 {clonedChildren}

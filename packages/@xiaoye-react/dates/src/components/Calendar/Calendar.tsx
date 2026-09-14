@@ -395,7 +395,8 @@ export const Calendar = factory<CalendarFactory>((_props) => {
         case 'Y':
           if (_level === 'month') {
             event.preventDefault();
-            setLevel('year');
+            // 经 clampLevel：maxLevel="month" 时头部按钮已隐藏，快捷键不应绕过限制
+            setLevel(clampLevel('year', minLevel, maxLevel));
           }
           break;
       }

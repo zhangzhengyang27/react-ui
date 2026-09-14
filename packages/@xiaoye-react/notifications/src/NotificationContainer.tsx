@@ -57,6 +57,9 @@ export function NotificationContainer({
   const scrollDismissTimeout = useRef<number>(-1);
   const notificationRef = useRef<HTMLDivElement>(null);
   const hoveredRef = useRef(false);
+  // 镜像最新 paused：scroll-dismiss 复位定时器的回调不能捕获过期闭包
+  const pausedRef = useRef(paused);
+  pausedRef.current = paused;
   const offsetRef = useRef(0);
   const isCloseDisabled = allowClose === false;
 
@@ -127,7 +130,11 @@ export function NotificationContainer({
     scrollDismissTimeout.current = window.setTimeout(() => {
       setScrollDismissActive(false);
       setSwipeOffset(0);
-      handleAutoClose();
+      // 回调执行时 paused 可能已变化（悬停其他通知）：读 ref 而非过期闭包，
+      // 避免全局暂停期间幽灵 timer 仍调度自动关闭
+      if (!pausedRef.current) {
+        handleAutoClose();
+      }
     }, SCROLL_DISMISS_RESET_TIMEOUT);
   };
 

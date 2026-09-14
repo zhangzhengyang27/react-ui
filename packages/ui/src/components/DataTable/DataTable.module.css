@@ -206,6 +206,12 @@
     background-color: var(--ui-color-body);
 }
 
+/* 吸顶模式 + 固定列组合：上面的规则（特异性更高）会把固定列表头压到 z-index:1，
+   低于表体固定列的 z-index:2，垂直滚动时表体固定单元格会盖住表头 */
+.root[data-sticky-header] .thead .th[data-sticky] {
+    z-index: 3;
+}
+
 .th[data-sticky] {
     z-index: 3;
 }

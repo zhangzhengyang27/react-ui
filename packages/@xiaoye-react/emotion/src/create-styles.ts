@@ -1,4 +1,5 @@
 import { em, UIBreakpoint, UITheme, px, useUITheme } from '@xiaoye-react/ui';
+import { useGuaranteedMemo } from './use-guaranteed-memo';
 import { CSSObject } from './types';
 import { useCss } from './use-css';
 
@@ -38,8 +39,13 @@ export function createStyles<
   return function useStyles(params: Params) {
     const theme = useUITheme();
     const helpers = getHelpers(theme);
-    const cssObject: Record<string, any> = getCssObject(theme, params, helpers);
     const { css, cx } = useCss();
+    // cssObject 按 (theme, params) memo：父组件频繁重渲染时不再对每个样式 key
+    // 重复执行 serializeStyles（结果 hash 相同时 emotion 仅做字符串比较，依然有开销）
+    const cssObject = useGuaranteedMemo(
+      () => getCssObject(theme, params, helpers) as Record<string, any>,
+      [theme, params]
+    );
     const classes = Object.keys(cssObject).reduce<Record<string, string>>((acc, key) => {
       acc[key] = css(cssObject[key]);
       return acc;

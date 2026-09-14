@@ -4,7 +4,7 @@ import { isMultidayEvent, validateEvent } from '../../utils';
 
 function getEffectiveEndDate(event: ScheduleEventData) {
   const endDate = dayjs(event.end).startOf('day');
-  if (dayjs(event.end).hour() === 0 && dayjs(event.end).minute() === 0) {
+  if (dayjs(event.end).hour() === 0 && dayjs(event.end).minute() === 0 && dayjs(event.end).second() === 0) {
     return endDate.subtract(1, 'day');
   }
   return endDate;

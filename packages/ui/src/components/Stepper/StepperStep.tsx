@@ -148,8 +148,6 @@ export const StepperStep = factory<StepperStepFactory>((props, ref) => {
             {...others}
             onClick={handleClick}
             disabled={!isSelectable}
-            role="tab"
-            aria-selected={isActive}
         >
             <div {...getStyles('stepBody', { classNames, styles })}>
                 <div {...getStyles('stepIcon', { classNames, styles })}>{renderIcon()}</div>

@@ -35,6 +35,7 @@ import {
   getMonthDays,
   getWeekdaysNames,
   getWeekNumber,
+  isAllDayEvent,
   isSameMonth,
   sortEvents,
   toDateString,
@@ -428,7 +429,12 @@ export const MobileMonthView = factory<MobileMonthViewFactory>((_props) => {
   const eventsList = selectedDateEvents.map((event) => {
     const startTime = dayjs(event.start).format('HH:mm');
     const endTime = dayjs(event.end).format('HH:mm');
-    const isAllDay = startTime === '00:00' && endTime === '00:00';
+    // 复用 isAllDayEvent 工具（与 AgendaView 一致）：手写的 00:00→00:00 判定
+    // 会把 00:00→23:59 的全天事件显示成时间区间；
+    // 另外零长度事件（date-only 字符串，start === end）按全天显示
+    const isAllDay =
+      isAllDayEvent({ event, date: _selectedDate! }) ||
+      dayjs(event.start).isSame(dayjs(event.end));
 
     const eventChildren = (
       <Box {...getStyles('mobileMonthViewEventBody')}>

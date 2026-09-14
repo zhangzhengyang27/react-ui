@@ -6,6 +6,11 @@ function hidden(element: HTMLElement) {
         return false
     }
 
+    // 仅查内联 style 会漏掉 class/visibility 隐藏的元素（陷阱初始聚焦会静默失败），
+    // checkVisibility 覆盖 display/visibility/content-visibility 等
+    if (typeof element.checkVisibility === 'function') {
+        return !element.checkVisibility({ checkVisibilityCSS: true })
+    }
     return element.style.display === 'none'
 }
 

@@ -224,25 +224,27 @@ export function useDragDropHandlers<T = any>(
     [dropTarget]
   );
 
-  // 拖拽/悬浮期间 dragover 每帧触发视图重渲染，context value 不 memo 会放大整树更新
+  // 拖拽/悬浮期间 dragover 每帧触发视图重渲染，context value 不 memo 会放大整树更新。
+  // dropTarget/setDropTarget 用 hook 内真实的 dropTarget 状态：
+  // 此前读 dragState.state.dropTarget（从未被写入，恒 null），是对外语义误导的死 API
   const dragContextValue: DragContextValue = useMemo(
     () => ({
       isDragging: dragState.state.isDragging,
       draggedEventId: dragState.state.draggedEventId,
       draggedEvent: dragState.state.draggedEvent,
-      dropTarget: dragState.state.dropTarget,
+      dropTarget,
       onDragStart: handleDragStart,
       onDragEnd: handleDragEnd,
-      setDropTarget: dragState.setDropTarget,
+      setDropTarget: (target: Parameters<NonNullable<DragContextValue['setDropTarget']>>[0]) =>
+        setDropTarget(target as T),
     }),
     [
       dragState.state.isDragging,
       dragState.state.draggedEventId,
       dragState.state.draggedEvent,
-      dragState.state.dropTarget,
+      dropTarget,
       handleDragStart,
       handleDragEnd,
-      dragState.setDropTarget,
     ]
   );
 

@@ -50,8 +50,6 @@ function Demo() {
 
 <code src="./demo/clearable.tsx"></code>
 
-<code src="./demo/clearSectionMode.tsx"></code>
-
 ### 可搜索
 
 设置 `searchable` 属性以允许用户输入过滤选项：
@@ -188,12 +186,6 @@ function Demo() {
 
 <code src="./demo/scrollArea.tsx"></code>
 
-### 下拉菜单适配视口高度
-
-设置 `floatingHeight="viewport"` 可使下拉菜单扩展到视口中可用的垂直空间。此模式下 `flip` 中间件被禁用——下拉菜单始终按配置方向打开，并被限制在视口边缘而不是翻转到另一侧。适用于大量选项列表：
-
-<code src="./demo/floatingHeight.tsx"></code>
-
 ### 分组选项
 
 <code src="./demo/groups.tsx"></code>
@@ -204,18 +196,6 @@ function Demo() {
 
 <code src="./demo/disabledOptions.tsx"></code>
 
-### 在 Popover 内使用
-
-要在 popover 内使用 `MultiSelect`，需设置 `withinPortal: false`：
-
-<code src="./demo/withinPopover.tsx"></code>
-
-### 控制下拉菜单打开状态
-
-可使用 `dropdownOpened` 属性控制下拉菜单的打开状态。此外，还可以使用 `onDropdownClose` 和 `onDropdownOpen` 监听下拉菜单打开状态的变化。
-
-<code src="./demo/dropdownOpened.tsx"></code>
-
 ### 下拉菜单位置
 
 默认情况下，如果空间足够，下拉菜单显示在输入框下方；否则显示在输入框上方。可通过设置 `position` 和 `middlewares` 属性来更改此行为，这些属性会传递给底层的 [Popover](/components/popover) 组件。
@@ -224,31 +204,11 @@ function Demo() {
 
 <code src="./demo/dropdownPosition.tsx"></code>
 
-### 下拉菜单宽度
-
-要更改下拉菜单宽度，请在 `comboboxProps` 中设置 `width` 属性。默认情况下，下拉菜单宽度等于输入框宽度。
-
-<code src="./demo/dropdownWidth.tsx"></code>
-
 ### 下拉菜单偏移
 
 要更改下拉菜单偏移，请在 `comboboxProps` 中设置 `offset` 属性：
 
 <code src="./demo/dropdownOffset.tsx"></code>
-
-### 下拉菜单动画
-
-默认情况下，下拉菜单动画被禁用。要启用动画，可设置 `transitionProps`，它会传递给底层的 [Transition](/components/transition) 组件。
-
-<code src="./demo/dropdownAnimation.tsx"></code>
-
-### 下拉菜单内边距
-
-<code src="./demo/dropdownPadding.tsx"></code>
-
-### 下拉菜单阴影
-
-<code src="./demo/dropdownShadow.tsx"></code>
 
 <code src="./demo/sections.tsx"></code>
 

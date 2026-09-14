@@ -15,6 +15,26 @@ const flat = [];
 // appData 路由 path 不带前导斜杠（如 components/button），统一去掉再比
 const routeSet = new Set(flat.map((p) => p.replace(/^\/+/, '').replace(/\/+$/, '')).filter(Boolean));
 
+// appData.json 是 dev 元数据，dumi build（mako）不更新它，页面增删后会滞后；
+// 并入 dist 预渲染页面得到的路由（构建后最新），两者取并集作为有效路由集
+const distDir = path.join(root, 'dist');
+if (fs.existsSync(distDir)) {
+  (function walkDist(dir) {
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      const p = path.join(dir, e.name);
+      if (e.isDirectory()) walkDist(p);
+      else if (e.name === 'index.html') {
+        const rel = path
+          .relative(distDir, p)
+          .split(path.sep)
+          .join('/')
+          .replace(/\/index\.html$/, '');
+        if (rel && rel !== '~demos' && !rel.startsWith('~demos/')) routeSet.add(rel);
+      }
+    }
+  })(distDir);
+}
+
 // 剔除 fenced code block，避免把示例代码里的 URL 当成页面链接
 function stripCodeFences(text) {
   return text.replace(/^```[\s\S]*?^```/gm, '');

@@ -14,6 +14,7 @@ const locales = {
         development: '研发',
         components: '组件',
         hooks: 'Hooks',
+        x: '扩展',
         tools: '工具',
         resources: '资源',
         blog: '博客'
@@ -23,6 +24,7 @@ const locales = {
         development: 'Development',
         components: 'Components',
         hooks: 'Hooks',
+        x: 'Extensions',
         tools: 'Tools',
         resources: 'Resources',
         blog: 'Blog'
@@ -68,6 +70,10 @@ const HeaderNavigation: React.FC<NavigationProps> = props => {
         {
             label: <Link to={utils.getLocalizedPathname('/docs/hooks/package', isZhCN, search)}>{locale.hooks}</Link>,
             key: 'docs/hooks'
+        },
+        {
+            label: <Link to={utils.getLocalizedPathname('/docs/x/extensions', isZhCN, search)}>{locale.x}</Link>,
+            key: 'docs/x'
         },
         {
             label: <Link to="/colors-generator">{locale.tools}</Link>,

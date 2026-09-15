@@ -650,3 +650,19 @@ body {
     box-shadow: var(--popover-shadow, var(--ui-shadow-md));
     padding: var(--ui-spacing-sm);
 }
+
+/* Popover/HoverCard 箭头（FloatingArrow 渲染的 div，背景即箭头填充色） */
+.ui-Popover-arrow,
+.ui-HoverCard-arrow {
+    background-color: var(--ui-color-body);
+}
+
+/* HoverCardDropdown 渲染静态类 ui-HoverCard-dropdown（同 ui-Popover-dropdown 情形，
+   哈希类规则从未应用到 DOM），不补规则则浮层透明 */
+.ui-HoverCard-dropdown {
+    background-color: var(--ui-color-body);
+    border: 1px solid var(--ui-color-default-border);
+    border-radius: var(--hovercard-radius, var(--ui-radius-default));
+    box-shadow: var(--hovercard-shadow, var(--ui-shadow-md));
+    padding: var(--ui-spacing-sm);
+}

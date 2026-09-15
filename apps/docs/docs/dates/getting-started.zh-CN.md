@@ -15,17 +15,6 @@ description: react-ui GettingStarted 文档。
 import '@xiaoye-react/ui/style.css';
 ```
 
-## 不要忘记导入样式
-
-按照上面的安装说明操作后，某些功能仍然无法正常工作
-（日历和日期选择器没有样式，看起来是坏的）？
-你掉进了未导入 dates 样式的陷阱！
-要解决这个问题，请在应用根目录导入 dates 样式：
-
-```tsx
-import '@xiaoye-react/ui/style.css';
-```
-
 ## 用法
 
 安装 `@xiaoye-react/ui` 包并导入样式后，你就可以使用其中的所有组件：
@@ -78,7 +67,7 @@ dayjs.extend(customParseFormat);
 
 在 DatesProvider 上设置 locale 的示例：
 
-上面的代码在所有环境中都有效，除了 Next.js app router。
+第一种写法在所有环境中都有效，Next.js app router 除外。
 如果你使用 Next.js app router，你必须在导入 `dayjs/locale/x` 的文件顶部
 添加 `'use client';`——locale 数据在客户端和服务端都是必需的。
 

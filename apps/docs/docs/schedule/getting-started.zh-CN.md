@@ -14,16 +14,6 @@ description: react-ui GettingStarted 文档。
 
 ```tsx
 import '@xiaoye-react/ui/style.css';
-// ‼️ 在核心包和 dates 包样式之后导入 schedule 样式
-```
-
-## 不要忘记导入样式
-
-按照上述说明安装后，某些功能仍然无法正常工作（schedule 组件没有样式且显示损坏）？
-你掉入了未导入 schedule 样式的陷阱！
-要修复此问题，请在应用根目录导入 schedule 样式：
-
-```tsx
 ```
 
 ## dayjs

@@ -640,3 +640,13 @@ body {
 @media (min-width: 62em) { .ui-hidden-from-md { display: none !important; } }
 @media (min-width: 75em) { .ui-hidden-from-lg { display: none !important; } }
 @media (min-width: 88em) { .ui-hidden-from-xl { display: none !important; } }
+
+/* PopoverDropdown 渲染静态类 ui-Popover-dropdown（非 CSS modules 哈希类），
+   其背景/边框/阴影必须在此提供；否则日期选择等浮层透明（背景后文字透出） */
+.ui-Popover-dropdown {
+    background-color: var(--ui-color-body);
+    border: 1px solid var(--ui-color-default-border);
+    border-radius: var(--popover-radius, var(--ui-radius-default));
+    box-shadow: var(--popover-shadow, var(--ui-shadow-md));
+    padding: var(--ui-spacing-sm);
+}

@@ -1,0 +1,19 @@
+diff --git a/dist/client/theme-api/DumiDemo/index.js b/dist/client/theme-api/DumiDemo/index.js
+index 6f40908b4a1d38e1d71429ad21ddfc4bdf34b27e..1b045a94ab9796bdca1b5210f5f3707f791e1ec3 100644
+--- a/dist/client/theme-api/DumiDemo/index.js
++++ b/dist/client/theme-api/DumiDemo/index.js
+@@ -43,10 +43,10 @@ var InternalDumiDemo = function InternalDumiDemo(props) {
+     "".concat(isHashRoute ? "#" : '').concat(basename).concat(SP_ROUTE_PREFIX, "demos/").concat(props.demo.id).concat(routeQuery)
+   }, props.previewerProps), props.previewerProps.iframe ? null : demoNode);
+ };
+-export var DumiDemo = /*#__PURE__*/React.memo(InternalDumiDemo, function (prev, next) {
+-  // compare length for performance
+-  return JSON.stringify(prev).length === JSON.stringify(next).length;
+-});
++// react-ui patch: 去掉 React.memo 判等(JSON 长度比较)。demo 数据异步就位后,
++// Suspense 重试渲染会被该 memo 的 props 判等命中而 bailout,骨架屏永久停留
++// (schedule 视图页 100% 复现)。参见 https://github.com/umijs/dumi/issues 。
++export var DumiDemo = InternalDumiDemo;
+ if (process.env.NODE_ENV !== 'production') {
+   InternalDumiDemo.displayName = 'DumiDemo';
+ }

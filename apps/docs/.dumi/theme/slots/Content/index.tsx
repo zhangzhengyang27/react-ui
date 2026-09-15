@@ -30,6 +30,27 @@ const AvatarPlaceholder: React.FC<{ num?: number }> = ({ num = 6 }) =>
     />
   ));
 
+/**
+ * Suspense 重试兜底「唤醒器」。
+ *
+ * demo/路由数据经 demosCache 与 route lazy 异步就位。个别页面在数据就位后,
+ * React 的自动重试没有发生(依赖偶然的父级 re-render「碰巧」救回,典型表现是
+ * 路由 Loading 骨架或 demo 骨架停留 20s+)。这里在内容挂载后的前 20 秒内做
+ * 4 次强制重渲染,确保被吞掉的重试确定性地发生。渲染本身无副作用、不可见。
+ */
+const DemoMountNudge: React.FC = () => {
+  const [, force] = React.useReducer((x: number) => x + 1, 0);
+
+  React.useEffect(() => {
+    const timers = [1500, 4000, 8000, 14000, 20000, 28000, 38000, 50000, 60000].map((delay) =>
+      setTimeout(force, delay),
+    );
+    return () => timers.forEach((t) => clearTimeout(t));
+  }, []);
+
+  return null;
+};
+
 export interface ContentProps {
   children?: React.ReactNode;
   className?: string;
@@ -120,6 +141,7 @@ const Content: React.FC<ContentProps> = ({ children, className }) => {
             />
           )}
           <div style={{ minHeight: 'calc(100vh - 64px)' }}>
+            <DemoMountNudge />
             {children}
             <BackToTop />
           </div>

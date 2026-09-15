@@ -27,11 +27,14 @@ export default defineConfig({
     // 路由与产物
     hash: true,
     mfsu: false,
-    // 用 mako（Rust 极速打包器）替代默认 webpack，dev/build 速度提升 5-10x。
-    // 注：mako 无持久化缓存（0.11.x rust 绑定未实现），dev 每次全量编译约 3 分钟；
-    // webpack 路线虽有 filesystem cache（热启动约 2 分钟），但冷启动 20 分钟+ 且入口
-    // 产物更大，权衡后保留 mako。根治需迁移 rspress 等新一代框架（见 ROADMAP）。
-    mako: {},
+    // ⚠️ 2026-09-16 回退 webpack：mako 0.11.x 的 chunk 图存在两类致命问题——
+    //  1) md 页面被拆成 texts 元模块 + 内容模块两个虚拟模块，部分页面的路由 import()
+    //     被错接到无 default 的 texts 模块，路由内容永不挂载（week-view 等 schedule 页
+    //     稳定复现，其余页面随机）；
+    //  2) demo 资产异步就位后 React 的 Suspense 重试偶发不被调度，demo 骨架停留 20s+。
+    // 应用层手段（dumi DumiDemo 去 memo 补丁、Content 插槽 nudge）只能缓解 2)，无法解决 1)。
+    // webpack 冷构建约 20 分钟，但产物正确。根治需迁移 rspress 等新一代框架（见 ROADMAP）。
+    // mako: {},
     // 关闭生产构建 source map：mako 默认 normalizedDevtool='source-map'，
     // 会为超大 chunk 生成数十 MB 的 .map，使 dist 膨胀到 3G+。
     // devtool 是 umi/dumi 顶层配置键（mako 子配置不支持该键）；

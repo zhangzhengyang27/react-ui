@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { SegmentedControl, Stack } from '@xiaoye-react/ui';
-import { ResourcesWeekView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { ResourcesWeekView, ScheduleEventData } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { resources } from './_data';
 
@@ -77,7 +77,7 @@ const events: ScheduleEventData[] = [
 ];
 
 const dataCode = `import dayjs from 'dayjs';
-import { ScheduleEventData, ScheduleResourceData } from '@xiaoye-react/schedule';
+import { ScheduleEventData, ScheduleResourceData } from '@xiaoye-react/ui';
 
 const day1 = dayjs('2024-01-15').format('YYYY-MM-DD');
 const day2 = dayjs('2024-01-15').add(1, 'day').format('YYYY-MM-DD');
@@ -106,7 +106,7 @@ const code = `
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { SegmentedControl, Stack } from '@xiaoye-react/ui';
-import { ResourcesWeekView } from '@xiaoye-react/schedule';
+import { ResourcesWeekView } from '@xiaoye-react/ui';
 import { events, resources } from './data';
 
 function Demo() {

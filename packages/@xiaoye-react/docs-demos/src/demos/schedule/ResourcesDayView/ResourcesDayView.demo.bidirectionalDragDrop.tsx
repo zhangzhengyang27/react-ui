@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useRef, useState } from 'react';
 import { Box, Grid, Text } from '@xiaoye-react/ui';
-import { ResourcesDayView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { ResourcesDayView, ScheduleEventData } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { resources } from './_data';
 
@@ -21,7 +21,7 @@ const code = `
 import { useRef, useState } from 'react';
 import dayjs from 'dayjs';
 import { Box, Grid, Text } from '@xiaoye-react/ui';
-import { ResourcesDayView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { ResourcesDayView, ScheduleEventData } from '@xiaoye-react/ui';
 
 const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 

@@ -1,9 +1,9 @@
-import { YearView } from '@xiaoye-react/schedule';
+import { YearView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { regularEvents } from './_data';
 
 const code = `
-import { YearView } from '@xiaoye-react/schedule';
+import { YearView } from '@xiaoye-react/ui';
 import { events } from './data';
 
 function Demo() {

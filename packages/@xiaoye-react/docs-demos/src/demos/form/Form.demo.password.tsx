@@ -1,11 +1,11 @@
 /* oxlint-disable no-console */
 
 import { Box, Button, Group, PasswordInput } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 import { PasswordInput, Group, Button, Box } from '@xiaoye-react/ui';
 
 function Demo() {

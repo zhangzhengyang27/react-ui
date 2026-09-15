@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 import { ClockIcon } from '@phosphor-icons/react/dist/csr/Clock'
 import { MapPinIcon } from '@phosphor-icons/react/dist/csr/MapPin'
 import { Group, Text } from '@xiaoye-react/ui'
-import { DayView, ScheduleEventData } from '@xiaoye-react/schedule'
+import { DayView, ScheduleEventData } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 
 const today = dayjs('2024-01-15').format('YYYY-MM-DD')
@@ -39,7 +39,7 @@ import dayjs from 'dayjs';
 import { ClockIcon } from '@phosphor-icons/react/dist/csr/Clock';
 import { MapPinIcon } from '@phosphor-icons/react/dist/csr/MapPin';
 import { Group, Text } from '@xiaoye-react/ui';
-import { DayView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { DayView, ScheduleEventData } from '@xiaoye-react/ui';
 
 const events: ScheduleEventData[] = [
   {

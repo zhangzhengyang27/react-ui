@@ -1,9 +1,9 @@
-import { DayView } from '@xiaoye-react/schedule';
+import { DayView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { allDayEventsCode, allDayEvents as allDayEventsData } from './_data';
 
 const code = `
-import { DayView } from '@xiaoye-react/schedule';
+import { DayView } from '@xiaoye-react/ui';
 import { events } from './data';
 
 function Demo() {

@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { useState } from 'react';
-import { DateInput, DateInputProps, DateStringValue } from '@xiaoye-react/dates';
+import { DateInput, DateInputProps, DateStringValue } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 dayjs.extend(customParseFormat);
@@ -10,7 +10,7 @@ const code = `
 import { useState } from 'react';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
-import { DateInput, DateInputProps, DateStringValue } from '@xiaoye-react/dates';
+import { DateInput, DateInputProps, DateStringValue } from '@xiaoye-react/ui';
 
 // It is required to extend dayjs with customParseFormat plugin
 // in order to parse dates with custom format

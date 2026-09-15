@@ -41,7 +41,7 @@ const getSpotlightActions = (navigate: (path: string) => void, localized: (path:
 
 const officialExtensions = [
     {
-        name: '@xiaoye-react/dates',
+        name: '@xiaoye-react/ui',
         label: '日期选择器',
         description: '日历、日期/时间选择器及日期相关组件',
         href: '/docs/dates/getting-started'

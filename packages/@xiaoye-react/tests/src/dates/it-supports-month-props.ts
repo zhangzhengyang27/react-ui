@@ -3,7 +3,7 @@ import 'dayjs/locale/ru';
 import dayjs from 'dayjs';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { DatesProvider } from '@xiaoye-react/dates';
+import { DatesProvider } from '@xiaoye-react/ui';
 import { render } from '../core';
 import { itSupportsWeekdaysProps } from './it-supports-weekdays-props';
 

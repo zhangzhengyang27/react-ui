@@ -1,10 +1,10 @@
 import dayjs from 'dayjs';
-import { YearPicker } from '@xiaoye-react/dates';
+import { YearPicker } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import dayjs from 'dayjs';
-import { YearPicker } from '@xiaoye-react/dates';
+import { YearPicker } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

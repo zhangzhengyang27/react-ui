@@ -1,12 +1,12 @@
 /* oxlint-disable no-console */
 import { useEffect } from 'react';
 import { Checkbox, TextInput } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { useEffect } from 'react';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 import { TextInput, Checkbox } from '@xiaoye-react/ui';
 
 interface FormValues {

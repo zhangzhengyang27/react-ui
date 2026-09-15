@@ -1,7 +1,7 @@
 import { UIDemo } from '@xiaoye-react/demo';
 
 const getCodeTemplate = (component: string) =>
-  `import { ${component} } from '@xiaoye-react/dates';
+  `import { ${component} } from '@xiaoye-react/ui';
 
 
 function Demo() {

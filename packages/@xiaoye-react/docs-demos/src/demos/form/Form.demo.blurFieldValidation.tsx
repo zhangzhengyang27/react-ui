@@ -1,11 +1,11 @@
 /* oxlint-disable no-console */
 
 import { Button, NumberInput, TextInput } from '@xiaoye-react/ui';
-import { FORM_INDEX, useForm } from '@xiaoye-react/form';
+import { FORM_INDEX, useForm } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
-import { useForm, FORM_INDEX } from '@xiaoye-react/form';
+import { useForm, FORM_INDEX } from '@xiaoye-react/ui';
 import { NumberInput, TextInput, Button } from '@xiaoye-react/ui';
 
 function Demo() {

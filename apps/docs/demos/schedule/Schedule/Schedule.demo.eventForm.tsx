@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 import { useRef, useState } from 'react'
 import { PlusIcon } from '@phosphor-icons/react/dist/csr/Plus'
 import { ActionIcon, Box, Group } from '@xiaoye-react/ui'
-import { Schedule, ScheduleEventData } from '@xiaoye-react/schedule'
+import { Schedule, ScheduleEventData } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { _eventFormCode, EventData, EventForm } from '../_EventForm'
 import { dataCode, events } from './_data'
@@ -162,7 +162,7 @@ const code = `import dayjs from 'dayjs';
 import { useRef, useState } from 'react';
 import { PlusIcon } from '@phosphor-icons/react/dist/csr/Plus';
 import { ActionIcon, Box, Group } from '@xiaoye-react/ui';
-import { Schedule, ScheduleEventData } from '@xiaoye-react/schedule';
+import { Schedule, ScheduleEventData } from '@xiaoye-react/ui';
 import { EventData, EventForm } from './EventForm';
 import { events } from './events';
 

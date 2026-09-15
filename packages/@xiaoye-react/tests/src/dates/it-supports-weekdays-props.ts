@@ -2,7 +2,7 @@ import { jsx } from 'react/jsx-runtime';
 import 'dayjs/locale/ru';
 import dayjs from 'dayjs';
 import { screen } from '@testing-library/react';
-import { DatesProvider } from '@xiaoye-react/dates';
+import { DatesProvider } from '@xiaoye-react/ui';
 import { render } from '../core';
 
 function expectWeekdaysNames(names) {

@@ -1,10 +1,10 @@
 import { em, getBreakpointValue } from '@xiaoye-react/ui';
-import { createStyles } from '@xiaoye-react/emotion';
+import { createStyles } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { em, getBreakpointValue } from '@xiaoye-react/ui';
-import { createStyles } from '@xiaoye-react/emotion';
+import { createStyles } from '@xiaoye-react/ui';
 
 const useStyles = createStyles((theme, _, u) => ({
   container: {

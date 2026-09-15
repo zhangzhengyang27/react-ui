@@ -1,13 +1,13 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { ResourcesDayView } from '@xiaoye-react/schedule';
+import { ResourcesDayView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { dataCode, resourceEvents, resources } from './_data';
 
 const code = `
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { ResourcesDayView } from '@xiaoye-react/schedule';
+import { ResourcesDayView } from '@xiaoye-react/ui';
 import { events, resources } from './data';
 
 function Demo() {

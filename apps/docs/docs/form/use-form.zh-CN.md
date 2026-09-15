@@ -8,8 +8,6 @@ description: react-ui UseForm 文档。
 
 ## 安装
 
-> **ℹ️ 发布状态**：`@xiaoye-react/form` 目前尚未发布到 npm，当前随本仓库源码提供（本文档内容与仓库实现一致）。包正式发布后，下述安装方式即可直接使用。
-
 `@xiaoye-react/ui` 包不依赖任何其他库。你可以将其与 `@xiaoye-react/ui` 输入框一起使用，也可以单独使用：
 
 <InstallScript packages="@xiaoye-react/ui"></InstallScript>
@@ -68,7 +66,7 @@ description: react-ui UseForm 文档。
 [触碰与脏状态指南](/docs/form/status/)
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -137,7 +135,7 @@ form.reorderListItem('fruits', { from: 1, to: 0 });
 ```
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -194,7 +192,7 @@ form.clearFieldError('path');
 ```
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({ mode: 'uncontrolled' });
@@ -235,7 +233,7 @@ function Demo() {
 ```
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -277,7 +275,7 @@ form.resetDirty();
 
 ```tsx
 import { TextInput } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 interface FormValues {
   name: string;

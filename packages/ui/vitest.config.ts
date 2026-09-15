@@ -18,6 +18,8 @@ export default defineConfig({
         environment: 'jsdom',
         globals: true,
         setupFiles: ['./src/test-setup.ts'],
+        // dates/schedule 日历类单测交互链路长，沿用旧扩展包的 20s 超时
+        testTimeout: 20000,
         include: ['src/**/*.test.{ts,tsx}'],
         css: true
     }

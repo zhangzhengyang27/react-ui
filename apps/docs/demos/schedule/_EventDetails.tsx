@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { Badge, Group, Stack, Text } from '@xiaoye-react/ui';
-import { ScheduleEventData, ScheduleResourceData } from '@xiaoye-react/schedule';
+import { ScheduleEventData, ScheduleResourceData } from '@xiaoye-react/ui';
 
 interface EventDetailsProps {
   event: ScheduleEventData;
@@ -56,7 +56,7 @@ export function EventDetails({ event, resources }: EventDetailsProps) {
 
 export const _eventDetailsCode = `import dayjs from 'dayjs';
 import { Badge, Group, Stack, Text } from '@xiaoye-react/ui';
-import { ScheduleEventData, ScheduleResourceData } from '@xiaoye-react/schedule';
+import { ScheduleEventData, ScheduleResourceData } from '@xiaoye-react/ui';
 
 interface EventDetailsProps {
   event: ScheduleEventData;

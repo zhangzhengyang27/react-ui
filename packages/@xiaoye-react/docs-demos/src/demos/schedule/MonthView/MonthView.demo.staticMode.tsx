@@ -1,9 +1,9 @@
-import { MonthView } from '@xiaoye-react/schedule';
+import { MonthView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { dataCode, regularEvents } from './_data';
 
 const code = `
-import { MonthView } from '@xiaoye-react/schedule';
+import { MonthView } from '@xiaoye-react/ui';
 import { events } from './data';
 
 function Demo() {

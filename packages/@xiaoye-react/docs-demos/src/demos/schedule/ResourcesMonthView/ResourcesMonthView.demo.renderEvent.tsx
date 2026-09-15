@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { HoverCard, UnstyledButton } from '@xiaoye-react/ui';
-import { ResourcesMonthView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { ResourcesMonthView, ScheduleEventData } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { _eventDetailsCode, EventDetails } from '../_EventDetails';
 import { resources } from './_data';
@@ -115,7 +115,7 @@ const code = `
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { HoverCard, UnstyledButton } from '@xiaoye-react/ui';
-import { ResourcesMonthView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { ResourcesMonthView, ScheduleEventData } from '@xiaoye-react/ui';
 import { EventDetails } from './EventDetails';
 import { events as initialEvents, resources } from './data';
 
@@ -164,7 +164,7 @@ export const renderEvent: UIDemo = {
     { fileName: '事件详情.tsx', code: _eventDetailsCode, language: 'tsx' },
     {
       fileName: 'data.ts',
-      code: `import { ScheduleResourceData } from '@xiaoye-react/schedule';\n\nexport const resources: ScheduleResourceData[] = ${JSON.stringify(resources, null, 2)};\n\n// Events with payload data for EventDetails\nexport const events = [\n  // ... events with payload: { description, attendees, location }\n];`,
+      code: `import { ScheduleResourceData } from '@xiaoye-react/ui';\n\nexport const resources: ScheduleResourceData[] = ${JSON.stringify(resources, null, 2)};\n\n// Events with payload data for EventDetails\nexport const events = [\n  // ... events with payload: { description, attendees, location }\n];`,
       language: 'tsx',
     },
   ],

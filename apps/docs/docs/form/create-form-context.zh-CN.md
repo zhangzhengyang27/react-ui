@@ -12,7 +12,7 @@ description: react-ui CreateFormContext 文档。
 
 ```tsx
 import { TextInput } from '@xiaoye-react/ui';
-import { createFormContext } from '@xiaoye-react/form';
+import { createFormContext } from '@xiaoye-react/ui';
 
 // 表单值的定义是必需的
 interface FormValues {
@@ -68,7 +68,7 @@ export function Context() {
 
 ```tsx
 // form-context.ts 文件
-import { createFormContext } from '@xiaoye-react/form';
+import { createFormContext } from '@xiaoye-react/ui';
 
 interface UserFormValues {
   age: number;

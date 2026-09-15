@@ -1,10 +1,10 @@
 import { TextInput } from '@xiaoye-react/ui';
-import { isEmail, useField } from '@xiaoye-react/form';
+import { isEmail, useField } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { TextInput } from '@xiaoye-react/ui';
-import { useField, isEmail } from '@xiaoye-react/form';
+import { useField, isEmail } from '@xiaoye-react/ui';
 
 function Demo() {
   const field = useField({

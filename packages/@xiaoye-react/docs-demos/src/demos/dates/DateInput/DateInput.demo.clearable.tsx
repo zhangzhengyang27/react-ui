@@ -1,10 +1,10 @@
 import dayjs from 'dayjs';
-import { DateInput } from '@xiaoye-react/dates';
+import { DateInput } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import dayjs from 'dayjs';
-import { DateInput } from '@xiaoye-react/dates';
+import { DateInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

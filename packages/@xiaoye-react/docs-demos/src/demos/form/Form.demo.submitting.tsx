@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Button, Group, Stack, Text, TextInput } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { useState } from 'react';
 import { Button, Group, Stack, Text, TextInput } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 const asyncSubmit = (values: any) =>
   new Promise((resolve) => setTimeout(() => resolve(values), 3000));

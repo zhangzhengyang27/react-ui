@@ -1,11 +1,11 @@
 import 'dayjs/locale/ru';
 
-import { DatePickerInput, DatesProvider, MonthPickerInput } from '@xiaoye-react/dates';
+import { DatePickerInput, DatesProvider, MonthPickerInput } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import 'dayjs/locale/ru';
-import { DatesProvider, MonthPickerInput, DatePickerInput } from '@xiaoye-react/dates';
+import { DatesProvider, MonthPickerInput, DatePickerInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

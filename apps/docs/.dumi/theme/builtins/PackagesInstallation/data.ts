@@ -16,14 +16,14 @@ export const PACKAGES_DATA: PackageItem[] = [
     dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui'],
   },
   {
-    package: '@xiaoye-react/form',
+    package: '@xiaoye-react/ui',
     description: '表单管理库',
-    dependencies: ['@xiaoye-react/form'],
+    dependencies: ['@xiaoye-react/ui'],
   },
   {
-    package: '@xiaoye-react/dates',
+    package: '@xiaoye-react/ui',
     description: '日期输入框与日历',
-    dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui', '@xiaoye-react/dates', 'dayjs'],
+    dependencies: ['@xiaoye-react/hooks', '@xiaoye-react/ui', '@xiaoye-react/ui', 'dayjs'],
   },
   {
     package: '@xiaoye-react/notifications',

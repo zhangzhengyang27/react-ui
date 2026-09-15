@@ -8,11 +8,11 @@ import {
   isUrl,
   matches,
   useForm,
-} from '@xiaoye-react/form';
+} from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
-import { useForm, isNotEmpty, isEmail, isInRange, hasLength, matches, isUrl, isOneOf } from '@xiaoye-react/form';
+import { useForm, isNotEmpty, isEmail, isInRange, hasLength, matches, isUrl, isOneOf } from '@xiaoye-react/ui';
 import { Button, Group, TextInput, NumberInput, NativeSelect } from '@xiaoye-react/ui';
 
 function Demo() {

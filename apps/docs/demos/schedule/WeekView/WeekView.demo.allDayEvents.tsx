@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { ScheduleEventData, WeekView } from '@xiaoye-react/schedule';
+import { ScheduleEventData, WeekView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const startOfWeek = dayjs('2024-01-15')
@@ -50,7 +50,7 @@ const events: ScheduleEventData[] = [
 const code = `
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { WeekView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { WeekView, ScheduleEventData } from '@xiaoye-react/ui';
 
 const startOfWeek = dayjs('2024-01-15').subtract((dayjs('2024-01-15').day() + 6) % 7, 'day').format('YYYY-MM-DD');
 const dayAfterStartOfWeek = dayjs(startOfWeek).add(1, 'day').format('YYYY-MM-DD');

@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { Badge, Box, Group, Text, UnstyledButton } from '@xiaoye-react/ui';
-import { AgendaView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { AgendaView, ScheduleEventData } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const today = dayjs('2024-01-15').format('YYYY-MM-DD');
@@ -43,7 +43,7 @@ const eventsData: ScheduleEventData[] = [
 const code = `
 import dayjs from 'dayjs';
 import { Badge, Box, Group, Text, UnstyledButton } from '@xiaoye-react/ui';
-import { AgendaView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { AgendaView, ScheduleEventData } from '@xiaoye-react/ui';
 
 const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 

@@ -1,11 +1,11 @@
 /* oxlint-disable no-console */
 import { Button, Checkbox, Group } from '@xiaoye-react/ui';
-import { hasLength, useForm } from '@xiaoye-react/form';
+import { hasLength, useForm } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { Button, Checkbox, Group } from '@xiaoye-react/ui';
-import { hasLength, useForm } from '@xiaoye-react/form';
+import { hasLength, useForm } from '@xiaoye-react/ui';
 
 interface FormValues {
   frameworks: string[];

@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { MiniCalendar } from '@xiaoye-react/dates';
+import { MiniCalendar } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { useState } from 'react';
-import { MiniCalendar } from '@xiaoye-react/dates';
+import { MiniCalendar } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, onChange] = useState<string | null>('2025-04-15');

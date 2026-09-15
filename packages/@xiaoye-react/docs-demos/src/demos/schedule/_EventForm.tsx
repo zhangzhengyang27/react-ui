@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
 import { ReactNode, useEffect } from 'react';
 import { Button, Group, Modal, ModalProps, Stack, TextInput } from '@xiaoye-react/ui';
-import { DateTimePicker, DateValue } from '@xiaoye-react/dates';
-import { isNotEmpty, useForm } from '@xiaoye-react/form';
+import { DateTimePicker, DateValue } from '@xiaoye-react/ui';
+import { isNotEmpty, useForm } from '@xiaoye-react/ui';
 
 export interface EventData {
   id?: string | number;
@@ -120,8 +120,8 @@ export function EventForm({
 
 export const _eventFormCode = `import { useEffect } from 'react';
 import { Modal, TextInput, Button, Stack, Group, Checkbox } from '@xiaoye-react/ui';
-import { DateTimePicker } from '@xiaoye-react/dates';
-import { useForm } from '@xiaoye-react/form';
+import { DateTimePicker } from '@xiaoye-react/ui';
+import { useForm } from '@xiaoye-react/ui';
 
 interface EventData {
   id?: string | number;

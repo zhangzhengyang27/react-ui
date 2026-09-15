@@ -1,9 +1,9 @@
-import { WeekView } from '@xiaoye-react/schedule';
+import { WeekView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { businessEvents } from './_data';
 
 const code = `
-import { WeekView } from '@xiaoye-react/schedule';
+import { WeekView } from '@xiaoye-react/ui';
 import { events } from './data';
 
 function Demo() {

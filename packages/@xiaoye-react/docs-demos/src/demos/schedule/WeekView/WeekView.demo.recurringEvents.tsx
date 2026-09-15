@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { getStartOfWeek, WeekView } from '@xiaoye-react/schedule';
+import { getStartOfWeek, WeekView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const weekStart = dayjs(getStartOfWeek({ date: new Date('2024-01-15'), firstDayOfWeek: 1 })).format(
@@ -40,7 +40,7 @@ const recurringEventsData = [
 const code = `
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { WeekView, getStartOfWeek } from '@xiaoye-react/schedule';
+import { WeekView, getStartOfWeek } from '@xiaoye-react/ui';
 
 const weekStart = dayjs(getStartOfWeek({ date: new Date('2024-01-15'), firstDayOfWeek: 1 })).format('YYYY-MM-DD');
 

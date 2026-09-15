@@ -1,6 +1,6 @@
 import { jsx } from 'react/jsx-runtime';
 import dayjs from 'dayjs';
-import { DatesProvider } from '@xiaoye-react/dates';
+import { DatesProvider } from '@xiaoye-react/ui';
 import { render } from '../core';
 
 const defaultYearsNames = [

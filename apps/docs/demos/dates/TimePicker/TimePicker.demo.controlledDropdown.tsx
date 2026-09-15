@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { ClockIcon } from '@phosphor-icons/react/dist/csr/Clock'
 import { ActionIcon } from '@xiaoye-react/ui'
-import { TimePicker } from '@xiaoye-react/dates'
+import { TimePicker } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
 import { useState } from 'react';
 import { ClockIcon } from '@phosphor-icons/react/dist/csr/Clock';
 import { ActionIcon } from '@xiaoye-react/ui';
-import { TimePicker } from '@xiaoye-react/dates';
+import { TimePicker } from '@xiaoye-react/ui';
 
 function Demo() {
   const [dropdownOpened, setDropdownOpened] = useState(false);

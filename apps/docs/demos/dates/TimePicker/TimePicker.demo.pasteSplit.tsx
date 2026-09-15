@@ -1,10 +1,10 @@
 import { Code, Text } from '@xiaoye-react/ui';
-import { TimePicker, TimePickerPasteSplit } from '@xiaoye-react/dates';
+import { TimePicker, TimePickerPasteSplit } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { Code, Text } from '@xiaoye-react/ui';
-import { TimePicker, TimePickerPasteSplit } from '@xiaoye-react/dates';
+import { TimePicker, TimePickerPasteSplit } from '@xiaoye-react/ui';
 
 const re = /^(1[0-2]|0?[1-9]):[0-5][0-9](?::[0-5][0-9])?\\s?(AM|PM)$/;
 

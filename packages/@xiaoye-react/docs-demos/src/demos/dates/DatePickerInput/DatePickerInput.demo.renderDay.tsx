@@ -1,12 +1,12 @@
 import dayjs from 'dayjs';
 import { Indicator } from '@xiaoye-react/ui';
-import { DatePickerInput, DatePickerInputProps } from '@xiaoye-react/dates';
+import { DatePickerInput, DatePickerInputProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import dayjs from 'dayjs';
 import { Indicator } from '@xiaoye-react/ui';
-import { DatePickerInput, DatePickerInputProps } from '@xiaoye-react/dates';
+import { DatePickerInput, DatePickerInputProps } from '@xiaoye-react/ui';
 
 const dayRenderer: DatePickerInputProps['renderDay'] = (date) => {
   const day = dayjs(date).date();

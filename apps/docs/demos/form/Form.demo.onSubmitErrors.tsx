@@ -1,12 +1,12 @@
 /* oxlint-disable no-console */
 
 import { Button, TextInput } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 import { notifications } from '@xiaoye-react/notifications';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 import { TextInput, Button } from '@xiaoye-react/ui';
 import { notifications } from '@xiaoye-react/notifications';
 

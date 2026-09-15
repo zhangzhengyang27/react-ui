@@ -24,7 +24,7 @@ description: react-ui TimePicker 文档。
 
 ```tsx
 import { useState } from 'react';
-import { TimePicker } from '@xiaoye-react/dates';
+import { TimePicker } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState('');
@@ -168,7 +168,7 @@ function Demo() {
 
 ```tsx
 import { useRef } from 'react';
-import { TimePicker } from '@xiaoye-react/dates';
+import { TimePicker } from '@xiaoye-react/ui';
 
 function Demo() {
   const hoursRef = useRef<HTMLInputElement>(null);
@@ -192,7 +192,7 @@ function Demo() {
 `onFocus` 和 `onBlur` 事件分别会在第一个输入获得焦点和最后一个输入失去焦点时调用：
 
 ```tsx
-import { TimePicker } from '@xiaoye-react/dates';
+import { TimePicker } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -214,7 +214,7 @@ function Demo() {
 <KeyboardEventsTable data={[ { key: 'ArrowDown', description: '按步长减小当前值', }, { key: 'ArrowUp', description: '按步长增大当前值', }, { key: 'Home', description: '将当前值设为最小可能值', }, { key: 'End', description: '将当前值设为最大可能值', }, { key: 'Backspace', description: '清除当前值' }, { key: 'ArrowRight', description: '将焦点移动到下一个输入', }, { key: 'ArrowLeft', description: '将焦点移动到上一个输入', }, ]}></KeyboardEventsTable>
 
 ```tsx
-import { TimePicker } from '@xiaoye-react/dates';
+import { TimePicker } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

@@ -24,6 +24,8 @@ if (typeof window !== 'undefined' && !Element.prototype.scrollTo) {
 
 // —— 合并扩展包测试后补充的共享环境（与 packages/@xiaoye-react/tests/src/setup.ts 保持同构）——
 import { vi } from 'vitest'
+// dates 组件的本地化测试依赖 ru locale（DatesProvider 激活前必须先注册）
+import 'dayjs/locale/ru'
 
 // 这批测试按 jest 全局编写（历史上从未接入 runner）：把 jest 别名到 vi
 ;(globalThis as any).jest = vi

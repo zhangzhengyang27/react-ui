@@ -1,4 +1,4 @@
-import { MonthPickerInput } from '@xiaoye-react/dates';
+import { MonthPickerInput } from '@xiaoye-react/ui';
 import { getSharedPickerInputDemos } from '../_shared';
 
 export const { usage, multiple, range, configurator, modal, icon, clearable, valueFormatter } =

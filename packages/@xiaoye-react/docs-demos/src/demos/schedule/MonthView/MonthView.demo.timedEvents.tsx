@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { Box, UnstyledButton } from '@xiaoye-react/ui';
-import { MonthView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { MonthView, ScheduleEventData } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const startOfMonth = dayjs('2024-01-15').startOf('month');
@@ -73,7 +73,7 @@ function isAllDayEvent(event: ScheduleEventData) {
 const code = `
 import dayjs from 'dayjs';
 import { Box, UnstyledButton } from '@xiaoye-react/ui';
-import { MonthView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { MonthView, ScheduleEventData } from '@xiaoye-react/ui';
 
 function isAllDayEvent(event: ScheduleEventData) {
   const start = dayjs(event.start);
@@ -186,7 +186,7 @@ export const timedEvents: UIDemo = {
     { fileName: '演示代码.tsx', code, language: 'tsx' },
     {
       fileName: 'events.ts',
-      code: `import dayjs from 'dayjs';\nimport { ScheduleEventData } from '@xiaoye-react/schedule';\n\nconst startOfMonth = dayjs('2024-01-15').startOf('month');\n\nexport const events: ScheduleEventData[] = ${JSON.stringify(eventData, null, 2)};`,
+      code: `import dayjs from 'dayjs';\nimport { ScheduleEventData } from '@xiaoye-react/ui';\n\nconst startOfMonth = dayjs('2024-01-15').startOf('month');\n\nexport const events: ScheduleEventData[] = ${JSON.stringify(eventData, null, 2)};`,
       language: 'tsx',
     },
   ],

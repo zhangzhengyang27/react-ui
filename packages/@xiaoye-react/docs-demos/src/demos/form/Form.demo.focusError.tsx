@@ -1,12 +1,12 @@
 /* oxlint-disable no-console */
 
 import { Button, Group, TextInput } from '@xiaoye-react/ui';
-import { isEmail, isNotEmpty, useForm } from '@xiaoye-react/form';
+import { isEmail, isNotEmpty, useForm } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { Button, Group, TextInput } from '@xiaoye-react/ui';
-import { isEmail, isNotEmpty, useForm } from '@xiaoye-react/form';
+import { isEmail, isNotEmpty, useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({

@@ -1,12 +1,12 @@
 import 'dayjs/locale/es';
 
-import { DayView } from '@xiaoye-react/schedule';
+import { DayView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { dataCode, regularEvents } from './_data';
 
 const code = `
 import 'dayjs/locale/es';
-import { DayView } from '@xiaoye-react/schedule';
+import { DayView } from '@xiaoye-react/ui';
 import { events } from './data';
 
 function Demo() {

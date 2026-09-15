@@ -12,7 +12,7 @@ import {
     Text,
     TextInput
 } from '@xiaoye-react/ui'
-import { useForm } from '@xiaoye-react/form'
+import { useForm } from '@xiaoye-react/ui'
 
 export interface AuthenticationFormProps {
     noShadow?: boolean

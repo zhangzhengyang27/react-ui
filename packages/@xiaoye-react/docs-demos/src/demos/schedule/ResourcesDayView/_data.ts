@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { ScheduleEventData, ScheduleResourceData } from '@xiaoye-react/schedule';
+import { ScheduleEventData, ScheduleResourceData } from '@xiaoye-react/ui';
 
 const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 
@@ -79,7 +79,7 @@ export const resourceEvents: ScheduleEventData[] = [
 
 export const dataCode = `
 import dayjs from 'dayjs';
-import { ScheduleResourceData } from '@xiaoye-react/schedule';
+import { ScheduleResourceData } from '@xiaoye-react/ui';
 
 const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 

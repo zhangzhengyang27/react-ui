@@ -7,16 +7,12 @@ description: react-ui GettingStarted 文档。
 
 ## 安装
 
-> **ℹ️ 发布状态**：`@xiaoye-react/dates` 目前尚未发布到 npm，当前随本仓库源码提供（本文档内容与仓库实现一致）。包正式发布后，下述安装方式即可直接使用。
-
 <InstallScript packages="@xiaoye-react/ui dayjs"></InstallScript>
 
 安装完成后，在应用根目录导入包样式：
 
 ```tsx
 import '@xiaoye-react/ui/style.css';
-// ‼️ 在核心包样式之后导入 dates 样式
-import '@xiaoye-react/dates/styles.css';
 ```
 
 ## 不要忘记导入样式
@@ -89,7 +85,7 @@ dayjs.extend(customParseFormat);
 ```tsx
 import 'dayjs/locale/ru';
 
-import { DatesProvider } from '@xiaoye-react/dates';
+import { DatesProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -105,7 +101,7 @@ function Demo() {
 
 import 'dayjs/locale/ru';
 
-import { DatesProvider } from '@xiaoye-react/dates';
+import { DatesProvider } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

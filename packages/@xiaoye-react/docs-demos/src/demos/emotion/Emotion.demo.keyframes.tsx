@@ -1,8 +1,8 @@
-import { createStyles, keyframes } from '@xiaoye-react/emotion';
+import { createStyles, keyframes } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
-import { createStyles, keyframes } from '@xiaoye-react/emotion';
+import { createStyles, keyframes } from '@xiaoye-react/ui';
 
 // Export animation to reuse it in other components
 export const bounce = keyframes({

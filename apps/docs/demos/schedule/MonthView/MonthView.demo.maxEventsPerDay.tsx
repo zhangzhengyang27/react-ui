@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { MonthView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { MonthView, ScheduleEventData } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const today = dayjs('2024-01-15').format('YYYY-MM-DD');
@@ -43,7 +43,7 @@ const demoEvents: ScheduleEventData[] = [
 ];
 
 const code = `
-import { MonthView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { MonthView, ScheduleEventData } from '@xiaoye-react/ui';
 
 const events: ScheduleEventData[] = [
   // ... 5 events on the same day

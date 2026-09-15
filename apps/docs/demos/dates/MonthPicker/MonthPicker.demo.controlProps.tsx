@@ -1,12 +1,12 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { MonthPicker, MonthPickerProps } from '@xiaoye-react/dates';
+import { MonthPicker, MonthPickerProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { MonthPicker, MonthPickerProps } from '@xiaoye-react/dates';
+import { MonthPicker, MonthPickerProps } from '@xiaoye-react/ui';
 
 const getYearControlProps: MonthPickerProps['getYearControlProps'] = (date) => {
   if (dayjs(date).year() === 2024) {

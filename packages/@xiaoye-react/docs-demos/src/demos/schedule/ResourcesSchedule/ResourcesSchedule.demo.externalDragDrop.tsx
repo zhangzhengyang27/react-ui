@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useRef, useState } from 'react';
 import { Box, Grid, Text } from '@xiaoye-react/ui';
-import { ResourcesSchedule, ScheduleEventData } from '@xiaoye-react/schedule';
+import { ResourcesSchedule, ScheduleEventData } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { resources } from './_data';
 
@@ -15,7 +15,7 @@ const code = `
 import { useRef, useState } from 'react';
 import dayjs from 'dayjs';
 import { Box, Grid, Text } from '@xiaoye-react/ui';
-import { ResourcesSchedule, ScheduleEventData } from '@xiaoye-react/schedule';
+import { ResourcesSchedule, ScheduleEventData } from '@xiaoye-react/ui';
 
 const resources = [
   { id: 'tokyo', label: 'Meeting room: Tokyo' },

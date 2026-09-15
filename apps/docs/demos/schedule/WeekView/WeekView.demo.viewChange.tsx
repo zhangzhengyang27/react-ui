@@ -1,14 +1,14 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { Text } from '@xiaoye-react/ui';
-import { ScheduleViewLevel, WeekView } from '@xiaoye-react/schedule';
+import { ScheduleViewLevel, WeekView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { dataCode, regularEvents } from './_data';
 
 const code = `
 import { useState } from 'react';
 import dayjs from 'dayjs';
-import { WeekView, ScheduleViewLevel } from '@xiaoye-react/schedule';
+import { WeekView, ScheduleViewLevel } from '@xiaoye-react/ui';
 import { Text } from '@xiaoye-react/ui';
 import { events } from './data';
 

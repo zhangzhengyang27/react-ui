@@ -49,7 +49,7 @@ export function FormSection() {
                     <div className={classes.column}>
                         <div className={classes.codePreview}>
                             <pre className={classes.codeBlock}>
-                                <code>{`import { useForm } from '@xiaoye-react/form';
+                                <code>{`import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',

@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { Modal, Stack, Text } from '@xiaoye-react/ui';
-import { AgendaView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { AgendaView, ScheduleEventData } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const today = dayjs('2024-01-15').format('YYYY-MM-DD');
@@ -37,7 +37,7 @@ const code = `
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { Modal, Stack, Text } from '@xiaoye-react/ui';
-import { AgendaView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { AgendaView, ScheduleEventData } from '@xiaoye-react/ui';
 
 const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 

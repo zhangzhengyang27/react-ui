@@ -19,14 +19,13 @@ description: react-ui Extensions 文档。
 - [Dropzone 拖拽上传](/components/dropzone) – 基于 react-dropzone 的拖拽文件上传组件
 - [Modals 弹窗管理器](/components/modals) – 弹窗管理器
 - [NProgress 导航进度](/components/nprogress) – 导航进度组件
+- [Dates 日期组件](/docs/dates/getting-started) – 日期和时间选择器、日历以及其他日期相关组件
+- [Form 表单](/docs/form/package) – 表单状态管理与校验 hooks
+- [Schedule 日程](/docs/schedule/getting-started) – 日程视图组件
 
 **已独立发布**：
 
 - [Pro 管理端模式层](/components/pro) – `@xiaoye-react/pro`：PageContainer、SearchFilter、ProTable
-
-**独立文档区**：
-
-- [@xiaoye-react/dates](/docs/dates/getting-started) – 日期和时间选择器、日历以及其他日期相关组件
 
 ## 创建你自己的扩展
 

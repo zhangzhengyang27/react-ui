@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Button, Code, Stack, TextInput } from '@xiaoye-react/ui';
-import { createFormContext } from '@xiaoye-react/form';
+import { createFormContext } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { Button, Code, Stack, TextInput } from '@xiaoye-react/ui';
-import { createFormContext } from '@xiaoye-react/form';
+import { createFormContext } from '@xiaoye-react/ui';
 import { useState } from 'react';
 
 const [Provider, usePersonFormContext, usePersonForm] = createFormContext<{ person: { name: string } }>();

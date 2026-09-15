@@ -1,8 +1,8 @@
-import { createStyles } from '@xiaoye-react/emotion';
+import { createStyles } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
-import { createStyles } from '@xiaoye-react/emotion';
+import { createStyles } from '@xiaoye-react/ui';
 
 const useStyles = createStyles((theme, _, u) => ({
   button: {

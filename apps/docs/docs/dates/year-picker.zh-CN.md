@@ -126,7 +126,7 @@ description: react-ui YearPicker 文档。
 <KeyboardEventsTable data={[ { key: 'ArrowRight', description: '聚焦下一个非禁用年份', }, { key: 'ArrowLeft', description: '聚焦上一个非禁用年份', }, { key: 'ArrowDown', description: '聚焦同一列中的下一个非禁用年份', }, { key: 'ArrowUp', description: '聚焦同一列中的上一个非禁用年份', }, ]}></KeyboardEventsTable>
 
 ```tsx
-import { YearPicker } from '@xiaoye-react/dates';
+import { YearPicker } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -141,7 +141,7 @@ function Demo() {
 ```
 
 ```tsx
-import { YearPicker } from '@xiaoye-react/dates';
+import { YearPicker } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

@@ -1,8 +1,8 @@
-import { MonthPickerInput } from '@xiaoye-react/dates';
+import { MonthPickerInput } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
-import { MonthPickerInput } from '@xiaoye-react/dates';
+import { MonthPickerInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

@@ -1,8 +1,8 @@
-import { MiniCalendar } from '@xiaoye-react/dates';
+import { MiniCalendar } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
-import { MiniCalendar } from '@xiaoye-react/dates';
+import { MiniCalendar } from '@xiaoye-react/ui';
 
 function Demo() {
   return <MiniCalendar numberOfDays={5} />;

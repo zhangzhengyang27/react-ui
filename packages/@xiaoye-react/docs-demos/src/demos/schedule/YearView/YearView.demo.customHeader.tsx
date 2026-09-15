@@ -1,13 +1,13 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { DateStringValue, ScheduleHeader, YearView } from '@xiaoye-react/schedule';
+import { DateStringValue, ScheduleHeader, YearView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { dataCode, regularEvents } from './_data';
 
 const code = `
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { DateStringValue, ScheduleHeader, YearView } from '@xiaoye-react/schedule';
+import { DateStringValue, ScheduleHeader, YearView } from '@xiaoye-react/ui';
 import { events } from './data';
 
 function Demo() {

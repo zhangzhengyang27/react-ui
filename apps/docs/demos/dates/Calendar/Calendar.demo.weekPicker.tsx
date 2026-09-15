@@ -1,12 +1,12 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { Calendar } from '@xiaoye-react/dates';
+import { Calendar } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { Calendar } from '@xiaoye-react/dates';
+import { Calendar } from '@xiaoye-react/ui';
 
 function getDay(date: string) {
   const day = dayjs(date).day();

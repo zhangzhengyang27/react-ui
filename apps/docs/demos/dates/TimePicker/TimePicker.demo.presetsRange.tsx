@@ -1,8 +1,8 @@
-import { getTimeRange, TimePicker } from '@xiaoye-react/dates';
+import { getTimeRange, TimePicker } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
-import { getTimeRange, TimePicker } from '@xiaoye-react/dates';
+import { getTimeRange, TimePicker } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

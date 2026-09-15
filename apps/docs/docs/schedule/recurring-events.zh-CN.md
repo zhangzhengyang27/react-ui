@@ -7,7 +7,7 @@ description: react-ui RecurringEvents 文档。
 
 ## 重复事件
 
-`@xiaoye-react/schedule` 支持通过 [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545)
+`@xiaoye-react/ui` 支持通过 [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545)
 重复规则实现重复事件（由 [rrule](https://github.com/jkbrzt/rrule) 库提供支持）。
 
 共有三种事件形态：
@@ -80,7 +80,7 @@ const override = {
 你可以直接使用 `expandRecurringEvents` 工具函数进行自定义逻辑：
 
 ```tsx
-import { expandRecurringEvents } from '@xiaoye-react/schedule';
+import { expandRecurringEvents } from '@xiaoye-react/ui';
 
 const expanded = expandRecurringEvents({
   events,

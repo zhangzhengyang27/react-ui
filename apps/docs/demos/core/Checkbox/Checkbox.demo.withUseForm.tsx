@@ -1,11 +1,11 @@
 /* oxlint-disable no-console */
 import { Button, Checkbox } from '@xiaoye-react/ui';
-import { isNotEmpty, useForm } from '@xiaoye-react/form';
+import { isNotEmpty, useForm } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { Button, Checkbox } from '@xiaoye-react/ui';
-import { isNotEmpty, useForm } from '@xiaoye-react/form';
+import { isNotEmpty, useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({

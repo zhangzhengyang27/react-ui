@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { ResourcesWeekView, ScheduleEventData, ScheduleResourceData } from '@xiaoye-react/schedule';
+import { ResourcesWeekView, ScheduleEventData, ScheduleResourceData } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const monday = dayjs('2024-01-15').startOf('week').add(1, 'day');
@@ -66,7 +66,7 @@ const events: ScheduleEventData[] = [
 
 const dataCode = `
 import dayjs from 'dayjs';
-import { ScheduleEventData, ScheduleResourceData } from '@xiaoye-react/schedule';
+import { ScheduleEventData, ScheduleResourceData } from '@xiaoye-react/ui';
 
 const monday = dayjs('2024-01-15').startOf('week').add(1, 'day');
 const day = (offset: number) => monday.add(offset, 'day').format('YYYY-MM-DD');
@@ -94,7 +94,7 @@ const events: ScheduleEventData[] = [
 const code = `
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { ResourcesWeekView } from '@xiaoye-react/schedule';
+import { ResourcesWeekView } from '@xiaoye-react/ui';
 import { events, resources } from './data';
 
 function Demo() {

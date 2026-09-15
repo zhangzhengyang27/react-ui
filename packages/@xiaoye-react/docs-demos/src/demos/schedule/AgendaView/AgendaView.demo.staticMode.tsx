@@ -1,11 +1,11 @@
 import dayjs from 'dayjs';
-import { AgendaView } from '@xiaoye-react/schedule';
+import { AgendaView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { dataCode, regularEvents } from './_data';
 
 const code = `
 import dayjs from 'dayjs';
-import { AgendaView } from '@xiaoye-react/schedule';
+import { AgendaView } from '@xiaoye-react/ui';
 import { events } from './data';
 
 function Demo() {

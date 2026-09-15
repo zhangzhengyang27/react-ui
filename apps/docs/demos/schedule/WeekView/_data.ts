@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { ScheduleEventData } from '@xiaoye-react/schedule';
+import { ScheduleEventData } from '@xiaoye-react/ui';
 
 const startOfWeek = dayjs('2024-01-15')
   .subtract((dayjs('2024-01-15').day() + 6) % 7, 'day')

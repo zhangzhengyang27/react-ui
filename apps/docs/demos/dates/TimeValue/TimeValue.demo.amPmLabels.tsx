@@ -1,10 +1,10 @@
 import { Text } from '@xiaoye-react/ui';
-import { TimeValue } from '@xiaoye-react/dates';
+import { TimeValue } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { Text } from '@xiaoye-react/ui';
-import { TimeValue } from '@xiaoye-react/dates';
+import { TimeValue } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

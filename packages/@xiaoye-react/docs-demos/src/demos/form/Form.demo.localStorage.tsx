@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { Box, TextInput } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { useEffect } from 'react';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 import { TextInput, Box } from '@xiaoye-react/ui';
 
 function Demo() {

@@ -87,7 +87,7 @@ WeekView 显示整周的事件，按时间槽排列。它支持全天事件、�
 
 ## 不同时区的当前时间指示器
 
-`@xiaoye-react/schedule` 使用时区无关的 `YYYY-MM-DD HH:mm:ss` 字符串，并且不执行任何时区转换。默认情况下，当前时间指示器根据用户本地时间定位。
+`@xiaoye-react/ui` 使用时区无关的 `YYYY-MM-DD HH:mm:ss` 字符串，并且不执行任何时区转换。默认情况下，当前时间指示器根据用户本地时间定位。
 
 要在不同时区显示指示器，请使用 `getCurrentTime` prop。它是一个返回当前时间的函数，并在每次 tick 时被调用，因此指示器会自动持续更新。在以下示例中，当前时间使用 [dayjs timezone 插件](https://day.js.org/docs/en/plugin/timezone) 转换为所选时区——切换时区以查看指示器和时间气泡移动到相应的日期和位置：
 

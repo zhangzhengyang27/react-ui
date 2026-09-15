@@ -18,7 +18,7 @@ description: react-ui Status 文档。
 ## isTouched 和 isDirty 函数
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -47,7 +47,7 @@ form.isDirty(); // -> 表单中是否有任何字段被修改？
 使用 `focus` 触发器的示例：
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -70,7 +70,7 @@ form.isTouched('a'); // -> true
 这两个属性都支持与 [errors 相同的字段路径格式](/docs/form/errors/)：
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -89,7 +89,7 @@ const form = useForm({
 要重置用于脏检查的值，请使用新值调用 `form.resetDirty`：
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -109,7 +109,7 @@ form.isDirty('a'); // -> false
 ```
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -135,7 +135,7 @@ Promise 解决或拒绝后，`form.submitting` 将被设置为 `false`：
 你也可以手动将 `form.submitting` 设置为 `true` 或 `false`：
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({ mode: 'uncontrolled' });
 form.submitting; // -> false
@@ -159,7 +159,7 @@ form.submitting; // -> false
 当调用 `form.validateField(path)` 时，只有目标字段被视为正在验证。
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',

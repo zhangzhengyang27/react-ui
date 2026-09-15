@@ -3,7 +3,7 @@ import { UIDemo } from '@xiaoye-react/demo';
 
 const getCode = (name: string) => `
 import { useState } from 'react';
-import { ${name} } from '@xiaoye-react/dates';
+import { ${name} } from '@xiaoye-react/ui';
 
 function Demo() {
   const [value, setValue] = useState<string[]>([]);

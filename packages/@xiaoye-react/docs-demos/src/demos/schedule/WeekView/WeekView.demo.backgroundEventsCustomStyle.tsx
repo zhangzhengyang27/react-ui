@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { getStartOfWeek, ScheduleEventData, WeekView } from '@xiaoye-react/schedule';
+import { getStartOfWeek, ScheduleEventData, WeekView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const weekStart = dayjs(getStartOfWeek({ date: new Date('2024-01-15'), firstDayOfWeek: 1 }));
@@ -47,7 +47,7 @@ const cssCode = `.backgroundEvent {
 const code = `
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { getStartOfWeek, ScheduleEventData, WeekView } from '@xiaoye-react/schedule';
+import { getStartOfWeek, ScheduleEventData, WeekView } from '@xiaoye-react/ui';
 import classes from './Demo.module.css';
 
 const weekStart = dayjs(

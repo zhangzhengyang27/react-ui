@@ -22,7 +22,7 @@ description: react-ui Actions 文档。
 例如，在发起请求后，或在与表单状态没有访问权限的组件发生用户交互后：
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 export interface DemoFormValues {
   name: string;
@@ -43,7 +43,7 @@ function Demo() {
 
 ```tsx
 // 从定义 useForm 的文件中导入表单值类型
-import { createFormActions } from '@xiaoye-react/form';
+import { createFormActions } from '@xiaoye-react/ui';
 import type { DemoFormValues } from './DemoForm';
 
 export const demoFormActions =
@@ -83,7 +83,7 @@ function ExternalComponent() {
 注意，表单名称必须是唯一的。如果你有多个相同名称的表单，表单操作将更新所有该名称的表单状态。
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 // ✅ 有效的表单名称
 const valid = useForm({

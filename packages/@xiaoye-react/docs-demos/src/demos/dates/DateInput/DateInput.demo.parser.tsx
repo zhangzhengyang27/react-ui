@@ -1,10 +1,10 @@
 import dayjs from 'dayjs';
-import { DateInput, DateInputProps } from '@xiaoye-react/dates';
+import { DateInput, DateInputProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import dayjs from 'dayjs';
-import { DateInput, DateInputProps } from '@xiaoye-react/dates';
+import { DateInput, DateInputProps } from '@xiaoye-react/ui';
 
 const dateParser: DateInputProps['dateParser'] = (input) => {
   if (input === 'WW2') {

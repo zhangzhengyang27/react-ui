@@ -3,13 +3,13 @@ import { arrayMove, SortableContext, useSortable, verticalListSortingStrategy } 
 import { CSS } from '@dnd-kit/utilities'
 import { DotsSixVerticalIcon } from '@phosphor-icons/react/dist/csr/DotsSixVertical'
 import { Button, Center, Group, TextInput } from '@xiaoye-react/ui'
-import { useForm } from '@xiaoye-react/form'
+import { useForm } from '@xiaoye-react/ui'
 import { randomId } from '@xiaoye-react/hooks'
 import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
 import { Group, TextInput, Button, Center } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 import { randomId } from '@xiaoye-react/hooks';
 import { DotsSixVerticalIcon } from '@phosphor-icons/react/dist/csr/DotsSixVertical';
 import { DndContext, closestCenter, PointerSensor, useSensor, useSensors, DragEndEvent } from '@dnd-kit/core';

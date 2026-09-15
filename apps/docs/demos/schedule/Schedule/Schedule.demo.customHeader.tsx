@@ -6,7 +6,7 @@ import {
   Schedule,
   ScheduleHeader,
   ScheduleViewLevel,
-} from '@xiaoye-react/schedule';
+} from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { events } from './_data';
 
@@ -19,7 +19,7 @@ import {
   Schedule,
   ScheduleHeader,
   ScheduleViewLevel,
-} from '@xiaoye-react/schedule';
+} from '@xiaoye-react/ui';
 import { events } from './data';
 
 function getNavigationHandlers(

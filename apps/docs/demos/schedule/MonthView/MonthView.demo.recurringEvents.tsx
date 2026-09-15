@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MonthView } from '@xiaoye-react/schedule';
+import { MonthView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const month = '2025-11-01';
@@ -36,7 +36,7 @@ const recurringEventsData = [
 
 const code = `
 import { useState } from 'react';
-import { MonthView } from '@xiaoye-react/schedule';
+import { MonthView } from '@xiaoye-react/ui';
 
 const month = '2025-11-01';
 

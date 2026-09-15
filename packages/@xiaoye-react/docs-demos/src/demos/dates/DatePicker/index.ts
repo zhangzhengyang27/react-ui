@@ -1,4 +1,4 @@
-import { DatePicker } from '@xiaoye-react/dates';
+import { DatePicker } from '@xiaoye-react/ui';
 import { getSharedPickerDemos } from '../_shared';
 
 export const { usage, multiple, deselect, range, singleRange, numberOfColumns, sizeConfigurator } =

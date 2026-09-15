@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Button, Code, Text, TextInput } from '@xiaoye-react/ui';
-import { hasLength, isEmail, useForm } from '@xiaoye-react/form';
+import { hasLength, isEmail, useForm } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { useState } from 'react';
 import { Button, Code, Text, TextInput } from '@xiaoye-react/ui';
-import { hasLength, isEmail, useForm } from '@xiaoye-react/form';
+import { hasLength, isEmail, useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({

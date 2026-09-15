@@ -1,10 +1,10 @@
 import { Text, TextInput } from '@xiaoye-react/ui';
-import { useField } from '@xiaoye-react/form';
+import { useField } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { Text, TextInput } from '@xiaoye-react/ui';
-import { useField } from '@xiaoye-react/form';
+import { useField } from '@xiaoye-react/ui';
 
 function Demo() {
   const field = useField({ initialValue: '' });

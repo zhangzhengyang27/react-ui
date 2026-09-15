@@ -1,13 +1,13 @@
 import { useRef } from 'react'
 import { ClockIcon } from '@phosphor-icons/react/dist/csr/Clock'
 import { ActionIcon } from '@xiaoye-react/ui'
-import { TimeInput } from '@xiaoye-react/dates'
+import { TimeInput } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
 import { useRef } from 'react';
 import { ActionIcon } from '@xiaoye-react/ui';
-import { TimeInput } from '@xiaoye-react/dates';
+import { TimeInput } from '@xiaoye-react/ui';
 import { ClockIcon } from '@phosphor-icons/react/dist/csr/Clock';
 function Demo() {
   const ref = useRef<HTMLInputElement>(null);

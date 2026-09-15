@@ -1,12 +1,12 @@
 /* oxlint-disable no-console */
 
 import { Button, Group, Loader, TextInput } from '@xiaoye-react/ui';
-import { isEmail, useForm } from '@xiaoye-react/form';
+import { isEmail, useForm } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { Button, Group, Loader, TextInput } from '@xiaoye-react/ui';
-import { isEmail, useForm } from '@xiaoye-react/form';
+import { isEmail, useForm } from '@xiaoye-react/ui';
 
 // Simulates an async API call to check if the username is available
 function checkUsernameAvailability(username: string, signal?: AbortSignal): Promise<string | null> {

@@ -2,7 +2,7 @@ import 'dayjs/locale/es';
 
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { ResourcesMonthView } from '@xiaoye-react/schedule';
+import { ResourcesMonthView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { dataCode, resourceEvents, resources } from './_data';
 
@@ -11,7 +11,7 @@ import 'dayjs/locale/es';
 
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { ResourcesMonthView } from '@xiaoye-react/schedule';
+import { ResourcesMonthView } from '@xiaoye-react/ui';
 import { events, resources } from './data';
 
 function Demo() {

@@ -1,10 +1,10 @@
 import { Group } from '@xiaoye-react/ui';
-import { DatePicker } from '@xiaoye-react/dates';
+import { DatePicker } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { Group } from '@xiaoye-react/ui';
-import { DatePicker } from '@xiaoye-react/dates';
+import { DatePicker } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

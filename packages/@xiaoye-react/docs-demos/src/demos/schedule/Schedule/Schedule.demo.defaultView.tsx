@@ -1,9 +1,9 @@
-import { Schedule } from '@xiaoye-react/schedule';
+import { Schedule } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { events } from './_data';
 
 const code = `
-import { Schedule } from '@xiaoye-react/schedule';
+import { Schedule } from '@xiaoye-react/ui';
 import { events } from './data';
 
 function Demo() {

@@ -1,11 +1,11 @@
 import { TrashIcon } from '@phosphor-icons/react/dist/csr/Trash'
 import { ActionIcon, Box, Button, Group, Switch, Text, TextInput } from '@xiaoye-react/ui'
-import { useForm } from '@xiaoye-react/form'
+import { useForm } from '@xiaoye-react/ui'
 import { randomId } from '@xiaoye-react/hooks'
 import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 import { TextInput, Switch, Group, ActionIcon, Box, Text, Button } from '@xiaoye-react/ui';
 import { randomId } from '@xiaoye-react/hooks';
 import { TrashIcon } from '@phosphor-icons/react/dist/csr/Trash';

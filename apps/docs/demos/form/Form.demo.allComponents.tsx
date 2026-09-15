@@ -30,12 +30,12 @@ import {
   Textarea,
   TextInput,
 } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const codeTextInput = `
 import { TextInput, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -104,7 +104,7 @@ export const textInput: UIDemo = {
 
 const codeAngleSlider = `
 import { AngleSlider, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -157,7 +157,7 @@ export const angleSlider: UIDemo = {
 
 const codeCheckbox = `
 import { Checkbox, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -222,7 +222,7 @@ export const checkbox: UIDemo = {
 
 const codeCheckboxGroup = `
 import { Checkbox, Group, Button } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -295,7 +295,7 @@ export const checkboxGroup: UIDemo = {
 
 const codeChip = `
 import { Chip, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -351,7 +351,7 @@ export const chip: UIDemo = {
 
 const codeColorInput = `
 import { ColorInput, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -410,7 +410,7 @@ export const colorInput: UIDemo = {
 
 const codeColorPicker = `
 import { ColorPicker, Text, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -467,7 +467,7 @@ export const colorPicker: UIDemo = {
 
 const codeFieldset = `
 import { Fieldset, TextInput, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -546,7 +546,7 @@ export const fieldset: UIDemo = {
 
 const codeFileInput = `
 import { FileInput, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -605,7 +605,7 @@ export const fileInput: UIDemo = {
 
 const codeInput = `
 import { Input, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -668,7 +668,7 @@ export const input: UIDemo = {
 
 const codeJsonInput = `
 import { JsonInput, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -733,7 +733,7 @@ export const jsonInput: UIDemo = {
 
 const codeNativeSelect = `
 import { NativeSelect, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -792,7 +792,7 @@ export const nativeSelect: UIDemo = {
 
 const codeNumberInput = `
 import { NumberInput, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -855,7 +855,7 @@ export const numberInput: UIDemo = {
 
 const codePasswordInput = `
 import { PasswordInput, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -914,7 +914,7 @@ export const passwordInput: UIDemo = {
 
 const codePinInput = `
 import { PinInput, Button, Group, Text } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -970,7 +970,7 @@ export const pinInput: UIDemo = {
 
 const codeRadioGroup = `
 import { Radio, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -1041,7 +1041,7 @@ export const radioGroup: UIDemo = {
 
 const codeRangeSlider = `
 import { RangeSlider, Button, Group, Text } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -1097,7 +1097,7 @@ export const rangeSlider: UIDemo = {
 
 const codeRating = `
 import { Rating, Button, Group, Text } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -1153,7 +1153,7 @@ export const rating: UIDemo = {
 
 const codeSegmentedControl = `
 import { SegmentedControl, Button, Group, Text } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -1214,7 +1214,7 @@ export const segmentedControl: UIDemo = {
 
 const codeSlider = `
 import { Slider, Button, Group, Text } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -1270,7 +1270,7 @@ export const slider: UIDemo = {
 
 const codeSwitch = `
 import { Switch, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -1327,7 +1327,7 @@ export const switchDemo: UIDemo = {
 
 const codeSwitchGroup = `
 import { Switch, Group, Button } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -1398,7 +1398,7 @@ export const switchGroup: UIDemo = {
 
 const codeTextarea = `
 import { Textarea, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -1457,7 +1457,7 @@ export const textarea: UIDemo = {
 
 const codeAutocomplete = `
 import { Autocomplete, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -1518,7 +1518,7 @@ export const autocomplete: UIDemo = {
 
 const codeMultiSelect = `
 import { MultiSelect, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -1579,7 +1579,7 @@ export const multiSelect: UIDemo = {
 
 const codeSelect = `
 import { Select, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -1640,7 +1640,7 @@ export const select: UIDemo = {
 
 const codeTagsInput = `
 import { TagsInput, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({
@@ -1699,7 +1699,7 @@ export const tagsInput: UIDemo = {
 
 const codeMaskInput = `
 import { MaskInput, Button, Group } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({

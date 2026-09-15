@@ -139,7 +139,7 @@ description: react-ui MonthPicker 文档。
 <KeyboardEventsTable data={[ { key: 'ArrowRight', description: '聚焦下一个非禁用月份', }, { key: 'ArrowLeft', description: '聚焦上一个非禁用月份', }, { key: 'ArrowDown', description: '聚焦同一列中的下一个非禁用月份', }, { key: 'ArrowUp', description: '聚焦同一列中的上一个非禁用月份', }, ]}></KeyboardEventsTable>
 
 ```tsx
-import { MonthPicker } from '@xiaoye-react/dates';
+import { MonthPicker } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
@@ -157,7 +157,7 @@ function Demo() {
 ```
 
 ```tsx
-import { MonthPicker } from '@xiaoye-react/dates';
+import { MonthPicker } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

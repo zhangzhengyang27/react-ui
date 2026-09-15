@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { Schedule, ScheduleEventData } from '@xiaoye-react/schedule';
+import { Schedule, ScheduleEventData } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const today = dayjs('2024-01-15').format('YYYY-MM-DD');
@@ -41,7 +41,7 @@ const backgroundEventsData: ScheduleEventData[] = [
 const code = `
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { Schedule, ScheduleEventData } from '@xiaoye-react/schedule';
+import { Schedule, ScheduleEventData } from '@xiaoye-react/ui';
 
 const today = dayjs('2024-01-15').format('YYYY-MM-DD');
 

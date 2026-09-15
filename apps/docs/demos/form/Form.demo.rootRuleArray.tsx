@@ -1,13 +1,13 @@
 import { TrashIcon } from '@phosphor-icons/react/dist/csr/Trash'
 import { ActionIcon, Button, Group, Switch, Text, TextInput } from '@xiaoye-react/ui'
-import { formRootRule, isNotEmpty, useForm } from '@xiaoye-react/form'
+import { formRootRule, isNotEmpty, useForm } from '@xiaoye-react/ui'
 import { randomId } from '@xiaoye-react/hooks'
 import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
 import { TrashIcon } from '@phosphor-icons/react/dist/csr/Trash';
 import { ActionIcon, Button, Group, Switch, Text, TextInput } from '@xiaoye-react/ui';
-import { formRootRule, isNotEmpty, useForm } from '@xiaoye-react/form';
+import { formRootRule, isNotEmpty, useForm } from '@xiaoye-react/ui';
 import { randomId } from '@xiaoye-react/hooks';
 
 function Demo() {

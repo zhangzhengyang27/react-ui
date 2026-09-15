@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Text } from '@xiaoye-react/ui';
-import { DayView, ScheduleViewLevel } from '@xiaoye-react/schedule';
+import { DayView, ScheduleViewLevel } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { dataCode, regularEvents } from './_data';
 
 const code = `
 import { useState } from 'react';
-import { DayView, ScheduleViewLevel } from '@xiaoye-react/schedule';
+import { DayView, ScheduleViewLevel } from '@xiaoye-react/ui';
 import { Text } from '@xiaoye-react/ui';
 import { events } from './data';
 

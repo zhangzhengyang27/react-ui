@@ -1,12 +1,12 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { MonthView } from '@xiaoye-react/schedule';
+import { MonthView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { MonthView } from '@xiaoye-react/schedule';
+import { MonthView } from '@xiaoye-react/ui';
 
 function Demo() {
   const [date, setDate] = useState(dayjs('2024-01-15').format('YYYY-MM-DD'));

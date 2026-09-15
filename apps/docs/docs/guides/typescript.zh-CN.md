@@ -20,7 +20,7 @@ description: react-ui Typescript 文档。
 
 ```tsx
 import type { ButtonProps } from '@xiaoye-react/ui';
-import type { DatePickerProps } from '@xiaoye-react/dates';
+import type { DatePickerProps } from '@xiaoye-react/ui';
 ```
 
 ```tsx

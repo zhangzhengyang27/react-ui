@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { ResourcesDayView, ScheduleResourceGroup } from '@xiaoye-react/schedule';
+import { ResourcesDayView, ScheduleResourceGroup } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { resourceEvents } from './_data';
 
@@ -20,7 +20,7 @@ const groups: ScheduleResourceGroup[] = [
 const code = `
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { ResourcesDayView, ScheduleResourceGroup } from '@xiaoye-react/schedule';
+import { ResourcesDayView, ScheduleResourceGroup } from '@xiaoye-react/ui';
 import { events } from './data';
 
 const resources = [

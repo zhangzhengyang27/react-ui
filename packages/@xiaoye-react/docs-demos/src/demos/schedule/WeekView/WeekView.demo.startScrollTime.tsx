@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { ScheduleEventData, WeekView } from '@xiaoye-react/schedule';
+import { ScheduleEventData, WeekView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { dataCode, regularEvents } from './_data';
 
 const code = `
 import { useState } from 'react';
-import { WeekView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { WeekView, ScheduleEventData } from '@xiaoye-react/ui';
 import { events as initialEvents } from './data';
 
 function Demo() {

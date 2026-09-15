@@ -1,10 +1,10 @@
 import { Button, NumberInput, TextInput } from '@xiaoye-react/ui';
-import { isInRange, isNotEmpty, useForm } from '@xiaoye-react/form';
+import { isInRange, isNotEmpty, useForm } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { Button, NumberInput, TextInput } from '@xiaoye-react/ui';
-import { isInRange, isNotEmpty, useForm } from '@xiaoye-react/form';
+import { isInRange, isNotEmpty, useForm } from '@xiaoye-react/ui';
 
 interface FormValues {
   name: string;

@@ -26,7 +26,7 @@ description: react-ui Validation 文档。
 例如，你可以获取数组元素的索引：
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -79,7 +79,7 @@ const form = useForm({
 <code src="./validation/demo/liveFieldValidation.tsx"></code>
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -88,7 +88,7 @@ const form = useForm({
 ```
 
 ```tsx
-import { FORM_INDEX, useForm } from '@xiaoye-react/form';
+import { FORM_INDEX, useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -113,7 +113,7 @@ const form = useForm({
 <code src="./validation/demo/blurFieldValidation.tsx"></code>
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -122,7 +122,7 @@ const form = useForm({
 ```
 
 ```tsx
-import { FORM_INDEX, useForm } from '@xiaoye-react/form';
+import { FORM_INDEX, useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -138,7 +138,7 @@ const form = useForm({
 <code src="./validation/demo/clearErrorOnChange.tsx"></code>
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',
@@ -164,7 +164,7 @@ const form = useForm({
 如果任何验证规则是异步的，`form.isValid` 将返回一个 `Promise<boolean>`。
 
 ```tsx
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 
 const form = useForm({
   mode: 'uncontrolled',

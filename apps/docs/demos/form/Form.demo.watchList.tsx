@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Button, Code, Group, NumberInput, Stack, Text, TextInput } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 import { randomId } from '@xiaoye-react/hooks';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { useState } from 'react';
 import { Button, Code, Group, NumberInput, Stack, Text, TextInput } from '@xiaoye-react/ui';
-import { useForm } from '@xiaoye-react/form';
+import { useForm } from '@xiaoye-react/ui';
 import { randomId } from '@xiaoye-react/hooks';
 
 function Demo() {

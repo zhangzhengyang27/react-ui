@@ -2,7 +2,7 @@ import 'dayjs/locale/es';
 
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { MobileMonthView } from '@xiaoye-react/schedule';
+import { MobileMonthView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { dataCode, regularEvents } from './_data';
 
@@ -10,7 +10,7 @@ const code = `
 import 'dayjs/locale/es';
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { MobileMonthView } from '@xiaoye-react/schedule';
+import { MobileMonthView } from '@xiaoye-react/ui';
 import { events } from './data';
 
 function Demo() {

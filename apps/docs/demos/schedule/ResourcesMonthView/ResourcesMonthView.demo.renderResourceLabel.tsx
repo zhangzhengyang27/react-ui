@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { Stack, Text } from '@xiaoye-react/ui';
-import { ResourcesMonthView, ScheduleResourceData } from '@xiaoye-react/schedule';
+import { ResourcesMonthView, ScheduleResourceData } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { dataCode, resourceEvents, resources } from './_data';
 
@@ -33,7 +33,7 @@ const code = `
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { Stack, Text } from '@xiaoye-react/ui';
-import { ResourcesMonthView, ScheduleResourceData } from '@xiaoye-react/schedule';
+import { ResourcesMonthView, ScheduleResourceData } from '@xiaoye-react/ui';
 import { events, resources } from './data';
 
 function Demo() {

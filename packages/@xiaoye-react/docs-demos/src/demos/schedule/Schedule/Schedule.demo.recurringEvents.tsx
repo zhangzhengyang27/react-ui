@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Schedule } from '@xiaoye-react/schedule';
+import { Schedule } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const recurringEventsData = [
@@ -34,7 +34,7 @@ const recurringEventsData = [
 
 const code = `
 import { useState } from 'react';
-import { Schedule } from '@xiaoye-react/schedule';
+import { Schedule } from '@xiaoye-react/ui';
 
 const events = [
   {

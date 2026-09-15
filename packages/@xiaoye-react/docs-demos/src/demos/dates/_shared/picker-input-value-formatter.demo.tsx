@@ -1,12 +1,12 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { DateFormatter } from '@xiaoye-react/dates';
+import { DateFormatter } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const getCode = (name: string) => `
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { ${name}, DateFormatter } from '@xiaoye-react/dates';
+import { ${name}, DateFormatter } from '@xiaoye-react/ui';
 
 const formatter: DateFormatter = ({ type, date, locale, format }) => {
   if (type === 'multiple' && Array.isArray(date)) {

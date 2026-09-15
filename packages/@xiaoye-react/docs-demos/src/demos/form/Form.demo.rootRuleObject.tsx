@@ -1,10 +1,10 @@
 import { Button, Text, TextInput } from '@xiaoye-react/ui';
-import { formRootRule, isNotEmpty, useForm } from '@xiaoye-react/form';
+import { formRootRule, isNotEmpty, useForm } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import { Button, Text, TextInput } from '@xiaoye-react/ui';
-import { formRootRule, isNotEmpty, useForm } from '@xiaoye-react/form';
+import { formRootRule, isNotEmpty, useForm } from '@xiaoye-react/ui';
 
 function Demo() {
   const form = useForm({

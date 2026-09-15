@@ -1,0 +1,115 @@
+import { UnstyledButton } from '../../../components/UnstyledButton/UnstyledButton';
+import { BoxProps, ElementProps } from '../../../core/Box/Box';
+import { useProps } from '../../../core/UIProvider/index';
+import { UISize } from '../../../core/UIProvider/theme.types';
+import { factory } from '../../../core/factory/factory';
+import { createVarsResolver } from '../../../core/styles-api/index';
+import { StylesApiProps } from '../../../core/styles-api/styles-api.types';
+import { useStyles } from '../../../core/styles-api/use-styles/use-styles';
+import { getFontSize, getSize } from '../../../core/utils/index';
+import { Factory } from '../../../schedule/components/AgendaView/AgendaView';
+import classes from './PickerControl.module.css';
+
+export type PickerControlStylesNames = 'pickerControl';
+export type PickerControlCssVariables = {
+  pickerControl: '--dpc-size' | '--dpc-fz';
+};
+
+export interface PickerControlProps
+  extends BoxProps, StylesApiProps<PickerControlFactory>, ElementProps<'button'> {
+  __staticSelector?: string;
+
+  /** Control children */
+  children?: React.ReactNode;
+
+  /** Disables control */
+  disabled?: boolean;
+
+  /** Assigns selected styles */
+  selected?: boolean;
+
+  /** Assigns in range styles */
+  inRange?: boolean;
+
+  /** Assigns first in range styles */
+  firstInRange?: boolean;
+
+  /** Assigns last in range styles */
+  lastInRange?: boolean;
+
+  /** Component size */
+  size?: UISize;
+
+  /** Determines whether the control should take the full width of its cell @default false */
+  fullWidth?: boolean;
+}
+
+export type PickerControlFactory = Factory<{
+  props: PickerControlProps;
+  ref: HTMLButtonElement;
+  stylesNames: PickerControlStylesNames;
+  vars: PickerControlCssVariables;
+}>;
+
+const varsResolver = createVarsResolver<PickerControlFactory>((_, { size }) => ({
+  pickerControl: {
+    '--dpc-fz': getFontSize(size),
+    '--dpc-size': getSize(size, 'dpc-size'),
+  },
+}));
+
+export const PickerControl = factory<PickerControlFactory>((_props) => {
+  const props = useProps('PickerControl', null, _props);
+  const {
+    classNames,
+    className,
+    style,
+    styles,
+    unstyled,
+    vars,
+    firstInRange,
+    lastInRange,
+    inRange,
+    __staticSelector,
+    selected,
+    disabled,
+    fullWidth,
+    attributes,
+    ...others
+  } = props;
+
+  const getStyles = useStyles<PickerControlFactory>({
+    name: __staticSelector || 'PickerControl',
+    classes,
+    props,
+    className,
+    style,
+    classNames,
+    styles,
+    unstyled,
+    attributes,
+    vars,
+    varsResolver,
+    rootSelector: 'pickerControl',
+  });
+
+  return (
+    <UnstyledButton
+      {...getStyles('pickerControl')}
+      unstyled={unstyled}
+      data-picker-control
+      data-full-width={fullWidth || undefined}
+      data-selected={(selected && !disabled) || undefined}
+      data-disabled={disabled || undefined}
+      data-in-range={(inRange && !disabled && !selected) || undefined}
+      data-first-in-range={(firstInRange && !disabled) || undefined}
+      data-last-in-range={(lastInRange && !disabled) || undefined}
+      disabled={disabled}
+      {...others}
+    />
+  );
+});
+
+PickerControl.classes = classes;
+PickerControl.varsResolver = varsResolver;
+PickerControl.displayName = '@xiaoye-react/dates/PickerControl';

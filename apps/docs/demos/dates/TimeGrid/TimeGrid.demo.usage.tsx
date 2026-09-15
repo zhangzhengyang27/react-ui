@@ -1,8 +1,8 @@
-import { getTimeRange, TimeGrid } from '@xiaoye-react/dates';
+import { getTimeRange, TimeGrid } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
-import { getTimeRange, TimeGrid } from '@xiaoye-react/dates';
+import { getTimeRange, TimeGrid } from '@xiaoye-react/ui';
 
 
 function Demo() {

@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useRef, useState } from 'react';
 import { Box, Grid, Text } from '@xiaoye-react/ui';
-import { Schedule, ScheduleEventData } from '@xiaoye-react/schedule';
+import { Schedule, ScheduleEventData } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 interface SidebarItem {
@@ -20,7 +20,7 @@ const code = `
 import { useRef, useState } from 'react';
 import dayjs from 'dayjs';
 import { Box, Grid, Text } from '@xiaoye-react/ui';
-import { Schedule, ScheduleEventData } from '@xiaoye-react/schedule';
+import { Schedule, ScheduleEventData } from '@xiaoye-react/ui';
 
 interface SidebarItem {
   title: string;

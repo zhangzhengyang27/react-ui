@@ -1,12 +1,12 @@
 import { CaretDownIcon } from '@phosphor-icons/react/dist/csr/CaretDown'
 import { Stack } from '@xiaoye-react/ui'
-import { DateInput } from '@xiaoye-react/dates'
+import { DateInput } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
 import { CaretDownIcon } from '@phosphor-icons/react/dist/csr/CaretDown';
 import { Stack } from '@xiaoye-react/ui';
-import { DateInput } from '@xiaoye-react/dates';
+import { DateInput } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

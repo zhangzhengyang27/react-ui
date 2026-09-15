@@ -1,8 +1,8 @@
-import { DateTimePicker } from '@xiaoye-react/dates';
+import { DateTimePicker } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
-import { DateTimePicker } from '@xiaoye-react/dates';
+import { DateTimePicker } from '@xiaoye-react/ui';
 
 function Demo() {
   return (

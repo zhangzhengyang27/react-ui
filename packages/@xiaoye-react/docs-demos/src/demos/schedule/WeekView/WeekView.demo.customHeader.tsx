@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { DateStringValue, getStartOfWeek, ScheduleHeader, WeekView } from '@xiaoye-react/schedule';
+import { DateStringValue, getStartOfWeek, ScheduleHeader, WeekView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { dataCode, regularEvents } from './_data';
 
@@ -12,7 +12,7 @@ import {
   getStartOfWeek,
   ScheduleHeader,
   WeekView,
-} from '@xiaoye-react/schedule';
+} from '@xiaoye-react/ui';
 import { events } from './data';
 
 function getWeekRangeLabel(date: DateStringValue) {

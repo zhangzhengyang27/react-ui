@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { Select } from '@xiaoye-react/ui';
-import { ResourcesSchedule, ScheduleEventData } from '@xiaoye-react/schedule';
+import { ResourcesSchedule, ScheduleEventData } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { _eventFormCode, EventData, EventForm } from '../_EventForm';
 import { dataCode, resourceEvents, resources } from './_data';
@@ -165,7 +165,7 @@ function Demo() {
 const code = `import dayjs from 'dayjs';
 import { useState } from 'react';
 import { Select } from '@xiaoye-react/ui';
-import { ResourcesSchedule, ScheduleEventData } from '@xiaoye-react/schedule';
+import { ResourcesSchedule, ScheduleEventData } from '@xiaoye-react/ui';
 import { EventData, EventForm } from './EventForm';
 import { events as initialEvents, resources } from './data';
 

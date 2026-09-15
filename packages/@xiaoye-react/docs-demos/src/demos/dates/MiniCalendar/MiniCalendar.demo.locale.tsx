@@ -1,11 +1,11 @@
 import 'dayjs/locale/ru';
 
-import { MiniCalendar } from '@xiaoye-react/dates';
+import { MiniCalendar } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
 import 'dayjs/locale/ru';
-import { MiniCalendar } from '@xiaoye-react/dates';
+import { MiniCalendar } from '@xiaoye-react/ui';
 
 function Demo() {
   return <MiniCalendar defaultDate="2025-04-15" locale="ru" numberOfDays={6} />;

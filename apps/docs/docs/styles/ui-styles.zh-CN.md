@@ -71,7 +71,6 @@ import '@xiaoye-react/dates/styles.layer.css';
 
 ```tsx
 // ❌ 届时不要同时导入同一包的 styles.css 和 styles.layer.css
-import '@xiaoye-react/dates/styles.css';
 import '@xiaoye-react/dates/styles.layer.css';
 ```
 

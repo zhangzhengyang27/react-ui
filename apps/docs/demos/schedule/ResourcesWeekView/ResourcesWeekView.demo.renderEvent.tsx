@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { HoverCard, UnstyledButton } from '@xiaoye-react/ui';
-import { ResourcesWeekView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { ResourcesWeekView, ScheduleEventData } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { _eventDetailsCode, EventDetails } from '../_EventDetails';
 import { resources } from './_data';
@@ -82,7 +82,7 @@ const code = `
 import { useState } from 'react';
 import dayjs from 'dayjs';
 import { HoverCard, UnstyledButton } from '@xiaoye-react/ui';
-import { ResourcesWeekView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { ResourcesWeekView, ScheduleEventData } from '@xiaoye-react/ui';
 import { EventDetails } from './EventDetails';
 import { events as initialEvents, resources } from './data';
 
@@ -169,7 +169,7 @@ export const renderEvent: UIDemo = {
     { fileName: '事件详情.tsx', code: _eventDetailsCode, language: 'tsx' },
     {
       fileName: 'data.ts',
-      code: `import { ScheduleEventData } from '@xiaoye-react/schedule';\n\nexport const eventsData: ScheduleEventData[] = ${JSON.stringify(eventData, null, 2)};`,
+      code: `import { ScheduleEventData } from '@xiaoye-react/ui';\n\nexport const eventsData: ScheduleEventData[] = ${JSON.stringify(eventData, null, 2)};`,
       language: 'tsx',
     },
   ],

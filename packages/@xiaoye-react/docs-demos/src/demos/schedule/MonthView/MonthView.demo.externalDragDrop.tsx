@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useRef, useState } from 'react';
 import { Box, Grid, Text } from '@xiaoye-react/ui';
-import { MonthView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { MonthView, ScheduleEventData } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const sidebarItems = [
@@ -14,7 +14,7 @@ const code = `
 import { useRef, useState } from 'react';
 import dayjs from 'dayjs';
 import { Box, Grid, Text } from '@xiaoye-react/ui';
-import { MonthView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { MonthView, ScheduleEventData } from '@xiaoye-react/ui';
 
 const sidebarItems = [
   { title: 'Team Offsite', color: 'teal' },

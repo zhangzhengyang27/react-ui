@@ -1,12 +1,12 @@
 import dayjs from 'dayjs';
-import { DateTimePicker } from '@xiaoye-react/dates';
+import { DateTimePicker } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const now = dayjs('2024-01-15 12:00:00');
 
 const code = `
 import dayjs from 'dayjs';
-import { DateTimePicker } from '@xiaoye-react/dates';
+import { DateTimePicker } from '@xiaoye-react/ui';
 
 function Demo() {
   const now = dayjs('2024-01-15 12:00:00');

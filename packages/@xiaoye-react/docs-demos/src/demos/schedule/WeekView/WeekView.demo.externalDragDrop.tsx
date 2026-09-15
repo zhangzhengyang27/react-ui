@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useRef, useState } from 'react';
 import { Box, Grid, Text } from '@xiaoye-react/ui';
-import { ScheduleEventData, WeekView } from '@xiaoye-react/schedule';
+import { ScheduleEventData, WeekView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const sidebarItems = [
@@ -14,7 +14,7 @@ const code = `
 import { useRef, useState } from 'react';
 import dayjs from 'dayjs';
 import { Box, Grid, Text } from '@xiaoye-react/ui';
-import { WeekView, ScheduleEventData } from '@xiaoye-react/schedule';
+import { WeekView, ScheduleEventData } from '@xiaoye-react/ui';
 
 const sidebarItems = [
   { title: '快速同步', duration: 30, color: 'teal' },

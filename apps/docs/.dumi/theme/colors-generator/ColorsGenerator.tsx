@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { generateColorsMap } from '@xiaoye-react/colors-generator';
+import { generateColorsMap } from '@xiaoye-react/ui';
 import { useLocalStorage } from '@xiaoye-react/hooks';
 import { ColorsInput } from './ColorsInput/ColorsInput';
 import { ColorsList } from './ColorsList/ColorsList';

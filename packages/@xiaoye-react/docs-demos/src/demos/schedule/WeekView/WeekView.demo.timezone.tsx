@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import tz from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import { Select, Stack } from '@xiaoye-react/ui';
-import { ScheduleEventData, WeekView } from '@xiaoye-react/schedule';
+import { ScheduleEventData, WeekView } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 dayjs.extend(utc);
@@ -43,7 +43,7 @@ import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import { Select, Stack } from '@xiaoye-react/ui';
-import { WeekView } from '@xiaoye-react/schedule';
+import { WeekView } from '@xiaoye-react/ui';
 import { getEvents } from './data';
 
 dayjs.extend(utc);
@@ -83,7 +83,7 @@ function Demo() {
 
 const dataCode = `
 import dayjs from 'dayjs';
-import { ScheduleEventData } from '@xiaoye-react/schedule';
+import { ScheduleEventData } from '@xiaoye-react/ui';
 
 export function getEvents(date: string): ScheduleEventData[] {
   return [

@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { ScheduleEventData } from '@xiaoye-react/schedule';
+import { ScheduleEventData } from '@xiaoye-react/ui';
 
 const thisMonth = dayjs('2024-01-15').format('YYYY-MM');
 

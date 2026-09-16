@@ -1,7 +1,7 @@
 export const images = [
-  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-1.png',
-  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-2.png',
-  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-3.png',
-  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-4.png',
-  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-5.png',
+  '/demo/images/bg-1.png',
+  '/demo/images/bg-2.png',
+  '/demo/images/bg-3.png',
+  '/demo/images/bg-4.png',
+  '/demo/images/bg-5.png',
 ];

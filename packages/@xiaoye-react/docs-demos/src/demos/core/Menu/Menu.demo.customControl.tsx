@@ -48,7 +48,7 @@ function Demo() {
     <Menu withArrow>
       <Menu.Target>
         <UserButton
-          image="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-8.png"
+          image="/demo/avatars/avatar-8.png"
           name="Harriette Spoonlicker"
           email="hspoonlicker@outlook.com"
         />
@@ -100,7 +100,7 @@ function Demo() {
         <Menu withArrow>
             <Menu.Target>
                 <UserButton
-                    image="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-8.png"
+                    image="/demo/avatars/avatar-8.png"
                     name="Harriette Spoonlicker"
                     email="hspoonlicker@outlook.com"
                 />

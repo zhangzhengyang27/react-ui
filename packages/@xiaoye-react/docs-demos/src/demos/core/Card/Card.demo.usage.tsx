@@ -9,7 +9,7 @@ function Demo() {
     <Card shadow="sm" padding="lg" withBorder>
       <Card.Section>
         <Image
-          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-8.png"
+          src="/demo/images/bg-8.png"
           height={160}
           alt="Norway"
         />
@@ -39,7 +39,7 @@ function Demo() {
     <Card shadow="sm" padding="lg" withBorder>
       <Card.Section>
         <Image
-          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-8.png"
+          src="/demo/images/bg-8.png"
           height={160}
           alt="Norway"
         />

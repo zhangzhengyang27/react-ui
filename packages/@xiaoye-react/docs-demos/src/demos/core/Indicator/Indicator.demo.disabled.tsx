@@ -15,7 +15,7 @@ function Demo() {
         <Avatar
           size="lg"
           radius="sm"
-          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-5.png"
+          src="/demo/avatars/avatar-5.png"
         />
       </Indicator>
       <Button onClick={toggle}>切换指示器</Button>
@@ -33,7 +33,7 @@ function Demo() {
         <Avatar
           size="lg"
           radius="sm"
-          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-5.png"
+          src="/demo/avatars/avatar-5.png"
         />
       </Indicator>
       <Button onClick={toggle}>切换指示器</Button>

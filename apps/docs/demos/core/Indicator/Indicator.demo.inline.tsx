@@ -10,7 +10,7 @@ function Demo() {
       <Avatar
         size="lg"
         radius="sm"
-        src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-2.png"
+        src="/demo/avatars/avatar-2.png"
       />
     </Indicator>
   );
@@ -23,7 +23,7 @@ function Demo() {
       <Avatar
         size="lg"
         radius="sm"
-        src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-2.png"
+        src="/demo/avatars/avatar-2.png"
       />
     </Indicator>
   );

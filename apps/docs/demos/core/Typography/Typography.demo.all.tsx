@@ -10,7 +10,7 @@ const html = `<h1>标题 1</h1>
 <hr />
 <p><a href="#">ReactUI 链接</a></p>
 <p>这是一段用于展示排版样式的示例文本。良好的排版能够提升可读性，让用户更轻松地获取信息。段落之间的间距、行高以及字重共同决定了整体的阅读体验。</p>
-<img src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-10.png" alt="Unsplash 图片" />
+<img src="/demo/images/bg-10.png" alt="Unsplash 图片" />
 <ul>
   <li>列表项 - 1</li>
   <li>列表项 - 2</li>

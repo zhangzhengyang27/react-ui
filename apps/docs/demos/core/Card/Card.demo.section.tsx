@@ -12,9 +12,9 @@ import { EyeIcon } from '@phosphor-icons/react/dist/csr/Eye';
 import { FileZipIcon } from '@phosphor-icons/react/dist/csr/FileZip';
 import { TrashIcon } from '@phosphor-icons/react/dist/csr/Trash';
 const images = [
-  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-1.png',
-  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-2.png',
-  'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-3.png',
+  '/demo/images/bg-1.png',
+  '/demo/images/bg-2.png',
+  '/demo/images/bg-3.png',
 ];
 
 function Demo() {
@@ -56,7 +56,7 @@ function Demo() {
       </Text>
 
       <Card.Section mt="sm">
-        <Image src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-4.png" />
+        <Image src="/demo/images/bg-4.png" />
       </Card.Section>
 
       <Card.Section inheritPadding mt="sm" pb="md">
@@ -72,9 +72,9 @@ function Demo() {
 `
 
 const images = [
-    'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-1.png',
-    'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-2.png',
-    'https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-3.png'
+    '/demo/images/bg-1.png',
+    '/demo/images/bg-2.png',
+    '/demo/images/bg-3.png'
 ]
 
 function Demo() {
@@ -109,7 +109,7 @@ function Demo() {
             </Text>
 
             <Card.Section mt="sm">
-                <Image src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-4.png" />
+                <Image src="/demo/images/bg-4.png" />
             </Card.Section>
 
             <Card.Section inheritPadding mt="sm" pb="md">

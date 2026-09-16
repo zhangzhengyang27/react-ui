@@ -170,6 +170,12 @@ function Demo() {
     const [drawerOpened, setDrawerOpened] = useState(false);
     const [formError, setFormError] = useState<string | null>(null);
 
+    const openCreate = () => {
+        setEditing({ id: '', name: '', department: '研发部', city: '' });
+        setFormError(null);
+        setDrawerOpened(true);
+    };
+
     // 列 render 闭包需要访问最新状态，通过模块级引用中转
     openEdit = (record: Member) => {
         setEditing(record);

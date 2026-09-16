@@ -11,7 +11,7 @@ function Demo() {
       h={200}
       w="auto"
       fit="contain"
-      src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-9.png"
+      src="/demo/images/bg-9.png"
     />
   );
 }
@@ -24,7 +24,7 @@ function Demo() {
       h={200}
       w="auto"
       fit="contain"
-      src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-9.png"
+      src="/demo/images/bg-9.png"
     />
   );
 }

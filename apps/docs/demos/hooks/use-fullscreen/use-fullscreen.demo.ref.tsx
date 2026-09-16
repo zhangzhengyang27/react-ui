@@ -13,7 +13,7 @@ function RefDemo() {
     <Stack align="center">
       <img
         ref={ref}
-        src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-4.png"
+        src="/demo/images/bg-4.png"
         alt="演示图片"
         width={200}
       />
@@ -32,7 +32,7 @@ function RefDemo() {
     <Stack align="center">
       <img
         ref={ref}
-        src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-4.png"
+        src="/demo/images/bg-4.png"
         alt="演示图片"
         width={200}
       />

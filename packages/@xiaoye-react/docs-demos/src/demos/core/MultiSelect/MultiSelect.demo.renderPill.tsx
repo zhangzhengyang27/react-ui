@@ -5,11 +5,11 @@ const code = `
 import { MultiSelect, Pill, Avatar } from '@xiaoye-react/ui';
 
 const users = [
-  { value: 'Emily Johnson', label: 'Emily Johnson', image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-7.png' },
-  { value: 'Ava Rodriguez', label: 'Ava Rodriguez', image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-8.png' },
-  { value: 'Olivia Chen', label: 'Olivia Chen', image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-4.png' },
-  { value: 'Ethan Barnes', label: 'Ethan Barnes', image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-1.png' },
-  { value: 'Mason Taylor', label: 'Mason Taylor', image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-2.png' },
+  { value: 'Emily Johnson', label: 'Emily Johnson', image: '/demo/avatars/avatar-7.png' },
+  { value: 'Ava Rodriguez', label: 'Ava Rodriguez', image: '/demo/avatars/avatar-8.png' },
+  { value: 'Olivia Chen', label: 'Olivia Chen', image: '/demo/avatars/avatar-4.png' },
+  { value: 'Ethan Barnes', label: 'Ethan Barnes', image: '/demo/avatars/avatar-1.png' },
+  { value: 'Mason Taylor', label: 'Mason Taylor', image: '/demo/avatars/avatar-2.png' },
 ];
 
 const usersMap = new Map(users.map((user) => [user.value.toString(), user]));
@@ -41,27 +41,27 @@ const users = [
   {
     value: 'Emily Johnson',
     label: 'Emily Johnson',
-    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-7.png',
+    image: '/demo/avatars/avatar-7.png',
   },
   {
     value: 'Ava Rodriguez',
     label: 'Ava Rodriguez',
-    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-8.png',
+    image: '/demo/avatars/avatar-8.png',
   },
   {
     value: 'Olivia Chen',
     label: 'Olivia Chen',
-    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-4.png',
+    image: '/demo/avatars/avatar-4.png',
   },
   {
     value: 'Ethan Barnes',
     label: 'Ethan Barnes',
-    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-1.png',
+    image: '/demo/avatars/avatar-1.png',
   },
   {
     value: 'Mason Taylor',
     label: 'Mason Taylor',
-    image: 'https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-2.png',
+    image: '/demo/avatars/avatar-2.png',
   },
 ];
 

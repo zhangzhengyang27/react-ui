@@ -8,7 +8,7 @@ function Demo() {
   return (
     <AspectRatio ratio={1080 / 720} maw={300} mx="auto">
       <img
-        src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-5.png"
+        src="/demo/images/bg-5.png"
         alt="Panda"
       />
     </AspectRatio>
@@ -20,7 +20,7 @@ function Demo() {
   return (
     <AspectRatio ratio={1080 / 720} maw={300} mx="auto">
       <img
-        src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-5.png"
+        src="/demo/images/bg-5.png"
         alt="Panda"
       />
     </AspectRatio>

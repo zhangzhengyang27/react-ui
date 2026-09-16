@@ -8,7 +8,7 @@ function Demo() {
   return (
     <Image
       radius="md"
-      src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-7.png"
+      src="/demo/images/bg-7.png"
     />
   );
 }
@@ -18,7 +18,7 @@ function Demo() {
   return (
     <Image
       radius="md"
-      src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-7.png"
+      src="/demo/images/bg-7.png"
     />
   );
 }

@@ -12,7 +12,7 @@ function Demo() {
     <>
       <AspectRatio ratio={16 / 9} maw={400} mx="auto" pos="relative">
         <img
-          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-7.png"
+          src="/demo/images/bg-7.png"
           alt="Demo"
         />
         {visible && (
@@ -36,7 +36,7 @@ function Demo() {
     <>
       <AspectRatio ratio={16 / 9} maw={400} mx="auto" pos="relative">
         <img
-          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-7.png"
+          src="/demo/images/bg-7.png"
           alt="Demo"
         />
         {visible && (

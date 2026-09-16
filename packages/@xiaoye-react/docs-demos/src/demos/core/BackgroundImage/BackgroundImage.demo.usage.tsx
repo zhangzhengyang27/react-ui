@@ -6,7 +6,7 @@ function Wrapper(props: BackgroundImageProps) {
     <Box maw={300} mx="auto">
       <BackgroundImage
         {...props}
-        src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-6.png"
+        src="/demo/images/bg-6.png"
       >
         <Center p="md">
           <Text c="white">
@@ -27,7 +27,7 @@ function Demo() {
   return (
     <Box maw={300} mx="auto">
       <BackgroundImage
-        src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-6.png"
+        src="/demo/images/bg-6.png"
         {{props}}
       >
         <Center p="md">

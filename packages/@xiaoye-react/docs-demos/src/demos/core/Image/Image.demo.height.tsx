@@ -9,7 +9,7 @@ function Demo() {
     <Image
       radius="md"
       h={200}
-      src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-10.png"
+      src="/demo/images/bg-10.png"
     />
   );
 }
@@ -20,7 +20,7 @@ function Demo() {
     <Image
       radius="md"
       h={200}
-      src="https://raw.githubusercontent.com/uidev/ui/master/.demo/images/bg-10.png"
+      src="/demo/images/bg-10.png"
     />
   );
 }

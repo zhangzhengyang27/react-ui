@@ -11,7 +11,7 @@ function Demo() {
         <Avatar
           size="lg"
           radius="xl"
-          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-1.png"
+          src="/demo/avatars/avatar-1.png"
         />
       </Indicator>
 
@@ -19,7 +19,7 @@ function Demo() {
         <Avatar
           size="lg"
           radius="xl"
-          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-2.png"
+          src="/demo/avatars/avatar-2.png"
         />
       </Indicator>
 
@@ -27,7 +27,7 @@ function Demo() {
         <Avatar
           size="lg"
           radius="xl"
-          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-3.png"
+          src="/demo/avatars/avatar-3.png"
         />
       </Indicator>
     </Group>
@@ -42,7 +42,7 @@ function Demo() {
         <Avatar
           size="lg"
           radius="xl"
-          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-1.png"
+          src="/demo/avatars/avatar-1.png"
         />
       </Indicator>
 
@@ -50,7 +50,7 @@ function Demo() {
         <Avatar
           size="lg"
           radius="xl"
-          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-2.png"
+          src="/demo/avatars/avatar-2.png"
         />
       </Indicator>
 
@@ -58,7 +58,7 @@ function Demo() {
         <Avatar
           size="lg"
           radius="xl"
-          src="https://raw.githubusercontent.com/uidev/ui/master/.demo/avatars/avatar-3.png"
+          src="/demo/avatars/avatar-3.png"
         />
       </Indicator>
     </Group>

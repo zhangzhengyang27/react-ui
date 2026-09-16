@@ -246,9 +246,11 @@ export const Tooltip = factory<TooltipFactory>((_props, ref) => {
     }
 
     // React 19 中 child 的 ref 是普通 prop：合并而非覆盖，否则子元素自带 ref 时
-    // floating-ui 的 reference setter 永远不被调用，tooltip 定位失效
+    // floating-ui 的 reference setter 永远不被调用，tooltip 定位失效。
+    // floating-ui 的 setReference 必须并入合并链（对齐 PopoverTarget/HoverCardTarget）：
+    // 缺失时 useFloating 注册不到 reference 元素，定位（x/y 恒为 0）与 hover/focus 监听全部失效
     const childProps = (child?.props ?? {}) as any
-    const mergedRef = useMergedRef(ref as React.Ref<any>, childProps.ref)
+    const mergedRef = useMergedRef(tooltip.reference, ref as React.Ref<any>, childProps.ref)
 
     const tooltipStyles = getStyles('tooltip')
 

@@ -3,7 +3,8 @@ import { UIDemo } from '@xiaoye-react/demo';
 
 function Wrapper(props: MenuProps) {
   return (
-    <Menu opened trapFocus={false} closeOnItemClick={false} width={240} shadow="md" {...props}>
+    // hide：常开 demo 在异步水合页面中锚点滚出视口时隐藏浮层，避免漂浮在无关内容上
+    <Menu middlewares={{ hide: true }} opened trapFocus={false} closeOnItemClick={false} width={240} shadow="md" {...props}>
       <Menu.Target>
         <button type="button">切换菜单</button>
       </Menu.Target>

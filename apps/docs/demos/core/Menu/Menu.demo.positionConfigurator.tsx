@@ -5,7 +5,8 @@ import { DemoMenuItems } from './_menu-items';
 
 function Wrapper(props: MenuProps) {
   return (
-    <Menu opened trapFocus={false} {...props}>
+    // hide：常开 demo 在异步水合页面中锚点滚出视口时隐藏浮层，避免漂浮在无关内容上
+    <Menu middlewares={{ hide: true }} opened trapFocus={false} {...props}>
       <DemoMenuItems />
     </Menu>
   );

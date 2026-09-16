@@ -15,6 +15,8 @@ export interface PopoverContextValue {
     arrowRadius: number
     arrowPosition: 'center' | 'side'
     placement: import('../../core').FloatingPosition
+    /** hide 中间件结果：触发元素被裁剪出视口时为 true，浮层应隐藏 */
+    referenceHidden: boolean
     closeOnEscape: boolean | undefined
     zIndex: string | number | undefined
     width: string | number

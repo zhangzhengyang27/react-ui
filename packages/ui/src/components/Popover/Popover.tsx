@@ -324,6 +324,7 @@ export function Popover(_props: PopoverProps) {
                 arrowRadius: arrowRadius!,
                 arrowPosition: arrowPosition!,
                 placement: popover.floating.placement,
+                referenceHidden: popover.floating.middlewareData?.hide?.referenceHidden ?? false,
                 trapFocus,
                 zIndex,
                 withinPortal,

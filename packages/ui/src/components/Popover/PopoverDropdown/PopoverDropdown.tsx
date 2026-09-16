@@ -47,6 +47,7 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
                             id={ctx.getDropdownId()}
                             aria-labelledby={ctx.getTargetId()}
                             data-position={ctx.placement}
+                            data-reference-hidden={ctx.referenceHidden || undefined}
                             // Modal 的 window 捕获 Escape 监听据它跳过（use-modal 用 closest 查找），
                             // 浮层内的 Escape 由本组件 onKeyDown 处理，避免双关
                             data-ui-stop-propagation="true"
@@ -68,6 +69,9 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
                                 left: ctx.x ?? 0,
                                 zIndex: ctx.zIndex,
                                 width: rem(ctx.width),
+                                // hide 中间件：触发元素滚出视口后隐藏浮层，避免常开浮层
+                                // 被 shift 钳制在视口内漂浮在无关内容上（覆盖过渡样式的 visibility）
+                                visibility: ctx.referenceHidden ? 'hidden' : undefined,
                                 ...style
                             }}
                         >

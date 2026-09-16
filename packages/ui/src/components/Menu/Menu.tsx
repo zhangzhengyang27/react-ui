@@ -102,6 +102,9 @@ export interface MenuProps extends StylesApiProps<MenuFactory> {
     /** Dropdown width */
     width?: import('../Popover').PopoverWidth
 
+    /** floating-ui 中间件配置（flip/shift/hide 等），透传给内部 Popover */
+    middlewares?: import('../Popover').PopoverMiddlewares
+
     /** 主题圆角的键或任意有效的 CSS 值 */
     radius?: import('../../core').UIRadius
 

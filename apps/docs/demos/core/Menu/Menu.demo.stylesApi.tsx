@@ -17,7 +17,9 @@ function Demo() {
 
 function Demo(props: any) {
   return (
-    <Menu {...props} opened withArrow position="left" trapFocus={false}>
+    // hide：锚点滚出视口后隐藏浮层。本 demo 常开，页面为异步水合（demo 逐个挂载
+    // 导致布局后期位移），不隐藏时 shift 会把浮层钳制在视口内、漂浮在无关内容上
+    <Menu {...props} middlewares={{ hide: true }} opened withArrow position="left" trapFocus={false}>
       <DemoMenuItems />
     </Menu>
   );

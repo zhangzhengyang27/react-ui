@@ -53,6 +53,9 @@
     align-items: center;
     justify-content: center;
     z-index: 1;
+    /* 装饰层不拦截指针：thumb(z-index:1) 悬叠在承载全部指针交互的透明 input 之上，
+       不置 none 时按在手柄上的 mousedown 落在装饰 div 上，input 收不到事件、拖动静默失效 */
+    pointer-events: none;
 }
 
 .root:where([data-disabled]) .thumb {
@@ -89,6 +92,7 @@
     background-color: var(--ui-color-default-border);
     border-radius: 50%;
     transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
 .markLabel {
@@ -99,6 +103,7 @@
     font-size: var(--ui-font-size-xs);
     color: var(--ui-color-dimmed);
     white-space: nowrap;
+    pointer-events: none;
 }
 
 .input {
@@ -113,4 +118,10 @@
 
 .root:where([data-disabled]) .input {
     cursor: not-allowed;
+}
+
+/* 键盘焦点指示：透明 input 承载交互且 opacity:0，描边落在可见的 track 上（对齐 Rating 的 :has 模式） */
+.root:has(.input:focus-visible) .track {
+    outline: 2px solid var(--ui-primary-color-filled);
+    outline-offset: 2px;
 }

@@ -1,7 +1,6 @@
 import dayjs from 'dayjs';
 import { AnyDateValue, DayOfWeek } from '../../types';
 import { getMonthDays } from '../get-month-days/get-month-days';
-import { toDateString } from '../to-date-string/to-date-string';
 
 interface GetMonthRangeInput {
   month: AnyDateValue;
@@ -18,9 +17,11 @@ export function getMonthRange({
   firstDayOfWeek,
 }: GetMonthRangeInput) {
   if (!withOutsideDays) {
+    // 保持既有 19 字符 `YYYY-MM-DD 00:00:00` 输出不变(与下方 getMonthDays 分支及
+    // 测试编码的行为一致);toDateString 现按 DateStringValue 契约返回 10 字符,不再复用
     return {
-      start: toDateString(dayjs(month).startOf('month')),
-      end: toDateString(dayjs(month).endOf('month')),
+      start: dayjs(month).startOf('month').format('YYYY-MM-DD 00:00:00'),
+      end: dayjs(month).endOf('month').format('YYYY-MM-DD 00:00:00'),
     };
   }
 

@@ -144,4 +144,36 @@ describe('Cascader', () => {
         fireEvent.click(screen.getByRole('option', { name: 'B' }))
         expect(onChange).toHaveBeenCalledWith('b')
     })
+
+    it('键盘进入面板：打开态在输入框按 ArrowDown 聚焦首列首项', () => {
+        render(<Cascader data={regionData} defaultDropdownOpened />, { wrapper })
+
+        const input = screen.getByRole('textbox')
+        input.focus()
+        fireEvent.keyDown(input, { key: 'ArrowDown' })
+
+        // 焦点从输入框移入面板首列首项，选项从此键盘可达
+        expect(document.activeElement).toBe(screen.getByRole('option', { name: 'Zhejiang' }))
+
+        // 面板内继续 ArrowDown 在列内移动
+        fireEvent.keyDown(document.activeElement!, { key: 'ArrowDown' })
+        expect(document.activeElement).toBe(screen.getByRole('option', { name: 'Jiangsu' }))
+    })
+
+    it('键盘进入面板：搜索模式下 ArrowDown 聚焦搜索结果首项', () => {
+        render(<Cascader data={regionData} searchable defaultDropdownOpened />, { wrapper })
+
+        const input = screen.getByRole('textbox')
+        fireEvent.change(input, { target: { value: 'West' } })
+        fireEvent.keyDown(input, { key: 'ArrowDown' })
+
+        expect(document.activeElement).toBe(screen.getByRole('option', { name: /West Lake/ }))
+    })
+
+    it('禁用节点带 aria-disabled，读屏可感知', () => {
+        const disabledData: CascaderNode[] = [{ value: 'a', label: 'A', disabled: true }]
+        render(<Cascader data={disabledData} defaultDropdownOpened />, { wrapper })
+
+        expect(screen.getByRole('option', { name: 'A' })).toHaveAttribute('aria-disabled', 'true')
+    })
 })

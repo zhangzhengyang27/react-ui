@@ -222,8 +222,10 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
         const delimiters = splitChars.filter(char => pasted.includes(char))
         if (delimiters.length > 0) {
             event.preventDefault()
+            // 字符类内 '-' 处于非边缘位时是区间符号：splitChars={[',', '-', ';']} 会形成
+            // [,-;] 把逗号到分号之间的全部字符（含数字）当分隔符，须一并转义
             const splitRegex = new RegExp(
-                `[${delimiters.map(char => char.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('')}]`
+                `[${delimiters.map(char => char.replace(/[.*+?^${}()|[\]\\-]/g, '\\$&')).join('')}]`
             )
             // 不能逐段调用 addTag：其闭包中的 selectedValues 是同一渲染快照，
             // 多次调用都基于旧值计算，导致只有最后一段生效。改为单次累加后统一更新
@@ -248,6 +250,8 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
         event.stopPropagation()
         if (disabled) return
         removeTag(tagIndex)
+        // 胶囊卸载后焦点会丢到 body（Backspace 删 tag、继续输入全部失效），移除后回焦输入框
+        inputRef.current?.focus()
     }
 
     const handleClear = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -258,6 +262,8 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
             setSelectedValues([])
         }
         onChange?.([])
+        // 清除按钮随值清空卸载，焦点回焦输入框
+        inputRef.current?.focus()
     }
 
     const valuesList = selectedValues.map((tagValue, index) => (
@@ -271,6 +277,8 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
                     size="xs"
                     aria-label={`移除 ${tagValue}`}
                     onClick={(event: React.MouseEvent<HTMLButtonElement>) => handleRemove(event, index)}
+                    // 阻止焦点转移到按钮：点击移除后胶囊卸载，焦点会丢到 body
+                    onMouseDown={event => event.preventDefault()}
                 />
             }
         >
@@ -281,7 +289,15 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     const shouldShowClear = clearable && selectedValues.length > 0
     const rightSection = (
         <div className={classes.section}>
-            {shouldShowClear ? <CloseButton size="xs" onClick={handleClear} aria-label="Clear all" /> : null}
+            {shouldShowClear ? (
+                <CloseButton
+                    size="xs"
+                    onClick={handleClear}
+                    // 阻止焦点转移到按钮：点击后按钮随值清空卸载，焦点会丢到 body
+                    onMouseDown={event => event.preventDefault()}
+                    aria-label="Clear all"
+                />
+            ) : null}
         </div>
     )
 
@@ -315,8 +331,14 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
                 <TagsInputTarget
                     className={classes.wrapper}
                     onClick={(event: React.MouseEvent<HTMLDivElement>) => {
-                        if (!(event.target as HTMLElement).closest('button')) {
+                        const isButton = !!(event.target as HTMLElement).closest('button')
+                        if (!isButton) {
                             inputRef.current?.focus()
+                        }
+                        // 点击输入框本体不触发外层 toggle（B03-2：展开态点输入框调整光标不收起建议列表），
+                        // 关闭态在此兜底打开，保持"点击打开建议下拉"的既有行为
+                        if (!isButton && !disabled && !isMaxTags && !opened) {
+                            setOpened(true)
                         }
                     }}
                 >

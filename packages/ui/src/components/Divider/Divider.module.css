@@ -8,6 +8,12 @@
 
     --divider-color: var(--ui-color-gray-3);
 
+    /* data-ui-color-scheme 只会设在 <html> 上，必须用祖先选择器匹配：
+       灰阶字面量不随色制翻转，暗色下分割线过亮（与 Paper/Card 暗色处理对齐） */
+    [data-ui-color-scheme='dark'] & {
+        --divider-color: var(--ui-color-dark-4);
+    }
+
     &:where([data-orientation='horizontal']) {
         border-top: var(--divider-size) var(--divider-border-style, solid) var(--divider-color);
     }

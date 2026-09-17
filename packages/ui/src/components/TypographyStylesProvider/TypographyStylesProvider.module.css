@@ -84,7 +84,7 @@
 
     & :where(ul, ol) {
         margin-bottom: var(--ui-spacing-md);
-        padding-left: var(--ui-spacing-lg);
+        padding-inline-start: var(--ui-spacing-lg);
     }
 
     & :where(li) {
@@ -110,7 +110,7 @@
     & :where(blockquote) {
         margin: 0;
         padding: var(--ui-spacing-xs) var(--ui-spacing-sm);
-        border-left: 4px solid var(--ui-color-default-border);
+        border-inline-start: 4px solid var(--ui-color-default-border);
         color: var(--ui-color-dimmed);
     }
 }

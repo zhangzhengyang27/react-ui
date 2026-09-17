@@ -78,6 +78,11 @@ export interface PickerInputBaseProps
   type: DatePickerType;
   size?: UISize;
   withTime?: boolean;
+  /** @internal 内部 Popover/Modal 专属 props：仅用于拦截，避免透传到 DOM 触发 React 告警 */
+  withinPortal?: boolean;
+  returnFocus?: boolean;
+  transitionProps?: Record<string, unknown>;
+  closeOnEscape?: boolean;
 }
 
 export type PickerInputBaseFactory = Factory<{
@@ -143,7 +148,12 @@ export const PickerInputBase = factory<PickerInputBaseFactory>((_props) => {
       {dropdownType === 'modal' && !readOnly && (
         <Modal
           opened={dropdownOpened}
-          onClose={handleClose}
+          onClose={() => {
+            // 与 popover 路径走同一关闭管线:先清理(未完成区间 + 关闭),再触发消费者
+            // onDropdownClose(内部含收尾钳制),否则 modal 下 Escape/遮罩关闭会丢收尾逻辑
+            handleClose();
+            onDropdownClose?.();
+          }}
           withCloseButton={false}
           size="auto"
           data-dates-modal

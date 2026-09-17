@@ -14,6 +14,7 @@ export { Notifications } from './Notifications';
 
 export type {
   NotificationData,
+  NotificationPosition,
   NotificationsState,
   NotificationsStore,
 } from './notifications.store';

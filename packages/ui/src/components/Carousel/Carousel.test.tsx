@@ -55,8 +55,8 @@ describe('Carousel', () => {
             </Carousel>
         )
 
-        expect(screen.getByLabelText('Previous slide')).toBeInTheDocument()
-        expect(screen.getByLabelText('Next slide')).toBeInTheDocument()
+        expect(screen.getByLabelText('上一张幻灯片')).toBeInTheDocument()
+        expect(screen.getByLabelText('下一张幻灯片')).toBeInTheDocument()
     })
 
     it('does not render controls when withControls is false', () => {
@@ -66,8 +66,8 @@ describe('Carousel', () => {
             </Carousel>
         )
 
-        expect(screen.queryByLabelText('Previous slide')).not.toBeInTheDocument()
-        expect(screen.queryByLabelText('Next slide')).not.toBeInTheDocument()
+        expect(screen.queryByLabelText('上一张幻灯片')).not.toBeInTheDocument()
+        expect(screen.queryByLabelText('下一张幻灯片')).not.toBeInTheDocument()
     })
 
     it('renders indicators container when withIndicators is true', () => {
@@ -78,7 +78,7 @@ describe('Carousel', () => {
             </Carousel>
         )
 
-        expect(screen.getByRole('tablist', { name: 'Slides' })).toBeInTheDocument()
+        expect(screen.getByRole('tablist', { name: '幻灯片列表' })).toBeInTheDocument()
     })
 
     it('calls onPreviousSlide and onNextSlide when controls are clicked', () => {
@@ -96,10 +96,10 @@ describe('Carousel', () => {
             </Carousel>
         )
 
-        fireEvent.click(screen.getByLabelText('Previous slide'))
+        fireEvent.click(screen.getByLabelText('上一张幻灯片'))
         expect(onPreviousSlide).toHaveBeenCalledTimes(1)
 
-        fireEvent.click(screen.getByLabelText('Next slide'))
+        fireEvent.click(screen.getByLabelText('下一张幻灯片'))
         expect(onNextSlide).toHaveBeenCalledTimes(1)
     })
 

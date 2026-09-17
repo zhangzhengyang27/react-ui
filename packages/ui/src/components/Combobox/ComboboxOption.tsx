@@ -38,7 +38,8 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
     const index = ctx.optionIndexMap.get(instanceId) ?? -1
     // index 为 -1（尚未注册）时不能与 activeIndex(-1) 相等即视为激活
     const active = index >= 0 && index === ctx.activeIndex
-    const selected = ctx.selectedValues.includes(value)
+    // O(1) 查 Set：逐选项 includes 会把 n 个选项的渲染变成 O(n×m)
+    const selected = ctx.selectedValuesSet.has(value)
     // 提取稳定标量作为注册依赖，避免依赖每次渲染新建的 children JSX 导致搜索时全量 unregister+register
     const label = typeof children === 'string' ? children : value
 

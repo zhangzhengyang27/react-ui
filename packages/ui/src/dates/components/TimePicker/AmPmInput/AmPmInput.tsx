@@ -73,12 +73,31 @@ export function AmPmInput({
     const displayValue = value || '--';
     const inputSize = displayValue.length + 1;
 
+    // input 模式的值归一化:按首字符 a/p 映射到 am/pm 标签,不匹配时忽略输入,
+    // 避免任意自由文本使 am/pm 语义静默失效(值按 AM 处理但界面显示无意义文本)
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (readOnly) {
+        return;
+      }
+      const next = event.target.value;
+      if (!next) {
+        onChange(null);
+        return;
+      }
+      const first = next.trim().charAt(0).toLowerCase();
+      if (first === 'a') {
+        onChange(labels.am);
+      } else if (first === 'p') {
+        onChange(labels.pm);
+      }
+    };
+
     return (
       <input
         {...ctx.getStyles('field', { className, style })}
         value={displayValue}
         size={inputSize}
-        onChange={(event) => !readOnly && onChange(event.target.value || null)}
+        onChange={handleInputChange}
         onClick={((event: any) => event.stopPropagation()) as any}
         onKeyDown={handleKeyDown as any}
         onMouseDown={(event) => {

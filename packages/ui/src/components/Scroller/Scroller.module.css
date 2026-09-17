@@ -63,6 +63,12 @@
         & .chevron {
             transform: rotate(90deg);
         }
+
+        /* RTL 下逻辑定位 start 在物理右侧，渐变方向须翻转为物理 to left，
+           遮罩浓侧始终朝向内容区、透明侧朝向边缘 */
+        [dir='rtl'] & {
+            background: linear-gradient(to left, var(--scroller-background-color) 40%, transparent);
+        }
     }
 
     &:where([data-position='end']) {
@@ -72,6 +78,10 @@
 
         & .chevron {
             transform: rotate(-90deg);
+        }
+
+        [dir='rtl'] & {
+            background: linear-gradient(to right, var(--scroller-background-color) 40%, transparent);
         }
     }
 

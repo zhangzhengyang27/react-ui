@@ -113,12 +113,15 @@ export const RingProgress = factory<RingProgressFactory>((_props, ref) => {
     const viewBoxSize = normalizedSize
     const center = viewBoxSize / 2
 
-    const total = sections.reduce((acc, section) => acc + Math.max(0, section.value), 0)
+    // NaN/Infinity 输入归一为 0：Math.max(0, NaN) === NaN 会产出 "M NaN NaN" 的
+    // path（SVG 静默不渲染、显示空环），与 Progress 的 clamp 防御保持一致
+    const normalizeSectionValue = (value: number) => (Number.isFinite(value) ? Math.max(0, value) : 0)
+    const total = sections.reduce((acc, section) => acc + normalizeSectionValue(section.value), 0)
     const normalizedTotal = Math.max(total, 100)
 
     let currentAngle = -0.25
     const arcs = sections.map((section, index) => {
-        const sectionValue = Math.max(0, section.value)
+        const sectionValue = normalizeSectionValue(section.value)
         const sweep = sectionValue / normalizedTotal
         const endAngle = currentAngle + sweep
         const d = describeArc(currentAngle, endAngle, radius)
@@ -130,8 +133,20 @@ export const RingProgress = factory<RingProgressFactory>((_props, ref) => {
         return { d, stroke, key: index }
     })
 
+    // progressbar 语义：读屏可获知进度值，aria-valuenow 钳制到 [0, 100]
+    const ariaValueNow = Math.min(Math.max(total, 0), 100)
+
     return (
-        <Box ref={ref} {...getStyles('root')} mod={mod} {...others}>
+        <Box
+            ref={ref}
+            {...getStyles('root')}
+            mod={mod}
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={Math.round(ariaValueNow)}
+            {...others}
+        >
             <svg
                 {...getStyles('svg')}
                 width={normalizedSize}

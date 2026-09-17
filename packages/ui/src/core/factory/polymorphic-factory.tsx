@@ -77,6 +77,11 @@ export function polymorphicFactory<Payload extends PolymorphicFactoryPayload>(
         const Extended = forwardRef((props, ref) => <Component {...fixedProps} {...props} ref={ref as any} />) as any
         Extended.extend = Component.extend
         Extended.displayName = `WithProps(${Component.displayName})`
+        // 与非 polymorphic 版 factory 的 withProps 对齐：classes/varsResolver 是
+        // 组件的静态属性（如 Paper.classes），依赖它做样式探测的消费者在 withProps
+        // 产物上不应失效
+        Extended.classes = Component.classes
+        Extended.varsResolver = Component.varsResolver
         return Extended
     }
 

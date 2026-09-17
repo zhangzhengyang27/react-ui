@@ -27,6 +27,15 @@ export const HoverCardDropdown = factory<HoverCardDropdownFactory>((_props, ref)
         return null
     }
 
+    // 经 context 上的 styles api 接线（对齐 Menu 模式）：radius/shadow 经 varsResolver
+    // 产出的 --hovercard-* CSS 变量与 classNames/styles/unstyled 在此生效；
+    // 静态类 ui-HoverCard-dropdown 继续保留拼接（global.css 依它提供基础视觉）
+    const { className: dropdownClassName, style: dropdownStyles } = ctx.getStyles('dropdown', {
+        className,
+        withStaticClass: false
+    })
+    const arrowStyles = ctx.getStyles('arrow', { withStaticClass: false })
+
     return (
         <Portal>
             <Transition mounted={ctx.opened || false} transition="fade" duration={150} {...ctx.transitionProps}>
@@ -39,8 +48,9 @@ export const HoverCardDropdown = factory<HoverCardDropdownFactory>((_props, ref)
                         aria-labelledby={ctx.getTargetId()}
                         data-position={ctx.placement}
                         {...others}
-                        className={['ui-HoverCard-dropdown', className].filter(Boolean).join(' ')}
+                        className={['ui-HoverCard-dropdown', dropdownClassName].filter(Boolean).join(' ')}
                         style={{
+                            ...dropdownStyles,
                             ...transitionStyles,
                             // floatingStrategy prop 已移除（决策 A）：useFloating 固定为默认 absolute 策略，
                             // x/y 为文档绝对坐标，与 position: 'absolute' 保持一致（改为 fixed 会导致坐标错位）
@@ -64,8 +74,8 @@ export const HoverCardDropdown = factory<HoverCardDropdownFactory>((_props, ref)
                             arrowRadius={ctx.arrowRadius}
                             arrowOffset={ctx.arrowOffset}
                             arrowPosition={ctx.arrowPosition}
-                            className="ui-HoverCard-arrow"
-                            style={{ backgroundColor: 'var(--ui-color-body)' }}
+                            className={['ui-HoverCard-arrow', arrowStyles.className].filter(Boolean).join(' ')}
+                            style={arrowStyles.style}
                         />
                     </Box>
                 )}

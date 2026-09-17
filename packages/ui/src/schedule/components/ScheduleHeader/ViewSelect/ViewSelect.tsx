@@ -136,6 +136,10 @@ export const ViewSelect = factory<ViewSelectFactory>((_props) => {
     year: 'switchToYearView',
   };
 
+  // value 为可选 prop:未传值时所有 tab 均非选中,若全部 tabIndex=-1 则
+  // Tab 键无法进入 tablist、roving 方向键失去起点——兜底把第一项设为可聚焦
+  const hasActiveValue = value !== undefined && views!.includes(value);
+
   const items = views!.map((view, index) => {
     const isSelected = value === view;
     return (
@@ -155,7 +159,7 @@ export const ViewSelect = factory<ViewSelectFactory>((_props) => {
         role="tab"
         aria-label={getLabel(switchToLabelKeys[view], resolvedLabels) as string}
         aria-selected={isSelected}
-        tabIndex={isSelected ? 0 : -1}
+        tabIndex={isSelected || (!hasActiveValue && index === 0) ? 0 : -1}
       >
         {getLabel(view, resolvedLabels)}
       </HeaderControl>

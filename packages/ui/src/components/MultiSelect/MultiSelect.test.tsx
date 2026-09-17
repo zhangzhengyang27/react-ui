@@ -77,4 +77,24 @@ describe('MultiSelect', () => {
             expect(screen.queryByRole('option', { name: 'React' })).not.toBeInTheDocument()
         })
     })
+
+    it('searchable 时点击输入框本体打开下拉、再次点击不关闭（对齐 Select 的 ignoreClick 语义）', async () => {
+        renderMultiSelect(<MultiSelect data={['React', 'Vue']} searchable />)
+        const input = screen.getByRole('combobox')
+
+        // 关闭态：mousedown 负责打开（click 输入框本体不再参与 toggle）
+        fireEvent.mouseDown(input)
+        const wrapper = input.closest('[aria-expanded]')
+        await waitFor(() => {
+            expect(wrapper).toHaveAttribute('aria-expanded', 'true')
+            expect(screen.getByRole('option', { name: 'React' })).toBeInTheDocument()
+        })
+
+        // 已展开时点击输入框（定位光标/继续编辑搜索词）不关闭下拉
+        fireEvent.click(input)
+        expect(wrapper).toHaveAttribute('aria-expanded', 'true')
+        await waitFor(() => {
+            expect(screen.getByRole('option', { name: 'Vue' })).toBeInTheDocument()
+        })
+    })
 })

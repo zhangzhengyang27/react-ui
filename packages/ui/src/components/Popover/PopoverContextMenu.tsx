@@ -20,15 +20,17 @@ function createEventHandler<T>(handler: ((event: T) => void) | undefined, fn: (e
 export function PopoverContextMenu(props: PopoverContextMenuProps) {
     const { children, disabled } = useProps('PopoverContextMenu', null, props)
 
-    const child = getSingleElementChild(children) as React.ReactElement<any>
+    const child = getSingleElementChild(children) as React.ReactElement<any> | null
+    const childProps = (child?.props ?? {}) as any
+
+    const ctx = usePopoverContext()
+
+    // throw 必须在全部 hooks 之后：children 由有效变无效时，hooks 数量不能随条件变化（Rules of Hooks）
     if (!child) {
         throw new Error(
             'Popover.ContextMenu component children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported'
         )
     }
-
-    const ctx = usePopoverContext()
-    const childProps = child.props as any
 
     // 与 MenuContextMenu 保持一致：链式调用 child 自带的 onContextMenu，而不是直接覆盖
     const onContextMenu = createEventHandler<any>(childProps.onContextMenu, (event: React.MouseEvent<unknown>) => {

@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import React, { useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { AccordionChevron } from '../../../components/Accordion/AccordionChevron';
 import { Text } from '../../../components/Text/index';
 import { UnstyledButton } from '../../../components/UnstyledButton/UnstyledButton';
@@ -259,14 +259,23 @@ export const MobileMonthView = factory<MobileMonthViewFactory>((_props) => {
 
   const daysRef: MonthViewControlsRef = useRef<HTMLButtonElement[][]>([]);
 
-  const expandedEvents = expandRecurringEvents({
-    events,
-    rangeStart: dayjs(date).startOf('month').toDate(),
-    rangeEnd: dayjs(date).endOf('month').toDate(),
-    expansionLimit: recurrenceExpansionLimit,
-  });
+  // 事件展开 + 分组随渲染 memo（对齐 Week/Month/DayView 模式）：
+  // 点选日期等交互触发重渲染时不必全量重跑 rrule 展开
+  const expandedEvents = useMemo(
+    () =>
+      expandRecurringEvents({
+        events,
+        rangeStart: dayjs(date).startOf('month').toDate(),
+        rangeEnd: dayjs(date).endOf('month').toDate(),
+        expansionLimit: recurrenceExpansionLimit,
+      }),
+    [events, date, recurrenceExpansionLimit]
+  );
 
-  const groupedEvents = getMobileMonthViewEvents({ date, events: expandedEvents });
+  const groupedEvents = useMemo(
+    () => getMobileMonthViewEvents({ date, events: expandedEvents }),
+    [date, expandedEvents]
+  );
 
   const weekdays = withWeekDays
     ? getWeekdaysNames({
@@ -348,7 +357,7 @@ export const MobileMonthView = factory<MobileMonthViewFactory>((_props) => {
       return (
         <UnstyledButton
           aria-label={ariaLabel}
-          aria-selected={isSelected || undefined}
+          aria-current={isSelected ? 'date' : undefined}
           {...dayProps}
           {...getStyles('mobileMonthViewDay', {
             className: dayProps.className,
@@ -392,7 +401,7 @@ export const MobileMonthView = factory<MobileMonthViewFactory>((_props) => {
         {withWeekNumbers && (
           <UnstyledButton
             key={weekNumber}
-            aria-label={`Week ${weekNumber}`}
+            aria-label={getLabel('weekNumberLabel', labels)(weekNumber)}
             {...weekNumberProps}
             onClick={
               mode === 'static'
@@ -441,7 +450,7 @@ export const MobileMonthView = factory<MobileMonthViewFactory>((_props) => {
         <div>
           <Text {...getStyles('mobileMonthViewEventTitle')}>{event.title}</Text>
           <Text {...getStyles('mobileMonthViewEventTime')}>
-            {isAllDay ? 'All day' : `${startTime} – ${endTime}`}
+            {isAllDay ? getLabel('allDay', labels) : `${startTime} – ${endTime}`}
           </Text>
         </div>
       </Box>

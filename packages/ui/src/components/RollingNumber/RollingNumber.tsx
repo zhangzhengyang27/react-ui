@@ -15,6 +15,7 @@ import { buildValue } from './build-value'
 import { DigitColumn } from './DigitColumn'
 import { getDigitParts } from './get-digit-parts'
 import { getRenderSlots } from './get-render-slots'
+import { VisuallyHidden } from '../VisuallyHidden'
 import classes from './RollingNumber.module.css'
 
 export type RollingNumberStylesNames = 'root' | 'digit' | 'digitColumn' | 'char'
@@ -137,6 +138,7 @@ export const RollingNumber = factory<RollingNumberFactory>((_props, ref) => {
             mod={[{ 'tabular-numbers': tabularNumbers }, mod]}
             role={withLiveRegion ? 'status' : 'img'}
             aria-label={accessibleValue}
+            aria-live={withLiveRegion ? 'polite' : undefined}
             {...others}
         >
             {slots.map((slot) => {
@@ -164,6 +166,9 @@ export const RollingNumber = factory<RollingNumberFactory>((_props, ref) => {
                     </span>
                 )
             })}
+            {/* live region 的播报基于文本内容变更（NVDA/JAWS 对 aria-label 变更基本不播报）：
+                追加视觉隐藏文本承载最新值，内容节点全部 aria-hidden 时不影响播报 */}
+            {withLiveRegion && <VisuallyHidden>{accessibleValue}</VisuallyHidden>}
         </Box>
     )
 })

@@ -102,6 +102,7 @@ export const OverflowList = factory<OverflowListFactory>((_props, _ref) => {
         maxRows,
         maxVisibleItems,
         collapseFrom,
+        gap,
         getItemKey,
         mod,
         ...others
@@ -142,12 +143,15 @@ export const OverflowList = factory<OverflowListFactory>((_props, _ref) => {
     const overflowRef = useMergedRef(_overflowRef, (overflowElement as any)?.ref)
     const dimensions = useDimensions(containerRef)
     const dataKey = useMemo(() => getDataSignature(data, getItemKey), [data, getItemKey])
+    // gap 解析值参与重测触发：gap 变化只改 CSS 变量、容器尺寸往往不变
+    // （ResizeObserver 不触发），必须与 maxVisibleItems 一样显式纳入依赖
+    const resolvedGap = getSpacing(gap)
 
     useIsomorphicEffect(() => {
         setPhase('measuring')
         setVisibleCount(data.length)
         setSubtractCount(0)
-    }, [dataKey, maxRows, collapseFrom])
+    }, [dataKey, maxRows, collapseFrom, maxVisibleItems, resolvedGap])
 
     useIsomorphicEffect(() => {
         if (phase === 'measuring') {

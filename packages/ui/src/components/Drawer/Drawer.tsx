@@ -77,6 +77,9 @@ export interface DrawerProps
 
     /** 滚动区域组件 */
     scrollAreaComponent?: React.FC<any>
+
+    /** useModalsStack register 返回的栈 id，仅用于标记、不透传 DOM（避免渲染出 stackid 属性） */
+    stackId?: string
 }
 
 export type DrawerFactory = Factory<{
@@ -168,6 +171,7 @@ export const Drawer = factory<DrawerFactory>((_props, _ref) => {
         offset,
         scrollAreaComponent,
         transitionProps,
+        stackId,
         className,
         style,
         classNames,
@@ -190,19 +194,27 @@ export const Drawer = factory<DrawerFactory>((_props, _ref) => {
         varsResolver
     })
 
-    // Drawer.Stack 内的子 Drawer 向栈注册，zIndex 由栈按挂载顺序递增分配
+    // Drawer.Stack 内的子 Drawer 向栈注册，zIndex 由栈按打开顺序递增分配
     const stackCtx = useContext(DrawerStackContext)
     const autoId = useId(id)
 
+    // 注册/注销按 opened 门控：useDrawersStack 的标准用法是多个 Drawer 常驻挂载、
+    // 打开顺序任意，若挂载即注册，zIndex 会按 JSX 顺序分配，与打开顺序不一致。
+    // 依赖只取 addModal/removeModal（Stack 侧 useCallback 的稳定句柄），不能放整个 stackCtx：
+    // 注册本身会改变 stack → context value 身份随之变化，effect 若依赖 stackCtx 会
+    // cleanup+setup 无限重跑，再次触发 "Maximum update depth exceeded"
+    const addModalToStack = stackCtx?.addModal
+    const removeModalFromStack = stackCtx?.removeModal
     useEffect(() => {
-        if (!stackCtx) {
+        if (!addModalToStack || !removeModalFromStack || !opened) {
             return undefined
         }
         // DrawerStack 的注册方法名与 ModalStack 一致（addModal/removeModal）
-        stackCtx.addModal(autoId, zIndex!)
-        return () => stackCtx.removeModal(autoId)
+        addModalToStack(autoId, zIndex!)
+        return () => removeModalFromStack(autoId)
+        // zIndex 不入依赖：注册一次，后续 zIndex prop 变化不影响栈内排序
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [stackCtx, autoId])
+    }, [addModalToStack, removeModalFromStack, autoId, opened])
 
     const resolvedZIndex = stackCtx ? stackCtx.getZIndex(autoId) : zIndex
 

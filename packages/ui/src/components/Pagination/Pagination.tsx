@@ -213,39 +213,65 @@ function range(start: number, end: number) {
 
 type PaginationItem = number | 'dots'
 
+// siblings/boundaries 归一化：与 PaginationRoot 传参前的防御一致，
+// NaN/非有限数会让区间计算一路污染出 NaN（Math.max(NaN,x)=NaN）退化为 [start,'dots',end] 碎片
+function normalizeCount(value: number, fallback: number): number {
+    return Number.isFinite(value) ? Math.max(Math.trunc(value), 0) : fallback
+}
+
+/**
+ * 与 usePagination（组件实际渲染算法）保持同一套区间计算：
+ * 此前的复制品在 totalValueNumbers 边界、leftSiblingIndex 下限与溢出 item 数上均与组件分叉，
+ * 同输入会产出与渲染不同的区间；startValue 可选参数对齐组件的起始页码支持
+ */
 export function getPaginationItems(
     total: number,
     activePage: number,
     siblings: number,
-    boundaries: number
+    boundaries: number,
+    startValue = 1
 ): PaginationItem[] {
-    const totalValueNumbers = siblings * 2 + 3 + boundaries * 2
+    const _siblings = normalizeCount(siblings, 1)
+    const _boundaries = normalizeCount(boundaries, 1)
+    const _startValue = Math.max(Number.isFinite(startValue) ? Math.trunc(startValue) : 1, 1)
+    const _endValue = Number.isFinite(total) ? Math.max(Math.trunc(total), _startValue) : _startValue
+    const _total = _endValue - _startValue + 1
+    const _activePage = Math.min(Math.max(activePage, _startValue), _endValue)
 
-    if (total <= totalValueNumbers) {
-        return range(1, total)
+    const totalPageNumbers = _siblings * 2 + 3 + _boundaries * 2
+    if (totalPageNumbers >= _total) {
+        return range(_startValue, _endValue)
     }
 
-    const leftSiblingIndex = Math.max(activePage - siblings, boundaries + 2)
-    const rightSiblingIndex = Math.min(activePage + siblings, total - boundaries - 1)
+    const leftSiblingIndex = Math.max(_activePage - _siblings, _startValue + _boundaries - 1)
+    const rightSiblingIndex = Math.min(_activePage + _siblings, _endValue - _boundaries)
 
-    const shouldShowLeftDots = leftSiblingIndex > boundaries + 2
-    const shouldShowRightDots = rightSiblingIndex < total - boundaries - 1
+    const shouldShowLeftDots = leftSiblingIndex > _startValue + _boundaries + 1
+    const shouldShowRightDots = rightSiblingIndex < _endValue - _boundaries
 
     if (!shouldShowLeftDots && shouldShowRightDots) {
-        const leftItemCount = siblings * 2 + boundaries + 3
-        return [...range(1, leftItemCount), 'dots', ...range(total - boundaries + 1, total)]
+        const leftItemCount = _siblings * 2 + _boundaries + 2
+        return [
+            ...range(_startValue, _startValue + leftItemCount - 1),
+            'dots',
+            ...range(_endValue - (_boundaries - 1), _endValue)
+        ]
     }
 
     if (shouldShowLeftDots && !shouldShowRightDots) {
-        const rightItemCount = siblings * 2 + boundaries + 3
-        return [...range(1, boundaries), 'dots', ...range(total - rightItemCount + 1, total)]
+        const rightItemCount = _boundaries + 1 + 2 * _siblings
+        return [
+            ...range(_startValue, _startValue + _boundaries - 1),
+            'dots',
+            ...range(_endValue - rightItemCount, _endValue)
+        ]
     }
 
     return [
-        ...range(1, boundaries),
+        ...range(_startValue, _startValue + _boundaries - 1),
         'dots',
         ...range(leftSiblingIndex, rightSiblingIndex),
         'dots',
-        ...range(total - boundaries + 1, total)
+        ...range(_endValue - _boundaries + 1, _endValue)
     ]
 }

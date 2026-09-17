@@ -93,7 +93,11 @@ export function Saturation({
             {...others}
             role="slider"
             aria-label={saturationLabel}
-            aria-valuenow={position.x}
+            // 饱和度按 0-100 百分比语义提供 min/max/now（对齐 ColorSlider 的做法），
+            // 避免读屏播报 0-1 的裸浮点且缺失取值基准
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={Math.round(position.x * 100)}
             aria-valuetext={convertHsvaTo('rgba', value)}
             tabIndex={focusable ? 0 : -1}
             onKeyDown={handleKeyDown}

@@ -22,8 +22,8 @@ import classes from './Indicator.module.css'
 export type IndicatorPositionVariables =
     | '--indicator-top'
     | '--indicator-bottom'
-    | '--indicator-left'
-    | '--indicator-right'
+    | '--indicator-inline-start'
+    | '--indicator-inline-end'
     | '--indicator-translate-x'
     | '--indicator-translate-y'
 

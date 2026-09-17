@@ -28,6 +28,15 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
         return null
     }
 
+    // 经 context 上的 styles api 接线（对齐 Menu 模式）：radius/shadow 经 varsResolver
+    // 产出的 --popover-* CSS 变量与 classNames/styles/unstyled 在此生效；
+    // 静态类 ui-Popover-dropdown 继续保留拼接（global.css 依它提供基础视觉）
+    const { className: dropdownClassName, style: dropdownStyles } = ctx.getStyles('dropdown', {
+        className,
+        withStaticClass: false
+    })
+    const arrowStyles = ctx.getStyles('arrow', { withStaticClass: false })
+
     // transitionProps prop 已移除（决策 A）：过渡固定为 fade/150ms；Portal 无条件渲染
     return (
         <OptionalPortal withinPortal={ctx.withinPortal}>
@@ -61,8 +70,9 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
                                     ctx.onClose?.()
                                 }
                             }}
-                            className={['ui-Popover-dropdown', className].filter(Boolean).join(' ')}
+                            className={['ui-Popover-dropdown', dropdownClassName].filter(Boolean).join(' ')}
                             style={{
+                                ...dropdownStyles,
                                 ...transitionStyles,
                                 position: 'absolute',
                                 top: ctx.y ?? 0,
@@ -86,8 +96,8 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
                                 arrowRadius={ctx.arrowRadius}
                                 arrowOffset={ctx.arrowOffset}
                                 arrowPosition={ctx.arrowPosition}
-                                className="ui-Popover-arrow"
-                                style={{ backgroundColor: 'var(--ui-color-body)' }}
+                                className={['ui-Popover-arrow', arrowStyles.className].filter(Boolean).join(' ')}
+                                style={arrowStyles.style}
                             />
                         </Box>
                     </FocusTrap>

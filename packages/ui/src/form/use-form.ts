@@ -8,6 +8,7 @@ import { useFormValidating } from './hooks/use-form-validating/use-form-validati
 import { useFormValues } from './hooks/use-form-values/use-form-values';
 import { useFormWatch } from './hooks/use-form-watch/use-form-watch';
 import { getDataPath, getPath } from './paths';
+import type { LooseKeys } from './paths.types';
 import {
   FormErrors,
   FormRulesRecord,
@@ -94,6 +95,7 @@ export function useForm<
     $status.resetTouched();
     $validating.clearValidating();
     mode === 'uncontrolled' && setFormKey((key) => key + 1);
+    // 空依赖安全:$values.resetValues/clearErrors 等均已稳定化(onValuesChange 走 ref)
   }, []);
 
   const handleValuesChanges = useCallback(
@@ -200,7 +202,7 @@ export function useForm<
         ],
       });
     },
-    [onValuesChange, rules, debouncedValidateField]
+    [rules, debouncedValidateField]
   );
 
   const setValues: SetValues<Values> = useCallback(
@@ -209,7 +211,7 @@ export function useForm<
       $values.setValues({ values, updateState: mode === 'controlled' });
       handleValuesChanges(previousValues);
     },
-    [onValuesChange, handleValuesChanges]
+    [handleValuesChanges]
   );
 
   // 记录当前代际是否属于提交流程：onSubmit 需要区分「被新提交取代」（新提交负责收尾
@@ -358,7 +360,17 @@ export function useForm<
       setSubmitting(true);
 
       pendingSubmitValidationRef.current = true;
-      const result = validate();
+      // validate() 同步抛异常的兜底(如函数型 validate 直接 throw):
+      // 不捕获则异常逃出事件处理器,submitting 永久卡在 true;
+      // 复位后原样抛出,不让异常被静默吞掉
+      let result;
+      try {
+        result = validate();
+      } catch (error) {
+        setSubmitting(false);
+        pendingSubmitValidationRef.current = false;
+        throw error;
+      }
       // validate() 在 pendingSubmitValidationRef 置位时会把本次代际写入 submitGenerationRef，
       // 这里立即捕获：handleValidation 必须比对"自己这次提交"的代际。
       // 若比对全局 submitGenerationRef，双击提交时后一次提交会覆写它，
@@ -446,8 +458,20 @@ export function useForm<
 
   const key: Key<Values> = (path) => `${formKey}-${String(path)}-${fieldKeys[String(path)] || 0}`;
 
-  const getInputNode: GetInputNode<Values> = (path) =>
-    document.querySelector(`[data-path="${getDataPath(name, path)}"]`);
+  // 显式声明与 GetInputNode 一致的泛型签名:逐个比对 dataset.path 而非拼接属性
+  // 选择器,path 含引号等字符时属性选择器语法非法,querySelector 会抛 SyntaxError
+  const getInputNode: GetInputNode<Values> = <NodeType extends HTMLElement, Field extends LooseKeys<Values>>(
+    path: Field
+  ) => {
+    const dataPath = getDataPath(name, path);
+    const elements = document.querySelectorAll('[data-path]');
+    for (let index = 0; index < elements.length; index += 1) {
+      if ((elements[index] as HTMLElement).dataset.path === dataPath) {
+        return elements[index] as NodeType;
+      }
+    }
+    return null;
+  };
 
   const resetField = useCallback(
     (path: PropertyKey) => {

@@ -118,6 +118,8 @@ export const ActionIconGroupSection = factory<ActionIconGroupSectionFactory>((_p
         gradient,
         radius,
         autoContrast,
+        // color 由 varsResolver 消费,不透传到 DOM
+        color,
         attributes,
         ...others
     } = props

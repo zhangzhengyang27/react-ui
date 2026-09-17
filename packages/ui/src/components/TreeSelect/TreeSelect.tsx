@@ -459,6 +459,9 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
 
     const {
         styleProps,
+        // type/autoComplete 此前解构后丢弃：消费者传 autoComplete="off" 被静默吞掉，
+        // 浏览器自动填充干扰无解。type 透传到单选 InputBase；多选 PillsInput.Field 的
+        // type 是自身可见性语义（DOM type 恒为 text），故多选只透传 autoComplete
         rest: { type, autoComplete, ...rest },
     } = extractStyleProps(others)
 
@@ -812,6 +815,7 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
                                     id={_id}
                                     placeholder={placeholder}
                                     type={!searchable && !placeholder ? 'hidden' : 'visible'}
+                                    autoComplete={autoComplete}
                                     {...getStyles('inputField')}
                                     unstyled={unstyled}
                                     onFocus={(event) => {
@@ -885,6 +889,8 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
                         {...rest}
                         {...styleProps}
                         size={size}
+                        type={type}
+                        autoComplete={autoComplete}
                         __staticSelector="TreeSelect"
                         disabled={disabled}
                         readOnly={readOnly || !searchable}

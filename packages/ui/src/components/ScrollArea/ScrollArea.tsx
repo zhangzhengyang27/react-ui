@@ -308,9 +308,15 @@ export const ScrollAreaAutosize = factory<ScrollAreaAutosizeFactory>((_props, _r
     const overflowingRef = useRef(false)
     const didMountRef = useRef(false)
 
+    // onOverflowChange 经 ref 转发：消费者常传内联箭头函数，若直接进 effect 依赖，
+    // handleOverflowCheck 随父渲染重建，ResizeObserver 会反复 disconnect/re-observe
+    // 并丢掉一次 resize 通知窗口（与 Scrollbar.tsx 的 handleXxxRef 模式对齐）
+    const onOverflowChangeRef = useRef(onOverflowChange)
+    onOverflowChangeRef.current = onOverflowChange
+
     const handleOverflowCheck = useCallback(() => {
         const el = viewportObserverRef.current
-        if (!el || !onOverflowChange) {
+        if (!el || !onOverflowChangeRef.current) {
             return
         }
 
@@ -318,20 +324,20 @@ export const ScrollAreaAutosize = factory<ScrollAreaAutosizeFactory>((_props, _r
 
         if (isOverflowing !== overflowingRef.current) {
             if (didMountRef.current) {
-                onOverflowChange(isOverflowing)
+                onOverflowChangeRef.current(isOverflowing)
             } else {
                 didMountRef.current = true
                 if (isOverflowing) {
-                    onOverflowChange(true)
+                    onOverflowChangeRef.current(true)
                 }
             }
 
             overflowingRef.current = isOverflowing
         }
-    }, [onOverflowChange])
+    }, [])
 
     useEffect(() => {
-        if (!viewportObserverElement || !onOverflowChange) {
+        if (!viewportObserverElement) {
             return undefined
         }
 
@@ -347,7 +353,7 @@ export const ScrollAreaAutosize = factory<ScrollAreaAutosizeFactory>((_props, _r
             window.cancelAnimationFrame(rAF)
             resizeObserver.unobserve(viewportObserverElement)
         }
-    }, [viewportObserverElement, onOverflowChange, handleOverflowCheck])
+    }, [viewportObserverElement, handleOverflowCheck])
 
     return (
         <Box ref={_ref} {...others} style={[{ display: 'flex', overflow: 'hidden' }, style]}>

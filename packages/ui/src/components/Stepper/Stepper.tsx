@@ -92,7 +92,8 @@ const varsResolver = createVarsResolver<StepperFactory>((theme, { color, radius,
         '--stepper-color': color ? getThemeColor(color, theme) : undefined,
         '--stepper-radius': radius === undefined ? undefined : getRadius(radius),
         '--stepper-icon-size': getSize(size, 'stepper-icon-size'),
-        '--stepper-separator-color': 'var(--ui-color-gray-3)'
+        // 语义 token 随色制翻转，暗色下分隔线不再是亮浅灰
+        '--stepper-separator-color': 'var(--ui-color-default-border)'
     }
 }))
 
@@ -183,7 +184,6 @@ export const Stepper = factory<StepperFactory>((_props, ref) => {
                 {...getStyles('root')}
                 mod={[{ orientation }, mod]}
                 {...others}
-                aria-orientation={orientation}
             >
                 {clonedChildren}
                 {/* 内容面板用独立样式名：stepBody 是步骤内部的 flex 行布局，复用会把内容（如表单）挤成居中窄条 */}

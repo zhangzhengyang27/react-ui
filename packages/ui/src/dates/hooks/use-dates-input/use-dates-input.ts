@@ -69,8 +69,9 @@ export function useDatesInput<Type extends DatePickerType = 'default'>({
   };
 
   const onClear = () => setValue(type === 'range' ? [null, null] : type === 'multiple' ? [] : null);
+  // 受控 value="" 是空值语义,不应显示清除按钮
   const shouldClear =
-    type === 'range' ? !!_value[0] : type === 'multiple' ? _value.length > 0 : _value !== null;
+    type === 'range' ? !!_value[0] : type === 'multiple' ? _value.length > 0 : !!_value;
 
   return {
     _value,

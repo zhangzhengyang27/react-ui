@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import { useMergedRef } from '@xiaoye-react/hooks'
 import {
     BoxProps,
@@ -69,7 +68,6 @@ export const MenuItem = factory<MenuItemFactory>((props, ref) => {
 
     const ctx = useMenuContext()
     const theme = useUITheme()
-    const itemRef = useRef<HTMLButtonElement>(null)
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         if (dataDisabled) {
@@ -92,7 +90,7 @@ export const MenuItem = factory<MenuItemFactory>((props, ref) => {
             unstyled={ctx.unstyled}
             tabIndex={ctx.menuItemTabIndex}
             {...ctx.getStyles('item', { className, style, styles, classNames })}
-            ref={useMergedRef(itemRef, ref)}
+            ref={useMergedRef(ref)}
             role="menuitem"
             disabled={disabled}
             data-menu-item

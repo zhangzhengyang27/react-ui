@@ -9,9 +9,9 @@ import { useFavicon } from '@xiaoye-react/hooks';
 import { Group, Button } from '@xiaoye-react/ui';
 
 function Demo() {
-  const [favicon, setFavicon] = useState('https://react-ui.dev/favicon.svg');
-  const setReactUIFavicon = () => setFavicon('https://react-ui.dev/favicon.svg');
-  const setGitHubFavicon = () => setFavicon('https://github.com/favicon.ico');
+  const [favicon, setFavicon] = useState('/favicon.svg');
+  const setReactUIFavicon = () => setFavicon('/favicon.svg');
+  const setGitHubFavicon = () => setFavicon('/demo/images/favicon-github.ico');
 
   useFavicon(favicon);
 
@@ -25,9 +25,9 @@ function Demo() {
 `;
 
 function Demo() {
-  const [favicon, setFavicon] = useState('https://react-ui.dev/favicon.svg');
-  const setReactUIFavicon = () => setFavicon('https://react-ui.dev/favicon.svg');
-  const setGitHubFavicon = () => setFavicon('https://github.com/favicon.ico');
+  const [favicon, setFavicon] = useState('/favicon.svg');
+  const setReactUIFavicon = () => setFavicon('/favicon.svg');
+  const setGitHubFavicon = () => setFavicon('/demo/images/favicon-github.ico');
 
   useFavicon(favicon);
 

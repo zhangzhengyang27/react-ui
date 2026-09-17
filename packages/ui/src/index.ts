@@ -18,4 +18,6 @@ export * from './colors-generator';
 // - toDateString 采用 dates 版(guides/functions-reference 文档约定的
 //   `toDateString(new Date(...)) === 'YYYY-MM-DD'` 行为,schedule 版会带 00:00:00)。
 export { getStartOfWeek, getEndOfWeek, getMonthDays, isSameMonth } from './schedule';
+export type { DateStringValue, DateTimeStringValue, DateLabelFormat, DayOfWeek } from './dates';
+export type { CSSProperties } from './core';
 export { toDateString } from './dates';

@@ -97,9 +97,19 @@
         }
     }
 
-    &:hover:where(:not([data-loading], :disabled, [data-disabled])) {
-        background-color: var(--button-hover, var(--ui-primary-color-filled-hover));
-        color: var(--button-hover-color, var(--button-color));
+    /* 对齐 ActionIcon 的媒体守卫,避免触摸设备点按后 hover 态粘滞 */
+    @media (hover: hover) {
+        &:hover:where(:not([data-loading], :disabled, [data-disabled])) {
+            background-color: var(--button-hover, var(--ui-primary-color-filled-hover));
+            color: var(--button-hover-color, var(--button-color));
+        }
+    }
+
+    @media (hover: none) {
+        &:active:where(:not([data-loading], :disabled, [data-disabled])) {
+            background-color: var(--button-hover, var(--ui-primary-color-filled-hover));
+            color: var(--button-hover-color, var(--button-color));
+        }
     }
 }
 

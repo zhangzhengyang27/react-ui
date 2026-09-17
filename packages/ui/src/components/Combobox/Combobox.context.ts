@@ -25,6 +25,8 @@ export interface ComboboxContextValue {
     activeIndex: number
     setActiveIndex: (index: number) => void
     selectedValues: string[]
+    /** selectedValues 的 Set 视图（由 Combobox memo）：选项选中态判定 O(1)，避免逐选项 includes 的 O(n×m) */
+    selectedValuesSet: Set<string>
     onOptionSelect: (value: string) => void
     registerOption: (key: string, data: ComboboxOptionData) => void
     unregisterOption: (key: string) => void

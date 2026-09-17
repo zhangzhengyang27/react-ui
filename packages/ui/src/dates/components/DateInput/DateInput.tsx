@@ -214,7 +214,9 @@ export const DateInput = factory<DateInputFactory>((_props) => {
     setInputValue(val);
     setDropdownOpened(true);
 
-    if (val.trim() === '' && (allowDeselect || clearable)) {
+    // 使用归一后的 _allowDeselect（= allowDeselect ?? clearable）,与点选路径保持一致:
+    // 显式 allowDeselect={false} 时删空输入框不应把值置 null
+    if (val.trim() === '' && _allowDeselect) {
       setValue(null);
     } else {
       const dateValue = _dateParser(val);

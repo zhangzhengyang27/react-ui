@@ -1,3 +1,4 @@
+import { useCallback, useMemo } from 'react'
 import { useUncontrolled } from '@xiaoye-react/hooks'
 import {
     BoxProps,
@@ -24,32 +25,29 @@ export interface ChipGroupProps
     /** If set, multiple values can be selected */
     multiple?: boolean
 
-    //** 受控值 */
+    /** 受控值 */
     value?: ChipGroupValue
 
-    //** 非受控组件的初始值 */
+    /** 非受控组件的初始值 */
     defaultValue?: ChipGroupValue
 
-    //** 值变化时调用 */
+    /** 值变化时调用 */
     onChange?: (value: ChipGroupValue) => void
 
     /** Label rendered above the chips */
     label?: React.ReactNode
 
-    //** 渲染在标签下方的描述 */
+    /** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
     /** Error rendered below the chips */
     error?: React.ReactNode
 
-    //** 如果设置，则会在标签上添加必填星号 */
+    /** 如果设置，则会在标签上添加必填星号 */
     required?: boolean
 
     /** Controls size of all chips in the group @default 'sm' */
     size?: UISize
-
-    /** Name attribute passed to all chips */
-    name?: string
 
     /** If set, all chips in the group are disabled */
     disabled?: boolean
@@ -86,7 +84,6 @@ export const ChipGroup = factory<ChipGroupFactory>((_props, ref) => {
         error,
         required,
         size,
-        name,
         disabled,
         children,
         ...others
@@ -112,23 +109,33 @@ export const ChipGroup = factory<ChipGroupFactory>((_props, ref) => {
         rootSelector: 'root'
     })
 
-    const isChipSelected = (val: string) =>
-        Array.isArray(_value) ? _value.includes(val) : val === _value
+    // 渲染期重建的闭包会让 context value 身份必然变化：先 useCallback 稳定两个函数，
+    // 再 useMemo 稳定 value（React.memo 包裹的子组件不再全量失效）
+    const isChipSelected = useCallback(
+        (val: string) => (Array.isArray(_value) ? _value.includes(val) : val === _value),
+        [_value]
+    )
 
-    const handleChange = (val: string) => {
-        if (Array.isArray(_value)) {
-            setValue(_value.includes(val) ? _value.filter((v) => v !== val) : [..._value, val])
-        } else {
-            setValue(val)
-        }
-    }
+    const handleChange = useCallback(
+        (val: string) => {
+            if (Array.isArray(_value)) {
+                setValue(_value.includes(val) ? _value.filter((v) => v !== val) : [..._value, val])
+            } else {
+                setValue(val)
+            }
+        },
+        [_value, setValue]
+    )
 
     const hasWrapper = label || description || error
 
+    const ctxValue = useMemo(
+        () => ({ isChipSelected, onChange: handleChange, multiple, disabled, size }),
+        [isChipSelected, handleChange, multiple, disabled, size]
+    )
+
     const content = (
-        <ChipGroupContext.Provider
-            value={{ isChipSelected, onChange: handleChange, multiple, disabled, size }}
-        >
+        <ChipGroupContext.Provider value={ctxValue}>
             <div ref={ref} {...getStyles('root')} {...others}>
                 {children}
             </div>

@@ -10,19 +10,19 @@ test.describe('rating blind spots', () => {
     })
 
     test('clicking a new star sets its value', async ({ page }) => {
-        const star5 = page.getByRole('radio', { name: '5 star' })
+        const star5 = page.getByRole('radio', { name: '5 星' })
         await star5.hover()
         await star5.click()
         await expect(star5).toBeChecked()
     })
 
     test('clearable: clicking the active star clears instead of zeroing everything', async ({ page }) => {
-        const star3 = page.getByRole('radio', { name: '3 star' })
+        const star3 = page.getByRole('radio', { name: '3 星' })
         await expect(star3).toBeChecked() // defaultValue=3
 
         // 悬停已选星再点击：旧实现 roundedValue 被 hover 污染，恒命中清零分支
         // 但这里预期行为是清零；换一颗新星点击应设为该星而非 0
-        const star5 = page.getByRole('radio', { name: '5 star' })
+        const star5 = page.getByRole('radio', { name: '5 星' })
         await star5.hover()
         await star5.click()
         await expect(star5).toBeChecked()
@@ -32,7 +32,7 @@ test.describe('rating blind spots', () => {
         await star5.click()
         await expect(star5).not.toBeChecked()
         for (let value = 1; value <= 5; value++) {
-            await expect(page.getByRole('radio', { name: `${value} star` })).not.toBeChecked()
+            await expect(page.getByRole('radio', { name: `${value} 星` })).not.toBeChecked()
         }
     })
 })

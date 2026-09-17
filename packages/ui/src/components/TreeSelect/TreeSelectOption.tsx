@@ -122,7 +122,6 @@ export function TreeSelectOption({
             }}
             aria-selected={isActive}
             aria-level={level}
-            aria-expanded={hasChildren ? expanded : undefined}
             aria-checked={ariaChecked}
         >
             {lineElements}

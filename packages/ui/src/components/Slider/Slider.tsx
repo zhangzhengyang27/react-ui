@@ -11,6 +11,7 @@ import {
     UIRadius,
     UISize,
     StylesApiProps,
+    useDirection,
     useProps,
     useStyles
 } from '../../core'
@@ -34,7 +35,7 @@ export interface SliderProps extends BoxProps, StylesApiProps<SliderFactory> {
     /** Default value for uncontrolled slider */
     defaultValue?: number
 
-    //** 值变化时调用 */
+    /** 值变化时调用 */
     onChange?: (value: number) => void
 
     /** Called when user stops dragging */
@@ -198,6 +199,10 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
     const currentValue = isControlled ? value! : internalValue
     const normalizedValue = clamp(currentValue, min, max)
     const [hovered, setHovered] = React.useState(false)
+    const { dir } = useDirection()
+    // RTL 下原生 range input 的 min/max 语义反转（min 在右），bar/thumb/mark 的物理起点
+    // 需随书写方向取反，否则视觉填充从错误一侧增长（inverted 与 RTL 的翻转做异或叠加）
+    const invertPhysicalAxis = inverted !== (dir === 'rtl')
 
     const scaledValue = scale ? scale(normalizedValue) : normalizedValue
     const percentage = getPercentage(normalizedValue, min, max)
@@ -298,20 +303,26 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
     // bar 起点与宽度
     // 已知限制(文档已注明):设置 inverted 时 startPointValue 被忽略,
     // 故 inverted 分支在前,不再叠加 startPointValue 计算
+    // positionKey 随书写方向翻转:RTL 下原生 input 的 min/max 语义反转,视觉起点取物理右端
+    const positionKey = invertPhysicalAxis ? 'right' : 'left'
     let barStyle: React.CSSProperties
     if (inverted) {
-        barStyle = { right: `${100 - percentage}%`, width: `${percentage}%` }
+        barStyle = { [invertPhysicalAxis ? 'left' : 'right']: `${100 - percentage}%`, width: `${percentage}%` }
     } else if (typeof startPointValue === 'number') {
         const startPercent = getPercentage(clamp(startPointValue, min, max), min, max)
-        const left = Math.min(startPercent, percentage)
+        const start = Math.min(startPercent, percentage)
         const width = Math.abs(percentage - startPercent)
-        barStyle = { left: `${left}%`, width: `${width}%` }
+        barStyle = { [positionKey]: `${start}%`, width: `${width}%` }
     } else {
-        barStyle = { left: 0, width: `${percentage}%` }
+        barStyle = { [positionKey]: 0, width: `${percentage}%` }
     }
 
-    const thumbPositionStyle = { [inverted ? 'right' : 'left']: `${percentage}%` }
+    const thumbPositionStyle = { [positionKey]: `${percentage}%` }
     const isLabelVisible = labelAlwaysOn || (showLabelOnHover && hovered)
+    // 定位样式与 getStyles 产物合并且不整体覆盖,使消费者 styles={{ bar/thumb/mark }} 真正生效
+    const barStyles = getStyles('bar')
+    const thumbStyles = getStyles('thumb')
+    const markStyles = getStyles('mark')
 
     return (
         <Box
@@ -323,10 +334,10 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
             {...others}
         >
             <div {...getStyles('track')}>
-                <div {...getStyles('bar')} style={barStyle} />
+                <div {...barStyles} style={{ ...barStyles.style, ...barStyle }} />
                 <div
-                    {...getStyles('thumb')}
-                    style={thumbPositionStyle}
+                    {...thumbStyles}
+                    style={{ ...thumbStyles.style, ...thumbPositionStyle }}
                     data-label-visible={isLabelVisible || undefined}
                     data-label-hover={showLabelOnHover || undefined}
                 >
@@ -341,8 +352,8 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
                         <div
                             // mark.value 可能重复,附加 index 避免撞 key
                             key={`${mark.value}-${index}`}
-                            {...getStyles('mark')}
-                            style={{ [inverted ? 'right' : 'left']: `${percent}%` }}
+                            {...markStyles}
+                            style={{ ...markStyles.style, [positionKey]: `${percent}%` }}
                         >
                             {mark.label && <span {...getStyles('markLabel')}>{mark.label}</span>}
                         </div>
@@ -363,6 +374,8 @@ export const Slider = factory<SliderFactory>((_props, ref) => {
                 onKeyUp={handleKeyUp}
                 onMouseUp={handleChangeEnd}
                 onTouchEnd={handleChangeEnd}
+                // 触摸拖拽被系统手势接管时派发 touchcancel 而非 touchend,中断路径同样收尾 onChangeEnd
+                onTouchCancel={handleChangeEnd}
                 className={classes.input}
             />
         </Box>

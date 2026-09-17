@@ -153,6 +153,9 @@ export function Combobox(_props: ComboboxProps) {
     const dropdownId = `${uid}-dropdown`
 
     const values = useMemo(() => selectedValues ?? [], [selectedValues])
+    // 选中值的 Set 视图：ComboboxOption 与消费方（MultiSelect renderOptions 等）的
+    // 选中态判定 O(1)；逐选项 includes 是 O(m)，n 个选项渲染放大为 O(n×m)
+    const selectedValuesSet = useMemo(() => new Set(values), [values])
 
     // store 对象每次渲染都是新引用，取其 listId 原始值作为 memo 依赖
     const storeListId = store?.listId ?? null
@@ -249,16 +252,24 @@ export function Combobox(_props: ComboboxProps) {
 
     // 选项集合变化（搜索过滤/数据更新）或下拉重新打开时重置键盘激活态：
     // 残留的 activeIndex 可能越界（Enter 静默失效）或指向错误选项（Enter 误选）。
-    // 打开状态下重置为首个可用选项，使"输入后回车"总能选中第一条命中结果；
-    // 关闭时保持 -1，保证下次 ArrowDown 仍从第一项开始
+    // 打开时若已选中首值仍在注册表中，则定位到该项并对齐可视区域（aria-activedescendant
+    // 指向当前值、长列表中选中项可见），否则回落到首个可用选项，保证"输入后回车"总能
+    // 选中第一条命中结果；关闭时保持 -1，保证下次 ArrowDown 仍从第一项开始
     const optionKeysSignature = options.map(option => option.key).join('|')
     useEffect(() => {
         if (!_opened) {
             setActiveIndex(-1)
             return
         }
-        const firstEnabled = options.findIndex(option => !option.disabled)
-        setActiveIndex(firstEnabled)
+        const firstSelected =
+            values.length > 0 ? options.findIndex(option => option.value === values[0]) : -1
+        const targetIndex =
+            firstSelected >= 0 ? firstSelected : options.findIndex(option => !option.disabled)
+        setActiveIndex(targetIndex)
+        // scrollIntoView 在 jsdom 中不存在，可选调用兜底
+        if (targetIndex >= 0) {
+            options[targetIndex]?.node?.scrollIntoView?.({ block: 'nearest' })
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [optionKeysSignature, _opened])
 
@@ -369,6 +380,7 @@ export function Combobox(_props: ComboboxProps) {
             activeIndex,
             setActiveIndex,
             selectedValues: values,
+            selectedValuesSet,
             onOptionSelect,
             registerOption,
             unregisterOption,
@@ -394,6 +406,7 @@ export function Combobox(_props: ComboboxProps) {
             activeIndex,
             setActiveIndex,
             values,
+            selectedValuesSet,
             onOptionSelect,
             registerOption,
             unregisterOption,

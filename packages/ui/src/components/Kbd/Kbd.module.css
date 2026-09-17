@@ -17,7 +17,7 @@
     line-height: 1;
     color: inherit;
     background-color: var(--ui-color-body);
-    border: 1px solid var(--ui-color-gray-4);
+    border: 1px solid var(--kbd-border-color, var(--ui-color-gray-4));
     border-bottom-width: 3px;
     border-radius: var(--ui-radius-sm);
     padding: var(--kbd-padding);
@@ -25,4 +25,10 @@
     align-items: center;
     justify-content: center;
     white-space: nowrap;
+
+    /* data-ui-color-scheme 只会设在 <html> 上，必须用祖先选择器匹配：
+       灰阶字面量不随色制翻转，暗色下边框过亮（与 Paper/Card 暗色处理对齐） */
+    [data-ui-color-scheme='dark'] & {
+        --kbd-border-color: var(--ui-color-dark-4);
+    }
 }

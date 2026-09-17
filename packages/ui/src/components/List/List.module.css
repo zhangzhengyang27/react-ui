@@ -7,13 +7,13 @@
     line-height: var(--list-lh);
 
     &:where([data-with-padding]) {
-        padding-left: var(--list-fz);
+        padding-inline-start: var(--list-fz);
     }
 
     /* listStyleType prop 生效：.item 切回 list-item 让原生 marker 可见，并隐藏自绘标记 */
     &:where([data-native-markers]) .item {
         display: list-item;
-        margin-left: var(--list-fz);
+        margin-inline-start: var(--list-fz);
     }
 
     &:where([data-native-markers]) .itemIcon {
@@ -38,7 +38,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: var(--ui-spacing-xs);
+    /* 图标位于列表项起始侧，RTL 下间距随 dir 翻转 */
+    margin-inline-end: var(--ui-spacing-xs);
     line-height: 1;
 
     &:where([data-center]) {

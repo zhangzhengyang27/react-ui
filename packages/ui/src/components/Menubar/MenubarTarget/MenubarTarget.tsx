@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { useMergedRef } from '@xiaoye-react/hooks'
-import { ElementProps, UIStyleProp } from '../../../core'
+import { ElementProps, UIStyleProp, useDirection } from '../../../core'
 import { Popover } from '../../Popover'
 import { UnstyledButton } from '../../UnstyledButton'
 import { useMenubarContext, useMenubarMenuContext } from '../Menubar.context'
@@ -45,6 +45,7 @@ export const MenubarTarget = React.forwardRef<HTMLButtonElement, MenubarTargetPr
 
     const ctx = useMenubarContext()
     const menuCtx = useMenubarMenuContext()
+    const { dir } = useDirection()
     const buttonRef = useRef<HTMLButtonElement>(null)
     const mergedRef = useMergedRef(ref, buttonRef)
 
@@ -132,8 +133,9 @@ export const MenubarTarget = React.forwardRef<HTMLButtonElement, MenubarTargetPr
         if (isDisabled) {
             return
         }
-        const forwardKey = 'ArrowRight'
-        const backKey = 'ArrowLeft'
+        // 横向 roving 的前进/后退键随 dir 翻转：RTL 下视觉上的「下一个」在左侧
+        const forwardKey = dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight'
+        const backKey = dir === 'rtl' ? 'ArrowRight' : 'ArrowLeft'
 
         if (event.key === forwardKey) {
             event.preventDefault()

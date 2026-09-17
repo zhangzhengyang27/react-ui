@@ -9,8 +9,8 @@ export function getPositionVariables(
     const variables: Record<IndicatorPositionVariables, string | undefined> = {
         '--indicator-top': undefined,
         '--indicator-bottom': undefined,
-        '--indicator-left': undefined,
-        '--indicator-right': undefined,
+        '--indicator-inline-start': undefined,
+        '--indicator-inline-end': undefined,
         '--indicator-translate-x': undefined,
         '--indicator-translate-y': undefined
     }
@@ -37,18 +37,20 @@ export function getPositionVariables(
         variables['--indicator-translate-y'] = '50%'
     }
 
+    // start/end 用逻辑属性（inset-inline-start/end）：RTL 下 'top-end' 渲染在视觉左侧，
+    // 与逻辑方位语义一致；translate(-50%/50%) 相对元素自身尺寸居中，与书写方向无关
     if (placement === 'start') {
-        variables['--indicator-left'] = _offsetX
+        variables['--indicator-inline-start'] = _offsetX
         variables['--indicator-translate-x'] = '-50%'
     }
 
     if (placement === 'center') {
-        variables['--indicator-left'] = '50%'
+        variables['--indicator-inline-start'] = '50%'
         variables['--indicator-translate-x'] = '-50%'
     }
 
     if (placement === 'end') {
-        variables['--indicator-right'] = _offsetX
+        variables['--indicator-inline-end'] = _offsetX
         variables['--indicator-translate-x'] = '50%'
     }
 

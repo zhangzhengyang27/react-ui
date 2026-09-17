@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Menu, MenuDropdownProps } from '../../Menu'
+import { useDirection } from '../../../core'
 import { useMenubarContext, useMenubarMenuContext } from '../Menubar.context'
 
 export interface MenubarDropdownProps extends MenuDropdownProps {}
@@ -15,6 +16,7 @@ export function MenubarDropdown(props: MenubarDropdownProps) {
     const { onKeyDown, onMouseEnter, onMouseLeave, ...others } = props
     const ctx = useMenubarContext()
     const menuCtx = useMenubarMenuContext()
+    const { dir } = useDirection()
 
     // Escape 后延迟归还焦点的定时器 id，卸载时清理，避免卸载后仍触发 focusTarget
     const focusTimeoutRef = useRef(-1)
@@ -50,8 +52,9 @@ export function MenubarDropdown(props: MenubarDropdownProps) {
             return
         }
 
-        const forwardKey = 'ArrowRight'
-        const backKey = 'ArrowLeft'
+        // 横向切换到相邻菜单的前进/后退键随 dir 翻转：RTL 下视觉上的「下一个」在左侧
+        const forwardKey = dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight'
+        const backKey = dir === 'rtl' ? 'ArrowRight' : 'ArrowLeft'
 
         if (event.key === forwardKey) {
             if (target.closest('[data-menu-item]')?.hasAttribute('data-sub-menu-item')) {

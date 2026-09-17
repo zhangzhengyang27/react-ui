@@ -27,7 +27,8 @@ export type LoaderCssVariables = {
 export interface LoaderProps
     extends BoxProps,
         StylesApiProps<LoaderFactory>,
-        ElementProps<'svg', 'display' | 'opacity'> {
+        // 内置 loader 实际渲染 span,children 分支渲染 div,类型对齐为 div 而非 svg
+        ElementProps<'div', 'display' | 'opacity'> {
     /** Controls `width` and `height` of the loader. `Loader` has predefined `xs`-`xl` values. Numbers are converted to rem. @default 'md' */
     size?: UISize | (string & {}) | number
 
@@ -46,7 +47,7 @@ export interface LoaderProps
 
 export type LoaderFactory = Factory<{
     props: LoaderProps
-    ref: SVGSVGElement
+    ref: HTMLDivElement
     stylesNames: LoaderStylesNames
     vars: LoaderCssVariables
     staticComponents: {
@@ -117,7 +118,24 @@ export const Loader = factory<LoaderFactory>((_props, _ref) => {
         )
     }
 
-    return <Box ref={_ref} {...getStyles('root')} component={loaders[type]} variant={variant} size={size} {...others} />
+    // UILoadersRecord 含 (string & {}) 自由键,type 未注册时回落 oval,避免静默渲染空白节点
+    const loaderComponent = loaders[type]
+    if (!loaderComponent && process.env.NODE_ENV !== 'production') {
+        console.warn(
+            `[@xiaoye-react/ui] Loader: no loader registered for type "${type}", falling back to "oval". Pass a component via \`loaders\` to register it.`
+        )
+    }
+
+    return (
+        <Box
+            ref={_ref}
+            {...getStyles('root')}
+            component={loaderComponent || defaultLoaders.oval}
+            variant={variant}
+            size={size}
+            {...others}
+        />
+    )
 })
 
 Loader.defaultLoaders = defaultLoaders

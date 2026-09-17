@@ -81,28 +81,28 @@ export interface MaskInputProps
     /** Assigns a function that clears the input value to the given ref */
     resetRef?: React.RefObject<(() => void) | null>
 
-    //** 受控值 */
+    /** 受控值 */
     value?: string
 
     /** Uncontrolled default value */
     defaultValue?: string
 
-    //** 值变化时调用 */
+    /** 值变化时调用 */
     onChange?: (value: string) => void
 
-    //** 渲染在输入框上方的标签 */
+    /** 渲染在输入框上方的标签 */
     label?: React.ReactNode
 
-    //** 渲染在标签下方的描述 */
+    /** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
-    //** 渲染在输入框下方的错误 */
+    /** 渲染在输入框下方的错误 */
     error?: React.ReactNode
 
     /** Success message rendered below the input */
     success?: React.ReactNode
 
-    //** 如果设置，则会在标签上添加必填星号 */
+    /** 如果设置，则会在标签上添加必填星号 */
     required?: boolean
 
     /** Props passed to the label element */
@@ -311,6 +311,9 @@ export const MaskInput = factory<MaskInputFactory>((_props, ref) => {
     const hasWrapper = label || description || error || success
     const inputRef = useRef<HTMLInputElement | null>(null)
     const mergedRef = useMergedRef(ref, inputRef)
+    // IME 组合（中文/日文输入法）期间每次中间 input 都重写 DOM value 会丢弃组合文本、
+    // 打断输入法，组合期间跳过格式化，compositionend 后统一应用掩码（对齐 hooks/use-mask 的守卫策略）
+    const composingRef = useRef(false)
 
     // Resolve current mask options (with modify support)
     const resolveOptions = useCallback(
@@ -365,8 +368,10 @@ export const MaskInput = factory<MaskInputFactory>((_props, ref) => {
         }
     }, [resetRef])
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const inputValue = event.currentTarget.value
+    // 掩码应用的核心逻辑：handleChange 与 compositionend 共用
+    // （经 ref 持有最新闭包，供挂载期绑定的原生 compositionend 监听调用）
+    const applyInputValueRef = useRef<(inputValue: string) => void>(() => {})
+    applyInputValueRef.current = (inputValue: string) => {
         const currentOptions = resolveOptions(value)
         const currentSlots = parseMask(currentOptions.mask, currentOptions.tokens)
         const newMasked = applyMaskToValue(inputValue, currentSlots, transform)
@@ -426,6 +431,42 @@ export const MaskInput = factory<MaskInputFactory>((_props, ref) => {
         if (isMaskComplete(newMasked, currentSlots)) {
             onComplete?.(newDisplay, newRaw)
         }
+    }
+
+    // 原生 composition 事件监听：React 的 onChange 基于 input 事件，IME 组合期间同样触发，
+    // 仅靠合成事件无法可靠覆盖（且 compositionend 在部分浏览器早于最后一次 input）
+    useEffect(() => {
+        const inputEl = inputRef.current
+        if (!inputEl) {
+            return undefined
+        }
+
+        const handleCompositionStart = () => {
+            composingRef.current = true
+        }
+
+        const handleCompositionEnd = () => {
+            composingRef.current = false
+            applyInputValueRef.current(inputEl.value)
+        }
+
+        inputEl.addEventListener('compositionstart', handleCompositionStart)
+        inputEl.addEventListener('compositionend', handleCompositionEnd)
+        return () => {
+            inputEl.removeEventListener('compositionstart', handleCompositionStart)
+            inputEl.removeEventListener('compositionend', handleCompositionEnd)
+        }
+    }, [])
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        // IME 组合期间跳过格式化与 DOM 改写（组合文本会被掩码吞掉、组合框被打断），
+        // compositionend 后由原生监听统一应用掩码；isComposing 兜底 Safari 等事件顺序差异
+        // （React 的 ChangeEvent.nativeEvent 泛型为 Event，input 事件的 isComposing 需显式收窄）
+        const nativeEvent = event.nativeEvent as InputEvent
+        if (composingRef.current || nativeEvent.isComposing) {
+            return
+        }
+        applyInputValueRef.current(event.currentTarget.value)
     }
 
     const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {

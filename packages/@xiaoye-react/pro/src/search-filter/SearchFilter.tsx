@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useUncontrolled } from '@xiaoye-react/hooks'
 import {
     Box,
@@ -169,17 +169,28 @@ export const SearchFilter = factory<SearchFilterFactory>((_props, ref) => {
     const visibleCount = Math.max(1, columns * (collapsedRows ?? 1))
     const isCollapsible = (fields?.length ?? 0) > visibleCount
 
+    // ref 镜像最新值:useUncontrolled 的 setter 只接受值不支持函数式更新,
+    // 若基于渲染闭包展开 currentValues,自定义 render 字段在同一事件批次内
+    // 连续更新两个字段时,第二次会拿旧渲染值覆盖掉第一次的更新
+    const currentValuesRef = useRef(currentValues)
+    currentValuesRef.current = currentValues
+
     const setFieldValue = (name: string, value: any) => {
-        setCurrentValues({ ...currentValues, [name]: value })
+        // 写入时同步推进 ref,同批次内连续 setFieldValue 不会互相覆盖
+        const next = { ...currentValuesRef.current, [name]: value }
+        currentValuesRef.current = next
+        setCurrentValues(next)
     }
 
     const handleSubmit = (event?: React.FormEvent) => {
         event?.preventDefault()
-        onSearch?.(currentValues)
+        onSearch?.(currentValuesRef.current)
     }
 
     const handleReset = () => {
-        setCurrentValues({ ...(defaultValues ?? {}) })
+        const next = { ...(defaultValues ?? {}) }
+        currentValuesRef.current = next
+        setCurrentValues(next)
         onReset?.()
     }
 

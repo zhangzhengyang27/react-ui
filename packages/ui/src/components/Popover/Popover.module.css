@@ -6,6 +6,7 @@
     padding: var(--ui-spacing-sm);
 }
 
+/* 箭头填充色可被 --popover-arrow-bg 覆盖（styles api 接线后也可用 styles={{ arrow: ... }} 内联覆盖） */
 .arrow {
-    background-color: var(--ui-color-body);
+    background-color: var(--popover-arrow-bg, var(--ui-color-body));
 }

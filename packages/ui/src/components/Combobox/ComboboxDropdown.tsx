@@ -31,6 +31,9 @@ export const ComboboxDropdown = factory<ComboboxDropdownFactory>((_props, ref) =
                         id={ctx.dropdownId}
                         role="listbox"
                         aria-orientation="vertical"
+                        // 打开期间标记：焦点在下拉内按 Escape 时，Modal 的 window 捕获监听跳过，
+                        // 只关下拉不同时关 Modal（对齐 PopoverDropdown 的做法）
+                        data-ui-stop-propagation="true"
                         className={[classes.dropdown, className].filter(Boolean).join(' ')}
                         style={{
                             ...transitionStyles,

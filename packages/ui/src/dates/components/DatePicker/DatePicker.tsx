@@ -26,6 +26,7 @@ import {
   pickCalendarProps,
 } from '../Calendar';
 import { DecadeLevelBaseSettings } from '../DecadeLevel';
+import { clampLevel } from '../Calendar/clamp-level/clamp-level';
 import { isSameMonth } from '../Month';
 import { MonthLevelBaseSettings } from '../MonthLevel';
 import { YearLevelBaseSettings } from '../YearLevel';
@@ -120,6 +121,8 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>((_prop
     value,
     defaultValue,
     onChange,
+    // 显式解构 type：否则经 defaultProps 注入后随 rest/others 泄漏成日历根节点 DOM 属性
+    type,
     onMouseLeave,
     classNames,
     styles,
@@ -160,7 +163,7 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>((_prop
 
   const { onDateChange, onRootMouseLeave, onHoveredDateChange, getControlProps, _value, setValue } =
     useDatesState({
-      type: others.type as any,
+      type: type as any,
       level: 'day',
       allowDeselect,
       allowSingleDateInRange,
@@ -226,7 +229,8 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>((_prop
     const _val = Array.isArray(val) ? val[0] : val;
     if (_val !== undefined) {
       setDateRef.current?.(_val);
-      setLevelRef.current?.('month');
+      // 经 clampLevel：minLevel="year" 等场景下头部按钮已隐藏,预设不应绕过层级限制
+      setLevelRef.current?.(clampLevel('month', calendarProps.minLevel, calendarProps.maxLevel));
       __onPresetSelect ? __onPresetSelect(val) : setValue(val);
     }
   };

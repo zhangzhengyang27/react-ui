@@ -93,6 +93,12 @@ export function useHorizontalEventResize({
     [totalMinutes, clampAndSnap]
   );
 
+  // 监听器 effect 依赖仅 [isResizing]（拖拽中不重绑），而 snapPercent/percentToDateTime/
+  // minWidthPercent 派生自 startTime/endTime/intervalMinutes——经 ref 在监听器内读最新值：
+  // 拖拽进行中这些 props 变化（如响应式切换 interval）后，pointerup 提交值仍按当前网格吸附
+  const resizeMathRef = useRef({ snapPercent, percentToDateTime, minWidthPercent });
+  resizeMathRef.current = { snapPercent, percentToDateTime, minWidthPercent };
+
   const handleResizeStart = useCallback(
     ({
       event,
@@ -162,6 +168,8 @@ export function useHorizontalEventResize({
         return;
       }
 
+      const { snapPercent, percentToDateTime, minWidthPercent } = resizeMathRef.current;
+
       const containerRect = state.container.getBoundingClientRect();
       const rawPercent = getDayRelativePercent({
         clientX: e.clientX,
@@ -194,6 +202,7 @@ export function useHorizontalEventResize({
           state.currentLeft !== state.originalLeft ||
           state.currentWidth !== state.originalWidth
         ) {
+          const { percentToDateTime } = resizeMathRef.current;
           let newStart: DateTimeStringValue;
           let newEnd: DateTimeStringValue;
 

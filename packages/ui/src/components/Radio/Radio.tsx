@@ -39,7 +39,7 @@ export interface RadioProps extends BoxProps, StylesApiProps<RadioFactory>, Elem
     /** Label rendered next to the radio input */
     label?: React.ReactNode
 
-    //** 渲染在标签下方的描述 */
+    /** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
     /** 单选框下方渲染的错误 */
@@ -54,7 +54,7 @@ export interface RadioProps extends BoxProps, StylesApiProps<RadioFactory>, Elem
     /** Color of the radio dot, defaults to white */
     iconColor?: string
 
-    //** 如果设置，则会在标签上添加必填星号 */
+    /** 如果设置，则会在标签上添加必填星号 */
     required?: boolean
 
     /** 传递给根标签元素的属性 */
@@ -91,7 +91,9 @@ const varsResolver = createVarsResolver<RadioFactory>((theme, { size, color, ico
     root: {
         '--radio-size': getSize(size, 'radio-size'),
         '--radio-color': color ? getThemeColor(color, theme) : undefined,
-        '--radio-icon-color': iconColor
+        // 主题键解析（如 'red.5'），与 Checkbox 的 iconColor 行为对齐：
+        // 原样透传主题键会生成非法 CSS 值，.icon 的 background-color 失效、选中圆点不可见
+        '--radio-icon-color': iconColor ? getThemeColor(iconColor, theme) : undefined
     }
 }))
 

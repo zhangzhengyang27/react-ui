@@ -196,8 +196,29 @@ export function useTree({
                 return
             }
             initializedDataRef.current = _data
-            setExpandedState(getInitialTreeExpandedState(expandedStateRef.current, _data, selectedStateRef.current))
-            setCheckedState(getInitialCheckedState(checkedStateRef.current, _data, checkStrictly))
+            // data 为内联字面量时每次父渲染都是新引用，仅按引用判重挡不住：
+            // 生成的 expanded/checked 对象“值相同但身份不同”，受控模式下
+            // onExpandedStateChange/onCheckedStateChange 会被连续调用，消费者
+            // 在回调里 setState 就形成渲染循环。先与当前值浅比较，同值则跳过提交
+            const nextExpandedState = getInitialTreeExpandedState(expandedStateRef.current, _data, selectedStateRef.current)
+            const currentExpandedState = expandedStateRef.current
+            const nextExpandedKeys = Object.keys(nextExpandedState)
+            const isExpandedStateEqual =
+                nextExpandedKeys.length === Object.keys(currentExpandedState).length &&
+                nextExpandedKeys.every(key => nextExpandedState[key] === currentExpandedState[key])
+            if (!isExpandedStateEqual) {
+                setExpandedState(nextExpandedState)
+            }
+
+            const nextCheckedState = getInitialCheckedState(checkedStateRef.current, _data, checkStrictly)
+            const currentCheckedState = checkedStateRef.current
+            const isCheckedStateEqual =
+                nextCheckedState.length === currentCheckedState.length &&
+                nextCheckedState.every((item, index) => item === currentCheckedState[index])
+            if (!isCheckedStateEqual) {
+                setCheckedState(nextCheckedState)
+            }
+
             setData(_data)
         },
         [checkStrictly]

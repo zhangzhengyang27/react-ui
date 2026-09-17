@@ -10,6 +10,19 @@
 
     display: inline-flex;
     gap: var(--pin-input-gap);
+
+    /* 格子不经过 Input 的 .wrapper（该组件自绘 input），--input-bd/--input-bg 无来源恒走 fallback；
+       按 scheme 提供成对的格子配色变量（对齐 Input.module.css 的 light/dark 分支做法），
+       暗色下避免「纯白底 + 浅灰字」的低对比组合 */
+    [data-ui-color-scheme='light'] & {
+        --pin-input-bd: var(--ui-color-default-border);
+        --pin-input-bg: var(--ui-color-white);
+    }
+
+    [data-ui-color-scheme='dark'] & {
+        --pin-input-bd: var(--ui-color-dark-4);
+        --pin-input-bg: var(--ui-color-dark-6);
+    }
 }
 
 .input {
@@ -19,9 +32,9 @@
     text-align: center;
     padding: 0;
     font-size: var(--pin-input-fz);
-    border: 1px solid var(--input-bd, var(--ui-color-gray-4));
+    border: 1px solid var(--input-bd, var(--pin-input-bd, var(--ui-color-gray-4)));
     border-radius: var(--input-radius, var(--ui-radius-sm));
-    background-color: var(--input-bg, var(--ui-color-white));
+    background-color: var(--input-bg, var(--pin-input-bg, var(--ui-color-white)));
     color: var(--ui-color-text);
     outline: none;
     transition: border-color 100ms ease;
@@ -37,7 +50,8 @@
     &:disabled {
         opacity: 0.6;
         cursor: not-allowed;
-        background-color: var(--ui-color-gray-1);
+        /* --ui-color-disabled 随 scheme 翻转（light: gray-2 / dark: dark-6），恒定浅色在暗色下突兀 */
+        background-color: var(--ui-color-disabled, var(--ui-color-gray-1));
     }
 
     &[data-masked] {

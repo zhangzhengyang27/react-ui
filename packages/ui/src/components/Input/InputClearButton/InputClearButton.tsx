@@ -41,8 +41,8 @@ export const InputClearButton = factory<InputClearButtonFactory>((_props, ref) =
             classNames={resolvedClassNames}
             styles={resolvedStyles}
             __staticSelector="InputClearButton"
-            style={{ pointerEvents: 'all', background: 'var(--input-bg)', ...others.style }}
             {...others}
+            style={{ pointerEvents: 'all', background: 'var(--input-bg)', ...others.style }}
             ref={ref}
         />
     )

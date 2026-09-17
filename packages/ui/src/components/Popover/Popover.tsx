@@ -31,7 +31,7 @@ export type PopoverCssVariables = {
 
 export interface PopoverProps extends StylesApiProps<PopoverFactory> {
     /** Popover.Target and Popover.Dropdown components */
-    children: React.ReactNode
+    children?: React.ReactNode
 
     //** 下拉框相对于目标元素的位置 */
     position?: FloatingPosition
@@ -340,7 +340,8 @@ export function Popover(_props: PopoverProps) {
                 getDropdownId: () => `${uid}-dropdown`,
                 controlled: popover.controlled,
                 closeOnEscape,
-                disabled
+                disabled,
+                getStyles
             }}
         >
             <div {...others}>{children}</div>

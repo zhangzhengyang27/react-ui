@@ -26,6 +26,8 @@
 
 .root:where([data-readonly]) .star {
     cursor: default;
+    /* 真 readonly:radio 保持启用(值随表单提交),指针交互在 label 层整体拦截 */
+    pointer-events: none;
 }
 
 .starSymbol {

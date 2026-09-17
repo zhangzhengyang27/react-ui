@@ -1,4 +1,5 @@
-import { useCollapse, useHorizontalCollapse, useReducedMotion } from '@xiaoye-react/hooks'
+import { useRef } from 'react'
+import { useCollapse, useHorizontalCollapse, useIsomorphicEffect, useReducedMotion } from '@xiaoye-react/hooks'
 import {
     Activity,
     Box,
@@ -84,6 +85,23 @@ export const Collapse = factory<CollapseFactory>((props, ref) => {
         onTransitionStart,
         keepMounted: false
     })
+
+    // duration=0（显式 0 或 reduced motion）时走下方早退分支、不进入 useCollapse，
+    // 消费者传入的 onTransitionStart/onTransitionEnd 会被静默丢弃，hooks 层的
+    // finalizeTransition 兜底也被绕过；此处保持与 hooks 层一致的回调契约：
+    // expanded 变化时同步触发一对回调（跳过首次挂载，与过渡语义对齐）
+    const prevExpandedRef = useRef(expanded)
+    useIsomorphicEffect(() => {
+        if (duration !== 0) {
+            prevExpandedRef.current = expanded
+            return
+        }
+        if (prevExpandedRef.current !== expanded) {
+            prevExpandedRef.current = expanded
+            onTransitionStart?.()
+            onTransitionEnd?.()
+        }
+    }, [expanded, duration])
 
     if (duration === 0) {
         if (keepMounted === true && env !== 'test') {

@@ -305,6 +305,8 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
         finalValue: '',
         onChange: onSearchChange
     })
+    // 选中值的 Set 视图：hidePickedOptions 过滤、选中态判定与 handleOptionSubmit 均 O(1)
+    const selectedValuesSet = useMemo(() => new Set(selectedValues), [selectedValues])
     const [opened, setOpened] = useState(false)
     const inputId = useId(id)
     const inputRef = useRef<HTMLInputElement>(null)
@@ -332,10 +334,10 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
             )
         }
         if (hidePickedOptions) {
-            base = base.filter(item => !selectedValues.includes(item.value))
+            base = base.filter(item => !selectedValuesSet.has(item.value))
         }
         return limit !== undefined ? base.slice(0, limit) : base
-    }, [parsedItems, flatData, searchable, searchValue, filter, limit, hidePickedOptions, selectedValues])
+    }, [parsedItems, flatData, searchable, searchValue, filter, limit, hidePickedOptions, selectedValuesSet])
 
     const handleOpenedChange = useCallback(
         (next: boolean) => {
@@ -352,7 +354,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
     const handleOptionSubmit = (optionValue: string) => {
         if (disabled) return
 
-        const isSelected = selectedValues.includes(optionValue)
+        const isSelected = selectedValuesSet.has(optionValue)
         let nextValues: string[]
 
         if (isSelected) {
@@ -375,6 +377,8 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
         if (disabled) return
 
         commitValues(selectedValues.filter(v => v !== optionValue))
+        // 胶囊卸载后焦点会丢到 body（Backspace/键盘重排全部失效），移除后回焦输入框
+        inputRef.current?.focus()
     }
 
     const handleClear = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -383,6 +387,8 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
 
         commitValues([])
         setSearchValue('')
+        // 清除按钮随值变化卸载，焦点回焦输入框
+        inputRef.current?.focus()
     }
 
     // 胶囊拖拽/键盘重排：与选项提交同一条 commit 通道，受控/非受控行为一致
@@ -404,7 +410,9 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
 
         if (renderPill) {
             return (
-                <span key={selectedValue}>
+                // 透传重排 props（draggable/Alt+方向键等）：此前 renderPill 分支不携带，
+                // 同时开启 withPillsReorder + renderPill 时拖拽/键盘重排会静默失效
+                <span key={selectedValue} {...pillsReorder.getPillProps(index)}>
                     {renderPill({
                         option: option ?? { value: selectedValue, label: displayLabel },
                         value: selectedValue,
@@ -427,6 +435,8 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
                         size="xs"
                         aria-label={`移除 ${displayLabel}`}
                         onClick={(event: React.MouseEvent<HTMLButtonElement>) => handleRemove(event, selectedValue)}
+                        // 阻止焦点转移到按钮：点击移除后胶囊卸载，焦点会丢到 body
+                        onMouseDown={event => event.preventDefault()}
                     />
                 }
                 {...pillsReorder.getPillProps(index)}
@@ -543,6 +553,12 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
                         onMouseDown={event => {
                             consumerOnMouseDown?.(event)
                             skipFocusOpenRef.current = true
+                            // searchable 时点击输入框本体不参与 wrapper 的 click toggle（对齐 Select 的
+                            // ignoreClick 语义），鼠标路径 focus 又无 :focus-visible，
+                            // 关闭态必须由 mousedown 负责打开
+                            if (searchable && !disabled && !opened) {
+                                handleOpenedChange(true)
+                            }
                         }}
                         onBlur={event => {
                             consumerOnBlur?.(event)
@@ -588,7 +604,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
                     ) : (
                         renderOptions(
                             filteredData,
-                            selectedValues,
+                            selectedValuesSet,
                             isMaxSelected,
                             checkIconPosition,
                             getStyles,
@@ -622,7 +638,7 @@ export const MultiSelect = factory<MultiSelectFactory>((_props, ref) => {
 
 function renderOptions(
     data: ComboboxOptionData[],
-    selectedValues: string[],
+    selectedValues: ReadonlySet<string>,
     isMaxSelected: boolean,
     checkIconPosition: 'left' | 'right' | undefined,
     getStyles: (selector: 'option' | 'group' | 'groupLabel') => { className?: string; style?: React.CSSProperties },
@@ -645,7 +661,7 @@ function renderOptions(
     }
 
     const renderSingleOption = (item: ComboboxOptionData, keySuffix: number) => {
-        const selected = selectedValues.includes(item.value)
+        const selected = selectedValues.has(item.value)
         const disabled = item.disabled || (isMaxSelected && !selected)
 
         return (

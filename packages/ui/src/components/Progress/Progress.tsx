@@ -44,7 +44,7 @@ export interface ProgressProps extends BoxProps, StylesApiProps<ProgressFactory>
     radius?: UIRadius
 
     /** Controls progress height */
-    size?: UISize
+    size?: UISize | number
 
     /** If true, the progress bar will have striped background @default false */
     striped?: boolean

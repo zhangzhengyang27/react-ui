@@ -25,8 +25,10 @@ function isElementVisibleInScrollContainer(
 }
 
 function getValuesRange(min: number, max: number, step: number) {
+  // step<=0 会让循环永不退出(渲染期死循环,页面冻结),钳到 >=1
+  const safeStep = Math.max(1, Math.floor(step));
   const range = [];
-  for (let i = min; i <= max; i += step) {
+  for (let i = min; i <= max; i += safeStep) {
     range.push(i);
   }
   return range;

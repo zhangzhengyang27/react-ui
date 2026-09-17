@@ -73,6 +73,10 @@ export function useMove<T extends HTMLElement = any>(
                 document.addEventListener('mouseup', stopScrubbing)
                 document.addEventListener('touchmove', onTouchMove, { passive: false })
                 document.addEventListener('touchend', stopScrubbing)
+                // 触摸拖拽被系统中断（来电、系统手势接管）派发的是 touchcancel 而非 touchend，
+                // 不监听会残留 isSliding/document 监听与 user-select:none；stopScrubbing 幂等，直接复用
+                document.addEventListener('touchcancel', stopScrubbing)
+                document.addEventListener('pointercancel', stopScrubbing)
             }
 
             const unbindEvents = () => {
@@ -80,6 +84,8 @@ export function useMove<T extends HTMLElement = any>(
                 document.removeEventListener('mouseup', stopScrubbing)
                 document.removeEventListener('touchmove', onTouchMove)
                 document.removeEventListener('touchend', stopScrubbing)
+                document.removeEventListener('touchcancel', stopScrubbing)
+                document.removeEventListener('pointercancel', stopScrubbing)
             }
 
             const startScrubbing = () => {

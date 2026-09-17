@@ -30,6 +30,12 @@ export const INVALID_PRIMARY_SHADE_ERROR =
  * @returns {boolean} 如果色度值在0-9范围内且为整数则返回true，否则返回false
  */
 function isValidPrimaryShade(shade: number) {
+    // PartialDeep 允许显式 undefined/null 传入（deepMerge 会透传覆盖），
+    // 与 0 比较均为 false 拦不住，随后 shade.toString() 会抛裸 TypeError
+    if (typeof shade !== 'number' || Number.isNaN(shade)) {
+        return false
+    }
+
     if (shade < 0 || shade > 9) {
         return false
     }

@@ -12,16 +12,16 @@ export interface TextInputProps
             'classNames' | 'styles' | 'unstyled' | 'vars' | 'attributes' | 'labelProps' | 'descriptionProps' | 'errorProps'
         >,
         StylesApiProps<TextInputFactory> {
-    //** 渲染在输入框上方的标签 */
+    /** 渲染在输入框上方的标签 */
     label?: React.ReactNode
 
-    //** 渲染在标签下方的描述 */
+    /** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
-    //** 渲染在输入框下方的错误 */
+    /** 渲染在输入框下方的错误 */
     error?: React.ReactNode
 
-    //** 如果设置，则会在标签上添加必填星号 */
+    /** 如果设置，则会在标签上添加必填星号 */
     required?: boolean
 
     /** If set, required asterisk is added to the label even if `required` is not set */

@@ -107,8 +107,14 @@ function getOccurrenceStartsInRange(
       set.exdate(naiveToUTCNaive(ex));
     }
 
-    const searchStart = rangeStart.subtract(Math.max(0, durationMs), 'millisecond').toDate();
-    const results = set.between(searchStart, rangeEnd.toDate(), true);
+    // between 的边界必须与候选值同编码:tzid=运行时时区时 rezone 是恒等映射,
+    // 候选值保持「墙钟分量编码为 UTC」的形态(iterresult 直接比大小,不再经时区换算);
+    // 若传真实本地时刻,窗口会整体偏移 |UTC offset|——东八区丢末日 16:00 之后的实例、
+    // 西五区丢首日 05:00 之前的实例(overlapsRange 复滤只能删多、救不回少)
+    const searchStart = naiveToUTCNaive(
+      rangeStart.subtract(Math.max(0, durationMs), 'millisecond')
+    );
+    const results = set.between(searchStart, naiveToUTCNaive(rangeEnd), true);
     // rrule 的 tzid 模式在 tzid=运行时时区时 rezone 是恒等映射：
     // 返回值是「墙钟分量编码为 UTC 的时刻」，必须读 UTC 分量还原墙钟串，
     // 再交给 dayjs 按本地解析（本地 == tzid，墙钟一致）；

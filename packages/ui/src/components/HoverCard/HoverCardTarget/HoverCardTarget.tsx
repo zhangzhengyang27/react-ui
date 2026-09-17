@@ -42,17 +42,29 @@ export const HoverCardTarget = factory<HoverCardTargetFactory>((props, ref) => {
         throw new Error('[@xiaoye-react/ui] HoverCard.Target children should be an element or a component that accepts ref')
     }
 
-    return cloneElement(child, {
-        'aria-haspopup': 'dialog',
-        'aria-expanded': ctx.opened,
-        'aria-controls': ctx.opened ? ctx.getDropdownId() : undefined,
-        id: effectiveId,
-        className: [childProps.className].filter(Boolean).join(' '),
-        ref: targetRef,
-        // 传入 childProps 让 floating-ui 的 prop getter 与 child 自有事件处理器合成
-        // （onFocus/onBlur/onKeyDown 等两者都会被调用），无参调用会覆盖丢失 child 的处理器
-        ...ctx.getReferenceProps?.(childProps)
-    })
+    // 对齐 Tooltip 的正确写法：把 ref/aria 等 props 与 childProps 合成单对象传入 getReferenceProps。
+    // 若把 getReferenceProps(childProps) 的返回值展开在 ref 之后，其携带的 childProps.ref 会覆盖
+    // 合并 ref（React 19 下 ref 是普通 prop、对象字面量后键胜出），floating reference 接线丢失
+    return cloneElement(
+        child,
+        ctx.getReferenceProps?.({
+            ...childProps,
+            'aria-haspopup': 'dialog',
+            'aria-expanded': ctx.opened,
+            'aria-controls': ctx.opened ? ctx.getDropdownId() : undefined,
+            id: effectiveId,
+            className: [childProps.className].filter(Boolean).join(' '),
+            // ref 必须在展开 childProps 之后：避免被 childProps.ref 覆盖
+            ref: targetRef
+        }) ?? {
+            'aria-haspopup': 'dialog',
+            'aria-expanded': ctx.opened,
+            'aria-controls': ctx.opened ? ctx.getDropdownId() : undefined,
+            id: effectiveId,
+            className: [childProps.className].filter(Boolean).join(' '),
+            ref: targetRef
+        }
+    )
 })
 
 HoverCardTarget.displayName = '@xiaoye-react/ui/HoverCardTarget'

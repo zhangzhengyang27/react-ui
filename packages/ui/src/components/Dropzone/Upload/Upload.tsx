@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { assignRef } from '@xiaoye-react/hooks';
+import type { FileWithPath } from 'react-dropzone';
 import { Box, BoxProps } from '../../../core/Box/Box';
 import { useProps } from '../../../core/UIProvider/index';
 import { type Factory } from '../../../core/factory/create-factory';
@@ -288,11 +289,17 @@ export const Upload = factory<UploadFactory>((_props, ref) => {
     }
 
     // await 期间可能有并发变更（再次 drop、删除文件）：基于最新列表提交，
-    // 否则入口处快照会覆盖并发写入（丢文件/已删文件复活）
-    commit([...filesRef.current, ...withValidation]);
+    // 否则入口处快照会覆盖并发写入（丢文件/已删文件复活）。
+    // maxFiles 槽位同样按提交时刻的最新长度收口，避免并发 drop 各按旧快照计槽而超额；
+    // 已超额时以现有列表长度为下限，只挡新文件、不挤掉已有文件
+    const currentFiles = filesRef.current;
+    const cap = maxFiles != null ? Math.max(maxFiles, currentFiles.length) : Infinity;
+    const finalFiles = [...currentFiles, ...withValidation].slice(0, cap);
+    const committed = finalFiles.slice(currentFiles.length);
+    commit(finalFiles);
 
     if (autoUpload && upload) {
-      withValidation.filter(item => item.status === 'pending').forEach(item => {
+      committed.filter(item => item.status === 'pending').forEach(item => {
         void runUpload(item);
       });
     }
@@ -356,12 +363,17 @@ export const Upload = factory<UploadFactory>((_props, ref) => {
           {files.map(item => (
             <div key={item.id} {...getStyles('fileItem')}>
               <Group justify="space-between" gap="sm" wrap="nowrap">
-                <div style={{ minWidth: 0, flex: 1 }} {...getStyles('fileInfo')}>
+                <div {...getStyles('fileInfo', { style: { minWidth: 0, flex: 1 } })}>
                   <div {...getStyles('fileName')}>{item.file.name}</div>
                   <Text size="xs" c="dimmed" {...getStyles('fileSize')}>
                     {formatFileSize(item.file.size)}
-                    {item.error ? ` · ${item.error}` : ''}
                   </Text>
+                  {/* 声明的 fileError 样式槽接线：错误文案独立成节点，走红色错误样式 */}
+                  {item.error && (
+                    <Text size="xs" {...getStyles('fileError')}>
+                      {item.error}
+                    </Text>
+                  )}
                 </div>
                 {renderStatus(item)}
                 <CloseButton

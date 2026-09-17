@@ -60,10 +60,10 @@ export type CodeHighlightCssVariables = {
 };
 
 export interface CodeHighlightSettings {
-  /** Label for copy button in default state @default 'Copy' */
+  /** Label for copy button in default state @default '复制' */
   copyLabel?: string;
 
-  /** Label for copy button in copied state @default 'Copied' */
+  /** Label for copy button in copied state @default '已复制' */
   copiedLabel?: string;
 
   /** Uncontrolled expanded default state */
@@ -84,10 +84,10 @@ export interface CodeHighlightSettings {
   /** Determines whether the expand/collapse button should be displayed @default false */
   withExpandButton?: boolean;
 
-  /** Label for expand button @default 'Expand code' */
+  /** Label for expand button @default '展开代码' */
   expandCodeLabel?: string;
 
-  /** Label for collapse button @default 'Collapse code' */
+  /** Label for collapse button @default '收起代码' */
   collapseCodeLabel?: string;
 
   /** Controls background color of the code. By default, the value depends on color scheme. */
@@ -271,7 +271,7 @@ export const CodeHighlight = factory<CodeHighlightFactory>((_props) => {
         )}
 
         <ScrollArea
-          type="hover"
+          type="always"
           scrollbarSize={4}
           dir="ltr"
           offsetScrollbars={false}

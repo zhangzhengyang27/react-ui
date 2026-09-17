@@ -46,25 +46,38 @@ export function useMutationObserverTarget(
     callbackRef.current = callback
     const optionsRef = useRef(options)
     optionsRef.current = options
+    // 记录当前观察的目标元素:target 为内联 getter(() => ref.current)时每渲染新函数
+    // 引用,若直接据此 disconnect/重建,observer 会在每次渲染间反复重启
+    const observedElementRef = useRef<HTMLElement | null>(null)
 
     useEffect(() => {
+        const currentTarget = typeof target === 'function' ? target() : (target ?? null)
+
+        // 每次重跑都重新求值 target(元素可能从 null 变为挂载节点),
+        // 但仅当解析出的元素真正变化时才 disconnect 并重建 observer
+        if (observedElementRef.current === currentTarget) {
+            return
+        }
+        observedElementRef.current = currentTarget
+
         if (observer.current) {
             observer.current.disconnect()
             observer.current = null
         }
 
-        const targetElement = typeof target === 'function' ? target() : target
-
-        if (targetElement) {
+        if (currentTarget) {
             observer.current = new MutationObserver((...args) => callbackRef.current(...args))
-            observer.current.observe(targetElement, optionsRef.current)
+            observer.current.observe(currentTarget, optionsRef.current)
         }
+    }, [target])
 
-        return () => {
+    useEffect(
+        () => () => {
             if (observer.current) {
                 observer.current.disconnect()
                 observer.current = null
             }
-        }
-    }, [target])
+        },
+        []
+    )
 }

@@ -96,6 +96,8 @@ export const Image = factory<ImageFactory>((_props, ref) => {
     } = props
 
     const [error, setError] = useState(false)
+    // fallbackSrc 自身的加载失败标记：用于链式切到 fallback 节点
+    const [fallbackError, setFallbackError] = useState(false)
 
     // src 变化时重置错误态：否则失败一次后 img 被卸载，换新地址也永远显示 fallback
     const prevSrcRef = useRef(src)
@@ -103,6 +105,9 @@ export const Image = factory<ImageFactory>((_props, ref) => {
         prevSrcRef.current = src
         if (error) {
             setError(false)
+        }
+        if (fallbackError) {
+            setFallbackError(false)
         }
     }
 
@@ -139,15 +144,26 @@ export const Image = factory<ImageFactory>((_props, ref) => {
 
     const isError = error || !src
     const showFallback = isError && (fallbackSrc || fallback)
+    // fallbackSrc 自身加载失败时链式切到 fallback 节点（此前 error 已为 true、
+    // 分支不再变化，页面停留在 broken <img>，fallback ReactNode 永远不会被使用）
+    const showFallbackImage = showFallback && !!fallbackSrc && !fallbackError
+    const showFallbackNode = showFallback && !!fallback && (!!fallbackError || !fallbackSrc)
 
     return (
         <Box {...getStyles('root')} mod={[{ fit }, mod]} {...boxProps}>
-            {showFallback ? (
-                fallbackSrc ? (
-                    <img {...getStyles('image')} src={fallbackSrc} alt={alt} onError={() => setError(true)} />
-                ) : (
-                    <div {...getStyles('fallback')}>{fallback}</div>
-                )
+            {showFallbackImage ? (
+                <img
+                    {...getStyles('image')}
+                    src={fallbackSrc}
+                    alt={alt}
+                    onLoad={onLoad}
+                    onError={event => {
+                        setFallbackError(true)
+                        onError?.(event)
+                    }}
+                />
+            ) : showFallbackNode ? (
+                <div {...getStyles('fallback')}>{fallback}</div>
             ) : (
                 <img
                     ref={ref}

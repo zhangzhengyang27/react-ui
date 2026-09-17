@@ -14,6 +14,9 @@ export function getInputOnChange<T>(
 
       if (currentTarget.type === 'checkbox') {
         setValue((currentTarget as HTMLInputElement).checked as unknown as T);
+      } else if (currentTarget.type === 'file') {
+        // file 输入的 .value 是 fakepath 字符串,表单值必须是 FileList,与 form 版 getInputOnChange 对齐
+        setValue((currentTarget as HTMLInputElement).files as unknown as T);
       } else {
         setValue((currentTarget as HTMLInputElement).value as unknown as T);
       }

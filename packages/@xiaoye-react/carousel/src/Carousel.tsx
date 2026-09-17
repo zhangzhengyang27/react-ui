@@ -1,4 +1,4 @@
-import { Children, useCallback, useEffect, useState } from 'react';
+import { Children, useCallback, useEffect, useRef, useState } from 'react';
 import type { EmblaCarouselType, EmblaOptionsType, EmblaPluginType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 import {
@@ -237,6 +237,15 @@ export const Carousel = factory<CarouselFactory>((_props) => {
 
   const [selected, setSelected] = useState(0);
   const [slidesCount, setSlidesCount] = useState(0);
+  // 挂载时 effect 会立即同步一次选中项,initialSlide > 0 时不应误报 onSlideChange
+  const initializedRef = useRef(false);
+  // ref 镜像 selected:handleSelect 不再依赖 selected state,
+  // 避免每次翻页后回调身份变化导致 embla 'select' 监听反复解绑/重绑、getEmblaApi 被重复调用
+  const selectedRef = useRef(selected);
+  selectedRef.current = selected;
+  // 回调走 ref:消费者传内联 onSlideChange 时,监听不会随父渲染反复 off/on
+  const onSlideChangeRef = useRef(onSlideChange);
+  onSlideChangeRef.current = onSlideChange;
 
   const handleScroll = useCallback((index: number) => embla && embla.scrollTo(index), [embla]);
 
@@ -246,8 +255,12 @@ export const Carousel = factory<CarouselFactory>((_props) => {
     }
     const slide = embla.selectedScrollSnap();
     setSelected(slide);
-    slide !== selected && onSlideChange?.(slide);
-  }, [embla, setSelected, onSlideChange, selected]);
+    if (!initializedRef.current) {
+      initializedRef.current = true;
+      return;
+    }
+    slide !== selectedRef.current && onSlideChangeRef.current?.(slide);
+  }, [embla]);
 
   const handlePrevious = useCallback(() => {
     embla?.scrollPrev();
@@ -306,10 +319,17 @@ export const Carousel = factory<CarouselFactory>((_props) => {
       getEmblaApi?.(embla);
       handleSelect();
       setSlidesCount(embla.scrollSnapList().length);
+      // slides 异步加载/增删时 embla 会 reInit 并派发 slidesChanged,
+      // 不监听它的话 slidesCount 冻结为初始值,指示器数量错乱(与 ui 包同步)
+      const handleSlidesChanged = () => {
+        setSlidesCount(embla.scrollSnapList().length);
+      };
       embla.on('select', handleSelect);
+      embla.on('slidesChanged', handleSlidesChanged);
 
       return () => {
         embla.off('select', handleSelect);
+        embla.off('slidesChanged', handleSlidesChanged);
       };
     }
 
@@ -377,7 +397,7 @@ export const Carousel = factory<CarouselFactory>((_props) => {
         {...getStyles('indicator')}
         key={index}
         role="tab"
-        aria-label={`Go to slide ${index + 1}`}
+        aria-label={`跳转到第 ${index + 1} 张`}
         aria-selected={index === selected}
         tabIndex={index === selected ? 0 : -1}
         data-active={index === selected || undefined}
@@ -407,14 +427,14 @@ export const Carousel = factory<CarouselFactory>((_props) => {
         onKeyDownCapture={handleKeydown}
       >
         <VisuallyHidden role="status" aria-live="polite" aria-atomic="true">
-          {slidesCount > 0 && `Slide ${selected + 1} of ${slidesCount}`}
+          {slidesCount > 0 && `第 ${selected + 1} 张,共 ${slidesCount} 张`}
         </VisuallyHidden>
 
         {withControls && (
           <div {...getStyles('controls')} data-orientation={orientation}>
             <UnstyledButton
               aria-controls={_id}
-              aria-label="Previous slide"
+              aria-label="上一张幻灯片"
               aria-disabled={!canScrollPrev}
               data-inactive={!canScrollPrev || undefined}
               data-type="previous"
@@ -446,7 +466,7 @@ export const Carousel = factory<CarouselFactory>((_props) => {
 
             <UnstyledButton
               aria-controls={_id}
-              aria-label="Next slide"
+              aria-label="下一张幻灯片"
               aria-disabled={!canScrollNext}
               data-inactive={!canScrollNext || undefined}
               data-type="next"
@@ -491,7 +511,7 @@ export const Carousel = factory<CarouselFactory>((_props) => {
           <div
             {...getStyles('indicators')}
             role="tablist"
-            aria-label="Slides"
+            aria-label="幻灯片列表"
             data-orientation={orientation}
           >
             {indicators}

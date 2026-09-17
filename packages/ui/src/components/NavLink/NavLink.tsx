@@ -168,6 +168,8 @@ export const NavLink = polymorphicFactory<NavLinkFactory>((_props, ref) => {
                 data-active={active || undefined}
                 data-disabled={disabled || undefined}
                 data-opened={_opened || undefined}
+                // 按钮实际控制子列表显隐，读屏需能获知展开状态
+                aria-expanded={hasChildren ? _opened : undefined}
                 onClick={handleClick}
                 {...others}
             >

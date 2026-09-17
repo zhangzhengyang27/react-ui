@@ -12,6 +12,7 @@ import {
     useProps,
     useStyles
 } from '../../core'
+import { getThemeColor } from '../../core/UIProvider/color-functions/index'
 import { CloseButton } from '../CloseButton'
 import { Loader } from '../Loader'
 import classes from './Notification.module.css'
@@ -67,7 +68,8 @@ const varsResolver = createVarsResolver<NotificationFactory>((theme, { color, ra
     const resolvedColor = color || theme.primaryColor
     return {
         root: {
-            '--notification-color': resolvedColor ? `var(--ui-color-${resolvedColor}-filled)` : undefined,
+            // 主题色键走对应 CSS 变量,任意合法 CSS 颜色(如 #ff0000)由 getThemeColor 原样透传
+            '--notification-color': resolvedColor ? getThemeColor(resolvedColor, theme) : undefined,
             '--notification-radius': radius === undefined ? undefined : getRadius(radius)
         }
     }
@@ -120,7 +122,7 @@ export const Notification = factory<NotificationFactory>((_props, ref) => {
             {withCloseButton && (
                 <CloseButton
                     {...getStyles('closeButton')}
-                    aria-label="Close notification"
+                    aria-label="关闭通知"
                     {...closeButtonProps}
                     onClick={event => {
                         closeButtonProps?.onClick?.(event)

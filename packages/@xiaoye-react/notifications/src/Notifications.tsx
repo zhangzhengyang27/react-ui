@@ -184,7 +184,7 @@ export const Notifications = factory<NotificationsFactory>((_props) => {
       limit: limit || 5,
       defaultPosition: position,
     }));
-  }, [limit, position]);
+  }, [limit, position, store]);
 
   useDidUpdate(() => {
     if (data.notifications.length > previousLength.current) {

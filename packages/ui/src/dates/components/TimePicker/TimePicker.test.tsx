@@ -283,6 +283,40 @@ describe('@xiaoye-react/dates/TimePicker', () => {
     expect(spy).toHaveBeenLastCalledWith('13:34:00');
   });
 
+  it('ignores pasted values containing non-numeric parts instead of reporting NaN', async () => {
+    const spy = jest.fn();
+    render(<TimePicker {...defaultProps} withSeconds format="24h" onChange={spy} />);
+
+    await userEvent.click(screen.getByLabelText('test-hours'));
+    await userEvent.paste('ab:cd');
+
+    // 非法输入不上报 onChange,也不把 NaN 写进输入框
+    expect(spy).not.toHaveBeenCalled();
+    expect(screen.getByLabelText('test-hours')).not.toHaveValue('NaN');
+    expect(screen.getByLabelText('test-minutes')).not.toHaveValue('NaN');
+
+    await userEvent.paste('1:x');
+    expect(spy).not.toHaveBeenCalled();
+
+    await userEvent.paste('13:34:00');
+    expect(spy).toHaveBeenLastCalledWith('13:34:00');
+  });
+
+  it('reports HH:mm when clamping on blur with withSeconds=false', async () => {
+    const spy = jest.fn();
+    render(<TimePicker {...defaultProps} format="24h" min="10:30" max="18:30" onChange={spy} />);
+
+    await userEvent.type(screen.getByLabelText('test-hours'), '9');
+    await userEvent.type(screen.getByLabelText('test-minutes'), '0');
+    expect(spy).toHaveBeenLastCalledWith('09:00');
+
+    await userEvent.tab();
+
+    // 失焦钳制输出必须与 withSeconds=false 的值契约(HH:mm)一致,而非漂移成 HH:mm:ss
+    expect(spy).toHaveBeenLastCalledWith('10:30');
+    expect(spy).not.toHaveBeenCalledWith('10:30:00');
+  });
+
   it('calls onChange function when the value is valid (24h format)', async () => {
     const spy = jest.fn();
     render(<TimePicker {...defaultProps} withSeconds format="24h" onChange={spy} />);

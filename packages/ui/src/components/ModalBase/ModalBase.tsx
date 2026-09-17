@@ -120,6 +120,7 @@ export function ModalBase({
     unstyled,
     removeScrollProps,
     __staticSelector,
+    __vars,
     ref,
     ...others
 }: ModalBaseProps) {
@@ -189,6 +190,9 @@ export function ModalBase({
                         {...others}
                         id={_id}
                         __vars={{
+                            // 合并消费者传入的 __vars（如 Spotlight 的 --spotlight-max-height）：
+                            // 内联对象写在 {...others} 之后会整体覆盖，消费者变量到不了 DOM
+                            ...__vars,
                             '--mb-z-index': (zIndex || getDefaultZIndex('modal')).toString(),
                             '--mb-shadow': getShadow(shadow),
                             '--mb-padding': getSpacing(padding)

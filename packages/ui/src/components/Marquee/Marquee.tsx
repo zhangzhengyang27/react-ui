@@ -98,7 +98,7 @@ export const Marquee = factory<MarqueeFactory>((_props, ref) => {
     const repeatedChildren = Array(repeat)
         .fill(0)
         .map((_, index) => (
-            <div key={index} {...getStyles('group')}>
+            <div key={index} {...getStyles('group')} aria-hidden={index > 0 || undefined}>
                 {children}
             </div>
         ))

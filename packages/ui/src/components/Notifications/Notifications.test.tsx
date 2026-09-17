@@ -32,7 +32,7 @@ describe('@xiaoye-react/ui/Notifications', () => {
         act(() => {
             notifications.show({ message: 'Close me' })
         })
-        fireEvent.click(screen.getByRole('button', { name: /Close notification/i }))
+        fireEvent.click(screen.getByRole('button', { name: /关闭通知/i }))
         expect(screen.queryByText('Close me')).not.toBeInTheDocument()
     })
 

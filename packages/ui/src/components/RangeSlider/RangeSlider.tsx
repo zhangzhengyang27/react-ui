@@ -12,6 +12,7 @@ import {
     UIRadius,
     UISize,
     StylesApiProps,
+    useDirection,
     useProps,
     useStyles
 } from '../../core'
@@ -97,6 +98,12 @@ export interface RangeSliderProps extends BoxProps, StylesApiProps<RangeSliderFa
 
     /** 改变滑块比例的转换函数 */
     scale?: (value: number) => number
+
+    /** 隐藏 input 的 name 属性；渲染 `${name}[0]` / `${name}[1]` 两个隐藏 input 参与表单提交 */
+    name?: string
+
+    /** 两个滑块的可访问名称，字符串时两个滑块共用 */
+    thumbLabel?: string | [string, string]
 }
 
 export type RangeSliderFactory = Factory<{
@@ -188,6 +195,8 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
         restrictToMarks,
         thumbChildren,
         scale,
+        name,
+        thumbLabel,
         mod,
         ...others
     } = props
@@ -210,6 +219,10 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
     const currentValue = isControlled ? value! : internalValue
     const valueRef = useRef(currentValue)
     valueRef.current = currentValue
+    const { dir } = useDirection()
+    // RTL 下视觉映射取反（物理右端为 min），inverted 与 RTL 的翻转做异或叠加；
+    // useMove 的 dir 参数同步传入，指针 x 归一化与视觉方向保持一致
+    const invertPhysicalAxis = inverted !== (dir === 'rtl')
     const [hovered, setHovered] = React.useState(false)
     const [focused, setFocused] = React.useState(-1)
 
@@ -295,6 +308,8 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
     const handleMove = useCallback(
         ({ x }: { x: number; y: number }) => {
             if (disabled) return
+            // useMove 已按 dir 参数翻转 x（rtl 时 x = 1 - 物理归一化），
+            // inverted 在此基础上再叠加一次翻转
             const factor = inverted ? 1 - x : x
             let rawValue = min + factor * (max - min)
             rawValue = min + Math.round((rawValue - min) / step) * step
@@ -324,7 +339,7 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
                 onChangeEnd?.(valueRef.current)
             }
         },
-        'ltr'
+        dir === 'rtl' ? 'rtl' : 'ltr'
     )
 
     const setTrackRef = useMergedRef(trackRef, moveRef)
@@ -335,13 +350,18 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
 
     // restrictToMarks 下原生键盘按 step 步进后会吸附回原 mark(step 小于 mark 间距一半时永远卡住),
     // 改为拦截 commit 类按键,直接在相邻 marks 之间导航
+    // 记录按键前的值:keyup 时组件已用新值重渲染,直接对比 currentValue 检测不到变化
+    const keyDownValueRef = useRef<[number, number] | null>(null)
+
     const handleInputKeyDown = (index: number) => (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (!(restrictToMarks && marks && marks.length > 0)) {
+        const commitKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End']
+        if (!commitKeys.includes(event.key)) {
             return
         }
 
-        const commitKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End']
-        if (!commitKeys.includes(event.key)) {
+        keyDownValueRef.current = [...currentValue]
+
+        if (!(restrictToMarks && marks && marks.length > 0)) {
             return
         }
 
@@ -363,6 +383,27 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
 
         if (nextValue !== current) {
             update(index, nextValue)
+        }
+    }
+
+    // 键盘 commit 补发 onChangeEnd（对齐 Slider 的 keyup 语义）：
+    // 此前仅 blur 补发,焦点停留在 thumb 上连续调整时 onChangeEnd 永不触发;
+    // restrictToMarks 分支在 keydown 已 preventDefault,但受控重渲染同样会更新 input 值,
+    // 统一经「对比 keydown 快照」在 keyup 检测变化
+    const handleInputKeyUp = (index: number) => (event: React.KeyboardEvent<HTMLInputElement>) => {
+        const snapshot = keyDownValueRef.current
+        keyDownValueRef.current = null
+
+        const commitKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End']
+        if (snapshot === null || !commitKeys.includes(event.key)) {
+            return
+        }
+
+        const nextValue = clamp(Number(event.currentTarget.value), min, max)
+        if (nextValue !== snapshot[index]) {
+            onChangeEnd?.(valueRef.current)
+            // 同步焦点快照,避免随后失焦时 blur 补发对同一变更重复触发
+            focusValueRef.current = valueRef.current
         }
     }
 
@@ -393,17 +434,30 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
     }
 
     const hasArrayThumbChildren = Array.isArray(thumbChildren)
+    // 定位随书写方向翻转:RTL 下物理右端为 min;定位样式与 getStyles 产物合并且不整体覆盖,
+    // 使消费者 styles={{ bar/thumb/mark }} 真正生效
+    const positionKey = invertPhysicalAxis ? 'right' : 'left'
+    const barStyles = getStyles('bar')
+    const thumbStyles = getStyles('thumb')
+    const markStyles = getStyles('mark')
+    // thumbLabel 归一化:字符串时两个滑块共用,缺省回落内置英文可访问名
+    const thumbLabels: [string, string] =
+        thumbLabel === undefined
+            ? ['Minimum slider value', 'Maximum slider value']
+            : Array.isArray(thumbLabel)
+                ? thumbLabel
+                : [thumbLabel, thumbLabel]
 
     const renderThumb = (index: number, rawValue: number, percent: number) => {
         const isVisible = labelAlwaysOn || (showLabelOnHover && hovered) || focused === index
-        const positionStyle = { [inverted ? 'right' : 'left']: `${percent}%` }
+        const positionStyle = { [positionKey]: `${percent}%` }
         const child = hasArrayThumbChildren ? thumbChildren[index] : thumbChildren
 
         return (
             <div
                 key={index}
-                {...getStyles('thumb')}
-                style={positionStyle}
+                {...thumbStyles}
+                style={{ ...thumbStyles.style, ...positionStyle }}
                 data-label-hover={showLabelOnHover || undefined}
             >
                 {label !== null && (
@@ -427,11 +481,11 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
         >
             <div {...getStyles('track')} ref={setTrackRef}>
                 <div
-                    {...getStyles('bar')}
+                    {...barStyles}
                     style={
                         inverted
-                            ? { right: `${100 - endPercent}%`, width: `${endPercent - startPercent}%` }
-                            : { left: `${startPercent}%`, width: `${endPercent - startPercent}%` }
+                            ? { ...barStyles.style, [invertPhysicalAxis ? 'left' : 'right']: `${100 - endPercent}%`, width: `${endPercent - startPercent}%` }
+                            : { ...barStyles.style, [positionKey]: `${startPercent}%`, width: `${endPercent - startPercent}%` }
                     }
                 />
                 {renderThumb(0, sorted[0], startPercent)}
@@ -442,8 +496,8 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
                         <div
                             // mark.value 可能重复,附加 index 避免撞 key
                             key={`${mark.value}-${index}`}
-                            {...getStyles('mark')}
-                            style={{ [inverted ? 'right' : 'left']: `${percent}%` }}
+                            {...markStyles}
+                            style={{ ...markStyles.style, [positionKey]: `${percent}%` }}
                         >
                             {mark.label && <span {...getStyles('markLabel')}>{mark.label}</span>}
                         </div>
@@ -457,9 +511,10 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
                 step={step}
                 value={currentValue[0]}
                 disabled={disabled}
-                aria-label="Minimum slider value"
+                aria-label={thumbLabels[0]}
                 onChange={handleInputChange(0)}
                 onKeyDown={handleInputKeyDown(0)}
+                onKeyUp={handleInputKeyUp(0)}
                 onFocus={handleInputFocus(0)}
                 onBlur={handleInputBlur}
                 className={classes.input}
@@ -472,14 +527,22 @@ export const RangeSlider = factory<RangeSliderFactory>((_props, ref) => {
                 step={step}
                 value={currentValue[1]}
                 disabled={disabled}
-                aria-label="Maximum slider value"
+                aria-label={thumbLabels[1]}
                 onChange={handleInputChange(1)}
                 onKeyDown={handleInputKeyDown(1)}
+                onKeyUp={handleInputKeyUp(1)}
                 onFocus={handleInputFocus(1)}
                 onBlur={handleInputBlur}
                 className={classes.input}
                 data-thumb="1"
             />
+            {name && (
+                <>
+                    {/* 隐藏 input 承载表单序列化：range input 自身不挂 name，避免与表单控件语义冲突 */}
+                    <input type="hidden" name={`${name}[0]`} value={currentValue[0]} />
+                    <input type="hidden" name={`${name}[1]`} value={currentValue[1]} />
+                </>
+            )}
         </Box>
     )
 })

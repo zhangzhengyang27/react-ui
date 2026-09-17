@@ -243,4 +243,48 @@ describe('@xiaoye-react/form/validate-values', () => {
       errors: {},
     });
   });
+
+  it('calls formRootRule only once for array values', async () => {
+    const rootRule = jest.fn(() => null);
+    const values = { a: [{ b: 1 }, { b: 2 }] };
+
+    const result = await validateValues(
+      {
+        a: {
+          [formRootRule]: rootRule,
+          b: (value) => (value === 0 ? 'error-b' : null),
+        },
+      },
+      values
+    );
+
+    expect(result).toStrictEqual({ hasErrors: false, errors: {} });
+    // 数组值同时命中两个 object 分支,根规则此前会被重复执行(异步根规则双发请求)
+    expect(rootRule).toHaveBeenCalledTimes(1);
+    expect(rootRule).toHaveBeenCalledWith(
+      [{ b: 1 }, { b: 2 }],
+      values,
+      'a',
+      expect.anything()
+    );
+  });
+
+  it('converts synchronous rule throw into an error instead of propagating', async () => {
+    expect(
+      await validateValues(
+        {
+          a: () => {
+            throw new Error('boom');
+          },
+          b: {
+            // 根规则同步抛异常同样兜底
+            [formRootRule]: () => {
+              throw new Error('root-boom');
+            },
+          },
+        },
+        { a: 1, b: { c: 1 } }
+      )
+    ).toStrictEqual({ hasErrors: true, errors: { a: 'boom', b: 'root-boom' } });
+  });
 });

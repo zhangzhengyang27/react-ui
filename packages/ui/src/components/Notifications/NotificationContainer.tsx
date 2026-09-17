@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import cx from 'clsx'
 import { Notification } from '../Notification'
 import { getAutoClose } from './get-auto-close/get-auto-close'
 import type { NotificationData, NotificationsStore } from './notifications.store'
@@ -11,17 +12,33 @@ export interface NotificationContainerProps {
     onHoverStart?: () => void
     onHoverEnd?: () => void
     paused?: boolean
+    className?: string
+    style?: React.CSSProperties
 }
 
+// store 内部/管理字段不允许透传到 Notification 的 DOM 上
 export function NotificationContainer({
     data,
     store,
     autoClose,
     onHoverStart,
     onHoverEnd,
-    paused
+    paused,
+    className,
+    style
 }: NotificationContainerProps) {
-    const { autoClose: notificationAutoClose, message, allowClose, onOpen, ...notificationProps } = data
+    const {
+        autoClose: notificationAutoClose,
+        message,
+        allowClose,
+        onOpen,
+        // id/position/priority/__sequence 是 store 管理/内部字段,不允许透传到 Notification 的 DOM 上
+        id: _id,
+        position: _position,
+        priority: _priority,
+        __sequence: _sequence,
+        ...notificationProps
+    } = data
 
     const autoCloseDuration = getAutoClose(autoClose, notificationAutoClose)
     const autoCloseTimeout = useRef<number | null>(null)
@@ -80,6 +97,9 @@ export function NotificationContainer({
     return (
         <Notification
             {...notificationProps}
+            // 接线 Notifications getStyles('notification') 的样式槽,与通知自身的 className/style 合并
+            className={cx(notificationProps.className, className)}
+            style={{ ...(notificationProps.style as React.CSSProperties), ...style }}
             message={message}
             withCloseButton={isCloseDisabled ? false : notificationProps.withCloseButton}
             onClose={handleHide}

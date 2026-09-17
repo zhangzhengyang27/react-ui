@@ -1,16 +1,9 @@
 import { useCallback, useState } from 'react';
-import { DateStringValue, ScheduleEventData } from '../types';
+import { ScheduleEventData } from '../types';
 
-export interface DropTarget {
-  /** Target date in YYYY-MM-DD format */
-  date: DateStringValue;
-
-  /** Target time in HH:mm:ss format (for DayView/WeekView) */
-  time?: string;
-
-  /** Target slot index (for DayView/WeekView) */
-  slotIndex?: number;
-}
+// DropTarget 的单一来源是 ../types(此前与 types.ts 重复定义、逐字段相同,
+// 是 DragContextValue 类型摩擦的温床);re-export 保持 hooks/index.ts 的既有导出面不变
+export type { DropTarget } from '../types';
 
 export interface DragState {
   /** Whether an event is currently being dragged */
@@ -21,9 +14,6 @@ export interface DragState {
 
   /** The event being dragged */
   draggedEvent: ScheduleEventData | null;
-
-  /** Current drop target information */
-  dropTarget: DropTarget | null;
 }
 
 export interface UseDragStateReturn {
@@ -35,19 +25,12 @@ export interface UseDragStateReturn {
 
   /** End dragging */
   endDrag: () => void;
-
-  /** Set the current drop target */
-  setDropTarget: (target: DropTarget | null) => void;
-
-  /** Clear the drop target */
-  clearDropTarget: () => void;
 }
 
 const initialState: DragState = {
   isDragging: false,
   draggedEventId: null,
   draggedEvent: null,
-  dropTarget: null,
 };
 
 export function useDragState(): UseDragStateReturn {
@@ -58,7 +41,6 @@ export function useDragState(): UseDragStateReturn {
       isDragging: true,
       draggedEventId: event.id,
       draggedEvent: event,
-      dropTarget: null,
     });
   }, []);
 
@@ -66,25 +48,9 @@ export function useDragState(): UseDragStateReturn {
     setState(initialState);
   }, []);
 
-  const setDropTarget = useCallback((target: DropTarget | null) => {
-    setState((prev) => ({
-      ...prev,
-      dropTarget: target,
-    }));
-  }, []);
-
-  const clearDropTarget = useCallback(() => {
-    setState((prev) => ({
-      ...prev,
-      dropTarget: null,
-    }));
-  }, []);
-
   return {
     state,
     startDrag,
     endDrag,
-    setDropTarget,
-    clearDropTarget,
   };
 }

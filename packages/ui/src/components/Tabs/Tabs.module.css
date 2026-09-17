@@ -2,7 +2,8 @@
     --tabs-radius: var(--ui-radius-default);
     --tabs-color: var(--ui-primary-color-filled);
     --tabs-bg: var(--ui-primary-color-light);
-    --tabs-bd: 1px solid var(--ui-primary-color-outline);
+    /* --ui-primary-color-* 家族无 outline 成员，outline 变体在 --ui-color-{name}-outline 命名空间 */
+    --tabs-bd: 1px solid var(--ui-color-primary-outline);
 
     display: flex;
     flex-direction: column;
@@ -89,16 +90,17 @@
     border-bottom-color: var(--tabs-color);
 }
 
+/* vertical 变体的列表边框/负 margin 用逻辑属性：RTL 下分隔线翻到视觉左侧 */
 .root:where([data-orientation='vertical'][data-variant='default']) .list {
     border-bottom: none;
-    border-right: 1px solid var(--ui-color-default-border);
+    border-inline-end: 1px solid var(--ui-color-default-border);
 }
 
 .root:where([data-orientation='vertical'][data-variant='default']) .tab {
     border-bottom-color: transparent;
     margin-bottom: 0;
-    border-right-color: transparent;
-    margin-right: -1px;
+    border-inline-end-color: transparent;
+    margin-inline-end: -1px;
     border-radius: var(--tabs-radius) 0 0 var(--tabs-radius);
 }
 
@@ -119,12 +121,12 @@
 
 .root:where([data-orientation='vertical'][data-variant='outline']) .list {
     border-bottom: none;
-    border-right: 1px solid var(--ui-color-default-border);
+    border-inline-end: 1px solid var(--ui-color-default-border);
 }
 
 .root:where([data-orientation='vertical'][data-variant='outline']) .tab:where([data-active]) {
     border-bottom-color: var(--tabs-bd);
-    border-right-color: transparent;
+    border-inline-end-color: transparent;
     border-radius: var(--tabs-radius) 0 0 var(--tabs-radius);
 }
 

@@ -1,5 +1,5 @@
-import { useId, useUncontrolled } from '@xiaoye-react/hooks'
-import { useRef } from 'react'
+import { useId } from '@xiaoye-react/hooks'
+import { useRef, useState } from 'react'
 import {
     BoxProps,
     createVarsResolver,
@@ -27,13 +27,13 @@ export interface PinInputProps
     /** Number of input boxes */
     length?: number
 
-    //** 受控值 */
+    /** 受控值 */
     value?: string
 
-    //** 非受控组件的初始值 */
+    /** 非受控组件的初始值 */
     defaultValue?: string
 
-    //** 值变化时调用 */
+    /** 值变化时调用 */
     onChange?: (value: string) => void
 
     /** Called when all inputs are filled */
@@ -93,6 +93,11 @@ const varsResolver = createVarsResolver<PinInputFactory>((theme, { size, gap }) 
 
 const EMPTY_VALUE = ''
 
+// 按位数将字符串值展开为定长字符数组：不足位补空串、超长截断，
+// 每格一字符的定长结构是内部唯一事实源，天然支持「中间位删除后保留空洞」
+const toChars = (value: string | undefined, length: number): string[] =>
+    Array.from({ length }, (_, index) => value?.[index] ?? EMPTY_VALUE)
+
 function getNextValue(value: string, type: PinInputType) {
     const char = value.slice(-1)
     if (!char) return EMPTY_VALUE
@@ -131,23 +136,21 @@ export const PinInput = factory<PinInputFactory>((_props, ref) => {
         ...others
     } = props
 
-    // 注意：不向 useUncontrolled 传 onChange —— 其非受控分支的 setter 内部会调用 onChange，
-    // 而 updateValue 已显式调用 onChange?.()，若两处都传会导致每次输入 onChange 触发两次。
-    // 此处以 updateValue 的显式调用作为唯一出口（受控模式下不会走到 setValues，行为一致）
-    const [values, setUncontrolledValues] = useUncontrolled<string>({
-        value,
-        defaultValue,
-        finalValue: ''
-    })
+    // 内部以定长 string[] 为唯一事实源（空位保留为空串）：
+    // 若用 join('') 后的字符串存储，删除中间位时空串不占位，后续字符会整体左移、
+    // onChange 值丢位；公开的 value/onChange 仍为拼接后的 string
+    const [chars, setChars] = useState<string[]>(() => toChars(defaultValue, length!))
+    const charsRef = useRef(chars)
+    charsRef.current = chars
 
-    const valuesRef = useRef(values)
-
-    const setValues = (nextValues: string) => {
-        valuesRef.current = nextValues
-        setUncontrolledValues(nextValues)
+    // 受控同步：仅当外部 value 与当前数组表示的字符串不一致时才按位重新展开，
+    // 内部变更后父组件回传相同字符串（join 后空洞自然消失）不会重置内部的空洞布局
+    if (value !== undefined && value !== charsRef.current.join('')) {
+        const nextChars = toChars(value, length!)
+        charsRef.current = nextChars
+        // 渲染期 setState：React 会丢弃本次渲染输出并立即用新状态重渲染（官方「渲染期间调整 state」模式）
+        setChars(nextChars)
     }
-
-    valuesRef.current = values
 
     const inputRefs = useRef<HTMLInputElement[]>([])
     const resolvedId = useId()
@@ -165,23 +168,23 @@ export const PinInput = factory<PinInputFactory>((_props, ref) => {
         rootSelector: 'root'
     })
 
-    const updateValue = (nextValues: string) => {
-        if (value === undefined) {
-            setValues(nextValues)
-        }
-        onChange?.(nextValues)
+    const updateValue = (nextChars: string[]) => {
+        const nextValue = nextChars.join('')
+        charsRef.current = nextChars
+        // 内部数组始终随编辑更新以驱动显示；受控模式下若父组件拒绝变更（value 不回传新字符串），
+        // 上方渲染期同步会按外部 value 重新展开，显示自动回退
+        setChars(nextChars)
+        onChange?.(nextValue)
 
-        if (nextValues.length === length && !nextValues.split('').some(char => char === EMPTY_VALUE)) {
-            onComplete?.(nextValues)
+        if (nextChars.length === length! && nextChars.every(char => char !== EMPTY_VALUE)) {
+            onComplete?.(nextValue)
         }
     }
 
     const setInputValue = (index: number, nextValue: string) => {
-        const currentValues = valuesRef.current
-        const chars = Array.from({ length: length! }, (_, i) => currentValues[i] || EMPTY_VALUE)
-        chars[index] = nextValue
-        const nextValues = chars.join('')
-        updateValue(nextValues)
+        const nextChars = Array.from({ length: length! }, (_, i) => charsRef.current[i] ?? EMPTY_VALUE)
+        nextChars[index] = nextValue
+        updateValue(nextChars)
     }
 
     const focusInput = (index: number) => {
@@ -208,7 +211,7 @@ export const PinInput = factory<PinInputFactory>((_props, ref) => {
 
         if (event.key === 'Backspace') {
             event.preventDefault()
-            const currentValue = valuesRef.current[index]
+            const currentValue = charsRef.current[index]
             setInputValue(index, EMPTY_VALUE)
 
             if (!currentValue && index > 0) {
@@ -237,8 +240,8 @@ export const PinInput = factory<PinInputFactory>((_props, ref) => {
             .filter(char => char !== EMPTY_VALUE)
             .slice(0, length!)
 
-        const nextValues = validChars.join('')
-        updateValue(nextValues)
+        // 整值替换：粘贴的合法字符按位填入，余下位数保持空串
+        updateValue(toChars(validChars.join(''), length!))
         // 焦点落在最后一个已填字符上（原实现用 EMPTY_VALUE 空串做 replace 实为空操作，这里直接按合法字符数定位）
         focusInput(Math.min(validChars.length, length! - 1))
     }
@@ -248,7 +251,8 @@ export const PinInput = factory<PinInputFactory>((_props, ref) => {
     }
 
     const inputs = Array.from({ length: length! }, (_, index) => {
-        const inputValue = values[index] || EMPTY_VALUE
+        // 定长数组按位取值：空洞位显示空串，删除中间位后后续字符不再左移
+        const inputValue = chars[index] ?? EMPTY_VALUE
         const inputId = `${resolvedId}-${index}`
 
         return (
@@ -280,7 +284,15 @@ export const PinInput = factory<PinInputFactory>((_props, ref) => {
     return (
         <div ref={ref} role="group" {...getStyles('root')} {...others}>
             {inputs}
-            {name && <input type="hidden" name={name} form={form} value={values} readOnly />}
+            {name && (
+                <input
+                    type="hidden"
+                    name={name}
+                    form={form}
+                    value={value !== undefined ? value : chars.join('')}
+                    readOnly
+                />
+            )}
         </div>
     )
 })

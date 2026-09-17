@@ -127,12 +127,17 @@ export const Notifications = factory<NotificationsFactory>((_props, ref) => {
     })
 
     useEffect(() => {
-        store?.setState({
+        if (!store) {
+            return
+        }
+        store.setState({
             ...store.getState(),
-            // 用 ?? 替代 ||,避免 limit=0 被误当作 falsy 回退成 5(0 表示全部入队不展示)
-            limit: limit ?? 5,
+            // limit=0 表示全部入队不展示,直接透传(?? 5 是死代码:useProps 已应用 defaultProps.limit=5)
+            limit,
             defaultPosition: position
         })
+        // limit/position 运行时变化时立即重排一次,否则已显示列表要到下一次 show/hide 才收敛
+        notifications.updateState(store, list => list)
     }, [limit, position, store])
 
     const grouped = getGroupedNotifications(data.notifications, position)

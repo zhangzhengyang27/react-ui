@@ -117,7 +117,9 @@ export function EmotionStylesTransform() {
         theme={{
           components: {
             Button: {
-              styles: (theme: UITheme, props: ButtonProps, u: EmotionHelpers) => ({
+              // emotion 形态(stylesTransform 接管后才生效):[u.dark] 计算键与嵌套选择器
+              // 超出 React.CSSProperties 的静态类型,断言以通过主题类型检查
+              styles: ((theme: UITheme, props: ButtonProps, u: EmotionHelpers) => ({
                 label: {
                   backgroundColor: theme.colors[props.color || 'cyan'][5],
 
@@ -130,7 +132,7 @@ export function EmotionStylesTransform() {
                     backgroundColor: theme.colors[props.color || 'cyan'][8],
                   },
                 },
-              }),
+              })) as ButtonProps['styles'],
             },
           },
         }}

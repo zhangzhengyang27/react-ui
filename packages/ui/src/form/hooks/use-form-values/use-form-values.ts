@@ -60,6 +60,12 @@ export function useFormValues<Values extends Record<PropertyKey, any>>({
   const refValues = useRef(stateValues);
   const valuesSnapshot = useRef(stateValues);
 
+  // onValuesChange 经 ref 转发最新值:消费方传内联回调(每渲染新引用)时 setValues
+  // 身份保持稳定,reset/initialize/列表操作等空依赖回调触发的 onValuesChange
+  // 才能始终是最新版本,不会停留在首帧闭包
+  const onValuesChangeRef = useRef(onValuesChange);
+  onValuesChangeRef.current = onValuesChange;
+
   const setValues = useCallback(
     ({
       values,
@@ -79,12 +85,15 @@ export function useFormValues<Values extends Record<PropertyKey, any>>({
           refValues.current = updatedValues;
         }
       }
-      onValuesChange?.(updatedValues, previousValues);
+      onValuesChangeRef.current?.(updatedValues, previousValues);
       subscribers
         ?.filter(Boolean)
         .forEach((subscriber) => subscriber!({ updatedValues, previousValues }));
     },
-    [onValuesChange]
+    // deps 留空保持 setValues 身份稳定(mode 为表单级常量,onValuesChange 已走 ref),
+    // 供 reset/initialize/列表操作等空依赖回调安全捕获
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
   );
 
   const setFieldValue = useCallback(

@@ -66,7 +66,7 @@ export const ActionIconGroup = factory<ActionIconGroupFactory>((_props, ref) => 
         mod,
         attributes,
         ...others
-    } = useProps('ActionIconGroup', defaultProps, _props)
+    } = props
 
     const getStyles = useStyles<ActionIconGroupFactory>({
         name: 'ActionIconGroup',

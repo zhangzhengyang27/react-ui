@@ -20,14 +20,14 @@
 .th {
     padding: var(--datatable-vertical-spacing) var(--datatable-horizontal-spacing);
     font-weight: var(--ui-font-weight-bold);
-    text-align: left;
+    text-align: start;
     white-space: nowrap;
     vertical-align: middle;
 }
 
 .td {
     padding: var(--datatable-vertical-spacing) var(--datatable-horizontal-spacing);
-    text-align: left;
+    text-align: start;
     vertical-align: middle;
     overflow: hidden;
 }
@@ -121,7 +121,7 @@
     justify-content: center;
     padding: 2px;
     border: none;
-    border-radius: var(--ui-default-radius, calc(0.25rem * var(--ui-scale)));
+    border-radius: var(--ui-radius-default, calc(0.25rem * var(--ui-scale)));
     background: none;
     color: var(--ui-color-dimmed);
     cursor: pointer;
@@ -160,7 +160,7 @@
     width: 28px;
     height: 28px;
     border: 1px solid var(--ui-color-default-border);
-    border-radius: var(--ui-default-radius, calc(0.25rem * var(--ui-scale)));
+    border-radius: var(--ui-radius-default, calc(0.25rem * var(--ui-scale)));
     background: var(--ui-color-body);
     color: var(--ui-color-dimmed);
     cursor: pointer;
@@ -218,12 +218,13 @@
 
 .th[data-sticky-last='left'],
 .td[data-sticky-last='left'] {
-    border-right: 1px solid var(--ui-color-default-border);
+    /* 分隔线在固定列组与滚动内容之间，改用逻辑属性随 dir 翻转 */
+    border-inline-end: 1px solid var(--ui-color-default-border);
 }
 
 .th[data-sticky-last='right'],
 .td[data-sticky-last='right'] {
-    border-left: 1px solid var(--ui-color-default-border);
+    border-inline-start: 1px solid var(--ui-color-default-border);
 }
 
 /* 底栏 */
@@ -247,7 +248,7 @@
     display: flex;
     align-items: center;
     gap: var(--ui-spacing-xs);
-    margin-left: auto;
+    margin-inline-start: auto;
 }
 
 .pageSizeSelect {

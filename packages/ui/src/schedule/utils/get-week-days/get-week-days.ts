@@ -1,7 +1,6 @@
 import dayjs from 'dayjs';
 import { AnyDateValue, DateStringValue, DayOfWeek } from '../../types';
 import { getStartOfWeek } from '../get-start-of-week/get-start-of-week';
-import { toDateString } from '../to-date-string/to-date-string';
 
 export interface GetWeekDaysInput {
   /** Week to generate days for */
@@ -33,7 +32,9 @@ export function getWeekDays({
     const isWeekend = weekendDays && weekendDays.includes(dayOfWeek as DayOfWeek);
 
     if (!isWeekend || withWeekendDays) {
-      days.push(toDateString(current));
+      // 保持既有 19 字符 `YYYY-MM-DD 00:00:00` 输出不变(测试编码的行为);
+      // toDateString 现按 DateStringValue 契约返回 10 字符,不再复用
+      days.push(current.format('YYYY-MM-DD 00:00:00'));
     }
 
     current = current.add(1, 'day');

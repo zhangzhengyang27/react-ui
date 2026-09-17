@@ -38,7 +38,7 @@ export interface MonthYearSelectProps
   locale?: string;
 
   /** Props passed down to the underlying Popover component */
-  popoverProps?: PopoverProps;
+  popoverProps?: Partial<Omit<PopoverProps, 'children'>>;
 
   /** Start year for year selection, calculated from the current date by default */
   startYear?: number;
@@ -185,18 +185,22 @@ export const MonthYearSelect = factory<MonthYearSelectFactory>((_props) => {
     );
   });
 
+  // monthValue 为可选 prop:未传时所有月份项 tabIndex=-1,键盘导航失去起点
+  // (年份列表已有同型兜底,此处对齐)——兜底把第一个月设为可聚焦
+  const hasActiveMonth = monthValue !== undefined;
+
   const months = withMonths
     ? getMonthsList({
         locale: ctx.getLocale(locale),
         format: monthsListFormat || 'MMMM',
-      }).map((month) => {
+      }).map((month, index) => {
         const controlProps = getMonthControlProps?.(month.month);
         return (
           <UnstyledButton
             key={month.name}
             onClick={() => onMonthChange?.(month.month)}
             mod={{ type: 'month', active: month.month === monthValue }}
-            tabIndex={month.month === monthValue ? 0 : -1}
+            tabIndex={month.month === monthValue || (!hasActiveMonth && index === 0) ? 0 : -1}
             onKeyDown={createScopedKeydownHandler({
               siblingSelector: '[data-type="month"]:not(:disabled)',
               parentSelector: '[data-list]',
@@ -228,7 +232,7 @@ export const MonthYearSelect = factory<MonthYearSelectFactory>((_props) => {
       offset={3}
       width={withMonths ? undefined : 'target'}
       opened={opened}
-      onChange={handlers.set}
+      onChange={handlers.toggle}
       id={id}
       {...popoverProps}
     >

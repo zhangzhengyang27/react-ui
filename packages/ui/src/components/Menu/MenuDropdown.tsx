@@ -28,10 +28,13 @@ export const MenuDropdown = factory<MenuDropdownFactory>((props, ref) => {
 
         if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
             event.preventDefault()
-            // 与 MenuItem 键盘导航选择器同口径：data-disabled 同时覆盖原生禁用与仅标记禁用的项
-            wrapperRef.current
-                ?.querySelectorAll<HTMLButtonElement>('[data-menu-item]:not([data-disabled])')[0]
-                ?.focus()
+            // 与 MenuItem 键盘导航选择器同口径：data-disabled 同时覆盖原生禁用与仅标记禁用的项；
+            // ARIA APG menu 模式：ArrowDown 聚焦第一项、ArrowUp 聚焦最后一项（与 MenubarTarget 口径一致）
+            const items = wrapperRef.current?.querySelectorAll<HTMLButtonElement>(
+                '[data-menu-item]:not([data-disabled])'
+            )
+            const nextItem = event.key === 'ArrowDown' ? items?.[0] : items?.[items.length - 1]
+            nextItem?.focus()
         }
     }
 

@@ -98,6 +98,7 @@
 }
 
 .required {
-    margin-left: calc(var(--ui-spacing-xs) / 2);
+    /* 星号紧随 label 文字之后，间距随 dir 翻转 */
+    margin-inline-start: calc(var(--ui-spacing-xs) / 2);
     color: var(--ui-color-red-6);
 }

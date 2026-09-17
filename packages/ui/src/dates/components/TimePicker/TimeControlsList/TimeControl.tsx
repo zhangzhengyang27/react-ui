@@ -17,7 +17,8 @@ export function TimeControl({ value, active, onSelect }: TimeControlProps) {
       onClick={() => onSelect(value)}
       onMouseDown={(event) => event.preventDefault()}
       data-value={value}
-      tabIndex={-1}
+      // 原为 tabIndex={-1},键盘用户完全无法进入下拉列表,恢复默认可聚焦
+      tabIndex={0}
       {...ctx.getStyles('control')}
     >
       {typeof value === 'number' ? padTime(value) : value}

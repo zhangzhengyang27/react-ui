@@ -28,7 +28,7 @@ export interface ProgressRootProps
     radius?: UIRadius
 
     /** Controls progress height */
-    size?: UISize
+    size?: UISize | number
 
     /** If true, the progress bar will have striped background */
     striped?: boolean

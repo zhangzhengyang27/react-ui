@@ -98,7 +98,7 @@ function buildSvgDataUrl(
     const textElements = content
         .map((line, index) => {
             const y = height / 2 + (index - (content.length - 1) / 2) * lineHeight
-            return `<text x="50%" y="${y}" text-anchor="middle" dominant-baseline="middle" font-size="${fontSize}" fill="${color}" transform="rotate(${rotate}, ${width / 2}, ${height / 2})">${escapeXml(line)}</text>`
+            return `<text x="50%" y="${y}" text-anchor="middle" dominant-baseline="middle" font-size="${fontSize}" font-family="sans-serif" fill="${color}" transform="rotate(${rotate}, ${width / 2}, ${height / 2})">${escapeXml(line)}</text>`
         })
         .join('')
 

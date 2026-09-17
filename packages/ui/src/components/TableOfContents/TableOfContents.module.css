@@ -9,7 +9,7 @@
     padding: 0.3em 0.8em;
     font-size: var(--toc-size, var(--ui-font-size-md));
     border-radius: var(--toc-radius, var(--ui-radius-default));
-    padding-left: max(calc(var(--depth-offset) * var(--toc-depth-offset)), 0.8em);
+    padding-inline-start: max(calc(var(--depth-offset) * var(--toc-depth-offset)), 0.8em);
 
     &:hover:where(:not([data-variant='none'])) {
         background-color: var(--ui-color-gray-light);

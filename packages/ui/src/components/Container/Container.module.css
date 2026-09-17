@@ -24,5 +24,11 @@
         & > * {
             grid-column: 2;
         }
+
+        /* fluid 时解除 --container-size 限宽：与文档 “takes 100% width ... size prop
+           is ignored” 一致（此前 grid 分支无 data-fluid 处理，fluid 完全无效） */
+        &:where([data-fluid]) {
+            grid-template-columns: 1fr 100% 1fr;
+        }
     }
 }

@@ -31,3 +31,10 @@
         transform: translateX(100%);
     }
 }
+
+/* 前庭障碍用户可摆脱常驻 shimmer 动画（与库内 prefers-reduced-motion 出口约定一致） */
+@media (prefers-reduced-motion: reduce) {
+    .root:where([data-animate])::after {
+        animation: none;
+    }
+}

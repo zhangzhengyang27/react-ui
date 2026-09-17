@@ -8,7 +8,7 @@
     --stepper-color: var(--ui-primary-color-filled);
     --stepper-radius: var(--ui-radius-default);
     --stepper-icon-size: var(--stepper-icon-size-md);
-    --stepper-separator-color: var(--ui-color-gray-3);
+    --stepper-separator-color: var(--ui-color-default-border);
     --stepper-step-color: var(--stepper-color);
     --stepper-step-radius: var(--stepper-radius);
 
@@ -27,7 +27,7 @@
     flex: 1;
     display: flex;
     align-items: flex-start;
-    text-align: left;
+    text-align: start;
     background: transparent;
     border: 0;
     padding: 0;
@@ -68,7 +68,7 @@
 
 .step:where([data-orientation='vertical']) .stepBody {
     flex-direction: row;
-    text-align: left;
+    text-align: start;
 }
 
 .stepIcon {
@@ -80,8 +80,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid var(--ui-color-gray-4);
-    background-color: var(--ui-color-white);
+    /* 语义 token 随色制翻转：暗色下未激活步骤图标不再是纯白圆 + 浅灰描边 */
+    border: 2px solid var(--ui-color-default-border);
+    background-color: var(--ui-color-body);
     color: var(--ui-color-text);
     font-size: calc(var(--stepper-icon-size) / 2.2);
     font-weight: var(--ui-font-weight-bold);

@@ -1,4 +1,4 @@
-import { forwardRef, useRef } from 'react'
+import { forwardRef, useCallback, useEffect, useRef } from 'react'
 import { assignRef, useMergedRef } from '@xiaoye-react/hooks'
 
 export interface FileButtonProps<Multiple extends boolean = false> {
@@ -55,13 +55,21 @@ export const FileButton = forwardRef<HTMLInputElement, FileButtonProps>(
             }
         }
 
-        const reset = () => {
+        // reset 闭包仅依赖稳定的 inputRef，useCallback 稳定身份供 effect 依赖
+        const reset = useCallback(() => {
             if (inputRef.current) {
                 inputRef.current.value = ''
             }
-        }
+        }, [])
 
-        assignRef(resetRef, reset)
+        // 渲染期直接 assignRef 会在并发渲染被丢弃的渲染中也写 ref，且卸载不清理（残留已卸载闭包），
+        // 移入 effect 并在卸载/重挂时置空（对齐 MaskInput resetRef 的写法）
+        useEffect(() => {
+            assignRef(resetRef, reset)
+            return () => {
+                assignRef(resetRef, null)
+            }
+        }, [resetRef, reset])
 
         return (
             <>

@@ -25,8 +25,9 @@
 .indicator {
     position: absolute;
     top: var(--indicator-top);
-    left: var(--indicator-left);
-    right: var(--indicator-right);
+    /* start/end 用逻辑属性：RTL 下 inset-inline-start/end 翻转到视觉另一侧 */
+    inset-inline-start: var(--indicator-inline-start);
+    inset-inline-end: var(--indicator-inline-end);
     bottom: var(--indicator-bottom);
     transform: translate(var(--indicator-translate-x), var(--indicator-translate-y));
     min-width: var(--indicator-size);

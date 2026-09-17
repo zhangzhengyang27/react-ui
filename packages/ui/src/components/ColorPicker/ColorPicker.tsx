@@ -55,7 +55,7 @@ export interface __ColorPickerProps {
     /** Uncontrolled component default value */
     defaultValue?: string
 
-    //** 值变化时调用 */
+    /** 值变化时调用 */
     onChange?: (value: string) => void
 
     /** Called when the user stops dragging one of the sliders or changes the value with keyboard */

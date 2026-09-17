@@ -3,11 +3,31 @@ import { createPortal } from 'react-dom'
 import { assignRef, useIsomorphicEffect } from '@xiaoye-react/hooks'
 import { factory, Factory, useProps } from '../../core'
 
-// 仅包含 Portal 会写到容器节点上的属性,供创建节点与后续增量同步复用
-type PortalNodeAttrs = Pick<React.ComponentProps<'div'>, 'className' | 'style' | 'id'>
+// Portal 会写到自建容器节点上的属性:className/style/id + data-*/aria-*(其余 div props 不支持透传)
+type PortalNodeAttrs = Record<string, unknown>
 
-// 将 className/style/id 同步到 Portal 容器节点。
-// 节点的 class/内联样式均由 Portal 写入,可安全整体重置,避免旧值残留
+function isPortalNodeAttrKey(key: string) {
+    return (
+        key === 'className' || key === 'style' || key === 'id' || key.startsWith('data-') || key.startsWith('aria-')
+    )
+}
+
+// 从组件 props 中挑出会同步到容器节点的属性(className/style/id/data-*/aria-*)
+function pickPortalNodeAttrs(props: React.ComponentProps<'div'>): PortalNodeAttrs {
+    const attrs: PortalNodeAttrs = {}
+    for (const [key, value] of Object.entries(props)) {
+        if (isPortalNodeAttrKey(key) && value !== undefined) {
+            attrs[key] = value
+        }
+    }
+    return attrs
+}
+
+// 共享节点自带的标记属性,同步时不可清除
+const reservedDataAttrs = new Set(['data-portal', 'data-react-ui-shared-portal-node'])
+
+// 将 className/style/id/data-*/aria-* 同步到 Portal 容器节点。
+// className/style/id 整体重置可安全清除旧值,data-*/aria-* 先清后写避免残留
 function syncPortalNodeAttrs(node: HTMLElement, attrs: PortalNodeAttrs) {
     node.className = typeof attrs.className === 'string' ? attrs.className : ''
     node.style.cssText = ''
@@ -19,12 +39,23 @@ function syncPortalNodeAttrs(node: HTMLElement, attrs: PortalNodeAttrs) {
     } else {
         node.removeAttribute('id')
     }
+
+    for (const attr of Array.from(node.attributes)) {
+        if (!reservedDataAttrs.has(attr.name) && (attr.name.startsWith('data-') || attr.name.startsWith('aria-'))) {
+            node.removeAttribute(attr.name)
+        }
+    }
+    for (const [key, value] of Object.entries(attrs)) {
+        if ((key.startsWith('data-') || key.startsWith('aria-')) && value !== undefined) {
+            node.setAttribute(key, String(value))
+        }
+    }
 }
 
 function createPortalNode(props: React.ComponentProps<'div'>) {
     const node = document.createElement('div')
     node.setAttribute('data-portal', 'true')
-    syncPortalNodeAttrs(node, props)
+    syncPortalNodeAttrs(node, props as PortalNodeAttrs)
     return node
 }
 
@@ -45,6 +76,9 @@ export interface BasePortalProps extends React.ComponentProps<'div'> {
      * its own container node.
      *
      * Has no effect when target is specified.
+     *
+     * Note: 带容器属性(className/style/id/data-*、aria-*)的实例始终使用独立节点,
+     * 避免共享节点上多实例属性互相覆盖且卸载后无法恢复。
      *
      * @default true
      */
@@ -94,47 +128,47 @@ const defaultProps = {
 
 export const Portal = factory<PortalFactory>((props, ref) => {
     const { children, target, reuseTargetNode, ...others } = useProps('Portal', defaultProps, props)
-    const { className, style, id } = others
 
     const [mounted, setMounted] = useState(false)
     const nodeRef = useRef<HTMLElement | null>(null)
 
-    // 节点创建仅依赖结构性 props(target/reuseTargetNode);
-    // className/style/id 的变化交给下方同步 effect 增量更新,避免重建节点导致子树重挂载
+    const nodeAttrs = pickPortalNodeAttrs(others)
+    const hasNodeAttrs = Object.keys(nodeAttrs).length > 0
+    // 带属性实例强制独立节点:共享节点上多实例属性互相整体覆盖,且先卸载实例写入的属性无法恢复;
+    // 无属性实例继续共享,避免节点堆积
+    const shouldReuseNode = reuseTargetNode && !hasNodeAttrs
+
+    // 节点创建仅依赖结构性 props(target/reuseTargetNode/是否带属性);
+    // 属性变化交给下方同步 effect 增量更新,避免重建节点导致子树重挂载
     useIsomorphicEffect(() => {
         setMounted(true)
-        nodeRef.current = getTargetNode({ target, reuseTargetNode, ...others })
+        nodeRef.current = getTargetNode({ target, reuseTargetNode: shouldReuseNode, ...others })
         assignRef(ref, nodeRef.current)
 
-        if (!target && !reuseTargetNode && nodeRef.current) {
+        if (!target && !shouldReuseNode && nodeRef.current) {
             document.body.appendChild(nodeRef.current)
         }
 
         return () => {
-            if (!target && !reuseTargetNode && nodeRef.current) {
+            if (!target && !shouldReuseNode && nodeRef.current) {
                 // 节点可能已被外部（动画库/用户代码）从 body 摘除，直接 removeChild 会抛 NotFoundError 打断卸载流程
                 nodeRef.current.parentNode?.removeChild(nodeRef.current)
             }
         }
-    }, [target, reuseTargetNode])
+    }, [target, shouldReuseNode])
 
-    // className/style/id 变化时同步到 Portal 自建节点(自持节点或共享节点),
+    // className/style/id/data-*/aria-* 变化时同步到 Portal 自建节点(独立节点),
     // 而非重建节点(重建会重挂载子树,且内联 style 对象每次渲染都是新引用,重建将导致每渲染都重建);
-    // target 指定的节点由用户自行维护,这里不处理。
-    // 共享节点上无属性的实例必须跳过同步：syncPortalNodeAttrs 会整体重置，
-    // 默认 reuseTargetNode 下所有实例（如 ModalBase→OptionalPortal）共用一个节点，
-    // 后挂载的无属性实例会把先前实例写入的 className/style/id 抹掉且不会恢复
-    const hasNodeAttrs = className !== undefined || style !== undefined || id !== undefined
-
+    // target 指定的节点由用户自行维护,这里不处理;共享节点只由无属性实例使用,无需同步。
+    // 依赖用序列化 key,避免 nodeAttrs 每渲染新引用导致同步 effect 逐渲染重跑
+    const nodeAttrsKey = JSON.stringify(nodeAttrs)
     useIsomorphicEffect(() => {
-        if (target || !nodeRef.current) {
+        if (target || !nodeRef.current || shouldReuseNode) {
             return
         }
-        if (reuseTargetNode && !hasNodeAttrs) {
-            return
-        }
-        syncPortalNodeAttrs(nodeRef.current, { className, style, id })
-    }, [className, style, id, target, reuseTargetNode, hasNodeAttrs])
+        syncPortalNodeAttrs(nodeRef.current, nodeAttrs)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [nodeAttrsKey, target, shouldReuseNode])
 
     if (!mounted || !nodeRef.current) {
         return null

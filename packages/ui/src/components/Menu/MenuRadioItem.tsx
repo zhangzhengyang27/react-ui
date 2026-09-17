@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import { useMergedRef } from '@xiaoye-react/hooks'
 import {
     type BoxProps,
@@ -76,7 +75,6 @@ export const MenuRadioItem = factory<MenuRadioItemFactory>((props, ref) => {
     const ctx = useMenuContext()
     const groupCtx = useMenuRadioGroupContext()
     const theme = useUITheme()
-    const itemRef = useRef<HTMLButtonElement>(null)
 
     const _checked = checkedProp ?? (groupCtx ? groupCtx.value === value : false)
 
@@ -106,7 +104,7 @@ export const MenuRadioItem = factory<MenuRadioItemFactory>((props, ref) => {
             unstyled={ctx.unstyled}
             tabIndex={ctx.menuItemTabIndex}
             {...ctx.getStyles('item', { className, style, styles, classNames })}
-            ref={useMergedRef(itemRef, ref)}
+            ref={useMergedRef(ref)}
             role="menuitemradio"
             aria-checked={_checked}
             disabled={disabled}

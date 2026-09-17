@@ -26,13 +26,13 @@ export interface NumberInputProps
     extends BoxProps,
         StylesApiProps<NumberInputFactory>,
         ElementProps<'input', 'size' | 'value' | 'defaultValue' | 'onChange'> {
-    //** 渲染在输入框上方的标签 */
+    /** 渲染在输入框上方的标签 */
     label?: React.ReactNode
 
-    //** 渲染在标签下方的描述 */
+    /** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
-    //** 渲染在输入框下方的错误 */
+    /** 渲染在输入框下方的错误 */
     error?: React.ReactNode
 
     /** Input placeholder */
@@ -65,8 +65,11 @@ export interface NumberInputProps
     /** Value for controlled component */
     value?: number | string
 
-    //** 值变化时调用 */
+    /** 值变化时调用 */
     onChange?: (value: number | string) => void
+
+    /** If set, required asterisk is added to the label even if `required` is not set */
+    withAsterisk?: boolean
 
     /** If set, stepper controls will be hidden @default false */
     hideControls?: boolean
@@ -113,6 +116,20 @@ function parseValue(value: string): number | undefined {
     }
     const parsed = Number(value)
     return Number.isNaN(parsed) ? undefined : parsed
+}
+
+// step 的小数位数（科学计数法安全：1e-7 的 toString 含 'e'，split('.') 数不出小数位）
+function getStepDecimals(step: number): number {
+    const [mantissa, exponentPart] = step.toExponential().split('e')
+    const mantissaDecimals = mantissa.split('.')[1]?.length ?? 0
+    return Math.max(0, mantissaDecimals - parseInt(exponentPart, 10))
+}
+
+// 裸浮点加法在 step=0.1 时会产出 0.30000000000000004 之类的尾渣，
+// 按 step 小数位数做十进制整数化计算后再回除
+function addStep(base: number, step: number, sign: 1 | -1): number {
+    const decimals = getStepDecimals(step)
+    return Math.round((base + sign * step) * 10 ** decimals) / 10 ** decimals
 }
 
 function formatDisplayValue(
@@ -176,6 +193,8 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
         label,
         description,
         error,
+        required,
+        withAsterisk,
         placeholder,
         disabled,
         invalid,
@@ -246,12 +265,12 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
 
     const increment = () => {
         const base = currentNumber ?? lastValidNumberRef.current ?? 0
-        updateValue(base + (step ?? 1))
+        updateValue(addStep(base, step ?? 1, 1))
     }
 
     const decrement = () => {
         const base = currentNumber ?? lastValidNumberRef.current ?? 0
-        updateValue(base - (step ?? 1))
+        updateValue(addStep(base, step ?? 1, -1))
     }
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -350,7 +369,15 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     )
 
     return (
-        <InputWrapper {...getStyles('root')} label={label} description={description} error={error} inputId={inputId}>
+        <InputWrapper
+            {...getStyles('root')}
+            label={label}
+            description={description}
+            error={error}
+            required={required}
+            withAsterisk={withAsterisk}
+            inputId={inputId}
+        >
             <InputBase
                 {...getStyles('input')}
                 component="input"
@@ -368,6 +395,8 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
                 variant={variant}
                 placeholder={placeholder}
                 value={inputValue}
+                // 解构后不再经 others 透传，显式保留原生 required 属性（表单校验/aria）
+                required={required}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
                 onFocus={handleFocus}

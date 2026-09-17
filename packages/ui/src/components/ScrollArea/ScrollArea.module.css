@@ -42,16 +42,28 @@
         background-color 150ms ease,
         opacity 150ms ease;
 
+    /* thumb/轨道颜色走可主题化变量：灰阶/rgba 黑色字面量不随色制翻转，
+       暗色下黑 thumb 在深色内容上对比极弱、轨道 hover 突现亮白条 */
+    --scrollarea-thumb-color: rgba(0, 0, 0, 0.4);
+    --scrollarea-thumb-hover-color: rgba(0, 0, 0, 0.5);
+    --scrollarea-track-hover-color: var(--ui-color-default-hover);
+
+    /* data-ui-color-scheme 只会设在 <html> 上，必须用祖先选择器匹配 */
+    [data-ui-color-scheme='dark'] & {
+        --scrollarea-thumb-color: rgba(255, 255, 255, 0.35);
+        --scrollarea-thumb-hover-color: rgba(255, 255, 255, 0.45);
+    }
+
     padding: calc(var(--scrollarea-scrollbar-size) / 5);
     display: flex;
     background-color: transparent;
     flex-direction: row;
 
     &:hover {
-        background-color: var(--ui-color-gray-0, #f5f5f5);
+        background-color: var(--scrollarea-track-hover-color);
 
         & > .thumb {
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: var(--scrollarea-thumb-hover-color);
         }
     }
 
@@ -82,7 +94,7 @@
     transition: background-color 150ms ease;
     overflow: hidden;
     opacity: var(--thumb-opacity, 1);
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: var(--scrollarea-thumb-color);
 
     &::before {
         content: '';
@@ -105,10 +117,6 @@
     inset-inline-end: 0;
     bottom: 0;
     background-color: var(--ui-color-gray-0, #f5f5f5);
-
-    &:where([data-hovered]) {
-        opacity: 1;
-    }
 
     &:where([data-hidden]) {
         display: none;

@@ -45,7 +45,7 @@ export interface PillProps extends BoxProps, StylesApiProps<PillFactory>, Elemen
     /** Props passed down to the remove button */
     removeButtonProps?: CloseButtonProps & Pick<React.ComponentPropsWithoutRef<'button'>, 'onMouseDown' | 'onClick'>
 
-    /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. @default 'xl' */
+    /** Key of `theme.radius` or any valid CSS value to set border-radius. Numbers are converted to rem. 未设置时走 CSS 兜底 `--pill-radius, 1000rem`(全圆角) */
     radius?: UIRadius
 
     /** Adds disabled attribute, applies disabled styles */
@@ -133,9 +133,14 @@ export const Pill = factory<PillFactory>((_props, _ref) => {
                 <CloseButton
                     variant="transparent"
                     radius={radius}
-                    tabIndex={-1}
-                    aria-hidden
                     unstyled={unstyled}
+                    /*
+                     * PillsInput 体系内由 Backspace 兜底删除,保持 aria-hidden + tabIndex=-1;
+                     * 独立使用(无 field 上下文)时移除操作必须对键盘/读屏可达
+                     */
+                    tabIndex={pillsInputCtx ? -1 : 0}
+                    aria-hidden={pillsInputCtx ? true : undefined}
+                    aria-label={pillsInputCtx ? undefined : '移除'}
                     {...removeButtonProps}
                     {...getStyles('remove', {
                         className: removeButtonProps?.className,

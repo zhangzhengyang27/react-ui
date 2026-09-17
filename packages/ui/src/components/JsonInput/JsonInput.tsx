@@ -25,13 +25,13 @@ export interface JsonInputProps
             | 'errorProps'
         >,
         StylesApiProps<JsonInputFactory> {
-    //** 受控值 */
+    /** 受控值 */
     value?: string
 
     /** Uncontrolled default value */
     defaultValue?: string
 
-    //** 值变化时调用 */
+    /** 值变化时调用 */
     onChange?: (value: string) => void
 
     /** 失焦时调用（JsonInput 渲染 textarea，事件类型为 HTMLTextAreaElement） */
@@ -54,16 +54,16 @@ export interface JsonInputProps
     /** Maximum number of visible lines */
     maxRows?: number
 
-    //** 渲染在输入框上方的标签 */
+    /** 渲染在输入框上方的标签 */
     label?: React.ReactNode
 
-    //** 渲染在标签下方的描述 */
+    /** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
-    //** 渲染在输入框下方的错误 */
+    /** 渲染在输入框下方的错误 */
     error?: React.ReactNode
 
-    //** 如果设置，则会在标签上添加必填星号 */
+    /** 如果设置，则会在标签上添加必填星号 */
     required?: boolean
 
     /** Props passed to the label element */

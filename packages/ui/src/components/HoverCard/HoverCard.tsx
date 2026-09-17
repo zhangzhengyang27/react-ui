@@ -227,7 +227,8 @@ export function HoverCard(_props: HoverCardProps) {
                 getDropdownId: () => `${hovercard.uid}-dropdown`,
                 controlled: typeof opened === 'boolean',
                 disabled,
-                transitionProps
+                transitionProps,
+                getStyles
             }}
         >
             <div {...others}>{children}</div>

@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { CloseButton } from '../../../components/CloseButton/CloseButton';
-import { CloseButtonProps } from '../../../components/Drawer/Drawer';
+import type { DrawerCloseButtonProps } from '../../../components/Drawer/DrawerCloseButton';
 import { __BaseInputProps, __InputStylesNames, ClearSectionMode, InputVariant } from '../../../components/Input/index';
 import { InputBase } from '../../../components/InputBase/InputBase';
 import { Popover, PopoverProps } from '../../../components/Popover/Popover';
@@ -124,7 +124,7 @@ export interface TimePickerProps
   withDropdown?: boolean;
 
   /** Props passed down to `Popover` component */
-  popoverProps?: PopoverProps;
+  popoverProps?: Partial<Omit<PopoverProps, 'children'>>;
 
   /** Called once when one of the inputs is focused, not called when focused is shifted between hours, minutes, seconds and am/pm inputs */
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
@@ -133,7 +133,7 @@ export interface TimePickerProps
   onBlur?: (event: React.FocusEvent<HTMLDivElement>) => void;
 
   /** Props passed down to clear button */
-  clearButtonProps?: CloseButtonProps & ElementProps<'button'> & DataAttributes;
+  clearButtonProps?: DrawerCloseButtonProps & ElementProps<'button'> & DataAttributes;
 
   /** Props passed down to hours input */
   hoursInputProps?: React.ComponentProps<'input'> & DataAttributes;
@@ -373,7 +373,8 @@ export const TimePicker = factory<TimePickerFactory>((_props) => {
       });
 
       if (timeString.valid && (min || max)) {
-        const clamped = clampTime(timeString.value, min, max);
+        // 传入 withSeconds,保证钳制后上报值格式与组件值契约(HH:mm / HH:mm:ss)一致
+        const clamped = clampTime(timeString.value, min, max, !!withSeconds);
 
         if (clamped.timeString !== timeString.value) {
           controller.setTimeString(clamped.timeString);

@@ -148,8 +148,11 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>((_props) => {
   const files = code.map((node, index) => (
     <UnstyledButton
       {...getStyles('file')}
-      key={node.fileName}
+      // fileName 可缺省或重复,退回 index 保证 key 稳定唯一
+      key={node.fileName ?? index}
       mod={{ active: index === value }}
+      role="tab"
+      aria-selected={index === value}
       onClick={() => setValue(index)}
       data-color-scheme={codeColorScheme}
     >
@@ -167,7 +170,9 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>((_props) => {
   return (
     <Box {...getStyles('root')} {...others}>
       <ScrollArea type="never" dir="ltr" offsetScrollbars={false} {...getStyles('filesScrollarea')}>
-        <div {...getStyles('files')}>{files}</div>
+        <div {...getStyles('files')} role="tablist">
+          {files}
+        </div>
       </ScrollArea>
 
       <CodeHighlight

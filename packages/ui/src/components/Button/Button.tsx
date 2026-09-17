@@ -189,6 +189,7 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, _ref) => {
             unstyled={unstyled}
             variant={variant}
             disabled={disabled || loading}
+            aria-busy={loading || undefined}
             ref={_ref}
             mod={[
                 {

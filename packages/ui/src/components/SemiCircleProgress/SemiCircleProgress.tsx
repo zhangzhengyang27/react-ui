@@ -145,10 +145,23 @@ export const SemiCircleProgress = factory<SemiCircleProgressFactory>((_props, re
     const coordinateForCircle = size / 2
     const radius = (size - 2 * thickness) / 2
     const circumference = Math.PI * radius
-    const semiCirclePercentage = clamp(value, 0, 100) * (circumference / 100)
+    // NaN 输入归一为 0：clamp(NaN, 0, 100) === NaN 会让 strokeDashoffset 变成 "NaN"，
+    // SVG 静默不渲染（与 Progress/RingProgress 的防御保持一致）
+    const clampedValue = Number.isFinite(value) ? clamp(value, 0, 100) : 0
+    const semiCirclePercentage = clampedValue * (circumference / 100)
 
     return (
-        <Box ref={ref} size={size} {...getStyles('root')} mod={mod} {...others}>
+        <Box
+            ref={ref}
+            size={size}
+            {...getStyles('root')}
+            mod={mod}
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={Math.round(clampedValue)}
+            {...others}
+        >
             {label && (
                 <div {...getStyles('label')} data-position={labelPosition} data-orientation={orientation}>
                     {label}

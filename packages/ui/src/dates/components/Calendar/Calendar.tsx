@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { useEffect, useImperativeHandle, useRef } from 'react';
+import { useCallback, useEffect, useImperativeHandle, useRef } from 'react';
 import { Box, BoxProps, ElementProps } from '../../../core/Box/Box';
 import { useProps } from '../../../core/UIProvider/index';
 import { factory } from '../../../core/factory/factory';
@@ -172,7 +172,7 @@ const defaultProps = {
   enableKeyboardNavigation: true,
 } satisfies Partial<CalendarProps>;
 
-export const Calendar = factory<CalendarFactory>((_props) => {
+export const Calendar = factory<CalendarFactory>((_props, ref) => {
   const props = useProps('Calendar', defaultProps, _props);
   const {
     // CalendarLevel props
@@ -250,7 +250,6 @@ export const Calendar = factory<CalendarFactory>((_props) => {
     enableKeyboardNavigation,
     fullWidth,
     attributes,
-    ref,
     ...others
   } = props;
 
@@ -315,41 +314,43 @@ export const Calendar = factory<CalendarFactory>((_props) => {
     return targetMonth.date(Math.min(base.date(), targetMonth.daysInMonth()));
   };
 
-  const handleNextMonth = () => {
+  // 导航 handler 用 useCallback 包住：它们在下方 document keydown effect 的依赖数组里,
+  // 每渲染新身份会导致监听器逐渲染 remove+add(Calendar 高频父级更新时纯浪费)
+  const handleNextMonth = useCallback(() => {
     const nextDate = shiftDate(_columnsToScroll, 'month').format('YYYY-MM-DD');
     onNextMonth?.(nextDate);
     setDate(nextDate);
-  };
+  }, [currentDate, _columnsToScroll, onNextMonth, setDate]);
 
-  const handlePreviousMonth = () => {
+  const handlePreviousMonth = useCallback(() => {
     const nextDate = shiftDate(-_columnsToScroll, 'month').format('YYYY-MM-DD');
     onPreviousMonth?.(nextDate);
     setDate(nextDate);
-  };
+  }, [currentDate, _columnsToScroll, onPreviousMonth, setDate]);
 
-  const handleNextYear = () => {
+  const handleNextYear = useCallback(() => {
     const nextDate = shiftDate(_columnsToScroll, 'year').format('YYYY-MM-DD');
     onNextYear?.(nextDate);
     setDate(nextDate);
-  };
+  }, [currentDate, _columnsToScroll, onNextYear, setDate]);
 
-  const handlePreviousYear = () => {
+  const handlePreviousYear = useCallback(() => {
     const nextDate = shiftDate(-_columnsToScroll, 'year').format('YYYY-MM-DD');
     onPreviousYear?.(nextDate);
     setDate(nextDate);
-  };
+  }, [currentDate, _columnsToScroll, onPreviousYear, setDate]);
 
-  const handleNextDecade = () => {
+  const handleNextDecade = useCallback(() => {
     const nextDate = shiftDate(10 * _columnsToScroll, 'year').format('YYYY-MM-DD');
     onNextDecade?.(nextDate);
     setDate(nextDate);
-  };
+  }, [currentDate, _columnsToScroll, onNextDecade, setDate]);
 
-  const handlePreviousDecade = () => {
+  const handlePreviousDecade = useCallback(() => {
     const nextDate = shiftDate(-10 * _columnsToScroll, 'year').format('YYYY-MM-DD');
     onPreviousDecade?.(nextDate);
     setDate(nextDate);
-  };
+  }, [currentDate, _columnsToScroll, onPreviousDecade, setDate]);
 
   const calendarRef = useRef<HTMLDivElement>(null);
 

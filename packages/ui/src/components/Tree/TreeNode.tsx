@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Activity, Box, findElementAncestor, GetStylesApi } from '../../core'
+import { Activity, Box, findElementAncestor, GetStylesApi, useDirection } from '../../core'
 import { Loader } from '../Loader'
 import type { TreeDragDropPayload } from './move-tree-node/move-tree-node'
 import type { RenderNode, TreeDragState, TreeFactory, TreeNodeData } from './Tree'
@@ -85,6 +85,7 @@ export function TreeNode({
     data,
 }: TreeNodeProps) {
     const ref = useRef<HTMLLIElement>(null)
+    const { dir } = useDirection()
     const hasLoadedChildren = Array.isArray(node.children)
     const hasAsyncChildren = !!node.hasChildren && !hasLoadedChildren
     const hasChildren = hasLoadedChildren || hasAsyncChildren
@@ -129,7 +130,12 @@ export function TreeNode({
     })
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
-        if (event.nativeEvent.code === 'ArrowRight') {
+        // 缩进/连线已用逻辑属性随 dir 翻转，方向键语义需对齐：
+        // RTL 下展开/进入为 ArrowLeft、收起/返回为 ArrowRight（WAI-ARIA APG tree 模式）
+        const expandKey = dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight'
+        const collapseKey = dir === 'rtl' ? 'ArrowRight' : 'ArrowLeft'
+
+        if (event.nativeEvent.code === expandKey) {
             event.stopPropagation()
             event.preventDefault()
 
@@ -140,7 +146,7 @@ export function TreeNode({
             }
         }
 
-        if (event.nativeEvent.code === 'ArrowLeft') {
+        if (event.nativeEvent.code === collapseKey) {
             event.stopPropagation()
             event.preventDefault()
             if (isExpanded && hasChildren) {
@@ -183,18 +189,18 @@ export function TreeNode({
         }
 
         if (event.nativeEvent.code === 'Space') {
-            if (expandOnSpace) {
-                event.stopPropagation()
-                event.preventDefault()
-                controller.toggleExpanded(node.value)
-            }
-
+            // checkOnSpace 与 expandOnSpace 语义互斥：勾选优先，否则一次 Space
+            // 会同时切换展开态与勾选态（expandOnSpace 默认开启）
             if (checkOnSpace) {
                 event.stopPropagation()
                 event.preventDefault()
                 controller.isNodeChecked(node.value)
                     ? controller.uncheckNode(node.value)
                     : controller.checkNode(node.value)
+            } else if (expandOnSpace) {
+                event.stopPropagation()
+                event.preventDefault()
+                controller.toggleExpanded(node.value)
             }
         }
     }

@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { useUncontrolled } from '@xiaoye-react/hooks'
 import {
     BoxProps,
@@ -21,25 +22,25 @@ export interface SwitchGroupProps
     extends BoxProps,
         StylesApiProps<SwitchGroupFactory>,
         ElementProps<'div', 'value' | 'defaultValue' | 'onChange'> {
-    //** 受控值 */
+    /** 受控值 */
     value?: SwitchGroupValue
 
-    //** 非受控组件的初始值 */
+    /** 非受控组件的初始值 */
     defaultValue?: SwitchGroupValue
 
-    //** 值变化时调用 */
+    /** 值变化时调用 */
     onChange?: (value: SwitchGroupValue) => void
 
     /** Label rendered above the switches */
     label?: React.ReactNode
 
-    //** 渲染在标签下方的描述 */
+    /** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
     /** Error rendered below the switches */
     error?: React.ReactNode
 
-    //** 如果设置，则会在标签上添加必填星号 */
+    /** 如果设置，则会在标签上添加必填星号 */
     required?: boolean
 
     /** Controls size of all switches in the group @default 'sm' */
@@ -110,10 +111,15 @@ export const SwitchGroup = factory<SwitchGroupFactory>((_props, ref) => {
 
     const hasWrapper = label || description || error
 
+    // context value 身份稳定化：内联对象每渲染新身份会使 React.memo 包裹的子组件全量失效
+    // （setSelectedValues 已是 use-uncontrolled 的稳定 setter）
+    const ctxValue = useMemo(
+        () => ({ value: selectedValues, onChange: setSelectedValues, name, disabled, size }),
+        [selectedValues, setSelectedValues, name, disabled, size]
+    )
+
     const content = (
-        <SwitchGroupContext.Provider
-            value={{ value: selectedValues, onChange: setSelectedValues, name, disabled, size }}
-        >
+        <SwitchGroupContext.Provider value={ctxValue}>
             <div ref={ref} {...getStyles('root')} {...others}>
                 {children}
             </div>

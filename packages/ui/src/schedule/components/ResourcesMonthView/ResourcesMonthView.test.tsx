@@ -138,10 +138,10 @@ describe('@xiaoye-react/schedule/ResourcesMonthView', () => {
     render(<ResourcesMonthView {...defaultProps} onDateChange={spy} />);
 
     await userEvent.click(screen.getByRole('button', { name: 'Previous' }));
-    expect(spy).toHaveBeenCalledWith('2024-12-01 00:00:00');
+    expect(spy).toHaveBeenCalledWith('2024-12-01');
 
     await userEvent.click(screen.getByRole('button', { name: 'Next' }));
-    expect(spy).toHaveBeenCalledWith('2025-02-01 00:00:00');
+    expect(spy).toHaveBeenCalledWith('2025-02-01');
   });
 
   it('header nav today calls onDateChange with today date', async () => {
@@ -151,7 +151,7 @@ describe('@xiaoye-react/schedule/ResourcesMonthView', () => {
     await userEvent
       .setup({ advanceTimers: jest.advanceTimersByTime })
       .click(screen.getByRole('button', { name: 'Today' }));
-    expect(spy).toHaveBeenCalledWith('2025-01-15 00:00:00');
+    expect(spy).toHaveBeenCalledWith('2025-01-15');
     jest.useRealTimers();
   });
 

@@ -82,10 +82,17 @@
     }
 }
 
+/* 键盘焦点指示：.input 为零尺寸且 opacity:0，描边落在可见的 track 上（对齐 Rating 的 :has 模式） */
+.root:has(.input:focus-visible) .track {
+    outline: 2px solid var(--ui-primary-color-filled);
+    outline-offset: 2px;
+}
+
 .thumb {
     position: absolute;
     top: var(--switch-thumb-offset);
-    left: var(--switch-thumb-offset);
+    /* 逻辑属性：RTL 语境下起点随书写方向翻转到右侧（物理 left 在 RTL 下不翻转） */
+    inset-inline-start: var(--switch-thumb-offset);
     width: var(--switch-thumb-size);
     height: var(--switch-thumb-size);
     border-radius: 50%;
@@ -95,6 +102,13 @@
 
     .track:where([data-checked]) & {
         transform: translateX(calc(var(--switch-width) - var(--switch-thumb-size) - var(--switch-thumb-offset) * 2));
+
+        /* RTL：起点已在右侧，选中时向 inline-end（左侧）移动，位移方向取反 */
+        :where([dir='rtl']) & {
+            transform: translateX(
+                calc(-1 * (var(--switch-width) - var(--switch-thumb-size) - var(--switch-thumb-offset) * 2))
+            );
+        }
     }
 }
 

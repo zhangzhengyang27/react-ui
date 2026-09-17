@@ -16,7 +16,7 @@ import {
 } from '../../core'
 import classes from './SegmentedControl.module.css'
 
-export type SegmentedControlStylesNames = 'root' | 'control' | 'controlActive' | 'input' | 'label'
+export type SegmentedControlStylesNames = 'root' | 'control' | 'input' | 'label'
 
 export type SegmentedControlCssVariables = {
     root: '--sc-radius' | '--sc-size' | '--sc-color' | '--sc-transition-duration'
@@ -35,7 +35,7 @@ export interface SegmentedControlProps extends BoxProps, StylesApiProps<Segmente
     /** Default value for uncontrolled component */
     defaultValue?: string
 
-    //** 值变化时调用 */
+    /** 值变化时调用 */
     onChange?: (value: string) => void
 
     /** Data used to render controls */
@@ -56,13 +56,13 @@ export interface SegmentedControlProps extends BoxProps, StylesApiProps<Segmente
     /** If true, orientation is vertical @default false */
     orientation?: 'horizontal' | 'vertical'
 
-    /** Name used for radio inputs */
+    /** Name used for radio inputs, defaults to an internally generated id（同名保证浏览器原生 roving 方向键切换生效） */
     name?: string
 
     /** If true, the whole component is disabled @default false */
     disabled?: boolean
 
-    /** Controls transition duration in ms @default 200 */
+    /** Controls the background/color transition duration of controls in ms @default 200 */
     transitionDuration?: number
 }
 
@@ -135,6 +135,9 @@ export const SegmentedControl = factory<SegmentedControlFactory>((_props, ref) =
     const isControlled = value !== undefined
     const [internalValue, setInternalValue] = React.useState(defaultValue ?? normalizedData[0]?.value)
     const currentValue = isControlled ? value : internalValue
+    // 不传 name 时默认生成：无 name 的 radio 各自成组，←/→ 无法在 item 间移动勾选且每个 item 都进 Tab 序
+    // （对齐 Rating 的 name || useId() 做法）
+    const radioGroupName = name ?? React.useId()
 
     const handleChange = (nextValue: string) => {
         if (!isControlled) {
@@ -165,7 +168,7 @@ export const SegmentedControl = factory<SegmentedControlFactory>((_props, ref) =
                     >
                         <input
                             type="radio"
-                            name={name}
+                            name={radioGroupName}
                             value={item.value}
                             checked={active}
                             disabled={itemDisabled}

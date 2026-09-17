@@ -279,18 +279,17 @@ export const Input = polymorphicFactory<InputFactory>((_props, ref) => {
     ) : null
 
     const _leftSection = loading && loadingPosition === 'left' ? loadingIndicator : leftSection
-    // 以 JSX 而非普通函数方式调用，使其成为独立组件边界，
-    // 避免未来 InputClearSection 内部添加 hook 时破坏 Rules of Hooks
-    const _rightSection: React.ReactNode = (
-        <InputClearSection
-            __clearable={__clearable}
-            __clearSection={__clearSection}
-            rightSection={loading && loadingPosition === 'right' ? loadingIndicator : rightSection}
-            __defaultRightSection={__defaultRightSection}
-            size={size}
-            __clearSectionMode={__clearSectionMode}
-        />
-    )
+    // 以普通函数方式调用（InputClearSection 内部不使用任何 hook，函数调用不违反 Rules of Hooks），
+    // 返回值为真实 ReactNode：可为 null/undefined，从而恢复外层 `!!_rightSection` 的 truthiness 判断——
+    // 此前用 JSX 包装使 _rightSection 恒为对象，导致右侧 section 恒渲染、data-with-right-section 恒真
+    const _rightSection: React.ReactNode = InputClearSection({
+        __clearable,
+        __clearSection,
+        rightSection: loading && loadingPosition === 'right' ? loadingIndicator : rightSection,
+        __defaultRightSection,
+        size,
+        __clearSectionMode
+    })
 
     // size 兜底用 ??：仅 null/undefined 时回退，避免 || 吞掉空串等 falsy 值
     return (

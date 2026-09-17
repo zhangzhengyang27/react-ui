@@ -20,6 +20,12 @@ export type UnstyledButtonStylesNames = 'root'
  */
 export interface UnstyledButtonProps extends Omit<BoxComponentProps, 'vars'>, StylesApiProps<UnstyledButtonFactory> {
     __staticSelector?: string
+
+    /** 原生 button 组件时透传 disabled;非原生组件(如锚)时改为拦截点击 + aria-disabled */
+    disabled?: boolean
+
+    // 泛型组件,事件元素类型随 component 变化,用 any 收口避免下游泛型实参不兼容
+    onClick?: React.MouseEventHandler<any>
 }
 
 /**
@@ -59,6 +65,8 @@ export const UnstyledButton = polymorphicFactory<UnstyledButtonFactory>(
             styles,
             style,
             attributes,
+            disabled,
+            onClick,
             ...others
         } = props
 
@@ -74,13 +82,28 @@ export const UnstyledButton = polymorphicFactory<UnstyledButtonFactory>(
             attributes
         })
 
+        const isNativeButton = component === 'button'
+
+        // 锚等非原生可禁用元素上 disabled 属性既不拦截点击也不匹配 :disabled,
+        // 改为 onClick 拦截 + aria-disabled 语义
+        const handleClick = (event: React.MouseEvent<any>) => {
+            if (!isNativeButton && disabled) {
+                event.preventDefault()
+                return
+            }
+            onClick?.(event)
+        }
+
         return (
             <Box
                 {...getStyles('root', { focusable: true })}
                 component={component}
                 ref={ref}
-                type={component === 'button' ? 'button' : undefined}
+                type={isNativeButton ? 'button' : undefined}
+                disabled={isNativeButton ? disabled : undefined}
+                aria-disabled={!isNativeButton && disabled ? true : undefined}
                 {...others}
+                onClick={handleClick}
             />
         )
     }

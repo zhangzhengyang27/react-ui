@@ -9,6 +9,10 @@ const DEFAULT_TOKENS: Record<string, RegExp> = {
     '#': /[a-zA-Z0-9]/
 }
 
+// 模块级空对象默认值:内联默认 {} 每渲染新引用会击穿 slots 的 useMemo,
+// 导致 updateValue/refCallback 身份每渲染变化 → ref 重挂、input 监听重绑
+const EMPTY_TOKENS: Record<string, RegExp> = {}
+
 export interface UseMaskOptions {
     /** 掩码模式字符串，# 表示任意字符，9 表示数字，a/A 表示字母 */
     mask: string
@@ -145,7 +149,7 @@ function checkComplete(masked: string, slots: MaskSlot[]): boolean {
  * @returns 绑定 ref、掩码值、原始值与操作函数
  */
 export function useMask(options: UseMaskOptions): UseMaskReturnValue {
-    const { mask, placeholderChar = '_', tokens = {} } = options
+    const { mask, placeholderChar = '_', tokens = EMPTY_TOKENS } = options
     // 掩码槽位按 mask/tokens 缓存：否则每次渲染重建 slots → updateValue/refCallback
     // 身份变化 → React 每渲染卸载重挂 ref、重绑 input 监听
     const slots = useMemo(() => parseMask(mask, { ...DEFAULT_TOKENS, ...tokens }), [mask, tokens])

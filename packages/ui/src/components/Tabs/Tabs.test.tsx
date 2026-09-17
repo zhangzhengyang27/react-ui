@@ -144,4 +144,28 @@ describe('Tabs', () => {
         expect(screen.getByText('L')).toBeInTheDocument()
         expect(screen.getByText('R')).toBeInTheDocument()
     })
+
+    it('collapses roving tabindex to a single entry after activating another tab without defaultValue', () => {
+        render(
+            <Tabs>
+                <Tabs.List>
+                    <Tabs.Tab value="first">First</Tabs.Tab>
+                    <Tabs.Tab value="second">Second</Tabs.Tab>
+                </Tabs.List>
+                <Tabs.Panel value="first">First panel</Tabs.Panel>
+                <Tabs.Panel value="second">Second panel</Tabs.Panel>
+            </Tabs>,
+            { wrapper }
+        )
+
+        // 无激活值时第一个 tab 是唯一的 Tab 键入口
+        expect(screen.getByRole('tab', { name: 'First' })).toHaveAttribute('tabindex', '0')
+
+        // 激活第二个 tab 后，首个 tab 的命令式 tabIndex=0 必须被收敛，
+        // 否则 tablist 内出现双入口、Tab 键先落在未激活 tab 上
+        fireEvent.click(screen.getByRole('tab', { name: 'Second' }))
+
+        expect(screen.getByRole('tab', { name: 'Second' })).toHaveAttribute('tabindex', '0')
+        expect(screen.getByRole('tab', { name: 'First' })).toHaveAttribute('tabindex', '-1')
+    })
 })

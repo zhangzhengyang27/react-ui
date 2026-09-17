@@ -13,7 +13,7 @@
 .fileItem {
     padding: var(--ui-spacing-xs) var(--ui-spacing-sm);
     border: 1px solid var(--ui-color-default-border);
-    border-radius: var(--ui-default-radius, calc(0.25rem * var(--ui-scale)));
+    border-radius: var(--ui-radius-default, calc(0.25rem * var(--ui-scale)));
     background-color: var(--ui-color-body);
 }
 

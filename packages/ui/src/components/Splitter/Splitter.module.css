@@ -20,6 +20,9 @@
     width: 4px;
     background: var(--ui-color-default-border);
     cursor: col-resize;
+    /* 禁用浏览器默认触摸手势(滚动/长按选择),触摸拖拽才能持续派发
+       pointermove 而不被滚动手势打断成 pointercancel */
+    touch-action: none;
     transition: background 0.15s ease;
 
     &:hover {

@@ -22,13 +22,20 @@ export const SplitterResizer = factory<SplitterResizerFactory>((_props, ref) => 
     const ctx = useSplitterContext()
     const { dir } = useDirection()
     const startStateRef = useRef<{ sizes: number[]; position: number; containerSize: number } | null>(null)
+    // 当前拖拽的 pointerId:多点触控/中断恢复时只响应发起拖拽的那根指针
+    const activePointerIdRef = useRef<number | null>(null)
     // 记录挂到 document 上的拖拽监听器实例,卸载时精确移除对应的函数引用
-    const dragListenersRef = useRef<{ move: (event: MouseEvent) => void; up: () => void } | null>(null)
+    const dragListenersRef = useRef<{
+        move: (event: PointerEvent) => void
+        up: (event: PointerEvent) => void
+        cancel: (event: PointerEvent) => void
+    } | null>(null)
 
     const removeDragListeners = () => {
         if (dragListenersRef.current) {
-            document.removeEventListener('mousemove', dragListenersRef.current.move)
-            document.removeEventListener('mouseup', dragListenersRef.current.up)
+            document.removeEventListener('pointermove', dragListenersRef.current.move)
+            document.removeEventListener('pointerup', dragListenersRef.current.up)
+            document.removeEventListener('pointercancel', dragListenersRef.current.cancel)
             dragListenersRef.current = null
         }
     }
@@ -53,7 +60,11 @@ export const SplitterResizer = factory<SplitterResizerFactory>((_props, ref) => 
         rootSelector: 'resizer'
     })
 
-    const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
+    const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+        // 非主指针(多指触控的第二指)或非左键不启动拖拽
+        if (!event.isPrimary || (event.button !== undefined && event.button !== 0)) {
+            return
+        }
         event.preventDefault()
         const container = ctx.containerRef.current
         if (!container) return
@@ -67,15 +78,27 @@ export const SplitterResizer = factory<SplitterResizerFactory>((_props, ref) => 
             position,
             containerSize
         }
+        activePointerIdRef.current = event.pointerId
 
         removeDragListeners()
-        dragListenersRef.current = { move: handleMouseMove, up: handleMouseUp }
-        document.addEventListener('mousemove', handleMouseMove)
-        document.addEventListener('mouseup', handleMouseUp)
+        dragListenersRef.current = { move: handlePointerMove, up: handlePointerUp, cancel: handlePointerCancel }
+        document.addEventListener('pointermove', handlePointerMove)
+        document.addEventListener('pointerup', handlePointerUp)
+        document.addEventListener('pointercancel', handlePointerCancel)
+
+        // 指针捕获:指针移出分隔条/窗口后事件流仍持续派发;部分环境(如 jsdom)
+        // 未实现该 API 或对未知 pointerId 抛错,捕获失败时 document 监听仍生效
+        if (typeof event.currentTarget.setPointerCapture === 'function') {
+            try {
+                event.currentTarget.setPointerCapture(event.pointerId)
+            } catch {
+                // 忽略:捕获失败不影响拖拽,document 级监听兜底
+            }
+        }
     }
 
-    const handleMouseMove = (event: MouseEvent) => {
-        if (!startStateRef.current) return
+    const handlePointerMove = (event: PointerEvent) => {
+        if (!startStateRef.current || activePointerIdRef.current !== event.pointerId) return
         const { sizes, position, containerSize } = startStateRef.current
         const currentPosition = ctx.orientation === 'horizontal' ? event.clientX : event.clientY
         let deltaPercent = ((currentPosition - position) / containerSize) * 100
@@ -109,9 +132,22 @@ export const SplitterResizer = factory<SplitterResizerFactory>((_props, ref) => 
         ctx.setSizes(nextSizes)
     }
 
-    const handleMouseUp = () => {
+    const endDrag = (event: PointerEvent) => {
+        if (activePointerIdRef.current !== event.pointerId) return
         startStateRef.current = null
+        activePointerIdRef.current = null
         removeDragListeners()
+    }
+
+    const handlePointerUp = (event: PointerEvent) => {
+        endDrag(event)
+    }
+
+    // 触摸拖拽被系统手势(滚动/通知/电话)打断时浏览器派发 pointercancel:
+    // 必须结束拖拽并移除监听,否则拖拽状态残留,之后任何指针移动都会在
+    // 未按住按键的状态下持续改写 sizes("分栏自己跟着指针走")
+    const handlePointerCancel = (event: PointerEvent) => {
+        endDrag(event)
     }
 
     // 键盘调整步长 1%,与拖拽的百分比单位一致,且细于 5% 最小宽度约束
@@ -174,7 +210,7 @@ export const SplitterResizer = factory<SplitterResizerFactory>((_props, ref) => 
             aria-valuemax={95}
             aria-valuenow={Math.round(ctx.sizes[index] ?? 0)}
             {...getStyles('resizer')}
-            onMouseDown={handleMouseDown}
+            onPointerDown={handlePointerDown}
             onKeyDown={handleKeyDown}
             {...others}
         />

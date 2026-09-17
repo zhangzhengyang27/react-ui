@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { Button } from '../../components/Button/index';
 import { Checkbox } from '../../components/Checkbox/index';
 import { Group } from '../../components/Group/Group';
@@ -139,7 +139,6 @@ export function ControlMode() {
     <FormBase form={form}>
       <Select
         label="select"
-        defaultDropdownOpened
         data={['React', 'Angular']}
         key={form.key('select')}
         {...form.getInputProps('select')}
@@ -251,8 +250,9 @@ export function ReorderWithErrors() {
   });
 
   const fields = form.getValues().sortable.map((element, i) => (
-    <>
-      <Group key={element.key}>
+    // 列表项外层用带 key 的 Fragment:Group 的 key 不参与列表对账,无 key 的 Fragment 会触发 React key 告警
+    <Fragment key={element.key}>
+      <Group>
         <TextInput
           placeholder="input"
           key={form.key(`sortable.${element.key}.value1`)}
@@ -278,7 +278,7 @@ export function ReorderWithErrors() {
           Down
         </Button>
       </Group>
-    </>
+    </Fragment>
   ));
 
   return (

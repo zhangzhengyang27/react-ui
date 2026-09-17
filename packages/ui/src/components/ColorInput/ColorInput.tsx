@@ -52,16 +52,16 @@ export interface ColorInputProps
         __ColorPickerProps,
         StylesApiProps<ColorInputFactory>,
         ElementProps<'input', 'size' | 'onChange' | 'value' | 'defaultValue'> {
-    //** 渲染在输入框上方的标签 */
+    /** 渲染在输入框上方的标签 */
     label?: React.ReactNode
 
-    //** 渲染在标签下方的描述 */
+    /** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
-    //** 渲染在输入框下方的错误 */
+    /** 渲染在输入框下方的错误 */
     error?: React.ReactNode
 
-    //** 如果设置，则会在标签上添加必填星号 */
+    /** 如果设置，则会在标签上添加必填星号 */
     required?: boolean
 
     /** If input is not allowed, the user can only pick value with color picker and swatches */
@@ -294,6 +294,9 @@ export const ColorInput = factory<ColorInputFactory>((_props, ref) => {
             position="bottom-start"
             offset={5}
             opened={dropdownOpened}
+            // opened 完全受控于内部 state：Popover 的 Escape/点击外部关闭最终经 onClose 回调通知，
+            // 不接线时受控模式下 Escape 无法回流状态（只能 blur 关闭）
+            onClose={() => setDropdownOpened(false)}
             {...popoverProps}
             classNames={resolvedClassNames}
             styles={resolvedStyles}

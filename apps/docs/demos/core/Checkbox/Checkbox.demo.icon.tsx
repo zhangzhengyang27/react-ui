@@ -1,14 +1,16 @@
 import { BiohazardIcon } from '@phosphor-icons/react/dist/csr/Biohazard'
 import { RadioactiveIcon } from '@phosphor-icons/react/dist/csr/Radioactive'
-import { Checkbox, CheckboxIconComponent } from '@xiaoye-react/ui'
+import { Checkbox } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
-import { Checkbox, CheckboxIconComponent } from '@xiaoye-react/ui';
+import { Checkbox } from '@xiaoye-react/ui';
 import { BiohazardIcon } from '@phosphor-icons/react/dist/csr/Biohazard';
 import { RadioactiveIcon } from '@phosphor-icons/react/dist/csr/Radioactive';
-const CheckboxIcon: CheckboxIconComponent = ({ indeterminate, ...others }) =>
-  indeterminate ? <RadioactiveIcon {...others} /> : <BiohazardIcon {...others} />;
+
+// icon 回调入参为 { indeterminate, checked }
+const CheckboxIcon = ({ indeterminate }: { indeterminate: boolean; checked: boolean }) =>
+  indeterminate ? <RadioactiveIcon /> : <BiohazardIcon />;
 
 function Demo() {
   return (
@@ -20,8 +22,9 @@ function Demo() {
 }
 `
 
-const CheckboxIcon: CheckboxIconComponent = ({ indeterminate, ...others }) =>
-    indeterminate ? <RadioactiveIcon {...others} /> : <BiohazardIcon {...others} />
+// Checkbox 的 icon 回调入参是 { indeterminate, checked },不存在 CheckboxIconComponent 类型
+const CheckboxIcon = ({ indeterminate }: { indeterminate: boolean; checked: boolean }) =>
+    indeterminate ? <RadioactiveIcon /> : <BiohazardIcon />
 
 function Demo() {
     return (

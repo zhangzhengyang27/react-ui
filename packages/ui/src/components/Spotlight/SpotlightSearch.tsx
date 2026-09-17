@@ -30,11 +30,18 @@ const defaultProps = {
 } satisfies Partial<SpotlightSearchProps>;
 
 export const SpotlightSearch = factory<SpotlightSearchFactory>((props) => {
-  const { classNames, styles, onKeyDown, onChange, vars, value, attributes, ...others } = useProps(
-    'SpotlightSearch',
-    defaultProps,
-    props
-  );
+  const {
+    classNames,
+    styles,
+    onKeyDown,
+    onChange,
+    onCompositionStart,
+    onCompositionEnd,
+    vars,
+    value,
+    attributes,
+    ...others
+  } = useProps('SpotlightSearch', defaultProps, props);
   const ctx = useSpotlightContext();
   const inputStyles = ctx.getStyles('search');
   const [isComposing, setIsComposing] = useState(false); // IME
@@ -73,8 +80,14 @@ export const SpotlightSearch = factory<SpotlightSearchFactory>((props) => {
         onChange?.(event);
       }}
       onKeyDown={handleKeyDown}
-      onCompositionStart={() => setIsComposing(true)}
-      onCompositionEnd={() => setIsComposing(false)}
+      onCompositionStart={(event) => {
+        setIsComposing(true);
+        onCompositionStart?.(event);
+      }}
+      onCompositionEnd={(event) => {
+        setIsComposing(false);
+        onCompositionEnd?.(event);
+      }}
     />
   );
 });

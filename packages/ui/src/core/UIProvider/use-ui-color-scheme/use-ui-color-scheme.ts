@@ -44,15 +44,28 @@ export function useUIColorScheme({ keepTransitions }: { keepTransitions?: boolea
   const setColorScheme = useCallback(
     (value: UIColorScheme) => {
       setCtxColorScheme(value);
+      // 持久化用户选择：ColorSchemeScript 启动脚本读取该键回显上次方案，
+      // 此前链路只读不写，刷新后总是回落 defaultColorScheme（SSR/存储禁用下静默跳过）
+      try {
+        window.localStorage.setItem(ctx.localStorageKey ?? 'ui-color-scheme-value', value);
+      } catch (e) {
+        /* noop */
+      }
       scheduleTransitionCleanup();
     },
-    [setCtxColorScheme, scheduleTransitionCleanup]
+    [setCtxColorScheme, ctx.localStorageKey, scheduleTransitionCleanup]
   );
 
   const clearColorScheme = useCallback(() => {
     clearCtxColorScheme();
+    // 清除方案时同步移除持久化键，避免下次启动回显已被清除的选择
+    try {
+      window.localStorage.removeItem(ctx.localStorageKey ?? 'ui-color-scheme-value');
+    } catch (e) {
+      /* noop */
+    }
     scheduleTransitionCleanup();
-  }, [clearCtxColorScheme, scheduleTransitionCleanup]);
+  }, [clearCtxColorScheme, ctx.localStorageKey, scheduleTransitionCleanup]);
 
   const osColorScheme = useColorScheme('light', { getInitialValueInEffect: false });
   const computedColorScheme = ctx.colorScheme === 'auto' ? osColorScheme : ctx.colorScheme;

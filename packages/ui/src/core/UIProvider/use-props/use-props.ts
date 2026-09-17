@@ -5,13 +5,13 @@ import { useUITheme } from '../UIThemeProvider'
  * 合并组件的默认属性、主题上下文属性和传入属性
  * @template T - 组件属性类型，必须是对象类型
  * @template U - 默认属性类型，必须是T的部分属性或null/undefined
- * @param {string} component - 组件名称，用于从主题中获取上下文属性
+ * @param {string | string[]} component - 组件名称，复合组件可传名称数组（依次读取各层主题默认属性）
  * @param {U} defaultProps - 组件的默认属性
  * @param {T} props - 传入的组件属性
  * @returns {T & (U extends null | undefined ? {} : {[Key in Extract<keyof T, keyof U>]-?: U[Key] | NonNullable<T[Key]>})} - 合并后的属性对象，优先级: 传入属性 > 主题上下文属性 > 默认属性
  */
 export function useProps<T extends Record<string, any>, U extends Partial<T> | null = {}>(
-    component: string,
+    component: string | string[],
     defaultProps: U,
     props: T
 ): T &

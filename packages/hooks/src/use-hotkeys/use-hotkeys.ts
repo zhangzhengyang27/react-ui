@@ -25,6 +25,11 @@ export function useHotkeys(
     triggerOnContentEditable = false
 ) {
     const handleKeydown = useEffectEvent((event: KeyboardEvent) => {
+        // 输入法合成期间的 keydown(isComposing/keyCode 229):组合文本尚未上屏,
+        // 触发快捷键会误触,尤其 triggerOnContentEditable 场景 tagsToIgnore 挡不住
+        if (event.isComposing || event.keyCode === 229) {
+            return
+        }
         hotkeys.forEach(([hotkey, handler, options = { preventDefault: true, usePhysicalKeys: false }]) => {
             if (
                 getHotkeyMatcher(hotkey, options.usePhysicalKeys)(event) &&

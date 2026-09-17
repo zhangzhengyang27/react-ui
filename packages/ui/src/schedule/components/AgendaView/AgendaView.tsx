@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Text } from '../../../components/Text/index';
 import { UnstyledButton } from '../../../components/UnstyledButton/UnstyledButton';
 import { Box, BoxProps, ElementProps } from '../../../core/Box/Box';
@@ -11,7 +11,13 @@ import { createVarsResolver } from '../../../core/styles-api/index';
 import { StylesApiProps } from '../../../core/styles-api/styles-api.types';
 import { useStyles } from '../../../core/styles-api/use-styles/use-styles';
 import { getRadius } from '../../../core/utils/index';
-import { Factory } from './AgendaView';
+import { Factory } from '../../../core/factory/create-factory';
+
+// Factory 的规范出处是 core/factory/create-factory,此处 re-export:
+// 包合并(f89dac7e)时 schedule/dates 共 47 处 `*Factory` 类型导入路径被统一改写为
+// 从本模块导入 Factory(此前为自引用循环导入 TS2303,下游 47×TS2459),
+// re-export 保持这些旧导入路径可用,避免大范围改动导入行
+export type { Factory };
 import { useDatesContext } from '../../../dates/components/DatesProvider/index';
 import { getLabel, ScheduleLabelsOverride } from '../../labels';
 import { AnyDateValue, DateLabelFormat, ScheduleEventData, ScheduleMode } from '../../types';
@@ -149,18 +155,28 @@ export const AgendaView = factory<AgendaViewFactory>((_props) => {
     rootSelector: 'agendaView',
   });
 
-  const expandedEvents = expandRecurringEvents({
-    events,
-    rangeStart: dayjs(rangeStart).startOf('day').toDate(),
-    rangeEnd: dayjs(rangeEnd).endOf('day').toDate(),
-    expansionLimit: recurrenceExpansionLimit,
-  });
+  // 事件展开 + 分组随渲染 memo（对齐 Week/Month/DayView 模式）：
+  // 父级每次渲染不必全量重跑 rrule 展开
+  const expandedEvents = useMemo(
+    () =>
+      expandRecurringEvents({
+        events,
+        rangeStart: dayjs(rangeStart).startOf('day').toDate(),
+        rangeEnd: dayjs(rangeEnd).endOf('day').toDate(),
+        expansionLimit: recurrenceExpansionLimit,
+      }),
+    [events, rangeStart, rangeEnd, recurrenceExpansionLimit]
+  );
 
-  const groupedEvents = getAgendaViewEvents({
-    rangeStart,
-    rangeEnd,
-    events: expandedEvents,
-  });
+  const groupedEvents = useMemo(
+    () =>
+      getAgendaViewEvents({
+        rangeStart,
+        rangeEnd,
+        events: expandedEvents,
+      }),
+    [rangeStart, rangeEnd, expandedEvents]
+  );
 
   const sortedDates = Object.keys(groupedEvents).sort();
 

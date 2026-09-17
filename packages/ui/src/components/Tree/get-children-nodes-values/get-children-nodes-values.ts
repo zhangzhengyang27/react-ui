@@ -31,13 +31,18 @@ export function getChildrenNodesValues(
         return [node.value]
     }
 
-    node.children.forEach((child) => {
-        if (Array.isArray(child.children) && child.children.length > 0) {
-            getChildrenNodesValues(child.value, data, acc)
-        } else {
-            acc.push(child.value)
+    // 从已找到的 node 直接递归收集叶子：此前对每个带子节点的 child 再次 findTreeNode
+    // 全树扫描，链式树（每层单节点）退化为 O(n²)
+    const collectLeaves = (nodes: TreeNodeData[]) => {
+        for (const child of nodes) {
+            if (Array.isArray(child.children) && child.children.length > 0) {
+                collectLeaves(child.children)
+            } else {
+                acc.push(child.value)
+            }
         }
-    })
+    }
+    collectLeaves(node.children)
 
     return acc
 }

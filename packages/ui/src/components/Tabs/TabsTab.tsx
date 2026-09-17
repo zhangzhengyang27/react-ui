@@ -62,18 +62,25 @@ export const TabsTab = factory<TabsTabFactory>((props, ref) => {
     const tabRef = useRef<HTMLButtonElement>(null)
     const mergedRef = useMergedRef(ref, tabRef)
 
-    // 无激活值（未传 value/defaultValue）时所有 tab 的 tabIndex 都是 -1，
+    // 无激活值（未传 value/defaultValue）时所有 tab 的 JSX prop 都是 -1，
     // roving tabindex 失效、Tab 键无法进入标签列表：把 tablist 内第一个
-    // 未禁用的 tab 设为可聚焦。激活值存在时由 JSX prop 接管，无需干预
+    // 未禁用的 tab 命令式设为可聚焦。激活值产生后必须继续收敛：此时
+    // tab#1 的 prop 仍为 -1（与上次渲染相同），React 会跳过 DOM 写入，
+    // 命令式写入的 0 会残留，导致 tablist 内出现两个 tabIndex=0 的双入口，
+    // 破坏 roving tabindex 单入口约定——故激活值存在时也按 isActive 纠偏
     useIsomorphicEffect(() => {
         const node = tabRef.current
-        if (!node || ctx.activeValue !== undefined) {
+        if (!node) {
             return
         }
-        const first = node
-            .closest('[role="tablist"]')
-            ?.querySelector<HTMLButtonElement>('[role="tab"]:not([disabled])')
-        node.tabIndex = first === node ? 0 : -1
+        if (ctx.activeValue === undefined) {
+            const first = node
+                .closest('[role="tablist"]')
+                ?.querySelector<HTMLButtonElement>('[role="tab"]:not([disabled])')
+            node.tabIndex = first === node ? 0 : -1
+        } else {
+            node.tabIndex = isActive ? 0 : -1
+        }
     })
 
     return (

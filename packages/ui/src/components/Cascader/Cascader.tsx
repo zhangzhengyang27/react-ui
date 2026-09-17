@@ -405,8 +405,21 @@ export const Cascader = factory<CascaderFactory>((_props: CascaderBaseProps, _re
 
     /** 面板键盘导航：上下在列内移动，左右在级层级间移动 */
     const columnsRef = useRef<HTMLDivElement | null>(null)
+    // 搜索列表面板根节点：键盘从输入框进入搜索结果时定位首项
+    const searchListRef = useRef<HTMLDivElement | null>(null)
     // ArrowRight 展开是异步渲染，展开后需聚焦的新列由 effect 补聚焦
     const pendingFocusRef = useRef<{ levelIndex: number; itemIndex: number } | null>(null)
+
+    /** 键盘进入面板：面板项是原生 button、不经过 Combobox.Option 注册，Combobox 的
+     *  ArrowDown 选项导航对 Cascader 无效——打开态由这里把焦点移入首列首项（或搜索列表首项） */
+    const focusFirstPanelItem = () => {
+        const firstColumnItem = columnsRef.current?.querySelector<HTMLElement>(':scope > div > button')
+        if (firstColumnItem) {
+            firstColumnItem.focus()
+            return
+        }
+        searchListRef.current?.querySelector<HTMLElement>(':scope > button')?.focus()
+    }
 
     useEffect(() => {
         const pending = pendingFocusRef.current
@@ -438,19 +451,24 @@ export const Cascader = factory<CascaderFactory>((_props: CascaderBaseProps, _re
             target.focus()
         }
 
+        // RTL 下左右方向语义翻转（对照 use-pills-reorder 的 getComputedStyle 判定）
+        const isRtl = getComputedStyle(event.currentTarget).direction === 'rtl'
+        const enterKey = isRtl ? 'ArrowLeft' : 'ArrowRight'
+        const backKey = isRtl ? 'ArrowRight' : 'ArrowLeft'
+
         if (event.key === 'ArrowDown') {
             const next = columnItems[itemIndex + 1]
             if (next) focusInColumn(next)
         } else if (event.key === 'ArrowUp') {
             const prev = columnItems[itemIndex - 1]
             if (prev) focusInColumn(prev)
-        } else if (event.key === 'ArrowRight') {
+        } else if (event.key === enterKey) {
             if (!isCascaderLeaf(node, !!loadData)) {
                 event.preventDefault()
                 pendingFocusRef.current = { levelIndex: levelIndex + 1, itemIndex: 0 }
                 handleColumnItemClick(node, parentPath)
             }
-        } else if (event.key === 'ArrowLeft') {
+        } else if (event.key === backKey) {
             if (levelIndex > 0) {
                 const prevColumn = columnsEl.children[levelIndex - 1] as HTMLElement | undefined
                 const prevItems = prevColumn?.querySelectorAll<HTMLButtonElement>(':scope > button')
@@ -477,6 +495,8 @@ export const Cascader = factory<CascaderFactory>((_props: CascaderBaseProps, _re
                 type="button"
                 role="option"
                 aria-selected={isSelected}
+                // 禁用态只靠 data-disabled 的 CSS 不够：键盘仍可聚焦、读屏不播报禁用
+                aria-disabled={node.disabled || undefined}
                 {...getStyles('columnItem')}
                 data-active={isActive ? 'true' : undefined}
                 data-selected={isSelected ? 'true' : undefined}
@@ -503,7 +523,7 @@ export const Cascader = factory<CascaderFactory>((_props: CascaderBaseProps, _re
                 return <Combobox.Empty>{nothingFoundMessage ?? '无匹配结果'}</Combobox.Empty>
             }
             return (
-                <div {...getStyles('searchList')}>
+                <div {...getStyles('searchList')} ref={searchListRef}>
                     {searchResults.map(({ node, path }) => {
                         const isSelected = isCascaderLeaf(node, !!loadData)
                             ? isMulti
@@ -517,6 +537,7 @@ export const Cascader = factory<CascaderFactory>((_props: CascaderBaseProps, _re
                                 role="option"
                                 // 此前恒为 false，已选项对读屏器不可感知
                                 aria-selected={isSelected}
+                                aria-disabled={node.disabled || undefined}
                                 {...getStyles('searchItem')}
                                 data-selected={isSelected ? 'true' : undefined}
                                 data-disabled={node.disabled ? 'true' : undefined}
@@ -640,6 +661,12 @@ export const Cascader = factory<CascaderFactory>((_props: CascaderBaseProps, _re
                                             setOpened(true)
                                         }
                                     }}
+                                    onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
+                                        // 键盘进入面板：打开态 ArrowDown 从输入框聚焦首列首项/搜索首项
+                                        if (event.key === 'ArrowDown' && _opened) {
+                                            focusFirstPanelItem()
+                                        }
+                                    }}
                                     disabled={disabled}
                                     pointer={!searchable}
                                 />
@@ -730,6 +757,12 @@ export const Cascader = factory<CascaderFactory>((_props: CascaderBaseProps, _re
                                 setOpened(!_opened)
                             }
                             onClick?.(event)
+                        }}
+                        onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
+                            // 键盘进入面板：打开态 ArrowDown 从输入框聚焦首列首项/搜索首项
+                            if (event.key === 'ArrowDown' && _opened) {
+                                focusFirstPanelItem()
+                            }
                         }}
                     />
                 </Combobox.Target>

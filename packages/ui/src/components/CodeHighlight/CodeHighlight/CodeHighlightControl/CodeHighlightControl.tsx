@@ -49,7 +49,6 @@ export const CodeHighlightControl: UIPolymorphicComponent<CodeHighlightControlFa
           classNames={{ tooltip: tooltipStyles.className }}
           styles={{ tooltip: tooltipStyles.style }}
           data-code-color-scheme={ctx.codeColorScheme}
-          transitionProps={{ duration: 0 }}
         >
           {control}
         </Tooltip>

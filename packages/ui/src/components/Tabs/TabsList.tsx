@@ -2,6 +2,7 @@ import { Children, cloneElement, isValidElement } from 'react'
 import {
     Box,
     factory,
+    useDirection,
     useProps,
     type BoxProps,
     type CompoundStylesApiProps,
@@ -38,10 +39,14 @@ export const TabsList = factory<TabsListFactory>((props, ref) => {
         props
     )
     const ctx = useTabsContext()
+    const { dir } = useDirection()
 
+    // 保留消费者提供的 key（Children.toArray 会给无 key 子元素补索引 key），
+    // 仅在缺失时回退 index：以 index 强制覆盖会导致动态增删/重排 tab 时
+    // 后续 tab 的 key 全量平移，React 卸载重挂、键盘操作中焦点被打到 body
     const tabs = Children.toArray(children).map((child, index) => {
         if (isValidElement(child)) {
-            return cloneElement(child as React.ReactElement<any>, { key: index })
+            return cloneElement(child as React.ReactElement<any>, { key: child.key ?? index })
         }
         return child
     })
@@ -61,11 +66,15 @@ export const TabsList = factory<TabsListFactory>((props, ref) => {
         let nextIndex = currentIndex
 
         const isHorizontal = ctx.orientation === 'horizontal'
+        // RTL 下水平箭头语义互换（ARIA APG tabs 模式）：ArrowRight 朝列表视觉
+        // 起点方向移动,ArrowLeft 朝视觉终点方向移动
+        const nextKey = isHorizontal ? (dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight') : 'ArrowDown'
+        const prevKey = isHorizontal ? (dir === 'rtl' ? 'ArrowRight' : 'ArrowLeft') : 'ArrowUp'
         switch (event.key) {
-            case isHorizontal ? 'ArrowRight' : 'ArrowDown':
+            case nextKey:
                 nextIndex = currentIndex < 0 ? 0 : (currentIndex + 1) % tabNodes.length
                 break
-            case isHorizontal ? 'ArrowLeft' : 'ArrowUp':
+            case prevKey:
                 nextIndex = currentIndex <= 0 ? tabNodes.length - 1 : currentIndex - 1
                 break
             case 'Home':

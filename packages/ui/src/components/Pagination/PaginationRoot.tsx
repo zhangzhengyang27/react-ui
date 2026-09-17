@@ -1,3 +1,4 @@
+import { useCallback, useMemo } from 'react'
 import { usePagination } from '@xiaoye-react/hooks'
 import {
     Box,
@@ -29,8 +30,8 @@ export type PaginationRootCssVariables = {
         | '--pagination-control-size'
         | '--pagination-control-radius'
         | '--pagination-control-fz'
-        | '--pagination-active-bg'
-        | '--pagination-active-color'
+        | '--pagination-control-bg'
+        | '--pagination-control-color'
 }
 
 export interface PaginationRootProps
@@ -105,14 +106,26 @@ const defaultProps = {
     boundaries: 1
 } satisfies Partial<PaginationRootProps>
 
+// siblings/boundaries 归一化：NaN/非有限数会让 usePagination 的 range 计算退化为
+// [startValue,'dots',endValue] 碎片（Math.max(NaN,x)=NaN 一路污染），对齐 total/startValue 的
+// 防御策略在传入前钳为非负整数，非法值回落默认 1
+function normalizeCount(value: number | undefined, fallback: number): number {
+    if (value === undefined) {
+        return fallback
+    }
+    return Number.isFinite(value) ? Math.max(Math.trunc(value), 0) : fallback
+}
+
 const varsResolver = createVarsResolver<PaginationRootFactory>(
     (theme, { size, radius, color, autoContrast }) => ({
         root: {
             '--pagination-control-radius': radius === undefined ? undefined : getRadius(radius),
             '--pagination-control-size': getSize(size, 'pagination-control-size'),
             '--pagination-control-fz': getFontSize(size),
-            '--pagination-active-bg': color ? getThemeColor(color, theme) : undefined,
-            '--pagination-active-color': getAutoContrastValue(autoContrast, theme)
+            // 变量名与 Pagination.module.css 的 .control[data-active] 读取端对齐：
+            // 此前写 --pagination-active-* 而 CSS 读 --pagination-control-*，color/autoContrast 完全失效
+            '--pagination-control-bg': color ? getThemeColor(color, theme) : undefined,
+            '--pagination-control-color': getAutoContrastValue(autoContrast, theme)
                 ? getContrastColor({ color, theme, autoContrast })
                 : undefined
         }
@@ -168,47 +181,67 @@ export const PaginationRoot = factory<PaginationRootFactory>((_props, ref) => {
             initialPage: defaultValue,
             onChange,
             total,
-            siblings,
-            boundaries,
+            siblings: normalizeCount(siblings, defaultProps.siblings),
+            boundaries: normalizeCount(boundaries, defaultProps.boundaries),
             startValue
         })
 
-    const handleNext = () => {
+    const handleNext = useCallback(() => {
         onNextPage?.()
         next()
-    }
-    const handlePrevious = () => {
+    }, [onNextPage, next])
+    const handlePrevious = useCallback(() => {
         onPreviousPage?.()
         previous()
-    }
-    const handleFirst = () => {
+    }, [onPreviousPage, previous])
+    const handleFirst = useCallback(() => {
         onFirstPage?.()
         first()
-    }
-    const handleLast = () => {
+    }, [onFirstPage, first])
+    const handleLast = useCallback(() => {
         onLastPage?.()
         last()
-    }
+    }, [onLastPage, last])
+
+    // context value 身份稳定化：内联对象每渲染新身份会使 React.memo 包裹的子组件全量失效
+    // （getStyles 每次 render 新函数，value 仍随之变化，待 useStyles 层稳定后完全生效）
+    const ctxValue = useMemo(
+        () => ({
+            total,
+            range,
+            active,
+            startValue: resolvedStart,
+            endValue: resolvedEnd,
+            disabled,
+            layout,
+            getItemProps,
+            onChange: setPage,
+            onNext: handleNext,
+            onPrevious: handlePrevious,
+            onFirst: handleFirst,
+            onLast: handleLast,
+            getStyles
+        }),
+        [
+            total,
+            range,
+            active,
+            resolvedStart,
+            resolvedEnd,
+            disabled,
+            layout,
+            getItemProps,
+            setPage,
+            handleNext,
+            handlePrevious,
+            handleFirst,
+            handleLast,
+            getStyles
+        ]
+    )
 
     return (
-        <PaginationProvider
-            value={{
-                total,
-                range,
-                active,
-                startValue: resolvedStart,
-                endValue: resolvedEnd,
-                disabled,
-                layout,
-                getItemProps,
-                onChange: setPage,
-                onNext: handleNext,
-                onPrevious: handlePrevious,
-                onFirst: handleFirst,
-                onLast: handleLast,
-                getStyles
-            }}
-        >
+        <PaginationProvider value={ctxValue}>
             <Box ref={ref} {...getStyles('root')} mod={[{ layout }, mod]} {...others} />
         </PaginationProvider>
     )

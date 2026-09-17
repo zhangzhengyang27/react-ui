@@ -1,5 +1,5 @@
 import { memo, useRef } from 'react'
-import { findElementAncestor } from '../../core'
+import { findElementAncestor, useDirection } from '../../core'
 import type { FlatTreeLineState } from './flatten-tree-data/flatten-tree-data'
 import type { RenderNode, TreeNodeData } from './Tree'
 import type { TreeController } from './use-tree'
@@ -39,6 +39,7 @@ export const FlatTreeNode = memo(function FlatTreeNode({
     linesPath,
 }: FlatTreeNodeProps) {
     const ref = useRef<HTMLDivElement>(null)
+    const { dir } = useDirection()
     const isLoading = tree.isNodeLoading(node.value)
     const loadError = tree.getNodeLoadError(node.value)
     const selected = tree.selectedState.includes(node.value)
@@ -58,7 +59,12 @@ export const FlatTreeNode = memo(function FlatTreeNode({
     }
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
-        if (event.nativeEvent.code === 'ArrowRight') {
+        // 缩进/连线已用逻辑属性随 dir 翻转，方向键语义需对齐：
+        // RTL 下展开/进入为 ArrowLeft、收起/返回为 ArrowRight（WAI-ARIA APG tree 模式）
+        const expandKey = dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight'
+        const collapseKey = dir === 'rtl' ? 'ArrowRight' : 'ArrowLeft'
+
+        if (event.nativeEvent.code === expandKey) {
             event.stopPropagation()
             event.preventDefault()
 
@@ -78,7 +84,7 @@ export const FlatTreeNode = memo(function FlatTreeNode({
             }
         }
 
-        if (event.nativeEvent.code === 'ArrowLeft') {
+        if (event.nativeEvent.code === collapseKey) {
             event.stopPropagation()
             event.preventDefault()
 
@@ -116,12 +122,8 @@ export const FlatTreeNode = memo(function FlatTreeNode({
         }
 
         if (event.nativeEvent.code === 'Space') {
-            if (expandOnSpace) {
-                event.stopPropagation()
-                event.preventDefault()
-                tree.toggleExpanded(node.value)
-            }
-
+            // checkOnSpace 与 expandOnSpace 语义互斥：勾选优先，否则一次 Space
+            // 会同时切换展开态与勾选态（expandOnSpace 默认开启）
             if (checkOnSpace) {
                 event.stopPropagation()
                 event.preventDefault()
@@ -130,6 +132,10 @@ export const FlatTreeNode = memo(function FlatTreeNode({
                 } else {
                     tree.checkNode(node.value)
                 }
+            } else if (expandOnSpace) {
+                event.stopPropagation()
+                event.preventDefault()
+                tree.toggleExpanded(node.value)
             }
         }
     }

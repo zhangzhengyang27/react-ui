@@ -48,11 +48,13 @@ export function getTimeString({
   amPm,
   amPmLabels,
 }: GetTimeStringInput) {
-  if (hours === null || minutes === null) {
+  // Number.isFinite 防御:splitTimeString 对非数字成分('ab:cd')产出 NaN,
+  // NaN 不等于 null 会绕过下面的判空,一路生成 'NaN:NaN' 假合法值
+  if (hours === null || minutes === null || !Number.isFinite(hours) || !Number.isFinite(minutes)) {
     return { valid: false, value: '' };
   }
 
-  if (withSeconds && seconds === null) {
+  if (withSeconds && (seconds === null || !Number.isFinite(seconds))) {
     return { valid: false, value: '' };
   }
 

@@ -66,7 +66,11 @@ export const BackgroundImage = polymorphicFactory<BackgroundImageFactory>((_prop
         <Box
             ref={ref}
             variant={variant}
-            {...getStyles('root', { style: { backgroundImage: `url(${src})` } })}
+            {...getStyles('root', {
+                // src 加引号包裹并转义内部双引号：裸 url() 含空格/括号/引号时
+                // 整条 background-image 声明非法失效，背景不渲染
+                style: { backgroundImage: `url("${src.replace(/"/g, '\\"')}")` }
+            })}
             {...others}
         />
     )

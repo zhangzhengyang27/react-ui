@@ -215,11 +215,11 @@ function focusOnNextFocusableControl({
       nextPosition.dayIndex
     ];
 
-  if (!controlToFocus) {
-    return;
-  }
-
+  // 占位格不注册 ref（undefined）与 disabled/data-hidden/data-outside/data-day-placeholder
+  // 同样需要跳过并继续递归：此前 undefined 直接 return，withOutsideDays=false 时
+  // 方向键走到占位格就中断，后续月份不可达（对齐 MonthView 的同型修复）
   if (
+    !controlToFocus ||
     controlToFocus.disabled ||
     controlToFocus.getAttribute('data-hidden') ||
     controlToFocus.getAttribute('data-outside') ||

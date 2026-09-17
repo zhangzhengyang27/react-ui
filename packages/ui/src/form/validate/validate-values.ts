@@ -37,7 +37,14 @@ function validateRulesRecord<T>(
     let arrayValidation = false;
 
     if (typeof rule === 'function') {
-      const result = rule(value, values, rulePath, signal);
+      let result: React.ReactNode | Promise<React.ReactNode>;
+      // 同步规则抛异常时转为该路径的错误:不捕获会让异常冒泡击穿 validate()/onSubmit
+      // (submitting 永久卡死);async 规则已由下方 allSettled 兜底
+      try {
+        result = rule(value, values, rulePath, signal);
+      } catch (error) {
+        result = resolveValidationError(error);
+      }
       if (result instanceof Promise) {
         asyncTasks.push({ rulePath, promise: result });
       } else {
@@ -62,7 +69,13 @@ function validateRulesRecord<T>(
       }
 
       if (formRootRule in rule) {
-        const rootResult = (rule as any)[formRootRule](value, values, rulePath, signal);
+        let rootResult: React.ReactNode | Promise<React.ReactNode>;
+        // 同步根规则同样兜异常:根规则是消费方自定义函数,抛错不该击穿整个校验流程
+        try {
+          rootResult = (rule as any)[formRootRule](value, values, rulePath, signal);
+        } catch (error) {
+          rootResult = resolveValidationError(error);
+        }
         if (rootResult instanceof Promise) {
           asyncTasks.push({ rulePath, promise: rootResult });
         } else {
@@ -86,8 +99,16 @@ function validateRulesRecord<T>(
         }
       }
 
-      if (formRootRule in rule) {
-        const rootResult = (rule as any)[formRootRule](value, values, rulePath, signal);
+      // 数组值已在第一个分支执行过 formRootRule:这里补 !arrayValidation 守卫,
+      // 否则根规则被重复执行,异步根规则(如查重接口)会双发请求
+      if (!arrayValidation && formRootRule in rule) {
+        let rootResult: React.ReactNode | Promise<React.ReactNode>;
+        // 同步根规则同样兜异常:根规则是消费方自定义函数,抛错不该击穿整个校验流程
+        try {
+          rootResult = (rule as any)[formRootRule](value, values, rulePath, signal);
+        } catch (error) {
+          rootResult = resolveValidationError(error);
+        }
         if (rootResult instanceof Promise) {
           asyncTasks.push({ rulePath, promise: rootResult });
         } else {

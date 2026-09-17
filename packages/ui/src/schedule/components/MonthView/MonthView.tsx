@@ -15,7 +15,7 @@ import { Factory } from '../AgendaView/AgendaView';
 import { useDatesContext } from '../../../dates/components/DatesProvider/index';
 import { useDragDropHandlers } from '../../hooks/use-drag-drop-handlers';
 import { useSlotDragSelect } from '../../hooks/use-slot-drag-select';
-import { ScheduleLabelsOverride } from '../../labels';
+import { getLabel, ScheduleLabelsOverride } from '../../labels';
 import {
   DateLabelFormat,
   DateStringValue,
@@ -708,7 +708,7 @@ export const MonthView = factory<MonthViewFactory>((_props) => {
         {withWeekNumbers && (
           <UnstyledButton
             key={weekNumber}
-            aria-label={`Week ${weekNumber}`}
+            aria-label={getLabel('weekNumberLabel', labels)(weekNumber)}
             {...weekNumberProps}
             onClick={
               mode === 'static'

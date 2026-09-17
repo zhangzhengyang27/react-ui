@@ -126,61 +126,64 @@ export function useFormActions<Values = Record<string, unknown>, TransformedValu
     validateFormName(name);
   }
 
-  useFormEvent(`ui-form:${name}:set-field-value`, (event: CustomEvent) =>
+  // name 为空时 eventKey 必须为 undefined:name 缺省时模板串会拼出
+  // 'ui-form:undefined:*' 这类非空字符串,eventKey 真值判空失效,
+  // 会向 window 挂 17 个永不派发的死监听
+  useFormEvent(name ? `ui-form:${name}:set-field-value` : undefined, (event: CustomEvent) =>
     form.setFieldValue(event.detail.path, event.detail.value)
   );
 
-  useFormEvent(`ui-form:${name}:set-values`, (event: CustomEvent) =>
+  useFormEvent(name ? `ui-form:${name}:set-values` : undefined, (event: CustomEvent) =>
     form.setValues(event.detail)
   );
 
-  useFormEvent(`ui-form:${name}:set-initial-values`, (event: CustomEvent) =>
+  useFormEvent(name ? `ui-form:${name}:set-initial-values` : undefined, (event: CustomEvent) =>
     form.setInitialValues(event.detail)
   );
 
-  useFormEvent(`ui-form:${name}:set-errors`, (event: CustomEvent) =>
+  useFormEvent(name ? `ui-form:${name}:set-errors` : undefined, (event: CustomEvent) =>
     form.setErrors(event.detail)
   );
 
-  useFormEvent(`ui-form:${name}:set-field-error`, (event: CustomEvent) =>
+  useFormEvent(name ? `ui-form:${name}:set-field-error` : undefined, (event: CustomEvent) =>
     form.setFieldError(event.detail.path, event.detail.error)
   );
 
-  useFormEvent(`ui-form:${name}:clear-field-error`, (event: CustomEvent) =>
+  useFormEvent(name ? `ui-form:${name}:clear-field-error` : undefined, (event: CustomEvent) =>
     form.clearFieldError(event.detail)
   );
 
-  useFormEvent(`ui-form:${name}:clear-errors`, form.clearErrors);
-  useFormEvent(`ui-form:${name}:reset`, form.reset);
-  useFormEvent(`ui-form:${name}:validate`, form.validate);
+  useFormEvent(name ? `ui-form:${name}:clear-errors` : undefined, form.clearErrors);
+  useFormEvent(name ? `ui-form:${name}:reset` : undefined, form.reset);
+  useFormEvent(name ? `ui-form:${name}:validate` : undefined, form.validate);
 
-  useFormEvent(`ui-form:${name}:validate-field`, (event: CustomEvent) =>
+  useFormEvent(name ? `ui-form:${name}:validate-field` : undefined, (event: CustomEvent) =>
     form.validateField(event.detail)
   );
 
-  useFormEvent(`ui-form:${name}:reorder-list-item`, (event: CustomEvent) =>
+  useFormEvent(name ? `ui-form:${name}:reorder-list-item` : undefined, (event: CustomEvent) =>
     form.reorderListItem(event.detail.path, event.detail.payload)
   );
 
-  useFormEvent(`ui-form:${name}:remove-list-item`, (event: CustomEvent) =>
+  useFormEvent(name ? `ui-form:${name}:remove-list-item` : undefined, (event: CustomEvent) =>
     form.removeListItem(event.detail.path, event.detail.index)
   );
 
-  useFormEvent(`ui-form:${name}:insert-list-item`, (event: CustomEvent) =>
+  useFormEvent(name ? `ui-form:${name}:insert-list-item` : undefined, (event: CustomEvent) =>
     form.insertListItem(event.detail.path, event.detail.item, event.detail.index)
   );
 
-  useFormEvent(`ui-form:${name}:set-dirty`, (event: CustomEvent) =>
+  useFormEvent(name ? `ui-form:${name}:set-dirty` : undefined, (event: CustomEvent) =>
     form.setDirty(event.detail)
   );
 
-  useFormEvent(`ui-form:${name}:set-touched`, (event: CustomEvent) =>
+  useFormEvent(name ? `ui-form:${name}:set-touched` : undefined, (event: CustomEvent) =>
     form.setTouched(event.detail)
   );
 
-  useFormEvent(`ui-form:${name}:reset-dirty`, (event: CustomEvent) =>
+  useFormEvent(name ? `ui-form:${name}:reset-dirty` : undefined, (event: CustomEvent) =>
     form.resetDirty(event.detail)
   );
 
-  useFormEvent(`ui-form:${name}:reset-touched`, form.resetTouched);
+  useFormEvent(name ? `ui-form:${name}:reset-touched` : undefined, form.resetTouched);
 }

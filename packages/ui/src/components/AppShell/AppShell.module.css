@@ -5,6 +5,11 @@
         'navbar main aside' 1fr
         'footer footer footer' auto
         / var(--app-shell-navbar-width, 0px) 1fr var(--app-shell-aside-width, 0px);
+    /* collapse 过渡在轨道层面实现：collapsed 切换时 --app-shell-navbar-width
+       瞬时变为 0px，grid 轨道当帧塌陷；仅在 navbar/aside 的 width 上做 transition
+       会被 0 宽轨道 + overflow hidden 吞掉（表现为收起瞬时消失、展开却有动画）。
+       轨道插值在旧浏览器不支持时整体退化为瞬时切换，收起/展开仍保持对称 */
+    transition: grid-template-columns 0.2s ease;
     min-height: 100vh;
 }
 
@@ -17,7 +22,6 @@
     grid-area: navbar;
     width: var(--app-shell-navbar-width, 0px);
     overflow: hidden;
-    transition: width 0.2s ease;
 
     &:where([data-collapsed]) {
         width: 0;
@@ -28,7 +32,6 @@
     grid-area: aside;
     width: var(--app-shell-aside-width, 0px);
     overflow: hidden;
-    transition: width 0.2s ease;
 
     &:where([data-collapsed]) {
         width: 0;

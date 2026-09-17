@@ -57,7 +57,7 @@ export interface UseDragDropHandlersOptions<T = any> {
 
 export interface DragDropHandlers<T = any> {
   /** Context value for DragContext.Provider */
-  dragContextValue: DragContextValue;
+  dragContextValue: DragContextValue<T>;
 
   /** Current drop target */
   dropTarget: T | null;
@@ -110,11 +110,11 @@ export function useDragDropHandlers<T = any>(
   const stableOnExternalDrop = useEffectEvent(onExternalDrop || (() => {}));
 
   const dragState = useDragState();
-  const [dropTarget, setDropTarget] = useState<T | null>(null);
+  const [dropTarget, setDropTargetState] = useState<T | null>(null);
 
   const handleDragEnd = useCallback(() => {
     dragState.endDrag();
-    setDropTarget(null);
+    setDropTargetState(null);
     stableOnEventDragEnd();
   }, [dragState]);
 
@@ -154,13 +154,13 @@ export function useDragDropHandlers<T = any>(
       event.dataTransfer.dropEffect = isInternalDrag ? 'move' : 'copy';
       // dragover 在拖拽期间持续高频触发：目标未变时跳过 setState，
       // 否则每次 dragover 都导致整个视图（全部事件）重渲染
-      setDropTarget(current => (isSameDropTarget(current, target) ? current : target));
+      setDropTargetState(current => (isSameDropTarget(current, target) ? current : target));
     },
     [enabled, mode, dragState.state.isDragging, onExternalDrop, handleDragEnd]
   );
 
   const handleDragLeave = useCallback(() => {
-    setDropTarget(null);
+    setDropTargetState(null);
   }, []);
 
   const handleDrop = useCallback(
@@ -187,11 +187,11 @@ export function useDragDropHandlers<T = any>(
           handleDragEnd();
         }
         stableOnExternalDrop(event, target);
-        setDropTarget(null);
+        setDropTargetState(null);
         return;
       }
 
-      setDropTarget(null);
+      setDropTargetState(null);
     },
     [
       enabled,
@@ -226,8 +226,10 @@ export function useDragDropHandlers<T = any>(
 
   // 拖拽/悬浮期间 dragover 每帧触发视图重渲染，context value 不 memo 会放大整树更新。
   // dropTarget/setDropTarget 用 hook 内真实的 dropTarget 状态：
-  // 此前读 dragState.state.dropTarget（从未被写入，恒 null），是对外语义误导的死 API
-  const dragContextValue: DragContextValue = useMemo(
+  // 此前读 dragState.state.dropTarget（从未被写入，恒 null），是对外语义误导的死 API。
+  // 泛型 T 直接贯通 context 值（消除此前的 TS2322 与 as T 强转）：
+  // 各视图 target 形态不同（日期串/槽位对象），由 DragContextValue<T> 承载
+  const dragContextValue = useMemo<DragContextValue<T>>(
     () => ({
       isDragging: dragState.state.isDragging,
       draggedEventId: dragState.state.draggedEventId,
@@ -235,8 +237,7 @@ export function useDragDropHandlers<T = any>(
       dropTarget,
       onDragStart: handleDragStart,
       onDragEnd: handleDragEnd,
-      setDropTarget: (target: Parameters<NonNullable<DragContextValue['setDropTarget']>>[0]) =>
-        setDropTarget(target as T),
+      setDropTarget: (target) => setDropTargetState(target),
     }),
     [
       dragState.state.isDragging,

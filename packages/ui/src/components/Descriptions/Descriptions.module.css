@@ -24,18 +24,20 @@
 .label {
     padding: var(--descriptions-vertical-spacing) var(--descriptions-horizontal-spacing);
     font-weight: var(--ui-font-weight-bold);
-    text-align: left;
+    text-align: start;
     vertical-align: top;
     white-space: nowrap;
 }
 
 .value {
     padding: var(--descriptions-vertical-spacing) var(--descriptions-horizontal-spacing);
-    text-align: left;
+    text-align: start;
     vertical-align: top;
 }
 
-.root:not([data-bordered]) .value > div:first-child {
+/* 限定 vertical 布局：horizontal 下 .value 单元格的子节点就是消费者内容本身，
+   不限定时消费者包在 div 里的内容会被误加粗、置灰、缩字号并加下边距 */
+.root:where([data-layout='vertical']):not([data-bordered]) .value > div:first-child {
     font-weight: var(--ui-font-weight-bold);
     color: var(--ui-color-dimmed);
     font-size: var(--ui-font-size-xs);

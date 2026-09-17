@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { useUncontrolled } from '@xiaoye-react/hooks'
 import { BoxProps, ElementProps, factory, Factory, UISize, StylesApiProps, useProps, useStyles } from '../../core'
 import { InputWrapper } from '../Input'
@@ -12,25 +13,25 @@ export interface CheckboxGroupProps
     extends BoxProps,
         StylesApiProps<CheckboxGroupFactory>,
         ElementProps<'div', 'value' | 'defaultValue' | 'onChange'> {
-    //** 受控值 */
+    /** 受控值 */
     value?: CheckboxGroupValue
 
-    //** 非受控组件的初始值 */
+    /** 非受控组件的初始值 */
     defaultValue?: CheckboxGroupValue
 
-    //** 值变化时调用 */
+    /** 值变化时调用 */
     onChange?: (value: CheckboxGroupValue) => void
 
     /** Label rendered above the checkboxes */
     label?: React.ReactNode
 
-    //** 渲染在标签下方的描述 */
+    /** 渲染在标签下方的描述 */
     description?: React.ReactNode
 
     /** Error rendered below the checkboxes */
     error?: React.ReactNode
 
-    //** 如果设置，则会在标签上添加必填星号 */
+    /** 如果设置，则会在标签上添加必填星号 */
     required?: boolean
 
     /** Controls size of all checkboxes in the group @default 'sm' */
@@ -101,8 +102,15 @@ export const CheckboxGroup = factory<CheckboxGroupFactory>((_props, ref) => {
 
     const hasWrapper = label || description || error
 
+    // context value 身份稳定化：内联对象每渲染新身份会使 React.memo 包裹的子组件全量失效
+    // （setSelectedValues 已是 use-uncontrolled 的稳定 setter）
+    const ctxValue = useMemo(
+        () => ({ value: selectedValues, onChange: setSelectedValues, name, disabled, size }),
+        [selectedValues, setSelectedValues, name, disabled, size]
+    )
+
     const content = (
-        <CheckboxGroupContext.Provider value={{ value: selectedValues, onChange: setSelectedValues, name, disabled, size }}>
+        <CheckboxGroupContext.Provider value={ctxValue}>
             <div ref={ref} {...getStyles('root')} {...others}>
                 {children}
             </div>

@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { useRef } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 import { Box, BoxProps, ElementProps } from '../../../core/Box/Box';
 import { useProps } from '../../../core/UIProvider/index';
 import { UIRadius } from '../../../core/UIProvider/theme.types';
@@ -195,42 +195,64 @@ export const YearView = factory<YearViewFactory>((_props) => {
     radius,
   };
 
-  const expandedEvents = expandRecurringEvents({
-    events,
-    rangeStart: dayjs(date).startOf('year').toDate(),
-    rangeEnd: dayjs(date).endOf('year').toDate(),
-    expansionLimit: recurrenceExpansionLimit,
-  });
+  // 全年范围的事件展开成本高（上限 2000 实例），随渲染 memo
+  // （对齐 Week/Month/DayView 模式），父级每次渲染不必重跑 rrule 展开
+  const expandedEvents = useMemo(
+    () =>
+      expandRecurringEvents({
+        events,
+        rangeStart: dayjs(date).startOf('year').toDate(),
+        rangeEnd: dayjs(date).endOf('year').toDate(),
+        expansionLimit: recurrenceExpansionLimit,
+      }),
+    [events, date, recurrenceExpansionLimit]
+  );
 
-  const groupedEvents = getYearViewEvents({ date, events: expandedEvents });
+  const groupedEvents = useMemo(
+    () => getYearViewEvents({ date, events: expandedEvents }),
+    [date, expandedEvents]
+  );
 
   // [monthIndex][weekIndex][dayIndex]
   const daysRef = useRef<HTMLButtonElement[][][]>([]) as YearViewControlsRef;
 
-  const getFirstDayIndex = (month: string): { weekIndex: number; dayIndex: number } | undefined => {
-    const weeks = getMonthDays({
-      month: dayjs(month).format('YYYY-MM-DD'),
-      firstDayOfWeek: ctx.getFirstDayOfWeek(firstDayOfWeek),
-      consistentWeeks: true,
-    });
+  const getFirstDayIndex = useCallback(
+    (month: string): { weekIndex: number; dayIndex: number } | undefined => {
+      const weeks = getMonthDays({
+        month: dayjs(month).format('YYYY-MM-DD'),
+        firstDayOfWeek: ctx.getFirstDayOfWeek(firstDayOfWeek),
+        consistentWeeks: true,
+      });
 
-    for (let weekIndex = 0; weekIndex < weeks.length; weekIndex++) {
-      const week = weeks[weekIndex];
-      for (let dayIndex = 0; dayIndex < week.length; dayIndex++) {
-        const dayDate = week[dayIndex];
-        if (isSameMonth(dayDate, month)) {
-          return { weekIndex, dayIndex };
+      for (let weekIndex = 0; weekIndex < weeks.length; weekIndex++) {
+        const week = weeks[weekIndex];
+        for (let dayIndex = 0; dayIndex < week.length; dayIndex++) {
+          const dayDate = week[dayIndex];
+          if (isSameMonth(dayDate, month)) {
+            return { weekIndex, dayIndex };
+          }
         }
       }
-    }
 
-    return undefined;
-  };
+      return undefined;
+    },
+    [firstDayOfWeek, ctx]
+  );
+
+  // 月份列表与各月首个可交互格索引一并 memo：
+  // 此前每次渲染对 12 个月各重跑一次 getMonthDays
+  const monthsList = useMemo(
+    () => getMonthsByQuarter(dayjs(date).format('YYYY-MM-DD')).flat(),
+    [date]
+  );
+
+  const firstDayIndexByMonth = useMemo(
+    () => new Map(monthsList.map((month) => [month, getFirstDayIndex(month)])),
+    [monthsList, getFirstDayIndex]
+  );
 
   let globalMonthIndex = 0;
-  const months = getMonthsByQuarter(dayjs(date).format('YYYY-MM-DD'))
-    .flat()
-    .map((month) => {
+  const months = monthsList.map((month) => {
       const currentMonthIndex = globalMonthIndex;
       globalMonthIndex++;
 
@@ -258,7 +280,7 @@ export const YearView = factory<YearViewFactory>((_props) => {
           groupedEvents={groupedEvents}
           mode={mode}
           withOutsideDays={withOutsideDays}
-          firstDayIndex={getFirstDayIndex(month)}
+          firstDayIndex={firstDayIndexByMonth.get(month)}
           __getDayRef={(weekIndex, dayIndex, node) => {
             if (!Array.isArray(daysRef.current[currentMonthIndex])) {
               daysRef.current[currentMonthIndex] = [];

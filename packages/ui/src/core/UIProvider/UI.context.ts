@@ -44,6 +44,12 @@ export interface UIContextValue {
     classNamesPrefix: string
 
     /**
+     * 色彩方案持久化 localStorage 键
+     * useUIColorScheme 的 setColorScheme/clearColorScheme 据此写入/移除，供 ColorSchemeScript 启动回显
+     */
+    localStorageKey?: string
+
+    /**
      * 获取样式 nonce 的方法（用于内容安全策略）
      * @returns nonce 字符串或 undefined
      */

@@ -1,4 +1,5 @@
 import React from 'react'
+import clsx from 'clsx'
 import {
     Box,
     BoxProps,
@@ -27,7 +28,7 @@ export interface RatingProps extends BoxProps, StylesApiProps<RatingFactory> {
     /** Default value for uncontrolled rating */
     defaultValue?: number
 
-    //** 值变化时调用 */
+    /** 值变化时调用 */
     onChange?: (value: number) => void
 
     /** Called when hover value changes */
@@ -42,7 +43,7 @@ export interface RatingProps extends BoxProps, StylesApiProps<RatingFactory> {
     /** Star color, key of theme.colors or any valid CSS color @default yellow */
     color?: UIColor
 
-    /** If true, the rating is read-only @default false */
+    /** If true, the rating is read-only: 不可交互,但当前值仍随表单提交 @default false */
     readOnly?: boolean
 
     /** If true, clicking the current value clears it @default false */
@@ -168,16 +169,45 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
         onHover?.(0)
     }
 
+    // 标记「本次点击已按分数提交」：click 先于 change 触发，点击未选中的 radio 会紧跟一次
+    // 整星 change，需让 change 跳过避免分数提交被整星覆盖（键盘路径不经过 click，不受影响）
+    const pointerCommitRef = React.useRef(false)
+
     const handleRadioChange = (starValue: number) => {
         if (readOnly) return
+        if (pointerCommitRef.current) {
+            pointerCommitRef.current = false
+            return
+        }
         updateValue(starValue)
     }
 
-    // 原生 radio 点击已选中项不触发 change：clearable 经 click 事件清零
-    const handleRadioClick = (starValue: number) => {
+    // 点击路径用指针在星内的水平位置计算分数值提交（fractions=2 即半星），键盘（方向键引发的
+    // change）保持整星步进；clearable 对分数值同样按「点击当前值」判定清零
+    const handleRadioClick = (
+        starValue: number,
+        event: React.MouseEvent<HTMLInputElement>,
+        wasChecked: boolean
+    ) => {
+        pointerCommitRef.current = false
         if (readOnly) return
-        if (clearable && baseValue === starValue) {
+
+        // 键盘合成的 click（如空格键）没有真实指针坐标（detail=0），退回整星语义
+        const fractionValue = event.detail === 0 ? starValue : getValueFromPointer(starValue - 1, event)
+
+        // 点击此前未选中的 radio 会紧跟触发 change：标记让 change 跳过（已按分数提交）；
+        // 点击已选中的 radio 不触发 change，不可标记，否则会吞掉后续键盘整星提交
+        if (!wasChecked) {
+            pointerCommitRef.current = true
+        }
+
+        if (clearable && fractionValue === baseValue) {
             updateValue(0)
+            return
+        }
+
+        if (fractionValue !== baseValue) {
+            updateValue(fractionValue)
         }
     }
 
@@ -188,6 +218,7 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
             mod={[{ readonly: readOnly }, mod]}
             role="radiogroup"
             aria-label="评分"
+            aria-readonly={readOnly || undefined}
             onMouseLeave={handleHoverEnd}
             {...others}
         >
@@ -198,6 +229,7 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
                 const fillPercent = partial ? (roundedValue - index) * 100 : 0
                 // 原生 radio 无法表达分数勾选：整星部分由 radio 承载，分数部分保持视觉呈现
                 const isChecked = baseValue > 0 && Math.ceil(baseValue) === starValue
+                const starSymbolStyles = getStyles('starSymbol')
 
                 return (
                     <Box
@@ -214,20 +246,31 @@ export const Rating = factory<RatingFactory>((_props, ref) => {
                             name={name || groupName}
                             value={starValue}
                             checked={isChecked}
-                            disabled={readOnly}
-                            aria-label={`${starValue} star`}
+                            // 真 readonly 语义：radio 保持启用（值随表单提交），指针交互由
+                            // [data-readonly] 的 pointer-events 拦截，键盘变更在此拦截
+                            onKeyDown={event => {
+                                if (readOnly && event.key !== 'Tab') {
+                                    event.preventDefault()
+                                }
+                            }}
+                            // 组内播报语言与其余组件一致（中文），避免「评分」+「N star」混用
+                            aria-label={`${starValue} 星`}
                             onChange={() => handleRadioChange(starValue)}
-                            onClick={() => handleRadioClick(starValue)}
+                            onClick={event => handleRadioClick(starValue, event, isChecked)}
                             // roving tabindex：勾选中的星可 Tab；无勾选时首星可 Tab
                             tabIndex={isChecked || (baseValue === 0 && index === 0) ? 0 : -1}
                         />
-                        <span {...getStyles('starSymbol')} style={{ color: 'var(--ui-color-default-border)' }}>
+                        {/* 底层空星：颜色由 .starSymbol 的 CSS 提供，内联 color 与其重复且会覆盖消费者 styles */}
+                        <span {...starSymbolStyles}>
                             {StarSymbol}
                         </span>
+                        {/* 填充层：className/style 与 getStyles('starSymbol') 的产物合并，
+                            使消费者的 classNames/styles.starSymbol 在两层同时生效 */}
                         <span
-                            {...getStyles('starSymbol')}
-                            className={`${classes.starSymbol} ${classes.starFilled}`}
+                            {...starSymbolStyles}
+                            className={clsx(starSymbolStyles.className, classes.starFilled)}
                             style={{
+                                ...starSymbolStyles.style,
                                 clipPath: partial ? `inset(0 ${100 - fillPercent}% 0 0)` : undefined,
                                 opacity: filled || partial ? 1 : 0
                             }}

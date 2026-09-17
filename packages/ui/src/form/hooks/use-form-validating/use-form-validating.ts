@@ -42,14 +42,37 @@ export function useFormValidating(): $FormValidating {
   );
 
   const getAbortSignal = useCallback((path: string) => {
-    abortControllers.current[path]?.abort();
+    const previousController = abortControllers.current[path];
+    if (previousController) {
+      previousController.abort();
+      // 同路径新校验接管时同步复位旧校验遗留的在途标志:
+      // 若新校验同步完成(不会再 setFieldValidating(true)),
+      // 旧校验 settle 后 cleanup 会因 signal.aborted 跳过复位,标志永久残留
+      if (validatingRef.current[path]) {
+        validatingRef.current = { ...validatingRef.current, [path]: false };
+        setValidatingFields({ ...validatingRef.current });
+      }
+    }
     abortControllers.current[path] = new AbortController();
     return abortControllers.current[path].signal;
   }, []);
 
   const abortFieldValidations = useCallback(() => {
-    Object.values(abortControllers.current).forEach((c) => c.abort());
+    let hasInFlightField = false;
+    Object.entries(abortControllers.current).forEach(([path, controller]) => {
+      controller.abort();
+      // 中止的同时复位该字段的在途标志:被 abort 的校验 promise settle 后,
+      // cleanup 会因 signal.aborted 跳过复位,不在此收尾则 validating 永久残留 true,
+      // isValidating(path)/form.validating 被永久钉死
+      if (validatingRef.current[path]) {
+        hasInFlightField = true;
+        validatingRef.current = { ...validatingRef.current, [path]: false };
+      }
+    });
     abortControllers.current = {};
+    if (hasInFlightField) {
+      setValidatingFields({ ...validatingRef.current });
+    }
   }, []);
 
   const clearValidating = useCallback(() => {

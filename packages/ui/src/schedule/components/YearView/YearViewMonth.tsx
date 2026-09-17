@@ -5,7 +5,7 @@ import { getThemeColor } from '../../../core/UIProvider/color-functions/index';
 import { useUITheme } from '../../../core/UIProvider/index';
 import { GetStylesApi } from '../../../core/styles-api/use-styles/use-styles';
 import { useDatesContext } from '../../../dates/components/DatesProvider/index';
-import { ScheduleLabelsOverride } from '../../labels';
+import { getLabel, ScheduleLabelsOverride } from '../../labels';
 import { DateLabelFormat, DateStringValue, DayOfWeek, ScheduleMode } from '../../types';
 import {
   formatDate,
@@ -115,6 +115,7 @@ export function YearViewMonth({
   groupedEvents,
   mode,
   withOutsideDays,
+  labels,
   __getDayRef,
   __onDayKeyDown,
   firstDayIndex,
@@ -214,8 +215,8 @@ export function YearViewMonth({
         {withWeekNumbers && (
           <UnstyledButton
             key={weekNumber}
-            aria-label={`Week ${weekNumber}`}
-            title={`Week ${weekNumber}`}
+            aria-label={getLabel('weekNumberLabel', labels)(weekNumber)}
+            title={getLabel('weekNumberLabel', labels)(weekNumber)}
             {...weekNumberProps}
             onClick={
               mode === 'static'

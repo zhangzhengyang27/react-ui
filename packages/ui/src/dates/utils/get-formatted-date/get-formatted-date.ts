@@ -21,11 +21,16 @@ export function defaultDateFormatter({
   const formatDate = (value: DateStringValue | Date) => dayjs(value).locale(locale).format(format);
 
   if (type === 'default') {
-    return date === null ? '' : formatDate(date as DateStringValue);
+    // 空串与 null 同视为空值:受控 value="" 直传 dayjs('') 会显示 "Invalid Date"
+    return date ? formatDate(date as DateStringValue) : '';
   }
 
   if (type === 'multiple') {
-    return (date as DateStringValue[]).map(formatDate).join(', ');
+    // 滤掉空串元素,避免 join 出 "Invalid Date"
+    return (date as DateStringValue[])
+      .filter((v) => v)
+      .map(formatDate)
+      .join(', ');
   }
 
   if (type === 'range' && Array.isArray(date)) {

@@ -114,3 +114,9 @@
 .root:where([data-disabled]) .input {
     cursor: not-allowed;
 }
+
+/* 键盘焦点指示：两个透明 range input 均为 opacity:0，描边落在可见的 track 上（对齐 Rating 的 :has 模式） */
+.root:has(.input:focus-visible) .track {
+    outline: 2px solid var(--ui-primary-color-filled);
+    outline-offset: 2px;
+}

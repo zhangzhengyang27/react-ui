@@ -26,11 +26,7 @@ export function MenuContextMenu(props: MenuContextMenuProps) {
     const { children, disabled, longPressDelay = 500 } = useProps('MenuContextMenu', null, props)
 
     const child = getSingleElementChild(children)
-    if (!child) {
-        throw new Error(
-            'Menu.ContextMenu component children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported'
-        )
-    }
+    const childProps = ((child as any)?.props ?? {}) as Record<string, any>
 
     const menuCtx = useMenuContext()
     const popoverCtx = usePopoverContext()
@@ -40,8 +36,6 @@ export function MenuContextMenu(props: MenuContextMenuProps) {
     const touchTargetRef = useRef<object | null>(null)
     const disabledRef = useRef(disabled)
     disabledRef.current = disabled
-
-    const childProps = (child as any).props as Record<string, any>
 
     const openAtPoint = (clientX: number, clientY: number, contextElement: object | null) => {
         popoverCtx.reference({
@@ -119,6 +113,13 @@ export function MenuContextMenu(props: MenuContextMenuProps) {
             }
         }
     )
+
+    // throw 必须在全部 hooks 之后：children 由有效变无效时，hooks 数量不能随条件变化（Rules of Hooks）
+    if (!child) {
+        throw new Error(
+            'Menu.ContextMenu component children should be an element or a component that accepts ref. Fragments, strings, numbers and other primitive values are not supported'
+        )
+    }
 
     const onTouchStart = createEventHandler<any>(childProps.onTouchStart, longPressHandlers.onTouchStart ?? (() => {}))
     const onTouchEnd = createEventHandler<any>(childProps.onTouchEnd, longPressHandlers.onTouchEnd ?? (() => {}))

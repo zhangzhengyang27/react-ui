@@ -148,4 +148,62 @@ describe('use-uncontrolled-dates', () => {
     });
     expect(hook.result.current[0]).toStrictEqual(null);
   });
+
+  it('maps array defaultValue to the first non-null entry when switching back to type `default`', () => {
+    const hook = setupHook({
+      type: 'range',
+      defaultValue: rangeTypeValue,
+    });
+    expect(hook.result.current[0]).toStrictEqual(rangeTypeValue);
+
+    hook.rerender({
+      ...hookDefaults,
+      type: 'default',
+      defaultValue: rangeTypeValue,
+    });
+
+    // 切回 default 时数组 defaultValue 不能原样灌入,否则显示 Invalid Date 且反选失效
+    expect(hook.result.current[0]).toBe(rangeTypeValue[0]);
+  });
+
+  it('filters null entries when mapping defaultValue to type `multiple`', () => {
+    const halfRange = [rangeTypeValue[0], null];
+
+    const hook = setupHook({
+      type: 'range',
+      defaultValue: halfRange as any,
+    });
+    expect(hook.result.current[0]).toStrictEqual(halfRange);
+
+    hook.rerender({
+      ...hookDefaults,
+      type: 'multiple',
+      defaultValue: halfRange as any,
+    });
+
+    // multiple 分支必须滤 null,否则 join 出 "Invalid Date"
+    expect(hook.result.current[0]).toStrictEqual([rangeTypeValue[0]]);
+  });
+
+  it('notifies onChange after the type switch render instead of during it', () => {
+    const onChange = jest.fn();
+    const hook = setupHook({
+      type: 'range',
+      defaultValue: rangeTypeValue,
+      onChange,
+    });
+    expect(onChange).not.toHaveBeenCalled();
+
+    hook.rerender({
+      ...hookDefaults,
+      type: 'multiple',
+      defaultValue: multipleTypeValue,
+      onChange,
+    });
+
+    // 渲染期只做形状派生,onChange 在提交 effect 中触发一次且值与派生结果一致
+    expect(hook.result.current[0]).toStrictEqual(multipleTypeValue);
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith(multipleTypeValue);
+  });
 });

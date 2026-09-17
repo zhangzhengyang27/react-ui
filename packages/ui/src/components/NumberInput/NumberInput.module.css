@@ -47,7 +47,9 @@
 }
 
 .control:where(:not(:disabled, [data-disabled]):hover) {
-    background-color: var(--ui-color-gray-0);
+    /* 恒定浅色 token（gray-0=#f8f9fa）在暗色下近白，与浅色图标对比度不足；
+       default-hover 随 scheme 翻转（light: gray-0 / dark: dark-5） */
+    background-color: var(--ui-color-default-hover);
     color: var(--ui-color-text);
 }
 

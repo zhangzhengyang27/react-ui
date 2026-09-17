@@ -1,5 +1,5 @@
 import { cloneElement } from 'react'
-import { getSingleElementChild, useProps } from '../../core'
+import { getSingleElementChild, useDirection, useProps } from '../../core'
 import { Popover } from '../Popover'
 import { usePopoverContext } from '../Popover/Popover.context'
 import { useMenuContext } from './Menu.context'
@@ -17,6 +17,7 @@ export function MenuSubTarget(props: MenuSubTargetProps) {
     useMenuContext()
     const subCtx = useSubMenuContext()
     const popoverCtx = usePopoverContext()
+    const { dir } = useDirection()
 
     const child = getSingleElementChild(children) as React.ReactElement<any>
 
@@ -72,9 +73,12 @@ export function MenuSubTarget(props: MenuSubTargetProps) {
                         return
                     }
 
-                    // ARIA 菜单：ArrowRight/Enter/Space 打开子菜单并把焦点移入第一项
+                    // ARIA 菜单：方向键/Enter/Space 打开子菜单并把焦点移入第一项
                     // （禁用的原生 button 不派发键盘事件，无需在此判 disabled）
-                    if (event.key === 'ArrowRight' || event.key === 'Enter' || event.key === ' ') {
+                    // 子菜单弹出位置随 dir 翻转（Popover 用 getFloatingPosition），开/关键位需对齐：
+                    // LTR 下 ArrowRight 打开，RTL 下 ArrowLeft 打开
+                    const openKey = dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight'
+                    if (event.key === openKey || event.key === 'Enter' || event.key === ' ') {
                         event.preventDefault()
                         event.stopPropagation()
                         subCtx.open()
@@ -82,8 +86,9 @@ export function MenuSubTarget(props: MenuSubTargetProps) {
                         return
                     }
 
-                    // ArrowLeft 关闭子菜单，焦点留在触发项上
-                    if (event.key === 'ArrowLeft' && subCtx.opened) {
+                    // ArrowLeft（RTL 下换为 ArrowRight）关闭子菜单，焦点留在触发项上
+                    const closeKey = dir === 'rtl' ? 'ArrowRight' : 'ArrowLeft'
+                    if (event.key === closeKey && subCtx.opened) {
                         event.preventDefault()
                         event.stopPropagation()
                         subCtx.close()

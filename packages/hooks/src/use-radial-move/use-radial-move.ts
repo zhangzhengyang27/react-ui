@@ -30,10 +30,12 @@ export function normalizeRadialValue(degree: number, step: number) {
   const clamped = clamp(degree, 0, 360)
   const high = Math.ceil(clamped / step)
   const low = Math.round(clamped / step)
-  return toFixed(
-    high >= clamped / step ? (high * step === 360 ? 0 : high * step) : low * step,
-    getDigitsAfterDot(step)
-  )
+  // ceil(x) >= x 恒真:原实现「high >= clamped/step」判定使 low*step 成为死分支,
+  // step 不整除 360 时 ceil 网格会越界(如 step=7、拖到 358° 得 52*7=364),aria-valuenow 超过 max
+  const highValue = high * step === 360 ? 0 : high * step
+  // 越界回落 round 网格值(Math.min 兜住浮点乘积略超 360 的边角),360 回绕为 0 保持值域 [0, 360)
+  const raw = highValue > 360 ? Math.min(low * step, 360) : highValue
+  return toFixed(raw === 360 ? 0 : raw, getDigitsAfterDot(step))
 }
 
 export interface UseRadialMoveOptions {
@@ -94,6 +96,10 @@ export function useRadialMove<T extends HTMLElement = any>(
         document.addEventListener('mouseup', handleMouseUp, false)
         document.addEventListener('touchmove', handleTouchMove, { passive: false })
         document.addEventListener('touchend', handleTouchEnd, false)
+        // 触摸拖拽被系统中断（来电、系统手势接管）派发的是 touchcancel 而非 touchend，
+        // 不监听会残留 active/document 监听与 user-select:none；endTracking 幂等，直接复用
+        document.addEventListener('touchcancel', endTracking, false)
+        document.addEventListener('pointercancel', endTracking, false)
       }
 
       const endTracking = () => {
@@ -106,6 +112,8 @@ export function useRadialMove<T extends HTMLElement = any>(
         document.removeEventListener('mouseup', handleMouseUp, false)
         document.removeEventListener('touchmove', handleTouchMove, false)
         document.removeEventListener('touchend', handleTouchEnd, false)
+        document.removeEventListener('touchcancel', endTracking, false)
+        document.removeEventListener('pointercancel', endTracking, false)
       }
 
       const onMouseDown = (event: MouseEvent) => {
@@ -146,6 +154,8 @@ export function useRadialMove<T extends HTMLElement = any>(
         document.removeEventListener('mouseup', handleMouseUp, false)
         document.removeEventListener('touchmove', handleTouchMove, false)
         document.removeEventListener('touchend', handleTouchEnd, false)
+        document.removeEventListener('touchcancel', endTracking, false)
+        document.removeEventListener('pointercancel', endTracking, false)
       }
 
       return () => {

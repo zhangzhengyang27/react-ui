@@ -1,4 +1,5 @@
-import { createSafeContext } from '../../core'
+import { createSafeContext, GetStylesApi } from '../../core'
+import type { HoverCardFactory } from './HoverCard'
 
 export interface HoverCardContextValue {
     x: number | undefined
@@ -30,6 +31,9 @@ export interface HoverCardContextValue {
     controlled: boolean
     disabled: boolean | undefined
     transitionProps?: import('../Transition').TransitionOverride
+    /** HoverCard 的 styles api（对齐 Menu 模式经 context 下发），Dropdown/arrow 消费：
+     *  让 radius/shadow（varsResolver 产出 CSS 变量）与 classNames/styles/unstyled 真正生效 */
+    getStyles: GetStylesApi<HoverCardFactory>
 }
 
 export const [HoverCardContextProvider, useHoverCardContext] = createSafeContext<HoverCardContextValue>(

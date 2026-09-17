@@ -172,10 +172,13 @@ export const AngleSlider = factory<AngleSliderFactory>((_props, ref) => {
         }
 
         if (event.key === 'Home') {
+            // Home/End 同样会触发页面滚动（聚焦容器可滚动时），与方向键一致拦截默认行为
+            event.preventDefault()
             newValue = 0
         }
 
         if (event.key === 'End') {
+            event.preventDefault()
             // 值域为 [0, 360) 的 step 网格,End 取网格上的最大值而非不可达的 359/360
             newValue = normalizeRadialValue(360 - step, step)
         }

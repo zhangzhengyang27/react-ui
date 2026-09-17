@@ -15,6 +15,7 @@ import { useDidUpdate, useMergedRef } from '@xiaoye-react/hooks';
 import { useUncontrolledDates } from '../../hooks';
 import { DatePickerType, DateStringValue, DateValue } from '../../types';
 import { assignTime, clampDate, getDefaultClampedDate } from '../../utils';
+import { clampLevel } from '../Calendar/clamp-level/clamp-level';
 import { pickCalendarProps } from '../Calendar';
 import { DatePicker, DatePickerBaseProps, DatePickerStylesNames } from '../DatePicker';
 import { useDatesContext } from '../DatesProvider';
@@ -201,7 +202,19 @@ export const InlineDateTimePicker = genericFactory<InlineDateTimePickerFactory>(
 
   const [startTimeValue, setStartTimeValue] = useState(getInitialStartTime);
   const [endTimeValue, setEndTimeValue] = useState(getInitialEndTime);
-  const [currentLevel, setCurrentLevel] = useState(level || defaultLevel || 'month');
+  // 时间面板可见性由 currentLevel 决定,初值必须与 Calendar 实际显示层级(经 min/maxLevel 钳制)一致,
+  // 否则如 defaultLevel="year" + maxLevel="month" 时 Calendar 显示 month 层,
+  // 而 currentLevel 停在 'year' 会永久隐藏时间面板
+  const [currentLevel, setCurrentLevel] = useState(
+    clampLevel(level || defaultLevel || 'month', calendarProps.minLevel, calendarProps.maxLevel)
+  );
+
+  // 受控 level prop 程序化变化时同步 currentLevel
+  useDidUpdate(() => {
+    setCurrentLevel(
+      clampLevel(level || defaultLevel || 'month', calendarProps.minLevel, calendarProps.maxLevel)
+    );
+  }, [level, defaultLevel, calendarProps.minLevel, calendarProps.maxLevel]);
 
   const _defaultDate = isRange
     ? (Array.isArray(_value) ? _value[0] : null) || defaultDate
@@ -212,6 +225,9 @@ export const InlineDateTimePicker = genericFactory<InlineDateTimePickerFactory>(
       setValue(
         assignTime(clampDate(minDate, maxDate, date), startTimeValue || defaultTimeValue || '')
       );
+    } else {
+      // allowDeselect：点击已选日期反选时 useDatesState 回调 null,此分支此前被静默丢弃导致反选不生效
+      setValue(null as any);
     }
     startTimePickerRef.current?.focus();
   };
@@ -249,6 +265,10 @@ export const InlineDateTimePicker = genericFactory<InlineDateTimePickerFactory>(
     }
   };
 
+  // 只保留日期部分,用于清空时间输入时同步合成值
+  const stripTime = (dateValue: DateStringValue | null) =>
+    dateValue ? dayjs(dateValue).format('YYYY-MM-DD') : null;
+
   const handleStartTimeChange = (timeString: string) => {
     timePickerProps?.onChange?.(timeString);
     setStartTimeValue(timeString);
@@ -262,6 +282,16 @@ export const InlineDateTimePicker = genericFactory<InlineDateTimePickerFactory>(
       } else {
         setValue(assignTime(_value as DateStringValue | null, timeString));
       }
+    } else {
+      // 清空时间输入(Backspace/clear)时同步去掉合成值中的时间部分,
+      // 否则时间框显示已清空、formattedValue/提交值仍带旧时间
+      if (isRange && Array.isArray(_value)) {
+        if (_value[0]) {
+          setValue([stripTime(_value[0]), _value[1]] as any);
+        }
+      } else if (_value) {
+        setValue(stripTime(_value as DateStringValue) as any);
+      }
     }
   };
 
@@ -272,6 +302,9 @@ export const InlineDateTimePicker = genericFactory<InlineDateTimePickerFactory>(
     if (timeString && isRange && Array.isArray(_value) && _value[1]) {
       const newEnd = assignTime(_value[1], timeString);
       setValue([_value[0], newEnd] as any);
+    } else if (!timeString && isRange && Array.isArray(_value) && _value[1]) {
+      // 清空结束时间输入时同步去掉结束日期的时间部分
+      setValue([_value[0], stripTime(_value[1])] as any);
     }
   };
 

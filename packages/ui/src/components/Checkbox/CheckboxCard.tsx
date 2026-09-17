@@ -35,7 +35,7 @@ export interface CheckboxCardProps
     /** Uncontrolled component default value */
     defaultChecked?: boolean
 
-    //** 值变化时调用 */
+    /** 值变化时调用 */
     onChange?: (checked: boolean) => void
 
     /** Adds border to the root element */
@@ -46,6 +46,9 @@ export interface CheckboxCardProps
 
     /** Value of the checkbox, used with Checkbox.Group */
     value?: string
+
+    /** If set, the card is disabled（组内使用时 `Checkbox.Group disabled` 作为兜底生效） */
+    disabled?: boolean
 }
 
 export type CheckboxCardFactory = Factory<{
@@ -81,6 +84,7 @@ export const CheckboxCard = factory<CheckboxCardFactory>((_props, ref) => {
         onClick,
         defaultChecked,
         onChange,
+        disabled,
         attributes,
         ...others
     } = props
@@ -101,6 +105,9 @@ export const CheckboxCard = factory<CheckboxCardFactory>((_props, ref) => {
     })
 
     const ctx = useCheckboxGroupContext()
+    // 组级 disabled 作为兜底（自身 prop 优先），对齐 Checkbox/RadioCard 的解析方式：
+    // 此前不消费 ctx.disabled，禁用组内的 Card 仍可点击改组状态
+    const resolvedDisabled = disabled ?? ctx?.disabled
     // 决策 C：group 内未传 value 时无法从 group 状态推导 checked。
     // 原实现以 ctx.value.includes('') 伪造 checked，导致 onChange 谎报 checked=true 而 UI 永不变；
     // 现在不再伪造——保持 undefined 走非受控逻辑，并在点击时 warn 提示补传 value
@@ -119,12 +126,16 @@ export const CheckboxCard = factory<CheckboxCardFactory>((_props, ref) => {
         <CheckboxCardContext.Provider value={{ checked: _value }}>
             <UnstyledButton
                 ref={ref}
-                mod={[{ 'with-border': withBorder, checked: _value }, mod]}
+                mod={[{ 'with-border': withBorder, checked: _value, disabled: resolvedDisabled }, mod]}
                 {...getStyles('card')}
                 {...others}
                 role="checkbox"
                 aria-checked={_value}
+                disabled={resolvedDisabled}
                 onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+                    if (resolvedDisabled) {
+                        return
+                    }
                     onClick?.(event)
                     if (missingGroupValue) {
                         // 决策 C：不再伪造 checked 调 onChange（此前会谎报 checked=true 但 UI 永不变）

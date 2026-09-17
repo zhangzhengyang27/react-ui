@@ -7,11 +7,12 @@
     max-height: var(--cascader-dropdown-height);
     overflow-y: auto;
     padding: calc(var(--ui-spacing-xs) / 2) 0;
-    border-right: 1px solid var(--ui-color-default-border);
+    /* 逻辑属性：RTL 下列分隔线跟随书写方向落在正确的边 */
+    border-inline-end: 1px solid var(--ui-color-default-border);
 }
 
 .column:last-child {
-    border-right: 0;
+    border-inline-end: 0;
 }
 
 .columnItem {
@@ -23,12 +24,12 @@
     margin: 0 calc(var(--ui-spacing-xs) / 2);
     padding: calc(var(--ui-spacing-xs) / 2) var(--ui-spacing-xs);
     border: none;
-    border-radius: var(--ui-default-radius, calc(0.25rem * var(--ui-scale)));
+    border-radius: var(--ui-radius-default, calc(0.25rem * var(--ui-scale)));
     background: none;
     font: inherit;
     font-size: var(--ui-font-size-sm);
     color: var(--ui-color-text);
-    text-align: left;
+    text-align: start;
     cursor: pointer;
 }
 
@@ -72,7 +73,8 @@
 }
 
 .searchList {
-    width: var(--cascader-search-width);
+    /* 此前 width: var(--cascader-search-width) 引用了从未定义的变量（invalid at
+       computed-value time，宽度退化为 auto），删除死声明保持块级满宽行为 */
     max-height: var(--cascader-dropdown-height);
     overflow-y: auto;
     padding: calc(var(--ui-spacing-xs) / 2) 0;
@@ -87,12 +89,12 @@
     margin: 0 calc(var(--ui-spacing-xs) / 2);
     padding: calc(var(--ui-spacing-xs) / 2) var(--ui-spacing-xs);
     border: none;
-    border-radius: var(--ui-default-radius, calc(0.25rem * var(--ui-scale)));
+    border-radius: var(--ui-radius-default, calc(0.25rem * var(--ui-scale)));
     background: none;
     font: inherit;
     font-size: var(--ui-font-size-sm);
     color: var(--ui-color-text);
-    text-align: left;
+    text-align: start;
     cursor: pointer;
 }
 

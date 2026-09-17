@@ -5,7 +5,8 @@ import {
     polymorphicFactory,
     PolymorphicFactory,
     StylesApiProps,
-    useProps
+    useProps,
+    useStyles
 } from '../../core'
 import { Mark } from '../Mark'
 import classes from './Highlight.module.css'
@@ -56,14 +57,27 @@ export const Highlight = polymorphicFactory<HighlightFactory>((_props, _ref) => 
     const props = useProps('Highlight', defaultProps, _props)
     const { classNames, className, style, styles, unstyled, children, highlight, color, attributes, ...others } = props
 
+    const getStyles = useStyles<HighlightFactory>({
+        name: 'Highlight',
+        props,
+        classes,
+        className,
+        style,
+        classNames,
+        styles,
+        unstyled,
+        attributes
+    })
+
     const text = typeof children === 'string' ? children : String(children ?? '')
     const chunks = getChunks({ text, highlight })
 
     return (
-        <Box ref={_ref} component="span" className={className} style={style} {...others}>
+        <Box ref={_ref} component="span" {...getStyles('root')} {...others}>
             {chunks.map(({ chunk, highlighted }, index) =>
                 highlighted ? (
-                    <Mark color={color} key={index}>
+                    // 高亮段挂 'highlight' 样式名（经 Mark 的 className 合并），与 Mark 内部默认叠加
+                    <Mark color={color} key={index} {...getStyles('highlight')}>
                         {chunk}
                     </Mark>
                 ) : (

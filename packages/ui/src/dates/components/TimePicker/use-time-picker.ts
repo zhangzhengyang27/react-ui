@@ -193,7 +193,8 @@ export function useTimePicker({
     if (timeString.valid) {
       acceptChange.current = false;
       const defaultMax = type === 'duration' ? undefined : '23:59:59';
-      const clamped = clampTime(timeString.value, min || '00:00:00', max || defaultMax);
+      // 钳制输出格式与 withSeconds 保持一致(非法输入已在上方 getTimeString 拦截)
+      const clamped = clampTime(timeString.value, min || '00:00:00', max || defaultMax, withSeconds);
       onChange?.(clamped.timeString);
       setHours(parsedTime.hours);
       setMinutes(parsedTime.minutes);

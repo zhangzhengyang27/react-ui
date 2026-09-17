@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import { UIProvider } from '../../core'
 import { TagsInput } from './TagsInput'
@@ -79,5 +79,25 @@ describe('TagsInput', () => {
         fireEvent.click(option)
 
         expect(onChange).toHaveBeenCalledWith(['Vue'])
+    })
+
+    it('点击输入框本体不关闭已展开的建议下拉', async () => {
+        renderTagsInput(<TagsInput data={['React', 'Vue']} />)
+        const input = screen.getByRole('combobox')
+
+        // 点击打开建议下拉
+        fireEvent.click(input)
+        const wrapper = input.closest('[aria-expanded]')
+        await waitFor(() => {
+            expect(wrapper).toHaveAttribute('aria-expanded', 'true')
+            expect(screen.getByRole('option', { name: 'React' })).toBeInTheDocument()
+        })
+
+        // 输入过程中点击输入框（调整光标）不收起建议列表
+        fireEvent.click(input)
+        expect(wrapper).toHaveAttribute('aria-expanded', 'true')
+        await waitFor(() => {
+            expect(screen.getByRole('option', { name: 'Vue' })).toBeInTheDocument()
+        })
     })
 })

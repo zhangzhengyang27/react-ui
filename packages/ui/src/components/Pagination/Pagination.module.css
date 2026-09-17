@@ -5,9 +5,34 @@
     --pagination-control-size-lg: 38px;
     --pagination-control-size-xl: 44px;
 
+    /* 基础声明对齐文档默认档 md（此前缺省回落 sm 的 26px 与 @default 'md' 不符，
+       同 Slider.module.css 的 --slider-thumb-size 基础声明做法；size prop 经内联变量覆盖） */
+    --pagination-control-size: var(--pagination-control-size-md);
+
     display: flex;
     align-items: center;
     gap: calc(var(--ui-spacing-sm) / 2);
+}
+
+/* responsive 布局：容器查询在窄空间隐藏页码列表、显示紧凑标签（宽空间反之），
+   使文档承诺的「CSS 容器查询切换页码与紧凑标签」真正生效 */
+.root:where([data-layout='responsive']) {
+    container-type: inline-size;
+
+    & .label {
+        display: none;
+    }
+}
+
+/* 窄容器（24rem 阈值）：页码列表换紧凑标签；置于上方默认规则之后以覆盖 .label 的 display:none */
+@container (max-width: 24rem) {
+    .root[data-layout='responsive'] .items {
+        display: none;
+    }
+
+    .root[data-layout='responsive'] .label {
+        display: flex;
+    }
 }
 
 .control {

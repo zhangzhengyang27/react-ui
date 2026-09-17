@@ -10,14 +10,16 @@ import { useForm } from '../use-form';
 export default { title: 'Form' };
 
 export function Dirty() {
-  const form = useForm<{ formArray: Array<{ one: string; two: string }> }>({
+  const form = useForm<{ formArray: Array<{ key: string; one: string; two: string }> }>({
     initialValues: {
       formArray: [
         {
+          key: 'item-a',
           one: '1',
           two: '1',
         },
         {
+          key: 'item-b',
           one: '2',
           two: '2',
         },
@@ -27,8 +29,9 @@ export function Dirty() {
 
   return (
     <>
-      {form.values.formArray.map((_item, index) => (
-        <Group key={index}>
+      {/* 列表项用稳定 key 而非 index:删除中间项时 index key 会与数据错位 */}
+      {form.values.formArray.map((item, index) => (
+        <Group key={item.key}>
           <ActionIcon onClick={() => form.removeListItem('formArray', index)}>
             <TrashIcon size={16} />
           </ActionIcon>
@@ -36,7 +39,15 @@ export function Dirty() {
           <TextInput {...form.getInputProps(`formArray.${index}.two`)} />
         </Group>
       ))}
-      <Button onClick={() => form.insertListItem('formArray', { one: '', two: '' })}>
+      <Button
+        onClick={() =>
+          form.insertListItem('formArray', {
+            key: window.crypto.randomUUID(),
+            one: '',
+            two: '',
+          })
+        }
+      >
         Add item
       </Button>
       <Text>{form.isDirty() ? 'Dirty' : 'Not Dirty'}</Text>

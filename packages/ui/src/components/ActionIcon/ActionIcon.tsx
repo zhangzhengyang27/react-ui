@@ -174,6 +174,7 @@ export const ActionIcon = polymorphicFactory<ActionIconFactory>((_props, ref) =>
             variant={variant}
             size={size}
             disabled={disabled || loading}
+            aria-busy={loading || undefined}
             ref={ref}
             mod={[{ loading, disabled: disabled || dataDisabled }, mod]}
         >

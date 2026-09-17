@@ -12,6 +12,7 @@ import {
     rem,
     StyleProp,
     StylesApiProps,
+    useDirection,
     useProps,
     useStyles
 } from '../../core'
@@ -163,11 +164,14 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
     })
 
     const _id = useId(id)
+    const { dir } = useDirection()
 
     // embla-carousel-react 8.x 内部会对 options 做深比较(areOptionsEqual),
     // 值变化时自动调用 emblaApi.reInit,故 loop/align 等 options 变化无需手动 reInit
     const [emblaRef, embla] = useEmblaCarousel({
         axis: orientation === 'horizontal' ? 'x' : 'y',
+        // RTL 下滚动方向/拖拽随 dir 翻转(仅水平轴有意义,与 @xiaoye-react/carousel 副本对齐)
+        direction: orientation === 'horizontal' ? dir : undefined,
         startIndex: initialSlide,
         loop,
         // embla 8.x 的选项名是 watchDrag,旧的 draggable 会被静默忽略
@@ -222,6 +226,9 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
         (event: React.KeyboardEvent<HTMLDivElement>) => {
             if (!withKeyboardEvents) return
 
+            // 其他处理器已标记过默认行为被阻止时不再重复处理
+            if (event.defaultPrevented) return
+
             // 事件来自输入控件时不拦截,避免劫持 slide 内输入框的方向键操作
             const target = event.target as HTMLElement
             if (
@@ -233,18 +240,21 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
                 return
             }
 
-            // 垂直方向 carousel 使用 Up/Down 翻页而非 Left/Right
+            // 垂直方向 carousel 使用 Up/Down 翻页而非 Left/Right;
+            // 水平方向 RTL 下左右键与滚动方向对齐互换(与 embla direction 翻转一致)
             const isHorizontal = orientation === 'horizontal'
-            if (event.key === (isHorizontal ? 'ArrowRight' : 'ArrowDown')) {
+            const nextKey = isHorizontal ? (dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight') : 'ArrowDown'
+            const prevKey = isHorizontal ? (dir === 'rtl' ? 'ArrowRight' : 'ArrowLeft') : 'ArrowUp'
+            if (event.key === nextKey) {
                 event.preventDefault()
                 handleNext()
             }
-            if (event.key === (isHorizontal ? 'ArrowLeft' : 'ArrowUp')) {
+            if (event.key === prevKey) {
                 event.preventDefault()
                 handlePrevious()
             }
         },
-        [withKeyboardEvents, orientation, handleNext, handlePrevious]
+        [withKeyboardEvents, orientation, dir, handleNext, handlePrevious]
     )
 
     useEffect(() => {
@@ -275,7 +285,7 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
                 key={index}
                 type="button"
                 role="tab"
-                aria-label={`Go to slide ${index + 1}`}
+                aria-label={`跳转到第 ${index + 1} 张`}
                 aria-selected={index === selected}
                 data-active={index === selected || undefined}
                 data-orientation={orientation}
@@ -290,11 +300,13 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
                 ref={ref}
                 role="region"
                 aria-roledescription="carousel"
+                // aria-roledescription 要求元素自身有可访问名称;消费者可通过 aria-label 覆盖
+                aria-label="carousel"
                 {...getStyles('root')}
                 {...others}
                 id={_id}
                 mod={{ orientation, 'include-gap-in-size': includeGapInSize }}
-                onKeyDownCapture={handleKeydown}
+                onKeyDown={handleKeydown}
             >
                 <VisuallyHidden role="status" aria-live="polite" aria-atomic="true">
                     {slidesCount > 0 && `Slide ${selected + 1} of ${slidesCount}`}
@@ -303,7 +315,7 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
                 {withControls && (
                     <div {...getStyles('controls')} data-orientation={orientation}>
                         <UnstyledButton
-                            aria-label="Previous slide"
+                            aria-label="上一张幻灯片"
                             data-inactive={!canScrollPrev || undefined}
                             data-type="previous"
                             tabIndex={canScrollPrev ? 0 : -1}
@@ -318,7 +330,7 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
                         </UnstyledButton>
 
                         <UnstyledButton
-                            aria-label="Next slide"
+                            aria-label="下一张幻灯片"
                             data-inactive={!canScrollNext || undefined}
                             data-type="next"
                             tabIndex={canScrollNext ? 0 : -1}
@@ -344,7 +356,7 @@ export const Carousel = factory<CarouselFactory>((_props, ref) => {
                     <div
                         {...getStyles('indicators')}
                         role="tablist"
-                        aria-label="Slides"
+                        aria-label="幻灯片列表"
                         data-orientation={orientation}
                     >
                         {indicators}

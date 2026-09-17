@@ -51,6 +51,17 @@ function getDefaultValue(element: HTMLElement) {
     return element.textContent || ''
 }
 
+// 内容级比较:initialize 每次都产出新数组引用,逐项相等时复用旧引用,
+// 避免无条件 setState 与不稳定依赖叠加形成渲染循环
+function isSameHeadings(a: UseScrollSpyHeadingData[], b: UseScrollSpyHeadingData[]) {
+    if (a.length !== b.length) {
+        return false
+    }
+    return a.every((item, index) =>
+        item.id === b[index].id && item.depth === b[index].depth && item.value === b[index].value
+    )
+}
+
 export interface UseScrollSpyHeadingData {
     /** Heading depth, 1-6 */
     depth: number
@@ -108,6 +119,14 @@ export function useScrollSpy({
     const [data, setData] = useState<UseScrollSpyHeadingData[]>([])
     const headingsRef = useRef<UseScrollSpyHeadingData[]>([])
 
+    // getDepth/getValue 经 ref 转发:消费方传内联回调(每渲染新引用)时
+    // initialize 身份保持稳定,否则 effect 每渲染重跑 → setData(新数组) →
+    // 再渲染 → 循环,React 报 Maximum update depth exceeded
+    const getDepthRef = useRef(getDepth)
+    getDepthRef.current = getDepth
+    const getValueRef = useRef(getValue)
+    getValueRef.current = getValue
+
     const handleScroll = useCallback(() => {
         setActive(
             getActiveElement(
@@ -118,17 +137,21 @@ export function useScrollSpy({
     }, [offset])
 
     const initialize = useCallback(() => {
-        const headings = getHeadingsData(Array.from(document.querySelectorAll(selector)), getDepth, getValue)
+        const headings = getHeadingsData(
+            Array.from(document.querySelectorAll(selector)),
+            getDepthRef.current,
+            getValueRef.current
+        )
         headingsRef.current = headings
         setInitialized(true)
-        setData(headings)
+        setData(currentData => (isSameHeadings(currentData, headings) ? currentData : headings))
         setActive(
             getActiveElement(
                 headings.map(d => d.getNode().getBoundingClientRect()),
                 offset
             )
         )
-    }, [selector, getDepth, getValue, offset])
+    }, [selector, offset])
 
     useEffect(() => {
         initialize()

@@ -24,17 +24,17 @@
 
 .root[data-with-column-borders] th,
 .root[data-with-column-borders] td {
-    border-right: 1px solid var(--ui-color-default-border);
+    border-inline-end: 1px solid var(--ui-color-default-border);
 }
 
 .root[data-with-column-borders] th:last-child,
 .root[data-with-column-borders] td:last-child {
-    border-right: 0;
+    border-inline-end: 0;
 }
 
 .th {
     font-weight: var(--ui-font-weight-bold);
-    text-align: left;
+    text-align: start;
     padding: var(--table-vertical-spacing) var(--table-horizontal-spacing);
 }
 
@@ -50,7 +50,7 @@
     padding: var(--table-vertical-spacing) var(--table-horizontal-spacing);
     color: var(--ui-color-dimmed);
     font-size: var(--ui-font-size-sm);
-    text-align: left;
+    text-align: start;
 }
 
 .root[data-striped] tbody tr:nth-child(odd) {

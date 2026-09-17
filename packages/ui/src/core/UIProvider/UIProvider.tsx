@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
-import { UIContext, type UIContextValue } from './UI.context'
+import { UIContext, type UIContextValue, type UIStylesTransform } from './UI.context'
 import { UIThemeProvider } from './UIThemeProvider'
 import { UICssVariables } from './UICssVariables/UICssVariables'
 import type { UIColorScheme } from './theme.types'
@@ -15,6 +15,8 @@ export interface UIProviderProps {
     theme?: UIThemeOverrides
     /** 受控颜色方案；'auto' 表示跟随系统偏好 */
     colorScheme?: UIColorScheme
+    /** 色彩方案持久化 localStorage 键，须与 ColorSchemeScript 的 localStorageKey 一致 @default 'ui-color-scheme-value' */
+    localStorageKey?: string
     /** CSS 类名前缀，默认 'ui' */
     classNamesPrefix?: string
     /** 是否生成静态类名，默认 true */
@@ -25,6 +27,10 @@ export interface UIProviderProps {
     cssVariablesSelector?: string
     /** CSS 变量解析器，默认 defaultCssVariablesResolver */
     cssVariablesResolver?: CSSVariablesResolver
+    /** 样式转换器（如 emotion 集成的 emotionTransform）：启用后 Box 的 sx 与组件 styles 经其转换 */
+    stylesTransform?: UIStylesTransform
+    /** 获取 style 元素的 nonce（内容安全策略场景），返回 undefined 表示不注入 */
+    getStyleNonce?: () => string | undefined
     /** 运行环境，默认 'default' */
     env?: 'default' | 'test'
     /** 子节点 */
@@ -49,12 +55,15 @@ function resolveColorScheme(colorScheme: UIColorScheme): 'light' | 'dark' {
 export function UIProvider({
     theme,
     colorScheme: controlledColorScheme,
+    localStorageKey = 'ui-color-scheme-value',
     children,
     classNamesPrefix = 'ui',
     withStaticClasses = true,
     headless = false,
     cssVariablesSelector = ':root',
     cssVariablesResolver = defaultCssVariablesResolver,
+    stylesTransform,
+    getStyleNonce,
     env = 'default'
 }: UIProviderProps) {
     // 嵌套 Provider（未受控时）默认继承外层的颜色方案，而不是固定 light——
@@ -84,9 +93,11 @@ export function UIProvider({
 
     const clearColorScheme = useCallback(() => {
         if (!controlledColorScheme) {
-            setInternalColorScheme('light')
+            // 清除后回落父级方案而不是写死 light：嵌套未受控 Provider 在外层 dark 下
+            // 调用 clearColorScheme 时，写死 light 会把全局属性翻成浅色、与外层声明冲突
+            setInternalColorScheme(parentContext?.colorScheme ?? 'light')
         }
-    }, [controlledColorScheme])
+    }, [controlledColorScheme, parentContext?.colorScheme])
 
     const getRootElement = useCallback(
         () => (typeof document !== 'undefined' ? document.documentElement : undefined),
@@ -100,12 +111,13 @@ export function UIProvider({
             clearColorScheme,
             getRootElement,
             classNamesPrefix,
-            getStyleNonce: () => undefined,
+            getStyleNonce: getStyleNonce ?? (() => undefined),
             cssVariablesResolver,
             cssVariablesSelector,
             withStaticClasses,
             headless,
-            stylesTransform: undefined,
+            stylesTransform,
+            localStorageKey,
             env
         }),
         [
@@ -114,18 +126,26 @@ export function UIProvider({
             clearColorScheme,
             getRootElement,
             classNamesPrefix,
+            getStyleNonce,
             cssVariablesResolver,
             cssVariablesSelector,
             withStaticClasses,
             headless,
+            stylesTransform,
+            localStorageKey,
             env
         ]
     )
 
     // matchMedia 读取放在 effect 内，避免渲染期访问（SSR / jsdom 环境不安全）；
-    // auto 模式下订阅系统偏好变化实时同步属性，非 auto 时仅在 colorScheme 变化时写入
+    // auto 模式下订阅系统偏好变化实时同步属性，非 auto 时仅在 colorScheme 变化时写入。
+    // data-ui-color-scheme 挂在 document.documentElement（全局唯一）：嵌套实例同时写会互相覆盖——
+    // 挂载期 passive effects 自底向上执行，内层先写、外层后写并最终胜出，内层受控方案首挂即被抹掉。
+    // 约定只有根 Provider（无外层 context）写属性与订阅系统偏好，内层仅向自身子树提供 context 值，
+    // 让"谁写属性"确定化（嵌套未受控本就继承外层方案，内层写属性是纯冗余）
+    const isRootProvider = parentContext === null
     useEffect(() => {
-        if (typeof document === 'undefined') return
+        if (!isRootProvider || typeof document === 'undefined') return
         const root = getRootElement()
         if (!root) return
 
@@ -144,7 +164,7 @@ export function UIProvider({
         }
         query.addEventListener('change', onSystemChange)
         return () => query.removeEventListener('change', onSystemChange)
-    }, [colorScheme, getRootElement])
+    }, [isRootProvider, colorScheme, getRootElement])
 
     return (
         <UIContext.Provider value={value}>

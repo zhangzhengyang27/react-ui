@@ -46,6 +46,9 @@ export const ComboboxPopoverTarget = factory<ComboboxPopoverTargetFactory>((prop
         'aria-controls': ctx.opened ? ctx.dropdownId : undefined,
         'aria-activedescendant':
             ctx.opened && ctx.activeIndex >= 0 ? `${ctx.dropdownId}-${ctx.activeIndex}` : undefined,
+        // 打开期间标记：焦点在目标元素上按 Escape 时，Modal 的 window 捕获监听跳过，
+        // 只关下拉不同时关 Modal（对齐 PopoverTarget/ComboboxTarget 的做法）
+        'data-ui-stop-propagation': ctx.opened ? 'true' : undefined,
         className: [childProps.className].filter(Boolean).join(' '),
         onClick: (event: React.MouseEvent<HTMLElement>) => {
             if (!ctx.disabled) {

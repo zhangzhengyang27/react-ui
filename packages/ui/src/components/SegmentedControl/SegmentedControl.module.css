@@ -70,6 +70,12 @@
     cursor: not-allowed;
 }
 
+/* 键盘焦点指示：radio 为 opacity:0 的覆盖层，描边落在可见的 control 上（对齐 Rating 的 :has 模式） */
+.control:has(.input:focus-visible) {
+    outline: 2px solid var(--ui-primary-color-filled);
+    outline-offset: 2px;
+}
+
 .label {
     position: relative;
     z-index: 1;

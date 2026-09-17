@@ -115,6 +115,13 @@
   }
 }
 
+/* 前庭障碍用户可摆脱常驻滚动动画（与库内 prefers-reduced-motion 出口约定一致） */
+@media (prefers-reduced-motion: reduce) {
+  .content {
+    animation: none;
+  }
+}
+
 .group {
   display: flex;
   flex-shrink: 0;

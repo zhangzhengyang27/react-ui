@@ -8,6 +8,7 @@ import { UISize } from '../../../core/UIProvider/theme.types';
 import { factory } from '../../../core/factory/factory';
 import { createVarsResolver } from '../../../core/styles-api/index';
 import { StylesApiProps } from '../../../core/styles-api/styles-api.types';
+import type { DateStringValue } from '../../types';
 import { useStyles } from '../../../core/styles-api/use-styles/use-styles';
 import { DataAttributes } from '../../../core/types';
 import { getSize } from '../../../core/utils/index';

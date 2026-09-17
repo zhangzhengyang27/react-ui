@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import { useMergedRef, useUncontrolled } from '@xiaoye-react/hooks'
 import {
     type BoxProps,
@@ -80,7 +79,6 @@ export const MenuCheckboxItem = factory<MenuCheckboxItemFactory>((props, ref) =>
     const ctx = useMenuContext()
     const groupCtx = useMenuCheckboxGroupContext()
     const theme = useUITheme()
-    const itemRef = useRef<HTMLButtonElement>(null)
 
     const groupChecked = groupCtx && value !== undefined ? groupCtx.values.includes(value) : undefined
 
@@ -115,7 +113,7 @@ export const MenuCheckboxItem = factory<MenuCheckboxItemFactory>((props, ref) =>
             unstyled={ctx.unstyled}
             tabIndex={ctx.menuItemTabIndex}
             {...ctx.getStyles('item', { className, style, styles, classNames })}
-            ref={useMergedRef(itemRef, ref)}
+            ref={useMergedRef(ref)}
             role="menuitemcheckbox"
             aria-checked={_checked}
             disabled={disabled}

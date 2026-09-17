@@ -70,6 +70,9 @@ export interface ModalProps
 
     /** 如果设置，则模态框占据整个屏幕 */
     fullScreen?: boolean
+
+    /** useModalsStack register 返回的栈 id，仅用于标记、不透传 DOM（避免渲染出 stackid 属性） */
+    stackId?: string
 }
 
 export type ModalFactory = Factory<{
@@ -134,6 +137,7 @@ export const Modal = factory<ModalFactory>((_props, _ref) => {
         scrollAreaComponent,
         fullScreen,
         centered,
+        stackId,
         __staticSelector = 'Modal',
         className,
         style,
@@ -145,19 +149,26 @@ export const Modal = factory<ModalFactory>((_props, _ref) => {
     } = props
 
     // Modal.Stack 内的子 Modal 向栈注册：关闭后焦点归还等行为不变，
-    // zIndex 由栈按挂载顺序递增分配，嵌套弹层自动层叠
+    // zIndex 由栈按打开顺序递增分配，嵌套弹层自动层叠
     const stackCtx = useContext(ModalStackContext)
     const autoId = useId(id)
 
+    // 注册/注销按 opened 门控：useModalsStack 的标准用法是多个 Modal 常驻挂载、
+    // 打开顺序任意，若挂载即注册，zIndex 会按 JSX 顺序分配，与打开顺序（Escape 栈语义）不一致。
+    // 依赖只取 addModal/removeModal（Stack 侧 useCallback 的稳定句柄），不能放整个 stackCtx：
+    // 注册本身会改变 stack → context value 身份随之变化，effect 若依赖 stackCtx 会
+    // cleanup+setup 无限重跑，再次触发 "Maximum update depth exceeded"
+    const addModalToStack = stackCtx?.addModal
+    const removeModalFromStack = stackCtx?.removeModal
     useEffect(() => {
-        if (!stackCtx) {
+        if (!addModalToStack || !removeModalFromStack || !opened) {
             return undefined
         }
-        stackCtx.addModal(autoId, zIndex!)
-        return () => stackCtx.removeModal(autoId)
+        addModalToStack(autoId, zIndex!)
+        return () => removeModalFromStack(autoId)
         // zIndex 不入依赖：注册一次，后续 zIndex prop 变化不影响栈内排序
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [stackCtx, autoId])
+    }, [addModalToStack, removeModalFromStack, autoId, opened])
 
     const resolvedZIndex = stackCtx ? stackCtx.getZIndex(autoId) : zIndex
 

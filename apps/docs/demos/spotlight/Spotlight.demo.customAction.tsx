@@ -12,26 +12,26 @@ import { Badge, Button, Center, Group, Text } from '@xiaoye-react/ui';
 import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/csr/MagnifyingGlass';
 const data = [
   {
-    image: 'https://img.icons8.com/clouds/256/000000/futurama-bender.png',
+    image: '/demo/images/futurama-bender.png',
     title: 'Bender Bending Rodríguez',
     description: '对烹饪很着迷，但没有味觉',
     new: true,
   },
 
   {
-    image: 'https://img.icons8.com/clouds/256/000000/futurama-mom.png',
+    image: '/demo/images/futurama-mom.png',
     title: 'Carol Miller',
     description: '地球上最富有的人之一',
     new: false,
   },
   {
-    image: 'https://img.icons8.com/clouds/256/000000/homer-simpson.png',
+    image: '/demo/images/homer-simpson.png',
     title: 'Homer Simpson',
     description: '超重、懒惰且常常无知',
     new: false,
   },
   {
-    image: 'https://img.icons8.com/clouds/256/000000/spongebob-squarepants.png',
+    image: '/demo/images/spongebob-squarepants.png',
     title: 'Spongebob Squarepants',
     description: '不仅仅是海绵',
     new: false,
@@ -84,26 +84,26 @@ function Demo() {
 
 const data = [
     {
-        image: 'https://img.icons8.com/clouds/256/000000/futurama-bender.png',
+        image: '/demo/images/futurama-bender.png',
         title: 'Bender Bending Rodríguez',
         description: '对烹饪很着迷，但没有味觉',
         new: true
     },
 
     {
-        image: 'https://img.icons8.com/clouds/256/000000/futurama-mom.png',
+        image: '/demo/images/futurama-mom.png',
         title: 'Carol Miller',
         description: '地球上最富有的人之一',
         new: false
     },
     {
-        image: 'https://img.icons8.com/clouds/256/000000/homer-simpson.png',
+        image: '/demo/images/homer-simpson.png',
         title: 'Homer Simpson',
         description: '超重、懒惰且常常无知',
         new: false
     },
     {
-        image: 'https://img.icons8.com/clouds/256/000000/spongebob-squarepants.png',
+        image: '/demo/images/spongebob-squarepants.png',
         title: 'Spongebob Squarepants',
         description: '不仅仅是海绵',
         new: false

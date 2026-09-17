@@ -280,8 +280,6 @@ export function DarkColorSchemeDemo() {
         label="NumberInput"
         value={5361.44}
         thousandSeparator
-        fixedDecimalScale
-        decimalScale={2}
         prefix="$ "
         size="lg"
       />

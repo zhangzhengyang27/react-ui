@@ -14,8 +14,6 @@ ReactUI 的示例和文档使用 [Phosphor icons](https://phosphoricons.com/)，
 
 大多数图标库支持 `size` 属性（或类似的 `width` 和 `height` 属性），用于修改图标的宽度和高度。通常以像素为单位的数字。
 
-{/* <Demo data={GuidesDemos.icon} /> */}
-
 > **size 属性中的 rem 单位**
 >
 > 图标的 `size` 属性通常会在底层转换为 `width` 和 `height` 属性。

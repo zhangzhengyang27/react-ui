@@ -3,7 +3,8 @@ import { TreeSelect } from '@xiaoye-react/ui';
 import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => {
-  const [value, setValue] = useState<string | null>(null);
+  // TreeSelect 的 onChange 回调参数是 string | string[] | null（单选为 string | null）
+  const [value, setValue] = useState<string | string[] | null>(null);
   const data = [
     {
       value: 'fruits',

@@ -100,7 +100,7 @@ group:
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| type | 滚动条类型 | `'auto' \| 'always' \| 'scroll' \| 'hover'` | `'hover'` |
+| type | 滚动条显示方式：`always` 常驻，`never` 完全不显示 | `'always' \| 'never'` | `'always'` |
 | scrollbarSize | 滚动条尺寸 | `number` | `10` |
 | offsetScrollbars | 是否让滚动条占位 | `boolean` | `false` |
 | onScrollPositionChange | 滚动位置变化回调 | `({ x, y }) => void` | — |

@@ -86,9 +86,9 @@ Table 支持 tfoot 和 caption 元素。设置 `captionSide` 属性（top 或 bo
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | data | 表格数据 | `TableData[][]` | `[]` |
-| withBorder | 是否显示边框 | `boolean` | `false` |
-| withColumnBorders | 是否显示列边框 | `boolean` | `false` |
-| withRowBorders | 是否显示行边框 | `boolean` | `true` |
+| withTableBorder | 是否为整个表格加边框 | `boolean` | `false` |
+| withRowBorders | 是否在行之间加水平边框 | `boolean` | `true` |
+| withColumnBorders | 是否在列之间加垂直边框 | `boolean` | `false` |
 | striped | 是否显示条纹 | `boolean` | `false` |
 | highlightOnHover | 是否悬停高亮 | `boolean` | `false` |
 | horizontalSpacing | 水平内边距 | `UISpacing` | `'xs'` |

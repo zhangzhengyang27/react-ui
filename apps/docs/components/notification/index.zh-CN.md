@@ -59,7 +59,6 @@ function Demo() {
 | loading | 加载中状态 | `boolean` | `false` |
 | withCloseButton | 是否显示关闭按钮 | `boolean` | `true` |
 | onClose | 关闭回调 | `() => void` | — |
-| withBorder | 是否显示边框 | `boolean` | `false` |
 | radius | 圆角 | `UIRadius` | — |
 
 支持所有原生 HTML 属性。

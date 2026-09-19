@@ -103,7 +103,6 @@ function Accessibility() {
 | mask | 是否掩码显示 | `boolean` | `false` |
 | placeholder | 占位符 | `string` | `'○'` |
 | disabled | 是否禁用 | `boolean` | `false` |
-| error | 错误信息 | `ReactNode` | — |
 | onComplete | 全部填满时回调 | `(value: string) => void` | — |
 
 支持所有原生 HTML 属性。

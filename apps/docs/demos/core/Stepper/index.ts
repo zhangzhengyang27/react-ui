@@ -1,7 +1,7 @@
 export { usage } from './Stepper.demo.usage';
 export { configurator } from './Stepper.demo.configurator';
 export { icons } from './Stepper.demo.icons';
-export { iconSizeConfigurator } from './Stepper.demo.iconSizeConfigurator';
+export { sizeConfigurator } from './Stepper.demo.sizeConfigurator';
 export { iconsOnly } from './Stepper.demo.iconsOnly';
 export { orientation } from './Stepper.demo.orientation';
 export { stepColor } from './Stepper.demo.stepColor';

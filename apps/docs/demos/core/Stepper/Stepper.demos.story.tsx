@@ -18,9 +18,9 @@ export const Demo_icons = {
   render: renderDemo(demos.icons),
 };
 
-export const Demo_iconSizeConfigurator = {
-  name: '⭐ Demo: iconSizeConfigurator',
-  render: renderDemo(demos.iconSizeConfigurator),
+export const Demo_sizeConfigurator = {
+  name: '⭐ Demo: sizeConfigurator',
+  render: renderDemo(demos.sizeConfigurator),
 };
 
 export const Demo_iconsOnly = {

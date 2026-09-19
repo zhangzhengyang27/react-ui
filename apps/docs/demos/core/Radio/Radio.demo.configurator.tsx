@@ -28,16 +28,6 @@ export const configurator: UIDemo = {
   code,
   centered: true,
   controls: [
-    {
-      prop: 'labelPosition',
-      type: 'segmented',
-      data: [
-        { value: 'right', label: '右' },
-        { value: 'left', label: '左' },
-      ],
-      initialValue: 'right',
-      libraryValue: 'right',
-    },
     { prop: 'label', type: 'string', initialValue: 'I cannot be unchecked', libraryValue: '' },
     { prop: 'description', type: 'string', initialValue: '', libraryValue: '' },
     { prop: 'error', type: 'string', initialValue: '', libraryValue: '' },

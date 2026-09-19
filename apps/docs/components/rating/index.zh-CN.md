@@ -86,7 +86,6 @@ function Demo() {
 | readOnly | 是否只读 | `boolean` | `false` |
 | clearable | 再次点击当前值时清除评分 | `boolean` | `false` |
 | fractions | 评分粒度 | `number` | `1` |
-| highlightSelectedOnly | 是否仅高亮当前选中星 | `boolean` | `false` |
 
 支持所有原生 HTML 属性。
 

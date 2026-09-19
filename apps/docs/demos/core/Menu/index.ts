@@ -14,5 +14,4 @@ export { sub } from './Menu.demo.sub';
 export { checkboxItem } from './Menu.demo.checkboxItem';
 export { checkboxGroup } from './Menu.demo.checkboxGroup';
 export { radioItem } from './Menu.demo.radioItem';
-export { alignItemsLabels } from './Menu.demo.alignItemsLabels';
 export { contextMenu } from './Menu.demo.contextMenu';

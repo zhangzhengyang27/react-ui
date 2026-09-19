@@ -26,11 +26,11 @@ group:
 
 ### 颜色、圆角和尺寸
 
-组件尺寸由两个属性控制：`size` 和 `iconSize`。`size` 属性控制图标尺寸、标签和描述字体大小。`iconSize` 允许单独覆盖图标尺寸，而不影响其他尺寸值：
+组件尺寸由 `size` 属性控制：它同时决定图标尺寸、标签和描述的字体大小：
 
 <code src="./demo/configurator.tsx"></code>
 
-<code src="./demo/iconSizeConfigurator.tsx"></code>
+<code src="./demo/sizeConfigurator.tsx"></code>
 
 ### 自定义图标
 

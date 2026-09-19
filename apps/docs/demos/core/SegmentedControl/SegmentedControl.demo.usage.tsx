@@ -29,7 +29,6 @@ export const usage: UIDemo = {
       ],
     },
     { prop: 'fullWidth', type: 'boolean', initialValue: false, libraryValue: false },
-    { prop: 'withItemsBorders', type: 'boolean', initialValue: true, libraryValue: true },
     { type: 'size', prop: 'size', initialValue: 'sm', libraryValue: 'sm' },
     { type: 'size', prop: 'radius', initialValue: 'md', libraryValue: 'md' },
   ],

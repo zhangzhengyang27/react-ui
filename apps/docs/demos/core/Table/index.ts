@@ -8,4 +8,3 @@ export { scrollContainerNative } from './Table.demo.scrollContainerNative';
 export { scrollContainerNativeMaxHeight } from './Table.demo.scrollContainerNativeMaxHeight';
 export { rowSelection } from './Table.demo.rowSelection';
 export { data } from './Table.demo.data';
-export { tabularNums } from './Table.demo.tabularNums';

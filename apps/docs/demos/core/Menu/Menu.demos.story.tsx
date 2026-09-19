@@ -83,11 +83,6 @@ export const Demo_radioItem = {
   render: renderDemo(demos.radioItem),
 };
 
-export const Demo_alignItemsLabels = {
-  name: '⭐ Demo: alignItemsLabels',
-  render: renderDemo(demos.alignItemsLabels),
-};
-
 export const Demo_contextMenu = {
   name: '⭐ Demo: contextMenu',
   render: renderDemo(demos.contextMenu),

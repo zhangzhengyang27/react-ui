@@ -85,7 +85,7 @@ function Demo() {
 
 ### 选中选项图标
 
-设置 `checkIconPosition` 属性为 `left` 或 `right`，以控制活动选项中勾选图标的位置。要移除勾选图标，请设置 `withCheckIcon={false}`。要对齐未选中标签与已选中标签，请设置 `withAlignedLabels` 属性。
+设置 `checkIconPosition` 属性为 `left` 或 `right`，以控制活动选项中勾选图标的位置。
 
 <code src="./demo/checkIcon.tsx"></code>
 

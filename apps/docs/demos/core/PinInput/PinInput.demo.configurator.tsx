@@ -24,7 +24,6 @@ export const configurator: UIDemo = {
     { prop: 'mask', type: 'boolean', initialValue: false, libraryValue: false },
     { prop: 'placeholder', type: 'string', initialValue: '○', libraryValue: '○' },
     { prop: 'disabled', type: 'boolean', initialValue: false, libraryValue: false },
-    { prop: 'error', type: 'boolean', initialValue: false, libraryValue: false },
     {
       prop: 'type',
       type: 'select',

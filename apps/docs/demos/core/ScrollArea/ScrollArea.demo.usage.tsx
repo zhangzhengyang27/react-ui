@@ -68,14 +68,5 @@ export const usage: UIDemo = {
       libraryValue: 10,
       initialValue: 10,
     },
-    {
-      prop: 'scrollHideDelay',
-      type: 'number',
-      min: 0,
-      max: 6000,
-      step: 500,
-      libraryValue: 1000,
-      initialValue: 1000,
-    },
   ],
 };

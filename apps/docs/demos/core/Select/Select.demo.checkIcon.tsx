@@ -39,8 +39,6 @@ export const checkIcon: UIDemo = {
   centered: true,
   maxWidth: 340,
   controls: [
-    { type: 'boolean', prop: 'withCheckIcon', initialValue: true, libraryValue: true },
-    { type: 'boolean', prop: 'withAlignedLabels', initialValue: false, libraryValue: false },
     {
       type: 'segmented',
       prop: 'checkIconPosition',

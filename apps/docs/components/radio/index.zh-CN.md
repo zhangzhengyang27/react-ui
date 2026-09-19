@@ -126,7 +126,7 @@ function Demo() {
       name="favoriteFramework"
       label="选择你最喜欢的框架/库"
       description="这是匿名的"
-      withAsterisk
+      required
     >
       <Radio value="react" label="React" />
       <Radio value="svelte" label="Svelte" />

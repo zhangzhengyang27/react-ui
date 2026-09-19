@@ -23,19 +23,16 @@ function Demo() {
 }
 `;
 
-export const iconSizeConfigurator: UIDemo = {
+export const sizeConfigurator: UIDemo = {
   type: 'configurator',
   component: Wrapper,
   code,
   controls: [
     {
-      prop: 'iconSize',
-      type: 'number',
-      initialValue: 42,
-      libraryValue: '__',
-      min: 32,
-      max: 62,
-      step: 5,
+      prop: 'size',
+      type: 'size',
+      initialValue: 'md',
+      libraryValue: 'md',
     },
   ],
 };

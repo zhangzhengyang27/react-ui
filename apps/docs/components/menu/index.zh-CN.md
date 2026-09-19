@@ -50,16 +50,6 @@ group:
 
 <code src="./demo/radioItem.tsx"></code>
 
-### 对齐带/不带指示器的项标签
-
-使用 `Menu` 上的 `alignItemsLabels` 属性控制如何为指示器槽位预留空间。当混合使用 `Menu.Item` 与 `Menu.CheckboxItem` 或 `Menu.RadioItem`，并希望标签从同一水平位置开始时，这很有用：
-
-- `alignItemsLabels="with-indicators"`（默认）—— 仅在 `Menu.CheckboxItem` 和 `Menu.RadioItem` 上预留指示器空间。普通 `Menu.Item` 不添加内边距。
-- `alignItemsLabels="all"` —— 在每个 `Menu.Item` 上都预留指示器空间，因此普通项的标签与复选框和单选项对齐。
-- `alignItemsLabels="none"` —— 仅在当前显示指示器的项上预留指示器空间。未选中的复选框和单选项不渲染槽位（切换时布局会变化）。
-
-<code src="./demo/alignItemsLabels.tsx"></code>
-
 ### 右键菜单
 
 使用 `Menu.ContextMenu` 在右键点击时于光标位置打开菜单下拉框。它替代了 `Menu.Target` 并包裹应响应 `contextmenu` 事件的元素——浏览器默认右键菜单被阻止，ReactUI 的 `Menu.Dropdown` 取而代之定位在光标处。再次右键点击会将下拉框重新定位到新坐标。设置 `disabled` 可恢复浏览器默认右键菜单：

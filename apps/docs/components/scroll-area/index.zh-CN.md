@@ -30,7 +30,6 @@ group:
   - `y` – 仅添加内边距以偏移垂直滚动条
   - `present` – 仅在滚动条可见时添加内边距
 - `scrollbarSize` – 滚动条尺寸，控制滚动条和 thumb 的宽度/高度
-- `scrollHideDelay` – 隐藏滚动条的延迟时间（毫秒），仅在 type 为 `hover` 或 `scroll` 时适用
 - `overscrollBehavior` – 控制视口的 [overscroll-behavior](https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior)
 
 <code src="./demo/usage.tsx"></code>
@@ -103,7 +102,6 @@ group:
 | --- | --- | --- | --- |
 | type | 滚动条类型 | `'auto' \| 'always' \| 'scroll' \| 'hover'` | `'hover'` |
 | scrollbarSize | 滚动条尺寸 | `number` | `10` |
-| scrollHideDelay | 隐藏延迟（ms） | `number` | `1000` |
 | offsetScrollbars | 是否让滚动条占位 | `boolean` | `false` |
 | onScrollPositionChange | 滚动位置变化回调 | `({ x, y }) => void` | — |
 

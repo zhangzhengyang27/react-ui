@@ -44,7 +44,7 @@ description: react-ui Emotion 文档。
 在 `src` 目录下创建 `emotion.d.ts` 文件，为 `sx` 和 `styles` props 添加类型支持：
 
 
-用 `UIEmotionProvider` 包裹你的应用，并将 `emotionTransform` 添加到 `UIProvider`：
+用 `UIProvider` 的 `stylesTransform={emotionTransform}` 开启 emotion 转换；`UIEmotionProvider` 只在需要自定义 cache（SSR 抽样、隔离 cache key 等）时才需要包，默认会复用 `@emotion/react` 的全局 cache：
 
 
 完成！现在你可以在你的应用中使用 `sx`、`styles` props 和 `createStyles`：

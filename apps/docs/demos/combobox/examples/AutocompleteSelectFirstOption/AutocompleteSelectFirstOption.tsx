@@ -39,7 +39,6 @@ export function AutocompleteSelectFirstOption() {
         combobox.closeDropdown();
       }}
       store={combobox}
-      withinPortal={false}
     >
       <Combobox.Target>
         <TextInput

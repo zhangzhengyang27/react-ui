@@ -9,7 +9,6 @@ function Demo() {
     <Stack>
       <Checkbox label="带布尔错误" error />
       <Checkbox label="带错误信息" error="必须勾选" />
-      <Checkbox label="带错误信息" error="无错误样式" withErrorStyles={false} />
     </Stack>
   );
 }
@@ -20,7 +19,6 @@ function Demo() {
     <Stack>
       <Checkbox label="带布尔错误" error />
       <Checkbox label="带错误信息" error="必须勾选" />
-      <Checkbox label="带错误信息" error="无错误样式" withErrorStyles={false} />
     </Stack>
   );
 }

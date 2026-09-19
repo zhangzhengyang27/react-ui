@@ -69,12 +69,6 @@ function Demo() {
 }
 ```
 
-### 受控可见性切换
-
-使用 `visible` 和 `onVisibilityChange` 属性控制可见性状态。例如，这些属性可用于在两个输入框之间同步可见性状态：
-
-<code src="./demo/controlledVisibility.tsx"></code>
-
 ### 修改可见性切换图标
 
 要更改可见性切换图标，请向 `visibilityToggleIcon` 传入一个接受 `reveal` 属性的 React 组件：
@@ -161,8 +155,6 @@ function Demo() {
 | placeholder | 占位提示 | `string` | — |
 | disabled | 是否禁用 | `boolean` | `false` |
 | error | 错误信息 | `ReactNode` | — |
-| visible | 是否明文显示（受控） | `boolean` | — |
-| onVisibilityChange | 可见性切换回调 | `(visible: boolean) => void` | — |
 | visibilityToggleButtonProps | 切换按钮的属性 | `{ ... }` | — |
 | visibilityToggleIcon | 自定义切换图标 | `(reveal: boolean) => ReactNode` | — |
 

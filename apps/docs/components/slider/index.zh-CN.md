@@ -168,13 +168,6 @@ const marks = [
 <code src="./demo/vertical.tsx"></code>
 
 ### 隐藏刻度
-
-隐藏刻度允许在不将其视觉上显示在轨道上的情况下吸附到特定值。
-当希望创建对某些值的“粘性”吸附行为，但不想向用户显示这些值时，这很有用。
-请与 `restrictToMarks` 属性一起使用：
-
-<code src="./demo/hiddenMarks.tsx"></code>
-
 ### 构建自定义滑块
 
 如果 `Slider` 组件无法满足需求，可以使用 [use-move](/docs/hooks/use-move/) Hook 构建自定义滑块：

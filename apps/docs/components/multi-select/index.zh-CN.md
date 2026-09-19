@@ -91,9 +91,9 @@ function Demo() {
 
 ### 最大选中数量
 
-可使用 `maxValues` 属性限制可选值的数量。达到限制后将无法再添加更多值。
+可使用 `maxSelectedValues` 属性限制可选值的数量。达到限制后将无法再添加更多值。
 
-<code src="./demo/maxValues.tsx"></code>
+<code src="./demo/maxSelectedValues.tsx"></code>
 
 ### 隐藏已选选项
 
@@ -178,14 +178,6 @@ function Demo() {
 
 <code src="./demo/dragReorder.tsx"></code>
 
-### 可滚动下拉菜单
-
-默认情况下，选项列表使用 [ScrollArea.Autosize](/components/scroll-area) 包裹。若不更改默认设置，可以使用 `maxDropdownHeight` 属性控制下拉菜单的最大高度。
-
-若需使用原生滚动条，请设置 `withScrollArea={false}`。注意，在这种情况下，需使用 [Styles API](/docs/styles/styles-api) 更改下拉菜单样式。
-
-<code src="./demo/scrollArea.tsx"></code>
-
 ### 分组选项
 
 <code src="./demo/groups.tsx"></code>
@@ -198,7 +190,7 @@ function Demo() {
 
 ### 下拉菜单位置
 
-默认情况下，如果空间足够，下拉菜单显示在输入框下方；否则显示在输入框上方。可通过设置 `position` 和 `middlewares` 属性来更改此行为，这些属性会传递给底层的 [Popover](/components/popover) 组件。
+默认情况下，如果空间足够，下拉菜单显示在输入框下方；否则显示在输入框上方。可通过 `comboboxProps` 的 `position` 属性更改此行为。
 
 下拉菜单始终显示在输入框上方的示例：
 

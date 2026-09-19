@@ -76,61 +76,7 @@ function Demo() {
 }
 ```
 
-### 更改时选择首个选项
-
-设置 `selectFirstOptionOnChange` 属性，当输入值更改时自动选择下拉列表中的第一个选项。
-此功能允许用户输入一个值并立即按 `Enter` 选择第一个匹配的选项，
-无需先按向下箭头键。
-
-<code src="./demo/selectFirstOptionOnChange.tsx"></code>
-
-### autoSelectOnBlur
-
-设置 `autoSelectOnBlur` 属性，当输入框失去焦点时自动选择高亮的选项。
-要查看此功能的实际效果：使用上下箭头选择一个选项，然后点击输入框外部：
-
-<code src="./demo/autoSelectOnBlur.tsx"></code>
-
-<code src="./demo/search.tsx"></code>
-
-### 排序选项
-
-默认情况下，选项按其所在数据数组的位置排序。可使用 `filter` 函数更改此行为：
-
-<code src="./demo/sort.tsx"></code>
-
-### 使用 fuse.js 进行模糊搜索
-
-可使用 [fuse.js](https://fusejs.io/) 库实现模糊搜索，即使存在拼写错误或部分匹配也能匹配选项：
-
-<code src="./demo/fuzzySearch.tsx"></code>
-
 <code src="./demo/limit.tsx"></code>
-
-### renderOption
-
-`renderOption` 回调允许自定义选项渲染。它接收一个选项对象作为参数。
-该函数必须返回一个 React 节点。
-
-<code src="./demo/renderOption.tsx"></code>
-
-### 可滚动下拉
-
-默认情况下，选项列表使用 [ScrollArea.Autosize](/components/scroll-area) 包裹。
-若不更改默认设置，可使用 `maxDropdownHeight` 属性控制下拉列表的最大高度。
-
-如需使用原生滚动条，请设置 `withScrollArea={false}`。请注意，在这种情况下，
-需使用 [Styles API](/docs/styles/styles-api) 更改下拉列表样式。
-
-<code src="./demo/scrollArea.tsx"></code>
-
-### 下拉框适应视口高度
-
-设置 `floatingHeight="viewport"` 使下拉框增长以填充视口中的可用垂直空间。
-在此模式下，`flip` 中间件被禁用——下拉框始终在配置的方向打开，
-并被约束到视口边缘，而不是翻转到另一侧。在处理大型选项列表时非常有用：
-
-<code src="./demo/floatingHeight.tsx"></code>
 
 ### 分组选项
 
@@ -144,7 +90,7 @@ function Demo() {
 
 ### 在 Popover 内使用
 
-要在 popover 内使用 `Autocomplete`，需设置 `withinPortal: false`：
+`Autocomplete` 的下拉框始终通过 Portal 渲染，可直接在 `Popover`、`Modal` 等浮层内使用：
 
 <code src="./demo/withinPopover.tsx"></code>
 
@@ -158,39 +104,15 @@ function Demo() {
 
 <code src="./demo/clearable.tsx"></code>
 
-<code src="./demo/clearSectionMode.tsx"></code>
-
-### 控制下拉框打开状态
-
-可使用 `dropdownOpened` 属性控制下拉框的打开状态。此外，
-还可以使用 `onDropdownClose` 和 `onDropdownOpen` 监听下拉框打开状态的变化。
-
-<code src="./demo/dropdownOpened.tsx"></code>
-
 ### 下拉框位置
 
 默认情况下，如果有足够空间，下拉框显示在输入框下方；否则显示在输入框上方。
-可通过设置 `position` 和 `middlewares` 属性来更改此行为，这些属性会传递给
-底层的 [Popover](/components/popover) 组件。
+可通过设置 `position` 属性来更改此行为，该属性会传递给底层的
+[Combobox](/components/combobox) 组件。
 
 下拉框始终显示在输入框上方的示例：
 
 <code src="./demo/dropdownPosition.tsx"></code>
-
-### 下拉框动画
-
-默认情况下，下拉框动画被禁用。要启用它们，可以设置 `transitionProps`，
-它会传递给底层的 [Transition](/components/transition) 组件。
-
-<code src="./demo/dropdownAnimation.tsx"></code>
-
-### 下拉框内边距
-
-<code src="./demo/dropdownPadding.tsx"></code>
-
-### 下拉框阴影
-
-<code src="./demo/dropdownShadow.tsx"></code>
 
 <code src="./demo/sections.tsx"></code>
 
@@ -224,13 +146,9 @@ function Demo() {
 
 <ComboboxData component="Autocomplete"></ComboboxData>
 
-<ComboboxFiltering component="Autocomplete"></ComboboxFiltering>
-
 <ComboboxLargeData component="Autocomplete"></ComboboxLargeData>
 
 <ComboboxProps component="Autocomplete"></ComboboxProps>
-
-<ClearSectionMode></ClearSectionMode>
 
 <InputSections component="Autocomplete"></InputSections>
 
@@ -258,7 +176,6 @@ function Demo() {
 | disabled | 是否禁用 | `boolean` | `false` |
 | error | 错误信息 | `ReactNode` | — |
 | limit | 最多显示候选项数量 | `number` | `5` |
-| filter | 自定义过滤函数 | `(value, item) => boolean` | — |
 
 支持所有原生 HTML 属性。
 

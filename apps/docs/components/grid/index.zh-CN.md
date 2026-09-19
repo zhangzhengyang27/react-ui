@@ -41,13 +41,13 @@ group:
 
 ### 间距
 
-设置 `gap` 属性以控制列与行之间的间距。该属性的工作方式与 [style props](/docs/styles/style-props) 相同——可使用 `xs`、`sm`、`md`、`lg` 和 `xl` 字符串引用 `theme.spacing` 值，也可使用对象语法根据视口宽度更改间距：
+设置 `gutter` 属性以控制列与行之间的间距。该属性的工作方式与 [style props](/docs/styles/style-props) 相同——可使用 `xs`、`sm`、`md`、`lg` 和 `xl` 字符串引用 `theme.spacing` 值，也可使用对象语法根据视口宽度更改间距：
 
 <code src="./demo/gap.tsx"></code>
 
 ### 行间距和列间距
 
-使用 `rowGap` 和 `columnGap` 属性分别为行和列设置不同间距。若同时设置，`rowGap` 和 `columnGap` 会覆盖 `gap` 属性：
+使用 `rowGap` 和 `columnGap` 属性分别为行和列设置不同间距。若同时设置，`rowGap` 和 `columnGap` 会覆盖 `gutter` 属性：
 
 <code src="./demo/rowColumnGap.tsx"></code>
 
@@ -107,58 +107,18 @@ group:
 
 <code src="./demo/columns.tsx"></code>
 
-### 容器查询
-
-要使用[容器查询](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries)替代媒体查询，请设置 `type="container"`。使用容器查询时，所有响应式值都基于容器宽度而不是视口宽度进行调整。
-
-注意，使用容器查询时，还需要将 `breakpoints` 属性设置为精确的容器宽度值。
-
-要查看网格的变化，请使用演示右下角的大小调整手柄调整演示根元素的大小：
-
-<code src="./demo/container.tsx"></code>
-
 ### 浏览器支持
 
 Grid 组件使用 flexbox 配合原生 `gap` 进行布局，所有现代浏览器均支持。
 
-### 容器查询
-
-使用 `type="container"` 时，Grid 组件使用 [CSS 容器查询](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries)。以下浏览器支持容器查询：
-
-- Chrome 105+
-- Safari 16+
-- Firefox 110+
-- Edge 105+
-
-若需要支持旧版浏览器，请使用默认的 `type="media"`，它使用标准媒体查询而非容器查询。
-
-媒体查询示例（默认）：
+响应式值通过标准媒体查询（基于 `theme.breakpoints`）生效，例如：
 
 ```tsx
 import { Grid } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
-    <Grid gap="md">
-      <Grid.Col span={{ base: 12, md: 6 }}>1</Grid.Col>
-      <Grid.Col span={{ base: 12, md: 6 }}>2</Grid.Col>
-    </Grid>
-  );
-}
-```
-
-容器查询示例：
-
-```tsx
-import { Grid } from '@xiaoye-react/ui';
-
-function Demo() {
-  return (
-    <Grid
-      type="container"
-      breakpoints={{ xs: '100px', sm: '200px', md: '300px', lg: '400px', xl: '500px' }}
-      gap="md"
-    >
+    <Grid gutter="md">
       <Grid.Col span={{ base: 12, md: 6 }}>1</Grid.Col>
       <Grid.Col span={{ base: 12, md: 6 }}>2</Grid.Col>
     </Grid>

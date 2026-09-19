@@ -25,7 +25,6 @@ function Demo() {
     <Combobox
       store={combobox}
       position="bottom"
-      middlewares={{ flip: false, shift: false }}
       onOptionSubmit={(val) => {
         setValue(val);
         combobox.closeDropdown();
@@ -71,7 +70,6 @@ function Demo() {
     <Combobox
       store={combobox}
       position="bottom"
-      middlewares={{ flip: false, shift: false }}
       onOptionSubmit={(val) => {
         setValue(val);
         combobox.closeDropdown();

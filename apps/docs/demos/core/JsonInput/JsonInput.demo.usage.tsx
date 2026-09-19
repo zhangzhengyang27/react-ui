@@ -9,9 +9,7 @@ function Demo() {
     <JsonInput
       label="你的 package.json"
       placeholder="文本域将自动调整大小以适应内容"
-      validationError="JSON 格式无效"
       formatOnBlur
-      autosize
       minRows={4}
     />
   );
@@ -25,9 +23,7 @@ function Demo() {
       mx="auto"
       label="你的 package.json"
       placeholder="文本域将自动调整大小以适应内容"
-      validationError="JSON 格式无效"
       formatOnBlur
-      autosize
       minRows={4}
     />
   );

@@ -14,7 +14,7 @@ function Demo() {
   return (
     <>
       <Box pos="relative">
-        <LoadingOverlay visible={visible} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} />
+        <LoadingOverlay visible={visible} overlayProps={{ radius: "sm", blur: 2, zIndex: 1000 }} />
         {/* ...other content */}
       </Box>
 
@@ -30,7 +30,7 @@ export function Demo() {
   return (
     <>
       <Box pos="relative">
-        <LoadingOverlay visible={visible} zIndex={1000} overlayProps={{ radius: 'sm', blur: 2 }} />
+        <LoadingOverlay visible={visible} overlayProps={{ radius: 'sm', blur: 2, zIndex: 1000 }} />
         <AuthenticationForm noSubmit />
       </Box>
 

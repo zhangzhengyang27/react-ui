@@ -23,11 +23,6 @@ export const Demo_sameWidth = {
   render: renderDemo(demos.sameWidth),
 };
 
-export const Demo_inline = {
-  name: '⭐ Demo: inline',
-  render: renderDemo(demos.inline),
-};
-
 export const Demo_offsetAxis = {
   name: '⭐ Demo: offsetAxis',
   render: renderDemo(demos.offsetAxis),
@@ -56,16 +51,6 @@ export const Demo_disabled = {
 export const Demo_portalChildren = {
   name: '⭐ Demo: portalChildren',
   render: renderDemo(demos.portalChildren),
-};
-
-export const Demo_overlay = {
-  name: '⭐ Demo: overlay',
-  render: renderDemo(demos.overlay),
-};
-
-export const Demo_hideDetached = {
-  name: '⭐ Demo: hideDetached',
-  render: renderDemo(demos.hideDetached),
 };
 
 export const Demo_contextMenu = {

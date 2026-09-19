@@ -47,7 +47,7 @@ function Demo(props: any) {
   });
 
   return (
-    <Combobox store={combobox} {...props} middlewares={{ flip: false, shift: false }}>
+    <Combobox store={combobox} {...props}>
       <Combobox.Target>
         <TextInput placeholder="选择值" />
       </Combobox.Target>

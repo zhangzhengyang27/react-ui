@@ -10,8 +10,10 @@ function Demo() {
       label="输入标签"
       placeholder="输入标签"
       data={[
-        { group: 'Frontend', items: ['React', 'Angular'] },
-        { group: 'Backend', items: ['Express', 'Django'] },
+        { value: 'React', group: 'Frontend' },
+        { value: 'Angular', group: 'Frontend' },
+        { value: 'Express', group: 'Backend' },
+        { value: 'Django', group: 'Backend' }
       ]}
     />
   );
@@ -24,8 +26,10 @@ function Demo() {
       label="输入标签"
       placeholder="输入标签"
       data={[
-        { group: 'Frontend', items: ['React', 'Angular'] },
-        { group: 'Backend', items: ['Express', 'Django'] },
+        { value: 'React', group: 'Frontend' },
+        { value: 'Angular', group: 'Frontend' },
+        { value: 'Express', group: 'Backend' },
+        { value: 'Django', group: 'Backend' }
       ]}
     />
   );

@@ -16,45 +16,16 @@ group:
 
 ### 用法
 
-`Splitter` 组件提供可调整大小的分屏布局。它基于
-[use-splitter](/docs/hooks/use-splitter/) Hook 构建，并提供声明式 API 与
-Styles API 集成。
+`Splitter` 组件提供可调整大小的分屏布局：面板之间自动渲染拖动条，拖动后的尺寸由组件内部状态管理，
+初始时各面板等分容器空间。组件支持 Styles API 与 `orientation` 属性。
 
 <code src="./demo/usage.tsx"></code>
-
-### CSS 单位
-
-`Splitter.Pane` 的 `defaultSize`、`min` 和 `max` 属性除了普通数字外，还接受 CSS 单位：
-
-- 普通 `number` 或 `%` 字符串（`'30%'`）是**弹性**尺寸——面板与其他弹性面板共享剩余空间。
-- `px` 或 `rem` 字符串（`'240px'`、`'15rem'`）是**固定**尺寸——当容器大小改变时，面板保持其像素尺寸，仅在其自身拖动条被拖动时才会改变。
-
-这使得可以将固定宽度的侧边栏与吸收剩余空间的流体内容面板混合使用：
-
-
-尺寸会以声明时的单位回传：`'240px'` 面板在 `sizes` / `onSizeChange` 中保持为 `'240px'`，
-而弹性面板会报告其解析后的百分比。当容器小于固定面板之和时，固定面板会按比例缩小。
-
-<code src="./demo/cssUnits.tsx"></code>
 
 ### 垂直方向
 
 设置 `orientation="vertical"` 以垂直分割面板：
 
 <code src="./demo/vertical.tsx"></code>
-
-### 可折叠面板
-
-在 `Splitter.Pane` 上设置 `collapsible` 属性，允许通过拖动超过最小尺寸来折叠面板。
-使用 `splitterRef` 访问命令式 API 以编程方式折叠/展开：
-
-<code src="./demo/collapsible.tsx"></code>
-
-### 受控模式
-
-要控制面板尺寸，请使用 `sizes` 和 `onSizeChange` 属性：
-
-<code src="./demo/controlled.tsx"></code>
 
 ### 多个面板
 
@@ -81,43 +52,6 @@ Styles API 集成。
 
 <code src="./demo/lineSize.tsx"></code>
 
-### 无拖动柄
-
-设置 `withHandle={false}` 以隐藏带 grip 图标的拖动柄。面板之间的分隔线
-仍然可见且可拖动：
-
-<code src="./demo/withHandle.tsx"></code>
-
-### 命令式 API
-
-使用 `splitterRef` 属性访问 splitter 的命令式 API：
-
-```tsx
-import { useRef } from 'react';
-import { Splitter } from '@xiaoye-react/ui';
-import { UseSplitterReturnValue } from '@xiaoye-react/hooks';
-
-function Demo() {
-  const splitterRef = useRef<UseSplitterReturnValue>(null);
-
-  return (
-    <>
-      <button onClick={() => splitterRef.current?.collapse(0)}>
-        Collapse first pane
-      </button>
-      <Splitter splitterRef={splitterRef}>
-        <Splitter.Pane defaultSize={50} min={20} collapsible>
-          First pane
-        </Splitter.Pane>
-        <Splitter.Pane defaultSize={50} min={20}>
-          Second pane
-        </Splitter.Pane>
-      </Splitter>
-    </>
-  );
-}
-```
-
 ### 包裹 Splitter.Pane
 
 `Splitter` 组件依赖 `Splitter.Pane` 的顺序。不支持包裹 `Splitter.Pane`，
@@ -129,7 +63,7 @@ import { Splitter } from '@xiaoye-react/ui';
 // 这样不会生效——被包裹的面板不会被识别
 function WillNotWork() {
   return (
-    <Splitter.Pane defaultSize={50} min={20}>
+    <Splitter.Pane min={20}>
       This part will not render correctly
     </Splitter.Pane>
   );
@@ -143,12 +77,12 @@ function PaneContent() {
 function Demo() {
   return (
     <Splitter h={200}>
-      <Splitter.Pane defaultSize={50} min={20}>
+      <Splitter.Pane min={20}>
         First pane
       </Splitter.Pane>
       {/* 不要将 Splitter.Pane 包裹在另一个组件中 */}
       {/* <WillNotWork /> */}
-      <Splitter.Pane defaultSize={50} min={20}>
+      <Splitter.Pane min={20}>
         <PaneContent />
       </Splitter.Pane>
     </Splitter>
@@ -164,10 +98,8 @@ function Demo() {
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| children | 至少两个 Splitter.Panel | `ReactNode` | — |
-| direction | 方向 | `'horizontal' \| 'vertical'` | `'horizontal'` |
-| size | 整体尺寸 | `number \| string` | — |
-| onResize | 调整大小回调 | `(sizes: number[]) => void` | — |
+| children | 面板内容，至少两个 `Splitter.Pane` | `ReactNode` | — |
+| orientation | 方向 | `'horizontal' \| 'vertical'` | `'horizontal'` |
 
 支持所有原生 HTML 属性。
 

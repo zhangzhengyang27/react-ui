@@ -35,10 +35,6 @@ function Demo() {
 }
 ```
 
-### 修改选中图标
-
-<code src="./demo/icon.tsx"></code>
-
 ### 状态
 
 <code src="./demo/states.tsx"></code>

@@ -13,8 +13,6 @@ import HeadroomCode from './Headroom/code.json';
 import { Headroom } from './Headroom/Headroom';
 import MobileNavbarCode from './MobileNavbar/code.json';
 import { MobileNavbar } from './MobileNavbar/MobileNavbar';
-import NavbarSectionCode from './NavbarSection/code.json';
-import { NavbarSection } from './NavbarSection/NavbarSection';
 import NestedAppShellCode from './NestedAppShell/code.json';
 import { NestedAppShell } from './NestedAppShell/NestedAppShell';
 import NoTransitionsCode from './NoTransitions/code.json';
@@ -69,10 +67,6 @@ export const APP_SHELL_EXAMPLES_COMPONENTS: Record<string, AppShellExampleCompon
   Headroom: {
     component: Headroom,
     code: HeadroomCode as AppShellExampleComponent['code'],
-  },
-  NavbarSection: {
-    component: NavbarSection,
-    code: NavbarSectionCode as AppShellExampleComponent['code'],
   },
   StaticMode: {
     component: StaticMode,

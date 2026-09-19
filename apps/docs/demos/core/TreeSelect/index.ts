@@ -21,6 +21,4 @@ export { dropdownOpened } from './TreeSelect.demo.dropdownOpened';
 export { dropdownPosition } from './TreeSelect.demo.dropdownPosition';
 export { dropdownWidth } from './TreeSelect.demo.dropdownWidth';
 export { dropdownOffset } from './TreeSelect.demo.dropdownOffset';
-export { dropdownAnimation } from './TreeSelect.demo.dropdownAnimation';
-export { dropdownPadding } from './TreeSelect.demo.dropdownPadding';
 export { dropdownShadow } from './TreeSelect.demo.dropdownShadow';

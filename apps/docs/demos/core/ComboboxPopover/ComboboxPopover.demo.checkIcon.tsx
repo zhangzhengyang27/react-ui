@@ -27,7 +27,6 @@ function Wrapper(props: any) {
       data={['React', 'Angular', 'Svelte', 'Vue']}
       dropdownOpened
       defaultValue="React"
-      comboboxProps={{ hideDetached: false }}
     >
       <ComboboxPopover.Target>
         <Button variant="default" miw={200} mb={150}>

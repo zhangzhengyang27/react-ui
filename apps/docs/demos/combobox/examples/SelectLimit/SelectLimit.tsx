@@ -40,7 +40,6 @@ export function SelectLimit() {
   return (
     <Combobox
       store={combobox}
-      withinPortal={false}
       onOptionSubmit={(val) => {
         setValue(val);
         setSearch(val);

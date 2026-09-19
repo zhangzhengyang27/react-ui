@@ -5,7 +5,6 @@ function Demo() {
   return (
     <Splitter orientation="vertical" h={300}>
       <Splitter.Pane
-        defaultSize={60}
         min={20}
         bg="blue"
         c="white"
@@ -15,7 +14,6 @@ function Demo() {
         Top pane
       </Splitter.Pane>
       <Splitter.Pane
-        defaultSize={40}
         min={20}
         bg="teal"
         c="white"
@@ -34,10 +32,10 @@ import { Splitter } from '@xiaoye-react/ui';
 function Demo() {
   return (
     <Splitter orientation="vertical" h={300}>
-      <Splitter.Pane defaultSize={60} min={20} bg="blue">
+      <Splitter.Pane min={20} bg="blue">
         Top pane
       </Splitter.Pane>
-      <Splitter.Pane defaultSize={40} min={20} bg="teal">
+      <Splitter.Pane min={20} bg="teal">
         Bottom pane
       </Splitter.Pane>
     </Splitter>

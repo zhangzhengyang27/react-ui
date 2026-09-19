@@ -18,32 +18,3 @@ export const Demo_label = {
   render: renderDemo(demos.label),
 };
 
-export const Demo_tooltip = {
-  name: '⭐ Demo: tooltip',
-  render: renderDemo(demos.tooltip),
-};
-
-export const Demo_sectionsProps = {
-  name: '⭐ Demo: sectionsProps',
-  render: renderDemo(demos.sectionsProps),
-};
-
-export const Demo_rootColor = {
-  name: '⭐ Demo: rootColor',
-  render: renderDemo(demos.rootColor),
-};
-
-export const Demo_transitions = {
-  name: '⭐ Demo: transitions',
-  render: renderDemo(demos.transitions),
-};
-
-export const Demo_sectionGap = {
-  name: '⭐ Demo: sectionGap',
-  render: renderDemo(demos.sectionGap),
-};
-
-export const Demo_startAngle = {
-  name: '⭐ Demo: startAngle',
-  render: renderDemo(demos.startAngle),
-};

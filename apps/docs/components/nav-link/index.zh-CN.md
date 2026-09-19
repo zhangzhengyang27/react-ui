@@ -30,8 +30,6 @@ group:
 
 <code src="./demo/active.tsx"></code>
 
-<code src="./demo/autoContrast.tsx"></code>
-
 ### 嵌套 NavLinks
 
 要创建嵌套链接，请将 `NavLink` 作为另一个 `NavLink` 的子元素：

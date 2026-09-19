@@ -1,4 +1,4 @@
-import type { RichTextEditorFactory } from '@xiaoye-react/tiptap';
+import type { RichTextEditorFactory } from '@xiaoye-react/ui';
 import type { StylesApiData } from '../types';
 
 export const RichTextEditorStylesApi: StylesApiData<RichTextEditorFactory> = {

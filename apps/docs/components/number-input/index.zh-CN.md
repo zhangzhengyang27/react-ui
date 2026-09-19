@@ -16,8 +16,8 @@ group:
 
 ### 用法
 
-`NumberInput` 基于 [react-number-format](https://www.npmjs.com/package/react-number-format)。
-它支持原始包中 `NumericFormat` 组件的大部分属性。
+`NumberInput` 是库内自行实现的数值输入（不依赖 react-number-format），支持 `min`/`max`/`step` 步进、
+`prefix`/`suffix`、`thousandSeparator` 千位分隔与 `hideControls` 隐藏增减控件。
 
 <code src="./demo/usage.tsx"></code>
 
@@ -73,32 +73,10 @@ function Demo() {
 }
 ```
 
-### BigInt 值
+### onChange
 
-`NumberInput` 也支持 `bigint` 值。BigInt 模式从 `value` 或 `defaultValue` 推断：
-
-- `value`/`defaultValue` 可以是 `bigint | string`
-- `onChange` 接收 `bigint | string`
-- `min`、`max`、`step` 和 `startValue` 支持 `bigint`
-- BigInt 模式仅支持整数（`allowDecimal`/小数格式化属性不会启用小数解析）
-
-`string` 仍用作中间状态的回退（例如 `''` 或 `'-'`）。
-
-<code src="./demo/bigInt.tsx"></code>
-
-### onChange 与 onValueChange
-
-`NumberInput` 提供两个回调属性来处理值变化：
-
-- **`onChange`**: 接收简化值（默认模式下为 `number | string`，BigInt 模式下为 `bigint | string`）。这是大多数用例推荐的回调。当可能时值为数字/bigint，在边缘情况下为字符串（空输入、极大数字、末尾小数、中间 BigInt 输入状态）。
-
-- **`onValueChange`**: 接收来自 `react-number-format` 的完整负载，包括：
-  - `floatValue`: 数值（或 `undefined`）
-  - `formattedValue`: 格式化字符串值（带前缀/后缀/分隔符）
-  - `value`: 原始未格式化字符串值
-  - 有关变化来源的附加元数据
-
-当需要访问格式化值或有关变化的元数据时（例如，它来自用户输入、增减按钮还是程序化更改），请使用 `onValueChange`。对于简单的表单处理，`onChange` 已足够。
+`onChange` 接收当前值：能转成数字时是 `number`，其余情况（空输入、只有负号、结尾是小数点等）回退为 `string`，
+以便输入框保留用户的中间输入状态。表单处理直接用 `onChange` 即可：
 
 ```tsx
 import { NumberInput } from '@xiaoye-react/ui';
@@ -108,10 +86,8 @@ function Demo() {
     <NumberInput
       prefix="$"
       thousandSeparator=","
-      // onChange 接收：1234
-      onChange={(value) => console.log('Simple value:', value)}
-      // onValueChange 接收：{ floatValue: 1234, formattedValue: '$1,234', value: '1234' }
-      onValueChange={(payload) => console.log('Full payload:', payload)}
+      // 输入 $1,234 时收到 1234
+      onChange={value => console.log('value:', value)}
     />
   );
 }
@@ -123,93 +99,17 @@ function Demo() {
 
 <code src="./demo/minMax.tsx"></code>
 
-### 限制行为
-
-默认情况下，值在输入框失焦时被限制。若设置 `clampBehavior="strict"`，则将无法输入超出 min/max 范围的值。注意，如果 min/max 范围很紧，例如 `min={10}` 和 `max={20}`，此选项可能会导致问题。若需完全禁用值限制，请设置 `clampBehavior="none"`。
-
-<code src="./demo/strictClamp.tsx"></code>
-
-### 边界回调
-
-使用 `onMinReached` 和 `onMaxReached` 在值达到 `min` 或 `max` 边界时调用函数。
-当用户尝试使用控件或键盘箭头递增超过 `max` 或递减低于 `min` 时，会触发这些回调。
-
-```tsx
-import { NumberInput } from '@xiaoye-react/ui';
-
-function Demo() {
-  return (
-    <NumberInput
-      min={0}
-      max={100}
-      onMinReached={() => console.log('Minimum value reached')}
-      onMaxReached={() => console.log('Maximum value reached')}
-    />
-  );
-}
-```
-
-### 聚焦时全选
-
-设置 `selectAllOnFocus` 以在字段获得焦点时自动选择整个输入值。
-这在希望用户替换值而非编辑时非常有用：
-
-```tsx
-import { NumberInput } from '@xiaoye-react/ui';
-
-function Demo() {
-  return <NumberInput selectAllOnFocus defaultValue={100} />;
-}
-```
-
 ### 前缀和后缀
 
 设置 `prefix` 和 `suffix` 属性以在给定字符串添加到输入值的开始或结尾：
 
 <code src="./demo/prefixSuffix.tsx"></code>
 
-### 负数
-
-默认情况下允许负数。设置 `allowNegative={false}` 以仅允许正数。
-
-<code src="./demo/allowNegative.tsx"></code>
-
-### 小数
-
-默认情况下允许小数。设置 `allowDecimal={false}` 以仅允许整数。
-
-<code src="./demo/allowDecimal.tsx"></code>
-
-### 小数位数
-
-`decimalScale` 控制允许的小数位数：
-
-<code src="./demo/decimalScale.tsx"></code>
-
-### 固定小数位数
-
-设置 `fixedDecimalScale` 以始终显示固定的小数位数：
-
-<code src="./demo/fixedDecimalScale.tsx"></code>
-
-### 小数分隔符
-
-设置 `decimalSeparator` 以更改小数分隔符字符：
-
-<code src="./demo/decimalSeparator.tsx"></code>
-
 ### 千位分隔符
 
 设置 `thousandSeparator` 属性以使用字符分隔千位。可使用 `thousandsGroupStyle` 控制分组逻辑，它接受：`thousand`、`lakh`、`wan`、`none` 值。
 
 <code src="./demo/thousandsSeparator.tsx"></code>
-
-### 失焦时去除前导零
-
-默认情况下，输入框失去焦点时会去除前导零（例如，`00100` 变为 `100`）。
-可通过设置 `trimLeadingZeroesOnBlur={false}` 禁用此行为：
-
-<code src="./demo/trimLeadingZeroes.tsx"></code>
 
 <code src="./demo/sections.tsx"></code>
 
@@ -220,12 +120,6 @@ function Demo() {
 以替换默认控件。
 
 <code src="./demo/rightSection.tsx"></code>
-
-### 按住时增减
-
-设置 `stepHoldDelay` 和 `stepHoldInterval` 属性以定义点击并按住递增/递减控件时的行为：
-
-<code src="./demo/hold.tsx"></code>
 
 ### 自定义增减控件
 
@@ -274,7 +168,6 @@ function Demo() {
 | min | 最小值 | `number` | — |
 | max | 最大值 | `number` | — |
 | step | 步长 | `number` | `1` |
-| fixedDecimalScale | 是否固定小数位数 | `boolean` | `false` |
 
 支持所有原生 HTML 属性。
 

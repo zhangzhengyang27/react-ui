@@ -22,7 +22,7 @@ export function NestedAppShell() {
         <AppShell
           mode="static"
           header={{ height: 50 }}
-          navbar={{ width: 250, breakpoint: 'sm' }}
+          navbar={{ width: 250 }}
           padding="md"
           withBorder
         >

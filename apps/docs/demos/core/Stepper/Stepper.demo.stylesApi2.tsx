@@ -22,7 +22,7 @@ function StyledStepper(props: StepperProps) {
           borderWidth: 4,
         },
 
-        separator: {
+        stepSeparator: {
           marginLeft: -2,
           marginRight: -2,
           height: 10,
@@ -61,7 +61,7 @@ function StyledStepper(props: StepperProps) {
           borderWidth: 3,
         },
 
-        separator: {
+        stepSeparator: {
           marginLeft: -2,
           marginRight: -2,
           height: 6,

@@ -8,7 +8,7 @@ export function MobileNavbar() {
   return (
     <AppShell
       header={{ height: 60 }}
-      navbar={{ width: 300, breakpoint: 'sm', collapsed: { desktop: true, mobile: !opened } }}
+      navbar={{ width: 300, collapsed: !opened }}
       padding="md"
     >
       <AppShell.Header>

@@ -296,17 +296,6 @@ function Demo() {
 
 <code src="./demo/scrollArea.tsx"></code>
 
-### 下拉框适应视口高度
-
-设置 `floatingHeight="viewport"` 使下拉框增长以填充视口中的可用垂直空间。
-当下触发器位置变化时，下拉框大小会自动重新计算。设置此属性后，`flip` 中间件被禁用——
-下拉框始终在配置的方向打开，并被约束到视口边缘，而不是翻转到另一侧。
-
-下拉框暴露一个 `--combobox-floating-options-max-height` CSS 变量，等于可用高度减去下拉框内边距。
-将其作为 `mah` 传递给 `ScrollArea.Autosize`（或希望在受限下拉框内滚动的任何元素上使用）：
-
-<code src="./demo/floatingHeight.tsx"></code>
-
 ### 隐藏下拉框
 
 在 `Combobox.Dropdown` 上设置 `hidden` 属性以隐藏下拉框。例如，
@@ -323,8 +312,7 @@ function Demo() {
 ### Popover 属性
 
 `Combobox` 支持大多数 [Popover](/components/popover) 属性。例如，
-可使用 `position` 属性控制下拉框位置，并使用 `middlewares` 属性禁用 Floating UI
-中间件：
+可使用 `position` 属性控制下拉框位置：
 
 <code src="./demo/dropdownPosition.tsx"></code>
 

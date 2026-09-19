@@ -4,7 +4,7 @@ import DemoWrap from '../../_util/demoWrap';
 
 const App: React.FC = () => (
   <DemoWrap>
-    <AppShell header={{ height: 60 }} padding="md" navbar={{ width: 200, breakpoint: 'sm' }}>
+    <AppShell header={{ height: 60 }} padding="md" navbar={{ width: 200 }}>
       <AppShell.Header>
         <Group h="100%" px="md">
           <Text fw={700}>react-ui</Text>

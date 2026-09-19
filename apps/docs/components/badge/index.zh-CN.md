@@ -68,6 +68,7 @@ group:
 | fullWidth | 是否占满宽度 | `boolean` | `false` |
 | leftSection | 左侧内容 | `ReactNode` | — |
 | rightSection | 右侧内容 | `ReactNode` | — |
+| autoContrast | `filled` 变体下根据背景色自动调整文字颜色 | `boolean` | `theme.autoContrast` |
 
 除上表所列属性外，Badge 还支持所有原生 HTML 属性。
 

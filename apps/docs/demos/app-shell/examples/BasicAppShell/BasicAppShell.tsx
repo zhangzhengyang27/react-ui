@@ -7,7 +7,7 @@ export function BasicAppShell() {
   return (
     <AppShell
       header={{ height: 60 }}
-      navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened } }}
+      navbar={{ width: 300, collapsed: !opened }}
       padding="md"
     >
       <AppShell.Header>
@@ -17,8 +17,8 @@ export function BasicAppShell() {
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="md">
-        Navbar is collapsed on mobile at sm breakpoint. At that point it is no longer offset by
-        padding in the main element and it takes the full width of the screen when opened.
+        The burger button toggles the navbar between its configured width and 0 (collapsed). Try
+        it out:
       </AppShell.Navbar>
       <AppShell.Main>
         <Text>这是主内容区，你的应用内容在这里。</Text>

@@ -33,16 +33,6 @@ export const Demo_orientation = {
   render: renderDemo(demos.orientation),
 };
 
-export const Demo_iconPosition = {
-  name: '⭐ Demo: iconPosition',
-  render: renderDemo(demos.iconPosition),
-};
-
-export const Demo_loading = {
-  name: '⭐ Demo: loading',
-  render: renderDemo(demos.loading),
-};
-
 export const Demo_stepColor = {
   name: '⭐ Demo: stepColor',
   render: renderDemo(demos.stepColor),
@@ -61,11 +51,6 @@ export const Demo_stylesApi2 = {
 export const Demo_allowStepSelect = {
   name: '⭐ Demo: allowStepSelect',
   render: renderDemo(demos.allowStepSelect),
-};
-
-export const Demo_allowNextStepsSelect = {
-  name: '⭐ Demo: allowNextStepsSelect',
-  render: renderDemo(demos.allowNextStepsSelect),
 };
 
 export const Demo_stylesApi = {

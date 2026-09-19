@@ -26,7 +26,6 @@ export function BasicSelect() {
   return (
     <Combobox
       store={combobox}
-      withinPortal={false}
       onOptionSubmit={(val) => {
         setValue(val);
         combobox.closeDropdown();

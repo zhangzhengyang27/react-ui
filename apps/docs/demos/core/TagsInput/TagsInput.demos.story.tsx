@@ -68,26 +68,6 @@ export const Demo_limit = {
   render: renderDemo(demos.limit),
 };
 
-export const Demo_search = {
-  name: '⭐ Demo: search',
-  render: renderDemo(demos.search),
-};
-
-export const Demo_selectFirst = {
-  name: '⭐ Demo: selectFirstOptionOnChange',
-  render: renderDemo(demos.selectFirst),
-};
-
-export const Demo_scrollArea = {
-  name: '⭐ Demo: scrollArea',
-  render: renderDemo(demos.scrollArea),
-};
-
-export const Demo_sort = {
-  name: '⭐ Demo: sort',
-  render: renderDemo(demos.sort),
-};
-
 export const Demo_stylesApi = {
   name: '⭐ Demo: stylesApi',
   render: renderDemo(demos.stylesApi),
@@ -98,19 +78,9 @@ export const Demo_clearable = {
   render: renderDemo(demos.clearable),
 };
 
-export const Demo_clearSectionMode = {
-  name: '⭐ Demo: clearSectionMode',
-  render: renderDemo(demos.clearSectionMode),
-};
-
 export const Demo_sections = {
   name: '⭐ Demo: sections',
   render: renderDemo(demos.sections),
-};
-
-export const Demo_dropdownOpened = {
-  name: '⭐ Demo: dropdownOpened',
-  render: renderDemo(demos.dropdownOpened),
 };
 
 export const Demo_dropdownPosition = {
@@ -138,42 +108,8 @@ export const Demo_withinPopover = {
   render: renderDemo(demos.withinPopover),
 };
 
-export const Demo_renderOption = {
-  name: '⭐ Demo: renderOption',
-  render: renderDemo(demos.renderOption),
-};
-
-export const Demo_dropdownWidth = {
-  name: '⭐ Demo: dropdownWidth',
-  render: renderDemo(demos.dropdownWidth),
-};
-
-export const Demo_acceptValueOnBlur = {
-  name: '⭐ Demo: acceptValueOnBlur',
-  render: renderDemo(demos.acceptValueOnBlur),
-};
-
-export const Demo_isDuplicate = {
-  name: '⭐ Demo: isDuplicate',
-  render: renderDemo(demos.isDuplicate),
-};
-
 export const Demo_loading = {
   name: '⭐ Demo: loading',
   render: renderDemo(demos.loading),
 };
 
-export const Demo_renderPill = {
-  name: '⭐ Demo: renderPill',
-  render: renderDemo(demos.renderPill),
-};
-
-export const Demo_dragReorder = {
-  name: '⭐ Demo: dragReorder',
-  render: renderDemo(demos.dragReorder),
-};
-
-export const Demo_floatingHeight = {
-  name: '⭐ Demo: floatingHeight',
-  render: renderDemo(demos.floatingHeight),
-};

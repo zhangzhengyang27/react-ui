@@ -16,7 +16,7 @@ group:
 
 ### 用法
 
-`JsonInput` 基于 [Textarea](/components/textarea/) 组件。它内置 JSON 验证逻辑，并支持在失焦时格式化输入值：
+`JsonInput` 基于 [Textarea](/components/textarea/) 组件，支持在失焦时格式化输入值：
 
 <code src="./demo/usage.tsx"></code>
 
@@ -149,9 +149,8 @@ function Demo() {
 | onChange | JSON 变化回调 | `(value: string) => void` | — |
 | placeholder | 占位提示 | `string` | — |
 | disabled | 是否禁用 | `boolean` | `false` |
-| error | 错误信息（解析失败时自动设置） | `ReactNode` | — |
+| error | 错误信息 | `ReactNode` | — |
 | formatOnBlur | 失焦时自动格式化 | `boolean` | `false` |
-| validationError | 自定义校验错误信息 | `string` | — |
 | serialize | 序列化函数 | `(value: any) => string` | `JSON.stringify` |
 | deserialize | 反序列化函数 | `(value: string) => any` | `JSON.parse` |
 

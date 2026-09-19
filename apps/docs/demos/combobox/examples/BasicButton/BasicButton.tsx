@@ -29,7 +29,6 @@ export function BasicButton() {
         width={250}
         position="bottom-start"
         withArrow
-        withinPortal={false}
         onOptionSubmit={(val) => {
           setSelectedItem(val);
           combobox.closeDropdown();

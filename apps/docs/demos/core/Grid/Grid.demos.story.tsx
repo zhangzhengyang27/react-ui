@@ -67,8 +67,3 @@ export const Demo_columnAlign = {
   name: '⭐ Demo: columnAlign',
   render: renderDemo(demos.columnAlign),
 };
-
-export const Demo_container = {
-  name: '⭐ Demo: container',
-  render: renderDemo(demos.container),
-};

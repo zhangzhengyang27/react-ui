@@ -13,7 +13,6 @@ export function SelectGroupsStyles() {
     <Combobox
       classNames={classes}
       store={combobox}
-      withinPortal={false}
       onOptionSubmit={(val) => {
         setValue(val);
         combobox.closeDropdown();

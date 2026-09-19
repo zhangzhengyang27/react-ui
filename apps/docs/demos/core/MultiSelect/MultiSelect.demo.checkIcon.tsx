@@ -10,7 +10,6 @@ function Demo() {
     <MultiSelect
       {{props}}
       data={['React', 'Angular', 'Svelte', 'Vue']}
-      dropdownOpened
       pb={150}
       label="控制勾选图标"
       placeholder="选择值"
@@ -25,7 +24,6 @@ function Wrapper(props: any) {
     <MultiSelect
       {...props}
       data={['React', 'Angular', 'Svelte', 'Vue']}
-      dropdownOpened
       pb={150}
       label="控制勾选图标"
       placeholder="选择值"

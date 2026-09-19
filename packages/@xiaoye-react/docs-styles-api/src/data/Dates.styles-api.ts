@@ -15,7 +15,7 @@ import type {
   YearLevelGroupFactory,
   YearPickerFactory,
   YearPickerInputFactory,
-} from '@xiaoye-react/dates';
+} from '@xiaoye-react/ui';
 import type { StylesApiData } from '../types';
 import { InputBaseStylesApi } from './InputBase.styles-api';
 

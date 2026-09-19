@@ -189,17 +189,6 @@ function MultipleDemo() {
 
 <code src="./demo/dropdownOffset.tsx"></code>
 
-### 下拉菜单动画
-
-默认情况下，下拉菜单动画被禁用。要启用动画，可设置 `transitionProps`，
-它会传递给底层的 [Transition](/components/transition) 组件。
-
-<code src="./demo/dropdownAnimation.tsx"></code>
-
-### 下拉菜单内边距
-
-<code src="./demo/dropdownPadding.tsx"></code>
-
 ### 下拉菜单阴影
 
 <code src="./demo/dropdownShadow.tsx"></code>

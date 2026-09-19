@@ -59,12 +59,6 @@ function Demo() {
 }
 ```
 
-### 正则类型
-
-可使用正则表达式验证用户输入。不匹配给定表达式的字符将被忽略。例如，要创建一个只接受 `0` 到 `3` 数字的 `PinInput`，请设置 `type={/^[0-3]+/}`：
-
-<code src="./demo/regexp.tsx"></code>
-
 ### 一次性验证码
 
 某些操作系统会暴露最后接收到的短信验证码，供键盘等应用使用。如果当前表单输入请求此验证码，键盘会自适应并提供该验证码作为键盘建议。`oneTimeCode` 属性会使输入框设置 `autocomplete="one-time-code"`，从而允许使用该功能。
@@ -76,10 +70,6 @@ function OneTimeCodeInput() {
   return <PinInput oneTimeCode />;
 }
 ```
-
-### 成功状态
-
-<code src="./demo/success.tsx"></code>
 
 <code src="./demo/stylesApi.tsx"></code>
 

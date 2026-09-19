@@ -67,7 +67,7 @@ function Demo() {
   }
 
   return (
-    <Combobox store={combobox} resetSelectionOnOptionHover={false} keepMounted>
+    <Combobox store={combobox}>
       <Combobox.Target>
         <InputBase component="button" onClick={() => combobox.toggleDropdown()} pointer>
           {value || <Input.Placeholder>选择一个值</Input.Placeholder>}
@@ -173,7 +173,7 @@ function Demo() {
   }
 
   return (
-    <Combobox store={combobox} resetSelectionOnOptionHover={false} keepMounted>
+    <Combobox store={combobox}>
       <Combobox.Target>
         <InputBase component="button" onClick={() => combobox.toggleDropdown()} pointer>
           {value || <Input.Placeholder>选择一个值</Input.Placeholder>}

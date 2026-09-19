@@ -10,14 +10,12 @@ function Demo() {
       <Textarea
         placeholder="自动高度，无行数限制"
         label="自动高度，无行数限制"
-        autosize
         minRows={4}
       />
 
       <Textarea
         label="自动高度，最多 4 行"
         placeholder="自动高度，最多 4 行"
-        autosize
         minRows={2}
         maxRows={4}
       />
@@ -33,14 +31,12 @@ function Demo() {
       <Textarea
         placeholder="自动高度，无行数限制"
         label="自动高度，无行数限制"
-        autosize
         minRows={4}
       />
 
       <Textarea
         label="自动高度，最多 4 行"
         placeholder="自动高度，最多 4 行"
-        autosize
         minRows={2}
         maxRows={4}
         mt="md"

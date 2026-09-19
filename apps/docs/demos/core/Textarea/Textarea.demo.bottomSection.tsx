@@ -14,11 +14,10 @@ function Demo() {
     <Textarea
       label="你的消息"
       placeholder="输入你的消息..."
-      autosize
       minRows={4}
       value={value}
       onChange={(event) => setValue(event.currentTarget.value.slice(0, maxLength))}
-      bottomSection={
+      __bottomSection={
         <Text size="xs" c="dimmed">
           {value.length}/{maxLength} characters
         </Text>
@@ -36,11 +35,10 @@ function Demo() {
     <Textarea
       label="你的消息"
       placeholder="输入你的消息..."
-      autosize
       minRows={4}
       value={value}
       onChange={(event) => setValue(event.currentTarget.value.slice(0, maxLength))}
-      bottomSection={
+      __bottomSection={
         <Text size="xs" c="dimmed">
           {value.length}/{maxLength} characters
         </Text>

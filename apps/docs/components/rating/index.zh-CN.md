@@ -61,21 +61,13 @@ function Demo() {
 
 ### 允许清除
 
-设置 `allowClear` 属性允许用户通过再次点击相同的评分值将评分重置为 0。当希望让用户能够撤销评分选择时，这很有用：
+设置 `clearable` 属性允许用户通过再次点击相同的评分值将评分重置为 0。当希望让用户能够撤销评分选择时，这很有用：
 
-<code src="./demo/allowClear.tsx"></code>
+<code src="./demo/clearable.tsx"></code>
 
 ### 分数
 
 <code src="./demo/fractions.tsx"></code>
-
-### 自定义符号
-
-<code src="./demo/symbol.tsx"></code>
-
-### 每个项的符号
-
-<code src="./demo/customSymbol.tsx"></code>
 
 
 
@@ -92,6 +84,7 @@ function Demo() {
 | size | 尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'sm'` |
 | color | 主题色 | `UIColor` | `'yellow'` |
 | readOnly | 是否只读 | `boolean` | `false` |
+| clearable | 再次点击当前值时清除评分 | `boolean` | `false` |
 | fractions | 评分粒度 | `number` | `1` |
 | highlightSelectedOnly | 是否仅高亮当前选中星 | `boolean` | `false` |
 

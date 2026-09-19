@@ -26,13 +26,11 @@ function Demo(props: any) {
     return (
         <Autocomplete
             {...props}
-            dropdownOpened
             leftSection={<AtIcon size={18} />}
             withAsterisk
             label="自动完成"
             description="描述"
             placeholder="自动完成"
-            comboboxProps={{ hideDetached: false }}
             data={[
                 { group: 'Frontend', items: ['React', 'Angular'] },
                 { group: 'Backend', items: ['Node', 'Django'] }

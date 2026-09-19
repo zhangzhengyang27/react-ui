@@ -99,12 +99,6 @@ function Demo() {
 
 <code src="./demo/clearable.tsx"></code>
 
-<code src="./demo/clearSectionMode.tsx"></code>
-
-### 自定义值组件
-
-<code src="./demo/valueComponent.tsx"></code>
-
 ### 错误状态
 
 <code src="./demo/error.tsx"></code>

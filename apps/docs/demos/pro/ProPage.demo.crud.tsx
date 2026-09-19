@@ -102,7 +102,6 @@ function Demo() {
         rowKey={(record) => record.id}
         request={fakeQuery}
         defaultPageSize={5}
-        pageSizeOptions={[5, 10]}
         actionsRef={actionsRef}
         toolbar={
           <Button size="xs" variant="default" onClick={openCreate}>
@@ -110,7 +109,7 @@ function Demo() {
           </Button>
         }
         search={{ fields: [{ name: 'keyword', type: 'text', label: '关键词', placeholder: '姓名 / 部门' }] }}
-        striped
+        dataTableProps={{ striped: true, pageSizeOptions: [5, 10] }}
       />
 
       <Modal
@@ -184,12 +183,11 @@ function Demo() {
                 rowKey={record => record.id}
                 request={fakeQuery}
                 defaultPageSize={5}
-                pageSizeOptions={[5, 10]}
                 actionsRef={actionsRef}
                 search={{
                     fields: [{ name: 'keyword', type: 'text', label: '关键词', placeholder: '姓名 / 部门' }]
                 }}
-                striped
+                dataTableProps={{ striped: true, pageSizeOptions: [5, 10] }}
             />
 
             <Modal

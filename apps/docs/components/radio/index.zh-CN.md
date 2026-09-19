@@ -67,10 +67,6 @@ function Demo() {
 
 <code src="./demo/states.tsx"></code>
 
-### 更改图标
-
-<code src="./demo/icon.tsx"></code>
-
 ### 更改图标颜色
 
 <code src="./demo/iconColor.tsx"></code>

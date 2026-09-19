@@ -1,4 +1,4 @@
-import type { YearViewFactory } from '@xiaoye-react/schedule';
+import type { YearViewFactory } from '@xiaoye-react/ui';
 import type { StylesApiData } from '../types';
 
 export const YearViewStylesApi: StylesApiData<YearViewFactory> = {

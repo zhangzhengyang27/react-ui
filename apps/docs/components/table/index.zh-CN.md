@@ -41,12 +41,6 @@ const elements = [
 
 <code src="./demo/data.tsx"></code>
 
-### 粘性表头
-
-设置 `stickyHeader` 使表格表头粘性定位。使用 `stickyHeaderOffset` 属性自定义表头顶部位置：当应用中有固定表头时这很有用。例如，ReactUI 文档网站有一个高度为 60px 的固定表头：
-
-<code src="./demo/stickyHeader.tsx"></code>
-
 ### 间距
 
 使用 `horizontalSpacing` 和 `verticalSpacing` 属性控制间距。两个属性都支持 `theme.spacing` 中的间距值和任何有效的 CSS 值来设置单元格内边距：

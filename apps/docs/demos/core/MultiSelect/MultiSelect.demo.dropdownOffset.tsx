@@ -31,7 +31,7 @@ function Demo() {
       placeholder="选择值"
       data={['React', 'Angular', 'Vue', 'Svelte']}
       classNames={classes}
-      comboboxProps={{ position: 'bottom', middlewares: { flip: false, shift: false }, offset: 0 }}
+      comboboxProps={{ position: 'bottom', offset: 0 }}
     />
   );
 }
@@ -44,7 +44,7 @@ function Demo() {
       placeholder="选择值"
       data={['React', 'Angular', 'Vue', 'Svelte']}
       classNames={classes}
-      comboboxProps={{ position: 'bottom', middlewares: { flip: false, shift: false }, offset: 0 }}
+      comboboxProps={{ position: 'bottom', offset: 0 }}
     />
   );
 }

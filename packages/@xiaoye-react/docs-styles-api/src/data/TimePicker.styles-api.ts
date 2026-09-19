@@ -1,4 +1,4 @@
-import type { TimePickerFactory } from '@xiaoye-react/dates';
+import type { TimePickerFactory } from '@xiaoye-react/ui';
 import type { StylesApiData } from '../types';
 import { InputStylesApi, InputWrapperStylesApi } from './Input.styles-api';
 

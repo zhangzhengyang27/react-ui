@@ -27,7 +27,6 @@ export function DropdownPositionStyles() {
   return (
     <Combobox
       store={combobox}
-      withinPortal={false}
       offset={0}
       onOptionSubmit={(val) => {
         setValue(val);

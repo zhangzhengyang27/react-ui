@@ -63,7 +63,3 @@ export const Demo_maxRange = {
   render: renderDemo(demos.maxRange),
 };
 
-export const Demo_hiddenMarks = {
-  name: '⭐ Demo: hiddenMarks',
-  render: renderDemo(demos.hiddenMarks),
-};

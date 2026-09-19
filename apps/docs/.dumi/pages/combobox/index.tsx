@@ -3,8 +3,8 @@ import { useSearchParams } from 'react-router-dom'
 import { FiChevronDown, FiSearch } from '../../theme/icons'
 import { Box, Highlight, ScrollArea, Text, TextInput, UnstyledButton } from '@xiaoye-react/ui'
 import { useDisclosure, useHotkeys } from '@xiaoye-react/hooks'
-import { COMBOBOX_EXAMPLES_DATA, ComboboxDemo } from '@xiaoye-react/docs-demos'
-import type { ComboboxExample } from '@xiaoye-react/docs-demos'
+import { COMBOBOX_EXAMPLES_DATA, ComboboxDemo } from '../../../demos/combobox'
+import type { ComboboxExample } from '../../../demos/combobox'
 import classes from './combobox.module.css'
 
 interface ComboboxExamplesGroup {

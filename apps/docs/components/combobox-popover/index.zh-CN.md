@@ -103,21 +103,7 @@ group:
 
 <code src="./demo/dropdownOpened.tsx"></code>
 
-### 下拉框位置
-
-<code src="./demo/dropdownPosition.tsx"></code>
-
 ### 下拉框宽度
-
-默认情况下，下拉框宽度与目标元素匹配。使用 `comboboxProps`
-设置自定义宽度：
-
-<code src="./demo/dropdownWidth.tsx"></code>
-
-### 下拉框动画
-
-<code src="./demo/dropdownAnimation.tsx"></code>
-
 ### 表单提交
 
 `ComboboxPopover` 渲染一个隐藏 input，其中包含选中的值以进行原生表单提交。

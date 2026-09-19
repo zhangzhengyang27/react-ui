@@ -9,7 +9,6 @@ export const AppShellStylesApi: StylesApiData<AppShellFactory> = {
     main: '`AppShell.Main` root 元素',
     aside: '`AppShell.Aside` root 元素',
     footer: '`AppShell.Footer` root 元素',
-    section: '`AppShell.Section` root 元素',
   },
 
   vars: {
@@ -28,11 +27,6 @@ export const AppShellStylesApi: StylesApiData<AppShellFactory> = {
       modifier: 'data-with-border',
       selector: ['navbar', 'header', 'aside', 'footer'],
       condition: '`withBorder` prop is set either on the `AppShell` or on the associated 组件',
-    },
-    {
-      modifier: 'data-grow',
-      selector: 'section',
-      condition: '`grow` prop is set on the `AppShell.Section`',
     },
   ],
 };

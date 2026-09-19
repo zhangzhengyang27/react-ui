@@ -1,4 +1,4 @@
-import type { ScheduleFactory } from '@xiaoye-react/schedule';
+import type { ScheduleFactory } from '@xiaoye-react/ui';
 import type { StylesApiData } from '../types';
 
 export const ScheduleStylesApi: StylesApiData<ScheduleFactory> = {

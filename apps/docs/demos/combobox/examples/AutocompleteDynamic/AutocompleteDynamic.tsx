@@ -18,7 +18,6 @@ export function AutocompleteDynamic() {
         combobox.closeDropdown();
       }}
       store={combobox}
-      withinPortal={false}
     >
       <Combobox.Target>
         <TextInput

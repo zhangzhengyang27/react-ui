@@ -10,4 +10,3 @@ export { minRange } from './RangeSlider.demo.minRange';
 export { pushOnOverlap } from './RangeSlider.demo.pushOnOverlap';
 export { restrictToMarks } from './RangeSlider.demo.restrictToMarks';
 export { step } from './RangeSlider.demo.step';
-export { hiddenMarks } from './RangeSlider.demo.hiddenMarks';

@@ -5,7 +5,6 @@ function Demo() {
   return (
     <Splitter h={350}>
       <Splitter.Pane
-        defaultSize={30}
         min={15}
         bg="blue"
         c="white"
@@ -14,10 +13,9 @@ function Demo() {
       >
         Sidebar
       </Splitter.Pane>
-      <Splitter.Pane defaultSize={70} min={30}>
+      <Splitter.Pane min={30}>
         <Splitter orientation="vertical" h="100%">
           <Splitter.Pane
-            defaultSize={60}
             min={20}
             bg="teal"
             c="white"
@@ -27,7 +25,6 @@ function Demo() {
             Editor
           </Splitter.Pane>
           <Splitter.Pane
-            defaultSize={40}
             min={20}
             bg="grape"
             c="white"
@@ -48,15 +45,15 @@ import { Splitter } from '@xiaoye-react/ui';
 function Demo() {
   return (
     <Splitter h={350}>
-      <Splitter.Pane defaultSize={30} min={15} bg="blue">
+      <Splitter.Pane min={15} bg="blue">
         Sidebar
       </Splitter.Pane>
-      <Splitter.Pane defaultSize={70} min={30}>
+      <Splitter.Pane min={30}>
         <Splitter orientation="vertical" h="100%">
-          <Splitter.Pane defaultSize={60} min={20} bg="teal">
+          <Splitter.Pane min={20} bg="teal">
             Editor
           </Splitter.Pane>
-          <Splitter.Pane defaultSize={40} min={20} bg="grape">
+          <Splitter.Pane min={20} bg="grape">
             Terminal
           </Splitter.Pane>
         </Splitter>

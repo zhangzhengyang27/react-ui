@@ -18,11 +18,6 @@ export const Demo_pull = {
   render: renderDemo(demos.pull),
 };
 
-export const Demo_inverted = {
-  name: '⭐ Demo: inverted',
-  render: renderDemo(demos.inverted),
-};
-
 export const Demo_placement = {
   name: '⭐ Demo: placement',
   render: renderDemo(demos.placement),
@@ -36,16 +31,6 @@ export const Demo_disabled = {
 export const Demo_colors = {
   name: '⭐ Demo: colors',
   render: renderDemo(demos.colors),
-};
-
-export const Demo_deactivate = {
-  name: '⭐ Demo: deactivate',
-  render: renderDemo(demos.deactivate),
-};
-
-export const Demo_keyboardActivation = {
-  name: '⭐ Demo: keyboardActivation',
-  render: renderDemo(demos.keyboardActivation),
 };
 
 export const Demo_customize = {

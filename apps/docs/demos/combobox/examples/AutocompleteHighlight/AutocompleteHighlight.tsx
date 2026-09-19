@@ -34,7 +34,6 @@ export function AutocompleteHighlight() {
         setValue(optionValue);
         combobox.closeDropdown();
       }}
-      withinPortal={false}
       store={combobox}
     >
       <Combobox.Target>

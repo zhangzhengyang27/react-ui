@@ -1,7 +1,0 @@
-[
-  {
-    "fileName": "FullLayout.tsx",
-    "language": "tsx",
-    "code": "import { useDisclosure } from '@xiaoye-react/hooks';\n\nexport function FullLayout() {\n  const [opened, { toggle }] = useDisclosure();\n\n  return (\n    <AppShell\n      header={{ height: 60 }}\n      footer={{ height: 60 }}\n      navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened } }}\n      aside={{ width: 300, breakpoint: 'md', collapsed: { desktop: false, mobile: true } }}\n      padding=\"md\"\n    >\n      <AppShell.Header>\n        <Group h=\"100%\" px=\"md\">\n          <Burger opened={opened} onClick={toggle} hiddenFrom=\"sm\" size=\"sm\" />\n          Header\n        </Group>\n      </AppShell.Header>\n      <AppShell.Navbar p=\"md\">导航栏</AppShell.Navbar>\n      <AppShell.Main>\n        <Text>这是主内容区，你的应用内容在这里。</Text>\n        <Text>包含所有元素的 AppShell 示例：导航栏、头部、侧边栏、页脚。</Text>\n        <Text>除 AppShell.Main 外的所有元素都是固定定位。</Text>\n        <Text>侧边栏在 md 断点隐藏，收起后无法打开</Text>\n      </AppShell.Main>\n      <AppShell.Aside p=\"md\">侧边栏</AppShell.Aside>\n      <AppShell.Footer p=\"md\">页脚</AppShell.Footer>\n    </AppShell>\n  );\n}\n"
-  }
-]

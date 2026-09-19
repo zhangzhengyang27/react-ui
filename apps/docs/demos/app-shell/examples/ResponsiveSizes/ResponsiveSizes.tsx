@@ -10,8 +10,7 @@ export function ResponsiveSizes() {
       header={{ height: { base: 60, md: 70, lg: 80 } }}
       navbar={{
         width: { base: 200, md: 300, lg: 400 },
-        breakpoint: 'sm',
-        collapsed: { mobile: !opened },
+        collapsed: !opened,
       }}
     >
       <AppShell.Header>

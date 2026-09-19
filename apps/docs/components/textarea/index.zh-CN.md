@@ -71,7 +71,7 @@ function Demo() {
 
 ### 底部区域
 
-使用 `bottomSection` 属性在输入框底部边框内渲染内容。
+使用 `__bottomSection` 属性在输入框底部边框内渲染内容。
 这适用于显示字符计数器、提示或其他补充信息：
 
 <code src="./demo/bottomSection.tsx"></code>
@@ -125,9 +125,8 @@ function Demo() {
 | placeholder | 占位提示 | `string` | — |
 | disabled | 是否禁用 | `boolean` | `false` |
 | error | 错误信息 | `ReactNode` | — |
-| autosize | 是否根据内容自适应高度 | `boolean` | `false` |
-| minRows | 最小行数（autosize 时生效） | `number` | — |
-| maxRows | 最大行数（autosize 时生效） | `number` | — |
+| minRows | 自适应高度的最小行数 | `number` | — |
+| maxRows | 自适应高度的最大行数 | `number` | — |
 | rows | 固定显示行数 | `number` | `4` |
 
 支持所有原生 HTML 属性。

@@ -13,9 +13,9 @@ export const Demo_searchable = {
   render: renderDemo(demos.searchable),
 };
 
-export const Demo_maxValues = {
-  name: '⭐ Demo: maxValues',
-  render: renderDemo(demos.maxValues),
+export const Demo_maxSelectedValues = {
+  name: '⭐ Demo: maxSelectedValues',
+  render: renderDemo(demos.maxSelectedValues),
 };
 
 export const Demo_hidePickedOptions = {
@@ -71,11 +71,6 @@ export const Demo_limit = {
 export const Demo_readOnly = {
   name: '⭐ Demo: readOnly',
   render: renderDemo(demos.readOnly),
-};
-
-export const Demo_scrollArea = {
-  name: '⭐ Demo: scrollArea',
-  render: renderDemo(demos.scrollArea),
 };
 
 export const Demo_search = {

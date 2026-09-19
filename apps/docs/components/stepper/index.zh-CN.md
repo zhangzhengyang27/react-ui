@@ -24,12 +24,6 @@ group:
 
 <code src="./demo/allowStepSelect.tsx"></code>
 
-### 禁用下一步选择
-
-另一种禁用后续步骤选择的方式是直接在 `Stepper` 组件上使用 `allowNextStepsSelect` 属性。当无需为每个步骤单独控制行为时，这很有用。
-
-<code src="./demo/allowNextStepsSelect.tsx"></code>
-
 ### 颜色、圆角和尺寸
 
 组件尺寸由两个属性控制：`size` 和 `iconSize`。`size` 属性控制图标尺寸、标签和描述字体大小。`iconSize` 允许单独覆盖图标尺寸，而不影响其他尺寸值：
@@ -58,25 +52,9 @@ group:
 
 <code src="./demo/orientation.tsx"></code>
 
-### 图标位置
-
-要更改步骤图标和主体排列方式，请设置 `iconPosition="right"`：
-
-<code src="./demo/iconPosition.tsx"></code>
-
-### 加载状态
-
-要指示加载状态，请在 Step 组件上设置 `loading` 属性；`Loader` 将替换步骤图标。可在 [theme](/docs/theming/theme-object/) 中配置默认加载器。
-
-
-
+### 自定义样式
 
 Styles API 自定义样式示例：
-
-
-<br />
-
-<code src="./demo/loading.tsx"></code>
 
 <code src="./demo/stylesApi.tsx"></code>
 

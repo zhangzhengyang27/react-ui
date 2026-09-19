@@ -57,7 +57,7 @@ export function ReorderablePillsMultiSelect() {
     ));
 
   return (
-    <Combobox store={combobox} onOptionSubmit={handleValueSelect} withinPortal={false}>
+    <Combobox store={combobox} onOptionSubmit={handleValueSelect}>
       <Combobox.DropdownTarget>
         <PillsInput onClick={() => combobox.openDropdown()}>
           <Pill.Group>

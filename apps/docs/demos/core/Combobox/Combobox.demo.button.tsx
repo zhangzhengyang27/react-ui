@@ -36,7 +36,6 @@ function Demo() {
         store={combobox}
         width={250}
         position="bottom-start"
-        withArrow
         onOptionSubmit={(val) => {
           setSelectedItem(val);
           combobox.closeDropdown();
@@ -85,7 +84,6 @@ function Demo() {
         store={combobox}
         width={250}
         position="bottom-start"
-        withArrow
         onOptionSubmit={(val) => {
           setSelectedItem(val);
           combobox.closeDropdown();

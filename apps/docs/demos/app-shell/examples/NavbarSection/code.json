@@ -1,7 +1,0 @@
-[
-  {
-    "fileName": "NavbarSection.tsx",
-    "language": "tsx",
-    "code": "import { useDisclosure } from '@xiaoye-react/hooks';\n\nexport function NavbarSection() {\n  const [opened, { toggle }] = useDisclosure();\n\n  return (\n    <AppShell\n      header={{ height: 60 }}\n      navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened } }}\n      padding=\"md\"\n    >\n      <AppShell.Header>\n        <Group h=\"100%\" px=\"md\">\n          <Burger opened={opened} onClick={toggle} hiddenFrom=\"sm\" size=\"sm\" />\n          Header\n        </Group>\n      </AppShell.Header>\n      <AppShell.Navbar>\n        <AppShell.Section p=\"md\">导航栏头部</AppShell.Section>\n        <AppShell.Section grow my=\"md\" component={ScrollArea} px=\"md\">\n          <Text mb=\"sm\">60 links in a scrollable section:</Text>\n\n          {Array(60)\n            .fill(0)\n            .map((_, index) => (\n              <NavLink\n                href=\"#\"\n                key={index}\n                onClick={(event) => event.preventDefault()}\n                label=\"导航栏链接\"\n              />\n            ))}\n        </AppShell.Section>\n        <AppShell.Section p=\"md\">导航栏页脚——始终位于底部</AppShell.Section>\n      </AppShell.Navbar>\n      <AppShell.Main>主内容</AppShell.Main>\n    </AppShell>\n  );\n}\n"
-  }
-]

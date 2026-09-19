@@ -121,7 +121,6 @@ export function TreeSelectCombobox() {
   return (
     <Combobox
       store={combobox}
-      withinPortal={false}
       onOptionSubmit={(val) => {
         setValue(val);
         combobox.closeDropdown();

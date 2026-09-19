@@ -8,8 +8,8 @@
         "build": "dumi build",
         "preview": "dumi preview",
         "docs:gen": "tsx scripts/docgen.ts && tsx scripts/generate-css-exports.ts",
-        "predev": "pnpm docs:gen",
-        "prebuild": "pnpm docs:gen"
+        "predev": "node ../../scripts/ensure-ui-build.mjs && pnpm docs:gen",
+        "prebuild": "node ../../scripts/ensure-ui-build.mjs && pnpm docs:gen"
     },
     "dependencies": {
         "@codesandbox/sandpack-react": "^2.20.0",
@@ -26,7 +26,6 @@
         "@stackblitz/sdk": "^1.11.0",
         "@tanstack/react-virtual": "^3.13.0",
         "@xiaoye-react/dev-icons": "workspace:*",
-        "@xiaoye-react/docs-demos": "workspace:*",
         "@xiaoye-react/docs-styles-api": "workspace:*",
         "@xiaoye-react/hooks": "workspace:*",
         "@xiaoye-react/meta": "workspace:*",

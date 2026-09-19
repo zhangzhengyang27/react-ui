@@ -1,4 +1,4 @@
-import type { DayViewFactory } from '@xiaoye-react/schedule';
+import type { DayViewFactory } from '@xiaoye-react/ui';
 import type { StylesApiData } from '../types';
 
 export const DayViewStylesApi: StylesApiData<DayViewFactory> = {

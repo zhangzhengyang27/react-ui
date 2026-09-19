@@ -24,12 +24,6 @@ group:
 
 <code src="./demo/initials.tsx"></code>
 
-### 允许的首字母颜色
-
-默认情况下，主题中的所有颜色均可用于首字母。通过 `allowedInitialsColors` 属性传入颜色数组可限制可选颜色。需要注意的是，默认颜色数组不包含主题中定义的自定义颜色；如有需要，应手动提供。
-
-<code src="./demo/allowedColors.tsx"></code>
-
 ### 占位符
 
 当图片无法加载或未提供图片地址时，Avatar 将显示占位符。默认占位符为图标，也可替换为任意 React 节点。

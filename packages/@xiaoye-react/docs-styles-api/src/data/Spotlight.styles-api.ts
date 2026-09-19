@@ -1,4 +1,4 @@
-import type { SpotlightFactory } from '@xiaoye-react/spotlight';
+import type { SpotlightFactory } from '@xiaoye-react/ui';
 import type { StylesApiData } from '../types';
 import { ModalStylesApi } from './Modal.styles-api';
 

@@ -2,7 +2,7 @@ import { useSearchParams } from 'react-router-dom'
 import { FiArrowLeft, FiCode, FiLayout, FiList } from '../../theme/icons'
 import { Affix, Button, Divider, Drawer, Group, ScrollArea, Text, Title, UnstyledButton } from '@xiaoye-react/ui'
 import { useDisclosure } from '@xiaoye-react/hooks'
-import { APP_SHELL_EXAMPLES_DATA, AppShellDemo } from '@xiaoye-react/docs-demos'
+import { APP_SHELL_EXAMPLES_DATA, AppShellDemo } from '../../../demos/app-shell'
 import classes from './app-shell.module.css'
 
 export default function AppShellPage() {

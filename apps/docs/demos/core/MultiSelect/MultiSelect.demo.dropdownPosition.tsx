@@ -10,7 +10,7 @@ function Demo() {
       label="你最喜欢的库"
       placeholder="选择值"
       data={['React', 'Angular', 'Vue', 'Svelte']}
-      comboboxProps={{ position: 'top', middlewares: { flip: false, shift: false } }}
+      comboboxProps={{ position: 'top' }}
     />
   );
 }
@@ -22,7 +22,7 @@ function Demo() {
       label="你最喜欢的库"
       placeholder="选择值"
       data={['React', 'Angular', 'Vue', 'Svelte']}
-      comboboxProps={{ position: 'top', middlewares: { flip: false, shift: false } }}
+      comboboxProps={{ position: 'top' }}
     />
   );
 }

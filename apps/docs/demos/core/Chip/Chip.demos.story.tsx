@@ -18,11 +18,6 @@ export const Demo_group = {
   render: renderDemo(demos.group),
 };
 
-export const Demo_icon = {
-  name: '⭐ Demo: icon',
-  render: renderDemo(demos.icon),
-};
-
 export const Demo_tooltip = {
   name: '⭐ Demo: tooltip',
   render: renderDemo(demos.tooltip),

@@ -34,46 +34,12 @@ group:
 <code src="./demo/configurator.tsx"></code>
 
 ### 分段提示
-
-在分段上添加 `tooltip` 属性，当用户悬停在该分段上时显示浮动 [Tooltip](/components/tooltip/)：
-
-<code src="./demo/tooltip.tsx"></code>
-
-### 分段间隙
-
-使用 `sectionGap` 属性在分段之间添加视觉分隔。间隙以角度为单位：
-
-<code src="./demo/sectionGap.tsx"></code>
-
-### 起始角度
-
-使用 `startAngle` 属性控制进度开始的位置。角度以度为单位，其中 `0` = 右侧，`90` = 底部，`180` = 左侧，`270` = 顶部（默认）：
-
-<code src="./demo/startAngle.tsx"></code>
-
-### 背景颜色
-
-使用 `rootColor` 属性自定义环形未填充部分（背景）的颜色：
-
-<code src="./demo/rootColor.tsx"></code>
-
 ### 分段事件
-
-每个分段都可以接收任何有效的 SVG `<circle>` 元素属性，包括事件处理函数如 `onClick`、`onMouseEnter` 和 `onMouseLeave`：
-
-<code src="./demo/sectionsProps.tsx"></code>
-
 ### 自定义标签
 
 可将任意 React 节点作为标签，例如带有自定义样式的 [Text](/components/text/) 组件或 [ActionIcon](/components/action-icon/)：
 
 <code src="./demo/label.tsx"></code>
-
-### 填充分段过渡
-
-默认情况下，过渡被禁用。要启用它们，请将 `transitionDuration` 属性设置为毫秒数：
-
-<code src="./demo/transitions.tsx"></code>
 
 
 
@@ -89,7 +55,6 @@ group:
 | roundCaps | 是否圆角 | `boolean` | `true` |
 | sectionsColor | 单色环颜色 | `UIColor` | `'blue'` |
 | label | 中心标签 | `ReactNode` | — |
-| rootColor | 底环颜色 | `UIColor` | `'gray'` |
 
 支持所有原生 HTML 属性。
 

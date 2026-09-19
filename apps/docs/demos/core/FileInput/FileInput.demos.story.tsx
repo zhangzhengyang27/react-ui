@@ -33,11 +33,6 @@ export const Demo_clearable = {
   render: renderDemo(demos.clearable),
 };
 
-export const Demo_clearSectionMode = {
-  name: '⭐ Demo: clearSectionMode',
-  render: renderDemo(demos.clearSectionMode),
-};
-
 export const Demo_accept = {
   name: '⭐ Demo: accept',
   render: renderDemo(demos.accept),
@@ -46,11 +41,6 @@ export const Demo_accept = {
 export const Demo_multiple = {
   name: '⭐ Demo: multiple',
   render: renderDemo(demos.multiple),
-};
-
-export const Demo_valueComponent = {
-  name: '⭐ Demo: valueComponent',
-  render: renderDemo(demos.valueComponent),
 };
 
 export const Demo_sections = {

@@ -80,12 +80,6 @@ function Demo() {
 
 <code src="./demo/pull.tsx"></code>
 
-### 反转标签页
-
-要将标签页反转，请将 `Tabs.Panel` 组件放在 `Tabs.List` 之前，并向 `Tabs` 组件添加 `inverted` 属性：
-
-<code src="./demo/inverted.tsx"></code>
-
 ### 垂直方向标签页位置
 
 要更改垂直方向下 `Tabs.List` 的位置，请设置 `placement` 属性：
@@ -98,19 +92,6 @@ function Demo() {
 禁用的标签页无法通过鼠标或键盘激活，并且在使用方向键导航时会被跳过：
 
 <code src="./demo/disabled.tsx"></code>
-
-### 激活模式
-
-默认情况下，用户按方向键或 Home/End 键时会激活标签页。
-要禁用此行为，请在 `Tabs` 组件上设置 `activateTabWithKeyboard={false}`：
-
-<code src="./demo/keyboardActivation.tsx"></code>
-
-### 标签页取消激活
-
-默认情况下，当前激活的标签页无法取消激活。要允许取消激活，请在 `Tabs` 组件上设置 `allowTabDeactivation`：
-
-<code src="./demo/deactivate.tsx"></code>
 
 ### 卸载非活动标签页
 

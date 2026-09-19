@@ -148,7 +148,7 @@ export function TreeSelectCheckbox() {
   };
 
   return (
-    <Combobox store={combobox} withinPortal={false} onOptionSubmit={handleOptionSubmit}>
+    <Combobox store={combobox} onOptionSubmit={handleOptionSubmit}>
       <Combobox.Target>
         <InputBase
           component="button"

@@ -61,11 +61,6 @@ export const APP_SHELL_EXAMPLES_DATA: AppShellExample[] = [
     description: '向下滚动隐藏头部、向上滚动显示头部的应用外壳',
   },
   {
-    id: 'NavbarSection',
-    name: '带分区块导航栏',
-    description: 'AppShell.Section 组件用法',
-  },
-  {
     id: 'StaticMode',
     name: '静态模式',
     description: '使用 CSS Grid 在正常文档流中渲染的应用外壳',

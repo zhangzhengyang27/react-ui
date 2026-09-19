@@ -1,4 +1,4 @@
-import type { DropzoneFactory, DropzoneFullScreenFactory } from '@xiaoye-react/dropzone';
+import type { DropzoneFactory, DropzoneFullScreenFactory } from '@xiaoye-react/ui';
 import type { StylesApiData } from '../types';
 
 export const DropzoneStylesApi: StylesApiData<DropzoneFactory> = {

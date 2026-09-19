@@ -13,12 +13,11 @@ function Demo() {
       <SegmentedControl data={['React', 'Angular', 'Vue', 'Svelte']} transitionDuration={0} />
 
       <Text size="sm" fw={500} mt="md">
-        500ms linear transition
+        500ms transition
       </Text>
       <SegmentedControl
         data={['React', 'Angular', 'Vue', 'Svelte']}
         transitionDuration={500}
-        transitionTimingFunction="linear"
       />
     </>
   );
@@ -34,12 +33,11 @@ function Demo() {
       <SegmentedControl data={['React', 'Angular', 'Vue', 'Svelte']} transitionDuration={0} />
 
       <Text size="sm" fw={500} mt="md">
-        500ms linear transition
+        500ms transition
       </Text>
       <SegmentedControl
         data={['React', 'Angular', 'Vue', 'Svelte']}
         transitionDuration={500}
-        transitionTimingFunction="linear"
       />
     </>
   );

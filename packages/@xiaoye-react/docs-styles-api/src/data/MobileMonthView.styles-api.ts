@@ -1,4 +1,4 @@
-import type { MobileMonthViewFactory } from '@xiaoye-react/schedule';
+import type { MobileMonthViewFactory } from '@xiaoye-react/ui';
 import type { StylesApiData } from '../types';
 
 export const MobileMonthViewStylesApi: StylesApiData<MobileMonthViewFactory> = {

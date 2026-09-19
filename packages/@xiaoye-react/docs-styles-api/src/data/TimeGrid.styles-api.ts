@@ -1,4 +1,4 @@
-import type { TimeGridFactory } from '@xiaoye-react/dates';
+import type { TimeGridFactory } from '@xiaoye-react/ui';
 import type { StylesApiData } from '../types';
 
 export const TimeGridStylesApi: StylesApiData<TimeGridFactory> = {

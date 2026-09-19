@@ -1,4 +1,4 @@
-import type { MonthViewFactory } from '@xiaoye-react/schedule';
+import type { MonthViewFactory } from '@xiaoye-react/ui';
 import type { StylesApiData } from '../types';
 
 export const MonthViewStylesApi: StylesApiData<MonthViewFactory> = {

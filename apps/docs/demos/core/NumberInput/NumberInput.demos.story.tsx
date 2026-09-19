@@ -13,34 +13,9 @@ export const Demo_handlers = {
   render: renderDemo(demos.handlers),
 };
 
-export const Demo_allowNegative = {
-  name: '⭐ Demo: allowNegative',
-  render: renderDemo(demos.allowNegative),
-};
-
-export const Demo_decimalScale = {
-  name: '⭐ Demo: decimalScale',
-  render: renderDemo(demos.decimalScale),
-};
-
-export const Demo_allowDecimal = {
-  name: '⭐ Demo: allowDecimal',
-  render: renderDemo(demos.allowDecimal),
-};
-
 export const Demo_thousandsSeparator = {
   name: '⭐ Demo: thousandsSeparator',
   render: renderDemo(demos.thousandsSeparator),
-};
-
-export const Demo_decimalSeparator = {
-  name: '⭐ Demo: decimalSeparator',
-  render: renderDemo(demos.decimalSeparator),
-};
-
-export const Demo_fixedDecimalScale = {
-  name: '⭐ Demo: fixedDecimalScale',
-  render: renderDemo(demos.fixedDecimalScale),
 };
 
 export const Demo_prefixSuffix = {
@@ -51,11 +26,6 @@ export const Demo_prefixSuffix = {
 export const Demo_minMax = {
   name: '⭐ Demo: minMax',
   render: renderDemo(demos.minMax),
-};
-
-export const Demo_strictClamp = {
-  name: '⭐ Demo: strictClamp',
-  render: renderDemo(demos.strictClamp),
 };
 
 export const Demo_usage = {
@@ -88,17 +58,7 @@ export const Demo_sections = {
   render: renderDemo(demos.sections),
 };
 
-export const Demo_hold = {
-  name: '⭐ Demo: hold',
-  render: renderDemo(demos.hold),
-};
-
 export const Demo_loading = {
   name: '⭐ Demo: loading',
   render: renderDemo(demos.loading),
-};
-
-export const Demo_bigInt = {
-  name: '⭐ Demo: bigInt',
-  render: renderDemo(demos.bigInt),
 };

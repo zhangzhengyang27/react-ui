@@ -8,24 +8,9 @@ export const Demo_usage = {
   render: renderDemo(demos.usage),
 };
 
-export const Demo_cssUnits = {
-  name: '⭐ Demo: cssUnits',
-  render: renderDemo(demos.cssUnits),
-};
-
 export const Demo_vertical = {
   name: '⭐ Demo: vertical',
   render: renderDemo(demos.vertical),
-};
-
-export const Demo_collapsible = {
-  name: '⭐ Demo: collapsible',
-  render: renderDemo(demos.collapsible),
-};
-
-export const Demo_controlled = {
-  name: '⭐ Demo: controlled',
-  render: renderDemo(demos.controlled),
 };
 
 export const Demo_multiple = {
@@ -46,9 +31,4 @@ export const Demo_redistribute = {
 export const Demo_lineSize = {
   name: '⭐ Demo: lineSize',
   render: renderDemo(demos.lineSize),
-};
-
-export const Demo_withHandle = {
-  name: '⭐ Demo: withHandle',
-  render: renderDemo(demos.withHandle),
 };

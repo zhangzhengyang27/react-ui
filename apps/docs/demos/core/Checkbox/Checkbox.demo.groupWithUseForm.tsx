@@ -26,7 +26,7 @@ function Demo() {
         {...form.getInputProps('frameworks')}
         key={form.key('frameworks')}
         label="选择你最喜欢的框架/库"
-        withAsterisk
+        required
       >
         <Group my={5}>
           <Checkbox value="react" label="React" />
@@ -63,7 +63,7 @@ function Demo() {
         {...form.getInputProps('frameworks')}
         key={form.key('frameworks')}
         label="选择你最喜欢的框架/库"
-        withAsterisk
+        required
       >
         <Group my={5}>
           <Checkbox value="react" label="React" />

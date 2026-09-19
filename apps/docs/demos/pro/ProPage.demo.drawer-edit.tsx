@@ -120,7 +120,7 @@ function Demo() {
         request={fakeQuery}
         actionsRef={actionsRef}
         search={{ fields: [{ name: 'keyword', type: 'text', label: '关键词' }] }}
-        striped
+        dataTableProps={{ striped: true }}
       />
 
       <Drawer
@@ -210,7 +210,7 @@ function Demo() {
                 request={fakeQuery}
                 actionsRef={actionsRef}
                 search={{ fields: [{ name: 'keyword', type: 'text', label: '关键词' }] }}
-                striped
+                dataTableProps={{ striped: true }}
             />
 
             <Drawer

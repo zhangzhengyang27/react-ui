@@ -70,7 +70,7 @@ import { ProTable } from '@xiaoye-react/pro';
     return { records: res.list, total: res.total };
   }}
   search={{ fields: [{ name: 'keyword', type: 'text', label: '关键词' }] }}
-  striped
+  dataTableProps={{ striped: true }}
 />
 ```
 

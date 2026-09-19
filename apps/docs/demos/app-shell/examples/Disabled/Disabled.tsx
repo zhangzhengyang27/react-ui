@@ -8,7 +8,7 @@ export function Disabled() {
   return (
     <AppShell
       header={{ height: 60 }}
-      navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened } }}
+      navbar={{ width: 300, collapsed: !opened }}
       padding="md"
       disabled={disabled}
     >

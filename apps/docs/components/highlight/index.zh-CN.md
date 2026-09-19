@@ -18,21 +18,9 @@ group:
 
 使用 Highlight 组件通过 HTML `<mark>` 元素高亮文本中的子字符串。
 
-将文本作为 children 传递，并使用 `highlight` 属性指定要高亮的子字符串。默认情况下匹配是**不区分大小写**和**不区分重音符号**的，并且会高亮匹配子字符串的所有出现位置。使用 `caseInsensitive` 和 `accentInsensitive` 属性选择退出。
+将文本作为 children 传递，并使用 `highlight` 属性指定要高亮的子字符串。匹配**不区分大小写**，并且会高亮匹配子字符串的所有出现位置。
 
 <code src="./demo/usage.tsx"></code>
-
-### 区分大小写匹配
-
-设置 `caseInsensitive={false}` 以仅匹配与高亮术语大小写相同的子字符串：
-
-<code src="./demo/caseInsensitive.tsx"></code>
-
-### 区分重音符号匹配
-
-设置 `accentInsensitive={false}` 以要求文本中的重音字符与高亮术语完全匹配：
-
-<code src="./demo/accentInsensitive.tsx"></code>
 
 ### 高亮多个子字符串
 
@@ -45,18 +33,6 @@ group:
 可通过提供包含 `text` 和 `color` 属性的对象数组，为不同的高亮术语分配不同颜色：
 
 <code src="./demo/colors.tsx"></code>
-
-### 整词匹配
-
-使用 `wholeWord` 属性仅匹配完整单词。启用后，'the' 不会匹配 'there' 或 'theme'：
-
-<code src="./demo/wholeword.tsx"></code>
-
-### 更改高亮样式
-
-可以使用 `highlightStyles` 属性覆盖默认 [Mark](/components/mark/) 样式，它接受样式对象或接收主题作为参数并返回样式的函数：
-
-<code src="./demo/styles.tsx"></code>
 
 ### Text 属性
 

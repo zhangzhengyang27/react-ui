@@ -236,7 +236,6 @@ function Demo() {
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Checkbox.Group
         label="选择你最喜欢的框架/库"
-        withAsterisk
         key={form.key('favFrameworks')}
         {...form.getInputProps('favFrameworks')}
       >
@@ -268,7 +267,6 @@ function DemoCheckboxGroup() {
     <form onSubmit={form.onSubmit((values) => console.log(values))}>
       <Checkbox.Group
         label="选择你最喜欢的框架/库"
-        withAsterisk
         key={form.key('favFrameworks')}
         {...form.getInputProps('favFrameworks')}
       >
@@ -684,7 +682,6 @@ function Demo() {
         label="package.json"
         placeholder="package.json"
         formatOnBlur
-        autosize
         minRows={4}
         key={form.key('packageJson')}
         {...form.getInputProps('packageJson')}
@@ -712,7 +709,6 @@ function DemoJsonInput() {
         label="package.json"
         placeholder="package.json"
         formatOnBlur
-        autosize
         minRows={4}
         key={form.key('packageJson')}
         {...form.getInputProps('packageJson')}

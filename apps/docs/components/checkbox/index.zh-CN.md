@@ -104,7 +104,6 @@ function Demo() {
 
 使用 `error` 属性在复选框标签下方显示错误信息。
 如需对复选框应用错误样式但不显示错误信息，请使用布尔值 `error` 属性。
-如需显示错误信息但不应用错误样式，请设置 `withErrorStyles={false}`。
 
 <code src="./demo/error.tsx"></code>
 
@@ -136,8 +135,6 @@ function Demo() {
 默认情况下，复选框输入和标签具有 `cursor: default`（与原生 `input[type="checkbox"]` 相同）。
 要将光标更改为 pointer，请在 [theme](/docs/theming/theme-object/) 上设置 `cursorType`：
 
-<code src="./demo/autoContrast.tsx"></code>
-
 ### 添加自定义尺寸
 
 可使用 [data-size](/docs/styles/data-attributes/) 属性添加任意数量的自定义尺寸：
@@ -151,8 +148,8 @@ function Demo() {
 `onChange` 属性应为接收新值作为字符串数组的函数。
 
 
-`Checkbox.Group` 组件支持所有 [Input.Wrapper](/components/input/#inputwrapper-component)
-属性。
+`Checkbox.Group` 通过 [Input.Wrapper](/components/input/#inputwrapper-component) 渲染 `label`、
+`description`、`error` 与 `required`（在标签后添加必填星号）这四个属性，其余 Input.Wrapper 属性暂不支持。
 
 ```tsx
 import { useState } from 'react';
@@ -175,13 +172,6 @@ function Demo() {
 ### Checkbox.Group 禁用
 
 <code src="./demo/groupDisabled.tsx"></code>
-
-### maxSelectedValues
-
-使用 `maxSelectedValues` 属性限制 `Checkbox.Group` 中可选值的数量。
-达到限制时，剩余的复选框将被禁用且无法选择。
-
-<code src="./demo/maxSelectedValues.tsx"></code>
 
 ### 与 @xiaoye-react/ui 一起使用的 Checkbox.Group
 
@@ -365,6 +355,7 @@ function GoodLabel() {
 | label | 组标签 | `ReactNode` | — |
 | description | 组描述 | `ReactNode` | — |
 | error | 组错误信息 | `ReactNode` | — |
+| required | 必填（在组标签后加 `*`） | `boolean` | `false` |
 | name | 提交表单时的 name | `string` | — |
 | withSpacing | 子项之间是否自带间距 | `boolean` | `false` |
 

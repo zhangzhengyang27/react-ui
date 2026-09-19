@@ -37,7 +37,6 @@ export function SelectActive() {
     <Combobox
       store={combobox}
       resetSelectionOnOptionHover
-      withinPortal={false}
       onOptionSubmit={(val) => {
         setValue(val);
         combobox.updateSelectedOptionIndex('active');

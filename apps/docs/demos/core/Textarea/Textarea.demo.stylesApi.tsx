@@ -16,7 +16,6 @@ function Demo() {
       error="错误"
       withAsterisk
       leftSection={<AtIcon size={18} />}
-      autosize
       {{props}}
     />
   );
@@ -32,7 +31,6 @@ function Demo(props: any) {
             error="错误"
             withAsterisk
             leftSection={<AtIcon size={18} />}
-            autosize
             {...props}
         />
     )

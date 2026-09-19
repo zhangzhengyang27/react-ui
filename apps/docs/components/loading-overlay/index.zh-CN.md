@@ -24,7 +24,8 @@ group:
 
 ### Loader 属性
 
-可使用 `loaderProps` 将属性传递给 [Loader](/components/loader) 组件：
+可使用 `loaderProps` 将属性传递给 [Loader](/components/loader) 组件，使用 `overlayProps` 将属性传递给
+[Overlay](/components/overlay) 组件（遮罩层层级通过 `overlayProps.zIndex` 设置）：
 
 <code src="./demo/loaderProps.tsx"></code>
 
@@ -42,8 +43,7 @@ group:
 | --- | --- | --- | --- |
 | visible | 是否可见 | `boolean` | `true` |
 | loaderProps | 加载指示器属性 | `LoaderProps` | — |
-| overlayProps | 遮罩层属性 | `OverlayProps` | — |
-| zIndex | 层级 | `number` | `1000` |
+| overlayProps | 遮罩层属性，`zIndex` 等层级设置也在此传入 | `OverlayProps` | — |
 
 除上表所列属性外，LoadingOverlay 还支持所有原生 HTML 属性。
 

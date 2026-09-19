@@ -8,11 +8,6 @@ export const Demo_configurator = {
   render: renderDemo(demos.configurator),
 };
 
-export const Demo_customSymbol = {
-  name: '⭐ Demo: customSymbol',
-  render: renderDemo(demos.customSymbol),
-};
-
 export const Demo_readOnly = {
   name: '⭐ Demo: readOnly',
   render: renderDemo(demos.readOnly),
@@ -23,12 +18,7 @@ export const Demo_fractions = {
   render: renderDemo(demos.fractions),
 };
 
-export const Demo_symbol = {
-  name: '⭐ Demo: symbol',
-  render: renderDemo(demos.symbol),
-};
-
-export const Demo_allowClear = {
-  name: '⭐ Demo: allowClear',
-  render: renderDemo(demos.allowClear),
+export const Demo_clearable = {
+  name: '⭐ Demo: clearable',
+  render: renderDemo(demos.clearable),
 };

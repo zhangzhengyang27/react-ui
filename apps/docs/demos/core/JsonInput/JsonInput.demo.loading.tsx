@@ -5,12 +5,12 @@ const code = `
 import { JsonInput } from '@xiaoye-react/ui';
 
 function Demo() {
-  return <JsonInput placeholder="输入 JSON" formatOnBlur autosize minRows={4} loading />;
+  return <JsonInput placeholder="输入 JSON" formatOnBlur minRows={4} loading />;
 }
 `;
 
 function Demo() {
-  return <JsonInput placeholder="输入 JSON" formatOnBlur autosize minRows={4} loading />;
+  return <JsonInput placeholder="输入 JSON" formatOnBlur minRows={4} loading />;
 }
 
 export const loading: UIDemo = {

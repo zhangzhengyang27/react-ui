@@ -158,7 +158,6 @@ export function TreeSelectSearchable() {
   return (
     <Combobox
       store={combobox}
-      withinPortal={false}
       onOptionSubmit={(val) => {
         setValue(val);
         setSearch(findLabel(data, val) || '');

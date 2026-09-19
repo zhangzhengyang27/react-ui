@@ -15,7 +15,6 @@ function Demo() {
           label="你最喜欢的库"
           placeholder="选择值或输入任意内容"
           data={['React', 'Angular', 'Vue', 'Svelte']}
-          comboboxProps={{ withinPortal: false }}
         />
       </Popover.Dropdown>
     </Popover>
@@ -34,7 +33,6 @@ function Demo() {
           label="你最喜欢的库"
           placeholder="选择值或输入任意内容"
           data={['React', 'Angular', 'Vue', 'Svelte']}
-          comboboxProps={{ withinPortal: false }}
         />
       </Popover.Dropdown>
     </Popover>

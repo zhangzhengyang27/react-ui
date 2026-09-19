@@ -160,7 +160,6 @@ function Demo() {
 使用以下属性更改过渡效果：
 
 - `transitionDuration` – 所有过渡持续时间（毫秒），默认 `200`
-- `transitionTimingFunction` – 所有过渡计时函数，默认 `ease`
 
 <code src="./demo/transitions.tsx"></code>
 

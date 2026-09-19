@@ -11,8 +11,7 @@ export function CollapseDesktop() {
       header={{ height: 60 }}
       navbar={{
         width: 300,
-        breakpoint: 'sm',
-        collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
+        collapsed: !mobileOpened && !desktopOpened,
       }}
     >
       <AppShell.Header>
@@ -23,14 +22,13 @@ export function CollapseDesktop() {
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="md">
-        You can collapse the Navbar both on desktop and mobile. After sm breakpoint, the navbar is
-        no longer offset by padding in the main element and it takes the full width of the screen
-        when opened.
+        You can collapse the Navbar from either burger. While it is collapsed its width is 0, and it
+        expands back to the configured width when opened.
       </AppShell.Navbar>
       <AppShell.Main>
         <Text>这是主内容区，你的应用内容在这里。</Text>
         <Text>导航栏在移动端和桌面端均可折叠。不错！</Text>
-        <Text>移动端和桌面端的打开状态可以分别管理。</Text>
+        <Text>两个汉堡按钮都会切换同一个 navbar 的折叠状态。</Text>
       </AppShell.Main>
     </AppShell>
   );

@@ -74,10 +74,6 @@ function Demo() {
 
 <code src="./demo/iconLabels.tsx"></code>
 
-### Thumb 图标
-
-<code src="./demo/thumbIcon.tsx"></code>
-
 ### 带 Tooltip
 
 在 [Tooltip](/components/tooltip/) 和其他类似组件上设置 `refProp="rootRef"` 以使其与 `Switch` 一起工作：
@@ -138,13 +134,6 @@ export function UncontrolledForm() {
   );
 }
 ```
-
-### maxSelectedValues
-
-使用 `maxSelectedValues` 属性限制 `Switch.Group` 中可选值的数量。
-达到限制时，剩余的开关将被禁用且无法选择。
-
-<code src="./demo/maxSelectedValues.tsx"></code>
 
 ### Switch.Group 禁用
 

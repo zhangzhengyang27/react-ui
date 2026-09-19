@@ -1,4 +1,4 @@
-import type { AgendaViewFactory } from '@xiaoye-react/schedule';
+import type { AgendaViewFactory } from '@xiaoye-react/ui';
 import type { StylesApiData } from '../types';
 
 export const AgendaViewStylesApi: StylesApiData<AgendaViewFactory> = {

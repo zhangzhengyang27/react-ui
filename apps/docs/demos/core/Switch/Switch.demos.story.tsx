@@ -18,11 +18,6 @@ export const Demo_labels = {
   render: renderDemo(demos.labels),
 };
 
-export const Demo_thumbIcon = {
-  name: '⭐ Demo: thumbIcon',
-  render: renderDemo(demos.thumbIcon),
-};
-
 export const Demo_iconLabels = {
   name: '⭐ Demo: iconLabels',
   render: renderDemo(demos.iconLabels),
@@ -51,9 +46,4 @@ export const Demo_tooltip = {
 export const Demo_styles = {
   name: '⭐ Demo: styles',
   render: renderDemo(demos.styles),
-};
-
-export const Demo_maxSelectedValues = {
-  name: '⭐ Demo: maxSelectedValues',
-  render: renderDemo(demos.maxSelectedValues),
 };

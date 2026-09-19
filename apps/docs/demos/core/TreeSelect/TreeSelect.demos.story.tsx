@@ -118,16 +118,6 @@ export const Demo_dropdownOffset = {
   render: renderDemo(demos.dropdownOffset),
 };
 
-export const Demo_dropdownAnimation = {
-  name: '⭐ Demo: dropdownAnimation',
-  render: renderDemo(demos.dropdownAnimation),
-};
-
-export const Demo_dropdownPadding = {
-  name: '⭐ Demo: dropdownPadding',
-  render: renderDemo(demos.dropdownPadding),
-};
-
 export const Demo_dropdownShadow = {
   name: '⭐ Demo: dropdownShadow',
   render: renderDemo(demos.dropdownShadow),

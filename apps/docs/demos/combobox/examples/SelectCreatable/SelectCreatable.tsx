@@ -33,7 +33,6 @@ export function SelectCreatable() {
   return (
     <Combobox
       store={combobox}
-      withinPortal={false}
       onOptionSubmit={(val) => {
         if (val === '$create') {
           setData((current) => [...current, search]);

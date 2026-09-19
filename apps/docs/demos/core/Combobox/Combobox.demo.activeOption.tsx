@@ -34,7 +34,6 @@ function Demo() {
   return (
     <Combobox
       store={combobox}
-      resetSelectionOnOptionHover
       onOptionSubmit={(val) => {
         setValue(val);
         combobox.updateSelectedOptionIndex('active');
@@ -89,7 +88,6 @@ function Demo() {
   return (
     <Combobox
       store={combobox}
-      resetSelectionOnOptionHover
       onOptionSubmit={(val) => {
         setValue(val);
         combobox.updateSelectedOptionIndex('active');

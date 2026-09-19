@@ -145,13 +145,6 @@ const marks = [
 <code src="./demo/inverted.tsx"></code>
 
 ### 隐藏刻度
-
-隐藏刻度允许在不将其视觉上显示在轨道上的情况下吸附到特定值。
-当希望创建对某些值的“粘性”吸附行为，但不想向用户显示这些值时，这很有用。
-请与 `restrictToMarks` 属性一起使用：
-
-<code src="./demo/hiddenMarks.tsx"></code>
-
 ### 可访问性
 
 `RangeSlider` 组件默认可访问：

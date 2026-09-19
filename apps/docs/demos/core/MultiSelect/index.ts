@@ -1,6 +1,6 @@
 export { usage } from './MultiSelect.demo.usage';
 export { searchable } from './MultiSelect.demo.searchable';
-export { maxValues } from './MultiSelect.demo.maxValues';
+export { maxSelectedValues } from './MultiSelect.demo.maxSelectedValues';
 export { hidePickedOptions } from './MultiSelect.demo.hidePickedOptions';
 export { nothingFound } from './MultiSelect.demo.nothingFound';
 export { checkIcon } from './MultiSelect.demo.checkIcon';
@@ -12,7 +12,6 @@ export { success } from './MultiSelect.demo.success';
 export { groups } from './MultiSelect.demo.groups';
 export { limit } from './MultiSelect.demo.limit';
 export { readOnly } from './MultiSelect.demo.readOnly';
-export { scrollArea } from './MultiSelect.demo.scrollArea';
 export { search } from './MultiSelect.demo.search';
 export { sort } from './MultiSelect.demo.sort';
 export { stylesApi } from './MultiSelect.demo.stylesApi';

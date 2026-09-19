@@ -13,11 +13,6 @@ export const Demo_multiple = {
   render: renderDemo(demos.multiple),
 };
 
-export const Demo_styles = {
-  name: '⭐ Demo: styles',
-  render: renderDemo(demos.styles),
-};
-
 export const Demo_props = {
   name: '⭐ Demo: props',
   render: renderDemo(demos.props),
@@ -26,19 +21,4 @@ export const Demo_props = {
 export const Demo_colors = {
   name: '⭐ Demo: colors',
   render: renderDemo(demos.colors),
-};
-
-export const Demo_wholeword = {
-  name: '⭐ Demo: wholeword',
-  render: renderDemo(demos.wholeword),
-};
-
-export const Demo_accentInsensitive = {
-  name: '⭐ Demo: accentInsensitive',
-  render: renderDemo(demos.accentInsensitive),
-};
-
-export const Demo_caseInsensitive = {
-  name: '⭐ Demo: caseInsensitive',
-  render: renderDemo(demos.caseInsensitive),
 };

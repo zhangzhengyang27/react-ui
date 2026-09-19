@@ -70,33 +70,17 @@ function Demo() {
 
 <code src="./demo/clearable.tsx"></code>
 
-<code src="./demo/clearSectionMode.tsx"></code>
-
 ### 最大选中数量
 
 可使用 `maxTags` 属性限制可选值的数量。达到限制后将无法再添加更多值。
 
 <code src="./demo/maxTags.tsx"></code>
 
-### 失焦时接受值
-
-默认情况下，如果用户输入一个值然后使输入框失焦，该值会被添加到列表中。可通过设置 `acceptValueOnBlur` 为 `false` 来更改此行为。在这种情况下，只有在用户按 `Enter` 或点击建议时才会添加值。
-
-<code src="./demo/acceptValueOnBlur.tsx"></code>
-
 ### 允许重复
 
 默认情况下，`TagsInput` 不允许添加重复值，但可通过设置 `allowDuplicates` 属性来更改此行为。如果值已经存在于 `value` 数组中，则无论大小写和尾部空格如何，都被视为重复。
 
 <code src="./demo/allowDuplicates.tsx"></code>
-
-### isDuplicate
-
-可使用 `isDuplicate` 属性控制如何检测重复。它是一个函数，接收两个参数：tag 值和当前 tags。如果该值是重复项，函数必须返回 `true`。
-
-使用 `isDuplicate` 允许相同值使用不同大小写的示例：
-
-<code src="./demo/isDuplicate.tsx"></code>
 
 ### 分隔字符
 
@@ -112,81 +96,8 @@ function Demo() {
 
 <code src="./demo/data.tsx"></code>
 
-<code src="./demo/search.tsx"></code>
-
 ### 排序选项
-
-默认情况下，选项按其所在 `data` 数组的位置排序。可使用 `filter` 函数更改此行为：
-
-<code src="./demo/sort.tsx"></code>
-
-### 使用 fuse.js 进行模糊搜索
-
-可使用 [fuse.js](https://fusejs.io/) 库实现模糊搜索，即使在输入有错字或部分匹配时也能匹配选项：
-
-<code src="./demo/fuzzySearch.tsx"></code>
-
 <code src="./demo/limit.tsx"></code>
-
-### renderOption
-
-`renderOption` 回调允许自定义选项渲染。它接收选项对象，必须返回一个 React 节点。
-
-<code src="./demo/renderOption.tsx"></code>
-
-### Pill 自定义
-
-`renderPill` 回调允许自定义 pills 的渲染方式。它接收一个包含 `option`（combobox 项）、`value`（字符串）、`onRemove`（函数）和 `disabled` 的对象。注意，由于 `TagsInput` 允许添加自定义值，`option` 属性可能是即时生成的。
-
-<code src="./demo/renderPill.tsx"></code>
-
-### 重新排序 pills
-
-设置 `withPillsReorder` 属性以允许重新排序 pills。将 pill 拖到另一个 pill 前后会相应更新组件值。设置 `disabled` 或 `readOnly` 时会自动禁用重新排序。
-
-可使用鼠标（拖放）或键盘重新排序 pills：
-
-- Pills 不在 `Tab` 顺序中。当焦点在输入框时，按 `ArrowLeft`（当光标在输入框开头时）可将焦点移到最后一个 pill。
-- `ArrowLeft` 和 `ArrowRight` 在 pills 之间移动焦点（支持 RTL）。在最后一个 pill 上按 `ArrowRight` 可将焦点返回到输入框。
-- `Alt + ArrowLeft` 和 `Alt + ArrowRight` 重新排序当前聚焦的 pill（支持 RTL）。
-
-焦点会跟随移动的 pill，因此可以连续进行多次移动而无需重新聚焦。
-
-
-若使用 `renderPill` 属性自定义 pill 渲染，请将渲染回调负载中的 `reorderProps` 展开到可聚焦的 pill 根元素上，以保持重新排序功能正常。`reorderProps` 包含 `tabIndex`、`data-ui-pill-index` 属性和驱动键盘重新排序的键盘处理器，因此它必须落在用户可聚焦的元素上：
-
-```tsx
-import { TagsInput } from '@xiaoye-react/ui';
-
-function Demo() {
-  return (
-    <TagsInput
-      withPillsReorder
-      renderPill={({ value, onRemove, reorderProps }) => (
-        <div {...reorderProps}>
-          {value} <button onClick={onRemove}>×</button>
-        </div>
-      )}
-    />
-  );
-}
-```
-
-<code src="./demo/dragReorder.tsx"></code>
-
-### 可滚动下拉菜单
-
-默认情况下，选项列表使用 [ScrollArea.Autosize](/components/scroll-area) 包裹。若不更改默认设置，可以使用 `maxDropdownHeight` 属性控制下拉菜单的最大高度。
-
-若希望使用原生滚动条，请设置 `withScrollArea={false}`。注意，在这种情况下，需使用 [Styles API](/docs/styles/styles-api) 更改下拉菜单样式。
-
-<code src="./demo/scrollArea.tsx"></code>
-
-### 下拉菜单适配视口高度
-
-设置 `floatingHeight="viewport"` 可使下拉菜单扩展到视口中可用的垂直空间。此模式下 `flip` 中间件被禁用——下拉菜单始终按配置方向打开，并被限制在视口边缘而不是翻转到另一侧。适用于大量选项列表：
-
-<code src="./demo/floatingHeight.tsx"></code>
 
 ### 分组选项
 
@@ -204,12 +115,6 @@ function Demo() {
 
 <code src="./demo/withinPopover.tsx"></code>
 
-### 控制下拉菜单打开状态
-
-可使用 `dropdownOpened` 属性控制下拉菜单的打开状态。此外，还可以使用 `onDropdownClose` 和 `onDropdownOpen` 监听下拉菜单打开状态的变化。
-
-<code src="./demo/dropdownOpened.tsx"></code>
-
 ### 下拉菜单位置
 
 默认情况下，如果空间足够，下拉菜单显示在输入框下方；否则显示在输入框上方。可通过设置 `position` 和 `middlewares` 属性来更改此行为，这些属性会传递给底层的 [Popover](/components/popover) 组件。
@@ -225,11 +130,6 @@ function Demo() {
 <code src="./demo/dropdownAnimation.tsx"></code>
 
 ### 下拉菜单宽度
-
-要更改下拉菜单宽度，请在 `comboboxProps` 中设置 `width` 属性。默认情况下，下拉菜单宽度等于输入框宽度。
-
-<code src="./demo/dropdownWidth.tsx"></code>
-
 ### 下拉菜单内边距
 
 <code src="./demo/dropdownPadding.tsx"></code>
@@ -284,8 +184,6 @@ function Demo() {
 
 <code src="./demo/stylesApi.tsx"></code>
 
-<ClearSectionMode></ClearSectionMode>
-
 <ComboboxData component="TagsInput"></ComboboxData>
 
 <ComboboxFiltering component="TagsInput"></ComboboxFiltering>
@@ -320,7 +218,6 @@ function Demo() {
 | disabled | 是否禁用 | `boolean` | `false` |
 | error | 错误信息 | `ReactNode` | — |
 | maxTags | 最大标签数 | `number` | — |
-| acceptValueOnBlur | 失焦时是否接受当前输入 | `boolean` | `true` |
 | splitChars | 分隔字符 | `string[]` | `[',', 'Enter']` |
 
 支持所有原生 HTML 属性。

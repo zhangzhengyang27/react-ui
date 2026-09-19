@@ -7,7 +7,7 @@ export function NoTransitions() {
   return (
     <AppShell
       header={{ height: 60 }}
-      navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened } }}
+      navbar={{ width: 300, collapsed: !opened }}
       transitionDuration={0}
       padding="md"
     >

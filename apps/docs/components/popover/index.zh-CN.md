@@ -54,11 +54,6 @@ function Demo() {
 <code src="./demo/form.tsx"></code>
 
 ### 行内元素
-
-启用 `inline` 中间件以将 `Popover` 用于行内元素：
-
-<code src="./demo/inline.tsx"></code>
-
 ### 与目标同宽
 
 设置 `width="target"` 属性使 Popover 下拉菜单与目标元素等宽：
@@ -136,13 +131,6 @@ function Demo() {
 `arrowOffset` 属性会被忽略。
 
 <code src="./demo/arrow.tsx"></code>
-
-### 带遮罩层
-
-设置 `withOverlay` 属性以在下拉菜单后方添加遮罩层。可使用 `overlayProps` 属性
-向 [Overlay](/components/overlay/) 组件传递额外配置：
-
-<code src="./demo/overlay.tsx"></code>
 
 ### 禁用
 

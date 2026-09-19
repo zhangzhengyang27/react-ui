@@ -1,4 +1,4 @@
-import type { WeekViewFactory } from '@xiaoye-react/schedule';
+import type { WeekViewFactory } from '@xiaoye-react/ui';
 import type { StylesApiData } from '../types';
 
 export const WeekViewStylesApi: StylesApiData<WeekViewFactory> = {

@@ -60,12 +60,6 @@ group:
 
 <code src="./demo/alignItemsLabels.tsx"></code>
 
-### 自定义勾选图标
-
-使用 `checkIcon` 属性替换 `Menu.CheckboxItem` 和 `Menu.RadioItem` 渲染的默认指示器。在 `Menu` 上设置 `checkIcon` 会应用于下拉菜单中所有复选框/单选项。在单个项上设置 `checkIcon` 会覆盖菜单级别：
-
-<code src="./demo/checkIcon.tsx"></code>
-
 ### 右键菜单
 
 使用 `Menu.ContextMenu` 在右键点击时于光标位置打开菜单下拉框。它替代了 `Menu.Target` 并包裹应响应 `contextmenu` 事件的元素——浏览器默认右键菜单被阻止，ReactUI 的 `Menu.Dropdown` 取而代之定位在光标处。再次右键点击会将下拉框重新定位到新坐标。设置 `disabled` 可恢复浏览器默认右键菜单：

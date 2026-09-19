@@ -317,7 +317,7 @@ export function TreeMultiSelectCombobox() {
   ));
 
   return (
-    <Combobox store={combobox} withinPortal={false} onOptionSubmit={handleOptionSubmit}>
+    <Combobox store={combobox} onOptionSubmit={handleOptionSubmit}>
       <Combobox.DropdownTarget>
         <PillsInput
           pointer

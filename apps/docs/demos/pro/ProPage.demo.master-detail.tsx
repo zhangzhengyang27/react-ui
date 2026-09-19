@@ -54,8 +54,7 @@ function Demo() {
           columns={columns}
           rowKey={(record) => record.id}
           request={fakeQuery}
-          highlightOnHover
-          dataTableProps={{ onRowClick: setSelected, totalText: () => '' }}
+          dataTableProps={{ onRowClick: setSelected, totalText: () => '', highlightOnHover: true }}
         />
         <div style={{ position: 'sticky', top: 16 }}>
           {selected ? (
@@ -86,9 +85,8 @@ function Demo() {
                     columns={columns}
                     rowKey={record => record.id}
                     request={fakeQuery}
-                    highlightOnHover
                     search={false}
-                    dataTableProps={{ onRowClick: setSelected, totalText: () => '' }}
+                    dataTableProps={{ onRowClick: setSelected, totalText: () => '', highlightOnHover: true }}
                 />
                 <div style={{ position: 'sticky', top: 16 }}>
                     {selected ? (

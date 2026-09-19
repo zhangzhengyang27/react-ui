@@ -1,4 +1,4 @@
-import type { MiniCalendarFactory } from '@xiaoye-react/dates';
+import type { MiniCalendarFactory } from '@xiaoye-react/ui';
 import type { StylesApiData } from '../types';
 
 export const MiniCalendarStylesApi: StylesApiData<MiniCalendarFactory> = {

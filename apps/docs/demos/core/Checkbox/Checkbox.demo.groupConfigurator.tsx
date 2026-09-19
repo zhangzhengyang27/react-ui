@@ -50,6 +50,6 @@ export const groupConfigurator: UIDemo = {
     },
     { prop: 'description', type: 'string', initialValue: '这是匿名的', libraryValue: '' },
     { prop: 'error', type: 'string', initialValue: '', libraryValue: '' },
-    { prop: 'withAsterisk', type: 'boolean', initialValue: true, libraryValue: false },
+    { prop: 'required', type: 'boolean', initialValue: true, libraryValue: false },
   ],
 };

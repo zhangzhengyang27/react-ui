@@ -57,7 +57,6 @@ export function DropdownScrollArea() {
         combobox.closeDropdown();
       }}
       store={combobox}
-      withinPortal={false}
     >
       <Combobox.Target>
         <TextInput

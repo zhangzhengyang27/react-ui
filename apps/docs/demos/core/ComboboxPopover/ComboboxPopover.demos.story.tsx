@@ -58,16 +58,6 @@ export const Demo_scrollArea = {
   render: renderDemo(demos.scrollArea),
 };
 
-export const Demo_dropdownPosition = {
-  name: '⭐ Demo: dropdownPosition',
-  render: renderDemo(demos.dropdownPosition),
-};
-
-export const Demo_dropdownAnimation = {
-  name: '⭐ Demo: dropdownAnimation',
-  render: renderDemo(demos.dropdownAnimation),
-};
-
 export const Demo_dropdownOpened = {
   name: '⭐ Demo: dropdownOpened',
   render: renderDemo(demos.dropdownOpened),
@@ -88,7 +78,3 @@ export const Demo_limit = {
   render: renderDemo(demos.limit),
 };
 
-export const Demo_dropdownWidth = {
-  name: '⭐ Demo: dropdownWidth',
-  render: renderDemo(demos.dropdownWidth),
-};

@@ -28,7 +28,7 @@ group:
 
 ### 带内容
 
-若需指示页面上已有内容的加载状态，请用 Skeleton 包裹该内容，并使用 `visible` 属性控制加载遮罩的可见性：
+`Skeleton` 本身总是渲染其子内容，因此没有内置的显隐开关。若需在真实内容加载前后切换，用 `loading` 状态做条件渲染：加载中时渲染 `Skeleton` 占位，加载完成后渲染真实内容：
 
 <code src="./demo/content.tsx"></code>
 
@@ -45,7 +45,6 @@ group:
 | circle | 是否圆形 | `boolean` | `false` |
 | radius | 圆角 | `UIRadius` | `'sm'` |
 | animate | 是否动画 | `boolean` | `true` |
-| visible | 是否可见（false 时直接渲染 children） | `boolean` | `true` |
 
 支持所有原生 HTML 属性。
 

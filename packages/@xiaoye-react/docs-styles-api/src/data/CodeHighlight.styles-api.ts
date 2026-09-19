@@ -2,7 +2,7 @@ import type {
   CodeHighlightFactory,
   CodeHighlightTabsFactory,
   InlineCodeHighlightFactory,
-} from '@xiaoye-react/code-highlight';
+} from '@xiaoye-react/ui';
 import type { StylesApiData } from '../types';
 
 export const CodeHighlightStylesApi: StylesApiData<CodeHighlightFactory> = {

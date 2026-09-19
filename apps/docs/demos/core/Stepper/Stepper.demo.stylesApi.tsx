@@ -15,7 +15,7 @@ function Demo() {
   return (
     <>
       <Stepper active={active} onStepClick={setActive}{{props}}>
-        <Stepper.Step label="第一步" description="创建账户" loading>
+        <Stepper.Step label="第一步" description="创建账户">
           <Content>步骤 1 内容：创建账户</Content>
         </Stepper.Step>
         <Stepper.Step label="第二步" description="验证邮箱">
@@ -46,7 +46,7 @@ function Demo(props: any) {
   return (
     <>
       <Stepper active={active} onStepClick={setActive} {...props}>
-        <Stepper.Step label="第一步" description="创建账户" loading>
+        <Stepper.Step label="第一步" description="创建账户">
           <Content>步骤 1 内容：创建账户</Content>
         </Stepper.Step>
         <Stepper.Step label="第二步" description="验证邮箱">

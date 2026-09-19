@@ -1,7 +1,0 @@
-[
-  {
-    "fileName": "Disabled.tsx",
-    "language": "tsx",
-    "code": "import { useDisclosure } from '@xiaoye-react/hooks';\n\nexport function Disabled() {\n  const [opened, { toggle }] = useDisclosure();\n  const [disabled, { toggle: toggleDisabled }] = useDisclosure();\n\n  return (\n    <AppShell\n      header={{ height: 60 }}\n      navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened } }}\n      padding=\"md\"\n      disabled={disabled}\n    >\n      <AppShell.Header>\n        <Group h=\"100%\" px=\"md\">\n          <Burger opened={opened} onClick={toggle} hiddenFrom=\"sm\" size=\"sm\" />\n          Header is hidden when disabled\n        </Group>\n      </AppShell.Header>\n      <AppShell.Navbar p=\"md\">禁用时隐藏导航栏</AppShell.Navbar>\n      <AppShell.Main>\n        <Text>这是主内容区，你的应用内容在这里。</Text>\n        <Text>\n          When you set disabled prop on AppShell, all elements except AppShell.Main are hidden. Try\n          it out:\n        </Text>\n        <Button onClick={toggleDisabled} mt=\"md\">\n          Toggle disabled\n        </Button>\n      </AppShell.Main>\n    </AppShell>\n  );\n}\n"
-  }
-]

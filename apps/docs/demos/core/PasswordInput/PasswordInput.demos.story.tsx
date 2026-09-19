@@ -28,11 +28,6 @@ export const Demo_visibilityIcon = {
   render: renderDemo(demos.visibilityIcon),
 };
 
-export const Demo_controlledVisibility = {
-  name: '⭐ Demo: controlledVisibility',
-  render: renderDemo(demos.controlledVisibility),
-};
-
 export const Demo_stylesApi = {
   name: '⭐ Demo: stylesApi',
   render: renderDemo(demos.stylesApi),

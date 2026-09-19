@@ -36,8 +36,7 @@ function Demo() {
       header={{ height: 60 }}
       navbar={{
         width: 300,
-        breakpoint: 'sm',
-        collapsed: { mobile: !opened },
+        collapsed: !opened,
       }}
     >
       <AppShell.Header>
@@ -88,18 +87,11 @@ interface Configuration {
 
 ```tsx
 interface Configuration {
-  /** 部分的宽度：数字、字符串或
-   ** 以断点为键、宽度为值的对象 */
-  width: AppShellSize | AppShellResponsiveSize;
+  /** 部分的宽度：数字或字符串 */
+  width: React.CSSProperties['width'];
 
-  /** 部分切换到移动模式的断点。
-   ** 在移动模式下，该部分始终具有 100% 宽度，
-   ** 其折叠状态由 `collapsed.mobile` 控制
-   ** 而非 `collapsed.desktop` */
-  breakpoint: UIBreakpoint | (string & {}) | number;
-
-  /** 确定该部分是否应折叠 */
-  collapsed?: { desktop?: boolean; mobile?: boolean };
+  /** 确定该部分是否应折叠，为 true 时该部分宽度为 0 */
+  collapsed?: boolean;
 }
 ```
 
@@ -147,17 +139,13 @@ function Demo() {
 
 `navbar` 和 `aside` 配置对象中的 `width` 属性的工作方式如下：
 
-- 如果传入数字，该值将转换为 [rem](/docs/styles/rem)，并在视口大于 `breakpoint` 时用作宽度。
+- 如果传入数字，该值将转换为 [rem](/docs/styles/rem)，并用作该部分的宽度。
 - 要根据视口宽度更改宽度，请使用以断点为键、宽度为值的对象。其工作方式与 [style props](/docs/styles/style-props#responsive-styles) 相同。
-  请注意，当视口小于 `breakpoint` 时，宽度始终为 100%。
 
-数字宽度示例：`width` 转换为 [rem](/docs/styles/rem)，
-并在视口大小大于 `breakpoint` 时保持不变。
-当视口宽度小于 `breakpoint` 时，`width` 为 100%：
+数字宽度示例：`width` 转换为 [rem](/docs/styles/rem)，并在所有视口大小下保持不变：
 
 
 带断点的对象宽度示例：
-- 当视口宽度 < `theme.breakpoints.sm` 时，`width` 为 100%
 - 当视口宽度 >= `theme.breakpoints.sm` 且 < `theme.breakpoints.lg` 时，`width` 为 200
 - 当视口宽度 >= `theme.breakpoints.lg` 时，`width` 为 300
 
@@ -166,7 +154,7 @@ import { AppShell } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
-    <AppShell navbar={{ width: 48, breakpoint: 'sm' }}>
+    <AppShell navbar={{ width: 48 }}>
       <AppShell.Navbar>导航栏</AppShell.Navbar>
     </AppShell>
   );
@@ -178,9 +166,7 @@ import { AppShell } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
-    <AppShell
-      navbar={{ width: { sm: 200, lg: 300 }, breakpoint: 'sm' }}
-    >
+    <AppShell navbar={{ width: { sm: 200, lg: 300 } }}>
       <AppShell.Navbar>导航栏</AppShell.Navbar>
     </AppShell>
   );
@@ -259,10 +245,10 @@ function Demo() {
 
 ### 折叠 navbar/aside 配置
 
-`navbar` 和 `aside` 属性包含一个 `collapsed` 属性，接受格式为 `{ mobile: boolean; desktop: boolean }` 的对象。
-这允许根据视口宽度以不同方式配置折叠状态。
+`navbar` 和 `aside` 属性包含一个 `collapsed` 属性，类型为 `boolean`。
+当它为 `true` 时，该部分宽度为 0，即处于折叠状态。
 
-针对移动端和桌面端分别设置折叠状态的[示例](/app-shell?e=CollapseDesktop)：
+通过按钮切换折叠状态的[示例](/app-shell?e=CollapseDesktop)：
 
 ```tsx
 import { AppShell, Button } from '@xiaoye-react/ui';
@@ -279,8 +265,7 @@ export function CollapseDesktop() {
       header={{ height: 60 }}
       navbar={{
         width: 300,
-        breakpoint: 'sm',
-        collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
+        collapsed: !mobileOpened && !desktopOpened,
       }}
     >
       <AppShell.Header>头部</AppShell.Header>
@@ -400,39 +385,6 @@ function Demo() {
 }
 ```
 
-### AppShell.Section 组件
-
-`AppShell.Section` 用于在 `AppShell.Navbar` 和 `AppShell.Aside` 内创建有组织的区域。
-由于这些组件是具有 `flex-direction: column` 的 flexbox 容器，因此带有 `grow` 属性的 `AppShell.Section`
-组件将扩展以填充可用空间，并且可以通过设置
-`component={ScrollArea}` 使其可滚动。
-
-在以下示例中：
-
-- 第一个和最后一个部分（header 和 footer）只占用其内容所需的空间
-- 带有 `grow` 的中间部分占用所有剩余空间，并在内容超过可用高度时可滚动
-
-```tsx
-import { AppShell, ScrollArea } from '@xiaoye-react/ui';
-
-function Demo() {
-  return (
-    <AppShell navbar={{ width: 300, breakpoint: 0 }}>
-      <AppShell.Navbar>
-        <AppShell.Section>导航栏头部</AppShell.Section>
-        <AppShell.Section grow component={ScrollArea}>
-          将扩展以填充可用空间的 Navbar 主体部分
-        </AppShell.Section>
-        <AppShell.Section>
-          始终在底部的 Navbar footer
-        </AppShell.Section>
-      </AppShell.Navbar>
-      <AppShell.Main>主内容</AppShell.Main>
-    </AppShell>
-  );
-}
-```
-
 ### CSS 变量
 
 <DataTable head={['变量', '描述']} data={[ [<code>--app-shell-navbar-width</code>, 'Navbar 宽度'], [<code>--app-shell-navbar-offset</code>, 'Navbar 偏移'], [<code>--app-shell-aside-width</code>, 'Aside 宽度'], [<code>--app-shell-aside-offset</code>, 'Aside 偏移'], [<code>--app-shell-header-height</code>, 'Header 高度'], [<code>--app-shell-header-offset</code>, 'Header 偏移'], [<code>--app-shell-footer-height</code>, 'Footer 高度'], [<code>--app-shell-footer-offset</code>, 'Footer 偏移'], ]}></DataTable>
@@ -454,9 +406,9 @@ function Demo() {
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | layout | 布局类型 | `'default' \| 'alt'` | `'default'` |
-| navbar | 左侧导航（Navbar 组件） | `ReactNode` | — |
+| navbar | 左侧导航（Navbar 组件）配置 | `{ width: React.CSSProperties['width']; collapsed?: boolean }` | — |
 | header | 顶部头部（Header 组件） | `ReactNode` | — |
-| aside | 右侧侧栏（Aside 组件） | `ReactNode` | — |
+| aside | 右侧侧栏（Aside 组件）配置 | `{ width: React.CSSProperties['width']; collapsed?: boolean }` | — |
 | footer | 底部内容 | `ReactNode` | — |
 | padding | 内边距 | `number \| string` | `0` |
 | disabled | 是否禁用响应式行为 | `boolean` | `false` |

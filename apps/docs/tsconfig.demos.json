@@ -1,6 +1,12 @@
 {
     "extends": "./tsconfig.json",
-    "include": ["./demos", "../../@types", "../../packages/ui/src/**/*.d.ts"],
+    "include": [
+        "./demos",
+        "./components",
+        "./docs",
+        "../../@types",
+        "../../packages/ui/src/**/*.d.ts"
+    ],
     "exclude": [
         "demos/**/*.story.tsx",
         "demos/**/*.test.tsx",

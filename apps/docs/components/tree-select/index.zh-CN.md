@@ -55,14 +55,15 @@ const data: TreeNodeData[] = [
 
 ### 多选模式
 
+多值选择渲染为 pills，`value` 为字符串数组。
+
+<code src="./demo/multiple.tsx"></code>
 
 ### 复选框模式
 
 在复选框模式下，选中父节点会自动选中其所有子节点。
 取消选中父节点会取消选中所有子节点。如果只有部分子节点被选中，
 父节点会显示不确定状态。
-
-<code src="./demo/multiple.tsx"></code>
 
 <code src="./demo/checkbox.tsx"></code>
 

@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { componentName } from './component-name';
+
 import { CalendarBlankIcon } from '@phosphor-icons/react/dist/csr/CalendarBlank'
 import { UIDemo } from '@xiaoye-react/demo'
 
@@ -44,7 +46,7 @@ export function getPickerInputIconDemo(Component: React.FC<any>): UIDemo {
         type: 'code',
         centered: true,
         maxWidth: 400,
-        code: getCode(Component.displayName!.replace('@xiaoye-react/dates/', '')),
+        code: getCode(componentName(Component)),
         component: getDemo(Component)
     }
 }

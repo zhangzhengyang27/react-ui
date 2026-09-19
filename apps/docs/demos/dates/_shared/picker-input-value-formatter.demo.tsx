@@ -1,4 +1,6 @@
 import dayjs from 'dayjs';
+import { componentName } from './component-name';
+
 import { useState } from 'react';
 import { DateFormatter } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
@@ -78,7 +80,7 @@ export function getPickerInputValueFormatterDemo(Component: React.FC<any>): UIDe
     type: 'code',
     centered: true,
     maxWidth: 400,
-    code: getCode(Component.displayName!.replace('@xiaoye-react/dates/', '')),
+    code: getCode(componentName(Component)),
     component: getDemo(Component),
   };
 }

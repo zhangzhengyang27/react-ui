@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { componentName } from './component-name';
+
 import { UIDemo } from '@xiaoye-react/demo';
 
 const getCode = (name: string) => `
@@ -22,7 +24,7 @@ export function getPickerDeselectDemo(Component: React.FC<any>): UIDemo {
   return {
     type: 'code',
     centered: true,
-    code: getCode(Component.displayName!.replace('@xiaoye-react/dates/', '')),
+    code: getCode(componentName(Component)),
     component: getDemo(Component),
   };
 }

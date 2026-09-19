@@ -1,4 +1,6 @@
 import dayjs from 'dayjs';
+import { componentName } from './component-name';
+
 import { UIDemo } from '@xiaoye-react/demo';
 
 const getCodeTemplate = (component: string) =>
@@ -18,7 +20,7 @@ export function getPickerSizeConfiguratorDemo(Component: React.FC<any>): UIDemo 
   return {
     type: 'configurator',
     centered: true,
-    code: getCodeTemplate(Component.displayName!.replace('@xiaoye-react/dates/', '')),
+    code: getCodeTemplate(componentName(Component)),
     controls: [{ prop: 'size', type: 'size', initialValue: 'sm', libraryValue: 'sm' }],
     component: getDemo(Component),
   };

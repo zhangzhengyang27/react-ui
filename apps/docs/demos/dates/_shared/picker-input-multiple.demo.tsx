@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { componentName } from './component-name';
+
 import { UIDemo } from '@xiaoye-react/demo';
 
 const getCode = (name: string) => `
@@ -39,7 +41,7 @@ export function getPickerInputMultipleDemo(Component: React.FC<any>): UIDemo {
     type: 'code',
     centered: true,
     maxWidth: 400,
-    code: getCode(Component.displayName!.replace('@xiaoye-react/dates/', '')),
+    code: getCode(componentName(Component)),
     component: getDemo(Component),
   };
 }

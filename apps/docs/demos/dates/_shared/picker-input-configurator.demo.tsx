@@ -1,4 +1,6 @@
 import { UIDemo } from '@xiaoye-react/demo';
+import { componentName } from './component-name';
+
 
 const getCodeTemplate = (component: string) =>
   `import { ${component} } from '@xiaoye-react/ui';
@@ -19,7 +21,7 @@ export function getPickerInputConfiguratorDemo(Component: React.FC<any>): UIDemo
     component: Component,
     centered: true,
     maxWidth: 400,
-    code: getCodeTemplate(Component.displayName!.replace('@xiaoye-react/dates/', '')),
+    code: getCodeTemplate(componentName(Component)),
     controls: [
       { prop: 'placeholder', type: 'string', initialValue: 'Pick date', libraryValue: '__' },
       {

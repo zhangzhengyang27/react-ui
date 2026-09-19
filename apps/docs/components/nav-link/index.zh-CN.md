@@ -16,17 +16,20 @@ group:
 
 ### 用法
 
+`NavLink` 是一个[多态组件](/docs/guides/polymorphic)，默认根元素是 `button`。
+若要渲染真正的链接，请设置 `component="a"` 并传入 `href`。
+
 <code src="./demo/usage.tsx"></code>
 
 ### 激活状态
 
 设置 `active` 属性为 `NavLink` 添加激活样式。
 
-注意，若在 `renderRoot` 中使用 React Router 的 `NavLink`，激活样式将基于
-[React Router 设置的 `aria-current` 属性](https://reactrouter.com/en/main/components/nav-link#aria-current)，
-因此无需显式设置 `active` 属性。
+注意，激活样式只由 `active` 属性控制（渲染为 `data-active`），组件不会读取
+`aria-current` 属性。若通过 `component` 属性与 React Router 的 `NavLink` 组合使用，
+需自行把路由的激活状态传给 `active`。
 
-可使用 `color` 和 `variant` 属性自定义激活样式：
+可使用 `color` 属性自定义激活样式：
 
 <code src="./demo/active.tsx"></code>
 
@@ -36,11 +39,9 @@ group:
 
 <code src="./demo/nested.tsx"></code>
 
-<AutoContrast component="NavLink"></AutoContrast>
+<Polymorphic defaultElement="button" changeToElement="a" component="NavLink" withNext></Polymorphic>
 
-<Polymorphic defaultElement="a" changeToElement="button" component="NavLink" withNext></Polymorphic>
-
-<GetElementRef component="NavLink" refType="a"></GetElementRef>
+<GetElementRef component="NavLink" refType="button"></GetElementRef>
 
 
 
@@ -51,13 +52,15 @@ group:
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | children | 子导航项 | `ReactNode` | — |
-| active | 是否激活 | `boolean` | `false` |
+| active | 是否激活，渲染为 `data-active` | `boolean` | `false` |
 | label | 标签文字 | `ReactNode` | — |
-| icon | 图标 | `ReactNode` | — |
-| rightSection | 右侧插槽 | `ReactNode` | — |
-| onClick | 点击回调 | `(event) => void` | — |
-| variant | 视觉变体 | `'filled' \| 'light' \| 'subtle'` | `'light'` |
+| leftSection | 标签左侧内容 | `ReactNode` | — |
+| rightSection | 标签右侧内容；有子导航项时显示在 chevron 之前 | `ReactNode` | — |
+| onClick | 点击回调；有子导航项时同时切换子项显隐 | `(event) => void` | — |
+| color | 主题色，决定激活/悬停时的 `--navlink-*` 变量 | `UIColor` | `theme.primaryColor` |
+| variant | 变体名，仅渲染为 `data-variant` 属性，内置样式不随其变化 | `'light' \| 'subtle' \| 'filled' \| 'transparent'` | — |
 | disabled | 是否禁用 | `boolean` | `false` |
+| component | 多态渲染的根组件 | `React.ComponentType` | `'button'` |
 
 支持所有原生 HTML 属性。
 

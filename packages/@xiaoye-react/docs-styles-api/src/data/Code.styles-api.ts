@@ -9,6 +9,9 @@ export const CodeStylesApi: StylesApiData<CodeFactory> = {
   vars: {
     root: {
       '--code-bg': '控制 `background-color`',
+      '--code-color': '控制 `color`',
+      '--code-bd': '控制 `border`',
+      '--code-fz': '控制 `font-size`',
     },
   },
 

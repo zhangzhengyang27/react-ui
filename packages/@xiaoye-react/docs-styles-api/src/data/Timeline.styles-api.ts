@@ -9,15 +9,15 @@ export const TimelineStylesApi: StylesApiData<TimelineFactory> = {
     itemTitle: 'Item title, controlled by title prop',
     itemContent: 'Item content, controlled by children prop',
     itemBullet: 'Item bullet',
+    itemLine: 'Item 之间的连接竖线',
   },
 
   vars: {
     root: {
-      '--tl-bullet-size': '控制 bullet `width` and `height`',
-      '--tl-color': 'Controls active bullet and line colors',
-      '--tl-icon-color': 'Controls icon color',
-      '--tl-line-width': '控制 the line between bullets 的 width',
-      '--tl-radius': '控制 bullet `border-radius`',
+      '--timeline-line-width': '控制 the line between bullets 的 width',
+      '--timeline-bullet-size': '控制 bullet `width` and `height`',
+      '--timeline-color': 'Controls active bullet and line colors',
+      '--timeline-radius': '控制 bullet `border-radius`',
     },
   },
 

@@ -3,7 +3,7 @@ import type { StylesApiData } from '../types';
 
 export const TableStylesApi: StylesApiData<TableFactory> = {
   selectors: {
-    table: '根 `table` 元素（`Table` component）',
+    root: '根 `table` 元素（`Table` component）',
     thead: '`thead` 元素（`Table.Thead` component）',
     tbody: '`tbody` 元素（`Table.Tbody` component）',
     tfoot: '`tfoot` 元素（`Table.Tfoot` component）',
@@ -14,52 +14,40 @@ export const TableStylesApi: StylesApiData<TableFactory> = {
   },
 
   vars: {
-    table: {
-      '--table-border-color': 'Controls `border-color` of all elements inside table',
-      '--table-layout': 'Controls `table-layout` of the table element, auto by default',
-      '--table-caption-side': '控制 caption-side of the table element, `bottom` by default',
+    root: {
       '--table-horizontal-spacing':
         'Controls `padding-left` and `padding-right` of `Table.Th` and `Table.Td` elements',
       '--table-vertical-spacing':
         'Controls `padding-top` and `padding-bottom` of `Table.Td` and `Table.Th` elements',
-      '--table-striped-color': 'Controls `background-color` of even/odd `Table.Tr` elements',
-      '--table-highlight-on-hover-color':
-        'Controls `background-color` of `Table.Tr` elements when hovered',
-      '--table-sticky-header-offset': 'Controls `top` offset of sticky header',
+      '--table-caption-side': '控制 caption-side of the table element, `bottom` by default',
     },
   },
 
   modifiers: [
     {
-      modifier: 'data-with-table-border',
-      selector: 'table',
-      condition: '`withTableBorder` prop is set on `Table` 组件',
-    },
-    {
-      modifier: 'data-with-column-border',
-      selector: ['th', 'td'],
-      condition: '`withColumnsBorder` prop is set on `Table` 组件',
-    },
-    {
-      modifier: 'data-with-row-border',
-      selector: 'tr',
-      condition: '`withRowsBorder` prop is set on `Table` 组件',
-    },
-    {
       modifier: 'data-striped',
-      selector: 'tr',
-      value: 'odd | even',
+      selector: 'root',
       condition: '`striped` prop is set on `Table` 组件',
     },
     {
-      modifier: 'data-hover',
-      selector: 'tr',
+      modifier: 'data-highlight-on-hover',
+      selector: 'root',
       condition: '`highlightOnHover` prop is set on `Table` 组件',
     },
     {
-      modifier: 'data-size',
-      selector: 'tr',
-      value: 'value of `captionSize` prop on `Table` 组件',
+      modifier: 'data-with-table-border',
+      selector: 'root',
+      condition: '`withTableBorder` prop is set on `Table` 组件',
+    },
+    {
+      modifier: 'data-with-column-borders',
+      selector: 'root',
+      condition: '`withColumnsBorder` prop is set on `Table` 组件',
+    },
+    {
+      modifier: 'data-with-row-borders',
+      selector: 'root',
+      condition: '`withRowsBorder` prop is set on `Table` 组件',
     },
   ],
 };

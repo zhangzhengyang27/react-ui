@@ -4,7 +4,6 @@ import type { StylesApiData } from '../types';
 export const NotificationStylesApi: StylesApiData<NotificationFactory> = {
   selectors: {
     root: '根元素',
-    loader: '加载器组件，仅在设置 `loading` 属性时显示',
     icon: '图标组件，仅在设置 `icon` 属性时显示',
     body: 'Notification body，包含所有其他元素',
     title: '标题元素，仅在设置 `title` 属性时显示',

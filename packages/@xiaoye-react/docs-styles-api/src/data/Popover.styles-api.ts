@@ -5,7 +5,6 @@ export const PopoverStylesApi: StylesApiData<PopoverFactory> = {
   selectors: {
     dropdown: '下拉元素',
     arrow: '下拉箭头',
-    overlay: '遮罩层元素',
   },
 
   vars: {

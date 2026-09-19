@@ -8,5 +8,9 @@ export const NativeSelectStylesApi: StylesApiData<NativeSelectFactory> = {
     ...InputStylesApi.selectors,
   },
 
-  vars: {},
+  vars: {
+    root: {
+      '--native-select-chevron-size': 'Controls `width` and `height` of the default chevron icon',
+    },
+  },
 };

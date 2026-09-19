@@ -1,5 +1,5 @@
-import type { ButtonFactory, ButtonGroupFactory, ButtonGroupSectionFactory } from '@xiaoye-react/ui';
-import type { StylesApiData } from '../types';
+import type { ButtonFactory } from '@xiaoye-react/ui';
+import type { Modifier, StylesApiData } from '../types';
 
 export const ButtonStylesApi: StylesApiData<ButtonFactory> = {
   selectors: {
@@ -35,7 +35,13 @@ export const ButtonStylesApi: StylesApiData<ButtonFactory> = {
   ],
 };
 
-export const ButtonGroupStylesApi: StylesApiData<ButtonGroupFactory> = {
+/** `ButtonGroup`/`ButtonGroupSection` 是复合组件，factory 未声明 `stylesNames`/`vars`，
+ *  `StylesApiData` 无法承载 selectors，故此处按真实的 classnames 显式校验 */
+export const ButtonGroupStylesApi: {
+  selectors: Record<'group', string>;
+  vars: { group: Record<'--button-border-width', string> };
+  modifiers: Modifier<'group'>[];
+} = {
   selectors: {
     group: '根元素',
   },
@@ -51,22 +57,18 @@ export const ButtonGroupStylesApi: StylesApiData<ButtonGroupFactory> = {
   ],
 };
 
-export const ButtonGroupSectionStylesApi: StylesApiData<ButtonGroupSectionFactory> = {
+export const ButtonGroupSectionStylesApi: {
+  selectors: Record<'groupSection', string>;
+  vars: { groupSection: Record<'--button-group-section-bg' | '--button-border-width', string> };
+} = {
   selectors: {
     groupSection: '根元素',
   },
 
   vars: {
     groupSection: {
-      '--section-bg': '控制 `background`',
-      '--section-bd': '控制 `border`',
-      '--section-color': '控制文本 `color`',
-      '--section-radius': '控制 `border-radius`',
-      '--section-height': '控制区域的 `height`',
-      '--section-padding-x': '控制区域的水平 `padding`',
-      '--section-fz': '控制区域的 `font-size`',
+      '--button-group-section-bg': '控制 `background`',
+      '--button-border-width': '控制 `border-width`',
     },
   },
-
-  modifiers: [],
 };

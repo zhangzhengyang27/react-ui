@@ -6,6 +6,7 @@ export const JsonInputStylesApi: StylesApiData<JsonInputFactory> = {
   selectors: {
     ...InputStylesApi.selectors,
     ...InputWrapperStylesApi.selectors,
+    fieldSizing: 'autosize 变体，`field-sizing: content` 让高度随内容增长',
   },
 
   vars: {},

@@ -17,6 +17,7 @@ import type {
   YearPickerInputFactory,
 } from '@xiaoye-react/ui';
 import type { StylesApiData } from '../types';
+import { InputStylesApi, InputWrapperStylesApi } from './Input.styles-api';
 import { InputBaseStylesApi } from './InputBase.styles-api';
 
 export const MonthStylesApi: StylesApiData<MonthFactory> = {
@@ -297,4 +298,11 @@ export const InlineDateTimePickerStylesApi: StylesApiData<InlineDateTimePickerFa
   modifiers: DatePickerStylesApi.modifiers as any,
 };
 
-export const TimeInputStylesApi: StylesApiData<TimeInputFactory> = InputBaseStylesApi;
+export const TimeInputStylesApi: StylesApiData<TimeInputFactory> = {
+  selectors: {
+    ...InputStylesApi.selectors,
+    ...InputWrapperStylesApi.selectors,
+  },
+
+  vars: {},
+};

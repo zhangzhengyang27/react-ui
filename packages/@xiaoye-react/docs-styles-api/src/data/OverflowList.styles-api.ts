@@ -8,7 +8,7 @@ export const OverflowListStylesApi: StylesApiData<OverflowListFactory> = {
 
   vars: {
     root: {
-      '--ol-gap': '控制项之间的间距',
+      '--overflow-list-gap': '控制项之间的间距',
     },
   },
 

@@ -7,15 +7,16 @@ export const TabsStylesApi: StylesApiData<TabsFactory> = {
     list: '标签页列表（`Tabs.List` 组件）',
     panel: '带标签页内容的面板（`Tabs.Panel` 组件）',
     tab: '标签页按钮（`Tabs.Tab` 组件）',
-    tabLabel: '`Tabs.Tab` 的标签',
     tabSection: '`Tabs.Tab` 的左右区域',
   },
 
   vars: {
     root: {
+      '--tabs-radius': '控制 `Tabs.Tab` 的 `border-radius`',
       '--tabs-color':
         '控制 `Tabs.Tab` 的颜色，仅在 variant 为 `pills` 或 `default` 时适用',
-      '--tabs-radius': '控制 `Tabs.Tab` 的 `border-radius`',
+      '--tabs-bg': '控制 `pills` 变体下选中 `Tabs.Tab` 的 `background`',
+      '--tabs-bd': '控制 `outline`/`default` 变体下 `Tabs.Tab` 的 `border-color`',
     },
   },
 

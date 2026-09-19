@@ -7,21 +7,15 @@ export const SegmentedControlStylesApi: StylesApiData<SegmentedControlFactory> =
     control: 'Wrapper element for input and label',
     input: 'Input element (`input[type="radio"]`), hidden by default',
     label: 'Label element associated with input',
-    indicator: 'Floating indicator that moves between items',
-    innerLabel: 'Wrapper of label element children',
   },
 
   vars: {
     root: {
-      '--sc-color': 'Control `background-color` of `indicator`',
-      '--sc-font-size': 'Controls `font-size` of labels',
-      '--sc-padding': 'Controls `padding` of control',
-      '--sc-radius': 'Controls `border-radius` of `indicator` and `root` elements',
-      '--sc-shadow': 'Controls `box-shadow` of indicator',
+      '--sc-radius': 'Controls `border-radius` of items and `root` element',
+      '--sc-size': 'Controls `height` and `min-height` of control',
+      '--sc-color': 'Control `background-color` of selected item',
       '--sc-transition-duration':
         'Controls `transition-duration` of various elements that have animations',
-      '--sc-transition-timing-function':
-        'Controls `transition-timing-function` of various elements that have animations',
     },
   },
 

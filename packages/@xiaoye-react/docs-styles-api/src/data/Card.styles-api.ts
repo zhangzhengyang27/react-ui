@@ -11,6 +11,9 @@ export const CardStylesApi: StylesApiData<CardFactory> = {
     root: {
       '--card-padding':
         'Controls `padding` of the card, also used to control `Card.Section` spacing',
+      '--card-radius': '控制 `border-radius`',
+      '--card-shadow': '控制 `box-shadow`',
+      '--card-bg': '控制 `background-color`',
     },
   },
 

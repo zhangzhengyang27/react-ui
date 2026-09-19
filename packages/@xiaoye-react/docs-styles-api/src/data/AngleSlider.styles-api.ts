@@ -12,8 +12,8 @@ export const AngleSliderStylesApi: StylesApiData<AngleSliderFactory> = {
 
   vars: {
     root: {
-      '--slider-size': '控制滑块宽度和高度',
-      '--thumb-size': '控制拇指大小',
+      '--angle-slider-size': '控制滑块的 `width` 和 `height`',
+      '--angle-slider-thumb-size': '控制拇指的 `width` 和 `height`',
     },
   },
 

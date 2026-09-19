@@ -10,8 +10,6 @@ export const MenuStylesApi: StylesApiData<MenuFactory> = {
     item: '`Menu.Item` root 元素',
     itemLabel: 'Label of `Menu.Item`',
     itemSection: 'Left and right sections of `Menu.Item`',
-    itemIndicator: 'Indicator slot of `Menu.CheckboxItem` and `Menu.RadioItem`',
-    chevron: '子菜单箭头',
     search: '`Menu.Search` input 元素',
   },
 

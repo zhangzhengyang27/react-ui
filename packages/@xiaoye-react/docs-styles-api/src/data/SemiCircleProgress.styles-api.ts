@@ -12,12 +12,12 @@ export const SemiCircleProgressStylesApi: StylesApiData<SemiCircleProgressFactor
 
   vars: {
     root: {
-      '--scp-empty-segment-color': '空白段的颜色',
-      '--scp-filled-segment-color': '填充段的颜色',
-      '--scp-rotation':
+      '--semi-circle-progress-filled-segment-color': '填充段的颜色',
+      '--semi-circle-progress-empty-segment-color': '空白段的颜色',
+      '--semi-circle-progress-rotation':
         'Transform styles of the svg, controlled by `orientation` and `fillDirection` props',
-      '--scp-thickness': 'Controls `strokeWidth` of the circle',
-      '--scp-transition-duration': '控制 the filled segment 的 transition duration',
+      '--semi-circle-progress-thickness': 'Controls `strokeWidth` of the circle',
+      '--semi-circle-progress-transition-duration': '控制 the filled segment 的 transition duration',
     },
   },
 

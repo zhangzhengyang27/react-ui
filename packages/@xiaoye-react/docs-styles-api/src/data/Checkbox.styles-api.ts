@@ -14,10 +14,10 @@ export const CheckboxStylesApi: StylesApiData<CheckboxFactory> = {
     icon: '复选框图标，用于显示对勾和不确定状态图标',
     inner: '`icon` 和 `input` 的包装器',
     body: '输入主体，包含所有其他元素',
-    labelWrapper: '包含 `label`、`description` 和 `error`',
     label: '标签元素',
     description: '显示在标签下方的描述',
     error: '显示在标签下方的错误消息',
+    required: '标签内的必填星号元素',
   },
 
   vars: {
@@ -30,10 +30,11 @@ export const CheckboxStylesApi: StylesApiData<CheckboxFactory> = {
   },
 
   modifiers: [
-    { modifier: 'data-checked', selector: 'root', condition: '设置了 `checked` 属性' },
-    { modifier: 'data-error', selector: 'input', condition: '设置了 `error` 属性' },
-    { modifier: 'data-indeterminate', selector: 'input', condition: '设置了 `indeterminate` 属性' },
-    { modifier: 'data-label-position', selector: 'inner', value: '`labelPosition` 属性的值' },
+    { modifier: 'data-checked', selector: 'inner', condition: '设置了 `checked` 属性' },
+    { modifier: 'data-error', selector: 'root', condition: '设置了 `error` 属性' },
+    { modifier: 'data-disabled', selector: 'root', condition: '设置了 `disabled` 属性' },
+    { modifier: 'data-with-label', selector: 'root', condition: '渲染了 `label` 内容' },
+    { modifier: 'data-indeterminate', selector: 'inner', condition: '设置了 `indeterminate` 属性' },
   ],
 };
 

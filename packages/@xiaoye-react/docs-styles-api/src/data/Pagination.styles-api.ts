@@ -12,8 +12,8 @@ export const PaginationStylesApi: StylesApiData<PaginationFactory> = {
 
   vars: {
     root: {
-      '--pagination-active-bg': 'Active control `background-color`',
-      '--pagination-active-color': 'Active control `color`',
+      '--pagination-control-bg': 'Active control `background-color`',
+      '--pagination-control-color': 'Active control `color`',
       '--pagination-control-fz': '控制 `font-size`',
       '--pagination-control-radius': '控制 control `border-radius`',
       '--pagination-control-size': '控制 control `min-width` and `height`',

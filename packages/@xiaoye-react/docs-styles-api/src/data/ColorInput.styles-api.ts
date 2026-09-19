@@ -12,6 +12,7 @@ export const ColorInputStylesApi: StylesApiData<ColorInputFactory> = {
     colorPreview: '输入左侧区域的颜色预览',
     eyeDropperButton: '取色器按钮',
     eyeDropperIcon: '默认取色器图标',
+    placeholder: '输入框占位内容（`Input.Placeholder`）',
   },
 
   vars: {

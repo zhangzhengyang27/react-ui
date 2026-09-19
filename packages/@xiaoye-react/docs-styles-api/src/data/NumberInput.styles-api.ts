@@ -6,13 +6,13 @@ export const NumberInputStylesApi: StylesApiData<NumberInputFactory> = {
   selectors: {
     ...InputStylesApi.selectors,
     ...InputWrapperStylesApi.selectors,
-    controls: 'Increment and decrement buttons 包装器',
     control: 'Increment and decrement buttons',
+    icon: '控制按钮内的 chevron 图标',
   },
 
   vars: {
-    controls: {
-      '--ni-chevron-size': 'Controls `width` and `height` of the default chevron icon',
+    root: {
+      '--ni-control-width': 'Controls `width` of increment and decrement buttons',
     },
   },
 

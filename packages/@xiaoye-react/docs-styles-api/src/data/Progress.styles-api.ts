@@ -11,8 +11,7 @@ export const ProgressStylesApi: StylesApiData<ProgressFactory> = {
   vars: {
     root: {
       '--progress-radius': 'Controls `border-radius` of track and sections',
-      '--progress-size': '控制 progress bar 的 height',
-      '--progress-transition-duration': '控制 width `transition-duration` of progress bar',
+      '--progress-height': '控制 progress bar 的 height',
     },
   },
 

@@ -3,34 +3,18 @@ import type { StylesApiData } from '../types';
 
 export const GridStylesApi: StylesApiData<GridFactory> = {
   selectors: {
-    container: 'Container element, only used with `type="container"` prop',
     root: '根元素',
-    inner: 'Columns 包装器',
     col: '`Grid.Col` root 元素',
   },
 
   vars: {
     root: {
-      '--grid-overflow': 'Controls `overflow` property',
-      '--grid-align': '控制 `align-items` 属性',
-      '--grid-justify': '控制 `justify-content` 属性',
+      '--grid-cols': '控制 `grid-template-columns` 的列数',
+      '--grid-gutter': '控制 `row-gap` 和 `column-gap`',
+      '--grid-row-gap': '控制 `row-gap`',
+      '--grid-column-gap': '控制 `column-gap`',
     },
   },
 
-  modifiers: [
-    {
-      modifier: 'data-with-gap',
-      selector: 'root',
-      value: 'true',
-      condition:
-        'CSS variables for gap, rowGap, and columnGap are set. Variables include: --grid-gap, --grid-row-gap, --grid-column-gap, --grid-margin, --grid-col-padding-x, --grid-col-padding-y',
-    },
-    {
-      modifier: 'data-with-col-vars',
-      selector: 'col',
-      value: 'true',
-      condition:
-        'CSS variables for column layout are set. Variables include: --col-flex-grow, --col-flex-basis, --col-width, --col-max-width, --col-offset, --col-order, --col-align-self',
-    },
-  ],
+  modifiers: [{ modifier: 'data-grow', selector: 'root', condition: '设置了 `grow` 属性' }],
 };

@@ -21,6 +21,7 @@ export const DrawerStylesApi: StylesApiData<DrawerFactory> = {
       '--drawer-align': '控制 `Drawer.Content` 的 `align-items` 属性',
       '--drawer-justify': '控制 `Drawer.Content` 的 `justify-content` 属性',
       '--drawer-height': '控制 `Drawer.Content` 的 `height` 属性',
+      '--drawer-radius': '控制 `Drawer.Content` 的 `border-radius` 属性',
     },
   },
 };

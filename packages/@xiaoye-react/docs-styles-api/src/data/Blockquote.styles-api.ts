@@ -10,9 +10,8 @@ export const BlockquoteStylesApi: StylesApiData<BlockquoteFactory> = {
 
   vars: {
     root: {
-      '--bq-bd': '控制 `border`',
-      '--bq-bg-dark': '控制深色模式下的 `background-color`',
-      '--bq-bg-light': 'Controls `background-color` in light color scheme',
+      '--bq-bg': '控制 `background-color`',
+      '--bq-bd': '控制 `border` 和图标 `color`',
       '--bq-icon-size': 'Controls `width` and `height` of the icon',
       '--bq-radius': '控制 `border-radius`',
       '--bq-text-wrap': '控制 `text-wrap` 属性',

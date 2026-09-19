@@ -6,6 +6,7 @@ export const TextInputStylesApi: StylesApiData<TextInputFactory> = {
   selectors: {
     ...InputStylesApi.selectors,
     ...InputWrapperStylesApi.selectors,
+    placeholder: '输入框占位内容（`Input.Placeholder`）',
   },
 
   vars: {},

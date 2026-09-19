@@ -10,8 +10,8 @@ export const IndicatorStylesApi: StylesApiData<IndicatorFactory> = {
   vars: {
     root: {
       '--indicator-bottom': 'Controls `bottom` style',
-      '--indicator-left': 'Controls `left` style',
-      '--indicator-right': 'Controls `right` style',
+      '--indicator-inline-start': 'Controls `inset-inline-start` style',
+      '--indicator-inline-end': 'Controls `inset-inline-end` style',
       '--indicator-top': 'Controls `top` style',
       '--indicator-radius': '控制 `border-radius`',
       '--indicator-size': 'Controls `min-width` and `height`',

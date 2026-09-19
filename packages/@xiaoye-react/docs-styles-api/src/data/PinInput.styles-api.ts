@@ -4,7 +4,6 @@ import type { StylesApiData } from '../types';
 export const PinInputStylesApi: StylesApiData<PinInputFactory> = {
   selectors: {
     root: '根元素',
-    pinInput: 'Input item 包装器',
     input: '输入元素',
   },
 

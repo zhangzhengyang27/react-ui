@@ -8,7 +8,7 @@ export const BackgroundImageStylesApi: StylesApiData<BackgroundImageFactory> = {
 
   vars: {
     root: {
-      '--bi-radius': '控制 `border-radius`',
+      '--background-image-radius': '控制 `border-radius`',
     },
   },
 };

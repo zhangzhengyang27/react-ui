@@ -9,8 +9,7 @@ export const MultiSelectStylesApi: StylesApiData<MultiSelectFactory> = {
     ...InputWrapperStylesApi.selectors,
     ...ComboboxLikeSelectors,
     pill: '值标签',
-    inputField: '输入字段',
-    pillsList: '标签列表，同时包含输入字段',
+    valuesList: '标签列表，同时包含输入字段',
   },
 
   vars: {},

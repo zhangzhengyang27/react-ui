@@ -8,7 +8,7 @@ export const FloatingIndicatorStylesApi: StylesApiData<FloatingIndicatorFactory>
 
   vars: {
     root: {
-      '--transition-duration': '控制指示器过渡持续时间',
+      '--floating-indicator-transition-duration': '控制指示器过渡持续时间',
     },
   },
 

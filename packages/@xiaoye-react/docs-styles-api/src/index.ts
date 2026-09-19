@@ -87,7 +87,6 @@ export * from './data/ResourcesDayView.styles-api';
 export * from './data/ResourcesMonthView.styles-api';
 export * from './data/ResourcesSchedule.styles-api';
 export * from './data/ResourcesWeekView.styles-api';
-export * from './data/RichTextEditor.styles-api';
 export * from './data/RingProgress.styles-api';
 export * from './data/Schedule.styles-api';
 export * from './data/Scroller.styles-api';

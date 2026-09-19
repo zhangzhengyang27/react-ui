@@ -29,7 +29,7 @@ export const PillGroupStylesApi: StylesApiData<PillGroupFactory> = {
 
   vars: {
     group: {
-      '--pg-gap': 'Controls `gap` between pills',
+      '--pill-group-gap': 'Controls `gap` between pills',
     },
   },
 };

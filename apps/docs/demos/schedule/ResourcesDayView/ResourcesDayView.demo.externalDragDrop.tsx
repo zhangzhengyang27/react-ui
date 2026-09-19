@@ -89,7 +89,7 @@ function Demo() {
 
   return (
     <Grid>
-      <Grid.Col span={{ base: 12, sm: 3 }}>
+      <Grid.Col span={3}>
         <Text fw={500} mb="xs">拖到日程</Text>
         {sidebarItems.map((item) => (
           <Box
@@ -113,7 +113,7 @@ function Demo() {
           </Box>
         ))}
       </Grid.Col>
-      <Grid.Col span={{ base: 12, sm: 9 }}>
+      <Grid.Col span={9}>
         <ResourcesDayView
           date={date}
           onDateChange={setDate}
@@ -188,7 +188,7 @@ function Demo() {
 
   return (
     <Grid>
-      <Grid.Col span={{ base: 12, sm: 3 }}>
+      <Grid.Col span={3}>
         <Text fw={500} mb="xs">
           Drag to schedule
         </Text>
@@ -216,7 +216,7 @@ function Demo() {
           </Box>
         ))}
       </Grid.Col>
-      <Grid.Col span={{ base: 12, sm: 9 }}>
+      <Grid.Col span={9}>
         <ResourcesDayView
           date={date}
           onDateChange={setDate}

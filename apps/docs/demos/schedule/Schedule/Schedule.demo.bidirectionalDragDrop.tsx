@@ -95,7 +95,7 @@ function Demo() {
 
   return (
     <Grid>
-      <Grid.Col span={{ base: 12, sm: 3 }}>
+      <Grid.Col span={3}>
         <Box
           onDragOver={(e) => {
             e.preventDefault();
@@ -140,7 +140,7 @@ function Demo() {
           )}
         </Box>
       </Grid.Col>
-      <Grid.Col span={{ base: 12, sm: 9 }}>
+      <Grid.Col span={9}>
         <Schedule
           events={events}
           withEventsDragAndDrop
@@ -222,7 +222,7 @@ function Demo() {
 
   return (
     <Grid>
-      <Grid.Col span={{ base: 12, sm: 3 }}>
+      <Grid.Col span={3}>
         <Box
           onDragOver={(e) => {
             e.preventDefault();
@@ -273,7 +273,7 @@ function Demo() {
           )}
         </Box>
       </Grid.Col>
-      <Grid.Col span={{ base: 12, sm: 9 }}>
+      <Grid.Col span={9}>
         <Schedule
           events={events}
           withEventsDragAndDrop

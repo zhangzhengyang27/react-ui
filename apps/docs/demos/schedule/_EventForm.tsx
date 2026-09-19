@@ -102,7 +102,7 @@ export function EventForm({
 
           <Group justify="flex-end" gap="sm">
             {form.values.id && onDelete && (
-              <Button color="red" onClick={handleDelete} mie="auto">
+              <Button color="red" onClick={handleDelete} me="auto">
                 Delete
               </Button>
             )}
@@ -224,7 +224,7 @@ export function EventForm({
 
           <Group justify="flex-end" gap="sm">
             {form.values.id && onDelete && (
-              <Button color="red" onClick={handleDelete} mie="auto">
+              <Button color="red" onClick={handleDelete} me="auto">
                 Delete
               </Button>
             )}

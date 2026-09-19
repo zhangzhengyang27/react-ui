@@ -209,42 +209,50 @@ export const ScrollArea = factory<ScrollAreaFactory>((_props, _ref) => {
                         x: e.currentTarget.scrollLeft,
                         y: e.currentTarget.scrollTop
                     })
-                    const { scrollTop, scrollHeight, clientHeight, scrollLeft, scrollWidth, clientWidth } =
-                        e.currentTarget
 
-                    // 该方向无溢出时 reach 判定恒成立(如仅纵向滚动时 isAtRight 恒 true 误报 onRightReached),
-                    // 先检查该方向存在溢出再做边界判定
-                    const hasVerticalOverflow = scrollHeight > clientHeight
-                    const hasHorizontalOverflow = scrollWidth > clientWidth
+                    // 未传 reach 回调时整段跳过：scrollHeight/clientHeight 这类读取
+                    // 会触发回算，纯展示用的 ScrollArea 没必要每次滚动都付这个代价
+                    if (onTopReached || onBottomReached) {
+                        const { scrollTop, scrollHeight, clientHeight } = e.currentTarget
 
-                    // Vertical boundaries
-                    const isAtBottom = hasVerticalOverflow && scrollTop - (scrollHeight - clientHeight) >= -0.8
-                    // 与底部判定一致,顶部同样保留 0.8px 容差以兼容亚像素渲染
-                    const isAtTop = hasVerticalOverflow && scrollTop <= 0.8
+                        // 该方向无溢出时 reach 判定恒成立(如仅纵向滚动时 isAtRight 恒 true 误报 onRightReached),
+                        // 先检查该方向存在溢出再做边界判定
+                        const hasVerticalOverflow = scrollHeight > clientHeight
 
-                    if (isAtBottom && !prevAtBottomRef.current) {
-                        onBottomReached?.()
-                    }
-                    if (isAtTop && !prevAtTopRef.current) {
-                        onTopReached?.()
-                    }
+                        // Vertical boundaries
+                        const isAtBottom = hasVerticalOverflow && scrollTop - (scrollHeight - clientHeight) >= -0.8
+                        // 与底部判定一致,顶部同样保留 0.8px 容差以兼容亚像素渲染
+                        const isAtTop = hasVerticalOverflow && scrollTop <= 0.8
 
-                    prevAtBottomRef.current = isAtBottom
-                    prevAtTopRef.current = isAtTop
+                        if (isAtBottom && !prevAtBottomRef.current) {
+                            onBottomReached?.()
+                        }
+                        if (isAtTop && !prevAtTopRef.current) {
+                            onTopReached?.()
+                        }
 
-                    // Horizontal boundaries
-                    const isAtRight = hasHorizontalOverflow && scrollLeft - (scrollWidth - clientWidth) >= -0.8
-                    const isAtLeft = hasHorizontalOverflow && scrollLeft <= 0.8
-
-                    if (isAtRight && !prevAtRightRef.current) {
-                        onRightReached?.()
-                    }
-                    if (isAtLeft && !prevAtLeftRef.current) {
-                        onLeftReached?.()
+                        prevAtBottomRef.current = isAtBottom
+                        prevAtTopRef.current = isAtTop
                     }
 
-                    prevAtRightRef.current = isAtRight
-                    prevAtLeftRef.current = isAtLeft
+                    if (onLeftReached || onRightReached) {
+                        const { scrollLeft, scrollWidth, clientWidth } = e.currentTarget
+                        const hasHorizontalOverflow = scrollWidth > clientWidth
+
+                        // Horizontal boundaries
+                        const isAtRight = hasHorizontalOverflow && scrollLeft - (scrollWidth - clientWidth) >= -0.8
+                        const isAtLeft = hasHorizontalOverflow && scrollLeft <= 0.8
+
+                        if (isAtRight && !prevAtRightRef.current) {
+                            onRightReached?.()
+                        }
+                        if (isAtLeft && !prevAtLeftRef.current) {
+                            onLeftReached?.()
+                        }
+
+                        prevAtRightRef.current = isAtRight
+                        prevAtLeftRef.current = isAtLeft
+                    }
                 }}
             >
                 {children}

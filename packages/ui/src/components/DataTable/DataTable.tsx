@@ -475,6 +475,7 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
     // 每次渲染近 O(n²)；这里一次性建 Set 索引
     const selectedKeysSet = useMemo(() => new Set(selectedKeysState), [selectedKeysState])
     const rowKeysSet = useMemo(() => new Set(rowKeys), [rowKeys])
+    const expandedKeysSet = useMemo(() => new Set(expandedRowsState), [expandedRowsState])
 
     const allChecked = rowKeys.length > 0 && rowKeys.every(key => selectedKeysSet.has(key))
     const someChecked = rowKeys.some(key => selectedKeysSet.has(key))
@@ -661,7 +662,7 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
         ) => {
             const key = rowKeys[rowIndex]
             const selected = withSelection && selectedKeysSet.has(key)
-            const expanded = withExpand && expandedRowsState.includes(key)
+            const expanded = withExpand && expandedKeysSet.has(key)
             return (
                 <Fragment key={key}>
                     <tr
@@ -728,9 +729,9 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
                             <button
                                 type="button"
                                 className={classes.expandButton}
-                                data-expanded={expandedRowsState.includes(key) ? true : undefined}
-                                aria-expanded={expandedRowsState.includes(key)}
-                                aria-label={expandedRowsState.includes(key) ? '收起行' : '展开行'}
+                                data-expanded={expanded ? true : undefined}
+                                aria-expanded={expanded}
+                                aria-label={expanded ? '收起行' : '展开行'}
                                 onClick={() => handleToggleExpanded(key)}
                             >
                                 <AccordionChevron size={14} className={classes.expandIcon} />
@@ -828,9 +829,10 @@ export const DataTable = factory<DataTableFactory>((_props, ref) => {
                         </tr>
                     )}
                     {virtualItems.map(virtualRow =>
-                        renderRow(displayRecords[virtualRow.index], virtualRow.index, node =>
-                            rowVirtualizer.measureElement(node)
-                        )
+                        // 直接传 measureElement（内部按 data-index 定位）：
+                        // 内联箭头会让每行 ref 在每次渲染时 detach/attach，
+                        // 虚拟滚动下等于每帧对每个可见行强制重测 + 回流
+                        renderRow(displayRecords[virtualRow.index], virtualRow.index, rowVirtualizer.measureElement)
                     )}
                     {padBottom > 0 && (
                         <tr aria-hidden style={{ height: padBottom }}>

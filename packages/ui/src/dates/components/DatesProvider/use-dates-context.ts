@@ -1,4 +1,4 @@
-import { use, useCallback } from 'react';
+import { use, useCallback, useMemo } from 'react';
 import { DayOfWeek } from '../../types';
 import { DatesProviderContext } from './DatesProvider';
 
@@ -21,11 +21,15 @@ export function useDatesContext() {
     [ctx.labelSeparator]
   );
 
-  return {
-    ...ctx,
-    getLocale,
-    getFirstDayOfWeek,
-    getWeekendDays,
-    getLabelSeparator,
-  };
+  // 每次调用都返回新对象会让下游把它放进依赖数组的组件反复重建监听/记忆
+  return useMemo(
+    () => ({
+      ...ctx,
+      getLocale,
+      getFirstDayOfWeek,
+      getWeekendDays,
+      getLabelSeparator
+    }),
+    [ctx, getLocale, getFirstDayOfWeek, getWeekendDays, getLabelSeparator]
+  );
 }

@@ -23,6 +23,15 @@ export function useProps<T extends Record<string, any>, U extends Partial<T> | n
     const theme = useUITheme()
     // component 支持传单个名称或名称数组（复合组件依次读取各层主题默认属性）
     const names = Array.isArray(component) ? component : [component]
+
+    // 快路径：组件无 defaultProps 且主题也没有为该组件配置 defaultProps 时，
+    // 原样返回 props。此前这里每次都新建 5~6 个对象，既白花时间又破坏 props 引用身份，
+    // 让下游所有 useMemo/React.memo 判定永远命中不了。
+    const hasOwnDefaults = defaultProps != null && Object.keys(defaultProps).length > 0
+    if (!hasOwnDefaults && !names.some(name => theme.components[name]?.defaultProps)) {
+        return props as any
+    }
+
     const contextProps = names.reduce<Record<string, unknown>>((acc, name) => {
         const payload = theme.components[name]?.defaultProps
         const resolved = typeof payload === 'function' ? payload(theme) : payload

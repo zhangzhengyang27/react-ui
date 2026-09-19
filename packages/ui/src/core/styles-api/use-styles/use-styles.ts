@@ -82,41 +82,64 @@ export function useStyles<Payload extends FactoryPayload>({
         themeName
     })
 
-    return (selector, options) => ({
-        className: getClassName({
-            theme,
-            options,
-            themeName,
-            selector,
-            classNamesPrefix,
-            classNames,
-            classes,
-            unstyled,
-            className,
-            rootSelector,
-            props,
-            stylesCtx,
-            withStaticClasses,
-            headless,
-            transformedStyles: getTransformedStyles([options?.styles, styles])
-        }),
+    // 同一次渲染内按选择器缓存解析结果：getStyles 每次都重跑 varsResolver / 主题 vars /
+    // filterProps 与 8 个 className 辅助函数，而 DataTable 这类组件每行每格都会重复请求
+    // 同一批选择器（tr、td……），虚拟滚动下等于每帧重复解析上百次。
+    // 仅对不带 options 的调用生效——带 options 时结果依赖 options，不适合按选择器复用。
+    const resolvedOncePerSelector = new Map<string, ReturnType<typeof computeStyles>>()
 
-        style: getStyle({
-            theme,
-            themeName,
-            selector,
-            options,
-            props,
-            stylesCtx,
-            rootSelector,
-            styles,
-            style,
-            vars,
-            varsResolver,
-            headless,
-            withStylesTransform
-        }),
+    function computeStyles(selector: string, options?: GetStylesApiOptions) {
+        return {
+            className: getClassName({
+                theme,
+                options,
+                themeName,
+                selector,
+                classNamesPrefix,
+                classNames,
+                classes,
+                unstyled,
+                className,
+                rootSelector,
+                props,
+                stylesCtx,
+                withStaticClasses,
+                headless,
+                transformedStyles: getTransformedStyles([options?.styles, styles])
+            }),
 
-        ...attributes?.[selector]
-    })
+            style: getStyle({
+                theme,
+                themeName,
+                selector,
+                options,
+                props,
+                stylesCtx,
+                rootSelector,
+                styles,
+                style,
+                vars,
+                varsResolver,
+                headless,
+                withStylesTransform
+            }),
+
+            ...attributes?.[selector as keyof typeof attributes]
+        }
+    }
+
+    return (selector: string, options?: GetStylesApiOptions) => {
+        if (options) {
+            return computeStyles(selector, options)
+        }
+
+        const cached = resolvedOncePerSelector.get(selector)
+        if (cached) {
+            return cached
+        }
+
+        const computed = computeStyles(selector)
+        resolvedOncePerSelector.set(selector, computed)
+        return computed
+    }
 }

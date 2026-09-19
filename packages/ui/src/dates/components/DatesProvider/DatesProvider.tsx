@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useMemo } from 'react';
 import { DayOfWeek } from '../../types';
 
 export interface DatesProviderValue {
@@ -27,11 +27,13 @@ export interface DatesProviderProps {
 }
 
 export function DatesProvider({ settings, children }: DatesProviderProps) {
-  return (
-    <DatesProviderContext value={{ ...DATES_PROVIDER_DEFAULT_SETTINGS, ...settings }}>
-      {children}
-    </DatesProviderContext>
+  // 内联对象会让每次 Provider 渲染都换掉 context value，日期/日程子树整体跟着重渲染
+  const value = useMemo(
+    () => ({ ...DATES_PROVIDER_DEFAULT_SETTINGS, ...settings }),
+    [settings]
   );
+
+  return <DatesProviderContext value={value}>{children}</DatesProviderContext>;
 }
 
 export namespace DatesProvider {

@@ -133,6 +133,25 @@ export type MonthFactory = Factory<{
   vars: MonthCssVariables;
 }>;
 
+/**
+ * 同一自然日判定。日历网格有 42 格且在 range 悬停时随父级高频重渲染，
+ * 这里用字段比较替代 dayjs 实例化。网格里的日期可能是 'YYYY-MM-DD[ HH:mm:ss]'
+ * 字符串（原实现靠 dayjs 解析），字符串分支取前 10 位即为本地日期。
+ */
+function isSameDay(a: Date | string, b: Date) {
+  if (typeof a === 'string') {
+    return (
+      Number(a.slice(0, 4)) === b.getFullYear() &&
+      Number(a.slice(5, 7)) - 1 === b.getMonth() &&
+      Number(a.slice(8, 10)) === b.getDate()
+    )
+  }
+
+  return (
+    a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate()
+  )
+}
+
 const defaultProps = {
   withCellSpacing: true,
 } satisfies Partial<MonthProps>;
@@ -233,21 +252,44 @@ export const Month = factory<MonthFactory>((_props) => {
     props,
   });
 
+  // monthCell 的选择器与 options 与单元格无关，42 格各解析一次纯属重复
+  const monthCellStyle = getStyles('monthCell');
+
+  // aria-label 要走 dayjs 的 locale 格式化，落在 42 格 × 每次渲染的热路径上
+  // （range 悬停时父级高频重渲染），按日期缓存，只在网格或 locale 变化时重算
+  const ariaLabels = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const row of dates) {
+      for (const date of row) {
+        map.set(
+          date.toString(),
+          dayjs(date)
+            .locale(locale || ctx.locale)
+            .format('D MMMM YYYY')
+        );
+      }
+    }
+    return map;
+  }, [dates, locale, ctx.locale]);
+
+  // 聚焦目标日：原来每格都要 dayjs 一次，这里整月只解析一次
+  // （保留 dateInTabOrder 为空时按「今天」比较的既有语义）
+  const tabOrderDate = useMemo(
+    () => (dateInTabOrder ? dayjs(dateInTabOrder).toDate() : new Date()),
+    [dateInTabOrder]
+  );
+
   const rows = dates.map((row, rowIndex) => {
     const cells = row.map((date, cellIndex) => {
       const outside = !isSameMonth(date, month);
-      const ariaLabel =
-        getDayAriaLabel?.(date) ||
-        dayjs(date)
-          .locale(locale || ctx.locale)
-          .format('D MMMM YYYY');
+      const ariaLabel = getDayAriaLabel?.(date) || ariaLabels.get(date.toString())!;
       const dayProps = getDayProps?.(date);
-      const isDateInTabOrder = dayjs(date).isSame(dateInTabOrder, 'date');
+      const isDateInTabOrder = isSameDay(date, tabOrderDate);
 
       return (
         <td
           key={date.toString()}
-          {...getStyles('monthCell')}
+          {...monthCellStyle}
           data-with-spacing={withCellSpacing || undefined}
         >
           <Day

@@ -110,6 +110,14 @@ describe('@xiaoye-react/schedule/Schedule', () => {
     expect(spy).toHaveBeenCalled();
   });
 
+  it('forwards onDayClick to the mobile month view', async () => {
+    const spy = jest.fn();
+    render(<Schedule {...defaultProps} mode="mobile" defaultView="month" onDayClick={spy} />);
+
+    await userEvent.click(screen.getByRole('button', { name: 'January 15, 2024' }));
+    expect(spy).toHaveBeenCalledWith('2024-01-15', expect.any(Object));
+  });
+
   it('supports controlled date prop', () => {
     const { rerender } = render(<Schedule {...defaultProps} date="2024-01-15" view="day" />);
     expect(screen.getByText('January 15, 2024')).toBeInTheDocument();

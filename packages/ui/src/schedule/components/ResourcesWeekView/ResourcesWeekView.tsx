@@ -674,7 +674,8 @@ export const ResourcesWeekView = factory<ResourcesWeekViewFactory>((_props) => {
         if (typeof renderEvent === 'function') {
           eventNodes.push(renderEvent(event, bgEventProps as any));
         } else {
-          eventNodes.push(<Box {...bgEventProps} />);
+          const { key: bgEventKey, ...restBgEventProps } = bgEventProps;
+          eventNodes.push(<Box key={bgEventKey} {...restBgEventProps} />);
         }
       }
 

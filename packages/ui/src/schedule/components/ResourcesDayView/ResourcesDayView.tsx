@@ -670,7 +670,8 @@ export const ResourcesDayView = factory<ResourcesDayViewFactory>((_props) => {
         return renderEvent(event, bgEventProps as any);
       }
 
-      return <Box {...bgEventProps} />;
+      const { key: bgEventKey, ...restBgEventProps } = bgEventProps;
+      return <Box key={bgEventKey} {...restBgEventProps} />;
     });
 
     const allRegularEvents = (resourceEvents.regularEvents[resource.id] || []).filter(

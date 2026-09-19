@@ -341,7 +341,6 @@ export const Schedule = factory<ScheduleFactory>((_props) => {
     onEventDragEnd,
     onTimeSlotClick,
     onAllDaySlotClick,
-    onDayClick,
     onEventClick,
     withDragSlotSelect,
     onSlotDragEnd,
@@ -361,7 +360,7 @@ export const Schedule = factory<ScheduleFactory>((_props) => {
       case 'week':
         return <WeekView {...commonProps} {...weekViewProps} />;
       case 'month':
-        return <MonthView {...commonProps} {...monthViewProps} />;
+        return <MonthView {...commonProps} onDayClick={onDayClick} {...monthViewProps} />;
       case 'year':
         return <YearView {...commonProps} onMonthClick={handleMonthClick} {...yearViewProps} />;
       default:
@@ -386,6 +385,7 @@ export const Schedule = factory<ScheduleFactory>((_props) => {
             recurrenceExpansionLimit={recurrenceExpansionLimit}
             onYearClick={() => handleViewChange('year')}
             onEventClick={onEventClick}
+            onDayClick={onDayClick}
             {...mobileMonthViewProps}
           />
         );

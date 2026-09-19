@@ -81,6 +81,13 @@ export function mergeUITheme(currentTheme: UITheme, themeOverride?: UIThemeOverr
 
     const result = deepMerge(currentTheme, themeOverride)
 
+    // deepMerge 会把显式 undefined 当普通叶子值覆盖掉默认值，配置器类
+    // （theme={{ primaryShade: maybeUndefined }}）会让 theme.primaryShade 变 undefined，
+    // 随后 getPrimaryShade 读 .light 抛裸 TypeError 整页崩；显式 undefined 按未配置处理。
+    if (result.primaryShade == null) {
+        result.primaryShade = currentTheme.primaryShade
+    }
+
     if (themeOverride.fontFamily && !themeOverride.headings?.fontFamily) {
         result.headings = { ...result.headings, fontFamily: themeOverride.fontFamily }
     }

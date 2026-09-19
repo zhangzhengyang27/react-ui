@@ -73,8 +73,6 @@ export default defineConfig({
         '@docs/css-exports': path.join(__dirname, '.docgen/css-exports.json'),
         // styles-api 数据
         '@xiaoye-react/docs-styles-api': path.join(__dirname, '../../packages/@xiaoye-react/docs-styles-api/src/index.ts'),
-        // colors-generator
-        '@xiaoye-react/colors-generator': path.join(__dirname, '../../packages/@xiaoye-react/colors-generator/src/index.ts'),
         // dev-icons / meta
         '@xiaoye-react/dev-icons': path.join(__dirname, '../../packages/@xiaoye-react/dev-icons/src/index.ts'),
         '@xiaoye-react/meta': path.join(__dirname, '../../packages/@xiaoye-react/meta/src/index.ts'),

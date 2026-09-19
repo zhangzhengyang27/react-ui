@@ -69,7 +69,7 @@ export function VirtualizedSearchableTanstack() {
   }
 
   return (
-    <Combobox store={combobox} resetSelectionOnOptionHover={false}>
+    <Combobox store={combobox}>
       <Combobox.Target>
         <TextInput
           placeholder="搜索选项"
@@ -103,7 +103,6 @@ export function VirtualizedSearchableTanstack() {
                     value={item.value}
                     key={item.value}
                     active={item.label === value}
-                    selected={virtualItem.index === selectedOptionIndex}
                     onClick={() => onOptionSubmit(virtualItem.index)}
                     style={{
                       position: 'absolute',

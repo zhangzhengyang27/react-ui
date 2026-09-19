@@ -60,7 +60,8 @@ const columns: DataTableColumn<Member>[] = [
   { accessor: 'name', title: '姓名', width: 120 },
   { accessor: 'department', title: '部门' },
   {
-    accessor: 'actions',
+    // 操作列没有对应的数据字段：函数型 accessor + render
+    accessor: () => null,
     title: '操作',
     width: 90,
     render: (record) => (

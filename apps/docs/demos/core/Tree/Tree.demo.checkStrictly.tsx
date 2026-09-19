@@ -27,7 +27,7 @@ const renderTreeNode = ({
       <Checkbox.Indicator
         checked={checked}
         size="xs"
-        mis={isRoot ? undefined : 2}
+        ms={isRoot ? undefined : 2}
         onClick={() =>
           checked
             ? tree.uncheckNode(node.value)
@@ -74,7 +74,7 @@ const renderTreeNode = ({ node, expanded, hasChildren, isRoot, elementProps, tre
             <Checkbox.Indicator
                 checked={checked}
                 size="xs"
-                mis={isRoot ? undefined : 2}
+                ms={isRoot ? undefined : 2}
                 onClick={() => (checked ? tree.uncheckNode(node.value) : tree.checkNode(node.value))}
             />
 

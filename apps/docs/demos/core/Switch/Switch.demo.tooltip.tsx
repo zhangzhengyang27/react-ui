@@ -6,7 +6,7 @@ import { Switch, Tooltip } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
-    <Tooltip label="开关提示" refProp="rootRef">
+    <Tooltip label="开关提示">
       <Switch label="带提示的开关" />
     </Tooltip>
   );
@@ -15,7 +15,7 @@ function Demo() {
 
 function Demo() {
   return (
-    <Tooltip label="开关提示" refProp="rootRef">
+    <Tooltip label="开关提示">
       <Switch label="带提示的开关" />
     </Tooltip>
   );

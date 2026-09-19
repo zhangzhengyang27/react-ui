@@ -10,7 +10,7 @@ function Demo() {
   return (
     <Slider
       defaultValue={40}
-      size={2}
+      thumbSize={2}
       classNames={classes}
       marks={[
         { value: 20, label: '20%' },
@@ -61,7 +61,7 @@ function Demo() {
     <Box maw={400} pt={15} pb={20} mx="auto">
       <Slider
         defaultValue={40}
-        size={2}
+        thumbSize={2}
         classNames={classes}
         marks={[
           { value: 20, label: '20%' },

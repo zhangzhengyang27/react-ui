@@ -19,6 +19,4 @@ export { configurator } from './TreeSelect.demo.configurator';
 export { scrollArea } from './TreeSelect.demo.scrollArea';
 export { dropdownOpened } from './TreeSelect.demo.dropdownOpened';
 export { dropdownPosition } from './TreeSelect.demo.dropdownPosition';
-export { dropdownWidth } from './TreeSelect.demo.dropdownWidth';
 export { dropdownOffset } from './TreeSelect.demo.dropdownOffset';
-export { dropdownShadow } from './TreeSelect.demo.dropdownShadow';

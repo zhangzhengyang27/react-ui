@@ -37,15 +37,13 @@ export function ButtonSearch() {
     <>
       <Combobox
         store={combobox}
-        width={250}
         position="bottom-start"
-        withArrow
         onOptionSubmit={(val) => {
           setSelectedItem(val);
           combobox.closeDropdown();
         }}
       >
-        <Combobox.Target withAriaAttributes={false}>
+        <Combobox.Target>
           <Button onClick={() => combobox.toggleDropdown()}>选择项目</Button>
         </Combobox.Target>
 

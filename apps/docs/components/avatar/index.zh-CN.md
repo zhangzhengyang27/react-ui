@@ -20,7 +20,7 @@ group:
 
 ### 首字母
 
-将 `name` 属性设置为人员姓名（如 `name="John Doe"`）可显示首字母而非默认占位符。同时，可使用 `color="initials"` 根据姓名生成颜色。
+将姓名的首字母（如 `JD`）作为 children 传入 `Avatar`，即可在没有图片时显示文字占位符：
 
 <code src="./demo/initials.tsx"></code>
 

@@ -22,8 +22,3 @@ export const Demo_tooltip = {
   name: '⭐ Demo: tooltip',
   render: renderDemo(demos.tooltip),
 };
-
-export const Demo_deselect = {
-  name: '⭐ Demo: deselect',
-  render: renderDemo(demos.deselect),
-};

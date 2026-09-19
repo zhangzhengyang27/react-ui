@@ -45,18 +45,17 @@ function Demo() {
 
       <Combobox
         store={combobox}
-        width={250}
         position="bottom-start"
         onOptionSubmit={(val) => {
           setSelectedItem(val);
           combobox.closeDropdown();
         }}
       >
-        <Combobox.Target withAriaAttributes={false}>
+        <Combobox.Target>
           <Button onClick={() => combobox.toggleDropdown()}>选择项目</Button>
         </Combobox.Target>
 
-        <Combobox.Dropdown>
+        <Combobox.Dropdown w={250}>
           <Combobox.Search
             value={search}
             onChange={(event) => setSearch(event.currentTarget.value)}
@@ -111,18 +110,17 @@ function Demo() {
 
       <Combobox
         store={combobox}
-        width={250}
         position="bottom-start"
         onOptionSubmit={(val) => {
           setSelectedItem(val);
           combobox.closeDropdown();
         }}
       >
-        <Combobox.Target withAriaAttributes={false}>
+        <Combobox.Target>
           <Button onClick={() => combobox.toggleDropdown()}>选择项目</Button>
         </Combobox.Target>
 
-        <Combobox.Dropdown>
+        <Combobox.Dropdown w={250}>
           <Combobox.Search
             value={search}
             onChange={(event) => setSearch(event.currentTarget.value)}

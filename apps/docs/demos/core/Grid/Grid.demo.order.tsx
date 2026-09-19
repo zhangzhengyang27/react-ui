@@ -8,9 +8,9 @@ import { Grid } from '@xiaoye-react/ui';
 function Demo() {
   return (
     <Grid>
-      <Grid.Col span={3} order={{ base: 2, sm: 1, lg: 3 }}>2</Grid.Col>
-      <Grid.Col span={3} order={{ base: 3, sm: 2, lg: 2 }}>3</Grid.Col>
-      <Grid.Col span={3} order={{ base: 1, sm: 3, lg: 1 }}>1</Grid.Col>
+      <Grid.Col span={3} order={3}>1</Grid.Col>
+      <Grid.Col span={3} order={1}>2</Grid.Col>
+      <Grid.Col span={3} order={2}>3</Grid.Col>
     </Grid>
   );
 }
@@ -19,14 +19,14 @@ function Demo() {
 function Demo() {
   return (
     <Grid>
-      <Col span={3} order={{ base: 2, sm: 1, lg: 3 }}>
+      <Col span={3} order={3}>
+        1
+      </Col>
+      <Col span={3} order={1}>
         2
       </Col>
-      <Col span={3} order={{ base: 3, sm: 2, lg: 2 }}>
+      <Col span={3} order={2}>
         3
-      </Col>
-      <Col span={3} order={{ base: 1, sm: 3, lg: 1 }}>
-        1
       </Col>
     </Grid>
   );

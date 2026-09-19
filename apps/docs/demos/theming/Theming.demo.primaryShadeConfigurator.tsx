@@ -30,7 +30,6 @@ function Wrapper(props: any) {
     <div id="primary-color-demo-root" data-ui-color-scheme={attr}>
       <UIProvider
         cssVariablesSelector="#primary-color-demo-root"
-        getRootElement={() => document.createElement('div')}
         theme={{ primaryShade: props.primaryShade }}
       >
         <Group>

@@ -184,12 +184,6 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     type: 'dropdown',
   },
   {
-    id: 'DropdownFloatingHeight',
-    name: '固定下拉最大高度',
-    description: '使用 floatingHeight 属性限制下拉列表高度',
-    type: 'dropdown',
-  },
-  {
     id: 'DropdownHeader',
     name: '带头部下拉',
     description: '带头部和 ScrollArea 的下拉',
@@ -212,12 +206,6 @@ export const COMBOBOX_EXAMPLES_DATA: ComboboxExample[] = [
     name: '自定义已选样式',
     description: '自定义已选选项样式',
     type: 'dropdown',
-  },
-  {
-    id: 'DropdownAnimation',
-    name: '下拉动画',
-    description: '带打开/关闭动画的下拉',
-    type: 'animations',
   },
   {
     id: 'DropdownOptionsAnimation',

@@ -80,12 +80,6 @@ function Demo() {
 
 <code src="./demo/pull.tsx"></code>
 
-### 垂直方向标签页位置
-
-要更改垂直方向下 `Tabs.List` 的位置，请设置 `placement` 属性：
-
-<code src="./demo/placement.tsx"></code>
-
 ### 禁用标签页
 
 在 `Tabs.Tab` 组件上设置 `disabled` 属性以禁用某个标签页。
@@ -456,7 +450,6 @@ function Demo() {
 | onChange | 激活项变化回调 | `(value: string) => void` | — |
 | orientation | 方向 | `'horizontal' \| 'vertical'` | `'horizontal'` |
 | variant | 视觉变体 | `'default' \| 'outline' \| 'pills'` | `'default'` |
-| placement | 标签位置 | `'left' \| 'right' \| 'top' \| 'bottom'` | `'top'` |
 | color | 主题色 | `UIColor` | `'blue'` |
 | radius | 圆角 | `UIRadius` | — |
 | keepMounted | 是否保持所有面板挂载 | `boolean` | `true` |

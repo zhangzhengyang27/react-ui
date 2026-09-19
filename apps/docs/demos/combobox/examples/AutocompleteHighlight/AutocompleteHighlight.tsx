@@ -22,7 +22,7 @@ export function AutocompleteHighlight() {
 
   const options = filteredOptions.map((item) => (
     <Combobox.Option value={item} key={item}>
-      <Highlight highlight={value} size="sm">
+      <Highlight highlight={value} fz="sm">
         {item}
       </Highlight>
     </Combobox.Option>

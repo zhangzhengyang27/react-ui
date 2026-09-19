@@ -10,7 +10,6 @@ function Demo() {
       multiline
       w={220}
       withArrow
-      transitionProps={{ duration: 200 }}
       label="使用此按钮将信息保存到你的个人资料，之后你可以随时访问并通过邮件分享。"
     >
       <Button>多行提示</Button>
@@ -25,7 +24,6 @@ export function Demo() {
       multiline
       w={220}
       withArrow
-      transitionProps={{ duration: 200 }}
       label="使用此按钮将信息保存到你的个人资料，之后你可以随时访问并通过邮件分享。"
     >
       <Button>多行提示</Button>

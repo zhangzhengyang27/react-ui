@@ -1,7 +1,6 @@
 export { usage } from './Tabs.demo.usage';
 export { position } from './Tabs.demo.position';
 export { pull } from './Tabs.demo.pull';
-export { placement } from './Tabs.demo.placement';
 export { disabled } from './Tabs.demo.disabled';
 export { colors } from './Tabs.demo.colors';
 export { customize } from './Tabs.demo.customize';

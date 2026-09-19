@@ -13,11 +13,6 @@ export const Demo_complete = {
   render: renderDemo(demos.complete),
 };
 
-export const Demo_dynamic = {
-  name: '⭐ Demo: dynamic',
-  render: renderDemo(demos.dynamic),
-};
-
 export const Demo_customTokens = {
   name: '⭐ Demo: customTokens',
   render: renderDemo(demos.customTokens),
@@ -26,11 +21,6 @@ export const Demo_customTokens = {
 export const Demo_escape = {
   name: '⭐ Demo: escape',
   render: renderDemo(demos.escape),
-};
-
-export const Demo_regex = {
-  name: '⭐ Demo: regex',
-  render: renderDemo(demos.regex),
 };
 
 export const Demo_reset = {

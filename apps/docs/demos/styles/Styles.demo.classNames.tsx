@@ -16,7 +16,7 @@ function Demo() {
   return (
     <TextInput
       label="浮动标签输入"
-      labelProps={{ 'data-floating': floating }}
+      labelProps={{ mod: { floating } }}
       classNames={{
         root: classes.root,
         input: classes.input,
@@ -73,7 +73,7 @@ function Demo() {
   return (
     <TextInput
       label="浮动标签输入"
-      labelProps={{ 'data-floating': floating }}
+      labelProps={{ mod: { floating } }}
       classNames={{
         root: classes.root,
         input: classes.input,

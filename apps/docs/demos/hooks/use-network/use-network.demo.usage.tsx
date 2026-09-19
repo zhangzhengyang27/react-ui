@@ -10,7 +10,7 @@ function Demo() {
   const networkStatus = useNetwork();
 
   return (
-    <Table maw={300} layout="fixed" mx="auto">
+    <Table maw={300} mx="auto">
       <Table.Thead>
         <Table.Tr>
           <Table.Th>属性</Table.Th>
@@ -61,7 +61,7 @@ function Demo() {
   const networkStatus = useNetwork();
 
   return (
-    <Table maw={300} layout="fixed" mx="auto">
+    <Table maw={300} mx="auto">
       <Table.Thead>
         <Table.Tr>
           <Table.Th>属性</Table.Th>

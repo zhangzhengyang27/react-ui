@@ -48,7 +48,7 @@ import classes from './Demo.module.css';
 
 function Demo() {
   const [rootRef, setRootRef] = useState<HTMLDivElement | null>(null);
-  const [value, setValue] = useState<string | null>('1');
+  const [value, setValue] = useState<string | undefined>('1');
   const [controlsRefs, setControlsRefs] = useState<Record<string, HTMLButtonElement | null>>({});
   const setControlRef = (val: string) => (node: HTMLButtonElement) => {
     controlsRefs[val] = node;
@@ -56,7 +56,7 @@ function Demo() {
   };
 
   return (
-    <Tabs variant="none" value={value} onChange={setValue}>
+    <Tabs value={value} onChange={setValue}>
       <Tabs.List ref={setRootRef} className={classes.list}>
         <Tabs.Tab value="1" ref={setControlRef('1')} className={classes.tab}>
           第一个标签
@@ -85,7 +85,7 @@ function Demo() {
 
 function Demo() {
   const [rootRef, setRootRef] = useState<HTMLDivElement | null>(null);
-  const [value, setValue] = useState<string | null>('1');
+  const [value, setValue] = useState<string | undefined>('1');
   const [controlsRefs, setControlsRefs] = useState<Record<string, HTMLButtonElement | null>>({});
   const setControlRef = (val: string) => (node: HTMLButtonElement) => {
     controlsRefs[val] = node;
@@ -93,7 +93,7 @@ function Demo() {
   };
 
   return (
-    <Tabs variant="none" value={value} onChange={setValue}>
+    <Tabs value={value} onChange={setValue}>
       <Tabs.List ref={setRootRef} className={classes.list}>
         <Tabs.Tab value="1" ref={setControlRef('1')} className={classes.tab}>
           第一个标签

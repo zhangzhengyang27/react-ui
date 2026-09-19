@@ -76,8 +76,6 @@ function Demo() {
 }
 ```
 
-<code src="./demo/limit.tsx"></code>
-
 ### 分组选项
 
 <code src="./demo/groups.tsx"></code>

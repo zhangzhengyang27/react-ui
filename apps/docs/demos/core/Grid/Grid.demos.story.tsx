@@ -28,29 +28,9 @@ export const Demo_rows = {
   render: renderDemo(demos.rows),
 };
 
-export const Demo_flexConfigurator = {
-  name: '⭐ Demo: flexConfigurator',
-  render: renderDemo(demos.flexConfigurator),
-};
-
-export const Demo_responsive = {
-  name: '⭐ Demo: responsive',
-  render: renderDemo(demos.responsive),
-};
-
 export const Demo_columns = {
   name: '⭐ Demo: columns',
   render: renderDemo(demos.columns),
-};
-
-export const Demo_auto = {
-  name: '⭐ Demo: auto',
-  render: renderDemo(demos.auto),
-};
-
-export const Demo_content = {
-  name: '⭐ Demo: content',
-  render: renderDemo(demos.content),
 };
 
 export const Demo_gap = {
@@ -61,9 +41,4 @@ export const Demo_gap = {
 export const Demo_rowColumnGap = {
   name: '⭐ Demo: rowColumnGap',
   render: renderDemo(demos.rowColumnGap),
-};
-
-export const Demo_columnAlign = {
-  name: '⭐ Demo: columnAlign',
-  render: renderDemo(demos.columnAlign),
 };

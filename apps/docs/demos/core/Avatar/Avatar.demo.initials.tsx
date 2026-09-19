@@ -8,13 +8,13 @@ import { Avatar, Group } from '@xiaoye-react/ui';
 ${namesCode}
 
 function Demo() {
-  const avatars = names.map((name) => <Avatar key={name} name={name} color="initials" />);
+  const avatars = names.map((name) => <Avatar key={name}>{name.split(' ').map((part) => part[0]).join('')}</Avatar>);
   return <Group>{avatars}</Group>;
 }
 `;
 
 function Demo() {
-  const avatars = names.map((name) => <Avatar key={name} name={name} color="initials" />);
+  const avatars = names.map((name) => <Avatar key={name}>{name.split(' ').map((part) => part[0]).join('')}</Avatar>);
   return <Group>{avatars}</Group>;
 }
 

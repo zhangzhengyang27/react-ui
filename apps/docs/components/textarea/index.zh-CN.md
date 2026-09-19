@@ -82,10 +82,10 @@ function Demo() {
 
 <code src="./demo/autosize.tsx"></code>
 
-### 启用调整大小
+### 自定义调整大小
 
-默认情况下，[resize](https://developer.mozilla.org/en-US/docs/Web/CSS/resize) 为 `none`；
-要启用它，请将 `resize` 属性设置为 `vertical` 或 `both`：
+默认情况下，[resize](https://developer.mozilla.org/en-US/docs/Web/CSS/resize) 为 `vertical`，
+可通过 `style` 属性覆盖，例如设置 `resize: 'none'` 禁用拖拽调整：
 
 <code src="./demo/resize.tsx"></code>
 

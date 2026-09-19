@@ -15,7 +15,7 @@ function Demo() {
       data={regionOptions}
       mode="multiple"
       value={value}
-      onChange={setValue}
+      onChange={(value) => setValue(Array.isArray(value) ? value : value ? [value] : [])}
       placeholder="可多选叶子节点"
     />
   );
@@ -30,7 +30,7 @@ function Demo() {
             data={regionOptions}
             mode="multiple"
             value={value}
-            onChange={setValue}
+            onChange={(value) => setValue(Array.isArray(value) ? value : value ? [value] : [])}
             placeholder="可多选叶子节点"
         />
     );

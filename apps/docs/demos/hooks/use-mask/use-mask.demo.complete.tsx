@@ -9,8 +9,7 @@ import { useMask } from '@xiaoye-react/hooks';
 function Demo() {
   const { ref, isComplete, rawValue } = useMask({
     mask: 'AAA-9999',
-    slotChar: 'XXX-0000',
-    transform: (char) => char.toUpperCase(),
+    placeholderChar: 'X',
   });
 
   return (
@@ -28,8 +27,7 @@ function Demo() {
 function Demo() {
   const { ref, isComplete, rawValue } = useMask({
     mask: 'AAA-9999',
-    slotChar: 'XXX-0000',
-    transform: (char) => char.toUpperCase(),
+    placeholderChar: 'X',
   });
 
   return (

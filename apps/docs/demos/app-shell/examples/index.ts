@@ -1,26 +1,12 @@
 import { CodeHighlightDefaultLanguage } from '@xiaoye-react/ui';
-import { AltLayout } from './AltLayout/AltLayout';
-import AltLayoutCode from './AltLayout/code.json';
 import { BasicAppShell } from './BasicAppShell/BasicAppShell';
 import BasicAppShellCode from './BasicAppShell/code.json';
 import CollapseDesktopCode from './CollapseDesktop/code.json';
 import { CollapseDesktop } from './CollapseDesktop/CollapseDesktop';
-import DisabledCode from './Disabled/code.json';
-import { Disabled } from './Disabled/Disabled';
 import FullLayoutCode from './FullLayout/code.json';
 import { FullLayout } from './FullLayout/FullLayout';
-import HeadroomCode from './Headroom/code.json';
-import { Headroom } from './Headroom/Headroom';
 import MobileNavbarCode from './MobileNavbar/code.json';
 import { MobileNavbar } from './MobileNavbar/MobileNavbar';
-import NestedAppShellCode from './NestedAppShell/code.json';
-import { NestedAppShell } from './NestedAppShell/NestedAppShell';
-import NoTransitionsCode from './NoTransitions/code.json';
-import { NoTransitions } from './NoTransitions/NoTransitions';
-import ResponsiveSizesCode from './ResponsiveSizes/code.json';
-import { ResponsiveSizes } from './ResponsiveSizes/ResponsiveSizes';
-import StaticModeCode from './StaticMode/code.json';
-import { StaticMode } from './StaticMode/StaticMode';
 
 interface AppShellExampleComponent {
   component: () => React.JSX.Element;
@@ -36,10 +22,6 @@ export const APP_SHELL_EXAMPLES_COMPONENTS: Record<string, AppShellExampleCompon
     component: BasicAppShell,
     code: BasicAppShellCode as AppShellExampleComponent['code'],
   },
-  ResponsiveSizes: {
-    component: ResponsiveSizes,
-    code: ResponsiveSizesCode as AppShellExampleComponent['code'],
-  },
   MobileNavbar: {
     component: MobileNavbar,
     code: MobileNavbarCode as AppShellExampleComponent['code'],
@@ -48,33 +30,9 @@ export const APP_SHELL_EXAMPLES_COMPONENTS: Record<string, AppShellExampleCompon
     component: FullLayout,
     code: FullLayoutCode as AppShellExampleComponent['code'],
   },
-  AltLayout: {
-    component: AltLayout,
-    code: AltLayoutCode as AppShellExampleComponent['code'],
-  },
   CollapseDesktop: {
     component: CollapseDesktop,
     code: CollapseDesktopCode as AppShellExampleComponent['code'],
-  },
-  NoTransitions: {
-    component: NoTransitions,
-    code: NoTransitionsCode as AppShellExampleComponent['code'],
-  },
-  Disabled: {
-    component: Disabled,
-    code: DisabledCode as AppShellExampleComponent['code'],
-  },
-  Headroom: {
-    component: Headroom,
-    code: HeadroomCode as AppShellExampleComponent['code'],
-  },
-  StaticMode: {
-    component: StaticMode,
-    code: StaticModeCode as AppShellExampleComponent['code'],
-  },
-  NestedAppShell: {
-    component: NestedAppShell,
-    code: NestedAppShellCode as AppShellExampleComponent['code'],
   },
 };
 

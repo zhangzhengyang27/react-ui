@@ -53,8 +53,8 @@ export function VirtualizedOptions() {
   }
 
   return (
-    <Combobox store={combobox} resetSelectionOnOptionHover={false} keepMounted>
-      <Combobox.Target targetType="button">
+    <Combobox store={combobox}>
+      <Combobox.Target>
         <InputBase component="button" onClick={() => combobox.toggleDropdown()} pointer>
           {value || <Input.Placeholder>选择一个值</Input.Placeholder>}
         </InputBase>
@@ -78,7 +78,6 @@ export function VirtualizedOptions() {
                   value={item.value}
                   key={item.value}
                   active={index === activeOptionIndex}
-                  selected={index === selectedOptionIndex}
                   onClick={() => onOptionSubmit(index)}
                 >
                   {item.label}

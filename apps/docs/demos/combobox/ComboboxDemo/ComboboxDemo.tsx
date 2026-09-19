@@ -11,7 +11,7 @@ import classes from './ComboboxDemo.module.css';
 // 首帧固定渲染 null 与 SSR 输出保持一致，参数同步放在 effect 中避免水合不一致。
 export function ComboboxDemo() {
   const [id, setId] = useState<ComboboxExampleId | undefined>(undefined);
-  const codeData = COMBOBOX_EXAMPLES_COMPONENTS[id];
+  const codeData = id ? COMBOBOX_EXAMPLES_COMPONENTS[id] : undefined;
   const metaData = COMBOBOX_EXAMPLES_DATA.find((item) => item.id === id);
 
   useEffect(() => {

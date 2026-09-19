@@ -79,13 +79,6 @@ function Demo() {
 
 <code src="./demo/step.tsx"></code>
 
-### 可选范围
-
-默认情况下，`min` 和 `max` 值定义可能取值的范围。
-`domain` 属性允许独立于 `min` 和 `max` 值设置可能取值的范围：
-
-<code src="./demo/domain.tsx"></code>
-
 ### 小数值
 
 要将 `RangeSlider` 用于小数值，请设置 `min`、`max` 和 `step` 属性：

@@ -7,7 +7,7 @@ import { Grid } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
-    <Grid gap="md" rowGap="xl" columnGap="sm">
+    <Grid gutter="md" rowGap="xl" columnGap="sm">
       <Grid.Col span={3}>1</Grid.Col>
       <Grid.Col span={3}>2</Grid.Col>
       <Grid.Col span={3}>3</Grid.Col>
@@ -23,7 +23,7 @@ function Demo() {
 
 function Demo() {
   return (
-    <Grid gap="md" rowGap="xl" columnGap="sm">
+    <Grid gutter="md" rowGap="xl" columnGap="sm">
       <Col span={3}>1</Col>
       <Col span={3}>2</Col>
       <Col span={3}>3</Col>

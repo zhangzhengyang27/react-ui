@@ -18,7 +18,7 @@ function Demo() {
       <Button variant="default" onClick={decrement}>
         <CaretDownIcon color="var(--ui-color-red-text)" />
       </Button>
-      <Button.GroupSection variant="default" bg="var(--ui-color-body)" miw={80}>
+      <Button.GroupSection bg="var(--ui-color-body)" miw={80}>
         {value}
       </Button.GroupSection>
       <Button variant="default" onClick={increment}>
@@ -37,7 +37,7 @@ function Demo() {
             <Button variant="default" onClick={decrement}>
                 <CaretDownIcon color="var(--ui-color-red-text)" />
             </Button>
-            <Button.GroupSection variant="default" bg="var(--ui-color-body)" miw={80}>
+            <Button.GroupSection bg="var(--ui-color-body)" miw={80}>
                 {value}
             </Button.GroupSection>
             <Button variant="default" onClick={increment}>

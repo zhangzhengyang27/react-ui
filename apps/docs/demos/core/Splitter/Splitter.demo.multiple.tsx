@@ -9,7 +9,6 @@ function Demo() {
     <Splitter h={200}>
       {labels.map((label, i) => (
         <Splitter.Pane
-          min={10}
           key={label}
           bg={colors[i]}
           c="white"
@@ -29,13 +28,13 @@ import { Splitter } from '@xiaoye-react/ui';
 function Demo() {
   return (
     <Splitter h={200}>
-      <Splitter.Pane min={10} bg="blue">
+      <Splitter.Pane bg="blue">
         First
       </Splitter.Pane>
-      <Splitter.Pane min={10} bg="teal">
+      <Splitter.Pane bg="teal">
         Second
       </Splitter.Pane>
-      <Splitter.Pane min={10} bg="grape">
+      <Splitter.Pane bg="grape">
         Third
       </Splitter.Pane>
     </Splitter>

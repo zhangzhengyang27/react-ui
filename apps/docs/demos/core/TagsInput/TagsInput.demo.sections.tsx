@@ -6,49 +6,27 @@ const code = `
 import { TagsInput } from '@xiaoye-react/ui';
 import { SquaresFourIcon } from '@phosphor-icons/react/dist/csr/SquaresFour';
 function Demo() {
-  const icon = <SquaresFourIcon size={16} />;
   return (
-    <>
-      <TagsInput
-        data={['React', 'Angular', 'Vue']}
-        leftSectionPointerEvents="none"
-        leftSection={icon}
-        label="你最喜欢的库"
-        placeholder="你最喜欢的库"
-      />
-      <TagsInput
-        mt="md"
-        data={['React', 'Angular', 'Vue']}
-        rightSectionPointerEvents="none"
-        rightSection={icon}
-        label="你最喜欢的库"
-        placeholder="你最喜欢的库"
-      />
-    </>
+    <TagsInput
+      data={['React', 'Angular', 'Vue']}
+      leftSectionPointerEvents="none"
+      leftSection={<SquaresFourIcon size={16} />}
+      label="你最喜欢的库"
+      placeholder="你最喜欢的库"
+    />
   );
 }
 `
 
 function Demo() {
-    const icon = <SquaresFourIcon size={16} />
     return (
-        <>
-            <TagsInput
-                data={['React', 'Angular', 'Vue']}
-                leftSectionPointerEvents="none"
-                leftSection={icon}
-                label="你最喜欢的库"
-                placeholder="你最喜欢的库"
-            />
-            <TagsInput
-                mt="md"
-                data={['React', 'Angular', 'Vue']}
-                rightSectionPointerEvents="none"
-                rightSection={icon}
-                label="你最喜欢的库"
-                placeholder="你最喜欢的库"
-            />
-        </>
+        <TagsInput
+            data={['React', 'Angular', 'Vue']}
+            leftSectionPointerEvents="none"
+            leftSection={<SquaresFourIcon size={16} />}
+            label="你最喜欢的库"
+            placeholder="你最喜欢的库"
+        />
     )
 }
 

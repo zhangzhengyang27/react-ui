@@ -39,19 +39,6 @@ group:
 
 <code src="./demo/nested.tsx"></code>
 
-### 重新分配
-
-使用多个面板时，设置 `redistribute` 属性以控制当直接相邻面板达到其最小/最大值时，
-如何从非相邻面板借用空间：
-
-<code src="./demo/redistribute.tsx"></code>
-
-### 线条尺寸
-
-使用 `lineSize` 属性控制面板之间分隔线的粗细：
-
-<code src="./demo/lineSize.tsx"></code>
-
 ### 包裹 Splitter.Pane
 
 `Splitter` 组件依赖 `Splitter.Pane` 的顺序。不支持包裹 `Splitter.Pane`，
@@ -63,7 +50,7 @@ import { Splitter } from '@xiaoye-react/ui';
 // 这样不会生效——被包裹的面板不会被识别
 function WillNotWork() {
   return (
-    <Splitter.Pane min={20}>
+    <Splitter.Pane>
       This part will not render correctly
     </Splitter.Pane>
   );
@@ -77,12 +64,12 @@ function PaneContent() {
 function Demo() {
   return (
     <Splitter h={200}>
-      <Splitter.Pane min={20}>
+      <Splitter.Pane>
         First pane
       </Splitter.Pane>
       {/* 不要将 Splitter.Pane 包裹在另一个组件中 */}
       {/* <WillNotWork /> */}
-      <Splitter.Pane min={20}>
+      <Splitter.Pane>
         <PaneContent />
       </Splitter.Pane>
     </Splitter>

@@ -98,10 +98,7 @@ function Demo() {
 
 ### 带 Tooltip 的 Radio
 
-可使用 `refProp` 更改 tooltip 附加到的目标元素：
-
-- 如果未设置 `refProp`，tooltip 附加到单选按钮输入
-- 如果设置 `refProp="rootRef"`，tooltip 附加到根元素（包含标签、输入和其他元素）
+使用 `Tooltip` 直接包裹 `Radio`，悬停时即可显示提示：
 
 <code src="./demo/tooltip.tsx"></code>
 

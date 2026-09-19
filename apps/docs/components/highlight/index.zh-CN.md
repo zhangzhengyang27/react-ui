@@ -22,18 +22,6 @@ group:
 
 <code src="./demo/usage.tsx"></code>
 
-### 高亮多个子字符串
-
-要高亮多个子字符串，请提供一个值数组。当提供多个子字符串时，较长的匹配优先以避免部分重叠。
-
-<code src="./demo/multiple.tsx"></code>
-
-### 每个术语自定义颜色
-
-可通过提供包含 `text` 和 `color` 属性的对象数组，为不同的高亮术语分配不同颜色：
-
-<code src="./demo/colors.tsx"></code>
-
 ### Text 属性
 
 Highlight 基于 [Text](/components/text/) 组件——除 `color` 外所有 Text 属性都可用。使用 `color` 属性更改高亮背景颜色，而不是文本颜色。

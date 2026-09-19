@@ -37,7 +37,7 @@ const renderTreeNode = ({
         checked={checked}
         size="xs"
         indeterminate={indeterminate}
-        mis={isRoot ? undefined : 2}
+        ms={isRoot ? undefined : 2}
         onClick={() => (!checked ? tree.checkNode(node.value) : tree.uncheckNode(node.value))}
       />
 
@@ -97,7 +97,7 @@ const renderTreeNode = ({ node, expanded, hasChildren, isRoot, elementProps, tre
                 checked={checked}
                 size="xs"
                 indeterminate={indeterminate}
-                mis={isRoot ? undefined : 2}
+                ms={isRoot ? undefined : 2}
                 onClick={() => (!checked ? tree.checkNode(node.value) : tree.uncheckNode(node.value))}
             />
 

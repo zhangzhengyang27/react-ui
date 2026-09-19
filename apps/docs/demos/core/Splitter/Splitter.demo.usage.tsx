@@ -5,7 +5,6 @@ function Wrapper(props: SplitterProps) {
   return (
     <Splitter {...props} h={200}>
       <Splitter.Pane
-        min={20}
         bg="blue"
         c="white"
         fw={500}
@@ -14,7 +13,6 @@ function Wrapper(props: SplitterProps) {
         First pane
       </Splitter.Pane>
       <Splitter.Pane
-        min={20}
         bg="teal"
         c="white"
         fw={500}
@@ -32,10 +30,10 @@ import { Splitter } from '@xiaoye-react/ui';
 function Demo() {
   return (
     <Splitter{{props}} h={200}>
-      <Splitter.Pane min={20} bg="blue">
+      <Splitter.Pane bg="blue">
         First pane
       </Splitter.Pane>
-      <Splitter.Pane min={20} bg="teal">
+      <Splitter.Pane bg="teal">
         Second pane
       </Splitter.Pane>
     </Splitter>

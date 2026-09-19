@@ -39,7 +39,7 @@ function Demo() {
         combobox.updateSelectedOptionIndex('active');
       }}
     >
-      <Combobox.Target targetType="button">
+      <Combobox.Target>
         <InputBase
           component="button"
           type="button"
@@ -93,7 +93,7 @@ function Demo() {
         combobox.updateSelectedOptionIndex('active');
       }}
     >
-      <Combobox.Target targetType="button">
+      <Combobox.Target>
         <InputBase
           component="button"
           type="button"

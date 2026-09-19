@@ -14,7 +14,7 @@ import classes from './Demo.module.css';
 
 function Demo() {
   return (
-    <Tabs variant="unstyled" defaultValue="settings" classNames={classes}>
+    <Tabs defaultValue="settings" classNames={classes}>
       <Tabs.List grow>
         <Tabs.Tab
           value="settings"
@@ -89,7 +89,7 @@ const cssCode = `
 
 function Demo() {
     return (
-        <Tabs variant="unstyled" defaultValue="settings" classNames={classes}>
+        <Tabs defaultValue="settings" classNames={classes}>
             <Tabs.List grow>
                 <Tabs.Tab value="settings" leftSection={<GearSixIcon size={16} />}>
                     设置

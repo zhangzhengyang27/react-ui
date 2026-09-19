@@ -1,7 +1,6 @@
 export { configurator } from './RangeSlider.demo.configurator';
 export { decimal } from './RangeSlider.demo.decimal';
 export { disabled } from './RangeSlider.demo.disabled';
-export { domain } from './RangeSlider.demo.domain';
 export { inverted } from './RangeSlider.demo.inverted';
 export { label } from './RangeSlider.demo.label';
 export { marks } from './RangeSlider.demo.marks';

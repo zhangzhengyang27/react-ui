@@ -23,7 +23,7 @@ function Demo() {
         checkedStrategy="child"
         defaultExpandAll
         value={childValue}
-        onChange={setChildValue}
+        onChange={(value) => setChildValue(Array.isArray(value) ? value : [])}
       />
       <TreeSelect
         label="checkedStrategy：all"
@@ -33,7 +33,7 @@ function Demo() {
         checkedStrategy="all"
         defaultExpandAll
         value={allValue}
-        onChange={setAllValue}
+        onChange={(value) => setAllValue(Array.isArray(value) ? value : [])}
       />
       <TreeSelect
         label="checkedStrategy：parent"
@@ -43,7 +43,7 @@ function Demo() {
         checkedStrategy="parent"
         defaultExpandAll
         value={parentValue}
-        onChange={setParentValue}
+        onChange={(value) => setParentValue(Array.isArray(value) ? value : [])}
       />
     </Stack>
   );
@@ -65,7 +65,7 @@ function Demo() {
         checkedStrategy="child"
         defaultExpandAll
         value={childValue}
-        onChange={setChildValue}
+        onChange={(value) => setChildValue(Array.isArray(value) ? value : [])}
       />
       <TreeSelect
         label="checkedStrategy：all"
@@ -75,7 +75,7 @@ function Demo() {
         checkedStrategy="all"
         defaultExpandAll
         value={allValue}
-        onChange={setAllValue}
+        onChange={(value) => setAllValue(Array.isArray(value) ? value : [])}
       />
       <TreeSelect
         label="checkedStrategy：parent"
@@ -85,7 +85,7 @@ function Demo() {
         checkedStrategy="parent"
         defaultExpandAll
         value={parentValue}
-        onChange={setParentValue}
+        onChange={(value) => setParentValue(Array.isArray(value) ? value : [])}
       />
     </Stack>
   );

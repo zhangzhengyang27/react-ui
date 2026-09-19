@@ -76,7 +76,7 @@ function Demo() {
 
 ### 带 Tooltip
 
-在 [Tooltip](/components/tooltip/) 和其他类似组件上设置 `refProp="rootRef"` 以使其与 `Switch` 一起工作：
+使用 [Tooltip](/components/tooltip/) 直接包裹 `Switch` 即可显示提示：
 
 <code src="./demo/tooltip.tsx"></code>
 

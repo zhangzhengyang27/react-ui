@@ -9,13 +9,15 @@ function Demo() {
   return (
     <>
       {/* Default placeholder */}
-      <Avatar src={null} alt="无图片" />
+      <Avatar alt="无图片" />
+
 
       {/* Default placeholder with custom color */}
-      <Avatar src={null} alt="无图片" color="indigo" />
+      <Avatar alt="无图片" color="indigo" />
+
 
       {/* Placeholder with initials */}
-      <Avatar src={null} alt="周八" color="red">VR</Avatar>
+      <Avatar alt="周八" color="red">VR</Avatar>
 
       {/* Placeholder with custom icon */}
       <Avatar color="blue" radius="xl">
@@ -30,9 +32,11 @@ function Demo() {
 function Demo() {
     return (
         <Group justify="center">
-            <Avatar src={null} alt="无图片" />
-            <Avatar src={null} alt="无图片" color="indigo" />
-            <Avatar src={null} alt="无图片" color="red">
+            <Avatar alt="无图片" />
+
+            <Avatar alt="无图片" color="indigo" />
+
+            <Avatar alt="无图片" color="red">
                 VR
             </Avatar>
             <Avatar color="blue" radius="xl">

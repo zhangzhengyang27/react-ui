@@ -10,7 +10,6 @@ export { disabledOptions } from './TagsInput.demo.disabledOptions';
 export { error } from './TagsInput.demo.error';
 export { success } from './TagsInput.demo.success';
 export { groups } from './TagsInput.demo.groups';
-export { limit } from './TagsInput.demo.limit';
 export { stylesApi } from './TagsInput.demo.stylesApi';
 export { clearable } from './TagsInput.demo.clearable';
 export { sections } from './TagsInput.demo.sections';

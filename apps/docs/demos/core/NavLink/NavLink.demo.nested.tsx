@@ -11,28 +11,26 @@ function Demo() {
   return (
     <>
       <NavLink
-        href="#required-for-focus"
         label="第一个父链接"
         leftSection={<GaugeIcon size={16} />}
       >
-        <NavLink href="#required-for-focus" label="第一个子链接" />
-        <NavLink label="第二个子链接" href="#required-for-focus" />
-        <NavLink label="嵌套父链接" href="#required-for-focus">
-          <NavLink label="第一个子链接" href="#required-for-focus" />
-          <NavLink label="第二个子链接" href="#required-for-focus" />
-          <NavLink label="第三个子链接" href="#required-for-focus" />
+        <NavLink label="第一个子链接" />
+        <NavLink label="第二个子链接" />
+        <NavLink label="嵌套父链接">
+          <NavLink label="第一个子链接" />
+          <NavLink label="第二个子链接" />
+          <NavLink label="第三个子链接" />
         </NavLink>
       </NavLink>
 
       <NavLink
-        href="#required-for-focus"
         label="第二个父链接"
         leftSection={<FingerprintIcon size={16} />}
         defaultOpened
       >
-        <NavLink label="第一个子链接" href="#required-for-focus" />
-        <NavLink label="第二个子链接" href="#required-for-focus" />
-        <NavLink label="第三个子链接" href="#required-for-focus" />
+        <NavLink label="第一个子链接" />
+        <NavLink label="第二个子链接" />
+        <NavLink label="第三个子链接" />
       </NavLink>
     </>
   );
@@ -43,28 +41,26 @@ function Demo() {
     return (
         <>
             <NavLink
-                href="#required-for-focus"
                 label="第一个父链接"
                 leftSection={<GaugeIcon size={16} />}
             >
-                <NavLink href="#required-for-focus" label="第一个子链接" />
-                <NavLink label="第二个子链接" href="#required-for-focus" />
-                <NavLink label="嵌套父链接" href="#required-for-focus">
-                    <NavLink label="第一个子链接" href="#required-for-focus" />
-                    <NavLink label="第二个子链接" href="#required-for-focus" />
-                    <NavLink label="第三个子链接" href="#required-for-focus" />
+                <NavLink label="第一个子链接" />
+                <NavLink label="第二个子链接" />
+                <NavLink label="嵌套父链接">
+                    <NavLink label="第一个子链接" />
+                    <NavLink label="第二个子链接" />
+                    <NavLink label="第三个子链接" />
                 </NavLink>
             </NavLink>
 
             <NavLink
-                href="#required-for-focus"
                 label="第二个父链接"
                 leftSection={<FingerprintIcon size={16} />}
                 defaultOpened
             >
-                <NavLink label="第一个子链接" href="#required-for-focus" />
-                <NavLink label="第二个子链接" href="#required-for-focus" />
-                <NavLink label="第三个子链接" href="#required-for-focus" />
+                <NavLink label="第一个子链接" />
+                <NavLink label="第二个子链接" />
+                <NavLink label="第三个子链接" />
             </NavLink>
         </>
     )

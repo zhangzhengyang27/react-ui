@@ -81,16 +81,6 @@ function Demo() {
 
 <code src="./demo/step.tsx"></code>
 
-### 可选范围
-
-默认情况下，`min` 和 `max` 属性同时定义视觉范围（轨道显示）和
-可选范围（可能的取值）。`domain` 属性允许独立控制可选范围。
-当希望显示更宽的轨道（用于提供上下文）但将实际选择限制在子集内时，这非常有用。
-
-在下面的示例中，轨道显示从 0 到 100（`min`/`max`），但滑块只能拖动到 20 到 80 之间（`domain`）：
-
-<code src="./demo/domain.tsx"></code>
-
 ### 小数值
 
 要将 `Slider` 用于小数值，请设置 `min`、`max` 和 `step` 属性：
@@ -159,13 +149,6 @@ const marks = [
 <code src="./demo/stylesApi.tsx"></code>
 
 <code src="./demo/customize.tsx"></code>
-
-### 垂直滑块
-
-设置 `orientation="vertical"` 以垂直渲染滑块。在垂直方向下，
-最小值在底部，最大值在顶部。
-
-<code src="./demo/vertical.tsx"></code>
 
 ### 构建自定义滑块
 

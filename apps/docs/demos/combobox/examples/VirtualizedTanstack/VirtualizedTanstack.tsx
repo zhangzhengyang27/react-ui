@@ -61,8 +61,8 @@ export function VirtualizedTanstack() {
   }
 
   return (
-    <Combobox store={combobox} resetSelectionOnOptionHover={false} keepMounted>
-      <Combobox.Target targetType="button">
+    <Combobox store={combobox}>
+      <Combobox.Target>
         <InputBase component="button" onClick={() => combobox.toggleDropdown()} pointer>
           {value || <Input.Placeholder>选择一个值</Input.Placeholder>}
         </InputBase>
@@ -84,7 +84,6 @@ export function VirtualizedTanstack() {
                     value={item.value}
                     key={item.value}
                     active={virtualItem.index === activeOptionIndex}
-                    selected={virtualItem.index === selectedOptionIndex}
                     onClick={() => onOptionSubmit(virtualItem.index)}
                     style={{
                       position: 'absolute',

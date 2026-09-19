@@ -41,7 +41,7 @@ function Demo() {
 
 ### 带 Tooltip 的 Chip
 
-要将 `Chip` 与 [Tooltip](/components/tooltip/) 及其他类似组件一起使用，请在 [Tooltip](/components/tooltip/) 组件上设置 `refProp="rootRef"`：
+要将 `Chip` 与 [Tooltip](/components/tooltip/) 及其他类似组件一起使用，直接用 `Tooltip` 包裹 `Chip` 即可：
 
 <code src="./demo/tooltip.tsx"></code>
 
@@ -86,10 +86,6 @@ function Multiple() {
   );
 }
 ```
-
-### 取消选择 radio chip
-
-<code src="./demo/deselect.tsx"></code>
 
 <WrapperProps component="Chip"></WrapperProps>
 

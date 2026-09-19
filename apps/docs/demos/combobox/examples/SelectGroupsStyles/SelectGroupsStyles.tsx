@@ -11,14 +11,13 @@ export function SelectGroupsStyles() {
 
   return (
     <Combobox
-      classNames={classes}
       store={combobox}
       onOptionSubmit={(val) => {
         setValue(val);
         combobox.closeDropdown();
       }}
     >
-      <Combobox.Target targetType="button">
+      <Combobox.Target>
         <InputBase
           component="button"
           type="button"
@@ -33,12 +32,20 @@ export function SelectGroupsStyles() {
 
       <Combobox.Dropdown>
         <Combobox.Options>
-          <Combobox.Group label="水果">
+          <Combobox.Group
+            label="水果"
+            className={classes.group}
+            groupLabelProps={{ className: classes.groupLabel }}
+          >
             <Combobox.Option value="🍎 Apples">🍎 苹果</Combobox.Option>
             <Combobox.Option value="🍌 Bananas">🍌 香蕉</Combobox.Option>
           </Combobox.Group>
 
-          <Combobox.Group label="蔬菜">
+          <Combobox.Group
+            label="蔬菜"
+            className={classes.group}
+            groupLabelProps={{ className: classes.groupLabel }}
+          >
             <Combobox.Option value="🥦 Broccoli">🥦 西兰花</Combobox.Option>
             <Combobox.Option value="🥕 Carrots">🥕 胡萝卜</Combobox.Option>
           </Combobox.Group>

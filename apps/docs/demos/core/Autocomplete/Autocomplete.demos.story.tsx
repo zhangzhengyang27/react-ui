@@ -33,11 +33,6 @@ export const Demo_success = {
   render: renderDemo(demos.success),
 };
 
-export const Demo_limit = {
-  name: '⭐ Demo: limit',
-  render: renderDemo(demos.limit),
-};
-
 export const Demo_stylesApi = {
   name: '⭐ Demo: stylesApi',
   render: renderDemo(demos.stylesApi),

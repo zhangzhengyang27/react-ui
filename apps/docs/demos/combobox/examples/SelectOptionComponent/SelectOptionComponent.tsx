@@ -53,7 +53,7 @@ export function SelectOptionComponent() {
         combobox.closeDropdown();
       }}
     >
-      <Combobox.Target targetType="button">
+      <Combobox.Target>
         <InputBase
           component="button"
           type="button"

@@ -22,10 +22,6 @@ group:
 
 <code src="./demo/compound.tsx"></code>
 
-### 垂直方向
-
-<code src="./demo/vertical.tsx"></code>
-
 ### 带工具提示
 
 <code src="./demo/tooltips.tsx"></code>

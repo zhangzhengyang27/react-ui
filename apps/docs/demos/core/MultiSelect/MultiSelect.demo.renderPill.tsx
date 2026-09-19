@@ -24,7 +24,7 @@ function Demo() {
       renderPill={({ option, onRemove }) => {
         const user = usersMap.get(option?.value.toString());
         return (
-          <Pill withRemoveButton onRemove={onRemove}>
+          <Pill withRemoveButton removeButtonProps={{ onClick: onRemove }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Avatar src={user?.image} size={16} />
               {option?.label}
@@ -77,7 +77,7 @@ function Demo() {
       renderPill={({ option, onRemove }) => {
         const user = usersMap.get(option?.value.toString());
         return (
-          <Pill withRemoveButton onRemove={onRemove} style={{ paddingInlineStart: 2 }}>
+          <Pill withRemoveButton removeButtonProps={{ onClick: onRemove }} style={{ paddingInlineStart: 2 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Avatar src={user?.image} size={16} />
               {option?.label}

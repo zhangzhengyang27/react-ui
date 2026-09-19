@@ -73,12 +73,6 @@ Table 支持 tfoot 和 caption 元素。设置 `captionSide` 属性（top 或 bo
 
 <code src="./demo/scrollContainerMaxHeight.tsx"></code>
 
-### 垂直变体
-
-设置 `variant="vertical"` 以垂直布局渲染表格：
-
-<code src="./demo/vertical.tsx"></code>
-
 ### 等宽数字
 
 设置 `tabularNums` 属性以等宽样式渲染数字。它会设置 `font-variant-numeric: tabular-nums`，使数字具有相同宽度。当存在数字列并希望其对齐时，这很有用：

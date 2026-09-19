@@ -53,7 +53,7 @@ const data = [
 ];
 
 function Demo() {
-  const [value, setValue] = useState<string | null>(null);
+  const [value, setValue] = useState<string | undefined>(undefined);
 
   const cards = data.map((item) => (
     <Radio.Card className={classes.root} value={item.name} key={item.name}>
@@ -98,7 +98,7 @@ const data = [
 ];
 
 function Demo() {
-  const [value, setValue] = useState<string | null>(null);
+  const [value, setValue] = useState<string | undefined>(undefined);
 
   const cards = data.map((item) => (
     <Radio.Card className={classes.root} value={item.name} key={item.name}>

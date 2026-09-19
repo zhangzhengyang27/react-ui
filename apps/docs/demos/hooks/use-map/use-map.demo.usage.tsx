@@ -35,7 +35,7 @@ function Demo() {
   ));
 
   return (
-    <Table layout="fixed">
+    <Table>
       <Table.Thead>
         <Table.Tr>
           <Table.Th>页面</Table.Th>
@@ -74,7 +74,7 @@ function Demo() {
     ))
 
     return (
-        <Table layout="fixed">
+        <Table>
             <Table.Thead>
                 <Table.Tr>
                     <Table.Th>页面</Table.Th>

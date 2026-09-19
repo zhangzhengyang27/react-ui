@@ -15,21 +15,12 @@ description: react-ui 输入掩码 Hook 文档。
 
 <code src="./use-mask/demo/usage.tsx"></code>
 
-## isComplete、slotChar 和 transform
+## isComplete 与 placeholderChar
 
 使用 `isComplete` 检查是否所有必需的掩码槽位都已填充——例如，用于控制提交按钮。
-`slotChar` 选项接受多字符字符串，为每个槽位显示位置提示。
-`transform` 选项在验证前转换每个字符——本示例使用它将输入自动转为大写，
-这样 `A` 标记（`[A-Z]`）就能接受小写字母：
+`placeholderChar` 选项设置未填充槽位中显示的字符（默认 `_`）：
 
 <code src="./use-mask/demo/complete.tsx"></code>
-
-## 动态掩码
-
-使用 `modify` 选项根据当前输入值更改掩码。
-本示例在标准信用卡格式和美国运通格式之间切换：
-
-<code src="./use-mask/demo/dynamic.tsx"></code>
 
 ## 自定义标记
 
@@ -43,13 +34,6 @@ description: react-ui 输入掩码 Hook 文档。
 在本示例中，`A` 通常是大写字母标记，但 `\A` 使其成为字面量字符：
 
 <code src="./use-mask/demo/escape.tsx"></code>
-
-## 正则数组格式
-
-对于内置标记不够的复杂掩码，可以传递一个由字符串字面量和 `RegExp` 对象组成的数组。
-本示例创建一个时间输入，其中第一位数字限制为 `0-2`，分钟的十位数字限制为 `0-5`：
-
-<code src="./use-mask/demo/regex.tsx"></code>
 
 ## 重置
 
@@ -81,39 +65,14 @@ useMask({ mask: '(999) 999-9999? x9999' }) // 分机号是可选的
 
 ```tsx
 interface UseMaskOptions {
-  // Mask pattern string or array of string literals and RegExp objects
-  mask: string | Array<string | RegExp>;
-
-  // Override or extend the default token map
-  tokens?: Record<string, RegExp>;
-
-  // Called on each keystroke, can return overrides for mask, tokens, or slotChar
-  modify?: (value: string) => Partial<Pick<UseMaskOptions, 'mask' | 'tokens' | 'slotChar'>> | undefined;
-
-  // Transform each character before validation and insertion
-  transform?: (char: string) => string;
+  // Mask pattern string, e.g. '9999 9999 9999 9999'
+  mask: string;
 
   // Character displayed in unfilled slots, "_" by default
-  slotChar?: string | null;
+  placeholderChar?: string;
 
-  // Show mask pattern even when the field is empty and unfocused
-  alwaysShowMask?: boolean;
-
-  // Show mask placeholder on focus, true by default
-  showMaskOnFocus?: boolean;
-
-  // Clear value on blur when mask is incomplete, false by default
-  autoClear?: boolean;
-
-  // Sets aria-invalid on the input
-  invalid?: boolean;
-
-  // Called on every change with raw and masked values
-  onChangeRaw?: (rawValue: string, maskedValue: string) => void;
-
-  // Called when all required mask slots are filled
-  onComplete?: (maskedValue: string, rawValue: string) => void;
-
+  // Override or extend the built-in token map
+  tokens?: Record<string, RegExp>;
 }
 
 interface UseMaskReturnValue {

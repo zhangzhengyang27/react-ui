@@ -211,38 +211,6 @@ function Demo() {
 }
 ```
 
-### Header 偏移配置
-
-`header` 属性包含一个 `offset` 属性，允许控制
-`AppShell.Main` 组件是否由 header 的高度进行偏移。
-当想基于滚动位置折叠 `AppShell.Header` 时，这特别有用。
-例如，可使用 [use-headroom](/docs/hooks/use-headroom) Hook
-在向下滚动时隐藏 header，向上滚动时显示 header（[示例](/app-shell?e=Headroom)）。
-
-```tsx
-import { AppShell, rem } from '@xiaoye-react/ui';
-import { useHeadroom } from '@xiaoye-react/hooks';
-
-function Demo() {
-  const { pinned } = useHeadroom({ fixedAt: 120 });
-
-  return (
-    <AppShell
-      header={{ height: 60, collapsed: !pinned, offset: false }}
-      padding="md"
-    >
-      <AppShell.Header>头部</AppShell.Header>
-
-      <AppShell.Main
-        pt={`calc(${rem(60)} + var(--ui-spacing-md))`}
-      >
-        {/* 内容 */}
-      </AppShell.Main>
-    </AppShell>
-  );
-}
-```
-
 ### 折叠 navbar/aside 配置
 
 `navbar` 和 `aside` 属性包含一个 `collapsed` 属性，类型为 `boolean`。

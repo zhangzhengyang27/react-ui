@@ -28,29 +28,6 @@ group:
 
 <code src="./demo/usage.tsx"></code>
 
-### 修改位置
-
-`Dialog` 在 [Portal](/components/portal/) 中渲染，并具有固定定位。设置 `position` 属性以控制 dialog 的位置：
-
-```tsx
-import { Dialog } from '@xiaoye-react/ui';
-
-function Demo() {
-  return (
-    <>
-      <Dialog position={{ top: 20, left: 20 }} opened>
-        Dialog in top left corner
-      </Dialog>
-      <Dialog position={{ bottom: 20, left: 20 }} opened>
-        Dialog in bottom left corner
-      </Dialog>
-    </>
-  );
-}
-```
-
-
-
 ## API {#api}
 
 ### DialogProps

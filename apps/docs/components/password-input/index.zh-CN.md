@@ -79,10 +79,6 @@ function Demo() {
 
 若无需可见性切换按钮，请改用 [TextInput](/components/text-input/) 组件：
 
-
-
-注意，当使用 `rightSection` 属性时，不会渲染可见性切换按钮。
-
 ```tsx
 import { TextInput } from '@xiaoye-react/ui';
 

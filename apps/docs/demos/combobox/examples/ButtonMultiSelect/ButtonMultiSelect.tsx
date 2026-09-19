@@ -40,9 +40,7 @@ export function ButtonMultiSelect() {
 
       <Combobox
         store={combobox}
-        width={250}
         position="bottom-start"
-        withArrow
         onOptionSubmit={(val) => {
           setSelectedItems((current) =>
             current.includes(val) ? current.filter((item) => item !== val) : [...current, val]

@@ -36,13 +36,12 @@ export function SelectActive() {
   return (
     <Combobox
       store={combobox}
-      resetSelectionOnOptionHover
       onOptionSubmit={(val) => {
         setValue(val);
         combobox.updateSelectedOptionIndex('active');
       }}
     >
-      <Combobox.Target targetType="button">
+      <Combobox.Target>
         <InputBase
           component="button"
           type="button"

@@ -4,7 +4,6 @@ export { disabled } from './Autocomplete.demo.disabled';
 export { configurator } from './Autocomplete.demo.configurator';
 export { error } from './Autocomplete.demo.error';
 export { success } from './Autocomplete.demo.success';
-export { limit } from './Autocomplete.demo.limit';
 export { stylesApi } from './Autocomplete.demo.stylesApi';
 export { groups } from './Autocomplete.demo.groups';
 export { disabledOptions } from './Autocomplete.demo.disabledOptions';

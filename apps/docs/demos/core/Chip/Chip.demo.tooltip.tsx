@@ -6,7 +6,7 @@ import { Tooltip, Chip } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
-    <Tooltip label="芯片提示" refProp="rootRef">
+    <Tooltip label="芯片提示">
       <Chip defaultChecked>带提示的芯片</Chip>
     </Tooltip>
   );
@@ -15,7 +15,7 @@ function Demo() {
 
 function Demo() {
   return (
-    <Tooltip label="芯片提示" refProp="rootRef">
+    <Tooltip label="芯片提示">
       <Chip defaultChecked>带提示的芯片</Chip>
     </Tooltip>
   );

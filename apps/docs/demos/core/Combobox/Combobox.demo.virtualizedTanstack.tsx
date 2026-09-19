@@ -67,7 +67,10 @@ function Demo() {
   }
 
   return (
-    <Combobox store={combobox}>
+    <Combobox
+      store={combobox}
+      selectedValues={value ? [value] : []}
+    >
       <Combobox.Target>
         <InputBase component="button" onClick={() => combobox.toggleDropdown()} pointer>
           {value || <Input.Placeholder>选择一个值</Input.Placeholder>}
@@ -90,7 +93,6 @@ function Demo() {
                     value={item.value}
                     key={item.value}
                     active={virtualItem.index === activeOptionIndex}
-                    selected={virtualItem.index === selectedOptionIndex}
                     onClick={() => onOptionSubmit(virtualItem.index)}
                     style={{
                       position: 'absolute',
@@ -173,7 +175,10 @@ function Demo() {
   }
 
   return (
-    <Combobox store={combobox}>
+    <Combobox
+      store={combobox}
+      selectedValues={value ? [value] : []}
+    >
       <Combobox.Target>
         <InputBase component="button" onClick={() => combobox.toggleDropdown()} pointer>
           {value || <Input.Placeholder>选择一个值</Input.Placeholder>}
@@ -196,7 +201,6 @@ function Demo() {
                     value={item.value}
                     key={item.value}
                     active={virtualItem.index === activeOptionIndex}
-                    selected={virtualItem.index === selectedOptionIndex}
                     onClick={() => onOptionSubmit(virtualItem.index)}
                     style={{
                       position: 'absolute',

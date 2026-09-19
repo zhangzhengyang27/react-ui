@@ -20,4 +20,16 @@ describe('@xiaoye-react/ui/mergeUITheme', () => {
             dark: 7
         })
     })
+
+    it('不会改写父主题的 headings（此前 deepMerge 会就地污染）', () => {
+        const before = DEFAULT_THEME.headings.fontFamily
+        mergeUITheme(DEFAULT_THEME, { fontFamily: 'Custom Font' })
+        expect(DEFAULT_THEME.headings.fontFamily).toBe(before)
+    })
+
+    it('primaryShade 对象覆盖生效且不污染默认主题', () => {
+        const result = mergeUITheme(DEFAULT_THEME, { primaryShade: { light: 5, dark: 7 } })
+        expect(result.primaryShade).toEqual({ light: 5, dark: 7 })
+        expect(DEFAULT_THEME.primaryShade).toEqual({ light: 6, dark: 8 })
+    })
 })

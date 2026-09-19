@@ -22,7 +22,7 @@ const DEMO_ROUTES = [
     // Descriptions
     'components-descriptions-demo-bordered',
     // pro 模式层
-    'docs-x-pro-demo-crud'
+    'components-pro-demo-crud'
 ]
 
 for (const route of DEMO_ROUTES) {

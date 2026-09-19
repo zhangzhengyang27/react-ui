@@ -25,28 +25,32 @@ interface DemoProps {
 }
 
 export function Demo({ data, demoProps }: DemoProps) {
-  const { title, description, ...rest } = data;
-  const metadata: DemoMetadata = { title, description };
-
   switch (data.type) {
-    case 'code':
+    // 逐分支解构：先解构再判断会丢失可辨识联合的收窄，rest 会带上其它分支的 code 类型
+    case 'code': {
+      const { component: Component, title, description, ...rest } = data;
       return (
-        <CodeDemo {...rest} {...demoProps} {...metadata}>
-          <data.component />
+        <CodeDemo {...rest} {...demoProps} title={title} description={description}>
+          <Component />
         </CodeDemo>
       );
-    case 'configurator':
+    }
+    case 'configurator': {
+      const { component: Component, title, description, ...rest } = data;
       return (
-        <ConfiguratorDemo {...rest} {...demoProps} {...metadata}>
-          <data.component />
+        <ConfiguratorDemo {...rest} {...demoProps} title={title} description={description}>
+          <Component />
         </ConfiguratorDemo>
       );
-    case 'styles-api':
+    }
+    case 'styles-api': {
+      const { component: Component, title, description, ...rest } = data;
       return (
-        <StylesApiDemo {...rest} {...demoProps} {...metadata}>
-          <data.component />
+        <StylesApiDemo {...rest} {...demoProps} title={title} description={description}>
+          <Component />
         </StylesApiDemo>
       );
+    }
     default:
       return null;
   }

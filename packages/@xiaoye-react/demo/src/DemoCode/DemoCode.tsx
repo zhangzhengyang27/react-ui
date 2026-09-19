@@ -1,9 +1,12 @@
-import { CodeHighlightTabs, CodeHighlightTabsCode } from '@xiaoye-react/code-highlight';
+import { CodeHighlightTabs, CodeHighlightTabsCode } from '@xiaoye-react/ui';
 import { getCodeFileIcon } from '@xiaoye-react/dev-icons';
 import classes from './DemoCode.module.css';
 
+/** 可展示的源码：字符串或分文件数组（函数形式在传入前需先被求值） */
+export type DemoCodeValue = string | CodeHighlightTabsCode[];
+
 export interface DemoCodeProps {
-  code?: string | CodeHighlightTabsCode[];
+  code?: DemoCodeValue;
   defaultExpanded?: boolean;
   maxCollapsedHeight?: number;
   withLineNumbers?: boolean;
@@ -17,7 +20,7 @@ export function DemoCode({
   withLineNumbers = true,
   withExpandButton = true,
 }: DemoCodeProps) {
-  const _code: CodeHighlightTabsCode | CodeHighlightTabsCode[] | undefined =
+  const _code: CodeHighlightTabsCode[] | undefined =
     typeof code === 'string' ? [{ code, fileName: '示例.tsx', language: 'tsx' }] : code;
   return _code ? (
     <CodeHighlightTabs

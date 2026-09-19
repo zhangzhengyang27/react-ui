@@ -53,7 +53,7 @@ export function DemoColumns({
           )}
 
           {withGrid ? (
-            <SimpleGrid type="container" cols={{ base: 1, '480px': 2, '780px': 4 }} p={8}>
+            <SimpleGrid cols={{ base: 1, '480px': 2, '780px': 4 }} p={8}>
               {controls}
             </SimpleGrid>
           ) : (

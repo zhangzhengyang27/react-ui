@@ -1,10 +1,11 @@
 import { CopyButton, Text } from '@xiaoye-react/ui';
+import { DemoCodeValue } from '../DemoCode';
 import classes from './DemoHeader.module.css';
 
 export interface DemoHeaderProps {
   title?: string;
   description?: string;
-  code?: string | { code: string; fileName?: string; language?: string }[] | ((props: any) => string);
+  code?: DemoCodeValue;
 }
 
 function normalizeCode(code: DemoHeaderProps['code']): string | undefined {
@@ -14,10 +15,6 @@ function normalizeCode(code: DemoHeaderProps['code']): string | undefined {
 
   if (typeof code === 'string') {
     return code;
-  }
-
-  if (typeof code === 'function') {
-    return code({});
   }
 
   if (Array.isArray(code)) {

@@ -1,4 +1,4 @@
-import { CodeHighlightTabsCode } from '@xiaoye-react/code-highlight';
+import { CodeHighlightTabsCode } from '@xiaoye-react/ui';
 import { CodeDemo } from './CodeDemo';
 
 export default { title: 'DS/CodeDemo' };

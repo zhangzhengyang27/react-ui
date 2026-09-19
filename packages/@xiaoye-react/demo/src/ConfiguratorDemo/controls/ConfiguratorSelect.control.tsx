@@ -9,7 +9,7 @@ export type ConfiguratorSelectControlOptions = ConfiguratorControl<
 >;
 
 export interface ConfiguratorSelectControlProps
-  extends BoxProps, ElementProps<'select', 'onChange' | 'value' | 'size'> {
+  extends BoxProps, ElementProps<'select', 'onChange' | 'value' | 'size' | 'defaultValue'> {
   value: string;
   data: SelectData;
   onChange: (value: string) => void;

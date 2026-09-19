@@ -40,7 +40,8 @@ export type ConfiguratorControlOptions =
   | ConfiguratorSizeControlOptions
   | ConfiguratorNumberControlOptions;
 
-export interface ConfiguratorDemoProps extends DemoAreaProps, DemoHeaderProps {
+export interface ConfiguratorDemoProps extends DemoAreaProps, Omit<DemoHeaderProps, 'code'> {
+  /** 配置器源码：允许函数形式，渲染前由 getCodeArray 依据当前 state 求值 */
   code: Code;
   controls: ConfiguratorControlOptions[];
 }

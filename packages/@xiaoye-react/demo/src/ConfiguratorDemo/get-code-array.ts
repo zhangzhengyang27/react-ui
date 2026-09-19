@@ -1,4 +1,4 @@
-import { CodeHighlightDefaultLanguage } from '@xiaoye-react/code-highlight';
+import type { CodeHighlightDefaultLanguage } from '@xiaoye-react/ui';
 import { clearProps } from './clear-props';
 import type { ConfiguratorControlOptions } from './ConfiguratorDemo';
 import { injectProps } from './inject-props';

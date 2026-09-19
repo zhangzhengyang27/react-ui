@@ -25,6 +25,15 @@ import classes from './Popover.module.css'
 
 export type PopoverStylesNames = 'dropdown' | 'arrow'
 
+/** 下拉层 Transition 的可选属性，Popover.Dropdown 与透传它的 Menu 共用 */
+export type PopoverTransitionProps = {
+    duration?: number
+    timingFunction?: string
+    transition?: string
+    onEntered?: () => void
+    onExited?: () => void
+}
+
 export type PopoverCssVariables = {
     dropdown: '--popover-radius' | '--popover-shadow'
 }
@@ -100,13 +109,7 @@ export interface PopoverProps extends StylesApiProps<PopoverFactory> {
     withRoles?: boolean
 
     /** 传递给下拉层 Transition 的属性（duration/timingFunction/transition 等） */
-    transitionProps?: {
-        duration?: number
-        timingFunction?: string
-        transition?: string
-        onEntered?: () => void
-        onExited?: () => void
-    }
+    transitionProps?: PopoverTransitionProps
 
     /** 关闭后是否将焦点返回触发元素 @default true */
     returnFocus?: boolean

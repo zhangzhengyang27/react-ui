@@ -1,10 +1,10 @@
 import React from 'react'
-import { Box, BoxProps, factory, Factory, StylesApiProps, useProps, useStyles } from '../../core'
+import { AnchorPassthroughProps, Box, BoxProps, factory, Factory, StylesApiProps, useProps, useStyles } from '../../core'
 import classes from './Card.module.css'
 
 export type CardSectionStylesNames = 'section'
 
-export interface CardSectionProps extends BoxProps, StylesApiProps<CardSectionFactory> {
+export interface CardSectionProps extends BoxProps, AnchorPassthroughProps, StylesApiProps<CardSectionFactory> {
     /** Card.Section content */
     children?: React.ReactNode
 

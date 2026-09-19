@@ -1,5 +1,6 @@
 import { useMergedRef } from '@xiaoye-react/hooks'
 import {
+    AnchorPassthroughProps,
     BoxProps,
     CompoundStylesApiProps,
     createScopedKeydownHandler,
@@ -16,7 +17,11 @@ import classes from './Menu.module.css'
 
 export type MenuItemStylesNames = 'item' | 'itemLabel' | 'itemSection'
 
-export interface MenuItemProps extends BoxProps, CompoundStylesApiProps<MenuItemFactory>, ElementProps<'button'> {
+export interface MenuItemProps
+    extends BoxProps,
+        AnchorPassthroughProps,
+        CompoundStylesApiProps<MenuItemFactory>,
+        ElementProps<'button'> {
     'data-disabled'?: boolean
 
     /** Item label */

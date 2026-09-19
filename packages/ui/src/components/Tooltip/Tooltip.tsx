@@ -36,8 +36,8 @@ export type TooltipCssVariables = {
 }
 
 export interface TooltipProps extends BoxProps, StylesApiProps<TooltipFactory>, ElementProps<'div'> {
-    /** Target element */
-    children: React.ReactNode
+    /** Target element；改用 target 指定外部目标时可省略 */
+    children?: React.ReactNode
 
     /** Tooltip content */
     label: React.ReactNode

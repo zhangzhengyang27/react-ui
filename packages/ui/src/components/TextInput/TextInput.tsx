@@ -9,7 +9,7 @@ export type TextInputStylesNames = 'root' | InputBaseStylesNames
 export interface TextInputProps
     extends Omit<
             InputBaseProps,
-            'classNames' | 'styles' | 'unstyled' | 'vars' | 'attributes' | 'labelProps' | 'descriptionProps' | 'errorProps'
+            'classNames' | 'styles' | 'unstyled' | 'vars' | 'attributes' | 'descriptionProps' | 'errorProps'
         >,
         StylesApiProps<TextInputFactory> {
     /** 渲染在输入框上方的标签 */
@@ -26,9 +26,6 @@ export interface TextInputProps
 
     /** If set, required asterisk is added to the label even if `required` is not set */
     withAsterisk?: boolean
-
-    /** Props passed to the label element */
-    labelProps?: React.ComponentProps<'label'>
 
     /** Props passed to the description element */
     descriptionProps?: React.ComponentProps<'div'>

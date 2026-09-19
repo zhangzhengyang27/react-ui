@@ -38,7 +38,7 @@ export type MenuFactory = Factory<{
     }
 }>
 
-export interface MenuProps extends StylesApiProps<MenuFactory> {
+export interface MenuProps extends StylesApiProps<MenuFactory>, MenuPopoverPassThroughProps {
     /** Menu children */
     children?: React.ReactNode
 
@@ -114,6 +114,26 @@ export interface MenuProps extends StylesApiProps<MenuFactory> {
     /** 下拉层 z-index */
     zIndex?: string | number
 }
+
+/**
+ * 其余浮层参数由 <Popover {...others}> 原样透传，签名直接从 PopoverProps 取，
+ * 避免两处各写一遍后漂移（Pick 而非全量继承：opened/onChange/classNames/styles
+ * 等由 Menu 自己覆写）。
+ */
+type MenuPopoverPassThroughProps = Pick<
+    import('../Popover').PopoverProps,
+    | 'withinPortal'
+    | 'portalProps'
+    | 'transitionProps'
+    | 'returnFocus'
+    | 'disabled'
+    | 'arrowSize'
+    | 'arrowOffset'
+    | 'arrowRadius'
+    | 'arrowPosition'
+    | 'withRoles'
+    | 'onPositionChange'
+>
 
 const defaultProps = {
     trapFocus: true,

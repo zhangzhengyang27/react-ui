@@ -23,7 +23,8 @@ export type TagsInputStylesNames =
 
 export interface TagsInputItem {
     value: string
-    label: string
+    /** 省略时回落为 value */
+    label?: string
     disabled?: boolean
     group?: string
 }
@@ -33,8 +34,9 @@ export type TagsInputData = (string | TagsInputItem)[]
 export interface TagsInputProps
     extends BoxProps,
         StylesApiProps<TagsInputFactory>,
-        // 渲染时 others 全量透传给 InputBase，其公共 prop 必须在类型里可见
-        __BaseInputProps,
+        // 渲染时 others 全量透传给 InputBase，其公共 prop 必须在类型里可见；
+        // rightSection 例外——本组件在 others 之后固定渲染清除按钮+箭头，传了也会被覆盖
+        Omit<__BaseInputProps, 'rightSection'>,
         Omit<React.ComponentPropsWithoutRef<'input'>, 'size' | 'style' | 'value' | 'defaultValue' | 'onChange'> {
     /** TagsInput options data */
     data?: TagsInputData

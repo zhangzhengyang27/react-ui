@@ -10,6 +10,7 @@ import {
     UIColor,
     UIRadius,
     UISize,
+    AnchorPassthroughProps,
     StylesApiProps,
     useProps,
     useStyles
@@ -24,7 +25,7 @@ export type AvatarCssVariables = {
     root: '--avatar-size' | '--avatar-radius' | '--avatar-bg' | '--avatar-color' | '--avatar-bd'
 }
 
-export interface AvatarProps extends BoxProps, StylesApiProps<AvatarFactory> {
+export interface AvatarProps extends BoxProps, AnchorPassthroughProps, StylesApiProps<AvatarFactory> {
     /** Image src */
     src?: string
 

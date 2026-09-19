@@ -24,6 +24,10 @@ export interface ListProps extends BoxProps, StylesApiProps<ListFactory> {
     /** List type @default 'unordered' */
     type?: 'ordered' | 'unordered'
 
+    /** 以下两项仅在 type='ordered' 时有意义，随 others 透传给 <ol> */
+    reversed?: boolean
+    start?: number
+
     /** Controls font-size of list items @default 'md' */
     size?: UISize
 

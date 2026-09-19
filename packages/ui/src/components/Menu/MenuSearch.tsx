@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
+import type { ElementProps } from '../../core'
 import { Input } from '../Input/Input'
 import { useMenuContext } from './Menu.context'
 import classes from './Menu.module.css'
 
-export interface MenuSearchProps extends React.ComponentProps<typeof Input> {
+export interface MenuSearchProps
+    extends React.ComponentProps<typeof Input>,
+        ElementProps<'input', 'size' | 'style' | 'ref' | 'value' | 'defaultValue' | 'onChange'> {
     /** If set, clears the search value after the menu closes @default true */
     clearSearchOnClose?: boolean
     /** 受控搜索值 */

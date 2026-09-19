@@ -13,6 +13,7 @@ import {
     UIRadius,
     UIShadow,
     UISpacing,
+    AnchorPassthroughProps,
     StylesApiProps,
     useProps,
     useStyles
@@ -25,7 +26,7 @@ export type CardCssVariables = {
     root: '--card-padding' | '--card-radius' | '--card-shadow' | '--card-bg'
 }
 
-export interface CardProps extends BoxProps, StylesApiProps<CardFactory> {
+export interface CardProps extends BoxProps, AnchorPassthroughProps, StylesApiProps<CardFactory> {
     /** Card content */
     children?: React.ReactNode
 

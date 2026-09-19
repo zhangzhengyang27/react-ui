@@ -3,6 +3,7 @@ import {
     Box,
     BoxProps,
     createVarsResolver,
+    ElementProps,
     factory,
     Factory,
     getRadius,
@@ -25,7 +26,7 @@ export type ChipCssVariables = {
     root: '--chip-size' | '--chip-radius' | '--chip-color'
 }
 
-export interface ChipProps extends BoxProps, StylesApiProps<ChipFactory> {
+export interface ChipProps extends BoxProps, StylesApiProps<ChipFactory>, ElementProps<'button', 'ref' | 'type' | 'disabled' | 'onChange'> {
     /** Chip label */
     children?: React.ReactNode
 

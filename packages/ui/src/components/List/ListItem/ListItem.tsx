@@ -8,6 +8,9 @@ export interface ListItemProps extends BoxProps, StylesApiProps<ListItemFactory>
 
     /** Content of the list item */
     children?: React.ReactNode
+
+    /** 有序列表里覆盖本项的序号，随 others 透传给 <li> */
+    value?: number
 }
 
 export type ListItemFactory = Factory<{

@@ -35,8 +35,8 @@ export interface ThemeIconProps extends BoxProps, StylesApiProps<ThemeIconFactor
     /** 主题颜色的键或任意有效的 CSS 颜色 @default theme.primaryColor */
     color?: UIColor
 
-    /** ThemeIcon variant @default 'filled' */
-    variant?: ThemeIconVariant
+    /** ThemeIcon variant @default 'filled'；theme.variantColorResolver 可自定义额外 variant */
+    variant?: ThemeIconVariant | (string & {})
 }
 
 export type ThemeIconFactory = Factory<{
@@ -44,7 +44,7 @@ export type ThemeIconFactory = Factory<{
     ref: HTMLDivElement
     stylesNames: ThemeIconStylesNames
     vars: ThemeIconCssVariables
-    variant: ThemeIconVariant
+    variant: ThemeIconVariant | (string & {})
 }>
 
 const defaultProps = {

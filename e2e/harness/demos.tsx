@@ -23,7 +23,18 @@ export interface DemoSweepState {
 
 interface DemoEntry {
     id: string
-    Component: () => JSX.Element
+    Component: (props: Record<string, unknown>) => JSX.Element
+    props: Record<string, unknown>
+}
+
+interface DemoControl {
+    prop?: string
+    initialValue?: unknown
+}
+
+interface DemoModule {
+    component?: (props: Record<string, unknown>) => JSX.Element
+    controls?: DemoControl[]
 }
 
 declare global {
@@ -43,10 +54,20 @@ function collectDemos(): DemoEntry[] {
     for (const [file, mod] of Object.entries(DEMO_FILES)) {
         const path = file.replace(/^.*\/demos\//, '').replace(/\.tsx$/, '')
         for (const [exportName, value] of Object.entries(mod)) {
-            const component = (value as { component?: unknown } | null)?.component
-            if (typeof component === 'function') {
-                entries.push({ id: `${path}#${exportName}`, Component: component as () => JSX.Element })
+            const demo = value as DemoModule | null
+            if (typeof demo?.component !== 'function') {
+                continue
             }
+            // configurator 类 demo 的组件按 controls 的 initialValue 渲染，页面上从不
+            // 空 props 挂载；不给初始 props 就等于在测一个现实中不存在的状态
+            // （例如 theme 配置 demo 直接读 props.color 会抛 undefined）。
+            const props: Record<string, unknown> = {}
+            for (const control of demo.controls ?? []) {
+                if (typeof control?.prop === 'string') {
+                    props[control.prop] = control.initialValue
+                }
+            }
+            entries.push({ id: `${path}#${exportName}`, Component: demo.component, props })
         }
     }
     return entries.sort((a, b) => a.id.localeCompare(b.id))
@@ -150,7 +171,7 @@ function Sweeper() {
                 root?.render(
                     <UIProvider>
                         <Boundary>
-                            <demo.Component />
+                            <demo.Component {...demo.props} />
                         </Boundary>
                     </UIProvider>
                 )

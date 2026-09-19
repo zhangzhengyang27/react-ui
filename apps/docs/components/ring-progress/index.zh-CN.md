@@ -33,8 +33,6 @@ group:
 
 <code src="./demo/configurator.tsx"></code>
 
-### 分段提示
-### 分段事件
 ### 自定义标签
 
 可将任意 React 节点作为标签，例如带有自定义样式的 [Text](/components/text/) 组件或 [ActionIcon](/components/action-icon/)：

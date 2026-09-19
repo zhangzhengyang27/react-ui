@@ -27,14 +27,12 @@ function Demo(props: any) {
     return (
         <TagsInput
             {...props}
-            dropdownOpened
             leftSection={<AtIcon size={18} />}
             withAsterisk
             label="标签输入"
             description="描述"
             placeholder="标签输入"
             defaultValue={['First', 'Second']}
-            comboboxProps={{ hideDetached: false }}
             data={[
                 { group: 'Frontend', items: ['React', 'Angular'] },
                 { group: 'Backend', items: ['Node', 'Django'] }

@@ -53,7 +53,6 @@ function Demo() {
 
 <code src="./demo/form.tsx"></code>
 
-### 行内元素
 ### 与目标同宽
 
 设置 `width="target"` 属性使 Popover 下拉菜单与目标元素等宽：
@@ -217,11 +216,14 @@ function Demo() {
 
 ### 嵌套 popover
 
-嵌套 popover 需要子元素在不使用 [Portal](/components/portal/) 的情况下渲染。通常，应使用渲染 popover 内容的组件的属性来禁用 portal。例如，[Select](/components/select/) 有 `comboboxProps={{ withinPortal: false }}` 属性。请查阅用于渲染 popover 内容的组件文档以了解如何禁用 portal。
-如果未禁用 portal，点击外部会关闭所有 popover。
+嵌套 popover 需要子元素在不使用 [Portal](/components/portal/) 的情况下渲染。注意本库的
+[Select](/components/select/)、[MultiSelect](/components/multi-select/)、[TagsInput](/components/tags-input/)
+等下拉组件的浮层始终渲染在 portal 中，暂不支持关闭；如果需要在同一层里表达选择结果，
+可改用受控 `value` 配合普通 `Popover.Target` 自行组合。
+如果两层浮层都开启 portal，点击外部会一次性关闭所有 popover。
 
-在 [Select](/components/select/) 和 [DatePickerInput](/docs/dates/date-picker-input/)
-组件中禁用 portal 的示例：
+在 [DatePickerInput](/docs/dates/date-picker-input/) 中通过 `popoverProps={{ withinPortal: false }}`
+禁用 portal 的示例（日期系浮层支持该配置，Combobox 族不支持）：
 
 <code src="./demo/portalChildren.tsx"></code>
 

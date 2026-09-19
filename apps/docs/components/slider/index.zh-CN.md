@@ -167,7 +167,6 @@ const marks = [
 
 <code src="./demo/vertical.tsx"></code>
 
-### 隐藏刻度
 ### 构建自定义滑块
 
 如果 `Slider` 组件无法满足需求，可以使用 [use-move](/docs/hooks/use-move/) Hook 构建自定义滑块：

@@ -39,8 +39,8 @@ function Demo() {
         bullet={
           <ThemeIcon
             size={22}
-            variant="gradient"
-            gradient={{ from: 'lime', to: 'cyan' }}
+            variant="filled"
+            color="lime"
             radius="xl"
           >
             <VideoCameraIcon size={13} />
@@ -86,7 +86,7 @@ function Demo() {
             <Timeline.Item
                 title="主题图标"
                 bullet={
-                    <ThemeIcon size={22} variant="gradient" gradient={{ from: 'lime', to: 'cyan' }} radius="xl">
+                    <ThemeIcon size={22} variant="filled" color="lime" radius="xl">
                         <VideoCameraIcon size={13} />
                     </ThemeIcon>
                 }

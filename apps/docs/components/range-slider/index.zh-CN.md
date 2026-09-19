@@ -144,7 +144,6 @@ const marks = [
 
 <code src="./demo/inverted.tsx"></code>
 
-### 隐藏刻度
 ### 可访问性
 
 `RangeSlider` 组件默认可访问：

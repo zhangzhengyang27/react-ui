@@ -103,7 +103,6 @@ group:
 
 <code src="./demo/dropdownOpened.tsx"></code>
 
-### 下拉框宽度
 ### 表单提交
 
 `ComboboxPopover` 渲染一个隐藏 input，其中包含选中的值以进行原生表单提交。

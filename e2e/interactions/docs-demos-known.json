@@ -1,35 +1,5 @@
 [
   {
-    "demo": "core/Badge/Badge.demo.gradient#gradient|dom-attr-leak",
-    "kind": "dom-attr-leak",
-    "text": "对象 prop 泄漏为属性 gradient=\"…\" 出现在 <div>，来源 demo 传了同名对象 prop"
-  },
-  {
-    "demo": "core/Progress/Progress.demo.vertical#vertical|console.error",
-    "kind": "console.error",
-    "text": "React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element. autoContrast autocontrast"
-  },
-  {
-    "demo": "core/Select/Select.demo.checkIcon#checkIcon|console.error",
-    "kind": "console.error",
-    "text": "React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element. comboboxProps comboboxprops"
-  },
-  {
-    "demo": "core/Select/Select.demo.checkIcon#checkIcon|dom-attr-leak",
-    "kind": "dom-attr-leak",
-    "text": "对象 prop 泄漏为属性 comboboxprops=\"…\" 出现在 <input>，来源 demo 传了同名对象 prop"
-  },
-  {
-    "demo": "core/TagsInput/TagsInput.demo.stylesApi#stylesApi|console.error",
-    "kind": "console.error",
-    "text": "React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element. dropdownOpened dropdownopened"
-  },
-  {
-    "demo": "core/TreeSelect/TreeSelect.demo.dropdownOffset#dropdownOffset|dom-attr-leak",
-    "kind": "dom-attr-leak",
-    "text": "对象 prop 泄漏为属性 middlewares=\"…\" 出现在 <div>，来源 demo 传了同名对象 prop"
-  },
-  {
     "demo": "theming/Theming.demo.luminanceThreshold#luminanceThreshold|console.error",
     "kind": "console.error",
     "text": "%o %s %s [@xiaoye-react/ui] Failed to parse color. Expected color to be a string, instead got undefined The above error occurred in the <Wrapper> component. React will try to recreate this component tree from scratch using the error boundary you provided, Boundary."

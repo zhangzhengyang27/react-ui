@@ -12,7 +12,7 @@ function Demo() {
       label="你最喜欢的项目"
       placeholder="选择值"
       data={data}
-      comboboxProps={{ position: 'top', middlewares: { flip: false, shift: false } }}
+      comboboxProps={{ position: 'top' }}
     />
   );
 }
@@ -24,7 +24,7 @@ function Demo() {
       label="你最喜欢的项目"
       placeholder="选择值"
       data={data}
-      comboboxProps={{ position: 'top', middlewares: { flip: false, shift: false } }}
+      comboboxProps={{ position: 'top' }}
     />
   );
 }

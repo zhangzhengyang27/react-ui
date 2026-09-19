@@ -149,12 +149,6 @@ function Demo() {
 
 <code src="./demo/configurator.tsx"></code>
 
-### 自动对比度
-
-`SegmentedControl` 支持 `autoContrast` 属性。如果设置为 `true`，标签文本颜色会自动调整以确保与指示器背景色具有最佳对比度：
-
-<code src="./demo/autoContrast.tsx"></code>
-
 ### 过渡动画
 
 使用以下属性更改过渡效果：

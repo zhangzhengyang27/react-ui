@@ -18,17 +18,7 @@ group:
 
 <code src="./demo/usage.tsx"></code>
 
-<code src="./demo/gradient.tsx"></code>
-
 ### 自定义变体颜色
-
-可通过向主题添加 [variantColorResolver](/docs/theming/colors#colors-variant-resolver) 来自定义
-`ThemeIcon` 及其他组件变体的颜色。
-
-<code src="./demo/variantColorsResolver.tsx"></code>
-
-<code src="./demo/autoContrast.tsx"></code>
-
 <Gradient component="ThemeIcon"></Gradient>
 
 <AutoContrast component="ThemeIcon"></AutoContrast>

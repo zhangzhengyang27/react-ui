@@ -83,26 +83,6 @@ export const Demo_sections = {
   render: renderDemo(demos.sections),
 };
 
-export const Demo_dropdownPosition = {
-  name: '⭐ Demo: dropdownPosition',
-  render: renderDemo(demos.dropdownPosition),
-};
-
-export const Demo_dropdownAnimation = {
-  name: '⭐ Demo: dropdownAnimation',
-  render: renderDemo(demos.dropdownAnimation),
-};
-
-export const Demo_dropdownPadding = {
-  name: '⭐ Demo: dropdownPadding',
-  render: renderDemo(demos.dropdownPadding),
-};
-
-export const Demo_dropdownShadow = {
-  name: '⭐ Demo: dropdownShadow',
-  render: renderDemo(demos.dropdownShadow),
-};
-
 export const Demo_withinPopover = {
   name: '⭐ Demo: withinPopover',
   render: renderDemo(demos.withinPopover),

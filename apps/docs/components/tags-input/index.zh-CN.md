@@ -111,32 +111,11 @@ function Demo() {
 
 ### 在 Popover 内使用
 
-要在 popover 内使用 `TagsInput`，需设置 `withinPortal: false`：
+`TagsInput` 可以直接放进 Popover 内容里使用。注意其下拉层始终渲染在 portal 中（暂不支持关闭 portal）：
 
 <code src="./demo/withinPopover.tsx"></code>
 
-### 下拉菜单位置
-
-默认情况下，如果空间足够，下拉菜单显示在输入框下方；否则显示在输入框上方。可通过设置 `position` 和 `middlewares` 属性来更改此行为，这些属性会传递给底层的 [Popover](/components/popover) 组件。
-
-下拉菜单始终显示在输入框上方的示例：
-
-<code src="./demo/dropdownPosition.tsx"></code>
-
-### 下拉菜单动画
-
-默认情况下，下拉菜单动画被禁用。要启用动画，可设置 `transitionProps`，它会传递给底层的 [Transition](/components/transition) 组件。
-
-<code src="./demo/dropdownAnimation.tsx"></code>
-
-### 下拉菜单宽度
-### 下拉菜单内边距
-
-<code src="./demo/dropdownPadding.tsx"></code>
-
-### 下拉菜单阴影
-
-<code src="./demo/dropdownShadow.tsx"></code>
+### 输入分区
 
 <code src="./demo/sections.tsx"></code>
 

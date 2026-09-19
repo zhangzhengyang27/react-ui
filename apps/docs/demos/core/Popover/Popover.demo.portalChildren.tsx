@@ -16,7 +16,6 @@ function Demo() {
         <Select
           label="在 Popover 中选择"
           placeholder="在 Popover 中选择"
-          comboboxProps={{ withinPortal: false }}
           data={['React', 'Angular', 'Svelte', 'Vue']}
         />
         <DatePickerInput
@@ -41,7 +40,6 @@ function Demo() {
         <Select
           label="在 Popover 中选择"
           placeholder="在 Popover 中选择"
-          comboboxProps={{ withinPortal: false }}
           data={['React', 'Angular', 'Svelte', 'Vue']}
         />
         <DatePickerInput

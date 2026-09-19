@@ -28,7 +28,6 @@ function Wrapper(props: any) {
       label="控制勾选图标"
       placeholder="选择值"
       defaultValue="React"
-      comboboxProps={{ hideDetached: false }}
     />
   );
 }

@@ -1,6 +1,6 @@
 {
     "extends": "./tsconfig.json",
-    "include": ["./demos", "../@types", "../../packages/ui/src/global.d.ts"],
+    "include": ["./demos", "../../@types", "../../packages/ui/src/**/*.d.ts"],
     "exclude": [
         "demos/**/*.story.tsx",
         "demos/**/*.test.tsx",
@@ -17,6 +17,7 @@
         "module": "ESNext",
         "moduleResolution": "bundler",
         "strict": true,
+        "allowJs": true,
         "types": ["node"]
     }
 }

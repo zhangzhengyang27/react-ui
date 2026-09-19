@@ -51,6 +51,7 @@
     },
     "devDependencies": {
         "@testing-library/react": "^16.0.0",
+        "@types/react-transition-group": "^4.4.12",
         "@vitejs/plugin-react": "^4.3.1",
         "@xiaoye-react/hooks": "workspace:*",
         "@xiaoye-react/tests": "workspace:*",

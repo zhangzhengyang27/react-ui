@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import dts from 'vite-plugin-dts'
+import ts from 'typescript'
 import { fileURLToPath } from 'node:url'
 
 export default defineConfig({
@@ -9,7 +10,18 @@ export default defineConfig({
         dts({
             outDir: 'es',
             include: ['src/**/*.ts', 'src/**/*.tsx', '../../@types/**/*.d.ts'],
-            exclude: ['src/**/*.test.ts', 'src/**/*.test.tsx', 'src/test-setup.ts'],
+            // story 文件只用于本地预览，进了 .d.ts 就等于把 52 个无关声明发布出去
+            exclude: ['src/**/*.test.ts', 'src/**/*.test.tsx', 'src/**/*.story.tsx', 'src/test-setup.ts'],
+            // 声明发射有类型错误时，对应文件会被静默跳过（产物 import 变 TS2307），必须失败
+            afterDiagnostic: diagnostics => {
+                const errors = diagnostics.filter(d => d.category === ts.DiagnosticCategory.Error)
+                if (errors.length > 0) {
+                    const first = ts.flattenDiagnosticMessageText(errors[0].messageText, ' ')
+                    throw new Error(
+                        `[vite:dts] ${errors.length} 个类型错误，声明产物不完整。首个：${first}`
+                    )
+                }
+            },
             rollupTypes: false,
             // Workaround: vite-plugin-dts adds an extra underscore to re-exported
             // identifiers starting with '__' (e.g. __BaseInputProps → ___BaseInputProps),

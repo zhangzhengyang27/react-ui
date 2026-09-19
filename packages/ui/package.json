@@ -31,10 +31,11 @@
     "scripts": {
         "dev": "vite build --watch",
         "build": "vite build",
+        "check:published-types": "tsc --noEmit --skipLibCheck false --module esnext --moduleResolution bundler --target ES2020 --jsx react-jsx es/index.d.ts",
         "test": "vitest run",
         "test:watch": "vitest",
         "release": "npm publish",
-        "prepublishOnly": "npm run build"
+        "prepublishOnly": "npm run build && npm run check:published-types"
     },
     "dependencies": {
         "@floating-ui/react": "^0.27.19",

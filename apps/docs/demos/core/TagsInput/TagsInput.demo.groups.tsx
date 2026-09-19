@@ -10,10 +10,10 @@ function Demo() {
       label="输入标签"
       placeholder="输入标签"
       data={[
-        { value: 'React', group: 'Frontend' },
-        { value: 'Angular', group: 'Frontend' },
-        { value: 'Express', group: 'Backend' },
-        { value: 'Django', group: 'Backend' }
+        { value: 'React', label: 'React', group: 'Frontend' },
+        { value: 'Angular', label: 'Angular', group: 'Frontend' },
+        { value: 'Express', label: 'Express', group: 'Backend' },
+        { value: 'Django', label: 'Django', group: 'Backend' }
       ]}
     />
   );
@@ -26,10 +26,10 @@ function Demo() {
       label="输入标签"
       placeholder="输入标签"
       data={[
-        { value: 'React', group: 'Frontend' },
-        { value: 'Angular', group: 'Frontend' },
-        { value: 'Express', group: 'Backend' },
-        { value: 'Django', group: 'Backend' }
+        { value: 'React', label: 'React', group: 'Frontend' },
+        { value: 'Angular', label: 'Angular', group: 'Frontend' },
+        { value: 'Express', label: 'Express', group: 'Backend' },
+        { value: 'Django', label: 'Django', group: 'Backend' }
       ]}
     />
   );

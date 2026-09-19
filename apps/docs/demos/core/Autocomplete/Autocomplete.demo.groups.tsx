@@ -10,10 +10,10 @@ function Demo() {
       label="你最喜欢的库"
       placeholder="选择值或输入任意内容"
       data={[
-        { value: 'React', group: 'Frontend' },
-        { value: 'Angular', group: 'Frontend' },
-        { value: 'Express', group: 'Backend' },
-        { value: 'Django', group: 'Backend' }
+        { value: 'React', label: 'React', group: 'Frontend' },
+        { value: 'Angular', label: 'Angular', group: 'Frontend' },
+        { value: 'Express', label: 'Express', group: 'Backend' },
+        { value: 'Django', label: 'Django', group: 'Backend' }
       ]}
     />
   );
@@ -26,10 +26,10 @@ function Demo() {
       label="你最喜欢的库"
       placeholder="选择值或输入任意内容"
       data={[
-        { value: 'React', group: 'Frontend' },
-        { value: 'Angular', group: 'Frontend' },
-        { value: 'Express', group: 'Backend' },
-        { value: 'Django', group: 'Backend' }
+        { value: 'React', label: 'React', group: 'Frontend' },
+        { value: 'Angular', label: 'Angular', group: 'Frontend' },
+        { value: 'Express', label: 'Express', group: 'Backend' },
+        { value: 'Django', label: 'Django', group: 'Backend' }
       ]}
     />
   );

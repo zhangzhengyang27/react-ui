@@ -6,8 +6,6 @@ import type { IApi } from 'dumi';
 
 const siteLayerOrder = '@layer theme, base, global, antd, components, utilities;';
 const siteLayerStyle = `<style>${siteLayerOrder}</style>`;
-const tailwindLayerStyle = `<style type="text/tailwindcss">${siteLayerOrder}
-@import "tailwindcss";</style>`;
 
 export const getHash = (str: string, length = 8) =>
   createHash('md5').update(str).digest('hex').slice(0, length);
@@ -44,8 +42,7 @@ function prependSiteLayerOrder(html: string) {
 
   return html
     .replace(siteLayerStyle, '')
-    .replace(tailwindLayerStyle, '')
-    .replace('<head>', `<head>${siteLayerStyle}${tailwindLayerStyle}`);
+    .replace('<head>', `<head>${siteLayerStyle}`);
 }
 
 export default async function buildAssetsPlugin(api: IApi) {

@@ -8,7 +8,7 @@ describe('@xiaoye-react/dates/LevelsGroup', () => {
     component: LevelsGroup,
     props: defaultProps,
     children: true,
-    displayName: '@xiaoye-react/dates/LevelsGroup',
+    displayName: '@xiaoye-react/ui/LevelsGroup',
     stylesApiSelectors: ['levelsGroup'],
   });
 });

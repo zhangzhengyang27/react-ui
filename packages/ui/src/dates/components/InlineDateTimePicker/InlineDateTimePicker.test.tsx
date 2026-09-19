@@ -42,7 +42,7 @@ describe('@xiaoye-react/dates/InlineDateTimePicker', () => {
   tests.itSupportsSystemProps<InlineDateTimePickerProps>({
     component: InlineDateTimePicker,
     props: defaultProps,
-    displayName: '@xiaoye-react/dates/InlineDateTimePicker',
+    displayName: '@xiaoye-react/ui/InlineDateTimePicker',
     variant: false,
     size: false,
   });

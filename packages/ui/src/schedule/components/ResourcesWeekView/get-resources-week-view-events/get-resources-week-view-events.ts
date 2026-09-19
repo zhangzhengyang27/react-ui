@@ -86,7 +86,7 @@ export function getResourcesWeekViewEvents({
     for (const event of expandedEvents) {
       if (seenIds.has(event.id)) {
         throw new Error(
-          `[@xiaoye-react/schedule] ResourcesWeekView: Duplicated event ids found: ${event.id}`
+          `[@xiaoye-react/ui] ResourcesWeekView: Duplicated event ids found: ${event.id}`
         );
       }
       seenIds.add(event.id);

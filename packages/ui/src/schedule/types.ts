@@ -141,7 +141,7 @@ interface ScheduleEventRuntimeMeta {
   recurringInstance?: RecurringInstanceMeta;
 }
 
-/** Event data object passed to all `@xiaoye-react/schedule` components */
+/** Event data object passed to all `@xiaoye-react/ui` components */
 export type ScheduleEventData<Payload extends EventPayload = EventPayload> =
   | (ScheduleSingleEventData<Payload> & ScheduleEventRuntimeMeta)
   | (ScheduleRecurringSeriesEventData<Payload> & ScheduleEventRuntimeMeta)

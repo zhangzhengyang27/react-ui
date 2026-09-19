@@ -25,4 +25,4 @@ export function ExpandCodeButton({
   );
 }
 
-ExpandCodeButton.displayName = '@xiaoye-react/code-highlight/ExpandCodeButton';
+ExpandCodeButton.displayName = '@xiaoye-react/ui/ExpandCodeButton';

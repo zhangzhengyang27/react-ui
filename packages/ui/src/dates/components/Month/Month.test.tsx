@@ -11,7 +11,7 @@ describe('@xiaoye-react/dates/Month', () => {
     component: Month,
     props: defaultProps,
     varsResolver: true,
-    displayName: '@xiaoye-react/dates/Month',
+    displayName: '@xiaoye-react/ui/Month',
     stylesApiSelectors: ['month'],
   });
 

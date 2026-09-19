@@ -13,7 +13,7 @@ describe('@xiaoye-react/dates/MiniCalendar', () => {
     props: defaultProps,
     varsResolver: true,
     polymorphic: true,
-    displayName: '@xiaoye-react/dates/MiniCalendar',
+    displayName: '@xiaoye-react/ui/MiniCalendar',
     stylesApiSelectors: ['root', 'control', 'days', 'day', 'dayMonth', 'dayNumber'],
   });
 

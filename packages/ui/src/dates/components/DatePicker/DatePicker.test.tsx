@@ -11,7 +11,7 @@ describe('@xiaoye-react/dates/DatePicker', () => {
     component: DatePicker,
     props: { ...defaultProps, presets: [{ label: 'Today', value: '2022-04-11' }] },
     varsResolver: true,
-    displayName: '@xiaoye-react/dates/DatePicker',
+    displayName: '@xiaoye-react/ui/DatePicker',
     stylesApiSelectors: [
       'day',
       'month',

@@ -945,7 +945,7 @@ export const DayView = factory<DayViewFactory>((_props) => {
   return content;
 });
 
-DayView.displayName = '@xiaoye-react/schedule/DayView';
+DayView.displayName = '@xiaoye-react/ui/DayView';
 DayView.classes = classes;
 DayView.varsResolver = varsResolver;
 

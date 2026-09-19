@@ -30,4 +30,4 @@ export function CopyIcon({ copied, ...others }: CopyIconProps) {
   );
 }
 
-CopyIcon.displayName = '@xiaoye-react/code-highlight/CopyIcon';
+CopyIcon.displayName = '@xiaoye-react/ui/CopyIcon';

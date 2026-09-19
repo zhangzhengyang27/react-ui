@@ -24,7 +24,7 @@ describe('@xiaoye-react/dates/DatePickerInput', () => {
   tests.itSupportsSystemProps<DatePickerInputProps, __InputStylesNames>({
     component: DatePickerInput,
     props: defaultPropsWithInputProps,
-    displayName: '@xiaoye-react/dates/DatePickerInput',
+    displayName: '@xiaoye-react/ui/DatePickerInput',
     stylesApiSelectors: [...inputStylesApiSelectors],
   });
 

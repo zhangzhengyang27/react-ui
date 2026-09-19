@@ -102,7 +102,7 @@ export const HeaderControl = factory<HeaderControlFactory>((_props) => {
   );
 });
 
-HeaderControl.displayName = '@xiaoye-react/schedule/HeaderControl';
+HeaderControl.displayName = '@xiaoye-react/ui/HeaderControl';
 HeaderControl.classes = classes;
 HeaderControl.varsResolver = varsResolver;
 
@@ -143,6 +143,6 @@ export function ScheduleHeaderToday(props: HeaderControlProps) {
   );
 }
 
-ScheduleHeaderNext.displayName = '@xiaoye-react/schedule/ScheduleHeaderNext';
-ScheduleHeaderPrevious.displayName = '@xiaoye-react/schedule/ScheduleHeaderPrevious';
-ScheduleHeaderToday.displayName = '@xiaoye-react/schedule/ScheduleHeaderToday';
+ScheduleHeaderNext.displayName = '@xiaoye-react/ui/ScheduleHeaderNext';
+ScheduleHeaderPrevious.displayName = '@xiaoye-react/ui/ScheduleHeaderPrevious';
+ScheduleHeaderToday.displayName = '@xiaoye-react/ui/ScheduleHeaderToday';

@@ -257,7 +257,7 @@ export const MiniCalendar = factory<MiniCalendarFactory>((_props) => {
   );
 });
 
-MiniCalendar.displayName = '@xiaoye-react/dates/MiniCalendar';
+MiniCalendar.displayName = '@xiaoye-react/ui/MiniCalendar';
 MiniCalendar.classes = classes;
 MiniCalendar.varsResolver = varsResolver;
 

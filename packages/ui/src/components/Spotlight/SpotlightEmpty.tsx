@@ -31,4 +31,4 @@ export const SpotlightEmpty = factory<SpotlightEmptyFactory>((props) => {
 });
 
 SpotlightEmpty.classes = classes;
-SpotlightEmpty.displayName = '@xiaoye-react/spotlight/SpotlightEmpty';
+SpotlightEmpty.displayName = '@xiaoye-react/ui/SpotlightEmpty';

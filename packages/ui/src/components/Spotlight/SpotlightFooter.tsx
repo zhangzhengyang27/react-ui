@@ -29,4 +29,4 @@ export const SpotlightFooter = factory<SpotlightFooterFactory>((props) => {
 });
 
 SpotlightFooter.classes = classes;
-SpotlightFooter.displayName = '@xiaoye-react/spotlight/SpotlightFooter';
+SpotlightFooter.displayName = '@xiaoye-react/ui/SpotlightFooter';

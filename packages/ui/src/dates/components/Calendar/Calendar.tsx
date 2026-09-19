@@ -535,7 +535,7 @@ Calendar.classes = {
   ...YearLevelGroup.classes,
   ...MonthLevelGroup.classes,
 };
-Calendar.displayName = '@xiaoye-react/dates/Calendar';
+Calendar.displayName = '@xiaoye-react/ui/Calendar';
 
 export namespace Calendar {
   export type Props = CalendarProps;

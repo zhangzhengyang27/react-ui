@@ -344,4 +344,4 @@ DateTimePicker.classes = {
   ...PickerInputBase.classes,
   ...InlineDateTimePicker.classes,
 };
-DateTimePicker.displayName = '@xiaoye-react/dates/DateTimePicker';
+DateTimePicker.displayName = '@xiaoye-react/ui/DateTimePicker';

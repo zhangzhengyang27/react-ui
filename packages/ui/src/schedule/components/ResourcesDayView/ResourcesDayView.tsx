@@ -1030,6 +1030,6 @@ export const ResourcesDayView = factory<ResourcesDayViewFactory>((_props) => {
   return content;
 });
 
-ResourcesDayView.displayName = '@xiaoye-react/schedule/ResourcesDayView';
+ResourcesDayView.displayName = '@xiaoye-react/ui/ResourcesDayView';
 ResourcesDayView.classes = classes;
 ResourcesDayView.varsResolver = varsResolver;

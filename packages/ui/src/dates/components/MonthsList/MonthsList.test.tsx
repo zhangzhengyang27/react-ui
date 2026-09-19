@@ -10,7 +10,7 @@ describe('@xiaoye-react/dates/MonthsList', () => {
   tests.itSupportsSystemProps<MonthsListProps, MonthsListStylesNames>({
     component: MonthsList,
     props: defaultProps,
-    displayName: '@xiaoye-react/dates/MonthsList',
+    displayName: '@xiaoye-react/ui/MonthsList',
     stylesApiSelectors: ['monthsList', 'monthsListCell', 'monthsListControl', 'monthsListRow'],
   });
 

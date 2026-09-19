@@ -257,7 +257,7 @@ export const DatePicker: DatePickerComponent = factory<DatePickerFactory>((_prop
 
 DatePicker.classes = Calendar.classes;
 DatePicker.varsResolver = varsResolver;
-DatePicker.displayName = '@xiaoye-react/dates/DatePicker';
+DatePicker.displayName = '@xiaoye-react/ui/DatePicker';
 
 export namespace DatePicker {
   export type Props<Type extends DatePickerType> = DatePickerProps<Type>;

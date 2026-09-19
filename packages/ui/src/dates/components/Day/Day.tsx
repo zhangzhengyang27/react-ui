@@ -147,7 +147,7 @@ export const Day = factory<DayFactory>((_props) => {
 
 Day.classes = classes;
 Day.varsResolver = varsResolver;
-Day.displayName = '@xiaoye-react/dates/Day';
+Day.displayName = '@xiaoye-react/ui/Day';
 
 export namespace Day {
   export type Props = DayProps;

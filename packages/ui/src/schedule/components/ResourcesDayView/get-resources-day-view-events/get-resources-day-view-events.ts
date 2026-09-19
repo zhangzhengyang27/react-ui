@@ -89,7 +89,7 @@ export function getResourcesDayViewEvents({
         ids.add(event.id);
       } else {
         throw new Error(
-          `[@xiaoye-react/schedule] ResourcesDayView: Duplicated event ids found: ${event.id}`
+          `[@xiaoye-react/ui] ResourcesDayView: Duplicated event ids found: ${event.id}`
         );
       }
 

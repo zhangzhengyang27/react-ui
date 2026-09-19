@@ -13,7 +13,7 @@ describe('@xiaoye-react/dates/YearLevelGroup', () => {
   tests.itSupportsSystemProps<YearLevelGroupProps, YearLevelGroupStylesNames>({
     component: YearLevelGroup,
     props: defaultProps,
-    displayName: '@xiaoye-react/dates/YearLevelGroup',
+    displayName: '@xiaoye-react/ui/YearLevelGroup',
     stylesApiSelectors: [
       'levelsGroup',
       'calendarHeader',

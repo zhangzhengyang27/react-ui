@@ -48,7 +48,7 @@ export function getMonthViewEvents({
       if (!ids.has(event.id)) {
         ids.add(event.id);
       } else {
-        throw new Error(`[@xiaoye-react/schedule] MonthView: Duplicated event ids found: ${event.id}`);
+        throw new Error(`[@xiaoye-react/ui] MonthView: Duplicated event ids found: ${event.id}`);
       }
     }
   }

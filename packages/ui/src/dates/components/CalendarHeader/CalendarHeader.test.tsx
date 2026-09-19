@@ -13,7 +13,7 @@ describe('@xiaoye-react/dates/CalendarHeader', () => {
     component: CalendarHeader,
     props: defaultProps,
     varsResolver: true,
-    displayName: '@xiaoye-react/dates/CalendarHeader',
+    displayName: '@xiaoye-react/ui/CalendarHeader',
     stylesApiSelectors: [
       'calendarHeader',
       'calendarHeaderControl',

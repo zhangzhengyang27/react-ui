@@ -149,4 +149,4 @@ export function SpinInput({
   );
 }
 
-SpinInput.displayName = '@xiaoye-react/dates/SpinInput';
+SpinInput.displayName = '@xiaoye-react/ui/SpinInput';

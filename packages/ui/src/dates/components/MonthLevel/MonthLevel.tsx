@@ -198,4 +198,4 @@ export const MonthLevel = factory<MonthLevelFactory>((_props) => {
 });
 
 MonthLevel.classes = { ...Month.classes, ...CalendarHeader.classes };
-MonthLevel.displayName = '@xiaoye-react/dates/MonthLevel';
+MonthLevel.displayName = '@xiaoye-react/ui/MonthLevel';

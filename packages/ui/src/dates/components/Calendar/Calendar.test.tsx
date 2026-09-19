@@ -38,7 +38,7 @@ describe('@xiaoye-react/dates/Calendar', () => {
   tests.itSupportsSystemProps<CalendarProps, CalendarStylesNames>({
     component: Calendar,
     props: defaultProps,
-    displayName: '@xiaoye-react/dates/Calendar',
+    displayName: '@xiaoye-react/ui/Calendar',
     stylesApiSelectors: [
       'levelsGroup',
       'calendarHeader',

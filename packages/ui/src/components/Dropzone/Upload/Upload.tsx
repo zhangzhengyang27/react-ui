@@ -396,7 +396,7 @@ export const Upload = factory<UploadFactory>((_props, ref) => {
 });
 
 Upload.classes = classes
-Upload.displayName = '@xiaoye-react/dropzone/Upload'
+Upload.displayName = '@xiaoye-react/ui/Upload'
 
 export namespace Upload {
   export type Props = UploadProps

@@ -182,6 +182,6 @@ export const CurrentTimeIndicator = factory<CurrentTimeIndicatorFactory>((_props
   );
 });
 
-CurrentTimeIndicator.displayName = '@xiaoye-react/schedule/CurrentTimeIndicator';
+CurrentTimeIndicator.displayName = '@xiaoye-react/ui/CurrentTimeIndicator';
 CurrentTimeIndicator.classes = classes;
 CurrentTimeIndicator.varsResolver = varsResolver;

@@ -157,6 +157,6 @@ export const DropzoneFullScreen = factory<DropzoneFullScreenFactory>((_props) =>
 });
 
 DropzoneFullScreen.classes = classes;
-DropzoneFullScreen.displayName = '@xiaoye-react/dropzone/DropzoneFullScreen';
+DropzoneFullScreen.displayName = '@xiaoye-react/ui/DropzoneFullScreen';
 
 export type DropzoneFullScreenType = typeof DropzoneFullScreen;

@@ -193,7 +193,7 @@ export const TimeGrid = factory<TimeGridFactory>((_props) => {
   );
 });
 
-TimeGrid.displayName = '@xiaoye-react/dates/TimeGrid';
+TimeGrid.displayName = '@xiaoye-react/ui/TimeGrid';
 TimeGrid.classes = classes;
 TimeGrid.varsResolver = varsResolver;
 

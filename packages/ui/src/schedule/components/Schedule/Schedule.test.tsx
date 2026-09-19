@@ -30,7 +30,7 @@ describe('@xiaoye-react/schedule/Schedule', () => {
   tests.itSupportsSystemProps<ScheduleProps, ScheduleStylesNames>({
     component: Schedule,
     props: defaultProps,
-    displayName: '@xiaoye-react/schedule/Schedule',
+    displayName: '@xiaoye-react/ui/Schedule',
     providerStylesApi: false,
     stylesApiSelectors: ['root'],
     attributes: false,

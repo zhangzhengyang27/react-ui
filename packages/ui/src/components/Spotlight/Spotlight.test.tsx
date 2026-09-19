@@ -25,7 +25,7 @@ describe('@xiaoye-react/ui/Spotlight', () => {
   tests.itSupportsSystemProps<SpotlightProps, SpotlightStylesNames>({
     component: Spotlight,
     props: defaultProps,
-    displayName: '@xiaoye-react/spotlight/Spotlight',
+    displayName: '@xiaoye-react/ui/Spotlight',
     stylesApiSelectors: [
       'root',
       'action',

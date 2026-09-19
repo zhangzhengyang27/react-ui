@@ -37,4 +37,4 @@ export function ExpandIcon({ expanded, style, ...others }: ExpandIconProps) {
   );
 }
 
-ExpandIcon.displayName = '@xiaoye-react/code-highlight/ExpandIcon';
+ExpandIcon.displayName = '@xiaoye-react/ui/ExpandIcon';

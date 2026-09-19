@@ -24,7 +24,7 @@ export function TimeValue({
   return <>{getFormattedTime({ value, format, amPmLabels, withSeconds })}</>;
 }
 
-TimeValue.displayName = '@xiaoye-react/dates/TimeValue';
+TimeValue.displayName = '@xiaoye-react/ui/TimeValue';
 
 export namespace TimeValue {
   export type Props = TimeValueProps;

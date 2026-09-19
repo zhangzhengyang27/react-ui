@@ -154,4 +154,4 @@ export const DecadeLevelGroup = factory<DecadeLevelGroupFactory>((_props) => {
 });
 
 DecadeLevelGroup.classes = { ...LevelsGroup.classes, ...DecadeLevel.classes };
-DecadeLevelGroup.displayName = '@xiaoye-react/dates/DecadeLevelGroup';
+DecadeLevelGroup.displayName = '@xiaoye-react/ui/DecadeLevelGroup';

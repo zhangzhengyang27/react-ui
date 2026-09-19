@@ -153,4 +153,4 @@ export const YearLevelGroup = factory<YearLevelGroupFactory>((_props) => {
 });
 
 YearLevelGroup.classes = { ...YearLevel.classes, ...LevelsGroup.classes };
-YearLevelGroup.displayName = '@xiaoye-react/dates/YearLevelGroup';
+YearLevelGroup.displayName = '@xiaoye-react/ui/YearLevelGroup';

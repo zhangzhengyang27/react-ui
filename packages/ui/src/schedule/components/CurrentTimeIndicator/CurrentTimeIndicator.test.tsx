@@ -19,7 +19,7 @@ describe('@xiaoye-react/schedule/CurrentTimeIndicator', () => {
     component: CurrentTimeIndicator,
     props: defaultProps,
     varsResolver: true,
-    displayName: '@xiaoye-react/schedule/CurrentTimeIndicator',
+    displayName: '@xiaoye-react/ui/CurrentTimeIndicator',
     stylesApiSelectors: [
       'currentTimeIndicator',
       'currentTimeIndicatorLine',

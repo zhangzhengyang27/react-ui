@@ -224,4 +224,4 @@ export const PickerInputBase = factory<PickerInputBaseFactory>((_props) => {
 });
 
 PickerInputBase.classes = classes;
-PickerInputBase.displayName = '@xiaoye-react/dates/PickerInputBase';
+PickerInputBase.displayName = '@xiaoye-react/ui/PickerInputBase';

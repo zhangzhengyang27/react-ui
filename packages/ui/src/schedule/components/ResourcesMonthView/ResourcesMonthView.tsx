@@ -1081,6 +1081,6 @@ export const ResourcesMonthView = factory<ResourcesMonthViewFactory>((_props) =>
   return content;
 });
 
-ResourcesMonthView.displayName = '@xiaoye-react/schedule/ResourcesMonthView';
+ResourcesMonthView.displayName = '@xiaoye-react/ui/ResourcesMonthView';
 ResourcesMonthView.classes = classes;
 ResourcesMonthView.varsResolver = varsResolver;

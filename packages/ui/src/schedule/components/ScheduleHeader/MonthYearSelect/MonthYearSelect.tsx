@@ -274,6 +274,6 @@ export const MonthYearSelect = factory<MonthYearSelectFactory>((_props) => {
   );
 });
 
-MonthYearSelect.displayName = '@xiaoye-react/schedule/MonthYearSelect';
+MonthYearSelect.displayName = '@xiaoye-react/ui/MonthYearSelect';
 MonthYearSelect.classes = classes;
 MonthYearSelect.varsResolver = varsResolver;

@@ -43,7 +43,7 @@ describe('@xiaoye-react/schedule/filter-week-view-events', () => {
     ];
 
     expect(() => filterWeekViewEvents({ date: '2024-01-08', events })).toThrow(
-      '[@xiaoye-react/schedule] WeekView: Duplicated event ids found: 1'
+      '[@xiaoye-react/ui] WeekView: Duplicated event ids found: 1'
     );
   });
 });

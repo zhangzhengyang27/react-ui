@@ -53,7 +53,7 @@ describe('@xiaoye-react/schedule/DayView', () => {
     component: DayView,
     props: defaultProps,
     varsResolver: true,
-    displayName: '@xiaoye-react/schedule/DayView',
+    displayName: '@xiaoye-react/ui/DayView',
     providerStylesApi: false,
     stylesApiSelectors: [
       'dayView',

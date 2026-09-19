@@ -640,7 +640,7 @@ export const TimePicker = factory<TimePickerFactory>((_props) => {
   );
 });
 
-TimePicker.displayName = '@xiaoye-react/dates/TimePicker';
+TimePicker.displayName = '@xiaoye-react/ui/TimePicker';
 TimePicker.classes = classes;
 TimePicker.varsResolver = varsResolver;
 

@@ -382,7 +382,7 @@ export const Month = factory<MonthFactory>((_props) => {
 
 Month.classes = classes;
 Month.varsResolver = varsResolver;
-Month.displayName = '@xiaoye-react/dates/Month';
+Month.displayName = '@xiaoye-react/ui/Month';
 
 export namespace Month {
   export type Props = MonthProps;

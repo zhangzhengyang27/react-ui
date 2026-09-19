@@ -13,7 +13,7 @@ describe('@xiaoye-react/dates/TimeGrid', () => {
     props: defaultProps,
     varsResolver: true,
     polymorphic: true,
-    displayName: '@xiaoye-react/dates/TimeGrid',
+    displayName: '@xiaoye-react/ui/TimeGrid',
     stylesApiSelectors: ['root'],
   });
 

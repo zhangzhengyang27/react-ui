@@ -64,7 +64,7 @@ export function getMobileMonthViewEvents({ date, events }: GetMobileMonthViewEve
         ids.add(event.id);
       } else {
         throw new Error(
-          `[@xiaoye-react/schedule] MobileMonthView: Duplicated event ids found: ${event.id}`
+          `[@xiaoye-react/ui] MobileMonthView: Duplicated event ids found: ${event.id}`
         );
       }
     }

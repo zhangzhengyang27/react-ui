@@ -57,4 +57,4 @@ export const LevelsGroup = factory<LevelsGroupFactory>((_props) => {
 });
 
 LevelsGroup.classes = classes;
-LevelsGroup.displayName = '@xiaoye-react/dates/LevelsGroup';
+LevelsGroup.displayName = '@xiaoye-react/ui/LevelsGroup';

@@ -16,4 +16,4 @@ export function AmPmControlsList({ labels, value, onSelect }: AmPmControlsListPr
   return <div {...ctx.getStyles('controlsList')}>{controls}</div>;
 }
 
-AmPmControlsList.displayName = '@xiaoye-react/dates/AmPmControlsList';
+AmPmControlsList.displayName = '@xiaoye-react/ui/AmPmControlsList';

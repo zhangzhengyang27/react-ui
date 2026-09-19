@@ -24,7 +24,7 @@ describe('@xiaoye-react/dates/YearPickerInput', () => {
   tests.itSupportsSystemProps<YearPickerInputProps, __InputStylesNames>({
     component: YearPickerInput,
     props: defaultPropsWithInputProps,
-    displayName: '@xiaoye-react/dates/YearPickerInput',
+    displayName: '@xiaoye-react/ui/YearPickerInput',
     stylesApiSelectors: [...inputStylesApiSelectors],
   });
 

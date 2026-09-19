@@ -24,7 +24,7 @@ describe('@xiaoye-react/dates/PickerControl', () => {
     props: defaultProps,
     varsResolver: true,
     children: true,
-    displayName: '@xiaoye-react/dates/PickerControl',
+    displayName: '@xiaoye-react/ui/PickerControl',
     stylesApiSelectors: ['pickerControl'],
   });
 

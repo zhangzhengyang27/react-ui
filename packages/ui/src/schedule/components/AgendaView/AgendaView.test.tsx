@@ -49,7 +49,7 @@ describe('@xiaoye-react/schedule/AgendaView', () => {
     component: AgendaView,
     props: defaultProps,
     varsResolver: true,
-    displayName: '@xiaoye-react/schedule/AgendaView',
+    displayName: '@xiaoye-react/ui/AgendaView',
     stylesApiSelectors: [
       'agendaView',
       'agendaViewHeader',

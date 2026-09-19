@@ -16,7 +16,7 @@ describe('@xiaoye-react/schedule/WeekView', () => {
     component: WeekView,
     props: defaultProps,
     varsResolver: true,
-    displayName: '@xiaoye-react/schedule/WeekView',
+    displayName: '@xiaoye-react/ui/WeekView',
     stylesApiSelectors: [
       'weekView',
       'weekViewRoot',

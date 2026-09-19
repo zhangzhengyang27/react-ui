@@ -18,7 +18,7 @@ describe('@xiaoye-react/dates/DecadeLevel', () => {
   tests.itSupportsSystemProps<DecadeLevelProps, DecadeLevelStylesNames>({
     component: DecadeLevel,
     props: defaultProps,
-    displayName: '@xiaoye-react/dates/DecadeLevel',
+    displayName: '@xiaoye-react/ui/DecadeLevel',
     stylesApiSelectors: [
       'calendarHeader',
       'calendarHeaderControl',

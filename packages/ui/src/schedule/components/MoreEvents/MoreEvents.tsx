@@ -189,5 +189,5 @@ export const MoreEvents = factory<MoreEventsFactory>((_props) => {
   );
 });
 
-MoreEvents.displayName = '@xiaoye-react/schedule/MoreEvents';
+MoreEvents.displayName = '@xiaoye-react/ui/MoreEvents';
 MoreEvents.classes = classes;

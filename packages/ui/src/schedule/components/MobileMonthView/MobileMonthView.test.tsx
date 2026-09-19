@@ -60,7 +60,7 @@ describe('@xiaoye-react/schedule/MobileMonthView', () => {
     component: MobileMonthView,
     props: defaultProps,
     varsResolver: true,
-    displayName: '@xiaoye-react/schedule/MobileMonthView',
+    displayName: '@xiaoye-react/ui/MobileMonthView',
     stylesApiSelectors: [
       'mobileMonthView',
       'mobileMonthViewHeader',

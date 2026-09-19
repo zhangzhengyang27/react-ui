@@ -313,7 +313,7 @@ export const Dropzone = factory<DropzoneFactory>((_props) => {
 
 Dropzone.classes = classes;
 Dropzone.varsResolver = varsResolver;
-Dropzone.displayName = '@xiaoye-react/dropzone/Dropzone';
+Dropzone.displayName = '@xiaoye-react/ui/Dropzone';
 Dropzone.Accept = DropzoneAccept;
 Dropzone.Idle = DropzoneIdle;
 Dropzone.Reject = DropzoneReject;

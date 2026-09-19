@@ -237,7 +237,7 @@ export const MonthPicker: MonthPickerComponent = factory<MonthPickerFactory>((_p
 
 MonthPicker.classes = { ...Calendar.classes, ...classes };
 MonthPicker.varsResolver = varsResolver;
-MonthPicker.displayName = '@xiaoye-react/dates/MonthPicker';
+MonthPicker.displayName = '@xiaoye-react/ui/MonthPicker';
 
 export namespace MonthPicker {
   export type Props<Type extends DatePickerType = 'default'> = MonthPickerProps<Type>;

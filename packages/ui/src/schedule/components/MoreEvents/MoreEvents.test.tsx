@@ -47,7 +47,7 @@ describe('@xiaoye-react/schedule/MoreEvents', () => {
     component: MoreEvents,
     props: { ...defaultProps, popoverProps: { opened: true } },
     polymorphic: true,
-    displayName: '@xiaoye-react/schedule/MoreEvents',
+    displayName: '@xiaoye-react/ui/MoreEvents',
     stylesApiSelectors: ['moreEventsButton', 'moreEventsList'],
     // MoreEvents 根元素是按钮；默认的 *:not(style) 会先匹配到 Popover 包装 div
     selector: '.ui-MoreEvents-moreEventsButton',

@@ -223,4 +223,4 @@ export const SpotlightRoot = factory<SpotlightRootFactory>((_props) => {
 });
 
 SpotlightRoot.classes = classes;
-SpotlightRoot.displayName = '@xiaoye-react/spotlight/SpotlightRoot';
+SpotlightRoot.displayName = '@xiaoye-react/ui/SpotlightRoot';

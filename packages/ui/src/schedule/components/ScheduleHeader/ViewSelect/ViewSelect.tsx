@@ -178,5 +178,5 @@ export const ViewSelect = factory<ViewSelectFactory>((_props) => {
   );
 });
 
-ViewSelect.displayName = '@xiaoye-react/schedule/ViewSelect';
+ViewSelect.displayName = '@xiaoye-react/ui/ViewSelect';
 ViewSelect.classes = classes;

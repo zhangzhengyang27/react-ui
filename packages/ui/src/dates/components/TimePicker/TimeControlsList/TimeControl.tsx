@@ -26,4 +26,4 @@ export function TimeControl({ value, active, onSelect }: TimeControlProps) {
   );
 }
 
-TimeControl.displayName = '@xiaoye-react/dates/TimeControl';
+TimeControl.displayName = '@xiaoye-react/ui/TimeControl';

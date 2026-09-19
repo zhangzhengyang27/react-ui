@@ -14,7 +14,7 @@ describe('@xiaoye-react/dates/MonthPicker', () => {
       presets: [{ label: 'This month', value: '2022-04-01' }],
     },
     varsResolver: true,
-    displayName: '@xiaoye-react/dates/MonthPicker',
+    displayName: '@xiaoye-react/ui/MonthPicker',
     stylesApiSelectors: [
       'calendarHeader',
       'calendarHeaderControl',

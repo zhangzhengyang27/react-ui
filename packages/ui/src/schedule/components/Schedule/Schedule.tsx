@@ -418,7 +418,7 @@ export const Schedule = factory<ScheduleFactory>((_props) => {
   );
 });
 
-Schedule.displayName = '@xiaoye-react/schedule/Schedule';
+Schedule.displayName = '@xiaoye-react/ui/Schedule';
 Schedule.classes = classes;
 
 export namespace Schedule {

@@ -52,7 +52,7 @@ export function getDayViewEvents({
       if (!ids.has(event.id)) {
         ids.add(event.id);
       } else {
-        throw new Error(`[@xiaoye-react/schedule] DayView: Duplicated event ids found: ${event.id}`);
+        throw new Error(`[@xiaoye-react/ui] DayView: Duplicated event ids found: ${event.id}`);
       }
 
       if (event.display === 'background') {

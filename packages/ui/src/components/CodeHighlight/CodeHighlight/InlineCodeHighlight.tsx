@@ -75,6 +75,6 @@ export const InlineCodeHighlight = factory<InlineCodeHighlightFactory>((_props, 
   );
 });
 
-InlineCodeHighlight.displayName = '@xiaoye-react/code-highlight/InlineCodeHighlight';
+InlineCodeHighlight.displayName = '@xiaoye-react/ui/InlineCodeHighlight';
 InlineCodeHighlight.classes = classes;
 InlineCodeHighlight.varsResolver = varsResolver;

@@ -271,6 +271,6 @@ export const ScheduleEvent = factory<ScheduleEventFactory>((_props) => {
   return <UnstyledButton {...rootProps} />;
 });
 
-ScheduleEvent.displayName = '@xiaoye-react/schedule/ScheduleEvent';
+ScheduleEvent.displayName = '@xiaoye-react/ui/ScheduleEvent';
 ScheduleEvent.classes = classes;
 ScheduleEvent.varsResolver = varsResolver;

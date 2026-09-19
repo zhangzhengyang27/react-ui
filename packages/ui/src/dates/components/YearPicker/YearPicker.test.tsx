@@ -10,7 +10,7 @@ describe('@xiaoye-react/dates/YearPicker', () => {
       presets: [{ label: 'This year', value: '2022-01-01' }],
     },
     varsResolver: true,
-    displayName: '@xiaoye-react/dates/YearPicker',
+    displayName: '@xiaoye-react/ui/YearPicker',
     stylesApiSelectors: [
       'calendarHeader',
       'calendarHeaderControl',

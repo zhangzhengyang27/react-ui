@@ -83,4 +83,4 @@ export function TimeControlsList({
   );
 }
 
-TimeControlsList.displayName = '@xiaoye-react/dates/TimeControlsList';
+TimeControlsList.displayName = '@xiaoye-react/ui/TimeControlsList';

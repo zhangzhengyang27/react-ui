@@ -17,7 +17,7 @@ describe('@xiaoye-react/code-highlight/InlineCodeHighlight', () => {
     varsResolver: true,
     polymorphic: true,
     selector: '.ui-InlineCodeHighlight-inlineCodeHighlight',
-    displayName: '@xiaoye-react/code-highlight/InlineCodeHighlight',
+    displayName: '@xiaoye-react/ui/InlineCodeHighlight',
     stylesApiSelectors: ['inlineCodeHighlight'],
   });
 });

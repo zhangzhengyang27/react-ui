@@ -79,7 +79,7 @@ export function getAgendaViewEvents({ rangeStart, rangeEnd, events }: GetAgendaV
     if (!ids.has(event.id)) {
       ids.add(event.id);
     } else {
-      throw new Error(`[@xiaoye-react/schedule] AgendaView: Duplicated event ids found: ${event.id}`);
+      throw new Error(`[@xiaoye-react/ui] AgendaView: Duplicated event ids found: ${event.id}`);
     }
 
     groupEventByDate(validateEvent(event), groupedEvents, start, end);

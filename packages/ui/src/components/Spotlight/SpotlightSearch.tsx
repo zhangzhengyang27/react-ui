@@ -93,4 +93,4 @@ export const SpotlightSearch = factory<SpotlightSearchFactory>((props) => {
 });
 
 SpotlightSearch.classes = classes;
-SpotlightSearch.displayName = '@xiaoye-react/spotlight/SpotlightSearch';
+SpotlightSearch.displayName = '@xiaoye-react/ui/SpotlightSearch';

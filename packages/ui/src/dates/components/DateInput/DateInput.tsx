@@ -395,7 +395,7 @@ export const DateInput = factory<DateInputFactory>((_props) => {
 });
 
 DateInput.classes = { ...Input.classes, ...Calendar.classes, ...classes };
-DateInput.displayName = '@xiaoye-react/dates/DateInput';
+DateInput.displayName = '@xiaoye-react/ui/DateInput';
 
 export namespace DateInput {
   export type Props = DateInputProps;

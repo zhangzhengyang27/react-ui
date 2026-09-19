@@ -27,4 +27,4 @@ export function CopyCodeButton({
   );
 }
 
-CopyCodeButton.displayName = '@xiaoye-react/code-highlight/CopyCodeButton';
+CopyCodeButton.displayName = '@xiaoye-react/ui/CopyCodeButton';

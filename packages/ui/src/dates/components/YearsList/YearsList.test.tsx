@@ -10,7 +10,7 @@ describe('@xiaoye-react/dates/YearsList', () => {
   tests.itSupportsSystemProps<YearsListProps, YearsListStylesNames>({
     component: YearsList,
     props: defaultProps,
-    displayName: '@xiaoye-react/dates/YearsList',
+    displayName: '@xiaoye-react/ui/YearsList',
     stylesApiSelectors: ['yearsList', 'yearsListCell', 'yearsListControl', 'yearsListRow'],
   });
 

@@ -22,7 +22,7 @@ describe('@xiaoye-react/dates/WeekdaysRow', () => {
     component: WeekdaysRow,
     props: defaultProps,
     varsResolver: true,
-    displayName: '@xiaoye-react/dates/WeekdaysRow',
+    displayName: '@xiaoye-react/ui/WeekdaysRow',
     stylesApiSelectors: ['weekdaysRow', 'weekday'],
   });
 

@@ -4,7 +4,7 @@ import type { ScheduleLabelsOverride } from '../../labels';
 export const ScheduleHeaderLabelsContext = createContext<ScheduleLabelsOverride | undefined>(
   undefined
 );
-ScheduleHeaderLabelsContext.displayName = '@xiaoye-react/schedule/ScheduleHeaderLabelsContext';
+ScheduleHeaderLabelsContext.displayName = '@xiaoye-react/ui/ScheduleHeaderLabelsContext';
 
 export function useScheduleHeaderLabels(
   override?: ScheduleLabelsOverride

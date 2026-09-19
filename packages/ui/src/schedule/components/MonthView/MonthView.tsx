@@ -837,7 +837,7 @@ export const MonthView = factory<MonthViewFactory>((_props) => {
   return content;
 });
 
-MonthView.displayName = '@xiaoye-react/schedule/MonthView';
+MonthView.displayName = '@xiaoye-react/ui/MonthView';
 MonthView.classes = classes;
 MonthView.varsResolver = varsResolver;
 

@@ -174,7 +174,7 @@ export const Spotlight = factory<SpotlightFactory>((_props) => {
 });
 
 Spotlight.classes = classes;
-Spotlight.displayName = '@xiaoye-react/spotlight/Spotlight';
+Spotlight.displayName = '@xiaoye-react/ui/Spotlight';
 Spotlight.Search = SpotlightSearch;
 Spotlight.ActionsList = SpotlightActionsList;
 Spotlight.Action = SpotlightAction;

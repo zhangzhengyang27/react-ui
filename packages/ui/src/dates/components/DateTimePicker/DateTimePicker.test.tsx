@@ -58,7 +58,7 @@ describe('@xiaoye-react/dates/DateTimePicker', () => {
   tests.itSupportsSystemProps<DateTimePickerProps, __InputStylesNames>({
     component: DateTimePicker,
     props: defaultPropsWithInputProps,
-    displayName: '@xiaoye-react/dates/DateTimePicker',
+    displayName: '@xiaoye-react/ui/DateTimePicker',
     stylesApiSelectors: [...inputStylesApiSelectors],
   });
 

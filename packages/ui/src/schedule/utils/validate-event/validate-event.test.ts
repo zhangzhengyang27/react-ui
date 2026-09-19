@@ -22,7 +22,7 @@ describe('@xiaoye-react/schedule/validate-event', () => {
       start: 'invalid-date',
     };
     expect(() => validateEvent(invalidEvent)).toThrow(
-      `[@xiaoye-react/schedule] Invalid start date for event id: ${invalidEvent.id}`
+      `[@xiaoye-react/ui] Invalid start date for event id: ${invalidEvent.id}`
     );
   });
 
@@ -32,7 +32,7 @@ describe('@xiaoye-react/schedule/validate-event', () => {
       end: 'invalid-date',
     };
     expect(() => validateEvent(invalidEvent)).toThrow(
-      `[@xiaoye-react/schedule] Invalid end date for event id: ${invalidEvent.id}`
+      `[@xiaoye-react/ui] Invalid end date for event id: ${invalidEvent.id}`
     );
   });
 
@@ -43,7 +43,7 @@ describe('@xiaoye-react/schedule/validate-event', () => {
       end: '2024-12-12 10:00:00',
     };
     expect(() => validateEvent(invalidEvent)).toThrow(
-      `[@xiaoye-react/schedule] Event end date is before start date for event id: ${invalidEvent.id}`
+      `[@xiaoye-react/ui] Event end date is before start date for event id: ${invalidEvent.id}`
     );
   });
 

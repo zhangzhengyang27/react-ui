@@ -52,4 +52,4 @@ export const SpotlightActionsList = factory<SpotlightActionsListFactory>((props)
 });
 
 SpotlightActionsList.classes = classes;
-SpotlightActionsList.displayName = '@xiaoye-react/spotlight/SpotlightActionsList';
+SpotlightActionsList.displayName = '@xiaoye-react/ui/SpotlightActionsList';

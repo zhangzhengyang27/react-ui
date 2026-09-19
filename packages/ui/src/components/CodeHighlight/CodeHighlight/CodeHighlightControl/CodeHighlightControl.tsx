@@ -58,4 +58,4 @@ export const CodeHighlightControl: UIPolymorphicComponent<CodeHighlightControlFa
     return control;
   });
 
-CodeHighlightControl.displayName = '@xiaoye-react/code-highlight/CodeHighlightControl';
+CodeHighlightControl.displayName = '@xiaoye-react/ui/CodeHighlightControl';

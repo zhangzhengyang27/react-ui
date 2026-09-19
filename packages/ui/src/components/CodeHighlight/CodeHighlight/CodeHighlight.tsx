@@ -316,7 +316,7 @@ export const CodeHighlight = factory<CodeHighlightFactory>((_props) => {
   );
 });
 
-CodeHighlight.displayName = '@xiaoye-react/code-highlight/CodeHighlight';
+CodeHighlight.displayName = '@xiaoye-react/ui/CodeHighlight';
 CodeHighlight.classes = classes;
 CodeHighlight.varsResolver = varsResolver;
 CodeHighlight.Control = CodeHighlightControl;

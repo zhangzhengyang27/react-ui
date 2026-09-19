@@ -176,4 +176,4 @@ export const MonthLevelGroup = factory<MonthLevelGroupFactory>((_props) => {
 });
 
 MonthLevelGroup.classes = { ...LevelsGroup.classes, ...MonthLevel.classes };
-MonthLevelGroup.displayName = '@xiaoye-react/dates/MonthLevelGroup';
+MonthLevelGroup.displayName = '@xiaoye-react/ui/MonthLevelGroup';

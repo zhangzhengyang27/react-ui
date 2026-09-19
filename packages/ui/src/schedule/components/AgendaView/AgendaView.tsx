@@ -264,7 +264,7 @@ export const AgendaView = factory<AgendaViewFactory>((_props) => {
   );
 });
 
-AgendaView.displayName = '@xiaoye-react/schedule/AgendaView';
+AgendaView.displayName = '@xiaoye-react/ui/AgendaView';
 AgendaView.classes = classes;
 AgendaView.varsResolver = varsResolver;
 

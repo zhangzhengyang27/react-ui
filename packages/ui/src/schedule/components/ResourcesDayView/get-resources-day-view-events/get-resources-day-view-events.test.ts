@@ -89,7 +89,7 @@ describe('@xiaoye-react/schedule/get-resources-day-view-events', () => {
     ];
 
     expect(() => getResourcesDayViewEvents({ events, resources, date: testDate })).toThrow(
-      '[@xiaoye-react/schedule] ResourcesDayView: Duplicated event ids found: 1'
+      '[@xiaoye-react/ui] ResourcesDayView: Duplicated event ids found: 1'
     );
   });
 

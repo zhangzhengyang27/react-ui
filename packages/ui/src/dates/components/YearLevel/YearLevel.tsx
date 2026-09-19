@@ -175,4 +175,4 @@ export const YearLevel = factory<YearLevelFactory>((_props) => {
 });
 
 YearLevel.classes = { ...CalendarHeader.classes, ...MonthsList.classes };
-YearLevel.displayName = '@xiaoye-react/dates/YearLevel';
+YearLevel.displayName = '@xiaoye-react/ui/YearLevel';

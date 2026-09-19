@@ -6,7 +6,7 @@ export function useModals() {
 
   if (!ctx) {
     throw new Error(
-      '[@xiaoye-react/modals] useModals hook was called outside of context, wrap your app with ModalsProvider component'
+      '[@xiaoye-react/ui] useModals hook was called outside of context, wrap your app with ModalsProvider component'
     );
   }
 

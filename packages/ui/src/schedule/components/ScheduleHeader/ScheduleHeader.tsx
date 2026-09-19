@@ -90,7 +90,7 @@ export const ScheduleHeader = factory<ScheduleHeaderFactory>((_props) => {
   );
 });
 
-ScheduleHeader.displayName = '@xiaoye-react/schedule/ScheduleHeader';
+ScheduleHeader.displayName = '@xiaoye-react/ui/ScheduleHeader';
 ScheduleHeader.classes = classes;
 ScheduleHeader.Control = HeaderControl;
 ScheduleHeader.Next = ScheduleHeaderNext;

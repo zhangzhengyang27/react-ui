@@ -112,4 +112,4 @@ export const PickerControl = factory<PickerControlFactory>((_props) => {
 
 PickerControl.classes = classes;
 PickerControl.varsResolver = varsResolver;
-PickerControl.displayName = '@xiaoye-react/dates/PickerControl';
+PickerControl.displayName = '@xiaoye-react/ui/PickerControl';

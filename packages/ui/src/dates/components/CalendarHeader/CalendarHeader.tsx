@@ -247,7 +247,7 @@ export const CalendarHeader = factory<CalendarHeaderFactory>((_props) => {
 
 CalendarHeader.classes = classes;
 CalendarHeader.varsResolver = varsResolver;
-CalendarHeader.displayName = '@xiaoye-react/dates/CalendarHeader';
+CalendarHeader.displayName = '@xiaoye-react/ui/CalendarHeader';
 
 export namespace CalendarHeader {
   export type Props = CalendarHeaderProps;

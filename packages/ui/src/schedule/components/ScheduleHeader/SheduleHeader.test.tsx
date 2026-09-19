@@ -10,7 +10,7 @@ describe('@xiaoye-react/schedule/ScheduleHeader', () => {
     varsResolver: true,
     polymorphic: true,
     children: true,
-    displayName: '@xiaoye-react/schedule/ScheduleHeader',
+    displayName: '@xiaoye-react/ui/ScheduleHeader',
     stylesApiSelectors: ['header'],
   });
 

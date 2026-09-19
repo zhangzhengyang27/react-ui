@@ -131,4 +131,4 @@ export function AmPmInput({
   );
 }
 
-AmPmInput.displayName = '@xiaoye-react/dates/AmPmInput';
+AmPmInput.displayName = '@xiaoye-react/ui/AmPmInput';

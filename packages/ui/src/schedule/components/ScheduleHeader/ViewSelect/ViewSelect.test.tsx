@@ -12,7 +12,7 @@ describe('@xiaoye-react/schedule/ViewSelect', () => {
     component: ViewSelect,
     props: defaultProps,
     polymorphic: true,
-    displayName: '@xiaoye-react/schedule/ViewSelect',
+    displayName: '@xiaoye-react/ui/ViewSelect',
     stylesApiSelectors: ['viewSelect'],
   });
 

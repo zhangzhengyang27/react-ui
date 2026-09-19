@@ -1224,7 +1224,7 @@ export const WeekView = factory<WeekViewFactory>((_props) => {
   return content;
 });
 
-WeekView.displayName = '@xiaoye-react/schedule/WeekView';
+WeekView.displayName = '@xiaoye-react/ui/WeekView';
 WeekView.classes = classes;
 WeekView.varsResolver = varsResolver;
 

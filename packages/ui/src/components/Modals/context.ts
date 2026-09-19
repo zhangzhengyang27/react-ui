@@ -55,4 +55,4 @@ export type UIModals = UIModalsOverwritten['modals'];
 export type UIModal = keyof UIModals;
 
 export const ModalsContext = createContext<ModalsContextProps>(null as any);
-ModalsContext.displayName = '@xiaoye-react/modals/ModalsContext';
+ModalsContext.displayName = '@xiaoye-react/ui/ModalsContext';

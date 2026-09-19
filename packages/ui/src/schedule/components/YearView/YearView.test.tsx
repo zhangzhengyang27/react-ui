@@ -19,7 +19,7 @@ describe('@xiaoye-react/schedule/YearView', () => {
       monthYearSelectProps: { popoverProps: { opened: true } },
     },
     varsResolver: true,
-    displayName: '@xiaoye-react/schedule/YearView',
+    displayName: '@xiaoye-react/ui/YearView',
     providerStylesApi: false,
     stylesApiSelectors: [
       'yearView',

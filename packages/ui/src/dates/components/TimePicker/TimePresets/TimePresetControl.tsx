@@ -33,4 +33,4 @@ export function TimePresetControl({
   );
 }
 
-TimePresetControl.displayName = '@xiaoye-react/dates/TimePresetControl';
+TimePresetControl.displayName = '@xiaoye-react/ui/TimePresetControl';

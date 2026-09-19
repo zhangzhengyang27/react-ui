@@ -253,7 +253,7 @@ export const InlineDateTimePicker = genericFactory<InlineDateTimePickerFactory>(
     if ((type as string) === 'multiple') {
       if (process.env.NODE_ENV !== 'production') {
         console.warn(
-          '[@xiaoye-react/dates] InlineDateTimePicker does not support type="multiple"; use DateTimePicker or a plain DatePicker instead.'
+          '[@xiaoye-react/ui] InlineDateTimePicker does not support type="multiple"; use DateTimePicker or a plain DatePicker instead.'
         );
       }
       return;
@@ -506,4 +506,4 @@ export const InlineDateTimePicker = genericFactory<InlineDateTimePickerFactory>(
 });
 
 InlineDateTimePicker.classes = { ...classes, ...DatePicker.classes };
-InlineDateTimePicker.displayName = '@xiaoye-react/dates/InlineDateTimePicker';
+InlineDateTimePicker.displayName = '@xiaoye-react/ui/InlineDateTimePicker';

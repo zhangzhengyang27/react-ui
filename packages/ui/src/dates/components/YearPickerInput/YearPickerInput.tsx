@@ -152,7 +152,7 @@ export const YearPickerInput: YearPickerInputComponent = factory<YearPickerInput
 ) as any;
 
 YearPickerInput.classes = { ...PickerInputBase.classes, ...YearPicker.classes };
-YearPickerInput.displayName = '@xiaoye-react/dates/YearPickerInput';
+YearPickerInput.displayName = '@xiaoye-react/ui/YearPickerInput';
 
 export namespace YearPickerInput {
   export type Props<Type extends DatePickerType = 'default'> = YearPickerInputProps<Type>;

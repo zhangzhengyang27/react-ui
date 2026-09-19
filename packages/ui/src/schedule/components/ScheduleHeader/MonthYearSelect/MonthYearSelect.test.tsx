@@ -21,7 +21,7 @@ describe('@xiaoye-react/schedule/MonthYearSelect', () => {
     component: MonthYearSelect,
     props: defaultProps,
     varsResolver: true,
-    displayName: '@xiaoye-react/schedule/MonthYearSelect',
+    displayName: '@xiaoye-react/ui/MonthYearSelect',
     stylesApiSelectors: [
       'monthYearSelectDropdown',
       'monthYearSelectTarget',

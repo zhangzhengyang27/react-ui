@@ -9,7 +9,7 @@ describe('@xiaoye-react/schedule/ScheduleHeader', () => {
     props: defaultProps,
     varsResolver: true,
     children: true,
-    displayName: '@xiaoye-react/schedule/ScheduleHeader',
+    displayName: '@xiaoye-react/ui/ScheduleHeader',
     stylesApiSelectors: ['header'],
   });
 

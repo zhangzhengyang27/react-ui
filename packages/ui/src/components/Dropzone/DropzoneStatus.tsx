@@ -24,7 +24,7 @@ function createDropzoneStatus(status: keyof DropzoneContextValue) {
     return null;
   };
 
-  Component.displayName = `@xiaoye-react/dropzone/${upperFirst(status)}`;
+  Component.displayName = `@xiaoye-react/ui/${upperFirst(status)}`;
 
   return Component;
 }

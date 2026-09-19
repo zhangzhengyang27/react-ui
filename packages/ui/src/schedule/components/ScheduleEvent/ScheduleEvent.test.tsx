@@ -18,7 +18,7 @@ describe('@xiaoye-react/schedule/ScheduleEvent', () => {
     component: ScheduleEvent,
     props: defaultProps,
     varsResolver: true,
-    displayName: '@xiaoye-react/schedule/ScheduleEvent',
+    displayName: '@xiaoye-react/ui/ScheduleEvent',
     stylesApiSelectors: ['event', 'eventInner'],
   });
 

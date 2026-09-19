@@ -15,7 +15,7 @@ describe('@xiaoye-react/code-highlight/CodeHighlight', () => {
     varsResolver: true,
     polymorphic: true,
     selector: '.ui-CodeHighlight-codeHighlight',
-    displayName: '@xiaoye-react/code-highlight/CodeHighlight',
+    displayName: '@xiaoye-react/ui/CodeHighlight',
     stylesApiSelectors: [
       'codeHighlight',
       'pre',

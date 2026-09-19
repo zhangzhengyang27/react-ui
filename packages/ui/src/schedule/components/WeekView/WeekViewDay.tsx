@@ -155,7 +155,7 @@ export const WeekViewTimeSlot = memo(
   }
 );
 
-WeekViewTimeSlot.displayName = '@xiaoye-react/schedule/WeekViewTimeSlot';
+WeekViewTimeSlot.displayName = '@xiaoye-react/ui/WeekViewTimeSlot';
 
 export interface WeekViewDayProps {
   /** Date to display */

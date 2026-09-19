@@ -58,4 +58,4 @@ export function HiddenDatesInput({
   );
 }
 
-HiddenDatesInput.displayName = '@xiaoye-react/dates/HiddenDatesInput';
+HiddenDatesInput.displayName = '@xiaoye-react/ui/HiddenDatesInput';

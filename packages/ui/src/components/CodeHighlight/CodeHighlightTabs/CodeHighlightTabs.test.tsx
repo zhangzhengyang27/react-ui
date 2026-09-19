@@ -17,7 +17,7 @@ describe('@xiaoye-react/code-highlight/CodeHighlightTabs', () => {
     props: defaultProps,
     polymorphic: true,
     providerStylesApi: false,
-    displayName: '@xiaoye-react/code-highlight/CodeHighlightTabs',
+    displayName: '@xiaoye-react/ui/CodeHighlightTabs',
     stylesApiSelectors: [
       'root',
       'codeHighlight',

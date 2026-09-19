@@ -17,7 +17,7 @@ describe('@xiaoye-react/dates/MonthLevel', () => {
   tests.itSupportsSystemProps<MonthLevelProps, MonthLevelStylesNames>({
     component: MonthLevel,
     props: defaultProps,
-    displayName: '@xiaoye-react/dates/MonthLevel',
+    displayName: '@xiaoye-react/ui/MonthLevel',
     stylesApiSelectors: [
       'calendarHeader',
       'calendarHeaderControl',

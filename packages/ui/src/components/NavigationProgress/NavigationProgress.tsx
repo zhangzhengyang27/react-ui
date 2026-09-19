@@ -89,4 +89,4 @@ export function NavigationProgress({
   );
 }
 
-NavigationProgress.displayName = '@xiaoye-react/nprogress/NavigationProgress';
+NavigationProgress.displayName = '@xiaoye-react/ui/NavigationProgress';

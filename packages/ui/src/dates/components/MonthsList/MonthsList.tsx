@@ -193,4 +193,4 @@ export const MonthsList = factory<MonthsListFactory>((_props) => {
 });
 
 MonthsList.classes = classes;
-MonthsList.displayName = '@xiaoye-react/dates/MonthsList';
+MonthsList.displayName = '@xiaoye-react/ui/MonthsList';

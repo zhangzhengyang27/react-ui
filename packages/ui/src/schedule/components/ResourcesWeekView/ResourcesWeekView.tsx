@@ -1083,6 +1083,6 @@ export const ResourcesWeekView = factory<ResourcesWeekViewFactory>((_props) => {
   return content;
 });
 
-ResourcesWeekView.displayName = '@xiaoye-react/schedule/ResourcesWeekView';
+ResourcesWeekView.displayName = '@xiaoye-react/ui/ResourcesWeekView';
 ResourcesWeekView.classes = classes;
 ResourcesWeekView.varsResolver = varsResolver;

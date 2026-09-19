@@ -540,7 +540,7 @@ export const MobileMonthView = factory<MobileMonthViewFactory>((_props) => {
   );
 });
 
-MobileMonthView.displayName = '@xiaoye-react/schedule/MobileMonthView';
+MobileMonthView.displayName = '@xiaoye-react/ui/MobileMonthView';
 MobileMonthView.classes = classes;
 MobileMonthView.varsResolver = varsResolver;
 

@@ -52,7 +52,7 @@ describe('@xiaoye-react/schedule/get-day-view-events', () => {
       testUtils.createEvent({ id: 1, start: `${testDate} 14:00:00`, end: `${testDate} 15:00:00` }),
     ];
     expect(() => getDayViewEvents({ events, date: testDate })).toThrow(
-      '[@xiaoye-react/schedule] DayView: Duplicated event ids found: 1'
+      '[@xiaoye-react/ui] DayView: Duplicated event ids found: 1'
     );
   });
 

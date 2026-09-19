@@ -183,4 +183,4 @@ export const DecadeLevel = factory<DecadeLevelFactory>((_props) => {
 });
 
 DecadeLevel.classes = { ...YearsList.classes, ...CalendarHeader.classes };
-DecadeLevel.displayName = '@xiaoye-react/dates/DecadeLevel';
+DecadeLevel.displayName = '@xiaoye-react/ui/DecadeLevel';

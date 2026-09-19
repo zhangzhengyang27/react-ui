@@ -155,7 +155,7 @@ export const MonthPickerInput: MonthPickerInputComponent = factory<MonthPickerIn
 ) as any;
 
 MonthPickerInput.classes = { ...PickerInputBase.classes, ...MonthPicker.classes };
-MonthPickerInput.displayName = '@xiaoye-react/dates/MonthPickerInput';
+MonthPickerInput.displayName = '@xiaoye-react/ui/MonthPickerInput';
 
 export namespace MonthPickerInput {
   export type Props<Type extends DatePickerType = 'default'> = MonthPickerInputProps<Type>;

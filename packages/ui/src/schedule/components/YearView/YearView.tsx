@@ -340,7 +340,7 @@ export const YearView = factory<YearViewFactory>((_props) => {
   );
 });
 
-YearView.displayName = '@xiaoye-react/schedule/YearView';
+YearView.displayName = '@xiaoye-react/ui/YearView';
 YearView.classes = classes;
 YearView.varsResolver = varsResolver;
 

@@ -354,7 +354,7 @@ export const ResourcesSchedule = factory<ResourcesScheduleFactory>((_props) => {
   );
 });
 
-ResourcesSchedule.displayName = '@xiaoye-react/schedule/ResourcesSchedule';
+ResourcesSchedule.displayName = '@xiaoye-react/ui/ResourcesSchedule';
 ResourcesSchedule.classes = classes;
 
 export namespace ResourcesSchedule {

@@ -150,7 +150,7 @@ export const DatePickerInput: DatePickerInputComponent = factory<DatePickerInput
 ) as any;
 
 DatePickerInput.classes = { ...PickerInputBase.classes, ...DatePicker.classes };
-DatePickerInput.displayName = '@xiaoye-react/dates/DatePickerInput';
+DatePickerInput.displayName = '@xiaoye-react/ui/DatePickerInput';
 
 export namespace DatePickerInput {
   export type Props = DatePickerInputProps;

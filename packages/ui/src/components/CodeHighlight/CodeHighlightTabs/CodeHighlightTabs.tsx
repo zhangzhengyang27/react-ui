@@ -203,5 +203,5 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>((_props) => {
   );
 });
 
-CodeHighlightTabs.displayName = '@xiaoye-react/code-highlight/CodeHighlightTabs';
+CodeHighlightTabs.displayName = '@xiaoye-react/ui/CodeHighlightTabs';
 CodeHighlightTabs.classes = classes;

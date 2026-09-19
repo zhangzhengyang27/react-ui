@@ -14,7 +14,7 @@ describe('@xiaoye-react/dropzone/Dropzone', () => {
     props: defaultProps,
     varsResolver: true,
     children: true,
-    displayName: '@xiaoye-react/dropzone/Dropzone',
+    displayName: '@xiaoye-react/ui/Dropzone',
     stylesApiSelectors: ['root', 'inner'],
   });
 

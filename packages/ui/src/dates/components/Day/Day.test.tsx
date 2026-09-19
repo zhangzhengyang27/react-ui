@@ -26,7 +26,7 @@ describe('@xiaoye-react/dates/Day', () => {
     component: Day,
     props: defaultProps,
     varsResolver: true,
-    displayName: '@xiaoye-react/dates/Day',
+    displayName: '@xiaoye-react/ui/Day',
     stylesApiSelectors: ['day'],
   });
 

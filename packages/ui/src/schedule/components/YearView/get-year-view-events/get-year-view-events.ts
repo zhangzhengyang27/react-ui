@@ -59,7 +59,7 @@ export function getYearViewEvents({ date, events }: GetYearViewEventsInput) {
       if (!ids.has(event.id)) {
         ids.add(event.id);
       } else {
-        throw new Error(`[@xiaoye-react/schedule] YearView: Duplicated event ids found: ${event.id}`);
+        throw new Error(`[@xiaoye-react/ui] YearView: Duplicated event ids found: ${event.id}`);
       }
     }
   }

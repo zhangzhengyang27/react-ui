@@ -19,7 +19,7 @@ describe('@xiaoye-react/dropzone/DropzoneFullScreen', () => {
     size: false,
     variant: false,
     mod: false,
-    displayName: '@xiaoye-react/dropzone/DropzoneFullScreen',
+    displayName: '@xiaoye-react/ui/DropzoneFullScreen',
     stylesApiSelectors: ['fullScreen'],
     selector: '.ui-DropzoneFullScreen-fullScreen',
   });

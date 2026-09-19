@@ -42,7 +42,7 @@ export function filterWeekViewEvents({
       if (!ids.has(event.id)) {
         ids.add(event.id);
       } else {
-        throw new Error(`[@xiaoye-react/schedule] WeekView: Duplicated event ids found: ${event.id}`);
+        throw new Error(`[@xiaoye-react/ui] WeekView: Duplicated event ids found: ${event.id}`);
       }
     }
   }

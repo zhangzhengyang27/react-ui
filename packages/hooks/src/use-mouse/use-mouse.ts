@@ -36,18 +36,20 @@ export function useMouse<T extends HTMLElement = any>(
     const refCallback: React.RefCallback<T | null> = useCallback(
         node => {
             const setMousePosition = (event: MouseEvent) => {
+                // 坐标未变则保留原引用：mousemove 常在一帧内给出相同的取整坐标，
+                // 无条件 setState 新对象会让消费组件跟着空转重渲染
+                const apply = (x: number, y: number) =>
+                    setPosition(prev => (prev.x === x && prev.y === y ? prev : { x, y }))
+
                 if (node) {
                     const rect = node.getBoundingClientRect()
-                    setPosition({
-                        x: Math.max(0, Math.round(event.clientX - rect.left)),
-                        y: Math.max(0, Math.round(event.clientY - rect.top))
-                    })
+                    apply(Math.max(0, Math.round(event.clientX - rect.left)), Math.max(0, Math.round(event.clientY - rect.top)))
                 } else {
-                    setPosition({ x: event.clientX, y: event.clientY })
+                    apply(event.clientX, event.clientY)
                 }
             }
 
-            const resetMousePosition = () => setPosition({ x: 0, y: 0 })
+            const resetMousePosition = () => setPosition(prev => (prev.x === 0 && prev.y === 0 ? prev : { x: 0, y: 0 }))
 
             node?.addEventListener('mousemove', setMousePosition)
             if (resetOnExit) {

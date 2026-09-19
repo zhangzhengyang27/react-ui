@@ -13,7 +13,7 @@ import {
     useStyles
 } from '../../core'
 import { InputBase } from '../InputBase'
-import { InputWrapper } from '../Input'
+import { InputWrapper, type __BaseInputProps } from '../Input'
 import classes from './NumberInput.module.css'
 
 export type NumberInputStylesNames = 'root' | 'input' | 'section' | 'control' | 'icon'
@@ -25,6 +25,8 @@ export type NumberInputCssVariables = {
 export interface NumberInputProps
     extends BoxProps,
         StylesApiProps<NumberInputFactory>,
+        // 渲染时 others 全量透传给 InputBase，其公共 prop 必须在类型里可见
+        __BaseInputProps,
         ElementProps<'input', 'size' | 'value' | 'defaultValue' | 'onChange'> {
     /** 渲染在输入框上方的标签 */
     label?: React.ReactNode

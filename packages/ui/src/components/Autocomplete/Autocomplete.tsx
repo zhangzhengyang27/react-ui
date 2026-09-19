@@ -5,7 +5,7 @@ import { CloseButton } from '../CloseButton'
 import { Combobox } from '../Combobox'
 import type { ComboboxOptionData } from '../Combobox'
 import { InputBase } from '../InputBase'
-import { InputWrapper } from '../Input'
+import { InputWrapper, type __BaseInputProps } from '../Input'
 import classes from './Autocomplete.module.css'
 
 export type AutocompleteStylesNames = 'root' | 'dropdown' | 'options' | 'option' | 'empty' | 'group' | 'groupLabel'
@@ -22,6 +22,8 @@ export type AutocompleteData = (string | AutocompleteItem)[]
 export interface AutocompleteProps
     extends BoxProps,
         StylesApiProps<AutocompleteFactory>,
+        // 渲染时 others 全量透传给 InputBase，其公共 prop 必须在类型里可见
+        __BaseInputProps,
         Omit<React.ComponentPropsWithoutRef<'input'>, 'size' | 'style' | 'value' | 'defaultValue' | 'onChange'> {
     //** 自动补全选项数据 */
     data?: AutocompleteData

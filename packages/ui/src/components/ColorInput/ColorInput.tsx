@@ -24,7 +24,7 @@ import {
 } from '../ColorPicker'
 import { ColorSwatch } from '../ColorSwatch'
 import { InputBase } from '../InputBase'
-import { InputWrapper } from '../Input'
+import { InputWrapper, type __BaseInputProps } from '../Input'
 import { Popover, PopoverProps } from '../Popover'
 import { EyeDropperIcon } from './EyeDropperIcon'
 import classes from './ColorInput.module.css'
@@ -51,6 +51,8 @@ export interface ColorInputProps
     extends BoxProps,
         __ColorPickerProps,
         StylesApiProps<ColorInputFactory>,
+        // 渲染时 others 全量透传给 InputBase，其公共 prop 必须在类型里可见
+        __BaseInputProps,
         ElementProps<'input', 'size' | 'onChange' | 'value' | 'defaultValue'> {
     /** 渲染在输入框上方的标签 */
     label?: React.ReactNode

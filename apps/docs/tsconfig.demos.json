@@ -1,0 +1,17 @@
+{
+    "extends": "./tsconfig.json",
+    "include": ["./demos", "../@types", "../../packages/ui/src/global.d.ts"],
+    "exclude": [
+        "demos/**/*.story.tsx",
+        "demos/**/*.test.tsx",
+        "demos/**/*.test.ts",
+        "node_modules",
+        "dist",
+        ".dumi/tmp",
+        ".dumi/tmp-production"
+    ],
+    "compilerOptions": {
+        "noEmit": true,
+        "types": ["node"]
+    }
+}

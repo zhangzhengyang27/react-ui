@@ -1,12 +1,1 @@
-[
-  {
-    "demo": "theming/Theming.demo.luminanceThreshold#luminanceThreshold|console.error",
-    "kind": "console.error",
-    "text": "%o %s %s [@xiaoye-react/ui] Failed to parse color. Expected color to be a string, instead got undefined The above error occurred in the <Wrapper> component. React will try to recreate this component tree from scratch using the error boundary you provided, Boundary."
-  },
-  {
-    "demo": "theming/Theming.demo.luminanceThreshold#luminanceThreshold|render-throw",
-    "kind": "render-throw",
-    "text": "[@xiaoye-react/ui] Failed to parse color. Expected color to be a string, instead got undefined"
-  }
-]
+[]

@@ -1,6 +1,6 @@
 import { formRootRule, validateValues } from './validate-values';
 
-describe('@xiaoye-react/form/validate-values', () => {
+describe('@xiaoye-react/ui/validate-values', () => {
   it('returns correct results if form does not have any errors', async () => {
     expect(
       await validateValues(

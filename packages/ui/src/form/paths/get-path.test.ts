@@ -38,7 +38,7 @@ const values = {
   ],
 };
 
-describe('@xiaoye-react/form/get-path', () => {
+describe('@xiaoye-react/ui/get-path', () => {
   it('supports getting property from root', () => {
     expect(getPath('name', values)).toBe('John');
     expect(getPath('age', values)).toBe(42);

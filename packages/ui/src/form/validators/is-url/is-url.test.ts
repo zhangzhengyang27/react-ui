@@ -2,7 +2,7 @@ import { isUrl } from './is-url';
 
 const TEST_ERROR = 'is-url-error';
 
-describe('@xiaoye-react/form/isUrl', () => {
+describe('@xiaoye-react/ui/isUrl', () => {
   it('detects valid URLs', () => {
     const validator = isUrl(TEST_ERROR);
     expect(validator('https://example.com')).toBe(null);

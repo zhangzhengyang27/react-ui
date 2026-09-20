@@ -192,10 +192,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/get-input-props-controlled', () => {
+describe('@xiaoye-react/ui/get-input-props-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/get-input-props-uncontrolled', () => {
+describe('@xiaoye-react/ui/get-input-props-uncontrolled', () => {
   tests('uncontrolled');
 });

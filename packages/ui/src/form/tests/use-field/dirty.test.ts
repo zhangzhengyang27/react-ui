@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react';
 import { useField } from '../../use-field';
 
-describe('@xiaoye-react/form/use-field/dirty', () => {
+describe('@xiaoye-react/ui/use-field/dirty', () => {
   it('detects correct dirty state', () => {
     const hook = renderHook(() => useField({ initialValue: 'test' }));
     expect(hook.result.current.isDirty()).toBe(false);

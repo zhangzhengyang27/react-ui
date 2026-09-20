@@ -1,6 +1,6 @@
 import { reorderPath } from './reorder-path';
 
-describe('@xiaoye-react/form/reorder-path', () => {
+describe('@xiaoye-react/ui/reorder-path', () => {
   it('reorders array items at given root path', () => {
     expect(reorderPath('a', { from: 2, to: 0 }, { a: [1, 2, 3] })).toStrictEqual({ a: [3, 1, 2] });
     expect(reorderPath('a', { from: 1, to: 2 }, { a: [1, 2, 3] })).toStrictEqual({ a: [1, 3, 2] });

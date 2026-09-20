@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react';
 import { useField } from '../../use-field';
 
-describe('@xiaoye-react/form/use-field compiler stability', () => {
+describe('@xiaoye-react/ui/use-field compiler stability', () => {
   it('changes getter identity after a value change', () => {
     const hook = renderHook(() => useField({ initialValue: 'test' }));
 

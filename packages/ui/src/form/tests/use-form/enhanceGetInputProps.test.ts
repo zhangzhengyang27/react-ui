@@ -132,10 +132,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/enhanceGetInputProps-controlled', () => {
+describe('@xiaoye-react/ui/enhanceGetInputProps-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/enhanceGetInputProps-uncontrolled', () => {
+describe('@xiaoye-react/ui/enhanceGetInputProps-uncontrolled', () => {
   tests('uncontrolled');
 });

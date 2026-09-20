@@ -15,7 +15,7 @@ function TestComponent({ watch }: { watch: FormFieldSubscriber<any, any> }) {
   );
 }
 
-describe('@xiaoye-react/form/watch', () => {
+describe('@xiaoye-react/ui/watch', () => {
   it('allows observing field changes', async () => {
     const spy = jest.fn();
     render(<TestComponent watch={spy} />);

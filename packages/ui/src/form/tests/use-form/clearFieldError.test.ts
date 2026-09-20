@@ -15,10 +15,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/clearFieldError-controlled', () => {
+describe('@xiaoye-react/ui/clearFieldError-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/clearFieldError-uncontrolled', () => {
+describe('@xiaoye-react/ui/clearFieldError-uncontrolled', () => {
   tests('uncontrolled');
 });

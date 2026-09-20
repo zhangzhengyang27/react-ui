@@ -44,10 +44,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/resetDirty-controlled', () => {
+describe('@xiaoye-react/ui/resetDirty-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/resetDirty-uncontrolled', () => {
+describe('@xiaoye-react/ui/resetDirty-uncontrolled', () => {
   tests('uncontrolled');
 });

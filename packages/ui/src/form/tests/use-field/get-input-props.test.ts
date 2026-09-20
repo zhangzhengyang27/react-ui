@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react';
 import { useField } from '../../use-field';
 
-describe('@xiaoye-react/form/use-field/get-input-props', () => {
+describe('@xiaoye-react/ui/use-field/get-input-props', () => {
   it('returns correct props from getInputProps (controlled)', () => {
     const hook = renderHook(() => useField({ initialValue: 'test', initialError: 'test-error' }));
     expect(hook.result.current.getInputProps()).toStrictEqual({

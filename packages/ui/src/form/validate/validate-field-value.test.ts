@@ -1,6 +1,6 @@
 import { validateFieldValue } from './validate-field-value';
 
-describe('@xiaoye-react/form/validate-field-value', () => {
+describe('@xiaoye-react/ui/validate-field-value', () => {
   it('validates root field with rules record', async () => {
     expect(
       await validateFieldValue(

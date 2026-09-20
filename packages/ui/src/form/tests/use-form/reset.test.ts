@@ -64,10 +64,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/reset-controlled', () => {
+describe('@xiaoye-react/ui/reset-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/reset-uncontrolled', () => {
+describe('@xiaoye-react/ui/reset-uncontrolled', () => {
   tests('uncontrolled');
 });

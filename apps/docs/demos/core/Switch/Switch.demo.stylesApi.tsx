@@ -6,19 +6,12 @@ const code = `
 import { Switch } from '@xiaoye-react/ui';
 
 function Demo() {
-  return <Switch{{props}} label="Switch 组件" description="Switch 描述" error="Switch 错误" />;
+  return <Switch{{props}} label="Switch 组件" />;
 }
 `;
 
 function Demo(props: any) {
-  return (
-    <Switch
-      {...props}
-      label="Switch 组件"
-      description="Switch 描述"
-      error="Switch 错误"
-    />
-  );
+  return <Switch {...props} label="Switch 组件" />;
 }
 
 export const stylesApi: UIDemo = {

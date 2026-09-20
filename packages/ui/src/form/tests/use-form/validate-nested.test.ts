@@ -120,10 +120,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/validate with nested rules controlled', () => {
+describe('@xiaoye-react/ui/validate with nested rules controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/validate with nested rules uncontrolled', () => {
+describe('@xiaoye-react/ui/validate with nested rules uncontrolled', () => {
   tests('uncontrolled');
 });

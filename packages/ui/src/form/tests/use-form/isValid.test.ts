@@ -42,10 +42,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/isValid-controlled', () => {
+describe('@xiaoye-react/ui/isValid-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/isValid-uncontrolled', () => {
+describe('@xiaoye-react/ui/isValid-uncontrolled', () => {
   tests('uncontrolled');
 });

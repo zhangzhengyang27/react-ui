@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react';
 import { useField } from '../../use-field';
 
-describe('@xiaoye-react/form/use-field/touched', () => {
+describe('@xiaoye-react/ui/use-field/touched', () => {
   it('sets correct initial touched state', () => {
     const hook = renderHook(() => useField({ initialValue: 'test', initialTouched: true }));
     expect(hook.result.current.isTouched()).toBe(true);

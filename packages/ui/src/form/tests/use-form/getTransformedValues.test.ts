@@ -52,10 +52,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/getTransformedValues-controlled', () => {
+describe('@xiaoye-react/ui/getTransformedValues-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/getTransformedValues-uncontrolled', () => {
+describe('@xiaoye-react/ui/getTransformedValues-uncontrolled', () => {
   tests('uncontrolled');
 });

@@ -1,6 +1,6 @@
 import { replacePath } from './replace-path';
 
-describe('@xiaoye-react/form/replace-path', () => {
+describe('@xiaoye-react/ui/replace-path', () => {
   it('replaces item at specified index in array', () => {
     expect(replacePath('field', 'new', 1, { field: ['old', 'old'] })).toEqual({
       field: ['old', 'new'],

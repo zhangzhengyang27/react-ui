@@ -8,7 +8,7 @@ const TEST_STATUS = {
   'l.d.0.1.e': true,
 };
 
-describe('@xiaoye-react/form/get-status', () => {
+describe('@xiaoye-react/ui/get-status', () => {
   it('returns correct status for given absolute path', () => {
     expect(getStatus(TEST_STATUS, 'b')).toBe(true);
     expect(getStatus(TEST_STATUS, 'e')).toBe(false);

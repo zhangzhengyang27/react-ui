@@ -64,10 +64,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/touched-controlled', () => {
+describe('@xiaoye-react/ui/touched-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/touched-uncontrolled', () => {
+describe('@xiaoye-react/ui/touched-uncontrolled', () => {
   tests('uncontrolled');
 });

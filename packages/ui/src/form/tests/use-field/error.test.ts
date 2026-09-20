@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react';
 import { useField } from '../../use-field';
 
-describe('@xiaoye-react/form/use-field/error', () => {
+describe('@xiaoye-react/ui/use-field/error', () => {
   it('correctly sets initial error', () => {
     const hook = renderHook(() => useField({ initialValue: 'test', initialError: 'test-error' }));
     expect(hook.result.current.error).toBe('test-error');

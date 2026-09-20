@@ -3,13 +3,13 @@ import { Stepper } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import classes from './Stepper.demo.stylesApi3.module.css';
 
-const cssCode = `.separator {
+const cssCode = `.stepSeparator {
   height: 2px;
   border-top: 2px solid light-dark(var(--ui-color-gray-4), var(--ui-color-dark-3));
   border-radius: var(--ui-radius-xl);
   background-color: transparent;
 
-  &[data-active] {
+  .step[data-active] & {
     border-width: 0;
     background-image: linear-gradient(
       45deg,
@@ -24,7 +24,7 @@ const cssCode = `.separator {
   background-color: light-dark(var(--ui-color-gray-0), var(--ui-color-dark-4));
   border-width: 0;
 
-  &[data-completed] {
+  .step[data-completed] & {
     border-width: 0;
     background-color: transparent;
     background-image: linear-gradient(
@@ -38,7 +38,7 @@ const cssCode = `.separator {
 .step {
   transition: transform 150ms ease;
 
-  &[data-progress] {
+  &[data-active] {
     transform: scale(1.05);
   }
 }

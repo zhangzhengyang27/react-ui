@@ -57,10 +57,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/setFieldValue-controlled', () => {
+describe('@xiaoye-react/ui/setFieldValue-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/setFieldValue-uncontrolled', () => {
+describe('@xiaoye-react/ui/setFieldValue-uncontrolled', () => {
   tests('uncontrolled');
 });

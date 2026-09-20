@@ -2,7 +2,7 @@ import { matchesField } from './matches-field';
 
 const TEST_ERROR = 'matches-field-error';
 
-describe('@xiaoye-react/form/matches-field', () => {
+describe('@xiaoye-react/ui/matches-field', () => {
   it('correctly detects values that do not match', () => {
     const validator = matchesField('testField', TEST_ERROR);
     expect(validator('test-value', { testField: 'test-value-1' })).toBe(TEST_ERROR);

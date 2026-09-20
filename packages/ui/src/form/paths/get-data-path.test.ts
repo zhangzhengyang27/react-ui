@@ -1,6 +1,6 @@
 import { getDataPath } from './get-data-path';
 
-describe('@xiaoye-react/form/get-data-path', () => {
+describe('@xiaoye-react/ui/get-data-path', () => {
   it('returns field path if form name is not provided', () => {
     expect(getDataPath(undefined, 'field')).toBe('field');
   });

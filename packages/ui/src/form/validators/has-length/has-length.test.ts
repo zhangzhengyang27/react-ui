@@ -2,7 +2,7 @@ import { hasLength } from './has-length';
 
 const TEST_ERROR = 'has-length-error';
 
-describe('@xiaoye-react/form/hasLength', () => {
+describe('@xiaoye-react/ui/hasLength', () => {
   it('detects valid value', () => {
     const numberValidator = hasLength(3, TEST_ERROR);
     expect(numberValidator('hel')).toBe(null);

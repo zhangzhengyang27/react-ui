@@ -1,6 +1,6 @@
 import { isJSONString } from './is-json-string';
 
-describe('@xiaoye-react/form/isJSONString', () => {
+describe('@xiaoye-react/ui/isJSONString', () => {
   it('correctly validates JSON strings', () => {
     const validator = isJSONString('test-error');
 

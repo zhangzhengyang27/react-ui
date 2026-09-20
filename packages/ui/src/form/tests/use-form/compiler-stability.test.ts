@@ -109,10 +109,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/use-form compiler stability (controlled)', () => {
+describe('@xiaoye-react/ui/use-form compiler stability (controlled)', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/use-form compiler stability (uncontrolled)', () => {
+describe('@xiaoye-react/ui/use-form compiler stability (uncontrolled)', () => {
   tests('uncontrolled');
 });

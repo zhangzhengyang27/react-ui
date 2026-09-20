@@ -91,10 +91,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/removeListItem-controlled', () => {
+describe('@xiaoye-react/ui/removeListItem-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/removeListItem-uncontrolled', () => {
+describe('@xiaoye-react/ui/removeListItem-uncontrolled', () => {
   tests('uncontrolled');
 });

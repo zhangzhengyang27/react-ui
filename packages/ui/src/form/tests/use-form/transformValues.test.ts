@@ -28,10 +28,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/transformValues-controlled', () => {
+describe('@xiaoye-react/ui/transformValues-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/transformValues-uncontrolled', () => {
+describe('@xiaoye-react/ui/transformValues-uncontrolled', () => {
   tests('uncontrolled');
 });

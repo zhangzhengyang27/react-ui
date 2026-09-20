@@ -57,10 +57,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/validateInputOnBlur-controlled', () => {
+describe('@xiaoye-react/ui/validateInputOnBlur-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/validateInputOnBlur-uncontrolled', () => {
+describe('@xiaoye-react/ui/validateInputOnBlur-uncontrolled', () => {
   tests('uncontrolled');
 });

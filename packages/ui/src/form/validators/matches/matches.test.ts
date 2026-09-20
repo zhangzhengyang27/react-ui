@@ -2,7 +2,7 @@ import { matches } from './matches';
 
 const TEST_ERROR = 'matches-error';
 
-describe('@xiaoye-react/form/matches', () => {
+describe('@xiaoye-react/ui/matches', () => {
   it('correctly detects values that do not match', () => {
     const validator = matches(/^\d+$/, TEST_ERROR);
     expect(validator('test')).toBe(TEST_ERROR);

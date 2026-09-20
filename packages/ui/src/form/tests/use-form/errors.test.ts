@@ -27,10 +27,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/errors-controlled', () => {
+describe('@xiaoye-react/ui/errors-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/errors-uncontrolled', () => {
+describe('@xiaoye-react/ui/errors-uncontrolled', () => {
   tests('uncontrolled');
 });

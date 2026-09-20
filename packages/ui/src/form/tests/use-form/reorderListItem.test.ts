@@ -72,10 +72,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/reorderListItem-controlled', () => {
+describe('@xiaoye-react/ui/reorderListItem-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/reorderListItem-uncontrolled', () => {
+describe('@xiaoye-react/ui/reorderListItem-uncontrolled', () => {
   tests('uncontrolled');
 });

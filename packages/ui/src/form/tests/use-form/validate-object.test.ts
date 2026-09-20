@@ -115,10 +115,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/validate with record rules controlled', () => {
+describe('@xiaoye-react/ui/validate with record rules controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/validate with record rules uncontrolled', () => {
+describe('@xiaoye-react/ui/validate with record rules uncontrolled', () => {
   tests('uncontrolled');
 });

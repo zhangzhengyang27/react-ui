@@ -108,10 +108,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/validateInputOnChange-controlled', () => {
+describe('@xiaoye-react/ui/validateInputOnChange-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/validateInputOnChange-uncontrolled', () => {
+describe('@xiaoye-react/ui/validateInputOnChange-uncontrolled', () => {
   tests('uncontrolled');
 });

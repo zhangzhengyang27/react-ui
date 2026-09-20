@@ -10,7 +10,7 @@ function validateAsync(value: string): Promise<string | null> {
   });
 }
 
-describe('@xiaoye-react/form/use-field/validate', () => {
+describe('@xiaoye-react/ui/use-field/validate', () => {
   beforeAll(() => {
     jest.useFakeTimers();
   });

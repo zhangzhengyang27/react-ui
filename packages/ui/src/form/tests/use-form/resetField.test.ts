@@ -24,10 +24,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/resetField-controlled', () => {
+describe('@xiaoye-react/ui/resetField-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/resetField-uncontrolled', () => {
+describe('@xiaoye-react/ui/resetField-uncontrolled', () => {
   tests('uncontrolled');
 });

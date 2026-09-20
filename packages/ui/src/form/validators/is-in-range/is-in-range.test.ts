@@ -2,7 +2,7 @@ import { isInRange } from './is-in-range';
 
 const TEST_ERROR = 'is-in-range-error';
 
-describe('@xiaoye-react/form/isInRange', () => {
+describe('@xiaoye-react/ui/isInRange', () => {
   it('detects valid value', () => {
     const minValidator = isInRange({ min: 2 }, TEST_ERROR);
     expect(minValidator(2)).toBe(null);

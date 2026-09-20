@@ -36,10 +36,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/setValues-controlled', () => {
+describe('@xiaoye-react/ui/setValues-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/setValues-uncontrolled', () => {
+describe('@xiaoye-react/ui/setValues-uncontrolled', () => {
   tests('uncontrolled');
 });

@@ -10,10 +10,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/setErrors-controlled', () => {
+describe('@xiaoye-react/ui/setErrors-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/setErrors-uncontrolled', () => {
+describe('@xiaoye-react/ui/setErrors-uncontrolled', () => {
   tests('uncontrolled');
 });

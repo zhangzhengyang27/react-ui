@@ -17,10 +17,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/initialize-controlled', () => {
+describe('@xiaoye-react/ui/initialize-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/initialize-uncontrolled', () => {
+describe('@xiaoye-react/ui/initialize-uncontrolled', () => {
   tests('uncontrolled');
 });

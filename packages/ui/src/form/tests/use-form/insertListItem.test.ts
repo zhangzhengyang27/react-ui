@@ -96,10 +96,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/insertListItem-controlled', () => {
+describe('@xiaoye-react/ui/insertListItem-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/insertListItem-uncontrolled', () => {
+describe('@xiaoye-react/ui/insertListItem-uncontrolled', () => {
   tests('uncontrolled');
 });

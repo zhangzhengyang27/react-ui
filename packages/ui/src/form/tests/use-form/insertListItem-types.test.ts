@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react';
 import { useForm } from '../../use-form';
 
-describe('@xiaoye-react/form/insertListItem-type-safety', () => {
+describe('@xiaoye-react/ui/insertListItem-type-safety', () => {
   it('correctly types insertListItem with array of objects', () => {
     const hook = renderHook(() =>
       useForm({

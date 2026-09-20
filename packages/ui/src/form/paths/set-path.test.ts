@@ -38,7 +38,7 @@ const values = {
   ],
 };
 
-describe('@xiaoye-react/form/set-path', () => {
+describe('@xiaoye-react/ui/set-path', () => {
   it('sets value at root property', () => {
     expect(setPath('name', 'Jane', values)).toStrictEqual({ ...values, name: 'Jane' });
     expect(setPath('age', 25, values)).toStrictEqual({ ...values, age: 25 });

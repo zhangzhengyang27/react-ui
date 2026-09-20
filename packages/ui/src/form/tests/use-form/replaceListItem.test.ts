@@ -13,10 +13,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/replaceListItem-controlled', () => {
+describe('@xiaoye-react/ui/replaceListItem-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/replaceListItem-uncontrolled', () => {
+describe('@xiaoye-react/ui/replaceListItem-uncontrolled', () => {
   tests('uncontrolled');
 });

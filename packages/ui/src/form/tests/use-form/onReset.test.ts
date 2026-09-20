@@ -26,10 +26,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/onReset-controlled', () => {
+describe('@xiaoye-react/ui/onReset-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/onReset-uncontrolled', () => {
+describe('@xiaoye-react/ui/onReset-uncontrolled', () => {
   tests('uncontrolled');
 });

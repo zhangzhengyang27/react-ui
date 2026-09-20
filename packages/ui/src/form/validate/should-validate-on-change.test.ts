@@ -1,7 +1,7 @@
 import { FORM_INDEX } from '../form-index';
 import { shouldValidateOnChange } from './should-validate-on-change';
 
-describe('@xiaoye-react/form/should-validate-on-change', () => {
+describe('@xiaoye-react/ui/should-validate-on-change', () => {
   it('returns correct results for boolean input', () => {
     expect(shouldValidateOnChange('field', true)).toBe(true);
     expect(shouldValidateOnChange('field', false)).toBe(false);

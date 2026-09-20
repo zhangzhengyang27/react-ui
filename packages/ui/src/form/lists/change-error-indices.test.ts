@@ -20,7 +20,7 @@ const TEST_ERRORS = {
   'nested.0.inner.5.check': 'nested-error-4',
 };
 
-describe('@xiaoye-react/form/change-error-indices', () => {
+describe('@xiaoye-react/ui/change-error-indices', () => {
   it('increments error indices', () => {
     expect(changeErrorIndices('fruits', 4, TEST_ERRORS, 1)).toStrictEqual({
       name: 'name-error',

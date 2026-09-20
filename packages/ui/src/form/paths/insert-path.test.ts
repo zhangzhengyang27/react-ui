@@ -1,6 +1,6 @@
 import { insertPath } from './insert-path';
 
-describe('@xiaoye-react/form/insert-path', () => {
+describe('@xiaoye-react/ui/insert-path', () => {
   it('inserts item at given index', () => {
     expect(insertPath('a', 4, 1, { a: [1, 2, 3] })).toStrictEqual({ a: [1, 4, 2, 3] });
   });

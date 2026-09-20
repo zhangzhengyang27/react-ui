@@ -38,13 +38,13 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/submitting-controlled', () => {
+describe('@xiaoye-react/ui/submitting-controlled', () => {
   beforeAll(() => jest.useFakeTimers());
   afterAll(() => jest.useRealTimers());
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/submitting-uncontrolled', () => {
+describe('@xiaoye-react/ui/submitting-uncontrolled', () => {
   beforeAll(() => jest.useFakeTimers());
   afterAll(() => jest.useRealTimers());
   tests('uncontrolled');

@@ -2,7 +2,7 @@ import { isEmail } from './is-email';
 
 const TEST_ERROR = 'email-error';
 
-describe('@xiaoye-react/form/isEmail', () => {
+describe('@xiaoye-react/ui/isEmail', () => {
   it('detects incorrect email', () => {
     const validator = isEmail(TEST_ERROR);
     expect(validator('')).toBe(TEST_ERROR);

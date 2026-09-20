@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react';
 import { useForm } from '../../use-form';
 
-describe('@xiaoye-react/form/values', () => {
+describe('@xiaoye-react/ui/values', () => {
   it('sets given initial values', () => {
     const hook = renderHook(() => useForm({ initialValues: { a: 1, b: 2 } }));
     expect(hook.result.current.values).toStrictEqual({ a: 1, b: 2 });
@@ -53,7 +53,7 @@ describe('@xiaoye-react/form/values', () => {
   });
 });
 
-describe('@xiaoye-react/form/values-uncontrolled', () => {
+describe('@xiaoye-react/ui/values-uncontrolled', () => {
   it('sets given initial values', () => {
     const hook = renderHook(() => useForm({ mode: 'uncontrolled', initialValues: { a: 1, b: 2 } }));
     expect(hook.result.current.getValues()).toStrictEqual({ a: 1, b: 2 });

@@ -90,10 +90,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/validate with function rules controlled', () => {
+describe('@xiaoye-react/ui/validate with function rules controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/validate with function rules uncontrolled', () => {
+describe('@xiaoye-react/ui/validate with function rules uncontrolled', () => {
   tests('uncontrolled');
 });

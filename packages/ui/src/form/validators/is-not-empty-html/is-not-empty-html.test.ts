@@ -1,6 +1,6 @@
 import { isNotEmptyHTML } from './is-not-empty-html';
 
-describe('@xiaoye-react/form/isNotEmptyHTML', () => {
+describe('@xiaoye-react/ui/isNotEmptyHTML', () => {
   it('correctly handles strings', () => {
     const validator = isNotEmptyHTML('test-error');
 

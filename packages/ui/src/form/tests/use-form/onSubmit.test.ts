@@ -85,10 +85,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/onSubmit-controlled', () => {
+describe('@xiaoye-react/ui/onSubmit-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/onSubmit-uncontrolled', () => {
+describe('@xiaoye-react/ui/onSubmit-uncontrolled', () => {
   tests('uncontrolled');
 });

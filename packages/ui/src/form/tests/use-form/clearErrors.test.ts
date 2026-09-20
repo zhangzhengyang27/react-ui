@@ -11,10 +11,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/clearErrors-controlled', () => {
+describe('@xiaoye-react/ui/clearErrors-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/clearErrors-uncontrolled', () => {
+describe('@xiaoye-react/ui/clearErrors-uncontrolled', () => {
   tests('uncontrolled');
 });

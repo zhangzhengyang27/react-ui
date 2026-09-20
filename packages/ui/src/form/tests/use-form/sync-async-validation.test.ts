@@ -318,10 +318,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/sync-async-validation-controlled', () => {
+describe('@xiaoye-react/ui/sync-async-validation-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/sync-async-validation-uncontrolled', () => {
+describe('@xiaoye-react/ui/sync-async-validation-uncontrolled', () => {
   tests('uncontrolled');
 });

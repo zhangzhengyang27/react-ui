@@ -2,7 +2,7 @@ import { isOneOf } from './is-one-of';
 
 const TEST_ERROR = 'is-one-of-error';
 
-describe('@xiaoye-react/form/isOneOf', () => {
+describe('@xiaoye-react/ui/isOneOf', () => {
   it('detects valid values from string list', () => {
     const validator = isOneOf(['admin', 'user', 'moderator'], TEST_ERROR);
     expect(validator('admin')).toBe(null);

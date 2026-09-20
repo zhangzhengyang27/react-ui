@@ -62,10 +62,10 @@ function tests(mode: FormMode) {
   });
 }
 
-describe('@xiaoye-react/form/dirty-controlled', () => {
+describe('@xiaoye-react/ui/dirty-controlled', () => {
   tests('controlled');
 });
 
-describe('@xiaoye-react/form/dirty-uncontrolled', () => {
+describe('@xiaoye-react/ui/dirty-uncontrolled', () => {
   tests('uncontrolled');
 });

@@ -20,7 +20,7 @@ const TEST_ERRORS = {
   'nested.0.inner.5.check': 'nested-error-4',
 };
 
-describe('@xiaoye-react/form/clear-list-state', () => {
+describe('@xiaoye-react/ui/clear-list-state', () => {
   it('clears list errors of given field', () => {
     expect(clearListState('fruits', TEST_ERRORS)).toStrictEqual({
       name: 'name-error',

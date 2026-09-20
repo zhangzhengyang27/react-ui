@@ -32,10 +32,9 @@ group:
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| cite | 引用来源 URL | `string` | — |
+| cite | 引用来源，可为文本或自定义节点 | `ReactNode` | — |
 | color | 主题色 | `UIColor` | `'gray'` |
 | icon | 引用图标 | `ReactNode` | — |
-| citeNode | 自定义引用来源节点 | `ReactNode` | — |
 | radius | 圆角 | `UIRadius` | — |
 
 支持所有原生 HTML 属性。

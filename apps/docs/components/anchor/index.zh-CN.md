@@ -74,7 +74,6 @@ function Demo() {
 | size | 尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
 | href | 链接地址 | `string` | — |
 | target | 链接打开方式 | `string` | — |
-| external | 是否外部链接（自动添加 rel="noopener noreferrer"） | `boolean` | `false` |
 
 除上表所列属性外，Anchor 还支持所有原生 HTML 属性。
 

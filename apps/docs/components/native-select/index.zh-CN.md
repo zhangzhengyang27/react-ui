@@ -229,8 +229,6 @@ function Demo() {
 | defaultValue | 默认值 | `string \| string[] \| null` | — |
 | onChange | 值变化回调 | `(value) => void` | — |
 | placeholder | 占位提示 | `string` | — |
-| searchable | 是否可搜索 | `boolean` | `false` |
-| clearable | 是否可清空 | `boolean` | `false` |
 | disabled | 是否禁用 | `boolean` | `false` |
 
 支持所有原生 HTML 属性。

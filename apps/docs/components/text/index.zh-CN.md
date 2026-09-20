@@ -83,7 +83,7 @@ function Demo() {
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | size | 字号 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| string` | `'md'` |
-| weight | 字重 | `TextWeight` | `400` |
+| fw | 字重（Box 样式属性，支持响应式） | `StyleProp<React.CSSProperties['fontWeight']>` | `400` |
 | c | 文字色 | `UIColor` | — |
 | td | text-decoration | `'underline' \| 'line-through'` | — |
 | tt | text-transform | `'capitalize' \| 'uppercase' \| 'lowercase'` | — |

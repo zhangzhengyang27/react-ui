@@ -77,7 +77,7 @@ function Demo() {
 | --- | --- | --- | --- |
 | order | 标题级别 | `1 \| 2 \| 3 \| 4 \| 5 \| 6` | `1` |
 | size | 字号 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| string` | — |
-| weight | 字重 | `TextWeight` | — |
+| fw | 字重（Box 样式属性，支持响应式） | `StyleProp<React.CSSProperties['fontWeight']>` | 按 `order` 取值 |
 | c | 文字色 | `UIColor` | — |
 | ta | 文本对齐 | `'left' \| 'center' \| 'right'` | — |
 | lineClamp | 行数截断 | `number` | — |

@@ -37,7 +37,6 @@ Highlight 基于 [Text](/components/text/) 组件——除 `color` 外所有 Tex
 | highlight | 要高亮的字符串或数组 | `string \| string[]` | — |
 | children | 文本内容 | `string` | — |
 | color | 主题色 | `UIColor` | — |
-| highlightComponent | 自定义高亮渲染组件 | `React.ElementType` | `Mark` |
 
 除上表所列属性外，Highlight 还支持所有原生 HTML 属性。
 

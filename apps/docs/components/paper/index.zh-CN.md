@@ -31,7 +31,7 @@ group:
 | shadow | 阴影 | `UIShadow` | — |
 | radius | 圆角 | `UIRadius` | — |
 | withBorder | 是否显示边框 | `boolean` | `false` |
-| padding | 内边距 | `UISpacing` | `0` |
+| p | 内边距（Box 样式属性，支持响应式） | `StyleProp<UISpacing>` | `0` |
 
 支持所有原生 HTML 属性。
 

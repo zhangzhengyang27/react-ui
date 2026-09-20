@@ -77,7 +77,6 @@ group:
 | speed | 滚动速度（px/s） | `number` | `50` |
 | direction | 方向 | `'left' \| 'right'` | `'left'` |
 | pauseOnHover | 鼠标悬停暂停 | `boolean` | `true` |
-| pauseOnClick | 点击暂停 | `boolean` | `false` |
 
 支持所有原生 HTML 属性。
 

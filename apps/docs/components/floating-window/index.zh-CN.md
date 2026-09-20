@@ -10,7 +10,7 @@ group:
 
 ## 何时使用 {#when-to-use}
 
-需要创建一个可拖拽、可缩放、自由浮动的窗口容器时使用。
+需要创建一个可拖拽、自由浮动的窗口容器时使用。
 
 ## 代码演示 {#examples}
 
@@ -72,9 +72,7 @@ group:
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | initialPosition | 初始位置 | `{ x: number; y: number }` | `{ x: 100, y: 100 }` |
-| initialSize | 初始尺寸 | `{ width: number; height: number }` | `{ width: 400, height: 300 }` |
 | title | 标题 | `ReactNode` | — |
-| resizable | 是否可缩放 | `boolean` | `true` |
 | draggable | 是否可拖拽 | `boolean` | `true` |
 | onClose | 关闭回调 | `() => void` | — |
 | zIndex | 层级 | `number` | `1000` |

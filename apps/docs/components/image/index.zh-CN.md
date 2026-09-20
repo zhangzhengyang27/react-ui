@@ -63,7 +63,6 @@ function Demo() {
 | radius | 圆角 | `UIRadius` | — |
 | fit | 适应方式 | `'contain' \| 'cover' \| 'fill'` | `'cover'` |
 | fallbackSrc | 加载失败时的回退图片 | `string` | — |
-| withPlaceholder | 是否显示占位 | `boolean` | `false` |
 | height | 高度 | `number \| string` | — |
 | width | 宽度 | `number \| string` | — |
 

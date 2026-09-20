@@ -43,9 +43,9 @@ group:
 | value | 当前数值 | `number` | `0` |
 | size | 尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
 | color | 主题色 | `UIColor` | — |
-| transitionDuration | 滚动动画时长（ms） | `number` | `400` |
-| separator | 千分位分隔符 | `string` | — |
-| decimal | 小数点分隔符 | `string` | — |
+| animationDuration | 滚动动画时长（ms） | `number` | `600` |
+| thousandSeparator | 千分位分隔符 | `string \| boolean` | — |
+| decimalSeparator | 小数点分隔符 | `string` | `'.'` |
 
 支持所有原生 HTML 属性。
 

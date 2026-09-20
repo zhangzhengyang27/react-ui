@@ -35,7 +35,6 @@ group:
 | color | 主题色 | `UIColor` | `'blue'` |
 | size | 尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
 | radius | 圆角 | `UIRadius` | `'sm'` |
-| gradient | 渐变配置（variant='gradient'） | `{ from: UIColor; to: UIColor; deg?: number }` | — |
 
 支持所有原生 HTML 属性。
 

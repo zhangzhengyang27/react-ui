@@ -133,8 +133,8 @@ function Demo({ dependency }) {
 | data | 目录项数组 | `{ id: string; depth: number; value: string }[]` | `[]` |
 | variant | 视觉变体 | `'default'` | `'default'` |
 | size | 尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'sm'` |
-| minWidth | 最小宽度 | `number` | `240` |
-| maxHeight | 最大高度 | `number \| string` | `'80vh'` |
+| miw | 最小宽度（Box 样式属性，支持响应式） | `StyleProp<CSSProperties['minWidth']>` | — |
+| mah | 最大高度（Box 样式属性，配合 `overflowY: 'auto'` 使用） | `StyleProp<CSSProperties['maxHeight']>` | — |
 
 支持所有原生 HTML 属性。
 

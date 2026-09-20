@@ -51,7 +51,7 @@ group:
 | size | 尺寸 | `number` | `120` |
 | thickness | 环厚度 | `number` | `12` |
 | roundCaps | 是否圆角 | `boolean` | `true` |
-| sectionsColor | 单色环颜色 | `UIColor` | `'blue'` |
+| color | 未指定 `color` 的段的默认主题色 | `UIColor` | `theme.primaryColor` |
 | label | 中心标签 | `ReactNode` | — |
 
 支持所有原生 HTML 属性。

@@ -481,11 +481,9 @@ const flatList = flattenTreeData(data, tree.expandedState);
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | data | 树形数据 | `TreeNodeData[]` | `[]` |
-| expanded | 当前展开项（受控） | `string[]` | — |
-| onExpand | 展开回调 | `(expanded: string[]) => void` | — |
+| tree | 展开/选中/勾选状态控制器，由 `useTree` 创建（受控项通过其入参配置） | `UseTreeReturnType` | — |
 | selected | 当前选中项（受控） | `string[]` | — |
 | onSelect | 选中回调 | `(selected: string[]) => void` | — |
-| checkable | 是否可勾选 | `boolean` | `false` |
 | draggable | 是否可拖拽 | `boolean` | `false` |
 | levelOffset | 层级缩进 | `number` | `16` |
 

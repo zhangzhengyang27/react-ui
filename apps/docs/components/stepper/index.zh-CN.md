@@ -154,10 +154,8 @@ function Demo() {
 | --- | --- | --- | --- |
 | active | 当前步骤索引 | `number` | `0` |
 | onStepClick | 点击步骤回调 | `(stepIndex: number) => void` | — |
-| completed | 是否完成 | `boolean` | `false` |
 | size | 尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
 | orientation | 方向 | `'horizontal' \| 'vertical'` | `'horizontal'` |
-| breakpoint | 响应式断点 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'sm'` |
 | color | 主题色 | `UIColor` | `'blue'` |
 
 支持所有原生 HTML 属性。

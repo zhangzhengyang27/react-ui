@@ -173,7 +173,6 @@ function Demo() {
 | placeholder | 占位提示 | `string` | — |
 | disabled | 是否禁用 | `boolean` | `false` |
 | error | 错误信息 | `ReactNode` | — |
-| limit | 最多显示候选项数量 | `number` | `5` |
 
 支持所有原生 HTML 属性。
 

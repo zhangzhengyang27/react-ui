@@ -68,52 +68,6 @@ function Demo() {
 }
 ```
 
-### 自定义序列化
-
-可提供自定义的 `serialize` 和 `deserialize` 函数，以支持标准 JSON 以外的数据格式。当需要处理 `Date`、`Map`、`Set`、`undefined` 或其他不可 JSON 序列化的类型时，这非常有用。
-
-下面的示例展示了如何使用 [superjson](https://github.com/blitz-js/superjson) 库处理扩展数据类型：
-
-
-`deserialize` 函数在输入无效时必须抛出错误。当启用 `formatOnBlur` 时，`serialize` 和 `deserialize` 函数都会用于格式化。
-
-```tsx
-import { useState } from 'react';
-import { JsonInput } from '@xiaoye-react/ui';
-import superjson from 'superjson';
-
-function Demo() {
-  const [value, setValue] = useState(
-    superjson.stringify(
-      {
-        name: 'John Doe',
-        createdAt: new Date(),
-        tags: new Set(['admin', 'user']),
-        metadata: new Map([['role', 'developer']]),
-      },
-      null,
-      2
-    )
-  );
-
-  return (
-    <JsonInput
-      label="使用 superjson 的扩展 JSON"
-      description="支持 Date、Map、Set、BigInt、RegExp 等"
-      placeholder="输入扩展 JSON"
-      value={value}
-      onChange={setValue}
-      serialize={(val) => superjson.stringify(val, null, 2)}
-      deserialize={superjson.parse}
-      validationError="扩展 JSON 格式无效"
-      formatOnBlur
-      autosize
-      minRows={6}
-    />
-  );
-}
-```
-
 ### 输入属性
 
 <code src="./demo/configurator.tsx"></code>
@@ -151,8 +105,7 @@ function Demo() {
 | disabled | 是否禁用 | `boolean` | `false` |
 | error | 错误信息 | `ReactNode` | — |
 | formatOnBlur | 失焦时自动格式化 | `boolean` | `false` |
-| serialize | 序列化函数 | `(value: any) => string` | `JSON.stringify` |
-| deserialize | 反序列化函数 | `(value: string) => any` | `JSON.parse` |
+| serialization | 格式化时传给 `JSON.stringify` 的参数 | `{ space?: number \| string }` | `space: 2` |
 
 支持所有原生 HTML 属性。
 

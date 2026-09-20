@@ -124,9 +124,9 @@ function Demo() {
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | children | Menubar.Menu 列表 | `ReactNode` | — |
-| defaultActive | 默认激活的菜单 | `string` | — |
-| active | 当前激活的菜单（受控） | `string` | — |
-| onMenuTrigger | 菜单触发回调 | `(id: string) => void` | — |
+| defaultOpenIndex | 默认打开的菜单索引（`null` 表示无） | `number \| null` | `null` |
+| openIndex | 当前打开的菜单索引（受控） | `number \| null` | — |
+| onOpenChange | 打开的菜单变化回调 | `(index: number \| null) => void` | — |
 
 支持所有原生 HTML 属性。
 

@@ -72,9 +72,7 @@ function Demo() {
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | children | 列表项 | `ReactNode` | — |
-| visibleItemsRef | 当前可见项的 ref | `Ref<HTMLElement[]>` | — |
-| onOverflow | 溢出变化回调 | `(overflowed: boolean) => void` | — |
-| renderRest | 渲染溢出指示 | `(overflowed: ReactNode[]) => ReactNode` | — |
+| renderOverflow | 渲染溢出（被折叠）的项 | `(items: T[]) => ReactNode` | — |
 
 支持所有原生 HTML 属性。
 

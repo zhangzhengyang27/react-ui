@@ -57,7 +57,7 @@ function Demo() {
 | size | 尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
 | color | 颜色 | `UIColor` | `'gray'` |
 | transitionDuration | 切换动画时长（ms） | `number` | `300` |
-| lines | 横线数量 | `2 \| 3` | `3` |
+| lineSize | 横线粗细（高度），数字按 `1rem = 16px` 换算 | `string \| number` | 按 `size` 计算 |
 
 除上表所列属性外，Burger 还支持所有原生 HTML 属性。
 

@@ -52,7 +52,6 @@ group:
 | thickness | 厚度 | `number` | `12` |
 | color | 主题色 | `UIColor` | `'blue'` |
 | label | 中心标签 | `ReactNode` | — |
-| roundCaps | 是否圆角 | `boolean` | `true` |
 
 支持所有原生 HTML 属性。
 

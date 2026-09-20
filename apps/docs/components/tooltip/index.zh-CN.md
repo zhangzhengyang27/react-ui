@@ -182,29 +182,6 @@ function Demo() {
 
 <code src="./demo/inline.tsx"></code>
 
-### 更改过渡
-
-Tooltip 基于 [Transition](/components/transition/) 组件构建；它支持 `transitionProps` 属性：
-
-
-所有可用的预置过渡：
-
-```tsx
-import { Button, Tooltip } from '@xiaoye-react/ui';
-
-function Demo() {
-  return (
-    <Tooltip
-      label="带自定义过渡的提示"
-      transitionProps={{ transition: 'skew-up', duration: 300 }}
-    >
-      <Button>带提示的按钮</Button>
-    </Tooltip>
-  );
-}
-```
-
-
 ### 关闭和打开延迟
 
 可通过设置 `openDelay` 和 `closeDelay` 属性（单位为毫秒）来延迟 tooltip 的打开/关闭事件：
@@ -267,7 +244,6 @@ function Demo() {
 | multiline | 是否允许多行 | `boolean` | `false` |
 | width | 宽度 | `number \| string` | — |
 | offset | 偏移 | `number` | `8` |
-| transitionProps | 过渡属性 | `TransitionProps` | — |
 | openDelay | 打开延迟（ms） | `number` | `0` |
 | closeDelay | 关闭延迟（ms） | `number` | `100` |
 

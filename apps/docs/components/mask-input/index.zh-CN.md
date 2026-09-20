@@ -112,7 +112,7 @@ mask 字符串定义预期格式。每个字符要么是**标记**（可编辑�
 | placeholder | 占位提示 | `string` | — |
 | disabled | 是否禁用 | `boolean` | `false` |
 | error | 错误信息 | `ReactNode` | — |
-| unmask | onChange 是否返回去掉掩码的原始值 | `boolean` | `false` |
+| separate | 分离显示值与原始值，为 `true` 时 `value`/`onChange` 直接使用输入的原始值 | `boolean` | `false` |
 
 支持所有原生 HTML 属性。
 

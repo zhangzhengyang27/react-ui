@@ -103,7 +103,6 @@ function Demo() {
 | size | 尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| number` | `'md'` |
 | radius | 圆角 | `UIRadius` | `'100%'` |
 | variant | 视觉变体 | `'light' \| 'filled' \| 'outline'` | `'light'` |
-| imageProps | img 元素属性 | `ImgHTMLAttributes` | — |
 
 除上表所列属性外，Avatar 还支持所有原生 HTML 属性。
 

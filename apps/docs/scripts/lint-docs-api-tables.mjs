@@ -12,7 +12,7 @@
  *
  * 运行：node apps/docs/scripts/lint-docs-api-tables.mjs
  */
-import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import { Project } from 'ts-morph';
@@ -20,7 +20,6 @@ import { Project } from 'ts-morph';
 const REPO = path.resolve(import.meta.dirname, '../../..');
 const UI_SRC = path.join(REPO, 'packages/ui/src');
 const PAGES = path.join(REPO, 'apps/docs/components');
-const REACT_TYPES = path.join(REPO, 'node_modules/@types/react/index.d.ts');
 
 function walkMd(dir, out = []) {
   for (const entry of readdirSync(dir)) {
@@ -33,25 +32,25 @@ function walkMd(dir, out = []) {
 }
 
 /**
- * React 的"任何元素都能写"的属性名：只取 AriaAttributes / DOMAttributes /
- * HTMLAttributes 三个接口本体。不能把整个 @types/react 的成员名都收进来——
- * 那样 name/speed/selected 这类只在别的接口里出现的名字也会被洗白
- * （上一版就是这么漏掉 marquee.speed、avatar.name、tree.selected 的）。
- * 同时它也是 ElementProps<'button'> 这类泛型袋的兜底：ts-morph 在某些
- * 继承链上展不开 IntrinsicElements 时，事件与 href/target 不该被误判成假行。
+ * React 的"任何元素都能写"的属性名：AriaAttributes / DOMAttributes / HTMLAttributes
+ * 三个接口的成员并集。
+ *
+ * 必须由类型检查器给，不能用正则抠 d.ts：上一版用 `body.indexOf('\n}')` 找接口结尾，
+ * 在 @types/react 里一路找到 78KB 之外，把 785 个名字（含 value/data/multiple/
+ * placeholder/speed/selected）全洗成了"合法"，886 行核对里凡是叫得上名的 prop 都过了——
+ * 实测 `### ComboboxProps` 表里的 value/data/multiple/placeholder 四行假属性被判绿。
  */
 function globalReactAttributes() {
-  const set = new Set();
-  if (!existsSync(REACT_TYPES)) return set;
-  const src = readFileSync(REACT_TYPES, 'utf8');
-  for (const name of ['AriaAttributes', 'DOMAttributes', 'HTMLAttributes']) {
-    const start = src.match(new RegExp(`(?:export\\s+)?interface ${name}\\b[^{]*\\{`));
-    if (!start) continue;
-    const body = src.slice(start.index + start[0].length);
-    const end = body.indexOf('\n}');
-    for (const m of body.slice(0, end).matchAll(/^\s{2,}(['"]?)([A-Za-z0-9_$]+)\1\s*\??\s*:/gm)) set.add(m[2]);
-  }
-  return set;
+  const probe = project.createSourceFile(
+    '__docs_api_globals_probe.ts',
+    [
+      "import type { AriaAttributes, DOMAttributes, HTMLAttributes } from 'react';",
+      'export type __GlobalAttrs = AriaAttributes & DOMAttributes<HTMLElement> & HTMLAttributes<HTMLElement>;'
+    ].join('\n'),
+    { overwrite: true }
+  );
+  const alias = probe.getTypeAliasOrThrow('__GlobalAttrs');
+  return new Set(alias.getType().getProperties().map(p => p.getName()));
 }
 
 const project = new Project({
@@ -62,6 +61,8 @@ project.addSourceFilesAtPaths(path.join(UI_SRC, '**/*.{ts,tsx}'));
 
 /** 名字 -> 展平后的成员集合；同名接口（各包重名）取并集，宁可漏报不误报 */
 const membersByName = new Map();
+/** props 类型名 -> 多态工厂的 defaultComponent 标签：公开 props 还要并上该标签的原生属性 */
+const defaultComponentByProps = new Map();
 for (const file of project.getSourceFiles()) {
   for (const iface of file.getInterfaces()) {
     const name = iface.getName();
@@ -83,7 +84,35 @@ for (const file of project.getSourceFiles()) {
       /* 同上 */
     }
     membersByName.set(name, set);
+
+    // PolymorphicFactory<{ props: InputProps, defaultComponent: 'input' }>：
+    // 消费者写 <Input value placeholder> 能过 tsc，靠的是工厂补的默认元素属性，
+    // 而 interface InputProps 本身没有这些成员——不并进来就会误判成文档假行
+    if (!/Factory$/.test(name)) continue;
+    const payload = alias.getTypeNode()?.getText() || '';
+    const propsName = payload.match(/\bprops:\s*([A-Za-z0-9_$.]+)/)?.[1];
+    const tag = payload.match(/\bdefaultComponent:\s*['"]([a-zA-Z][\w-]*)['"]/)?.[1];
+    if (propsName && tag) defaultComponentByProps.set(propsName.split('.').pop(), tag);
   }
+}
+
+/** ComponentProps<'tag'> 的成员，按标签惰性求值 */
+const componentPropsCache = new Map();
+function nativeAttributes(tag) {
+  if (componentPropsCache.has(tag)) return componentPropsCache.get(tag);
+  const probe = project.createSourceFile(
+    `__docs_api_native_${tag.replace(/[^a-z0-9-]/gi, '_')}.ts`,
+    `import type { ComponentProps } from 'react';\nexport type __Native = ComponentProps<'${tag}'>;`,
+    { overwrite: true }
+  );
+  let set = new Set();
+  try {
+    set = new Set(probe.getTypeAliasOrThrow('__Native').getType().getProperties().map(p => p.getName()));
+  } catch {
+    /* 标签不在 IntrinsicElements 里：不并入任何原生属性 */
+  }
+  componentPropsCache.set(tag, set);
+  return set;
 }
 
 /** 从 md 里抽出 `### XxxProps` / `### Xxx.Panel` 小节下的表格首列 */
@@ -125,17 +154,25 @@ let checked = 0;
 
 for (const page of walkMd(PAGES)) {
   for (const { candidates, prop } of tableRows(readFileSync(page, 'utf8'))) {
-    const members = candidates.map((c) => membersByName.get(c)).find(Boolean);
+    const hit = candidates.find(c => membersByName.has(c));
+    const members = hit ? membersByName.get(hit) : undefined;
     if (!members) {
       if (!skipped.includes(candidates[0])) skipped.push(candidates[0]);
       continue;
     }
     checked++;
-    // globals 只包含"任何元素都能写"的属性（Aria/DOM/HTMLAttributes 本体），
-    // 用来兜住 ts-morph 展不开 IntrinsicElements 的继承链；名字不在其中的
+    const tag = defaultComponentByProps.get(hit);
+    // globals 兜住 ElementProps<> 泛型袋展不开的情况；名字不在其中的
     // speed/name/selected/withSpacing 之类仍会被判成假行
-    if (members.has(prop) || globals.has(prop) || FACTORY_INJECTED.has(prop)) continue;
-    problems.push(`${path.relative(REPO, page)}: ${candidates[0]} 表里的 \`${prop}\` 不在该类型的成员里`);
+    if (
+      members.has(prop) ||
+      (tag && nativeAttributes(tag).has(prop)) ||
+      globals.has(prop) ||
+      FACTORY_INJECTED.has(prop)
+    ) {
+      continue;
+    }
+    problems.push(`${path.relative(REPO, page)}: ${hit} 表里的 \`${prop}\` 不在该类型的成员里`);
   }
 }
 

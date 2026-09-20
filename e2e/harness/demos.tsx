@@ -10,8 +10,10 @@ import { UIProvider } from '@xiaoye-react/ui'
  */
 export interface DemoSweepIssue {
     demo: string
-    kind: 'render-throw' | 'console.error' | 'console.warn' | 'uncaught' | 'dom-attr-leak'
+    kind: 'render-throw' | 'console.error' | 'console.warn' | 'uncaught' | 'dom-attr-leak' | 'prop-not-consumed'
     text: string
+    /** 同一 demo 同一 kind 下的区分位（例如泄漏的 prop 名），没有则按 kind 折叠成一条 */
+    subject?: string
 }
 
 export interface DemoSweepState {
@@ -82,13 +84,13 @@ const seenAttrs = new Set<string>()
 
 let currentDemo = 'unknown'
 
-function record(kind: DemoSweepIssue['kind'], args: unknown[]) {
+function record(kind: DemoSweepIssue['kind'], args: unknown[], subject?: string) {
     const text = args
         .map(arg => (typeof arg === 'string' ? arg : String((arg as Error)?.message ?? arg)))
         .join(' ')
         .replace(/\s+/g, ' ')
         .trim()
-    window.__DEMO_SWEEP.issues.push({ demo: currentDemo, kind, text: text.slice(0, 400) })
+    window.__DEMO_SWEEP.issues.push({ demo: currentDemo, kind, subject, text: text.slice(0, 400) })
 }
 
 function installCapture() {
@@ -104,6 +106,62 @@ function installCapture() {
     }
     window.addEventListener('error', event => record('uncaught', [event.message]))
     window.addEventListener('unhandledrejection', event => record('uncaught', [String(event.reason)]))
+}
+
+/**
+ * 传入的 prop 被原样写成 DOM 属性 ⇒ 组件根本没消费它。
+ *
+ * 为什么必须单独查：React 19 对未知属性不再告警（只有少数类型不符才提示），
+ * demo 又是 `function Wrapper(props: any)` + {...props}，tsc 也看不见——
+ * 三层全是盲区，只有对比 DOM 属性表能抓到（今天清掉的 tabularNums /
+ * withThumbIndicator / alignItemsLabels / labelPosition 都是这一类）。
+ *
+ * 判据用「是不是真实 DOM 属性」而不是大小写：tabIndex/colSpan/htmlFor 这类
+ * 合法驼峰 prop 本就该映射成小写属性，用原型链属性名集合排除，避免手写白名单腐坏。
+ * 集合取自 window 上全部 HTML*Element 原型：手写 17 个会漏掉 HTMLTableCellElement
+ * 这类，导致 colSpan 之类的合法 prop 被误报。
+ */
+const DOM_PROPS = new Set<string>()
+for (const proto of [Element.prototype, HTMLElement.prototype]) {
+    for (const name of Object.getOwnPropertyNames(proto)) DOM_PROPS.add(name)
+}
+for (const key of Object.getOwnPropertyNames(window)) {
+    if (!/^HTML\w+Element$/.test(key)) {
+        continue
+    }
+    const ctor = (window as any)[key]
+    if (typeof ctor !== 'function' || typeof ctor.prototype !== 'object' || ctor.prototype === null) {
+        continue
+    }
+    for (const name of Object.getOwnPropertyNames(ctor.prototype)) DOM_PROPS.add(name)
+}
+
+function scanPropDump(root: HTMLElement, props: Record<string, unknown>, seen: Set<string>) {
+    for (const name of Object.keys(props)) {
+        if (DOM_PROPS.has(name) || name === 'children' || name === 'key' || name === 'ref') {
+            continue
+        }
+        const lowered = name.toLowerCase()
+        if (lowered.startsWith('data-') || lowered.startsWith('aria-')) {
+            continue
+        }
+        const hit = Array.from(root.querySelectorAll(`[${lowered}]`)).find(
+            el => !(el instanceof SVGElement || el instanceof MathMLElement)
+        )
+        if (!hit) {
+            continue
+        }
+        const key = `${lowered}@${hit.tagName.toLowerCase()}`
+        if (seen.has(key)) {
+            continue
+        }
+        seen.add(key)
+        record(
+            'prop-not-consumed',
+            [`demo 传入的 prop ${name} 被原样写成 <${hit.tagName.toLowerCase()}> 的属性 [${lowered}]，说明组件没有消费它`],
+            key
+        )
+    }
 }
 
 /**
@@ -128,7 +186,7 @@ function scanDomLeaks(root: HTMLElement, seen: Set<string>) {
             seen.add(key)
             record('dom-attr-leak', [
                 `对象 prop 泄漏为属性 ${name}="…" 出现在 <${el.tagName.toLowerCase()}>，来源 demo 传了同名对象 prop`
-            ])
+            ], key)
         }
     }
 }
@@ -179,6 +237,9 @@ function Sweeper() {
                 await new Promise(resolve => setTimeout(resolve, 30))
                 if (slot.current) {
                     scanDomLeaks(slot.current, seenAttrs)
+                    // 每个 demo 单独去重：这里报的是"哪个 demo 传的哪个 prop 没被消费"，
+                    // 全局去重会让同名 prop 在第二个组件上的泄漏隐身。
+                    scanPropDump(slot.current, demo.props, new Set<string>())
                 }
                 root?.render(null)
                 await new Promise(resolve => setTimeout(resolve, 5))

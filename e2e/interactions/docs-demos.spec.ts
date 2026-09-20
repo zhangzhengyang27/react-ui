@@ -16,6 +16,7 @@ interface Issue {
     demo: string
     kind: string
     text: string
+    subject?: string
 }
 
 declare global {
@@ -40,12 +41,13 @@ test.describe('docs demos mount sweep', () => {
 
         expect(total, 'demo 总数为 0 说明 docs-demos 收集逻辑失效').toBeGreaterThan(0)
 
-        // 同一个 demo 反复报同一类错（例如每个选项都漏一次 prop）只算一条
+        // 同一个 demo 反复报同一类错（例如每个选项都漏一次 prop）只算一条；
+        // subject（泄漏的 prop 名@标签）参与折叠键，否则一个 demo 漏两个 prop 时只看得到第一个
         const byKey = new Map<string, Issue>()
         for (const issue of issues) {
-            const key = `${issue.demo}|${issue.kind}`
+            const key = `${issue.demo}|${issue.kind}${issue.subject ? `|${issue.subject}` : ''}`
             if (!byKey.has(key)) {
-                byKey.set(key, { ...issue, demo: `${issue.demo}|${issue.kind}` })
+                byKey.set(key, { ...issue, demo: key })
             }
         }
         const found = [...byKey.values()].sort((a, b) => a.demo.localeCompare(b.demo))

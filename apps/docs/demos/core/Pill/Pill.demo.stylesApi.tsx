@@ -1,4 +1,4 @@
-import { Pill } from '@xiaoye-react/ui';
+import { Pill, PillProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { PillStylesApi } from '@xiaoye-react/docs-styles-api';
 import classes from './_demo.module.css';
@@ -12,7 +12,7 @@ function Demo() {
 }
 `;
 
-function Demo(props: any) {
+function Demo(props: PillProps) {
   return (
     <div className={classes.demoWrapper}>
       <Pill {...props} withRemoveButton style={{ flex: 0 }}>

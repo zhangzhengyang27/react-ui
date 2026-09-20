@@ -1,4 +1,4 @@
-import { NativeSelect } from '@xiaoye-react/ui';
+import { NativeSelect, NativeSelectProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { NativeSelectStylesApi } from '@xiaoye-react/docs-styles-api';
 
@@ -10,7 +10,7 @@ function Demo() {
 }
 `;
 
-function Demo(props: any) {
+function Demo(props: NativeSelectProps) {
   return (
     <NativeSelect
       {...props}

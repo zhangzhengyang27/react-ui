@@ -1,5 +1,5 @@
 import { LockIcon } from '@phosphor-icons/react/dist/csr/Lock'
-import { PasswordInput } from '@xiaoye-react/ui'
+import { PasswordInput, PasswordInputProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { PasswordInputStylesApi } from '@xiaoye-react/docs-styles-api'
 
@@ -22,7 +22,7 @@ function Demo() {
 }
 `
 
-function Demo(props: any) {
+function Demo(props: PasswordInputProps) {
     return (
         <PasswordInput
             label="标签"

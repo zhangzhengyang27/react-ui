@@ -1,8 +1,8 @@
 import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/csr/MagnifyingGlass'
-import { EmptyState } from '@xiaoye-react/ui'
+import { EmptyState, EmptyStateProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 
-function Wrapper(props: any) {
+function Wrapper(props: EmptyStateProps) {
     return (
         <EmptyState
             icon={<MagnifyingGlassIcon />}

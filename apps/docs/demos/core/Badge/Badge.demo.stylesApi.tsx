@@ -1,5 +1,5 @@
 import { AtIcon } from '@phosphor-icons/react/dist/csr/At'
-import { Badge } from '@xiaoye-react/ui'
+import { Badge, BadgeProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { BadgeStylesApi } from '@xiaoye-react/docs-styles-api'
 
@@ -17,7 +17,7 @@ function Demo() {
 }
 `
 
-function Demo(props: any) {
+function Demo(props: BadgeProps) {
     const icon = <AtIcon size={12} />
 
     return (

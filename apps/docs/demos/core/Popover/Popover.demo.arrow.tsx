@@ -1,4 +1,4 @@
-import { Button, Popover, Text } from '@xiaoye-react/ui';
+import { Button, Popover, Text, PopoverProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -18,7 +18,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: PopoverProps) {
   return (
     <Popover width={200} opened position="bottom-start" withArrow {...props}>
       <Popover.Target>

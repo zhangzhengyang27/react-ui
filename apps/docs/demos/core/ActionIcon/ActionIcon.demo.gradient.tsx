@@ -1,9 +1,9 @@
 import { HeartIcon } from '@phosphor-icons/react/dist/csr/Heart'
 import { ActionIcon } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
-import { gradientControls } from '../../shared'
+import { GradientDemoProps, gradientControls } from '../../shared'
 
-const code = (props: any) => `
+const code = (props: Record<string, any>) => `
 import { ActionIcon } from '@xiaoye-react/ui';
 import { HeartIcon } from '@phosphor-icons/react/dist/csr/Heart';
 function Demo() {
@@ -20,7 +20,7 @@ function Demo() {
 }
 `
 
-function Wrapper(props: any) {
+function Wrapper(props: GradientDemoProps) {
     return (
         <ActionIcon
             variant="gradient"

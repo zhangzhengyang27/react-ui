@@ -1,4 +1,4 @@
-import { Autocomplete } from '@xiaoye-react/ui';
+import { Autocomplete, AutocompleteProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
@@ -17,7 +17,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: AutocompleteProps) {
   return (
     <Autocomplete
       {...props}

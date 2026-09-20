@@ -1,4 +1,4 @@
-import { Badge } from '@xiaoye-react/ui';
+import { Badge, BadgeProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -9,7 +9,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: BadgeProps) {
   return <Badge {...props}>徽章</Badge>;
 }
 

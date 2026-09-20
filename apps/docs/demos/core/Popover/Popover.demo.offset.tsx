@@ -1,4 +1,4 @@
-import { Button, Popover, Text } from '@xiaoye-react/ui';
+import { Button, Popover, Text, PopoverProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { FLOATING_POSITION_DATA } from '../../shared';
 
@@ -26,7 +26,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: PopoverProps) {
   return (
     <Popover width={200} opened {...props}>
       <Popover.Target>

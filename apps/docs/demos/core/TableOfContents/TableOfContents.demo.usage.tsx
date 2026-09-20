@@ -1,4 +1,4 @@
-import { TableOfContents } from '@xiaoye-react/ui';
+import { TableOfContents, TableOfContentsProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -21,7 +21,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: TableOfContentsProps) {
   return (
     <TableOfContents
       {...props}

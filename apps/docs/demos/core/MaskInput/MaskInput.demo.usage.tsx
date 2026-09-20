@@ -1,4 +1,4 @@
-import { MaskInput } from '@xiaoye-react/ui';
+import { MaskInput, MaskInputProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
@@ -17,7 +17,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: MaskInputProps) {
   return <MaskInput {...props} mask="(999) 999-9999" placeholder="(___) ___-____" />;
 }
 

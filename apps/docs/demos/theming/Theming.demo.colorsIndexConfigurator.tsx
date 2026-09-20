@@ -1,7 +1,7 @@
 import { Button, Text } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
-const code = (props: any) => `
+const code = (props: Record<string, any>) => `
 import { Button, Text } from '@xiaoye-react/ui';
 
 function Demo() {
@@ -14,7 +14,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: { index: number }) {
   return (
     <>
       <Text c={`blue.${props.index}`}>Text with blue.{props.index} color</Text>

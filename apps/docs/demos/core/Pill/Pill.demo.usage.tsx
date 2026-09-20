@@ -1,4 +1,4 @@
-import { Pill } from '@xiaoye-react/ui';
+import { Pill, PillProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import classes from './_demo.module.css';
 
@@ -10,7 +10,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: PillProps) {
   return (
     <div className={classes.demoWrapper}>
       <Pill {...props}>React</Pill>

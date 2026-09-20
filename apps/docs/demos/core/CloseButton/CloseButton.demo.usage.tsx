@@ -1,4 +1,4 @@
-import { CloseButton } from '@xiaoye-react/ui';
+import { CloseButton, CloseButtonProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -9,7 +9,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: CloseButtonProps) {
   return <CloseButton {...props} />;
 }
 

@@ -3,7 +3,7 @@ import { CaretRightIcon } from '@phosphor-icons/react/dist/csr/CaretRight'
 import { FingerprintIcon } from '@phosphor-icons/react/dist/csr/Fingerprint'
 import { GaugeIcon } from '@phosphor-icons/react/dist/csr/Gauge'
 import { HeartbeatIcon } from '@phosphor-icons/react/dist/csr/Heartbeat'
-import { Box, Group, NavLink } from '@xiaoye-react/ui'
+import { Box, Group, NavLink, NavLinkProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
@@ -54,7 +54,7 @@ const data = [
     { icon: HeartbeatIcon, label: '活动' }
 ]
 
-function Demo(props: any) {
+function Demo(props: NavLinkProps) {
     const [active, setActive] = useState(0)
 
     const items = data.map((item, index) => (

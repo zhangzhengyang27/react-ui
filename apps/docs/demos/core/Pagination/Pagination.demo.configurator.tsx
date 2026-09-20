@@ -1,7 +1,7 @@
-import { Pagination } from '@xiaoye-react/ui';
+import { Pagination, PaginationProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
-function Wrapper(props: any) {
+function Wrapper(props: Omit<PaginationProps, 'total'>) {
   return <Pagination total={10} {...props} />;
 }
 

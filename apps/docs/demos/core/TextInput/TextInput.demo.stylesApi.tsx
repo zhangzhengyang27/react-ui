@@ -1,5 +1,5 @@
 import { AtIcon } from '@phosphor-icons/react/dist/csr/At'
-import { TextInput } from '@xiaoye-react/ui'
+import { TextInput, TextInputProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { TextInputStylesApi } from '@xiaoye-react/docs-styles-api'
 
@@ -22,7 +22,7 @@ function Demo() {
 }
 `
 
-function Demo(props: any) {
+function Demo(props: TextInputProps) {
     return (
         <TextInput
             label="标签"

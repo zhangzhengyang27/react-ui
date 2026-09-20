@@ -1,4 +1,4 @@
-import { Button } from '@xiaoye-react/ui';
+import { Button, ButtonProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { interactiveVariantsControl } from '../../shared';
 
@@ -10,7 +10,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: ButtonProps) {
   return <Button {...props}>按钮</Button>;
 }
 

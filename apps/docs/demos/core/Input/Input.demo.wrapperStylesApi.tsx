@@ -1,4 +1,4 @@
-import { Input } from '@xiaoye-react/ui';
+import { Input, InputWrapperProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { InputWrapperStylesApi } from '@xiaoye-react/docs-styles-api';
 
@@ -10,7 +10,7 @@ function Demo() {
 }
 `;
 
-function Demo(props: any) {
+function Demo(props: InputWrapperProps) {
   return (
     <Input.Wrapper
       label="输入标签"

@@ -1,7 +1,7 @@
-import { RangeSlider } from '@xiaoye-react/ui';
+import { RangeSlider, RangeSliderProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
-function Wrapper(props: any) {
+function Wrapper(props: RangeSliderProps) {
   return (
     <RangeSlider
       defaultValue={[20, 60]}

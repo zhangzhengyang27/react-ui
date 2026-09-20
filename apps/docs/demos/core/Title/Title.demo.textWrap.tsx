@@ -1,4 +1,4 @@
-import { Title } from '@xiaoye-react/ui';
+import { Title, TitleProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -14,7 +14,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: TitleProps) {
   return (
     <Title order={3} {...props}>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi voluptatibus inventore iusto

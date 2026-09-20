@@ -1,4 +1,4 @@
-import { Switch } from '@xiaoye-react/ui';
+import { Switch, SwitchProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -17,7 +17,7 @@ function Demo() {
 
 export const configurator: UIDemo = {
   type: 'configurator',
-  component: (props: any) => <Switch defaultChecked {...props} />,
+  component: (props: SwitchProps) => <Switch defaultChecked {...props} />,
   code,
   centered: true,
   controls: [

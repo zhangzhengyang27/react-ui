@@ -1,4 +1,4 @@
-import { Pagination } from '@xiaoye-react/ui';
+import { Pagination, PaginationProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { PaginationStylesApi } from '@xiaoye-react/docs-styles-api';
 
@@ -10,7 +10,7 @@ function Demo() {
 }
 `;
 
-function Demo(props: any) {
+function Demo(props: Omit<PaginationProps, 'total'>) {
   return <Pagination total={10} {...props} />;
 }
 

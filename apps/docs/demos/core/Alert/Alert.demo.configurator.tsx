@@ -1,5 +1,5 @@
 import { InfoIcon } from '@phosphor-icons/react/dist/csr/Info'
-import { Alert } from '@xiaoye-react/ui'
+import { Alert, AlertProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { staticVariantsControl } from '../../shared'
 
@@ -16,7 +16,7 @@ function Demo() {
 }
 `
 
-function Wrapper(props: any) {
+function Wrapper(props: AlertProps) {
     return <Alert icon={<InfoIcon />} {...props} />
 }
 

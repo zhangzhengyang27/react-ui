@@ -1,5 +1,5 @@
 import { AtIcon } from '@phosphor-icons/react/dist/csr/At'
-import { Select } from '@xiaoye-react/ui'
+import { Select, SelectProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { SelectStylesApi } from '@xiaoye-react/docs-styles-api'
 
@@ -22,7 +22,7 @@ function Demo() {
 }
 `
 
-function Demo(props: any) {
+function Demo(props: SelectProps) {
     return (
         <Select
             {...props}

@@ -1,4 +1,4 @@
-import { Pill, PillsInput } from '@xiaoye-react/ui';
+import { Pill, PillsInput, PillsInputProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
@@ -22,7 +22,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: PillsInputProps) {
   return (
     <PillsInput {...props}>
       <Pill.Group>

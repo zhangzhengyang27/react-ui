@@ -1,4 +1,4 @@
-import { NumberInput } from '@xiaoye-react/ui';
+import { NumberInput, NumberInputProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
@@ -16,7 +16,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: NumberInputProps) {
   return <NumberInput {...props} placeholder="输入占位符" />;
 }
 

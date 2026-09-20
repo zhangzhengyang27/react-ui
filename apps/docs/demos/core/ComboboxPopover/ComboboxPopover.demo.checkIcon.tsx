@@ -1,4 +1,4 @@
-import { Button, ComboboxPopover } from '@xiaoye-react/ui';
+import { Button, ComboboxPopover, ComboboxPopoverProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -20,7 +20,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: ComboboxPopoverProps) {
   return (
     <ComboboxPopover
       {...props}

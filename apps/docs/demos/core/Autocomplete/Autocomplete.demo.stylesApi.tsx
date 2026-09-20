@@ -1,5 +1,5 @@
 import { AtIcon } from '@phosphor-icons/react/dist/csr/At'
-import { Autocomplete } from '@xiaoye-react/ui'
+import { Autocomplete, AutocompleteProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { AutocompleteStylesApi } from '@xiaoye-react/docs-styles-api'
 
@@ -22,7 +22,7 @@ function Demo() {
 }
 `
 
-function Demo(props: any) {
+function Demo(props: AutocompleteProps) {
     return (
         <Autocomplete
             {...props}
@@ -32,8 +32,10 @@ function Demo(props: any) {
             description="描述"
             placeholder="自动完成"
             data={[
-                { group: 'Frontend', items: ['React', 'Angular'] },
-                { group: 'Backend', items: ['Node', 'Django'] }
+                { value: 'React', group: 'Frontend' },
+                { value: 'Angular', group: 'Frontend' },
+                { value: 'Node', group: 'Backend' },
+                { value: 'Django', group: 'Backend' }
             ]}
         />
     )

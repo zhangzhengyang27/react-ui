@@ -1,4 +1,4 @@
-import { Checkbox } from '@xiaoye-react/ui';
+import { Checkbox, CheckboxProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { CheckboxStylesApi } from '@xiaoye-react/docs-styles-api';
 
@@ -18,7 +18,7 @@ function Demo() {
 }
 `;
 
-function Demo(props: any) {
+function Demo(props: CheckboxProps) {
   return (
     <Checkbox
       label="复选框"

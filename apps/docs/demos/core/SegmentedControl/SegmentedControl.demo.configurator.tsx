@@ -1,4 +1,4 @@
-import { SegmentedControl } from '@xiaoye-react/ui';
+import { SegmentedControl, SegmentedControlProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -9,7 +9,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: Omit<SegmentedControlProps, 'data'>) {
   return <SegmentedControl data={['React', 'Angular', 'Vue', 'Svelte']} {...props} />;
 }
 

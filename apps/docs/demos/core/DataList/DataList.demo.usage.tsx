@@ -1,4 +1,4 @@
-import { DataList } from '@xiaoye-react/ui';
+import { DataList, DataListProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const data = [
@@ -8,7 +8,7 @@ const data = [
   { label: 'Location', value: 'San Francisco, CA' },
 ];
 
-function Wrapper(props: any) {
+function Wrapper(props: DataListProps) {
   return (
     <DataList {...props}>
       {data.map((item) => (

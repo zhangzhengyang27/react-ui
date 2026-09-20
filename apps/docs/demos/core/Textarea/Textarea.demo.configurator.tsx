@@ -1,4 +1,4 @@
-import { Textarea } from '@xiaoye-react/ui';
+import { Textarea, TextareaProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
@@ -16,7 +16,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: TextareaProps) {
   return <Textarea {...props} placeholder="输入占位符" />;
 }
 

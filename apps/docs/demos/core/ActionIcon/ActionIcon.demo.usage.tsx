@@ -1,5 +1,5 @@
 import { SlidersHorizontalIcon } from '@phosphor-icons/react/dist/csr/SlidersHorizontal'
-import { ActionIcon } from '@xiaoye-react/ui'
+import { ActionIcon, ActionIconProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { interactiveVariantsControl } from '../../shared'
 
@@ -15,7 +15,7 @@ function Demo() {
 }
 `
 
-function Wrapper(props: any) {
+function Wrapper(props: ActionIconProps) {
     return (
         <ActionIcon {...props} aria-label="设置">
             <SlidersHorizontalIcon style={{ width: '70%', height: '70%' }} />

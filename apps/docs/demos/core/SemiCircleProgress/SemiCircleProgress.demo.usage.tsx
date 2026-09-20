@@ -1,4 +1,4 @@
-import { SemiCircleProgress } from '@xiaoye-react/ui';
+import { SemiCircleProgress, SemiCircleProgressProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -15,7 +15,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: SemiCircleProgressProps) {
   return <SemiCircleProgress label="标签" {...props} />;
 }
 

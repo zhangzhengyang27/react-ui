@@ -1,4 +1,4 @@
-import { AngleSlider } from '@xiaoye-react/ui';
+import { AngleSlider, AngleSliderProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -9,7 +9,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: AngleSliderProps) {
   return <AngleSlider aria-label="角度滑块" {...props} />;
 }
 

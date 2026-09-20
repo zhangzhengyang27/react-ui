@@ -1,4 +1,4 @@
-import { TextInput } from '@xiaoye-react/ui';
+import { TextInput, TextInputProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
@@ -16,7 +16,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: TextInputProps) {
   return <TextInput {...props} placeholder="输入占位符" />;
 }
 

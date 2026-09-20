@@ -1,7 +1,7 @@
-import { Slider } from '@xiaoye-react/ui';
+import { Slider, SliderProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
-function Wrapper(props: any) {
+function Wrapper(props: SliderProps) {
   return <Slider {...props} defaultValue={20} />;
 }
 

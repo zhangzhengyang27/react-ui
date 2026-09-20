@@ -1,5 +1,5 @@
 import { AtIcon } from '@phosphor-icons/react/dist/csr/At'
-import { Button } from '@xiaoye-react/ui'
+import { Button, ButtonProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { ButtonStylesApi } from '@xiaoye-react/docs-styles-api'
 
@@ -11,7 +11,7 @@ function Demo() {
 }
 `
 
-function Demo(props: any) {
+function Demo(props: ButtonProps) {
     return (
         <Button leftSection={<AtIcon size={16} />} {...props}>
             你的邮箱

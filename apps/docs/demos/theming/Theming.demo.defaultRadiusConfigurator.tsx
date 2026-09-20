@@ -1,4 +1,4 @@
-import { Button, TextInput } from '@xiaoye-react/ui';
+import { Button, ButtonProps, TextInput } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = (props: Record<string, any>) => `
@@ -14,7 +14,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: { defaultRadius: ButtonProps['radius'] }) {
   return (
     <>
       <Button radius={props.defaultRadius} fullWidth>

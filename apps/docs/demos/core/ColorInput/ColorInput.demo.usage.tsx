@@ -1,4 +1,4 @@
-import { ColorInput } from '@xiaoye-react/ui';
+import { ColorInput, ColorInputProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
@@ -16,7 +16,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: ColorInputProps) {
   return <ColorInput {...props} placeholder="输入占位符" />;
 }
 

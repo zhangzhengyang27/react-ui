@@ -1,4 +1,4 @@
-import { Carousel } from '@xiaoye-react/carousel';
+import { Carousel, CarouselProps } from '@xiaoye-react/carousel';
 import { UIDemo } from '@xiaoye-react/demo';
 import { CarouselStylesApi } from '@xiaoye-react/docs-styles-api';
 import { Slides } from './_slides';
@@ -16,7 +16,7 @@ function Demo() {
 }
 `;
 
-function Demo(props: any) {
+function Demo(props: Omit<CarouselProps, 'withIndicators' | 'height'>) {
   return (
     <Carousel withIndicators height={200} {...props}>
       <Slides count={2} />

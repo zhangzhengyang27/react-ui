@@ -1,4 +1,4 @@
-import { Radio } from '@xiaoye-react/ui';
+import { Radio, RadioProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { RadioStylesApi } from '@xiaoye-react/docs-styles-api';
 
@@ -18,7 +18,7 @@ function Demo() {
 }
 `;
 
-function Demo(props: any) {
+function Demo(props: RadioProps) {
   return (
     <Radio
       label="单选框"

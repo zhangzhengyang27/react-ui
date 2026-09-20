@@ -1,7 +1,7 @@
-import { Button, Group } from '@xiaoye-react/ui';
+import { Button, Group, ButtonProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
-const code = (props: any) => `
+const code = (props: Record<string, any>) => `
 import { Button, Group } from '@xiaoye-react/ui';
 
 function Demo() {
@@ -14,7 +14,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: ButtonProps) {
   return (
     <Group justify="center">
       <Button size={props.size}>常规 {props.size}</Button>

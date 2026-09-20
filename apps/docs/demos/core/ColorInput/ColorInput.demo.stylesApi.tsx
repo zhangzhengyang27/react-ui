@@ -1,4 +1,4 @@
-import { ColorInput } from '@xiaoye-react/ui';
+import { ColorInput, ColorInputProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { ColorInputStylesApi } from '@xiaoye-react/docs-styles-api';
 
@@ -21,7 +21,7 @@ function Demo() {
 }
 `;
 
-function Demo(props: any) {
+function Demo(props: ColorInputProps) {
   return (
     <ColorInput
       label="标签"

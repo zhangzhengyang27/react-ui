@@ -1,4 +1,4 @@
-import { Burger } from '@xiaoye-react/ui';
+import { Burger, BurgerProps } from '@xiaoye-react/ui';
 import { useDisclosure } from '@xiaoye-react/hooks';
 import { UIDemo } from '@xiaoye-react/demo';
 
@@ -12,7 +12,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: BurgerProps) {
   const [opened, { toggle }] = useDisclosure();
   return <Burger {...props} opened={opened} onClick={toggle} aria-label="切换导航" />;
 }

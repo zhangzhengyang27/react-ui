@@ -1,4 +1,4 @@
-import { Box, Title } from '@xiaoye-react/ui';
+import { Box, Title, TitleProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -17,7 +17,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: TitleProps) {
   return (
     <Box maw={400}>
       <Title order={2} {...props}>

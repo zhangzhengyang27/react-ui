@@ -1,8 +1,8 @@
-import { Carousel } from '@xiaoye-react/carousel';
+import { Carousel, CarouselProps } from '@xiaoye-react/carousel';
 import { UIDemo } from '@xiaoye-react/demo';
 import { Slides } from './_slides';
 
-function Wrapper(props: any) {
+function Wrapper(props: NonNullable<CarouselProps['emblaOptions']>) {
   return (
     <Carousel height={200} slideSize="70%" slideGap="md" emblaOptions={props}>
       <Slides count={5} />
@@ -10,7 +10,7 @@ function Wrapper(props: any) {
   );
 }
 
-const code = (props: any) => `
+const code = (props: Record<string, any>) => `
 import { Carousel } from '@xiaoye-react/carousel';
 
 function Demo() {

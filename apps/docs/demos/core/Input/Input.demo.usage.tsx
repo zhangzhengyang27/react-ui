@@ -1,4 +1,4 @@
-import { Input } from '@xiaoye-react/ui';
+import { Input, InputProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { inputOnlyControls } from '../../shared';
 
@@ -10,7 +10,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: InputProps) {
   return <Input placeholder="输入组件" {...props} />;
 }
 

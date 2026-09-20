@@ -1,7 +1,7 @@
 import { GearSixIcon } from '@phosphor-icons/react/dist/csr/GearSix'
 import { HeartIcon } from '@phosphor-icons/react/dist/csr/Heart'
 import { ImageIcon } from '@phosphor-icons/react/dist/csr/Image'
-import { ActionIcon } from '@xiaoye-react/ui'
+import { ActionIcon, ActionIconGroupProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
@@ -28,7 +28,7 @@ function Demo() {
 }
 `
 
-function Wrapper(props: any) {
+function Wrapper(props: ActionIconGroupProps) {
     return (
         <ActionIcon.Group {...props}>
             <ActionIcon variant="default" size="lg" aria-label="相册">

@@ -1,4 +1,4 @@
-import { Menu, Menubar } from '@xiaoye-react/ui';
+import { Menu, Menubar, MenubarProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { MenubarStylesApi } from '@xiaoye-react/docs-styles-api';
 
@@ -28,7 +28,7 @@ function Demo() {
 }
 `;
 
-function Demo(props: any) {
+function Demo(props: MenubarProps) {
   return (
     <Menubar {...props}>
       <Menubar.Menu width={220}>

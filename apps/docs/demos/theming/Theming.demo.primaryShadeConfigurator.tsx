@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Button, Group, UIProvider, useUIColorScheme } from '@xiaoye-react/ui';
+import { Button, Group, UIColorShade, UIProvider, useUIColorScheme } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
-const code = (props: any) => `
+const code = (props: Record<string, any>) => `
 import { UIProvider, Button, Group } from '@xiaoye-react/ui';
 
 function Demo() {
@@ -18,7 +18,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: { primaryShade: UIColorShade }) {
   const [attr, setAttr] = useState<string | undefined>(undefined);
   const { colorScheme } = useUIColorScheme();
 

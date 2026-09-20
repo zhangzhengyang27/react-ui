@@ -1,4 +1,4 @@
-import { PasswordInput } from '@xiaoye-react/ui';
+import { PasswordInput, PasswordInputProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
@@ -16,7 +16,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: PasswordInputProps) {
   return <PasswordInput {...props} placeholder="输入占位符" />;
 }
 

@@ -1,4 +1,4 @@
-import { Switch } from '@xiaoye-react/ui';
+import { Switch, SwitchProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { SwitchStylesApi } from '@xiaoye-react/docs-styles-api';
 
@@ -10,7 +10,7 @@ function Demo() {
 }
 `;
 
-function Demo(props: any) {
+function Demo(props: SwitchProps) {
   return <Switch {...props} label="Switch 组件" />;
 }
 

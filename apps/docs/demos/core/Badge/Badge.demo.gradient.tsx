@@ -1,8 +1,8 @@
 import { Badge } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
-import { gradientControls } from '../../shared';
+import { GradientDemoProps, gradientControls } from '../../shared';
 
-const code = (props: any) => `
+const code = (props: Record<string, any>) => `
 import { Badge } from '@xiaoye-react/ui';
 
 function Demo() {
@@ -18,7 +18,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: GradientDemoProps) {
   return (
     <Badge
       size="xl"

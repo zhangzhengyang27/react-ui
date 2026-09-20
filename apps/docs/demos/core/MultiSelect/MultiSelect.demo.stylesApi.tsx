@@ -1,5 +1,5 @@
 import { AtIcon } from '@phosphor-icons/react/dist/csr/At'
-import { MultiSelect } from '@xiaoye-react/ui'
+import { MultiSelect, MultiSelectProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { MultiSelectStylesApi } from '@xiaoye-react/docs-styles-api'
 
@@ -26,7 +26,7 @@ function Demo() {
 }
 `
 
-function Demo(props: any) {
+function Demo(props: MultiSelectProps) {
     return (
         <MultiSelect
             {...props}

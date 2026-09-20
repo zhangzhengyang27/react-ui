@@ -1,6 +1,6 @@
 import { AtIcon } from '@phosphor-icons/react/dist/csr/At'
 import { CaretDownIcon } from '@phosphor-icons/react/dist/csr/CaretDown'
-import { Input } from '@xiaoye-react/ui'
+import { Input, InputProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { InputStylesApi } from '@xiaoye-react/docs-styles-api'
 
@@ -14,7 +14,7 @@ function Demo() {
 }
 `
 
-function Demo(props: any) {
+function Demo(props: InputProps) {
     const at = <AtIcon size={16} />
     const chevron = <CaretDownIcon size={16} />
     return <Input placeholder="输入组件" leftSection={at} rightSection={chevron} {...props} />

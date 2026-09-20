@@ -1,5 +1,5 @@
 import { AtIcon } from '@phosphor-icons/react/dist/csr/At'
-import { FileInput } from '@xiaoye-react/ui'
+import { FileInput, FileInputProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { FileInputStylesApi } from '@xiaoye-react/docs-styles-api'
 
@@ -22,7 +22,7 @@ function Demo() {
 }
 `
 
-function Demo(props: any) {
+function Demo(props: FileInputProps) {
     return (
         <FileInput
             label="标签"

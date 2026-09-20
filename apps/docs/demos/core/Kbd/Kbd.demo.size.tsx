@@ -1,4 +1,4 @@
-import { Kbd } from '@xiaoye-react/ui';
+import { Kbd, KbdProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -9,7 +9,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: KbdProps) {
   return <Kbd {...props}>Shift</Kbd>;
 }
 

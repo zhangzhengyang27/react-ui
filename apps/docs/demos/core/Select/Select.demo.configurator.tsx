@@ -1,4 +1,4 @@
-import { Select } from '@xiaoye-react/ui';
+import { Select, SelectProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
@@ -17,7 +17,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: SelectProps) {
   return (
     <Select
       {...props}

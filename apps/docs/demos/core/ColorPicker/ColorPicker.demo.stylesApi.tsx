@@ -1,4 +1,4 @@
-import { ColorPicker } from '@xiaoye-react/ui';
+import { ColorPicker, ColorPickerProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { ColorPickerStylesApi } from '@xiaoye-react/docs-styles-api';
 
@@ -12,7 +12,7 @@ function Demo() {
 }
 `;
 
-function Demo(props: any) {
+function Demo(props: ColorPickerProps) {
   return (
     <ColorPicker
       size="lg"

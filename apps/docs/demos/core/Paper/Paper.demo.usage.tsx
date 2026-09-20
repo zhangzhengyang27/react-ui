@@ -1,7 +1,7 @@
-import { Box, Paper, Text } from '@xiaoye-react/ui';
+import { Box, Paper, Text, PaperProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
-function Wrapper(props: any) {
+function Wrapper(props: PaperProps) {
   return (
     <Box p="md">
       <Paper maw={400} mx="auto" p="xl" {...props}>

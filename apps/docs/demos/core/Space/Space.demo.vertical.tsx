@@ -1,7 +1,7 @@
-import { Space, Text } from '@xiaoye-react/ui';
+import { Space, Text, SpaceProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
-function Wrapper(props: any) {
+function Wrapper(props: SpaceProps) {
   return (
     <div style={{ display: 'flex' }}>
       <Text>第一部分</Text>

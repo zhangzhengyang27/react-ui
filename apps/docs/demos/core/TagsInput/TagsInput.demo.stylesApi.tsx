@@ -1,5 +1,5 @@
 import { AtIcon } from '@phosphor-icons/react/dist/csr/At'
-import { TagsInput } from '@xiaoye-react/ui'
+import { TagsInput, TagsInputProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { TagsInputStylesApi } from '@xiaoye-react/docs-styles-api'
 
@@ -23,7 +23,7 @@ function Demo() {
 }
 `
 
-function Demo(props: any) {
+function Demo(props: TagsInputProps) {
     return (
         <TagsInput
             {...props}
@@ -34,8 +34,10 @@ function Demo(props: any) {
             placeholder="标签输入"
             defaultValue={['First', 'Second']}
             data={[
-                { group: 'Frontend', items: ['React', 'Angular'] },
-                { group: 'Backend', items: ['Node', 'Django'] }
+                { value: 'React', group: 'Frontend' },
+                { value: 'Angular', group: 'Frontend' },
+                { value: 'Node', group: 'Backend' },
+                { value: 'Django', group: 'Backend' }
             ]}
         />
     )

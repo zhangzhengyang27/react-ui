@@ -1,4 +1,4 @@
-import { MultiSelect } from '@xiaoye-react/ui';
+import { MultiSelect, MultiSelectProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
@@ -17,7 +17,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: MultiSelectProps) {
   return (
     <MultiSelect
       {...props}

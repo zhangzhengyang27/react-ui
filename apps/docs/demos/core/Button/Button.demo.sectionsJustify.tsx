@@ -1,8 +1,8 @@
 import { ImageIcon } from '@phosphor-icons/react/dist/csr/Image'
-import { Button } from '@xiaoye-react/ui'
+import { Button, ButtonProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 
-const code = (props: any) => `
+const code = (props: Record<string, any>) => `
 import { Button } from '@xiaoye-react/ui';
 import { ImageIcon } from '@phosphor-icons/react/dist/csr/Image';
 function Demo() {
@@ -36,7 +36,7 @@ function Demo() {
 }
 `
 
-function Wrapper(props: any) {
+function Wrapper(props: ButtonProps) {
     const icon = <ImageIcon size={14} />
     return (
         <>

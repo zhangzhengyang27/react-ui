@@ -1,7 +1,7 @@
-import { Button, Tooltip } from '@xiaoye-react/ui';
+import { Button, Tooltip, TooltipProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
-function Wrapper(props: any) {
+function Wrapper(props: Omit<TooltipProps, 'label'>) {
   return (
     <Tooltip label="提示" {...props}>
       <Button>带提示</Button>

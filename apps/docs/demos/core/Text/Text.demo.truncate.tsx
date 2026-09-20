@@ -1,4 +1,4 @@
-import { Box, Text } from '@xiaoye-react/ui';
+import { Box, Text, TextProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -17,7 +17,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: TextProps) {
   return (
     <Box w={300}>
       <Text {...props}>

@@ -1,4 +1,4 @@
-import { Text } from '@xiaoye-react/ui';
+import { Text, TextProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -14,7 +14,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: TextProps) {
   return (
     <Text {...props}>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi voluptatibus inventore iusto

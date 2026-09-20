@@ -1,4 +1,4 @@
-import { Progress } from '@xiaoye-react/ui';
+import { Progress, ProgressProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -9,7 +9,7 @@ function Demo() {
 }
 `;
 
-function Demo(props: any) {
+function Demo(props: ProgressProps) {
   return <Progress {...props} />;
 }
 

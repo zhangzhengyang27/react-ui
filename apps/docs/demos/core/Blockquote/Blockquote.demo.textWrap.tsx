@@ -1,5 +1,5 @@
 import { InfoIcon } from '@phosphor-icons/react/dist/csr/Info'
-import { Blockquote } from '@xiaoye-react/ui'
+import { Blockquote, BlockquoteProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 
 const code = `
@@ -16,7 +16,7 @@ function Demo() {
 }
 `
 
-function Wrapper(props: any) {
+function Wrapper(props: BlockquoteProps) {
     const icon = <InfoIcon />
     return (
         <Blockquote icon={icon} cite="– Forrest Gump" {...props}>

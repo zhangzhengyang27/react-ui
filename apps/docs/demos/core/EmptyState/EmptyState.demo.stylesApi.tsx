@@ -1,5 +1,5 @@
 import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/csr/MagnifyingGlass'
-import { Button, EmptyState } from '@xiaoye-react/ui'
+import { Button, EmptyState, EmptyStateProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { EmptyStateStylesApi } from '@xiaoye-react/docs-styles-api'
 
@@ -21,7 +21,7 @@ function Demo() {
 }
 `
 
-function Demo(props: any) {
+function Demo(props: EmptyStateProps) {
     return (
         <EmptyState
             icon={<MagnifyingGlassIcon />}

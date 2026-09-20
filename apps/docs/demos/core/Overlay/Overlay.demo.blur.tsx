@@ -1,4 +1,4 @@
-import { AspectRatio, Overlay } from '@xiaoye-react/ui';
+import { AspectRatio, Overlay, OverlayProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -17,7 +17,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: OverlayProps) {
   return (
     <AspectRatio ratio={16 / 9} maw={400} mx="auto" pos="relative">
       <img

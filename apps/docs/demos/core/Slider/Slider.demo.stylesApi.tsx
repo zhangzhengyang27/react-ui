@@ -1,4 +1,4 @@
-import { Slider } from '@xiaoye-react/ui';
+import { Slider, SliderProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { SliderStylesApi } from '@xiaoye-react/docs-styles-api';
 
@@ -10,7 +10,7 @@ function Demo() {
 }
 `;
 
-function Demo(props: any) {
+function Demo(props: SliderProps) {
   return (
     <Slider
       marks={[

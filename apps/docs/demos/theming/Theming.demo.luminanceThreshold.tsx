@@ -1,5 +1,6 @@
 import {
   Button,
+  ButtonProps,
   DEFAULT_THEME,
   UIThemeProvider,
   parseThemeColor,
@@ -16,7 +17,7 @@ const theme = createTheme({
   luminanceThreshold: ${props.luminanceThreshold},
 });
 
-function Wrapper(props: any) {
+function Wrapper(props: { color: ButtonProps['color']; luminanceThreshold: number }) {
   const buttons = Array(10)
     .fill(0)
     .map((_, index) => (
@@ -40,7 +41,7 @@ function Wrapper(props: any) {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: { color: ButtonProps['color']; luminanceThreshold: number }) {
   const theme = useUITheme();
 
   const buttons = Array(10)

@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Input } from '@xiaoye-react/ui';
+import { Input, InputProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
-const code = (props: any) => `
+const code = (props: Record<string, any>) => `
 import { Input } from '@xiaoye-react/ui';
 
 function Demo(){
@@ -21,7 +21,7 @@ function Demo(){
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: InputProps) {
   const [value, setValue] = useState('clearable');
 
   return (

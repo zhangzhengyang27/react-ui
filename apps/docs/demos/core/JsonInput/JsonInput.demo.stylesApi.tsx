@@ -1,5 +1,5 @@
 import { AtIcon } from '@phosphor-icons/react/dist/csr/At'
-import { JsonInput } from '@xiaoye-react/ui'
+import { JsonInput, JsonInputProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { JsonInputStylesApi } from '@xiaoye-react/docs-styles-api'
 
@@ -23,7 +23,7 @@ function Demo() {
 }
 `
 
-function Demo(props: any) {
+function Demo(props: JsonInputProps) {
     return (
         <JsonInput
             label="标签"

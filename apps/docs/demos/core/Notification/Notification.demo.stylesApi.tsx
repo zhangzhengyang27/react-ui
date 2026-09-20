@@ -1,5 +1,5 @@
 import { CheckIcon } from '@phosphor-icons/react/dist/csr/Check'
-import { Box, Notification } from '@xiaoye-react/ui'
+import { Box, Notification, NotificationProps } from '@xiaoye-react/ui'
 import { UIDemo } from '@xiaoye-react/demo'
 import { NotificationStylesApi } from '@xiaoye-react/docs-styles-api'
 
@@ -15,7 +15,7 @@ function Demo() {
 }
 `
 
-function Demo(props: any) {
+function Demo(props: NotificationProps) {
     return (
         <Box maw={400} mx="auto">
             <Notification title="请稍候" loading withCloseButton={false} {...props}>

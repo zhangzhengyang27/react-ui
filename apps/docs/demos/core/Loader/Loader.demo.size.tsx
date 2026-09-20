@@ -1,4 +1,4 @@
-import { Loader } from '@xiaoye-react/ui';
+import { Loader, LoaderProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -9,7 +9,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: LoaderProps) {
   return <Loader {...props} />;
 }
 

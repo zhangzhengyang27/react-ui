@@ -1,4 +1,4 @@
-import { getTimeRange, TimeGrid } from '@xiaoye-react/ui';
+import { getTimeRange, TimeGrid, TimeGridProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -10,7 +10,6 @@ function Demo() {
     <TimeGrid
       data={getTimeRange({ startTime: '10:00', endTime: '21:00', interval: '01:00' })}
       simpleGridProps={{
-        type: 'container',
         cols: { base: 1, '180px': 2, '320px': 3 },
         spacing: 'xs',
       }}
@@ -20,13 +19,12 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: Omit<TimeGridProps, 'data'>) {
   return (
     <TimeGrid
       data={getTimeRange({ startTime: '10:00', endTime: '21:00', interval: '01:00' })}
       simpleGridProps={{
-        type: 'container',
-        cols: { base: 1, '180px': 2, '320px': 3 },
+              cols: { base: 1, '180px': 2, '320px': 3 },
         spacing: 'xs',
       }}
       {...props}

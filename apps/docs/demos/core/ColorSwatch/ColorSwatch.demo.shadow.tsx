@@ -1,4 +1,4 @@
-import { ColorSwatch } from '@xiaoye-react/ui';
+import { ColorSwatch, ColorSwatchProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -9,7 +9,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: Omit<ColorSwatchProps, 'color' | 'component'>) {
   return <ColorSwatch color="rgba(255, 255, 255, 0.7)" {...props} />;
 }
 

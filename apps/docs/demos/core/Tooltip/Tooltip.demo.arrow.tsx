@@ -1,4 +1,4 @@
-import { Button, Tooltip } from '@xiaoye-react/ui';
+import { Button, Tooltip, TooltipProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -13,7 +13,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: Omit<TooltipProps, 'label'>) {
   return (
     <Tooltip label="提示" withArrow opened position="top-start" {...props}>
       <Button>带提示的按钮</Button>

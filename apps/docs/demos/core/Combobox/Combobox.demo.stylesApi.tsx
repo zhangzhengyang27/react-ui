@@ -1,4 +1,4 @@
-import { Combobox, TextInput, useCombobox } from '@xiaoye-react/ui';
+import { Combobox, TextInput, useCombobox, ComboboxProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { ComboboxStylesApi } from '@xiaoye-react/docs-styles-api';
 
@@ -41,7 +41,7 @@ function Demo() {
 }
 `;
 
-function Demo(props: any) {
+function Demo(props: ComboboxProps) {
   const combobox = useCombobox({
     opened: true,
   });

@@ -1,4 +1,4 @@
-import { TagsInput } from '@xiaoye-react/ui';
+import { TagsInput, TagsInputProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
@@ -18,7 +18,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: TagsInputProps) {
   return (
     <TagsInput
       {...props}

@@ -12,7 +12,7 @@ function Wrapper(props: Partial<SkeletonProps>) {
   );
 }
 
-const code = (props: any) => `
+const code = (props: Record<string, any>) => `
   import { Skeleton } from '@xiaoye-react/ui';
 
   function Demo() {

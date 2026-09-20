@@ -1,4 +1,4 @@
-import { TimePicker } from '@xiaoye-react/ui';
+import { TimePicker, TimePickerProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
@@ -16,7 +16,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: TimePickerProps) {
   return <TimePicker withDropdown {...props} />;
 }
 

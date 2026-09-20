@@ -1,4 +1,4 @@
-import { Button } from '@xiaoye-react/ui';
+import { Button, ButtonProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
 const code = `
@@ -15,7 +15,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: ButtonProps) {
   return (
     <Button.Group {...props}>
       <Button variant="default">第一</Button>

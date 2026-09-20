@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Group, Stepper } from '@xiaoye-react/ui';
+import { Button, Group, Stepper, StepperProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { StepperStylesApi } from '@xiaoye-react/docs-styles-api';
 import { Content } from './_content';
@@ -38,7 +38,7 @@ function Demo() {
 }
 `;
 
-function Demo(props: any) {
+function Demo(props: StepperProps) {
   const [active, setActive] = useState(1);
   const nextStep = () => setActive((current) => (current < 2 ? current + 1 : current));
   const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));

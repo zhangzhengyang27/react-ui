@@ -1,4 +1,4 @@
-import { DateTimePicker } from '@xiaoye-react/ui';
+import { DateTimePicker, DateTimePickerProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 import { inputControls } from '../../shared';
 
@@ -16,7 +16,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: DateTimePickerProps) {
   return <DateTimePicker {...props} placeholder="输入占位符" />;
 }
 

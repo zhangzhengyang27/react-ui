@@ -1,7 +1,7 @@
-import { Text } from '@xiaoye-react/ui';
+import { Text, TextProps } from '@xiaoye-react/ui';
 import { UIDemo } from '@xiaoye-react/demo';
 
-const code = (props: any) => `
+const code = (props: Record<string, any>) => `
 import { Text } from '@xiaoye-react/ui';
 
 function Demo() {
@@ -16,7 +16,7 @@ function Demo() {
 }
 `;
 
-function Wrapper(props: any) {
+function Wrapper(props: { fontSize: TextProps['fz']; lineHeight: TextProps['lh'] }) {
   return (
     <Text fz={props.fontSize} lh={props.lineHeight}>
       Paras is an orange, insectoid Pokémon that resembles the nymph stage of a cicada. Its ovoid

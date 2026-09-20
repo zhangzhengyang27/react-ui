@@ -21,6 +21,11 @@ export const APP_SHELL_EXAMPLES_DATA: AppShellExample[] = [
     description: '带 Header 和 Navbar 的应用外壳',
   },
   {
+    id: 'ResponsiveSizes',
+    name: '响应式宽高',
+    description: '响应式导航栏宽度和头部高度的应用外壳',
+  },
+  {
     id: 'MobileNavbar',
     name: '仅移动端导航栏',
     description: '仅在移动端显示导航栏的应用外壳',

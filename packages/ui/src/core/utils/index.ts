@@ -27,6 +27,13 @@ export { getSafeId } from './get-safe-id/get-safe-id'
 export { getBaseValue } from './get-base-value/get-base-value'
 export { getBreakpointValue } from './get-breakpoint-value/get-breakpoint-value'
 export { getSortedBreakpoints } from './get-sorted-breakpoints/get-sorted-breakpoints'
+export {
+  BASE_SLOT,
+  cascadeValueToSlots,
+  getBreakpointSlots,
+  hasResponsiveValue,
+  keepChangedSlots,
+} from './responsive-value/responsive-value'
 export type { BreakpointsSource } from './get-breakpoint-value/get-breakpoint-value'
 export { Activity } from './Activity/Activity'
 export { createUseExternalEvents } from './create-use-external-events/create-use-external-events'

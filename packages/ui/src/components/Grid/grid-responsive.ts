@@ -1,13 +1,22 @@
-import { getSortedBreakpoints, keys, type StyleProp, type SystemPropData, type UITheme } from '../../core'
+import {
+    BASE_SLOT,
+    cascadeValueToSlots,
+    getBreakpointSlots,
+    keys,
+    type StyleProp,
+    type SystemPropData,
+    type UITheme
+} from '../../core'
+
+// 断点槽位/响应式判定的通用部分已上移到 core/utils/responsive-value（AppShell 等
+// 组件同样复用）；此处按原名转出，Grid / Grid.Col / GridVariables 的引用点保持不变
+export { BASE_SLOT, hasResponsiveValue } from '../../core'
 
 /**
  * Grid.Col 的 span / offset / order 共用的响应式入参类型
  * （与 Grid 自身的 cols/gutter 一致，走仓库既有的 StyleProp 约定）
  */
 export type ResponsiveColProp = StyleProp<number>
-
-/** 级联解析用的槽位：base 在最前，其后是 theme.breakpoints 按 min-width 升序的键 */
-export const BASE_SLOT = 'base'
 
 /**
  * 取响应式对象的 base 值（标量原样返回）。
@@ -23,51 +32,11 @@ export function getBaseValue<Value>(value: StyleProp<Value> | undefined): Value 
 }
 
 /**
- * 判断入参是否真的需要跨断点输出。
- * 语义与 core/Box/style-props/parse-style-props 内部的 hasResponsiveStyles 一致：
- * 标量、只有 base 键的对象都不算响应式（那类值直接走内联样式，DOM 与非响应式用法逐字节相同）。
- */
-export function hasResponsiveValue(value: ResponsiveColProp | undefined): boolean {
-    if (typeof value !== 'object' || value === null) {
-        return false
-    }
-
-    const slots = keys(value)
-    return !(slots.length === 1 && slots[0] === BASE_SLOT)
-}
-
-/**
  * 断点槽位表：['base', ...按 min-width 升序的 theme.breakpoints 键]
  * 自定义主题追加的乱序断点同样按数值升序，保证生成的媒体查询级联顺序正确
  */
 export function getColBreakpointSlots(theme: UITheme): string[] {
-    const breakpoints = getSortedBreakpoints(keys(theme.breakpoints), theme.breakpoints)
-        .map(breakpoint => breakpoint.value)
-        .filter(breakpoint => breakpoint !== BASE_SLOT)
-
-    return [BASE_SLOT, ...breakpoints]
-}
-
-/**
- * 把 StyleProp 摊平成与 slots 一一对应的值数组。
- * 采用 CSS min-width 级联语义：某断点未显式声明时，继承上一个已声明 slot 的值，
- * 这样每个断点拿到的 span/offset/cols 才是「该视口下真正生效」的组合，钳位才有意义。
- */
-function cascadeToSlots(value: ResponsiveColProp | undefined, slots: string[]): (number | undefined)[] {
-    const scalar = typeof value === 'number' ? value : undefined
-    const record = typeof value === 'object' && value !== null
-        ? (value as Partial<Record<string, number>>)
-        : undefined
-
-    let carried: number | undefined
-
-    return slots.map(slot => {
-        const declared = record ? record[slot] : scalar
-        if (declared !== undefined) {
-            carried = declared
-        }
-        return carried
-    })
+    return getBreakpointSlots(theme)
 }
 
 /**
@@ -112,10 +81,10 @@ export function getResponsiveColDeclarations(
     { span, offset, order, cols, grow, columns }: ResolveOptions,
     slots: string[]
 ): ResponsiveColDeclarations[] {
-    const spanSeries = cascadeToSlots(span, slots)
-    const offsetSeries = cascadeToSlots(offset, slots)
-    const orderSeries = cascadeToSlots(order, slots)
-    const colsSeries = cascadeToSlots(cols, slots)
+    const spanSeries = cascadeValueToSlots(span, slots)
+    const offsetSeries = cascadeValueToSlots(offset, slots)
+    const orderSeries = cascadeValueToSlots(order, slots)
+    const colsSeries = cascadeValueToSlots(cols, slots)
 
     const unit = `(100% - (var(--grid-cols, ${columns}) - 1) * var(--grid-column-gap, 0px)) / var(--grid-cols, ${columns})`
 

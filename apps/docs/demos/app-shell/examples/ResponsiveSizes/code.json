@@ -1,0 +1,7 @@
+[
+  {
+    "fileName": "ResponsiveSizes.tsx",
+    "language": "tsx",
+    "code": "import { useDisclosure } from '@xiaoye-react/hooks';\n\nexport function ResponsiveSizes() {\n  // 默认展开：navbar 折叠时轨道是 0px，下面按断点配置的宽度在任何视口都看不出效果\n  const [opened, { toggle }] = useDisclosure(true);\n\n  return (\n    <AppShell\n      padding=\"md\"\n      header={{ height: { base: 60, md: 70, lg: 80 } }}\n      navbar={{\n        width: { base: 200, md: 300, lg: 400 },\n        collapsed: !opened,\n      }}\n    >\n      <AppShell.Header>\n        <Group h=\"100%\" px=\"md\">\n          <Burger opened={opened} onClick={toggle} hiddenFrom=\"sm\" size=\"sm\" />\n          Header\n        </Group>\n      </AppShell.Header>\n      <AppShell.Navbar p=\"md\">导航栏</AppShell.Navbar>\n      <AppShell.Main>\n        <Text>这是主内容区，你的应用内容在这里。</Text>\n        <Text>\n          header 的高度与 navbar 的宽度都按断点分级（base / md / lg）：拖动窗口宽度即可看到\n          header 逐档变高、navbar 逐档变宽。移动端点汉堡按钮折叠后，所有断点的轨道都是 0，\n          不会残留某一档的宽度。\n        </Text>\n      </AppShell.Main>\n    </AppShell>\n  );\n}\n"
+  }
+]

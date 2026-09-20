@@ -23,7 +23,8 @@ Main / Aside / Footer 各自占据一个网格区域，行高与列宽由 `heade
 `footer.height`、`navbar.width`、`aside.width` 通过 CSS 变量决定。
 
 [基本 AppShell 示例](/app-shell?e=BasicAppShell)，包含 header 和 navbar。
-Navbar 是否隐藏只由 `navbar.collapsed` 决定，组件本身没有内置的断点行为，
+Navbar 是否隐藏由 `navbar.collapsed` 决定；它和尺寸一样支持按断点书写，
+组件本身不含任何视口监听逻辑，跨断点靠 CSS 媒体查询生效。
 示例中的汉堡按钮用于切换该状态。
 
 ```tsx
@@ -75,21 +76,25 @@ function Demo() {
 
 ```tsx
 interface Configuration {
-  /** 部分的高度：数字或字符串，
-   ** 数字会转换为 rem */
-  height: React.CSSProperties['height'];
+  /** 部分的高度：数字（转 rem）、字符串，
+   ** 或按断点书写的对象 */
+  height: AppShellSizeProp;
 }
 ```
 
 ```tsx
 interface Configuration {
-  /** 部分的宽度：数字或字符串，数字会转换为 rem */
-  width: React.CSSProperties['width'];
+  /** 部分的宽度：数字（转 rem）、字符串，或按断点书写的对象 */
+  width: AppShellSizeProp;
 
-  /** 确定该部分是否应折叠，为 true 时该部分宽度为 0 */
-  collapsed?: boolean;
+  /** 是否折叠（折叠时该部分宽度为 0），同样支持按断点书写 */
+  collapsed?: AppShellCollapsedProp;
 }
 ```
+
+其中 `AppShellSizeProp = StyleProp<number | string>`、
+`AppShellCollapsedProp = StyleProp<boolean>`：对象键取自 `theme.breakpoints`，
+按 min-width 向下级联继承（`{ base: 200, lg: 320 }` 在 md 仍是 200）。
 
 ### 高度配置
 
@@ -119,6 +124,8 @@ function Demo() {
 
 - 如果传入数字，该值将转换为 [rem](/docs/styles/rem)，并用作该部分的宽度。
 - 如果传入字符串，该值原样用作该部分的宽度。
+- 如果传入 `{ base, sm, lg }` 这样的对象，每个断点各取自己的值（按 min-width
+  向下级联继承），例如 `width={{ base: 220, lg: 320 }}`。
 
 数字宽度示例：`width` 转换为 [rem](/docs/styles/rem)：
 
@@ -134,6 +141,8 @@ function Demo() {
   );
 }
 ```
+
+按断点设置宽高的示例见 [ResponsiveSizes](/app-shell?e=ResponsiveSizes)。
 
 ### padding 属性
 
@@ -157,12 +166,14 @@ function Demo() {
 
 ### 折叠 navbar/aside 配置
 
-`navbar` 和 `aside` 属性包含一个 `collapsed` 属性，类型为 `boolean`。
-当它为 `true` 时，该部分宽度为 0，即处于折叠状态。
+`navbar` 和 `aside` 属性包含一个 `collapsed` 属性，类型为 `boolean`，也可写成
+`{ base: true, lg: false }` 这样的断点对象（窄屏折叠、宽屏展开）。当它为 `true` 时，
+该部分宽度为 0，即处于折叠状态。
 折叠/展开的动画来自根元素内置的 `grid-template-columns` 过渡（`0.2s ease`），
 没有可供配置过渡的属性。
 
 通过按钮切换折叠状态的[示例](/app-shell?e=CollapseDesktop)：
+
 
 ```tsx
 import { AppShell, Button } from '@xiaoye-react/ui';
@@ -217,10 +228,10 @@ export function CollapseDesktop() {
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| navbar | 左侧导航（Navbar 组件）配置，`collapsed` 为 `true` 时宽度为 0 | `{ width: React.CSSProperties['width']; collapsed?: boolean }` | — |
-| header | 顶部头部（Header 组件）高度配置 | `{ height: React.CSSProperties['height'] }` | — |
-| aside | 右侧侧栏（Aside 组件）配置，`collapsed` 为 `true` 时宽度为 0 | `{ width: React.CSSProperties['width']; collapsed?: boolean }` | — |
-| footer | 底部内容（Footer 组件）高度配置 | `{ height: React.CSSProperties['height'] }` | — |
+| navbar | 左侧导航（Navbar 组件）配置，`collapsed` 为 `true` 时宽度为 0 | `{ width: AppShellSizeProp; collapsed?: AppShellCollapsedProp }` | — |
+| header | 顶部头部（Header 组件）高度配置 | `{ height: AppShellSizeProp }` | — |
+| aside | 右侧侧栏（Aside 组件）配置，`collapsed` 为 `true` 时宽度为 0 | `{ width: AppShellSizeProp; collapsed?: AppShellCollapsedProp }` | — |
+| footer | 底部内容（Footer 组件）高度配置 | `{ height: AppShellSizeProp }` | — |
 | padding | `AppShell.Main` 的内边距 | `UISpacing`（`theme.spacing` 的键或数字） | `'md'` |
 
 支持所有原生 HTML 属性。

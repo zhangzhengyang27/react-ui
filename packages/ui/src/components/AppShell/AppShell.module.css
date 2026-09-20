@@ -1,5 +1,8 @@
 .root {
     display: grid;
+    /* --app-shell-*-width/height 的按断点取值由 AppShell 注入的随机类规则下发
+       （响应式写法下 base 值也在该类里，不能留在内联 style：内联优先级会压掉媒体查询）；
+       此处的 var() 兜底负责「该断点没有声明」的情况 */
     grid-template:
         'header header header' auto
         'navbar main aside' 1fr

@@ -7,6 +7,8 @@ import FullLayoutCode from './FullLayout/code.json';
 import { FullLayout } from './FullLayout/FullLayout';
 import MobileNavbarCode from './MobileNavbar/code.json';
 import { MobileNavbar } from './MobileNavbar/MobileNavbar';
+import ResponsiveSizesCode from './ResponsiveSizes/code.json';
+import { ResponsiveSizes } from './ResponsiveSizes/ResponsiveSizes';
 
 interface AppShellExampleComponent {
   component: () => React.JSX.Element;
@@ -21,6 +23,10 @@ export const APP_SHELL_EXAMPLES_COMPONENTS: Record<string, AppShellExampleCompon
   BasicAppShell: {
     component: BasicAppShell,
     code: BasicAppShellCode as AppShellExampleComponent['code'],
+  },
+  ResponsiveSizes: {
+    component: ResponsiveSizes,
+    code: ResponsiveSizesCode as AppShellExampleComponent['code'],
   },
   MobileNavbar: {
     component: MobileNavbar,

@@ -4,15 +4,25 @@ import {
     BoxProps,
     createVarsResolver,
     getSpacing,
-    UISpacing,
+    InlineStyles,
+    keys,
+    parseStyleProps,
     polymorphicFactory,
     PolymorphicFactory,
-    rem,
     StylesApiProps,
+    UISpacing,
     useProps,
-    useStyles
+    useRandomClassName,
+    useStyles,
+    useUITheme
 } from '../../core'
 import classes from './AppShell.module.css'
+import {
+    APP_SHELL_SIZE_STYLE_PROPS_DATA,
+    AppShellCollapsedProp,
+    AppShellSizeProp,
+    getAppShellSizes
+} from './app-shell-responsive'
 import { AppShellContext, AppShellContextValue } from './AppShellContext'
 import { AppShellAside } from './AppShellAside/AppShellAside'
 import { AppShellFooter } from './AppShellFooter/AppShellFooter'
@@ -20,23 +30,37 @@ import { AppShellHeader } from './AppShellHeader/AppShellHeader'
 import { AppShellMain } from './AppShellMain/AppShellMain'
 import { AppShellNavbar } from './AppShellNavbar/AppShellNavbar'
 
+export type { AppShellCollapsedProp, AppShellSizeProp } from './app-shell-responsive'
+
 export type AppShellStylesNames = 'root' | 'header' | 'navbar' | 'aside' | 'footer' | 'main'
 
 export interface AppShellProps extends BoxProps, StylesApiProps<AppShellFactory> {
     /** Controls padding of the main section @default 'md' */
     padding?: UISpacing
 
-    /** Header configuration with height */
-    header?: { height: React.CSSProperties['height'] }
+    /**
+     * Header configuration with height.
+     * 数字按 rem 换算、字符串原样使用，也支持按断点分级（如 `{ base: 60, md: 70, lg: 80 }`）
+     */
+    header?: { height: AppShellSizeProp }
 
-    /** Navbar configuration with width and collapse state */
-    navbar?: { width: React.CSSProperties['width']; collapsed?: boolean }
+    /**
+     * Navbar configuration with width and collapse state.
+     * `width`/`collapsed` 均支持按断点分级（如 `{ base: 200, lg: 400 }`），语法与 style props 相同
+     */
+    navbar?: { width: AppShellSizeProp; collapsed?: AppShellCollapsedProp }
 
-    /** Aside configuration with width and collapse state */
-    aside?: { width: React.CSSProperties['width']; collapsed?: boolean }
+    /**
+     * Aside configuration with width and collapse state.
+     * `width`/`collapsed` 均支持按断点分级，语法与 `navbar` 相同
+     */
+    aside?: { width: AppShellSizeProp; collapsed?: AppShellCollapsedProp }
 
-    /** Footer configuration with height */
-    footer?: { height: React.CSSProperties['height'] }
+    /**
+     * Footer configuration with height.
+     * 语法与 `header.height` 相同
+     */
+    footer?: { height: AppShellSizeProp }
 
     /** Content of the app shell */
     children?: React.ReactNode
@@ -60,26 +84,13 @@ const defaultProps = {
     padding: 'md'
 } satisfies Partial<AppShellProps>
 
-// 数字尺寸（如 navbar.width: 220）必须带单位进 CSS 变量：
-// 无单位值替换进 grid-template 的轨道列表会让整条声明在计算值阶段失效，布局塌陷
-const toCssSize = (value: string | number | undefined): string | number | undefined =>
-    typeof value === 'number' ? rem(value) : value
-
 const varsResolver = createVarsResolver<AppShellFactory>((theme, { padding, header, footer, navbar, aside }) => ({
     root: {
         '--app-shell-padding': getSpacing(padding),
-        '--app-shell-header-height': header?.height !== undefined ? toCssSize(header.height) : undefined,
-        '--app-shell-footer-height': footer?.height !== undefined ? toCssSize(footer.height) : undefined,
-        '--app-shell-navbar-width': navbar?.collapsed
-            ? '0px'
-            : navbar?.width !== undefined
-              ? toCssSize(navbar.width)
-              : undefined,
-        '--app-shell-aside-width': aside?.collapsed
-            ? '0px'
-            : aside?.width !== undefined
-              ? toCssSize(aside.width)
-              : undefined
+        // 只有不需要跨断点变化的尺寸留在这里（内联变量，与改动前逐字节一致）：
+        // 内联优先级压过任何类规则，响应式的尺寸必须整体交给下面那段 <style> 下发，
+        // 否则 base 值会挡掉所有媒体查询（见 app-shell-responsive.ts 的说明）
+        ...getAppShellSizes({ header, footer, navbar, aside }, theme).vars
     }
 }))
 
@@ -102,6 +113,8 @@ export const AppShell = polymorphicFactory<AppShellFactory>((_props, _ref) => {
         children,
         ...others
     } = props
+    const theme = useUITheme()
+    const responsiveClassName = useRandomClassName()
 
     const getStyles = useStyles<AppShellFactory>({
         name: 'AppShell',
@@ -117,38 +130,73 @@ export const AppShell = polymorphicFactory<AppShellFactory>((_props, _ref) => {
         varsResolver
     })
 
+    // varsResolver 与本行调用同一个纯函数，两侧解析结果必然一致
+    const sizes = useMemo(
+        () => getAppShellSizes({ header, footer, navbar, aside }, theme),
+        [header, footer, navbar, aside, theme]
+    )
+
+    // 响应式通道与 Box 处理响应式 style prop 的那套完全相同（parseStyleProps 负责
+    // 拆分 base/各断点并按 min-width 升序排序，InlineStyles 负责 nonce/CSP 与 <style>），
+    // 这里复用它而不是自己拼媒体查询
+    const responsiveStyleProps = useMemo(
+        () =>
+            keys(sizes.responsive).length > 0
+                ? parseStyleProps({
+                    theme,
+                    data: APP_SHELL_SIZE_STYLE_PROPS_DATA,
+                    styleProps: sizes.responsive
+                })
+                : undefined,
+        [sizes, theme]
+    )
+
     const ctxValue = useMemo<AppShellContextValue>(
         () => ({
             padding,
-            headerHeight: header?.height !== undefined ? toCssSize(header.height) : undefined,
-            footerHeight: footer?.height !== undefined ? toCssSize(footer.height) : undefined,
-            navbarWidth: navbar?.collapsed ? '0px' : toCssSize(navbar?.width),
-            asideWidth: aside?.collapsed ? '0px' : toCssSize(aside?.width),
-            navbarCollapsed: navbar?.collapsed,
-            asideCollapsed: aside?.collapsed
+            // 对象写法下 context 只能给出 base 槽位的值（逐断点尺寸活在 CSS 变量里），
+            // 这样也保证 context 永远不会漏出一个对象
+            headerHeight: sizes.base.header,
+            footerHeight: sizes.base.footer,
+            navbarWidth: sizes.base.navbar,
+            asideWidth: sizes.base.aside,
+            navbarCollapsed: sizes.collapsedEverywhere.navbar,
+            asideCollapsed: sizes.collapsedEverywhere.aside
         }),
-        [padding, header, footer, navbar, aside]
+        [padding, sizes]
     )
 
     return (
-        <AppShellContext.Provider value={ctxValue}>
-            <Box
-                ref={_ref}
-                mod={[
-                    {
-                        'with-header': !!header,
-                        'with-navbar': !!navbar && !navbar.collapsed,
-                        'with-aside': !!aside && !aside.collapsed,
-                        'with-footer': !!footer
-                    },
-                    mod
-                ]}
-                {...getStyles('root')}
-                {...others}
-            >
-                {children}
-            </Box>
-        </AppShellContext.Provider>
+        <>
+            {responsiveStyleProps?.hasResponsiveStyles && (
+                <InlineStyles
+                    selector={`.${responsiveClassName}`}
+                    styles={responsiveStyleProps.styles}
+                    media={responsiveStyleProps.media}
+                />
+            )}
+            <AppShellContext.Provider value={ctxValue}>
+                <Box
+                    ref={_ref}
+                    mod={[
+                        {
+                            'with-header': !!header,
+                            'with-navbar': !!navbar && !sizes.collapsedEverywhere.navbar,
+                            'with-aside': !!aside && !sizes.collapsedEverywhere.aside,
+                            'with-footer': !!footer
+                        },
+                        mod
+                    ]}
+                    {...getStyles(
+                        'root',
+                        responsiveStyleProps?.hasResponsiveStyles ? { className: responsiveClassName } : undefined
+                    )}
+                    {...others}
+                >
+                    {children}
+                </Box>
+            </AppShellContext.Provider>
+        </>
     )
 })
 

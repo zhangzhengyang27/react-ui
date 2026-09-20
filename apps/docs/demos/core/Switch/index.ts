@@ -1,5 +1,6 @@
 export { configurator } from './Switch.demo.configurator';
 export { labels } from './Switch.demo.labels';
+export { descriptionAndError } from './Switch.demo.descriptionAndError';
 export { iconLabels } from './Switch.demo.iconLabels';
 export { groupConfigurator } from './Switch.demo.groupConfigurator';
 export { stylesApi } from './Switch.demo.stylesApi';

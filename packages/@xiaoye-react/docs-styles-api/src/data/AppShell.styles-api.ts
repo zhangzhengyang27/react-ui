@@ -13,20 +13,34 @@ export const AppShellStylesApi: StylesApiData<AppShellFactory> = {
 
   vars: {
     root: {
-      '--app-shell-transition-duration': '控制 all children 的 transition duration',
-      '--app-shell-transition-timing-function':
-        'Controls transition timing function of all children',
+      '--app-shell-padding': '控制 `main` 的 padding（来自 `padding` 属性）',
+      '--app-shell-header-height': '控制 `header` 的 height（来自 `header.height`）',
+      '--app-shell-footer-height': '控制 `footer` 的 height（来自 `footer.height`）',
+      '--app-shell-navbar-width':
+        '控制 `navbar` 宽度与 grid 轨道（来自 `navbar.width`，支持按断点分级）',
+      '--app-shell-aside-width':
+        '控制 `aside` 宽度与 grid 轨道（来自 `aside.width`，支持按断点分级）',
     },
   },
 
   modifiers: [
-    { modifier: 'data-resizing', selector: 'root', condition: 'User is resizing the window' },
-    { modifier: 'data-layout', selector: 'root', value: 'Value of the `layout` prop' },
-    { modifier: 'data-disabled', selector: 'root', condition: '设置了 `disabled` 属性' },
+    { modifier: 'data-with-header', selector: 'root', condition: '设置了 `header` 属性' },
     {
-      modifier: 'data-with-border',
-      selector: ['navbar', 'header', 'aside', 'footer'],
-      condition: '`withBorder` prop is set either on the `AppShell` or on the associated 组件',
+      modifier: 'data-with-navbar',
+      selector: 'root',
+      condition: '设置了 `navbar` 且在所有断点上都未折叠',
+    },
+    {
+      modifier: 'data-with-aside',
+      selector: 'root',
+      condition: '设置了 `aside` 且在所有断点上都未折叠',
+    },
+    { modifier: 'data-with-footer', selector: 'root', condition: '设置了 `footer` 属性' },
+    { modifier: 'data-fixed', selector: 'root', condition: '设置了 `fixed` 属性' },
+    {
+      modifier: 'data-collapsed',
+      selector: ['navbar', 'aside'],
+      condition: '`collapsed` 在该断点为真（逐断点折叠时改由 `--app-shell-*-width` 表达）',
     },
   ],
 };

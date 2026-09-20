@@ -88,6 +88,15 @@
     outline-offset: 2px;
 }
 
+/* 错误态：选中时用错误色轨道；未选中时轨道没有背景可染色，补一圈内描边保证 off 也可辨 */
+.root:where([data-error]) {
+    --switch-color: var(--ui-color-red-6);
+}
+
+.root:where([data-error]) .track:not([data-checked]) {
+    box-shadow: inset 0 0 0 1px var(--ui-color-red-6);
+}
+
 .thumb {
     position: absolute;
     top: var(--switch-thumb-offset);
@@ -112,6 +121,13 @@
     }
 }
 
+/* label / description / error 三行竖排在轨道旁边，结构与 Checkbox 一致 */
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--ui-spacing-xs) / 2);
+}
+
 .label {
     font-size: var(--switch-label-font-size);
     color: var(--ui-color-text);
@@ -119,6 +135,18 @@
     .root:where([data-disabled]) & {
         color: var(--ui-color-dimmed);
     }
+}
+
+.description {
+    font-size: var(--ui-font-size-xs);
+    color: var(--ui-color-dimmed);
+    line-height: var(--ui-line-height-xs);
+}
+
+.error {
+    font-size: var(--ui-font-size-xs);
+    color: var(--ui-color-red-6);
+    line-height: var(--ui-line-height-xs);
 }
 
 .onLabel,

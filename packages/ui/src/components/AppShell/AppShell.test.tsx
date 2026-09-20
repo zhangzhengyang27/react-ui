@@ -209,4 +209,29 @@ describe('AppShell', () => {
         expect(screen.getByTestId('navbar')).not.toHaveAttribute('data-collapsed')
         expect(screen.getByTestId('aside')).not.toHaveAttribute('data-collapsed')
     })
+
+    it('fixed 布局标记 data-fixed，并把 body 滚动锁在挂载期内', () => {
+        document.body.style.overflow = 'auto'
+
+        const { unmount } = renderWithProvider(
+            <AppShell data-testid="shell" fixed>
+                <AppShell.Main>Main</AppShell.Main>
+            </AppShell>
+        )
+
+        expect(screen.getByTestId('shell')).toHaveAttribute('data-fixed')
+        expect(document.body.style.overflow).toBe('hidden')
+
+        unmount()
+        // 还原的是进入前的值，不是硬编码 ''：嵌套/并列的 AppShell 才不会互相踩锁
+        expect(document.body.style.overflow).toBe('auto')
+
+        renderWithProvider(
+            <AppShell data-testid="plain">
+                <AppShell.Main>Main</AppShell.Main>
+            </AppShell>
+        )
+        expect(screen.getByTestId('plain')).not.toHaveAttribute('data-fixed')
+        expect(document.body.style.overflow).toBe('auto')
+    })
 })

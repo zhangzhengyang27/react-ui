@@ -208,6 +208,31 @@ export function CollapseDesktop() {
 }
 ```
 
+### 固定布局
+
+`fixed` 让 AppShell 整体钉在视口上（`position: fixed; inset: 0`）：header、footer、navbar、aside
+都不会随内容滚走，滚动只发生在 `AppShell.Main` 内部，同时挂载期间锁住 `document.body` 的滚动
+（卸载时还原进入前的值，嵌套或并列的 AppShell 不会互相踩锁）。
+
+```tsx
+import { AppShell } from '@xiaoye-react/ui';
+
+function Demo() {
+  return (
+    <AppShell header={{ height: 60 }} navbar={{ width: 220 }} aside={{ width: 200 }} footer={{ height: 50 }} fixed>
+      <AppShell.Header>顶部固定</AppShell.Header>
+      <AppShell.Navbar>左侧固定</AppShell.Navbar>
+      <AppShell.Main>只有这里滚动</AppShell.Main>
+      <AppShell.Aside>右侧固定</AppShell.Aside>
+      <AppShell.Footer>底部固定</AppShell.Footer>
+    </AppShell>
+  );
+}
+```
+
+> 这里不放可交互示例：文档站本身是一页滚动的长页面，锁 body 滚动会把整站钉住。
+> 固定布局在 `e2e/interactions/app-shell.spec.ts` 里用真实浏览器验证（根元素尺寸等于视口、body 被锁）。
+
 ### CSS 变量
 
 <DataTable head={['变量', '描述']} data={[ [<code>--app-shell-padding</code>, 'AppShell.Main 的内边距'], [<code>--app-shell-navbar-width</code>, 'Navbar 宽度，collapsed 为 true 时为 0px'], [<code>--app-shell-aside-width</code>, 'Aside 宽度，collapsed 为 true 时为 0px'], [<code>--app-shell-header-height</code>, 'Header 高度'], [<code>--app-shell-footer-height</code>, 'Footer 高度'], ]}></DataTable>
@@ -233,6 +258,7 @@ export function CollapseDesktop() {
 | aside | 右侧侧栏（Aside 组件）配置，`collapsed` 为 `true` 时宽度为 0 | `{ width: AppShellSizeProp; collapsed?: AppShellCollapsedProp }` | — |
 | footer | 底部内容（Footer 组件）高度配置 | `{ height: AppShellSizeProp }` | — |
 | padding | `AppShell.Main` 的内边距 | `UISpacing`（`theme.spacing` 的键或数字） | `'md'` |
+| fixed | 固定布局：整体钉在视口上，只有 `main` 内部滚动，并锁住 body 滚动 | `boolean` | `false` |
 
 支持所有原生 HTML 属性。
 

@@ -16,6 +16,14 @@
     min-height: 100vh;
 }
 
+/* 固定布局：整块钉在视口上，header/footer/aside 不随内容滚走，滚动只发生在 .main 内 */
+.root:where([data-fixed]) {
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    min-height: 0;
+}
+
 .header {
     grid-area: header;
     height: var(--app-shell-header-height, auto);

@@ -20,7 +20,17 @@ import { SwitchGroup, type SwitchGroupProps, type SwitchGroupFactory } from './S
 import { SwitchGroupContext } from './SwitchGroup.context'
 import classes from './Switch.module.css'
 
-export type SwitchStylesNames = 'root' | 'input' | 'track' | 'thumb' | 'label' | 'onLabel' | 'offLabel'
+export type SwitchStylesNames =
+    | 'root'
+    | 'input'
+    | 'track'
+    | 'thumb'
+    | 'body'
+    | 'label'
+    | 'description'
+    | 'error'
+    | 'onLabel'
+    | 'offLabel'
 
 export type SwitchCssVariables = {
     root:
@@ -55,6 +65,12 @@ export interface SwitchProps extends BoxProps, ElementProps<'input', 'size'>, St
 
     /** Switch 旁边渲染的标签 */
     label?: React.ReactNode
+
+    /** `label` 下方渲染的描述 */
+    description?: React.ReactNode
+
+    /** `label` 下方渲染的错误信息；同时把轨道着色为错误色 */
+    error?: React.ReactNode
 
     /** 如果设置，则应用禁用样式和行为 */
     disabled?: boolean
@@ -108,6 +124,8 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
         defaultChecked,
         onChange,
         label,
+        description,
+        error,
         disabled,
         onLabel,
         offLabel,
@@ -171,13 +189,19 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
     })
 
     const hasLabels = !!onLabel || !!offLabel
+    const hasLabel = !!label
+    const hasDescription = !!description
+    const hasError = !!error
 
     return (
         <Box
             component="label"
             htmlFor={resolvedId}
             {...getStyles('root')}
-            mod={[{ disabled: resolvedDisabled, checked: resolvedChecked, 'with-labels': hasLabels }, mod]}
+            mod={[
+                { disabled: resolvedDisabled, checked: resolvedChecked, 'with-labels': hasLabels, error: hasError },
+                mod
+            ]}
         >
             <Box
                 component="input"
@@ -199,7 +223,13 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
                 <span {...getStyles('thumb')} />
             </span>
 
-            {label && <span {...getStyles('label')}>{label}</span>}
+            {(hasLabel || hasDescription || hasError) && (
+                <span {...getStyles('body')}>
+                    {hasLabel && <span {...getStyles('label')}>{label}</span>}
+                    {hasDescription && <span {...getStyles('description')}>{description}</span>}
+                    {hasError && <span {...getStyles('error')}>{error}</span>}
+                </span>
+            )}
         </Box>
     )
 })

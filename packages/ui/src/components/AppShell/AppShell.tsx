@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import {
     Box,
     BoxProps,
@@ -62,6 +62,12 @@ export interface AppShellProps extends BoxProps, StylesApiProps<AppShellFactory>
      */
     footer?: { height: AppShellSizeProp }
 
+    /**
+     * 固定布局：整个 AppShell 钉在视口上，页面本身不滚动，只有 `main` 内部滚动，
+     * 挂载期间锁住 body 滚动 @default false
+     */
+    fixed?: boolean
+
     /** Content of the app shell */
     children?: React.ReactNode
 }
@@ -108,6 +114,7 @@ export const AppShell = polymorphicFactory<AppShellFactory>((_props, _ref) => {
         navbar,
         aside,
         footer,
+        fixed,
         mod,
         attributes,
         children,
@@ -115,6 +122,19 @@ export const AppShell = polymorphicFactory<AppShellFactory>((_props, _ref) => {
     } = props
     const theme = useUITheme()
     const responsiveClassName = useRandomClassName()
+
+    // fixed 布局下页面本身不再滚动：锁住 body 滚动，卸载时还原"进入前"的值——
+    // 直接置空会让嵌套/并列的 AppShell 互相踩掉对方的锁
+    useEffect(() => {
+        if (!fixed) {
+            return
+        }
+        const previous = document.body.style.overflow
+        document.body.style.overflow = 'hidden'
+        return () => {
+            document.body.style.overflow = previous
+        }
+    }, [fixed])
 
     const getStyles = useStyles<AppShellFactory>({
         name: 'AppShell',
@@ -183,7 +203,8 @@ export const AppShell = polymorphicFactory<AppShellFactory>((_props, _ref) => {
                             'with-header': !!header,
                             'with-navbar': !!navbar && !sizes.collapsedEverywhere.navbar,
                             'with-aside': !!aside && !sizes.collapsedEverywhere.aside,
-                            'with-footer': !!footer
+                            'with-footer': !!footer,
+                            fixed
                         },
                         mod
                     ]}

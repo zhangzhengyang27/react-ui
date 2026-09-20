@@ -62,4 +62,24 @@ describe('Switch', () => {
         expect(screen.getByText('ON')).toBeInTheDocument()
         expect(screen.getByText('OFF')).toBeInTheDocument()
     })
+
+    it('renders description and error next to the label, and flags the root', () => {
+        renderSwitch(<Switch label="同意" description="说明文字" error="必选项" />)
+
+        const labelEl = screen.getByText('同意')
+        const body = labelEl.parentElement!
+
+        // 三行排在同一个 body 容器里，而不是散在 root 上
+        expect(screen.getByText('说明文字').parentElement).toBe(body)
+        expect(screen.getByText('必选项').parentElement).toBe(body)
+        expect(body.children).toHaveLength(3)
+        expect(body.parentElement?.tagName).toBe('LABEL')
+        expect(body.parentElement?.hasAttribute('data-error')).toBe(true)
+
+        // 只给 label 时不渲染 description/error 节点，也不打 data-error
+        const plain = renderSwitch(<Switch label="只有标签" />)
+        const plainBody = plain.getByText('只有标签').parentElement!
+        expect(plainBody.children).toHaveLength(1)
+        expect(plainBody.parentElement?.hasAttribute('data-error')).toBe(false)
+    })
 })

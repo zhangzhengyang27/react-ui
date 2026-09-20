@@ -114,6 +114,7 @@ export const NavLink = polymorphicFactory<NavLinkFactory>((_props, ref) => {
         onChange,
         disabled,
         onClick,
+        color,
         mod,
         attributes,
         ...others

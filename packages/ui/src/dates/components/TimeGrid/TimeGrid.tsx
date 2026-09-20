@@ -119,6 +119,7 @@ export const TimeGrid = factory<TimeGridFactory>((_props) => {
     maxTime,
     disableTime,
     disabled,
+    radius,
     attributes,
     ...others
   } = props;

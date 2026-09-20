@@ -88,6 +88,8 @@ export const Blockquote = factory<BlockquoteFactory>((_props, _ref) => {
         iconSize,
         cite,
         textWrap,
+        radius,
+        color,
         attributes,
         ...others
     } = props

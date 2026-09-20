@@ -85,6 +85,7 @@ export const CheckboxCard = factory<CheckboxCardFactory>((_props, ref) => {
         defaultChecked,
         onChange,
         disabled,
+        radius,
         attributes,
         ...others
     } = props

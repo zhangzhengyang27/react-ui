@@ -80,6 +80,7 @@ export const Burger = factory<BurgerFactory>((_props, _ref) => {
         transitionDuration,
         transitionTimingFunction,
         lineSize,
+        color,
         attributes,
         ...others
     } = props

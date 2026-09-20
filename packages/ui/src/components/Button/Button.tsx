@@ -159,6 +159,7 @@ export const Button = polymorphicFactory<ButtonFactory>((_props, _ref) => {
         classNames,
         styles,
         unstyled,
+        justify,
         'data-disabled': dataDisabled,
         autoContrast,
         mod,

@@ -17,7 +17,7 @@
     "lint:style": "stylelint \"{packages,apps}/**/*.{css,ts}\"",
     "docs:lint": "node apps/docs/scripts/lint-docs-imports.mjs && node apps/docs/scripts/lint-demo-controls.mjs && node apps/docs/scripts/lint-docs-api-tables.mjs",
     "typecheck:demos": "tsc -p apps/docs/tsconfig.demos.json",
-    "lint": "npm run lint:es && npm run lint:style",
+    "lint": "npm run lint:es && npm run lint:style && npm run spellcheck",
     "e2e:screenshots": "playwright test",
     "e2e:interactions": "playwright test -c playwright.interactions.config.ts",
     "e2e:update-snapshots": "playwright test --update-snapshots",

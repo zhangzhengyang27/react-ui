@@ -50,7 +50,7 @@ describe('@xiaoye-react/hooks/use-hotkey', () => {
     expect(handler).toHaveBeenCalled();
   });
 
-  it('correctly ignores unclear numerical assignments when usePhyiscalKeys is true', () => {
+  it('correctly ignores unclear numerical assignments when usePhysicalKeys is true', () => {
     const handler = vi.fn();
     renderHook(() => useHotkeys([['1', handler, { usePhysicalKeys: true }]], [], true));
     dispatchEvent({ code: 'Numpad1' });

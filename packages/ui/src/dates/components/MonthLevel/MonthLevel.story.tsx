@@ -22,6 +22,7 @@ function Wrapper(props: Partial<MonthLevelProps>) {
 }
 
 export function Usage() {
+  // cspell:ignore tetstasfaf  随手敲的类名，只用来确认 classNames 能透传
   return <Wrapper classNames={{ weekday: 'test-tetstasfaf' }} />;
 }
 

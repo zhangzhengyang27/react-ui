@@ -13,7 +13,7 @@ function Demo() {
     mode: 'uncontrolled',
     initialValues: {
       password: 'secret',
-      confirmPassword: 'sevret',
+      confirmPassword: 'secret',
     },
 
     validate: {
@@ -54,7 +54,7 @@ function Demo() {
     mode: 'uncontrolled',
     initialValues: {
       password: 'secret',
-      confirmPassword: 'sevret',
+      confirmPassword: 'secret',
     },
 
     validate: {

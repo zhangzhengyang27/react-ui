@@ -735,7 +735,7 @@ function Demo() {
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: {
-      framewrok: 'react',
+      framework: 'react',
     },
   });
 
@@ -744,8 +744,8 @@ function Demo() {
       <NativeSelect
         label="选择框架"
         data={['React', 'Angular', 'Svelte', 'Vue']}
-        key={form.key('framewrok')}
-        {...form.getInputProps('framewrok')}
+        key={form.key('framework')}
+        {...form.getInputProps('framework')}
       />
 
       <Group mt="md">
@@ -760,7 +760,7 @@ function DemoNativeSelect() {
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: {
-      framewrok: 'react',
+      framework: 'react',
     },
   });
 
@@ -769,8 +769,8 @@ function DemoNativeSelect() {
       <NativeSelect
         label="选择框架"
         data={['React', 'Angular', 'Svelte', 'Vue']}
-        key={form.key('framewrok')}
-        {...form.getInputProps('framewrok')}
+        key={form.key('framework')}
+        {...form.getInputProps('framework')}
       />
 
       <Group mt="md">
@@ -1155,7 +1155,7 @@ function Demo() {
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: {
-      framewrok: 'react',
+      framework: 'react',
     },
   });
 
@@ -1164,8 +1164,8 @@ function Demo() {
       <Text size="sm" fw={500} mb={3}>选择框架</Text>
       <SegmentedControl
         data={['React', 'Angular', 'Svelte', 'Vue']}
-        key={form.key('framewrok')}
-        {...form.getInputProps('framewrok')}
+        key={form.key('framework')}
+        {...form.getInputProps('framework')}
       />
 
       <Group mt="md">
@@ -1180,7 +1180,7 @@ function DemoSegmentedControl() {
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: {
-      framewrok: 'react',
+      framework: 'react',
     },
   });
 
@@ -1191,8 +1191,8 @@ function DemoSegmentedControl() {
       </Text>
       <SegmentedControl
         data={['React', 'Angular', 'Svelte', 'Vue']}
-        key={form.key('framewrok')}
-        {...form.getInputProps('framewrok')}
+        key={form.key('framework')}
+        {...form.getInputProps('framework')}
       />
 
       <Group mt="md">

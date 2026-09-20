@@ -74,3 +74,74 @@ jiangsu
 nanjing
 lazyload
 networkidle
+
+# schedule / rrule 领域词
+multiday
+rrule
+exdate
+dtstart
+byday
+tzid
+iterresult
+datetimes
+ampm
+# 组件内部标识符
+renderable
+rafs
+stackid
+overscan
+toggleable
+desaturate
+rowspan
+fullscreen
+# DOM / ARIA 词根（连字符被切开后的片段）
+pointermove
+pointercancel
+mousedown
+pageup
+pagedown
+arrowup
+arrowdown
+arrowleft
+arrowright
+valuenow
+labelledby
+keyshortcuts
+# 依赖与工具名
+shiki
+klona
+nprogress
+oxlint
+wimax
+reactui
+uidev
+fakepath
+# MIME 类型片段（Dropzone/mime-types.ts）
+openxmlformats
+officedocument
+wordprocessingml
+spreadsheetml
+presentationml
+msword
+# demo 文案里的西语与专名
+siguiente
+semana
+recurso
+recursos
+atras
+sankey
+abramov
+hackathon
+# 英式拼写（代码注释里成文用）
+behaviour
+initialised
+neighbouring
+
+# 日期/日程组件的 i18n 测试夹具（俄语月份、法语"今天"）
+январь
+апреля
+ноябрь
+сентября
+событий
+aujourd’hui
+

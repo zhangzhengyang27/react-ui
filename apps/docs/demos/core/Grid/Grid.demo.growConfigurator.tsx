@@ -42,7 +42,7 @@ export const growConfigurator: UIDemo = {
       libraryValue: false,
     },
     {
-      prop: 'gap',
+      prop: 'gutter',
       type: 'size',
       initialValue: 'md',
       libraryValue: 'md',

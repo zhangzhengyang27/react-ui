@@ -42,7 +42,7 @@ group:
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| in | 是否展开 | `boolean` | `false` |
+| expanded | 是否展开 | `boolean` | `false` |
 | transitionDuration | 过渡时长（ms） | `number` | `200` |
 | transitionTimingFunction | 过渡缓动函数 | `string` | `'ease'` |
 | animateOpacity | 是否同时过渡透明度 | `boolean` | `true` |

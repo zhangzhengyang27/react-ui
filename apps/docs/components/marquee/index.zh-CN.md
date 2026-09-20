@@ -74,8 +74,10 @@ group:
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | children | 滚动内容 | `ReactNode` | — |
-| speed | 滚动速度（px/s） | `number` | `50` |
-| direction | 方向 | `'left' \| 'right'` | `'left'` |
+| duration | 一轮滚动时长（ms） | `number` | `40000` |
+| orientation | 滚动方向 | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| reverse | 是否反向滚动 | `boolean` | `false` |
+| repeat | 内容重复次数 | `number` | `4` |
 | pauseOnHover | 鼠标悬停暂停 | `boolean` | `true` |
 
 支持所有原生 HTML 属性。

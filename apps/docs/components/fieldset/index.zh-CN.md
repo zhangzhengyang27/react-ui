@@ -33,8 +33,6 @@ group:
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | legend | 字段组标题 | `ReactNode` | — |
-| variant | 视觉变体 | `'default' \| 'filled'` | `'default'` |
-| radius | 圆角 | `UIRadius` | — |
 | disabled | 是否禁用整组字段 | `boolean` | `false` |
 
 支持所有原生 HTML 属性。

@@ -228,7 +228,6 @@ function Demo() {
 | value | 当前值 | `string \| string[] \| null` | — |
 | defaultValue | 默认值 | `string \| string[] \| null` | — |
 | onChange | 值变化回调 | `(value) => void` | — |
-| placeholder | 占位提示 | `string` | — |
 | disabled | 是否禁用 | `boolean` | `false` |
 
 支持所有原生 HTML 属性。

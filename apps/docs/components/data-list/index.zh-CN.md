@@ -40,7 +40,7 @@ group:
 | --- | --- | --- | --- |
 | children | DataList.Item 列表 | `ReactNode` | — |
 | size | 尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'sm'` |
-| spacing | 项间距 | `UISpacing` | `'lg'` |
+| gap | 项间距 | `UISpacing` | `'sm'` |
 | withDivider | 是否显示分隔线 | `boolean` | `false` |
 
 除上表所列属性外，DataList 还支持所有原生 HTML 属性。

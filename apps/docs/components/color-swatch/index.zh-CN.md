@@ -46,7 +46,6 @@ group:
 | radius | 圆角 | `UIRadius` | `'xl'` |
 | withShadow | 是否显示内阴影 | `boolean` | `true` |
 | onClick | 点击回调 | `(event) => void` | — |
-| selected | 是否选中 | `boolean` | `false` |
 
 支持所有原生 HTML 属性。
 

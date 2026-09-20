@@ -41,7 +41,6 @@ group:
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | value | 当前数值 | `number` | `0` |
-| size | 尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
 | color | 主题色 | `UIColor` | — |
 | animationDuration | 滚动动画时长（ms） | `number` | `600` |
 | thousandSeparator | 千分位分隔符 | `string \| boolean` | — |

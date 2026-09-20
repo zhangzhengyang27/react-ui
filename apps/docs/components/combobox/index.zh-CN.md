@@ -400,15 +400,8 @@ export interface UseVirtualizedComboboxOptions {
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| value | 当前值（受控） | `string \| string[]` | — |
 | onOptionSubmit | 选项被选中后回调 | `(value: string) => void` | — |
-| data | 候选项数组 | `ComboboxItem[]` | `[]` |
-| searchable | 是否可搜索 | `boolean` | `false` |
-| multiple | 是否多选 | `boolean` | `false` |
-| placeholder | 占位提示 | `string` | — |
 | disabled | 是否禁用 | `boolean` | `false` |
-| error | 错误信息 | `ReactNode` | — |
-| limit | 最多显示候选项数量 | `number` | — |
 
 支持所有原生 HTML 属性。
 

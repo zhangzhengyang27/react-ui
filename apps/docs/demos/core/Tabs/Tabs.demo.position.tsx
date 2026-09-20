@@ -38,11 +38,11 @@ export const position: UIDemo = {
   controls: [
     { prop: 'grow', type: 'boolean', initialValue: false, libraryValue: false },
     {
-      prop: 'justify',
+      prop: 'position',
       type: 'select',
-      initialValue: 'flex-start',
-      libraryValue: 'flex-start',
-      data: ['flex-start', 'center', 'flex-end', 'space-between'],
+      initialValue: 'left',
+      libraryValue: 'left',
+      data: ['left', 'center', 'right', 'apart'],
     },
   ],
 };

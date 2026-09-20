@@ -171,7 +171,6 @@ function Demo() {
 | justify | 内部元素的 `justify-content` | `CSSProperties['justifyContent']` | `'center'` |
 | autoContrast | 根据背景色自动调整 `filled` 变体的文本颜色 | `boolean` | `false` |
 | component | 多态渲染的根组件 | `React.ComponentType` | `'button'` |
-| as | 同 `component`，语法糖 | `keyof JSX.IntrinsicElements \| React.ComponentType` | — |
 
 除上表所列属性外，Button 还支持所有原生 `<button>` 属性，包括 `onClick`、`type`、`aria-*`、`data-*` 等。
 

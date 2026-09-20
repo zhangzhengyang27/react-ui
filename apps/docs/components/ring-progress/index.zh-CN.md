@@ -47,8 +47,8 @@ group:
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| value | 进度（0-100）或多个段 | `number \| { value: number; color: UIColor }[]` | `0` |
 | size | 尺寸 | `number` | `120` |
+| sections | 各分段的进度与颜色 | `RingProgressSection[]`（`{ value: number; color?: UIColor }`） | — |
 | thickness | 环厚度 | `number` | `12` |
 | roundCaps | 是否圆角 | `boolean` | `true` |
 | color | 未指定 `color` 的段的默认主题色 | `UIColor` | `theme.primaryColor` |

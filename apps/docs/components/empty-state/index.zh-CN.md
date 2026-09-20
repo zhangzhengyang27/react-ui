@@ -89,7 +89,6 @@ function Demo() {
 | icon | 图标 | `ReactNode` | — |
 | title | 标题 | `ReactNode` | — |
 | description | 描述 | `ReactNode` | — |
-| action | 操作按钮 | `ReactNode` | — |
 
 除上表所列属性外，EmptyState 还支持所有原生 HTML 属性。
 

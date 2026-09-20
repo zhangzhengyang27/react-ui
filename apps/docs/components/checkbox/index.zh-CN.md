@@ -354,7 +354,6 @@ function GoodLabel() {
 | error | 组错误信息 | `ReactNode` | — |
 | required | 必填（在组标签后加 `*`） | `boolean` | `false` |
 | name | 提交表单时的 name | `string` | — |
-| withSpacing | 子项之间是否自带间距 | `boolean` | `false` |
 
 ### Checkbox.Card
 

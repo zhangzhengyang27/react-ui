@@ -74,7 +74,9 @@ function Demo() {
 
 ### 标签页位置
 
-要在相对侧显示标签页，请使用 `ml="auto"` 属性或 `className` 设置 `margin-left: auto`：
+`Tabs.List` 的 `position` 属性控制标签在列表里的排布：`'left'`（默认，靠左）、
+`'center'`、`'right'`、`'apart'`（两端对齐）；`grow` 让标签撑满整行。
+要把单个标签推到相对一侧，也可以用 `ml="auto"` 或 `className` 设置 `margin-left: auto`：
 
 <code src="./demo/position.tsx"></code>
 

@@ -30,7 +30,6 @@ group:
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | position | 距视口边缘的偏移 | `{ top?: string \| number; bottom?: string \| number; left?: string \| number; right?: string \| number }` | `{ bottom: 0, right: 0 }` |
-| target | 滚动容器（默认为 viewport） | `HTMLElement \| (() => HTMLElement) \| null` | — |
 | zIndex | 层级 | `number` | `1000` |
 
 支持所有原生 HTML 属性。

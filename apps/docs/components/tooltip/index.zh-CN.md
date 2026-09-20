@@ -242,7 +242,6 @@ function Demo() {
 | withArrow | 是否显示箭头 | `boolean` | `false` |
 | color | 背景色 | `UIColor` | `'gray'` |
 | multiline | 是否允许多行 | `boolean` | `false` |
-| width | 宽度 | `number \| string` | — |
 | offset | 偏移 | `number` | `8` |
 | openDelay | 打开延迟（ms） | `number` | `0` |
 | closeDelay | 关闭延迟（ms） | `number` | `100` |

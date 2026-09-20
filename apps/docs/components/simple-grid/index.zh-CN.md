@@ -91,7 +91,6 @@ const VerticalSpacing = () => (
 | cols | 列数（支持响应式） | `number \| BreakpointCols` | `1` |
 | spacing | 间距 | `UISpacing \| [UISpacing, UISpacing]` | `'md'` |
 | verticalSpacing | 垂直间距 | `UISpacing` | — |
-| type | 布局类型 | `'grid' \| 'flex'` | `'grid'` |
 
 支持所有原生 HTML 属性。
 

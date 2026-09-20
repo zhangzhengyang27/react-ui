@@ -52,10 +52,7 @@ group:
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| direction | 滚动方向 | `'horizontal' \| 'vertical' \| 'both'` | `'horizontal'` |
-| speed | 滚动速度 | `number` | `1` |
 | draggable | 是否允许用鼠标拖动内容滚动 | `boolean` | `true` |
-| align | 对齐方式 | `'start' \| 'center' \| 'end'` | `'start'` |
 
 支持所有原生 HTML 属性。
 

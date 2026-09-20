@@ -74,7 +74,6 @@ group:
 | initialPosition | 初始位置 | `{ x: number; y: number }` | `{ x: 100, y: 100 }` |
 | title | 标题 | `ReactNode` | — |
 | draggable | 是否可拖拽 | `boolean` | `true` |
-| onClose | 关闭回调 | `() => void` | — |
 | zIndex | 层级 | `number` | `1000` |
 
 支持所有原生 HTML 属性。

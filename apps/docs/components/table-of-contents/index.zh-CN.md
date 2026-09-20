@@ -130,7 +130,6 @@ function Demo({ dependency }) {
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| data | 目录项数组 | `{ id: string; depth: number; value: string }[]` | `[]` |
 | variant | 视觉变体 | `'default'` | `'default'` |
 | size | 尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'sm'` |
 | miw | 最小宽度（Box 样式属性，支持响应式） | `StyleProp<CSSProperties['minWidth']>` | — |

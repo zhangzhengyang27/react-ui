@@ -92,10 +92,9 @@ function Demo() {
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| value | 当前 Pills 数组（受控） | `Pill[]` | `[]` |
-| onChange | Pills 变化回调 | `(value: Pill[]) => void` | — |
-| placeholder | 占位提示 | `string` | — |
 | disabled | 是否禁用 | `boolean` | `false` |
+| label | 字段标签 | `ReactNode` | — |
+| description | 字段描述 | `ReactNode` | — |
 | error | 错误信息 | `ReactNode` | — |
 | variant | 视觉变体 | `'default' \| 'filled' \| 'unstyled'` | `'default'` |
 | size | 尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'sm'` |

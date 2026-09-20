@@ -122,10 +122,18 @@ group:
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | children | 子元素 | `ReactNode` | — |
-| width | 浮层宽度 | `number \| string \| 'target'` | `'target'` |
-| position | 浮层位置 | `'bottom' \| 'top'` | `'bottom'` |
-| shadow | 阴影 | `UIShadow` | `'sm'` |
-| withBorder | 是否显示边框 | `boolean` | `true` |
+| multiple | 是否多选 | `boolean` | `false` |
+| value | 当前值（受控） | `string \| string[] \| null` | — |
+| defaultValue | 非受控初始值 | `string \| string[] \| null` | — |
+| onChange | 值变化回调 | `(value: string \| string[] \| null) => void` | — |
+| data | 候选项数据 | `ComboboxData`（`ComboboxItem[]`） | — |
+| searchable | 下拉内是否可搜索 | `boolean` | `false` |
+| searchPlaceholder | 搜索框占位提示 | `string` | `'Search...'` |
+| limit | 单次最多显示的选项数 | `number` | `Infinity` |
+| nothingFoundMessage | 无匹配项时的提示 | `ReactNode` | — |
+| withCheckIcon | 选中项前是否显示勾选图标 | `boolean` | `true` |
+| maxDropdownHeight | 下拉最大高度 | `number \| string` | `250` |
+| hiddenInputValuesDivider | 隐藏 input 值分隔符 | `string` | `','` |
 
 支持所有原生 HTML 属性。
 

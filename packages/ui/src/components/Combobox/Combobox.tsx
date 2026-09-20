@@ -1,8 +1,17 @@
-import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react'
-import { autoUpdate, flip, offset, shift, useFloating } from '@floating-ui/react'
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import {
+    arrow as arrowMiddleware,
+    autoUpdate,
+    flip,
+    offset,
+    shift,
+    size as sizeMiddleware,
+    useFloating
+} from '@floating-ui/react'
 import { useClickOutside, useId, useUncontrolled } from '@xiaoye-react/hooks'
 import { Box, Factory, useProps } from '../../core'
 import { FloatingPosition, FloatingStrategy } from '../../core'
+import type { PopoverTransitionProps } from '../Popover/Popover'
 import { ComboboxContextProvider, ComboboxOptionData, ComboboxContextValue } from './Combobox.context'
 import type { ComboboxStore } from './use-combobox/use-combobox'
 import { ComboboxDropdown } from './ComboboxDropdown'
@@ -21,6 +30,7 @@ import { ComboboxChevron } from './ComboboxChevron'
 // 注意：该类型仍被 TreeSelect 等组件的 StylesApi 复用，故保留导出
 export type ComboboxStylesNames =
     | 'dropdown'
+    | 'arrow'
     | 'options'
     | 'option'
     | 'optionLabel'
@@ -81,6 +91,28 @@ export interface ComboboxProps {
 
     /** useCombobox 返回的 store：提供后 store 的 DOM 查询（键盘导航/选项选择）才能找到选项列表 */
     store?: ComboboxStore
+
+    /** 传递给下拉层 Transition 的属性（transition/duration/timingFunction/onEntered/onExited）；
+     *  未传时下拉层固定为 fade / 150ms（与改动前一致） */
+    transitionProps?: PopoverTransitionProps
+
+    /** 下拉关闭后是否保留在 DOM 中（隐藏而非卸载）@default false */
+    keepMounted?: boolean
+
+    /** 下拉层是否渲染指向触发元素的箭头 @default false */
+    withArrow?: boolean
+
+    /** 箭头尺寸（px）：withArrow 为 true 时同时按半个尺寸加宽偏移，避免箭头压住目标 @default 7 */
+    arrowSize?: number
+
+    /** 箭头与下拉层边缘的间距（px），同时作为 floating-ui arrow 中间件的 padding @default 5 */
+    arrowOffset?: number
+
+    /** 下拉层高度上限：'viewport' 取 floating-ui 实测的可视区域可用高度，数字为 px 上限；
+     *  生效后面板套用 max-height，并把同一值写入 CSS 变量
+     *  `--combobox-floating-options-max-height`，供内部 ScrollArea/Autosize 取用；
+     *  不传则不限制、不注入任何变量 @default undefined */
+    floatingHeight?: 'viewport' | number
 }
 
 export type ComboboxFactory = Factory<{
@@ -92,7 +124,12 @@ const defaultProps = {
     offset: 4,
     closeOnEscape: true,
     closeOnClickOutside: true,
-    closeOnBlur: true
+    closeOnBlur: true,
+    keepMounted: false,
+    withArrow: false,
+    // 与 Popover 的箭头默认尺寸对齐
+    arrowSize: 7,
+    arrowOffset: 5
 } satisfies Partial<ComboboxProps>
 
 export function Combobox(_props: ComboboxProps) {
@@ -115,6 +152,12 @@ export function Combobox(_props: ComboboxProps) {
         closeOnClickOutside,
         closeOnBlur,
         store,
+        transitionProps,
+        keepMounted,
+        withArrow,
+        arrowSize,
+        arrowOffset,
+        floatingHeight,
         ...others
     } = props
 
@@ -148,6 +191,9 @@ export function Combobox(_props: ComboboxProps) {
     }, [options])
     const [targetNode, setTargetNode] = useState<HTMLElement | null>(null)
     const [dropdownNode, setDropdownNode] = useState<HTMLElement | null>(null)
+    // 箭头元素 ref：Combobox.Dropdown 渲染 FloatingArrow 时写入，
+    // floating-ui arrow 中间件按元素存在与否参与定位（未启用 withArrow 时元素不存在，坐标不受影响）
+    const arrowRef = useRef<HTMLDivElement | null>(null)
     const uid = useId()
     const targetId = `${uid}-target`
     const dropdownId = `${uid}-dropdown`
@@ -160,12 +206,46 @@ export function Combobox(_props: ComboboxProps) {
     // store 对象每次渲染都是新引用，取其 listId 原始值作为 memo 依赖
     const storeListId = store?.listId ?? null
 
+    // floatingHeight='viewport' 需要的可视区域可用高度：floating-ui 的 size 中间件
+    // 不把数据写进 middlewareData（v1.7 起只回传空对象），只能通过 apply 回调取，
+    // 值不变时返回 prev 以跳过重渲染；面板被限高后 overflow 归零，下一次测量收敛不再变化
+    const [availableFloatingHeight, setAvailableFloatingHeight] = useState<number | undefined>(undefined)
+
     const floating = useFloating({
         open: _opened,
         strategy: floatingStrategy,
         placement: position,
-        middleware: [offset(offsetValue), flip({ padding: 8 }), shift({ padding: 8 })]
+        // 中间件顺序与数量按开关拼接：
+        // - 未开启 withArrow 时既不追加 arrow 中间件也不加宽 offset，面板坐标与改动前逐帧一致；
+        // - size 只在启用 floatingHeight 时挂载，apply 里只记录测量值、不改写任何样式
+        middleware: [
+            offset(offsetValue + (withArrow ? arrowSize / 2 : 0)),
+            flip({ padding: 8 }),
+            shift({ padding: 8 }),
+            ...(floatingHeight === undefined
+                ? []
+                : [
+                      sizeMiddleware({
+                          apply: ({ availableHeight }) => {
+                              setAvailableFloatingHeight(prev => (prev === availableHeight ? prev : availableHeight))
+                          }
+                      })
+                  ]),
+            ...(withArrow ? [arrowMiddleware({ element: arrowRef, padding: arrowOffset })] : [])
+        ]
     })
+
+    const arrowData = floating.middlewareData?.arrow as { x?: number; y?: number } | undefined
+    // floatingHeight 解析：'viewport' 用 floating-ui 实测可用高度（首帧尚未测量到时先不限高，
+    // 测量结果回来后自动套用）；数字直接采用为 px 上限；<=0 视为不可用（jsdom / 隐藏容器）
+    const resolvedFloatingHeight =
+        floatingHeight === 'viewport'
+            ? availableFloatingHeight && availableFloatingHeight > 0
+                ? availableFloatingHeight
+                : undefined
+            : typeof floatingHeight === 'number' && floatingHeight > 0
+              ? floatingHeight
+              : undefined
 
     // floating-ui 0.27 没有 whileElementsMounted 选项，autoUpdate 需手动挂载：
     // 打开期间滚动/缩放/目标尺寸变化时自动重定位，关闭时解绑
@@ -391,13 +471,25 @@ export function Combobox(_props: ComboboxProps) {
             onTargetKeyDown,
             onTargetClick,
             onTargetBlur,
-            disabled
+            disabled,
+            transitionProps,
+            keepMounted,
+            withArrow,
+            arrowSize,
+            arrowOffset,
+            arrowRef,
+            arrowX: arrowData?.x,
+            arrowY: arrowData?.y,
+            // floating-ui 的 Placement 与库内 FloatingPosition 语义一致，仅做类型归一化（同 usePopover）
+            placement: floating.placement as FloatingPosition,
+            floatingHeight: resolvedFloatingHeight
         }),
         [
             _opened,
             setOpened,
             floating.x,
             floating.y,
+            floating.placement,
             reference,
             dropdownRef,
             targetId,
@@ -417,7 +509,15 @@ export function Combobox(_props: ComboboxProps) {
             onTargetKeyDown,
             onTargetClick,
             onTargetBlur,
-            disabled
+            disabled,
+            transitionProps,
+            keepMounted,
+            withArrow,
+            arrowSize,
+            arrowOffset,
+            arrowData?.x,
+            arrowData?.y,
+            resolvedFloatingHeight
         ]
     )
 

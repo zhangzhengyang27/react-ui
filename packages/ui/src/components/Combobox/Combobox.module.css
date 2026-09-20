@@ -9,6 +9,13 @@
     overflow-y: auto;
 }
 
+/* Combobox.Dropdown 在 withArrow 时渲染 FloatingArrow（45° 旋转的方块，
+   定位由 floating-ui arrow 中间件 + FloatingArrow 内联样式给出）。
+   填充色与面板一致，可被 --combobox-arrow-bg 覆盖（对齐 Popover.arrow） */
+.arrow {
+    background-color: var(--combobox-arrow-bg, var(--ui-color-body));
+}
+
 .option {
     padding: 8px 12px;
     border-radius: var(--ui-radius-sm);

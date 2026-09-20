@@ -412,6 +412,26 @@ export interface UseVirtualizedComboboxOptions {
 
 支持所有原生 HTML 属性。
 
+### Combobox 下拉浮层属性
+
+以下属性写在根组件 `<Combobox>` 上，经 context 下发给 `Combobox.Dropdown`（接线方式与
+[Popover](/components/popover) 一致），用于配置下拉浮层的过渡、箭头、挂载与高度：
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| transitionProps | 传递给下拉层 `Transition` 的属性：`transition`、`duration`、`timingFunction`、`onEntered`、`onExited`；类型复用 `PopoverTransitionProps` | `PopoverTransitionProps` | —（等价 `fade` / 150ms） |
+| withArrow | 下拉层是否渲染指向触发元素的箭头；开启时 `offset` 自动按半个箭头宽度加宽，避免箭头压住目标 | `boolean` | `false` |
+| arrowSize | 箭头尺寸（px） | `number` | `7` |
+| arrowOffset | 箭头与下拉层边缘的间距（px），同时作为 floating-ui `arrow` 中间件的 padding | `number` | `5` |
+| keepMounted | 下拉关闭后是否保留在 DOM 中（隐藏而非卸载），隐藏由 `Transition` 的 `keepMounted` 语义提供 | `boolean` | `false` |
+| floatingHeight | 下拉层高度上限：`'viewport'` 取 floating-ui `size` 中间件实测的可视区域可用高度，数字为 px 上限。生效时面板套用 `max-height`，并把同一值写入 CSS 变量 `--combobox-floating-options-max-height`，供内部 `ScrollArea.Autosize` 的 `mah` 取用；不传则不限制也不注入变量 | `'viewport' \| number` | — |
+
+箭头对应 `ComboboxStylesNames` 的 `arrow` 类，填充色可用 `--combobox-arrow-bg` 覆盖。
+未开启 `withArrow` 时下拉层不渲染箭头节点，默认 DOM 与结构不变。
+
+示例：[下拉动画](/combobox?e=DropdownAnimation)（`transitionProps`）、
+[固定下拉最大高度](/combobox?e=DropdownFloatingHeight)（`floatingHeight` + `ScrollArea`）。
+
 ## FAQ {#faq}
 
 ### 为什么需要 UIProvider？

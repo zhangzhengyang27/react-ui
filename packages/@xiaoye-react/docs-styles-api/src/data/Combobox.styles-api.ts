@@ -6,13 +6,17 @@ import type { Modifier } from '../types';
 export const ComboboxStylesApi: {
   selectors: Record<ComboboxStylesNames, string>;
   vars: {
-    dropdown: Record<'--combobox-radius' | '--combobox-shadow' | '--combobox-max-height', string>;
+    dropdown: Record<
+      '--combobox-radius' | '--combobox-shadow' | '--combobox-max-height' | '--combobox-arrow-bg',
+      string
+    >;
   };
   modifiers: Modifier<'option'>[];
 } = {
   selectors: {
     options: '`Combobox.Options` 组件',
     dropdown: '`Combobox.Dropdown` 组件',
+    arrow: '`Combobox.Dropdown` 的箭头，仅在 `Combobox` 上传 `withArrow` 时渲染',
     option: '`Combobox.Option` 组件',
     optionLabel: '`Combobox.Option` 的标签样式名，当前渲染未使用',
     empty: '`Combobox.Empty` 组件',
@@ -27,6 +31,7 @@ export const ComboboxStylesApi: {
       '--combobox-radius': '控制下拉框的 `border-radius`',
       '--combobox-shadow': '控制下拉框的 `box-shadow`',
       '--combobox-max-height': '控制下拉框的 `max-height`',
+      '--combobox-arrow-bg': '控制 `withArrow` 箭头的填充色（默认与下拉框背景一致）',
     },
   },
 

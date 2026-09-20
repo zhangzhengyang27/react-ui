@@ -8,6 +8,7 @@ export const TreeSelectStylesApi: StylesApiData<TreeSelectFactory> = {
     ...InputStylesApi.selectors,
     ...InputWrapperStylesApi.selectors,
     ...ComboboxLikeSelectors,
+    arrow: '`comboboxProps.withArrow` 时下拉层指向触发元素的箭头',
     optionLabel: '`Combobox.Option` 的标签样式名，当前渲染未使用',
     header: '下拉框顶部区域（`Combobox.Header`）',
     footer: '下拉框底部区域（`Combobox.Footer`）',

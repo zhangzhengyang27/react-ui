@@ -1,4 +1,5 @@
-import { createSafeContext } from '../../core'
+import { createSafeContext, type FloatingPosition } from '../../core'
+import type { PopoverTransitionProps } from '../Popover/Popover'
 
 export interface ComboboxOptionData {
     value: string
@@ -40,6 +41,29 @@ export interface ComboboxContextValue {
     /** 目标失焦处理：焦点离开目标与下拉时关闭下拉（closeOnBlur） */
     onTargetBlur: (event: React.FocusEvent<HTMLElement>) => void
     disabled?: boolean
+
+    // ── 下拉层（Combobox.Dropdown）浮层配置：由 Combobox 根组件下发 ──
+
+    /** 传递给下拉层 Transition 的属性；未传时下拉层沿用 fade / 150ms */
+    transitionProps: PopoverTransitionProps | undefined
+    /** 下拉关闭后是否保留在 DOM 中（隐藏而非卸载） */
+    keepMounted: boolean | undefined
+    /** 是否渲染指向触发元素的箭头 */
+    withArrow: boolean | undefined
+    /** 箭头尺寸（px） */
+    arrowSize: number
+    /** 箭头与下拉层边缘的间距（px），同时作为 floating-ui arrow 中间件的 padding */
+    arrowOffset: number
+    /** 箭头元素 ref：floating-ui arrow 中间件与 Combobox.Dropdown 渲染的箭头共用 */
+    arrowRef: React.RefObject<HTMLDivElement | null>
+    /** arrow 中间件算出的箭头坐标（浮层内相对偏移） */
+    arrowX: number | undefined
+    arrowY: number | undefined
+    /** floating-ui 计算后的实际 placement（含 flip 结果）：箭头朝向依赖它 */
+    placement: FloatingPosition
+    /** floatingHeight prop 解析出的下拉层高度上限（px）：'viewport' 取 floating-ui 实测可用高度，
+     *  数字直接采用；未启用 floatingHeight 时为 undefined（面板不限高、DOM 与改动前一致） */
+    floatingHeight: number | undefined
 }
 
 export const [ComboboxContextProvider, useComboboxContext] = createSafeContext<ComboboxContextValue>(

@@ -64,14 +64,15 @@ import '@xiaoye-react/ui/style.css';
 
 ```tsx
 // layer 变体发布后，可导入带 @layer ui 指令的单包样式
-import '@xiaoye-react/dates/styles.layer.css';
+import '@xiaoye-react/ui/styles.layer.css';
 
 // ... 其他样式
 ```
 
 ```tsx
-// ❌ 届时不要同时导入同一包的 styles.css 和 styles.layer.css
-import '@xiaoye-react/dates/styles.layer.css';
+// ❌ 届时不要同时导入同一包的 style.css 和 styles.layer.css
+import '@xiaoye-react/ui/style.css';
+import '@xiaoye-react/ui/styles.layer.css';
 ```
 
 ## CSS layers 的工作原理
@@ -91,7 +92,7 @@ import '@xiaoye-react/dates/styles.layer.css';
 // 它们将在 ReactUI 样式之后应用
 import classes from './Demo.module.css';
 
-import '@xiaoye-react/dates/styles.layer.css';
+import '@xiaoye-react/ui/styles.layer.css';
 ```
 
 ```scss

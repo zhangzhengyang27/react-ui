@@ -60,20 +60,11 @@ import '@xiaoye-react/ui/style.css';
 某些打包工具和框架不允许你控制应用中样式表的顺序。例如，Next.js 不保证[样式导入顺序](https://github.com/vercel/next.js/issues/16630)。在这种情况下，你可以使用 [CSS layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) 来确保你的样式始终覆盖 ReactUI 样式。
 
 当前 `@xiaoye-react/ui` 仅提供 `style.css`（**不包含** `@layer ui` 包裹的 layer 变体）。
-带 layer 变体（`styles.layer.css`）的版本在规划中，尚未随包发布——下文示例仅说明 layer 变体发布后的预期用法：
+带 layer 变体（`styles.layer.css`）的版本在规划中，尚未随包发布。
 
-```tsx
-// layer 变体发布后，可导入带 @layer ui 指令的单包样式
-import '@xiaoye-react/ui/styles.layer.css';
+届时正确的用法是先导入带 `@layer ui` 指令的 layer 变体，再导入你自己的样式，让后者的层外规则天然胜出；而**同一包**的 `style.css` 与 `styles.layer.css` 不能同时导入——同一份规则会以"一层内 + 一层外"两种身份参与级联，非层规则永远赢，等于自己跟自己打架。
 
-// ... 其他样式
-```
-
-```tsx
-// ❌ 届时不要同时导入同一包的 style.css 和 styles.layer.css
-import '@xiaoye-react/ui/style.css';
-import '@xiaoye-react/ui/styles.layer.css';
-```
+上面两种写法目前都还只是规划：现在能真正导入的只有 `@xiaoye-react/ui/style.css`。
 
 ## CSS layers 的工作原理
 
@@ -88,11 +79,9 @@ import '@xiaoye-react/ui/styles.layer.css';
 截至 2026 年 1 月，CSS layers 已在所有现代浏览器中得到支持，并拥有 [95% 的浏览器支持率](https://caniuse.com/css-cascade-layers)。
 
 ```tsx
-// ✅ 如果你的样式没有包裹在 @layer 指令中，
-// 它们将在 ReactUI 样式之后应用
+// ✅ 先导入库样式、再导入自己的样式：同为层外规则时后写的赢
+import '@xiaoye-react/ui/style.css';
 import classes from './Demo.module.css';
-
-import '@xiaoye-react/ui/styles.layer.css';
 ```
 
 ```scss

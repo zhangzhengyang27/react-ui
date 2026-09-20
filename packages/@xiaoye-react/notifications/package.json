@@ -30,9 +30,7 @@
             "types": "./src/index.ts",
             "import": "./src/index.ts",
             "require": "./src/index.ts"
-        },
-        "./styles.css": "./styles.css",
-        "./styles.layer.css": "./styles.layer.css"
+        }
     },
     "repository": {
         "url": "https://github.com/react-ui/react-ui.git",

@@ -1,51 +1,49 @@
 {
-  "name": "@xiaoye-react/header",
-  "private": true,
-  "version": "1.0.0",
-  "description": "Components used in headers of react-ui.dev websites",
-  "homepage": "https://react-ui.dev/",
-  "license": "MIT",
-  "author": "Vitaly Rtishchev <rtivital@gmail.com>",
-  "keywords": [
-    "react",
-    "ui"
-  ],
-  "sideEffects": [
-    "*.css"
-  ],
-  "main": "./cjs/index.cjs",
-  "module": "./esm/index.mjs",
-  "types": "./lib/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./src/index.ts",
-      "import": "./src/index.ts",
-      "require": "./src/index.ts"
+    "name": "@xiaoye-react/header",
+    "private": true,
+    "version": "1.0.0",
+    "description": "Components used in headers of react-ui.dev websites",
+    "homepage": "https://react-ui.dev/",
+    "license": "MIT",
+    "author": "Vitaly Rtishchev <rtivital@gmail.com>",
+    "keywords": [
+        "react",
+        "ui"
+    ],
+    "sideEffects": [
+        "*.css"
+    ],
+    "main": "./cjs/index.cjs",
+    "module": "./esm/index.mjs",
+    "types": "./lib/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./src/index.ts",
+            "import": "./src/index.ts",
+            "require": "./src/index.ts"
+        }
     },
-    "./styles.css": "./styles.css",
-    "./styles.layer.css": "./styles.layer.css"
-  },
-  "repository": {
-    "url": "https://github.com/react-ui/react-ui.git",
-    "type": "git",
-    "directory": "packages/@xiaoye-react/header"
-  },
-  "peerDependencies": {
-    "@xiaoye-react/ui": "workspace:*",
-    "@xiaoye-react/hooks": "workspace:*",
-    "@xiaoye-react/dev-icons": "workspace:*",
-    "@xiaoye-react/meta": "workspace:*",
-    "@phosphor-icons/react": ">=2.0.0",
-    "clsx": "^2.1.1",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
-  },
-  "devDependencies": {
-    "@xiaoye-react/ui": "workspace:*",
-    "@xiaoye-react/hooks": "workspace:*",
-    "@xiaoye-react/meta": "workspace:*",
-    "clsx": "^2.1.1",
-    "react": "19.1.1",
-    "react-dom": "19.1.1"
-  }
+    "repository": {
+        "url": "https://github.com/react-ui/react-ui.git",
+        "type": "git",
+        "directory": "packages/@xiaoye-react/header"
+    },
+    "peerDependencies": {
+        "@xiaoye-react/ui": "workspace:*",
+        "@xiaoye-react/hooks": "workspace:*",
+        "@xiaoye-react/dev-icons": "workspace:*",
+        "@xiaoye-react/meta": "workspace:*",
+        "@phosphor-icons/react": ">=2.0.0",
+        "clsx": "^2.1.1",
+        "react": "^19.1.1",
+        "react-dom": "^19.1.1"
+    },
+    "devDependencies": {
+        "@xiaoye-react/ui": "workspace:*",
+        "@xiaoye-react/hooks": "workspace:*",
+        "@xiaoye-react/meta": "workspace:*",
+        "clsx": "^2.1.1",
+        "react": "19.1.1",
+        "react-dom": "19.1.1"
+    }
 }

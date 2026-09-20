@@ -35,7 +35,7 @@
         "test": "vitest run",
         "test:watch": "vitest",
         "release": "npm publish",
-        "prepublishOnly": "npm run build && npm run check:published-types"
+        "prepublishOnly": "npm run build && npm run check:published-types && node ../../scripts/validate-package-exports.mjs @xiaoye-react/ui"
     },
     "dependencies": {
         "@floating-ui/react": "^0.27.19",
@@ -86,6 +86,6 @@
             "require": "./es/index.cjs"
         },
         "./style.css": "./es/style.css",
-        "./es/*": "./es/*"
+        "./package.json": "./package.json"
     }
 }

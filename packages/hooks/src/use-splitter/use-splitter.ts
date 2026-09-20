@@ -365,6 +365,8 @@ interface SplitterInternalState {
   containerSize: number;
   rootFontSize: number;
   pixelMode: boolean;
+  // 发起拖拽的指针 id:多点触控/触控笔混用时,只认这一根指针的后续事件
+  pointerId: number | null;
   startSizes: number[];
   startRaw: SplitterPaneSize[];
   preCollapseSizes: SplitterPaneSize[];
@@ -383,6 +385,7 @@ function createInitialInternalState(): SplitterInternalState {
     containerSize: 0,
     rootFontSize: 16,
     pixelMode: false,
+    pointerId: null,
     startSizes: [],
     startRaw: [],
     preCollapseSizes: [],
@@ -390,6 +393,12 @@ function createInitialInternalState(): SplitterInternalState {
     prevBodyWebkitUserSelect: '',
     prevBodyCursor: '',
   };
+}
+
+/** 事件是否来自发起拖拽的那根指针。`pointerId` 缺失（非 PointerEvent 的合成事件、
+ * 旧环境）时放行,否则拖拽可能永远无法结束 */
+function isDragPointer(state: SplitterInternalState, event: PointerEvent): boolean {
+  return event.pointerId === undefined || state.pointerId === event.pointerId;
 }
 
 function checkCollapse(
@@ -925,6 +934,7 @@ export function useSplitter<T extends HTMLElement = any>(
           const s = internalStateRef.current;
           s.isDragging = true;
           s.handleIndex = handleIndex;
+          s.pointerId = event.pointerId;
           s.startPointer = pointerPos;
           s.containerSize = containerSizePx;
           s.rootFontSize = rootFontSize;
@@ -1005,7 +1015,7 @@ export function useSplitter<T extends HTMLElement = any>(
 
         const onPointerMove = (event: PointerEvent) => {
           const s = internalStateRef.current;
-          if (!s.isDragging) {
+          if (!s.isDragging || !isDragPointer(s, event)) {
             return;
           }
 
@@ -1017,7 +1027,7 @@ export function useSplitter<T extends HTMLElement = any>(
 
         const onPointerUp = (event: PointerEvent) => {
           const s = internalStateRef.current;
-          if (!s.isDragging) {
+          if (!s.isDragging || !isDragPointer(s, event)) {
             return;
           }
 
@@ -1027,6 +1037,7 @@ export function useSplitter<T extends HTMLElement = any>(
           s.isDragging = false;
           const finishedHandle = s.handleIndex;
           s.handleIndex = -1;
+          s.pointerId = null;
 
           setActiveHandle(-1);
           // 恢复 onPointerDown 时保存的 body.style 原值

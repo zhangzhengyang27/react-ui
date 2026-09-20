@@ -22,3 +22,13 @@ export const Demo_nested = {
   name: '⭐ Demo: nested',
   render: renderDemo(demos.nested),
 };
+
+export const Demo_redistribute = {
+  name: '⭐ Demo: redistribute',
+  render: renderDemo(demos.redistribute),
+};
+
+export const Demo_lineSize = {
+  name: '⭐ Demo: lineSize',
+  render: renderDemo(demos.lineSize),
+};

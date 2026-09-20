@@ -1,4 +1,7 @@
 .root {
+    /* 分隔条粗细，由 Splitter 的 lineSize prop 写入（默认值在这里兜底） */
+    --splitter-line-size: 4px;
+
     display: flex;
     width: 100%;
     height: 100%;
@@ -17,7 +20,7 @@
 
 .resizer {
     flex: 0 0 auto;
-    width: 4px;
+    width: var(--splitter-line-size);
     background: var(--ui-color-default-border);
     cursor: col-resize;
     /* 禁用浏览器默认触摸手势(滚动/长按选择),触摸拖拽才能持续派发
@@ -31,7 +34,7 @@
 
     &:where([data-orientation='vertical']) {
         width: 100%;
-        height: 4px;
+        height: var(--splitter-line-size);
         cursor: row-resize;
     }
 }

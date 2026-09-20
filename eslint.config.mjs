@@ -1,4 +1,5 @@
 import js from '@eslint/js'
+import reactHooks from 'eslint-plugin-react-hooks'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
@@ -21,7 +22,7 @@ export default tseslint.config(
     },
     {
         // 继承的配置（使用非 type-aware 的 recommended，避免为每个 tsconfig 加载 TS Program 导致 OOM）
-        extends: [js.configs.recommended, ...tseslint.configs.recommended],
+        extends: [js.configs.recommended, ...tseslint.configs.recommended, reactHooks.configs['recommended-latest']],
         // 使用配置的文件
         files: ['**/*.{ts,tsx,js}'],
         // 语言选项
@@ -30,6 +31,12 @@ export default tseslint.config(
             parser: tseslint.parser
         },
         rules: {
+            // react-hooks/exhaustive-deps 保持 recommended 的 warn；rules-of-hooks 里
+            // useMatches（map 里调 hook）与 useFormWatch（watch 回调里调 useEffect）
+            // 是真的违反规则，emotion-transform 是"从 hook 里返回会调 hook 的函数"的
+            // 工厂写法——三处都需要按行为改动来治，暂时降到 warn 以免挡门禁，
+            // 但保持可见（pnpm lint 会列出）。
+            'react-hooks/rules-of-hooks': 'warn',
             semi: 'off',
             'prefer-const': 'error',
             '@typescript-eslint/no-explicit-any': 'off',

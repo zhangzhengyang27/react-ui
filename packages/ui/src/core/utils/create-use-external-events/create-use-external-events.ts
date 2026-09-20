@@ -8,7 +8,7 @@ function dispatchEvent<T>(type: string, detail?: T) {
 export function createUseExternalEvents<Handlers extends Record<string, (detail: any) => void>>(
     prefix: string
 ) {
-    function _useExternalEvents(events: Handlers) {
+    function useExternalEvents(events: Handlers) {
         const handlers = useMemo(
             () =>
                 Object.keys(events).reduce<any>((acc, eventKey) => {
@@ -38,5 +38,5 @@ export function createUseExternalEvents<Handlers extends Record<string, (detail:
             dispatchEvent(`${prefix}:${String(event)}`, payload[0])
     }
 
-    return [_useExternalEvents, createEvent] as const
+    return [useExternalEvents, createEvent] as const
 }

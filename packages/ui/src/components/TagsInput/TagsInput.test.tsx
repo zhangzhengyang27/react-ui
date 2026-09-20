@@ -100,4 +100,26 @@ describe('TagsInput', () => {
             expect(screen.getByRole('option', { name: 'Vue' })).toBeInTheDocument()
         })
     })
+
+    it('gives consumer rightSection precedence over the internal clear button', () => {
+        // div[data-position="right"] 限定输入框右侧 section，避免命中胶囊（Badge）的同名 span
+        const custom = renderTagsInput(
+            <TagsInput
+                defaultValue={['React', 'Vue']}
+                clearable
+                rightSection={<span data-testid="custom-right-section" />}
+            />
+        )
+
+        expect(screen.getByTestId('custom-right-section')).toBeInTheDocument()
+        // 内部清除按钮让位，右侧 section 只渲染一个且不叠加
+        expect(screen.queryByRole('button', { name: 'Clear all' })).not.toBeInTheDocument()
+        expect(custom.container.querySelectorAll('div[data-position="right"]')).toHaveLength(1)
+        expect(custom.container.querySelector('div[data-position="right"] svg')).toBeNull()
+
+        // 未传 rightSection 时维持原有渲染：clearable 且有值时右侧仍为清除按钮
+        const fallback = renderTagsInput(<TagsInput defaultValue={['React']} clearable />)
+        expect(fallback.getByRole('button', { name: 'Clear all' })).toBeInTheDocument()
+        expect(fallback.container.querySelectorAll('div[data-position="right"]')).toHaveLength(1)
+    })
 })

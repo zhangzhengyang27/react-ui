@@ -34,9 +34,7 @@ export type TagsInputData = (string | TagsInputItem)[]
 export interface TagsInputProps
     extends BoxProps,
         StylesApiProps<TagsInputFactory>,
-        // 渲染时 others 全量透传给 InputBase，其公共 prop 必须在类型里可见；
-        // rightSection 例外——本组件在 others 之后固定渲染清除按钮+箭头，传了也会被覆盖
-        Omit<__BaseInputProps, 'rightSection'>,
+        __BaseInputProps,
         Omit<React.ComponentPropsWithoutRef<'input'>, 'size' | 'style' | 'value' | 'defaultValue' | 'onChange'> {
     /** TagsInput options data */
     data?: TagsInputData
@@ -291,7 +289,9 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
     ))
 
     const shouldShowClear = clearable && selectedValues.length > 0
-    const rightSection = (
+    // 内部控件走 Input 的 __defaultRightSection 槽：消费方传入 rightSection 时优先展示消费方的节点
+    // （见 InputClearSection），未传入时与原先「右侧仅清除按钮」的表现一致
+    const defaultRightSection = (
         <div className={classes.section}>
             {shouldShowClear ? (
                 <CloseButton
@@ -361,7 +361,7 @@ export const TagsInput = factory<TagsInputFactory>((_props, ref) => {
                         readOnly={isMaxTags}
                         role="combobox"
                         size={size}
-                        rightSection={rightSection}
+                        __defaultRightSection={defaultRightSection}
                         onFocus={event => {
                             // 仅键盘导航（Tab 切入）时打开；鼠标点击的开/关由 wrapper 的 click toggle 统一处理，
                             // 否则 focus 先打开、随后的 click toggle 又关闭，造成闪现即收

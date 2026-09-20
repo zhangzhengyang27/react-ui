@@ -50,4 +50,23 @@ describe('FileInput', () => {
         fireEvent.click(screen.getByLabelText('Clear'))
         expect(handleChange).toHaveBeenCalledWith(null)
     })
+
+    it('gives consumer rightSection precedence over the internal clear button', () => {
+        const file = new File(['hello'], 'hello.txt', { type: 'text/plain' })
+
+        const custom = renderWithProvider(
+            <FileInput clearable defaultValue={file} rightSection={<span data-testid="custom-right-section" />} />
+        )
+
+        expect(screen.getByTestId('custom-right-section')).toBeInTheDocument()
+        // 内部清除按钮让位，右侧 section 只有一个（不与清除按钮堆叠）
+        expect(screen.queryByLabelText('Clear')).not.toBeInTheDocument()
+        expect(custom.container.querySelectorAll('div[data-position="right"]')).toHaveLength(1)
+        expect(custom.container.querySelector('div[data-position="right"] svg')).toBeNull()
+
+        // 未传 rightSection 时维持原有渲染：clearable 且有文件时仍显示清除按钮
+        const fallback = renderWithProvider(<FileInput clearable defaultValue={file} />)
+        expect(fallback.getByLabelText('Clear')).toBeInTheDocument()
+        expect(fallback.container.querySelectorAll('div[data-position="right"]')).toHaveLength(1)
+    })
 })

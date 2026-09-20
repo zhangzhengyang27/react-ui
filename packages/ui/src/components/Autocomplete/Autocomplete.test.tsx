@@ -58,4 +58,27 @@ describe('Autocomplete', () => {
 
         expect(onChange).toHaveBeenCalledWith('')
     })
+
+    it('gives consumer rightSection precedence over the internal clear button and chevron', () => {
+        const custom = renderAutocomplete(
+            <Autocomplete
+                data={['React', 'Vue']}
+                defaultValue="Vue"
+                clearable
+                rightSection={<span data-testid="custom-right-section" />}
+            />
+        )
+
+        expect(screen.getByTestId('custom-right-section')).toBeInTheDocument()
+        // 内部控件（清除按钮 / 箭头均为 svg）整体让位，且右侧 section 不重复堆叠
+        expect(screen.queryByRole('button', { name: 'Clear input' })).not.toBeInTheDocument()
+        const rightSection = custom.container.querySelector('div[data-position="right"]')
+        expect(custom.container.querySelectorAll('div[data-position="right"]')).toHaveLength(1)
+        expect(rightSection?.querySelector('svg')).toBeNull()
+        expect(rightSection?.querySelector('[data-testid="custom-right-section"]')).not.toBeNull()
+
+        // 未传 rightSection 时维持原有渲染：箭头照常出现在右侧 section
+        const fallback = renderAutocomplete(<Autocomplete data={['React', 'Vue']} />)
+        expect(fallback.container.querySelector('div[data-position="right"] svg')).not.toBeNull()
+    })
 })

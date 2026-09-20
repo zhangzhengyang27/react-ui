@@ -207,7 +207,9 @@ export const FileInput = factory<FileInputFactory>((_props, ref) => {
                 ref={ref as any}
                 value={undefined}
                 onClick={handleClick}
-                rightSection={clearButton}
+                // 内部清除按钮走 Input 的 __defaultRightSection 槽：消费方传入 rightSection 时
+                // 由 InputClearSection 优先展示消费方节点（与 file-input 文档「自定义右侧区域时不渲染清除按钮」一致）
+                __defaultRightSection={clearButton}
                 wrapperProps={hasWrapper ? wrapperProps : { ...getStyles('root'), ...wrapperProps }}
             >
                 {getFileNames(value) || placeholder}

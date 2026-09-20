@@ -23,9 +23,7 @@ export type AutocompleteData = (string | AutocompleteItem)[]
 export interface AutocompleteProps
     extends BoxProps,
         StylesApiProps<AutocompleteFactory>,
-        // 渲染时 others 全量透传给 InputBase，其公共 prop 必须在类型里可见；
-        // rightSection 例外——本组件在 others 之后固定渲染清除按钮+箭头，传了也会被覆盖
-        Omit<__BaseInputProps, 'rightSection'>,
+        __BaseInputProps,
         Omit<React.ComponentPropsWithoutRef<'input'>, 'size' | 'style' | 'value' | 'defaultValue' | 'onChange'> {
     //** 自动补全选项数据 */
     data?: AutocompleteData
@@ -175,7 +173,9 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
         onChange?.('')
     }
 
-    const rightSection = (
+    // 内部控件走 Input 的 __defaultRightSection 槽：消费方传入 rightSection 时优先展示消费方的节点
+    // （见 InputClearSection），未传入时保持原有的「有值显示清除按钮，否则显示箭头」
+    const defaultRightSection = (
         <div className={classes.section}>
             {clearable && selectedValue ? (
                 // 阻止 mousedown 默认行为：焦点先落到清除按钮、按钮随即卸载会把焦点丢到 body
@@ -230,7 +230,7 @@ export const Autocomplete = factory<AutocompleteFactory>((_props, ref) => {
                     invalid={!!error}
                     role="combobox"
                     size={size}
-                    rightSection={rightSection}
+                    __defaultRightSection={defaultRightSection}
                     onClick={() => {
                         if (!disabled) {
                             setOpened(true)

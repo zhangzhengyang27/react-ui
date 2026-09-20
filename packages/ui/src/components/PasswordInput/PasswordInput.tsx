@@ -25,15 +25,7 @@ export interface PasswordInputProps
         StylesApiProps<PasswordInputFactory>,
         Omit<
             InputBaseProps,
-            | 'classNames'
-            | 'styles'
-            | 'vars'
-            | 'unstyled'
-            | 'attributes'
-            | 'rightSection'
-            | 'rightSectionWidth'
-            | 'type'
-            | 'wrapperProps'
+            'classNames' | 'styles' | 'vars' | 'unstyled' | 'attributes' | 'rightSectionWidth' | 'type' | 'wrapperProps'
         > {
     /** 渲染在输入框上方的标签 */
     label?: React.ReactNode
@@ -193,7 +185,8 @@ export const PasswordInput = factory<PasswordInputFactory>((_props, ref) => {
                 invalid={invalid}
                 size={size}
                 variant={variant}
-                rightSection={toggleButton}
+                // 内部切换按钮走 Input 的 __defaultRightSection 槽，消费方传入 rightSection 时优先展示消费方节点
+                __defaultRightSection={toggleButton}
                 unstyled={unstyled}
                 classNames={classNames as any}
                 styles={styles as any}

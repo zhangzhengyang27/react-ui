@@ -81,4 +81,25 @@ describe('Autocomplete', () => {
         const fallback = renderAutocomplete(<Autocomplete data={['React', 'Vue']} />)
         expect(fallback.container.querySelector('div[data-position="right"] svg')).not.toBeNull()
     })
+
+    it('groups consecutive items carrying the same `group`', async () => {
+        renderAutocomplete(
+            <Autocomplete
+                data={[
+                    { value: 'React', group: 'Frontend' },
+                    { value: 'Angular', group: 'Frontend' },
+                    { value: 'Node', group: 'Backend' }
+                ]}
+            />
+        )
+
+        fireEvent.click(screen.getByRole('combobox'))
+
+        expect(await screen.findByRole('option', { name: 'Angular' })).toBeInTheDocument()
+        expect(screen.getByRole('option', { name: 'Node' })).toBeInTheDocument()
+        // 分组标题不能混成 option：3 个数据点只有 3 个 option，标签在 option 之外
+        expect(screen.getAllByRole('option')).toHaveLength(3)
+        const label = screen.getByText('Frontend')
+        expect(label.closest('[role="option"]')).toBeNull()
+    })
 })

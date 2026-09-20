@@ -122,4 +122,22 @@ describe('TagsInput', () => {
         expect(fallback.getByRole('button', { name: 'Clear all' })).toBeInTheDocument()
         expect(fallback.container.querySelectorAll('div[data-position="right"]')).toHaveLength(1)
     })
+
+    it('groups consecutive items carrying the same `group`', async () => {
+        renderTagsInput(
+            <TagsInput
+                data={[
+                    { value: 'React', group: 'Frontend' },
+                    { value: 'Angular', group: 'Frontend' },
+                    { value: 'Node', group: 'Backend' }
+                ]}
+            />
+        )
+
+        fireEvent.click(screen.getByRole('combobox'))
+
+        expect(await screen.findByRole('option', { name: 'Angular' })).toBeInTheDocument()
+        expect(screen.getAllByRole('option')).toHaveLength(3)
+        expect(screen.getByText('Frontend').closest('[role="option"]')).toBeNull()
+    })
 })

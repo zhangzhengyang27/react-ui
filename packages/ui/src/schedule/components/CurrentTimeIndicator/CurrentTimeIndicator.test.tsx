@@ -14,7 +14,7 @@ dayjs.extend(utc);
 
 const defaultProps: CurrentTimeIndicatorProps = {};
 
-describe('@xiaoye-react/schedule/CurrentTimeIndicator', () => {
+describe('@xiaoye-react/ui/CurrentTimeIndicator', () => {
   tests.itSupportsSystemProps<CurrentTimeIndicatorProps, CurrentTimeIndicatorStylesNames>({
     component: CurrentTimeIndicator,
     props: defaultProps,

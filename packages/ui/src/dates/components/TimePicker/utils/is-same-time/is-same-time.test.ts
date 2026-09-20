@@ -1,6 +1,6 @@
 import { isSameTime } from './is-same-time';
 
-describe('@xiaoye-react/dates/is-same-time', () => {
+describe('@xiaoye-react/ui/is-same-time', () => {
   it('returns true if times are equal', () => {
     expect(isSameTime({ time: '12:34:55', compare: '12:34:55', withSeconds: true })).toBe(true);
     expect(isSameTime({ time: '12:34:55', compare: '12:34:55', withSeconds: false })).toBe(true);

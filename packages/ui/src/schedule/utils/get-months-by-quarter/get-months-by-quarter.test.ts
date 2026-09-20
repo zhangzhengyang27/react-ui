@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { getMonthsByQuarter } from './get-months-by-quarter';
 
-describe('@xiaoye-react/schedule/get-months-by-quarter', () => {
+describe('@xiaoye-react/ui/get-months-by-quarter', () => {
   it('returns correct months data based on year input', () => {
     const expected = [
       ['2022-01-01', '2022-02-01', '2022-03-01'],

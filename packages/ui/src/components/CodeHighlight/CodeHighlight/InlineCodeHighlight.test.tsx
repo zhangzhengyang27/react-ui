@@ -10,7 +10,7 @@ const defaultProps: InlineCodeHighlightProps = {
   language: 'tsx',
 };
 
-describe('@xiaoye-react/code-highlight/InlineCodeHighlight', () => {
+describe('@xiaoye-react/ui/InlineCodeHighlight', () => {
   tests.itSupportsSystemProps<InlineCodeHighlightProps, InlineCodeHighlightStylesNames>({
     component: InlineCodeHighlight,
     props: defaultProps,

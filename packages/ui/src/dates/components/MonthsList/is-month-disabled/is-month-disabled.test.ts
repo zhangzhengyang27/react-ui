@@ -1,6 +1,6 @@
 import { isMonthDisabled } from './is-month-disabled';
 
-describe('@xiaoye-react/dates/is-month-disabled', () => {
+describe('@xiaoye-react/ui/is-month-disabled', () => {
   it('detects that date is disabled if it is before minDate', () => {
     expect(
       isMonthDisabled({ month: '2022-02-03', minDate: '2023-03-03', maxDate: undefined })

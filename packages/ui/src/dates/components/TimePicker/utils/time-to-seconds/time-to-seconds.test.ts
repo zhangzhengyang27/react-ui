@@ -1,6 +1,6 @@
 import { secondsToTime, timeToSeconds } from './time-to-seconds';
 
-describe('@xiaoye-react/dates/time-to-seconds', () => {
+describe('@xiaoye-react/ui/time-to-seconds', () => {
   it('correctly converts time string to seconds', () => {
     expect(timeToSeconds('00:00:00')).toBe(0);
     expect(timeToSeconds('00:00:01')).toBe(1);

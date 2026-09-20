@@ -12,7 +12,7 @@ const defaultProps: MonthViewProps = {
   date: '2025-11-05',
 };
 
-describe('@xiaoye-react/schedule/MonthView', () => {
+describe('@xiaoye-react/ui/MonthView', () => {
   tests.itSupportsSystemProps<MonthViewProps, MonthViewStylesNames>({
     component: MonthView,
     props: {

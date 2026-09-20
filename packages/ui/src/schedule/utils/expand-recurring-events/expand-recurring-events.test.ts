@@ -1,7 +1,7 @@
 import { ScheduleEventData } from '../../types';
 import { expandRecurringEvents } from './expand-recurring-events';
 
-describe('@xiaoye-react/schedule/expand-recurring-events', () => {
+describe('@xiaoye-react/ui/expand-recurring-events', () => {
   const recurringEvent: ScheduleEventData = {
     id: 'series-1',
     title: 'Standup',

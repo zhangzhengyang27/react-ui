@@ -1,6 +1,6 @@
 import { getDayTimeIntervals } from './get-day-time-intervals';
 
-describe('@xiaoye-react/schedule/get-day-time-intervals', () => {
+describe('@xiaoye-react/ui/get-day-time-intervals', () => {
   it('respects custom interval minutes', () => {
     const intervals = getDayTimeIntervals({
       startTime: '09:00:00',

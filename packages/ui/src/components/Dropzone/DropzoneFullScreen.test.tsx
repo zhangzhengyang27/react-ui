@@ -10,7 +10,7 @@ const defaultProps: DropzoneFullScreenProps = {
   withinPortal: false,
 };
 
-describe('@xiaoye-react/dropzone/DropzoneFullScreen', () => {
+describe('@xiaoye-react/ui/DropzoneFullScreen', () => {
   tests.itSupportsSystemProps<DropzoneFullScreenProps, DropzoneFullScreenStylesNames>({
     component: DropzoneFullScreen,
     props: defaultProps,

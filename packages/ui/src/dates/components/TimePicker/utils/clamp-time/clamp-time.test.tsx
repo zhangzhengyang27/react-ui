@@ -1,6 +1,6 @@
 import { clampTime } from './clamp-time';
 
-describe('@xiaoye-react/dates/clamp-time', () => {
+describe('@xiaoye-react/ui/clamp-time', () => {
   it('clamps time between min and max', () => {
     expect(clampTime('12:30:45', '10:00:00', '15:00:00')).toEqual({
       timeString: '12:30:45',

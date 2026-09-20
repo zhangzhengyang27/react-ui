@@ -6,7 +6,7 @@ const defaultProps = {
   defaultDate: '2022-04-11',
 } satisfies Partial<DatePickerProps<'default' | 'multiple' | 'range'>>;
 
-describe('@xiaoye-react/dates/DatePicker', () => {
+describe('@xiaoye-react/ui/DatePicker', () => {
   tests.itSupportsSystemProps<DatePickerProps, DatePickerStylesNames>({
     component: DatePicker,
     props: { ...defaultProps, presets: [{ label: 'Today', value: '2022-04-11' }] },

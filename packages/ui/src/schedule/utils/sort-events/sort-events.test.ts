@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { testUtils } from '../../test-utils';
 import { sortEvents } from './sort-events';
 
-describe('@xiaoye-react/schedule/sort-events', () => {
+describe('@xiaoye-react/ui/sort-events', () => {
   it('should sort events by start time in ascending order', () => {
     const events = [
       testUtils.createEvent({ id: '1', start: '2025-01-15T14:00:00', end: '2025-01-15T15:00:00' }),

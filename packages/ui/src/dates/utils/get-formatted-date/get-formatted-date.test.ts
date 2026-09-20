@@ -6,7 +6,7 @@ const TEST_DATES = ['2021-09-13', '2021-10-08'];
 const customFormatter: DateFormatter = ({ date }) =>
   typeof date === 'string' ? new Date(date).toISOString() : '';
 
-describe('@xiaoye-react/dates/get-formatted-date', () => {
+describe('@xiaoye-react/ui/get-formatted-date', () => {
   it('formats default date type with given format', () => {
     expect(
       getFormattedDate({

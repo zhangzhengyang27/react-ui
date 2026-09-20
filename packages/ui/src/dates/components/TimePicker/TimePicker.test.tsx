@@ -10,7 +10,7 @@ const defaultProps: TimePickerProps = {
   clearButtonProps: { 'aria-label': 'test-clear' },
 };
 
-describe('@xiaoye-react/dates/TimePicker', () => {
+describe('@xiaoye-react/ui/TimePicker', () => {
   tests.axe([<TimePicker {...defaultProps} />]);
 
   tests.itSupportsSystemProps<TimePickerProps, TimePickerStylesNames>({

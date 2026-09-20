@@ -13,7 +13,7 @@ const defaultProps: MonthLevelGroupProps = {
   previousLabel: 'prev',
 };
 
-describe('@xiaoye-react/dates/MonthLevelGroup', () => {
+describe('@xiaoye-react/ui/MonthLevelGroup', () => {
   tests.itSupportsSystemProps<MonthLevelGroupProps, MonthLevelGroupStylesNames>({
     component: MonthLevelGroup,
     props: defaultProps,

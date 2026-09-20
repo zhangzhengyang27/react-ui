@@ -1,6 +1,6 @@
 import { getMonthRange } from './get-month-range';
 
-describe('@xiaoye-react/schedule/get-month-range', () => {
+describe('@xiaoye-react/ui/get-month-range', () => {
   it('returns start and end of month when withOutsideDays: false', () => {
     expect(
       getMonthRange({

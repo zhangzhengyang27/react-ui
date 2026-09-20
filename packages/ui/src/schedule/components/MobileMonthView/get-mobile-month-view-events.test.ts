@@ -2,7 +2,7 @@ import { testUtils } from '../../test-utils';
 import { ScheduleEventData } from '../../types';
 import { getMobileMonthViewEvents } from './get-mobile-month-view-events';
 
-describe('@xiaoye-react/schedule/get-mobile-month-view-events', () => {
+describe('@xiaoye-react/ui/get-mobile-month-view-events', () => {
   it('returns empty object when events is undefined', () => {
     const result = getMobileMonthViewEvents({ date: '2025-11-01', events: undefined });
     expect(result).toStrictEqual({});

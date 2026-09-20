@@ -4,7 +4,7 @@ import { getDayViewEvents } from './get-day-view-events';
 
 const testDate = '2024-01-15';
 
-describe('@xiaoye-react/schedule/get-day-view-events', () => {
+describe('@xiaoye-react/ui/get-day-view-events', () => {
   it('returns empty arrays when events is undefined', () => {
     expect(getDayViewEvents({ events: undefined, date: testDate })).toStrictEqual({
       allDayEvents: [],

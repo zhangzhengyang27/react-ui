@@ -1,7 +1,7 @@
 import { render } from '@xiaoye-react/tests';
 import { HiddenDatesInput } from './HiddenDatesInput';
 
-describe('@xiaoye-react/dates/HiddenDatesInput', () => {
+describe('@xiaoye-react/ui/HiddenDatesInput', () => {
   it('sets name and form on the input', () => {
     const { container } = render(
       <HiddenDatesInput name="test-name" form="test-form" type="default" value="2022-04-11" />

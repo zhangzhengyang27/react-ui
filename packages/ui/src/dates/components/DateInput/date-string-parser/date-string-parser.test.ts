@@ -1,6 +1,6 @@
 import { dateStringParser } from './date-string-parser';
 
-describe('@xiaoye-react/dates/date-string-parser', () => {
+describe('@xiaoye-react/ui/date-string-parser', () => {
   it('detects valid date', () => {
     expect(dateStringParser('01/25/2023')).toStrictEqual('2023-01-25');
     expect(dateStringParser('01.05.2020')).toStrictEqual('2020-01-05');

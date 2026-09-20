@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { getWeeksInRange } from './get-weeks-in-range';
 
-describe('@xiaoye-react/schedule/get-weeks-in-range', () => {
+describe('@xiaoye-react/ui/get-weeks-in-range', () => {
   it('returns weeks for a given range with Monday as first day', () => {
     const rangeStart = dayjs('2025-01-01');
     const rangeEnd = dayjs('2025-01-31');

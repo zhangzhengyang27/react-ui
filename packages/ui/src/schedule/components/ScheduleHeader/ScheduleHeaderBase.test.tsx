@@ -15,7 +15,7 @@ const defaultProps: ScheduleHeaderBaseProps = {
   control: defaultControl,
 };
 
-describe('@xiaoye-react/schedule/ScheduleHeaderBase', () => {
+describe('@xiaoye-react/ui/ScheduleHeaderBase', () => {
   it('renders header with title control', () => {
     render(<ScheduleHeaderBase {...defaultProps} control={{ title: 'January 15, 2024' }} />);
     expect(screen.getByText('January 15, 2024')).toBeInTheDocument();

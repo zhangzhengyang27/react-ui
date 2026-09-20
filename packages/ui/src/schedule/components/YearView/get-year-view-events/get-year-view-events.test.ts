@@ -2,7 +2,7 @@ import { testUtils } from '../../../test-utils';
 import { ScheduleEventData } from '../../../types';
 import { getYearViewEvents } from './get-year-view-events';
 
-describe('@xiaoye-react/schedule/get-year-view-events', () => {
+describe('@xiaoye-react/ui/get-year-view-events', () => {
   it('returns empty object when events is undefined', () => {
     const result = getYearViewEvents({ date: '2025-01-15', events: undefined });
     expect(result).toStrictEqual({});

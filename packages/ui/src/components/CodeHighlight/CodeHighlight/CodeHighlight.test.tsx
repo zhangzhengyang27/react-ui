@@ -8,7 +8,7 @@ const defaultProps: CodeHighlightProps = {
   defaultExpanded: false,
 };
 
-describe('@xiaoye-react/code-highlight/CodeHighlight', () => {
+describe('@xiaoye-react/ui/CodeHighlight', () => {
   tests.itSupportsSystemProps<CodeHighlightProps, CodeHighlightStylesNames>({
     component: CodeHighlight,
     props: defaultProps,

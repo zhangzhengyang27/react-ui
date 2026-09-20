@@ -42,7 +42,7 @@ const defaultProps: MoreEventsProps = {
   moreEventsCount: 2,
 };
 
-describe('@xiaoye-react/schedule/MoreEvents', () => {
+describe('@xiaoye-react/ui/MoreEvents', () => {
   tests.itSupportsSystemProps<MoreEventsProps, MoreEventsStylesNames>({
     component: MoreEvents,
     props: { ...defaultProps, popoverProps: { opened: true } },

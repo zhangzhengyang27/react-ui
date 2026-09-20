@@ -7,7 +7,7 @@ const sortedRange: DateRange = ['2023-04-01', '2023-04-06'];
 const unsortedRange: DateRange = [sortedRange[1], sortedRange[0]];
 const sameDateRange: DateRange = [sortedRange[0], sortedRange[0]];
 
-describe('@xiaoye-react/dates/hooks/use-dates-state/is-in-range', () => {
+describe('@xiaoye-react/ui/hooks/use-dates-state/is-in-range', () => {
   // Sorted range
   it('returns false for dates well before the sorted range', () => {
     expect(

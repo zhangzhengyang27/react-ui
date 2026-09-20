@@ -1,6 +1,6 @@
 import { clampIntervalMinutes } from './clamp-interval-minutes';
 
-describe('@xiaoye-react/schedule/clamp-interval-minutes', () => {
+describe('@xiaoye-react/ui/clamp-interval-minutes', () => {
   it('returns the same value for valid divisors of 60', () => {
     const validDivisors = [1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60];
 

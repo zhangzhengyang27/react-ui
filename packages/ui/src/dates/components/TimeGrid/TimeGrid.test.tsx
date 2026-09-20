@@ -5,7 +5,7 @@ const defaultProps: TimeGridProps = {
   data: ['10:00', '15:00'],
 };
 
-describe('@xiaoye-react/dates/TimeGrid', () => {
+describe('@xiaoye-react/ui/TimeGrid', () => {
   tests.axe([<TimeGrid {...defaultProps} />]);
 
   tests.itSupportsSystemProps<TimeGridProps, TimeGridStylesNames>({

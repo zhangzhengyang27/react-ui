@@ -46,7 +46,7 @@ const getTimePicker = () => screen.getByLabelText('test-time-picker-hours');
 const getSubmitButton = () => screen.getByLabelText('test-submit');
 const getClearButton = () => screen.queryAllByLabelText('test-clear')[0];
 
-describe('@xiaoye-react/dates/DateTimePicker', () => {
+describe('@xiaoye-react/ui/DateTimePicker', () => {
   tests.axe([
     <DateTimePicker aria-label="test-label" key="1" />,
     <DateTimePicker placeholder="test-placeholder" key="2" />,

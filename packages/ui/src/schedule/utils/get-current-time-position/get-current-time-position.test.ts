@@ -1,6 +1,6 @@
 import { getCurrentTimePosition } from './get-current-time-position';
 
-describe('@xiaoye-react/schedule/get-current-time-position', () => {
+describe('@xiaoye-react/ui/get-current-time-position', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });

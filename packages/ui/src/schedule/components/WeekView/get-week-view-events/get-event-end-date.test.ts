@@ -1,7 +1,7 @@
 import { testUtils } from '../../../test-utils';
 import { getEventEndDate } from './get-event-end-date';
 
-describe('@xiaoye-react/schedule/get-event-end-date', () => {
+describe('@xiaoye-react/ui/get-event-end-date', () => {
   it('returns end date without modification for non-midnight times', () => {
     const event = testUtils.createEvent({
       start: '2025-01-15 10:00:00',

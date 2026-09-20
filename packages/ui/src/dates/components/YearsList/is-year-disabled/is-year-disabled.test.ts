@@ -1,6 +1,6 @@
 import { isYearDisabled } from './is-year-disabled';
 
-describe('@xiaoye-react/dates/is-year-disabled', () => {
+describe('@xiaoye-react/ui/is-year-disabled', () => {
   it('detects that date is disabled if it is before minDate', () => {
     expect(isYearDisabled({ year: '2022-02-03', minDate: '2023-03-03', maxDate: undefined })).toBe(
       true

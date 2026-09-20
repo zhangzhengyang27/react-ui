@@ -24,7 +24,7 @@ function spanWidthPercent(node: HTMLElement): number {
   return parseFloat(eventRoot(node).style.width.match(/([\d.]+)%/)![1]);
 }
 
-describe('@xiaoye-react/schedule/ResourcesMonthView', () => {
+describe('@xiaoye-react/ui/ResourcesMonthView', () => {
   it('renders resource labels', () => {
     render(<ResourcesMonthView {...defaultProps} />);
     expect(screen.getByText('Room A')).toBeInTheDocument();

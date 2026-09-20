@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { getHangingStatus } from './get-hanging-status';
 
-describe('@xiaoye-react/schedule/get-hanging-status', () => {
+describe('@xiaoye-react/ui/get-hanging-status', () => {
   const weekDays = [
     '2025-01-13 00:00:00',
     '2025-01-14 00:00:00',

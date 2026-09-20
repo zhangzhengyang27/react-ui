@@ -3,7 +3,7 @@ import 'dayjs/locale/ru';
 import dayjs from 'dayjs';
 import { getWeekdaysNames } from './get-weekdays-names';
 
-describe('@xiaoye-react/schedule/get-weekday-names', () => {
+describe('@xiaoye-react/ui/get-weekday-names', () => {
   it('returns correct weekday names for given locale', () => {
     expect(getWeekdaysNames({ locale: 'en' })).toStrictEqual([
       'Mo',

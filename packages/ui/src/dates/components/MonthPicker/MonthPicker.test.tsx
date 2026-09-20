@@ -6,7 +6,7 @@ const defaultProps = {
   defaultDate: '2022-04-11',
 };
 
-describe('@xiaoye-react/dates/MonthPicker', () => {
+describe('@xiaoye-react/ui/MonthPicker', () => {
   tests.itSupportsSystemProps<MonthPickerProps, MonthPickerStylesNames>({
     component: MonthPicker,
     props: {

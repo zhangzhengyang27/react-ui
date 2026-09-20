@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { testUtils } from '../../../test-utils';
 import { addEventToDayGroups } from './add-event-to-day-groups';
 
-describe('@xiaoye-react/schedule/add-event-to-day-groups', () => {
+describe('@xiaoye-react/ui/add-event-to-day-groups', () => {
   it('adds single-day event to groupedByDay', () => {
     const groupedByDay: { [date: string]: any[] } = {
       '2025-01-15 00:00:00': [],

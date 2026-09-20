@@ -1,6 +1,6 @@
 import { getWeekNumber } from './get-week-number';
 
-describe('@xiaoye-react/dates/get-week-number', () => {
+describe('@xiaoye-react/ui/get-week-number', () => {
   it('should return the correct ISO week number for a given week', () => {
     const week = [
       '2023-01-02', // Monday

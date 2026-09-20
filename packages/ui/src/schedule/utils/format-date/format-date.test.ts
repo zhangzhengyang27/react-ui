@@ -2,7 +2,7 @@ import 'dayjs/locale/ru';
 
 import { formatDate } from './format-date';
 
-describe('@xiaoye-react/schedule/format-date', () => {
+describe('@xiaoye-react/ui/format-date', () => {
   it('formats date with string format', () => {
     const result = formatDate({
       locale: 'en',

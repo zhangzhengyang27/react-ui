@@ -10,7 +10,7 @@ const resources = [
 
 const weekdays = ['2025-01-13', '2025-01-14', '2025-01-15', '2025-01-16', '2025-01-17'];
 
-describe('@xiaoye-react/schedule/get-resources-week-view-events', () => {
+describe('@xiaoye-react/ui/get-resources-week-view-events', () => {
   it('returns empty result per day when events is undefined', () => {
     const result = getResourcesWeekViewEvents({ events: undefined, resources, weekdays });
     for (const day of weekdays) {

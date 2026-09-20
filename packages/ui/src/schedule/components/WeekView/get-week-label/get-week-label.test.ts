@@ -1,6 +1,6 @@
 import { getWeekLabel } from './get-week-label';
 
-describe('@xiaoye-react/schedule/get-week-label', () => {
+describe('@xiaoye-react/ui/get-week-label', () => {
   const weekdays = [
     new Date(2025, 10, 3), // Mon Nov 03 2025
     new Date(2025, 10, 4),

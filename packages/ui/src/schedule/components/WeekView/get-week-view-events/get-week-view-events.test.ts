@@ -1,7 +1,7 @@
 import { testUtils } from '../../../test-utils';
 import { getWeekPositionedEvents } from './get-week-positioned-events';
 
-describe('@xiaoye-react/schedule/get-week-positioned-events', () => {
+describe('@xiaoye-react/ui/get-week-positioned-events', () => {
   it('positions events correctly within the week', () => {
     const events = [
       testUtils.createEvent({ id: 1, start: '2024-01-08 10:00:00', end: '2024-01-08 12:00:00' }),

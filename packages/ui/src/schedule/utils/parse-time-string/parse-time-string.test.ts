@@ -1,6 +1,6 @@
 import { parseTimeString } from './parse-time-string';
 
-describe('@xiaoye-react/schedule/parse-time-string', () => {
+describe('@xiaoye-react/ui/parse-time-string', () => {
   it('parses time strings in HH:mm:ss format correctly', () => {
     expect(parseTimeString('00:00:00')).toStrictEqual({ hours: 0, minutes: 0, seconds: 0 });
     expect(parseTimeString('12:30:45')).toStrictEqual({ hours: 12, minutes: 30, seconds: 45 });

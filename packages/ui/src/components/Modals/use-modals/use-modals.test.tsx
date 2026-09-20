@@ -5,7 +5,7 @@ import { ContextModalProps } from '../context';
 import { ModalsProvider } from '../ModalsProvider';
 import { useModals } from './use-modals';
 
-describe('@xiaoye-react/modals/use-modals', () => {
+describe('@xiaoye-react/ui/use-modals', () => {
   it('returns context value of ModalsProvider', () => {
     const wrapper = ({ children }: PropsWithChildren<unknown>) => (
       <UIProvider>

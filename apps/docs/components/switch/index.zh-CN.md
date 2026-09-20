@@ -214,8 +214,6 @@ function AlsoGood() {
 | defaultChecked | 默认是否选中 | `boolean` | `false` |
 | onChange | 选中状态变化回调 | `(event: ChangeEvent<HTMLInputElement>) => void` | — |
 | label | 标签文字 | `ReactNode` | — |
-| description | 描述文字 | `ReactNode` | — |
-| error | 错误信息 | `ReactNode` | — |
 | disabled | 是否禁用 | `boolean` | `false` |
 | color | 主题色 | `UIColor` | `'blue'` |
 | size | 尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'sm'` |

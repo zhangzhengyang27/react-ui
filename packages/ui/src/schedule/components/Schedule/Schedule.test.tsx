@@ -26,7 +26,7 @@ const defaultProps: ScheduleProps = {
   ],
 };
 
-describe('@xiaoye-react/schedule/Schedule', () => {
+describe('@xiaoye-react/ui/Schedule', () => {
   tests.itSupportsSystemProps<ScheduleProps, ScheduleStylesNames>({
     component: Schedule,
     props: defaultProps,

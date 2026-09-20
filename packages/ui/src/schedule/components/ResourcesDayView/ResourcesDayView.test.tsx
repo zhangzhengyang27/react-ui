@@ -21,7 +21,7 @@ const defaultProps: ResourcesDayViewProps = {
   intervalMinutes: 60,
 };
 
-describe('@xiaoye-react/schedule/ResourcesDayView', () => {
+describe('@xiaoye-react/ui/ResourcesDayView', () => {
   it('renders resource labels', () => {
     render(<ResourcesDayView {...defaultProps} />);
     expect(screen.getByText('Room A')).toBeInTheDocument();

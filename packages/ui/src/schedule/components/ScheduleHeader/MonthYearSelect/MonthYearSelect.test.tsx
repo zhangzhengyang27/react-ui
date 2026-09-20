@@ -14,7 +14,7 @@ const defaultProps: MonthYearSelectProps = {
   monthValue: 10,
 };
 
-describe('@xiaoye-react/schedule/MonthYearSelect', () => {
+describe('@xiaoye-react/ui/MonthYearSelect', () => {
   tests.itSupportsSystemProps<MonthYearSelectProps, MonthYearSelectStylesNames>({
     selector: '.ui-MonthYearSelect-monthYearSelectTarget',
     sizeSelector: '.ui-MonthYearSelect-monthYearSelectTarget',

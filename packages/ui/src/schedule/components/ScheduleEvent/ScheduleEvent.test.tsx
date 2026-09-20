@@ -13,7 +13,7 @@ const defaultProps: ScheduleEventProps = {
   },
 };
 
-describe('@xiaoye-react/schedule/ScheduleEvent', () => {
+describe('@xiaoye-react/ui/ScheduleEvent', () => {
   tests.itSupportsSystemProps<ScheduleEventProps, ScheduleEventStylesNames>({
     component: ScheduleEvent,
     props: defaultProps,

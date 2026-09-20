@@ -1,6 +1,6 @@
 import { getWeekDays } from './get-week-days';
 
-describe('@xiaoye-react/schedule/get-week-days', () => {
+describe('@xiaoye-react/ui/get-week-days', () => {
   it('works correctly with default options', () => {
     const days = getWeekDays({ week: '2024-01-15 00:00:00' });
     expect(days).toHaveLength(7);

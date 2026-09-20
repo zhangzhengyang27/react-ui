@@ -1,7 +1,7 @@
 import { toDateString } from '../to-date-string/to-date-string';
 import { previousWeek } from './previous-week';
 
-describe('@xiaoye-react/schedule/previous-week', () => {
+describe('@xiaoye-react/ui/previous-week', () => {
   it('returns the start of previous week', () => {
     expect(previousWeek('2021-02-05', 1)).toBe(toDateString('2021-01-25'));
   });

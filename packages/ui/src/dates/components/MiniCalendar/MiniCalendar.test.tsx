@@ -6,7 +6,7 @@ const defaultProps: MiniCalendarProps = {
   previousControlProps: { 'aria-label': 'previous' },
 };
 
-describe('@xiaoye-react/dates/MiniCalendar', () => {
+describe('@xiaoye-react/ui/MiniCalendar', () => {
   tests.axe([<MiniCalendar {...defaultProps} />]);
   tests.itSupportsSystemProps<MiniCalendarProps, MiniCalendarStylesNames>({
     component: MiniCalendar,

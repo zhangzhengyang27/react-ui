@@ -1,7 +1,7 @@
 import { testUtils } from '../../test-utils';
 import { isWithinWeek } from './is-within-week';
 
-describe('@xiaoye-react/schedule/is-within-week', () => {
+describe('@xiaoye-react/ui/is-within-week', () => {
   it('returns true for event within the week', () => {
     const event = testUtils.createEvent({
       id: 1,

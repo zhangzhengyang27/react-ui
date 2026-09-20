@@ -1,6 +1,6 @@
 import { getVisibleEvents } from './get-visible-events';
 
-describe('@xiaoye-react/schedule/get-visible-events', () => {
+describe('@xiaoye-react/ui/get-visible-events', () => {
   it('returns all events when total is less than max', () => {
     const result = getVisibleEvents({ maxEvents: 5, totalEvents: 3 });
     expect(result.visibleEventsCount).toBe(3);

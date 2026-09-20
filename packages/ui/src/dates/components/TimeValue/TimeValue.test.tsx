@@ -1,7 +1,7 @@
 import { render, screen } from '@xiaoye-react/tests';
 import { TimeValue } from './TimeValue';
 
-describe('@xiaoye-react/dates/TimeValue', () => {
+describe('@xiaoye-react/ui/TimeValue', () => {
   it('renders given time string', () => {
     const { rerender } = render(<TimeValue value="18:30:56" />);
     expect(screen.getByText('18:30')).toBeInTheDocument();

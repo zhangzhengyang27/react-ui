@@ -31,7 +31,7 @@ afterEach(() => {
   document.body.replaceChildren();
 });
 
-describe('@xiaoye-react/schedule/handle-resources-grid-key-down', () => {
+describe('@xiaoye-react/ui/handle-resources-grid-key-down', () => {
   it('ArrowRight moves focus to the next slot in the same resource', () => {
     const { controlsRef, buttons } = createGrid([3, 3]);
     handleResourcesGridKeyDown({

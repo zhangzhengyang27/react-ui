@@ -17,7 +17,7 @@ function elementWithRect(left: number, right: number): HTMLElement {
   return element;
 }
 
-describe('@xiaoye-react/schedule/get-index-from-drag-point', () => {
+describe('@xiaoye-react/ui/get-index-from-drag-point', () => {
   it('returns the index of the element under the x coordinate', () => {
     const elements = [
       elementWithRect(0, 100),

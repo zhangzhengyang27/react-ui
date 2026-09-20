@@ -1,6 +1,6 @@
 import { isTimeAfter, isTimeBefore } from './compare-time';
 
-describe('@xiaoye-react/dates/is-time-after', () => {
+describe('@xiaoye-react/ui/is-time-after', () => {
   it('correctly checks if time is after another time', () => {
     expect(isTimeAfter('00:00:00', '00:00:00')).toBe(false);
     expect(isTimeAfter('00:00:00', '00:00:01')).toBe(false);
@@ -11,7 +11,7 @@ describe('@xiaoye-react/dates/is-time-after', () => {
   });
 });
 
-describe('@xiaoye-react/dates/is-time-before', () => {
+describe('@xiaoye-react/ui/is-time-before', () => {
   it('correctly checks if time is before another time', () => {
     expect(isTimeBefore('00:00:00', '00:00:00')).toBe(false);
     expect(isTimeBefore('00:00:00', '00:00:01')).toBe(true);

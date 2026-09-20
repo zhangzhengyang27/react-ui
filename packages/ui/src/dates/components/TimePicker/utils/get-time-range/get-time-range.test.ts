@@ -1,6 +1,6 @@
 import { getTimeRange } from './get-time-range';
 
-describe('@xiaoye-react/dates/get-time-range', () => {
+describe('@xiaoye-react/ui/get-time-range', () => {
   it('generates correct time range for hours interval', () => {
     expect(
       getTimeRange({ startTime: '00:00:00', endTime: '02:00:00', interval: '01:00:00' })

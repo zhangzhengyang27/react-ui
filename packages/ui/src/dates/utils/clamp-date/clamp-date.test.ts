@@ -1,6 +1,6 @@
 import { clampDate } from './clamp-date';
 
-describe('@xiaoye-react/dates/clamp-date', () => {
+describe('@xiaoye-react/ui/clamp-date', () => {
   it('returns date if min and max dates are not set', () => {
     const date = '2021-01-01 00:00:00';
     expect(clampDate(undefined, undefined, date)).toBe(date);

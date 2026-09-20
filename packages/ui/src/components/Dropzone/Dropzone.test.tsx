@@ -8,7 +8,7 @@ const defaultProps: DropzoneProps = {
   onDrop: () => {},
 };
 
-describe('@xiaoye-react/dropzone/Dropzone', () => {
+describe('@xiaoye-react/ui/Dropzone', () => {
   tests.itSupportsSystemProps<DropzoneProps, DropzoneStylesNames>({
     component: Dropzone,
     props: defaultProps,

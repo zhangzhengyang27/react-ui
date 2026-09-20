@@ -1,7 +1,7 @@
 import { testUtils } from '../../test-utils';
 import { getDayPosition } from './get-day-position';
 
-describe('@xiaoye-react/schedule/get-day-position', () => {
+describe('@xiaoye-react/ui/get-day-position', () => {
   it('calculates position with default startTime and endTime', () => {
     const event = testUtils.createEvent({
       start: `${testUtils.testDate} 06:00:00`,

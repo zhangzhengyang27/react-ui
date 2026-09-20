@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { isSameMonth } from './is-same-month';
 
-describe('@xiaoye-react/schedule/is-same-month', () => {
+describe('@xiaoye-react/ui/is-same-month', () => {
   it('detects same month', () => {
     expect(isSameMonth('2021-03-01', '2021-03-02')).toBe(true);
     expect(isSameMonth(new Date('2021-03-01'), new Date('2021-03-02'))).toBe(true);

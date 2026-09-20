@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { testUtils } from '../../../test-utils';
 import { getDayPositionedEvents } from './get-day-positioned-events';
 
-describe('@xiaoye-react/schedule/get-day-positioned-events', () => {
+describe('@xiaoye-react/ui/get-day-positioned-events', () => {
   const testDate = '2025-01-15';
 
   describe('basic event positioning', () => {

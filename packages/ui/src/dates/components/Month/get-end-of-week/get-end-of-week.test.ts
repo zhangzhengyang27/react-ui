@@ -1,6 +1,6 @@
 import { getEndOfWeek } from './get-end-of-week';
 
-describe('@xiaoye-react/dates/get-end-of-week', () => {
+describe('@xiaoye-react/ui/get-end-of-week', () => {
   it('returns end of week without first day of week param', () => {
     expect(getEndOfWeek('2021-02-05')).toBe('2021-02-07');
   });

@@ -1,6 +1,6 @@
 import { isBeforeMaxDate } from './is-before-max-date';
 
-describe('@xiaoye-react/dates/is-before-max-date', () => {
+describe('@xiaoye-react/ui/is-before-max-date', () => {
   it('correctly detects dates that are before given maxDate', () => {
     expect(isBeforeMaxDate('2022-04-15', '2022-04-12')).toBe(false);
     expect(isBeforeMaxDate('2022-05-15', '2022-04-12')).toBe(false);

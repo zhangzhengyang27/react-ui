@@ -3,7 +3,7 @@ import { ScheduleHeader, ScheduleHeaderProps, ScheduleHeaderStylesNames } from '
 
 const defaultProps: ScheduleHeaderProps = {};
 
-describe('@xiaoye-react/schedule/ScheduleHeader', () => {
+describe('@xiaoye-react/ui/ScheduleHeader', () => {
   tests.itSupportsSystemProps<ScheduleHeaderProps, ScheduleHeaderStylesNames>({
     component: ScheduleHeader,
     props: defaultProps,

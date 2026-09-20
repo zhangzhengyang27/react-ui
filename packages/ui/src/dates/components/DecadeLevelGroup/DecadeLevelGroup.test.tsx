@@ -13,7 +13,7 @@ const defaultProps: DecadeLevelGroupProps = {
   previousLabel: 'prev',
 };
 
-describe('@xiaoye-react/dates/DecadeLevelGroup', () => {
+describe('@xiaoye-react/ui/DecadeLevelGroup', () => {
   tests.itSupportsSystemProps<DecadeLevelGroupProps, DecadeLevelGroupStylesNames>({
     component: DecadeLevelGroup,
     props: defaultProps,

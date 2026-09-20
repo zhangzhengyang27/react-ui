@@ -1,6 +1,6 @@
 import { getTimeString } from './get-time-string';
 
-describe('@xiaoye-react/dates/get-time-string', () => {
+describe('@xiaoye-react/ui/get-time-string', () => {
   it('returns valid: false if hours or minutes are null', () => {
     expect(
       getTimeString({

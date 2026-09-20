@@ -4,7 +4,7 @@ import 'dayjs/locale/ru';
 
 import { getWeekdayNames } from './get-weekdays-names';
 
-describe('@xiaoye-react/dates/get-weekday-names', () => {
+describe('@xiaoye-react/ui/get-weekday-names', () => {
   afterEach(() => {
     dayjs.locale('en');
   });

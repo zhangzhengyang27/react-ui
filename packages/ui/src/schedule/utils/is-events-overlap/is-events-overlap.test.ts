@@ -1,7 +1,7 @@
 import { testUtils } from '../../test-utils';
 import { isEventsOverlap } from './is-events-overlap';
 
-describe('@xiaoye-react/schedule/is-events-overlap', () => {
+describe('@xiaoye-react/ui/is-events-overlap', () => {
   it('returns true for overlapping events', () => {
     expect(
       isEventsOverlap(

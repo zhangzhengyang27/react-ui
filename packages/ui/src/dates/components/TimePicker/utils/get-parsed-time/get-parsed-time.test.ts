@@ -1,6 +1,6 @@
 import { getParsedTime } from './get-parsed-time';
 
-describe('@xiaoye-react/dates/get-parsed-time', () => {
+describe('@xiaoye-react/ui/get-parsed-time', () => {
   it('parses time string', () => {
     expect(
       getParsedTime({ time: '12:30:45', format: '24h', amPmLabels: { am: 'am', pm: 'pm' } })

@@ -1,6 +1,6 @@
 import { toTimeString } from './to-time-string';
 
-describe('@xiaoye-react/schedule/to-time-string', () => {
+describe('@xiaoye-react/ui/to-time-string', () => {
   it('converts given parsed time to HH:mm:ss format string', () => {
     expect(toTimeString({ hours: 0, minutes: 0, seconds: 0 })).toBe('00:00:00');
     expect(toTimeString({ hours: 12, minutes: 30, seconds: 45 })).toBe('12:30:45');

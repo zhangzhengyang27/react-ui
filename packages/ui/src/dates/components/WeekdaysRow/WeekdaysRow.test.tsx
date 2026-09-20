@@ -14,7 +14,7 @@ function Wrapper(props: Partial<WeekdaysRowProps>) {
   );
 }
 
-describe('@xiaoye-react/dates/WeekdaysRow', () => {
+describe('@xiaoye-react/ui/WeekdaysRow', () => {
   beforeAll(patchConsoleError);
   afterAll(patchConsoleError.release);
 

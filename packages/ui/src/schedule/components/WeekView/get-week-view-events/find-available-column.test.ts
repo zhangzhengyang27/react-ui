@@ -1,7 +1,7 @@
 import { testUtils } from '../../../test-utils';
 import { findAvailableColumn } from './find-available-column';
 
-describe('@xiaoye-react/schedule/find-available-column', () => {
+describe('@xiaoye-react/ui/find-available-column', () => {
   const allWeekDays = [
     '2025-01-13 00:00:00',
     '2025-01-14 00:00:00',

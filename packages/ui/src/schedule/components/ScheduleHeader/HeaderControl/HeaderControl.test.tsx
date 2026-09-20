@@ -3,7 +3,7 @@ import { HeaderControl, HeaderControlProps, HeaderControlStylesNames } from './H
 
 const defaultProps: HeaderControlProps = {};
 
-describe('@xiaoye-react/schedule/HeaderControl', () => {
+describe('@xiaoye-react/ui/HeaderControl', () => {
   tests.itSupportsSystemProps<HeaderControlProps, HeaderControlStylesNames>({
     component: HeaderControl,
     props: defaultProps,

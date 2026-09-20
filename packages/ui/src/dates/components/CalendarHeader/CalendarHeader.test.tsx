@@ -8,7 +8,7 @@ const defaultProps: CalendarHeaderProps = {
   label: '',
 };
 
-describe('@xiaoye-react/dates/CalendarHeader', () => {
+describe('@xiaoye-react/ui/CalendarHeader', () => {
   tests.itSupportsSystemProps<CalendarHeaderProps, CalendarHeaderStylesNames>({
     component: CalendarHeader,
     props: defaultProps,

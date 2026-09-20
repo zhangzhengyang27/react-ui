@@ -2,7 +2,7 @@ import { testUtils } from '../../../test-utils';
 import { WeekPositionedEventData } from '../../../types';
 import { calculateRegularEventOverlaps } from './calculate-regular-event-overlaps';
 
-describe('@xiaoye-react/schedule/calculate-regular-event-overlaps', () => {
+describe('@xiaoye-react/ui/calculate-regular-event-overlaps', () => {
   function createPositionedEvent(overrides: Partial<WeekPositionedEventData>): any {
     return {
       ...testUtils.createEvent({}),

@@ -32,7 +32,7 @@ function selectFiles(container: HTMLElement, files: File[]) {
   fireEvent.change(input);
 }
 
-describe('@xiaoye-react/dropzone/Upload', () => {
+describe('@xiaoye-react/ui/Upload', () => {
   it('展示 defaultValue 文件列表与大小', () => {
     render(<Upload defaultValue={[makePendingFile('设计稿.png')]} />, { wrapper });
 

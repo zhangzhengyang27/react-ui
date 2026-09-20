@@ -3,7 +3,7 @@ import { LevelsGroup, LevelsGroupProps, LevelsGroupStylesNames } from './LevelsG
 
 const defaultProps: LevelsGroupProps = {};
 
-describe('@xiaoye-react/dates/LevelsGroup', () => {
+describe('@xiaoye-react/ui/LevelsGroup', () => {
   tests.itSupportsSystemProps<LevelsGroupProps, LevelsGroupStylesNames>({
     component: LevelsGroup,
     props: defaultProps,

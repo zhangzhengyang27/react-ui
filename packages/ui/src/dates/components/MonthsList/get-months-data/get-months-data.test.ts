@@ -1,6 +1,6 @@
 import { getMonthsData } from './get-months-data';
 
-describe('@xiaoye-react/dates/get-months-data', () => {
+describe('@xiaoye-react/ui/get-months-data', () => {
   it('returns correct months data based on year input', () => {
     expect(getMonthsData('2022-06-11')).toStrictEqual([
       ['2022-01-01', '2022-02-01', '2022-03-01'],

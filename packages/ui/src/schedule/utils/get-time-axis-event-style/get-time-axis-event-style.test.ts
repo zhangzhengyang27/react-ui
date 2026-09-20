@@ -1,6 +1,6 @@
 import { getTimeAxisEventStyle } from './get-time-axis-event-style';
 
-describe('@xiaoye-react/schedule/get-time-axis-event-style', () => {
+describe('@xiaoye-react/ui/get-time-axis-event-style', () => {
   it('renders a normal event with a 1px gap on each side', () => {
     const result = getTimeAxisEventStyle({ start: 10, span: 20 });
 

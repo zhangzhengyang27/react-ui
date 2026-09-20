@@ -8,7 +8,7 @@ const defaultMaxMonth = '2100-01-01';
 const defaultSelectedMonth = '2010-06-01';
 const defaultControlProps = () => ({});
 
-describe('@xiaoye-react/dates/get-month-in-tab-order', () => {
+describe('@xiaoye-react/ui/get-month-in-tab-order', () => {
   it('returns selected month', () => {
     expect(
       getMonthInTabOrder({

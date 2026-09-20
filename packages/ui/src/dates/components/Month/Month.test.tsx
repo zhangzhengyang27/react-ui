@@ -6,7 +6,7 @@ const defaultProps: MonthProps = {
   month: '2022-04-02',
 };
 
-describe('@xiaoye-react/dates/Month', () => {
+describe('@xiaoye-react/ui/Month', () => {
   tests.itSupportsSystemProps<MonthProps, MonthStylesNames>({
     component: Month,
     props: defaultProps,

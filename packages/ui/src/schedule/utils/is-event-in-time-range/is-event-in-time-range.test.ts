@@ -1,7 +1,7 @@
 import { testUtils } from '../../test-utils';
 import { isEventInTimeRange } from './is-event-in-time-range';
 
-describe('@xiaoye-react/schedule/is-event-in-time-range', () => {
+describe('@xiaoye-react/ui/is-event-in-time-range', () => {
   it('returns true when no time range is specified', () => {
     const event = testUtils.createEvent({
       start: `${testUtils.testDate} 06:00:00`,

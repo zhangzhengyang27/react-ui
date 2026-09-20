@@ -9,7 +9,7 @@ const defaultProps: YearLevelGroupProps = {
   previousLabel: 'prev',
 };
 
-describe('@xiaoye-react/dates/YearLevelGroup', () => {
+describe('@xiaoye-react/ui/YearLevelGroup', () => {
   tests.itSupportsSystemProps<YearLevelGroupProps, YearLevelGroupStylesNames>({
     component: YearLevelGroup,
     props: defaultProps,

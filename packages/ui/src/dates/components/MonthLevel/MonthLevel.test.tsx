@@ -13,7 +13,7 @@ function expectLabel(label: string) {
   expect(screen.getByLabelText('level-control')).toHaveTextContent(label);
 }
 
-describe('@xiaoye-react/dates/MonthLevel', () => {
+describe('@xiaoye-react/ui/MonthLevel', () => {
   tests.itSupportsSystemProps<MonthLevelProps, MonthLevelStylesNames>({
     component: MonthLevel,
     props: defaultProps,

@@ -13,7 +13,7 @@ const defaultPropsWithInputProps = {
   ...(inputDefaultProps as any),
 };
 
-describe('@xiaoye-react/dates/YearPickerInput', () => {
+describe('@xiaoye-react/ui/YearPickerInput', () => {
   tests.axe([
     <YearPickerInput aria-label="test-label" key="1" />,
     <YearPickerInput aria-label="test-label" error key="2" />,

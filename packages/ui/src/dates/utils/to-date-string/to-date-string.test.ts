@@ -1,6 +1,6 @@
 import { toDateString, toDateTimeString } from './to-date-string';
 
-describe('@xiaoye-react/dates/to-date-string', () => {
+describe('@xiaoye-react/ui/to-date-string', () => {
   it('converts string to date string', () => {
     expect(toDateString('2021-09-13')).toBe('2021-09-13');
     expect(toDateString('2021-09-13T00:00:00.000')).toBe('2021-09-13');
@@ -18,7 +18,7 @@ describe('@xiaoye-react/dates/to-date-string', () => {
   });
 });
 
-describe('@xiaoye-react/dates/to-date-time-string', () => {
+describe('@xiaoye-react/ui/to-date-time-string', () => {
   it('converts string to date-time string', () => {
     expect(toDateTimeString('2021-09-13')).toBe('2021-09-13 00:00:00');
     expect(toDateTimeString('2021-09-13T12:30:55')).toBe('2021-09-13 12:30:55');

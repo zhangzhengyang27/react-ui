@@ -6,7 +6,7 @@ const defaultProps: TimeInputProps = {
   ...inputDefaultProps,
 };
 
-describe('@xiaoye-react/dates/TimeInput', () => {
+describe('@xiaoye-react/ui/TimeInput', () => {
   tests.axe([
     <TimeInput aria-label="test-label" key="1" />,
     <TimeInput label="test-label" key="2" />,

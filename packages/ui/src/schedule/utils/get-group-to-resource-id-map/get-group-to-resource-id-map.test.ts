@@ -1,7 +1,7 @@
 import { ScheduleResourceData } from '../../types';
 import { getGroupToResourceIdMap } from './get-group-to-resource-id-map';
 
-describe('@xiaoye-react/schedule/get-group-to-resource-id-map', () => {
+describe('@xiaoye-react/ui/get-group-to-resource-id-map', () => {
   it('maps stringified resource ids back to their original id values', () => {
     const resources: ScheduleResourceData[] = [
       { id: 1, label: 'Room A' },

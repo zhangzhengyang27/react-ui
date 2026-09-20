@@ -44,7 +44,7 @@ const defaultProps: AgendaViewProps = {
   events: testEvents,
 };
 
-describe('@xiaoye-react/schedule/AgendaView', () => {
+describe('@xiaoye-react/ui/AgendaView', () => {
   tests.itSupportsSystemProps<AgendaViewProps, AgendaViewStylesNames>({
     component: AgendaView,
     props: defaultProps,

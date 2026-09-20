@@ -1,6 +1,6 @@
 import { getFormattedTime } from './get-formatted-time';
 
-describe('@xiaoye-react/dates/get-formatted-time', () => {
+describe('@xiaoye-react/ui/get-formatted-time', () => {
   it('correctly formats edge cases for 12h format', () => {
     expect(
       getFormattedTime({

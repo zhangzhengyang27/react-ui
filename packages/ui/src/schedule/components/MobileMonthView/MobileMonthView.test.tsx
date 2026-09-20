@@ -55,7 +55,7 @@ const defaultProps: MobileMonthViewProps = {
   selectedDate: '2025-11-05',
 };
 
-describe('@xiaoye-react/schedule/MobileMonthView', () => {
+describe('@xiaoye-react/ui/MobileMonthView', () => {
   tests.itSupportsSystemProps<MobileMonthViewProps, MobileMonthViewStylesNames>({
     component: MobileMonthView,
     props: defaultProps,

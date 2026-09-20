@@ -1,6 +1,6 @@
 import { isDateValid } from './is-date-valid';
 
-describe('@xiaoye-react/dates/is-date-valid', () => {
+describe('@xiaoye-react/ui/is-date-valid', () => {
   it('detects invalid date', () => {
     expect(
       isDateValid({

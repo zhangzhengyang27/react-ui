@@ -6,7 +6,7 @@ const defaultProps: YearsListProps = {
   decade: '2022-04-11',
 };
 
-describe('@xiaoye-react/dates/YearsList', () => {
+describe('@xiaoye-react/ui/YearsList', () => {
   tests.itSupportsSystemProps<YearsListProps, YearsListStylesNames>({
     component: YearsList,
     props: defaultProps,

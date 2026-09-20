@@ -18,7 +18,7 @@ const defaultProps: PickerInputBaseProps = {
   value: null,
 };
 
-describe('@xiaoye-react/dates/PickerInputBase', () => {
+describe('@xiaoye-react/ui/PickerInputBase', () => {
   datesTests.itSupportsClearableProps({ component: PickerInputBase, props: defaultProps });
 
   it('supports __staticSelector', () => {

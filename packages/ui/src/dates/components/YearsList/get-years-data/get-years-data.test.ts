@@ -7,7 +7,7 @@ const TEST_RANGE = [
   ['2029-01-01'],
 ];
 
-describe('@xiaoye-react/dates/getYearsData', () => {
+describe('@xiaoye-react/ui/getYearsData', () => {
   it('returns correct decade range for year that ends with 0', () => {
     expect(getYearsData('2020-01-01')).toStrictEqual(TEST_RANGE);
   });

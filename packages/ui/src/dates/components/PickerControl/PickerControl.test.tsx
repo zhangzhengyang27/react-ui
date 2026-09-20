@@ -18,7 +18,7 @@ function validateDataAttribute(prop: string) {
   });
 }
 
-describe('@xiaoye-react/dates/PickerControl', () => {
+describe('@xiaoye-react/ui/PickerControl', () => {
   tests.itSupportsSystemProps<PickerControlProps, PickerControlStylesNames>({
     component: PickerControl,
     props: defaultProps,

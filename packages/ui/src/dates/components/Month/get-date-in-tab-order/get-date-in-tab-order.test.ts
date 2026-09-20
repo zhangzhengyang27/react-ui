@@ -15,7 +15,7 @@ const defaultExcludeDate = () => false;
 const defaultHideOutsideDates = false;
 const defaultMonth = '2010-06-01';
 
-describe('@xiaoye-react/dates/get-date-in-tab-order', () => {
+describe('@xiaoye-react/ui/get-date-in-tab-order', () => {
   it('returns selected date', () => {
     expect(
       getDateInTabOrder({

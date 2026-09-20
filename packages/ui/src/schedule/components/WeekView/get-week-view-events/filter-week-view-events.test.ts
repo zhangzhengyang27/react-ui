@@ -1,7 +1,7 @@
 import { testUtils } from '../../../test-utils';
 import { filterWeekViewEvents } from './filter-week-view-events';
 
-describe('@xiaoye-react/schedule/filter-week-view-events', () => {
+describe('@xiaoye-react/ui/filter-week-view-events', () => {
   it('returns empty array when events are undefined', () => {
     expect(filterWeekViewEvents({ date: testUtils.testDate, events: undefined })).toStrictEqual([]);
   });

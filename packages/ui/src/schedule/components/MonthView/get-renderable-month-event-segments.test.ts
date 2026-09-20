@@ -49,7 +49,7 @@ function createGroupedByDay(
   }, {});
 }
 
-describe('@xiaoye-react/schedule/get-renderable-month-event-segments', () => {
+describe('@xiaoye-react/ui/get-renderable-month-event-segments', () => {
   it('splits a multi-day event around one truncated middle day', () => {
     const first = createPositionedEvent({ id: 1, row: 0, startDayIndex: 2, daysSpanned: 1 });
     const second = createPositionedEvent({ id: 2, row: 1, startDayIndex: 2, daysSpanned: 1 });

@@ -13,7 +13,7 @@ const defaultPropsWithInputProps = {
   ...(inputDefaultProps as any),
 };
 
-describe('@xiaoye-react/dates/MonthPickerInput', () => {
+describe('@xiaoye-react/ui/MonthPickerInput', () => {
   tests.axe([
     <MonthPickerInput aria-label="test-label" key="1" />,
     <MonthPickerInput aria-label="test-label" error key="2" />,

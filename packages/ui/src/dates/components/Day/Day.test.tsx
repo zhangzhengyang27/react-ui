@@ -21,7 +21,7 @@ function validateDataAttribute(prop: string) {
   });
 }
 
-describe('@xiaoye-react/dates/Day', () => {
+describe('@xiaoye-react/ui/Day', () => {
   tests.itSupportsSystemProps<DayProps, DayStylesNames>({
     component: Day,
     props: defaultProps,

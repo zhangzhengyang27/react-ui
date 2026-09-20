@@ -10,7 +10,7 @@ const defaultProps: YearViewProps = {
   date: '2025-11-01 00:00:00',
 };
 
-describe('@xiaoye-react/schedule/YearView', () => {
+describe('@xiaoye-react/ui/YearView', () => {
   tests.itSupportsSystemProps<YearViewProps, YearViewStylesNames>({
     component: YearView,
     props: {

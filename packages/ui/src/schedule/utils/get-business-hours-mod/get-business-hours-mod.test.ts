@@ -1,6 +1,6 @@
 import { getBusinessHoursMod } from './get-business-hours-mod';
 
-describe('@xiaoye-react/schedule/get-business-hours-mod', () => {
+describe('@xiaoye-react/ui/get-business-hours-mod', () => {
   describe('disabled state', () => {
     it('returns no modifiers when highlightBusinessHours is false', () => {
       const result = getBusinessHoursMod({

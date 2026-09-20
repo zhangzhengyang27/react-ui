@@ -11,7 +11,7 @@ const mockEvent: ScheduleEventData = {
   payload: {},
 };
 
-describe('@xiaoye-react/schedule/use-drag-state', () => {
+describe('@xiaoye-react/ui/use-drag-state', () => {
   it('initializes with correct default state', () => {
     const { result } = renderHook(() => useDragState());
 

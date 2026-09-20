@@ -1,6 +1,6 @@
 import { padTime } from './pad-time';
 
-describe('@xiaoye-react/dates/pad-time', () => {
+describe('@xiaoye-react/ui/pad-time', () => {
   it('pads time with 0 if value is less than 10', () => {
     expect(padTime(0)).toBe('00');
     expect(padTime(1)).toBe('01');

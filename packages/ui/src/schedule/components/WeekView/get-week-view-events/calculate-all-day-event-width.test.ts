@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { calculateAllDayEventWidth } from './calculate-all-day-event-width';
 
-describe('@xiaoye-react/schedule/calculate-all-day-event-width', () => {
+describe('@xiaoye-react/ui/calculate-all-day-event-width', () => {
   const weekDays = [
     '2025-01-13 00:00:00',
     '2025-01-14 00:00:00',

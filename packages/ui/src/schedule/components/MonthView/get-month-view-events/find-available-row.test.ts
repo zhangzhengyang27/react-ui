@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { testUtils } from '../../../test-utils';
 import { findAvailableRow } from './find-available-row';
 
-describe('@xiaoye-react/schedule/find-available-row', () => {
+describe('@xiaoye-react/ui/find-available-row', () => {
   const weekStart = dayjs('2025-01-13');
 
   it('returns row 0 when no existing events', () => {

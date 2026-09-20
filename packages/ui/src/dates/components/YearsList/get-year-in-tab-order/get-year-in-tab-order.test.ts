@@ -8,7 +8,7 @@ const defaultMaxYear = '2100-01-01';
 const defaultSelectedYear = '2012-01-01';
 const defaultControlProps = () => ({});
 
-describe('@xiaoye-react/dates/get-year-in-tab-order', () => {
+describe('@xiaoye-react/ui/get-year-in-tab-order', () => {
   it('returns selected year', () => {
     expect(
       getYearInTabOrder({

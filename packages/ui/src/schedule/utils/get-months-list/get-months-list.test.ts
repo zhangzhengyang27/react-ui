@@ -2,7 +2,7 @@ import 'dayjs/locale/ru';
 
 import { getMonthsList } from './get-months-list';
 
-describe('@xiaoye-react/schedule/get-months-list', () => {
+describe('@xiaoye-react/ui/get-months-list', () => {
   it('supports custom format', () => {
     expect(getMonthsList({ locale: 'en', format: 'MM' })).toStrictEqual([
       { month: 0, name: '01' },

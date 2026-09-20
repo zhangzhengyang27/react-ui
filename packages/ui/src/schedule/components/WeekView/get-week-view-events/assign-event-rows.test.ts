@@ -2,7 +2,7 @@ import { testUtils } from '../../../test-utils';
 import { WeekPositionedEventData } from '../../../types';
 import { assignEventRows } from './assign-event-rows';
 
-describe('@xiaoye-react/schedule/assign-event-rows', () => {
+describe('@xiaoye-react/ui/assign-event-rows', () => {
   function createPositionedEvent(overrides: Partial<WeekPositionedEventData>): any {
     return {
       ...testUtils.createEvent({}),

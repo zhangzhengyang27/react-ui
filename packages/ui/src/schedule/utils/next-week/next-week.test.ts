@@ -1,7 +1,7 @@
 import { toDateString } from '../to-date-string/to-date-string';
 import { nextWeek } from './next-week';
 
-describe('@xiaoye-react/schedule/next-week', () => {
+describe('@xiaoye-react/ui/next-week', () => {
   it('returns the start of next week', () => {
     expect(nextWeek('2021-02-05', 1)).toStrictEqual(toDateString('2021-02-08'));
   });

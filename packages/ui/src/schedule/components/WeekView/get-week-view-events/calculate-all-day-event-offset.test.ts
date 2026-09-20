@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { calculateAllDayEventOffset } from './calculate-all-day-event-offset';
 
-describe('@xiaoye-react/schedule/calculate-all-day-event-offset', () => {
+describe('@xiaoye-react/ui/calculate-all-day-event-offset', () => {
   const weekDays = [
     '2025-01-13 00:00:00',
     '2025-01-14 00:00:00',

@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { getDefaultClampedDate } from './get-default-clamped-date';
 
-describe('@xiaoye-react/dates/get-default-clamped-date', () => {
+describe('@xiaoye-react/ui/get-default-clamped-date', () => {
   it("returns today's date if minDate and maxDate are not set", () => {
     const today = dayjs().format('YYYY-MM-DD');
     expect(getDefaultClampedDate({ minDate: undefined, maxDate: undefined })).toBe(today);

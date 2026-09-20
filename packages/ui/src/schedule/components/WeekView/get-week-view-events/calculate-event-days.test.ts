@@ -2,7 +2,7 @@ import { testUtils } from '../../../test-utils';
 import { calculateEventDays } from './calculate-event-days';
 import { getEventEndDate } from './get-event-end-date';
 
-describe('@xiaoye-react/schedule/calculate-event-days', () => {
+describe('@xiaoye-react/ui/calculate-event-days', () => {
   const weekDays = [
     '2025-01-13 00:00:00',
     '2025-01-14 00:00:00',

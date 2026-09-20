@@ -39,7 +39,7 @@ function getInput(container: HTMLElement | null) {
   return container!.querySelector('[data-dates-input]')!;
 }
 
-describe('@xiaoye-react/dates/DateInput', () => {
+describe('@xiaoye-react/ui/DateInput', () => {
   tests.axe([
     <DateInput aria-label="test-label" key="1" />,
     <DateInput label="test-label" key="2" />,

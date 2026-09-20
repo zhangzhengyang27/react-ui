@@ -1,6 +1,6 @@
 import { getDayRelativePercent } from './get-day-relative-percent';
 
-describe('@xiaoye-react/schedule/getDayRelativePercent', () => {
+describe('@xiaoye-react/ui/getDayRelativePercent', () => {
   it('maps clientX to a percent across the whole container when there is a single day', () => {
     expect(
       getDayRelativePercent({

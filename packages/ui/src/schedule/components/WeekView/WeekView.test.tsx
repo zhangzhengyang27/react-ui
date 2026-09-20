@@ -11,7 +11,7 @@ const defaultProps: WeekViewProps = {
   date: '2025-11-03 00:00:00',
 };
 
-describe('@xiaoye-react/schedule/WeekView', () => {
+describe('@xiaoye-react/ui/WeekView', () => {
   tests.itSupportsSystemProps<WeekViewProps, WeekViewStylesNames>({
     component: WeekView,
     props: defaultProps,

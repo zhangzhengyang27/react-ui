@@ -21,7 +21,7 @@ const defaultProps: ResourcesWeekViewProps = {
   intervalMinutes: 60,
 };
 
-describe('@xiaoye-react/schedule/ResourcesWeekView', () => {
+describe('@xiaoye-react/ui/ResourcesWeekView', () => {
   it('renders resource labels', () => {
     render(<ResourcesWeekView {...defaultProps} />);
     expect(screen.getByText('Room A')).toBeInTheDocument();

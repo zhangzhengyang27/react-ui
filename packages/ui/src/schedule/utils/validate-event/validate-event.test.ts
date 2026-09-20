@@ -1,7 +1,7 @@
 import { ScheduleEventData } from '../../types';
 import { validateEvent } from './validate-event';
 
-describe('@xiaoye-react/schedule/validate-event', () => {
+describe('@xiaoye-react/ui/validate-event', () => {
   const validEvent: ScheduleEventData = {
     id: 'test-event',
     title: 'Test Event',

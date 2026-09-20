@@ -11,7 +11,7 @@ const defaultProps: CodeHighlightTabsProps = {
   code: [{ fileName: 'Demo.tsx', code: 'const a = 5', language: 'tsx' }],
 };
 
-describe('@xiaoye-react/code-highlight/CodeHighlightTabs', () => {
+describe('@xiaoye-react/ui/CodeHighlightTabs', () => {
   tests.itSupportsSystemProps<CodeHighlightTabsProps, CodeHighlightTabsStylesNames>({
     component: CodeHighlightTabs,
     props: defaultProps,

@@ -7,7 +7,7 @@ const defaultProps: ViewSelectProps = {
   onChange: () => {},
 };
 
-describe('@xiaoye-react/schedule/ViewSelect', () => {
+describe('@xiaoye-react/ui/ViewSelect', () => {
   tests.itSupportsSystemProps<ViewSelectProps, ViewSelectStylesNames>({
     component: ViewSelect,
     props: defaultProps,

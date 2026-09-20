@@ -9,7 +9,7 @@ const resources = [
   { id: 'room-b', label: 'Room B' },
 ];
 
-describe('@xiaoye-react/schedule/get-resources-day-view-events', () => {
+describe('@xiaoye-react/ui/get-resources-day-view-events', () => {
   it('returns empty arrays per resource when events is undefined', () => {
     const result = getResourcesDayViewEvents({ events: undefined, resources, date: testDate });
     expect(result).toStrictEqual({

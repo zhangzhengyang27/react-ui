@@ -48,7 +48,7 @@ const allDayEvents = [
   },
 ];
 
-describe('@xiaoye-react/schedule/DayView', () => {
+describe('@xiaoye-react/ui/DayView', () => {
   tests.itSupportsSystemProps<DayViewProps, DayViewStylesNames>({
     component: DayView,
     props: defaultProps,

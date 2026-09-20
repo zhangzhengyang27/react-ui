@@ -14,7 +14,7 @@ function expectLabel(label: string) {
   expect(screen.getByLabelText('level-control')).toHaveTextContent(label);
 }
 
-describe('@xiaoye-react/dates/YearLevel', () => {
+describe('@xiaoye-react/ui/YearLevel', () => {
   tests.itSupportsSystemProps<YearLevelProps, YearLevelStylesNames>({
     component: YearLevel,
     props: defaultProps,

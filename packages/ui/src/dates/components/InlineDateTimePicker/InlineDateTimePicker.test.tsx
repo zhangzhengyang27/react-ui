@@ -22,7 +22,7 @@ const defaultProps: InlineDateTimePickerProps = {
 const getTimePicker = () => screen.getByLabelText('test-time-picker-hours');
 const getSubmitButton = () => screen.getByLabelText('test-submit');
 
-describe('@xiaoye-react/dates/InlineDateTimePicker', () => {
+describe('@xiaoye-react/ui/InlineDateTimePicker', () => {
   tests.axe([
     <InlineDateTimePicker
       aria-label="test-label"

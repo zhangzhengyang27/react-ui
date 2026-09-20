@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { calculateEventPositionInWeek } from './calculate-event-position-in-week';
 
-describe('@xiaoye-react/schedule/calculate-event-position-in-week', () => {
+describe('@xiaoye-react/ui/calculate-event-position-in-week', () => {
   const weekStart = dayjs('2025-01-13');
   const weekEnd = dayjs('2025-01-19');
 

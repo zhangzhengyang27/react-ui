@@ -3,7 +3,7 @@ import { render, screen, tests, userEvent } from '@xiaoye-react/tests';
 import { datesTests } from '@xiaoye-react/tests/dates';
 import { YearPicker, YearPickerProps, YearPickerStylesNames } from './YearPicker';
 
-describe('@xiaoye-react/dates/YearPicker', () => {
+describe('@xiaoye-react/ui/YearPicker', () => {
   tests.itSupportsSystemProps<YearPickerProps, YearPickerStylesNames>({
     component: YearPicker,
     props: {

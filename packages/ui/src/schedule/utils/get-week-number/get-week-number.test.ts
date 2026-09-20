@@ -1,6 +1,6 @@
 import { getWeekNumber } from './get-week-number';
 
-describe('@xiaoye-react/schedule/get-week-number', () => {
+describe('@xiaoye-react/ui/get-week-number', () => {
   it('returns correct week number for single date', () => {
     expect(getWeekNumber('2024-05-01')).toBe(18);
   });

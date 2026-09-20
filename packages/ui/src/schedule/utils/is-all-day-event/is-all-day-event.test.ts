@@ -3,7 +3,7 @@ import { testUtils } from '../../test-utils';
 import { toDateString } from '../to-date-string/to-date-string';
 import { isAllDayEvent } from './is-all-day-event';
 
-describe('@xiaoye-react/schedule/is-all-day-event', () => {
+describe('@xiaoye-react/ui/is-all-day-event', () => {
   it('detects all-day events', () => {
     expect(
       isAllDayEvent({

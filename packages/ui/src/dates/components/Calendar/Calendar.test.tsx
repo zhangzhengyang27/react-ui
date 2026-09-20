@@ -34,7 +34,7 @@ async function clickPrevious(level: 'month' | 'year' | 'decade') {
   await userEvent.click(screen.getByLabelText(`previous-${level}`));
 }
 
-describe('@xiaoye-react/dates/Calendar', () => {
+describe('@xiaoye-react/ui/Calendar', () => {
   tests.itSupportsSystemProps<CalendarProps, CalendarStylesNames>({
     component: Calendar,
     props: defaultProps,

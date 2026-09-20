@@ -6,7 +6,7 @@ function positionEvents(events: ReturnType<typeof testUtils.createEvent>[]) {
   return getDayPositionedEvents({ date: testUtils.testDate, events });
 }
 
-describe('@xiaoye-react/schedule/get-overlap-clusters', () => {
+describe('@xiaoye-react/ui/get-overlap-clusters', () => {
   it('returns empty array when no events are provided', () => {
     expect(getOverlapClusters([])).toStrictEqual([]);
   });

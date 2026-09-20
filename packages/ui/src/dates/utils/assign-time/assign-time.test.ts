@@ -1,6 +1,6 @@
 import { assignTime } from './assign-time';
 
-describe('@xiaoye-react/dates/assign-time', () => {
+describe('@xiaoye-react/ui/assign-time', () => {
   it('assigns time to date', () => {
     const date = '2021-01-01';
     expect(assignTime(date, '12:34:56')).toBe('2021-01-01 12:34:56');

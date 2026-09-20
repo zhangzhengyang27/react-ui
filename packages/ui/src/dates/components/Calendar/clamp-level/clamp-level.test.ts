@@ -1,6 +1,6 @@
 import { clampLevel } from './clamp-level';
 
-describe('@xiaoye-react/dates/clamp-level', () => {
+describe('@xiaoye-react/ui/clamp-level', () => {
   it('returns correct initial level', () => {
     expect(clampLevel('month', 'month', 'decade')).toBe('month');
     expect(clampLevel('month', undefined, undefined)).toBe('month');

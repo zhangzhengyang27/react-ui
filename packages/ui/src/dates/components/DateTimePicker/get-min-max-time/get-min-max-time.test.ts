@@ -1,6 +1,6 @@
 import { getMaxTime, getMinTime } from './get-min-max-time';
 
-describe('@xiaoye-react/dates/get-min-max-time', () => {
+describe('@xiaoye-react/ui/get-min-max-time', () => {
   describe('getMinTime', () => {
     it('returns correct min time when value is on the same date as minDate', () => {
       const minDate = '2022-04-11 00:30:00';

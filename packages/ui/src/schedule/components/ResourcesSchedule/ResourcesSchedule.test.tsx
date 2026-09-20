@@ -26,7 +26,7 @@ const testEvents = [
   },
 ];
 
-describe('@xiaoye-react/schedule/ResourcesSchedule', () => {
+describe('@xiaoye-react/ui/ResourcesSchedule', () => {
   it('renders ResourcesDayView by default (defaultView="day")', () => {
     const { container } = render(<ResourcesSchedule {...defaultProps} />);
     expect(

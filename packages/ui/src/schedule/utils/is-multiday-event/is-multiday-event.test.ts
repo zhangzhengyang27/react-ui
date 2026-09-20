@@ -1,7 +1,7 @@
 import { testUtils } from '../../test-utils';
 import { isMultidayEvent } from './is-multiday-event';
 
-describe('@xiaoye-react/schedule/is-multiday-event', () => {
+describe('@xiaoye-react/ui/is-multiday-event', () => {
   it('returns false for single-day events', () => {
     expect(
       isMultidayEvent(

@@ -1,6 +1,6 @@
 import { isSameMonth } from './is-same-month';
 
-describe('@xiaoye-react/dates/is-same-month', () => {
+describe('@xiaoye-react/ui/is-same-month', () => {
   it('detects same month', () => {
     expect(isSameMonth('2021-03-01', '2021-03-02')).toBe(true);
     expect(isSameMonth('2021-04-01', '2021-03-02')).toBe(false);

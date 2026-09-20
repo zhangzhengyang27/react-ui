@@ -273,9 +273,20 @@ function main() {
     for (const entry of entries) {
         if (!entry.isDirectory()) continue
         const componentName = entry.name
-        const mainFilePath = path.join(COMPONENTS_DIR, componentName, `${componentName}.tsx`)
-        if (!fs.existsSync(mainFilePath)) {
-            console.warn(`[docgen] ${componentName}: main file not found, skipping`)
+        const dir = path.join(COMPONENTS_DIR, componentName)
+        // 复合组件的主文件有两种落法：CodeHighlight 是 components/CodeHighlight/CodeHighlight/CodeHighlight.tsx
+        const mainFilePath = [
+            path.join(dir, `${componentName}.tsx`),
+            path.join(dir, componentName, `${componentName}.tsx`)
+        ].find(candidate => fs.existsSync(candidate))
+
+        if (!mainFilePath) {
+            // 没有 CSS module 的目录（Modals 这类纯 provider/context）本来就没有
+            // Styles API 可抽取，静默跳过；其余情况才是真的找错了地方，要报出来。
+            const hasStyles = fs.readdirSync(dir).some(name => name.endsWith('.module.css'))
+            if (hasStyles) {
+                console.warn(`[docgen] ${componentName}: 有样式却没有 <名称>.tsx 主文件，跳过`)
+            }
             continue
         }
 

@@ -1,6 +1,6 @@
 # 第二轮全量复审 · 执行总结(2026-09-17)
 
-> 计划:REVIEW-PLAN-2026-09-17.md | 问题清单:findings.md | 待裁决:not-fix-list.md | 台账:TRACKER.md
+> 计划:../../REVIEW-PLAN-2026-09-17.md | 待裁决:not-fix-list.md | 修复日志:fixlog/（问题单与台账见文末「产出物清单」）
 > 执行:审查(14 批)→ 主线抽样复核 → 修复(8 波)→ 终验。全程未 commit,工作树 286 个文件待用户审阅提交。
 
 ## 一、审查结果
@@ -8,7 +8,7 @@
 - **覆盖**:1405 文件 / ~12.5 万行,台账 100% 标记完结(✅ 1323 无问题 / 🔎 82 涉问题)。
 - **发现**:194 条(P0 × 1、P1 × 40、P2 × 153)+ 24 段待裁决/待核实。
 - **主线抽样复核**:15 条跨 10 批逐条核到 file:line 真实代码,通过率 100%。
-- **上轮 199 项修复回归核对**:无一被冲掉;4 组上轮"声称已修"实际未落地/未同步(见 findings.md 回归核对章节);2 条上轮修复自身引入的新缺陷(B02-1 Stack 无限循环、B02-4 HoverCardTarget ref 覆盖)。
+- **上轮 199 项修复回归核对**:无一被冲掉;4 组上轮"声称已修"实际未落地/未同步(逐条见 fixlog/ 与文末说明);2 条上轮修复自身引入的新缺陷(B02-1 Stack 无限循环、B02-4 HoverCardTarget ref 覆盖)。
 
 ### 唯一 P0
 - **B02-1** ModalStack/DrawerStack 内渲染 Modal/Drawer 即触发无限 effect 循环("Maximum update depth exceeded",⑰批新接线自带,零测试覆盖)——已修 + 补 Stack 渲染回归测试。
@@ -55,10 +55,13 @@ form/hooks:根规则双执行、abort 后 validating 卡死、debounce leading �
 
 ```
 AUDIT-2026-09-17/
-├── TRACKER.md        # 文件级台账(1405 行,全部完结)
-├── findings.md       # 194 条问题单(含上轮回归核对结论)
-├── not-fix-list.md   # 待裁决/待核实汇总
-├── raw/B01-B14.md    # 各批审查原始报告(证据 + 回归核对表)
-├── fixlog/*.md       # 8 波修复逐条日志(单号|状态|改动|测试)
-├── tracker.json / batch-files/ / gen-tracker.mjs / consolidate.mjs  # 过程工具
+├── SUMMARY.md         # 本文件
+├── not-fix-list.md    # 待裁决/待核实汇总
+├── CHECKLIST.md       # 12 条逐文件审查清单（可复用于下一轮）
+└── fixlog/*.md        # 8 波修复逐条日志（单号|状态|改动|测试）
 ```
+
+审查过程的文件级台账（TRACKER.md/tracker.json）、194 条问题单（findings.md）、
+各批原始报告（raw/B01-B14.md）与批次清单/生成脚本（batch-files/、gen-tracker.mjs、
+consolidate.mjs、sweep-parallel.mjs）已在 2026-09-20 的收尾清理里移除——它们是
+一次性中间产物，结论都在上面四份文件里，需要原始证据时从 git 历史取回。

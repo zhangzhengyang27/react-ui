@@ -29,7 +29,17 @@ group:
 - `<Grid.Col span={6} />` – 6 / 12 = 行宽的 50%
 - `<Grid.Col span={12} />` – 12 / 12 = 行宽的 100%
 
-`span` 属性只接受数字，不做响应式解析；需要随视口宽度调整列宽时，改用 `Grid` 的响应式 `cols` 属性配合固定的 `span`，或为 `Grid.Col` 传入 `style` 自行覆盖。
+`span` 属性还支持对象语法，根据视口宽度更改列宽。它接受 `xs`、`sm`、`md`、`lg` 和 `xl` 键（与 `theme.breakpoints` 一致），值为 1 到 `cols` 之间的数字，语法与 [style props](/docs/styles/style-props) 相同。
+
+在示例 `span={{ base: 12, md: 6, lg: 3 }}` 中：
+
+- `base` – 视口宽度小于 `md` 断点时，12 / 12 = 行宽的 100%
+- `md` – 视口宽度在 `md` 和 `lg` 断点之间时，6 / 12 = 行宽的 50%
+- `lg` – 视口宽度大于 `lg` 断点时，3 / 12 = 行宽的 25%
+
+每个断点上的跨度都是按**该断点生效的列数**独立钳位的：`cols={{ base: 4, lg: 12 }}` 配 `span={{ base: 4, lg: 12 }}` 时，`lg` 下的 12 不会被 `base` 的 4 列误压小。
+
+<code src="./demo/responsive.tsx"></code>
 
 ### 间距
 
@@ -51,13 +61,13 @@ group:
 
 ### 列偏移
 
-在 `Grid.Col` 组件上设置 `offset` 属性以向网格添加间隙。`offset` 属性只接受 1 到 12 之间的数字（相对 `cols` 总列数），不支持对象语法。
+在 `Grid.Col` 组件上设置 `offset` 属性以向网格添加间隙。`offset` 属性支持与 `span` 属性相同的语法：1 到 `cols` 之间的数字，或带有 `xs`、`sm`、`md`、`lg` 和 `xl` 键的对象（同样按各断点生效的列数独立钳位）。
 
 <code src="./demo/offset.tsx"></code>
 
 ### 排序
 
-在 `Grid.Col` 组件上设置 `order` 属性以更改列的顺序。`order` 属性只接受 CSS `order` 可取的值（通常为数字），不支持对象语法：
+在 `Grid.Col` 组件上设置 `order` 属性以更改列的顺序。`order` 属性同样支持与 `span` 相同的语法：数字，或带有 `xs`、`sm`、`md`、`lg` 和 `xl` 键的对象。
 
 <code src="./demo/order.tsx"></code>
 
@@ -79,20 +89,26 @@ group:
 
 Grid 组件使用 CSS Grid（`display: grid` + `grid-template-columns`）配合原生 `gap` 进行布局，设置 `grow` 时切换为 flexbox，所有现代浏览器均支持。
 
-`Grid` 的 `cols`、`gutter`、`rowGap`、`columnGap` 属性支持对象语法，响应式值通过标准媒体查询（基于 `theme.breakpoints`）生效，例如：
+`Grid` 的 `cols`、`gutter`、`rowGap`、`columnGap` 与 `Grid.Col` 的 `span`、`offset`、`order` 都支持对象语法，响应式值通过标准媒体查询（基于 `theme.breakpoints`）生效，例如：
 
 ```tsx
 import { Grid } from '@xiaoye-react/ui';
 
 function Demo() {
   return (
-    <Grid cols={{ base: 12, md: 6 }} gutter="md">
-      <Grid.Col span={3}>1</Grid.Col>
-      <Grid.Col span={3}>2</Grid.Col>
+    <Grid gutter="md">
+      <Grid.Col span={{ base: 12, md: 6 }} offset={{ lg: 1 }}>
+        1
+      </Grid.Col>
+      <Grid.Col span={{ base: 12, md: 6 }} order={{ base: 2, md: 1 }}>
+        2
+      </Grid.Col>
     </Grid>
   );
 }
 ```
+
+`Grid.Col` 的响应式声明与 [style props](/docs/styles/style-props) 走同一套机制：只在该断点的计算结果与上一个断点不同时才输出规则，纯数字写法仍然直接落在 `style` 属性上，不额外生成样式。
 
 ## API {#api}
 
@@ -107,6 +123,18 @@ function Demo() {
 | grow | 是否让列自动等分 | `boolean` | `false` |
 
 除上表所列属性外，Grid 还支持所有原生 HTML 属性。
+
+### GridColProps
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| span | 列跨度 | `number` \| 响应式对象 | `1` |
+| offset | 列偏移 | `number` \| 响应式对象 | `0` |
+| order | 列顺序 | `number` \| 响应式对象 | — |
+
+响应式对象的类型为 `StyleProp<number>`，形如 `{ base: 12, md: 6, lg: 3 }`，键取自 `theme.breakpoints`，语法与 [style props](/docs/styles/style-props) 相同。`span` 与 `offset` 在每个断点上按**该断点生效的 `cols`** 各自钳位：`span` 收敛到 `[1, cols]`，`offset + span` 越过总列数时裁掉 `span`。
+
+除上表所列属性外，Grid.Col 还支持 Box 的 style props 与所有原生 HTML 属性。
 
 ## FAQ {#faq}
 

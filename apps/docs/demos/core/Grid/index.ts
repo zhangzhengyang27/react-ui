@@ -1,4 +1,5 @@
 export { usage } from './Grid.demo.usage';
+export { responsive } from './Grid.demo.responsive';
 export { growConfigurator } from './Grid.demo.growConfigurator';
 export { offset } from './Grid.demo.offset';
 export { order } from './Grid.demo.order';

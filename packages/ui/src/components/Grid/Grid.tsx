@@ -14,6 +14,7 @@ import {
 import { GridCol } from './GridCol'
 import { GridContextProvider } from './Grid.context'
 import { GridVariables } from './GridVariables'
+import { getBaseValue } from './grid-responsive'
 import classes from './Grid.module.css'
 
 export type GridStylesNames = 'root' | 'col'
@@ -67,12 +68,12 @@ export const Grid = factory<GridFactory>((_props, _ref) => {
     })
 
     const responsiveClassName = useRandomClassName()
-    const columns = typeof cols === 'number' ? cols : (cols as any)?.base ?? 12
+    const columns = getBaseValue(cols) ?? 12
 
     return (
         <>
             <GridVariables {...props} selector={`.${responsiveClassName}`} />
-            <GridContextProvider value={{ columns, grow: !!grow }}>
+            <GridContextProvider value={{ columns, cols: cols ?? 12, grow: !!grow }}>
                 <Box
                     ref={_ref}
                     {...getStyles('root', { className: responsiveClassName })}

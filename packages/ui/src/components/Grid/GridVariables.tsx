@@ -2,16 +2,10 @@ import { filterProps, getSpacing, InlineStyles, keys, rem, useUITheme,
   getSortedBreakpoints,
 } from '../../core'
 import type { GridProps } from './Grid'
+import { getBaseValue } from './grid-responsive'
 
 interface GridVariablesProps extends GridProps {
     selector: string
-}
-
-function getBaseValue<Value>(value: Value | Partial<Record<string, Value>> | undefined): Value | undefined {
-    if (typeof value === 'object' && value !== null && 'base' in value) {
-        return (value as Record<string, Value>).base
-    }
-    return value as Value | undefined
 }
 
 export function GridVariables({ cols, gutter, rowGap, columnGap, selector }: GridVariablesProps) {

@@ -8,6 +8,11 @@ export const Demo_usage = {
   render: renderDemo(demos.usage),
 };
 
+export const Demo_responsive = {
+  name: '⭐ Demo: responsive',
+  render: renderDemo(demos.responsive),
+};
+
 export const Demo_growConfigurator = {
   name: '⭐ Demo: growConfigurator',
   render: renderDemo(demos.growConfigurator),

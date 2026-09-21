@@ -227,7 +227,12 @@ function listFiles(dir, test) {
   return out;
 }
 
-const KNOWN_PACKAGES = new Set([...WORKSPACE_PACKAGES, 'ui', 'hooks']);
+// demo 不在 workspace 包里了（真身是 .dumi/theme/builtins/DemoEngine，dumi 按目录约定注册 builtin），
+// 靠三处别名解析：.dumirc.ts 的 alias、tsconfig.json 的 paths、e2e/harness 的 alias。
+// 它不是"不存在的包"，所以这条规则要放行——规则的目标是抓 dropzone/dates/form 那种
+// 早已合并进 ui、却还写在展示码里的包名。
+const ALIAS_RESOLVED_PACKAGES = new Set(['demo']);
+const KNOWN_PACKAGES = new Set([...WORKSPACE_PACKAGES, 'ui', 'hooks', ...ALIAS_RESOLVED_PACKAGES]);
 
 for (const file of [
   ...listFiles(path.join(DOCS_ROOT, 'demos'), (n) => /\.(tsx|ts)$/.test(n)),

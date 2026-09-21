@@ -25,28 +25,35 @@ interface DemoProps {
 }
 
 export function Demo({ data, demoProps }: DemoProps) {
-  const { title, description, ...rest } = data;
-  const metadata: DemoMetadata = { title, description };
-
+  // 解构必须发生在 switch 各分支内部：在 data 还没被 data.type 窄化之前就取 rest，
+  // 得到的是三个变体 rest 的并集，会把兄弟变体才有的键一起 spread 进子组件。
+  // title/description 被显式丢弃：DemoEngine 里没有任何一处消费它们，
+  // 文档页的标题来自 .md 的 `### 标题`，往子组件传只会漏成无主属性。
   switch (data.type) {
-    case 'code':
+    case 'code': {
+      const { title: _title, description: _description, type: _type, component: Component, ...rest } = data;
       return (
-        <CodeDemo {...rest} {...demoProps} {...metadata}>
-          <data.component />
+        <CodeDemo {...rest} {...demoProps}>
+          <Component />
         </CodeDemo>
       );
-    case 'configurator':
+    }
+    case 'configurator': {
+      const { title: _title, description: _description, type: _type, component: Component, ...rest } = data;
       return (
-        <ConfiguratorDemo {...rest} {...demoProps} {...metadata}>
-          <data.component />
+        <ConfiguratorDemo {...rest} {...demoProps}>
+          <Component />
         </ConfiguratorDemo>
       );
-    case 'styles-api':
+    }
+    case 'styles-api': {
+      const { title: _title, description: _description, type: _type, component: Component, ...rest } = data;
       return (
-        <StylesApiDemo {...rest} {...demoProps} {...metadata}>
-          <data.component />
+        <StylesApiDemo {...rest} {...demoProps}>
+          <Component />
         </StylesApiDemo>
       );
+    }
     default:
       return null;
   }

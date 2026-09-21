@@ -17,6 +17,11 @@
             "@xiaoye-react/ui/*": ["../../packages/ui/src/*"],
             "@xiaoye-react/hooks": ["../../packages/hooks/src/index.ts"],
             "@xiaoye-react/hooks/*": ["../../packages/hooks/src/*"],
+            // 与 .dumirc.ts 的 alias 保持一致：站点实际渲染的是 .dumi/theme/builtins/DemoEngine
+            // （dumi 按目录约定自动注册 builtin，所以它必须待在那儿）。
+            // 不写这条时 tsc 会经 node_modules 解析到 packages/@xiaoye-react/demo 那份，
+            // 于是 1478 个 demo 文件是按"不上线的副本"检查的，门禁与线上代码脱节。
+            "@xiaoye-react/demo": [".dumi/theme/builtins/DemoEngine/index.ts"],
             "@docs/docgen": [".docgen/docgen.json"],
             "@docs/hooks": [".docgen/hooks.json"],
             "@docs/css-exports": [".docgen/css-exports.json"],

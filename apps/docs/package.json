@@ -91,7 +91,6 @@
         "tsx": "^4.19.4",
         "typescript": "^5.5.2",
         "@xiaoye-react/carousel": "workspace:*",
-        "@xiaoye-react/demo": "workspace:*",
         "@xiaoye-react/logo": "workspace:*",
         "embla-carousel": "^8.6.0",
         "html2sketch": "^1.0.2",

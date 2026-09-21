@@ -21,6 +21,10 @@ export function ConfiguratorSelectControl({
   onChange,
   prop,
   data,
+  // 本控件是受控的（value + onChange），defaultValue 既与 NativeSelect 收窄后的
+  // `defaultValue?: string` 类型冲突，也会触发 React 的
+  // "A component changed from uncontrolled to controlled" 告警，因此接住不再下传
+  defaultValue: _defaultValue,
   ...others
 }: ConfiguratorSelectControlProps) {
   return (

@@ -1,4 +1,5 @@
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
+import { RemoveScroll as RemoveScrollRaw } from 'react-remove-scroll'
 import {
     Box,
     BoxProps,
@@ -33,6 +34,10 @@ import { AppShellNavbar } from './AppShellNavbar/AppShellNavbar'
 export type { AppShellCollapsedProp, AppShellSizeProp } from './app-shell-responsive'
 
 export type AppShellStylesNames = 'root' | 'header' | 'navbar' | 'aside' | 'footer' | 'main'
+
+// children 由 JSX 提供、forwardProps/ref 不使用，均剔除（与 ModalBase 同一套写法）
+type RemoveScrollProps = Omit<React.ComponentProps<typeof RemoveScrollRaw>, 'children' | 'forwardProps' | 'ref'>
+const RemoveScroll = RemoveScrollRaw as React.FC<React.PropsWithChildren<RemoveScrollProps>>
 
 export interface AppShellProps extends BoxProps, StylesApiProps<AppShellFactory> {
     /** Controls padding of the main section @default 'md' */
@@ -123,19 +128,6 @@ export const AppShell = polymorphicFactory<AppShellFactory>((_props, _ref) => {
     const theme = useUITheme()
     const responsiveClassName = useRandomClassName()
 
-    // fixed 布局下页面本身不再滚动：锁住 body 滚动，卸载时还原"进入前"的值——
-    // 直接置空会让嵌套/并列的 AppShell 互相踩掉对方的锁
-    useEffect(() => {
-        if (!fixed) {
-            return
-        }
-        const previous = document.body.style.overflow
-        document.body.style.overflow = 'hidden'
-        return () => {
-            document.body.style.overflow = previous
-        }
-    }, [fixed])
-
     const getStyles = useStyles<AppShellFactory>({
         name: 'AppShell',
         props,
@@ -195,7 +187,12 @@ export const AppShell = polymorphicFactory<AppShellFactory>((_props, _ref) => {
                     media={responsiveStyleProps.media}
                 />
             )}
-            <AppShellContext.Provider value={ctxValue}>
+            {/* fixed 布局下页面本身不再滚动，滚动只发生在 main 内。用 react-remove-scroll 而不是
+                自己写 body.style.overflow：它管滚动条宽度补偿（否则锁的瞬间整页横向跳动）、
+                管 iOS 橡皮筋，并与 ModalBase/Drawer 的锁共用一个栈（并列打开不会互相踩）。
+                enabled 必须显式转 boolean——省略时 RemoveScroll 默认就是锁的。 */}
+            <RemoveScroll enabled={!!fixed}>
+                <AppShellContext.Provider value={ctxValue}>
                 <Box
                     ref={_ref}
                     mod={[
@@ -216,7 +213,8 @@ export const AppShell = polymorphicFactory<AppShellFactory>((_props, _ref) => {
                 >
                     {children}
                 </Box>
-            </AppShellContext.Provider>
+                </AppShellContext.Provider>
+            </RemoveScroll>
         </>
     )
 })

@@ -39,27 +39,32 @@ test.describe('AppShell fixed layout', () => {
         expect(await footer.boundingBox()).toEqual(before.footer)
     })
 
-    test('mount and unmount save/restore the previous body overflow', async ({ page }) => {
-        const bodyOverflow = () => page.evaluate(() => document.body.style.overflow)
+    test('锁随挂载/卸载生效与撤销，且不覆写消费者自己的 inline overflow', async ({ page }) => {
+        // 断言计算样式而不是 inline style：锁由 react-remove-scroll 注入的样式表 +
+        // body[data-scroll-locked] 实现，inline overflow 属于消费者，组件不该去盖它
+        const computed = () => page.evaluate(() => getComputedStyle(document.body).overflow)
+        const inline = () => page.evaluate(() => document.body.style.overflow)
 
         await expect(page.getByTestId('shell')).toBeVisible()
-        expect(await bodyOverflow()).toBe('hidden')
+        expect(await computed(), '挂载期内 body 不可滚动').toBe('hidden')
+        expect(await inline(), '不写消费者的 inline overflow').toBe('')
 
-        // 卸载还原成"进入前"的值，而不是硬编码空串
+        // 卸载 → 锁撤销
         await page.getByTestId('toggle').click()
         await expect(page.getByTestId('shell')).toHaveCount(0)
-        expect(await bodyOverflow()).toBe('')
+        expect(await computed()).not.toBe('hidden')
 
-        // 模拟外层已有一把锁，再挂载 → 卸载后应回到外层那把锁的值
+        // 外层已有一把 inline 锁时，组件挂载再卸载应当原样留给外层
         await page.evaluate(() => {
             document.body.style.overflow = 'auto'
         })
         await page.getByTestId('toggle').click()
         await expect(page.getByTestId('shell')).toBeVisible()
-        expect(await bodyOverflow()).toBe('hidden')
+        expect(await inline()).toBe('auto')
+        expect(await computed(), 'fixed 期间仍然要锁得住').toBe('hidden')
 
         await page.getByTestId('toggle').click()
         await expect(page.getByTestId('shell')).toHaveCount(0)
-        expect(await bodyOverflow()).toBe('auto')
+        expect(await inline(), '卸载后外层那把 inline 锁原样保留').toBe('auto')
     })
 })

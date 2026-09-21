@@ -210,7 +210,10 @@ describe('AppShell', () => {
         expect(screen.getByTestId('aside')).not.toHaveAttribute('data-collapsed')
     })
 
-    it('fixed 布局标记 data-fixed，并把 body 滚动锁在挂载期内', () => {
+    it('fixed 布局标记 data-fixed，并在挂载期内锁住 body 滚动', () => {
+        // 锁的载体是 body[data-scroll-locked] + RemoveScroll 注入的样式表，不是 inline style。
+        // 旧实现直接写 document.body.style.overflow，会把消费者自己声明的 inline 值盖掉再"还原"；
+        // 换成与 ModalBase/Drawer 共用的那一套之后，并列锁靠栈计数，不再互相踩。
         document.body.style.overflow = 'auto'
 
         const { unmount } = renderWithProvider(
@@ -220,10 +223,11 @@ describe('AppShell', () => {
         )
 
         expect(screen.getByTestId('shell')).toHaveAttribute('data-fixed')
-        expect(document.body.style.overflow).toBe('hidden')
+        expect(document.body).toHaveAttribute('data-scroll-locked')
+        expect(document.body.style.overflow).toBe('auto')
 
         unmount()
-        // 还原的是进入前的值，不是硬编码 ''：嵌套/并列的 AppShell 才不会互相踩锁
+        expect(document.body).not.toHaveAttribute('data-scroll-locked')
         expect(document.body.style.overflow).toBe('auto')
 
         renderWithProvider(
@@ -232,6 +236,6 @@ describe('AppShell', () => {
             </AppShell>
         )
         expect(screen.getByTestId('plain')).not.toHaveAttribute('data-fixed')
-        expect(document.body.style.overflow).toBe('auto')
+        expect(document.body).not.toHaveAttribute('data-scroll-locked')
     })
 })

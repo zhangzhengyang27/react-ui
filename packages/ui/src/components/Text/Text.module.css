@@ -17,6 +17,15 @@
     &:where([data-truncate='start']) {
         direction: rtl;
         text-align: end;
+
+        /* 上面这招是"把行盒的 inline 方向反过来"，好让 text-overflow 的省略号
+           落到 inline end（LTR 下即视觉左端）从而实现"截头留尾"。
+           RTL 文档里容器本来就是 rtl，再写一次 rtl 等于什么都没反转，
+           省略号仍落在 inline end（RTL 的视觉左端）——截掉的却是尾部，语义正好相反。
+           这里反向施加 ltr，让两种书写方向下截的都是开头。 */
+        :where([dir='rtl']) & {
+            direction: ltr;
+        }
     }
 
     &:where([data-variant='gradient']) {

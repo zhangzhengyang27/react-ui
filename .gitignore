@@ -19,7 +19,10 @@ node_modules
 # TypeScript 增量构建缓存
 **/*.tsbuildinfo
 
-pnpm-lock.yaml
+# 根 lockfile 必须进版本控制：这个仓库要发 npm 包，锁不提交就没有可复现的安装，
+# CI/同事拿到的依赖树与本地实测过的不是同一份。原先这里忽略了 pnpm-lock.yaml，
+# 且因为写法无锚点，连带藏掉了 packages/hooks 里的残留锁——现已删除该残留，
+# 并保持不再忽略：以后真出现嵌套 lockfile，会直接在 git status 里暴露而不是被吞掉。
 yarn.lock
 
 node_modules/

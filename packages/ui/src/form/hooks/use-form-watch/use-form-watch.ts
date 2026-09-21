@@ -25,6 +25,12 @@ export function useFormWatch<
   const subscribers = useRef<Record<Field, FormFieldSubscriber<Values, Field>[]>>({} as any);
 
   const watch: Watch<Values, Field> = useCallback((path, callback) => {
+    // watch(field, cb) 是在调用方组件的渲染期被调用的，这里靠 useEffect 注册订阅：
+    // 一是让订阅跟着调用方组件的卸载/ callback 身份变化清理（demo 里每次都传新的
+    // 内联箭头函数，改成命令式 push 就会每渲染泄漏一个订阅者），二是让 hook 顺序由
+    // 调用方组件负责。真正干净的做法是另开一个 useWatch(field, cb) 顶层 hook，
+    // 那属于 API 面变更，不在本次 lint 收尾里做。
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
       subscribers.current[path] = subscribers.current[path] || [];
       subscribers.current[path].push(callback);

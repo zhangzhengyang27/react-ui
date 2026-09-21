@@ -7,10 +7,11 @@ export interface UseMediaQueryOptions {
 type MediaQueryCallback = (event: { matches: boolean; media: string }) => void
 
 /**
- * Older versions of Safari (shipped withCatalina and before) do not support addEventListener on matchMedia
- * https://stackoverflow.com/questions/56466261/matchmedia-addlistener-marked-as-deprecated-addeventlistener-equivalent
+ * 订阅一条 MediaQueryList 的变化，返回解绑函数。
+ * 导出给 useMatches 这类"一次订阅多条查询"的场景复用，避免 Safari 老版本的
+ * addListener 兜底逻辑抄第二份。
  * */
-function attachMediaListener(query: MediaQueryList, callback: MediaQueryCallback) {
+export function attachMediaListener(query: MediaQueryList, callback: MediaQueryCallback) {
     try {
         query.addEventListener('change', callback)
         return () => query.removeEventListener('change', callback)

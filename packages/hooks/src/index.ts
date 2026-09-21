@@ -20,7 +20,7 @@ export {
     useMutationObserverTarget
 } from './use-mutation-observer/use-mutation-observer'
 export { useFocusTrap } from './use-focus-trap/use-focus-trap'
-export { useMediaQuery } from './use-media-query/use-media-query'
+export { attachMediaListener, useMediaQuery } from './use-media-query/use-media-query'
 export type { UseMediaQueryOptions } from './use-media-query/use-media-query'
 export { useCallbackRef } from './use-callback-ref/use-callback-ref'
 export { useDidUpdate } from './use-did-update/use-did-update'

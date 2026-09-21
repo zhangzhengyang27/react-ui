@@ -145,3 +145,5 @@ neighbouring
 событий
 aujourd’hui
 
+# vitest API（vi.unstubAllGlobals 被切成 unstub/All/Globals）
+unstub

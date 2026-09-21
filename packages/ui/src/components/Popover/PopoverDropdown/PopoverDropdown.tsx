@@ -39,7 +39,9 @@ export const PopoverDropdown = factory<PopoverDropdownFactory>((_props, ref) => 
 
     // transitionProps prop 已移除（决策 A）：过渡固定为 fade/150ms；Portal 无条件渲染
     return (
-        <OptionalPortal withinPortal={ctx.withinPortal}>
+        // portalProps 必须展开：Popover 侧已声明并塞进 context，此前到这里就断了，
+        // 用户传 target/className 等静默无效（ModalBase/FloatingWindow/Notifications 都有展开）
+        <OptionalPortal {...(ctx.portalProps || {})} withinPortal={ctx.withinPortal}>
             <Transition
                 mounted={ctx.opened}
                 transition={(ctx.transitionProps?.transition as any) ?? 'fade'}

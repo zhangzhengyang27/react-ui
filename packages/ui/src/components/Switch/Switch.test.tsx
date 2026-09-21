@@ -82,4 +82,14 @@ describe('Switch', () => {
         expect(plainBody.children).toHaveLength(1)
         expect(plainBody.parentElement?.hasAttribute('data-error')).toBe(false)
     })
+
+    // Input.tsx:265 早已在 error 时打 aria-invalid，这三个开关类控件此前漏了：
+    // 视觉上能看出错误，读屏软件却完全不知道
+    it('marks the input aria-invalid when error is set, and not otherwise', () => {
+        renderSwitch(<Switch label="同意" error="必选项" />)
+        expect(screen.getByRole('checkbox')).toHaveAttribute('aria-invalid', 'true')
+
+        renderSwitch(<Switch label="只有标签" />)
+        expect(screen.getByRole('checkbox', { name: '只有标签' })).not.toHaveAttribute('aria-invalid')
+    })
 })

@@ -167,7 +167,6 @@ export const Portal = factory<PortalFactory>((props, ref) => {
             return
         }
         syncPortalNodeAttrs(nodeRef.current, nodeAttrs)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [nodeAttrsKey, target, shouldReuseNode])
 
     if (!mounted || !nodeRef.current) {

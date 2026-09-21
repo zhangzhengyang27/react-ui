@@ -2,10 +2,14 @@
 /**
  * 校验工作区各包 exports 映射指向的文件真实存在，并禁止"只解析到类型、没有运行时"的通配符导出。
  *
- * 背景：@xiaoye-react/ui 曾导出 "./es/*": "./es/*"，而 es/ 下每个组件目录只有 .d.ts
+ * 背景：@xiaoye-react/ui 曾导出 "./es/*": "./es/*"，当时 es/ 下每个组件目录只有 .d.ts
  * （产物是单个 es/index.js），于是 `import x from '@xiaoye-react/ui/es/components/Button/Button'`
- * 能通过 TypeScript 解析、构建期不报错，直到运行时才 404。收紧成显式子路径后，
- * 由本脚本守住这条不变量，防止通配符再被加回来。
+ * 能通过 TypeScript 解析、构建期不报错，直到运行时才 404。
+ *
+ * 2026-09-21 起 ui 改为 preserveModules 输出，组件目录下运行时文件已经存在，
+ * 那条通配符对 ui 不再等于必坏——但它仍然把包的内部结构变成公开 API
+ * （改个文件位置就是 breaking change），所以照旧只允许显式子路径。
+ * 收紧后由本脚本守住这条不变量，防止通配符被随手加回来。
  *
  * 运行：node scripts/validate-package-exports.mjs [@xiaoye-react/ui ...]
  */
@@ -14,23 +18,25 @@ import path from 'node:path';
 import process from 'node:process';
 
 const REPO = path.resolve(import.meta.dirname, '..');
-const PACKAGES_GLOBS = ['packages', path.join('packages', '@xiaoye-react')];
 
 function listPackageDirs() {
-  const dirs = [];
-  for (const rel of PACKAGES_GLOBS) {
-    const base = path.join(REPO, rel);
-    if (!existsSync(base)) continue;
+  const dirs = new Set();
+  const scan = (base) => {
+    if (!existsSync(base)) return;
     for (const entry of readdirSync(base)) {
       const pkgDir = path.join(base, entry);
+      // @scope 目录本身没有 package.json，进去逐个收；不要再单独列一遍作用域，
+      // 否则同一批包会被扫两遍（此前打印"24 个包"实际只有 13 个）
       if (entry.startsWith('@') && statSync(pkgDir).isDirectory()) {
-        for (const nested of readdirSync(pkgDir)) dirs.push(path.join(pkgDir, nested));
+        for (const nested of readdirSync(pkgDir)) dirs.add(path.join(pkgDir, nested));
         continue;
       }
-      dirs.push(pkgDir);
+      dirs.add(pkgDir);
     }
-  }
-  return dirs.filter((d) => existsSync(path.join(d, 'package.json')));
+  };
+  scan(path.join(REPO, 'packages'));
+  scan(path.join(REPO, 'apps'));
+  return [...dirs].filter((d) => existsSync(path.join(d, 'package.json')));
 }
 
 /** 展开 exports 里的条件对象，收集所有字符串目标 */
@@ -42,8 +48,27 @@ function collectTargets(value, out = []) {
 
 function checkPackage(pkgDir) {
   const pkg = JSON.parse(readFileSync(path.join(pkgDir, 'package.json'), 'utf8'));
-  if (!pkg.exports) return [];
   const problems = [];
+
+  // main / module / types：只有 exports 时才让位给 exports，但字段本身不能指向空气
+  for (const field of ['main', 'module', 'types']) {
+    const target = pkg[field];
+    if (typeof target === 'string' && !target.includes('*') && !existsSync(path.resolve(pkgDir, target))) {
+      problems.push(`${pkg.name}: ${field} 指向不存在的 ${target}`);
+    }
+  }
+
+  // sideEffects:false 会豁免整包的副作用；带 CSS 导出的包必须显式放行 *.css
+  const cssExports = Object.values(pkg.exports ?? {}).some((s) =>
+    collectTargets(s).some((t) => t.endsWith('.css'))
+  );
+  if (cssExports && pkg.sideEffects === false) {
+    problems.push(
+      `${pkg.name}: 导出了 CSS 却声明 sideEffects:false——打包器可能连带跳过消费者的 \`import '${pkg.name}/...css'\`，应改为 ["*.css"]`
+    );
+  }
+
+  if (!pkg.exports) return problems;
 
   for (const [subpath, spec] of Object.entries(pkg.exports)) {
     for (const target of collectTargets(spec)) {

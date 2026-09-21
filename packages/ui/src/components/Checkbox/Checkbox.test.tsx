@@ -74,4 +74,12 @@ describe('Checkbox', () => {
         const input = screen.getByRole('checkbox', { hidden: true })
         expect(input).toHaveAttribute('data-indeterminate')
     })
+
+    it('marks the input aria-invalid when error is set, and not otherwise', () => {
+        renderWithProvider(<Checkbox label="同意条款" error="必选项" />)
+        expect(screen.getByRole('checkbox', { hidden: true })).toHaveAttribute('aria-invalid', 'true')
+
+        renderWithProvider(<Checkbox label="仅标签" />)
+        expect(screen.getByRole('checkbox', { hidden: true, name: '仅标签' })).not.toHaveAttribute('aria-invalid')
+    })
 })

@@ -7,8 +7,9 @@
  *  2. 样式副作用导入的子路径必须存在于目标包 package.json exports
  *     （ui 包是 style.css，子包是 styles.css——历史上曾大面积写错）
  *  3. <InstallScript packages="..."> 中的包必须是真实存在的工作区包
+ *  4. apps/docs/demos 与 components 里出现的 @xiaoye-react/* 包名必须真实存在——
+ *     特别是 demo 的 `const code = \`...\`` 展示字符串，它不参与编译，写错只在用户复制后才炸
  *
- * 只校验 md 代码块（demo 文件由构建流程编译，导入错误会在 build 时暴露）。
  * 发现违规时以非零码退出。
  */
 import fs from 'node:fs';
@@ -202,6 +203,51 @@ for (const file of listMd(path.join(DOCS_ROOT, 'docs'))) {
       if (pkg.startsWith('@xiaoye-react/') && !WORKSPACE_PACKAGES.includes(short)) {
         errors.push({ file: rel, message: `    InstallScript 引用了不存在的工作区包：${pkg}` });
       }
+    }
+  }
+}
+
+// ---------- demo 的 code 字符串：包名必须真实存在 ----------
+// 文件头那句"demo 由构建流程编译"对 `const code = \`...\`` 不成立：
+// 展示用的源码是模板字符串，tsc/vite 都不会看它，所以包名写错了只在用户复制后才炸。
+// 实测：Upload.demo.usage.tsx 的展示码一直写着 from '@xiaoye-react/dropzone'（该包早已并入 ui），
+// 而同一文件第 1 行的真实 import 是对的——两边本来就各写各的。
+function listFiles(dir, test) {
+  const out = [];
+  const walk = (d) => {
+    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+      const full = path.join(d, e.name);
+      if (e.isDirectory()) {
+        if (e.name === 'node_modules' || e.name === 'dist' || e.name.startsWith('.')) continue;
+        walk(full);
+      } else if (test(e.name)) out.push(full);
+    }
+  };
+  if (fs.existsSync(dir)) walk(dir);
+  return out;
+}
+
+const KNOWN_PACKAGES = new Set([...WORKSPACE_PACKAGES, 'ui', 'hooks']);
+
+for (const file of [
+  ...listFiles(path.join(DOCS_ROOT, 'demos'), (n) => /\.(tsx|ts)$/.test(n)),
+  ...listFiles(path.join(DOCS_ROOT, 'components'), (n) => /\.(tsx|md)$/.test(n)),
+  ...listFiles(path.join(DOCS_ROOT, 'docs'), (n) => n.endsWith('.md')),
+]) {
+  const rel = path.relative(DOCS_ROOT, file);
+  const src = fs.readFileSync(file, 'utf8');
+  for (const m of src.matchAll(/from\s+'@xiaoye-react\/([\w-]+)'/g)) {
+    if (!KNOWN_PACKAGES.has(m[1])) {
+      errors.push({
+        file: rel,
+        message: `    import 自不存在的包 '@xiaoye-react/${m[1]}'（工作区只有：${[...WORKSPACE_PACKAGES].join(', ')}）`
+      });
+    }
+  }
+  // 副作用导入（import '@xiaoye-react/x/style.css'）同样要认包
+  for (const m of src.matchAll(/import\s+'@xiaoye-react\/([\w-]+)\//g)) {
+    if (!KNOWN_PACKAGES.has(m[1])) {
+      errors.push({ file: rel, message: `    从不存在的工作区包 '@xiaoye-react/${m[1]}' 导入了样式文件` });
     }
   }
 }

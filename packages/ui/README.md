@@ -1,6 +1,6 @@
 # @xiaoye-react/ui
 
-> 小叶的 React 组件库，对标 Mantine 设计理念，提供完整的主题系统、表单、浮层、图表等 128+ 组件。
+> 小叶的 React 组件库，对标 Mantine 设计理念，提供完整的主题系统、表单、浮层等 128+ 组件。
 
 ## 简介
 
@@ -12,7 +12,13 @@
 - **工厂模式**：统一的组件工厂 `factory`，支持 `withProps`、`staticComponents`、`classes`、`varsResolver`
 - **类型安全**：TypeScript 5.5+，完整类型定义，props 继承 ElementProps 支持 HTML 原生属性
 - **RTL 支持**：通过 `DirectionProvider` 提供 RTL 文字方向支持
-- **图表集成**：内置 Area/Bar/Donut/Line/Sankey 等图表组件（基于 recharts）
+
+## 环境要求
+
+**React 19**。本包的 `peerDependencies` 为 `react: ^19.0.0`：源码里 6 处使用了 React 19 独有的
+`use()`（`FormProvider`、`ScheduleEvent`、`DatesProvider`、`CodeHighlightProvider`、`Modals`、
+`UIEmotionProvider`），在 React 18 下会运行时抛错，因此本包的 peer 已收窄为 ^19.0.0（正式发版时应伴随一次版本号提升，README 不预先写版本号）。
+`@xiaoye-react/hooks` 单独仍然兼容 React 18。
 
 ## 安装
 
@@ -69,7 +75,6 @@ function App() {
 | 数据展示 | Table、DataList、List、Tree、Timeline、Avatar、Badge、Chip、Card、Collapse |
 | 反馈 | Alert、Notification、Loader、Progress、Skeleton、LoadingOverlay |
 | 布局 | Box、Flex、Grid、Stack、Group、Container、SimpleGrid、AppShell |
-| 图表 | AreaChart、BarChart、DonutChart、LineChart、SankeyChart |
 | 交互 | ActionIcon、CopyButton、Chip、Burger、Affix、FloatingWindow |
 
 ## 技术栈

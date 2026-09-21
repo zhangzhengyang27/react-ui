@@ -1,12 +1,9 @@
 import dayjs from 'dayjs';
-import * as rruleAll from 'rrule';
-
-const RRule = (
-  'default' in rruleAll ? (rruleAll as any).default.RRule : rruleAll.RRule
-) as typeof rruleAll.RRule;
-const RRuleSet = (
-  'default' in rruleAll ? (rruleAll as any).default.RRuleSet : rruleAll.RRuleSet
-) as typeof rruleAll.RRuleSet;
+// 直接具名导入：rrule 在 ESM 与 CJS 下都真实导出 RRule/RRuleSet。
+// 这里原来是 `import * as rruleAll` + 运行时 `'default' in rruleAll` 兜底，
+// 依赖被内联进产物时没人追究；一旦外部化，webpack 会静态解析 rruleAll.default
+// 并报 "export 'default' (imported as 'f') was not found in 'rrule'"，文档站直接构建失败。
+import { RRule, RRuleSet } from 'rrule';
 import { DateTimeStringValue, ScheduleEventData, ScheduleRecurrenceData } from '../../types';
 import { validateEvent } from '../validate-event/validate-event';
 

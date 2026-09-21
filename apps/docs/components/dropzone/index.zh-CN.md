@@ -18,8 +18,6 @@ group:
 
 ```tsx
 import '@xiaoye-react/ui/style.css';
-// ‼️ dropzone 样式必须在核心包样式之后导入
-import '@xiaoye-react/dropzone/styles.css';
 ```
 
 ## 用法

@@ -8,9 +8,9 @@
     "author": "Vitaly Rtishchev <rtivital@gmail.com>",
     "keywords": [],
     "sideEffects": false,
-    "main": "./cjs/index.cjs",
-    "module": "./esm/index.mjs",
-    "types": "./lib/index.d.ts",
+    "main": "./src/index.ts",
+    "module": "./src/index.ts",
+    "types": "./src/index.ts",
     "exports": {
         ".": {
             "types": "./src/index.ts",

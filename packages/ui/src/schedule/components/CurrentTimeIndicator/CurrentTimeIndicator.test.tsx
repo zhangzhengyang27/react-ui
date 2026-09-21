@@ -1,7 +1,7 @@
 import 'dayjs/locale/ru';
 
 import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
+import utc from 'dayjs/plugin/utc.js';
 import { DatesProvider } from '../../../dates/components/DatesProvider/index';
 import { render, tests } from '@xiaoye-react/tests';
 import {

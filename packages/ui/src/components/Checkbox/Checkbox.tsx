@@ -247,6 +247,7 @@ export const Checkbox = factory<CheckboxFactory>((_props, ref) => {
                 disabled={resolvedDisabled}
                 checked={resolvedChecked}
                 aria-checked={indeterminate ? 'mixed' : resolvedChecked}
+                aria-invalid={hasError || undefined}
                 name={group?.name}
                 value={value}
                 onChange={handleChange}

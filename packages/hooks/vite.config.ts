@@ -23,7 +23,26 @@ export default defineConfig({
         outDir: 'es',
         minify: true,
         rollupOptions: {
-            external: ['react', 'react-dom', 'react/jsx-runtime']
+            external: ['react', 'react-dom', 'react/jsx-runtime'],
+            // 与 packages/ui 同理：压成单个 index.js 会让下游摇不动树，
+            // 只 import 一个 use-hotkeys 也要背上全部 87 个 hook。
+            output: [
+                {
+                    format: 'es',
+                    preserveModules: true,
+                    preserveModulesRoot: 'src',
+                    entryFileNames: '[name].js',
+                    chunkFileNames: '[name].js'
+                },
+                {
+                    format: 'cjs',
+                    preserveModules: true,
+                    preserveModulesRoot: 'src',
+                    entryFileNames: '[name].cjs',
+                    chunkFileNames: '[name].cjs',
+                    exports: 'named'
+                }
+            ]
         }
     }
 })

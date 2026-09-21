@@ -18,8 +18,6 @@ group:
 
 ```tsx
 import '@xiaoye-react/ui/style.css';
-// ‼️ spotlight 样式必须在核心包样式之后导入
-import '@xiaoye-react/spotlight/styles.css';
 ```
 
 ## 用法

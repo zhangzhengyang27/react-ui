@@ -2,7 +2,30 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import dts from 'vite-plugin-dts'
 import ts from 'typescript'
+import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
+
+const pkg = JSON.parse(readFileSync(new URL('package.json', import.meta.url), 'utf8'))
+
+// 运行时依赖与 peer 一律外部化：打进产物等于下游既按 dependencies 再装一遍、
+// 运行时又拿到第二份实例（dayjs 的 extend/locale、@emotion/cache 的插入点都是全局状态）。
+const externalPackages = [
+    ...Object.keys(pkg.dependencies ?? {}),
+    ...Object.keys(pkg.peerDependencies ?? {}),
+    'react',
+    'react-dom'
+]
+
+// rollup 的 external 数组只精确匹配 id，而源码里有 dayjs/plugin/utc 这类子路径，
+// 所以按包名段判定；相对路径与虚拟模块（\0 前缀）留给 rollup 自己处理。
+const isExternal = (id: string) => {
+    if (id.startsWith('.') || id.startsWith('/') || id.startsWith('\0')) {
+        return false
+    }
+    const segments = id.split('/')
+    const packageName = id.startsWith('@') ? `${segments[0]}/${segments[1]}` : segments[0]
+    return externalPackages.includes(packageName)
+}
 
 export default defineConfig({
     plugins: [
@@ -42,12 +65,30 @@ export default defineConfig({
             fileName: format => (format === 'es' ? 'index.js' : 'index.cjs')
         },
         outDir: 'es',
+        // minify 保持开启：实测它不影响摇树（Button 12,425 B gzip vs 关掉压缩的 12,423 B），
+        // 但关掉会让 Vite 的 CSS 压缩链停摆，style.css 丢掉 -webkit/-moz 前缀（实测 8 处 appearance）。
         minify: true,
         rollupOptions: {
-            external: [
-                'react',
-                'react-dom',
-                'react/jsx-runtime'
+            external: isExternal,
+            // 关键改动：不再把 1400 个模块压成单个 index.js。模块边界一旦消失，
+            // 下游打包器就摇不动树——实测 import { Button } 从 12 KB gzip 涨到 327 KB gzip，
+            // 且会把 rrule / react-dropzone 这些用不到的实现一起带进消费方产物。
+            output: [
+                {
+                    format: 'es',
+                    preserveModules: true,
+                    preserveModulesRoot: 'src',
+                    entryFileNames: '[name].js',
+                    chunkFileNames: '[name].js'
+                },
+                {
+                    format: 'cjs',
+                    preserveModules: true,
+                    preserveModulesRoot: 'src',
+                    entryFileNames: '[name].cjs',
+                    chunkFileNames: '[name].cjs',
+                    exports: 'named'
+                }
             ]
         }
     }

@@ -1,4 +1,8 @@
-import { colorsTuple } from '../../color-functions';
+// 直连实现文件而不是 color-functions 桶文件：桶里有 `export { getContrastColor } from './get-contrast-color'`，
+// 而 get-contrast-color 又 import 本文件 —— 走桶就构成 index → get-contrast-color → virtual-color → index 的环。
+// 全部代码打成一个 bundle 时环被 rollup 线性化掉，改成 preserveModules 后变成跨 chunk 循环依赖，
+// rollup 会直接警告 "likely lead to broken execution order"（本文件参与主题变量初始化，顺序敏感）。
+import { colorsTuple } from '../../color-functions/colors-tuple/colors-tuple';
 import { UIColor, UIColorsTuple } from '../../theme.types';
 
 interface VirtualColorInput {

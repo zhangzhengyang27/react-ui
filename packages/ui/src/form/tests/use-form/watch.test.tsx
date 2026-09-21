@@ -1,5 +1,6 @@
 import { act, render, renderHook, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { useCallback, useState } from 'react';
 import type { FormFieldSubscriber } from '../../types';
 import { useForm } from '../../use-form';
 
@@ -312,5 +313,30 @@ describe('@xiaoye-react/ui/watch', () => {
         value: 'tablet',
       })
     );
+  });
+
+  // 回归：watch 内部注册订阅的 effect 曾只依赖 callback。消费方越规范
+  // （用 useCallback 把 callback 稳定住），换 watched 字段时就越不会重新订阅，
+  // 于是订阅永远挂在旧字段上——新字段收不到通知，旧字段却还在通知。
+  // 上方那条 effect 压着 rules-of-hooks 豁免，exhaustive-deps 分析不到它，只能靠这条守住。
+  it('re-subscribes when the watched path changes and the callback identity is stable', () => {
+    const spy = jest.fn();
+
+    const view = renderHook(() => {
+      const [field, setField] = useState<'a' | 'b'>('a');
+      const form = useForm({ mode: 'uncontrolled', initialValues: { a: '', b: '' } });
+      const stableCallback = useCallback(spy, []);
+      form.watch(field, stableCallback);
+      return { form, setField };
+    });
+
+    act(() => view.result.current.setField('b'));
+
+    act(() => view.result.current.form.setValues({ a: '', b: 'changed' }));
+    expect(spy).toHaveBeenCalledWith(expect.objectContaining({ value: 'changed' }));
+
+    spy.mockClear();
+    act(() => view.result.current.form.setValues({ a: 'stale', b: 'changed' }));
+    expect(spy).not.toHaveBeenCalled();
   });
 });

@@ -182,6 +182,7 @@ export const Radio = factory<RadioFactory>((_props, ref) => {
                 type="radio"
                 disabled={resolvedDisabled}
                 checked={resolvedChecked}
+                aria-invalid={hasError || undefined}
                 name={group?.name}
                 value={value}
                 onChange={handleChange}

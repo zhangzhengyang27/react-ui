@@ -22,7 +22,7 @@ import { HiddenDatesInput } from '../HiddenDatesInput';
 import { isSameMonth } from '../Month';
 import { MonthLevelSettings } from '../MonthLevel';
 import { YearLevelSettings } from '../YearLevel';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
+import customParseFormat from 'dayjs/plugin/customParseFormat.js';
 import { dateStringParser } from './date-string-parser/date-string-parser';
 
 // 无此插件时 dayjs 会忽略 format 参数（按 ISO 宽容解析），手动输入依赖格式解析的链路全部失真

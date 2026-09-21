@@ -18,8 +18,6 @@ group:
 
 ```tsx
 import '@xiaoye-react/ui/style.css';
-// ‼️ nprogress 样式必须在核心包样式之后导入
-import '@xiaoye-react/nprogress/styles.css';
 ```
 
 ## 设置 NavigationProgress

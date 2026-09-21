@@ -210,6 +210,7 @@ export const Switch = factory<SwitchFactory>((_props, ref) => {
                 type="checkbox"
                 disabled={resolvedDisabled}
                 checked={resolvedChecked}
+                aria-invalid={hasError || undefined}
                 name={groupCtx?.name}
                 value={value}
                 onChange={handleChange}

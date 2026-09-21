@@ -38,7 +38,11 @@ export function useFormWatch<
       return () => {
         subscribers.current[path] = subscribers.current[path].filter((cb) => cb !== callback);
       };
-    }, [callback]);
+      // path 必须在依赖里：只写 callback 时，消费方一旦把 callback 用 useCallback 稳定住，
+      // 换 watched 字段就不会重新订阅——订阅永远挂在旧 path 上，新字段收不到通知、
+      // 旧字段却还在通知。这条 effect 上方压了 rules-of-hooks 豁免，
+      // exhaustive-deps 分析不到它，所以只能靠下面的回归测试守住。
+    }, [path, callback]);
   }, []);
 
   const getFieldSubscribers = useCallback((path: Field) => {

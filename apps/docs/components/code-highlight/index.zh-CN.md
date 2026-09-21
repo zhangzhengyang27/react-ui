@@ -17,8 +17,6 @@ group:
 
 ```tsx
 import '@xiaoye-react/ui/style.css';
-// ‼️ code-highlight 样式必须在核心包样式之后导入
-import '@xiaoye-react/code-highlight/styles.css';
 ```
 
 ## 示例

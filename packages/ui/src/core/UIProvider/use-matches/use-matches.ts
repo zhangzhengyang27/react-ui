@@ -1,5 +1,5 @@
 import { attachMediaListener, UseMediaQueryOptions } from '@xiaoye-react/hooks'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useUITheme } from '../UIThemeProvider'
 import { UIBreakpoint } from '../theme.types'
 
@@ -37,6 +37,15 @@ function getFirstMatchingBreakpoint(matches: (boolean | undefined)[]) {
     return -1
 }
 
+/** 同步读一次全部查询；Safari iframe 里 matchMedia 会抛，此时按"读不到"处理。 */
+function readMatches(queries: string[]): boolean[] {
+    try {
+        return queries.map(query => window.matchMedia(query).matches)
+    } catch {
+        return []
+    }
+}
+
 /**
  * 按当前视口取出 payload 里"生效的那个断点"的值。
  *
@@ -44,34 +53,47 @@ function getFirstMatchingBreakpoint(matches: (boolean | undefined)[]) {
  * 换一次断点个数不同的主题就是 "Rendered more hooks than during the previous render"。
  * 这里一条订阅覆盖全部查询，hooks 数量与断点个数无关。
  *
- * `options` 只为兼容既有签名：真值一律在 effect 里补，首帧全是 false ⇒ 回落 base
- * （逐条 useMediaQuery(query, false, options) 原本也是这个时序——第二参传了 boolean
- * 时 getInitialValueInEffect 不起作用）。
+ * `getInitialValueInEffect` 与 useMediaQuery 同义：默认 true ⇒ 首帧回落 base，真值在
+ * effect 里补；传 false ⇒ 首帧就同步读真值（不想看到 base 闪一帧的场景）。
  */
 export function useMatches<T>(payload: UseMatchesInput<T>, options?: UseMediaQueryOptions) {
     const theme = useUITheme()
     const breakpoints = Object.keys(theme.breakpoints) as UIBreakpoint[]
-    // 主题对象在 UIThemeProvider 内 memo 化，同一主题下这个指纹稳定
-    const signature = breakpoints.map(breakpoint => `(min-width: ${theme.breakpoints[breakpoint]})`).join(',')
-    const [matches, setMatches] = useState<boolean[]>(() => [])
+    // 主题对象在 UIThemeProvider 内 memo 化，同一主题下这个数组的内容与身份都稳定。
+    // 必须是数组而不能是拼好的字符串再 split 还原：断点在类型上就是任意 string，
+    // 写成 min(30em, 50vw) 这类含逗号的 CSS 函数时 split(',') 会把一条查询拆成两条。
+    const queries = useMemo(
+        () => breakpoints.map(breakpoint => `(min-width: ${theme.breakpoints[breakpoint]})`),
+        [theme]
+    )
+    const [matches, setMatches] = useState<boolean[]>(() =>
+        options?.getInitialValueInEffect === false && typeof window !== 'undefined'
+            ? readMatches(queries)
+            : []
+    )
 
     useEffect(() => {
-        // signature 本身就是查询列表（媒体特性里不会出现逗号），从它还原可以让依赖表是完备的
-        const activeQueries = signature.split(',')
         let lists: MediaQueryList[]
         try {
-            lists = activeQueries.map(query => window.matchMedia(query))
+            lists = queries.map(query => window.matchMedia(query))
         } catch {
             // Safari iframe 场景 matchMedia 会抛，与 useMediaQuery 一样保持 false（即回落 base）
             return
         }
 
-        const sync = () => setMatches(lists.map(list => list.matches))
+        // 值没变就不产生新数组，免得白刷一帧
+        const sync = () =>
+            setMatches(previous => {
+                const next = lists.map(list => list.matches)
+                return previous.length === next.length && previous.every((v, i) => v === next[i])
+                    ? previous
+                    : next
+            })
         sync()
 
         const detach = lists.map(list => attachMediaListener(list, sync))
         return () => detach.forEach(off => off())
-    }, [signature])
+    }, [queries])
 
     // 换主题的当帧 matches 可能还是上一副主题的长/短，取交集避免按下标越界
     const index = getFirstMatchingBreakpoint(matches.slice(0, breakpoints.length))

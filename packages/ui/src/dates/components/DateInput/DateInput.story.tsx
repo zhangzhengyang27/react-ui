@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 
 import 'dayjs/locale/ru';
 
-import customParseFormat from 'dayjs/plugin/customParseFormat';
+import customParseFormat from 'dayjs/plugin/customParseFormat.js';
 import { useState } from 'react';
 import { Button } from '../../../components/Button/index';
 import { Group } from '../../../components/Group/Group';

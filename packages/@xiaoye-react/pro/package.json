@@ -58,7 +58,7 @@
         "build": "vite build",
         "test": "vitest run",
         "test:watch": "vitest",
-        "release": "npm publish",
+        "release": "pnpm publish",
         "prepublishOnly": "npm run build"
     }
 }

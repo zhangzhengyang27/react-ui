@@ -49,4 +49,28 @@ describe('Popover', () => {
 
         expect(screen.queryByText('dropdown content')).not.toBeInTheDocument()
     })
+
+    // Popover 一路把 portalProps 传进了 context，但 PopoverDropdown 此前没有展开它，
+    // 用户写的 target/className 全部静默无效。OptionalPortal 在 env==='test' 时会短路掉
+    // Portal（连 withinPortal=false 也走不到 Portal），所以这里显式把 env 设回 'default'，
+    // 让挂载点真正成为可断言的对象。
+    it('forwards portalProps to the Portal that hosts the dropdown', () => {
+        const host = document.createElement('div')
+        host.id = 'popover-portal-host'
+        document.body.appendChild(host)
+
+        render(
+            <UIProvider env="default">
+                <Popover opened portalProps={{ target: '#popover-portal-host' }}>
+                    <Popover.Target>
+                        <Button>target</Button>
+                    </Popover.Target>
+                    <Popover.Dropdown>ported dropdown content</Popover.Dropdown>
+                </Popover>
+            </UIProvider>
+        )
+
+        expect(host).toHaveTextContent('ported dropdown content')
+        host.remove()
+    })
 })

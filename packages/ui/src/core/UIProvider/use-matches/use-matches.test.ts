@@ -44,7 +44,15 @@ function installMatchMedia(getWidth: () => number) {
 }
 
 function minOf(query: string) {
-    return Number(/min-width:\s*([\d.]+)em/.exec(query)?.[1] ?? Number.POSITIVE_INFINITY)
+    // 括号不配平 = 畸形查询。真实浏览器不会为它抛错，而是给出 matches:false，
+    // 这里照抄这个语义（否则测不出"一条查询被拆成两条"的那类 bug）
+    const open = (query.match(/\(/g) ?? []).length
+    const close = (query.match(/\)/g) ?? []).length
+    if (open !== close) {
+        return Number.POSITIVE_INFINITY
+    }
+    // 允许 min()/clamp() 这类嵌套函数：数字不必紧跟在 min-width: 后面
+    return Number(/min-width:[\s\S]*?([\d.]+)em/.exec(query)?.[1] ?? Number.POSITIVE_INFINITY)
 }
 
 /**
@@ -126,5 +134,31 @@ describe('useMatches', () => {
         expect(media.listenerCount()).toBeGreaterThan(0)
         unmount()
         expect(media.listenerCount()).toBe(0)
+    })
+
+    it('getInitialValueInEffect: false 时首帧就取到生效断点，不闪 base', () => {
+        width = 65
+
+        const { result } = renderHook(
+            () => useMatches({ base: 'compact', md: 'roomy' }, { getInitialValueInEffect: false }),
+            { wrapper: ThemeWrapper }
+        )
+
+        expect(result.current).toBe('roomy')
+    })
+
+    // 回归：实现曾把全部查询拼成一个字符串再 split(',') 还原，
+    // 而断点在类型上就是任意 string——写成 min()/clamp() 这类含逗号的值时
+    // 一条查询被拆成两条，畸形查询在浏览器里恒 false，于是永远回落 base。
+    it('断点值是含逗号的 CSS 函数时不被拆坏', () => {
+        themeOverride = { breakpoints: { md: 'min(39.375em, 100%)' } }
+        width = 65
+
+        const { result } = renderHook(
+            () => useMatches({ base: 'a', md: 'b' }, { getInitialValueInEffect: false }),
+            { wrapper: ThemeWrapper }
+        )
+
+        expect(result.current).toBe('b')
     })
 })

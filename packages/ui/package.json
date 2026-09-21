@@ -18,7 +18,9 @@
         "typescript",
         "hooks"
     ],
-    "sideEffects": false,
+    "sideEffects": [
+        "*.css"
+    ],
     "main": "es/index.cjs",
     "module": "es/index.js",
     "types": "es/index.d.ts",
@@ -30,12 +32,14 @@
     ],
     "scripts": {
         "dev": "vite build --watch",
-        "build": "vite build",
+        "build": "vite build && npm run check:published-types",
         "check:published-types": "tsc --noEmit --skipLibCheck false --module esnext --moduleResolution bundler --target ES2020 --jsx react-jsx es/index.d.ts",
         "test": "vitest run",
         "test:watch": "vitest",
-        "release": "npm publish",
-        "prepublishOnly": "npm run build && npm run check:published-types && node ../../scripts/validate-package-exports.mjs @xiaoye-react/ui"
+        "release": "pnpm publish",
+        "prepublishOnly": "npm run build && node ../../scripts/validate-package-exports.mjs @xiaoye-react/ui",
+        "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
+        "prebuild": "pnpm --filter @xiaoye-react/hooks build"
     },
     "dependencies": {
         "@floating-ui/react": "^0.27.19",
@@ -72,12 +76,16 @@
         "vite": "^5.4.0",
         "vite-plugin-dts": "^4.3.0",
         "vitest": "^1.6.0",
-        "@xiaoye-react/tests": "workspace:*"
+        "@xiaoye-react/tests": "workspace:*",
+        "@phosphor-icons/react": "^2.1.10",
+        "@testing-library/user-event": "^14.6.1",
+        "lodash": "^4.17.21",
+        "zod": "^4.4.3"
     },
     "peerDependencies": {
         "@xiaoye-react/hooks": "^1.0.0",
-        "react": "^18.0.0 || ^19.0.0",
-        "react-dom": "^18.0.0 || ^19.0.0"
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0"
     },
     "exports": {
         ".": {

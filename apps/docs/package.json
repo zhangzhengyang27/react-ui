@@ -89,6 +89,14 @@
         "dumi-plugin-color-chunk": "^2.1.0",
         "ts-morph": "^25.0.1",
         "tsx": "^4.19.4",
-        "typescript": "^5.5.2"
+        "typescript": "^5.5.2",
+        "@xiaoye-react/carousel": "workspace:*",
+        "@xiaoye-react/demo": "workspace:*",
+        "@xiaoye-react/logo": "workspace:*",
+        "embla-carousel": "^8.6.0",
+        "html2sketch": "^1.0.2",
+        "glob": "^7.2.3",
+        "jsdom": "^24.1.3",
+        "semver": "^7.7.2"
     }
 }

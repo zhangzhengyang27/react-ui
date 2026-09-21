@@ -64,4 +64,12 @@ describe('Radio', () => {
         expect(screen.getByText('More info')).toBeInTheDocument()
         expect(screen.getByText('Required')).toBeInTheDocument()
     })
+
+    it('marks the input aria-invalid when error is set, and not otherwise', () => {
+        renderWithProvider(<Radio label="选项 A" error="必选项" />)
+        expect(screen.getByRole('radio', { hidden: true })).toHaveAttribute('aria-invalid', 'true')
+
+        renderWithProvider(<Radio label="选项 B" />)
+        expect(screen.getByRole('radio', { hidden: true, name: '选项 B' })).not.toHaveAttribute('aria-invalid')
+    })
 })

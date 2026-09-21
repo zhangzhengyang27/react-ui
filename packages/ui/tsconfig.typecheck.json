@@ -1,0 +1,18 @@
+{
+    // 类型门禁专用配置，只给 `pnpm typecheck:ui` 用；构建（vite-plugin-dts）仍走 ./tsconfig.json。
+    //
+    // 这里把 @xiaoye-react/hooks 映射到源码，改 hooks 的公开面就不需要先重建 hooks/es。
+    //
+    // 陷阱：不要把 paths 加回 tsconfig.json —— 那会把 ../hooks/src 纳进类型程序，
+    // TS 推断的 rootDir 随之抬到 packages/，vite-plugin-dts 就把全部 1013 个 .d.ts
+    // 发射到 es/ui/src/ 下、es/index.d.ts 直接消失（2026-09-21 实测踩过），发布产物的类型全废。
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "noEmit": true,
+        "baseUrl": ".",
+        "paths": {
+            "@xiaoye-react/hooks": ["../hooks/src/index.ts"],
+            "@xiaoye-react/hooks/*": ["../hooks/src/*"]
+        }
+    }
+}

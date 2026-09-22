@@ -137,7 +137,7 @@ export const CodeHighlightTabs = factory<CodeHighlightTabsFactory>((_props) => {
     if (code.length > 0 && value >= code.length) {
       setValue(code.length - 1);
     }
-  }, [value, code]);
+  }, [value, code, setValue]);
 
   if (code.length <= 0) {
     return null;

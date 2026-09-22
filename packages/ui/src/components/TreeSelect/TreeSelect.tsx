@@ -320,7 +320,7 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
         (nodeValue: string) => {
             setExpandedState({ ..._expandedState, [nodeValue]: !_expandedState[nodeValue] })
         },
-        [_expandedState]
+        [_expandedState, setExpandedState]
     )
 
     const initialSearchValue = useMemo(() => {
@@ -580,7 +580,7 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
         }
         // 依赖 getNodeLabel（经 nodeLookup 依赖 data）：data 变化但 value 不变时重新同步 label，避免过期。
         // 不列入 setSearchValue：useUncontrolled 的 setter 每次渲染重建，列入会导致每渲染都执行同步
-    }, [value, mode, searchable, getNodeLabel])
+    }, [value, mode, searchable, getNodeLabel, setSearchValue])
 
     const prevDropdownOpenedRef = useRef(false)
     useEffect(() => {
@@ -606,7 +606,7 @@ export const TreeSelect = factory<TreeSelectFactory>((_props: TreeSelectBaseProp
         }
         prevDropdownOpenedRef.current = _opened
         // 不列入 setExpandedState：useUncontrolled 的 setter 每次渲染重建，上升沿守卫已保证只在打开瞬间执行
-    }, [_opened, _value, _expandedState, data])
+    }, [_opened, _value, _expandedState, data, setExpandedState])
 
     const clearButton = (
         <InputClearButton

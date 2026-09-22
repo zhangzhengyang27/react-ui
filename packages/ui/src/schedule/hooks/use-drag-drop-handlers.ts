@@ -116,7 +116,7 @@ export function useDragDropHandlers<T = any>(
     dragState.endDrag();
     setDropTargetState(null);
     stableOnEventDragEnd();
-  }, [dragState]);
+  }, [dragState, stableOnEventDragEnd]);
 
   const handleDragStart = useCallback(
     (event: ScheduleEventData) => {
@@ -126,7 +126,7 @@ export function useDragDropHandlers<T = any>(
       dragState.startDrag(event);
       stableOnEventDragStart(event);
     },
-    [enabled, mode, dragState]
+    [enabled, mode, dragState, stableOnEventDragStart]
   );
 
   const handleDragOver = useCallback(

@@ -201,7 +201,7 @@ export const DateInput = factory<DateInputFactory>((_props) => {
     if (controlled && value !== null) {
       setDate(value);
     }
-  }, [controlled, value]);
+  }, [controlled, value, setDate]);
 
   const [inputValue, setInputValue] = useState(formatValue(_value));
 

@@ -50,7 +50,7 @@ export function useHotkeys(
         }
         document.documentElement.addEventListener('keydown', handleKeydown)
         return () => document.documentElement.removeEventListener('keydown', handleKeydown)
-    }, [])
+    }, [handleKeydown])
 }
 
 export namespace useHotkeys {

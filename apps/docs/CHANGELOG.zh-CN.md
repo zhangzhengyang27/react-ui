@@ -28,6 +28,9 @@ tag: vVERSION
 - 💄 `AppShell` 的 `fixed` 布局改用 `react-remove-scroll` 锁滚动：不再覆写消费者自己的 `body` inline overflow，并有滚动条宽度补偿。
 - 🩹 `Text` 的 `truncate="start"` 在 RTL 文档下会截错一端，补上反向分支。
 - 🔧 发布链路修复：`release` 改用 `pnpm publish`（`npm publish` 不重写 `workspace:` 协议）；根 `pnpm-lock.yaml` 纳入版本控制；`release:tag` 不再写死 `v2.0.0`；9 个私有包的 `main/module/types` 从不存在的 `./cjs|./esm|./lib` 改回源码。
+- 🔧 修复发布产物丢失 `'use client'` 指令：rollup 不保留入口模块的指令序言，源码 `src/index.ts` 顶部那条在打包后被静默丢掉，而 `guides/next.zh-CN.md` 向 Next.js 用户承诺过入口顶部有这条指令。现在 ESM 产物统一由 `output.banner` 补回（`preserveModules` 下每个模块文件都会带上）；CJS 输出不加，否则会把开头的 `'use strict'` 挤掉、静默削弱严格模式。
+- 🐞 修复 `useLocalStorage` / `useSessionStorage` 用动态 `key` 时的问题：切换 key 后不再回读新 key 的存储值，界面一直显示旧 key 的值。
+- 🐞 修复 `Carousel` 的 `onPreviousSlide` / `onNextSlide` 被固化在首帧闭包里：消费者传内联回调时，它捕获的 state 永远是第一次渲染时的值（`onSlideChange` 早已走 ref，这两个漏了）。
 - 🧹 退役未上线的 `@xiaoye-react/demo` 包：文档站的类型检查此前一直对着这份不上线的副本，改指真身后立刻暴露并修复了 DemoEngine 里 4 个从未被检查到的类型错误。
 
 ---

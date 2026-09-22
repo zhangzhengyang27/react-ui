@@ -145,7 +145,7 @@ export function useListState<T>(initialValue: T[] | (() => T[]) = []): UseListSt
             setItemProp,
             filter
         }),
-        []
+        [setState, append, prepend, insert, pop, shift, apply, applyWhere, remove, reorder, swap, setItem, setItemProp, filter]
     )
 
     return [state, handlers]

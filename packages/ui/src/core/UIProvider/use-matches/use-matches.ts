@@ -58,13 +58,17 @@ function readMatches(queries: string[]): boolean[] {
  */
 export function useMatches<T>(payload: UseMatchesInput<T>, options?: UseMediaQueryOptions) {
     const theme = useUITheme()
-    const breakpoints = Object.keys(theme.breakpoints) as UIBreakpoint[]
-    // 主题对象在 UIThemeProvider 内 memo 化，同一主题下这个数组的内容与身份都稳定。
+    // 断点名与媒体查询都必须 memo 在 theme 上：Object.keys 每帧产生新数组，
+    // 直接放依赖里等于每帧重订阅 matchMedia。
     // 必须是数组而不能是拼好的字符串再 split 还原：断点在类型上就是任意 string，
     // 写成 min(30em, 50vw) 这类含逗号的 CSS 函数时 split(',') 会把一条查询拆成两条。
+    const breakpoints = useMemo(
+        () => Object.keys(theme.breakpoints) as UIBreakpoint[],
+        [theme]
+    )
     const queries = useMemo(
         () => breakpoints.map(breakpoint => `(min-width: ${theme.breakpoints[breakpoint]})`),
-        [theme]
+        [theme, breakpoints]
     )
     const [matches, setMatches] = useState<boolean[]>(() =>
         options?.getInitialValueInEffect === false && typeof window !== 'undefined'

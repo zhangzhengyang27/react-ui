@@ -65,7 +65,7 @@ function Demo() {
       embla.on('scroll', handleScroll);
       handleScroll();
     }
-  }, [embla]);
+  }, [embla, handleScroll]);
 
   return (
     <>

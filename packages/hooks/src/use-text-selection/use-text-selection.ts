@@ -15,7 +15,7 @@ export function useTextSelection(): Selection | null {
         setSelection(document.getSelection())
         document.addEventListener('selectionchange', handleSelectionChange)
         return () => document.removeEventListener('selectionchange', handleSelectionChange)
-    }, [])
+    }, [handleSelectionChange])
 
     return selection
 }

@@ -1059,7 +1059,7 @@ export function useSplitter<T extends HTMLElement = any>(
       handleRefCallbacks.current.set(handleIndex, callback);
       return callback;
     },
-    [setCurrentSizes]
+    [setCurrentSizes, emitCollapseTransitions]
   );
 
   const getHandleProps = useCallback(

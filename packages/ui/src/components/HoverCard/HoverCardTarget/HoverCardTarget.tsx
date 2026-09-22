@@ -35,7 +35,10 @@ export const HoverCardTarget = factory<HoverCardTargetFactory>((props, ref) => {
         if (nextId !== ctx.getTargetId()) {
             ctx.setTargetId(nextId)
         }
-    }, [childProps.id])
+    // ctx 是每渲染新建的 context 对象，只能进它里面的稳定标量：uid 变化时也要重新同步
+    // （setTargetId/getTargetId 的引用变化不代表语义变化，进依赖会让本 effect 每渲染跑一次）
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [childProps.id, ctx.uid])
 
     // throw 必须在全部 hooks 之后：children 由有效变无效时，hooks 数量不能随条件变化（Rules of Hooks）
     if (!child) {

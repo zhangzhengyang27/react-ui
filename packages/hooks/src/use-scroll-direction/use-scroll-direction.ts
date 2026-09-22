@@ -36,7 +36,7 @@ export function useScrollDirection(): ScrollDirection {
             window.removeEventListener('resize', handleResize)
             clearTimeout(resizeTimerRef.current)
         }
-    }, [])
+    }, [handleScroll])
 
     return scrollDirection
 }

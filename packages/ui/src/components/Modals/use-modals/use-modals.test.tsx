@@ -45,6 +45,8 @@ describe('@xiaoye-react/ui/use-modals', () => {
           innerProps: { text: testContent },
           transitionProps: { duration: 0 },
         });
+      // 仅挂载时开一次弹窗：modals 是 context 值，进依赖会随父渲染重复开弹窗
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
 
       return <div>Empty</div>;
@@ -68,6 +70,8 @@ describe('@xiaoye-react/ui/use-modals', () => {
 
       useEffect(() => {
         modals.openConfirmModal({ transitionProps: { duration: 0 } });
+      // 仅挂载时开一次弹窗：modals 是 context 值，进依赖会随父渲染重复开弹窗
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
 
       return <div>Empty</div>;
@@ -95,6 +99,8 @@ describe('@xiaoye-react/ui/use-modals', () => {
           labels: { confirm: 'Confirm', cancel: 'Cancel' },
           transitionProps: { duration: 0 },
         });
+      // 仅挂载时开一次弹窗：modals 是 context 值，进依赖会随父渲染重复开弹窗
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
 
       return <div>Empty</div>;
@@ -123,6 +129,8 @@ describe('@xiaoye-react/ui/use-modals', () => {
           },
           transitionProps: { duration: 0 },
         });
+      // 仅挂载时开一次弹窗：modals 是 context 值，进依赖会随父渲染重复开弹窗
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
 
       return <div>Empty</div>;
@@ -157,6 +165,8 @@ describe('@xiaoye-react/ui/use-modals', () => {
           children: <div>Second content</div>,
           transitionProps: { duration: 0 },
         });
+      // 仅挂载时开一次弹窗：modals 是 context 值，进依赖会随父渲染重复开弹窗
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
 
       return <div>Empty</div>;
@@ -185,6 +195,8 @@ describe('@xiaoye-react/ui/use-modals', () => {
           children: <h1>Children</h1>,
           transitionProps: { duration: 0 },
         });
+      // 仅挂载时开一次弹窗：modals 是 context 值，进依赖会随父渲染重复开弹窗
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
 
       return <div>Empty</div>;

@@ -128,4 +128,28 @@ describe('NumberInput', () => {
 
         expect(screen.getByRole('spinbutton')).toHaveValue('10')
     })
+
+    it('keeps an unparsable intermediate while typing in controlled mode', () => {
+        // 受控模式下父组件不会回写 value：若 localText 进了那个 useEffect 的依赖，
+        // 这里 '-' 会在下一次渲染被 valueProp 弹回 '4'，用户将无法键入负号
+        const onChange = vi.fn()
+        const { rerender } = render(
+            <Wrapper>
+                <NumberInput value={4} onChange={onChange} />
+            </Wrapper>
+        )
+
+        const input = screen.getByRole('spinbutton')
+        fireEvent.change(input, { target: { value: '-' } })
+
+        expect(input).toHaveValue('-')
+
+        rerender(
+            <Wrapper>
+                <NumberInput value={4} onChange={onChange} />
+            </Wrapper>
+        )
+
+        expect(input).toHaveValue('-')
+    })
 })

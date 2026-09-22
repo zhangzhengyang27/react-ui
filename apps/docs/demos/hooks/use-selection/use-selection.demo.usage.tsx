@@ -87,7 +87,7 @@ const elements = [
 ];
 
 function Demo() {
-  const positions = useMemo(() => elements.map((element) => element.position), [elements]);
+  const positions = useMemo(() => elements.map((element) => element.position), []);
 
   const [selection, handlers] = useSelection({
     data: positions,

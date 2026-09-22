@@ -13,7 +13,7 @@
     "test": "pnpm -r test",
     "test:packages": "pnpm --filter './packages/**' test",
     "release": "pnpm build:packages && pnpm --filter './packages/**' release",
-    "lint:es": "NODE_OPTIONS=--max-old-space-size=8192 eslint \"{packages,apps}/**/*.{js,jsx,ts,tsx}\" --max-warnings=130",
+    "lint:es": "NODE_OPTIONS=--max-old-space-size=8192 eslint \"{packages,apps}/**/*.{js,jsx,ts,tsx}\" --max-warnings=78",
     "lint:style": "stylelint \"{packages,apps}/**/*.{css,ts}\"",
     "docs:lint": "node apps/docs/scripts/lint-docs-imports.mjs && node apps/docs/scripts/lint-demo-controls.mjs && node apps/docs/scripts/lint-docs-api-tables.mjs",
     "typecheck:demos": "tsc -p apps/docs/tsconfig.demos.json",

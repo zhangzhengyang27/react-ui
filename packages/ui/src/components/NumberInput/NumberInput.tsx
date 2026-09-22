@@ -242,10 +242,13 @@ export const NumberInput = factory<NumberInputFactory>((_props, ref) => {
     const [localText, setLocalText] = useState(() => parseRawValue(defaultValue ?? valueProp))
 
     // value prop 外部变化且与本地解析值不同时，同步本地文本（本地输入导致的 onChange 不回写）
+    // localText 故意不进依赖：它一进去，用户敲下的中间态（"-"、"1."、空串）就会在下一帧
+    // 被 valueProp 弹回，受控模式下将无法清空或键入负号
     useEffect(() => {
         if (isControlled && parseValue(localText) !== parseValue(parseRawValue(valueProp))) {
             setLocalText(parseRawValue(valueProp))
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isControlled, valueProp])
 
     const rawValue = localText

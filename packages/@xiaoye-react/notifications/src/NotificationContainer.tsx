@@ -79,7 +79,9 @@ export function NotificationContainer({
     cancelScrollDismissReset();
   };
 
-  const handleAutoClose = () => {
+  // useEffectEvent：身份稳定，可以进依赖表，同时回调体始终读到最新的
+  // dismissed/active/paused/autoCloseDuration，不必担心闭包过期
+  const handleAutoClose = useEffectEvent(() => {
     // 先取消已有 timer：挂载时 autoClose effect 与 paused effect 都会调度一次，
     // 不先取消会留下一个 autoCloseTimeout 引用不到的幽灵 timer，
     // hover 暂停/手动取消只能清掉最后一个，幽灵 timer 到期仍会关闭通知
@@ -96,7 +98,7 @@ export function NotificationContainer({
     }
 
     autoCloseTimeout.current = window.setTimeout(handleHide, autoCloseDuration);
-  };
+  });
 
   const getExitOffset = (direction: -1 | 1) => {
     const width = notificationRef.current?.offsetWidth ?? 440;
@@ -276,7 +278,7 @@ export function NotificationContainer({
 
     document.addEventListener('wheel', handleWheel, { passive: false });
     return () => document.removeEventListener('wheel', handleWheel, { passive: false } as any);
-  }, [scrollDismissActive]);
+  }, [scrollDismissActive, handleWheel]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -297,7 +299,7 @@ export function NotificationContainer({
 
     node.addEventListener('wheel', handleWheel, { passive: false });
     return () => node.removeEventListener('wheel', handleWheel, { passive: false } as any);
-  }, []);
+  }, [handleWheel]);
 
   useEffect(() => {
     return () => {
@@ -306,14 +308,20 @@ export function NotificationContainer({
     };
   }, []);
 
-  useEffect(() => {
+  // data/onOpen 每渲染都是新对象，经 useEffectEvent 转发后 effect 只依赖稳定的
+  // notifyOpen，仍是挂载时触发一次
+  const notifyOpen = useEffectEvent(() => {
     data.onOpen?.(data);
-  }, []);
+  });
+
+  useEffect(() => {
+    notifyOpen();
+  }, [notifyOpen]);
 
   useEffect(() => {
     handleAutoClose();
     return cancelAutoClose;
-  }, [autoCloseDuration, active, dismissed]);
+  }, [autoCloseDuration, active, dismissed, handleAutoClose]);
 
   useEffect(() => {
     if (paused) {
@@ -323,7 +331,7 @@ export function NotificationContainer({
     }
 
     return cancelAutoClose;
-  }, [paused]);
+  }, [paused, handleAutoClose]);
 
   return (
     <Notification

@@ -77,7 +77,7 @@ export function useFormStatus<Values extends Record<string, any>>({
     []
   );
 
-  const resetTouched: ResetStatus = useCallback(() => setTouched({}), []);
+  const resetTouched: ResetStatus = useCallback(() => setTouched({}), [setTouched]);
 
   const resetDirty: ResetDirty<Values> = useCallback((values) => {
     const newSnapshot = values
@@ -95,7 +95,7 @@ export function useFormStatus<Values extends Record<string, any>>({
 
       return { ...currentTouched, [path]: touched };
     });
-  }, []);
+  }, [setTouched]);
 
   const setFieldDirty: SetFieldDirty<Values> = useCallback((path, dirty, forceUpdate) => {
     setDirty((currentDirty) => {
@@ -105,7 +105,7 @@ export function useFormStatus<Values extends Record<string, any>>({
 
       return { ...currentDirty, [path]: dirty };
     }, forceUpdate);
-  }, []);
+  }, [setDirty]);
 
   const setCalculatedFieldDirty: SetCalculatedFieldDirty<Values> = useCallback((path, value) => {
     const currentDirty = getStatus(dirtyRef.current, path);
@@ -138,7 +138,7 @@ export function useFormStatus<Values extends Record<string, any>>({
 
         return result;
       }),
-    []
+    [setDirty]
   );
 
   const isDirty: GetFieldStatus<Values> = useCallback(

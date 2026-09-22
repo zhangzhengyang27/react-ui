@@ -7,5 +7,5 @@ export function usePageLeave(onPageLeave: () => void) {
   useEffect(() => {
     document.documentElement.addEventListener('mouseleave', onPageLeaveEvent);
     return () => document.documentElement.removeEventListener('mouseleave', onPageLeaveEvent);
-  }, []);
+  }, [onPageLeaveEvent]);
 }

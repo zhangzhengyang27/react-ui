@@ -18,7 +18,7 @@ export function useViewportSize(): UseViewportSizeReturnValue {
 
     useWindowEvent('resize', setSize, { passive: true })
     useWindowEvent('orientationchange', setSize, { passive: true })
-    useEffect(setSize, [])
+    useEffect(setSize, [setSize])
 
     return windowSize
 }

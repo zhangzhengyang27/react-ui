@@ -292,7 +292,7 @@ export function useField<
     return payload;
   };
 
-  const resetTouched = useCallback(() => setTouched(false), []);
+  const resetTouched = useCallback(() => setTouched(false), [setTouched]);
 
   return {
     key,

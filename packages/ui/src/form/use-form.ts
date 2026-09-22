@@ -424,7 +424,7 @@ export function useForm<
   const onReset: OnReset = useCallback((event) => {
     event.preventDefault();
     reset();
-  }, []);
+  }, [reset]);
 
   const isValid = useCallback(
     (path?: string) => {

@@ -250,7 +250,7 @@ export function useHorizontalEventResize({
       document.removeEventListener('pointerup', handlePointerUp);
       document.removeEventListener('pointercancel', handlePointerCancel);
     };
-  }, [isResizing]);
+  }, [isResizing, stableOnEventResize]);
 
   const getResizePosition = useCallback(
     (eventId: string | number) => {

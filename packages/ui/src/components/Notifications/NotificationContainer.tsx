@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { useEffectEvent } from '@xiaoye-react/hooks'
 import cx from 'clsx'
 import { Notification } from '../Notification'
 import { getAutoClose } from './get-auto-close/get-auto-close'
@@ -61,29 +62,35 @@ export function NotificationContainer({
         }
     }
 
-    const handleAutoClose = () => {
+    // useEffectEvent：身份稳定可进依赖表，回调体又始终读到最新的 paused/autoCloseDuration
+    const handleAutoClose = useEffectEvent(() => {
         // 悬停中不启动自动关闭,避免 effect 因 autoCloseDuration/paused 变化在悬停期间重跑时误启动定时器
         if (paused || isHoveredRef.current || typeof autoCloseDuration !== 'number') {
             return
         }
         autoCloseTimeout.current = window.setTimeout(handleHide, autoCloseDuration)
-    }
+    })
 
     // onOpen 通常是埋点/上报类副作用：用 ref 守卫保证只触发一次
     //（React 18/19 开发环境 StrictMode 会双调用 effect）
     const onOpenCalledRef = useRef(false)
+    // data/onOpen 每渲染都是新对象，经 useEffectEvent 转发后依赖表里只剩稳定的 notifyOpen
+    const notifyOpen = useEffectEvent(() => {
+        onOpen?.(data)
+    })
+
     useEffect(() => {
         if (onOpenCalledRef.current) {
             return
         }
         onOpenCalledRef.current = true
-        onOpen?.(data)
-    }, [])
+        notifyOpen()
+    }, [notifyOpen])
 
     useEffect(() => {
         handleAutoClose()
         return cancelAutoClose
-    }, [autoCloseDuration, paused])
+    }, [autoCloseDuration, paused, handleAutoClose])
 
     // 卸载时若仍处于 hover 状态,补发 onHoverEnd,避免 hoveredCount 泄漏导致 autoClose 永久暂停
     useEffect(() => {

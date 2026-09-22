@@ -84,5 +84,5 @@ export function useAutoScrollOnDrag({ viewportRef, enabled }: UseAutoScrollOnDra
       viewport.removeEventListener('dragend', handleDragEnd);
       viewport.removeEventListener('drop', handleDragEnd);
     };
-  }, [enabled, viewportRef]);
+  }, [enabled, viewportRef, startScroll, stopScroll]);
 }

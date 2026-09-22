@@ -101,7 +101,7 @@ export function useSlotDragSelect({ enabled = true, onDragEnd }: UseSlotDragSele
       document.removeEventListener('pointerup', handlePointerUp);
       document.removeEventListener('pointercancel', handlePointerCancel);
     };
-  }, [isDragging]);
+  }, [isDragging, stableOnDragEnd]);
 
   const isSlotSelected = useCallback(
     (index: number, group: string): boolean => {

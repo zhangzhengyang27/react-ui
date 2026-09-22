@@ -41,6 +41,7 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
     // O(1) 查 Set：逐选项 includes 会把 n 个选项的渲染变成 O(n×m)
     const selected = ctx.selectedValuesSet.has(value)
     // 提取稳定标量作为注册依赖，避免依赖每次渲染新建的 children JSX 导致搜索时全量 unregister+register
+    // ctx 同理：它是每次渲染新建的 context 对象，进依赖会让每个选项在每次父渲染都反注册再注册
     const label = typeof children === 'string' ? children : value
 
     useEffect(() => {
@@ -48,6 +49,7 @@ export const ComboboxOption = factory<ComboboxOptionFactory>((_props, ref) => {
         return () => {
             ctx.unregisterOption(instanceId)
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [instanceId, label, disabled, value])
 
     return (

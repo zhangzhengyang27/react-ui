@@ -24,7 +24,7 @@ export function useFormErrors<Values extends Record<string, any>>(
     setErrorsState(newErrors);
   }, []);
 
-  const clearErrors: ClearErrors = useCallback(() => setErrors({}), []);
+  const clearErrors: ClearErrors = useCallback(() => setErrors({}), [setErrors]);
 
   const clearFieldError: ClearFieldError = useCallback(
     (path) => {

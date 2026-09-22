@@ -40,14 +40,14 @@ export function useFocusWithin<T extends HTMLElement = any>({
             _setFocused(true)
             onFocusRef(event)
         }
-    }, [])
+    }, [_setFocused, onFocusRef])
 
     const handleFocusOut = useCallback((event: FocusEvent) => {
         if (focusedRef.current && !containsRelatedTarget(event)) {
             _setFocused(false)
             onBlurRef(event)
         }
-    }, [])
+    }, [_setFocused, onBlurRef])
 
     const callbackRef: React.RefCallback<T | null> = useCallback(
         (node) => {

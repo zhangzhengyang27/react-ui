@@ -60,7 +60,7 @@ export function useNetwork(): UserNetworkReturnValue {
     }
 
     return undefined;
-  }, []);
+  }, [handleConnectionChange]);
 
   return status;
 }

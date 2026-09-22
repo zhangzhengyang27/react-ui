@@ -127,7 +127,7 @@ export function useFullscreenElement<T extends HTMLElement = any>(): UseFullscre
                 prevNodeRef.current = null
             }
         }
-    }, [])
+    }, [handleFullscreenChange, handleFullscreenError])
 
     return { ref: refCallback, toggle, fullscreen }
 }
@@ -161,7 +161,7 @@ export function useFullscreenDocument(): UseFullscreenDocumentReturnValue {
             onFullScreen: handleFullscreenChange,
             onError: handleFullscreenError
         })
-    }, [])
+    }, [handleFullscreenChange, handleFullscreenError])
 
     return { toggle, fullscreen }
 }

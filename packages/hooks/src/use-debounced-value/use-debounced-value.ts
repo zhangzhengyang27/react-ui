@@ -56,7 +56,7 @@ export function useDebouncedValue<T = any>(
             cooldownRef.current = false
             setValue(latestValueRef.current)
         }
-    }, [])
+    }, [cancel])
 
     useEffect(() => {
         if (mountedRef.current) {
@@ -80,7 +80,7 @@ export function useDebouncedValue<T = any>(
                 }, wait)
             }
         }
-    }, [value, options.leading, wait])
+    }, [value, options.leading, wait, cancel])
 
     useEffect(() => {
         mountedRef.current = true

@@ -37,17 +37,23 @@ export default tseslint.config(
             // 工厂写法——三处都需要按行为改动来治，暂时降到 warn 以免挡门禁，
             // 但保持可见（pnpm lint 会列出）。
             'react-hooks/rules-of-hooks': 'error',
-            // react-hooks/exhaustive-deps 保持 warn，并用 `pnpm lint:es --max-warnings=145`
-            // 卡住总量只防增长（棘轮）。别照着它逐条"改正"，实测原因：
-            //  1) 表单里 `useCallback(fn, [valueRef.current])` 是**契约**——getter 身份必须
-            //     随值变化，否则下游 memoization 不失效而读到旧值。按建议清成 [] 后
-            //     compiler-stability.test.ts 的 10 条用例立刻红（2026-09-22 亲测）。
-            //     这 9 处已就地 disable 并指向该测试。
-            //  2) 大量 missing dep 是 $values/$errors/$status/$watch 这类 store 对象，
-            //     它们是**每渲染新建的字面量**（use-form-values 等都没有 useMemo），
-            //     列进依赖等于让所有回调身份失效；源码里已有作者的手写论证注释。
-            //  3) 剩下的（如缺 mode 这类原始值）才可能是真问题，需要逐个连测试判定。
-            // 真要清债，先给 store 加稳定身份，再谈补依赖。
+            // react-hooks/exhaustive-deps 保持 warn，并用 `pnpm lint:es --max-warnings=130`
+            // 卡住总量只防增长（棘轮）。不要照着提示逐条"改正"，2026-09-22 实测分类：
+            //  1) `useCallback(fn, [valueRef.current])` 是**契约**：表单 getter 的身份必须随值
+            //     变化，否则下游把它当 useMemo/useEffect 依赖时不失效、读到旧值。按提示清成 []
+            //     之后 compiler-stability.test.ts 的 10 条用例立刻红。这 9 处已就地 disable 并指向该测试。
+            //  2) 缺 $values/$errors/$status/$watch 的 19 条：这些 store 是 `return {...}` 裸字面量
+            //     （use-form-values/status/errors 都没有 useMemo），列进依赖等于让全部回调失效。
+            //     要清必须先把 store 做成稳定身份，属架构改动。
+            //  3) 缺 options 的 10 条（use-floating-window 等）：**已经列出实际用到的叶子字段**
+            //     （options.constrainOffset、options.initialPosition?.top …），比提示要求的整对象更精确。
+            //     调用方传内联对象，改成整 options 会让 effect 每渲染重跑——改了反而更糟。
+            //  4) 缺 ctx 的 3 条：context value 每渲染新建；其中 Popover/HoverCard.Target 读 ctx.uid
+            //     而依赖只有 [childProps.id]，目前良性（Popover 内部自己同步 targetId），属不变量未编码。
+            // 已确认稳定、可机械补齐的（useState setter、useCallback(...,[])、useCallbackRef、模块函数）
+            // 已在本轮补掉 15 条：145 → 130，含 Calendar 把 shiftDate 提为模块级纯函数一次消 6 条。
+            // 补依赖时必须逐站点验证"这条告警确实消失且没产生 unnecessary"——加一个稳定依赖到
+            // 相邻的另一个回调上，eslint 不会给任何信号。
             semi: 'off',
             'prefer-const': 'error',
             '@typescript-eslint/no-explicit-any': 'off',

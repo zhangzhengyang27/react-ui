@@ -169,17 +169,19 @@ export function createStorage<T>(type: StorageType, hookName: string) {
             }
         }, [defaultValue, value])
 
+        // key 必须在依赖里：动态 key（例如按用户 id 切换）变化时若不重读，value 会一直
+        // 停留在旧 key 的存储值上。deserialize 走 ref，与读初值/storage 监听处保持一致
         useEffect(() => {
             if (getInitialValueInEffect) {
                 const storedValue = getItem(key)
                 if (storedValue !== null) {
-                    const deserialized = deserialize(storedValue)
+                    const deserialized = deserializeRef.current(storedValue)
                     if (deserialized !== undefined) {
                         setValue(deserialized)
                     }
                 }
             }
-        }, [])
+        }, [getInitialValueInEffect, key])
 
         return [value, setStorageValue, removeStorageValue]
     }

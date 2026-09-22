@@ -63,3 +63,32 @@ describe('useLocalStorage: 同一事件批次内连续函数式更新', () => {
         expect(window.localStorage.getItem('consecutive-updates')).toBe('2')
     })
 })
+
+describe('useLocalStorage: 动态 key', () => {
+    beforeEach(() => {
+        window.localStorage.clear()
+    })
+
+    it('re-reads the stored value when the key changes', async () => {
+        window.localStorage.setItem('profile-a', JSON.stringify('A'))
+        window.localStorage.setItem('profile-b', JSON.stringify('B'))
+
+        const { result, rerender } = renderHook(
+            ({ key }) =>
+                useLocalStorage<string>({ key, defaultValue: 'none', getInitialValueInEffect: true }),
+            { initialProps: { key: 'profile-a' } }
+        )
+
+        await waitFor(() => {
+            expect(result.current[0]).toBe('A')
+        })
+
+        act(() => {
+            rerender({ key: 'profile-b' })
+        })
+
+        await waitFor(() => {
+            expect(result.current[0]).toBe('B')
+        })
+    })
+})

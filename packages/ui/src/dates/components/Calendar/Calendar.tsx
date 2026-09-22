@@ -172,6 +172,23 @@ const defaultProps = {
   enableKeyboardNavigation: true,
 } satisfies Partial<CalendarProps>;
 
+/**
+ * 以 base 为锚点平移 amount 个 unit。
+ * 翻页保持「日」不变（2022-04-11 + 1 month → 2022-05-11）；
+ * 目标月天数不足时钳制到月末（2024-01-31 + 1 month → 2024-02-29 而非溢出跳到 3 月）。
+ * 计算前先锚定到 1 号再平移，避免 dayjs 对 29-31 日直接加月时溢出。
+ *
+ * 刻意做成模块级纯函数而不是组件内闭包：它原先读组件作用域的 currentDate，
+ * 于是 6 个导航 useCallback 全部被 exhaustive-deps 报"缺少依赖 shiftDate"，
+ * 而那 6 个数组其实都已经列了 currentDate——把锚点改成显式入参，闭包依赖消失，
+ * 告警自然消掉，也不必加 disable 或往依赖里塞无意义的东西。
+ */
+function shiftDate(base: Parameters<typeof dayjs>[0], amount: number, unit: 'month' | 'year') {
+  const d = dayjs(base);
+  const targetMonth = d.date(1).add(amount, unit);
+  return targetMonth.date(Math.min(d.date(), targetMonth.daysInMonth()));
+}
+
 export const Calendar = factory<CalendarFactory>((_props, ref) => {
   const props = useProps('Calendar', defaultProps, _props);
   const {
@@ -305,49 +322,40 @@ export const Calendar = factory<CalendarFactory>((_props, ref) => {
 
   // 导航前先锚定到月初：29/30/31 日的锚点做月/年加减时 dayjs 不做月末钳制，
   // 会溢出跳月（如 2024-01-31 + 1 month → 2024-03-02）
-  // 翻页保持「日」不变（2022-04-11 + 1 month → 2022-05-11）；
-  // 目标月天数不足时钳制到月末（2024-01-31 + 1 month → 2024-02-29 而非溢出跳到 3 月）。
-  // 计算前先锚定到 1 号再平移，避免 dayjs 对 29-31 日直接加月时溢出。
-  const shiftDate = (amount: number, unit: 'month' | 'year') => {
-    const base = dayjs(currentDate);
-    const targetMonth = base.date(1).add(amount, unit);
-    return targetMonth.date(Math.min(base.date(), targetMonth.daysInMonth()));
-  };
-
   // 导航 handler 用 useCallback 包住：它们在下方 document keydown effect 的依赖数组里,
   // 每渲染新身份会导致监听器逐渲染 remove+add(Calendar 高频父级更新时纯浪费)
   const handleNextMonth = useCallback(() => {
-    const nextDate = shiftDate(_columnsToScroll, 'month').format('YYYY-MM-DD');
+    const nextDate = shiftDate(currentDate, _columnsToScroll, 'month').format('YYYY-MM-DD');
     onNextMonth?.(nextDate);
     setDate(nextDate);
   }, [currentDate, _columnsToScroll, onNextMonth, setDate]);
 
   const handlePreviousMonth = useCallback(() => {
-    const nextDate = shiftDate(-_columnsToScroll, 'month').format('YYYY-MM-DD');
+    const nextDate = shiftDate(currentDate, -_columnsToScroll, 'month').format('YYYY-MM-DD');
     onPreviousMonth?.(nextDate);
     setDate(nextDate);
   }, [currentDate, _columnsToScroll, onPreviousMonth, setDate]);
 
   const handleNextYear = useCallback(() => {
-    const nextDate = shiftDate(_columnsToScroll, 'year').format('YYYY-MM-DD');
+    const nextDate = shiftDate(currentDate, _columnsToScroll, 'year').format('YYYY-MM-DD');
     onNextYear?.(nextDate);
     setDate(nextDate);
   }, [currentDate, _columnsToScroll, onNextYear, setDate]);
 
   const handlePreviousYear = useCallback(() => {
-    const nextDate = shiftDate(-_columnsToScroll, 'year').format('YYYY-MM-DD');
+    const nextDate = shiftDate(currentDate, -_columnsToScroll, 'year').format('YYYY-MM-DD');
     onPreviousYear?.(nextDate);
     setDate(nextDate);
   }, [currentDate, _columnsToScroll, onPreviousYear, setDate]);
 
   const handleNextDecade = useCallback(() => {
-    const nextDate = shiftDate(10 * _columnsToScroll, 'year').format('YYYY-MM-DD');
+    const nextDate = shiftDate(currentDate, 10 * _columnsToScroll, 'year').format('YYYY-MM-DD');
     onNextDecade?.(nextDate);
     setDate(nextDate);
   }, [currentDate, _columnsToScroll, onNextDecade, setDate]);
 
   const handlePreviousDecade = useCallback(() => {
-    const nextDate = shiftDate(-10 * _columnsToScroll, 'year').format('YYYY-MM-DD');
+    const nextDate = shiftDate(currentDate, -10 * _columnsToScroll, 'year').format('YYYY-MM-DD');
     onPreviousDecade?.(nextDate);
     setDate(nextDate);
   }, [currentDate, _columnsToScroll, onPreviousDecade, setDate]);

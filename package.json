@@ -1,7 +1,7 @@
 {
   "name": "react-ui",
   "version": "1.0.0",
-  "description": "小叶的 react ui 组件库",
+  "description": "\u5c0f\u53f6\u7684 react ui \u7ec4\u4ef6\u5e93",
   "main": "index.js",
   "scripts": {
     "dev": "pnpm -r --parallel dev",
@@ -13,7 +13,7 @@
     "test": "pnpm -r test",
     "test:packages": "pnpm --filter './packages/**' test",
     "release": "pnpm build:packages && pnpm --filter './packages/**' release",
-    "lint:es": "NODE_OPTIONS=--max-old-space-size=8192 eslint \"{packages,apps}/**/*.{js,jsx,ts,tsx}\" --max-warnings=145",
+    "lint:es": "NODE_OPTIONS=--max-old-space-size=8192 eslint \"{packages,apps}/**/*.{js,jsx,ts,tsx}\" --max-warnings=137",
     "lint:style": "stylelint \"{packages,apps}/**/*.{css,ts}\"",
     "docs:lint": "node apps/docs/scripts/lint-docs-imports.mjs && node apps/docs/scripts/lint-demo-controls.mjs && node apps/docs/scripts/lint-docs-api-tables.mjs",
     "typecheck:demos": "tsc -p apps/docs/tsconfig.demos.json",

@@ -74,7 +74,7 @@ export function useFocusWithin<T extends HTMLElement = any>({
                 previousNode.current.removeEventListener('focusout', handleFocusOut)
             }
         },
-        []
+        [handleFocusIn, handleFocusOut]
     )
 
     return { ref: callbackRef, focused }

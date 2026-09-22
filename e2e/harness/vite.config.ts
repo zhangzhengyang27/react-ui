@@ -10,7 +10,7 @@ export default defineConfig({
         jsx: 'automatic'
     },
     server: {
-        port: 4174,
+        port: 4175,
         strictPort: true
     },
     resolve: {

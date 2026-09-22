@@ -7,15 +7,16 @@ import { defineConfig } from '@playwright/test'
  */
 export default defineConfig({
     testDir: './e2e/interactions',
+    globalSetup: './e2e/interactions/assert-harness.ts',
     fullyParallel: true,
     timeout: 120_000,
     use: {
-        baseURL: 'http://127.0.0.1:4174',
+        baseURL: 'http://127.0.0.1:4175',
         viewport: { width: 1280, height: 800 }
     },
     webServer: {
-        command: 'node_modules/.bin/vite --config e2e/harness/vite.config.ts --host 127.0.0.1 --port 4174 --strictPort',
-        url: 'http://127.0.0.1:4174',
+        command: 'node_modules/.bin/vite --config e2e/harness/vite.config.ts --host 127.0.0.1 --port 4175 --strictPort',
+        url: 'http://127.0.0.1:4175',
         timeout: 120_000,
         reuseExistingServer: true
     }

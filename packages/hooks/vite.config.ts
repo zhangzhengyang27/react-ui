@@ -29,6 +29,8 @@ export default defineConfig({
             output: [
                 {
                     format: 'es',
+                    // 同 packages/ui：保住 src/index.ts 顶部的 'use client'（只给 ESM 加）
+                    banner: "'use client';",
                     preserveModules: true,
                     preserveModulesRoot: 'src',
                     entryFileNames: '[name].js',

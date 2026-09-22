@@ -276,6 +276,10 @@ export const ResourcesSchedule = factory<ResourcesScheduleFactory>((_props) => {
     onChange: onViewChange,
   });
 
+    // defaultDate 缺省时用当前时刻：SSR 下服务端与客户端可能跨日/跨年而不一致，
+    // 这属于"由时间派生的内容"、延后求值只会变成水合后突变，无法在组件内消除。
+    // 正确用法见 apps/docs/docs/guides/next.zh-CN.md 的「水合与时钟相关的默认值」：
+    // 由应用显式传 date / defaultDate。
   const [_date, _setDate] = useUncontrolled<Date | DateStringValue>({
     value: date,
     defaultValue: defaultDate ?? new Date(),

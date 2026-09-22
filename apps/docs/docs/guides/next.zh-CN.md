@@ -165,8 +165,11 @@ function Demo() {
 和 [Styles API](/docs/styles/styles-api)。ReactUI 组件不能用作服务端组件。
 这意味着组件会在服务端和客户端同时渲染。
 
-所有 `@xiaoye-react/*` 包的入口文件（`index.js`）顶部都有 `'use client';` 指令——
-你不需要在页面/布局/组件中额外添加 `'use client';`。
+三个可发布包（`@xiaoye-react/ui`、`@xiaoye-react/hooks`、`@xiaoye-react/pro`）的 ESM 入口
+（`es/index.js`）顶部都带 `'use client';` 指令——你不需要在页面/布局/组件中额外添加它。
+
+该指令只加在 ESM 产物上：CJS 入口以 `'use strict'` 开头，再前面插一条指令序言会静默让
+`'use strict'` 退化成普通表达式、丢掉严格模式。Next.js 的 RSC 分析走 ESM 路径，因此不受影响。
 
 ## 在服务端组件中使用复合组件
 
@@ -242,6 +245,32 @@ export default {
   },
 };
 ```
+
+## 水合与时钟相关的默认值
+
+`Schedule` / `ResourcesSchedule` 不给 `date`（或 `defaultDate`）时，会把**当前时刻**当作
+默认锚点日；`Calendar` 的"今天"高亮、`MonthYearSelect` 的年份列表同理。服务端与客户端
+各自求值时，一旦跨日或跨年（例如服务端跑 UTC、用户在 UTC+8 的午夜附近），两边就会渲染出
+不同的日期，React 会报水合差异。
+
+这类差异**没法在组件内部消除**：延后到挂载后再求值，只是把"属性不一致"换成"水合完成后
+内容突变"。因此请在使用 SSR 时显式传值，让两边从同一个日期出发：
+
+```tsx
+'use client'
+
+import { Schedule } from '@xiaoye-react/ui'
+
+// ✅ 由应用决定锚点日，服务端与客户端拿到同一个值
+<Schedule date="2026-09-22" onDateChange={setDate} />
+
+// ✅ 或者受控模式下用状态初始化，初始值来自一个双方一致的来源（如 URL、后端返回）
+<Schedule defaultDate={props.initialDate} />
+```
+
+组件内已经对**属性级**的时钟依赖做了处理（例如日期格的 `data-today` 用
+`suppressHydrationWarning` 抑制，`CurrentTimeIndicator` 在挂载前不渲染），
+但由时间派生的整块内容不属于能"抑制"的范围。
 
 ## 故障排除
 

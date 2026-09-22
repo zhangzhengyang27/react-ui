@@ -22,6 +22,9 @@ export default defineConfig({
         outDir: 'es',
         minify: true,
         rollupOptions: {
+            // 保住 src/index.ts 顶部的 'use client'：rollup 默认不保留入口的指令序言，
+            // 而 guides/next.zh-CN.md 承诺过发布产物里有它。只加在 ESM 输出上。
+            output: { banner: "'use client';" },
             external: [
                 'react',
                 'react-dom',

@@ -76,6 +76,11 @@ export default defineConfig({
             output: [
                 {
                     format: 'es',
+                    // rollup 默认不保留入口模块的指令序言：源码 src/index.ts 第 1 行的
+                    // 'use client' 会在打包时被丢掉，而 guides/next.zh-CN.md 向 Next.js 用户承诺
+                    // 入口顶部有这条指令、无需自己加。banner 把它还给 ESM 产物。
+                    // 只给 ESM 输出加：CJS 输出以 'use strict' 开头，再插一条指令序言会静默削弱严格模式。
+                    banner: "'use client';",
                     preserveModules: true,
                     preserveModulesRoot: 'src',
                     entryFileNames: '[name].js',

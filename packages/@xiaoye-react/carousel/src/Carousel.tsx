@@ -247,6 +247,13 @@ export const Carousel = factory<CarouselFactory>((_props) => {
   const onSlideChangeRef = useRef(onSlideChange);
   onSlideChangeRef.current = onSlideChange;
 
+  // onPreviousSlide/onNextSlide 同理:handlePrevious/handleNext 只依赖 [embla],
+  // 直接闭包 props 会固化首帧回调,消费者内联传参时它捕获的 state 永远是旧值
+  const onPreviousSlideRef = useRef(onPreviousSlide);
+  onPreviousSlideRef.current = onPreviousSlide;
+  const onNextSlideRef = useRef(onNextSlide);
+  onNextSlideRef.current = onNextSlide;
+
   const handleScroll = useCallback((index: number) => embla && embla.scrollTo(index), [embla]);
 
   const handleSelect = useCallback(() => {
@@ -264,12 +271,12 @@ export const Carousel = factory<CarouselFactory>((_props) => {
 
   const handlePrevious = useCallback(() => {
     embla?.scrollPrev();
-    onPreviousSlide?.();
+    onPreviousSlideRef.current?.();
   }, [embla]);
 
   const handleNext = useCallback(() => {
     embla?.scrollNext();
-    onNextSlide?.();
+    onNextSlideRef.current?.();
   }, [embla]);
 
   const handleKeydown = useCallback(

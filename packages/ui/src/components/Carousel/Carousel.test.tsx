@@ -165,4 +165,32 @@ describe('Carousel', () => {
 
         expect(document.getElementById('my-carousel')).toHaveClass('ui-Carousel-root')
     })
+
+    it('invokes the latest onPreviousSlide/onNextSlide closure after a rerender', () => {
+        // 回调经 ref 转发：若 handleNext/handlePrevious 闭包首帧的 props，
+        // 消费者传内联回调时它捕获的 step 会永远停在第一次渲染的值
+        const calls: string[] = []
+
+        function Harness({ step }: { step: number }) {
+            return (
+                <UIProvider>
+                    <Carousel
+                        onNextSlide={() => calls.push(`next:${step}`)}
+                        onPreviousSlide={() => calls.push(`prev:${step}`)}
+                    >
+                        <Carousel.Slide>1</Carousel.Slide>
+                        <Carousel.Slide>2</Carousel.Slide>
+                    </Carousel>
+                </UIProvider>
+            )
+        }
+
+        const { rerender } = render(<Harness step={1} />)
+        fireEvent.click(screen.getByLabelText('下一张幻灯片'))
+
+        rerender(<Harness step={2} />)
+        fireEvent.click(screen.getByLabelText('上一张幻灯片'))
+
+        expect(calls).toEqual(['next:1', 'prev:2'])
+    })
 })

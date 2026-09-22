@@ -117,6 +117,8 @@ export function useFormStatus<Values extends Record<string, any>>({
 
   const isTouched: GetFieldStatus<Values> = useCallback(
     (path) => getStatus(touchedRef.current, path),
+    // 依赖里放 ref.current 是有意的：getter 身份必须随值变化，见 tests/use-form/compiler-stability.test.ts
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [touchedRef.current]
   );
 
@@ -162,7 +164,11 @@ export function useFormStatus<Values extends Record<string, any>>({
     [dirtyRef.current, $values.refValues.current, $values.valuesSnapshot.current]
   );
 
+  // 依赖里放 ref.current 是有意的：getter 身份必须随值变化，见 tests/use-form/compiler-stability.test.ts
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getDirty = useCallback(() => dirtyRef.current, [dirtyRef.current]);
+  // 依赖里放 ref.current 是有意的：getter 身份必须随值变化，见 tests/use-form/compiler-stability.test.ts
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getTouched = useCallback(() => touchedRef.current, [touchedRef.current]);
 
   return {

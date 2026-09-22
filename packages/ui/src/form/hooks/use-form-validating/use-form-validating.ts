@@ -38,6 +38,8 @@ export function useFormValidating(): $FormValidating {
       }
       return Object.values(validatingRef.current).some(Boolean);
     },
+    // 依赖里放 ref.current 是有意的：getter 身份必须随值变化，见 tests/use-form/compiler-stability.test.ts
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [validatingRef.current, formValidatingRef.current]
   );
 

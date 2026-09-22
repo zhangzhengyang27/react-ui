@@ -37,6 +37,17 @@ export default tseslint.config(
             // 工厂写法——三处都需要按行为改动来治，暂时降到 warn 以免挡门禁，
             // 但保持可见（pnpm lint 会列出）。
             'react-hooks/rules-of-hooks': 'error',
+            // react-hooks/exhaustive-deps 保持 warn，并用 `pnpm lint:es --max-warnings=145`
+            // 卡住总量只防增长（棘轮）。别照着它逐条"改正"，实测原因：
+            //  1) 表单里 `useCallback(fn, [valueRef.current])` 是**契约**——getter 身份必须
+            //     随值变化，否则下游 memoization 不失效而读到旧值。按建议清成 [] 后
+            //     compiler-stability.test.ts 的 10 条用例立刻红（2026-09-22 亲测）。
+            //     这 9 处已就地 disable 并指向该测试。
+            //  2) 大量 missing dep 是 $values/$errors/$status/$watch 这类 store 对象，
+            //     它们是**每渲染新建的字面量**（use-form-values 等都没有 useMemo），
+            //     列进依赖等于让所有回调身份失效；源码里已有作者的手写论证注释。
+            //  3) 剩下的（如缺 mode 这类原始值）才可能是真问题，需要逐个连测试判定。
+            // 真要清债，先给 store 加稳定身份，再谈补依赖。
             semi: 'off',
             'prefer-const': 'error',
             '@typescript-eslint/no-explicit-any': 'off',

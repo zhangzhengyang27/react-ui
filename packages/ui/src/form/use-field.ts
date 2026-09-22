@@ -201,12 +201,18 @@ export function useField<
     setTouched(false);
   }, [initialValue]);
 
+  // 依赖里放 ref.current 是有意的：getter 身份必须随值变化，见 tests/use-field/compiler-stability.test.ts
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getValue = useCallback(() => valueRef.current, [valueRef.current]);
 
+  // 依赖里放 ref.current 是有意的：getter 身份必须随值变化，见 tests/use-field/compiler-stability.test.ts
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const isTouched = useCallback(() => touchedRef.current, [touchedRef.current]);
 
   const isDirty = useCallback(
     () => valueRef.current !== initialValue,
+    // 依赖里放 ref.current 是有意的：getter 身份必须随值变化，见 tests/use-field/compiler-stability.test.ts
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [valueRef.current, initialValue]
   );
 

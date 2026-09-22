@@ -1,3 +1,17 @@
+/**
+ * 这里锁的是一个容易被误判成 bug 的设计：表单各类 getter（getValues / isDirty /
+ * isTouched / getDirty / getTouched / isValid / isValidating ...）的身份**必须**随
+ * 底层值变化而变化。
+ *
+ * 因此源码里它们写成 `useCallback(fn, [valueRef.current])` —— 把 ref 的当前值放进依赖表。
+ * 这会被 react-hooks/exhaustive-deps 报成 "unnecessary dependency"，看起来像手误，
+ * 但清成 `[]` 会静默破坏下游 memoization：调用方拿到的是一个永不变化的函数身份，
+ * 于是 form.getValues() 之类作为 useMemo/useEffect 依赖时不再失效，读到旧值。
+ *
+ * 2026-09-21 实测：把其中 9 处按 lint 建议"改正"后，本文件与 use-field 版共 10 条用例立刻红。
+ * 看到这条告警请不要再动依赖表。
+ */
+
 import { act, renderHook } from '@testing-library/react';
 import { useField } from '../../use-field';
 

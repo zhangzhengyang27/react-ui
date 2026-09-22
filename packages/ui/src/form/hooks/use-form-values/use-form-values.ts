@@ -144,7 +144,11 @@ export function useFormValues<Values extends Record<PropertyKey, any>>({
     });
   }, [setValues]);
 
+  // 依赖里放 ref.current 是有意的：getter 身份必须随值变化，见 tests/use-form/compiler-stability.test.ts
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getValues = useCallback(() => refValues.current, [refValues.current]);
+  // 依赖里放 ref.current 是有意的：getter 身份必须随值变化，见 tests/use-form/compiler-stability.test.ts
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getValuesSnapshot = useCallback(() => valuesSnapshot.current, [valuesSnapshot.current]);
 
   const resetField = useCallback(

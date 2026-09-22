@@ -16,6 +16,10 @@
             "@xiaoye-react/ui": ["../../packages/ui/src/index.ts"],
             "@xiaoye-react/ui/*": ["../../packages/ui/src/*"],
             "@xiaoye-react/hooks": ["../../packages/hooks/src/index.ts"],
+            // pro 的 types/exports 指向 es/ 构建产物，而 **/es 在 .gitignore 里：
+            // 不加这条 paths，干净克隆里 apps/docs typecheck 直接 TS2307（只有本地恰好
+            // 存在旧的 pro/es 时才"看起来是绿的"）。与 hooks 一样指回源码。
+            "@xiaoye-react/pro": ["../../packages/@xiaoye-react/pro/src/index.ts"],
             "@xiaoye-react/hooks/*": ["../../packages/hooks/src/*"],
             // 与 .dumirc.ts 的 alias 保持一致：站点实际渲染的是 .dumi/theme/builtins/DemoEngine
             // （dumi 按目录约定自动注册 builtin，所以它必须待在那儿）。

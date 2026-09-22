@@ -59,11 +59,11 @@ if (process.env.DOCS_SKIP_UI_BUILD) {
 
 console.log(`[ensure-ui-build] 源码比产物新（最近改动：${relative}），重建 @xiaoye-react/ui …`)
 const started = Date.now()
-const result = spawnSync(
-    process.execPath,
-    [path.join(uiDir, 'node_modules/vite/bin/vite.js'), 'build', '--logLevel', 'warn'],
-    { cwd: uiDir, stdio: 'inherit' }
-)
+// 必须走包自身的 build 脚本而不是直接调 vite：ui 的 prebuild 会先把 @xiaoye-react/hooks
+// 构建出来。直接跑 vite 时 hooks/es 不存在（干净克隆里必然如此），vite-plugin-dts 会给
+// 每个 import '@xiaoye-react/hooks' 的文件报 TS2307，整个文档站 prebuild 随之失败。
+// 走脚本还顺带执行 build 里的 check:published-types。
+const result = spawnSync('pnpm', ['run', 'build'], { cwd: uiDir, stdio: 'inherit' })
 
 if (result.status !== 0) {
     console.error('[ensure-ui-build] @xiaoye-react/ui 构建失败，文档站所需的产物不可信。')

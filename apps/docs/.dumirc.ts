@@ -66,6 +66,8 @@ export default defineConfig({
         'react-router-actual$': reactRouterActual,
         '@xiaoye-react/ui': path.join(__dirname, '../../packages/ui/es/index.js'),
         '@xiaoye-react/hooks': path.join(__dirname, '../../packages/hooks/src/index.ts'),
+        // 同上：pro 默认会经 node_modules 解析到 es/index.js，干净克隆里没有那份产物
+        '@xiaoye-react/pro': path.join(__dirname, '../../packages/@xiaoye-react/pro/src/index.ts'),
         // @xiaoye-react/demo 包未发布，指向本地 DemoEngine（已导出 Demo/UIDemo/ConfiguratorControlOptions）
         '@xiaoye-react/demo': path.join(__dirname, '.dumi/theme/builtins/DemoEngine/index.ts'),
         // docgen 生成的 JSON 数据（仅保留有消费者的产物）

@@ -1,9 +1,21 @@
 import dayjs from 'dayjs';
-// 直接具名导入：rrule 在 ESM 与 CJS 下都真实导出 RRule/RRuleSet。
-// 这里原来是 `import * as rruleAll` + 运行时 `'default' in rruleAll` 兜底，
-// 依赖被内联进产物时没人追究；一旦外部化，webpack 会静态解析 rruleAll.default
-// 并报 "export 'default' (imported as 'f') was not found in 'rrule'"，文档站直接构建失败。
-import { RRule, RRuleSet } from 'rrule';
+// rrule@2.8 有两个入口：main=dist/es5/rrule.js（CJS，纯 Node 走这条）与
+// module=dist/esm/index.js（真·具名导出，webpack/vite 走这条）。
+// Node 的 cjs-module-lexer 认不出 es5 构建的具名导出，所以直接
+// `import { RRule } from 'rrule'` 在 Node ESM 下就是 SyntaxError: Named export
+// 'RRule' not found；而打包器解析到 esm 入口时又压根没有 default 导出，写
+// `rruleNamespace.default` 会收到 "export 'default' was not found in 'rrule'"。
+// 两边都要顾：具名拿得到就用具名，否则退回 default；退回那一步故意写成计算键，
+// 免得 webpack 静态查表时报缺 default。
+import * as rruleNamespace from 'rrule';
+
+const rruleShapes = rruleNamespace as unknown as Record<string, unknown>;
+const rruleModule = (
+  'RRule' in rruleShapes ? rruleShapes : rruleShapes['default']
+) as typeof import('rrule');
+
+const { RRule, RRuleSet } = rruleModule;
+
 import { DateTimeStringValue, ScheduleEventData, ScheduleRecurrenceData } from '../../types';
 import { validateEvent } from '../validate-event/validate-event';
 

@@ -23,6 +23,8 @@ tag: vVERSION
 - 📦 构建产物由"单个 1.71 MB 已压缩 bundle"改为 `preserveModules` 逐模块输出，并把全部运行时依赖外部化。实测下游 `import { Button }` 的打包体积从 327,370 B gzip 降到 12,425 B gzip；`@xiaoye-react/hooks` 单个 hook 从 29,590 B 降到 266 B。`style.css` 与旧产物字节一致。
 - 🐞 修复表单 `form.watch(field, cb)` 在 `field` 变化而回调身份稳定时不重新订阅的问题：新字段收不到任何通知、旧字段却仍在误通知。
 - 🐞 修复 `useMatches` 的两处退化：`getInitialValueInEffect: false` 不再被忽略；断点值写成 `min()/clamp()` 这类含逗号的形式时不再被拆坏。
+- 🐞 修复 Schedule 的 `expandRecurringEvents` 在纯 Node ESM 下整个包加载失败：`rrule@2.8` 的 `main` 是 CJS 构建（Node 的 cjs-module-lexer 认不出它的具名导出），`module` 才是真 ESM，依赖被外部化之后 `import { RRule } from 'rrule'` 在 Node 里直接 `SyntaxError: Named export 'RRule' not found`。现在按命名空间取值、取不到再退回 default，打包器与 Node 两条路径都能解析。
+- 💥 同批发布 `@xiaoye-react/hooks@1.4.0`（新增导出 `attachMediaListener`，并修复 `useLocalStorage` / `useSessionStorage` 换 key 不回读）与 `@xiaoye-react/pro@0.2.1`。`@xiaoye-react/ui` 的 hooks peer 由 `^1.0.0` 抬到 `^1.4.0`：产物里 `useMatches` 会 import `attachMediaListener`，不抬下限的话装到旧 hooks 的消费者在 ESM 下立刻报错。
 - 🐞 `Checkbox` / `Radio` / `Switch` 设置 `error` 时补上 `aria-invalid`（与 `Input` 既有约定对齐），读屏用户此前完全感知不到错误态。
 - 🐞 `Popover` 的 `portalProps` 此前传到 Dropdown 就丢失，现已透传。
 - 💄 `AppShell` 的 `fixed` 布局改用 `react-remove-scroll` 锁滚动：不再覆写消费者自己的 `body` inline overflow，并有滚动条宽度补偿。

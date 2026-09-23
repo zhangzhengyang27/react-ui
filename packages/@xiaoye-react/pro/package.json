@@ -1,6 +1,6 @@
 {
     "name": "@xiaoye-react/pro",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Admin-oriented page patterns (PageContainer, SearchFilter, ProTable) built on @xiaoye-react/ui",
     "license": "MIT",
     "keywords": [

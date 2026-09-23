@@ -31,11 +31,15 @@ export default tseslint.config(
             parser: tseslint.parser
         },
         rules: {
-            // react-hooks/exhaustive-deps 保持 recommended 的 warn；rules-of-hooks 里
-            // useMatches（map 里调 hook）与 useFormWatch（watch 回调里调 useEffect）
-            // 是真的违反规则，emotion-transform 是"从 hook 里返回会调 hook 的函数"的
-            // 工厂写法——三处都需要按行为改动来治，暂时降到 warn 以免挡门禁，
-            // 但保持可见（pnpm lint 会列出）。
+            // react-hooks/exhaustive-deps 保持 recommended 的 warn；rules-of-hooks 保持 error，
+            // 全仓现在只剩 1 处就地豁免：use-form-watch.ts:34（watch() 内部调 useEffect）。
+            // 那是 form.watch(field, cb) 这个 API 形状本身决定的——订阅 effect 必须挂在
+            // 调用方组件上，改成顶层 useWatch(field, cb) 才是干净解，但那是 API 面变更。
+            // 它同时让 exhaustive-deps 分析不到那条 effect，所以 [path, callback] 由
+            // form/tests/use-form/watch.test.tsx 的用例守着。
+            // 曾经并列的另两处已经治掉：useMatches 不再在 map 里调 hook；
+            // emotion-transform 的两个工厂本来就在组件渲染顶层调用，只是名字不像 hook，
+            // 改名成 use 前缀后 4 条豁免全部删除（UIStylesTransform 的注释里写清了契约）。
             'react-hooks/rules-of-hooks': 'error',
             // react-hooks/exhaustive-deps 保持 warn，并用 `pnpm lint:es --max-warnings=78`
             // 卡住总量只防增长（棘轮）。不要照着提示逐条"改正"，2026-09-22 实测分类：

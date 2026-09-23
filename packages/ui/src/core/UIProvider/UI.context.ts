@@ -8,12 +8,15 @@ import type { UIColorScheme, UITheme } from './theme.types'
  */
 export interface UIStylesTransform {
     /**
-     * sx 属性转换函数
+     * sx 属性转换函数。
+     * **它是 hook 形状的工厂**：实现里会调 useUITheme()/useCss()，因此只能在组件或
+     * 自定义 hook 的渲染顶层调用一次（Box 就是这么用的），不能放在回调、条件分支或
+     * effect 里调用。实现函数以 use 前缀命名，让 rules-of-hooks 能识别。
      */
     sx?: () => (sx: any) => string
 
     /**
-     * styles 属性转换函数
+     * styles 属性转换函数。调用约束与 sx 相同（同样是 hook 形状的工厂）。
      */
     styles?: () => (styles: any, payload: any) => Record<string, string>
 }

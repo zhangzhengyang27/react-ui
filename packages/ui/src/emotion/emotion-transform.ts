@@ -3,15 +3,8 @@ import { useUITheme } from '../core/UIProvider/index';
 import { getHelpers } from './create-styles';
 import { useCss } from './use-css';
 
-/**
- * 这两个 *Transform 是 UIStylesTransform 的字段：它们本身就是 hook——由 Box/useStyles
- * 在组件渲染期取出并调用一次，返回的才是普通闭包。插件按命名认不出"塞进对象字面量的
- * hook"，故在这两处 hook 调用点就地豁免；调用方必须保持在组件顶层。
- */
-function sxTransform() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+function useSxTransform() {
   const theme = useUITheme();
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { css } = useCss();
 
   return (sx: any) => {
@@ -20,10 +13,8 @@ function sxTransform() {
   };
 }
 
-function stylesTransform() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+function useEmotionStylesTransform() {
   const theme = useUITheme();
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { css } = useCss();
 
   return (styles: any, payload: any) => {
@@ -43,6 +34,6 @@ function stylesTransform() {
 }
 
 export const emotionTransform: UIStylesTransform = {
-  sx: sxTransform,
-  styles: stylesTransform,
+  sx: useSxTransform,
+  styles: useEmotionStylesTransform,
 };

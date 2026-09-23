@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { ClearErrors, ClearFieldError, FormErrors, SetErrors, SetFieldError } from '../../types';
 import { filterErrors } from './filter-errors/filter-errors';
 
@@ -52,11 +52,17 @@ export function useFormErrors<Values extends Record<string, any>>(
     [errorsState]
   );
 
-  return {
-    errorsState,
-    setErrors,
-    clearErrors,
-    setFieldError,
-    clearFieldError,
-  };
+  // 稳定容器：对象身份在组件生命周期内不变，成员每渲染重新赋值（与 onChangeRef 同一套
+  // 写法）。此前每渲染 return {} 让下游无法把 $ 系列 store 写进依赖表——写了就等于每渲染
+  // 重建回调。getter 的身份仍然按契约随值变化（tests/*/compiler-stability.test.ts），
+  // 这里稳定的只是外层容器。
+  const store = useMemo(() => ({} as $FormErrors<Values>), []);
+
+  store.errorsState = errorsState;
+  store.setErrors = setErrors;
+  store.clearErrors = clearErrors;
+  store.setFieldError = setFieldError;
+  store.clearFieldError = clearFieldError;
+
+  return store;
 }

@@ -96,7 +96,7 @@ export function useForm<
     $validating.clearValidating();
     mode === 'uncontrolled' && setFormKey((key) => key + 1);
     // 空依赖安全:$values.resetValues/clearErrors 等均已稳定化(onValuesChange 走 ref)
-  }, []);
+  }, [$errors, $status, $validating, $values, mode]);
 
   const handleValuesChanges = useCallback(
     (previousValues: Values) => {
@@ -104,7 +104,7 @@ export function useForm<
       mode === 'uncontrolled' && setFormKey((key) => key + 1);
       $watch.notifyWatchSubscribers(previousValues);
     },
-    [clearInputErrorOnChange]
+    [clearInputErrorOnChange, $errors, $watch, mode]
   );
 
   const initialize: Initialize<Values> = useCallback(
@@ -113,7 +113,7 @@ export function useForm<
       $values.initialize(values, () => mode === 'uncontrolled' && setFormKey((key) => key + 1));
       handleValuesChanges(previousValues);
     },
-    [handleValuesChanges]
+    [handleValuesChanges, $values, mode]
   );
 
   // 计时器表放 ref 而非 useMemo：rules 为内联对象（每渲染新引用）时 memo 重建，
@@ -172,7 +172,7 @@ export function useForm<
         handleValidation(path);
       }
     },
-    [validateDebounce, rules, resolveValidationError]
+    [validateDebounce, rules, resolveValidationError, $errors, $validating, $values.refValues]
   );
 
   const setFieldValue: SetFieldValue<Values> = useCallback(
@@ -211,7 +211,7 @@ export function useForm<
       $values.setValues({ values, updateState: mode === 'controlled' });
       handleValuesChanges(previousValues);
     },
-    [handleValuesChanges]
+    [handleValuesChanges, $values, mode]
   );
 
   // 记录当前代际是否属于提交流程：onSubmit 需要区分「被新提交取代」（新提交负责收尾
@@ -258,7 +258,7 @@ export function useForm<
     }
 
     return handleResult(result);
-  }, [rules, resolveValidationError]);
+  }, [rules, resolveValidationError, $errors, $validating, $values.refValues]);
 
   const validateField = useCallback(
     (path: string) => {
@@ -297,7 +297,7 @@ export function useForm<
 
       return applyResult(result);
     },
-    [rules, resolveValidationError]
+    [rules, resolveValidationError, $errors, $validating, $values.refValues]
   );
 
   const getInputProps: GetInputProps<Values> = (
@@ -485,7 +485,7 @@ export function useForm<
           : null,
       ]);
     },
-    [$values.resetField, mode, setFieldKeys]
+    [$values, mode, setFieldKeys]
   );
 
   const form = {

@@ -158,7 +158,7 @@ export function useField<
   const setTouched = useCallback((val: boolean, { updateState = mode === 'controlled' } = {}) => {
     touchedRef.current = val;
     updateState && setTouchedState(val);
-  }, []);
+  }, [mode]);
 
   const setValue = useCallback(
     (
@@ -192,14 +192,16 @@ export function useField<
         _validate();
       }
     },
-    [error, clearErrorOnChange, onValueChange]
+    // _validate 故意不进依赖：它在下面第 229 行才声明，写进这个数组会在渲染期触发 TDZ
+    // 引用错误（tsc 会报 TS2448）。这里只补按值稳定的 mode / validateOnChange。
+    [error, clearErrorOnChange, onValueChange, mode, validateOnChange]
   );
 
   const reset = useCallback(() => {
     setValue(initialValue);
     setError(null);
     setTouched(false);
-  }, [initialValue]);
+  }, [initialValue, setTouched, setValue]);
 
   // 依赖里放 ref.current 是有意的：getter 身份必须随值变化，见 tests/use-field/compiler-stability.test.ts
   // eslint-disable-next-line react-hooks/exhaustive-deps

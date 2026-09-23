@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 
 export interface $FormValidating {
   validating: boolean;
@@ -88,13 +88,19 @@ export function useFormValidating(): $FormValidating {
 
   const validating = formValidating || Object.values(validatingFields).some(Boolean);
 
-  return {
-    validating,
-    isValidating,
-    setFieldValidating,
-    setFormValidating,
-    getAbortSignal,
-    abortFieldValidations,
-    clearValidating,
-  };
+  // 稳定容器：对象身份在组件生命周期内不变，成员每渲染重新赋值（与 onChangeRef 同一套
+  // 写法）。此前每渲染 return {} 让下游无法把 $ 系列 store 写进依赖表——写了就等于每渲染
+  // 重建回调。getter 的身份仍然按契约随值变化（tests/*/compiler-stability.test.ts），
+  // 这里稳定的只是外层容器。
+  const store = useMemo(() => ({} as $FormValidating), []);
+
+  store.validating = validating;
+  store.isValidating = isValidating;
+  store.setFieldValidating = setFieldValidating;
+  store.setFormValidating = setFormValidating;
+  store.getAbortSignal = getAbortSignal;
+  store.abortFieldValidations = abortFieldValidations;
+  store.clearValidating = clearValidating;
+
+  return store;
 }

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { getPath } from '../../paths';
 import { FormPathValue, LooseKeys } from '../../paths.types';
 import { FormFieldSubscriber, Watch } from '../../types';
@@ -77,7 +77,7 @@ export function useFormWatch<
     }
 
     return result;
-  }, []);
+  }, [$status, cascadeUpdates]);
 
   const notifyWatchSubscribers = useCallback((previousValues: Values) => {
     Object.keys(subscribers.current).forEach((path) => {
@@ -95,12 +95,18 @@ export function useFormWatch<
         );
       }
     });
-  }, []);
+  }, [$status, $values.refValues]);
 
-  return {
-    subscribers,
-    watch,
-    getFieldSubscribers,
-    notifyWatchSubscribers,
-  };
+  // 稳定容器：对象身份在组件生命周期内不变，成员每渲染重新赋值（与 onChangeRef 同一套
+  // 写法）。此前每渲染 return {} 让下游无法把 $ 系列 store 写进依赖表——写了就等于每渲染
+  // 重建回调。getter 的身份仍然按契约随值变化（tests/*/compiler-stability.test.ts），
+  // 这里稳定的只是外层容器。
+  const store = useMemo(() => ({} as $FormWatch<Values>), []);
+
+  store.subscribers = subscribers;
+  store.watch = watch;
+  store.getFieldSubscribers = getFieldSubscribers;
+  store.notifyWatchSubscribers = notifyWatchSubscribers;
+
+  return store;
 }

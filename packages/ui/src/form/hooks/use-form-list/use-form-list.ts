@@ -29,7 +29,7 @@ export function useFormList<Values extends Record<string, any>>({
       updateState: true,
     });
     $watch.notifyWatchSubscribers(previousValues);
-  }, []);
+  }, [$errors, $status, $values, $watch]);
 
   const removeListItem: RemoveListItem<Values> = useCallback((path, index) => {
     const previousValues = $values.refValues.current;
@@ -40,7 +40,7 @@ export function useFormList<Values extends Record<string, any>>({
       updateState: true,
     });
     $watch.notifyWatchSubscribers(previousValues);
-  }, []);
+  }, [$errors, $status, $values, $watch]);
 
   const insertListItem: InsertListItem<Values> = useCallback((path, item, index) => {
     const previousValues = $values.refValues.current;
@@ -51,7 +51,7 @@ export function useFormList<Values extends Record<string, any>>({
       updateState: true,
     });
     $watch.notifyWatchSubscribers(previousValues);
-  }, []);
+  }, [$errors, $status, $values, $watch]);
 
   const replaceListItem: ReplaceListItem<Values> = useCallback((path, index, item) => {
     const previousValues = $values.refValues.current;
@@ -61,7 +61,7 @@ export function useFormList<Values extends Record<string, any>>({
       updateState: true,
     });
     $watch.notifyWatchSubscribers(previousValues);
-  }, []);
+  }, [$status, $values, $watch]);
 
   return { reorderListItem, removeListItem, insertListItem, replaceListItem };
 }

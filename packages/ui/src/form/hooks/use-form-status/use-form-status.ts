@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import isEqual from 'fast-deep-equal';
 import { getStatus } from '../../get-status';
 import { clearListState } from '../../lists';
@@ -63,7 +63,7 @@ export function useFormStatus<Values extends Record<string, any>>({
     if (mode === 'controlled') {
       setTouchedState(resolvedValues);
     }
-  }, []);
+  }, [mode]);
 
   const setDirty = useCallback(
     (values: FormStatus | ((current: FormStatus) => FormStatus), forceUpdate = false) => {
@@ -74,7 +74,7 @@ export function useFormStatus<Values extends Record<string, any>>({
         setDirtyState(resolvedValues);
       }
     },
-    []
+    [mode]
   );
 
   const resetTouched: ResetStatus = useCallback(() => setTouched({}), [setTouched]);
@@ -85,7 +85,7 @@ export function useFormStatus<Values extends Record<string, any>>({
       : $values.refValues.current;
     $values.setValuesSnapshot(newSnapshot);
     setDirty({});
-  }, []);
+  }, [$values, setDirty]);
 
   const setFieldTouched: SetFieldTouched<Values> = useCallback((path, touched) => {
     setTouched((currentTouched) => {
@@ -113,7 +113,7 @@ export function useFormStatus<Values extends Record<string, any>>({
     const clearedState = clearListState(path, dirtyRef.current);
     clearedState[path as string] = dirty;
     setDirty(clearedState, currentDirty !== dirty);
-  }, []);
+  }, [$values, setDirty]);
 
   const isTouched: GetFieldStatus<Values> = useCallback(
     (path) => getStatus(touchedRef.current, path),
@@ -171,24 +171,30 @@ export function useFormStatus<Values extends Record<string, any>>({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const getTouched = useCallback(() => touchedRef.current, [touchedRef.current]);
 
-  return {
-    touchedState,
-    dirtyState,
-    touchedRef,
-    dirtyRef,
-    setTouched,
-    setDirty,
-    resetDirty,
-    resetTouched,
-    isTouched,
-    setFieldTouched,
-    setFieldDirty,
-    setTouchedState,
-    setDirtyState,
-    clearFieldDirty,
-    isDirty,
-    getDirty,
-    getTouched,
-    setCalculatedFieldDirty,
-  };
+  // 稳定容器：对象身份在组件生命周期内不变，成员每渲染重新赋值（与 onChangeRef 同一套
+  // 写法）。此前每渲染 return {} 让下游无法把 $ 系列 store 写进依赖表——写了就等于每渲染
+  // 重建回调。getter 的身份仍然按契约随值变化（tests/*/compiler-stability.test.ts），
+  // 这里稳定的只是外层容器。
+  const store = useMemo(() => ({} as $FormStatus<Values>), []);
+
+  store.touchedState = touchedState;
+  store.dirtyState = dirtyState;
+  store.touchedRef = touchedRef;
+  store.dirtyRef = dirtyRef;
+  store.setTouched = setTouched;
+  store.setDirty = setDirty;
+  store.resetDirty = resetDirty;
+  store.resetTouched = resetTouched;
+  store.isTouched = isTouched;
+  store.setFieldTouched = setFieldTouched;
+  store.setFieldDirty = setFieldDirty;
+  store.setTouchedState = setTouchedState;
+  store.setDirtyState = setDirtyState;
+  store.clearFieldDirty = clearFieldDirty;
+  store.isDirty = isDirty;
+  store.getDirty = getDirty;
+  store.getTouched = getTouched;
+  store.setCalculatedFieldDirty = setCalculatedFieldDirty;
+
+  return store;
 }

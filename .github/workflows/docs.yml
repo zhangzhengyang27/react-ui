@@ -1,0 +1,60 @@
+# 文档站部署：GitHub Pages（https://zhangzhengyang27.github.io/react-ui/）。
+# docs 的 webpack 冷构建约 20 分钟（mako 已回退，见 .dumirc.ts 注释），CI 留足超时；
+# DEPLOY_BASE 让 .dumirc.ts 把资源前缀烘到 /react-ui/，本地 dev/preview 不受影响。
+name: Docs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/docs/**'
+      - 'packages/**'
+      - '.github/workflows/docs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: build & deploy docs
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: 安装依赖
+        run: pnpm install --frozen-lockfile
+
+      - name: 构建所有包（docs 的 alias 消费 ui 的 es/ 产物）
+        run: pnpm build:packages
+
+      - name: 构建文档站（/react-ui/ 前缀）
+        run: pnpm --filter @xiaoye-react/docs build
+        env:
+          DEPLOY_BASE: /react-ui/
+
+      - name: 上传 Pages 产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/docs/dist
+
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

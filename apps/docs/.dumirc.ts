@@ -41,6 +41,9 @@ export default defineConfig({
     // bundler-mako 读取 opts.config.devtool，为 false 时关闭 JS 与 less 的 source map。
     devtool: false,
     outputPath: 'dist',
+    // 子路径托管（GitHub Pages 的 /react-ui/）时由 CI 注入 DEPLOY_BASE 烘焙资源前缀；
+    // 本地 dev/preview 不设该环境变量，保持根路径不变
+    publicPath: process.env.DEPLOY_BASE || '/',
     favicons: ['/favicon.svg'],
 
     // 文档与组件资产目录

@@ -19,6 +19,11 @@ export default defineConfig({
             '@xiaoye-react/hooks': fileURLToPath(
                 new URL('../../packages/hooks/src/index.ts', import.meta.url)
             ),
+            // pro 不设 alias 会在干净环境炸掉依赖扫描：裸导入解析到包入口的 es/ 产物，
+            // 本地恰好留着产物所以是绿的，CI/干净克隆上没有
+            '@xiaoye-react/pro': fileURLToPath(
+                new URL('../../packages/@xiaoye-react/pro/src/index.ts', import.meta.url)
+            ),
             // 与 apps/docs/.dumirc.ts 的 alias 保持一致：DemoEngine 的真身只有一份，
             // 在 .dumi/theme/builtins 下（dumi 按目录约定自动注册 builtin）。
             // 不设这条的话挂载扫描会解析到另一份实现，等于测的不是上线的那套。

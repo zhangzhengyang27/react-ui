@@ -83,6 +83,20 @@ function validateArgs() {
  */
 const runPackageTests = (p) => run(`pnpm --filter ${p.name} test`);
 
+/** 排练中途工作树可能变脏（自己的改动、或前序步骤产出未忽略文件）；在每个包开跑前快速失败，
+ * 避免跑完十几分钟测试才在 dry-run 的 git 检查上撞死。只在排练模式用：发布模式中途退出会绕过断点续发指引 */
+const assertCleanTree = () => {
+    const dirty = capture('git status --porcelain');
+    if (dirty) {
+        fail(
+            '工作树在预检后变脏（preflight 时还是干净的）：\n' +
+                '  1. 自己的未提交改动——先 commit 或 stash；\n' +
+                '  2. 前序步骤产出了未被 gitignore 的文件——确认该忽略还是该提交。\n' +
+                `当前脏文件：\n${dirty}`,
+        );
+    }
+};
+
 function preflight({ online }) {
     console.log('== 预检 ==');
 
@@ -207,6 +221,7 @@ if (isMain) {
 
     if (!PUBLISH) {
         for (const p of PACKAGES) {
+            assertCleanTree();
             console.log(`\n== ${p.name}：测试 → dry-run ==`);
             runPackageTests(p);
             run(`pnpm --filter ${p.name} publish --access public --dry-run`);

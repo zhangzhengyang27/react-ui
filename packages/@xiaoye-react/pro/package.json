@@ -3,6 +3,13 @@
     "version": "0.2.1",
     "description": "Admin-oriented page patterns (PageContainer, SearchFilter, ProTable) built on @xiaoye-react/ui",
     "license": "MIT",
+    "author": "xiaoye",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zhangzhengyang27/react-ui.git",
+        "directory": "packages/@xiaoye-react/pro"
+    },
+    "homepage": "https://github.com/zhangzhengyang27/react-ui",
     "keywords": [
         "react",
         "ui",

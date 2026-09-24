@@ -7,9 +7,10 @@
     "author": "xiaoye",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/xiaoye/react-ui.git",
+        "url": "git+https://github.com/zhangzhengyang27/react-ui.git",
         "directory": "packages/hooks"
     },
+    "homepage": "https://github.com/zhangzhengyang27/react-ui",
     "keywords": [
         "react",
         "hooks",

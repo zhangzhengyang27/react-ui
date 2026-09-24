@@ -50,6 +50,10 @@ function Demo() {
 - Vite 5（构建产物为 ES Modules + 类型声明）
 - Vitest（测试）
 
+## 致谢
+
+本库的 hooks 设计与部分实现衍生自 [Mantine](https://github.com/mantinedev/mantine) 的 `@mantine/hooks`（MIT License），在此致谢。
+
 ## License
 
 MIT

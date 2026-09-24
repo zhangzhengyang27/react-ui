@@ -86,6 +86,10 @@ function App() {
 - Floating UI（浮动定位）
 - Embla（Carousel）
 
+## 致谢
+
+本库的组件架构（factory / varsResolver / CSS 变量主题体系）与部分实现衍生自 [Mantine](https://github.com/mantinedev/mantine)（MIT License），在此致谢其设计与实现。
+
 ## License
 
 MIT

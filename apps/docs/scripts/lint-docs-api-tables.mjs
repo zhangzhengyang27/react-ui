@@ -57,12 +57,9 @@ const project = new Project({
   tsConfigFilePath: path.join(REPO, 'packages/ui/tsconfig.json'),
   skipAddingFilesFromTsConfig: true
 });
-// hooks 包也要收进来：ui 的 props 接口会 extends hooks 里的 Options（如 FloatingWindowProps extends
-// UseFloatingWindowOptions），漏了会把继承来的真实成员误判成文档假行
-project.addSourceFilesAtPaths([
-  path.join(UI_SRC, '**/*.{ts,tsx}'),
-  path.join(REPO, 'packages/hooks/src/**/*.ts')
-]);
+// 跨包 extends（如 FloatingWindowProps extends hooks 的 UseFloatingWindowOptions）依赖
+// node_modules 里 hooks 的构建产物类型解析；本项目没有 paths 映射，调用方须先 build:packages
+project.addSourceFilesAtPaths(path.join(UI_SRC, '**/*.{ts,tsx}'));
 
 /** 名字 -> 展平后的成员集合；同名接口（各包重名）取并集，宁可漏报不误报 */
 const membersByName = new Map();

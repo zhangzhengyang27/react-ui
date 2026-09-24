@@ -1,5 +1,6 @@
-# 门禁与本地一致：lint（含棘轮 max-warnings）→ docs:lint → typecheck ×3 → 构建发布包 → exports 校验 → 全部单测。
-# check:exports 校验的是磁盘上 exports 指向的真实文件，必须排在 build:packages 之后；
+# 门禁与本地一致：lint（含棘轮 max-warnings）→ typecheck ×3 → 构建发布包 → docs:lint / exports 校验 → 全部单测。
+# check:exports 校验的是磁盘上 exports 指向的真实文件；docs:lint 的 api-tables 解析跨包继承要靠
+# hooks 等依赖的构建产物类型（本地 es/ 常驻所以从没暴露）——两者都必须排在 build:packages 之后。
 # 单测经 workspace 协议解析 hooks 等依赖的 es/ 产物，同样放在构建后。
 # e2e（interactions / screenshots）暂不入 CI：截图基线跨平台不通用，见 ADMIN-ROADMAP 的遗留项。
 name: CI
@@ -35,14 +36,14 @@ jobs:
       - name: Lint（eslint 棘轮 + stylelint + spellcheck）
         run: pnpm lint
 
-      - name: 文档站门禁（imports / demo controls / api tables）
-        run: pnpm docs:lint
-
       - name: Typecheck（ui + hooks + demos）
         run: pnpm typecheck
 
       - name: 构建发布包
         run: pnpm build:packages
+
+      - name: 文档站门禁（imports / demo controls / api tables）
+        run: pnpm docs:lint
 
       - name: 校验包导出
         run: pnpm check:exports

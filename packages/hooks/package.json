@@ -1,7 +1,7 @@
 {
     "name": "@xiaoye-react/hooks",
-    "version": "1.4.0",
-    "description": "小叶的 React Hooks 库，用于 主要用于 UI 包使用",
+    "version": "1.4.1",
+    "description": "小叶的 React Hooks 库：60+ 个无 UI 依赖的 hooks，兼容 React 18/19，可独立使用",
     "type": "module",
     "license": "MIT",
     "author": "xiaoye",
@@ -14,6 +14,7 @@
     "keywords": [
         "react",
         "hooks",
+        "react-hooks",
         "typescript"
     ],
     "sideEffects": false,

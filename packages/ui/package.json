@@ -1,7 +1,7 @@
 {
     "name": "@xiaoye-react/ui",
-    "version": "3.0.0",
-    "description": "小叶的 react ui 组件库",
+    "version": "3.0.1",
+    "description": "小叶的 React 组件库：130+ 组件、CSS 变量主题、管理端 DataTable 与 Pro 页面模式（React 19，中文文档）",
     "type": "module",
     "license": "MIT",
     "author": "xiaoye",
@@ -17,7 +17,9 @@
         "components",
         "component-library",
         "typescript",
-        "hooks"
+        "hooks",
+        "admin",
+        "data-table"
     ],
     "sideEffects": [
         "*.css"

@@ -2,9 +2,19 @@
 
 `@xiaoye-react` React 组件库的 pnpm workspace：`packages/ui`（组件与主题）、`packages/hooks`（无 UI 依赖的 hooks）、`packages/@xiaoye-react/pro`（管理端页面模式层）三个包对外发布，其余 `packages/@xiaoye-react/*` 与 `apps/docs` 为 `private` 的内部包和文档站。
 
-日常命令：`pnpm dev` / `pnpm build:packages` / `pnpm test:packages`；门禁在根 `package.json` 里——`lint:es`（`--max-warnings` 是**棘轮**，只允许调低，理由分类写在 `eslint.config.mjs` 注释里）、`typecheck`（ui + hooks + demos 三套配置）、`docs:lint`、`check:exports`、`e2e:interactions`（24 条，Vite harness）、`e2e:screenshots`（10 条，托管 `apps/docs/dist`）。
+日常命令：`pnpm dev` / `pnpm build:packages` / `pnpm test:packages`；门禁在根 `package.json` 里——`lint:es`（`--max-warnings` 是**棘轮**，只允许调低，理由分类写在 `eslint.config.mjs` 注释里）、`typecheck`（ui + hooks + demos 三套配置）、`docs:lint`、`check:exports`、`e2e:interactions`（24 条，Vite harness）、`e2e:screenshots`（10 条，托管 `apps/docs/dist`）。门禁同时跑在 GitHub Actions（`.github/workflows/ci.yml`，push / PR 触发；e2e 暂不入 CI，截图基线跨平台不通用）。
 
 ## 发布流程
+
+第 0–4 步已固化为 `scripts/release.mjs`，日常按下面的入口走；分步手册保留在后面，用于理解每一步为什么存在、出问题时定位。
+
+```bash
+pnpm release:preflight              # 本地预检：工作树干净、在 main、与远端对齐、ui 的 peer 下限对得上本次要发的 hooks 版本
+pnpm release:check                  # 预检 + 三包依次 dry-run（触发各包完整构建+测试，列出的就是将要上传的清单）
+pnpm release:publish --otp=123456   # 正式发布：顺序发布 → 逐包核对注册表 → 消费者侧 ESM 复验 → 给 ui 版本打 tag 并推送
+```
+
+与手工流程的两点差异：消费者复验在第 4 步的基础上**追加了 pro 包的具名导出检查**（pro 是纯 ESM 包，同样只有这里能暴露互操作问题）；`--publish` 不再先 dry-run（prepublishOnly 反正会完整构建+测试，排练交给 `release:check`）。
 
 13 个 workspace 包里只有 3 个不是 `private`：`@xiaoye-react/hooks`、`@xiaoye-react/ui`、`@xiaoye-react/pro`。三者版本互相独立，但 ui 的 peer 要求 `@xiaoye-react/hooks`，pro 的 peer 要求 ui 与 hooks，所以**被依赖的先发，顺序固定 hooks → ui → pro**：反过来就会短暂出现"peer 指向注册表上还不存在的版本"。
 

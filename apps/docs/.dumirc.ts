@@ -44,7 +44,7 @@ export default defineConfig({
     // 子路径托管（GitHub Pages 的 /react-ui/）时由 CI 注入 DEPLOY_BASE 烘焙资源前缀；
     // 本地 dev/preview 不设该环境变量，保持根路径不变
     publicPath: process.env.DEPLOY_BASE || '/',
-    favicons: ['/favicon.svg'],
+    favicons: [(process.env.DEPLOY_BASE || '/') + 'favicon.svg'],
 
     // 文档与组件资产目录
     resolve: {

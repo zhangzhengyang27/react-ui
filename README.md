@@ -10,11 +10,11 @@
 
 ```bash
 pnpm release:preflight              # 本地预检：工作树干净、在 main、与远端对齐、ui 的 peer 下限对得上本次要发的 hooks 版本
-pnpm release:check                  # 预检 + 三包依次 dry-run（触发各包完整构建+测试，列出的就是将要上传的清单）
-pnpm release:publish --otp=123456   # 正式发布：顺序发布 → 逐包核对注册表 → 消费者侧 ESM 复验 → 给 ui 版本打 tag 并推送
+pnpm release:check                  # 预检 + 三包依次「测试 → dry-run」（测试显式跑：包级 prepublishOnly 只有 build，不含测试）
+pnpm release:publish --otp=123456   # 正式发布：每包「测试 → 发布」→ 逐包核对注册表 → 消费者侧 ESM 复验 → 给 ui 版本打 tag 并推送
 ```
 
-与手工流程的两点差异：消费者复验在第 4 步的基础上**追加了 pro 包的具名导出检查**（pro 是纯 ESM 包，同样只有这里能暴露互操作问题）；`--publish` 不再先 dry-run（prepublishOnly 反正会完整构建+测试，排练交给 `release:check`）。
+测试门禁与手工根脚本（`publish:*` 链式 `prepublishOnly:*` 的 build + test）等价，由脚本显式执行；消费者复验在第 4 步的基础上**追加了 pro 包的具名导出检查**（pro 是纯 ESM 包，同样只有这里能暴露互操作问题）。`--publish` 可追加 `--no-tag` 跳过打标签。
 
 13 个 workspace 包里只有 3 个不是 `private`：`@xiaoye-react/hooks`、`@xiaoye-react/ui`、`@xiaoye-react/pro`。三者版本互相独立，但 ui 的 peer 要求 `@xiaoye-react/hooks`，pro 的 peer 要求 ui 与 hooks，所以**被依赖的先发，顺序固定 hooks → ui → pro**：反过来就会短暂出现"peer 指向注册表上还不存在的版本"。
 

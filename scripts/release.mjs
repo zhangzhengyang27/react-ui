@@ -8,12 +8,12 @@
  *       不联网（不 fetch，比对本地记住的 origin/main）、不构建。
  *
  *   node scripts/release.mjs
- *       预检 + hooks → ui → pro 依次 dry-run。dry-run 会触发各包的
- *       prepublishOnly（完整 build + test），列出的文件清单就是将要上传的内容，
- *       相当于把正式发布排练一遍（README 第 0–1 步）。
+ *       预检 + hooks → ui → pro 依次「测试 → dry-run」。测试显式跑 `pnpm --filter <包> test`
+ *       （包级 prepublishOnly 只有 build，不含测试），dry-run 再触发包级构建并列出
+ *       将要上传的文件清单，相当于把正式发布排练一遍（README 第 0–1 步）。
  *
  *   node scripts/release.mjs --publish [--otp=123456] [--no-tag]
- *       正式发布（README 第 2–4 步）：顺序发布，每发一个包立刻核对注册表版本；
+ *       正式发布（README 第 2–4 步）：每包先测试再发布，发一个立刻核对注册表版本；
  *       全部发完后做消费者侧 ESM 复验（比手工流程多验 pro 的具名导出）；
  *       最后按 ui 的版本打附注标签并推送。
  *
@@ -24,6 +24,7 @@ import { execSync } from 'node:child_process';
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
+import { pathToFileURL } from 'node:url';
 
 const REPO = path.resolve(import.meta.dirname, '..');
 const VERIFY_DIR = '/tmp/verify';
@@ -41,8 +42,6 @@ const PUBLISH = args.includes('--publish');
 const NO_TAG = args.includes('--no-tag');
 const OTP = args.map((a) => /^--otp=(.+)$/.exec(a)?.[1]).find(Boolean);
 
-if (PREFLIGHT_ONLY && PUBLISH) fail('--preflight 与 --publish 不能同时使用');
-
 const pkgJson = (p) => JSON.parse(readFileSync(path.join(REPO, p.dir, 'package.json'), 'utf8'));
 const run = (cmd, cwd = REPO) => execSync(cmd, { stdio: 'inherit', cwd });
 const capture = (cmd, cwd = REPO) => execSync(cmd, { encoding: 'utf8', cwd }).trim();
@@ -58,16 +57,31 @@ function parseVersion(v) {
     return m ? { major: +m[1], minor: +m[2], patch: +m[3] } : null;
 }
 
-/** 只支持本仓实际使用的 ^x.y.z 形态；其他形态（含 workspace: 协议）返回 null，表示无法判断、交给人 */
-function satisfiesCaret(version, range) {
+/** 只支持本仓实际使用的 ^x.y.z 形态（不跨 major，上界 < x+1.0.0）；其他形态（含 workspace: 协议）返回 null，表示无法判断、交给人 */
+export function satisfiesCaret(version, range) {
     const m = /^\^(\d+)\.(\d+)\.(\d+)/.exec((range ?? '').trim());
     const v = parseVersion(version ?? '');
     if (!m || !v) return null;
     const min = { major: +m[1], minor: +m[2], patch: +m[3] };
-    if (v.major !== min.major) return v.major > min.major;
+    if (v.major !== min.major) return false;
     if (v.minor !== min.minor) return v.minor > min.minor;
     return v.patch >= min.patch;
 }
+
+function validateArgs() {
+    const known = ['--preflight', '--publish', '--no-tag'];
+    const unknown = args.filter((a) => !known.includes(a) && !/^--otp=/.test(a));
+    if (unknown.length) fail(`未知参数：${unknown.join(' ')}。支持：--preflight / --publish / --otp=123456 / --no-tag`);
+    // OTP 会原样拼进 shell 命令，只接受数字
+    if (OTP && !/^\d{6,8}$/.test(OTP)) fail(`--otp 应为 6–8 位数字，收到：${OTP}`);
+    if (PREFLIGHT_ONLY && PUBLISH) fail('--preflight 与 --publish 不能同时使用');
+}
+
+/**
+ * 包级 prepublishOnly 只有 build（ui 另含 dts 校验），不含测试；
+ * 测试门禁在排练/发布前在这里显式执行——与手工路径根脚本 publish:* 链式 prepublishOnly:* 的 build + test 等价。
+ */
+const runPackageTests = (p) => run(`pnpm --filter ${p.name} test`);
 
 function preflight({ online }) {
     console.log('== 预检 ==');
@@ -180,30 +194,51 @@ function tagUi(versions) {
     console.log(`✓ 已推送标签 ${tag}`);
 }
 
-const versions = preflight({ online: !PREFLIGHT_ONLY });
+const isMain = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
 
-if (PREFLIGHT_ONLY) {
-    console.log('\n✓ 预检通过。下一步：node scripts/release.mjs 排练 dry-run');
-    process.exit(0);
-}
+if (isMain) {
+    validateArgs();
+    const versions = preflight({ online: !PREFLIGHT_ONLY });
 
-if (!PUBLISH) {
-    for (const p of PACKAGES) {
-        console.log(`\n== dry-run ${p.name}（触发 prepublishOnly：完整构建 + 测试）==`);
-        run(`pnpm --filter ${p.name} publish --access public --dry-run`);
+    if (PREFLIGHT_ONLY) {
+        console.log('\n✓ 预检通过。下一步：node scripts/release.mjs 排练 dry-run');
+        process.exit(0);
     }
-    console.log('\n✓ 排练通过。核对过三个包列出的文件清单后：node scripts/release.mjs --publish' + (OTP ? '' : '（包带 2FA 时加 --otp=123456）'));
-    process.exit(0);
+
+    if (!PUBLISH) {
+        for (const p of PACKAGES) {
+            console.log(`\n== ${p.name}：测试 → dry-run ==`);
+            runPackageTests(p);
+            run(`pnpm --filter ${p.name} publish --access public --dry-run`);
+        }
+        console.log('\n✓ 排练通过。核对过三个包列出的文件清单后：node scripts/release.mjs --publish' + (OTP ? '' : '（包带 2FA 时加 --otp=123456）'));
+        process.exit(0);
+    }
+
+    console.log('\n== 正式发布（顺序固定：hooks → ui → pro）==');
+    const published = [];
+    let current = PACKAGES[0];
+    try {
+        for (current of PACKAGES) {
+            console.log(`\n-- ${current.name}@${versions[current.name]} --`);
+            runPackageTests(current);
+            run(`pnpm --filter ${current.name} publish --access public${OTP ? ` --otp=${OTP}` : ''}`);
+            await registryVersion(current.name, versions[current.name]);
+            published.push(current.name);
+        }
+    } catch {
+        const remaining = PACKAGES.filter((p) => !published.includes(p.name));
+        fail(
+            `发布中断于 ${current.name}（原始报错见上方）。已成功：${published.join(', ') || '无'}。` +
+                (remaining.length
+                    ? `\n剩余包逐个手工补跑（已发出的包同版本重发会被 npm 拒绝，不要重复）：\n` +
+                      remaining.map((p) => `  pnpm --filter ${p.name} publish --access public${OTP ? ` --otp=${OTP}` : ''}`).join('\n')
+                    : `\n若 ${current.name} 实际已发出（npm 报 cannot publish over），核对注册表后补收尾步骤即可`),
+        );
+    }
+
+    consumerVerify(versions);
+    if (!NO_TAG) tagUi(versions);
+
+    console.log(`\n✓ 发布完成：${PACKAGES.map((p) => `${p.name}@${versions[p.name]}`).join(', ')}`);
 }
-
-console.log('\n== 正式发布（顺序固定：hooks → ui → pro）==');
-for (const p of PACKAGES) {
-    console.log(`\n-- ${p.name}@${versions[p.name]} --`);
-    run(`pnpm --filter ${p.name} publish --access public${OTP ? ` --otp=${OTP}` : ''}`);
-    await registryVersion(p.name, versions[p.name]);
-}
-
-consumerVerify(versions);
-if (!NO_TAG) tagUi(versions);
-
-console.log(`\n✓ 发布完成：${PACKAGES.map((p) => `${p.name}@${versions[p.name]}`).join(', ')}`);

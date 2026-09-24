@@ -12,6 +12,7 @@
 pnpm release:preflight              # 本地预检：工作树干净、在 main、与远端对齐、ui 的 peer 下限对得上本次要发的 hooks 版本
 pnpm release:check                  # 预检 + 三包依次「测试 → dry-run」（测试显式跑：包级 prepublishOnly 只有 build，不含测试）
 pnpm release:publish --otp=123456   # 正式发布：每包「测试 → 发布」→ 逐包核对注册表 → 消费者侧 ESM 复验 → 给 ui 版本打 tag 并推送
+# 中断续跑（核对超时但 pnpm 已打印 + 包名@版本，即实际已入库）：pnpm release:publish --from=@xiaoye-react/ui --otp=…
 ```
 
 测试门禁与手工根脚本（`publish:*` 链式 `prepublishOnly:*` 的 build + test）等价，由脚本显式执行；消费者复验在第 4 步的基础上**追加了 pro 包的具名导出检查**（pro 是纯 ESM 包，同样只有这里能暴露互操作问题）。`--publish` 可追加 `--no-tag` 跳过打标签。

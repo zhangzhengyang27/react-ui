@@ -17,6 +17,9 @@
  *       全部发完后做消费者侧 ESM 复验（比手工流程多验 pro 的具名导出）；
  *       最后按 ui 的版本打附注标签并推送。
  *
+ *   --from=<包名>：从指定包开始断点续跑，其之前的包只核对注册表不重发。
+ *       用于发布中断后（如 CDN 核对超时但包实际已入库）的场景。
+ *
  * 为什么顺序固定 hooks → ui → pro：ui 的 peer 指向 hooks、pro 的 peer 指向 ui 与
  * hooks，反过来发会出现「peer 指向注册表上还不存在的版本」的窗口。
  */
@@ -41,6 +44,7 @@ const PREFLIGHT_ONLY = args.includes('--preflight');
 const PUBLISH = args.includes('--publish');
 const NO_TAG = args.includes('--no-tag');
 const OTP = args.map((a) => /^--otp=(.+)$/.exec(a)?.[1]).find(Boolean);
+const FROM = args.map((a) => /^--from=(.+)$/.exec(a)?.[1]).find(Boolean);
 
 const pkgJson = (p) => JSON.parse(readFileSync(path.join(REPO, p.dir, 'package.json'), 'utf8'));
 const run = (cmd, cwd = REPO) => execSync(cmd, { stdio: 'inherit', cwd });
@@ -70,11 +74,15 @@ export function satisfiesCaret(version, range) {
 
 function validateArgs() {
     const known = ['--preflight', '--publish', '--no-tag'];
-    const unknown = args.filter((a) => !known.includes(a) && !/^--otp=/.test(a));
-    if (unknown.length) fail(`未知参数：${unknown.join(' ')}。支持：--preflight / --publish / --otp=123456 / --no-tag`);
+    const unknown = args.filter((a) => !known.includes(a) && !/^--(otp|from)=/.test(a));
+    if (unknown.length) fail(`未知参数：${unknown.join(' ')}。支持：--preflight / --publish / --otp=123456 / --no-tag / --from=<包名>`);
     // OTP 会原样拼进 shell 命令，只接受数字
     if (OTP && !/^\d{6,8}$/.test(OTP)) fail(`--otp 应为 6–8 位数字，收到：${OTP}`);
     if (PREFLIGHT_ONLY && PUBLISH) fail('--preflight 与 --publish 不能同时使用');
+    if (FROM && !PUBLISH) fail('--from 只配合 --publish 使用');
+    if (FROM && !PACKAGES.some((p) => p.name === FROM)) {
+        fail(`--from 的包名不在发布序列里：${FROM}。可选：${PACKAGES.map((p) => p.name).join(' / ')}`);
+    }
 }
 
 /**
@@ -109,8 +117,12 @@ function preflight({ online }) {
     console.log('✓ 当前在 main');
 
     if (online) {
-        run('git fetch origin main');
-        console.log('✓ 已 fetch origin main');
+        try {
+            run('git fetch origin main');
+            console.log('✓ 已 fetch origin main');
+        } catch {
+            console.log('⚠ git fetch 失败（网络抖动），按本地记住的 origin/main 比对——pnpm publish 自身也会查远端');
+        }
     } else {
         console.log('ℹ --preflight 不联网不 fetch，比对的是本地记住的 origin/main');
     }
@@ -143,21 +155,25 @@ function preflight({ online }) {
 }
 
 async function registryVersion(name, expected) {
-    // npm view 偶发慢同步，重试几次再判失败
-    for (let i = 1; i <= 6; i++) {
+    // 发布成功后 CDN 同步有延迟（实战实测超过 12 秒）；且 npm view 会吃本地缓存，
+    // 必须 --prefer-online 强制回源，否则重试读到的永远是同一份旧 packument
+    for (let i = 1; i <= 12; i++) {
         try {
-            const got = capture(`npm view ${name} version`);
+            const got = capture(`npm view ${name} version --prefer-online`);
             if (got === expected) {
                 console.log(`✓ 注册表核对：${name}@${got}`);
                 return;
             }
-            console.log(`  注册表返回 ${got}，期望 ${expected}，第 ${i}/6 次重试…`);
+            console.log(`  注册表返回 ${got}，期望 ${expected}，第 ${i}/12 次重试（每 5 秒）…`);
         } catch {
-            console.log(`  查询失败，第 ${i}/6 次重试…`);
+            console.log(`  查询失败，第 ${i}/12 次重试（每 5 秒）…`);
         }
-        await sleep(2000);
+        await sleep(5000);
     }
-    fail(`${name}：注册表上核对不到刚发布的 ${expected}。先解决（npm view 看真实状态），不要盲目重跑发布`);
+    fail(
+        `${name}：60 秒内核对不到 ${expected}。发布大概率已成功（pnpm 打印过 + name@version 即已入库），` +
+            `等 CDN 同步后用 npm view ${name} version 确认；续发剩余包加 --from=<下一个包名>`,
+    );
 }
 
 function consumerVerify(versions) {
@@ -230,11 +246,18 @@ if (isMain) {
         process.exit(0);
     }
 
+    const queue = FROM ? PACKAGES.slice(PACKAGES.findIndex((p) => p.name === FROM)) : PACKAGES;
+    const skipped = PACKAGES.filter((p) => !queue.includes(p));
+    if (skipped.length) {
+        console.log(`\n== 断点续跑：跳过 ${skipped.map((p) => p.name).join(', ')}，只核对注册表 ==`);
+        for (const p of skipped) await registryVersion(p.name, versions[p.name]);
+    }
+
     console.log('\n== 正式发布（顺序固定：hooks → ui → pro）==');
     const published = [];
-    let current = PACKAGES[0];
+    let current = queue[0];
     try {
-        for (current of PACKAGES) {
+        for (current of queue) {
             console.log(`\n-- ${current.name}@${versions[current.name]} --`);
             runPackageTests(current);
             run(`pnpm --filter ${current.name} publish --access public${OTP ? ` --otp=${OTP}` : ''}`);
@@ -242,13 +265,14 @@ if (isMain) {
             published.push(current.name);
         }
     } catch {
-        const remaining = PACKAGES.filter((p) => !published.includes(p.name));
+        const remaining = queue.filter((p) => !published.includes(p.name));
+        const next = remaining[0];
         fail(
-            `发布中断于 ${current.name}（原始报错见上方）。已成功：${published.join(', ') || '无'}。` +
-                (remaining.length
-                    ? `\n剩余包逐个手工补跑（已发出的包同版本重发会被 npm 拒绝，不要重复）：\n` +
-                      remaining.map((p) => `  pnpm --filter ${p.name} publish --access public${OTP ? ` --otp=${OTP}` : ''}`).join('\n')
-                    : `\n若 ${current.name} 实际已发出（npm 报 cannot publish over），核对注册表后补收尾步骤即可`),
+            `发布中断于 ${current.name}（原始报错见上方）。已成功：${[...skipped.map((p) => p.name), ...published].join(', ') || '无'}。` +
+                (next
+                    ? `\n中断的包若实际已入库（pnpm 打印过 + 号即是），确认后断点续跑：\n` +
+                      `  node scripts/release.mjs --publish --from=${next.name}${OTP ? ` --otp=${OTP}` : ''}`
+                    : `\n若 ${current.name} 实际已发出，核对注册表后补收尾步骤（消费者复验 / 打标签）即可`),
         );
     }
 

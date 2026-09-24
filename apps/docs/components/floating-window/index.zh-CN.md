@@ -71,9 +71,9 @@ group:
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| initialPosition | 初始位置 | `{ x: number; y: number }` | `{ x: 100, y: 100 }` |
+| initialPosition | 初始位置 | `{ top?: number; left?: number; right?: number; bottom?: number }` | — |
+| enabled | 是否启用拖拽 | `boolean` | `true` |
 | title | 标题 | `ReactNode` | — |
-| draggable | 是否可拖拽 | `boolean` | `true` |
 | zIndex | 层级 | `number` | `1000` |
 
 支持所有原生 HTML 属性。
